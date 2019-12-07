@@ -1,80 +1,76 @@
 ---
-title: Microsoft Azure Storage veri hareketi kitaplığı ile veri aktarma | Microsoft Docs
-description: Veri taşıma kitaplığı, taşıyın veya için veya blob ve dosya içeriği veri kopyalamak için kullanın. Yerel dosyaları Azure depolama alanına veri kopyalama veya içinde veya depolama hesapları arasında verileri kopyalayabilirsiniz. Kolayca verilerinizi Azure Depolama'ya geçirin.
+title: .NET için veri taşıma kitaplığıyla veri aktarma
+titleSuffix: Azure Storage
+description: Veri taşıma kitaplığını kullanarak blob ve dosya içeriklerine veri taşıyın veya kopyalayın. Yerel dosyalardaki verileri Azure depolama 'ya kopyalayın veya depolama hesapları içinde veya arasında verileri kopyalayın. Verilerinizi kolayca Azure Storage 'a geçirin.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 09/27/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 8e09e2c33359c94275d9819b335544d15d4c7d78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790086"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895124"
 ---
-# <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage veri hareketi kitaplığı ile veri aktarma
+# <a name="transfer-data-with-the-data-movement-library"></a>Veri taşıma kitaplığıyla veri aktarma
 
-## <a name="overview"></a>Genel Bakış
-Microsoft Azure Storage veri hareketi kitaplığı karşıya yükleme, indirme ve Azure depolama Blobları ve dosyaları kopyalama yüksek performans için tasarlanmış bir platformlar arası, açık kaynak bir kitaplıktır. Bu bir kitaplıktır çalıştıran çekirdek veri hareketi altyapısını [AzCopy](../storage-use-azcopy.md). Veri taşıma kitaplığı geleneksel bizim kullanılamayan kullanışlı yöntemler sunar [.NET Azure depolama istemci Kitaplığı](../blobs/storage-dotnet-how-to-use-blobs.md). Bu, paralel işlemleri sayısını ayarlayın, aktarma işleminin ilerleme durumunu izlemek, iptal edilen bir aktarım ve daha fazlasını kolayca sürdürme olanağı içerir.
+Azure depolama veri taşıma kitaplığı, Blobları ve dosyaları karşıya yüklemek, indirmek ve kopyalamak için tasarlanan platformlar arası açık kaynaklı bir kitaplıktır. Bu kitaplık [AzCopy](../storage-use-azcopy.md)'i destekleyen temel veri taşıma çerçevesidir. Veri taşıma kitaplığı, .NET için Azure Storage istemci kitaplığı 'nda kullanılamayan kullanışlı yöntemler sunar. Bu yöntemler paralel işlemlerin sayısını ayarlamanıza, aktarım ilerlemesini izlemenize, iptal edilen bir aktarımı kolayca sürdürmeye ve çok daha fazlasına olanak sağlar.
 
-Bu kitaplık, .NET Core, Windows, Linux ve macOS için .NET uygulamaları oluşturma sırasında kullanabileceğiniz anlamına gelir de kullanır. .NET Core hakkında daha fazla bilgi için bkz [.NET Core belgeleri](https://dotnet.github.io/). Bu kitaplık, geleneksel .NET Framework uygulamaları için Windows için de kullanılabilir.
+Bu kitaplık ayrıca .NET Core kullanır, bu da Windows, Linux ve macOS için .NET uygulamaları oluştururken kullanabileceğiniz anlamına gelir. .NET Core hakkında daha fazla bilgi edinmek için [.NET Core belgelerine](https://dotnet.github.io/)bakın. Bu kitaplık, Windows için geleneksel .NET Framework uygulamaları için de geçerlidir.
 
-Bu belge Windows, Linux ve macOS üzerinde çalışır ve aşağıdaki senaryolarda gerçekleştiren bir .NET Core konsol uygulaması oluşturma işlemini göstermektedir:
+Bu belgede, Windows, Linux ve macOS 'ta çalışan bir .NET Core konsol uygulamasının nasıl oluşturulacağı ve aşağıdaki senaryolar gerçekleştirilir:
 
-- Blob depolama alanına, dosyaları ve dizinleri karşıya yükleyin.
-- Paralel işlem sayısı, veri aktarırken tanımlayın.
-- Veri aktarımı ilerlemesini izle.
-- Veri aktarımı sürdürme iptal edildi.
-- Dosya URL'den Blob depolama alanına kopyalayın.
-- BLOB depolama alanından, Blob depolama alanına kopyalayın.
+- Dosya ve dizinleri blob depolamaya yükleyin.
+- Veri aktarımı sırasında paralel işlem sayısını tanımlayın.
+- Veri aktarımı ilerlemesini izleyin.
+- Veri aktarımını iptal et.
+- Dosyayı URL 'den blob depolamaya kopyalayın.
+- Blob depolamadan blob depolamaya kopyalama.
 
-**Gerekenler:**
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Visual Studio Code](https://code.visualstudio.com/)
-* Bir [Azure Storage hesabı](storage-quickstart-create-account.md)
-
-> [!NOTE]
-> Bu kılavuz, zaten aşina olduğunuzu varsayar [Azure depolama](https://azure.microsoft.com/services/storage/). Değilse, okunuyorsa [Azure Storage'a giriş](storage-introduction.md) belgeleri yararlıdır. En önemlisi de yapmanız [depolama hesabı oluşturma](storage-quickstart-create-account.md) veri hareketi kitaplığı kullanmaya başlamak için.
->
->
+- [Visual Studio Code](https://code.visualstudio.com/)
+- Bir [Azure Storage hesabı](storage-quickstart-create-account.md)
 
 ## <a name="setup"></a>Kurulum
 
-1. Ziyaret [.NET Core Yükleme Kılavuzu](https://www.microsoft.com/net/core) .NET Core yüklemek için. Ortamınızı seçerken, komut satırı seçeneğini seçin.
-2. Komut satırından, projeniz için bir dizin oluşturun. Git bu dizine yazın `dotnet new console -o <sample-project-name>` bir C# konsol projesi oluşturmak için.
-3. Bu dizin, Visual Studio Code'da açın. Bu adım hızla ile komut satırını yazarak yapılabilir `code .` Windows içinde.
-4. Yükleme [C# uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio kod Market. Visual Studio Code'u yeniden başlatın.
-5. Bu noktada, iki istem görmeniz gerekir. Biridir "derleme ve hata ayıklamak için gerekli varlıkları." eklemek için "Evet" seçeneğine tıklayın Çözümlenmemiş bağımlılıklar geri yüklemek için başka bir uyarı içindir. "Geri yükleme".
-6. Değiştirme `launch.json` altında `.vscode` dış terminal bir konsol olarak kullanılacak. Bu ayar olarak okumanız gerekir `"console": "externalTerminal"`
-7. Visual Studio Code, .NET Core uygulamalarında hata ayıklamak sağlar. İsabet `F5` uygulamanızı çalıştırın ve kurulumunuzu çalıştığını doğrulayın. "Hello World!" görmeniz gerekir konsola yazdırılır.
+1. .NET Core yüklemek için [.NET Core yükleme kılavuzunu](https://www.microsoft.com/net/core) ziyaret edin. Ortamınızı seçerken komut satırı seçeneğini belirleyin.
+2. Komut satırından projeniz için bir dizin oluşturun. Bu dizine gidin ve `dotnet new console -o <sample-project-name>` yazarak bir C# konsol projesi oluşturun.
+3. Bu dizini Visual Studio Code açın. Bu adım, Windows 'ta `code .` yazarak komut satırı aracılığıyla hızla yapılabilir.
+4. Uzantıyı Visual Studio Code marketi 'nden yüklersiniz. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Visual Studio Code yeniden başlatın.
+5. Bu noktada, iki istem görmeniz gerekir. Biri, "derlemek ve hata ayıklamak için gerekli varlıklar" eklemek içindir. "Evet" e tıklayın. Çözümlenmemiş bağımlılıkları geri yüklemek için başka bir istem vardır. "Geri yükle" ye tıklayın.
+6. `.vscode` altındaki `launch.json`, bir konsol olarak dış Terminal kullanmak üzere değiştirin. Bu ayar `"console": "externalTerminal"` olarak okunmalıdır
+7. Visual Studio Code, .NET Core uygulamalarında hata ayıklamanıza olanak tanır. Uygulamanızı çalıştırmak ve kurulumun çalıştığını doğrulamak için `F5` isabet edin. "Merhaba Dünya!" görmeniz gerekir konsola yazdırılır.
 
-## <a name="add-data-movement-library-to-your-project"></a>Veri taşıma kitaplığı projenize ekleyin.
+## <a name="add-the-data-movement-library-to-your-project"></a>Veri taşıma kitaplığını projenize ekleyin
 
-1. Veri taşıma kitaplığı için en son sürümünü eklemek `dependencies` bölümünü, `<project-name>.csproj` dosya. Makalenin yazıldığı sırada bu sürümü olacaktır `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
-2. Projenizi geri yüklemek için bir istem görüntülemelidir. "Geri yükle" düğmesine tıklayın. Ayrıca, projenizi komut satırından komutu yazarak geri yükleyebilirsiniz `dotnet restore` , proje dizininizin kökünde.
+1. Veri taşıma kitaplığının en son sürümünü `<project-name>.csproj` dosyanızın `dependencies` bölümüne ekleyin. Bu sürüm, yazma sırasında `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+2. Projenizi geri yüklemek için bir istem görüntülenmelidir. "Geri yükle" düğmesine tıklayın. Ayrıca, proje dizininizin köküne komut `dotnet restore` yazarak projenizi komut satırından da geri yükleyebilirsiniz.
 
-Değiştirme `<project-name>.csproj`:
+`<project-name>.csproj`Değiştir:
 
-    <Project Sdk="Microsoft.NET.Sdk">
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
+        </ItemGroup>
+    </Project>
+```
 
-        <PropertyGroup>
-            <OutputType>Exe</OutputType>
-            <TargetFramework>netcoreapp2.0</TargetFramework>
-        </PropertyGroup>
-        <ItemGroup>
-            <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
-            </ItemGroup>
-        </Project>
+## <a name="set-up-the-skeleton-of-your-application"></a>Uygulamanızın iskektlerini ayarlayın
 
-## <a name="set-up-the-skeleton-of-your-application"></a>Uygulamanızın çatıyı ayarlayın
-Yapmamız gereken ilk şey, uygulamamız "skeleton" kod ayarlanır. Bu kod ABD için bir depolama hesabı adını ve hesap anahtarını ister ve oluşturmak için bu kimlik bilgilerini kullanan bir `CloudStorageAccount` nesne. Bu nesne, aktarımı senaryolarda tüm depolama hesabımız ile etkileşim kurmak için kullanılır. Kod aktarım işlemi yürütmek için istiyoruz türü seçmek için bize ister.
+Yaptığımız ilk şey, uygulamamız için "iskelet" kodunu ayarlamuyoruz. Bu kod, bir depolama hesabı adı ve hesap anahtarı için bize sorar ve bu kimlik bilgilerini bir `CloudStorageAccount` nesnesi oluşturmak için kullanır. Bu nesne, tüm aktarım senaryolarında depolama hesabınızla etkileşim kurmak için kullanılır. Kod ayrıca, çalıştırmak istediğimiz aktarım işlemi türünü seçmenizi ister.
 
-Değiştirme `Program.cs`:
+`Program.cs`Değiştir:
 
 ```csharp
 using System;
@@ -149,8 +145,9 @@ namespace DMLibSample
 }
 ```
 
-## <a name="transfer-local-file-to-azure-blob"></a>Azure Blob için yerel dosya aktarımı
-Yöntemler `GetSourcePath` ve `GetBlob` için `Program.cs`:
+## <a name="upload-a-local-file-to-a-blob"></a>Blob 'a yerel bir dosya yükleme
+
+`Program.cs``GetSourcePath` ve `GetBlob` yöntemleri ekleyin:
 
 ```csharp
 public static string GetSourcePath()
@@ -178,7 +175,7 @@ public static CloudBlockBlob GetBlob(CloudStorageAccount account)
 }
 ```
 
-Değiştirme `TransferLocalFileToAzureBlob` yöntemi:
+`TransferLocalFileToAzureBlob` yöntemini değiştirin:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -192,18 +189,19 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Bu kod yolunu yerel bir dosya, yeni veya var olan bir kapsayıcının adını ve yeni bir blob adı için bize ister. `TransferManager.UploadAsync` Yöntemi, bu bilgileri kullanarak karşıya yükleme gerçekleştirir.
+Bu kod, yerel bir dosyanın yolunu, yeni veya var olan bir kapsayıcının adını ve yeni bir Blobun adını ister. `TransferManager.UploadAsync` yöntemi, bu bilgileri kullanarak karşıya yüklemeyi gerçekleştirir.
 
-İsabet `F5` uygulamanızı çalıştırmak için. Karşıya yükleme, depolama hesabınızla görüntüleyerek oluştuğunu doğrulayabilirsiniz [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/).
+Uygulamanızı çalıştırmak için `F5` tuşuna basın. [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)ile depolama hesabınızı görüntüleyerek karşıya yükleme işleminin gerçekleştiğini doğrulayabilirsiniz.
 
-## <a name="set-number-of-parallel-operations"></a>Paralel işlem kümesi sayısı
-Veri taşıma kitaplığı tarafından sunulan harika bir özellik, veri aktarımı verimliliğini artırmak için paralel işlem sayısını ayarlamak için olanağıdır. Varsayılan olarak, veri taşıma kitaplığı paralel işlem sayısı 8'e ayarlar * makinenizde çekirdek sayısı.
+## <a name="set-the-number-of-parallel-operations"></a>Paralel işlem sayısını ayarla
 
-Düşük bant genişliğine sahip bir ortamda çok sayıda paralel işlemleri ağ bağlantısı doldurmaya ve gerçekten tam tamamlanmasını işlemlerini önlemek aklınızda bulundurun. Kullanılabilir ağ bant genişliğinizi ne en iyi temel yapılandırmayı belirlemek için bu ayarı ile denemeniz gerekir.
+Veri taşıma kitaplığı tarafından sunulan bir özellik, veri aktarımı aktarım hızını artırmak için paralel işlem sayısını ayarlamanıza olanak sağlar. Varsayılan olarak, veri taşıma kitaplığı, paralel işlem sayısını, makinenizde bulunan çekirdek sayısı olarak 8 * olarak ayarlar.
 
-Kurmamızı paralel işlem sayısını ayarlamak biraz kod ekleyelim. Ayrıca ne kadar aktarımı tamamlamak gereken zaman kod ekleyelim.
+Düşük bant genişliğine sahip bir ortamdaki birçok paralel işlemin ağ bağlantısını tükendiğini ve gerçekten işlemlerin tamamen tamamlanmasını önlemeyeceğini aklınızda bulundurun. Kullanılabilir ağ bant genişliğinizi temel alarak neyin en iyi şekilde çalışacağını belirlemek için bu ayarla denemeler yapmanız gerekir.
 
-Ekleme bir `SetNumberOfParallelOperations` yönteme `Program.cs`:
+Paralel işlemlerin sayısını ayarlayabileceğimizi sağlayan bir kod ekleyelim. Ayrıca, aktarımın tamamlanma süresini belirten bir kod ekleyelim.
+
+`Program.cs`için bir `SetNumberOfParallelOperations` yöntemi ekleyin:
 
 ```csharp
 public static void SetNumberOfParallelOperations()
@@ -214,7 +212,7 @@ public static void SetNumberOfParallelOperations()
 }
 ```
 
-Değiştirme `ExecuteChoice` yönteminin kullanılacağını `SetNumberOfParallelOperations`:
+`ExecuteChoice` yöntemi `SetNumberOfParallelOperations`kullanacak şekilde değiştirin:
 
 ```csharp
 public static void ExecuteChoice(CloudStorageAccount account)
@@ -243,7 +241,7 @@ public static void ExecuteChoice(CloudStorageAccount account)
 }
 ```
 
-Değiştirme `TransferLocalFileToAzureBlob` yöntemi bir zamanlayıcı kullanmak için:
+`TransferLocalFileToAzureBlob` yöntemini bir Zamanlayıcı kullanacak şekilde değiştirin:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -259,10 +257,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="track-transfer-progress"></a>Aktarım ilerlemesini İzle
-Ne kadar verilerimizi aktarmak sürdüğünü bilerek harika bir yoldur. Ancak, bizim aktarımı ilerlemesini görmek işaretleyebilmesine *sırasında* aktarım işlemi daha iyi olacaktır. Bu senaryo elde etmek için oluşturmamız gerekir bir `TransferContext` nesne. `TransferContext` Nesne iki biçimde gelir: `SingleTransferContext` ve `DirectoryTransferContext`. Eski bir tek (şimdi neler yaptığımızın) dosyasını aktarmak için ve ikincisi bir dizin (daha sonra ekliyoruz) dosyaları aktarmak için.
+## <a name="track-transfer-progress"></a>Aktarım ilerlemesini izleme
 
-Yöntemler `GetSingleTransferContext` ve `GetDirectoryTransferContext` için `Program.cs`:
+Verilerin aktarım için ne kadar sürdüğünü bilme yararlı olur. Ancak, aktarım işlemi *sırasında* aktarımın ilerlemesini görmek daha da iyidir. Bu senaryoya ulaşmak için `TransferContext` nesnesi oluşturmanız gerekir. `TransferContext` nesnesi iki şekilde gelir: `SingleTransferContext` ve `DirectoryTransferContext`. İlki tek bir dosyayı aktarmaya yöneliktir ve ikincisi bir dosya dizinini aktarmaya yöneliktir.
+
+`Program.cs``GetSingleTransferContext` ve `GetDirectoryTransferContext` yöntemleri ekleyin:
 
 ```csharp
 public static SingleTransferContext GetSingleTransferContext(TransferCheckpoint checkpoint)
@@ -290,7 +289,7 @@ public static DirectoryTransferContext GetDirectoryTransferContext(TransferCheck
 }
 ```
 
-Değiştirme `TransferLocalFileToAzureBlob` yönteminin kullanılacağını `GetSingleTransferContext`:
+`TransferLocalFileToAzureBlob` yöntemi `GetSingleTransferContext`kullanacak şekilde değiştirin:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -308,10 +307,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="resume-a-canceled-transfer"></a>İptal edilen bir aktarım Sürdür
-Veri taşıma kitaplığı tarafından sunulan başka bir uygun iptal edilen bir aktarım sürdürebilme özelliğidir. Geçici olarak yazarak aktarımı iptal et olanak sağlayan biraz kod ekleyelim `c`ve sonra da 3 saniyelik aktarım devam.
+## <a name="resume-a-canceled-transfer"></a>İptal edilen bir aktarımı sürdürür
 
-Değiştirme `TransferLocalFileToAzureBlob`:
+Veri taşıma kitaplığı tarafından sunulan başka bir kullanışlı özellik, iptal edilen bir aktarımı sürdürmeye olanak sağlar. `c`yazarak, aktarımı geçici olarak iptal etmemizi sağlayan bir kod ekleyelim ve sonra 3 saniye sonra aktarıma geri dönelim.
+
+`TransferLocalFileToAzureBlob`Değiştir:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -363,12 +363,13 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Şimdiye bizim `checkpoint` değeri her zaman sınıflandırmalara ayarlandığı `null`. Şimdi biz aktarımı iptal ederseniz, biz bizim aktarımı son denetim noktasından almak ve ardından bu yeni bir kontrol noktası bizim aktarımı bağlamda kullanabilir.
+Şimdi `checkpoint` değeri her zaman `null`olarak ayarlanmıştır. Artık aktarımı iptal etmemiz durumunda, aktarımımız son denetim noktasını aldık ve ardından bu yeni denetim noktasını aktarma bağlamımızda kullanacağız.
 
-## <a name="transfer-local-directory-to-azure-blob-directory"></a>Azure Blob dizin yerel dizine Aktarım
-Veri taşıma kitaplığı aynı anda yalnızca bir dosya aktarımı istendiği olurdu. Neyse ki bu durumda değil. Veri taşıma kitaplığı, bir dizin, dosya ve alt dizinlerinde taşıma imkanı sağlar. Bunu sağlıyor biraz kod ekleyelim.
+## <a name="transfer-a-local-directory-to-blob-storage"></a>Yerel bir dizini blob depolamaya aktarma
 
-İlk olarak, yöntem ekleme `GetBlobDirectory` için `Program.cs`:
+Veri taşıma kitaplığı tek seferde yalnızca bir dosya aktaracağından, bu durum söz konusu olabilir. Luckily, bu durum değildir. Veri taşıma kitaplığı, bir dosya dizinini ve tüm alt dizinlerini aktarma yeteneği sağlar. Yalnızca bunu yapmamızı sağlayan bir kod ekleyelim.
+
+İlk olarak, `Program.cs``GetBlobDirectory` yöntemi ekleyin:
 
 ```csharp
 public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
@@ -386,7 +387,7 @@ public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
 }
 ```
 
-Daha sonra değiştirmek `TransferLocalDirectoryToAzureBlobDirectory`:
+Sonra `TransferLocalDirectoryToAzureBlobDirectory`değiştirin:
 
 ```csharp
 public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorageAccount account)
@@ -443,12 +444,13 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 }
 ```
 
-Bu yöntem ve tek bir dosyayı karşıya yükleme için yöntem arasındaki bazı farklar vardır. Artık kullanıyoruz `TransferManager.UploadDirectoryAsync` ve `getDirectoryTransferContext` daha önce oluşturduğumuz yöntemi. Ayrıca, artık sağlıyoruz bir `options` bizim karşıya yükleme alt dizinleri dahil etmek istiyoruz belirtmek sağlıyor bizim karşıya yükleme işlemi için değer.
+Bu yöntem ve tek bir dosyayı karşıya yüklemek için yöntemi arasında birkaç fark vardır. Artık `TransferManager.UploadDirectoryAsync` ve daha önce oluşturduğumuz `getDirectoryTransferContext` yöntemi kullandık. Ayrıca, karşıya yükleme operasyonimize bir `options` değer sağlıyoruz. Bu, karşıya yükleme işlemi için alt dizinler eklemek istediğimizi göstermemizi sağlar.
 
-## <a name="copy-file-from-url-to-azure-blob"></a>URL'den dosya Azure blob'a Kopyala
-Artık, bir Azure Blob için bir URL bir dosyayı kopyalama olanak sağlayan bir kod ekleyelim.
+## <a name="copy-a-file-from-url-to-a-blob"></a>URL 'den blob 'a dosya kopyalama
 
-Değiştirme `TransferUrlToAzureBlob`:
+Şimdi de bir URL 'den Azure Blobuna bir dosya kopyalamamızı sağlayan bir kod ekleyelim.
+
+`TransferUrlToAzureBlob`Değiştir:
 
 ```csharp
 public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
@@ -500,12 +502,13 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 }
 ```
 
-Verileri başka bir bulut hizmetinden (örneğin, AWS) Azure'a taşımak, ihtiyacınız olduğunda bu özellik bir önemli kullanım durum geçerlidir. Kaynağa erişim veren bir URL'ye sahip olduğu sürece, kolayca, kaynak Azure BLOB'ları kullanarak taşıyabilirsiniz `TransferManager.CopyAsync` yöntemi. Bu yöntem, yeni bir Boole parametresi da tanıtılmaktadır. Bu parametre ayarını `true` zaman uyumsuz bir sunucu tarafı kopyalamayı yapmak istediğimizi belirtir. Bu parametre ayarını `false` kaynak yerel makinemizi ilk indirilir ve ardından Azure Blob karşıya anlamı zaman uyumlu kopya - gösterir. Ancak, zaman uyumlu kopyası şu anda yalnızca bir Azure depolama kaynağından diğerine kopyalamak için kullanılabilir.
+Bu özellik için önemli bir kullanım durumu, başka bir bulut hizmetinden (ör. AWS) Azure 'a veri taşımanız gerektiğinde olur. Kaynağa erişim sağlayan bir URL olduğu sürece, `TransferManager.CopyAsync` yöntemini kullanarak bu kaynağı kolayca Azure Bloblarına taşıyabilirsiniz. Bu yöntem, yeni bir Boolean parametresi de tanıtır. Bu parametreyi `true` olarak ayarlamak, zaman uyumsuz bir sunucu tarafı kopyası yapmak istediğdiğimiz anlamına gelir. Bu parametrenin `false` olarak ayarlanması, zaman uyumlu bir kopya olduğunu belirtir-kaynağın önce yerel makinenize indirildiğini ve sonra Azure Blob 'a yüklendiğini gösterir. Ancak zaman uyumlu kopyalama Şu anda yalnızca bir Azure Storage kaynağından diğerine kopyalama için kullanılabilir.
 
-## <a name="transfer-azure-blob-to-azure-blob"></a>Azure Blob Azure Blobuna aktarma
-Benzersiz veri hareketi kitaplığı tarafından sağlanan başka bir Azure depolama kaynağından diğerine kopyalama özelliği özelliğidir.
+## <a name="copy-a-blob"></a>Blob kopyalama
 
-Değiştirme `TransferAzureBlobToAzureBlob`:
+Veri taşıma kitaplığı tarafından benzersiz şekilde sağlanmış olan başka bir özellik, bir Azure Storage kaynağından diğerine kopyalama yeteneğidir.
+
+`TransferAzureBlobToAzureBlob`Değiştir:
 
 ```csharp
 public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount account)
@@ -557,12 +560,12 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Bu örnekte biz Boole parametresi kümesinde `TransferManager.CopyAsync` için `false` biz zaman uyumlu kopyasını yapmak istediğinizi belirtmek için. Bu kaynak yerel makinemizi ilk indirilen c:\kullanıcılar\kullanıcı\belgeler gibi Azure Blob karşıya olduğunu anlamına gelir. Zaman uyumlu kopyası seçeneği, kopyalama işlemi tutarlı bir hız olduğundan emin olmak için harika bir yoludur. Buna karşılık, zaman uyumsuz bir sunucu tarafı kopyalama hızına dalgalanma sunucu üzerinde kullanılabilir ağ bant genişliğine bağlıdır. Ancak, zaman uyumlu kopyası için zaman uyumsuz kopya kıyasla ek çıkış maliyet oluşturabilir. Önerilen yaklaşım, çıkış maliyet önlemek için kaynak depolama hesabının aynı bölgede olan bir Azure VM'de zaman uyumlu kopyası kullanmaktır.
+Bu örnekte, zaman uyumlu bir kopya yapmak istediğdiğimiz göstermek için `TransferManager.CopyAsync` Boole parametresini `false` olarak ayarlayacağız. Bu, kaynağın önce yerel makinenize indirileceği ve sonra Azure Blob 'a yüklendiği anlamına gelir. Zaman uyumlu kopyalama seçeneği, kopyalama işlemi için tutarlı bir hız olduğundan emin olmanın harika bir yoludur. Buna karşılık, zaman uyumsuz bir sunucu tarafı kopyasının hızı sunucudaki kullanılabilir ağ bant genişliğine bağımlıdır ve bu da dalgalanmasına sahip olabilir. Ancak zaman uyumlu kopya, zaman uyumsuz kopyaya kıyasla ek çıkış maliyeti oluşturabilir. Önerilen yaklaşım, çıkış maliyetini önlemek için kaynak depolama hesabınızla aynı bölgedeki bir Azure VM 'de zaman uyumlu kopyalama kullanmaktır.
 
-## <a name="conclusion"></a>Sonuç
-Veri taşıma uygulamamız tamamlanmıştır. [Tam kod örneği, Github'da kullanılabilir](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
+Veri taşıma uygulaması artık tamamlanmıştır. [Tam kod örneği GitHub ' da kullanılabilir](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu Başlarken'de, Azure depolama ile etkileşime geçer ve Windows, Linux ve macOS üzerinde çalışan bir uygulama oluşturduk. Bu Başlarken Blob depolamaya odaklı. Ancak, aynı bu bilgi, dosya depolama için uygulanabilir. Daha fazla bilgi için kullanıma [Azure Storage veri hareketi kitaplığı başvuru belgeleri](https://azure.github.io/azure-storage-net-data-movement).
+
+[Azure depolama veri taşıma kitaplığı başvuru belgeleri](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

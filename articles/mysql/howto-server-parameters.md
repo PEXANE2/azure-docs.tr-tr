@@ -1,39 +1,39 @@
 ---
 title: Sunucu parametrelerini Yapılandırma-Azure portal-MySQL için Azure veritabanı
-description: Bu makalede, Azure portal kullanarak MySQL için Azure veritabanı 'nda MySQL Server parametrelerinin nasıl yapılandırılacağı açıklanır.
+description: Bu makalede, Azure portalını kullanarak MySQL için Azure veritabanı'nda MySQL sunucusu parametrelerini yapılandırılacağını açıklar.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f803b7cccf3520c309e6b33d99b5565cfc4fdd01
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764925"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893153"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Nasıl MySQL için Azure veritabanı'nda Azure portalını kullanarak sunucu parametrelerini yapılandırma
 
-MySQL için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmasını destekler. Bu makalede Azure portal kullanılarak bu parametrelerin nasıl yapılandırılacağı açıklanır. Tüm sunucu parametreleri ayarlanamaz.
+MySQL için Azure veritabanı, bazı sunucu parametreleri yapılandırılmasını destekler. Bu makalede Azure portalını kullanarak bu parametreleri yapılandırma açıklanır. Tüm sunucu parametreleri ayarlanabilir.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure portal sunucu parametrelerine git
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure portalında sunucu parametrelerini gidin
 
-1. Azure portal oturum açın ve ardından MySQL Server için Azure veritabanınızı bulun.
-2. **Ayarlar** bölümünde **sunucu parametreleri** ' ne tıklayarak MySQL için Azure veritabanı sunucusu için sunucu parametreleri sayfasını açın.
-![Azure portal sunucu parametreleri sayfası](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Ayarlamanız gereken ayarları bulun. Amacı ve izin verilen değerleri anlamak için **Açıklama** sütununu gözden geçirin.
-açılan ![](./media/howto-server-parameters/3-toggle_parameter.png) Sırala
-4. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
-değişiklikleri kaydetme veya atma ![](./media/howto-server-parameters/4-save_parameters.png)
-5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
-![tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
+1. Azure portalında oturum açın, sonra MySQL için Azure veritabanınızı bulun.
+2. Altında **ayarları** bölümünde **sunucu parametreleri** MySQL sunucusu için Azure veritabanı sunucusu parametreleri sayfasını açın.
+![Azure portal sunucusu parametreleri sayfası](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Ayarlamak için gereken herhangi bir ayarı bulun. Gözden geçirme **açıklama** amacı ve izin verilen değerler anlamak için sütun.
+![Aşağı açılan listeleme](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
+![Kaydet veya değişiklikleri at](./media/howto-server-parameters/4-save_parameters.png)
+5. Parametreler için yeni değerler kaydettiyseniz, her zaman varsayılan değerleri dön her şeyi seçerek geri dönebilirsiniz **tümünü Varsayılana Sıfırla**.
+![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Yapılandırılabilir sunucu parametrelerinin listesi
 
-Desteklenen sunucu parametrelerinin listesi sürekli olarak büyüyordur. Tanım almak ve uygulama gereksinimlerinize göre sunucu parametrelerini yapılandırmak için Azure portal içindeki sunucu parametreleri sekmesini kullanın.
+Desteklenen sunucu parametrelerinin listesi sürekli olarak artmaktadır. Sunucu parametreleri sekmesi tanımını Al ve uygulama gereksinimlerinize göre sunucu parametrelerini yapılandırma Azure portalında kullanın.
 
-## <a name="non-configurable-server-parameters"></a>Yapılandırılamayan sunucu parametreleri
+## <a name="non-configurable-server-parameters"></a>Yapılandırılabilir olmayan sunucu parametreleri
 
 InnoDB arabellek havuzu boyutu yapılandırılamaz ve [fiyatlandırma katmanınıza](concepts-service-tiers.md)bağlı değildir.
 
@@ -53,29 +53,32 @@ InnoDB arabellek havuzu boyutu yapılandırılamaz ve [fiyatlandırma katmanın�
 |Bellek için İyileştirilmiş| 16| 62464| 124928|
 |Bellek için İyileştirilmiş| 32| 125952| 251904|
 
-Bu ek sunucu parametreleri sistemde yapılandırılamaz:
+Bu ek sunucu parametreleri sistemde yapılandırılabilir değildir:
 
-|**Parametresinin**|**Sabit değer**|
+|**Parametre**|**Sabit değer**|
 | :------------------------ | :-------- |
 |Temel katmanda innodb_file_per_table|KAPALI|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Burada listelenmeyen diğer sunucu parametreleri, [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) ve [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)sürümleri için MySQL varsayılan değerlerine ayarlanır.
+Burada listelenmeyen diğer sunucu parametreleri sürümleri için MySQL kullanıma hazır varsayılan değerlerine ayarlanmış [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) ve [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
 
-## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresiyle çalışma
+## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresi ile çalışma
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarını doldurma
 
-Sunucunuzdaki saat dilimi tabloları, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçtan `az_load_timezone` saklı yordam çağırarak doldurulabilir.
+Saat dilimi tabloları sunucunuzdaki çağırarak doldurulabilir `az_load_timezone` saklı yordamdan MySQL komut satırı veya MySQL Workbench gibi bir araç.
 
 > [!NOTE]
-> MySQL çalışma modundan `az_load_timezone` komutunu çalıştırıyorsanız, önce `SET SQL_SAFE_UPDATES=0;`kullanarak güvenli güncelleştirme modunu kapatmanız gerekebilir.
+> Çalıştırıyorsanız `az_load_timezone` ilk güvenli güncelleştirme modunu kapat gerekebilir MySQL Workbench'ten komutunu kullanarak `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> Saat dilimi tablolarının doğru doldurulduğundan emin olmak için sunucuyu yeniden başlatmanız gerekir. Sunucuyu yeniden başlatmak için [Azure Portal](howto-restart-server-portal.md) veya [CLI](howto-restart-server-cli.md)kullanın.
 
 Kullanılabilir saat dilimi değerlerini görüntülemek için aşağıdaki komutu çalıştırın:
 
@@ -83,22 +86,22 @@ Kullanılabilir saat dilimi değerlerini görüntülemek için aşağıdaki komu
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Genel düzey saat dilimini ayarlama
+### <a name="setting-the-global-level-time-zone"></a>Genel bir düzeyinde saat dilimi ayarlama
 
-Genel düzey saat dilimi Azure portal **sunucu parametreleri** sayfasından ayarlanabilir. Aşağıdaki, genel saat dilimini "ABD/Pasifik" değerine ayarlar.
+Genel bir düzeyinde saat dilimi ayarlanabilir **sunucu parametreleri** Azure portalında sayfası. Değerine ayarlar genel saat dilimi aşağıda "ABD / Pasifik".
 
-![Saat dilimi parametresini ayarla](./media/howto-server-parameters/timezone.png)
+![Saat dilimi parametre kümesi](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimini ayarlama
+### <a name="setting-the-session-level-time-zone"></a>Oturum düzeyi saat dilimi ayarlama
 
-Oturum düzeyi saat dilimi, MySQL komut satırı veya MySQL çalışma ekranı gibi bir araçla `SET time_zone` komutu çalıştırılarak ayarlanabilir. Aşağıdaki örnek saat dilimini **ABD/Pasifik** saati dilimine göre ayarlar.
+Oturum düzeyi saat dilimi çalıştırarak ayarlanabilir `SET time_zone` MySQL komut satırı veya MySQL Workbench gibi bir araçla komutu. Aşağıdaki örnekte saat dilimini ayarlar **ABD / Pasifik** saat dilimi.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-[Tarih ve saat işlevleri](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz)için MySQL belgelerine bakın.
+MySQL belgeleri için başvurmak [tarih ve saat işlevleri](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [MySQL Için Azure veritabanı bağlantı kitaplıkları](concepts-connection-libraries.md).
+- [MySQL için Azure veritabanı için bağlantı kitaplıkları](concepts-connection-libraries.md).

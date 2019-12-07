@@ -1,6 +1,6 @@
 ---
 title: AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanın | Microsoft Docs
-description: Microsoft Azure Media Services kullanarak içeriğinizi AES 128 bit şifreleme anahtarlarıyla şifrelendi şekilde sunun. Media Services, yetkili kullanıcılara şifreleme anahtarları sunan anahtar teslim hizmetini de sağlar. Bu konu, AES-128 ile dinamik olarak nasıl şifreleneceğini ve anahtar teslim hizmetini nasıl kullanacağınızı gösterir.
+description: Bu konu, AES-128 ile dinamik olarak nasıl şifreleneceğini ve anahtar teslim hizmetini nasıl kullanacağınızı gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014962"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895827"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanın
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Media Services anahtar teslim hizmetini ve ayrıca dinamik şifrelemeyi kullanar
 
 5. [Bir varlık için teslim Ilkesini yapılandırın](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Teslim ilkesi yapılandırması, anahtar alma URL 'SI ve bir başlatma vektörü (IV) içerir. (AES-128 şifreleme ve şifre çözme için aynı IV gerektirir.) Yapılandırma ayrıca teslim protokolünü (örneğin, MPEG-DASH, HLS, Kesintisiz Akış veya All) ve dinamik şifreleme türünü (örneğin, zarf veya dinamik şifreleme yok) içerir.
 
-    Bir varlıktaki her bir protokole farklı birer ilke uygulayabilirsiniz. Örneğin, Kesintisiz/DASH için PlayReady şifreleme uygularken HLS için bir AES zarfı uygulayabilirsiniz. Bir teslim ilkesinde tanımlanmayan tüm protokollerin akışı engellenir. (Protokol olarak yalnızca HLS 'yi belirten tek bir ilke eklerseniz bu örnek bir örnektir.) Bunun tek istisnası, hiçbir varlık teslim ilkesinin tanımlanmadığı durumdur. Bu halde tüm protokollere açık bir şekilde izin verilir.
+    Bir varlıktaki her bir protokole farklı birer ilke uygulayabilirsiniz. Örneğin, Kesintisiz/DASH için PlayReady şifreleme uygularken HLS için bir AES zarfı uygulayabilirsiniz. Bir teslim ilkesinde tanımlanmayan tüm protokollerin akışı engellenir. (Protokol olarak yalnızca HLS 'yi belirten tek bir ilke eklerseniz bu örnek bir örnektir.) Özel durum, hiçbir varlık teslim ilkesinin tanımlanmadığında yapılır. Bu halde tüm protokollere açık bir şekilde izin verilir.
 
 6. Akış URL 'SI almak için [bir OnDemand Bulucu oluşturun](media-services-protect-with-aes128.md#create_locator) .
 
@@ -141,7 +141,7 @@ Akışınızı test etmek için [Azure Media Services Oynatıcısı](https://aka
 Önceki adımda, bir bildirim dosyasına işaret eden URL 'YI inşa edersiniz. Anahtar teslim hizmetine bir istek yapmak için istemciniz, akış bildirim dosyalarından gerekli bilgileri ayıklaması gerekir.
 
 ### <a name="manifest-files"></a>Bildirim dosyaları
-İstemci, bildirim dosyasından URL 'YI (içerik anahtar KIMLIĞI [KID] da içerir) ayıklaması gerekir. İstemci daha sonra anahtar teslim hizmetinden şifreleme anahtarını almaya çalışır. İstemcinin Ayrıca IV değerini ayıklaması ve akışın şifresini çözmek için kullanması gerekir. Aşağıdaki kod parçacığında kesintisiz akış bildiriminin `<Protection>` öğesi gösterilmektedir:
+İstemci, bildirim dosyasından URL 'YI (içerik anahtar KIMLIĞI [KID] da içerir) ayıklaması gerekir. İstemci daha sonra anahtar teslim hizmetinden şifreleme anahtarını almaya çalışır. İstemcinin Ayrıca IV değerini ayıklaması ve akışın şifresini çözmek için kullanması gerekir. Aşağıdaki kod parçacığında Kesintisiz Akış bildiriminin `<Protection>` öğesi gösterilmektedir:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ Akışınızı test etmek için [Azure Media Services Oynatıcısı](https://aka
 
 HLS söz konusu olduğunda, kök bildirimi kesim dosyalarına bozulur. 
 
-Örneğin, kök bildirimi: http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = M3U8-AAPL). Segment dosya adlarının bir listesini içerir.
+Örneğin, kök bildirimi: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = M3U8-AAPL). Segment dosya adlarının bir listesini içerir.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ HLS söz konusu olduğunda, kök bildirimi kesim dosyalarına bozulur.
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Segment dosyalarından birini bir metin düzenleyicisinde açarsanız (örneğin, http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (video, biçim = M3U8-AAPL), dosyanın şifrelendiğini belirten #EXT-X anahtarı içerir.
+Segment dosyalarından birini bir metin düzenleyicisinde açarsanız (örneğin, http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (video, biçim = M3U8-AAPL), dosyanın şifrelendiğini belirten #EXT-X anahtarını içerir.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -260,5 +260,5 @@ Değişkenleri, giriş dosyalarınızın bulunduğu klasörlere işaret edecek �
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

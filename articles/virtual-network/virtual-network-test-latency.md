@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makineleri için Azure sanal makinelerini sınama ağ gecikmesi | Microsoft Docs
+title: Azure sanal ağında Azure sanal makine ağ gecikmesini sınama | Microsoft Docs
 description: Bir sanal ağdaki Azure sanal makineler arasındaki ağ gecikmesini test etme hakkında bilgi edinin
 services: virtual-network
 documentationcenter: na
@@ -14,118 +14,123 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 760a181b4459db28d3a6eee5022cc0f984c4bee0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896369"
 ---
-# <a name="testing-network-latency"></a>Sınama ağı gecikmesi
+# <a name="test-vm-network-latency"></a>VM ağ gecikmesini sınama
 
-Görev için tasarlanan bir araçla ağ gecikme süresinin ölçülmesi en doğru sonuçları verecektir. SockPerf gibi genel kullanıma sunulan araçlar (Linux için) ve latte (Windows için), uygulama gecikmesi gibi diğer gecikme türlerini dışlarken ağ gecikmesini ayırabilecek ve ölçmeye yönelik araçların örnekleridir. Bu araçlar, TCP ve UDP gibi uygulama performansını etkileyen ağ trafiği türüne odaklanmaktadır. Ping gibi diğer yaygın bağlantı araçları bazen gecikme süresini ölçmek için kullanılabilir, ancak bu sonuçlar gerçek iş yüklerinde kullanılan ağ trafiği temsilcisi olmayabilir. Bunun nedeni, bu araçların çoğunun uygulama trafiğinden farklı şekilde işlenebileceği ıCMP protokolünü kullanmasına ve sonuçların TCP ve UDP kullanan iş yükleri için geçerli olmayabilir. Çoğu uygulama tarafından kullanılan protokollerin doğru ağ gecikmesi testi için, SockPerf (Linux için) ve latte (Windows için) en ilgili sonuçları üretir. Bu belgede bu araçların her ikisi de ele alınmaktadır.
+En doğru sonuçlara ulaşmak için, Azure sanal makinenizin (VM) ağ gecikmesini görev için tasarlanan bir araçla ölçün. SockPerf (Linux için) ve latte. exe gibi genel kullanıma sunulan araçlar (Windows için), uygulama gecikmesi gibi diğer gecikme türlerini dışlarken ağ gecikmesini yalıtabilir ve ölçebilir. Bu araçlar, uygulama performansını etkileyen ağ trafiği türüne odaklanmaktadır (yani Iletim Denetimi Protokolü [TCP] ve Kullanıcı Datagram Protokolü [UDP] trafiği). 
+
+Ping gibi diğer yaygın bağlantı araçları gecikme süresini ölçebilir, ancak sonuçları gerçek iş yüklerinde kullanılan ağ trafiğini temsil edemeyebilir. Bunun nedeni, bu araçların çoğu, uygulama trafiğinden farklı davranılan ve sonuçları TCP ve UDP kullanan iş yükleri için uygulanamadığı Internet Denetim Iletisi Protokolü 'Nü (ıCMP) kullanır. 
+
+Çoğu uygulama tarafından kullanılan protokollerin doğru ağ gecikmesi testi için, SockPerf (Linux için) ve latte. exe (Windows için) en ilgili sonuçları üretir. Bu makalede, bu araçların her ikisi de ele alınmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Biri gönderici ve diğeri alıcı olarak olmak üzere iki sanal makine kullanarak, gidiş dönüş süresini (RTT) ölçmek için her iki yönde paket göndermek ve almak üzere iki yönlü bir iletişim kanalı oluşturulur.
+Biri gönderici ve diğeri alıcı olarak olmak üzere iki VM kullanarak iki yönlü bir iletişim kanalı oluşturursunuz. Bu yaklaşımda, her iki yönde de paket gönderip alabilir ve gidiş dönüş süresini (RTT) ölçebilir.
 
-Bu adımlar, iki sanal makine (VM) ile iki fiziksel bilgisayar arasında ağ gecikmesini ölçmek için kullanılabilir. Gecikme ölçümleri aşağıdaki senaryolar için yararlı olabilir:
+İki VM arasında veya iki fiziksel bilgisayar arasında ağ gecikmesini ölçmek için bu yaklaşımı kullanabilirsiniz. Gecikme ölçümleri aşağıdaki senaryolar için yararlı olabilir:
 
-- Dağıtılan VM 'Ler arasındaki ağ gecikmesi için bir kıyaslama oluşturma
+- Dağıtılan VM 'Ler arasındaki ağ gecikmesi için bir kıyaslama noktası oluşturun.
 - Ağ gecikmesi içindeki değişikliklerin etkilerini, ilgili değişiklikler yapıldıktan sonra karşılaştırın:
-  - Yapılandırma değişiklikleri de dahil olmak üzere işletim sistemi veya ağ yığını yazılımı
-  - Bir bölgeye veya PPG 'ye dağıtma gibi VM dağıtım yöntemi
-  - Hızlandırılmış ağ veya boyut değişiklikleri gibi VM özellikleri
-  - Yönlendirme veya filtreleme değişiklikleri gibi sanal ağ
+  - Yapılandırma değişiklikleri dahil olmak üzere işletim sistemi (OS) veya ağ yığını yazılımı.
+  - Bir kullanılabilirlik bölgesine veya yakınlık yerleşimi grubuna (PPG) dağıtım gibi bir VM dağıtım yöntemi.
+  - Hızlandırılmış ağ veya boyut değişiklikleri gibi VM özellikleri.
+  - Yönlendirme veya filtreleme değişiklikleri gibi bir sanal ağ.
 
 ### <a name="tools-for-testing"></a>Test araçları
-Gecikme süresini ölçmek için, biri Windows tabanlı sistemler için ve Linux tabanlı sistemler için olmak üzere iki farklı seçeneğe sahipsiniz
+Gecikme süresini ölçmek için iki farklı araç seçeneğiniz vardır:
 
-Windows için: latte. exe (Windows) [https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Windows tabanlı sistemler için: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Linux tabanlı sistemler için: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
-Linux için: SockPerf (Linux) [https://github.com/mellanox/sockperf](https://github.com/mellanox/sockperf)
+Bu araçları kullanarak, yalnızca TCP veya UDP yük teslim sürelerinin, uygulamalar tarafından kullanılmayan, ıCMP (ping) veya diğer paket türlerini ölçtüğüyle ve performanslarını etkilemediğinden emin olmanıza yardımcı olursunuz.
 
-Bu araçların kullanılması, yalnızca TCP veya UDP yükü teslim sürelerinin, uygulamalar tarafından kullanılmamış olan veya ıCMP (ping) ya da diğer paket türlerini ölçmesini sağlar ve performanslarını etkilemez.
+### <a name="tips-for-creating-an-optimal-vm-configuration"></a>En iyi VM yapılandırması oluşturmaya yönelik ipuçları
 
-### <a name="tips-for-an-optimal-vm-configuration"></a>En iyi VM yapılandırmasına yönelik ipuçları:
-
-- Windows veya Linux 'un en son sürümünü kullanma
-- En iyi sonuçlar için hızlandırılmış ağı etkinleştirin
-- [Azure yakınlık yerleşimi grubuyla](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) VM 'leri dağıtma
-- Daha büyük VM 'ler genellikle daha küçük VM 'lerden daha iyi gerçekleştirilir
+VM yapılandırmanızı oluşturduğunuzda aşağıdaki önerileri göz önünde bulundurun:
+- Windows veya Linux 'un en son sürümünü kullanın.
+- En iyi sonuçlar için hızlandırılmış ağı etkinleştirin.
+- Bir [Azure yakınlık yerleşimi grubuyla](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)VM 'leri dağıtın.
+- Daha büyük VM 'ler genellikle daha küçük VM 'lerden daha iyi gerçekleştirilir.
 
 ### <a name="tips-for-analysis"></a>Analiz ipuçları
 
-- Dağıtım, yapılandırma ve iyileştirmeler tamamlandıktan hemen sonra bir taban çizgisi oluşturun
-- Yeni sonuçları her zaman bir taban çizgisi ile karşılaştırın veya diğer bir testten, denetimli değişikliklerle diğerine karşılaştırın
-- Değişiklikler gözlemlendiğinde veya planlanarak testleri Yinele
+Test sonuçlarını analiz ettiğiniz için aşağıdaki önerileri göz önünde bulundurun:
+
+- Dağıtım, yapılandırma ve iyileştirmeler tamamlandıktan hemen sonra bir taban çizgisi oluşturun.
+- Yeni sonuçları her zaman bir taban çizgisine veya diğer bir testten, denetimli değişikliklerle diğerine karşılaştırın.
+- Değişiklikler her gösterildiğinde veya planlanarak testleri tekrarlayın.
 
 
-## <a name="testing-vms-running-windows"></a>Windows çalıştıran VM 'Leri test etme
+## <a name="test-vms-that-are-running-windows"></a>Windows çalıştıran VM 'Leri test etme
 
-## <a name="get-latteexe-onto-the-vms"></a>Sanal makinelere latte. exe dosyasını alın
+### <a name="get-latteexe-onto-the-vms"></a>Sanal makinelere latte. exe dosyasını alın
 
-En son sürümü indirin: [https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+[Latte. exe ' nin en son sürümünü](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)indirin.
 
-Latte. exe dosyasını c:\Tools gibi ayrı bir klasöre yerleştirmeyi düşünün
+Latte. exe *dosyasını c:\Tools*gibi ayrı bir klasöre yerleştirmeyi düşünün.
 
-## <a name="allow-latteexe-through-the-windows-firewall"></a>Windows Güvenlik Duvarı aracılığıyla latte. exe ' ye izin ver
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>Windows Defender güvenlik duvarı aracılığıyla latte. exe ' ye izin ver
 
-ALıCı üzerinde, latte. exe trafiğinin gelmesini sağlamak için Windows güvenlik duvarında bir Izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine, tüm latte. exe programının adına göre kullanılmasına izin vermek en kolay yoldur.
+*Alıcının*, latte. exe trafiğinin gelmesini sağlamak Için Windows Defender güvenlik duvarı 'Nda bir izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine, tüm latte. exe programının adına göre kullanılmasına izin vermek en kolay yoldur.
 
-Windows Güvenlik Duvarı aracılığıyla şu şekilde latte. exe ' ye izin verin:
-
-netsh advfirewall firewall add rule program =\<PATH\>\\latte. exe adı =&quot;latte&quot; Protocol = any dir = in Action = Allow Enable = Yes profile = ANY
-
-
-Örneğin, latte. exe ' yi &quot;c:\\araçları&quot; klasörüne kopyaladıysanız, bu komut şu şekilde olur:
+Aşağıdaki komutu çalıştırarak Windows Defender güvenlik duvarı aracılığıyla latte. exe ' ye izin verin:
 
 ```cmd
-netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-## <a name="running-latency-tests"></a>Gecikme süresi testleri çalıştırma
+Örneğin, latte. exe *dosyasını c:\Tools* klasörüne kopyaladıysanız şu komut olacaktır:
 
-ALıCı üzerinde latte. exe dosyasını başlatın (PowerShell 'den değil, CMD 'den çalıştırın):
+`netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-Latte-bir &lt;alıcı IP adresi&gt;:&lt;bağlantı noktası&gt;-i &lt;yinelemeleri&gt;
+### <a name="run-latency-tests"></a>Gecikme testleri çalıştırma
 
-Alanlarda 65.000 yinelemelerinin çevresinde, temsilci sonuçları döndürmek için yeterince uzun.
+* *Alıcıda*, latte. exe ' yi başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
 
-Kullanılabilir herhangi bir bağlantı noktası numarası iyidir.
+    ```cmd
+    latte -a <Receiver IP address>:<port> -i <iterations>
+    ```
 
-VM 'nin IP adresi 10.0.0.4 ise şöyle görünür:
+    65.000 ' den fazla yineleme, temsilci sonuçları döndürmek için yeterince uzun.
 
-```cmd
-latte -a 10.0.0.4:5005 -i 65100
-```
+    Kullanılabilir herhangi bir bağlantı noktası numarası iyidir.
 
-Gönderen üzerinde latte. exe dosyasını başlatın (PowerShell 'den değil, CMD 'den çalıştırın):
+    VM 'nin IP adresi 10.0.0.4 ise, komut şöyle görünür:
 
-Latte-c-a \<alıcı IP adresi\>:\<bağlantı noktası\>-i \<yinelemeleri\>
+    `latte -a 10.0.0.4:5005 -i 65100`
 
+* *Gönderen*üzerinde, latte. exe ' yi başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
 
-Elde edilen komut, bu &quot;istemci&quot; veya gönderici olduğunu göstermek için &quot;-c&quot; eklenmesi hariç alıcı ile aynıdır:
+    ```cmd
+    latte -c -a <Receiver IP address>:<port> -i <iterations>
+    ```
 
-```cmd
-latte -c -a 10.0.0.4:5005 -i 65100
-```
+    Elde edilen komut, bu *istemci*veya *gönderici*olduğunu göstermek için&nbsp; *-c* ' nin eklenmesi dışında, alıcı ile aynıdır:
 
-Sonuçları bekle. VM 'Lerin ne kadar uzaklıkta olduğuna bağlı olarak, tamamlanması birkaç dakika sürebilir. Daha uzun testleri çalıştırmadan önce başarı için test etmek üzere daha az yinelemeden başlamak isteyebilirsiniz.
+    `latte -c -a 10.0.0.4:5005 -i 65100`
 
+Sonuçları bekle. VM 'Lerin ne kadar uzaklıkta olduğuna bağlı olarak, testin tamamlanması birkaç dakika sürebilir. Daha uzun testleri çalıştırmadan önce başarı için test etmek üzere daha az yinelemeden başlamak isteyebilirsiniz.
 
+## <a name="test-vms-that-are-running-linux"></a>Linux çalıştıran VM 'Leri test etme
 
-## <a name="testing-vms-running-linux"></a>Linux çalıştıran VM 'Leri test etme
-
-SockPerf kullanın. [https://github.com/mellanox/sockperf](https://github.com/mellanox/sockperf) kullanılabilir
+Linux çalıştıran VM 'Leri test etmek için [SockPerf](https://github.com/mellanox/sockperf)kullanın.
 
 ### <a name="install-sockperf-on-the-vms"></a>VM 'Lere SockPerf 'i yükler
 
-Linux VM 'lerinde (Gönderen ve alıcı), sanal makinelerinize SockPerf hazırlamak için şu komutları çalıştırın. Ana distrolar için komutlar sağlanır.
+Linux VM 'lerinde hem *gönderici* hem de *alıcı*, VM 'lerde SockPerf hazırlamak için aşağıdaki komutları çalıştırın. Ana distrolar için komutlar sağlanır.
 
-#### <a name="for-rhel--centos-follow-these-steps"></a>RHEL/CentOS için şu adımları izleyin:
+#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Red Hat Enterprise Linux için (RHEL)/CentOS
+
+Aşağıdaki komutları çalıştırın:
+
 ```bash
-#CentOS / RHEL - Install GIT and other helpful tools
+#RHEL/CentOS - Install Git and other helpful tools
     sudo yum install gcc -y -q
     sudo yum install git -y -q
     sudo yum install gcc-c++ -y
@@ -134,9 +139,12 @@ Linux VM 'lerinde (Gönderen ve alıcı), sanal makinelerinize SockPerf hazırla
     sudo yum install -y autoconf
 ```
 
-#### <a name="for-ubuntu-follow-these-steps"></a>Ubuntu için şu adımları izleyin:
+#### <a name="for-ubuntu"></a>Ubuntu için
+
+Aşağıdaki komutları çalıştırın:
+
 ```bash
-#Ubuntu - Install GIT and other helpful tools
+#Ubuntu - Install Git and other helpful tools
     sudo apt-get install build-essential -y
     sudo apt-get install git -y -q
     sudo apt-get install -y autotools-dev
@@ -144,11 +152,14 @@ Linux VM 'lerinde (Gönderen ve alıcı), sanal makinelerinize SockPerf hazırla
     sudo apt-get install -y autoconf
 ```
 
-#### <a name="for-all-distros-copy-compile-and-install-sockperf-according-to-the-following-steps"></a>Tüm kaldırmalar için, SockPerf aşağıdaki adımlara göre kopyalayın, derleyin ve yükleyemezsiniz:
+#### <a name="for-all-distros"></a>Tüm kaldırmalar için
+
+Aşağıdaki adımlara göre SockPerf kopyalayın, derleyin ve yüklersiniz:
+
 ```bash
 #Bash - all distros
 
-#From bash command line (assumes git is installed)
+#From bash command line (assumes Git is installed)
 git clone https://github.com/mellanox/sockperf
 cd sockperf/
 ./autogen.sh
@@ -163,30 +174,33 @@ sudo make install
 
 ### <a name="run-sockperf-on-the-vms"></a>VM 'lerde SockPerf çalıştırma
 
-SockPerf yüklemesi tamamlandıktan sonra, sanal makineler gecikme testlerini çalıştırmaya hazırlardır. 
+SockPerf yüklemesi tamamlandıktan sonra, sanal makineler gecikme testlerini çalıştırmaya hazırdır. 
 
-İlk olarak, alıcı üzerinde SockPerf başlatın.
+İlk olarak, *alıcı*üzerinde SockPerf başlatın.
 
-Kullanılabilir herhangi bir bağlantı noktası numarası iyidir. Bu örnekte 12345 numaralı bağlantı noktasını kullanacağız:
+Kullanılabilir herhangi bir bağlantı noktası numarası iyidir. Bu örnekte, 12345 numaralı bağlantı noktasını kullanacağız:
+
 ```bash
 #Server/Receiver - assumes server's IP is 10.0.0.4:
 sudo sockperf sr --tcp -i 10.0.0.4 -p 12345
 ```
-Sunucu dinlerken, istemci, dinlediği bağlantı noktasında sunucuya paket göndermeye başlayabilir, bu durumda 12345.
+
+Sunucu dinlerken, istemci, dinlediği bağlantı noktasında sunucuya paket göndermeye başlayabilir (Bu durumda, 12345).
 
 Aşağıdaki örnekte gösterildiği gibi, 100 saniye hakkında, temsilci sonuçları döndürmek için yeterince uzun.
+
 ```bash
 #Client/Sender - assumes server's IP is 10.0.0.4:
 sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 ```
 
-Sonuçları bekle. VM 'Lerin ne kadar uzakta olduğuna bağlı olarak, yineleme sayısı farklılık gösterecektir. Daha uzun testleri çalıştırmadan önce başarılı olup olmadığını sınamak için 5 saniyelik daha kısa testler gerçekleştirmeyi deneyin.
+Sonuçları bekle. VM 'Lerin ne kadar uzakta olduğuna bağlı olarak, yineleme sayısı farklılık gösterecektir. Daha uzun testler çalıştırmadan önce başarılı olup olmadığını test etmek için yaklaşık 5 saniyelik daha kısa testler kullanmayı deneyin.
 
-Bu SockPerf örnek, tipik bir ortalama boyut paketi olduğundan 350 baytlık ileti boyutu kullanır. İleti boyutu, VM 'lerde çalışacak iş yükünü daha doğru bir şekilde temsil eden sonuçlara ulaşmak için daha yüksek veya daha düşük bir şekilde ayarlanabilir.
+Bu SockPerf örneği, ortalama bir paket için tipik bir 350 baytlık ileti boyutu kullanır. Sanal makinelerinizdeki çalışan iş yükünü daha doğru şekilde temsil eden sonuçlara ulaşmak için boyutu daha yüksek veya daha düşük olarak ayarlayabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure yakınlık yerleşimi grubuyla](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) gecikme süresini iyileştirme
-* Senaryonuza yönelik [VM 'lerin ağ için nasıl Iyileştirileceği](../virtual-network/virtual-network-optimize-network-bandwidth.md) hakkında bilgi edinin.
-* [Bant genişliğinin sanal makinelere nasıl ayrıldığı](../virtual-network/virtual-machine-network-throughput.md) hakkında bilgi edinin
-* [Azure sanal ağ hakkında sık sorulan sorular (SSS)](../virtual-network/virtual-networks-faq.md) hakkında daha fazla bilgi edinin
+* Bir [Azure yakınlık yerleşimi grubuyla](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)gecikme süresini geliştirir.
+* Senaryonuza yönelik [VM 'lerin ağ iletişimini nasıl iyileştireceğinizi](../virtual-network/virtual-network-optimize-network-bandwidth.md) öğrenin.
+* [Bant genişliğinin sanal makinelere nasıl ayrıldığı](../virtual-network/virtual-machine-network-throughput.md)hakkında bilgi edinin.
+* Daha fazla bilgi için bkz. [Azure sanal ağ hakkında SSS](../virtual-network/virtual-networks-faq.md).

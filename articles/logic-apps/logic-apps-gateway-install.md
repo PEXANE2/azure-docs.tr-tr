@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792104"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893713"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
@@ -49,7 +49,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
   **Minimum gereksinimler**
 
   * .NET Framework 4.7.2
-  * Windows 7 veya Windows Server 2008 R2 64-bit sürümü (veya üzeri)
+  * Windows 7'nin veya Windows Server 2008 R2'nin 64 bit sürümü (veya sonraki bir sürüm)
 
   **Önerilen gereksinimler**
 
@@ -86,14 +86,6 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 1. [Ağ geçidi yükleyicisini yerel bir bilgisayarda indirip çalıştırın](https://aka.ms/on-premises-data-gateway-installer).
 
-1. Yükleyici açıldıktan sonra **İleri**' yi seçin.
-
-   ![Ağ Geçidi yükleyicisi için giriş ekranı](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. Standart mod olan **Şirket içi veri ağ geçidini (önerilen)** seçin ve ardından **İleri**' yi seçin.
-
-   ![Veri ağ geçidi için çalıştırma modunu seçin](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
-
 1. En düşük gereksinimleri gözden geçirin, varsayılan yükleme yolunu koruyun, kullanım koşullarını kabul edin ve ardından **yükleme**' yi seçin.
 
    ![Gereksinimleri gözden geçirin ve kullanım koşullarını kabul edin](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
@@ -104,7 +96,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
    Ağ Geçidi yüklemeniz yalnızca bir Azure hesabına bağlanabilir.
 
-1. **İleri** > **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
+1. **Bu bilgisayara yeni bir ağ geçidi kaydedin** > **İleri**’yi seçin. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
 
    ![Ağ geçidini yerel bilgisayara kaydet](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -196,7 +188,7 @@ Bir Azure AD kiracısındaki tüm şirket içi veri ağ geçitlerine ilişkin g�
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Ağ geçidini yeniden Başlat
+## <a name="restart-gateway"></a>Ağ geçidini yeniden başlatma
 
 Varsayılan olarak, yerel bilgisayarınızdaki ağ geçidi yüklemesi "Şirket içi veri ağ geçidi hizmeti" adlı bir Windows hizmet hesabı olarak çalışır. Ancak ağ geçidi yüklemesi, "oturum aç" hesabı kimlik bilgileri için `NT SERVICE\PBIEgwService` adını kullanır ve "hizmet olarak oturum aç" izinlerine sahiptir.
 
@@ -207,7 +199,7 @@ Diğer herhangi bir Windows hizmeti gibi, ağ geçidini çeşitli yollarla başl
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Ağ geçidinin çalışması
+## <a name="how-the-gateway-works"></a>Ağ geçidi nasıl çalışır?
 
 Kuruluşunuzdaki kullanıcılar, erişim izni olan şirket içi verilere erişebilir. Ancak, bu kullanıcıların şirket içi veri kaynağınıza bağlanabilmesi için bir şirket içi veri ağ geçidini yüklemeniz ve ayarlamanız gerekir. Genellikle yönetici, bir ağ geçidini yükleyen ve ayarlayan kişidir. Bu eylemler, Sunucu Yöneticisi izinleri veya şirket içi sunucularınız hakkında özel bilgi gerektirebilir.
 
@@ -246,7 +238,7 @@ Microsoft bulut Hizmetleri, kullanıcıların kimliğini doğrulamak için [Azur
 
 Bir etki alanı yöneticisi değilseniz, UPN 'nizi bilmiyor olabilirsiniz. Hesabınızın UPN 'sini bulmak için iş istasyonunuzdan `whoami /upn` komutunu çalıştırın. Sonuç bir e-posta adresi gibi görünse de sonuç, yerel etki alanı hesabınızın UPN 'si olur.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Şirket içi Active Directory Azure AD ile eşitlemeyi
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Bir şirket içi Active Directory hesabını Azure AD ile eşitleme
 
 Şirket içi Active Directory hesaplarınız ve Azure AD hesaplarınız için UPN aynı olmalıdır. Bu nedenle, her şirket içi Active Directory hesabının Azure AD hesabınızla eşleştiğinden emin olun. Bulut hizmetleri yalnızca Azure AD içindeki hesaplar hakkında bilgi sahibi. Bu nedenle, şirket içi Active Directory hesap eklemeniz gerekmez. Hesap Azure AD 'de yoksa, bu hesabı kullanamazsınız.
 
@@ -270,7 +262,7 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 Daha fazla bilgi için şu konulara bakın:
 
 * [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Şirket içi veri ağ geçidi sorunlarını giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Ağ Geçidi performansını izleme ve iyileştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar

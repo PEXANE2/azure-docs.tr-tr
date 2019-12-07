@@ -10,30 +10,30 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671511"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894754"
 ---
-# <a name="simple-entity"></a>Basit varlık 
+# <a name="simple-entity"></a>Basit varlık
 
-Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenilen bağlamdan öğrenilmiş genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken bir [tümcecik listesi](luis-concept-feature.md) ekleyin. 
+Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenilen bağlamdan öğrenilmiş genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken bir [tümcecik listesi](luis-concept-feature.md) ekleyin.
 
 **Varlık, şu durumlarda iyi bir uyum:**
 
-* Veriler sürekli olarak biçimlendirilmemiştir ancak aynı şeyi gösterir. 
+* Veriler sürekli olarak biçimlendirilmemiştir ancak aynı şeyi gösterir.
 
-![Basit varlık](./media/luis-concept-entities/simple-entity.png)
+![varlığın](./media/luis-concept-entities/simple-entity.png)
 
 ## <a name="example-json"></a>Örnek JSON
 
 `Bob Jones wants 3 meatball pho`
 
-Önceki deymede, `Bob Jones` basit bir `Customer` varlık olarak etiketlendi.
+Önceki utterance içinde `Bob Jones` basit etiketlenmiş `Customer` varlık.
 
-Uç noktadan döndürülen veriler varlık adını, utterance 'teki bulunan metni, bulunan metnin konumunu ve puanı içerir:
+Uç noktadan döndürülen veriler, varlık adı, utterance bulunan metni, bulunan metin ve puan konumunu içerir:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -86,12 +86,13 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
 |Veri nesnesi|Varlık adı|Değer|
 |--|--|--|
-|Basit varlık|`Customer`|`bob jones`|
+|Varlığın|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](luis-quickstart-primary-and-secondary-data.md), **basit varlığı**kullanarak bir noktadan itibaren iş işi adının makineye öğrenilen verilerini ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özel terimlerin [tümcecik listesini](luis-concept-feature.md) ekleyin.
+> [!div class="nextstepaction"]
+> [Model sözdizimini öğrenin](reference-pattern-syntax.md)

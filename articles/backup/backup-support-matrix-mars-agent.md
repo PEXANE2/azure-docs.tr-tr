@@ -3,12 +3,12 @@ title: MARS Aracısı için destek matrisi
 description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı çalıştıran makineleri yedeklerken Azure Backup desteği özetlenmektedir.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74194996"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893986"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -45,7 +45,7 @@ Verileri yedeklemek için MARS Aracısı 'nı kullandığınızda, aracı verile
 --- | ---
 Boyut |  Önbellek klasöründeki boş alan, yedekleme verilerinizin genel boyutunun en az 5 ila yüzde 10 olması gerekir.
 Konum | Önbellek klasörünün yedeklenmekte olan makinede yerel olarak depolanması ve çevrimiçi olması gerekir. Önbellek klasörü bir ağ paylaşımında, çıkarılabilir medyada veya çevrimdışı bir birimde olmalıdır.
-Klasör | Önbellek klasörü, yinelenenleri kaldırılmış bir birimde veya sıkıştırılmış, bu seyrek olan veya bir yeniden ayrıştırma noktası olan bir klasörde şifrelenmelidir.
+Klasör | Önbellek klasörü, yinelenenleri kaldırılmış bir birimde veya sıkıştırılmış, bu seyrek olan veya bir yeniden ayrıştırma noktası olan bir klasörde şifrelenmemelidir.
 Konum değişiklikleri | Yedekleme altyapısını (`net stop bengine`) durdurup önbellek klasörünü yeni bir sürücüye kopyalayarak önbellek konumunu değiştirebilirsiniz. (Yeni sürücüde yeterli alan olduğundan emin olun.) Ardından, **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/Scratchlocation** ve **config/CloudBackupProvider/scratchlocation**) altındaki iki kayıt defteri girişini yeni konuma güncelleştirin ve altyapıyı yeniden başlatın.
 
 ## <a name="networking-and-access-support"></a>Ağ ve erişim desteği
@@ -72,7 +72,7 @@ Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443
 **Özellik** | **Ayrıntılar**
 --- | ---
 Bant genişliği denetimi | Destekleniyor. MARS aracısında, bant genişliğini ayarlamak için **Özellikleri Değiştir** ' i kullanın.
-Ağ azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
+Ağ kapasitesi azaltma | Windows Server 2008 R2, Windows Server 2008 SP2 veya Windows 7 çalıştıran yedeklenen makinelerde kullanılamaz.
 
 ## <a name="support-for-direct-backups"></a>Doğrudan yedeklemeler için destek
 
@@ -126,7 +126,7 @@ Sabit bağlantılar| Desteklenmiyor. Atlanmış.
 Yeniden ayrıştırma noktası| Desteklenmiyor. Atlanmış.
 Şifrelenmiş ve seyrek |Desteklenmiyor. Atlanmış.
 Sıkıştırılmış akış| Desteklenmiyor. Atlanmış.
-Seyrek akış| Desteklenmiyor. Atlanmış.
+Aralıklı akış| Desteklenmiyor. Atlanmış.
 OneDrive (eşitlenen dosyalar seyrek akışlardır)| Desteklenmiyor.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Yedekleme için desteklenen sürücüler veya birimler
@@ -139,7 +139,7 @@ Ağ paylaşma| Desteklenmiyor |Birimin sunucuda yerel olması gerekir.
 BitLocker-kilitli birimler| Desteklenmiyor |Yedekleme başlamadan önce birimin kilidi açılmış olmalıdır.
 Dosya sistemi kimliği| Desteklenmiyor |Yalnızca NTFS desteklenir.
 Çıkarılabilir medya| Desteklenmiyor |Tüm yedekleme öğesi kaynakları *sabit* bir duruma sahip olmalıdır.
-Yinelenenleri kaldırılmış sürücüler | Destekleniyor | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.
+Yinelenenleri kaldırılmış sürücüler | Desteklenen | Azure Backup yinelenenleri kaldırılmış verileri normal verilere dönüştürür. Verileri en iyi duruma getirir, şifreler, depolar ve verileri kasaya gönderir.
 
 ## <a name="support-for-initial-offline-backup"></a>İlk çevrimdışı yedekleme desteği
 

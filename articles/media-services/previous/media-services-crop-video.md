@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard-Azure ile videoları kırpma | Microsoft Docs
-description: Bu makalede videoların Media Encoder Standard nasıl kırpılacağını gösterir.
+description: Kırpma, video çerçevesi içinde dikdörtgen bir pencere seçme ve yalnızca bu penceredeki pikselleri kodlama işlemidir. Bu makalede, Media Encoder Standard ile videoların nasıl kırpılacağını gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016620"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887773"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard ile videoları kırpma  
 
@@ -137,7 +137,7 @@ Aşağıdaki kısıtlamalar kırpma özelliği için geçerlidir. Bunlar karşı
 3. Kırpma, yatay modda yakalanan videolar için geçerlidir (örn. dikey olarak veya dikey modda tutulan bir akıllı telefonlarla Kaydedilen videoların geçerli olmadığı)
 4. Kare pikselleriyle yakalanan ilerleyen videolar ile en iyi şekilde geçerlidir
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Sonraki adım

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Analytics yüzeyleri redaksiyonu Microsoft Docs
-description: Bu konu başlığı altında, Azure Medya Analizi ile yüzlerin nasıl redaksiyonu gösterilmektedir.
+description: Azure Media Redactor, bulutta ölçeklenebilir yüz redaksiyon sağlayan bir Azure Media Analytics medya işlemcisidir. Bu makalede, Azure Medya Analizi ile yüzleri nasıl redaksiyonun yapılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016025"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900309"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics ile yüzeyleri redaksiyonu 
 ## <a name="overview"></a>Genel Bakış
@@ -27,14 +27,14 @@ ms.locfileid: "69016025"
 Bu makale, **Azure Media Redactor** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
 
 ## <a name="face-redaction-modes"></a>Yüz redaksiyon modları
-Yüz Redaksiyon, her video çerçevesindeki yüzleri algılayarak ve yüz nesnesini aynı anda ileri ve geri doğru şekilde izlerken, aynı bireyin diğer açılardan de bulanıklaşır. Otomatik redaksiyon süreci karmaşıktır ve istenen çıktının her zaman% 100 ' unu üretmez. bu nedenle Media Analytics, nihai çıktıyı değiştirmek için birkaç yol sağlar.
+Yüz Redaksiyon, her video çerçevesindeki yüzleri algılayarak ve yüz nesnesini aynı anda ileri ve geri doğru şekilde izlerken, aynı bireyin diğer açılardan de bulanıklaşır. Otomatik redaksiyon süreci karmaşıktır ve istenen çıktının her zaman %100 ' unu üretmez. bu nedenle Media Analytics, nihai çıktıyı değiştirmek için birkaç yol sağlar.
 
 Tam otomatik moda ek olarak, bir kimlik listesi aracılığıyla bulunan yüzlerin seçimine/seçilmesine izin veren iki taramalı bir iş akışı vardır. Ayrıca, her çerçeve için rastgele ayarlama yapmak üzere MP, JSON biçiminde bir meta veri dosyası kullanır. Bu iş akışı **analiz** ve **redakct** modlarına bölünür. İki modu, her iki görevi de tek bir işte çalıştıran tek bir geçişte birleştirebilirsiniz; Bu mod **Birleşik**olarak adlandırılır.
 
 ### <a name="combined-mode"></a>Birleşik mod
 Bu, el ile herhangi bir girdi olmadan redaksiyonu otomatik olarak oluşturur.
 
-| Aşama | Dosya Adı | Notlar |
+| Stage | Dosya Adı | Notlar |
 | --- | --- | --- |
 | Giriş varlığı |foo. Bar |WMV, har veya MP4 biçimindeki video |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Birleşik '}} |
@@ -49,7 +49,7 @@ Bu, el ile herhangi bir girdi olmadan redaksiyonu otomatik olarak oluşturur.
 ### <a name="analyze-mode"></a>Çözümleme modu
 İki taramalı iş akışının **Çözümle** geçişi bir video girişi alır ve algılanan her bir yüz IÇIN bir JSON dosyası ve bir dizi görüntü oluşturur.
 
-| Aşama | Dosya Adı | Notlar |
+| Stage | Dosya Adı | Notlar |
 | --- | --- | --- |
 | Giriş varlığı |foo. Bar |WMV, MPV veya MP4 biçimindeki video |
 | Giriş yapılandırması |İş yapılandırması önayarı |{' version ': ' 1.0 ', ' Seçenekler ': {' Mode ': ' Analyze '}} |
@@ -114,7 +114,7 @@ Bu, bulanıklaştırmak üzere bir kimlik listesi, özgün video ve ek açıklam
 
 Analiz geçişinin çıktısı özgün videoyu içermez. Videonun, Redakct modu görevi için giriş varlığına yüklenmesi ve birincil dosya olarak seçilmesi gerekir.
 
-| Aşama | Dosya Adı | Notlar |
+| Stage | Dosya Adı | Notlar |
 | --- | --- | --- |
 | Giriş varlığı |foo. Bar |WMV, MPV veya MP4 biçimindeki video. 1\. adımdaki ile aynı video. |
 | Giriş varlığı |foo_annotations.json |isteğe bağlı değişiklikler ile birinci aşamadan sonra gelen açıklama meta verileri dosyası. |
@@ -135,7 +135,7 @@ Bu, bir ID seçili olan bir ıdlist öğesinden alınan çıktıdır.
 
 ## <a name="blur-types"></a>Bulanıklaştırma türleri
 
-**Birleşik** veya **REDAKCT** modunda, JSON giriş yapılandırması aracılığıyla aralarından seçim yapabileceğiniz 5 farklı bulanıklaştırma modu vardır: **Düşük**, **Med**, **yüksek**, **kutu**ve **Siyah**. Varsayılan olarak **Med** kullanılır.
+**Birleşik** veya **REDAKCT** modunda, JSON giriş yapılandırması aracılığıyla seçebileceğiniz 5 farklı bulanıklaştırma modu vardır: **düşük**, **Med**, **High**, **Box**ve **Black**. Varsayılan olarak **Med** kullanılır.
 
 Aşağıdaki bulanıklaştırma türlerinin örneklerini bulabilirsiniz.
 
@@ -367,7 +367,7 @@ namespace FaceRedaction
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

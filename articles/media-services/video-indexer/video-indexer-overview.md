@@ -1,7 +1,7 @@
 ---
 title: Video Indexer nedir?
 titleSuffix: Azure Media Services
-description: Azure Media Services Video Indexer hizmetine genel bakış.
+description: Bu makale, Azure Media Services Video Indexer hizmetine genel bir bakış sunar.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575105"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892711"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
@@ -33,7 +33,7 @@ Video Indexer içgörüler aşağıdakiler arasında birçok senaryoya uygulanab
 
 * *Derin arama*: video kitaplığı genelinde arama deneyimini geliştirmek için videodan ayıklanan öngörüleri kullanın. Örneğin, konuşulan sözcüklerin ve yüzlerin dizininin oluşturulması, bir kişinin belirli kelimeleri veya iki kişinin birlikte görüldüğü bir videoda dakika bulmayla ilgili arama deneyimini etkinleştirebilir. Videolardan bu tür Öngörüler temelinde arama, haber kurumları, eğitim kurum, yayımcılar, eğlence içerik sahipleri, kurumsal LOB uygulamaları ve genel olarak, kullanıcıların aramaları gereken bir video kitaplığı olan herhangi bir sektör için geçerlidir.
 * *İçerik oluşturma*: İçeriğinizden çıkaran öngörülere göre, daha fazla bilgi video Indexer edinin, Re, sosyal medya içeriğini veya haberleri vurgulayın. Kişiler ve etiket görünümleri için ana kareler, sahneler işaretçileri ve zaman damgaları oluşturma işlemini çok daha yumuşak ve daha kolay hale getirir ve oluşturmakta olduğunuz içerik için ihtiyacınız olan videonun bölümlerine almanızı sağlar.
-* *Erişilebilirlik*: içeriğinizi Engelli kişiler için kullanılabilir hale getirmek isteyip istemediğinizi veya içeriğinizi farklı diller kullanılarak farklı bölgelere dağıtmak istiyorsanız, video tarafından sağlanan dökümü ve çeviriyi kullanabilirsiniz birden çok dilde Dizin Oluşturucu.
+* *Erişilebilirlik*: içeriğinizi Engelli kişiler için kullanılabilir hale getirmek isteyip istemediğinizi veya içeriğinizi farklı diller kullanılarak farklı bölgelere dağıtmak istiyorsanız, video Indexer tarafından sağlanan döküm ve çeviriyi birden çok dilde kullanabilirsiniz.
 * Paraya *getirme: video Indexer*videoların değerini artırmaya yardımcı olabilir. Örneğin, ad gelirini (haber medyası, sosyal medya vb.) kullanan sektörler, ayıklanan öngörüleri ad sunucusuna ek sinyaller olarak kullanarak, ilgili reklamları sunabilir.
 * *İçerik denetleme*: kullanıcılarınızın uygunsuz içeriklerden güvenli kalmasını sağlamak ve yayımladığınız içeriğin kuruluşunuzun değerleriyle eşleştiğinden emin olmak için metin ve görsel içerik denetleme modellerini kullanın. Belirli videoları otomatik olarak bloke edebilir veya içeriğinizi içerik hakkında uyarır.
 * *Öneriler*: video öngörüleri, kullanıcılara ilgili video dakikanızı ayırarak kullanıcı etkileşimini geliştirmek için kullanılabilir. Her videoyu ek meta verilerle etiketleyerek, kullanıcılara en uygun Videoları ve bunların ihtiyaçlarını karşılayacak şekilde videonun parçalarını vurgulamanız önerilir.

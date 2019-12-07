@@ -1,5 +1,5 @@
 ---
-title: Örnekler & izlenecek yollar
+title: Örnek programlar & ML izlenecek yolları
 titleSuffix: Azure Data Science Virtual Machine
 description: Bu örnekler ve izlenecek yollar sayesinde, Veri Bilimi Sanal Makinesi ortak görevleri ve senaryoları nasıl işleyeceğinizi öğrenin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802449"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900040"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde örnekler
 

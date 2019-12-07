@@ -4,17 +4,17 @@ description: Azure depolama, verilerinizi buluta kalıcı yapmadan önce otomati
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 11/26/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 63fa30b4cf4c5887e8fb44b357eb22e55fe230e7
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666146"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895140"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure depolama şifrelemesi
 
@@ -38,7 +38,7 @@ Azure depolama şifrelemesini temel alan şifreleme modülleri hakkında daha fa
 
 Depolama hesabınızın şifrelenmesi için Microsoft tarafından yönetilen anahtarları kullanabilir veya kendi anahtarınızla şifrelemeyi yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz iki seçeneğiniz vardır:
 
-- Depolama hesabındaki tüm verileri şifrelemek ve şifrelerini çözmek için kullanmak üzere Azure Key Vault ile *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. Bir müşteri tarafından yönetilen anahtar, Depolama hesabınızdaki tüm hizmetlerde tüm verileri şifrelemek için kullanılır.
+- Blob depolamada ve Azure dosyalarında verileri şifrelemek ve şifrelerini çözmek için Azure Key Vault ile *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz.
 - BLOB depolama işlemlerinde, *müşteri tarafından sağlanmış bir anahtar* belirtebilirsiniz. Blob depolamaya karşı okuma veya yazma isteği yapan bir istemci, blob verilerinin şifrelenme ve şifresinin çözülmesi üzerinde ayrıntılı denetim isteğine yönelik bir şifreleme anahtarı içerebilir.
 
 Aşağıdaki tabloda, Azure depolama şifrelemesi için anahtar yönetim seçenekleri karşılaştırılmaktadır.
@@ -62,7 +62,7 @@ Varsayılan olarak, depolama hesabınız Microsoft tarafından yönetilen şifre
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
 
-Azure depolama şifrelemesini, kendi anahtarlarınızın bulunduğu depolama hesabı düzeyinde yönetebilirsiniz. Depolama hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar BLOB, kuyruk, dosya ve tablo verileri dahil olmak üzere depolama hesabındaki tüm verileri şifrelemek ve şifrelerini çözmek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
+Azure depolama şifrelemesini, kendi anahtarlarınızın bulunduğu depolama hesabı düzeyinde yönetebilirsiniz. Depolama hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar depolama hesabındaki tüm blob ve dosya verilerini şifrelemek ve şifresini çözmek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini oluşturma, döndürme, devre dışı bırakma ve iptal etme için daha fazla esneklik sunar. Verilerinizi korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
 Müşteri tarafından yönetilen anahtarlarınızın depolanması için Azure Key Vault kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Depolama hesabı ve Anahtar Kasası aynı bölgede olmalıdır, ancak farklı aboneliklerde olabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md).
 
@@ -137,7 +137,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 
 İstemciler, REST çağrıları için aşağıdaki üst bilgileri kullanarak blob depolamaya yönelik bir istek üzerindeki şifreleme anahtarı bilgilerini güvenli bir şekilde geçirebilir:
 
-|İstek üst bilgisi | Açıklama |
+|İstek Başlığı | Açıklama |
 |---------------|-------------|
 |`x-ms-encryption-key` |Hem yazma hem de okuma istekleri için gereklidir. Base64 kodlamalı AES-256 şifreleme anahtarı değeri. |
 |`x-ms-encryption-key-sha256`| Hem yazma hem de okuma istekleri için gereklidir. Şifreleme anahtarının Base64 ile kodlanmış SHA256. |
@@ -149,7 +149,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 
 Aşağıdaki BLOB depolama işlemleri, bir istekte müşterinin sunduğu şifreleme anahtarlarını göndermeyi destekler:
 
-- [Blobu koy](/rest/api/storageservices/put-blob)
+- [İkili Büyük Nesne Koyma](/rest/api/storageservices/put-blob)
 - [Öbek listesini yerleştirme](/rest/api/storageservices/put-block-list)
 - [Yerleştirme bloğu](/rest/api/storageservices/put-block)
 - [Bloğu URL 'den koy](/rest/api/storageservices/put-block-from-url)
@@ -159,9 +159,9 @@ Aşağıdaki BLOB depolama işlemleri, bir istekte müşterinin sunduğu şifrel
 - [Blob özelliklerini ayarla](/rest/api/storageservices/set-blob-properties)
 - [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata)
 - [Blob al](/rest/api/storageservices/get-blob)
-- [Blob özelliklerini al](/rest/api/storageservices/get-blob-properties)
+- [BLOB özelliklerini Al](/rest/api/storageservices/get-blob-properties)
 - [Blob meta verilerini al](/rest/api/storageservices/get-blob-metadata)
-- [Anlık görüntü blobu](/rest/api/storageservices/snapshot-blob)
+- [İkili Büyük Nesne Anlık Görüntüsünü Alma](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Müşteri tarafından sunulan anahtarları döndür
 

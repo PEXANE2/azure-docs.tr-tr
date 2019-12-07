@@ -6,18 +6,18 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725592"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896658"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Azure Kullanılabilirlik Alanları 'de bölge yedekli sanal ağ geçitleri hakkında
 
-VPN ve ExpressRoute ağ geçitlerini [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md)dağıtabilirsiniz. Bu, sanal ağ geçitleri için esneklik, ölçeklenebilirlik ve daha yüksek kullanılabilirlik sağlar. Ağ geçitlerini Azure Kullanılabilirlik Alanları fiziksel olarak dağıtmak ve bölge düzeyindeki hatalardan Azure ile şirket içi ağ bağlanabilirliğini korurken bir bölgedeki ağ geçitlerini mantıksal olarak ayırır.
+VPN ve ExpressRoute ağ geçitlerini [Azure kullanılabilirlik alanları](../availability-zones/az-overview.md)dağıtabilirsiniz. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur.
 
 ### <a name="zrgw"></a>Bölgesel olarak yedekli ağ geçitleri
 
@@ -39,21 +39,9 @@ Belirli bir bölgedeki ağ geçitlerini dağıtmak için, bölgesel ağ geçitle
 
 ## <a name="gwskus"></a>Ağ Geçidi SKU'ları
 
-Bölgesel olarak yedekli ve bölgesel ağ geçitleri, yeni ağ geçidi SKU 'ları olarak kullanılabilir. Azure AZ bölgelere yeni sanal ağ geçidi SKU 'Ları ekledik. Bu SKU 'lar ExpressRoute ve VPN Gateway için ilgili mevcut SKU 'lara benzer ve bunlar, bölgesel olarak yedekli ve bölgesel ağ geçitlerine özgü olmaları dışında.
+Bölgesel olarak yedekli ve bölgesel ağ geçitleri, yeni ağ geçidi SKU 'ları olarak kullanılabilir. Azure AZ bölgelere yeni sanal ağ geçidi SKU 'Ları ekledik. Bu SKU 'lar ExpressRoute ve VPN Gateway için ilgili mevcut SKU 'lara benzer ve bunlar, bölgesel olarak yedekli ve bölgesel ağ geçitlerine özgü olmaları dışında. Bu SKU 'Ları, SKU adında "AZ" ile tanımlayabilirsiniz.
 
-Yeni ağ geçidi SKU 'Ları şunlardır:
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+Ağ Geçidi SKU 'Ları hakkında bilgi için bkz. [VPN Gateway SKU 'ları](vpn-gateway-about-vpngateways.md#gwsku) ve [ExpressRoute ağ geçidi SKU 'ları](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
 
 ## <a name="pipskus"></a>Genel IP SKU 'Ları
 
@@ -96,6 +84,6 @@ Mevcut sanal ağ geçitlerinizi bölgesel olarak yedekli veya bölgesel ağ geç
 
 Aynı sanal ağ üzerinde hem VPN hem de hızlı rota ağ geçitlerinin birlikte bulunması desteklenir. Ancak, ağ geçidi alt ağı için bir/27 IP adresi aralığı ayırmanız gerekir.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Alanlar arası yedekli sanal ağ geçidi oluşturma](create-zone-redundant-vnet-gateway.md)

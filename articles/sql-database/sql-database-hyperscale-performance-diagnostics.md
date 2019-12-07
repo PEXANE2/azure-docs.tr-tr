@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811141"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901239"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
 
@@ -44,13 +44,14 @@ Aşağıdaki bekleme türleri ( [sys. dm_os_wait_stats](/sql/relational-database
  
 Bir işlem çoğaltmasında okuma yapıldığında, veriler arabellek havuzunda veya yerel RBPEX önbelleğinde yoksa bir getPage (PageId, LSN) işlev çağrısı verilir ve sayfa ilgili sayfa sunucusundan getirilir. Sayfa sunucularından gelen okumalar uzaktan okumalardır ve bu nedenle yerel RBPEX 'dan okumalarından daha yavaştır. GÇ ile ilgili performans sorunları giderirken, görece yavaş uzak sayfa sunucusu okumaları ile kaç tane IOs yapıldığını anladık.
 
-Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan gelen ve toplam okumaların karşılaştırılabileceği uzaktan okuma sayısını belirten sütunlara ve alanlara sahiptir. 
+Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan gelen ve toplam okumaların karşılaştırılabileceği uzaktan okuma sayısını belirten sütunlara ve alanlara sahiptir. Sorgu deposu Ayrıca sorgu çalışma zamanı istatistiklerinin bir parçası olarak uzaktan okumaları de yakalar.
 
-- Sayfa sunucusu okumalarını raporlamak için sütunlar, yürütme DMVs 'de mevcuttur, örneğin:
-    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+- Sayfa sunucusu okumaları raporlamak için sütunlar, yürütme DMVs ve katalog görünümlerinde mevcuttur, örneğin:
+    - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Sayfa sunucusu okuma aşağıdaki genişletilmiş olaylara eklenir:
     - sql_statement_completed
     - sp_statement_completed
@@ -59,7 +60,7 @@ Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan gelen ve toplam oku
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - sorgu-store_execution_runtime_info
-- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örneğin:
+- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örnek:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423878"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894419"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standart Load Balancer genel bakış
 
@@ -38,11 +38,6 @@ Load Balancer kaynağının işlevleri her zaman ön uç, bir kural, sistem duru
 Bir anahtar yönü, kaynak için sanal ağın kapsamıdır.  Temel Load Balancer bir kullanılabilirlik kümesi kapsamında mevcut olsa da, bir Standart Load Balancer sanal ağın kapsamıyla tamamen tümleşiktir ve tüm sanal ağ kavramları geçerlidir.
 
 Load Balancer kaynaklar, Azure 'un, oluşturmak istediğiniz senaryoya ulaşmak için çok kiracılı altyapısını nasıl programtabileceği hakkında ifade ettiğiniz nesnelerdir.  Load Balancer kaynakları ile gerçek altyapı arasında doğrudan ilişki yoktur; Load Balancer oluşturmak bir örnek oluşturmaz, kapasite her zaman kullanılabilir olur ve göz önünde bulundurulması gereken başlangıç veya ölçeklendirme gecikmeleri yoktur. 
-
->[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL boşaltması") veya HTTP/HTTPS isteği, uygulama katmanı işleme için arıyorsanız bkz. [Azure Application Gateway nedir?](../application-gateway/overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
->
-> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-standard-load-balancer"></a>Neden Standart Load Balancer kullanmalıyım?
 
@@ -240,7 +235,7 @@ Standart Load Balancer fiyatlandırma bilgileri için [Load Balancer fiyatlandı
 - [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında daha fazla bilgi edinin.
 - [Standart Load Balancer tanılama](load-balancer-standard-diagnostics.md)hakkında bilgi edinin.
 - [Azure izleyici](../monitoring-and-diagnostics/monitoring-overview.md)'de Tanılama için [desteklenen çok boyutlu ölçümler](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) hakkında bilgi edinin.
-- [Giden bağlantılar için Load Balancer](load-balancer-outbound-connections.md)kullanma hakkında bilgi edinin.
+- Kullanma hakkında bilgi edinin [giden bağlantılar için yük dengeleyici](load-balancer-outbound-connections.md).
 - [Giden kuralları](load-balancer-outbound-rules-overview.md)hakkında bilgi edinin.
 - [Boşta durumunda TCP sıfırlaması](load-balancer-tcp-reset.md)hakkında bilgi edinin.
 - [Ha bağlantı noktaları Yük Dengeleme kurallarıyla standart Load Balancer](load-balancer-ha-ports-overview.md)hakkında bilgi edinin.

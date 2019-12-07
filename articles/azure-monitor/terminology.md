@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597820"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894359"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Izleyici adlandırma ve terminoloji değişiklikleri
 Azure 'da, Azure müşterilerine yönelik izlemeyi basitleştirmek için, Azure Izleyici 'de son zamanlarda, farklı hizmetlerle birleştirilmiş değişiklikler yapılmıştır. Bu makalede, Azure Izleyici belgelerindeki son ad ve terminoloji değişiklikleri açıklanmaktadır.
 
 ## <a name="october-2019---diagnostic-log-to-resource-log"></a>2019 Ekim-kaynak günlüğüne tanılama günlüğü
-Tanılama günlükleri, gerçekten toplanmaya daha iyi eşleşecek şekilde "kaynak günlükleri" olarak değiştirildi. "Tanılama ayarları" terimi aynı kalır.  
+"Tanılama günlükleri", gerçekten toplanmaya daha iyi eşleşecek şekilde "kaynak günlükleri" olarak değiştirildi. "Tanılama ayarları" terimi aynı kalır.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Şubat 2019-Log Analytics terimleri
 Azure Izleyici kapsamında farklı hizmetlerin Birleştirmeden sonra, Azure Izleyici hizmetini ve farklı bileşenlerini daha iyi anlatmak için belgelerimizin terminolojisini değiştirerek bir sonraki adımı sunuyoruz. 

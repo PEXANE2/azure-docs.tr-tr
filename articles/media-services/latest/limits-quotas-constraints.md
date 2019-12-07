@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 içindeki kotalar ve sınırlamalar | Microsoft Docs
-description: Bu konuda Azure Media Services v3 içindeki kotalar ve sınırlamalar açıklanmaktadır
+description: Bu konuda Microsoft Azure Media Services v3 içindeki kotalar ve sınırlamalar açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2a530d6a1a447ccde448259623da6faeaa6a4d72
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598356"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888436"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure Media Services v3 içindeki kotalar ve sınırlamalar
 

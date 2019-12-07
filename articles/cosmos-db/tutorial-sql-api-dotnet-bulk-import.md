@@ -1,20 +1,20 @@
 ---
-title: Verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarırken üretilen işi iyileştirin
-description: Azure Cosmos DB verileri içeri aktarmak için gereken üretilen iş üretimini (RU/s) optimize eden bir .NET konsol uygulaması oluşturmayı öğrenin.
+title: .NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
+description: Verileri içeri aktarmak için gereken üretilen iş üretimini (RU/s) optimize eden bir .NET konsol uygulaması oluşturarak Azure Cosmos DB verileri içeri aktarmayı veya almayı öğrenin
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606211"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896271"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarırken üretilen işi iyileştirin
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK kullanarak verileri Azure Cosmos DB SQL API hesabına toplu olarak içeri aktarma
 
 Bu öğreticide, verileri Azure Cosmos DB aktarmak için gereken üretilen iş üretimini (RU/s) optimize eden bir .NET konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu makalede, bir örnek veri kaynağından verileri okuyacaksınız ve Azure Cosmos kapsayıcısına aktarırsınız.
 Bu öğretici, .NET Framework veya .NET Core 'a hedeflenmiş Azure Cosmos DB .NET SDK 'sının [3.0 + sürümünü](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) kullanır.
@@ -22,12 +22,12 @@ Bu öğretici, .NET Framework veya .NET Core 'a hedeflenmiş Azure Cosmos DB .NE
 Bu öğreticinin içindekiler:
 
 > [!div class="checklist"]
-> * Azure Cosmos hesabı oluşturma
+> * Bir Azure Cosmos hesabı oluşturma
 > * Projenizi yapılandırma
 > * Toplu destek etkin olan bir Azure Cosmos hesabına bağlanma
 > * Eşzamanlı oluşturma işlemleri aracılığıyla veri içeri aktarma gerçekleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -81,7 +81,7 @@ Hala uygulama dizininde, DotNet Add Package komutunu kullanarak .NET Core için 
 
 Örnek uygulamanın Azure Cosmos hesabınızda kimlik doğrulaması yapması gerekir. Kimlik doğrulaması yapmak için Azure Cosmos hesabı kimlik bilgilerini uygulamaya geçirmeniz gerekir. Aşağıdaki adımları izleyerek Azure Cosmos hesabı kimlik bilgilerinizi alın:
 
-1.  [Azure portalında](https://portal.azure.com/) oturum açın.
+1.  [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1.  Azure Cosmos hesabınıza gidin.
 1.  **Anahtarlar** bölmesini açın ve hesabınızın **URI** ve **birincil anahtarını** kopyalayın.
 
@@ -186,7 +186,7 @@ Projeyi kopyaladıktan sonra, istenen kimlik bilgilerini [program.cs](https://gi
 Bu öğreticide, aşağıdaki adımları tamamladınız:
 
 > [!div class="checklist"]
-> * Azure Cosmos hesabı oluşturma
+> * Bir Azure Cosmos hesabı oluşturma
 > * Projenizi yapılandırma
 > * Toplu destek etkin olan bir Azure Cosmos hesabına bağlanma
 > * Eşzamanlı oluşturma işlemleri aracılığıyla veri içeri aktarma gerçekleştirme

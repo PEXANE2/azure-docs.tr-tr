@@ -1,6 +1,6 @@
 ---
 title: Bit hızı el merdivenini otomatik oluşturmak için Media Encoder Standard kullanın-Azure | Microsoft Docs
-description: Bu konuda, giriş çözünürlüğü ve bit hızı temelinde bit hızı bir el ile oluşturma için Media Encoder Standard (MES) kullanımı gösterilmektedir. Giriş çözünürlüğü ve bit hızı hiçbir şekilde aşılmaz. Örneğin, giriş 3Mbps 'de 720p ise, çıkış en iyi 720p olarak kalır ve 3Mbps 'den düşük oranlarda başlar.
+description: Bu konuda, giriş çözünürlüğü ve bit hızı temelinde bit hızı bir el ile oluşturma için Media Encoder Standard (MES) kullanımı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543542"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896013"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Bit hızı merdiveni otomatik olarak oluşturmak için Media Encoder Standard kullanın  
 
@@ -176,7 +176,7 @@ Yükseklik "1080" ve "29.970" kare hızını kaynağıyla 6 video katmanları ü
 
 |Katman|Yükseklik|Genişlik|Bit hızı (Kbps)|
 |---|---|---|---|
-|1\.|1080|1920|6780|
+|1|1080|1920|6780|
 |2|720|1280|3520|
 |3|540|960|2210|
 |4|360|640|1150|
@@ -188,7 +188,7 @@ Yükseklik "720" ve "23.970" kare hızını kaynağıyla 5 video katmanları ür
 
 |Katman|Yükseklik|Genişlik|Bit hızı (Kbps)|
 |---|---|---|---|
-|1\.|720|1280|2940|
+|1|720|1280|2940|
 |2|540|960|1850|
 |3|360|640|960|
 |4|270|480|600|
@@ -199,13 +199,13 @@ Yükseklik "360" ve "29.970" kare hızını kaynağıyla 3 video katmanları ür
 
 |Katman|Yükseklik|Genişlik|Bit hızı (Kbps)|
 |---|---|---|---|
-|1\.|360|640|700|
+|1|360|640|700|
 |2|270|480|440|
 |3|180|320|230|
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

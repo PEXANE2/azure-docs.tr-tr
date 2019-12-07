@@ -2,17 +2,17 @@
 title: RBAC rolleri ve izinleri
 description: Azure Container Registry 'deki kaynaklara yönelik ayrıntılı izinler sağlamak için Azure rol tabanlı erişim denetimi (RBAC) ve kimlik ve erişim yönetimi (ıAM) kullanın.
 ms.topic: article
-ms.date: 03/20/2019
-ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 12/02/2019
+ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456244"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893493"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry roller ve izinler
 
-Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düzeylerde izinler sağlayan bir dizi Azure rolünü destekler. Azure [rol tabanlı erişim denetimi](../role-based-access-control/index.yml) 'ni (RBAC) kullanarak, bir kayıt defteriyle etkileşimde bulunmak gereken kullanıcılara veya hizmet sorumlularına belirli izinler atayın.
+Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düzeylerde izinler sağlayan [yerleşik bir Azure rolleri](../role-based-access-control/built-in-roles.md) kümesini destekler. Kullanıcılara, hizmet sorumlularına veya bir kayıt defteriyle etkileşim kurması gereken diğer kimliklere belirli izinler atamak için Azure [rol tabanlı erişim denetimi](../role-based-access-control/index.yml) 'ni (RBAC) kullanın. 
 
 | Rol/Izin       | [Erişim Kaynak Yöneticisi](#access-resource-manager) | [Kayıt Defteri Oluştur/Sil](#create-and-delete-registry) | [Görüntü gönder](#push-image) | [Çekme resmi](#pull-image) | [Görüntü verilerini sil](#delete-image-data) | [İlkeleri Değiştir](#change-policies) |   [Görüntüleri imzala](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -22,7 +22,7 @@ Azure Container Registry hizmeti, bir Azure Container Registry 'ye farklı düze
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
-| Acrimageimzalayan |  |  |  |  |  |  | X |
+| AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Kullanıcıları ve Hizmetleri ayırt etme
 
@@ -68,8 +68,25 @@ Bir kayıt defterinde ilkeleri yapılandırma özelliği. , Görüntü Temizleme
 
 Genellikle bir hizmet sorumlusu kullanan otomatik bir işleme atanan görüntüleri imzalama özelliği. Bu izin, bir kayıt defterine güvenilir bir görüntü göndermeye olanak tanımak için genellikle [anında iletme görüntüsüyle](#push-image) birleştirilir. Ayrıntılar için bkz. [Azure Container Registry içerik güveni](container-registry-content-trust.md).
 
+## <a name="custom-roles"></a>Özel roller
+
+Diğer Azure kaynaklarında olduğu gibi, Azure Container Registry için ayrıntılı izinlerle kendi [özel rollerinizi](../role-based-access-control/custom-roles.md) de oluşturabilirsiniz. Ardından, özel rolleri kullanıcılara, hizmet sorumlularına veya bir kayıt defteriyle etkileşimde bulunmak için gereken diğer kimliklere atayın. 
+
+Özel bir role hangi izinlerin uygulanacağını öğrenmek için, Microsoft. ContainerRegistry [eylemlerinin](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)listesine bakın, [yerleşik ACR rollerinin](../role-based-access-control/built-in-roles.md)izin verilen eylemlerini inceleyin veya şu komutu çalıştırın:
+
+```azurecli
+az provider operation show --namespace Microsoft.ContainerRegistry
+```
+
+Özel bir rol tanımlamak için bkz. [özel rol oluşturma adımları](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role).
+
+> [!IMPORTANT]
+> Özel bir rolde Azure Container Registry, şu anda tüm eşleşen eylemlere erişim veren `Microsoft.ContainerRegistry/*` veya `Microsoft.ContainerRegistry/registries/*` gibi joker karakterleri desteklememektedir. Rol içinde her türlü gerekli eylemi belirtin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Identity 'a [Azure Portal](../role-based-access-control/role-assignments-portal.md), [Azure CLI](../role-based-access-control/role-assignments-cli.md)veya DIĞER Azure araçlarını kullanarak RBAC rolleri atama hakkında daha fazla bilgi edinin.
 
 * Azure Container Registry için [kimlik doğrulama seçenekleri](container-registry-authentication.md) hakkında bilgi edinin.
+
+* Bir kapsayıcı kayıt defterinde [Depo kapsamındaki izinleri](container-registry-repository-scoped-permissions.md) (Önizleme) etkinleştirme hakkında bilgi edinin.

@@ -1,22 +1,21 @@
 ---
-title: Azure Data Factory veri akışı eşleme özelliğindeki ifade işlevleri
+title: Eşleme veri akışındaki ifade işlevleri
 description: Eşleme veri akışındaki ifade işlevleri hakkında bilgi edinin.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f384c440dab06660c95f635dde02ced5b3e54d94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596973"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896304"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri 
-
-
 
 ## <a name="expression-functions"></a>İfade işlevleri
 
@@ -122,7 +121,7 @@ ___
 ___
 ### <code>byName</code>
 <code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Akıştaki ada göre bir sütun değeri seçer. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz. Birden çok eşleşme varsa, ilk eşleşme döndürülür. Eğer eşleşme yoksa NULL değer döndürür. Döndürülen değer tür dönüştürme işlevlerinden biri tarafından dönüştürülmüş olmalıdır (TO_DATE, TO_STRING...).  Tasarım zamanında bilinen sütun adları yalnızca adına göre değinmelidir. Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler kullanabilirsiniz
+Akıştaki ada göre bir sütun değeri seçer. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz. Birden çok eşleşme varsa, ilk eşleşme döndürülür. Eğer eşleşme yoksa NULL değer döndürür. Döndürülen değerin tür dönüştürme işlevlerinden (TO_DATE, TO_STRING...) birine dönüştürülmesi gerekir.  Tasarım zamanında bilinen sütun adları yalnızca adına göre değinmelidir. Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler kullanabilirsiniz
 
 * ``toString(byName('parent'))``
 
@@ -139,7 +138,7 @@ Akıştaki ada göre bir sütun değeri seçer. İkinci bağımsız değişken o
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-Akışta göreli konumuna göre (1 tabanlı) bir sütun değeri seçer. Konum sınırların dışında ise, NULL bir değer döndürür. Döndürülen değer tür dönüştürme işlevlerinden biri tarafından dönüştürülmüş olmalıdır (TO_DATE, TO_STRING...) Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler kullanabilirsiniz
+Akışta göreli konumuna göre (1 tabanlı) bir sütun değeri seçer. Konum sınırların dışında ise, NULL bir değer döndürür. Döndürülen değer tür dönüştürme işlevlerinden biri tarafından dönüştürülmüş tür olmalıdır (TO_DATE, TO_STRING...) Hesaplanan girişler desteklenmez, ancak parametre değiştirmeler kullanabilirsiniz
 
 * ``toString(byPosition(1))``
 
@@ -707,7 +706,7 @@ Geçerli satırdan sonra değerlendirilen n satıra ilk parametre değerini alı
 ___
 ### <code>least</code>
 <code><b>least(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-Karşılaştırma küçüktür veya eşittir işleci. @No__t_0 ile aynı
+Karşılaştırma küçüktür veya eşittir işleci. <= operator ile aynı
 
 * ``least(10, 30, 15, 20) -> 10``
 
@@ -743,7 +742,7 @@ Karşılaştırma daha az işleci. < İşleçle aynı
 ___
 ### <code>lesserOrEqual</code>
 <code><b>lesserOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-Karşılaştırma küçüktür veya eşittir işleci. @No__t_0 ile aynı
+Karşılaştırma küçüktür veya eşittir işleci. <= operator ile aynı
 
 * ``lesserOrEqual(12, 12) -> true``
 
@@ -956,7 +955,7 @@ Sayı çiftini çarpar. \* İşleciyle aynı
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-NTile işlevi her pencere bölümü için satırları, 1 ' den en `n` ' e kadar olan `n` demetlerine böler. Demet değerleri en fazla 1 farklı olacaktır. Bölümdeki satır sayısı demet sayısına eşit olarak bölünmezse, ilk sepete başlayarak, geri kalan değerler her demet için bir dağıtılır. NTile işlevi, terkutucukların, kubotların ve diğer yaygın Özet istatistiğin hesaplanması için yararlıdır. İşlev, başlatma sırasında iki değişkeni hesaplar: düzenli bir demet boyutunun boyutuna eklenmiş bir ek satır olacaktır. Her iki değişken de geçerli bölümün boyutunu temel alır. Hesaplama işlemi sırasında işlev geçerli satır numarasını, geçerli demet numarasını ve demet 'in değiştirileceği satır numarasını (bucketThreshold) izler. Geçerli satır numarası demet eşiğine ulaştığında, demet değeri bir artırılır ve eşik, demet boyutu (ve geçerli demet doldurulmuş ise bir ek) ile artırılır.
+NTile işlevi her pencere bölümü için satırları 1 ' den en çok `n`değişen `n` demetlere böler. Demet değerleri en fazla 1 farklı olacaktır. Bölümdeki satır sayısı demet sayısına eşit olarak bölünmezse, ilk sepete başlayarak, geri kalan değerler her demet için bir dağıtılır. NTile işlevi, terkutucukların, kubotların ve diğer yaygın Özet istatistiğin hesaplanması için yararlıdır. İşlev, başlatma sırasında iki değişkeni hesaplar: düzenli bir demet boyutunun boyutuna eklenmiş bir ek satır olacaktır. Her iki değişken de geçerli bölümün boyutunu temel alır. Hesaplama işlemi sırasında işlev geçerli satır numarasını, geçerli demet numarasını ve demet 'in değiştirileceği satır numarasını (bucketThreshold) izler. Geçerli satır numarası demet eşiğine ulaştığında, demet değeri bir artırılır ve eşik, demet boyutu (ve geçerli demet doldurulmuş ise bir ek) ile artırılır.
 
 * ``nTile()``
 
@@ -1019,7 +1018,7 @@ NULL değeri döndürür. ' Null ' adlı bir sütun varsa işlev sözdizimini (n
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Mantıksal OR işleci. Aynı | |
+Mantıksal VEYA operatörüdür. Aynı | |
 
 * ``or(true, false) -> true``
 
@@ -1067,7 +1066,7 @@ ___
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Verili bir Regex deseninin eşleşen alt dizesini ayıklayın. Son parametre, eşleşme grubunu tanımlar ve atlanırsa varsayılan olarak 1 ' e ayarlanır. Kaçış olmadan bir dizeyle eşleştirmek için ' <regex> ' (Back quote) kullanın
+Verili bir Regex deseninin eşleşen alt dizesini ayıklayın. Son parametre, eşleşme grubunu tanımlar ve atlanırsa varsayılan olarak 1 ' e ayarlanır. Kaçış olmadan bir dizeyle eşleştirmek için '<regex>' (Back quote) kullanın
 
 * ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``
 
@@ -1076,7 +1075,7 @@ Verili bir Regex deseninin eşleşen alt dizesini ayıklayın. Son parametre, e�
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Dizenin verilen Regex düzeniyle eşleşip eşleşmediğini denetler. Kaçış olmadan bir dizeyle eşleştirmek için ' <regex> ' (Back quote) kullanın
+Dizenin verilen Regex düzeniyle eşleşip eşleşmediğini denetler. Kaçış olmadan bir dizeyle eşleştirmek için '<regex>' (Back quote) kullanın
 
 * ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``
 
@@ -1085,7 +1084,7 @@ Dizenin verilen Regex düzeniyle eşleşip eşleşmediğini denetler. Kaçış o
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Bir Regex deseninin tüm yinelemelerini, belirtilen dizedeki başka bir alt dizeyle Değiştir kaçış olmadan bir dizeyle eşleştirmek için ' <regex> ' (arka tırnak) kullanın
+Bir Regex deseninin tüm yinelemelerini, belirtilen dizedeki başka bir alt dizeyle Değiştir kaçış olmadan bir dizeyle eşleştirmek için '<regex>' (arka tırnak) kullanın
 
 * ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``
 

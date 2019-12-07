@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932574"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894156"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Izleyici 'de günlük verisi alma süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -40,10 +40,10 @@ Aracılar ve yönetim çözümleri, bir sanal makineden veri toplamak için fark
 ### <a name="agent-upload-frequency"></a>Aracı karşıya yükleme sıklığı
 Log Analytics aracısının hafif olduğundan emin olmak için, Aracı günlükleri arabelleğe alır ve düzenli aralıklarla Azure Izleyici 'ye yükler. Karşıya yükleme sıklığı, verilerin türüne bağlı olarak 30 saniye ile 2 dakika arasında değişir. Verilerin çoğu 1 dakika içinde karşıya yüklenir. Ağ koşulları, Azure Izleyici alma noktasına ulaşmak için bu verilerin gecikmesini olumsuz etkileyebilir.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure etkinlik günlükleri, tanılama günlükleri ve ölçümleri
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure etkinlik günlükleri, kaynak günlükleri ve ölçümleri
 Azure verileri, işleme için Log Analytics Alım noktasında kullanılabilecek ek süre ekler:
 
-- Tanılama günlüklerinden alınan veriler, Azure hizmetine bağlı olarak 2-15 dakika sürer. Ortamınızdaki bu gecikmeyi incelemek için [aşağıdaki sorguya](#checking-ingestion-time) bakın
+- Kaynak günlüklerinden alınan veriler, Azure hizmetine bağlı olarak 2-15 dakika sürer. Ortamınızdaki bu gecikmeyi incelemek için [aşağıdaki sorguya](#checking-ingestion-time) bakın
 - Azure platformu ölçümlerinin Log Analytics alma noktasına gönderilmesi 3 dakika sürer.
 - Etkinlik günlüğü verilerinin Log Analytics alma noktasına gönderilmesi yaklaşık 10-15 dakika sürer.
 
@@ -58,7 +58,7 @@ Bazı çözümler, verileri bir aracıdan toplamaz ve ek gecikme sunan bir kolek
 Koleksiyon sıklığını belirlemede her çözüm için belgelere bakın.
 
 ### <a name="pipeline-process-time"></a>Ardışık düzen-işlem süresi
-Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_Timereceilıorlama](log-standard-properties.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
+Günlük kayıtları Azure Izleyici ardışık düzenine alındıktan sonra ( [_TimeReceived](log-standard-properties.md#_timereceived) özelliğinde tanımlandığı gibi), kiracı yalıtımı sağlamak ve verilerin kaybolmamasını sağlamak için geçici depolamaya yazılır. Bu işlem genellikle 5-15 saniye ekler. Bazı yönetim çözümleri, verileri toplamak ve veri akışı sırasında Öngörüler türetmek için daha ağır algoritmalar uygular. Örneğin, ağ performansı Izleme, 3 dakikalık aralıklarla gelen verileri toplar, etkin olarak 3 dakikalık gecikme süresi ekler. Gecikme ekleyen başka bir işlem, özel günlükleri işleyen işlemdir. Bazı durumlarda bu işlem, aracıdan dosyalardan toplanan günlüklere birkaç dakika gecikme süresi ekleyebilir.
 
 ### <a name="new-custom-data-types-provisioning"></a>Yeni özel veri türleri sağlama
 [Özel bir günlük](data-sources-custom-logs.md) veya [Veri Toplayıcı API](data-collector-api.md)'sinden yeni bir tür özel veri oluşturulduğunda, sistem ayrılmış bir depolama kapsayıcısı oluşturur. Bu, yalnızca bu veri türünün ilk görünümünde gerçekleşen tek seferlik bir ek yüktür.
@@ -78,9 +78,9 @@ Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebi
 
 | Adım | Özellik veya Işlev | Yorumlar |
 |:---|:---|:---|
-| Veri kaynağında oluşturulan kayıt | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _Timerectıı ile aynı saate ayarlanır. |
-| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_Timerecelmiş](log-standard-properties.md#_timereceived) | |
-| Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Veri kaynağında oluşturulan kayıt | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _TimeReceived ile aynı saate ayarlanır. |
+| Azure Izleyici alma uç noktası tarafından alınan kayıt | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| Kayıt, çalışma alanında depolandı ve sorgular için kullanılabilir | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Alma gecikmesi gecikme gecikmeleri
 [İngestion_time ()](/azure/kusto/query/ingestiontimefunction) Işlevinin sonucunu _TimeGenerated_ özelliği ile karşılaştırarak belirli bir kaydın gecikmesini ölçebilirsiniz. Bu veriler, alma gecikmesini nasıl davranacağını bulmak için çeşitli toplamalar ile birlikte kullanılabilir. Büyük miktarda veri için Öngörüler elde etmek üzere alma süresinin bazı yüzdelerini inceleyin. 

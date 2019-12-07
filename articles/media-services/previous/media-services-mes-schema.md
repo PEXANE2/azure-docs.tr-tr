@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard şeması | Microsoft Docs
-description: Makalede, Media Encoder Standard şeması genel bir bakış sunulmaktadır.
+description: Bu makalede, Media Encoder Standard önayarlarının temel aldığı XML şemasının bazı öğeleri ve türleri açıklanmaktadır.
 author: Juliako
 manager: femila
 editor: ''
@@ -13,293 +13,293 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 837235e04ce190a4481e1f19789d8e9ff9cb7578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61131594"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901445"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard şeması
-Bu makalede bazı öğeleri ve XML Şeması türleri üzerinde açıklanmıştır [Media Encoder Standard hazır ayarları](media-services-mes-presets-overview.md) temel alır. Makaleyi açıklama öğeleri ve geçerli değerlerini sağlar.  
+Bu makalede, [Media Encoder Standard önayarlarının](media-services-mes-presets-overview.md) temel aldığı XML şemasının bazı öğeleri ve türleri açıklanmaktadır. Makale, öğelerin ve bunların geçerli değerlerinin açıklamasını verir.  
 
-## <a name="Preset"></a> Hazır (kök öğesi)
-Bir kodlama Önayarı tanımlar.  
+## <a name="Preset"></a>Önayar (kök öğe)
+Bir kodlama ön ayarını tanımlar.  
 
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Kodlama** |[Kodlama](media-services-mes-schema.md#Encoding) |Kök öğe giriş kaynağı kodlanacak olduğunu gösterir. |
-| **Çıkışlar** |[Çıkışlar](media-services-mes-schema.md#Output) |İstenen çıkış dosyaları koleksiyonu. |
-| **StretchMode**<br/>minOccurs="0"<br/>Varsayılan = "Otomatik Boyutlandır|xs:string|Denetim çıkış video çerçeve boyutu, doldurma piksel veya en boy oranını görüntüleyebilirsiniz. **StretchMode** aşağıdaki değerlerden biri olabilir: **Hiçbiri**, **AutoSize** (varsayılan) veya **AutoFit**.<br/><br/>**Hiçbiri**: Kesin olarak çıktı çözünürlüğü izleyin (örneğin, **genişliği** ve **yükseklik** hazır) piksel en boy oranını veya ekran en boy oranını giriş videosunun dikkate almadan. Senaryolarda gibi önerilen [kırpma](media-services-crop-video.md), çıkış video girişi karşılaştırıldığında farklı bir en boy oranını sahip olduğu. <br/><br/>**AutoSize**: Çıktı çözünürlüğü penceresine sığacak (genişlik * yükseklik) tarafından önceden belirtilmiş. Ancak, kodlayıcı (1:1) piksel kare en boy oranı olan bir çıkış video üretir. Bu nedenle, çıkış genişlik veya yükseklik çıkış doldurma olmadan giriş ekran en boy oranını eşleşmesi için geçersiz kılınabilir. Örneğin, giriş 1920 x 1080 ve kodlama Önayarı ister 1280 x 1280, ardından hazır yükseklik değeri geçersiz kılınmış ve çıktısı 1280 x 16:9 giriş en boy oranını barındıran 720, olacaktır. <br/><br/>**Otomatik Sığdırma**: Gerekirse, çıkış videoyla (sinemaskop veya posta kutusu) çıktı video etkin bölgeyi aynı giriş en boy oranına sahip olduğunu sağlarken istenen çıkış çözümü uymanız doldurur. Örneğin, 1920 x 1080 giriştir ve kodlama Önayarı 1280 x 1280 ister varsayalım. Video çıktısı 1280 x 1280 ardından olacaktır, ancak bir iç 1280 x 720 dikdörtgen videonun' active' en boy oranı 16:9 ve sinemaskop bölgeleri 280 piksel üst ve alt yüksek içerecektir. Başka bir örnek için giriş 1440 x 1080 ise ve kodlama Önayarı 1280 x 720, ister sonra çıkış şu 960 x 720 pillar kutusu bölgeleri 160 piksel sağ ve sol yanı sıra 4:3 en boy oranını en içteki bir dikdörtgen içeren 1280 x 720 olacaktır. 
+| **Kodlama** |[Kodlama](media-services-mes-schema.md#Encoding) |Kök öğe, giriş kaynaklarının kodlandığını gösterir. |
+| **Çıkışlar** |[Çıkışlar](media-services-mes-schema.md#Output) |İstenen çıkış dosyalarının toplanması. |
+| **Üzerinde mod**<br/>minOccurs="0"<br/>Varsayılan = "AutoSize|xs:string|Çıktı video çerçevesinin boyutunu, doldurmayı, pikseli veya en boy oranını görüntüleyin. En uygun değerler şu değerlerden **biri olabilir:** **none**, **AutoSize** (default) veya **Otomatik Sığdır**.<br/><br/>**Hiçbiri**: piksel boyut oranını göz önünde bulundurmadan veya giriş videosunun en boy oranını göstermeksizin çıkış çözünürlüğünü (örneğin, önceden ayarlı **Genişlik** ve **Yükseklik** ) kesin olarak izleyin. Çıkış videosunun, girişle karşılaştırıldığında farklı bir en boy oranına sahip olan [kırpma](media-services-crop-video.md)gibi senaryolarda önerilir. <br/><br/>Otomatik **Boyutlandır**: çıkış çözünürlüğü, önceden ayarlanmış olarak belirtilen pencerenin Içine (genişlik * yükseklik) sığacak. Ancak, kodlayıcı kare (1:1) piksel boyut oranına sahip bir çıkış videosu üretir. Bu nedenle, girişin görüntüleme en boy oranını doldurma olmadan eşleştirmek için çıkış genişliğinin veya çıkış yüksekliğinin üzerine geçersiz kılınabilir. Örneğin, giriş 1920x1080 ise ve kodlama ön ayarı 1280x1280 isterse, ön ayarda bulunan yükseklik değeri geçersiz kılınır ve çıkış, 16:9 girişinin en boy oranını tutan 1280x720 ' de olur. <br/><br/>**Otomatik Sığdır**: gerekirse, çıktı videosunu (harf kutusu veya pillarbox ile), istenen çıkış çözünürlüğünü kabul etmek için doldurur. Bu, çıkışdaki etkin video bölgesinin, girişle aynı en boy oranına sahip olmasını sağlar. Örneğin, girişin 1920x1080 olduğunu ve kodlama önayarının 1280x1280 istediğini varsayalım. Ardından, çıkış videosu 1280x1280 konumunda olacaktır, ancak en boy oranı 16:9 280 ve üst ve alt olarak en fazla boyut olan "etkin video" bir iç 1280x720 dikdörtgeni içerecektir. Başka bir örnek için, giriş 1440x1080 ise ve kodlama ön ayarı 1280x720 isterse, çıktı, 4:3 160 ve sol tarafta en boy oranındaki bir iç dikdörtgen içeren 1280x720 olur. 
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Sürüm**<br/><br/> Gerekli |**xs: ondalık** |Önceden oluşturulmuş sürümü. Aşağıdaki kısıtlamalar uygulanır: xs:fractionDigits değer = "1" ve xs:minInclusive value = "1" Örneğin, **sürüm "1.0" =** . |
+| **Sürüm**<br/><br/> Gereklidir |**xs: Decimal** |Önceden ayarlanmış sürüm. Aşağıdaki kısıtlamalar geçerlidir: xs: fractionDigits value = "1" ve xs: minInclusive value = "1", örneğin **Version = "1.0"** . |
 
-## <a name="Encoding"></a> Kodlama
-Bir dizi aşağıdaki öğeleri içerir:  
+## <a name="Encoding"></a>Şifreleme
+Aşağıdaki öğelerin dizisini içerir:  
 
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |H.264 video kodlama için ayarlar. |
-| **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |AAC ses kodlama ayarları. |
-| **BmpImage** |[BmpImage](media-services-mes-schema.md#BmpImage) |Bmp görüntüsünü ayarları. |
-| **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |Png görüntüsü için ayarları. |
-| **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |Jpg resmi için ayarlar. |
+| **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |R., video için ayarlar. |
+| **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |Sesin AAC kodlama ayarları. |
+| **Bmpımage** |[Bmpımage](media-services-mes-schema.md#BmpImage) |BMP resmi ayarları. |
+| **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |PNG resmi için ayarlar. |
+| **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |Jpg resmi ayarları. |
 
-## <a name="H264Video"></a> H264Video
+## <a name="H264Video"></a>H264Video
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **TwoPass**<br/><br/> minOccurs="0" |**xs:Boolean** |Şu anda yalnızca bir geçişli kodlama desteklenir. |
-| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |Sabit bir aralık saniye birimi IDR kareler arasındaki belirler. Bir GOP süresi olarak da bilinir. Bkz: **SceneChangeDetection** Kodlayıcı bu değerden sapma olup olmadığını denetlemek için. |
-| **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs: Boole** |True, kodlayıcı kümesine Sahne değişikliği videoda saptamaya çalışır ve bir IDR çerçeve ekler. |
-| **Karmaşıklık**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "Dengeli" |**xs:string** |Dengelemeyi denetimleri arasında hızlı ve video kalitesi kodlayın. Aşağıdaki değerlerden biri olabilir: **Hızı**, **dengeli**, veya **kalite**<br/><br/> Varsayılan: **Dengeli** |
-| **EşitlemeModu**<br/><br/> minOccurs="0" | |Özelliği, gelecekteki bir sürümde sunulur. |
-| **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Çıkış video katmanları koleksiyonu. |
+| **TwoPass**<br/><br/> minOccurs="0" |**xs: Boolean** |Şu anda yalnızca bir-pass kodlaması desteklenir. |
+| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |Saniye cinsinden ıDR çerçeveleri arasındaki sabit boşluğu belirler. GOP süresi olarak da adlandırılır. Kodlayıcının bu değerden sapıp ayırt edilip edilmeyeceğini denetlemek için bkz. **manzara** . |
+| **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "false" |**xs: Boolean** |True olarak ayarlanırsa, kodlayıcı videoda sahne değişikliğini algılamaya çalışır ve bir ıDR çerçevesi ekler. |
+| **Karmaşıklığını**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "dengeli" |**xs: String** |Kodlama hızı ve video kalitesi arasındaki ticareti denetler. Şu değerlerden biri olabilir: **hız**, **dengeli**veya **kalite**<br/><br/> Varsayılan: **dengeli** |
+| **SyncMode**<br/><br/> minOccurs="0" | |Özellik gelecek bir sürümde kullanıma sunulacaktır. |
+| **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Çıkış video katmanlarından oluşan koleksiyon. |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Koşul** |**xs:string** | Giriş video varsa, tek renkli bir video kaydı ekleme için Kodlayıcı zorlamak isteyebilirsiniz. Bunu yapmak için koşulu kullanmak = "InsertBlackIfNoVideoBottomLayerOnly" (yalnızca en düşük hızı video eklemek için) veya koşul = "(video eklemek için çıktı bit hızlarına dönüştürme) InsertBlackIfNoVideo". Daha fazla bilgi için [bu makaleye](media-services-advanced-encoding-with-mes.md#no_video) bakın.|
+| **Koşul** |**xs: String** | Girişin video numarası yoksa, kodlayıcının tek renkli video izlemesi eklemesini zorlamak isteyebilirsiniz. Bunu yapmak için, Condition = "ınsertblackıce ıfnovideobottomlayeronly" (yalnızca en düşük bit hızına sahip bir video eklemek için) veya Condition = "ınsertblackıce" (tüm çıkış bittarifelerinde video eklemek için) kullanın. Daha fazla bilgi için [bu makaleye](media-services-advanced-encoding-with-mes.md#no_video) bakın.|
 
-## <a name="H264Layers"></a> H264Layers
+## <a name="H264Layers"></a>H264Layers
 
-Yalnızca ses ve video, içeren Kodlayıcı girdi gönderirseniz, varsayılan olarak, çıktı varlığına yalnızca ses veri dosyalarını içerir. Bazı oynatıcıları gibi çıkış akışları işlemek mümkün olmayabilir. H264Video'nın kullanabileceğiniz **InsertBlackIfNoVideo** özniteliği encoder çıkış Bu senaryodaki bir video izleme eklemek için zorlama ayarı. Daha fazla bilgi için [bu makaleye](media-services-advanced-encoding-with-mes.md#no_video) bakın.
+Varsayılan olarak, yalnızca ses içeren ve video içermeyen kodlayıcıya bir giriş gönderirseniz, çıkış varlığı yalnızca ses verileriyle dosya içerir. Bazı oyuncular bu tür çıkış akışlarını işleyemeyebilir. Kodlayıcının Bu senaryodaki çıkışa bir video izlemesi eklemesini zorlamak için H264Video's **ınsertblackıce ıfnovideo** öznitelik ayarını kullanabilirsiniz. Daha fazla bilgi için [bu makaleye](media-services-advanced-encoding-with-mes.md#no_video) bakın.
               
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **H264Layer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 Katmanlar koleksiyonu. |
+| **H264Layer**<br/><br/> minOccurs = "0" maxOccurs = "sınırsız" |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 katmanlı bir koleksiyon. |
 
-## <a name="H264Layer"></a> H264Layer
+## <a name="H264Layer"></a>H264Layer
 > [!NOTE]
-> Video sınırları içinde açıklanan değerlere dayanır [H264 düzeyleri](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels) tablo.  
+> Video limitleri, [H264 Levels](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels) tablosunda açıklanan değerlere göre yapılır.  
 > 
 > 
 
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: dize** |Aşağıdakilerden biri olabilir **xs: dize** değerleri: **Otomatik**, **temel**, **ana**, **yüksek**. |
-| **Düzey**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: dize** | |
-| **Bit hızı**<br/><br/> minOccurs="0" |**xs:int** |KB/sn belirtilen bu video katmanı için kullanılan bit hızı. |
-| **MaxBitrate**<br/><br/> minOccurs="0" |**xs: int** |KB/sn belirtilen bu video katmanı için kullanılan en yüksek hızı. |
-| **BufferWindow**<br/><br/> minOccurs="0"<br/><br/> default="00:00:05" |**xs: saat** |Video arabelleği uzunluğu. |
-| **Genişlik**<br/><br/> minOccurs="0" |**xs: int** |Piksel cinsinden çıkış video çerçevenin genişliği.<br/><br/> Şu anda, genişlik ve yükseklik belirtmeniz gerekir. Genişlik ve yükseklik çift sayı olması gerekir. |
-| **Yükseklik**<br/><br/> minOccurs="0" |**xs:int** |Çerçevenin çıkış video, piksel cinsinden yüksekliği.<br/><br/> Şu anda, genişlik ve yükseklik belirtmeniz gerekir. Genişlik ve yükseklik çift sayı olması gerekir.|
-| **BFrames**<br/><br/> minOccurs="0" |**xs: int** |Başvuru kareler arasındaki B çerçeve sayısı. |
-| **ReferenceFrames**<br/><br/> minOccurs="0"<br/><br/> default=”3” |**xs:int** |Bir GOP çerçevelerde başvuru sayısı. |
-| **EntropyMode**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "Cabac" |**xs: dize** |Aşağıdaki değerlerden biri olabilir: **Cabac** ve **Cavlc**. |
-| **Kare hızı**<br/><br/> minOccurs="0" |rasyonel sayı |Çıkış videonun kare hızını belirler. Video giriş olarak aynı kare hızı kullanmak Kodlayıcı izin vermek için varsayılan "0/1" kullanın. İzin verilen değerler, ortak video kare hızları olmaları beklenir. Ancak, herhangi bir geçerli rasyonel izin verilir. Örneğin, 1/1 1 fps olacaktır ve geçerlidir.<br/><br/> -12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> -24/1 (24 fps)<br/><br/> 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> 30000/1001 (29.97 fps) <br/> <br/>**Not** Çoklu bit hızlı kodlama, özel önayarın hazır tüm katmanlar ardından oluşturuyorsanız, **gerekir** kare hızını aynı değeri kullanın.|
-| **AdaptiveBFrame**<br/><br/> minOccurs="0" |**xs: Boole** |Azure Medya Kodlayıcısı ' kopyalama |
-| **Dilimler**<br/><br/> minOccurs="0"<br/><br/> default="0" |**xs:int** |Bir çerçeve bölünmüştür kaç dilimleri belirler. Varsayılan kullanılması önerilir. |
+| **Profil**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "Auto" |**xs: String** |Şu **xs: String** değerlerinden biri olabilir: **Auto**, **Baseline**, **Main**, **High**. |
+| **Düzey**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "Auto" |**xs: String** | |
+| **Bit hızı**<br/><br/> minOccurs="0" |**xs: int** |Bu video katmanı için kullanılan bit hızı, Kbps olarak belirtilir. |
+| **Maxbit hızı**<br/><br/> minOccurs="0" |**xs: int** |Bu video katmanı için kullanılan, Kbps olarak belirtilen maksimum bit hızı. |
+| **BufferWindow**<br/><br/> minOccurs="0"<br/><br/> default="00:00:05" |**xs: Saat** |Video arabelleğinin uzunluğu. |
+| **Genişlik**<br/><br/> minOccurs="0" |**xs: int** |Çıkış video çerçevesinin piksel cinsinden genişliği.<br/><br/> Şu anda, hem genişlik hem de yükseklik belirtmeniz gerekir. Genişlik ve yüksekliğin çift sayı olması gerekir. |
+| **Yükseklik**<br/><br/> minOccurs="0" |**xs: int** |Çıkış video çerçevesinin piksel cinsinden yüksekliği.<br/><br/> Şu anda, hem genişlik hem de yükseklik belirtmeniz gerekir. Genişlik ve yüksekliğin çift sayı olması gerekir.|
+| **BFrames 'ler**<br/><br/> minOccurs="0" |**xs: int** |Başvuru çerçeveleri arasındaki B kare sayısı. |
+| **ReferenceFrames**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "3" |**xs: int** |Bir GOP içindeki başvuru çerçevelerinin sayısı. |
+| **EntropyMode**<br/><br/> minOccurs="0"<br/><br/> Varsayılan = "Katzü" |**xs: String** |Şu değerlerden biri olabilir: **Catzb** ve **CAVLC**. |
+| **Kare hızı değerini**<br/><br/> minOccurs="0" |Rational Number |Çıkış videosunun kare hızını belirler. Kodlayıcının giriş videosunun kare hızını kullanmasına izin vermek için "0/1" varsayılanını kullanın. İzin verilen değerlerin ortak video kare hızları olması beklenir. Ancak geçerli bir Rational öğesine izin verilir. Örneğin, 1/1 1 fps olur ve geçerli olur.<br/><br/> -12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> -24/1 (24 fps)<br/><br/> -24000/1001 (23,976 fps)<br/><br/> -25/1 (25 fps)<br/><br/>  -30/1 (30 fps)<br/><br/> -30000/1001 (29,97 fps) <br/> <br/>**Göz önünde** Çoklu bit hızlı kodlama için özel bir önayar oluşturuyorsanız, önceden ayarlanmış tüm katmanların aynı kare hızına sahip **olması gerekir** .|
+| **Uyartivebframe**<br/><br/> minOccurs="0" |**xs: Boolean** |Azure Medya kodlayıcıdan kopyalama |
+| **Dilimler**<br/><br/> minOccurs="0"<br/><br/> default="0" |**xs: int** |Bir karenin kaç dilimlerinin bölündüğü belirler. Varsayılan kullanım önerilir. |
 
-## <a name="AACAudio"></a> AACAudio
- Aşağıdaki öğeleri ve grupları dizisi içerir.  
+## <a name="AACAudio"></a>AACAudio
+ Aşağıdaki öğe ve grupların bir dizisini içerir.  
 
- AAC hakkında daha fazla bilgi için bkz: [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding).  
+ AAC hakkında daha fazla bilgi için bkz. [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding).  
 
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs="0 "<br/><br/> default="AACLC" |**xs: dize** |Aşağıdaki değerlerden biri olabilir: **AACLC**, **HEAACV1**, veya **HEAACV2**. |
+| **Profil**<br/><br/> minOccurs="0 "<br/><br/> default="AACLC" |**xs: String** |Şu değerlerden biri olabilir: **AACLC**, **HEAACV1**veya **HEAACV2**. |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Koşul** |**xs: dize** |Hiç ses giriş varsa, sessiz bir ses kaydı içeren bir varlık oluşturmak için Kodlayıcı zorlamak için "InsertSilenceIfNoAudio" değerini belirtin.<br/><br/> Yalnızca video ve ses yok içeren Kodlayıcı girdi gönderdiğiniz varsayılan olarak, çıktı varlık yalnızca video veriler içeren dosyalar içerir. Bazı oynatıcıları gibi çıkış akışları işlemek mümkün olmayabilir. Bu senaryodaki çıkış sessiz bir ses kaydı eklemek için Kodlayıcı zorlamak için bu ayarı kullanabilirsiniz. |
+| **Koşul** |**xs: String** |Bir giriş sesi olmadığında, kodlayıcının sessiz ses izi içeren bir varlık üretmesine zorlamak için "ınsertsilenceifnoaudio" değerini belirtin.<br/><br/> Varsayılan olarak, yalnızca video içeren ve ses içermeyen kodlayıcıya bir giriş gönderirseniz, çıkış varlığı yalnızca video verilerini içeren dosyaları içerir. Bazı oyuncular bu tür çıkış akışlarını işleyemeyebilir. Bu ayarı, kodlayıcının Bu senaryodaki çıkışa sessiz ses izi eklemesini zorlamak için kullanabilirsiniz. |
 
 ### <a name="groups"></a>Gruplar
 
 | Başvuru | Açıklama |
 | --- | --- |
-| [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |Açıklamasını görmek [AudioGroup](media-services-mes-schema.md#AudioGroup) Kanallar, örnekleme hızını ve her bir profil için ayarlanabilir bit hızı uygun sayıda bilmek. |
+| [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |Her bir profil için ayarlanacak kanal, örnekleme hızı ve bit hızının uygun sayısını öğrenmek için [Audiogroup](media-services-mes-schema.md#AudioGroup) 'un açıklamasına bakın. |
 
-## <a name="AudioGroup"></a> AudioGroup
-Hangi her profil için geçerli değerler hakkında daha fazla bilgi için aşağıdaki "Ses codec Ayrıntıları" Tablo bakın.  
+## <a name="AudioGroup"></a>AudioGroup
+Her profil için geçerli olan değerlerin ayrıntıları için aşağıdaki "ses codec bileşeni ayrıntıları" tablosuna bakın.  
 
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Kanallar**<br/><br/> minOccurs="0" |**xs: int** |Kodlanmış ses kanal sayısı. Geçerli seçenekler şunlardır: 1, 2, 5, 6, 8.<br/><br/> Varsayılan: 2. |
-| **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |Hz içinde belirtilen ses örnekleme oranı. |
-| **Bit hızı**<br/><br/> minOccurs="0" |**xs: int** |Ses kodlama belirtildiğinde KB/sn kullanılan bit hızı. |
+| **Kanallar**<br/><br/> minOccurs="0" |**xs: int** |Kodlanan ses kanalları sayısı. Şunlar geçerli seçenekler şunlardır: 1, 2, 5, 6, 8.<br/><br/> Varsayılan: 2. |
+| **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |Hz 'de belirtilen ses örnekleme hızı. |
+| **Bit hızı**<br/><br/> minOccurs="0" |**xs: int** |Ses kodlaması sırasında kullanılan bit hızı, kbps cinsinden belirtilir. |
 
-### <a name="audio-codec-details"></a>Ses kodek bileşeni ayrıntıları
+### <a name="audio-codec-details"></a>Ses codec bileşeni ayrıntıları
 
-Ses kodek bileşeni|Ayrıntılar  
+Ses codec bileşeni|Ayrıntılar  
 -----------------|---  
-**AACLC** |1:<br/><br/> - 11025: 8 &lt;hızı = &lt; 16<br/><br/> - 12000: 8 &lt;hızı = &lt; 16<br/><br/> - 16000: 8 &lt;hızı = &lt;32<br/><br/>- 22050: 24 &lt;hızı = &lt; 32<br/><br/> - 24000: 24 &lt;hızı = &lt; 32<br/><br/> - 32000: 32 &lt;hızı = &lt;192 =<br/><br/> - 44100: 56 &lt;hızı = &lt;288 =<br/><br/> - 48000: 56 &lt;hızı = &lt;288 =<br/><br/> - 88200 : 128 &lt;hızı = &lt;288 =<br/><br/> - 96000 : 128 &lt;hızı = &lt;288 =<br/><br/> 2:<br/><br/> - 11025: 16 &lt;hızı = &lt; 24<br/><br/> - 12000: 16 &lt;hızı = &lt; 24<br/><br/> - 16000: 16 &lt;hızı = &lt; 40<br/><br/> - 22050: 32 &lt;hızı = &lt; 40<br/><br/> - 24000 : 32 &lt;hızı = &lt; 40<br/><br/> - 32000:  40 &lt;hızı = &lt;384 =<br/><br/> - 44100: 96 &lt;hızı = &lt;576 =<br/><br/> - 48000 : 96 &lt;hızı = &lt;576 =<br/><br/> - 88200: 256 &lt;hızı = &lt;576 =<br/><br/> - 96000: 256 &lt;hızı = &lt;576 =<br/><br/> 5/6:<br/><br/> - 32000: 160 &lt;hızı = &lt;896 =<br/><br/> - 44100: 240 &lt;hızı = &lt;1024 =<br/><br/> - 48000: 240 &lt;hızı = &lt;1024 =<br/><br/> - 88200: 640 &lt;hızı = &lt;1024 =<br/><br/> - 96000: 640 &lt;hızı = &lt;1024 =<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;hızı = &lt;1024 =<br/><br/> - 44100 : 384 &lt;hızı = &lt;1024 =<br/><br/> - 48000: 384 &lt;hızı = &lt;1024 =<br/><br/> - 88200: 896 &lt;hızı = &lt;1024 =<br/><br/> - 96000: 896 &lt;hızı = &lt;1024 =  
-**HEAACV1** |1:<br/><br/> -22050: bit hızı = 8<br/><br/> - 24000: 8 &lt;hızı = &lt;10 =<br/><br/> - 32000: 12 &lt;hızı = &lt;64 =<br/><br/> - 44100: 20 &lt;hızı = &lt;64 =<br/><br/> - 48000: 20 &lt;hızı = &lt;64 =<br/><br/> -88200: bit hızı 64 =<br/><br/> 2:<br/><br/> - 32000: 16 &lt;hızı = &lt;128 =<br/><br/> - 44100: 16 &lt;hızı = &lt;128 =<br/><br/> - 48000: 16 &lt;hızı = &lt;128 =<br/><br/> - 88200 : 96 &lt;hızı = &lt;128 =<br/><br/> - 96000: 96 &lt;hızı = &lt;128 =<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;hızı = &lt;320 =<br/><br/> - 44100: 64 &lt;hızı = &lt;320 =<br/><br/> - 48000: 64 &lt;hızı = &lt;320 =<br/><br/> - 88200 : 256 &lt;hızı = &lt;320 =<br/><br/> - 96000: 256 &lt;hızı = &lt;320 =<br/><br/> 8:<br/><br/> - 32000: 96 &lt;hızı = &lt;448 =<br/><br/> - 44100: 96 &lt;hızı = &lt;448 =<br/><br/> - 48000: 96 &lt;hızı = &lt;448 =<br/><br/> - 88200: 384 &lt;hızı = &lt;448 =<br/><br/> - 96000: 384 &lt;hızı = &lt;448 =  
-**HEAACV2** |2:<br/><br/> - 22050: 8 &lt;hızı = &lt;10 =<br/><br/> - 24000: 8 &lt;hızı = &lt;10 =<br/><br/> - 32000: 12 &lt;hızı = &lt;64 =<br/><br/> - 44100: 20 &lt;hızı = &lt;64 =<br/><br/> - 48000: 20 &lt;hızı = &lt;64 =<br/><br/> - 88200: 64 &lt;hızı = &lt;64 =  
+**AACLC** |1:<br/><br/> -11025:8 &lt;= bit hızı &lt; 16<br/><br/> -12000:8 &lt;= bit hızı &lt; 16<br/><br/> -16000:8 &lt;= bit hızı &lt;32<br/><br/>-22050:24 &lt;= bit hızı &lt; 32<br/><br/> -24000:24 &lt;= bit hızı &lt; 32<br/><br/> -32000:32 &lt;= bit hızı &lt;= 192<br/><br/> -44100:56 &lt;= bit hızı &lt;= 288<br/><br/> -48000:56 &lt;= bit hızı &lt;= 288<br/><br/> -88200:128 &lt;= bit hızı &lt;= 288<br/><br/> -96000:128 &lt;= bit hızı &lt;= 288<br/><br/> 2:<br/><br/> -11025:16 &lt;= bit hızı &lt; 24<br/><br/> -12000:16 &lt;= bit hızı &lt; 24<br/><br/> -16000:16 &lt;= bit hızı &lt; 40<br/><br/> -22050:32 &lt;= bit hızı &lt; 40<br/><br/> -24000:32 &lt;= bit hızı &lt; 40<br/><br/> -32000:40 &lt;= bit hızı &lt;= 384<br/><br/> -44100:96 &lt;= bit hızı &lt;= 576<br/><br/> -48000:96 &lt;= bit hızı &lt;= 576<br/><br/> -88200:256 &lt;= bit hızı &lt;= 576<br/><br/> -96000:256 &lt;= bit hızı &lt;= 576<br/><br/> 5/6:<br/><br/> -32000:160 &lt;= bit hızı &lt;= 896<br/><br/> -44100:240 &lt;= bit hızı &lt;= 1024<br/><br/> -48000:240 &lt;= bit hızı &lt;= 1024<br/><br/> -88200:640 &lt;= bit hızı &lt;= 1024<br/><br/> -96000:640 &lt;= bit hızı &lt;= 1024<br/><br/> 8:<br/><br/> -32000:224 &lt;= bit hızı &lt;= 1024<br/><br/> -44100:384 &lt;= bit hızı &lt;= 1024<br/><br/> -48000:384 &lt;= bit hızı &lt;= 1024<br/><br/> -88200:896 &lt;= bit hızı &lt;= 1024<br/><br/> -96000:896 &lt;= bit hızı &lt;= 1024  
+**HEAACV1** |1:<br/><br/> -22050: bit hızı = 8<br/><br/> -24000:8 &lt;= bit hızı &lt;= 10<br/><br/> -32000:12 &lt;= bit hızı &lt;= 64<br/><br/> -44100:20 &lt;= bit hızı &lt;= 64<br/><br/> -48000:20 &lt;= bit hızı &lt;= 64<br/><br/> -88200: bit hızı = 64<br/><br/> 2:<br/><br/> -32000:16 &lt;= bit hızı &lt;= 128<br/><br/> -44100:16 &lt;= bit hızı &lt;= 128<br/><br/> -48000:16 &lt;= bit hızı &lt;= 128<br/><br/> -88200:96 &lt;= bit hızı &lt;= 128<br/><br/> -96000:96 &lt;= bit hızı &lt;= 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt;= bit hızı &lt;= 320<br/><br/> -44100:64 &lt;= bit hızı &lt;= 320<br/><br/> -48000:64 &lt;= bit hızı &lt;= 320<br/><br/> -88200:256 &lt;= bit hızı &lt;= 320<br/><br/> -96000:256 &lt;= bit hızı &lt;= 320<br/><br/> 8:<br/><br/> -32000:96 &lt;= bit hızı &lt;= 448<br/><br/> -44100:96 &lt;= bit hızı &lt;= 448<br/><br/> -48000:96 &lt;= bit hızı &lt;= 448<br/><br/> -88200:384 &lt;= bit hızı &lt;= 448<br/><br/> -96000:384 &lt;= bit hızı &lt;= 448  
+**HEAACV2** |2:<br/><br/> -22050:8 &lt;= bit hızı &lt;= 10<br/><br/> -24000:8 &lt;= bit hızı &lt;= 10<br/><br/> -32000:12 &lt;= bit hızı &lt;= 64<br/><br/> -44100:20 &lt;= bit hızı &lt;= 64<br/><br/> -48000:20 &lt;= bit hızı &lt;= 64<br/><br/> -88200:64 &lt;= bit hızı &lt;= 64  
   
-## <a name="Clip"></a> Küçük resim
+## <a name="Clip"></a>Resimler
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **startTime** |**xs:duration** |Sunu başlangıç saatini belirtir. StartTime değerinin giriş videosunun mutlak zaman damgalarının eşleşmesi gerekir. Giriş videosunun ilk karesine 12:00:10.000 bir zaman damgası varsa, örneğin, ardından StartTime en az olmalıdır 12:00:10.000 veya büyük. |
-| **Süresi** |**xs:duration** |(Örneğin, bir video kaplama görünümünü) sunu süresini belirtir. |
+| **startTime** |**xs:duration** |Bir sununun başlangıç saatini belirtir. StartTime değerinin, giriş videosunun mutlak zaman damgalarına uyması gerekir. Örneğin, giriş videosunun ilk karesinde 12:00:10.000 zaman damgası varsa StartTime, en az 12:00:10.000 veya daha büyük olmalıdır. |
+| **Süresi** |**xs:duration** |Bir sununun süresini belirtir (örneğin, videodaki bir kaplamanın görünümü). |
 
-## <a name="Output"></a> Çıkış
+## <a name="Output"></a>Çıktıların
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Dosya adı** |**xs:string** |Çıkış dosyasının adı.<br/><br/> Çıkış dosyası adı oluşturmak için aşağıdaki tabloda açıklanan makroları kullanabilirsiniz. Örneğin:<br/><br/> **"Çıktı": [{"Dosya adı": "{Basename} *{çözümleme}* {hızı} .mp4", "Format": {"Type": "MP4Format"}}]** |
+| **Dosya adı** |**xs: String** |Çıktı dosyasının adı.<br/><br/> Çıkış dosyası adlarını oluşturmak için aşağıdaki tabloda açıklanan makroları kullanabilirsiniz. Örnek:<br/><br/> **"Çıktılar": [{"FileName": "{baseName} *{Resolution}* {bit hızı}. mp4", "biçim": {"Type": "MP4Format"}}]** |
 
-### <a name="macros"></a>Makroları
+### <a name="macros"></a>Makrolar
 
 | Makrosu | Açıklama |
 | --- | --- |
-| **{Basename}** |VoD kodlama yapıyorsanız {Basename} giriş varlığı birincil dosyanın AssetFile.Name özelliğin ilk 32 karakterdir.<br/><br/> Canlı arşiv giriş varlığı ise {Basename} trackName öznitelik sunucusu bildiriminde türetilir. TopBitrate olarak kullanarak bir alt klip iş gönderme,: "< VideoStream\>TopBitrate < / VideoStream\>" ve video çıkış dosyasını içeren ve ardından {Basename} video katmanın trackName ilk 32 karakterdir en yüksek hızı ile.<br/><br/> Bunun yerine tüm giriş bit hızlarında gibi kullanarak bir alt klip iş gönderiyorsanız "< VideoStream\>* < / VideoStream\>" ve video çıkış dosyasını içeren ve ardından {Basename} olduğundan trackName ilk 32 karakterleri ilgili video katmanı. |
-| **{Codec}** |"H264" eşlenir video ve ses "AAC". |
-| **{Hızı}** |Yalnızca ses çıkış dosyası içeriyorsa, video ve ses veya hedef ses hızına sahip çıkış dosyası içeriyorsa, hedef video hızı. Kullanılan bit hızını Kbps değerdir. |
-| **{} Kanalı** |Ses dosyası içeriyorsa, ses kanal sayısı. |
-| **{Width}** |Videonun video dosyası içeriyorsa, çıkış dosyasında piksel cinsinden genişliği. |
-| **{Height}** |Video dosyası içeriyorsa, çıkış dosyasında piksel cinsinden görüntü yüksekliği. |
-| **{Extension}** |Çıkış dosyası için "Type" özelliği devralır. Çıkış dosyası adı olan bir uzantıya sahip biri: "mp4", "TH", "jpg", "png" veya "bmp". |
-| **{Index}** |Küçük resim için zorunlu. Yalnızca bir kez mevcut olmalıdır. |
+| **BaseName** |VoD kodlaması yapıyorsanız, {baseName}, giriş varlığının birincil dosyasının AssetFile.Name özelliğinin ilk 32 karakterdir.<br/><br/> Giriş varlığı canlı bir arşividir, {baseName}, sunucu bildirimindeki trackName özniteliklerinden türetilir. ' De olduğu gibi, Topbit hızını kullanarak bir alt klip işi gönderiyorsanız: "< VideoStream\>Topbit hızı </VideoStream\>" ve çıkış dosyası video içeriyorsa, {baseName} en yüksek bit hızına sahip video katmanının trackName 'in ilk 32 karakterdir.<br/><br/> Bunun yerine, "< VideoStream\>* </VideoStream\>" gibi tüm giriş bit hızlarını kullanarak bir alt klip işi gönderiyorsanız ve çıkış dosyası video içeriyorsa, {baseName} karşılık gelen video katmanının trackName 'in ilk 32 karakterdir. |
+| **Bileşeni** |Video için "H264" ve ses için "AAC" ile eşlenir. |
+| **Bit hızı** |Çıkış dosyası video ve ses içeriyorsa, hedef video bit hızı veya çıkış dosyası yalnızca ses içeriyorsa ses bit hızını hedefleyin. Kullanılan değer, kbps cinsinden bit hızında olur. |
+| **Kanalla** |Dosya ses içeriyorsa ses kanalı sayısı. |
+| **Genişliğinde** |Dosyanın video içermesi durumunda, çıkış dosyasında, videonun piksel cinsinden genişliği. |
+| **Yükseklik** |Dosya video içeriyorsa, çıkış dosyasındaki piksel cinsinden videonun yüksekliği. |
+| **Uzantının** |Çıkış dosyası için "tür" özelliğinden devralır. Çıkış dosyası adı bir uzantıya sahiptir: "MP4", "TS", "jpg", "png" veya "BMP". |
+| **INDEKS** |Küçük resim için zorunlu. Yalnızca bir kez bulunmalıdır. |
 
-## <a name="Video"></a> Video (karmaşık tür codec bileşeni devralır)
+## <a name="Video"></a>Video (karmaşık tür codec 'ten devralır)
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Start** |**xs:string** | |
-| **Adım** |**xs:string** | |
-| **Aralığı** |**xs:string** | |
-| **PreserveResolutionAfterRotation** |**xs:Boolean** |Ayrıntılı açıklaması için aşağıdaki bölüme bakın: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
+| **Start** |**xs: String** | |
+| **Step** |**xs: String** | |
+| **Aralık** |**xs: String** | |
+| **PreserveResolutionAfterRotation** |**xs: Boolean** |Ayrıntılı açıklama için şu bölüme bakın: [Preserveresolutionafterrotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
-### <a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
-Kullanmak için önerilen **PreserveResolutionAfterRotation** yüzde cinsinden çözümleme değerlerle birlikte bayrağı (genişlik "100" Height = % = "%100").  
+### <a name="PreserveResolutionAfterRotation"></a>PreserveResolutionAfterRotation
+**Preserveresolutionafterrotation** bayrağını yüzde cinsinden ifade edilen çözüm değerleriyle birlikte kullanmanız önerilir (Width = "%100%", height = "100%").  
 
-Varsayılan olarak 0 derece döndürme videolarda, kodla çözümleme ayarlarında (genişlik, yükseklik) medya Kodlayıcı standart (MES) hazır hedeflenir. Girdi videonuzun 1280 x 720 sıfır derece döndürme ile ise, örneğin, ardından varsayılan hazır çıkış aynı çözüm olduğundan emin olun.  
+Varsayılan olarak, Media Encoder Standard (MES) önayarlarında kodlama çözümleme ayarları (genişlik, yükseklik) 0 derece dönüşle videoları hedeflemektedir. Örneğin, giriş videonuzun sıfır derecelik dönüşle 1280x720 olması halinde varsayılan ayar, çıktının aynı çözünürlüğe sahip olmasını sağlamaktır.  
 
 ![MESRoation1](./media/media-services-shemas/media-services-mes-roation1.png) 
 
-Sıfır olmayan döndürme (örneğin, bir akıllı telefonundaki veya tabletindeki dikey olarak tutulan) ile giriş videosunun yakalandıktan, ardından MES varsayılan olarak giriş videosu kodla çözümleme ayarları (genişlik, yükseklik) uygular ve sonra döndürme için telafi. Örneğin, aşağıdaki resimde bakın. Hazır genişliğini kullanır "100" Height = % 100 hangi MES çıktısı 1280 piksel genişliğinde ve 720 piksel yüksekliğinde olmasını gerektiren olarak yorumlar = "%",. Görüntü döndürme sonra ardından sol ve sağda pillar-box alanlarına baştaki bu pencereye sığdırmak için resim küçültür.  
+Giriş videosu sıfır olmayan dönüşle yakalanmışsa (örneğin, dikey bir smartphone veya tablet), varsayılan olarak, giriş videosuna kodlama çözümleme ayarlarını (genişlik, yükseklik) uygular ve ardından döndürme için telafi sağlar. Örneğin, aşağıdaki resme bakın. Önceden ayarlanmış, width = "100%", height = "100%" kullanır ve bu da çıktının 1280 piksel genişliğinde ve 720 piksel yüksekliğinde olmasını gerektirdiğini yorumlar. Videoyu döndürdükten sonra, resmi o pencereye sığacak şekilde küçültür ve sol ve sağ taraftaki ekran kutusu alanlarının önüne döner.  
 
 ![MESRoation2](./media/media-services-shemas/media-services-mes-roation2.png) 
 
-Alternatif olarak, yapabileceğiniz kullanım **PreserveResolutionAfterRotation** bayrak ve değerini "true" (varsayılan değer "false"). Genişlik, önceden ayarlanmış varsa, bu nedenle = "%100", Height = "%100" ve ", bir giriş videosunun true" olarak PreserveResolutionAfterRotation 1280 piksel genişliğinde ve 720 piksel yüksekliğinde ile 90 derece döndürme olduğu sıfır derece döndürme, ancak 720 piksel genişliğinde ve 1280 içeren bir çıktı üretir piksel uzunluğa ayarlayın. Aşağıdaki resme bakın:  
+Alternatif olarak, **Preserveresolutionafterrotation** bayrağını kullanabilir ve bunu "true" olarak ayarlayabilirsiniz (varsayılan değer "false" dır). Önceden ayarlanmış, width = "100%", height = "100%" ve PreserveResolutionAfterRotation değeri "true" olarak ayarlandıysa, 1280 piksel genişliğinde ve 720 piksel yüksekliğinde olan bir giriş videosu, sıfır derecelik dönüşle bir çıkış üretir ancak 90 piksel genişliğinde ve 720 piksel uzunluğu. Aşağıdaki resme bakın:  
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
-## <a name="FormatGroup"></a> FormatGroup (grubu)
+## <a name="FormatGroup"></a>FormatGroup (Grup)
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
 | **JpgFormat** |**JpgFormat** | |
 
-## <a name="BmpLayer"></a> BmpLayer
+## <a name="BmpLayer"></a>BmpLayer
 ### <a name="element"></a>Öğe
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Genişlik**<br/><br/> minOccurs="0" |**xs:int** | |
-| **Yükseklik**<br/><br/> minOccurs="0" |**xs:int** | |
+| **Genişlik**<br/><br/> minOccurs="0" |**xs: int** | |
+| **Yükseklik**<br/><br/> minOccurs="0" |**xs: int** | |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Koşul** |**xs:string** | |
+| **Koşul** |**xs: String** | |
 
-## <a name="PngLayer"></a> PngLayer
+## <a name="PngLayer"></a>PngLayer
 ### <a name="element"></a>Öğe
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Genişlik**<br/><br/> minOccurs="0" |**xs:int** | |
-| **Yükseklik**<br/><br/> minOccurs="0" |**xs:int** | |
+| **Genişlik**<br/><br/> minOccurs="0" |**xs: int** | |
+| **Yükseklik**<br/><br/> minOccurs="0" |**xs: int** | |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Koşul** |**xs:string** | |
+| **Koşul** |**xs: String** | |
 
-## <a name="JpgLayer"></a> JpgLayer
+## <a name="JpgLayer"></a>JpgLayer
 ### <a name="element"></a>Öğe
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Genişlik**<br/><br/> minOccurs="0" |**xs:int** | |
-| **Yükseklik**<br/><br/> minOccurs="0" |**xs:int** | |
-| **Kalite**<br/><br/> minOccurs="0" |**xs:int** |Geçerli değerler: 1(worst)-100(Best) |
+| **Genişlik**<br/><br/> minOccurs="0" |**xs: int** | |
+| **Yükseklik**<br/><br/> minOccurs="0" |**xs: int** | |
+| **Kalitede**<br/><br/> minOccurs="0" |**xs: int** |Geçerli değerler: 1 (en kötü)-100 (en iyi) |
 
 ### <a name="attributes"></a>Öznitelikler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Koşul** |**xs:string** | |
+| **Koşul** |**xs: String** | |
 
-## <a name="PngLayers"></a> PngLayers
+## <a name="PngLayers"></a>Pngkatmanları
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **PngLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
+| **PngLayer**<br/><br/> minOccurs = "0" maxOccurs = "sınırsız" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
-## <a name="BmpLayers"></a> BmpLayers
+## <a name="BmpLayers"></a>Bmpkatmanları
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **BmpLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
+| **BmpLayer**<br/><br/> minOccurs = "0" maxOccurs = "sınırsız" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
-## <a name="JpgLayers"></a> JpgLayers
+## <a name="JpgLayers"></a>Jpgkatmanları
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **JpgLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
+| **JpgLayer**<br/><br/> minOccurs = "0" maxOccurs = "sınırsız" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
-## <a name="BmpImage"></a> BmpImage (karmaşık tür videodan devralır)
+## <a name="BmpImage"></a>Bmpımage (karmaşık tür videodan devralır)
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG katmanları |
+| **Pngkatmanları**<br/><br/> minOccurs="0" |[Pngkatmanları](media-services-mes-schema.md#PngLayers) |PNG katmanları |
 
-## <a name="JpgImage"></a> JpgImage (karmaşık tür videodan devralır)
+## <a name="JpgImage"></a>JpgImage (karmaşık tür videodan devralır)
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG katmanları |
+| **Pngkatmanları**<br/><br/> minOccurs="0" |[Pngkatmanları](media-services-mes-schema.md#PngLayers) |PNG katmanları |
 
-## <a name="PngImage"></a> PngImage (karmaşık tür videodan devralır)
+## <a name="PngImage"></a>PngImage (karmaşık tür videodan devralır)
 ### <a name="elements"></a>Öğeler
 
-| Ad | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG katmanları |
+| **Pngkatmanları**<br/><br/> minOccurs="0" |[Pngkatmanları](media-services-mes-schema.md#PngLayers) |PNG katmanları |
 
 ## <a name="examples"></a>Örnekler
-Bu şemaya göre oluşturulan XML hazır örneklere bakın bkz [(Media Encoder Standard) MES görev ön](media-services-mes-presets-overview.md).
+Bu şemaya göre oluşturulan XML önayarlarının örneklerine bakın, bkz. [mes Için görev önayarları (Media Encoder Standard)](media-services-mes-presets-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

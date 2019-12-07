@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555155"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901316"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -29,7 +29,11 @@ API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. 
 
 ## <a name="feature-announcements"></a>Özellik Duyuruları
 
-4 Kasım 2019-Menite Konferansı
+### <a name="december-2019"></a>Aralık 2019
+
++ [Uygulama oluşturma (Önizleme)](search-create-app-portal.md) , portalda INDIRILEBILIR bir HTML dosyası üreten yeni bir sihirbazdır. Dosya, arama hizmetinizde bir dizine bağlı olan, işlemsel bir "localhost" stili Web uygulaması işleyen katıştırılmış komut dosyası ile birlikte gelir. Sayfalar sihirbazda yapılandırılabilir ve bir arama çubuğu, sonuç alanı, kenar çubuğu gezintisi ve typeahead sorgu desteği bulunabilir. İş akışını veya görünümü genişletmek veya özelleştirmek için HTML 'yi çevrimdışı değiştirebilirsiniz.
+
+### <a name="november-2019---ignite-conference"></a>Kasım 2019-Menite Konferansı
 
 + [Artımlı dizin oluşturma (Önizleme)](cognitive-search-incremental-indexing-conceptual.md) , bir zenginleştirme ardışık düzeninde değişiklik yaparken hangi adımların yeniden işleyeceğini seçmenizi ve seçmenizi sağlar. Daha önce analiz ettiğiniz görüntü içeriğiniz varsa, artımlı dizin oluşturma yararlı olur. Maliyetli çözümlemenin çıktısı depolanır ve ek dizin oluşturma veya zenginleştirme için temel olarak kullanılır.
 
@@ -44,7 +48,7 @@ API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. 
 
 + [Azure Data Lake Storage 2. (Önizleme)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB GREMLIN API (önizleme)](search-howto-index-cosmosdb.md)ve [Cosmos DB Cassandra API (Önizleme)](search-howto-index-cosmosdb.md) Dizin oluşturucularda artık desteklenmektedir. [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)kullanarak kaydolabilirsiniz. Önizleme programına kabul edildikten sonra bir onay e-postası alacaksınız.
 
-24 2019 Temmuz
+### <a name="july-2019"></a>Temmuz 2019
 
 + [Azure Kamu Bulutu](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)'nda genel olarak kullanılabilir.
 

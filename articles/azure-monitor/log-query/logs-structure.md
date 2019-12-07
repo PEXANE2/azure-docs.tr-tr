@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894242"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893646"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
@@ -27,7 +27,7 @@ Aşağıdaki görüntüde, örnek sorgularda kullanılan farklı tablolara yazan
 ![Tablolar](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
-Azure Izleyici günlükleri tarafından toplanan tüm veriler, Application Insights dışında bir [Log Analytics çalışma alanında](../platform/manage-access.md)depolanır. Gereksinimlerinize bağlı olarak bir veya daha fazla çalışma alanı oluşturabilirsiniz. Azure kaynaklarından gelen etkinlik günlükleri ve tanılama günlükleri, sanal makinelerdeki aracılar ve Öngörüler ve izleme çözümlerinin verileri gibi [veri kaynakları](../platform/data-sources.md) , kendi ekleme kapsamında yapılandırdığınız bir veya daha fazla çalışma alanına veri yazar. [Azure Güvenlik Merkezi](/azure/security-center/) ve [Azure Sentinel](/azure/sentinel/) gibi diğer hizmetler aynı zamanda verilerini depolamak için bir Log Analytics çalışma alanı kullanır. böylece, diğer kaynaklardaki izleme verileriyle birlikte günlük sorguları kullanılarak analiz edilebilir.
+Azure Izleyici günlükleri tarafından toplanan tüm veriler, Application Insights dışında bir [Log Analytics çalışma alanında](../platform/manage-access.md)depolanır. Gereksinimlerinize bağlı olarak bir veya daha fazla çalışma alanı oluşturabilirsiniz. Azure kaynaklarından etkinlik günlükleri ve kaynak günlükleri gibi [veri kaynakları](../platform/data-sources.md) , sanal makinelerdeki aracılar ve Öngörüler ve izleme çözümlerinin verileri, kendi ekleme kapsamında yapılandırdığınız bir veya daha fazla çalışma alanına veri yazar. [Azure Güvenlik Merkezi](/azure/security-center/) ve [Azure Sentinel](/azure/sentinel/) gibi diğer hizmetler aynı zamanda verilerini depolamak için bir Log Analytics çalışma alanı kullanır. böylece, diğer kaynaklardaki izleme verileriyle birlikte günlük sorguları kullanılarak analiz edilebilir.
 
 Farklı veri türleri çalışma alanındaki farklı tablolarda depolanır ve her tablo benzersiz bir özellik kümesine sahiptir. Standart bir tablo kümesi oluşturulduğunda çalışma alanına eklenir ve farklı veri kaynakları, çözümler ve hizmetler için eklendi oldukları gibi yeni tablolar eklenir. Ayrıca, [veri TOPLAYıCı API](../platform/data-collector-api.md)'sini kullanarak özel tablolar oluşturabilirsiniz.
 
@@ -43,7 +43,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Oluşturdukları tabloların ayrıntıları için her bir veri kaynağı için belgelere bakın. Örnek olarak, [aracı veri kaynakları](../platform/agent-data-sources.md), [tanılama günlükleri](../platform/diagnostic-logs-schema.md)ve [izleme çözümleri](../insights/solutions-inventory.md)için makaleler bulunur.
+Oluşturdukları tabloların ayrıntıları için her bir veri kaynağı için belgelere bakın. Örnek olarak, [aracı veri kaynakları](../platform/agent-data-sources.md), [kaynak günlükleri](../platform/diagnostic-logs-schema.md)ve [izleme çözümleri](../insights/solutions-inventory.md)için makaleler bulunur.
 
 ### <a name="workspace-permissions"></a>Çalışma alanı izinleri
 Çalışma alanındaki verilere erişim sağlama önerilerini ve erişim denetimi stratejisini anlamak için bkz. [Azure Izleyici günlükleri dağıtımı tasarlama](../platform/design-logs-deployment.md) . Çalışma alanına erişim vermeye ek olarak, [tablo DÜZEYI RBAC](../platform/manage-access.md#table-level-rbac)kullanarak tek tek tablolarla erişimi sınırlayabilirsiniz.
@@ -59,11 +59,11 @@ Log Analytics çalışma alanının aksine, bir Application Insights uygulaması
 | Browserzamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler. |
 | customEvents        | Uygulamanız tarafından oluşturulan özel olaylar. |
 | customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler. |
-| Bağlantılıdır        | Uygulamadan dış bileşenlere çağrılar. |
-| Larý          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
-| PageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
+| bağımlılıklar        | Uygulamadan dış bileşenlere çağrılar. |
+| özel durumlar          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
+| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
 | performanceCounters | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri. |
-| istekleri            | Her uygulama isteğinin ayrıntıları.  |
+| istekler            | Her uygulama isteğinin ayrıntıları.  |
 | Lerin              | Dağıtılmış izlemenin sonuçları. |
 
 Her tablo için şemayı, uygulama için Log Analytics **şema** sekmesinde görüntüleyebilirsiniz.
@@ -77,8 +77,8 @@ Azure Izleyici günlüklerindeki her tablo kendi şemasına sahip olsa da, tüm 
 |:---|:---|:---|
 | TimeGenerated | timestamp  | Kaydın oluşturulduğu tarih ve saat. |
 | Tür          | ItemType   | Kaydın alındığı tablonun adı. |
-| _Resourceıd   |            | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
-| _Faturalandırılabilir   |            | Alınan verilerin faturalandırılabilir olup olmadığını belirtir. |
+| _ResourceId   |            | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
+| _IsBillable   |            | Alınan verilerin faturalandırılabilir olup olmadığını belirtir. |
 | _BilledSize   |            | Faturalanacak verilerin bayt cinsinden boyutunu belirtir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

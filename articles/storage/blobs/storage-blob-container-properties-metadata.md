@@ -1,18 +1,19 @@
 ---
-title: .NET-Azure depolama ile bir blob kapsayıcısı için özellikleri ve meta verileri yönetme
+title: Bir blob kapsayıcısının özelliklerini ve meta verilerini yönetmek için .NET kullanın
+titleSuffix: Azure Storage
 description: .NET istemci kitaplığı 'nı kullanarak, sistem özelliklerini ayarlama ve alma ve Azure Depolama hesabınızdaki blob kapsayıcılarında özel meta verileri depolama hakkında bilgi edinin.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/10/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d63c78fedb8dbd48655d36fecc3544fd512072e3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673370"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894207"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET ile kapsayıcı özelliklerini ve meta verileri yönetme
 
@@ -20,7 +21,7 @@ Blob kapsayıcıları, içerdikleri verilere ek olarak sistem özelliklerini ve 
 
 ## <a name="about-properties-and-metadata"></a>Özellikler ve meta veriler hakkında
 
-- **Sistem Özellikleri**: Her blob depolama kaynağında sistem özellikleri var. Bazıları okunabilir veya ayarlanabilir, diğerleri salt okunurdur. Kapakların altında bazı sistem özellikleri bazı standart HTTP üst bilgilerine karşılık gelir. .NET için Azure depolama istemci kitaplığı, bu özellikleri sizin için korur.
+- **Sistem Özellikleri**: her BLOB depolama kaynağında sistem özellikleri bulunur. Bazıları okunabilir veya ayarlanabilir, diğerleri salt okunurdur. Kapakların altında bazı sistem özellikleri bazı standart HTTP üst bilgilerine karşılık gelir. .NET için Azure depolama istemci kitaplığı, bu özellikleri sizin için korur.
 
 - **Kullanıcı tanımlı meta veriler**: Kullanıcı tanımlı meta veriler, bir BLOB depolama kaynağı için belirlediğiniz bir veya daha fazla ad-değer çiftinden oluşur. Kaynak ile ek değerleri depolamak için meta verileri kullanabilirsiniz. Meta veri değerleri yalnızca kendi amacınıza yöneliktir ve kaynağın nasıl davranacağını etkilemez.
 
@@ -96,7 +97,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-Meta verileri almak için blob veya kapsayıcınızda **Fetchattributes** veya **Fetchattributesasync** yöntemini çağırın ve ardından aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
+Meta **verileri almak** için blob veya kapsayıcınızda **Fetchattributes** veya **fetchattributesasync** yöntemini çağırın ve ardından aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
 
 ```csharp
 public static async Task ReadContainerMetadataAsync(CloudBlobContainer container)

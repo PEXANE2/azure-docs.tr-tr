@@ -1,24 +1,24 @@
 ---
-title: "Öğretici: Azure Key Vault kullanarak Azure depolama 'daki Blobları şifreleme ve şifre çözme | Microsoft Docs"
-description: Azure Key Vault Microsoft Azure Depolama için istemci tarafı şifrelemeyi kullanarak bir blobu şifreleme ve şifresini çözme.
+title: Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
+titleSuffix: Azure Storage
+description: Azure Key Vault ile istemci tarafı şifrelemeyi kullanarak bir Blobun şifrelemeyi ve şifresini çözmeyi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003443"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892898"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Öğretici: Azure Key Vault kullanarak Microsoft Azure Depolama Blobları şifreleme ve şifre çözme
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici-Azure Key Vault kullanarak blob 'ları şifreleme ve şifre çözme
 
-## <a name="introduction"></a>Giriş
 Bu öğreticide, Azure Key Vault ile istemci tarafı depolama şifrelemesi kullanımı ele alınmaktadır. Bu teknolojileri kullanarak bir konsol uygulamasında bir Blobun şifrelenmesi ve şifresinin çözülmesi konusunda size kılavuzluk eder.
 
 **Tahmini tamamlanma süresi:** 20 dakika
@@ -48,7 +48,7 @@ Azure depolama için istemci tarafı şifrelemeye genel bakış için bkz. [Iste
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault ayarlama
 
-Bu öğreticiye devam etmek için aşağıdaki adımları izlemeniz gerekir ve bu, öğretici [hızlı başlangıç bölümünde özetlenmiştir: .NET Web uygulaması](../../key-vault/quick-create-net.md)kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma:
+Bu öğreticiye devam etmek için aşağıdaki adımları izlemeniz gerekir: öğreticide bir [.NET Web uygulaması kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](../../key-vault/quick-create-net.md).
 
 * Bir anahtar kasası oluşturma.
 * Anahtar kasasına bir anahtar veya gizli dizi ekleyin.
@@ -87,7 +87,7 @@ App. config öğesine AppSettings ekleyin.
 </appSettings>
 ```
 
-Aşağıdaki `using` yönergeleri ekleyin ve projeye System. Configuration başvurusu eklediğinizden emin olun.
+Aşağıdaki `using` yönergelerini ekleyin ve projeye bir System. Configuration başvurusu eklediğinizden emin olun.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -121,7 +121,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Programınızdaki depolama ve Key Vault erişin
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Programınızdaki Azure depolama ve Key Vault erişin
 
 Main () yönteminde aşağıdaki kodu ekleyin.
 
@@ -196,13 +196,13 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Önemli yönetimi daha kolay hale getirmek için birkaç farklı tür çözümleyiciler vardır; örneğin: AggregateKeyResolver ve CachingKeyResolver.
+> Anahtar yönetimini daha kolay hale getirmek için: AggregateKeyResolver ve CachingKeyResolver gibi birçok farklı tür çözümleyici vardır.
 
 ## <a name="use-key-vault-secrets"></a>Key Vault gizli dizileri kullanın
 
 Gizli bir simetrik anahtar olduğu için, istemci tarafı şifreleme ile gizli dizi kullanma yöntemi SymmetricKey sınıfı aracılığıyla yapılır. Ancak, yukarıda belirtildiği gibi Key Vault bir gizli anahtar, bir SymmetricKey öğesine tam olarak eşlenmez. Anlamanız gereken birkaç nokta vardır:
 
-* Bir SymmetricKey içindeki anahtar sabit bir uzunluk olmalıdır: 128, 192, 256, 384 veya 512 bit.
+* Bir SymmetricKey içindeki anahtar sabit uzunlukta olmalıdır: 128, 192, 256, 384 veya 512 bit.
 * Bir SymmetricKey içindeki anahtar Base64 kodlamalı olmalıdır.
 * SymmetricKey olarak kullanılacak Key Vault gizli anahtar, Key Vault içinde "Application/sekizli-Stream" Içerik türüne sahip olmalıdır.
 
@@ -229,7 +229,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-İşte bu kadar. Keyfini çıkarın!
+
+Bu kadar. Keyfini çıkarın!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,131 +1,131 @@
 ---
-title: Bulutu Azure PowerShell kullanarak Azure bağımsız depolama yönetme | Microsoft Docs
-description: Depolama Çin Bulutu, kamu Bulutu ve Azure PowerShell kullanarak Almanya Bulutu yönetme
+title: Azure bağımsız bulutlarındaki verileri yönetmek için PowerShell 'i kullanma
+titleSuffix: Azure Storage
+description: Azure PowerShell kullanarak Çin bulutu, kamu bulutu ve Almanya bulutunda depolamayı yönetme.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 10/24/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 69707eec0ea1f2260ee50a48ce1dcb82dc9ddd8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65145877"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895230"
 ---
-# <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>PowerShell kullanarak Azure bağımsız bulutlarda depolama yönetme
+# <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>PowerShell kullanarak Azure bağımsız bulutlarında depolamayı yönetme
 
-Çoğu kişi, Azure genel bulut, genel Azure dağıtım için kullanın. De vardır özerkliği, nedeniyle için Microsoft Azure'nın bağımsız bazı dağıtımları ve benzeri. Bu bağımsız dağıtımlar "ortam" adlandırılır Aşağıdaki listede, bağımsız bulutlarda şu anda kullanılabilir ayrıntıları.
+Çoğu kişi küresel Azure dağıtımı için Azure genel bulutu kullanır. Ayrıca, bağımsız Microsoft Azure bağımsız dağıtımları da vardır. Bu bağımsız dağıtımlar "ortamlar" olarak adlandırılır. Aşağıdaki listede şu anda kullanılabilir olan bağımsız bulutlar ayrıntıları verilmiştir.
 
-* [Azure kamu Bulutu](https://azure.microsoft.com/features/gov/)
-* [Çin'de 21Vianet tarafından işletilen Azure Çin Bulutu](http://www.windowsazure.cn/)
-* [Azure Almanya Bulutu](../../germany/germany-welcome.md)
+* [Azure Kamu Bulutu](https://azure.microsoft.com/features/gov/)
+* [Çin 'de 21Vianet tarafından işletilen Azure Çin 21Vianet bulutu](http://www.windowsazure.cn/)
+* [Azure Almanya bulutu](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="using-an-independent-cloud"></a>Bağımsız bir bulut kullanma 
+## <a name="using-an-independent-cloud"></a>Bağımsız bir bulut kullanma
 
-Azure depolama bağımsız bulutlarda birini kullanmak için Azure genel yerine, bir buluta bağlanın. Bağımsız Bulutlar yerine Azure genel birini kullanmak için:
+Azure depolama 'yı bağımsız bulutlardan birinde kullanmak için Azure genel yerine bu buluta bağlanırsınız. Azure genel yerine bağımsız bulutlardan birini kullanmak için:
 
-* Belirttiğiniz *ortam* bağlantı kurmak için.
-* Belirlemek ve kullanılabildiği bölgeler kullanın.
-* Azure genel farklı doğru uç noktaya soneki kullanırsınız.
+* Bağlanılacak *ortamı* belirtirsiniz.
+* Kullanılabilir bölgeleri belirlersiniz ve kullanabilirsiniz.
+* Azure genel 'den farklı olan doğru uç nokta sonekini kullanırsınız.
 
-Örneği, Azure PowerShell modülü Az 0.7 veya üzerini gerektirir. Bir PowerShell penceresinde çalıştırın `Get-Module -ListAvailable Az` sürümü bulmak için. Hiçbir şey listelenen veya yükseltme için ihtiyacınız [Azure PowerShell modülü yükleme](/powershell/azure/install-Az-ps). 
+Örneklerde Azure PowerShell modülü az 0,7 veya üzeri bir sürüm gerekir. Bir PowerShell penceresinde, sürümü bulmak için `Get-Module -ListAvailable Az` çalıştırın. Hiçbir şey listelenmemişse veya yükseltmeniz gerekiyorsa, bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-Az-ps).
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-Çalıştırma [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) kullanılabilir Azure ortamları görmek için cmdlet:
-   
+Kullanılabilir Azure ortamlarını görmek için [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) cmdlet 'ini çalıştırın:
+
 ```powershell
 Get-AzEnvironment
 ```
 
-Hesabınıza bağlamak ve ortamı kurun istediğiniz buluta erişimi olan oturum açın. Bu örnek, Azure kamu Bulutu kullanan bir hesapta oturum gösterilmektedir.   
+Bağlanmak istediğiniz buluta erişimi olan hesabınızda oturum açın ve ortamı ayarlayın. Bu örnekte, Azure Kamu Bulutu 'nı kullanan bir hesapta nasıl oturum yapılacağı gösterilmektedir.   
 
 ```powershell
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-Çin bulut erişmek için ortamı kullanmak **AzureChinaCloud**. Alman bulut erişmek için **AzureGermanCloud**.
+Çin bulutuna erişmek için **AzureChinaCloud**ortamını kullanın. Almanya bulutuna erişmek için **AzureGermanCloud**kullanın.
 
-Bu noktada, bir depolama hesabına veya başka bir kaynak oluşturmak için konumlarının listesini gerekirse kullanılarak seçilen bulut için kullanılabilir konumlar sorgulayabilirsiniz [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
+Bu noktada, bir depolama hesabı veya başka bir kaynak oluşturmak için konum listesine ihtiyacınız varsa, [Get-AzLocation](/powershell/module/az.resources/get-azlocation)kullanarak seçilen bulut için kullanılabilir konumları sorgulayabilirsiniz.
 
 ```powershell
 Get-AzLocation | select Location, DisplayName
 ```
 
-Aşağıdaki tabloda Almanya bulutu için döndürülen konumlarını gösterir.
+Aşağıdaki tabloda, Almanya bulutu için döndürülen konumlar gösterilmektedir.
 
-|Location | displayName |
+|Konum | Görünen Ad |
 |----|----|
-| germanycentral | Almanya Orta|
-| germanynortheast | Almanya Kuzeydoğu | 
+| `germanycentral` | Almanya Orta|
+| `germanynortheast` | Almanya Kuzeydoğu |
 
 
-## <a name="endpoint-suffix"></a>Uç nokta son eki
+## <a name="endpoint-suffix"></a>Uç nokta soneki
 
-Bu ortamların her birinde için uç nokta soneki Azure genel uç noktasından farklıdır. Örneğin, ortak Azure blob uç noktası soneki olan **blob.core.windows.net**. Kamu bulutu için blob uç noktası sonekidir **blob.core.usgovcloudapi.net**. 
+Bu ortamların her biri için uç nokta soneki, Azure genel uç noktasından farklıdır. Örneğin, Azure genel için blob uç nokta soneki **BLOB.Core.Windows.net**. Kamu Bulutu için blob Endpoint suffix **BLOB.Core.usgovcloudapi.net**.
 
-### <a name="get-endpoint-using-get-azenvironment"></a>Get-AzEnvironment kullanarak uç noktasını alın 
+### <a name="get-endpoint-using-get-azenvironment"></a>Get-AzEnvironment kullanarak uç nokta al
 
-Uç nokta son eki kullanarak almak [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment). Uç nokta *StorageEndpointSuffix* ortam özelliği. Aşağıdaki kod parçacıkları, bunun nasıl yapılacağını gösterir. Bu komutların tümü bir şey iade "core.cloudapp.net" veya "core.cloudapi.de", vb. gibi. Bu, bu hizmete erişmek için depolama hizmeti ekleyin. Örneğin, "queue.core.cloudapi.de" Almanca bulutta kuyruk hizmeti erişim sağlar.
+[Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment)kullanarak uç nokta sonekini alın. Uç noktası, ortamının *Storageendpointsuffix* özelliğidir.
 
-Bu kod parçacığı tüm ortamları ve her biri için uç nokta sonekini alır.
+Aşağıdaki kod parçacıkları, uç nokta sonekinin nasıl alınacağını gösterir. Bu komutların tümü, "core.cloudapp.net" veya "core.cloudapi.de" gibi bir şey döndürür. Bu hizmete erişmek için son eki depolama hizmetine ekleyin. Örneğin, "queue.core.cloudapi.de", Almanya bulutundaki kuyruk hizmetine erişir.
+
+Bu kod parçacığı, her biri için tüm ortamları ve uç nokta sonekini alır.
 
 ```powershell
 Get-AzEnvironment | select Name, StorageEndpointSuffix 
 ```
 
-Bu komut, aşağıdaki sonuçları döndürür.
+Bu komut aşağıdaki sonuçları döndürür.
 
-| Name| StorageEndpointSuffix|
+| Adı| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-Belirtilen ortam için özelliklerin tümünü almak için arama **Get-AzEnvironment** ve bulut adı belirtin. Bu kod parçacığı özelliklerin bir listesini döndürür; Aranacak **StorageEndpointSuffix** listesinde. Aşağıdaki örnek, Almanya bulutu için aynıdır.
+Belirtilen ortamın tüm özelliklerini almak için **Get-AzEnvironment** ' ı çağırın ve bulut adını belirtin. Bu kod parçacığı, özelliklerin bir listesini döndürür; listede **Storageendpointsuffix** öğesini arayın. Aşağıdaki örnek, Almanya bulutuna yöneliktir.
 
 ```powershell
-Get-AzEnvironment -Name AzureGermanCloud 
+Get-AzEnvironment -Name AzureGermanCloud
 ```
 
-Sonuçlar aşağıdakine benzer:
+Sonuçlar aşağıdaki değerlere benzer:
 
-|Özellik Adı|Değer|
+|Özellik adı|Değer|
 |----|----|
-| Name | AzureGermanCloud |
-| EnableAdfsAuthentication | False |
-| ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
-| GalleryURL | https://gallery.cloudapi.de/ |
-| ManagementPortalUrl | https://portal.microsoftazure.de/ | 
-| ServiceManagementUrl | https://manage.core.cloudapi.de/ |
-| PublishSettingsFileUrl| https://manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl | http://management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix | .database.cloudapi.de |
-| **StorageEndpointSuffix** | core.cloudapi.de |
-| ... | ... | 
-
-Yalnızca depolama uç noktası son eki özelliği almak için belirli bulut almak ve bu bir özellik için isteyin.
+| Adı | `AzureGermanCloud` |
+| EnableAdfsAuthentication | `False` |
+| Activedirectoryserviceendpointresourceı | `http://management.core.cloudapi.de/` |
+| Gallerurl 'Si | `https://gallery.cloudapi.de/` |
+| ManagementPortalUrl 'Si | `https://portal.microsoftazure.de/` |
+| ServiceManagementUrl | `https://manage.core.cloudapi.de/` |
+| PublishSettingsFileUrl| `https://manage.microsoftazure.de/publishsettings/index` |
+| ResourceManagerUrl | `http://management.microsoftazure.de/` |
+| SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
+| **StorageEndpointSuffix** | `core.cloudapi.de` |
+| ... | ... |
+Yalnızca depolama uç noktası soneki özelliğini almak için, belirli bulutu alın ve yalnızca bir özelliği isteyin.
 
 ```powershell
 $environment = Get-AzEnvironment -Name AzureGermanCloud
-Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
+Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix
 ```
 
-Bu, aşağıdaki bilgileri döndürür.
+Bu komut aşağıdaki bilgileri döndürür:
 
-```
-Storage Endpoint Suffix = core.cloudapi.de
-```
+`Storage Endpoint Suffix = core.cloudapi.de`
 
-### <a name="get-endpoint-from-a-storage-account"></a>Bir depolama hesabından uç noktası alma
+### <a name="get-endpoint-from-a-storage-account"></a>Depolama hesabından uç nokta al
 
-Ayrıca, uç noktaları almak için bir depolama hesabı özelliklerini inceleyebilirsiniz. Bu PowerShell komut dosyanızda bir depolama hesabı kullanıyorsanız yararlı olabilir; yalnızca gereksinim duyduğunuz uç nokta da alabilirsiniz. 
+Ayrıca, uç noktaları almak için bir depolama hesabının özelliklerini inceleyebilirsiniz:
 
 ```powershell
 # Get a reference to the storage account.
@@ -141,7 +141,7 @@ Write-Host "queue endpoint = " $storageAccount.PrimaryEndPoints.Queue
 Write-Host "table endpoint = " $storageAccount.PrimaryEndPoints.Table
 ```
 
-Kamu bulutunda bir depolama hesabı için bu aşağıdaki döndürür: 
+Kamu bulutundaki bir depolama hesabı için bu komut aşağıdaki çıktıyı döndürür:
 
 ```
 blob endpoint = http://myexistingstorageaccount.blob.core.usgovcloudapi.net/
@@ -150,13 +150,13 @@ queue endpoint = http://myexistingstorageaccount.queue.core.usgovcloudapi.net/
 table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 ```
 
-## <a name="after-setting-the-environment"></a>Ortam ayarladıktan sonra
+## <a name="after-setting-the-environment"></a>Ortamı ayarladıktan sonra
 
-Burada, depolama hesaplarınızı yönetin ve veri düzlemine makalesinde açıklandığı şekilde erişmek için kullanılan aynı PowerShell kullanabileceğiniz ileride gelen [Azure PowerShell kullanarak Azure depolama ile](storage-powershell-guide-full.md).
+Buradan sonra, depolama hesaplarınızı yönetmek için kullanılan PowerShell 'i kullanabilir ve [Azure Storage ile Azure PowerShell kullanma](storage-powershell-guide-full.md)makalesinde açıklandığı şekilde veri düzlemine erişebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Yeni bir kaynak grubu ve bu alıştırma için depolama hesabı oluşturduysanız, kaynak grubunu kaldırarak tüm varlıkları kaldırabilirsiniz. Bu, ayrıca grubun içerdiği tüm kaynakları da siler. Bu durumda, oluşturduğunuz depolama hesabına ve kaynak grubunu kaldırır.
+Bu alıştırma için yeni bir kaynak grubu ve depolama hesabı oluşturduysanız, kaynak grubunu silerek her iki varlığı da kaldırabilirsiniz. Kaynak grubunu sildiğinizde o grupta bulunan tüm kaynaklar da silinir.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -164,8 +164,8 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell oturumları arasında kalıcı kullanıcı oturumları](/powershell/azure/context-persistence)
-* [Azure kamu depolama](../../azure-government/documentation-government-services-storage.md)
-* [Microsoft Azure kamu Geliştirici Kılavuzu](../../azure-government/documentation-government-developer-guide.md)
-* [Azure Çin uygulamaları için Geliştirici Notları](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [PowerShell oturumları arasında kullanıcı oturumlarını kalıcı yapma](/powershell/azure/context-persistence)
+* [Azure Kamu depolama](../../azure-government/documentation-government-services-storage.md)
+* [Microsoft Azure Kamu Geliştirici Kılavuzu](../../azure-government/documentation-government-developer-guide.md)
+* [Azure Çin 21Vianet uygulamaları için geliştirici notları](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure Almanya belgeleri](../../germany/germany-welcome.md)

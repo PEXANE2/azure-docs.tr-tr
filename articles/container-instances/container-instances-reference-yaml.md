@@ -3,12 +3,12 @@ title: Kapsayıcı grubu için YAML başvurusu
 description: Bir kapsayıcı grubunu yapılandırmak için Azure Container Instances tarafından desteklenen YAML dosyası başvurusu
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533500"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896563"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML başvurusu: Azure Container Instances
 
@@ -38,7 +38,7 @@ properties: # Properties of container group
       image: string # Container image used to create the instance
       command:
       - string
-      ports: # Exposed ports on the instance
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
       - protocol: string
         port: integer
       environmentVariables:
@@ -140,7 +140,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
 |  ad | string | Yes | Kapsayıcı grubunun adı. |
-|  apiVersion | yardımının | Yes | 2018-10-01 |
+|  apiVersion | enum | Yes | 2018-10-01 |
 |  location | string | Hayır | Kaynak konumu. |
 |  etiketler | object | Hayır | Kaynak etiketleri. |
 |  kimlik | object | Hayır | Yapılandırılmışsa kapsayıcı grubunun kimliği. - [Containergroupıdentity nesnesi](#ContainerGroupIdentity) |
@@ -153,7 +153,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  type | yardımının | Hayır | Kapsayıcı grubu için kullanılan kimlik türü. ' SystemAssigned, Useratandı ' türü hem örtük olarak oluşturulan bir kimliği hem de Kullanıcı tarafından atanan kimlikleri içerir. ' None ' türü, kapsayıcı grubundaki tüm kimlikleri kaldırır. -SystemAssigned, Useratandı, SystemAssigned, Useratandı, None |
+|  type | enum | Hayır | Kapsayıcı grubu için kullanılan kimlik türü. ' SystemAssigned, Useratandı ' türü hem örtük olarak oluşturulan bir kimliği hem de Kullanıcı tarafından atanan kimlikleri içerir. ' None ' türü, kapsayıcı grubundaki tüm kimlikleri kaldırır. -SystemAssigned, Useratandı, SystemAssigned, Useratandı, None |
 |  Userassignedıdentities | object | Hayır | Kapsayıcı grubuyla ilişkili kullanıcı kimliklerinin listesi. Kullanıcı kimlik sözlüğü anahtar başvuruları Azure Resource Manager kaynak kimlikleri şu biçimde olacaktır: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} '. |
 
 
@@ -165,9 +165,9 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 |  ---- | ---- | ---- | ---- |
 |  kapsayıcılar | array | Yes | Kapsayıcı grubu içindeki kapsayıcılar. - [kapsayıcı nesnesi](#Container) |
 |  imageRegistryCredentials | array | Hayır | Kapsayıcı grubunun oluşturulduğu görüntü kayıt defteri kimlik bilgileri. - [ImageRegistryCredential nesnesi](#ImageRegistryCredential) |
-|  restartPolicy | yardımının | Hayır | Kapsayıcı grubundaki tüm kapsayıcılar için ilkeyi yeniden başlatın. - `Always` her zaman yeniden Başlat-`OnFailure` hata durumunda yeniden başlatma `Never`. -Always, OnFailure, hiçbir zaman |
+|  restartPolicy | enum | Hayır | Kapsayıcı grubundaki tüm kapsayıcılar için ilkeyi yeniden başlatın. - `Always` her zaman yeniden Başlat-`OnFailure` hata durumunda yeniden başlatma `Never`. -Always, OnFailure, hiçbir zaman |
 |  Belirlenemiyor | object | Hayır | Kapsayıcı grubunun IP adresi türü. - [IPAddress nesnesi](#IpAddress) |
-|  osType | yardımının | Yes | Kapsayıcı grubundaki kapsayıcılar için gereken işletim sistemi türü. -Windows veya Linux |
+|  osType | enum | Yes | Kapsayıcı grubundaki kapsayıcılar için gereken işletim sistemi türü. -Windows veya Linux |
 |  volumes | array | Hayır | Bu kapsayıcı grubundaki kapsayıcılarla bağlankalebilecek birimlerin listesi. - [Volume nesnesi](#Volume) |
 |  tanılama | object | Hayır | Bir kapsayıcı grubu için tanılama bilgileri. - [Containergroupdiagnostics nesnesi](#ContainerGroupDiagnostics) |
 |  networkProfile | object | Hayır | Bir kapsayıcı grubu için ağ profili bilgileri. - [Containergroupnetworkprofile nesnesi](#ContainerGroupNetworkProfile) |
@@ -202,7 +202,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
 |  ports | array | Yes | Kapsayıcı grubunda kullanıma sunulan bağlantı noktalarının listesi. - [bağlantı noktası nesnesi](#Port) |
-|  type | yardımının | Yes | IP 'nin genel İnternet 'e veya özel VNET 'e açık olup olmadığını belirtir. -Public veya Private |
+|  type | enum | Yes | IP 'nin genel İnternet 'e veya özel VNET 'e açık olup olmadığını belirtir. -Public veya Private |
 |  IP | string | Hayır | Genel internet 'e sunulan IP. |
 |  dnsNameLabel | string | Hayır | IP için DNS ad etiketi. |
 
@@ -246,7 +246,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 |  ---- | ---- | ---- | ---- |
 |  Kullanır | array | Yes | Kapsayıcı grubu için DNS sunucuları. -dize |
 |  searchDomains | string | Hayır | Kapsayıcı grubunda ana bilgisayar adı araması için DNS arama etki alanları. |
-|  Seçenekler | string | Hayır | Kapsayıcı grubu için DNS seçenekleri. |
+|  options | string | Hayır | Kapsayıcı grubu için DNS seçenekleri. |
 
 
 <a id="ContainerProperties" />
@@ -259,7 +259,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 |  command | array | Hayır | Exec form 'da kapsayıcı örneği içinde yürütülecek komutlar. -dize |
 |  ports | array | Hayır | Kapsayıcı örneğindeki açığa çıkarılan bağlantı noktaları. - [Containerport nesnesi](#ContainerPort) |
 |  environmentVariables | array | Hayır | Kapsayıcı örneğinde ayarlanacak ortam değişkenleri. - [Environmentvariable nesnesi](#EnvironmentVariable) |
-|  kaynakların | object | Yes | Kapsayıcı örneğinin kaynak gereksinimleri. - [Resourcerequirements nesnesi](#ResourceRequirements) |
+|  resources | object | Yes | Kapsayıcı örneğinin kaynak gereksinimleri. - [Resourcerequirements nesnesi](#ResourceRequirements) |
 |  Birimsiz bağlama | array | Hayır | Kapsayıcı örneği için kullanılabilir birim bağlama. - [Volumemount nesnesi](#VolumeMount) |
 |  Livenessaraştırması | object | Hayır | Lizleştirme araştırması. - [Containeraraştırma nesnesi](#ContainerProbe) |
 |  Readinessaraştırması | object | Hayır | Hazırlık araştırması. - [Containeraraştırma nesnesi](#ContainerProbe) |
@@ -271,7 +271,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  Protocol | yardımının | Hayır | Bağlantı noktasıyla ilişkili protokol. -TCP veya UDP |
+|  protocol | enum | Hayır | Bağlantı noktasıyla ilişkili protokol. -TCP veya UDP |
 |  port | integer | Yes | Bağlantı noktası numarası. |
 
 
@@ -293,9 +293,9 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  dizinden | string | Hayır | Hedef dizin adı. '.. ' İle içermemelidir veya başlamamalıdır.  '. ' Sağlanırsa, birim dizini git deposu olur.  Aksi halde, belirtilmişse, belirtilen ada sahip alt dizinde Git deposunu içerir. |
-|  Depo | string | Yes | Depo URL 'SI |
-|  uncaya | string | Hayır | Belirtilen düzeltme için karmayı işleyin. |
+|  dizin | string | Hayır | Hedef dizin adı. '.. ' İle içermemelidir veya başlamamalıdır.  '. ' Sağlanırsa, birim dizini git deposu olur.  Aksi halde, belirtilmişse, belirtilen ada sahip alt dizinde Git deposunu içerir. |
+|  depo | string | Yes | Depo URL'si |
+|  revision | string | Hayır | Belirtilen düzeltme için karmayı işleyin. |
 
 
 <a id="LogAnalytics" />
@@ -304,9 +304,9 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  Workspaceıd | string | Yes | Log Analytics için çalışma alanı kimliği |
+|  workspaceId | string | Yes | Log Analytics için çalışma alanı kimliği |
 |  workspaceKey | string | Yes | Log Analytics için çalışma alanı anahtarı |
-|  Günlüğe kaydetme türü | yardımının | Hayır | Kullanılacak günlük türü. -Containerınsights veya Containerınstancelogs |
+|  Günlüğe kaydetme türü | enum | Hayır | Kullanılacak günlük türü. -Containerınsights veya Containerınstancelogs |
 |  meta veriler | object | Hayır | Log Analytics için meta veriler. |
 
 
@@ -316,7 +316,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  Protocol | yardımının | Hayır | Bağlantı noktasıyla ilişkili protokol. -TCP veya UDP |
+|  protocol | enum | Hayır | Bağlantı noktasıyla ilişkili protokol. -TCP veya UDP |
 |  port | integer | Yes | Kapsayıcı grubu içinde ortaya çıkarılan bağlantı noktası numarası. |
 
 
@@ -337,8 +337,8 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  istekleri | object | Yes | Bu kapsayıcı örneğinin kaynak istekleri. - [Resourcerequests nesnesi](#ResourceRequests) |
-|  değerleri | object | Hayır | Bu kapsayıcı örneğinin kaynak sınırları. - [Resourcelimit nesnesi](#ResourceLimits) |
+|  istekler | object | Yes | Bu kapsayıcı örneğinin kaynak istekleri. - [Resourcerequests nesnesi](#ResourceRequests) |
+|  sınırlar | object | Hayır | Bu kapsayıcı örneğinin kaynak sınırları. - [Resourcelimit nesnesi](#ResourceLimits) |
 
 
 <a id="VolumeMount" />
@@ -404,9 +404,9 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
-|  Yolun | string | Hayır | Araştırmanın yolu. |
+|  yol | string | Hayır | Araştırmanın yolu. |
 |  port | integer | Yes | Araştırmanın bağlantı noktası numarası. |
-|  Şemadaki | yardımının | Hayır | Düzen. -http veya https |
+|  düzen | enum | Hayır | Düzen. -http veya https |
 
 
 <a id="GpuResource" />
@@ -416,7 +416,7 @@ Aşağıdaki tablolarda, şemada ayarlamanız gereken değerler açıklanır.
 |  Adı | Tür | Gereklidir | Değer |
 |  ---- | ---- | ---- | ---- |
 |  count | integer | Yes | GPU kaynağının sayısı. |
-|  isteyin | yardımının | Yes | GPU kaynağının SKU 'SU. -K80, P100, V100 |
+|  sku | enum | Yes | GPU kaynağının SKU 'SU. -K80, P100, V100 |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

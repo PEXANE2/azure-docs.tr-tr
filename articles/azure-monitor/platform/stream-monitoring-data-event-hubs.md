@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 952485a3bb8feb1434f4f4705f6c07176dd1e1f6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559077"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894478"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub 'ına akış
 Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede, farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.
@@ -30,7 +30,6 @@ Herhangi bir veri kaynağı için akışı yapılandırmadan önce, [bir Event H
 * Azure etkinlik günlüğü için bir Event Hubs ad alanı seçmelisiniz ve Azure Izleyici, bu ad alanı içinde _Öngörüler-logs-işletimsel-logs_adlı bir olay hub 'ı oluşturur. Diğer günlük türleri için, mevcut bir olay hub 'ını seçebilir veya Azure Izleyici 'nin günlük kategorisi başına bir olay hub 'ı oluşturmasını sağlayabilirsiniz.
 * Giden bağlantı noktası 5671 ve 5672, genellikle olay hub 'ından veri kullanan bilgisayar veya VNET üzerinde açılmalıdır.
 
-
 ## <a name="monitoring-data-available"></a>İzleme verileri kullanılabilir
 [Azure izleyici için izleme verileri kaynakları](data-sources.md) , Azure uygulamaları için farklı veri katmanlarını ve her biri için kullanılabilen izleme verileri türlerini açıklar. Aşağıdaki tabloda bu katmanların her biri ve bu verilerin bir olay hub 'ına nasıl akışa alınacağını gösteren bir açıklama listelenmektedir. Daha ayrıntılı bilgi için sağlanan bağlantıları izleyin.
 
@@ -38,7 +37,7 @@ Herhangi bir veri kaynağı için akışı yapılandırmadan önce, [bir Event H
 |:---|:---|:---|
 | [Azure kiracısı](data-sources.md#azure-tenant) | Denetim günlüklerini Azure Active Directory | AAD kiracınızda kiracı tanılama ayarını yapılandırın. Ayrıntılar için bkz. [öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) . |
 | [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik günlüğü olaylarını Event Hubs dışarı aktarmak için bir günlük profili oluşturun.  Ayrıntılar için bkz. [Azure etkinlik günlüğünü depolama alanına veya azure Event Hubs dışa aktarma](activity-log-export.md) . |
-| [Azure kaynakları](data-sources.md#azure-resources) | Platform ölçümleri<br>Tanılama günlükleri |Her iki tür veri, bir kaynak tanılama ayarı kullanılarak bir olay hub 'ına gönderilir. Ayrıntılar için bkz. [Azure tanılama günlüklerini bir olay hub 'ına akış](resource-logs-stream-event-hubs.md) . |
+| [Azure kaynakları](data-sources.md#azure-resources) | Platform ölçümleri<br> Kaynak günlükleri |Her iki tür veri, bir kaynak tanılama ayarı kullanılarak bir olay hub 'ına gönderilir. Ayrıntılar için bkz. [Azure Kaynak günlüklerini bir olay hub 'ına akış](resource-logs-stream-event-hubs.md) . |
 | [İşletim sistemi (konuk)](data-sources.md#operating-system-guest) | Azure sanal makineleri | Azure 'daki Windows ve Linux sanal makinelerine [Azure tanılama uzantısını](diagnostics-extension-overview.md) yükler. Windows VM 'Lerle ilgili ayrıntılar için [Event Hubs kullanarak bkz. Azure Tanılama verileri etkin yolda](diagnostics-extension-stream-event-hubs.md) ve Linux VM 'lerinde Ayrıntılar için [ölçümleri ve günlükleri Izlemek üzere Linux Tanılama uzantısı 'nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
 | [Uygulama kodu](data-sources.md#application-code) | Application Insights | Application Insights, Olay Hub 'larına veri akışı için doğrudan bir yöntem sağlamaz. Application Insights verilerinin sürekli olarak bir depolama hesabına [dışarı aktarılmasını ayarlayabilir](../../azure-monitor/app/export-telemetry.md) ve ardından mantıksal uygulama [ile el ile akışta](#manual-streaming-with-logic-app)açıklanan şekilde verileri bir olay hub 'ına göndermek için bir mantıksal uygulama kullanabilirsiniz. |
 

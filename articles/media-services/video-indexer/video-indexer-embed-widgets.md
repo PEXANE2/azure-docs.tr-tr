@@ -1,7 +1,7 @@
 ---
 title: Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 titleSuffix: Azure Media Services
-description: Uygulamanıza Video Indexer pencere öğeleri eklemeyi öğrenin.
+description: Bu makalede, uygulamanıza Azure Media Services Video Indexer pencere öğelerini nasıl katıştıracağı gösterilmektedir.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839113"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892745"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 
@@ -29,34 +29,34 @@ Sürüm 2 ' den başlayarak pencere öğesi temel URL 'SI, belirtilen hesabın b
 
 Bilişsel Öngörüler pencere öğesi, video dizin oluşturma sürecinizden ayıklanan tüm görsel öngörüleri içerir. Bilişsel Öngörüler pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
-|Ad|Tanım|Açıklama|
+|Adı|Tanım|Açıklama|
 |---|---|---|
 |`widgets`|Virgülle ayrılmış dizeler|, İşlemek istediğiniz öngörüleri denetlemenize olanak tanır. <br/> Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` yalnızca kişiler ve marka Kullanıcı arabirimi öngörülerini işler.<br/>Mevcut seçenekler: people (kişiler), keywords (anahtar sözcükler), annotations (ek açıklamalar), brands (markalar), sentiments (yaklaşımlar), transcript (transkript), search (arama).<br/>`widgets` URL parametresinin sürüm 2 ' de desteklenmediğini unutmayın.<br/>|
-|`locale`|Kısa bir dil kodu|Öngörüler dilini denetler. Varsayılan değer `en` ' dır. <br/> Örnek: `locale=de`.|
+|`locale`|Kısa bir dil kodu|Öngörüler dilini denetler. Varsayılan değer `en`. <br/> Örnek: `locale=de`.|
 |`tab`|Varsayılan seçili sekme|Varsayılan olarak işlenen **Öngörüler** sekmesini denetler. <br/> Örnek: `tab=timeline`, öngörüleri **zaman çizelgesi** sekmesi seçili olarak işler.|
 
 ### <a name="player-widget"></a>Yürütücü pencere öğesi
 
 Video akışını Uyarlamalı bit hızı kullanarak akışa almak için oynatıcı pencere öğesini kullanabilirsiniz. Oynatıcı pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
-|Ad|Tanım|Açıklama|
+|Adı|Tanım|Açıklama|
 |---|---|---|
 |`t`|Başlangıçtan itibaren saniye|Player 'ın belirtilen zaman noktasından yürütmeye başlamasını sağlar.<br/> Örnek: `t=60`.|
 |`captions`|Dil kodu|Resim **yazıları** menüsünde kullanılabilir olacak pencere öğesi yükleme sırasında, belirtilen dilde resim yazısını getirir.<br/> Örnek: `captions=en-US`.|
 |`showCaptions`|Boole değeri|Yürütücünün etkin olan açıklamalı alt yazıları yüklemesini sağlar.<br/> Örnek: `showCaptions=true`.|
 |`type`||Bir ses oynatıcı kaplamasını etkinleştirir (video bölümü kaldırılır).<br/> Örnek: `type=audio`.|
-|`autoplay`|Boole değeri|Player 'ın yüklendiğinde videoyu oynatmaya başlaması gerekip gerekmediğini gösterir. Varsayılan değer `true` ' dır.<br/> Örnek: `autoplay=false`.|
-|`language`|Dil kodu|Oynatıcı dilini denetler. Varsayılan değer `en-US` ' dır.<br/>Örnek: `language=de-DE`.|
+|`autoplay`|Boole değeri|Player 'ın yüklendiğinde videoyu oynatmaya başlaması gerekip gerekmediğini gösterir. Varsayılan değer `true`.<br/> Örnek: `autoplay=false`.|
+|`language`|Dil kodu|Oynatıcı dilini denetler. Varsayılan değer `en-US`.<br/>Örnek: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Düzenleyici pencere öğesi
 
 Yeni projeler oluşturmak ve bir videonun öngörülerini yönetmek için düzenleyici pencere öğesini kullanabilirsiniz. Düzenleyici pencere öğesi, aşağıdaki isteğe bağlı URL parametrelerini destekler.
 
-|Ad|Tanım|Açıklama|
+|Adı|Tanım|Açıklama|
 |---|---|---|
 |`accessToken`<sup>*</sup>|Dize|Yalnızca pencere öğesini katıştırmak için kullanılan hesapta olan videolara erişim sağlar.<br> Düzenleyici pencere öğesi `accessToken` parametresi gerektiriyor.|
-|`language`|Dil kodu|Oynatıcı dilini denetler. Varsayılan değer `en-US` ' dır.<br/>Örnek: `language=de-DE`.|
-|`locale`|Kısa bir dil kodu|Öngörüler dilini denetler. Varsayılan değer `en` ' dır.<br/>Örnek: `language=de`.|
+|`language`|Dil kodu|Oynatıcı dilini denetler. Varsayılan değer `en-US`.<br/>Örnek: `language=de-DE`.|
+|`locale`|Kısa bir dil kodu|Öngörüler dilini denetler. Varsayılan değer `en`.<br/>Örnek: `language=de`.|
 
 <sup>*</sup> Sahip `accessToken` dikkatli bir şekilde sağlamalıdır.
 
@@ -186,7 +186,7 @@ Azure Media Player dışında bir video oynatıcı kullanıyorsanız, iletişim 
         </video>    
 
 2. Bilişsel İçgörüler pencere öğesini ekleyin.
-3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örneğin:
+3. "İleti" olayını dinleyerek yürütücünüz için iletişimi uygulayın. Örnek:
 
         <script>
     
@@ -247,7 +247,7 @@ Bu seçeneğin yalnızca içgörülerin yeni bir pencerede açılacağı durumla
 
 Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütücü boyutunu seçebilirsiniz.
 
-Örneğin:
+Örnek:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

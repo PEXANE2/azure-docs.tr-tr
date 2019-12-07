@@ -4,16 +4,16 @@ description: Denetim altında telemetri hacmini tutma.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: c124e6c433f83212c0db815a2fd06cfcfdf86253
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884721"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893374"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -340,7 +340,7 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Her HTTP ist
 > 
 > 
 
-2. `sampler` yapılandırmanız kapsamında bir `Tracer` belirtmelisiniz. Açık bir örnekleyiciyi sağlanmazsa, varsayılan olarak, olasılık örnekleyici örneği kullanılacaktır. Tüm 10000 isteklerinin bir tanesi Application Insights için varsayılan olarak, olasılık 1/10000 bir hız kullanır. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
+2. `Tracer` yapılandırmanız kapsamında bir `sampler` belirtmelisiniz. Açık bir örnekleyiciyi sağlanmazsa, varsayılan olarak, olasılık örnekleyici örneği kullanılacaktır. Tüm 10000 isteklerinin bir tanesi Application Insights için varsayılan olarak, olasılık 1/10000 bir hız kullanır. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
 
 3. Örnekleyici belirtirken `Tracer` öğesinin örnekleme oranı 0,0 ile 1,0 (1,0 dahil) arasında olan bir örnekleyici belirttiğinden emin olun. 1,0 örnekleme oranı %100 ' i temsil eder, ancak tüm istekleriniz Application Insights telemetri olarak gönderilir.
 

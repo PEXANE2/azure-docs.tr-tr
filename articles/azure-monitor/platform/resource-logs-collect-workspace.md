@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200511"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894522"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın
 Azure 'da [kaynak günlükleri](resource-logs-overview.md) , bir Azure kaynağının iç işlemi hakkında zengin, sık veriler sağlar. Bu makalede, güçlü günlük sorgularını kullanarak ve ayrıca uyarılar gibi diğer Azure Izleyici özelliklerinden yararlanmak için, bu dosyayı Azure Izleyici günlüklerinde toplanan diğer izleme verileriyle analiz etmenizi sağlayan bir Log Analytics çalışma alanında kaynak günlüklerinin toplanması açıklanır. görüntüler. 
@@ -51,7 +51,7 @@ Aşağıdaki veri türleri için tanılama ayarlarının aynı çalışma alanı
 
 AzureDiagnostics tablosu şöyle görünür:  
 
-| ResourceProvider    | Kategori     | A  | B  | C  | D  | A  | F  | G  | H  | I  |
+| ResourceProvider    | Kategori     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
 | Microsoft. Service1 | Günlüklerini    |    |    |    | Q1 | W1 | E1 |    |    |    |
@@ -68,7 +68,7 @@ Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
  
 - Tablo *Service1AuditLogs* aşağıdaki gibi:
 
-    | Kaynak sağlayıcısı | Kategori | A | B | C |
+    | Kaynak Sağlayıcı | Kategori | A | B | C |
     | -- | -- | -- | -- | -- |
     | Service1 | AuditLogs | x1 | Y1 | z1 |
     | Service1 | AuditLogs | x5 | Y5 | z5 |
@@ -76,7 +76,7 @@ Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
 
 - Tablo *Service1ErrorLogs* aşağıdaki gibi:  
 
-    | Kaynak sağlayıcısı | Kategori | D | A | F |
+    | Kaynak Sağlayıcı | Kategori | D | E | F |
     | -- | -- | -- | -- | -- | 
     | Service1 | Günlüklerini |  Q1 | W1 | E1 |
     | Service1 | Günlüklerini |  üç | W2 | E2 |
@@ -84,7 +84,7 @@ Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
 
 - Tablo *Service2AuditLogs* aşağıdaki gibi:  
 
-    | Kaynak sağlayıcısı | Kategori | G | H | I |
+    | Kaynak Sağlayıcı | Kategori | G | H | I |
     | -- | -- | -- | -- | -- |
     | Service2 | AuditLogs | j1 | K1 | L1|
     | Service2 | AuditLogs | j3 | k3 | L3|
@@ -110,7 +110,7 @@ Kaynağa özgü modu destekleyen Azure hizmetleri hakkında duyurular için [Azu
 ### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics içinde sütun sınırı
 Azure Izleyici günlüklerinde herhangi bir tablo için 500 Özellik sınırı vardır. Bu sınıra ulaşıldığında, ilk 500 dışında herhangi bir özelliği olan verileri içeren tüm satırlar alma zamanında bırakılır. *AzureDiagnostics* tablosu, bu sınıra yönelik olan tüm Azure hizmetlerinin özelliklerini içerdiğinden bu sınıra açıktır.
 
-Tanılama günlüklerini birden çok hizmetten topluyorsanız, _AzureDiagnostics_ bu sınırı aşabilir ve veriler kaçırılacaktır. Tüm Azure hizmetleri kaynağa özgü modu destekleene kadar, 500 sütun sınırına ulaşma olasılığını azaltmak üzere kaynakları birden fazla çalışma alanına yazacak şekilde yapılandırmanız gerekir.
+Birden çok hizmetten kaynak günlükleri topluyorsanız, _AzureDiagnostics_ bu sınırı aşabilir ve veriler kaçırılacaktır. Tüm Azure hizmetleri kaynağa özgü modu destekleene kadar, 500 sütun sınırına ulaşma olasılığını azaltmak üzere kaynakları birden fazla çalışma alanına yazacak şekilde yapılandırmanız gerekir.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory, çok ayrıntılı bir günlük kümesi nedeniyle, çok sayıda sütun yazmak bilinen ve olası _AzureDiagnostics_ nedeni olan bir hizmettir. Kaynağa özgü mod etkinleştirilmeden önce yapılandırılan tüm Tanılama ayarları için, her bir etkinliğe karşı benzersiz olarak adlandırılan her Kullanıcı parametresi için yeni bir sütun oluşturulur. Etkinlik girişlerinin ve çıktıların ayrıntılı doğası nedeniyle daha fazla sütun oluşturulacak.

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect eşitleme: Dizin uzantıları | Microsoft Docs'
+title: 'Eşitleme Azure AD Connect: Dizin uzantıları | Microsoft Docs'
 description: Bu konuda Azure AD Connect içindeki dizin uzantıları özelliği açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fdfce58bdd8e13637e77d01d4b6c0ab21f696a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607644"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889911"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect eşitleme: Dizin genişletmeleri
-Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler [Azure AD Graph API Directory uzantıları](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) veya [Microsoft Graph](https://developer.microsoft.com/graph/)üzerinden kullanılabilir. Kullanılabilir öznitelikleri sırasıyla [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) ve [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)' ı kullanarak görebilirsiniz.
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
+Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler [Azure AD Graph API Directory uzantıları](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) veya [Microsoft Graph](https://developer.microsoft.com/graph/)üzerinden kullanılabilir. Kullanılabilir öznitelikleri sırasıyla [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) ve [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)' ı kullanarak görebilirsiniz. Bu özelliği ayrıca, Azure AD 'de dinamik gruplar oluşturmak için de kullanabilirsiniz.
 
 Mevcut olduğunda, Office 365 iş yükü bu öznitelikleri kullanır.
+
+## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Azure AD ile hangi özniteliklerin eşitleneceğini özelleştirin
 
 Yükleme sihirbazındaki özel ayarlar yolunda hangi ek özniteliklerin eşitlenmesini istediğinizi yapılandırırsınız.
 
@@ -38,8 +40,8 @@ Yükleme sihirbazındaki özel ayarlar yolunda hangi ek özniteliklerin eşitlen
 Yükleme, geçerli adaylar olan aşağıdaki öznitelikleri gösterir:
 
 * Kullanıcı ve grup nesne türleri
-* Tek değerli öznitelikler: Dize, Boole, tamsayı, Ikili
-* Çoklu değerli öznitelikler: Dize, Ikili
+* Tek değerli öznitelikler: String, Boolean, Integer, binary
+* Çoklu değerli öznitelikler: dize, Ikili
 
 
 >[!NOTE]
@@ -49,11 +51,17 @@ Yükleme, geçerli adaylar olan aşağıdaki öznitelikleri gösterir:
 
 Azure AD 'deki bir nesne dizin uzantıları için en fazla 100 özniteliğe sahip olabilir. En fazla 250 karakter uzunluğunda olur. Bir öznitelik değeri daha uzunsa, eşitleme altyapısı onu keser.
 
-Azure AD Connect yüklenmesi sırasında, bu özniteliklerin kullanılabildiği bir uygulama kaydedilir. Bu uygulamayı Azure portal görebilirsiniz.
+## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>Azure AD 'de sihirbaz tarafından yapılan yapılandırma değişiklikleri
+
+Azure AD Connect yüklenmesi sırasında, bu özniteliklerin kullanılabildiği bir uygulama kaydedilir. Bu uygulamayı Azure portal görebilirsiniz. Adı her zaman **kiracı şeması uzantısı uygulamasıdır**.
 
 ![Şema uzantısı uygulaması](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-Özniteliklere {appclientıd} \_\_uzantısı ön eki eklenir. Appclientıd, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahip.
+Bu uygulamayı görmek için **tüm uygulamalar** ' ı seçtiğinizden emin olun.
+
+Özniteliklere **{ApplicationId}\_\_uzantısı** ön eki eklenir. ApplicationId, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahiptir. Bu konudaki tüm diğer senaryolar için bu değere ihtiyacınız olacaktır.
+
+## <a name="viewing-attributes-using-graph"></a>Grafiği kullanarak öznitelikleri görüntüleme
 
 Bu öznitelikler artık Azure AD Graph API aracılığıyla kullanılabilir. [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)kullanarak bunları sorgulayabilirsiniz.
 
@@ -62,9 +70,31 @@ Bu öznitelikler artık Azure AD Graph API aracılığıyla kullanılabilir. [Az
 İsterseniz, [Microsoft Graph Gezgini](https://developer.microsoft.com/graph/graph-explorer#)'ni kullanarak Microsoft Graph API aracılığıyla öznitelikleri sorgulayabilirsiniz.
 
 >[!NOTE]
-> Özniteliklerin döndürülmesini isteyebilirsiniz. Şunun gibi öznitelikleri açıkça seçin: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $Select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
+> Microsoft Graph, özniteliklerin döndürülmesini istemek için yapmanız gerekir. Şu şekilde öznitelikleri açıkça seçin: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division.
 >
-> Daha fazla bilgi için bkz [. Microsoft Graph: Sorgu parametrelerini](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)kullanın.
+> Daha fazla bilgi için bkz. [Microsoft Graph: sorgu parametrelerini kullanma](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+
+## <a name="use-the-attributes-in-dynamic-groups"></a>Dinamik gruplardaki öznitelikleri kullanma
+
+Daha kullanışlı senaryolarından biri, bu özniteliklerin dinamik güvenlik veya Office 365 gruplarında kullanılması.
+
+1. Azure AD 'de yeni bir grup oluşturun. Buna iyi bir ad verin ve **Üyelik türünün** **Dinamik Kullanıcı**olduğundan emin olun.
+
+   ![Yeni bir grup ile ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
+
+2. **Dinamik sorgu eklemek**için seçin. Özelliklere bakarsanız, bu genişletilmiş öznitelikleri görmezsiniz. Önce bunları eklemeniz gerekir. **Özel uzantı özellikleri al**' a tıklayın, uygulama kimliğini girin ve **özellikleri Yenile**' ye tıklayın.
+
+   ![Dizin uzantılarının eklendiği ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
+
+3. Özellik açılan öğesini açın ve eklediğiniz özniteliklerin artık görünür olduğunu unutmayın.
+
+   ![Yeni özniteliklerin Kullanıcı arabiriminde gösterdiği ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
+
+   Gereksinimlerinize uyacak şekilde ifadeyi doldurun. Örneğimizde kural **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales ve Marketing")** olarak ayarlanmıştır.
+
+4. Grup oluşturulduktan sonra, üyelerin doldurulması için Azure AD 'ye bir süre verin ve ardından üyeleri gözden geçirin.
+
+   ![Dinamik gruptaki üyelere sahip ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.

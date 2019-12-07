@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 14e2f79383aa45125ce6955f3611a75ece1df10d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152950"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893578"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçeklendirme sorunlarını giderme
  
@@ -115,7 +115,7 @@ Azure Izleyici desteklenen herhangi bir hizmette olduğu gibi, bu günlükleri y
 
 ![Otomatik ölçeklendirme Tanılama ayarları](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-Önceki resimde Azure portal otomatik ölçeklendirme Tanılama ayarları gösterilmektedir. Tanılama günlükleri sekmesini seçebilir ve günlük toplamayı ve yönlendirmeyi etkinleştirebilirsiniz. Ayrıca, *Microsoft. Insights/oto scalesettings*olarak kaynak türünü seçerek Tanılama ayarları için REST API, CLI, PowerShell ve Kaynak Yöneticisi şablonlarını kullanarak aynı eylemi gerçekleştirebilirsiniz. 
+Önceki resimde Azure portal otomatik ölçeklendirme Tanılama ayarları gösterilmektedir. Tanılama/kaynak günlükleri sekmesini seçebilir ve günlük toplamayı ve yönlendirmeyi etkinleştirebilirsiniz. Ayrıca, *Microsoft. Insights/oto scalesettings*olarak kaynak türünü seçerek Tanılama ayarları için REST API, CLI, PowerShell ve Kaynak Yöneticisi şablonlarını kullanarak aynı eylemi gerçekleştirebilirsiniz. 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>Otomatik ölçeklendirme günlüklerini kullanarak sorun giderme 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305165"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894532"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Izleyici 'de roller, izinler ve güvenlik
 
@@ -116,7 +116,7 @@ New-AzRoleDefinition -Role $role
 İzleme verileri — özellikle günlük dosyaları — IP adresleri veya Kullanıcı adları gibi gizli bilgiler içerebilir. Azure 'daki izleme verileri üç temel formda sunulur:
 
 1. Azure aboneliğinizdeki tüm denetim düzlemi eylemlerini açıklayan etkinlik günlüğü.
-2. Bir kaynak tarafından oluşturulan Günlükler olan tanılama günlükleri.
+2. bir kaynak tarafından oluşturulan Günlükler olan kaynak günlükleri.
 3. Kaynaklar tarafından yayılan ölçümler.
 
 Bu veri türlerinin üçü de bir depolama hesabında depolanabilir veya her ikisi de genel amaçlı Azure kaynakları olan olay hub 'ına akış yapılabilir. Bunlar genel amaçlı kaynaklar olduğundan, oluşturma, silme ve bunlara erişme, yönetici için ayrılmış ayrıcalıklı bir işlemdir. Kötüye kullanımı engellemek için izleme ile ilgili kaynaklar için aşağıdaki yöntemleri kullanmanızı öneririz:
@@ -182,7 +182,7 @@ Azure Izleyici, etkinleştirdiğiniz hizmetleri sağlamak için Azure kaynaklar�
 ### <a name="secured-storage-accounts"></a>Güvenli depolama hesapları 
 
 İzleme verileri genellikle bir depolama hesabına yazılır. Bir depolama hesabına kopyalanmış verilere yetkisiz kullanıcılar tarafından erişilemediğinden emin olmak isteyebilirsiniz. Ek güvenlik için, bir depolama hesabını "seçili ağları" kullanacak şekilde kısıtlayarak, yalnızca yetkili kaynaklarınızın ve güvenilir Microsoft hizmetlerinizin bir depolama hesabına erişmesine izin vermek üzere ağ erişimini sınırlayabilirsiniz.
-![Azure depolama ayarları Iletişim kutusu](./media/roles-permissions-security/secured-storage-example.png) Azure Izleyici bu "Güvenilen Microsoft hizmetlerinden biri" olarak kabul edilir. güvenilen Microsoft hizmetlerinin güvenli depolamaya erişmesine izin verirseniz, Azure izleyici, güvenli depolama hesabınıza erişebilir; Bu korumalı koşullarda Azure Izleyici tanılama günlükleri, etkinlik günlüğü ve ölçümleri depolama hesabınıza yazmayı etkinleştirme. Bu da Log Analytics, güvenli depolama alanından günlükleri okumasına olanak tanır.   
+![Azure depolama ayarları Iletişim kutusu](./media/roles-permissions-security/secured-storage-example.png) Azure Izleyici bu "Güvenilen Microsoft hizmetlerinden biri" olarak kabul edilir. güvenilen Microsoft hizmetlerinin güvenli depolamaya erişmesine izin verirseniz, Azure izleyici, güvenli depolama hesabınıza erişebilir; Azure Izleyici kaynak günlüklerinin, Etkinlik günlüğünün ve ölçümlerin bu korumalı koşullarda depolama hesabınıza yazılmasını sağlama. Bu da Log Analytics, güvenli depolama alanından günlükleri okumasına olanak tanır.   
 
 
 Daha fazla bilgi için bkz. [ağ güvenliği ve Azure depolama](../../storage/common/storage-network-security.md)

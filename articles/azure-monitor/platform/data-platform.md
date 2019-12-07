@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4e9779f612bc4a2521459bf76a6e2b399fc89e07
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262061"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894139"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
 
@@ -48,7 +48,7 @@ Azure izleyici [ölçümlerinde](data-platform-metrics.md)bulunan veri kaynaklar
 Azure Izleyici 'deki Günlükler, güçlü bir analiz altyapısı ve [zengin sorgu dili](/azure/kusto/query/)sağlayan [Azure Veri Gezgini](/azure/data-explorer/) temel alan Log Analytics çalışma alanında depolanır. Günlükler genellikle tanımlanmakta olan sorunun tamamen bağlamını sağlamak için yeterli bilgi sağlar ve bu sorunların kök durumunu tanımlamak için değerlidir.
 
 > [!NOTE]
-> Azure Izleyici günlüklerini ve Azure 'da günlük verilerinin kaynaklarını ayırt etmek önemlidir. Örneğin, Azure 'daki abonelik düzeyi olayları, Azure Izleyici menüsünden görüntüleyebileceğiniz bir [etkinlik günlüğüne](activity-logs-overview.md) yazılır. Çoğu kaynak, işletimsel bilgileri farklı konumlara iletebilmeniz için bir [Tanılama günlüğüne](resource-logs-overview.md) yazar. Azure Izleyici günlükleri, tüm kaynak kümesinde derin analiz sağlamak üzere diğer izleme verileriyle birlikte etkinlik günlüklerini ve tanılama günlüklerini toplayan bir günlük veri platformudur.
+> Azure Izleyici günlüklerini ve Azure 'da günlük verilerinin kaynaklarını ayırt etmek önemlidir. Örneğin, Azure 'daki abonelik düzeyi olayları, Azure Izleyici menüsünden görüntüleyebileceğiniz bir [etkinlik günlüğüne](activity-logs-overview.md) yazılır. Çoğu kaynak, işletimsel bilgileri farklı konumlara iletebilmeniz için bir [kaynak günlüğüne](resource-logs-overview.md) yazar. Azure Izleyici günlükleri, tüm kaynak kümesinde derin analiz sağlamak üzere diğer izleme verileriyle birlikte etkinlik günlüklerini ve kaynak günlüklerini toplayan bir günlük veri platformudur.
 
 
  Azure portal [Log Analytics](../log-query/portals.md) ile [günlük sorgularıyla](../log-query/log-query-overview.md) etkileşimli olarak çalışabilir veya sonuçları diğer verilerle birlikte görselleştirme için bir [Azure panosuna](../learn/tutorial-app-dashboards.md) ekleyebilirsiniz. Ayrıca, bir zamanlama sorgusunun sonuçlarına dayalı olarak bir uyarı tetikleyecek [günlük uyarıları](alerts-log.md) da oluşturabilirsiniz.
@@ -70,11 +70,11 @@ Aşağıdaki tabloda Azure Izleyici 'de ölçümler ve Günlükler karşılaşt�
 | Öznitelik  | Ölçümler | Günlükler |
 |:---|:---|:---|
 | Avantajlar | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
-| Data | Yalnızca sayısal değerler | Metin veya sayısal veriler |
+| Veriler | Yalnızca sayısal değerler | Metin veya sayısal veriler |
 | Yapı | Örnek saat, izlenen kaynak ve sayısal bir değer dahil olmak üzere standart özellikler kümesi. Bazı ölçümler, daha fazla tanım için birden çok boyut içerir. | Günlük türüne göre benzersiz özellik kümesi. |
-| Collection | Düzenli aralıklarla toplanır. | , Olayların oluşturulması için bir kayıt tetiklemesi olarak toplanabilir. |
+| Koleksiyon | Düzenli aralıklarla toplanır. | , Olayların oluşturulması için bir kayıt tetiklemesi olarak toplanabilir. |
 | Azure portal içinde görüntüle | Ölçüm Gezgini | Log Analytics |
-| Veri kaynakları şunlardır | Azure kaynaklarından toplanan platform ölçümleri.<br>Application Insights tarafından izlenen uygulamalar.<br>Uygulama veya API tarafından tanımlanan özel. | Uygulama ve tanılama günlükleri.<br>Çözümleri izleme.<br>Aracılar ve VM uzantıları.<br>Uygulama istekleri ve özel durumlar.<br>Azure Güvenlik Merkezi.<br>Veri Toplayıcı API 'SI. |
+| Veri kaynakları şunlardır | Azure kaynaklarından toplanan platform ölçümleri.<br>Application Insights tarafından izlenen uygulamalar.<br>Uygulama veya API tarafından tanımlanan özel. | Uygulama ve kaynak günlükleri.<br>Çözümleri izleme.<br>Aracılar ve VM uzantıları.<br>Uygulama istekleri ve özel durumlar.<br>Azure Güvenlik Merkezi.<br>Veri Toplayıcı API 'SI. |
 
 ## <a name="collect-monitoring-data"></a>İzleme verilerini topla
 [Azure izleyici için farklı veri kaynakları](data-sources.md) , Log Analytics çalışma alanına (Günlükler) ya da Azure izleyici ölçümleri veritabanına (ölçümler) veya her ikisine de yazılır. Bazı kaynaklar bu veri depolarına doğrudan yazılır, diğerleri ise Azure depolama gibi başka bir konuma yazabilir ve günlükleri veya ölçümleri doldurmak için bazı yapılandırmalar gerektirir. 

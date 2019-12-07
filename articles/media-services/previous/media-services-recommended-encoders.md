@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services | tarafından önerilen kodlayıcılar hakkında bilgi edinin Microsoft Docs
-description: Media Services tarafından önerilen kodlayıcılar hakkında bilgi edinin
+description: Bu makalede, Azure Media Services tarafından önerilen şirket içi kodlayıcılar listelenmektedir.
 services: media-services
 keywords: kodlama; kodlayıcılar; medya
 author: dbgeorge
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854238"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74886580"
 ---
 # <a name="recommended-on-premises-encoders"></a>Önerilen şirket içi kodlayıcılar
 Azure Media Services ile canlı akış yapıldığında, kanalınızın giriş akışını nasıl almasını istediğinizi belirtebilirsiniz. Canlı kodlama kanalı ile şirket içi bir kodlayıcı kullanmayı seçerseniz, kodlayıcının yüksek kaliteli tek bit hızında bir akışı çıkış olarak göndermelidir. Geçiş kanalı ile şirket içi kodlayıcı kullanmayı tercih ederseniz, kodlayıcının istenen tüm çıktı kalitelerini içeren bir çoklu bit hızı akışını çıkış olarak iletmesi gerekir. Daha fazla bilgi için bkz. [Şirket içi kodlayıcılarla canlı akış](media-services-live-streaming-with-onprem-encoders.md).
@@ -54,7 +54,7 @@ Geçiş kanalı doğrulaması
 4. Yayınlanan Canlı etkinlik oluşturma
 5. Gerçek zamanlı kodlarınızı yaklaşık 10 dakika boyunca çalıştırın
 6. Canlı etkinliği durdur
-7. Bir akış uç noktası oluşturun,, kayıttan yürütmenin tüm kalite seviyelerine yönelik görünür olmadığından emin olmak için [Azure Media Player](https://aka.ms/azuremediaplayer) gibi bir oyuncu kullanın (veya alternatif olarak canlı oturum sırasında önizleme URL 'si aracılığıyla izleyin ve doğrulayın 6. adımdan önce)
+7. Bir akış uç noktası oluşturun,, kayıttan yürütmenin tüm kalite seviyelerine yönelik görünür olmadığından emin olmak için [Azure Media Player](https://aka.ms/azuremediaplayer) gibi bir oyuncu kullanın (veya alternatif olarak, adım 6 ' dan önce canlı oturum sırasında önizleme URL 'si aracılığıyla izleme ve doğrulama)
 8. Varlık KIMLIĞINI, Canlı Arşiv için yayımlanan akış URL 'sini ve canlı kodlayıcıınızdan kullanılan ayarları ve sürümü kaydedin
 9. Her örnek oluşturulduktan sonra kanal durumunu sıfırlayın
 10. Kodlarınızın desteklediği tüm yapılandırmalarda 3 ile 9 arasındaki adımları yineleyin (reklam sinyali/resim yazıları/farklı kodlama hızları olmadan)
@@ -66,7 +66,7 @@ Canlı kodlama kanalı doğrulaması
 4. Yayınlanan Canlı etkinlik oluşturma
 5. Gerçek zamanlı kodlarınızı yaklaşık 10 dakika boyunca çalıştırın
 6. Canlı etkinliği durdur
-7. Bir akış uç noktası oluşturun,, kayıttan yürütmenin tüm kalite seviyelerine yönelik görünür olmadığından emin olmak için [Azure Media Player](https://aka.ms/azuremediaplayer) gibi bir oyuncu kullanın (veya alternatif olarak canlı oturum sırasında önizleme URL 'si aracılığıyla izleyin ve doğrulayın 6. adımdan önce)
+7. Bir akış uç noktası oluşturun,, kayıttan yürütmenin tüm kalite seviyelerine yönelik görünür olmadığından emin olmak için [Azure Media Player](https://aka.ms/azuremediaplayer) gibi bir oyuncu kullanın (veya alternatif olarak, adım 6 ' dan önce canlı oturum sırasında önizleme URL 'si aracılığıyla izleme ve doğrulama)
 8. Varlık KIMLIĞINI, Canlı Arşiv için yayımlanan akış URL 'sini ve canlı kodlayıcıınızdan kullanılan ayarları ve sürümü kaydedin
 9. Her örnek oluşturulduktan sonra kanal durumunu sıfırlayın
 10. Kodlarınızın desteklediği tüm yapılandırmalarda 3 ' ten 9 ' a kadar olan adımları yineleyin (reklam sinyali/resim yazıları/çeşitli kodlama hızları olmadan)
@@ -81,4 +81,4 @@ Longeçekimi doğrulaması
 7. Canlı etkinliği durdur
 8. Varlık KIMLIĞINI, Canlı Arşiv için yayımlanan akış URL 'sini ve canlı kodlayıcıınızdan kullanılan ayarları ve sürümü kaydedin
 
-Son olarak, e-postayla amsstreaming@microsoft.comMedia Services kayıtlı ayarlarınızı ve canlı arşiv parametrelerini gönderin. Media Services alındıktan sonra, Live Encoder 'ınızdan örnekler üzerinde doğrulama testleri gerçekleştirir. Bu işlemle ilgili tüm sorularla Media Services başvurabilirsiniz.
+Son olarak, amsstreaming@microsoft.come-postayla Media Services kayıtlı ayarlarınızı ve canlı arşiv parametrelerini gönderin. Media Services alındıktan sonra, Live Encoder 'ınızdan örnekler üzerinde doğrulama testleri gerçekleştirir. Bu işlemle ilgili tüm sorularla Media Services başvurabilirsiniz.

@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: StorSimple, yaşam sonu ürünüdür ve Azure Dosya Eşitleme geçirilecek çözümdür. Geçiş kavramı hakkında bilgi edinin ve özelleştirilmiş geçiş yardımı için AzureFiles@microsoft.com 'a ulaşın.
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666669"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895088"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>Azure Dosya Eşitleme 'e StorSimple geçişi
 
@@ -26,7 +26,7 @@ Bu makalede, bir geçişin nasıl ayarlanacağı kavramı açıklanır.
 Kullanıcıların, StorSimple ve üzerinde geçiş yapmak için gereken Azure Dosya Eşitleme, kendi kendine devam etmek zorunda olmadığı unutulmamalıdır.
 
 > [!IMPORTANT]
-> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFiles@microsoft.com ve geçiş sırasında yardım.
+> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFiles@microsoft. com ve geçiş sırasında yardım.
 
 ## <a name="migration-approach"></a>Geçiş yaklaşımı
 Azure Dosya Eşitleme geçişi, şirket içi ve sınırlı kapalı kalma süresine en az etkiyle bulut tarafında çalışır.
@@ -67,7 +67,7 @@ Ayrıca, bir Azure dosya paylaşımının birçok farklı sunucuya eşitlenmesi 
 Azure dosyaları ve Azure Dosya Eşitleme hakkında bilgi edinin. Başarılı bir geçiş için Azure Dosya Eşitleme terminoloji ve dağıtım deseninin anlaşılması önemlidir. Bu genel bakış makalesindeki her adım için daha ayrıntılı bilgi bulabilirsiniz. Geçişinizi planlama ve yürütme sırasında özelleştirilmiş yardım için Microsoft 'a ulaştığınızdan emin olun.
 
 > [!IMPORTANT]
-> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFiles@microsoft.com ve geçiş sırasında yardım.
+> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş bir geçiş planı için e-posta AzureFiles@microsoft. com ve geçiş sırasında yardım.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 Hedef hizmet olarak Azure Dosya Eşitleme, Azure Dosya Eşitleme yeni bir deyişle, okumanız önerdiğimiz iki temel belge vardır.

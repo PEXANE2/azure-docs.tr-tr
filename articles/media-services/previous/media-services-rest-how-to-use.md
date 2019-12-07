@@ -1,6 +1,6 @@
 ---
 title: Media Services işlemler REST API genel bakış | Microsoft Docs
-description: Media Services REST API genel bakış
+description: "\"Media Services Operations REST\" API 'SI, bir Media Services hesabındaki Işleri, varlıkları, canlı kanalları ve diğer kaynakları oluşturmak için kullanılır. Bu makalede bir Azure Media Services V2 REST API genel bakış sunulmaktadır."
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014857"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895808"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services işlemler REST API genel bakış 
 
@@ -58,12 +58,12 @@ REST kullanılırken aşağıdaki noktalar geçerlidir.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services tarafından desteklenen standart HTTP istek üstbilgileri
 Media Services yaptığınız her çağrı için, isteğinize dahil etmeniz gereken bir başlık kümesi ve ayrıca dahil etmek isteyebileceğiniz bir isteğe bağlı üst bilgi kümesi vardır. Aşağıdaki tabloda gereken üstbilgiler listelenmiştir:
 
-| Üstbilgi | Type | Value |
+| Üst bilgi | Tür | Değer |
 | --- | --- | --- |
-| Authorization |Taşıyıcı |Taşıyıcı tek kabul edilen yetkilendirme mekanizmasıdır. Değer, Azure Active Directory tarafından sağlanmış erişim belirtecini de içermelidir. |
+| Yetkilendirme |Taşıyıcı |Taşıyıcı tek kabul edilen yetkilendirme mekanizmasıdır. Değer, Azure Active Directory tarafından sağlanmış erişim belirtecini de içermelidir. |
 | x-MS-sürümü |Decimal |2,17 (veya en son sürüm)|
-| DataServiceVersion |Decimal |3,0 |
-| MaxDataServiceVersion |Decimal |3,0 |
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > Media Services, REST API 'Lerini kullanıma sunmak için OData kullandığından, DataServiceVersion ve MaxDataServiceVersion üstbilgileri tüm isteklere eklenmelidir; Ancak, yoksa şu anda Media Services, kullanılmakta olan DataServiceVersion değerinin 3,0 olduğunu varsayar.
@@ -72,11 +72,11 @@ Media Services yaptığınız her çağrı için, isteğinize dahil etmeniz gere
 
 Aşağıda, isteğe bağlı bir başlık kümesi verilmiştir:
 
-| Üstbilgi | Type | Value |
+| Üst bilgi | Tür | Değer |
 | --- | --- | --- |
-| Date |RFC 1123 tarihi |İsteğin zaman damgası |
-| Kabul |İçerik türü |Aşağıdaki gibi yanıt için istenen içerik türü:<p> -Application/JSON; OData = verbose<p> -Application/atom + XML<p> Yanıtlar, blob getirme gibi farklı bir içerik türüne sahip olabilir, burada başarılı bir yanıt yük olarak blob akışını içerir. |
-| Kabul etme-kodlama |Gzip, söndür |Uygun olduğunda GZIP ve söndür kodlaması. Not: Büyük kaynaklar için Media Services bu üstbilgiyi yoksayabilir ve sıkıştırılmış olmayan verileri döndürebilir. |
+| Tarih |RFC 1123 tarihi |İsteğin zaman damgası |
+| Kabul et |İçerik türü |Aşağıdaki gibi yanıt için istenen içerik türü:<p> -Application/JSON; OData = verbose<p> -Application/atom + XML<p> Yanıtlar, blob getirme gibi farklı bir içerik türüne sahip olabilir, burada başarılı bir yanıt yük olarak blob akışını içerir. |
+| accept-encoding |Gzip, söndür |Uygun olduğunda GZIP ve söndür kodlaması. Note: büyük kaynaklar Için Media Services bu üstbilgiyi yoksayabilir ve sıkıştırılmış olmayan verileri döndürebilir. |
 | Kabul etme-dil |"en", "es" vb. |Yanıt için tercih edilen dili belirtir. |
 | Accept-Charset |"UTF-8" gibi karakter kümesi türü |Varsayılan UTF-8 ' dir. |
 | X-HTTP-yöntemi |HTTP yöntemi |Bu yöntemleri kullanmak için PUT veya DELETE gibi HTTP yöntemlerini desteklemeyen istemcilerin veya güvenlik duvarlarının, bir GET çağrısıyla tünelde kullanılmasına izin verir. |
@@ -86,13 +86,13 @@ Aşağıda, isteğe bağlı bir başlık kümesi verilmiştir:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services tarafından desteklenen standart HTTP yanıt üst bilgileri
 Aşağıda, talep ettiğiniz kaynağa ve gerçekleştirmek istediğiniz eyleme bağlı olarak size döndürülebilecek bir üst bilgi kümesi verilmiştir.
 
-| Üstbilgi | Type | Value |
+| Üst bilgi | Tür | Değer |
 | --- | --- | --- |
 | istek kimliği |Dize |Geçerli işlem için benzersiz bir tanımlayıcı, hizmet oluşturuldu. |
 | istemci-istek kimliği |Dize |Varsa, özgün istekte çağıran tarafından belirtilen bir tanımlayıcı. |
-| Date |RFC 1123 tarihi |İsteğin işlendiği tarih/saat. |
-| Content-Type |Varies |Yanıt gövdesinin içerik türü. |
-| İçerik kodlama |Varies |Uygun şekilde gzip veya söndür. |
+| Tarih |RFC 1123 tarihi |İsteğin işlendiği tarih/saat. |
+| Content-Type |Değişir |Yanıt gövdesinin içerik türü. |
+| İçerik kodlama |Değişir |Uygun şekilde gzip veya söndür. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Media Services tarafından desteklenen standart HTTP fiilleri
 Aşağıda HTTP istekleri yapılırken kullanılabilecek HTTP fiillerinin kapsamlı bir listesi verilmiştir:
@@ -104,7 +104,7 @@ Aşağıda HTTP istekleri yapılırken kullanılabilecek HTTP fiillerinin kapsam
 | PUT |Bir nesnenin yerini alır veya bir adlandırılmış nesne (varsa) oluşturur. |
 | DELETE |Bir nesneyi siler. |
 | BIRLEÞTIRMEK |Varolan bir nesneyi adlandırılmış özellik değişiklikleriyle güncelleştirir. |
-| HEAD |GET yanıtı için bir nesnenin meta verilerini döndürür. |
+| BAŞ |GET yanıtı için bir nesnenin meta verilerini döndürür. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Media Services varlık modelini bul ve araştır
 Media Services varlıkların daha bulunabilir olmasını sağlamak için $metadata işlemi kullanılabilir. Tüm geçerli varlık türlerini, varlık özelliklerini, ilişkilendirmeleri, işlevleri, eylemleri vb. almanızı sağlar. $Metadata işlemini Media Services REST API uç noktanızın sonuna ekleyerek, bu bulma hizmetine erişebilirsiniz.
@@ -126,6 +126,6 @@ Azure AD kimlik doğrulamasını Media Services REST API ile nasıl kullanacağ�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

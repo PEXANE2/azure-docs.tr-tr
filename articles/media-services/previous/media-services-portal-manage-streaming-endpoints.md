@@ -1,6 +1,6 @@
 ---
-title: Azure portal ile akış uç noktalarını yönetme | Microsoft Docs
-description: Bu konuda, Azure portal ile akış uç noktalarını yönetme gösterilmektedir.
+title: Akış uç noktalarını Azure portal yönetme | Microsoft Docs
+description: Bu makalede, Azure portal ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,103 +15,103 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1775bbb2913f6b1a985ca7ec9e89bafed42fd0e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129737"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900875"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure portal ile akış uç noktalarını yönetme 
 
-Bu makalede, akış uç noktaları yönetmek için Azure portalını kullanma gösterilmektedir. 
+Bu makalede, akış uç noktalarını yönetmek için Azure portal nasıl kullanılacağı gösterilmektedir. 
 
 >[!NOTE]
->Gözden geçirdiğinizden emin olun [genel bakış](media-services-streaming-endpoints-overview.md) makalesi. 
+>[Genel bakış](media-services-streaming-endpoints-overview.md) makalesini gözden geçirdiğinizden emin olun. 
 
-Akış uç noktasını ölçeklendirme hakkında daha fazla bilgi için bkz. [bu](media-services-portal-scale-streaming-endpoints.md) makalesi.
+Akış uç noktasını ölçeklendirme hakkında daha fazla bilgi için [Bu](media-services-portal-scale-streaming-endpoints.md) makaleye bakın.
 
-## <a name="start-managing-streaming-endpoints"></a>Akış uç noktalarını yönetmeye başlama 
+## <a name="start-managing-streaming-endpoints"></a>Akış uç noktalarını yönetmeye başla 
 
-Hesabınız için akış uç noktalarını yönetmeye başlamak için aşağıdakileri yapın.
+Hesabınız için akış uç noktalarını yönetmeye başlamak üzere aşağıdakileri yapın.
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. İçinde **ayarları** dikey penceresinde **akış uç noktaları**.
+2. **Ayarlar** dikey penceresinde, **akış uç noktaları**' nı seçin.
    
     ![Akış uç noktası](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
-> Akış uç noktanızı çalışır durumda olduğunda yalnızca faturalandırılırsınız.
+> Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
 
-## <a name="adddelete-a-streaming-endpoint"></a>Bir akış uç noktası ekleme/silme
+## <a name="adddelete-a-streaming-endpoint"></a>Akış uç noktası ekleme/silme
 
 >[!NOTE]
 >Varsayılan akış uç noktası silinemiyor.
 
-Azure portalını kullanarak akış uç noktası ekleme/silme için aşağıdakileri yapın:
+Azure portal kullanarak akış uç noktası eklemek/silmek için aşağıdakileri yapın:
 
-1. Bir akış uç noktası eklemek için tıklatın **+ uç nokta** sayfanın üstünde. 
+1. Bir akış uç noktası eklemek için sayfanın üst kısmındaki **+ uç noktasına** tıklayın. 
 
-    Farklı CDN'ler veya CDN ve doğrudan erişimi olmasını planlıyorsanız, birden çok akış uç noktalarını isteyebilirsiniz.
+    Farklı CDNs veya CDN ve doğrudan erişim planlıyorsanız, birden çok akış uç noktası isteyebilirsiniz.
 
-2. Bir akış uç noktasını silmek için basın **Sil** düğmesi.      
-3. Tıklayın **Başlat** düğmesini akış uç noktasını başlatın.
+2. Akış uç noktasını silmek için **Sil** düğmesine basın.      
+3. Akış uç noktasını başlatmak için **Başlat** düğmesine tıklayın.
    
     ![Akış uç noktası](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a id="configure_streaming_endpoints"></a>Akış uç noktasını yapılandırma
-Akış uç noktası aşağıdaki özellikleri yapılandırmak aşağıdakileri sağlar:
+Akış uç noktası aşağıdaki özellikleri yapılandırmanıza olanak sağlar:
 
 * Erişim denetimi
 * Önbellek denetimi
-* Çoklu site erişim ilkeleri
+* Çapraz site erişim ilkeleri
 
-Bu özellikler hakkında ayrıntılı bilgi için bkz. [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Bu özellikler hakkında ayrıntılı bilgi için bkz. [Streamingendpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
->CDN etkinleştirildiğinde, IP access erişemiyor. IP erişim, yalnızca CDN olmadığında geçerlidir.
+>CDN etkinleştirildiğinde, IP erişimine erişemezsiniz. IP erişimi yalnızca CDN olmadığında geçerlidir.
 
-Aşağıdakileri yaparak akış uç noktası yapılandırabilirsiniz:
+Akış uç noktasını aşağıdakileri yaparak yapılandırabilirsiniz:
 
 1. Yapılandırmak istediğiniz akış uç noktasını seçin.
-2. Tıklayın **ayarları**.
+2. **Ayarlar**’a tıklayın.
 
-Alanları kısa bir açıklamasını izler.
+Alanların kısa bir açıklaması aşağıda verilmiştir.
 
 ![Akış uç noktası](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
-1. En yüksek önbellek İlkesi: Bu akış uç noktası sunulan varlıkların önbellek ömrünü yapılandırmak için kullanılır. Hiçbir değer olarak ayarlanırsa varsayılan değer kullanılır. Varsayılan değerleri, doğrudan Azure depolama alanında da tanımlanabilir. Akış uç noktası için Azure CDN etkinleştirildiğinde önbellek İlkesi değeri 600 saniyeden kısa bir süre için ayarlanmamalıdır.  
-2. İzin verilen IP adresleri: yayımlanan akış uç noktasını bağlamak için izin verilecek IP adresleri belirtmek için kullanılır. Belirtilen IP adresleri, herhangi bir IP adresi bağlanmanız mümkün olacaktır. IP adresleri, tek bir IP adresi (örneğin, ' 10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi (örneğin, ' 10.0.0.1/22') kullanarak bir IP aralığı veya IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı belirtilebilir (örneğin, 10.0.0.1 ' () 255.255.255.0)').
-3. Akamai imza üst bilgisi kimlik doğrulaması için yapılandırma: Akamai sunucularından gelen imza üst bilgisi kimlik doğrulama isteği nasıl yapılandırıldığını belirtmek için kullanılır. Süre sonu UTC biçiminde olur.
+1. Maksimum önbellek ilkesi: Bu akış uç noktası aracılığıyla sunulan varlıklar için önbellek ömrünü yapılandırmak için kullanılır. Değer ayarlanmamışsa, varsayılan kullanılır. Varsayılan değerler, doğrudan Azure Storage 'da da tanımlanabilir. Akış uç noktası için Azure CDN etkinleştirilirse, önbellek ilkesi değerini 600 saniyeden az bir değere ayarlayamamalıdır.  
+2. İzin verilen IP adresleri: Yayınlanan akış uç noktasına bağlanmasına izin verilecek IP adreslerini belirtmek için kullanılır. IP adresi belirtilmemişse, herhangi bir IP adresi bağlanabilir. IP adresleri tek bir IP adresi (örneğin, ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1/22 ') veya IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1 (255.255.255.0) ') olarak belirtilebilir.
+3. Akamai imza üst bilgisi kimlik doğrulaması için yapılandırma: Akamai sunucularından imza üst bilgi kimlik doğrulama isteğinin nasıl yapılandırılacağını belirtmek için kullanılır. Süre sonu UTC 'dir.
 
-## <a name="scale-your-premium-streaming-endpoint"></a>Premium akış uç noktası ölçeklendirin
+## <a name="scale-your-premium-streaming-endpoint"></a>Premium akış uç noktanızı ölçeklendirin
 
 Daha fazla bilgi için [bu makaleye](media-services-portal-scale-streaming-endpoints.md) bakın.
 
-## <a id="enable_cdn"></a>Azure CDN tümleştirmesini etkinleştirme
+## <a id="enable_cdn"></a>Azure CDN tümleştirmeyi etkinleştir
 
-Varsayılan akış uç noktası Azure CDN tümleştirmesi, yeni bir hesap oluşturduğunuzda, varsayılan olarak etkindir.
+Yeni bir hesap oluşturduğunuzda varsayılan akış uç noktası Azure CDN tümleştirme varsayılan olarak etkindir.
 
-Daha sonra devre dışı bırak / CDN kullanılabilir hale getirmek isterseniz, akış uç noktanızı olmalıdır **durduruldu** durumu. Bu iki saate kadar etkin Azure CDN tümleştirmesi ve değişikliklerin tüm CDN POP'larına arasında etkin olması ele geçirebilir. Ancak, kullanabilirsiniz akış uç noktası ve kesintileri olmadan akışı akış uç noktasından Başlat ve tümleştirme tamamlandıktan sonra akışı CDN'den sağlanır. Akış uç noktanızı olacaktır sağlama süresi boyunca **başlangıç** durumu ve performans gözlemleyin.
+Daha sonra CDN 'yi devre dışı bırakmak/etkinleştirmek istiyorsanız, akış uç noktanızın **durdurulmuş** durumda olması gerekir. Azure CDN tümleştirmenin etkinleştirilmesi ve değişikliklerin tüm CDN pop 'larda etkin olması iki saate kadar sürebilir. Ancak, akış uç noktasından kesintiler olmadan akış uç noktanızı ve akışınızı başlatabilir ve tümleştirme tamamlandıktan sonra akış CDN 'den dağıtılır. Sağlama süresi boyunca, akış uç noktanız **Başlangıç** durumunda olur ve performans düşüklüğü gözlemleyebilirsiniz.
 
-CDN tümleştirmesi, Çin ve Federal devlet bölgeler dışındaki tüm Azure veri merkezlerinde etkinleştirilir.
+CDN tümleştirmesi, Çin ve Federal Kamu bölgeleri dışındaki tüm Azure veri merkezlerinde etkin olur.
 
-Etkinleştirildiğinde, **erişim denetimi**, ** özel ana bilgisayar adı, ve **Akamai imza kimlik doğrulaması** yapılandırması devre dışı.
+Etkinleştirildikten sonra, **Access Control**, * * özel ana bilgisayar adı ve **Akamai imza kimlik doğrulama** yapılandırması devre dışı bırakılır.
  
 > [!IMPORTANT]
-> Azure CDN ile Azure Media Services tümleştirmesi uygulandığını **verizon'dan Azure CDN** standart akış uç noktaları. Premium akış uç noktaları kullanarak tüm yapılandırılabilir **Azure CDN fiyatlandırma katmanları ve sağlayıcıları**. Azure CDN özellikleri hakkında daha fazla bilgi için bkz: [CDN'ye genel bakış](../../cdn/cdn-overview.md).
+> Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları için **Verizon 'tan Azure CDN** uygulanır. Premium akış uç noktaları, tüm **Azure CDN fiyatlandırma katmanları ve sağlayıcıları**kullanılarak yapılandırılabilir. Azure CDN özellikler hakkında daha fazla bilgi için bkz. [CDN 'ye genel bakış](../../cdn/cdn-overview.md).
  
 ### <a name="additional-considerations"></a>Diğer konular
 
-* CDN akış uç noktası için etkinleştirildiğinde, istemcileri doğrudan kaynaktan alınan içerik isteğinde bulunamazsınız. İçeriğinizi ile veya olmadan CDN test etme olanağı gerekiyorsa, CDN etkin olmayan başka bir akış uç noktası oluşturabilirsiniz.
-* CDN etkinleştirdikten sonra akış uç noktası ana bilgisayar adı aynı kalır. CDN etkinleştirildikten sonra medya Hizmetleri iş akışınıza herhangi bir değişiklik yapmanız gerekmez. Örneğin, akış uç noktası ana bilgisayar adı, CDN etkinleştirdikten sonra strasbourg.streaming.mediaservices.windows.net ise, tam aynı ana bilgisayar adı kullanılır.
-* Yeni akış uç noktaları için yeni bir uç noktası oluşturarak CDN etkinleştirebilirsiniz; Mevcut akış uç noktaları için ilk uç noktayı durdurmak ve ardından etkinleştir/devre CDN gerekir.
-* Standart akış uç noktası yalnızca yapılandırılabilir **standart Verizon CDN sağlayıcısı** Klasik Azure portalını kullanarak. Ancak, REST API'lerini kullanarak diğer Azure CDN sağlayıcıları etkinleştirebilirsiniz.
+* Bir akış uç noktası için CDN etkinleştirildiğinde istemciler doğrudan kaynaktan içerik isteyemezsiniz. İçeriğinizi CDN ile veya CDN olmadan test etmek istiyorsanız, CDN etkin olmayan başka bir akış uç noktası oluşturabilirsiniz.
+* Akış uç noktası ana bilgisayar adı CDN etkinleştirildikten sonra aynı kalır. CDN etkinleştirildikten sonra medya hizmetleri iş akışınızda herhangi bir değişiklik yapmanız gerekmez. Örneğin, akış uç noktası ana bilgisayar adı strasbourg.streaming.mediaservices.windows.net ise, CDN etkinleştirildikten sonra aynı ana bilgisayar adı kullanılır.
+* Yeni akış uç noktaları için, yalnızca yeni bir uç nokta oluşturarak CDN 'yi etkinleştirebilirsiniz; Mevcut akış uç noktaları için öncelikle uç noktayı durdurup CDN 'yi etkinleştirmeniz/devre dışı bırakmanız gerekir.
+* Standart akış uç noktası yalnızca klasik Azure portalı kullanılarak **Verizon standart CDN sağlayıcısı** kullanılarak yapılandırılabilir. Ancak REST API 'Leri kullanarak diğer Azure CDN sağlayıcıları etkinleştirebilirsiniz.
 
-## <a name="configure-cdn-profile"></a>CDN profili yapılandırma
+## <a name="configure-cdn-profile"></a>CDN profilini yapılandırma
 
-CDN profili seçerek yapılandırabileceğiniz **yönetme CDN** üstten düğme.
+Üst kısımdaki **CDN 'Yi Yönet** DÜĞMESINI seçerek CDN profilini yapılandırabilirsiniz.
 
 ![Akış uç noktası](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 
@@ -120,6 +120,6 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

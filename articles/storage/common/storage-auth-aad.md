@@ -1,22 +1,23 @@
 ---
-title: Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme | Microsoft Docs
+title: Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
+titleSuffix: Azure Storage
 description: Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598102"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891822"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
 
 Azure depolama, istekleri blob ve kuyruk depolamaya yetkilendirmek için Azure Active Directory (AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, blob veya kuyruk depolama alanındaki bir kaynağa erişme isteğine yetki vermek için kullanılabilir.
 

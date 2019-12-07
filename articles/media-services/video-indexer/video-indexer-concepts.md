@@ -1,7 +1,7 @@
 ---
 title: Video Indexer kavramlar
 titleSuffix: Azure Media Services
-description: Bu konuda Video Indexer hizmetinin bazı kavramları açıklanmaktadır.
+description: Bu makalede Azure Media Services Video Indexer hizmetinin bazı kavramları açıklanmaktadır.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839571"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900685"
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer kavramlar
  
@@ -29,7 +29,7 @@ Bu makalede Video Indexer hizmetinin bazı kavramları açıklanmaktadır.
 
 TimeRange, orijinal videodaki zaman aralığıdır. Ayarlantedtimerange, geçerli çalma listesine göre zaman aralığıdır. Farklı videoların farklı satırlarından bir çalma listesi oluşturbileceğinizden, 1 saatlik bir video alabilir ve yalnızca 1 satır kullanabilirsiniz, örneğin, 10:00-10:15. Bu durumda, 1 satır içeren bir çalma listenize sahip olursunuz, burada zaman aralığı 10:00-10:15, ancak Ayarlantedtimerange 00:00-00:15 ' dir.
  
-## <a name="blocks"></a>öbekleri
+## <a name="blocks"></a>Bloklar
 
 Bloklar, verileri daha kolay hale getirmek için tasarlanmıştır. Örneğin, blok ne zaman konuşmacının değiştiğine ya da uzun duraklamalar olduğuna bağlı olarak çözümlenebilir.
 

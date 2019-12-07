@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: fceaf312f35356acf18c0873a467ed43d11ddd83
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2ceae0a6d6eb4dc989a53b35dc4a2f64472a5f54
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454930"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892983"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure'da özel Docker kapsayıcısı kayıt defterlerine giriş
 
@@ -25,8 +25,8 @@ Docker ve kayıt defteri kavramları hakkında daha fazla bilgi için bkz. [Dock
 
 Azure kapsayıcısı kayıt defterinden çeşitli dağıtım hedeflerine görüntü çekme:
 
-* **Kubernetes**, [DC/OS](https://kubernetes.io/docs/) ve [Docker Swarm](https://docs.mesosphere.com/) dahil olmak üzere konak kümeleri arasında kapsayıcı haline getirilmiş uygulamaları yöneten [ölçeklenebilir düzenleme sistemleri](https://docs.docker.com/swarm/).
-* **Azure Kubernetes Service (AKS)** , [App Service](../aks/index.yml), [Batch](../app-service/index.yml), [Service Fabric](../batch/index.yml) ve diğerleri gibi uygun ölçekte uygulama oluşturulmasını ve çalıştırılmasını destekleyen [Azure hizmetleri](/azure/service-fabric/).
+* [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) ve [Docker Swarm](https://docs.docker.com/swarm/) dahil olmak üzere konak kümeleri arasında kapsayıcı haline getirilmiş uygulamaları yöneten **ölçeklenebilir düzenleme sistemleri**.
+* [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) ve diğerleri gibi uygun ölçekte uygulama oluşturulmasını ve çalıştırılmasını destekleyen **Azure hizmetleri**.
 
 Geliştiriciler bir kapsayıcı geliştirme iş akışı kapsamında bir kapsayıcı kayıt defterine de öğe itebilir. Örneğin, [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) veya [Jenkins](https://jenkins.io/)gibi bir sürekli tümleştirme ve teslim aracından bir kapsayıcı kayıt defteri hedefleyin.
 

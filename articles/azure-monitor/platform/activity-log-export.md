@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f2366d60868dd1db52fd8bfc2149756ed4b1b0d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048261"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893629"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure etkinlik günlüğünü depolamaya veya Azure Event Hubs dışarı aktarma
 
@@ -33,7 +33,7 @@ Denetim, statik analiz veya yedekleme için günlük verilerinizi 90 günden dah
 ## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="storage-account"></a>Depolama hesabı
-Etkinlik günlüğliğinizi arşivlerken, yoksa [bir depolama hesabı oluşturmanız](../../storage/common/storage-quickstart-create-account.md) gerekir. İzleme verilerine erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Ayrıca, tanılama günlükleri ve ölçümleri de bir depolama hesabına arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.
+Etkinlik günlüğliğinizi arşivlerken, yoksa [bir depolama hesabı oluşturmanız](../../storage/common/storage-quickstart-create-account.md) gerekir. İzleme verilerine erişimi daha iyi denetleyebilmeniz için, içinde depolanan diğer, izleme olmayan verileri olan mevcut bir depolama hesabını kullanmamalısınız. Ayrıca günlükleri ve ölçümleri de bir depolama hesabına arşivlerken, tüm izleme verilerini merkezi bir konumda tutmak için aynı depolama hesabını kullanmayı tercih edebilirsiniz.
 
 Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğu sürece, depolama hesabının, abonelik yaymasıyla aynı abonelikte olması gerekmez.
 > [!NOTE]
@@ -111,9 +111,9 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Özellik | Gerekli | Açıklama |
+    | Özellik | Gereklidir | Açıklama |
     | --- | --- | --- |
-    | Ad |Yes |Günlük profilinizin adı. |
+    | Adı |Yes |Günlük profilinizin adı. |
     | StorageAccountId |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
     | serviceBusRuleId |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimdeki bir dizedir: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Konum |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
@@ -154,7 +154,7 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız 
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Özellik | Gerekli | Açıklama |
+    | Özellik | Gereklidir | Açıklama |
     | --- | --- | --- |
     | ad |Yes |Günlük profilinizin adı. |
     | storage-account-id |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
@@ -169,7 +169,7 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız 
 Azure depolama 'ya veya Olay Hub 'ına gönderilmeksizin, etkinlik günlüğü verileri JSON 'a aşağıdaki biçimle yazılır.
 
 
-> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici tanılama günlüklerine yönelik biçim değişikliği Için hazırlama günlükleri bir depolama hesabına arşivlendi](diagnostic-logs-append-blobs.md) .
+> Bir depolama hesabına yazılan etkinlik günlüğü verilerinin biçimi, Kasım. 1, 2018 tarihinde JSON satırları olarak değiştirildi. Bu biçim değişikliğine ilişkin ayrıntılar için bkz. [Azure izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma kaynak günlükleri bir depolama hesabına arşivlendi](diagnostic-logs-append-blobs.md) .
 
 ``` JSON
 {
@@ -239,9 +239,9 @@ Bu JSON 'daki öğeler aşağıdaki tabloda açıklanmıştır.
 | durationMs |Milisaniye cinsinden işlem süresi |
 | callerIpAddress |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının IP adresi. |
 | correlationId |Genellikle dize biçimindeki bir GUID. Bir CorrelationId 'yi paylaşan olaylar aynı Uber eylemine aittir. |
-| identity |Yetkilendirmeyi ve talepleri açıklayan JSON blobu. |
+| kimlik |Yetkilendirmeyi ve talepleri açıklayan JSON blobu. |
 | authorization |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
-| düzey |Etkinliğin düzeyi. Şu değerlerden biri: _kritik_, _hata_, _Uyarı_, _bilgilendirici_ve _ayrıntılı_ |
+| level |Etkinliğin düzeyi. Şu değerlerden biri: _kritik_, _hata_, _Uyarı_, _bilgilendirici_ve _ayrıntılı_ |
 | location |Konumun gerçekleştiği bölge (veya genel). |
 | properties |Olayın ayrıntılarını açıklayan `<Key, Value>` çiftleri (yani sözlük) kümesi. |
 

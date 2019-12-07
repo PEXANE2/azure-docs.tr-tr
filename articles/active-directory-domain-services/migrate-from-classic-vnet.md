@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674911"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893068"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Önizleme-Azure AD Domain Services klasik sanal ağ modelinden Kaynak Yöneticisi 'e geçirin
 
@@ -112,7 +112,7 @@ Geri alma durumunda IP adresleri geri alındıktan sonra değişebilir.
 
 Azure AD DS, genellikle adres aralığındaki kullanılabilir ilk iki IP adresini kullanır, ancak bu garanti edilmez. Şu anda geçişten sonra kullanılacak IP adreslerini belirtemezsiniz.
 
-### <a name="downtime"></a>Aksak
+### <a name="downtime"></a>Kesinti
 
 Geçiş işlemi, etki alanı denetleyicilerinin bir süre çevrimdışı olmasını içerir. Azure AD DS Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçirildiğinde etki alanı denetleyicilerine erişilemez. Ortalama süre kapalı kalma süresi 1 ile 3 saat arasında. Bu süre, etki alanı denetleyicilerinin ilk etki alanı denetleyicisinin yeniden çevrimiçi duruma geldiği sırada çevrimdışına alındığı zamana göre belirlenir. Bu ortalama, ikinci etki alanı denetleyicisinin çoğaltılması için geçen süreyi veya Kaynak Yöneticisi dağıtım modeline ek kaynakların geçirilmesi için gereken süreyi içermez.
 
@@ -151,9 +151,9 @@ Sanal ağ gereksinimleri hakkında daha fazla bilgi için bkz. [sanal ağ tasar�
 
 Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma bölünür:
 
-| Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Aksak  | Geri alma/geri yükleme? |
+| Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Kesinti  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | Yok |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portalı | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-geçiş için Azure AD DS yönetilen etki alanını hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-Azure AD DS yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
@@ -306,12 +306,13 @@ Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güv
 
 Adım 2 ' de Geçişe hazırlanmak üzere PowerShell cmdlet 'ini çalıştırdığınızda bir hata oluşursa, adım 3 ' te Azure AD DS yönetilen etki alanı özgün yapılandırmaya geri dönebilir. Bu geri alma, başlangıçtaki klasik sanal ağı gerektirir. IP adreslerinin geri alma işleminin ardından hala değişebileceğini unutmayın.
 
-*-Abort* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. *Contoso.com*gibi önceki bir bölümde hazırlanan Azure AD DS yönetilen etki alanınız için *-manageddomainfqdn* sağlayın:
+*-Abort* parametresini kullanarak `Migrate-Aadds` cmdlet 'ini çalıştırın. *Contoso.com*gibi önceki bir bölümde hazırlanan Azure AD DS yönetilen etki alanınız için *-Manageddomainfqdn* ve *Myclassicvnet*gibi klasik sanal ağ adını sağlayın:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn contoso.com `
+    -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```
 
@@ -360,4 +361,4 @@ Azure AD DS yönetilen etki alanınız Kaynak Yöneticisi dağıtım modeline ge
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
 
 <!-- EXTERNAL LINKS -->
-[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/1.0
+[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

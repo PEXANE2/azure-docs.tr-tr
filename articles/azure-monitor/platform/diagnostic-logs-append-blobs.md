@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici tanılama günlüklerine biçim değişikliğine hazırlanma
-description: 1 Kasım 2018 ' de ekleme bloblarını kullanacak şekilde değiştirilen yeni Azure tanılama günlüklerini işlemek için, bu etkiyi ve araçlarınızın nasıl güncelleştirileceğini açıklar.
+title: Azure Izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma
+description: 1 Kasım 2018 ' de ekleme bloblarını kullanacak şekilde değiştirilen yeni Azure Kaynak günlüklerini işlemek için, bu etkiyi ve araçlarınızın nasıl güncelleştirileceğini açıklar.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307059"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893527"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Azure Izleyici tanılama günlüklerinde bir depolama hesabına arşivlenen biçim değişikliğine hazırlanma
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Azure Izleyici kaynak günlüklerinde bir depolama hesabına arşivlenen biçim değişikliğine hazırlanma
 
 > [!WARNING]
-> [Azure Kaynak tanılama günlüklerini veya ölçümlerini](./../../azure-monitor/platform/archive-diagnostic-logs.md) , [günlük profillerini kullanarak bir depolama hesabına](./../../azure-monitor/platform/archive-activity-log.md)kaynak tanılama ayarlarını ya da etkinlik günlüklerini kullanarak bir depolama hesabına gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, Kasım 'da JSON satırları olarak değişir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
+> [Kaynak tanılama ayarlarını veya etkinlik günlüklerini kullanarak bir depolama hesabına Azure Kaynak kaynağı günlükleri veya ölçümleri](./../../azure-monitor/platform/archive-diagnostic-logs.md) , [günlük profillerini kullanarak](./../../azure-monitor/platform/archive-activity-log.md)gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, Kasım 'da JSON satırları olarak değişir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
 >
 > 
 
@@ -31,13 +31,13 @@ Azure Izleyici, Azure Izleyici 'de bir Azure depolama hesabına, Event Hubs ad a
 * Şu an ve 1 Kasım arasında bir tanılama ayarı ayarlanması, verileri geçerli biçimde 1 Kasım 'a kadar yaymaya devam eder.
 * Bu değişiklik, tüm genel bulut bölgelerinde bir kez gerçekleşir. Bu değişiklik, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure Almanya veya Azure Kamu bulutlarında henüz gerçekleşmeyecektir.
 * Bu değişiklik aşağıdaki veri türlerini etkiler:
-  * [Azure Kaynak tanılama günlükleri](archive-diagnostic-logs.md) ([kaynakların listesini buraya bakın](diagnostic-logs-schema.md))
+  * [Azure Kaynak kaynağı günlükleri](archive-diagnostic-logs.md) ([kaynakların listesini buraya bakın](diagnostic-logs-schema.md))
   * [Tanılama ayarları tarafından aktarılan Azure Kaynak ölçümleri](diagnostic-settings.md)
   * [Azure etkinlik günlüğü verileri, günlük profilleri tarafından veriliyor](archive-activity-log.md)
 * Bu değişiklik etkilenmez:
   * Ağ akışı günlükleri
-  * Azure hizmet günlükleri henüz Azure Izleyici üzerinden kullanılabilir değil (örneğin, tanılama günlükleri, depolama analiz günlükleri Azure App Service)
-  * Azure tanılama günlükleri ve etkinlik günlüklerinin diğer hedeflere yönlendirilmesi (Event Hubs Log Analytics)
+  * Azure hizmet günlükleri henüz Azure Izleyici aracılığıyla kullanılamaz (örneğin, kaynak günlükleri Azure App Service, depolama Analizi günlükleri)
+  * Azure Kaynak günlüklerinin ve etkinlik günlüklerinin diğer hedeflere yönlendirilmesi (Event Hubs Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Etkilenip etkilenmediğinizi görme
 
@@ -135,6 +135,6 @@ Yalnızca bu günlük dosyalarını daha fazla işlemeye yönelik bir özel ara�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak tanılama günlüklerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
+* [Kaynak kaynak günlüklerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
 * [Etkinlik günlüğü verilerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-activity-log.md) hakkında bilgi edinin
 

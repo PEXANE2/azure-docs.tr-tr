@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555578"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893544"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Izleyici CLı hızlı başlangıç örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek komut satırı arabirimi (CLı) komutları gösterilmektedir. Azure Izleyici, Cloud Services, sanal makineleri ve Web Apps otomatik olarak ve yapılandırılmış telemetri verileri değerlerine göre uyarı bildirimleri göndermenizi veya Web URL 'Lerini çağırmayı sağlar.
@@ -160,7 +160,7 @@ Tanılama ayarlarıyla çalışmak için bu bölümdeki bilgileri kullanın.
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>Tanılama günlüğü ayarı oluşturma 
+### <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

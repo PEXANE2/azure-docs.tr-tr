@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b00e699eb49d88e41dff18d6c86024c9b0537e50
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872324"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895554"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -5534,14 +5534,14 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/recommendedSensitivityLabels/Read | Belirli bir veritabanının duyarlılık etiketlerini listeleyin |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/recommendedSensitivityLabels/Write | Toplu güncelleştirme önerilen duyarlılık etiketleri |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/restoreDetails/Read | Geri yükleme devam ederken yönetilen veritabanı geri yükleme ayrıntılarını döndürür. |
-> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/okuma | Yönetilen bir veritabanı şeması alın. |
-> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/okuma | Yönetilen veritabanı sütunu al |
+> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/okuma | Yönetilen bir veritabanı şeması alın. (yalnızca şema) |
+> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/okuma | Yönetilen veritabanı sütunu al (yalnızca şema) |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Delete | Belirli bir sütunun duyarlılık etiketini Sil |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Disable/Action | Belirli bir sütunda duyarlılık önerilerini devre dışı bırak |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Enable/Action | Belirli bir sütunda duyarlılık önerilerini etkinleştir |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Read | Belirli bir sütunun duyarlılık etiketini al |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Write | Belirli bir sütunun duyarlılık etiketini oluştur veya güncelleştir |
-> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/okuma | Yönetilen veritabanı tablosu al |
+> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/şemalar/tablolar/okuma | Yönetilen veritabanı tablosu al (yalnızca şema) |
 > | Eylem | Microsoft. SQL/ManagedInstances/Databases/Securityalcertpolicies/Read | Belirli bir sunucu için yapılandırılmış yönetilen veritabanı tehdit algılama ilkelerinin listesini alma |
 > | Eylem | Microsoft. SQL/ManagedInstances/Databases/Securityalcertpolicies/Write | Belirli bir yönetilen veritabanı için veritabanı tehdit algılama ilkesini değiştirme |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/securityEvents/Read | Yönetilen veritabanı güvenlik olaylarını alır |
@@ -5680,14 +5680,14 @@ Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri al
 > | Eylem | Microsoft. SQL/Servers/veritabanları/restorePoints/Delete | Veritabanı için bir geri yükleme noktası siler. |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/restorePoints/Read | Veritabanı için geri yükleme noktalarını döndürür. |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/özgeçmişi/Action | Azure SQL veri ambarı veritabanını sürdürür |
-> | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/okuma | Veritabanı şeması alın. |
-> | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/okuma | Veritabanı sütunu al. |
+> | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/okuma | Veritabanı şeması al (yalnızca şema). |
+> | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/okuma | Veritabanı sütunu al (yalnızca şema). |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Delete | Belirli bir sütunun duyarlılık etiketini Sil |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Disable/Action | Belirli bir sütunda duyarlılık önerilerini devre dışı bırak |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Enable/Action | Belirli bir sütunda duyarlılık önerilerini etkinleştir |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Read | Belirli bir sütunun duyarlılık etiketini al |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels/Write | Belirli bir sütunun duyarlılık etiketini oluştur veya güncelleştir |
-> | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/okuma | Veritabanı tablosu al. |
+> | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/okuma | Veritabanı tablosu al (yalnızca şema). |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/recommendedIndexes/Read | Bir veritabanındaki dizin önerilerinin listesini alma |
 > | Eylem | Microsoft. SQL/Servers/veritabanları/şemalar/tablolar/recommendedIndexes/Write | Dizin önerisi uygulama |
 > | Eylem | Microsoft. SQL/Servers/Databases/Securityalcertpolicies/Read | Belirli bir sunucu için yapılandırılmış veritabanı tehdit algılama ilkelerinin listesini alma |

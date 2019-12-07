@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory içindeki saklı yordam etkinliğini kullanarak verileri dönüştürme
+title: Saklı yordam etkinliğini kullanarak verileri dönüştürme
 description: Bir Data Factory işlem hattından bir Azure SQL veritabanı/veri ambarında saklı yordam çağırmak için SQL Server saklı yordam etkinliğinin nasıl kullanılacağını açıklar.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 59bfdc5d2d57b2c05a2c7676d83d8771142ca285
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683711"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893782"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory SQL Server saklı yordam etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -36,7 +36,7 @@ Saklı yordam etkinliğini, kuruluşunuzda bulunan aşağıdaki veri depolarınd
 > [!IMPORTANT]
 > Verileri Azure SQL veritabanı 'na veya SQL Server kopyalarken, Copy etkinliğinde **Sqlsink** öğesini, **sqlWriterStoredProcedureName** özelliğini kullanarak bir saklı yordam çağırmak üzere yapılandırabilirsiniz. Özelliği hakkında daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Bir kopyalama etkinliği kullanarak verileri Azure SQL veri ambarı 'na kopyalarken saklı bir yordamı çağırmak desteklenmez. Ancak, bir SQL veri ambarında saklı yordam çağırmak için saklı yordam etkinliğini kullanabilirsiniz. 
 >
-> Azure SQL veritabanı veya SQL Server ya da Azure SQL veri ambarı 'ndan veri kopyalarken, **sqlReaderStoredProcedureName** kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere **SQLSource** 'u Copy etkinliğinde yapılandırabilirsiniz. özelliði. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL veri ambarı](connector-azure-sql-data-warehouse.md)          
+> Verileri Azure SQL veritabanı veya SQL Server ya da Azure SQL veri ambarı 'ndan kopyalarken, **sqlReaderStoredProcedureName** özelliğini kullanarak kaynak veritabanından veri okumak için bir saklı yordam çağırmak üzere, Copy etkinliğinde **SQLSource** ' u yapılandırabilirsiniz. Daha fazla bilgi için şu bağlayıcı makalelerine bakın: [Azure SQL veritabanı](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL veri ambarı](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -65,19 +65,19 @@ Saklı yordam etkinliğinin tanımlanması için JSON biçimi aşağıda verilmi
 
 Aşağıdaki tabloda bu JSON özellikleri açıklanmaktadır:
 
-| Özellik                  | Açıklama                              | Gerekli |
+| Özellik                  | Açıklama                              | Gereklidir |
 | ------------------------- | ---------------------------------------- | -------- |
-| ad                      | Etkinliğin adı                     | Evet      |
+| ad                      | Etkinliğin adı                     | Yes      |
 | açıklama               | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| type                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Evet      |
-| linkedServiceName         | **Azure SQL veritabanı** veya **Azure SQL veri ambarı** 'na veya Data Factory bağlı hizmet olarak kaydedilmiş **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
-| storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Evet      |
+| type                      | Saklı yordam etkinliği için etkinlik türü **Sqlserverstoredprocedure** olur | Yes      |
+| linkedServiceName         | **Azure SQL veritabanı** veya **Azure SQL veri ambarı** 'na veya Data Factory bağlı hizmet olarak kaydedilmiş **SQL Server** başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
+| storedProcedureName       | Çağrılacak saklı yordamın adını belirtin. | Yes      |
 | storedProcedureParameters | Saklı yordam parametrelerinin değerlerini belirtin. Parametre değerlerini ve veri kaynağı tarafından desteklenen türlerini iletmek için `"param1": { "value": "param1Value","type":"param1Type" }` kullanın. Bir parametre için null değeri geçirmeniz gerekiyorsa `"param1": { "value": null }` (tümü küçük harf) kullanın. | Hayır       |
 
 ## <a name="parameter-data-type-mapping"></a>Parametre veri türü eşleme
 Parametresi için belirttiğiniz veri türü, kullanmakta olduğunuz veri kaynağındaki veri türüyle eşleşen Azure Data Factory türüdür. Veri kaynağınız için veri türü eşlemelerini bağlayıcılar alanında bulabilirsiniz. Bazı örnekler
 
-| Veri kaynağı          | Veri türü eşleme |
+| Veri Kaynağı          | Veri türü eşleme |
 | ---------------------|-------------------|
 | Azure SQL Veri Ambarı | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Veritabanı   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 

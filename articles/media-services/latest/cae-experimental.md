@@ -1,6 +1,6 @@
 ---
-title: Deneysel bir hazır içerik algılayan kodlama için - Azure | Microsoft Docs
-description: Bu makalede içeriğe duyarlı Azure Media Services encoding ele alınmaktadır.
+title: İçerik kullanan kodlama için deneysel önayar-Azure | Microsoft Docs
+description: Bu makalede, Microsoft Azure Media Services v3 'de içeriğe duyarlı kodlama ele alınmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,46 +12,46 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151014"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896132"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Deneysel içeriğe duyarlı kodlama Önayarı
+# <a name="experimental-preset-for-content-aware-encoding"></a>İçerik algılayan kodlama için deneysel önayar
 
-İçerik teslimi için hazırlamak amacıyla [bit hızı Uyarlamalı akış](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), video Çoklu bit hızlarında-(düşük, yüksek) kodlanması gerekiyor. Kalite, normal performansında sağlamak amacıyla hızı azaltıldığı kadar görüntü çözünürlüğünü aynıdır. Bu, bir sözde kodlama Merdiveni içinde – çözünürlüklerine ve bit hızlarına dönüştürme tablosu sonuçlanır; Media Services bkz [yerleşik kodlama Önayarları](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+İçeriği [Uyarlamalı bit hızı akışı](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)ile teslim etmek üzere hazırlamak için videonun birden çok bit hızında (yüksek-düşük) kodlanması gerekir. Hızını düzgün bir şekilde azalmadan emin olmak için bit hızı düşürüldü, bu nedenle videonun çözümlenme olur. Bu, bir çözüm ve bit fiyatları tablosu olarak adlandırılır; buna neden olur. bkz. Media Services [yerleşik kodlama önayarları](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir tek-hazır-uygun-all-videoları yaklaşım taşımada ilgi artırılmış Netflix yayımladıktan sonra kendi [blog](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) aralık 2015'te. O zamandan bu yana, içeriğe duyarlı kodlaması için birden çok çözümü Market'te yayımlanan; bkz: [bu makalede](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) genel bakış. Özelleştirme veya kodlama Merdiveni tek video karmaşıklığını için ayarlanacak içeriği dikkat edilmesi gereken olur. Her bir çözünürlükte, ötesinde herhangi bir artış kalite perceptive değil – Kodlayıcı bu en iyi hızı değerinde çalışır bir bit hızı yoktur. İleri iyileştirme düzeyini içeriğine göre çözümler seçmektir: Örneğin, bir PowerPoint sunusu videosunun 720 p aşağıda gitmesini fayda. Daha fazla devam, kodlayıcı video içinde her görüntüsü ayarlarını en iyi duruma getirme görevli. Netflix açıklanan [bu tür bir yaklaşım](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) 2018'de.
+Tek bir önceden ayarlanmış-tüm videolar yaklaşımının ötesine geçilmesi, Netflix [bloglarını](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) Aralık 2015 ' de yayımladıktan sonra artar. Bu tarihten sonra, Market 'te içerik duyarlı kodlamaya yönelik birden çok çözüm yayımlanmıştır; genel bakış için [Bu makaleye](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) bakın. Düşünce, tek tek videonun karmaşıklığına yönelik kodlama merdiveni ' i özelleştirmek veya ayarlamak için içeriğe göz önünde bulundurulmalıdır. Her çözünürlükte, kalitedeki artışın Perceptive olmadığı bir bit hızı vardır: kodlayıcı bu en iyi bit hızı değerinde çalışır. Bir sonraki iyileştirme düzeyi, içeriğe göre çözümlerin seçmesidir. Örneğin, bir PowerPoint sunusunun videosu, 720p 'in altına gitmesinin avantajına sahip değildir. Diğer bir deyişle, Kodlayıcıdaki her bir görüntü için ayarları iyileştirmek üzere kodlayıcı eklenebilir. Netflix, 2018 ' de [böyle bir yaklaşım](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) ile açıklanmıştır.
 
-Microsoft erken 2017'de yayınlanan [Uyarlamalı akış](autogen-bitrate-ladder.md) kalitesinde değişkenliği sorun ve çözümü için kaynak videoları ele almak için hazır. Müşterilerimizin içeriği, bir noktada 1080 p, diğerleri 720 p ve SD ve daha düşük çözünürlükler birkaç farklı bir karışımını içeriyordu. Ayrıca, tüm kaynak içerik, yüksek kaliteli mezzanines film veya TV stüdyosu arasına oluştu. Bit hızı Merdiveni hiçbir zaman çözüm ya da giriş mezzanine, ortalama hızı aştığını sağlayarak bu sorunları hazır adresleri akış Bağdaşık.
+Erken 2017 ' de, Microsoft, kaynak videoların kalite ve çözünürlüğündeki değişkenlik sorununu çözmek için [uyarlamalı akış](autogen-bitrate-ladder.md) ön ayarını yayımlamıştır. Müşterilerimiz, bazı Kullanıcı adına, bazı 1080p, 720p ve daha az sayıda SD ve daha düşük çözünürlükte içerik karması içeriyordu. Ayrıca, tüm kaynak içerikleri film veya TV Studios 'den yüksek kaliteli mezzanines. Uyarlamalı akış önceden ayarı, bit hızı el merdivenine, giriş Mezzanine 'nin çözünürlüğü veya Ortalama bit hızını aşmamasını sağlayarak bu sorunları giderir.
 
-Deneysel içeriğe duyarlı kodlama Önayarı Bu mekanizma, en iyi hızı değerin belirli bir çözüm için ancak kapsamlı hesaplama analiz gerektirmeden arama Kodlayıcı sağlayan özel mantığı ekleyerek genişletir. Bu yeni hazır sahip daha düşük bit hızı Uyarlamalı akış ön ayarı daha, ancak daha yüksek kalitede bir çıktı üretir net sonucudur. Kaliteli ölçümler gibi kullanarak karşılaştırmayı gösteren aşağıdaki örnek grafiklerini görebilirsiniz [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) ve [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Kaynak filmler yüksek karmaşıklık görüntüleri kısa klipleri birleştirerek oluşturuldu ve TV programları, kodlayıcı stres testi uygulamak hedeflenen. Tanımı gereği, gelen içerik için içerik – değişiklik bu hazır üretir sonuçları, ayrıca içerikler için olmayabilir, bit hızı önemli azalmaya veya kalite gelişme anlamına gelir.
+Deneysel içeriğe duyarlı kodlama önceden ayarı, bu mekanizmayı genişleterek, kodlayıcının belirli bir çözüm için en iyi bit hızı değerini, ancak kapsamlı hesaplama analizine gerek kalmadan araymasına olanak tanır. Net sonuç, bu yeni önayar, uyarlamalı akış önayarı 'ndan daha düşük bit hızına sahip bir çıkış üretir, ancak daha yüksek bir kalitede olur. [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) ve [vmaf](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)gibi kalite ölçümlerini kullanarak karşılaştırmayı gösteren aşağıdaki örnek grafiklere bakın. Kaynak, kodlayıcılarını stres amacıyla tasarlanan filmlerden ve TV gösterlerinden gelen yüksek karmaşıklık görüntüleriyle kısa küçük resimleri birleştirerek oluşturulmuştur. Tanım olarak, bu ön ayar içerikten içeriğe farklılık gösteren sonuçlar üretir. Ayrıca, bazı içerikler için bit hızı veya kalite açısından önemli bir azalma olmadığı anlamına gelir.
 
-![PSNR kullanarak oranı-bozulmanın (RD) eğrisi](media/cae-experimental/msrv1.png)
+![PSNR kullanan hız deformasyonu (RD) eğrisi](media/cae-experimental/msrv1.png)
 
-**Şekil 1: Yüksek karmaşıklık kaynağı PSNR ölçüm kullanarak oranı-bozulmanın (RD) eğrisi**
+**Şekil 1: yüksek karmaşıklık kaynağı için PSNR ölçümünü kullanarak oran deformasyonu (RD) eğrisi**
 
-![VMAF kullanarak oranı-bozulmanın (RD) eğrisi](media/cae-experimental/msrv2.png)
+![VMAF kullanan hız deformasyonu (RD) eğrisi](media/cae-experimental/msrv2.png)
 
-**Şekil 2: Yüksek karmaşıklık kaynağı VMAF ölçüm kullanarak oranı-bozulmanın (RD) eğrisi**
+**Şekil 2: yüksek karmaşıklık kaynağı için VMAF ölçümünü kullanarak oran deformasyonu (RD) eğrisi**
 
-Hazır şu anda yüksek karmaşıklık için ayarlanmış yüksek kaliteli kaynak videoları (filmler, TV programlarına). İş (örneğin, PowerPoint sunuları), düşük karmaşıklığa içerik için uyum yanı sıra düşük kaliteli videolar devam ediyor. Uyarlamalı akış hazır olarak bu hazır çözümler aynı kümesini de kullanır. Microsoft çözümleri içeriğine göre en az sayıda seçmek için yöntemleri üzerinde çalışıyor. Kaynak içerik, başka bir kategori için sonuçları Kodlayıcı giriş düşük kaliteli (birçok sıkıştırma yapıtları nedeniyle düşük hızı) olduğunu belirlemek mümkün olduğu gibidir. Deneysel ile önceden unutmayın, böylece çoğu istemci bekletilen olmadan akış yürütmeye yaratmayacağı hızı anda yalnızca bir çıkış katmanı – üretmek Kodlayıcı verdi.
+Ön ayar şu anda yüksek karmaşıklık, yüksek kaliteli kaynak videoları (Filmler, TV programları) için ayarlanmıştır. İş, düşük karmaşıklık içeriğine (örneğin, PowerPoint sunuları) ve poorer kaliteli videoların uyarlanmasını sağlayacak şekilde devam etmektedir. Bu önayar Ayrıca, uyarlamalı akış ön ayarıyla aynı çözüm kümesini kullanır. Microsoft, içeriğe göre en düşük çözüm kümesini seçmek için yöntemler üzerinde çalışmaktadır. Aşağıdaki gibi, kodlayıcının girişin düşük kaliteli olduğunu belirleyebildiği (düşük bit hızı nedeniyle birçok sıkıştırma yapıtı), başka bir kaynak içeriği kategorisinin sonuçları vardır. Deneysel ön ayarda, kodlayıcının yalnızca bir çıkış katmanı üretmesine karar verdiğine ve çoğu istemcinin, bu akışı etkilemeden oynatacağından emin olun.
 
-![RD eğri PSNR kullanma](media/cae-experimental/msrv3.png)
+![PSNR kullanan RD eğrisi](media/cae-experimental/msrv3.png)
 
-**Şekil 3: RD eğri (1080 p) en düşük kaliteli giriş PSNR kullanma**
+**Şekil 3: düşük kaliteli giriş için PSNR kullanan RD eğrisi (1080p 'de)**
 
-![RD eğri VMAF kullanma](media/cae-experimental/msrv4.png)
+![VMAF kullanan RD eğrisi](media/cae-experimental/msrv4.png)
 
-**Şekil 4: RD eğri (1080 p) en düşük kaliteli giriş VMAF kullanma**
+**Şekil 4: düşük kaliteli giriş için VMAF kullanan RD eğrisi (1080p 'de)**
 
-## <a name="use-the-experimental-preset"></a>Deneysel hazır kullanın
+## <a name="use-the-experimental-preset"></a>Deneysel önayar kullanma
 
-Bu gibi önceden dönüştürmeler oluşturabilirsiniz. Bir öğretici kullanıyorsanız [bunun gibi](stream-files-tutorial-with-api.md), kod şu şekilde güncelleştirebilirsiniz:
+Bu önayarı kullanan dönüşümler aşağıdaki gibi oluşturulabilir. [Bu](stream-files-tutorial-with-api.md)gibi bir öğretici kullanılıyorsa, kodu aşağıdaki şekilde güncelleştirebilirsiniz:
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -70,8 +70,8 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> "Deneysel" ön eki, temel alınan algoritmalar hala artmaktadır göstermek için burada kullanılır. Değişiklikler üzerinde sağlam ve çok çeşitli giriş koşullar uyum sağlayan bir algoritma yakınsamaya amacı ile bit hızı ladders oluşturmak için kullanılan mantıksal zaman içinde olacaktır ve orada kullanabilirsiniz. Kodlama işleri yine de bu hazır olacak kullanarak faturalandırılan bağlı olarak çıkış dakikası olmalı ve çıktı varlığına DASH ve HLS gibi protokoller, bizim akış uç noktalarından teslim edilebilir.
+> Temel algoritmaların hala gelişmekte olduğunu bildirmek için burada "deneysel" ön eki kullanılır. Zamana göre zaman içindeki değişiklikler, güçlü bir algoritmaya uyum sağlamak ve çok çeşitli giriş koşullarına uyum sağlamak amacıyla bit hızı merdiveni oluşturmak için kullanılan mantığa göre yapılır. Bu önceden belirlenmiş ayarı kullanan kodlama işleri, çıkış dakikaları temel alınarak faturalandırılır ve çıkış varlığı, DASH ve HLS gibi protokollerde akış uç noktalarımızdan teslim edilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Videolarınızı en iyi duruma getirme, bu yeni seçenek hakkında bilgi edindiniz, denemek için davet ediyoruz. Bu makalenin sonunda bağlantıları kullanarak görüşlerinizi bize gönderin veya bize daha doğrudan etkileşim kurun <amsved@microsoft.com>.
+Videolarınızı en iyi duruma getirmeye yönelik bu yeni seçenek hakkında bilgi edindiğinize göre, sizi denemeye davet ediyoruz. Bu makalenin sonundaki bağlantıları kullanarak bize geri bildirim gönderebilir veya <amsved@microsoft.com>doğrudan daha fazla iletişim sağlayabilirsiniz.

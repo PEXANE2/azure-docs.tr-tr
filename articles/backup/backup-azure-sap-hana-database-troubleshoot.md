@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665347"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892609"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -102,17 +102,19 @@ HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM
 SAP HANA 1,0 veritabanlarını koruyorsanız ve 2,0 ' ye yükseltmek istiyorsanız, aşağıda özetlenen adımları gerçekleştirin:
 
 - Eski SDC veritabanı için verileri koruyun ile [korumayı durdurun](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) .
+- Yükseltmeyi gerçekleştirin. Tamamlandıktan sonra, HANA artık sistem DB ve kiracı DB 'leri ile MDC 'dir
 - [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) (SID ve MDC) doğru ayrıntılarla yeniden çalıştırın.
-- Uzantıyı yeniden Kaydet (yedekleme-> Görünümü ayrıntıları-> ilgili Azure VM 'yi > yeniden Kaydet ' i seçin).
+- Uzantıyı Azure portalında aynı makine için yeniden Kaydet (yedekleme-> Görünümü ayrıntıları-> ilgili Azure VM 'yi > yeniden Kaydet ' i seçin).
 - Aynı VM için veritabanlarını yeniden keşfet ' e tıklayın. Bu eylem, 2. adımdaki yeni DBs 'Leri doğru ayrıntılarla (SDC değil, SYSTEMDB ve kiracı DB) göstermelidir.
-- Bu yeni veritabanlarını koruyun.
+- Bu yeni veritabanları için yedeklemeyi yapılandırın.
 
 ## <a name="upgrading-without-an-sid-change"></a>SID değişikliği olmadan yükseltme
 
 Bir SID değişikliğine neden olmayan işletim sistemi veya SAP HANA yükseltmeler aşağıda belirtilen şekilde işlenebilir:
 
 - Veritabanı için verileri tutma ile [Korumayı Durdur](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
-- [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana) yeniden çalıştır
+- Yükseltmeyi gerçekleştirin.
+- [Ön kayıt betiğini](https://aka.ms/scriptforpermsonhana)yeniden çalıştırın. Genellikle, yükseltme işlemini görtiğimiz gerekli rolleri kaldırdık. Ön kayıt betiğini çalıştırmak, tüm gerekli rolleri doğrulamaya yardımcı olur.
 - Veritabanı için [korumayı](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) yeniden deneyin
 
 ## <a name="next-steps"></a>Sonraki adımlar

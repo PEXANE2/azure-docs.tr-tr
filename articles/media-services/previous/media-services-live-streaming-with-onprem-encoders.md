@@ -1,6 +1,6 @@
 ---
 title: Çoklu bit hızı akışları oluşturan şirket içi kodlayıcılarla canlı akış-Azure | Microsoft Docs
-description: 'Bu konuda, şirket içi kodlayıcıdan çoklu bit hızlı canlı akış alan bir kanalın nasıl ayarlanacağı açıklanır. Akış daha sonra, aşağıdaki uyarlamalı akış protokollerinden birini kullanarak bir veya daha fazla akış uç noktası aracılığıyla istemci kayıttan yürütme uygulamalarına teslim edilebilir: HLS, Kesintisiz Akış, TIRE.'
+description: Bu konuda, şirket içi kodlayıcıdan çoklu bit hızlı canlı akış alan bir kanalın nasıl ayarlanacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015479"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887110"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan kanallar ile çalışma
 
@@ -35,12 +35,12 @@ Azure Media Services, *Kanal* canlı akış içeriğini işlemek için bir işle
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
 
 
-* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek üzere etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Kanal daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir. Media Services, akışı isteyen müşterilere teslim eder.
+* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Kanal daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir. Media Services, akışı isteyen müşterilere teslim eder.
 
 Media Services 2,10 sürümünden başlayarak, bir kanal oluşturduğunuzda, kanalınızın giriş akışını nasıl almasını istediğinizi belirtebilirsiniz. Ayrıca, kanalın akışının gerçek zamanlı kodlamasını gerçekleştirmesini isteyip istemediğinizi belirtebilirsiniz. İki seçeneğiniz vardır:
 
-* **Geçiş**: Çıkış olarak çoklu bit hızına sahip bir akışa (doğrudan geçiş akışı) sahip bir şirket içi Live Encoder kullanmayı planlıyorsanız bu değeri belirtin. Bu durumda, gelen akış herhangi bir kodlama olmadan çıkışa geçer. Bu, 2,10 sürümünden önceki bir kanalın davranışıdır. Bu makale, bu türden kanallarla çalışma hakkında ayrıntılı bilgi sağlar.
-* **Live Encoding**: Tek bit hızlı canlı akışınızı çoklu bit hızına sahip bir akışa kodlamak için Media Services kullanmayı planlıyorsanız bu değeri seçin. Canlı kodlama kanalının **çalışır** durumda bırakılması faturalandırma ücretleri doğurur. Ek saatlik ücretlerden kaçınmak için canlı akış olayınız tamamlandıktan sonra çalışan kanallarınızı hemen durdurmanız önerilir. Media Services, akışı isteyen müşterilere teslim eder.
+* **Geçiş**: çok bit hızında bir akışa (doğrudan geçiş akışı) çıkış olarak sahip olan bir şirket içi Live Encoder kullanmayı planlıyorsanız bu değeri belirtin. Bu durumda, gelen akış herhangi bir kodlama olmadan çıkışa geçer. Bu, 2,10 sürümünden önceki bir kanalın davranışıdır. Bu makale, bu türden kanallarla çalışma hakkında ayrıntılı bilgi sağlar.
+* **Live Encoding**: tek bit hızlı canlı akışınızı çoklu bit hızına sahip bir akışa kodlamak için Media Services kullanmayı planlıyorsanız bu değeri seçin. Canlı kodlama kanalının **çalışır** durumda bırakılması faturalandırma ücretleri doğurur. Ek saatlik ücretlerden kaçınmak için canlı akış olayınız tamamlandıktan sonra çalışan kanallarınızı hemen durdurmanız önerilir. Media Services, akışı isteyen müşterilere teslim eder.
 
 > [!NOTE]
 > Bu makalede, gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanalların öznitelikleri açıklanmaktadır. Canlı kodlama gerçekleştirmeye etkinleştirilen kanallarla çalışma hakkında daha fazla bilgi için bkz. [Azure Media Services kullanarak canlı akış çoklu bit hızına sahip akışlar oluşturma](media-services-manage-live-encoder-enabled-channels.md).
@@ -88,8 +88,8 @@ Aşağıdaki adımlarda ortak canlı akış uygulamaları oluşturmayla ilgili g
 #### <a id="ingest_protocols"></a>Alma akış protokolü
 Media Services, çoklu bit hızlı parçalanmış MP4 ve çoklu bit hızlı RTMP 'yi akış protokolleri olarak kullanarak canlı akışların kullanılmasını destekler. RTMP içe akış protokolü seçildiğinde, kanal için iki alma (giriş) uç noktası oluşturulur:
 
-* **BIRINCIL URL**: Kanalın birincil RTMP alma uç noktasının tam URL 'sini belirtir.
-* **IKINCIL URL** (isteğe bağlı): Kanalın ikincil RTMP alma uç noktasının tam URL 'sini belirtir.
+* **BIRINCIL URL**: KANALıN birincil RTMP alma uç noktasının tam URL 'sini belirtir.
+* **IKINCIL URL** (isteğe bağlı): KANALıN ikincil RTMP alma uç noktasının tam URL 'sini belirtir.
 
 Özellikle aşağıdaki senaryolar için, Alım akışınızı (Ayrıca kodlayıcı yük devretmesi ve hataya dayanıklılık) dayanıklılık ve hataya dayanıklılık düzeyini artırmak istiyorsanız ikincil URL 'YI kullanın:
 
@@ -177,17 +177,17 @@ Programı durdurup sildikten sonra bile, kullanıcılar, varlığı silinceye ka
 Bir kanalın geçerli durumu için olası değerler şunlardır:
 
 * **Durduruldu**: Bu, kanalın oluşturulduktan sonraki ilk durumudur. Bu durumda, kanal özellikleri güncelleştirilebilir ama akışa izin verilmez.
-* **Başlangıç**: Kanal başlatılıyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez. Bir hata oluşursa, kanal **durdurulmuş** duruma geri döner.
-* **Çalıştırma**: Kanal Canlı akışları işleyebilir.
+* **Başlatılıyor**: Kanal başlatılıyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez. Bir hata oluşursa, kanal **durdurulmuş** duruma geri döner.
+* **Çalışıyor**: Kanal Canlı akışları işleyebilir.
 * **Durduruluyor**: Kanal durduruluyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
-* **Silme**: Kanal siliniyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
+* **Siliniyor**: Kanal siliniyor. Bu durum süresince güncelleştirmelere veya akışa izin verilmez.
 
 Aşağıdaki tabloda, kanal durumlarının faturalandırma modu ile nasıl eşleştiği gösterilir.
 
 | Kanal durumu | Portal kullanıcı arabirimi göstergeleri | Faturalandırılmış mı? |
 | --- | --- | --- |
 | **Şunlar** |**Şunlar** |Hayır (geçici durum) |
-| **Çalıştıran** |**Hazırlanıyor** (çalışan program yok)<p><p>veya<p>**Akış** (en az bir çalışan program) |Evet |
+| **Çalıştıran** |**Ready** (çalışan program yok)<p><p>or<p>**Akış** (en az bir çalışan program) |Yes |
 | **Durdurulamadı** |**Durdurulamadı** |Hayır (geçici durum) |
 | **Durdurulacağını** |**Durdurulacağını** |Hayır |
 
@@ -197,7 +197,7 @@ Aşağıdaki tabloda kapalı açıklamalı altyazı ve ad ekleme için desteklen
 | Standart | Notlar |
 | --- | --- |
 | CEA-708 ve EA-608 (708/608) |CEA-708 ve EIA-608, Birleşik Devletler ve Kanada için kapalı açıklamalı alt yazı standartlarıdır.<p><p>Şu anda, resim yazısı yalnızca kodlanmış giriş akışında taşınmışsa desteklenir. Media Services gönderilen kodlanmış akışta 608 veya 708 açıklamalı altyazı ekleyebilen canlı Medya Kodlayıcısı kullanmanız gerekir. Media Services, ekli açıklamalı alt yazıların içeriğini görüntüleyicilerinize sunar. |
-| TTML içinde. ismt (Kesintisiz Akış metin parçaları) |Media Services dinamik paketleme, istemcilerinizin aşağıdaki biçimlerden herhangi birine içerik akışını sağlar: DASH, HLS veya Kesintisiz Akış. Ancak,. ismt (Kesintisiz Akış metin parçaları) içindeki açıklamalı alt yazılar ile parçalanmış MP4 (Kesintisiz Akış) aldıysanız, akışı yalnızca Kesintisiz Akış istemcilerine teslim edebilirsiniz. |
+| TTML içinde. ismt (Kesintisiz Akış metin parçaları) |Media Services dinamik paketleme, istemcilerinizin şu biçimlerden herhangi birinde içerik akışını sağlar: DASH, HLS veya Kesintisiz Akış. Ancak,. ismt (Kesintisiz Akış metin parçaları) içindeki açıklamalı alt yazılar ile parçalanmış MP4 (Kesintisiz Akış) aldıysanız, akışı yalnızca Kesintisiz Akış istemcilerine teslim edebilirsiniz. |
 | SCTE-35 |SCTE-35, reklam ekleme işlemini işaret etmek için kullanılan dijital bir sinyal sistemidir. Aşağı akış alıcıları, ayrılan süre için tanıtımı akışa almak için sinyali kullanır. SCTE-35, giriş akışında seyrek bir izleme olarak gönderilmelidir.<p><p>Şu anda, ad sinyallerini taşıyan tek desteklenen giriş akışı biçimi parçalanmış MP4 (Kesintisiz Akış). Yalnızca desteklenen çıkış biçimi de Kesintisiz Akış. |
 
 ## <a id="considerations"></a>Konuları

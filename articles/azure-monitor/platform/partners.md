@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144450"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894597"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -63,7 +63,7 @@ Circonus, şirket içi veya SaaS dağıtımı için oluşturulmuş bir mikro hiz
 
 Zaman ve para tasarrufu için oluşturulmuş bir platforma sahip bulutunuzu oluşturup otomatikleştirin. CloudHealth, bulut yönetimi için görünürlük, sezgisel iyileştirme ve Rock-Solid idare uygulamaları sağlar. CloudHealth platformu, kuruluşların ve MSPs 'nin bulut yatırımlarına dönüşü en üst düzeye çıkarmasına olanak sağlar. Maliyet, kullanım, performans ve güvenlik konusunda kendinize yönelik kararlar alın.
 
-[Daha fazla bilgi edinin][cloudhealth-doc]
+[Daha fazla bilgi][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>Cloudmonitorx
 
@@ -136,11 +136,11 @@ NextGen SıEM 'te lider olan LogRhythm, karma tehditleri hızlı bir şekilde al
 
 Mikro odak **Arcizlemesinde** , Azure izleyici Olay Hub 'ları için akıllı bağlayıcı bulunur.
 
-[Daha fazla bilgi edinin](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
+[Daha fazla bilgi](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Arcgörüş belgeleri.")
 
 Mikro odak **Işlemleri Köprüsü** , her türlü cihaz, işletim sistemi, veritabanı, uygulama ya da hizmet olan tüm karma BT kaynaklarını otomatik olarak izler ve tüm veri türleri – olaylar, ölçümler, Günlükler ve bağımlılıklar Için aıops uygular. Kapsamlı uygulama sistem durumu analizi ile bağlanmış, hizmet izleme kalitesi 'nin benzersiz bir birleşimini sağlar ve Microsoft Azure hizmetleri için kapsamlı performans ve kullanılabilirlik izleme içerir. İşlemler Köprüsü, müşterilerin hem iş hem de BT paydaşlarının anlayabilmesi için, tarayıcıyla her cihazda kullanılabilen tek bir cam bölmesi sağlamasına olanak sağlar.
 
-Daha fazla bilgi edinin
+Daha fazla bilgi
 - [OB Suite 'e genel bakış](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [İndir](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -Sitescope, Işlemler köprü paketindeki bir bileşendir.
@@ -255,7 +255,7 @@ Turbonomic, performansı, maliyeti ve uyumluluğu gerçek zamanlı bir şekilde 
 - [Azure Izleyici hakkında daha fazla bilgi edinin](../../azure-monitor/overview.md)
 - [REST API kullanarak ölçümlere erişin](rest-api-walkthrough.md)
 - [Etkinlik günlüğünü Microsoft dışı bir hizmete akış](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Tanılama günlüklerini Microsoft dışı bir hizmete akış](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Kaynak günlüklerini Microsoft dışı bir hizmete akış](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 

@@ -3,12 +3,12 @@ title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483973"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885458"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "74483973"
 > - Hangi etkiyi kullanacağınızı belirleme
 > - İlke tanımını oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -200,35 +200,37 @@ Azure CLı gibi sonuçlar, **supportsHttpsTrafficOnly**adlı depolama hesapları
 
 ### <a name="azure-resource-graph"></a>Azure Kaynak Grafiği
 
-[Azure Kaynak Grafiği](../../resource-graph/overview.md) yeni bir hizmettir. Azure kaynaklarının özelliklerini bulmak için başka bir yöntem sağlar. Kaynak grafiğine sahip tek bir depolama hesabına bakmak için örnek bir sorgu aşağıda verilmiştir:
+[Azure Kaynak Grafiği](../../resource-graph/overview.md) , Azure kaynaklarının özelliklerini bulmak için başka bir yöntem sağlayan bir hizmettir. Kaynak grafiğine sahip tek bir depolama hesabına bakmak için örnek bir sorgu aşağıda verilmiştir:
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 Sonuçlar, Kaynak Yöneticisi şablonlarda görtiğimiz ve Azure Kaynak Gezgini aracılığıyla benzer şekilde görünür. Bununla birlikte, Azure Kaynak Grafiği sonuçları, diğer _adlar_ dizisinin _yansıtılasında_ [diğer ad](../concepts/definition-structure.md#aliases) ayrıntıları da içerebilir:
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 | project aliases
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 Diğer adlar için bir depolama hesabından örnek çıktı aşağıda verilmiştir:
@@ -455,13 +457,13 @@ Tamamlanan tanım yeni bir ilke oluşturmak için kullanılabilir. Portal ve her
 
 İşiniz bittiğinde, bu öğreticiden kaynaklarla çalışmak, atamaları veya tanımları yukarıda oluşturulan silmek için aşağıdaki adımları kullanın:
 
-1. Azure Ilkesi sayfasının sol tarafında **yazma** ' nın altında **tanımlar** (veya atamayı silmeye çalışıyorsanız **atamalar** ) ' ı seçin.
+1. Seçin **tanımları** (veya **atamaları** atamayı silmeye çalışıyorsanız) altında **yazma** Azure İlkesi sayfasının sol tarafında.
 
 1. Kaldırmak istediğiniz yeni girişim veya tanımını (ya da atamayı) arayın.
 
 1. Satıra sağ tıklayın ya da tanımın (veya atamanın) sonundaki üç noktayı seçip **Tanımı sil** (veya **Atamayı sil**) öğesini seçin.
 
-## <a name="review"></a>Gözden geçirme
+## <a name="review"></a>Gözden Geçir
 
 Bu öğreticide, aşağıdaki görevleri başarıyla gerçekleştirdiniz:
 

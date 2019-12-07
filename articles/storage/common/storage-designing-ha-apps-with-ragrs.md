@@ -1,20 +1,21 @@
 ---
-title: Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GZRS veya RA-GRS) kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama | Microsoft Docs
-description: Yüksek oranda kullanılabilir bir uygulamayı kesintileri işleyecek kadar esnek bir şekilde mimarmak için Azure RA-GZRS veya RA-GRS depolama alanı kullanma.
+title: Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama
+titleSuffix: Azure Storage
+description: Kesintileri işlemek için yeterince esnek olan yüksek oranda kullanılabilir bir uygulamayı mimarmak üzere Okuma Erişimli Coğrafi olarak yedekli depolamayı nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673122"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895332"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama
 
@@ -27,7 +28,7 @@ Coğrafi olarak yedekli çoğaltma için yapılandırılan depolama hesapları, 
 
 Bu makalede, uygulamanızı birincil bölgedeki bir kesinti işleyecek şekilde nasıl tasarlayacağız. Birincil bölge kullanılamaz duruma gelirse, uygulamanız bunun yerine ikincil bölgeye karşı okuma işlemleri gerçekleştirmeye uyarlayabilir. Başlamadan önce depolama hesabınızın RA-GRS veya RA-GZRS için yapılandırıldığından emin olun.
 
-Hangi birincil bölgelerin hangi ikincil bölgelere eşleştirildiği hakkında bilgi için bkz. [Iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Hangi birincil bölgelerin hangi ikincil bölgelere eşleştirildiği hakkında bilgi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Bu makaleye dahil kod parçacıkları vardır ve sonunda, indirebileceğiniz ve çalıştırabileceğiniz bir bütün örneğe yönelik bir bağlantı bulunur.
 
@@ -66,7 +67,7 @@ Büyük olasılıkla, diğer hizmetler hala tamamen işlevsel olduğu sürece bi
 
 Sonuçta bu, uygulamanızın karmaşıklığına bağlıdır. Sorunları hizmet 'e göre işleyememeye karar verebilir, ancak tüm depolama hizmetleri için okuma isteklerini ikincil bölgeye yeniden yönlendirmek ve birincil bölgedeki herhangi bir depolama hizmetiyle ilgili bir sorun tespit ettiğinizde uygulamayı salt okuma modunda çalıştırmak isteyebilirsiniz.
 
-### <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+### <a name="other-considerations"></a>Diğer konular
 
 Bunlar, bu makalenin geri kalanında tartıştığımız diğer önemli noktalardır.
 
@@ -136,9 +137,9 @@ Uygulamanızdaki devre kesici deseninin kullanılması, tekrar tekrar başarıs�
 
 ### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Devre kesici modelini uygulama
 
-Birincil uç noktayla devam eden bir sorun olduğunu belirlemek için, istemcinin yeniden denenebilir hatalar ile ne sıklıkta karşılaşduğunu izleyebilirsiniz. Her durum farklı olduğundan, ikincil uç noktaya geçiş yapmak ve uygulamayı salt okunurdur modunda çalıştırmak için kullanmak istediğiniz eşiğe karar vermeniz gerekir. Örneğin, başarılı olmayan bir satırda 10 başarısızlık varsa anahtarı gerçekleştirmeye karar verebilirsiniz. 2 dakikalık bir dönemdeki isteklerin% 90 ' i başarısız olursa başka bir örnek de bu bir örnektir.
+Birincil uç noktayla devam eden bir sorun olduğunu belirlemek için, istemcinin yeniden denenebilir hatalar ile ne sıklıkta karşılaşduğunu izleyebilirsiniz. Her durum farklı olduğundan, ikincil uç noktaya geçiş yapmak ve uygulamayı salt okunurdur modunda çalıştırmak için kullanmak istediğiniz eşiğe karar vermeniz gerekir. Örneğin, başarılı olmayan bir satırda 10 başarısızlık varsa anahtarı gerçekleştirmeye karar verebilirsiniz. 2 dakikalık bir dönemdeki isteklerin %90 ' i başarısız olursa başka bir örnek de bu bir örnektir.
 
-İlk senaryo için yalnızca hataların sayısını tutabilir ve en büyük sayıya ulaşmadan önce bir başarı varsa, sayıyı tekrar sıfır olarak ayarlayın. İkinci senaryo için, bunu uygulamak için bir yol MemoryCache nesnesini kullanmaktır (.NET 'te). Her bir istek için önbelleğe bir CacheItem ekleyin, değeri Success (1) veya fail (0) olarak ayarlayın ve sona erme süresini şimdi 2 dakika olarak ayarlayın (ya da zaman kısıtlamaınız olsun). Bir girdinin süre sonu zamanına ulaşıldığında, giriş otomatik olarak kaldırılır. Bu, 2 dakikalık bir pencere sağlar. Depolama hizmeti için her istek yaptığınızda, ilk olarak bellek yüzdesini hesaplamak için MemoryCache nesnesi genelinde bir LINQ sorgusu kullanırsınız ve sayı ile ayırarak toplam yüzde değerini hesaplayabilirsiniz. Toplam yüzde değeri bir eşiğin altına düştüğünde (örneğin% 10), okuma istekleri için **Locationmode** özelliğini **secondaryonly** olarak ayarlayın ve devam etmeden önce uygulamayı salt okuma moduna geçirin.
+İlk senaryo için yalnızca hataların sayısını tutabilir ve en büyük sayıya ulaşmadan önce bir başarı varsa, sayıyı tekrar sıfır olarak ayarlayın. İkinci senaryo için, bunu uygulamak için bir yol MemoryCache nesnesini kullanmaktır (.NET 'te). Her bir istek için önbelleğe bir CacheItem ekleyin, değeri Success (1) veya fail (0) olarak ayarlayın ve sona erme süresini şimdi 2 dakika olarak ayarlayın (ya da zaman kısıtlamaınız olsun). Bir girdinin süre sonu zamanına ulaşıldığında, giriş otomatik olarak kaldırılır. Bu, 2 dakikalık bir pencere sağlar. Depolama hizmeti için her istek yaptığınızda, ilk olarak bellek yüzdesini hesaplamak için MemoryCache nesnesi genelinde bir LINQ sorgusu kullanırsınız ve sayı ile ayırarak toplam yüzde değerini hesaplayabilirsiniz. Toplam yüzde değeri bir eşiğin altına düştüğünde (örneğin %10), okuma istekleri için **Locationmode** özelliğini **secondaryonly** olarak ayarlayın ve devam etmeden önce uygulamayı salt okuma moduna geçirin.
 
 Anahtarın uygulamanızda hizmetten hizmete ne zaman değişebileceğini belirlemede kullanılan hata eşiği, bu nedenle bunları yapılandırılabilir parametreler yapmayı düşünmelisiniz. Bu, daha önce anlatıldığı gibi, her bir hizmetten ayrı ayrı veya tek bir yeniden denenebilir hata işlemeye karar vereceğiniz yerdir.
 
@@ -202,14 +203,14 @@ Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolün�
 | **saat** | **İşlem**                                            | **Çoğaltma**                       | **Son eşitleme zamanı** | **Sonuç** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | İşlem A: <br> Çalışan Ekle <br> birincil varlıktaki varlık |                                   |                    | Birincil öğesine ekli işlem<br> henüz çoğaltılmamıştır. |
-| T1       |                                                            | İşlem A <br> çoğaltma<br> ikincil | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
-| T2       | İşlem B:<br>Güncelleştirme<br> Çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
-| T3       | İşlem C:<br> Güncelleştirme <br>yönetici<br>içindeki rol varlığı<br>birincil |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
-| *T4*     |                                                       | İşlem C <br>çoğaltma<br> ikincil | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
+| T1       |                                                            | İşlem A <br> çoğaltma<br> İK | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
+| T2       | İşlem B:<br>Güncelleştir<br> Çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
+| T3       | İşlem C:<br> Güncelleştir <br>yönetici<br>içindeki rol varlığı<br>birincil |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
+| *T4*     |                                                       | İşlem C <br>çoğaltma<br> İK | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
 | *T5*     | Varlıkları oku <br>ikincili                           |                                  | T1                 | Çalışan için eski değeri alırsınız <br> işlem B işlemi olmadığı için varlık <br> henüz çoğaltıldı. İçin yeni bir değer alırsınız<br> Yönetici rolü varlığı çünkü C<br> çoğaltılamaz. Son eşitleme saati hala değil<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Şunu yapabilirsiniz<br>Yönetici rolü varlığı tutarsız <br>varlık tarih/saat sonra olduğu için <br>Son eşitleme zamanı. |
-| *T6*     |                                                      | İşlem B<br> çoğaltma<br> ikincil | T6                 | *T6* – C ile tüm işlemler <br>çoğaltılan, son eşitleme zamanı<br> güncelleştirildi. |
+| *T6*     |                                                      | İşlem B<br> çoğaltma<br> İK | T6                 | *T6* – C ile tüm işlemler <br>çoğaltılan, son eşitleme zamanı<br> güncelleştirildi. |
 
-Bu örnekte, istemci, T5 adresindeki ikincil bölgeden okuma yapmak için anahtar olduğunu varsayalım. Şu anda **yönetici rolü** varlığını başarıyla okuyabilir, ancak varlık ikincil üzerinde yönetici olarak işaretlenen **çalışan** varlık sayısıyla tutarlı olmayan yönetici sayısı için bir değer içerir bölgesi şu anda. İstemciniz bu değeri, tutarsız bilgiler olması riskiyle tek bir şekilde görüntüleyebilir. Alternatif olarak, istemci, güncelleştirmeler sıralı olmadığından ve kullanıcıyı bu olguyu bilgilendirdiğinden, **yönetici rolünün** potansiyel olarak tutarsız bir durumda olduğunu belirlemeyi deneyebilir.
+Bu örnekte, istemci, T5 adresindeki ikincil bölgeden okuma yapmak için anahtar olduğunu varsayalım. Şu anda **yönetici rolü** varlığını başarıyla okuyabilir, ancak varlık, ikincil bölgede şu anda yönetici olarak işaretlenen **çalışan** varlık sayısıyla tutarlı olmayan yönetici sayısı için bir değer içerir. İstemciniz bu değeri, tutarsız bilgiler olması riskiyle tek bir şekilde görüntüleyebilir. Alternatif olarak, istemci, güncelleştirmeler sıralı olmadığından ve kullanıcıyı bu olguyu bilgilendirdiğinden, **yönetici rolünün** potansiyel olarak tutarsız bir durumda olduğunu belirlemeyi deneyebilir.
 
 İstemci potansiyel olarak tutarsız veriler olduğunu tanımak için, bir depolama hizmetini sorgulayarak istediğiniz zaman alabileceğiniz *son eşitleme zamanının* değerini kullanabilir. Bu, İkincil bölgedeki verilerin en son tutarlı olduğu ve hizmetin bu noktadan önce tüm işlemleri uyguladığı zamanı gösterir. Yukarıdaki örnekte, hizmet **çalışan** varlığı ikincil bölgeye eklendikten sonra, son eşitleme zamanı *T1*olarak ayarlanır. Hizmet, *T6*olarak ayarlandığında, İkincil bölgedeki **çalışan** varlığını güncelleştirene kadar *T1* konumunda kalır. İstemci *T5*adresinde varlığı okurken son eşitleme saatini alıyorsa, varlığı varlığındaki zaman damgasıyla karşılaştırabilir. Varlıktaki zaman damgası son eşitleme zamanından daha sonra ise, varlık potansiyel olarak tutarsız bir durumda olur ve uygulamanız için uygun eylemi gerçekleştirebilirsiniz. Bu alanın kullanılması için son birincil güncelleştirmenin ne zaman tamamlandığını bilmeniz gerekir.
 

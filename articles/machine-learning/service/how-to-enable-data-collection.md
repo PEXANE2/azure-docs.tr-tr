@@ -1,7 +1,7 @@
 ---
 title: Üretim modellerinizde veri toplama
 titleSuffix: Azure Machine Learning
-description: Azure Blob depolama alanındaki Azure Machine Learning modeli giriş verilerini nasıl toplayacağınızı öğrenin.
+description: Azure Blob depolamada Azure Machine Learning giriş modeli verilerini nasıl toplayacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,39 +11,42 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18b92fe090895c3aa08c3c931dfa8bd12db0f2d3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 10a150a64a058a4bf346f07e2ef298c974641256
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406463"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901314"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modelleri için veri toplama
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> Bu SDK yakında devre dışı bırakılıyor. Bu SDK, modellerdeki veri drmasını izleyen geliştiriciler için hala uygundur, ancak çoğu Geliştirici [Application Insights ile basitleştirilmiş veri izlemeyi](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)kullanmalıdır. 
+> Azure Machine Learning Izleme SDK 'Sı yakında kullanımdan kaldırılacak. SDK, modellerdeki veri drmasını izleyen geliştiriciler için de uygundur. Ancak çoğu Geliştirici [Application Insights ile basitleştirilmiş veri izlemeyi](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)kullanmalıdır.
 
-Bu makalede, Azure Kubernetes kümesine (AKS) bir Azure Blob depolama alanına dağıttığınız Azure Machine Learning giriş modeli verilerini nasıl toplayabileceğinizi öğrenebilirsiniz. 
+Bu makalede, Azure Machine Learning giriş modeli verilerinin nasıl toplanacağı gösterilmektedir. Ayrıca, giriş verilerinin bir Azure Kubernetes hizmeti (AKS) kümesine nasıl dağıtılacağı ve çıkış verilerinin Azure Blob depolama alanında nasıl depolandığı gösterilmektedir.
 
-Etkinleştirildikten sonra bu verileri, Topla, yardımcı olur:
-* Üretim verileri modelinize girdiğinde [veri Drifts izleme](how-to-monitor-data-drift.md)
+Koleksiyon etkinleştirildikten sonra, topladığınız veriler size yardımcı olur:
 
-* Daha iyi kararlar üzerinde ne zaman yeniden eğitme veya modelinizi iyileştirin
+* Üretim verileri modelinize girdiğinde [veri Drifts izleyin](how-to-monitor-data-drift.md) .
 
-* Topladığınız verilerle, modeli yeniden eğitme
+* Modelinizin ne zaman yeniden eğitileceği veya iyileştirilmesine yönelik daha iyi kararlar alın.
 
-## <a name="what-is-collected-and-where-does-it-go"></a>Ne toplanır ve nereye?
+* Toplanan verilerle modelinize yeniden eğitme.
+
+## <a name="what-is-collected-and-where-it-goes"></a>Ne toplanır ve nerede gidiyor
 
 Aşağıdaki veriler toplanabilir:
-* Azure Kubernetes kümesinde (AKS) dağıtılan Web hizmetlerinden model **girişi** verileri (ses, görüntüler ve **video toplanmaz)** 
+
+* AKS kümesinde dağıtılan Web hizmetlerinden model girişi verileri. Ses ses, görüntü ve *video toplanmaz.*
   
-* Üretim girişi verilerini kullanarak model tahminleri
+* Üretim giriş verileri kullanarak model tahmin.
 
-> [!Note]
-> Hizmetin bir parçası önceden toplayarak veya bu verileri önceden hesaplamaları şu anda değildir.   
+>[!NOTE]
+> Bu verilerdeki ön kimlik doğrulama ve önceden hesaplamaları şu anda koleksiyon hizmeti 'nin bir parçası değil.
 
-Çıkış, bir Azure Blob üzerinde kaydedilmiş. Bir Azure Blob veri eklendikten sonra analizi çalıştırmak için en sevdiğiniz aracı seçebilirsiniz. 
+Çıktı, BLOB depolama alanına kaydedilir. Veriler blob depolamaya eklendiğinden, Analizi çalıştırmak için en sevdiğiniz aracı seçebilirsiniz.
 
 Çıktı verilerini BLOB yolunu bu söz dizimi aşağıdaki gibidir:
 
@@ -52,35 +55,36 @@ Aşağıdaki veriler toplanabilir:
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
->[!Note]
-> `0.1.0a16` öncesindeki SDK sürümlerinde `designation` bağımsız değişkeni `identifier`olarak adlandırılmıştır. Kodunuz daha önceki bir sürümle geliştirilmişse, buna uygun olarak güncelleştirmeniz gerekecektir.
+>[!NOTE]
+> Python için Azure Machine Learning SDK 'nın 0.1.0 A16 sürümünden önceki sürümlerinde, `designation` bağımsız değişkeni `identifier`olarak adlandırılır. Kodunuzu daha önceki bir sürümle geliştirdiyseniz, uygun şekilde güncelleştirmeniz gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 
-- Azure Machine Learning çalışma alanı, betikleri içeren yerel dizin ve Python için Azure Machine Learning SDK 'Sı yüklendi. [Geliştirme ortamını yapılandırma](how-to-configure-environment.md) belgesini kullanarak bu önkoşulları nasıl alabileceğinizi öğrenin
+- Bir AzureMachine Learning çalışma alanı, betiklerinizi içeren bir yerel dizin ve Python için Azure Machine Learning SDK yüklü olmalıdır. Bunları nasıl yükleyeceğiniz hakkında bilgi edinmek için bkz. [geliştirme ortamı yapılandırma](how-to-configure-environment.md).
 
-- Azure Kubernetes Service (AKS) dağıtılması için eğitilen makine öğrenme modeli. Bir tane yoksa, bkz. [eğitim resmi sınıflandırma modeli](tutorial-train-models-with-aml.md) öğreticisi
+- AKS 'e dağıtılacak eğitilen makine öğrenimi modelinin olması gerekir. Modeliniz yoksa, [görüntü sınıflandırma modeline eğit](tutorial-train-models-with-aml.md) öğreticiye bakın.
 
-- Azure Kubernetes hizmeti kümesi. Oluşturma ve dağıtma hakkında daha fazla bilgi için, bkz. [dağıtım ve nerede](how-to-deploy-and-where.md) belge
+- Bir AKS kümeniz olması gerekir. Oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [nasıl dağıtılır ve nerede](how-to-deploy-and-where.md).
 
-- [Ortamınızı ayarlama](how-to-configure-environment.md) ve [izleme SDK 'sını](https://aka.ms/aml-monitoring-sdk) kurma
+- [Ortamınızı ayarlayın](how-to-configure-environment.md) ve [Azure Machine Learning izleme SDK 'sını](https://aka.ms/aml-monitoring-sdk)kurun.
 
 ## <a name="enable-data-collection"></a>Veri toplamayı etkinleştirme
-Veri toplama, Azure Machine Learning veya diğer araçlarla dağıtılan modelden bağımsız olarak etkinleştirilebilir. 
 
-Bunu etkinleştirmek için şunları yapmanız:
+Azure Machine Learning veya diğer araçlarla dağıttığınız modelden bağımsız olarak veri toplamayı etkinleştirebilirsiniz.
 
-1. Puanlama dosyasını aç
+Veri toplamayı etkinleştirmek için şunları yapmanız gerekir:
 
-1. [Aşağıdaki kodu](https://aka.ms/aml-monitoring-sdk) dosyanın üst kısmına ekleyin:
+1. Puanlama dosyası açın.
+
+1. Ekleme [koddan](https://aka.ms/aml-monitoring-sdk) dosyanın üst:
 
    ```python 
    from azureml.monitoring import ModelDataCollector
    ```
 
-2. `init()` işlevinizde veri toplama değişkenlerinizi bildirin:
+1. Veri koleksiyonu değişkenlerinizi bildirin, `init` işlevi:
 
     ```python
     global inputs_dc, prediction_dc
@@ -88,11 +92,11 @@ Bunu etkinleştirmek için şunları yapmanız:
     prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* isteğe bağlı bir parametredir, modelinizin gerekmiyorsa ayarlamanız gerekmez. Yerinde bir bağıntı kimliği olan diğer verilerle daha kolay eşlemesi için yardımcı olur. (Örnekler: LoanNumber, CustomerID, vs.)
+    *CorrelationId* isteğe bağlı bir parametredir. Modeliniz gerekmiyorsa kullanmanız gerekmez. *CorrelationId* kullanımı, *Krete numarası* veya *CustomerID*gibi diğer verilerle daha kolay bir şekilde eşleşmenizin sağlanmasına yardımcı olur.
     
-    *Tanımlayıcı* daha sonra Blobun klasör yapısını oluşturmak için kullanılıyorsa, "işlenmemiş" verileri "işlenmiş" olarak bölmek için kullanılabilir
+    *Tanımlayıcı* parametresi daha sonra Blobun klasör yapısını oluşturmak için kullanılır. Ham verileri işlenen verilerden ayırt etmek için kullanabilirsiniz.
 
-3.  `run(input_df)` işlevine aşağıdaki kod satırlarını ekleyin:
+1. Aşağıdaki kod satırlarını ekleme `run(input_df)` işlevi:
 
     ```python
     data = np.array(data)
@@ -101,146 +105,145 @@ Bunu etkinleştirmek için şunları yapmanız:
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-4. AKS 'de bir hizmet dağıtırken veri **toplama otomatik olarak** **doğru** olarak ayarlanmamış, bu nedenle yapılandırma dosyanızı şu şekilde güncelleştirmeniz gerekir: 
+1. AKS 'de bir hizmet dağıttığınızda veri *toplama otomatik olarak* **doğru** olarak ayarlanamaz. Yapılandırma dosyanızı aşağıdaki örnekte olduğu gibi güncelleştirin:
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
     ```
-    İzleme hizmeti için Appınsights bu yapılandırmayı değiştirerek de açılabilir:
+
+    Ayrıca, bu yapılandırmayı değiştirerek hizmet izleme için Application Insights etkinleştirebilirsiniz:
+
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
-    ``` 
+    ```
 
-5. Yeni bir görüntü oluşturmak ve hizmeti dağıtmak için bkz. [dağıtım ve nerede](how-to-deploy-and-where.md) belge
+1. Yeni bir görüntü oluşturmak ve Machine Learning modelini dağıtmak için bkz. [dağıtım ve nerede](how-to-deploy-and-where.md).
 
+Ortam dosyanıza ve Puanlama dosyanıza yüklenmiş bağımlılıklara sahip bir hizmetiniz zaten varsa, aşağıdaki adımları izleyerek veri toplamayı etkinleştirin:
 
-**Ortam dosyanıza** ve **Puanlama dosyanıza**yüklenmiş bağımlılıklara sahip bir hizmetiniz zaten varsa, veri toplamayı şu şekilde etkinleştirin:
+1. [Azure Machine Learning](https://ml.azure.com)gidin.
 
-1. [Azure Machine Learning Studio](https://ml.azure.com) 'ya git
+1. Çalışma alanını açın.
 
-1. Çalışma alanınızı açın
+1. **Dağıtım** > **hizmet** > **Düzenle**' yi seçin.
 
-1. **Dağıtımlar** 'a git -> **Hizmet Seç** -> **Düzenle**
+   ![Hizmeti düzenleme](media/how-to-enable-data-collection/EditService.PNG)
 
-   ![Hizmet Düzenle](media/how-to-enable-data-collection/EditService.PNG)
+1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir**' i seçin.
 
-1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir** ' i seçin.
+    [veri toplamayı ![seçin](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
-    [Veri toplamayı denetim ![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+   Hizmetinizin sistem durumunu izlemek için **Appınsights tanılamayı etkinleştir** ' i de seçebilirsiniz.
 
-   Bu pencerede, hizmetinizin sistem durumunu izlemek için "Appınsights tanılamayı etkinleştir" i de seçebilirsiniz
-
-1. Değişikliği uygulamak için **Güncelleştir** ' i seçin
-
+1. Değişiklikleri uygulamak için **Güncelleştir** ' i seçin.
 
 ## <a name="disable-data-collection"></a>Veri toplamayı devre dışı
-Dilediğiniz zaman veri toplamayı durdurabilirsiniz. Veri toplamayı devre dışı bırakmak için Python kodu veya Azure Machine Learning Studio kullanın.
 
-+ Seçenek 1-Azure Machine Learning Studio 'da devre dışı bırak: 
-  1. [Azure Machine Learning Studio](https://ml.azure.com) 'da oturum açın
+İstediğiniz zaman veri toplamayı durdurabilirsiniz. Veri toplamayı devre dışı bırakmak için Python kodu veya Azure Machine Learning kullanın.
 
-  1. Çalışma alanınızı açın
+### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>Seçenek 1-Azure Machine Learning veri toplamayı devre dışı bırak
 
-  1. **Dağıtımlar** 'a git -> **Hizmet Seç** -> **Düzenle**
+1. [Azure Machine Learning](https://ml.azure.com)oturum açın.
 
-     [![düzenleme seçeneği](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+1. Çalışma alanını açın.
 
-  1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir** ' i seçimden çıkar
+1. **Dağıtım** > **hizmet** > **Düzenle**' yi seçin.
 
-     [![veri toplamayı kaldır](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+   [![Düzenle seçeneğini belirleyin](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-  1. Değişikliği uygulamak için **Güncelleştir** ' i seçin
+1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir**' i temizleyin.
 
-  Ayrıca, bu ayarlara [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda de erişebilirsiniz.
+    [veri toplama onay kutusunu ![temizleyin](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
-+ Seçenek 2 - veri toplama devre dışı bırakmak için Python kullanın:
+1. Seçin **güncelleştirme** değişikliği uygulamak için.
+
+Ayrıca, bu ayarlara [Azure Machine Learning](https://ml.azure.com)çalışma alanınızda erişebilirsiniz.
+
+### <a name="option-2---use-python-to-disable-data-collection"></a>Seçenek 2-veri toplamayı devre dışı bırakmak için Python kullanma
 
   ```python 
   ## replace <service_name> with the name of the web service
   <service_name>.update(collect_model_data=False)
   ```
 
-## <a name="validate-your-data-and-analyze-it"></a>Verilerinizi doğrulamak ve analiz edin
-Herhangi bir aracı, Azure Blob içinde toplanan verileri çözümlemek için tercihinizi seçebilirsiniz.
+## <a name="validate-and-analyze-your-data"></a>Verilerinizi doğrulayın ve çözümleyin
 
-Verileri, BLOB'dan hızlıca erişmek için:
+Blob depolamadaki toplanan verileri analiz etmek için tercih ettiğiniz bir aracı seçebilirsiniz.
 
-1. [Azure Machine Learning Studio](https://ml.azure.com) 'da oturum açın
+### <a name="quickly-access-your-blob-data"></a>Blob verilerinize hızlıca erişin
 
-1. Çalışma alanınızı açın
-1. **Depolama alanı** ' na tıklayın
+1. [Azure Machine Learning](https://ml.azure.com)oturum açın.
 
-    [![depolama](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+1. Çalışma alanını açın.
 
-1. Bu söz dizimi ile BLOB çıktı veri yolunu izleyin:
+1. **Depolama**’yı seçin.
 
-```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
-# example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
-```
+    [![depolama seçeneğini belirleyin](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
+1. Bu söz dizimi ile Blobun çıkış verilerinin yolunu izleyin:
 
-### <a name="analyzing-model-data-through-power-bi"></a>Power BI aracılığıyla model verileri analiz etme
+   ```
+   /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
+   # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
+   ```
 
-1. [Power BI Desktop](https://www.powerbi.com) Indir ve aç
+### <a name="analyze-model-data-using-power-bi"></a>Power BI kullanarak model verilerini analiz etme
 
-1. **Veri al** ' ı seçin ve [**Azure Blob depolama**](https://docs.microsoft.com/power-bi/desktop-data-sources) ' ya tıklayın.
+1. [Power BI Desktop](https://www.powerbi.com)indirip açın.
 
-    [PBı blob kurulumunu ![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+1. **Veri al** ' ı seçin ve [**Azure Blob depolama**](https://docs.microsoft.com/power-bi/desktop-data-sources)' yı seçin.
 
+    [![Power BI blobu kurulumu](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, blob **ayarlarınızda** > erişim anahtarlarına > bulabilirsiniz
+1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, bloba > **erişim anahtarlarına** **Ayarlar** ' i seçerek bulabilirsiniz.
 
-1. Kapsayıcı **modeldata** ' ı seçin ve **Düzenle** ' ye tıklayın.
+1. **Model veri** kapsayıcısını seçin ve **Düzenle**' yi seçin.
 
-    [![PBı Gezgini](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [Power BI Gezgini ![](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Sorgu Düzenleyicisi altındaki "Name" sütun tıklayın ve depolama hesabınızı 1 ekleyin. Filtre modeli yolu. Not: yalnızca belirli bir yıl ya da aylık dosyalarına aramak istiyorsanız, yalnızca filtre yolunu genişletin. Örneğin, yalnızca Mart verilerine göz atın:/modeldata/SubscriptionID >/resourcegroupname >/çalışmaadı >/WebServiceName >/ModelName >/modelversion >/GroupName >/Year >/3
+1. Sorgu Düzenleyicisi 'nde **ad** sütununun altına tıklayın ve depolama hesabınızı ekleyin.
 
-1. **Adına**göre sizin için uygun olan verileri filtreleyin. **Tahminleri** ve **girişleri**depoladıysanız her biri için bir sorgu oluşturmanız gerekir
+1. Model yolunuzu filtreye girin. Yalnızca belirli bir yıla veya aya ait dosyalara bakmak isterseniz, filtre yolunu genişletmeniz yeterlidir. Örneğin, yalnızca Mart verilerine bakmak için şu filtre yolunu kullanın:
 
-1. Dosyaları birleştirmek için **içerik** sütununu iki katına kaydederek çift oka tıklayın
+   /modeldata/\<SubscriptionID >/\<resourcegroupname >/\<çalışmaadı >/\<WebServiceName >/\<ModelName >/\<modelversion >/\<gösterimi >/\<Year >/3
 
-    [![PBı Içeriği](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+1. **Ad** değerlerine göre sizin için uygun olan verileri filtreleyin. Tahminleri ve girişleri depoladıysanız, her biri için bir sorgu oluşturmanız gerekir.
 
-1. Tamam ' a tıklayın ve veriler önyüklenir
+1. Dosyaları birleştirmek için **içerik** sütun başlığının yanındaki aşağı çift okları seçin.
 
-    [![Pbımbine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [Power BI Içerik ![](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Şimdi **Kapat ve Uygula** öğesine tıklayabilirsiniz
+1. **Tamam**’ı seçin. Veriler önceden yüklenir.
 
-1.  Giriş ve tahmin eklediyseniz, tablolarınız otomatik olarak **RequestId** ile ilişkilendirilecektir
+    [Dosyaları Power BI ![birleştirme](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
-1. Model verileriniz üzerinde özel raporlarınızı oluşturmaya başlayın
+1. **Kapat ve Uygula '** yı seçin.
 
+1. Giriş ve tahmin eklediyseniz, tablolarınız otomatik olarak **RequestId** değerlerine göre sıralanır.
 
-### <a name="analyzing-model-data-using-databricks"></a>Databricks kullanarak model verileri analiz etme
+1. Model verileriniz üzerinde özel raporlar oluşturmaya başlayın.
 
-1. [Databricks çalışma alanı](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) oluşturma
+### <a name="analyze-model-data-using-azure-databricks"></a>Azure Databricks kullanarak model verilerini analiz etme
 
-1. Databricks çalışma alanınıza gidin
+1. [Azure Databricks çalışma alanı](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)oluşturun.
 
-1. Databricks çalışma alanınızda **verileri karşıya yükle** ' yi seçin.
+1. Databricks çalışma alanınıza gidin.
 
-    [![DB karşıya yükleme](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+1. Databricks çalışma alanınızda **verileri karşıya yükle**' yi seçin.
 
-1. Yeni tablo oluşturma ve **diğer veri kaynaklarını** seçme-> Azure Blob depolama-> tablo oluşturma
+    [Databricks veri yükleme seçeneğini belirleme ![](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-    [![DB tablosu](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+1. **Yeni tablo oluştur** **' u**seçin ve > **Azure Blob depolama** > **diğer veri kaynaklarını** seçin.
 
-1. Verilerinizi konumunu güncelleştirin. Örnek aşağıda verilmiştir:
+    [Databricks tablosu oluşturma ![](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+
+1. Verilerinizin konumunu güncelleştirin. Örnek aşağıda verilmiştir:
 
     ```
     file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
     file_type = "csv"
     ```
- 
-    [![DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-1. Verilerinizi görüntülemek ve analiz etmek için şablondaki adımları izleyin
+    [Databricks kurulumu ![](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-## <a name="example-notebook"></a>Örneğin not defteri
-
-[How-to-Use-azureml/Deployment/Enable-Data-Collection-for-models-in-aks/Enable-Data-Collection-for-models-in-aks. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb) Not defteri, bu makaledeki kavramları gösterir.  
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+1. Verilerinizi görüntülemek ve analiz etmek için şablondaki adımları izleyin.

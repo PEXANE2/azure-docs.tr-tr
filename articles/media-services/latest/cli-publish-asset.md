@@ -1,6 +1,6 @@
 ---
 title: Azure CLI Betik Örneği - Varlık yayımlama | Microsoft Docs
-description: Azure CLI betiğini kullanarak bir varlığı yayımlayın.
+description: Bu makalede bir varlık yayımlamak için Azure CLı komut dosyasının nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: ced55a41ce5be31dfa036894188f385ae60f8962
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204131"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896114"
 ---
-# <a name="cli-example-publish-an-asset"></a>CLI örneği: Bir varlığı yayımlayın
+# <a name="cli-example-publish-an-asset"></a>CLI örneği: Varlık yayımlama
 
 Bu makaledeki Azure CLI Betiği, bir Akış Bulucu oluşturmayı ve dönüş olarak Akış URL’leri almayı gösterir. 
 
@@ -37,4 +37,4 @@ Bu makaledeki Azure CLI Betiği, bir Akış Bulucu oluşturmayı ve dönüş ola
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Media Services'e genel bakış](media-services-overview.md)
+[Media Services genel bakış](media-services-overview.md)

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028448"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900794"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Çoğu kuruluş için iş varlıklarının güvenliği, BT sistemlerini yöneten ve yöneten ayrıcalıklı hesapların bütünlüğüne bağlıdır. Cyber-saldırganlar, kuruluşun hassas verilerine erişim kazanmak için altyapı sistemlerine (örneğin Active Directory ve Azure Active Directory) ayrıcalıklı Erişime odaklanmaktadır. 
 
-Birincil güvenlik çevresi olarak bir ağın giriş ve çıkış noktalarının güvenliğini sağlamaya odaklanmaya odaklanılmış olan geleneksel yaklaşımlar, SaaS uygulamalarının ve kişisel cihazların Internet 'te kullanımıyla ilgili olarak daha az etkilidir. Karmaşık bir modern kuruluşta ağ güvenlik çevre 'nın doğal değişikliği, bir kuruluşun kimlik katmanındaki kimlik doğrulama ve yetkilendirme denetimleridir.
+Birincil güvenlik çevresi olarak bir ağın giriş ve çıkış noktalarının güvenliğini sağlamaya odaklanmaya odaklanılmış olan geleneksel yaklaşımlar, SaaS uygulamalarının ve kişisel cihazların Internet 'te kullanımıyla ilgili olarak daha az etkilidir. Karmaşık bir modern kuruluşta, kuruluşun kimlik katmanındaki kimlik doğrulama ve yetkilendirme denetimleri, ağ güvenliği çevresinin yerini doğal olarak almaktadır.
 
 Ayrıcalıklı yönetim hesapları, bu yeni "güvenlik çevre" denetiminde etkili bir şekilde kontrol edilir. Ortamın şirket içi, bulut ya da karma şirket içi ve bulut tarafından barındırılan hizmetler olmasından bağımsız olarak ayrıcalıklı erişimin korunması önemlidir. Belirlenen yönetici erişiminin korunması, kuruluşunuzun sistemlerini risklerden yalıtmak için tamamen ve düşünceli bir yaklaşım yapmanızı gerektirir. 
 
@@ -94,7 +94,7 @@ Azure AD Privileged Identity Management açtıktan sonra:
 
 2. Privileged Identity Management kullanmak istediğiniz kiracıyı seçmek için, Azure portal sağ üst köşesindeki Kullanıcı adınızı seçin.
 
-3. **Tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management**listeyi filtreleyin.
+3. Azure portal menüsünde **tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management**listeyi filtreleyin.
 
 4. **Tüm hizmetler** listesinden Privileged Identity Management açın ve panonuza sabitleyin.
 
@@ -241,7 +241,7 @@ C Suite yöneticileri, üst düzey yöneticiler, kritik BT ve güvenlik personel
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Azure AD yönetimi için adanmış iş istasyonlarını kullanma
 
-Saldırganlar, bir kuruluşun verilerine ve sistemlerine erişim kazanmak için ayrıcalıklı hesapları hedefleyebilir ve böylece, yöneticinin bir kimlik bilgisi girerek program mantığını veya gözops 'u değiştiren kötü amaçlı kodlar aracılığıyla verilerin bütünlüğünü ve gerçekliğini kesintiye uğramasını sağlayabilir. Ayrıcalıklı erişim Iş Istasyonları (Paw 'lar), Internet saldırıları ve tehdit vektörlerinden korunan hassas görevler için adanmış bir işletim sistemi sağlar. Bu hassas görevler ve hesapların günlük kullanım iş istasyonları ve cihazlarından ayrılması, kimlik avı saldırıları, uygulama ve işletim sistemi güvenlik açıkları, çeşitli kimliğe bürünme saldırıları ve tuş vuruşu gibi kimlik bilgisi hırsızlığı saldırılarına karşı çok güçlü koruma sağlar günlüğe kaydetme, karma değer geçişi ve anahtar geçişi. Ayrıcalıklı erişim iş istasyonlarını dağıtarak, sağlamlaştırılmış bir masaüstü ortamı dışında yöneticinin yönetici kimlik bilgilerini girme riskini azaltabilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı erişim Iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Saldırganlar, bir kuruluşun verilerine ve sistemlerine erişim kazanmak için ayrıcalıklı hesapları hedefleyebilir ve böylece, yöneticinin bir kimlik bilgisi girerek program mantığını veya gözops 'u değiştiren kötü amaçlı kodlar aracılığıyla verilerin bütünlüğünü ve gerçekliğini kesintiye uğramasını sağlayabilir. Ayrıcalıklı Erişim İş İstasyonları (PAW), hassas görevler için İnternet saldırıları ve tehdit vektörlerinden korunan ayrılmış bir işletim sistemi sağlar. Bu hassas görevler ve hesapların günlük kullanım iş istasyonları ve cihazlarından ayrılması, kimlik avı saldırıları, uygulama ve işletim sistemi güvenlik açıkları, çeşitli kimliğe bürünme saldırıları ve tuş vuruşu gibi kimlik bilgisi hırsızlığı saldırılarına karşı çok güçlü koruma sağlar günlüğe kaydetme, karma değer geçişi ve anahtar geçişi. Ayrıcalıklı erişim iş istasyonlarını dağıtarak, sağlamlaştırılmış bir masaüstü ortamı dışında yöneticinin yönetici kimlik bilgilerini girme riskini azaltabilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı erişim Iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Olayları işlemeye yönelik ulusal standartlar ve teknoloji önerilerini gözden geçirin 
 
@@ -261,7 +261,7 @@ Zaten Azure AD Privileged Identity Management kullanıyorsanız zamana ait ayrı
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Parola tabanlı oturum açma protokollerinin görünürlüğünü belirleme (Exchange Online kullanıyorsanız)
 
-Geçmişte, protokoller Kullanıcı adı/parola birleşimlerinin cihazlara, e-posta hesaplarına, telefonlara, vb. gömülü olduğunu kabul eder. Ancak artık buluttaki siber saldırılara karşı risk altınıza göre, kimlik bilgilerinin tehlikeye girdiği, kuruluşa çok zararlı olabilecek ve güçlü kimlik doğrulama gereksinimleri ve koşullu erişim uygulayarak Kullanıcı adı/parola aracılığıyla e-postalarında oturum açabiliyor olan tüm olası kullanıcıları tanımlamanızı öneririz. [Koşullu erişimi kullanarak eski kimlik doğrulamasını](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)engelleyebilirsiniz. Lütfen exchnage Online aracılığıyla [temel kimlik doğrulamasını engelleme](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) hakkındaki ayrıntıları kontrol edin. 
+Geçmişte, protokoller Kullanıcı adı/parola birleşimlerinin cihazlara, e-posta hesaplarına, telefonlara, vb. gömülü olduğunu kabul eder. Ancak artık buluttaki siber saldırılara karşı risk altınıza göre, kimlik bilgilerinin tehlikeye girdiği, kuruluşa çok zararlı olabilecek ve güçlü kimlik doğrulama gereksinimleri ve koşullu erişim uygulayarak Kullanıcı adı/parola aracılığıyla e-postalarında oturum açabiliyor olan tüm olası kullanıcıları tanımlamanızı öneririz. [Koşullu erişimi kullanarak eski kimlik doğrulamasını](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)engelleyebilirsiniz. Lütfen Exchange Online aracılığıyla [temel kimlik doğrulamasını engelleme](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) hakkındaki ayrıntıları kontrol edin. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 rolleri için bir rol gözden geçirme değerlendirmesi tamamlamayı (Office 365 kullanıyorsanız)
 

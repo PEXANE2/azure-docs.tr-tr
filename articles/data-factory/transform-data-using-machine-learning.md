@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak tahmine dayalı veri işlem hatları oluşturma
+title: Tahmine dayalı veri işlem hatları oluşturma
 description: Azure Data Factory ' de Azure Machine Learning Batch yürütme etkinliğini kullanarak tahmine dayalı bir Işlem hattı oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dc2104495f231a316a1354100ecc105e8fda5bb4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683772"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893850"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturun
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -66,7 +66,7 @@ Bir Azure Machine Learning Web hizmetini bir Azure Data Factory 'ye bağlamak i�
 
 JSON tanımındaki özellikler hakkında açıklamalar için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.
 
-Azure Machine Learning, tahmine dayalı denemenize yönelik hem klasik Web hizmetlerini hem de yeni Web hizmetlerini destekler. Data Factory kullanarak doğru olanı seçebilirsiniz. Azure Machine Learning bağlı hizmeti oluşturmak için gereken bilgileri almak için, tüm (yeni) Web hizmetlerinizin ve klasik Web hizmetlerinizin listelendiği https://services.azureml.netgidin. Erişmek istediğiniz Web **hizmetine tıklayın ve sayfayı kullan** ' a tıklayın. **Apikey** özelliği Için **birincil anahtarı** ve **mlEndpoint** özelliği için **Batch isteklerini** kopyalayın.
+Azure Machine Learning, tahmine dayalı denemenize yönelik hem klasik Web hizmetlerini hem de yeni Web hizmetlerini destekler. Data Factory kullanarak doğru olanı seçebilirsiniz. Azure Machine Learning bağlı hizmeti oluşturmak için gereken bilgileri almak için, tüm (yeni) Web hizmetlerinizin ve klasik Web hizmetlerinizin listelendiği https://services.azureml.net gidin. Erişmek istediğiniz Web **hizmetine tıklayın ve sayfayı kullan** ' a tıklayın. **Apikey** özelliği Için **birincil anahtarı** ve **mlEndpoint** özelliği için **Batch isteklerini** kopyalayın.
 
 ![Azure Machine Learning Web Hizmetleri](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -124,13 +124,13 @@ Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme e
 }
 ```
 
-| Özellik          | Açıklama                              | Gerekli |
+| Özellik          | Açıklama                              | Gereklidir |
 | :---------------- | :--------------------------------------- | :------- |
-| ad              | İşlem hattındaki etkinliğin adı     | Evet      |
+| ad              | İşlem hattındaki etkinliğin adı     | Yes      |
 | açıklama       | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| type              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Evet      |
-| linkedServiceName | Azure Machine Learning bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Evet      |
-| Webservicegirişlerinde  | Azure Machine Learning Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
+| type              | Data Lake Analytics U-SQL etkinliği için etkinlik türü **AzureMLBatchExecution**' dir. | Yes      |
+| linkedServiceName | Azure Machine Learning bağlı hizmetine bağlı hizmetler. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
+| eebserviceınputs  | Azure Machine Learning Web hizmeti girişlerinin adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan giriş parametreleriyle eşleşmelidir. Değer, giriş blobu konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
 | Webserviceçıktılar | Azure Machine Learning Web hizmeti çıktılarının adlarını eşleyerek anahtar, değer çiftleri. Anahtar, yayımlanan Azure Machine Learning Web hizmetinde tanımlanan çıkış parametreleriyle eşleşmelidir. Değer, çıkış blob konumlarını belirten bir Azure depolama bağlı hizmetleri ve FilePath Properties çiftidir. | Hayır       |
 | globalParameters  | Azure Machine Learning Studio Batch yürütme hizmeti uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Azure Machine Learning Studio Web hizmetinde tanımlanan Web hizmeti parametrelerinin adlarıyla eşleşmesi gerekir. Değerler Azure Machine Learning Studio Batch yürütme isteğinin GlobalParameters özelliğinde geçirilir | Hayır       |
 

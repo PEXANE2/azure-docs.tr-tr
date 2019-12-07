@@ -1,39 +1,39 @@
 ---
-title: Log Analytics çalışma alanı oluşturmak ve yapılandırmak için PowerShell 'i kullanma | Microsoft Docs
-description: Azure Izleyici 'de Log Analytics çalışma alanları, şirket içi veya bulut altyapınızdaki sunuculardaki verileri depolar. Azure tanılama tarafından oluşturulduğunda, Azure Storage 'dan makine verileri toplayabilirsiniz.
+title: Oluşturma ve Log Analytics çalışma alanı yapılandırma için PowerShell kullanma | Microsoft Docs
+description: Azure Izleyici 'de Log Analytics çalışma alanları, şirket içi veya bulut altyapınızdaki sunuculardaki verileri depolar. Azure tanılama tarafından oluşturulmuş bir Azure depolama makine verilerini toplayabilir.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9d5bbaf02798c0fd87c40f1d952db19aac7b0b7e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932088"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894579"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanını yönetme
 
-[Log Analytics PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.operationalinsights/) , Azure izleyici 'deki bir Log Analytics çalışma alanında bir komut satırından veya bir betiğin parçası olarak çeşitli işlevler gerçekleştirmek için kullanabilirsiniz.  PowerShell ile gerçekleştirebileceğiniz görevlere örnekler şunlardır:
+[Log Analytics PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.operationalinsights/) , Azure izleyici 'deki bir Log Analytics çalışma alanında bir komut satırından veya bir betiğin parçası olarak çeşitli işlevler gerçekleştirmek için kullanabilirsiniz.  PowerShell ile gerçekleştirebileceğiniz görevler örnekleri şunlardır:
 
 * Çalışma alanı oluşturma
-* Çözüm ekleme veya kaldırma
-* Kaydedilmiş aramaları içeri ve dışarı aktarma
-* Bilgisayar grubu oluşturma
-* Windows aracısının yüklü olduğu bilgisayarlardan IIS günlükleri toplamayı etkinleştir
-* Linux ve Windows bilgisayarlarından performans sayaçlarını toplayın
-* Linux bilgisayarlarda Syslog 'tan olay topla
-* Windows olay günlüklerinden olay topla
-* Özel olay günlüklerini topla
-* Log Analytics aracısını bir Azure sanal makinesine ekleme
-* Log Analytics 'i Azure tanılama kullanılarak toplanan verileri dizinleyecek şekilde yapılandırma
+* Çözüm Ekle Kaldır
+* İçeri ve dışarı aktarma kayıtlı aramalar
+* Bir bilgisayar grubu oluşturun
+* Windows aracısının yüklü olduğu IIS günlükler bilgisayarlardan koleksiyonunu etkinleştir
+* Linux ve Windows bilgisayarlardan performans sayaçlarını Topla
+* Linux Bilgisayarları'nda syslog olaylarını Topla
+* Windows olay günlüklerinden olaylarını Topla
+* Özel olay günlüklerini toplar
+* Bir Azure sanal makinesi için log analytics aracısını ekleme
+* Azure Tanılama'yı kullanarak toplanan dizin verileri log analytics'e yapılandırın
 
-Bu makale, PowerShell 'den gerçekleştirebileceğiniz bazı işlevleri gösteren iki kod örneği sunar.  Diğer işlevler için [Log Analytics PowerShell cmdlet başvurusuna](https://docs.microsoft.com/powershell/module/az.operationalinsights/) başvurabilirsiniz.
+Bu makalede, Powershell'den gerçekleştirebileceğiniz işlevlerin bazılarını göstermeyi iki kod örneği sağlanmıştır.  Başvurabilirsiniz [Log Analytics PowerShell cmdlet başvurusu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) diğer işlevleri için.
 
 > [!NOTE]
-> Log Analytics daha önce Işletimsel içgörüler olarak adlandırılmıştı. Bu, cmdlet 'lerde kullanılan addır.
+> Log Analytics, daha önce yer alan cmdlet'ler kullanılan adı, bu yüzden operasyonel İçgörüler olarak adlandırılıyordu.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -41,21 +41,21 @@ Bu makale, PowerShell 'den gerçekleştirebileceğiniz bazı işlevleri göstere
 Bu örnekler, az. Operationalınsights modülünün Version 1.0.0 veya üzeri sürümleriyle çalışır.
 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma ve yapılandırma
-Aşağıdaki betik örneği, aşağıdakilerin nasıl yapılacağını göstermektedir:
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Oluşturma ve Log Analytics çalışma alanı yapılandırma
+Aşağıdaki betik örneğinde gösterilmiştir nasıl yapılır:
 
 1. Çalışma alanı oluşturma
-2. Kullanılabilir çözümleri listeleyin
-3. Çalışma alanına çözümler ekleme
-4. Kaydedilmiş aramaları içeri aktar
-5. Kaydedilmiş aramaları dışarı aktar
-6. Bilgisayar grubu oluşturma
-7. Windows aracısının yüklü olduğu bilgisayarlardan IIS günlükleri toplamayı etkinleştir
-8. Linux bilgisayarlardan mantıksal disk performans sayaçlarını toplayın (% kullanılan ınomdes; Boş megabayt; % Kullanılan alan; Disk aktarımı/sn; Disk Okuma/sn; Disk yazma/sn)
-9. Linux bilgisayarlardan Syslog olaylarını topla
-10. Windows bilgisayarlardan uygulama olay günlüğünden hata ve uyarı olaylarını toplayın
-11. Windows bilgisayarlarından bellek kullanılabilir MBayt performans sayacını topla
-12. Özel bir günlük topla
+2. Kullanılabilir çözümler listesi
+3. Çözüm çalışma alanına ekleme
+4. İçeri aktarma kaydedilen aramalar
+5. Dışarı aktarma kaydedilen aramalar
+6. Bir bilgisayar grubu oluşturun
+7. Windows aracısının yüklü olduğu IIS günlükler bilgisayarlardan koleksiyonunu etkinleştir
+8. Mantıksal Disk performans sayaçları Linux bilgisayarından toplar (% kullanılan Inode'ları; Boş megabayt; % Kullanılan alan; Disk aktarımı/sn; Disk Okuma/sn; Disk Yazma/sn)
+9. Linux bilgisayarlardan Syslog olaylarını Topla
+10. Windows bilgisayarlardan uygulama olay günlüğü'ndeki hata ve uyarı olaylarını Topla
+11. Windows bilgisayarlardan bellek kullanılabilir MBayt performans sayacı Topla
+12. Özel günlük toplama
 
 ```powershell
 
@@ -194,7 +194,7 @@ Yukarıdaki örnekte regexDelimiter, yeni satır için "\\n" olarak tanımlanmı
 | `yyyy-MM-ddTHH:mm:ss` <br> T, sabit bir harf T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Azure tanılama göndermek için Log Analytics yapılandırma
-Azure kaynaklarının aracısız izlenmesi için, kaynakların Azure tanılama 'nın etkinleştirilmesi ve bir Log Analytics çalışma alanına yazmak üzere yapılandırılması gerekir. Bu yaklaşım, verileri doğrudan çalışma alanına gönderir ve verilerin depolama hesabına yazılmasına gerek yoktur. Desteklenen kaynaklar şunlardır:
+Azure kaynaklarını aracısız izleme için kaynakları etkin ve Log Analytics çalışma alanına yazmak için yapılandırılmış Azure tanılama olması gerekir. Bu yaklaşım, verileri doğrudan çalışma alanına gönderir ve verilerin depolama hesabına yazılmasına gerek yoktur. Desteklenen kaynaklar şunlardır:
 
 | Kaynak Türü | Günlükler | Ölçümler |
 | --- | --- | --- |
@@ -202,8 +202,8 @@ Azure kaynaklarının aracısız izlenmesi için, kaynakların Azure tanılama '
 | Otomasyon hesapları     | Yes | |
 | Batch hesapları          | Yes | Yes |
 | Data Lake analytics     | Yes | |
-| Data Lake deposu         | Yes | |
-| Elastik SQL havuzu        |     | Yes |
+| Data Lake store         | Yes | |
+| SQL esnek havuzu        |     | Yes |
 | Olay hub'ı ad alanı     |     | Yes |
 | IoT Hub’ları                |     | Yes |
 | Key Vault               | Yes | |
@@ -213,13 +213,13 @@ Azure kaynaklarının aracısız izlenmesi için, kaynakların Azure tanılama '
 | Redis için Azure Cache             |     | Yes |
 | Hizmet ara         | Yes | Yes |
 | Service Bus ad alanı   |     | Yes |
-| SQL (V12)               |     | Yes |
+| SQL (v12)               |     | Yes |
 | Web Siteleri               |     | Yes |
-| Web sunucusu grupları        |     | Yes |
+| Web sunucu grupları        |     | Yes |
 
-Kullanılabilir ölçümlerin ayrıntıları için [Azure izleyici ile desteklenen ölçümler](../../azure-monitor/platform/metrics-supported.md)bölümüne bakın.
+Kullanılabilir ölçümler ayrıntılarını başvurmak [ölçümleri Azure İzleyici ile desteklenen](../../azure-monitor/platform/metrics-supported.md).
 
-Kullanılabilir günlüklerin ayrıntıları için bkz. [tanılama günlükleri için desteklenen hizmetler ve şema](../../azure-monitor/platform/diagnostic-logs-schema.md).
+Kullanılabilir günlüklerin ayrıntıları için, [kaynak günlükleri için desteklenen hizmetler ve şemaya](../../azure-monitor/platform/diagnostic-logs-schema.md)bakın.
 
 ```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -229,21 +229,21 @@ $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/D
 Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-Ayrıca, farklı aboneliklerdeki kaynaklardan günlükleri toplamak için önceki cmdlet 'ini de kullanabilirsiniz. Her iki kaynağın KIMLIĞI ve günlüklerin gönderildiği çalışma alanını sağladığından, cmdlet abonelikler arasında çalışabilir.
+Ayrıca, farklı Aboneliklerde olması kaynaklardan günlükleri toplamak için önceki cmdlet'ini de kullanabilirsiniz. Her iki kaynağın KIMLIĞI ve günlüklerin gönderildiği çalışma alanını sağladığından, cmdlet abonelikler arasında çalışabilir.
 
 
 ## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Depolama alanından Azure tanılama toplamak için Log Analytics çalışma alanı yapılandırma
-Klasik bir bulut hizmeti veya bir Service Fabric kümesinin çalışan bir örneği içinden günlük verilerini toplamak için, önce verileri Azure depolama 'ya yazmanız gerekir. Daha sonra bir Log Analytics çalışma alanı, günlükleri depolama hesabından toplayacak şekilde yapılandırılır. Desteklenen kaynaklar şunlardır:
+Bir Klasik bulut hizmetini veya service fabric kümesi çalışan bir örnek günlük verilerini toplamak için önce verileri Azure depolama alanına yazmak gerekir. Daha sonra bir Log Analytics çalışma alanı, günlükleri depolama hesabından toplayacak şekilde yapılandırılır. Desteklenen kaynaklar şunlardır:
 
-* Klasik bulut Hizmetleri (Web ve çalışan rolleri)
-* Service Fabric kümeleri
+* Klasik cloud services (web ve çalışan rolleri)
+* Service fabric kümeleri
 
-Aşağıdaki örnek, aşağıdakilerin nasıl yapılacağını göstermektedir:
+Aşağıdaki örnekte gösterildiği nasıl yapılır:
 
 1. Mevcut depolama hesaplarını ve çalışma alanının verileri dizinleyecek konumları listeleyin
-2. Depolama hesabından okumak için bir yapılandırma oluşturma
-3. Yeni oluşturulan yapılandırmayı ek konumlardan veri dizinleyecek şekilde Güncelleştir
-4. Yeni oluşturulan yapılandırmayı Sil
+2. Bir depolama hesabından okumak için bir yapılandırma oluşturun
+3. Yeni oluşturulan yapılandırma veri dizini oluşturmak için ek konumlardan güncelleştirin.
+4. Yeni oluşturulan yapılandırmasını Sil
 
 ```powershell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
@@ -267,9 +267,9 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 ```
 
-Farklı aboneliklerdeki depolama hesaplarından günlükleri toplamak için yukarıdaki betiği de kullanabilirsiniz. Depolama hesabı kaynak KIMLIĞI ve buna karşılık gelen bir erişim anahtarı sağlamaktan bu yana betik abonelikler arasında çalışabilir. Erişim anahtarını değiştirdiğinizde, depolama öngörülerini yeni anahtara sahip olacak şekilde güncelleştirmeniz gerekir.
+Önceki komut, farklı Aboneliklerdeki depolama hesaplarından günlük toplama için de kullanabilirsiniz. Depolama hesabı kaynak KIMLIĞI ve buna karşılık gelen bir erişim anahtarı sağlamaktan bu yana betik abonelikler arasında çalışabilir. Erişim anahtarı değiştirdiğinizde, yeni anahtar sağlamak için depolama öngörüsü güncelleştirmeniz gerekiyor.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* PowerShell 'i Log Analytics yapılandırması için kullanma hakkında daha fazla bilgi için [Log Analytics PowerShell cmdlet 'Lerini gözden geçirin](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
+* [Log Analytics PowerShell cmdlet'leri gözden](https://docs.microsoft.com/powershell/module/az.operationalinsights/) Log analytics'in bir yapılandırma için PowerShell kullanma hakkında ek bilgi için.
 

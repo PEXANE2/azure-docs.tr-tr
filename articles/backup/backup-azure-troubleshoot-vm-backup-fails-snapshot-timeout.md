@@ -4,12 +4,12 @@ description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azur
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172599"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894020"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -22,10 +22,12 @@ Bu makalede, VM Aracısı ve uzantısıyla iletişim ile ilgili Azure Backup hat
 **Hata kodu**: usererrorguestagentstatusunavailable <br>
 **Hata iletisi**: VM Aracısı Azure Backup ile iletişim kuramadı<br>
 
-Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yüklü değil ve Azure Backup hizmetinin anlık görüntüleri tetiklemesine engel olabilir.  
+Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yüklü değil ve Azure Backup hizmetinin anlık görüntüleri tetiklemesine engel olabilir.
 
-- VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa **aracıyı yeniden başlatın** ve yedekleme işlemini yeniden deneyin (isteğe bağlı yedeklemeyi deneyin). Aracıyı yeniden başlatma adımları için bkz. [Windows VM'leri](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) veya [Linux VM'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
-- VM Aracısı yüklü değilse veya güncel değilse, VM aracısını yükleyip güncelleştirin ve yedekleme işlemini yeniden deneyin. Aracıyı yüklemeye/güncelleştirmeye yönelik adımlar için bkz. [Windows VM 'leri](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) veya [Linux VM 'leri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
+- **Azure Portal > vm > ayarları > Özellikler dikey penceresini açın** > VM **durumunun** **çalıştığından** ve **Aracı durumunun** **hazırlanmaya**çalıştığından emin olun. VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa aracıyı yeniden başlatın<br>
+  - Windows VM 'Leri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) izleyin.<br>
+  - Linux sanal makineleri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) izleyin.
+
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError-anlık görüntü durumu için VM aracısıyla iletişim kurulamadı
 
@@ -41,6 +43,16 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Neden 3: [anlık görüntü durumu alınamaz veya bir anlık görüntü](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) alınamaz**
 
 **Neden 4: [yedekleme uzantısı güncelleştirme veya yükleme başarısız oluyor](#the-backup-extension-fails-to-update-or-load)**
+
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM başarısız sağlama durumunda
+
+**Hata kodu**: usererrorvmprovisioningstatefailed<br>
+**Hata iletisi**: VM başarısız sağlama durumunda<br>
+
+Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure Portal > VM > ayarlar > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin.
+
+- VMSnapshot uzantısı başarısız durumdaysa, başarısız olan uzantıya sağ tıklayın ve kaldırın. Geçici yedekleme tetikleyin, bu, uzantıları yeniden yükler ve yedekleme işini çalıştırır.  <br>
+- Başka herhangi bir uzantı başarısız durumdaysa, yedeklemeyi kesintiye uğratabilirler. Uzantı sorunlarının çözümlendiğinden emin olun ve yedekleme işlemini yeniden deneyin.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>Usererrorrpcollectionlimitulaşıldı-geri yükleme noktası koleksiyonu en yüksek sınırına ulaşıldı
 
@@ -211,7 +223,7 @@ Uzantıyı kaldırmak için:
 2. Seçin **ayarları**.
 3. **Uzantılar**'ı seçin.
 4. **VMSnapshot uzantısını**seçin.
-5. **Kaldır**' ı seçin.
+5. **Kaldır**'ı seçin.
 
 Linux VM için, VMSnapshot uzantısı Azure portal görünmüyorsa, [Azure Linux aracısını güncelleştirin](../virtual-machines/linux/update-agent.md)ve sonra yedeklemeyi çalıştırın.
 
@@ -219,7 +231,7 @@ Bu adımların tamamlanması, uzantının bir sonraki yedekleme sırasında yeni
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_`<Geo>`_`<number>`.
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' e tıklayın.
@@ -248,7 +260,7 @@ Kilidi kaldırdıktan sonra isteğe bağlı yedekleme tetikleyin. Bu, geri yükl
 
 Kaynak grubundaki kilit nedeniyle temizlenmemiş geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Hub** menüsünde **tüm kaynaklar**' a tıklayın, aşağıdaki biçime sahip kaynak grubunu seçin AZUREBACKUPRG_`<Geo>`_`<number>` sanal makinenizin bulunduğu yer.
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/resource-group.png)

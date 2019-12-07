@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d22bfb0743bc18102e665a63f7e36ed75dd39cab
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716106"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900326"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Tipik sürüm oluşturma senaryoları:
 * Yeniden eğitim için yeni veriler kullanılabilir olduğunda
 * Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uygularken
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için şunlar gerekir:
 
@@ -146,7 +146,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini izleme
 
-Her bir Machine Learning denemesi için, girdi olarak kullanılan veri kümelerini kayıtlı modelin `Run` nesnesi aracılığıyla kolayca izleyebilirsiniz.
+Her Machine Learning denemesinde, giriş olarak kullanılan veri kümelerini deneme `Run` nesnesi aracılığıyla kolayca izleyebilirsiniz.
+
+Aşağıdaki kod, deneme çalıştırması ile hangi giriş veri kümelerinin kullanıldığını izlemek için [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) yöntemini kullanır:
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+Ayrıca, [Azure Machine Learning Studio](https://ml.azure.com/)kullanarak `input_datasets` de bulabilirsiniz. 
+
+Aşağıdaki görüntüde Azure Machine Learning Studio bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **özellikler** sekmesini açın `keras-mnist`.
+
+![Giriş veri kümeleri](media/how-to-version-datasets/input-datasets.png)
 
 Modelleri veri kümelerine kaydetmek için aşağıdaki kodu kullanın:
 
@@ -156,26 +173,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Kayıttan sonra, Python veya [Azure Machine Learning Studio](https://ml.azure.com/)kullanarak veri kümesiyle kayıtlı modellerin listesini görebilirsiniz.
-
-Aşağıdaki kod, deneme çalıştırması ile hangi giriş veri kümelerinin kullanıldığını izlemek için [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) yöntemini kullanır:
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-Ayrıca, [Azure Machine Learning Studio](https://ml.azure.com/)kullanarak `input_datasets` de bulabilirsiniz. 
-
-Aşağıdaki görüntüde Azure Machine Learning Studio bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **özellikler** sekmesini açın `keras-mnist`.
-
-![Giriş veri kümeleri](media/how-to-version-datasets/input-datasets.png)
-
-Veri kümenizi kullanan modelleri de bulabilirsiniz. Aşağıdaki görünüm, **varlıklar**altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından bu veri kümesini kullanan modellerin listesi için **modeller** sekmesini seçin. 
+Kayıttan sonra, Python veya [Azure Machine Learning Studio](https://ml.azure.com/)kullanarak veri kümesiyle kayıtlı modellerin listesini görebilirsiniz. Aşağıdaki görünüm, **varlıklar**altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **modeller** sekmesini seçin. 
 
 ![Giriş veri kümesi modelleri](media/how-to-version-datasets/dataset-models.png)
 

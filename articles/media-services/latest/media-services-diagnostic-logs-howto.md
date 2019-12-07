@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 786aefbd8657046f18042defd71dfcb38528eecf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261117"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887960"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
 
@@ -33,7 +33,7 @@ Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görünt
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Portalı kullanarak verileri depolama hesabına yönlendirme
 
-1. [https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. İçinde Media Services hesabınıza gidin ve **izleyici**altındaki **Tanılama ayarları** ' na tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz. 
 
     ![Tanılama ayarları bölümü](media/media-services-diagnostic-logs/logs01.png)
@@ -49,13 +49,13 @@ Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görünt
 
    ![Tanılama ayarları bölümü](media/media-services-diagnostic-logs/logs02.png)
 1. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
 ## <a name="route-data-to-the-storage-account-using-the-cli"></a>CLı kullanarak verileri depolama hesabına yönlendirin
 
-Bir depolama hesabında tanılama günlüklerinin depolanmasını etkinleştirmek için aşağıdaki `az monitor diagnostic-settings` CLI komutunu çalıştırın: 
+Bir depolama hesabında tanılama günlüklerinin depolanmasını etkinleştirmek için aşağıdaki `az monitor diagnostic-settings` CLı komutunu çalıştırın: 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -73,7 +73,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Örneğin:
+Örnek:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \

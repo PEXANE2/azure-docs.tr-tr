@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376451"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Öğretici: Ezofficeenvanteriyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -94,15 +94,15 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Ezofficeınventory uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. Ezofficeınventory uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Ad | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
     | First_name | Kullanıcı. |
     | Last_name | User. soyadı |
-    | Email | Kullanıcı. Mail |
+    | E-posta | Kullanıcı. Mail |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -122,7 +122,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -144,13 +144,21 @@ Bu bölümde, Ezofficeenvanterine erişim vererek Azure çoklu oturum açma öze
 
 ## <a name="configure-ezofficeinventory-sso"></a>Ezofficeınventory SSO 'yu yapılandırma
 
-1. Yeni bir Web tarayıcı penceresi açın ve Ezofficeınventory Company sitenizde yönetici olarak oturum açın.
+1. Ezofficeınventory içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-2. Sayfanın sağ üst köşesinde **profil** ' a tıklayın ve ardından **Ayarlar** ** > eklentiler**' e gidin.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya Uzantı eklendikten sonra, **Ezofficestoğunu ayarla** öğesine tıkladığınızda sizi ezofficeınventory uygulamasına yönlendirirsiniz. Buradan, Ezofficeenvanterinde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. Ezofficeenvanterini el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve Ezofficeınventory Company sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+1. Sayfanın sağ üst köşesinde **profil** ' e tıklayın ve ardından **Ayarlar** > **Ekle**' ye gidin.
 
     ![Ezofficeenvanter yapılandırması](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. **SAML tümleştirme** bölümünde aşağı doğru kaydırın, aşağıdaki adımları uygulayın:
+1. **SAML tümleştirme** bölümünde aşağı doğru kaydırın, aşağıdaki adımları uygulayın:
 
     ![Ezofficeenvanter yapılandırması](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,7 +184,7 @@ Bu bölümde, Ezofficeenvanterine erişim vererek Azure çoklu oturum açma öze
 
 Bu bölümde, Ezofficeenvanterinde Britta Simon adlı bir Kullanıcı oluşturulur. Ezofficeınventory, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Ezofficeenvanterinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
@@ -188,7 +196,6 @@ Erişim panelinde Ezofficeınventory kutucuğuna tıkladığınızda, SSO 'yu ay
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Ezofficeenvanterini deneyin](https://aad.portal.azure.com/)
-

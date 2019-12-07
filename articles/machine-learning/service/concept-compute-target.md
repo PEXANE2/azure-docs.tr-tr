@@ -1,5 +1,5 @@
 ---
-title: 'İşlem hedefleri: modellerin eğmesi ve dağıtılması'
+title: İşlem hedefleri nelerdir?
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning modelinize eğmesini veya dağıtmayı istediğinizi tanımlayın.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd4ac07ddf94bd7fc12a2673ce76fb0b9f4d2ccb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580609"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901422"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -67,6 +67,6 @@ Yönetilmeyen bir işlem hedefi Azure Machine Learning *tarafından yönetilmiyo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şunları nasıl yapacağınızı öğrenin:
+Aşağıdakileri nasıl yapacağınızı öğrenin:
 * [Modelinizi eğitme için bir işlem hedefi ayarlama](how-to-set-up-training-targets.md)
 * [Modelinizi bir işlem hedefine dağıtın](how-to-deploy-and-where.md)

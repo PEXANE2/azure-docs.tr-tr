@@ -1,5 +1,5 @@
 ---
-title: Databricks Python-Azure ile veri dönüştürme
+title: Databricks Python ile veri dönüştürme
 description: Databricks Python çalıştırarak verileri nasıl işleyeceğini veya dönüştüreceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1acc484b8843fc1fe1acae5759a24f923396e003
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683940"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893952"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks bir Python etkinliği çalıştırarak verileri dönüştürme
 
@@ -62,7 +62,7 @@ Databricks Python etkinliğinin örnek JSON tanımı aşağıda verilmiştir:
 
 Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmaktadır:
 
-|Özellik|Açıklama|Gerekli|
+|Özellik|Açıklama|Gereklidir|
 |---|---|---|
 |ad|İşlem hattındaki etkinliğin adı.|Yes|
 |açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
@@ -70,7 +70,7 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 |linkedServiceName|Python etkinliğinin çalıştırıldığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Yes|
 |pythonFile|Yürütülecek Python dosyasının URI 'SI. Yalnızca DBFS yolları desteklenir.|Yes|
 |parametreler|Python dosyasına geçirilecek komut satırı parametreleri. Bu bir dizeler dizisidir.|Hayır|
-|Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. < Dize, nesne > dizisi olabilir|Hayır|
+|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. < Dize, nesne > dizisi olabilir|Hayır|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar
 

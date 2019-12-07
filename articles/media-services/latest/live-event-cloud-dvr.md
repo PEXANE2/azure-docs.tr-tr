@@ -1,7 +1,7 @@
 ---
 title: İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
 titleSuffix: Azure Media Services
-description: Canlı akışları kaydetmek ve isteğe bağlı kayıttan yürütme oluşturmak için zaman kaydırma ve canlı çıktıları kullanmayı öğrenin.
+description: Bu makalede, canlı akışları kaydetmek ve isteğe bağlı kayıttan yürütme oluşturmak için zaman değiştirme ve canlı çıkışların nasıl kullanılacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: acba251a57f39c07d690d0c55665b8914feaf06c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186239"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899790"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838328"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892813"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API ile bir markalar modeli özelleştirme
 
@@ -39,11 +39,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -101,12 +101,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|id|integer|Evet|Marka kimliği (marka oluşturulduğunda oluşturulur)|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|id|integer|Yes|Marka kimliği (marka oluşturulduğunda oluşturulur)|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -130,12 +130,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|id|integer|Evet|Marka KIMLIĞI (marka oluşturulduğunda oluşturulur)|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|id|integer|Yes|Marka KIMLIĞI (marka oluşturulduğunda oluşturulur)|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -180,12 +180,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|id|integer|Evet|Marka KIMLIĞI (marka oluşturulduğunda oluşturulur)|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|id|integer|Yes|Marka KIMLIĞI (marka oluşturulduğunda oluşturulur)|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -243,11 +243,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -303,11 +303,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -340,11 +340,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>İstek parametreleri
 
-|**Ad**|**Tür**|**Gerekli**|**Açıklama**|
+|**Adı**|**Tür**|**Gerekli**|**Açıklama**|
 |---|---|---|---|
-|location|string|Evet|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
-|Accoun|string|Evet|Hesap için genel benzersiz tanımlayıcı|
-|accessToken|string|Evet|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
+|location|string|Yes|Çağrının yönlendirileceği Azure bölgesi. Daha fazla bilgi için bkz. [Azure bölgeleri ve video Indexer](regions.md).|
+|accountId|string|Yes|Hesap için genel benzersiz tanımlayıcı|
+|accessToken|string|Yes|Çağrıya göre kimlik doğrulaması için erişim belirteci (kapsam [hesabı erişim belirteci](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)olmalıdır). Erişim belirteçlerinin süresi 1 saat içinde doluyor.|
 
 ### <a name="request-body"></a>İstek gövdesi
 

@@ -1,5 +1,5 @@
 ---
-title: Databricks Not defteri ile verileri dönüştürme-Azure
+title: Databricks Not defteri ile veri dönüştürme
 description: Databricks Not defteri çalıştırarak verileri nasıl işleyeceğini veya dönüştürebileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0768c16562a3931249dbbbc8f836ae14e7d0958b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683919"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894003"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Not defteri çalıştırarak verileri dönüştürme
 
@@ -57,7 +57,7 @@ Databricks Not defteri etkinliğinin örnek JSON tanımı aşağıda verilmişti
 
 Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmaktadır:
 
-|Özellik|Açıklama|Gerekli|
+|Özellik|Açıklama|Gereklidir|
 |---|---|---|
 |ad|İşlem hattındaki etkinliğin adı.|Yes|
 |açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
@@ -65,7 +65,7 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 |linkedServiceName|Databricks Not defterinin çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Yes|
 |Not Defteriyolu|Databricks çalışma alanında çalıştırılacak olan Not defterinin mutlak yolu. Bu yol bir eğik çizgiyle başlamalıdır.|Yes|
 |baseParameters|Anahtar-değer çiftleri dizisi. Temel parametreler her etkinlik çalıştırması için kullanılabilir. Not defteri belirtilmemiş bir parametre alırsa, not defterindeki varsayılan değer kullanılacaktır. [Databricks not defterlerinde](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)parametreler hakkında daha fazla bilgi bulabilirsiniz.|Hayır|
-|Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. \<dize, nesne > dizisi olabilir.|Hayır|
+|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. \<dize, nesne > dizisi olabilir.|Hayır|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar

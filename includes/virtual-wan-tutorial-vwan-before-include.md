@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 66e21aefa5648262ca2fcc61501905f725ac0e4b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 945d701a2a7dffc259c601b4dab9fa1333ccc066
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188275"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896597"
 ---
-Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
+Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızdan emin olun:
 
-* Bağlanmak istediğiniz bir sanal ağınız varsa şirket içi ağınızdaki alt ağların bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Sanal ağınız için ağ geçidi alt ağına ihtiyaç yoktur ve sanal ağınızda sanal ağ geçidi bulunamaz. Sanal ağınız yoksa bu makaledeki adımları kullanarak oluşturabilirsiniz.
-* Hub bölgenizden bir IP adresi aralığı edinin. Hub bir sanal ağdır ve hub bölgesi için belirttiğiniz adres aralığı, bağlandığınız var olan sanal ağlarla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarıyla ilgili fazla bilginiz yoksa size bu ayrıntıları sağlayabilecek biriyle çalışmanız gerekir.
+* Bağlanmak istediğiniz sanal ağınız zaten varsa, şirket içi ağınızın alt ağlarının hiçbirinin onunla çakışmadığından emin olun. Sanal ağınız için bir ağ geçidi alt ağı gerekli değildir ve sanal ağ geçitleri olamaz. Bir sanal ağınız yoksa, bu makaledeki adımları kullanarak bir tane oluşturabilirsiniz.
+* Hub bölgenizden bir IP adresi aralığı edinin. Hub bir sanal ağ ve Merkez bölgesi için belirttiğiniz adres aralığı, bağlandığınız mevcut bir sanal ağ ile çakışamaz. Ayrıca, şirket içine bağlandığınız adres aralıklarıyla de çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını bilmiyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edin.
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.

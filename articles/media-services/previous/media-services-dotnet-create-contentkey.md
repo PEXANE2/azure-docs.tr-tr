@@ -1,6 +1,6 @@
 ---
 title: .NET ile ContentKeys oluşturma
-description: Varlıklara güvenli erişim sağlayan bir içerik anahtarı oluşturmayı öğrenin.
+description: Bu makalede, varlıklara güvenli erişim sağlayan içerik anahtarlarının nasıl oluşturulacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ab26be3b9ac5d209cfe8117bdf9e87e0c7e74188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887706"
 ---
 # <a name="create-contentkeys-with-net"></a>.NET ile ContentKeys oluşturma 
 > [!div class="op_single_selector"]
@@ -28,21 +28,21 @@ ms.locfileid: "61465584"
 > 
 > 
 
-Media Services, oluşturmak ve şifrelenmiş varlıklarını teslim etmek sağlar. A **ContentKey** güvenli erişim sağlayan, **varlık**s. 
+Media Services şifrelenmiş varlıklar oluşturmanıza ve sunmanıza olanak sağlar. Bir **Contentkey** , **varlığınıza güvenli**erişim sağlar. 
 
-Yeni bir varlık oluşturduğunuzda (örneğin, önce [dosyaları karşıya yükleme](media-services-dotnet-upload-files.md)), aşağıdaki şifreleme seçenekleri belirleyebilirsiniz: **StorageEncrypted**, **CommonEncryptionProtected**, veya **EnvelopeEncryptionProtected**. 
+Yeni bir varlık oluşturduğunuzda (örneğin, [dosyaları karşıya](media-services-dotnet-upload-files.md)yüklemeden önce) aşağıdaki şifreleme seçeneklerini belirtebilirsiniz: **storageencryptıon**, **CommonEncryptionProtected**veya **EnvelopeEncryptionProtected**. 
 
-Varlıklar, istemcilere teslim zaman [varlıklarını dinamik olarak şifrelenmesini yapılandırma](media-services-dotnet-configure-asset-delivery-policy.md) aşağıdaki iki şifrelerinden biri ile: **DynamicEnvelopeEncryption** veya **DynamicCommonEncryption**.
+İstemcilerinize varlıklar sunışınızda, varlıkların aşağıdaki iki şifreleden biriyle [dinamik olarak şifrelenmesini](media-services-dotnet-configure-asset-delivery-policy.md) sağlayabilirsiniz: **DynamicEnvelopeEncryption** veya **dynamiccommonencryption**.
 
-Şifrelenmiş varlıklar sahip ilişkilendirilecek **ContentKey**s. Bu makalede, bir içerik anahtarı oluşturma işlemini açıklar.
+Şifrelenmiş varlıkların, **Contentkey**s ile ilişkilendirilmesi gerekir. Bu makalede bir içerik anahtarının nasıl oluşturulacağı açıklanır.
 
 > [!NOTE]
-> Yeni bir oluştururken **StorageEncrypted** Media Services .NET SDK kullanarak varlık **ContentKey** otomatik olarak oluşturulur ve varlığı ile bağlantılı.
+> Media Services .NET SDK kullanarak yeni bir **Storageşifrelenen** varlık oluştururken, **contentkey** otomatik olarak oluşturulup varlıkla bağlanır.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-İçerik oluşturma zaman ayarlamalısınız değerlerinden anahtardır içerik anahtar türü. Aşağıdaki değerlerden birini seçin. 
+İçerik anahtarı oluştururken ayarlamanız gereken değerlerden biri içerik anahtar türüdür. Aşağıdaki değerlerden birini seçin. 
 
 ```csharp
     public enum ContentKeyType
@@ -70,8 +70,8 @@ Varlıklar, istemcilere teslim zaman [varlıklarını dinamik olarak şifrelenme
     }
 ```
 
-## <a id="envelope_contentkey"></a>Zarf türü ContentKey oluşturma
-Aşağıdaki kod parçacığı bir içerik anahtarı Zarf şifreleme türü oluşturur. Ardından anahtar belirli bir varlık ile ilişkilendirir.
+## <a id="envelope_contentkey"></a>Zarf türü ContentKey oluştur
+Aşağıdaki kod parçacığı, zarf şifreleme türünün bir içerik anahtarını oluşturur. Daha sonra anahtarı belirtilen varlıkla ilişkilendirir.
 
 ```csharp
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -108,8 +108,8 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>Ortak tür ContentKey oluşturma
-Aşağıdaki kod parçacığı, ortak şifreleme türünün bir içerik anahtarı oluşturur. Ardından anahtar belirli bir varlık ile ilişkilendirir.
+## <a id="common_contentkey"></a>Ortak tür ContentKey oluştur
+Aşağıdaki kod parçacığı, ortak şifreleme türünün bir içerik anahtarını oluşturur. Daha sonra anahtarı belirtilen varlıkla ilişkilendirir.
 
 ```csharp
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -150,6 +150,6 @@ call
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

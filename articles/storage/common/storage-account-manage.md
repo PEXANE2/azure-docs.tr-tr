@@ -1,18 +1,19 @@
 ---
-title: Azure portal-Azure Storage 'da depolama hesabı ayarlarını yönetme | Microsoft Docs
+title: Azure portal depolama hesabı ayarlarını yönetme
+titleSuffix: Azure Storage
 description: Erişim denetimi ayarlarını yapılandırma, hesap erişim anahtarlarını yeniden oluşturma, erişim katmanını değiştirme veya hesap tarafından kullanılan çoğaltma türünü değiştirme gibi Azure portal depolama hesabı ayarlarını yönetmeyi öğrenin. Ayrıca, portalda bir depolama hesabını silmeyi de öğrenin.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748996"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892388"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal depolama hesabı ayarlarını yönetme
 
@@ -49,7 +50,7 @@ Bir depolama hesabı oluşturduğunuzda, Azure 2 512 bit depolama hesabı erişi
 Microsoft, depolama hesabınızı güvende tutmaya yardımcı olmak için erişim anahtarlarınızı düzenli aralıklarla yeniden oluşturmanız önerilir. Anahtarlarınızı döndürebilmeniz için iki erişim tuşu atanır. Anahtarlarınızı döndürdüğünüzde, uygulamanızın işlem boyunca Azure depolama 'ya erişimini koruduğundan emin olursunuz. 
 
 > [!WARNING]
-> Erişim anahtarlarınızın yeniden oluşturulması, depolama hesabı anahtarına bağlı olan tüm uygulamaları veya Azure hizmetlerini etkileyebilir. Depolama hesabına erişmek için hesap anahtarını kullanan tüm istemciler, Media Services, bulut, masaüstü ve mobil uygulamalar gibi yeni anahtarı kullanacak şekilde ve Azure depolama için grafik kullanıcı arabirimi uygulamaları (örneğin, Azure Depolama Gezgini) kullanmak üzere güncelleştirilmeleri gerekir [ ](https://azure.microsoft.com/features/storage-explorer/).
+> Erişim anahtarlarınızın yeniden oluşturulması, depolama hesabı anahtarına bağlı olan tüm uygulamaları veya Azure hizmetlerini etkileyebilir. Depolama hesabına erişmek için hesap anahtarını kullanan istemciler, Media Services, bulut, masaüstü ve mobil uygulamalar gibi yeni anahtarı kullanacak şekilde ve [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi Azure depolama için grafik kullanıcı arabirimi uygulamalarına yönelik olarak güncelleştirilmeleri gerekir.
 
 Depolama hesabı anahtarlarınızı döndürmek için bu işlemi izleyin:
 

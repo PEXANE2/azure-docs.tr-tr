@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887526"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889184"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>Veri bulunmama sorunlarını giderme - .NET için Application Insights
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
+
 ## <a name="some-of-my-telemetry-is-missing"></a>Telemetrimin bazıları eksik
 *Application Insights, yalnızca Uygulamam tarafından oluşturulan olayların bir bölümünü görüyorum.*
 
@@ -58,7 +59,7 @@ Olası nedenler:
 * Azure hesabınızla ilgili bazı sorunlar var;
 * Yalnızca [yeni kaynağı oluşturmaya çalıştığınız abonelik veya gruba okuma erişiminizin](../../azure-monitor/app/resources-roles-access-control.md)olması gerekir.
 
-Onar
+Çözümü:
 
 * Doğru Azure hesabı için oturum açma kimlik bilgileri sağladıysanız emin olun.
 * Tarayıcınızda [Azure Portal](https://portal.azure.com)erişiminiz olup olmadığını kontrol edin. Ayarları açın ve herhangi bir kısıtlama olup olmadığını görün.
@@ -83,7 +84,7 @@ Olası nedenler:
 * Geliştirici analizi araçları Visual Studio 'da devre dışı bırakılmıştır.
 * Visual Studio, 2013 güncelleştirme 3 ' ten eski.
 
-Onar
+Çözümü:
 
 * Visual Studio sürümünüzün 2013 güncelleştirme 3 veya sonraki bir sürümü olduğundan emin olun.
 * **Araçlar**, **Uzantılar ve güncelleştirmeler** ' i seçin ve **Geliştirici analiz araçları** 'nın yüklü ve etkin olduğunu denetleyin. Bu durumda, kullanılabilir bir güncelleştirme olup olmadığını görmek için **güncelleştirmeler** ' e tıklayın.
@@ -111,7 +112,7 @@ Olası nedenler:
 
 ApplicationInsights. config dosyasındaki izleme anahtarı, telemetrinin gönderildiği yeri denetler. Proje dosyasındaki bir satır, Visual Studio 'da komutunu kullandığınızda hangi kaynağın açılacağını denetler.
 
-Onar
+Çözümü:
 
 * Çözüm Gezgini, projeye sağ tıklayın ve Application Insights, Application Insights Yapılandır ' ı seçin. İletişim kutusunda, mevcut bir kaynağa telemetri gönderilmesini ya da yeni bir tane oluşturmayı seçebilirsiniz. Veya
 * Kaynağı doğrudan açın. [Azure Portal](https://portal.azure.com)oturum açın, sol gezinti çubuğunda Application Insights ' e tıklayın ve ardından uygulamanızı seçin.
@@ -212,7 +213,7 @@ Devre dışı bırakabilirsiniz, ancak bu önerilmez. Örnekleme, tanılama amac
 
 1. NuGet 'den [Microsoft. Aspnet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) paketini yükler. Yüklediğiniz sürüm, `Microsoft.ApplicationInsights` yüklü olan geçerli sürümüyle eşleşmelidir
 
-Microsoft. ApplicationInsights. AspNetCore 'un en son sürümü 2.7.1 'dir ve Microsoft. ApplicationInsights sürüm 2,10 ' e başvurur. Bu nedenle, yüklenecek Microsoft. AspNet. ApplicationInsights. HostingStartup sürümünün 2.10.0 olması gerekir
+Microsoft. ApplicationInsights. AspNetCore 'un en son sürümü 2.8.2 'dir ve Microsoft. ApplicationInsights sürüm 2.11.2 'e başvurur. Bu nedenle, yüklenecek Microsoft. AspNet. ApplicationInsights. HostingStartup sürümünün 2.11.2 olması gerekir
 
 2. `Startup.cs` sınıfınıza `ConfigureServices` yöntemini değiştirin.:
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122591"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894270"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri analiz etme
 
@@ -56,7 +56,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına gelen ileti:
+* Saniye başına gelen ileti: (`your_kafka_cluster_name`, küme adınızla değiştirin.)
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına gelen bayt:
+* Saniye başına gelen bayt: (`wn0-kafka` bir çalışan düğümü ana bilgisayar adıyla değiştirin.)
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +72,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Saniye başına giden bayt:
+* Saniye başına giden bayt: (`your_kafka_cluster_name`, küme adınızla değiştirin.)
 
     ```kusto
     metrics_kafka_CL 
@@ -80,15 +80,12 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    > [!IMPORTANT]  
-    > Sorgu değerlerini kümenize özgü bilgileriniz ile değiştirin. Örneğin, `ClusterName_s` kümenizin adına ayarlanmalıdır. `HostName_s`kümedeki bir çalışan düğümünün etki alanı adına ayarlanmalıdır.
-
-    Günlüğe kaydedilen tüm türleri `*` aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
+    Günlüğe kaydedilen tüm türleri aramak için `*` de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
 
     | Günlük türü | Açıklama |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka Broker Server. log |
-    | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
+    | günlük\_kafkaserver\_CL | Kafka Broker Server. log |
+    | günlük\_kafkacontroller\_CL | Kafka Broker Controller. log |
     | ölçümler\_Kafka\_CL | Kafka JMX ölçümleri |
 
     ![Apache Kafka Log Analytics CPU kullanımı](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
@@ -100,6 +97,6 @@ Azure Izleyici hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye genel b
 Apache Kafka ile çalışma hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [HDInsight kümeleri arasında yansıtma Apache Kafka](apache-kafka-mirroring.md)
-* [HDInsight üzerinde Apache Kafka ölçeklenebilirliğini artırma](apache-kafka-scalability.md)
+* [HDInsight üzerinde Apache Kafka ölçeğini artırma](apache-kafka-scalability.md)
 * [Apache Kafka ile Apache Spark akışı (DStreams) kullanma](../hdinsight-apache-spark-with-kafka.md)
 * [Apache Kafka ile yapılandırılmış akış Apache Spark kullanma](../hdinsight-apache-kafka-spark-structured-streaming.md)

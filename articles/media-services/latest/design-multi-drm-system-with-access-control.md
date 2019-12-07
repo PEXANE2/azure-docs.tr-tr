@@ -1,6 +1,6 @@
 ---
 title: Access Control ile çoklu DRM içerik koruma sisteminin tasarımı-Azure Media Services | Microsoft Docs
-description: Microsoft kesintisiz akış istemci taşıma Kiti lisanslama hakkında bilgi edinin.
+description: Bu makaleler, Azure Media Services ile birden çok DRM içerik koruma sisteminin nasıl tasarlanacağını ayrıntılı olarak açıklamaktadır.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310319"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896166"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Erişim denetimi ile birden çok DRM içerik koruma sisteminin tasarımı 
 
@@ -27,7 +27,7 @@ Tasarlama ve bir üzerinden-üst düzey (OTT) için Digital Rights Management (D
 
 Bu belge için hedeflenen okuyucular OTT veya çevrimiçi akış/çoklu ekranı çözümler isteyen DRM alt sistemler okuyucuları DRM alt sistemlerde çalışan mühendisleri ' dir. Okuyucular DRM teknolojileri PlayReady, Widevine, FairPlay veya Adobe erişim gibi piyasadaki en az biri ile bilgi sahibi olduğunuz varsayılır.
 
-Bu tartışmada, çoklu DRM tarafından desteklenen Azure Media Services tarafından desteklenen 3 DRMs de vardır: PlayReady ve Widevine, FairPlay için Common Encryption (CENC) ve AES-128 şifresiz anahtar şifrelemesi. Çevrimiçi akış ve OTT sektör önemli bir eğilim, çeşitli istemci platformlarında yerel benzeri DRM kullanmaktır. Bu eğilim, çoklu DRM ve kendi İstemci SDK'sı çeşitli istemci platformları için kullanılan önceki bir kaydırmadır. Yerel birden çok DRM ile CENC kullandığınızda, PlayReady ve Widevine başına şifrelenir [genel şifreleme (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) belirtimi.
+Bu tartışmada birden çok DRM ile Azure Media Services tarafından desteklenen 3 benzeri DRM ekliyoruz: ortak şifreleme (CENC) PlayReady ve Widevine, FairPlay yanı sıra, AES-128 şifresiz anahtar şifrelemesiyle koruyun. Çevrimiçi akış ve OTT sektör önemli bir eğilim, çeşitli istemci platformlarında yerel benzeri DRM kullanmaktır. Bu eğilim, çoklu DRM ve kendi İstemci SDK'sı çeşitli istemci platformları için kullanılan önceki bir kaydırmadır. Yerel birden çok DRM ile CENC kullandığınızda, PlayReady ve Widevine başına şifrelenir [genel şifreleme (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) belirtimi.
 
 BT'nin content protection için yerel çoklu DRM kullanmanın avantajları şunlardır:
 
@@ -116,11 +116,11 @@ Bu etkenler neden önemlidir?
 
 Lisans dağıtımı için genel bulut kullanırsanız, kalıcı ve kalıcı olmayan lisans lisans teslim maliyeti doğrudan bir etkiye sahip. Aşağıdaki iki farklı tasarım durumlarda göstermek için hizmet eder:
 
-* Aylık abonelik: Kalıcı bir lisans ve 1 ' den fazla içerik arasında anahtardan varlığa eşleme kullanın. Örneğin, çocukların tüm film için tek bir içerik anahtarı şifreleme için kullanırız. Bu durumda:
+* Aylık abonelik: kalıcı lisans ve 1-çok içerik anahtarı varlık eşleme kullanın. Örneğin, çocukların tüm film için tek bir içerik anahtarı şifreleme için kullanırız. Bu durumda:
 
     Lisans tüm çocukları filmler/cihaz için istenen toplam sayısı = 1
 
-* Aylık abonelik: Kalıcı olmayan bir lisans ve içerik anahtarı ve varlık arasında 1--1 eşleme kullanın. Bu durumda:
+* Aylık abonelik: kalıcı olmayan bir lisans ve içerik anahtarı varlık arasında 1-1 eşleme kullanın. Bu durumda:
 
     Tüm çocukları filmler/cihaz için istenen lisans sayısı [izlenen filmler sayısı] = [oturum sayısı] x
 
@@ -245,7 +245,7 @@ Uygulama sorunları ile ilgili Yardım için aşağıdaki sorun giderme bilgiler
 
 * Ayrıcalıkları verme grup üyeliğini talep. Azure AD uygulama bildirimi dosyasında aşağıdaki olduğundan emin olun: 
 
-    "Groupmembershipclaim": "All" (varsayılan değer null)
+    "groupMembershipClaims": "Tüm" (varsayılan değer null olur)
 
 * Kısıtlama gereksinimleri oluşturduğunuzda uygun TokenType ayarlayın.
 
@@ -286,15 +286,15 @@ Yazarlar için eklediğiniz veya oluşturduğunuz bir hesap başvurabilirsiniz.
 
 Aşağıdaki ekran görüntüleri, farklı bir etki alanı hesapları tarafından kullanılan farklı oturum açma sayfalarını gösterir:
 
-**Özel Azure AD kiracı etki alanı hesabı**: Özel Azure AD kiracı etki alanının özelleştirilmiş oturum açma sayfası.
+**Özel Azure AD kiracısı etki alanı hesabı**: özelleştirilmiş oturum açma sayfasına özel Azure ad Kiracı etki alanı.
 
 ![Özel Azure AD Kiracı etki alanı hesabı bir](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Akıllı kart Ile Microsoft etki alanı hesabı**: İki öğeli kimlik doğrulama ile Microsoft kurumsal BT tarafından özelleştirilmiş oturum açma sayfası.
+**Akıllı kart Microsoft etki alanı hesabıyla**: Microsoft Kurumsal özelleştirilmiş oturum açma sayfasına iki öğeli kimlik doğrulaması ile BT.
 
 ![Özel Azure AD Kiracı etki alanı hesabı iki](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft hesabı**: Tüketiciler için Microsoft hesabı oturum açma sayfası.
+**Microsoft hesabı**: Tüketiciler için Microsoft hesabı'nın oturum açma sayfası.
 
 ![Özel Azure AD Kiracı etki alanı hesabı üç](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 

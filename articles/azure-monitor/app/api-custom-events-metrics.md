@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030691"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893391"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API 'SI
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
 Kullanıcılara neler yaptığını öğrenmek veya sorunları tanılamaya yardımcı olmak için uygulamanıza birkaç satır kod ekleyin. Cihaz ve Masaüstü uygulamalarından, Web istemcilerinden ve Web sunucularından telemetri gönderebilirsiniz. Özel olaylar ve ölçümler ve kendi standart telemetri sürümleriniz göndermek için [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) çekırdek telemetri API 'sini kullanın. Bu API, standart Application Insights veri toplayıcılarının kullandığı API 'dir.
 
@@ -30,7 +30,7 @@ Kullanıcılara neler yaptığını öğrenmek veya sorunları tanılamaya yard�
 | [`TrackMetric`](#trackmetric) |Belirli olaylarla ilgili değildir sıra uzunlukları gibi performans ölçümleri. |
 | [`TrackException`](#trackexception) |Tanılama için özel durumlar günlüğe kaydediliyor. Diğer olaylarla ilgili olarak nerede olduğunu izleyin ve yığın izlemelerini inceleyin. |
 | [`TrackRequest`](#trackrequest) |Performans analizi için sunucu isteklerinin sıklığını ve süresini günlüğe kaydetme. |
-| [`TrackTrace`](#tracktrace) |Tanılama günlüğü iletileri. Ayrıca, üçüncü taraf günlüklerini yakalayabilirsiniz. |
+| [`TrackTrace`](#tracktrace) |Kaynak tanılama günlük iletileri. Ayrıca, üçüncü taraf günlüklerini yakalayabilirsiniz. |
 | [`TrackDependency`](#trackdependency) |Uygulamanızın bağımlı olduğu dış bileşenlere yapılan çağrıların süresini ve sıklığını günlüğe kaydetme. |
 
 Bu telemetri çağrılarının çoğuna [Özellikler ve ölçümler](#properties) ekleyebilirsiniz.
@@ -522,7 +522,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu ayrı değişkenlere zaten ayıklandı, ancak daha fazla bilgi edinmek için `details` yapısını ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
+Önemli yığın bilgilerinin çoğu ayrı değişkenlere zaten ayıklandı, ancak daha fazla bilgi edinmek için `details` yapısını ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
 
 ```kusto
 exceptions
@@ -585,7 +585,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 `message` boyut sınırı, özellikler üzerindeki sınırdan çok daha yüksektir.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
 
 *C#*
 
@@ -868,7 +868,7 @@ telemetry.trackEvent("WinGame", properties, metrics);
 ```
 
 > [!NOTE]
-> Özelliklerde kişisel olarak tanımlanabilen bilgileri günlüğe kaydetmek için dikkatli olmanız gerekmez.
+> Özelliklerde kişisel olarak tanımlanabilen bilgileri kaydederken dikkatli olun.
 >
 >
 
@@ -1148,7 +1148,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1197,7 +1197,7 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
 
 * *Hangi özel durumlar Track_ () çağrı throw?*
 
-    Yok. Bunları try-catch yan tümcelerinde sarmalısınız. SDK sorunlarla karşılaşırsa, hata ayıklama konsolu çıkışında iletileri günlüğe kaydeder ve iletiler tanılama araması ' nda ile alıyorsa.
+    Hiçbiri. Bunları try-catch yan tümcelerinde sarmalısınız. SDK sorunlarla karşılaşırsa, hata ayıklama konsolu çıkışında iletileri günlüğe kaydeder ve iletiler tanılama araması ' nda ile alıyorsa.
 * *Portaldan veri almak için bir REST API var mı?*
 
     Evet, [veri erişimi API 'si](https://dev.applicationinsights.io/). Verilerin ayıklanmasına yönelik diğer yollar [analiz 'ten Power BI](../../azure-monitor/app/export-power-bi.md ) ve [sürekli dışarı aktarmaya](../../azure-monitor/app/export-telemetry.md)aktarma içerir.

@@ -1,6 +1,6 @@
 ---
-title: H264 Çoklu bit hızı 4K Media Encoder Standard hazır - Azure | Microsoft Docs
-description: Konusuna genel bir fikir veren **H264 Çoklu bit hızı 4K** görev hazır.
+title: H264 çoklu bit hızı 4K Media Encoder Standard önayar-Azure | Microsoft Docs
+description: Makale, Media Encoder Standard **H264 çoklu bit hızı 4k** görev önayarı hakkında genel bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e2c5339731267a00e3423e79bc25b9d03d274bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129603"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887026"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
-`Media Encoder Standard` kodlama işi oluştururken kullanabileceğiniz hazır kodlama kümesi tanımlar. Kullanabilir bir `preset name` hangi biçimine medya dosyanızı kodlamak istediğiniz belirtmek için. Veya kendi JSON veya XML tabanlı hazır (UTF-8 veya UTF-16 kodlamasını kullanıyor. oluşturabilirsiniz Ardından kodlayıcıya hazır özel geçirmeniz gerekir. Bu tarafından desteklenen tüm hazır adlarının listesi için `Media Encoder Standard` Kodlayıcı bkz [Media Encoder Standard için görev ön ayarları](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`, kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir `preset name` kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu `Media Encoder Standard` Kodlayıcısı tarafından desteklenen tüm önceden ayarlanmış adların listesi için bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
- Bu konu başlığı altında gösterilir `H264 Multiple Bitrate 4K` XML ve JSON biçiminde hazır.  
+ Bu konuda, XML ve JSON biçiminde `H264 Multiple Bitrate 4K` önayar gösterilmektedir.  
   
- Bu önceden ayarlanmış 20000 kbps ila 1000 KB/sn ve stereo AAC ses arasında değişen 12 GOP hizalı MP4 dosyaları kümesini oluşturur. Profili hakkında ayrıntılı bilgi için örnekleme hızını, vb. Bu bit hızı, hazır, XML veya JSON aşağıda tanımlanan inceleyin. Bu hazır anlamına gelir ve geçerli değerler her hangi bir öğenin her öğe için açıklamalar için bkz [Media Encoder Standard şeması](media-services-mes-schema.md) konu.  
-  
-> [!NOTE]
->  Premium ayrılmış birim almalısınız 4K türüyle kodlar. Daha fazla bilgi için [ölçek kodlama nasıl](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Bu önayar, 20000 kbps 'den 1000 kbps 'e ve stereo AAC ses arasında değişen 12 GOP hizalanmış MP4 dosyası kümesi oluşturur. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Bu önayarlardır her öğe ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şeması](media-services-mes-schema.md) konusuna bakın.  
   
 > [!NOTE]
->  Değiştirirken `Width` ve `Height` katmanları arasında değerleri en boy oranını tutarlı kalmasından emin olun. Örneğin: 1920 x 1080, 1280 x 720, 1080 x 576 640 x 360. En boy oranlarına bir karışımını gibi kullanmamalısınız: 1280 x 720, 720 x 480, 640 x 360.  
+>  Premium ayrılmış birim türünü 4K kodlama ile almalısınız. Daha fazla bilgi için bkz. [kodlamayı ölçeklendirme](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Katmanlar arasında `Width` ve `Height` değerlerini değiştirirken en boy oranının tutarlı olmaya devam ettiğinden emin olun. Örneğin: 1920x1080, 1280x720, 1080x576, 640 x 360. : 1280x720, 720x480, 640 x 360 gibi en boy oranlarından oluşan bir karışımı kullanmamalısınız.  
   
  XML  
   

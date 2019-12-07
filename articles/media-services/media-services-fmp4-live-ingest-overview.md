@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services parçalanmış MP4 canlı alma belirtimi | Microsoft Docs
-description: Bu belirtim, Azure Media Services için parçalanmış MP4 tabanlı canlı akış alımı için protokolü ve biçimi açıklar. Bulut platformu olarak Azure kullanarak canlı olayları akışa almak ve içeriği gerçek zamanlı olarak yayınlamak için Azure Media Services kullanabilirsiniz. Bu belge, yüksek düzeyde yedekli ve sağlam canlı alma mekanizmaları oluşturmaya yönelik en iyi yöntemleri de açıklamaktadır.
+description: Bu belirtim, Azure Media Services için parçalanmış MP4 tabanlı canlı akış alımı için protokolü ve biçimi açıklar. Bu belge, yüksek düzeyde yedekli ve sağlam canlı alma mekanizmaları oluşturmaya yönelik en iyi yöntemleri de açıklamaktadır.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 4e1d41216f99a86a1b04ada882dcae0ff34b823b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69014751"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888062"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services parçalanmış MP4 canlı alma belirtimi 
 
 Bu belirtim, Azure Media Services için parçalanmış MP4 tabanlı canlı akış alımı için protokolü ve biçimi açıklar. Media Services, müşterilerin bulut platformu olarak Azure kullanarak canlı olayları ve yayın içeriğini gerçek zamanlı olarak akışa almak için kullanabileceği canlı bir akış hizmeti sağlar. Bu belge, yüksek düzeyde yedekli ve sağlam canlı alma mekanizmaları oluşturmaya yönelik en iyi yöntemleri de açıklamaktadır.
 
-## <a name="1-conformance-notation"></a>1. Uygunluk gösterimi
+## <a name="1-conformance-notation"></a>1. uygunluk gösterimi
 Bu belgede, RFC 2119 ' de açıklandığı gibi, "", "" olmamalıdır, "" gereklı değildir, "" Not "," "Not", "", "" tavsıye edilmelidir, "", "ve" OPTIONAL "anahtar sözcükleri yorumlanmalıdır.
 
-## <a name="2-service-diagram"></a>2. Hizmet diyagramı
+## <a name="2-service-diagram"></a>2. hizmet diyagramı
 Aşağıdaki diyagramda Media Services içindeki canlı akış hizmetinin üst düzey mimarisi gösterilmektedir:
 
 1. Canlı kodlayıcı, Azure Media Services SDK aracılığıyla oluşturulup sağlanan kanallara canlı akışlar gönderir.
@@ -51,10 +51,10 @@ Aşağıdaki listede, Azure Media Services içine canlı alma için uygulanan ö
 1. [1] içindeki bölüm 3.3.6, kanala (EOS) akışın son akışını göstermek için canlı Alım sonunda gönderilebilecek **MovieFragmentRandomAccessBox** (**mfra**) adlı bir kutu tanımlar. Media Services alma mantığı nedeniyle, EOS kullanımı kullanım dışıdır ve canlı alma için **mfra** kutusu gönderilmemelidir. Gönderildiyse Media Services sessizce yoksayar. Alma noktasının durumunu sıfırlamak için [Kanal sıfırlamayı](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)kullanmanızı öneririz. Ayrıca, bir sunuyu ve akışı sonlandırmak için [Program durdur](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) ' un kullanılmasını öneririz.
 1. İstemci bildirimlerinin boyutunu azaltmak için MP4 parça süresi sabit olmalıdır. Sabit bir MP4 parça süresi Ayrıca, yineleme etiketlerinin kullanımıyla istemci indirme buluşsal yöntemlerini geliştirir. Süre, tamsayı olmayan kare hızları için dengede dalgalanmaya BAŞLAYABILIR.
 1. MP4 parça süresi yaklaşık 2 ila 6 saniye arasında olmalıdır.
-1. MP4 parça zaman damgaları ve dizinler `fragment_ absolute_ time` (TrackFragmentExtendedHeaderBox `fragment_index`ve) artan sırada gelmiş olmalıdır. Yinelenen parçaların Media Services dayanıklı olmasına karşın, parçaları medya zaman çizelgesine göre yeniden sıralamak sınırlı olabilir.
+1. MP4 parça zaman damgaları ve dizinler (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` ve `fragment_index`) artan sırada gelmelidir. Yinelenen parçaların Media Services dayanıklı olmasına karşın, parçaları medya zaman çizelgesine göre yeniden sıralamak sınırlı olabilir.
 
-## <a name="4-protocol-format--http"></a>4. Protokol biçimi – HTTP
-Media Services için ISO parçalanmış MP4 tabanlı canlı alma, parçalanmış MP4 biçiminde paketlenmiş kodlanmış medya verilerini hizmetine iletmek için standart bir uzun süreli HTTP POST isteği kullanır. Her HTTP GÖNDERISI, üst bilgi kutularından (**ftyp**, **Live Server bildirim kutusu**ve **Moov** kutularından) başlayarak, eksiksiz bir parçalanmış MP4 Bitstream ("Stream") gönderir ve bir dizi parça ile devam eder (**Moof** ve  **mdat** kutuları). HTTP POST isteğinin URL sözdizimi için [1] içindeki 9,2 bölümüne bakın. GÖNDERI URL 'sine bir örnek: 
+## <a name="4-protocol-format--http"></a>4. protokol biçimi – HTTP
+Media Services için ISO parçalanmış MP4 tabanlı canlı alma, parçalanmış MP4 biçiminde paketlenmiş kodlanmış medya verilerini hizmetine iletmek için standart bir uzun süreli HTTP POST isteği kullanır. Her HTTP GÖNDERISI, üst bilgi kutularından (**ftyp**, **Live Server bildirim kutusu**ve **Moov** kutularından) başlayarak ve bir dizi parça (**Moof** ve **mdat** kutusu) ile devam ederek eksiksiz bir parçalanmış MP4 Bitstream ("Stream") gönderir. HTTP POST isteğinin URL sözdizimi için [1] içindeki 9,2 bölümüne bakın. GÖNDERI URL 'sine bir örnek: 
 
     http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
 
@@ -66,10 +66,10 @@ Ayrıntılı gereksinimler şunlardır:
 1. Kodlayıcı parçalanmış MP4 akışı ile yeni bir HTTP POST isteği BAŞLATMALıDıR. Yük, üst bilgi kutuları ve ardından parçalar tarafından başlamalıdır. **Ftyp**, **Live Server bildirim kutusu**ve **Moov** kutularının (Bu sırada), önceki istek akışın sonundan önce sonlandırıldığı için her istekle birlikte gönderilmesi gerektiğini unutmayın. 
 1. Canlı etkinliğin tüm içerik uzunluğunu tahmin etmek imkansız olduğundan, kodlayıcı karşıya yükleme için öbekli aktarım kodlaması kullanmalıdır.
 1. Olay üzerindeyken, son parçayı gönderdikten sonra kodlayıcı, öbekli aktarım kodlama ileti sırasını düzgün bir şekilde sonlandırmalıdır (çoğu HTTP istemci yığınları otomatik olarak işler). Kodlayıcı hizmetin Son Yanıt kodunu döndürmesini bekleyip bağlantıyı sonlandıramalıdır. 
-1. Kodlayıcı Media Services ' de canlı alma `Events()` için, [1] içinde 9,2 bölümünde açıklandığı gibi bir ad kullanmamalıdır.
+1. Kodlayıcı, Media Services canlı alımı için [1] içindeki 9,2 ' de açıklandığı gibi `Events()` adlı ad 'yi kullanmamalıdır.
 1. HTTP POST isteği akışın sonundan önce bir TCP hatasıyla sonlandığında veya zaman aşımına uğrarsa, kodlayıcı yeni bir bağlantı kullanarak yeni bir POST isteği VERMELIDIR ve önceki gereksinimleri izlemelidir. Ayrıca, kodlayıcı akıştaki her parça için önceki iki MP4 parçalarını yeniden göndermesi ve medya zaman çizelgesinde sürekliliği bildirmeden devam ETMELIDIR. Her bir parça için son iki MP4 parçasının yeniden kesilmesi, veri kaybı olmamasını sağlar. Diğer bir deyişle, bir akış hem bir ses hem de video izlemesi içeriyorsa ve geçerli POST isteği başarısız olursa, kodlayıcı, daha önce başarıyla gönderilen ve video için son iki parçayı ve video için son iki parçayı yeniden göndermesi ve yeniden göndermesi gerekir veri kaybı olmadığından emin olmak için daha önce başarıyla gönderilen izleme. Kodlayıcı, yeniden bağlandığında daha sonra sona erecek olan medya parçalarının "ileri" bir arabelleğini KORUMALıDıR.
 
-## <a name="5-timescale"></a>5. Timescale
+## <a name="5-timescale"></a>5. zaman ölçeği
 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) , **yumuşak streamingmedia** (Section 2.2.2.1), **streamelement** (Section 2.2.2.3), **StreamFragmentElement** (Bölüm 2.2.2.6) ve **livesmil** (Bölüm 2.2.7.3.1) için zaman ölçeğinin kullanımını açıklar. Zaman ölçeği değeri yoksa, kullanılan varsayılan değer 10.000.000 ' dir (10 MHz). Kesintisiz Akış biçim belirtimi diğer zaman ölçeği değerlerinin kullanımını engelmese de, çoğu Kodlayıcı uygulaması bu varsayılan değeri (10 MHz) kullanarak Kesintisiz Akış alma verileri oluşturur. [Azure Medya dinamik paketleme](media-services-dynamic-packaging-overview.md) özelliği nedeniyle, video akışları için 90-khz zaman ölçeğini ve ses akışları Için 44,1 khz veya 48,1 kHz kullanmanızı öneririz. Farklı akışlar için farklı zaman ölçeği değerleri kullanılıyorsa, akış düzeyi zaman ölçeğinin gönderilmesi gerekır. Daha fazla bilgi için bkz. [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. "Stream" tanımı
@@ -83,17 +83,17 @@ Video – 3000 Kbps, 1500 Kbps, 750 kbps
 
 Ses – 128 kbps
 
-### <a name="option-1-all-tracks-in-one-stream"></a>Seçenek 1: Bir akıştaki tüm parçalar
+### <a name="option-1-all-tracks-in-one-stream"></a>Seçenek 1: bir akışta tüm izler
 Bu seçenekte, tek bir kodlayıcı tüm ses/video izlerini üretir ve bunları bir parçalanmış MP4 Bitstream olarak paketler. Parçalanmış MP4 Bitstream daha sonra tek bir HTTP POST bağlantısı aracılığıyla gönderilir. Bu örnekte, bu canlı sunu için yalnızca bir akış vardır.
 
 ![Akışlar-tek parça][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>Seçenek 2: Her parça ayrı bir akışta
+### <a name="option-2-each-track-in-a-separate-stream"></a>2\. seçenek: her biri ayrı bir akışta izler
 Bu seçenekte, kodlayıcı her bir bir parça MP4 Bitstream 'e bir izleme koyar ve ardından ayrı HTTP bağlantıları üzerinden tüm akışları nakleder. Bu, tek bir kodlayıcı veya birden çok kodlayıcıyla yapılabilir. Canlı alma, bu canlı sunumu dört akışdan oluşan şekilde görür.
 
 ![Akışlar ayrı parçalar][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>Seçenek 3: En düşük bit hızı video izleme ile ses izlemeyi tek bir akışa paketleyin
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>Seçenek 3: en düşük bit hızı video izlemeli bir akışa ses izi paketleyin
 Bu seçenekte, müşteri ses parçasını bir parça MP4 Bitstream 'de en düşük bit hızında video izlemesine göre paketleyip, diğer iki video parçasını ayrı akışlar olarak bırakır. 
 
 ![Akışlar-ses ve video parçaları][image4]
@@ -101,7 +101,7 @@ Bu seçenekte, müşteri ses parçasını bir parça MP4 Bitstream 'de en düş�
 ### <a name="summary"></a>Özet
 Bu örnek için tüm olası Alım seçeneklerinin kapsamlı bir listesi değildir. Aslında, her türlü parçayı akışlara gruplama, canlı alma tarafından desteklenir. Müşteriler ve kodlayıcı satıcıları, mühendislik karmaşıklığı, kodlayıcı kapasitesi ve artıklık ve yük devretme konuları temelinde kendi uygulamalarını seçebilirler. Ancak çoğu durumda, canlı sununun tamamı için yalnızca bir ses izi vardır. Bu nedenle, ses parçasını içeren alma akışının sistem durumunu sağlamak önemlidir. Bu, genellikle ses izlemenin kendi akışına yerleştirilmesi (seçenek 2 ' de olduğu gibi) veya en düşük bit hızında video izlemesine (seçenek 3 ' te olduğu gibi) paketlemeye neden olur. Ayrıca, daha iyi artıklık ve hata toleransı için aynı ses parçasını iki farklı akışlarda (yedek ses parçalarıyla 2. seçenek) gönderir veya en düşük bit hızında video izlemelerinin en az ikisi ile ses izini paketlerler (3. seçenek, en az iki ile paketlenmiş ses ile). video akışları) Media Services canlı alma için önemle önerilir.
 
-## <a name="7-service-failover"></a>7. Hizmet yük devretmesi
+## <a name="7-service-failover"></a>7. hizmet yük devretmesi
 Canlı akış doğası göz önüne alındığında, hizmetin kullanılabilirliğini sağlamak için iyi yük devretme desteği önemlidir. Media Services, ağ hataları, sunucu hataları ve depolama sorunları dahil olmak üzere çeşitli hata türlerini işlemek için tasarlanmıştır. Live Encoder tarafında doğru yük devretme mantığı ile birlikte kullanıldığında, müşteriler buluttan son derece güvenilir bir canlı akış hizmeti elde edebilir.
 
 Bu bölümde, hizmet yük devretme senaryolarını tartıştık. Bu durumda, hata hizmetin içinde bir yerde gerçekleşir ve kendi kendine bir ağ hatası olarak bildirim ister. Hizmet yük devretmesini işlemek için Kodlayıcı uygulamasına yönelik bazı öneriler aşağıda verilmiştir:
@@ -121,7 +121,7 @@ Bu bölümde, hizmet yük devretme senaryolarını tartıştık. Bu durumda, hat
     d. Her bir parça için gönderilen son iki parça yeniden gönderilmesi ve akış, medya zaman çizelgesinde süreksizlik olmadan sürdürülmelidir. MP4 parça zaman damgaları, HTTP POST istekleri arasında bile sürekli olarak artmalıdır.
 1. Veriler MP4 parça süresiyle bir hızda gönderilmezse, kodlayıcının HTTP POST isteğini sonlandırılması gerekır.  Veri gönderebilen bir HTTP POST isteği, bir hizmet güncelleştirmesi olayında kodlayıcının kodlayıcıyla hızlı bir şekilde bağlantısını kesmesinin engellenmesine Media Services engel olabilir. Bu nedenle, seyrek parça (ad sinyali) için HTTP POST ' un kısa süreli olması gerekır ve bu, seyrek parça gönderilir bitmez sonlandırılıyor.
 
-## <a name="8-encoder-failover"></a>8. Kodlayıcı yük devretme
+## <a name="8-encoder-failover"></a>8. kodlayıcı yük devretme
 Kodlayıcı yük devretmesi, uçtan uca canlı akış teslimi için giderilmesi gereken ikinci yük devretme senaryosu türüdür. Bu senaryoda, hata durumu kodlayıcı tarafında oluşur. 
 
 ![Kodlayıcı yük devretme][image5]
@@ -133,9 +133,9 @@ Aşağıdaki beklentiler, kodlayıcı yük devretmesi gerçekleştiğinde canlı
 1. Yeni kodlayıcı 'nın POST isteği, başarısız örnekle aynı parçalanmış MP4 üstbilgi kutularını içermelidir.
 1. Yeni kodlayıcı aynı canlı sununun diğer tüm çalışan kodlayıcılarıyla düzgün şekilde eşitlenmelidir ve bu da hizalanmış parça sınırlarıyla eşitlenmiş ses/video örnekleri oluşturur.
 1. Yeni akış, önceki akışa göre anlamsal olarak eşdeğer olmalıdır ve üst bilgi ve parça düzeylerinde değiştirilebilir olmalıdır.
-1. Yeni kodlayıcı veri kaybını en aza indirmeye çalışır. `fragment_absolute_time` Ve`fragment_index` medya parçaları, kodlayıcının en son durdurulma noktasından artmalıdır. `fragment_absolute_time` Ve`fragment_index` sürekli olarak artmalıdır, ancak gerekirse, süreksizlik bir şekilde tanıtılmaya izin verilir. Media Services, zaten aldığı ve işlediği parçaları yoksayar; bu nedenle, parçaları yeniden gönderme tarafında, medya zaman çizelgesinde süreksizlik tanıtıldığından hata vermek daha iyidir. 
+1. Yeni kodlayıcı veri kaybını en aza indirmeye çalışır. Medya parçalarının `fragment_absolute_time` ve `fragment_index`, kodlayıcının en son durdurulma noktasından ARTMALıDıR. `fragment_absolute_time` ve `fragment_index` sürekli bir şekilde artmalıdır, ancak gerekirse, sürekliliği bir ele almak için izin verilir. Media Services, zaten aldığı ve işlediği parçaları yoksayar; bu nedenle, parçaları yeniden gönderme tarafında, medya zaman çizelgesinde süreksizlik tanıtıldığından hata vermek daha iyidir. 
 
-## <a name="9-encoder-redundancy"></a>9. Kodlayıcı yedekliği
+## <a name="9-encoder-redundancy"></a>9. kodlayıcı artıklığı
 Daha yüksek kullanılabilirlik ve deneyim kalitesi gerektiren belirli kritik canlı etkinlikler için, veri kaybı olmadan sorunsuz yük devretme elde etmek üzere etkin-etkin gereksiz kodlayıcıları kullanmanızı öneririz.
 
 ![Kodlayıcı yedekliği][image6]
@@ -144,12 +144,12 @@ Bu diyagramda gösterildiği gibi, iki kodlayıcıdır grubu, her akışın iki 
 
 Bu senaryonun gereksinimleri, "kodlayıcı yük devretmesi" gibi gereksinimlerle neredeyse aynıdır ve ikinci kodlayıcıların birincil kodlayıcılarla aynı anda çalıştığı özel durumdur.
 
-## <a name="10-service-redundancy"></a>10. Hizmet yedekliliği
+## <a name="10-service-redundancy"></a>10. hizmet yedekliliği
 Yüksek oranda yedekli küresel dağıtım için bazen bölgesel olağanüstü durumları işlemek için çapraz bölge yedeğine sahip olmanız gerekir. Müşteriler, "kodlayıcı artıklığı" topolojisine genişleterek, ikinci kodlayıcılarla bağlantılı farklı bir bölgede yedekli bir hizmet dağıtımına sahip olmak için seçim yapabilir. Müşteriler Ayrıca, istemci trafiğini sorunsuz bir şekilde yönlendirmek için iki hizmet dağıtımı önünde küresel bir Traffic Manager dağıtmak üzere bir Content Delivery Network sağlayıcısıyla birlikte çalışabilir. Kodlayıcıların gereksinimleri "kodlayıcı artıklığı" durumu ile aynıdır. Tek özel durum, ikinci kodlayıcıkümesinin farklı bir canlı alma uç noktasına işaret etmek için gereklidir. Aşağıdaki diyagramda bu kurulum gösterilmektedir:
 
 ![hizmet yedekliliği][image7]
 
-## <a name="11-special-types-of-ingestion-formats"></a>11. Özel Alım biçimleri türleri
+## <a name="11-special-types-of-ingestion-formats"></a>11. özel alma biçimleri türleri
 Bu bölümde, belirli senaryoları işlemek için tasarlanan özel türdeki canlı Alım biçimleri açıklanmaktadır.
 
 ### <a name="sparse-track"></a>Seyrek parça
@@ -193,7 +193,7 @@ Gereksiz ses parçaları için aşağıdaki uygulama önerilir:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689302"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894700"
 ---
 # <a name="get-labels-for-data"></a>Veri etiketlerini al
 
@@ -24,6 +24,9 @@ Machine Learning ilerleme durumunu izler ve tamamlanmamış etiketleme görevler
 
 Machine Learning, projeyi başlatıp durdurur, kişi ve takımlar ekleyip kaldırır ve ilerlemeyi izleyebilirsiniz. Etiketli verileri COCO formatında veya Azure Machine Learning veri kümesi olarak dışarı aktarabilirsiniz.
 
+> [!Important]
+> Şu anda yalnızca görüntü sınıflandırması ve nesne kimliği etiketleme projeleri desteklenir. Ayrıca, veri görüntülerinin bir Azure blob veri deposunda bulunması gerekir. (Mevcut bir veri deposu yoksa, proje oluşturma sırasında görüntüleri karşıya yükleyebilirsiniz.) 
+
 Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Projede çalışan takımları ve kişileri yönetme
 > * Projeyi çalıştırma ve izleme
 > * Etiketleri dışarı aktarma
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 

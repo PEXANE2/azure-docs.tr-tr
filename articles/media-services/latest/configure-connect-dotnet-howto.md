@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 API-.NET ' e bağlanın
-description: .NET ile Media Services v3 API 'ye nasıl bağlanacağınızı öğrenin.
+description: Bu makalede, .NET ile Media Services v3 API 'sine nasıl bağlanulacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b2cfe8014e6ffbd7a6d5449192acde9780a2d303
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122882"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899901"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
@@ -35,15 +35,15 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 ## <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
 1. Visual Studio’yu çalıştırın. 
-1. **Dosya** menüsünde **Yeni** > **Proje**' ye tıklayın. 
+1. **Dosya** menüsünde **Yeni** > **projesi**' ne tıklayın. 
 1. **.NET Core** konsol uygulaması oluşturun.
 
-Bu konudaki örnek uygulama, hedefler `netcoreapp2.0`. Kod, 7,1 ile C# başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
+Bu konudaki örnek uygulama, `netcoreapp2.0`hedefler. Kod, 7,1 ile C# başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
 
 ## <a name="add-required-nuget-packages"></a>Gerekli NuGet paketlerini ekleyin
 
-1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **NuGet Yönetici Konsolu**' nu seçin.
-2. **Paket Yöneticisi konsolu** penceresinde, aşağıdaki NuGet paketlerini `Install-Package` eklemek için komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
+1. Visual Studio 'da **araçlar** > **nuget Paket Yöneticisi** > **NuGet Manager konsolu**' nu seçin.
+2. **Paket Yöneticisi konsolu** penceresinde, aşağıdaki NuGet paketlerini eklemek için `Install-Package` komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
 
 |Paket|Açıklama|
 |---|---|
@@ -63,14 +63,14 @@ Bu konudaki örnek uygulama, hedefler `netcoreapp2.0`. Kod, 7,1 ile C# başlayar
 
 ### <a name="set-values-in-appsettingsjson"></a>AppSettings. JSON içindeki değerleri ayarla
 
-Komutunu erişim API 'lerinde açıklandığı gibi çalıştırın. [](access-api-cli-how-to.md) `az ams account sp create` Komutu, "appSettings. JSON" uygulamanıza kopyalamanız gereken JSON döndürür.
+[Erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi `az ams account sp create` komutunu çalıştırın. Komutu, "appSettings. JSON" uygulamanıza kopyalamanız gereken JSON döndürür.
  
 ## <a name="add-configuration-file"></a>Yapılandırma dosyasını ekleme
 
 Kolaylık sağlaması için, "appSettings. JSON" öğesinden değerleri okumaktan sorumlu bir yapılandırma dosyası ekleyin.
 
 1. Projenize yeni bir. cs sınıfı ekleyin. Bunu, `ConfigWrapper` olarak adlandırın. 
-1. Aşağıdaki kodu bu dosyaya yapıştırın (Bu örnek, ad alanının olduğunu `ConsoleApp1`varsayar).
+1. Aşağıdaki kodu bu dosyaya yapıştırın (Bu örnek, ad alanının `ConsoleApp1`olduğunu varsayar).
 
 ```csharp
 using System;
@@ -228,7 +228,7 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Videoları karşıya yükleme, kodlama ve akışla-.NET](stream-files-tutorial-with-api.md) 
+- [Öğretici: videoları karşıya yükleme, kodlama ve akışla-.NET](stream-files-tutorial-with-api.md) 
 - [Öğretici: Media Services v3-.NET ile canlı akış](stream-live-tutorial-with-api.md)
 - [Öğretici: Media Services v3-.NET ile videoları analiz etme](analyze-videos-tutorial-with-api.md)
 - [Yerel dosyadan iş girişi oluşturma-.NET](job-input-from-local-file-how-to.md)

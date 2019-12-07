@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034852"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900817"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama
 
@@ -41,7 +41,7 @@ Bu örnekte, kiracı **HR departmanı**adlı bir güvenlik grubu içerir. Bu gru
 
 1. **Tüm ürünler**altında, ürün adlarını seçerek hem Office 365 Kurumsal E5 hem de Enterprise Mobility + Security E3 ' nı seçin. Atamayı başlatmak için sayfanın en üstünde bulunan **ata** ' yı seçin.
 
-   ![Lisans atamak için ürünleri seçin](./media/licensing-groups-assign/all-products-assign.png)
+   ![Lisans atamak için ürünleri seçin](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
 1. **Lisans ata** sayfasında kullanıcılar ve gruplar ' **ı seçerek kullanıcılar** ve gruplar listesini açın.
 
@@ -71,7 +71,7 @@ Bir gruba lisans atarken, Azure AD söz konusu grubun tüm mevcut üyelerini iş
 
    ![Lisanslama hataları ve lisans durumu](./media/licensing-groups-assign/assignment-errors.png)
 
-1. **Azure Active Directory** > **kullanıcı ve grup** > *Grup adı* > **Denetim günlükleri**altında lisans işleme hakkında daha ayrıntılı bilgi görüntüleyin. Aşağıdaki etkinlikleri denetleyin:
+1. **Azure Active Directory** > **kullanıcılar ve gruplar** > *Grup adı* > **Denetim günlükleri**altında lisans işleme hakkında daha ayrıntılı bilgi görüntüleyin. Aşağıdaki etkinlikleri denetleyin:
 
    - Etkinlik: `Start applying group based license to users`. Bu, sistem gruptaki lisans ataması değişikliğini seçtiğinde günlüğe kaydedilir ve tüm Kullanıcı üyelerine uygulamayı başlatır. Yapılan değişiklik hakkında bilgi içerir.
 
@@ -89,7 +89,7 @@ Bir gruba lisans atarken, Azure AD söz konusu grubun tüm mevcut üyelerini iş
 
 1. Kullanıcının **lisanslar** sayfasını açmak için bir kullanıcı seçin. Bu sayfa, kullanıcıya şu anda atanmış olan tüm lisansları gösterir. Bu örnekte, kullanıcının **bilgi noktası kullanıcıları** grubundan devralınan Office 365 Kurumsal E1 lisansına sahip olması gerekir. Bu, sistemin **HR departmanı** grubundan uygulanmaya çalıştığı E3 lisansıyla çakışıyor. Sonuç olarak, bu gruptan lisanslardan hiçbiri kullanıcıya atanmaz.
 
-   ![Bir kullanıcı için tüm lisans çakışmalarını görüntüleme](./media/licensing-groups-assign/user-license-view.png)
+   ![Bir kullanıcı için tüm lisans çakışmalarını görüntüleme](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
 1. Bu çakışmayı çözümlemek için, kullanıcıyı **bilgi noktası kullanıcıları** grubundan kaldırın. Azure AD değişikliği tamamladıktan sonra, **HR departmanı** lisansları doğru şekilde atanır.
 
@@ -100,6 +100,6 @@ Grupları kullanarak lisans atamaya yönelik özellik kümesi hakkında daha faz
 - [Azure Active Directory 'de grup tabanlı lisanslama nedir?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
 - [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
 - [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
-- [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
+- [Kullanıcılar Azure Active Directory'de Grup tabanlı lisanslama kullanarak ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
 - [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](../active-directory-licensing-group-advanced.md)
-- [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)
+- [Azure Active Directory'de Grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)

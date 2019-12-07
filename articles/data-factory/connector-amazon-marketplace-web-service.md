@@ -1,5 +1,5 @@
 ---
-title: Amazon Market Web hizmetinden veri kopyalama
+title: AWS marketi 'nden veri kopyalama
 description: Desteklenen bir havuz veri depolarına Amazon Market Web hizmetinden bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
 services: data-factory
 ms.service: data-factory
@@ -10,16 +10,16 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.date: 08/01/2018
-ms.openlocfilehash: 24e0de3efec4e2d442f746e19f4c30363f0b4bfa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9a647f0597fa9a0d521eedf1942ee8f61b804fd3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218766"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891516"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Market Web hizmetinden veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de Amazon Market Web hizmetinden veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
+Bu makalede, kopyalama etkinliği Azure Data Factory'de Amazon Market Web hizmetinden veri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
 
 ## <a name="supported-capabilities"></a>Desteklenen özellikler
 
@@ -28,7 +28,7 @@ Bu Amazon Market Web hizmeti Bağlayıcısı aşağıdaki etkinlikler için dest
 - [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Tüm desteklenen havuz veri deposuna Amazon Market Web hizmetinden veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Tüm desteklenen havuz veri deposuna Amazon Market Web hizmetinden veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
 Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
 
@@ -44,13 +44,13 @@ Amazon Market Web bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AmazonMWS** olarak ayarlanmalıdır | Evet |
-| endpoint | (Diğer bir deyişle, mws.amazonservices.com) Amazon MWS sunucu uç noktası  | Evet |
-| marketplaceID | Verileri almak istediğiniz Amazon Market ID. Birden çok Market kimliği 'nden verileri almak için bunları virgülle ayırın (`,`). (diğer bir deyişle, A2EUQ1WTGCTBG2)  | Evet |
-| sellerID | Amazon satıcı kimliği  | Evet |
-| mwsAuthToken | Amazon MWS kimlik doğrulama belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| accessKeyId | Erişim kimliği verilere erişmek için kullanılan anahtar.  | Evet |
-| secretKey | Verilere erişmek için kullanılan gizli anahtar. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
+| type | Type özelliği ayarlanmalıdır: **AmazonMWS** | Yes |
+| endpoint | (Diğer bir deyişle, mws.amazonservices.com) Amazon MWS sunucu uç noktası  | Yes |
+| marketplaceID | Verileri almak istediğiniz Amazon Market ID. Virgül ile ayırarak birden çok Market kimlikleri veri almak için (`,`). (diğer bir deyişle, A2EUQ1WTGCTBG2)  | Yes |
+| sellerID | Amazon satıcı kimliği  | Yes |
+| mwsAuthToken | Amazon MWS kimlik doğrulama belirteci. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
+| accessKeyId | Erişim kimliği verilere erişmek için kullanılan anahtar.  | Yes |
+| secretKey | Verilere erişmek için kullanılan gizli anahtar. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
 | useHostVerification | Ana bilgisayar adı sunucunun sertifikasında SSL üzerinden bağlanırken sunucu ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer true olur.  | Hayır |
 | usePeerVerification | SSL üzerinden bağlanırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true olur.  | Hayır |
@@ -82,13 +82,13 @@ Amazon Market Web bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, Amazon Market Web hizmeti veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, Amazon Market Web hizmeti veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Amazon Market Web hizmetinden veri kopyalamak için, veri kümesinin Type özelliğini **AmazonMWSObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Amazon Market Web hizmetinden veri kopyalamak için dataset öğesinin type özelliği ayarlamak **AmazonMWSObject**. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **AmazonMWSObject** olarak ayarlanmalıdır | Evet |
+| type | Dataset öğesinin type özelliği ayarlanmalıdır: **AmazonMWSObject** | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
@@ -111,16 +111,16 @@ Amazon Market Web hizmetinden veri kopyalamak için, veri kümesinin Type özell
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Amazon Market Web hizmeti kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Amazon Market Web hizmeti kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="amazon-mws-as-source"></a>Amazon MWS kaynağı olarak
 
-Amazon Market Web hizmetinden veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AmazonMWSSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Amazon Market Web hizmetinden veri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **AmazonMWSSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **AmazonMWSSource** olarak ayarlanmalıdır | Evet |
-| query | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Yok (veri kümesinde "TableName" değeri belirtilmişse) |
+| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **AmazonMWSSource** | Yes |
+| sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
 
@@ -159,4 +159,4 @@ Amazon Market Web hizmetinden veri kopyalamak için kopyalama etkinliğindeki ka
 Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

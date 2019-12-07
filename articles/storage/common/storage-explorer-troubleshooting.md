@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e3a9b733b055469e22d3b107c0f9f49b768756c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775842"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895255"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -93,12 +93,12 @@ Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri b
 
 ### <a name="blank-sign-in-dialog-box"></a>Boş oturum açma iletişim kutusu
 
-Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için şu adımları izleyin:
+Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
 1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama** > **oturum aç**' a gidin. **Cihaz kod akışı oturum açma**özelliğini etkinleştir.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
 3. Oturum açmak istediğiniz ortamı seçin.
-4. **Oturum aç '** ı seçin.
+4. **Oturum aç**'ı seçin.
 5. Sonraki bölmede yer alan yönergeleri izleyin.
 
 Varsayılan tarayıcınız zaten farklı bir hesapta oturum açmış olduğu için kullanmak istediğiniz hesapta oturum açamazsınız, aşağıdakilerden birini yapın:
@@ -301,7 +301,7 @@ Uygulamayı. tar. gz dosyası olarak da indirebilirsiniz, ancak bağımlılıkla
 
 Bu paketler, Linux üzerinde Depolama Gezgini için en yaygın gereksinimlerdir:
 
-* [.NET Core 2,0 çalışma zamanı](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2,2 çalışma zamanı](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` veya `libgnome-keyring-dev`
 * `libgnome-keyring-common`
@@ -353,7 +353,7 @@ Depolama Gezgini 1.7.0 veya daha önceki bir sürümü için Depolama Gezgini ta
 1. [NuGet 'Den](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)StreamJsonRpc 'nin 1.5.43 sürümünü indirin. Sayfanın sağ tarafındaki "paketi Indir" bağlantısını bulun.
 2. Paketi indirdikten sonra, `.nupkg` dosya uzantısını `.zip`olarak değiştirin.
 3. Paketi sıkıştırmayı açın.
-4. `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasörünü açın.
+4. Açık `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasör.
 5. `StreamJsonRpc.dll` Depolama Gezgini klasöründeki aşağıdaki konumlara kopyalayın:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`

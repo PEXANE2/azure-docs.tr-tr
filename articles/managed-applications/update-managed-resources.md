@@ -1,6 +1,6 @@
 ---
-title: Azure'daki kaynakları güncelleştirme yönetilen uygulamalar | Microsoft Docs
-description: Yönetilen kaynaklar üzerinde çalışan açıklar yönetilen uygulama için bir Azure kaynak grubu.
+title: Azure yönetilen uygulamalarında kaynakları güncelleştirme | Microsoft Docs
+description: Yönetilen bir Azure uygulaması için yönetilen kaynak grubundaki kaynaklar üzerinde nasıl çalışabileceğinizi açıklar.
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -10,66 +10,66 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 21f4e0aa339eb0c746f9b9b06f8aaada6c4d4b71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00a99a31a4543ef45c90a86820e627134d8963
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043467"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888708"
 ---
-# <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Yönetilen kaynakları ile çalışmak için Azure kaynak grubu yönetilen uygulaması
+# <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Azure yönetilen uygulaması için yönetilen kaynak grubundaki kaynaklarla çalışma
 
-Bu makalede, yönetilen bir uygulamanın bir parçası dağıtılan kaynakları güncelleştirme açıklar. Yönetilen bir uygulamanın yayımcısı yönetilen bir kaynak grubunda kaynaklarına erişimi vardır. Bu kaynakları güncelleştirmek için bir yönetilen uygulamayla ilişkili yönetilen kaynak grubunu bulun ve bu kaynak grubundaki bir kaynağa erişim gerekir.
+Bu makalede, yönetilen bir uygulamanın parçası olarak dağıtılan kaynakların nasıl güncelleştirileceğini açıklanmaktadır. Yönetilen bir uygulamanın yayımcısı olarak, yönetilen kaynak grubundaki kaynaklara erişebilirsiniz. Bu kaynakları güncelleştirmek için, yönetilen bir uygulamayla ilişkili yönetilen kaynak grubunu bulmanız ve bu kaynak grubundaki kaynağa erişmeniz gerekir.
 
-Bu makalede, yönetilen bir uygulamada dağıttığınız varsayılmaktadır [yönetilen Web uygulaması (Iaas) ile Azure yönetim hizmetlerinin](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) örnek proje. Yönetilen uygulama içerdiğini bir **işler için standart_d1_v2** sanal makine. Bu yönetilen uygulamayı dağıtmadıysanız, bu makalede yönetilen kaynak grubu güncelleştirme adımları hakkında bilgi sahibi olmak için kullanmaya devam edebilirsiniz.
+Bu makalede yönetilen uygulamayı [Azure Yönetim Hizmetleri örnek projesi Ile yönetilen Web uygulamasında (IaaS)](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-web-app) dağıttığınız varsayılmaktadır. Bu yönetilen uygulama **Standard_D1_v2** bir sanal makine içerir. Bu yönetilen uygulamayı dağıtmadıysanız, yönetilen bir kaynak grubunu güncelleştirme adımlarını öğrenmek için bu makaleyi kullanmaya devam edebilirsiniz.
 
-Aşağıdaki görüntüde, dağıtılmış yönetilen uygulamayı gösterir.
+Aşağıdaki görüntüde dağıtılan yönetilen uygulama gösterilmektedir.
 
-![Dağıtılan bir yönetilen uygulama](./media/update-managed-resources/deployed.png)
+![Dağıtılan yönetilen uygulama](./media/update-managed-resources/deployed.png)
 
-Bu makalede, Azure CLI'yı kullanın:
+Bu makalede, Azure CLı 'yi kullanarak şunları yapabilirsiniz:
 
-* Yönetilen uygulama tanımlayın
-* Yönetilen kaynak grubu tanımlayın
-* Yönetilen kaynak grubundaki sanal makine kaynakları tanımlayın
-* VM boyutu (ya da daha küçük bir boyut kullanılmadı varsa veya daha fazla yükü desteklemeye daha büyük) değiştirme
-* İzin verilen konumlar belirten yönetilen kaynak grubu için ilke atama
+* Yönetilen uygulamayı tanımla
+* Yönetilen kaynak grubunu tanımla
+* Yönetilen kaynak grubundaki sanal makine kaynakları (ler) i tanımla
+* VM boyutunu (aşırı daha küçük bir boyuta veya daha fazla yük desteği sağlamak için daha büyük) değiştirin
+* Yönetilen kaynak grubuna izin verilen konumları belirten bir ilke atama
 
-## <a name="get-managed-application-and-managed-resource-group"></a>Yönetilen uygulama ve yönetilen kaynak grubu Al
+## <a name="get-managed-application-and-managed-resource-group"></a>Yönetilen uygulamayı ve yönetilen kaynak grubunu al
 
-Yönetilen uygulamaların bir kaynak grubunda almak için kullanın:
+Bir kaynak grubunda yönetilen uygulamaları almak için şunu kullanın:
 
 ```azurecli-interactive
 az managedapp list --query "[?contains(resourceGroup,'DemoApp')]"
 ```
 
-Yönetilen kaynak grubu Kimliğini almak için kullanın:
+Yönetilen kaynak grubunun KIMLIĞINI almak için şunu kullanın:
 
 ```azurecli-interactive
 az managedapp list --query "[?contains(resourceGroup,'DemoApp')].{ managedResourceGroup:managedResourceGroupId }"
 ```
 
-## <a name="resize-vms-in-managed-resource-group"></a>Yönetilen kaynak grubundaki Vm'leri yeniden boyutlandırma
+## <a name="resize-vms-in-managed-resource-group"></a>Yönetilen kaynak grubundaki VM 'Leri yeniden boyutlandır
 
-Yönetilen kaynak grubundaki sanal makineleri görmek için yönetilen kaynak grubunun adını sağlayın.
+Yönetilen kaynak grubundaki sanal makineleri görmek için, yönetilen kaynak grubunun adını belirtin.
 
 ```azurecli-interactive
 az vm list -g DemoApp6zkevchqk7sfq --query "[].{VMName:name,OSType:storageProfile.osDisk.osType,VMSize:hardwareProfile.vmSize}"
 ```
 
-VM boyutlarını güncelleştirmek için kullanın:
+VM 'lerin boyutunu güncelleştirmek için şunu kullanın:
 
 ```azurecli-interactive
 az vm resize --size Standard_D2_v2 --ids $(az vm list -g DemoApp6zkevchqk7sfq --query "[].id" -o tsv)
 ```
 
-İşlem tamamlandıktan sonra uygulama standart D2 v2 üzerinde çalıştığı doğrulayın.
+İşlem tamamlandıktan sonra, uygulamanın standart D2 v2 üzerinde çalıştığını doğrulayın.
 
-![Standart D2 v2 kullanarak yönetilen uygulama](./media/update-managed-resources/upgraded.png)
+![Standart D2 v2 kullanan yönetilen uygulama](./media/update-managed-resources/upgraded.png)
 
-## <a name="apply-policy-to-managed-resource-group"></a>İlke yönetilen kaynak grubuna uygulayabilirsiniz.
+## <a name="apply-policy-to-managed-resource-group"></a>İlkeyi yönetilen kaynak grubuna Uygula
 
-Atama ve yönetilen kaynak grubu bu kapsamda bir ilke alın. İlke **e56962a6-4747-49cd-b67b-bf8b01975c4c** izin verilen konumlar belirtmek için yerleşik bir ilkedir.
+Yönetilen kaynak grubunu alın ve bu kapsamda ilke atamasını yapın. İlke **e56962a6-4747-49cd-b67b-bf8b01975c4c** , izin verilen konumları belirtmek için yerleşik bir ilkedir.
 
 ```azurecli-interactive
 managedGroup=$(az managedapp show --name <app-name> --resource-group DemoApp --query managedResourceGroupId --output tsv)
@@ -84,17 +84,17 @@ az policy assignment create --name locationAssignment --policy e56962a6-4747-49c
                         }'
 ```
 
-İzin verilen konumları görüntülemek için kullanın:
+İzin verilen konumları görmek için şunu kullanın:
 
 ```azurecli-interactive
 az policy assignment show --name locationAssignment --scope $managedGroup --query parameters.listofallowedLocations.value
 ```
 
-İlke ataması, portalda görüntülenir.
+İlke ataması portalda görüntülenir.
 
-![Görünüm ilke ataması](./media/update-managed-resources/assignment.png)
+![İlke atamasını görüntüle](./media/update-managed-resources/assignment.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yönetilen uygulamalara giriş için [Yönetilen uygulamalara genel bakış](overview.md) konusunu inceleyin.
-* Örnek projeler için bkz: [örnek projeler için Azure yönetilen uygulamalar](sample-projects.md).
+* Örnek projeler için bkz. [Azure yönetilen uygulamalar Için örnek projeler](sample-projects.md).

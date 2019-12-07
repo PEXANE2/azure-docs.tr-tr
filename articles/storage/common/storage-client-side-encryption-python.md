@@ -1,23 +1,25 @@
 ---
-title: Microsoft Azure Depolama için Python ile istemci tarafı şifreleme | Microsoft Docs
+title: Python ile istemci tarafı şifreleme
+titleSuffix: Azure Storage
 description: Python için Azure Storage Istemci kitaplığı, Azure depolama uygulamalarınız için en yüksek güvenlik için istemci tarafı şifrelemeyi destekler.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: python
-ms.topic: article
-ms.date: 05/11/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cd8ba51b960703fa25371d874ed2bb50e7df2fde
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360047"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895380"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için Python ile istemci tarafı şifreleme
+# <a name="client-side-encryption-with-python"></a>Python ile istemci tarafı şifreleme
+
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Genel Bakış
@@ -63,11 +65,11 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 
 Şifrelenmiş bir Blobun indirilmesi, **Get*** kullanışlı yöntemler kullanılarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
-Şifrelenmiş Blobun rastgele bir aralığı indirme (Aralık parametrelerine geçilen bir**Get*** yöntemi), istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılar tarafından verilen aralığı ayarlamayı içerir .
+Şifrelenmiş Blobun rastgele bir aralığı indirme (Aralık parametrelerine geçilen bir**Get*** yöntemi), istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılar tarafından verilen aralığı ayarlamayı içerir.
 
 Blok Blobları ve sayfa Blobları yalnızca bu şema kullanılarak şifrelenebilir/çözülür. Şu anda, ekleme bloblarını şifrelemek için destek yoktur.
 
-### <a name="queues"></a>Sıralar
+### <a name="queues"></a>Kuyruklar
 Sıra iletileri herhangi bir biçimde olduğundan, istemci kitaplığı, ileti metninde başlatma vektörü (IV) ve şifreli içerik şifreleme anahtarını (CEK) içeren özel bir biçimi tanımlar.
 
 Şifreleme sırasında, istemci kitaplığı rastgele bir IV/32 bayt üretir ve bu bilgileri kullanarak kuyruk ileti metninin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri daha sonra şifreli kuyruk iletisine eklenir. Bu değiştirilmiş ileti (aşağıda gösterilmiştir) hizmette depolanır.
@@ -90,12 +92,12 @@ Tablo veri şifrelemesi aşağıdaki gibi kullanılabilir:
 
 1. Kullanıcılar şifrelenecek özellikleri belirtir.
 2. İstemci kitaplığı, her varlık için 32 baytlık rastgele bir içerik şifreleme anahtarı (CEK) ile 16 baytlık rastgele bir başlatma vektörü (IV) oluşturur ve özellik başına yeni bir IV türeterek tek tek özelliklerde zarf şifrelemesi gerçekleştirir. Şifrelenmiş Özellik ikili veri olarak depolanır.
-3. Sarmalanan CEK ve bazı ek şifreleme meta verileri daha sonra iki ek ayrılmış özellik olarak depolanır. İlk ayrılmış özelliği (\_ClientEncryptionMetadata1), IV, sürüm ve Sarmalanan anahtarla ilgili bilgileri tutan bir String özelliğidir. İkinci ayrılmış özelliği (\_ClientEncryptionMetadata2), şifrelenen özelliklerle ilgili bilgileri tutan bir ikili özelliktir. Bu ikinci özelliğindeki bilgilerin (\_ClientEncryptionMetadata2) kendisi şifrelenir.
+3. Sarmalanan CEK ve bazı ek şifreleme meta verileri daha sonra iki ek ayrılmış özellik olarak depolanır. İlk ayrılmış Özellik (\_ClientEncryptionMetadata1), IV, sürüm ve Sarmalanan anahtarla ilgili bilgileri tutan bir String özelliğidir. İkinci ayrılmış Özellik (\_ClientEncryptionMetadata2), şifrelenen özelliklerle ilgili bilgileri tutan bir ikili özelliktir. Bu ikinci özelliğindeki bilgilerin (\_ClientEncryptionMetadata2) kendisi şifrelenir.
 4. Şifreleme için gerekli olan bu ek ayrılmış özellikler nedeniyle, kullanıcılar artık 252 yerine yalnızca 250 özel özelliklerine sahip olabilir. Varlığın toplam boyutu 1 MB 'tan az olmalıdır.
 
    Yalnızca dize özelliklerinin şifrelendiğini unutmayın. Diğer özellik türleri şifrelenirse, bunların dizelere dönüştürülmesi gerekir. Şifrelenmiş dizeler, hizmet üzerinde ikili özellikler olarak depolanır ve şifre çözme işleminden sonra dizelere (tür EdmType. STRING olan EntityProperties 'e değil) geri dönüştürülür.
 
-   Şifreleme İlkesi yanı sıra, tablolar için kullanıcıların şifrelenmiş özelliklerini belirtmeniz gerekir. Bu özellik, bu özellikler Type değeri EdmType. STRING olarak ayarlanmış ve şifreleme doğru olarak ayarlanmış veya tableservice nesnesi üzerinde encryption_resolver_function olarak ayarlanan TableEntity nesnelerinde depolanarak yapılabilir. Şifreleme çözümleyici, Bölüm anahtarını, satır anahtarını ve özellik adını alan ve bu özelliğin şifrelenip şifrelenmeyeceğini belirten bir Boole değeri döndüren bir işlevdir. Şifreleme sırasında istemci kitaplığı, bir özellik için kablo yazılırken şifrelenmesi gerekip gerekmediğine karar vermek için bu bilgileri kullanır. Temsilci özellikleri nasıl şifrelenir etrafında mantıksal olasılığı için de sağlar. (X, örneğin, daha sonra özellik A şifrelemek; Aksi takdirde özellik A ve b şifreleme) Varlıkları okurken veya sorgularken bu bilgilerin sağlanması gerekmediğini unutmayın.
+   Şifreleme İlkesi yanı sıra, tablolar için kullanıcıların şifrelenmiş özelliklerini belirtmeniz gerekir. Bu özellik, bu özellikler Type değeri EdmType. STRING ve Encrypt olarak ayarlanmış ve tableservice nesnesindeki encryption_resolver_function ayarlayarak TableEntity nesnelerinde depolanarak yapılabilir. Şifreleme çözümleyici, Bölüm anahtarını, satır anahtarını ve özellik adını alan ve bu özelliğin şifrelenip şifrelenmeyeceğini belirten bir Boole değeri döndüren bir işlevdir. Şifreleme sırasında istemci kitaplığı, bir özellik için kablo yazılırken şifrelenmesi gerekip gerekmediğine karar vermek için bu bilgileri kullanır. Temsilci özellikleri nasıl şifrelenir etrafında mantıksal olasılığı için de sağlar. (Örneğin, X ise, özelliğini şifreleyin; Aksi halde A ve B özelliklerini şifreleyin.) Varlıkları okurken veya sorgularken bu bilgilerin sağlanması gerekmediğini unutmayın.
 
 ### <a name="batch-operations"></a>Toplu Işlemler
 Tek bir şifreleme ilkesi, toplu işlemdeki tüm satırlara uygulanır. İstemci kitaplığı, toplu işte her satır için yeni bir rastgele IV ve Random CEK oluşturacaktır. Kullanıcılar ayrıca bu davranışı şifreleme Çözümleyicisi 'nde tanımlayarak toplu işteki her işlem için farklı özellikleri şifrelemeyi seçebilir.
@@ -107,7 +109,7 @@ Toplu işin şifreleme ilkesi kullanılarak toplu işe eklenen varlıkların şi
 > Varlıklar şifrelendiğinden, şifrelenen bir özelliği filtreleyen sorguları çalıştıramazsınız.  Deneme yaparsanız, hizmet şifrelenmiş verileri şifrelenmemiş verilerle karşılaştırmaya çalıştığı için sonuçlar yanlış olacaktır.
 > 
 > 
-> Sorgu işlemleri gerçekleştirmek için, sonuç kümesindeki tüm anahtarları çözebilecek bir anahtar çözümleyici belirtmeniz gerekir. Sorgu sonucunda içerilen bir varlık bir sağlayıcıya çözümlenemiyorsa, istemci kitaplığı bir hata oluşturur. Sunucu tarafı projeksiyonları gerçekleştiren sorgular için, istemci kitaplığı, varsayılan olarak seçilen sütunlara özel şifreleme meta verileri\_özelliklerini ( \_ClientEncryptionMetadata1 ve ClientEncryptionMetadata2) ekler.
+> Sorgu işlemleri gerçekleştirmek için, sonuç kümesindeki tüm anahtarları çözebilecek bir anahtar çözümleyici belirtmeniz gerekir. Sorgu sonucunda içerilen bir varlık bir sağlayıcıya çözümlenemiyorsa, istemci kitaplığı bir hata oluşturur. Sunucu tarafı projeksiyonları gerçekleştiren sorgular için, istemci kitaplığı, varsayılan olarak seçilen sütunlara özel şifreleme meta veri özelliklerini (\_ClientEncryptionMetadata1 ve \_ClientEncryptionMetadata2) ekler.
 > 
 > [!IMPORTANT]
 > İstemci tarafı şifrelemeyi kullanırken bu önemli noktalara dikkat edin:
@@ -124,14 +126,14 @@ Bir depolama hizmeti nesnesi (ör. blockblobservice) oluşturulduktan sonra, Kul
 
 KEK, verileri başarıyla şifrelemek için aşağıdaki yöntemleri gerçekleştirmelidir:
 
-* wrap_key(cek): Kullanıcının tercih ettiği algoritmayı kullanarak belirtilen CEK (bayt) sayısını kaydırır. Sarmalanan anahtarı döndürür.
-* get_key_wrap_algorithm(): Anahtarları kaydırmak için kullanılan algoritmayı döndürür.
-* get_kid(): Bu KEK için dize anahtar kimliğini döndürür.
+* wrap_key (cek): kullanıcının tercih ettiği algoritmayı kullanarak belirtilen CEK (bayt) sayısını kaydırır. Sarmalanan anahtarı döndürür.
+* get_key_wrap_algorithm (): anahtarları kaydırmak için kullanılan algoritmayı döndürür.
+* get_kid (): Bu KEK için dize anahtar kimliğini döndürür.
   KEK, verilerin şifresini başarıyla çözmek için aşağıdaki yöntemleri uygulamalıdır:
-* unwrap_key (cek, algoritma): Belirtilen CEK dize tarafından belirtilen algoritmayı kullanarak sarmalanmamış biçimini döndürür.
-* get_kid(): Bu KEK için bir dize anahtar kimliği döndürür.
+* unwrap_key (cek, algoritma): dize tarafından belirtilen algoritmayı kullanarak belirtilen CEK öğesinin sarmalanmamış biçimini döndürür.
+* get_kid (): Bu KEK için bir dize anahtar kimliği döndürür.
 
-Anahtar çözümleyici, en az bir anahtar kimliği verilen bir yöntemi, yukarıdaki arabirimi uygulayan karşılık gelen KEK döndürür. Yalnızca bu yöntem, hizmet nesnesi üzerindeki key_resolver_function özelliğine atanmalıdır.
+Anahtar çözümleyici, en az bir anahtar kimliği verilen bir yöntemi, yukarıdaki arabirimi uygulayan karşılık gelen KEK döndürür. Yalnızca bu yöntem, hizmet nesnesindeki key_resolver_function özelliğine atanır.
 
 * Şifreleme için, anahtar her zaman kullanılır ve bir anahtarın yokluğu bir hataya neden olur.
 * Şifre çözme için:
@@ -195,7 +197,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
 
 ### <a name="table-service-encryption"></a>Tablo hizmeti şifrelemesi
-Bir şifreleme ilkesi oluşturmaya ve istek seçeneklerinde ayarlamaya ek olarak, **tableservice**üzerinde bir **encryption_resolver_function** belirtmeniz ya da EntityProperty üzerindeki Encrypt özniteliğini ayarlamanız gerekir.
+Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **tableservice**üzerinde bir **encryption_resolver_function** belirtmeli ya da EntityProperty üzerinde Encrypt özniteliğini ayarlamalısınız.
 
 ### <a name="using-the-resolver"></a>Çözümleyici 'yi kullanma
 

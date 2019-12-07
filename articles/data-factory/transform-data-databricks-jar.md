@@ -1,5 +1,5 @@
 ---
-title: Databricks jar ile verileri dönüştürme-Azure
+title: Databricks jar ile veri dönüştürme
 description: Databricks jar çalıştırarak verileri nasıl işleyeceğini veya dönüştüreceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a01a21259c4957b6f497bf213a3ef53f940bab7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683965"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893969"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Azure Databricks bir jar etkinliği çalıştırarak verileri dönüştürme
 
@@ -56,7 +56,7 @@ Databricks jar etkinliğinin örnek JSON tanımı aşağıda verilmiştir:
 
 Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmaktadır:
 
-|Özellik|Açıklama|Gerekli|
+|Özellik|Açıklama|Gereklidir|
 |:--|---|:-:|
 |ad|İşlem hattındaki etkinliğin adı.|Yes|
 |açıklama|Etkinliğin ne yaptığını açıklayan metin.|Hayır|
@@ -64,10 +64,10 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 |linkedServiceName|Jar etkinliğinin üzerinde çalıştığı Databricks bağlı hizmetinin adı. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlantılı hizmetleri](compute-linked-services.md) makalesi.|Yes|
 |mainClassName|Yürütülecek ana yöntemi içeren sınıfın tam adı. Bu sınıf, kitaplık olarak sunulan bir JAR içinde yer almalıdır.|Yes|
 |parametreler|Main yöntemine geçirilecek parametreler.  Bu bir dizeler dizisidir.|Hayır|
-|Kütüphaneler|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. < Dize, nesne > dizisi olabilir|Evet (mainClassName yöntemini içeren en az bir tane)|
+|kitaplıklar|İşi yürütecek olan kümeye yüklenecek kitaplıkların listesi. < Dize, nesne > dizisi olabilir|Evet (mainClassName yöntemini içeren en az bir tane)|
 
 > [!NOTE]
-> **Bilinen sorun** -eşzamanlı Databricks jar etkinliklerini çalıştırmak Için aynı [etkileşimli kümeyi](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) kullanırken (küme yeniden başlatma olmadan), databricks 'te, 1. etkinliğin parametrelerinin aşağıdaki etkinlikler tarafından kullanılacağı bilinen bir sorun vardır aynı zamanda. Bu nedenle, sonraki işlere geçirilen yanlış parametrelere neden oldu. Bunu azaltmak için bunun yerine bir [iş kümesi](compute-linked-services.md#example---using-new-job-cluster-in-databricks) kullanın. 
+> **Bilinen sorun** -eşzamanlı Databricks jar etkinliklerini çalıştırmak Için aynı [etkileşimli kümeyi](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) kullanırken (küme yeniden başlatma olmadan), databricks 'te, 1. etkinliğin parametrelerinin de aşağıdaki etkinlikler tarafından da kullanılacağı bilinen bir sorun vardır. Bu nedenle, sonraki işlere geçirilen yanlış parametrelere neden oldu. Bunu azaltmak için bunun yerine bir [iş kümesi](compute-linked-services.md#example---using-new-job-cluster-in-databricks) kullanın. 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks etkinlikleri için desteklenen kitaplıklar
 

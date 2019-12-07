@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171600"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900186"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısından koşulları Eşleştir
 
@@ -60,9 +60,9 @@ Tanımlama bilgisi adı | İşleç | Tanımlama bilgisi değeri | Örnek dönü�
 ------------|----------|--------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
-- Bir tanımlama bilgisi adı belirttiğinizde joker karakter değerlerini (yıldız işaretleri (\*) dahil) kullanamazsınız. tam bir tanımlama bilgisi adı kullanın.
+- Bir tanımlama bilgisi adı belirttiğinizde joker karakter değerlerini (yıldız işaretleri (\*) dahil) kullanamazsınız. tam bir tanımlama bilgisi adı kullanmanız gerekir.
 - Bu eşleşme koşulunun her örneği için yalnızca tek bir tanımlama bilgisi adı belirtebilirsiniz.
 - Tanımlama bilgisi adı karşılaştırmaları büyük/küçük harfe duyarlıdır.
 - Birden çok tanımlama bilgisi değeri belirtmek için, her tanımlama bilgisi değeri arasında tek bir boşluk kullanın. 
@@ -104,13 +104,13 @@ Hiçbirini değil | Yok
 Coğrafi eşleşme değil | Ülke kodu
 IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
 - CıDR gösterimini kullanın.
 - Birden çok IP adresi ve IP adres bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
   - **IPv4 örneği**: *1.2.3.4 10.20.30.40* , 1.2.3.4 veya 10.20.30.40 adresinden gelen isteklerle eşleşir.
-  - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0, 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
-- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örneğin:
+  - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* , 1:2:3:4:5:6:7:8 ya da 10:20:30:40:50:60:70:80 adresinden gelen isteklerle eşleşir.
+- Bir IP adres bloğunun sözdizimi, ardından bir eğik çizgi ve ön ek boyutu gelen temel IP adresidir. Örnek:
   - **IPv4 örneği**: *5.5.5.64/26* , 5.5.5.64 ile 5.5.5.127 arası adreslerden gelen isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:/48* , 1:2:3:0:0:0:0:0 ile 1:2: 3: ffff: ffff: ffff: ffff: ffff adresinden gelen tüm isteklerle eşleşir.
 
@@ -144,7 +144,7 @@ Belirtilen istek yöntemini kullanan istekleri tanımlar.
 ---------|----------------
 Eşittir, eşit değildir | AL, POSTALA, KOY, SIL, HEAD, SEÇENEKLER, IZLE
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
 - Yalnızca GET isteği yöntemi Azure CDN önbelleğe alınmış içerik oluşturabilir. Diğer tüm istek yöntemleri ağ üzerinden proxy olarak kullanılır. 
 
@@ -168,7 +168,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 ---------|-------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
 - Bu kural koşulunu kullandığınızda protokol bilgilerini eklediğinizden emin olun. Örneğin: *https://www.\<yourdomain\>.com* .
 
@@ -178,11 +178,11 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dahili numara | Örnek dönüştürme
+İşleç | Uzantı | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
 - Uzantı için, önde gelen bir nokta eklemeyin; Örneğin, *. html*yerine *HTML* kullanın.
 
@@ -196,7 +196,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
 - Birden çok dosya adı belirtmek için, her dosya adını tek bir boşlukla ayırın. 
 
@@ -210,7 +210,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 ---------|-------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Dönüştürme yok, büyük harf, küçük harf
 
-#### <a name="key-information"></a>Anahtar bilgileri
+#### <a name="key-information"></a>Önemli bilgiler
 
 - Dosya adı değeri joker değerlerden faydalanabilir. Örneğin her bir dosya adı deseninin bir veya daha fazla yıldız işareti (*), her yıldız işareti bir veya daha fazla karakterle eşleşen bir dizi olabilir.
 
@@ -225,9 +225,9 @@ Standart işleç listesinden değerleri kabul eden kurallar için aşağıdaki i
 - Contains 
 - Şununla başlar 
 - Şununla biter 
-- Küçüktür
+- Şu değerden az:
 - Küçüktür veya eşittir
-- Büyüktür
+- Şu değerden fazla:
 - Büyük veya eşittir
 - Hiçbirini değil
 - İçermez

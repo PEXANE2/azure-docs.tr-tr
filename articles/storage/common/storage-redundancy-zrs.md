@@ -1,22 +1,23 @@
 ---
-title: Bölgede yedekli depolama (ZRS) üzerinde yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun | Microsoft Docs
+title: Bölge yedekli depolama (ZRS) ile yüksek oranda kullanılabilir uygulamalar oluşturun
+titleSuffix: Azure Storage
 description: Bölgesel olarak yedekli depolama (ZRS), yüksek oranda kullanılabilir uygulamalar oluşturmanın basit bir yolunu sunar. ZRS, veri merkezindeki donanım arızalarına ve bazı bölgesel felate karşı koruma sağlar.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555463"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895190"
 ---
-# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
+# <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>Bölge yedekli depolama (ZRS) ile yüksek oranda kullanılabilir uygulamalar oluşturun
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 

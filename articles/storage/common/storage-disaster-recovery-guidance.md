@@ -1,22 +1,23 @@
 ---
-title: Olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)-Azure depolama
+title: Olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
+titleSuffix: Azure Storage
 description: Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini (Önizleme) destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775937"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895363"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
+# <a name="disaster-recovery-and-account-failover-preview"></a>Olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)
 
 Microsoft, Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya çalışır. Ancak, planlanmamış hizmet kesintileri meydana gelebilir. Uygulamanız dayanıklılık gerektiriyorsa, Microsoft, verilerinizin ikinci bir bölgede çoğaltılması için coğrafi olarak yedekli depolama kullanımını önerir. Ayrıca, müşterilerin bölgesel hizmet kesintisi için bir olağanüstü durum kurtarma planı olması gerekir. Olağanüstü durum kurtarma planının önemli bir kısmı, birincil uç noktanın kullanılamaz hale geldiği olaydaki ikincil uç noktaya yük devretmek için hazırlanmalıdır. 
 
@@ -69,7 +70,7 @@ Microsoft ayrıca, yazma hatalarıyla ilgili hazırlanabilmesi için uygulamanı
 
 Müşteri tarafından yönetilen hesap yük devretmesi (Önizleme), birincil bölge herhangi bir nedenle kullanılamaz hale gelirse tüm depolama hesabınızı ikincil bölgeye devredebilmenizi sağlar. İkincil bölgeye yük devretmeyi zorlarsanız, istemciler yük devretme tamamlandıktan sonra ikincil uç noktaya veri yazmaya başlayabilir. Yük devretme genellikle yaklaşık bir saat sürer.
 
-### <a name="how-an-account-failover-works"></a>Hesap yük devretmesinin nasıl çalıştığı
+### <a name="how-an-account-failover-works"></a>Hesap yük devretmesi nasıl çalışır?
 
 Normal koşullarda, istemci birincil bölgedeki bir Azure depolama hesabına veri yazar ve bu veriler ikincil bölgeye zaman uyumsuz olarak çoğaltılır. Aşağıdaki görüntüde birincil bölge kullanılabilir olduğunda senaryo gösterilmektedir:
 

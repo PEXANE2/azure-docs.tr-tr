@@ -7,12 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 21c1380862638ef671b31f0fdec42009d217aca7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967197"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893221"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -29,13 +30,13 @@ Bu makalede, AKS 'de iş sürekliliği ve olağanüstü durum kurtarmayı planla
 
 ## <a name="plan-for-multiregion-deployment"></a>Çok bölgeli dağıtımı için plan
 
-**En iyi uygulama**: Birden çok AKS kümesi dağıttığınızda, AKS 'in kullanılabildiği bölgeleri seçin ve eşleştirilmiş bölgeleri kullanın.
+**En iyi yöntem**: birden çok aks kümesi dağıttığınızda, aks 'in kullanılabildiği bölgeleri seçin ve eşleştirilmiş bölgeleri kullanın.
 
 AKS kümesi tek bir bölgeye dağıtılır. Sisteminizi bölge arızasına karşı korumak için, uygulamanızı farklı bölgelerde birden çok AKS kümesine dağıtın. AKS kümenizi nereye dağıtacağınızı planlarken şunları göz önünde bulundurun:
 
-* [**Aks bölgesi kullanılabilirliği**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): Kullanıcılarınıza yakın bölgeler ' i seçin. AKS sürekli yeni bölgelere genişletilir.
-* [**Azure eşlenmiş bölgeler**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): Coğrafi bölgenizde, birbirleriyle eşleştirilmiş iki bölge seçin. Eşleştirilmiş bölgeler platform güncelleştirmelerini koordine edin ve gerektiğinde kurtarma çalışmalarını önceliklendirin.
-* **Hizmet kullanılabilirliği**: Eşleştirilmiş bölgelerin etkin/sıcak, sık/sıcak veya sık/soğuk olması gerektiğine karar verin. Her iki bölgeyi de aynı anda çalıştırmak istiyor musunuz, tek bir bölge, trafiğe hizmet vermeye *başlamaya hazırlanıyor* mi? Ya da bir bölgenin, trafiği sunmaya hazırlamak için zaman almasını ister misiniz?
+* [**Aks bölgesi kullanılabilirliği**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): kullanıcılarınıza yakın bölgeleri seçin. AKS sürekli yeni bölgelere genişletilir.
+* [**Azure eşlenmiş bölgeler**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): coğrafi bölgenizde, birbirleriyle eşleştirilmiş iki bölge seçin. Eşleştirilmiş bölgeler platform güncelleştirmelerini koordine edin ve gerektiğinde kurtarma çalışmalarını önceliklendirin.
+* **Hizmet kullanılabilirliği**: eşleştirilmiş bölgelerin etkin/sık erişimli, etkin/sıcak veya sık/soğuk olması gerekip gerekmediğine karar verin. Her iki bölgeyi de aynı anda çalıştırmak istiyor musunuz, tek bir bölge, trafiğe hizmet vermeye *başlamaya hazırlanıyor* mi? Ya da bir bölgenin, trafiği sunmaya hazırlamak için zaman almasını ister misiniz?
 
 AKS bölgesi kullanılabilirliği ve eşleştirilmiş bölgeler, bir eklem noktadır. AKS kümelerinizi, bölge olağanüstü durum kurtarmayı birlikte yönetmek için tasarlanan eşleştirilmiş bölgelere dağıtın. Örneğin, AKS Doğu ABD ve Batı ABD kullanılabilir. Bu bölgeler eşlenilmiştir. AKS BC/DR stratejisi oluştururken bu iki bölgeyi seçin.
 
@@ -43,7 +44,7 @@ Uygulamanızı dağıtırken, bu çoklu AKS kümelerine dağıtmak için CI/CD i
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>Trafiği yönlendirmek için Azure Traffic Manager kullanma
 
-**En iyi uygulama**: Azure Traffic Manager, müşterileri en yakın AKS kümesine ve uygulama örneğine yönlendirebilir. En iyi performans ve artıklık için, tüm uygulama trafiğini AKS kümenize geçmeden önce Traffic Manager aracılığıyla doğrudan yönlendirin.
+**En iyi yöntem**: Azure Traffic Manager, müşterileri en yakın aks kümesine ve uygulama örneğine yönlendirebilir. En iyi performans ve artıklık için, tüm uygulama trafiğini AKS kümenize geçmeden önce Traffic Manager aracılığıyla doğrudan yönlendirin.
 
 Farklı bölgelerde birden fazla AKS kümeniz varsa, trafiğin her kümede çalışan uygulamalara nasıl akacağını denetlemek için Traffic Manager kullanın. [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) , bölgeler arasında ağ trafiği DAĞıTABILECEK DNS tabanlı bir trafik yük dengeleyicidir. Kullanıcıları küme yanıt süresine göre veya Coğrafya temelinde yönlendirmek için Traffic Manager kullanın.
 
@@ -61,9 +62,15 @@ Uç noktaları ve yönlendirmeyi ayarlama hakkında daha fazla bilgi için, bkz.
 
 Traffic Manager trafiği şekillendirmek için DNS (katman 3) kullanır. [Azure ön kapı hizmeti](https://docs.microsoft.com/azure/frontdoor/front-door-overview) bir http/https (katman 7) yönlendirme seçeneği sağlar. Azure ön kapı hizmeti 'nin ek özellikleri arasında SSL sonlandırma, özel etki alanı, Web uygulaması güvenlik duvarı, URL yeniden yazma ve oturum benzeşimi bulunur. En uygun çözümü anlamak için uygulama trafiğinizin ihtiyaçlarını gözden geçirin.
 
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Genel sanal ağ eşlemesi ile Interconnect bölgeleri
+
+Kümelerin birbirleriyle iletişim kurmasına ihtiyacı varsa, her iki sanal ağı birbirine bağlamak [sanal ağ eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)aracılığıyla elde edilebilir. Bu teknoloji, farklı coğrafi bölgelerde bile Microsoft 'un omurga ağı genelinde yüksek bant genişliğine sahip birbirlerine sanal ağları birbirine bağlar.
+
+AKS kümelerinin çalıştığı sanal ağların eşi için bir önkoşul, AKS kümenizdeki standart Load Balancer kullanmaktır, böylece Kubernetes Hizmetleri sanal ağ eşlemesi genelinde erişilebilir olur.
+
 ## <a name="enable-geo-replication-for-container-images"></a>Kapsayıcı görüntüleri için Coğrafi çoğaltmayı etkinleştirme
 
-**En iyi uygulama**: Kapsayıcı görüntülerinizi Azure Container Registry ve coğrafi olarak kayıt defterinde her bir AKS bölgesine depolayın.
+**En iyi yöntem**: kapsayıcı görüntülerinizi Azure Container Registry ve coğrafi olarak kayıt defteri her BIR aks bölgesine depolayın.
 
 Uygulamalarınızı AKS 'de dağıtmak ve çalıştırmak için kapsayıcı görüntülerini depolamak ve çekmek için bir yol gerekir. Container Registry, AKS ile tümleşir, bu nedenle kapsayıcı görüntülerinizi veya Held grafiklerini güvenli bir şekilde depolayabilirler. Container Registry, görüntülerinizi dünyanın dört bir yanındaki Azure bölgelerine otomatik olarak çoğaltmak için çok kaynaklı Coğrafi çoğaltmayı destekler. 
 
@@ -73,15 +80,15 @@ Performansı ve kullanılabilirliği artırmak için, AKS kümeniz olan her böl
 
 Aynı bölgedeki görüntüleri çekmek için coğrafi çoğaltma Container Registry kullandığınızda sonuçlar şunlardır:
 
-* **Daha hızlı**: Aynı Azure bölgesindeki yüksek hızlı, düşük gecikmeli ağ bağlantılarından görüntü çekebilirsiniz.
-* **Daha güvenilir**: Bir bölge kullanılamıyorsa AKS kümeniz, görüntüleri kullanılabilir bir kapsayıcı kayıt defterinden çeker.
-* **Kimaper**: Veri merkezleri arasında ağ çıkış ücreti yok.
+* **Daha hızlı**: aynı Azure bölgesindeki yüksek hızlı, düşük gecikmeli ağ bağlantılarından görüntü çekebilirsiniz.
+* **Daha güvenilir**: bir bölge kullanılamıyorsa aks kümeniz görüntüleri kullanılabilir bir kapsayıcı kayıt defterinden çeker.
+* **Kimaper**: veri merkezleri arasında ağ çıkış ücreti alınmaz.
 
 Coğrafi çoğaltma, *Premium* SKU kapsayıcısı kayıt defterlerinin bir özelliğidir. Coğrafi çoğaltmanın nasıl yapılandırılacağı hakkında bilgi için bkz. [Container Registry coğrafi çoğaltma](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
 
 ## <a name="remove-service-state-from-inside-containers"></a>Hizmet durumunu kapsayıcıların içinden kaldır
 
-**En iyi uygulama**: Mümkün olduğunda, hizmet durumunu kapsayıcının içinde depolamamayın. Bunun yerine, çok bölgeli çoğaltmasını destekleyen bir hizmet olarak Azure platformu (PaaS) kullanın.
+**En iyi yöntem**: mümkün olduğunda, hizmet durumunu kapsayıcı içinde depolamayın. Bunun yerine, çok bölgeli çoğaltmasını destekleyen bir hizmet olarak Azure platformu (PaaS) kullanın.
 
 *Hizmet durumu* , bir hizmetin çalışması için gereken bellek içi veya disk üzerindeki verilere başvurur. Durum, hizmetin okuduğu ve yazdığı veri yapılarını ve üye değişkenlerini içerir. Hizmetin nasıl mimari olduğuna bağlı olarak, durum, diskte depolanan dosyaları veya diğer kaynakları da içerebilir. Örneğin, durum, bir veritabanının veri ve işlem günlüklerini depolamak için kullandığı dosyaları içerebilir.
 
@@ -96,7 +103,7 @@ Taşınabilir uygulamalar oluşturmak için aşağıdaki yönergelere bakın:
 
 ## <a name="create-a-storage-migration-plan"></a>Depolama geçiş planı oluşturma
 
-**En iyi uygulama**: Azure Storage kullanıyorsanız, depolama alanınızı birincil bölgeden yedekleme bölgesine nasıl geçirebileceğiniz hazırlayın ve test edin.
+**En iyi yöntem**: Azure Storage kullanıyorsanız, depolama alanınızı birincil bölgeden yedekleme bölgesine nasıl geçirebileceğiniz hazırlayın ve test edin.
 
 Uygulamalarınız, verileri için Azure Storage kullanıyor olabilirler. Uygulamalarınız farklı bölgelerdeki birden çok AKS kümesine yayıldığından, depolamayı eşitlenmiş tutmanız gerekir. Depolama çoğaltması için iki yaygın yol aşağıda verilmiştir:
 

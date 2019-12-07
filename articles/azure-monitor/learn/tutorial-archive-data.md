@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304704"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893357"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verilerini arşivleme
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’da oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -70,7 +70,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Kaynak verilerini depolama hesabına yönlendirme
 
-Şimdi, **kaynak tanılama ayarlarını** yaparak kaynak düzeyinde verileri (kaynak ölçümleri ve tanılama günlükleri) depolama hesabına yönlendirilecek şekilde yapılandıracağız.
+Şimdi kaynak **tanılama ayarlarını**ayarlayarak kaynak düzeyi verileri (kaynak ölçümleri ve kaynak günlükleri) depolama hesabına yönlendirilecek şekilde yapılandırdık.
 
 1. Sol gezinti listesinde bulunan **İzleyici** düğmesine ve sonra **Tanılama Ayarları**’na tıklayın. Burada, aboneliğinizde Azure İzleyici ile izleme verileri oluşturan tüm kaynakların bir listesini görürsünüz. Bu listede herhangi bir kaynak yoksa, bir tanılama ayarını açık olarak yapılandırabileceğiniz bir kaynağınızın olması için devam etmeden önce [bir mantıksal uygulama oluşturabilirsiniz](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -86,7 +86,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
    ![Tanılama ayarları bölümü](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. **Bir depolama hesabında arşivle** altındaki **Yapılandır** düğmesine tıklayın ve önceki bölümde oluşturduğunuz depolama hesabını seçin. **OK (Tamam)** düğmesine tıklayın.
+4. **Bir depolama hesabında arşivle** altındaki **Yapılandır** düğmesine tıklayın ve önceki bölümde oluşturduğunuz depolama hesabını seçin. **Tamam**’a tıklayın.
 
    ![Tanılama ayarları depolama hesabı](media/tutorial-archive-data/diagnostic-settings-storage.png)
 
@@ -96,7 +96,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
 6. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
 
-7. **Save (Kaydet)** düğmesine tıklayın.
+7. **Kaydet** düğmesine tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
@@ -137,7 +137,7 @@ Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
 9. Görüntülenen bölümde, önceki **Depolama hesabı oluşturma** adımında oluşturduğunuz depolama hesabını seçin.
 
-10. **Save (Kaydet)** düğmesine tıklayın.
+10. **Kaydet** düğmesine tıklayın.
 
 Sanal makinelerinizdeki izleme verileri artık depolama hesabına akar.
 
@@ -162,7 +162,7 @@ Yukarıdaki adımları izlediyseniz, veriler depolama hesabınıza akmaya başla
 
 5. Kaynak kimliği, tarih ve saat için kapsayıcılara tıklayarak PT1H.json dosyasına gidin. PT1H.json dosyasına ve **İndir**’e tıklayın. Her PT1H.json blobu, blob URL’sinde belirtilen saat (örneğin, h=12) içinde gerçekleşen bir JSON olay blobu içerir. Mevcut saat boyunca, olaylar meydana geldikçe PT1H.json dosyasına eklenir. Günlük olayları saat başına bloblara ayrıldığı için dakika değeri (m=00) her zaman 00’dır.
 
-   Artık depolama hesabında depolanmış JSON olayını görüntüleyebilirsiniz. Kaynak tanılama günlükleri için blob biçimi şu şekildedir:
+   Artık depolama hesabında depolanmış JSON olayını görüntüleyebilirsiniz. Kaynak kaynak günlükleri için Blobların biçimi şu şekilde olur:
 
    insights-logs-{günlük kategorisi adı}/resourceId=/{kaynak kimliği}/y={dört basamaklı sayı olarak yıl}/m={iki basamaklı sayı olarak ay}/d={iki basamaklı sayı olarak gün}/h={iki basamaklı 24 saat biçiminde saat}/m=00/PT1H.json
 

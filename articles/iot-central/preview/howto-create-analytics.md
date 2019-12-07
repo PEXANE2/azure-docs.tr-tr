@@ -3,17 +3,17 @@ title: Azure IoT Central uygulamanızda cihaz verilerini çözümleme | Microsof
 description: Azure IoT Central uygulamanızda cihaz verilerini çözümleyin.
 author: ankitgup
 ms.author: ankitgup
-ms.date: 10/17/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ee15d581cfc17af01ae0fa53139edc331a4fea
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4cf4469833e28a594996b981a47a964131026a7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896014"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895719"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Cihaz verilerini çözümlemek için Analytics 'i kullanma
 
@@ -61,11 +61,11 @@ Verilerinizi sorguladıktan sonra çizgi grafik üzerinde görselleştirmeyi ba�
    
     - **Dış tarih aralığı kaydırıcı denetimi**: bitiş tarihi aralığını seçmek için uç nokta denetimlerini kullanın. Bu, iç tarih aralığı denetiminizdeki kullanılabilir olacak.
 
-    - **Tarih aralığı düğmelerini artırma ve azaltma**: istediğiniz Aralık için herhangi bir düğmeyi seçerek zaman aralığınızı artırın veya azaltın.
+    - **Artırın ve azaltın tarih aralığı düğmeleri**: artışa veya sürenizi span istediğiniz aralığı için herhangi bir düğmeyi seçerek.
 
-    - **Aralık boyutu kaydırıcısı**: aynı zaman dilimi boyunca aralıkların ölçeğini ve ölçeğini yakınlaştırmak için kullanın. Bu eylem, büyük zaman dilimleri arasında hareket konusunda daha kesin bir denetim sağlar. Bu uygulamayı, verilerin ayrıntılı, yüksek çözünürlüklü görünümlerini, hatta milisaniyeye doğru bir şekilde görmek için kullanabilirsiniz. Kaydırıcının varsayılan başlangıç noktası, Seçiminizdeki verilerin en uygun görünümü olarak ayarlanır, bu da çözümleme, sorgu hızı ve ayrıntı düzeyi dengeler.
+    - **Aralık boyutu kaydırıcısı**: aynı zaman dilimi boyunca aralıkların ölçeğini ve ölçeğini yakınlaştırmak için kullanın. Bu eylem büyük saat dilimleri arasında hareket daha kesin bir denetim sağlar. Bu uygulamayı, verilerin ayrıntılı, yüksek çözünürlüklü görünümlerini, hatta milisaniyeye doğru bir şekilde görmek için kullanabilirsiniz. Kaydırıcının varsayılan başlangıç noktası, Seçiminizdeki verilerin en uygun görünümü olarak ayarlanır, bu da çözümleme, sorgu hızı ve ayrıntı düzeyi dengeler.
     
-    - **Tarih aralığı Seçicisi**: Bu Web denetimiyle, istediğiniz tarih ve saat aralıklarını kolayca seçebilirsiniz. Farklı saat dilimleri arasında geçiş yapmak için de denetimini kullanabilirsiniz. Geçerli çalışma alanınıza uygulanacak değişiklikleri yaptıktan sonra Kaydet ' i seçin.
+    - **Tarih aralığı Seçicisi**: Bu Web denetimiyle, istediğiniz tarih ve saat aralıklarını kolayca seçebilirsiniz. Ayrıca, farklı saat dilimleri arasında geçiş yapmak için denetimi de kullanabilirsiniz. Geçerli çalışma alanınıza uygulanacak değişiklikleri yaptıktan sonra Kaydet ' i seçin.
 
     > [!TIP]
     > Aralık boyutu, seçilen zaman aralığına göre dinamik olarak belirlenir. Daha az zaman yayılmaları, verileri birkaç saniyelik çok parçalı aralıklarla toplama olanağı sağlar.

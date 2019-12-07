@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 43405bd3e97dbee325f0a5ed82c5848880775eee
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: f08cd731e40b204d042e5df418b03626b9082c3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240811"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894652"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Azure Active Directory verileri bağlama
 
@@ -37,13 +37,13 @@ Azure Sentinel, [Azure Active Directory](../active-directory/fundamentals/active
 - Bağlantı durumunu görebilmek için Azure AD tanılama günlüklerine erişim izninizin olması gerekir. 
 
 
-## <a name="connect-to-azure-ad"></a>Azure AD'ye bağlan
+## <a name="connect-to-azure-ad"></a>Azure AD'ye Bağlanma
 
 1. Azure Sentinel 'de **veri bağlayıcıları** ' nı seçin ve **Azure Active Directory** kutucuğuna tıklayın.
 
 1. Azure Sentinel 'e akışa almak istediğiniz günlüklerin yanında **Bağlan**' a tıklayın.
 
-1. Azure AD 'deki uyarıların otomatik olarak Azure Sentinel 'de olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
+1. Azure AD 'deki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
 
 1. Azure AD uyarıları için Log Analytics ilgili şemayı kullanmak için, **Signınlogs** ve **auditlogs**için arama yapın.
 

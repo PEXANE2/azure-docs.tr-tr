@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689050"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889150"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
@@ -27,7 +27,7 @@ ms.locfileid: "74689050"
 ## <a name="getting-started"></a>Başlangıç
 
 * [Azure portalında](https://portal.azure.com) [bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü için **genel**' i seçin.
-* İzleme Anahtarının bir kopyasını oluşturun. Oluşturduğunuz yeni kaynağın **temel** bileşenler açılan penceresinde anahtarı bulun. 
+* İzleme Anahtarının bir kopyasını oluşturun. Oluşturduğunuz yeni kaynağın **temel** bileşenler açılan penceresinde anahtarı bulun.
 * En son [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) paketini yükler.
 * Herhangi bir Telemetriyi izlemeden önce kodunuzda izleme anahtarını ayarlayın (veya APPINSIGHTS_INSTRUMENTATIONKEY ortam değişkenini ayarlayın). Bundan sonra Telemetriyi el ile izleyebilmeniz ve Azure portal üzerinde görebilmelisiniz
 
@@ -39,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> Telemetri anında gönderilmez. Telemetri öğeleri, toplu olarak ApplicationInsights SDK 'Sı tarafından gönderilir. `Track()` yöntemleri çağrıldıktan hemen sonra gelen konsol uygulamalarında, `Flush()` ve `Sleep`, bu makalede daha sonra [Tam örnekte](#full-example) gösterildiği gibi uygulamadan çıkmadan önce yapılmazsa, telemetri gönderilemeyebilir.
+
+
 * [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) paketinin en son sürümünü yükler-http, SQL veya diğer dış bağımlılık çağrılarını otomatik olarak izler.
 
 Koddan Application Insights başlatabilir veya `ApplicationInsights.config` dosya kullanarak yapılandırabilirsiniz. Başlatmanın olabildiğince erken göründüğünden emin olun. 
@@ -47,6 +51,7 @@ Koddan Application Insights başlatabilir veya `ApplicationInsights.config` dosy
 > **ApplicationInsights. config** dosyasına başvuran yönergeler yalnızca .NET Framework hedefleyen ve .NET Core uygulamaları için geçerli olmayan uygulamalar için geçerlidir.
 
 ### <a name="using-config-file"></a>Yapılandırma dosyası kullanma
+
 Application Insights SDK varsayılan olarak, `TelemetryConfiguration` oluşturulurken çalışma dizininde `ApplicationInsights.config` dosya arar
 
 ```csharp

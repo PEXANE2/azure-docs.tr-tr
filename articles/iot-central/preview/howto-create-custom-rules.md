@@ -3,18 +3,18 @@ title: Azure IoT Central özel kurallar ve bildirimler ile genişletin | Microso
 description: Çözüm geliştiricisi olarak, bir cihaz telemetri göndermeyi durdurduğu zaman e-posta bildirimleri göndermek için bir IoT Central uygulaması yapılandırın. Bu çözüm Azure Stream Analytics, Azure Işlevleri ve SendGrid kullanır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff01af6466e90ff4b69cd37c1638265c59b873
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bdaa08e8c3b104c7269c1fb4169779d98b4e0880
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895871"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895721"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid-preview-features"></a>Stream Analytics, Azure Işlevleri ve SendGrid kullanarak Azure IoT Central 'yi özel kurallarla genişletme (Önizleme özellikleri)
 
@@ -30,7 +30,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 * Bir cihazın veri göndermeyi durdurduğunu algılayan bir Stream Analytics sorgusu oluşturun.
 * Azure Işlevleri ve SendGrid hizmetlerini kullanarak e-posta bildirimi gönderin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 | Ödeme planı | Kullandıkça Öde |
 | Uygulama şablonu | Mağaza içi analiz – koşul izleme |
 | Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
-| URL'si | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
+| URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
 | Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
 | Bölge | En yakın bölgeniz |
@@ -64,7 +64,7 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | Ad alanı adınızı seçin |
+| Adı    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
@@ -77,7 +77,7 @@ Aşağıdaki ayarlarla [bir Stream Analytics işi oluşturmak için Azure Portal
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | İş adınızı seçin |
+| Adı    | İş adınızı seçin |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | Konum | Doğu ABD |
@@ -94,9 +94,9 @@ Aşağıdaki ayarlara sahip [bir işlev uygulaması oluşturmak için Azure Port
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | İşletim Sistemi | Windows |
-| Barındırma planı | Tüketim Planı |
+| Barındırma Planı | Tüketim Planı |
 | Konum | Doğu ABD |
-| Çalışma zamanı yığını | .NET |
+| Çalışma Zamanı Yığını | .NET |
 | Depolama | Yeni oluştur |
 
 ### <a name="sendgrid-account"></a>SendGrid hesabı
@@ -105,8 +105,8 @@ Aşağıdaki ayarlarla [bir SendGrid hesabı oluşturmak için Azure Portal](htt
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | SendGrid hesabınızın adını seçin |
-| Parola | Parola oluştur |
+| Adı    | SendGrid hesabınızın adını seçin |
+| Parola | Bir parola oluşturma |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | DetectStoppedDevices |
 | Fiyatlandırma katmanı | F1 Ücretsiz |
@@ -246,7 +246,7 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Giriş diğer adı | merkezileştirme telemetrisi |
+    | Girdi diğer adı | merkezileştirme telemetrisi |
     | Abonelik | Aboneliğiniz |
     | Olay hub'ı ad alanı | Olay Hub 'ı ad alanınız |
     | Olay Hub'ı adı | Var olan- **centralexport** kullanma |
@@ -256,7 +256,7 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Çıktı diğer adı | EmailNotification |
+    | Çıkış diğer adı | EmailNotification |
     | Abonelik | Aboneliğiniz |
     | İşlev uygulaması | İşlev uygulamanız |
     | İşlev  | HttpTrigger1 |
@@ -305,7 +305,7 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
 1. **Kaydet**’i seçin.
 1. Stream Analytics işi başlatmak için **genel bakış**' ı ve ardından **Başlat** **' ı ve**ardından **Başlat**' ı seçin:
 
-    ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
+    ![Akış Analizi](media/howto-create-custom-rules/stream-analytics.png)
 
 ## <a name="configure-export-in-iot-central"></a>IoT Central dışarı aktarmayı yapılandırma
 
@@ -322,13 +322,13 @@ Bu çözüm, bir cihazın 120 saniyeden uzun bir telemetri göndermeyi durdurdu�
     | Olay hub'ı | centralexport |
     | Ölçümler | Açık |
     | Cihazlar | Kapalı |
-    | Cihaz şablonları | Kapalı |
+    | Cihaz Şablonları | Kapalı |
 
 ![Sürekli veri dışa aktarma yapılandırması](media/howto-create-custom-rules/cde-configuration.png)
 
 Devam etmeden önce dışa aktarma durumunun **çalışmaya** bitmesini bekleyin.
 
-## <a name="test"></a>Test etme
+## <a name="test"></a>Test edin
 
 Çözümü test etmek için, IoT Central 'den sanal olarak durdurulan cihazlara sürekli veri vermeyi devre dışı bırakabilirsiniz:
 

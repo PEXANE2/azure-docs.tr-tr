@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory bir denetim tablosu kullanarak bir veritabanından toplu kopyalama
+title: Denetim tablosu kullanarak bir veritabanından toplu kopyalama
 description: Azure Data Factory kullanarak kaynak tablolarının bölüm listesini depolamak için bir dış denetim tablosu kullanarak bir veritabanından toplu verileri kopyalamak için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f50a6067eb38e920c32079c140785f397ee6698
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684285"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896251"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından toplu kopyalama
 
@@ -38,13 +38,13 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 Şablon beş parametreyi tanımlar:
 - *Control_Table_Name* , kaynak veritabanının bölüm listesini depolayan dış denetim tablonuz olur.
 - *Control_Table_Schema_PartitionID* , her bölüm kimliğini depolayan dış denetim tablonuzda bulunan sütun adının adıdır. Bölüm KIMLIĞININ, kaynak veritabanındaki her bölüm için benzersiz olduğundan emin olun.
-- *Control_Table_Schema_SourceTableName* , her tablo adını kaynak veritabanından depolayan dış denetim tablodır.
+- *Control_Table_Schema_SourceTableName* , kaynak veritabanından her tablo adını depolayan dış denetim tablodır.
 - *Control_Table_Schema_FilterQuery* , kaynak veritabanındaki her bölümden verileri almak için filtre sorgusunu depolayan dış denetim tablonuzun sütununun adıdır. Örneğin, verileri yıla göre bölümlüyetmeniz durumunda, her satırda depolanan sorgu, LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from DataSource ' a benzer olabilir.
 - *Data_Destination_Folder_Path* , verilerin hedef deponuza kopyalandığı yoldur. Bu parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak SQL veri ambarı ' nı seçerseniz, bu parametre gerekli değildir. Ancak SQL veri ambarı 'ndaki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
-1. Toplu kopyalama için kaynak veritabanı bölüm listesini depolamak üzere SQL Server veya Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. Aşağıdaki örnekte, kaynak veritabanında beş bölüm vardır. *Datasource_table*için üç bölüm vardır ve ikisi de *project_table*içindir. *LastModifyTime* sütunu, kaynak veritabanındaki *datasource_table* tablosundaki verileri bölümlemek için kullanılır. İlk bölümü okumak için kullanılan sorgu "select * from datasource_table WHERE LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' ' '. Diğer bölümlerden verileri okumak için benzer bir sorgu kullanabilirsiniz.
+1. Toplu kopyalama için kaynak veritabanı bölüm listesini depolamak üzere SQL Server veya Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. Aşağıdaki örnekte, kaynak veritabanında beş bölüm vardır. *Datasource_table*için üç bölüm vardır ve ikisi *project_table*içindir. *LastModifyTime* sütunu, tablo *datasource_table* içindeki verileri kaynak veritabanından bölümlemek için kullanılır. İlk bölümü okumak için kullanılan sorgu, LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from datasource_table. Diğer bölümlerden verileri okumak için benzer bir sorgu kullanabilirsiniz.
 
      ```sql
             Create table ControlTableForTemplate
@@ -76,7 +76,7 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 
     ![Hedef depoya yeni bir bağlantı oluşturun](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. **Bu şablonu kullan**' ı seçin.
+5. **Bu şablonu kullan**'ı seçin.
 
     ![Bu şablonu kullan](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     

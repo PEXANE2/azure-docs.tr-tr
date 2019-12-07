@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027892"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900892"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory yönetici rollerini görüntüleme ve atama
 
@@ -26,11 +26,11 @@ Artık Azure Active Directory portalında yönetici rollerinin tüm üyelerini g
 
 ## <a name="view-all-roles"></a>Tüm rolleri görüntüle
 
-Azure Active Directory, tüm kullanılabilir rollerin listesini görmek için **Roller ve yöneticiler** ' i seçin. 
+Arama yapın ve **Azure Active Directory**seçin. Tüm kullanılabilir rollerin listesini görmek için **Roller ve yöneticiler '** i seçin.
 
 Rolün ayrıntılı açıklamasını açmak için her satırın sağ tarafındaki üç noktaya tıklayın.
 
-![Azure AD portalındaki rollerin listesi](./media/directory-manage-roles-portal/role-list.png)
+![Azure AD portalındaki rollerin listesi](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Rollerimi görüntüle
 

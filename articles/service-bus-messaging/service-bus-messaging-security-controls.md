@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d2b92759384a9a0b63d784a8cb1afb3d18d55aeb
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219321"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894398"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için güvenlik denetimleri
 
@@ -33,32 +33,32 @@ Bu makale, Azure Service Bus mesajlaşma 'da yerleşik olarak bulunan güvenlik 
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | [Azure izleyici ve uyarılar](service-bus-metrics-azure-monitor.md)aracılığıyla desteklenir. |  |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet | İşlem günlükleri kullanılabilir.  | [Tanılama günlüklerini Service Bus](service-bus-diagnostic-logs.md) |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | [Azure izleyici ve uyarılar](service-bus-metrics-azure-monitor.md)aracılığıyla desteklenir. |  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | İşlem günlükleri kullanılabilir.  | [Tanılama günlüklerini Service Bus](service-bus-diagnostic-logs.md) |
 | Veri düzlemi günlüğü ve denetimi| Hayır |  |
 
 ## <a name="identity"></a>Kimlik
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Authentication| Evet | [Azure Active Directory yönetilen hizmet kimliği](service-bus-managed-service-identity.md)üzerinden yönetilir.| [Kimlik doğrulaması ve yetkilendirme Service Bus](service-bus-authentication-and-authorization.md). |
-| Authorization| Evet | [RBAC](authenticate-application.md) ve SAS belirteci aracılığıyla yetkilendirmeyi destekler. | [Kimlik doğrulaması ve yetkilendirme Service Bus](service-bus-authentication-and-authorization.md). |
+| Kimlik Doğrulaması| Yes | [Azure Active Directory yönetilen hizmet kimliği](service-bus-managed-service-identity.md)üzerinden yönetilir.| [Kimlik doğrulaması ve yetkilendirme Service Bus](service-bus-authentication-and-authorization.md). |
+| Yetkilendirme| Yes | [RBAC](authenticate-application.md) ve SAS belirteci aracılığıyla yetkilendirmeyi destekler. | [Kimlik doğrulaması ve yetkilendirme Service Bus](service-bus-authentication-and-authorization.md). |
 
-## <a name="data-protection"></a>Veri koruma
+## <a name="data-protection"></a>Veri koruması
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar |  Varsayılan olarak sunucu tarafı şifreleme için Evet. | Müşteri tarafından yönetilen anahtarlar ve BYOK henüz desteklenmiyor. İstemci tarafı şifrelemesi, istemcinin sorumluluğundadır |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır |   |   |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Varsayılan olarak sunucu tarafı şifreleme için Evet. |  |  |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet. Şu anda önizleme aşamasındadır | Azure Anahtar Kasası 'nda müşteri tarafından yönetilen bir anahtar, bekleyen Service Bus ad alanındaki verileri şifrelemek için kullanılabilir. | [Azure portal (Önizleme) kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın](configure-customer-managed-key.md)  |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |   |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Standart HTTPS/TLS mekanizmasını destekler. |   |
-| Şifrelenmiş API çağrıları| Evet | API çağrıları [Azure Resource Manager](../azure-resource-manager/index.yml) ve HTTPS aracılığıyla yapılır. |   |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yes | Standart HTTPS/TLS mekanizmasını destekler. |   |
+| Şifrelenmiş API çağrıları| Yes | API çağrıları [Azure Resource Manager](../azure-resource-manager/index.yml) ve HTTPS aracılığıyla yapılır. |   |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | [Azure Resource Manager API](/rest/api/resources/)aracılığıyla kaynak sağlayıcısı sürümü oluşturmayı destekler.|   |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes | [Azure Resource Manager API](/rest/api/resources/)aracılığıyla kaynak sağlayıcısı sürümü oluşturmayı destekler.|   |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

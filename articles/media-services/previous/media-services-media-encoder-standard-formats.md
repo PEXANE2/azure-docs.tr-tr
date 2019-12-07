@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard biçimleri ve codec bileşenleri-Azure
-description: Bu konu, Media Encoder Standard biçimlerine ve codec larına genel bakış sunar.
+description: Bu makale Media Encoder Standard biçimlerine ve codec larına genel bakış sağlar.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 8fd68269f73506c2d605c0cb4560e6a57e1a2128
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016534"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895938"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard Biçimleri ve Kodlayıcılar
 
@@ -32,20 +32,20 @@ Bu belge, Media Encoder Standard ile kullanabileceğiniz en yaygın içe aktarma
 ## <a name="input-containerfile-formats"></a>Giriş kapsayıcısı/dosya biçimleri
 | Dosya biçimleri (dosya uzantıları) | Desteklenen |
 | --- | --- |
-| FLV (H., ve AAC codec bileşenleri ile) (. FLV) |Evet |
-| MXF (. MXF) |Evet |
-| GXF (. GXF) |Evet |
-| MPEG2-PS, MPEG2-TS, 3GP (. TS,. PS,. 3GP,. 3GPP,. mpg) |Evet |
-| Windows Media videosu (WMV)/ASF (. wmv,. asf) |Evet |
-| AVI (sıkıştırılmamış 8bit/10bit) (. avi) |Evet |
-| MP4 (. mp4,. M4A,. m4v)/ISMV (. ISA,. ismv) |Evet |
-| [Microsoft dijital video kaydı (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (. DVR-MS) |Evet |
-| Matroska/webd (. MKV) |Evet |
-| DALGA/WAV (. wav) |Evet |
-| QuickTime (. mov) |Evet |
+| FLV (H.264 ve AAC codec bileşenleriyle) (.flv) |Yes |
+| MXF    (.mxf) |Yes |
+| GXF    (.gxf) |Yes |
+| MPEG2-PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Yes |
+| Windows Media Video (WMV)/ASF (.wmv, .asf) |Yes |
+| AVI (Sıkıştırılmamış 8 bit/10 bit) (.avi) |Yes |
+| MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Yes |
+| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Yes |
+| Matroska/WebM (.mkv) |Yes |
+| WAVE/WAV (.wav) |Yes |
+| QuickTime (.mov) |Yes |
 
 > [!NOTE]
-> Yukarıda daha yaygın olarak karşılaşılan dosya uzantılarının listesi bulunur. Media Encoder Standard diğerlerini destekler (örneğin:. m2ts,. mpeg2video,. qt). Bir dosyayı kodlamaya çalışırsanız ve desteklenmeyen biçim hakkında bir hata iletisi alırsanız, görüşlerinizi [buraya](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)girin.
+> Yukarıda, daha sık karşılaşılan dosya uzantılarının listesi verilmiştir. Media Encoder Standard diğerlerini destekler (örneğin:. m2ts,. mpeg2video,. qt). Bir dosyayı kodlamaya çalışırsanız ve desteklenmeyen biçim hakkında bir hata iletisi alırsanız, görüşlerinizi [buraya](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)girin.
 > 
 > 
 
@@ -54,45 +54,45 @@ Media Encoder Standard, giriş kapsayıcılarında aşağıdaki ses biçimlerini
 
 * Araya eklemeli stereo veya 5,1 örnekleri ile ses parçaları bulunan MXF, GXF ve QuickTime dosyaları
 
-veya
+or
 
-* Sesin ayrı PCM parçaları olarak gerçekleştirildiği, ancak kanal eşlemesinin (stereo veya 5,1) dosya meta verilerinden çıkarılabilen MXF, GXF ve QuickTime dosyaları
+* Sesin ayrı PCM parçaları olarak taşındığı, ancak kanal eşlemesinin (stero’ya veya 5.1’e) dosya meta verilerinden çıkarılabildiği MXF, GXF ve QuickTime dosyaları
 
 ## <a name="input-video-codecs"></a>Giriş video codec bileşenleri
 | Giriş video codec bileşenleri | Desteklenen |
 | --- | --- |
-| AVC 8 bit/10 bit, AVCIntra dahil olmak üzere 4:2:2 'e kadar |8 bit 4:2:0 ve 4:2:2 |
-| AVID DNxHD (MXF içinde) |Evet |
-| DVCPro/DVCProHD (in MXF) |Evet |
-| Dijital video (DV) (AVI dosyaları) |Evet |
-| JPEG 2000 |Evet |
-| MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |En fazla 422 profil |
-| MPEG-1 |Evet |
-| VC-1/WMV9 |Evet |
+| AVC 8 bit/10 bit, 4:2:2’ye kadar, AVCIntra dahil |8 bit 4:2:0 ve 4:2:2 |
+| Avid DNxHD (MXF biçiminde) |Yes |
+| DVCPro/DVCProHD (in MXF) |Yes |
+| Digital video (DV) (AVI dosyalarında) |Yes |
+| JPEG 2000 |Yes |
+| MPEG-2 (422 Profili ve Yüksek Düzeye kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |422 Profiline kadar |
+| MPEG-1 |Yes |
+| VC-1/WMV9 |Yes |
 | Canopus HQ/HQX |Hayır |
-| MPEG-4 Bölüm 2 |Evet |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Evet |
-| YUV420 sıkıştırılmamış veya Mezzanine |Evet |
-| Apple ProRes 422 |Evet |
-| Apple ProRes 422 LT |Evet |
-| Apple ProRes 422 HQ |Evet |
-| Apple ProRes proxy |Evet |
-| Apple ProRes 4444 |Evet |
-| Apple ProRes 4444 XQ |Evet |
+| MPEG-4 Bölüm 2 |Yes |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
+| YUV420 sıkıştırılmamış veya mezzanine |Yes |
+| Apple ProRes 422 |Yes |
+| Apple ProRes 422 LT |Yes |
+| Apple ProRes 422 HQ |Yes |
+| Apple ProRes Proxy |Yes |
+| Apple ProRes 4444 |Yes |
+| Apple ProRes 4444 XQ |Yes |
 | HEVC/H. 265| Ana ve ana 10 (&#42;) profiller<br/>10. ana profil desteği, 8bit 4:2:0 içeriğine yöneliktir. |
 
 ## <a name="input-audio-codecs"></a>Giriş sesi codec bileşenleri
-| Giriş sesi codec bileşenleri | Desteklenen |
+| Giriş Ses Codec Bileşenleri | Desteklenen |
 | --- | --- |
-| AAC (AAC-LC, AAC-HE ve AAC-HEv2; 5,1 'e kadar) |Evet |
-| MPEG Katman 2 |Evet |
-| MP3 (MPEG-1 ses katmanı 3) |Evet |
-| Windows Media Audio |Evet |
-| WAV/PCM |Evet |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Evet |
-| [Opus 'lar](https://go.microsoft.com/fwlink/?LinkId=822667) |Evet |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Evet |
-| AMR (Uyarlamalı çok hızlı) |Evet |
+| AAC (AAC-LC, AAC-HE ve AAC-HEv2; 5.1’e kadar) |Yes |
+| MPEG Katman 2 |Yes |
+| MP3 (MPEG-1 Ses Katmanı 3) |Yes |
+| Windows Media Ses |Yes |
+| WAV/PCM |Yes |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Yes |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
+| AMR (adaptive multi-rate) |Yes |
 | AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |
 | Dolby® E |Hayır |
 | Dolby® Digital (AC3) |Hayır |
@@ -109,7 +109,7 @@ Aşağıdaki tabloda, dışarı aktarma için desteklenen codec bileşenleri ve 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.

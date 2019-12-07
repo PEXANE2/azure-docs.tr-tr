@@ -1,20 +1,21 @@
 ---
-title: Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
+title: Paylaşılan erişim imzaları (SAS) ile verilere sınırlı erişim verme
+titleSuffix: Azure Storage
 description: Blob, kuyruk, tablo ve dosya dahil olmak üzere Azure depolama kaynaklarına erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanma hakkında bilgi edinin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382005"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895147"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -75,13 +76,13 @@ Kaynak URI ve SAS belirtecini gösteren bir Service SAS URI 'SI örneği aşağ�
 
 Depolama hesabınızdaki kaynaklara güvenli erişim sağlamak istediğinizde bir SAS kullanın, aksi takdirde bu kaynaklar için izinleri olmayan herhangi bir istemciye.
 
-SAS 'ın yararlı olduğu yaygın bir senaryo, kullanıcıların depolama hesabınıza kendi verilerini okuacağı ve yazdıkları bir hizmettir. Bir depolama hesabının kullanıcı verilerini depoladığı bir senaryoda, tipik iki tasarım deseni vardır:
+SAS 'ın yararlı olduğu yaygın bir senaryo, kullanıcıların depolama hesabınıza kendi verilerini okuacağı ve yazdıkları bir hizmettir. Depolama hesabının kullanıcı verilerini depoladığı bir senaryoda iki tipik tasarım deseni vardır:
 
-1. İstemciler, kimlik doğrulaması gerçekleştiren bir ön uç proxy hizmeti aracılığıyla verileri karşıya yükleyip indirir. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin vermenin avantajlarından yararlanır, ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
+1. İstemciler, kimlik doğrulamasını yapan ön uç ara sunucu hizmeti üzerinden verileri karşıya yükleyip indirirler. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin vermenin avantajlarından yararlanır, ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
 
    ![Senaryo diyagramı: ön uç proxy hizmeti](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Hafif bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, SAS tarafından tanımlanan izinlerle ve SAS tarafından izin verilen aralığa göre depolama hesabı kaynaklarına doğrudan erişebilirler. SAS, ön uç proxy hizmeti aracılığıyla tüm verileri yönlendirme gereksinimini azaltır.
+1. Basit bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, SAS tarafından tanımlanan izinlerle ve SAS tarafından izin verilen aralığa göre depolama hesabı kaynaklarına doğrudan erişebilirler. SAS tüm verileri ön uç ara sunucu hizmetiyle yönlendirme gereksinimini azaltır.
 
    ![Senaryo diyagramı: SAS sağlayıcı hizmeti](./media/storage-sas-overview/sas-storage-provider-service.png)
 

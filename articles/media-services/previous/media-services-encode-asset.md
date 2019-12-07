@@ -1,6 +1,6 @@
 ---
 title: Azure isteğe bağlı medya Kodlayıcılara genel bakış | Microsoft Docs
-description: Bu konu, Azure isteğe bağlı medya Kodlayıcılara genel bakış sunar.
+description: Azure Media Services, buluttaki medya kodlaması için birden çok seçenek sağlar. Bu makale, Azure isteğe bağlı medya Kodlayıcılara genel bakış sunar.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019043"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901505"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>İsteğe bağlı Azure Medya Kodlayıcılara genel bakış 
 
@@ -48,7 +48,7 @@ Varsayılan olarak her Media Services hesabının tek seferde bir etkin kodlama 
 ### <a name="how-to-use"></a>Nasıl kullanılır
 [Media Encoder Standard ile kodlama](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Biçimini
+### <a name="formats"></a>Biçimler
 [Biçimler ve codec bileşenleri](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Önayarlar
@@ -59,7 +59,7 @@ Kodlayıcılar giriş meta verileri [burada](media-services-input-metadata-schem
 
 Kodlayıcılar çıkış meta verileri [burada](media-services-output-metadata-schema.md)açıklanmıştır.
 
-### <a name="generate-thumbnails"></a>Küçük resim oluştur
+### <a name="generate-thumbnails"></a>Küçük resim oluşturma
 Bilgi için bkz. [Media Encoder Standard kullanarak küçük resimleri oluşturma](media-services-advanced-encoding-with-mes.md#thumbnails).
 
 ### <a name="trim-videos-clipping"></a>Videoları kırpma (kırpma)
@@ -86,7 +86,7 @@ Giriş videonuz kapalı açıklamalı alt yazı içermiyorsa, çıkış varlığ
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler

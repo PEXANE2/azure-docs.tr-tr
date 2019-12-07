@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services API'sine - Azure CLI erişim | Microsoft Docs
-description: Bu yöntem, Azure Media Services API'sine erişmek için adımları izleyin.
+title: Azure Media Services API 'sine erişin-Azure CLı | Microsoft Docs
+description: Azure Media Services API 'sine erişmek için bu nasıl yapılır makalesine yönelik adımları izleyin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,31 +12,31 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 5dbcf446a609adcd0f1902fcca2ac19ad87f17b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779664"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896148"
 ---
-# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Azure CLI ile API erişim Azure medya Hizmetleri
+# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Azure CLı ile Azure Media Services API 'sine erişme
  
-Azure Media Services API'sine bağlanmak için Azure AD hizmet sorumlusu kimlik doğrulaması kullanmak için aşağıdaki parametrelere sahip bir Azure AD belirteç istemek uygulamanız gerekir:
+Azure Media Services API 'sine bağlanmak için Azure AD hizmet sorumlusu kimlik doğrulamasını kullanmak üzere, uygulamanızın aşağıdaki parametrelere sahip bir Azure AD belirteci istemesi gerekir:
 
-* Azure AD Kiracı uç noktası
-* Media Services kaynak URI'si
-* Kaynak URI REST Media Services için
-* Azure AD uygulama değerlerini: istemci Kimliğini ve istemci gizli anahtarı
+* Azure AD kiracı uç noktası
+* Media Services kaynak URI 'SI
+* REST Media Services için kaynak URI 'SI
+* Azure AD uygulama değerleri: istemci KIMLIĞI ve istemci parolası
 
-Ayrıntılı bir açıklama için bkz. [erişme Media Services v3 API'ler](media-services-apis-overview.md#accessing-the-azure-media-services-api).
+Ayrıntılı açıklama için bkz. [Media Services v3 API 'Lerine erişme](media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
-Bu makalede bir Azure AD uygulaması ve hizmet sorumlusu oluşturma ve Azure Media Services kaynaklarına erişmek için gerekli değerleri almak için Azure CLI'yı kullanmayı gösterir.
+Bu makalede, Azure CLı kullanarak bir Azure AD uygulaması ve hizmet sorumlusu oluşturma ve Azure Media Services kaynaklarına erişmek için gereken değerleri alma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
 [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
 
-Media Services hesap adını ve kaynak grubu adı için kullanılan değerleri unutmayın emin olun.
+Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
  
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -44,22 +44,22 @@ Media Services hesap adını ve kaynak grubu adı için kullanılan değerleri u
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Ölçek medya ayrılmış birimleri - CLI](media-reserved-units-cli-how-to.md)
-- [Bir Media Services hesabı oluşturma - CLI](create-account-cli-how-to.md) 
-- [Sıfırlama hesabı kimlik bilgileri - CLI](cli-reset-account-credentials.md)
-- [Varlıklar - CLI oluşturma](cli-create-asset.md)
-- [Karşıya dosya - CLI](cli-upload-file-asset.md)
-- [Oluşturma dönüşümleri - CLI](cli-create-transform.md)
-- [-CLI gibi özel bir dönüşüm ile kodlayın](custom-preset-cli-howto.md)
-- [Oluşturma işleri - CLI](cli-create-jobs.md)
-- [CLI EventGrid - oluşturma](job-state-events-cli-how-to.md)
-- [Bir varlığı - CLI yayımlayın](cli-publish-asset.md)
-- [Filtre - CLI](filters-dynamic-manifest-cli-howto.md)
+- [Ölçek medya ayrılmış birimleri-CLı](media-reserved-units-cli-how-to.md)
+- [Media Services hesabı oluşturma-CLı](create-account-cli-how-to.md) 
+- [Hesap kimlik bilgilerini sıfırlama-CLı](cli-reset-account-credentials.md)
+- [Varlık oluşturma-CLı](cli-create-asset.md)
+- [Dosya yükleme-CLı](cli-upload-file-asset.md)
+- [Dönüşümler oluşturma-CLı](cli-create-transform.md)
+- [Özel dönüşümle kodlama-CLı](custom-preset-cli-howto.md)
+- [İş oluşturma-CLı](cli-create-jobs.md)
+- [EventGrid oluşturma-CLı](job-state-events-cli-how-to.md)
+- [Varlık yayımlama-CLı](cli-publish-asset.md)
+- [Filtre-CLı](filters-dynamic-manifest-cli-howto.md)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçerik akışı yapmak istediğiniz akış uç çalışıyor durumda olması gerekir. Aşağıdaki CLI komutunu varsayılan akış uç noktasını başlatır:
+İçerik akışı yapmak istediğiniz akış uç noktasının çalışıyor durumda olması gerekir. Aşağıdaki CLı komutu varsayılan akış uç noktanızı başlatır:
 
 `az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
 

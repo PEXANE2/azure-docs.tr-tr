@@ -1,6 +1,6 @@
 ---
 title: Çoklu bit hızına sahip akışlar oluşturmak için Azure Media Services kullanarak canlı akış | Microsoft Docs
-description: 'Bu konu başlığı altında, şirket içi kodlayıcıdan tek bir bit hızı canlı akış alan ve sonra Media Services ile Uyarlamalı bit hızında akışa canlı kodlama gerçekleştiren bir kanalın nasıl ayarlanacağı açıklanır. Akış daha sonra, aşağıdaki uyarlamalı akış protokollerinden birini kullanarak bir veya daha fazla akış uç noktası aracılığıyla istemci kayıttan yürütme uygulamalarına teslim edilebilir: HLS, kesintisiz akış, MPEG DASH.'
+description: Bu konu başlığı altında, şirket içi kodlayıcıdan tek bir bit hızı canlı akış alan ve sonra Media Services ile Uyarlamalı bit hızında akışa canlı kodlama gerçekleştiren bir kanalın nasıl ayarlanacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598313"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895922"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -71,7 +71,7 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 | Kanal durumu | Portal Arabirimi Göstergeleri | BT faturalandırma mı? |
 | --- | --- | --- |
 | Başlangıç |Başlangıç |Hayır (geçici durum) |
-| Çalışıyor |Hazır (çalışan program yok)<br/>or<br/>Akış (en az bir program çalışıyor) |YES |
+| Çalışıyor |Hazır (çalışan program yok)<br/>or<br/>Akış (en az bir program çalışıyor) |EVET |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
 | Durdurulan |Durdurulan |Hayır |
 
@@ -137,7 +137,7 @@ Dikkat edilmesi gerekenler:
 * Video akışı, 15 Mbps 'Lik bir ortalama bit hızında olmalıdır
 * Ses akışı, 1 MB/sn 'Lik bir ortalama bit hızına sahip olmalıdır
 * Desteklenen codec bileşenleri aşağıda verilmiştir:
-* MPEG-4 AVC/H. bir video
+* MPEG-4 AVC / H.264 Video
 * Temel, ana, yüksek profil (8 bit 4:2:0)
 * High 10 profili (10 bit 4:2:0)
 * Yüksek 422 profili (10 bit 4:2:2)
@@ -170,7 +170,7 @@ Bir kanal oluşturduğunuzda alma URL 'Lerini alabilirsiniz. Bu URL 'Leri almak 
 Bir SSL bağlantısı üzerinden parçalanmış MP4 (Kesintisiz Akış) canlı akışını geri almaya yönelik bir seçeneğiniz vardır. SSL üzerinden almak için alma URL 'sini HTTPS olarak güncelleştirdiğinizden emin olun. Şu anda, AMS özel etki alanları ile SSL 'yi desteklemez.  
 
 ### <a name="allowed-ip-addresses"></a>İzin verilen IP adresleri
-Bu kanala video yayımlamasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin, ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1/22 ') veya bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örneğin,) olarak belirtilebilir. , ' 10.0.0.1 (255.255.252.0) ').
+Bu kanala video yayımlamasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin, ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1/22 ') veya bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1 (255.255.252.0) ') olarak belirtilebilir.
 
 Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.
 
@@ -188,7 +188,7 @@ Kanal verileri geri almaya başladıktan sonra, akışınızı önizleyebilirsin
 > 
 
 ### <a name="allowed-ip-addresses"></a>İzin verilen IP adresleri
-Önizleme uç noktasına bağlanmasına izin verilen IP adreslerini tanımlayabilirsiniz. Hiçbir IP adresi belirtilmemişse, herhangi bir IP adresi izin verilmez. İzin verilen IP adresleri tek bir IP adresi (örneğin, ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1/22 ') veya bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örneğin,) olarak belirtilebilir. , ' 10.0.0.1 (255.255.252.0) ').
+Önizleme uç noktasına bağlanmasına izin verilen IP adreslerini tanımlayabilirsiniz. Hiçbir IP adresi belirtilmemişse, herhangi bir IP adresi izin verilmez. İzin verilen IP adresleri tek bir IP adresi (örneğin, ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1/22 ') veya bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örneğin, ' 10.0.0.1 (255.255.252.0) ') olarak belirtilebilir.
 
 ## <a name="live-encoding-settings"></a>Canlı kodlama ayarları
 Bu bölümde, kanalın **kodlama türü** **Standart**olarak ayarlandığında, kanal içindeki canlı kodlayıcı için ayarların nasıl ayarlanacağı açıklanmaktadır.
@@ -260,7 +260,7 @@ Live Encoder, bir tablet görüntüsüne geçiş yapmak ve örneğin bir ad kesm
 Saniye cinsinden kurşun süre. Bu, kurşun rengi başlatmak için sıfır olmayan pozitif bir değer olmalıdır. Bir devam eden kurşun değer varsa ve sıfır süresi belirtilmişse, bu durumda bu, devam eden kurşun işlem sonlandırılır.
 
 ### <a name="insert-slate-on-ad-marker"></a>Ad işaretleyicisi üzerine kurşun ekler
-True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırasında bir tablet görüntüsü eklemek üzere yapılandırır. Varsayılan değer true 'dur. 
+True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırasında bir tablet görüntüsü eklemek üzere yapılandırır. Varsayılan değer true olur. 
 
 ### <a id="default_slate"></a>Varsayılan kurşun varlık kimliği
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/05/2019
 ms.author: b-juche
-ms.openlocfilehash: 84496fbc8a415171172d0a138f647ecb0310b6c7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173578"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894105"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows veya Linux sanal makineleri için birimi bağlama veya ayırma 
 
@@ -41,6 +41,12 @@ Gerektiğinde Windows veya Linux sanal makineleri için bir birimi bağlayabilir
     * `$ANFIP`, birim özellikleri dikey penceresinde bulunan Azure NetApp Files biriminin IP adresidir.
     * `$FILEPATH`, Azure NetApp Files biriminin dışarı aktarma yoludur.
     * `$MOUNTPOINT`, NFS dışarı aktarmayı bağlamak için kullanılan Linux ana bilgisayarında oluşturulan dizindir.
+
+4. Birimini NFS kullanarak Windows 'a bağlamak istiyorsanız:
+
+    a. Öncelikle birimi bir UNIX veya Linux VM 'ye bağlayın.  
+    b. Birimde bir `chmod 777` veya `chmod 775` komutu çalıştırın.  
+    c. Windows üzerinde NFS istemcisi aracılığıyla birimi bağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

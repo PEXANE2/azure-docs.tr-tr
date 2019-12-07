@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
+title: Yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
 description: Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre kopyalamak için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ca752fb75b8e151de925d3b5604a7e7182d82e92
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684222"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896284"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
 
@@ -51,7 +51,7 @@ Bu şablon ilk olarak yeni ve değiştirilmiş dosyaları yalnızca öznitelikle
 
     ![Hedefe yeni bir bağlantı oluşturun](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-4. **Bu şablonu kullan**' ı seçin.
+4. **Bu şablonu kullan**'ı seçin.
 
     ![Bu şablonu kullan](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -83,7 +83,7 @@ Bu şablon ilk olarak yeni ve değiştirilmiş dosyaları yalnızca öznitelikle
 
 10. Tetikleyici türü için atlayan **pencere** ' yi seçin, **15 dakikada** bir yinelenme olarak ayarlayın (herhangi bir Aralık zamanına geçiş yapabilirsiniz) ve ardından **İleri**' yi seçin.
 
-    ![Tetikleyici oluştur](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    ![Tetikleyici oluşturma](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. **Tetikleyici çalıştırma parametrelerinin** değerini aşağıdaki şekilde yazın ve **son**' u seçin.
     - **FolderPath_Source** =  **/Source/** .  Kaynak veri deposundaki klasörünüzle değiştirebilirsiniz.

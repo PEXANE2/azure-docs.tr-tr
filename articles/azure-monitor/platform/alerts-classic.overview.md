@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555688"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893595"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 'da klasik uyarılar nelerdir?
 
 > [!NOTE]
-> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](../../azure-monitor/platform/alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan kaldırılacak şekilde zamanlanır](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> Bu makalede, klasik eski ölçüm uyarılarının nasıl oluşturulacağı açıklanır. Azure Izleyici artık [daha yeni bir neredeyse gerçek zamanlı ölçüm uyarılarını ve yeni bir uyarı deneyimini](../../azure-monitor/platform/alerts-overview.md)desteklemektedir. Klasik uyarılar [kullanımdan](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)kalkmakta, ancak henüz yeni uyarıları desteklemeyen kaynaklar için hala sınırlı kullanımda. 
 >
 
 Uyarılar, veriler üzerinde koşullar yapılandırmanıza ve koşullar en son izleme verileriyle eşleşiyorsa bildirimde bulunulmasına olanak tanır.
@@ -54,7 +54,7 @@ Daha yeni ölçüm uyarıları klasik ölçüm uyarıları üzerinde aşağıdak
 
 * **Klasik etkinlik günlüğü uyarıları** -filtre ölçütlerinizle eşleşen bir etkinlik günlüğü olay girişi üzerinde tetiklenen bir akış günlüğü uyarısı. Bu uyarıların yalnızca bir durumu vardır, "etkinleştirildi". Uyarı altyapısı, filtre ölçütlerini yalnızca yeni bir olaya uygular. Eski girdileri bulmak için arama yapmaz. Bu uyarılar, yeni bir hizmet durumu olayı gerçekleştiğinde veya bir Kullanıcı ya da uygulamanın aboneliğinizde bir işlem gerçekleştirdiğinde (örneğin, "sanal makineyi Sil") size bildirimde bulunabilir.
 
-Azure Izleyici aracılığıyla kullanılabilen tanılama günlük verileri için verileri Log Analytics (eski adıyla OMS) ile yönlendirin ve Log Analytics bir sorgu uyarısı kullanın. Log Analytics artık [Yeni uyarı yöntemini](../../azure-monitor/platform/alerts-overview.md) kullanmaktadır 
+Azure Izleyici aracılığıyla kullanılabilen kaynak günlük verileri için, verileri Log Analytics yönlendirin ve günlük sorgusu uyarısı kullanın. Log Analytics artık [Yeni uyarı yöntemini](../../azure-monitor/platform/alerts-overview.md) kullanmaktadır 
 
 Aşağıdaki diyagramda, Azure Izleyici 'deki verilerin kaynakları özetlenmektedir ve kavramsal olarak bu verilerin nasıl uyarabilir.
 
@@ -81,8 +81,8 @@ Ancak, eski ölçüm uyarıları eylem gruplarını kullanmaz. Bunun yerine, aş
 
 Web kancaları Otomasyon ve düzeltme imkanı sunar, örneğin:
 - Azure Otomasyonu Runbook
-- Azure Işlevi
-- Azure mantıksal uygulaması
+- Azure İşlevi
+- Azure Logic App
 - üçüncü taraf bir hizmet
 
 ## <a name="next-steps"></a>Sonraki adımlar

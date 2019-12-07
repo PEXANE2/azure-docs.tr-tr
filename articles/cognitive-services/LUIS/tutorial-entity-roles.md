@@ -9,30 +9,30 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488736"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894600"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: bağlamsal olarak ilgili verileri bir söylenişi 'ten ayıklayın
 
-Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için kaynak ve hedef konumlar. Her iki veri parçası de gerekli olabilir ve birbirleriyle ilişkilidir.  
+Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için kaynak ve hedef konumlar. Her iki veri parçası de gerekli olabilir ve birbirleriyle ilişkilidir.
 
-Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir. 
+Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
-> * Amaç ekleme 
+> * Amaç ekleme
 > * Rolleri kullanarak kaynak ve hedef bilgilerini al
-> * Eğitim
+> * Eğitin
 > * Yayımlama
 > * Uç noktadan amaçları ve varlık rollerini al
 
@@ -57,9 +57,9 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. **Create new intent** (Yeni amaç oluştur) öğesini seçin. 
+1. **Create new intent** (Yeni amaç oluştur) öğesini seçin.
 
-1. Açılan iletişim kutusuna `MoveEmployeeToCity` girip **Done** (Bitti) öğesini seçin. 
+1. Açılan iletişim kutusuna `MoveEmployeeToCity` girip **Done** (Bitti) öğesini seçin.
 
     ![Create new intent (Yeni amaç oluştur) iletişim kutusunun ekran görüntüsü](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 1. Sol taraftaki gezinmede **varlıklar** ' ı seçin.
 
-1. **Önceden oluşturulmuş varlık Ekle**' yi seçin ve ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğunda `geo` ' ı seçin. 
+1. **Önceden oluşturulmuş varlık Ekle**' yi seçin ve ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğunda `geo` ' ı seçin.
 
     ![Uygulamaya geographyV2 önceden oluşturulmuş varlık ekleme](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Onay kutusunu seçin ve **bitti**' yi seçin.
-1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2** seçin. 
-1. İki rol ekleyin, `Origin`ve `Destination`. 
+1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2** seçin.
+1. İki rol ekleyin, `Origin`ve `Destination`.
 
     ![Önceden oluşturulmuş varlığa roller ekleme](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Sol taraftaki gezinmede **amaçları** seçin, sonra **Moveemployeetocity** hedefini seçin. Şehir adlarının **geographyV2**önceden oluşturulmuş varlıkla etiketlendirildiğine dikkat edin.
 1. Listenin ilk bölümünde, kaynak konumunu seçin. Açılan menü görüntülenir. Listeden **geographyV2** öğesini seçin ve ardından **kaynak**Seç ' in yanındaki menüyü izleyin.
-1. Tüm yerlerdeki konumların tüm rollerini işaretlemek için önceki adımdaki yöntemi kullanın. 
+1. Tüm yerlerdeki konumların tüm rollerini işaretlemek için önceki adımdaki yöntemi kullanın.
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme 
+## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamaya yapılan değişikliklerin test edilebilir olması için uygulamayı eğitme 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamaya yapılan değişikliklerin test edilebilir olması için uygulamayı eğitme
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -115,7 +115,7 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Adres çubuğundaki URL'nin sonuna gidip `Please move Carl Chamerlin from Tampa to Portland` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. Bu söylenişi, etiketlendirmelerdeki herhangi biriyle aynı değildir ve bu nedenle iyi bir test olur ve ayıklanan varlıkla `MoveEmployee` hedefini döndürmelidir.
+1. Adres çubuğundaki URL'nin sonuna gidip `Please move Carl Chamerlin from Tampa to Portland` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. Bu söylenişi, etiketlendirmelerdeki herhangi biriyle aynı değildir ve bu nedenle iyi bir test olur ve ayıklanan varlıkla `MoveEmployee` hedefini döndürmelidir.
 
     ```json
     {
@@ -152,9 +152,9 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
       ]
     }
     ```
-    
+
     Doğru amaç tahmin edilir ve varlıklar dizisinin karşılık gelen **varlıklar** özelliğinde hem kaynak hem de hedef rolleri vardır.
-    
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 Bu öğretici, kaynak ve hedef konumların bağlamsal olarak öğrenilen verileri için yeni bir amaç ve ek bir örnek açıklaması oluşturdu. Uygulama eğitilip yayımlandıktan sonra bir istemci uygulama bu bilgileri ilgili bilgilerle bir taşınma bileti oluşturmak için kullanabilir.
 
-> [!div class="nextstepaction"] 
-> [Bileşik varlık eklemeyi öğrenin](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [Bileşik varlık eklemeyi öğrenin](luis-tutorial-composite-entity.md)

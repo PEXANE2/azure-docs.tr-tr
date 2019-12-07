@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services için Wıdevine lisansları teslim etmek üzere Rolabs kullanma | Microsoft Docs
-description: Bu makalede, AMS tarafından hem PlayReady hem de Widevine DRMs ile dinamik olarak şifrelenen bir akış teslim etmek için Azure Media Services (AMS) ' nin nasıl kullanılacağı açıklanır. PlayReady lisansı, Media Services PlayReady lisans sunucusundan gelir ve Widevine lisansı, Rolabs lisans sunucusu tarafından dağıtılır.
+description: Bu makalede, AMS tarafından hem PlayReady hem de Widevine DRMs ile dinamik olarak şifrelenen bir akış teslim etmek için Azure Media Services (AMS) ' nin nasıl kullanılacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016684"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887824"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için castLabs kullanma 
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ CENC (PlayReady ve/veya Widevine) tarafından korunan kayıttan akış içeriği
 
 Aşağıdaki diyagramda, üst düzey bir Azure Media Services ve bir Rolabs tümleştirme mimarisi gösterilmektedir.
 
-![Tümleştirme](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![tümleştirme](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Tipik sistem kurulumu
 
@@ -56,19 +56,19 @@ Hem Rolabs hem de AMS, bir lisansı yetkilendirmek için kullanılan JWT (JSON W
 
 Aşağıdaki tabloda AMS 'de JWT belirteci açıklanmaktadır. 
 
-| Sertifikayı Veren | Seçilen güvenli belirteç hizmetinden veren dize (STS) |
+| Veren | Seçilen güvenli belirteç hizmetinden veren dize (STS) |
 | --- | --- |
-| Hedef kitle |Kullanılan STS 'den alınan hedef kitle dizesi |
+| Hedef Kitle |Kullanılan STS 'den alınan hedef kitle dizesi |
 | Talepler |Bir talepler kümesi |
 | NotBefore |Belirtecin geçerliliğini Başlat |
-| Bitiş Tarihi |Belirtecin bitiş geçerliliği |
+| Süre sonu |Belirtecin bitiş geçerliliği |
 | SigningCredentials |PlayReady lisans sunucusu, ROI Labs lisans sunucusu ve STS arasında paylaşılan anahtar, simetrik ya da asimetrik anahtar olabilir. |
 
 ### <a name="jwt-token-in-castlabs"></a>Rolabs 'de JWT belirteci
 
 Aşağıdaki tabloda, Rolabs 'de JWT belirteci açıklanmaktadır. 
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 | --- | --- |
 | optData |Sizin hakkında bilgi içeren bir JSON dizesi. |
 | CRT |Varlık hakkındaki bilgileri, lisans bilgilerini ve kayıttan yürütme haklarını içeren bir JSON dizesi. |
@@ -91,7 +91,7 @@ Konsol uygulamasını kullanmak için:
       var objIAsset = _context.Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf").FirstOrDefault();
 4. AssetId kullanarak, sabit kıymeti sisteminde (Program.cs dosyasında Line 44) varlığı adlandırmak için bir kullanın.
    
-   AssetId için şunu ayarlamanız gerekir; benzersiz bir alfasayısal dize olması gerekir.
+   AssetId **için şunu**ayarlamanız gerekir; benzersiz bir alfasayısal dize olması gerekir.
 5. Programı çalıştırın.
 
 Web uygulamasını kullanmak için (STS):
@@ -118,6 +118,6 @@ Ortak şifreleme (PlayReady ve/veya Widevine) ile şifrelenmiş bir videoyu kay�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

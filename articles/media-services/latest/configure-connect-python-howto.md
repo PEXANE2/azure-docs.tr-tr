@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 API 'sine bağlanma-Python
-description: Python ile Media Services v3 API 'sine nasıl bağlanacağınızı öğrenin.
+description: Bu makalede, Python ile Media Services v3 API 'sine nasıl bağlanacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 2ceebd88f4988f23bf9cd32bd827aaca67d70461
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307869"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888470"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API 'sine bağlanma-Python
 
@@ -27,7 +27,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Python.org](https://www.python.org/downloads/) 'ten Python indirin
-- `PATH` Ortam değişkenini ayarladığınızdan emin olun
+- `PATH` ortam değişkenini ayarladığınızdan emin olun
 - [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
 - [Erişim API 'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve sonraki adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
 
@@ -38,8 +38,8 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 Python kullanarak Azure Media Services çalışmak için bu modülleri yüklemeniz gerekir.
 
-* Active Directory için Azure modüllerini içeren modül.`azure-mgmt-resource`
-* Media Services varlıklarını içeren modül. `azure-mgmt-media`
+* Active Directory için Azure modüllerini içeren `azure-mgmt-resource` modülü.
+* Media Services varlıklarını içeren `azure-mgmt-media` modülü.
 
 Bir komut satırı aracı açın ve modülleri yüklemek için aşağıdaki komutları kullanın.
 
@@ -50,7 +50,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 ## <a name="connect-to-the-python-client"></a>Python istemcisine bağlanma
 
-1. `.py` Uzantılı bir dosya oluşturun
+1. `.py` uzantılı bir dosya oluşturun
 1. Dosyayı en sevdiğiniz düzenleyicide açın
 1. Aşağıdaki kodu dosyaya ekleyin. Kod, gerekli modülleri içeri aktarır ve Media Services bağlanmak için gereken Active Directory kimlik bilgileri nesnesini oluşturur.
 

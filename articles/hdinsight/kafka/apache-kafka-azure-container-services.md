@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: e035c1ff4c8e16fbf40883b54e3153eab9729040
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122653"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894290"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Azure Kubernetes hizmetini kullanma
 
@@ -35,7 +35,7 @@ Bu belgede, aşağıdaki Azure hizmetlerini oluşturma ve kullanma hakkında bil
 * Azure Kubernetes Service
 * Azure Sanal Ağları
 
-Bu belge Ayrıca, [Azure Kubernetes hizmet öğreticisi](../../aks/tutorial-kubernetes-prepare-app.md)aracılığıyla bir cede olduğunu varsaymaktadır. Bu makale bir kapsayıcı hizmeti oluşturur, bir Kubernetes kümesi, bir kapsayıcı kayıt defteri oluşturur ve `kubectl` yardımcı programı yapılandırır.
+Bu belge Ayrıca, [Azure Kubernetes hizmet öğreticisi](../../aks/tutorial-kubernetes-prepare-app.md)aracılığıyla bir cede olduğunu varsaymaktadır. Bu makale bir kapsayıcı hizmeti oluşturur, bir Kubernetes kümesi, bir kapsayıcı kayıt defteri oluşturur ve `kubectl` yardımcı programını yapılandırır.
 
 ## <a name="architecture"></a>Mimari
 
@@ -57,52 +57,56 @@ Zaten bir AKS kümeniz yoksa, bir tane oluşturma hakkında bilgi edinmek için 
 * [Azure Kubernetes hizmeti (AKS) kümesi dağıtma-Portal](../../aks/kubernetes-walkthrough-portal.md)
 * [Azure Kubernetes hizmeti (AKS) kümesi dağıtma-CLı](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]  
-> AKS yükleme sırasında bir sanal ağ oluşturur. Bu ağ, sonraki bölümde HDInsight için oluşturulmuş bir ile eşlenmez.
+> [!IMPORTANT]  
+> AKS, yükleme sırasında **ek** bir kaynak grubunda bir sanal ağ oluşturur. Ek kaynak grubu **MC_resourceGroup_AKSclusterName_location**adlandırma kuralına uyar.  
+> Bu ağ, sonraki bölümde HDInsight için oluşturulmuş bir ile eşlenmez.
 
 ## <a name="configure-virtual-network-peering"></a>Sanal Ağ eşlemesini yapılandırma
 
-1. [Azure Portal](https://portal.azure.com), __kaynak grupları__' nı seçin ve ardından aks kümeniz için sanal ağı içeren kaynak grubunu bulun. Kaynak grubu adı `MC_<resourcegroup>_<akscluster>_<location>`. `resourcegroup` Ve`akscluster` girişleri, içinde kümeyi oluşturduğunuz kaynak grubunun adı ve kümenin adıdır. , `location` Kümenin oluşturulduğu konumdur.
+### <a name="identify-preliminary-information"></a>Ön bilgileri tanımla
 
-2. Kaynak grubunda, __sanal ağ__ kaynağını seçin.
+1. [Azure Portal](https://portal.azure.com), aks kümeniz için sanal ağı Içeren ek **kaynak grubunu** bulun.
 
-3. __Adres alanını__seçin. Listelenen adres alanını dikkate alın.
+2. Kaynak grubundan __sanal ağ__ kaynağını seçin. Adı daha sonra kullanmak için not edin.
 
-4. HDInsight için bir sanal ağ oluşturmak istiyorsanız __+ kaynak__, __ağ__ve ardından __sanal ağ__oluştur ' u seçin.
+3. **Ayarlar**altında __Adres alanı__' nı seçin. Listelenen adres alanını dikkate alın.
 
-    > [!IMPORTANT]  
-    > Yeni sanal ağın değerlerini girerken, AKS küme ağı tarafından kullanılan ile örtüşmeyen bir adres alanı kullanmanız gerekir.
+### <a name="create-virtual-network"></a>Sanal ağ oluşturma
 
-    AKS kümesi için kullandığınız sanal ağ için aynı __konumu__ kullanın.
+1. HDInsight için bir sanal ağ oluşturmak üzere + __sanal ağ__ > __ağ__ > __kaynak oluştur ' a__ gidin.
 
-    Sonraki adıma geçmeden önce sanal ağ oluşturuluncaya kadar bekleyin.
+1. Belirli özellikler için aşağıdaki yönergeleri kullanarak ağı oluşturun:
 
-5. HDInsight ağı ile AKS küme ağı arasındaki eşlemeyi yapılandırmak için sanal __ağı seçin ve__ardından eşlemeler ' i seçin. __+ Ekle__ ' yi seçin ve formu doldurmak için aşağıdaki değerleri kullanın:
+    |Özellik | Değer |
+    |---|---|
+    |Adres alanı|AKS küme ağı tarafından kullanılan ile örtüşmeyen bir adres alanı kullanmanız gerekir.|
+    |Konum|AKS kümesi için kullandığınız sanal ağ için aynı __konumu__ kullanın.|
 
-   * __Ad__: Bu eşleme yapılandırması için benzersiz bir ad girin.
-   * __Sanal ağ__: **Aks kümesi**için sanal ağı seçmek üzere bu alanı kullanın.
+1. Sonraki adıma geçmeden önce sanal ağ oluşturuluncaya kadar bekleyin.
 
-     Tüm diğer alanları varsayılan değerde bırakın, sonra eşlemeyi yapılandırmak için __Tamam__ ' ı seçin.
+### <a name="configure-peering"></a>Eşlemeyi yapılandırma
 
-6. AKS küme ağı ve HDInsight ağı arasındaki eşlemeyi yapılandırmak için __aks kümesi sanal ağını__ __seçin ve__ardından eşlemeler ' i seçin. __+ Ekle__ ' yi seçin ve formu doldurmak için aşağıdaki değerleri kullanın:
+1. HDInsight ağı ile AKS küme ağı arasındaki eşlemeyi yapılandırmak için sanal __ağı seçin ve__ardından eşlemeler ' i seçin.
 
-   * __Ad__: Bu eşleme yapılandırması için benzersiz bir ad girin.
-   * __Sanal ağ__: __HDInsight kümesi__için sanal ağı seçmek üzere bu alanı kullanın.
+1. __+ Ekle__ ' yi seçin ve formu doldurmak için aşağıdaki değerleri kullanın:
 
-     Tüm diğer alanları varsayılan değerde bırakın, sonra eşlemeyi yapılandırmak için __Tamam__ ' ı seçin.
+    |Özellik |Değer |
+    |---|---|
+    |Bu VN > uzak sanal ağa \<eşleme adı|Bu eşleme yapılandırması için benzersiz bir ad girin.|
+    |Sanal ağ|**aks kümesi**için sanal ağı seçin.|
+    |Bu VN \<için \<AKS VN > eşleme adı >|Benzersiz bir ad girin.|
 
-## <a name="install-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka yüklemesi
+    Tüm diğer alanları varsayılan değerde bırakın, sonra eşlemeyi yapılandırmak için __Tamam__ ' ı seçin.
+
+## <a name="create-apache-kafka-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Kafka kümesi oluşturma
 
 HDInsight kümesinde Kafka oluştururken, daha önce HDInsight için oluşturulan sanal ağa katılmanız gerekir. Kafka kümesi oluşturma hakkında daha fazla bilgi için [Apache Kafka kümesi oluşturma](apache-kafka-get-started.md) belgesi bölümüne bakın.
-
-> [!IMPORTANT]  
-> Kümeyi oluştururken, HDInsight için oluşturduğunuz sanal ağa katmak için __Gelişmiş ayarları__ kullanmanız gerekir.
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Apache Kafka IP tanıtımı yapılandırma
 
 Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandırmak için aşağıdaki adımları kullanın:
 
-1. Bir Web tarayıcısı kullanarak adresine gidin https://CLUSTERNAME.azurehdinsight.net. __Clustername__ öğesini HDInsight kümesindeki Kafka adıyla değiştirin.
+1. Web tarayıcısını kullanarak `https://CLUSTERNAME.azurehdinsight.net` adresine gidin. CLUSTERNAME öğesini HDInsight kümesindeki Kafka adıyla değiştirin.
 
     İstendiğinde, küme için HTTPS Kullanıcı adı ve parolasını kullanın. Küme için ambarı Web Kullanıcı arabirimi görüntülenir.
 
@@ -114,7 +118,7 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
 
     ![Apache ambarı Hizmetleri Yapılandırması](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki `kafka-env` __filtre__ alanına girin.
+4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki __filtre__ alanına `kafka-env` girin.
 
     ![Kafka-env için Kafka yapılandırması](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
@@ -128,9 +132,9 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Kafka tarafından dinlediği arabirimi yapılandırmak için sağ üst köşedeki `listeners` __filtre__ alanına girin.
+6. Kafka tarafından dinlediği arabirimi yapılandırmak için sağ üst köşedeki __filtre__ alanına `listeners` girin.
 
-7. Kafka 'i tüm ağ arabirimlerini dinlemek üzere yapılandırmak için, __dinleyiciler__ alanındaki değeri olarak `PLAINTEXT://0.0.0.0:9092`değiştirin.
+7. Kafka 'i tüm ağ arabirimlerini dinlemek üzere yapılandırmak için, __dinleyiciler__ alanındaki değeri `PLAINTEXT://0.0.0.0:9092`olarak değiştirin.
 
 8. Yapılandırma değişikliklerini kaydetmek için __Kaydet__ düğmesini kullanın. Değişiklikleri açıklayan bir kısa mesaj girin. Değişiklikler kaydedildikten sonra __Tamam ' ı__ seçin.
 
@@ -152,23 +156,23 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
 
 1. Test uygulaması tarafından kullanılan bir Kafka konu başlığı oluşturun. Kafka konu başlıkları oluşturma hakkında daha fazla bilgi için [Apache Kafka kümesi oluşturma](apache-kafka-get-started.md) belgesi bölümüne bakın.
 
-2. Örnek uygulamayı konumundan [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test)indirin.
+2. Örnek uygulamayı [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test)indirin.
 
-3. `index.js` Dosyayı düzenleyin ve aşağıdaki satırları değiştirin:
+3. `index.js` dosyasını düzenleyin ve aşağıdaki satırları değiştirin:
 
-    * `var topic = 'mytopic'`: Bu `mytopic` uygulama tarafından kullanılan Kafka konusunun adıyla değiştirin.
-    * `var brokerHost = '176.16.0.13:9092`: Kümeniz `176.16.0.13` için aracı konaklarından birinin iç IP adresi ile değiştirin.
+    * `var topic = 'mytopic'`: `mytopic`, bu uygulama tarafından kullanılan Kafka konusunun adıyla değiştirin.
+    * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13`, kümenizin aracı konaklarından birinin iç IP adresiyle değiştirin.
 
-        Kümedeki aracı ana bilgisayarlarının (workernodes) iç IP adresini bulmak için, bkz. [Apache ambarı REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) belgesi. Etki alanı adının başladığı `wn`girdilerden birinin IP adresini seçin.
+        Kümedeki aracı ana bilgisayarlarının (workernodes) iç IP adresini bulmak için, bkz. [Apache ambarı REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) belgesi. `wn`etki alanı adının başladığı girdilerden birinin IP adresini seçin.
 
-4. `src` Dizindeki bir komut satırından, dağıtım için bir görüntü oluşturmak üzere bağımlılıkları yükleyip Docker kullanın:
+4. `src` dizindeki bir komut satırından, dağıtım için bir görüntü oluşturmak üzere bağımlılıkları yükleyip Docker kullanın:
 
     ```bash
     docker build -t kafka-aks-test .
     ```
 
     > [!NOTE]  
-    > Bu uygulama için gereken paketler depoya iade edilmiş olduğundan, bunları yüklemek için `npm` yardımcı programı kullanmanıza gerek yoktur.
+    > Bu uygulamanın gerektirdiği paketler depoya iade edilmiş olduğundan, `npm` yardımcı programını kullanarak bunları yüklemeniz gerekmez.
 
 5. Azure Container Registry (ACR) oturumunuzu açın ve loginServer adını bulun:
 
@@ -180,7 +184,7 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
     > [!NOTE]  
     > Azure Container Registry adınızı bilmiyorsanız veya Azure Kubernetes hizmeti ile çalışmak üzere Azure CLı 'yı kullanma konusunda bilgi sahibi değilseniz, [aks öğreticileri](../../aks/tutorial-kubernetes-prepare-app.md)' ne bakın.
 
-6. Yerel `kafka-aks-test` görüntüyü ACR 'nizin loginserver ile etiketleyin. Görüntü sürümünü `:v1` belirtmek için de sonuna ekleyin:
+6. Yerel `kafka-aks-test` görüntüsünü ACR 'nizin loginServer ile etiketleyin. Ayrıca görüntünün sürümünü belirtmek için sonuna `:v1` ekleyin:
 
     ```bash
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
@@ -194,7 +198,7 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
 
     Bu işlemin tamamlanabilmesi birkaç dakika sürer.
 
-8. Kubernetes bildirim dosyasını (`kafka-aks-test.yaml`) düzenleyin ve 4. adımda alınan ACR loginserver adıyla değiştirin. `microsoft`
+8. Kubernetes bildirim dosyasını (`kafka-aks-test.yaml`) düzenleyin ve `microsoft` değerini 4. adımda alınan ACR loginServer adıyla değiştirin.
 
 9. Bildirimden uygulama ayarlarını dağıtmak için aşağıdaki komutu kullanın:
 
@@ -202,7 +206,7 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
     kubectl create -f kafka-aks-test.yaml
     ```
 
-10. Uygulamanın izlemek `EXTERNAL-IP` için aşağıdaki komutu kullanın:
+10. Uygulamanın `EXTERNAL-IP` izlemek için aşağıdaki komutu kullanın:
 
     ```bash
     kubectl get service kafka-aks-test --watch

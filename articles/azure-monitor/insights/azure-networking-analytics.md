@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899144"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893323"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -45,7 +45,7 @@ Daha fazla bilgi için bkz. [ağ performansı İzleyicisi](https://docs.microsof
 
 Tanılamayı ve ilgili çözümü Application Gateway ve ağ güvenlik gruplarından birini ya da her ikisini de etkinleştirebilirsiniz.
 
-Belirli bir kaynak türü için tanılama günlüğünü etkinleştirmezseniz, ancak çözümü yüklerseniz, bu kaynağın Pano dikey pencereleri boştur ve bir hata iletisi görüntüler.
+Belirli bir kaynak türü için tanılama kaynak günlüğünü etkinleştirmezseniz, ancak çözümü yüklerseniz, bu kaynağın Pano dikey pencereleri boştur ve bir hata iletisi görüntüler.
 
 > [!NOTE]
 > 2017 Ocak 'ta uygulama ağ geçitlerinden ve ağ güvenlik gruplarından günlüklerin Log Analytics çalışma alanına gönderilmesi için desteklenen yol değişti. **Azure Ağ Analizi (kullanım dışı)** çözümünü görürseniz, izlemeniz gereken adımlar Için [eski ağ analizi çözümünden geçiş](#migrating-from-the-old-networking-analytics-solution) konusuna bakın.
@@ -77,7 +77,7 @@ Uygulama ağ geçitleri için aşağıdaki ölçümler desteklenir: tekrar
 
 * 5 dakikalık aktarım hızı
 
-### <a name="install-and-configure-the-solution"></a>Çözümü yükleyip yapılandırma
+### <a name="install-and-configure-the-solution"></a>Yükleme ve çözüm yapılandırma
 Azure Application Gateway Analytics çözümünü yüklemek ve yapılandırmak için aşağıdaki yönergeleri kullanın:
 
 1. Azure Application Gateway Analytics çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 'nden veya [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
@@ -100,7 +100,7 @@ Azure Application Gateway Analytics çözümünü yüklemek ve yapılandırmak i
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell kullanarak Azure Ağ Tanılama 'yı etkinleştirme
 
-Aşağıdaki PowerShell betiği, uygulama ağ geçitleri için tanılama günlüğü 'nün nasıl etkinleştirileceği hakkında bir örnek sağlar.
+Aşağıdaki PowerShell betiği, uygulama ağ geçitleri için kaynak günlüğüne nasıl etkinleştireceğinizi gösteren bir örnek sağlar.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,14 +141,14 @@ Günlük arama sayfalarında, sonuçları zamana, ayrıntılı sonuçlara ve gü
 > Ağ güvenlik grubu analizi çözümü, işlevselliği [Trafik Analizi](../../network-watcher/traffic-analytics.md)tarafından değiştirildiğinden topluluk desteğine taşınıyor.
 > - Bu çözüm artık [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) kullanılabilir ve yakında Azure Marketi 'nde kullanılamaz.
 > - Çözümü çalışma alanına zaten ekleyen mevcut müşteriler için hiçbir değişiklik yapmadan çalışmaya devam edecektir.
-> - Microsoft, tanılama ayarlarını kullanarak çalışma alanınıza NSG tanılama günlükleri göndermeyi desteklemeye devam edecektir.
+> - Microsoft, tanılama ayarlarını kullanarak çalışma alanınıza NSG kaynak günlüklerinin gönderilmesini desteklemeye devam edecektir.
 
 Aşağıdaki Günlükler ağ güvenlik grupları için desteklenir:
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
 
-### <a name="install-and-configure-the-solution"></a>Çözümü yükleyip yapılandırma
+### <a name="install-and-configure-the-solution"></a>Yükleme ve çözüm yapılandırma
 Azure ağ analizi çözümünü yüklemek ve yapılandırmak için aşağıdaki yönergeleri kullanın:
 
 1. Azure ağ güvenlik grubu Analizi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) 'nden veya [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
@@ -171,7 +171,7 @@ Azure ağ analizi çözümünü yüklemek ve yapılandırmak için aşağıdaki 
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell kullanarak Azure Ağ Tanılama 'yı etkinleştirme
 
-Aşağıdaki PowerShell betiği, ağ güvenlik grupları için tanılama günlüğünü etkinleştirme hakkında bir örnek sağlar
+Aşağıdaki PowerShell betiği, ağ güvenlik grupları için kaynak günlüğü oluşturmayı nasıl etkinleştireceğinizi gösteren bir örnek sağlar
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

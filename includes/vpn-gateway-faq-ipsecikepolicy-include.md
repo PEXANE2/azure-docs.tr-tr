@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075400"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903105"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
 Özel IPSec/ıKE ilkesi, temel SKU dışında tüm Azure SKU 'Larında desteklenir.
@@ -110,7 +110,7 @@ IKEv1 bağlantısı, temel SKU dışında tüm RouteBased VPN türü SKU 'Ların
 Evet. IKEv1 ve IKEv2 bağlantıları arasındaki aktarım desteklenir.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>RouteBased VPN türünün temel SKU 'Larında siteden siteye bağlantıları IKEv1 olabilir mi?
-Hayır. Rota tabanlı VPN türünün temel SKU 'Ları dışındaki tüm RouteBased VPN SKU 'ları siteden siteye bağlantı için IKEv1 bağlantılarını destekler.
+Hayır. Temel SKU bunu desteklemez.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Bağlantı oluşturulduktan sonra bağlantı protokolü türünü değiştirebilir miyim (Ikev2 'e IKEv1 ve tam tersi)?
 Hayır. Bağlantı oluşturulduktan sonra, IKEv1/Ikev2 protokolleri değiştirilemez. İstenen protokol türüyle yeni bir bağlantı silip yeniden oluşturmanız gerekir.

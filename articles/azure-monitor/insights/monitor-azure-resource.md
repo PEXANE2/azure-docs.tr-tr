@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 230b79a5062262a85d3090e15ed52d67c38ed3e9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928466"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888793"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -91,7 +91,7 @@ Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek i�
  Çoğu Azure kaynağının izleme verilerine, Azure portal kaynağın menüsünden erişebilirsiniz. Bu, standart Azure Izleyici araçlarını kullanarak tek bir kaynağın verilerine erişmenizi sağlar. Bazı Azure Hizmetleri farklı seçenekler sağlayacak, bu nedenle ek bilgi için bu hizmetin belgelerine başvurmanız gerekir. İzlenen tüm kaynaklardaki verileri çözümlemek için **Azure izleyici** menüsünü kullanın. 
 
 ### <a name="overview"></a>Genel Bakış
-Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış olarak izleme verileri içerir. Bu, genellikle Azure Izleyici ölçümlerinde depolanan platform ölçümlerinin bir alt kümesini temel alır. Diğer izleme seçenekleri, genellikle hizmetlerin **izleme** bölümünde kullanılabilir. Menü.
+Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış olarak izleme verileri içerir. Bu, genellikle Azure Izleyici ölçümlerinde depolanan platform ölçümlerinin bir alt kümesini temel alır. Diğer izleme seçenekleri, genellikle hizmetlerin **izleme** bölümünde kullanılabilir. izleyin.
 
 ![Genel Bakış sayfası](media/monitor-azure-resource/overview-page.png)
 
@@ -101,7 +101,7 @@ Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç 
 
 Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüsündeki **izleme** 'den erişebilirsiniz. **Azure izleyici** menüsünden tüm Öngörüler ve çözümlere erişin.
 
-![Insights](media/monitor-azure-resource/insights.png)
+![Bilgiler](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Ölçümler
 Ölçüm [Gezgini](../platform/metrics-getting-started.md) 'ni kullanarak Azure Portal ölçümleri analiz ederek, çoğu hizmet için **ölçümler** menü öğesinden kullanılabilir. Bu araç, bağıntıları ve eğilimleri belirlemek için bireysel ölçümlerle çalışmanıza veya birden çok birleştirme yapmanıza olanak sağlar. 
@@ -164,4 +164,4 @@ Uyarıları görüntülemek ve bu kaynakla ilgili uyarı kurallarını yönetmek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/diagnostic-logs-schema.md) .  
+* Farklı Azure hizmetlerine yönelik kaynak günlüklerinin ayrıntıları için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../platform/diagnostic-logs-schema.md) .  

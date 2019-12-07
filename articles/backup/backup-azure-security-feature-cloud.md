@@ -3,12 +3,12 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278217"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894037"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -24,7 +24,7 @@ Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik 
 
 Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fransa Orta, Fransa Güney, Kore Orta, Kore Güney, UK Güney, UK Batı, Avustralya Doğu, Avustralya Güney Doğu, Kuzey Avrupa, Batı ABD, Batı ABD2, Orta ABD, Güney Doğu Asya, Orta Kuzey ABD, Orta Güney ABD, Japonya Doğu, Japonya Batı, Hindistan Güney, Hindistan Orta, Hindistan Batı, Doğu ABD 2, İsviçre Kuzey, İsviçre Batı ve tüm ulusal bölgeler.
 
-### <a name="soft-delete-for-vms"></a>VM 'Ler için geçici silme
+### <a name="soft-delete-for-vms-using-azure-portal"></a>Azure portal kullanarak VM 'Ler için geçici silme
 
 1. Bir sanal makinenin yedekleme verilerini silmek için yedeklemenin durdurulması gerekir. Azure portal, kurtarma hizmetleri kasanıza gidin, Yedekleme öğesine sağ tıklayın ve **Yedeklemeyi Durdur**' u seçin.
 
@@ -66,9 +66,59 @@ Bu akış grafiği, geçici silme etkinleştirildiğinde bir yedekleme öğesini
 
 Daha fazla bilgi için aşağıdaki [sık sorulan sorular](backup-azure-security-feature-cloud.md#frequently-asked-questions) bölümüne bakın.
 
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>Azure PowerShell kullanarak VM 'Ler için geçici silme
+
+> [!IMPORTANT]
+> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. En son sürümü almak için ```Install-Module -Name Az.RecoveryServices -Force``` kullanın.
+
+Azure portal için yukarıda özetlenen şekilde, Azure PowerShell kullanılırken adımların sırası da aynı olur.
+
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell 'i kullanarak yedekleme öğesini silme
+
+[Devre dışı bırakma-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet 'ini kullanarak yedekleme öğesini silin.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' iken ' ToBeDeleted ' olarak değiştirilecek. Yedekleme verileri 14 gün boyunca tutulacaktır. Silme işlemini geri almak isterseniz geri alma-silme gerçekleştirilmelidir.
+
+#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Azure PowerShell 'i kullanarak silme işlemini geri alma
+
+İlk olarak, geçici silme durumunda olan ilgili yedekleme öğesini (örneğin, silinmek üzere) getirin
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Ardından, [Undo-Azrecoveryservicesbackupıtemsilinmeye](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS cmdlet 'ini kullanarak geri alma silme işlemini gerçekleştirin.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' olarak döndürülecek. Ancak koruma hala durdurulmuş. Korumayı yeniden etkinleştirmek için [yedeklemeyi sürdürmeniz](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) gerekir.
+
 ## <a name="disabling-soft-delete"></a>Geçici silme devre dışı bırakılıyor
 
 Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silinmeden ve yeniden korumadan önce 14 gün önce bekleyemez (örneğin, bir test ortamında). Yalnızca bir yedekleme Yöneticisi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korumalı öğelerin tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
+
+### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal kullanarak geçici silme devre dışı bırakılıyor
 
 Geçici silme devre dışı bırakmak için şu adımları izleyin:
 
@@ -76,17 +126,36 @@ Geçici silme devre dışı bırakmak için şu adımları izleyin:
 2. Özellikler bölmesinde, **güvenlik ayarları** -> **Güncelleştir**' i seçin.  
 3. Güvenlik ayarları bölmesinde, **geçici silme**altında **devre dışı bırak**' ı seçin.
 
-
 ![Geçici silmeyi devre dışı bırak](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+### <a name="disabling-soft-delete-using-azure-powershell"></a>Azure PowerShell kullanarak geçici silme devre dışı bırakılıyor
+
+> [!IMPORTANT]
+> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. En son sürümü almak için ```Install-Module -Name Az.RecoveryServices -Force``` kullanın.
+
+Devre dışı bırakmak için [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS cmdlet 'ini kullanın.
+
+```powershell
+Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
+
+
+StorageModelType       :
+StorageType            :
+StorageTypeState       :
+EnhancedSecurityState  : Enabled
+SoftDeleteFeatureState : Disabled
+```
 
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Geçici olarak silinen yedekleme öğelerini kalıcı olarak silme
 
-Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek istiyorsanız silmeyi geri alın ve kalıcı olarak silmek için yeniden silin. 
+Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek istiyorsanız silmeyi geri alın ve kalıcı olarak silmek için yeniden silin.
+
+### <a name="using-azure-portal"></a>Azure portalını kullanma
 
 Şu adımları uygulayın:
 
 1. [Geçici silme özelliğini devre dışı bırakmak](#disabling-soft-delete)için adımları izleyin. 
-2. Azure portal, kasanıza gidin, **yedekleme öğeleri** ' ne gidin ve geçici olarak silinen VM 'yi seçin 
+2. Azure portal, kasanıza gidin, **yedekleme öğeleri** ' ne gidin ve geçici olarak silinen VM 'yi seçin
 
 ![Geçici olarak silinen VM 'yi seçin](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -109,6 +178,42 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 7. Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
 
+### <a name="using-azure-powershell"></a>Azure PowerShell 'i kullanma
+
+Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar geçici olarak silinmiş durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
+
+Geçici olarak silinmiş durumdaki öğeleri belirler.
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Ardından, geçici silme etkinken gerçekleştirilen silme işlemini tersine çevirin.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+Geçici silme devre dışı olduğundan, silme işlemi yedekleme verilerinin anında kaldırılmasına neden olur.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
 
 ## <a name="other-security-features"></a>Diğer güvenlik özellikleri
 
@@ -168,7 +273,7 @@ Hayır. Geçici olarak silinen öğeleri silmeye zorlenemez, bunlar 14 gün sonr
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell veya CLı 'de geçici silme işlemleri yapılabilir mi?
 
-Hayır, PowerShell veya CLı desteği şu anda kullanılamıyor.
+Geçici silme işlemleri, [PowerShell](#soft-delete-for-vms-using-azure-powershell)kullanılarak gerçekleştirilebilir. Şu anda CLı desteklenmez.
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>Azure VM 'lerinde SQL Server ve Azure VM 'lerinde SAP HANA gibi diğer bulut iş yükleri için de geçici silme destekleniyor mu?
 

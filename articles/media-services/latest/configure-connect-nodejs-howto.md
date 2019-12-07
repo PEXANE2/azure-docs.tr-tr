@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 API-Node. js ' ye bağlanma
-description: Node. js ile Media Services v3 API 'sine nasıl bağlanacağınızı öğrenin.
+description: Bu makalede, Node. js ile Media Services v3 API 'sine nasıl bağlanacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048429"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896109"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API-Node. js ' ye bağlanma
 
@@ -26,7 +26,7 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Node. js](https://nodejs.org/en/download/)' i yükler.
+- [Node.js](https://nodejs.org/en/download/)’yi yükleyin.
 - [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
 
 > [!IMPORTANT]

@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186461"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901167"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastik havuzlar birden çok Azure SQL veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 
-SQL Veritabanı elastik havuzları, kullanım talepleri değişken olan ve öngörülmeyen birden çok veritabanını yönetmeye ve ölçeklendirmeye yönelik kolay ve ekonomik bir çözümdür. Elastik havuzdaki veritabanları tek bir Azure SQL veritabanı sunucusunda bulunur ve ayarlanan fiyata bir dizi kaynağı paylaşır. Azure SQL Veritabanındaki elastik havuzlar, SaaS geliştiricilerinin bir veritabanı grubuna ait fiyat performansını belirtilen bütçe dahilinde iyileştirmesini ve aynı zamanda her veritabanı için performans Elastikliği sunmasını sağlar.
+SQL Veritabanı elastik havuzları, kullanım talepleri değişken olan ve öngörülmeyen birden çok veritabanını yönetmeye ve ölçeklendirmeye yönelik kolay ve ekonomik bir çözümdür. Elastik havuz içindeki veritabanları tek bir Azure SQL Veritabanı sunucusunda bulunur ve sabit fiyatla belirli bir kaynak kümesini paylaşır. Azure SQL Veritabanındaki elastik havuzlar, SaaS geliştiricilerinin bir veritabanı grubuna ait fiyat performansını belirtilen bütçe dahilinde iyileştirmesini ve aynı zamanda her veritabanı için performans Elastikliği sunmasını sağlar.
 
 ## <a name="what-are-sql-elastic-pools"></a>SQL elastik havuzları nelerdir
 
-SaaS geliştiricileri, birden fazla veritabanından oluşan büyük ölçekli veri katmanlarının üzerinde uygulamalar oluşturur. Her müşteri için tek veritabanı sağlanması yaygın bir uygulama modelidir. Ancak, farklı müşteriler genellikle değişen ve tahmin edilemeyen kullanım modellerine sahiptir ve her veritabanı kullanıcısının kaynak gereksinimlerini tahmin etmek zordur. Geleneksel olarak iki seçeneğiniz vardır:
+SaaS geliştiricileri, birden fazla veritabanından oluşan büyük ölçekli veri katmanlarının üzerinde uygulamalar oluşturur. Her müşteri için tek veritabanı sağlanması yaygın bir uygulama modelidir. Ancak farklı müşteriler genellikle değişen ve öngörülemeyen kullanım düzenlerine sahiptir ve her veritabanı kullanıcısının kaynak gereksinimlerini tahmin etmek zordur. Geleneksel olarak iki seçeneğiniz vardır:
 
 - Yoğun kullanımı ve ödeme üzerinden kaynakları daha fazla sağlayın veya
 - Maliyet tasarrufu sağlamak için, en yüksek performans ve müşteri memnuniyetini harcamadan maliyeti tasarruf edin.
@@ -48,7 +48,7 @@ Havuz içerisinde tek tek veritabanlarına belirli parametreler içinde otomatik
 
 Havuzlar, belirli kullanım düzenlerine sahip çok sayıda veritabanı bulunan durumlar için çok uygundur. Söz konusu kullanım düzeni, belirli bir veritabanı için ortalama düşük düzeyde kullanım ile nispeten nadir zamanlarda kullanımın ani olarak artması şeklindedir.
 
-Bir havuza ekleyebileceğiniz veritabanı sayısı arttıkça, tasarruflarınız artar. Uygulama kullanım modelinize bağlı olarak, yalnızca iki S3 veritabanı ile tasarruf edildiğini görmek mümkündür.
+Bir havuza ekleyebileceğiniz veritabanı sayısı arttıkça, tasarruflarınız artar. Uygulamanızın kullanım düzenine bağlı olarak, iki S3 veritabanı kadar az sayıda tasarruf sağlamak mümkündür.
 
 Aşağıdaki bölümler veritabanı koleksiyonunuzun bir havuzda olmasının yararlarını nasıl değerlendireceğini anlamanıza yardımcı olabilir. Örneklerde Standart havuzlar kullanılmaktadır, ancak aynı ilkeler Temel ve Premium havuzlar için de geçerlidir.
 
@@ -95,7 +95,7 @@ Kaynakları paylaşarak, havuzdaki tüm veritabanları aynı anda kaynakları te
 
 200 eDTU içeren bir havuzdaki üç S3 veritabanının maliyetlerini azaltmak için, bu veritabanlarının en fazla iki tanesi kullanım sırasında en üst seviyeye çıkabilir. Aksi takdirde, bu dört S3 veritabanının ikiden fazlası eşzamanlı olarak en üst seviyeye çıkarsa, havuzun boyutu 200 eDTU’dan fazla olmak zorundadır. Havuz 200 eDTU 'dan daha fazlasına yeniden boyutlandırılırsa, tek veritabanlarının işlem boyutundan daha düşük olması için havuza daha fazla S3 veritabanının eklenmesi gerekir.
 
-Bu örnek, havuzdaki diğer veritabanlarının kullanımını dikkate almaz. Herhangi bir zamanda tüm veritabanlarının kullanımı aynı olursa, veritabanlarının 2/3’ünden (veya %67) daha azı eşzamanlı olarak en üst seviyeye çıkabilir.
+Bu örnek, havuzdaki diğer veritabanlarının kullanımını düşünmediğini göz önünde bulundurmaz. Herhangi bir zamanda tüm veritabanlarının kullanımı aynı olursa, veritabanlarının 2/3’ünden (veya %67) daha azı eşzamanlı olarak en üst seviyeye çıkabilir.
 
 ### <a name="resource-utilization-per-database"></a>Veritabanı başına kaynak kullanımı
 
@@ -155,7 +155,7 @@ Havuza alınan veritabanları genellikle tek veritabanları için kullanılabile
 
 Azure portal esnek havuz oluşturabileceğiniz iki yol vardır.
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. Azure SQL listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+1. Elastik havuz oluşturmak için [Azure Portal](https://portal.azure.com) gidin. **Azure SQL**araması yapın ve seçin.
 2. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Veritabanları** kutucuğunda **Ayrıntıları göster** ' i seçerek elastik havuzlarla ilgili ek bilgileri görüntüleyebilirsiniz.
 3. **Veritabanları** kutucuğunda **kaynak türü** açılan listesinde **Esnek havuz** ' ı seçin ve ardından **Oluştur**' u seçin.
 
@@ -177,7 +177,7 @@ Havuzu yapılandırmayı tamamladıktan sonra ' Uygula 'ya tıklayabilir, havuzu
 
 Azure portal, elastik havuzun ve bu havuzun içindeki veritabanlarının kullanımını izleyebilirsiniz. Aynı zamanda esnek havuzunuzdaki bir değişiklik kümesi de oluşturabilir ve tüm değişiklikleri aynı anda gönderebilirsiniz. Bu değişiklikler veritabanlarını ekleme veya kaldırma, elastik havuz ayarlarınızı değiştirme veya veritabanı ayarlarınızı değiştirme içerir.
 
-Elastik havuzunuzu izlemeye başlamak için portalda bir elastik havuz bulun ve açın. İlk olarak, elastik havuzunuzun durumuna ilişkin genel bir bakış sunan bir ekran görürsünüz. Buna aşağıdakiler dahildir:
+Elastik havuzunuzu izlemeye başlamak için portalda bir elastik havuz bulun ve açın. Önce esnek havuzunuzun durumuna ilişkin bir genel bakış sunan bir ekran görürsünüz. Buna aşağıdakiler dahildir:
 
 - Esnek havuzun kaynak kullanımını gösteren grafikleri izleme
 - Elastik havuz için, varsa son uyarılar ve öneriler

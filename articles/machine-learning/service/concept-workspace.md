@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 14fc91feb16fb45eee1fe2e757a717e04ef07f99
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580756"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894732"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -28,7 +28,7 @@ Fiyatlandırma ve özellikler, çalışma alanı için [temel veya Enterprise s�
 
 Çalışma alanının bir sınıflandırması aşağıdaki diyagramda gösterilmiştir:
 
-[![çalışma alanı sınıflandırması](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Çalışma alanı sınıflandırma](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 Diyagramda bir çalışma alanının aşağıdaki bileşenleri gösterilmektedir:
 
@@ -73,8 +73,8 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 |---------------------------|---------|---------|------------|------------|
 | Çalışma alanı oluşturma        | **&check;**     | | **&check;** | **&check;** |
 | Çalışma alanı erişimini yönetme    | **&check;**   || |  **&check;**    |
-| Enterprise Edition 'a yükseltme    | **&check;** |  | |     |
-| İşlem kaynaklarını oluşturma ve yönetme    |   | **&check;** | **&check;** |  **&check;**   |
+| Enterprise Edition 'a yükseltme    | **&check;** | **&check;**  | |     |
+| İşlem kaynaklarını oluşturma ve yönetme    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Not defteri VM 'si oluşturma |   | **&check;** | |     |
 
 
@@ -95,7 +95,7 @@ Azure portal kullanarak [çalışma alanınızı temel kurumsal sürüme yüksel
 
 ## <a name="resources"></a>İlişkili kaynaklar
 
-Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından kullanılan çeşitli Azure kaynaklarını otomatik olarak oluşturur:
+Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından kullanılan bazı Azure kaynakları otomatik olarak oluşturur:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
 + [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): çalışma alanı için varsayılan veri deposu olarak kullanılır.  Azure Machine Learning Not defteri VM 'niz ile kullanılan Jupyter Not defterleri burada da depolanır.

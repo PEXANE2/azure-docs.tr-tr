@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169313"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900726"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid içindeki olay işleyicileri
 
@@ -75,11 +75,11 @@ Olaylara yanıt vermek için iş süreçlerini otomatikleştirmek için Logic Ap
 
 ## <a name="service-bus"></a>Service Bus
 
-### <a name="service-bus-queues"></a>Service Bus kuyrukları
+### <a name="service-bus-queues"></a>Hizmet Veri Yolu kuyrukları
 
 Event Grid olayları, ara belleğe almak veya komut & Denetim senaryolarında kurumsal uygulamalarda kullanmak üzere Service Bus sıralara doğrudan yönlendirebilirsiniz.
 
-Azure portal, bir olay aboneliği oluştururken, uç nokta türü olarak "Service Bus kuyruğu" öğesini seçin ve ardından bir Service Bus kuyruğu seçmek için "Seç ve uç nokta" a tıklayın.
+Azure portal, bir olay aboneliği oluştururken, uç nokta türü olarak "Service Bus kuyruğu" öğesini seçin ve ardından bir Service Bus kuyruğu seçmek için "uç nokta seç" e tıklayın.
 
 #### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Service Bus kuyruğu işleyicisi eklemek için CLı kullanma
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815301"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896475"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Konuşma hizmetini kullanarak özel anahtar sözcük oluşturma
 
@@ -50,17 +50,29 @@ Bir anahtar sözcük seçerken aşağıdaki yönergeleri göz önünde bulunduru
 
 1. [Konuşma Studio](https://aka.ms/sdsdk-speechportal) 'ya gidin ve **oturum açın** veya henüz bir konuşma aboneliğiniz yoksa, [**abonelik oluştur**](https://go.microsoft.com/fwlink/?linkid=2086754)' u seçin.
 
-1. [Özel anahtar sözcük](https://aka.ms/sdsdk-wakewordportal) sayfasında, istediğiniz anahtar sözcüğü yazın ve **anahtar sözcük ekle**' ye tıklayın. Etkin bir anahtar sözcük seçmenize yardımcı olmak için bazı [kılavuzlardır](#choose-an-effective-keyword) . Destek şu anda en-US diliyle sınırlıdır.
+1. [Özel anahtar sözcük](https://aka.ms/sdsdk-wakewordportal) sayfasında **Yeni bir proje**oluşturun. 
 
-    ![Anahtar keliinizi girin](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. Bir **ad**, isteğe bağlı bir **Açıklama**girin ve dili seçin. Her dil için bir proje gerekir ve destek şu anda en-US diliyle sınırlı olur.
 
-1. Portal şimdi anahtar kelimeden aday söylenişleri oluşturacak. Oynat düğmelerine tıklayarak her bir adayı dinleyin ve yanlış olan herhangi bir söylenin yanındaki denetimleri kaldırın. Yalnızca güzel Söylenişler denetlendikten sonra, anahtar sözcüğünü oluşturmaya başlamak için **Gönder** ' i seçin. Anahtar sözcüğünü değiştirmek istiyorsanız, ilk olarak var olanı, üzerine gelindiğinde satırın sağ tarafında görüntülenen Sil düğmesine tıklayarak kaldırın.
+    ![Anahtar sözcük projenizi açıkla](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![Anahtar keliinizi gözden geçirin](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. Listeden projenizi seçin. 
 
-1. Modelin oluşturulması bir dakika kadar sürebilir. Bundan sonra dosyayı indirmeniz istenir.
+    ![Anahtar sözcük projenizi seçin](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![Anahtar keliinizi indirin](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. Yeni bir anahtar sözcük modeli başlatmak için **modeli eğitme**' ye tıklayın.
+
+1. Anahtar sözcük modeli için bir **ad** ve Isteğe bağlı **Açıklama** girin ve istediğiniz **anahtar sözcüğü** yazın ve **İleri**' ye tıklayın. Etkin bir anahtar sözcük seçmenize yardımcı olmak için bazı [kılavuzlardır](#choose-an-effective-keyword) .
+
+    ![Anahtar keliinizi girin](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. Portal şimdi anahtar kelimeden aday söylenişleri oluşturacak. Oynat düğmelerine tıklayarak her bir adayı dinleyin ve yanlış olan herhangi bir söylenin yanındaki denetimleri kaldırın. Yalnızca güzel Söylenişler denetlendikten sonra, anahtar sözcüğünü oluşturmaya başlamak için **eğitme** ' ye tıklayın. 
+
+    ![Anahtar keliinizi gözden geçirin](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. Modelin oluşturulması on dakika kadar sürebilir. Model tamamlandığında anahtar sözcük listesi **Işlemden** **başarılı** olarak değişecektir. Sonra dosyayı indirebilirsiniz.
+
+    ![Anahtar keliinizi gözden geçirin](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. .Zip dosyasını bilgisayarınıza kaydedin. Özel anahtar keliinizi cihazınıza dağıtmak için bu dosyaya ihtiyacınız olacak.
 

@@ -1,6 +1,6 @@
 ---
 title: REST ile içerik anahtarları oluşturma | Microsoft Docs
-description: Varlıklara güvenli erişim sağlayan bir içerik anahtarı oluşturmayı öğrenin.
+description: Bu makalede, varlıklara güvenli erişim sağlayan içerik anahtarlarının nasıl oluşturulacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 84fd4f0971c56d8cf2cdf138ba8ac8ea1a6e07eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9927de3ab3fb68cea17095d7255fd8a68f66c9a8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711535"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901484"
 ---
-# <a name="create-content-keys-with-rest"></a>REST ile içerik anahtarı oluşturma
+# <a name="create-content-keys-with-rest"></a>REST ile içerik anahtarları oluşturma
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-Media Services, şifrelenmiş varlıklar iletmenizi sağlar. A **ContentKey** güvenli erişim sağlayan, **varlık**s. 
+Media Services şifrelenmiş varlıklar sunmanızı sağlar. Bir **Contentkey** , **varlığınıza güvenli**erişim sağlar. 
 
-Yeni bir varlık oluşturduğunuzda (örneğin, önce [dosyaları karşıya yükleme](media-services-rest-upload-files.md)), aşağıdaki şifreleme seçenekleri belirleyebilirsiniz: **StorageEncrypted**, **CommonEncryptionProtected**, veya **EnvelopeEncryptionProtected**. 
+Yeni bir varlık oluşturduğunuzda (örneğin, [dosyaları karşıya](media-services-rest-upload-files.md)yüklemeden önce) aşağıdaki şifreleme seçeneklerini belirtebilirsiniz: **storageencryptıon**, **CommonEncryptionProtected**veya **EnvelopeEncryptionProtected**. 
 
-Varlıklar, istemcilere teslim zaman [varlıklarını dinamik olarak şifrelenmesini yapılandırma](media-services-rest-configure-asset-delivery-policy.md) aşağıdaki iki şifrelerinden biri ile: **DynamicEnvelopeEncryption** veya **DynamicCommonEncryption**.
+İstemcilerinize varlıklar sunışınızda, varlıkların aşağıdaki iki şifreleden biriyle [dinamik olarak şifrelenmesini](media-services-rest-configure-asset-delivery-policy.md) sağlayabilirsiniz: **DynamicEnvelopeEncryption** veya **dynamiccommonencryption**.
 
-Şifrelenmiş varlıklar sahip ilişkilendirilecek **ContentKey**s. Bu makalede, bir içerik anahtarı oluşturma işlemini açıklar.
+Şifrelenmiş varlıkların, **Contentkey**s ile ilişkilendirilmesi gerekir. Bu makalede bir içerik anahtarının nasıl oluşturulacağı açıklanır.
 
-Şifrelenmesini istediğiniz varlıkların ile ilişkilendirmek, içerik anahtarı oluşturmak için genel adımlar aşağıdadır. 
+Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içerik anahtarlarının oluşturulması için genel adımlar verilmiştir. 
 
-1. Rastgele bir 16 baytlık AES anahtar (ortak ve zarf şifreleme) veya (depolama şifrelemesi için) 32 bayt AES anahtarı oluşturur. 
+1. Rastgele bir 16 baytlık AES anahtarı (ortak ve zarf şifrelemesi için) veya 32 baytlık AES anahtarını (depolama şifrelemesi için) rastgele oluşturun. 
    
-    Şifre çözme sırasında aynı içerik anahtarı kullanan varlık gereken ilişkilendirilmiş tüm dosyalar anlamına gelir, varlık için içerik anahtarını budur. 
-2. Çağrı [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) içerik anahtarınızı şifrelemek için kullanılacak doğru X.509 sertifikası almak için yöntemleri.
-3. İçerik anahtarınız X.509 sertifikasının ortak anahtarla şifreler. 
+    Bu, varlığınızın içerik anahtarıdır. Bu, söz konusu varlıkla ilişkili tüm dosyaların şifre çözme sırasında aynı içerik anahtarını kullanması gerektiği anlamına gelir. 
+2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X. 509.952 sertifikasını almak için [Getprotectionkeyıd](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [getprotectionkey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) yöntemlerini çağırın.
+3. İçerik anahtarınızı X. 509.440 sertifikasının ortak anahtarıyla şifreleyin. 
    
-   Media Services .NET SDK ile OAEP RSA şifreleme yaparken kullanır.  Bir örnekte gördüğünüz [EncryptSymmetricKeyData işlevi](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Anahtar tanımlayıcısı ve içerik anahtarı kullanılarak hesaplanan (PlayReady ve AES anahtar sağlama toplamı algoritmasına göre) bir sağlama toplamı değeri oluşturun. Daha fazla bilgi için PlayReady üstbilgisi nesne belgenin bulunan "PlayReady AES anahtar sağlama algoritması" bölümüne bakın [burada](https://www.microsoft.com/playready/documents/).
+   Media Services .NET SDK, şifrelemeyi yaparken OAEP ile RSA kullanır.  [Encryptsymmetrickeydata işlevinde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)bir örnek görebilirsiniz.
+4. Anahtar tanımlayıcısı ve içerik anahtarı kullanılarak hesaplanan bir sağlama toplamı değeri (PlayReady AES anahtar sağlama toplaması algoritması temelinde) oluşturun. Daha fazla bilgi için [burada](https://www.microsoft.com/playready/documents/)bulunan PlayReady üstbilgi nesne belgesinin "PlayReady AES Key checksum algoritması" bölümüne bakın.
    
-   Aşağıdaki .NET örnek anahtar tanımlayıcısı ve Temizle içerik anahtarı GUID kısmını kullanarak sağlama toplamını hesaplar.
+   Aşağıdaki .NET örneği, anahtar tanımlayıcısının GUID bölümünü ve açık içerik anahtarını kullanarak sağlama toplamını hesaplar.
    
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -66,21 +66,21 @@ Varlıklar, istemcilere teslim zaman [varlıklarını dinamik olarak şifrelenme
              Array.Copy(array, array2, 8);
              return Convert.ToBase64String(array2);
          }
-5. İçerik anahtarı ile oluşturmak **EncryptedContentKey** (base64 ile kodlanmış dizeye dönüştürülür) **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, ve **sağlama toplamı** önceki adımlarda almış değerleri.
-6. İlişkilendirme **ContentKey** varlıkla, **varlık** $links işlemle varlık.
+5. Önceki adımlarda aldığınız **Encryptedcontentkey** (base64 kodlu dizeye dönüştürülmüş), **protectionkeyıd**, **Protectionkeytype**, **Contentkeytype**ve **sağlama toplamı** değerleri ile içerik anahtarı oluşturun.
+6. $Links işlemi aracılığıyla **Contentkey** varlığını **varlık** varlığınızla ilişkilendirin.
 
-Bu makalede, bir AES anahtarı oluşturur, anahtar şifreleme ve sağlama toplamı hesaplamak nasıl algılanacağını göstermez. 
+Bu makale, bir AES anahtarı oluşturmayı, anahtarı şifrelemeyi ve sağlama toplamını hesaplamayı göstermez. 
 
 > [!NOTE]
 > 
-> Varlıklar Media Services erişirken, HTTP isteklerini özel üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için [Media Services REST API geliştirme için Kurulum](media-services-rest-how-to-use.md).
+> Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
+## <a name="connect-to-media-services"></a>Medya Hizmetleri'yle bağlantı kurma
 
-AMS API'ye bağlanma hakkında daha fazla bilgi için bkz: [Azure AD kimlik doğrulamasıyla Azure Media Services API'sine erişim](media-services-use-aad-auth-to-access-ams-api.md). 
+AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="retrieve-the-protectionkeyid"></a>ProtectionKeyId alma
-Aşağıdaki örnek, içerik anahtarınız şifrelerken kullanmak sertifika için bir sertifika parmak izi ProtectionKeyId almak gösterilmektedir. Makinenizde uygun sertifikayı zaten sahip olduğunuzdan emin olmak için bu adımı uygulayın.
+## <a name="retrieve-the-protectionkeyid"></a>Protectionkeyıd 'yi alma
+Aşağıdaki örnek, içerik anahtarınızı şifrelerken kullanmanız gereken sertifika için bir sertifika parmak izi olan Protectionkeyıd 'nin nasıl alınacağını gösterir. Makinenizde uygun sertifikaya zaten sahip olduğunuzdan emin olmak için bu adımı gerçekleştirin.
 
 İstek:
 
@@ -111,8 +111,8 @@ Yanıt:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>İçin ProtectionKeyId ProtectionKey alma
-Aşağıdaki örnek, önceki adımda aldığınız ProtectionKeyId kullanılarak X.509 sertifikası almak gösterilmektedir.
+## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Protectionkeyıd için ProtectionKey değerini alma
+Aşağıdaki örnek, önceki adımda aldığınız Protectionkeyıd kullanarak X. 509.440 sertifikasının nasıl alınacağını gösterir.
 
 İstek:
 
@@ -148,9 +148,9 @@ Yanıt:
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
 ## <a name="create-the-contentkey"></a>ContentKey oluşturma
-X.509 sertifikası alınır ve kendi ortak anahtar, içerik anahtarını şifrelemek için kullanılan sonra oluşturma bir **ContentKey** varlık ve değerlerini uygun şekilde kendi özellik kümesi.
+X. 509.952 sertifikasını aldıktan ve kendi ortak anahtarını, içerik anahtarınızı şifrelemek için kullandıktan sonra, bir **contentkey** varlığı oluşturun ve özellik değerlerini uygun şekilde ayarlayın.
 
-İçeriği ne zaman ayarlamalısınız değerlerinden oluşturma türü anahtardır. Aşağıdaki değerlerden birini seçin:
+İçerik anahtarını oluştururken ayarlamanız gereken değerlerden biri türdür. Aşağıdaki değerlerden birini seçin:
 
     public enum ContentKeyType
     {
@@ -177,9 +177,9 @@ X.509 sertifikası alınır ve kendi ortak anahtar, içerik anahtarını şifrel
     }
 
 
-Aşağıdaki örnek nasıl oluşturulacağını gösterir. bir **ContentKey** ile bir **ContentKeyType** ayarlamak için depolama şifrelemesi ("1") ve **ProtectionKeyType** göstermek için "0" olarak ayarlayın koruma anahtarı X.509 sertifika parmak izini kimliğidir.  
+Aşağıdaki örnek, depolama şifrelemesi için bir **Contentkeytype** kümesi ("1") ve **Protectionkeytype** 'ın X. 509.440 sertifika parmak izi olduğunu göstermek için "0" olarak ayarlanmış bir **contentkey** oluşturmayı gösterir.  
 
-İstek
+İste
 
     POST https://media.windows.net/api/ContentKeys HTTP/1.1
     Content-Type: application/json
@@ -227,8 +227,8 @@ Yanıt:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey bir varlıkla ilişkilendirme
-ContentKey oluşturduktan sonra aşağıdaki örnekte gösterildiği gibi $links işlemi kullanarak, varlıkla ilişkilendirin:
+## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey 'i bir varlıkla ilişkilendir
+ContentKey oluşturduktan sonra, aşağıdaki örnekte gösterildiği gibi $links işlemini kullanarak varlığınızla ilişkilendirin:
 
 İstek:
 
@@ -253,6 +253,6 @@ Yanıt:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

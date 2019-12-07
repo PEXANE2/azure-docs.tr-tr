@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73944219"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891788"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -31,7 +31,7 @@ Konu |  Ayrıntılar
 --------- | --------- |
 Azure AD Connect yükseltme adımları | [Önceki bir sürümden en son](how-to-upgrade-previous-version.md) Azure AD Connect sürüme yükseltmek için farklı yöntemler.
 Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için bkz. [hesaplar ve izinler](reference-connect-accounts-permissions.md#upgrade).
-İndir| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
+İndirin| [Azure AD Connect indirin](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Azure AD Connect yeni bir sürümünü serbest bırakmak, hizmetin işlem işlevlerini sağlamak için çeşitli kalite denetimi adımı gerektiren bir işlemdir ve bu işlemden sonra yeni bir yayının sürüm numarası ve yayın durumu güncelleştirilir en son durumu yansıtacak şekilde.
@@ -70,7 +70,7 @@ Belirli koşullarda, 1.4.18.0 sürümüne otomatik olarak yükseltilen sunucular
 
 
 ### <a name="release-status"></a>Yayın durumu
-9/25/2019: olay araştırması tamamlanana kadar el ile indirme işleminden kaldırılmıştır.
+9/25/2019: yalnızca otomatik yükseltme için yayınlandı.
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 - Yeni sorun giderme araçları, "kullanıcının eşitlemesine yönelik", "Grup eşitlenmiyor" veya "grup üyesi eşitlenmiyor" senaryolarındaki sorunları gidermeye yardımcı olur.
@@ -469,18 +469,18 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Ad                          | Access               | Uygulama hedefi
+Tür     | Adı                          | Access               | Uygulandığı Öğe
 ---------|-------------------------------|----------------------|--------------|
-İzin Ver    | SISTEMIN                        | Tam denetim         | Bu nesne  |
-İzin Ver    | Kuruluş yöneticileri             | Tam denetim         | Bu nesne  |
-İzin Ver    | Etki alanı yöneticileri                 | Tam denetim         | Bu nesne  |
-İzin Ver    | Yöneticiler                | Tam denetim         | Bu nesne  |
-İzin Ver    | Kurumsal etki alanı denetleyicileri | Liste Içerikleri        | Bu nesne  |
-İzin Ver    | Kurumsal etki alanı denetleyicileri | Tüm özellikleri oku  | Bu nesne  |
-İzin Ver    | Kurumsal etki alanı denetleyicileri | Okuma Izinleri     | Bu nesne  |
-İzin Ver    | Kimliği doğrulanmış kullanıcılar           | Liste Içerikleri        | Bu nesne  |
-İzin Ver    | Kimliği doğrulanmış kullanıcılar           | Tüm özellikleri oku  | Bu nesne  |
-İzin Ver    | Kimliği doğrulanmış kullanıcılar           | Okuma Izinleri     | Bu nesne  |
+Allow    | SİSTEM                        | Tam denetim         | Bu nesne  |
+Allow    | Enterprise Admins             | Tam denetim         | Bu nesne  |
+Allow    | Etki Alanı Yöneticileri                 | Tam denetim         | Bu nesne  |
+Allow    | Yöneticiler                | Tam denetim         | Bu nesne  |
+Allow    | Kurumsal etki alanı denetleyicileri | Liste Içerikleri        | Bu nesne  |
+Allow    | Kurumsal etki alanı denetleyicileri | Tüm Özellikleri Oku  | Bu nesne  |
+Allow    | Kurumsal etki alanı denetleyicileri | Okuma Izinleri     | Bu nesne  |
+Allow    | Kimliği Doğrulanmış Kullanıcılar           | Liste Içerikleri        | Bu nesne  |
+Allow    | Kimliği Doğrulanmış Kullanıcılar           | Tüm Özellikleri Oku  | Bu nesne  |
+Allow    | Kimliği Doğrulanmış Kullanıcılar           | Okuma Izinleri     | Bu nesne  |
 
 AD DS hesabının ayarlarını sağlamkılabilmeniz için [Bu PowerShell betiğini](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)çalıştırabilirsiniz. PowerShell betiği yukarıda belirtilen izinleri AD DS hesabına atayacaktır.
 
@@ -812,9 +812,9 @@ CBool(
     |CertFriendlyName|Certparmak Izi|Certbu Sionıds|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Seçim|
+    |CertVersion|CertSignatureAlgorithmOid|Seçin|
     |CertKeyAlgorithmParams|CertHashString|Konum|
-    |||With|
+    |||Avantaj ile|
 
 * Müşterilerin, Grup nesneleri için sAMAccountName, Domainnetbıos ve domainFQDN 'leri ve Kullanıcı nesneleri için distinguishedName 'dir akışını sağlamak üzere özel eşitleme kuralları oluşturmalarına olanak tanımak için aşağıdaki şema değişiklikleri sunulmuştur:
 
@@ -911,7 +911,7 @@ Yayımlanma tarihi: Nisan 2017
 ## <a name="114840"></a>1.1.484.0
 Yayımlanma tarihi: Nisan 2017
 
-**Bilinen sorunlar:**
+**Bilinen sorunlar**
 
 * Aşağıdaki koşulların tümü doğruysa Azure AD Connect bu sürümü başarıyla yüklenmez:
    1. DirSync yerinde yükseltme veya Azure AD Connect yeni yüklemesi gerçekleştiriliyor.
@@ -1022,7 +1022,7 @@ Yayımlanma tarihi: Aralık 2016
 ## <a name="113700"></a>1.1.370.0
 Yayımlanma tarihi: Aralık 2016
 
-**Bilinen sorunlar:**
+**Bilinen sorunlar**
 
 * Bu derlemede AD FS ıssuerıd talep kuralı yok. Azure AD ile birden çok etki alanını federasyona eklemek istiyorsanız ıssuerıd talep kuralı gereklidir. Şirket içi AD FS dağıtımınızı yönetmek için Azure AD Connect kullanıyorsanız, bu yapıya yükseltme, mevcut ıssuerıd talep kuralını AD FS yapılandırmadan kaldırır. Yükleme/yükseltme sonrasında ıssuerıd talep kuralını ekleyerek soruna geçici bir çözüm bulabilirsiniz. Issuerıd talep kuralı ekleme hakkında ayrıntılı bilgi için [Azure AD ile federasyona yönelik birden çok etki alanı desteği](how-to-connect-install-multiple-domains.md)makalesine başvurun.
 * Yüklemenin tamamlanabilmesi için bağlantı noktası 9090 ' ın açık olması gerekir.

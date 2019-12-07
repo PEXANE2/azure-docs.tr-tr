@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027238"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900958"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamik grup oluşturma ve durumu denetleme
 
@@ -47,10 +47,10 @@ Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve de�
 ## <a name="to-create-a-group-membership-rule"></a>Bir grup üyeliği kuralı oluşturmak için
 
 1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , Kiracıdaki genel yönetici, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla oturum açın.
-1. **Grupları**seçin.
+1. **Grupları**arayın ve seçin.
 1. **Tüm gruplar**' ı seçin ve **Yeni Grup**' u seçin.
 
-   ![Yeni grup eklemek için komutu seçin](./media/groups-create-rule/new-group-creation.png)
+   ![Yeni grup eklemek için komutu seçin](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. **Grup** sayfasında, yeni grup için bir ad ve açıklama girin. Kullanıcılar veya cihazlar için bir **üyelik türü** seçin ve ardından **Dinamik sorgu Ekle**' yi seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Beşten fazla ifade eklemek için metin kutusunu kullanmanız gerekir.
 
@@ -88,7 +88,7 @@ Grubun **genel bakış** sayfasında Üyelik işleme durumu ve son güncelleşti
 - **Devam**ediyor: Şu anda güncelleştirmeler devam ediyor.
 - **Bilinmiyor**: son güncelleştirme saati alınamıyor. Grup yeni olabilir.
 
-Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. Kiracıdaki tüm gruplar için bekleyen dinamik üyelik güncelleştirmeleri, daha sonra 24 saat boyunca işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
+Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. Kiracıdaki tüm gruplar için 24 saatten uzun bir sürede bekleyen dinamik üyelik güncelleştirmeleri işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
 
 ![işlem hata iletisi uyarıları](./media/groups-create-rule/processing-error.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici tanılama günlüklerine biçim değişikliğine hazırlanma
-description: Azure tanılama günlükleri, 1 Kasım 2018 ' de Append blob 'ları kullanacak şekilde taşınacak.
+title: Azure Izleyici kaynak günlüklerinde biçim değişikliğine hazırlanma
+description: Azure Kaynak günlükleri 1 Kasım 2018 ' de Append blob 'ları kullanmak üzere taşınır.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,23 +8,22 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: c6f21ffdcf94f23d089073710f2e6c18fd20558d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 09a5d95ead9f294d54a7491734b11c7247353444
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262433"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894513"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Azure Izleyici platformu günlüklerine yapılan biçim değişikliğine hazırlanma bir depolama hesabına arşivlendi
 
 > [!WARNING]
-> [Günlük profillerini kullanarak bir depolama](activity-log-export.md)hesabına Tanılama ayarları veya etkinlik günlükleri [kullanarak bir depolama hesabına Azure Kaynak günlükleri veya ölçümleri](resource-logs-collect-storage.md) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
+> [Günlük profillerini kullanarak bir depolama](activity-log-export.md)hesabına Tanılama ayarları veya etkinlik günlükleri [kullanarak bir depolama hesabına Azure Kaynak günlükleri veya ölçümleri](resource-logs-collect-storage.md) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır.
 >
-> 
 
-## <a name="what-is-changing"></a>Yapılacak değişiklikler
+## <a name="what-changed"></a>Değişen
 
-Azure Izleyici, Azure Izleyici 'deki bir Azure depolama hesabına, Event Hubs ad alanına veya bir Log Analytics çalışma alanına kaynak günlükleri ve etkinlik günlükleri göndermenizi sağlayan bir özellik sunar. Bir sistem performansı sorununa yönelik olarak, **1 kasım 2018 ' de 12:00 gece yarısı UTC** , blob depolamaya gönderilen günlük verilerinin biçimi değişecektir. Blob depolamadan veri okuyan bir araç varsa, yeni veri biçimini anlamak için araç araçlarınızı güncelleştirmeniz gerekir.
+Azure Izleyici, Azure Izleyici 'deki bir Azure depolama hesabına, Event Hubs ad alanına veya bir Log Analytics çalışma alanına kaynak günlükleri ve etkinlik günlükleri göndermenizi sağlayan bir özellik sunar. Bir sistem performansı sorununa yönelik olarak, **1 kasım 2018 ' de 12:00 gece yarısı UTC** , blob depolamaya gönderilen günlük verilerinin biçimi değişti. Blob depolamadan veri okuyan bir araç varsa, yeni veri biçimini anlamak için araç araçlarınızı güncelleştirmeniz gerekir.
 
 * Salı günü, 1 Kasım 2018, 12:00 gece UTC 'de, blob biçimi [JSON satırları](http://jsonlines.org/)olarak değiştirildi. Bu, her kaydın bir yeni satır tarafından sınırlandırıldığından, dış kayıt dizisi olmadan ve JSON kayıtları arasında virgül olmaması anlamına gelir.
 * Blob biçimi tüm aboneliklerdeki tüm Tanılama ayarları için aynı anda değişmiştir. 1 Kasım için yayılan ilk PT1H. JSON dosyası bu yeni biçimi kullandı. Blob ve kapsayıcı adları aynı kalır.
@@ -36,8 +35,8 @@ Azure Izleyici, Azure Izleyici 'deki bir Azure depolama hesabına, Event Hubs ad
   * [Azure etkinlik günlüğü verileri, günlük profilleri tarafından veriliyor](activity-log-collect.md)
 * Bu değişiklik etkilenmez:
   * Ağ akışı günlükleri
-  * Azure hizmet günlükleri henüz Azure Izleyici üzerinden kullanılabilir değil (örneğin, tanılama günlükleri, depolama analiz günlükleri Azure App Service)
-  * Azure tanılama günlükleri ve etkinlik günlüklerinin diğer hedeflere yönlendirilmesi (Event Hubs Log Analytics)
+  * Azure hizmet günlükleri henüz Azure Izleyici aracılığıyla kullanılamaz (örneğin, kaynak günlükleri Azure App Service, depolama Analizi günlükleri)
+  * Azure Kaynak günlüklerinin ve etkinlik günlüklerinin diğer hedeflere yönlendirilmesi (Event Hubs Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Etkilenip etkilenmediğinizi görme
 
@@ -45,7 +44,7 @@ Bu değişiklikten yalnızca şunları yaptıysanız etkilenmiş olursunuz:
 1. Bir Azure depolama hesabına bir tanılama ayarı kullanarak günlük verileri gönderiyor ve
 2. Depolama alanındaki bu günlüklerin JSON yapısına bağlı olan araçları izleyin.
  
-Bir Azure depolama hesabına veri gönderen tanılama ayarlarınıza sahip olup olmadığını belirlemek için portalın **izleyici** bölümüne gidebilir, **Tanılama ayarları**' na tıklayabilir ve **Tanılama durumu** olan tüm kaynakları belirleyebilirsiniz **etkin**olarak ayarla:
+Bir Azure depolama hesabına veri gönderen tanılama ayarlarınıza sahip olup olmadığını belirlemek için portalın **izleyici** bölümüne gidebilir, **Tanılama ayarları**' na tıklayabilir ve **Tanılama durumu** **etkin**olarak ayarlanmış olan tüm kaynakları belirleyebilirsiniz:
 
 ![Azure Izleyici Tanılama ayarları dikey penceresi](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
@@ -135,6 +134,6 @@ Yalnızca bu günlük dosyalarını daha fazla işlemeye yönelik bir özel ara�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak tanılama günlüklerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
+* [Kaynak kaynak günlüklerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-diagnostic-logs.md) hakkında bilgi edinin
 * [Etkinlik günlüğü verilerini bir depolama hesabına arşivleme](./../../azure-monitor/platform/archive-activity-log.md) hakkında bilgi edinin
 

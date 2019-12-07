@@ -1,6 +1,6 @@
 ---
 title: İstemci tarafına reklam ekleme | Microsoft Docs
-description: Bu konu başlığı altında, istemci tarafında reklamları nasıl ekleyebileceğiniz gösterilmektedir.
+description: Bu makalede, istemci tarafında medyanıza reklamları nasıl ekleyebileceğiniz gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162696"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895960"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
 Bu makale, istemci tarafında çeşitli tür reklamları ekleme hakkında bilgiler içerir.
@@ -96,7 +96,7 @@ Büyük bir dosya hangi ad veya reklamları gösterileceğini belirtir. Aşağı
 
 Doğrusal ad <**doğrusal**> öğesi tarafından açıklanmıştır. Bu, ad süresini, izleme olaylarını, izleme ' yi ve bir dizi **mediafile** öğesini belirtir. İzleme olayları <**Trackingevents**> öğesi içinde belirtilmiştir ve ad sunucusunun ad görüntülenirken oluşan çeşitli olayları izlemesine izin verir. Bu durumda başlangıç, orta nokta, tamam ve Genişlet olayları izlenir. Ad görüntülendiğinde başlangıç olayı oluşur. Orta nokta olayı, ad zaman çizelgesinin en az %50 ' i görüntülenirken meydana gelir. Tüm olay, ad sonuna kadar çalıştırıldığında oluşur. Kullanıcı video oynatıcıyı tam ekran olarak genişlediğinde genişletme olayı oluşur. Clickthroughs, bir <**videotıklamalar**> öğesi Içinde <**tıklama**> öğesi ile belirtilir ve Kullanıcı ad 'ye tıkladığında görüntülenecek bir kaynağın URI 'sini belirtir. Tıklama Izlemesi, <**Videotıklamalar**> öğesi içinde de bir <**clicktracking**> öğesinde belirtilir ve Kullanıcı ad 'ye tıkladığında, oynatıcının istemesi için bir izleme kaynağı belirtir. <**Mediafile**> öğeleri, bir ad 'nin belirli bir kodlamasıyla ilgili bilgileri belirtir. Birden fazla <**mediafile**> öğesi olduğunda, video oynatıcı platformun en iyi kodlamasını seçebilir.
 
-Doğrusal reklamlar belirtilen sırada gösterilebilir. Bunu yapmak için, büyük dosyaya ek `<Ad>` öğeleri ekleyin ve sıra özniteliğini kullanarak sırayı belirtin. Aşağıdaki örnek şunu göstermektedir:
+Doğrusal reklamlar belirtilen sırada gösterilebilir. Bunu yapmak için, büyük dosyaya ek `<Ad>` öğeleri ekleyin ve sıra özniteliğini kullanarak sırayı belirtin. Aşağıdaki örnekte bu gösterilmektedir:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -160,7 +160,7 @@ Doğrusal reklamlar `<Creative>` öğesinde da belirtilir. Aşağıdaki örnekte
     </Creative>
 ```
 
-**İlişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal**dizi > öğesi içerebilir. <**Doğrusal**olmayan > öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak < bir**StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan bir kaynağı açıklar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
+**İlişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal**dizi > öğesi içerebilir. <**Doğrusal**olmayan > öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak < bir**StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan kaynak açıklar ve kaynak nasıl görüntüleneceğini belirten bir creativeType öznitelik tanımlar:
 
 Image/gif, Image/JPEG, Image/PNG – kaynak bir HTML <**img**> etiketinde görüntülenir.
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275732"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900400"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Kullanıcı hazırlama durumunu denetleme
 
@@ -101,6 +101,8 @@ Bir **Başlangıç döngüsünün**tamamlanışında geçen süreyi etkileyen fa
 - Hedef sistem tarafından uygulanan istek hızı sınırları ve azaltma. Bazı hedef sistemler, büyük eşitleme işlemleri sırasında performansı etkileyebilecek istek hızı sınırlarını ve azaltmasını uygular. Bu koşullarda çok fazla sayıda istek alan bir uygulama, yanıt oranını yavaşlatabilir veya bağlantıyı kapatabilir. Performansı artırmak için bağlayıcının uygulama isteklerini, uygulamanın işleyebileceğinden daha hızlı göndermediğinden ayarlanması gerekir. Microsoft tarafından oluşturulan sağlama bağlayıcıları bu ayarlamayı yapar. 
 
 - Atanan grupların sayısı ve boyutları. Atanan grupların eşitlenmesi, kullanıcıları eşitlemeye göre daha uzun sürer. Atanan grupların sayısı ve boyutları, performansı etkiler. Bir uygulamada, [Grup nesnesi eşitlemesi için etkin eşlemeler](customize-application-attributes.md#editing-group-attribute-mappings)varsa, grup adları ve üyelikleri gibi Grup Özellikleri, kullanıcılara ek olarak eşitlenir. Bu ek eşitlemeler, yalnızca kullanıcı nesnelerinden eşitlemeden daha uzun sürer.
+
+- Performans bir sorun haline gelirse ve kiracınızdaki Kullanıcı ve grupların çoğunu sağlamaya çalışıyorsanız, kapsam filtrelerini kullanın. Kapsam filtreleri, kullanıcıları belirli öznitelik değerlerine göre filtreleyerek, sağlama hizmetinin Azure AD 'den ayıklayan verileri ayarlamanıza olanak sağlar. Kapsam filtreleri hakkında daha fazla bilgi için bkz. [kapsam filtreleriyle öznitelik tabanlı uygulama sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatik hale getirme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

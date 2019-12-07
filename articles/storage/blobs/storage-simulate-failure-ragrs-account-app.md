@@ -1,42 +1,43 @@
 ---
-title: 'Öğretici: Azure’da okuma erişimli yedekli depolamaya erişimde hata benzetimi gerçekleştirme | Microsoft Docs'
-description: Okuma erişimli coğrafi olarak yedekli depolamaya erişimde hata benzetimi gerçekleştirme
+title: Öğretici-birincil bölgeden verileri okurken hata benzetimi yap
+titleSuffix: Azure Storage
+description: Depolama hesabı için Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) etkinleştirildiğinde birincil bölgeden verileri okurken hata benzetimi yapın.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 1f5c404e410ded2714be761e35060f3c07379bd3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508089"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892456"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Öğretici: Okuma erişimli yedekli depolamaya erişimde hata benzetimi gerçekleştirme
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Öğretici: birincil bölgeden verileri okurken hata benzetimi yap
 
-Bu öğretici, bir dizinin ikinci bölümüdür. İçinde avantajları hakkında bilgi edinin bir [okuma erişimli coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) tarafından bir hatanın benzetimi.
+Bu öğretici, bir dizinin ikinci bölümüdür. Bu durumda, bir hata benzetimi yaparak [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) avantajları hakkında bilgi edineceksiniz.
 
-Bir hata benzetimi yapmak için kullanabilirsiniz [statik yönlendirme](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler). Birincil uç noktasına istekler için hata benzetimi yapmak iki yöntem de sağlayacak, [okuma erişimli coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) depolama hesabı, uygulamanın sonlandırılmasına neden okuma ikincil uç noktadan yerine.
+Bir hatanın benzetimini yapmak için, [statik yönlendirme](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler)kullanabilirsiniz. Her iki yöntem de [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) depolama hesabınızın birincil uç noktasına yönelik isteklerin hata benzetimi yapmanıza olanak sağlar. bunun yerine uygulamanın ikincil uç noktadan okunmasını sağlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 Serinin ikinci bölümünde şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Uygulamayı çalıştırma ve duraklatma
-> * İle hata simülasyonu [geçersiz bir statik rota](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler)
+> * [Geçersiz bir statik rota](#simulate-a-failure-with-an-invalid-static-route) veya [Fiddler](#simulate-a-failure-with-fiddler) ile hata benzetimi yapma
 > * Birincil uç noktayı geri yükleme benzetimi gerçekleştirme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce önceki öğreticide tamamlayın: [Uygulama verilerinizi Azure depolama ile yüksek oranda kullanılabilir yap][previous-tutorial].
+Bu öğreticiye başlamadan önce, önceki öğreticiyi izleyin: [Azure depolama ile uygulama verilerinizi yüksek oranda kullanılabilir hale getirin][previous-tutorial].
 
-Statik yönlendirme ile hata simülasyonu için yükseltilmiş bir komut istemi kullanın.
+Statik yönlendirmeyle bir hatanın benzetimini yapmak için yükseltilmiş bir komut istemi kullanacaksınız.
 
-Fiddler kullanarak hata benzetimi yapmak için indirme ve [fiddler'ı yükleme](https://www.telerik.com/download/fiddler)
+Fiddler kullanarak bir hatanın benzetimini yapmak için [Fiddler](https://www.telerik.com/download/fiddler) 'ı indirip yükleyin
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Geçersiz bir statik rota ile hata benzetimi yapma
 
@@ -44,13 +45,13 @@ Fiddler kullanarak hata benzetimi yapmak için indirme ve [fiddler'ı yükleme](
 
 ### <a name="start-and-pause-the-application"></a>Uygulamayı başlatma ve duraklatma
 
-Yönergeleri kullanın [önceki öğreticide] [ previous-tutorial] örneği başlatın ve birincil depolama alanından gelir onaylama, test dosyasını indirin. Hedef platforma bağlı olarak, daha sonra el ile örnek duraklatma veya bir isteminde bekleyin.
+Örneği başlatmak ve birincil depolamadan geldiğini onaylayan test dosyasını indirmek için [önceki öğreticideki][previous-tutorial] yönergeleri kullanın. Hedef platformunuza bağlı olarak, örneği el ile duraklatabilir veya bir istem sırasında bekleyebilirsiniz.
 
 ### <a name="simulate-failure"></a>Hata benzetimi yapma
 
-Uygulama duraklatılmış durumdayken Windows Yönetici olarak bir komut istemi açın ya da Linux'ta root olarak Terminali çalıştırın.
+Uygulama duraklatıldığında, Windows 'da yönetici olarak bir komut istemi açın veya Linux üzerinde kök olarak Terminal çalıştırın.
 
-Bir komut istemi veya terminal değiştirerek aşağıdaki komutu girerek depolama hesabı birincil uç nokta etki alanı hakkında bilgi almak `STORAGEACCOUNTNAME` depolama hesabınızın adıyla.
+Bir komut istemine veya terminale aşağıdaki komutu girerek depolama hesabı birincil uç nokta etki alanı hakkında bilgi alın ve `STORAGEACCOUNTNAME` depolama hesabınızın adıyla değiştirin.
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -60,7 +61,7 @@ Depolama hesabınızın IP adresini daha sonra kullanmak üzere bir metin düzen
 
 Yerel ana bilgisayarın IP adresini almak için Windows komut isteminde `ipconfig` veya Linux terminalinde `ifconfig` yazın.
 
-Bir hedef konak için bir statik rota eklemek için aşağıdaki komutu bir Windows komut isteminde veya Linux terminalinde, değiştirme türü `<destination_ip>` , depolama hesabının IP adresine sahip ve `<gateway_ip>` , yerel ana bilgisayar IP adresine sahip.
+Bir hedef ana bilgisayar için statik bir yol eklemek için bir Windows komut isteminde veya Linux terminalinde aşağıdaki komutu yazın, `<destination_ip>` depolama hesabı IP adresiniz ve `<gateway_ip>` yerel ana bilgisayar IP adresiniz ile değiştirin.
 
 #### <a name="linux"></a>Linux
 
@@ -74,11 +75,11 @@ route add <destination_ip> gw <gateway_ip>
 route add <destination_ip> <gateway_ip>
 ```
 
-Çalışan örnek penceresinde, uygulamayı sürdürmek veya örnek dosya indirin ve ikincil depolama alanından geldiğini doğrulamak için uygun tuşuna basın. Ardından, yeniden örnek duraklatma veya isteminde bekleyin.
+Çalışan örneğe sahip pencerede, uygulamayı sürdürür veya örnek dosyayı indirmek için uygun anahtara basın ve ikincil depolama alanından geldiğini onaylayın. Daha sonra örneği yeniden duraklatabilir veya istem sırasında bekleyebilirsiniz.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Birincil uç noktayı geri yükleme benzetimi gerçekleştirme
 
-Birincil uç nokta yeniden çalışır hale benzetimini yapmak için geçersiz statik rotasını yönlendirme tablosundan silin. Bu, birincil uç noktaya yönelik tüm isteklerin varsayılan ağ geçidi üzerinden yönlendirilmesini sağlar. Bir Windows komut isteminde veya Linux terminalinde aşağıdaki komutu yazın.
+Birincil uç noktanın yeniden işlev görmesinin benzetimini yapmak için, yönlendirme tablosundan geçersiz statik yolu silin. Bu, birincil uç noktaya yönelik tüm isteklerin varsayılan ağ geçidi üzerinden yönlendirilmesini sağlar. Bir Windows komut isteminde veya Linux terminalinde aşağıdaki komutu yazın.
 
 #### <a name="linux"></a>Linux
 
@@ -92,13 +93,13 @@ route del <destination_ip> gw <gateway_ip>
 route delete <destination_ip>
 ```
 
-Ardından uygulama veya bunu yeniden birincil depolama alanından gelir onaylayan bu zaman örneği indirmek için uygun anahtar yeniden dosya press devam edebilir.
+Daha sonra uygulamayı sürdürebilir veya örnek dosyayı tekrar indirmek için ilgili anahtara basabilir, bu kez bir kez daha yeniden birincil depolamadan geldiğini onaylıyor.
 
 ## <a name="simulate-a-failure-with-fiddler"></a>Fiddler ile hata benzetimi yapma
 
-Fiddler ile hata benzetimi yapmak için RA-GRS depolama hesabınızın birincil uç noktasına istekler için başarısız bir yanıt eklersiniz.
+Fiddler ile hata benzetimi yapmak için, RA-GRS depolama hesabınızın birincil uç noktasına istekler için başarısız bir yanıt eklersiniz.
 
-Aşağıdaki bölümlerde, hata ve fiddler ile birincil uç noktayı geri yükleme benzetimi yapmak nasıl kullanılırlar.
+Aşağıdaki bölümler, Fiddler ile bir hata ve birincil uç nokta geri yüklemesinin benzetimini yapar.
 
 ### <a name="launch-fiddler"></a>Fiddler'ı açma
 
@@ -106,11 +107,11 @@ Fiddler’ı açıp **Kurallar**’ı ve **Kuralları Özelleştir**’i seçin.
 
 ![Fiddler kurallarını özelleştirme](media/storage-simulate-failure-ragrs-account-app/figure1.png)
 
-Fiddler Macro'yu çalıştırır ve görüntüler **SampleRules.js** dosya. Bu dosya, Fiddler’ı özelleştirmek için kullanılır.
+Fiddler ScriptEditor, **Samplerules. js** dosyasını başlatır ve görüntüler. Bu dosya, Fiddler’ı özelleştirmek için kullanılır.
 
-Aşağıdaki kod örneğinde yapıştırın `OnBeforeResponse` değiştirerek, işlev `STORAGEACCOUNTNAME` depolama hesabınızın adıyla. Örnek bağlı olarak, aynı zamanda değiştirmeniz gerekebilir `HelloWorld` test dosyası adını (veya bir önek gibi `sampleFile`) indiriliyor. Yeni kod hemen çalıştırmaz emin olmak için dışı bırakılmıştır.
+Aşağıdaki kod örneğini `OnBeforeResponse` işlevine yapıştırın ve `STORAGEACCOUNTNAME`, depolama hesabınızın adıyla değiştirin. Örneğe bağlı olarak, `HelloWorld`, indirilen test dosyasının adı (veya `sampleFile`gibi bir ön ek) ile de değiştirmeniz gerekebilir. Yeni kod, hemen çalıştırıldığından emin olmak için yorum yapılır.
 
-İşlem tamamlandıktan sonra seçin **dosya** ve **Kaydet** yaptığınız değişiklikleri kaydedin. Macro'yu penceresi, aşağıdaki adımlarda kullanmak için açık bırakın.
+Tamamlandıktan sonra, değişikliklerinizi kaydetmek için **Dosya** ' yı ve **Kaydet** ' i seçin. Aşağıdaki adımlarda kullanmak üzere ScriptEditor penceresini açık bırakın.
 
 ```javascript
     /*
@@ -132,25 +133,25 @@ Aşağıdaki kod örneğinde yapıştırın `OnBeforeResponse` değiştirerek, i
 
 ### <a name="start-and-pause-the-application"></a>Uygulamayı başlatma ve duraklatma
 
-Yönergeleri kullanın [önceki öğreticide] [ previous-tutorial] örneği başlatın ve birincil depolama alanından gelir onaylama, test dosyasını indirin. Hedef platforma bağlı olarak, daha sonra el ile örnek duraklatma veya bir isteminde bekleyin.
+Örneği başlatmak ve birincil depolamadan geldiğini onaylayan test dosyasını indirmek için [önceki öğreticideki][previous-tutorial] yönergeleri kullanın. Hedef platformunuza bağlı olarak, örneği el ile duraklatabilir veya bir istem sırasında bekleyebilirsiniz.
 
 ### <a name="simulate-failure"></a>Hata benzetimi yapma
 
-Uygulama duraklatılmış durumdayken, geçiş geri fiddler'ı ve, kaydettiğiniz özel kuralı açıklama durumundan `OnBeforeResponse` işlevi. Seçtiğinizden emin olun **dosya** ve **Kaydet** kural etkili şekilde yaptığınız değişiklikleri kaydedin. Bu kod RA-GRS depolama hesabına istekleri arar ve yol örnek dosya adını içeren bir yanıt kodunu döndürür `503 - Service Unavailable`.
+Uygulama duraklatıldığında, Fiddler 'a geri dönün ve `OnBeforeResponse` işlevinde kaydettiğiniz özel kuralın açıklamasını kaldırın. Kuralın etkili olabilmesi için **Dosya** ' yı seçtiğinizden emin olun ve **değişikliklerinizi kaydedin.** Bu kod, RA-GRS depolama hesabına yönelik istekleri arar ve yol örnek dosyanın adını içeriyorsa, `503 - Service Unavailable`yanıt kodunu döndürür.
 
-Çalışan örnek penceresinde, uygulamayı sürdürmek veya örnek dosya indirin ve ikincil depolama alanından geldiğini doğrulamak için uygun tuşuna basın. Ardından, yeniden örnek duraklatma veya isteminde bekleyin.
+Çalışan örneğe sahip pencerede, uygulamayı sürdürür veya örnek dosyayı indirmek için uygun anahtara basın ve ikincil depolama alanından geldiğini onaylayın. Daha sonra örneği yeniden duraklatabilir veya istem sırasında bekleyebilirsiniz.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Birincil uç noktayı geri yükleme benzetimi gerçekleştirme
 
-Fiddler, kaldırın veya yeniden özel kuralı açıklama satırı yapın. Seçin **dosya** ve **Kaydet** kural artık olacaktır yürürlükte emin olmak için.
+Fiddler 'da özel kuralı kaldırın veya yeniden açıklama ekleyin. Kuralın artık etkin olmamasını sağlamak için **Dosya** ' yı ve **Kaydet** ' i seçin.
 
-Çalışan örnek penceresinde, uygulamayı sürdürmek veya örnek dosya indirin ve onu yeniden birincil depolama alanından gelir onaylamak için uygun tuşuna basın. Ardından örnek çıkabilirsiniz.
+Çalışan örneğe sahip pencerede, uygulamayı yeniden deneyin veya örnek dosyayı indirmek için uygun anahtara basın ve bir kez daha, birincil depolama alanından geldiğini doğrulayın. Bundan sonra örnekten çıkabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin iki okuma erişimli coğrafi olarak yedekli depolamayı test etmek için hata benzetimi hakkında bilgi edindiniz.
+Serinin ikinci bölümünde, Okuma Erişimli Coğrafi olarak yedekli depolamayı test etmek için bir hata benzetimi yapma hakkında bilgi edindiniz.
 
-Daha fazla RA-GRS depolama, ilişkili riskleri yanı sıra, işleyişi hakkında bilgi edinmek için şu makaleyi okuyun:
+RA-GRS depolamanın nasıl çalıştığı ve ilişkili riskleri hakkında daha fazla bilgi edinmek için aşağıdaki makaleyi okuyun:
 
 > [!div class="nextstepaction"]
 > [RA-GRS ile HA uygulamaları tasarlama](../common/storage-designing-ha-apps-with-ragrs.md)

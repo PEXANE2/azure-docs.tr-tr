@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 12/06/2019
 ms.locfileid: "73177832"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Bir Service Fabric kümesini barındıracak AWS altyapısı oluşturma
@@ -82,7 +82,7 @@ Service Fabric, kümenizdeki bağlantı noktaları arasında birkaç bağlantı 
 
 Bu bağlantı noktalarını genel erişime açmayı önlemek için yalnızca aynı güvenlik grubundaki ana bilgisayarlara açın. Güvenlik grubu kimliğini not alın (bu örnekte **sg-c4fb1eba**).  Ardından **Düzenle**’yi seçin.
 
-Sonra, güvenlik grubuna hizmet bağımlılıkları için dört kural ve Service Fabric için üç kural daha ekleyin. Birinci kural, temel bağlantı denetimleri için ICMP trafiğine izin vermektir. Diğer kurallar, uzak kayıt defterini etkinleştirmek için gerekli bağlantı noktalarını açar.
+Sonra, güvenlik grubuna hizmet bağımlılıkları için dört kural ve Service Fabric için üç kural daha ekleyin. Birinci kural, temel bağlantı denetimleri için ICMP trafiğine izin vermektir. Diğer kurallar SMB ve Uzak Kayıt Defteri’ni etkinleştirmek için gereken bağlantı noktalarını açar.
 
 Birinci kural için **Kural Ekle**’yi ve sonra açılır listeden **Tüm ICMP - IPv4**’ü seçin. Özel seçeneğinin yanındaki giriş kutusunu seçin ve yukarıdaki güvenlik grubu kimliğinizi girin.
 
@@ -118,18 +118,30 @@ Temel bağlantının çalıştığını doğrulamak için ping komutunu kullanı
 ping 172.31.20.163
 ```
 
-Çıktınız dört kez tekrar eden `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` gibi görünüyorsa, örnekler arasındaki bağlantınız çalışıyordur.  
+Çıktınız dört kez tekrar eden `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` gibi görünüyorsa, örnekler arasındaki bağlantınız çalışıyordur.  Şimdi aşağıdaki komutla SMB paylaşımınızın çalıştığını doğrulayın:
+
+```
+net use * \\172.31.20.163\c$
+```
+
+Çıktı olarak `Drive Z: is now connected to \\172.31.20.163\c$.` döndürülmelidir.
 
 ## <a name="prep-instances-for-service-fabric"></a>Service Fabric örneklerini hazırlama
 
-Sıfırdan oluşturuyorsanız fazladan birkaç adım uygulamanız gerekir.  Yani, uzak kayıt defterinin çalıştığını doğrulamanız ve önkoşul bağlantı noktalarını açmanız gerekir.
+Sıfırdan oluşturuyorsanız fazladan birkaç adım uygulamanız gerekir.  Diğer bir deyişle, uzak kayıt defterinin çalıştığını doğrulamanız, SMB’yi etkinleştirmeniz ve SMB ile uzak kayıt defteri için gereken bağlantı noktalarını açmanız gerekir.
 
 Kolaylaştırmak için, bu işlerin tümünü, kullanıcı veri betiğinizle örnekleri önyüklediğinizde eklemiştiniz.
+
+SMB’yi etkinleştirmek için şu PowerShell komutunu kullandınız:
+
+```powershell
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+```
 
 Buradaki güvenlik duvarında bağlantı noktalarını açmak için şu PowerShell komutunu kullanın:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

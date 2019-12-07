@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: 5830e0b7ee49a7d954dbdb3f897ee7ac5901c6a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421767"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901339"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -128,7 +128,7 @@ Yönetilen Örneğinizde, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşt
 
 5. İşlem başarıyla tamamlandıktan sonra, sağ üst köşede aşağıdaki bildirim görünür:
 
-    ![success](./media/sql-database-aad-authentication/success.png)
+    ![başarılı](./media/sql-database-aad-authentication/success.png)
 
 6. Artık yönetilen örneğiniz için Azure AD yöneticinizle seçim yapabilirsiniz. Bunun için, Active Directory yönetici sayfasında, **yönetici komutunu ayarla** ' yı seçin.
 
@@ -138,7 +138,7 @@ Yönetilen Örneğinizde, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşt
 
    Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediği için seçilemez. [Azure AD özellikleri ve kısıtlamalarından](sql-database-aad-authentication.md#azure-ad-features-and-limitations)desteklenen Yöneticiler listesine bakın. Rol tabanlı erişim denetimi (RBAC) yalnızca Azure portal için geçerlidir ve SQL Server yayılmaz.
 
-    ![Yönetici Ekle](./media/sql-database-aad-authentication/add-admin.png)
+    ![Azure Active Directory Yöneticisi ekleme](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. Active Directory Yöneticisi sayfasının en üstünde **Kaydet**' i seçin.
 
@@ -238,11 +238,13 @@ Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kul
 
 ### <a name="azure-portal"></a>Azure portalı
 
-1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.) ![seçin-ad][8]
+1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.)
 
-2. Sol başlıkta **tüm hizmetler**' i ve **SQL Server**'daki filtre türü ' nü seçin. **SQL sunucuları**' nı seçin.
+    ![ad seçin][8]
 
-    ![SQLServers. png](media/sql-database-aad-authentication/sqlservers.png)
+2. **SQL Server**araması yapın ve seçin.
+
+    ![SQL Server arama ve seçme](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > Bu sayfada, **SQL Server**'ı seçmeden önce, kategorinin en *sevdiğiniz* adı yanındaki **yıldızı** seçip sol gezinti çubuğuna **SQL sunucuları** ekleyebilirsiniz.
@@ -251,11 +253,11 @@ Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kul
 
 4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla**' yı seçin.
 
-    ![active directory seçme](./media/sql-database-aad-authentication/select-active-directory.png)  
+    ![Active Directory yönetici olarak ayarlanan SQL Server 'lar](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
 5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya SQL veri ambarı ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](sql-database-aad-authentication.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz.
 
-    ![Yönetici seçin](./media/sql-database-aad-authentication/select-admin.png)  
+    ![Azure Active Directory yönetici seçin](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
 6. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet**' i seçin.
 
@@ -436,7 +438,7 @@ Windows 'da, Federasyon etki alanından Azure Active Directory kimlik bilgilerin
 
     ![Veritabanı adını seçin][13]
 
-## <a name="active-directory-password-authentication"></a>Active Directory parola kimlik doğrulaması
+## <a name="active-directory-password-authentication"></a>Active Directory parola ile kimlik doğrulaması
 
 Azure AD tarafından yönetilen etki alanını kullanarak bir Azure AD asıl adı ile bağlanırken bu yöntemi kullanın. Bunu, etki alanına erişimi olmayan federe hesaplar için de kullanabilirsiniz. Örneğin, uzaktan çalışırken.
 
@@ -470,7 +472,7 @@ conn.Open();
 
 Bağlantı dizesi anahtar sözcüğü `Integrated Security=True` Azure SQL veritabanı 'na bağlanmak için desteklenmiyor. ODBC bağlantısı yaparken, boşlukları kaldırmanız ve kimlik doğrulamasını ' Activedirectoryıntegrated ' olarak ayarlamanız gerekir.
 
-### <a name="active-directory-password-authentication"></a>Active Directory parola kimlik doğrulaması
+### <a name="active-directory-password-authentication"></a>Active Directory parola ile kimlik doğrulaması
 
 Tümleşik kimlik doğrulaması ve bir Azure AD kimliği kullanarak bir veritabanına bağlanmak için, kimlik doğrulama anahtar sözcüğünün Active Directory parola olarak ayarlanması gerekir. Bağlantı dizesinin Kullanıcı KIMLIĞI/UID ve Password/PWD anahtar sözcükleri ve değerleri içermesi gerekir. Aşağıdaki C# kod örneği ADO .net kullanır.
 

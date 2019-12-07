@@ -3,18 +3,18 @@ title: Azure IoT Central özel Analize genişletin | Microsoft Docs
 description: Çözüm geliştiricisi olarak, bir IoT Central uygulamasını özel analiz ve görselleştirmeler yapmak üzere yapılandırın. Bu çözüm Azure Databricks kullanır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a29cae2fabe1542a7498bca19dc0a6e147d1d024
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 59fb0dfbc44746853f25437e8e13a1cbc317e151
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895156"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895535"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks-preview-features"></a>Azure Databricks kullanarak Azure IoT Central özel çözümlemeler ile genişletme (Önizleme özellikleri)
 
@@ -29,7 +29,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 * *Sürekli veri dışa aktarma*kullanarak bir IoT Central uygulamasından Telemetriyi akışla.
 * Cihaz telemetrisini analiz etmek ve çizmek için bir Azure Databricks ortamı oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -44,7 +44,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 | Ödeme planı | Kullandıkça Öde |
 | Uygulama şablonu | Mağaza içi analiz – koşul izleme |
 | Uygulama adı | Varsayılanı kabul edin veya kendi adınızı seçin |
-| URL'si | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
+| URL | Varsayılanı kabul edin veya kendi benzersiz URL ön ekini seçin |
 | Dizin | Azure Active Directory kiracınız |
 | Azure aboneliği | Azure aboneliğiniz |
 | Bölge | En yakın bölgeniz |
@@ -63,7 +63,7 @@ Aşağıdaki ayarlarla [bir Event Hubs ad alanı oluşturmak için Azure Portal]
 
 | Ayar | Değer |
 | ------- | ----- |
-| Ad    | Ad alanı adınızı seçin |
+| Adı    | Ad alanı adınızı seçin |
 | Fiyatlandırma katmanı | Temel |
 | Abonelik | Aboneliğiniz |
 | Kaynak grubu | IoTCentralAnalysis |
@@ -116,7 +116,7 @@ Event Hubs ad alanınız aşağıdaki ekran görüntüsüne benzer şekilde gör
     | Olay hub'ı | centralexport |
     | Ölçümler | Açık |
     | Cihazlar | Kapalı |
-    | Cihaz şablonları | Kapalı |
+    | Cihaz Şablonları | Kapalı |
 
 ![Veri dışarı aktarma yapılandırması](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -135,14 +135,14 @@ Kümenizi oluşturmak için aşağıdaki tablodaki bilgileri kullanın:
 | Ayar | Değer |
 | ------- | ----- |
 | Küme Adı | centralanalysis |
-| Küme modu | Standart |
-| Databricks Runtime sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
-| Python sürümü | 3 |
+| Küme Modu | Standart |
+| Databricks Runtime Sürümü | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| Python Sürümü | 3 |
 | Otomatik Ölçeklendirmeyi Etkinleştirme | Hayır |
 | İşlem yapılmadan dakika sonra Sonlandır | 30 |
-| Çalışan türü | Standard_DS3_v2 |
+| Çalışan Türü | Standard_DS3_v2 |
 | Çalışanlarınız | 1 |
-| Sürücü türü | Çalışan ile aynı |
+| Sürücü Türü | Çalışan ile aynı |
 
 Bir küme oluşturmak birkaç dakika sürebilir, devam etmeden önce küme oluşturma işleminin tamamlanmasını bekleyin.
 

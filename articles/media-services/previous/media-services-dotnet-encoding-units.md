@@ -1,6 +1,6 @@
 ---
 title: Kodlama birimleri ekleyerek Medya işlemeyi ölçeklendirme-Azure |  Microsoft Docs
-description: .NET ile kodlama birimleri ekleme hakkında bilgi edinin
+description: Bu makalede, .NET Azure Media Services kodlama birimlerinin nasıl ekleneceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milangada
-ms.openlocfilehash: 9d393e07008d981834d9deb48ded73995366d7e4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 86fd923c121b9d46109529f75bc3d0d040f1a7a9
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016562"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887297"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>.NET SDK ile kodlama ölçeklendirme
 > [!div class="op_single_selector"]
@@ -57,6 +57,6 @@ Varsayılan olarak, her Media Services hesabı en fazla 10 S2 veya S3 medya ayr�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

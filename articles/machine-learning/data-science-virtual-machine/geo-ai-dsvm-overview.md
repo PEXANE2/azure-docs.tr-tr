@@ -1,5 +1,5 @@
 ---
-title: Coğrafi yapay zeka nedir?
+title: Coğrafi yapay zeka DSVM nedir?
 titleSuffix: Azure Data Science Virtual Machine
 description: Coğrafi yapay zeka Veri Bilimi Sanal Makinesi, coğrafi verilerle çalışmaya yönelik ArcGIS Pro ve ML ve AI ile çalışmaya yönelik Python, R ve veri bilimi araç takımları sağlar.
 keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195591"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899915"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
 

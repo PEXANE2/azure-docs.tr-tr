@@ -1,5 +1,5 @@
 ---
-title: Azure-SSIS Integration Runtime için Azure Active Directory etkinleştir
+title: Azure-SSIS Integration Runtime için AAD 'yi etkinleştir
 description: Bu makalede Azure-SSIS Integration Runtime oluşturmak için Azure Data Factory yönetilen kimlikle Azure Active Directory kimlik doğrulamasının nasıl etkinleştirileceği açıklanır.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.date: 5/14/2019
-ms.openlocfilehash: 6973e72b06d51241e883038936270fd0931365d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9d03d0668b8519ae811b5d275e61b370ceb30e78
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217706"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896183"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Azure Active Directory kimlik doğrulamasını etkinleştir
 
@@ -42,7 +42,7 @@ Azure SQL veritabanı sunucusu, bir Azure AD kullanıcısı ile veritabanı olu�
 
 Azure AD PowerShell kullanarak mevcut bir Azure AD grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
 
-1.  [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modülünü yükler.
+1.  Yükleme [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modülü.
 
 2.   `Connect-AzureAD`kullanarak oturum açın, bir grup oluşturmak için aşağıdaki cmdlet 'i çalıştırın ve bir değişkende kaydedin:
 
@@ -198,7 +198,7 @@ PowerShell ile Azure-SSIS IR sağlamak için aşağıdaki işlemleri yapın:
 
 1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modülünü yükler.
 
-2.  Betiğinizdeki `CatalogAdminCredential` parametre ayarlamayın. Örneğin:
+2.  Betiğinizdeki `CatalogAdminCredential` parametre ayarlamayın. Örnek:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

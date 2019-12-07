@@ -1,20 +1,21 @@
 ---
-title: Blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLı veya PowerShell komutları çalıştırın | Microsoft Docs
+title: Blob veya kuyruk verilerine erişmek için Azure CLı veya PowerShell komutlarını Azure AD kimlik bilgileriyle çalıştırma
+titleSuffix: Azure Storage
 description: Azure CLı ve PowerShell, Azure Depolama Blobu ve kuyruklar verilerinde komut çalıştırmak için Azure AD kimlik bilgileriyle oturum açmayı destekler. Oturum için bir erişim belirteci sağlanır ve çağrı işlemlerine yetki vermek için kullanılır. İzinler, Azure AD güvenlik sorumlusu 'na atanan RBAC rolüne bağımlıdır.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 07abb9d604c14a5c78a088cb07f57088b84552a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671097"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891873"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure CLı veya PowerShell komutlarını Azure AD kimlik bilgileriyle çalıştırma
 
@@ -30,16 +31,16 @@ Bir kapsayıcı veya kuyruktaki her bir Azure depolama işlemi için gereken izi
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Azure AD kimlik bilgilerini kullanarak CLı komutlarını çağırma
 
-Azure CLI, `--auth-mode` blob ve kuyruk verisi işlemlerine yönelik parametreyi destekler:
+Azure CLı, blob ve kuyruk verileri işlemleri için `--auth-mode` parametresini destekler:
 
-- Bir Azure AD güvenlik `login` sorumlusu kullanarak oturum açmak için parametresiniolarakayarlayın.`--auth-mode`
-- Hesap için kimlik doğrulama parametresi sağlanmazsa `key` , bir hesap anahtarı sorgulama girişiminde bulunan parametreyieskideğereayarlayın.`--auth-mode` 
+- Azure AD güvenlik sorumlusu kullanarak oturum açmak için `--auth-mode` parametresini `login` olarak ayarlayın.
+- Hesap için kimlik doğrulama parametresi sağlanmazsa, bir hesap anahtarı sorgulama girişiminde `--auth-mode` parametresini eski `key` değerine ayarlayın. 
 
 Aşağıdaki örnek Azure AD kimlik bilgilerinizi kullanarak Azure CLı 'dan yeni bir depolama hesabında bir kapsayıcının nasıl oluşturulacağını göstermektedir. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın: 
 
-1. Azure CLı sürüm 2.0.46 veya üstünü yüklediğinizden emin olun. Yüklü `az --version` sürümünüzü denetlemek için ' i çalıştırın.
+1. Azure CLı sürüm 2.0.46 veya üstünü yüklediğinizden emin olun. Yüklü sürümünüzü denetlemek için `az --version` çalıştırın.
 
-1. Tarayıcı `az login` penceresinde çalıştırın ve kimlik doğrulaması yapın: 
+1. `az login` çalıştırma ve tarayıcı penceresinde kimlik doğrulama: 
 
     ```azurecli
     az login
@@ -67,7 +68,7 @@ Aşağıdaki örnek Azure AD kimlik bilgilerinizi kullanarak Azure CLı 'dan yen
     > [!IMPORTANT]
     > RBAC rol atamalarının yayılması birkaç dakika sürebilir.
 
-1. Azure AD kimlik bilgilerinizi kullanarak kapsayıcıyı oluşturmak için `--auth-mode` parametresi olarak `login` ayarlanmış [az Storage Container Create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) komutunu çağırın:
+1. Azure AD kimlik bilgilerinizi kullanarak kapsayıcıyı oluşturmak için `--auth-mode` parametresi `login` olarak ayarlanan [az Storage Container Create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) komutunu çağırın:
 
     ```azurecli
     az storage container create \ 
@@ -76,7 +77,7 @@ Aşağıdaki örnek Azure AD kimlik bilgilerinizi kullanarak Azure CLı 'dan yen
         --auth-mode login
     ```
 
-`--auth-mode`Parametresiyleilişkili ortam değişkeni. `AZURE_STORAGE_AUTH_MODE` Bir Azure depolama veri işlemine yapılan her çağrıya dahil kaçınmak için ortam değişkeninde uygun değeri belirtebilirsiniz.
+`--auth-mode` parametresiyle ilişkili ortam değişkeni `AZURE_STORAGE_AUTH_MODE`. Bir Azure depolama veri işlemine yapılan her çağrıya dahil kaçınmak için ortam değişkeninde uygun değeri belirtebilirsiniz.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Azure AD kimlik bilgilerini kullanarak PowerShell komutlarını çağırma
 
@@ -111,7 +112,7 @@ Aşağıdaki örnek, Azure AD kimlik bilgilerinizi kullanarak Azure PowerShell y
       -Location $location `
     ```
 
-1. [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)' i çağırarak yeni depolama hesabını belirten depolama hesabı bağlamını alın. Bir depolama hesabında davrandığında, kimlik bilgilerini tekrar tekrar geçirmek yerine bağlama başvurabilirsiniz. Azure AD kimlik bilgilerinizi kullanarak sonraki veri işlemlerini çağırmak için parametresiniekleyin:`-UseConnectedAccount`
+1. [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)' i çağırarak yeni depolama hesabını belirten depolama hesabı bağlamını alın. Bir depolama hesabında davrandığında, kimlik bilgilerini tekrar tekrar geçirmek yerine bağlama başvurabilirsiniz. Azure AD kimlik bilgilerinizi kullanarak sonraki veri işlemlerini çağırmak için `-UseConnectedAccount` parametresini ekleyin:
 
     ```powershell
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount

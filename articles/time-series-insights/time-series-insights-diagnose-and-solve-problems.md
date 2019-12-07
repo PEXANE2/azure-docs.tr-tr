@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007059"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900233"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights ortamınızdaki sorunları tanılayın ve çözün
 
@@ -38,7 +38,7 @@ Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri 
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynak anahtarında gerekli bir izin eksik
 
-* Azure IoT Hub 'de bir IoT Hub 'ı için, **hizmet bağlantısı** izinleri olan anahtarı sağlamanız gerekir. Her iki **ıothubowner** veya **hizmet** ilkelerinden biri, her ikisi de **hizmet bağlantı** izinlerine sahip olduğundan çalışacaktır.
+* Azure IoT Hub 'de bir IoT Hub 'ı için, **hizmet bağlantısı** izinleri olan anahtarı sağlamanız gerekir. Her ikisinde de **hizmet bağlantısı** izinleri olduğundan, **ıothubowner** veya **hizmet** ilkelerini seçin.
 
    [![IoT Hub hizmet bağlantısı izinleri](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri 
 
 Bir IoT Hub 'ı veya bir olay hub 'ını kaydettiğinizde, verileri okumak için kullanmak istediğiniz tüketici grubunu ayarlamanız önemlidir. Bu Tüketici grubu *paylaşılamıyor*. Tüketici grubu paylaşılmışsa, temel alınan IoT Hub 'ı veya Olay Hub 'ı otomatik olarak okuyuculardan birinin bağlantısını keser. Okunacak Time Series Insights için benzersiz bir tüketici grubu sağlayın.
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Neden D: ortam henüz sağlandı
+
+Veriler, ortam ve verileri ilk oluşturulduktan sonra birkaç dakika içinde Time Series Insights Gezgini 'nde görünür.
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Sorun: bazı veriler gösteriliyor, ancak veriler eksik
 
 Veriler yalnızca kısmen göründüğünde ve veriler ele alınması halinde görünüyorsa, birkaç olasılıkların dikkate alınması gerekir.
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>Neden: ortamınız kısıtlanıyor
 
-Veri içeren bir olay kaynağı oluşturduktan sonra, ortamlar sağlandığında kısıtlama yaygın bir sorundur. Azure IoT Hub ve Azure olayları hub 'Ları, verileri yedi güne kadar depolar. Time Series Insights her zaman olay kaynağındaki en eski olayla (ilk kez, ilk çıkar veya *FIFO*) başlar.
+Veri içeren bir olay kaynağı oluşturduktan sonra, ortamlar sağlandığında [kısıtlama](time-series-insights-environment-mitigate-latency.md) yaygın bir sorundur. Azure IoT Hub ve Azure olayları hub 'Ları, verileri yedi güne kadar depolar. Time Series Insights her zaman olay kaynağındaki en eski olayla (ilk kez, ilk çıkar veya *FIFO*) başlar.
 
 Örneğin, bir S1, tek birimlik Time Series Insights ortamına bağlandığınızda bir olay kaynağında 5.000.000 olayındaysanız, Time Series Insights günde yaklaşık 1.000.000 olay okur. Time Series Insights beş günden fazla gecikme yaşmış olabilir. Ancak, bu durum ortamın kısıtlandığı şeydir.
 

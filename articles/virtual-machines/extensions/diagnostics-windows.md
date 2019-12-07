@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158949"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892643"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Windows çalıştıran bir sanal makinede PowerShell kullanarak Azure Tanılama’yı etkinleştirme
 
@@ -40,7 +40,7 @@ Kaynak Yöneticisi dağıtım modeli aracılığıyla oluşturulmuş mevcut bir 
 
 *$diagnosticsconfig _path* , aşağıdaki [örnekte](#sample-diagnostics-configuration) açıklandığı gibi, XML 'de tanılama yapılandırmasını içeren dosyanın yoludur.  
 
-Tanılama yapılandırma dosyası depolama hesabı adına sahip bir **Storageaccount** öğesi belirtiyorsa, *set-Azvmdiagnosticsextenıı* betiği, tanılama uzantısını otomatik olarak bu depolama alanına gönderecek şekilde ayarlar hesabı. Bunun çalışması için, depolama hesabının VM ile aynı abonelikte olması gerekir.
+Tanılama yapılandırma dosyası depolama hesabı adına sahip bir **Storageaccount** öğesi belirtiyorsa, *set-azvmdiagnosticsextenıı* betiği, tanılama uzantısını otomatik olarak bu depolama hesabına gönderecek şekilde ayarlar. Bunun çalışması için, depolama hesabının VM ile aynı abonelikte olması gerekir.
 
 Tanılama yapılandırmasında **Storageaccount** belirtilmemişse, cmdlet 'e *storageAccountName* parametresini geçirmeniz gerekir. *StorageAccountName* parametresi belirtilmişse, cmdlet, her zaman parametresinde belirtilen depolama hesabını kullanır ve bu, tanılama yapılandırma dosyasında belirtilen bir değer değildir.
 
@@ -64,9 +64,9 @@ Cmdlet 'i, tanılama yapılandırmasını içeren *Publicsettings*' i döndürü
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Klasik dağıtım modelini kullanıyorsanız tanılama uzantısını etkinleştirin
 Klasik dağıtım modeli aracılığıyla oluşturduğunuz bir VM 'de bir tanılama uzantısını etkinleştirmek için [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 'ini kullanabilirsiniz. Aşağıdaki örnek, tanılama uzantısı etkin olan klasik dağıtım modeli aracılığıyla yeni bir VM oluşturmayı gösterir.
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Klasik dağıtım modeli aracılığıyla oluşturulmuş mevcut bir VM 'de tanılama uzantısını etkinleştirmek için önce VM yapılandırmasını almak üzere [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 'ini kullanın. Daha sonra [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 'ini kullanarak tanılama uzantısını IÇERECEK şekilde VM yapılandırmasını güncelleştirin. Son olarak, [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)kullanarak GÜNCELLEŞTIRILMIŞ yapılandırmayı VM 'ye uygulayın.
@@ -82,8 +82,8 @@ Yapılandırmanın aşağıdakileri içermesi için güncelleştirilmesi gerekir
 
 * **Ölçümler** öğesinin *RESOURCEID* ÖZNITELIĞININ VM 'nin kaynak kimliğiyle güncelleştirilmesi gerekir.
   
-  * Kaynak KIMLIĞI şu model kullanılarak oluşturulabilir: "/Subscriptions/{*VM ile abonelik için ABONELIK kimliği*}/ResourceGroups/{*VM için resourcegroup Name*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *VM adı*} ".
-  * Örneğin, VM 'nin çalıştığı aboneliğin abonelik KIMLIĞI **11111111-1111-1111-1111-111111111111**ise kaynak grubunun kaynak grubu adı **myresourcegroup**olur ve VM adı **mywindowsvm**ise *RESOURCEID* değeri şöyle olacaktır:
+  * Kaynak KIMLIĞI şu model kullanılarak oluşturulabilir: "/Subscriptions/{*VM ile abonelik için ABONELIK kimliği*}/ResourceGroups/{VM 'nin*resourcegroup Name*}/Providers/Microsoft.COMPUTE/virtualMachines/{*VM Name*}".
+  * Örneğin, VM 'nin çalıştığı aboneliğin abonelik KIMLIĞI **11111111-1111-1111-1111-111111111111**ise kaynak grubunun kaynak grubu adı **myresourcegroup**olur ve VM adı **Mywindowsvm**ise, *RESOURCEID* değeri şöyle olacaktır:
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

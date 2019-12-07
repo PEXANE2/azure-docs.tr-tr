@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak Azure SQL veri ambarı 'nda verileri kopyalama ve dönüştürme
+title: Azure SQL veri ambarı 'nda verileri kopyalama ve dönüştürme
 description: Azure SQL veri ambarı 'na veri kopyalamayı ve Azure SQL veri ambarı 'nda Data Factory kullanarak verileri dönüştürmeyi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1bd6d4d594bc7988d2dceaae533202f2a41379f1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076761"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891047"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veri ambarı 'nda verileri kopyalama ve dönüştürme 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -45,7 +45,7 @@ Kopyalama etkinliği için, bu Azure SQL veri ambarı Bağlayıcısı şu işlev
 > Azure Data Factory Integration Runtime'ı kullanarak verileri kopyalama, yapılandırma bir [Azure SQL sunucusu güvenlik duvarı](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) Azure hizmetlerinin sunucunun erişebilmesi için.
 > Şirket içinde barındırılan Integration runtime'ı kullanarak verileri kopyalama, Azure SQL sunucusu güvenlik duvarı uygun IP aralığı izin verecek şekilde yapılandırın. Azure SQL veritabanı'na bağlanmak için kullanılan bir makinenin IP bu aralığa dahildir.
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 > [!TIP]
 > En iyi performansı elde etmek için Azure SQL veri ambarı'na veri yüklemek için PolyBase kullanın. [Azure SQL veri ambarı'na veri yüklemek için PolyBase kullanma](#use-polybase-to-load-data-into-azure-sql-data-warehouse) Ayrıntılar bölümünde bulunur. Kullanım örneği ile bir kılavuz için bkz. [1 TB 15 dakikadan daha kısa Azure Data Factory ile Azure SQL Data Warehouse'a veri yükleme](load-azure-sql-data-warehouse.md).
@@ -58,7 +58,7 @@ Aşağıdaki bölümler, Data Factory varlıklarını belirli bir Azure SQL veri
 
 Bir Azure SQL veri ambarı bağlı hizmeti için aşağıdaki özellikleri destekler:
 
-| Özellik            | Açıklama                                                  | Gerekli                                                     |
+| Özellik            | Açıklama                                                  | Gereklidir                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | Type özelliği ayarlanmalıdır **AzureSqlDW**.             | Yes                                                          |
 | connectionString    | İçin Azure SQL veri ambarı örneğine bağlanmak için gereken bilgileri belirtin **connectionString** özelliği. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, parola/hizmet sorumlusu anahtarını Azure Key Vault de koyabilirsiniz ve SQL kimlik doğrulaması, `password` yapılandırmasını bağlantı dizesinden dışarı çeker. Daha ayrıntılı bilgi için tablonun altındaki JSON örneğine bakın ve [kimlik bilgilerini Azure Key Vault makalesine saklayın](store-credentials-in-key-vault.md) . | Yes                                                          |
@@ -231,7 +231,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 Azure SQL veri ambarı veri kümesi için aşağıdaki özellikler desteklenir:
 
-| Özellik  | Açıklama                                                  | Gerekli                    |
+| Özellik  | Açıklama                                                  | Gereklidir                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | **type** kümesinin özelliği ayarlanmalıdır **AzureSqlDWTable**. | Yes                         |
 | schema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
@@ -267,7 +267,7 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 Verileri Azure SQL Data Warehouse'dan veri kopyalamak için ayarlanmış **türü** kopyalama etkinliği kaynak özelliğinde **SqlDWSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
-| Özellik                     | Açıklama                                                  | Gerekli |
+| Özellik                     | Açıklama                                                  | Gereklidir |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | **type** kopyalama etkinliği kaynak özelliği ayarlanmalıdır **SqlDWSource**. | Yes      |
 | sqlReaderQuery               | Verileri okumak için özel bir SQL sorgusu kullanın. Örnek: `select * from MyTable`. | Hayır       |
@@ -370,7 +370,7 @@ GO
 
 Azure SQL veri ambarı'na veri kopyalamak için kopyalama etkinliği Havuz türü ayarlayın. **SqlDWSink**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 
-| Özellik          | Açıklama                                                  | Gerekli                                      |
+| Özellik          | Açıklama                                                  | Gereklidir                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | **type** kopyalama etkinliği havuz özelliği ayarlanmalıdır **SqlDWSink**. | Yes                                           |
 | allowPolyBase     | PolyBase, uygun olduğunda yerine BULKINSERT mekanizması kullanılıp kullanılmayacağını belirtir. <br/><br/> PolyBase kullanarak SQL Data Warehouse'a veri yükleme öneririz. Bkz: [Azure SQL veri ambarı'na veri yüklemek için PolyBase kullanma](#use-polybase-to-load-data-into-azure-sql-data-warehouse) kısıtlamaları ve ayrıntıları bölümü.<br/><br/>İzin verilen değerler **True** ve **False** (varsayılan). | Hayır                                            |
@@ -426,9 +426,9 @@ Gereksinimleri karşılanmadığı takdirde, Azure Data Factory ayarları denetl
 
     | Desteklenen kaynak veri deposu türü                             | Desteklenen kaynak kimlik doğrulama türü                        |
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
-    | [Azure blobu](connector-azure-blob-storage.md)                | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
+    | [Azure Blob](connector-azure-blob-storage.md)                | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
     | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Hizmet sorumlusu kimlik doğrulaması                            |
-    | [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
+    | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
     >Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, yönetilen kimlik kimlik doğrulaması kullanmanız gerekir- [VNET hizmet uç noktalarını Azure depolama ile kullanmanın etkileri](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)için başvurun. [Azure Blob tarafından yönetilen kimlik doğrulama](connector-azure-blob-storage.md#managed-identity) ve [Azure Data Lake Storage 2. tarafından yönetilen kimlik doğrulama](connector-azure-data-lake-storage.md#managed-identity) bölümündeki Data Factory gereken konfigürasyonları öğrenin.
@@ -570,7 +570,7 @@ Aşağıdaki tabloda belirtmek örnekler verilmektedir **tableName** JSON veri k
 | dbo       | MyTable    | MyTable ya da dbo. MyTable veya [dbo].[MyTable] |
 | dbo1      | MyTable    | dbo1. MyTable veya [dbo1].[MyTable]          |
 | dbo       | My.Table   | [My.Table] veya [dbo].[My.Table]            |
-| dbo1      | My.Table   | [dbo1]. [My.Table]                         |
+| dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
 Aşağıdaki hatayı görürseniz, sorunu için belirtilen değer olabilir **tableName** özelliği. Doğru şekilde değerlerini belirtmek için önceki tabloya bakın **tableName** JSON özelliği.
 
@@ -605,13 +605,13 @@ Veya Azure SQL veri ambarı veri kopyalayın, aşağıdaki eşlemeler Azure SQL 
 | binary                                | Byte[]                         |
 | bit                                   | Boole                        |
 | char                                  | String, Char[]                 |
-| date                                  | DateTime                       |
-| Tarih saat                              | DateTime                       |
-| datetime2                             | DateTime                       |
+| date                                  | Tarih Saat                       |
+| Datetime                              | Tarih Saat                       |
+| datetime2                             | Tarih Saat                       |
 | Datetimeoffset                        | DateTimeOffset                 |
 | Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
-| Kayan                                 | çift                         |
+| Kayan                                 | Double                         |
 | image                                 | Byte[]                         |
 | int                                   | Int32                          |
 | money                                 | Decimal                        |
@@ -620,11 +620,11 @@ Veya Azure SQL veri ambarı veri kopyalayın, aşağıdaki eşlemeler Azure SQL 
 | nvarchar                              | String, Char[]                 |
 | real                                  | Tek                         |
 | rowversion                            | Byte[]                         |
-| smalldatetime                         | DateTime                       |
+| smalldatetime                         | Tarih Saat                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Decimal                        |
 | time                                  | TimeSpan                       |
-| tinyint                               | Byte                           |
+| tinyint                               | Bayt                           |
 | uniqueidentifier                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |

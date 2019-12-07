@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory kullanarak Azure Data Lake Storage 1. verileri yükleme
+title: Azure Data Lake Storage 1. verileri yükleme
 description: Verileri Azure Data Lake Storage 1. kopyalamak için Azure Data Factory kullanma
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672727"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892966"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. verileri yükleme
 
@@ -36,7 +36,7 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
 > [!NOTE]
 > Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Data Lake Storage 1. veri kopyalama](connector-azure-data-lake-store.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Data Lake Storage 1. hesabı: bir Data Lake Storage 1. hesabınız yoksa [Data Lake Storage 1. hesabı oluşturma](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)bölümündeki yönergelere bakın.
@@ -63,7 +63,7 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
    
    ![Data factory giriş sayfası](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   Veri tümleştirme uygulamasını ayrı bir sekmede başlatmak için **yazar & İzleyici** kutucuğunu seçin.
+   Veri Tümleştirme Uygulamasını ayrı bir sekmede açmak için **Oluştur ve İzle** kutucuğunu seçin.
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri yükleme
 
@@ -92,11 +92,11 @@ Bu makalede, Data Factory Veri Kopyalama aracının, _Amazon S3 'ten Data Lake S
    
    ![Amazon S3 hesabını belirtin](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. **Girdi dosyasını veya klasörünü seçin** sayfasında, üzerine kopyalamak istediğiniz klasöre ve dosyaya gidin. Klasörü/dosyayı seçin **, Seç '** i seçin ve ardından **İleri**' yi seçin:
+5. **Giriş dosyasını veya klasörünü seçin** sayfasında, üzerine kopyalamak istediğiniz klasöre ve dosyaya göz atın. Klasörü/dosyayı seçin **, Seç '** i seçin ve ardından **İleri**' yi seçin:
 
     ![Girdi dosyasını veya klasörünü seçin](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. **Dosyaları yinelemeli Kopyala** ve **ikili kopya** (dosya olarak Kopyala) seçeneklerini belirleyerek kopyalama davranışını seçin. **İleri ' yi**seçin:
+6. **Dosyaları yinelemeli Kopyala** ve **ikili kopya** (dosya olarak Kopyala) seçeneklerini belirleyerek kopyalama davranışını seçin. **İleri**'yi seçin:
 
     ![Çıkış klasörünü belirtin](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     

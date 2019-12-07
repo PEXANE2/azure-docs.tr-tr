@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory ile bir denetim tablosu kullanarak bir veritabanından Delta kopyası
+title: Denetim tablosu kullanarak bir veritabanından Delta kopyası
 description: Yalnızca Azure Data Factory olan bir veritabanından yeni veya güncelleştirilmiş satırları artımlı olarak kopyalamak için bir çözüm şablonu kullanmayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: c9ab1d005cf71dbe03546ce5b6014f616a872f8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 22723033b59fafc0b9dfd1ae4fc08e5f6e9145ed
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684214"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896226"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından Delta kopyası
 
@@ -36,14 +36,14 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 Şablon dört etkinlik içerir:
 - **Arama** , bir dış denetim tablosunda depolanan eski üst eşik değerini alır.
 - Başka bir **arama** etkinliği, geçerli üst eşik değerini kaynak veritabanından alır.
-- **Kopyalama** yalnızca kaynak veritabanındaki değişiklikleri hedef depoya kopyalar. Kaynak veritabanındaki değişiklikleri tanımlayan sorgu ' SELECT * FROM Data_Source_Table, TIMESTAMP_Column > "Last High-filigran" ve TIMESTAMP_Column < = "geçerli yüksek filigran" ' ile benzerdir.
+- **Kopyalama** yalnızca kaynak veritabanındaki değişiklikleri hedef depoya kopyalar. Kaynak veritabanındaki değişiklikleri tanımlayan sorgu "SELECT * FROM Data_Source_Table, burada TIMESTAMP_Column >" son yüksek filigran "ve TIMESTAMP_Column < =" geçerli yüksek filigran "' ile benzerdir.
 - **Sqlserverstoredprocedure** , bir sonraki sefer değişim kopyası için geçerli yüksek eşik değerini bir dış denetim tablosuna yazar.
 
 Şablon beş parametreyi tanımlar:
 - *Data_Source_Table_Name* , kaynak veritabanındaki, verileri yüklemek istediğiniz tablodur.
 - *Data_Source_WaterMarkColumn* , yeni veya güncelleştirilmiş satırları tanımlamak için kullanılan kaynak tablodaki sütunun adıdır. Bu sütunun türü genellikle *DateTime*, *Int*veya benzerdir.
 - *Data_Destination_Folder_Path* veya *Data_Destination_Table_Name* , verilerin hedef deponuzda kopyalandığı yerdir.
-- *Control_Table_Table_Name* , yüksek eşik değerini depolayan dış denetim tablosudur.
+- *Control_Table_Table_Name* , üst eşik değerini depolayan dış denetim tablosudur.
 - *Control_Table_Column_Name* , üst eşik değerini depolayan dış denetim tablosundaki sütundur.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
@@ -100,7 +100,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 
     ![Denetim tablosu veri deposuna yeni bir bağlantı oluşturun](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. **Bu şablonu kullan**' ı seçin.
+7. **Bu şablonu kullan**'ı seçin.
 
      ![Bu şablonu kullan](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
@@ -108,7 +108,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 
      ![İşlem hattını gözden geçirme](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. **Saklı yordam**' i seçin. **Saklı yordam adı**için **[update_watermark]** seçeneğini belirleyin. **Parametreyi Içeri aktar**' ı seçin ve ardından **dinamik içerik Ekle**' yi seçin.  
+9. **Saklı yordam**' i seçin. **Saklı yordam adı**için **[update_watermark]** öğesini seçin. **Parametreyi Içeri aktar**' ı seçin ve ardından **dinamik içerik Ekle**' yi seçin.  
 
      ![Saklı yordam etkinliğini ayarlama](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
