@@ -17,6 +17,14 @@
   items:
     - name: Kimlik secure score’u
       href: identity-secure-score.md
+    - name: Güvenlik
+      items:
+        - name: MFA’yı etkinleştirme
+          href: concept-fundamentals-mfa-get-started.md
+        - name: Güvenlik varsayılanları
+          href: concept-fundamentals-security-defaults.md
+        - name: Eski kimlik doğrulamasını engelleme
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: Gruplar ve erişim yönetimi
       href: active-directory-manage-groups.md
     - name: Grup tabanlı lisanslama

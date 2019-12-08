@@ -17,8 +17,6 @@
   items:
     - name: Sık kullanılan Koşullu Erişim İlkeleri
       href: concept-conditional-access-policy-common.md
-    - name: Güvenlik varsayılanları
-      href: concept-conditional-access-security-defaults.md
     - name: Koşullu Erişim ilkesi bileşenleri
       href: concept-conditional-access-policies.md
     - name: Koşullar

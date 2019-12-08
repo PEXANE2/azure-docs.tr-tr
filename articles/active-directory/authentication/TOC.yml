@@ -43,8 +43,6 @@
       items:
         - name: MFA nasıl çalışır?
           href: concept-mfa-howitworks.md
-        - name: MFA’yı etkinleştirme
-          href: concept-mfa-get-started.md
         - name: Kullanıcılarınıza lisans verme
           href: concept-mfa-licensing.md
         - name: Kimlik Doğrulama Sağlayıcısı yönetme

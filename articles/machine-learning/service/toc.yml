@@ -152,7 +152,7 @@
     - name: Verilerle çalışma
       items:
         - name: Bir veri deposundan veri alma
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: Veri kümelerini ekleme ve kaydetme
           displayName: 'data, dataset'
