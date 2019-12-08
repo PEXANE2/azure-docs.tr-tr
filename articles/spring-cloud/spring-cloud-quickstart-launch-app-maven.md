@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708875"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895407"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -113,3 +113,5 @@ Bu hızlı başlangıçta, Maven deposundan bir yay bulutu uygulaması dağıtt�
 > [!div class="nextstepaction"]
 > [Azure Spring Cloud uygulamanızı dağıtıma hazırlayın](spring-cloud-tutorial-prepare-app-deployment.md)
 > [Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugin)
+
+GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

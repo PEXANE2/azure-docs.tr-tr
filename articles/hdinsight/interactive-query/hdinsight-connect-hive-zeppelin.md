@@ -1,20 +1,19 @@
 ---
 title: "Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive"
 description: Bu hızlı başlangıçta, Apache Hive sorguları çalıştırmak için Apache Zeppelin kullanmayı öğreneceksiniz.
-keywords: HDInsight, Hadoop, Hive, etkileşimli sorgu, LLAP
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/03/2019
+ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494298"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890408"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive sorguları yürütme
 
@@ -71,9 +70,47 @@ Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz
 
     Geleneksel Hive ile karşılaştırıldığında sorgu sonuçlarının geri alınması daha hızlı olur.
 
+### <a name="additional-examples"></a>Ek örnekler
+
+1. Tablo oluşturun. Zeppelin not defterinde aşağıdaki kodu yürütün:
+
+    ```hql
+    %jdbc(hive)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE;
+    ```
+
+1. Yeni tabloya veri yükleyin. Zeppelin not defterinde aşağıdaki kodu yürütün:
+
+    ```hql
+    %jdbc(hive)
+    LOAD DATA
+    INPATH 'wasbs:///example/data/sample.log'
+    INTO TABLE log4jLogs;
+    ```
+
+1. Tek bir kayıt ekleyin. Zeppelin not defterinde aşağıdaki kodu yürütün:
+
+    ```hql
+    %jdbc(hive)
+    INSERT INTO TABLE log4jLogs2
+    VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
+    ```
+
+Ek sözdizimi için [Hive dilini el ile](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) inceleyin.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, verileriniz Azure Storage’da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır.
+Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile Verileriniz Azure Storage 'da depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar.
 
 Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'yı kullanarak HDInsight kümesini silme](../hdinsight-delete-cluster.md).
 

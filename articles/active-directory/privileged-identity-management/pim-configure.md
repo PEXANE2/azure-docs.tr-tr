@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f45a7bc870874319a8238c7c8c50bf7a37998
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023016"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899976"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management nedir?
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kurulu�
 
 ## <a name="reasons-to-use"></a>Kullanım nedenleri
 
-Kuruluşlar, kötü niyetli bir aktörün bu erişimi veya yetkili bir kullanıcının yanlışlıkla hassas bir kaynağı etkileme olasılığını azalttığından, güvenli bilgi veya kaynaklara erişimi olan kişilerin sayısını en aza indirmek ister. Ancak kullanıcıların Azure AD, Azure, Office 365 veya SaaS uygulamalarında yine de ayrıcalıklı işlemler gerçekleştirmesi gerekir. Kuruluşlar, kullanıcıların Azure kaynaklarına ve Azure AD 'ye tam zamanında (JıT) ayrıcalıklı erişim izni verebilir. Bu kullanıcıların yönetici ayrıcalıklarıyla ne yaptığına ilişkin daha fazla bakış için bir gereksinim vardır.
+Kuruluşlar, kötü niyetli bir aktörün bu erişimi veya yetkili bir kullanıcının yanlışlıkla hassas bir kaynağı etkileme olasılığını azalttığından, güvenli bilgi veya kaynaklara erişimi olan kişilerin sayısını en aza indirmek ister. Ancak kullanıcıların Azure AD, Azure, Office 365 veya SaaS uygulamalarında yine de ayrıcalıklı işlemler gerçekleştirmesi gerekir. Kuruluşlar kullanıcılara Azure kaynaklarına ve Azure AD'ye tam zamanında (JIT) ayrıcalıklı erişim verebilir. Bu kullanıcıların yönetici ayrıcalıklarıyla ne yaptığına ilişkin daha fazla bakış için bir gereksinim vardır.
 
 ## <a name="what-does-it-do"></a>Uygulama ne işe yarıyor?
 
@@ -46,7 +46,7 @@ Privileged Identity Management, önem verdiğiniz kaynaklarda aşırı, gereksiz
 
 Privileged Identity Management ayarladıktan sonra sol gezinti menüsünde **Görevler**, **Yönet**ve **etkinlik** seçeneklerini görürsünüz. Yönetici olarak, **Azure AD rollerini** ve **Azure Kaynak** rollerini yönetme arasında seçim yapabilirsiniz. Yönetilecek rol türünü seçtiğinizde, bu rol türü için benzer bir seçenek kümesi görürsünüz.
 
-![Azure portal Privileged Identity Management ekran görüntüsü](./media/pim-configure/pim-overview.png)
+![Azure portal Privileged Identity Management ekran görüntüsü](./media/pim-configure/pim-quickstart.png)
 
 ## <a name="who-can-do-what"></a>Kimler ne yapabilir?
 
@@ -87,8 +87,8 @@ Privileged Identity Management ve belgelerini daha iyi anlamak için aşağıdak
 | lebilecek | Tür | Bir kullanıcının rolü kullanmak için bir veya daha fazla eylem gerçekleştirmesini gerektiren bir rol ataması. Bir Kullanıcı bir rol için uygun hale getirildiğinde, ayrıcalıklı görevleri gerçekleştirmeleri gerektiğinde rolü etkinleştirebilecekleri anlamına gelir. Kalıcı ve uygun bir rol atamasına karşılık gelen bir kişiye verilen erişimde fark yoktur. Tek fark, bazı kişilerin her zaman erişim gereksinimi yoktur. |
 | etkin | Tür | Rolü kullanmak için bir kullanıcının herhangi bir eylem gerçekleştirmesini gerektirmeyen bir rol ataması. Etkin olarak atanan kullanıcılara role atanmış ayrıcalıklar vardır. |
 | etkinleştirme |  | Kullanıcının uygun olduğu bir rolü kullanmak için bir veya daha fazla eylem gerçekleştirme işlemi. Eylemler, bir Multi-Factor Authentication (MFA) denetimi gerçekleştirmeye, iş gerekçesinin sağlanmasından veya belirlenen onaylayanlardan onay isteğinde bulunabilir. |
-| atanan | Durum | Etkin rol ataması olan bir kullanıcı. |
-| etkinleştirilemediğini | Durum | Uygun rol atamasına sahip bir Kullanıcı, rolü etkinleştirmek için eylemleri gerçekleştirmiştir ve artık etkindir.  Etkinleştirildikten sonra, Kullanıcı yeniden etkinleştirilmeleri için önceden yapılandırılmış bir süre için rolü kullanabilir. |
+| atanan | Eyalet | Etkin rol ataması olan bir kullanıcı. |
+| etkinleştirilemediğini | Eyalet | Uygun rol atamasına sahip bir Kullanıcı, rolü etkinleştirmek için eylemleri gerçekleştirmiştir ve artık etkindir.  Etkinleştirildikten sonra, Kullanıcı yeniden etkinleştirilmeleri için önceden yapılandırılmış bir süre için rolü kullanabilir. |
 | kalıcı uygun | Süre | Kullanıcının her zaman rolü etkinleştirmesine uygun olduğu rol ataması. |
 | kalıcı etkin | Süre | Bir kullanıcının herhangi bir eylem yapmadan her zaman rol kullanabileceği rol ataması. |
 | kullanım süresi uygun | Süre | Bir kullanıcının belirtilen başlangıç ve bitiş tarihi içinde rolü etkinleştirmesine uygun olduğu rol ataması. |

@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/17/2019
-ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: af8fa0fc231e6e10d02019d93456293fcf3e3da4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598197"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892626"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme ve arka uç uygulamasıyla (Python) okuma
 
@@ -37,7 +37,7 @@ az extension add --name azure-cli-iot-ext
 
 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip adresinden örnek Python projesini indirin ve ZIP arşivini ayıklayın.
 
-Geliştirme makinenizde Python sürümü 3.5.3 + yüklü olmalıdır. 
+Geliştirme makinenizde [Python sürüm 3,7 veya sonraki bir sürümü](https://www.python.org/downloads/) yüklü. Desteklenen Python 'un diğer sürümleri için SDK belgelerindeki [Azure IoT cihaz özellikleri](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) ' ne bakın.
 
 ## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
@@ -79,7 +79,7 @@ Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir 
 
 1. **SimulatedDevice.py** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.py**' ye yaptığınız değişiklikleri kaydedin.
+    `CONNECTION_STRING` değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.py**' ye yaptığınız değişiklikleri kaydedin.
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 

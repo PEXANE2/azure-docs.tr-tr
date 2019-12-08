@@ -1,21 +1,22 @@
 ---
-title: Azure Hızlı Başlangıç - Azure PowerShell kullanarak nesne depolamada blob oluşturma | Microsoft Docs
+title: Hızlı başlangıç-PowerShell ile blob oluşturma
+titleSuffix: Azure Storage
 description: Bu hızlı başlangıçta nesne (Blob) depolamada Azure PowerShell’i kullanırsınız. Sonra, Azure Depolama’ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki blobları listelemek için PowerShell’i kullanırsınız.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: b0e9cc37f6269c3b878e16b754ec3a49aee13f72
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698993"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892507"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak Blobları karşıya yükleme, indirme ve listeleme
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Hızlı başlangıç: PowerShell ile Blobları karşıya yükleme, indirme ve listeleme
 
 Azure kaynaklarını oluşturmak ve yönetmek için Azure PowerShell modülünü kullanın. Azure kaynaklarını oluşturma ve yönetme işlemleri PowerShell komut satırından veya betiklerden gerçekleştirilebilir. Bu kılavuzda yerel disk ile Azure Blob depolama arasında dosyaları aktarmak için PowerShell kullanma hakkında bilgi sağlanır.
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 891952000f633d7d873c6d76c475916acc8ac4ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a96429a84fab10c033cc18a2c35edb4b2a056924
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708857"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895382"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -76,7 +76,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. **Etiketi** "config" olarak ayarlayın.
 
-1. Değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+1. Değişikliklerinizi kaydetmek için **Uygula**'yı seçin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -149,3 +149,5 @@ Bu hızlı başlangıçta şunları öğrendiniz:
 
 > [!div class="nextstepaction"]
 > [Azure Spring Cloud uygulamanızı dağıtıma hazırlama](spring-cloud-tutorial-prepare-app-deployment.md)
+
+GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

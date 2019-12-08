@@ -4,15 +4,15 @@ description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounte
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677160"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889133"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
@@ -22,7 +22,7 @@ Kullanıcılar ihtiyaçlarını karşılamak için özel `EventCounters` yayıml
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounters toplamak için Application Insights kullanma
 
-Application Insights, yeni yayınlanan NuGet paketi [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)'ın bir parçası olan `EventCounterCollectionModule` `EventCounters` toplamayı destekler. `EventCounterCollectionModule`, [Aspnetcore](asp-net-core.md) veya [workerservice](worker-service.md)kullanılırken otomatik olarak etkinleştirilir. `EventCounterCollectionModule`, yapılandırılabilir olmayan bir koleksiyon sıklığı 60 saniye olan sayaçları toplar. EventCounters toplamak için gerekli özel izinler yoktur.
+Application Insights, yeni yayınlanan NuGet paketi [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)'ın bir parçası olan `EventCounterCollectionModule``EventCounters` toplamayı destekler. `EventCounterCollectionModule`, [Aspnetcore](asp-net-core.md) veya [workerservice](worker-service.md)kullanılırken otomatik olarak etkinleştirilir. `EventCounterCollectionModule`, yapılandırılabilir olmayan bir koleksiyon sıklığı 60 saniye olan sayaçları toplar. EventCounters toplamak için gerekli özel izinler yoktur.
 
 ## <a name="default-counters-collected"></a>Toplanan varsayılan sayaçlar
 
@@ -59,7 +59,7 @@ Application Insights, yeni yayınlanan NuGet paketi [Microsoft. ApplicationInsig
 
 ## <a name="customizing-counters-to-be-collected"></a>Toplanacak sayaçları özelleştirme
 
-Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gösterir. Bu özelleştirme, `AddApplicationInsightsTelemetry()` veya `AddApplicationInsightsWorkerService()` kullanılarak Application Insights telemetri koleksiyonu etkinleştirildikten sonra uygulamanızın `ConfigureServices` yönteminde yapılır. Aşağıda bir ASP.NET Core uygulamasından örnek bir kod verilmiştir. Diğer uygulama türleri için [Bu](worker-service.md#configuring-or-removing-default-telemetrymodules) belgeye başvurun.
+Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gösterir. Bu özelleştirme, `AddApplicationInsightsTelemetry()` veya `AddApplicationInsightsWorkerService()`kullanılarak Application Insights telemetri koleksiyonu etkinleştirildikten sonra uygulamanızın `ConfigureServices` yönteminde yapılır. Aşağıda bir ASP.NET Core uygulamasından örnek bir kod verilmiştir. Diğer uygulama türleri için [Bu](worker-service.md#configuring-or-removing-default-telemetrymodules) belgeye başvurun.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -98,7 +98,7 @@ Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gös
 [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)'Nde EventCounter ölçümlerini görüntülemek için Application Insights kaynak ' ı seçin ve ölçüm ad alanı olarak günlük tabanlı ölçümler ' i seçin. Daha sonra EventCounter ölçümleri PerformanceCounter kategorisi altında gösterilir.
 
 > [!div class="mx-imgBorder"]
-> Application Insights ](./media/event-counters/metrics-explorer-counter-list.png) bildirilen ![Event sayaçları
+> Application Insights](./media/event-counters/metrics-explorer-counter-list.png) bildirilen olay sayaçlarını ![
 
 ## <a name="event-counters-in-analytics"></a>Analiz içindeki olay sayaçları
 
@@ -111,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> Application Insights ](./media/event-counters/analytics-event-counters.png) bildirilen ![Event sayaçları
+> Application Insights](./media/event-counters/analytics-event-counters.png) bildirilen olay sayaçlarını ![
 
 Son dönemdeki belirli bir sayacın (örneğin: `ThreadPool Completed Work Item Count`) bir grafiğini almak için aşağıdaki sorguyu çalıştırın.
 
@@ -123,7 +123,7 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> Application Insights ](./media/event-counters/analytics-completeditems-counters.png) tek bir sayacın ![Chat
+> Application Insights](./media/event-counters/analytics-completeditems-counters.png) tek bir sayaca sohbet ![
 
 Diğer telemetri gibi, **PerformanceCounters** da uygulamanızın üzerinde çalıştığı ana bilgisayar sunucusu örneğinin kimliğini belirten `cloud_RoleInstance` bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
 

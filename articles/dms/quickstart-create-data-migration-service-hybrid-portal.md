@@ -10,19 +10,22 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/06/2019
-ms.openlocfilehash: 47c0ecb5674f821d3034fb5f165df08f176c2e93
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.date: 12/06/2019
+ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646935"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890700"
 ---
 # <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Hızlı başlangıç: Azure portal (Önizleme) kullanarak karma modda Azure veritabanı geçiş hizmeti örneği oluşturma
 
 Azure veritabanı geçiş hizmeti karma modu, bulutta çalışan bir Azure veritabanı geçiş hizmeti örneğiyle birlikte şirket içinde barındırılan bir geçiş çalışanı kullanarak veritabanı geçişlerini yönetir. Karma mod özellikle, şirket içi ağ ile Azure arasında siteden siteye bağlantı olmaması veya sınırlı siteden siteye bağlantı bant genişliği olduğu senaryolar için yararlıdır.
 
 Bu hızlı başlangıçta, karma modda Azure veritabanı geçiş hizmeti 'nin bir örneğini oluşturmak için Azure portal kullanırsınız. Daha sonra, şirket içi ağınızda karma çalışanı indirir, yükler ve ayarlar. Önizleme sırasında, Azure veritabanı geçiş hizmeti karma modunu kullanarak SQL Server şirket içi örneğinden Azure SQL veritabanı 'na veri geçirebilirsiniz.
+
+> [!IMPORTANT]
+> Azure veritabanı geçiş hizmeti karma yükleyicisi, .NET 4.7.2 veya üstünü gerektirir. En son .NET sürümlerini bulmak için [.NET Framework indirme](https://dotnet.microsoft.com/download/dotnet-framework) sayfasına bakın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -111,6 +114,9 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
 3. Azure veritabanı geçiş hizmeti karma çalışanını barındıracak sunucuda ZIP dosyasını ayıklayın.
 
+    > [!IMPORTANT]
+    > Azure veritabanı geçiş hizmeti karma yükleyicisi, .NET 4.7.2 veya üstünü gerektirir. En son .NET sürümlerini bulmak için [.NET Framework indirme](https://dotnet.microsoft.com/download/dotnet-framework) sayfasına bakın.
+
 4. Install klasöründe **Dmssettings. JSON** dosyasını bulup açın, **ApplicationId** ve **RESOURCEID**belirtin ve ardından dosyayı kaydedin.
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı ayarları](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
@@ -125,7 +131,7 @@ Azure veritabanı geçiş hizmeti 'nin ilk örneğinizi oluşturmadan önce Micr
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı sertifikası](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. Azure portal, uygulama KIMLIĞI ' ne gidin, **Yönet**altında sertifika **& gizli**dizileri ' ni seçin ve ardından yeni oluşturduğunuz ortak sertifikayı seçmek için **sertifikayı karşıya yükle** ' yi seçin.
+6. Azure portal, uygulama KIMLIĞI ' ne gidin, **Yönet**altında sertifika **& gizli**dizileri ' ni seçin ve sonra oluşturduğunuz ortak sertifikayı seçmek için **sertifikayı karşıya yükle** ' yi seçin.
 
     ![Azure veritabanı geçiş hizmeti karma çalışanı sertifikası karşıya yükleme](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

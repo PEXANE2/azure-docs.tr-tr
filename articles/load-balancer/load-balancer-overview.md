@@ -12,44 +12,26 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c95744e58ce08943765755145645ed45a2ccdb1f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423899"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894458"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
-Azure Load Balancer ile uygulamalarınızı ölçeklendirebilir ve hizmetleriniz için yüksek kullanılabilirlik sunabilirsiniz. Load Balancer gelen senaryoların yanı sıra giden senaryoları da destekler, hem düşük gecikme süresi hem de yüksek aktarım hızı sağlar, tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçekleme yapar.
+*Yük Dengeleme* , yük veya gelen ağ trafiğini bir grup arka uç kaynağı veya sunucusu arasında verimli bir şekilde dağıtmayı gösterir. Azure, ihtiyaya göre seçebileceğiniz [çeşitli yük dengeleme seçenekleri](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) sunar. Bu belgede Azure Load Balancer yer almaktadır.
 
-Load Balancer, Load Balancer ön ucuna, belirtilen kurallara ve sistem durumu araştırmalara göre arka uç havuz örneklerine gelen yeni gelen akışları dağıtır.
+Azure Load Balancer, açık sistemler arası (OSı) modelin dört katmanında çalışır. Bu, istemcilerle ilgili tek iletişim noktasıdır. Load Balancer, Load Balancer ön ucuna, belirtilen Load dengeleyici kurallarına ve sistem durumu araştırmalara göre arka uç havuz örneklerine gelen yeni gelen akışları dağıtır. Arka uç havuzu örnekleri, bir sanal makine ölçek kümesindeki (VMSS) Azure sanal makineleri veya örnekleri olabilir. 
 
-Ortak Load Balancer, özel IP adreslerini genel IP adreslerine çevirerek sanal ağınızdaki sanal makineler (VM) için giden bağlantılar sağlayabilir.
+Azure Load Balancer, uygulamalarınızı ölçeklendirebilir ve yüksek availabile hizmetleri oluşturabilirsiniz. Load Balancer hem gelen hem de giden senaryoları destekler, düşük gecikme süresi ve yüksek aktarım hızı sağlar ve tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçeklendirme yapar.
 
-Azure Load Balancer iki fiyatlandırma katmanında veya *SKU 'larda*kullanılabilir: temel ve standart. Bu iki SKU arasında ölçek, özellik ve fiyatlandırma açısından farklar vardır. Temel Load Balancer olabilecek herhangi bir senaryo Standart Load Balancer ile de oluşturulabilir, ancak yaklaşımlar biraz farklı olur. Load Balancer hakkında bilgi edinirsiniz, temel bilgileri ve SKU 'ya özgü farklılıkları öğrenmeye çalışın.
+**[Ortak Load Balancer](#publicloadbalancer)** , özel IP ADRESLERINI genel IP adreslerine çevirerek sanal ağınızdaki sanal makineler (VM) için giden bağlantılar sağlayabilir. Ortak yük dengeleyiciler, sanal makinelerinize dengeleyici internet trafiği yüklemek için kullanılır.
 
-## <a name="why-use-load-balancer"></a>Neden Azure Load Balancer'ı kullanmalısınız?
-
-Azure Load Balancer’ı aşağıdaki görevler için kullanabilirsiniz:
-
-* Sanal makinelerinize gelen internet trafiğinin yükünü dengeleyin. Bu yapılandırma [ortak Load Balancer](#publicloadbalancer)olarak bilinir.
-* Bir sanal ağ içindeki VM 'lerde Yük Dengeleme trafiği. Karma senaryolarda yük dengeleyici ön ucuna şirket içi ağdan da erişebilirsiniz. Bu senaryoların her ikisi de [dahili Load Balancer](#internalloadbalancer)olarak bilinen bir yapılandırma kullanır.
-* Gelen ağ adresi çevirisi (NAT) kurallarıyla trafiği belirli VM'ler üzerindeki belirli bir bağlantı noktasına yönlendirme.
-* Genel Yük Dengeleyici kullanarak sanal ağınızın içindeki VM'ler için [giden bağlantı](load-balancer-outbound-connections.md) sağlama.
-
->[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL boşaltması") veya HTTP/HTTPS isteği, uygulama katmanı işleme için arıyorsanız bkz. [Azure Application Gateway nedir?](../application-gateway/overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
->
-> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
-
-## <a name="what-are-load-balancer-resources"></a>Load Balancer kaynakları nelerdir?
-
-Load Balancer kaynaklar, Azure 'un oluşturmak istediğiniz senaryoya ulaşmak için çok kiracılı altyapısını nasıl programtabilmelidir belirleyen nesnelerdir. Load Balancer kaynakları ile gerçek altyapı arasında doğrudan ilişki yoktur. Load Balancer oluşturmak bir örnek oluşturmaz ve kapasite her zaman kullanılabilir durumdadır.
-
-Bir Load Balancer kaynak, ortak bir Load Balancer ya da bir iç Load Balancer olabilir. Load Balancer kaynağının işlevleri bir ön uç, bir kural, bir sistem durumu araştırması ve arka uç havuzu tanımı tarafından tanımlanır. VM 'den arka uç havuzunu belirterek VM 'Leri arka uç havuzuna yerleştirebilirsiniz.
+Bir **[iç (veya özel) Load Balancer](#internalloadbalancer)** , ön uçta yalnızca özel IP adreslerinin gerekli olduğu senaryolarda kullanılabilir. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır. Karma senaryolarda yük dengeleyici ön ucuna şirket içi ağdan da erişebilirsiniz.
 
 ## <a name="fundamental-load-balancer-features"></a>Temel Load Balancer özellikleri
 
@@ -195,4 +177,4 @@ SLA Standart Load Balancer hakkında daha fazla bilgi için bkz. [Load Balancer 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Load Balancer kullanmaya başlamak için bkz. [temel Load Balancer oluşturma](quickstart-create-basic-load-balancer-portal.md) : oluşturma, özel bir IIS uzantısı olan VM oluşturma ve VM 'ler arasında Web uygulamasının yükünü dengeleme.
+Load Balancer kullanmaya başlamak için bkz. [genel standart Load Balancer oluşturma](quickstart-load-balancer-standard-public-portal.md) : oluşturma, özel bir IIS uzantısı olan VM oluşturma ve VM 'ler arasında Web uygulamasının yükünü dengeleme.

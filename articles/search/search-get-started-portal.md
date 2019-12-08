@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407006"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900996"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** 
 
   ![oteller Dizin Oluşturucusu](media/search-get-started-portal/hotels-indexer.png)
 
-## <a name="monitor-progress"></a>İlerlemeyi izleme
+## <a name="monitor-progress"></a>İlerlemeyi İzle
 
 Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine götürebilmelidir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular**' ye tıklayın.
 
@@ -136,7 +136,7 @@ Dizin tasarımı sırasında düzenleme yapabileceğiniz ve yapamayacağınız a
 
 Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kullanarak sorgulayabileceğiniz bir arama dizinine sahipsiniz. Bu sayfada rastgele sorgu dizelerini test etmek için kullanabileceğiniz bir arama kutusu bulunur.
 
-**Arama Gezgini** yalnızca [REST API isteklerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)işleyecek şekilde donatılmış, ancak hem [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) hem de [tam Lucene sorgu ayrıştırıcısı](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)için sözdizimi kabul eder, ayrıca [arama belgesinde](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) bulunan tüm arama parametreleri de kullanılabilir REST API operasyonları.
+**Arama Gezgini** yalnızca [REST API isteklerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)işleyecek şekilde donatılmıştır, ancak hem [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) hem de [tam Lucene sorgu ayrıştırıcısı](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)için sözdizimi kabul eder, ayrıca arama belgesinde bulunan tüm arama parametreleri ve [Arama belgesi REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) işlemleri.
 
 > [!TIP]
 > Aşağıdaki adımlar, 6m08s ' de [Azure bilişsel arama genel bakış videosu ' ne](https://channel9.msdn.com/Events/Connect/2016/138)gösterilmiştir.
@@ -260,7 +260,7 @@ Ayrıca, portalda Dizin, Dizin oluşturucular ve veri kaynaklarını bulmayı de
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
 Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
 
@@ -268,7 +268,7 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal ilk keşif ve küçük görevler için yararlı olsa da, API 'Lerin erken olarak incelenmesi, kavram ve iş akışını daha derin bir düzeyde anlamanıza yardımcı olur:
+Bir tarayıcıda çalışan kullanıma yönelik bir Web uygulaması oluşturmak için Portal Sihirbazı 'nı kullanın. Bu Sihirbazı, az önce oluşturduğunuz küçük dizinde deneyebilir veya daha zengin bir arama deneyimi için yerleşik örnek veri kümelerinden birini kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [.NET SDK kullanarak dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Portalda arama uygulaması oluşturma](search-create-app-portal.md)

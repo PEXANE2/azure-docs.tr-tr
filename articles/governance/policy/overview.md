@@ -3,12 +3,12 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484020"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885475"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -16,7 +16,9 @@ ms.locfileid: "74484020"
 
 Şirketiniz asla çözülmeyecek gibi görünen önemli sayıda BT sorunlarıyla mi karşılaşıyor? İyi bir BT yönetimine sorunların yönetilmesine ve önlenmesine yardımcı olma amacıyla girişimlerinizi planlama ve önceliklerinizi stratejik düzeyde belirleme dahildir. Stratejik bu gereksinim, Azure İlkesi burada devreye girer.
 
-Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir. Bu ilkeler, kaynaklarınız üzerinden farklı kuralları ve eylemleri uygulatarak kaynaklarınızın kurumsal standartlarınız ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlar. Azure İlkesi, uyumsuzluk atanan ilkelerle kaynaklarınızı değerlendirerek bu gereksinimini karşılar. Örneğin, ortamınızda yalnızca belirli SKU boyutuna sahip sanal makinelere izin veren bir ilkeniz olabilir. Bu ilke uygulandıktan sonra yeni ve mevcut kaynakları uyumluluk için değerlendirilir. Doğru ilke türü ile var olan kaynakları uyumlu hale getirilebilir. Bu belgede daha sonra oluşturun ve Azure İlkesi ile ilkeleri uygulama hakkında daha fazla ayrıntıyı gideceğiz.
+Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir. Bu ilkeler, kaynaklarınız üzerinden farklı kuralları ve eylemleri uygulatarak kaynaklarınızın kurumsal standartlarınız ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlar. Azure İlkesi, uyumsuzluk atanan ilkelerle kaynaklarınızı değerlendirerek bu gereksinimini karşılar. Azure Ilkesi tarafından depolanan tüm veriler, bekleyen bir şekilde şifrelenir.
+
+Örneğin, ortamınızda yalnızca belirli SKU boyutuna sahip sanal makinelere izin veren bir ilkeniz olabilir. Bu ilke uygulandıktan sonra yeni ve mevcut kaynakları uyumluluk için değerlendirilir. Doğru ilke türü ile var olan kaynakları uyumlu hale getirilebilir. Bu belgede daha sonra oluşturun ve Azure İlkesi ile ilkeleri uygulama hakkında daha fazla ayrıntıyı gideceğiz.
 
 > [!IMPORTANT]
 > Azure İlkesi’nin uyumluluk değerlendirmesi artık fiyatlandırma katmanından bağımsız olarak tüm atamalara sağlanır. Atamalarınız uyumluluk verilerini göstermezse, lütfen aboneliğin Microsoft.PolicyInsights kaynak sağlayıcısı ile kaydolduğundan emin olun.
@@ -25,7 +27,7 @@ Azure İlkesi, ilkelerinizi oluşturmak, atamak ve yönetmek için kullandığı
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC ile farkları nelerdir?
 
-Azure Ilkesi ve rol tabanlı erişim denetimi (RBAC) arasında bazı önemli farklılıklar vardır. RBAC farklı kapsamlardaki kullanıcı eylemlerine odaklanır. Bir kaynak grubu için katkıda bulunan rolüne kaynak grubunda değişiklik yapmanıza olanak sağlayan eklenmiş olabilir. Azure Ilkesi, dağıtım sırasında ve zaten var olan kaynaklar için kaynak özelliklerine odaklanır. Azure Ilkesi, kaynakların türleri veya konumları gibi özellikleri denetler. RBAC 'den farklı olarak Azure Ilkesi, varsayılan bir izin verme ve açık reddetme sistemidir.
+Azure Ilkesi ve rol tabanlı erişim denetimi (RBAC) arasında bazı önemli farklılıklar vardır. RBAC farklı kapsamlardaki kullanıcı eylemlerine odaklanır. Bir kaynak grubu için katkıda bulunan rolüne kaynak grubunda değişiklik yapmanıza olanak sağlayan eklenmiş olabilir. Azure Ilkesi, dağıtım sırasında ve zaten var olan kaynaklar için kaynak özelliklerine odaklanır. Azure İlkesi kaynakların türü veya konumu gibi özellikleri denetler. RBAC 'den farklı olarak Azure Ilkesi, varsayılan bir izin verme ve açık reddetme sistemidir.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure İlkesi'ndeki RBAC İzinleri
 
@@ -34,7 +36,7 @@ Azure İlkesi iki Kaynak Sağlayıcısı’nda işlemler olarak bilinen bazı iz
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibinin** tam hakları vardır. **Katkıda bulunan** ve **Reader** tüm Azure ilkesi Işlemlerini kullanabilir, ancak **katkıda bulunan** düzeltme de tetiklenebilir.
+Birçok Yerleşik rol Azure İlkesi kaynaklarına izin verir. **Kaynak Ilkesi katılımcısı** rolü çoğu Azure ilke işlemini içerir. **Sahibi** tam haklarına sahip. **Katkıda bulunan** ve **Reader** tüm Azure ilkesi Işlemlerini kullanabilir, ancak **katkıda bulunan** düzeltme de tetiklenebilir.
 
 Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-based-access-control/custom-roles.md) oluşturun.
 
@@ -42,19 +44,19 @@ Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-base
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, ilkelerin uygulandığı koşullar vardır. Ve bu Koşullar karşılanıyorsa, gerçekleşir, tanımlı bir etkisi.
 
-Azure İlkesi'nde, varsayılan olarak kullanılabilen çeşitli yerleşik ilkeler sunuyoruz. Örneğin:
+Azure İlkesi'nde, varsayılan olarak kullanılabilen çeşitli yerleşik ilkeler sunuyoruz. Örnek:
 
-- **Izin verilen depolama hesabı SKU 'ları**: dağıtılan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisini tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesapları engellemektir.
-- **Izin verilen kaynak türü**: dağıtabileceğiniz kaynak türlerini tanımlar. Bu tanımlı listenin bir parçası olmayan tüm kaynakları reddetmektir kendi etkisidir.
-- **Izin verilen konumlar**: yeni kaynaklar için kullanılabilir konumları kısıtlar. Sahip olduğu eylem ise coğrafi uyumluluk gereksinimlerinizi uygulamaktır.
-- **Izin verilen sanal makine SKU 'ları**: dağıtabileceğiniz bir sanal makine SKU 'su kümesi belirtir.
+- **İzin verilen depolama hesabı SKU'ları**: dağıtılan bir depolama hesabı SKU boyutları bir dizi içinde olup olmadığını belirler. Etkisini tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesapları engellemektir.
+- **İzin verilen kaynak türüyle**: dağıtabileceğiniz kaynak türlerini tanımlar. Bu tanımlı listenin bir parçası olmayan tüm kaynakları reddetmektir kendi etkisidir.
+- **İzin verilen Konumlar**: yeni kaynaklar için mevcut konumlardan kısıtlar. Sahip olduğu eylem ise coğrafi uyumluluk gereksinimlerinizi uygulamaktır.
+- **Sanal makine SKU'ları izin**: sanal makine SKU'ları dağıtabileceğiniz bir dizi belirtir.
 - **Kaynaklara bir etiket ekleyin**: dağıtım isteği tarafından belirtilmemişse gerekli bir etiketi ve varsayılan değerini uygular.
-- **Etiketi ve değerini zorla**: gerekli bir etiketi ve değerini bir kaynağa zorlar.
-- **İzin verilmeyen kaynak türleri**: bir kaynak türleri listesinin dağıtılmasını engeller.
+- **Etiketi ve değerini zorunlu kıl**: gerekli bir etiket ve değerini bir kaynağa zorunlu kılar.
+- **İzin verilmeyen kaynak türleri**: kaynak türlerinin bir listesini dağıtılmasını engeller.
 
 Bu ilke tanımları (yerleşik ve özel tanımları) uygulamak için onları atamanız gerekir. Bu ilkelerden herhangi birini Azure portalı, PowerShell veya Azure CLI üzerinden atayabilirsiniz.
 
-İlke atama veya ilke güncelleştirmeleri gibi çeşitli farklı eylemler ile ilke değerlendirmesi gerçekleşir. Tüm liste için bkz. [ilke değerlendirme Tetikleyicileri](./how-to/get-compliance-data.md#evaluation-triggers).
+İlke atama veya ilke güncelleştirmeleri gibi çeşitli farklı eylemler ile ilke değerlendirmesi gerçekleşir. Tam bir listesi için bkz. [ilke değerlendirme Tetikleyicileri](./how-to/get-compliance-data.md#evaluation-triggers).
 
 İlke tanımlarının yapıları hakkında daha fazla bilgi edinmek için [İlke Tanımı Yapısı](./concepts/definition-structure.md) adlı makaleye göz atın.
 
@@ -74,7 +76,7 @@ Portaldan ilke tanımlarını ve atamalarını ayarlama hakkında daha fazla bil
 
 Parametreler, bir ilke tanımı oluşturulurken tanımlanır. Tanımlanan parametreye bir ad ve isteğe bağlı olarak verilen bir değer. Örneğin, *konum* başlıklı bir ilke için parametre tanımlayabilirsiniz. Daha sonra, ilkenin atamasını yaparken *EastUS* veya *WestUS* gibi farklı değerler verebilirsiniz.
 
-İlke parametreleri hakkında daha fazla bilgi için bkz. [tanım yapısı-parametreler](./concepts/definition-structure.md#parameters).
+İlke parametreleri hakkında daha fazla bilgi için bkz: [tanım yapısı - parametreleri](./concepts/definition-structure.md#parameters).
 
 ## <a name="initiative-definition"></a>Girişim tanımı
 
@@ -86,14 +88,14 @@ Girişim tanımı, tekil kapsamlı bir hedefi gerçekleştirmek üzere belirlenm
 Bu girişimin altında sahip olabileceğiniz ilke tanımlarından bazıları şunlardır:
 
 - **Güvenlik Merkezi’ndeki şifrelenmemiş SQL Veritabanı’nı izleme** – Şifrelenmemiş SQL veritabanlarını ve sunucuları izlemek için.
-- **Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını** izleme – yapılandırılmış temeli karşılamayan sunucuları izleme.
+- **İzleme Güvenlik Merkezi'nde işletim sistemi güvenlik açıklarını** – yapılandırılmış temeli karşılamayan sunucuları izlemek için.
 - **Güvenlik Merkezi’ndeki eksik Endpoint Protection’ı izleme** – Yüklü bir bitiş noktası koruma aracısı olmadan sunucuları izlemek için.
 
 ## <a name="initiative-assignment"></a>Girişim ataması
 
 İlke ataması gibi, girişim ataması da belirli bir kapsama atanmış olan girişim tanımıdır. Girişim atamaları, her kapsam için birkaç girişim tanımları yapma ihtiyacını azaltır. Bu kapsamın dahilinde de yönetim gruplarından kaynak gruplarına kadar birçok grup bulunabilir.
 
-Her girişim farklı kapsamlara atanabilir. Bir girişim hem **Subscriptiona** hem de **subscriptionb**öğesine atanabilir.
+Her girişim farklı kapsamlara atanabilir. Her ikisi için de bir girişim atanabilir **subscriptionA** ve **subscriptionB**.
 
 ## <a name="initiative-parameters"></a>Girişim parametreleri
 
@@ -127,16 +129,16 @@ Bir girişim tanımındaki değer seçenekleri oluştururken, listenin bir parç
 - Tanımları ve atamaları oluştururken kuruluş hiyerarşilerini göz önünde bulundurun. Yönetim grubu gibi üst düzey veya abonelik düzeyinde tanımları oluşturmanızı öneririz. Ardından, sonraki alt düzeyde atama oluşturun. Bir yönetim grubu tanımı oluşturursanız, bir abonelik veya kaynak grubu, yönetim grubu içinde aşağı atama sınırlayabilirsiniz.
 
 - Oluşturma ve hatta tek bir ilke tanımı için girişim tanımları atama öneririz.
-  Örneğin, ilke tanımı *policyDefA* ve bunu girişim tanımı *initiativeDefC*altında oluşturabilirsiniz. *Policydefb* için daha sonra *policyDefA*benzeri hedefleri olan bir Ilke tanımı oluşturursanız, *initiativeDefC* altına ekleyebilir ve bunları birlikte izleyebilirsiniz.
+  Örneğin, ilke tanımı sahip *policyDefA* ve girişim tanımı oluşturma *initiativeDefC*. Daha sonra başka bir ilke tanımı oluşturursanız *Policydefa* hedefleri benzer *policyDefA*, altında ekleyebilirsiniz *initiativeDefC* ve birlikte izleyin.
 
 - Girişim ataması oluşturduktan sonra eklenen girişime ilke tanımları da bu girişim atamaları bir parçası haline gelir.
 
 - Girişim ataması değerlendirildiğinde, girişim dahilindeki tüm ilkeleri ayrıca değerlendirilir.
   Ayrı ayrı bir ilke değerlendirmeniz gerekiyorsa, içinde bir girişim içermeyecek şekilde daha iyidir.
 
-## <a name="video-overview"></a>Videoya genel bakış
+## <a name="video-overview"></a>Genel bakış videosu
 
-Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kaydedilmiştir. Slaytlar veya video indirme için, Kanal 9 ' da [Azure ilkesi aracılığıyla Azure ortamınızı](https://channel9.msdn.com/events/Build/2018/THR2030) yönetme makalesini ziyaret edin.
+Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kaydedilmiştir. Slayt veya video indirme için ziyaret [Azure İlkesi aracılığıyla Azure ortamınızı yöneten](https://channel9.msdn.com/events/Build/2018/THR2030) Channel 9.
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 

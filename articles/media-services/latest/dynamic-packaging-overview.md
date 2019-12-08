@@ -1,7 +1,7 @@
 ---
 title: Media Services 'de dinamik paketleme
 titleSuffix: Azure Media Services
-description: Azure Media Services içindeki dinamik paketlemeye genel bakış.
+description: Bu makale, Azure Media Services içindeki dinamik paketlemeye genel bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574886"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888487"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Media Services 'de dinamik paketleme
 
