@@ -1,29 +1,25 @@
 ---
-title: İstemci uygulamalarını başlatma (JavaScript için Microsoft kimlik doğrulama kitaplığı)
+title: MSAL. js istemci uygulamalarını başlatın | Mavisi
 titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak istemci uygulamalarını başlatma hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150636"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916511"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL. js kullanarak istemci uygulamalarını başlatma
 Bu makalede, Kullanıcı Aracısı uygulamasının bir örneğiyle JavaScript (MSAL. js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır. Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir ortak istemci uygulaması biçimidir. Tarayıcı bağlamı başarıyla erişilebilir olduğundan bu istemciler gizli dizileri depolamaz. İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.
@@ -115,7 +111,7 @@ export type Configuration = {
 - **ClientID**: gerekli. Uygulamanızın ClientID 'si, bunu uygulama kayıt portalından almalısınız.
 
 - **yetkili**: isteğe bağlı. MSAL 'in belirteçleri isteyebileceğini bir dizin gösteren URL. Varsayılan değer: `https://login.microsoftonline.com/common`.
-    * Azure AD 'de,&gt;örnek &lt;kimlik sağlayıcısı etki alanı (örneğin,&gt;) ve `https://login.microsoftonline.com`seyirci &lt;bir tanımlayıcı olduğu/&lt;hedef kitle&gt; olan https://&lt;örneği&gt;. oturum açma kitini temsil etme. Bu, aşağıdaki değerler olabilir:
+    * Azure AD 'de,&gt;örnek &lt;kimlik sağlayıcısı etki alanı (örneğin,&gt;) ve `https://login.microsoftonline.com`seyirci &lt;, oturum açma kitini temsil eden bir tanımlayıcı olan https://&lt;&gt;örneği /&lt;hedef kitle&gt;. Bu, aşağıdaki değerler olabilir:
         * `https://login.microsoftonline.com/<tenant>`kiracı, contoso.onmicrosoft.com gibi kiracıyla ilişkili bir etki alanıdır veya yalnızca belirli bir kuruluşun kullanıcılarına oturum açmak için kullanılan dizinin `TenantID` özelliğini temsil eden GUID 'dir.
         * `https://login.microsoftonline.com/common`-kullanıcılara iş ve okul hesaplarıyla veya bir Microsoft kişisel hesabıyla oturum açmak için kullanılır.
         * `https://login.microsoftonline.com/organizations/`-kullanıcılara iş ve okul hesaplarıyla oturum açmak için kullanılır.
@@ -125,11 +121,11 @@ export type Configuration = {
 
 - **Validateauthority**: isteğe bağlı.  Belirteçlerin vereni doğrulayın. `true` varsayılan değerdir. B2C uygulamaları için, yetkili değeri bilindiğinden ve ilke başına farklı olduğundan, yetkili doğrulaması çalışmaz ve `false`olarak ayarlanması gerekir.
 
-- **Redirecturi**: isteğe bağlı.  Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. Varsayılan olarak `window.location.href`olur.
+- **Redirecturi**: isteğe bağlı.  Uygulamanızın kimlik doğrulama yanıtlarının gönderilebileceği ve alınabileceği, uygulamanızın yeniden yönlendirme URI 'SI. Portalda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. Varsayılan olarak `window.location.href`.
 
 - **Postlogoutredirecturi**: isteğe bağlı.  Oturumu kapattıktan sonra kullanıcıyı `postLogoutRedirectUri` yönlendirir. Varsayılan değer `redirectUri`.
 
-- **Navigatetologinrequesturl**: isteğe bağlı. Oturum açtıktan sonra başlangıç sayfasına varsayılan gezintiyi kapatma özelliği. Varsayılan değer true 'dur. Bu yalnızca yeniden yönlendirme akışları için kullanılır.
+- **Navigatetologinrequesturl**: isteğe bağlı. Oturum açtıktan sonra başlangıç sayfasına varsayılan gezintiyi kapatma özelliği. Varsayılan değer doğru değeridir. Bu yalnızca yeniden yönlendirme akışları için kullanılır.
 
 - **Önbellekelocation**: isteğe bağlı.  Tarayıcı depolamayı `localStorage` ya da `sessionStorage`olarak ayarlar. Varsayılan değer: `sessionStorage`.
 
@@ -144,6 +140,6 @@ export type Configuration = {
 - **Navigateframewait**: isteğe bağlı. Gizli iframe 'ler hedefine geçmeden önce bekleme süresini ayarlayan milisaniye sayısı. Varsayılan değer 500 milisaniyedir.
 
 Bunlar yalnızca MSAL angular sarmalayıcı kitaplığından geçirilme için geçerlidir:
-- **Unprotectedresources**: isteğe bağlı.  Korumasız kaynakları olan URI 'Ler dizisi. MSAL, bu URI 'ye sahip giden isteklere belirteç iliştirmez. Varsayılan olarak `null`olur.
+- **Unprotectedresources**: isteğe bağlı.  Korumasız kaynakları olan URI 'Ler dizisi. MSAL, bu URI 'ye sahip giden isteklere belirteç iliştirmez. Varsayılan olarak `null`.
 
-- **Protectedresourcemap**: isteğe bağlı.  Bu, Web API çağrılarında erişim belirteçlerini otomatik olarak eklemek için MSAL tarafından kullanılan kapsamlara yönelik kaynakları eşleştirmekte. Kaynak için tek bir erişim belirteci alındı. Bu nedenle, belirli bir kaynak yolunu şu şekilde eşleyebilirsiniz: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} veya kaynağın uygulama URL 'SI: {"https://graph.microsoft.com/", ["User. Read", "MAIL. Send"]}. CORS çağrıları için bu gereklidir. Varsayılan olarak `null`olur.
+- **Protectedresourcemap**: isteğe bağlı.  Bu, Web API çağrılarında erişim belirteçlerini otomatik olarak eklemek için MSAL tarafından kullanılan kapsamlara yönelik kaynakları eşleştirmekte. Kaynak için tek bir erişim belirteci alındı. Bu nedenle, belirli bir kaynak yolunu şu şekilde eşleyebilirsiniz: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} veya kaynağın uygulama URL 'SI: {"https://graph.microsoft.com/", ["User. Read", "MAIL. Send"]}. CORS çağrıları için bu gereklidir. Varsayılan olarak `null`.

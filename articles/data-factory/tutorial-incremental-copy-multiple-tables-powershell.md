@@ -1,24 +1,25 @@
 ---
-title: 'Azure Data Factory kullanarak birden çok tabloyu artımlı olarak kopyalama '
+title: PowerShell kullanarak birden çok tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, değişim verileri şirket içi SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
-documentationcenter: ''
+ms.author: yexu
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: b841acf45c20320fada895f20dfc4065837d5add
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 46e0815ea341b732e20ebe7ffa9af355e1f35e87
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683396"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926466"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
+
 Bu öğreticide, değişim verileri şirket içi SQL Server’daki birden çok tablodan Azure SQL Veritabanına yükleyen bir Azure veri fabrikası işlem hattı oluşturacaksınız.    
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
@@ -62,7 +63,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını kaynak veri deposu olarak kullanırsınız. 
 * **Azure SQL Veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md). 
 
@@ -360,7 +361,7 @@ Bu adımda, şirket içi SQL Server veritabanınızı veri fabrikasına bağlars
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>SQL veritabanı bağlı hizmeti oluşturma
-1. C:\adftutorials\ınccopymultitabletutorial klasöründe aşağıdaki içeriğe sahip **Azuressqldatabaselinkedservice. JSON** ADLı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) &lt;ServerName&gt;, &lt;veritabanı adını&gt;, &lt;Kullanıcı adı&gt;ve &lt;Password&gt;, SQL Server veritabanınızın adı, veritabanınızın adı, Kullanıcı adı ile değiştirin ve dosyayı kaydetmeden önce parola. 
+1. C:\adftutorials\ınccopymultitabletutorial klasöründe aşağıdaki içeriğe sahip **Azuressqldatabaselinkedservice. JSON** ADLı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) Dosyayı kaydetmeden önce &lt;ServerName&gt;, &lt;veritabanı adı&gt;, &lt;Kullanıcı adı&gt;ve &lt;Password&gt; adını SQL Server veritabanınızın adı, veritabanınızın adı, Kullanıcı adı ve parola ile değiştirin. 
 
     ```json
     {  
@@ -794,7 +795,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
 
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. **Tüm hizmetler**’i seçin, *Veri fabrikaları* anahtar sözcüğüyle arama yapın ve **Veri fabrikaları** seçeneğini belirleyin. 
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 61f24776bb9ec9443df421dcbcf35dcc83ec2bc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036502"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929707"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ayrıntılı adımlar: Azure 'da bir Linux VM 'sine kimlik doğrulaması için SSH anahtarları oluşturma ve yönetme 
 Güvenli Kabuk (SSH) anahtar çifti ile Azure 'da, kimlik doğrulaması için SSH anahtarlarını kullanan varsayılan bir Linux sanal makinesi oluşturabilir ve parolaların oturum açması gereksinimini ortadan kaldırabilirsiniz. Azure portal, Azure CLı, Kaynak Yöneticisi şablonları veya diğer araçlarla oluşturulan VM 'Ler, SSH bağlantıları için SSH anahtarı kimlik doğrulamasını ayarlayan dağıtımın bir parçası olarak SSH ortak anahtarınızı içerebilir. 
@@ -31,7 +31,7 @@ Windows bilgisayarda SSH anahtarları oluşturma ve kullanma hakkında ek yollar
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>Özel anahtar parolası
-SSH özel anahtarının korunması için çok güvenli bir parola olmalıdır. Bu parola yalnızca özel SSH anahtar dosyasına erişim için kullanılır ve Kullanıcı hesabı parolası *değildir* . SSH anahtarınıza bir parola eklediğinizde, özel anahtarın şifresini çözmek için parola olmadan kullanılamaz olması için, özel anahtarı 128 bit AES kullanarak şifreler. Bir saldırgan özel anahtarınızı ve bu anahtarın bir parolası yoksa, bu özel anahtarı ilgili ortak anahtara sahip herhangi bir sunucuda oturum açmak için kullanabilir. Özel anahtar bir parola ile korunuyorsa, Azure 'daki altyapınız için ek bir güvenlik katmanı sağlayan bu saldırgan tarafından kullanılamaz.
+SSH özel anahtarının korunması için çok güvenli bir parola olmalıdır. Bu parola yalnızca özel SSH anahtar dosyasına erişim için kullanılır ve Kullanıcı hesabı parolası *değildir* . SSH anahtarınıza parola eklediğinizde bu parola özel anahtarı 128 bit AES kullanarak şifreler; böylece özel anahtar, şifresini çözen parola olmadan kullanılamaz. Bir saldırgan özel anahtarınızı ve bu anahtarın bir parolası yoksa, bu özel anahtarı ilgili ortak anahtara sahip herhangi bir sunucuda oturum açmak için kullanabilir. Özel anahtar bir parola ile korunuyorsa, Azure 'daki altyapınız için ek bir güvenlik katmanı sağlayan bu saldırgan tarafından kullanılamaz.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -52,7 +52,7 @@ SSH anahtarları, varsayılan olarak `~/.ssh` dizininde tutulur.  `~/.ssh` dizin
 Aşağıdaki `ssh-keygen` komutu, `~/.ssh` dizininde varsayılan olarak 2048 bit SSH RSA ortak ve özel anahtar dosyaları üretir. Geçerli konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>Ayrıntılı örnek
@@ -60,6 +60,7 @@ Aşağıdaki örnek, bir SSH RSA anahtar çifti oluşturmak için ek komut seçe
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -71,20 +72,22 @@ ssh-keygen \
 
 `ssh-keygen` = anahtarları oluşturmak için kullanılan program
 
+`-m PEM` = anahtarı ped olarak Biçimlendir
+
 `-t rsa` = bu durumda, RSA biçiminde oluşturulacak anahtarın türü
 
 `-b 4096` = anahtardaki bit sayısı, bu durumda 4096
 
 `-C "azureuser@myserver"` = kolayca tanımlamak için ortak anahtar dosyasının sonuna eklenen bir açıklama. Normalde açıklama olarak bir e-posta adresi kullanılır, ancak altyapınız için en iyi şeyi kullanın.
 
-`-f ~/.ssh/mykeys/myprivatekey` = varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. `.pub` eklenmiş karşılık gelen ortak anahtar dosyası aynı dizinde oluşturulur. Dizin var olmalıdır.
+`-f ~/.ssh/mykeys/myprivatekey` = varsayılan adı kullanmayı tercih ederseniz, özel anahtar dosyasının dosya adı. `.pub` eklenmiş karşılık gelen ortak anahtar dosyası aynı dizinde oluşturulur. Dizinin var olması gerekir.
 
 `-N mypassphrase` = özel anahtar dosyasına erişmek için kullanılan ek bir parola. 
 
 ### <a name="example-of-ssh-keygen"></a>ssh-keygen örneği
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -92,19 +95,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>Kayıtlı anahtar dosyaları
@@ -181,7 +184,7 @@ Parolayı etkileşimli olarak kullanmanıza gerek kalmaması için, SSH sistemin
 eval "$(ssh-agent -s)"
 ```
 
-Şimdi `ssh-agent` komutunu kullanarak özel anahtarı `ssh-add` öğesine ekleyin.
+Şimdi `ssh-add` komutunu kullanarak özel anahtarı `ssh-agent` öğesine ekleyin.
 
 ```bash
 ssh-add ~/.ssh/id_rsa

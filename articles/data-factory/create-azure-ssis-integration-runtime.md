@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/15/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: ce688248a205981f4a4c60ad01231c0b8f6bae3d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 52aa7984678a2cf29afd39f94de9b715943e0437
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73677367"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922866"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -38,7 +37,7 @@ Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve ç
 
 Bu makalede, Azure portal, Azure PowerShell ve Azure Resource Manager şablonunu kullanarak bir Azure-SSIS IR sağlama gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,8 +70,8 @@ Aşağıdaki tabloda, Azure-SSıR IR ile bağlantılı olarak bir Azure SQL veri
 
 | Özellik | Tek veritabanı/elastik havuz| Yönetilen örnek |
 |---------|--------------|------------------|
-| **Planlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. Data Factory işlem hattında [paket yürütmeyi zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Yönetilen örnek Aracısı kullanılabilir. |
-| **Kimlik doğrulaması** | **Db_owner** rolünde üye olarak veri fabrikanızın yönetilen kimliği ile herhangi BIR Azure AD grubunu temsil eden bir bulunan veritabanı kullanıcısına sahıp bır SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. Azure [SQL veritabanı sunucusunda BIR SSıSDB örneği oluşturmak için bkz. Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Veri fabrikanızın yönetilen kimliğini temsil eden kapsanan bir veritabanı kullanıcısına sahip bir SSıSDB örneği oluşturabilirsiniz. <br/><br/>Bkz. Azure [SQL veritabanı yönetilen örneği 'NDE SSıSDB örneği oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
+| **Zamanlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. Data Factory işlem hattında [paket yürütmeyi zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Yönetilen örnek Aracısı kullanılabilir. |
+| **Kimlik doğrulaması** | **Db_owner** rolünde üye olarak, veri fabrikanızın yönetilen kimliği ile herhangi BIR Azure AD grubunu temsil eden bir bulunan veritabanı kullanıcısına sahıp bır SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. Azure [SQL veritabanı sunucusunda BIR SSıSDB örneği oluşturmak için bkz. Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Veri fabrikanızın yönetilen kimliğini temsil eden kapsanan bir veritabanı kullanıcısına sahip bir SSıSDB örneği oluşturabilirsiniz. <br/><br/>Bkz. Azure [SQL veritabanı yönetilen örneği 'NDE SSıSDB örneği oluşturmak Için Azure AD kimlik doğrulamasını etkinleştirme](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Hizmet katmanı** | Azure SQL veritabanı sunucunuz ile bir Azure-SSIS IR oluşturduğunuzda SSSıSDB için hizmet katmanını seçebilirsiniz. Birden çok hizmet katmanı vardır. | Yönetilen örneğiniz ile bir Azure-SSIS IR oluşturduğunuzda SSSıSDB için hizmet katmanını seçemezsiniz. Yönetilen örnekteki tüm veritabanları, bu örneğe ayrılan kaynağı paylaşır. |
 | **Sanal ağ** | Azure-SSIS IR, yalnızca sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu kullanırsanız veya şirket içinde barındırılan IR 'yi yapılandırmadan şirket içi veri depolarına erişmeniz gerekiyorsa, Azure Resource Manager sanal ağlara katılabilirler. | Azure-SSIS IR, yalnızca Azure Resource Manager sanal ağlara katılabilir. Yönetilen örneğiniz için genel bir uç nokta etkinleştirmezseniz sanal ağ gereklidir.<br/><br/>Azure-SSIS IR yönetilen örneğiniz ile aynı sanal ağa katılırsanız, Azure-SSIS IR yönetilen örneğinizin farklı bir alt ağda olduğundan emin olun. Azure-SSIS IR yönetilen örneğinden farklı bir sanal ağa katılırsanız, sanal ağ eşlemesi veya ağdan ağa bağlantı önerilir. Bkz. [uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama](../sql-database/sql-database-managed-instance-connect-app.md). |
 | **Dağıtılmış işlemler** | Bu özellik esnek işlemler aracılığıyla desteklenir. Microsoft Dağıtılmış İşlem Düzenleyicisi (MSDTC) işlemleri desteklenmez. SSIS paketleriniz dağıtılmış işlemleri koordine etmek için MSDTC kullanıyorsa, Azure SQL veritabanı için elastik işlemlere geçiş yapmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [bulut veritabanları arasında dağıtılmış işlemler](../sql-database/sql-database-elastic-transactions-overview.md). | Desteklenmiyor. |
@@ -142,7 +141,7 @@ Data Factory oluşturulduktan sonra, Azure portal genel bakış sayfasını aç�
 
    h. **Katalog veritabanı hizmet katmanı**IÇIN, SSISDB barındıracak veritabanı sunucunuzun hizmet katmanını seçin. Temel, standart veya Premium katmanını seçin veya elastik havuz adı seçin. 
 
-   i. **Bağlantıyı Sına**' yı seçin. Test başarılı olursa, **İleri**' yi seçin. 
+   i. **Bağlantıyı Sına**'yı seçin. Test başarılı olursa, **İleri**' yi seçin. 
 
 4. **Gelişmiş ayarlar** sayfasında, aşağıdaki adımları izleyin.
 
@@ -357,7 +356,7 @@ Azure 'da SSIS paketlerini çalıştıran bir Azure-SSIS tümleştirme çalışm
 
 SSıSDB kullanmıyorsanız, `CatalogServerEndpoint`, `CatalogPricingTier`ve `CatalogAdminCredential` parametrelerini atlayabilirsiniz.
 
-Sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSSıSDB barındırmak için özel bir uç noktası olan yönetilen bir örnek kullanmıyorsanız veya şirket içi verilere erişmeniz gerekiyorsa, `VNetId` ve `Subnet` parametrelerini atlayabilir veya boş değerleri geçirebilirsiniz. yapıştırabilirsiniz. Şirket içindeki verilere erişmek üzere Azure-SSIS IR için kendi kendine barındırılan IR 'yi bir ara sunucu olarak yapılandırırsanız bunları da atlayabilirsiniz. Aksi takdirde, bunları yok saylayamazsınız ve sanal ağ yapılandırmasından geçerli değerler geçirmeniz gerekir. Daha fazla bilgi için bkz. bir [Azure-SSIS IR sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Sanal ağ hizmet uç noktaları ile bir Azure SQL veritabanı sunucusu veya SSSıSDB barındırmak için özel bir uç noktası olan yönetilen bir örnek kullanmıyorsanız veya şirket içi verilere erişmeniz gerekiyorsa, `VNetId` ve `Subnet` parametrelerini atlayabilir ya da bunların boş değerlerini geçirebilirsiniz. Şirket içindeki verilere erişmek üzere Azure-SSIS IR için kendi kendine barındırılan IR 'yi bir ara sunucu olarak yapılandırırsanız bunları da atlayabilirsiniz. Aksi takdirde, bunları yok saylayamazsınız ve sanal ağ yapılandırmasından geçerli değerler geçirmeniz gerekir. Daha fazla bilgi için bkz. bir [Azure-SSIS IR sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
 SSıSDB barındırmak için yönetilen örnek kullanıyorsanız, `CatalogPricingTier` parametresini atlayabilir veya boş bir değer geçirebilirsiniz. Aksi takdirde, bunu atlayamazsınız ve Azure SQL veritabanı için desteklenen fiyatlandırma katmanları listesinden geçerli bir değer geçirmeniz gerekir. Daha fazla bilgi için bkz. [SQL veritabanı kaynak sınırları](../sql-database/sql-database-resource-limits.md).
 

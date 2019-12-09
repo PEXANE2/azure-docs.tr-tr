@@ -4,19 +4,19 @@ description: Office 365 ' den veri kopyalamak için Azure Data Factory kullanma
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672611"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931430"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' den veri yükleme
 
@@ -43,7 +43,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
    
    ![Data factory giriş sayfası](./media/load-office-365-data/data-factory-home-page.png)
 
-5. Veri tümleştirme uygulamasını ayrı bir sekmede başlatmak için **yazar & İzleyici** kutucuğunu seçin.
+5. Veri Tümleştirme Uygulamasını ayrı bir sekmede açmak için **Oluştur ve İzle** kutucuğunu seçin.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
@@ -112,7 +112,7 @@ Ayrıca, sağ üst köşedeki kod ' a tıklayarak ardışık düzen ile ilişkil
 
 Üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) Data Factory'de yayımlar.
 
-![Değişiklikleri Yayımla](./media/load-office-365-data/publish-changes.png) 
+![Değişiklikleri yayımlama](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>İşlem hattını el ile tetikleme
 
@@ -128,7 +128,7 @@ Işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını gö
 
 ![Etkinliği izle](./media/load-office-365-data/activity-status.png) 
 
-Bu bağlam için ilk kez veri isteğinde bulunduğunuzu (veri tablosunun hangi veri tablosuna erişmekte olduğunu, hangi hedef hesabın içine yüklenmekte olduğunu ve hangi kullanıcı kimliğinin veri erişim isteğini yapmakta olduğunu), kopyalama etkinliğini görürsünüz durum **devam**ediyor ve yalnızca eylemler altındaki "Ayrıntılar" bağlantısına tıkladığınızda durum **RequesetingConsent**olarak görüntülenir.  Veri ayıklama işleminin devam edebilmesi için, veri erişimi onaylayan grubunun bir üyesinin Privileged Access Management isteği onaylaması gerekir.
+Bu bağlam için ilk kez veri isteğinde bulunduğum (hangi veri tablosu ' ne erişmekte olduğunu, hangi hedef hesabın yüklendiği veri olduğunu ve veri erişim isteğini hangi kullanıcı kimliğiyle alıyorsa), durum kopyalama durumunu **devam ediyor**olarak görürsünüz ve yalnızca eylemler altındaki "Ayrıntılar" bağlantısına tıkladığınızda durumu **RequesetingConsent**olarak görürsünüz.  Veri ayıklama işleminin devam edebilmesi için, veri erişimi onaylayan grubunun bir üyesinin Privileged Access Management isteği onaylaması gerekir.
 
 _İzin isteği olarak durum:_ 
 ![Etkinlik yürütme ayrıntıları-istek onayı](./media/load-office-365-data/activity-details-request-consent.png) 

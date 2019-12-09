@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 12/05/2019
 ms.author: ashishth
-ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b03bbc7aacd3bfa2a8e29296a5fafed7d4e7e37a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917429"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931523"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
 
@@ -31,7 +31,7 @@ Apache HBase 'i yükseltmeden önce kaynak ve hedef kümelerindeki HBase sürüm
 
 Örnek bir sürüm uyumluluğu matrisi aşağıda verilmiştir. Y uyumluluğu gösterir ve N olası bir uyumsuzluğu gösterir:
 
-| Uyumluluk türü | Ana sürüm| İkincil sürüm | Yama |
+| Uyumluluk türü | Ana sürüm| İkincil sürüm | Düzeltme Eki |
 | --- | --- | --- | --- |
 | İstemci-sunucu hat uyumluluğu | N | E | E |
 | Sunucu-sunucu uyumluluğu | N | E | E |
@@ -98,7 +98,7 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
     
             Provide Script URL.
     
-            Provide hostname as a parameter (i.e. hn0, hn1 or wn2 etc.).
+            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
     ...
             exit
         fi
@@ -184,7 +184,7 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 
     ![HBase için bakım modunu aç onay kutusunu işaretleyin ve ardından onaylayın](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. Yeni HDInsight kümesinde ambarı 'nda oturum açın. `fs.defaultFS` Bu ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config**'ler altında.
+7. Yeni HDInsight kümesinde ambarı 'nda oturum açın. `fs.defaultFS` bir ayarı, özgün küme tarafından kullanılan kapsayıcı adını gösterecek şekilde değiştirin. Bu ayar, Gelişmiş **> Gelişmiş çekirdek sitesi > > config**'ler altında.
 
     ![Ambarı 'nda Hizmetler >, Gelişmiş > > Config 'ler ' e tıklayın](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -192,13 +192,13 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 
 8. **Gelişmiş yazma özelliği ile HBase kümeleri kullanmıyorsanız, bu adımı atlayın. Yalnızca gelişmiş yazma özelliği olan HBase kümeleri için gereklidir.**
    
-   `hbase.rootdir` Yolu orijinal kümenin kapsayıcısına işaret etmek üzere değiştirin.
+   `hbase.rootdir` yolunu, özgün kümenin kapsayıcısına işaret etmek üzere değiştirin.
 
     ![Ambarı 'nda, HBase rootdir için kapsayıcı adını değiştirin](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 1. HDInsight 3,6 ' i 4,0 sürümüne yükseltiyorsanız aşağıdaki adımları izleyin, aksi halde adım 10 ' a atlayın:
-    1. **Hizmetler** > **yeniden başlatma gerekli**' i seçerek, tüm gerekli hizmetleri yeniden başlatın.
+    1. **Hizmetler** ' i seçerek tüm gerekli hizmetleri yeniden başlatın > **tüm gerekli hizmetleri yeniden başlatın**.
     1. HBase hizmetini durdurun.
-    1. Zookeeper düğümüne SSH yazın ve [zkclı](https://github.com/go-zkcli/zkcli) komutunu `rmr /hbase-unsecure` yürütün. Bu, HBase kök znode değerini Zookeeper 'dan kaldırın.
+    1. Zookeeper düğümüne SSH yapın ve Zookeeper 'den HBase kök znode 'u kaldırmak için [Zkclı](https://github.com/go-zkcli/zkcli) komut `rmr /hbase-unsecure` yürütün.
     1. HBase 'i yeniden başlatın.
 1. 4,0 dışında başka bir HDInsight sürümüne yükseltiyorsanız şu adımları izleyin:
     1. Yaptığınız değişiklikleri kaydedin.

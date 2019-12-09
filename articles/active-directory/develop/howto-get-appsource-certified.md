@@ -2,28 +2,24 @@
 title: Azure Active Directory için AppSource sertifikası alma | Microsoft Docs
 description: Uygulamanızı Azure Active Directory için AppSource sertifikalı alma hakkında ayrıntılı bilgi.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.reviewer: andret
+ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 789b7d29673bca8a7703349ee46f4595fd24c2ea
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374087"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917820"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory için AppSource sertifikası alma
 
@@ -40,8 +36,8 @@ Açık KIMLIK bağlantısı kullanarak uygulamanızı Azure AD ile tümleştirme
 *Çok kiracılı bir uygulama* , Azure AD 'ye sahip herhangi bir şirketten veya kuruluştan ayrı bir örnek, yapılandırma veya dağıtıma gerek kalmadan oturum açma işlemlerini kabul eden bir uygulamadır. AppSource, *tek* tıklamayla ücretsiz deneme deneyimini etkinleştirmek için uygulamaların çok kiracılı bir uygulama gerçekleştirmesini önerir.
 
 Uygulamanızda birden çok kiratı etkinleştirmek için şu adımları izleyin:
-1. Uygulama kayıt bilgilerinde [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)`Multi-Tenanted` özelliğini `Yes` olarak ayarlayın. Varsayılan olarak, Azure portal oluşturulan uygulamalar *[tek kiracılı](#single-tenant-applications)* olarak yapılandırılır.
-1. @No__t-0 uç noktasına istek göndermek için kodunuzu güncelleştirin. Bunu yapmak için uç noktayı `https://login.microsoftonline.com/{yourtenant}` ' dan `https://login.microsoftonline.com/common*` ' e güncelleştirin.
+1. `Multi-Tenanted` özelliği, uygulama kayıt bilgilerinizin [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)`Yes` olarak ayarlayın. Varsayılan olarak, Azure portal oluşturulan uygulamalar *[tek kiracılı](#single-tenant-applications)* olarak yapılandırılır.
+1. `common` uç noktasına istek göndermek için kodunuzu güncelleştirin. Bunu yapmak için uç noktayı `https://login.microsoftonline.com/{yourtenant}` `https://login.microsoftonline.com/common*`olarak güncelleştirin.
 1. ASP .NET gibi bazı platformlar için kodunuzu aynı zamanda birden çok verenler kabul edecek şekilde güncelleştirmeniz gerekir.
 
 Çoklu kiracı hakkında daha fazla bilgi için bkz. [Multi-tenant uygulama modelini kullanarak herhangi bir Azure Active Directory (Azure AD) kullanıcısına kaydolma](howto-convert-app-to-be-multi-tenant.md).
@@ -120,7 +116,7 @@ AppSource deneme deneyimi hakkında daha fazla bilgi için [Bu videoya](https://
 
 Azure AD tümleştirmesi için, destek sağlamak üzere topluluk ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) kullanırız.
 
-İlk olarak Stack Overflow sorularınızı sormak ve mevcut sorunlara gözatmanız önerilir. Sorularınıza veya yorumlarınızın [`[azure-active-directory]` ve `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)ile etiketlendiğinden emin olun.
+İlk olarak Stack Overflow sorularınızı sormak ve mevcut sorunlara gözatmanız önerilir. Sorularınıza veya yorumlarınızın [`[azure-active-directory]` ve `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)olarak etiketlendiğinden emin olun.
 
 Geri bildirim sağlamak ve içeriğimizi iyileştirmemizi ve şekillendirmemize yardımcı olmak için aşağıdaki açıklamalar bölümünü kullanın.
 

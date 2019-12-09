@@ -1,108 +1,105 @@
 ---
-title: Azure Access Control Service (ACS) ad alanları yeniden etkinleştirme devre dışı
-description: Bul ve Azure Access Control Service (ACS) ad alanlarınıza etkinleştirmek ve 4 Şubat 2019'e kadar etkin saklamak için bir uzantı isteği hakkında bilgi edinin.
+title: Devre dışı bırakılan Azure Access Control Service (ACS) ad alanlarını yeniden etkinleştirme
+description: Azure Access Control Service (ACS) ad alanlarınızı bulmayı ve etkinleştirmeyi ve 4 Şubat 2019 ' e kadar etkin kalmasını sağlamak için bir uzantı istemeyi öğrenin.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482701"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917718"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Nasıl yapılır: Devre dışı bırakılmış Access Control Service ad alanlarını yeniden etkinleştirme
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Nasıl yapılır: devre dışı Access Control Service ad alanlarını yeniden etkinleştirme
 
-Microsoft Azure Access Control Service (ACS), Azure Active Directory (Azure AD), bir hizmet 7 Kasım 2018'de kullanımdan kaldırıldığında, Kasım 2017'de duyurduk.
+2017 Kasım 'da, Microsoft Azure Access Control Service (ACS) Azure Active Directory (Azure AD) hizmeti, 7 Kasım 2018 tarihinde devre dışı bırakılmakta olduğunu duyurduk.
 
-Bu yana daha sonra 6 ay, 3 ay, 1 ay, 2 haftalık, 1 hafta, ve 1 gün önce o tarihten 7 Kasım 2018 9 ay içerisinde 12 ay ACS kullanımdan kaldırma hakkında ACS abonelikleri yönetici e-postası için e-posta gönderdik.
+Bundan sonra, ACS aboneliklerini 3 ay, 9 ay, 6 ay, 3 ay, 1 ay, 2 hafta, 1 hafta ve 1 Kasım 2018 Kasım tarihine kadar bir gün önce ACS aboneliklerinin yönetici e-postasına e-postaları gönderdik.
 
-3 Ekim 2018'de duyurduk (e-posta aracılığıyla ve [bir blog gönderisi](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) bir uzantı teklif müşterilerine 7 Kasım 2018'den önce geçiş işleminizi tamamlayamıyoruz. Duyuruyu uzantısı istemeye ilişkin yönergeler de gerekmektedir.
+3 Ekim 2018 ' de, geçiş işlemini 7 Kasım 2018 tarihinden önce tamamlayamıyorum müşterilere bir uzantı teklifi (e-posta ve [blog gönderisi](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)aracılığıyla) duyurduk. Duyuruda, uzantıyı istemek için yönergeler vardı.
 
 ## <a name="why-your-namespace-is-disabled"></a>Ad alanınız neden devre dışı bırakıldı
 
-Uzantısı için de sabitlemeyi henüz seçtiyseniz 7 Kasım 2018 tarihinden itibaren ACS ad alanları devre dışı bırakmak başlayacağız. Uzantı 4 Şubat 2019 için'zaten istediniz gerekir; Aksi takdirde, PowerShell aracılığıyla ad alanlarını etkinleştirmek mümkün olmayacaktır.
+Uzantıyı istemiyorsanız, 6 Kasım 2018 tarihinden itibaren ACS ad alanlarını devre dışı bırakacağız. Uzantıyı 4 Şubat 2019 ' de istemiş olmanız gerekir; Aksi takdirde, PowerShell aracılığıyla ad alanlarını etkinleştiremeyeceksiniz.
 
 > [!NOTE]
-> Bir Hizmet Yöneticisi veya aboneliğin ortak Yöneticisi için PowerShell komutlarını çalıştırın ve bir uzantı isteği olması gerekir.
+> PowerShell komutlarını çalıştırmak ve bir uzantı istemek için bir hizmet yöneticisi veya aboneliğin ortak yöneticisi olmanız gerekir.
 
-## <a name="find-and-enable-your-acs-namespaces"></a>Bulma ve ACS ad alanlarınıza etkinleştir
+## <a name="find-and-enable-your-acs-namespaces"></a>ACS ad alanınızı bulun ve etkinleştirin
 
-Tüm ACS ad listesi ve devre dışı bırakıldı, yeniden etkinleştirmek için ACS PowerShell kullanabilirsiniz.
+ACS PowerShell 'i, tüm ACS ad alanlarınızı listelemek ve devre dışı bırakılmış olanları yeniden etkinleştirmek için kullanabilirsiniz.
 
-1. ACS PowerShell'i indirip yükleyin:
-    1. Git PowerShell Galerisi'nden ve indirme [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-    1. Modülünü yükleyin:
+1. ACS PowerShell 'i indirme ve yükleme:
+    1. PowerShell Galerisi gidin ve [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2)' i indirin.
+    1. Modülü yükler:
 
         ```powershell
         Install-Module -Name Acs.Namespaces
         ```
 
-    1. Tüm olası komutların bir listesini alın:
+    1. Olası tüm komutların bir listesini alın:
 
         ```powershell
         Get-Command -Module Acs.Namespaces
         ```
 
-        Belirli bir komutla ilgili Yardım almak için şunu çalıştırın:
+        Belirli bir komut hakkında yardım almak için şunu çalıştırın:
 
         ```powershell
         Get-Help [Command-Name] -Full
         ```
     
-        Burada `[Command-Name]` ACS komut adıdır.
-1. ACS kullanarak bağlan **Connect AcsAccount** cmdlet'i. 
+        Burada `[Command-Name]` ACS komutunun adıdır.
+1. **Connect-AcsAccount** cmdlet 'INI kullanarak ACS 'ye bağlanın. 
 
-    Çalıştırarak yürütme ilkenizi değiştirmeniz gerekebilir **Set-ExecutionPolicy** komutu çalıştırmadan önce.
-1. Kullanarak mevcut Azure aboneliklerinizi listesinde **Get-AcsSubscription** cmdlet'i.
-1. ACS kullanarak ad alanları listesi **Get-AcsNamespace** cmdlet'i.
-1. Ad alanlarını onaylayarak devre dışı olduğunu onaylayın `State` olduğu `Disabled`.
+    Komutu çalıştırabilmeniz için, **set-executionpolicy** komutunu çalıştırarak yürütme ilkenizi değiştirmeniz gerekebilir.
+1. **Get-AcsSubscription** cmdlet 'ini kullanarak kullanılabilir Azure aboneliklerinizi listeleyin.
+1. **Get-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanlarınızı listeleyin.
+1. `State` `Disabled`olduğunu onayladıktan sonra ad alanlarının devre dışı bırakıldığını onaylayın.
 
-    [![Ad alanlarını devre dışı olduğunu onaylayın](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![ad alanlarının devre dışı bırakıldığını onaylayın](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    Ayrıca `nslookup {your-namespace}.accesscontrol.windows.net` etki alanı hala etkin olup olmadığını onaylamak için.
+    Ayrıca, etki alanının hala etkin olup olmadığını doğrulamak için `nslookup {your-namespace}.accesscontrol.windows.net` de kullanabilirsiniz.
 
-1. ACS kullanarak namespace (s) etkinleştirme **etkinleştir AcsNamespace** cmdlet'i.
+1. **Enable-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanınızı etkinleştirin.
 
-    Böylece namespace (s) yeniden Şubat 4 2019 önce devre dışı olmaz, namespace (s) etkinleştirdikten sonra bir uzantı isteyebilir. Bu tarihten sonra ACS tüm istekleri başarısız olur.
+    Ad alanınızı etkinleştirdikten sonra, ad alanı (ler) 4 Şubat 2019 tarihinden önce yeniden devre dışı bırakılmayacak şekilde bir uzantı isteyebilirsiniz. Bu tarihten sonra, ACS 'ye gönderilen tüm istekler başarısız olur.
 
-## <a name="request-an-extension"></a>Bir uzantı isteği
+## <a name="request-an-extension"></a>Uzantı isteyin
 
-Yeni Uzantı istekleri 21 Ocak 2019'üzerinde başlatma sürüyor.
+21 Ocak 2019 tarihinden itibaren yeni uzantı istekleri sunuyoruz.
 
-4 Şubat 2019 uzantıları isteyen müşteriler için ad alanları devre dışı bırakma başlayacağız. PowerShell ile ad alanlarını yeniden etkinleştirebilirsiniz, ancak ad alanlarını 48 saat sonra tekrar devre dışı bırakılır.
+4 Şubat 2019 ' de uzantıları istemiş olan müşteriler için ad alanlarını devre dışı bırakacağız. Hala ad alanlarını PowerShell aracılığıyla yeniden etkinleştirebilirsiniz, ancak ad alanları 48 saat sonra yeniden devre dışı bırakılır.
 
-4 Mart 2019'dan sonra müşteriler artık PowerShell üzerinden herhangi bir ad alanları yeniden etkinleştirmek mümkün olacaktır.
+4 Mart 2019 ' den sonra müşteriler artık PowerShell aracılığıyla ad alanlarını yeniden etkinleştiremeyecektir.
 
-Daha fazla uzantıları artık otomatik olarak onaylanır. Geçirmek için ek süreye ihtiyaç duyarsanız, kişi [Azure Destek](https://portal.azure.com/#create/Microsoft.Support) ayrıntılı geçiş zaman çizelgesi sağlamak için.
+Daha fazla uzantı artık otomatik olarak onaylanmayacaktır. Geçiş için ek süre gerekiyorsa, ayrıntılı bir geçiş zaman çizelgesi sağlamak için [Azure desteğine](https://portal.azure.com/#create/Microsoft.Support) başvurun.
 
-### <a name="to-request-an-extension"></a>Bir uzantı istemek için
+### <a name="to-request-an-extension"></a>Uzantı istemek için
 
-1. Azure portalında oturum açın ve oluşturma bir [yeni destek isteği](https://portal.azure.com/#create/Microsoft.Support).
-1. Aşağıdaki örnekte gösterildiği gibi yeni destek isteği formunu doldurun.
+1. Azure portal oturum açın ve [Yeni bir destek isteği](https://portal.azure.com/#create/Microsoft.Support)oluşturun.
+1. Aşağıdaki örnekte gösterildiği gibi yeni destek isteği formunu girin.
 
     | Destek isteği alanı | Değer |
     |-----------------------|--------------------|
     | **Sorun türü** | `Technical` |
-    | **Abonelik** | Aboneliğinizi ayarlama |
+    | **Abonelik** | Aboneliğiniz için ayarlama |
     | **Hizmet** | `All services` |
     | **Kaynak** | `General question/Resource not available` |
     | **Sorun türü** | `ACS to SAS Migration` |
-    | **Konu** | Sorunu açıklayın |
+    | **Konu** | Sorunu açıkla |
 
-   ![Yeni bir teknik destek isteğinin bir örneği gösterilmektedir.](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Yeni teknik destek isteğine bir örnek gösterir](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 
@@ -122,9 +119,9 @@ Daha fazla uzantıları artık otomatik olarak onaylanır. Geçirmek için ek s�
 
 ## <a name="help-and-support"></a>Yardım ve destek
 
-- Bu nasıl yapılır yararlandıktan sonra herhangi bir sorunla karşılaşırsanız çalıştırırsanız, kişi [Azure Destek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Sorularınız veya ACS devre dışı bırakma hakkında Geri bildiriminiz varsa, adresinden bize başvurun acsfeedback@microsoft.com.
+- Bu nasıl yapılır uygulandıktan sonra herhangi bir sorunla karşılaşırsanız [Azure desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)'ne başvurun.
+- ACS kullanımdan kaldırma hakkında sorularınız veya geri bildiriminiz varsa acsfeedback@microsoft.comadresinden bizimle iletişim kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- ACS emekli ilgili bilgileri gözden [nasıl yapılır: Azure erişim denetimi Hizmeti'nden geçiş](active-directory-acs-migration.md).
+- ACS kullanımdan kaldırma hakkında bilgileri gözden geçirin [: Azure Access Control Service geçiş](active-directory-acs-migration.md).

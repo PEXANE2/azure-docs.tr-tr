@@ -1,35 +1,31 @@
 ---
-title: Xamarin iOS konuları (.NET için Microsoft kimlik doğrulama kitaplığı)
+title: Xamarin iOS konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin iOS kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175625"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921475"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin iOS 'a özgü hususlar
 Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç önemli noktalar vardır.
 
 - [İOS 12 ve kimlik doğrulama ile ilgili bilinen sorunlar](#known-issues-with-ios-12-and-authentication)
-- [`AppDelegate``OpenUrl` işlevini geçersiz kılın ve uygulayın](#implement-openurl)
+- [`AppDelegate` `OpenUrl` işlevini geçersiz kılın ve uygulayın](#implement-openurl)
 - [Anahtarlık gruplarını etkinleştir](#enable-keychain-access)
 - [Belirteç önbelleği paylaşımını etkinleştir](#enable-token-cache-sharing-across-ios-applications)
 - [Anahtarlık erişimini etkinleştir](#enable-keychain-access)
@@ -97,7 +93,7 @@ PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>İOS uygulamaları arasında belirteç önbelleği paylaşımını etkinleştir
 
-MSAL 2. x öğesinden, birden çok uygulama arasında belirteç önbelleğini kalıcı hale getirmeniz için kullanılacak bir Anahtarlık erişim grubu belirtebilirsiniz. Bu ayar, [adal.net](https://aka.ms/adal-net), msal.net Xamarin. iOS uygulamaları ve ile [geliştirilen Yerel iOS uygulamaları dahil olmak üzere aynı Anahtarlık erişim grubuna sahip çeşitli uygulamalar arasında belirteç önbelleğini paylaşmanıza olanak sağlar ADAL. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) veya [msal. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
+MSAL 2. x öğesinden, birden çok uygulama arasında belirteç önbelleğini kalıcı hale getirmeniz için kullanılacak bir Anahtarlık erişim grubu belirtebilirsiniz. Bu ayar, [adal.net](https://aka.ms/adal-net), msal.net Xamarin. iOS uygulamaları ve [adal. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) veya [msal. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)ile geliştirilen Yerel iOS uygulamaları dahil olmak üzere aynı Anahtarlık erişim grubuna sahip çeşitli uygulamalar arasında belirteç önbelleğini paylaşmanıza olanak sağlar.
 
 Belirteç önbelleğinin paylaşılması, aynı Anahtarlık erişim grubunu kullanan tüm uygulamalar arasında çoklu oturum açma olanağı sağlar.
 

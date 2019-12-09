@@ -1,24 +1,25 @@
 ---
-title: 'Azure Data Factory ardışık düzeninde dallanma '
+title: Azure portal kullanarak bir işlem hattındaki dallanma ve zincirleme etkinlikleri
 description: Dallanma ve zincirleme etkinlikleriyle Azure Data Factory'de veri akışını denetleme hakkında bilgi edinin.
 services: data-factory
-documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: aada9d02c624785750c3064b7ca31a863d4080c1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683821"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926772"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
+
 Bu öğreticide, bazı denetim akışı özelliklerini gösteren bir Data Factory işlem hattı oluşturacaksınız. Bu işlem hattı, Azure Blob Depolama içindeki kapsayıcıdan aynı depolama hesabındaki başka bir kapsayıcıya basit bir kopyalama işlemi yapar. Kopyalama etkinliği başarılı olursa, işlem hattı başarılı kopyalama işleminin ayrıntılarını (örneğin, yazılan veri miktarı) bir başarı e-postası ile gönderir. Kopyalama etkinliği başarısız olursa, işlem hattı kopyalama hatasının ayrıntılarını (örneğin, hata iletisi) bir hata e-postası ile gönderir. Öğretici boyunca parametreleri nasıl geçireceğinizi göreceksiniz.
 
 Senaryoya üst düzey genel bakış: ![Genel Bakış](media/tutorial-control-flow-portal/overview.png)
@@ -37,7 +38,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Bu öğreticide Azure portalı kullanılır. Azure Data Factory ile etkileşim kurmak için başka mekanizmalar kullanabilirsiniz; içindekiler tablosunda "Hızlı Başlangıçlar" bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 * **Azure Depolama hesabı**. Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) makalesine bakın.
@@ -130,11 +131,11 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. **Yeni veri fabrikası** sayfasında **ad** için **ADFTutorialDataFactory** girin. 
+2. **Yeni veri fabrikası** sayfasına **ad** için **ADFTutorialDataFactory** girin. 
       
      ![Yeni veri fabrikası sayfası](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
  
-   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
@@ -147,11 +148,11 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**'a tıklayın.      
+7. **Oluştur**’a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)
-9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
+9. Oluşturma işlemi tamamlandıktan sonra, görüntüde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
    
    ![Data factory giriş sayfası](./media/tutorial-control-flow-portal/data-factory-home-page.png)
 10. Azure Data Factory kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **Yazar ve İzleyici** kutucuğuna tıklayın.
@@ -183,14 +184,14 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
    ![Kaynak veri kümesi](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. **Yeni Veri Kümesi** penceresinde **Azure Blob Depolama**’yı seçip **Son**’a tıklayın. 
 
-   ![Azure Blob Depolama’yı seçin](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
+   ![Azure Blob Depolama Alanı’nı seçin](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
 7. **AzureBlob1** başlıklı yeni bir **sekme** görürsünüz. Veri kümesinin adını **SourceBlobDataset** olarak değiştirin.
 
    ![Veri kümesi genel ayarları](./media/tutorial-control-flow-portal/dataset-general-page.png)
 8. **Özellikler** penceresinde **Bağlantı** sekmesine geçin ve **Bağlı hizmet** için Yeni’ye tıklayın. Bu adımda, Azure depolama hesabınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. 
     
    ![Veri kümesi bağlantısı - yeni bağlı hizmet](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
-9. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin: 
+9. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin: 
 
     1. **Ad** için **AzureStorageLinkedService** adını girin.
     2. **Depolama hesabı adı** için Azure depolama hesabınızı seçin.
@@ -271,7 +272,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
 23. Kopyala etkinliğinin yanındaki **kırmızı** düğmeyi **SendFailureEmailActivity** adlı ikinci Web etkinliğine sürükleyin. Etkinlikleri işlem hattının aşağıdaki gibi görüneceği şekilde taşıyabilirsiniz: 
 
     ![Tüm etkinlikleri içeren tam işlem hattı](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesine tıklayın. **düğmesine tıklayarak >>İşlem Hattı Doğrulama Çıktı** penceresini kapatın.
+24. İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesine tıklayın. **>>** düğmesine tıklayarak **İşlem Hattı Doğrulama Çıktı** penceresini kapatın.
 
     ![İşlem hattını doğrulama](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Varlıkları (veri kümeleri, işlem hatları, vb.) Data Factory hizmetinde yayımlamak için **Tümünü Yayımla**’yı seçin. **Başarıyla yayımlandı** iletisini görene kadar bekleyin.
@@ -281,7 +282,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>Başarılı olan bir işlem hattı çalıştırması tetikleme
 1. Bir işlem hattı çalışması **tetiklemek** için araç çubuğunda **Tetikle**’ye tıklayıp **Şimdi Tetikle**’ye tıklayın. 
 
-    ![İşlem hattı çalıştırması tetikleme](./media/tutorial-control-flow-portal/trigger-now-menu.png)
+    ![İşlem hattı çalıştırmasını tetikleme](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. **İşlem Hattı Çalıştırması** penceresinde aşağıdaki adımları uygulayın: 
 
     1. **sourceBlobContainer** parametresi için **adftutorial/adfv2branch/input** yolunu girin. 
@@ -308,7 +309,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     1. **sourceBlobContainer** parametresi için **adftutorial/dummy/input** yolunu girin. Sahte klasörün adftutorial kapsayıcısında bulunmadığından emin olun. 
     2. **sinkBlobContainer** parametresi için **adftutorial/dummy/output** yolunu girin. 
     3. **Receiver** parametresine ait bir **e-posta adresi** girin. 
-    4. **Finish (Son)** düğmesine tıklayın.
+    4. **Son**'a tıklayın.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Başarısız olan işlem hattı çalıştırmasını izleme
 

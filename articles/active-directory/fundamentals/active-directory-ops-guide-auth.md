@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803742"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919350"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -292,16 +292,16 @@ Ortamınızda eski kimlik doğrulama yaygın olarak kullanılıyorsa, eski istem
 
 ### <a name="consent-grants"></a>İzin verir
 
-Bir ıllicıt onayı verme saldırısında, saldırgan, iletişim bilgileri, e-posta veya belgeler gibi verilere erişim isteyen bir Azure AD 'ye kayıtlı uygulama oluşturur. Kullanıcılar, kimlik avı saldırıları aracılığıyla kötü amaçlı uygulamalara izin verebilir veya kötü amaçlı Web sitelerindeki giriş sırasında dikkatli olmaz.
+Bir ıllicıt onayı verme saldırısında, saldırgan, iletişim bilgileri, e-posta veya belgeler gibi verilere erişim isteyen bir Azure AD 'ye kayıtlı uygulama oluşturur. Kullanıcılar kötü amaçlı Web sitelerine giriş yaparken kimlik avı saldırıları aracılığıyla kötü amaçlı uygulamalara izin verebilir.
 
-Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinler verilmiştir:
+Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinlere sahip uygulamaların bir listesi verilmiştir:
 
 - Uygulama veya Temsilcili \*uygulamalar. ReadWrite Izinleri
 - Temsilci izinleri olan uygulamalar Kullanıcı adına e-posta okuyabilir, gönderebilir veya yönetebilir
 - Aşağıdaki izinleri kullanarak verilen uygulamalar:
 
 | Kaynak | İzin |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | Olduğundan. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Mail. Read |
@@ -309,11 +309,19 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-Bu senaryoya engel olmak için, Office 365 ' de sahip olduğu tüm uygulamaları belirlemek ve düzeltmek için gerekli olandan daha fazla izin veren uygulamalar belirlemek ve düzeltmek üzere [Office ' de Illicit onay Iznini Algıla ve](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) Düzelt bölümüne başvurmalısınız. Uygulama izinleri için düzenli İncelemeleri zamanlayın ve gerekli olmadığında kaldırın; veya self servis hizmetini tamamen kaldırın ve idare yordamları oluşturun.
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
+
+|Kaynak | İzin |
+| :- | :- |
+| Azure AD grafiği | Directory. AccessAsUser. All |
+| Microsoft Graph | Directory. AccessAsUser. All |
+| Azure REST API | user_impersonation |
+
+Bu senaryoya engel olmak için, Office 365 ' de sahip olduğu tüm uygulamaları belirlemek ve düzeltmek için gerekli olandan daha fazla izin veren uygulamalar belirlemek ve düzeltmek üzere [Office ' de Illicit onay iznini Algıla ve](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) Düzelt bölümüne başvurmalısınız. Sonra [Self-Service ' i tamamen kaldırın](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) ve [idare yordamları oluşturun](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Son olarak, uygulama izinleri için düzenli İncelemeleri zamanlayın ve gerek duyulmadığında kaldırın.
 
 #### <a name="consent-grants-recommended-reading"></a>Onay, önerilen okumaya izin veriyor
 
-- [Azure Active Directory (AD) Graph API Izin kapsamları](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Microsoft Graph izinleri](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Kullanıcı ve grup ayarları
 

@@ -4,21 +4,20 @@ description: Azure SQL veritabanı 'nda saklı yordamı çağırmayı veya Azure
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0c5bb7ab4e8932c9568293620352435c7259d810
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682502"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924091"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory kopyalama etkinliğinden saklı yordamı çağır
 > [!NOTE]
@@ -68,7 +67,7 @@ Kopyalama etkinliği JSON ' daki **Sqlsink** bölümünü aşağıdaki gibi tan�
 }
 ```
 
-## <a name="stored-procedure-definition"></a>Saklı yordam tanımı 
+## <a name="stored-procedure-definition"></a>Saklı yordam tanımında 
 Veritabanınızda, **SqlWriterStoredProcedureName**ile aynı ada sahip saklı yordamı tanımlayın. Saklı yordam, kaynak veri deposundan giriş verilerini işler ve hedef veritabanındaki bir tabloya veri ekler. Saklı yordamın ilk parametresinin adı JSON (Pazarlama) veri kümesinde tanımlanan tableName ile aynı olmalıdır.
 
 ```sql

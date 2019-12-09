@@ -1,5 +1,5 @@
 ---
-title: Azure 'da üretim uygulamalarını Application Insights Profiler ile profili | Microsoft Docs
+title: Application Insights Profiler ile Azure 'da üretim uygulamaları profili
 description: Web sunucusu kodunuzda düşük boyutlu bir profil Oluşturucu ile etkin yolu belirler.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820511"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922086"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights ile Azure 'da üretim uygulamaları profilini yapın
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Uygulamanız için Application Insights Profiler etkinleştirme
@@ -109,7 +109,7 @@ Uygulama ağ işlemleri gerçekleştiriyor.
 
 ### <a id="when"></a>Ne zaman sütunu
 
-**Ne zaman** sütunu, düğüm için toplanan örnekleri zaman içinde farklılık gösterir. İsteğin toplam aralığı 32 zaman demetlerine bölünür. Bu düğüm için kapsamlı örnekler bu 32 demetlerine göre biriktirilir. Her demet bir çubuk olarak temsil edilir. Çubuğun yüksekliği ölçeklendirilmiş bir değeri temsil eder. **CPU_TIME** veya **BLOCKED_TIME**olarak işaretlenmiş veya bir kaynağı (örneğin, bir CPU, disk veya iş parçacığı) tüketmeye yönelik belirgin bir ilişki olduğu durumlarda, çubuk demet sırasında kaynaklardan birinin tüketimini temsil eder. Bu ölçümler için, birden fazla kaynak tüketerek yüzde 100 ' den büyük bir değer almak mümkündür. Örneğin, bir Aralık sırasında ortalama ve iki CPU kullanırsanız, yüzde 200 ' ı alırsınız.
+**Ne zaman** sütunu, düğüm için toplanan örnekleri zaman içinde farklılık gösterir. İsteğin toplam aralığı 32 zaman demetlerine bölünür. Bu düğüm için kapsamlı örnekler bu 32 demetlerine göre biriktirilir. Her demet bir çubuk olarak temsil edilir. Çubuğun yüksekliği ölçeklendirilmiş bir değeri temsil eder. **CPU_TIME** veya **BLOCKED_TIME**işaretlenmiş düğümler veya bir kaynağı (örneğin, bir CPU, disk veya iş parçacığı) tüketmek için belirgin bir ilişki olduğu durumlarda, çubuk demet sırasında kaynaklardan birinin tüketimini temsil eder. Bu ölçümler için, birden fazla kaynak tüketerek yüzde 100 ' den büyük bir değer almak mümkündür. Örneğin, bir Aralık sırasında ortalama ve iki CPU kullanırsanız, yüzde 200 ' ı alırsınız.
 
 ## <a name="limitations"></a>Sınırlamalar
 

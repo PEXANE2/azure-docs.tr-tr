@@ -9,19 +9,18 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 6ea9134085812b99d59ad64aa2c9ec1b2ff827d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684405"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929774"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS, veritabanı iş yükü hedefi olarak Azure SQL veritabanı yönetilen örneği ile geçiş
 
-Şirket içindeki SQL Server veritabanı iş yüklerini Azure SQL veritabanı yönetilen örneği 'ne geçirirken Azure [Data Migration hizmeti](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) ve [Azure SQL veritabanı yönetilen örnek geçişleri hakkında bilgi sahibi olmanız gerekir DMS kullanma](https://docs.microsoft.com/azure/dms/resource-network-topologies).
+Şirket içindeki SQL Server veritabanı iş yüklerini Azure SQL veritabanı yönetilen örneği 'ne geçirirken, [Azure Data Migration hizmeti](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) ve [DMS kullanarak Azure SQL veritabanı yönetilen örnek geçişleri için ağ topolojileri](https://docs.microsoft.com/azure/dms/resource-network-topologies)hakkında bilgi sahibi olmanız gerekir.
 
 Bu makalede, SSIS kataloğunda (SSSıSDB) depolanan SQL Server Integration Service (SSIS) paketlerinin geçirilmesi ve SSIS paket yürütmelerinin zamanlaması olan SQL Server Agent işleri ele alınmaktadır.
 

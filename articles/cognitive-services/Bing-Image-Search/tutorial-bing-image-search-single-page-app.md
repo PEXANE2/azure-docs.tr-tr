@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Bing resim arama API'si - tek sayfa web uygulaması oluşturma"
+title: 'Öğretici: Tek sayfalı web uygulaması oluşturma - Bing Resim Arama API’si'
 titleSuffix: Azure cognitive services
 description: Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri aramanıza olanak sağlar. API’ye arama sorguları gönderebilen ve sonuçları web sayfasında görüntüleyebilen tek sayfalı bir web uygulaması derlemek için bu öğreticiyi kullanın.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868250"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930690"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing resim arama API'si kullanarak tek sayfalı uygulama oluşturma
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
 
 Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri aramanıza olanak sağlar. API’ye arama sorguları gönderebilen ve sonuçları web sayfasında görüntüleyebilen tek sayfalı bir web uygulaması derlemek için bu öğreticiyi kullanın. Bu öğretici, Bing Web Araması’nın [ilgili öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) benzerdir.
 
-Öğretici uygulamasında aşağıdakilerin nasıl yapılacağı gösterilmektedir:
+Öğretici uygulaması şunları gösterir:
 
 > [!div class="checklist"]
 > * JavaScript’te Bing Resim Arama API’si çağrısı gerçekleştirme
@@ -34,13 +34,13 @@ Bu öğreticinin tam kaynak kodu, [GitHub](https://github.com/Azure-Samples/cogn
 ## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/)’in en son sürümü.
-* Node.js için [Express.js](https://expressjs.com/) çerçevesi. Yükleme yönergeleri için kaynak kodunu GitHub örnek readme dosyasında kullanılabilir.
+* Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak koda ilişkin yükleme yönergeleri GitHub örnek Benioku dosyasında bulunabilir.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Kullanıcı abonelik anahtarlarını yönetme ve depolama
 
-Bu uygulama, API abonelik anahtarlarını depolamak için web tarayıcılarının kalıcı depolama alanını kullanır. Herhangi bir anahtar depolanmıyorsa web sayfası, kullanıcıdan anahtarını belirtmesini ve daha sonra kullanmak üzere anahtarını depolamasını ister. Anahtar daha sonra API tarafından reddedilirse uygulama bunu depolama alanından kaldırır.
+Bu uygulama, API abonelik anahtarlarını depolamak için web tarayıcılarının kalıcı depolama alanını kullanır. Herhangi bir anahtar depolanmıyorsa web sayfası, kullanıcıdan anahtarını belirtmesini ve daha sonra kullanmak üzere anahtarını depolamasını ister. Anahtar daha sonra API tarafından reddedilirse uygulama bunu depolama alanından kaldırır. Bu örnek, genel uç noktasını kullanır. Ayrıca, kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını da kullanabilirsiniz.
 
 
 `localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisini kullanmak için `storeValue` ve `retrieveValue` işlevlerini tanımlayın.
@@ -318,7 +318,7 @@ Bing Resim Arama API’si, kullanıcıların arama deneyimlerine yol göstermesi
 
 | Öneri         | Açıklama                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pivotSuggestions` | Özgün aramadaki pivot sözcüğü, farklı biriyle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir. |
+| `pivotSuggestions` | Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir. |
 | `queryExpansions`  | Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.                                   |
 | `relatedSearches`  | Özgün aramayı giren diğer kullanıcılar tarafından da girilmiş olan sorgular. Örneğin, "Mount Rainier" araması yaparsanız, ilgili arama "Mt. Saint Helens" olabilir.                       |
 | `similarTerms`     | Özgün aramaya yönelik benzer anlamı olan sorgular. Örneğin, "yavru kedi" araması yaparsanız benzer bir terim de "şirin" olabilir.                                                                   |
@@ -386,7 +386,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API’si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir ara sunucu yanıtı sahip bir `Access-Control-Expose-Headers` üst bilgisi yanıt üst bilgilerini sağlar ve JavaScript için kullanılabilir hale getirir.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir proxy 'den gelen yanıtın, yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir `Access-Control-Expose-Headers` üst bilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

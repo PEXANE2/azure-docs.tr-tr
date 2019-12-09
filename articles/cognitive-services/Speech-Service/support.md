@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 16729c23483e715177a7c73b3fc5c9bda6ee41a4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872290"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928653"
 ---
 # <a name="support-and-help-options"></a>Destek ve yardım seçenekleri
 
@@ -62,7 +62,7 @@ Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir
 
 Stack Overflow, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Bu, topluluk ve Microsoft ekip üyelerinin üyelerinin, sorunlarınızı çözmenize yardımcı olmak için doğrudan dahil olduğu yerdir.
 
-Arama yoluyla sorununuz için bir yanıt bulamazsanız, Microsoft-bilişsel [+ konuşma](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech) etiketini kullanarak Stack Overflow için yeni bir soru gönderin.
+Arama yoluyla sorununuz için bir yanıt bulamazsanız, Microsoft-bilişsel [\]\[konuşma\]\[](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)etiketleri kullanarak Stack Overflow yeni bir soru gönderin.
 
 > [!TIP]
 > Stack Overflow 'den aşağıdaki gönderiler, soruların nasıl ayarlanacağını ve kaynak kodu nasıl ekleneceğini gösteren ipuçları içerir. Bu yönergelerin ardından, topluluk üyelerinin sorunuzu hızla değerlendirmesi ve yanıtlaması ihtimalini artırmaya yardımcı olabilirsiniz:  

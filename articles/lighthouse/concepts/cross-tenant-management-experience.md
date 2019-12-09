@@ -3,19 +3,19 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464039"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927997"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
 Hizmet sağlayıcısı olarak, Azure kaynaklarını, [Azure Portal](https://portal.azure.com)kendi kiracınızda birden fazla müşterinin Azure kaynaklarını [yönetmek için kullanabilirsiniz](../concepts/azure-delegated-resource-management.md) . Birçok görev ve hizmet yönetilen kiracılar genelinde Azure kaynakları için kullanılabilir. Bu makalede, Azure tarafından yetkilendirilen Kaynak yönetiminin etkili olduğu bazı gelişmiş senaryolar açıklanmaktadır.
 
 > [!NOTE]
-> Azure Temsilcili kaynak yönetimi, platformlar arası yönetimi basitleştirmek için birden fazla kiracının bulunduğu bir kuruluşta da kullanılabilir.
+> Azure Temsilcili kaynak yönetimi, platformlar arası yönetimi basitleştirmek için [birden çok Azure AD kiracısına sahip bir kuruluşta](enterprise.md) de kullanılabilir.
 
 ## <a name="understanding-customer-tenants"></a>Müşteri kiracılarını anlama
 
@@ -56,7 +56,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - Müşteri kiracılarında müşteri verilerini yedekleme ve geri yükleme
 
-[Azure Kubernetes hizmeti (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
 
 - Barındırılan Kubernetes ortamlarını yönetme ve müşteri kiracılarında Kapsayıcılı uygulamaları dağıtma ve yönetme
 
@@ -116,7 +116,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 - Müşteri kiracılarında seri konsol ile VM 'Lere erişme
 - Bir VM 'ye uzaktan oturum açma için Azure Active Directory kullanmayacağınızı ve disk şifrelemesi için parolalar, gizlilikler veya şifreleme anahtarları için bir sanal makineyi Key Vault ile tümleştiremiyorum gerektiğini unutmayın
 
-[Azure sanal ağı](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Sanal Ağ](https://docs.microsoft.com/azure/virtual-network/):
 
 - Sanal ağlar ve sanal ağ arabirim kartları (vNIC 'ler) ile müşteri kiracılar arasında dağıtın ve yönetin
 

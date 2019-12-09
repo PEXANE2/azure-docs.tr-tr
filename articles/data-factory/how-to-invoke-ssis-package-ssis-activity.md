@@ -1,5 +1,5 @@
 ---
-title: SSIS paketi yürütme etkinliği ile bir SSIS paketi çalıştırma-Azure
+title: SSIS paketi yürütme etkinliğiyle bir SSIS paketi çalıştırın
 description: Bu makalede, SSIS paketi yürütme etkinliğini kullanarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır.
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/14/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/14/2019
+ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122972"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926490"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory 'de SSIS paketi yürütme etkinliğiyle bir SSIS paketi çalıştırın
 Bu makalede, SSIS paketi yürütme etkinliğini kullanarak bir Azure Data Factory işlem hattında SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. 
@@ -57,7 +58,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
     Anahtar Kasası bağlı hizmetinizi oluştururken veya düzenlediğinizde, mevcut anahtar kasanızı seçebilir veya düzenleyebilir veya yeni bir tane oluşturabilirsiniz. Daha önce yapmadıysanız, anahtar kasanıza Data Factory yönetilen kimlik erişimi verdiğinizden emin olun. Gizli dizilerinizi doğrudan şu biçimde de girebilirsiniz: `<Key vault linked service name>/<secret name>/<secret version>`. Paketinizin çalışması için 32 bit çalışma zamanı gerekiyorsa, **32 bit çalışma zamanı** onay kutusunu seçin.
 
-   **Paket konumu**Için **SSISDB**, **dosya sistemi (paket)** , **dosya sistemi (proje)** veya **katıştırılmış paket**' i seçin. Bir Azure SQL veritabanı sunucusu veya yönetilen örnek tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile sağlanmışsa, Azure-SSIS IR otomatik olarak seçilen paket konumunuz olarak **Sssısdb** ' yi seçerseniz, dağıtılan çalıştırılacak paketinizi belirtin SSSıSDB 'ye dönüştürür. 
+   **Paket konumu**Için **SSISDB**, **dosya sistemi (paket)** , **dosya sistemi (proje)** veya **katıştırılmış paket**' i seçin. Bir Azure SQL veritabanı sunucusu veya yönetilen örnek tarafından barındırılan SSIS Kataloğu (SSSıSDB) ile sağlanmışsa, Azure-SSIS IR otomatik olarak seçilen paket konumunuz olarak **Sssısdb** ' yi SEÇERSENIZ, SSISDB 'ye dağıtılan çalıştırılacak paketinizi belirtin. 
 
     Azure-SSIS IR çalışıyorsa ve **el ile girdiler** onay kutusu SILINIRSE, SSISDB 'den var olan klasörlerinizi, projelerinizi, paketlerinizi veya ortamlarınızı göz atın ve seçin. Yeni eklenen klasörlerinizi, projelerinizi, paketlerinizi veya ortamlarınızı, göz atma ve seçim için kullanılabilir olmaları için SSıSDB 'den getirmek için **Yenile** ' yi seçin. Paket yürütmelerinin ortamlarına gözatıp seçmek için, bu ortamları SSSıSDB altındaki aynı klasörlerden başvuru olarak eklemek üzere projelerinizi önceden yapılandırmanız gerekir. Daha fazla bilgi için bkz. [SSIS ortamlarını oluşturma ve eşleme](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -69,13 +70,13 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
    ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Azure-SSIS IR SSSıSDB olmadan sağlanmışsa otomatik olarak seçilen paket konumunuz olarak **dosya sistemi (paket)** seçeneğini belirlerseniz, paket dosyanıza bir evrensel adlandırma KURALı (UNC) yolu sağlayarak çalıştırılacak paketinizi belirtin (@no __t_1_) **paket yolu** kutusunda.`.dtsx` Örneğin, paketinizi Azure dosyalarında depolarsanız, paket yolu `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   Azure-SSIS IR SSSıSDB olmadan sağlandıysa otomatik olarak seçilen paket konumunuz olarak **dosya sistemi (paket)** seçeneğini belirlerseniz, paket **yolu** kutusuna paket dosyanıza (`.dtsx`) bir evrensel adlandırma kuralı (UNC) yolu sağlayarak çalıştırılacak paketinizi belirtin. Örneğin, paketinizi Azure dosyalarında depolarsanız, paket yolu `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
    
    Paketinizi ayrı bir dosyada yapılandırırsanız, yapılandırma **yolu** kutusunda yapılandırma dosyanıza (`.dtsConfig`) bir UNC yolu da sağlamanız gerekir. Örneğin, yapılandırmanızı Azure dosyalarında depolarsanız, yapılandırma yolu `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
 
    ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   Paket konumunuz olarak **dosya sistemi (proje)** seçeneğini belirlerseniz, proje **yolu** kutusunda proje dosyanıza (`.ispac`) ve **paket adındaki** bir paket dosyasına (`.dtsx`) bir UNC yolu sağlayarak çalıştırılacak paketinizi belirtin Kutudaki. Örneğin, projenizi Azure dosyalarında depolarsanız, proje yolu `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+   Paket konumunuz olarak **dosya sistemi (proje)** seçeneğini belirlerseniz, proje **yolu** kutusunda proje dosyanıza (`.ispac`) ve **paket adı** kutusuna projenizden bir paket dosyasına (`.dtsx`) bir UNC yolu sağlayarak çalıştırılacak paketinizi belirtin. Örneğin, projenizi Azure dosyalarında depolarsanız, proje yolu `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
 
    ![Ayarlar sekmesinde özellikleri ayarlama-El Ile](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
@@ -99,17 +100,17 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
    
    Daha önce bahsedilen tüm UNC yolları için, tam nitelikli dosya adı 260 karakterden kısa olmalıdır. Dizin adı 248 karakterden kısa olmalıdır.
 
-1. SSIS paketi yürütme etkinliğinin **SSIS parametreleri** sekmesinde, Azure-SSIS IR çalışıyorsa, paket konumunuz olarak **sssısdb** seçilidir ve **Ayarlar** sekmesinde **el ile girişler** onay kutusu işaretli değilse, var olan SSIS Seçtiğiniz proje veya pakette SSıSDB 'lerden parametreler, bunlara değer atamanız için görüntülenir. Aksi takdirde, bunlara el ile değer atamak için bunları tek tek girebilirsiniz. Bu koşulların ve paket yürütmenin başarılı olması için doğru girildiğinden emin olun. 
+1. SSIS paketi yürütme etkinliğinin **SSIS parametreleri** sekmesinde, Azure-SSIS IR çalışıyorsa, paket konumunuz olarak **Sssısdb** seçilidir ve **Ayarlar** sekmesinde **el ile girişler** onay kutusu işaretli değilse, bunlara değer atamanız için, seçili projenizde veya sssısdb 'teki paketteki var olan SSIS parametreleri görüntülenir. Aksi takdirde, bunlara el ile değer atamak için bunları tek tek girebilirsiniz. Bu koşulların ve paket yürütmenin başarılı olması için doğru girildiğinden emin olun. 
    
-   Paketinizi SQL Server Veri Araçları ve **dosya sistemi (paket)** veya **dosya sistemi (proje)** aracılığıyla oluşturduğunuzda **EncryptSensitiveWithUserKey** koruma düzeyini, paket konumunuz olarak kullandıysanız, ayrıca yeniden girmeniz gerekir yapılandırma dosyalarında veya bu sekmede bunlara değer atamak için hassas parametreleriniz. 
+   Paketinizi SQL Server Veri Araçları ve **dosya sistemi (paket)** ile oluşturduğunuzda ve paket konumunuz olarak **dosya sistemi (proje)** olarak **EncryptSensitiveWithUserKey** koruma düzeyini kullandıysanız, yapılandırma dosyalarında veya bu sekmede bunlara değer atamak için de hassas parametrelerinizi yeniden girmeniz gerekir. 
    
    Parametrelerinizi değer atarken, ifadeleri, işlevleri, Data Factory sistem değişkenlerini ve Data Factory işlem hattı parametrelerini veya değişkenlerini kullanarak dinamik içerik ekleyebilirsiniz. Alternatif olarak, anahtar kasasında depolanan gizli dizileri değerler olarak kullanabilirsiniz (öncekine bakın).
 
    ![SSIS parametreleri sekmesindeki özellikleri ayarlayın](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. SSIS paketi yürütme etkinliğinin **bağlantı yöneticileri** sekmesinde, Azure-SSIS IR çalışıyorsa, paket konumunuz olarak **sssısdb** seçilidir ve **Ayarlar** sekmesinde **el ile girişler** onay kutusu işaretli değilse, mevcut seçtiğiniz projedeki veya paketteki SSSıSDB 'teki bağlantı yöneticileri, değerlerini özelliklerine atamanız için görüntülenir. Aksi takdirde, özelliklerine el ile değer atamak için bunları tek tek girebilirsiniz. Bu koşulların ve paket yürütmenin başarılı olması için doğru girildiğinden emin olun. 
+1. SSIS paketi yürütme etkinliğinin **bağlantı yöneticileri** sekmesinde, Azure-SSIS IR çalışıyorsa, paket konumunuz olarak **sssısdb** seçilidir ve **Ayarlar** sekmesinde **el ile girişler** onay kutusu işaretli değilse, özelliklerine değerler atamanız için, seçtiğiniz projede veya sssısdb 'ye ait pakette bulunan mevcut bağlantı yöneticileri görüntülenir. Aksi takdirde, özelliklerine el ile değer atamak için bunları tek tek girebilirsiniz. Bu koşulların ve paket yürütmenin başarılı olması için doğru girildiğinden emin olun. 
    
-   Paketinizi SQL Server Veri Araçları ve **dosya sistemi (paket)** veya **dosya sistemi (proje)** aracılığıyla oluşturduğunuzda **EncryptSensitiveWithUserKey** koruma düzeyini, paket konumunuz olarak kullandıysanız, ayrıca yeniden girmeniz gerekir hassas bağlantı Yöneticisi özelliklerinizi, yapılandırma dosyalarında veya bu sekmede bunlara değer atamaya yönelik özelliklerdir. 
+   Paketinizi SQL Server Veri Araçları ve **dosya sistemi (paket)** ile oluşturduğunuzda ve paket konumunuz olarak **dosya sistemi (proje)** ile **EncryptSensitiveWithUserKey** koruma düzeyini kullandıysanız, bunları yapılandırma dosyalarında veya bu sekmede bunlara değer atamak için de hassas bağlantı Yöneticisi özelliklerinizi yeniden girmeniz gerekir. 
    
    Bağlantı Yöneticisi özelliklerine değer atarken, ifadeleri, işlevleri, Data Factory sistem değişkenlerini ve Data Factory işlem hattı parametrelerini veya değişkenlerini kullanarak dinamik içerik ekleyebilirsiniz. Alternatif olarak, anahtar kasasında depolanan gizli dizileri değerler olarak kullanabilirsiniz (öncekine bakın).
 
@@ -117,7 +118,7 @@ Bu adımda, bir işlem hattı oluşturmak için Data Factory Kullanıcı arabiri
 
 1. **Özellik geçersiz kılmaları özelliği** , SSIS paketi yürütme etkinliğinin varolan özelliklerinin yollarını, el ile değer atamak için tek tek bir seçtiğiniz pakette bir tane olarak girin. Bu koşulların ve paket yürütmenin başarılı olması için doğru girildiğinden emin olun. Örneğin, Kullanıcı değişkeninizin değerini geçersiz kılmak için yolunu şu biçimde girin: `\Package.Variables[User::<variable name>].Value`. 
    
-   Paketinizi SQL Server Veri Araçları ve **dosya sistemi (paket)** veya **dosya sistemi (proje)** aracılığıyla oluşturduğunuzda **EncryptSensitiveWithUserKey** koruma düzeyini, paket konumunuz olarak kullandıysanız, ayrıca yeniden girmeniz gerekir hassas özelliklerinizi yapılandırma dosyalarında veya bu sekmede bunlara değer atamak için. 
+   Paketinizi SQL Server Veri Araçları ve **dosya sistemi (paket)** ile oluşturduğunuzda ve paket konumunuz olarak **dosya sistemi (proje)** ile **EncryptSensitiveWithUserKey** koruma düzeyini kullandıysanız, yapılandırma dosyalarında veya bu sekmede bunlara değer atamak için de hassas özellikleri yeniden girmeniz gerekir. 
    
    Özelliklerine değer atarken, ifadeleri, işlevleri, Data Factory sistem değişkenlerini ve Data Factory işlem hattı parametrelerini veya değişkenlerini kullanarak dinamik içerik ekleyebilirsiniz.
 

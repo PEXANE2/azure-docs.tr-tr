@@ -1,5 +1,5 @@
 ---
-title: Azure AD uygulama onayı deneyimlerini anlama
+title: Azure AD uygulama onayı deneyimleri
 titleSuffix: Microsoft identity platform
 description: Azure AD 'de uygulamaları yönetirken ve geliştirirken nasıl kullanabileceğinizi öğrenmek için Azure AD onay deneyimleri hakkında daha fazla bilgi edinin
 services: active-directory
@@ -15,12 +15,12 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddffe07ec22e21671a1350eeb29d367166fe2799
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844235"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918160"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD uygulama onayı deneyimlerini anlama
 

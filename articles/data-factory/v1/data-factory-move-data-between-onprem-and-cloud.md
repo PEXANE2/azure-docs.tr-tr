@@ -4,21 +4,20 @@ description: Şirket içi ve bulut arasında veri taşımak için bir veri ağ g
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 52bce71abd6ecf30b5a3661c2e6033537357db3a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682486"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931897"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
 > [!NOTE]
@@ -148,7 +147,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
    * Ağ geçidini kullanarak bir şirket içi veri kaynağı için **test bağlantısı** bölümünü kullanın.
    * Veri Yönetimi ağ geçidi günlüğünü bir Olay Görüntüleyicisi penceresinde görmek için **günlükleri görüntüle** ' ye tıklayın.
    * Sorunları gidermeye yardımcı olmak için son yedi güne ait günlükleri olan bir ZIP dosyasını Microsoft 'a yüklemek için **günlükleri Gönder** ' e tıklayın.
-10. **Tanılama** sekmesindeki **test bağlantısı** bölümünde veri deposunun türü için **SqlServer** ' ı seçin, veritabanı sunucusunun adını, veritabanının adını girin, kimlik doğrulama türünü belirtin, Kullanıcı adını ve parolayı girin ve ardından Ağ geçidinin veritabanına bağlanıp bağlanamamadığını test etmek için **Test** .
+10. **Tanılama** sekmesindeki **test bağlantısı** bölümünde veri deposunun türü için **SqlServer** ' ı seçin, veritabanı sunucusunun adını, veritabanının adını girin, kimlik doğrulama türünü belirtin, Kullanıcı adını ve parolayı girin ve ağ geçidinin veritabanına bağlanıp bağlanamamadığını test etmek için **Test** ' e tıklayın.
 11. Web tarayıcısına geçin ve **Azure Portal** **Yapılandır** sayfasında **Tamam** ' a tıklayın ve ardından **Yeni veri ağ geçidi** sayfasında.
 12. Sol taraftaki ağaç görünümünde **veri ağ geçitleri** altında **adftutorialgateway** görmeniz gerekir.  Bu öğeyi tıklatırsanız, ilişkili JSON 'u görmeniz gerekir.
 

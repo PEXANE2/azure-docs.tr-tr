@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a1d3de1b3eb5aebd89e6601f95c449851d4a1a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889622"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918976"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Office 365 ' de çok coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
@@ -251,7 +251,7 @@ Yerleşik eşitleme zamanlayıcısını yeniden etkinleştirin:
 1. Bir PowerShell oturumu başlatın.
 2. Şu cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi yeniden etkinleştirin: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>8\. Adım: sonucu doğrulama
+## <a name="step-9-verify-the-result"></a>9\. Adım: sonucu doğrulama
 Şimdi yapılandırmayı doğrulamak ve kullanıcılarınız için etkinleştirmek zaman alabilir.
 
 1. Coğrafi bölge 'yi bir kullanıcının seçili özniteliğine ekleyin. Kullanılabilir coğrafyalar listesi bu tabloda bulunabilir.  

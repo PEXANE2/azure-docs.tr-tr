@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 997c9427883e2a099c2c185b618701fb85cb96a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a96cd537328a1a9edeeb03f81350ed5393806765
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231096"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927571"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
 
@@ -24,12 +24,12 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
+## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
 SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub deposunda bulunur.
 
 > [!NOTE]
-> Sürüm 2. x, `ServiceBusTrigger` örneğinde yapılandırılmış konuyu veya aboneliği oluşturmaz. Sürüm 2. x, [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) tabanlıdır ve sıra yönetimini işlemez.
+> Sürüm 2. x ve üzeri, `ServiceBusTrigger` örneğinde yapılandırılmış konuyu veya aboneliği oluşturmaz. Bu sürümler, kuyruk yönetimini işlemeyen [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) ' a dayalıdır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -38,7 +38,7 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 Dile özgü örneğe bakın:
 
 * [C#](#c-example)
-* [C#betik (. CSX)](#c-script-example)
+* [C# betiği (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 * [Java](#java-example)
 
@@ -105,7 +105,7 @@ public class OutgoingEmail
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Veri bağlama işte *function.json* dosyası:
 
 ```json 
 {
@@ -129,7 +129,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -191,7 +191,7 @@ Aşağıdaki örnek, SendGrid çıkış bağlamasını kullanarak e-posta gönde
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Veri bağlama işte *function.json* dosyası:
 
 ```json 
 {
@@ -209,7 +209,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -233,7 +233,7 @@ module.exports = function (context, input) {
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) özniteliğini kullanın.
 
-Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). Yöntem imzasında bir `SendGrid` özniteliği örneği aşağıda verilmiştir:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). İşte bir `SendGrid` özniteliği örnek bir yöntem imzası:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -249,18 +249,18 @@ Tüm örnek için bkz [ C# . örnek](#c-example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `SendGrid` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `SendGrid` özniteliği.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**type**|| Gerekli-`sendGrid`olarak ayarlanmalıdır.|
 |**direction**|| Gerekli-`out`olarak ayarlanmalıdır.|
-|**ada**|| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Yalnızca bir dönüş değeri olduğunda bu değer ```$return```. |
+|**Adı**|| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Yalnızca bir dönüş değeri olduğunda bu değer ```$return```. |
 |**apiKey**|**ApiKey**| API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsSendGridApiKey" olur.|
-|**Hedef**|**Alıcı**| alıcının e-posta adresi. |
-|**Kaynak**|**Kaynak**| Gönderenin e-posta adresi. |
-|**Konu**|**Konu**| e-postanın konusu. |
-|**metinleri**|**Metin**| e-posta içeriği. |
+|**to**|**Alıcı**| alıcının e-posta adresi. |
+|**from**|**From**| Gönderenin e-posta adresi. |
+|**subject**|**Konu**| e-postanın konusu. |
+|**text**|**Metin**| e-posta içeriği. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -268,10 +268,10 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `SendGrid` özniteliğinde
 
 ## <a name="hostjson-settings"></a>Host.JSON ayarları
 
-Bu bölümde sürümünde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır 2.x. Aşağıdaki örnek host.json dosyasını yalnızca bu bağlama için sürüm 2.x ayarları içerir. Sürüm 2. x içindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürüm 2. x için Host. JSON başvurusu](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2\. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
 
 > [!NOTE]
-> 1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
 
 ```json
 {
@@ -286,7 +286,7 @@ Bu bölümde sürümünde bu bağlama için kullanılabilen genel yapılandırma
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|from|Yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
+|başlangıç|Yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

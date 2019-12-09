@@ -1,27 +1,23 @@
 ---
-title: 'Eşitleme Azure AD Connect: Azure AD Connect eşitlemede bir yapılandırma değişikliği yapın | Microsoft Docs'
+title: 'Eşitleme Azure AD Connect: Azure AD Connect eşitlemede bir yapılandırma değişikliği yapın'
 description: Azure AD Connect eşitlemede yapılandırmada değişiklik yapma konusunda size kılavuzluk eder.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842586"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919078"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
 Bu makalenin amacı, Azure Active Directory (Azure AD) Connect Sync 'de varsayılan yapılandırmada değişiklik yapma konusunda size yol gösterir. Bazı yaygın senaryolar için adımlar sağlar. Bu bilgi ile kendi iş kurallarınızı temel alarak kendi yapılandırmanızda basit değişiklikler yapabiliyor olmanız gerekir.
@@ -204,7 +200,7 @@ Varsayılan olarak, şirket içi Active Directory karşılık gelen UserType öz
 
 - Azure AD, UserType özniteliği için yalnızca iki değer kabul eder: **üye** ve **Konuk**.
 - UserType özniteliği Azure AD Connect eşitleme için etkinleştirilmemişse, Dizin eşitleme aracılığıyla oluşturulan Azure AD kullanıcıları, UserType özniteliği **üye**olarak ayarlanmalıdır.
-- Azure AD, mevcut Azure AD kullanıcılarının UserType özniteliğinin Azure AD Connect tarafından değiştirilmesine izin vermez. Yalnızca Azure AD kullanıcılarının oluşturulması sırasında ayarlanabilir ve [PowerShell aracılığıyla değiştirilebilir](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
+- Azure AD, mevcut Azure AD kullanıcılarının UserType özniteliğinin Azure AD Connect tarafından değiştirilmesine izin vermez. Yalnızca Azure AD kullanıcılarının oluşturulması sırasında ayarlanabilir ve [PowerShell aracılığıyla değiştirilebilir](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 UserType özniteliğinin eşitlemesini etkinleştirmeden önce, ilk olarak özniteliğin şirket içi Active Directory nasıl türetileceğine karar vermelisiniz. En yaygın yaklaşımlar aşağıda verilmiştir:
 

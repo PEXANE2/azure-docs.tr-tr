@@ -4,21 +4,20 @@ description: Azure Data Factory kullanarak şirket içi Oracle veritabanına ver
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682433"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928164"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Oracle 'a veya şirket içi verileri kopyalama
 
@@ -42,7 +41,7 @@ Aşağıdaki veri depolarından verileri *bir Oracle veritabanına*kopyalayabili
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Data Factory, Veri Yönetimi ağ geçidini kullanarak şirket içi Oracle kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidi hakkında daha fazla bilgi için bkz. [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) . Verileri taşımak için bir veri ardışık düzeninde ağ geçidini ayarlama hakkında adım adım yönergeler için bkz. [Şirket içinden buluta veri taşıma](data-factory-move-data-between-onprem-and-cloud.md).
 
@@ -59,7 +58,7 @@ Bu Oracle Bağlayıcısı iki sürücü sürümünü destekler:
   - Oracle 12c R1 (12,1)
   - Oracle 11g R1, R2 (11,1, 11,2)
   - Oracle 10G R1, R2 (10,1, 10,2)
-  - Oracle 9i R1, R2 (9.0.1, 9,2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
   - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
@@ -77,13 +76,13 @@ Bu Oracle Bağlayıcısı iki sürücü sürümünü destekler:
 
 Kopyalama işlem hattını yazmak için kopyalama Sihirbazı 'nı kullanırsanız, sürücü türü tekrar belirlenir. Ağ geçidiniz sürüm 2,7 ' den daha eski veya havuz olarak Oracle ' ı seçmediğiniz sürece Microsoft sürücüsü varsayılan olarak kullanılır.
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 Kopyalama etkinliğine sahip bir işlem hattı oluşturabilirsiniz. İşlem hattı, farklı araçları veya API 'Leri kullanarak verileri şirket içi Oracle veritabanına veya sunucudan taşıdıkça.
 
 İşlem hattı oluşturmanın en kolay yolu kopyalama Sihirbazı ' nı kullanmaktır. Veri Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik hızlı bir anlatım için [Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturma öğreticisine](data-factory-copy-data-wizard-tutorial.md) bakın.
 
-Bir işlem hattı oluşturmak için aşağıdaki araçlardan birini de kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**veya **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturma hakkında adım adım yönergeler için [kopyalama etkinliği öğreticisine](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) bakın.
+Bir işlem hattı oluşturmak için aşağıdaki araçlardan birini de kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**veya **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği içeren işlem hattı oluşturma konusunda adım adım yönergeler için.
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları izleyin:
 
@@ -96,16 +95,16 @@ Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları s
 
 Aşağıdaki bölümler, Data Factory varlıkları tanımlamak için kullandığınız JSON özellikleri hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
 Aşağıdaki tabloda, Oracle bağlantılı hizmetine özgü JSON öğeleri açıklanmaktadır:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| type |**Type** özelliği **OnPremisesOracle**olarak ayarlanmalıdır. |Evet |
+| type |**Type** özelliği **OnPremisesOracle**olarak ayarlanmalıdır. |Yes |
 | driverType | Bir Oracle veritabanından veri kopyalamak için kullanılacak sürücüyü belirtin. İzin verilen değerler **Microsoft** ve **ODP** (varsayılan). Sürücü ayrıntıları için [desteklenen sürüm ve yükleme](#supported-versions-and-installation) bölümüne bakın. | Hayır |
-| connectionString | **ConnectionString** özelliği için Oracle Database örneğine bağlanmak için gereken bilgileri belirtin. | Evet |
-| gatewayName | Şirket içi Oracle sunucusuna bağlanmak için kullanılan ağ geçidinin adı. |Evet |
+| connectionString | **ConnectionString** özelliği için Oracle Database örneğine bağlanmak için gereken bilgileri belirtin. | Yes |
+| gatewayName | Şirket içi Oracle sunucusuna bağlanmak için kullanılan ağ geçidinin adı. |Yes |
 
 **Örnek: Microsoft sürücüsünü kullanma**
 
@@ -151,11 +150,11 @@ Yapı, kullanılabilirlik ve ilke gibi bir veri kümesi JSON dosyasının bölü
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Oracletable** türündeki veri kümesinin **typeproperties** bölümü aşağıdaki özelliklere sahiptir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
 | tableName |Oracle veritabanındaki, bağlı hizmetin başvurduğu tablonun adı. |Hayır ( **oracleReaderQuery** veya **oraclesource** belirtilmişse) |
 
-## <a name="copy-activity-properties"></a>Kopyalama etkinliği özellikleri
+## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
 Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları oluşturma](data-factory-create-pipelines.md).
 
@@ -170,7 +169,7 @@ Etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etki
 
 Kopyalama etkinliğinde, kaynak **Oraclesource** türü olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Verileri okumak için özel sorguyu kullanın. |Bir SQL sorgu dizesi. Örneğin, " **MyTable**içinden \* seçin". <br/><br/>Belirtilmemişse, bu SQL açıklaması yürütülür: " **MyTable**\* seçin" |Hayır<br />( **veri kümesi** **TableName** belirtilmişse) |
 
@@ -178,12 +177,12 @@ Kopyalama etkinliğinde, kaynak **Oraclesource** türü olduğunda, **typeproper
 
 **Oraclesink** aşağıdaki özellikleri destekler:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Toplu iş ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |**TimeSpan**<br/><br/> Örnek: 00:30:00 (30 dakika) |Hayır |
 | writeBatchSize |Arabellek boyutu **Writebatchsize**değerine ULAŞTıĞıNDA verileri SQL tablosuna ekler. |Tamsayı (satır sayısı) |Hayır (varsayılan: 100) |
-| sqlWriterCleanupScript |Belirli bir dilim verilerinin temizlenmesi için kopyalama etkinliğinin yürütülmesi için bir sorgu belirtir. |Sorgu ekstresi. |Hayır |
-| Dilimleyiceıdentifiercolumnname |Kopyalama etkinliğinin otomatik olarak oluşturulan bir dilim tanımlayıcısı ile doldurmasını sağlamak için sütun adını belirtir. Yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için, **Feıdentifiercolumnname** değeri kullanılır. |**Binary (32)** veri türüne sahip bir sütunun sütun adı. |Hayır |
+| sqlWriterCleanupScript |Belirli bir dilim verilerinin temizlenmesi için kopyalama etkinliğinin yürütülmesi için bir sorgu belirtir. |Bir sorgu deyimi. |Hayır |
+| sliceIdentifierColumnName |Kopyalama etkinliğinin otomatik olarak oluşturulan bir dilim tanımlayıcısı ile doldurmasını sağlamak için sütun adını belirtir. Yeniden çalıştırıldığında belirli bir dilimin verilerini temizlemek için, **Feıdentifiercolumnname** değeri kullanılır. |**Binary (32)** veri türüne sahip bir sütunun sütun adı. |Hayır |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Oracle veritabanına veri kopyalamaya yönelik JSON örnekleri
 
@@ -564,14 +563,14 @@ Veriler her saat yeni bir bloba alınır (**Sıklık**: **saat**, **Aralık**: *
 * Oracle için .NET Framework Veri Sağlayıcısı yüklenmedi.
 * Oracle için .NET Framework Veri Sağlayıcısı .NET Framework 2,0 ' e yüklenmiştir ve .NET Framework 4,0 klasörlerinde bulunamadı.
 
-**Çözünürlüğüne**
+**Çözümleme**
 
 * Oracle için .NET sağlayıcısını yüklemediyseniz, [uygulamayı yükleyip](https://www.oracle.com/technetwork/topics/dotnet/downloads/)senaryoyu yeniden deneyin.
 * Sağlayıcıyı yükledikten sonra bile hata iletisini görürseniz, aşağıdaki adımları izleyin:
     1. < Sistem diski\>klasöründen .NET 2,0 için makine yapılandırma dosyasını açın: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. **.Net Için Oracle veri sağlayıcısı**aratın. Aşağıdaki örnekte gösterildiği gibi bir girişi, **System. data** > **DbProviderFactory**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />` olarak bulabilirsiniz.
 * Bu girdiyi şu .NET 4,0 klasöründeki Machine. config dosyasına kopyalayın: < sistem diski\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ardından sürümü 4. xxx. x.x. olarak değiştirin
-* **Gacutil/i [Provider Path]** çalıştırarak genel derleme önbelleği 'NE (GAC) < ODP. net yüklü yol\>\11.2.0\client_1\odp.net\bin\4\Oracle.dataaccess.dll.
+* **Gacutil/i [Provider Path]** çalıştırarak genel derleme önbelleği 'NE (GAC)\>\ 11.2.0 \ CLIENT_1 \odp.net\bin\4\oracle.dataaccess.dll ODP. net yüklü yolunu <.
 
 ### <a name="problem-2-datetime-formatting"></a>Sorun 2: Tarih/saat biçimlendirmesi
 
@@ -579,9 +578,9 @@ Veriler her saat yeni bir bloba alınır (**Sıklık**: **saat**, **Aralık**: *
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Çözünürlüğüne**
+**Çözümleme**
 
-Kopyalama etkinliğinizdeki sorgu dizesini, tarihlerin Oracle veritabanınızda nasıl yapılandırıldığına bağlı olarak ayarlamanız gerekebilir. İşte bir örnek ( **to_date** işlevini kullanarak):
+Kopyalama etkinliğinizdeki sorgu dizesini, tarihlerin Oracle veritabanınızda nasıl yapılandırıldığına bağlı olarak ayarlamanız gerekebilir. İşte bir örnek ( **to_date** işlevi kullanılarak):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
@@ -597,29 +596,29 @@ Verileri Oracle 'dan taşıdığınızda, aşağıdaki eşlemeler Oracle veri t�
 
 | Oracle veri türü | .NET Framework veri türü |
 | --- | --- |
-| BDosya |Byte [] |
-| BLOB |Byte []<br/>(yalnızca Microsoft sürücüsü kullandığınızda Oracle 10G ve sonraki sürümlerinde desteklenir) |
+| BFILE |Byte[] |
+| BLOB |Byte[]<br/>(yalnızca Microsoft sürücüsü kullandığınızda Oracle 10G ve sonraki sürümlerinde desteklenir) |
 | CHAR |Dize |
 | CLOB |Dize |
-| DATE |DateTime |
-| FLOAT |Ondalık, dize (duyarlık > 28) |
-| INTEGER |Ondalık, dize (duyarlık > 28) |
+| DATE |Tarih Saat |
+| FLOAT |Decimal, String (olursa hassasiyet > 28) |
+| INTEGER |Decimal, String (olursa hassasiyet > 28) |
 | ARALıK YıL-AY |Int32 |
 | ARALıK GÜN-SANIYE |TimeSpan |
-| KALACAĞıNı |Dize |
-| UZUN HAM |Byte [] |
+| LONG |Dize |
+| LONG RAW |Byte[] |
 | NCHAR |Dize |
 | NCLOB |Dize |
-| SAYıSıNDAN |Ondalık, dize (duyarlık > 28) |
+| NUMBER |Decimal, String (olursa hassasiyet > 28) |
 | NVARCHAR2 |Dize |
-| Madde |Byte [] |
-| ROWıD |Dize |
-| ILIŞKIN |DateTime |
-| YEREL SAAT DILIMIYLE ZAMAN DAMGASı |DateTime |
-| SAAT DILIMI ILE ZAMAN DAMGASı |DateTime |
-| IŞARETSIZ TAMSAYı |Sayı |
+| RAW |Byte[] |
+| ROWID |Dize |
+| TIMESTAMP |Tarih Saat |
+| TIMESTAMP WITH LOCAL TIME ZONE |Tarih Saat |
+| TIMESTAMP WITH TIME ZONE |Tarih Saat |
+| UNSIGNED INTEGER |Sayı |
 | VARCHAR2 |Dize |
-| 'SINI |Dize |
+| XML |Dize |
 
 > [!NOTE]
 > Bir Microsoft sürücüsü kullandığınızda, veri türleri **Aralık yılı** ve **Aralık gün-saniye** desteklenmez.

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842787"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918023"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -42,6 +42,10 @@ Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulama
 - Parola SSO 'SU için, uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun ve bu sayede, tek oturum açma için beklenen şekilde çalışmaya başlayın.
 - En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
+**Geliştiriciler için Azure AD nasıl alınır?**
+
+Tüm Premium Azure AD özellikleriyle 90 gün ücretsiz olan ücretsiz bir test hesabı alabilir ve geliştirme yaparken sizinle birlikte çalışırken genişletilebilir. https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>İsteği portalda gönder
 
 Uygulama tümleştirmesinin Azure AD ile çalışıp çalışmadığını test ettikten sonra, [uygulama ağ portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)erişim isteğinizi iletin. Office 365 hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Outlook veya Hotmail gibi Microsoft hesabı kullanın.
@@ -59,6 +63,26 @@ Oturum açtıktan sonra aşağıdaki sayfa görünürse, metin kutusuna erişim 
 Ekibimiz ayrıntıları inceler ve size buna göre erişim sağlar. İsteğiniz onaylandıktan sonra, portalda oturum açabilir ve giriş sayfasındaki **Isteği gönder (ISV)** kutucuğunu seçerek isteği gönderebilirsiniz.
 
 ![Giriş sayfasında Istek (ISV) kutucuğunu gönder](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>Portalda oturum açma sorunları
+
+Oturum açarken bu hatayı görüyorsanız, sorun hakkında ayrıntılı bilgi ve bu sorunu nasıl giderebilirim?
+
+* Oturum açma bilgileriniz aşağıda gösterildiği gibi engellenmişse:
+
+  ![Galerideki uygulamayı çözümleyen sorunlar](./media/howto-app-gallery-listing/blocked.png)
+
+**Ne oluyor:**
+
+Konuk Kullanıcı aynı zamanda bir Azure AD olan bir giriş kiracıya federe olur. Konuk Kullanıcı yüksek risk altında. Microsoft, yüksek riskli kullanıcıların kaynaklarına erişmelerine izin vermez. Tüm yüksek riskli kullanıcılar (çalışanlar veya konuklar/satıcılar) Microsoft kaynaklarına erişmek için riskleri düzeltmeli/kapatacaktır. Konuk kullanıcılar için bu kullanıcı riski, ana kiracıdan gelir ve ilke, kaynak kiracısından gelir (Bu durumda Microsoft).
+ 
+**Güvenli çözümler:**
+
+* MFA kayıtlı Konuk kullanıcılar kendi Kullanıcı riskini düzeltir. Bu işlem, Konuk Kullanıcı tarafından güvenli bir parola değişikliği veya sıfırlama (https://aka.ms/sspr), ana kiracısında MFA ve SSPR gerekir) tarafından yapılabilir. Güvenli parola değiştirme veya sıfırlama özelliği, Azure AD 'de başlatılmalıdır ve şirket içi değil.
+
+* Konuk kullanıcıların yöneticileri, riskini düzeltir. Bu durumda, yönetici bir parola sıfırlama işlemi gerçekleştirir (geçici parola oluşturma). Bu, kimlik koruması gerektirmez. Konuk kullanıcının Yöneticisi https://aka.ms/RiskyUsers gidebilir ve ' Parolayı Sıfırla ' seçeneğine tıklayabilir.
+
+* Konuk kullanıcıların yöneticileri, riskini kapatır/kapatabilir. Bu, kimlik korumasına gerek kalmaz. Yönetici https://aka.ms/RiskyUsers gidebilir ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayabilirsiniz. Ancak, bu, Kullanıcı riskini kapatmadan önce bunun yanlış bir pozitif risk değerlendirmesi olduğundan emin olmak için yöneticinin, süresi dolan bir süre olması gerekir. Aksi takdirde, araştırma yapmadan risk değerlendirmesi ortadan kaldırarak ve Microsoft 'un kaynaklarını riske sokuyor.
 
 > [!NOTE]
 > Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
@@ -79,6 +103,7 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD t
   ![Bir SAML 2,0 veya WS-beslenir uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 
   * **Saml 2,0** veya **WS-besu**kullanarak uygulamanızı Galeriye eklemek Istiyorsanız, gösterildiği gıbı **SAML 2.0/WS-beslenir** ' i seçin.
+
   * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>SSO parolasını kullanarak SSO uygulama

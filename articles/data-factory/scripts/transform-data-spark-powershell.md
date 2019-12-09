@@ -1,20 +1,21 @@
 ---
-title: 'PowerShell betiği-Data Factory kullanarak buluttaki verileri dönüştürme '
+title: PowerShell kullanarak buluttaki verileri dönüştürme
 description: Bu PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark programını çalıştırarak buluttaki verileri dönüştürür.
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684312"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932060"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell betiği-Azure Data Factory kullanarak buluttaki verileri dönüştürme
 
@@ -24,7 +25,7 @@ Bu örnek PowerShell betiği, bir Azure HDInsight Spark kümesinde Spark program
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure Depolama hesabı**. Bir Python betiği ve bir giriş dosyası oluşturun ve bunları Azure depolama 'ya yükleyin. Spark programının çıktısı bu depolama hesabında depolanır. İsteğe bağlı Spark kümesi, birincil depolama alanıyla aynı depolama hesabını kullanır.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python betiğini Blob Depolama hesabınıza yükleme

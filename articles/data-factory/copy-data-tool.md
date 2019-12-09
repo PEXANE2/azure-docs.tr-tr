@@ -4,19 +4,19 @@ description: Azure Data Factory Kullanıcı arabirimindeki Veri Kopyalama aracı
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678328"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927489"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Veri Kopyalama araç Azure Data Factory
 Azure Data Factory Veri Kopyalama araç, verileri bir veri Gölü içine almak ve bu işlemi, genellikle uçtan uca bir veri tümleştirme senaryosunda ilk adımdan en iyi duruma getirir.  Özellikle bir veri kaynağından ilk kez veri almak için Azure Data Factory kullandığınızda zaman kazandırır. Bu aracı kullanmanın avantajlarından bazıları şunlardır:
@@ -69,7 +69,7 @@ Veri Kopyalama Aracı, kaynak ve hedef mağazalar arasında sütunları eşlerke
 > [!NOTE]
 > SQL Server veya Azure SQL veritabanından Azure SQL veri ambarı 'na veri kopyalarken, tablo hedef depoda yoksa, Veri Kopyalama araç, kaynak şemasını kullanarak tablonun otomatik olarak oluşturulmasını destekler. 
 
-## <a name="filter-data"></a>Verileri Filtrele
+## <a name="filter-data"></a>Veri filtreleme
 Yalnızca havuz veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerini filtreleyebilirsiniz. Filtreleme, havuz veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin aktarım hızını geliştirir. Veri Kopyalama araç, bir ilişkisel veritabanındaki verileri SQL sorgu dilini veya bir Azure Blob klasöründeki dosyaları kullanarak filtrelemek için esnek bir yol sağlar. 
 
 ### <a name="filter-data-in-a-database"></a>Veritabanındaki verileri filtreleme

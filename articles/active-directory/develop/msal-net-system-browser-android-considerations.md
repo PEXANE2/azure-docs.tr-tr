@@ -1,29 +1,25 @@
 ---
-title: Xamarin Android Sistem tarayıcısı konuları (.NET için Microsoft kimlik doğrulama kitaplığı)
+title: Xamarin Android Sistem tarayıcısı konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kullanırken Xamarin Android üzerinde sistem tarayıcıları kullanırken belirli hususlar hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android üzerinde sistem tarayıcıları kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150366"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915460"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>MSAL.NET ile Xamarin Android Sistem tarayıcısı konuları
 
@@ -33,11 +29,11 @@ MSAL.NET 2.4.0-Preview sürümünden itibaren, MSAL.NET Chrome dışındaki tara
 
 Bunlar gibi özel sekmeleri destekleyen tarayıcılar kullanmanızı öneririz:
 
-| Özel sekmeler desteği olan tarayıcılar | Paket adı |
+| Özel sekmeler desteği olan tarayıcılar | Paket Adı |
 |------| ------- |
-|Chrome | com. Android. Chrome|
+|Chrome | com.android.chrome|
 |Microsoft Edge | com. Microsoft. emmx|
-|'U | org. Mozilla. Firefox|
+|Firefox | org. Mozilla. Firefox|
 |Eko | com. ekosı. Android|
 |Kivi | com. kiwibrowser. Browser|
 |Brave | com. brave. Browser|
@@ -58,16 +54,16 @@ Aşağıdaki tabloda, sınanan cihazlar ve tarayıcılar listelenmektedir.
 
 | | Tarayıcı&ast;     |  Sonuç  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/One + | Chrome&ast; | Aktar|
-| Huawei/One + | Edge&ast; | Aktar|
-| Huawei/One + | Firefox&ast; | Aktar|
-| Huawei/One + | Brave&ast; | Aktar|
-| Tek + | Eko&ast; | Aktar|
-| Tek + | Kiwi&ast; | Aktar|
-| Huawei/One + | Opera | Aktar|
-| Huawei | İşletimsel mini | Aktar|
-| Huawei/One + | InBrowser | Aktar|
-| Tek + | Maxthon | Aktar|
+| Huawei/One + | Chrome&ast; | Geç|
+| Huawei/One + | Edge&ast; | Geç|
+| Huawei/One + | Firefox&ast; | Geç|
+| Huawei/One + | Brave&ast; | Geç|
+| Tek + | Eko&ast; | Geç|
+| Tek + | Kiwi&ast; | Geç|
+| Huawei/One + | Opera | Geç|
+| Huawei | İşletimsel mini | Geç|
+| Huawei/One + | InBrowser | Geç|
+| Tek + | Maxthon | Geç|
 | Huawei/One + | DuckDuckGo | Kullanıcı kimlik doğrulamasını iptal etti|
 | Huawei/One + | UC tarayıcısı | Kullanıcı kimlik doğrulamasını iptal etti|
 | Tek + | Dolphin | Kullanıcı kimlik doğrulamasını iptal etti|

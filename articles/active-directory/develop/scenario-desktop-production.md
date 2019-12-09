@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran masaüstü uygulaması (üretime geçiş)-Microsoft Identity platform
-description: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin (üretime geçin)
+title: Web API 'Lerini üretime çağıran masaüstü uygulamasını taşıma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini üretime çağıran bir masaüstü uygulamasını nasıl taşıyacağınızı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,16 +17,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175557"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919992"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması-üretime taşı
 
-Bu makalede, uygulamanızı daha da geliştirmek ve üretime taşımak için ayrıntılar verilmektedir.
+Bu makalede, Web API 'Lerini üretime çağıran masaüstü uygulamanızı taşımaya yönelik ayrıntılar verilmektedir.
 
 ## <a name="handling-errors-in-desktop-applications"></a>Masaüstü uygulamalarında hataları işleme
 

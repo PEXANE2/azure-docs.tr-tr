@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights akıllı algılama kuralı ayarlarını Azure Resource Manager şablonlarla yapılandırma | Microsoft Docs
+title: Akıllı algılama kuralı ayarları-Azure Application Insights
 description: Azure Resource Manager şablonlarıyla Azure Application Insights akıllı algılama kuralları yönetimini ve yapılandırmasını otomatikleştirin
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8b55271b39bf2a65dababbef58f7389ca07d57d8
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 74014a91684749eec7c4086a88785f2024694677
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818840"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929087"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
@@ -175,7 +175,7 @@ Aşağıda, portalda göründükleri şekilde, Azure Resource Manager şablonund
 > [!NOTE]
 > _Önizleme_ olarak işaretlenen akıllı algılama kuralları, e-posta bildirimlerini desteklemez. Bu nedenle, bu kurallar için yalnızca _etkin_ özelliği ayarlayabilirsiniz. 
 
-| Azure portal kural adı | İç ad
+| Azure portal kural adı | İç adı
 |:---|:---|
 | Yavaş sayfa yükleme süresi | yavaşpageloadtime |
 | Yavaş sunucu yanıt süresi | yavaşsunucuresponsetime |

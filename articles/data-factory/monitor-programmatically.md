@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 43a31d588ff6616d7200d9773883ce5da570b100
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684606"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927352"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 Bu makalede, farklı yazılım geliştirme setleri (SDK 'lar) kullanılarak bir veri fabrikasında bir işlem hattının nasıl izleneceği açıklanır. 

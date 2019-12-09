@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C (Android için Microsoft kimlik doğrulama kitaplığı)
+title: Azure AD B2C (MSAL Android) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Android için Microsoft kimlik doğrulama kitaplığı (MSAL) ile Azure AD B2C kullanırken belirli hususlar hakkında bilgi edinin. Android
 services: active-directory
-documentationcenter: dev-center-name
 author: brianmel
-manager: omkrishn
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5061f1ab341e5872dfa82c9f5c5b133ae40bdf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 98a31ea2daffba19242e73362af5a44e3a392342
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803245"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917123"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>B2C ile Android için MSAL kullanma
 
@@ -158,7 +154,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Parola değiştirme ilkelerini işle
 
-Yerel hesap kaydolma veya oturum açma Kullanıcı akışında bir '**parola unuttum?** ' görüntülenir bağlantısının. Bu bağlantıya tıkladığınızda parola sıfırlama Kullanıcı akışı otomatik olarak tetiklenemez.
+Yerel hesap kaydolma veya oturum açma Kullanıcı akışında bir '**parola unuttum?** ' görüntülenir bağlantı. Bu bağlantıya tıkladığınızda parola sıfırlama Kullanıcı akışı otomatik olarak tetiklenemez.
 
 Bunun yerine, `AADB2C90118` hata kodu uygulamanıza döndürülür. Uygulamanız, parolayı sıfırlayan belirli bir kullanıcı akışını çalıştırarak bu hata kodunu işlemelidir.
 

@@ -4,21 +4,20 @@ description: Teradata veritabanından veri taşımanızı sağlayan Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666086"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929044"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -32,7 +31,7 @@ Bu makalede, verileri şirket içi bir Teradata veritabanından taşımak için 
 
 Şirket içi bir Teradata veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir Teradata veri deposundan diğer veri depolarına veri taşımayı destekler, ancak diğer veri depolarından verileri bir Teradata veri deposuna taşımamaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Data Factory, Veri Yönetimi ağ geçidi aracılığıyla şirket içi Teradata kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
 Teradata bir Azure IaaS VM 'sinde barındırılıyorsa bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı IaaS sanal makinesine veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
@@ -43,11 +42,11 @@ Teradata bir Azure IaaS VM 'sinde barındırılıyorsa bile ağ geçidi gereklid
 ## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
 Teradata veritabanına bağlanmak için Veri Yönetimi ağ geçidi için, Teradata sürüm 14 veya üzeri [için .net Veri Sağlayıcısı](https://go.microsoft.com/fwlink/?LinkId=278886) veri yönetimi ağ geçidiyle aynı sisteme yüklemeniz gerekir. Teradata sürüm 12 ve üzeri desteklenir.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -59,17 +58,17 @@ Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (
 
 Aşağıdaki bölümler, bir Teradata veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, Teradata bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Evet |
-| sunucu |Teradata sunucusunun adı. |Evet |
-| authenticationType |Teradata veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
+| type |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Yes |
+| sunucu |Teradata sunucusunun adı. |Yes |
+| authenticationType |Teradata veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
 | kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
-| gatewayName |Data Factory hizmetinin şirket içi Teradata veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| gatewayName |Data Factory hizmetinin şirket içi Teradata veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
@@ -83,9 +82,9 @@ Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her e
 
 Kaynak, **Relationalsource** türünde olduğunda (Teradata içeren), **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Evet |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Yes |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON örneği: Teradata 'dan Azure Blob 'a veri kopyalama
 Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Bu kişiler, Teradata 'dan Azure Blob depolama 'ya nasıl veri kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.
@@ -285,45 +284,45 @@ Verileri Teradata 'a taşırken, Teradata türünden .NET türüne aşağıdaki 
 
 | Teradata veritabanı türü | .NET Framework türü |
 | --- | --- |
-| Char |Dize |
+| char |Dize |
 | CLOB |Dize |
-| Sel |Dize |
+| Graphic |Dize |
 | VarChar |Dize |
 | VarGraphic |Dize |
-| Blob |Byte [] |
-| Bayt |Byte [] |
-| VarByte |Byte [] |
+| Blob |Byte[] |
+| Bayt |Byte[] |
+| VarByte |Byte[] |
 | BigInt |Int64 |
 | Byteınt |Int16 |
-| Kategori |Kategori |
-| Çift |Çift |
+| Decimal |Decimal |
+| Double |Double |
 | Tamsayı |Int32 |
-| Sayı |Çift |
-| Small |Int16 |
-| Tarih |DateTime |
+| Sayı |Double |
+| Smallint |Int16 |
+| Tarih |Tarih Saat |
 | Zaman |TimeSpan |
-| Saat dilimiyle saat |Dize |
-| Zaman damgası |DateTime |
-| Saat dilimi Ile zaman damgası |Türünde |
-| Aralık günü |TimeSpan |
-| Aralık gün-saat |TimeSpan |
-| Aralık gün-dakika |TimeSpan |
-| Aralık gün-saniye |TimeSpan |
-| Aralık saati |TimeSpan |
-| Aralık saat-dakika |TimeSpan |
-| Aralık saat-saniye |TimeSpan |
-| Aralık dakikası |TimeSpan |
-| Aralık dakika-saniye |TimeSpan |
-| Aralık saniye |TimeSpan |
-| Aralık yılı |Dize |
-| Aralık yıl-ay |Dize |
-| Aralık ayı |Dize |
+| Time With Time Zone |Dize |
+| Zaman damgası |Tarih Saat |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |Dize |
+| Interval Year To Month |Dize |
+| Interval Month |Dize |
 | Süre (Tarih) |Dize |
 | Süre (saat) |Dize |
-| Süre (saat dilimiyle birlikte) |Dize |
-| Süre (zaman damgası) |Dize |
-| Süre (saat dilimiyle zaman damgası) |Dize |
-| 'Sini |Dize |
+| Period(Time With Time Zone) |Dize |
+| Period(Timestamp) |Dize |
+| Period(Timestamp With Time Zone) |Dize |
+| Xml |Dize |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
 Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory veri kümeleri
+title: Veri kümeleri
 description: Data Factory veri kümeleri hakkında bilgi edinin. Veri kümeleri giriş/çıkış verilerini temsil eder.
 services: data-factory
 documentationcenter: ''
@@ -10,13 +10,14 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.openlocfilehash: 74c35d5de74fbf8ecc04cfec336bfeb4a8e669fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681521"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928488"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -66,12 +67,12 @@ Data Factory bir veri kümesi aşağıdaki JSON biçiminde tanımlanmıştır:
 ```
 Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
-Özellik | Açıklama | Gerekli |
+Özellik | Açıklama | Gereklidir |
 -------- | ----------- | -------- |
-ad | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
-type | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Evet |
-yapısı | Veri kümesinin şeması. Ayrıntılar için bkz. [DataSet şeması](#dataset-structure-or-schema). | Hayır |
-typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Evet |
+ad | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+type | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+structure | Veri kümesinin şeması. Ayrıntılar için bkz. [DataSet şeması](#dataset-structure-or-schema). | Hayır |
+typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
 
 ### <a name="data-flow-compatible-dataset"></a>Veri akışı ile uyumlu veri kümesi
 
@@ -111,12 +112,12 @@ Bir veri akışı veri kümesinin şemasını içeri aktardığınızda, **Şema
 
 Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
-Özellik | Açıklama | Gerekli |
+Özellik | Açıklama | Gereklidir |
 -------- | ----------- | -------- |
-ad | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Evet |
-type | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Evet |
-manızı | Veri kümesinin şeması. Ayrıntılar için bkz. [veri akışı ile uyumlu veri kümeleri](#dataset-type). | Hayır |
-typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Evet |
+ad | Veri kümesinin adı. Bkz. [Azure Data Factory adlandırma kuralları](naming-rules.md). |  Yes |
+type | Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türleri](#dataset-type). | Yes |
+schema | Veri kümesinin şeması. Ayrıntılar için bkz. [veri akışı ile uyumlu veri kümeleri](#dataset-type). | Hayır |
+typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#dataset-type). | Yes |
 
 
 ## <a name="dataset-example"></a>Veri kümesi örneği
@@ -177,12 +178,12 @@ Kullandığınız veri deposuna bağlı olarak birçok farklı türde veri küme
 
 Yapıdaki her sütun aşağıdaki özellikleri içerir:
 
-Özellik | Açıklama | Gerekli
+Özellik | Açıklama | Gereklidir
 -------- | ----------- | --------
-ad | Sütunun adı. | Evet
+ad | Sütunun adı. | Yes
 type | Sütunun veri türü. Data Factory, izin verilen değerler olarak şu veri türlerini destekler: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, Guid, DateTime, DateTimeOffset ve TimeSpan** | Hayır
-ayarı | . Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya `Datetimeoffset`. Varsayılan değer: `en-us`. | Hayır
-formatını | Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya `Datetimeoffset`. Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır
+culture | . Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya `Datetimeoffset`. Varsayılan değer: `en-us`. | Hayır
+biçim | Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya `Datetimeoffset`. Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır
 
 ### <a name="example"></a>Örnek
 Aşağıdaki örnekte, kaynak blobu verilerinin CSV biçiminde olduğunu ve üç sütun içerdiğini varsayalım: UserID, Name ve LastLoginDate. Bu değerler, haftanın günü için kısaltılmış Fransız adlarını kullanarak özel bir tarih saat biçimiyle Int64, dize ve tarih/saat türündedir.
@@ -198,7 +199,7 @@ Blob veri kümesi yapısını, sütunlar için tür tanımlarıyla birlikte aşa
 ]
 ```
 
-### <a name="guidance"></a>Rehber
+### <a name="guidance"></a>Kılavuz
 
 Aşağıdaki yönergeler, yapı bilgilerinin ne zaman ekleneceğini ve **Yapı** bölümüne nelerin ekleneceğini anlamanıza yardımcı olur. Data Factory 'nin kaynak verileri havuza nasıl eşlediğini ve [şemadan ve tür eşleştirmesinin](copy-activity-schema-and-type-mapping.md)yapı bilgilerini ne zaman belirtmesi hakkında daha fazla bilgi edinin.
 

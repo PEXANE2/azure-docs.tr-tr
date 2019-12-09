@@ -2,21 +2,21 @@
 title: Azure Data Lake Storage 1. verileri yükleme
 description: Verileri Azure Data Lake Storage 1. kopyalamak için Azure Data Factory kullanma
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.author: jingwang
-ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ca3c72ec35d8cf16671eb84cbee83dbfe1aa966f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892966"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926819"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Data Lake Storage 1. verileri yükleme
 

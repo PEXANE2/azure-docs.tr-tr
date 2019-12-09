@@ -1,23 +1,22 @@
 ---
-title: Azure Cosmos DB (SQL API) Data Factory kullanarak verileri kopyalama ve dönüştürme
+title: Azure Cosmos DB verileri kopyalama ve dönüştürme (SQL API)
 description: Azure Cosmos DB (SQL API) ve Data Factory kullanarak Azure Cosmos DB (SQL API) verilerini nasıl kopyalayacağınızı öğrenin.
 services: data-factory, cosmosdb
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/13/2019
-ms.author: jingwang
-ms.openlocfilehash: 5e9db7c63e1493e1de5593262515040f071186e8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bf24c12e8f1e5b7ee5c529ebffa6c15dd8acbcfc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076807"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913417"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) Azure Data Factory kullanarak verileri kopyalama ve dönüştürme
 
@@ -49,7 +48,7 @@ Veri Fabrikası ile tümleştirilir [Azure Cosmos DB toplu Yürütücü Kitaplı
 > [!TIP]
 > [Veri geçişi video](https://youtu.be/5-SRNiC_qOU) Azure Cosmos DB için Azure Blob depolamadan veri kopyalama adımlarında size rehberlik yapacaktır. Video ayrıca genel olarak Azure Cosmos DB'ye veri almak için performans ayarlama konuları açıklanır.
 
-## <a name="get-started"></a>Başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -59,7 +58,7 @@ Aşağıdaki bölümlerde, Azure Cosmos DB (SQL API) özgü Data Factory varlık
 
 Azure Cosmos DB (SQL API) bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | **Türü** özelliği ayarlanmalıdır **CosmosDb**. | Yes |
 | connectionString |Azure Cosmos DB veritabanına bağlanmak için gereken bilgileri belirtin.<br />**Not**: veritabanı bilgisi bağlantı dizesinde aşağıdaki örneklerde gösterildiği gibi belirtmeniz gerekir. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
@@ -121,7 +120,7 @@ Bölümleri ve veri kümeleri tanımlamak için kullanılabilir olan özellikler
 
 Azure Cosmos DB (SQL API) veri kümesi için aşağıdaki özellikler desteklenir: 
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | Veri kümesinin **Type** özelliği **CosmosDbSqlApiCollection**olarak ayarlanmalıdır. |Yes |
 | collectionName |Azure Cosmos DB belge koleksiyonu adı. |Yes |
@@ -167,7 +166,7 @@ Azure Cosmos DB (SQL API) ' den veri kopyalamak için kopyalama etkinliğindeki 
 
 Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbsqlapısource**olarak ayarlanmalıdır. |Yes |
 | sorgu |Verileri okumak için Azure Cosmos DB sorgusu belirtin.<br/><br/>Örnek:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Hayır <br/><br/>Belirtilmemişse, bu SQL deyimi yürütülür: `select <columns defined in structure> from mycollection` |
@@ -217,7 +216,7 @@ Azure Cosmos DB (SQL API) ' e veri kopyalamak için kopyalama etkinliğindeki **
 
 Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | Kopyalama etkinliği havuzunun **Type** özelliği **Cosmosdbsqlapisink**olarak ayarlanmalıdır. |Yes |
 | writeBehavior |Azure Cosmos DB'ye veri yazmak açıklar. İzin verilen değerler: **Ekle** ve **upsert**.<br/><br/>Davranışını **upsert** aynı Kimliğe sahip bir belge zaten varsa belge değiştirmek üzere; Aksi takdirde, belge ekleyin.<br /><br />**Not**: Data Factory bir kimliği, özgün belgenin veya sütun eşlemesi tarafından belirtilmezse bir belge için bir kimliği otomatik olarak oluşturur. İçin emin olmanız gerekir, yani **upsert** beklendiği şekilde çalışması için belgeyi bir kimliği vardır. |Hayır<br />(varsayılan değer **Ekle**) |

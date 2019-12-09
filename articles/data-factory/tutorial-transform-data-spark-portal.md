@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683334"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925091"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de bir Spark etkinliği kullanarak verileri bulutta dönüştürme
 Bu öğreticide, Azure portalını kullanarak bir Azure Data Factory işlem hattı oluşturursunuz. Bu işlem hattı bir Spark etkinliği ve isteğe bağlı bir Azure HDInsight bağlı hizmetini kullanarak verileri dönüştürür. 
@@ -31,7 +30,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -84,7 +83,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Soldaki menüden **Yeni**’yi, sonra **Veri ve Analiz**’i ve ardından **Data Factory**’i seçin. 
+1. Solda yer alan menüde **Yeni**’yi, sonra **Veri ve Analiz**’i ve ardından **Data Factory**’yi seçin. 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
 1. **Yeni veri fabrikası** bölmesinde **Ad** altına **ADFTutorialDataFactory** girin. 
@@ -205,7 +204,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    !["Tümünü Yayımla" düğmesi](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
 
-## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırması tetikleme
+## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
 Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. 
 
 !["Tetikleyici" ve "Şimdi Tetikle" düğmeleri](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
@@ -216,7 +215,7 @@ Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' 
    
 1. Düzenli aralıklarla **Yenile**’yi seçerek işlem hattı çalıştırmasının durumunu denetleyin. 
 
-   ![“Yenile” düğmeli işlem hattı çalıştırmalarını izleme sekmesi](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
+   ![“Yenile” düğmesini içeren, işlem hattı çalıştırmalarını izleme sekmesi](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
 1. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görmek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Göster**’i seçin.
 
@@ -231,7 +230,7 @@ adftutorial kapsayıcısının spark/otuputfiles/wordcount klasöründe çıktı
 
 ![Çıkış dosyasının konumu](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örneğin: 
+Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örnek: 
 
 ```
 (u'This', 1)

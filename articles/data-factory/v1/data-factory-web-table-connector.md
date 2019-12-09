@@ -4,21 +4,20 @@ description: Azure Data Factory kullanarak bir Web sayfasındaki tablodaki veril
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 957b47244744f161ad9cc8019a411e2e59c29418
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682316"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927930"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory kullanarak bir Web tablosu kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -35,7 +34,7 @@ Data Factory Şu anda yalnızca bir Web tablosundan diğer veri depolarına veri
 > [!IMPORTANT]
 > Bu Web Bağlayıcısı Şu anda yalnızca bir HTML sayfasından tablo içeriğini ayıklamayı desteklemektedir. HTTP/s uç noktasından veri almak için bunun yerine [http bağlayıcısını](data-factory-http-connector.md) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu Web tablosu bağlayıcısını kullanmak için, şirket içinde barındırılan bir Integration Runtime (aka Veri Yönetimi Gateway) ayarlamanız ve havuz bağlantılı hizmetindeki `gatewayName` özelliğini yapılandırmanız gerekir. Örneğin, Web tablosundan Azure Blob depolamaya kopyalamak için, Azure Storage bağlı hizmetini aşağıdaki gibi yapılandırın:
 
@@ -52,11 +51,11 @@ Bu Web tablosu bağlayıcısını kullanmak için, şirket içinde barındırıl
 }
 ```
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için. 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -68,14 +67,14 @@ Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (
 
 Aşağıdaki bölümler, bir Web tablosuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, web bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| type |Type özelliği: **Web** olarak ayarlanmalıdır |Evet |
-| Url |Web kaynağının URL 'SI |Evet |
-| authenticationType |Deðeri. |Evet |
+| type |Type özelliği: **Web** olarak ayarlanmalıdır |Yes |
+| Url |Web kaynağının URL 'SI |Yes |
+| authenticationType |Deðeri. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulaması kullanma
 
@@ -99,11 +98,11 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Webtable** türündeki veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type |Veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Evet |
-| Yolun |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
-| indeks |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Evet |
+| type |Veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Yes |
+| yol |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
+| index |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. [HTML sayfasındaki tablonun dizinini alma](#get-index-of-a-table-in-an-html-page) bölümü. |Yes |
 
 **Örnek:**
 
@@ -289,7 +288,7 @@ WebSource tarafından desteklenen özelliklerin listesi için bkz. WebSource tü
 2. Araç çubuğunda **Yeni sorgu** ' ya tıklayın, **diğer kaynaklardan** üzerine gelin ve **Web 'den**' ye tıklayın.
 
     ![Power Query menüsü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. **Web 'den** , bağlantılı hizmet JSON 'Da kullanacağınız **URL 'yi** girin (örneğin, veri kümesi için belirttiğiniz yol ile birlikte https://en.wikipedia.org/wiki/) (örneğin: AFI% 27S_100_yıllar... 100 _Filmler) ve ardından **Tamam**' a tıklayın.
+3. **Web 'den** , bağlantılı hizmet JSON 'Da kullanacağınız **URL 'yi** girin (örneğin https://en.wikipedia.org/wiki/): AFI% 27s_100_Years...... 100_Movies) ve **Tamam**' a tıklayın.
 
     ![Web iletişim kutusundan](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 

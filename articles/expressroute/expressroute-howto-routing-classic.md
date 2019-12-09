@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083452"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931385"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute devresi için eşleme oluşturma ve değiştirme (klasik)
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portalda](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Video - özel eşdüzey hizmet sağlama](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -42,40 +42,7 @@ Bu yönergeler yalnızca, katman 2 bağlantı hizmetleri sunan hizmet sağlayıc
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>En son PowerShell cmdlet 'lerini indirin
 
-Azure Hizmet Yönetimi (SM) PowerShell modüllerine ve ExpressRoute modülünün en son sürümlerini yükleyin. Aşağıdaki örnek kullanırken, cmdlet'leri daha yeni sürümleri çıktıkça sürüm numarasını (Bu örnekte, 5.1.1) değişeceğini unutmayın.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Daha fazla bilgi için, bilgisayarınızı Azure PowerShell modüllerini kullanacak şekilde yapılandırma hakkında adım adım yönergeler için [Azure PowerShell cmdlet 'leriyle çalışmaya](/powershell/azure/overview) başlama konusuna bakın.
-
-### <a name="sign-in"></a>Oturum aç
-
-Azure hesabınızda oturum açmak için aşağıdaki örnekleri kullanın:
-
-1. PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Hesapla ilişkili abonelikleri kontrol edin.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Ardından, Azure aboneliğiniz için PowerShell Klasik dağıtım modeli için eklemek için aşağıdaki cmdlet'i kullanın.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Azure özel eşlemesi
 
@@ -119,7 +86,7 @@ Bu bölümde bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıl
    
    * Birincil bağlantı için bir /30 alt ağı. Bu, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu, sanal ağlar için ayrılmış herhangi bir adres alanının parçası olmamalıdır.
-   * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. Bu eşleme için özel bir AS numarası kullanabilirsiniz. 65515 kullandığınızı doğrulayın.
    * Kullanmayı seçerseniz bir MD5 karma değeri. **İsteğe bağlı**.
      
@@ -172,7 +139,7 @@ Aşağıdaki cmdlet'i kullanarak yapılandırmanın herhangi bir bölümünü g�
 Set-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 500 -SharedKey "A1B2C3D4"
 ```
 
-### <a name="to-delete-azure-private-peering"></a>Azure özel eşlemeyi silmek için
+### <a name="to-delete-azure-private-peering"></a>Azure özel eşlemesini silmek için
 
 Aşağıdaki cmdlet'i çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz. Bu cmdlet 'i çalıştırmadan önce tüm sanal ağların ExpressRoute bağlantı hattından bağlantısının olmadığından emin olmanız gerekir.
 
@@ -226,7 +193,7 @@ Bu bölümde bir ExpressRoute bağlantı hattı için Azure ortak eşleme yapıl
    
    * Birincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
-   * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
    * Kullanmayı seçerseniz bir MD5 karma değeri. **İsteğe bağlı**.
 
@@ -330,9 +297,9 @@ Bu bölümde bir ExpressRoute bağlantı hattı için Microsoft eşleme yapılan
    
    * Birincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır.
-   * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
+   * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Devre içindeki başka bir eşlemenin aynı VLAN KIMLIĞINI kullanmadığını doğrulayın.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
-   * Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi göndermek için plan yaparsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu ön ekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.
+   * Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca genel IP adresi önekleri kabul edilir. Bir önek kümesi göndermek için plan yaparsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu önekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.
    * Müşteri ASN’si: Eşleme AS numarasına kayıtlı olmayan önekler tanıtıyorsanız, kayıtlı oldukları AS numarasını belirtebilirsiniz. **İsteğe bağlı**.
    * Yönlendirme Kayıt Defteri Adı: AS numarası ve öneklerinin kaydedildiği RIR / IRR’yi belirtebilirsiniz.
    * Kullanmayı seçerseniz bir MD5 karma değeri. **İsteğe bağlı.**

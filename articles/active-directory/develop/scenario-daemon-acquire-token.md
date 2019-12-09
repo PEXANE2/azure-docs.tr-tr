@@ -1,5 +1,5 @@
 ---
-title: Web API 'Lerini çağıran Daemon uygulaması (uygulama belirteçleri alınıyor)-Microsoft Identity platform
+title: Web API 'Lerini çağıran Daemon uygulamalarında belirteçleri al-Microsoft Identity platform | Mavisi
 description: Web API 'Lerini çağıran bir Daemon uygulamasının nasıl oluşturulduğunu öğrenin (belirteçler alınıyor)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,16 +16,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175524"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920302"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
 
-Gizli istemci uygulaması oluşturulduktan sonra, ``AcquireTokenForClient`` çağırarak, kapsamı geçirerek ve belirteci yenilemeyi zorlayarak ve değil, uygulama için bir belirteç elde edebilirsiniz.
+Gizli istemci uygulaması oluşturulduktan sonra, ``AcquireTokenForClient``çağırarak, kapsamı geçirerek ve belirteci yenilemeyi zorlayarak ve değil, uygulama için bir belirteç elde edebilirsiniz.
 
 ## <a name="scopes-to-request"></a>İstek için kapsamlar
 

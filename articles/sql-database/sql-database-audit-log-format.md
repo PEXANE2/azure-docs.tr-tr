@@ -4,19 +4,17 @@ description: SQL veritabanı denetim günlüklerinin nasıl yapılandırıldığ
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873769"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928630"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL veritabanı denetim günlüğü biçimi
 
@@ -32,16 +30,16 @@ Blob depolamada depolanan denetim günlükleri, Azure depolama hesabındaki `sql
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Salt okuma çoğaltmaları](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) Denetim günlükleri aynı kapsayıcıda depolanır. Kapsayıcı içindeki dizin hiyerarşisi `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`formundadır. BLOB dosya adı aynı biçimi paylaşır. Salt okuma çoğaltmalarının denetim günlükleri aynı kapsayıcıda depolanır.
+[Salt okuma çoğaltmaları](sql-database-read-scale-out.md) Denetim günlükleri aynı kapsayıcıda depolanır. Kapsayıcı içindeki dizin hiyerarşisi `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`formundadır. BLOB dosya adı aynı biçimi paylaşır. Salt okuma çoğaltmalarının denetim günlükleri aynı kapsayıcıda depolanır.
 
 
 ### <a name="event-hub"></a>Olay Hub'ı
 
-Denetim olayları, denetim yapılandırması sırasında tanımlanan ad alanı ve Olay Hub 'ına yazılır ve [Apache avro](https://avro.apache.org/) olaylarının gövdesinde YAKALANıR ve UTF-8 KODLAMASı ile JSON biçimlendirme kullanılarak depolanır. Denetim günlüklerini okumak için, bu biçimi işleyen [avro araçları](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) veya benzer araçları kullanabilirsiniz.
+Denetim olayları, denetim yapılandırması sırasında tanımlanan ad alanı ve Olay Hub 'ına yazılır ve [Apache avro](https://avro.apache.org/) olaylarının gövdesinde YAKALANıR ve UTF-8 KODLAMASı ile JSON biçimlendirme kullanılarak depolanır. Denetim günlüklerini okumak için, bu biçimi işleyen [avro araçları](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) veya benzer araçları kullanabilirsiniz.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytics çalışma alanına, kategori `SQLSecurityAuditEvents``AzureDiagnostics` tablosuna yazılır. Log Analytics arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Log Analytics arama başvurusu](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search).
+Denetim olayları denetim yapılandırması sırasında tanımlanan Log Analytics çalışma alanına, kategori `SQLSecurityAuditEvents``AzureDiagnostics` tablosuna yazılır. Log Analytics arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Log Analytics arama başvurusu](../log-analytics/log-analytics-log-search.md).
 
 ## <a id="subheading-1"></a>Denetim günlüğü alanları
 

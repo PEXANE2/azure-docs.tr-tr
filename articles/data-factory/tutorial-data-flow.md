@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory bir eşleme veri akışı kullanarak veri dönüştürme
+title: Eşleme veri akışı kullanarak veri dönüştürme
 description: Bu öğretici, veri akışı eşleme ile verileri dönüştürmek için Azure Data Factory kullanmaya yönelik adım adım yönergeler sağlar
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683633"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927201"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Veri akışlarını eşleme kullanarak verileri dönüştürme
 
@@ -29,7 +30,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
 
@@ -92,10 +93,10 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 1. Kaynak **MoviesDB**adlandırın. Yeni kaynak veri kümesi oluşturmak için **Yeni** ' ye tıklayın.
     
     ![Veri akışı tuvali](media/tutorial-data-flow/dataflow3.png)
-1. **Azure Data Lake Storage 2.** seçin. Devam ' a tıklayın.
+1. **Azure Data Lake Storage 2.** seçin. Devam'a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset1.png)
-1. **Delimitedtext**öğesini seçin. Devam ' a tıklayın.
+1. **Delimitedtext**öğesini seçin. Devam'a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset2.png)
 1. Veri kümenizi **MoviesDB**olarak adlandırın. Bağlı hizmet açılan menüsünde **Yeni**' yi seçin.
@@ -115,7 +116,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
     ![Veri akışı tuvali](media/tutorial-data-flow/dataflow5.png)
 1. Filtre dönüştürmesinin **Filtreyıllarınızı**adlandırın. **Filtre Uygula** ' nın yanındaki ifade kutusuna tıklayıp deyim Oluşturucu 'yu açın. Burada filtreleme koşullarınızı belirtirsiniz. 
     
-    ![Filtre](media/tutorial-data-flow/filter1.png)
+    ![Filtrele](media/tutorial-data-flow/filter1.png)
 1. Veri akışı ifade Oluşturucusu, çeşitli dönüşümlerde kullanılacak ifadeleri etkileşimli bir şekilde oluşturmanıza olanak tanır. İfadeler, yerleşik işlevleri, giriş şemasından sütunları ve Kullanıcı tanımlı parametreleri içerebilir. İfadelerin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [veri akışı ifade Oluşturucusu](concepts-data-flow-expression-builder.md).
     
     Bu öğreticide, 1910 ve 2000 yılları arasında gelen tarz komedi filmlerini filtrelemek istersiniz. Yıl şu anda bir dize olduğu için ```toInteger()``` işlevini kullanarak bunu bir tamsayıya dönüştürmeniz gerekir. 1910 ve 200-sabit yıl değerlerine göre karşılaştırmak için büyüktür veya eşittir (> =) ve küçüktür veya eşittir (< =) işleçlerini kullanın. Bu ifadeleri ve (& &) işleciyle toplayın. İfade şu şekilde gelir:
@@ -128,13 +129,13 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 
     Etkin bir hata ayıklama kümeniz varsa, kullanılan girişlerle karşılaştırılan ifade çıktısını görmek için **Yenile** ' ye tıklayarak mantığınızı doğrulayabilirsiniz. Veri akışı ifade dilini kullanarak bu mantığı nasıl gerçekleştirebileceğiniz üzerinde birden fazla doğru yanıt vardır.
     
-    ![Filtre](media/tutorial-data-flow/filter2.png)
+    ![Filtrele](media/tutorial-data-flow/filter2.png)
 
     Deyiminizi tamamladıktan sonra Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
 1. Filtrenin düzgün çalıştığını doğrulamak için bir **veri önizlemesi** getirin.
     
-    ![Filtre](media/tutorial-data-flow/filter3.png)
+    ![Filtrele](media/tutorial-data-flow/filter3.png)
 1. Ekleyeceğiniz bir sonraki dönüşüm, **şema değiştiricisi**altında bir **Toplam** dönüşümdir.
     
     ![Toplama](media/tutorial-data-flow/agg1.png)
@@ -160,10 +161,10 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 1. Havuz **havuzunuzu**adlandırın. Havuz veri kümenizi oluşturmak için **Yeni** ' ye tıklayın.
     
     ![Havuz](media/tutorial-data-flow/sink2.png)
-1. **Azure Data Lake Storage 2.** seçin. Devam ' a tıklayın.
+1. **Azure Data Lake Storage 2.** seçin. Devam'a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset1.png)
-1. **Delimitedtext**öğesini seçin. Devam ' a tıklayın.
+1. **Delimitedtext**öğesini seçin. Devam'a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset2.png)
 1. Havuz veri kümenizi **MoviesSink**olarak adlandırın. Bağlı hizmet için 6. adımda oluşturduğunuz ADLS Gen2 bağlı hizmetini seçin. Verilerinizi yazmak için bir çıkış klasörü girin. Bu öğreticide, ' Sample-Data ' kapsayıcısının ' output ' klasörüne yazıyoruz. Klasörün önceden var olması gerekmez ve dinamik olarak oluşturulabilir. **İlk satırı üst bilgi olarak** ayarlayın ve **içeri aktarma şeması**için **hiçbiri** ' ni seçin. Son'a tıklayın.

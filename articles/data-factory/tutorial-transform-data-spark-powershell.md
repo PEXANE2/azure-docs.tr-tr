@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 06ec56e9e86069bd23a032aa289ea7391db04538
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 62e760da58eeff265e560d7cbc5dc044bf053de2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683288"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924949"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de Spark etkinliğini kullanarak verileri bulutta dönüştürme
 Bu öğreticide, Azure PowerShell kullanarak verileri Spark Etkinliği ve talep üzerine HDInsight bağlı hizmeti ile dönüştüren bir Data Factory işlem hattı oluşturacaksınız. Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
@@ -30,7 +29,7 @@ Bu öğreticide, Azure PowerShell kullanarak verileri Spark Etkinliği ve talep 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,7 +72,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ### <a name="upload-the-input-file"></a>Girdi dosyasını yükleme
 1. Bazı metinlerle **minecraftstory.txt** adlı bir dosya oluşturun. Spark programı bu metindeki sözcükleri sayar. 
-2. `inputfiles` klasöründe `spark` adlı bir alt klasör oluşturun. 
+2. `spark` klasöründe `inputfiles` adlı bir alt klasör oluşturun. 
 3. `minecraftstory.txt` dosyasını `inputfiles` alt klasörüne yükleyin. 
 
 ## <a name="author-linked-services"></a>Bağlı hizmetler oluşturma
@@ -329,7 +328,7 @@ JSON dosyalarında bağlı hizmet ve işlem hattı tanımları oluşturdunuz. Ş
     "failureType": ""
     "target": "MySparkActivity"
     ```
-4. Spark programının çıktısı ile adftutorial kapsayıcısının `outputfiles` klasöründe `spark` adlı bir klasörün oluşturulduğunu onaylayın. 
+4. Spark programının çıktısı ile adftutorial kapsayıcısının `spark` klasöründe `outputfiles` adlı bir klasörün oluşturulduğunu onaylayın. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

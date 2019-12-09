@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327002"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930679"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Öğretici: Bing Resim Arama API’si ve C# kullanarak görüntü ayrıntılarını ayıklama
 
@@ -26,7 +26,7 @@ Bing Resim Arama API'si aracılığıyla kullanılabilir olan birden çok [uç n
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
 > [!div class="checklist"]
-> * `/details` isteğinde Resim Arama `POST` uç noktasını kullanma
+> * `POST` isteğinde Resim Arama `/details` uç noktasını kullanma
 > * İstek için üst bilgileri belirtme
 > * Sonuçları belirtmek için URL parametrelerini kullanma
 > * Görüntü verilerini karşıya yükleme ve `POST` isteği gönderme
@@ -42,7 +42,7 @@ Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-ser
 
 ## <a name="construct-an-image-details-search-request"></a>Görüntü ayrıntıları arama isteği oluşturma
 
-Aşağıda, isteğin gövdesinde görüntü verilerinin yer aldığı POST isteklerini kabul eden `/details` uç noktası verilmiştir.
+Aşağıda, isteğin gövdesinde görüntü verilerinin yer aldığı POST isteklerini kabul eden `/details` uç noktası verilmiştir. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -63,7 +63,7 @@ Aşağıdakileri içeren JSON metnini almak için POST isteğinde `modules=All` 
 * `relatedSearches` - görüntüdeki ayrıntılara dayalı aramalar.
 * `visuallySimilarImages` - web üzerindeki benzer görüntüler.
 
-Yalnızca, görüntüdeki kişileri veya yerleri belirlemek için sonraki GET isteğinde kullanılabilecek `modules=RecognizedEntities` öğesini almak için POST isteğinde `imageInsightsToken` değerini belirtin.
+Yalnızca, görüntüdeki kişileri veya yerleri belirlemek için sonraki GET isteğinde kullanılabilecek `imageInsightsToken` öğesini almak için POST isteğinde `modules=RecognizedEntities` değerini belirtin.
 
 ## <a name="create-a-webclient-object-and-set-headers-for-the-api-request"></a>WebClient nesnesi oluşturma ve API isteği için üst bilgileri ayarlama
 
@@ -77,9 +77,9 @@ client.Headers["ContentType"] = "multipart/form-data";
 
 ## <a name="upload-the-image-and-display-the-results"></a>Görüntüyü karşıya yükleme ve sonuçları görüntüleme
 
-`WebClient` sınıfının `UpLoadFile()` yöntemi, `POST` öğesinin biçimlendirilmesi ve `RequestStream` çağrısı da dahil olmak üzere `HttpWebRequest` isteği için verileri biçimlendirir.
+`WebClient` sınıfının `UpLoadFile()` yöntemi, `RequestStream` öğesinin biçimlendirilmesi ve `HttpWebRequest` çağrısı da dahil olmak üzere `POST` isteği için verileri biçimlendirir.
 
-`WebClient.UpLoadFile()` uç noktası ve karşıya yüklenecek görüntü dosyası ile `/details` çağrısı yapın. `SearchResult` yapısı örneğini başlatmak ve yanıtı depolamak için JSON yanıtını kullanın.
+`/details` uç noktası ve karşıya yüklenecek görüntü dosyası ile `WebClient.UpLoadFile()` çağrısı yapın. `SearchResult` yapısı örneğini başlatmak ve yanıtı depolamak için JSON yanıtını kullanın.
 
 ```javascript        
 const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/images/details";
@@ -98,7 +98,7 @@ Bu JSON yanıtı daha sonra konsola yazdırılabilir.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>İstekte görüntü öngörüleri belirtecini kullanma
 
-`ImageInsightsToken` sonuçlarıyla birlikte döndürülen `POST` öğesini kullanmak için bunu bir `GET` isteğine ekleyebilirsiniz. Örneğin:
+`POST` sonuçlarıyla birlikte döndürülen `ImageInsightsToken` öğesini kullanmak için bunu bir `GET` isteğine ekleyebilirsiniz. Örnek:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2

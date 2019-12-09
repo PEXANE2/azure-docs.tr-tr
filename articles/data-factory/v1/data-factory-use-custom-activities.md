@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703317"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927947"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -100,7 +99,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
 ### <a name="procedure"></a>Yordam
 1. **.NET sınıf kitaplığı** projesi oluşturun.
    <ol type="a">
-     <li>Visual Studio 'Yu başlatın.</li>
+     <li>Visual Studio'yu başlatın.</li>
      <li><b>Dosya</b>’ya tıklayın, <b>Yeni</b>’nin üzerine gelin ve <b>Proje</b>’ye tıklayın.</li>
      <li><b>Şablonlar</b>’ı genişletin ve <b>Visual C#</b> seçeneğini belirleyin. Bu kılavuzda kullanın C#, ancak özel etkinlik geliştirmek için herhangi bir .net dili kullanabilirsiniz.</li>
      <li>Sağ taraftaki proje türleri listesinden <b>sınıf kitaplığı</b> ' nı seçin. Visual Studio 'da <b>Sınıf Kitaplığı ' nı (.NET Framework)</b> seçin </li>
@@ -367,7 +366,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     ```
 
     Calculate yöntemi giriş dosyalarında Microsoft anahtar sözcük örneklerinin sayısını hesaplar (klasördeki Bloblar). Arama terimi ("Microsoft") kodda sabit kodlanmış.
-10. Projeyi derleyin. Menüden **Oluştur** ' a tıklayın ve **çözüm oluştur**' a tıklayın.
+10. Projeyi derle. Menüden **Oluştur** ' a tıklayın ve **çözüm oluştur**' a tıklayın.
 
     > [!IMPORTANT]
     > .NET Framework 4.5.2 sürümünü projeniz için hedef çerçeve olarak ayarlayın: projeye sağ tıklayın ve **Özellikler** ' e tıklayarak hedef Framework 'ü ayarlayın. Data Factory, 4.5.2 ' den sonraki sürümlere .NET Framework göre derlenen özel etkinlikleri desteklemez.

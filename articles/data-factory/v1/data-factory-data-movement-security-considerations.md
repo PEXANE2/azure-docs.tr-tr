@@ -4,27 +4,26 @@ description: Azure Data Factory veri hareketini güvenli hale getirme hakkında 
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 467ba9f36dbcd44c5b8d87ee2f20d178d62d9732
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682633"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930824"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory için veri taşıma güvenliği konuları](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 Bu makalede, veri taşıma hizmetlerinin Azure Data Factory verileri güvenli hale getirmek için kullandığı temel güvenlik altyapısı açıklanır. Azure Data Factory yönetim kaynakları Azure güvenlik altyapısına kurulmuştur ve Azure tarafından sunulan tüm olası güvenlik önlemlerini kullanır.
 
 Bir Data Factory çözümünde bir veya daha fazla [işlem hattı](data-factory-create-pipelines.md) oluşturursunuz. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. Bu işlem hatları, Data Factory 'nin oluşturulduğu bölgede bulunur. 
@@ -34,7 +33,7 @@ Data Factory yalnızca **Batı ABD**, **Doğu ABD**ve **Kuzey Avrupa** bölgeler
 Azure Data Factory kendisi, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Veri hareketini [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) arasında, verilerin işlenmesini de başka bölgelerde veya şirket içi bir ortamda [işlem hizmetleri](data-factory-compute-linked-services.md) kullanarak düzenlemek için veri temelinde iş akışları oluşturmanızı sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
 
 Azure Data Factory kullanarak veri taşıma için **sertifikalıdır** :
--   [HıPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
+-   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
 -   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA YıLDıZı](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
@@ -95,7 +94,7 @@ Karma senaryolar, Veri Yönetimi ağ geçidinin şirket içi bir ağa veya bir s
 - Azure portalından/kopyalama sihirbazından HTTPS aracılığıyla **düz metin** (daha az güvenli) kullanma. Kimlik bilgileri, şirket içi ağ geçidine düz metin olarak geçirilir.
 - **Kopyalama sihirbazından JavaScript şifreleme kitaplığı 'nı**kullanma.
 - **Tıklama tabanlı kimlik bilgileri Yöneticisi uygulamasını**kullanma. Bir kez tıklama uygulaması, ağ geçidine erişimi olan şirket içi makinede yürütülür ve veri deposunun kimlik bilgilerini ayarlar. Bu seçenek ve bir sonraki seçenek en güvenli seçeneklerdir. Kimlik bilgisi Yöneticisi uygulaması, varsayılan olarak güvenli iletişim için ağ geçidine sahip makinede 8050 numaralı bağlantı noktasını kullanır.  
-- Kimlik bilgilerini şifrelemek için [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 'ini kullanın. Cmdlet 'i, kimlik bilgilerini şifrelemek için kullanılacak ağ geçidinin yapılandırıldığı sertifikayı kullanır. Bu cmdlet tarafından döndürülen şifrelenmiş kimlik bilgilerini kullanabilir ve bunu [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 'iyle veya içindeki JSON kod PARÇACıĞıNDA kullandığınız JSON **kimlik bilgileri** öğesine **ekleyebilirsiniz.** Portalda düzenleyici Data Factory. Bu seçenek ve tek tıklama uygulaması en güvenli seçeneklerdir. 
+- Kimlik bilgilerini şifrelemek için [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 'ini kullanın. Cmdlet 'i, kimlik bilgilerini şifrelemek için kullanılacak ağ geçidinin yapılandırıldığı sertifikayı kullanır. Bu cmdlet tarafından döndürülen şifrelenmiş kimlik bilgilerini kullanabilir ve bunu [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 'i Ile kullandığınız JSON dosyasındaki **ya da PORTALDAKI** Data Factory düzenleyicisinde JSON **kod öğesine ekleyebilirsiniz** . Bu seçenek ve tek tıklama uygulaması en güvenli seçeneklerdir. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript şifreleme kitaplığı tabanlı şifreleme
 [Kopyalama sihirbazından](data-factory-copy-wizard.md) [JavaScript şifreleme kitaplığı](https://www.microsoft.com/download/details.aspx?id=52439) 'nı kullanarak veri deposu kimlik bilgilerini şifreleyebilirsiniz. Bu seçeneği belirlediğinizde, kopyalama Sihirbazı ağ geçidinin ortak anahtarını alır ve veri deposu kimlik bilgilerini şifrelemek için kullanır. Kimlik bilgilerinin ağ geçidi makinesi tarafından şifresi çözülür ve Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx)tarafından korunur.
@@ -114,8 +113,8 @@ Karma senaryolar, Veri Yönetimi ağ geçidinin şirket içi bir ağa veya bir s
   
 | Ağ Geçidi sürümü (oluşturma sırasında) | Depolanan kimlik bilgileri | Kimlik bilgisi şifreleme/güvenlik | 
 | --------------------------------- | ------------------ | --------- |  
-| < = 2.3. xxxx. x | Bulutta | Sertifika kullanılarak şifrelendi (kimlik bilgileri Yöneticisi uygulamasının kullandığı bilgisayardan farklı) | 
-| > = 2,4. xxxx. x | Şirket içi | DPAPI aracılığıyla güvenli hale getirilir | 
+| < = 2.3.xxxx.x | Bulutta | Sertifika kullanılarak şifrelendi (kimlik bilgileri Yöneticisi uygulamasının kullandığı bilgisayardan farklı) | 
+| > = 2.4.xxxx.x | Şirket içi | DPAPI aracılığıyla güvenli hale getirilir | 
   
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme

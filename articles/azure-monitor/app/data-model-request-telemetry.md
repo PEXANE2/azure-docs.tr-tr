@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Telemetri veri modeli-Istek telemetrisi | Microsoft Docs
+title: İstek telemetrisi için veri modeli-Azure Application Insights
 description: İstek telemetrisi için veri modeli Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,18 +8,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677321"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928830"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>İstek telemetrisi: Application Insights veri modeli
 
-İstek telemetrisi öğesi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), uygulamanıza yönelik bir dış istek tarafından tetiklenen mantıksal yürütme dizisini temsil eder. Her istek yürütmesi benzersiz `ID` ve tüm yürütme parametrelerini içeren `url` tanımlanır. İstekleri mantıksal `name` göre gruplandırabilir ve bu isteğin `source` belirleyebilirsiniz. Kod yürütme `success` veya `fail` ve belirli bir `duration` sahip olabilir. Hem başarı hem de hata yürütmeleri `resultCode` tarafından daha fazla gruplandırılabilir. Zarf düzeyinde tanımlanan istek telemetrisi için başlangıç zamanı.
+İstek telemetrisi öğesi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), uygulamanıza yönelik bir dış istek tarafından tetiklenen mantıksal yürütme dizisini temsil eder. Her istek yürütmesi benzersiz `ID` ve tüm yürütme parametrelerini içeren `url` tanımlanır. İstekleri mantıksal `name` göre gruplandırabilir ve bu isteğin `source` belirleyebilirsiniz. Kod yürütme `success` veya `fail` ve belirli bir `duration`sahip olabilir. Hem başarı hem de hata yürütmeleri `resultCode`tarafından daha fazla gruplandırılabilir. Zarf düzeyinde tanımlanan istek telemetrisi için başlangıç zamanı.
 
-İstek telemetrisi, özel `properties` ve `measurements` kullanarak standart genişletilebilirlik modelini destekler.
+İstek telemetrisi, özel `properties` ve `measurements`kullanarak standart genişletilebilirlik modelini destekler.
 
 ## <a name="name"></a>Adı
 
@@ -61,9 +61,9 @@ Maksimum Uzunluk: 1024 karakter
 
 Başarılı veya başarısız çağrı göstergesi. Bu alan gereklidir. Açıkça `false` olarak ayarlanmamışsa, istek başarılı olduğu kabul edilir. İşlem özel durum tarafından kesintiye uğrarsa veya hata sonucu kodu döndürdüğünden, bu değeri `false` olarak ayarlayın.
 
-Web uygulamaları için, yanıt kodu `400` veya `401` eşitse Application Insights başarılı olarak bir istek tanımlayın. Ancak, bu varsayılan eşlemenin uygulamanın anlam ile eşleşmemesi durumunda durumlar vardır. Yanıt kodu `404`, normal akışın bir parçası olabilecek "hiçbir kayıt yok" anlamına gelebilir. Aynı zamanda bozuk bir bağlantı olduğunu gösteriyor olabilir. Bozuk bağlantılar için daha gelişmiş mantık da uygulayabilirsiniz. Hatalı bağlantıları, yalnızca bu bağlantılar aynı sitede bulunduğunda, URL başvuran ' i çözümleyerek hatalara göre işaretleyebilirsiniz. Ya da şirketin mobil uygulamasından erişildiğinde bunları hatalara göre işaretleyin. Benzer şekilde `301` ve `302` yeniden yönlendirmeyi desteklemeyen istemciden erişildiğinde hata olduğunu gösterir.
+Web uygulamaları için, yanıt kodu `400` veya `401`eşitse Application Insights başarılı olarak bir istek tanımlayın. Ancak, bu varsayılan eşlemenin uygulamanın anlam ile eşleşmemesi durumunda durumlar vardır. Yanıt kodu `404`, normal akışın bir parçası olabilecek "hiçbir kayıt yok" anlamına gelebilir. Aynı zamanda bozuk bir bağlantı olduğunu gösteriyor olabilir. Bozuk bağlantılar için daha gelişmiş mantık da uygulayabilirsiniz. Hatalı bağlantıları, yalnızca bu bağlantılar aynı sitede bulunduğunda, URL başvuran ' i çözümleyerek hatalara göre işaretleyebilirsiniz. Ya da şirketin mobil uygulamasından erişildiğinde bunları hatalara göre işaretleyin. Benzer şekilde `301` ve `302` yeniden yönlendirmeyi desteklemeyen istemciden erişildiğinde hata olduğunu gösterir.
 
-Kısmen kabul edilen içerik `206`, genel bir isteğin bir başarısızlığını gösterebilir. Örneğin, Application Insights uç noktası tek bir istek olarak telemetri öğelerini toplu olarak alır. Toplu işteki bazı öğeler başarıyla işlenmediği zaman `206` döndürür. @No__t_0 hızının artırılması, araştırılması gereken bir sorunu gösterir. Benzer mantık, başarının ayrı yanıt kodlarının en kötü olabileceği `207` çok durum için geçerlidir.
+Kısmen kabul edilen içerik `206`, genel bir isteğin bir başarısızlığını gösterebilir. Örneğin, Application Insights uç noktası tek bir istek olarak telemetri öğelerini toplu olarak alır. Toplu işteki bazı öğeler başarıyla işlenmediği zaman `206` döndürür. `206` hızının artırılması, araştırılması gereken bir sorunu gösterir. Benzer mantık, başarının ayrı yanıt kodlarının en kötü olabileceği `207` çok durum için geçerlidir.
 
 İstek sonucu kodu ve durum kodu hakkında daha fazla bilgi için [blog gönderisine](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)erişebilirsiniz.
 

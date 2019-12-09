@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: cb3bb6a91c25298535cfba1107b85f200031a7d6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035908"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930001"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
@@ -38,10 +38,10 @@ Windows bilgisayarda SSH anahtarları oluşturma ve kullanma hakkında ek yollar
 
 SSH ortak ve özel anahtar dosyaları oluşturmak için `ssh-keygen` komutunu kullanın. Varsayılan olarak, bu dosyalar ~/PST SSH dizininde oluşturulur. Özel anahtar dosyasına erişmek için farklı bir konum ve isteğe bağlı bir parola (*parola*) belirtebilirsiniz. Verilen konumda aynı ada sahip bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır.
 
-Aşağıdaki komut RSA şifrelemesini ve 2048 bit uzunluğunu kullanarak bir SSH anahtar çifti oluşturur:
+Aşağıdaki komut RSA şifrelemesini ve 4096 bit uzunluğunu kullanarak bir SSH anahtar çifti oluşturur:
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 [Az VM Create](/cli/azure/vm#az-vm-create) komutuyla VM 'nizi oluşturmak IÇIN [Azure CLI](/cli/azure) kullanıyorsanız, isteğe bağlı olarak `--generate-ssh-keys` seçeneğini kullanarak SSH ortak ve özel anahtar dosyaları oluşturabilirsiniz. Anahtar dosyalar, `--ssh-dest-key-path` seçeneği ile aksi belirtilmedikçe ~/PST dizininde depolanır. `--generate-ssh-keys` seçeneği, var olan anahtar dosyalarının üzerine yazmaz, bunun yerine bir hata döndürüyor. Aşağıdaki komutta, *VMName* ve *RgName* değerlerini kendi değerlerinizle değiştirin:

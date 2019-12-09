@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 6884c8f1bf7a462b5d93f5c9ea23a2f64021fd9e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328501"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925176"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
@@ -22,7 +22,7 @@ Bu makalede, Azure işlevlerinde ısınma tetikleyicisiyle nasıl çalışılaca
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
+## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
 [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet paketi, sürüm **3.0.5 veya üzeri** gereklidir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub deposunda bulunur. 
 
@@ -80,7 +80,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 
 İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+İşte *function.json* dosyası:
 
 ```json
 {
@@ -94,7 +94,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 `HttpRequest`bağlanan C# betik kodu aşağıda verilmiştir:
 
@@ -111,7 +111,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 
 İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+İşte *function.json* dosyası:
 
 ```json
 {
@@ -125,7 +125,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -142,7 +142,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 
 İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+İşte *function.json* dosyası:
 
 ```json
 {
@@ -156,7 +156,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 }
 ```
 
-[Yapılandırma](#trigger---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#trigger---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 Python kodu aşağıda verilmiştir:
 
@@ -175,7 +175,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında bir ısınma tetikleyicisi
 
 İşleviniz ```warmup``` (büyük/küçük harf duyarsız) olarak adlandırılmalıdır ve uygulama başına yalnızca bir ısınma işlevi olabilir.
 
-İşte *function. JSON* dosyası:
+İşte *function.json* dosyası:
 
 ```json
 {
@@ -241,13 +241,13 @@ Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 ## <a name="trigger---configuration"></a>Tetikleyici - yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `WarmupTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `WarmupTrigger` özniteliği.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-| **type** | yok| Gerekli-`warmupTrigger`olarak ayarlanmalıdır. |
-| **direction** | yok| Gerekli-`in`olarak ayarlanmalıdır. |
-| **ada** | yok| Required-işlev kodunda kullanılan değişken adı.|
+| **type** | Yok| Gerekli-`warmupTrigger`olarak ayarlanmalıdır. |
+| **direction** | Yok| Gerekli-`in`olarak ayarlanmalıdır. |
+| **Adı** | Yok| Required-işlev kodunda kullanılan değişken adı.|
 
 ## <a name="trigger---usage"></a>Tetikleyici - kullanım
 

@@ -1,5 +1,5 @@
 ---
-title: Yeniden yönlendirme URI/yanıt URL 'SI kısıtlamaları ve sınırlamalar-Microsoft Identity platform
+title: Yeniden yönlendirme URI & Yanıt URL 'SI kısıtlamaları-Microsoft Identity platform | Mavisi
 description: Yanıt URL 'Leri/yeniden yönlendirme URL kısıtlamaları & sınırlamaları
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bfc13c1057f74fb1eb5a41210ffaf166e69bb06e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389591"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920336"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
 
@@ -36,14 +36,14 @@ Aşağıdaki tabloda, uygulamanızı kaydettiğinizde ekleyebileceğiniz en fazl
 Bir uygulama kaydına eklediğiniz her bir yeniden yönlendirme URI 'SI için en fazla 256 karakter kullanabilirsiniz.
 
 ## <a name="supported-schemes"></a>Desteklenen düzenler
-Azure AD uygulama modeli, Microsoft iş veya okul hesaplarında herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısında oturum açmasını sağlayan uygulamalar için hem HTTP hem de HTTPS düzenlerini destekler. Uygulama bildirimindeki `signInAudience` alanı *Azureadmyorg* veya *Azureadmultipleorgs*olarak ayarlanır. Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açılan uygulamalar (`signInAudience` ' ı *Azureadandpersonmicrosoftaccount*olarak ayarlanmıştır) yalnızca https şemasına izin verilir.
+Azure AD uygulama modeli, Microsoft iş veya okul hesaplarında herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısında oturum açmasını sağlayan uygulamalar için hem HTTP hem de HTTPS düzenlerini destekler. Uygulama bildirimindeki `signInAudience` alanı *Azureadmyorg* veya *Azureadmultipleorgs*olarak ayarlanmıştır. Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açmak için (`signInAudience` *Azureadandpersonmicrosoftaccount*olarak ayarlanmıştır) yalnızca https şemasına izin verilir.
 
 > [!NOTE]
 > Yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimi, geliştiricilerin kullanıcı arabiriminde http düzenine sahip URI 'leri eklemesine izin vermez. İş veya okul hesaplarında oturum açma uygulamaları için HTTP URI 'Leri eklemek yalnızca uygulama bildirimi Düzenleyicisi aracılığıyla desteklenir. İleri giderek, yeni uygulamalar yeniden yönlendirme URI 'sinde HTTP şemaları kullanamaz. Ancak, yeniden yönlendirme URI 'Lerinde HTTP şemaları içeren eski uygulamalar çalışmaya devam edecektir. Geliştiricilerin yeniden yönlendirme URI 'Lerinde HTTPS şemaları kullanması gerekir.
 
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>URI 'Ler içinde bir joker karakter kullanan kısıtlamalar
 
-@No__t-0 gibi joker karakter URI 'Leri kullanışlıdır, ancak kaçınılmalıdır. Yeniden yönlendirme URI 'sinde joker karakter kullanılması güvenlik etkilerine sahiptir. OAuth 2,0 belirtimine göre ([RFC 6749 ' nin Bölüm 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), bir yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır. 
+`https://*.contoso.com`gibi joker karakter URI 'Leri kullanışlıdır, ancak kaçınılmalıdır. Yeniden yönlendirme URI 'sinde joker karakter kullanılması güvenlik etkilerine sahiptir. OAuth 2,0 belirtimine göre ([RFC 6749 ' nin Bölüm 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), bir yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır. 
 
 Azure AD uygulama modeli, kişisel Microsoft hesaplarında ve iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerini desteklemez. Ancak, günümüzde bir kuruluşun Azure AD kiracısında iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerinde izin verilir. 
  

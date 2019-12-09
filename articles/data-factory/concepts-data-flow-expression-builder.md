@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory eşleme veri akışı Ifade Oluşturucusu
+title: Eşleme veri akışı Ifade Oluşturucusu
 description: Azure Data Factory eşleme veri akışları için Ifade Oluşturucusu
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672260"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928348"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Eşleme veri akışı Ifade Oluşturucusu
 
@@ -27,7 +28,7 @@ Ifade Oluşturucu aracı varsayılan olarak metin düzenleyici seçeneğini beli
 
 ## <a name="build-schemas-in-output-schema-pane"></a>Çıktı şeması bölmesinde şema oluşturma
 
-![Karmaşık sütun Ekle](media/data-flow/complexcolumn.png "Sütun Ekle")
+![Karmaşık sütun Ekle](media/data-flow/complexcolumn.png "Sütun ekleme")
 
 Sol taraftaki çıktı şeması bölmesinde, değiştirdiğiniz ve şemanıza eklemekte olduğunuz sütunları görürsünüz. Etkileşimli olarak basit ve karmaşık veri yapıları oluşturabilirsiniz. "Sütun Ekle" öğesini kullanarak ek alanlar ekleyin ve "alt sütun Ekle" öğesini kullanarak hiyerarşileri oluşturun.
 
@@ -51,7 +52,17 @@ Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak ifadeleriniz
 
 ![Açıklamalar](media/data-flow/comments.png "Yorumlar")
 
-## <a name="regular-expressions"></a>Normal Ifadeler
+## <a name="string-interpolation"></a>Dize ilişkilendirme
+
+Değişmez dize metnini ifadelerle birlikte tırnak içine almak için çift tırnak işareti kullanın. İfade işlevleri, sütunlar ve parametreler ekleyebilirsiniz. Bu, sorgu dizelerine parametreler dahil edildiğinde dize bitişinin kapsamlı bir şekilde kullanılmasını önlemek için çok yararlıdır.
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
+
+## <a name="regular-expressions"></a>Normal İfadeler
 
 Azure Data Factory veri akışı ifade dili, [burada tam başvuru belgeleri](https://aka.ms/dataflowexpressions), normal ifade söz dizimini içeren işlevleri sunar. Normal ifade işlevleri kullanılırken, Ifade Oluşturucusu ters eğik çizgiyi (\\) bir kaçış karakter sırası olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex ' ı (\`) içine alın ya da çift ters eğik çizgi kullanın.
 

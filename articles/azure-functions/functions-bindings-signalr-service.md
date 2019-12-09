@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786342"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925637"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
 
@@ -18,7 +18,7 @@ Bu makalede, Azure Işlevleri 'nde SignalR hizmeti bağlamaları kullanılarak [
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Paketler-Işlevler 2. x
+## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
 
 SignalR hizmeti bağlamaları [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet paketi, sürüm 1. * içinde verilmiştir. Paketin kaynak kodu, [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub deposunda bulunur.
 
@@ -106,7 +106,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SignalR bağlantı b
 }
 ```
 
-JavaScript kodu aşağıda verilmiştir:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -236,7 +236,7 @@ Bağlama [ifadesi](./functions-bindings-expressions-patterns.md)kullanarak, bağ
 }
 ```
 
-JavaScript kodu aşağıda verilmiştir:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -377,7 +377,7 @@ public static Task Run(
 }
 ```
 
-JavaScript kodu aşağıda verilmiştir:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -507,7 +507,7 @@ public static Task Run(
 }
 ```
 
-JavaScript kodu aşağıda verilmiştir:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -642,7 +642,7 @@ public static Task Run(
 }
 ```
 
-JavaScript kodu aşağıda verilmiştir:
+JavaScript kod aşağıdaki gibidir:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -705,7 +705,7 @@ public SignalRMessage sendMessage(
 
 ---
 
-### <a name="group-management"></a>Grup Yönetimi
+### <a name="group-management"></a>Grup yönetimi
 
 SignalR hizmeti kullanıcıların gruplara eklenmesine izin verir. İletiler daha sonra bir gruba gönderilebilir. Kullanıcının grup üyeliğini yönetmek için `SignalR` çıkış bağlamayı kullanabilirsiniz.
 
@@ -1007,28 +1007,28 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>Signalrconnectionınfo
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalRConnectionInfo` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `SignalRConnectionInfo` özniteliği.
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**|| `signalRConnectionInfo`olarak ayarlanmalıdır.|
-|**direction**|| `in`olarak ayarlanmalıdır.|
-|**ada**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
+|**type**|| Ayarlanmalıdır `signalRConnectionInfo`.|
+|**direction**|| Ayarlanmalıdır `in`.|
+|**Adı**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
-|**UserID**|**UserID**| İsteğe bağlı: erişim anahtarı belirtecinde ayarlanacak Kullanıcı tanımlayıcı talebinin değeri. |
-|**connectionStringSetting**|**ConnectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
+|**userId**|**UserID**| İsteğe bağlı: erişim anahtarı belirtecinde ayarlanacak Kullanıcı tanımlayıcı talebinin değeri. |
+|**connectionStringSetting**|**connectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
 
 ### <a name="signalr"></a>SignalR
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `SignalR` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `SignalR` özniteliği.
 
-|function. JSON özelliği | Öznitelik özelliği |Açıklama|
+|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type**|| `signalR`olarak ayarlanmalıdır.|
-|**direction**|| `out`olarak ayarlanmalıdır.|
-|**ada**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
+|**type**|| Ayarlanmalıdır `signalR`.|
+|**direction**|| Ayarlanmalıdır `out`.|
+|**Adı**|| Bağlantı bilgisi nesnesi için işlev kodunda kullanılan değişken adı. |
 |**hubName**|**HubName**| Bu değer, bağlantı bilgilerinin oluşturulduğu SignalR hub 'ının adına ayarlanmalıdır.|
-|**connectionStringSetting**|**ConnectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
+|**connectionStringSetting**|**connectionStringSetting**| SignalR hizmeti bağlantı dizesini içeren uygulama ayarının adı (varsayılan olarak "AzureSignalRConnectionString" olarak belirlenmiştir) |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

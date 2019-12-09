@@ -8,36 +8,36 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ffd9e54c0f39b4256dbc83a336328797a8b53c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a050ce62f745591608249b41ba56992d8fd35204
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608402"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935789"
 ---
-## <a name="register-extensions"></a>Uzantılarını kaydetme
+## <a name="register-extensions"></a>Uzantıları Kaydet
 
-Bağlamaları hariç olmak üzere HTTP ve Zamanlayıcı Tetikleyicileri, İşlevler çalışma zamanı sürüm 2.x uzantı paketleri uygulanır. Sürüm 2.x Azure işlevleri çalışma zamanı, sahip, işlevlerde kullanılan bağlama türleri için uzantıları açıkça kaydedilecek. Bu HTTP bağlamaları ve uzantılar gerektirmeyen Zamanlayıcı Tetikleyicileri özel durumlardır.
+HTTP ve Zamanlayıcı Tetikleyicileri hariç olmak üzere, çalışma zamanı sürüm 2. x ve üzeri içindeki Işlev bağlamaları uzantı paketleri olarak uygulanır. Azure Işlevleri çalışma zamanının 2. x ve sonraki sürümlerinde, işlevleriniz içinde kullanılan bağlama türleri için uzantıları açıkça kaydetmeniz gerekir. Bunun özel durumları, uzantılar gerektirmeyen HTTP bağlamaları ve Zamanlayıcı tetikleyiclarıdır.
 
-Bağlama uzantıları'nı tek başına yüklemeyi seçebilirsiniz veya bir uzantı paketi başvurusu host.json proje dosyasına ekleyebilirsiniz. Uzantı paketleri birden çok bağlama türleri kullanırken paket uyumluluk sorunlarına sahip olma olasılığını kaldırır. Bağlama uzantılarını kaydetme için önerilen yaklaşımdır. Uzantı paketleri de .NET Core yükleme gereksinimini kaldırır 2.x SDK. 
+Bağlama uzantılarını ayrı ayrı yüklemeyi seçebilir veya Host. JSON proje dosyasına Uzantı paketi başvurusu ekleyebilirsiniz. Uzantı demeti, birden çok bağlama türü kullanırken paket uyumluluk sorunları olma olasılığını ortadan kaldırır. Bağlama uzantılarını kaydetmek için önerilen yaklaşımdır. Uzantı paketleri de .NET Core 2. x SDK yükleme gereksinimini ortadan kaldırır. 
 
-### <a name="extension-bundles"></a>Uzantı paketleri
+### <a name="extension-bundles"></a>Uzantı demeti
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-Daha fazla bilgi için bkz. [kaydetme Azure işlevleri bağlama uzantıları](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Bağlamaları functions.json dosyaya eklemeden önce uzantı paketleri için host.json eklemeniz gerekir.
+Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Functions. JSON dosyasına bağlama eklemeden önce, Host. JSON öğesine uzantı paketleri eklemeniz gerekir.
 
-### <a name="register-individual-extensions"></a>Tek tek uzantılarını kaydetme
+### <a name="register-individual-extensions"></a>Tek tek uzantıları Kaydet
 
-Bir paket halinde olmayan uzantıları yüklemeniz gerekiyorsa, özel bağlamalar için ayrı bir uzantı paketleri el ile kaydedebilirsiniz. 
+Bir paket içinde olmayan uzantıları yüklemeniz gerekiyorsa, belirli bağlamalar için bağımsız uzantı paketleri el ile kaydedebilirsiniz. 
 
 > [!NOTE]
-> El ile uzantıları kullanarak kaydetmek için `func extensions install`, .NET Core olmalıdır 2.x SDK'sı yüklü.
+> `func extensions install`kullanarak uzantıları el ile kaydetmek için .NET Core 2. x SDK 'sının yüklü olması gerekir.
 
-Güncelleştirdikten sonra *function.json* dosyasını proje klasöründe aşağıdaki komutu çalıştırın, işlevinizi gereken tüm bağlamaları içerecek şekilde.
+İşlevinizin ihtiyaç duyacağı tüm bağlamaları dahil etmek için *function. JSON* dosyanızı güncelleştirdikten sonra proje klasöründe aşağıdaki komutu çalıştırın.
 
 ```bash
 func extensions install
 ```
 
-Komut okur *function.json* ihtiyacınız paketler görmek için bir dosya yükler ve uzantıları projesi oluşturur. Geçerli sürümde yeni bağlamalar ekler, ancak var olan bağlamaları güncelleştirmez. Kullanım `--force` yenilerini yüklerken mevcut bağlamaları en son sürüme güncelleştirmek için seçeneği.
+Komut, hangi paketlere ihtiyacınız olduğunu görmek için *function. JSON* dosyasını okur, bunları yüklerse ve uzantılar projesini yeniden oluşturur. Geçerli sürümde yeni bağlamalar ekler ancak mevcut bağlamaları güncelleştirmez. Yeni yenilerini yüklerken mevcut bağlamaları en son sürüme güncelleştirmek için `--force` seçeneğini kullanın.

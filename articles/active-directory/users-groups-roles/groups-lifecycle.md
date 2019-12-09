@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024780"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914068"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -62,7 +62,7 @@ Aşağıda, Azure AD 'de Office 365 grupları için süre sonu yapılandırıp k
 
 Rol | İzinler
 -------- | --------
-Genel yönetici veya Kullanıcı Yöneticisi | Office 365 grupları süre sonu ilke ayarlarını oluşturabilir, okuyabilir, güncelleştirebilir veya silebilir<br>Herhangi bir Office 365 grubunu yenileyebilirler
+Genel yönetici, Grup Yöneticisi veya Kullanıcı Yöneticisi | Office 365 grupları süre sonu ilke ayarlarını oluşturabilir, okuyabilir, güncelleştirebilir veya silebilir<br>Herhangi bir Office 365 grubunu yenileyebilirler
 Kullanıcı | Sahip oldukları bir Office 365 grubunu yenileyebilirler<br>Sahip oldukları Office 365 grubunu geri yükleyebilir<br>Süre sonu ilke ayarlarını okuyabilir
 
 Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azure Active Directory silinen Office 365 grubunu geri yükleme](groups-restore-deleted.md)bölümüne bakın.
@@ -175,11 +175,11 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
 İlkeyi daha ayrıntılı şekilde yapılandırmak için aşağıdaki cmdlet 'ler kullanılabilir. Daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
-- New-AzureADMSGroupLifecyclePolicy
+- Yeni-AzureADMSGroupLifecyclePolicy
 - Get-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
-- Add-AzureADMSLifecyclePolicyGroup
+- Ekle-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
 - Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup

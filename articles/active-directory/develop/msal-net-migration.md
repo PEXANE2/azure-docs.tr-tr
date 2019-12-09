@@ -3,27 +3,23 @@ title: MSAL.NET 'e geçiş
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ve .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET) ve MSAL.NET 'e geçiş arasındaki farklar hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5059acea753b4b8b7db80bfc79b4bb9718e0484e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175566"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915665"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
@@ -123,10 +119,10 @@ Tüm izin verilmez, MSAL.NET ve v 2.0 uç noktasında henüz desteklenmez. Aşa�
 
 Masaüstü ve mobil uygulamalar için ADAL.NET ve MSAL.NET içinde desteklenen izin verir
 
-Semantiği | ADAL.NET | MSAL.NET
+İzin Ver | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Etkileşimli | [Etkileşimli kimlik doğrulaması](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [MSAL.NET içinde belirteçleri etkileşimli olarak alma](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
-Tümleşik Windows kimlik doğrulaması | [Windows üzerinde tümleşik kimlik doğrulaması (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Tümleşik Windows kimlik doğrulaması](msal-authentication-flows.md#integrated-windows-authentication)
+Tümleşik Windows Kimlik Doğrulaması | [Windows üzerinde tümleşik kimlik doğrulaması (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Tümleşik Windows Kimlik Doğrulaması](msal-authentication-flows.md#integrated-windows-authentication)
 Kullanıcı adı/parola | [Kullanıcı adı ve parola ile belirteçler alınıyor](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [Kullanıcı adı parola kimlik doğrulaması](msal-authentication-flows.md#usernamepassword)
 Cihaz kod akışı | [Web tarayıcıları olmayan cihazlar için cihaz profili](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [Cihaz kod akışı](msal-authentication-flows.md#device-code)
 
@@ -134,7 +130,7 @@ Cihaz kod akışı | [Web tarayıcıları olmayan cihazlar için cihaz profili](
 
 Web uygulamaları, Web API 'Leri ve Daemon uygulamaları için ADAL.NET ve MSAL.NET içinde desteklenen izin verir:
 
-Uygulama türü | Semantiği | ADAL.NET | MSAL.NET
+Uygulama türü | İzin Ver | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web uygulaması, Web API 'SI, Daemon | İstemci kimlik bilgileri | [ADAL.NET 'deki istemci kimlik bilgileri akışları](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Msal.net 'Deki istemci kimlik bilgileri akışları](msal-authentication-flows.md#client-credentials))
 Web API’si | Adına | [ADAL.NET ile Kullanıcı adına çağrı hizmeti](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET içindeki adına](msal-authentication-flows.md#on-behalf-of)

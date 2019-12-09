@@ -1,6 +1,5 @@
 ---
-title: Azure AD v 2.0 JavaScript tek sayfalı uygulama (SPA) destekli kurulum
-titleSuffix: Microsoft identity platform
+title: Microsoft Identity platform JavaScript tek sayfalı uygulama kılavuzu | Mavisi
 description: JavaScript SPA uygulamaları, Azure Active Directory v 2.0 uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilir
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802522"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919402"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -82,7 +81,7 @@ Bu kılavuz aşağıdaki kitaplığı kullanır:
 >
 > ### <a name="option-2-visual-studio"></a>Seçenek 2: Visual Studio
 > Visual Studio kullanıyorsanız ve yeni bir proje oluşturuyorsanız, şu adımları izleyin:
-> 1. Visual Studio 'da **dosya**  > **Yeni**  > **Proje**' yi seçin.
+> 1. Visual Studio'da **dosya** > **yeni** > **proje**.
 > 1. **Visual C#\Web** bölümünde **ASP.NET Web Uygulaması (.NET Framework)** girişini seçin.
 > 1. Uygulamanız için bir ad girin ve ardından **Tamam**' ı seçin.
 > 1. **Yeni ASP.NET Web uygulaması**altında **boş**' ı seçin.
@@ -331,7 +330,7 @@ Aşağıdaki kodu `<script></script>` etiketleri içinde `index.html` dosyanıza
 
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin.
+1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listeden **Web** platformunu seçin ve ardından değeri Web sunucunuza bağlı olan uygulama URL 'si olarak ayarlayın.
 
@@ -353,7 +352,7 @@ Aşağıdaki kodu `<script></script>` etiketleri içinde `index.html` dosyanıza
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>Visual Studio için yeniden yönlendirme URL 'SI ayarlama
 > Visual Studio için yeniden yönlendirme URL 'sini almak için aşağıdaki adımları izleyin:
-> 1. Çözüm Gezgini, projeyi seçin.
+> 1. Çözüm Gezgini'nde projeyi seçin.
 >
 >    **Özellikler** penceresi açılır. Değilse, F4 tuşuna basın.
 >
@@ -386,7 +385,7 @@ Aşağıdaki kodu `<script></script>` etiketleri içinde `index.html` dosyanıza
        - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
        - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin.
 
-## <a name="test-your-code"></a>Kodunuzu test etme
+## <a name="test-your-code"></a>Kodunuzu test edin
 
 Aşağıdaki ortamlardan birini kullanarak kodunuzu test edin.
 
@@ -406,7 +405,7 @@ Visual Studio kullanmıyorsanız, Web sunucunuzun başlatıldığından emin olu
 
 Visual Studio kullanıyorsanız, proje çözümünü seçin ve F5 tuşuna basarak projenizi çalıştırın. Tarayıcı, http://<span></span>localhost: {Port} konumu olarak açılır ve **oturum aç** düğmesi görünür olmalıdır.
 
-## <a name="test-your-application"></a>Uygulamanızı test etme
+## <a name="test-your-application"></a>Uygulamanızı test edin
 
 Tarayıcı *index. html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
 

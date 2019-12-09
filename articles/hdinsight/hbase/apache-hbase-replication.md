@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468418"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931505"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama
 
@@ -76,7 +76,7 @@ Ortamları ayarlamanıza yardımcı olması için bazı [Azure Resource Manager 
 | Alt ağ (ağ geçidi) adı | GatewaySubnet (değiştirilemez) |
 | Alt ağ (ağ geçidi) ön eki | 10.1.255.0/27 |
 | Ağ geçidi adı | vnet1gw |
-| Ağ Geçidi türü | VPN |
+| Geçit türü | VPN |
 | Ağ Geçidi VPN türü | RouteBased |
 | Ağ Geçidi SKU 'SU | Temel |
 | Ağ geçidi IP 'si | vnet1gwip |
@@ -93,7 +93,7 @@ Ortamları ayarlamanıza yardımcı olması için bazı [Azure Resource Manager 
 | Alt ağ (ağ geçidi) adı | GatewaySubnet (değiştirilemez) |
 | Alt ağ (ağ geçidi) ön eki | 10.2.255.0/27 |
 | Ağ geçidi adı | vnet2gw |
-| Ağ Geçidi türü | VPN |
+| Geçit türü | VPN |
 | Ağ Geçidi VPN türü | RouteBased |
 | Ağ Geçidi SKU 'SU | Temel |
 | Ağ geçidi IP 'si | vnet1gwip |
@@ -281,7 +281,7 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
 
 **Azure portal HBase çoğaltmasını etkinleştirmek için**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Kaynak HBase kümesini açın.
 3. Küme menüsünde **betik eylemleri**' ni seçin.
 4. Sayfanın üst kısmında **Yeni Gönder**' i seçin.
@@ -296,12 +296,14 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
     
       > [!NOTE]
       > Kaynak ve hedef küme DNS adı için FQDN yerine ana bilgisayar adı kullanın.
+      >
+      > Bu izlenecek yol, hn1 etkin bir yayın düğümü olarak kabul edilir. Etkin baş düğümünü belirlemek için lütfen kümenizi denetleyin.
 
 6. **Oluştur**'u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
 
 Gerekli bağımsız değişkenler:
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |----|-----------|
 |-s,--src-Cluster | Kaynak HBase kümesinin DNS adını belirtir. Örneğin:-s hbsrccluster,--src-Cluster = hbsrccluster |
 |-d,--DST-Cluster | Hedef (çoğaltma) HBase kümesinin DNS adını belirtir. Örneğin:-s dsthbcluster,--src-Cluster = dsthbcluster |
@@ -310,12 +312,12 @@ Gerekli bağımsız değişkenler:
 
 İsteğe bağlı bağımsız değişkenler:
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |----|-----------|
 |-su,--src-ambarı-Kullanıcı | Kaynak HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
 |-du,--DST-ambarı-Kullanıcı | Hedef HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
 |-t,--Table-List | Çoğaltılacak tabloları belirtir. Örneğin:--Table-List = "Table1; Table2; TABLE3". Tablo belirtmezseniz, var olan tüm HBase tabloları çoğaltılır.|
-|-ı,--makine | Betik eyleminin çalıştığı baş düğümü belirtir. Değer **hn0** veya **hn1** olur ve etkin baş düğüm olan temel alınarak seçilmelidir. HDInsight portalından veya Azure PowerShell betik eylemi olarak $0 betiğini çalıştırırken bu seçeneği kullanın.|
+|-ı,--makine | Betik eyleminin çalıştığı baş düğümü belirtir. Değer, etkin baş düğümü temel alınarak seçilmelidir. HDInsight portalından veya Azure PowerShell betik eylemi olarak $0 betiğini çalıştırırken bu seçeneği kullanın.|
 |-CP,-CopyData | Çoğaltmanın etkinleştirildiği tablolardaki mevcut verilerin geçişine izin vermez. |
 |-RPM,-Çoğalt-Phoenix-meta | Phoenix sistem tablolarında çoğaltmayı mümkün. <br><br>*Bu seçeneği dikkatli kullanın.* Bu betiği kullanmadan önce, çoğaltma kümelerinde Phoenix tablolarını yeniden oluşturmanızı öneririz. |
 |-h,--yardım | Kullanım bilgilerini görüntüler. |
@@ -363,7 +365,7 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 - **Belirli tabloları (test1, test2 ve test3) Şu anda düzenlenen tüm satırlar Için Kopyala (geçerli zaman damgası)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  veya
+  Veya
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 

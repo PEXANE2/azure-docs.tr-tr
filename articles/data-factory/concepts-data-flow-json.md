@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory veri akışını eşlemede JSON kullanma
+title: Eşleme veri akışında JSON
 description: Azure Data Factory eşleme veri akışı, Hiyerarşilerle JSON belgelerini işlemeye yönelik yerleşik yeteneklere sahiptir
 author: kromerm
 ms.author: makromer
 ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/30/2019
-ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 153c7a1003c68526c960644bebcc4800e92edc3c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387356"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928319"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Veri akışı JSON işlemesini eşleme
 
@@ -86,7 +87,7 @@ Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki
 
 Veri akışınızda kaynak olarak JSON veri kümesi kullanmak, beş ek ayar ayarlamanıza olanak sağlar. Bu ayarlar, **kaynak seçenekleri** sekmesindeki **JSON ayarları** Accordion altında bulunabilir.  
 
-![JSON ayarları](media/data-flow/json-settings.png "JSON ayarları")
+![JSON ayarları](media/data-flow/json-settings.png "JSON Ayarları")
 
 ### <a name="default"></a>Varsayılan
 
@@ -161,7 +162,7 @@ JSON verilerinde karakter kaçış için ters eğik çizgi kullanılırsa **tek 
 
 Daha yüksek sıralı bir işlev, bir veya daha fazla işlevi bağımsız değişken olarak alan bir işlevdir. Dizi işlemlerini etkinleştiren veri akışları eşlemesinde desteklenen daha yüksek sıralı işlevlerin listesi aşağıda verilmiştir.
 
-### <a name="filter"></a>filtreyle
+### <a name="filter"></a>filter
 Öğeleri, belirtilen koşulu karşılamayan dizinin dışına filtreler. Filtre, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
 #### <a name="examples"></a>Örnekler
@@ -189,7 +190,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-### <a name="sort"></a>Düzenine
+### <a name="sort"></a>sırala
 Belirtilen koşul işlevini kullanarak diziyi sıralar. Sıralama, #item1 ve #item2 olarak ifade işlevindeki birbirini izleyen iki öğeye bir başvuru bekliyor.
 
 #### <a name="examples"></a>Örnekler
@@ -201,7 +202,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-### <a name="contains"></a>vardır
+### <a name="contains"></a>içerir
 Belirtilen dizideki herhangi bir öğe, belirtilen koşulda doğru olarak değerlendiriliyorsa true değerini döndürür. Contains, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
 #### <a name="examples"></a>Örnekler

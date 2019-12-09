@@ -1,5 +1,5 @@
 ---
-title: Desteklenen hesap türlerine (Signınsıizleyici) göre doğrulama farklılıkları-Microsoft Identity platform/Azure Active Directory
+title: Hesap türüne göre doğrulama farklılıkları-Microsoft Identity platform | Mavisi
 description: Uygulamanızı Microsoft Identity platformu ile kaydederken desteklenen farklı hesap türleri için çeşitli özelliklerin doğrulama farklılıkları hakkında bilgi edinin.
 author: SureshJa
 ms.author: sureshja
@@ -11,16 +11,16 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bea6e3ea93e8b630970a8d86fc246eddaf3f56c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392611"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919367"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Desteklenen hesap türlerine (Signınaudience) göre doğrulama farklılıkları
 
-Bir uygulamayı geliştiriciler için Microsoft Identity platformu ile kaydederken, uygulamanızın desteklediği hesap türlerini seçmeniz istenir. Uygulama nesnesi ve bildiriminde, bu özellik `signInAudience` ' dır.
+Bir uygulamayı geliştiriciler için Microsoft Identity platformu ile kaydederken, uygulamanızın desteklediği hesap türlerini seçmeniz istenir. Uygulama nesnesi ve bildiriminde, bu özellik `signInAudience`.
 
 Seçenekler şunları içerir:
 
@@ -28,7 +28,7 @@ Seçenekler şunları içerir:
 - *Azureadmultipleorgs*: herhangi bir kuruluş dizinindeki (çok kiracılı) hesaplar
 - *Azureadandpersonmicrosoftaccount*: herhangi bir kurumsal dizin (çok kiracılı) ve kişisel Microsoft hesabı (örneğin, Skype, Xbox ve Outlook.com) hesapları
 
-Kayıtlı uygulamalar için, desteklenen hesap türleri için değeri bir uygulamanın **kimlik doğrulama** bölümünde bulabilirsiniz. Ayrıca, **bildirimde**`signInAudience` özelliği altında bulabilirsiniz.
+Kayıtlı uygulamalar için, desteklenen hesap türleri için değeri bir uygulamanın **kimlik doğrulama** bölümünde bulabilirsiniz. **Bildirimin**`signInAudience` özelliği altında de bulabilirsiniz.
 
 Bu özellik için seçtiğiniz değer diğer uygulama nesnesi özelliklerinde etkileri vardır. Sonuç olarak, bu özelliği değiştirirseniz, önce diğer özellikleri değiştirmeniz gerekebilir.
 
@@ -44,7 +44,7 @@ Desteklenen farklı hesap türleri için çeşitli özelliklerin doğrulama fark
 | Bu API tarafından tanımlanan kapsamlar (`oauth2Permissions`) | 120 karakterlik en büyük kapsam adı uzunluğu <br><br> Tanımlı kapsam sayısında sınır yok * | 120 karakterlik en büyük kapsam adı uzunluğu <br><br> Tanımlı kapsam sayısında sınır yok * |  40 karakterlik en büyük kapsam adı uzunluğu <br><br> Tanımlanan en fazla 100 kapsam | 
 | Yetkilendirilmiş istemci uygulamaları (`preautorizedApplications`) | Sınır yok * | Sınır yok * | Toplam 500 üst sınırı <br><br> En fazla 100 istemci uygulaması tanımlandı <br><br> İstemci başına tanımlanan en fazla 30 kapsam | 
 | appRoles | Desteklenen <br> Sınır yok * | Desteklenen <br> Sınır yok * | Desteklenmiyor | 
-| Oturum kapatma URL 'SI | http://localhost ' a izin verilir <br><br> En fazla 255 karakter uzunluğunda | http://localhost ' a izin verilir <br><br> En fazla 255 karakter uzunluğunda | <br><br> https://localhost ' a izin verilir, MSA için http://localhost başarısız olur <br><br> En fazla 255 karakter uzunluğunda <br><br> HTTP şemasına izin verilmiyor <br><br> Joker karakterler desteklenmiyor | 
+| Oturum Kapatma URL'si | http://localhost izin verilir <br><br> En fazla 255 karakter uzunluğunda | http://localhost izin verilir <br><br> En fazla 255 karakter uzunluğunda | <br><br> https://localhost izin veriliyor, MSA için http://localhost başarısız oluyor <br><br> En fazla 255 karakter uzunluğunda <br><br> HTTP şemasına izin verilmiyor <br><br> Joker karakterler desteklenmiyor | 
 
 \* Uygulama nesnesindeki tüm koleksiyon özellikleri üzerinde 1000 öğe hakkında genel bir limit vardır
 

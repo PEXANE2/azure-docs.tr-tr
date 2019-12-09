@@ -7,21 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685684"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923634"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage verileri SQL veri ambarı 'na yükleme
-Azure Data Lake Storage verileri Azure SQL veri ambarı 'na yüklemek için PolyBase dış tablolarını kullanın. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verileri SQL veri ambarı 'na aktarmayı öneririz.
+Bu kılavuzda, Azure SQL veri ambarı 'na Azure Data Lake Storage veri yüklemek için PolyBase dış tablolarının nasıl kullanılacağı özetlenmektedir. Data Lake Storage depolanan verilerde geçici sorgular çalıştırabilmenize karşın, en iyi performans için verileri SQL veri ambarı 'na aktarmayı öneririz. 
 
+> [!NOTE]  
+> Yükleme alternatifi Şu anda genel önizleme aşamasında olan [Copy deyimidir](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) . COPY ifadesiyle geri bildirim sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com.
+>
 > [!div class="checklist"]
+
 > * Data Lake Storage yüklemek için gereken veritabanı nesneleri oluşturun.
 > * Data Lake Storage dizinine bağlanın.
 > * Azure SQL veri ambarı 'na veri yükleme.
@@ -33,14 +37,13 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
-* Hizmetten hizmete kimlik doğrulaması için kullanılacak uygulamayı Azure Active Directory. Oluşturmak için [Active Directory kimlik doğrulamasını](../data-lake-store/data-lake-store-authenticate-using-active-directory.md) izleyin
-
 * Azure SQL veri ambarı. Bkz. [oluşturma ve sorgulama ve Azure SQL veri ambarı](create-data-warehouse-portal.md).
-
-* Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../data-lake-store/data-lake-store-get-started-portal.md). Bu depolama hesabında, yüklemek için aşağıdaki kimlik bilgilerinden birini yapılandırmanız veya belirtmeniz gerekir: depolama hesabı anahtarı, Azure dizin uygulama kullanıcısı veya depolama hesabına uygun RBAC rolüne sahip bir AAD kullanıcısı. 
 
 ##  <a name="create-a-credential"></a>Kimlik bilgisi oluşturma
-Data Lake Storage hesabınıza erişmek için, bir sonraki adımda kullanılan kimlik bilgisi gizli anahtarını şifrelemek üzere bir veritabanı ana anahtarı oluşturmanız gerekir. Daha sonra bir veritabanı kapsamlı kimlik bilgisi oluşturursunuz. Hizmet sorumlularını kullanarak kimlik doğrulaması yaparken, veritabanı kapsamlı kimlik bilgileri AAD 'de ayarlanan hizmet sorumlusu kimlik bilgilerini depolar. Depolama hesabı anahtarını, Gen2 için veritabanı kapsamlı kimlik bilgilerinde de kullanabilirsiniz. 
+Bu bölümü atlayabilir ve AAD geçişli geçiş kullanarak kimlik doğrularken "dış veri kaynağını oluşturma" işlemine geçebilirsiniz. AAD geçişi kullanılırken bir veritabanı kapsamlı kimlik bilgisinin oluşturulması veya belirtilmesi gerekmez, ancak AAD kullanıcılarınızın depolama hesabına uygun RBAC rolüne (Depolama Blobu veri okuyucusu, katkıda bulunanlar veya Owner rolü) sahip olduğundan emin olun. Daha fazla ayrıntı [burada](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)özetlenmiştir. 
+
+Data Lake Storage hesabınıza erişmek için, kimlik bilgileri gizli anahtarını şifrelemek üzere bir veritabanı ana anahtarı oluşturmanız gerekir. Daha sonra gizli dizinizi depolamak için bir veritabanı kapsamlı kimlik bilgisi oluşturursunuz. Hizmet sorumlularını (Azure Directory Uygulama kullanıcısı) kullanarak kimlik doğrulaması yaparken, veritabanı kapsamlı kimlik bilgileri AAD 'de ayarlanan hizmet sorumlusu kimlik bilgilerini depolar. Gen2 için depolama hesabı anahtarını depolamak üzere veritabanı kapsamlı kimlik bilgilerini de kullanabilirsiniz.
 
 Hizmet sorumlularını kullanarak Data Lake Storage bağlanmak için, **önce** bir Azure Active Directory uygulaması oluşturmanız, bir erişim anahtarı oluşturmanız ve uygulamaya Data Lake Storage hesabına erişim vermeniz gerekir. Yönergeler için bkz. [Active Directory kullanarak Azure Data Lake Storage kimlik doğrulama](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>Dış veri kaynağını oluşturma
-Verilerin konumunu depolamak için bu [dış VERI kaynağı oluştur](/sql/t-sql/statements/create-external-data-source-transact-sql) komutunu kullanın. 
+Verilerin konumunu depolamak için bu [dış VERI kaynağı oluştur](/sql/t-sql/statements/create-external-data-source-transact-sql) komutunu kullanın. AAD geçişiyle kimlik doğrulaması yapıyorsanız, KIMLIK BILGISI parametresi gerekli değildir. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -178,7 +181,7 @@ Data Lake Storage verileri yüklemek için [Create Table Select (Transact-SQL)](
 
 CTAS yeni bir tablo oluşturur ve bunu bir SELECT ifadesinin sonuçlarıyla doldurur. CTAS, yeni tabloyu SELECT ifadesinin sonuçlarıyla aynı sütunlara ve veri türlerine sahip olacak şekilde tanımlar. Dış tablodaki tüm sütunları seçerseniz, yeni tablo dış tablodaki sütunların ve veri türlerinin bir çoğaltmasıdır.
 
-Bu örnekte, dış TabloDimProduct_external DimProduct adlı bir karma dağıtılmış tablo oluşturacağız.
+Bu örnekte, dış Tablomızdan DimProduct adlı bir karma dağıtılmış tablo oluşturacağız DimProduct_external.
 
 ```sql
 
@@ -216,8 +219,8 @@ Bu öğreticide, Data Lake Storage 1. depolanan verilerin yapısını tanımlama
 
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
-> * Data Lake Storage 1. yüklemek için gereken veritabanı nesneleri oluşturuldu.
-> * Bir Data Lake Storage 1. dizinine bağlanıldı.
+> * Data Lake Storage yüklemek için gereken veritabanı nesneleri oluşturuldu.
+> * Bir Data Lake Storage dizinine bağlanıldı.
 > * Azure SQL veri ambarı 'na veri yüklendi.
 >
 

@@ -4,21 +4,20 @@ description: Azure Data Factory kopyalama etkinliğini kullanarak şirket içi D
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666595"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931779"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory kopyalama etkinliğini kullanarak DB2 verilerini taşıyın
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,7 +32,7 @@ Bu makalede, şirket içi bir DB2 veritabanından bir veri deposuna veri kopyala
 
 Data Factory Şu anda yalnızca bir DB2 veritabanından [desteklenen havuz veri deposuna](data-factory-data-movement-activities.md#supported-data-stores-and-formats)veri taşımayı destekliyor. Verileri diğer veri depolarından DB2 veritabanına taşıma desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Data Factory, [veri yönetimi ağ geçidini](data-factory-data-management-gateway.md)kullanarak ŞIRKET içi DB2 veritabanına bağlanmayı destekler. Verilerinizi taşımak için ağ geçidi veri işlem hattını ayarlamaya yönelik adım adım yönergeler için, [verileri Şirket içinden buluta taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesine bakın.
 
 DB2, Azure IaaS VM üzerinde barındırıldığında bile bir ağ geçidi gerekir. Ağ geçidini, veri deposuyla aynı IaaS sanal makinesine yükleyebilirsiniz. Ağ Geçidi veritabanına bağlanabilcan, ağ geçidini farklı bir VM 'ye yükleyebilirsiniz.
@@ -60,7 +59,7 @@ Data Factory DB2 Bağlayıcısı, dağıtılmış Ilişkisel veritabanı mimaris
 > - I için DB2 (AS400): bir Power User 'ın kopyalama etkinliğini çalıştırmadan önce normal kullanıcı için koleksiyon oluşturmasına Izin verin. Koleksiyonu oluşturmak için şu komutu kullanın: `create collection <username>`
 > - Z/OS veya LUW için DB2: yüksek ayrıcalıklı bir hesap kullanın--paket yetkilileri ve BIND, BINERDD olan bir Power User veya yönetici, kopyayı bir kez çalıştırmak için ortak izinlere yürütme IZNI verır. Gerekli paket, kopyalama sırasında otomatik olarak oluşturulur. Daha sonra, sonraki kopya çalışmalarınız için normal kullanıcıya dönebilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 Farklı araçlar ve API 'Ler kullanarak şirket içi DB2 veri deposundan veri taşımak için kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz: 
 
 - İşlem hattı oluşturmanın en kolay yolu Azure Data Factory kopyalama Sihirbazı ' nı kullanmaktır. Kopyalama Sihirbazı 'nı kullanarak bir işlem hattı oluşturmaya yönelik hızlı bir anlatım için, bkz [: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md). 
@@ -79,34 +78,34 @@ Aşağıdaki bölümlerde, bir DB2 veri deposuna özgü Data Factory varlıklar�
 ## <a name="db2-linked-service-properties"></a>DB2 bağlı hizmeti özellikleri
 Aşağıdaki tabloda, bir DB2 bağlantılı hizmetine özgü JSON özellikleri listelenmektedir.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| **type** |Bu özellik **OnPremisesDb2**olarak ayarlanmalıdır. |Evet |
-| **Server** |DB2 sunucusunun adı. |Evet |
-| **veritabanınızı** |DB2 veritabanının adı. |Evet |
+| **type** |Bu özellik **OnPremisesDb2**olarak ayarlanmalıdır. |Yes |
+| **Server** |DB2 sunucusunun adı. |Yes |
+| **veritabanınızı** |DB2 veritabanının adı. |Yes |
 | **manızı** |DB2 veritabanındaki şemanın adı. Bu özellik büyük/küçük harfe duyarlıdır. |Hayır |
-| **authenticationType** |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Evet |
-| **nitelen** |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı hesabının adı. |Hayır |
-| **parolayı** |Kullanıcı hesabının parolası. |Hayır |
-| **gatewayName** |Data Factory hizmetinin şirket içi DB2 veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| **authenticationType** |DB2 veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
+| **Kullanıcı adı** |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı hesabının adı. |Hayır |
+| **Parola** |Kullanıcı hesabının parolası. |Hayır |
+| **gatewayName** |Data Factory hizmetinin şirket içi DB2 veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Tüm veri kümesi türleri (Azure SQL, Azure Blob depolama, Azure Tablo depolama, vb.) için **Yapı**, **kullanılabilirlik**ve **ilke** gibi bölümler de benzerdir.
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. DB2 veri kümesini içeren **Relationaltable**türünde bir veri kümesinin **typeproperties** bölümü aşağıdaki özelliğe sahiptir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
 | **tableName** |DB2 veritabanı örneğindeki bağlı hizmetin başvurduğu tablonun adı. Bu özellik büyük/küçük harfe duyarlıdır. |Hayır ( **Relationalsource** türünde kopyalama etkinliğinin **sorgu** özelliği belirtilmişse) |
 
-## <a name="copy-activity-properties"></a>Kopyalama etkinliği özellikleri
+## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Kopyalama etkinliklerini tanımlamaya yönelik bölümlerin ve özelliklerin bir listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. **Ad**, **Açıklama**, **giriş** tablosu, **Çıkış** tablosu ve **ilke**gibi kopyalama etkinliği özellikleri tüm etkinlik türleri için kullanılabilir. Etkinliğin **Typeproperties** bölümünde kullanılabilen özellikler her etkinlik türü için farklılık gösterir. Kopyalama etkinliği için özellikler veri kaynağı ve havuz türlerine göre değişir.
 
 Kopyalama etkinliği için, kaynak **Relationalsource** (DB2 dahil) türünde olduğunda, **typeproperties** bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
-| **sorgulayamadı** |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin, `"query": "select * from "MySchema"."MyTable""` |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
+| **query** |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin, `"query": "select * from "MySchema"."MyTable""` |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
 
 > [!NOTE]
 > Şema ve tablo adları büyük/küçük harfe duyarlıdır. Sorgu ifadesinde, "" (çift tırnak) kullanarak özellik adlarını çevrelemek.
@@ -308,46 +307,46 @@ Kopyalama etkinliği verileri bir DB2 türünden .NET türüne dönüştürdüğ
 
 | DB2 veritabanı türü | .NET Framework türü |
 | --- | --- |
-| Small |Int16 |
+| Smallint |Int16 |
 | Tamsayı |Int32 |
 | BigInt |Int64 |
 | Real |Tek |
-| Çift |Çift |
-| Float |Çift |
-| Kategori |Kategori |
-| DecimalFloat |Kategori |
-| rakamlardan |Kategori |
-| Tarih |DateTime |
+| Double |Double |
+| Kayan |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Sayısal |Decimal |
+| Tarih |Tarih Saat |
 | Zaman |TimeSpan |
-| Zaman damgası |DateTime |
-| 'Sini |Byte [] |
-| Char |Dize |
+| Zaman damgası |Tarih Saat |
+| Xml |Byte[] |
+| char |Dize |
 | VarChar |Dize |
 | LongVarChar |Dize |
 | DB2DynArray |Dize |
-| ý |Byte [] |
-| Ikili |Byte [] |
-| LongVarBinary |Byte [] |
-| Sel |Dize |
+| Binary |Byte[] |
+| Ikili |Byte[] |
+| LongVarBinary |Byte[] |
+| Graphic |Dize |
 | VarGraphic |Dize |
 | LongVarGraphic |Dize |
 | CLOB |Dize |
-| Blob |Byte [] |
+| Blob |Byte[] |
 | DbClob |Dize |
-| Small |Int16 |
+| Smallint |Int16 |
 | Tamsayı |Int32 |
 | BigInt |Int64 |
 | Real |Tek |
-| Çift |Çift |
-| Float |Çift |
-| Kategori |Kategori |
-| DecimalFloat |Kategori |
-| rakamlardan |Kategori |
-| Tarih |DateTime |
+| Double |Double |
+| Kayan |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Sayısal |Decimal |
+| Tarih |Tarih Saat |
 | Zaman |TimeSpan |
-| Zaman damgası |DateTime |
-| 'Sini |Byte [] |
-| Char |Dize |
+| Zaman damgası |Tarih Saat |
+| Xml |Byte[] |
+| char |Dize |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
 Kaynak veri kümesindeki sütunların havuz veri kümesindeki sütunlara nasıl eşlendiğini öğrenmek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

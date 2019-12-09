@@ -1,5 +1,5 @@
 ---
-title: Web API 'Lerini çağıran mobil uygulama-uygulama için belirteç alma
+title: Mobil uygulamalarda Web API 'Lerini çağırmak için bir belirteç alın | Mavisi
 titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin (uygulama için belirteç alma)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803773"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919928"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Web API 'Lerini çağıran mobil uygulama-belirteç al
 
@@ -259,7 +259,7 @@ Protokolü doğrudan kullanmanızı önermiyoruz. Bunu yaparsanız uygulama, baz
 
 Mobil uygulamalar için belirteçleri almak üzere Protokolü kullandığınızda iki istek yapmanız gerekir: bir yetkilendirme kodu alın ve belirteç için Exchange 'i değiştirin.
 
-#### <a name="get-authorization-code"></a>Yetkilendirme kodunu al
+#### <a name="get-authorization-code"></a>Yetkilendirme kodunu alma
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

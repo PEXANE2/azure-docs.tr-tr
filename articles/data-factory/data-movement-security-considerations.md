@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory güvenlik konuları
+title: Güvenlikle ilgili dikkat edilmesi gerekenler
 description: Verilerinizin güvenliğini sağlamaya yardımcı olmak için Azure Data Factory veri taşıma hizmetlerinin kullandığı temel güvenlik altyapısını açıklar.
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/15/2018
-ms.author: abnarain
-ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675841"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927505"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory veri hareketine yönelik güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -46,7 +45,7 @@ Data Factory için sertifikalıdır:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HıPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alırsanız, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. Tüm Azure uyumluluk teklifleri onay https://aka.ms/AzureComplianceen son listesi için.
+Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alırsanız, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. Tüm Azure uyumluluk teklifleri onay https://aka.ms/AzureCompliance en son listesi için.
 
 Bu makalede, aşağıdaki iki veri taşıma senaryosunda güvenlik konularını gözden geçiririz: 
 
@@ -168,7 +167,7 @@ Aşağıdaki tabloda Windows Güvenlik Duvarı için gelen bağlantı noktası g
 
 | Gelen bağlantı noktaları | Açıklama                              |
 | ------------- | ---------------------------------------- |
-| 8060 (TCP)    | [Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleyin](encrypt-credentials-self-hosted-integration-runtime.md)ve kimlik bilgileri Yöneticisi uygulamasının şirket içinde barındırılan veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak üzere PowerShell şifreleme cmdlet 'i gerekir Tümleştirme çalışma zamanı. |
+| 8060 (TCP)    | [Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleme](encrypt-credentials-self-hosted-integration-runtime.md)ve kimlik bilgileri Yöneticisi uygulaması tarafından, şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde şirket içi veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak üzere PowerShell şifreleme cmdlet 'i gerekir. |
 
 ![Ağ Geçidi bağlantı noktası gereksinimleri](media/data-movement-security-considerations/gateway-port-requirements.png) 
 

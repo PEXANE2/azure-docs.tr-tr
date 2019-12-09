@@ -2,24 +2,24 @@
 title: Hadoop Hive etkinliğini kullanarak verileri dönüştürme
 description: Bir Azure Data Factory 'deki Hive etkinliğini isteğe bağlı/kendi HDInsight kümeniz üzerinde kullanarak Hive sorguları çalıştırmak için nasıl kullanabileceğinizi öğrenin.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 84c7ff8268934c771a056e41cd2bf484b8674302
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 01/15/2019
+ms.openlocfilehash: b4af3f897a12c71d73962735d3fe68d95f138cef
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893833"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912919"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop Hive etkinliğini kullanarak verileri dönüştürme
+
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-hive-activity.md)
 > * [Geçerli sürüm](transform-data-using-hadoop-hive.md)

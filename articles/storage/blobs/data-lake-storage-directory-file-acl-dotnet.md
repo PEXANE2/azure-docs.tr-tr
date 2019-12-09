@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a756518688b5b1f8b854165de69d3444b772eabc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534269"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931233"
 ---
 # <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. & ACL 'Leri için .NET kullanma (Önizleme)
 
@@ -32,7 +32,7 @@ Bu makalede, .NET kullanarak hiyerarşik ad alanı (HNS) etkinleştirilmiş depo
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-Başlamak için [Azure. Storage. Files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet paketini yükledikten sonra.
+Başlamak için [Azure. Storage. Files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet paketini yükledikten sonra.
 
 NuGet paketlerinin nasıl yükleneceğine ilişkin daha fazla bilgi için bkz. [NuGet Paket Yöneticisi 'ni kullanarak Visual Studio 'da paketleri yüklemek ve yönetmek](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
 
@@ -99,7 +99,7 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
+## <a name="rename-or-move-a-directory"></a>Bir dizini yeniden adlandırma veya taşıma
 
 **Directoryclient. RenameAsync** yöntemini çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 

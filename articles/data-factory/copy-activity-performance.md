@@ -1,32 +1,33 @@
 ---
-title: Azure Data Factory 'de etkinlik performansı ve ölçeklenebilirlik kılavuzunu kopyala
+title: Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
 description: Kopyalama etkinliğini kullandığınızda Azure Data Factory veri hareketinin performansını etkileyen anahtar faktörleri hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.author: jingwang
-ms.openlocfilehash: 701eaad8d36b352e946ae8d74204876b41ecb53d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678275"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927459"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
+
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-activity-performance.md)
 > * [Geçerli sürüm](copy-activity-performance.md)
 
 Data Lake veya kurumsal veri ambarından (EDW) Azure 'a büyük ölçekli veri geçişi gerçekleştirmek isteyip istemediğiniz ya da büyük veri analizi için farklı kaynaklardaki verileri Azure 'a dönüştürmek istiyorsanız, en iyi performansı elde etmek ve sorun.  Azure Data Factory, verileri ölçeklendirerek yüksek performanslı ve ölçeklenebilir veri alma işlem hatları oluşturmaya yönelik veri mühendislerine harika bir uyum sağlayan performans, esnek ve ekonomik bir mekanizma sağlar.
 
-Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
+Bu makaleyi okuduktan sonra aşağıdaki soruları yanıtlamak mümkün olacaktır:
 
 - Veri taşıma ve veri alma senaryolarında ADF kopyalama etkinliğini kullanarak ne düzeyde performans ve ölçeklenebilirlik elde edebilirim?
 
@@ -41,7 +42,7 @@ Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 
 ADF, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar ve bu sayede, ortamınız için veri taşıma aktarım hızını en üst düzeye çıkarmak amacıyla, geliştiricilerin ağ bant genişliğinizi ve depolama ıOPS ve bant genişliğini tamamen kullanmak üzere işlem hatları oluşturmalarına olanak tanır.  Bu, elde ettiğiniz aktarım hızı, kaynak veri deposu, hedef veri deposu ve kaynak ile hedef arasındaki ağ bant genişliği tarafından sunulan minimum aktarım hızını ölçerek tahmin edilebilecek bir anlamına gelir.  Aşağıdaki tabloda, ortamınız için veri boyutuna ve bant genişliği sınırına göre kopyalama süresi hesaplanır. 
 
-| Veri boyutu/ <br/> Bant genişliği | 50 Mbps    | 100 Mb/sn  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
+| Veri boyutu/ <br/> bant genişliği | 50 Mb/sn    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gb/sn  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
 | **1 GB**                    | 2,7 dk    | 1,4 dk   | 0,3 dk   | 0,1 dk  | 0,03 dk | 0,01 dk | 0,0 dk   |
 | **10 GB**                   | 27,3 dk   | 13,7 dk  | 2,7 dk   | 1,3 dk  | 0,3 dk  | 0,1 dk  | 0,03 dk  |
@@ -96,7 +97,7 @@ Kopyalama etkinliğiyle Azure Data Factory hizmetinizin performansını ayarlama
 
 3. **Birden çok kopyayı eşzamanlı olarak çalıştırarak toplam aktarım hızını en iyi duruma getirme:**
 
-   Tek bir kopyalama etkinliğinin performansını zaten kapladığınıza göre, ortamınız-ağ, kaynak veri deposu ve hedef veri deposu için üretilen iş üst limitlerine henüz ulaşırsanız, ADF kullanarak birden çok kopyalama etkinliğini paralel olarak çalıştırabilirsiniz [her döngü için](control-flow-for-each-activity.md)gibi denetim akışı yapıları.
+   Tek bir kopyalama etkinliğinin performansını zaten kapladığınıza göre, ortamınız-ağ, kaynak veri deposu ve hedef veri deposu Için üretilen iş üst limitlerine henüz ulaşmadıysanız, [her döngü için](control-flow-for-each-activity.md)gibi ADF denetim akış yapılarını kullanarak birden çok kopyalama etkinliğini paralel olarak çalıştırabilirsiniz.
 
 4. **Performans ayarlama ipuçları ve iyileştirme özellikleri.** Bazı durumlarda, Azure Data Factory bir kopyalama etkinliği çalıştırdığınızda, aşağıdaki örnekte gösterildiği gibi [kopyalama etkinliği izlemenin](copy-activity-overview.md#monitor-visually)üstünde "performans ayarlama ipuçları" iletisini görürsünüz. İleti size verilen kopya çalıştırması için tanımlanan performans sorunlarını söyler. Ayrıca, kopyalama aktarım hızını artırmak için nelerin değiştirileceği konusunda size rehberlik eder. Performans ayarlama ipuçları şu anda şu şekilde öneriler sunmaktadır:
 
@@ -114,7 +115,7 @@ Kopyalama etkinliğiyle Azure Data Factory hizmetinizin performansını ayarlama
 
    Ayrıca, aşağıdakiler göz önünde bulundurulması gereken bazı performans iyileştirme özellikleridir:
 
-   - [Paralel kopya](#parallel-copy)
+   - [Paralel kopyalama](#parallel-copy)
    - [Veri Tümleştirme Birimleri](#data-integration-units)
    - [Hazırlanmış kopya](#staged-copy)
    - [Şirket içinde barındırılan tümleştirme çalışma zamanı ölçeklenebilirliği](concepts-integration-runtime.md#self-hosted-integration-runtime)
@@ -125,7 +126,7 @@ Kopyalama etkinliğiyle Azure Data Factory hizmetinizin performansını ayarlama
 
 Azure Data Factory aşağıdaki performans iyileştirme özelliklerini sağlar:
 
-- [Paralel kopya](#parallel-copy)
+- [Paralel kopyalama](#parallel-copy)
 - [Veri Tümleştirme Birimleri](#data-integration-units)
 - [Hazırlanmış kopya](#staged-copy)
 
@@ -137,18 +138,18 @@ Veri tümleştirme birimi, Azure Data Factory içinde tek bir birimin gücünü 
 
 Kopyalama etkinliği çalıştırmasını güçlendiren izin verilen, **2 ile 256 arasındadır**. Belirtilmezse veya Kullanıcı arabiriminde "otomatik" seçeneğini belirlerseniz, kaynak havuzu çiftine ve veri düzenine göre en iyi DIU ayarını dinamik olarak uygulayın Data Factory. Aşağıdaki tabloda, farklı kopyalama senaryolarında kullanılan varsayılan değer listelenmiştir:
 
-| Kopyalama senaryosu | Hizmete göre belirlenen varsayılan değer |
+| Kopyalama senaryosu | Hizmet tarafından belirlenen varsayılan DIUs |
 |:--- |:--- |
-| Dosya tabanlı mağazalar arasında veri kopyalama | Dosyaların sayısına ve boyutuna bağlı olarak 4 ile 32 arasında |
+| Dosya tabanlı depoları arasında veri kopyalama | Dosyaların sayısına ve boyutuna bağlı olarak 4 ile 32 arasında |
 | Verileri Azure SQL veritabanı 'na veya Azure Cosmos DB kopyalama |Azure SQL veritabanı 'nın veya Cosmos DB katmanına bağlı olarak 4 ile 16 arasında (DTU sayısı/ru) |
 | Diğer tüm kopyalama senaryoları | 4 |
 
-Bu varsayılanı geçersiz kılmak için, **Dataıntegrationunits** özelliği için aşağıdaki gibi bir değer belirtin. Kopyalama işleminin çalışma zamanında kullandığı *gerçek sayı* , veri düzenlerinize bağlı olarak yapılandırılan değere eşit veya ondan daha az.
+Bu varsayılanı geçersiz kılmak için bir değer belirtin. **dataIntegrationUnits** özelliğini aşağıdaki gibi. *DIUs gerçek sayısını* eşit veya daha az, veri modelini bağlı olarak yapılandırılmış bir değeri, kopyalama işleminin çalışma zamanında kullanır.
 
 Bir etkinlik çalıştırmasını izlerken kopyalama etkinliği çıkışında her bir kopya için kullanılan orus 'yi görebilirsiniz. Daha fazla bilgi için bkz. [kopyalama etkinliği izleme](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Dörtten daha büyük bir ayar, şu anda yalnızca birden fazla dosyayı Azure Blob/ADLS 1./ADLS 2./Amazon S3/Google bulut depolama/bulut FTP/Cloud SFTP 'den veya bölüm-seçenek etkinleştirilmiş bulut ilişkisel veri deposundan (Oracle dahil) kopyaladığınızda geçerlidir. [ ](connector-oracle.md#oracle-as-source)diğer tüm bulut veri depolarına/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)).
+> Dörtten daha büyük bir ayar, şu anda yalnızca birden fazla dosyayı Azure Blob/ADLS 1./ADLS 2./Amazon S3/Google bulut depolama/bulut FTP/bulut SFTP 'den veya bölüm seçeneği etkinleştirilmiş bulut ilişkisel veri deposundan ( [Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)dahil) diğer bulut veri depolarına kopyaladığınızda geçerlidir.
 
 **Örnek:**
 
@@ -178,23 +179,23 @@ Kopyalama etkinliğinin kullanmasını istediğiniz paralellik belirtmek için *
 
 Her kopyalama etkinliği çalıştırması için Azure Data Factory, verileri kaynak veri deposundan ve hedef veri deposuna kopyalamak için kullanılacak paralel kopya sayısını belirler. Varsayılan paralel kopya sayısı, kullandığınız kaynak ve havuz türüne bağlıdır.
 
-| Kopyalama senaryosu | Hizmete göre belirlenen varsayılan paralel kopya sayısı |
+| Kopyalama senaryosu | Hizmet tarafından belirlenen varsayılan paralel kopya sayısı |
 | --- | --- |
-| Dosya tabanlı mağazalar arasında veri kopyalama |Dosyaların boyutuna ve iki bulut veri deposu arasında veri kopyalamak için kullanılan DIUs sayısının yanı sıra şirket içinde barındırılan tümleştirme çalışma zamanı makinesinin fiziksel yapılandırması da bağlıdır. |
+| Dosya tabanlı depoları arasında veri kopyalama |Dosyaların boyutuna ve iki bulut veri deposu arasında veri kopyalamak için kullanılan DIUs sayısının yanı sıra şirket içinde barındırılan tümleştirme çalışma zamanı makinesinin fiziksel yapılandırması da bağlıdır. |
 | Bölüm seçeneği etkinken ilişkisel veri deposundan kopyalama ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)dahil)|4 |
 | Tüm kaynak depolardan Azure Tablo depolamaya veri kopyalama |4 |
-| Diğer tüm kopyalama senaryoları |1 |
+| Tüm diğer kopyalama senaryolarında |1 |
 
 > [!TIP]
 > Dosya tabanlı mağazalar arasında veri kopyaladığınızda, varsayılan davranış genellikle en iyi performansı sağlar. Varsayılan davranış, kaynak dosya örüntüsünün temel alınarak otomatik olarak belirlenir.
 
-Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalama performansını ayarlamak için, varsayılan değeri geçersiz kılabilir ve **Parallelcopy** özelliği için bir değer belirtebilirsiniz. Değer 1 ' den büyük veya buna eşit bir tamsayı olmalıdır. Çalışma zamanında, en iyi performans için kopyalama etkinliği, ayarladığınız değerden küçük veya bu değere eşit bir değer kullanır.
+Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalama performansını ayarlamak için, varsayılan değeri geçersiz kılabilir ve **Parallelcopy** özelliği için bir değer belirtebilirsiniz. Büyük veya 1'e eşit bir tamsayı değeri olmalıdır. Çalışma zamanında, en iyi performans için kopyalama etkinliği, ayarladığınız değerden küçük veya bu değere eşit bir değer kullanır.
 
 **Şunlara işaret eder:**
 
-- Dosya tabanlı mağazalar arasında veri kopyaladığınızda **Parallelcopy** , dosya düzeyinde paralellik belirler. Tek bir dosya içindeki parçalama otomatik ve şeffaf bir şekilde gerçekleşir. Verileri paralel ve **paralelde**paralel olarak yüklemek için belirli bir kaynak veri deposu türü için en uygun öbek boyutunu kullanmak üzere tasarlanmıştır. Çalışma zamanında kopyalama işlemi için veri taşıma hizmeti 'nin kullandığı paralel kopyaların gerçek sayısı sahip olduğunuz dosya sayısından daha fazla değil. Kopyalama davranışı **Mergefile**ise, kopyalama etkinliği dosya düzeyinde paralellik özelliğinden yararlanamaz.
-- Dosya tabanlı olmayan mağazalardan ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Bağlayıcısı hariç) dosya tabanlı depolarda verileri kopyaladığınızda, bu veriler taşıma hizmeti **Parallelkopyaları** özelliğini yoksayar. Paralellik belirtilmiş olsa bile, bu durumda uygulanmaz.
-- **Parallelkopyaların** özelliği **dataıntegrationunits**öğesine göre belirlenir. İlki tüm veri tümleştirme birimleri genelinde sayılır.
+- Dosya tabanlı mağazalar arasında veri kopyaladığınızda **Parallelcopy** , dosya düzeyinde paralellik belirler. Tek bir dosya içindeki parçalama otomatik ve şeffaf bir şekilde gerçekleşir. Verileri paralel ve **paralelde**paralel olarak yüklemek için belirli bir kaynak veri deposu türü için en uygun öbek boyutunu kullanmak üzere tasarlanmıştır. Gerçek veri taşıma Hizmeti'nde kopyalama işleminin çalışma zamanında kullandığı paralel kopya sayısı sahip olduğunuz dosyaların sayısı, en fazla ' dir. Kopyalama davranışı **Mergefile**ise, kopyalama etkinliği dosya düzeyinde paralellik özelliğinden yararlanamaz.
+- Dosya tabanlı olmayan mağazalardan ( [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Bağlayıcısı hariç) dosya tabanlı depolarda verileri kopyaladığınızda, veri taşıma hizmeti **parallelkopyaları** özelliğini yoksayar. Paralellik belirtilmiş olsa bile, bu durumda uygulanmaz.
+- **Parallelkopyaların** özelliği **dataıntegrationunits**öğesine göre belirlenir. Önceki tüm veri tümleştirme birimlerinizde sayılır.
 - **Parallelkopyaları** özelliği için bir değer belirttiğinizde, kaynak ve havuz Veri depolarındaki yük artışını göz önünde bulundurun. Ayrıca, kopyalama etkinliği, karma kopya için, bu, örneğin, karma kopyaya karşı güç alıyorsa, şirket içinde barındırılan tümleştirme çalışma zamanına yönelik yük artışını de göz önünde bulundurun. Bu yük artışı, özellikle aynı veri deposunda çalışan aynı etkinliklerin birden çok etkinliğiniz veya eş zamanlı çalıştırmaları olduğunda gerçekleşir. Veri deposunun veya şirket içinde barındırılan tümleştirme çalışma zamanının yük ile azaldığını fark ederseniz, yükü ortadan kaldırmak için **Parallelkopyaların** değerini azaltın.
 
 **Örnek:**
@@ -221,15 +222,15 @@ Veri mağazalarınızı barındıran makinelerde yükü denetlemek veya kopyalam
 
 ### <a name="staged-copy"></a>Hazırlanmış kopya
 
-Bir kaynak veri deposundan bir havuz veri deposuna veri kopyaladığınızda, blob Storage 'ı geçici bir hazırlama deposu olarak kullanmayı tercih edebilirsiniz. Hazırlama, özellikle aşağıdaki durumlarda yararlı olur:
+Bir kaynak veri deposundan bir havuz veri deposuna veri kopyalama, geçici bir hazırlama deposu Blob depolamayı kullanmak seçebilirsiniz. Hazırlama aşağıdaki durumlarda kullanışlıdır:
 
-- **PolyBase aracılığıyla çeşitli veri depolarındaki verileri SQL veri ambarı 'na almak istiyorsunuz.** SQL veri ambarı, çok büyük miktarda veriyi SQL veri ambarı 'na yüklemek için PolyBase 'i yüksek hacimli bir mekanizma olarak kullanır. Kaynak verilerin blob depolaması veya Azure Data Lake Store olması ve ek ölçütlere uyması gerekir. BLOB depolama veya Azure Data Lake Store dışında bir veri deposundan veri yüklediğinizde, veri kopyalamayı, geçici hazırlama blob depolaması aracılığıyla etkinleştirebilirsiniz. Bu durumda Azure Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Daha sonra, verileri SQL veri ambarı 'na verimli bir şekilde yüklemek için PolyBase 'i kullanır. Daha fazla bilgi için bkz. [PolyBase ile Azure SQL Veri Ambarı’na veri yükleme](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **PolyBase aracılığıyla çeşitli veri depolarındaki verileri SQL veri ambarı 'na almak istiyorsunuz.** SQL veri ambarı PolyBase, SQL veri ambarı'na büyük miktarda veri yüklemek için yüksek performanslı mekanizması olarak kullanır. Kaynak verilerin blob depolaması veya Azure Data Lake Store olması ve ek ölçütlere uyması gerekir. Blob Depolama farklı bir veri deposu ya da Azure Data Lake Store veri yüklediğinizde, verileri geçici hazırlama Blob depolamaya kopyalama etkinleştirebilirsiniz. Bu durumda Azure Data Factory, PolyBase 'in gereksinimlerini karşıladığından emin olmak için gerekli veri dönüştürmelerini gerçekleştirir. Ardından verileri verimli bir şekilde SQL veri ambarı'na yüklemek için PolyBase kullanır. Daha fazla bilgi için [Azure SQL veri ambarı'na veri yüklemek için PolyBase kullanma](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 - **Bazen bir karma veri hareketini (yani, şirket içi veri deposundan bir bulut veri deposuna kopyalamak için) yavaş bir ağ bağlantısı üzerinden gerçekleştirme işlemi biraz zaman alır.** Performansı artırmak için, hazırlanan kopyayı, verileri bulutta hazırlama veri deposuna taşımak daha az zaman alması amacıyla Şirket içindeki verileri sıkıştırmak için kullanabilirsiniz. Daha sonra, hedef veri deposuna yüklemeden önce hazırlama deposundaki verileri açabilir.
-- **Şirket BT ilkeleri nedeniyle güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak istemezsiniz.** Örneğin, şirket içi bir veri deposundan verileri bir Azure SQL veritabanı havuzuna veya Azure SQL veri ambarı havuzuna kopyaladığınızda, hem Windows Güvenlik Duvarı hem de kurumsal güvenlik duvarınız için bağlantı noktası 1433 ' de giden TCP iletişimini etkinleştirmeniz gerekir. Bu senaryoda, hazırlanan kopya, ilk olarak şirket içinde barındırılan tümleştirme çalışma zamanından yararlanarak, önce verileri HTTP veya 443 numaralı bağlantı noktasında HTTP veya HTTPS üzerinden BLOB depolama hazırlama örneğine kopyalayabilir. Ardından, BLOB depolama alanı hazırlamadaki verileri SQL veritabanı veya SQL veri ambarı 'na yükleyebilir. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmeniz gerekmez.
+- **Şirket BT ilkeleri nedeniyle güvenlik duvarınızdaki bağlantı noktası 80 ve bağlantı noktası 443 dışındaki bağlantı noktalarını açmak istemezsiniz.** Örneğin, bir Azure SQL veritabanı havuz veya bir Azure SQL veri ambarı havuzu için bir şirket içi veri deposundan veri kopyaladığınızda, Windows Güvenlik Duvarı hem kurumsal güvenlik ağınızın 1433 numaralı bağlantı noktasında giden TCP iletişimine'ı etkinleştirmeniz gerekir. Bu senaryoda, hazırlanan kopya, ilk olarak şirket içinde barındırılan tümleştirme çalışma zamanından yararlanarak, önce verileri HTTP veya 443 numaralı bağlantı noktasında HTTP veya HTTPS üzerinden BLOB depolama hazırlama örneğine kopyalayabilir. Ardından, BLOB depolama alanı hazırlamadaki verileri SQL veritabanı veya SQL veri ambarı 'na yükleyebilir. Bu akışta 1433 numaralı bağlantı noktasını etkinleştirmek gerekmez.
 
-#### <a name="how-staged-copy-works"></a>Aşamalı kopya nasıl çalışacaktır?
+#### <a name="how-staged-copy-works"></a>Nasıl hazırlanmış kopya çalışır
 
-Hazırlama özelliğini etkinleştirdiğinizde, önce veriler kaynak veri deposundan hazırlama BLOB depolama alanına kopyalanır (kendinizinkini getirin). Ardından, veriler hazırlama veri deposundan havuz veri deposuna kopyalanır. Azure Data Factory, sizin için iki aşamalı akışı otomatik olarak yönetir. Azure Data Factory, veri taşıma işlemi tamamlandıktan sonra hazırlama depolamadan geçici verileri de temizler.
+Hazırlama özelliğini etkinleştirdiğinizde, ilk veriler kaynak veri deposundan hazırlama Blob depolama alanına kopyalanır (kendi işleyicinizi getirin). Ardından, veri hazırlama veri deposundan havuz veri deposuna kopyalanır. Azure Data Factory, sizin için iki aşamalı akışı otomatik olarak yönetir. Azure Data Factory, veri taşıma işlemi tamamlandıktan sonra hazırlama depolamadan geçici verileri de temizler.
 
 ![Hazırlanmış kopya](media/copy-activity-performance/staged-copy.png)
 
@@ -241,12 +242,12 @@ Veri hareketini bir hazırlama deposu kullanarak etkinleştirdiğinizde, veriler
 
 Hedef veri deposuna yüklemeden önce, verilerin blob depolamada hazırlanması isteyip istemediğinizi belirtmek için kopyalama etkinliğinde **Enablehazırlama** ayarını yapılandırın. **Enablehazırlama** `TRUE`olarak ayarladığınızda, aşağıdaki tabloda listelenen ek özellikleri belirtin. Ayrıca, yoksa, hazırlama için bir Azure depolama veya depolama paylaşılan erişim imzası ile bağlantılı hizmet oluşturmanız gerekir.
 
-| Özellik | Açıklama | Varsayılan değer | Gerekli |
+| Özellik | Açıklama | Varsayılan değer | Gereklidir |
 | --- | --- | --- | --- |
-| Enablehazırlama |Verileri bir geçici hazırlama deposu aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |False |Hayır |
-| linkedServiceName |Geçici hazırlama deposu olarak kullandığınız depolama örneğine başvuran bir [Azurestorage](connector-azure-blob-storage.md#linked-service-properties) Linked hizmetinin adını belirtin. <br/><br/> PolyBase aracılığıyla SQL veri ambarı 'na veri yüklemek için, paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **Enablehazırlama** true olarak ayarlandığında |
-| Yolun |Hazırlanan verileri içermesini istediğiniz BLOB depolama yolunu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca bir paylaşılan erişim imzasıyla depolama kullanırsanız veya geçici verilerin belirli bir konumda olmasını istiyorsanız bir yol belirtin. |Yok |Hayır |
-| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılmakta olan verilerin hacmini azaltır. |False |Hayır |
+| enableStaging |Veri deposunu hazırlama bir geçiş aracılığıyla kopyalamak isteyip istemediğinizi belirtin. |Yanlış |Hayır |
+| linkedServiceName |Adını bir [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) bağlı hizmeti, geçici bir hazırlama deposu kullanan depolama örneğine başvurur. <br/><br/> PolyBase aracılığıyla SQL veri ambarı 'na veri yüklemek için, paylaşılan erişim imzasıyla depolama kullanamazsınız. Diğer tüm senaryolarda kullanabilirsiniz. |Yok |Evet, **enableStaging** TRUE olarak ayarlayın |
+| yol |Hazırlanmış verinin içermesini istediğiniz Blob Depolama yolu belirtin. Bir yol sağlamazsanız, hizmet geçici verileri depolamak için bir kapsayıcı oluşturur. <br/><br/> Yalnızca depolama ile paylaşılan erişim imzası kullanın veya geçici veri belirli bir konumda olmasını gerektiren bir yol belirtin. |Yok |Hayır |
+| enableCompression |Verilerin hedefe kopyalanmadan önce sıkıştırılması gerekip gerekmediğini belirtir. Bu ayar, aktarılan veri hacmini azaltır. |Yanlış |Hayır |
 
 >[!NOTE]
 > Hazırlanan bir kopyayı sıkıştırma etkinken kullanırsanız, hazırlama blobu bağlı hizmeti için hizmet sorumlusu veya MSI kimlik doğrulaması desteklenmez.
@@ -281,7 +282,7 @@ Aşağıda, önceki tabloda açıklanan özelliklerle birlikte kopyalama etkinli
 ]
 ```
 
-#### <a name="staged-copy-billing-impact"></a>Hazırlanan kopya faturalandırma etkisi
+#### <a name="staged-copy-billing-impact"></a>Faturalama etkisi kopyalama hazırlandı
 
 İki adım temelinde ücretlendirilirsiniz: kopyalama süresi ve kopya türü.
 
@@ -302,6 +303,6 @@ Desteklenen bazı veri depoları için performans izleme ve ayarlama başvurular
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer kopyalama etkinliği makalelerine bakın:
 
-- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+- [Kopyalama etkinliği'ne genel bakış](copy-activity-overview.md)
 - [Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın](data-migration-guidance-overview.md)
 - [Amazon S3 'ten Azure Storage 'a veri geçirme](data-migration-guidance-s3-azure-storage.md)

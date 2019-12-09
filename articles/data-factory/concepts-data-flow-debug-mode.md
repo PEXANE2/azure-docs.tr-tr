@@ -1,22 +1,21 @@
 ---
-title: Azure Data Factory eşleme veri akışı hata ayıklama modu
+title: Eşleme veri akışı hata ayıklama modu
 description: Veri akışları oluştururken etkileşimli bir hata ayıklama oturumu başlatın
-author: kromerm
 ms.author: makromer
+author: kromerm
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 18848695327a374f12fbe5a34d03366b050d8b65
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387365"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928356"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
-
-
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -48,11 +47,11 @@ Veri akışınızda veya başvurulan veri kümelerinde parametrelere sahipseniz,
 
 ![Hata ayıklama ayarları parametreleri](media/data-flow/debug-settings2.png "Hata ayıklama ayarları parametreleri")
 
-## <a name="data-preview"></a>Veri önizleme
+## <a name="data-preview"></a>Veri önizlemesi
 
 Hata ayıklama tarihinde, veri Önizleme sekmesi alt panelde açılır. Üzerinde hata ayıklama modu olmadan veri akışı, Inceleme sekmesindeki dönüştürmelerinizin her birinin içindeki ve çıkan yalnızca geçerli meta verileri gösterir. Veri önizleme, yalnızca hata ayıklama ayarlarınızda sınırınız olarak ayarlamış olduğunuz satır sayısını sorgular. Veri önizlemeyi getirmek için **Yenile** ' ye tıklayın.
 
-![Veri önizleme](media/data-flow/datapreview.png "Veri önizleme")
+![Veri önizleme](media/data-flow/datapreview.png "Veri önizlemesi")
 
 > [!NOTE]
 > Dosya kaynakları, okunan satırları değil yalnızca gördüğünüz satırları sınırlar. Çok büyük veri kümelerinde, bu dosyanın küçük bir bölümünü almanız ve test etmeniz için kullanmanız önerilir. Dosya veri kümesi türü olan her kaynak için hata ayıklama ayarlarında geçici bir dosya seçebilirsiniz.

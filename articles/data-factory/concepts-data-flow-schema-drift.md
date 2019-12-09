@@ -1,18 +1,19 @@
 ---
-title: Veri akışı eşleme içinde şema kayması | Azure Data Factory
+title: Eşleme veri akışı 'nda şema kayması
 description: Şema kayması ile Azure Data Factory dayanıklı veri akışları oluşturun
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2019
-ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553703"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928550"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Eşleme veri akışı 'nda şema kayması
 

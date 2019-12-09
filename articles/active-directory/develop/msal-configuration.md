@@ -1,33 +1,29 @@
 ---
-title: Android Microsoft kimlik doğrulama kitaplığı (MSAL) yapılandırma dosyasını anlayın
+title: Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory bir uygulamanın yapılandırmasını temsil eden Android Microsoft kimlik doğrulama kitaplığı (MSAL) yapılandırma dosyasına genel bakış.
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803162"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916835"
 ---
-# <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Android Microsoft kimlik doğrulama kitaplığı (MSAL) yapılandırma dosyası
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
 
-MSAL, varsayılan yetkili, hangi yetkililerin kullanılacağı gibi şeyler için genel istemci uygulamanızın davranışını tanımlamak üzere özelleştirdiğiniz [varsayılan bir CONFIGURATION JSON dosyasıyla](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) birlikte gelir.
+Android Microsoft kimlik doğrulama kitaplığı (MSAL), varsayılan yetkili, hangi yetkililerin kullanılacağı gibi şeyler için genel istemci uygulamanızın davranışını tanımlamak üzere özelleştirdiğiniz [varsayılan bir CONFIGURATION JSON dosyası](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) ile birlikte gelir.
 
 Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tabanlı uygulamanızda kullanılacak yapılandırma dosyasını nasıl belirtdiğinize yardımcı olur.
 
@@ -48,7 +44,7 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 
 Uygulamanızı kaydettirdiğiniz sırada oluşturulan istemci KIMLIĞI veya uygulama KIMLIĞI.
 
-### <a name="redirect_uri"></a>isteğinde
+### <a name="redirect_uri"></a>redirect_uri
 
 Uygulamanızı kaydettirdiğiniz sırada kaydettiğiniz yeniden yönlendirme URI 'SI. Yeniden yönlendirme URI 'SI bir aracı uygulamasına ise, aracı uygulamanız için doğru yeniden yönlendirme URI 'SI biçimini kullandığınızdan emin olmak için [ortak istemci uygulamaları Için yeniden YÖNLENDIRME URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) 'sine bakın.
 
@@ -148,7 +144,7 @@ HTTP zaman aşımları için genel ayarları yapılandırın, örneğin:
 | `connect_timeout` | int | Hayır | Milisaniye cinsinden süre |
 | `read_timeout` | int | Hayır | Milisaniye cinsinden süre |
 
-### <a name="logging"></a>Açmak
+### <a name="logging"></a>günlüğe kaydetme
 
 Günlüğe kaydetme için aşağıdaki genel ayarlar verilmiştir:
 

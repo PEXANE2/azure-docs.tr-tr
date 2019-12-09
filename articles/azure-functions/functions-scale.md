@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebb2fcf0f626a82bcb5e6439183ba98c39c58588
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322914"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929725"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
@@ -44,9 +44,9 @@ Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırm
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
-Tüketim planını kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır. Bu sunucusuz plan otomatik olarak ölçeklendirilir ve yalnızca işlevleriniz çalışırken işlem kaynakları için ücretlendirilirsiniz. Tüketim planında, yapılandırılabilir bir süre sonra bir işlev yürütme zaman aşımına uğrar.
+Tüketim planını kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, gelen olayların sayısına göre dinamik olarak eklenir ve kaldırılır. Bu sunucusuz plan otomatik olarak ölçeklenir ve yalnızca işlevleriniz çalıştırıldığında işlem kaynakları için ücretlendirilirsiniz. Tüketim planında, yapılandırılabilir bir sürenin sonunda işlev yürütme zaman aşımına uğrar.
 
-Faturalandırma, yürütme süresi ve kullanılan bellek sayısını temel alır. Faturalandırma, bir işlev uygulaması içindeki tüm işlevler arasında toplanır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
+Fatura oluşturulurken yürütme sayısı, yürütme süresi ve kullanılan bellek temel alınır. Faturada, işlev uygulamasındaki tüm işlevler toplanır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
 
 Tüketim planı varsayılan barındırma plandır ve aşağıdaki avantajları sunar:
 
@@ -124,7 +124,7 @@ Bu komutun çıktısı `dynamic`olduğunda, işlev uygulamanız tüketim planın
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerini yönetme gibi işlemler için Azure Storage 'ı temel aldığından, ancak bazı depolama hesapları kuyrukları ve tabloları desteklemezler. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama **çoğaltması olan genel** amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması.
+Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerini yönetme gibi işlemler için Azure Storage 'ı temel aldığından, ancak bazı depolama hesapları kuyrukları ve tabloları desteklemezler. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama çoğaltması olan genel amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması oluşturduğunuzda mevcut **depolama hesabı** Seçimlerinizden filtrelenmiştir.
 
 İşlev uygulamanız tarafından kullanılan depolama hesabı, Tetikleyiciniz ve bağlamalarınız tarafından, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, depolama yoğun işlemler için ayrı bir depolama hesabı kullanmanız gerekir.   
 
@@ -142,7 +142,7 @@ Tüketim ve Premium planlarında, Azure Işlevleri altyapısı, işlevlerinin te
 
 Azure Işlevleri, olayların oranını izlemek ve ölçeğini genişletmek veya ölçeklendirmek için *Ölçek denetleyicisi* adlı bir bileşen kullanır. Ölçek denetleyicisi her tetikleyici türü için buluşsal yöntemler kullanır. Örneğin, bir Azure kuyruk depolama tetikleyicisi kullanırken, sıra uzunluğuna ve en eski sıra iletisinin yaşa göre ölçeklendirilir.
 
-Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulaması ölçeklenirse, Azure Işlevleri ana bilgisayarının birden çok örneğini çalıştırmak için ek kaynaklar ayrılır. Buna karşılık, işlem talebi azaltıldı, ölçek denetleyicisi işlev ana bilgisayar örneklerini kaldırır. İşlev uygulaması içinde hiçbir işlev çalışmadığı zaman örneklerin sayısı sonunda sıfıra ölçeklendirilir.
+Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulaması ölçeklenirse, Azure Işlevleri ana bilgisayarının birden çok örneğini çalıştırmak için ek kaynaklar ayrılır. Buna karşılık, işlem talebi azaltıldı, ölçek denetleyicisi işlev ana bilgisayar örneklerini kaldırır. İşlev uygulaması içinde hiçbir işlev çalışmadığı zaman örneklerin sayısı sonunda sıfıra *ölçeklendirilir* .
 
 ![Denetleyici izleme olaylarını ölçeklendirme ve örnek oluşturma](./media/functions-scale/central-listener.png)
 

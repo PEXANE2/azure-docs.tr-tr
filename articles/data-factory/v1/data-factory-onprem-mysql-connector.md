@@ -4,21 +4,20 @@ description: Azure Data Factory kullanarak MySQL veritabanından veri taşıma h
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666107"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928103"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'Ten veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -33,7 +32,7 @@ Bu makalede, verileri şirket içi bir MySQL veritabanından taşımak için Azu
 
 Şirket içi bir MySQL veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir MySQL veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından MySQL veri deposuna taşımamaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi MySQL kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
 MySQL veritabanı bir Azure IaaS sanal makinesinde (VM) barındırılıyorsa bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
@@ -47,11 +46,11 @@ MySQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, Veri Yönet
 > [!TIP]
 > "Uzak taraf aktarım akışını kapattığından" kimlik doğrulaması başarısız oldu. "hatasını alırsanız MySQL bağlayıcısını/NET 'i daha yüksek sürüme yükseltmeyi göz önünde bulundurun.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
 - İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
-- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için. 
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -63,26 +62,26 @@ Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (
 
 Aşağıdaki bölümler, bir MySQL veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 Aşağıdaki tabloda, MySQL bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Evet |
-| sunucu |MySQL sunucusunun adı. |Evet |
-| veritabanı |MySQL veritabanının adı. |Evet |
-| manızı |Veritabanındaki şemanın adı. |Hayır |
-| authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler: `Basic`. |Evet |
-| Nitelen |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Evet |
-| password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Evet |
-| gatewayName |Data Factory hizmetinin şirket içi MySQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| type |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Yes |
+| sunucu |MySQL sunucusunun adı. |Yes |
+| veritabanı |MySQL veritabanının adı. |Yes |
+| schema |Veritabanındaki şemanın adı. |Hayır |
+| authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: `Basic`. |Yes |
+| userName adı |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Yes |
+| password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Yes |
+| gatewayName |Data Factory hizmetinin şirket içi MySQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki veri kümesinin typeproperties bölümü (MySQL veri kümesini içerir) aşağıdaki özelliklere sahiptir
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
 | tableName |Bağlantılı hizmetin başvurduğu MySQL veritabanı örneğindeki tablonun adı. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
 
@@ -93,7 +92,7 @@ Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler h
 
 Copy etkinliğinin kaynağı **Relationalsource** (MySQL içeren) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| Özellik | Açıklama | İzin verilen değerler | Gereklidir |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
 
@@ -301,45 +300,45 @@ MySQL 'e veri taşırken aşağıdaki eşlemeler MySQL türlerinden .NET türler
 
 | MySQL veritabanı türü | .NET Framework türü |
 | --- | --- |
-| büyük tamsayı işaretsiz |Kategori |
+| büyük tamsayı işaretsiz |Decimal |
 | bigint |Int64 |
-| sürümleri |Kategori |
-| blob |Byte [] |
+| bit |Decimal |
+| blob |Byte[] |
 | bool |Boole |
-| Char |Dize |
-| date |Hem |
-| datetime |Hem |
-| decimal |Kategori |
-| çift duyarlık |Çift |
-| double |Çift |
-| yardımının |Dize |
+| char |Dize |
+| date |Datetime |
+| datetime |Datetime |
+| decimal |Decimal |
+| çift duyarlık |Double |
+| double |Double |
+| enum |Dize |
 | float |Tek |
 | int işaretsiz |Int64 |
 | int |Int32 |
 | tamsayı işaretsiz |Int64 |
 | integer |Int32 |
-| Long varbinary |Byte [] |
+| Long varbinary |Byte[] |
 | uzun varchar |Dize |
-| LONGBLOB |Byte [] |
-| LONGTEXT |Dize |
-| düz blob |Byte [] |
+| LONGBLOB |Byte[] |
+| longtext |Dize |
+| düz blob |Byte[] |
 | düz int işaretsiz |Int64 |
 | düz tamsayı |Int32 |
 | düz metin |Dize |
-| rakamlardan |Kategori |
-| gerçek |Çift |
+| numeric |Decimal |
+| real |Double |
 | set |Dize |
 | küçük tamsayı işaretsiz |Int32 |
 | smallint |Int16 |
 | metin |Dize |
 | time |TimeSpan |
-| timestamp |Hem |
-| tinyblob |Byte [] |
+| timestamp |Datetime |
+| tinyblob |Byte[] |
 | mini tamsayı imzasız |Int16 |
 | tinyint |Int16 |
 | tinytext |Dize |
 | varchar |Dize |
-| yıl |'Tir |
+| yıl |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
 Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).

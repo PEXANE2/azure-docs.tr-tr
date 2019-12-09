@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e8783d500ed7dd6e8e5d518d2a4fbe5e5e1e276
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305286"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926739"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -29,7 +29,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure Portal](https://portal.azure.com)’da oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 Yeni bir Linux sanal makinesi oluşturun: 
 
@@ -106,7 +106,7 @@ Artık Aracı, belirtilen giriş eklentilerinden her bir ölçüm toplayacak ve 
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Telegraf ölçümlerini Azure portal çizme 
 
-1. [Azure portalını](https://portal.azure.com) açın. 
+1. [Azure portalı](https://portal.azure.com) açın. 
 
 1. Yeni **izleyici** sekmesine gidin. Ardından **ölçümler**' i seçin.  
 

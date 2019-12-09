@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260908"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935799"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -24,7 +24,7 @@ ms.locfileid: "74260908"
     - Güneydoğu Asya
     - Kuzey Avrupa
     - Batı Avrupa
-    - Birleşik Krallık Güney 
+    - Birleşik Krallık, Güney 
 - Yalnızca kullanılabilirlik alanları ile kullanılabilir (bölge dışındaki kullanılabilirlik kümeleri ve tek VM dağıtımları, bir ultra disk iliştirebilme özelliğine sahip olmaz)
 - Yalnızca şu VM serisinde desteklenir:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
@@ -32,8 +32,8 @@ ms.locfileid: "74260908"
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Her VM boyutu, Ultra disklerle desteklenen her bölgede kullanılabilir değildir.
-- Yalnızca veri diskleri olarak kullanılabilir ve yalnızca 4k fiziksel sektör boyutunu destekler  
+- Her VM boyutu, tüm desteklenen bölgelerde Ultra disklerle kullanılamaz
+- Yalnızca veri diskleri olarak kullanılabilir ve yalnızca 4k fiziksel sektör boyutunu destekler. Ultra diskin 4K yerel sektör boyutu nedeniyle, Ultra disklerle uyumlu olmayacak bazı uygulamalar vardır. Oracle Database bir örnek, Ultra diskleri desteklemek için sürüm 12,2 veya sonraki bir sürümü gerektirir.  
 - Yalnızca boş disk olarak oluşturulabilir  
 - Disk anlık görüntülerini, VM görüntülerini, kullanılabilirlik kümelerini ve Azure disk şifrelemesini henüz desteklemez
 - Azure Backup veya Azure Site Recovery tümleştirmeyi henüz desteklemez

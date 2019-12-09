@@ -1,5 +1,5 @@
 ---
-title: Veri akışı eşleme özelliğinde bir havuz dönüştürmesi ayarlama
+title: Eşleme veri akışında bir havuz dönüştürmesi ayarlama
 description: Eşleme veri akışında bir havuz dönüştürmeyi ayarlamayı öğrenin.
 author: kromerm
 ms.author: makromer
@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217919"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930268"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Veri akışı için havuz dönüştürme
 
@@ -34,7 +34,7 @@ Azure Blob depolama veya Data Lake Storage havuz türleri için, dönüştürül
 
 ![En Iyileştirme sekmesindeki seçenekler](media/data-flow/opt001.png "havuz seçenekleri")
 
-## <a name="field-mapping"></a>Alan eşleme
+## <a name="field-mapping"></a>Alan eşlemesi
 Havuz dönüşümünüzün **eşleme** sekmesinde, sol taraftaki gelen sütunları sağ taraftaki hedeflere eşleyebilirsiniz. Veri akışlarını dosyalara havuza aldığınızda Data Factory her zaman bir klasöre yeni dosyalar yazar. Bir veritabanı veri kümesine eşlediğinizde, eklemek, güncelleştirmek, kaldırmak veya silmek için veritabanı tablosu işlem seçeneklerini tercih edersiniz.
 
 ![Eşleme sekmesi](media/data-flow/sink2.png "Yapma")

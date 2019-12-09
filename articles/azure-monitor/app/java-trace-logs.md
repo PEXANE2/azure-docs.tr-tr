@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Java izleme günlüklerini keşfet | Microsoft Docs
+title: Azure Application Insights Java izleme günlüklerini keşfet
 description: Application Insights 'de Log4J veya Logback izlemeleri ara
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784604"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927238"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
 İzleme için Logback veya Log4J (v 1.2 veya v 2.0) kullanıyorsanız, izleme günlüklerinizin otomatik olarak gönderilmesini ve bunları araştırıp araygeçirebileceğiniz Application Insights sağlayabilirsiniz.
@@ -77,7 +77,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     </dependencies>
 ```
 
-*Log4J v 2.0*
+*Log4J v2.0*
 
 ```XML
 
@@ -90,7 +90,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     </dependencies>
 ```
 
-*Log4J v 1.2*
+*Log4J v1.2*
 
 ```XML
 
@@ -115,13 +115,13 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v 2.0**
+**Log4J v2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v 1.2**
+**Log4J v1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -153,7 +153,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
     </root>
 ```
 
-*Log4J v 2.0*
+*Log4J v2.0*
 
 ```XML
 
@@ -169,7 +169,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
     </Configuration>
 ```
 
-*Log4J v 1.2*
+*Log4J v1.2*
 
 ```XML
 

@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory eşleme veri akışı dönüşümü seçme
+title: Eşleme veri akışı dönüşüm seçme
 description: Azure Data Factory eşleme veri akışı dönüşümü seçme
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387194"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930239"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Eşleme veri akışı dönüşüm seçme
 
@@ -41,7 +42,7 @@ Ayrıca, veri akışınızdan sütunları seçmek için bir yöntem olarak da ku
 > [!NOTE]
 > Eşleme kurallarını temizlemek için **Sıfırla** düğmesine basın.
 
-## <a name="mapping"></a>Eşlemeleri
+## <a name="mapping"></a>Eşleme
 Varsayılan olarak, select dönüşümü tüm sütunları otomatik olarak eşleştirir. Bu, tüm gelen sütunları çıktıda aynı ada geçirecek şekilde otomatik olarak eşler. Seçim ayarları 'nda ayarlanan çıkış akışı adı, akış için yeni bir diğer ad tanımlar. Otomatik eşleme için seçim kümesini tutarsanız, tüm akış için aynı olan tüm akışı aynı şekilde diğer ad olarak kullanabilirsiniz.
 
 ![Dönüşüm kurallarını seçin](media/data-flow/rule2.png "Kural tabanlı eşleme")

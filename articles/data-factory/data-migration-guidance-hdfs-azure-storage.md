@@ -1,23 +1,22 @@
 ---
-title: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma
+title: Şirket içi Hadoop kümesinden Azure depolama 'ya veri geçirme
 description: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory nasıl kullanacağınızı öğrenin.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675823"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931442"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -82,7 +81,7 @@ Bu görüntü, özel bir bağlantı üzerinden verilerin geçirilmesini gösteri
 - Bu mimaride, veriler Azure ExpressRoute aracılığıyla özel bir eşleme bağlantısı üzerinden geçirilir. Veriler, genel İnternet üzerinden hiçbir şekilde gezmez.
 - DistCp Aracı, Azure Storage sanal ağ uç noktası ile ExpressRoute özel eşlemesini desteklemez. Verileri geçirmek için tümleştirme çalışma zamanı aracılığıyla Data Factory yerel özelliğini kullanmanızı öneririz.
 - Bu mimari için, Data Factory şirket içinde barındırılan tümleştirme çalışma zamanını Azure sanal ağınızdaki bir Windows sanal makinesine yüklemelisiniz. Ağınızı ve depolama ıOPS veya bant genişliğinizi tam olarak kullanabilmeniz için sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye ölçeklendirebilirsiniz.
-- Her bir Azure VM için (Data Factory şirket içinde barındırılan tümleştirme çalışma zamanı yüklü) ile başlamak için önerilen yapılandırma, 32 vCPU ve 128 GB bellek ile Standard_D32s_v3. Veri geçişi sırasında VM 'nin CPU ve bellek kullanımını, daha iyi performans için sanal makineyi ölçeklendirmeniz gerekip gerekmediğini ve maliyeti azaltmak için VM 'nin ölçeğini azaltmayı seçebilirsiniz.
+- Her bir Azure VM için (Data Factory şirket içinde barındırılan tümleştirme çalışma zamanı yüklü olan) ile başlamak için önerilen yapılandırma, 32 vCPU ve 128 GB bellek ile Standard_D32s_v3. Veri geçişi sırasında VM 'nin CPU ve bellek kullanımını, daha iyi performans için sanal makineyi ölçeklendirmeniz gerekip gerekmediğini ve maliyeti azaltmak için VM 'nin ölçeğini azaltmayı seçebilirsiniz.
 - Ayrıca, tek bir şirket içinde barındırılan tümleştirme çalışma zamanına sahip dört VM düğümünü ilişkilendirerek da ölçeği genişletebilirsiniz. Şirket içinde barındırılan tümleştirme çalışma zamanına karşı çalışan tek bir kopyalama işi otomatik olarak dosya kümesini bölümlendirir ve dosyaları paralel olarak kopyalamak için tüm VM düğümlerini kullanır. Yüksek kullanılabilirlik için, veri geçişi sırasında tek noktadan oluşan bir senaryoyu önlemek üzere iki VM düğümü ile başlamanız önerilir.
 - Bu mimariyi kullandığınızda, ilk anlık görüntü veri geçişi ve Delta veri geçişi sizin için kullanılabilir.
 
@@ -140,7 +139,7 @@ Varsayımlarımıza göre tahmini fiyat aşağıda verilmiştir:
 
 ### <a name="additional-references"></a>Ek başvurular
 
-- [Bağlantı ucu Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
+- [HDFS Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
 - [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)

@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891788"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922283"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -38,9 +38,23 @@ Gerekli izinler | Bir güncelleştirmeyi uygulamak için gereken izinler için b
 Bu işlemden sonra, yayının sürüm numarası, "1.3. X. 0" içinde olduğu gibi küçük Yayın numarası konumunda bir "X" ile gösterilir. bu belgedeki sürüm notlarının, "1,3." ile başlayan tüm sürümler için geçerli olduğunu gösterir. Yayın işlemini sonuçlandırdıktan hemen sonra yayın sürümü numarası en son yayınlanan sürüme güncelleştirilir ve yayın durumu "indirme ve otomatik yükseltme için yayımlandı" olarak güncelleştirilir.
 Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir hale getirilmeyecektir. Sürüm durumu, bir yayının otomatik yükseltme veya yalnızca indirme için kullanılabilir duruma getirilmeyeceğini gösterir. Azure AD Connect sunucunuzda otomatik yükseltme etkinleştirildiyse, bu sunucu otomatik olarak yükseltme için yayınlanan en son Azure AD Connect sürümüne yükseltilir. Azure AD Connect yapılandırmalarının tümünün otomatik yükseltme için uygun olmadığına unutmayın. [Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) hakkında daha fazla bilgi için lütfen bu bağlantıyı izleyin
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>Yayın durumu
+12/6/2019: indirme için yayın. Otomatik yükseltme ile kullanılamaz.
+### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
+- Azure AD Domain Services için Parola karması eşitlemesini, Kerberos karmalarının doldurmaya yönelik doğru hesaba göre güncelleştirdik.  Bu, AAD 'den Azure AD Domain Services 'ye parola eşitleme sırasında bir performans geliştirmesi sağlar.
+- Kimlik doğrulama Aracısı ve Service Bus arasındaki güvenilir oturumlar için destek ekledik.
+- Bu sürüm, kimlik doğrulama Aracısı ve bulut hizmetleri arasındaki iletişim için TLS 1,2 zorlar.
+- Kimlik doğrulama Aracısı ve bulut hizmetleri arasında WebSocket bağlantıları için bir DNS önbelleği ekledik.
+- Aracı bağlantısını test etmek için belirli bir aracıyı buluttan hedefleyebilme özelliği ekledik.
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+- Release 1.4.18.0, DSSO PowerShell cmdlet 'inin PS çalıştırırken belirtilen yönetici kimlik bilgileri yerine Windows kimlik bilgilerini kullandığı bir hata yaşadı. Bunun sonucunda, AADConnect Kullanıcı arabirimi aracılığıyla birden çok ormanda DSSO 'yu etkinleştirmek mümkün değildir. 
+- AADConnect Kullanıcı arabirimi aracılığıyla tüm ormanlarda aynı anda DSSO 'yu etkinleştirmek için bir çözüm yapıldı
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Yayın durumu
-11/08/2019: indirilmek üzere yayınlandı. Otomatik yükseltme için kullanılamaz
+11/08/2019: indirilmek üzere yayınlandı. Otomatik yükseltme ile kullanılamaz.
 
 >[!IMPORTANT]
 >Bu Azure AD Connect sürümünde bir iç şema değişikliği nedeniyle, MSOnline PowerShell kullanarak ADFS güven ilişkisi yapılandırma ayarlarını yönetiyorsanız, MSOnline PowerShell modülünüzü 1.1.183.57 veya üzeri sürümüne güncelleştirmeniz gerekir

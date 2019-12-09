@@ -1,32 +1,28 @@
 ---
-title: Sayfa yeniden yüklemeden kaçının (JavaScript için Microsoft kimlik doğrulama kitaplığı)
+title: Sayfa yeniden yüklemeden kaçının (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak belirteçleri sessizce alırken sayfa yeniden yüklemeden kaçınmanın nasıl yapılacağını öğrenin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803113"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916444"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL. js kullanarak belirteçleri sessizce alırken ve yenilerken sayfa yeniden yüklemeden kaçının
-JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), arka planda belirteçleri sessizce almak ve yenilemek için gizli `iframe` öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri öğesine geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, `iframe`yüklenmesi `redirect_uri` buna karşılık gelen HTML ile sonuçlanır. Genellikle uygulamanın `redirect_uri` kök sayfasıdır ve bunun yeniden yüklenmesine neden olur.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), arka planda belirteçleri sessizce almak ve yenilemek için gizli `iframe` öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, `iframe`yüklenmesi `redirect_uri` buna karşılık gelen HTML ile sonuçlanır. Genellikle uygulamanın `redirect_uri` kök sayfasıdır ve bunun yeniden yüklenmesine neden olur.
 
 Diğer durumlarda, uygulamanın kök sayfasına gidildiğinde kimlik doğrulaması yapılması gerekiyorsa, iç içe `iframe` öğelere veya `X-Frame-Options: deny` hataya yol açabilir.
 
