@@ -5,17 +5,17 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 474cdc52d34d3f5e00dee69b7cc9861042cbcc04
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231124"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928605"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Işlevleri için Mobile Apps bağlamaları 
 
 > [!NOTE]
-> Azure Mobile Apps bağlamaları yalnızca Azure Işlevleri 1. x ile kullanılabilir. Azure Işlevleri 2. x içinde desteklenmez.
+> Azure Mobile Apps bağlamaları yalnızca Azure Işlevleri 1. x ile kullanılabilir. Azure Işlevleri 2. x ve üzeri sürümlerde desteklenmez.
 
 Bu makalede Azure Işlevleri 'nde [azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. Azure Işlevleri Mobile Apps için giriş ve çıkış bağlamalarını destekler.
 
@@ -29,7 +29,7 @@ Mobile Apps bağlamaları [Microsoft. Azure. WebJobs. Extensions. MobileApps](ht
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="input"></a>Giriş
+## <a name="input"></a>Girdi
 
 Mobile Apps giriş bağlaması bir mobil tablo uç noktasından bir kayıt yükler ve bunu işlevinizden geçirir. Ve C# F# işlevleri içinde, işlev başarıyla çıktığında kayıtta yapılan tüm değişiklikler otomatik olarak tabloya geri gönderilir.
 
@@ -37,14 +37,14 @@ Mobile Apps giriş bağlaması bir mobil tablo uç noktasından bir kayıt yükl
 
 Dile özgü örneğe bakın:
 
-* [C#betik (. CSX)](#input---c-script-example)
+* [C# betiği (.csx)](#input---c-script-example)
 * JavaScript
 
 ### <a name="input---c-script-example"></a>Giriş C# betiği örneği
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps girişi bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev, kayıt tanımlayıcısı olan bir kuyruk iletisi tarafından tetiklenir. İşlevi belirtilen kaydı okur ve `Text` özelliğini değiştirir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Veri bağlama işte *function.json* dosyası:
 
 ```json
 {
@@ -68,7 +68,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 ]
 }
 ```
-[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -89,7 +89,7 @@ public static void Run(string myQueueItem, JObject record)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps girişi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev, kayıt tanımlayıcısı olan bir kuyruk iletisi tarafından tetiklenir. İşlevi belirtilen kaydı okur ve `Text` özelliğini değiştirir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Veri bağlama işte *function.json* dosyası:
 
 ```json
 {
@@ -113,7 +113,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 ]
 }
 ```
-[Yapılandırma](#input---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#input---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -132,16 +132,16 @@ Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi iç
 
 ## <a name="input---configuration"></a>Giriş - yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `MobileTable` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `MobileTable` özniteliği.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **type**|| "MobileTable" olarak ayarlanmalıdır|
 | **direction**||"In" olarak ayarlanmalıdır|
-| **ada**|| İşlev imzasında giriş parametresinin adı.|
+| **Adı**|| İşlev imzasında giriş parametresinin adı.|
 |**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
-| **numarasını**| **Kimlik** | Alınacak kaydın tanımlayıcısı. İşlevi çağıran tetikleyicisine statik veya bağlı olabilir. Örneğin, işleviniz için bir kuyruk tetikleyicisi kullanıyorsanız, `"id": "{queueTrigger}"` alınacak kayıt KIMLIĞI olarak Kuyruk iletisinin dize değerini kullanır.|
-|**bağlanma**|**Bağlanma**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
+| **id**| **Kimlik** | Alınacak kaydın tanımlayıcısı. İşlevi çağıran tetikleyicisine statik veya bağlı olabilir. Örneğin, işleviniz için bir kuyruk tetikleyicisi kullanıyorsanız, `"id": "{queueTrigger}"` alınacak kayıt KIMLIĞI olarak Kuyruk iletisinin dize değerini kullanır.|
+|**bağlantı**|**bağlantı**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
 |**apiKey**|**ApiKey**|Mobil uygulamanızın API anahtarına sahip bir uygulama ayarının adı. [Node. js mobil uygulamanıza BIR API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)veya [.net MOBIL uygulamanızda bir API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)API anahtarını sağlayın. Anahtarı sağlamak için, işlev uygulamanızda API anahtarını içeren bir uygulama ayarı oluşturun ve ardından giriş bağlamaınıza `apiKey` özelliğini uygulama ayarı adı ile ekleyin. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -166,7 +166,7 @@ Bir Mobile Apps tablosuna yeni bir kayıt yazmak için Mobile Apps çıkış ba�
 Dile özgü örneğe bakın:
 
 * [C#](#output---c-example)
-* [C#betik (. CSX)](#output---c-script-example)
+* [C# betiği (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Çıkış - C# örneği
@@ -188,7 +188,7 @@ public static object Run(
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps çıktı bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlev bir kuyruk iletisi tarafından tetiklenir ve `Text` özelliği için sabit kodlanmış değere sahip yeni bir kayıt oluşturur.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Veri bağlama işte *function.json* dosyası:
 
 ```json
 {
@@ -212,7 +212,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#output---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 C# betik kodunu şu şekildedir:
 
@@ -229,7 +229,7 @@ public static void Run(string myQueueItem, out object record)
 
 Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Mobile Apps çıktı bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev bir kuyruk iletisi tarafından tetiklenir ve `Text` özelliği için sabit kodlanmış değere sahip yeni bir kayıt oluşturur.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Veri bağlama işte *function.json* dosyası:
 
 ```json
 {
@@ -254,7 +254,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-[Yapılandırma](#output---configuration) bölümünde bu özellikler açıklanmaktadır.
+[Yapılandırma](#output---configuration) bölümde, bu özellikleri açıklanmaktadır.
 
 JavaScript kod aşağıdaki gibidir:
 
@@ -273,7 +273,7 @@ module.exports = function (context, myQueueItem) {
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [mobiletable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) özniteliğini kullanın.
 
-Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [çıkış-yapılandırma](#output---configuration). Yöntem imzasında bir `MobileTable` özniteliği örneği aşağıda verilmiştir:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [çıkış-yapılandırma](#output---configuration). İşte bir `MobileTable` özniteliği örnek bir yöntem imzası:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -286,19 +286,19 @@ public static object Run(
 }
 ```
 
-Tam bir örnek için bkz. [Çıkış- C# örnek](#output---c-example).
+Tam bir örnek için bkz. [çıkış - C# örneği](#output---c-example).
 
 ## <a name="output---configuration"></a>Çıkış - yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `MobileTable` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `MobileTable` özniteliği.
 
 |Function.JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 | **type**|| "MobileTable" olarak ayarlanmalıdır|
 | **direction**||"Out" olarak ayarlanmalıdır|
-| **ada**|| İşlev imzasında çıkış parametresinin adı.|
+| **Adı**|| İşlev imzasında çıkış parametresinin adı.|
 |**tableName** |**TableName**|Mobil uygulamanın veri tablosunun adı|
-|**bağlanma**|**MobileAppUriSetting**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
+|**bağlantı**|**MobileAppUriSetting**|Mobil uygulamanın URL 'sini içeren bir uygulama ayarının adı. İşlevi, mobil uygulamanıza yönelik gerekli REST işlemlerini oluşturmak için bu URL 'YI kullanır. İşlev uygulamanızda, mobil uygulamanın URL 'sini içeren bir uygulama ayarı oluşturun ve ardından giriş Bağlamalarınızın `connection` özelliğindeki uygulama ayarının adını belirtin. URL, `http://<appname>.azurewebsites.net`benzer şekilde görünür.
 |**apiKey**|**ApiKeySetting**|Mobil uygulamanızın API anahtarına sahip bir uygulama ayarının adı. [Node. js mobil uygulama arka ucunuza BIR API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)veya [.NET mobil uygulamanızın arka UCUNUZA bir API anahtarı uygularsanız](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)API anahtarını sağlayın. Anahtarı sağlamak için, işlev uygulamanızda API anahtarını içeren bir uygulama ayarı oluşturun ve ardından giriş bağlamaınıza `apiKey` özelliğini uygulama ayarı adı ile ekleyin. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

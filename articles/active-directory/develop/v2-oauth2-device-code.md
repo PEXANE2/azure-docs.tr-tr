@@ -1,5 +1,6 @@
 ---
-title: Tarayıcıda daha az cihazda oturum açmak için Microsoft Identity platform 'u kullanın | Mavisi
+title: Kullanıcıların tarayıcı olmadan oturum açması | Mavisi
+titleSuffix: Microsoft identity platform
 description: Cihaz yetkilendirme yetkisini kullanarak gömülü ve tarayıcı için daha az kimlik doğrulama akışları oluşturun.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207613"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919248"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platformu ve OAuth 2,0 cihaz yetkilendirmesi verme akışı
 
@@ -62,8 +63,8 @@ scope=user.read%20openid%20profile
 
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
-| `tenant` | Gerekli | /Common,/tüketicileri veya/Organizations. olabilir.  Ayrıca, GUID veya kolay ad biçiminde izin istemek istediğiniz dizin kiracısı de olabilir.  |
-| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `tenant` | Gereklidir | /Common,/tüketicileri veya/Organizations. olabilir.  Ayrıca, GUID veya kolay ad biçiminde izin istemek istediğiniz dizin kiracısı de olabilir.  |
+| `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `scope` | Önerilen | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  |
 
 ### <a name="device-authorization-response"></a>Cihaz yetkilendirme yanıtı
@@ -99,12 +100,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parametre | Gerekli | Açıklama|
+| Parametre | Gereklidir | Açıklama|
 | -------- | -------- | ---------- |
-| `tenant`  | Gerekli | İlk istekte aynı kiracı veya kiracı diğer adı kullanıldı. | 
-| `grant_type` | Gerekli | `urn:ietf:params:oauth:grant-type:device_code` olmalıdır|
-| `client_id`  | Gerekli | İlk istekte kullanılan `client_id` eşleşmelidir. |
-| `device_code`| Gerekli | Cihaz yetkilendirme isteğinde döndürülen `device_code`.  |
+| `tenant`  | Gereklidir | İlk istekte aynı kiracı veya kiracı diğer adı kullanıldı. | 
+| `grant_type` | Gereklidir | `urn:ietf:params:oauth:grant-type:device_code` olmalıdır|
+| `client_id`  | Gereklidir | İlk istekte kullanılan `client_id` eşleşmelidir. |
+| `device_code`| Gereklidir | Cihaz yetkilendirme isteğinde döndürülen `device_code`.  |
 
 ### <a name="expected-errors"></a>Beklenen hatalar
 

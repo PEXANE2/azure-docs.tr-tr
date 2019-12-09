@@ -4,21 +4,20 @@ description: Azure Data Factory kullanarak OData kaynaklarından veri taşıma h
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ea751a18f8a5e5423b3199919ccf440c41595091
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666661"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931877"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -41,12 +40,12 @@ Aşağıdaki kimlik doğrulama türleri desteklenir:
 * **Cloud** OData akışına erişmek için anonim, temel (Kullanıcı adı ve parola) veya Azure Active Directory tabanlı OAuth kimlik doğrulaması kullanabilirsiniz.
 * **Şirket içi** OData akışına erişmek için anonim, temel (Kullanıcı adı ve parola) veya Windows kimlik doğrulaması kullanabilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 Farklı araçlar/API 'Ler kullanarak bir OData kaynağından veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Bkz: [kopyalama etkinliği Öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyalama etkinliği ile işlem hattı oluşturmak adım adım yönergeler için.
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -61,11 +60,11 @@ Aşağıdaki bölümler, OData kaynağına özgü Data Factory varlıkları tan�
 ## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 Aşağıdaki tabloda, OData bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| type |Type özelliği: **OData** olarak ayarlanmalıdır |Evet |
-| url |OData hizmetinin URL 'si. |Evet |
-| authenticationType |OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. <br/><br/> Bulut OData için, olası değerler anonim, temel ve OAuth ' dir (Azure Data Factory Şu anda yalnızca Azure Active Directory tabanlı OAuth 'ı destekler). <br/><br/> Şirket içi OData için, olası değerler anonim, temel ve Windows ' dir. |Evet |
+| type |Type özelliği: **OData** olarak ayarlanmalıdır |Yes |
+| url |OData hizmetinin URL 'si. |Yes |
+| authenticationType |OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. <br/><br/> Bulut OData için, olası değerler anonim, temel ve OAuth ' dir (Azure Data Factory Şu anda yalnızca Azure Active Directory tabanlı OAuth 'ı destekler). <br/><br/> Şirket içi OData için, olası değerler anonim, temel ve Windows ' dir. |Yes |
 | kullanıcı adı |Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. |Evet (yalnızca temel kimlik doğrulaması kullanıyorsanız) |
 | password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Evet (yalnızca temel kimlik doğrulaması kullanıyorsanız) |
 | authorizedCredential |OAuth kullanıyorsanız, Data Factory kopyalama Sihirbazı veya düzenleyicide **Yetkilendir** düğmesine tıklayın ve kimlik bilgilerinizi girin, ardından bu özelliğin değeri otomatik olarak oluşturulur. |Evet (yalnızca OAuth kimlik doğrulaması kullanıyorsanız) |
@@ -146,9 +145,9 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 **Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **ODataResource** türünde veri kümesi Için typeproperties bölümü (OData veri kümesini içerir) aşağıdaki özelliklere sahiptir
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | --- | --- | --- |
-| Yolun |OData kaynağının yolu |Hayır |
+| yol |OData kaynağının yolu |Hayır |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilke gibi özellikler, tüm etkinlik türleri için kullanılabilir.
@@ -157,7 +156,7 @@ Diğer yandan etkinliğin typeProperties bölümünde bulunan özellikler her et
 
 Kaynak, **Relationalsource** türünde olduğunda (OData içeren), typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-| Özellik | Açıklama | Örnek | Gerekli |
+| Özellik | Açıklama | Örnek | Gereklidir |
 | --- | --- | --- | --- |
 | sorgu |Verileri okumak için özel sorguyu kullanın. |"? $select = ad, açıklama & $top = 5" |Hayır |
 
@@ -169,14 +168,14 @@ Kaynak, **Relationalsource** türünde olduğunda (OData içeren), typepropertie
 
 OData 'ten verileri taşırken, OData türlerinden .NET türüne aşağıdaki eşlemeler kullanılır.
 
-| OData veri türü | .NET türü |
+| OData Veri Türü | .NET türü |
 | --- | --- |
-| EDM.Binary |Byte [] |
+| EDM.Binary |Byte[] |
 | Edm.Boolean |Bool |
-| EDM.Byte |Byte [] |
-| EDM. DateTime |DateTime |
-| EDM.Decimal |Kategori |
-| Edm.Double |Çift |
+| EDM.Byte |Byte[] |
+| Edm.DateTime |Tarih Saat |
+| EDM.Decimal |Decimal |
+| Edm.Double |Double |
 | EDM.Single |Tek |
 | EDM.Guid |Guid |
 | EDM.Int16 |Int16 |
@@ -185,7 +184,7 @@ OData 'ten verileri taşırken, OData türlerinden .NET türüne aşağıdaki e�
 | Edm.SByte |Int16 |
 | Edm.String |Dize |
 | EDM.Time |TimeSpan |
-| Edm.DateTimeOffset |Türünde |
+| Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
 > OData karmaşık veri türleri gibi nesneler desteklenmez.

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Java Web uygulamaları için performans izleme | Microsoft Docs
+title: Java Web Apps performans izleme-Azure Application Insights
 description: Application Insights ile Java Web sitenizin genişletilmiş performansı ve kullanımı izleniyor.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/10/2019
-ms.openlocfilehash: 181a1f253157fe112d42753d6f824a327457a2fa
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8194c4b16d114be9b2b95ff56dea59d98cfdae10
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819406"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931139"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web uygulamalarında bağımlılıkları izleme, özel durumlar ve Yöntem yürütme süreleri
 
@@ -46,7 +46,7 @@ Java aracısını kullanmak için sunucunuza yüklersiniz. Web uygulamalarınız
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
 3. Uygulama sunucunuzu yeniden başlatın.
 
-## <a name="configure-the-agent"></a>Aracıyı yapılandırma
+## <a name="configure-the-agent"></a>Configure the agent
 `AI-Agent.xml` adlı bir dosya oluşturun ve aracı JAR dosyasıyla aynı klasöre yerleştirin.
 
 XML dosyasının içeriğini ayarlayın. İstediğiniz özellikleri eklemek veya atlamak için aşağıdaki örneği düzenleyin.
@@ -91,7 +91,7 @@ Azure Uygulama Hizmetleri için aşağıdakileri yapın:
 Anahtar: `JAVA_OPTS` değer: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
 Java aracısının en son sürümü için [buradaki](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)yayınları kontrol edin. 
+) yayınları kontrol edin. 
 
 Aracı, projenizde D:/Home/site/Wwwroot/dizinde bitecek bir kaynak olarak paketlenmesi gerekir. Aracının doğru App Service dizininde olduğunu, **Gelişmiş araçlar** > **hata ayıklama konsolu** > ve site dizininin içeriğini inceleyerek test **araçları** ' na giderek emin olabilirsiniz.    
 
@@ -119,7 +119,7 @@ Aşağıdakileri AI-Agent. xml ' ye ekleyin:
 
 **Hem [gelen](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) hem de giden (aracı) yapılandırmalarının** tam olarak aynı olduğundan emin olun.
 
-## <a name="view-the-data"></a>Verileri görüntüleyin
+## <a name="view-the-data"></a>Verileri görüntüleme
 Application Insights kaynağında, toplanan uzak bağımlılık ve Yöntem yürütme süreleri [performans kutucuğunun altında][metrics]görüntülenir.
 
 Bağımlılık, özel durum ve Yöntem raporlarının tek tek örneklerini aramak için [arama][diagnostic]' yı açın.

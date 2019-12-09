@@ -1,23 +1,22 @@
 ---
-title: Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma
+title: Verileri Amazon S3'ten Azure Depolama'ya geçirme
 description: Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanın.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675735"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927469"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -93,7 +92,7 @@ Ağ veya veri deposu geçici sorunu nedeniyle kopyalama işlerinin herhangi biri
 
 ### <a name="delta-data-migration"></a>Delta verileri geçişi 
 
-AWS S3 ' deki yeni veya değiştirilmiş dosyaları tanımlamanın en iyi performansı, zaman bölümlenmiş adlandırma kuralını kullanmaktır: AWS S3 içindeki verileriniz, dosya veya klasör adındaki saat dilimi bilgileriyle bölümleniyorsa (örneğin,/yyyy/mm/dd/File.exe), ardından işlem hatlarınız, artımlı olarak kopyalanacak dosya/klasörleri kolayca tanımlayabilir. 
+AWS S3 ' deki yeni veya değiştirilmiş dosyaları tanımlamanın en iyi yolu, zaman bölümlenmiş adlandırma kuralını kullanmaktır. AWS S3 içindeki verileriniz, dosya veya klasör adında saat dilimi bilgileriyle bölümleniyorsa (örneğin,/yyyy/mm/dd/File.exe), işlem hatlarınız artımlı olarak kopyalanacak dosya/klasörleri kolayca tanımlayabilir. 
 
 Alternatif olarak, AWS S3 içindeki verileriniz zaman bölümlenmiş değilse, ADF, LastModifiedDate göre yeni veya değiştirilmiş dosyaları tanımlayabilir.   Bu şekilde, ADF 'nin AWS S3 ' dan tüm dosyaları taraması ve yalnızca son değiştirilme zaman damgası belirli bir değerden daha büyük olan yeni ve güncelleştirilmiş dosyayı kopyalaması gerekir.  S3 içinde çok sayıda dosyanız varsa ilk dosya taramanın, filtre koşuluyla kaç dosyanın eşleşip eşleşmediğine bakılmaksızın uzun zaman sürediğine dikkat edin.  Bu durumda, dosya taramanın paralel olarak gerçekleşebilmesi için ilk anlık görüntü geçişi için aynı ' ön ek ' ayarını kullanarak önce verileri bölümleyerek yapmanız önerilir.  
 
@@ -101,7 +100,7 @@ Alternatif olarak, AWS S3 içindeki verileriniz zaman bölümlenmiş değilse, A
 
 Verileri özel bağlantı üzerinden mi geçirirken yoksa Amazon S3 güvenlik duvarında belirli IP aralığına izin vermek istiyorsanız, Azure Windows VM 'ye şirket içinde barındırılan tümleştirme çalışma zamanı 'nı yüklemeniz gerekir. 
 
-- Her bir Azure VM için ile başlamak için önerilen yapılandırma, 32 vCPU ve 128 GB bellek ile Standard_D32s_v3.  Veri geçişi sırasında IR VM 'nin izleme CPU ve bellek kullanımını, daha iyi performans için sanal makineyi daha fazla ölçeklendirmeniz gerektiğini ve maliyeti kazanmak için VM 'yi ölçeklendirmeniz gerektiğini görmek için kullanabilirsiniz. 
+- Her bir Azure sanal makinesi için ile başlamak için önerilen yapılandırma, 32 vCPU ve 128 GB bellekle Standard_D32s_v3.  Veri geçişi sırasında IR VM 'nin izleme CPU ve bellek kullanımını, daha iyi performans için sanal makineyi daha fazla ölçeklendirmeniz gerektiğini ve maliyeti kazanmak için VM 'yi ölçeklendirmeniz gerektiğini görmek için kullanabilirsiniz. 
 - Ayrıca, tek bir şirket içinde barındırılan IR ile 4 VM düğümünü ilişkilendirerek da ölçeği genişletebilirsiniz.  Şirket içinde barındırılan bir IR 'ye karşı çalışan tek bir kopyalama işi otomatik olarak dosya kümesini bölümleyip, dosyaları paralel olarak kopyalamak için tüm VM düğümlerinden faydalanır.  Yüksek kullanılabilirlik için, veri geçişi sırasında tek hata noktasını önlemek üzere 2 VM düğümü ile başlamanız önerilir. 
 
 ### <a name="rate-limiting"></a>Hız sınırlandırma 
@@ -138,7 +137,7 @@ Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir:
 
 ### <a name="additional-references"></a>Ek başvurular 
 - [Amazon basit depolama hizmeti Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Blob Depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Şirket içinde barındırılan Integration Runtime oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)

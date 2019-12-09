@@ -1,29 +1,25 @@
 ---
-title: Çoklu oturum açma (JavaScript için Microsoft kimlik doğrulama kitaplığı)
+title: Çoklu oturum açma (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak çoklu oturum açma deneyimleri oluşturma hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da39b8435acdd11108a945c6bac5147dc8b6ad50
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150584"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916273"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js ile çoklu oturum açma
 
@@ -92,7 +88,7 @@ Uygulama bildiriminizde isteğe bağlı talepler yapılandırma adımlarını [b
 
 **Oturum açma Ipucu kullanma**
 
-SID talebi yapılandırılmamışsa veya etkileşimli kimlik doğrulama çağrılarında hesap seçim sorgusunu atlamanıza gerek yoksa, istek parametrelerine bir `login_hint` sağlayarak ve isteğe bağlı olarak MSAL. js etkileşimli yöntemlerinde `extraQueryParameters` olarak bir `domain_hint` sağlayarak bunu yapabilirsiniz (@no __t_3_, `loginRedirect`, `acquireTokenPopup` ve `acquireTokenRedirect`). Örnek:
+SID talebi yapılandırılmamışsa veya etkileşimli kimlik doğrulama çağrılarında hesap seçimi istemi 'ni atlamanızı gerekmiyorsa, istek parametrelerinde bir `login_hint` ve isteğe bağlı olarak MSAL. js etkileşimli metotlarda (`loginPopup`, `loginRedirect`, `acquireTokenPopup` ve `acquireTokenRedirect`) `extraQueryParameters` olarak bir `domain_hint` sağlayarak bunu yapabilirsiniz. Örnek:
 
 ```javascript
 var request = {

@@ -4,20 +4,19 @@ description: "' Deki kopyalama etkinliğinin Azure Data Factory, verileri kopyal
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: ed0823930b819661baf384d51478547cb2e0eccf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678150"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921989"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema eşleme
 
@@ -88,18 +87,18 @@ Kopyalama etkinliği ' nde eşlenecek sütunları belirtebilirsiniz-> `translato
 
 Aşağıdaki özellikler, `source` ve `sink`> nesne `mappings` `translator` -> altında desteklenir:
 
-| Özellik | Açıklama                                                  | Gerekli |
+| Özellik | Açıklama                                                  | Gereklidir |
 | -------- | ------------------------------------------------------------ | -------- |
-| ad     | Kaynak veya havuz sütununun adı.                           | Evet      |
-| numarasını  | Sütun dizini. 1 ile başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | Hayır       |
-| Yolun     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik veriler için geçerlidir örn. MongoDB/REST.<br>Kök nesnesi altındaki alanlar için JSON yolu root $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar. | Hayır       |
+| ad     | Kaynak veya havuz sütununun adı.                           | Yes      |
+| ordinal  | Sütun dizini. 1 ile başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | Hayır       |
+| yol     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik veriler için geçerlidir örn. MongoDB/REST.<br>Kök nesnesi altındaki alanlar için JSON yolu root $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar. | Hayır       |
 | type     | Kaynak veya havuz sütununun geçici veri türü Data Factory. | Hayır       |
-| ayarı  | Kaynak veya havuz sütununun kültürü. <br>Tür `Datetime` veya `Datetimeoffset`olduğunda geçerlidir. Varsayılan değer: `en-us`. | Hayır       |
-| formatını   | Tür `Datetime` veya `Datetimeoffset`olduğunda kullanılacak biçim dizesi. Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
+| culture  | Kaynak veya havuz sütununun kültürü. <br>Tür `Datetime` veya `Datetimeoffset`olduğunda geçerlidir. Varsayılan değer: `en-us`. | Hayır       |
+| biçim   | Tür `Datetime` veya `Datetimeoffset`olduğunda kullanılacak biçim dizesi. Tarih saat biçimini biçimlendirmek için [özel tarih ve saat biçim dizelerine](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) bakın. | Hayır       |
 
 Aşağıdaki özellikler, `source` ve `sink`nesnesine ek olarak `translator` -> `mappings` altında desteklenir:
 
-| Özellik            | Açıklama                                                  | Gerekli |
+| Özellik            | Açıklama                                                  | Gereklidir |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Yalnızca hiyerarşik veriler (örneğin, MongoDB/REST kaynak olduğunda) desteklenir.<br>Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. | Hayır       |
 
@@ -201,10 +200,10 @@ Sütun eşlemesini belirtmek için `"columnMappings": "UserId: MyUserId, Group: 
 
 MongoDB/REST 'den metin dosyasına kopyalama ve Azure Cosmos DB Oracle 'dan MongoDB için ' a kopyalamak üzere kopyalama etkinliği-> `translator` -> `schemaMapping`. Kopyalama etkinliği `translator` bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Evet |
-| schemaMapping | **Kaynak taraftan havuz tarafına**olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **anahtar:** kaynağı temsil eder. **Tablo kaynağı**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **değeri:** havuzu temsil eder. **Tablo havuzu**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar.  | Evet |
+| type | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Yes |
+| schemaMapping | **Kaynak taraftan havuz tarafına**olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Key:** kaynak temsil eder. **Tablo kaynağı**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Value:** havuz temsil eder. **Tablo havuzu**için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz**için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar `collectionReference` özelliği tarafından seçilen dizi içindeki alanlar için JSON yolu dizi öğesinden başlar.  | Yes |
 | collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | Hayır |
 
 **Örnek: MongoDB 'den Oracle 'a kopyalama:**
@@ -236,7 +235,7 @@ MongoDB/REST 'den metin dosyasına kopyalama ve Azure Cosmos DB Oracle 'dan Mong
 }
 ```
 
-Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve çapraz birleştirmeyi ortak kök bilgiyle *(sayı, tarih ve şehir)* DÜZLEŞTIREREK bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
+Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve ortak kök bilgiyle *(numara, tarih ve şehir)* çapraz birleştirmeyi düzleştirerek, bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
 | Sipariş numarası | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
@@ -272,7 +271,7 @@ Ayrıca, dizi içindeki verileri *(order_pd ve order_price)* ve çapraz birleşt
 }
 ```
 
-## <a name="data-type-mapping"></a>Veri türü eşleme
+## <a name="data-type-mapping"></a>Veri türü eşlemesi
 
 Kopyalama etkinliği, aşağıdaki 2 adımlı yaklaşımla birlikte havuz türleri eşleme için kaynak türleri gerçekleştirir:
 
@@ -285,12 +284,12 @@ Her bir bağlayıcı konusunun "veri türü eşleme" bölümünde yerel tür ile
 
 Data Factory aşağıdaki geçici veri türlerini destekler: [veri kümesi yapısı](concepts-datasets-linked-services.md#dataset-structure-or-schema) yapılandırmasında tür bilgilerini yapılandırırken aşağıdaki değerleri belirtebilirsiniz:
 
-* Byte []
+* Byte[]
 * Boole
-* Hem
-* Türünde
-* Kategori
-* Çift
+* Datetime
+* Datetimeoffset
+* Decimal
+* Double
 * Guid
 * Int16
 * Int32
@@ -300,6 +299,6 @@ Data Factory aşağıdaki geçici veri türlerini destekler: [veri kümesi yapı
 * Timespan
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Diğer kopyalama etkinliği makalelerine bakın:
+Bir kopyalama etkinliği makalelere bakın:
 
-- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
+- [Kopyalama etkinliği'ne genel bakış](copy-activity-overview.md)

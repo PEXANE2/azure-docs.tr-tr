@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228057"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912991"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
@@ -73,7 +73,7 @@ Bir tüketici bir bağlantıyı başlattıktan sonra, hizmet sağlayıcı bağla
 - Özel bağlantı hizmeti ile bağlantılı birden fazla NAT IP yapılandırması olabilir. Birden fazla NAT IP yapılandırması seçilmesi hizmet sağlayıcılarının ölçeklendirilmesine yardımcı olabilir. Günümüzde, hizmet sağlayıcıları özel bağlantı hizmeti başına en fazla sekiz NAT IP adresi atayabilir. Her NAT IP adresi ile TCP bağlantılarınız için daha fazla bağlantı noktası atayabilir ve böylece ölçeği değiştirebilirsiniz. Bir özel bağlantı hizmetine birden çok NAT IP adresi ekledikten sonra NAT IP adreslerini silemezsiniz. Bu, NAT IP adreslerini silerken etkin bağlantıların etkilenmemesini sağlamak için yapılır.
 
 
-## <a name="alias"></a>Alias
+## <a name="alias"></a>Diğer ad
 
 **Diğer ad** hizmetiniz için genel olarak benzersiz bir addır. Hizmetiniz için müşteri verilerini maskelemenize yardımcı olur ve aynı zamanda hizmetiniz için kolay paylaşılan bir ad oluşturur. Özel bir bağlantı hizmeti oluşturduğunuzda, Azure hizmetiniz için müşterilerinizle paylaşabileceğiniz bir diğer ad oluşturur. Müşterileriniz, hizmetinize bir bağlantı istemek için bu diğer adı kullanabilir.
 
@@ -101,7 +101,6 @@ Bağlantıları onaylama eylemi, özel bağlantı hizmetindeki otomatik onaylama
 - Yalnızca Standart Load Balancer destekleniyor 
 - Yalnızca IPv4 trafiğini destekler
 - Yalnızca TCP trafiğini destekler
-- Yalnızca aynı bölgedeki özel uç noktalardan erişilebilir
 - Azure portal deneyim oluşturma ve yönetme desteklenmez
 - Proxy protokolünü kullanan istemci bağlantı bilgileri servis sağlayıcısına kullanılamıyor
 

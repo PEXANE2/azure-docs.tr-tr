@@ -3,27 +3,23 @@ title: MSAL. js ve ADAL. js arasındaki farklar
 titleSuffix: Microsoft identity platform
 description: JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL. js) için Azure AD kimlik doğrulama kitaplığı ve hangisinin kullanılacağını seçme arasındaki farklar hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e3696eb90abbb35f4d989649b4a1198aec69b9a5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803178"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916919"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
 
@@ -45,15 +41,15 @@ Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD 
 
 * ADAL. js, bir yetkili URL 'SI aracılığıyla uygulamanızın yetkilendirme sunucusuna veya kimlik sağlayıcısına bağlantısının bir örneğinin temsili olarak [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) kullanır. Aksine, MSAL. js API 'SI, Kullanıcı Aracısı istemci uygulaması (istemci kodunun bir Web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir genel istemci uygulaması formu) etrafında tasarlanmıştır. Bu, bir uygulamanın yetkilendirme sunucusu ile kimlik doğrulama bağlamı örneğini temsil etmesi için `UserAgentApplication` sınıfını sağlar. Daha ayrıntılı bilgi için bkz. [msal. js kullanarak başlatma](msal-js-initializing-client-applications.md).
 
-* ADAL. js ' de, belirteçleri alma yöntemleri `AuthenticationContext` ' da ayarlanan tek bir yetkili ile ilişkilendirilir. MSAL. js ' de, belirteç alma istekleri `UserAgentApplication` ' da ayarlandıklardan farklı yetki değerleri alabilir. Bu, MSAL. js ' nin aynı uygulamadaki birden fazla kiracı ve Kullanıcı hesabı için belirteçleri ayrı olarak almasına ve önbelleğe almasına olanak tanır.
+* ADAL. js ' de, belirteçleri alma yöntemleri `AuthenticationContext`bir tek bir yetkiliyle ilişkilendirilir. MSAL. js ' de, belirteç alma istekleri `UserAgentApplication`ayarlandıklardan farklı yetki değerleri alabilir. Bu, MSAL. js ' nin aynı uygulamadaki birden fazla kiracı ve Kullanıcı hesabı için belirteçleri ayrı olarak almasına ve önbelleğe almasına olanak tanır.
 
-* Kullanıcılardan, ADAL. js ' de `acquireToken` olarak adlandırılmasını istemeden belirteçleri alma ve yenileme yöntemi. MSAL. js ' de, bu işlevselliğe daha açıklayıcı olması için bu yöntemin adı `acquireTokenSilent` ' dır.
+* Kullanıcılardan, ADAL. js ' de `acquireToken` adlandırılmasını istemeden belirteçleri elde etmek ve yenilemek için yöntemi. MSAL. js ' de bu yöntemin bu işlevselliğe daha açıklayıcı olması için `acquireTokenSilent` olarak adlandırılmıştır.
 
 ### <a name="authority-value-common"></a>Yetkili değeri `common`
 
-V 1.0 'da `https://login.microsoftonline.com/common` yetkilisini kullanmak, kullanıcıların herhangi bir Azure AD hesabıyla oturum açmalarına olanak tanır (herhangi bir kuruluş için).
+V 1.0 'da, `https://login.microsoftonline.com/common` yetkilisi 'nin kullanılması, kullanıcıların herhangi bir Azure AD hesabıyla oturum açmalarına olanak tanır (herhangi bir kuruluş için).
 
-V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, kullanıcıların herhangi bir Azure AD kuruluş hesabıyla veya bir Microsoft kişisel hesabıyla (MSA) oturum açmalarına izin vermeyecektir. Oturum açmayı yalnızca Azure AD hesaplarında kısıtlamak için (ADAL. js ile aynı davranış), `https://login.microsoftonline.com/organizations` kullanmanız gerekir. Ayrıntılar için [msal. js kullanarak başlatma](msal-js-initializing-client-applications.md)içindeki `authority` yapılandırma seçeneğine bakın.
+V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, kullanıcıların herhangi bir Azure AD kuruluş hesabıyla veya bir Microsoft kişisel hesabıyla (MSA) oturum açmalarına olanak tanır. Oturum açmayı yalnızca Azure AD hesaplarında kısıtlamak için (ADAL. js ile aynı davranış), `https://login.microsoftonline.com/organizations`kullanmanız gerekir. Ayrıntılar için, [msal. js kullanarak başlatma](msal-js-initializing-client-applications.md)içindeki `authority` config seçeneğine bakın.
 
 ### <a name="scopes-for-acquiring-tokens"></a>Belirteçleri almak için kapsamlar
 * Belirteçleri almak için kimlik doğrulama isteklerinde kaynak parametresi yerine kapsam
@@ -64,9 +60,9 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
 
     v 2.0: kapsam = https\://graph.microsoft.com/User.Read
 
-    Şu biçimdeki API URI 'sini kullanarak tüm kaynak API 'leri için kapsam isteyebilirsiniz: Appıduri/Scope örneğin: https: \//mytenant. onmicrosoft. com/uygulamaı/API. Read
+    Şu biçimdeki API URI 'sini kullanarak tüm kaynak API 'leri için kapsamlar isteyebilirsiniz: Appıduri/Scope örneğin: https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    Yalnızca MS Graph API için, `user.read` kapsam değeri https: \//Graph. Microsoft. com/user. Read ile eşlenir ve birbirlerinin yerine kullanılabilir.
+    Yalnızca MS Graph API için `user.read` bir kapsam değeri https:\//graph.microsoft.com/User.Read eşlenir ve birbirlerinin yerine kullanılabilir.
 
     ```javascript
     var request = {

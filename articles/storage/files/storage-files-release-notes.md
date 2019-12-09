@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771045"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931074"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme Aracısı için sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -23,7 +23,7 @@ Bu makalede Azure Dosya Eşitleme aracısının desteklenen sürümleri için s�
 ## <a name="supported-versions"></a>Desteklenen sürümler
 Azure Dosya Eşitleme aracısı aşağıdaki sürümleri destekler:
 
-| Ina | Aracı sürüm numarası | Sürüm tarihi | Durum |
+| Kilometre Taşı | Aracı sürüm numarası | Sürüm tarihi | Durum |
 |----|----------------------|--------------|------------------|
 | V9 Release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 Aralık 2019 | Desteklenen-Fışıklandırma |
 | V8 Release- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 Ekim 2019 | Desteklenen |
@@ -50,7 +50,7 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 9.0.
 ### <a name="improvements-and-issues-that-are-fixed"></a>Düzeltilen geliştirmeler ve sorunlar
 
 - Self Servis geri yükleme desteği
-    - Kullanıcılar artık önceki sürüm özelliğini kullanarak dosyalarını geri yükleyebilir. V9 sürümünden önce, bulut katmanlaması etkinleştirilmiş birimlerde önceki sürüm özelliği destekleniyordu. Bu özellik, bulut katmanlaması etkin olan bir uç noktanın bulunduğu her birim için ayrı olarak etkinleştirilmelidir. Daha fazla bilgi için bkz.  
+    - Kullanıcılar artık önceki sürüm özelliğini kullanarak dosyalarını geri yükleyebilir. V9 sürümünden önce, bulut katmanlaması etkinleştirilmiş birimlerde önceki sürüm özelliği destekleniyordu. Bu özellik, bulut katmanlaması etkin olan bir uç noktanın bulunduğu her birim için ayrı olarak etkinleştirilmelidir. Daha fazla bilgi edinmek için bkz. .  
 [Önceki sürümler ve VSS (birim gölge kopyası hizmeti) üzerinden self servis geri yükleme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Daha büyük dosya paylaşma boyutları için destek 
@@ -73,11 +73,12 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 9.0.
 - Bulut katmanlaması etkinleştirildiğinde sunucu uç noktası geliştirmesini kaldır 
     - Daha önce olduğu gibi, sunucu uç noktasının kaldırılması Azure dosya paylaşımındaki dosyaların kaldırılmasına neden olmaz. Ancak, yerel sunucudaki yeniden ayrıştırma noktalarının davranışı değişmiştir. Yeniden ayrıştırma noktaları (sunucuda yerel olmayan dosyalara işaretçiler) artık sunucu uç noktası kaldırılırken silinir. Tamamen önbelleğe alınan dosyalar sunucuda kalır. Sunucu uç noktası kaldırılırken [yalnız bırakılmış katmanlı dosyaları](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) engellemek için bu geliştirme yapılmıştır. Sunucu uç noktası yeniden oluşturulduğunda katmanlı dosyalar için yeniden ayrıştırma noktaları sunucuda yeniden oluşturulur.  
  
-- Performans ve güvenilirlik iyileştirmeleri 
+- Performans ve güvenilirlik geliştirmeleri 
     - Daha az geri çekme başarısızlığı. Geri çağırma boyutu artık ağ bant genişliğine göre otomatik olarak ayarlanır. 
     - Yeni bir sunucu bir eşitleme grubuna eklenirken geliştirilmiş indirme performansı. 
     - Kısıtlama çakışmaları nedeniyle, azaltılmış dosyalar eşitlenmiyor. 
-
+    - Sunucu uç noktası yolu bir birim bağlama noktası ise, dosyalar katmana veya belirli senaryolarda beklenmedik şekilde geri çekilir.
+    
 ### <a name="evaluation-tool"></a>Değerlendirme aracı
 Azure Dosya Eşitleme dağıtılmadan önce, Azure Dosya Eşitleme değerlendirme aracını kullanarak sisteminizle uyumlu olup olmadığını değerlendirmelisiniz. Bu araç, desteklenmeyen karakterler veya desteklenmeyen bir işletim sistemi sürümü gibi dosya sisteminizle ve veri kümesiyle ilgili olası sorunları denetleyen bir Azure PowerShell cmdlet 'i. Yükleme ve kullanım yönergeleri için, planlama kılavuzundaki [değerlendirme aracı](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) bölümüne bakın. 
 
@@ -414,7 +415,7 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 5.0.
 
 - Azure Kamu Bulutu desteği
   - Azure Kamu Bulutu için Önizleme desteği ekledik. Bu, beyaz listelenmiş bir abonelik ve Microsoft 'tan özel bir aracı indirmesi gerektirir. Önizlemeye erişim sağlamak için lütfen doğrudan [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)bizimle bize e-posta gönderin.
-- Yinelenen verileri kaldırma desteği
+- Yinelenen Verileri Kaldırma desteği
     - Yinelenen verileri kaldırma, Windows Server 2016 ve Windows Server 2019 ' de etkinleştirilen bulut katmanlaması ile tam olarak desteklenmektedir. Bulut katmanlaması etkinleştirilmiş bir birimde yinelenenleri kaldırma özelliğinin etkinleştirilmesi, daha fazla depolama sağlamaya gerek kalmadan şirket içi daha fazla dosya önbelleğe almanızı sağlar.
 - Çevrimdışı veri aktarımı desteği (örn. Data Box aracılığıyla)
     - Büyük miktarlardaki verileri dilediğiniz gibi Azure Dosya Eşitleme içine kolayca geçirin. Azure Data Box, AzCopy ve hatta üçüncü taraf geçiş hizmetleri seçebilirsiniz. Verilerinizi Azure 'a almak için büyük miktarlarda bant genişliği kullanmaya gerek yoktur, Data Box olması durumunda buraya posta gönderin! Daha fazla bilgi için bkz. [çevrimdışı veri aktarımı belgeleri](https://aka.ms/AFS/OfflineDataTransfer).

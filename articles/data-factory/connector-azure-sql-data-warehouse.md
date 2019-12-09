@@ -2,24 +2,24 @@
 title: Azure SQL veri ambarı 'nda verileri kopyalama ve dönüştürme
 description: Azure SQL veri ambarı 'na veri kopyalamayı ve Azure SQL veri ambarı 'nda Data Factory kullanarak verileri dönüştürmeyi öğrenin.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/13/2019
-ms.author: jingwang
-ms.openlocfilehash: 1bd6d4d594bc7988d2dceaae533202f2a41379f1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 25c00caf359a502487fc4ffbb7a1b9bc253d730a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891047"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929627"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veri ambarı 'nda verileri kopyalama ve dönüştürme 
+
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
 > * [Version1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Geçerli sürüm](connector-azure-sql-data-warehouse.md)

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786852"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926464"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -21,7 +21,7 @@ AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceği
 
 > [!NOTE]
 > AzCopy kullanmaya başlamanıza yardımcı olacak içerik arıyorsanız, aşağıdaki makalelerden birine bakın:
-> - [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+> - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
 > - [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
 > - [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
 > - [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
@@ -53,7 +53,7 @@ Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullan
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Söz dizimi** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Örnek** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 Bu komut test verilerini belirtilen bir hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri bellekte oluşturulur, hedefe yüklenir ve ardından test tamamlandıktan sonra hedefteki silinir. İsteğe bağlı komut parametrelerini kullanarak oluşturulacak dosya sayısını ve bunların kaç boyutunu istediğinizi belirtebilirsiniz.
@@ -99,7 +99,7 @@ AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları a
 
 Günlükler başarısızlık durumunu (`UPLOADFAILED`, `COPYFAILED`ve `DOWNLOADFAILED`), tam yolu ve hatanın nedenini içerir.
 
-Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE$\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
+Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE%\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
 
 > [!IMPORTANT]
 > Microsoft Desteği bir istek gönderirken (veya herhangi bir üçüncü taraf ile ilgili sorunu gidermeye çalıştığınızda), yürütmek istediğiniz komutun Redaksiyonu yapılmış sürümünü paylaşabilirsiniz. Bu, SAS 'nin yanlışlıkla herhangi bir gövdele paylaşılmamasını sağlar. Redaksiyonu yapılmış sürümü günlük dosyasının başlangıcında bulabilirsiniz.
@@ -151,7 +151,7 @@ Bir işi sürdürürseniz AzCopy iş planı dosyasına bakar. Plan dosyası, iş
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Planın ve günlük dosyalarının konumunu değiştirme
 
-Varsayılan olarak, plan ve günlük dosyaları Windows 'daki `%USERPROFILE$\.azcopy` dizininde veya Mac ve Linux 'ta `$HOME$\.azcopy` dizininde bulunur. Bu konumu değiştirebilirsiniz.
+Varsayılan olarak, plan ve günlük dosyaları Windows 'daki `%USERPROFILE%\.azcopy` dizininde veya Mac ve Linux 'ta `$HOME$\.azcopy` dizininde bulunur. Bu konumu değiştirebilirsiniz.
 
 ### <a name="change-the-location-of-plan-files"></a>Plan dosyalarının konumunu değiştirme
 

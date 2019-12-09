@@ -1,21 +1,21 @@
 ---
-title: PowerShell ile verileri Şirket içinden Azure 'a kopyalama
+title: PowerShell kullanarak verileri Şirket içinden Azure 'a kopyalama
 description: Bu PowerShell betiği, verileri şirket içi SQL Server veritabanından başka bir Azure Blob depolama alanına kopyalar.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.author: jingwang
 author: linda33wj
 manager: shwang
+ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: f75c4316383120e198ab57501e31c0c42a8917f2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bbdc17766e6df15fe0f1f6b4107f6f910fdcceaf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890853"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929769"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Şirket içinden Azure 'a veri kopyalamak için bir Data Factory işlem hattı oluşturmak üzere PowerShell 'i kullanma
 

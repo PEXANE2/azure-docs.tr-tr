@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805765"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927656"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -196,25 +196,25 @@ Desteklenen olarak listelenmeyen bir bölgede hiper ölçekli veritabanı oluşt
 
 Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini istemek için:
 
-1. [Azure yardım ve destek dikey penceresine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) gidin
+1. Azure portal menüsünde **Yardım + Destek**' i seçin veya herhangi bir sayfadan **Yardım + Destek** ' i arayıp seçin.
 
-2. [ **Yeni destek isteğine** tıklayın](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+2. [Azure yardım ve destek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)bölümünde [**Yeni destek isteği**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)' ni seçin.
 
-    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+3. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
 
-3. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** seçeneğini belirleyin
+4. Veritabanlarını oluşturmak için kullanacağınız aboneliği seçin.
 
-4. Veritabanlarını oluşturmak için kullanacağınız aboneliği seçin
+5. **Kota türü**için **SQL veritabanı**' nı seçin.
 
-5. **Kota türü**için **SQL veritabanı** ' nı seçin.
+    ![Azure yardım ve destek dikey penceresi](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-6. Ileri ' ye tıklayın **: çözümler**
+6. **İleri: çözümler**' e tıklayın.
 
-1. **Ayrıntıları sağla** ' ya tıklayın
+7. **Ayrıntılar sağla**' ya tıklayın.
 
     ![Sorun ayrıntıları](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. **SQL veritabanı kota türünü**seçin: **diğer kota isteği**
+8. **SQL veritabanı kota türünü**seçin: **diğer kota isteği**.
 
 9. Aşağıdaki şablonu doldur:
 
@@ -227,11 +227,11 @@ Listelenmeyen bölgelerde hiper ölçekli veritabanları oluşturma özelliğini
     > Tahmini TB sayısı 
     >
 
-10. **Önem Derecesi C**’yi seçin
+10. **Önem derecesi C**'yi seçin.
 
 11. Uygun iletişim yöntemini seçin ve ayrıntıları girin.
 
-12. **Kaydet** ve **devam et** 'e tıklayın
+12. **Kaydet** ve **devam et**' e tıklayın.
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
 Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırlamalardır.  Mümkün olduğunca bu sınırlamaların çoğunu kaldırmak için etkin bir şekilde çalışıyoruz.
@@ -240,7 +240,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | :---- | :--------- |
 | Bir mantıksal sunucu için yedeklemeleri Yönet bölmesi, hiper ölçek veritabanlarını göstermez ve SQL Server 'dan filtrelenecektir  | Hiper ölçek, yedeklemeleri yönetmek için ayrı bir yönteme sahiptir ve bu nedenle uzun süreli bekletme ve zaman içinde yedekleme bekletme ayarları uygulanmaz/geçersiz kılınır. Buna uygun olarak, hiper ölçekli veritabanları yedekleme bölmesini yönetme bölmesinde görünmez. |
 | Belirli bir noktaya geri yükleme | Bir veritabanı hiper ölçek hizmeti katmanına geçirildikten sonra, geçiş işleminden önce bir zaman noktasına geri yükleme desteklenmez.|
-| Hiperzölçekli DB 'yi Hypserscale 'e geri yükleme ve tam tersi | Hiper ölçekli bir veritabanını hiper olmayan bir veritabanına geri yükleyemezsiniz veya hiper ölçekli bir veritabanını hiper ölçekli bir veritabanına geri yükleyemezsiniz.|
+| Hiperzölçekli DB 'yi hiper ölçeğe geri yükleme ve tam tersi | Hiper ölçekli bir veritabanını hiper olmayan bir veritabanına geri yükleyemezsiniz veya hiper ölçekli bir veritabanını hiper ölçekli bir veritabanına geri yükleyemezsiniz.|
 | Bir veritabanında 1 TB 'den büyük bir veya daha fazla veri dosyası varsa, geçiş başarısız olur | Bazı durumlarda, büyük dosyaları 1 TB 'tan küçük olacak şekilde küçülterek Bu soruna geçici bir çözüm uygulanabilir. Geçiş işlemi sırasında kullanılan bir veritabanını geçiriyorsanız, hiçbir dosyanın 1 TB 'den büyük olmadığından emin olun. Veritabanı dosyalarının boyutunu anlamak için aşağıdaki sorguyu kullanın. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Yönetilen Örnek | Azure SQL veritabanı yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda SQL veritabanı Hyperscale ile desteklenmemektedir.|
@@ -251,7 +251,8 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır), Azure SQL veritabanı Hyperscale için henüz desteklenmemiştir, ancak hizmet tarafından yönetilen anahtarlarla birlikte TDE desteklenir. |
 |Akıllı veritabanı özellikleri | "Plan zorla" seçeneğinin dışında, diğer tüm otomatik ayarlama seçenekleri hiper ölçekte henüz desteklenmemiştir: seçenekler etkin gibi görünebilir, ancak hiçbir öneri veya eylem yapılmaz. |
-| Veritabanını Küçült | DBCC SHRINKDATABASE veya DBCC SHRINKFILE Şu anda Azure SQL Hyperscale veritabanları ile desteklenmiyor. |
+| Veritabanını Küçült | DBCC SHRINKDATABASE veya DBCC SHRINKFILE Şu anda hiper ölçekli veritabanları için desteklenmiyor. |
+| Veritabanı bütünlük denetimi | DBCC CHECKDB Şu anda hiper ölçekli veritabanları için desteklenmiyor. Azure SQL veritabanı 'nda veri bütünlüğü yönetimiyle ilgili ayrıntılı bilgi için bkz. [Azure SQL veritabanı 'Nda veri bütünlüğü](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

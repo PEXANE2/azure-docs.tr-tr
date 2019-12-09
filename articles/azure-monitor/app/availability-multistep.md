@@ -1,5 +1,5 @@
 ---
-title: Web uygulamanızı çok adımlı Web testleri ve Azure Application Insights izleyin | Microsoft Docs
+title: Çok adımlı Web testleri ile izleme-Azure Application Insights
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817395"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928964"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -27,7 +27,7 @@ ms.locfileid: "72817395"
 * Visual Studio 2017 Enterprise veya üzeri.
 * Visual Studio Web performansı ve yük testi araçları.
 
-Test araçlarını önkoşul olarak belirlemek için. **Web performans ve yük testi araçları** > **hata ayıklama ve test etme**  > **bireysel bileşenleri**  >  **Visual Studio yükleyicisi** başlatın.
+Test araçlarını önkoşul olarak belirlemek için. **Web performans ve yük testi araçları** > **hata ayıklama ve test etme** > **bireysel bileşenleri** > **Visual Studio yükleyicisi** başlatın.
 
 ![Web performans ve yük testi araçları için öğenin yanında bir onay kutusu ile seçili tek bileşenlere sahip Visual Studio Installer Kullanıcı arabiriminin ekran görüntüsü](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -43,7 +43,7 @@ Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual st
 
 ## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 
-1. Kullanılabilirlik bölmesindeki Application Insights portalında,**çok adımlı Web testi** >  test  > **test türü** **Oluştur** ' u seçin.
+1. Kullanılabilirlik bölmesindeki Application Insights portalında, **çok adımlı Web testi** > test > **test türü** **Oluştur** ' u seçin.
 
 2. Test konumlarını, sıklığını ve uyarı parametrelerini ayarlayın.
 
@@ -68,7 +68,7 @@ Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual st
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile, test konumu sayısı-2**  =  **Uyarı konum eşiği** ' dir.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki, **en az beş test konumu ile, test konumu sayısı-2** = **Uyarı konum eşiği** ' dir.|
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -90,7 +90,7 @@ Web testi tarih saat eklentisi Parametreleştirme süresini işlemek için bir y
 
 2. Her eklentinin özelliklerini açın. Buna bir ad verip geçerli saat olarak kullanılmak üzere ayarlayın. Bunlardan birini Dakika Ekle = 15 olarak ayarlayın.
 
-    ![Bağlam parametreleri](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
+    ![Bağlam Parametreleri](./media/availability-multistep/app-insights-72webtest-plugin-parameters.png)
 
 3. Web testi parametrelerinde, eklenti adına başvurmak için {{plug-in name}} kullanın.
 
@@ -113,9 +113,9 @@ Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısın
 | Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
 | Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |
 | İstemci sertifikası  | Base64 kodlamalı biçimde özel anahtara sahip istemci sertifikası değeri. |
-| Ad tanımlayıcısı | Belirtecin ad tanımlayıcısı |
-| Sonra değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
-| Önce değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |
+| Ad Tanımlayıcısı | Belirtecin ad tanımlayıcısı |
+| Sonra Değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
+| Önce Değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |
 | Hedef bağlam parametresi adı | Oluşturulan onayı alacak bağlam parametresi. |
 
 

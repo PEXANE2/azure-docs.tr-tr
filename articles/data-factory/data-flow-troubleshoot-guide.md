@@ -1,18 +1,20 @@
 ---
-title: Azure Data Factory veri akışı sorunlarını giderme
+title: Veri akışları sorunlarını giderme
 description: Azure Data Factory 'de veri akışı sorunlarını giderme hakkında bilgi edinin.
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721354"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930169"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory veri akışı sorunlarını giderme
 
@@ -83,6 +85,14 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 - **Neden**: çok sayıda iç içe geçmiş satırda tek bir belge Ile bir JSON kaynağından okurken, Spark aracılığıyla ADF, yeni bir belgenin başladığını ve önceki belgenin bittiğini belirleyemedi.
 
 - **Çözüm**: JSON veri kümesi kullanan kaynak dönüşümünde "JSON ayarları" nı genişletin ve "tek belge" seçeneğini etkinleştirin.
+
+### <a name="error-message-duplicate-columns-found-in-join"></a>Hata iletisi: birleşimde yinelenen sütunlar bulundu
+
+- **Belirtiler**: ekleme dönüştürmesi, yinelenen sütun adları içeren hem sol hem de sağ taraftaki sütunlarda sonuçlandı
+
+- **Neden**: katılmakta olan akışlar ortak sütun adlarına sahip
+
+- **Çözüm**: birleşime sonra bir SELECT transüamtion ekleyin ve hem giriş hem de çıkış için "yinelenen sütunları kaldır" seçeneğini belirleyin.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu

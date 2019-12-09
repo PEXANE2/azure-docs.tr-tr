@@ -9,13 +9,13 @@ ms.workload: data-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681448"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930539"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Yüksek performans için Azure-SSIS Integration Runtime yapılandırma
 
@@ -115,10 +115,10 @@ Bu veriler tek bir çalışan düğümünde tek bir paket yürütmesini temsil e
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullanıyorsanız, **Azuressismaxparallelexecutionspernode** öğesinin artırılması, tümleştirme çalışma zamanının genel verimini artırabilir. Standard_D1_v2 düğümleri için, düğüm başına 1-4 paralel yürütmeler desteklenir. Diğer tüm düğüm türleri için 1-en fazla (2 x çekirdek sayısı, 8) düğüm başına paralel yürütmeler desteklenir. **Azuressımaxparallelexecutionspernode** ' u desteklediğimiz maksimum değerin ötesinde isterseniz, bir destek bileti açabilir ve sizin için en büyük değeri artırabilir ve Azure PowerShell 'ı kullanarak **Azuressismaxparallelexecutionspernode 'u güncelleştirmeniz gerekir** .
+Paketleri çalıştırmak için zaten güçlü bir çalışan düğümü kullanıyorsanız, **Azuressismaxparallelexecutionspernode** öğesinin artırılması, tümleştirme çalışma zamanının genel verimini artırabilir. Standard_D1_v2 düğümler için, düğüm başına 1-4 paralel yürütmeler desteklenir. Diğer tüm düğüm türleri için 1-en fazla (2 x çekirdek sayısı, 8) düğüm başına paralel yürütmeler desteklenir. **Azuressismaxparallelexecutionspernode** ' u desteklediğimiz maksimum değerin ötesinde isterseniz, bir destek bileti açabilirsiniz ve sizin için en büyük değeri artırabilir ve bu tarihten sonra **Azuressismaxparallelexecutionspernode**öğesini güncelleştirmek için Azure PowerShell kullanmanız gerekir.
 Paketinizin maliyetine ve çalışan düğümlerine yönelik aşağıdaki yapılandırmalara göre uygun değeri tahmin edebilirsiniz. Daha fazla bilgi için bkz. [genel amaçlı sanal makine boyutları](../virtual-machines/windows/sizes-general.md).
 
-| Boyut             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | Maks NIC / Beklenen ağ performansı (Mbps) |
+| Boyut             | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | Maks NIC / Beklenen ağ performansı (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standart\_D1\_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 2/2x500                         | 2 / 750                                        |
 | Standart\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4/4x500                         | 2 / 1500                                       |

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 55bba2ff51460a10feabd881458b8d4a15cde924
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848247"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914617"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
@@ -52,7 +52,10 @@ Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farkl
 
 Bir kullanıcının durumu, yöneticinin Azure MFA 'ya kaydolduğunu ve kayıt sürecini tamamlamadığını yansıtır.
 
-Tüm kullanıcılar *devre dışı bırakıldı*. Azure MFA 'da kullanıcıları kaydettiğinizde, durumları *etkin*olarak değişir. Etkin kullanıcılar oturum açıp kayıt işlemini tamamladıktan sonra, durumu *Zorlanmış*olarak değişir.  
+Tüm kullanıcılar *devre dışı bırakıldı*. Azure MFA 'da kullanıcıları kaydettiğinizde, durumları *etkin*olarak değişir. Etkin kullanıcılar oturum açıp kayıt işlemini tamamladıktan sonra, durumu *Zorlanmış*olarak değişir.
+
+> [!NOTE]
+> MFA, telefon veya e-posta gibi kayıt ayrıntılarına sahip olan bir kullanıcı nesnesi üzerinde yeniden etkinleştirilmişse, yöneticilerin bu kullanıcının MFA 'yı Azure portal veya PowerShell aracılığıyla yeniden kaydetmesi gerekir. Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez.
 
 ### <a name="view-the-status-for-a-user"></a>Kullanıcının durumunu görüntüleme
 
@@ -179,6 +182,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > Kısa süre önce yukarıdaki davranışı ve PowerShell betiğini değiştirdik. Daha önce, komut dosyası MFA yöntemlerine kaydedilir, MFA 'yı devre dışı bırakmış ve yöntemleri geri yükledi. Artık devre dışı bırakma için varsayılan davranış metotları temizlemez.
+>
+> MFA, telefon veya e-posta gibi kayıt ayrıntılarına sahip olan bir kullanıcı nesnesi üzerinde yeniden etkinleştirilmişse, yöneticilerin bu kullanıcının MFA 'yı Azure portal veya PowerShell aracılığıyla yeniden kaydetmesi gerekir. Kullanıcı yeniden kaydolmazsa, MFA durumu, MFA yönetimi Kullanıcı arabiriminde *etkin* durumuna geçmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
@@ -13,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/12/2019
-ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa0f61ed0e280f11e693596f80e79f2e2c110678
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217639"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932033"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>ADF 'de Azure-SSIS IR için şirket içinde barındırılan IR 'yi bir ara sunucu olarak yapılandırma
 
@@ -54,7 +53,7 @@ Lütfen, [ADF bağlantılı hizmet oluşturma](https://docs.microsoft.com/azure/
 ![Ara sunucu olarak şirket içinde barındırılan IR ile Azure-SSIS IR yapılandırma](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS paketlerini proxy ile bağlanacak şekilde etkinleştir
-[Buradan indirilebilen ve buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) indirilebilecek tek başına bir yükleyici olarak, Visual STUDIO için SSIS projeleri Uzantısı ile en son SSDT 'yi [kullanarak, OLEDB](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)'ye eklenen yeni bir **connectbyproxy** özelliği bulabilirsiniz/ Düz dosya bağlantı yöneticileri.  
+[Buradan indirilebilen ve buradan](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) indirilebilecek tek başına bir yükleyici olarak, Visual STUDIO için SSIS projeleri Uzantısı ile en son SSDT 'yi [kullanarak, OLEDB](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)/düz dosya bağlantı yöneticilerine eklenen yeni bir **connectbyproxy** özelliği bulabilirsiniz.  
 
 Şirket içindeki veritabanlarına/dosyalara erişmek için OLEDB/düz dosya kaynaklarıyla veri akışı görevleri içeren yeni paketler tasarlarken, ilgili bağlantı yöneticilerinin Özellikler panelinde onu **true** olarak ayarlayarak bu özelliği etkinleştirebilirsiniz.
 
@@ -69,7 +68,7 @@ Bu özelliği, var olan paketleri bir tane ile tek tek değiştirmek zorunda kal
   
   ![ConnectByProxy property3 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- SSIS IR 'niz üzerinde çalışmak üzere bu paketleri içeren projeyi yeniden dağıtma: özellik, özellik yolu ve `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`sağlayarak etkinleştirilebilir ve paket açılır penceresini yürütme penceresinin **Gelişmiş** sekmesinde özellik geçersiz kılma olarak **true** olarak ayarlanır. paketleri SSMS 'den çalıştırırken.
+- SSIS IR 'niz üzerinde çalıştırılacak olan bu paketleri içeren projeyi yeniden dağıtma: özellik, özellik yolu ve `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`sağlayarak etkinleştirilebilir ve paketleri SSMS 'den çalıştırırken paket açılır penceresini Çalıştır **Gelişmiş** sekmesinde bir özellik geçersiz kılma olarak **true** olarak ayarlanarak etkinleştirilebilir.
 
   ![ConnectByProxy property4 etkinleştir](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
@@ -95,4 +94,4 @@ Azure-SSIS IR çalışan ikinci hazırlama görevleri ayrı olarak faturalandır
 - ODBC/OLEDB/düz dosya kaynakları ve bağlantı yöneticilerinin özelliklerinde SSIS parametreleri/değişkenleri kullanılması şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şirket içinde barındırılan IR 'yi, Azure-SSIS IR için bir ara sunucu olarak yapılandırdıktan sonra, ADF işlem hatlarında SSIS paket etkinliklerini yürütme olarak SSIS paketlerini yürütme gibi paketleri dağıtabilir ve çalıştırabilirsiniz. ADF işlem hatları 'nda SSIS paketi [yürütme ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Şirket içinde barındırılan IR 'yi, Azure-SSIS IR için bir ara sunucu olarak yapılandırdıktan sonra, ADF işlem hatlarında SSIS paket etkinliklerini yürütme olarak [SSIS paketlerini](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)yürütme gibi paketleri dağıtabilir

@@ -5,29 +5,29 @@ ms.subservice: operations
 ms.topic: include
 ms.date: 08/23/2019
 ms.author: sstein
-ms.openlocfilehash: 9e189d0582d2e81193c892cb349b475ed0d68df8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2a8b9322f7c03d76cd8a31c832c343cde9e2e355
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014827"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935754"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure portal ile Azure SQL kaynakları oluşturma ve yönetme
 
 Azure portal, SQL sanal makineleriniz dahil olmak üzere [tüm Azure SQL kaynaklarınızı](https://go.microsoft.com/fwlink/?linkid=2100641) yönetebileceğiniz tek bir sayfa sağlar.
 
-**Azure SQL kaynakları** sayfasına erişmek için Azure Portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+**Azure SQL kaynakları** sayfasına erişmek için, Azure Portal menüsünden **Azure SQL** ' i seçin veya HERHANGI bir sayfada **Azure SQL** ' i arayıp seçin.
 
 > [!NOTE]
 > **Azure SQL** , tüm SQL veritabanlarına, elastik havuzlara, veritabanı SUNUCULARıNA, SQL yönetilen örneklere ve SQL sanal makinelerinize erişmenin hızlı ve kolay bir yolunu sunar. Azure SQL bir hizmet veya kaynak değil. 
 
 Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle**' yi seçin. 
 
-![Azure SQL Portal sayfası](../media/sql-database-technical-overview/azure-sql.png)
+![Azure SQL Portal sayfası](../media/sql-database-technical-overview/add-azure-sql-resources.png)
 
 **+ Ekle**' yi seçtikten sonra herhangi bir kutucukta **Ayrıntıları göster** ' i seçerek farklı seçeneklerle ilgili ek bilgileri görüntüleyin.
 
-![veritabanları kutucuk ayrıntıları](../media/sql-database-technical-overview/create-single-database.png)
+![veritabanları kutucuk ayrıntıları](../media/sql-database-technical-overview/single-sql-database-deployment-options.png)
 
 Ayrıntılar için bkz.
 

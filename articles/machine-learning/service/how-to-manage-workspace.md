@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c7ff51c18d4ec41c706518631071e8feb3bafe59
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615213"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912464"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal Azure Machine Learning çalışma alanları oluşturun ve yönetin
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure P
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Bir çalışma alanı oluşturmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
@@ -44,7 +44,7 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
    ---|---
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS**kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.  
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
-   Kaynak grubu | Aboneliğinizde var olan bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturmak için bir ad girin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
+   Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
    Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
    Çalışma alanı sürümü | **Temel** veya **Kurumsal**' i seçin.  Bu çalışma alanı sürümü, erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. [Temel ve Kurumsal sürüm teklifleri](overview-what-is-azure-ml.md#sku)hakkında daha fazla bilgi edinin. 
 
@@ -73,15 +73,15 @@ Bir çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız var
 
 Düşük kod deneyimleri ve gelişmiş güvenlik özellikleri gibi gelişmiş özelliklerden yararlanmak için, çalışma alanınızı temel sürümden Enterprise Edition 'a yükseltebilirsiniz.
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
 1. Yükseltmek istediğiniz çalışma alanını seçin.
 
-1. Ya da yükseltme iletisindeki **Yükselt** ' i seçin.
+1. Sayfanın sağ üst kısmında **daha fazla bilgi edinin** ' i seçin.
 
-    ![Çalışma alanını yükseltme](media/how-to-manage-workspace/upgrade.png)
+   [çalışma alanını yükseltme ![](media/how-to-manage-workspace/upgrade.png)](media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. **Güncelleştirmeyi Onayla**' yı seçin.
+1. Görüntülenen pencerede **Yükselt** ' i seçin.
 
 
 > [!IMPORTANT]
@@ -95,7 +95,7 @@ Düşük kod deneyimleri ve gelişmiş güvenlik özellikleri gibi gelişmiş ö
 
    ![Azure Machine Learning çalışma alanı ara](media/how-to-manage-workspace/find-workspaces.png)
 
-1. Bulunan çalışma alanları listesine bakın. Abonelik, kaynak grupları ve konumlara göre filtre uygulayabilirsiniz.  
+1. Çalışma alanı bulunamadı listesinde arayın. Bağlı aboneliği, kaynak grupları ve konumlarını filtreleyebilirsiniz.  
 
 1. Özelliklerini göstermek için bir çalışma alanı seçin.
 
@@ -115,4 +115,4 @@ Silmek istediğiniz çalışma alanının üstündeki Sil düğmesini kullanın.
 Azure Machine Learning ile modeller derlemek, eğitme ve dağıtmak için bir çalışma alanı kullanmayı öğrenmek üzere tam uzunluklu öğreticiyi izleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)
+> [Öğretici: Eğitme modelleri](tutorial-train-models-with-aml.md)

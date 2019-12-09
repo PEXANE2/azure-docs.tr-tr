@@ -2,23 +2,21 @@
 title: Data Lake ve veri ambarından Azure 'a veri geçirme
 description: Data Lake ve veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 056e98c18dbe2dd1adaa9386145ef18e36f8aac2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217575"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930793"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın
 
@@ -47,7 +45,7 @@ Azure Data Factory, verileri bir ağ üzerinden (Internet, ER veya VPN) aktarmak
 Çevrimiçi ve çevrimdışı geçiş yaklaşımı arasından seçim yaparken dikkate alınacak üç önemli noktalar vardır:  
 
 - Geçirilecek verilerin boyutu
-- Ağ bant genişliği
+- Aracısı ilkesinin
 - Geçiş penceresi
 
 Örneğin, veri geçişinizi iki hafta içinde ( *geçiş pencereniz*) tamamlamaya yönelik Azure Data Factory kullanacağınızı varsayalım. Aşağıdaki tabloda pembe/mavi kesme hattına dikkat edin. Verilen herhangi bir sütun için en düşük pembe hücre, geçiş penceresi iki haftadan en yakın olan veri boyutu/ağ bant genişliği eşleştirmesini gösterir. (Mavi hücredeki herhangi bir boyut/bant genişliği eşleştirmesi iki haftadan uzun bir çevrimiçi geçiş penceresine sahiptir.) 

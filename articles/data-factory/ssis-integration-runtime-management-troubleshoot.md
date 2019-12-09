@@ -1,23 +1,22 @@
 ---
-title: "Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme "
+title: SSIS Integration Runtime yönetimi sorunlarını giderme
 description: Bu makale, SSIS Integration Runtime (SSIS IR) yönetim sorunları için sorun giderme kılavuzu sağlar
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/08/2019
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/08/2019
+ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684030"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931933"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
 
@@ -77,7 +76,7 @@ Diğer sorunlar için SQL Özel Durumu hata iletisini gözden geçirin ve hata a
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' Catalog. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. SSISDB adlı mevcut veritabanını bırakabilir veya IR için yeni bir Azure SQL Veritabanı sunucusu veya yönetilen örneği yapılandırabilirsiniz.
+Bu tür bir hata iletisi şöyle görünür: "geçersiz nesne adı ' kataloğu. catalog_properties '." Bu durumda, zaten SSSıSDB adlı bir veritabanınız var, ancak SSIS IR tarafından oluşturulmamış veya veritabanı, son SSIS IR sağlama hatalarından kaynaklanan geçersiz bir durumda. SSISDB adlı mevcut veritabanını bırakabilir veya IR için yeni bir Azure SQL Veritabanı sunucusu veya yönetilen örneği yapılandırabilirsiniz.
 
 ## <a name="custom-setup-issues"></a>Özel Kurulum sorunları
 
@@ -105,7 +104,7 @@ Bu hata özel kurulum betiğinin (main.cmd) yürütülemediği anlamına gelir. 
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Bu hata özel kurulum betiğinin zaman aşımına uğradığını gösterir. Betiğinizin sessizce yürütülüp yürütüldüğünden ve etkileşimli giriş gerekmiyorsa, blob kabınızda yalnızca gerekli özel kurulum dosyalarını içerdiğinden emin olun. Betiği önce yerel makinede sınamanız önerilir. Blob kapsayıcınızda özel kurulum yürütme günlüklerini gözden geçirmelisiniz. Özel kurulum için zaman aşımına uğramadan verilen maksimum süre 45 dakikadır ve maksimum süre kapsayıcınızdan tüm dosyaları indirme ve bunları SSIS IR'ye yükleme süresini içerir. Daha uzun süreye ihtiyacınız olursa bir destek bileti oluşturun.
+Bu hata özel kurulum betiğinin zaman aşımına uğradığını gösterir. Betiğinizin sessiz yürütülebildiğinden, etkileşimli giriş gerektirmediğinden ve blob kapsayıcınızda yalnızca gerekli özel kurulum dosyalarının bulunduğundan emin olun. Betiği öncelikle yerel makinede test etmeniz önerilir. Blob kapsayıcınızda özel kurulum yürütme günlüklerini gözden geçirmelisiniz. Özel kurulum için zaman aşımına uğramadan verilen maksimum süre 45 dakikadır ve maksimum süre kapsayıcınızdan tüm dosyaları indirme ve bunları SSIS IR'ye yükleme süresini içerir. Daha uzun süreye ihtiyacınız olursa bir destek bileti oluşturun.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 

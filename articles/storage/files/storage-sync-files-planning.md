@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546340"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927874"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -124,12 +124,12 @@ Sonuçları CSV 'de göstermek için:
 
 | Özellik | Destek durumu | Notlar |
 |---------|----------------|-------|
-| Erişim denetim listeleri (ACL 'Ler) | Tam olarak destekleniyor | Windows ACL 'Leri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Dosyalara doğrudan bulutta erişiliyorsa, Windows ACL 'Leri (henüz) Azure dosyaları tarafından desteklenmez. |
-| Sabit bağlantılar | Atlanmış | |
-| Sembolik bağlantılar | Atlanmış | |
+| Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows ACL 'Leri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Dosyalara doğrudan bulutta erişiliyorsa, Windows ACL 'Leri (henüz) Azure dosyaları tarafından desteklenmez. |
+| Sabit bağlantılar | Atlandı | |
+| Sembolik bağlantılar | Atlandı | |
 | Bağlama noktaları | Kısmen destekleniyor | Bağlama noktaları bir sunucu uç noktasının kökü olabilir, ancak sunucu uç noktasının ad alanında yer alıyorsa atlanır. |
-| Merkezleriyle | Atlanmış | Örneğin, DfrsrPrivate ve Dfskökleri klasörleri Dağıtılmış Dosya Sistemi. |
-| Yeniden ayrıştırma noktaları | Atlanmış | |
+| Merkezleriyle | Atlandı | Örneğin, DfrsrPrivate ve Dfskökleri klasörleri Dağıtılmış Dosya Sistemi. |
+| Yeniden ayrıştırma noktaları | Atlandı | |
 | NTFS sıkıştırması | Tam olarak destekleniyor | |
 | Seyrek dosyalar | Tam olarak destekleniyor | Seyrek dosya eşitleme (engellenmez), ancak buluta tam dosya olarak eşitlenir. Bulutta dosya içerikleri değiştiğinde (veya başka bir sunucuda), değişiklik indirildiyse dosya artık seyrek olmaz. |
 | Alternatif veri akışları (ADS) | Korunuyor, ancak eşitlenmedi | Örneğin, Dosya Sınıflandırma Altyapısı tarafından oluşturulan sınıflandırma etiketleri eşitlenmez. Sunucu uç noktalarında bulunan dosyalardaki mevcut sınıflandırma etiketleri dokunmaz. |
@@ -142,11 +142,11 @@ Sonuçları CSV 'de göstermek için:
 | Dosya/klasör | Not |
 |-|-|
 | Desktop. ini | Sisteme özel dosya |
-| ethumbs. db $ | Küçük resimler için geçici dosya |
+| ethumbs.db$ | Küçük resimler için geçici dosya |
 | ~$\*.\* | Office geçici dosyası |
 | \*. tmp | Geçici dosya |
-| \*. laccdb | DB kilitleme dosyasına erişin|
-| 635D02A9D91C401B97884B82B3BCDADEA. * | İç eşitleme dosyası|
+| \*.laccdb | DB kilitleme dosyasına erişin|
+| 635D02A9D91C401B97884B82B3BCDAEA.* | İç eşitleme dosyası|
 | Sistem birimi bilgilerini \\ | Birime özgü klasör |
 | $RECYCLE. BÖLME| Klasör |
 | \\eşitleme | Eşitleme klasörü |
@@ -157,16 +157,16 @@ Windows Server Yük Devretme Kümelemesi, "genel kullanım için dosya sunucusu"
 > [!Note]  
 > Eşitlemenin doğru çalışması için, bir yük devretme kümesindeki her düğümde Azure Dosya Eşitleme aracısının yüklü olması gerekir.
 
-### <a name="data-deduplication"></a>Yinelenen verileri kaldırma
+### <a name="data-deduplication"></a>Yinelenen Verileri Kaldırma
 **Windows server 2016 ve Windows server 2019**   
-Yinelenen verileri kaldırma, Windows Server 2016 üzerinde bulut katmanlaması etkinleştirilmiş birimlerde desteklenir. Bulut katmanlaması etkinleştirilmiş bir birimde yinelenen verileri kaldırma özelliğinin etkinleştirilmesi, daha fazla depolama sağlamaya gerek kalmadan şirket içi daha fazla dosya önbelleğe almanızı sağlar. 
+Yinelenen verileri kaldırma, Windows Server 2016 ve Windows Server 2019 üzerinde bulut katmanlaması etkinleştirilmiş birimlerde desteklenir. Bulut katmanlaması etkinleştirilmiş bir birimde yinelenen verileri kaldırma özelliğinin etkinleştirilmesi, daha fazla depolama sağlamaya gerek kalmadan şirket içi daha fazla dosya önbelleğe almanızı sağlar. 
 
 Bulut katmanlaması etkinleştirilmiş bir birimde yinelenen verileri kaldırma etkin olduğunda, sunucu uç noktası konumu içinde en iyi duruma getirilmiş dosyalar bulut katmanlama ilkesi ayarlarına bağlı olarak normal bir dosyaya benzer şekilde katmanlanacaktır. Yinelenenleri kaldırma için iyileştirilmiş dosyalar katmanlandıktan sonra, yinelenen verileri kaldırma atık toplama işi, artık birimdeki diğer dosyalar tarafından başvurulmayan gereksiz öbekleri kaldırarak disk alanını geri kazanmak için otomatik olarak çalışır.
 
 Birim tasarruflarının yalnızca sunucuya uygulanacağını aklınızda yapın; Azure dosya paylaşımındaki verileriniz yinelenenleri kaldırma işlemi geri alınamaz.
 
 > [!Note]  
-> Yinelenen verileri kaldırma ve bulut katmanlaması, gelecekteki bir güncelleştirmede düzeltilecek bir hata nedeniyle sunucu 2019 ' de aynı birimde desteklenmemektedir.
+> Windows Server 2019 ' de etkinleştirilmiş bulut katmanlaması olan birimlerde yinelenen verileri kaldırmayı desteklemek için Windows Update [KB4520062](https://support.microsoft.com/help/4520062) 'in yüklü olması ve Azure dosya eşitleme Aracı sürüm 9.0.0.0 veya daha yeni bir sürümü gereklidir.
 
 **Windows Server 2012 R2**  
 Azure Dosya Eşitleme, Windows Server 2012 R2 'deki aynı birimde yinelenen verileri kaldırma ve bulut katmanlaması desteklemez. Yinelenen verileri kaldırma özelliği bir birimde etkinleştirilmişse, bulut katmanlaması devre dışı bırakılmalıdır. 
@@ -204,10 +204,10 @@ Azure Dosya Eşitleme ve DFS-R 'nin yan yana çalışması için:
 
 Daha fazla bilgi için bkz. [DFS çoğaltma genel bakış](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>'İ
+### <a name="sysprep"></a>Sysprep
 Azure Dosya Eşitleme aracısının yüklü olduğu bir sunucuda Sysprep kullanılması desteklenmez ve beklenmeyen sonuçlara yol açabilir. Aracı yüklemesi ve sunucu kaydı, sunucu görüntüsünü dağıttıktan ve Sysprep Mini Kurulumu tamamlandıktan sonra gerçekleşmelidir.
 
-### <a name="windows-search"></a>Windows arama
+### <a name="windows-search"></a>Windows Search
 Bulut katmanlaması bir sunucu uç noktasında etkinleştirilmişse, katmanlı dosyalar atlanır ve Windows Search tarafından dizine alınmamış olur. Katmanlı olmayan dosyalar doğru şekilde dizine alınır.
 
 ### <a name="antivirus-solutions"></a>Virüsten koruma çözümleri
@@ -256,7 +256,7 @@ Azure Dosya Eşitleme yalnızca aşağıdaki bölgelerde kullanılabilir:
 | Kanada Doğu | Quebec City |
 | Orta Hindistan | Pune |
 | Orta ABD | Iowa |
-| Doğu Asya | Hong Kong ÖIB |
+| Doğu Asya | Hong Kong SAR |
 | Doğu ABD | Virginia |
 | Doğu ABD 2 | Virginia |
 | Fransa Orta | Paris |

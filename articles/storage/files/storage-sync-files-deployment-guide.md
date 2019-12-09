@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546359"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927887"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -57,7 +57,7 @@ Azure Dosya Eşitleme ile kullanmayı düşündüğünüz her sunucu için, bir 
 > [!Note]  
 > Windows Server Core üzerinde Azure Dosya Eşitleme dağıtıyorsanız, bu adımı atlayabilirsiniz.
 
-1. Sunucu Yöneticisi açın.
+1. Sunucu Yöneticisi'ni açın.
 2. **Yerel sunucu**' ya tıklayın:  
     Sunucu Yöneticisi Kullanıcı arabiriminin sol tarafındaki "yerel sunucu" ![](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. **Özellikler** alt bölmesinde **IE Artırılmış Güvenlik Yapılandırması** bağlantısını seçin.  
@@ -400,6 +400,10 @@ Tam dosya uygunluk ve erişim denetimi listesi (ACL) korunarak, ilk için Azure 
 - Bulut uç noktası oluşturulduktan sonra, Azure Dosya Eşitleme ilk eşitlemeyi başlatmadan önce buluttaki dosyaları algılamaya yönelik bir işlem çalıştırır. Bu işlemi gerçekleştirmek için geçen süre, ağ hızı, kullanılabilir bant genişliği ve dosya ve klasör sayısı gibi çeşitli faktörlere bağlı olarak değişir. Önizleme sürümündeki kaba tahmin için algılama işlemi yaklaşık 10 dosya/sn ile çalıştırılır.  Bu nedenle, ön dengeli dağıtım hızlı çalışıyor olsa bile, verilerin bulutta önceden hazırlanması durumunda, tam olarak çalışan bir sistemi almak için genel süre önemli ölçüde uzun sürebilir.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Önceki sürümler ve VSS üzerinden self servis geri yükleme (Birim Gölge Kopyası Hizmeti)
+
+> [!IMPORTANT]
+> Aşağıdaki bilgiler, depolama eşitleme aracısının yalnızca sürüm 9 (veya üzeri) ile kullanılabilir. 9 ' dan düşük sürümlerde StorageSyncSelfService cmdlet 'leri olmayacaktır.
+
 Önceki sürümler, bir dosyanın geri yüklenebilen sürümlerini bir SMB istemcisine sunmak için bir birimin sunucu tarafı VSS anlık görüntülerini kullanmanızı sağlayan bir Windows özelliğidir.
 Bu, genellikle self servis geri yükleme olarak adlandırılan, bir BT yöneticisinden geri yüklemeye bağlı olmak yerine doğrudan bilgi çalışanları için bir güçlü senaryo sağlar.
 

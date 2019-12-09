@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849794"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928991"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python uygulamanız için Azure Izleyicisini ayarlama (Önizleme)
 
@@ -61,7 +61,16 @@ Paketlerin ve tümleştirmelerin tam listesi için bkz. [Opencensus paketleri](h
 
 SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure Izleyici dışarı aktarmak kullanır: izleme, ölçümler ve Günlükler. Bu telemetri türleri hakkında daha fazla bilgi için bkz. [veri platformuna genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Bu telemetri türlerini üç dışarı aktarmak yoluyla göndermek için aşağıdaki yönergeleri kullanın.
 
+## <a name="telemetry-type-mappings"></a>Telemetri türü eşlemeleri
+
+OpenCensus 'ın, Azure Izleyici 'de göreceğiniz telemetri türleriyle eşlendiğini sağlayan dışarı layıcılar aşağıda verilmiştir.
+
+![OpenCensus 'den Azure Izleyici 'ye telemetri türlerinin eşlenmesinin ekran görüntüsü](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>İzleme
+
+> [!NOTE]
+> OpenCensus içindeki `Trace` [Dağıtılmış izlemeye](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)başvurur. `AzureExporter` Azure Izleyici 'ye `requests` ve `dependency` telemetri gönderir.
 
 1. İlk olarak, bazı izleme verilerini yerel olarak oluşturalım. Python boş veya istediğiniz Düzenleyicinizde aşağıdaki kodu girin.
 
@@ -293,7 +302,10 @@ SDK, Azure Izleyici 'ye farklı telemetri türleri göndermek için üç Azure I
         main()
     ```
 
-4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. `traces`altında verileri bulabilirsiniz.
+4. Dışarı aktarma programı günlük verilerini Azure Izleyici 'ye gönderir. `traces`altında verileri bulabilirsiniz. 
+
+> [!NOTE]
+> Bu bağlamdaki `traces` `Tracing`ile aynı değildir. `traces`, `AzureLogHandler`kullandığınızda Azure Izleyici 'de göreceğiniz telemetri türünü ifade eder. `Tracing`, OpenCensus içindeki bir kavram anlamına gelir ve [Dağıtılmış izleme](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)ile ilgilidir.
 
 5. Günlük iletilerinizi biçimlendirmek için, yerleşik Python [günlüğü API 'sindeki](https://docs.python.org/3/library/logging.html#formatter-objects)`formatters` kullanabilirsiniz.
 

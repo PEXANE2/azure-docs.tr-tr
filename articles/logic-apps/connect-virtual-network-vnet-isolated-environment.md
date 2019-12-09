@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 6e301cf8e24ba740b56c63d7f95b50617ba25383
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 27c83bffe40fd80f87542ee4486ef90e684bd5a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792715"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931861"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -187,7 +187,7 @@ Arama kutusuna filtreniz olarak "Integration Service Environment" yazın.
 
       ![Alt ağ ayrıntıları ekleme](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 
-   1. İşiniz bittiğinde **Tamam**' ı seçin.
+   1. İşiniz bittiğinde **Tamam**’ı seçin.
 
    1. Üç alt ağ için bu adımları tekrarlayın.
 
@@ -200,13 +200,13 @@ Arama kutusuna filtreniz olarak "Integration Service Environment" yazın.
 
    ![Doğrulama başarılı olduktan sonra "Oluştur" u seçin](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Azure ortamınızı dağıtmaya başlar, ancak bu işlemin tamamlanması iki saate *kadar sürebilir.* Dağıtım durumunu denetlemek için, Azure araç çubuğınızdan bildirimler bölmesini açan Bildirimler simgesini seçin.
+   Azure, ortamınızı dağıtmaya başlar ve genellikle iki saat içinde tamamlanır. Bazen dağıtım dört saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğınızdan bildirimler bölmesini açan Bildirimler simgesini seçin.
 
    ![Dağıtım durumunu denetle](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 
    Dağıtım başarıyla tamamlandığında, Azure bu bildirimi gösterir:
 
-   ![Dağıtım başarılı oldu](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+   ![Dağıtım başarılı](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
    Aksi takdirde, dağıtım sorunlarını gidermeye yönelik Azure portal yönergeleri izleyin.
 

@@ -2,34 +2,34 @@
 title: İşlem kaynağını Yönet
 description: Azure SQL veri ambarı 'nda performans ölçeği genişletme özellikleri hakkında bilgi edinin. Veri ambarını duraklatarak DWU 'ları veya daha düşük maliyetleri ayarlayarak ölçeği ölçeklendirin.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 11/12/2019
-ms.author: kevin
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039092"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923594"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda işlem yönetme
 Azure SQL veri ambarı 'nda işlem kaynaklarını yönetme hakkında bilgi edinin. Veri ambarını duraklatarak veya performans taleplerini karşılamak için veri ambarını ölçeklendirerek maliyetleri düşürün. 
 
 ## <a name="what-is-compute-management"></a>İşlem yönetimi nedir?
-SQL veri ambarı 'nın mimarisi, depolama ve işlem ayırır ve her birinin bağımsız olarak ölçeklendirilmesine olanak tanır. Sonuç olarak, veri depolamadan bağımsız performans taleplerini karşılamak için işlem ölçeğini ölçeklendirebilirsiniz. Ayrıca işlem kaynaklarını duraklatabilir ve devam ettirebilirsiniz. Bu mimarinin doğal bir sonucu, işlem ve depolama için [faturalandırmaya](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) yöneliktir. Veri Ambarınızı bir süre için kullanmanız gerekmiyorsa, işlem maliyetlerini duraklaleyerek işlem maliyetlerini kaydedebilirsiniz. 
+SQL Data Warehouse mimarisi depolama ile işlemi birbirinden ayırarak, her birinin diğerinden bağımsız olarak ölçeklendirilebilmesini sağlar. Sonuçta, performans taleplerini karşılamak için işlemi veri depolamasından bağımsız olarak ölçeklendirebilirsiniz. Ayrıca işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Bu mimarinin doğal bir sonucu, işlem ve depolama için [faturalandırmaya](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) yöneliktir. Veri ambarınızı bir süreliğine kullanmanız gerekmiyorsa, işlemi duraklatarak işlem maliyetlerinden tasarruf edebilirsiniz. 
 
 ## <a name="scaling-compute"></a>Ölçeklendirme işlem
-Veri ambarınız için [veri ambarı birimleri](what-is-a-data-warehouse-unit-dwu-cdwu.md) ayarını ayarlayarak, işlem ölçeğini ölçeklendirebilir veya ölçeklendirebilirsiniz. Yükleme ve sorgu performansı, daha fazla veri ambarı birimi eklerken doğrusal olarak artabilir. 
+Veri ambarınız için [veri ambarı birimleri](what-is-a-data-warehouse-unit-dwu-cdwu.md) ayarını ayarlayarak, işlem ölçeğini ölçeklendirebilir veya ölçeklendirebilirsiniz. Daha fazla veri ambarı birimi eklendikçe yükleme ve sorgu performansında doğrusal bir artış olur. 
 
 Genişleme adımları için [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md)veya [T-SQL](quickstart-scale-compute-tsql.md) quickbaşlangıçlara bakın. Ayrıca, bir [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)genişleme işlemleri gerçekleştirebilirsiniz.
 
-Bir ölçeklendirme işlemi gerçekleştirmek için, SQL veri ambarı ilk olarak tüm gelen sorguları çıkarır ve sonra tutarlı bir durum sağlamak için işlemleri geri kaydeder. Ölçeklendirme yalnızca işlem geri alma işlemi tamamlandıktan sonra oluşur. Bir ölçeklendirme işlemi için sistem, depolama katmanını Işlem düğümlerinden ayırır, Işlem düğümlerini ekler ve ardından depolama katmanını Işlem katmanına yeniden ekler. Her veri ambarı, Işlem düğümlerine eşit olarak dağıtılan 60 dağıtımları olarak depolanır. Daha fazla Işlem düğümü eklemek daha fazla işlem gücü sağlar. Işlem düğümlerinin sayısı arttıkça, sorgular için daha fazla işlem gücü sağlayan işlem düğümü başına dağıtım sayısı azalır. Benzer şekilde, veri ambarı birimlerini düşürmek, sorguların işlem kaynaklarını azaltan Işlem düğümü sayısını azaltır.
+Ölçeklendirme işlemi yapmak için SQL Veri Ambarı önce tüm gelen sorguları sonlandırarak ve ardından işlemleri geri alarak tutarlı bir durum elde eder. Ölçeklendirme ancak işlemlerin geri alınması tamamlandıktan sonra gerçekleşir. Ölçeklendirme işlemi için sistem depolama katmanını İşlem düğümlerinden ayırır, İşlem düğümlerini ekler ve sonra da depolama katmanını İşlem katmanına yeniden bağlar. Her veri ambarı, İşlem düğümlerine eşit olarak dağıtılmış 60 dağıtım olarak depolanır. Daha fazla İşlem düğümü eklemek işlem gücünü artırır. İşlem düğümlerinin sayısı arttıkça, işlem düğümü başına dağıtımların sayısı azalır ve sorgularınız için daha fazla işlem gücü sağlanır. Benzer şekilde, veri ambarı birimlerini düşürmek, sorguların işlem kaynaklarını azaltan Işlem düğümü sayısını azaltır.
 
 Aşağıdaki tabloda, veri ambarı birimleri değiştiğinde Işlem düğümü başına dağıtım sayısının nasıl değiştiği gösterilmektedir.  DWU6000 60 Işlem düğümleri sağlar ve DWU100 ' den çok daha yüksek sorgu performansına erişir. 
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda, veri ambarı birimleri değiştiğinde Işlem düğümü b
 | DW200c   | 1                | 60                         |
 | DW300c   | 1                | 60                         |
 | DW400c   | 1                | 60                         |
-| DW500c   | 1                | 60                         |
+| DW500c'yi seçin   | 1                | 60                         |
 | DW1000c  | 2                | 30                         |
 | DW1500c  | 3                | 20                         |
 | DW2000c  | 4                | 15                         |
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, veri ambarı birimleri değiştiğinde Işlem düğümü b
 
 En iyi veri ambarı birimi sayısını bulmaya yönelik öneriler:
 
-- Geliştirme aşamasında bir veri ambarı için, daha az sayıda veri ambarı birimi seçerek başlayın.  İyi bir başlangıç noktası DW400 veya DW200.
+- Geliştirme aşamasında bir veri ambarı için, daha az sayıda veri ambarı birimi seçerek başlayın.  İyi bir başlangıç noktası DW400c veya DW200c.
 - Uygulama performansınızı izleyip, gözlemlediğiniz performansa göre seçilen veri ambarı birimlerinin sayısını gözlemleyin.
 - Doğrusal bir ölçek varsayın ve veri ambarı birimlerini ne kadar artırmanız veya azaltmanız gerektiğini belirleyebilirsiniz. 
 - İş gereksinimleriniz için en iyi performans düzeyine ulaşana kadar ayarlamalar yapmaya devam edin.

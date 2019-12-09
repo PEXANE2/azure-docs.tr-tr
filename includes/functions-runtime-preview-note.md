@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e28104e1c795e093fda6457d9f86265312f540be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 19503fd0e469258bb8305f151cc53b9ec3136558
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188934"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935796"
 ---
 > [!IMPORTANT]
-> Azure işlevleri çalışma zamanı Önizleme 2 yalnızca sürüm destekler Azure işlevleri çalışma zamanının 1.x. Bu önizleme özelliğini sürümü desteklemek için güncelleştirildiğinden değil 2.x çalışma zamanı ve hiçbir gelecekteki güncelleştirmeleri planlanmış. Azure işlevleri çalışma zamanı Azure dışındaki barındırmak ihtiyacınız varsa, [KEDA ile Kubernetes üzerinde Azure işlevleri'ni kullanarak](../articles/azure-functions/functions-kubernetes-keda.md)
+> Azure İşlevleri Çalışma Zamanı Preview 2, Azure Işlevleri çalışma zamanının yalnızca sürüm 1. x ' i destekler. Bu önizleme özelliği çalışma zamanının sürüm 2. x ve üstünü destekleyecek şekilde güncelleştirilmiyor ve gelecekteki güncelleştirmeler planlanmıyor. Azure Işlevleri çalışma zamanını Azure dışında barındırmak istiyorsanız, [Keda Ile Kubernetes üzerinde Azure işlevleri](../articles/azure-functions/functions-kubernetes-keda.md) 'ni kullanmayı düşünün

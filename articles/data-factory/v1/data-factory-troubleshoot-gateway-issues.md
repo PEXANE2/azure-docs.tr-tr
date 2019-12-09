@@ -3,21 +3,20 @@ title: Veri Yönetimi ağ geçidi sorunlarını giderme
 description: Veri Yönetimi ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları sağlar.
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682333"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931594"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi kullanımıyla ilgili sorunları giderme
 Bu makalede Veri Yönetimi ağ geçidi kullanmayla ilgili sorunları giderme hakkında bilgi sağlanır.
@@ -239,7 +238,7 @@ Veri deposu bağlantısı veya sürücü ile ilgili hatalar görürseniz, aşağ
 
 ![Tanılama sekmesinde Bağlantıyı Sına](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
-## <a name="gateway-logs"></a>Ağ Geçidi günlükleri
+## <a name="gateway-logs"></a>Ağ geçidi günlükleri
 ### <a name="send-gateway-logs-to-microsoft"></a>Ağ Geçidi günlüklerini Microsoft 'a gönder
 Ağ Geçidi sorunlarını gidermeye yönelik yardım almak için Microsoft Desteği ile iletişim kurmak istediğinizde, ağ geçidi günlüklerinizi paylaşmanız istenebilir. Ağ geçidinin yayımlanmasından sonra, gerekli ağ geçidi günlüklerini Veri Yönetimi ağ geçidi Configuration Manager iki düğme tıklamasıyla paylaşabilirsiniz.    
 

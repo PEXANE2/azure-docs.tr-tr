@@ -9,22 +9,21 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9421a4bbc5f05e8473d25aa63f31e9a8e23e3c98
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b4b13f8b21cfdedde93145a8e437bc2301bee460
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555206"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927098"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure Data Factory teknik incelemeler 
 
 Teknik incelemeler, daha derin bir düzeyde Azure Data Factory keşfetmenizi sağlar. Bu makalede, Azure Data Factory için kullanılabilir teknik incelemeler listesi sunulmaktadır.
 
-| **İncelemesi** | **Açıklama** |
+| **Teknik incelemesi** | **Açıklama** |
 | --- | --- |
 |[Azure Data Factory — bulutta veri tümleştirmesi](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-data-integration-in-the-cloud/Azure_Data_Factory_Data_Integration_in_the_Cloud.pdf) | Bu yazıda Azure Data Factory, modern bir veri ambarı oluşturmanıza, gelişmiş analizler ile akıllı SaaS uygulamalarını nasıl yükseltebileceğinizi ve SQL Server Tümleştirme Hizmetleri paketlerinizi Azure 'a nasıl yükseltebileceğinizi açıklar.|
 |[Azure Data Factory kullanarak şirket içi ilişkisel veri ambarından Azure 'a veri taşıma](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/) | Bu sayfa, var olan şirket içi ilişkisel veri ambarından (örneğin, Netezza, Oracle, Teradata, SQL Server) on TB 'lık verileri Azure 'a (örneğin, BLOB depolama veya Azure Data Lake Storage) Azure Data Factory kullanarak geçirme karmaşıklığını ortadan giderir. Zorluk ve en iyi uygulamalar, Azure Data Factory tarafından Azure 'a giden büyük veri alma yolculuğuna yönelik esnekliği, performans, ölçeklenebilirlik, yönetim ve güvenlik konularında gösterilmektedir. |

@@ -2,23 +2,22 @@
 title: SQL veritabanı yük devretmesi için Azure-SSIS Integration Runtime yapılandırma
 description: Bu makalede, SSıSDB veritabanı için Azure SQL veritabanı coğrafi çoğaltma ve yük devretme ile Azure-SSIS Integration Runtime nasıl yapılandırılacağı açıklanmaktadır
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/14/2018
+ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681383"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928492"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Azure-SSIS Integration Runtime Azure SQL veritabanı coğrafi çoğaltma ve yük devretme ile yapılandırma
 
@@ -36,7 +35,7 @@ Bu bölüm aşağıdaki koşullar doğru olduğunda geçerlidir:
 
 - Azure-SSIS IR, yük devretme grubunun okuma/yazma dinleyicisi uç noktasını işaret eder.
 
-  '
+  VE
 
 - SQL veritabanı sunucusu, sanal ağ hizmeti uç noktası *kuralıyla yapılandırılmadı.*
 
@@ -52,11 +51,11 @@ Bu bölüm aşağıdaki koşullardan biri doğru olduğunda geçerlidir:
 
 - Azure-SSIS IR, yük devretme grubunun birincil sunucu uç noktasını işaret eder. Bu uç nokta, yük devretme gerçekleştiğinde değişir.
 
-  OR
+  VEYA
 
 - Azure SQL veritabanı sunucusu, sanal ağ hizmeti uç noktası kuralıyla yapılandırılır.
 
-  OR
+  VEYA
 
 - Veritabanı sunucusu, bir sanal ağ ile yapılandırılmış bir SQL veritabanı yönetilen örneğidir.
 
@@ -72,7 +71,7 @@ Yük devretme gerçekleştiğinde, aşağıdaki işlemleri yapmanız gerekir:
 
 Aşağıdaki bölümlerde bu adımlar daha ayrıntılı olarak açıklanır.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Sunucunun aynı anda bir kesinti olması durumunda Azure SQL veritabanı sunucunuz için olağanüstü durum kurtarmayı etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ile iş sürekliliği 'Ne genel bakış](../sql-database/sql-database-business-continuity.md).
 
@@ -105,7 +104,7 @@ Azure-SSIS IR durdurmak için şu adımları izleyin, IR 'yi yeni bir bölgeye g
 
 Geçerli bölgede bir ADF veya Azure-SSIS IR olağanüstü durum oluştuğunda, SSıSDB 'nizin yeni bir bölgede yeni bir Azure-SSIS IR çalışmasını sağlayabilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Geçerli bölgede bir sanal ağ kullanıyorsanız, Azure-SSIS tümleştirme çalışma zamanını bağlamak için yeni bölgede başka bir sanal ağ kullanmanız gerekir. Daha fazla bilgi için bkz. [Azure-SSIS tümleştirme çalışma zamanını bir sanal ağa ekleme](join-azure-ssis-integration-runtime-virtual-network.md).
 
@@ -115,7 +114,7 @@ Geçerli bölgede bir ADF veya Azure-SSIS IR olağanüstü durum oluştuğunda, 
 
 Azure-SSIS IR durdurmak için şu adımları izleyin, IR 'yi yeni bir bölgeye geçirin ve yeniden başlatın.
 
-1. SSıSDB 'yi **\<new_data_factory_name\>** veya **\<new_integration_runtime_name\>** 'e bağlı hale getirmek için saklı yordamı yürütün.
+1. SSıSDB 'yi **\<new_data_factory_name\>** veya **\<new_integration_runtime_name\>** 'ye bağlı hale getirmek için saklı yordamı yürütün.
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
@@ -130,7 +129,7 @@ Azure-SSIS IR durdurmak için şu adımları izleyin, IR 'yi yeni bir bölgeye g
      ```
     Bu PowerShell komutu hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure Veri Fabrikası oluşturma](quickstart-create-data-factory-powershell.md)
 
-3. Yeni bölgede Azure PowerShell kullanarak **\<new_integration_runtime_name\>** adlı yeni bir Azure-SSIS IR oluşturun.
+3. Azure PowerShell kullanarak yeni bölgede **\<new_integration_runtime_name\>** adlı yeni bir Azure-SSIS IR oluşturun.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

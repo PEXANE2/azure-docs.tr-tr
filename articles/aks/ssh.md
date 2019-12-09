@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089554"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926365"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Bakım veya sorun giderme için SSH ile Azure Kubernetes Service (AKS) küme düğümlerine bağlanma
 
@@ -41,7 +41,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra ölçek kümesi adını listelemek ve *SCALE_SET_NAME*atamak için *CLUSTER_RESOURCE_GROUP* kullanır.  
+Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra ölçek kümesi adını listelemek ve *SCALE_SET_NAME*atamak için *CLUSTER_RESOURCE_GROUP* kullanır.
 
 > [!IMPORTANT]
 > Şu anda, Azure CLı kullanarak sanal makine ölçek kümesi tabanlı AKS kümeleriniz için yalnızca SSH anahtarlarınızı güncelleştirmeniz gerekir.
@@ -100,7 +100,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra sanal makine adını listelemek için *CLUSTER_RESOURCE_GROUP* kullanır. Örnek çıkış, sanal makinenin adını gösterir: 
+Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra sanal makine adını listelemek için *CLUSTER_RESOURCE_GROUP* kullanır. Örnek çıkış, sanal makinenin adını gösterir:
 
 ```
 Name                      ResourceGroup                                  Location
@@ -144,7 +144,7 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
 1. `debian` kapsayıcı görüntüsü çalıştırın ve buna bir terminal oturumu ekleyin. Bu kapsayıcı, AKS kümesinde herhangi bir düğümle bir SSH oturumu oluşturmak için kullanılabilir:
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
@@ -158,21 +158,12 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Kapsayıcınıza bağlı olmayan yeni bir Terminal penceresi açın ve [kubectl Get Pod][kubectl-get] komutunu kullanarak aks kümenizdeki Pod 'yi listeleyin. Önceki adımda oluşturulan Pod, aşağıdaki örnekte gösterildiği gibi *aks-SSH*adıyla başlar:
+1. Yeni bir Terminal penceresi açın, kapsayıcınıza bağlı değil, özel SSH anahtarınızı yardımcı Pod 'a kopyalayın. Bu özel anahtar, AKS düğümüne SSH oluşturmak için kullanılır. 
 
-    ```
-    $ kubectl get pods
-    
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. Önceki bir adımda, Genel SSH anahtarınızı sorun gidermek istediğiniz AKS düğümüne eklediniz. Şimdi, özel SSH anahtarınızı yardımcı Pod 'a kopyalayın. Bu özel anahtar, AKS düğümüne SSH oluşturmak için kullanılır.
-
-    Önceki adımda elde edilen *aks-SSH* Pod adınızı sağlayın. Gerekirse, *~/. ssh/id_rsa* ÖĞESINI özel SSH anahtarınızın konumuyla değiştirin:
+   Gerekirse, *~/. ssh/id_rsa* ÖĞESINI özel SSH anahtarınızın konumuyla değiştirin:
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. Kapsayıcıya terminal oturumuna dönün, kopyalanmış `id_rsa` özel SSH anahtarındaki izinleri Kullanıcı salt okunurdur olacak şekilde güncelleştirin:
@@ -185,22 +176,22 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 

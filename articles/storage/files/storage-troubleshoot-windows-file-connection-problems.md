@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560141"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927843"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows 'da Azure dosyaları sorunlarını giderme
 
@@ -97,8 +97,7 @@ Bağlantı başarılı olursa şu çıktıyı görmeniz gerekir:
 Azure Dosya Eşitleme, şirket içi Windows Server 'larınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürebilir. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Azure Dosya Eşitleme 443 bağlantı noktası üzerinden çalışarak, bağlantı noktası 445 ' nin engellediği istemcilerden Azure dosyalarına erişmek için geçici bir çözüm olarak kullanılabilir. [Azure dosya eşitleme ayarlamayı öğrenin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Çözüm 2-VPN kullanma
-Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Windows 'dan Azure dosyalarına erişmek için [VPN Kurulumu için yönergeleri](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) izleyin.
+Belirli depolama hesabınıza bir VPN ayarlayarak trafik, internet üzerinden değil, güvenli bir tünelden geçer. Windows 'dan Azure dosyalarına erişmek için [VPN Kurulumu için yönergeleri](storage-files-configure-p2s-vpn-windows.md) izleyin.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Çözüm 3-ISS/BT yöneticinizin yardımıyla bağlantı noktası 445 engelini kaldırın
 [Azure IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)giden 445 numaralı bağlantı noktasını açmak için BT departmanınızla veya ISS 'niz ile çalışın.
@@ -146,7 +145,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
 Portalda bir Azure dosya paylaşımınıza gözattığınızda, şu hatayı alabilirsiniz:
 
 Yetkilendirme hatası  
-Erişiminiz yok 
+Erişim izniniz yok 
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Neden 1: Kullanıcı hesabınızın depolama hesabına erişimi yok
 

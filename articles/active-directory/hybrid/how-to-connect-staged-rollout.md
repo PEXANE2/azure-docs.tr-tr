@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: bulut kimlik doğrulaması ile hazırlanan piyasaya çıkma | Microsoft Docs'
-description: Federal Kimlik doğrulamasından, hazırlanan bir dağıtım kullanılarak bulut kimlik doğrulamasına nasıl geçiş yapılacağını açıklar.
+title: 'Azure AD Connect: hazırlanan dağıtım aracılığıyla bulut kimlik doğrulaması | Microsoft Docs'
+description: Bu makalede, hazırlanmış bir dağıtım kullanılarak federe kimlik doğrulamasından bulut kimlik doğrulamasına nasıl geçiş yapılacağı açıklanır.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -10,24 +10,24 @@ ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: f3044ebdd716eb85dc63d3a77089912d0d51d8b6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847222"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915223"
 ---
-# <a name="cloud-authentication-staged-rollout-public-preview"></a>Bulut kimlik doğrulaması: hazırlanan dağıtım (Genel Önizleme)
+# <a name="migrate-to-cloud-authentication-by-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
-Bu özellik, hazırlanmış bir yaklaşım kullanarak federal kimlik doğrulamasından bulut kimlik doğrulamasına geçiş yapmanıza olanak sağlar.
-
-Federal Kimlik doğrulamasından uzaklaşmak için bazı etkileri vardır. Örneğin, aşağıdakilerden biri varsa:
+Hazırlanmış bir dağıtım yaklaşımı kullanarak, federal kimlik doğrulamasından bulut kimlik doğrulamasına geçiş yapabilirsiniz. Bu makalede, anahtarın nasıl yapılacağı açıklanır. Ancak, hazırlanan piyasaya başlamadan önce, aşağıdaki koşullardan biri veya daha fazlası doğru olduğunda etkilerini göz önünde bulundurmanız gerekir:
     
--  Şirket içi MFA sunucusu 
--  kimlik doğrulaması için akıllı kartları kullanıyor 
--  yalnızca diğer Federasyon özellikleri
+-  Şu anda bir şirket içi Multi-Factor Authentication sunucusu kullanıyorsunuz. 
+-  Kimlik doğrulaması için akıllı kartlar kullanıyorsunuz. 
+-  Geçerli sunucunuz yalnızca Federasyon özelliklerini sunmaktadır.
 
-Bu özelliklerin bulut kimlik doğrulamasına geçmeden önce dikkate alınması gerekir.  Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavuzumuzu incelemenizi öneririz. Daha fazla ayrıntı için [Bu tabloya](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods) bakın.
+Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavuzumuzu incelemenizi öneririz. Daha fazla bilgi için, [Azure Active Directory hibrit kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn#comparing-methods)içindeki "metotları karşılaştırma" tablosuna bakın.
+
+Özelliğe genel bir bakış için bu "Azure Active Directory: hazırlanan dağıtım nedir?" öğesini görüntüleyin. Video
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE3inQJ]
 
@@ -35,212 +35,205 @@ Bu özelliklerin bulut kimlik doğrulamasına geçmeden önce dikkate alınması
 
 ## <a name="prerequisites"></a>Önkoşullar
 
--   Federasyon etki alanları içeren bir Azure AD kiracınız var.
+-   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
--   Parola karması eşitleme + sorunsuz SSO **(seçenek A)** ya da geçişli kimlik doğrulaması + sorunsuz SSO **(seçenek B)** öğesine geçmeye karar verdiniz. Kusursuz SSO isteğe bağlı olsa da, kurumsal ağ içinden etki alanına katılmış makineler kullanan kullanıcılar için sessiz bir oturum açma deneyimi elde etmek üzere sorunsuz SSO 'yu etkinleştirmenizi öneririz.
+-   İki seçenekten birine taşımaya karar verdiniz:
+    - ** - ** *Parola karması eşitlemesi (eşitleme)*  + *KESINTISIZ çoklu oturum açma (SSO)*
+    - **Seçenek B** - *geçişli kimlik doğrulaması* + *sorunsuz SSO*
+    
+    *Kusursuz SSO* isteğe bağlı olsa da, bir kurumsal ağın içinden etki alanına katılmış makineler çalıştıran kullanıcılar için sessiz oturum açma deneyimi elde etmenizi öneririz.
 
--   Bulut kimlik doğrulamasına geçirilmiş kullanıcılar için gereken tüm uygun kiracı markalamasını ve koşullu erişim ilkelerini yapılandırdınız.
+-   Bulut kimlik doğrulamasına geçirilmekte olan kullanıcılar için gereken tüm uygun kiracı marka ve koşullu erişim ilkelerini yapılandırdınız.
 
--   Azure Multi-Factor Authentication kullanmayı planlıyorsanız, kullanıcılarınızın kimlik doğrulama yöntemlerini bir kez kaydetmesini sağlamak için [self servis parola sıfırlama (SSPR) ve Azure MFA için yakınsama kaydı](../authentication/concept-registration-mfa-sspr-combined.md) kullanmanızı öneririz.
+-   Azure Multi-Factor Authentication kullanmayı planlıyorsanız, kullanıcılarınızın kimlik doğrulama yöntemlerini bir kez kaydetmesi için, [self servis parola sıfırlama (SSPR) ve Multi-Factor Authentication için yakınsama kaydı](../authentication/concept-registration-mfa-sspr-combined.md) kullanmanızı öneririz.
 
--   Bu özelliği kullanmak için kiracınızda genel yönetici olmanız gerekir.
+-   Hazırlanan dağıtım özelliğini kullanmak için kiracınızda genel yönetici olmanız gerekir.
 
--   Belirli bir AD ormanında sorunsuz SSO 'yu etkinleştirmek için etki alanı yöneticisi olmanız gerekir.
+-   Belirli bir Active Directory ormanında *sorunsuz SSO* 'yu etkinleştirmek için, bir etki alanı yöneticisi olmanız gerekir.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Bu senaryolar, hazırlanan dağıtım için desteklenir:
+Hazırlanan dağıtım için aşağıdaki senaryolar desteklenir. Özelliği yalnızca için geçerlidir:
 
-- Bu özellik yalnızca Azure AD Connect kullanılarak Azure AD 'ye sağlanan kullanıcılar için geçerlidir ve yalnızca bulutta bulunan kullanıcılar için geçerli değildir.
+- Azure AD Connect kullanılarak Azure AD 'ye sağlanan kullanıcılar. Yalnızca bulutta bulunan kullanıcılar için geçerlidir.
 
-- Bu özellik yalnızca tarayıcılardaki ve modern kimlik doğrulama istemcilerindeki Kullanıcı oturum açma trafiği için geçerlidir. Eski kimlik doğrulaması kullanan uygulamalar veya bulut Hizmetleri, federal kimlik doğrulama akışlarına geri döner. (Örnek: Modern kimlik doğrulaması kapalıyken Exchange Online veya modern kimlik doğrulamasını desteklemeyen Outlook 2010.)
+- Tarayıcılarda ve *modern kimlik doğrulama* istemcilerinde Kullanıcı oturum açma trafiği. Eski kimlik doğrulaması kullanan uygulamalar veya bulut Hizmetleri, federal kimlik doğrulama akışlarına geri döner. Bir örnek, modern kimlik doğrulaması kapalı veya modern kimlik doğrulamayı desteklemeyen Outlook 2010 ile Exchange Online olabilir.
 
 ## <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
-Bu senaryolar, hazırlanan dağıtım için desteklenmez:
+Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
-- Belirli uygulamalar, kimlik doğrulama sırasında "etki alanı\_ipucu" sorgu parametresini Azure AD 'ye gönderir. Bu akışlar devam eder ve hazırlanan dağıtım için etkinleştirilen kullanıcılar kimlik doğrulaması için Federasyon kullanmaya devam eder.
+- Belirli uygulamalar, kimlik doğrulama sırasında "domain_hint" sorgu parametresini Azure AD 'ye gönderir. Bu akışlar devam eder ve hazırlanan dağıtım için etkinleştirilen kullanıcılar kimlik doğrulaması için Federasyon kullanmaya devam eder.
 
 <!-- -->
 
-- Yönetici, güvenlik gruplarını kullanarak bulut kimlik doğrulamasını alabilir. (Bulut güvenlik grupları, şirket içi AD güvenlik grupları kullanılırken eşitleme gecikmesini önlemek için önerilir.)
+- Yöneticiler, güvenlik gruplarını kullanarak bulut kimlik doğrulamasını alabilir. Şirket içi Active Directory güvenlik grupları kullanırken eşitleme gecikmesini önlemek için, bulut güvenlik grupları kullanmanızı öneririz. Aşağıdaki koşullar geçerlidir:
 
-    - **Her özellik için en fazla 10 grup**kullanabilirsiniz; Yani, her Parola karması eşitleme/geçişli kimlik doğrulaması/sorunsuz SSO için.
+    - Her özellik için en fazla 10 grup kullanabilirsiniz. Diğer bir deyişle, *Parola karması eşitleme*, *geçişli kimlik doğrulama*ve *sorunsuz SSO*için 10 grup kullanabilirsiniz.
+    - İç içe gruplar *desteklenmiyor*. Bu kapsam, genel önizleme için de geçerlidir.
+    - Dinamik Gruplar, hazırlanan dağıtım için *desteklenmez* .
+    - Grup içindeki kişi nesneleri grubun eklenmesini engeller.
 
-    - İç içe gruplar **desteklenmiyor**. Bu, genel önizlemeye yönelik kapsamdır.
+- Azure AD Connect veya PowerShell kullanarak, Federasyon kimlik doğrulamasından en son tam geçişi ' i yine de yapmanız gerekir. Hazırlanan dağıtım etki alanlarını federe 'dan yönetilene geçmez.
 
-    - Dinamik Gruplar, hazırlanan dağıtım için **desteklenmez** .
-
-    - Grup içindeki kişi nesneleri, eklenen grup formunun engellenmesini engeller.
-
-- Federe 'dan bulut kimlik doğrulamasına kadar olan son tam geçişi 'in hala Azure AD Connect veya PowerShell kullanılarak gerçekleştirilmesi gerekir. Bu özellik etki alanlarını Federasyondan yönetilene geçmez.
-
-- Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, UX 'in zaman aşımına uğramaması için 200 kullanıcıyla sınırlıdır. Grup UX 'e eklendikten sonra, gerekli şekilde gruba daha fazla kullanıcı ekleyebilirsiniz.
+- Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
 
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama
 
-Hazırlanan dağıtım kullanarak parola karması eşitleme (PHS) oturum açma sınamasını yapmak istiyorsanız, Parola karması eşitleme aşamalı dağıtımını etkinleştirmek için lütfen aşağıdaki ön çalışmayı doldurun.
+Hazırlanan dağıtım kullanarak *Parola karması eşitlemesini* test etmek için, sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
 
-Kullanılan PowerShell cmdlet 'leri hakkında daha fazla bilgi için bkz. [Azuread 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)
+Hangi PowerShell cmdlet 'lerinin kullanılacağı hakkında daha fazla bilgi için bkz. [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Parola karması eşitleme için önceden çalışma
 
-1. Azure AD Connect ' de sayfada bulunan [Isteğe bağlı özelliklerden](how-to-connect-install-custom.md#optional-features) parola karma eşitlemesini etkinleştirin. 
+1.  *Parola karması eşitleme* , Azure AD Connect [isteğe bağlı özellikler](how-to-connect-install-custom.md#optional-features) sayfasından etkinleştirin. 
 
-   ![Azure Active Directory Connect 'de Isteğe bağlı özellikler sayfasının ekran görüntüsü](media/how-to-connect-staged-rollout/sr1.png)
+   ![Azure Active Directory Connect 'daki "Isteğe bağlı özellikler" sayfasının ekran görüntüsü](media/how-to-connect-staged-rollout/sr1.png)
 
-1. Tüm kullanıcıların parola karmalarını Azure AD 'ye eşitlenebilmesi için tam Parola karması eşitleme döngüsünün çalışır durumda olduğundan emin olun. Parola karması eşitleme durumunu denetlemek için [buradaki](tshoot-connect-password-hash-synchronization.md) PowerShell tanılamayı kullanabilirsiniz.
+1. Tüm kullanıcıların parola karmalarının Azure AD ile eşitlenmesi için tam *Parola karması eşitleme* döngüsünün çalıştığından emin olun. *Parola karması eşitleme*durumunu denetlemek için PowerShell tanılamayı, [Azure AD Connect Sync ile parola karması eşitleme sorunlarını gidermek](tshoot-connect-password-hash-synchronization.md)için kullanabilirsiniz.
 
    ![AADConnect sorun giderme günlüğünün ekran görüntüsü](./media/how-to-connect-staged-rollout/sr2.png)
 
-Hazırlanan dağıtım kullanarak doğrudan kimlik doğrulama (PTA) oturum açma sınamasını test etmek istiyorsanız lütfen, hazırlanan dağıtım için PTA 'yı etkinleştirmek üzere aşağıdaki ön çalışmayı doldurun.
+Aşamalı dağıtım kullanarak *doğrudan kimlik doğrulaması* oturum açma 'yı test etmek istiyorsanız, sonraki bölümde yer aldığı ön iş yönergelerini izleyerek etkinleştirin.
 
 ## <a name="pre-work-for-pass-through-authentication"></a>Doğrudan kimlik doğrulaması için önceden çalışma
 
-1. Kimlik doğrulama aracısının çalışmasını istediğiniz Windows Server 2012 R2 veya üstünü çalıştıran bir sunucuyu belirleyin (**Azure AD Connect sunucusunu seçme**). Sunucunun etki alanına katılmış olduğundan, Active Directory Seçili kullanıcıların kimliğini doğrulayabilmesi ve giden bağlantı noktalarında/URL 'lerde Azure AD ile iletişim kurabildiğinden emin olun (bkz. ayrıntılı [Önkoşullar](how-to-connect-sso-quick-start.md)).
+1. *Doğrudan kimlik doğrulama* aracısının çalışmasını Istediğiniz Windows Server 2012 R2 veya üstünü çalıştıran bir sunucu belirler. 
 
-1.  [indirin](https://aka.ms/getauthagent) & sunucuya Microsoft Azure AD Connect kimlik doğrulama aracısını yükleyin. 
+   Azure AD Connect *sunucusunu seçme.* Sunucunun etki alanına katılmış olduğundan, Active Directory Seçili kullanıcıların kimliğini doğrulayabilmesi ve giden bağlantı noktalarında ve URL 'Lerde Azure AD ile iletişim kurabildiğinden emin olun. Daha fazla bilgi için [hızlı başlangıç: Azure AD sorunsuz çoklu oturum açma](how-to-connect-sso-quick-start.md)konusunun "1. Adım: önkoşulları denetleme" bölümüne bakın.
+
+1. [Azure AD Connect kimlik doğrulama aracısını indirip](https://aka.ms/getauthagent)sunucuya yükleyin. 
 
 1.  [Yüksek kullanılabilirliği](how-to-connect-sso-quick-start.md)etkinleştirmek için diğer sunuculara ek kimlik doğrulama aracıları yüklersiniz.
 
-1. [Akıllı kilitleme ayarlarınızı](../authentication/howto-password-smart-lockout.md) uygun şekilde yapılandırdığınızdan emin olun. Bu, kullanıcılarınızın şirket içi Active Directory hesaplarının kötü aktör tarafından kilitlenmemesini sağlamaktır.
+1. [Akıllı kilitleme ayarlarınızı](../authentication/howto-password-smart-lockout.md) uygun şekilde yapılandırdığınızdan emin olun. Bunun yapılması, kullanıcılarınızın şirket içi Active Directory hesaplarının kötü aktör tarafından kilitlenmemesini sağlamaya yardımcı olur.
 
-Hazırlanmış dağıtım için seçtiğiniz oturum açma yönteminden (PHS veya PTA) bağımsız olarak sorunsuz SSO etkinleştirmeniz önerilir. Lütfen, hazırlanan dağıtım için sorunsuz SSO 'yu etkinleştirmek üzere aşağıdaki ön çalışmayı doldurun.
+Hazırlanan dağıtım için seçtiğiniz oturum açma yönteminden (*Parola karması eşitlemesi* veya *geçişli kimlik doğrulaması*) bağımsız olarak *sorunsuz SSO* etkinleştirmenizi öneririz. *Sorunsuz SSO*'yu etkinleştirmek için sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
 
 ## <a name="pre-work-for-seamless-sso"></a>Sorunsuz SSO için önceden çalışma
 
-PowerShell kullanarak AD ormanlarda sorunsuz SSO 'yu etkinleştirin. Birden fazla AD ormanınız varsa, lütfen her orman için aynı olanı tek tek etkinleştirin. Sorunsuz SSO yalnızca, hazırlanan dağıtım için seçilen kullanıcılara tetiklenir ve mevcut Federasyon kurulumunuzu etkilemez.
+PowerShell kullanarak Active Directory ormanlarda *sorunsuz SSO* etkinleştirin. Birden fazla Active Directory ormanına sahipseniz, her orman için tek tek etkinleştirin.  *Sorunsuz SSO* yalnızca, hazırlanan dağıtım için seçilen kullanıcılar için tetiklenir. Mevcut Federasyon kurulumunuzu etkilemez.
 
-**Adımların Özeti**
+Aşağıdakileri yaparak *sorunsuz SSO* 'yu etkinleştirin:
 
-1. İlk olarak Azure AD Connect sunucuda oturum açın.
+1. Azure AD Connect sunucuda oturum açın.
 
-2. % ProgramFiles%\\Microsoft Azure Active Directory Connect klasörüne gidin.
+2.  *% ProgramFiles%\\Microsoft Azure Active Directory Connect* klasörüne gidin.
 
-3. Şu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
+3. Aşağıdaki komutu çalıştırarak *sorunsuz SSO* PowerShell modülünü içeri aktarın: 
 
-4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de `New-AzureADSSOAuthenticationContext`çağırın. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir iletişim kutusu vermelidir.
+   `Import-Module .\AzureADSSO.psd1`
 
-5.  `Get-AzureADSSOStatus | ConvertFrom-Json`çağırın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini (\"etki alanları\" listesine bakın) sağlar. Varsayılan olarak, kiracı düzeyinde false olarak ayarlanır.
+4. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de `New-AzureADSSOAuthenticationContext`çağırın. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir pencere açar.
 
-   > **Örnek:** 
-   > ![Windows PowerShell çıkışının örneğini](./media/how-to-connect-staged-rollout/sr3.png)
+5.  `Get-AzureADSSOStatus | ConvertFrom-Json`çağırın. Bu komut, Active Directory ormanlarının bir listesini görüntüler (Bu özelliğin etkinleştirildiği "etki alanları" listesine bakın). Varsayılan olarak, kiracı düzeyinde false olarak ayarlanır.
 
-6.  `$creds = Get-Credential`çağırın. İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
+   ![Windows PowerShell çıkışı örneği](./media/how-to-connect-staged-rollout/sr3.png)
 
-7. `Enable-AzureADSSOForest -OnPremCredentials $creds`çağırın. Bu komut, sorunsuz SSO için gerekli olan bu Active Directory orman için şirket içi etki alanı denetleyicisinden AZUREADSSOACC bilgisayar hesabını oluşturur.
+6.  `$creds = Get-Credential`çağırın. İstemde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
 
-8. Sorunsuz SSO, URL 'Lerin intranet bölgesinde olmasını gerektirir. Bu URL 'nin grup Ilkelerini kullanarak dağıtılması için lütfen [sorunsuz çoklu oturum açma hızlı başlangıç](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature) bölümüne bakın.
+7. `Enable-AzureADSSOForest -OnPremCredentials $creds`çağırın. Bu komut, *sorunsuz SSO*için gereken Active Directory ormanı için şirket içi etki alanı denetleyicisinden AZUREADSSOACC bilgisayar hesabını oluşturur.
 
-9.  Ayrıca, tüm yönergeler için sorunsuz SSO için [dağıtım planlarımızı](https://aka.ms/SeamlessSSODPDownload) indirebilirsiniz.
+8. *Sorunsuz SSO* , URL 'lerin intranet bölgesinde olmasını gerektirir. Bu URL 'Leri Grup ilkeleri kullanarak dağıtmak için bkz. [hızlı başlangıç: Azure AD sorunsuz çoklu oturum açma](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature).
+
+9. Tüm yönergeler için, *sorunsuz SSO*için [dağıtım planlarımızı](https://aka.ms/SeamlessSSODPDownload) de indirebilirsiniz.
 
 ## <a name="enable-staged-rollout"></a>Hazırlanan dağıtımı etkinleştir
 
-Bir gruptaki kullanıcı kümesine belirli bir özelliği (doğrudan kimlik doğrulama/Parola karması eşitlemesi/sorunsuz SSO) almak için aşağıdaki adımları kullanın:
+Belirli bir özelliği (*doğrudan kimlik doğrulama*, *Parola karması EŞITLEME*veya *sorunsuz SSO*) bir gruptaki bir grup kullanıcı kümesine aktarmak için, sonraki bölümlerdeki yönergeleri izleyin.
 
-### <a name="enable-the-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Kiracınızda belirli bir özelliğin hazırlanmış dağıtımını etkinleştirme
+### <a name="enable-a-staged-rollout-of-a-specific-feature-on-your-tenant"></a>Kiracınızda belirli bir özelliğin hazırlanmış bir dağıtımını etkinleştirin
 
-Bu seçeneklerden birini dağıtabilirsiniz
+Aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
--   Parola karması eşitleme + sorunsuz SSO **(seçenek A)**
+- *Sorunsuz SSO* +  - *Parola karması eşitlemesi* **seçeneği**
+- **Seçenek B** - *geçişli kimlik doğrulaması* + *sorunsuz SSO*
+- *Parola karması eşitleme* - **desteklenmez** + *geçişli* *SSO + sorunsuz SSO*
 
--   Geçişli kimlik doğrulaması + sorunsuz SSO **(seçenek B)**
+Şunları yapın:
 
--   Parola karması eşitleme + geçişli kimlik doğrulaması + sorunsuz SSO **-\>** ***desteklenmez***
+1. Önizleme UX 'e erişmek için [Azure AD portalında](https://aka.ms/stagedrolloutux)oturum açın.
 
-Şu adımları uygulayın:
+2. **Yönetilen Kullanıcı oturum açma (Önizleme) bağlantısı için hazırlanan dağıtımı etkinleştir** ' i seçin.
 
-1. Önizleme UX 'e erişmek için aşağıdaki URL 'YI kullanarak Azure AD portalında oturum açın.
+   Örneğin, *seçenek A*'yı etkinleştirmek istiyorsanız, aşağıdaki görüntülerde gösterildiği gibi **parola karma eşitlemesini** ve **kesintisiz çoklu oturum açma** denetimlerini **üzerine**kaydırın.
 
-   > <https://aka.ms/stagedrolloutux>
+   ![Azure AD Connect sayfası](./media/how-to-connect-staged-rollout/sr4.png)
 
-2. Yönetilen Kullanıcı oturumu açma için hazırlanan dağıtımı etkinleştir ' e tıklayın (Önizleme)
+   !["Hazırlanan dağıtım özelliklerini etkinleştir (Önizleme)" sayfası](./media/how-to-connect-staged-rollout/sr5.png)
 
-   *Örneğin:* (**B seçeneği**) parola KARMASı eşitlemesini ve sorunsuz SSO 'Yu etkinleştirmek Istiyorsanız lütfen parola karma eşitlemesini ve sorunsuz çoklu oturum açma özelliklerini aşağıda gösterildiği gibi **' açık '** ' a kaydırın.
+3. *Doğrudan kimlik doğrulamayı* ve *sorunsuz SSO*'yu etkinleştirmek için grupları özelliğe ekleyin. Bir UX zaman aşımını önlemek için, güvenlik gruplarının başlangıçta 200 ' den fazla üye içermediğinden emin olun.
 
-   ![](./media/how-to-connect-staged-rollout/sr4.png)
-
-   ![](./media/how-to-connect-staged-rollout/sr5.png)
-
-3. Doğrudan kimlik doğrulamayı ve sorunsuz çoklu oturum açmayı etkinleştirmek için ilgili grupları özelliğe ekleyin. Lütfen güvenlik gruplarında UX zaman aşımını önlemek için başlangıçta 200 ' den fazla üye bulunmadığından emin olun.
-
-   ![](./media/how-to-connect-staged-rollout/sr6.png)
+   !["Parola karması eşitleme (Önizleme) için grupları yönet" sayfası](./media/how-to-connect-staged-rollout/sr6.png)
 
    >[!NOTE]
    >Bir gruptaki üyeler, hazırlanan dağıtım için otomatik olarak etkinleştirilir. İç içe ve dinamik gruplar, hazırlanan dağıtım için desteklenmez.
 
 ## <a name="auditing"></a>Denetim
 
-Hazırlanmış dağıtım için gerçekleştirdiğimiz farklı eylemler için denetim olaylarını etkinleştirdik.
+Hazırlanan dağıtım için gerçekleştirdiğimiz çeşitli eylemler için denetim olaylarını etkinleştirdik:
 
-- Parola karması eşitleme/geçişli kimlik doğrulaması/sorunsuz SSO için hazırlanan dağıtımı etkinleştirdiğinizde olay denetimi.
-
-  >[!NOTE]
-  >SeamlessSSO, Stagedpiyasaya **çıkma kullanılarak açıldığında** günlüğe kaydedilen denetim olayı.
-
-  ![](./media/how-to-connect-staged-rollout/sr7.png)
-
-  ![](./media/how-to-connect-staged-rollout/sr8.png)
-
-- Parola karması eşitleme/geçişli kimlik doğrulaması/sorunsuz SSO 'ya bir grup eklendiğinde olay denetimi.
+- *Parola karması eşitleme*, *geçişli kimlik doğrulama*veya *sorunsuz SSO*için hazırlanmış bir dağıtımı etkinleştirdiğinizde olay denetimi.
 
   >[!NOTE]
-  >Hazırlanmış dağıtım için Parola karması eşitlemesine bir grup eklendiğinde günlüğe kaydedilen denetim olayı
+  >Hazırlanmış dağıtım kullanılarak *sorunsuz SSO* açık olduğunda bir denetim olayı günlüğe kaydedilir.
 
-  ![](./media/how-to-connect-staged-rollout/sr9.png)
+  !["Özellik için dağıtım ilkesi oluşturma" bölmesi-etkinlik sekmesi](./media/how-to-connect-staged-rollout/sr7.png)
 
-  ![](./media/how-to-connect-staged-rollout/sr10.png)
+  !["Özellik için dağıtım ilkesi oluşturma" bölmesi-değiştirilen özellikler sekmesi](./media/how-to-connect-staged-rollout/sr8.png)
 
-- Gruba eklenen bir Kullanıcı hazırlanan dağıtım için etkinleştirildiğinde denetim olayı
+- *Parola karması eşitleme*, *geçişli kimlik doğrulama*veya *sorunsuz SSO*'ya bir grup eklendiğinde olay denetimi.
 
-  ![](media/how-to-connect-staged-rollout/sr11.png)
+  >[!NOTE]
+  >Hazırlanmış dağıtım için *Parola karması eşitlemesine* bir grup eklendiğinde bir denetim olayı günlüğe kaydedilir.
 
-  ![](./media/how-to-connect-staged-rollout/sr12.png)
+  !["Özellik dağıtımı 'na grup ekleme" bölmesi-etkinlik sekmesi](./media/how-to-connect-staged-rollout/sr9.png)
+
+  !["Özellik dağıtımı 'na grup ekleme" bölmesi-değiştirilen özellikler sekmesi](./media/how-to-connect-staged-rollout/sr10.png)
+
+- Gruba eklenen bir Kullanıcı hazırlanan dağıtım için etkinleştirildiğinde, denetim olayı.
+
+  !["Özellik dağıtımı 'na Kullanıcı Ekle" bölmesi-etkinlik sekmesi](media/how-to-connect-staged-rollout/sr11.png)
+
+  !["Özellik dağıtımı 'na Kullanıcı Ekle" bölmesi-hedef sekmesi](./media/how-to-connect-staged-rollout/sr12.png)
 
 ## <a name="validation"></a>Doğrulama
 
-Parola karması eşitleme veya doğrudan kimlik doğrulama ile oturum açma sınamasını yapmak için (Kullanıcı adı/parola oturum açma):
+Oturum açmayı *Parola karması eşitleme* veya *geçişli kimlik doğrulaması* ile test etmek için (Kullanıcı adı ve parola oturum açma) şunları yapın:
 
-1. Extranet 'ten özel bir tarayıcı oturumunda <https://myapps.microsoft.com> gidin ve hazırlanan dağıtım için seçilen kullanıcı hesabının UserPrincipalName (UPN) değerini girin.
+1. Extranet üzerinde, özel bir tarayıcı oturumunda [uygulamalar sayfasına](https://myapps.microsoft.com) gidin ve ardından hazırlanan dağıtım için seçilen kullanıcı hesabının USERPRINCIPALNAME (UPN) değerini girin.
 
-1. Kullanıcı hazırlanan dağıtım için hedeflendiyse, Kullanıcı Federe oturum açma sayfanıza yönlendirilmez ve bunun yerine Azure AD kiracı markalı oturum açma sayfasında oturum açması istenir.
-
-1. [Azure AD oturum açma etkinlik raporunda](../reports-monitoring/concept-sign-ins.md) userPrincipalName ile filtreleyerek oturum açma 'nın başarıyla göründüğünden emin olun.
-
-Sorunsuz SSO ile oturum açmayı test etmek için:
-
-1. İntranetten özel bir tarayıcı oturumunda <https://myapps.microsoft.com>/bir kişiye gidin ve hazırlanan dağıtım için seçilen kullanıcı hesabının UserPrincipalName (UPN) değerini girin.
-
-1. Kullanıcı sorunsuz SSO 'nun hazırlanmasını hedeflediyse, Kullanıcı "oturum açmaya çalışıyor..." sessizce oturum açmadan önce ileti.
+   Hazırlanmış dağıtım için hedeflenen kullanıcılar, Federasyon oturum açma sayfanıza yönlendirilmez. Bunun yerine, Azure AD kiracı markalı oturum açma sayfasında oturum açması istenir.
 
 1. [Azure AD oturum açma etkinlik raporunda](../reports-monitoring/concept-sign-ins.md) userPrincipalName ile filtreleyerek oturum açma 'nın başarıyla göründüğünden emin olun.
 
-Federasyon sağlayıcılarında Kullanıcı oturum açma işlemlerinin hala devam ettiğinden emin olmak için:
+*Sorunsuz SSO*ile oturum açmayı test etmek için:
 
-[Bu yönergeleri](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)kullanarak, seçili hazırlanan piyasaya çıkma kullanıcıları için AD FS hala devam eden Kullanıcı oturum açma işlemlerini izleyebilirsiniz. Bu üçüncü taraf Federasyon sağlayıcılarında bunu nasıl denettacağına ilişkin satıcı belgelerini denetleyin.
+1. İntranette, özel bir tarayıcı oturumunda [uygulamalar sayfasına](https://myapps.microsoft.com) gidin ve ardından hazırlanan dağıtım için seçilen kullanıcı hesabının USERPRINCIPALNAME (UPN) değerini girin.
 
-## <a name="roll-back"></a>Geri al
+   *Sorunsuz SSO* 'yu aşamalı olarak sunmak için hedeflenen kullanıcılar "oturum açmaya çalışılıyor..." ile sunulmaktadır. sessizce oturum açmadan önce ileti.
 
-### <a name="remove-a-user-from-staged-rollout"></a>Bir kullanıcıyı hazırlanan piyasaya çıkarma
+1. [Azure AD oturum açma etkinlik raporunda](../reports-monitoring/concept-sign-ins.md) userPrincipalName ile filtreleyerek oturum açma 'nın başarıyla göründüğünden emin olun.
 
-1.  Kullanıcının gruptan kaldırılması, Kullanıcı için hazırlanan dağıtımı devre dışı bırakır.
+   Seçili hazırlanmış dağıtım kullanıcıları için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) üzerinde hala gerçekleşen Kullanıcı oturum açma işlemlerini izlemek için, [AD FS sorun giderme: olaylar ve günlüğe kaydetme](https://docs.microsoft.com/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)bölümündeki yönergeleri izleyin. Bu üçüncü taraf Federasyon sağlayıcılarında bunu nasıl denetlayacağına ilişkin satıcı belgelerine bakın.
 
-2.  Hazırlanmış dağıtım özelliğini devre dışı bırakmak istiyorsanız, lütfen aşamalı dağıtımı devre dışı bırakmak için özelliği **' kapalı '** durumuna kaydırın.
+## <a name="remove-a-user-from-staged-rollout"></a>Bir kullanıcıyı hazırlanan piyasaya çıkarma
 
+Bir kullanıcıyı gruptan kaldırmak, bu kullanıcı için hazırlanan dağıtımı devre dışı bırakır. Hazırlanan piyasaya çıkma özelliğini devre dışı **bırakmak için,** denetimi geri kaydırın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
--   **S: bir müşteri üretimde bu özelliği kullanabilir mi?**
+**S: Bu özelliği üretimde kullanabilir miyim?**
 
--   Y: Evet, bu özellik üretim kiracınızda kullanılabilir, ancak ilk olarak bu özelliği test kiracınızda denemenizi öneririz.
+Y: Evet, bu özelliği üretim kiracınızda kullanabilirsiniz, ancak ilk olarak test kiracınızda denemenizi öneririz.
 
--   **S: Bu özellik, bazı kullanıcıların federal kimlik doğrulaması ve diğer bulut kimlik doğrulamasını kullandığı kalıcı bir "ortak varlık" korumak için kullanılabilir mi?**
+**S: Bu özellik, bazı kullanıcıların federal kimlik doğrulaması kullandığı ve diğer kullanıcıların bulut kimlik doğrulamasını kullandığı kalıcı bir "ortak varlığı" korumak için kullanılabilir mi?**
 
--   Y: Hayır, bu özellik, Federasyon 'dan bulut kimlik doğrulamasına geçiş yapmak ve sonunda bulut kimlik doğrulamasına geçmek için tasarlanmıştır. Bu, beklenmeyen kimlik doğrulama akışlarına yol açacağından kalıcı bir karma durum önermiyoruz.
+Y: Hayır, bu özellik, Federasyon 'dan bulut kimlik doğrulamasına geçiş yapmak ve sonunda bulut kimlik doğrulamasına geçmek için tasarlanmıştır. Kalıcı bir karma durum kullanılması önerilmez, çünkü bu yaklaşım beklenmedik kimlik doğrulama akışlarına yol açabilir.
 
--   **S: PowerShell 'i hazırlanan dağıtım gerçekleştirmek için kullanabilir miyim?**
+**S: PowerShell 'i, hazırlanan dağıtım gerçekleştirmek için kullanabilir miyim?**
 
--   Y: Evet, lütfen PowerShell 'i kullanarak [hazırlanan dağıtımı gerçekleştirin](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+C: Evet. PowerShell kullanarak hazırlanan dağıtımı gerçekleştirme hakkında bilgi edinmek için bkz. [Azure AD önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
-## <a name="next-steps"></a>Sonraki Adımlar
-- [AzureAD 2,0 Önizleme](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+## <a name="next-steps"></a>Sonraki adımlar
+- [Azure AD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

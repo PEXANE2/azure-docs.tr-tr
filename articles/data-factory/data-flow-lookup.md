@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory eşleme veri akışı arama dönüşümü
+title: Eşleme veri akışı arama dönüşümü
 description: Azure Data Factory eşleme veri akışı arama dönüşümü
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/03/2019
-ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596560"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930325"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory eşleme veri akışı arama dönüşümü
 
@@ -47,7 +48,7 @@ Bu durumda, arama eşleştirmelerinin ilk değerini seçmek için ```PickFirst``
 
 Data Factory, veri akışları ölçekli Spark ortamlarında yürütülür. Veri kümeniz çalışan düğümü bellek alanına uyabiliyorsanız, arama performansınızı iyileştirebiliriz.
 
-![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
+![Yayın katılımı](media/data-flow/broadcast.png "Yayın Birleştirme")
 
 ### <a name="broadcast-join"></a>Yayın katılımı
 

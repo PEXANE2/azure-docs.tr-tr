@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048386"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928610"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hibrit Avantajı
 
@@ -23,7 +23,7 @@ Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [SQ
 > [!NOTE]
 > Azure Hibrit Avantajı değiştirmek için kapalı kalma süresi gerekmez.
 
-![Fiyat](./media/sql-database-service-tiers/pricing.png)
+![fiyatlandırma](./media/sql-database-service-tiers/pricing.png)
 
 ## <a name="choose-a-license-model"></a>Bir lisans modeli seçin
 
@@ -31,26 +31,34 @@ Azure Hibrit Avantajı ile yalnızca SQL veritabanı altyapısının kendisi iç
 
 Azure portal kullanarak veya aşağıdaki API 'lerden birini kullanarak lisanslama modelinizi seçebilir veya değiştirebilirsiniz:
 
-- PowerShell kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-Azsqlınstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+PowerShell kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
 
-- Azure CLı kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
+- [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+- [New-Azsqlınstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Set-Azsqlınstance](/powershell/module/az.sql/set-azsqlinstance)
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az SQL mı oluştur](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az SQL mı güncelleştirmesi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- REST API kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
+Azure CLı kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
 
-  - [Veritabanları-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Veritabanları-Güncelleştir](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Yönetilen örnekler-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Yönetilen örnekler-güncelleştirme](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+- [az sql db create](/cli/azure/sql/db#az-sql-db-create)
+- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
+- [az SQL mı oluştur](/cli/azure/sql/mi#az-sql-mi-create)
+- [az SQL mı güncelleştirmesi](/cli/azure/sql/mi#az-sql-mi-update)
+
+# <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+
+REST API kullanarak lisans türünü ayarlamak veya güncelleştirmek için:
+
+- [Veritabanları-oluştur veya güncelleştir](/rest/api/sql/databases/createorupdate)
+- [Veritabanları-Güncelleştir](/rest/api/sql/databases/update)
+- [Yönetilen örnekler-oluştur veya güncelleştir](/rest/api/sql/managedinstances/createorupdate)
+- [Yönetilen örnekler-güncelleştirme](/rest/api/sql/managedinstances/update)
+
+* * *
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

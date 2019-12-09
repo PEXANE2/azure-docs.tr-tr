@@ -1,29 +1,25 @@
 ---
-title: .NET için Microsoft kimlik doğrulama kitaplığı 'nda Web tarayıcıları
+title: MSAL.NET ile Web tarayıcıları kullanma | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802682"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921597"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>MSAL.NET 'de Web tarayıcıları kullanma
 Etkileşimli kimlik doğrulaması için Web tarayıcıları gereklidir. Varsayılan olarak, MSAL.NET, Xamarin. iOS ve Xamarin. Android üzerindeki [sistem Web tarayıcısını](#system-web-browser-on-xamarinios-xamarinandroid) destekler. Ancak, [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) ve [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) uygulamalarında gereksinimlerinize (UX, çoklu oturum açma (SSO) ve güvenlik için ihtiyacı vardır) bağlı olarak [Katıştırılmış Web tarayıcısını de etkinleştirebilirsiniz](#enable-embedded-webviews-on-ios-and-android) . Aynı şekilde, grafik varlığına veya Android 'de Chrome özel sekmelerini destekleyen bir tarayıcıya göre [dinamik olarak](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) hangi Web tarayıcısını kullanacağınızı seçebilirsiniz. MSAL.NET yalnızca .NET Core masaüstü uygulamalarında sistem tarayıcısını destekler.
@@ -49,7 +45,7 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 
 ### <a name="at-a-glance"></a>Bir bakışta
 
-| Çerçevenin        | Eklenen | Sistem | Varsayılan |
+| Çerçeve        | Eklenen | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
 | .NET klasik     | Yes | Evet ^ | Eklenen |
 | .NET Core     | Hayır | Evet ^ | Sistem |
@@ -153,7 +149,7 @@ MSAL.NET ' de ekli Web görünümü ve sistem tarayıcısı arasında bazı gör
 
 **Katıştırılmış Web görünümü kullanılarak MSAL.NET ile etkileşimli oturum açma:**
 
-![Eklenen](media/msal-net-web-browsers/embedded-webview.png)
+![katıştırılmış](media/msal-net-web-browsers/embedded-webview.png)
 
 **Sistem tarayıcısını kullanarak MSAL.NET ile etkileşimli oturum açma:**
 
@@ -175,7 +171,7 @@ MSAL.NET kullanan bir geliştirici olarak, STS 'den etkileşimli iletişim kutus
                     .ExecuteAsync();
     ```
 
-    Android
+    Android:
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)

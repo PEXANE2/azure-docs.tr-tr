@@ -4,21 +4,20 @@ description: Bu makalede, bir düğüm üzerinde çalışabilecek eşzamanlı i�
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c3428019fe23e3f206e763249a18e7774bab149b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 25dbb01a4b018a51390be664472aceadea0a9524
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682692"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932023"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Veri Yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik (Önizleme)
 > [!NOTE]
@@ -134,7 +133,7 @@ Bu bölümde, aşağıdaki iki makale veya bu makalelerdeki kavramlarla ilgili b
 Yüksek kullanılabilirlik ve ölçeklenebilirlik özelliğini kullanmak için var olan bir ağ geçidini yükseltebilirsiniz. Bu özellik yalnızca sürüm > = 2.12. xxxx olan veri yönetimi ağ geçidine sahip düğümlerle birlikte kullanılabilir. Veri Yönetimi ağ geçidi Configuration Manager **Yardım** sekmesinde bir makinede yüklü olan veri yönetimi ağ geçidi sürümünü görebilirsiniz. 
 
 1. Şirket içi makinedeki ağ geçidini, [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=39717)' nden bir MSI kurulum paketini indirip çalıştırarak aşağıdaki şekilde en son sürüme güncelleştirin. Ayrıntılar için [yükleme](data-factory-data-management-gateway.md#installation) bölümüne bakın.  
-2. Azure portal gidin. Veri fabrikanızın **Data Factory sayfasını** başlatın. Bağlı hizmetler bölmesini başlatmak için bağlı hizmetler kutucuğuna **tıklayın.** **Ağ geçidi sayfasını**başlatmak için ağ geçidini seçin. Aşağıdaki görüntüde gösterildiği gibi **Önizleme özelliğini** tıklatın ve etkinleştirin: 
+2. Azure portalına gidin. Veri fabrikanızın **Data Factory sayfasını** başlatın. Bağlı hizmetler bölmesini başlatmak için bağlı hizmetler kutucuğuna **tıklayın.** **Ağ geçidi sayfasını**başlatmak için ağ geçidini seçin. Aşağıdaki görüntüde gösterildiği gibi **Önizleme özelliğini** tıklatın ve etkinleştirin: 
 
     ![Veri Yönetimi ağ geçidi-önizleme özelliğini etkinleştirme](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. Portalda önizleme özelliği etkinleştirildikten sonra tüm sayfalar ' ı kapatın. Yeni önizleme Kullanıcı arabirimini (UI) görmek için **ağ geçidi sayfasını** yeniden açın.
@@ -151,7 +150,7 @@ Yüksek kullanılabilirlik ve ölçeklenebilirlik özelliğini kullanmak için v
 
     Düğümü ayarlamak için önceki bölümdeki yönergeleri izleyin. 
 
-### <a name="installation-best-practices"></a>En iyi yükleme uygulamaları
+### <a name="installation-best-practices"></a>Yükleme için en iyi yöntemler
 
 - Makinenin hazırda bekletmeden olmaması için, ağ geçidinin konak makinesinde güç planını yapılandırın. Ana makine hazırda beklemesi durumunda, ağ geçidi veri isteklerine yanıt vermez.
 - Ağ geçidiyle ilişkili sertifikayı yedekleyin.
@@ -182,15 +181,15 @@ Azure portal, her düğümde (CPU, bellek, ağ (gelen/giden) ve ağ geçidi dü�
 
 ![Veri Yönetimi ağ geçidi-birden çok düğüm izleme](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-Ağ Geçidi sayfasındaki **Gelişmiş ayarları** , ağ **geçidi sorunlarını** ayıklama konusunda yararlı olan **ağ**(ın/out), **rol & kimlik bilgisi durumu**ve **eşzamanlı işler** (çalıştırma/sınırlama) gibi gelişmiş ölçümleri görmek için etkinleştirebilirsiniz ), performans ayarlaması sırasında değiştirilebilen/değiştirilebilen bir şekilde değiştirilebilir. Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:  
+Ağ **geçidi** sayfasında **Gelişmiş ayarları** etkinleştirerek **ağ**(ın/out) gibi gelişmiş ölçümleri, **rol & kimlik bilgisi durumunu**ve performans ayarlaması sırasında değiştirilebilen/değiştirilebilen **eşzamanlı işleri** (çalışıyor/limit) görebilirsiniz. Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:  
 
 İzleme özelliği | Açıklama
 :------------------ | :---------- 
-Ad | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı.  
+Adı | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı.  
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü. 
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). 
 Available memory | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür. 
-CPU utilization | Bir ağ geçidi düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür. 
+CPU kullanımı | Bir ağ geçidi düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür. 
 Networking (In/Out) | Ağ Geçidi düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür. 
 Concurrent Jobs (Running/ Limit) | Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU/bellek/ağın kullanıldığı, ancak etkinliklerin zaman aşımına uğramasının gerektiği Gelişmiş senaryolarda, eşzamanlı iş yürütmeyi ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu özellik, tek düğümlü bir ağ geçidiyle (ölçeklenebilirlik ve kullanılabilirlik özelliği etkinleştirilmediği halde) da kullanılabilir. Daha fazla bilgi için bkz. [Ölçek değerlendirmeleri](#scale-considerations) bölümü. 
 Rol | İki tür rol – dağıtıcı ve çalışan vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevler/işler çekmek ve bunları farklı çalışan düğümlerine (kendisi dahil) göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. 
@@ -205,9 +204,9 @@ Durum  | Açıklamalar/senaryolar
 :------- | :------------------
 Çevrimiçi | Data Factory hizmetine bağlı düğüm.
 Offline | Düğüm çevrimdışı.
-Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor.
+Yükseltme | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir. 
-Olmadan | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir. 
+Etkin Değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir. 
 
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır. 

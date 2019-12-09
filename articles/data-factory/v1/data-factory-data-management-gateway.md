@@ -4,21 +4,20 @@ description: Şirket içi ve bulut arasında veri taşımak için bir veri ağ g
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682722"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932015"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -137,7 +136,7 @@ Aşağıdaki görüntüde, gördüğünüz bazı tepsi simgeleri gösterilmekted
 ### <a name="ports-and-firewall"></a>Bağlantı noktaları ve güvenlik duvarı
 Göz önünde bulundurmanız gereken iki güvenlik duvarı vardır: kuruluşun merkezi yönlendiricisinde çalışan **Kurumsal güvenlik duvarı** ve ağ geçidinin yüklü olduğu yerel makinede bir daemon olarak yapılandırılmış **Windows Güvenlik Duvarı** .
 
-![duvar](./media/data-factory-data-management-gateway/firewalls2.png)
+![güvenlik duvarları](./media/data-factory-data-management-gateway/firewalls2.png)
 
 Şirket güvenlik duvarı düzeyinde, aşağıdaki etki alanlarını ve giden bağlantı noktalarını yapılandırmanız gerekir:
 
@@ -252,7 +251,7 @@ Aşağıdakine benzer hatalarla karşılaşırsanız, büyük olasılıkla güve
 
 Ağ Geçidi makinesinde 8050 bağlantı noktasını açmayı seçerseniz, veri deposu kimlik bilgilerini yapılandırmak için **kimlik bilgilerini ayarlama** uygulamasını kullanmaktan farklı mekanizmaları kullanın. Örneğin, [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet 'ini kullanabilirsiniz. Veri deposunun kimlik bilgilerinin nasıl ayarlanacağı hakkında bilgi için bkz. kimlik bilgileri ve güvenlik bölümü.
 
-## <a name="update"></a>Güncelleştirme
+## <a name="update"></a>Güncelleştir
 Varsayılan olarak, veri yönetimi ağ geçidi, ağ geçidinin daha yeni bir sürümü kullanılabilir olduğunda otomatik olarak güncelleştirilir. Tüm zamanlanmış görevler tamamlanana kadar ağ geçidi güncellenmez. Güncelleştirme işlemi tamamlanana kadar ağ geçidi tarafından başka görev işlenmeyecektir. Güncelleştirme başarısız olursa, ağ geçidi eski sürüme geri alınır.
 
 Zamanlanan güncelleştirme saatini aşağıdaki konumlarda görürsünüz:
@@ -365,11 +364,11 @@ Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların aç�
 
 İzleme özelliği | Açıklama
 :------------------ | :----------
-Ad | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
+Adı | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı. Düğüm, ağ geçidinin yüklü olduğu şirket içi bir Windows makinedir. Tek bir mantıksal ağ geçidinde birden fazla düğüm (en fazla dört düğüme) olma hakkında bilgi için, bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md).
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü.
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur).
 Available memory | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür.
-CPU utilization | Bir ağ geçidi düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür.
+CPU kullanımı | Bir ağ geçidi düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür.
 Networking (In/Out) | Ağ Geçidi düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür.
 Concurrent Jobs (Running/ Limit) | Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı anlık görüntüsüdür. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU/bellek/ağın kullanıldığı, ancak etkinliklerin zaman aşımına uğramasının gerektiği Gelişmiş senaryolarda, eşzamanlı iş yürütmeyi ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu özellik, tek düğümlü bir ağ geçidiyle (ölçeklenebilirlik ve kullanılabilirlik özelliği etkinleştirilmediği halde) da kullanılabilir.
 Rol | Çok düğümlü bir ağ geçidi-dağıtıcı ve çalışan üzerinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevler/işler çekmek ve bunları farklı çalışan düğümlerine (kendisi dahil) göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır.
@@ -381,19 +380,19 @@ Aşağıdaki tabloda **ağ geçidi düğümünün**olası durumları verilmişti
 
 Durum  | Açıklamalar/senaryolar
 :------- | :------------------
-Online | Data Factory hizmetine bağlı düğüm.
-Çevrimdışı | Düğüm çevrimdışı.
-Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor.
+Çevrimiçi | Data Factory hizmetine bağlı düğüm.
+Offline | Düğüm çevrimdışı.
+Yükseltme | Düğüm otomatik olarak güncelleştiriliyor.
 Sınırlı | Bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya kimlik bilgisi eşitleme sorunu olabilir.
-Olmadan | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
+Etkin Değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır.<br/><br/> Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır.
 
 Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
-Online | Ağ Geçidi düğümleri çevrimiçi
-Çevrimdışı | Çevrimiçi durumda düğüm yok.
+Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
+Offline | Çevrimiçi durumda düğüm yok.
 Sınırlı | Bu ağ geçidinde düğümlerin hepsi sağlıklı durumda değil. Bu durum, bir düğümün kapatılmış olabileceğini belirten bir uyarıdır! <br/><br/>Dağıtıcı/çalışan düğümündeki kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir.
 
 ## <a name="scale-up-gateway"></a>Ağ geçidini büyütme

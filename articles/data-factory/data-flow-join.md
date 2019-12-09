@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory eşleme veri akışında dönüştürmeyi birleştirin
+title: Eşleme veri akışında dönüştürmeyi Birleştir
 description: Azure Data Factory eşleme veri akışındaki birleştirme dönüşümünü kullanarak iki veri kaynağından verileri birleştirme
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/17/2019
-ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122931"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930335"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
 
@@ -38,7 +39,7 @@ Sağ dış birleşim, sol akıştaki doğru akıştaki ve eşleşen kayıtlardan
 
 Tam dış birleşim, eşleşmeyen sütunlarda NULL değerler ile her iki taraftan da tüm sütunları ve satırları çıktı.
 
-### <a name="cross-join"></a>Çapraz ekleme
+### <a name="cross-join"></a>Çapraz Birleştirme
 
 Çapraz birle, iki akışın çapraz çarpımını bir koşula göre çıktı. Eşitlik olmayan bir koşul kullanıyorsanız, çapraz ekleme koşulunuz olarak bir özel ifade belirtin. Çıkış akışı, JOIN koşulunu karşılayan tüm satırlar olacaktır. Her satır bileşimini çıkaran bir Kartezyen ürün oluşturmak için, birleşim koşulunuz olarak `true()` belirtin.
 

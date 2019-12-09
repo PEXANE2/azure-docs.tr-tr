@@ -1,5 +1,6 @@
 ---
-title: Web API 'Lerini çağıran masaüstü uygulaması (uygulama için bir belirteç alınıyor)-Microsoft Identity platform
+title: Web API 'Lerini çağıran masaüstü uygulamaları için belirteç al | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin (uygulama için bir belirteç alınıyor |)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175472"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920235"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması-belirteç alma
 
@@ -260,7 +261,7 @@ Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için 
 
 `.WithCustomWebUI`kullanmak için şunları yapmanız gerekir:
 
-  1. `ICustomWebUi` arabirimini uygulayın ( [buraya](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)bakın. Genellikle yetkilendirme kodu URL 'sini kabul `AcquireAuthorizationCodeAsync` bir yöntem uygulamanız gerekir (MSAL.NET tarafından hesaplanan), kullanıcının kimlik sağlayıcısıyla etkileşime geçmesine izin vermek ve ardından kimlik sağlayıcısının sahip olacağı URL 'YI geri döndürmektir. Uygulamanızın geri çağrılması (yetkilendirme kodu dahil). Sorunlarınız varsa, uygulamanızın MSAL ile sorunsuz bir şekilde çalışması için `MsalExtensionException` özel durumu oluşturması gerekir.
+  1. `ICustomWebUi` arabirimini uygulayın ( [buraya](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)bakın. Genellikle yetkilendirme kodu URL 'sini kabul `AcquireAuthorizationCodeAsync` (MSAL.NET tarafından hesaplanan) bir yöntemi uygulamanız gerekir, bu da kullanıcının kimlik sağlayıcısıyla etkileşime geçmesine izin verir ve ardından kimlik sağlayıcısının uygulamanızı geri çağırarak (yetkilendirme kodu dahil) URL 'YI geri döndürmesidir. Sorunlarınız varsa, uygulamanızın MSAL ile sorunsuz bir şekilde çalışması için `MsalExtensionException` özel durumu oluşturması gerekir.
   2. `AcquireTokenInteractive` çağrın, özel Web UI 'nizin örneğini geçirerek `.WithCustomUI()` değiştiricisini kullanabilirsiniz
 
      ```CSharp
@@ -428,7 +429,7 @@ Bir etki alanı veya Azure AD 'ye katılmış makinede bir etki alanı kullanıc
 
 Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri ve onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
-### <a name="how-to-use-it"></a>Nasıl kullanılır
+### <a name="how-to-use-it"></a>Kullanımı
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -1108,7 +1109,7 @@ Belirteç önbelleği serileştirmesi ile ilgili sınıflar ve arabirimler aşa�
 
 Bir genel istemci uygulaması (Masaüstü) veya gizli bir istemci uygulaması (Web uygulaması/Web API 'SI, Daemon uygulaması) için bir belirteç önbelleği serileştirmesi yazıyorsanız, stratejileri farklılık açıktır.
 
-MSAL v2. x için, önbelleği yalnızca MSAL.NET biçimine (MSAL ile ortak olan Birleşik biçim önbelleği, ancak platformlar arasında) seri hale getirmek istiyorsanız veya [eski](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) belirteç önbelleğini desteklemek istiyorsanız, bu kadar birkaç seçeneğiniz vardır. ADAL v3 serileştirilmesi.
+MSAL v2. x, önbelleği yalnızca MSAL.NET biçimine (MSAL ile ortak olan Birleşik biçim önbelleği, ancak platformlar arasında) seri hale getirmek istiyorsanız veya Ayrıca ADAL v3 'in [eski](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) belirteç önbelleği serileştirmesini desteklemek istiyorsanız, birkaç seçeneğe sahip olursunuz.
 
 ADAL.NET 3. x, ADAL.NET 5. x ve MSAL.NET arasındaki SSO durumunu paylaşmak için belirteç önbelleği serileştirme özelleştirmesi, şu örneğin bir parçası olarak açıklanmaktadır: [Active-Directory-DotNet-v1--v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
 

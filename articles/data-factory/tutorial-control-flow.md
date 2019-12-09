@@ -1,22 +1,22 @@
 ---
-title: 'Azure Data Factory ardışık düzeninde dallanma '
+title: Azure Data Factory ardışık düzeninde dallanma
 description: Dallanma ve zincirleme etkinlikleriyle Azure Data Factory'de veri akışını denetleme hakkında bilgi edinin.
 services: data-factory
-documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683667"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926610"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -42,11 +42,11 @@ Bu öğreticide .NET SDK kullanılır. Azure Data Factory etkileşimde bulunmak 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
-* Azure SQL veritabanı. Veritabanını havuz veri deposu olarak kullanırsınız. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md).
+* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. Veritabanını havuz veri deposu olarak kullanırsınız. Azure SQL veritabanınız yoksa bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md).
 * Visual Studio. Bu makalede Visual Studio 2019 kullanılmaktadır.
 * Azure .NET SDK. [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/)indirin ve yükleyin.
 
@@ -63,7 +63,7 @@ Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. 
    Tamika|Walsh
    ```
 
-1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **BLOB kapsayıcıları** ' na sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin.
+1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **Blob Kapsayıcıları**'na sağ tıklayın ve **Blob Kapsayıcısı Oluştur**'u seçin.
 1. Yeni kapsayıcıyı *adfv2branch* olarak adlandırın ve *input. txt* dosyanızı kapsayıcıya eklemek için **karşıya yükle** ' yi seçin.
 
 ## Visual Studio projesi oluştur<a name="create-visual-studio-project"></a>
@@ -77,7 +77,7 @@ C# .NET konsol uygulaması oluşturma:
 
 ### <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**'nu seçin.
 1. **Paket Yöneticisi konsolunda**, paketleri yüklemek için aşağıdaki komutları çalıştırın. Ayrıntılar için [Microsoft. Azure. Management. DataFactory NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) inceleyin.
 
    ```powershell
@@ -133,7 +133,7 @@ C# .NET konsol uygulaması oluşturma:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Aşağıdaki kodu `Main` yöntemine ekleyin. Bu kod, `DataFactoryManagementClient` sınıfının bir örneğini oluşturur. Daha sonra Veri Fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi Ayrıca işlem hattı çalıştırma ayrıntılarını izlemek için de kullanabilirsiniz.
+1. `Main` yöntemine aşağıdaki kodu ekleyin. Bu kod, `DataFactoryManagementClient` sınıfının bir örneğini oluşturur. Daha sonra Veri Fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi Ayrıca işlem hattı çalıştırma ayrıntılarını izlemek için de kullanabilirsiniz.
 
    ```csharp
    // Authenticate and create a data factory management client

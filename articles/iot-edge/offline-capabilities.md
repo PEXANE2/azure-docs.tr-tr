@@ -3,29 +3,28 @@ title: Azure IOT Edge cihazları çevrimdışı - çalışması | Microsoft Docs
 description: IOT Edge cihazları ve modülleri uzun süre için internet bağlantısı olmadan nasıl çalışabilir ve IOT Edge çevrimdışı çok çalışması normal bir IOT cihazları nasıl olanak sağlayabileceğiniz anlayın.
 author: kgremban
 ms.author: kgremban
-ms.date: 08/04/2019
+ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b16a8d8ddd4ac23a59db8e7fed48f1c39752d130
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ba64dcdadc5fa670c4502a7d8d92cb35e3b0cacd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456879"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924861"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge cihazları, modülleri ve alt cihazları için genişletilmiş çevrimdışı özellikleri anlayın
 
-Azure IoT Edge, IoT Edge cihazlarınızda genişletilmiş çevrimdışı işlemleri destekler ve IoT Edge olmayan alt cihazlarda çevrimdışı işlemleri de mümkün. IOT Edge cihazı IOT Hub'ına bağlanmak için bir fırsat dolmadığı sürece, onu ve tüm alt aygıtların aralıklı işleviyle veya internet bağlantısı yok devam edebilirsiniz. 
+Azure IoT Edge, IoT Edge cihazlarınızda genişletilmiş çevrimdışı işlemleri destekler ve IoT Edge olmayan alt cihazlarda çevrimdışı işlemleri de mümkün. Bir IoT Edge cihazda IoT Hub bağlanmak için bir fırsat olduğu sürece, bu cihaz ve tüm alt cihazlar aralıklı olarak veya internet bağlantısı olmadan çalışmaya devam edebilir.
 
-
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Bir IoT Edge cihaz çevrimdışı moda geçtiğinde, IoT Edge hub 'ı üç rol alır. İlk olarak, cihaz yeniden kadar bunları kaydeder ve Yukarı Akış çıkacak herhangi bir iletiyi depolar. İkinci olarak, bunlar çalışmaya devam edebilmesi için modüller ve alt cihazların kimliğini doğrulamak için IOT Hub adına hareket eder. Üçüncü olarak, IOT hub'ı aracılığıyla normalde çıkacak alt cihazlar arasındaki iletişimi sağlar. 
 
 Aşağıdaki örnek, bir IOT Edge senaryo çevrimdışı modda nasıl çalıştığı gösterilmektedir:
 
-1. **Cihazları Yapılandır**
+1. **Cihazları yapılandırma**
 
    IOT Edge cihazları otomatik olarak etkinleştirilen çevrimdışı özellikleri vardır. Diğer IOT cihazlarına söz konusu özellik genişletmek için cihazlar IOT hub'ında arasında bir üst-alt ilişkisi bildirmeniz gerekir. Daha sonra, alt cihazları atanan üst cihazlarına güvenmek ve bir ağ geçidi olarak üst öğe aracılığıyla cihazdan buluta iletişimleri yönlendirmek üzere yapılandırırsınız. 
 
@@ -39,13 +38,15 @@ Aşağıdaki örnek, bir IOT Edge senaryo çevrimdışı modda nasıl çalışt�
 
 4. **IoT Hub yeniden bağlama ve yeniden eşitleme**
 
-   IOT Hub ile bağlantı kurulduktan sonra IOT Edge cihazı yeniden eşitler. Yerel olarak depolanan iletilerinize depolanmış aynı sırada teslim edilir. Modüller istenen ve bildirilen özellikleri ve cihazlar arasındaki farkları mutabık kılınır. IOT Edge cihazı IOT cihazları atanan alt kümesine herhangi bir değişiklik güncelleştirir.
+   IOT Hub ile bağlantı kurulduktan sonra IOT Edge cihazı yeniden eşitler. Yerel olarak depolanan iletiler IoT Hub doğrudan dağıtılır, ancak bağlantının hızına, IoT Hub gecikme süresine ve ilgili faktörlere bağlıdır. Bunlar, depolandıkları sırada teslim edilir.
+
+   Modüller istenen ve bildirilen özellikleri ve cihazlar arasındaki farkları mutabık kılınır. IOT Edge cihazı IOT cihazları atanan alt kümesine herhangi bir değişiklik güncelleştirir.
 
 ## <a name="restrictions-and-limits"></a>Kısıtlamaları ve sınırlar
 
 Bu makalede açıklanan genişletilmiş çevrimdışı yetenekler, [IoT Edge Version 1.0.7 veya üzeri](https://github.com/Azure/azure-iotedge/releases)sürümlerde sunulmaktadır. Önceki sürümlerde çevrimdışı özelliklerinin bir alt kümesi. IOT Edge mevcut genişletilmiş çevrimdışı özellikleri olmayan cihazlar, çalışma zamanı sürümü değiştirerek yükseltilemez ancak bu özellikler sağlamak için yeni bir IOT Edge cihaz kimliği ile yapılandırılması gerekir. 
 
-Genişletilmiş çevrimdışı destek, Doğu ABD **hariç** IoT Hub kullanılabildiği tüm bölgelerde kullanılabilir.
+Genişletilmiş çevrimdışı destek IOT hub'ı kullanılabildiği, tüm bölgelerde kullanılabilir **dışında** Doğu ABD.
 
 Yalnızca IoT Edge olmayan cihazlar alt cihaz olarak eklenebilir. 
 

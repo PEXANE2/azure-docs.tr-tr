@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory kullanarak Azure SQL veri ambarı 'na veri yükleme
+title: Azure SQL Veri Ambarı’na veri yükleme
 description: Azure SQL veri ambarı 'na veri kopyalamak için Azure Data Factory kullanma
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 538751b1e93dfec66c35ea3768bde603c198df32
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 732d5d170ee647dc0dfdbf4d09a12617c8c9bcce
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672756"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931520"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veri ambarı 'na veri yükleme
 
@@ -36,7 +36,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 > [!NOTE]
 > Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure SQL veri ambarı 'na veya buradan veri kopyalama](connector-azure-sql-data-warehouse.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure SQL veri ambarı: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SQL veri ambarınız yoksa, [SQL veri ambarı oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)' daki yönergelere bakın.
@@ -64,7 +64,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
    
    ![Data factory giriş sayfası](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
-   Veri tümleştirme uygulamasını ayrı bir sekmede başlatmak için **yazar & İzleyici** kutucuğunu seçin.
+   Veri Tümleştirme Uygulamasını ayrı bir sekmede açmak için **Oluştur ve İzle** kutucuğunu seçin.
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı’na veri yükleme
 
@@ -85,7 +85,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 
     ![Azure SQL veritabanını seçme](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **son**' u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantı testi**'ne tıklayın ve **Son**'u seçin.
    
     ![Azure SQL veritabanını yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
@@ -107,7 +107,7 @@ Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yükleme
 
     ![Azure SQL DW 'yi seçin](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **son**' u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantı testi**'ne tıklayın ve **Son**'u seçin.
    
     ![Azure SQL DW 'yi yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 

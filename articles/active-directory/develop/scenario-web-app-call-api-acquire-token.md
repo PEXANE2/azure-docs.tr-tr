@@ -1,5 +1,5 @@
 ---
-title: Web API 'Lerini çağıran Web uygulaması (uygulama için bir belirteç edinin)-Microsoft Identity platform
+title: Web API 'Leri çağıran Web uygulamalarında bir belirteç alın-Microsoft Identity platform | Mavisi
 description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (uygulama için bir belirteç alma)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,18 +15,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175336"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919472"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran Web uygulaması-uygulama için bir belirteç alın
 
 Artık size istemci uygulama nesnesi oluşturduğunuza göre, bir Web API 'SI çağırmak için bir belirteç almak üzere onu kullanacaksınız. ASP.NET veya ASP.NET Core içinde, bir Web API 'SI çağrısı daha sonra denetleyicide yapılır. Şu şekilde olur:
 
-- Belirteç önbelleğini kullanarak Web API 'SI için belirteç alma. Bu belirteci almak için `AcquireTokenSilent` ' ı çağırın.
+- Belirteç önbelleğini kullanarak Web API 'SI için belirteç alma. Bu belirteci almak için `AcquireTokenSilent`çağırın.
 - Korumalı API 'yi erişim belirteciyle çağırma.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -81,7 +81,7 @@ Bu gelişmiş adımlar, [3. WebApp-WebApp-çoklu API](https://github.com/Azure-S
 
 ASP.NET ' de benzer şeyler:
 
-- Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar. (ASP.NET `HttpContext.User` kullanır.)
+- Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar. (ASP.NET `HttpContext.User`kullanır.)
 - Buradan, bir MSAL.NET `IConfidentialClientApplication`oluşturur.
 - Son olarak, gizli istemci uygulamasının `AcquireTokenSilent` yöntemini çağırır.
 
@@ -91,7 +91,7 @@ Kod, ASP.NET Core gösterilen koda benzerdir.
 
 Java örneğinde, bir API çağıran kod, getUsersFromGraph yönteminde [Authpagecontroller. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
-`getAuthResultBySilentFlow`çağırmaya çalışır. Kullanıcının daha fazla kapsam onaylaması gerekiyorsa, kod, kullanıcıyı zorluk `MsalInteractionRequiredException` ' ı işler.
+`getAuthResultBySilentFlow`çağırmaya çalışır. Kullanıcının daha fazla kapsam için onay sağlaması gerekiyorsa, kod kullanıcının sınamasını yapmak için `MsalInteractionRequiredException` işler.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

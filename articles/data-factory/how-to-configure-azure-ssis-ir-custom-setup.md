@@ -1,23 +1,23 @@
 ---
-title: 'Azure-SSIS tümleştirme çalışma zamanı için kurulumu özelleştirme '
+title: Azure-SSIS tümleştirme çalışma zamanı için kurulumu özelleştirme
 description: Bu makalede, ek bileşenleri yüklemek veya ayarları değiştirmek için Azure-SSIS tümleştirme çalışma zamanı için özel kurulum arabirimi 'nin nasıl kullanılacağı açıklanır.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 222672a93ccde7464ec1f37212f18996033a1460
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019
+ms.date: 1/25/2019
+ms.openlocfilehash: d80ff102648deebf63cc0752b2980274cb90aeb9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674858"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922889"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS tümleştirme çalışma zamanı için kurulumu özelleştirme
 
@@ -42,7 +42,7 @@ Hem ücretsiz hem de lisanssız bileşenleri, ücretli veya lisanslı bileşenle
 
 -   IBM ıferies erişimi ODBC sürücüsü Azure-SSIS IR desteklenmez. Özel Kurulum sırasında yükleme hatası görebilirsiniz. Yardım için lütfen IBM desteği ile iletişime geçin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -109,7 +109,7 @@ Azure-SSIS IR özelleştirmek için aşağıdaki işlemleri yapmanız gerekir:
 
       ![Paylaşılan erişim Imzasını girin](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-      PowerShell ile Azure-SSIS IR sağladığınızda veya yeniden yapılandırdığınızda, Azure-SSIS IR başlamadan önce, yeni `SetupScriptContainerSasUri` parametresi değeri olarak kapsayıcının SAS URI 'SI ile `Set-AzDataFactoryV2IntegrationRuntime` cmdlet 'ini çalıştırın. Örneğin:
+      PowerShell ile Azure-SSIS IR sağladığınızda veya yeniden yapılandırdığınızda, Azure-SSIS IR başlamadan önce, yeni `SetupScriptContainerSasUri` parametresi değeri olarak kapsayıcının SAS URI 'SI ile `Set-AzDataFactoryV2IntegrationRuntime` cmdlet 'ini çalıştırın. Örnek:
 
       ```powershell
       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -152,11 +152,11 @@ Azure-SSIS IR özelleştirmek için aşağıdaki işlemleri yapmanız gerekir:
 
       1. Azure-SSIS IR her bir düğümüne açık kaynak derlemeler (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`ve `ExcelDataReader.dll`) yüklemek için özel bir kurulum içeren `EXCEL` klasörü.
 
-      1. Tek bir kurulum betiği (`main.cmd`) ve sessiz yükleme yapılandırma dosyası (`client.rsp`) içeren ve Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne Oracle bağlayıcıları ve OCı sürücüsü yükleyen bir `ORACLE ENTERPRISE` klasörü. Bu kurulum, Oracle bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. İlk olarak, [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=55179) 'nden (`AttunitySSISOraAdaptersSetup.msi` ve `AttunitySSISOraAdaptersSetup64.msi`) Microsoft bağlayıcıları v 5.0 'ı ve en son Oracle istemcisini (örneğin `winx64_12102_client.zip`, [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)'dan) indirin ve ardından bunları `main.cmd` ve `client.rsp` ile birlikte karşıya yükleyin Kapsayıcınız. Oracle 'a bağlanmak için TNS kullanırsanız, Ayrıca, kurulum sırasında Oracle yükleme klasörüne kopyalanabilmesi için `tnsnames.ora`indirmeniz, düzenlemeniz ve kapsayıcıya yüklemeniz gerekir.
+      1. Tek bir kurulum betiği (`main.cmd`) ve sessiz yükleme yapılandırma dosyası (`client.rsp`) içeren ve Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne Oracle bağlayıcıları ve OCı sürücüsü yükleyen bir `ORACLE ENTERPRISE` klasörü. Bu kurulum, Oracle bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. İlk olarak, [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=55179) 'nden (`AttunitySSISOraAdaptersSetup.msi` ve `AttunitySSISOraAdaptersSetup64.msi`) Microsoft bağlayıcıları v 5.0 'ı ve en son Oracle istemcisini (örneğin `winx64_12102_client.zip`, [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)'dan) indirin ve ardından bunları kapsayıcınıza `main.cmd` ve `client.rsp` ile birlikte karşıya yükleyin. Oracle 'a bağlanmak için TNS kullanırsanız, Ayrıca, kurulum sırasında Oracle yükleme klasörüne kopyalanabilmesi için `tnsnames.ora`indirmeniz, düzenlemeniz ve kapsayıcıya yüklemeniz gerekir.
 
       1. Azure-SSIS IR her bir düğümüne Oracle ODP.NET sürücüsünü yüklemek için özel bir kurulum betiği (`main.cmd`) içeren `ORACLE STANDARD ADO.NET` klasörü. Bu kurulum, ADO.NET bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. İlk olarak, en son Oracle ODP.NET sürücüsünü indirin (örneğin, [Oracle](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)'dan `ODP.NET_Managed_ODAC122cR1.zip`) ve ardından kapsayıcınıza `main.cmd` birlikte karşıya yükleyin.
        
-      1. Oracle ODBC sürücüsünü yüklemek ve Azure-SSIS IR her bir düğümde DSN 'yi yapılandırmak için özel bir kurulum betiği (`main.cmd`) içeren `ORACLE STANDARD ODBC` klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için ODBC bağlantı Yöneticisi/kaynak/hedef veya Power Query bağlantı Yöneticisi/kaynağını ODBC veri kaynağı türü ile birlikte kullanmanıza olanak sağlar. İlk olarak, en son Oracle Instant Client (temel paket veya temel Lite paketi) ve ODBC paketini (örneğin, 64 bitlik paketler) [buradan](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (temel paket: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, temel Lite paketi: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC paketi: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) veya 32-bit ' i indirin. [buradan](https://www.oracle.com/technetwork/topics/winsoft-085727.html) paketler (temel paket: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, temel Lite paketi: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC paketi: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) ve ardından bunları kapsayıcınıza `main.cmd` birlikte karşıya yükleyin.
+      1. Oracle ODBC sürücüsünü yüklemek ve Azure-SSIS IR her bir düğümde DSN 'yi yapılandırmak için özel bir kurulum betiği (`main.cmd`) içeren `ORACLE STANDARD ODBC` klasörü. Bu kurulum, Oracle sunucusuna bağlanmak için ODBC bağlantı Yöneticisi/kaynak/hedef veya Power Query bağlantı Yöneticisi/kaynağını ODBC veri kaynağı türü ile birlikte kullanmanıza olanak sağlar. İlk olarak, en son Oracle anında Istemcisini (temel paket veya temel Lite paketi) ve ODBC paketini (örneğin,) indirin [. buradan 64 bitlik paketler (temel](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) paket: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, temel Lite paketi: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC paketi: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) veya 32-bit paketleri [buradan](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (temel paket: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, temel Lite PAKETI: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC paketi: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`) ve ardından bunları kapsayıcınıza `main.cmd` birlikte karşıya yükleyin.
 
       1. Azure-SSIS IR Enterprise Edition 'ın her bir düğümüne SAP .NET bağlayıcı derlemesini (`librfc32.dll`) yüklemek için özel bir kurulum betiği (`main.cmd`) içeren bir `SAP BW` klasörü. Bu kurulum, SAP BW bağlantı yöneticisini, kaynağını ve hedefini kullanmanıza olanak sağlar. İlk olarak, `librfc32.dll` 64 bit veya 32 bit sürümünü `main.cmd`ile birlikte, SAP yükleme klasöründen kapsayıcınıza yükleyin. Betik daha sonra, kurulum sırasında SAP derlemesini `%windir%\SysWow64` veya `%windir%\System32` klasörüne kopyalar.
 

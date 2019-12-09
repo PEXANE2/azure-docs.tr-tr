@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896928"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914774"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Öğretici: Kullanıcı sağlamasını Active Directory için SAP başarılı faktörleri yapılandırma (Önizleme)
-Bu öğreticinin amacı, başarılı bir şekilde e-posta adresi için isteğe bağlı geri yazma geri alma işlemi ile Active Directory ve Azure Active Directory, başarılı bir şekilde çalışan verileri almak için gerçekleştirmeniz gereken adımları gösterir.
+Bu öğreticinin amacı, kullanıcıları başarıyla Active Directory (AD) ve Azure AD 'ye, isteğe bağlı e-posta adresi olarak başarılı bir şekilde geri yazma işlemi ile Azure AD 'ye sağlamak için gerçekleştirmeniz gereken adımları gösteriyoruz. Bu tümleştirme genel önizlemededir ve başarılı bir şekilde çalışan merkezi 'nden 70 ' ten fazla [Kullanıcı özniteliği](../manage-apps/sap-successfactors-attribute-reference.md) almayı destekler.
+
+>[!NOTE]
+>Başarılı bir şekilde sağlamak istediğiniz kullanıcıların şirket içi bir AD hesabına ve isteğe bağlı olarak bir Azure AD hesabına ihtiyacı varsa bu öğreticiyi kullanın. Kullanıcıların yalnızca Azure AD hesabına (yalnızca bulutta kullanıcılar) ihtiyacı varsa, [Azure AD Kullanıcı sağlaması IÇIN SAP başarılı faktörleri yapılandırma](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) hakkında öğreticiye bakın. 
+
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -69,7 +73,7 @@ Bu bölümde, yaygın karma ortamlar için uçtan uca Kullanıcı sağlama çöz
 4. Azure AD Connect sağlama Aracısı, AD hesabı verileri eklemek/güncelleştirmek için bir hizmet hesabı kullanır.
 5. Azure AD Connect eşitleme altyapısı, AD 'de güncelleştirmeleri çekmek için Delta eşitlemesi çalıştırır.
 6. Active Directory güncelleştirmeleri Azure Active Directory ile eşitlenir.
-7. Başarılı bir geri yazma Bağlayıcısı yapılandırılmışsa, kullanılan eşleşen özniteliğe göre e-posta özniteliği ve Kullanıcı adını başarılı etkenlere yazar.
+7. Başarılı bir şekilde [geri yazma uygulaması](sap-successfactors-writeback-tutorial.md) yapılandırılmışsa, kullanılan eşleşen özniteliğe göre e-posta özniteliği başarıyla başarılı etkenlere yazar.
 
 ## <a name="planning-your-deployment"></a>Dağıtımınızı planlama
 
@@ -109,6 +113,10 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 * Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
   > [!div class="mx-imgBorder"]
   > Okuma yazma izinlerini ![](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+  >[!NOTE]
+  >Bu sağlama uygulaması tarafından alınan özniteliklerin tüm listesi için lütfen [başarılı oldu öznitelik başvurusuna](../manage-apps/sap-successfactors-attribute-reference.md) başvurun
+
 * **Bitti**' ye tıklayın. Tıklayın **değişiklikleri kaydetmek**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API kullanıcısı için bir Izin grubu oluşturma
@@ -294,6 +302,10 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
 
 1. **Öznitelik eşlemeleri** bölümünde, tek tek faktörlerin özniteliklerinin Active Directory özniteliklerle nasıl eşlendiğini tanımlayabilirsiniz.
 
+  >[!NOTE]
+  >Uygulama tarafından desteklenen başarılı bir öznitelik özniteliği listesi için lütfen başarılı bir şekilde ifade edin [öznitelik başvurusu](../manage-apps/sap-successfactors-attribute-reference.md)
+
+
 1. Güncelleştirmek için varolan bir öznitelik eşlemesine tıklayın veya yeni eşlemeler eklemek için ekranın alt kısmındaki **Yeni eşleme Ekle** ' ye tıklayın. Tek bir öznitelik eşlemesi bu özellikleri destekler:
 
       * **Eşleme türü**
@@ -347,20 +359,9 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Gelen sağlama için desteklenen başarılı etmenler öznitelikleri hakkında daha fazla bilgi edinin](../manage-apps/sap-successfactors-attribute-reference.md)
+* [E-posta geri yazmanın başarılı etkenlere nasıl yapılandırılacağını öğrenin](sap-successfactors-writeback-tutorial.md)
 * [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)
 * [Başarılı ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin](successfactors-tutorial.md)
 * [Diğer SaaS uygulamalarını Azure Active Directory ile tümleştirmeyi öğrenin](tutorial-list.md)
 * [Sağlama yapılandırmalarınızı dışarı ve içeri aktarma hakkında bilgi edinin](../manage-apps/export-import-provisioning-configuration.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

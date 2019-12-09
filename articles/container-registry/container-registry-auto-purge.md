@@ -3,12 +3,12 @@ title: Etiketleri ve bildirimleri temizleme
 description: Bir Azure Container Registry 'den yaş ve etiket filtresine göre birden çok etiketi ve bildirimi silmek için bir temizleme komutu kullanın ve isteğe bağlı olarak temizleme işlemlerini zamanlayın.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456473"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923102"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry 'den görüntüleri otomatik olarak Temizleme
 
@@ -33,11 +33,10 @@ Azure CLı komutlarını kullanarak tek resim etiketlerini veya bildirimleri sil
 > [!NOTE]
 > `acr purge`, `write-enabled` özniteliğinin `false`olarak ayarlandığı bir resim etiketini veya depoyu silmez. Bilgi için bkz. [Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme](container-registry-image-lock.md).
 
-`acr purge`, bir [ACR görevinde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır, böylece görevin çalıştığı kayıt defteriyle otomatik olarak kimlik doğrulaması yapılır. 
+`acr purge`, bir [ACR görevinde](container-registry-tasks-overview.md)kapsayıcı komutu olarak çalışacak şekilde tasarlanmıştır ve böylece görevin çalıştırıldığı kayıt defteriyle otomatik olarak kimlik doğrulaması yapar ve eylemler orada gerçekleştirilir. Bu makaledeki görev örnekleri, tam bir kapsayıcı görüntüsü komutu yerine `acr purge` komutu [diğer adını](container-registry-tasks-reference-yaml.md#aliases) kullanır.
 
 `acr purge`çalıştırdığınızda, en azından aşağıdakileri belirtin:
 
-* `--registry`-komutu çalıştırdığınız Azure Container kayıt defteri. 
 * `--filter`-depodaki etiketleri filtrelemek için bir depo ve *normal bir ifade* . Örnekler: `--filter "hello-world:.*"` `hello-world` deposundaki tüm etiketlerle eşleşir ve `1`ile başlayan etiketlerle eşleşir `--filter "hello-world:^1.*"`. Birden çok depo temizlemek için birden çok `--filter` parametresi geçirin.
 * `--ago`, resimlerin silindiği süreyi belirtmek için bir go stili [Duration dizesi](https://golang.org/pkg/time/) . Süre, her biri birim sonekine sahip bir veya daha fazla ondalık sayı dizisinden oluşur. Geçerli zaman birimleri günler için "d", saat için "h", dakika için "m" içerir. Örneğin, `--ago 2d3h6m` en son 2 gün, 3 saat ve 6 dakika önce değiştirilen tüm filtrelenmiş resimleri seçer ve `--ago 1.5h` en son 1,5 saat önce değiştirilmiş resimleri seçer.
 
@@ -54,12 +53,10 @@ Ek parametreler için `acr purge --help`çalıştırın.
 
 Aşağıdaki örnek, `acr purge` komutunu talep üzerine çalıştırmak için [az ACR Run][az-acr-run] komutunu kullanır. Bu örnek, 1 günden daha önce değiştirilmiş olan *myregistry* içindeki `hello-world` deposundaki tüm resim etiketlerini ve bildirimlerini siler. Kapsayıcı komutu bir ortam değişkeni kullanılarak geçirilir. Görev, kaynak bağlamı olmadan çalışır.
 
-Bu ve aşağıdaki örneklerde, `acr purge` komutunun çalıştırıldığı kayıt defteri, görevi çalıştıran kayıt defterini gösteren `$Registry` diğer adı kullanılarak belirtilir.
-
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -73,8 +70,8 @@ Aşağıdaki örnek, günlük [Zamanlanmış ACR görevi](container-registry-tas
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -93,8 +90,8 @@ Süreölçer tetikleyicisinin yapılandırıldığını görmek için [az ACR Ta
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -115,13 +112,12 @@ Aşağıdaki örnekte, her bir depodaki filtre tüm etiketleri seçer. `--ago 0d
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
 az acr run \
-  --cmd  "$PURGE_CMD" \
+  --cmd "$PURGE_CMD" \
   --registry myregistry \
   /dev/null
 ```
@@ -156,8 +152,7 @@ Kuru çalıştırmayı doğruladıktan sonra, temizleme işlemini otomatikleşti
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

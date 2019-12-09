@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory kullanarak SAP Business Warehouse 'tan veri yükleme
+title: SAP Business Warehouse 'dan veri yükleme
 description: SAP Business Warehouse 'dan veri kopyalamak için Azure Data Factory kullanma (siyah beyaz)
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672660"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931459"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant gen
 > [!TIP]
 > Açık Hub tümleştirmesi ve değişim ayıklama akışı SAP BW dahil SAP BW verileri kopyalama hakkında genel bilgi için, bkz. [Azure Data Factory kullanarak SAP Business Warehouse 'Tan açık hub aracılığıyla veri kopyalama](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure Data Factory**: yoksa [bir veri fabrikası oluşturmak](quickstart-create-data-factory-portal.md#create-a-data-factory)için adımları izleyin.
 
@@ -46,7 +46,7 @@ Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant gen
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>SAP BW açık hub 'dan tam bir kopya yapın
 
-Azure portal veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini ayrı bir sekmede açmak için **yazar & İzleyicisi** ' ni seçin.
+Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini ayrı bir sekmede açmak için **yazar & İzleyicisi** ' ni seçin.
 
 1. **Başlarken** sayfasında, veri kopyalama aracını açmak için **veri kopyalama** ' yi seçin.
 
@@ -87,7 +87,7 @@ Azure portal veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini ayrı
    ![ADLS 2. bağlı hizmet sayfası oluşturma](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. **Ad** açılır listesinden Data Lake Storage 2. özellikli hesabınızı seçin.
-   2. Bağlantıyı oluşturmak için **son** ' u seçin. Sonra **İleri**’yi seçin.
+   2. **Son**'u seçerek bağlantıyı oluşturun. Sonra **İleri**’yi seçin.
 
 9. **Çıktı dosyasını veya klasörünü seçin** sayfasında, çıkış klasörü adı olarak **copyfromopenhub** yazın. Sonra **İleri**’yi seçin.
 
@@ -101,7 +101,7 @@ Azure portal veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini ayrı
 
     ![Kopyalama ayarlarını yapılandırma](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **Özet** sayfasında, ayarları gözden geçirin. Sonra **İleri**’yi seçin.
+12. **Özet** sayfasında ayarları gözden geçirin. Sonra **İleri**’yi seçin.
 
 13. **Dağıtım** sayfasında, işlem hattını Izlemek için **izleyici** ' yi seçin.
 

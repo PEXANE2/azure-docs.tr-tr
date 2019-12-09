@@ -1,31 +1,27 @@
 ---
-title: Azure Active Directory kayıtlı uygulamanızı bir Kullanıcı kümesiyle sınırlayın
+title: Azure Active Directory kayıtlı uygulama kullanıcılarını kısıtla | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure AD 'de kayıtlı uygulamalarınıza erişimi seçili bir kullanıcı kümesine kısıtlamayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: kalyankrishna1
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803957"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917633"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Nasıl yapılır: uygulamanızı bir Kullanıcı kümesiyle kısıtlama
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Nasıl yapılır: Azure AD uygulamanızı bir Kullanıcı kümesiyle kısıtlama
 
 Bir Azure Active Directory (Azure AD) kiracısında kayıtlı uygulamalar, varsayılan olarak, başarıyla kimlik doğrulayan kiracının tüm kullanıcıları tarafından kullanılabilir.
 

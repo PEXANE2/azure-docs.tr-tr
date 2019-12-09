@@ -1,23 +1,21 @@
 ---
-title: 'Azure esnek veritabanı Işleriyle SSSıSDB günlüklerini Temizleme '
+title: Azure esnek veritabanı Işleriyle SSSıSDB günlüklerini Temizleme
 description: Bu makalede, bu amaçla mevcut olan saklı yordamı tetiklemek için Azure Elastik Veritabanı işleri kullanarak SSSıSDB günlüklerinin nasıl temizleneceğini açıklanmaktadır
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 331a2317f11fbb6f0dd1437a0b41f7ad110a63c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674748"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928019"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure esnek veritabanı Işleriyle SSSıSDB günlüklerini Temizleme
 
@@ -35,7 +33,7 @@ Aşağıdaki bölümlerde, yönetici tarafından ayarlanan bekletme penceresinin
 
 Aşağıdaki örnek PowerShell betikleri, SSıSDB günlüğü temizleme için saklı yordamı tetiklemek üzere yeni bir elastik Iş oluşturur. Daha fazla bilgi için bkz. [PowerShell kullanarak elastik iş Aracısı oluşturma](../sql-database/elastic-jobs-powershell.md).
 
-### <a name="create-parameters"></a>Parametre oluştur
+### <a name="create-parameters"></a>Parametreler oluşturma
 
 ``` powershell
 # Parameters needed to create the Job Database

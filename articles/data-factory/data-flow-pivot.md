@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory eşleme veri akışı Özet dönüştürmesi
+title: Veri akışı Özet dönüşümünü eşleme
 description: Azure Data Factory eşleme veri akışı Özet dönüşümünü kullanarak satırlardan sütunlara kadar özet verileri özetleme
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8f23b5e61e1aee83172a12466fac8d5b5003fea8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387788"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930295"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory Pivot dönüşümü
 
@@ -50,7 +51,7 @@ Sütun düzenlemesini "normal" olarak ayarlamak, özetleme sütunlarının tüm�
 
 Özet değerler için kullanmak istediğiniz toplamayı ayarlamak için, özetleme sütunları bölmesinin altındaki alana tıklayın. Bir toplama ifadesi oluşturabileceğiniz ve yeni toplanmış değerlerinizle ilgili açıklayıcı bir diğer ad sağlayabileceğiniz ADF veri akışı ifade oluşturucusuna giriş yapmanız gerekir.
 
-@No__t-0 Ifade Oluşturucusu 'ndaki Özet sütun dönüşümlerini anlatmak için ADF veri akışı Ifade dilini kullanın.
+https://aka.ms/dataflowexpressions Ifade Oluşturucusu 'ndaki Özet sütun dönüştürmelerini anlatmak için ADF veri akışı Ifade dilini kullanın:.
 
 ## <a name="pivot-metadata"></a>Özet meta verileri
 

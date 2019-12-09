@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: e24d930ec82ea92a040efeed3056a10917ce2b2a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263912"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913498"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
@@ -43,7 +43,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 Azure CLı ile el ile hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create] komutunu kullanın. Aşağıdaki örnekte, `--skip-assignment` parametresi, ek varsayılan atamaların atanmasını engellemektedir:
 
 ```azurecli-interactive
-az ad sp create-for-rbac --skip-assignment
+az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 ```
 
 Çıktı aşağıdaki örneğe benzerdir. Kendi `appId` ve `password`’lerinizi not edin. Bu değerler bir sonraki bölümde AKS kümesi oluşturduğunuzda kullanılır.
@@ -51,8 +51,8 @@ az ad sp create-for-rbac --skip-assignment
 ```json
 {
   "appId": "559513bd-0c19-4c1a-87cd-851a26afd5fc",
-  "displayName": "azure-cli-2019-03-04-21-35-28",
-  "name": "http://azure-cli-2019-03-04-21-35-28",
+  "displayName": "myAKSClusterServicePrincipal",
+  "name": "http://myAKSClusterServicePrincipal",
   "password": "e763725a-5eee-40e8-a466-dc88d980f415",
   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
 }
@@ -70,7 +70,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Azure portalı kullanarak bir AKS kümesi dağıtırsanız, *Kubernetes kümesi oluştur* iletişim kutusunun **Kimlik doğrulaması** sayfasında **Hizmet sorumlusu yapılandır**’ı seçin. **Var olanı kullan**’ı seçin ve aşağıdaki değerleri belirtin:
+Azure portalı kullanarak bir AKS kümesi dağıtırsanız, **Kubernetes kümesi oluştur** iletişim kutusunun *Kimlik doğrulaması* sayfasında **Hizmet sorumlusu yapılandır**’ı seçin. **Var olanı kullan**’ı seçin ve aşağıdaki değerleri belirtin:
 
 - **Hizmet sorumlusu istemci kimliği**, *appId*’nizdir
 - **Hizmet sorumlusu istemci parolası**, *parola* değeridir
@@ -91,11 +91,11 @@ Bir kaynağın `--scope`, */subscriptions/\<guıd\>/resourceGroups/myResourceGro
 
 Aşağıdaki bölümlerde, yapmanız gerekebilecek ortak temsilciler ayrıntılandırır.
 
-### <a name="azure-container-registry"></a>Azure Container Kayıt Defteri
+### <a name="azure-container-registry"></a>Azure Container Registry
 
-Kapsayıcı görüntü depolukça Azure Container Registry (ACR) kullanıyorsanız, görüntüleri okumak ve çekmek için AKS kümenizin hizmet sorumlusu için izinler vermeniz gerekir. Şu anda önerilen yapılandırma, bir kayıt defteriyle tümleştirilecek ve hizmet sorumlusu için uygun rolü atayan [az aks Create][az-aks-create] veya [az aks Update] [az-aks-Update] komutunu kullanmaktır. Ayrıntılı adımlar için bkz. [Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması][aks-to-acr].
+Kapsayıcı görüntü depolukça Azure Container Registry (ACR) kullanıyorsanız, görüntüleri okumak ve çekmek için AKS kümenizin hizmet sorumlusu için izinler vermeniz gerekir. Şu anda önerilen yapılandırma, [az aks Create][az-aks-create] veya [az aks Update][az-aks-update] komutunu bir kayıt defteriyle tümleştirilecek ve hizmet sorumlusu için uygun rolü atayacak şekilde kullanmaktır. Ayrıntılı adımlar için bkz. [Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması][aks-to-acr].
 
-### <a name="networking"></a>Ağ
+### <a name="networking"></a>Networking (Ağ İletişimi)
 
 Sanal ağ ve alt ağ ya da genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanabilirsiniz. Aşağıdaki rol izinleri kümesinden birini atayın:
 
@@ -173,6 +173,7 @@ Kimlik bilgilerini güncelleştirme hakkında daha fazla bilgi için bkz. [AKS '
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-update]: /cli/azure/aks#az-aks-update
 [rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
 [rbac-custom-role]: ../role-based-access-control/custom-roles.md
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor

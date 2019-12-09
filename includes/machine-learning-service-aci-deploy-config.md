@@ -1,22 +1,22 @@
 ---
-author: larryfr
+author: Blackmist
 ms.service: machine-learning
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: b3c1ad48da0ef28c73e3af5d1e30414534f4e94d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4f861d5e7832512e2c2732f1ce5dbf6ac76b91b1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73800185"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935832"
 ---
 `deploymentconfig.json` belgesindeki girdiler [Aciwebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
 | JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
-| `computeType` | NA | Bilgi işlem hedefi. ACI için değer `ACI`olmalıdır. |
-| `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |
+| `computeType` | Yok | Bilgi işlem hedefi. ACI için değer `ACI`olmalıdır. |
+| `containerResourceRequirements` | Yok | CPU ve bellek varlıklarının kapsayıcısı. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Ayrılacak CPU çekirdeklerinin sayısı. Varsayılanlar, `0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılan, `0.5` |
 | `location` | `location` | Bu Web hizmeti 'nin dağıtılacağı Azure bölgesi. Belirtilmemişse, çalışma alanı konumu kullanılacaktır. Kullanılabilir bölgeler hakkında daha fazla ayrıntı şurada bulunabilir: [acı bölgeleri](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
