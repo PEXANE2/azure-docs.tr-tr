@@ -3,12 +3,12 @@ title: Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 description: Python işlevinizin bir Azure depolama kuyruğu çıkışı bağlamayı nasıl ekleyeceğinizi öğrenin.
 ms.date: 10/02/2019
 ms.topic: quickstart
-ms.openlocfilehash: dede135da56e9ed1eaaed2ae0f7b5cd14d08195c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f2db0f470c4205919343e3838a4f73b05bf71fb0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231242"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928873"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 
@@ -55,7 +55,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Host. JSON içindeki uzantı paketlerini etkinleştirdiyseniz, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#packages---functions-2x) diğer Microsoft bağlama uzantılarıyla birlikte başlangıç sırasında sizin için indirilir ve yüklenir.
+> Host. JSON içindeki uzantı paketlerini etkinleştirdiyseniz, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) diğer Microsoft bağlama uzantılarıyla birlikte başlangıç sırasında sizin için indirilir ve yüklenir.
 
 Çalışma zamanı çıktısından `HttpTrigger` işlevinizin URL’sini kopyalayın ve tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesini bu URL 'ye `?name=<yourname>` ekleyin ve isteği çalıştırın. Önceki makalede yaptığınız gibi tarayıcıda aynı yanıtı görmeniz gerekir.
 

@@ -1,29 +1,25 @@
 ---
-title: Konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın | Mavisi
+title: Belirteç al & konsol uygulama kimliğiyle Microsoft Graph çağırma | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET Core işleminin bir erişim belirteci alma ve uygulamanın kendi kimliğini kullanarak Microsoft Identity platform uç noktası tarafından korunan bir API 'YI çağırma hakkında bilgi edinin
+description: Bir belirteci nasıl alabileceğinizi ve .NET Core uygulamasından onunla korunan Microsoft Graph API 'SI çağırmayı öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2617013b90cc9709a27ff8ab8c5046ebdcc9951
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: edcfe4d7dff5d84ceaf07a8aafd5f9b485308bd5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149423"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920676"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
@@ -97,7 +93,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
     
     > [!div class="sxs-lookup" renderon="portal"]
     > > [!NOTE]
-    > > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
+    > > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
     
     > [!div renderon="docs"]
     >> Nerede:
@@ -119,7 +115,7 @@ Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: `
 > Küresel kiracı yöneticisiyseniz, Azure portalının uygulama kaydı 'nda (Önizleme) **API izinleri** sayfasına gidin ve **{Tenant Name} Için yönetici onayı ver** ' i seçin (burada {Tenant Name} dizininizin adıdır).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver** ' i seçin.
+> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver** ' i seçin
 > > [!div id="apipermissionspage"]
 > > [API Izinleri sayfasına gidin]()
 

@@ -2,27 +2,22 @@
 title: Azure AD tarafından korunan bir ASP.NET Web API 'SI çağırma-Microsoft Identity
 description: Bu hızlı başlangıçta, Windows Masaüstü (WPF) uygulamasından Azure Active Directory tarafından korunan bir ASP.NET Web API 'sinin nasıl çağrılacağını öğrenin. WPF istemcisi bir kullanıcının kimliğini doğrular, bir erişim belirteci ister ve Web API 'sini çağırır.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0fdeb2c1955eab18b440c3ef3bcac725ad92b6
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200250"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920659"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Hızlı başlangıç: Azure AD tarafından korunan bir ASP.NET Web API 'SI çağırma
 
@@ -88,7 +83,7 @@ Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları y
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Yeni kapsamı *TodoListClient*'ın App. config dosyasına ekleyin
 
-1. **TodoListClient** projesinin kök klasöründe bulunan **app. config** dosyasını açın ve ardından `TodoListServiceScope` *parametresi altında,* dizeyi değiştirerek **uygulama kimliğini** yeni kaydettiğiniz uygulamadan yapıştırın `{Enter the Application ID of your TodoListService from the app registration portal}`.
+1. **TodoListClient** projesinin kök klasöründe yer alan **app. config** dosyasını açın ve ardından `TodoListServiceScope` *parametresi altında yeni* kaydettiğiniz uygulamadan **uygulama kimliği** ' ni açıp dize `{Enter the Application ID of your TodoListService from the app registration portal}`değiştirin.
 
    > Unutmayın: aşağıdaki biçimi kullandığından emin olun:
    >
@@ -132,7 +127,7 @@ Bu adımda, uygulama kayıt portalı 'nda yeni bir uygulama kaydederek *TodoList
 
 ## <a name="pre-authorize-your-client-application"></a>İstemci uygulamanızı önceden yetkilendirme
 
-Diğer dizinlerden kullanıcıların Web API 'nize erişmesine izin verme yöntemlerinden biri, istemci uygulamaları için *önceden yetkilendirilmiş* uygulamalar listesindeki uygulama kimliklerini ekleyerek Web API 'nize erişmek üzere *önceden yetkilendirerek* , Web API 'niz. Önceden yetkilendirilmiş bir istemci ekleyerek, kullanıcının Web API 'nizi kullanma onayını zorunlu kılmayacaktır. Web uygulamanızı önceden yetkilendirmek için aşağıdaki adımları izleyin::
+Diğer dizinlerden kullanıcıların Web API 'nize erişmesine izin vermenin bir yolu, Web API 'niz için *önceden yetkilendirilmiş* uygulamalar listesindeki uygulama kimliklerini istemci uygulamalarından ekleyerek Web API 'nize erişmek üzere istemci uygulamalarının *önceden yetkilendirilmesini* sağlar. Önceden yetkilendirilmiş bir istemci ekleyerek, kullanıcının Web API 'nizi kullanma onayını zorunlu kılmayacaktır. Web uygulamanızı önceden yetkilendirmek için aşağıdaki adımları izleyin::
 
 1. *Uygulama kayıt portalına* geri dönün ve **TodoListService**özelliklerini açın.
 1. **API 'Yi kullanıma** sunma bölümünde, *yetkili istemci uygulamaları* bölümünde **istemci uygulaması Ekle** ' ye tıklayın.
@@ -155,7 +150,7 @@ Uygulamanızda kimlerin oturum açabileceğini kısıtlamak için seçeneklerden
 
 Uygulamanız için oturum açma erişimini, yalnızca tek bir Azure AD kiracısında bulunan Kullanıcı hesaplarına (Bu kiracının *Konuk hesapları* dahil) kısıtlayabilirsiniz. Bu senaryo *iş kolu uygulamaları*için ortaktır:
 
-1. **App_Start\Startup.auth** dosyasını açın ve `OpenIdConnectSecurityTokenProvider` geçirilen meta veri uç noktasının değerini `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` olarak değiştirin (`contoso.onmicrosoft.com`gibi kiracı adını da kullanabilirsiniz).
+1. **App_Start \Startup.exe** dosyasını açın ve `OpenIdConnectSecurityTokenProvider` geçirilen meta veri uç noktasının değerini `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` olarak değiştirin (örneğin, `contoso.onmicrosoft.com`gibi kiracı adını da kullanabilirsiniz).
 2. Aynı dosyada, `TokenValidationParameters` `ValidIssuer` özelliğini `"https://sts.windows.net/{Tenant ID}/"` ve `ValidateIssuer` bağımsız değişkenini `true`olarak ayarlayın.
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Seçenek 2: verenler doğrulamak için özel bir yöntem kullanma

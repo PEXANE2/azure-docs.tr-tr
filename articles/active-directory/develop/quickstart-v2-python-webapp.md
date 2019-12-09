@@ -2,25 +2,21 @@
 title: Microsoft Identity platform Python web uygulaması hızlı başlangıç | Mavisi
 description: OAuth2 kullanarak bir Python web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: abhidnya13
-editor: ''
-ms.assetid: 9551f0b5-04f2-44d7-87b5-756409180fe9
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d6b96683a04fa5d2814246b3c22aa52956a8bbb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815763"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920523"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -32,7 +28,7 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -60,7 +56,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
+> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
@@ -95,7 +91,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu öznitelikle yapılandırılmış
+> > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu özellikle yapılandırıldı
 
 #### <a name="step-2-download-your-project"></a>2\. Adım: Projenizi indirme
 
@@ -114,7 +110,7 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
-> Konumlar:
+> Nerede:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here`, **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .

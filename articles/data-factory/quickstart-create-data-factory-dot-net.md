@@ -4,7 +4,7 @@ description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyala
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 3282106651f9ec101251d7d35369040df9572b06
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122852"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928781"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -61,7 +61,7 @@ Ardından, Visual Studio C# 'da bir .NET konsol uygulaması oluşturun:
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**'nu seçin.
 2. **Paket Yöneticisi konsolu** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. Daha fazla bilgi için bkz. [Microsoft. Azure. Management. DataFactory NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell

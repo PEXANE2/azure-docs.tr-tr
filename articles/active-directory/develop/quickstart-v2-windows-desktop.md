@@ -2,29 +2,24 @@
 title: Microsoft Identity Platform Windows Masaüstü hızlı başlangıç | Microsoft Docs
 description: Bir Windows Masaüstü .NET (XAML) uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve bir Microsoft Identity platform uç noktası tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a85cafce13cffcebbcce3ebf022941ce899fa72b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 38ebf817d80fb1afdd3642f648d8e881b2e9d7de
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852749"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920455"
 ---
-# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API çağrısı
+# <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
 Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir erişim belirteci alma ve Microsoft Graph API'sini çağırma işlemlerini gerçekleştiren bir Windows masaüstü .NET (WPF) uygulaması yazmayı öğreneceksiniz.
 
@@ -33,18 +28,18 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
-> * Çaba [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Kitabında [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Hızlı] [1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırma ve ardından kod örneğinizi indirme](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [El ile] [2. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
 > 1. Yeni [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
 >
-> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydedin
+> #### <a name="step-1-register-your-application"></a>1\. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
@@ -60,7 +55,7 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 > 1. **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. adım: Uygulamanızı Azure portal yapılandırma
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. Adım: Uygulamanızı Azure portalında yapılandırma
 > Bu hızlı başlangıç kod örneğinin çalışması için **urn:ietf:wg:oauth:2.0:oob** gibi bir yanıt URL’si eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
@@ -68,11 +63,11 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-windows-desktop/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2\. adım: Visual Studio projenizi indirin
+#### <a name="step-2-download-your-visual-studio-project"></a>2\. Adım: Visual Studio projenizi indirme
 
-[Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  ([Projeyi GitHub 'Da görüntüle](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+[Visual Studio projesini indir](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([projeyi GitHub 'da görüntüle](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>3\. adım: Visual Studio projenizi yapılandırma
+#### <a name="step-3-configure-your-visual-studio-project"></a>3\. Adım: Visual Studio projenizi yapılandırma
 
 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 1. Projeyi Visual Studio'da açın.
@@ -84,10 +79,10 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
     ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
+> > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
 
 > [!div renderon="docs"]
-> Konumlar:
+> Nerede:
 > - `Enter_the_Application_Id_here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 > - `Enter_the_Tenant_Info_Here` - aşağıdaki seçeneklerden birine ayarlanır:
 >   - Uygulamanız **Bu kuruluş dizinindeki hesapları** destekliyorsa, bu değeri **Kiracı Kimliği** veya **Kiracı adı** (örneğin, contoso.microsoft.com) ile değiştirin
@@ -115,7 +110,7 @@ Install-Package Microsoft.Identity.Client -IncludePrerelease
 using Microsoft.Identity.Client;
 ```
 
-Sonra şu kodu kullanarak MSAL'yi başlatın:
+Sonra da şu kodu kullanarak MSAL başlatın:
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -124,7 +119,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Konumlar: ||
+> |Nerede: ||
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -146,13 +141,13 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar:||
+> |Nerede:||
 > |---------|---------|
 > | `_scopes` | İstenen kapsamları (Microsoft Graph için `{ "user.read" }` veya özel Web API'leri için `{ "api://<Application ID>/access_as_user" }` gibi) barındırır. |
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-Kullanıcının bir kaynağa her erişmesi gerektiğinde kimlik bilgilerini tekrar doğrulamak zorunda kalmasını istemezsiniz. Çoğu kez, belirteç alma ve yenileme işlemlerinin kullanıcı etkileşimi olmadan gerçekleşmesini istersiniz. Korunan kaynaklara erişmek üzere belirteç almak için, ilk `AcquireTokenInteractive` yönteminden sonra `AcquireTokenSilent` yöntemini kullanabilirsiniz:
+Kullanıcının bir kaynağa erişmesi gerektiği her seferde kimlik bilgilerini doğrulamasının gerekmesini istemezsiniz. Çoğu kez, belirteç alma ve yenileme işlemlerinin kullanıcı etkileşimi olmadan gerçekleşmesini istersiniz. Korunan kaynaklara erişmek üzere belirteç almak için, ilk `AcquireTokenInteractive` yönteminden sonra `AcquireTokenSilent` yöntemini kullanabilirsiniz:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -161,7 +156,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar: ||
+> |Nerede: ||
 > |---------|---------|
 > | `scopes` | İstenen kapsamları (Microsoft Graph için `{ "user.read" }` veya özel Web API'leri için `{ "api://<Application ID>/access_as_user" }` gibi) barındırır. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |

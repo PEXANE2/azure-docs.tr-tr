@@ -4,19 +4,19 @@ description: Azure Blob depolama alanındaki bir konumda bulunan verileri başka
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.author: yexu
-ms.openlocfilehash: 64f2c989d6ccb4b3ade96065836e1b1f2439e6f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4ead3472e1706742781cb64a12103f3dec1fd27a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684560"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922466"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
 
@@ -27,7 +27,7 @@ ms.locfileid: "73684560"
 Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Sonra, Veri Kopyalama aracını kullanarak Azure Blob depolama alanındaki bir klasörde bulunan verileri başka bir klasöre kopyalarsınız. 
 
 > [!NOTE]
-> Azure Data Factory kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
+> Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 

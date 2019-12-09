@@ -4,19 +4,18 @@ description: Bu makale Azure Data Factory ile Azure Data Factory sürüm 1’i k
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e0c92fbd06bec00f09c66c322ba2520bacb7bffb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267783"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924817"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory ile Data Factory sürüm 1'in karşılaştırılması
 Bu makale Data Factory ile Data Factory sürüm 1’i karşılaştırır. Data Factory hakkında giriş bilgileri için bkz. [Data Factory'ye giriş](introduction.md).Data Factory sürüm 1 hakkında giriş bilgileri için bkz. [Azure Data Factory'ye Giriş](v1/data-factory-introduction.md). 
