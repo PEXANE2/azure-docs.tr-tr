@@ -2,27 +2,23 @@
 title: Microsoft Identity platform iOS ve macOS hızlı başlangıç | Mavisi
 description: Bir iOS veya macOS uygulamasında kullanıcıların oturum açma ve sorgu Microsoft Graph sorgulama hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 10225efb1dcd870f5922a6521b0bd6ec44965152
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149504"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920693"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -62,7 +58,7 @@ Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. B
 >      - **Ad** bölümünde, uygulamanızı oturum açtıklarında veya onaylamada uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
 >      - Bu sayfadaki diğer konfigürasyonları atlayın.
 >      - `Register` öğesini seçin.
-> 1. **Yönet** bölümünde, > `iOS``Add Platform``Authentication` > seçin.
+> 1. **Yönet** bölümünde,  > `iOS``Add Platform``Authentication` > seçin.
 >      - Uygulamanız için ***paket kimliğini*** girin. Paket tanımlayıcısı, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir, örneğin `com.<yourname>.identitysample.MSALMacOS`. Kullandığınız değeri bir yere getirin.
 >      - İOS yapılandırmasının macOS uygulamaları için de geçerli olduğunu unutmayın.
 > 1. `Configure` ' yi seçin ve bu hızlı başlangıçta daha sonra için ***msal yapılandırma*** ayrıntılarını kaydedin.
@@ -83,7 +79,7 @@ Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. B
 
 #### <a name="step-3-install-dependencies"></a>3\. Adım: bağımlılıkları yüklemeyi
 
-Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en son MSAL kitaplığını yüklemek için `pod install` ' ı çalıştırın.
+Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en son MSAL kitaplığını yüklemek için `pod install` çalıştırın.
 
 #### <a name="step-4-configure-your-project"></a>4\. Adım: projenizi yapılandırma
 
@@ -97,8 +93,8 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
-> 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp  > **kaynak kodu** **olarak aç**' ı seçin.
-> 1. Yalnızca iOS için, dict kök düğümünün altında, `CFBundleURLSchemes` ' ı portalda girdiğiniz ***paket kimliğiyle*** değiştirin.
+> 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp > **kaynak kodu** **olarak aç** ' ı seçin.
+> 1. Yalnızca iOS için, dict kök düğümünün altında `CFBundleURLSchemes`, portalda girdiğiniz ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -114,7 +110,7 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 > 1. Uygulamayı oluşturun & çalıştırın!
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
+> > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
 > [!div renderon="docs"]
 >
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
@@ -123,7 +119,7 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
-> 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp  > **kaynak kodu** **olarak aç**' ı seçin.
+> 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp > **kaynak kodu** **olarak aç** ' ı seçin.
 > 1. Yalnızca iOS için, dict kök düğümünün altında `Enter_the_bundle_Id_Here`, portalda kullandığınız ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
@@ -192,7 +188,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Yalnızca iOS için, ek uygulama gereksinimleri
 
-Uygulamanızın `AppDelegate` ' da aşağıdaki gibi olması gerekir. Bu, kimlik doğrulaması yaparken MSAL SDK 'sının auth Broker uygulamasından belirteç yanıtı işlemesini sağlar.
+Uygulamanızın `AppDelegate`Ayrıca aşağıdaki gibi olmalıdır. Bu, kimlik doğrulaması yaparken MSAL SDK 'sının auth Broker uygulamasından belirteç yanıtı işlemesini sağlar.
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -203,7 +199,7 @@ Uygulamanızın `AppDelegate` ' da aşağıdaki gibi olması gerekir. Bu, kimlik
  ```
 
 > [!NOTE]
-> İOS 13 + ' de, `UIApplicationDelegate` yerine `UISceneDelegate` ' ı benimsediğinizde, bu kodu `scene:openURLContexts:` geri çağırması yerine yerleştirin ( [Apple belgelerine](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)bakın).
+> İOS 13 + ' de, `UIApplicationDelegate`yerine `UISceneDelegate` benimsediğinizde, bu kodu `scene:openURLContexts:` geri çağırması yerine yerleştirin ( [Apple belgelerine](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)bakın).
 > Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekleriyseniz, MSAL geri çağrısının her iki yere de yerleştirilmesi gerekir.
 
  ```swift
@@ -220,7 +216,7 @@ Uygulamanızın `AppDelegate` ' da aşağıdaki gibi olması gerekir. Bu, kimlik
     }
  ```
 
-Son olarak, uygulamanız ***Info. plist*** dosyasında `CFBundleURLTypes` ' nin yanı sıra `LSApplicationQueriesSchemes` girişi olmalıdır. Örnek, bu dahil edilmiştir. 
+Son olarak, uygulamanızın ***Info. plist*** dosyasında `CFBundleURLTypes`birlikte bir `LSApplicationQueriesSchemes` girişi olması gerekir. Örnek, bu dahil edilmiştir. 
 
    ```xml 
    <key>LSApplicationQueriesSchemes</key>

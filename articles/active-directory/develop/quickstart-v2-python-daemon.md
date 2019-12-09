@@ -2,27 +2,22 @@
 title: Microsoft Identity platform Python Daemon | Mavisi
 description: Bir Python işleminin bir erişim belirteci alabilir ve uygulamanın kendi kimliğini kullanarak Microsoft Identity platform uç noktası tarafından korunan bir API 'yi nasıl çağırabileceğinizi öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68715186c624cc5ce8702073129752487a8cea63
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 400dfb1ad8b0682194974e6d829cc42bad37bf75
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964018"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920625"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulama kimliğini kullanarak bir Python konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma
 
@@ -100,7 +95,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
     
     > [!div class="sxs-lookup" renderon="portal"]
     > > [!NOTE]
-    > > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
+    > > Bu hızlı başlangıç Enter_the_Supported_Account_Info_Here destekler.
     
     > [!div renderon="docs"]
     >> Nerede:
@@ -122,7 +117,7 @@ Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: `
 > Küresel kiracı yöneticisiyseniz, Azure portalının uygulama kaydı 'nda (Önizleme) **API izinleri** sayfasına gidin ve **{Tenant Name} Için yönetici onayı ver** ' i seçin (burada {Tenant Name} dizininizin adıdır).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver** ' i seçin.
+> Genel yöneticiyseniz, **API izinleri** sayfasına gidin **Enter_the_Tenant_Name_Here Için yönetici onayı ver** ' i seçin
 > > [!div id="apipermissionspage"]
 > > [API Izinleri sayfasına gidin]()
 

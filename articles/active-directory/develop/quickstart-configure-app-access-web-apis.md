@@ -2,26 +2,23 @@
 title: Web API 'Lerine erişmek için bir uygulama yapılandırma-Microsoft Identity platform
 description: Microsoft kimlik platformuyla kaydedilen uygulamaları yeniden yönlendirme URI’leri, kimlik bilgileri veya web API’lerine erişmek için izinleri içerecek şekilde yapılandırmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0fd9374c0f507dfc075719ef61f71457317dedba
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106599"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915157"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma
 
@@ -45,7 +42,7 @@ Bu hızlı başlangıçta, uygulamanızı aşağıdakiler için yapılandırmay�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için aşağıdaki önkoşulları tamamladığınızdan emin olun:
+Başlamak için aşağıdaki önkoşulları karşıladığınızdan emin olun:
 
 * Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
 * Uygulamaların kaydedilmiş olduğu bir kiracı kullanın.
@@ -55,7 +52,7 @@ Başlamak için aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
 Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 1. Arama yapın ve **Azure Active Directory**seçin. 
 1. Sol bölmeden **uygulama kayıtları**' yi seçin.
@@ -128,7 +125,7 @@ Uygulama ayarlarını platforma veya cihaza göre yapılandırmak için şunlar�
 
 1. Seçtiğiniz platforma bağlı olarak ayarlar bilgilerini girin.
 
-   | Platform                | Yapabileceği              | Yapılandırma ayarları            |
+   | Platform                | Choices              | Yapılandırma ayarları            |
    |-------------------------|----------------------|-----------------------------------|
    | **Web uygulamaları**    | **Web**              | Uygulamanız için **yeniden yönlendirme URI 'si** girin. |
    | **Mobil uygulamalar** | **iOS**              | Info. plist veya Build Settings içinde XCode içinde bulabileceğiniz uygulamanın **paket kimliğini**girin. Paket KIMLIĞINI eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur. |
@@ -210,7 +207,7 @@ Onay istemi, **kabul etme** veya **iptal**etme seçeneğini sağlar. **Kabul et*
 
 Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
 
-* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
+* [Microsoft kimlik platformu ile uygulama kaydetme](quickstart-register-app.md)
 * [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
 * [Bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md)
 * [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)

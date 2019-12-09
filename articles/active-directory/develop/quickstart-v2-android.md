@@ -2,26 +2,22 @@
 title: Microsoft Identity platform Android hızlı başlangıç | Mavisi
 description: Android uygulamalarının Microsoft Identity platform uç noktası tarafından erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c9a194dcd2ccb353f11aa939200213f0db1c2ea
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 84603dfa865afe1c7661f49d7dac7374fa62a2a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73942932"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920795"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
@@ -51,7 +47,7 @@ Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi iç
 > ### <a name="step-2-download-the-project"></a>2\. Adım: Projeyi indirme 
 > * [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
-> ### <a name="step-3-configure-your-project"></a>3\. Adım: Projenizi yapılandırma
+> ### <a name="step-3-configure-your-project"></a>3\. Adım:Projenizi yapılandırma
 > 1. Projeyi ayıklayın ve Android Studio’da açın.
 > 2.  >  **src** > **Main** > **res** > **RAW**, **auth_config_multiple_account. JSON** ' ı açın ve aşağıdaki kodla değiştirin:
 > ```javascript 
@@ -541,7 +537,7 @@ Bu, birden çok hesap kullanan bir MSAL uygulamasının yapılandırma dosyasıd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturma adımlarını öğrenin
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturmaya yönelik adımları öğrenin
 
 [Oturum açma kullanıcılarını deneyin ve bir Android uygulaması öğreticiden Microsoft Graph çağırarak,](tutorial-v2-android.md) bir erişim belirteci alan ve Microsoft Graph API 'sini çağırmak için onu kullanan bir Android uygulaması oluşturmaya yönelik adım adım kılavuz.
 
