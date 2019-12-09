@@ -1,24 +1,23 @@
 ---
-title: Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama
+title: Azure Veri Gezgini veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak verileri Azure Veri Gezgini kopyalama hakkında bilgi edinin.
 services: data-factory
-documentationcenter: ''
+ms.author: orspodek
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/26/2019
-ms.author: orspodek
-ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4cc315b91b5dbedcb22091149ca37061ff956efa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547156"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913420"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama
 
@@ -27,7 +26,7 @@ Bu makalede, [Azure Veri Gezgini](../data-explorer/data-explorer-overview.md)ver
 >[!TIP]
 >Azure Data Factory ve Azure Veri Gezgini tümleştirmesi için, [azure Azure Data Factory Veri Gezgini tümleştirme](../data-explorer/data-factory-integration.md)hakkında daha fazla bilgi edinin.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Bu Azure Veri Gezgini Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
@@ -54,11 +53,11 @@ Azure Veri Gezgini Bağlayıcısı ile şunları yapabilirsiniz:
 
 Aşağıdaki bölümlerde, Azure Veri Gezgini Connector 'a özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
 
 Azure Veri Gezgini Bağlayıcısı hizmet sorumlusu kimlik doğrulamasını kullanır. Hizmet sorumlusu almak ve izin vermek için aşağıdaki adımları izleyin:
 
-1. Uygulamanızı [bir Azure AD kiracısıyla kaydetme](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)bölümündeki adımları izleyerek Azure Active Directory bir uygulama varlığını kaydedin. Bağlı hizmeti tanımlamak için kullandığınız aşağıdaki değerleri unutmayın:
+1. Uygulamanızı [bir Azure AD kiracısıyla kaydetme](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)bölümündeki adımları izleyerek Azure Active Directory bir uygulama varlığını kaydedin. Bağlı hizmetini tanımlamak için kullandığınız şu değerleri not edin:
 
     - Uygulama Kimliği
     - Uygulama anahtarı
@@ -79,9 +78,9 @@ Azure Veri Gezgini bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | type | **Type** özelliği **AzureDataExplorer**olarak ayarlanmalıdır. | Yes |
 | endpoint | `https://<clusterName>.<regionName>.kusto.windows.net`biçimiyle Azure Veri Gezgini kümesinin uç nokta URL 'SI. | Yes |
 | veritabanı | Veritabanının adı. | Yes |
-| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority ID" olarak bilinir. Azure portal, fare işaretçisini, sağ üst köşesine getirerek alın. | Yes |
-| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama istemci kimliği" olarak bilinir. | Yes |
-| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama anahtarı" olarak bilinir. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan güvenli verilere başvurun](store-credentials-in-key-vault.md). | Yes |
+| tenant | Kiracı bilgileri (etki alanı adı veya Kiracı kimliği), uygulamanızın bulunduğu altında belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority ID" olarak bilinir. Azure portal, fare işaretçisini, sağ üst köşesine getirerek alın. | Yes |
+| servicePrincipalId | Uygulamanın istemci kimliği belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama istemci kimliği" olarak bilinir. | Yes |
+| servicePrincipalKey | Uygulama anahtarını belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama anahtarı" olarak bilinir. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan güvenli verilere başvurun](store-credentials-in-key-vault.md). | Yes |
 
 **Bağlı hizmet özellikleri örneği:**
 
@@ -115,7 +114,7 @@ Aşağıdaki özellikler desteklenir:
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
 | type | **Type** özelliği **AzureDataExplorerTable**olarak ayarlanmalıdır. | Yes |
-| tablosundan | Bağlı hizmetin başvurduğu tablonun adı. | Havuz için Evet; Kaynak için Hayır |
+| table | Bağlı hizmetin başvurduğu tablonun adı. | Havuz için Evet; Kaynak için Hayır |
 
 **Veri kümesi özellikleri örneği:**
 
@@ -142,7 +141,7 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="azure-data-explorer-as-source"></a>Kaynak olarak Azure Veri Gezgini
 
-Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağındaki **Type** özelliğini **AzureDataExplorerSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağındaki **Type** özelliğini **AzureDataExplorerSource**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
@@ -189,7 +188,7 @@ Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağında
 
 ### <a name="azure-data-explorer-as-sink"></a>Havuz olarak Azure Veri Gezgini
 
-Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tür özelliğini **AzureDataExplorerSink**olarak ayarlayın. Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklenir:
+Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tür özelliğini **AzureDataExplorerSink**olarak ayarlayın. Kopyalama etkinliği aşağıdaki özellikler desteklenir **havuz** bölümü:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |

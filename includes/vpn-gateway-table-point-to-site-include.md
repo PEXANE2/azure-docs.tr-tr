@@ -17,14 +17,14 @@ ms.locfileid: "67188248"
 ---
 **Azure yerel sertifika doğrulaması**
 
-**Dağıtım modeli/yöntemi** | **Azure portal** | **PowerShell** |
+**Dağıtım modeli/yöntemi** | **Azure portalda** | **PowerShell** |
 |---|---|---|
-| Resource Manager | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)|
+| Kaynak Yöneticisi | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)|
 | Klasik | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) | Desteklenen |
 
 **RADIUS kimlik doğrulaması**
 
-**Dağıtım modeli/yöntemi** | **Azure portal** | **PowerShell** |
+**Dağıtım modeli/yöntemi** | **Azure portalda** | **PowerShell** |
 |---|---|---|
-| Resource Manager | Desteklenen | [Öğretici](../articles/vpn-gateway/point-to-site-how-to-radius-ps.md)|
+| Kaynak Yöneticisi | Desteklenen | [Öğretici](../articles/vpn-gateway/point-to-site-how-to-radius-ps.md)|
 | Klasik | Desteklenmiyor | Desteklenmiyor |
