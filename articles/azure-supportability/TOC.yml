@@ -14,7 +14,7 @@
               href: per-vm-quota-requests.md
             - name: Toplam bölgesel vCPU sınır artışı
               href: regional-quota-requests.md
-            - name: Düşük öncelikli kota sınırı artışı
+            - name: Nokta kota sınırı artışı
               href: low-priority-quota.md
         - name: Klasik Dağıtım Modeli
           href: classic-deployment-model-quota-increase-requests.md

@@ -15,10 +15,10 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 06/18/2019
 ms.locfileid: "67188249"
 ---
-| **Dağıtım modeli/yöntemi** | **Azure portal** | **PowerShell** | **Azure CLI** |
+| **Dağıtım modeli/yöntemi** | **Azure portalda** | **PowerShell** | **Azure CLI** |
 | --- | --- | --- | --- |
-| Resource Manager |[Öğretici](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[Öğretici +](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[Öğretici](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
-| Klasik |[Öğretici **](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[Öğretici +](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Desteklenmiyor |
+| Kaynak Yöneticisi |[Öğretici](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[Öğretici +](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[Öğretici](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [Öğretici](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
+| Klasik |[Öğretici * *](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[Öğretici +](../articles/vpn-gateway/vpn-gateway-multi-site.md) | Desteklenmiyor |
 
 ( ** ) bu yöntemin PowerShell gerektiren adımlar içerdiğini gösterir.
 

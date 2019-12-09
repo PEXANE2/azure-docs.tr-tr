@@ -244,6 +244,8 @@
           href: sap-hana-db-manage.md
     - name: Windows Server
       items:
+        - name: MARS aracısı hakkında
+          href: backup-azure-about-mars.md
         - name: Windows Server dosya ve klasörlerini yedekleme
           href: backup-configure-vault.md
         - name: Windows Server Sistem Durumunu yedekleme

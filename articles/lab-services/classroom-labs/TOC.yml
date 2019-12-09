@@ -72,6 +72,8 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
           href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Windows şablon VM’si hazırlama
+          href: how-to-prepare-windows-template.md
     - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)
       items:
         - name: Sınıf laboratuvarlarına erişim

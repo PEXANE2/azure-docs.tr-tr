@@ -44,9 +44,6 @@
     - name: Müşterileri görüntüleme ve yönetme
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Hizmet sağlayıcılarını görüntüleme ve yönetme
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Azure İlkesi tümleştirmesi
       items:
         - name: İlkeyi uygun ölçekte dağıtma
@@ -55,6 +52,14 @@
         - name: Düzeltilebilir bir ilke dağıtma
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Müşteri eylemleri
+      items:
+        - name: Hizmet sağlayıcılarını görüntüleme ve yönetme
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Hizmet sağlayıcısı etkinliğini görüntüleme
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
     - name: Azure CLI

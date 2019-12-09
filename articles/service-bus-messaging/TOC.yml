@@ -211,6 +211,8 @@
       items:
         - name: Sorun giderme kılavuzu
           href: service-bus-messaging-exceptions.md
+        - name: Kaynak Yöneticisi özel durumları
+          href: service-bus-resource-manager-exceptions.md
 - name: Başvuru
   items:
     - name: .NET

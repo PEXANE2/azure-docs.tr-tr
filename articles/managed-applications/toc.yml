@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: Kaynak ekleme
       href: concepts-custom-providers-resourceonboarding.md
+    - name: Özel sağlayıcı ilişkilendirmeleri için Azure İlkesi
+      href: concepts-custom-providers-built-in-policy.md
+    - name: Yönetilen uygulama ilişkilendirmeleri için Azure İlkesi
+      href: concepts-managed-applications-built-in-policy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Özel sağlayıcılar

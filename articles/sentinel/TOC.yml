@@ -111,7 +111,7 @@
           href: notebooks.md
         - name: Avlanmak için yer işaretlerini kullanma
           href: bookmarks.md
-        - name: Avlanmak için Livestream kullanma
+        - name: Avlanmak için canlı akış kullanma
           href: livestream.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md

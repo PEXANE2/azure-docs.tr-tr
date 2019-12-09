@@ -15,7 +15,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 06/18/2019
 ms.locfileid: "67188252"
 ---
-| **Dağıtım modeli/yöntemi** | **Azure portal** | **PowerShell** | 
+| **Dağıtım modeli/yöntemi** | **Azure portalda** | **PowerShell** | 
 | --- | --- | --- |
-| Resource Manager | **Destekleniyor** | [Öğretici](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)|
+| Kaynak Yöneticisi | **Destekleniyor** | [Öğretici](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)|
 | Klasik | **Desteklenmiyor** | [Öğretici](../articles/expressroute/expressroute-howto-coexist-classic.md) |

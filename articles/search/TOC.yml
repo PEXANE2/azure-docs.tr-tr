@@ -15,6 +15,8 @@
       items:
         - name: Arama dizini oluşturma
           href: search-get-started-portal.md
+        - name: Uygulama oluşturma (önizleme)
+          href: search-create-app-portal.md
         - name: Bilişsel beceri kümesi oluşturma
           href: cognitive-search-quickstart-blob.md
         - name: Bilgi deposu oluşturma
@@ -303,6 +305,8 @@
           href: search-manage-powershell.md
         - name: Etkinliği izleme ve günlüğe kaydetme
           href: search-monitor-usage.md
+        - name: Arama trafiği analizi
+          href: search-traffic-analytics.md
     - name: Sorun giderme
       items:
         - name: Dizin oluşturucu sorunları
