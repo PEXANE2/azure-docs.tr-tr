@@ -10,7 +10,7 @@
   items:
     - name: Sunucular için Azure Arc'ı kullanarak makineleri Azure'a bağlama - Portal
       href: ./servers/quickstart-onboard-portal.md
-    - name: Sunucular için Azure Arc'ı kullanarak makineleri Azure'a bağlama - PowerShell
+    - name: Sunucular için Azure Arc’ı kullanarak makineleri uygun ölçekte bağlama - PowerShell
       href: ./servers/quickstart-onboard-powershell.md
 - name: Başvuru
   items:

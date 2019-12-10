@@ -78,8 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Klasik ilkeleri geçirme
       href: policy-migration-mfa.md
-    - name: Koşullu Erişimi Benimseme
-      href: howto-conditional-access-adoption-kit.md
     - name: Sorun giderme
       items:
         - name: What If aracını kullanarak sorun giderme

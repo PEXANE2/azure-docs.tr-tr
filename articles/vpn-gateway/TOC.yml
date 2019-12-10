@@ -124,8 +124,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: İstemci VPN profili indirme dosyası hakkında
-              href: about-vpn-profile-download.md
         - name: Radius kimlik doğrulaması
           items:
             - name: P2S VPN yapılandırma
@@ -142,6 +140,8 @@
               href: openvpn-azure-ad-mfa.md
             - name: VPN istemcisi yapılandırma
               href: openvpn-azure-ad-client.md
+            - name: İstemci VPN profili indirme dosyası hakkında
+              href: about-vpn-profile-download.md
         - name: OpenVPN
           items:
             - name: Noktadan siteye bağlantılar için OpenVPN yapılandırması
