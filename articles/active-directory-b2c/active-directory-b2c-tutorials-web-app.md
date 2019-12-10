@@ -1,5 +1,6 @@
 ---
-title: Öğretici-bir Web uygulamasında kimlik doğrulamasını etkinleştirme-Azure Active Directory B2C
+title: 'Öğretici: bir Web uygulamasında kimlik doğrulamasını etkinleştirme'
+titleSuffix: Azure AD B2C
 description: Bir ASP.NET web uygulamasında kullanıcının oturum açmasını sağlamak için Azure Active Directory B2C’nin nasıl kullanılacağını gösteren öğretici.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d88ad13c1326ce62b73dbffa0c79904c6f81e6f4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641791"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950213"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -30,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 * **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
@@ -45,7 +46,7 @@ Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yen
 
 #### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
@@ -55,7 +56,7 @@ Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yen
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
@@ -91,7 +92,7 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
 1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
-    1. `ida:Tenant` ve `ida:AadInstance` değerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin `fabrikamb2c` `contoso`ile değiştirin.
+    1. `ida:Tenant` ve `ida:AadInstance` değerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, `fabrikamb2c` değerini `contoso` ile değiştirin.
     1. `ida:ClientId` değerini, kaydettiğiniz uygulama KIMLIĞIYLE değiştirin.
     1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. Web. config dosyasına eklemeden önce, istemci gizliliğini XML olarak kodlamanız gerekir.
     1. `ida:SignUpSignInPolicyId` değerini `b2c_1_signupsignin1`ile değiştirin.

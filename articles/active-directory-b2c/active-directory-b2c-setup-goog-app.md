@@ -1,5 +1,6 @@
 ---
-title: Bir Google hesabı ile kaydolma ve oturum açma ayarlama-Azure Active Directory B2C
+title: Bir Google hesabı ile kaydolma ve oturum açma ayarlama
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanarak uygulamalarınızda Google hesabı bulunan müşterilere kaydolma ve oturum açma sağlayın.
 services: active-directory-b2c
 author: mmacy
@@ -10,26 +11,26 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 158bb3b1329d2ad2cbd55ecf44f980966e2546e2
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1e23c79b1e09f3e3a7aaa21b9257bfe6bd43f7e8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065182"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950484"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Google hesabı ile kaydolma ve oturum açma ayarlama
 
 ## <a name="create-a-google-application"></a>Google uygulaması oluşturma
 
-Bir Google hesabını Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik sağlayıcısı](active-directory-b2c-reference-oauth-code.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Henüz bir Google hesabınız yoksa kaydolabilirsiniz [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp).
+Bir Google hesabını Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik sağlayıcısı](active-directory-b2c-reference-oauth-code.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Google hesabınız yoksa [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)için kaydolabilirsiniz.
 
 1. Google [Developers konsolunda](https://console.developers.google.com/) Google hesabı kimlik bilgilerinizle oturum açın.
 1. Sayfanın sol üst köşesinde proje listesini seçin ve ardından **Yeni proje**' yi seçin.
 1. Bir **Proje adı**girin, **Oluştur**' a tıklayın ve ardından yeni projeyi kullandığınızdan emin olun.
-1. Sol menüden **kimlik** bilgileri ' ni seçin ve **kimlik bilgileri** > oluştur**OAuth istemci kimliği**' ni seçin.
+1. Sol menüden **kimlik** bilgileri ' ni seçin ve ardından **Oauth istemci kimliği** > **kimlik bilgileri oluştur** ' u seçin.
 1. **Uygulama türü**altında **Web uygulaması**' nı seçin.
-1. Uygulamanız için bir **ad** girin, **yetkili JavaScript kaynakları**' na ve `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **yetkili yeniden yönlendirme URI 'lerinde**girin. `https://your-tenant-name.b2clogin.com` Kiracınızın adıyla değiştirin `your-tenant-name` . Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-1. **Oluştur**'a tıklayın.
+1. Uygulamanız için bir **ad** girin, **yetkili JavaScript kaynakları**' na `https://your-tenant-name.b2clogin.com` girin ve **yetkili yeniden yönlendirme URI 'lerinde**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. `your-tenant-name`, kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+1. **Oluştur**’a tıklayın.
 1. **ISTEMCI kimliği** ve **istemci parolası**değerlerini kopyalayın. Google 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **İstemci parolası** önemli bir güvenlik kimlik bilgileridir.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Bir Google hesabını kimlik sağlayıcısı olarak yapılandırma

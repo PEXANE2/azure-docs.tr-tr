@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C'de özel ilkeler başlatıcısının paketi anlama | Microsoft Docs
-description: Azure Active Directory B2C özel ilkeler bir konu.
+title: Özel ilke başlangıç paketinin bileşenleri
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C özel ilke başlangıç paketindeki ilkelere genel bakış.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,100 +11,100 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b52f1a4cb6837dd779dcf4edac140bb13e06eacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d49bd9af80b1bb9bd86466269b14ba0a47181e0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509569"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948190"
 ---
-# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Azure AD B2C özel ilke başlangıç paketi özel ilkelerini anlama
+# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Azure AD B2C özel Ilke başlangıç paketinin özel ilkelerini anlama
 
-Bu bölümde ile birlikte gelen B2C_1A_base ilkesinin tüm temel öğeleri listelenir **başlangıç paketi** ve kendi ilkelerinizi devralma yoluyla yazmak için yararlanılarak *B2C_1A_base_extensions İlkesi* .
+Bu bölümde, **Başlangıç paketiyle** birlikte gelen B2C_1A_base ilkesinin tüm temel öğeleri listelenir ve bu, *B2C_1A_base_extensions ilkesinin*devralımı aracılığıyla kendi ilkelerinizi yazmak için yararlanılabilir.
 
-Bu nedenle, bu özellikle fazla odaklanır zaten tanımlanmış talep türleri, talep dönüştürmeleri, içerik tanımları, Talep sağlayıcı, teknik profil ve çekirdek kullanıcı yolculuklarından ile.
+Bu nedenle, daha önce önceden tanımlanmış talep türlerine, talep dönüştürmelerine, içerik tanımlarına, teknik profillerinin bulunduğu talep sağlayıcılarına ve temel Kullanıcı günlerine odaklanmaktadır.
 
 > [!IMPORTANT]
-> Microsoft hiçbir açık veya zımni bundan sonra sağlanan bilgileri sağlar. Değişiklikleri GA süreden önce herhangi bir zamanda GA zamanında veya sonrasında tanıtılmak.
+> Microsoft, belirtilen bilgilerle ilgili olarak, açık veya zımni hiçbir garanti vermez. Değişiklikler herhangi bir zamanda, GA saati, GA saati veya sonrasında gerçekleştirilebilir.
 
-Kendi ilkelerinizi hem B2C_1A_base_extensions İlkesi, bu tanımları geçersiz kılın ve gerektiğinde bulunmakla sağlayarak bu ana ilke genişletin.
+Hem kendi ilkeleriniz hem de B2C_1A_base_extensions ilkesi bu tanımları geçersiz kılabilir ve gerektiğinde ek bir ilke sunarak bu üst ilkeyi genişletebilirler.
 
-Çekirdek öğelerini *B2C_1A_base ilke* talep türleri, talep dönüşümleri ve içerik tanımlarını. Bu öğeleri kendi ilkelerinizi de olarak başvurulması maruz kullanılabilir *B2C_1A_base_extensions ilke*.
+*B2C_1A_base ilkesinin* temel öğeleri talep türleri, talep dönüştürmeleri ve içerik tanımlardır. Bu öğelerin, kendi ilkelerinizde ve *B2C_1A_base_extensions ilkesinde*başvurulması açıktır.
 
 ## <a name="claims-schemas"></a>Talep şemaları
 
-Başka bir talep, şemalar, üç bölümlere ayrılmıştır:
+Bu talep şemaları üç bölüme ayrılmıştır:
 
-1.  Kullanıcı yolculuklarından düzgün çalışması gerekli olan minimum talepleri listeler ilk bölümü.
-2.  Talepleri listeler bir ikinci bölümü, özellikle login.microsoftonline.com kimlik doğrulaması için diğer talep sağlayıcıları geçirilecek sorgu dizesi parametreleri ve diğer özel parametreler için gereklidir. **Lütfen bu talepler değiştirmeyin**.
-3.  Ve kullanıcıdan toplanan herhangi bir ek, isteğe bağlı talepleri listeler üçüncü bir bölümünü sonunda dizinde saklanan ve oturum açma sırasında belirteçlerinde gönderilen. Bu bölümde yeni talep türü kullanıcıdan toplanan ve/veya belirtecinde gönderilen eklenebilir.
+1.  Kullanıcının düzgün çalışması için gerekli olan en düşük talepleri listeleyen ilk bölüm.
+2.  Sorgu dizesi parametreleri için gereken talepleri ve diğer talep sağlayıcılarına geçirilecek diğer özel parametreleri listeleyen, özellikle de kimlik doğrulaması için login.microsoftonline.com olan ikinci bir bölüm. **Lütfen bu talepleri değiştirmeyin**.
+3.  Sonuç olarak, Kullanıcı tarafından toplanabilecek, dizinde depolanan ve oturum açma sırasında belirteçlerde gönderilen ek, isteğe bağlı talepler listeleyen üçüncü bir bölüm. Kullanıcıdan toplanacak ve/veya belirteçte gönderilen yeni talep türü, bu bölüme eklenebilir.
 
 > [!IMPORTANT]
-> Talep şeması, parola ve kullanıcı adları gibi belirli bir talep kısıtlamalar içerir. Güven Framework (TF) ilkesi herhangi bir talep sağlayıcısı olarak Azure AD'ye değerlendirir ve tüm kısıtlamalar özel ilke modelled. Daha fazla kısıtlama ekleyin veya başka bir talep sağlayıcı kendi kısıtlamaları olan kimlik bilgilerini depolama için bir ilke değiştirilmiş.
+> Talepler şeması, parolalar ve Kullanıcı adları gibi belirli taleplerde kısıtlamalar içerir. Trust Framework (TF) ilkesi, Azure AD 'yi başka bir talep sağlayıcı olarak değerlendirir ve tüm kısıtlamaları özel ilkede modellenmiş olarak davranır. Daha fazla kısıtlama eklemek için bir ilke değiştirilebilir veya kimlik bilgisi depolaması için kendi kısıtlamalarına sahip olan başka bir talep sağlayıcısı kullanılır.
 
 Kullanılabilir talep türleri aşağıda listelenmiştir.
 
-### <a name="claims-that-are-required-for-the-user-journeys"></a>Kullanıcı yolculuklarından için gerekli olan talepleri
+### <a name="claims-that-are-required-for-the-user-journeys"></a>Kullanıcının yolculukları için gereken talepler
 
-Aşağıdaki talep için kullanıcı yolculuklarından düzgün çalışması gereklidir:
+Kullanıcı ilerurları düzgün çalışması için aşağıdaki talepler gereklidir:
 
 | Talep türü | Açıklama |
 |-------------|-------------|
-| *Kullanıcı Kimliği* | Kullanıcı adı |
-| *signInName* | Oturum adı |
-| *tenantId* | Azure AD B2C kullanıcı nesnesinin Kiracı tanımlayıcısını (ID) |
-| *objectId* | Azure AD B2C kullanıcı nesnesinin nesne tanımlayıcısını (ID) |
+| *UserID* | Kullanıcı adı |
+| *Signınname* | Oturum açma adı |
+| *tenantId* | Azure AD B2C içindeki Kullanıcı nesnesinin kiracı tanımlayıcısı (KIMLIĞI) |
+| *objectId* | Azure AD B2C içindeki Kullanıcı nesnesinin nesne tanımlayıcısı (KIMLIĞI) |
 | *Parola* | Parola |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Parola gücü, bitiş tarihi belirlemek için Azure AD B2C tarafından kullanılan parola ilkeleri. |
+| *passwordPolicies* | Parola gücünü, süre sonunu vb. anlamak için Azure AD B2C tarafından kullanılan parola ilkeleri. |
 | *alt* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | Kullanıcının telefon numarası |
-| *Verified.strongAuthenticationPhoneNumber* | |
-| *E-posta* | Kullanıcıyla iletişim kurmak için kullanılan e-posta adresi |
-| *signInNamesInfo.emailAddress* | Kullanıcının oturum açmak için kullanabileceğiniz e-posta adresi |
-| *otherMails* | Kullanıcıyla iletişim kurmak için kullanılan e-posta adresleri |
-| *userPrincipalName* | Azure AD B2C'de depolanan gibi kullanıcı adı |
-| *upnUserName* | Kullanıcı asıl adı oluşturmak için kullanıcı adı |
-| *mailNickName* | Azure AD B2C'de depolanan gibi kullanıcının posta takma adı |
+| *Doğrulanan. strongAuthenticationPhoneNumber* | |
+| *E-posta* | Kullanıcıyla iletişim kurmak için kullanılabilen e-posta adresi |
+| *signInNamesInfo.emailAddress* | Kullanıcının oturum açmak için kullanabileceği e-posta adresi |
+| *Diğer postalar* | Kullanıcıyla iletişim kurmak için kullanılabilen e-posta adresleri |
+| *userPrincipalName* | Azure AD B2C depolanan Kullanıcı adı |
+| *upnUserName* | Kullanıcı asıl adı oluşturmak için Kullanıcı adı |
+| *mailNickName* | Azure AD B2C depolanan kullanıcının posta Nick adı |
 | *newUser* | |
-| *executed-SelfAsserted-Input* | Öznitelikleri kullanıcıdan toplanan olup olmadığını belirten bir talep |
-| *executed-PhoneFactor-Input* | Yeni bir telefon numarası kullanıcıdan toplanan olup olmadığını belirten bir talep |
-| *authenticationSource* | Kullanıcının sosyal kimlik sağlayıcısı, login.microsoftonline.com veya yerel hesap doğrulanmış olduğunu belirtir |
+| *executed-SelfAsserted-Input* | Kullanıcıdan özniteliklerin toplanıp toplanmadığını belirten talep |
+| *executed-PhoneFactor-Input* | Kullanıcıdan yeni bir telefon numarasının toplandığını belirten talep |
+| *authenticationSource* | Kullanıcının kimlik doğrulamasının sosyal kimlik sağlayıcısı, login.microsoftonline.com veya yerel hesapta yapılıp yapılmayacağını belirtir |
 
-### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Sorgu dizesi parametreleri ve diğer özel parametreler için gerekli talepler
+### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Sorgu dizesi parametreleri ve diğer özel parametreler için gereken talepler
 
-Aşağıdaki talep diğer talep sağlayıcıları için (bazı sorgu dizesi parametreleri dahil) özel parametreleri geçirmek için gereklidir:
-
-| Talep türü | Açıklama |
-|-------------|-------------|
-| *nux* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *nca* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *istemi* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *mkt* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *LC* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *grant_type değeri* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *Kapsam* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *client_id* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com için geçirilen özel parametresi |
-| *objectIdFromSession* | Nesne Kimliğini bir SSO oturumundan alınan olduğunu göstermek için varsayılan oturum yönetimi sağlayıcısı tarafından sağlanan parametre |
-| *isActiveMFASession* | Kullanıcının etkin bir MFA oturuma sahip olduğunu göstermek için mfa'yı oturum yönetimi tarafından sağlanan parametre |
-
-### <a name="additional-optional-claims-that-can-be-collected"></a>Toplanabilir (isteğe bağlı) ek talep
-
-Kullanıcılardan toplanan, dizinde saklanan ve belirtecinde gönderilen ek talep taleplerdir. Ek talep, önce belirtildiği gibi bu listeye eklenebilir.
+Diğer talep sağlayıcılarına özel parametreleri (bazı sorgu dizesi parametreleri de dahil olmak üzere) geçirmek için aşağıdaki talepler gereklidir:
 
 | Talep türü | Açıklama |
 |-------------|-------------|
-| *givenName* | Kullanıcının verilen adı (ilk adı olarak da bilinir) |
-| *Soyadı* | Kullanıcının soyadı (Aile adı veya son adı olarak da bilinir) |
-| *Extension_picture* | Sosyal kullanıcının resmi |
+| *nux* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *nca* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *isteme* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *mkt* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *LC* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *grant_type* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *kapsam* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *client_id* | Yerel hesap kimlik doğrulaması için login.microsoftonline.com 'e geçirilen özel parametre |
+| *objectIdFromSession* | Bir SSO oturumundan nesne KIMLIĞININ alındığını göstermek için varsayılan oturum yönetim sağlayıcısı tarafından belirtilen parametre |
+| *isActiveMFASession* | Kullanıcının etkin bir MFA oturumu olduğunu göstermek için MFA oturum yönetimi tarafından sunulan parametre |
+
+### <a name="additional-optional-claims-that-can-be-collected"></a>Toplanabilecek ek (isteğe bağlı) talepler
+
+Aşağıdaki talepler, kullanıcılardan toplanabilecek, dizinde depolanan ve belirtece gönderilebilecek ek taleplerdir. Daha önce özetlenen şekilde, bu listeye ek talepler eklenebilir.
+
+| Talep türü | Açıklama |
+|-------------|-------------|
+| *givenName* | Kullanıcının verilen adı (ad olarak da bilinir) |
+| *Soyadı* | Kullanıcının Soyadı (aile adı veya soyadı olarak da bilinir) |
+| *Extension_picture* | Kullanıcının sosyal resmini |
 
 ## <a name="claim-transformations"></a>Talep dönüştürmeleri
 
-Kullanılabilir talep dönüştürme işlemlerini aşağıda listelenmiştir.
+Kullanılabilir talep dönüştürmeleri aşağıda listelenmiştir.
 
 | Talep dönüştürme | Açıklama |
 |----------------------|-------------|
@@ -116,101 +117,101 @@ Kullanılabilir talep dönüştürme işlemlerini aşağıda listelenmiştir.
 
 ## <a name="content-definitions"></a>İçerik tanımları
 
-Bu bölümde zaten bildirilmiş içerik tanımlarını açıklanmaktadır *B2C_1A_base* ilkesi. Bu içerik tanımlarını başvurulan, geçersiz kılınan ve/veya kendi ilkelerinizi de olarak gerektiği şekilde genişletilmiş için açıktır *B2C_1A_base_extensions* ilkesi.
+Bu bölümde *B2C_1A_base* ilkesinde zaten belirtilen içerik tanımları açıklanmaktadır. Bu içerik tanımlarının, kendi ilkeleriniz ve *B2C_1A_base_extensions* ilkesi için gerektiği şekilde başvurulması, geçersiz kılınması ve/veya genişletilmesi açıktır.
 
 | Talep sağlayıcı | Açıklama |
 |-----------------|-------------|
 | *Facebook* | |
-| *Yerel hesapla oturum aç* | |
+| *Yerel hesap oturum açma* | |
 | *PhoneFactor* | |
 | *Azure Active Directory* | |
-| *Onaylanan kendi kendine* | |
+| *Kendi kendini onaylanan* | |
 | *Yerel hesap* | |
 | *Oturum yönetimi* | |
-| *Trustframework ilkesini altyapısı* | |
-| *TechnicalProfiles* | |
-| *Belirteci veren* | |
+| *Trustframework Ilke altyapısı* | |
+| *Teknisyen* | |
+| *Belirteç veren* | |
 
 ## <a name="technical-profiles"></a>Teknik profiller
 
-Bu bölümde Talep sağlayıcı başına zaten bildirildi teknik profiller gösterilmektedir *B2C_1A_base* ilkesi. Bu teknik profiller daha fazla başvurulan, geçersiz kılınan ve/veya kendi ilkelerinizi de olarak gerektiği şekilde genişletilmiş için açıktır *B2C_1A_base_extensions* ilkesi.
+Bu bölümde, *B2C_1A_base* ilkesinde talep sağlayıcı başına önceden tanımlanmış teknik profiller gösterilmektedir. Bu teknik profillerin, kendi ilkeleriniz ve *B2C_1A_base_extensions* ilkesinde olması gerektiği şekilde daha fazla başvurulması, geçersiz kılınabilmesi ve/veya genişletilmesi açıktır.
 
 ### <a name="technical-profiles-for-facebook"></a>Facebook için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
-| *Facebook OAUTH* | |
+| *Facebook-OAUTH* | |
 
-### <a name="technical-profiles-for-local-account-signin"></a>Teknik profilleri için yerel hesapla oturum aç
+### <a name="technical-profiles-for-local-account-signin"></a>Yerel hesap oturum açma için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
-| *Etkileşimli olmayan oturum açma* | |
+| *Oturum açma-etkileşimsiz* | |
 
-### <a name="technical-profiles-for-phone-factor"></a>Phonefactor raporlarına için teknik profiller
+### <a name="technical-profiles-for-phone-factor"></a>Telefon faktörü için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
-| *PhoneFactor giriş* | |
-| *PhoneFactor-InputOrVerify* | |
-| *PhoneFactor doğrulayın* | |
+| *PhoneFactor-giriş* | |
+| *PhoneFactor-ınputorverify* | |
+| *PhoneFactor-doğrula* | |
 
 ### <a name="technical-profiles-for-azure-active-directory"></a>Azure Active Directory için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
-| *AAD-genel* | Diğer AAD-xxx teknik profiller tarafından bulunan teknik profili |
-| *AAD-UserWriteUsingAlternativeSecurityId* | Sosyal oturum açma bilgileri için teknik profili |
-| *AAD-UserReadUsingAlternativeSecurityId* | Sosyal oturum açma bilgileri için teknik profili |
-| *AAD UserReadUsingAlternativeSecurityId NoError* | Sosyal oturum açma bilgileri için teknik profili |
-| *AAD UserWritePasswordUsingLogonEmail* | Yerel hesaplar için teknik profili |
-| *AAD UserReadUsingEmailAddress* | Yerel hesaplar için teknik profili |
-| *AAD-UserWriteProfileUsingObjectId* | ObjectID kullanarak kullanıcı kaydı güncelleştirmek için teknik profili |
-| *AAD-UserWritePhoneNumberUsingObjectId* | ObjectID kullanarak kullanıcı kaydı güncelleştirmek için teknik profili |
-| *AAD UserWritePasswordUsingObjectId* | ObjectID kullanarak kullanıcı kaydı güncelleştirmek için teknik profili |
-| *AAD-UserReadUsingObjectId* | Teknik profili, kullanıcı kimlik doğrulaması yaptıktan sonra veri okumak için kullanılır |
+| *AAD-ortak* | Diğer AAD-xxx Teknik profillerinin içerdiği teknik profil |
+| *AAD-UserWriteUsingAlternativeSecurityId* | Sosyal oturumlar için teknik profil |
+| *AAD-Userreadusingalternativesecurityıd* | Sosyal oturumlar için teknik profil |
+| *AAD-Userreadusingalternativesecurityıd-NoError* | Sosyal oturumlar için teknik profil |
+| *AAD-UserWritePasswordUsingLogonEmail* | Yerel hesaplar için teknik profil |
+| *AAD-Userreadusingemadresi* | Yerel hesaplar için teknik profil |
+| *AAD-UserWriteProfileUsingObjectId* | ObjectID kullanarak Kullanıcı kaydını güncelleştirmek için teknik profil |
+| *AAD-Userwritephonenumberusingobjectıd* | ObjectID kullanarak Kullanıcı kaydını güncelleştirmek için teknik profil |
+| *AAD-Userwritepasswordusingobjectıd* | ObjectID kullanarak Kullanıcı kaydını güncelleştirmek için teknik profil |
+| *AAD-UserReadUsingObjectId* | Teknik profil, Kullanıcı kimlik doğrulamasından sonra verileri okumak için kullanılır |
 
 ### <a name="technical-profiles-for-self-asserted"></a>Kendi kendine onaylanan için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
-| *SelfAsserted sosyal* | |
+| *Selfasted-sosyal* | |
 | *SelfAsserted-ProfileUpdate* | |
 
 ### <a name="technical-profiles-for-local-account"></a>Yerel hesap için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
 | *LocalAccountSignUpWithLogonEmail* | |
 
 ### <a name="technical-profiles-for-session-management"></a>Oturum yönetimi için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
-| *SM Noop* | |
+| *SM-noop* | |
 | *SM-AAD* | |
-| *SM SocialSignup* | AAD oturum oturum arasında belirsizliğinin ortadan kaldırılmasını ve oturum açma için profil adı kullanılıyor. |
-| *SM SocialLogin* | |
-| *SM MFA* | |
+| *SM-SocialSignup* | Kayıt ve oturum açma arasındaki AAD oturumunu belirsizliğini ortadan kaldırmak için profil adı kullanılıyor |
+| *SM-SocialLogin* | |
+| *SM-MFA* | |
 
-### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Güven framework ilke altyapısı için teknik profiller
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Güven çerçevesi ilke altyapısı için teknik profiller
 
-Şu anda teknik profil için tanımlanan **Trustframework İlkesi altyapısı TechnicalProfiles** talep sağlayıcısı.
+Şu anda, **Trustframework Policy Engine teknisyen** talep sağlayıcısı için hiçbir teknik profil tanımlanmamıştır.
 
-### <a name="technical-profiles-for-token-issuer"></a>Belirteci veren teknik profilleri
+### <a name="technical-profiles-for-token-issuer"></a>Belirteç veren için teknik profiller
 
-| Teknik profili | Açıklama |
+| Teknik profil | Açıklama |
 |-------------------|-------------|
 | *JwtIssuer* | |
 
-## <a name="user-journeys"></a>Kullanıcı yolculuklarından
+## <a name="user-journeys"></a>Kullanıcı yolculukları
 
-Bu bölümde zaten bildirilmiş kullanıcı yolculuklarından gösterilmektedir *B2C_1A_base* ilkesi. Bu kullanıcı yolculuklarından daha fazla başvurulan, geçersiz kılınan ve/veya kendi ilkelerinizi de olarak gerektiği şekilde genişletilmiş için açıktır *B2C_1A_base_extensions* ilkesi.
+Bu bölümde, *B2C_1A_base* ilkesinde zaten belirtilen kullanıcı ile bağlantılı olan kullanıcılar gösterilmektedir. Bu kullanıcının başvurmasının yanı sıra, *B2C_1A_base_extensions* ilkesinde ve kendi ilkeleriniz için gereken şekilde daha fazla başvurulması, geçersiz kılınmak ve/veya genişletilme açıktır.
 
 | Kullanıcı yolculuğu | Açıklama |
 |--------------|-------------|
-| *Kaydolma* | |
-| *Oturum açma* | |
+| *Ol* | |
+| *Giriş* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |
 | *PasswordReset* | |

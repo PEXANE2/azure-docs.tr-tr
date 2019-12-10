@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802313"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951148"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -60,7 +60,7 @@ Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 
 ## <a name="what-you-can-alert-on"></a>Uyarı yapabilecekleriniz
 
-[Veri kaynaklarını izleme](../../azure-monitor/platform/data-sources-reference.md)bölümünde açıklandığı gibi ölçümler ve Günlükler hakkında uyarı alabilirsiniz. Bunlar arasında şunlar yer alır ancak bunlarla sınırlı değildir:
+[Veri kaynaklarını izleme](../../azure-monitor/platform/data-sources-reference.md)bölümünde açıklandığı gibi ölçümler ve Günlükler hakkında uyarı alabilirsiniz. Bunlarla sınırlı olmamak üzere şunları içerir:
 - Ölçüm değerleri
 - Günlük arama sorguları
 - Etkinlik günlüğü olayları
@@ -82,8 +82,8 @@ Aşağıdaki uyarı durumları desteklenir.
 | Eyalet | Açıklama |
 |:---|:---|
 | Yeni | Sorun henüz algılandı ve henüz gözden geçirilmedi. |
-| Mazsa | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
-| kapandı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
+| Onaylandı | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
+| Kapatıldı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
 *Uyarı durumu* , *izleyici koşulunun*farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *tetiklenir*olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu *çözüldü*olarak ayarlanır. Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](https://aka.ms/managing-alert-smart-group-states)bilgi edinin.
 
@@ -156,7 +156,7 @@ Sayfanın en üstündeki açılan menülerde aşağıdaki değerleri seçerek g�
 | Kaynak türü | Bir veya daha fazla kaynak türü seçin. Yalnızca seçilen türdeki hedefleri olan uyarılar görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 | Kaynak | Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
 | Önem Derecesi | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
-| İzleme koşulu | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+| Koşulu izle | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Uyarı durumu | Bir uyarı durumu seçin veya tüm durumların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Hizmeti izle | Bir hizmet seçin veya tüm hizmetleri dahil etmek için **Tümü** ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
 | Zaman aralığı | Yalnızca seçili zaman aralığı içinde tetiklenen uyarılar görünüme dahildir. Desteklenen değerler son saat, son 24 saat, son 7 gün ve son 30 gündür. |
@@ -178,7 +178,7 @@ Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin rol tabanlı erişim denetimi (RBAC)
 
-Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunan veya [izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)için yerleşik RBAC rollerine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine `ContosoVM1` katkıda bulunan erişimini izlemeye sahipse, bu kullanıcı yalnızca `ContosoVM1` oluşturulan uyarıları kullanabilir ve yönetebilir.
+Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunan veya [izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)için yerleşik RBAC rollerine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine `ContosoVM1`katkıda bulunan erişimini izlemeye sahipse, bu kullanıcı yalnızca `ContosoVM1`oluşturulan uyarıları kullanabilir ve yönetebilir.
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uyarı örneklerinizi programlama yoluyla yönetme
 
@@ -211,6 +211,7 @@ Uyarıları, [önemli](alerts-common-schema-definitions.md#essentials) alanları
 - [Eylem grupları hakkında bilgi edinin](../../azure-monitor/platform/action-groups.md)
 - [Azure 'da uyarı örneklerinizi yönetme](https://aka.ms/managing-alert-instances)
 - [Akıllı grupları yönetme](https://aka.ms/managing-smart-groups)
+- [Azure uyarıları fiyatlandırması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 

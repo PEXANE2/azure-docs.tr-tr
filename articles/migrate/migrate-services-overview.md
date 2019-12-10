@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 54aea9fac946713ee6c1709e952e3962bb7288e9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669140"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951777"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -34,7 +34,7 @@ Azure geçişi, kuruluşunuzda Şirket içinden Azure 'a geçiş yapmanıza yard
 Şu anda Azure geçişi hizmetinin iki sürümü vardır:
 
 - **Geçerli sürüm**: bu sürümü kullanarak Azure geçişi projelerini oluşturun, şirket içi makineleri bulun ve değerlendirmeleri ve geçişleri düzenleyin. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
-- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullandıysanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Artık önceki sürümü kullanarak Azure geçişi projelerini oluşturamazsınız ve yeni bulmalar gerçekleştirmemenizi öneririz. Mevcut projelere erişmek için, **tüm hizmetler**> Azure Portal **Azure geçişi**' ni arayın. Azure geçişi panosunda, eski Azure geçiş projelerine erişim için bir bildirim ve bir bağlantı vardır.
+- **Önceki sürüm**: Azure geçişi 'nin önceki sürümünü kullandıysanız (yalnızca şirket Içi VMware VM 'lerinin değerlendirmesi desteklenir), artık geçerli sürümü kullanmalısınız. Artık önceki sürümü kullanarak Azure geçişi projelerini oluşturamazsınız ve yeni bulmalar gerçekleştirmemenizi öneririz. Mevcut projelere erişmek için, Azure portal **Azure geçişi**' ni arayıp seçin. **Azure geçişi** panosunda, eski Azure geçiş projelerine erişim için bir bildirim ve bir bağlantı vardır.
 
 
 

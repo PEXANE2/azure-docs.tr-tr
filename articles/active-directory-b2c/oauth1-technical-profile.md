@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C bir özel ilkede bir OAuth1 Technical profile tanımlayın | Microsoft Docs
-description: Azure Active Directory B2C bir özel ilkede OAuth1 Technical profile tanımlayın.
+title: Özel ilkede OAuth1 teknik profili tanımlama
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C bir özel ilkede bir OAuth 1,0 Teknik profili tanımlayın.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 97fa5757f8b77e29545f6d6f6b885334c7b526f1
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064000"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951114"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth1 teknik profili tanımlama
 
@@ -23,9 +24,9 @@ ms.locfileid: "71064000"
 
 Azure Active Directory B2C (Azure AD B2C), [OAuth 1,0 protokol](https://tools.ietf.org/html/rfc5849) kimlik sağlayıcısı için destek sağlar. Bu makalede, bu standartlaştırılmış protokolü destekleyen bir talep sağlayıcısıyla etkileşim kurmaya yönelik teknik bir profilin ayrıntıları açıklanmaktadır. OAuth1 teknik profiliyle, Twitter gibi bir OAuth1 tabanlı kimlik sağlayıcısıyla federasyona bağlayabilirsiniz. Kimlik sağlayıcısı ile birleştirme, kullanıcıların var olan sosyal veya kurumsal kimliklerinde oturum açmasına olanak tanır.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `OAuth1` **Name** özniteliğinin olarak ayarlanması gerekir. Örneğin, **Twitter-OAUTH1** Technical profile `OAuth1`için protokol.
+**Protokol** öğesinin **Name** özniteliğinin `OAuth1`olarak ayarlanması gerekir. Örneğin, **Twitter-OAUTH1** Technical profile için protokol `OAuth1`.
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -53,7 +54,7 @@ Aşağıdaki örnekte, Twitter kimlik sağlayıcısı tarafından döndürülen 
 Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de döndürür:
 
 - Kimlik sağlayıcısının adını içeren **IdentityProvider** talebi.
-- Varsayılan değeri `socialIdpAuthentication`olan **authenticationsource** talebi.
+- `socialIdpAuthentication`varsayılan değeri olan **Authenticationsource** talebi.
 
 ```xml
 <OutputClaims>
@@ -67,13 +68,13 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
 | Adı | Hayır | Kimlik sağlayıcısının adı. |
-| request_token_endpoint | Evet | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
-| authorization_endpoint | Evet | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
-| access_token_endpoint | Evet | RFC 5849 başına belirteç uç noktasının URL 'SI. |
+| request_token_endpoint | Yes | RFC 5849 başına istek belirteci uç noktasının URL 'SI. |
+| authorization_endpoint | Yes | RFC 5849 başına yetkilendirme uç noktasının URL 'SI. |
+| access_token_endpoint | Yes | RFC 5849 başına belirteç uç noktasının URL 'SI. |
 | ClaimsEndpoint | Hayır | Kullanıcı bilgisi uç noktasının URL 'SI. |
 | ClaimsResponseFormat | Hayır | Talep yanıtı biçimi.|
 
@@ -81,13 +82,13 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 **Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı.   |
+| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı.   |
 
-## <a name="redirect-uri"></a>Yönlendirme URI'si
+## <a name="redirect-uri"></a>Yeniden yönlendirme URI'si
 
-Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda, girin `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. **Kiracınızı** kiracı adınızla (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin tanıtıcısına (örneğin, b2c_1a_policy) değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir. Kimlik sağlayıcısı oturum açma bilgilerini kullanan tüm ilkeler için yeniden yönlendirme URL 'SI ekleyin.
+Kimlik sağlayıcınızın yeniden yönlendirme URL 'sini yapılandırdığınızda `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`girin. **Kiracınızı** kiracı adınızla (örneğin, contosob2c.onmicrosoft.com) ve **PolicyId** ile ilkenizin (örneğin, b2c_1a_policy) ile değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir. Kimlik sağlayıcısı oturum açma bilgilerini kullanan tüm ilkeler için yeniden yönlendirme URL 'SI ekleyin.
 
 **Login.microsoftonline.com** yerine **b2clogin.com** etki alanını kullanıyorsanız Login.microsoftonline.com yerine b2clogin.com kullandığınızdan emin olun.
 

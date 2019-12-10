@@ -1,6 +1,7 @@
 ---
-title: Bölgenin kullanılabilirliği & veri yerleşimi Azure Active Directory B2C
-description: Azure Active Directory B2C kiracının türleri hakkında bir konu.
+title: Bölge kullanılabilirliği ve veri yerleşimi
+titleSuffix: Azure AD B2C
+description: Bölge kullanılabilirliği, veri yerleşimi ve Azure Active Directory B2C Preview kiracılar hakkında bilgiler.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bb7a7ef2aabd7f93531d9afa662d7e582e05550
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 1b09eb85df6748fed042731ac90ebbf20c65b702
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273576"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950520"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Bölge kullanılabilirliği ve veri yerleşikliği
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: bölge kullanılabilirliği & veri yerleşimi
 
 Bölge kullanılabilirliği ve veri yerleşimi, Azure 'un geri kalanından Azure AD B2C farklı şekilde uygulanan iki çok farklı kavramlardır. Bu makalede, bu iki kavram arasındaki farklar açıklanmakta ve bunların Azure için nasıl uygulandığı karşılaştırılır Azure AD B2C karşılaştırması açıklanmıştır.
 
@@ -27,7 +28,7 @@ Azure AD B2C, **Dünya çapında** **Birleşik Devletler, Avrupa veya Asya Pasif
 
 [Veri](#data-residency) yerleşimi, Kullanıcı verilerinin nerede depolanabileceğini belirtir.
 
-## <a name="region-availability"></a>Bölge kullanılabilirliği
+## <a name="region-availability"></a>Bölgelere göre kullanılabilirlik
 
 Azure AD B2C Azure genel bulutu aracılığıyla dünya çapında kullanılabilir.
 

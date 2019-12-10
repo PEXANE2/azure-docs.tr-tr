@@ -1,6 +1,7 @@
 ---
-title: RESTful hizmetlerinizi Azure Active Directory B2C'de HTTP temel kimlik doğrulaması kullanarak güvenli hale getirme | Microsoft Docs
-description: Azure AD B2C'yi özel, REST API talep alışverişlerine HTTP temel kimlik doğrulaması kullanarak güvenli hale getirin.
+title: HTTP temel kimlik doğrulaması kullanarak yeniden bir hizmetin güvenliğini sağlama
+titleSuffix: Azure AD B2C
+description: HTTP temel kimlik doğrulaması kullanarak Azure AD B2C özel REST API talep Değişimlerinizi güvenli hale getirin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,43 +11,43 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835273"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949449"
 ---
-# <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP temel kimlik doğrulaması kullanarak, RESTful Hizmetleri güvenli hale getirme
+# <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP temel kimlik doğrulaması kullanarak yeniden takip eden hizmetlerinizin güvenliğini sağlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-İçinde bir [ilişkili Azure AD B2C makale](active-directory-b2c-custom-rest-api-netfw.md), Azure Active Directory (Azure AD B2C) kullanıcı yolculuklarından kimlik doğrulaması olmadan B2C ile tümleşen bir RESTful hizmeti (web API'si) oluşturun.
+İlgili bir [Azure AD B2C makalesinde](active-directory-b2c-custom-rest-api-netfw.md), kimlik doğrulaması olmadan Azure Active Directory B2C (Azure AD B2C) Kullanıcı ile tümleşen bir yeniden hizmet (Web API) oluşturabilirsiniz.
 
-Doğrulanmış kullanıcıların yalnızca, B2C'yi de dahil olmak üzere erişim API'nizi bu makalede, HTTP temel kimlik doğrulaması RESTful hizmetinize ekleyin. HTTP temel kimlik doğrulaması ile özel ilkeniz (uygulama kimliği ve uygulama gizli anahtarı) kullanıcı kimlik bilgilerini ayarlayın.
+Bu makalede, bakım dahil olmak üzere yalnızca doğrulanan kullanıcıların API 'nize erişebilmesi için, yeniden deneme hizmetinize HTTP temel kimlik doğrulaması eklersiniz. HTTP temel kimlik doğrulaması ile, özel ilkenizde Kullanıcı kimlik bilgilerini (uygulama KIMLIĞI ve uygulama gizli anahtarı) ayarlarsınız.
 
-Daha fazla bilgi için [ASP.NET web API'de temel kimlik doğrulaması](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
+Daha fazla bilgi için bkz. [ASP.NET Web API 'de temel kimlik doğrulaması](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bölümündeki adımları tamamlamanız [tümleştirme REST API, Azure AD B2C kullanıcı yolculuğu alışverişlerine talep](active-directory-b2c-custom-rest-api-netfw.md) makalesi.
+[Azure AD B2C Kullanıcı yolculuğu makalesindeki talep alışverişlerinde tümleştirme REST API](active-directory-b2c-custom-rest-api-netfw.md) adımları uygulayın.
 
-## <a name="step-1-add-authentication-support"></a>1\. adım: Kimlik doğrulama desteği ekleme
+## <a name="step-1-add-authentication-support"></a>1\. Adım: kimlik doğrulama desteği ekleme
 
-### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Adım 1.1: Uygulama ayarları, projenin web.config dosyasına ekleyin.
+### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Adım 1,1: projenizin Web. config dosyasına uygulama ayarları ekleme
 
 1. Daha önce oluşturduğunuz Visual Studio projesini açın.
 
-2. Aşağıdaki uygulama ayarları altında web.config dosyasına ekleyerek `appSettings` öğesi:
+2. Aşağıdaki uygulama ayarlarını `appSettings` öğesinin altındaki Web. config dosyasına ekleyin:
 
     ```XML
     <add key="WebApp:ClientId" value="B2CServiceUserAccount" />
     <add key="WebApp:ClientSecret" value="your secret" />
     ```
 
-3. Bir parola oluşturun ve ardından `WebApp:ClientSecret` değeri.
+3. Bir parola oluşturun ve `WebApp:ClientSecret` değeri ayarlayın.
 
-    Karmaşık bir parola oluşturmak için şu PowerShell kodunu çalıştırın. Herhangi bir keyfi değere kullanabilirsiniz.
+    Karmaşık bir parola oluşturmak için aşağıdaki PowerShell kodunu çalıştırın. Herhangi bir rastgele değeri kullanabilirsiniz.
 
     ```powershell
     $bytes = New-Object Byte[] 32
@@ -56,9 +57,9 @@ Bölümündeki adımları tamamlamanız [tümleştirme REST API, Azure AD B2C ku
     [System.Convert]::ToBase64String($bytes)
     ```
 
-### <a name="step-12-install-owin-libraries"></a>Adım 1.2: OWIN kitaplıklarını yükleme
+### <a name="step-12-install-owin-libraries"></a>Adım 1,2: OWıN kitaplıklarını Install
 
-Başlamak için Visual Studio Paket Yöneticisi Konsolu'nu kullanarak OWIN ara yazılımı NuGet paketleri projeye ekleyin:
+Başlamak için, Visual Studio Paket Yöneticisi konsolunu kullanarak OWıN ara yazılım NuGet paketlerini projeye ekleyin:
 
 ```powershell
 PM> Install-Package Microsoft.Owin
@@ -66,19 +67,19 @@ PM> Install-Package Owin
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
-### <a name="step-13-add-an-authentication-middleware-class"></a>1\.3. adım: Bir kimlik doğrulaması ara yazılım sınıfı Ekle
+### <a name="step-13-add-an-authentication-middleware-class"></a>Adım 1,3: kimlik doğrulama ara yazılım sınıfı ekleme
 
-Ekleme `ClientAuthMiddleware.cs` altında sınıfı *App_Start* klasör. Bunu yapmak için:
+*App_Start* klasörünün altına `ClientAuthMiddleware.cs` sınıfını ekleyin. Bunu yapmak için:
 
-1. Sağ *App_Start* klasörüne **Ekle**ve ardından **sınıfı**.
+1. *App_Start* klasörüne sağ tıklayın, **Ekle**' yi ve ardından **sınıf**' ı seçin.
 
-   ![App_Start klasöründe ClientAuthMiddleware.cs sınıfı Ekle](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
+   ![App_Start klasöre ClientAuthMiddleware.cs sınıfı ekleme](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
 
-2. İçinde **adı** kutusuna **ClientAuthMiddleware.cs**.
+2. **Ad** kutusuna **ClientAuthMiddleware.cs**yazın.
 
-   ![Yeni bir oluşturma C# Visual Studio'da yeni öğe Ekle iletişim kutusu sınıfında](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![Visual Studio 'da C# yeni öğe Ekle iletişim kutusunda yeni bir sınıf oluşturma](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
-3. Açık *App_Start\ClientAuthMiddleware.cs* dosyasını ve dosya içeriğini aşağıdaki kodla değiştirin:
+3. *App_Start \clientauthmiddleware.cs* dosyasını açın ve dosya içeriğini şu kodla değiştirin:
 
     ```csharp
 
@@ -190,14 +191,14 @@ Ekleme `ClientAuthMiddleware.cs` altında sınıfı *App_Start* klasör. Bunu ya
     }
     ```
 
-### <a name="step-14-add-an-owin-startup-class"></a>Adım 1.4: OWIN başlangıç sınıfı ekleme
+### <a name="step-14-add-an-owin-startup-class"></a>Adım 1,4: bir OWıN başlangıç sınıfı ekleme
 
-Adlı bir OWIN başlangıç sınıfı ekleyin `Startup.cs` API. Bunu yapmak için:
-1. Projeye sağ tıklayın, **Ekle** > **yeni öğe**ve ardından arama **OWIN**.
+API 'ye `Startup.cs` adlı bir OWıN başlangıç sınıfı ekleyin. Bunu yapmak için:
+1. Projeye sağ tıklayın, > **Yeni öğe** **Ekle** ' yi seçin ve ardından **owın**' ı arayın.
 
-   ![Visual Studio'da yeni öğe Ekle iletişim kutusunda OWIN başlangıç sınıfı oluşturma](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![Visual Studio 'da yeni öğe Ekle iletişim kutusunda OWıN başlangıç sınıfı oluşturma](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
-2. Açık *Startup.cs* dosyasını ve dosya içeriğini aşağıdaki kodla değiştirin:
+2. *Startup.cs* dosyasını açın ve dosya içeriğini şu kodla değiştirin:
 
     ```csharp
     using Microsoft.Owin;
@@ -216,78 +217,78 @@ Adlı bir OWIN başlangıç sınıfı ekleyin `Startup.cs` API. Bunu yapmak içi
     }
     ```
 
-### <a name="step-15-protect-the-identity-api-class"></a>1\.5. adım: Kimlik API sınıfı koruyun
+### <a name="step-15-protect-the-identity-api-class"></a>Adım 1,5: kimlik API sınıfını koruma
 
-Controllers\IdentityController.cs açın ve eklemek `[Authorize]` ve denetleyici sınıfına etiketi. Bu etiket Denetleyicisi kimlik doğrulama gereksinimini karşılayan kullanıcılar için erişimi kısıtlar.
+Controllers\ıdentitycontroller.cs dosyasını açın ve denetleyici sınıfına `[Authorize]` etiketini ekleyin. Bu etiket, denetleyiciye erişimi yetkilendirme gereksinimini karşılayan kullanıcılara kısıtlar.
 
-![Denetleyiciye Authorize etiketi Ekle](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
+![Denetleyiciye Yetkilendir etiketini ekleyin](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>2\. adım: Azure'a Yayımlama
+## <a name="step-2-publish-to-azure"></a>2\. Adım: Azure 'da yayımlama
 
-Çözüm Gezgini'nde projenize yayımlamak için sağ **Contoso.AADB2C.API** proje ve ardından **Yayımla**.
+Projenizi yayımlamak için Çözüm Gezgini, **contoso. AADB2C. API** projesine sağ tıklayın ve ardından **Yayımla**' yı seçin.
 
-## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>3\. adım: Azure AD B2C için RESTful Hizmetleri uygulama kimliği ve uygulama gizli anahtarı Ekle
+## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>3\. Adım: Azure AD B2C için Restuz Hizmetleri uygulama KIMLIĞI ve uygulama gizli anahtarını ekleyin
 
-RESTful hizmetiniz istemci kimliği (kullanıcı adı) ve gizli dizi tarafından korunduktan sonra kimlik bilgilerinin Azure AD B2C kiracınızda depolamanız gerekir. RESTful hizmetlerinizi çağırdığında, özel ilkeniz kimlik bilgilerini sağlar.
+Yeniden deneme hizmetiniz istemci KIMLIĞI (Kullanıcı adı) ve gizli anahtar tarafından korunduktan sonra, kimlik bilgilerini Azure AD B2C kiracınızda depolamanız gerekir. Özel ilkeniz, yeniden takip eden hizmetlerinizi istediğinde kimlik bilgilerini sağlar.
 
-### <a name="step-31-add-a-restful-services-client-id"></a>Adım 3.1: Bir RESTful Hizmetleri istemci Kimliğini ekleyin
+### <a name="step-31-add-a-restful-services-client-id"></a>Adım 3,1: yeniden bir hizmet istemci KIMLIĞI ekleyin
 
-1. Azure AD B2C kiracınızı seçin **B2C ayarlarını** > **kimlik deneyimi çerçevesi**.
+1. Azure AD B2C kiracınızda **B2C ayarları** > **kimlik deneyimi çerçevesi**' ni seçin.
 
 
-2. Seçin **ilke anahtarları** kiracınızda kullanılabilir tuşlarını görmek için.
-
-3. **Add (Ekle)** seçeneğini belirleyin.
-
-4. İçin **seçenekleri**seçin **el ile**.
-
-5. İçin **adı**, türü **B2cRestClientId**.
-    Önek *B2C_1A_* otomatik olarak eklenebilir.
-
-6. İçinde **gizli** kutusunda, daha önce tanımlanan uygulama kimliği girin.
-
-7. İçin **anahtar kullanımı**seçin **imza**.
-
-8. **Oluştur**’u seçin.
-
-9. Oluşturduğunuzu doğrulayın `B2C_1A_B2cRestClientId` anahtarı.
-
-### <a name="step-32-add-a-restful-services-client-secret"></a>Adım 3.2: Bir RESTful Hizmetleri istemci gizli anahtarı Ekle
-
-1. Azure AD B2C kiracınızı seçin **B2C ayarlarını** > **kimlik deneyimi çerçevesi**.
-
-2. Seçin **ilke anahtarları** kiracınızda kullanılabilir tuşlarını görmek için.
+2. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **Ilke anahtarlarını** seçin.
 
 3. **Add (Ekle)** seçeneğini belirleyin.
 
-4. İçin **seçenekleri**seçin **el ile**.
+4. **Seçenekler**Için **el ile**' yi seçin.
 
-5. İçin **adı**, türü **B2cRestClientSecret**.
-    Önek *B2C_1A_* otomatik olarak eklenebilir.
+5. **Ad**için **B2cRestClientId**yazın.
+    Ön ek *B2C_1A_* otomatik olarak eklenebilir.
 
-6. İçinde **gizli** kutusunda, daha önce tanımlanan uygulama gizli anahtarı girin.
+6. **Gizli** kutusunda, daha önce TANıMLADıĞıNıZ uygulama kimliğini girin.
 
-7. İçin **anahtar kullanımı**seçin **imza**.
+7. **Anahtar kullanımı**için **imza**' yı seçin.
 
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 
-9. Oluşturduğunuzu doğrulayın `B2C_1A_B2cRestClientSecret` anahtarı.
+9. `B2C_1A_B2cRestClientId` anahtarını oluşturduğunuzdan emin olun.
 
-## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>4\. Adım: Temel kimlik doğrulaması uzantısı ilkenizde desteklemek için teknik profilini değiştirme
+### <a name="step-32-add-a-restful-services-client-secret"></a>Adım 3,2: yeniden bir hizmet istemci parolası ekleme
 
-1. Çalışma dizininizde uzantı ilke dosyası (TrustFrameworkExtensions.xml) açın.
+1. Azure AD B2C kiracınızda **B2C ayarları** > **kimlik deneyimi çerçevesi**' ni seçin.
 
-2. Arama `<TechnicalProfile>` içeren düğüm `Id="REST-API-SignUp"`.
+2. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **Ilke anahtarlarını** seçin.
 
-3. Bulun `<Metadata>` öğesi.
+3. **Add (Ekle)** seçeneğini belirleyin.
 
-4. Değişiklik *AuthenticationType* için *temel*gibi:
+4. **Seçenekler**Için **el ile**' yi seçin.
+
+5. **Ad**için **B2cRestClientSecret**yazın.
+    Ön ek *B2C_1A_* otomatik olarak eklenebilir.
+
+6. **Gizli** kutusunda, daha önce tanımladığınız uygulama gizli anahtarını girin.
+
+7. **Anahtar kullanımı**için **imza**' yı seçin.
+
+8. **Oluştur**'u seçin.
+
+9. `B2C_1A_B2cRestClientSecret` anahtarını oluşturduğunuzdan emin olun.
+
+## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>4\. Adım: uzantı ilkenizde temel kimlik doğrulamasını destekleyecek şekilde teknik profili değiştirme
+
+1. Çalışma dizininizde, uzantı ilkesi dosyasını açın (TrustFrameworkExtensions. xml).
+
+2. `Id="REST-API-SignUp"`içeren `<TechnicalProfile>` düğümünü arayın.
+
+3. `<Metadata>` öğesini bulun.
+
+4. *AuthenticationType* öğesini aşağıdaki gibi *temel*olarak değiştirin:
 
     ```xml
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. Kapatma sonrasında hemen `<Metadata>` öğesi, aşağıdaki XML parçacığını ekleyin:
+5. Kapanış `<Metadata>` öğesinden hemen sonra aşağıdaki XML kod parçacığını ekleyin:
 
     ```xml
     <CryptographicKeys>
@@ -296,40 +297,40 @@ RESTful hizmetiniz istemci kimliği (kullanıcı adı) ve gizli dizi tarafından
     </CryptographicKeys>
     ```
 
-    Kod parçacığı eklendikten sonra teknik profilinizi şu XML kod gibi görünmelidir:
+    Kod parçacığını ekledikten sonra teknik profiliniz aşağıdaki XML kodu gibi görünmelidir:
 
-    ![TechnicalProfile için temel kimlik doğrulaması XML öğeleri Ekle](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+    ![Temel kimlik doğrulaması XML öğelerini teknisyen 'e ekleme](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>5\. Adım: Kiracınız için ilkeyi karşıya yükle
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>5\. Adım: ilkeyi kiracınıza yükleme
 
-1. İçinde [Azure portalında](https://portal.azure.com), geçiş [Azure AD B2C kiracınızın bağlamında](active-directory-b2c-navigate-to-b2c-context.md)ve ardından açın **Azure AD B2C**.
+1. [Azure Portal](https://portal.azure.com), [Azure AD B2C kiracınızın bağlamına](active-directory-b2c-navigate-to-b2c-context.md)geçin ve ardından **Azure AD B2C**' yı açın.
 
-2. Seçin **kimlik deneyimi çerçevesi**.
+2. **Kimlik deneyimi çerçevesini**seçin.
 
-3. Açık **tüm ilkeleri**.
+3. **Tüm ilkeleri**açın.
 
-4. Seçin **karşıya yükleme İlkesi**.
+4. **Ilkeyi karşıya yükle**' yi seçin.
 
-5. Seçin **ilke varsa üzerine** onay kutusu.
+5. Varsa **Ilkenin üzerine yaz** onay kutusunu seçin.
 
-6. Karşıya yükleme *TrustFrameworkExtensions.xml* dosyasını ve ardından doğrulama başarılı emin olun.
+6. *TrustFrameworkExtensions. xml* dosyasını karşıya yükleyin ve ardından doğrulamayı geçirdiğinizden emin olun.
 
-## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>6\. Adım: Şimdi Çalıştır'i kullanarak özel bir ilkeyi test
+## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>6\. Adım: Şimdi Çalıştır 'ı kullanarak özel ilkeyi test etme
 
-1. Açık **Azure AD B2C ayarlarını**ve ardından **kimlik deneyimi çerçevesi**.
+1. **Azure AD B2C ayarları**' nı açın ve ardından **kimlik deneyimi çerçevesi**' ni seçin.
 
     >[!NOTE]
-    >Çalıştırma artık Kiracı'da önceden kayıtlı için en az bir uygulama gerektirir. Azure AD B2C uygulamaları kaydetme hakkında bilgi için bkz [başlama](active-directory-b2c-get-started.md) makale veya [uygulama kaydı](active-directory-b2c-app-registration.md) makalesi.
+    >Şimdi Çalıştır, kiracıya en az bir uygulamanın önceden bağlı olmasını gerektirir. Uygulamaları nasıl kaydedeceğinizi öğrenmek için Azure AD B2C [Başlarken](active-directory-b2c-get-started.md) makalesine veya [uygulama kaydı](active-directory-b2c-app-registration.md) makalesine bakın.
 
-2. Açık **B2C_1A_signup_signin**, yüklenmiş ve ardından bağlı olan taraf (RP) özel ilke **Şimdi Çalıştır**.
+2. Karşıya yüklediğiniz bağlı olan taraf (RP) özel ilkesini **B2C_1A_signup_signin**açın ve **Şimdi Çalıştır**' ı seçin.
 
-3. İşlem yazarak test edin **Test** içinde **verilen ad** kutusu.
-    Azure AD B2C, pencerenin en üstünde bir hata iletisi görüntüler.
+3. **Verilen ad** kutusuna **Test** yazarak işlemi test edin.
+    Azure AD B2C pencerenin üst kısmında bir hata mesajı görüntüler.
 
-    ![Kimliğinizi API verilen ad giriş doğrulama sınaması](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![Kimlik API 'niz içindeki verilen ad giriş doğrulamasını test etme](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. İçinde **verilen ad** ("Test" dışında) bir ad yazın.
-    Azure AD B2C kullanıcı oturum açtığında ve uygulamanızı bir bağlılık sayı gönderir. Bu örnekte numarasını not edin:
+4. **Verilen ad** kutusuna bir ad yazın ("test" dışında).
+    Azure AD B2C kullanıcıyı imzalar ve sonra uygulamanıza bir bağlılık programı numarası gönderir. Bu örnekteki sayıyı aklınızda:
 
     ```
     {
@@ -352,11 +353,11 @@ RESTful hizmetiniz istemci kimliği (kullanıcı adı) ve gizli dizi tarafından
     }
     ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(İsteğe bağlı) Tüm ilke dosyaları ve kodu indirin
+## <a name="optional-download-the-complete-policy-files-and-code"></a>Seçim Tüm ilke dosyalarını ve kodunu indirin
 
-* Tamamladıktan sonra [özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md) izlenecek yol, öneririz senaryonuz kendi özel ilke dosyalarını kullanarak oluşturun. Referans olması açısından sağladık [örnek ilke dosyaları](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
-* Tam koddan indirebileceğiniz [başvuru için örnek Visual Studio çözümü](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic).
+* [Özel ilkeleri kullanmaya başlama talimatlarını](active-directory-b2c-get-started-custom.md) tamamladıktan sonra, kendi özel ilke dosyalarınızı kullanarak senaryonuzu oluşturmanızı öneririz. Başvurunuz için [örnek ilke dosyaları](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)sağladık.
+* [Başvuru Için örnek Visual Studio çözümünden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)tüm kodu indirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [RESTful API'NİZİN güvenliğini sağlamak için istemci sertifikaları kullan](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Yeniden takip eden API 'nizin güvenliğini sağlamak için istemci sertifikalarını kullanın](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

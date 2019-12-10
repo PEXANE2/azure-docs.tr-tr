@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/03/2019
+ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805263"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951182"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -79,7 +79,7 @@ Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleşt
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/19.png "Oturum açma etkinliği")
 
-Ek alanları görüntüler veya zaten görüntülenen alanları kaldırır.
+**Sütunlar** iletişim kutusu seçilebilir özniteliklere erişmenizi sağlar. Bir oturum açma raporunda, yalnızca sütun olarak diğer özniteliklerle bire çok ilişkisine sahip olmayan özniteliklere sahip olabilirsiniz.
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/columns.png "Oturum açma etkinliği")
 

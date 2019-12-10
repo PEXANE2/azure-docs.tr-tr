@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 49f3759d7c5ba178cd0f1d0164a45c09df464571
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348934"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942231"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
 
@@ -75,7 +75,7 @@ Daha fazla bilgi için bkz. [Application Gateway Için özel hata sayfaları](ht
 
 Bir dinleyici oluşturduktan sonra, bunu bir istek yönlendirme kuralıyla ilişkilendirirsiniz. Bu kural, dinleyicide alınan isteğin arka uca yönlendirilme şeklini belirler.
 
-Application Gateway, dinleyicileri gösterildiği sırada işler. Temel dinleyici gelen bir istekle eşleşiyorsa, önce işlenir. Trafiği doğru arka uca yönlendirmek için, temel bir dinleyiciye göre çok siteli bir dinleyici yapılandırın.
+Application Gateway, dinleyicileri [gösterildiği sırada](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-overview#order-of-processing-listeners)işler.
 
 ## <a name="request-routing-rules"></a>İstek yönlendirme kuralları
 
@@ -140,7 +140,7 @@ Bir uygulama ağ geçidi, trafiğe izin veriliyorsa Azure ExpressRoute veya VPN 
 
 Farklı istek türleri için farklı arka uç havuzları oluşturabilirsiniz. Örneğin, genel istekler için bir arka uç havuzu oluşturun ve daha sonra uygulamanız için mikro hizmetlere istekler için bir arka uç havuzu oluşturun.
 
-## <a name="health-probes"></a>Durum araştırmaları
+## <a name="health-probes"></a>Sistem durumu araştırmaları
 
 Varsayılan olarak, bir uygulama ağ geçidi, arka uç havuzundaki tüm kaynakların sistem durumunu izler ve sağlıksız olanları otomatik olarak kaldırır. Ardından, sağlıksız örnekleri izler ve kullanılabilir hale geldiğinde ve sistem durumu araştırmalarına yanıt verdiklerinde yeniden sağlıklı arka uç havuzuna ekler.
 

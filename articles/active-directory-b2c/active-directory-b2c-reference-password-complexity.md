@@ -1,5 +1,6 @@
 ---
-title: Parola karmaşıklığı-Azure Active Directory B2C | Microsoft Docs
+title: Parola karmaşıklığı gereksinimlerini yapılandırma
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C ' de tüketiciler tarafından sağlanan parolalar için karmaşıklık gereksinimlerini yapılandırma.
 services: active-directory-b2c
 author: mmacy
@@ -10,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 642621e2e04d3e96dc6886b1bdb28c161560b28e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065450"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950570"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C parolalar için karmaşıklık gereksinimlerini yapılandırın
 
-Azure Active Directory B2C (Azure AD B2C) bir hesap oluştururken Son Kullanıcı tarafından sağlanan parolaların karmaşıklık gereksinimlerinin değiştirilmesini destekler. Varsayılan olarak, Azure AD B2C parolaları `Strong` kullanır. Azure AD B2C Ayrıca, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini destekler.
+Azure Active Directory B2C (Azure AD B2C) bir hesap oluştururken Son Kullanıcı tarafından sağlanan parolaların karmaşıklık gereksinimlerinin değiştirilmesini destekler. Varsayılan olarak, Azure AD B2C `Strong` parolaları kullanır. Azure AD B2C Ayrıca, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini destekler.
 
 ## <a name="password-rule-enforcement"></a>Parola kuralı zorlaması
 
@@ -36,7 +37,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kullanıcı akışları ' nı**seçin.
@@ -48,7 +49,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 | Karmaşıklık | Açıklama |
 | --- | --- |
 | Basit | En az 8 ile 64 karakter uzunluğunda bir parola. |
-| Güçlü | En az 8 ile 64 karakter uzunluğunda bir parola. 3/4 küçük harf, büyük harf, sayı veya sembol gerektirir. |
+| Strong | En az 8 ile 64 karakter uzunluğunda bir parola. 3/4 küçük harf, büyük harf, sayı veya sembol gerektirir. |
 | Özel | Bu seçenek, parola karmaşıklığı kuralları üzerinde en çok denetim sağlar.  Özel bir uzunluk yapılandırmasına izin verir.  Ayrıca yalnızca sayı parolalarının kabul edilmesini sağlar (PIN 'ler). |
 
 ## <a name="custom-options"></a>Özel seçenekler
@@ -71,9 +72,9 @@ Parolanın uzunluk gereksinimlerini denetlemenize olanak tanır.
 
 Parolada kullanılan farklı karakter türlerini denetlemenizi sağlar.
 
-- **2/4: Küçük harfli karakter, büyük harf, sayı (0-9),** simge parolanın en az iki karakter türü içermesini sağlar. Örneğin, bir sayı ve küçük harfli bir karakter.
-- **3/4: Küçük harfli karakter, büyük harf, sayı (0-9),** simge parolanın en az iki karakter türü içermesini sağlar. Örneğin, bir sayı, küçük harf ve bir büyük harf karakteri.
-- **4/4: Küçük harfli karakter, büyük harf, sayı (0-9),** simge, parola tüm karakter türlerini içerir.
+- **2/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** parolanın en az iki karakter türü içermesini sağlar. Örneğin, bir sayı ve küçük harfli bir karakter.
+- **3/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** , parolanın en az iki karakter türü içermesini sağlar. Örneğin, bir sayı, küçük harf ve bir büyük harf karakteri.
+- **4/4: küçük harfli karakter, büyük harf, sayı (0-9), simge** , parola tüm karakter türlerini içerir.
 
     > [!NOTE]
     > **4/4** gereksinimi, son kullanıcı rahatsız edilmesine yol açabilir. Bazı çalışmalar bu gereksinimin parola entropi ' i geliştirmediğinden gösterilmemiştir. [NIST parola yönergelerine](https://pages.nist.gov/800-63-3/sp800-63b.html#appA) bakın

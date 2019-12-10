@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076207"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951862"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight 'ta Hadoop ile Apache Sqoop kullanma
 
@@ -33,7 +33,7 @@ HDInsight kümelerinde desteklenen Sqoop sürümleri için bkz. [HDInsight taraf
 
 HDInsight kümesi bazı örnek verilerle birlikte gelir. Aşağıdaki iki örneği kullanabilirsiniz:
 
-* Konumunda `/example/data/sample.log`bulunan bir Apache Log4J günlük dosyası. Aşağıdaki Günlükler dosyadan ayıklanır:
+* `/example/data/sample.log`konumunda bulunan bir Apache Log4J günlük dosyası. Aşağıdaki Günlükler dosyadan ayıklanır:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,18 +42,18 @@ HDInsight kümesi bazı örnek verilerle birlikte gelir. Aşağıdaki iki örne�
 ...
 ```
 
-* Adlı `hivesampletable`Hive tablosu, konumunda `/hive/warehouse/hivesampletable`bulunan veri dosyasına başvuruda bulunur. Tablo, bazı mobil cihaz verileri içerir.
+* `/hive/warehouse/hivesampletable`konumunda bulunan veri dosyasına başvuran `hivesampletable`adlı Hive tablosu. Tablo, bazı mobil cihaz verileri içerir.
   
   | Alan | Veri türü |
   | --- | --- |
-  | ClientID |dize |
-  | querytime |dize |
-  | Pazara |dize |
-  | deviceplatform |dize |
-  | devicemake |dize |
-  | devicemodel |dize |
-  | state |dize |
-  | Ülke |dize |
+  | ClientID |string |
+  | querytime |string |
+  | pazara |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | durum |string |
+  | ülke |string |
   | querydwelltime |double |
   | kimliği |bigint |
   | sessionpageviewworder |bigint |
@@ -61,7 +61,8 @@ HDInsight kümesi bazı örnek verilerle birlikte gelir. Aşağıdaki iki örne�
 Bu makalede, Sqoop içeri aktarma ve dışarı aktarma sınamasını yapmak için bu iki veri kümesini kullanırsınız.
 
 ## <a name="create-cluster-and-sql-database"></a>Test ortamını ayarlama
-Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure Resource Manager şablonu kullanılarak oluşturulur. Şablon, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)' nda bulunabilir. Kaynak Yöneticisi şablonu, tablo şemalarını bir SQL veritabanına dağıtmak için bacpac paketini çağırır.  Bacpac paketi ortak bir blob kapsayıcısında https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac bulunur. Bacpac dosyaları için özel bir kapsayıcı kullanmak istiyorsanız, şablonda aşağıdaki değerleri kullanın:
+
+Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure Resource Manager şablonu kullanılarak oluşturulur. Şablon, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)' nda bulunabilir. Kaynak Yöneticisi şablonu, tablo şemalarını bir SQL veritabanına dağıtmak için bacpac paketini çağırır.  Bacpac paketi, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac ortak bir blob kapsayıcısında bulunur. Bacpac dosyaları için özel bir kapsayıcı kullanmak istiyorsanız, şablonda aşağıdaki değerleri kullanın:
 
 ```json
 "storageKeyType": "Primary",
@@ -77,22 +78,22 @@ Küme, SQL veritabanı ve diğer nesneler, Azure portal aracılığıyla Azure R
 
 2. Aşağıdaki özellikleri girin:
 
-    |Alan |Value |
+    |Alan |Değer |
     |---|---|
-    |Subscription |Açılan listeden Azure aboneliğinizi seçin.|
-    |Resource group |Açılan listeden kaynak grubunuzu seçin veya yeni bir tane oluşturun|
-    |Location |Açılan listeden bir bölge seçin.|
+    |Abonelik |Açılan listeden Azure aboneliğinizi seçin.|
+    |Kaynak grubu |Açılan listeden kaynak grubunuzu seçin veya yeni bir tane oluşturun|
+    |Konum |Açılan listeden bir bölge seçin.|
     |Küme Adı |Hadoop kümesi için bir ad girin. Yalnızca küçük harf kullanın.|
-    |Küme Oturum Açma Kullanıcı Adı |Önceden doldurulmuş değeri `admin`saklayın.|
+    |Küme Oturum Açma Kullanıcı Adı |Önceden doldurulmuş değeri `admin`tutun.|
     |Küme Oturum Açma Parolası |Bir parola girin.|
-    |SSH Kullanıcı adı |Önceden doldurulmuş değeri `sshuser`saklayın.|
+    |SSH Kullanıcı adı |Önceden doldurulmuş değeri `sshuser`tutun.|
     |SSH parolası |Bir parola girin.|
-    |SQL Yöneticisi oturum açma |Önceden doldurulmuş değeri `sqluser`saklayın.|
+    |SQL Yöneticisi oturum açma |Önceden doldurulmuş değeri `sqluser`tutun.|
     |SQL yönetici parolası |Bir parola girin.|
-    |_yapıt konumu | Kendi bacpac dosyanızı farklı bir konumda kullanmak istemediğiniz müddetçe varsayılan değeri kullanın.|
-    |_yapıt konumu SAS belirteci |Boş bırakın.|
+    |_artifacts konumu | Kendi bacpac dosyanızı farklı bir konumda kullanmak istemediğiniz müddetçe varsayılan değeri kullanın.|
+    |_artifacts konumu SAS belirteci |Boş bırakın.|
     |Bacpac dosya adı |Kendi bacpac dosyanızı kullanmak istemediğiniz müddetçe varsayılan değeri kullanın.|
-    |Location |Varsayılan değeri kullanın.|
+    |Konum |Varsayılan değeri kullanın.|
 
     Azure SQL Server adı `<ClusterName>dbserver`olacaktır. Veritabanı adı `<ClusterName>db`olacaktır. Varsayılan depolama hesabı adı `e6qhezrh2pdqu`olacaktır.
 
@@ -113,11 +114,12 @@ HDInsight, çeşitli yöntemler kullanarak Sqoop işlerini çalıştırabilir. S
 ## <a name="limitations"></a>Sınırlamalar
 
 * Toplu dışa aktarma-Linux tabanlı HDInsight Ile, Microsoft SQL Server veya Azure SQL veritabanı 'na veri aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
-* Toplu işleme-Linux tabanlı HDInsight ile, eklemeleri gerçekleştirirken `-batch` anahtarı kullanırken, ekleme işlemlerini toplu olarak gerçekleştirmek yerine Sqoop birden çok ekleme gerçekleştirir.
+* Toplu işleme-Linux tabanlı HDInsight Ile, eklemeleri gerçekleştirirken `-batch` anahtarını kullanırken, Sqoop ekleme işlemlerini toplu olarak gerçekleştirmek yerine birden çok ekleme gerçekleştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Şimdi Sqoop 'yi nasıl kullanacağınızı öğrendiniz. Daha fazla bilgi için bkz:
 
 * [HDInsight ile Apache Hive kullanma](../hdinsight-use-hive.md)
-* [HDInsight ile Apache Pig kullanma](../hdinsight-use-pig.md)
 * [HDInsight 'a veri yükleme](../hdinsight-upload-data.md): HDInsight/Azure Blob depolamaya veri yüklemek için diğer yöntemleri bulun.
+* [HDInsight üzerinde Apache Hadoop ile SQL Veritabanı arasında veri içeri ve dışarı aktarma işlemleri için Apache Sqoop'u kullanma](./apache-hadoop-use-sqoop-mac-linux.md)

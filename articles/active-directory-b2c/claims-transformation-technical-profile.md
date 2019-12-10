@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C, özel bir ilkede talep dönüştürme teknik profil tanımlama | Microsoft Docs
-description: Talep dönüştürme teknik profili Azure Active Directory B2C özel bir ilke tanımlayın.
+title: Talep dönüştürmesi teknik profili tanımlama
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C bir özel ilkede talep dönüştürme teknik profili tanımlayın.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,24 +11,24 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fd2f77200741c54d1ed10f0a0eec1da76462b0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511629"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949432"
 ---
-# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Talep dönüştürme teknik profil bir Azure Active Directory B2C özel ilke tanımlama
+# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde talep dönüştürme teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Talep dönüştürme teknik profili, çıkış talep dönüşümleri, taleplerin değerlerini değiştirmek, talepleri doğrulamak veya çıkış talep kümesi için varsayılan değerleri ayarlamak için çağrılacak sağlar.
+Talep dönüştürme teknik profili, talep değerlerini işlemek, talepleri doğrulamak veya bir çıkış talepleri kümesi için varsayılan değerleri ayarlamak üzere çıkış talep dönüştürmelerini çağırmanızı sağlar.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protokol
 
-**Adı** özniteliği **Protokolü** öğesi ayarlanması gerekiyor `Proprietary`. **İşleyici** özniteliği Azure AD B2C tarafından kullanılan protokol işleyicisi bütünleştirilmiş kodun tam adı içermesi gerekir: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+**Protokol** öğesinin **Name** özniteliğinin `Proprietary`olarak ayarlanması gerekir. **Handler** özniteliği Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir.
 
-Aşağıdaki örnek, bir talep dönüştürme teknik profili gösterir:
+Aşağıdaki örnekte bir talep dönüştürme teknik profili gösterilmektedir:
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
@@ -36,9 +37,9 @@ Aşağıdaki örnek, bir talep dönüştürme teknik profili gösterir:
   ...
 ```
 
-## <a name="output-claims"></a>Çıkış talep
+## <a name="output-claims"></a>Çıkış talepleri
 
-**OutputClaims** öğe zorunludur. En az bir talep teknik profili tarafından döndürülen çıkış sağlamanız gerekir. Aşağıdaki örnek, varsayılan değerleri çıkış talep kümesi gösterilmektedir:
+**Outputclaim** öğesi zorunludur. Teknik profil tarafından döndürülen en az bir çıkış talebi sağlamanız gerekir. Aşağıdaki örnek, çıkış talepleri için varsayılan değerlerin nasıl ayarlanacağını gösterir:
 
 ```xml
 <OutputClaims>
@@ -47,9 +48,9 @@ Aşağıdaki örnek, bir talep dönüştürme teknik profili gösterir:
 </OutputClaims>
 ```
 
-## <a name="output-claims-transformations"></a>Çıkış talep dönüşümleri
+## <a name="output-claims-transformations"></a>Çıkış talepleri dönüşümleri
 
-**OutputClaimsTransformations** öğe koleksiyonu içerebilir **OutputClaimsTransformation** talep değiştirmek veya yenilerini oluşturmak için kullanılan öğeleri. Aşağıdaki teknik profil çağrıları **RemoveAlternativeSecurityIdByIdentityProvider** talep dönüştürme. Bu talep dönüştürme kaldırır bir sosyal tanımlamak koleksiyonundan **Alternativesecurityıds**. Bu teknik profilinin çıkış talepler **identityProvider2**, Hosted `facebook.com`, ve **Alternativesecurityıds**, bununla ilişkili sosyal kimlikleri listesini içerir facebook.com kimlik kaldırıldıktan sonra kullanıcı.
+**Outputclaimstransformations** öğesi, talepleri değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir. Aşağıdaki teknik profil **Removealternativesecurityıdbyıdentityprovider** talep dönüşümünü çağırır. Bu talep dönüştürmesi, **değişim kimliği**koleksiyonundan bir sosyal kimlik belirlemeyi kaldırır. Bu teknik profilin çıkış talepleri, facebook.com kimliği kaldırıldıktan sonra bu kullanıcıyla ilişkili sosyal kimliklerin listesini içeren `facebook.com`ve **Alternativesecurityıds**' **identityProvider2**' a ayarlanmıştır.
 
 ```XML
 <ClaimsTransformations>
@@ -81,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-Talep dönüştürme teknik profili, bir kullanıcı yolculuğu'nın düzenleme adımı bir talep dönüştürme yürütmek sağlar. Aşağıdaki örnekte, düzenleme adımı çağırır Temel'e değiştirilemedi teknik profillerinden birini gibi **Temel'e değiştirilemedi Facebook OAUTH**. Bu teknik profili talepleri dönüştürme teknik profil çağırır **RemoveAlternativeSecurityIdByIdentityProvider**, yeni oluşturduğu **AlternativeSecurityIds2** içeren talep Facebook kimlik koleksiyonlardan kaldırılırken kullanıcı sosyal kimlikleri listesi.
+Talep dönüştürme teknik profili, herhangi bir Kullanıcı yolculuğunun düzenleme adımından bir talep dönüştürmesi çalıştırmanızı sağlar. Aşağıdaki örnekte, düzenleme adımı, Kaldır **-Facebook-OAUTH**gibi teknik profillerin bağlantısını Kaldır ' ı çağırır. Bu teknik profil, Kullanıcı sosyal kimlik listesini içeren yeni bir **AlternativeSecurityIds2** talebi oluşturan,, Facebook kimliği koleksiyonlarından kaldırılırken, talep dönüştürme teknik profili **Removealternativesecurityıdbyıdentityprovider**' ı çağırır.
 
 ```XML
 <UserJourney Id="AccountUnLink">
@@ -99,9 +100,9 @@ Talep dönüştürme teknik profili, bir kullanıcı yolculuğu'nın düzenleme 
 </UserJourney>
 ```
 
-## <a name="use-a-validation-technical-profile"></a>Doğrulama teknik profilini kullanmak
+## <a name="use-a-validation-technical-profile"></a>Doğrulama teknik profili kullanma
 
-Talep dönüştürme teknik profil bilgileri doğrulamak için kullanılabilir. Aşağıdaki örnekte, [kendi kendine teknik profil onaylanan](self-asserted-technical-profile.md) adlı **LocalAccountSignUpWithLogonEmail** kullanıcıdan iki kez e-posta girin, sonra çağıran [teknik doğrulama profili](validation-technical-profile.md) adlı **doğrulama e-posta** e-postaları doğrulamak için. **Doğrulama e-posta** teknik profili, talep dönüştürme çağırır **AssertEmailAreEqual** iki talep Karşılaştırılacak **e-posta** ve **emailRepeat** ve bunlar belirtilen karşılaştırma göre eşit değilse bir özel durum.
+Bilgileri doğrulamak için bir talep dönüştürme teknik profili kullanılabilir. Aşağıdaki örnekte, **Localaccountsignupwithlogonemail** adlı [kendi kendini onaylanan teknik profil](self-asserted-technical-profile.md) kullanıcıdan e-postayı iki kez girmesini ister, ardından e-posta adını doğrulamak için **Validate-email** adlı [doğrulama teknik profilini](validation-technical-profile.md) çağırır. **Validate-e-posta** teknik profili, iki talep **e-postasını** ve **emailrepeat**'ı karşılaştırmak Için talepler dönüşümünü **assertemaılareeþiti** çağırır ve belirtilen karşılaştırmaya göre eşit değilse bir özel durum oluşturur.
 
 ```XML
 <ClaimsTransformations>
@@ -117,7 +118,7 @@ Talep dönüştürme teknik profil bilgileri doğrulamak için kullanılabilir. 
 </ClaimsTransformations>
 ```
 
-Talep dönüştürme teknik profil çağrıları **AssertEmailAreEqual** kullanıcı tarafından sağlanan e-postaları aynı değerler olduğunu onaylar, dönüştürme talep.
+Talep dönüştürme teknik profili, Kullanıcı tarafından sunulan e-postaların aynı olduğunu belirleyen **Assertemailareeþitclaim** dönüşümünü çağırır.
 
 ```XML
 <TechnicalProfile Id="Validate-Email">
@@ -136,7 +137,7 @@ Talep dönüştürme teknik profil çağrıları **AssertEmailAreEqual** kullan�
 </TechnicalProfile>
 ```
 
-Bir kendi kendine onaylanan teknik profili doğrulama teknik profili çağırın ve belirtilen hata mesajını göstermeye **UserMessageIfClaimsTransformationStringsAreNotEqual** meta verileri.
+Otomatik olarak onaylanan bir teknik profil, doğrulama teknik profilini çağırabilir ve **Usermessageifclaimstransformationstringsarenotequal** meta verilerinde belirtilen hata iletisini gösterebilir.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">

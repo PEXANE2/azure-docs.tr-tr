@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C | özel ilkeleri kullanarak çoklu oturum açma oturumu yönetimi Microsoft Docs
+title: Özel ilkeler kullanarak çoklu oturum açma oturumu yönetimi
+titleSuffix: Azure AD B2C
 description: Azure AD B2C özel ilkeleri kullanarak SSO oturumlarını yönetmeyi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ae30b316133b7479b66a69a3467497a7151dbc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee32b13820cb50fc1649672b78b34e7e293d65b5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065387"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950502"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
@@ -25,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) içindeki çoklu oturum açma (SSO) ot
 
 SSO oturum yönetiminin iki bölümü vardır. İlk olarak, kullanıcının etkileşimiyle doğrudan Azure AD B2C ve diğeri de Facebook gibi dış taraflarla ilgili etkileşimlerle ilgili etkileşimlerle ilgilidir. Azure AD B2C dış taraflar tarafından tutulabilecek SSO oturumlarını geçersiz kılmaz veya atlamaz. Dış tarafa ulaşmak için Azure AD B2C üzerinden yol "hatırlanır", bunun yerine kullanıcıdan sosyal veya kurumsal kimlik sağlayıcısını seçmesini yeniden sorma gereksinimini ortadan kaldırmaktan kaçının. Son SSO kararı dış tarafla birlikte kalır.
 
-SSO oturum yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvuru için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
+SSO oturum yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvurusu için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
 
 Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
@@ -34,7 +35,7 @@ Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-SSO yönetim sınıfları, `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` bir teknik profilin öğesi kullanılarak belirtilir.
+SSO yönetim sınıfları, bir teknik profilin `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` öğesi kullanılarak belirtilir.
 
 ## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
@@ -59,7 +60,7 @@ Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağ
 </TechnicalProfile>
 ```
 
-Oturumdaki talepleri eklemek için teknik profilin `<PersistedClaims>` öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir. `<OutputClaims>`, oturumdan talepleri almak için kullanılır.
+Oturumdaki talepleri eklemek için teknik profilin `<PersistedClaims>` öğesini kullanın. Sağlayıcı oturumu yeniden doldurmak için kullanıldığında, kalıcı talepler talep çantasına eklenir. `<OutputClaims>`, oturumdan talepler almak için kullanılır.
 
 ## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
@@ -91,8 +92,8 @@ Teknik profilde iki meta veri öğesi vardır:
 
 | Öğe | Default Value | Olası Değerler | Açıklama
 | --- | --- | --- | --- |
-| Includesessionındex | true | doğru/yanlış | Sağlayıcıya, oturum dizininin depolanması gerektiğini belirtir. |
-| RegisterServiceProviders | true | doğru/yanlış | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. |
+| Includesessionındex | doğru | doğru/yanlış | Sağlayıcıya, oturum dizininin depolanması gerektiğini belirtir. |
+| RegisterServiceProviders | doğru | doğru/yanlış | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. |
 
-SAML kimlik sağlayıcısı oturumunu depolamak için sağlayıcıyı kullanırken, yukarıdaki öğelerin her ikisi de false olmalıdır. B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, yukarıdaki öğelerin doğru olması veya varsayılan değerler doğru olduğundan atlanmalıdır. SAML oturumu kapatma için `SessionIndex` ve `NameID` işleminin tamamlanmasını gerekir.
+SAML kimlik sağlayıcısı oturumunu depolamak için sağlayıcıyı kullanırken, yukarıdaki öğelerin her ikisi de false olmalıdır. B2C SAML oturumunu depolamak için sağlayıcıyı kullanırken, yukarıdaki öğelerin doğru olması veya varsayılan değerler doğru olduğundan atlanmalıdır. SAML oturumu kapatma `SessionIndex` ve `NameID` tamamlanmasını gerektiriyor.
 

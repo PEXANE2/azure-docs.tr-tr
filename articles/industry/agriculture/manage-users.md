@@ -1,20 +1,20 @@
 ---
 title: Kullanıcıları yönetme
-description: Kullanıcıların nasıl yönetileceğini açıklar
+description: Bu makalede, kullanıcıların nasıl yönetileceği açıklanır.
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 37dacf0adfc9e3dcbab963cef50e2ee5209df314
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f58db00e598fd08972adb60cbd8aae0d3bf3391d
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852360"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942347"
 ---
 # <a name="manage-users"></a>Kullanıcıları yönetme
 
-Azure Farmfor, Azure Active Directory (Azure AD) bir parçası olan kişilerin Kullanıcı yönetimini içerir. API 'Lere erişmek için Azure Farmtts örneğiniz için Kullanıcı ekleyebileceksiniz, oluşturulan haritalar ve algılayıcı telemetrisini gruptan görüntüleyebilirsiniz
+Azure Farmfor, Azure Active Directory (Azure AD) bir parçası olan kişilerin Kullanıcı yönetimini içerir. API 'Lere erişmek, oluşturulan haritaları görüntülemek ve gruptan algılayıcı Telemetriyi görmek için Azure Farmtts örneğinize Kullanıcı ekleyebileceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,40 +38,43 @@ Bugün Azure Farmtts 'de desteklenen iki tür Kullanıcı rolü vardır:
 
 ## <a name="add-user-to-azure-farmbeats"></a>Azure Farmtts 'ye Kullanıcı ekleme
 
-Azure Farmtts 'ye Kullanıcı eklemek için 
-1.  Hızlandırıcıda oturum açın ve ayarlar simgesine tıklayın
-2.  Access Control tıklayın
+Azure Farmtts 'ye Kullanıcı eklemek için şu adımları izleyin:
+
+1.  Hızlandırıcıda oturum açın ve ardından **Ayarlar** simgesini seçin.
+2.  **Access Control**seçin.
 
     ![Proje grubu ları](./media/create-farms/settings-users-1.png)
 
-3.  Erişim vermek istediğiniz kullanıcının e-posta KIMLIĞINI girin
-4.  İstenen rolü-yönetici veya salt okunurdur seçin
-5.  Rol Ekle ' ye tıklayın
+3.  Erişim sağlamak istediğiniz kullanıcının e-posta KIMLIĞINI girin.
+4.  İstenen rol – yönetici veya salt okunurdur ' ı seçin.
+5.  **Rol Ekle**' yi seçin.
 
 Eklenen kullanıcılar artık Azure Farmtts 'ye (veri hub 'ı ve hızlandırıcısına) erişebilecektir.
 
 ## <a name="delete-user-from-azure-farmbeats"></a>Azure Farmtts 'den Kullanıcı silme
 
-Bir kullanıcıyı Azure Farmtts sisteminden kaldırmak için şunları yapabilirsiniz
-1.  Hızlandırıcıda oturum açın ve ayarlar simgesine tıklayın
-2.  Access Control tıklayın
-3.  Kaldırmak istediğiniz kullanıcının e-posta KIMLIĞI yakınında Sil simgesine tıklayın
+Azure Farmmests sisteminden bir kullanıcıyı kaldırmak için aşağıdaki adımları izleyin:
 
-Kullanıcı sistemden kaldırılır. Başarılı işlemi onaylamak için aşağıdaki iletiyi alacaksınız
+1.  Hızlandırıcıda oturum açın ve ardından **Ayarlar** simgesini seçin.
+2.  **Access Control**seçin.
+3.  Bir kullanıcıyı silmek için **Sil** ' i seçin.
 
+Kullanıcı sistemden silinir. Başarılı işlemi onaylamak için aşağıdaki iletiyi alacaksınız.
 
 ![Proje grubu ları](./media/create-farms/manage-users-2.png)
-
 
 ## <a name="add-azure-ad-users"></a>Azure AD kullanıcıları ekleme
 
 > [!NOTE]
-> Azure AD kiracısında yalnızca Azure Farmma erişimi sağlamaya çalıştığınız kullanıcı yoksa, aşağıdaki adımları gerçekleştirmeniz gerekir. Kullanıcı zaten varsa, aşağıdaki adımların gerçekleştirilmesi gerekir
+> Kullanıcı Azure AD kiracısında yoksa Azure Farmtts 'ye Kullanıcı erişimi sağlamak için aşağıdaki adımları izleyin. Kullanıcı Azure AD kiracısında varsa aşağıdaki adımları atlayabilirsiniz.
+>
 
 Uygulama ve rollere atamadan önce bu kullanıcıların Azure AD kiracısında mevcut olmaları gerekir. Azure AD 'ye Kullanıcı eklemek için aşağıdaki adımları kullanın:
+
 1.  [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2.  Sağ üst köşede hesabınızı seçin ve Farmtts ile ilişkili Azure AD kiracısına geçiş yapın
-3.  **Azure Active Directory > kullanıcıları**' nı seçin. Dizininizde bulunan kullanıcıların listesini görürsünüz.
+2.  Sağ üst köşede hesabınızı seçin ve Farmtts ile ilişkili Azure AD kiracısına geçiş yapın.
+3.  **Azure Active Directory > kullanıcıları**' nı seçin.
+    Dizininizde bulunan kullanıcıların listesini görürsünüz.
 4.  Dizine kullanıcı eklemek için **Yeni Kullanıcı**' yı seçin. Dış kullanıcılar için **Yeni Konuk Kullanıcı**' yı seçin.
 
     ![Proje grubu ları](./media/create-farms/manage-users-3.png)
@@ -82,5 +85,4 @@ Azure AD 'de kullanıcıları yönetme hakkında daha fazla bilgi için [Azure A
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Farmtts 'yi dağıttıysanız. Şimdi [gruplar oluşturmayı](manage-farms.md#create-farms)öğrenin.
-
+Kullanıcıları Azure Farmtts örneğine başarıyla eklediniz. Şimdi [gruplar oluşturmayı](manage-farms.md#create-farms)öğrenin.

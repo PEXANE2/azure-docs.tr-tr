@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 54f0584eae948d6e577b0439a5a0d976ff61d4b1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850661"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951505"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında başlat/durdur çözümü
 
@@ -428,7 +428,7 @@ Bu çözümün önceki bir sürümünü dağıttıysanız, önce güncelleştiri
 
 Otomasyon hesabı ve Log Analytics çalışma alanı bu işlemin bir parçası olarak silinmez. Log Analytics çalışma alanını sürdürmek istemiyorsanız, el ile silmeniz gerekir. Bu, Azure portal yapılabilir:
 
-1. Azure portal giriş ekranından **Log Analytics çalışma alanları**' nı seçin.
+1. Azure portal, **Log Analytics çalışma alanlarını**arayıp seçin.
 1. **Log Analytics çalışma alanları** sayfasında, çalışma alanını seçin.
 1. Çalışma alanı ayarları sayfasındaki menüden **Sil** ' i seçin.
 

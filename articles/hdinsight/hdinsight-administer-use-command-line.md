@@ -1,37 +1,37 @@
 ---
-title: Azure CLI kullanarak Azure HDInsight kümelerini yönetme
-description: Azure HDInsight kümelerini yönetmek için Azure CLI'yı kullanmayı öğrenin. Küme türleri, Apache Hadoop, Spark, HBase, Storm, Kafka, Interactive Query ve ML hizmetleri içerir.
+title: Azure CLı kullanarak Azure HDInsight kümelerini yönetme
+description: Azure HDInsight kümelerini yönetmek için Azure CLı 'yı nasıl kullanacağınızı öğrenin. Küme türleri Apache Hadoop, Spark, HBase, fırtınası, Kafka, Interactive Query ve ML hizmetlerini içerir.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.author: tyfox
-ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/06/2019
+ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137395"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951811"
 ---
-# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI kullanarak Azure HDInsight kümelerini yönetme
+# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLı kullanarak Azure HDInsight kümelerini yönetme
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Nasıl kullanacağınızı öğrenin [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) Azure HDInsight kümelerini yönetmek için. Azure komut satırı arabirimi (CLI), Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.
+Azure HDInsight kümelerini yönetmek için [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 'yi nasıl kullanacağınızı öğrenin. Azure komut satırı arabirimi (CLI), Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure CLI. Azure CLI'yi yüklemediyseniz, bkz. [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) adımlar.
+* Azure CLı. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-* HDInsight üzerinde Apache Hadoop kümesi. Bkz: [Linux'ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="connect-to-azure"></a>Azure'a Bağlanma
 
-Azure aboneliğinizde oturum açın. Azure Cloud Shell'i kullanmak sonra seçmeniz yeterlidir planlıyorsanız **deneyin** kod bloğunun sağ üst köşedeki. Aksi takdirde, aşağıdaki komutu girin:
+Azure aboneliğinizde oturum açın. Azure Cloud Shell kullanmayı planlıyorsanız, kod bloğunun sağ üst köşesinde bulunan **bunu dene** ' yi seçin. Aksi takdirde, aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az login
@@ -40,9 +40,9 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="list-clusters"></a>Kümeleri listeleme
+## <a name="list-clusters"></a>Kümeleri Listele
 
-Kullanım [az hdınsight listesi](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) kümeleri listeleme için. Değiştirerek aşağıdaki komutları düzenleyin `RESOURCE_GROUP_NAME` kaynak grubunuzun adıyla, ardından komutları girin:
+Kümeleri listelemek için [az HDInsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) kullanın. `RESOURCE_GROUP_NAME` kaynak grubunuzun adıyla değiştirerek aşağıdaki komutları düzenleyin ve ardından komutları girin:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -58,9 +58,9 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME
 az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:name}" --output table
 ```
 
-## <a name="show-cluster"></a>Kümenin Göster
+## <a name="show-cluster"></a>Kümeyi göster
 
-Kullanım [az hdınsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) bilgi belirtilen bir küme için gösterilecek. Aşağıdaki komutta değiştirerek Düzenle `RESOURCE_GROUP_NAME`, ve `CLUSTER_NAME` ile ilgili bilgileri, sonra komutu girin:
+Belirtilen bir kümenin bilgilerini göstermek için [az HDInsight Show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) ' i kullanın. `RESOURCE_GROUP_NAME`değiştirerek aşağıdaki komutu düzenleyin ve ilgili bilgilerle `CLUSTER_NAME`, sonra şu komutu girin:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,13 +68,13 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Kümeleri Sil
 
-Kullanım [az hdınsight Sil](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) belirtilen küme silinemedi. Aşağıdaki komutta değiştirerek Düzenle `RESOURCE_GROUP_NAME`, ve `CLUSTER_NAME` ile ilgili bilgileri, sonra komutu girin:
+Belirtilen kümeyi silmek için [az HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) kullanın. `RESOURCE_GROUP_NAME`değiştirerek aşağıdaki komutu düzenleyin ve ilgili bilgilerle `CLUSTER_NAME`, sonra şu komutu girin:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 ```
 
-Kümeyi içeren kaynak grubunu silerek bir küme de silebilirsiniz. Not: Bu varsayılan depolama hesabı dahil olmak üzere grubundaki tüm kaynakları siler.
+Kümeyi içeren kaynak grubunu silerek de bir kümeyi silebilirsiniz. Bu, varsayılan depolama hesabı da dahil olmak üzere gruptaki tüm kaynakların silineceğini aklınızda görürsünüz.
 
 ```azurecli-interactive
 az group delete --name RESOURCE_GROUP_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Kümeleri ölçeklendirme
 
-Kullanım [az hdınsight yeniden boyutlandırma](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) belirtilen HDInsight kümesi için belirtilen boyut yeniden boyutlandırabilirsiniz. Aşağıdaki komutta değiştirerek Düzenle `RESOURCE_GROUP_NAME`, ve `CLUSTER_NAME` ile ilgili bilgiler. Değiştirin `TARGET_INSTANCE_COUNT` ile istenen kümeniz için çalışan düğümü sayısı. Kümeleri ölçeklendirme hakkında daha fazla bilgi için bkz. [ölçek HDInsight kümeleri](./hdinsight-scaling-best-practices.md). Aşağıdaki komutu girin:
+Belirtilen HDInsight kümesini belirtilen boyuta göre yeniden boyutlandırmak için [az HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) ' i kullanın. `RESOURCE_GROUP_NAME`değiştirerek aşağıdaki komutu düzenleyin ve ilgili bilgilerle `CLUSTER_NAME`. `TARGET_INSTANCE_COUNT`, kümeniz için istenen çalışan düğüm sayısıyla değiştirin. Kümeleri ölçeklendirme hakkında daha fazla bilgi için bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md). Şu komutu girin:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
@@ -90,9 +90,9 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, farklı HDInsight küme yönetim görevlerinin nasıl gerçekleştirileceğini öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, farklı HDInsight kümesi yönetim görevlerinin nasıl gerçekleştirileceğini öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure portalını kullanarak HDInsight Apache Hadoop kümelerini yönetme](hdinsight-administer-use-portal-linux.md)
-* [HDInsight, Azure PowerShell kullanarak yönetme](hdinsight-administer-use-powershell.md)
-* [Azure HDInsight ile çalışmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure CLI ile çalışmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
+* [HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin](hdinsight-administer-use-portal-linux.md)
+* [Azure PowerShell kullanarak HDInsight 'ı yönetme](hdinsight-administer-use-powershell.md)
+* [Azure HDInsight 'ı kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Azure CLı ile çalışmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)

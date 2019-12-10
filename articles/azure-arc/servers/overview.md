@@ -10,17 +10,17 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122846"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951438"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Sunucular için Azure Arc nedir?
 
 Sunucular için Azure Arc, Azure dışındaki makineleri yönetmenizi sağlar.
-Azure olmayan bir makine Azure'a bağlandığında **Bağlı Makine** olur ve Azure'daki bir kaynak olarak kabul edilir. Her **Bağlı Makine** bir Kaynak Kimliğine sahiptir, bir abonelikteki Kaynak Grubunun parçası olarak yönetilir, Azure İlkesi ve etiketleme gibi standart Azure yapılarından faydalanır.
+Azure olmayan bir makine Azure 'a bağlıyken **bağlı bir makine** olur ve Azure 'da kaynak olarak kabul edilir. Her **bağlı makinenin** BIR kaynak kimliği vardır, bir aboneliğin Içindeki bir kaynak grubunun parçası olarak yönetilir ve Azure ilkesi ve etiketleme gibi standart Azure yapılarından faydalanır.
 
 Her makineye Azure 'a bağlanmak için bir aracı paketinin yüklü olması gerekir. Bu belgenin geri kalanında işlem daha ayrıntılı olarak açıklanmaktadır.
 
@@ -99,7 +99,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
 Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure CLı:
+Azure CLI:
 
 ```azurecli-interactive
 az account set --subscription "{Your Subscription Name}"
@@ -109,7 +109,41 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 Ayrıca, [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)altındaki adımları izleyerek Portal 'ı kullanarak kaynak sağlayıcılarını kaydedebilirsiniz.
 
-## <a name="supported-scenarios"></a>Desteklenen senaryolar
+## <a name="machine-changes-after-installing-the-agent"></a>Aracıyı yükledikten sonra makine değişiklikleri
+
+Ortamınızda dağıtılan bir değişiklik izleme çözümü varsa, **Azure bağlı makine Aracısı (AzCMAgent)** yükleme paketi tarafından yapılan değişiklikleri izlemek, tanımlamak ve bunlara izin vermek için aşağıdaki listeyi kullanabilirsiniz.
+
+Aracıyı yükledikten sonra, sunucularınızda yapılan aşağıdaki değişiklikleri görürsünüz.
+
+### <a name="windows"></a>Windows
+
+Yüklü hizmetler:
+
+* `Himds`- **Azure bağlı makine Aracısı** hizmeti.
+* `Dscservice` veya `gcd`- **Konuk yapılandırma** hizmeti.
+
+Sunucuya eklenen dosyalar:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*`- **Azure bağlı makine Aracısı** dosyalarının konumu.
+* **Konuk yapılandırma** günlüklerini  - `%ProgramData%\GuestConfig\*.*`.
+
+Kayıt defteri anahtarı konumları:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent`- **Azure bağlı makine Aracısı**Için kayıt defteri anahtarları.
+
+### <a name="linux"></a>Linux
+
+Yüklü hizmetler:
+
+* `Himdsd`- **Azure bağlı makine Aracısı** hizmeti.
+* `dscd` veya `gcd`- **Konuk yapılandırma** hizmeti.
+
+Sunucuya eklenen dosyalar:
+
+* `/var/opt/azcmagent/**`- **Azure bağlı makine Aracısı** dosyalarının konumu.
+* **Konuk yapılandırma** günlüklerini  - `/var/lib/GuestConfig/**`.
+
+## <a name="supported-scenarios"></a>Desteklenen Senaryolar
 
 Bir düğümü kaydettikten sonra, diğer Azure hizmetlerini kullanarak düğümlerinizi yönetmeye başlayabilirsiniz.
 

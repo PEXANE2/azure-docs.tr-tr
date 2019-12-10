@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931933"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941873"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory 'de SSIS Integration Runtime yönetimi sorunlarını giderme
 
@@ -156,3 +156,38 @@ SSIS IR'yi durdurduğunuzda Sanal Ağ ile ilgili tüm kaynaklar silinir. Ama abo
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 Bu hata IR çalışırken oluşur ve IR'nin artık iyi durumda olmadığı anlamına gelir. Bu hata her zaman DNS sunucusunda veya NSG yapılandırmasında yapılan ve SSIS IR'nin gerekli hizmete bağlanmasını engelleyen bir değişiklikten kaynaklanır. DNS sunucusunun ve NSG'nin yapılandırması müşteri tarafından denetlendiğinden, müşterinin kendi tarafında bağlantıyı engelleyen sorunları düzeltmesi gerekir. Daha fazla bilgi için bkz. [SSIS IR Sanal Ağ yapılandırması](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Sorunlarınız devam ediyorsa Azure Data Factory destek takımına başvurun.
+
+## <a name="static-public-ip-addresses-configuration"></a>Statik genel IP adresleri yapılandırması
+
+Azure-SSIS IR Azure sanal ağına katdığınızda, IR 'nin, belirli IP adreslerine erişimi sınırlayan veri kaynaklarına erişebilmesi için kendi statik genel IP adreslerini de bir araya getirebileceksiniz. Daha fazla bilgi için bkz. [Azure-SSIS Integration Runtime'ı sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+
+Yukarıdaki sanal ağ sorunlarının yanı sıra statik ortak IP adresleriyle ilgili sorunu da karşılayabilirsiniz. Yardım için lütfen aşağıdaki hataları kontrol edin.
+
+### <a name="InvalidPublicIPSpecified"></a>Invalidpublicipbelirtilmiş
+
+Bu hata, Azure-SSIS IR başlattığınızda çeşitli nedenlerden kaynaklanabilir:
+
+| Hata iletisi | Çözüm|
+|:--- |:--- |
+| Belirtilen statik genel IP adresi zaten kullanılıyor, lütfen Azure-SSIS Integration Runtime için kullanılmamış iki tane belirtin. | İki kullanılmamış statik genel IP adresi seçmeniz veya belirtilen genel IP adresine yönelik geçerli başvuruları kaldırmanız ve ardından Azure-SSIS IR yeniden başlatmanız gerekir. |
+| Belirtilen statik genel IP adresi, DNS adına sahip değil, lütfen Azure-SSIS Integration Runtime DNS adına sahip iki tane belirtin. | Aşağıdaki resimde gösterildiği gibi Azure portal genel IP adresinin DNS adını ayarlayabilirsiniz. Belirli adımlar şunlardır: (1) Azure portal aç ve bu genel IP adresinin kaynak sayfasına git; (2) **yapılandırma** bölümünü SEÇIN ve DNS adını ayarlayıp **Kaydet** düğmesine tıklayın; (3) Azure-SSIS IR yeniden başlatın. |
+| Azure-SSIS Integration Runtime için sunulan VNet ve statik genel IP adresleri aynı konumda olmalıdır. | Azure ağının gereksinimlerine göre, statik genel IP adresi ve sanal ağ aynı konum ve abonelikte olmalıdır. Lütfen iki geçerli statik genel IP adresi sağlayın ve Azure-SSIS IR yeniden başlatın. |
+| Belirtilen statik genel IP adresi temel bir tane, lütfen Azure-SSIS Integration Runtime için iki standart değer sağlayın. | Yardım için [genel IP adresi SKU 'larına](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) bakın. |
+
+![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>Publicıpresourcegrouplockedduringstart
+
+Azure-SSIS IR sağlama başarısız olursa, oluşturulan tüm kaynaklar silinir. Ancak, abonelikte veya kaynak grubunda (statik genel IP adresiniz içeren) bir kaynak silme kilidi varsa, ağ kaynakları beklendiği gibi silinmez. Hatayı düzeltemedi, lütfen silme kilidini kaldırın ve IR 'yi yeniden başlatın.
+
+### <a name="publicipresourcegrouplockedduringstop"></a>Publicıpresourcegrouplockedduringstop
+
+Azure-SSIS IR durdurduğunuzda, genel IP adresinizi içeren kaynak grubunda oluşturulan tüm ağ kaynakları silinir. Ancak abonelikte veya kaynak grubunda (statik genel IP adresiniz içeren) bir kaynak silme kilidi varsa silme işlemi başarısız olabilir. Lütfen silme kilidini kaldırın ve IR 'yi yeniden başlatın.
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>Publicıpresourcegrouplockedduringupgrade
+
+Azure-SSIS IR düzenli aralıklarla otomatik olarak güncelleştirilir. Yükseltme sırasında yeni IR düğümleri oluşturulur ve eski düğümler silinir. Ayrıca, eski düğümlerin oluşturduğu ağ kaynakları (örneğin, yük dengeleyici ve ağ güvenlik grubu) silinir ve yeni ağ kaynakları aboneliğiniz altında oluşturulur. Bu hata, abonelik veya kaynak grubundaki (statik genel IP adresi içeren) silme kilidi nedeniyle eski düğümlerin ağ kaynaklarının silinmesinin başarısız olduğu anlamına gelir. Eski düğümleri temizleyebilmemiz ve eski düğümlerin statik genel IP adresini serbest bırakabilmeleri için silme kilidini kaldırın. Aksi takdirde, statik genel IP adresi yayınlanamaz ve diğer bir deyişle, IR 'yi yükseltemeyeceksiniz.
+
+### <a name="publicipnotusableduringupgrade"></a>Publicıpnotusableduringupgrade
+
+Kendi statik genel IP adreslerinizi getirmek istediğinizde, iki genel IP adresi sağlanmalıdır. Bunlardan biri, IR düğümlerini hemen oluşturmak için kullanılır ve IR 'nin yükseltilmesi sırasında başka bir tane kullanılır. Bu hata, diğer genel IP adresi yükseltme sırasında kullanılabilir olmadığında ortaya çıkabilir. Olası nedenler için lütfen [ınvalidpublicıpbelirtilen](#InvalidPublicIPSpecified) bölümüne bakın.

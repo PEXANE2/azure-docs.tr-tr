@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c29bba81132df15fcea9ff0df7be6a8cea94c9a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27bf62cb328273db1f7bdd44117853b00feca9ae
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851137"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941596"
 ---
 # <a name="deploy-azure-farmbeats"></a>Azure Farmtts dağıtma
 
@@ -33,7 +33,7 @@ Azure Farmtts 'nin hızlı dağıtımı bir saatten kısa sürer. Veri hub 'ı v
 
 Azure Farmtts dağıtımı, aboneliğiniz dahilinde aşağıdaki kaynakları oluşturur:
 
-| S. no.  | Kaynak adı  | Farmtempts bileşeni  |
+| Ardışık. no.  | Kaynak adı  | Farmtempts bileşeni  |
 |---------|---------|---------|
 |1  |       Azure Cosmos DB   |  Veri hub 'ı       |
 |2  |    Application Insights      |     Veri merkezi/Hızlandırıcı     |
@@ -49,7 +49,6 @@ Azure Farmtts dağıtımı, aboneliğiniz dahilinde aşağıdaki kaynakları olu
 |12|      Azure App Service      |  Veri merkezi/Hızlandırıcı       |
 |13 |    App service planı        |     Veri merkezi/Hızlandırıcı      |
 |14 |Azure haritalar hesabı     |Hızlandır    |
-|15 |       Azure Time Series Insights      |  Veri hub 'ı     |
 
 Azure Farmfor, doğrudan Azure portal erişebileceğiniz Azure Marketi 'nde indirilebilir.  
 
@@ -83,7 +82,7 @@ Dağıtıma başlamadan önce, aşağıdaki önkoşulların yerinde olduğundan 
 
 Sentinel 'e sahip bir hesap, resmi web sitesinden cihazınızdan, Sentinel uydu canlandırın 'yi yüklemenize yardımcı olur. Ücretsiz bir hesap oluşturmak için aşağıdakileri yapın:
 
-1. [Sentinel hesap kaydı sayfasına](https://scihub.copernicus.eu/dhus/#/self-registration)gidin. 
+1. [Sentinel hesap kaydı sayfasına](https://scihub.copernicus.eu/dhus/#/self-registration)gidin.
 1. Kayıt formunda, ad, soyadı, Kullanıcı adı, parola ve e-posta adresinizi belirtin.
 
 Onay için kayıtlı e-posta adresine bir doğrulama e-postası gönderilir. E-posta adresinizi onaylamak için bağlantıyı seçin. Kayıt işleminiz tamamlanmıştır.
@@ -211,7 +210,7 @@ Daha önce tartışılan Market iş akışının bir parçası olarak, bir kayna
     > Belirtecin süresi 60 dakika sonra dolar. Süresi dolarsa, dağıtım komutunu yeniden yazarak yeniden başlatabilirsiniz.
 
 1. İstemde, Sentinel hesap parolanızı girin.
-   
+
    Yükleyici, dağıtımı doğrular ve başlatır. Bu işlem 20 dakika sürebilir.
 
    Dağıtım başarıyla tamamlandıktan sonra aşağıdaki çıkış bağlantılarını alırsınız:
@@ -282,12 +281,8 @@ Herhangi bir sorunla karşılaşırsanız [sorun giderme](troubleshoot-project-f
 Datahub yüklemesi tamamlandıktan sonra, https://biçimindeki Swagger arabirimi aracılığıyla Azure Farmınts API 'Lerine erişmek için URL 'YI alacaksınız\<yourdatahub-website-name >. azurewebsites. net/Swagger.
 
 1. Swagger aracılığıyla oturum açmak için URL 'YI kopyalayıp tarayıcınıza yapıştırın.
-1. Azure portal kimlik bilgilerinizle oturum açın.
-1. Seçim "Sanity test" i deneyin: 
-
-     - Başarılı bir dağıtıma çıkış olarak aldığınız Datahub bağlantısını kullanarak Swagger portalında başarıyla oturum açın.
-     - Genişletilmiş türler API al-"deneyin/kapat" seçeneğini belirleyin
-     - Sunucu yanıt kodu 200 ' i almalısınız, "403 yetkisiz Kullanıcı" gibi bir özel durum değil.
+2. Azure portal kimlik bilgilerinizle oturum açın.
+3. Swagger 'yi görebilir ve Azure Farmtts API 'Lerinde tüm REST işlemlerini gerçekleştirebilirsiniz. Bu, Azure Farmtts 'nin başarılı dağıtımını gösterir.
 
 ### <a name="accelerator"></a>Hızlandır
 

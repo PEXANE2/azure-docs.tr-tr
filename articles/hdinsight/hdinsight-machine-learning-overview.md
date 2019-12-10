@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241638"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951794"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 'ta makine öğrenimi
 
@@ -21,19 +21,19 @@ HDInsight, büyük miktarlarda makine öğrenimini, yapılandırılmış, yapıl
 
 ## <a name="sparkml-and-mllib"></a>Mini ml ve MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) , büyük veri analizlerini artırmak üzere bellek içi işlemeyi destekleyen, Birleşik, açık kaynaklı ve paralel veri Işleme çerçevesinin Azure tarafından barındırılan [Apache Spark](https://spark.apache.org/)bir sunumudur. Spark işleme altyapısı hız, kullanım kolaylığı ve gelişmiş analiz için oluşturulmuştur. Spark 'ın bellek içi dağıtılmış hesaplama özellikleri, makine öğrenimi ve grafik hesaplamaları 'nda kullanılan yinelemeli algoritmalar için iyi bir seçenek yapar. Algoritmik modelleme yeteneklerini bu dağıtılmış ortama getiren iki ölçeklenebilir makine öğrenimi kitaplığı vardır: MLlib ve mini-ml. MLlib, RDD 'lerin üstünde oluşturulmuş özgün API 'yi içerir. Parlak ml, ML işlem hatları oluşturmak için veri çerçevelerinin üzerine inşa edilen daha yüksek düzeyde bir API sağlayan daha yeni bir pakettir. Mini bir ml, MLlib özelliklerinin tümünü henüz desteklemez, ancak MLlib 'i Spark 'ın Standart makine öğrenimi kitaplığı olarak değiştiriyor.
+[HDInsight Spark](spark/apache-spark-overview.md) , büyük veri analizlerini artırmak üzere bellek içi işlemeyi destekleyen, Birleşik, açık kaynaklı ve paralel veri Işleme çerçevesinin Azure tarafından barındırılan [Apache Spark](https://spark.apache.org/)bir sunumudur. Spark işleme altyapısı hız, kullanım kolaylığı ve Gelişmiş analiz için oluşturulmuştur. Spark'ın dağıtılmış bellek içi hesaplama özellikleri onu kullanılan makine öğrenimi ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim haline getirir. Algoritmik modelleme yeteneklerini bu dağıtılmış ortama getiren iki ölçeklenebilir makine öğrenimi kitaplığı vardır: MLlib ve mini-ml. MLlib, RDD 'lerin üstünde oluşturulmuş özgün API 'yi içerir. Parlak ml, ML işlem hatları oluşturmak için veri çerçevelerinin üzerine inşa edilen daha yüksek düzeyde bir API sağlayan daha yeni bir pakettir. Parlak ml, MLlib özelliklerinin tümünü henüz desteklemez, ancak MLlib 'i Spark 'ın Standart makine öğrenimi kitaplığı olarak değiştiriyor.
 
 Apache Spark için Microsoft Machine Learning kitaplığı, [Mmlspark](https://github.com/Azure/mmlspark). Bu kitaplık, veri bilimcilerinin Spark üzerinde daha üretken olmasını, deneme oranını artırmayı ve çok büyük veri kümelerinde derin öğrenme dahil olmak üzere son teknoloji makine öğrenimi tekniklerinden yararlanmasını sağlamak için tasarlanmıştır. MMLSpark, dizin oluşturma dizeleri, makine öğrenimi algoritmaları tarafından beklenen bir düzene zorlama verileri ve özellik vektörlerini montaj gibi ölçeklenebilir ML modelleri derlerken, modern ml 'nin alt düzey API 'Lerinin üzerine bir katman sağlar. MMLSpark kitaplığı, PySpark 'da model oluşturmaya yönelik bu ve diğer yaygın görevleri basitleştirir.
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) , şu anda dünyanın en popüler istatistiksel programlama dilidir. Bu, 2.500.000 ' den fazla kullanıcı topluluğu olan ve büyüyen bir açık kaynak veri görselleştirme aracıdır. Kullanıcı tabanıyla ve 8.000 katkıda bulunan paketlerle, R, makine öğrenimine ihtiyaç duyan birçok şirket için büyük olasılıkla tercih edilir. ML Hizmetleri, çok büyük veri kümeleri ve modellerle kullanılmak üzere hazırlanmaya yönelik bir HDInsight kümesi oluşturabilirsiniz. Bu özellik, veri bilimcileri ve İstatistikçilerin ' yi, küme kurulumu ve bakım ek yükü olmadan HDInsight aracılığıyla isteğe bağlı olarak ölçeklendirilebilen tanıdık bir R arabirimiyle sağlar.
+[R](https://www.r-project.org/) , şu anda dünyanın en popüler istatistiksel programlama dilidir. Bu, 2.500.000 ' den fazla kullanıcı topluluğu olan ve büyümekte olan bir açık kaynaklı veri görselleştirme aracıdır. Kullanıcı tabanıyla ve 8.000 katkıda bulunan paketlerle, R, makine öğrenimine ihtiyaç duyan birçok şirket için büyük olasılıkla tercih edilir. ML Hizmetleri, çok büyük veri kümeleri ve modellerle kullanılmak üzere hazırlanmaya yönelik bir HDInsight kümesi oluşturabilirsiniz. Bu özellik, veri bilimcileri ve İstatistikçilerin ' yi, küme kurulumu ve bakım ek yükü olmadan HDInsight aracılığıyla isteğe bağlı olarak ölçeklendirilebilen tanıdık bir R arabirimiyle sağlar.
 
 ![R Server ile tahmin için eğitim](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar.  Ayrıca, ScaleR 'ın Hadoop Map 'i azaltma veya Spark işlem bağlamlarını kullanarak R betiklerini küme düğümleri arasında çalıştırma seçeneğiniz de vardır.
+Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar.  Ayrıca, ScaleR 'nın Hadoop Map 'i azaltma veya Spark işlem bağlamlarını kullanarak R betiklerini küme düğümleri üzerinde de çalıştırabilirsiniz.
 
-Spark ile HDInsight 'ta ML Hizmetleri ile Spark işlem bağlamı kullanarak bir kümenin düğümleri arasında eğitim paralel hale getirmek sağlayabilirsiniz. Tüm kullanılabilir çekirdekleri gerektiği gibi paralel olarak kullanarak R betiklerini doğrudan Edge düğümünde çalıştırabilirsiniz. Alternatif olarak, kümedeki tüm düğümlerde dağıtılan işlemeyi kapatmak için kodunuzu kenar düğümünden çalıştırabilirsiniz. Spark ile HDInsight üzerinde ML Hizmetleri, isterseniz açık kaynak R paketlerinden paralelleştirme işlevleri de sunar.
+Spark ile HDInsight 'ta ML Hizmetleri ile Spark işlem bağlamı kullanarak bir kümenin düğümleri arasında eğitim paralel hale getirmek sağlayabilirsiniz. Tüm kullanılabilir çekirdekleri gerektiği gibi paralel olarak kullanarak R betiklerini doğrudan Edge düğümünde çalıştırabilirsiniz. Alternatif olarak, kümedeki tüm düğümlerde dağıtılan işlemeyi kapatmak için kodunuzu kenar düğümünden çalıştırabilirsiniz. Spark ile HDInsight üzerinde ML Hizmetleri, isterseniz açık kaynaklı R paketlerinden paralelleştirme işlevleri de sunar.
 
 ## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning ve Apache Hive
 

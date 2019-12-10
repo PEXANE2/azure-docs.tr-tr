@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
+title: Kullanıcı arabirimini özelleştirme
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanan uygulamalarınız için Kullanıcı arabirimini özelleştirmeyi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258161"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949415"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
 
@@ -90,7 +91,7 @@ Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı
 
 Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve CSS 'nizi kullanmaya başlayın.
 
-- İçinde herhangi bir yerde bulunan boş `<div id="api"></div>` bir öğeyle düzgün biçimlendirilmiş HTML içeriği oluşturun. `<body>` Bu öğe Azure AD B2C içeriğin nereye ekleneceğini işaretler. Aşağıdaki örnek, en az bir sayfa göstermektedir:
+- `<body>`bir yerde bulunan boş bir `<div id="api"></div>` öğesiyle düzgün biçimlendirilmiş HTML içeriği oluşturun. Bu öğe Azure AD B2C içeriğin nereye ekleneceğini işaretler. Aşağıdaki örnek, en az bir sayfa göstermektedir:
 
     ```html
     <!DOCTYPE html>
@@ -136,7 +137,7 @@ Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve C
 
 ### <a name="html-fragments-from-azure-ad-b2c"></a>Azure AD B2C HTML parçaları
 
-Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` öğe ile birleştirmekte olan HTML parçaları listelenmektedir.
+Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` öğesi içine birleştiren HTML parçaları listelenmektedir.
 
 | Sayfa ekleniyor | HTML açıklaması |
 | ------------- | ------------------- |
@@ -144,14 +145,14 @@ Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` �
 | Yerel hesap kaydı | Bir e-posta adresine veya Kullanıcı adına göre yerel hesap kaydolma için bir form içerir. Form, metin girişi kutusu, parola giriş kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi farklı giriş denetimleri içerebilir. |
 | Sosyal hesap kaydolma | Facebook veya Google gibi bir sosyal kimlik sağlayıcısından mevcut bir hesap kullanılarak kaydolurken görünebilir. Bir kaydolma formu kullanılarak müşteriden ek bilgiler toplandığında kullanılır. |
 | Birleşik kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilecek müşterilerin hem kaydolma hem de oturum açma sürümlerini işler. |
-| Multi-factor authentication | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
+| Çok faktörlü kimlik doğrulama | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
 | Hata | Müşteriye hata bilgilerini sağlar. |
 
 ## <a name="localize-content"></a>İçeriği yerelleştirin
 
-Azure AD B2C kiracınızda [dil özelleştirmesini](active-directory-b2c-reference-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C, OpenID Connect parametresini `ui-locales` uç noktanıza iletmesine izin verir. İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
+Azure AD B2C kiracınızda [dil özelleştirmesini](active-directory-b2c-reference-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C OpenID Connect parametre `ui-locales` uç noktanıza iletmesini sağlar. İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
 
-İçerik, kullanılan yerel ayara bağlı olarak farklı yerlerden çekeklenebilir. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlarsınız. Joker karakter değerini `{Culture:RFC5646}`kullanırsanız, doğru olanı çağıracaksınız.
+İçerik, kullanılan yerel ayara bağlı olarak farklı yerlerden çekeklenebilir. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlarsınız. `{Culture:RFC5646}`joker karakter değerini kullanırsanız, doğru olanı çağıracaksınız.
 
 Örneğin, özel sayfa URI 'niz şöyle görünebilir:
 

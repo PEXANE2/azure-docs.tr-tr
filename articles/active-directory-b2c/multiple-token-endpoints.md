@@ -1,5 +1,6 @@
 ---
-title: OWıN tabanlı Web API 'Lerini b2clogin.com-Azure Active Directory B2C 'e geçirme
+title: OWıN tabanlı Web API 'Lerini b2clogin.com 'e geçirme
+titleSuffix: Azure AD B2C
 description: Uygulamalarınızı b2clogin.com 'e geçirirken birden çok belirteç verenler tarafından verilen belirteçleri desteklemek için bir .NET Web API 'sini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533771"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950995"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWıN tabanlı bir Web API 'sini b2clogin.com 'e geçirme
 
@@ -26,7 +27,7 @@ Hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçl
 Aşağıdaki bölümler, [Microsoft OWIN][katana] ara yazılım bileşenleri (Katana) kullanan BIR Web API 'sinde birden çok veren 'in nasıl etkinleşeceği hakkında bir örnek sunar. Kod örnekleri Microsoft OWıN ara yazılımı 'na özgü olsa da, genel teknik diğer OWIN kitaplıkları için geçerli olmalıdır.
 
 > [!NOTE]
-> Bu makale, şu anda dağıtılmış olan API 'ler ve uygulama `login.microsoftonline.com` ve önerilen `b2clogin.com` uç noktaya geçirmek isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
+> Bu makale, şu anda dağıtılmış olan API 'Leri ve `login.microsoftonline.com` başvuruda bulunan ve önerilen `b2clogin.com` uç noktasına geçiş yapmak isteyen uygulamalarla Azure AD B2C müşterilere yöneliktir. Yeni bir uygulama ayarlıyorsanız, [b2clogin.com](b2clogin.md) kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,12 +43,12 @@ Mevcut Kullanıcı akışlarınızdan birini seçerek başlayın:
 
 1. [Azure portal](https://portal.azure.com) Azure AD B2C kiracınıza gidin
 1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin
-1. Var olan bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır** ' ı seçin.
+1. Mevcut bir ilkeyi seçin (örneğin *B2C_1_signupsignin1*) ve ardından **Kullanıcı akışını Çalıştır** ' ı seçin.
 1. Sayfanın üst kısmındaki **Kullanıcı akış başlığını Çalıştır** bölümünde, bu kullanıcı akışı Için OpenID Connect bulma uç noktasına gitmek üzere köprüyü seçin.
 
     ![Azure portal Şimdi Çalıştır sayfasında iyi bilinen URI Köprüsü](media/multi-token-endpoints/portal-01-policy-link.png)
 
-1. Tarayıcınızda açılan sayfada `issuer` değeri kaydedin, örneğin:
+1. Tarayıcınızda açılan sayfada `issuer` değerini kaydedin, örneğin:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
@@ -66,10 +67,10 @@ Kullanıcı akışları yerine özel ilkeleriniz varsa, veren URI 'Leri almak i�
 
 1. Azure AD B2C kiracınıza gidin
 1. **Kimlik deneyimi çerçevesini** seçin
-1. Bağlı olan taraf ilkelerinizin birini seçin, örneğin, *B2C_1A_signup_signin*
+1. Bağlı olan taraf ilkelerinizin birini seçin (örneğin, *B2C_1A_signup_signin* )
 1. Bir etki alanı seçmek için **etki alanı seç** açılan listesini kullanın, örneğin *yourtenant.b2clogin.com*
 1. **OpenID Connect bulma uç noktası** altında görünen köprüyü seçin
-1. `issuer` Değeri kaydet
+1. `issuer` değerini Kaydet
 1. Diğer etki alanı için 4-6 adımlarını gerçekleştirin, örneğin *login.microsoftonline.com*
 
 ## <a name="get-the-sample-code"></a>Örnek kodunu alma
@@ -88,10 +89,10 @@ Bu bölümde, her iki belirteç verenin bitiş noktalarının geçerli olduğunu
 
 1. Visual Studio 'da **B2C-WebAPI-DotNet. sln** çözümünü açın
 1. **Taskservice** projesinde, Düzenleyicinizde *taskservice\\\\App_Start **Startup.auth.cs**.* dosyasını açın
-1. Aşağıdaki `using` yönergeyi dosyanın en üstüne ekleyin:
+1. Aşağıdaki `using` yönergesini dosyanın en üstüne ekleyin:
 
     `using System.Collections.Generic;`
-1. [`ValidIssuers`][validissuers] [Özelliği`TokenValidationParameters`][tokenvalidationparameters] tanımına ekleyin ve önceki bölümde kaydettiğiniz URI 'leri belirtin:
+1. [`ValidIssuers`][validissuers] özelliğini [`TokenValidationParameters`][tokenvalidationparameters] tanımına ekleyin ve önceki bölümde kaydettiğiniz URI 'leri belirtin:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -124,7 +125,7 @@ Artık Web API 'niz tarafından desteklenen URI 'Ler sayesinde, Web uygulamanız
 
 Örneğin, `ida:AadInstance` **taskwebapp** projesinin *taskwebapp\\**Web. config**.* dosyasındaki değeri değiştirerek, örnek Web uygulamasını yeni uç noktayı kullanacak şekilde yapılandırabilirsiniz.
 
-Taskwebapp 'in *Web. config* dosyasındaki `{your-b2c-tenant-name}.b2clogin.com` `login.microsoftonline.com` `ida:AadInstance` değeri, yerine başvuru olacak şekilde değiştirin.
+TaskWebApp 'in *Web. config* dosyasındaki `ida:AadInstance` değerini, `login.microsoftonline.com`yerine `{your-b2c-tenant-name}.b2clogin.com` başvuruda bulunan şekilde değiştirin.
 
 Önce:
 
@@ -133,7 +134,7 @@ Taskwebapp 'in *Web. config* dosyasındaki `{your-b2c-tenant-name}.b2clogin.com`
 <add key="ida:AadInstance" value="https://login.microsoftonline.com/tfp/{0}/{1}" />
 ```
 
-Sonra (B2C `{your-b2c-tenant}` kiracınızın adıyla değiştirin):
+Sonra (`{your-b2c-tenant}`, B2C kiracınızın adıyla değiştirin):
 
 ```xml
 <!-- New value -->

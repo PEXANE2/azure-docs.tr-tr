@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333a3b93d872c1a99d1ec18d4941adc8986d4a03
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914564"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951131"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama nedir?
 Azure AD Connect bulut sağlama, kullanıcıların, grupların ve kişilerin Azure AD 'ye eşitlenmesi için karma kimlik hedeflerinizi karşılamak ve gerçekleştirmek üzere tasarlanan yeni bir Microsoft aracısıdır.  Azure AD Connect eşitleme ' de birlikte kullanılabilir ve aşağıdaki avantajları sağlar:
@@ -60,6 +60,7 @@ Aşağıdaki tabloda Azure AD Connect ve Azure AD Connect bulut sağlama arasın
 | Öznitelik akışları için gelişmiş özelleştirmeye izin ver |● | |
 | Geri yazma desteği (parolalar, cihazlar, gruplar) |● | |
 | Azure AD Domain Services desteği|● | |
+| Exchange karma yapılandırması |● | |
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

@@ -10,12 +10,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872698"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951454"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Hızlı başlangıç: sunucular için Azure Arc kullanarak makineleri Azure 'a bağlama-PowerShell
 
@@ -72,8 +72,11 @@ $credential.GetNetworkCredential().password
 
 Aracıyı Install ekleme betiği:
 
-* **ApplicationId** özelliği, Install aracısında kullanılan `--service-principal-id` parametresi için kullanılır
-* **Password** özelliği, install aracısındaki `--service-principal-secret` parametresi için kullanılır.
+* **ApplicationId** özelliği, aracıyı bağlamak için kullanılan `--service-principal-id` parametresi için kullanılır
+* **Password** özelliği, aracıyı bağlamak için kullanılan `--service-principal-secret` parametresi için kullanılır.
+
+> [!NOTE]
+> **Kimlik** özelliğini değil hizmet sorumlusu **ApplicationId** özelliğini kullandığınızdan emin olun. **Kimlik** çalışmayacak.
 
 ## <a name="manually-install-the-agent-and-connect-to-azure"></a>Aracıyı el ile yüklemek ve Azure 'a bağlamak
 
@@ -90,7 +93,6 @@ Aracı paketini yüklemek için hedef sunucuda kök veya yerel yönetici erişim
 > [!NOTE]
 > Genel Önizleme sırasında, Ubuntu 16,04 veya 18,04 için uygun olan yalnızca bir paket yayımlanmıştır.
 
-<!-- What about this aks? -->
 En basit seçenek, paket deposunu kaydetmek ve sonra dağıtımın paket yöneticisini kullanarak paketi yüklemektir.
 [https://aka.ms/azcmagent](https://aka.ms/azcmagent) konumunda bulunan Bash betiği aşağıdaki eylemleri gerçekleştirir:
 

@@ -1,5 +1,6 @@
 ---
-title: Talep değişimlerinin Azure Active Directory B2C doğrulama olarak REST API
+title: Talep değiş tokuşları doğrulama olarak REST API
+titleSuffix: Azure AD B2C
 description: Yeniden çalışan hizmetlerle etkileşim kuran Azure AD B2C Kullanıcı yolculuğu oluşturmaya yönelik bir yol.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8730870bfae9f704ee43594497f79942b70a6181
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644965"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949381"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Çözüm: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>İzlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,7 +31,7 @@ IEF talepler halinde veri gönderir ve verileri taleplerde geri alır. API ile e
 - , Bir düzenleme adımında gerçekleşen REST API talep değişimi veya doğrulama profili olarak tasarlanabilir.
 - Genellikle kullanıcıdan girişi doğrular. Kullanıcı değeri reddedildiyse, Kullanıcı bir hata mesajı döndürme fırsatına sahip geçerli bir değer girmeyi deneyebilir.
 
-Ayrıca, etkileşimi bir düzenleme adımı olarak tasarlayabilirler. Daha fazla bilgi için bkz [. İzlenecek yol: Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde bir düzenleme adımı](active-directory-b2c-rest-api-step-custom.md)olarak tümleştirin.
+Ayrıca, etkileşimi bir düzenleme adımı olarak tasarlayabilirler. Daha fazla bilgi için bkz. [Izlenecek yol: Azure AD B2C Kullanıcı yolculuğunda düzenleme adımı olarak REST API talep alışverişlerinde tümleştirme](active-directory-b2c-rest-api-step-custom.md).
 
 Doğrulama profili örneği için, ProfileEdit. xml ' de Başlatıcı paketi dosyasındaki Kullanıcı yolculuğunu düzenleme profilini kullanacağız.
 
@@ -41,12 +42,12 @@ Profil düzenleme içindeki kullanıcı tarafından girilen adın bir çıkarma 
 - Başlarken ' de açıklandığı gibi yerel bir hesap kaydolma/oturum açma [işlemi](active-directory-b2c-get-started-custom.md)için yapılandırılmış bir Azure AD B2C kiracısı.
 - Etkileşimde bulunmak için bir REST API uç noktası. Bu izlenecek yol için, REST API hizmetiyle [Wingtipgames](https://wingtipgamesb2c.azurewebsites.net/) adlı bir demo sitesi ayarladık.
 
-## <a name="step-1-prepare-the-rest-api-function"></a>1\. adım: REST API işlevini hazırlama
+## <a name="step-1-prepare-the-rest-api-function"></a>1\. Adım: REST API işlevini hazırlama
 
 > [!NOTE]
 > REST API işlevlerinin kurulumu Bu makalenin kapsamı dışındadır. [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-reference) , bulutta yeniden bir hizmet oluşturmak için mükemmel bir araç seti sağlar.
 
-Beklediği bir talebi alan bir Azure işlevi oluşturduk `playerTag`. İşlevi, bu talebin varolup olmadığını doğrular. [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples)'Daki tüm Azure işlev koduna erişebilirsiniz.
+`playerTag`olarak beklediği bir talebi alan bir Azure işlevi oluşturduk. İşlevi, bu talebin varolup olmadığını doğrular. [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples)'Daki tüm Azure işlev koduna erişebilirsiniz.
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -73,14 +74,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-IEF, Azure işlevinin `userMessage` döndürdüğü talebi bekliyor. Bu talep, önceki örnekte bir 409 çakışma durumu döndürüldüğünde, doğrulama başarısız olursa kullanıcıya bir dize olarak sunulur.
+IEF, Azure işlevinin döndürdüğü `userMessage` talebini bekliyor. Bu talep, önceki örnekte bir 409 çakışma durumu döndürüldüğünde, doğrulama başarısız olursa kullanıcıya bir dize olarak sunulur.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2\. adım: TrustFrameworkExtensions. xml dosyanızda teknik bir profil olarak yeniden, API talep alışverişini yapılandırma
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2\. Adım: TrustFrameworkExtensions. xml dosyanızda teknik bir profil olarak yeniden deneme API 'SI talep alışverişini yapılandırma
 
-Teknik bir profil, daha fazla hizmet ile istenen Exchange 'in tam yapılandırmadır. TrustFrameworkExtensions. xml dosyasını açın ve aşağıdaki XML kod parçacığını `<ClaimsProviders>` öğesine ekleyin.
+Teknik bir profil, daha fazla hizmet ile istenen Exchange 'in tam yapılandırmadır. TrustFrameworkExtensions. xml dosyasını açın ve aşağıdaki XML kod parçacığını `<ClaimsProviders>` öğesi içine ekleyin.
 
 > [!NOTE]
-> Aşağıdaki XML 'de, yeniden deneme sağlayıcı `Version=1.0.0.0` protokol olarak açıklanmaktadır. Bunu, dış hizmetle etkileşimde olacak bir işlev olarak düşünün. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> Aşağıdaki XML 'de, `Version=1.0.0.0` yeniden sağlayıcı, protokol olarak açıklanmaktadır. Bunu, dış hizmetle etkileşimde olacak bir işlev olarak düşünün. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -111,21 +112,21 @@ Teknik bir profil, daha fazla hizmet ile istenen Exchange 'in tam yapılandırma
 </ClaimsProvider>
 ```
 
-`InputClaims` Öğesi IEF 'ten Rest hizmetine gönderilecek talepleri tanımlar. Bu örnekte, talebin `givenName` içeriği Rest hizmetine olarak `playerTag`gönderilir. Bu örnekte, ıEF talepleri geri beklemez. Bunun yerine, REST hizmetinden bir yanıt bekler ve aldığı durum kodlarına göre hareket eder.
+`InputClaims` öğesi ıEF 'ten REST hizmetine gönderilecek talepleri tanımlar. Bu örnekte, talep `givenName` içeriği REST hizmetine `playerTag`olarak gönderilir. Bu örnekte, ıEF talepleri geri beklemez. Bunun yerine, REST hizmetinden bir yanıt bekler ve aldığı durum kodlarına göre hareket eder.
 
-Yukarıdaki `AuthenticationType` açıklamalar ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Yeniden yapılan API 'lerinizi üretime yönelik olarak güvenli hale getirme hakkında bilgi edinmek için bkz. [sertifika kimlik doğrulaması ile](active-directory-b2c-custom-rest-api-netfw-secure-cert.md) [temel kimlik doğrulama](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) ve güvenilir API 'ler ile güvenli yeniden API 'ler sağlama.
+Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtir. Yeniden yapılan API 'lerinizi üretime yönelik olarak güvenli hale getirme hakkında bilgi edinmek için bkz. [sertifika kimlik doğrulaması ile](active-directory-b2c-custom-rest-api-netfw-secure-cert.md) [temel kimlik doğrulama](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) ve güvenilir API 'ler ile güvenli yeniden API 'ler sağlama.
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3\. adım: Kullanıcı girişini doğrulamak istediğiniz, kendi kendine onaylanan hizmet talebi alışverişini kendi kendini onaylanan teknik profilinde ekleyin
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3\. Adım: Kullanıcı girişini doğrulamak istediğiniz, otomatik olarak onaylanan hizmet talebi alışverişini kendi kendine onaylanan teknik profille dahil etme
 
 Doğrulama adımının en yaygın kullanımı bir kullanıcıyla etkileşime geçerdir. Kullanıcının giriş sağlaması beklenen tüm etkileşimler *kendi kendine onaylanan teknik profillerdir*. Bu örnekte, doğrulamayı otomatik olarak onaylanan ProfileUpdate teknik profiline ekleyeceğiz. Bu, bağlı olan taraf (RP) ilke dosyasının `Profile Edit` kullandığı teknik profildir.
 
 Talep değişimini kendi kendine onaylanan teknik Profile eklemek için:
 
-1. TrustFrameworkBase. xml dosyasını açın ve için `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`arama yapın.
+1. TrustFrameworkBase. xml dosyasını açın ve `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`arayın.
 2. Bu teknik profilin yapılandırmasını gözden geçirin. Kullanıcıya ait Exchange 'in, Kullanıcı (giriş talepleri) ve kendinden onaylanan sağlayıcıdan (çıkış talepleri) geri dönmesi beklenen talepler olarak nasıl tanımlandığını gözlemleyin.
-3. İçin `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`arama yapın ve bu profilin düzenleme adımı `<UserJourney Id="ProfileEdit">`5 olarak çağrıldığından emin olun.
+3. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`arayın ve bu profilin `<UserJourney Id="ProfileEdit">`Orchestration adım 5 olarak çağrıldığından emin olun.
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4\. Adım: Profil düzenleme RP ilke dosyasını karşıya yükleme ve test etme
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4\. Adım: profil düzenleme RP ilke dosyasını karşıya yükleme ve test etme
 
 1. TrustFrameworkExtensions. xml dosyasının yeni sürümünü karşıya yükleyin.
 2. Profil düzenleme RP ilke dosyasını sınamak için **Şimdi Çalıştır** 'ı kullanın.
@@ -135,9 +136,9 @@ Talep değişimini kendi kendine onaylanan teknik Profile eklemek için:
 
 [Kullanıcılarınızın daha fazla bilgi toplamak için profil düzenleme ve Kullanıcı kaydını değiştirme](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Gidiş Düzenleme adımı olarak Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](active-directory-b2c-rest-api-step-custom.md)
+[İzlenecek yol: Azure AD B2C Kullanıcı yolculuğunda düzenleme adımı olarak REST API talep alışverişlerinde tümleştirin](active-directory-b2c-rest-api-step-custom.md)
 
-[Başvurunun Yeniden teknik profil](restful-technical-profile.md)
+[Başvuru: Restuz teknik profili](restful-technical-profile.md)
 
 API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 081327e7c70128dad764d66942f1703a889f77fd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815821"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951270"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Hızlı başlangıç: özel komut oluşturma (Önizleme)
 
@@ -28,16 +28,6 @@ Uygulama "TV 'yi aç" gibi bir söylik algılar ve "Tamam, TV 'yi açarak" daha 
 
   > [!NOTE]
   > Önizleme süresince, abonelik anahtarları için yalnızca westus2 bölgesi desteklenir.
-
-- [Language Understanding](https://www.luis.ai/home) (lusıs) yazma anahtarı:
-  1. Bir Web tarayıcısı açın ve [Azure Portal](https://portal.azure.com) gidin
-  1. Kaynak oluştur ' u seçin
-  1. Arayın ve [Language Understanding](https://aka.ms/sc-luis-all) seçin
-  1. Oluşturma seçeneklerinde yazma seçin
-  1. Kaynak dağıtıldıktan sonra kaynağa gidin ve anahtarı hızlı başlangıç veya anahtarlar bölümünden kopyalayın
-
-      > [!div class="mx-imgBorder"]
-      > ![yazma kaynağı oluşturma](media/custom-speech-commands/resources-lu-authoring.png)
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Özel komutlar için konuşma Studio 'ya gidin
 
@@ -58,11 +48,21 @@ Varsayılan görünüm, oluşturduğunuz özel komutlar uygulamalarının bir li
 1. Yeni proje oluşturmak için **Yeni proje** ' yi seçin
 
    > [!div class="mx-imgBorder"]
-   > Yeni proje oluşturmak ![](media/custom-speech-commands/create-new-project.png)
+   > ![proje oluşturun](media/custom-speech-commands/create-new-project.png)
 
-1. Proje adını ve dilini girip devam etmek için **İleri** 'yi seçin
-1. LUSıS yazma anahtarınızı girin
-1. Oluşturulduktan sonra projenizi seçin
+1. Proje adını ve dilini girin.
+1. Bir yazma kaynağı seçin. Geçerli bir yazma kaynağı yoksa, **Yeni kaynak oluştur**' u seçerek bir tane oluşturun.
+
+   > [!div class="mx-imgBorder"]
+   > ![Kaynak oluşturma](media/custom-speech-commands/create-new-resource.png)
+
+   1. Kaynak adı, Grup, konum ve fiyatlandırma katmanını girin.
+
+         > [!NOTE]
+         > "Kaynak grubu" alanına istenen kaynak grubu adını girerek kaynak grupları oluşturabilirsiniz. Kaynak grubu, **Oluştur** seçildiğinde oluşturulur.
+
+1. Projenizi oluşturmak için **Oluştur** ' a tıklayın.
+1. Oluşturulduktan sonra projenizi seçin.
 
 Artık görünümlerinizin özel komutlar uygulamanıza genel bir bakış olması gerekir.
 
@@ -99,25 +99,41 @@ turn on the tv
 
 Şimdi bir eylemin gerçekleştiğini belirten kullanıcıya yanıt vermek için bir tamamlama kuralı ekleyin.
 
+1. Tamamlama kuralları ' nın yanındaki `+` simgesini seçerek yeni bir tamamlama kuralı oluşturun
+1. Kural adını girin
+1. Eylem ekleme
+   1. Eylemler ' in yanındaki `+` simgesini seçerek yeni bir konuşma yanıtı eylemi oluşturun ve `SpeechResponse` ' ı seçin.
+   1. Yanıtı girin
+
+   > [!NOTE]
+   > Normal metin bir tire ile başlamalıdır. Daha fazla ayrıntı için [buraya](https://aka.ms/sc-lg-format) gidin
+
+   > [!div class="mx-imgBorder"]
+   > Konuşma yanıtı oluşturma ![](media/custom-speech-commands/create-speech-response-action.png)
+
+1. Kuralı kaydetmek için **Kaydet** ' e tıklayın
+
 > [!div class="mx-imgBorder"]
 > ![tamamlama kuralı oluşturma](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | Ayar    | Önerilen değer                        | Açıklama                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Kural Adı  | "ConfirmationResponse"                 | Kuralın amacını açıklayan bir ad          |
 | Koşullar | Hiçbiri                                   | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
-| Eylemler    | SpeechResponse "Tamam, TV 'yi açma" | Kural koşulu true olduğunda gerçekleştirilecek eylem |
+| Eylemler    | SpeechResponse "-Tamam, TV 'yi açma" | Kural koşulu true olduğunda gerçekleştirilecek eylem |
 
 ## <a name="try-it-out"></a>Deneyin
 
 Test sohbeti panelini kullanarak davranışı test edin.
 
 > [!div class="mx-imgBorder"]
-> Webchat ile test ![](media/custom-speech-commands/create-basic-test-chat.png)
+> Web sohbeti ile test ![](media/custom-speech-commands/create-basic-test-chat.png)
 
 - Şunu yazın: "TV 'yi açma"
 - Beklenen yanıt: "Tamam, TV 'yi açma"
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 > [!div class="nextstepaction"]
 > [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)

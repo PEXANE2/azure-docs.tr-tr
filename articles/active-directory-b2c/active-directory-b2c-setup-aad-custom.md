@@ -1,5 +1,6 @@
 ---
-title: Özel ilkeler kullanarak Azure Active Directory B2C Azure Active Directory hesapla oturum açma ayarlama
+title: Özel ilkeler kullanarak bir Azure AD hesabı ile oturum açma ayarlama
+titleSuffix: Azure AD B2C
 description: Özel ilkeler kullanarak Azure Active Directory B2C Azure Active Directory hesapla oturum açma ayarlayın.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a221d55d942e6140c12f2ebfb64428b8ec7be74b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2babd21ab477fae8c0d139932e08b8d99b9170ae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643566"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947796"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Azure Active Directory hesabı ile oturum açmayı ayarlama
 
@@ -23,7 +24,7 @@ ms.locfileid: "73643566"
 
 Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](active-directory-b2c-overview-custom.md) kullanarak bir Azure Active Directory (Azure AD) kuruluştan kullanıcıların oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın.
 
@@ -31,7 +32,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](active
 
 Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleştirmek için, uygulamayı kurumsal Azure AD kiracısında kaydetmeniz gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Kuruluşunuzun Azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından Azure AD kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -58,7 +59,7 @@ Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız g
 1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
 1. **Seçenekler**için `Manual`seçin.
-1. İlke anahtarı için bir **ad** girin. Örneğin, `ContosoAppSecret`.  Ön ek `B2C_1A_`, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_ContosoAppSecret*' dir.
+1. İlke anahtarı için bir **ad** girin. Örneğin, `ContosoAppSecret`.  Ön ek `B2C_1A_`, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_ContosoAppSecret*.
 1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 1. **Anahtar kullanımı**için `Signature`' yi seçin.
 1. **Oluştur**'u seçin.
@@ -130,7 +131,7 @@ Azure AD uç noktasından bir belirteç almak için Azure AD B2C Azure AD ile il
 1. Azure AD, OpenID Connect protokolünü kullanır, bu nedenle **protokol** değerinin `OpenIdConnect`olduğundan emin olun.
 1. **Meta verilerin** değerini, `your-AD-tenant-name` Azure AD kiracı adınızın `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`olarak ayarlayın. Örneğin, `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 1. Tarayıcınızı açın ve yeni güncelleştirdiğiniz **meta veri** URL 'sine gidin, **veren** nesnesini arayın ve ardından değeri kopyalayıp XML dosyasındaki **ProviderName** değerine yapıştırın.
-1. Uygulama kaydından **client_id** ÖĞESINI uygulama kimliği olarak ayarlayın.
+1. Uygulama kaydından uygulama KIMLIĞINE **client_id** ayarlayın.
 1. **Cryptographickeys**altında, **Storagereferenceıd** değerini daha önce oluşturduğunuz ilke anahtarının adı olarak güncelleştirin. Örneğin, `B2C_1A_ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Uzantı dosyasını doğrulama için karşıya yükle

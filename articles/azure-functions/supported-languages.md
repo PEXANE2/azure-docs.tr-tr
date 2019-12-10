@@ -2,13 +2,13 @@
 title: Azure Işlevlerinde desteklenen diller
 description: Hangi dillerin desteklendiğini (GA) ve hangilerinin önizlemede olduğunu öğrenin.
 ms.topic: conceptual
-ms.date: 08/02/2018
-ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230276"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942265"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Işlevlerinde desteklenen diller
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan deste
 
 ## <a name="languages-by-runtime-version"></a>Çalışma zamanı sürümüne göre diller 
 
-[Azure işlevleri çalışma zamanının iki sürümü](functions-versions.md) kullanılabilir. Aşağıdaki tabloda, her çalışma zamanı sürümünde hangi dillerin desteklendiği gösterilmektedir.
+[Azure işlevleri çalışma zamanının üç sürümü](functions-versions.md) kullanılabilir. Aşağıdaki tabloda, her çalışma zamanı sürümünde hangi dillerin desteklendiği gösterilmektedir.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan deste
 
 Sizin için herhangi bir resmi destek bulunmadığından, sizin kullandığınız her şey için deneysel özellikleri kullanmayın. Deneysel dillerle ilgili sorunlar için destek durumları açılmamalıdır. 
 
-Sürüm 2. x çalışma zamanı deneysel dilleri desteklemez. Yeni diller için destek yalnızca dilin üretimde desteklenme sırasında eklenir. 
+Sonraki çalışma zamanı sürümleri deneysel dilleri desteklemez. Yeni diller için destek yalnızca dilin üretimde desteklenme sırasında eklenir. 
 
 ### <a name="language-extensibility"></a>Dil genişletilebilirliği
 

@@ -1,5 +1,6 @@
 ---
-title: Öğretici-uygulamalarınıza kimlik sağlayıcıları ekleme-Azure Active Directory B2C
+title: 'Öğretici: uygulamalarınıza kimlik sağlayıcıları ekleme'
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C Azure portal kullanarak uygulamalarınıza kimlik sağlayıcıları eklemeyi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063245"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950961"
 ---
-# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' deki uygulamalarınıza kimlik sağlayıcıları ekleyin
+# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' de uygulamalarınıza kimlik sağlayıcıları ekleme
 
 Uygulamalarınızda, kullanıcıların farklı kimlik sağlayıcılarıyla oturum açmasını sağlamak isteyebilirsiniz. Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken kimlik bilgilerini oluşturur, korur ve yönetir. Azure portal kullanarak [Kullanıcı akışlarınıza](active-directory-b2c-reference-policies.md) Azure Active Directory B2C (Azure AD B2C) tarafından desteklenen kimlik sağlayıcıları ekleyebilirsiniz.
 
@@ -44,48 +45,48 @@ Kimlik sağlayıcısı uygulamaları, Azure AD B2C kiracınızla iletişimi etki
 
 Azure AD 'den kullanıcıların oturum açma özelliğini etkinleştirmek için Azure AD kiracısı içinde bir uygulamayı kaydetmeniz gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
-1. Uygulamanız için bir ad girin. Örneğin: `Azure AD B2C App`.
+1. Uygulamanız için bir ad girin. Örneğin, `Azure AD B2C App`.
 1. Bu **kuruluş dizinindeki hesapların seçimini yalnızca** bu uygulama için kabul edin.
-1. **Yeniden yönlendirme URI 'si**için, **Web** değerini kabul edin ve Azure AD B2C kiracınızın adıyla değiştirerek `your-B2C-tenant-name` aşağıdaki URL 'yi tüm küçük harflerle girin.
+1. **Yeniden yönlendirme URI 'si**Için, **Web** değerini kabul edin ve aşağıdaki URL 'yi tüm küçük harflerde girin ve `your-B2C-tenant-name` Azure AD B2C kiracınızın adıyla değiştirin.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Örneğin: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+    Örneğin, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
     Tüm URL 'Ler artık [b2clogin.com](b2clogin.md)kullanıyor olmalıdır.
 
 1. **Kaydet**' i seçin ve ardından sonraki adımda kullandığınız **uygulama (istemci) kimliğini** kaydedin.
 1. Uygulama menüsünde **Yönet** ' ın altında **Sertifikalar & gizlilikler**' ı seçin ve ardından **yeni istemci parolası**' nı seçin.
-1. İstemci parolası için bir **Açıklama** girin. Örneğin: `Azure AD B2C App Secret`.
+1. İstemci parolası için bir **Açıklama** girin. Örneğin, `Azure AD B2C App Secret`.
 1. Süre sonu dönemini seçin. Bu uygulama için, **1 yıl içinde**seçimini kabul edin.
 1. **Ekle**' yi seçin ve ardından sonraki bir adımda kullandığınız yeni istemci parolasının değerini kaydedin.
 
 ### <a name="create-a-facebook-application"></a>Facebook uygulaması oluşturma
 
-Bir Facebook hesabını Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için Facebook 'ta bir uygulama oluşturmanız gerekir. Henüz bir Facebook hesabınız yoksa, bu [https://www.facebook.com/](https://www.facebook.com/)hesabı edinebilirsiniz.
+Bir Facebook hesabını Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için Facebook 'ta bir uygulama oluşturmanız gerekir. Henüz bir Facebook hesabınız yoksa [https://www.facebook.com/](https://www.facebook.com/)adresinden edinebilirsiniz.
 
 1. Facebook hesabı kimlik bilgilerinizle [geliştiriciler Için Facebook](https://developers.facebook.com/) 'ta oturum açın.
 1. Daha önce yapmadıysanız, Facebook geliştiricisi olarak kaydolmanız gerekir. Bunu yapmak için sayfanın sağ üst **köşesinden başlayın ' ı seçin,** Facebook ilkelerini kabul edin ve kayıt adımlarını uygulayın.
 1. **Uygulamalarım** ' ı ve ardından **uygulama oluştur**' u seçin.
 1. Bir **görünen ad** ve geçerli bir **Iletişim e-postası**girin.
 1. **Uygulama kimliği oluştur**' a tıklayın. Bu, Facebook platformu ilkelerini kabul etmenizi ve çevrimiçi bir güvenlik denetimi tamamlamanızı gerektirebilir.
-1. **Ayarlar** > **temel**öğesini seçin.
-1. Örneğin`Business and Pages`, bir **Kategori**seçin. Bu değer Facebook için gereklidir, ancak Azure AD B2C tarafından kullanılmaz.
+1. **Temel** > **Ayarlar** ' ı seçin.
+1. Bir **Kategori**seçin, örneğin `Business and Pages`. Bu değer Facebook için gereklidir, ancak Azure AD B2C tarafından kullanılmaz.
 1. Sayfanın alt kısmındaki **Platform Ekle**' yi ve ardından **Web sitesi**' ni seçin.
-1. **Site URL 'si**' nde `https://your-tenant-name.b2clogin.com/` , `your-tenant-name` kiracınızın adıyla değiştirin yazın.
+1. **Site URL 'si**' nde `your-tenant-name`, kiracınızın adıyla değiştirme `https://your-tenant-name.b2clogin.com/` girin.
 1. **Gizlilik ILKESI URL**'si IÇIN bir URL girin, örneğin `http://www.contoso.com/`. Gizlilik ilkesi URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.
 1. **Değişiklikleri Kaydet**' i seçin.
 1. Sayfanın üst kısmında, **uygulama kimliği**değerini kaydedin.
 1. **Uygulama gizli**dizisi ' nin yanında **göster** ' i seçin ve değerini kaydedin. Facebook 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için hem uygulama KIMLIĞI hem de uygulama gizli anahtarını kullanın. **Uygulama gizli anahtarı** , güvenli bir şekilde depolamanız gereken önemli bir güvenlik kimlik bilgileridir.
 1. **Ürünlerin**yanındaki artı işaretini ve ardından **Facebook oturumu**' nın altında **Ayarla**' yı seçin.
 1. Sol taraftaki menüde **Facebook oturumu** ' nın altında **Ayarlar**' ı seçin.
-1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`girin. Kiracınızın adıyla değiştirin `your-tenant-name` . Sayfanın alt kısmındaki **Değişiklikleri Kaydet** ' i seçin.
+1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`girin. `your-tenant-name`, kiracınızın adıyla değiştirin. Sayfanın alt kısmındaki **Değişiklikleri Kaydet** ' i seçin.
 1. Facebook uygulamanızı Azure AD B2C için kullanılabilir hale **getirmek için sayfanın** sağ üst kısmındaki **durum** seçicisine tıklayın ve uygulamayı ortak hale getirmek Için açın ve ardından **Onayla**' ya tıklayın. Bu noktada durum, **geliştirme aşamasında** **canlı**olarak değiştirilmelidir.
 
 ## <a name="add-the-identity-providers"></a>Kimlik sağlayıcılarını ekleme
@@ -98,13 +99,13 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
 1. Bir **ad**girin. Örneğin, *contoso Azure AD*yazın.
-1. **Meta veri URL 'si**için, Azure AD kiracınızın etki alanı adıyla `your-AD-tenant-domain` birlikte aşağıdaki URL 'yi girin:
+1. **Meta veri URL 'si**Için `your-AD-tenant-domain` Azure AD kiracınızın etki alanı adıyla değiştirerek aşağıdaki URL 'yi girin:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-    Örneğin: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
+    Örneğin, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
 1. **ISTEMCI kimliği**için, daha önce KAYDETTIĞINIZ uygulama kimliğini girin.
 1. **İstemci parolası**için, daha önce kaydettiğiniz istemci gizli anahtarını girin.
@@ -130,20 +131,20 @@ Eklemek istediğiniz kimlik sağlayıcısı için uygulamayı oluşturduktan son
 
 ## <a name="update-the-user-flow"></a>Kullanıcı akışını güncelleştirme
 
-Önkoşulların bir parçası olarak tamamladığınız öğreticide, kaydolma ve oturum açma için *B2C_1_signupsignin1*adlı bir Kullanıcı akışı oluşturdunuz. Bu bölümde, kimlik sağlayıcılarını *B2C_1_signupsignin1* Kullanıcı akışına eklersiniz.
+Önkoşulların bir parçası olarak tamamladığınız öğreticide, kayıt ve oturum açma için *B2C_1_signupsignin1*adlı bir Kullanıcı akışı oluşturdunuz. Bu bölümde, kimlik sağlayıcılarını *B2C_1_signupsignin1* Kullanıcı akışına eklersiniz.
 
-1. **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışını seçin.
+1. **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
 2. **Kimlik sağlayıcıları**' nı seçin, eklediğiniz **Facebook** ve **contoso Azure AD** kimlik sağlayıcılarını seçin.
 3. **Kaydet**’i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
 1. Oluşturduğunuz Kullanıcı akışının genel bakış sayfasında, **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama**için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi `https://jwt.ms`gerekir.
+1. **Uygulama**için, daha önce kaydettiğiniz *WebApp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** `https://jwt.ms`göstermelidir.
 1. **Kullanıcı akışını Çalıştır**' ı seçin ve daha önce eklemiş olduğunuz bir kimlik sağlayıcısıyla oturum açın.
 1. Eklediğiniz diğer kimlik sağlayıcıları için 1 ile 3 arasındaki adımları yineleyin.
 
-Oturum açma işlemi başarılı olursa, şu şekilde kodu çözülen belirteci görüntüleyen `https://jwt.ms` öğesine yönlendirilirsiniz:
+Oturum açma işlemi başarılı olursa, kodu çözülen belirteci görüntüleyen ve şuna benzeyen `https://jwt.ms` yönlendirilirsiniz:
 
 ```json
 {

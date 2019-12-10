@@ -1,5 +1,6 @@
 ---
-title: Uygulamanıza Kullanıcı akışı aracılığıyla erişim belirteci geçirme-Azure Active Directory B2C
+title: Uygulamanıza Kullanıcı akışı aracılığıyla erişim belirteci geçirme
+titleSuffix: Azure AD B2C
 description: OAuth 2,0 kimlik sağlayıcıları için bir erişim belirtecini Azure Active Directory B2C bir Kullanıcı akışında talep olarak nasıl geçitireceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064292"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948820"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C uygulamasında uygulamanıza bir Kullanıcı akışı aracılığıyla erişim belirteci geçirin
 
@@ -43,10 +44,10 @@ Azure AD B2C Şu anda yalnızca [Facebook](active-directory-b2c-setup-fb-app.md)
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-Uygulamalarınızın Azure AD B2C test edilirken, içindeki talepleri gözden geçirmek `https://jwt.ms` için Azure AD B2C belirtecinin döndürüldüğünden yararlı olabilir.
+Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirmek için Azure AD B2C belirtecinin `https://jwt.ms` döndürüldüğünden yararlı olabilir.
 
 1. Kullanıcı akışının genel bakış sayfasında, **Kullanıcı akışını Çalıştır**' ı seçin.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'si** `https://jwt.ms`göstermelidir.
 3. **Kullanıcı akışını Çalıştır**' a tıklayın ve ardından hesap kimlik bilgilerinizle oturum açın. **İdp_access_token** talebinde kimlik sağlayıcısının erişim belirtecini görmeniz gerekir.
 
     Aşağıdaki örneğe benzer bir şey görmeniz gerekir:

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850338"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951420"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
@@ -305,6 +305,15 @@ Azure portal durum yapılandırması kayıt Protokolü için gereken bilgileri, 
 
 Ek güvenlik için, bir Otomasyon hesabının birincil ve ikincil erişim anahtarları, önceki anahtarları kullanarak gelecekteki düğüm kayıtlarını engellemek için herhangi bir zamanda ( **anahtarları Yönet** sayfasında) yeniden oluşturulabilir.
 
+## <a name="certificate-expiration-and-re-registration"></a>Sertifika süre sonu ve yeniden kayıt
+
+Bir makineyi Azure Otomasyonu durum yapılandırması 'nda DSC düğümü olarak kaydettikten sonra, bu düğümü gelecekte yeniden kaydetmeniz gerekebilecek bazı nedenler vardır:
+
+- Windows Server 2019 ' den önceki Windows Server sürümleri için her düğüm, bir yıldan sonra süresi dolan kimlik doğrulaması için otomatik olarak benzersiz bir sertifika sağlar. Şu anda PowerShell DSC kayıt Protokolü, süresi dolmak üzere olan sertifikaları otomatik olarak yenileyemez. bu nedenle, bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Yeniden kaydolmadan önce, her bir düğümün Windows Management Framework 5,0 RTM çalıştırdığından emin olun. Bir düğümün kimlik doğrulama sertifikasının süresi dolarsa ve düğüm yeniden kaydedilmemişse, düğüm Azure Otomasyonu ile iletişim kuramaz ve ' yanıt vermez ' olarak işaretlenir. yeniden kayıt, sertifika sona erme zamanından 90 gün veya daha az bir süre önce veya sertifika sona erme zamanından sonra herhangi bir noktada, oluşturulup kullanılmakta olan yeni bir sertifika oluşmasına neden olur.  Windows Server 2019 ve üzeri sürümlerde bu soruna yönelik bir çözüm bulunur.
+- Bir [POWERSHELL DSC yerel Configuration Manager değerini](/powershell/scripting/dsc/managing-nodes/metaConfig4) , düğümün ilk kaydı sırasında ayarlanan configurationmode gibi değiştirmek için. Şu anda, bu DSC Aracısı değerleri yalnızca yeniden kayıt yoluyla değiştirilebilir. Tek istisna, düğüme atanan düğüm yapılandırmadır; bu, Azure Automation DSC doğrudan değiştirilebilir.
+
+yeniden kayıt, bu belgede açıklanan ekleme yöntemlerinden herhangi birini kullanarak ilk olarak düğümü kaydettiğiniz şekilde gerçekleştirilebilir. Yeniden kaydetmeden önce Azure Otomasyonu durum yapılandırmasından bir düğüm kaydetmeniz gerekmez.
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure sanal makinesi ekleme sorunlarını giderme
 
 Azure Otomasyonu durum yapılandırması, Azure Windows VM 'lerini yapılandırma yönetimi için kolayca eklemenizi sağlar. Azure VM 'nin Istenen durum yapılandırma uzantısı, Azure Otomasyonu durum yapılandırması ile VM 'yi kaydetmek için kullanılır. Azure VM Istenen durum yapılandırma uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek ve yürütme sorunlarını gidermek önemli olabilir.
@@ -314,14 +323,7 @@ Azure Otomasyonu durum yapılandırması, Azure Windows VM 'lerini yapılandırm
 
 Azure VM Istenen durum yapılandırma uzantısının durumunu sorun gidermek veya görüntülemek için Azure portal VM 'nin eklendi olduğu sanal makineye gidin ve **Ayarlar**altında **Uzantılar** ' a tıklayın. Ardından işletim sisteminize bağlı olarak **DSC** veya **dscforlinux** ' a tıklayın. Daha fazla ayrıntı için **ayrıntılı durumu görüntüle**' ye tıklayabilirsiniz.
 
-## <a name="certificate-expiration-and-reregistration"></a>Sertifika süre sonu ve yapılabilir
-
-Bir makineyi Azure Otomasyonu durum yapılandırması 'nda DSC düğümü olarak kaydettikten sonra, bu düğümü ileride yeniden kaydetmeniz gerekebilecek bazı nedenler vardır:
-
-- Windows Server 2019 ' den önceki Windows Server sürümleri için her düğüm, bir yıldan sonra süresi dolan kimlik doğrulaması için otomatik olarak benzersiz bir sertifika sağlar. Şu anda PowerShell DSC kayıt Protokolü, süresi dolmak üzere olan sertifikaları otomatik olarak yenileyemez. bu nedenle, bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Reregistering önce, her bir düğümün Windows Management Framework 5,0 RTM çalıştırdığından emin olun. Bir düğümün kimlik doğrulama sertifikasının süresi dolarsa ve düğüm yeniden kaydettirilmediyse, düğüm Azure Otomasyonu ile iletişim kuramaz ve ' yanıt vermez ' olarak işaretlenir. Yapılabilir, sertifika sona erme zamanından 90 gün veya daha az bir süre sonra veya sertifika sona erme zamanından sonra herhangi bir noktada gerçekleştirilen yeni bir sertifika oluşturulmasını ve kullanılmasını neden olur.  Windows Server 2019 ve üzeri sürümlerde bu soruna yönelik bir çözüm bulunur.
-- Bir [POWERSHELL DSC yerel Configuration Manager değerini](/powershell/scripting/dsc/managing-nodes/metaConfig4) , düğümün ilk kaydı sırasında ayarlanan configurationmode gibi değiştirmek için. Şu anda, bu DSC Aracısı değerleri yalnızca yapılabilir üzerinden değiştirilebilir. Tek istisna, düğüme atanan düğüm yapılandırmadır; bu, Azure Automation DSC doğrudan değiştirilebilir.
-
-Yapılabilir, bu belgede açıklanan ekleme yöntemlerinden herhangi birini kullanarak ilk olarak düğümü kaydettiğiniz şekilde gerçekleştirilebilir. Reregistering önce Azure Automation durum yapılandırmasından bir düğümün kaydını kaldırmanız gerekmez.
+Sorun giderme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu Istenen durum yapılandırması (DSC) ile ilgili sorunları giderme](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

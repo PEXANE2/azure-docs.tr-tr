@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C | kimlik deneyimi çerçevesi şemasına yönelik dize talep dönüştürme örnekleri | Microsoft Docs
-description: Azure Active Directory B2C Identity Experience Framework şeması için dize talep dönüştürme örnekleri.
+title: Özel ilkeler için dize talep dönüştürme örnekleri
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için dize talep dönüştürme örnekleri.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: cb3b10ca67ab283b999e4fff8e3bb79ae3b59745
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936802"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950825"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -237,9 +238,9 @@ Rastgele sayı oluşturucuyu kullanarak rastgele bir dize oluşturur. Rastgele s
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | Rasgelegeneratortype | string | Oluşturulacak rastgele değeri, `GUID` (genel benzersiz KIMLIK) veya `INTEGER` (bir sayı) belirtir. |
 | InputParameter | stringFormat | string | Seçim Rastgele değeri biçimlendirin. |
-| InputParameter | biçiminde | boole | Seçim Rastgele değeri Base64 olarak dönüştürür. Dize biçimi uygulanmışsa dize biçiminden sonraki değer Base64 olarak kodlanır. |
+| InputParameter | base64 | boole | Seçim Rastgele değeri Base64 olarak dönüştürür. Dize biçimi uygulanmışsa dize biçiminden sonraki değer Base64 olarak kodlanır. |
 | InputParameter | maximumNumber | int | Seçim Yalnızca `INTEGER` Rasgelegeneratortype. En yüksek sayıyı belirtin. |
-| InputParameter | Çekirdek  | int | Seçim Yalnızca `INTEGER` Rasgelegeneratortype. Rastgele değer için çekirdek belirtin. Note: aynı çekirdek aynı rastgele sayı dizisini verir. |
+| InputParameter | çekirdek  | int | Seçim Yalnızca `INTEGER` Rasgelegeneratortype. Rastgele değer için çekirdek belirtin. Note: aynı çekirdek aynı rastgele sayı dizisini verir. |
 | outputClaim | outputClaim | string | Bu talep dönüşümünde oluşturulacak ClaimTypes. Rastgele değer. |
 
 Aşağıdaki örnek, genel benzersiz bir KIMLIK üretir. Bu talep dönüştürmesi, rastgele UPN (Kullanıcı asıl adı) oluşturmak için kullanılır.
@@ -476,7 +477,7 @@ Bir e-posta adresinin etki alanı kısmını alır.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | emailAddress | string | E-posta adresini içeren ClaimType. |
-| outputClaim | alanını | string | Bu talep dönüştürme işleminden sonra üretilen ClaimType, etki alanı. |
+| outputClaim | domain | string | Bu talep dönüştürme işleminden sonra üretilen ClaimType, etki alanı. |
 
 Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu talep dönüşümünü kullanın. Bu, denetim verilerinden kişisel olarak tanımlanabilen bilgilerin (PII) kaldırılması için yararlı olabilir. Aşağıdaki talep dönüşümünde, bir **e-posta** talebinde etki alanı adının nasıl ayrıştırılacağını gösterilmektedir.
 

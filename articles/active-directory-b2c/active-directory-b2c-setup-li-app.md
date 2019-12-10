@@ -1,5 +1,6 @@
 ---
-title: LinkedIn hesabı ile kaydolma ve oturum açma bilgilerini ayarlama-Azure Active Directory B2C
+title: LinkedIn hesabı ile kaydolma ve oturum açma ayarlama
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanarak uygulamalarınızda LinkedIn hesapları olan kaydolma ve oturum açma bilgilerini sağlayın.
 services: active-directory-b2c
 author: mmacy
@@ -10,25 +11,25 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be347fe33e03b4c2a7ecc1015a407c5a58062326
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fc6537b56b26d6becfe0851a09d3bfe0f13050ab
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065143"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947728"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir LinkedIn hesabı ile kaydolma ve oturum açma ayarlama
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir LinkedIn hesabını [kimlik sağlayıcısı](active-directory-b2c-reference-oauth-code.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir LinkedIn hesabınız yoksa, ' de kaydolabilirsiniz [https://www.linkedin.com/](https://www.linkedin.com/).
+Azure Active Directory B2C (Azure AD B2C) ' de bir LinkedIn hesabını [kimlik sağlayıcısı](active-directory-b2c-reference-oauth-code.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir LinkedIn hesabınız yoksa, [https://www.linkedin.com/](https://www.linkedin.com/)' de kaydolabilirsiniz.
 
 1. LinkedIn hesabı kimlik bilgilerinizle [LinkedIn geliştiricileri Web sitesinde](https://www.developer.linkedin.com/) oturum açın.
 1. **Uygulamalarım**' ı seçin ve ardından **uygulama oluştur**' a tıklayın.
 1. **Şirket adı**, **uygulama adı**, **uygulama açıklaması**, **uygulama logosu**, **uygulama kullanımı**, **Web sitesi URL 'si**, **iş e-postası**ve **iş telefonu**girin.
 1. **LINKEDıN API kullanım koşullarını** kabul edin ve **Gönder**' e tıklayın.
 1. Değerlerini kopyalamayı **istemci kimliği** ve **gizli**. Bunları, **kimlik doğrulama anahtarları**altında bulabilirsiniz. Bunları kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
-1. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **Yetkili yeniden yönlendirme URL 'leri**girin. Kiracınızın adıyla değiştirin `your-tenant-name` . Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir. **Ekle**' yi ve ardından **Güncelleştir**' i seçin.
+1. **Yetkili yeniden yönlendirme URL 'lerine**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` girin. `your-tenant-name`, kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir. **Ekle**' yi ve ardından **Güncelleştir**' i seçin.
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Bir LinkedIn hesabını kimlik sağlayıcısı olarak yapılandırma
 

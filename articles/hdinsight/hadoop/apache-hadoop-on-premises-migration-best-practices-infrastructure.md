@@ -2,18 +2,18 @@
 title: "Altyapı: şirket içi Apache Hadoop Azure HDInsight 'a"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmek için en iyi altyapı uygulamalarını öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499227"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951522"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
 
@@ -23,10 +23,17 @@ Bu makale, Azure HDInsight kümelerinin altyapısını yönetmeye yönelik öner
 
 HDInsight kümesi kapasite planlaması için yapılacak temel seçimler şunlardır:
 
-- **Bölgeyi seçin** -Azure bölgesi, kümenin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerle aynı bölgede olması gerekir.
-- **Depolama konumu ve boyutunu seçin** -varsayılan depolama, kümeyle aynı bölgede olmalıdır. 48 düğümlü bir küme için 4 ile 8 arasında depolama hesabı olması önerilir. Toplam depolama alanı zaten yeterli olabilir, ancak her depolama hesabı işlem düğümleri için ek ağ bant genişliği sağlar. Birden çok depolama hesabı olduğunda, ön ek olmadan her depolama hesabı için rastgele bir ad kullanın. Rastgele adlandırma amacı, tüm hesaplarda depolama performans sorunlarını (azaltma) veya genel modlu hataların olasılığını azaltmaktadır. Daha iyi performans için, depolama hesabı başına yalnızca bir kapsayıcı kullanın.
-- **VM boyutunu ve türünü seçin (artık G-serisini destekler)** -her küme türünün bir düğüm türleri kümesi vardır ve her düğüm türü, sanal makine boyutu ve türleri için özel seçeneklere sahiptir. VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından belirlenir. Sanal bir iş yükü, her düğüm türü için en iyi VM boyutunu ve türünü tespit etmek üzere kullanılabilir.
-- **Çalışan düğümü sayısını seçin** -sanal iş yükleri kullanılarak ilk çalışan düğüm sayısı belirlenebilir. Küme, en yüksek yük taleplerini karşılamak için daha fazla çalışan düğümü eklenerek daha sonra ölçeklendirilebilir. Daha sonra ek çalışan düğümleri gerekli olmadığında küme daha sonra yeniden ölçeklendirilebilir.
+**Bölge**  
+Azure bölgesi, kümenin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerle aynı bölgede olması gerekir.
+
+**Depolama konumu ve boyutu**  
+Varsayılan depolama, kümeyle aynı bölgede olmalıdır. 48 düğümlü bir küme için 4 ile 8 arasında depolama hesabı olması önerilir. Toplam depolama alanı zaten yeterli olabilir, ancak her depolama hesabı işlem düğümleri için ek ağ bant genişliği sağlar. Birden çok depolama hesabı olduğunda, ön ek olmadan her depolama hesabı için rastgele bir ad kullanın. Rastgele adlandırma amacı, tüm hesaplarda depolama performans sorunlarını (azaltma) veya genel modlu hataların olasılığını azaltmaktadır. Daha iyi performans için, depolama hesabı başına yalnızca bir kapsayıcı kullanın.
+
+**VM boyutu ve türü (şimdi G serisi destekleniyor)**  
+Her küme türü bir dizi düğüm türüne sahiptir ve her düğüm türü, VM boyutu ve türü için özel seçeneklere sahiptir. VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından belirlenir. Sanal bir iş yükü, her düğüm türü için en iyi VM boyutunu ve türünü tespit etmek üzere kullanılabilir.
+
+**Çalışan düğümlerinin sayısı**  
+Çalışan düğümlerinin ilk sayısı, sanal iş yükleri kullanılarak belirlenebilir. Küme, en yüksek yük taleplerini karşılamak için daha fazla çalışan düğümü eklenerek daha sonra ölçeklendirilebilir. Daha sonra ek çalışan düğümleri gerekli olmadığında küme daha sonra yeniden ölçeklendirilebilir.
 
 Daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](../hdinsight-capacity-planning.md).
 
@@ -42,7 +49,7 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 
 Şirket içi kümelerde bulunan ancak HDInsight kümelerinin bir parçası olmayan uygulamalar veya bileşenler, bir kenar düğümüne veya HDInsight kümesiyle aynı VNet 'teki bir sanal makineye eklenebilir. Azure HDInsight üzerinde kullanılamayan bir üçüncü taraf Hadoop uygulaması, HDInsight kümesindeki "uygulamalar" seçeneği kullanılarak yüklenebilir. Özel Hadoop uygulamaları, HDInsight kümesine "betik eylemleri" kullanılarak yüklenebilir. Aşağıdaki tabloda bazı ortak uygulamalar ve bunların HDInsight tümleştirme seçenekleri listelenmektedir:
 
-|**Uygulamanızı**|**Tümleştirme**
+|**Uygulama**|**Tümleştirme**
 |---|---|
 |Airflow|IaaS veya HDInsight Edge düğümü
 |Alluxıo|IaaS  
@@ -61,7 +68,7 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|'LARıNıN|IaaS 
+|SAS|IaaS 
 |Vertica|IaaS (Azure 'da SQLDW bir alternatif)
 |Tableau|IaaS 
 |Su çizgisi|HDInsight Edge düğümü
@@ -191,6 +198,4 @@ Daha fazla bilgi için bkz. [HDInsight 'ı şirket içi ağınıza bağlama](../
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu serideki bir sonraki makaleyi okuyun:
-
-- [Azure HDInsight Hadoop geçiş için şirket içi depolama için en iyi uygulamalar](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Bu serideki bir sonraki makaleyi okuyun: [geçiş Azure HDInsight Hadoop için En Iyi depolama, şirket içi uygulamalar](apache-hadoop-on-premises-migration-best-practices-storage.md).

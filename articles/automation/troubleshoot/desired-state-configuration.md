@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849369"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951471"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) sorunlarını giderme
 
@@ -89,6 +89,68 @@ Bu hata, normalde bir güvenlik duvarının, bir proxy sunucusunun arkasında ol
 #### <a name="resolution"></a>Çözünürlük
 
 Makinenizin Azure Automation DSC için uygun uç noktalara erişimi olduğunu doğrulayın ve yeniden deneyin. Gereken bağlantı noktaları ve adreslerin listesi için bkz. [ağ planlama](../automation-dsc-overview.md#network-planning)
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>senaryo: durum raporları "yetkisiz" yanıt kodunu döndürüyor
+
+#### <a name="issue"></a>Sorun
+
+Bir düğümü durum yapılandırması (DSC) ile kaydederken aşağıdaki hata iletilerinden birini alırsınız:
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>Nedeni
+
+Bu sorun, hatalı veya geçerliliği olumsuz bir sertifika nedeniyle oluşur.  Daha fazla bilgi için bkz. [sertifika süre sonu ve yapılabilir](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
+
+### <a name="resolution"></a>Çözünürlük
+
+Hatalı DSC düğümünü yeniden kaydetmek için aşağıda listelenen adımları izleyin.
+
+İlk olarak, aşağıdaki adımları kullanarak düğümü kaydını kaldırın.
+
+1. Azure portal, **giriş** -> **otomasyon hesapları**-> {Automation hesabınız}-> **Durum Yapılandırması (DSC)** altında
+2. "Düğümler" e tıklayın ve sorun yaşayan düğüme tıklayın.
+3. Düğümün kaydını silmek için "kaydını kaldır" a tıklayın.
+
+İkinci olarak, düğümden DSC uzantısını kaldırın.
+
+1. Azure portal, **ana** -> **sanal makine** -> {başarısız olan düğüm}-> **uzantıları** altında
+2. "Microsoft. PowerShell. DSC" ye tıklayın.
+3. PowerShell DSC uzantısını kaldırmak için "Kaldır" a tıklayın.
+
+Üçüncü olarak, düğümdeki tüm hatalı veya süre dolma sertifikaları kaldırın.
+
+Yükseltilmiş bir PowerShell Isteminde başarısız olan düğümde aşağıdakileri çalıştırın:
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+Son olarak, aşağıdaki adımları kullanarak başarısız olan düğümü yeniden kaydedin.
+
+1. Azure portal, **giriş** -> **otomasyon hesapları** -> {Automation hesabınız}-> **Durum Yapılandırması (DSC)** altında
+2. "Düğümler" e tıklayın.
+3. "Ekle" düğmesine tıklayın.
+4. Hatalı düğümü seçin.
+5. "Bağlan" a tıklayın ve istediğiniz seçenekleri belirleyin.
 
 ### <a name="failed-not-found"></a>Senaryo: düğüm, "bulunamadı" hatası ile başarısız durumda
 
@@ -187,6 +249,49 @@ Bu hata genellikle, düğüme hizmette olmayan bir düğüm yapılandırma adı 
 
 * Düğümü, hizmette adıyla tam olarak eşleşen bir düğüm yapılandırma adı ile atadığınızdan emin olun.
 * Düğüm yapılandırma adını eklemeyi tercih edebilirsiniz; Bu, düğüm ekleme, ancak düğüm yapılandırması atamakla sonuçlanır
+
+### <a name="cross-subscription"></a>Senaryo: PowerShell ile bir düğümü kaydetme, "bir veya daha fazla hata oluştu" hatasını döndürüyor
+
+#### <a name="issue"></a>Sorun
+
+`Register-AzAutomationDSCNode` veya `Register-AzureRMAutomationDSCNode`kullanarak bir düğüm kaydederken, aşağıdaki hatayı alırsınız.
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>Nedeni
+
+Bu hata, Otomasyon hesabından ayrı bir abonelikte bulunan bir düğümü kaydetmeye çalıştığınızda oluşur.
+
+#### <a name="resolution"></a>Çözünürlük
+
+Çapraz abonelik düğümünü ayrı bir bulutta veya şirket içinde bulunan gibi değerlendirin.
+
+Düğümü kaydetmek için aşağıdaki adımları izleyin.
+
+* Windows- [Şirket içinde veya Azure/AWS dışındaki bir bulutta bulunan Windows-fiziksel/sanal Windows makineleri](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Linux- [Şirket içi veya Azure dışındaki bir bulutta Linux-fiziksel/sanal Linux makineleri](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
+
+### <a name="agent-has-a-problem"></a>Senaryo: hata iletisi-"sağlama başarısız oldu"
+
+#### <a name="issue"></a>Sorun
+
+Bir düğüm kaydederken şu hatayı görürsünüz:
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>Nedeni
+
+Bu ileti, düğüm ile Azure arasında bir bağlantı sorunu olduğunda oluşur.
+
+#### <a name="resolution"></a>Çözünürlük
+
+Düğümünüz özel bir sanal ağda olup olmadığını veya Azure 'a bağlanan başka sorunlar olup olmadığını belirleme.
+
+Daha fazla bilgi için bkz. [çözüm ekleme sırasında hata giderme](onboarding.md).
 
 ### <a name="failure-linux-temp-noexec"></a>Senaryo: Linux 'ta bir yapılandırma uygulama genel hata ile bir hata oluşur
 

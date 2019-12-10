@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383402"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951828"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -27,9 +27,9 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 | Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) bölüm anahtarı | 10,000 |
 | Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 10 GB |
-| En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
-| Kapsayıcı başına en fazla depolama alanı | Sınırsız |
-| Veritabanı başına en fazla depolama alanı | Sınırsız |
+| En fazla farklı (mantıksal) bölüm anahtarı sayısı | İş çalışma zamanında |
+| Kapsayıcı başına en fazla depolama alanı | İş çalışma zamanında |
+| Veritabanı başına en fazla depolama alanı | İş çalışma zamanında |
 | Hesap başına en fazla ek boyutu (ek özelliği amorti edilir) | 2 GB |
 | 1 GB başına gereken minimum ru | 10 RU/sn |
 
@@ -76,8 +76,8 @@ Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| En fazla veritabanı sayısı | Sınırsız |
-| Veritabanı başına en fazla kapsayıcı sayısı (veya hesap) | Sınırsız |
+| En fazla veritabanı sayısı | İş çalışma zamanında |
+| Veritabanı başına en fazla kapsayıcı sayısı (veya hesap) | İş çalışma zamanında |
 | En fazla bölge sayısı | Sınır yok (tüm Azure bölgeleri) |
 
 ## <a name="per-container-limits"></a>Kapsayıcı başına sınırlar
@@ -115,13 +115,14 @@ Bölüm anahtarı ve kimlik değerleri için uzunluk kısıtlamaları ve 2 MB To
 
 ## <a name="per-request-limits"></a>İstek başına sınırlar
 
-Cosmos DB kapsayıcılar, öğeler ve veritabanları gibi kaynaklara karşı [CRUD ve sorgu işlemlerini](https://docs.microsoft.com/rest/api/cosmos-db/) destekler.  
+Azure Cosmos DB kapsayıcılar, öğeler ve veritabanları gibi kaynaklara karşı [CRUD ve sorgu işlemlerini](https://docs.microsoft.com/rest/api/cosmos-db/) destekler. Aynı zamanda, bir kapsayıcıda aynı bölüm anahtarına sahip birden çok öğeye karşı [işlem toplu iş isteklerini](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) destekler.
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | Tek bir işlem için en fazla yürütme süresi (saklı yordam yürütme veya tek bir sorgu sayfası alma gibi)| 5 sn |
-| En fazla istek boyutu (saklı yordam, CRUD)| 2 MB |
+| En büyük istek boyutu (örneğin, saklı yordam, CRUD)| 2 MB |
 | En büyük yanıt boyutu (örneğin, sayfalandırılmış sorgu) | 4 MB |
+| İşlem toplu işlemindeki en fazla işlem sayısı | 100 |
 
 Sorgu gibi bir işlem, yürütme zaman aşımı veya Yanıt boyut sınırına ulaştığında, yürütmeyi sürdürmek için istemciye bir sonuç ve devamlılık belirteci döndürür. Tek bir sorgunun sayfalar/devamlılıklar arasında çalışması için pratik bir sınır yoktur.
 
@@ -174,7 +175,7 @@ Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | Deneme süresi | 30 gün (herhangi bir sayıda yenilenebilir) |
-| Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1\. |
+| Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1 |
 | Abonelik başına en fazla kapsayıcı (MongoDB API) | 3 |
 | Kapsayıcı başına en fazla aktarım hızı | 5000 |
 | Paylaşılan işleme veritabanı başına en fazla aktarım hızı | 20000 |

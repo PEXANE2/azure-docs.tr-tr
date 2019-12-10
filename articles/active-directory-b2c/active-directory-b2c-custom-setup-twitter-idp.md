@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C ' de özel ilkeler kullanarak Twitter hesabı ile oturum açmayı ayarlama | Microsoft Docs
+title: Özel ilkeler kullanarak Twitter hesabıyla oturum açma ayarlama
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C özel ilkeler kullanarak Twitter hesabıyla oturum açma ayarlayın.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ad6ac4c30572f1b475cba2f699f5842ae3c7528
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 460f16775bf8b02bbb345b609e1419311f81bd22
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826989"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948428"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak Twitter hesabı ile oturum açmayı ayarlama
 
@@ -35,8 +36,8 @@ Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir 
 1. Twitter hesabı kimlik bilgilerinizle [Twitter geliştiricileri](https://developer.twitter.com/en/apps) Web sitesinde oturum açın.
 2. **Uygulama oluştur**' u seçin.
 3. Uygulama **adı** ve **uygulama açıklaması**girin.
-4. **Web sitesi URL 'si**' nde `https://your-tenant.b2clogin.com` girin. @No__t-0 değerini kiracınızın adıyla değiştirin. Örneğin, https://contosob2c.b2clogin.com.
-5. **Geri çağırma URL 'si**için `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp` girin. @No__t-0 değerini kiracı adınızın adıyla ve `your-policy-Id` ' i ilkenizin tanımlayıcısıyla değiştirin. Örneğin, `b2c_1A_signup_signin_twitter`. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+4. **Web sitesi URL 'si**' nde `https://your-tenant.b2clogin.com`girin. `your-tenant`, kiracınızın adıyla değiştirin. Örneğin, https://contosob2c.b2clogin.com.
+5. **Geri arama URL 'si**için `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`girin. `your-tenant`, kiracı adınızın adıyla ve `your-policy-Id` ilkenizin tanımlayıcısıyla değiştirin. Örneğin, `b2c_1A_signup_signin_twitter`. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
 6. Sayfanın alt kısmındaki koşulları okuyup kabul edin ve **Oluştur**' u seçin.
 7. **Uygulama ayrıntıları** sayfasında **Düzenle > Ayrıntıları Düzenle**' yi seçin, **Twitter ile oturum açmayı etkinleştir**onay kutusunu işaretleyin ve ardından **Kaydet**' i seçin.
 8. **Anahtarlar ve belirteçler** seçin, daha sonra kullanılacak **Tüketici API anahtarını** ve **Tüketici API 'sinin gizli anahtar** değerlerini kaydedin.
@@ -50,10 +51,10 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz gizli anahtarı depolamanı
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-6. **Seçenekler**için `Manual` ' i seçin.
-7. İlke anahtarı için bir **ad** girin. Örneğin, `TwitterSecret`. @No__t-0 öneki, anahtarınızın adına otomatik olarak eklenir.
+6. **Seçenekler**için `Manual`seçin.
+7. İlke anahtarı için bir **ad** girin. Örneğin, `TwitterSecret`. `B2C_1A_` ön eki, anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-9. **Anahtar kullanımı**için `Encryption` ' i seçin.
+9. **Anahtar kullanımı**için `Encryption`' yi seçin.
 10. **Oluştur**’a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
@@ -121,7 +122,7 @@ Artık ilkenizi, Azure AD B2C Twitter hesabınızla nasıl iletişim kuracağın
 Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum açma ekranlarından hiçbirinde kullanılamaz. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından Twitter kimlik sağlayıcısı 'nı da içerecek şekilde değiştirin.
 
 1. *TrustFrameworkBase. xml* dosyasını başlangıç paketinden açın.
-2. @No__t-1 içeren **Useryolculuney** öğesinin tüm içeriğini bulup kopyalayın.
+2. `Id="SignUpOrSignIn"`içeren **Useryolculuney** öğesinin tüm içeriğini bulup kopyalayın.
 3. *TrustFrameworkExtensions. xml* ' i açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
 4. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
 5. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInTwitter`.
@@ -141,7 +142,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, bir belirteci almak için bir Twitter hesabıyla iletişim kurmak Azure AD B2C.
 
-1. Kullanıcı yolculuğunda `Order="2"` içeren bir düzenleyen **Tionstep** bulun.
+1. Kullanıcı yolculuğunda `Order="2"` içeren **Orchestrationstep** öğesini bulun.
 2. **Targetclaimsexchangeıd**IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
     ```XML
@@ -164,7 +165,7 @@ Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosy
 
 1. Çalışma dizininizde *Signuporsignın. xml* ' in bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, bunu *Signupsignıntwiur. xml*olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInTwitter`.
-3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin, `http://contoso.com/B2C_1A_signup_signin_twitter`
+3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_twitter`
 4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yenı Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin (signupsigntwitter).
 5. Değişikliklerinizi kaydedin, dosyayı karşıya yükleyin ve ardından listeden yeni ilkeyi seçin.
 6. Oluşturduğunuz Azure AD B2C uygulamasının **Uygulama Seç** alanında seçildiğinden emin olun ve **Şimdi Çalıştır**' a tıklayarak test edin.

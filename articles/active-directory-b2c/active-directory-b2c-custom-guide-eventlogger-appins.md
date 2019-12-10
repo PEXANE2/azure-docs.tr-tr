@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C Application Insights içindeki olayları kullanarak Kullanıcı davranışını izleme | Microsoft Docs
+title: Application Insights ile Kullanıcı davranışını izleme
+titleSuffix: Azure AD B2C
 description: Özel ilkeler (Önizleme) kullanarak Azure AD B2C Kullanıcı ilerlemesinden Application Insights olay günlüklerini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066180"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948955"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
 
@@ -28,11 +29,11 @@ Azure Application Insights ile birlikte Azure Active Directory B2C (Azure AD B2C
 * Ölçüm performansı.
 * Application Insights bildirimler oluşturun.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
-Azure AD B2C ' deki kimlik deneyimi çerçevesi sağlayıcıyı `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`içerir. Azure AD B2C için sunulan izleme anahtarını kullanarak doğrudan Application Insights olay verileri gönderir.
+Azure AD B2C ' deki kimlik deneyimi çerçevesi, sağlayıcı `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`içerir. Azure AD B2C için sunulan izleme anahtarını kullanarak doğrudan Application Insights olay verileri gönderir.
 
-Teknik bir profil, Azure AD B2C bir olay tanımlamak için bu sağlayıcıyı kullanır. Profil, olayın adını, kaydedilen talepleri ve izleme anahtarını belirtir. Bir olayı göndermek için, teknik profil bir olarak `orchestration step`veya bir `validation technical profile` özel Kullanıcı yolculuğu içinde olarak eklenir.
+Teknik bir profil, Azure AD B2C bir olay tanımlamak için bu sağlayıcıyı kullanır. Profil, olayın adını, kaydedilen talepleri ve izleme anahtarını belirtir. Bir olayı postalamak için, teknik profil daha sonra bir `orchestration step`olarak veya özel bir Kullanıcı yolculuğunda bir `validation technical profile` olarak eklenir.
 
 Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIMLIĞI kullanarak olayları birleştirebilirsiniz. Application Insights, olay ve oturumu Saniyeler içinde kullanılabilir hale getirir ve birçok görselleştirme, dışarı aktarma ve analitik araç sunar.
 
@@ -44,14 +45,14 @@ Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIM
 
 Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak oluşturur ve izleme anahtarını alır.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**'a tıklayın.
+4. **Oluştur**’a tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’a tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)
@@ -166,11 +167,11 @@ Profilleri, başlatıcı paketinden *TrustFrameworkExtensions. xml* dosyasına e
 ```
 
 > [!IMPORTANT]
-> `AzureInsights-Common` Teknik profildeki izleme anahtarını Application Insights kaynağınızın sağladığı GUID ile değiştirin.
+> `AzureInsights-Common` teknik profilindeki izleme anahtarını, Application Insights kaynağınızın sağladığı GUID ile değiştirin.
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Teknik profilleri düzenleme adımları olarak ekleme
 
-Bir `Azure-Insights-SignInRequest` oturum açma/kaydolma isteğinin alındığını izlemek için düzenleme adımı 2 olarak çağırın:
+Oturum açma/kaydolma isteğinin alındığını izlemek için `Azure-Insights-SignInRequest` düzenleme adımı 2 olarak çağırın:
 
 ```xml
 <!-- Track that we have received a sign in request -->
@@ -181,7 +182,7 @@ Bir `Azure-Insights-SignInRequest` oturum açma/kaydolma isteğinin alındığı
 </OrchestrationStep>
 ```
 
-`SendClaims` Düzenleme adımından hemen *önce* , çağıran `Azure-Insights-UserSignup`yeni bir adım ekleyin. Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma düğmesini seçtiğinde tetiklenir.
+`SendClaims` düzenleme adımından hemen *önce* , `Azure-Insights-UserSignup`çağıran yeni bir adım ekleyin. Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma düğmesini seçtiğinde tetiklenir.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -203,7 +204,7 @@ Bir `Azure-Insights-SignInRequest` oturum açma/kaydolma isteğinin alındığı
 </OrchestrationStep>
 ```
 
-`SendClaims` Düzenleme adımından hemen sonra öğesini çağırın `Azure-Insights-SignInComplete`. Bu adımda başarıyla tamamlanan bir yolculuğun bulunduğu gösterilmektedir.
+`SendClaims` düzenleme adımından hemen sonra, `Azure-Insights-SignInComplete`çağırın. Bu adımda başarıyla tamamlanan bir yolculuğun bulunduğu gösterilmektedir.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -233,7 +234,7 @@ Bir `Azure-Insights-SignInRequest` oturum açma/kaydolma isteğinin alındığı
 Gereksinimlerinize uyacak şekilde Kullanıcı yolculuğuna talep türleri ve olaylar ekleyin. [Talep çözümleyicilerine](claim-resolver-overview.md) veya herhangi bir dize talep türüne, Application Insights olayına bir **giriş talep** öğesi ekleyerek veya AzureInsights-Common Technical profile ' i kullanarak talep ekleyebilirsiniz.
 
 - **ClaimTypeReferenceId** , bir talep türüne başvurudur.
-- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}`burada `NAME` , olaya bir özellik eklenir.
+- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. `NAME` özelliğinin olaya eklendiği `{property:NAME}`söz dizimini kullanın.
 - **DefaultValue** herhangi bir dize değeri veya talep çözümleyici kullanır.
 
 ```XML

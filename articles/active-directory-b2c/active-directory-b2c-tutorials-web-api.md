@@ -1,5 +1,6 @@
 ---
-title: Öğretici-Azure Active Directory B2C bir ASP.NET Web API 'sine erişim Izni verme
+title: "Öğretici: bir ASP.NET Web API 'sine erişim Izni verme"
+titleSuffix: Azure AD B2C
 description: Bir ASP.NET Web API 'sini korumak ve bir ASP.NET Web uygulamasından çağırmak için Active Directory B2C kullanma öğreticisi.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f9f773beb679b4f31e2b735fd0d74fc1b5dae2dd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641762"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950176"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir ASP.NET Web API 'sine erişim Izni verme
 
@@ -31,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticideki adımları ve önkoşulları doldurun [: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme](active-directory-b2c-tutorials-web-app.md).
 
@@ -43,7 +44,7 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 
 #### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
@@ -51,12 +52,12 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 6. **İçerme Web uygulaması/Web API 'si**için **Evet**' i seçin.
 7. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Bu öğreticide, örnek yerel olarak çalışır ve `https://localhost:44332`' de dinler.
 8. **Uygulama kimliği URI 'si**için, Web API 'niz için kullanılan tanımlayıcıyı girin. Tam etki alanı ile birlikte URI tanımlayıcısı sizin için oluşturulur. Örneğin, `https://contosotenant.onmicrosoft.com/api`.
-9. **Oluştur**'a tıklayın.
+9. **Oluştur**’a tıklayın.
 10. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
@@ -124,7 +125,7 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web 
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-1. Kullanıcı akışı ayarını, kaydolma ve oturum açma Kullanıcı akışlarınızın adıyla güncelleştirin, *B2C_1_signupsignin1*.
+1. Kullanıcı akışı ayarını, kayıt ve oturum açma Kullanıcı akışlarınızın adıyla güncelleştirin, *B2C_1_signupsignin1*.
 
     ```csharp
     <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
@@ -144,7 +145,7 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web 
 1. Çözüm Gezgini’nde, çözüme sağ tıklayıp **Başlangıç Projelerini Ayarla...** seçeneğini belirleyin.
 1. **Birden çok başlangıç projesi**seçin.
 1. İki proje için de **Eylem**’i **Başlat** olarak değiştirin.
-1. Yapılandırmayı kaydetmek için **Tamam** ' ı tıklatın.
+1. Yapılandırmayı kaydetmek için **Tamam**'a tıklayın.
 1. İki uygulamayı da çalıştırmak için **F5**'e basın. Her uygulama kendi tarayıcı penceresinde açılır.
     * `https://localhost:44316/` Web uygulamasıdır.
     * `https://localhost:44332/` web API’sidir.

@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C bir özel ilkede doğrulama teknik profili tanımlama | Microsoft Docs
-description: Azure Active Directory B2C bir özel ilkede Azure Active Directory teknik profili tanımlayın.
+title: Özel ilkede doğrulama teknik profili tanımlama
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C bir özel ilkede doğrulama teknik profili kullanarak talepleri doğrulayın.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167568"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950808"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde doğrulama teknik profili tanımlama
 
@@ -40,7 +41,7 @@ Doğrulama teknik profili, **Validationteknisyen** öğesinde tanımlanan önko�
 Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını veya tümünü doğrulamak için kullanılmak üzere bir doğrulama teknik profili tanımlayabilir. Başvurulan teknik profilin tüm giriş talepleri, başvuran doğrulama teknik profilinin çıkış talepleri ' nde görünmelidir.
 
 > [!NOTE]
-> Yalnızca kendi kendine onaylanan teknik profiller, doğrulama teknik profillerini kullanabilir. Kendi kendini onaylanan teknik profillerdeki çıkış taleplerini doğrulamanız gerekiyorsa, Kullanıcı yolculuğunda, doğrulama aşamasında teknik profile uyum sağlamak için ek bir düzenleme adımı kullanmayı göz önünde bulundurun.    
+> Yalnızca kendi kendine onaylanan teknik profiller, doğrulama teknik profillerini kullanabilir. Kendi kendini onaylanan teknik profillerdeki çıkış taleplerini doğrulamanız gerekiyorsa, Kullanıcı yolculuğunda, doğrulama aşamasında teknik profile uyum sağlamak için ek bir düzenleme adımı kullanmayı göz önünde bulundurun.
 
 ## <a name="validationtechnicalprofiles"></a>Validationcealprofiles
 
@@ -52,7 +53,7 @@ Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını 
 
 **Validation, Alprofile** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | ReferenceId | Yes | İlkede veya üst ilkede önceden tanımlanmış bir teknik profil tanıtıcısı. |
 |ContinueOnError|Hayır| Bu doğrulama teknik profili bir hata harekete geçirirse sonraki doğrulama teknik profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false` (varsayılan, daha fazla doğrulama profili işleme durdurulur ve bir hata döndürülür). |
@@ -66,7 +67,7 @@ Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını 
 
 **Önkoşul** öğesi aşağıdaki özniteliği içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | `Type` | Yes | Önkoşul için gerçekleştirilecek denetim veya sorgunun türü. `ClaimsExist`, belirtilen talepler kullanıcının geçerli talep kümesinde varsa eylemlerin gerçekleştirilmesini sağlamak için `ClaimEquals` veya belirtilen talep varsa ve değeri belirtilen değere eşitse, eylemlerin gerçekleştirilmesi gerektiğini sağlamak üzere belirtilmiştir. |
 | `ExecuteActionsIf` | Yes | Test true veya false olduğunda önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğini gösterir. |

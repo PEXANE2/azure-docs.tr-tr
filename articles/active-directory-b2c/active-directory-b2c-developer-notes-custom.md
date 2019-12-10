@@ -1,5 +1,6 @@
 ---
-title: Özel ilkeler için geliştirici notları-Azure Active Directory B2C | Microsoft Docs
+title: Özel ilkeler için geliştirici notları
+titleSuffix: Azure AD B2C
 description: Özel ilkelerle Azure AD B2C yapılandırma ve sürdürme hakkında geliştiricilere yönelik notlar.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: edbd31434715c380badf15118b0779885aed700f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227206"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949764"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -44,7 +45,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 - Methodical senaryo testi gerçekleştirin.
 - En az bir geliştirme ve test ortamı ve bir üretim ortamı ile yazılım geliştirme ve hazırlama en iyi uygulamalarını izleyin.
 - İle tümleştirdiğinizde, kimlik sağlayıcılarının ve hizmetlerin yeni geliştirmeleri hakkında bilgi sahibi olun. Örneğin, gizli değişiklikler ve hizmette zamanlanan ve zamanlanmamış değişiklikler üzerinde değişiklik takip edin.
-- Etkin izlemeyi ayarlayın ve üretim ortamlarının yanıt hızını izleyin. Application Insights tümleştirme hakkında daha fazla bilgi için bkz [. Azure Active Directory B2C: Günlükler](active-directory-b2c-custom-guide-eventlogger-appins.md)toplanıyor.
+- Etkin izlemeyi ayarlayın ve üretim ortamlarının yanıt hızını izleyin. Application Insights ile tümleştirme hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C: günlükleri toplama](active-directory-b2c-custom-guide-eventlogger-appins.md).
 - İletişim e-posta adreslerini Azure aboneliğinde güncel tutun ve Microsoft canlı site ekibi e-postalarına yanıt vermeye devam edin.
 - Microsoft Live-site ekibi tarafından bunu yapmanız önerilir.
 
@@ -60,14 +61,14 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="identity-providers-tokens-protocols"></a>Kimlik sağlayıcıları, belirteçler, protokoller
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-Openıdconnect |  |  | X | Örneğin, Google +.  |
 | IDP-OAUTH2 |  |  | X | Örneğin, Facebook.  |
 | IDP-OAUTH1 (Twitter) |  | X |  | Örneğin, Twitter. |
 | IDP-OAUTH1 (ex-Twitter) |  |  |  | Desteklenmiyor |
 | IDP-SAML |  |   | X | Örneğin, Salesforce, ADFS. |
-| IDP-WSBES | X |  |  |  |
+| ıDP-WSBES | X |  |  |  |
 | Bağlı olan taraf OAUTH1 |  |  |  | Desteklenmiyor. |
 | Bağlı olan taraf OAUTH2 |  |  | X |  |
 | Bağlı olan taraf OıDC |  |  | X |  |
@@ -77,7 +78,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="component-support"></a>Bileşen desteği
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | Yerel Dizin olarak Azure Active Directory |  |  | X |  |
@@ -88,7 +89,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="content-definition"></a>İçerik tanımı
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Hata sayfası, api. Error |  |  | X |  |
 | IDP seçim sayfası, api. ıdpseçimlerin |  |  | X |  |
@@ -104,17 +105,17 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="app-ief-integration"></a>App-ıEF tümleştirmesi
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Sorgu dizesi parametre domain_hint |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
 | Sorgu dizesi parametre login_hint |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
 | Client_assertion aracılığıyla Kullanıcı yolculuğuna JSON ekleyin | X |  |  | Kullanım dışı olacaktır. |
-| JSON 'ı id_token_hint olarak Useryolculuğa Ekle |  | X |  | JSON geçişine git-ilet yaklaşımı. |
+| JSON 'ı id_token_hint olarak Kullanıcı yolculuğuna ekleyin |  | X |  | JSON geçişine git-ilet yaklaşımı. |
 | IDP BELIRTECINI uygulamaya geçir |  | X |  | Örneğin, Facebook 'tan uygulamaya. |
 
 ### <a name="session-management"></a>Oturum yönetimi
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | SSO oturum sağlayıcısı |  |  | X |  |
 | Dış oturum açma oturumu sağlayıcısı |  |  | X |  |
@@ -123,7 +124,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="security"></a>Güvenlik
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | İlke anahtarları-oluştur, El Ile, karşıya yükle |  |  | X |  |
 | İlke anahtarları-RSA/CERT, gizlilikler |  |  | X |  |
@@ -131,7 +132,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 
 ### <a name="developer-interface"></a>Geliştirici arabirimi
 
-| Özellik | Geliştirme | Önizleme | GA | Notlar |
+| Özellik | Geliştirme | Önizleme | Genel Kullanım | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure portalı-ıEF UX |  |  | X |  |
 | Application Insights Kullanıcı yolculuğu günlükleri |  | X |  | Geliştirme sırasında sorun giderme için kullanılır.  |

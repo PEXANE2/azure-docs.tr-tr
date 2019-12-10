@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C 'de denetim günlükleri örnekleri ve tanımları
-description: Azure AD B2C denetim günlüklerine erişirken kılavuz ve örnekler.
+title: Denetim günlüklerine erişim ve gözden geçirme
+titleSuffix: Azure AD B2C
+description: Azure AD B2C denetim günlüklerine programlı olarak ve Azure portal erişme.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643595"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948241"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -52,13 +53,13 @@ Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 
 |Section|Alan|Açıklama|
 |-------|-----|-----------|
-| Etkinlik | Ad | Hangi etkinlik gerçekleşti. Örneğin, *uygulamaya bir id_token*gönderin ve bu, gerçek Kullanıcı oturum açma sonucuna işaret ediyor. |
-| Başlatan (aktör) | Uzantının | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
+| Etkinlik | Adı | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
+| Başlatan (aktör) | ObjectId | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
 | Başlatan (aktör) | SPN | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
-| Hedef (ler) | Uzantının | Oturum açan kullanıcının **nesne kimliği** . |
-| Ek Ayrıntılar | Değerine | Azure AD B2C kiracının **KIRACı kimliği** . |
-| Ek Ayrıntılar | PolicyId | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
-| Ek Ayrıntılar | Uygulama | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
+| Hedefler | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |
+| Ek Ayrıntılar | TenantId | Azure AD B2C kiracının **KIRACı kimliği** . |
+| Ek Ayrıntılar | `PolicyId` | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
+| Ek Ayrıntılar | ApplicationId | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Azure portal denetim günlüklerini görüntüleme
 
@@ -109,7 +110,7 @@ Bir uygulamayı kaydedin, gerekli Microsoft Graph API izinlerini verin ve ardın
 1. **Microsoft Graph**' yi seçin ve ardından öğesini **seçin**.
 1. **Uygulama izinleri**altında **tüm denetim günlüğü verilerini oku**' nı seçin.
 1. **Seç** düğmesini seçin ve **bitti**' yi seçin.
-1. **Izin ver**' i seçin ve ardından **Evet**' i seçin.
+1. Seçin **izinleri verin**ve ardından **Evet**.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 

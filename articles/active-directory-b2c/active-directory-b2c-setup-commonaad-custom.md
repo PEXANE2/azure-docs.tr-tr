@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C 'de özel ilkeler kullanarak çok kiracılı Azure AD kimlik sağlayıcısı için oturum açma ayarlayın
-description: Özel ilkeler kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısı ekleyin-Azure Active Directory B2C.
+title: Özel ilkeler tarafından çok kiracılı Azure AD için oturum açma ayarla
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C özel ilkeleri kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısı ekleyin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5e4645d0fbdcd8cd44bb5972cdc28ab7eaa2a681
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: abac9152ff71c8fbf4ed53bfd663d29616382cf9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642607"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947799"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak çok kiracılı Azure Active Directory için oturum açma ayarlayın
 
@@ -23,7 +24,7 @@ ms.locfileid: "73642607"
 
 Bu makalede, Azure AD B2C içindeki [özel ilkeleri](active-directory-b2c-overview-custom.md) kullanarak Azure Active Directory (Azure AD) için çok kiracılı uç noktasını kullanan kullanıcılar için oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir. Bu, birden çok Azure AD kiracısından kullanıcıların her kiracı için bir kimlik sağlayıcısı yapılandırmaya gerek kalmadan Azure AD B2C kullanarak oturum açmasına olanak tanır. Ancak, bu kiracılardan herhangi birinde bulunan konuk üyeleri **oturum açamaz.** Bu şekilde, [her bir kiracıyı tek tek yapılandırmanız](active-directory-b2c-setup-aad-custom.md)gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın.
 
@@ -31,7 +32,7 @@ Bu makalede, Azure AD B2C içindeki [özel ilkeleri](active-directory-b2c-overvi
 
 Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleştirmek için, uygulamayı kurumsal Azure AD kiracısında kaydetmeniz gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Kuruluşunuzun Azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -58,7 +59,7 @@ Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız g
 1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
 1. **Seçenekler**için `Manual`seçin.
-1. İlke anahtarı için bir **ad** girin. Örneğin, `AADAppSecret`.  Ön ek `B2C_1A_`, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_AADAppSecret*' dir.
+1. İlke anahtarı için bir **ad** girin. Örneğin, `AADAppSecret`.  Ön ek `B2C_1A_`, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_AADAppSecret*.
 1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 1. **Anahtar kullanımı**için `Signature`' yi seçin.
 1. **Oluştur**'u seçin.
@@ -123,17 +124,17 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
 
 1. **ClaimsProvider** öğesi altında, **etki alanı** değerini diğer kimlik sağlayıcılarından ayırt etmek için kullanılabilecek benzersiz bir değer olarak güncelleştirin.
 1. **Teknisyen** öğesinin altında, **DisplayName**için değeri güncelleştirin, örneğin `Contoso Employee`. Bu değer, oturum açma sayfanızda oturum açma düğmesinde görüntülenir.
-1. **Client_id** 'i daha önce KAYDETTIĞINIZ Azure AD çok kiracılı UYGULAMASıNıN uygulama kimliğine ayarlayın.
+1. Daha önce kaydettiğiniz Azure AD çok kiracılı uygulamasının uygulama KIMLIĞINE **client_id** ayarlayın.
 1. **Cryptographickeys**altında, **Storagereferenceıd** değerini daha önce oluşturulmuş ilke anahtarının adı olarak güncelleştirin. Örneğin, `B2C_1A_AADAppSecret`.
 
-### <a name="restrict-access"></a>Erişimi kısıtla
+### <a name="restrict-access"></a>Erişimi kısıtlama
 
 > [!NOTE]
 > **Validtokenıssueröneklerini** değer olarak `https://login.microsoftonline.com/` kullanmak tüm Azure AD kullanıcılarının uygulamanızda oturum açmasını sağlar.
 
 Geçerli belirteç verenler listesini güncelleştirmeniz ve erişimi, oturum açabilen Azure AD kiracı kullanıcıları 'nın belirli bir listesiyle kısıtlamanız gerekir.
 
-Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`benzerdir; burada `your-tenant` Azure AD kiracı adınız. Örneğin:
+Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`benzerdir; burada `your-tenant` Azure AD kiracı adınız. Örnek:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 

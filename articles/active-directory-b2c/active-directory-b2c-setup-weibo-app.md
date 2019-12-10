@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
+title: Weibo hesabı ile kaydolma ve oturum açma ayarlama
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanarak uygulamalarınızda Weibo hesabı bulunan müşterilere kaydolma ve oturum açma sağlayın.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3f84d1d33874ac70a21c9d596c6fa5a9e608bb84
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064912"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950315"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -23,7 +24,7 @@ ms.locfileid: "71064912"
 
 ## <a name="create-a-weibo-application"></a>Weibo uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us)' de kaydolabilirsiniz.
 
 1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.
@@ -43,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak
 1. **保存以上信息**(Kaydet) seçeneğini belirleyin.
 1. **高级信息**(gelişmiş bilgiler) seçeneğini belirleyin.
 1. OAuth 2.0**授权设置**(YENIDEN yönlendirme URL) alanının yanındaki**编辑**(Düzenle) öğesini seçin.
-1. OAuth `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 2.0**授权设置**(Redirect URL) için girin. Örneğin, kiracı adınız contoso ise, URL 'YI `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`olarak ayarlayın.
+1. OAuth 2.0**授权设置**(Redirect URL) için `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` girin. Örneğin, kiracı adınız contoso ise, URL 'YI `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`olarak ayarlayın.
 1. **提交**(Gönder) seçeneğini belirleyin.
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Bir Weibo hesabını kimlik sağlayıcısı olarak yapılandırma

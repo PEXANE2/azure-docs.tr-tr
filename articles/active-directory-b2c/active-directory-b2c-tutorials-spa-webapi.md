@@ -1,5 +1,6 @@
 ---
-title: Öğretici-tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim Izni verme-Azure Active Directory B2C
+title: "Öğretici: tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim Izni verme"
+titleSuffix: Azure AD B2C
 description: Bu öğreticide, bir .NET Core Web API 'sini korumak ve API 'yi tek sayfalı bir Node. js uygulamasından çağırmak için Active Directory B2C nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7dae8bb552fe12d1cdf1f3d8a5fe124491933a87
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e5ced0c3e4ad05c33866548acb09189e03ed22f4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420334"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949713"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim Izni verme
 
@@ -114,7 +115,7 @@ Tek sayfalı uygulamanızın ASP.NET Core Web API 'sini çağırmasını sağlam
     ```
 
 1. (Yalnızca Visual Studio) Çözüm Gezgini **Özellikler** altında, *launchsettings. JSON* dosyasını açın ve sonra `iisExpress` bloğunu bulun.
-1. (Yalnızca Visual Studio) `applicationURL` değerini, önceki bir adımda *webapi1* uygulamasını kaydettiğiniz zaman, belirttiğiniz bağlantı noktası numarasıyla güncelleştirin. Örneğin:
+1. (Yalnızca Visual Studio) `applicationURL` değerini, önceki bir adımda *webapi1* uygulamasını kaydettiğiniz zaman, belirttiğiniz bağlantı noktası numarasıyla güncelleştirin. Örnek:
 
     ```json
     "iisExpress": {
@@ -158,7 +159,7 @@ Visual Studio 'da, *B2C-WebAPI. sln* çözümünü derlemek ve hata ayıklamak i
 
 Visual Studio yerine `dotnet` CLı kullanmayı tercih ediyorsanız:
 
-1. Bir konsol penceresi açın ve *\*. csproj* dosyasını içeren dizine geçin. Örneğin:
+1. Bir konsol penceresi açın ve *\*. csproj* dosyasını içeren dizine geçin. Örnek:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
@@ -176,7 +177,7 @@ Visual Studio yerine `dotnet` CLı kullanmayı tercih ediyorsanız:
 
 ### <a name="run-the-single-page-app"></a>Tek sayfalı uygulamayı çalıştırma
 
-1. Bir konsol penceresi açın ve Node. js örneğini içeren dizine geçin. Örneğin:
+1. Bir konsol penceresi açın ve Node. js örneğini içeren dizine geçin. Örnek:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 

@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C | kaynak sahibi parola kimlik bilgileri akışını yapılandırma | Microsoft Docs
-description: Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını nasıl yapılandıracağınızı öğrenin.
+title: Kaynak sahibi parola kimlik bilgileri akışını yapılandırma
+titleSuffix: Azure AD B2C
+description: Azure AD B2C 'de ROPC akışını yapılandırmayı öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023746"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949193"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -58,9 +59,9 @@ Aşağıdaki akışlar desteklenmez:
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
 En sevdiğiniz API Geliştirme uygulamanızı kullanarak bir API çağrısı oluşturun ve Kullanıcı akışınızda hata ayıklama yanıtı ' nı gözden geçirin. POST isteğinin gövdesi olarak aşağıdaki tablodaki bilgilerle buna benzer bir çağrı oluşturun:
-- *@No__t -1yourtenant. onmicrosoft. com >* ' i B2C kiracınızın adıyla değiştirin.
-- *@No__t-1B2C_1A_ROPC_Auth >* değerini kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
-- *@No__t-1bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* , kayıt 'NIZDEN uygulama kimliğiyle değiştirin.
+- *\<yourtenant. onmicrosoft. com >* ' i B2C kiracınızın adıyla değiştirin.
+- *\<B2C_1A_ROPC_Auth >* , kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* ' i kaydınızdan uygulama kimliğiyle değiştirin.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -73,7 +74,7 @@ En sevdiğiniz API Geliştirme uygulamanızı kullanarak bir API çağrısı olu
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | belirteç id_token |
 
-*Client_id* , uygulama kimliği olarak daha önce belirtilen değerdir. Yenileme belirteci almak istiyorsanız, *Offline_access* isteğe bağlıdır. Kullandığınız Kullanıcı adı ve parola, Azure AD B2C kiracınızdaki mevcut bir kullanıcının kimlik bilgileri olmalıdır.
+*Client_id* , daha önce uygulama kimliği olarak belirtilen değerdir. Yenileme belirteci almak istiyorsanız *Offline_access* isteğe bağlıdır. Kullandığınız Kullanıcı adı ve parola, Azure AD B2C kiracınızdaki mevcut bir kullanıcının kimlik bilgileri olmalıdır.
 
 Gerçek GÖNDERI isteği aşağıdakine benzer:
 
@@ -109,10 +110,10 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| Kaynak | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* ve *Resource* , daha önce uygulama kimliği olarak belirtilen değerlerdir. *Refresh_token* , daha önce bahsedilen kimlik doğrulama çağrısında aldığınız belirteçtir.
+*Client_id* ve *kaynak* , daha önce uygulama kimliği olarak belirtilen değerlerdir. *Refresh_token* , daha önce bahsedilen kimlik doğrulama çağrısında aldığınız belirteçtir.
 
 Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 
@@ -132,7 +133,7 @@ Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 }
 ```
 > [!NOTE]
-> Graph API aracılığıyla Kullanıcı oluştururken, uygulamanın Microsoft Graph "OpenID", "offline_access" ve "profile" izinlerinin olması gerekir.
+> Graph API aracılığıyla Kullanıcı oluştururken, uygulamanın "OpenID", "offline_access" ve "profile" izinlerinin Microsoft Graph olması gerekir.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Tercih ettiğiniz yerel SDK ile uygulayın veya uygulama kimlik doğrulamasını kullanın
 

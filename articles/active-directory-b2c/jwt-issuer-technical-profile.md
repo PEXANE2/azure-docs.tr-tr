@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C bir özel ilkede bir JWT belirteci veren için teknik profil tanımlama | Microsoft Docs
-description: Azure Active Directory B2C bir özel ilkede bir JWT belirteci veren için teknik profil tanımlayın.
+title: Özel ilkede JWT veren için teknik profil tanımlama
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C bir özel ilkede JSON Web belirteci (JWT) veren için bir teknik profil tanımlayın.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5b8f299826c5688eb80eaea11ffc3b2b5176297
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 41661277d89c45baf2350282c6e4b500fae63662
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959673"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949832"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde JWT belirteci veren için teknik profil tanımlama
 
@@ -44,7 +45,7 @@ Aşağıdaki örnek, `JwtIssuer`için bir teknik profil gösterir:
 
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Yes | OAuth2 yetkilendirme kodları ve yenileme belirteçleri içinde Kullanıcı kimlik talebi olarak kullanılması gereken talep. Varsayılan olarak, farklı bir Subjectnamingınfo talep türü belirtmediğiniz müddetçe, bunu `objectId`ayarlamanız gerekir. |
 | SendTokenResponseBodyWithJsonNumbers | Hayır | Her zaman `true`olarak ayarlayın. Sayısal değerlerin JSON numaraları yerine dizeler olarak verildiği eski biçim için `false`olarak ayarlayın. Bu öznitelik, bu tür özellikleri dizeler olarak döndüren önceki bir uygulamaya bağımlılığı almış olan istemciler için gereklidir. |
@@ -60,7 +61,7 @@ Aşağıdaki örnek, `JwtIssuer`için bir teknik profil gösterir:
 
 CryptographicKeys öğesi aşağıdaki öznitelikleri içerir:
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
 | issuer_secret | Yes | JWT belirtecini imzalamak için kullanılacak x509 sertifikası (RSA anahtar kümesi). Bu, [özel ilkeleri kullanmaya başlama](active-directory-b2c-get-started-custom.md)bölümünde bulunan `B2C_1A_TokenSigningKeyContainer` anahtarıdır. |
 | issuer_refresh_token_key | Yes | Yenileme belirtecini şifrelemek için kullanılacak x509 sertifikası (RSA anahtar kümesi). `B2C_1A_TokenEncryptionKeyContainer` anahtarını [özel ilkelerle çalışmaya başlama](active-directory-b2c-get-started-custom.md) bölümünde yapılandırdınız |

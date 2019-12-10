@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1755d5bf3338694f53da7021579cb4c0aee623f3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934899a74362ec9354c772c341d38d6a8f988ab4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912474"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951879"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Bu makalenin sonunda [denemeleri gönderme](#submit) hakkında daha fazla bilgi 
 
 ## <a name="whats-an-estimator"></a>Estimator nedir?
 
-Popüler çerçeveleri kullanarak model eğitimi kolaylaştırmak için Azure Machine Learning Python SDK, daha yüksek düzeyde bir soyutlama ve tahmin aracı sınıfı sağlar. Sınıf, çalışma yapılandırmasını kolayca oluşturup özelleştirmenize imkan tanıyan yöntemler içerdiğinden, eğitim için bir tahmin aracı kullanmanızı öneririz. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren). Veri dosyalarınızı işlem hedefleriniz için kullanılabilir hale getirmeniz gerekiyorsa bkz. [Azure Machine Learning veri kümeleriyle eğitme](how-to-train-with-datasets.md).
+Popüler çerçeveleri kullanarak model eğitimi kolaylaştırmak için Azure Machine Learning Python SDK, daha yüksek düzeyde bir soyutlama ve tahmin aracı sınıfı sağlar.  Bu sınıf, çalışma yapılandırmasını kolayca oluşturmanıza olanak tanır. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren). Sizin için bir ortam veya RunConfiguration nesneleri gibi gömülü nesneleri otomatik olarak bir şekilde yeniden geliştirdiğinden eğitim için bir tahmin aracı kullanmanızı öneririz. Bu nesnelerin nasıl oluşturulduğuna ilişkin daha fazla denetime sahip olmak ve experiement çalışması için hangi paketlerin yükleneceğini göz atmak istiyorsanız, Azure Machine Learning bir Işlem üzerinde bir RunConfiguration nesnesi kullanarak eğitim denemeleri 'nizi göndermek için [aşağıdaki adımları](#amlcompute) izleyin.
 
 Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
 

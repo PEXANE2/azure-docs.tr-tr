@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C | Identity Experience Framework şeması için StringCollection talep dönüştürme örnekleri | Microsoft Docs
-description: StringCollection, Azure Active Directory B2C Identity Experience Framework şeması için bir dönüşüm örnekleri talep ediyor.
+title: Özel ilkeler için StringCollection talep dönüştürme örnekleri
+titleSuffix: Azure AD B2C
+description: StringCollection, Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için dönüşüm örnekleri talep ediyor.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063305"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951012"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection talep dönüştürmeleri
 
@@ -29,7 +30,7 @@ Yeni bir stringCollection talebine bir dize talebi ekler.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | maddesinin | dize | Çıkış talebine eklenecek ClaimType. |
+| Inputclaim | öğe | string | Çıkış talebine eklenecek ClaimType. |
 | Inputclaim | koleksiyon | stringCollection | Seçim Belirtilmişse, talep dönüştürmesi öğeleri bu koleksiyondan kopyalar ve öğeyi çıkış koleksiyonu talebinin sonuna ekler. |
 | outputClaim | koleksiyon | stringCollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. |
 
@@ -64,10 +65,10 @@ Yeni bir stringCollection talebine bir String parametresi ekler.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | koleksiyon | stringCollection | Seçim Belirtilmişse, talep dönüştürmesi öğeleri bu koleksiyondan kopyalar ve öğeyi çıkış koleksiyonu talebinin sonuna ekler. |
-| InputParameter | maddesinin | dize | Çıkış talebine eklenecek değer. |
+| InputParameter | öğe | string | Çıkış talebine eklenecek değer. |
 | outputClaim | koleksiyon | stringCollection | Bu Claimstrans, tarafından üretilecek olan ClaimTypes çağrılır. |
 
-Yeni veya mevcut bir stringCollection 'a bir dize değeri eklemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, **Diğer postalar** talebine bir sabit eadmin@contoso.com-posta adresi () ekler.
+Yeni veya mevcut bir stringCollection 'a bir dize değeri eklemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, **Diğer postalar** talebine bir sabit e-posta adresi (admin@contoso.com) ekler.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -99,7 +100,7 @@ Belirtilen dize koleksiyonundan ilk öğeyi alır.
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | koleksiyon | stringCollection | Öğeyi almak için talep dönüştürmesi tarafından kullanılan ClaimTypes. |
-| outputClaim | Extracteditıtem | dize | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Koleksiyondaki ilk öğe. |
+| outputClaim | Extracteditıtem | string | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Koleksiyondaki ilk öğe. |
 
 Aşağıdaki örnek, **Diğer postalar** talebini okur ve ilk öğeyi **e-posta** talebine döndürür.
 
@@ -119,5 +120,5 @@ Aşağıdaki örnek, **Diğer postalar** talebini okur ve ilk öğeyi **e-posta*
 - Giriş talepleri:
   - **koleksiyon**: ["someone@outlook.com", "someone@contoso.com"]
 - Çıkış talepleri:
-  - **Extracteditıtem**: "someone@outlook.com"
+  - **Extractedidıtem**: "someone@outlook.com"
 

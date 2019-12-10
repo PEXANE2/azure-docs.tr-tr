@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121269"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951556"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Öğretici: Event Hubs kullanarak Azure Databricks’e veri akışı yapma
 
@@ -38,7 +38,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Event Hubs’a tweet’ler gönderme
 > * Event Hubs’tan tweet’leri okuma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -56,7 +56,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
@@ -101,7 +101,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makalede, **6,0* çalışma zamanına sahip bir küme oluşturun.
+   * Bu makalede, **6,0** çalışma zamanına sahip bir küme oluşturun.
    * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
    Teknik ölçüt ve [Bütçe](https://azure.microsoft.com/pricing/details/databricks/)için uygun olan küme çalışanını ve sürücü düğümü boyutunu seçin.
@@ -138,14 +138,10 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
 
    ![Kitaplık Ekle iletişim kutusu](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Kitaplık ekleme yeni yüklemesi")
 
-2. Yeni Kitaplık sayfasında, **kaynak** **Seç ' i seçin**. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
+2. Yeni Kitaplık sayfasında, **kaynak** **Seç ' i seçin**. Spark Event Hubs Bağlayıcısı ve Twitter API 'SI için **Şu koordinatları tek tek girin.**
 
-   * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![Maven koordinatları sağlama](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Maven koordinatları sağlama")
-
-     ![Maven koordinatları sağlama](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Maven koordinatları ara")
 
 3. **Yükle**’yi seçin.
 

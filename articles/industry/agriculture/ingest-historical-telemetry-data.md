@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d2ac3b0f531b6384643d91fac1cf50a0ea719969
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a3e4f543be2f01e0c649d5f9bcc9287dedc275f1
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900333"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941653"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -39,7 +39,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 > Aşağıdaki adımları uygulamak için yönetici olmanız gerekir.
 
 1. Bu [betiği](https://aka.ms/farmbeatspartnerscript)indirip yerel sürücünüzde ayıklayın. ZIP dosyasının içinde iki dosya bulunur.
-2. [Azure portalında](https://portal.azure.com/) oturum açın ve Azure Cloud Shell'i açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur. 
+2. [Azure portalında](https://portal.azure.com/) oturum açın ve Azure Cloud Shell'i açın. Bu seçenek, portalın sağ üst köşesindeki araç çubuğunda bulunur.
 
     ![Azure portal araç çubuğu](./media/for-tutorials/navigation-bar-1.png)
 
@@ -47,7 +47,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
     ![PowerShell ayarı](./media/for-tutorials/power-shell-new-1.png)
 
-4. Cloud Shell örneğindeki 1. adımdan indirdiğiniz iki dosyayı karşıya yükleyin. 
+4. Cloud Shell örneğindeki 1. adımdan indirdiğiniz iki dosyayı karşıya yükleyin.
 
     ![Araç çubuğundaki Karşıya Yükle düğmesi](./media/for-tutorials/power-shell-two-1.png)
 
@@ -55,7 +55,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
    >[!NOTE]
    > Varsayılan olarak, dosyalar giriş dizinine/giriş/Kullanıcı adına yüklenir.
-6. Şu komutu kullanarak betiği çalıştırın: 
+6. Şu komutu kullanarak betiği çalıştırın:
 
     ```azurepowershell-interactive
     ./generateCredentials.ps1
@@ -67,10 +67,10 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
  Artık gerekli kimlik bilgilerine sahip olduğunuza göre, cihazı ve algılayıcıları tanımlayabilirsiniz. Bunu yapmak için, Farmtempts API 'Lerini kullanarak meta verileri oluşturun.
 
- Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir. 
+ Farmrets veri hub 'ı, cihaz veya algılayıcı meta verilerinin oluşturulmasını ve yönetilmesini sağlayan aşağıdaki API 'Lere sahiptir.
 
-- /**devicemodel**: devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir. 
-- **cihaz**/: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir. 
+- /**devicemodel**: devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir.
+- **cihaz**/: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
 - **sensormodel**/: sensormodel, üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçümü gibi algılayıcı meta verilerine karşılık gelir.
 - /**algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.  
 
@@ -269,7 +269,7 @@ Algılayıcısı
   }
 }
 ```
-Aşağıdaki örnek istek bir cihaz oluşturur. Bu istek, istek gövdesiyle birlikte JSON girişi olarak giriş içeriyor. 
+Aşağıdaki örnek istek bir cihaz oluşturur. Bu istek, istek gövdesiyle birlikte JSON girişi olarak giriş içeriyor.
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -292,7 +292,7 @@ Artık, Farmtts 'de cihazları ve algılayıcıları oluşturduğunuza göre, il
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>İstemci olarak bir telemetri iletisi gönder
 
-Event Hubs istemcisi olarak bir bağlantı kurulduktan sonra, Olay Hub 'ına JSON olarak iletiler gönderebilirsiniz. 
+Event Hubs istemcisi olarak bir bağlantı kurulduktan sonra, Olay Hub 'ına JSON olarak iletiler gönderebilirsiniz.
 
 Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek Python kodu verilmiştir:
 
@@ -313,7 +313,7 @@ write_client.stop()
 
 ```
 
-Geçmiş algılayıcı veri biçimini Azure Farmtarafından anladığı kurallı bir biçime dönüştürün. Kurallı ileti biçimi aşağıdaki gibidir: 
+Geçmiş algılayıcı veri biçimini Azure Farmtarafından anladığı kurallı bir biçime dönüştürün. Kurallı ileti biçimi aşağıdaki gibidir:
 
 ```json
 {

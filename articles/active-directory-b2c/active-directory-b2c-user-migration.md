@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C 'de Kullanıcı geçişi yaklaşımları
+title: Kullanıcı geçişi yaklaşımları
+titleSuffix: Azure AD B2C
 description: Azure AD Graph API ve isteğe bağlı olarak Azure AD B2C özel ilkeleri kullanarak Kullanıcı geçişi üzerinde hem çekirdek hem de gelişmiş kavramları açıklar.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9c01e22cfa96321994c16df6b61a52ebd4137549
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c5b7d477b0704db3f23919281fd61328be114dae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322925"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950230"
 ---
 # <a name="migrate-users-to-azure-active-directory-b2c"></a>Kullanıcıları Azure Active Directory B2C geçir
 
@@ -27,7 +28,7 @@ Azure AD B2C, [Azure AD Graph API][B2C-GraphQuickStart]aracılığıyla kullanı
 
 - **Geçiş öncesi**: Bu akış, bir kullanıcının kimlik bilgilerine (Kullanıcı adı ve parola) açık erişime sahip olduğunuzda veya kimlik bilgileri şifrelendiğinde, ancak şifrelerini çözebilmeniz durumunda geçerlidir. Geçiş öncesi işlem, eski kimlik sağlayıcısından kullanıcıları okumayı ve Azure AD B2C dizininde yeni hesaplar oluşturmayı içerir.
 
-- **Geçiş öncesi ve parola sıfırlama**: Bu akış, bir kullanıcının parolası erişilebilir olmadığında geçerlidir. Örneğin:
+- **Geçiş öncesi ve parola sıfırlama**: Bu akış, bir kullanıcının parolası erişilebilir olmadığında geçerlidir. Örnek:
   - Parola, karma biçiminde depolanır.
   - Parola, erişemiyoruz bir kimlik sağlayıcısında depolanır. Eski kimlik sağlayıcınız bir Web hizmetini çağırarak kullanıcı kimlik bilgilerini doğrular.
 
@@ -131,7 +132,7 @@ JSON dosyasını düzenlemek için `AADB2C.UserMigration.sln` Visual Studio çö
 
 Gördüğünüz gibi, dosya Kullanıcı varlıklarının bir listesini içerir. Her kullanıcı varlığı aşağıdaki özelliklere sahiptir:
 
-- email
+- e-posta
 - displayName
 - firstName
 - lastName
@@ -228,7 +229,7 @@ Parola sıfırlama ilkenizin bağlantısını almak için aşağıdaki adımlar�
 > [!NOTE]
 > Kullanıcı geçiş durumunu denetlemek ve değiştirmek için özel bir ilke kullanmanız gerekir. [Özel ilkelerle çalışmaya başlama][B2C-GetStartedCustom] bölümündeki kurulum yönergelerinin tamamlanması gerekir.
 
-Kullanıcılar ilk olarak parolayı sıfırlamadan oturum açmaya çalıştığında, ilkenizin kolay bir hata iletisi döndürmelidir. Örneğin:
+Kullanıcılar ilk olarak parolayı sıfırlamadan oturum açmaya çalıştığında, ilkenizin kolay bir hata iletisi döndürmelidir. Örnek:
 
 > *Parolanızın süresi doldu. Sıfırlamak için parola sıfırlama bağlantısını seçin.*
 

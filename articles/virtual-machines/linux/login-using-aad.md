@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873021"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951318"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -206,6 +206,10 @@ Bir Web tarayıcısında kimlik doğrulama adımını başarıyla tamamlayadıys
 - SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin, *azureuser\@contoso.onmicrosoft.com*yerine *azuresuer\@contoso.onmicrosoft.com* yazdınız.
 - Birden çok Kullanıcı hesabınız varsa, Azure AD 'de oturum açarken tarayıcı penceresinde farklı bir kullanıcı hesabı sağlamadığınızdan emin olun.
 - Linux, büyük/küçük harfe duyarlı bir işletim sistemidir. 'Azureuser@contoso.onmicrosoft.com' ve 'azureuser@contoso.onmicrosoft.com' arasında bir farklılık var ve bu da uyuşmazlığa neden olabilir. SSH isteminde doğru büyük/küçük harf duyarlılığı ile UPN 'yi belirttiğinizden emin olun.
+
+### <a name="other-limitations"></a>Diğer sınırlamalar
+
+İç içe gruplar veya rol atamaları aracılığıyla erişim haklarını miras alan kullanıcılar şu anda desteklenmemektedir. Kullanıcı veya grup için [gerekli rol atamalarının](#configure-role-assignments-for-the-vm)doğrudan atanması gerekir. Örneğin, yönetim grupları veya iç içe grup rolü atamalarının kullanılması, kullanıcının oturum açmasını sağlamak için doğru izinleri vermez.
 
 ## <a name="preview-feedback"></a>Önizleme geri bildirimi
 

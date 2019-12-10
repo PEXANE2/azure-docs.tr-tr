@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C | kaynak sahibi parola kimlik bilgileri akışını yapılandırma | Microsoft Docs
-description: Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını nasıl yapılandıracağınızı öğrenin.
+title: Kaynak sahibi parola kimlik bilgileri akışını özel ilkelerle yapılandırma
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C ' de özel ilkeler kullanarak kaynak sahibi parola kimlik bilgileri (ROPC) akışını yapılandırmayı öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678134"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951073"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Özel bir ilke kullanarak Azure Active Directory B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -95,7 +96,7 @@ Aşağıdaki akışlar desteklenmez:
     </ClaimsTransformations>
     ```
 
-4. **DisplayName** `Local Account SignIn` olan **ClaimsProvider** öğesini bulun ve aşağıdaki teknik profili ekleyin:
+4. `Local Account SignIn` **DisplayName** olan **ClaimsProvider** öğesini bulun ve aşağıdaki teknik profili ekleyin:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -133,7 +134,7 @@ Aşağıdaki akışlar desteklenmez:
     </TechnicalProfile>
     ```
 
-    **Client_id** öğesinin **DefaultValue** değerini, önkoşul öğreticisinde oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin. Ardından, önkoşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama KIMLIĞIYLE **resource_id** 'in **DefaultValue** değerini değiştirin.
+    **Client_id** **DefaultValue** değerini, önkoşul öğreticisinde oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin. Ardından, önkoşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama KIMLIĞIYLE **Resource_id** **DefaultValue** değerini değiştirin.
 
 5. Aşağıdaki **ClaimsProvider** öğelerini, **claimsproviders** öğesine teknik profilleriyle birlikte ekleyin:
 
@@ -234,9 +235,9 @@ Aşağıdaki akışlar desteklenmez:
 
 Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf dosyasını güncelleştirin:
 
-1. Çalışma dizininizde *Signuporsignın. xml* dosyasının bir kopyasını oluşturun ve *ROPC_Auth. xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *Signuporsignın. xml* dosyasının bir kopyasını oluşturun ve onu *ROPC_Auth. xml*olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değere değiştirin. İlke KIMLIĞI, ilkenizin adıdır. Örneğin, **B2C_1A_ROPC_Auth**.
-3. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini `ResourceOwnerPasswordCredentials` ' e değiştirin.
+3. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini `ResourceOwnerPasswordCredentials`olarak değiştirin.
 4. **Outputclaim** öğesini yalnızca aşağıdaki talepleri içerecek şekilde değiştirin:
 
     ```XML
@@ -248,7 +249,7 @@ Sonra, oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf do
     ```
 
 5. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-6. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve ardından *ROPC_Auth. xml* dosyasına gidip seçin.
+6. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *ROPC_Auth. xml* dosyasına gidip seçin.
 7. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="test-the-policy"></a>İlkeyi test etme
@@ -257,8 +258,8 @@ Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanı
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- @No__t-0 ' yı Azure AD B2C kiracınızın adıyla değiştirin.
-- @No__t-0 değerini kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı.
+- `B2C_1A_ROPC_Auth`, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
@@ -269,10 +270,10 @@ Bir API çağrısı oluşturmak için en sevdiğiniz API Geliştirme uygulamanı
 | client_id | `application-id` |
 | response_type | belirteç id_token |
 
-- @No__t-0 ' yı kiracınızdaki bir kullanıcı hesabının adıyla değiştirin.
-- @No__t-0 ' yı Kullanıcı hesabının parolasıyla değiştirin.
-- @No__t-0 ' yı *ROPC_Auth_app* REGISTRATION uygulama kimliğiyle değiştirin.
-- Yenileme belirteci almak istiyorsanız, *Offline_access* isteğe bağlıdır.
+- `user-account`, kiracınızdaki bir kullanıcı hesabının adıyla değiştirin.
+- `password1`, Kullanıcı hesabının parolasıyla değiştirin.
+- `application-id` *ROPC_Auth_app* KAYDıNDAN uygulama kimliğiyle değiştirin.
+- Yenileme belirteci almak istiyorsanız *Offline_access* isteğe bağlıdır.
 
 Gerçek GÖNDERI isteği aşağıdaki örneğe benzer şekilde görünür:
 
@@ -302,19 +303,19 @@ Burada gösterilenler gibi bir GÖNDERI çağrısı oluşturun. İsteğin gövde
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- @No__t-0 ' yı Azure AD B2C kiracınızın adıyla değiştirin.
-- @No__t-0 değerini kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı.
+- `B2C_1A_ROPC_Auth`, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
 
 | Anahtar | Değer |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| Kaynak | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
-- @No__t-0 ' yı *ROPC_Auth_app* REGISTRATION uygulama kimliğiyle değiştirin.
-- @No__t-0 ' yı önceki yanıtta geri gönderilen **refresh_token** ile değiştirin.
+- `application-id` *ROPC_Auth_app* KAYDıNDAN uygulama kimliğiyle değiştirin.
+- `refresh-token`, önceki yanıtta geri gönderilen **refresh_token** ile değiştirin.
 
 Başarılı bir yanıt aşağıdaki örneğe benzer şekilde görünür:
 

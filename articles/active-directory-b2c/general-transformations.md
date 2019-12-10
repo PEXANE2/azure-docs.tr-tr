@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C Identity Experience Framework şeması için genel talep dönüştürme örnekleri
-description: Azure Active Directory B2C Identity Experience Framework şeması için genel talep dönüştürme örnekleri.
+title: Özel ilkeler için genel talep dönüştürme örnekleri
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için genel talep dönüştürme örnekleri.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 639277177bf63e659e5b0ea804eca5e20f956831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032894"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948912"
 ---
 # <a name="general-claims-transformations"></a>Genel talep dönüştürmeleri
 
@@ -29,8 +30,8 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çer
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | ınputclaim |Any | Varlığının doğrulanması gereken giriş talebi. |
-| OutputClaim | outputClaim | boolean | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
+| Inputclaim | Inputclaim |Herhangi biri | Varlığının doğrulanması gereken giriş talebi. |
+| outputClaim | outputClaim | boole | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
 Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdiğini denetlemek için bu talep dönüşümünü kullanın. Dönüş değeri, talebin mevcut olup olmadığını gösteren bir Boole değeridir. Aşağıdaki örnek, e-posta adresinin mevcut olup olmadığını denetler.
 
@@ -48,7 +49,7 @@ Bir talebin mevcut olup olmadığını veya herhangi bir değer içerip içerdi�
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **ınputclaim**:someone@contoso.com
+  - **ınputclaim**: someone@contoso.com
 - Çıkış talepleri:
   - **Outputclaim**: true
 
@@ -58,10 +59,10 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | düz metin | dize | Şifrelenecek giriş talebi |
-| Inputclaim | değerinin | dize | Anahtar parametresi. Talep dönüştürmeyi kullanarak `CreateRandomString` rastgele bir değer oluşturabilirsiniz. |
-| InputParameter | randomizerSecret | dize | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Add (Ekle)** seçeneğini belirleyin. **Seçenekler**Için **el ile**' yi seçin. Bir ad sağlayın ( *B2C_1A_* ön eki otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**’u seçin. |
-| OutputClaim | yla | dize | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. `plaintext` Inputclaim 'de yapılandırılan talep. |
+| Inputclaim | düz metin | string | Şifrelenecek giriş talebi |
+| Inputclaim | değerinin | string | Anahtar parametresi. `CreateRandomString` talep dönüşümü kullanarak rastgele bir değer oluşturabilirsiniz. |
+| InputParameter | randomizerSecret | string | Mevcut bir Azure AD B2C **ilkesi anahtarına**işaret eder. Yeni bir ilke anahtarı oluşturmak için: Azure AD B2C kiracınızda, **Yönet**altında **kimlik deneyimi çerçevesi**' ni seçin. Kiracınızda kullanılabilir olan anahtarları görüntülemek için **ilke anahtarlarını** seçin. **Add (Ekle)** seçeneğini belirleyin. **Seçenekler**Için **el ile**' yi seçin. Bir ad belirtin ( *B2C_1A_* ön ek otomatik olarak eklenebilir.). **Gizli** metin kutusuna, kullanmak istediğiniz tüm gizli anahtarı (1234567890 gibi) girin. **Anahtar kullanımı**için **imza**' yı seçin. **Oluştur**'u seçin. |
+| outputClaim | hash | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. `plaintext` ınputclaim 'de yapılandırılan talep. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -81,8 +82,8 @@ Anahtar ve gizli anahtar kullanarak, sağlanmış düz metni karma olarak kullan
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **düz metin**:MyPass@word1
+  - **düz metin**: MyPass@word1
   - **anahtar**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Çıkış talepleri:
-  - **Outputclaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =
+  - **Outputclaim**: cdmnb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =

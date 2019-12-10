@@ -5,26 +5,29 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89f364d9246db27276eee6d05e8130e87061feec
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842144"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941619"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure Farmtts sorunlarını giderme
 
 Bu makalede, yaygın Azure Farmtts sorunlarına yönelik çözümler sağlanmaktadır.
 
-Ek Yardım için farmbeatssupport@microsoft.comadresinden bizimle iletişim kurun. E-postanıza *Deployer. log* dosyasını eklediğinizden emin olun.
+Ek Yardım için farmbeatssupport@microsoft.comadresinden bizimle iletişim kurun. E-postanıza **Deployer. log** dosyasını eklediğinizden emin olun.
 
-*Deployer. log* dosyasını indirmek için aşağıdakileri yapın:
+**Deployer. log** dosyasını indirmek için aşağıdakileri yapın:
 
-1. Vurgulanan simgeyi seçin ve ardından açılan listede **İndir**' i seçin.
+1. **Azure Portal** için oturum açın ve aboneliğinizi ve Azure AD kiracınızı seçin.
+2. Cloud Shell’i Azure portalında en üst gezinti bölmesinden başlatın.
+3. Tercih edilen Cloud Shell deneyimi olarak **Bash** ' i seçin.
+4. Vurgulanan simgeyi seçin ve ardından açılan listede **İndir**' i seçin.
 
     ![Proje Farmtları](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-1. Sonraki bölmede, *Deployer. log* dosyanızın yolunu girin. Örneğin, **farmbeats-Deployer. log**yazın.
+5. Sonraki bölmede, **Deployer. log** dosyanızın yolunu girin. Örneğin, **farmbeats-Deployer. log**yazın.
 
 ## <a name="sensor-telemetry"></a>Algılayıcı telemetrisi
 
@@ -32,7 +35,7 @@ Ek Yardım için farmbeatssupport@microsoft.comadresinden bizimle iletişim kuru
 
 **Belirti**: cihazlar veya algılayıcılar dağıtılır ve cihaz iş ortağınızla birlikte farmtilerini bağladınız, ancak bu verileri farmsts 'de alamıyor veya görüntüleyemezsiniz.
 
-**Düzeltici eylem**: 
+**Düzeltici eylem**:
 
 1. Farmrets Datahub kaynak grubuna gidin.   
 1. **Olay Hub 'ını** (datafeedeventhubnamespace) seçin ve ardından gelen ileti sayısını kontrol edin.
@@ -44,14 +47,14 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Azure Event Hubs bağlantı dizesine sahip değil
 
-**Düzeltici eylem**: 
+**Düzeltici eylem**:
 
 1. Datahub Swagger ' de Iş ortağı API 'sine gidin.
 1. **Al** ** >  > ** **Yürüt**' ü seçin.
 1. İlgilendiğiniz algılayıcı ortağının iş ortağı KIMLIĞINE göz önünde olun.
 1. Iş ortağı API 'sine dönün ve **Al/\<kimliği >** ' ni seçin.
 1. 3\. adımdaki iş ortağı KIMLIĞINI belirtip **Yürüt**' ü seçin.
-   
+
    API yanıtının Event Hubs bağlantı dizesi olmalıdır.
 
 ### <a name="device-appears-offline"></a>Cihaz çevrimdışı görünüyor
@@ -128,7 +131,7 @@ Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya 
 **Sorun**: FarmBeatsDeployment 'ı yükselttikten sonra bile, farmtts Hızlandırıcısı en son sürümü gösterilmiyor.
 
 **Düzeltici eylem**: Bu hata, tarayıcıda hizmet çalışanı kalıcılığı nedeniyle oluşur. Şunları yapın:
-1. Hızlandırıcı açık olan tüm tarayıcı sekmelerini kapatın ve tarayıcı penceresini kapatın. 
+1. Hızlandırıcı açık olan tüm tarayıcı sekmelerini kapatın ve tarayıcı penceresini kapatın.
 1. Tarayıcının yeni bir örneğini başlatın ve Hızlandırıcı URI 'sini yeniden yükleyin. Bu eylem, hızlandırıcının yeni sürümünü yükler.
 
 ## <a name="sentinel-imagery-related-issues"></a>Sentinel: Imagery ile ilgili sorunlar
@@ -137,7 +140,7 @@ Hata devam ederse, Farmtts forumundaki bir gönderiye hata iletisi ekleyin veya 
 
 **İş hatası iletisi**: "Bu kaynağa erişmek için tam kimlik doğrulaması gerekiyor."
 
-**Düzeltici eylem**: 
+**Düzeltici eylem**:
 
 Aşağıdakilerden birini yapın:
 * Veri hub 'ını doğru Kullanıcı adı ve parolayla yükseltmek için yükleyiciyi yeniden çalıştırın.
@@ -207,7 +210,7 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
     ![Proje Farmtları](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Hızlandırıcıda Azure Data Factory iş günlüklerini toplayın 
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Hızlandırıcıda Azure Data Factory iş günlüklerini toplayın
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.

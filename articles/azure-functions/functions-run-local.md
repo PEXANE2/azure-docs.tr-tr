@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784723"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941840"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -29,37 +29,47 @@ Yerel bilgisayarınızda işlevleri geliştirme ve temel araçları kullanarak b
 > * [İşlevi yerel olarak çalıştırın](#start)
 > * [Projeyi Azure 'da yayımlayın](#publish)
 
-## <a name="core-tools-versions"></a>Temel araçlar sürümleri
+## <a name="core-tools-versions"></a>Core Tools sürümleri
 
-Azure Functions Core Tools iki sürümü vardır. Kullandığınız sürüm yerel geliştirme ortamınıza, [dil seçimine](supported-languages.md)ve gerekli destek düzeyine bağlıdır:
+Azure Functions Core Tools üç sürümü vardır. Kullandığınız sürüm yerel geliştirme ortamınıza, [dil seçimine](supported-languages.md)ve gerekli destek düzeyine bağlıdır:
 
-+ Sürüm 1. x: çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://docs.npmjs.com/getting-started/what-is-npm)yüklenir. Bu sürümle birlikte, resmi olarak desteklenmeyen deneysel dillerde işlevler oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerinde desteklenen diller](supported-languages.md)
++ **Sürüm 1. x**: Azure işlevleri çalışma zamanının sürüm 1. x ' i destekler. Araçların bu sürümü yalnızca Windows bilgisayarlarda desteklenir ve bir [NPM paketinden](https://www.npmjs.com/package/azure-functions-core-tools)yüklenir.
 
-+ [Sürüm 2. x](#v2): [çalışma zamanının sürüm 2. x](functions-versions.md)' i destekler. Bu sürüm [Windows](#windows-npm), [MacOS](#brew)ve [Linux](#linux)'u destekler. Yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
++ [**Sürüm 2. x/3. x**](#v2): [Azure işlevleri çalışma zamanının sürüm 2. x veya 3. x sürümünü](functions-versions.md)destekler. Bu sürümler [Windows](#windows-npm), [MacOS](#brew)ve [Linux](#linux) 'u destekler ve yükleme için platforma özgü paket yöneticilerini veya NPM 'yi kullanır.
 
-Aksi belirtilmediği takdirde, bu makaledeki örnekler 2. x sürümü içindir.
+Aksi belirtilmedikçe, bu makaledeki örnekler sürüm 3. x içindir.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools’u Yükleme
 
 [Azure Functions Core Tools] , yerel geliştirme bilgisayarınızda çalıştırabileceğiniz Azure işlevleri çalışma zamanını destekleyen aynı çalışma zamanının bir sürümünü içerir. Ayrıca işlevler oluşturmak, Azure 'a bağlanmak ve işlev projelerini dağıtmak için komutlar sağlar.
 
-### <a name="v2"></a>Sürüm 2. x
+### <a name="v2"></a>Sürüm 2. x ve 3. x
 
-Araçların sürüm 2. x, .NET Core üzerinde oluşturulan Azure Işlevleri çalışma zamanı 2. x 'i kullanır. Bu sürüm, [Windows](#windows-npm), [MacOS](#brew)ve [Linux](#linux)dahil tüm platformlarda .NET Core 2. x desteği için desteklenir. 
+Araçların sürüm 2. x/3. x, .NET Core üzerinde oluşturulan Azure Işlevleri çalışma zamanını kullanır. Bu sürüm, [Windows](#windows-npm), [MacOS](#brew)ve [Linux](#linux)dahil tüm platformlarda .NET Core desteği için desteklenir. 
 
 > [!IMPORTANT]
-> [Uzantı demeti]kullanarak .NET Core 2. x SDK 'yı yükleme gereksinimini atlayabilirsiniz.
+> [Uzantı demeti]'ni kullanarak .NET Core SDK yükleme gereksinimini atlayabilirsiniz.
 
 #### <a name="windows-npm"></a>Pencerelerin
 
 Aşağıdaki adımlarda, Windows 'a temel araçları yüklemek için NPM kullanılır. [Chocolatey](https://chocolatey.org/)de kullanabilirsiniz. Daha fazla bilgi için bkz. [temel araçlar Benioku](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. NPM içeren [Node.js]' yi yükler. Araçların sürüm 2. x için yalnızca Node. js 8,5 ve üzeri sürümleri desteklenir.
+1. NPM içeren [Node.js]' yi yükler.
+    - Araçların sürüm 2. x için yalnızca Node. js 8,5 ve üzeri sürümleri desteklenir.
+    - Araçların sürüm 3. x için, yalnızca düğüm 10 ve üzeri sürümleri desteklenir.
 
 1. Temel Araçlar paketini yükler:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>v3. x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    NPM 'nin temel araçlar paketini indirmesi ve yüklemesi birkaç dakika sürebilir.
@@ -74,13 +84,21 @@ Aşağıdaki adımlarda, macOS 'a çekirdek araçları yüklemek için homebrew 
 
 1. Temel Araçlar paketini yükler:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. [Uzantı demeti]kullanmayı planlamıyorsanız, [MacOS için .NET Core 2. x SDK](https://www.microsoft.com/net/download/macos)'yı yükleyebilirsiniz.
+    ##### <a name="v3x"></a>v3. x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a>APT ile Linux (Ubuntu/dekim)
 
@@ -109,11 +127,11 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 1. Aşağıda listelenen uygun Linux sürümü dizelerinden biri için `/etc/apt/sources.list.d/dotnetdev.list` dosyasını denetleyin:
 
-    | Linux dağıtımı | Sürüm |
+    | Linux dağıtım | Sürüm |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
-    | Borçlu 9 | `stretch` |
-    | Desek8 | `jessie` |
+    | Debian 9 | `stretch` |
+    | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
@@ -133,7 +151,7 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 1. [Uzantı demeti]kullanmayı planlamıyorsanız, [Linux için .NET Core 2. x SDK](https://www.microsoft.com/net/download/linux)'yı yükleyebilirsiniz.
 
-## <a name="create-a-local-functions-project"></a>Yerel Işlevler projesi oluşturma
+## <a name="create-a-local-functions-project"></a>Bir yerel işlevler projesi oluşturma
 
 Bir işlevler proje dizini, [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](#local-settings-file)dosyalarını, tek tek işlevlerin kodunu içeren alt klasörlerle birlikte içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
 
@@ -199,7 +217,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 İşlev uygulaması ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru konularının ortam değişkenleri bölümüne bakın:
 
 * [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
-* [C#betik (. CSX)](functions-reference-csharp.md#environment-variables)
+* [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -212,7 +230,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 Geliştirme için depolama öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
 - [Azure portalda], **depolama hesaplarını**arayıp seçin. 
-  Azure portal ![Storagea hesaplarını seçin](./media/functions-run-local/select-storage-accounts.png)
+  Azure portal](./media/functions-run-local/select-storage-accounts.png) depolama hesapları ![seçin
   
   Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
   Azure portal](./media/functions-run-local/copy-storage-connection-portal.png) bağlantı dizesini ![Kopyala

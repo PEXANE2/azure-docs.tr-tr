@@ -1,6 +1,7 @@
 ---
-title: Uygulamanıza özel bir ilke aracılığıyla bir erişim belirteci geçirin Azure Active Directory B2C
-description: OAuth 2.0 kimlik sağlayıcıları için bir erişim belirtecini, Azure Active Directory B2C uygulamanıza özel bir ilke aracılığıyla talep olarak nasıl geçirebileceğinizi öğrenin.
+title: Uygulamanıza özel bir ilke aracılığıyla erişim belirteci geçirme
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 'de uygulamanıza özel bir ilke aracılığıyla OAuth 2,0 kimlik sağlayıcıları için erişim belirtecini nasıl geçirebileceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6795af0829a288c36cad5b848fed50a99dc1bfc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510135"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949849"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Uygulamanıza özel bir ilke aracılığıyla bir erişim belirteci geçirin Azure Active Directory B2C
 
@@ -29,7 +30,7 @@ Azure AD B2C, [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) ve [Open
 
 ## <a name="add-the-claim-elements"></a>Talep öğelerini ekleme
 
-1. *TrustframeworkExtensions. xml* dosyanızı açın ve aşağıdaki **ClaimType** öğesini `identityProviderAccessToken` **claimsschema** öğesine tanıtıcısı ile ekleyin:
+1. *TrustframeworkExtensions. xml* dosyanızı açın ve **Claimsschema** öğesine bir `identityProviderAccessToken` tanımlayıcısına sahip aşağıdaki **ClaimType** öğesini ekleyin:
 
     ```XML
     <BuildingBlocks>
@@ -79,11 +80,11 @@ Azure AD B2C, [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) ve [Open
 
 ## <a name="test-your-policy"></a>İlkenizi test etme
 
-Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirebilmek `https://jwt.ms` için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
+Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirebilmek için Azure AD B2C belirtecinin `https://jwt.ms` geri döndürüldüğünden yararlı olabilir.
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresi ' ne tıklayarak ve kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
@@ -92,10 +93,10 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden ge�
 7. **Karşıya Yükle**’yi seçin.
 8. *Signuporsignın. xml*gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
 
-### <a name="run-the-policy"></a>İlkeyi çalıştır
+### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
 1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_signup_signin*.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'si** `https://jwt.ms`göstermelidir.
 3. **Şimdi Çalıştır**' ı seçin.
 
     Aşağıdaki örneğe benzer bir şey görmeniz gerekir:

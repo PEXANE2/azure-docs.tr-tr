@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory kuruluş için oturum açma ayarlama-Azure Active Directory B2C
+title: Azure AD kuruluşu için oturum açma ayarlama
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C belirli bir Azure Active Directory organizasyonu için oturum açma ayarlayın.
 services: active-directory-b2c
 author: mmacy
@@ -11,12 +12,12 @@ ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0c2e368b9c12d8ab673e5b8808632501de448b9a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d864561273f89c510633bbc95a2d037a270401f8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755761"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947695"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içinde belirli bir Azure Active Directory kuruluş için oturum açma ayarlayın
 
@@ -65,7 +66,7 @@ Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleşt
 1. **ISTEMCI kimliği**için, daha önce KAYDETTIĞINIZ uygulama kimliğini girin.
 1. **İstemci parolası**için, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 1. **Kapsam**, **yanıt türü**ve **Yanıt modu**için varsayılan değerleri bırakın.
-1. Seçim **Domain_hint**için bir değer girin. Örneğin, *Contosoad*. Bu, istekte *domain_hint* kullanarak bu kimlik sağlayıcısına başvururken kullanılacak değerdir.
+1. Seçim **Domain_hint**için bir değer girin. Örneğin, *Contosoad*. Bu, istekteki *domain_hint* kullanarak bu kimlik sağlayıcısına başvururken kullanılacak değerdir.
 1. **Kimlik sağlayıcısı talep eşlemesi**altında, aşağıdaki talep eşleme değerlerini girin:
 
     * **Kullanıcı kimliği**: *OID*

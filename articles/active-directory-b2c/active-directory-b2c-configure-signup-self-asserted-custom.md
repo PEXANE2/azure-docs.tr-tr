@@ -1,5 +1,6 @@
 ---
-title: Özel ilkeler kullanarak talepler ekleme ve Kullanıcı girişini özelleştirme-Azure Active Directory B2C | Microsoft Docs
+title: Özel ilkelerde talepler ekleme ve Kullanıcı girişini özelleştirme
+titleSuffix: Azure AD B2C
 description: Kullanıcı girişini özelleştirmeyi ve Azure Active Directory B2C kaydolma veya oturum açma yolculuğuna talepler ekleme hakkında bilgi edinin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 452a7f61726c3039b2c2b37280d0153fbcbca5fb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066222"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948922"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin
 
@@ -113,7 +114,7 @@ Talebi tanımlamak için aşağıdaki öğeler kullanılır:
 
 ### <a name="add-the-claim-to-the-user-journey"></a>Talebi Kullanıcı yolculuğuna ekleyin
 
-1. Talebi, TrustFrameworkBase ilke dosyasında `<OutputClaim ClaimTypeReferenceId="city"/>` bulunan `LocalAccountSignUpWithLogonEmail` teknik profile bir olarak ekleyin. Bu teknik profil, SelfAssertedAttributeProvider ' i kullanır.
+1. Talebi, TrustFrameworkBase ilke dosyasında bulunan `LocalAccountSignUpWithLogonEmail` teknik profiline `<OutputClaim ClaimTypeReferenceId="city"/>` olarak ekleyin. Bu teknik profil, SelfAssertedAttributeProvider ' i kullanır.
 
     ```xml
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -150,7 +151,7 @@ Talebi tanımlamak için aşağıdaki öğeler kullanılır:
     </TechnicalProfile>
     ```
 
-2. Talebi, kullanıcıdan toplandıktan sonra AAD dizinine yazmak `<PersistedClaim ClaimTypeReferenceId="city" />` için AAD-userwriteusinglogonemail Technical profile öğesine ekleyin. Daha sonra kullanılmak üzere, talebi dizinde kalıcı yapmayı tercih ediyorsanız bu adımı atlayabilirsiniz.
+2. Talebi, kullanıcıdan toplandıktan sonra AAD dizinine yazmak için AAD-UserWriteUsingLogonEmail teknik profiline `<PersistedClaim ClaimTypeReferenceId="city" />` olarak ekleyin. Daha sonra kullanılmak üzere, talebi dizinde kalıcı yapmayı tercih ediyorsanız bu adımı atlayabilirsiniz.
 
     ```xml
     <!-- Technical profiles for local accounts -->
@@ -186,7 +187,7 @@ Talebi tanımlamak için aşağıdaki öğeler kullanılır:
     </TechnicalProfile>
     ```
 
-3. Kullanıcı oturum açtığında dizinden okunan teknik profillere talebiekleyin.`<OutputClaim ClaimTypeReferenceId="city" />`
+3. Kullanıcı oturum açtığında dizinden okunan teknik profillere `<OutputClaim ClaimTypeReferenceId="city" />` talebini ekleyin.
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -236,7 +237,7 @@ Talebi tanımlamak için aşağıdaki öğeler kullanılır:
     </TechnicalProfile>
     ```
 
-4. Başarılı bir Kullanıcı yolculuğuna sonra bu talebin belirteç içindeki uygulamaya gönderilmesi için talebisignuporsignın.xmldosyasınaekleyin.`<OutputClaim ClaimTypeReferenceId="city" />`
+4. Bu talebin başarılı bir Kullanıcı yolculuğuna sonra belirteçte uygulamaya gönderilmesi için, Signuporsignın. xml dosyasına `<OutputClaim ClaimTypeReferenceId="city" />` talebini ekleyin.
 
     ```xml
     <RelyingParty>
@@ -260,7 +261,7 @@ Talebi tanımlamak için aşağıdaki öğeler kullanılır:
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini (Önizleme)** seçin.
@@ -294,11 +295,11 @@ Uygulamanıza geri gönderilen belirteç `city` talebi içerir.
 }
 ```
 
-## <a name="optional-remove-email-verification"></a>İsteğe bağlı: E-posta doğrulamasını kaldır
+## <a name="optional-remove-email-verification"></a>İsteğe bağlı: e-posta doğrulamasını kaldır
 
-E-posta doğrulamayı atlamak için kaldırmayı `PartnerClaimType="Verified.Email"`seçebilirsiniz. Bu durumda, "gerekli" = true değeri kaldırılmadıkça e-posta adresi gereklidir ancak doğrulanmaz.  Bu seçeneğin kullanım çalışmalarınız için doğru olup olmadığını dikkatle düşünün.
+E-posta doğrulamayı atlamak için `PartnerClaimType="Verified.Email"`kaldırmayı seçebilirsiniz. Bu durumda, "gerekli" = true değeri kaldırılmadıkça e-posta adresi gereklidir ancak doğrulanmaz.  Bu seçeneğin kullanım çalışmalarınız için doğru olup olmadığını dikkatle düşünün.
 
-Doğrulanan e-posta, TrustFrameworkBase ilke dosyasında `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` varsayılan olarak etkindir:
+Doğrulanan e-posta, TrustFrameworkBase ilkesi dosyasındaki `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` varsayılan olarak etkindir:
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />

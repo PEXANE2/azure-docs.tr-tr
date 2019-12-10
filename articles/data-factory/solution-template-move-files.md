@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: dc842ba0e7ca0f34b7dacb98322c4dc0cd056483
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931998"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941961"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Dosyaları Azure Data Factory taşıma
 
@@ -36,9 +36,11 @@ Bu şablon, kaynak dosya tabanlı deponuzdan dosyaları alır. Ardından, bunlar
 - **Kopya** bir dosyayı kaynaktan hedef depoya kopyalar.
 - **Delete** , kaynak depodan aynı dosyayı siler.
 
-Şablon iki parametre tanımlar:
-- *FolderPath_SourceStore* , dosyaları taşımak istediğiniz kaynak mağazalarınızın klasör yoludur. 
-- *FolderPath_DestinationStore* , dosyaları taşımak istediğiniz hedef mağazalarınızın klasör yoludur. 
+Şablon dört parametre tanımlar:
+- *SourceStore_Location* , dosyaları taşımak istediğiniz kaynak mağazalarınızın klasör yoludur. 
+- *SourceStore_Directory* , dosyaları taşımak istediğiniz kaynak deponuzın alt klasör yoludur.
+- *DestinationStore_Location* , dosyaları taşımak istediğiniz hedef mağazalarınızın klasör yoludur. 
+- *DestinationStore_Directory* , dosyaları taşımak istediğiniz hedef deponuzın alt klasör yoludur.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
@@ -50,9 +52,7 @@ Bu şablon, kaynak dosya tabanlı deponuzdan dosyaları alır. Ardından, bunlar
 
     ![Hedefe yeni bir bağlantı oluşturun](media/solution-template-move-files/move-files2.png)
 
-3. **Bu şablonu kullan**'ı seçin.
-
-    ![Bu şablonu kullan](media/solution-template-move-files/move-files3.png)
+3. **Bu şablonu kullan** sekmesini seçin.
     
 4. Aşağıdaki örnekte olduğu gibi ardışık düzeni görürsünüz:
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C kaynakları ve verileri tehditlere karşı yönetme
+title: Kaynakları ve verileri tehditlere karşı yönetme
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C hizmet reddi saldırıları ve parola saldırıları için algılama ve risk azaltma teknikleri hakkında bilgi edinin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b236dba9b682bc4d62ef8cfc8b95e67370b3e0ea
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256899"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947749"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kaynakları ve verileri tehditlere karşı yönetme
 
@@ -43,12 +44,12 @@ Kilitleme eşiği dahil parola koruma ayarlarını yönetmek için:
 1. **Güvenlik**altında **kimlik doğrulama yöntemleri (Önizleme)** öğesini seçin ve **parola koruması**' nı seçin.
 1. İstediğiniz parola koruma ayarlarınızı girip **Kaydet**' i seçin.
 
-    ![Azure AD ayarlarındaki Azure portal parola koruma sayfası](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
-    <br />***Parola koruma** ayarlarında kilitleme eşiğini 5 olarak ayarlama*.
+    Azure AD ayarları](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)
+   ![Azure portal parola koruma sayfasını  <br />***Parola koruma** ayarlarında kilitleme eşiğini 5 olarak ayarlama*.
 
 ## <a name="view-locked-out-accounts"></a>Kilitli hesapları görüntüleme
 
-Kilitli hesaplar hakkında bilgi edinmek için Active Directory [oturum açma etkinliği raporunu](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)kontrol edebilirsiniz. **Durum**' un altında, **hata**' ı seçin. Kilitli bir hesabı `50053` göstermek için **oturum açma hata kodu** ile oturum açma girişimleri başarısız oldu:
+Kilitli hesaplar hakkında bilgi edinmek için Active Directory [oturum açma etkinliği raporunu](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)kontrol edebilirsiniz. **Durum**' un altında, **hata**' ı seçin. **Oturum açma hata kodu** `50053` oturum açma girişimleri, kilitli bir hesabı göstermek için başarısız oldu:
 
 ![Kilitli hesabı gösteren Azure AD oturum açma raporunun bölümü](media/active-directory-b2c-reference-threat-management/portal-01-locked-account.png)
 

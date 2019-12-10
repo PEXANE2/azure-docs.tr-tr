@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında | Microsoft Docs
-description: Talep çözümleyicilerine Azure Active Directory B2C bir özel ilkede nasıl kullanıldığı hakkında bilgi edinin.
+title: Özel ilkelerdeki talep çözücüler
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C bir özel ilkede talep çözümleyicilerine nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064407"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949883"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -23,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) [özel ilkelerindeki](active-directory
 
 Bir giriş veya çıkış talebinde bir talep çözümleyici kullanmak için, [Claimsschema](claimsschema.md) öğesi altında bir String **ClaimType**tanımlar ve ardından **DefaultValue** değerini giriş veya çıkış talebi öğesinde talep çözümleyici olarak ayarlarsınız. Azure AD B2C, talep Çözümleyicisinin değerini okur ve teknik profildeki değeri kullanır.
 
-Aşağıdaki örnekte, adlı `correlationId` bir talep türü, bir **veri türü** `string`ile tanımlanmıştır.
+Aşağıdaki örnekte, `correlationId` adlı bir talep türü `string`bir **veri türü** ile tanımlanmıştır.
 
 ```XML
 <ClaimType Id="correlationId">
@@ -33,7 +34,7 @@ Aşağıdaki örnekte, adlı `correlationId` bir talep türü, bir **veri türü
 </ClaimType>
 ```
 
-Teknik profilde talep çözümleyicisini talep türü ile eşleyin. Azure AD B2C talep Çözümleyicisinin `{Context:CorrelationId}` değerini talebe `correlationId` göre doldurur ve talebi teknik profile gönderir.
+Teknik profilde talep çözümleyicisini talep türü ile eşleyin. Azure AD B2C talep çözümleyici 'nin değerini talep `correlationId` `{Context:CorrelationId}` doldurur ve talebi teknik profile gönderir.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
@@ -45,16 +46,16 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 ### <a name="culture"></a>Kültür
 
-| Talep | Açıklama | Örnek |
+| İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {Culture: LanguageName} | Dil için iki harfli ISO kodu. | tr-TR |
+| {Culture: LanguageName} | Dil için iki harfli ISO kodu. | en |
 | {Culture: LCıD}   | Dil kodunun LCıD 'SI. | 1033 |
-| {Culture: RegionName} | Bölgenin iki harfli ISO kodu. | ABD |
+| {Culture: RegionName} | Bölgenin iki harfli ISO kodu. | US |
 | {Culture: RFC5646} | RFC5646 dil kodu. | en-US |
 
 ### <a name="policy"></a>İlke
 
-| Talep | Açıklama | Örnek |
+| İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
 | {Policy: PolicyId} | Bağlı olan taraf ilkesi adı. | B2C_1A_signup_signin |
 | {Policy: RelyingPartyTenantId} | Bağlı olan taraf ilkesinin kiracı KIMLIĞI. | your-tenant.onmicrosoft.com |
@@ -63,21 +64,21 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Talep | Açıklama | Örnek |
+| İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
-| {OıDC: AuthenticationContextReferences} |`acr_values` Sorgu dizesi parametresi. | Yok |
-| {OıDC: ClientID} |`client_id` Sorgu dizesi parametresi. | 00000000-0000-0000-0000-000000000000 |
-| {OıDC: Domainipucuyla} |`domain_hint` Sorgu dizesi parametresi. | facebook.com |
-| {OıDC: Loginipucu} |  `login_hint` Sorgu dizesi parametresi. | someone@contoso.com |
+| {OıDC: AuthenticationContextReferences} |`acr_values` sorgu dizesi parametresi. | Yok |
+| {OıDC: ClientID} |`client_id` sorgu dizesi parametresi. | 00000000-0000-0000-0000-000000000000 |
+| {OıDC: Domainipucuyla} |`domain_hint` sorgu dizesi parametresi. | facebook.com |
+| {OıDC: Loginipucu} |  `login_hint` sorgu dizesi parametresi. | someone@contoso.com |
 | {OıDC: MaxAge} | `max_age`. | Yok |
-| {OıDC: nonce} |`Nonce` Sorgu dizesi parametresi. | defaultNonce |
-| {OıDC: Prompt} | `prompt` Sorgu dizesi parametresi. | oturum açma |
-| {OıDC: kaynak} |`resource` Sorgu dizesi parametresi. | Yok |
-| {OıDC: scope} |`scope` Sorgu dizesi parametresi. | OpenID |
+| {OıDC: nonce} |`Nonce` sorgu dizesi parametresi. | defaultNonce |
+| {OıDC: Prompt} | `prompt` sorgu dizesi parametresi. | oturum açma |
+| {OıDC: kaynak} |`resource` sorgu dizesi parametresi. | Yok |
+| {OıDC: scope} |`scope` sorgu dizesi parametresi. | OpenID |
 
 ### <a name="context"></a>Bağlam
 
-| Talep | Açıklama | Örnek |
+| İste | Açıklama | Örnek |
 | ----- | ----------- | --------|
 | {Context: BuildNumber} | Kimlik deneyimi çerçevesi sürümü (derleme numarası).  | 1.0.507.0 |
 | {Context: CorrelationId} | Bağıntı Kimliği  | 00000000-0000-0000-0000-000000000000 |
@@ -88,9 +89,9 @@ Aşağıdaki bölümlerde, kullanılabilir talep çözücüler listelenmektedir.
 
 ### <a name="non-protocol-parameters"></a>Protokol olmayan parametreler
 
-OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir parametre adı, Kullanıcı yolculuğunda bir talebe eşleştirilebilir. Örneğin, uygulamadaki istek, veya bir özel sorgu dizesi adına `app_session` `loyalty_number`sahip bir sorgu dizesi parametresi içerebilir.
+OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir parametre adı, Kullanıcı yolculuğunda bir talebe eşleştirilebilir. Örneğin, uygulamadan gelen istek, `app_session`, `loyalty_number`veya herhangi bir özel sorgu dizesi olan bir sorgu dizesi parametresi içerebilir.
 
-| Talep | Açıklama | Örnek |
+| İste | Açıklama | Örnek |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV: kampanya Nkimliği} | Sorgu dizesi parametresi. | Hawaii |
 | {OAUTH-KV: app_session} | Sorgu dizesi parametresi. | A3C5R |
@@ -99,7 +100,7 @@ OıDC veya OAuth2 isteğinin bir parçası olarak dahil edilen herhangi bir para
 
 ### <a name="oauth2"></a>OAuth2
 
-| Talep | Açıklama | Örnek |
+| İste | Açıklama | Örnek |
 | ----- | ----------------------- | --------|
 | {OAuth2: access_token} | Erişim belirteci. | Yok |
 
@@ -138,7 +139,7 @@ Talep çözümleyicilerine göre, oturum açma adını veya Facebook, LinkedIn v
 
 Azure AD B2C, sayfa içeriğini dinamik olarak işleyebilmeniz için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](active-directory-b2c-ui-customization-custom-dynamic.md). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
 
-Aşağıdaki örnek, bir `hawaii`değeri, bir **dil** kodu `en-US`ve istemci kimliğini temsil eden **uygulama** olan **Kampanya NID** adlı bir parametre sorgu dizesinde geçirilir:
+Aşağıdaki örnek, bir değeri `hawaii`, bir `en-US`**dil** kodu ve istemci kimliğini temsil eden bir **uygulama** olan bir **Kampanya NID** adlı bir parametre sorgu dizesinde geçirilir:
 
 ```XML
 <UserJourneyBehaviors>

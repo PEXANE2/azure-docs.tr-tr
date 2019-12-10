@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C | kimlik deneyimi çerçevesi şeması için sosyal hesap talep dönüştürme örnekleri | Microsoft Docs
-description: Sosyal hesap, Azure Active Directory B2C Identity Experience Framework şeması için bir dönüşüm örnekleri talep ediyor.
+title: Özel ilkeler için sosyal hesap talep dönüştürme örnekleri
+titleSuffix: Azure AD B2C
+description: Sosyal hesap, Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için bir dönüşüm örnekleri talep ediyor.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +11,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9df00eea79b5dedc3211de02b17fe8f396d7b8a5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258156"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951080"
 ---
 # <a name="social-accounts-claims-transformations"></a>Sosyal hesap talep dönüştürmeleri
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) ' de sosyal hesap kimlikleri bir `userIdentities` **alternativesecurityıdcollection** talep türünün bir özniteliğinde depolanır. **Alternativesecurityıdcollection** içindeki her öğe veren (Facebook.com gibi kimlik sağlayıcı adı) ve `issuerUserId`veren için benzersiz bir kullanıcı tanımlayıcısı olan öğesini belirtir.
+Azure Active Directory B2C (Azure AD B2C) ' de sosyal hesap kimlikleri bir **Alternativesecurityıdcollection** talep türünün `userIdentities` özniteliğinde depolanır. **Alternativesecurityıdcollection** içindeki her öğe veren (Facebook.com gibi kimlik sağlayıcı adı) ve veren için benzersiz bir kullanıcı tanımlayıcısı olan `issuerUserId`belirtir.
 
 ```JSON
 "userIdentities": [{
@@ -42,11 +43,11 @@ Azure Active Directory çağrılarında kullanılabilecek kullanıcının Altern
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | key | dize | Sosyal kimlik sağlayıcısı tarafından kullanılan benzersiz kullanıcı tanımlayıcısını belirten ClaimType. |
-| Inputclaim | IdentityProvider | dize | Facebook.com gibi sosyal hesap kimlik sağlayıcısı adını belirten ClaimType. |
-| outputClaim | Alternativesecurityıd | dize | Claimstrans, tarafından üretilen ClaimType çağrılır. Sosyal hesap kullanıcısının kimliği hakkındaki bilgileri içerir. **Veren** , `identityProvider` talebin değeridir. **Issueruserıd** , `key` talebin Base64 biçimindeki değeridir. |
+| Inputclaim | anahtar | string | Sosyal kimlik sağlayıcısı tarafından kullanılan benzersiz kullanıcı tanımlayıcısını belirten ClaimType. |
+| Inputclaim | IdentityProvider | string | Facebook.com gibi sosyal hesap kimlik sağlayıcısı adını belirten ClaimType. |
+| outputClaim | Alternativesecurityıd | string | Claimstrans, tarafından üretilen ClaimType çağrılır. Sosyal hesap kullanıcısının kimliği hakkındaki bilgileri içerir. **Veren** , `identityProvider` talebinin değeridir. **Issueruserıd** , `key` talebinin Base64 biçimindeki değeridir. |
 
-Bir `alternativeSecurityId` ClaimType oluşturmak için bu talep dönüşümünü kullanın. Bu, `Facebook-OAUTH`gibi tüm sosyal kimlik sağlayıcısı teknik profilleri tarafından kullanılır. Aşağıdaki talep dönüştürmesi, Kullanıcı sosyal hesap KIMLIĞINI ve kimlik sağlayıcısı adını alır. Bu teknik profilin çıktısı, Azure AD dizin hizmetlerinde kullanılabilen bir JSON dize biçimidir.
+`alternativeSecurityId` ClaimType oluşturmak için bu talep dönüşümünü kullanın. `Facebook-OAUTH`gibi tüm sosyal kimlik sağlayıcısı teknik profilleri tarafından kullanılır. Aşağıdaki talep dönüştürmesi, Kullanıcı sosyal hesap KIMLIĞINI ve kimlik sağlayıcısı adını alır. Bu teknik profilin çıktısı, Azure AD dizin hizmetlerinde kullanılabilen bir JSON dize biçimidir.
 
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
@@ -64,24 +65,24 @@ Bir `alternativeSecurityId` ClaimType oluşturmak için bu talep dönüşümün�
 
 - Giriş talepleri:
     - **anahtar**: 12334
-    - **IdentityProvider**: facebook.com
+    - **IdentityProvider**: Facebook.com
 - Çıkış talepleri:
     - **Alternativesecurityıd**: {"Issuer": "Facebook.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>Additemtoalternativesecurityıdcollection
 
-Bir `alternativeSecurityIdCollection` talebe `AlternativeSecurityId` bir ekler.
+Bir `alternativeSecurityIdCollection` talebine `AlternativeSecurityId` ekler.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | öğe | dize | Çıkış talebine eklenecek ClaimType. |
-| Inputclaim | koleksiyon | Alternativesecurityıdcollection | İlkede varsa talep dönüştürmesi tarafından kullanılan ClaimTypes. Sağlanmışsa, talep dönüştürmesi koleksiyonun sonuna ekler `item` . |
-| outputClaim | koleksiyon | Alternativesecurityıdcollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Hem girişten `collection` `item`hem de öğeleri içeren yeni koleksiyon. |
+| Inputclaim | öğe | string | Çıkış talebine eklenecek ClaimType. |
+| Inputclaim | koleksiyon | Alternativesecurityıdcollection | İlkede varsa talep dönüştürmesi tarafından kullanılan ClaimTypes. Sağlanmışsa, talep dönüştürmesi koleksiyonun sonuna `item` ekler. |
+| outputClaim | koleksiyon | Alternativesecurityıdcollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Giriş `collection` ve `item`öğelerini içeren yeni koleksiyon. |
 
 Aşağıdaki örnek, mevcut bir hesapla yeni bir sosyal kimlik bağlantısı bağlar. Yeni bir sosyal kimlik bağlantısı sağlamak için:
 1. **AAD-Userreadusingalternativesecurityıd** ve **AAD-Userreadusingobjectıd** teknik profillerinde, kullanıcının **alternativesecurityıds** talebini çıkış.
 1. Kullanıcıdan, bu kullanıcıyla ilişkilendirilmemiş kimlik sağlayıcılarından biriyle oturum açmasını isteyin.
-1. **Createalternativesecurityıd** talep dönüşümünü kullanarak, adı ile yeni bir **alternativesecurityıd** talep türü oluşturun`AlternativeSecurityId2`
+1. **Createalternativesecurityıd** talep dönüşümünü kullanarak, `AlternativeSecurityId2` adında yeni bir **alternativesecurityıd** talep türü oluşturun
 1. **AlternativeSecurityId2** talebini var olan **Alternativesecurityıds** talebine eklemek Için **Additemtoalternativesecurityıdcollection** talepler dönüşümünü çağırın.
 1. **Alternativesecurityıds** talebini Kullanıcı hesabına kalıcı hale getirme
 
@@ -101,9 +102,9 @@ Aşağıdaki örnek, mevcut bir hesapla yeni bir sosyal kimlik bağlantısı ba�
 
 - Giriş talepleri:
     - **öğe**: {"Issuer": "Facebook.com", "ıssueruserıd": "MTIzNDU ="}
-    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
 - Çıkış talepleri:
-    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "facebook.com", "ıssueruserıd": "MTIzNDU ="}]
+    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "Facebook.com", "ıssueruserıd": "MTIzNDU ="}]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>Getıdentityprovidersfromalternativesecurityıdcollectiontransformation
 
@@ -128,7 +129,7 @@ Aşağıdaki talep dönüştürmesi, Kullanıcı **değişim kimliği** talebini
 ```
 
 - Giriş talepleri:
-    - **Alternativesecurityıdcollection**: [{"Issuer": "Google.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "facebook.com", "ıssueruserıd": "MTIzNDU ="}]
+    - **Alternativesecurityıdcollection**: [{"Issuer": "Google.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "Facebook.com", "ıssueruserıd": "MTIzNDU ="}]
 - Çıkış talepleri:
     - **identityProvidersCollection**: ["Facebook.com", "Google.com"]
 
@@ -138,7 +139,7 @@ Bir **Alternativesecurityıd** değerini bir **Alternativesecurityıdcollection*
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | IdentityProvider | dize | Koleksiyondan kaldırılacak kimlik sağlayıcısı adını içeren ClaimType. |
+| Inputclaim | IdentityProvider | string | Koleksiyondan kaldırılacak kimlik sağlayıcısı adını içeren ClaimType. |
 | Inputclaim | koleksiyon | Alternativesecurityıdcollection | Talep dönüştürmesi tarafından kullanılan ClaimTypes. Talep dönüştürmesi, IdentityProvider 'ı koleksiyondan kaldırır. |
 | outputClaim | koleksiyon | Alternativesecurityıdcollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Yeni koleksiyon, IdentityProvider koleksiyondan kaldırıldıktan sonra. |
 
@@ -165,6 +166,6 @@ Aşağıdaki örnek, sosyal kimliğin birinin mevcut bir hesapla bağlantısın�
 
 - Giriş talepleri:
     - **IdentityProvider**: Facebook.com
-    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "facebook.com", "ıssueruserıd": "MTIzNDU ="}]
+    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Issuer": "Facebook.com", "ıssueruserıd": "MTIzNDU ="}]
 - Çıkış talepleri:
-    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **koleksiyon**: [{"Issuer": "Live.com", "ıssueruserıd": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]

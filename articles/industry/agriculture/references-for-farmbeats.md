@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 501e5bc1b2de91e0dd74ae0f0d9163d74dcb06f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900388"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941568"
 ---
 # <a name="references"></a>Başvurular
 
@@ -23,7 +23,7 @@ Azure Farmstats API 'Leri, Azure Farmtts yeteneklerini kullanmanıza yardımcı 
 - Algılayıcı, kamera, drbir, hava durumu, uydu ve seçkin zemin verileri almak için API 'Ler.
 - Ortak veri sağlayıcıları genelinde verilerin normalleştirilmesi ve bağlamı oluşturma.
 - Alınan tüm verilerde şema erişimi ve sorgu özellikleri.
-- Agronomik özelliklerine göre sorgulanabilen otomatik meta verilerin oluşturulması. 
+- Agronomik özelliklerine göre sorgulanabilen otomatik meta verilerin oluşturulması.
 - Hızlı model oluşturma için otomatik olarak oluşturulan zaman sırası toplamaları.
 - Özel veri işleme işlem hatlarını kolayca derlemek için tümleşik Azure Data Factory altyapısı.
 
@@ -102,7 +102,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>Sorgu parametreleri
 
 REST GET çağrıları için, istek URI 'sinde bir veya daha fazla sorgu parametresi ekleyerek bir API yanıtında verileri filtreleyip sınırlayabilirsiniz ve sıralayabilirsiniz. Sorgu parametreleri için API belgelerine ve bireysel GET çağrılarına bakın.
-Örneğin, cihaz listesini sorgulayıp (/Device üzerinde çağrı Al), aşağıdaki sorgu parametreleri belirlenebilir: 
+Örneğin, cihaz listesini sorgulayıp (/Device üzerinde çağrı Al), aşağıdaki sorgu parametreleri belirlenebilir:
 
 ![Cihazların listesi](./media/for-references/query-parameters-device-1.png)
 
@@ -163,12 +163,12 @@ Azure Farmtts API 'Lerine, Azure Active Directory bir kullanıcı veya uygulama 
 
 4. [Veri hub 'ının Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) öğesine gidin ve şunları yapın:
     - **Roleatama API**'sine gidin.
-    - Yeni oluşturduğunuz **nesne kimliği** Için bir **roleatama** NESNESI oluşturmak üzere bir gönderi gerçekleştirin. 
+    - Yeni oluşturduğunuz **nesne kimliği** Için bir **roleatama** NESNESI oluşturmak üzere bir gönderi gerçekleştirin.
 
   > [!NOTE]
   > Kullanıcı ekleme ve kayıt Active Directory hakkında daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Önceki adımları tamamladıktan sonra, uygulama kaydınız (istemci), taşıyıcı kimlik doğrulaması aracılığıyla bir erişim belirteci kullanarak Azure Farmtts API 'Lerini çağırabilir. 
+Önceki adımları tamamladıktan sonra, uygulama kaydınız (istemci), taşıyıcı kimlik doğrulaması aracılığıyla bir erişim belirteci kullanarak Azure Farmtts API 'Lerini çağırabilir.
 
 Üstbilgi bölümündeki sonraki API isteklerinde şu şekilde göndermek için erişim belirtecini kullanın:
 

@@ -2,18 +2,18 @@
 title: "Mimari: şirket içi Apache Hadoop Azure HDInsight 'a"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmeye yönelik mimari en iyi yöntemlerini öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499259"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951539"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mimari en iyi uygulamaları
 
@@ -23,22 +23,22 @@ Bu makale, Azure HDInsight sistemlerinin mimarisine yönelik öneriler sağlar. 
 
 Birçok şirket içi Apache Hadoop dağıtımı, birçok iş yükünü destekleyen tek bir büyük kümeden oluşur. Bu tek küme karmaşık olabilir ve her şeyin birlikte çalışmasını sağlamak için tek tek hizmetlere yönelik olarak gerek duyar. Şirket içi Hadoop kümelerinin Azure HDInsight 'a geçirilmesi, yaklaşımda değişiklik yapılmasını gerektirir.
 
-Azure HDInsight kümeleri belirli bir işlem kullanımı türü için tasarlanmıştır. Depolama alanı birden çok küme genelinde paylaşılabildiğinden, farklı işlerin ihtiyaçlarını karşılamak için birden çok iş yükü için iyileştirilmiş işlem kümesi oluşturmak mümkündür. Her küme türü bu belirli iş yükü için en uygun yapılandırmaya sahiptir. Aşağıdaki tabloda, HDInsight 'ta ve ilgili iş yüklerinde desteklenen küme türleri listelenmektedir.
+Azure HDInsight kümeleri belirli bir işlem kullanımı türü için tasarlanmıştır. Depolama birden çok küme genelinde paylaşılabildiğinden, farklı işlerin ihtiyaçlarını karşılamak için birden çok iş yükü için iyileştirilmiş işlem kümesi oluşturmak mümkündür. Her küme türü bu belirli iş yükü için en uygun yapılandırmaya sahiptir. Aşağıdaki tabloda, HDInsight 'ta ve ilgili iş yüklerinde desteklenen küme türleri listelenmektedir.
 
-|**İş yükü**|**HDInsight küme türü**|
+|İş yükü|HDInsight küme türü|
 |---|---|
 |Toplu işleme (ETL/ELT)|Hadoop, Spark|
 |Veri ambarlama|Hadoop, Spark, etkileşimli sorgu|
 |IoT/akış|Kafka, fırtınası, Spark|
 |NoSQL Işlem işleme|HBase|
-|Bellek içi önbelleğe alma ile etkileşimli ve daha hızlı sorgular|Interactive Query|
-|Veri bilimi|ML Hizmetleri, Spark|
+|Bellek içi önbelleğe alma ile etkileşimli ve daha hızlı sorgular|Etkileşimli Sorgu|
+|Veri Bilimi|ML Hizmetleri, Spark|
 
 Aşağıdaki tabloda, HDInsight kümesi oluşturmak için kullanılabilecek farklı yöntemler gösterilmektedir.
 
-|**Araç**|**Tarayıcı tabanlı**|**Komut satırı**|**REST API**|**SDK**|
+|Araç|Tarayıcı tabanlı|Komut Satırı|REST API|SDK|
 |---|---|---|---|---|
-|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure portalda](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLı (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
@@ -62,7 +62,7 @@ Azure Data Factory, isteğe bağlı HDInsight kümelerinin oluşturulmasını za
 
 Genellikle şirket içi Hadoop dağıtımları, veri depolama ve veri işleme için aynı makine kümesini kullanır. Birlikte bulundurma, işlem ve depolamanın birlikte ölçeklendirilmesi gerekir.
 
-HDInsight kümelerinde depolamanın, işlem ile birlikte bulundurma ve Azure depolama, Azure Data Lake Storage ya da her ikisi de olabilir. Depolamanın işlem sırasında ayrılması aşağıdaki avantajlara sahiptir:
+HDInsight kümelerinde, depolamanın işlem ile birlikte bulundurma ve Azure depolama, Azure Data Lake Storage veya her ikisi de olabilir. Depolamanın işlem sırasında ayrılması aşağıdaki avantajlara sahiptir:
 
 - Kümeler arasında veri paylaşımı.
 - Veriler kümeye bağımlı olmadığından geçici kümelerin kullanımı.
@@ -74,9 +74,7 @@ Bilgi işlem ve depolama alanının performans maliyetini azaltmak için bir Azu
 
 ## <a name="use-external-metadata-stores"></a>Dış meta veri depolarını kullanma
 
-
 HDInsight kümeleriyle çalışan iki ana meta veri vardır: [Apache Hive](https://hive.apache.org/) ve [Apache Oozie](https://oozie.apache.org/). Hive meta veri deposu, Hadoop, Spark, LLAP, Presto ve Apache Pig gibi veri işleme motorları tarafından kullanılabilen merkezi şema deposudur. Oozie meta veri deposu, zamanlama ve ilerleme durumu ile tamamlanan Hadoop işlerinin durumuyla ilgili ayrıntıları depolar.
-
 
 HDInsight, Hive için Azure SQL veritabanı ve Oozie meta tastores kullanır. HDInsight kümelerinde bir meta veri deposu kurmanın iki yolu vardır:
 
@@ -105,7 +103,7 @@ Bazı HDInsight Hive meta veri deposu en iyi yöntemler şunlardır:
 - Özel meta veri deposunu düzenli olarak yedekleyin.
 - Meta veri ve HDInsight kümesini aynı bölgede saklayın.
 - Azure portal veya Azure Izleyici günlükleri gibi Azure SQL veritabanı Izleme araçlarını kullanarak performans ve kullanılabilirlik için meta veri deposunu izleyin.
-- Tablo ve sütun istatistikleri oluşturmak için gereken şekilde **Tabloyu Çözümle** komutunu yürütün. Örneğin, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Tablo ve sütun istatistikleri oluşturmak için gereken `ANALYZE TABLE` komutunu yürütün. Örneğin, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Farklı iş yükleri için en iyi uygulamalar
 

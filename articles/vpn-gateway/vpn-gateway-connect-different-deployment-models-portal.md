@@ -1,5 +1,5 @@
 ---
-title: "Klasik sanal ağları Azure Resource Manager VNET 'lere bağlama: Portal | Microsoft Docs"
+title: 'Klasik sanal ağları Azure Resource Manager sanal ağlara bağlama: Portal | Microsoft Docs'
 description: VPN Gateway ve portalı kullanarak klasik VNET 'leri Kaynak Yöneticisi sanal ağlara bağlama adımları
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266570"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951743"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Portalı kullanarak farklı dağıtım modellerindeki sanal ağları bağlama
 
@@ -78,13 +78,13 @@ Aşağıdaki tabloda, örnek VNET 'lerin ve yerel sitelerin nasıl tanımlandı�
 | Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |Batı ABD | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |Doğu ABD |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Bölüm 1-klasik VNet ayarlarını yapılandırma
 
 Bu bölümde, klasik VNet, yerel ağ (yerel site) ve sanal ağ geçidi oluşturursunuz. Ekran görüntüleri örnek olarak verilmiştir. Değerleri kendi değerlerinizle değiştirdiğinizden emin olun veya [örnek](#values) değerleri kullanın.
 
-### 1. <a name="classicvnet"></a>Klasik VNet oluşturma
+### 1. <a name="classicvnet"> </a>klasik VNET oluşturma
 
 Klasik bir VNet 'iniz yoksa ve bu adımları bir alıştırma olarak çalıştırıyorsanız, [Bu makaleyi](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ve yukarıdaki [örnek](#values) ayarlar değerlerini kullanarak bir sanal ağ oluşturabilirsiniz.
 
@@ -96,11 +96,11 @@ VPN ağ geçidi olan bir VNet 'iniz zaten varsa, ağ geçidinin dinamik olduğun
 4. Döndürülen listeden ' sanal ağ ' öğesini bulun ve sanal ağ sayfasını açmak için tıklayın. 
 5. Sanal ağ sayfasında, klasik VNet oluşturmak için ' klasik ' seçeneğini belirleyin. Burada varsayılan değer alırsanız bunun yerine bir Kaynak Yöneticisi VNet ile birlikte bir sanal ağa sahip olursunuz.
 
-### 2. <a name="local"></a>Yerel siteyi yapılandırma
+### 2. <a name="local"> </a>yerel siteyi yapılandırma
 
 1. **Tüm kaynaklara** gidin ve listedeki **classicvnet** 'i bulun.
-2. **Genel bakış** sayfasının **VPN bağlantıları** **bölümünde ağ geçidi** ' ne tıklayarak Ağ Geçidi oluşturun.
-  ![VPN ağ geçidi yapılandırma](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN ağ geçidi yapılandırma")
+2. Menüdeki **Ayarlar** bölümünde **ağ geçidi** ' ne tıklayın ve ardından bir ağ geçidi oluşturmak için başlık ' a tıklayın.
+  ![VPN ağ geçidi yapılandırma](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CVPN ağ geçidi onşekil ")
 3. **Yenı VPN bağlantısı** sayfasında, **bağlantı türü**için **siteden siteye**' yı seçin.
 4. **Yerel site**için **gerekli ayarları Yapılandır**' a tıklayın. Bu, **yerel site** sayfasını açar.
 5. **Yerel site** sayfasında, Kaynak Yöneticisi VNET 'e başvuracak bir ad oluşturun. Örneğin, ' RMVNetLocal '.
@@ -108,19 +108,19 @@ VPN ağ geçidi olan bir VNet 'iniz zaten varsa, ağ geçidinin dinamik olduğun
 7. **Istemci adres alanı**Için kaynak yöneticisi VNET için sanal ağ IP adresi alanlarının [değerlerini](#connectoverview) kullanın. Bu ayar Kaynak Yöneticisi sanal ağına yönlendirmek üzere adres alanlarını belirtmek için kullanılır. Örnekte, RMVNet için adres aralığı olan 192.168.0.0/16 kullanırız.
 8. Değerleri kaydetmek ve **yenı VPN bağlantısı** sayfasına dönmek için **Tamam** ' ı tıklatın.
 
-### <a name="classicgw"></a>3. Sanal ağ geçidini oluşturma
+### <a name="classicgw"></a>3. sanal ağ geçidini oluşturma
 
 1. **Yenı VPN bağlantısı** sayfasında, **ağ geçidini hemen oluştur** onay kutusunu seçin.
 2. **İsteğe bağlı ağ geçidi yapılandırması**’na tıklayarak **Ağ geçidi yapılandırması** sayfasını açın.
 
-   ![Ağ geçidi yapılandırma sayfasını aç](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Ağ geçidi yapılandırma sayfasını aç")
-3. Alt ağ **-gerekli ayarları Yapılandır** ' a tıklayarak **alt ağ ekle** sayfasını açın. **Ad** , gerekli değerle zaten yapılandırılmış: **Gatewaysubnet**.
+   ![Ağ Geçidi yapılandırma sayfasını aç](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Ağ Geçidi yapılandırma sayfasını aç")
+3. Alt ağ **-gerekli ayarları Yapılandır** ' a tıklayarak **alt ağ ekle** sayfasını açın. **Ad** , gerekli değerle zaten yapılandırılmış: **gatewaysubnet**.
 4. **Adres aralığı** , ağ geçidi alt ağının aralığını ifade eder. /29 adres aralığı (3 Adres) ile bir ağ geçidi alt ağı oluşturabilseniz de, daha fazla IP adresi içeren bir ağ geçidi alt ağı oluşturmanız önerilir. Bu, daha fazla kullanılabilir IP adresi gerektirebilecek gelecek yapılandırmalara uyum sağlayacak. Mümkünse/27 veya/28 kullanın. Bu adımları bir alıştırma olarak kullanıyorsanız, [örnek değerlere](#values)başvurabilirsiniz. Bu örnekte, ' 10.0.0.32/28 ' kullanılır. Ağ geçidi alt ağını oluşturmak için **Tamam** ' ı tıklatın.
 5. **Ağ geçidi yapılandırma** sayfasında, **Boyut** ağ geçidi SKU 'suna başvurur. VPN ağ geçidiniz için ağ geçidi SKU 'sunu seçin.
 6. **Yönlendirme türünün** **dinamik**olduğunu doğrulayın ve ardından **Tamam** ' a tıklayarak **yeni VPN bağlantısı** sayfasına dönün.
 7. **Yenı VPN bağlantısı** SAYFASıNDA, VPN ağ geçidinizi oluşturmaya başlamak için **Tamam** ' ı tıklatın. Bir VPN ağ geçidinin oluşturulması 45 dakika sürebilir.
 
-### <a name="ip"></a>4. Sanal ağ geçidi genel IP adresini kopyala
+### <a name="ip"></a>4. sanal ağ geçidi genel IP adresini kopyalayın
 
 Sanal ağ geçidi oluşturulduktan sonra, ağ geçidi IP adresini görüntüleyebilirsiniz. 
 
@@ -132,7 +132,7 @@ Sanal ağ geçidi oluşturulduktan sonra, ağ geçidi IP adresini görüntüleye
 
 Bu bölümde, Kaynak Yöneticisi VNet 'iniz için sanal ağ geçidi ve yerel ağ geçidi oluşturursunuz. Ekran görüntüleri örnek olarak verilmiştir. Değerleri kendi değerlerinizle değiştirdiğinizden emin olun veya [örnek](#values) değerleri kullanın.
 
-### <a name="1-create-a-virtual-network"></a>1. Sanal ağ oluşturma
+### <a name="1-create-a-virtual-network"></a>1. sanal ağ oluşturma
 
 **Örnek değerler:**
 
@@ -145,7 +145,7 @@ Bu bölümde, Kaynak Yöneticisi VNet 'iniz için sanal ağ geçidi ve yerel ağ
 
 Kaynak Yöneticisi VNet 'iniz yoksa ve bu adımları bir alıştırma olarak çalıştırıyorsanız, örnek değerleri kullanarak [sanal ağ oluşturma](../virtual-network/quick-create-portal.md)bölümündeki adımlarla bir sanal ağ oluşturun.
 
-### <a name="creategw"></a>2. Sanal ağ geçidi oluşturma
+### <a name="creategw"></a>2. sanal ağ geçidi oluşturma
 
 Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
@@ -166,14 +166,14 @@ Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ 
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="createlng"></a>3. Yerel ağ geçidi oluşturma
+### <a name="createlng"></a>3. yerel ağ geçidi oluşturma
 
 **Örnek değerler:** Yerel ağ geçidi = ClassicVNetLocal
 
 | Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |Ağ Geçidi genel IP adresi|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |Batı ABD | RMVNetLocal (192.168.0.0/16) |Classıvnet ağ geçidine atanan genel IP adresi|
-| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |RMVNet ağ geçidine atanan genel IP adresi.|
+| RMVNet | (192.168.0.0/16) |Doğu ABD |ClassicVNetLocal (10.0.0.0/24) |RMVNet ağ geçidine atanan genel IP adresi.|
 
 Yerel ağ geçidi, klasik VNet ve sanal ağ geçidi ile ilişkili adres aralığını ve genel IP adresini belirtir. Bu adımları bir alıştırma olarak yapıyorsanız örnek değerlerine bakın.
 
@@ -187,7 +187,7 @@ Bu bölümde, yerel site ayarlarını belirtirken kullandığınız yer tutucu I
 2. Sanal ağınızın sayfasında **Genel Bakış ' a**tıklayın.
 3. **VPN bağlantıları** bölümünde, grafikte yerel sitenizin adına tıklayın.
 
-   ![VPN-bağlantılar](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN bağlantıları")
+   ![VPN-bağlantılar](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN Bağlantıları")
 4. **Siteden sıteye VPN bağlantıları** sayfasında, sitenin adına tıklayın.
 
    ![Site adı](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Yerel site adı")
@@ -196,7 +196,7 @@ Bu bölümde, yerel site ayarlarını belirtirken kullandığınız yer tutucu I
    ![Açık yerel site](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Yerel siteyi aç")
 6. **Yerel site** sayfasında **VPN gateway IP adresini** Kaynak Yöneticisi ağ geçidinin IP adresi ile değiştirin.
 
-   ![Ağ geçidi-IP adresi](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Ağ GEÇIDI IP adresi")
+   ![Ağ geçidi-IP adresi](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Ağ geçidi IP adresi")
 7. IP adresini güncelleştirmek için **Tamam** ' ı tıklatın.
 
 ## <a name="RMtoclassic"></a>Bölüm 4-Klasik bağlantı Kaynak Yöneticisi oluşturma
@@ -207,7 +207,7 @@ Bu adımlarda, Azure portal kullanarak Kaynak Yöneticisi VNet 'ten klasik VNet 
 2. **Yapılandırma** ' ya tıklayın ve IP adresi değerinin klasik VNET için VPN ağ geçidi olduğunu doğrulayın. Gerekirse güncelleştirin ve ardından **Kaydet**' e tıklayın. Sayfayı kapatın.
 3. **Tüm kaynaklar**' da yerel ağ geçidi ' ne tıklayın.
 4. Bağlantılar sayfasını açmak için **Bağlantılar** ' a tıklayın.
-5. **Bağlantılar** sayfasında bağlantı eklemek için tıklayın **+** .
+5. **Bağlantılar** sayfasında, bağlantı eklemek için **+** ' ye tıklayın.
 6. **Bağlantı ekle** sayfasında bağlantıyı adlandırın. Örneğin, ' RMtoClassic '.
 7. **Siteden siteye** bu sayfada zaten seçili.
 8. Bu siteyle ilişkilendirmek istediğiniz sanal ağ geçidini seçin.
@@ -218,7 +218,7 @@ Bu adımlarda, Azure portal kullanarak Kaynak Yöneticisi VNet 'ten klasik VNet 
 
 Bu adımlarda, klasik VNet 'ten Kaynak Yöneticisi VNet 'e bağlantıyı yapılandırırsınız. Bu adımlar PowerShell gerektirir. Portalda bu bağlantıyı oluşturamazsınız. Hem klasik (SM) hem de Kaynak Yöneticisi (RM) PowerShell cmdlet 'lerini indirdiğinizden ve yüklediğinizden emin olun.
 
-### <a name="1-connect-to-your-azure-account"></a>1. Azure hesabınıza bağlanma
+### <a name="1-connect-to-your-azure-account"></a>1. Azure hesabınıza bağlanın
 
 PowerShell konsolunu yükseltilmiş haklarla açın ve Azure hesabınızda oturum açın. Oturum açtıktan sonra, hesap ayarlarınız Azure PowerShell için kullanılabilir olacak şekilde indirilir. Aşağıdaki cmdlet, Kaynak Yöneticisi dağıtım modeli için Azure hesabınızın oturum açma kimlik bilgilerini ister:
 
@@ -256,9 +256,9 @@ Birden fazla aboneliğiniz varsa, kullanmak istediğiniz aboneliği belirtin.
 Select-AzureSubscription -SubscriptionName "Name of subscription"
 ```
 
-### <a name="2-view-the-network-configuration-file-values"></a>2. Ağ yapılandırma dosyası değerlerini görüntüleme
+### <a name="2-view-the-network-configuration-file-values"></a>2. ağ yapılandırma dosyası değerlerini görüntüleme
 
-Azure portal bir sanal ağ oluşturduğunuzda, Azure 'un kullandığı tam ad Azure portal görünmez. Örneğin, Azure portal ' ClassicVNet ' adında görünen bir sanal ağın, ağ yapılandırma dosyasında çok daha uzun bir adı olabilir. Ad şöyle görünebilir: ' ClassicRG ClassicVNet ' grubunu gruplayın. Bu adımlarda, ağ yapılandırma dosyasını indirir ve değerlerini görüntüleyebilirsiniz.
+Azure portal bir sanal ağ oluşturduğunuzda, Azure 'un kullandığı tam ad Azure portal görünmez. Örneğin, Azure portal ' ClassicVNet ' adında görünen bir sanal ağın, ağ yapılandırma dosyasında çok daha uzun bir adı olabilir. Ad şöyle görünebilir: ' Group ClassicRG ClassicVNet '. Bu adımlarda, ağ yapılandırma dosyasını indirir ve değerlerini görüntüleyebilirsiniz.
 
 Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası C:\AzureNet dizinine aktarılır.
 
@@ -271,7 +271,7 @@ Dosyayı bir metin düzenleyici ile açın ve klasik sanal ağınızın adını 
 - VNet adları **Virtualnetworksite Name =** olarak listelenir.
 - Site adları **Localnetworksite Name =** olarak listelenir
 
-### <a name="3-create-the-connection"></a>3. Bağlantı oluşturma
+### <a name="3-create-the-connection"></a>3. bağlantıyı oluşturma
 
 Paylaşılan anahtarı ayarlayın ve klasik VNet 'ten Kaynak Yöneticisi VNet 'e bağlantıyı oluşturun. Portalı kullanarak paylaşılan anahtarı ayarlayamazsınız. PowerShell cmdlet 'lerinin klasik sürümünü kullanarak oturum açarken bu adımları çalıştırdığınızdan emin olun. Bunu yapmak için **Add-AzureAccount**kullanın. Aksi takdirde, '-AzureVNetGatewayKey ' öğesini ayarlayameyeceksiniz.
 

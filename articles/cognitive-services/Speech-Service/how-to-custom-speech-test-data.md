@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816393"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951845"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
@@ -62,6 +62,9 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 | Arşiv biçimi | .zip |
 | Maksimum Arşiv boyutu | 2 GB |
 
+> [!TIP]
+> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Eğitim ve test için daha fazla veri gerekiyorsa, bunu birkaç. zip dosyasına bölün ve ayrı olarak karşıya yükleyin. Daha sonra, *birden fazla* veri kümesinden eğiteyi ve test yapmayı tercih edebilirsiniz.
+
 Sesimiz bu özellikleri karşılamaz veya bunun olup olmadığını denetlemek istiyorsanız, sesi denetlemek veya dönüştürmek için [Sox](http://sox.sourceforge.net) 'i indirmeyi öneririz. Aşağıda, bu etkinliklerin her birinin komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
 
 | Etkinlik | Açıklama | Sox komutu |
@@ -71,7 +74,7 @@ Sesimiz bu özellikleri karşılamaz veya bunun olup olmadığını denetlemek i
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Ses + insanlar etiketli, test/eğitim için yazılı Döküm verileri
 
-Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için doğruluğu ölçmek amacıyla, karşılaştırma için insan etiketli dökümlere (Word-Word) sağlamanız gerekir. İnsanlar etiketli döküm genellikle zaman alıcı olsa da doğruluğu değerlendirmek ve modeli kullanım durumlarınız için eğitmek gerekir. Göz önünde bulundurmanız durumunda, tanınma iyileştirmeleri yalnızca belirtilen veriler kadar iyi olacaktır. Bu nedenle, yalnızca yüksek kaliteli döküm dosyalarının karşıya yüklenmesi önemlidir.  
+Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için doğruluğu ölçmek amacıyla, karşılaştırma için insan etiketli dökümlere (Word-Word) sağlamanız gerekir. İnsanlar etiketli döküm genellikle zaman alıcı olsa da doğruluğu değerlendirmek ve modeli kullanım durumlarınız için eğitmek gerekir. Göz önünde bulundurmanız durumunda, tanınma iyileştirmeleri yalnızca belirtilen veriler kadar iyi olacaktır. Bu nedenle, yalnızca yüksek kaliteli döküm dosyalarının karşıya yüklenmesi önemlidir.
 
 | Özellik | Değer |
 |----------|-------|
@@ -82,6 +85,9 @@ Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için
 | Örnek biçim | PCM, 16 bit |
 | Arşiv biçimi | .zip |
 | En büyük ZIP boyutu | 2 GB |
+
+> [!TIP]
+> Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Eğitim ve test için daha fazla veri gerekiyorsa, bunu birkaç. zip dosyasına bölün ve ayrı olarak karşıya yükleyin. Daha sonra, *birden fazla* veri kümesinden eğiteyi ve test yapmayı tercih edebilirsiniz.
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 

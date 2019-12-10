@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C bir özel ilkede Azure Active Directory teknik profili tanımlama | Microsoft Docs
+title: Özel ilkede bir Azure AD teknik profili tanımlama
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C bir özel ilkede Azure Active Directory teknik profili tanımlayın.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064614"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949567"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -23,9 +24,9 @@ ms.locfileid: "71064614"
 
 Azure Active Directory B2C (Azure AD B2C) Azure Active Directory Kullanıcı yönetimi için destek sağlar. Bu makalede, bu standartlaştırılmış protokolü destekleyen bir talep sağlayıcısıyla etkileşim kurmaya yönelik teknik bir profilin ayrıntıları açıklanmaktadır.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, protokol işleyici derlemesinin `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`tam adını içermelidir.
+**Protokol** öğesinin **Name** özniteliğinin `Proprietary`olarak ayarlanması gerekir. **Handler** özniteliği `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`protokol işleyicisi derlemesinin tam adını içermelidir.
 
 Tüm Azure AD teknik profilleri **AAD ortak** teknik profilini içerir. Aşağıdaki teknik profiller protokol belirtmediğinden protokol **AAD ortak** teknik profilinde yapılandırılmıştır:
 
@@ -61,13 +62,13 @@ Aşağıdaki teknik profiller sosyal ve yerel hesaplar için **ınputclaim** iç
 
 - Sosyal hesap teknik profilleri **AAD-Userreadusingalternativesecurityıd** ve **AAD-Userwriteusingalternativesecurityıd** , **alternativesecurityıd** talebini içerir. Bu talep, sosyal hesap kullanıcı tanımlayıcısını içerir.
 - Yerel hesap teknik profilleri **AAD-Userreadusıngemapostaadresi** ve **AAD-UserWriteUsingLogonEmail** , **e-posta** talebi içerir. Bu talep, yerel hesabın oturum açma adını içerir.
-- Birleştirilmiş (yerel ve sosyal) Teknik profiller **AAD-Userreadusingobjectıd**, **AAD-Userwritepasswordusingobjectıd**, **AAD-userwriteprofileusingobjectıd**ve AAD- **userwritephonenumberusingobjectıd** şunu içerir **ObjectID** talebi. Bir hesabın benzersiz tanımlayıcısı.
+- Birleştirilmiş (yerel ve sosyal) Teknik profiller **AAD-Userreadusingobjectıd**, **AAD-Userwritepasswordusingobjectıd**, **AAD-userwriteprofileusingobjectıd**ve AAD- **Userwritephonenumberusingobjectıd** , **ObjectID** talebini içerir. Bir hesabın benzersiz tanımlayıcısı.
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya yenilerini oluşturmak Için kullanılan **inputclaimstransreference** öğelerinin bir koleksiyonunu içerebilir.
 
 ## <a name="output-claims"></a>Çıkış talepleri
 
-**Outputclaim** öğesi, Azure AD teknik profili tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir. `DefaultValue` Özniteliği ayarladığınız sürece Azure Active Directory tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
+**Outputclaim** öğesi, Azure AD teknik profili tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir. `DefaultValue` özniteliğini ayarladığınız sürece Azure Active Directory tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
@@ -75,7 +76,7 @@ Aşağıdaki teknik profiller sosyal ve yerel hesaplar için **ınputclaim** iç
 
 - Yeni hesabın tanımlayıcısı olan **ObjectID**
 - **Newuser**, kullanıcının yeni olup olmadığını belirtir
-- kimlik doğrulamasını için ayarlayan **Authenticationsource**`localAccountAuthentication`
+- kimlik doğrulamasını `localAccountAuthentication` ayarlayan **Authenticationsource**
 - Yeni hesabın kullanıcı asıl adı olan **userPrincipalName**
 - Hesap oturum açma adı olan ve **e-posta** girişi talebine benzeyen **signınnames. emapostaadı**
 
@@ -114,8 +115,8 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 ## <a name="requirements-of-an-operation"></a>Bir işlemin gereksinimleri
 
 - Tüm Azure AD teknik profillerinin talep paketinde tam olarak bir **ınputclaim** öğesi olması gerekir.
-- İşlem veya `Write` `DeleteClaims`ise, **PersistedClaims** öğesinde de görünmelidir.
-- **UserPrincipalName** talebinin değeri biçiminde `user@tenant.onmicrosoft.com`olmalıdır.
+- İşlem `Write` veya `DeleteClaims`, ayrıca bir **PersistedClaims** öğesinde da görünmelidir.
+- **UserPrincipalName** talebinin değeri `user@tenant.onmicrosoft.com`biçiminde olmalıdır.
 - **DisplayName** talebi gereklidir ve boş bir dize olamaz.
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD teknik sağlayıcı işlemleri
@@ -252,14 +253,14 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
 ```
 ## <a name="metadata"></a>Meta Veriler
 
-| Öznitelik | Gerekli | Açıklama |
+| Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| Çalışma | Evet | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya. `DeleteClaimsPrincipal` |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değerler: `Read`, `Write`, `DeleteClaims`veya `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Hayır | Kullanıcı nesnesi dizinde yoksa bir hata oluştur. Olası değerler: `true` veya `false`. |
 | UserMessageIfClaimsPrincipalDoesNotExist | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalDoesNotExist Attribute Description), Kullanıcı nesnesi yoksa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Hayır | Kullanıcı nesnesi zaten mevcutsa bir hata oluştur. Olası değerler: `true` veya `false`.|
 | Usermessageifclaimsprincıpalalreadyexists | Hayır | Bir hata ortaya çıkarılmalıdır (bkz. RaiseErrorIfClaimsPrincipalAlreadyExists Attribute Description), Kullanıcı nesnesi zaten varsa kullanıcıya gösterilecek iletiyi belirtin. Değer [yerelleştirilmiş](localization.md)olabilir.|
-| Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Deeri Uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
+| Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
 | ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
 
 

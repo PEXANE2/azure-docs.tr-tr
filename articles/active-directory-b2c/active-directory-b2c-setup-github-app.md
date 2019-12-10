@@ -1,5 +1,6 @@
 ---
-title: Kayıt ayarlama ve bir GitHub hesabı ile oturum açma-Azure Active Directory B2C
+title: Kayıt ayarlama ve bir GitHub hesabı ile oturum açma
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C kullanarak uygulamalarınızda GitHub hesabı olan müşteriler için kaydolma ve oturum açma sağlar.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74c663d8847c2829a5d9466f8e601dd44593a6f8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ae431ecd76f0ae5d51880832a5de415d3271ba54
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065192"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949364"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir GitHub hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -23,7 +24,7 @@ ms.locfileid: "71065192"
 
 ## <a name="create-a-github-oauth-application"></a>GitHub OAuth uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir GitHub hesabını bir [kimlik sağlayıcısı](active-directory-b2c-reference-oauth-code.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir GitHub hesabınız yoksa kaydolabilirsiniz [https://www.github.com/](https://www.github.com/).
+Azure Active Directory B2C (Azure AD B2C) ' de bir GitHub hesabını bir [kimlik sağlayıcısı](active-directory-b2c-reference-oauth-code.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir GitHub hesabınız yoksa [https://www.github.com/](https://www.github.com/)kaydolabilirsiniz.
 
 1. Oturum [GitHub Geliştirici](https://github.com/settings/developers) GitHub kimlik bilgilerinizle Web sitesi.
 1. Seçin **OAuth uygulamaları** seçip **yeni bir OAuth uygulaması**.

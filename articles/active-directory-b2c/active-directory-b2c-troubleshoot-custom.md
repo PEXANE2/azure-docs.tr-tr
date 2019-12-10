@@ -1,5 +1,6 @@
 ---
-title: Application Insights Azure Active Directory B2C özel ilkelerle ilgili sorunları giderme
+title: Application Insights özel ilkelerle ilgili sorunları giderme
+titleSuffix: Azure AD B2C
 description: Özel ilkelerinizin yürütülmesini izlemek için Application Insights ayarlama.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602031"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950094"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights ile Azure Active Directory B2C günlüklerini toplayın
 
@@ -30,7 +31,7 @@ Burada açıklanan ayrıntılı etkinlik günlükleri **yalnızca** özel ilkele
 
 Henüz bir tane yoksa, aboneliğinizde bir Application Insights örneği oluşturun.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve Azure aboneliğinizi içeren dizini (Azure AD B2C dizininiz değil) seçin.
 1. Sol taraftaki gezinti menüsünde **kaynak oluştur** ' u seçin.
 1. **Application Insights**arayıp seçin ve ardından **Oluştur**' u seçin.
@@ -60,7 +61,7 @@ Henüz bir tane yoksa, aboneliğinizde bir Application Insights örneği oluştu
     * `ClientEnabled="true"`, izleme sayfası görünümü ve istemci tarafı hataları için ApplicationInsights istemci tarafı betiği gönderir. Bunları, Application Insights portalındaki **Browserzamanlamalar** tablosunda görüntüleyebilirsiniz. `ClientEnabled= "true"`ayarlayarak, sayfa betiklerine Application Insights ekler ve sayfa yüklerinin ve AJAX çağrılarının, sayımların, tarayıcı özel durumlarının ve AJAX hatalarının ayrıntılarının yanı sıra Kullanıcı ve oturum sayımlarının zamanlamalarını alırsınız. Bu alan **isteğe bağlıdır**ve varsayılan olarak `false` olarak ayarlanır.
     * `ServerEnabled="true"`, Application Insights için mevcut kullanıcı etkinliği JSON JSON 'sini özel bir olay olarak gönderir.
 
-    Örneğin:
+    Örnek:
 
     ```XML
     <TrustFrameworkPolicy
