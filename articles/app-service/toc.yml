@@ -82,7 +82,11 @@
         - name: Güvenliğe genel bakış
           href: overview-security.md
     - name: Ağ özellikleri
-      href: networking-features.md
+      items:
+        - name: Genel Bakış
+          href: networking-features.md
+        - name: Hizmet uç noktalarıyla Application Gateway
+          href: networking/app-gateway-with-service-endpoints.md
     - name: Gelen ve giden IP’ler
       href: overview-inbound-outbound-ips.md
     - name: Sanal Ağ Tümleştirmesi

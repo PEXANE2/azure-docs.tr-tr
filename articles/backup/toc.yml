@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: SAP HANA Backup destek matrisi
           href: sap-hana-backup-support-matrix.md
+        - name: Azure İlkesi için desteklenen VM SKU’ları
+          href: backup-azure-policy-supported-skus.md
     - name: Güvenlik
       items:
         - name: Rol Tabanlı Access Control
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: Şifrelenmiş VM’ler için anahtarları ve gizli dizileri geri yükleme
               href: backup-azure-restore-key-secret.md
+    - name: Azure Backup için yerleşik Azure İlkesi
+      items:
+        - name: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
+          href: backup-azure-auto-enable-backup.md
     - name: Kurtarma Hizmetleri Kasaları için Tanılama Olayları
       items:
         - name: Kurtarma Hizmetleri Kasaları için Tanılama Olaylarını kullanma

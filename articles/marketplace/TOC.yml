@@ -513,3 +513,15 @@
       href: ./partner-center-portal/support.md
     - name: İş Ortağı Merkezi Analizi
       href: ./partner-center-portal/analytics.md
+    - name: Ödeme alma
+      items:
+        - name: Ödeme alma
+          href: ./partner-center-portal/get-paid.md
+        - name: Ödeme hesabınızı ve vergi formlarınızı ayarlama
+          href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 'Ödeme eşikleri, yöntemleri ve zaman çerçeveleri'
+          href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: Ödeme özeti
+          href: ./partner-center-portal/payout-summary.md
+        - name: Vergi ayrıntıları
+          href: ./partner-center-portal/tax-details-paid-transactions.md

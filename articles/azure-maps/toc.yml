@@ -29,6 +29,8 @@
           href: tutorial-iot-hub-maps.md
         - name: Azure Notebooks kullanarak EV yönlendirme (Python)
           href: tutorial-ev-routing.md
+        - name: Azure Notebooks kullanarak hava durumu verilerini analiz etme (Python)
+          href: weather-service-tutorial.md
 - name: Kavramlar
   items:
     - name: Azure Haritalar ile kimlik doğrulaması

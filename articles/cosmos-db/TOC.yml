@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: Azure AD ile sertifika tabanlı kimlik doğrulaması
           href: certificate-based-authentication.md
+        - name: Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
+          href: how-to-restrict-user-data.md
     - name: Kurumsal kullanıma hazır olma
       items:
         - name: Verileri bir yedeklemeden geri yükleme
