@@ -1,6 +1,6 @@
 ---
-title: Konsol uygulamasının kimliğiyle belirteç edinin ve Microsoft Graph API çağrısı yapın (v 1.0) | Microsoft Docs
-description: Azure AD ile tümleştirilen bir .NET Daemon uygulaması derlemeyi, OAuth 2,0 kullanarak Azure AD korumalı API 'Leri çağırır
+title: Belirteç al & Konsol uygulamalarından Microsoft Graph API 'Leri çağırma (v 1.0) | Mavisi
+description: Azure AD ile tümleştirilen bir .NET Daemon uygulaması oluşturun & OAuth 2,0 kullanarak Azure AD korumalı API 'Leri çağırır
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 384aa90fd4edb8f52224bdf2885208fde5789398
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920897"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965934"
 ---
 # <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Hızlı başlangıç: konsol uygulamasının kimliği (v 1.0) ile belirteç alma ve Microsoft Graph API çağrısı 
 

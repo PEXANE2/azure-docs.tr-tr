@@ -1,15 +1,15 @@
 ---
 title: Azure blok zinciri hizmetine bağlanmak için Visual Studio Code kullanma
 description: Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanarak bir Azure blok zinciri hizmeti Konsorsiyumu ağı 'na bağlanma
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455991"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977105"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma
 
@@ -59,12 +59,12 @@ Azure blok zinciri geliştirme seti VS Code uzantısını kullanarak, konsorsiyu
 Azure blok zinciri hizmeti Consortium üyesine erişiminiz yoksa, önkoşul hızlı başlangıcını doldurun: Azure portal veya hızlı başlangıç: Azure CLI kullanarak [bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md)oluşturma.
 
 1. VS Code gezgin bölmesinde, **Azure blok zinciri** uzantısını genişletin.
-1. **Konsorsiya Bağlan**' ı seçin.
+1. **Ağa bağlan**' ı seçin.
 
-   ![Konsorsiyumun bağlantısını yapın](./media/connect-vscode/connect-consortium.png)
+   ![Ağa bağlan](./media/connect-vscode/connect-consortium.png)
 
     Azure kimlik doğrulaması istenirse, bir tarayıcı kullanarak kimlik doğrulaması yapmak için istemleri izleyin.
-1. Komut paleti açılan menüsünde **Azure blok zinciri hizmeti Consortium 'A Bağlan** ' ı seçin.
+1. Komut paleti açılan menüsünde **Azure blok zinciri hizmeti** ' ni seçin.
 1. Azure blok zinciri hizmeti Consortium üyele ilişkili aboneliği ve kaynak grubunu seçin.
 1. Listeden Consortium ' ı seçin.
 

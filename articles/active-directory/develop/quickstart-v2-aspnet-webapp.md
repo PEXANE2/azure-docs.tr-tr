@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform ASP.NET Web sunucusu hızlı başlangıç | Mavisi
-description: OpenID Connect kullanarak ASP.NET web uygulamasında Microsoft Oturum Açma işlemini yapmayı öğrenin.
+title: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme | Mavisi
+description: OpenID Connect kullanarak bir ASP.NET Web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46902d72c888713be62524ed4b609e2299a85c2b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4ab2b3c1872de25c2d78198a0e23c0067ef0c9ea
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920727"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968094"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 

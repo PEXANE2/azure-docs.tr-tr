@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform ASP.NET Core Web uygulaması hızlı başlangıç | Mavisi
+title: Microsoft 'a ASP.NET Core Web Apps ile oturum açma ekleme-Microsoft Identity platform | Mavisi
 description: OpenID Connect kullanarak bir ASP.NET Core Web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin
 services: active-directory
 author: jmprieur
@@ -13,12 +13,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 832fb890a91c9e87c26d8facdcba49ef9d810117
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b86c8f79902c0234e35e4d195e4680b6e9b3f3c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920744"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963554"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
 

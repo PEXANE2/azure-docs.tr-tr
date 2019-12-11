@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "74005077"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973432"
 ---
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
 
@@ -46,7 +46,7 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uy
    ![eklenen istemci IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Azure PostgreSQL sunucusu, 5432 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 5432 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
+   > Azure PostgreSQL sunucusu, 5432 numaralı bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 5432 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 5432 numaralı bağlantı noktasını açmadığı müddetçe Hyperscale (Citus) kümenize bağlanamazsınız.
    >
 
 9. Sunucuyu sağlamak için **gözden geçir + oluştur** ' a ve ardından **Oluştur** ' a tıklayın. Sağlama birkaç dakika sürer.
@@ -57,10 +57,10 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uy
 
 PostgreSQL için Azure veritabanı sunucusunu oluştururken, **citus** adlı varsayılan bir veritabanı oluşturulur. Veritabanı sunucunuza bağlanmak için bir bağlantı dizesi ve yönetici parolası gerekir.
 
-1. Bağlantı dizesini edinin. Sunucu grubu sayfasında **bağlantı dizeleri** menü öğesine tıklayın. ( **Ayarlar**altında.) İşaretlenmiş  **C++ dizeyi (libpq)** bulun. Şu biçimdedir:
+1. Bağlantı dizesini edinin. Sunucu grubu sayfasında **bağlantı dizeleri** menü öğesine tıklayın. ( **Ayarlar**altında.) **Psql**olarak işaretlenmiş dizeyi bulun. Şu biçimdedir:
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    Dizeyi kopyalayın. "{\_Password}" öğesini, daha önce seçtiğiniz yönetici parolasıyla değiştirmeniz gerekir. Sistem düz metin parolanızı depolamaz, bağlantı dizesinde sizin için görüntüleyemez.
@@ -69,7 +69,7 @@ PostgreSQL için Azure veritabanı sunucusunu oluştururken, **citus** adlı var
 
 3. İstemde, [psql](https://www.postgresql.org/docs/current/app-psql.html) yardımcı programıyla PostgreSQL Için Azure veritabanı sunucunuza bağlanın. Bağlantı dizenizi tırnak içine geçirin ve parolanızı içerdiğinden emin olun:
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    Örneğin, aşağıdaki komut, **demosunucum**sunucu grubunun düzenleyici düğümüne bağlanır:

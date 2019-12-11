@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform Python web uygulaması hızlı başlangıç | Mavisi
+title: Microsoft Identity platform Python web uygulamasına oturum açma ekleme | Mavisi
 description: OAuth2 kullanarak bir Python web uygulamasında Microsoft oturum açma uygulamasını nasıl uygulayacağınızı öğrenin
 services: active-directory
 author: abhidnya13
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0d6b96683a04fa5d2814246b3c22aa52956a8bbb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8a6e8dad7549b3656d4387cfad1d0c3a44b13975
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920523"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965985"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 

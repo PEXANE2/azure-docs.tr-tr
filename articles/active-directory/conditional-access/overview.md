@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075313"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966291"
 ---
 # <a name="what-is-conditional-access"></a>Koşullu Erişim nedir?
 
@@ -26,7 +26,7 @@ Koşullu erişim, sinyalleri bir araya getirmek, kararlar almak ve kuruluş ilke
 
 ![Kavramsal koşullu sinyal ve zorlaması alma kararı](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Koşullu erişim ilkeleri en basit deyişle, bir Kullanıcı bir kaynağa erişmek isterse, bir eylemi tamamlaması gerekir. Örnek: Bir bordro Yöneticisi, bordro uygulamasına erişmek istiyor ve bu uygulamaya erişmek için Multi-Factor Authentication gerçekleştirmek istiyor.
+Koşullu erişim ilkeleri en basit deyişle, bir Kullanıcı bir kaynağa erişmek isterse, bir eylemi tamamlaması gerekir. Örnek: bir bordro Yöneticisi, bordro uygulamasına erişmek istiyor ve bu uygulamaya erişmek için Multi-Factor Authentication gerçekleştirmek istiyor.
 
 Yöneticiler iki birincil hedefle başlatılacaktır:
 
@@ -61,7 +61,7 @@ Bir ilke kararı verirken, Koşullu erişimin hesaba götürebileceğine ilişki
 
 - Erişimi engelle
    - En kısıtlayıcı karar
-- Erişim izni ver
+- Erişim verme
    - En az kısıtlayıcı karar, aşağıdaki seçeneklerden birini veya birkaçını hala gerektirebilir:
       - Multi-Factor Authentication gerektir
       - Cihazın uyumlu olarak işaretlenmesini gerektir
@@ -80,6 +80,13 @@ Birçok kuruluş, koşullu erişim ilkelerinin şu gibi yardımcı olabilecek ya
 - Belirli konumlardan erişimi engelleme veya verme
 - Riskli oturum açma davranışlarını engelleme
 - Belirli uygulamalar için kuruluş tarafından yönetilen cihazlar gerektirme
+
+## <a name="customer-case-studies"></a>Müşteri örnek olay incelemeleri
+
+Diğer kuruluşların otomatik erişim denetimi kararları tanımlamak ve uygulamak için Azure AD koşullu erişimini nasıl kullandığını öğrenin. Aşağıdaki öne çıkan hikayeler, bu müşteri ihtiyaçlarını nasıl karşıladığını gösterir.
+
+* [Wipro, müşteri görevlendirmeleri geliştirmek için Microsoft bulut güvenlik araçlarıyla Mobil üretkenlik sağlar.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Azure AD 'deki koşullu erişim ilkeleri, şirketin, kendi şirket verileri üzerinde denetimi sürdürirken---kendi kimlik bilgilerini kullanabilen---, şirket dışındaki güvenilen belgeleri, kaynakları ve uygulamaları paylaşmasını sağlar.
+* [Aramex teslimi sınırlı-küresel lojistik ve taşımacılık şirketi, kimlik ve erişim yönetimi çözümü ile buluta bağlı Office oluşturur](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Aramex 'in uzak çalışanları ile güvenli erişimin daha zor olduğundan emin olma. Şirket artık bu uzak çalışanların SaaS uygulamalarına Ağ dışından erişmesini sağlamak için koşullu erişim uyguluyor. Koşullu erişim kuralı, Multi-Factor Authentication uygulanıp zorlamayacağına ve yalnızca doğru kişilerin doğru erişime izin vermesini sağlar.
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 

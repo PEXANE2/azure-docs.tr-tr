@@ -1,6 +1,6 @@
 ---
-title: Azure AD 'de oturum açmak ve oturumu kapatmak için AngularJS tek sayfalı uygulama oluşturun | Microsoft Docs
-description: Oturum açma işlemi için Azure AD ile tümleştirilen ve OAuth kullanarak Azure AD korumalı API'leri çağıran bir AngularJS tek sayfalı uygulaması oluşturmayı öğrenin.
+title: Oturum açmak için Azure AD AngularJS tek sayfalı uygulama oluşturun & oturumu kapatın | Microsoft Docs
+description: Azure AD 'yi & oturum açma için tümleştiren & tek sayfalı bir uygulamanın nasıl oluşturulacağını öğrenin ve OAuth kullanarak Azure AD korumalı API 'Leri çağırır.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e97c985d0a19842e4a514705e3e34665eeb499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921246"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963537"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory ile oturum açmak ve oturum kapatmak için AngularJS tek sayfalı uygulaması oluşturma
 

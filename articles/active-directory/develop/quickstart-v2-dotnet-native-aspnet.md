@@ -1,5 +1,5 @@
 ---
-title: Azure AD tarafından korunan bir ASP.NET Web API 'SI çağırma-Microsoft Identity
+title: Azure AD korumalı ASP.NET Web API 'SI çağırma-Microsoft Identity platform
 description: Bu hızlı başlangıçta, Windows Masaüstü (WPF) uygulamasından Azure Active Directory tarafından korunan bir ASP.NET Web API 'sinin nasıl çağrılacağını öğrenin. WPF istemcisi bir kullanıcının kimliğini doğrular, bir erişim belirteci ister ve Web API 'sini çağırır.
 services: active-directory
 author: jmprieur
@@ -12,12 +12,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920659"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963316"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Hızlı başlangıç: Azure AD tarafından korunan bir ASP.NET Web API 'SI çağırma
 

@@ -1,5 +1,5 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme için Azure AD ile bir .NET Web API 'SI oluşturun | Microsoft Docs
+title: Kimlik doğrulama & yetkilendirmesi için bir Azure AD .NET Web API 'SI oluşturma | Microsoft Docs
 description: Kimlik doğrulaması ve yetkilendirme için Azure AD ile tümleştirilen bir .NET MVC web API'si nasıl oluşturulur?
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27af5d6782b0fe45df1a82e320c593b9a0f332cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: abc4c05aab6efcfc55d5e4dc812ab41a3e3fc8aa
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921067"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963282"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Hızlı başlangıç: Kimlik doğrulaması ve yetkilendirme için Azure AD ile tümleştirilen bir .NET web API'si oluşturma
 

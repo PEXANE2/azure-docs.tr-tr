@@ -5,18 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 12/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4cee16a4b6d4f87c8f09ad742d9a504cfc5fc394
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 785d9da57171e60f5762a1449c24f9c767be3bc9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498321"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972813"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
 
-Azure savunma hizmeti, sanal ağınızın içinde sağladığınız yeni, platform tarafından yönetilen yeni bir PaaS hizmetidir. SSL üzerinden Azure portal doğrudan sanal makinelerinize yönelik güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion aracılığıyla bağlandığınızda, sanal makinelerinizin bir genel IP adresi olması gerekmez.
+Azure savunma hizmeti, sanal ağınızın içinde sağladığınız yeni, platform tarafından yönetilen yeni bir PaaS hizmetidir. SSL üzerinden Azure portal doğrudan sanal makinelerinize yönelik güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion ile bağlandığınızda sanal makineleriniz için genel IP adresi gerekmez.
 
  Savunma, sağlandığı sanal ağdaki tüm VM 'lere güvenli RDP ve SSH bağlantısı sağlar. Azure savunma 'nın kullanılması, sanal makinelerinizin, RDP/SSH kullanarak güvenli erişim sağlamaya devam ederken, dış dünyaya RDP/SSH bağlantı noktaları sunulmasını önler. Azure savunma sayesinde, sanal makineye doğrudan Azure portal bağlanırsınız. Ek bir istemci, aracı veya yazılım parçası gerekmez.
 
