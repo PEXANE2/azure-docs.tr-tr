@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">Bir uygulamayı ve Kubernetes altyapısını ölçeklendirme</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes’te çalışan bir uygulamayı güncelleştirme</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS kümesini yükseltme</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">Mikro hizmetler başvuru mimarisini öğrenme ve uygulama</a>
   - title: Microsoft Learn ile becerilerinizi geliştirin
     items:
       - type: list
