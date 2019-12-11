@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621006"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976443"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge üzerinde Azure Stream Analytics
  
-IOT Edge üzerinde Azure Stream Analytics (ASA), böylece cihaz tarafından üretilen verilerin tüm değerini açığa çıkarabilirsiniz yakın neredeyse gerçek zamanlı analitik zekayı IOT cihazlarına dağıtmak için geliştiricilerin güçlendirir. Azure Stream Analytics, düşük gecikme süresi, dayanıklılık, bant genişliği ve uyumluluk verimli kullanımı için tasarlanmıştır. Kuruluşlar artık endüstriyel işlemler yakın Denetim mantığı dağıtabilir ve bulutta yapılan büyük veri analizi tamamlar.  
+IoT Edge üzerinde Azure Stream Analytics (ASA), geliştiricilerin neredeyse gerçek zamanlı analitik zekayı IoT cihazlarına daha yakın bir biçimde dağıtmasına ve böylece cihaz tarafından üretilen verilerin tüm değerini ortaya çıkarabilmesine olanak tanır. Azure Stream Analytics düşük gecikme süresi, dayanıklılık, bant genişliğinin verimli kullanımı ve uyumluluk için tasarlanmıştır. Şimdi kuruluşlar bulutta yapılan endüstriyel işlemlerin ve tamamlayıcı Büyük Veri analizinin yakınında denetim mantığı dağıtımı yapabilir.  
 
 IOT Edge üzerinde Azure Stream Analytics, çalışan içinde [Azure IOT Edge](https://azure.microsoft.com/campaigns/iot-edge/) framework. İçinde ASA işi oluşturulduktan sonra dağıtabilir ve IOT hub'ı kullanarak yönetebilirsiniz.
 
@@ -25,9 +25,9 @@ IOT Edge üzerinde Azure Stream Analytics, çalışan içinde [Azure IOT Edge](h
 ![IOT Edge üst düzey diyagramı](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
 * **Düşük gecikme süreli komut ve Denetim**: Örneğin, güvenlik sistemleri üretim işlem verilerine son derece düşük gecikme süresi ile yanıt vermelidir. IOT Edge üzerinde ASA ile algılayıcı verileri neredeyse gerçek zamanlı ve bir makine durdurmak veya uyarıları tetiklemek için anomalileri algılayın, komutları sorunu çözümleyebilirsiniz.
-*   **Bulut bağlantısının sınırlı**: Uzaktan araştırma donanım, bağlı tekneler veya yurtdışında incelediğinizde gibi görev açısından kritik sistemleri analiz ve veri için bulut bağlantısı kesintili olduğunda bile react gerekir. ASA, akış mantığınızı ağ bağlantısı bağımsız olarak çalışır ve hangi buluta daha fazla işleme veya depolama için gönderdiğiniz seçebilirsiniz.
-* **Sınırlı bant genişliği**: Veri hacmi jet motoru tarafından üretilen ya da bağlı arabalar veri filtre veya gereken ön işlemden buluta göndermeden önce çok büyük olabilir. ASA kullanarak filtreleyin veya buluta gönderilmesi gereken veri toplama.
-* **Uyumluluk**: Yasal uyumluluk bazı verileri yerel olarak anonim hale getirilen veya buluta gönderilmeden önce toplanan gerektirebilir.
+*   **Bulut bağlantısının sınırlı**: çözümlemek ve bulut bağlantısı kesintili olduğunda bile veri tepki vermek uzaktan araştırma donanım, bağlı tekneler veya yurtdışında incelediğinizde gibi görev açısından kritik sistemleri gerekir. ASA, akış mantığınızı ağ bağlantısı bağımsız olarak çalışır ve hangi buluta daha fazla işleme veya depolama için gönderdiğiniz seçebilirsiniz.
+* **Sınırlı bant genişliği**: veri hacmi jet motoru tarafından üretilen ya da bağlı arabalar veri filtre veya gereken ön işlemden buluta göndermeden önce çok büyük olabilir. ASA kullanarak filtreleyin veya buluta gönderilmesi gereken veri toplama.
+* **Uyumluluk**: yönetmeliklere uygunluk, bazı verileri yerel olarak anonim hale getirilen veya buluta gönderilmeden önce toplanan gerektirebilir.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Azure Stream Analytics Edge işi
 ### <a name="what-is-an-edge-job"></a>"Edge" işi nedir?
@@ -110,7 +110,7 @@ IOT Edge belgeleri için bu adımları açıklanan [Windows](https://docs.micros
 
 > [!Note]
 > Bu adım sırasında ASA (Bunu zaten mevcut değilse) depolama kapsayıcısında "EdgeJobs" adlı bir klasör oluşturur. Her bir dağıtım için "EdgeJobs" klasöründe yeni bir alt klasör oluşturulur.
-> IOT Edge cihazlarına iş dağıttığınızda, ASA işi tanım dosyasını bir paylaşılan erişim imzası (SAS) oluşturur. SAS anahtarını, cihaz ikizi kullanarak IOT Edge cihazları güvenli bir şekilde aktarılır. Bu anahtarı süre sonu oluşturulduğu günden itibaren üç yıldır. IOT Edge işi güncelleştirdiğinizde, SAS değişir, ancak görüntü sürümü değişmez. Sonra **güncelleştirme**, dağıtım iş akışını izleyin ve cihazda bir güncelleştirme bildirimi günlüğe kaydedilir.
+> İşinizi IoT Edge cihazlara dağıttığınızda, ASA iş tanımı dosyası için bir paylaşılan erişim imzası (SAS) oluşturur. SAS anahtarını, cihaz ikizi kullanarak IOT Edge cihazları güvenli bir şekilde aktarılır. Bu anahtarı süre sonu oluşturulduğu günden itibaren üç yıldır. Bir IoT Edge işini güncelleştirdiğinizde SAS değişir, ancak görüntü sürümü değişmeyecektir. **Güncelleştirme**yaptıktan sonra dağıtım iş akışını izleyin ve cihazda bir güncelleştirme bildirimi kaydedilir.
 
 
 IOT Edge dağıtımları hakkında daha fazla bilgi için bkz [bu sayfayı](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -143,11 +143,11 @@ Bu örnek aşağıdaki yolları tanımlar:
 
 ## <a name="technical-information"></a>Teknik bilgiler
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Bulut işlerine kıyasla IOT Edge işleri için geçerli sınırlamalar
-Eşlik sahip olmaktır IOT Edge işleri ve bulut işleri arasında. SQL sorgu dil özelliklerinin çoğu hem bulut hem de IOT Edge üzerinde aynı mantığı çalıştırılacak etkinleştirme desteklenir.
+Eşlik sahip olmaktır IOT Edge işleri ve bulut işleri arasında. Çoğu SQL sorgu dili özelliği desteklenir, hem bulutta hem de IoT Edge aynı mantığı çalıştırmaya olanak tanır.
 Ancak aşağıdaki özellikleri, edge işleri için henüz desteklenmiyor:
 * Kullanıcı tanımlı işlevler (UDF) JavaScript içinde. UDF kullanılabilir [ C# IOT Edge işleri için](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (Önizleme).
 * Kullanıcı tanımlı toplamlarda (UDA).
-* Azure ML işlevleri
+* Azure ML işlevleri.
 * Tek bir adımda 14'ten fazla toplamaları kullanma.
 * Giriş/Çıkış AVRO biçimi. Şu anda yalnızca CSV ve JSON desteklenir.
 * Aşağıdaki SQL işleçleri:
@@ -160,7 +160,7 @@ IOT Edge üzerinde ASA çalıştırmak için çalıştırmak üzere cihazları g
 
 ASA ve Azure IOT Edge'i kullanma **Docker** kapsayıcıları (Windows, Linux) birden çok konak işletim sistemlerinde çalışan taşınabilir bir çözüm sağlamak için.
 
-IOT Edge üzerinde ASA, x86 64 veya ARM (Gelişmiş RISC makineler) mimarileri üzerinde çalışan Windows ve Linux görüntüleri olarak kullanılabilir. 
+IoT Edge on, hem x86-64 hem de ARM (Gelişmiş RıSC makineleri) mimarilerinde çalışan Windows ve Linux görüntüleri olarak kullanılabilir hale getirilir. 
 
 
 ### <a name="input-and-output"></a>Giriş ve çıkış
@@ -204,25 +204,25 @@ Başvuru verileri güncelleştirmek için iki yolu vardır:
 
 ## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics modülü görüntü bilgileri 
 
-Bu sürüm bilgileri 2019-06-27 en son güncelleştirildiği:
+Bu sürüm bilgileri 2019-06-27 tarihinde son güncelleştirilme tarihi:
 
 - Görüntü: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
-   - temel görüntü: microsoft/dotnet:2.1.6-runtime-alpine3.7
-   - Platform:
-      - Mimari: amd64
-      - os: linux
+   - temel görüntü: Microsoft/DotNet: 2.1.6-Runtime-alçam 3.7
+   - platformunun
+      - Mimari: AMD64
+      - işletim sistemi: Linux
   
 - Görüntü: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
-   - temel görüntü: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
-   - Platform:
-      - Mimari: arm
-      - os: linux
+   - temel görüntü: Microsoft/DotNet: 2.1.6-Runtime-Bionic-arm32v7
+   - platformunun
+      - Mimari: ARM
+      - işletim sistemi: Linux
   
 - Görüntü: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
-   - temel görüntü: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
-   - Platform:
-      - Mimari: amd64
-      - işletim sistemi: windows
+   - temel görüntü: Microsoft/DotNet: 2.1.6-Runtime-nanoserver-1809
+   - platformunun
+      - Mimari: AMD64
+      - işletim sistemi: Windows
       
       
 ## <a name="get-help"></a>Yardım alın

@@ -1,5 +1,5 @@
 ---
-title: Aşağı akış Web API 'Lerini çağıran Web API 'SI (genel bakış)-Microsoft Identity platform
+title: Web API 'Lerini çağıran bir Web API 'SI oluşturma-Microsoft Identity platform | Mavisi
 description: Aşağı akış Web API 'Lerini (genel bakış) çağıran bir Web API 'SI oluşturmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef9fc121b16d81eed932d1ab55ca38d2a2f1057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852491"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965135"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran web API'si
+# <a name="scenario-web-api-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Web API 'SI
 
 Web API 'Lerini çağıran bir Web API 'SI oluşturmak için ihtiyacınız olan her şey hakkında bilgi edinin.
 
@@ -33,8 +33,8 @@ Web API 'Lerini çağıran korumalı Web API 'SI olan bu senaryo, "bir Web API '
 ## <a name="overview"></a>Genel Bakış
 
 - Bir istemci (Web, Masaüstü, mobil veya tek sayfalı uygulama)-aşağıdaki diyagramda temsil edilmeyen korumalı bir Web API 'sini çağırır ve "Authorization" http üstbilgisinde bir JWT taşıyıcı belirteci sağlar.
-- Korunan Web API 'si, belirteci doğrular ve (Azure AD `AcquireTokenOnBehalfOf` 'den) Kullanıcı adına ikinci bir Web API 'si (aşağı akış Web API 'si olarak adlandırılır) çağırmak üzere başka bir belirteç istemek için msal yöntemini kullanır.
-- Korumalı Web API 'si, bir aşağı akış API 'SI çağırmak için bu belirteci kullanır. Ayrıca, diğer aşağı `AcquireTokenSilent`akış API 'leri için belirteçleri istemek üzere daha sonra çağırabilir (ancak aynı kullanıcı adına devam edebilir). `AcquireTokenSilent`gerektiğinde belirteci yeniler.
+- Korunan Web API 'SI belirteci doğrular ve MSAL `AcquireTokenOnBehalfOf` yöntemini (Azure AD 'den) Kullanıcı adına ikinci bir Web API 'SI (aşağı akış Web API 'SI olarak adlandırılır) çağırmak için başka bir belirteç kullanacak şekilde kullanır.
+- Korumalı Web API 'si, bir aşağı akış API 'SI çağırmak için bu belirteci kullanır. Ayrıca, diğer aşağı akış API 'Leri için belirteçleri istemek üzere daha sonra `AcquireTokenSilent`çağırabilir (ancak yine de aynı kullanıcı adına). `AcquireTokenSilent`, gerektiğinde belirteci yeniler.
 
 ![Web API 'SINI çağıran Web API 'SI](media/scenarios/web-api.svg)
 

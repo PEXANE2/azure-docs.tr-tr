@@ -1,6 +1,6 @@
 ---
-title: Android ile çalışmaya başlama-Microsoft Identity platform | Mavisi
-description: Android uygulaması, bir erişim belirteci alabilir ve Microsoft Identity platform 'dan erişim belirteçleri gerektiren API 'Leri veya API 'Leri çağırabilir Microsoft Graph.
+title: Kullanıcı oturum açma & çağrı Microsoft Graph (Android)-Microsoft Identity platform | Mavisi
+description: Erişim belirteci alın ve Microsoft Identity platform (Android) ' den erişim belirteçleri gerektiren Microsoft Graph veya API 'Leri çağırın
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242208"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961566"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph çağırın
 
@@ -543,7 +543,7 @@ Uygulamayı derleyin ve bir test cihazında veya öykünücüsünde dağıtın. 
 
 Oturum açtıktan sonra, uygulama Microsoft Graph `/me` uç noktasından döndürülen verileri görüntüler.
 
-### <a name="consent"></a>İzniniz
+### <a name="consent"></a>izniniz
 
 Herhangi bir Kullanıcı uygulamanızda ilk kez oturum açtığında, bu kullanıcılara istenen izinleri onaylaması için Microsoft kimliği sorulur.  Birçok kullanıcı kabul etme yeteneğine sahip olsa da, bazı Azure AD kiracılar, yöneticilerin tüm kullanıcılar adına onay vermesini gerektiren Kullanıcı onayını devre dışı bırakmış olur. Bu senaryoyu desteklemek için, uygulamanızın kapsamlarını Azure portal kaydedin.
 

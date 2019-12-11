@@ -1,31 +1,22 @@
 ---
 title: Azure Işlevleri 'nde işlevleri devre dışı bırakma
-description: Azure Işlevleri 1. x ve 2. x içindeki işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
+description: Azure Işlevleri 'nde işlevleri devre dışı bırakmayı ve etkinleştirmeyi öğrenin.
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 7968580fcaa40575571a41f067fa74fbdc0a3a34
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/05/2019
+ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233039"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970984"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Işlevleri 'nde işlevleri devre dışı bırakma
 
-Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılacağı açıklanır. Bir işlevi *devre dışı bırakmak* , çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yoksayması anlamına gelir. Bunu yapmanız, çalışma zamanı sürümüne ve programlama diline bağlıdır:
+Bu makalede, Azure Işlevlerinde bir işlevin nasıl devre dışı bırakılacağı açıklanır. Bir işlevi *devre dışı bırakmak* , çalışma zamanının işlev için tanımlanan otomatik tetikleyiciyi yoksayması anlamına gelir. Bu, belirli bir işlevin işlev uygulamasının tamamını durdurmadan çalışmasını engellemenizi sağlar.
 
-* İşlevler 2. x:
-  * Tüm diller için bir yol
-  * Sınıf kitaplıkları için C# isteğe bağlı yol
-* 1\. x işlevleri:
-  * Komut dosyası dilleri
-  * C#sınıf kitaplıkları
+Bir işlevi devre dışı bırakmak için önerilen yol `AzureWebJobs.<FUNCTION_NAME>.Disabled`biçimindeki bir uygulama ayarı kullanmaktır. Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
 
-## <a name="functions-2x---all-languages"></a>İşlevler 2. x-tüm diller
-
-2\. x Işlevleri içinde, `AzureWebJobs.<FUNCTION_NAME>.Disabled`biçimindeki bir uygulama ayarını kullanarak bir işlevi devre dışı bırakabilirsiniz. Bu uygulama ayarını [Azure CLI](/cli/azure/) kullanarak ve işlevinizin [Azure Portal](https://portal.azure.com)içindeki **Yönet** sekmesinden bir dizi şekilde oluşturabilir ve değiştirebilirsiniz. 
-
-### <a name="azure-cli"></a>Azure CLI
+## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 Azure CLı 'da, uygulama ayarını oluşturmak ve değiştirmek için [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) komutunu kullanın. Aşağıdaki komut `QueueTrigger` adlı bir işlevi devre dışı bırakır `AzureWebJobs.QueueTrigger.Disabled` adlı bir uygulama ayarı oluşturarak `true`olarak ayarlayın. 
 
@@ -43,52 +34,19 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-### <a name="portal"></a>Portal
+## <a name="use-the-portal"></a>Portalı kullanma
 
 İşlevin **Yönet** sekmesinde **işlev durumu** anahtarını da kullanabilirsiniz. Anahtar, `AzureWebJobs.<FUNCTION_NAME>.Disabled` uygulama ayarı oluşturup silerek işe yarar.
 
 ![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
 
-## <a name="functions-2x---c-class-libraries"></a>İşlevler 2. x C# sınıfı kitaplıklar
+## <a name="other-methods"></a>Diğer Yöntemler
 
-Işlevler 2. x sınıf kitaplığında, tüm diller için çalışır olan yöntemi kullanmanızı öneririz. Ancak isterseniz, [Disable özniteliğini 1. x işlevleri içinde kullanabilirsiniz](#functions-1x---c-class-libraries).
+Uygulama ayarı yöntemi tüm diller ve tüm çalışma zamanı sürümleri için önerilse de, işlevleri devre dışı bırakmak için birkaç farklı yol vardır. Dil ve çalışma zamanı sürümüne göre farklılık gösteren bu yöntemler geriye dönük uyumluluk için korunur. 
 
-## <a name="functions-1x---scripting-languages"></a>İşlevler 1. x-betik dilleri
+### <a name="c-class-libraries"></a>C#sınıf kitaplıkları
 
-C# Betik ve JavaScript gibi komut dosyası dilleri için, çalışma zamanına bir işlev tetikleyemediğinden bilgi almak üzere *function. JSON* dosyasının `disabled` özelliğini kullanın. Bu özellik, `true` veya bir uygulama ayarının adına ayarlanabilir:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "queueTrigger",
-            "direction": "in",
-            "name": "myQueueItem",
-            "queueName": "myqueue-items",
-            "connection":"MyStorageConnectionAppSetting"
-        }
-    ],
-    "disabled": true
-}
-```
-veya 
-
-```json
-    "bindings": [
-        ...
-    ],
-    "disabled": "IS_DISABLED"
-```
-
-İkinci örnekte, IS_DISABLED adlı bir uygulama ayarı olduğunda ve `true` veya 1 olarak ayarlandığında işlev devre dışıdır.
-
-Dosyayı Azure portal düzenleyebilir veya işlevin **Yönet** sekmesindeki **işlev durumu** anahtarını kullanabilirsiniz. Portal anahtarı, *function. JSON* dosyası değiştirilerek çalışır.
-
-![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
-
-## <a name="functions-1x---c-class-libraries"></a>İşlevler 1. x- C# sınıf kitaplıkları
-
-1\. x Sınıf kitaplığındaki bir işlevin tetiklemesini engellemek için bir `Disable` özniteliği kullanırsınız. Aşağıdaki örnekte gösterildiği gibi, özniteliğini bir oluşturucu parametresi olmadan kullanabilirsiniz:
+Bir sınıf kitaplığı işlevinde, işlevin tetiklenmasını engellemek için `Disable` özniteliğini de kullanabilirsiniz. Aşağıdaki örnekte gösterildiği gibi, özniteliğini bir oluşturucu parametresi olmadan kullanabilirsiniz:
 
 ```csharp
 public static class QueueFunctions
@@ -128,6 +86,39 @@ Bu yöntem, uygulamayı yeniden derlemeden veya yeniden dağıtmaya gerek kalmad
 > , *Function. JSON* dosyasını değiştirerek çalıştığından, **Yönetim** sekmesindeki **işlev durumu** anahtarı için de aynı olur.
 >
 > Ayrıca, portalda işlevin devre dışı bırakıldığını belirtebileceğini unutmayın.
+
+### <a name="functions-1x---scripting-languages"></a>İşlevler 1. x-betik dilleri
+
+Sürüm 1. x ' de, çalışma zamanına bir işlev tetikleyemediğinden bilgi almak için *function. JSON* dosyasının `disabled` özelliğini de kullanabilirsiniz. Bu yöntem yalnızca C# betik ve JavaScript gibi komut dosyası dilleri için geçerlidir. `disabled` özelliği `true` veya bir uygulama ayarının adına ayarlanabilir:
+
+```json
+{
+    "bindings": [
+        {
+            "type": "queueTrigger",
+            "direction": "in",
+            "name": "myQueueItem",
+            "queueName": "myqueue-items",
+            "connection":"MyStorageConnectionAppSetting"
+        }
+    ],
+    "disabled": true
+}
+```
+or 
+
+```json
+    "bindings": [
+        ...
+    ],
+    "disabled": "IS_DISABLED"
+```
+
+İkinci örnekte, IS_DISABLED adlı bir uygulama ayarı olduğunda ve `true` veya 1 olarak ayarlandığında işlev devre dışıdır.
+
+Dosyayı Azure portal düzenleyebilir veya işlevin **Yönet** sekmesindeki **işlev durumu** anahtarını kullanabilirsiniz. Portal anahtarı, *function. JSON* dosyası değiştirilerek çalışır.
+
+![İşlev durum anahtarı](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

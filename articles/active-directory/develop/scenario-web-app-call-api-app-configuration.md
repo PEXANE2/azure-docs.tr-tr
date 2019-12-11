@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran Web uygulaması (kod yapılandırması)-Microsoft Identity platform
-description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir Web uygulaması oluşturmayı öğrenin
+title: Web API 'Lerini çağıran Web uygulamasını yapılandırma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir Web uygulamasının kodunu yapılandırmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175307"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964994"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Web uygulaması-kod yapılandırması
 
@@ -86,7 +86,7 @@ Bu makaledeki kod parçacıkları ve aşağıdakiler, [Microsoft Graph msal ça�
 
 ### <a name="startupcs"></a>Startup.cs
 
-ASP.NET Core, ilke `Startup.cs` dosyasında olur. `OnAuthorizationCodeReceived` açma KIMLIĞI Connect olayına abone olmak ve bu olaydan MSAL çağrısı yapmak isteyeceksiniz. NET 'in, belirteç önbelleğinde depolamanın etkisi, istenen `scopes`erişim belirteci ve süresi dolma yakın olduğunda erişim belirtecini yenilemek veya aynı kullanıcı adına bir belirteç almak için kullanılacak yenileme belirteci olan `AcquireTokenFromAuthorizationCode`. , ancak farklı bir kaynak için.
+ASP.NET Core, ilke `Startup.cs` dosyasında olur. `OnAuthorizationCodeReceived` açma KIMLIĞI Connect olayına abone olmak ve bu olaydan MSAL çağrısı yapmak isteyeceksiniz. NET 'in, belirteç önbelleğinde depolamanın etkisi, istenen `scopes`için erişim belirteci ve zaman aşımı süresi sona ermeden veya aynı kullanıcı adına bir belirteç alma, ancak farklı bir kaynak için kullanılacak bir yenileme belirteci olan `AcquireTokenFromAuthorizationCode`.
 
 Uygulama [ASP.NET Core Web uygulaması öğreticisi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) , Web uygulamalarınız için yeniden kullanılabilir kod sağlamaya çalışır.
 
@@ -320,7 +320,7 @@ Toplama için, ASP.NET tarafından istenen yetkilendirme kodunu gerçekten `Acqu
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET yöntemi ASP.NET Core benzer şekilde, Openıdconnect yapılandırması ve `OnAuthorizationCodeReceived` olayına olan aboneliğin [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) dosyasında gerçekleşmesidir. ASP.NET ' de olduğu ASP.NET Core gibi benzer kavramları, [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)Içinde RedirectUri belirtmeniz gerekir. Bu yapılandırma, uygulamanızı dağıtırken değiştirmeniz gereken ASP.NET Core, bu yapılandırmanın çok daha az bir sağlamdır.
+ASP.NET yöntemi, Openıdconnect yapılandırmasının ve `OnAuthorizationCodeReceived` olayına olan aboneliğin [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) dosyasında olması dışında ASP.NET Core benzer şekilde işler. ASP.NET ' de olduğu ASP.NET Core gibi benzer kavramları, [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)Içinde RedirectUri belirtmeniz gerekir. Bu yapılandırma, uygulamanızı dağıtırken değiştirmeniz gereken ASP.NET Core, bu yapılandırmanın çok daha az bir sağlamdır.
 
 ```CSharp
 public partial class Startup

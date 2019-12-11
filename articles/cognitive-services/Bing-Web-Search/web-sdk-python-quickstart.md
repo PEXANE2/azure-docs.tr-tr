@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Python için Bing Web araması SDK'sını kullanma"
+title: "Hızlı başlangıç: Python için Bing Web Araması SDK'sını kullanma"
 titleSuffix: Azure Cognitive Services
 description: Bing Web Araması SDK'sı, Bing Web Araması özelliklerini Python uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 services: cognitive-services
@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991614"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977225"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Hızlı Başlangıç: Python için Bing Web araması SDK'sını kullanma
+# <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Hızlı başlangıç: Python için Bing Web Araması SDK'sını kullanma
 
 Bing Web Araması SDK'sı, Bing Web Araması özelliklerini Python uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
 Kodu hemen görmek istiyor musunuz? GitHub'daki [Python için Bing Web Araması SDK'sı örneklerini](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) inceleyebilirsiniz.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bing Web Araması SDK'sı Python 2.7, 3.3, 3.4, 3.5 ve 3.6 ile uyumludur. Bu hızlı başlangıç için sanal ortam kullanmanızı öneririz.
@@ -33,6 +29,8 @@ Bing Web Araması SDK'sı Python 2.7, 3.3, 3.4, 3.5 ve 3.6 ile uyumludur. Bu hı
 * Python 2.7, 3.3, 3.4, 3.5 veya 3.6
 * Python 2.7 için [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * Python 3.x için [venv](https://pypi.python.org/pypi/virtualenv)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Sanal ortamınızı oluşturma ve yapılandırma
 
@@ -82,7 +80,7 @@ Yanıtta web sayfaları, görüntüler, haberler veya videolar varsa hepsinin il
 
 1. Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun.
 
-1. Şu örnek kodu projenize kopyalayın:  
+1. Bu örnek kodu projenize kopyalayın. `endpoint`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.:  
 
     ```python
     # Import required modules.
@@ -166,13 +164,13 @@ Yanıtta web sayfaları, görüntüler, haberler veya videolar varsa hepsinin il
 
 1. `SUBSCRIPTION_KEY` değerini geçerli bir abonelik anahtarıyla değiştirin.
 
-1. Değiştirin `YOUR_ENDPOINT` ile uç nokta URL'nizi portalında.
+1. `YOUR_ENDPOINT`, portalda Endpoint URL 'niz ile değiştirin.
 
 1. Programı çalıştırın. Örneğin: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>İşlevleri tanımlama ve sonuçları filtreleme
 
-Bing Web araması API'si için ilk çağrınızı yaptığınız, bazı işlevler bakalım. Aşağıdaki bölümlerde, sorgular verilerin iyileştirilmesi ve sonuçları filtrelemek için SDK işlevselliğini vurgulayın. Her işlev, önceki bölümde oluşturduğunuz Python programa eklenebilir.
+Bing Web Araması API'si ilk çağrınızın ne olduğuna göre, şimdi birkaç işleve bakalım. Aşağıdaki bölümlerde sorguları iyileştirme ve sonuçları filtreleme için SDK işlevselliği vurgulanacak. Her işlev, önceki bölümde oluşturduğunuz Python programına eklenebilir.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing tarafından döndürülen sonuç sayısını sınırlama
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8cdd52963f89041ea97b018fd3756c925308e641
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443270"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978484"
 ---
 # <a name="what-is-the-translator-text-api"></a>Translator Metin Çevirisi API’si nedir?
 
@@ -28,7 +28,7 @@ Translator Metin Çevirisi API’si, buluttaki Azure [Bilişsel Hizmetler API’
 
 Microsoft Translator, bulut tabanlı bir makine çevirisi hizmetidir. Bu hizmetin temelinde, çeşitli Microsoft ürünlerini ve hizmetlerini desteklemenin yanı sıra dünya çapında binlerce işletmenin uygulamalarında ve iş akışlarında kullanılıp bu işletmelerin içeriklerini tüm dünyadaki hedef kitleye ulaştırmasını sağlayan Translator Metin Çevirisi API'si yer alır.
 
-Translator Metin Çevirisi API'si ile desteklenen konuşma çevirisi de [Microsoft Konuşma Tanıma Hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/) üzerinden kullanıma açıktır. Translator konuşma tanıma API'si ve özel konuşma hizmeti birleşik ve tamamen özelleştirilebilir bir hizmetini birleştirir. Konuşma Tanıma API'si, 15 Ekim 2019 tarihinde kullanımdan kaldırılacak Translator Konuşma Çevirisi API'sinin yerini alacaktır.
+Translator Metin Çevirisi API'si ile desteklenen konuşma çevirisi de [Microsoft Konuşma Tanıma Hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/) üzerinden kullanıma açıktır. Translator Konuşma Çevirisi API'si ve Özel Konuşma Tanıma hizmetten işlevselliği Birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir. Konuşma hizmeti, 15 Ekim 2019 ' de kullanımdan kaldırılacak olan Translator Konuşma Çevirisi API'si değiştiriyor.
 
 ## <a name="language-support"></a>Dil desteği
 
@@ -55,5 +55,5 @@ Custom Translator sayesinde, kendi işletmenizde veya sektörünüzde kullanıla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Erişim anahtarı için [kaydolun](translator-text-how-to-signup.md).
-- [API Başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) API'leri için teknik belgeler sağlar.
+- [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) , API 'ler için teknik belgeler sağlar.
 - [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

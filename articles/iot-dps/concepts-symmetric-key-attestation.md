@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti-simetrik anahtar kanıtlama
-description: Bu makalede, IoT cihaz sağlama hizmeti kullanılarak simetrik anahtar kanıtlama hakkında kavramsal bir genel bakış sunulmaktadır.
+description: Bu makalede, IoT cihaz sağlama hizmeti 'ni (DPS) kullanarak simetrik anahtar kanıtlama hakkında kavramsal bir genel bakış sunulmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348364"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975304"
 ---
 # <a name="symmetric-key-attestation"></a>Simetrik anahtar kanıtlama
 
@@ -46,9 +46,9 @@ SAS belirteçleri aşağıdaki biçimdedir:
 
 Her belirtecin bileşenleri şunlardır:
 
-| Value | Açıklama |
+| Değer | Açıklama |
 | --- | --- |
-| imza |HMAC-SHA256 imza dizesi. Bireysel kayıtlar için bu imza, karmayı gerçekleştirmek için simetrik anahtar (birincil veya ikincil) kullanılarak oluşturulur. Kayıt grupları için, karmayı gerçekleştirmek için kayıt grubu anahtarından türetilmiş bir anahtar kullanılır. Karma, Şu biçimdeki bir ileti üzerinde gerçekleştirilir: `URL-encoded-resourceURI + "\n" + expiry`. **Önemli**: HMAC-SHA256 hesaplamayı gerçekleştirmek için kullanılmadan önce anahtar, Base64 olarak çözülebilir olmalıdır. Ayrıca, imza sonucu URL kodlamalı olmalıdır. |
+| imza |HMAC-SHA256 imza dizesi. Bireysel kayıtlar için bu imza, karmayı gerçekleştirmek için simetrik anahtar (birincil veya ikincil) kullanılarak oluşturulur. Kayıt grupları için, karmayı gerçekleştirmek için kayıt grubu anahtarından türetilmiş bir anahtar kullanılır. Karma, Şu biçimdeki bir ileti üzerinde gerçekleştirilir: `URL-encoded-resourceURI + "\n" + expiry`. **Önemli**: Bu ANAHTARıN, HMAC-SHA256 hesaplamayı gerçekleştirmek için kullanılmadan önce Base64 'den kodu çözülmüş olması gerekir. Ayrıca, imza sonucu URL kodlamalı olmalıdır. |
 | ResourceURI |Cihaz sağlama hizmeti örneği için kapsam KIMLIĞIYLE başlayarak bu belirteçle erişilebilen kayıt uç noktası URI 'SI. Örneğin, `{Scope ID}/registrations/{Registration ID}` |
 | kaç |Süre 00:00:00 UTC 'den bu yana 1 Ocak 1970 ' de geçen saniye sayısı için UTF8 dizeleri. |
 | {URL-Encoded-resourceURI} |Küçük harf URL 'SI-küçük harf Kaynak URI 'sinin kodlaması |
@@ -114,6 +114,6 @@ Cihaz anahtarları fabrikada yüklenmemişse, cihaz kimliğini güvenli bir şek
 
 Simetrik anahtar kanıtını öğrenmiş olduğunuza göre, daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
 
-* [Hızlı Başlangıç: Simetrik Anahtarlarla sanal cihaz sağlama](quick-create-simulated-device-symm-key.md)
+* [Hızlı başlangıç: simetrik anahtarlarla sanal cihaz sağlama](quick-create-simulated-device-symm-key.md)
 * [Otomatik sağlama ile ilgili kavramlar hakkında bilgi edinin](./concepts-auto-provisioning.md)
 * [Otomatik sağlamayı kullanmaya başlayın](./quick-setup-auto-provision.md) 

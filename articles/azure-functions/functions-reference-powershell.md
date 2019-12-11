@@ -4,12 +4,12 @@ description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226674"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974249"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 Projenin kökünde, işlev uygulamasını yapılandırmak için kullanılabilecek bir paylaşılan [`host.json`](functions-host-json.md) dosyası vardır. Her işlevde kendi kod dosyası (. ps1) ve bağlama yapılandırma dosyası (`function.json`) içeren bir klasör vardır. Function. json dosyasının üst dizininin adı her zaman işlevinizin adıdır.
 
-Belirli bağlamalar bir `extensions.csproj` dosyası varlığını gerektirir. Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları, `extensions.csproj` dosyasında, `bin` klasöründeki gerçek kitaplık dosyalarıyla tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
+Belirli bağlamalar bir `extensions.csproj` dosyası varlığını gerektirir. [Sürüm 2. x ve sonraki sürümlerde](functions-versions.md) işlevler çalışma zamanının gerekli olduğu bağlama uzantıları, `bin` klasöründeki gerçek kitaplık dosyalarıyla birlikte `extensions.csproj` dosyasında tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
 
 PowerShell Işlev uygulamalarında, isteğe bağlı olarak, bir işlev uygulaması çalışmaya başladığında çalışan bir `profile.ps1` olabilir (Aksi takdirde, *[soğuk bir başlangıç](#cold-start)* olarak bilinir. Daha fazla bilgi için bkz. [PowerShell profili](#powershell-profile).
 
@@ -73,9 +73,9 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| Özellik   | Açıklama                                     | Type     |
+| Özellik   | Açıklama                                     | Tür     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | UTC olarak işlev tetiklendiğinde        | DateTime |
+| UtcNow     | UTC olarak işlev tetiklendiğinde        | Tarih Saat |
 | MethodName | Tetiklenen Işlevin adı     | string   |
 | RandGuid   | işlevin bu yürütmeye yönelik benzersiz bir GUID | string   |
 
@@ -125,9 +125,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 `Push-OutputBinding`çağırmak için geçerli parametreler aşağıda verilmiştir:
 
-| Name | Type | Konum | Açıklama |
+| Adı | Tür | Konum | Açıklama |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Dize | 1\. | Ayarlamak istediğiniz çıkış bağlamasının adı. |
+| **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
 | **`-Clobber`** | SwitchParameter | Adlandırılır | Seçim Belirtildiğinde, belirtilen bir çıkış bağlaması için değeri ayarlamaya zorlar. | 
 
@@ -234,7 +234,7 @@ PowerShell işlevlerinde günlüğe kaydetme, normal PowerShell günlüğü gibi
 | ------------- | -------------- |
 | Hata | **`Write-Error`** |
 | Uyarı | **`Write-Warning`**  | 
-| Bilgiler | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Bilgiler | _Bilgi_ düzeyi günlüğe yazmaya yazar. |
+| Bilgi | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Bilgi | _Bilgi_ düzeyi günlüğe yazmaya yazar. |
 | Hata ayıklama | **`Write-Debug`** |
 | İzleme | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -294,7 +294,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 Betiğe geçirilen istek nesnesi, aşağıdaki özelliklere sahip `HttpRequestContext`türüdür:
 
-| Özellik  | Açıklama                                                    | Type                      |
+| Özellik  | Açıklama                                                    | Tür                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | İsteğin gövdesini içeren bir nesne. `Body`, verileri temel alan en iyi türe serileştirilir. Örneğin, veriler JSON ise, bir Hashtable olarak geçirilir. Veriler bir dizeyse, bir dize olarak geçirilir. | object |
 | **`Headers`** | İstek üst bilgilerini içeren bir sözlük.                | Sözlük < dize, dize ><sup>*</sup> |
@@ -309,7 +309,7 @@ Betiğe geçirilen istek nesnesi, aşağıdaki özelliklere sahip `HttpRequestCo
 
 Geri göndermeniz gereken yanıt nesnesi, aşağıdaki özelliklere sahip `HttpResponseContext`türüdür:
 
-| Özellik      | Açıklama                                                 | Type                      |
+| Özellik      | Açıklama                                                 | Tür                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Yanıtın gövdesini içeren bir nesne.           | object                    |
 | **`ContentType`** | Yanıt için içerik türünü ayarlamanın kısa bir tarafı. | string                    |

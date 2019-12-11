@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 4d4823e8dcce0d1296ebe39a0b7a7c4bbc180317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015423"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974623"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için Axinom kullanma 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "69015423"
 ## <a name="overview"></a>Genel Bakış
 Azure Media Services (AMS), Google Widevine dinamik koruma ekledi (Ayrıntılar için bkz. [Mingfeı blogumu](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) ). Ayrıca, Azure Media Player (AMP) Widevine desteğini de ekledi (Ayrıntılar için bkz. [amp belgesi](https://amp.azure.net/libs/amp/latest/docs/) ). Bu, hem MSE hem de EME ile donatılmış modern tarayıcılarda çok örnekli-DRM (PlayReady ve Widevine) ile CENC tarafından korunan akış DASH içeriği için önemli bir amadır.
 
-Media Services .NET SDK sürümü Media Services 3.5.2 ile başlayarak Widevine lisans şablonunu yapılandırmanıza ve Widevine lisanslarını almanıza olanak sağlar. Widevine lisansları teslim etmenize yardımcı olması için aşağıdaki AMS iş ortaklarını da kullanabilirsiniz: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [ezdrm](https://ezdrm.com/), [ROI Labs](https://castlabs.com/company/partners/azure/).
+Media Services .NET SDK sürümü Media Services 3.5.2 ile başlayarak Widevine lisans şablonunu yapılandırmanıza ve Widevine lisanslarını almanıza olanak sağlar. Widevine lisansları teslim etmenize yardımcı olması için şu AMS ortaklarını da kullanabilirsiniz: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 Bu makalede, Axinom tarafından yönetilen Widevine lisans sunucusunu tümleştirme ve test etme işlemleri açıklanmaktadır. Özellikle şunları ele almaktadır:  
 
@@ -65,7 +65,7 @@ Axinom tarafından sunulan Widevine lisans sunucusu, JWT belirteci kimlik doğru
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
-AMP kodunun geri kalanı, AMP belgesinde olduğu gibi standart AMP API 'sidir [](https://amp.azure.net/libs/amp/latest/docs/).
+AMP kodunun geri kalanı, AMP belgesinde olduğu gibi standart AMP API 'sidir [.](https://amp.azure.net/libs/amp/latest/docs/)
 
 Özel yetkilendirme üst bilgisini ayarlamaya yönelik yukarıdaki JavaScript, AMP 'daki uzun vadeli yaklaşımdan önce kısa vadeli bir yaklaşım olmaya devam etmektedir.
 
@@ -177,6 +177,7 @@ Kuşkusuz, anahtar KIMLIĞINI tutan birçok yol vardır. Örneğin, biri bir ver
     }
 
 ## <a name="summary"></a>Özet
+
 Azure Media Services Content Protection ve Azure Media Player her ikisinde de Widevine desteğinin en son eklenmesiyle birlikte, AMS ve Widevine lisansında hem PlayReady lisans hizmeti hem de DASH + Multi-Native-DRM (PlayReady + Widevine) akışını uygulayabiliriz Aşağıdaki modern tarayıcılar için Axinom 'dan sunucu:
 
 * Chrome
@@ -194,12 +195,16 @@ Aşağıdaki parametreler, Axınom Widevine lisans sunucusu kullanan mini çöz�
 | Widevine lisans alma URL 'SI |DASH akışı için varlık teslim ilkesini yapılandırırken kullanılması gerekir ( [Bu](media-services-axinom-integration.md#content-protection) bölüme bakın). |
 | İçerik anahtarı KIMLIĞI |JWT belirtecinin yetkilendirme Iletisi talebinin değerinin bir parçası olarak eklenmelidir ( [Bu](media-services-axinom-integration.md#jwt-token-generation) bölüme bakın). |
 
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Bilgilendirme
+### <a name="acknowledgments"></a>İlgili kaynaklar
 Bu belgeyi oluşturmak için katkıda bulunan şu kişileri bildirmek istiyoruz: Kristjan Jõgi of Axinom, Mingfei yan ve Amit Esjput.
 

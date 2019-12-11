@@ -1,7 +1,7 @@
 ---
-title: Portalda Azure uygulaması için kimlik oluşturma
+title: Portal ile bir Azure AD App & hizmet sorumlusu oluşturma
 titleSuffix: Microsoft identity platform
-description: Kaynaklara erişimi yönetmek için Azure Resource Manager rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma işlemini açıklar.
+description: Azure Resource Manager rol tabanlı erişim denetimiyle kaynaklara erişimi yönetmek için yeni bir Azure Active Directory App & hizmet sorumlusu oluşturun.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917871"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967125"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 

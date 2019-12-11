@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7838e1930a8ccd190c95740a6a8e3dadc68149f0
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 95f7d71c0de7570eee6e4c94e88fd65ff1d45ec8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422123"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973093"
 ---
 # <a name="create-an-azure-bastion-host"></a>Azure savunma Konağı oluşturma
 
@@ -64,7 +64,7 @@ Bu bölüm Azure portal yeni bir Azure savunma kaynağı oluşturmanıza yardım
 
 Portalda var olan bir VM 'yi kullanarak bir savunma Konağı oluşturursanız, sanal makinenize ve/veya sanal ağınıza otomatik olarak varsayılan ayarlar uygulanır.
 
-1. [Azure portalını](https://portal.azure.com) açın. Sanal makinenize gidin ve **Bağlan**' a tıklayın.
+1. [Azure portalı](https://portal.azure.com) açın. Sanal makinenize gidin ve **Bağlan**' a tıklayın.
 
    ![VM bağlantısı](./media/bastion-create-host-portal/vmsettings.png)
 1. Sağ kenar çubuğunda, savunma ' yı ve ardından **savunma ' yi** **kullanın**.

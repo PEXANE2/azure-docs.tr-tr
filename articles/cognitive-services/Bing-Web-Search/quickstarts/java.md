@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Bing Web Araması çağırmak için Java kullanın REST API'
+title: 'Hızlı başlangıç: Bing Web Araması REST API çağırmak için Java kullanın'
 titleSuffix: Azure Cognitive Services
 description: Java kullanarak Bing Web Araması REST API istekleri göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 07/22/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f8a827cf19bec0796fc0e9743d1a2599071468af
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8bdc6acb17cde29b99bad20a45f41d6bfc174363
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899686"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976358"
 ---
-# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Hızlı Başlangıç: Bir Azure bilişsel hizmeti olan Bing Web Araması REST API web 'de aramak için Java kullanın
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Hızlı başlangıç: bir Azure bilişsel hizmeti olan Bing Web Araması REST API web 'de aramak için Java kullanın
 
 Bu hızlı başlangıçta, Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bir Java uygulaması kullanacaksınız. Bu Java uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Bu kod `subscriptionKey`, `host`, `path` ve `searchTerm` tanımlaması yapar. Uç noktasının geçerli olduğunu doğrulayın ve `subscriptionKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Bu kodu, `BingWebSearch` yukarıda belirtildiği gibi sınıfa eklemeyi unutmayın.
+Bu kod `subscriptionKey`, `host`, `path` ve `searchTerm` tanımlaması yapar. `host`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir. `subscriptionKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Yukarıda belirtilen `BingWebSearch` sınıfa bu kodu eklemeyi unutmayın.
 
 ```java
 // Enter a valid subscription key.

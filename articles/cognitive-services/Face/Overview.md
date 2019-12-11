@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743692"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961548"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Yüz Tanıma API’si nedir?
 
@@ -35,7 +35,7 @@ Yüz algılama hakkında daha fazla bilgi için [yüz algılama](concepts/face-d
 
 ## <a name="face-verification"></a>Yüz doğrulama
 
-Doğrulama API'si, algılanan iki yüz arasında veya algılanan tek bir yüzden bir kişi nesnesine kimlik doğrulaması gerçekleştirir. Pratikte, iki yüzün aynı kişiye ait olup olmadığını değerlendirir. Bu özellik güvenlik senaryolarında faydalı olabilir. Daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya API başvurusunu [Doğrula](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) belgelerine bakın.
+Verify API 'SI algılanan iki yüzde veya algılanan bir yüzden bir kişi nesnesine karşı bir kimlik doğrulaması yapar. Pratikte, iki yüzün aynı kişiye ait olup olmadığını değerlendirir. Bu özellik güvenlik senaryolarında faydalı olabilir. Daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya API başvurusunu [Doğrula](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) belgelerine bakın.
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
@@ -45,11 +45,11 @@ Aşağıdaki örnekte hedef yüz gösterilmektedir:
 
 ![Gülümseyen kadın](./Images/FaceFindSimilar.QueryFace.jpg)
 
-Ve aday yüzler de şunlardır:
+Ve bu görüntüler aday yüzlerdir:
 
 ![Beş tane gülümseyen kişi görüntüsü. A ve b görüntüleri aynı kişiyi gösterir.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Benzer dört yüzü bulmak için, matchPerson modu, hedef yüzü ile aynı kişiyi gösteren a ve b döndürür. Eşleme modu, biri hedefle aynı kişi olmasa veya düşük benzerliğe sahip olsa bile, a, b, c ve d, tam olarak dört aday döndürür. Daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya [benzer API başvurusu bul](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) belgelerine bakın.
+Benzer dört yüzü bulmak için, matchPerson modu, hedef yüzü ile aynı kişiyi gösteren a ve b döndürür. Eşleme modu, bir kişi hedefle aynı kişi olmasa ya da az benzerliğe sahip olsa bile, a, b, c ve d&mdash;tam olarak dört aday döndürür. Daha fazla bilgi için, [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya [benzer API başvurusu bul](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) belgelerine bakın.
 
 ## <a name="face-grouping"></a>Yüz gruplama
 
@@ -63,7 +63,7 @@ Aşağıdaki görüntüde `"myfriends"`adlı bir veritabanı örneği gösterilm
 
 ![Her biri üç yüz görüntüsü içeren farklı kişiler için üç sütunlu bir kılavuz](./Images/person.group.clare.jpg)
 
-Bir veritabanını oluşturup eğitdikten sonra, Grup üzerinde yeni bir algılanan yüz ile kimlik tanımlamayı gerçekleştirebilirsiniz. Yüz, grupta bir kişi olarak belirlenirse kişi nesnesi döndürülür.
+Bir veritabanını oluşturup eğitdikten sonra, yeni bir algılanan yüz ile gruba göre kimlik tanımlayabilirsiniz. Yüz, grupta bir kişi olarak belirlenirse kişi nesnesi döndürülür.
 
 Kişi kimliği hakkında daha fazla bilgi için bkz. [yüz tanıma](concepts/face-recognition.md) kavramları Kılavuzu veya [API başvurusunu belirleme](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) belgeleri.
 

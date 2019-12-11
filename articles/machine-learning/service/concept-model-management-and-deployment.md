@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a56096ffa760bcddd6bd423d1262e57dc1db3e3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420077"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973569"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -87,7 +87,7 @@ Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. �
 
 Görüntü oluşturulduğunda, Azure Machine Learning için gereken bileşenler de eklenir. Örneğin, Web hizmetini çalıştırmak ve IoT Edge etkileşimde bulunmak için gereken varlıklar.
 
-#### <a name="batch-scoring"></a>Batch puanlama
+#### <a name="batch-scoring"></a>Toplu İşlem puanlama
 Batch Puanlama, ML işlem hatları aracılığıyla desteklenir. Daha fazla bilgi için bkz. [büyük veriler üzerinde Batch tahminleri](how-to-run-batch-predictions.md).
 
 #### <a name="real-time-web-services"></a>Gerçek zamanlı Web Hizmetleri
@@ -116,7 +116,6 @@ Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md).
 
 Microsoft Power BI, veri analizi için makine öğrenimi modellerinin kullanılmasını destekler. Daha fazla bilgi için bkz. [Power BI Azure Machine Learning Tümleştirme (Önizleme)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Uçtan uca ML yaşam döngüsünü yakalamak için gereken idare verilerini yakalayın
 
 Azure ML, tüm ML varlıklarınızın uçtan uca denetim izlerini izleme olanağı sunar. Bu avantajlar şunlardır:
@@ -129,6 +128,7 @@ Azure ML, tüm ML varlıklarınızın uçtan uca denetim izlerini izleme olanağ
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML yaşam döngüsünde olayları bildirme, otomatikleştirme ve uyarma
 Azure ML, ML yaşam döngüsünün olaylarını bilgilendirmek ve otomatikleştirmek için kullanılabilecek Azure EventGrid 'e anahtar olayları yayımlar. Daha fazla bilgi için lütfen [Bu belgeye](how-to-use-event-grid.md)bakın.
 
+
 ## <a name="monitor-for-operational--ml-issues"></a>İşlemsel & ML sorunlarını izleme
 
 İzleme, modelinize hangi verilerin gönderildiğini ve döndürdüğü tahminleri anlamanıza olanak sağlar.
@@ -136,7 +136,6 @@ Azure ML, ML yaşam döngüsünün olaylarını bilgilendirmek ve otomatikleşti
 Bu bilgiler, modelinizin nasıl kullanıldığını anlamanıza yardımcı olur. Toplanan giriş verileri, modelin gelecek sürümlerini eğitmek için de yararlı olabilir.
 
 Daha fazla bilgi için bkz. [model veri toplamayı etkinleştirme](how-to-enable-data-collection.md).
-
 
 ## <a name="automate-the-ml-lifecycle"></a>ML yaşam döngüsünü otomatikleştirin 
 

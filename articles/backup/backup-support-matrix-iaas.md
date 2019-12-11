@@ -1,16 +1,16 @@
 ---
-title: Azure VM yedeklemesi için destek matrisi
+title: Azure VM yedekleme için destek matrisi
 description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 85a32dd9ea875bdfc73d7e4a9515e5cfe0e2da42
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: fa4e01def8db4e5fef32b644d198bad1e9beab27
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559040"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996179"
 ---
-# <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedeklemesi için destek matrisi
+# <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
 [Azure Backup hizmetini](backup-overview.md) şirket içi makineleri ve iş yüklerini ve Azure sanal makinelerini (VM) yedeklemek için kullanabilirsiniz. Bu makalede, Azure Backup ile Azure VM 'Leri yedeklerken destek ayarları ve sınırlamaları özetlenmektedir.
 
@@ -44,7 +44,7 @@ Kaynak grubu kilidini etkinleştirdikten sonra yönetilen diskleri yedekleme | D
 VM için yedekleme ilkesini değiştirme | Destekleniyor.<br/><br/> VM, yeni ilkedeki zamanlama ve bekletme ayarları kullanılarak yedeklenir. Bekletme ayarları genişletilmişse, var olan kurtarma noktaları işaretlenir ve saklanır. Azaldıysanız, var olan kurtarma noktaları sonraki temizleme işinde ayıklanır ve sonunda silinir.
 Bir yedekleme işini iptal et| Anlık görüntü işlemi sırasında desteklenir.<br/><br/> Anlık görüntü kasaya aktarıldığında desteklenmez.
 VM 'yi farklı bir bölgeye veya aboneliğe yedekleme |Desteklenmiyor.
-Gün başına yedeklemeler (Azure VM Uzantısı aracılığıyla) | Gün başına bir zamanlanmış yedekleme.<br/><br/> Hizmet günde en fazla dokuz isteğe bağlı yedekleme olanağı sağlar ancak Microsoft yalnızca en fazla dört günlük isteğe bağlı yedeklemeyi önerir ve destekler.
+Gün başına yedeklemeler (Azure VM Uzantısı aracılığıyla) | Gün başına bir zamanlanmış yedekleme.<br/><br/>Azure Backup hizmeti günde en fazla dokuz isteğe bağlı yedeklemeyi destekler, ancak Microsoft en iyi performansı sağlamak için dörtten fazla günlük isteğe bağlı yedeklemeyi önermez.
 Gün başına yedeklemeler (MARS Aracısı aracılığıyla) | Gün başına üç zamanlanmış yedekleme.
 Gün başına yedeklemeler (DPM/MABS aracılığıyla) | Gün başına iki zamanlanmış yedekleme.
 Aylık/yıllık yedekleme| Azure VM Uzantısı ile yedeklenirken desteklenmez. Yalnızca günlük ve haftalık desteklenir.<br/><br/> İlkeyi aylık/yıllık Bekletme dönemi için günlük/haftalık yedeklemeleri koruyacak şekilde ayarlayabilirsiniz.
@@ -146,7 +146,7 @@ VM boyutu |En az 2 CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boy
 Özel görüntüden dağıtılan VM 'Leri yedekleme (üçüncü taraf) |Destekleniyor.<br/><br/> VM desteklenen bir işletim sistemi çalıştırıyor olmalıdır.<br/><br/> SANAL makinede dosyaları kurtarırken, yalnızca uyumlu bir işletim sistemine (önceki veya sonraki bir işletim sistemini değil) geri yükleyebilirsiniz.
 Azure 'a geçirilen VM 'Leri yedekleme| Destekleniyor.<br/><br/> VM 'yi yedeklemek için, geçirilen makinede VM aracısının yüklü olması gerekir.
 Çoklu VM tutarlılığını yedekleme | Azure Backup birden çok VM arasında veri ve uygulama tutarlılığı sağlamaz.
-[Tanılama ayarlarıyla](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) yedekleme  | Desteklenen. <br/><br/> Azure VM 'yi tanılama ayarlarıyla geri yükleme [yeni seçenek oluştur](backup-azure-arm-restore-vms.md#create-a-vm) seçeneği kullanılarak tetikleniyorsa geri yükleme başarısız olur.
+[Tanılama ayarlarıyla](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) yedekleme  | Desteklenmez. <br/><br/> Azure VM 'yi tanılama ayarlarıyla geri yükleme [yeni seçenek oluştur](backup-azure-arm-restore-vms.md#create-a-vm) seçeneği kullanılarak tetikleniyorsa geri yükleme başarısız olur.
 Bölge ile sabitlenmiş VM 'Leri geri yükleme | Desteklenir (Ocak 2019 ' den sonra yedeklenen VM ve [kullanılabilirlik bölgesi](https://azure.microsoft.com/global-infrastructure/availability-zones/) kullanılabilir).<br/><br/>Şu anda VM 'lerde sabitlenmiş aynı bölgeye geri yüklemeyi destekliyoruz. Ancak bölge kullanılamıyorsa, geri yükleme başarısız olur.
 Gen2 VM 'Leri | Desteklenen <br> Azure Backup, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)'lerinin yedeklenmesini ve geri yüklenmesini destekler. Bu VM 'Ler kurtarma noktasından geri yüklendiğinde, [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)olarak geri yüklenir.
 

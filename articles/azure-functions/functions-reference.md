@@ -4,12 +4,12 @@ description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri g
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226669"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974232"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Işlevleri Geliştirici Kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -19,7 +19,7 @@ Bu makalede, [Azure işlevlerine genel bakış ' ı](functions-overview.md)okudu
 ## <a name="function-code"></a>İşlev kodu
 Bir *işlev* , Azure işlevlerinde birincil kavramdır. Bir işlev, çeşitli dillerde yazılmış ve bazı config, function. JSON dosyası olmak üzere iki önemli parça içerir. Derlenen diller için, bu yapılandırma dosyası kodunuzdaki ek açıklamalardan otomatik olarak oluşturulur. Komut dosyası dilleri için yapılandırma dosyasını kendiniz sağlamanız gerekir.
 
-Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Her işlevde bir ve yalnızca bir tetikleyici vardır. Çalışma zamanı, izlenecek olayları ve bir işlev yürütmesindeki verilerin içine nasıl geçirileceğini ve geri döneceğini öğrenmek için bu yapılandırma dosyasını kullanır. Aşağıda örnek bir Function. JSON dosyası verilmiştir.
+Function. JSON dosyası işlevin tetikleyicisini, bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Her işlevde tek bir tane tetikleyici olması gerekir. Çalışma zamanı, izlenecek olayları ve bir işlev yürütmesindeki verilerin içine nasıl geçirileceğini ve geri döneceğini öğrenmek için bu yapılandırma dosyasını kullanır. Aşağıda örnek bir Function. JSON dosyası verilmiştir.
 
 ```json
 {
@@ -73,17 +73,17 @@ Azure portal yerleşik Işlevler Düzenleyicisi kodunuzu ve *function. JSON* dos
 
 ## <a name="functions-runtime-versioning"></a>İşlevler çalışma zamanı sürümü oluşturma
 
-Işlevler çalışma zamanının sürümünü `FUNCTIONS_EXTENSION_VERSION` uygulama ayarını kullanarak yapılandırabilirsiniz. Örneğin, "~ 2" değeri İşlev Uygulaması, ana sürümü olarak 2. x kullanacağınızı gösterir. İşlev uygulamaları, yayımlandıklarında her yeni küçük sürüme yükseltilir. İşlev uygulamanızın tam sürümünün nasıl görüntüleneceği dahil olmak üzere daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
+Işlevler çalışma zamanının sürümünü `FUNCTIONS_EXTENSION_VERSION` uygulama ayarını kullanarak yapılandırabilirsiniz. Örneğin, "~ 3" değeri, İşlev Uygulaması ana sürümü olarak 3. x kullanacağını gösterir. İşlev uygulamaları, yayımlandıklarında her yeni küçük sürüme yükseltilir. İşlev uygulamanızın tam sürümünün nasıl görüntüleneceği dahil olmak üzere daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md).
 
-## <a name="repositories"></a>Depoları
+## <a name="repositories"></a>Depolar
 Azure Işlevleri için kod açık kaynaktır ve GitHub depolarında depolanır:
 
 * [Azure İşlevleri](https://github.com/Azure/Azure-Functions)
 * [Azure Işlevleri ana bilgisayarı](https://github.com/Azure/azure-functions-host/)
 * [Azure Işlevleri portalı](https://github.com/azure/azure-functions-ux)
 * [Azure Işlevleri şablonları](https://github.com/azure/azure-functions-templates)
-* [Azure Web Işleri SDK 'Sı](https://github.com/Azure/azure-webjobs-sdk/)
-* [Azure WebJobs SDK uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/)
+* [Azure Web İşleri SDK'sı](https://github.com/Azure/azure-webjobs-sdk/)
+* [Azure Web İşleri SDK'sı Uzantıları](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Bağlamalar
 Desteklenen tüm bağlamaların bir tablosu aşağıda verilmiştir.

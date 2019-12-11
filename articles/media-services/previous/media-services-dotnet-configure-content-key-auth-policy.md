@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a2d978a68f6f654e3bdeea07c931cd7103f5850c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015524"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974504"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamik şifreleme: İçerik anahtarı yetkilendirme ilkesini yapılandırma
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamik şifreleme: içerik anahtarı yetkilendirme ilkesini yapılandırma
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Genel Bakış
@@ -50,7 +50,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 * Anahtar teslim hizmeti, ContentKeyAuthorizationPolicy ve ilgili nesneleri (ilke seçenekleri ve kısıtlamalar) 15 dakika boyunca önbelleğe alır. ContentKeyAuthorizationPolicy oluşturup bir belirteç kısıtlaması kullanmayı belirtebilir, test edebilir ve ardından ilkeyi açık kısıtlama olarak güncelleştirebilirsiniz. Bu işlem, ilkenin, ilkenin açık sürümüne geçiş yapmadan yaklaşık 15 dakika sürer.
 * Varlığınızın teslim ilkesini ekler veya güncelleştirirseniz, varsa mevcut bulucuyu silip yeni bir bulucu oluşturmanız gerekir.
 * Şu anda aşamalı İndirmeleri şifreleyemez.
-* Media Services akış uç noktası, '\*' joker karakteri olarak ön kontrol yanıtında CORS ' Access-Control-Allow-Origin ' üst bilgisinin değerini ayarlar. Bu değer, Azure Media Player, Roku ve JWPlayer gibi birçok oyuncunun yanı sıra diğerleri için de geçerlidir. Bununla birlikte,, "içerme" olarak ayarlanmış kimlik bilgileri ile, bu arada, kendi çizgi js ' deki XMLHttpRequest, ' Access-Control-Allow-Origin '\*değeri olarak "" joker karakterine izin vermediğinden, WITH, Tek bir etki alanından istemcinizi barındırdıysanız, bu sınırlamaya yönelik bir geçici çözüm olarak, Media Services ön kontrol yanıt üstbilgisinde bu etki alanını belirtebilir. Yardım için Azure portal aracılığıyla bir destek bileti açın.
+* Media Services akış uç noktası, '\*' joker karakteri olarak ön kontrol yanıtında CORS ' Access-Control-Allow-Origin ' üstbilgisinin değerini ayarlar. Bu değer, Azure Media Player, Roku ve JWPlayer gibi birçok oyuncunun yanı sıra diğerleri için de geçerlidir. Bununla birlikte, "içerme" olarak ayarlanmış kimlik bilgileri modu ile, bu arada bulunan ve kendi çizgi js içindeki XMLHttpRequest, "\*" joker karakterine ' Access-Control-Allow-Origin ' değeri olarak izin vermediği için, çizgi kullanan bazı oyuncular çalışmaz. Tek bir etki alanından istemcinizi barındırdıysanız, bu sınırlamaya yönelik bir geçici çözüm olarak, Media Services ön kontrol yanıt üstbilgisinde bu etki alanını belirtebilir. Yardım için Azure portal aracılığıyla bir destek bileti açın.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dinamik şifreleme
 ### <a name="open-restriction"></a>Açık kısıtlama
@@ -426,10 +426,14 @@ Anahtar yetkilendirme ilkesi için kullanılan belirteç kısıtlamasına dayal�
     }
 ```
 
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

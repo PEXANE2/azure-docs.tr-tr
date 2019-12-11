@@ -1,5 +1,5 @@
 ---
-title: Web API 'Lerini çağıran Daemon uygulaması (genel bakış)-Microsoft Identity platform
+title: Web API 'Leri çağıran bir Daemon uygulaması oluşturma-Microsoft Identity platform | Mavisi
 description: Web API 'Lerini çağıran bir Daemon uygulaması derlemeyi öğrenin
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 70a8c97ee1e10d53cd8da9687a9109eb4ce8ae3d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056392"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965577"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Daemon uygulaması
 

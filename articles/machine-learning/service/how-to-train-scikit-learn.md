@@ -1,7 +1,7 @@
 ---
 title: Scikit 'i eğitme-makine öğrenimi modellerini öğrenin
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning SKIT tahmin aracı sınıfını kullanarak scikit-kurumsal ölçekte eğitim komut dosyalarınızı nasıl çalıştıracağınızı öğrenin. Örnek betikler, ırikit-öğrenimi veri kümesini temel alan bir makine öğrenimi modeli oluşturmak için Iris çiçek görüntülerini sınıflandırır.
+description: Azure Machine Learning sköğren tahmin aracı sınıfını kullanarak scikit-eğitim komut dosyalarınızı kurumsal ölçekte nasıl çalıştıracağınızı öğrenin. Örnek betikler, ırikit-öğrenimi veri kümesini temel alan bir makine öğrenimi modeli oluşturmak için Iris çiçek görüntülerini sınıflandırır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a85d33a804c8aaf3081439806bf69dab5263dcf2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b6cdf9350d95de901e8a0f1e875d90513b33f1a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224849"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976120"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Derleme scikit-Azure Machine Learning uygun ölçekte modeller öğrenin
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning [SKIT tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) sınıfını kullanarak scikit-kurumsal ölçekte eğitim komut dosyalarınızı nasıl çalıştıracağınızı öğrenin. 
+Bu makalede, Azure Machine Learning [sköğren tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) sınıfını kullanarak scikit-kurumsal ölçekte eğitim komut dosyalarını nasıl çalıştıracağınızı öğrenin. 
 
 Bu makaledeki örnek betikler, ırikit-öğrenme için [Iris veri kümesini](https://archive.ics.uci.edu/ml/datasets/iris)temel alan bir makine öğrenimi modeli oluşturmak üzere Iris çiçek görüntülerini sınıflandırmak için kullanılır.
 
@@ -32,7 +32,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
  - Azure Machine Learning Not defteri VM-indirme veya yükleme gerekli değil
 
     - Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
-    - Not defteri sunucusundaki örnekler eğitim klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveleri > scikit-> eğitim > tren-hyperparameter-ayarla-dağıt-ile-sköğren** klasörü.
+    - Not defteri sunucusundaki örnekler eğitim klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveleri > scikit-> eğitim > tren-hyperparameter-ayarla-dağıt-with-sköğrenme** klasörü.
 
  - Kendi Jupyter Notebook sunucunuz
 
@@ -74,7 +74,7 @@ from azureml.core.compute_target import ComputeTargetException
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-machine-learning-experiment"></a>Machine Learning denemesi oluşturun
+### <a name="create-a-machine-learning-experiment"></a>Makine öğrenmesi denemesi oluşturma
 
 Eğitim betiklerinizi tutmak için bir deneme ve bir klasör oluşturun. Bu örnekte "sköğren-Iris" adlı bir deneme oluşturun.
 
@@ -89,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 Bu öğreticide, sizin için eğitim betiği **train_iris. Kopyala** zaten sağlanmış. Uygulamada, herhangi bir özel eğitim betiğini olduğu gibi götürebilmeniz ve kodunuzu değiştirmek zorunda kalmadan Azure ML ile çalıştırmanız gerekir.
 
-Azure ML 'nin izleme ve ölçüm yeteneklerini kullanmak için eğitim betiğinizin içine küçük miktarda Azure ML kodu ekleyin.  Eğitim betiği **train_iris. Kopyala** , bazı ÖLÇÜMLERIN Azure ML çalıştırmak için betik içinde `Run` nesnesini kullanarak nasıl günlüğe alınacağını gösterir.
+Azure ML izleme ve ölçüm yeteneklerini kullanmak için eğitim betiğinizin içine küçük miktarda Azure ML kodu ekleyin.  Eğitim betiği **train_iris. Kopyala** , bazı ÖLÇÜMLERIN Azure ML çalıştırmak için betik içinde `Run` nesnesini kullanarak nasıl günlüğe alınacağını gösterir.
 
 Belirtilen eğitim betiği `iris = datasets.load_iris()` işlevindeki örnek verileri kullanır.  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#data-upload) gibi adımları kullanmanız gerekebilir.
 
@@ -190,7 +190,7 @@ model = run.register_model(model_name='sklearn-iris',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 Yeni Kaydolmakta olduğunuz model, eğitim için kullandığınız tahmin etmeksizin, Azure Machine Learning ' deki diğer tüm kayıtlı modellerle tamamen aynı şekilde dağıtılabilir. Dağıtım nasıl yapılır, model kaydettirme hakkında bir bölüm içerir, ancak zaten kayıtlı bir modeliniz olduğundan, dağıtım için doğrudan [bir işlem hedefi oluşturmaya](how-to-deploy-and-where.md#choose-a-compute-target) geçebilirsiniz.
 
@@ -218,6 +218,6 @@ Daha ayrıntılı Azure Machine Learning dağıtımı [nasıl](how-to-deploy-and
 
 Bu makalede, bir scikit-öğren modeli eğitildiniz ve kaydettiniz ve dağıtım seçenekleri hakkında bilgi edindiniz. Azure Machine Learning hakkında daha fazla bilgi edinmek için bu makaleye bakın.
 
-* [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
-* [Hiper parametreleri ayarla](how-to-tune-hyperparameters.md)
+* [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
+* [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 * [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarisi](/azure/architecture/reference-architectures/ai/training-deep-learning)

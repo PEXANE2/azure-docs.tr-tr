@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: .NET-Content Moderator 'de orta videolar ve yazılı betikler"
+title: "Öğretici: .NET'te videoları ve transkriptleri denetleme - Content Moderator"
 titleSuffix: Azure Cognitive Services
 description: Bu öğretici, makine destekli denetleme ve Kullanıcı döngüsü incelemesi oluşturma ile tam bir video ve döküm denetimi çözümü oluşturmayı anlamanıza yardımcı olur.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564272"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976987"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript moderasyonu
+# <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript denetimi
 
-Bu öğreticide, makine destekli denetleme ve Kullanıcı döngüsü incelemesi oluşturma ile tam bir video ve döküm denetimi çözümü oluşturmayı öğreneceksiniz.
+Bu öğreticide, makine destekli denetleme ve insan incelemesi tümleştirmesiyle tam video ve döküm denetimi çözümü oluşturmayı öğreneceksiniz.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -42,7 +42,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="enter-credentials"></a>Kimlik bilgilerini girin
 
-Dosyayı düzenleyin ve tarafından `#####`gösterilen Active Directory kiracı adını, hizmet uç noktalarını ve abonelik anahtarlarını ekleyin. `App.config` Aşağıdaki bilgiler gerekir:
+`App.config` dosyasını düzenleyin ve `#####`tarafından belirtilen Active Directory kiracı adını, hizmet uç noktalarını ve abonelik anahtarlarını ekleyin. Aşağıdaki bilgiler gerekir:
 
 |Anahtar|Açıklama|
 |-|-|
@@ -82,7 +82,7 @@ Dosyayı düzenleyin ve tarafından `#####`gösterilen Active Directory kiracı 
 Hiçbir komut satırı bağımsız değişkeni yoksa, `Main()` `GetUserInputs()` çağrısı yapar. Bu yöntem kullanıcıdan tek bir video dosyasının yolunu girmesini ve metin transkriptinin oluşturulup oluşturulmayacağını belirtmesini ister.
 
 > [!NOTE]
-> Konsol uygulaması karşıya yüklenen videonun ses parçasından transkriptleri oluşturmak için [Azure Media Indexer API'sini](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize ve ProcessVideo yöntemleri
 
@@ -223,7 +223,7 @@ Video denetimi işinin sonucu (Bkz. [video denetimine hızlı başlangıç](vide
 `GenerateVTT` bayrağı ayarlandığında videodan ses transkripsiyonu da oluşturulur.
 
 > [!NOTE]
-> Konsol uygulaması karşıya yüklenen videonun ses parçasından transkriptleri oluşturmak için [Azure Media Indexer API'sini](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
+> Konsol uygulaması, karşıya yüklenen videonun ses izlemesindeki dökümü oluşturmak için [Azure MEDIA Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) kullanır. Sonuçlar WebVTT biçiminde sağlanır. Bu biçimle ilgili daha fazla bilgi için bkz. [Web Video Metin Parçaları Biçimi](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API).
 
 ## <a name="create-a-human-review"></a>İnsan incelemesi oluşturma
 
@@ -310,7 +310,7 @@ Ardından, ayrıştırılmış metin açıklamalı alt yazıları Content Modera
 > [!NOTE]
 > Content Moderator hizmet anahtarınızın saniyede istek sayısı (RPS) hız sınırı vardır. Sınırı aşarsanız, SDK 429 hata koduyla bir özel durum oluşturulur.
 >
-> Ücretsiz katman anahtarı bir RPS'lik hız sınırına sahiptir.
+> Ücretsiz katmanı anahtarı bir RPS’lik hız sınırına sahiptir.
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
@@ -359,7 +359,7 @@ Total Elapsed Time: 00:05:56.8420355
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, TRANSCRIPT içeriği&mdash;&mdash;dahil olmak üzere video içeriğini destekleyen ve gözden geçirme aracında incelemeler oluşturulan bir uygulamayı ayarlarsınız. Daha sonra, video denetleme ayrıntıları hakkında daha fazla bilgi edinin.
+Bu öğreticide, TRANSCRIPT içerik&mdash;dahil olmak üzere video&mdash;içeriğini destekleyen bir uygulama ayarlarsınız ve Inceleme aracında incelemeler oluşturur. Daha sonra, video denetleme ayrıntıları hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Video denetimi](./video-moderation-human-review.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory kimlik doğrulaması ve yetkilendirme hata kodları | Microsoft Docs
+title: Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları | Mavisi
 description: Azure AD güvenlik belirteci hizmeti 'nden (STS) döndürülen AADSTS hata kodları hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193176"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965815"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>Kimlik doğrulaması ve yetkilendirme hata kodları
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
 Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) döndürülen AADSTS hata kodları hakkında bilgi mi arıyorsunuz? AADSTS hata açıklamalarını, düzeltmelerini ve önerilen bazı geçici çözümleri bulmak için bu belgeyi okuyun.
 

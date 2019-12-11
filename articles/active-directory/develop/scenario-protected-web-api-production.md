@@ -1,5 +1,5 @@
 ---
-title: Korumalı Web API 'SI-üretime taşı
+title: Korumalı bir Web API 'sini üretime taşıma | Mavisi
 titleSuffix: Microsoft identity platform
 description: Korumalı bir Web API 'SI oluşturma (üretime geçme) hakkında bilgi edinin.
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb5a04f23268edc112c38c993b190827fa65061
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1f643d26e48dce0d2ee8718ac54bbd4bc8a248ab
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802511"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962500"
 ---
 # <a name="protected-web-api---move-to-production"></a>Korumalı Web API 'SI-üretime taşı
 

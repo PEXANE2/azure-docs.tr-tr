@@ -1,5 +1,5 @@
 ---
-title: Web API 'Leri çağıran masaüstü uygulaması (genel bakış)-Microsoft Identity platform
+title: Web API 'Leri çağıran bir masaüstü uygulaması oluşturma-Microsoft Identity platform | Mavisi
 description: Web API 'Leri çağıran bir masaüstü uygulaması oluşturmayı öğrenin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268343"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965526"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran masaüstü uygulaması
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran masaüstü uygulaması
 
 Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyacınız olan tüm hakkında bilgi edinin
 
@@ -30,19 +30,19 @@ Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyac�
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, UWP hızlı başlangıcı veya macOS yerel uygulaması hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-windows-desktop.md)
+> [Hızlı başlangıç: bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-windows-desktop.md)
 
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: UWP uygulamasından bir belirteç edinin ve Microsoft Graph API çağrısı yapın](./quickstart-v2-uwp.md)
+> [Hızlı başlangıç: UWP uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-uwp.md)
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: MacOS yerel uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
+> [Hızlı başlangıç: bir macOS yerel uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>Genel Bakış
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: ce774868acc281f769e7f2991472e7d2a5da9739
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930386"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972260"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
 
@@ -27,6 +27,16 @@ Varolan bir sütunu geçersiz kılmak için sütun açılan listesinden seçin. 
 Başka türetilmiş sütunlar eklemek için, varolan bir türetilmiş sütunun üzerine gelin ve artı simgesine tıklayın. **Sütun Ekle** veya **sütun Ekle düzenlerini**seçin. Sütun adları kaynaklarınızdan değişken ise, sütun desenleri yararlı olabilir. Daha fazla bilgi için bkz. [sütun desenleri](concepts-data-flow-column-pattern.md).
 
 ![Yeni türetilmiş sütun seçimi](media/data-flow/columnpattern.png "Yeni türetilmiş sütun seçimi")
+
+## <a name="build-schemas-in-output-schema-pane"></a>Çıktı şeması bölmesinde şema oluşturma
+
+Değiştirmekte olduğunuz ve şemanıza eklemekte olduğunuz sütunlar çıktı şeması bölmesinde listelenir. Etkileşimli olarak basit ve karmaşık veri yapıları oluşturabilirsiniz. Ek alanlar eklemek için **sütun Ekle**' yi seçin. Hiyerarşileri derlemek için, **alt sütun Ekle**' yi seçin.
+
+![Alt sütun Ekle](media/data-flow/addsubcolumn.png "Alt sütun Ekle")
+
+Veri akışındaki karmaşık türleri işleme hakkında daha fazla bilgi için bkz. [eşleme veri akışında JSON işleme](concepts-data-flow-json.md)
+
+![Karmaşık sütun Ekle](media/data-flow/complexcolumn.png "Sütun ekleme")
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: REST API ve PHP kullanarak görüntüdeki yüzeyleri algılama'
+title: 'Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, PHP ile Yüz Tanıma API’sini kullanarak bir görüntüdeki yüzleri algılayacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859220"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977939"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Hızlı Başlangıç: REST API ve PHP kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API PHP ile kullanacaksınız.
 
@@ -99,7 +99,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-`subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir; bu dizeyi amaçlanan kullanıma bağlı olarak değiştirmek isteyebilirsiniz.
+`subscriptionKey` alanını abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve doğru uç nokta dizesini içermesi için `uriBase` dizesini değiştirmeniz gerekir. `returnFaceAttributes` alanı alınacak yüz özniteliklerini belirtir; Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

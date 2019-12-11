@@ -3,23 +3,23 @@ title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323071"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975457"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-host-json-v1.md)
 > * [Sürüm 2](functions-host-json.md)
 
-*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v2 çalışma zamanı için kullanılabilen ayarlar listelenir.  
+*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede, Azure Işlevleri çalışma zamanının 2. x sürümünden itibaren kullanılabilen ayarlar listelenir.  
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 2. x içindir.  1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> Bu makale, Azure Işlevleri 2. x ve sonraki sürümleri için kullanılır.  İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -131,7 +131,7 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
 
-## <a name="extensions"></a>Uzantılardan
+## <a name="extensions"></a>uzantılar
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
@@ -193,7 +193,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md#hostjson-settings)içinde bulunabilir.
 
-## <a name="logging"></a>açmak
+## <a name="logging"></a>günlüğe kaydetme
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -216,8 +216,8 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always``debugOnly`. |
-|logLevel|Yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|console|Yok| [Konsol](#console) günlüğü ayarı. |
+|logLevel|Yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x ve üzeri, günlük kategorisi filtrelemesi için ASP.NET Core düzeni izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
+|console|Yok| [console](#console) günlüğü ayarı. |
 |applicationInsights|Yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
 ## <a name="console"></a>console
@@ -238,7 +238,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|isEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|isEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
 ## <a name="manageddependency"></a>managedDependency bağımlılığı
 
@@ -252,7 +252,7 @@ Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde des
 }
 ```
 
-## <a name="queues"></a>klarında
+## <a name="queues"></a>sıralar
 
 Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
 

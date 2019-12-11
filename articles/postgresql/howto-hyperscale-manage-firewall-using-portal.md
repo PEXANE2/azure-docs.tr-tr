@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kurallarını yönetme-hiper ölçek (Citus)
+title: Güvenlik duvarı kurallarını yönetme-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
 description: Azure portal kullanarak PostgreSQL için Azure veritabanı-hiper ölçek (Citus) için güvenlik duvarı kuralları oluşturun ve yönetin
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 1b132eb168f3d873c8150bc33b581aa0f0f8d124
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 660c395e6cff81b0abcac07e66385f80a538695f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273702"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977548"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nın güvenlik duvarı kurallarını yönetme-hiper ölçek (Citus)
 Sunucu düzeyinde güvenlik duvarı kuralları, belirtilen IP adreslerinden veya IP adresi aralığından bir Hyperscale (Citus) düzenleyici düğümüne erişimi yönetmek için kullanılabilir.

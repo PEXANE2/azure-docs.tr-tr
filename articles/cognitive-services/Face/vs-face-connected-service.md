@@ -1,21 +1,21 @@
 ---
-title: "Öğretici: Yüz tanıma API'siC#"
+title: 'Öğretici: Yüz Tanıma API’si C#'
 titleSuffix: Azure Cognitive Services
-description: Bilişsel hizmetler yüz tanıma API'si bir resimdeki yüz özelliklerinin algılamak için kullanan bir Windows uygulaması oluşturun.
+description: Bir görüntüdeki yüzlerin özelliklerini algılamak için bilişsel Hizmetler Yüz Tanıma API'si kullanan bir Windows uygulaması oluşturun.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606808"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970304"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Visual Studio’da Bağlı Hizmetler’i kullanarak Bilişsel Hizmetler Yüz Tanıma API’sine bağlanma
 
@@ -26,7 +26,7 @@ Bu makalede ve beraberindeki destek makalelerinde, Bilişsel Hizmetler Yüz Tan�
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-- Visual Studio 2017 sürüm 15.7 veya üzeri sürümler **Web geliştirme** iş yükü yüklenmiş. [Şimdi indir](https://www.visualstudio.com/downloads/).
+- **Web geliştirme** iş yükü yüklüyken Visual Studio 2017 sürüm 15,7 veya üzeri. [Şimdi indir](https://www.visualstudio.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -79,7 +79,7 @@ Bu makalede ve beraberindeki destek makalelerinde, Bilişsel Hizmetler Yüz Tan�
       }
    ```
 
-1. Projenizdeki wwwroot klasörüne bir görüntüler klasörü ekleyin ve wwwroot klasörünüz için bir görüntü dosyası ekleyin. Örneğin, bu [Yüz Tanıma API’si sayfasındaki](https://azure.microsoft.com/services/cognitive-services/face/) görüntülerden birini kullanabilirsiniz. Sağ görüntülerden birini tıklayın, Çözüm Gezgini'nde sonra yerel sabit sürücünüze kaydedin, görüntüleri klasörü sağ tıklatın ve seçin **Ekle** > **var olan öğe** projenize eklemek için. Projeniz Çözüm Gezgini’nde aşağıdakine benzer şekilde görünmelidir:
+1. Projenizdeki wwwroot klasörüne bir görüntüler klasörü ekleyin ve wwwroot klasörünüz için bir görüntü dosyası ekleyin. Örneğin, bu [Yüz Tanıma API’si sayfasındaki](https://azure.microsoft.com/services/cognitive-services/face/) görüntülerden birini kullanabilirsiniz. Görüntülerden birine sağ tıklayın, yerel sabit sürücünüze kaydedin, ardından Çözüm Gezgini, görüntüler klasörüne sağ tıklayın ve > **var olan öğe** **Ekle** ' yi seçerek projenize ekleyin. Projeniz Çözüm Gezgini’nde aşağıdakine benzer şekilde görünmelidir:
  
    ![görüntü dosyasını içeren görüntüler klasörü](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -147,7 +147,7 @@ Bu makalede ve beraberindeki destek makalelerinde, Bilişsel Hizmetler Yüz Tan�
             });
         }
    ```
-    Bu adımda kod bağlı hizmet eklendiğinde, eklenen anahtar kullanılarak yüz REST API çağrısı ile bir HTTP isteği oluşturur.
+    Bu adımdaki kod, bağlı hizmeti eklediğinizde eklediğiniz anahtarı kullanarak yüz REST API çağrısıyla bir HTTP isteği oluşturur.
 
 1. GetImageAsByteArray ve JsonPrettyPrint yardımcı işlevlerini ekleyin.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 6bd99a200a8f9e6be6d155a334b9b06ac05eacc3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770857"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972192"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -21,9 +21,11 @@ MySQL yavaş sorgu günlüğü hakkında daha fazla bilgi için MySQL Reference 
 ## <a name="access-slow-query-logs"></a>Yavaş sorgu günlüklerine erişin
 MySQL için Azure veritabanı 'nı, Azure portal ve Azure CLı kullanarak yavaş sorgu günlüklerini listeleyebilir ve indirebilirsiniz.
 
-Azure portal, MySQL için Azure veritabanı sunucunuzu seçin. **İzleme** başlığı altında, **sunucu günlükleri** sayfasını seçin.
+Azure portalında MySQL için Azure veritabanı sunucunuza seçin. **İzleme** başlığı altında, **sunucu günlükleri** sayfasını seçin.
 
 Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak yavaş sorgu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-in-cli.md).
+
+Benzer şekilde, tanılama günlüklerini kullanarak günlükleri Azure Izleyici 'ye kanal oluşturarak aktarabilirsiniz. Daha fazla bilgi için [aşağıya](concepts-server-logs.md#diagnostic-logs) bakın.
 
 ## <a name="log-retention"></a>Günlük tutma
 Günlükler, oluşumlarından yedi güne kadar kullanılabilir. Kullanılabilir günlüklerin toplam boyutu 7 GB 'yi aşarsa, alan kullanılabilir olana kadar en eski dosyalar silinir. 
@@ -35,10 +37,11 @@ Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek 
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan olarak 10 saniyedir.
 - **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
 - **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
 - **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **log_output**: "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" ise, yavaş sorgu günlüğü yalnızca yerel sunucu depolamasına yazılır. 
 
 > [!Note]
 > `sql_text`için günlük 2048 karakteri aşarsa kesilir.
@@ -78,7 +81,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `insert_id_s` | KIMLIĞI Ekle |
 | `sql_text_s` | Tam sorgu |
 | `server_id_s` | Sunucunun KIMLIĞI |
-| `thread_id_s` | İş parçacığı KIMLIĞI |
+| `thread_id_s` | İş Parçacığı Kimliği |
 | `\_ResourceId` | Kaynak URI 'SI |
 
 ## <a name="next-steps"></a>Sonraki Adımlar

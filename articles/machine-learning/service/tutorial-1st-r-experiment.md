@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307289"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974266"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile ilk modelinizi eğitim ve dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 
 1. [Yükleme yönergelerini](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) izleyerek şunları yapın:
     + Anaconda 'yı yükler
-    + `azuremlsdk` yüklensin
+    + `azuremlsdk` yükleme
     + Python için Azure Machine Learning SDK 'sını yükler
 
 1. [GitHub](https://github.com/Azure/azureml-sdk-for-r/tree/master/vignettes/train-and-deploy-with-caret)'dan üç öğretici dosyası alın.  Bunları bir **öğreticiler** dizinine kaydedin.
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>Veri deposuna veri yükleme
-Uzaktan Eğitim ortamınıza erişebilmek için verileri buluta yükleyin. Her Azure ML çalışma alanı, bağlantı bilgilerini, çalışma alanına bağlı depolama hesabında sağlanan Azure Blob kapsayıcısına depolayan bir varsayılan veri deposu ile birlikte gelir. Aşağıdaki kod, yukarıda oluşturduğunuz kazalardan dolayı verilerini bu veri deposuna karşıya yükler.
+Uzaktan Eğitim ortamınıza erişebilmek için verileri buluta yükleyin. Her Azure Machine Learning çalışma alanı, çalışma alanına bağlı depolama hesabında sağlanan Azure Blob kapsayıcısına bağlantı bilgilerini depolayan varsayılan bir veri deposu ile gelir. Aşağıdaki kod, yukarıda oluşturduğunuz kazalardan dolayı verilerini bu veri deposuna karşıya yükler.
 
 ```R
 ds <- get_default_datastore(ws)
@@ -164,10 +164,10 @@ Bu öğreticide, uzaktan işlem kümenizi kullanarak karşıya yüklenen veriler
 * İşi gönderme
 
 ### <a name="prepare-the-training-script"></a>Eğitim betiğini hazırlama
-Bu öğreticiyle aynı dizinde sizin için `accidents.R` adlı bir eğitim betiği sunulmaktadır. Eğitim için Azure ML hizmetinden yararlanmak üzere yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
+Bu öğreticiyle aynı dizinde sizin için `accidents.R` adlı bir eğitim betiği sunulmaktadır. Eğitim betiğine yönelik olarak Azure Machine Learning faydalanmak için yapılan **eğitim betiği içinde** aşağıdaki ayrıntılara dikkat edin:
 
 * Eğitim betiği, eğitim verilerini içeren dizini bulmak için `-d` bir bağımsız değişken alır. İşinizi daha sonra tanımlayıp gönderdiğinizde, bu bağımsız değişken için veri deposuna işaret edersiniz. Azure ML, eğitim işi için depolama klasörünü uzak kümeye bağlayacaktır.
-* Eğitim betiği, `log_metric_to_run()`kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder. Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Azure Machine Learning Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. `log_*()`günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın.
+* Eğitim betiği, `log_metric_to_run()`kullanarak Azure ML 'deki çalıştırma kaydına bir ölçüm olarak son doğruluğu günlüğe kaydeder. Azure ML SDK, eğitim çalıştırmaları sırasında çeşitli ölçümleri günlüğe kaydetmek için bir günlük API kümesi sağlar. Bu ölçümler, deneme çalıştırması kaydında kaydedilir ve kalıcı hale getirilir. Ölçümlere daha sonra istediğiniz zaman erişilebilir veya [Studio](https://ml.azure.com)'daki çalıştırma ayrıntıları sayfasında görüntüleyebilirsiniz. `log_*()`günlük yöntemlerinin tamamına yönelik [başvuruya](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) bakın.
 * Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. `./outputs` klasörü, Azure ML tarafından özel bir işleme alır. Eğitim sırasında, `./outputs` yazılan dosyalar Azure ML tarafından çalıştırma kaydlarınıza otomatik olarak yüklenir ve yapıtlar olarak kalıcı hale getirilir. Eğitilen modeli `./outputs`kaydederek, çalışma bittikten sonra ve uzak eğitim ortamınıza artık erişiminiz olmadığında bile model dosyanıza erişebiliyor ve bu dosyayı alabilirsiniz.
 
 ### <a name="create-an-estimator"></a>Tahmin aracı oluşturma

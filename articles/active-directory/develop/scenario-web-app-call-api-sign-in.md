@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran Web uygulaması (oturum açma)-Microsoft Identity platform
-description: Web API 'Lerini çağıran bir Web uygulaması oluşturma (oturum açma) hakkında bilgi edinin
+title: Oturum kapatma sırasında hesapları önbellekten kaldırma-Microsoft Identity platform | Mavisi
+description: Oturum kapatma sırasında belirteç önbelleğinden hesap kaldırmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596373"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961667"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Web API 'Lerini çağıran Web uygulaması-oturum açma
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Genel oturum açma sırasında önbellekten hesapları kaldır
 
 Web uygulamanıza nasıl oturum açma ekleneceğini zaten biliyoruz. Web uygulamasında, [kullanıcıların oturum açması için oturum açma eklemesi](scenario-web-app-sign-user-sign-in.md)gerektiğini öğrenirsiniz.
 
@@ -30,7 +30,7 @@ Burada, Kullanıcı oturumu kapatmışsa, bu uygulamadan veya herhangi bir uygul
 
 ## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Oturum kapatıldıktan sonra geri çağırma işlemini kesintiye uğratan ve çoklu oturum kapatma
 
-Uygulamanız, bir sonraki `logout` olayını ele geçirebilir, örneğin, oturum açan hesapla ilişkili belirteç önbelleğinin girişini temizlemek için. Web uygulaması, Kullanıcı için erişim belirteçlerini önbellekte depolar. @No__t_0 geri çağırma sonrasında, Web uygulamanızın kullanıcı belirtecini belirteç önbelleğinden kaldırmasını sağlar.
+Uygulamanız, bir sonraki `logout` olayını ele geçirebilir, örneğin, oturum açan hesapla ilişkili belirteç önbelleğinin girişini temizlemek için. Web uygulaması, Kullanıcı için erişim belirteçlerini önbellekte depolar. `logout` geri çağırma sonrasında, Web uygulamanızın kullanıcı belirtecini belirteç önbelleğinden kaldırmasını sağlar.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 

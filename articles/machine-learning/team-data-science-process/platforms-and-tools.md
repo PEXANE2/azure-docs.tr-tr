@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626370"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978518"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformlar ve araçlar için veri bilimi projeleri
 
@@ -44,7 +44,7 @@ Veri bilimi sanal makinesi hem Windows hem de Linux, Microsoft tarafından sunul
 - Windows için Power BI desktop
 - SQL Server 2016 Developer Edition Windows / Linux üzerinde Postgres
 
-Ayrıca **ML ve AI Araçları** xgboost, mxnet ve Vowpal Wabbit gibi.
+Ayrıca, xgboost, mxnet ve Vowpal Wabbit gibi **ml ve AI araçları** da içerir.
 
 Şu anda DSVM kullanılabilir **Windows** ve **Linux CentOS** işletim sistemleri. Üzerinde yürütmek için planlama veri bilimi projeleri gereksinimlerine göre DSVM (CPU çekirdek sayısı) ve bellek boyutunu seçin. 
 
@@ -73,7 +73,7 @@ Azure SQL veri ambarı hakkında daha fazla bilgi için bkz. [SQL veri ambarı](
 
 Bir Kurumsal Çapta depo her türde herhangi bir resmi gereksinim veya uygulanan şema önce tek bir konumda toplanan verileri Azure veri gölü gibidir. Her türde verinin boyutu ya da yapı bağımsız olarak bir veri gölü veya ne kadar hızlı içe alındığından tutulması için bu esneklik sağlar. Kuruluşlar, ardından Hadoop kullanabilir veya bulmak için Gelişmiş analiz bu veri gölleri desen. Veri gölleri veri puanlamalar ve veri ambarı'na taşımadan önce daha düşük maliyetli veri hazırlığı için bir depo görebilir.
 
-Azure Data Lake hakkında daha fazla bilgi için bkz. [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Bir Azure Data Lake ile ölçeklenebilir uçtan uca veri bilimi çözümü oluşturmayı öğrenmek için bkz: [Azure Data lake'te ölçeklenebilir veri bilimi: Uçtan uca kılavuz](data-lake-walkthrough.md)
+Azure Data Lake hakkında daha fazla bilgi için bkz. [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Bir Azure Data Lake ile ölçeklenebilir uçtan uca veri bilimi çözümü oluşturmayı öğrenmek için bkz: [Azure Data lake'te ölçeklenebilir veri bilimi: uçtan uca kılavuz](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) kümesi
@@ -103,7 +103,7 @@ R Services (veritabanında) SQL Server araçları ve teknolojileri kapsamlı bir
 TDSP takım Microsoft SQL Server 2016 R Services veri bilimi çözümlerini oluşturmak nasıl gösteren iki uçtan uca izlenecek yollar yayımladığı: biri R programcılarının, diğeri SQL geliştiricileri için. İçin **R programcılarının**, bkz: [veri bilimi uçtan uca kılavuz](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). İçin **SQL geliştiricileri**, bkz: [(eğitim) SQL geliştiricileri için veritabanında Advanced Analytics](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>Ek: Veri bilimi projeler için Araçlar
+## <a name="appendix"></a>Ek: veri bilimi projeler için Araçlar
 
 ### <a name="install-git-credential-manager-on-windows"></a>Windows üzerinde Git kimlik bilgisi Yöneticisi'ni yükleyin
 
@@ -124,28 +124,30 @@ TDSP takip ediyorsanız **Windows**, yüklemeniz gereken **Git Credential Manage
 
 Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsanız, bu makine Azure DevOps Hizmetleri tarafından değerlendirilmiştir. böylece, makinenizin ortak SSH anahtarının, Azure DevOps hizmetlerinizi eklemeniz gerekir. İlk olarak, bir ortak SSH anahtarını oluşturun ve SSH ortak anahtarları, Azure DevOps Hizmetleri Güvenlik ayar sayfasında anahtarın eklemek gerekir. 
 
-- SSH anahtarı oluşturmak için aşağıdaki iki komutu çalıştırın: 
+1. SSH anahtarı oluşturmak için aşağıdaki iki komutu çalıştırın: 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![SSH anahtarı oluşturmak için komutları](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![SSH anahtarı oluşturmak için komutları](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- Kopyalama tüm ssh anahtarı dahil olmak üzere *ssh-rsa*. 
-- Azure DevOps hizmetleriniz için oturum açın. 
-- Tıklayın **< adınız\>**  tıklayın ve sayfanın sağ üst köşesinde, **güvenlik**. 
+1. Kopyalama tüm ssh anahtarı dahil olmak üzere *ssh-rsa*. 
+1. Azure DevOps hizmetleriniz için oturum açın. 
+1. Tıklayın **< adınız\>**  tıklayın ve sayfanın sağ üst köşesinde, **güvenlik**. 
     
-    ![Adınıza tıklayın ve ardından güvenlik öğesini tıklatın](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![Adınıza tıklayın ve ardından güvenlik öğesini tıklatın](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Tıklayın **SSH ortak anahtarları**, tıklatıp **+ Ekle**. 
+1. Tıklayın **SSH ortak anahtarları**, tıklatıp **+ Ekle**. 
 
-    ![SSH ortak anahtarları ve ardından tıklama + Ekle'e tıklayın](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![SSH ortak anahtarları ve ardından tıklama + Ekle'e tıklayın](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Yapıştırma ssh anahtarı yalnızca kopyaladığınız metin kutusuna ve kaydedin.
+1. Yapıştırma ssh anahtarı yalnızca kopyaladığınız metin kutusuna ve kaydedin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tam işlem için tüm adımları gösteren uçtan uca talimatlara **belirli senaryoları** de sağlanır. Listelenen ve küçük resim açıklamasında ile bağlantılı [örnek izlenecek yollar](walkthroughs.md) konu. Bunlar, bulut, şirket içi araçları ve Hizmetleri, bir iş akışı veya akıllı bir uygulama oluşturmak için işlem hattı birleştirme işlemini göstermektedir. 
 
-Azure Machine Learning Studio kullanma adımları Team Data Science Process içinde yürütülen örnekler için bkz [Azure ML ile](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) öğrenme yolu.
+Azure Machine Learning Studio (klasik) kullanarak takım veri bilimi Işleminde adımların nasıl yürütüleceğini gösteren örnekler için, bkz. [Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) öğrenme yolu.

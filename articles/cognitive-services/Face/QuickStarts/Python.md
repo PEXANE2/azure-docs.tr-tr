@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure REST API ve Python ile görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlangıç: Azure REST API ve Python ile görüntüdeki yüzeyleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Azure yüz REST API Python ile kullanacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859025"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977922"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Hızlı Başlangıç: Yüz REST API ve Python kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Hızlı başlangıç: yüz REST API ve Python kullanarak görüntüdeki yüzeyleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API Python ile kullanacaksınız. Komut dosyası yüzlerin çevresine kareler ve görüntüdeki cinsiyet ve yaş bilgilerini çizer.
 
@@ -43,11 +43,11 @@ Alternatif olarak, komut satırından aşağıdaki adımlarla bu hızlı başlan
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
 1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
     1. `subscription_key` değerini abonelik anahtarınızla değiştirin.
-    1. Değerini, yüz tanıma API'si kaynağınız `face_api_url` için uç nokta URL 'sini içerecek şekilde düzenleyin.
+    1. `face_api_url` değerini Yüz Tanıma API'si kaynağınızın uç nokta URL 'sini içerecek şekilde düzenleyin.
     1. İsteğe bağlı olarak `image_url` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin: `detect-face.py`.
+1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin, `detect-face.py`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin: `python detect-face.py`.
+1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python detect-face.py`.
 
 ```python
 import requests

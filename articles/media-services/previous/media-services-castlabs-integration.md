@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887824"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969149"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Azure Media Services’ta Widevine lisansları vermek için castLabs kullanma 
 > [!div class="op_single_selector"]
@@ -114,6 +114,10 @@ Ortak şifreleme (PlayReady ve/veya Widevine) ile şifrelenmiş bir videoyu kay�
    Rosılab lisans sunucusu, belirtecin önünde "taşıyıcı =" öneki gerektirmez. Bu nedenle, belirteci göndermeden önce lütfen bunu kaldırın.
 7. Oynatıcıyı güncelleştirin.
 8. Videonun yürütülmesi gerekir.
+
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048980"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977140"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Tahmine dayalı bakım çözümleri için Azure yapay ZEKA Kılavuzu
 
@@ -41,10 +41,10 @@ Bu kılavuzun ilk yarısında, bu sorunları gidermeye yönelik PdM uygulama ava
 
 ## <a name="business-case-for-predictive-maintenance"></a>Tahmine dayalı bakım için İş Gerekçesi
 
-İşletmeler, en yüksek verimlilik ve kullanımı üzerinde sermaye yatırımlarınızı kendi dönüş hayata geçirmek için çalıştırılması için kritik donanımı gerektirir. Bu varlıklar, uçak motorları, turbines, elevators ya da milyonlarca - fotokopi, kahve makineler veya Su coolers gibi günlük Gereçleri aşağı maliyet endüstriyel chillers - değişiklik gösterebilir.
-- Varsayılan olarak, çoğu işletmenin dayanan _düzeltici Bakım_, burada parçaları olarak değiştirilir ve bunlar başarısız olduğunda. Düzeltme bakım sağlar bölümleri tamamen kullanılır (Bu nedenle değil İsraf bileşen yaşam), ancak maliyetlerini iş kapalı kalma süresi, işçilik ve zamanlanmamış bakım gereksinimlerini (kapalı, saat veya kullanışsız konumları).
+İşletmeler sermaye yatırımlarının karşılığını alabilmek için kritik ekipmanlarının en üst verimlilik ve kullanım düzeyinde çalışmasına gereksinim duyar. Bu varlıklar arasında uçak motorlarından türbinlere, asansörlerden endüstriyel soğutuculara milyonlarca liralık varlıklar yer alabileceği gibi fotokopi makineleri, kahve makineleri veya su sebilleri gibi daha basit gereçler de yer alabilir.
+- Varsayılan olarak, çoğu işletmenin dayanan _düzeltici Bakım_, burada parçaları olarak değiştirilir ve bunlar başarısız olduğunda. Düzeltici bakım ile parçalar sonuna kadar kullanılır (bileşen ömrü konusunda israf olmaz), ancak işletmeye kapalı kalma süresi, emek ve zamanlanmamış bakım gereksinimleri (mesai dışı saatler veya konum açısından olumsuzluklar) açısından yük getirir.
 - İleri düzey, işletmelerin uygulama sırasında _önleyici bakım_, nerede bunlar bir bölümü için faydalı ömrü belirlemek ve korumak veya bir hatadan önce değiştirin. Önleyici bakım, zamanlanmamış veya yıkıcı arızaların yaşanmasını engeller. Ancak yüksek maliyetinden zamanlanmış bir kapalı kalma süresi, bileşenin tam yaşam kullanın ve hala işçilik önce eksik kullanımı kalır.
-- Amacı _Tahmine dayalı Bakım_ etkinleştirerek düzeltme ve önleyici bakım, arasındaki dengeyi optimize etmek için _zamanında_ bileşenlerinin değiştirme. Yakın bir hata olduğunda bu yaklaşım yalnızca bu bileşenleri yerini alır. Bileşen lifespans (önleyici Bakımı karşılaştırıldığında) genişleterek ve zamanlanmamış Bakım ve işçi maliyetleri (düzeltme bakım) azaltma, işletmelerin maliyet tasarrufu ve rekabet avantajları elde edebilirsiniz.
+- Amacı _Tahmine dayalı Bakım_ etkinleştirerek düzeltme ve önleyici bakım, arasındaki dengeyi optimize etmek için _zamanında_ bileşenlerinin değiştirme. Bu yaklaşımda yalnızca arızalanmak üzere olan bileşenler değiştirilir. Bileşenlerin ömrünü uzatmasının (önleyici bakımla karşılaştırıldığında) yanı sıra zamanlanmamış bakım ve emek maliyetlerini azaltması (düzeltici bakıma göre) sayesinde işletmeler hem maliyet tasarrufu gerçekleştirebilir hem de rakiplerinin önüne geçebilir.
 
 ## <a name="business-problems-in-pdm"></a>PdM iş sorunları
 İşletmeler, beklenmeyen hatalar nedeniyle yüksek işletimsel risk yüz tanıma ve öngörü sorunların kök nedenini karmaşık sistemlerde sınırlı. İşle ilgili önemli sorulara bazıları şunlardır:
@@ -203,7 +203,9 @@ Ne kadar geleceğe tahmin modeli olan iş gereksinimlerini tanımlayın. Sırayl
 #### <a name="rolling-aggregates"></a>Sıralı toplamaları
 Her bir varlık kaydı için sıralı bir pencere boyutu "W" toplamları hesaplamak için zaman birimlerinin sayısı olarak seçilir. Lag özellikleri, W dönemleri kullanılarak ardından hesaplanır _tarihinden önce_ kaydın. Şekil 1'de mavi satırlar her zaman birimi için bir varlık için kayıtlı algılayıcı değerlerini gösterir. Bunlar, W = 3 boyutunun bir pencere üzerinde çalışırken bir özellik değerlerinin ortalamasını gösterir. Hareketli ortalamanın damgalı t aralıktaki tüm kayıtlar üzerinden hesaplanır<sub>1</sub> (turuncu içinde) t<sub>2</sub> (yeşil içinde). W genellikle dakika veya saat verilerin doğasına bağlı olarak değerdir. Ancak belirli bir varlığın tüm geçmiş kaydının kadar zaman sorunları, büyük bir W (örneğin, 12 aylık) çekme sağlayabilir.
 
-![Şekil 1. Toplama özellikleri çalışırken](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) Şekil 1. Toplama özellikleri alınıyor
+![Şekil 1. Toplama özellikleri alınıyor](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+Şekil 1. Toplama özellikleri alınıyor
 
 Toplamlar bir zaman penceresi üzerinde çalışırken, örnek sayısı, ortalama, CUMESUM (birikmeli toplamı) ölçüler, en düşük/en yüksek değerleri verilebilir. Ayrıca, farkı, standart sapma ve aykırı değerleri ötesinde N standart sapma sayısı sık sık kullanılır. Örnekler için uygulanabilir Toplamalarına [kullanım](#sample-pdm-use-cases) bu kılavuzda, aşağıda listelenmiştir. 
 - _Uçuş gecikme_: geçen gün/hafta boyunca hata kodları sayısı.
@@ -217,7 +219,9 @@ Başka bir kullanışlı PdM, eğilim değişiklikleri, ani ve verileri anormall
 #### <a name="tumbling-aggregates"></a>Atlayan toplamaları
 Bir varlığın etiketlendiği her kayıt için, _w-<sub>k</sub>_  boyutundaki bir pencere tanımlanmıştır; burada _k_ , _w_boyutundaki pencerelerin sayısıdır. Daha sonra toplamalar, bir kaydın zaman damgasından önceki dönemler için _Windows_ _W-k, w-<sub>(k-1)</sub>,..., w-<sub>2</sub>, w-<sub>1</sub>_  ' n i _n üzerine yazılır_ . _k_ kısa vadeli etkileri yakalamak için küçük bir sayı veya uzun süreli performans düşüşü desenleri yakalamak için büyük bir sayı olabilir. (bkz: Şekil 2).
 
-![Şekil 2. Atlayan toplama özellikleri](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) Şekil 2. Toplama özellikleri atlayan
+![Şekil 2. Toplama özellikleri atlayan](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+Şekil 2. Toplama özellikleri atlayan
 
 Rüzgar turbines kullanım örneği oluşturulabilir, H = 1 k ile özellikleri, öteleme = 3. Bunlar, her üst ve alt aykırı değerleri kullanarak son üç ay için gecikme aktarıldığını belirtir.
 
@@ -227,7 +231,7 @@ Tarih gibi donanım üretim, model numarası, konum, teknik belirtimler statik �
 
 Şu ana kadar bahsedilen veri hazırlama çabalarını aşağıda gösterildiği gibi düzenlenmiş veri neden. Eğitim, sınama ve doğrulama veri (Bu örnekte zaman gün birimleri cinsinden gösterilmiştir) Bu mantıksal şemaya sahip olmalıdır.
 
-| Varlık Kimliği | Zaman | \<Özellik sütunları > | Etiketle |
+| Varlık Kimliği | Zaman | \<Özellik sütunları > | Etiket |
 | ---- | ---- | --- | --- |
 | A123 |1\. gün | . . . | . |
 | A123 |2\. gün | . . . | . |
@@ -262,7 +266,9 @@ Bu teknik eğitim örnekleri iki tür tanımlanır. Pozitif bir örnek _belirten
 #### <a name="label-construction-for-binary-classification"></a>İkili sınıflandırma için etiket oluşturma
 Burada soru şudur: "varlık sonraki başarısız olduğunu belirten olasılığı nedir zaman birimi X?" Bu soru, bir varlığın "arıza" olarak arıza öncesinde etiketini X kayıtları yanıtlamak için (Etiket = 1), "normal" olarak tüm kayıtları etiketlemelerine (etiket = 0). (bkz: Şekil 3).
 
-![Şekil 3. İkili sınıflandırma etiketleme](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) Şekil 3. İkili sınıflandırma etiketleme
+![Şekil 3. İkili sınıflandırma etiketleme](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+Şekil 3. İkili sınıflandırma etiketleme
 
 Bazı kullanım örnekleri için stratejisi etiketleme örnekleri aşağıda listelenmiştir.
 - _Uçuş gecikme_: X seçilebilir 1 gün gecikmeler sonraki 24 saat içindeki tahmin etmek için. Ardından hataları önce 24 saat içinde olan tüm uçuşlar 1 etiketlenmiştir.
@@ -277,7 +283,9 @@ Regresyon modellerini alışkın olduğunuz _bir varlığın kalan faydalı ömr
 #### <a name="label-construction-for-regression"></a>Regresyon için etiket oluşturma
 Burada soru şudur: "Ekipmanın kalan faydalı ömrü (RUL) nedir?" Arıza öncesinde her bir kayıt için sonraki hatasından önce kalan zaman birimlerinin sayısı için etiket hesaplayın. Bu yöntemde, etiketleri sürekli değişkenlerdir. (Bkz: Şekil 4)
 
-![Şekil 4. Regresyon için etiketleme](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) Şekil 4 '. Regresyon için etiketleme
+![Şekil 4. Regresyon için etiketleme](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+Şekil 4. Regresyon için etiketleme
 
 Regresyon için etiketleme başvuru içeren bir hata noktası gerçekleştirilir. Ne kadar varlık hatasından önce da sıçramıştır bilmeden özelliği hesaplamasına mümkün değildir. Bu nedenle buna ikili sınıflandırma için varlıklar veri herhangi bir hata olmadan modelleme için kullanılamaz. Bu sorunu en iyi adlı başka bir istatistik teknik tarafından ele [yaşam analizi](https://en.wikipedia.org/wiki/Survival_analysis). Ancak, zaman açısından değişkenlik gösteren verilerin sık aralıklarla ile ilgili PdM kullanım örnekleri için bu tekniği uygularken olası zorluklar ortaya çıkabilir. Yaşam analizi hakkında daha fazla bilgi için bkz. [bu bir çağrı](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf).
 
@@ -289,11 +297,15 @@ Regresyon için etiketleme başvuru içeren bir hata noktası gerçekleştirilir
 #### <a name="label-construction-for-multi-class-classification"></a>Çok sınıflı sınıflandırma için etiket oluşturma
 Burada Soru: "bir varlık sonraki başarısız olduğunu belirten olasılığı nedir _nZ_ zaman birimlerinin burada _n_ nokta sayısı?" Bu soruyu cevaplamak için demet süre (3Z 2Z, Z) kullanarak bir varlığın arıza öncesinde nZ kayıtları etiketleyin. Etiket diğer tüm kayıtları "normal" (etiket = 0). Bu yöntemde, hedef değişken tutar _kategorik_ değerleri. (Bkz. Şekil 5).
 
-![Şekil 5. Hata zamanı tahmin çok sınıflı sınıflandırma etiketleri](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) Şekil 5 '. Hata zaman tahmini için çok sınıflı sınıflandırma etiketleme
+![Şekil 5. Birden çok Lass sınıflandırması için hata zaman tahmini etiketleri](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+Şekil 5. Hata zaman tahmini için çok sınıflı sınıflandırma etiketleme
 
 Burada Soru: "varlığı sonraki başarısız olduğunu belirten olasılığı nedir kök nedeni/sorunu nedeniyle zaman birimlerinin X _P<sub>miyim</sub>_ ?" Burada _miyim_ olası nedenlerini sayısıdır. Bu soru, bir varlığın arıza öncesinde etiketini X kayıtları yanıtlamak için "kök nedenden dolayı başarısız üzere _P<sub>miyim</sub>_ " (etiket = _P<sub>miyim</sub>_ ). "Normal" olarak tüm kayıtları etiket (etiket = 0). Bu yöntemde, etiketleri kategorik (bkz. Şekil 6) ayrıca.
 
-![Şekil 6. Kök neden çok sınıflı sınıflandırma etiketleri tahmin](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) Şekil 6. Kök nedeni tahmin için çok sınıflı sınıflandırma etiketleme
+![Şekil 6. Birden çok Lass sınıflandırması için kök neden tahmin etiketleri](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+Şekil 6. Kök nedeni tahmin için çok sınıflı sınıflandırma etiketleme
 
 Bir hata olasılığı nedeniyle her model atar _P<sub>miyim</sub>_  olasılık hiç hatasının yanı sıra. Bu olasılıklar gelecekte ortaya en olası sorunları tahmin izin vermek için büyüklük sıralanabilir.
 
@@ -329,7 +341,9 @@ Bir akış gibi çeşitli sensörlerden alınan ölçümleri zaman damgalı olay
 
 Zamana bağlı ayırma için çekme bir _kesme zamanı T eğitim<sub>c</sub>_  hiperparametreleri T kadar geçmiş verileri kullanarak ayarlanmış olan bir modeli eğitmek withintext<sub>c</sub>. T gelecekteki etiketleri sızdırılmasını önlemek için<sub>c</sub> eğitim verileri, etiket eğitim örnekleri X olması için en yeni saati seçin T önce birimleri<sub>c</sub>. Şekil 7'de gösterilen örnekte, bir kayıt özellikleri ve etiketleri yukarıda açıklanan şekilde burada hesaplanır veri kümesindeki her kare temsil eder. Şekil X = 2, W = 3 test etme ve eğitim gideceğine kayıtları gösterir:
 
-![Şekil 7. Zamana bağlı ikili sınıflandırma için bölme](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) Şekil 7. İkili sınıflandırma için zamana bağımlı Böl
+![Şekil 7. İkili sınıflandırma için zamana bağımlı Böl](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+Şekil 7. İkili sınıflandırma için zamana bağımlı Böl
 
 Yeşil kareler eğitim için kullanılan zaman birimi ait kayıtları temsil eder. Daha önce göz önünde bulundurularak her eğitim örnek oluşturulan özellik oluşturma için üç nokta ve iki gelecek dönemlere önce T etiketleme<sub>c</sub>. İki gelecek dönemlere herhangi bir bölümünü T dışında olduğunda<sub>c</sub>, T dışında hiçbir görünürlük varsayıldığından eğitim veri kümesi, örnek dışlama<sub>c</sub>.
 
@@ -411,11 +425,11 @@ Bu kılavuz son bölümü PdM çözüm şablonları, öğreticiler ve Azure'da g
 
 | # | Başlık | Açıklama |
 |--:|:------|-------------|
-| 2 | [Azure Tahmine dayalı bakım çözüm şablonu](https://github.com/Azure/AI-PredictiveMaintenance) | ML model ve eksiksiz bir Azure altyapı Tahmine dayalı bakım senaryolarını IOT Uzaktan izleme bağlamında destekleyebildiğini gösterir ve açık kaynaklı çözüm şablonu. |
+| 2 | [Azure Tahmine dayalı bakım çözüm şablonu](https://github.com/Azure/AI-PredictiveMaintenance) | Azure ML modelleme ve IoT uzaktan izleme bağlamında tahmine dayalı bakım senaryolarını destekleyebilen tam bir Azure altyapısını gösteren açık kaynaklı bir çözüm şablonu. |
 | 3 | [Tahmine dayalı bakım için derin öğrenme](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure not defteri ile Tahmine dayalı bakım için LSTM (uzun kısa vadeli bellek) ağları (yinelenen sinir ağları sınıfı) kullanarak bir demo çözümüyle bir [Bu örnek Web günlüğü gönderisini](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [R ile Tahmine dayalı bakım modelleme Kılavuzu](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | R betiklerini ile PdM modelleme Kılavuzu|
 | 5 | [Azure, Havacılık için Tahmine dayalı bakım](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Azure ML v1.0 uçak bakım göre ilk PdM çözüm şablonlarından biri. Bu kılavuz, bu projeden geldiğini. |
-| 6 | [IOT Edge için Azure yapay ZEKA Araç Seti](https://github.com/Azure/ai-toolkit-iot-edge) | Yapay ZEKA TensorFlow kullanarak IOT edge'de; Araç Seti paketler derin öğrenme modellerini Azure IOT Edge ile uyumlu Docker kapsayıcılarında ve bu modelleri REST API'leri olarak kullanıma sunar.
+| 6 | [IOT Edge için Azure yapay ZEKA Araç Seti](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow kullanarak IoT Edge AI araç seti, Azure IoT Edge uyumlu Docker kapsayıcılarındaki derin öğrenme modellerini paketler ve bu modelleri REST API 'Ler olarak kullanıma sunar.
 | 7 | [Azure IOT Tahmine dayalı bakım](https://github.com/Azure/azure-iot-predictive-maintenance) | Bilgisayarlar - Azure IOT paketi önceden yapılandırılmış çözümü. IOT paketi ile uçak bakım PdM şablonu. [Başka bir belgede](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) ve [izlenecek](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) aynı projeye ilgili. |
 | 8 | [SQL Server R Services kullanarak Tahmine dayalı bakım şablonu](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | R hizmetlerini temel alarak kalan faydalı ömrü senaryo Tanıtımı. |
 | 9 | [Tahmine dayalı bakım modelleme Kılavuzu](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Uçak bakım veri kümesi özelliği ile R kullanarak mühendislik [denemeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) ve [veri kümeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) ve [Azure not defteri](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) ve [denemeleri](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)AzureML v1.0,|
@@ -424,7 +438,7 @@ Bu kılavuz son bölümü PdM çözüm şablonları, öğreticiler ve Azure'da g
 
 Microsoft Azure, PdM teknikleri, içerik ve yapay ZEKA kavramları ve uygulama Genel eğitim yanı sıra temel kavramları öğrenme yollarını sunar.
 
-| Eğitim kaynağı  | Kullanılabilirlik |
+| Eğitim kaynağı  | Erişilebilirlik |
 |:-------------------|--------------|
 | [PdM ağaçları ile rastgele orman için öğrenme yolu](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Genel | 
 | [PdM kullanarak derin öğrenme için öğrenme yolu](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Genel |
@@ -434,7 +448,7 @@ Microsoft Azure, PdM teknikleri, içerik ve yapay ZEKA kavramları ve uygulama G
 | [LinkedIn Learning](https://www.linkedin.com/learning) | Genel |
 | [Microsoft AI YouTube web seminerleri](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Genel |
 | [Microsoft yapay ZEKA Göster](https://channel9.msdn.com/Shows/AI-Show) | Genel |
-| [LearnAI@MS](https://learnanalytics.microsoft.com) | İş Ortakları |
-| [Microsoft İş Ortağı Ağı](https://learningportal.microsoft.com) | İş Ortakları |
+| [LearnAI@MS](https://learnanalytics.microsoft.com) | İş ortakları |
+| [Microsoft İş Ortağı Ağı](https://learningportal.microsoft.com) | İş ortakları |
 
 Ayrıca, yapay ZEKA MOOCS (açık çevrimiçi kurslara) ücretsiz Stanford ve MIT gibi akademik kurumları tarafından çevrimiçi sunulan ve diğer eğitim şirketlerdir.

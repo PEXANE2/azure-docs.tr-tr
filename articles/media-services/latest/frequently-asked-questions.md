@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338825"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977735"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -30,7 +30,7 @@ Bu makale, Azure Media Services (AMS) v3 hakkında sık sorulan soruların yanı
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>Medya ayrılmış birimleri Nasıl yaparım? yapılandırmak mi?
 
-Ses analizi ve Video analizi işleri, Media Services v3 tarafından tetiklenen veya Video Indexer için 10 S3 MRU hesabınızla sağlama önemle tavsiye edilir. 10'dan fazla S3 MRU gerekiyorsa, kullanarak bir destek bileti açın [Azure portalında](https://portal.azure.com/).
+Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10'dan fazla S3 MRU gerekiyorsa, kullanarak bir destek bileti açın [Azure portalında](https://portal.azure.com/).
 
 Ayrıntılar için bkz. [CLI ile medya Işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
 
@@ -58,7 +58,7 @@ Media Services v3 Live Encoding, canlı akış sırasında video veya resim SLA 
 
 Kaynak videoyu değiştirmek için [canlı bir şirket içi kodlayıcı](recommended-on-premises-live-encoders.md) kullanabilirsiniz. Birçok uygulama, Telestream kablolu dönüştürme, değiştirici Studio (iOS 'ta), OBS Studio (ücretsiz uygulama) ve birçok daha fazlası dahil olmak üzere kaynakları değiştirme yeteneği sağlar.
 
-## <a name="content-protection"></a>Content protection
+## <a name="content-protection"></a>Content Protection
 
 ### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 şifresiz anahtar şifrelemesi mi yoksa bir DRM sistemi mi kullanmalıyım?
 
@@ -118,6 +118,9 @@ Genellikle, müşterilere bir lisans sunucusu grubundaki DRM hizmet sağlayıcı
 
 * STS, kabul edilebilir ve lisans sunucusu grubu tarafından doğrulanan belirteçleri vermek gerekiyor. Örneğin, bir yetkilendirme iletisini içeren belirli bir JWT Axinom tarafından sağlanan Widevine lisans sunucuları gerektirir. Bu nedenle, böyle bir JWT'nin vermek için bir STS'ye olması gerekir. 
 * Artık, Media Services lisans teslimat hizmetinin yapılandırma gerekmez. Lisans edinme URL'leri (PlayReady, Widevine ve FairPlay) sağlamanız gereken ContentKeyPolicies yapılandırdığınızda.
+
+> [!NOTE]
+> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services V2 vs v3 
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: helohr
-ms.openlocfilehash: 54f2c39260ecaf643b0f2add8758ceb866e71afe
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561128"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972397"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -149,7 +149,7 @@ Bundan sonra, bu görüntüyü genişleterek MSIX 'yi "genişletmeniz" gerekir. 
 
 3. Bağlı VHD 'ye gidin ve uygulama klasörünü açın ve paket içeriğinin mevcut olduğunu doğrulayın.
 
-4. VHD 'YI çıkarın.
+4. VHD'yi çıkarın.
 
 ## <a name="configure-windows-virtual-desktop-infrastructure"></a>Windows sanal masaüstü altyapısını yapılandırma
 
@@ -337,7 +337,7 @@ $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
 
 #region register
 
-Add-AppxPackage -Path \$path -DisableDevelopmentMode -Register
+Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 #endregion
 ```

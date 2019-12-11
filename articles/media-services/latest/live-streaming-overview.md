@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 93005b181075ac671af6c8d73a3f2a06ed9eb0d8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186170"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977752"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -42,6 +42,9 @@ Media Services ile, canlı akışlarınızı, hizmet 'e gönderilen katkı akı�
 ## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
 Dinamik şifreleme, etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemenize olanak sağlar: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
+
+> [!NOTE]
+> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="dynamic-manifest"></a>Dinamik bildirim
 

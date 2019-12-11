@@ -1,6 +1,6 @@
 ---
 title: Data Factory-.NET API değişiklik günlüğü
-description: Son değişiklikleri, özellik eklemelerini, hata düzeltmelerini açıklar vb. Azure Data Factory için .NET API 'nin belirli bir sürümünde.
+description: Azure Data Factory için belirli bir .NET API sürümünde değişiklik, özellik eklemeleri, hata düzeltmeleri ve benzeri işlemleri açıklar.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683187"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979011"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API değişiklik günlüğü
 > [!NOTE]
@@ -45,7 +45,7 @@ Bu makalede, belirli bir sürümdeki Azure Data Factory SDK ile ilgili değişik
   * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
 * Aşağıdaki bağlı hizmet türleri eklendi:
   * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
-  * [Salesforcelınkedservice](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
+  * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
 * Aşağıdaki veri kümesi türleri eklendi:
   * [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
 * Aşağıdaki kopyalama kaynağı türleri eklendi:
@@ -78,7 +78,7 @@ Bu makalede, belirli bir sürümdeki Azure Data Factory SDK ile ilgili değişik
   * Verileri SQL veri ambarı 'na kopyalamak için PolyBase kullanımını sağlar.
 
 ## <a name="version-461"></a>Sürüm 4.6.1
-### <a name="bug-fixes"></a>Hata düzeltmeleri
+### <a name="bug-fixes"></a>Hata Düzeltmeleri
 * Etkinlik pencerelerini listelemek için HTTP isteğini düzeltir.
   * Kaynak grubu adını ve Veri Fabrikası adını istek yükünden kaldırır.
 
@@ -106,12 +106,12 @@ Bu makalede, belirli bir sürümdeki Azure Data Factory SDK ile ilgili değişik
 ## <a name="version-440"></a>Sürüm 4.4.0
 ### <a name="feature-additions"></a>Özellik eklemeleri
 * Aşağıdaki bağlı hizmet türü, kopyalama etkinlikleri için veri kaynakları ve havuzlar olarak eklenmiştir:
-  * [Azurestooygesaslinkedservice](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Kavramsal bilgi ve örnekler için bkz. [Azure Storage SAS bağlı hizmeti](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) .
+  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Kavramsal bilgi ve örnekler için bkz. [Azure Storage SAS bağlı hizmeti](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) .
 
 ## <a name="version-430"></a>Sürüm 4.3.0
 ### <a name="feature-additions"></a>Özellik eklemeleri
 * Aşağıdaki bağlı hizmet türleri, kopyalama etkinlikleri için veri kaynakları olarak eklenmiştir:
-  * [Hdfslinkedservice](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Kavramsal bilgi ve örnekler için bkz. [Data Factory kullanarak verileri](data-factory-hdfs-connector.md) .
+  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Kavramsal bilgi ve örnekler için bkz. [Data Factory kullanarak verileri](data-factory-hdfs-connector.md) .
   * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Kavramsal bilgi ve örnekler için [Azure Data Factory kullanarak ODBC veri mağazalarından verileri taşıma](data-factory-odbc-connector.md) bölümüne bakın.
 
 ## <a name="version-420"></a>Sürüm 4.2.0
@@ -127,7 +127,7 @@ Bu makalede, belirli bir sürümdeki Azure Data Factory SDK ile ilgili değişik
   * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
   * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
 * Aşağıdaki etkinlik türleri eklendi:
-  * [Datalakeanaliz Ticsusqlactivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
+  * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
 * Aşağıdaki veri kümesi türleri eklendi:
   * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
 * Kopyalama etkinliği için aşağıdaki kaynak ve havuz türleri eklendi:
@@ -140,8 +140,8 @@ Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden 
 
 | 4\.0.0 içindeki ad | 4\.0.1 içindeki ad |
 |:--- |:--- |
-| Azuressqldatawarehousedataset |[Azuressqldatawarehousetabledataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
-| Azuressqldataset |[Azuressqltabledataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
+| AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
+| AzureSqlDataset |[AzureSqlTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
 | AzureDataset |[AzureTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuretabledataset.aspx) |
 | OracleDataset |[OracleTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.oracletabledataset.aspx) |
 | RelationalDataset |[RelationalTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.relationaltabledataset.aspx) |
@@ -158,7 +158,7 @@ Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden 
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
-| Tablecreateorupdateresbir |[Datasetcreateorupdateres,](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
+| Tablecreateorupdateresbir |[DatasetCreateOrUpdateResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateresponse.aspx) |
 | TableGetResponse |[DatasetGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetgetresponse.aspx) |
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |

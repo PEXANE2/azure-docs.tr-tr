@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2019
-ms.openlocfilehash: d7a746c170d04ad17b86e8aca63384edffbe75ac
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806805"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975032"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL veritabanı yönetilen örneğine çevrimiçi olarak SQL Server geçirme
 
@@ -214,7 +214,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
 
 > [!NOTE]
-  > Azure veritabanı geçiş hizmeti ' sistem hatası 53 ' veya ' sistem hatası 57 ' hatasını gösteriyorsa, nedeni, Azure veritabanı geçiş hizmeti 'nin Azure dosya paylaşımının erişimine yol açabilir. Bu hatalardan biriyle karşılaşırsanız, lütfen [buradaki](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)yönergeleri kullanarak hesabı sanal ağdan depolamaya yönelik erişim izni verin.
+  > Azure veritabanı geçiş hizmeti ' sistem hatası 53 ' veya ' sistem hatası 57 ' hatasını gösteriyorsa, nedeni, Azure veritabanı geçiş hizmeti 'nin Azure dosya paylaşımının erişimine yol açabilir. Bu hatalardan biriyle karşılaşırsanız lütfen [buradaki](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)yönergeleri kullanarak sanal ağdan depolama hesabına erişim izni verin.
 
 
 2. **Kaydet**’i seçin.

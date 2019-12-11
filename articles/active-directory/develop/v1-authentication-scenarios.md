@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platformunda (v 1.0) kimlik doğrulaması | Mavisi
+title: Microsoft Identity platform kimlik doğrulaması (v 1.0) | Mavisi
 description: Microsoft Identity platform 'da kimlik doğrulamaya ilişkin temel bilgileri öğrenin. uygulama modeli, API, sağlama ve Microsoft Identity platformunun desteklediği en yaygın kimlik doğrulama senaryoları.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149185"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966784"
 ---
 # <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
 
@@ -64,13 +64,13 @@ Yukarıdaki örnek senaryoda uygulamaları bu iki role göre sınıflandırabili
 
 İstemcinizin nasıl oluşturulduğuna bağlı olarak, Microsoft Identity platform tarafından desteklenen kimlik doğrulama akışlarının birini (veya birkaçını) kullanabilir.  Bu akışlar çeşitli belirteçler (id_tokens, yenileme belirteçleri, erişim belirteçleri) ve yetkilendirme kodlarını oluşturabilir ve bunların çalışmasını sağlamak için farklı belirteçler gerektirebilir. Bu grafik genel bakış sağlar:
 
-|Akış | Gerektirmeyen | id_token | erişim belirteci | belirteci Yenile | yetkilendirme kodu | 
+|Akış | Şunları gerektirir | id_token | Erişim belirteci | belirteci Yenile | yetkilendirme kodu | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Yetkilendirme kodu akışı](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Örtük akış](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Karma OıDC akışı](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[Belirteç satın alma yenileme](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | belirteci Yenile | x | x | x| |
-|[On-behalf-of akışı](v1-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
+|[On-behalf-of akışı](v1-oauth2-on-behalf-of-flow.md) | Erişim belirteci| x| x| x| |
 |[İstemci kimlik bilgileri](v1-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
 
 Örtülü mod aracılığıyla yayınlanan belirteçlerin, URL aracılığıyla tarayıcıya geri geçirilmesi nedeniyle bir uzunluk sınırlaması vardır (`response_mode` `query` veya `fragment`).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur. 

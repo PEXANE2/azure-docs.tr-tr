@@ -1,26 +1,26 @@
 ---
-title: "Hızlı Başlangıç: Node.js - Bing Web araması REST API'si ile bir web araması"
+title: 'Hızlı başlangıç: node. js ile Web araması gerçekleştirme-Bing Web Araması REST API'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Node.js kullanarak Bing Web araması REST API'si için istekleri göndermek için kullanın ve bir JSON yanıtı alırsınız.
+description: Node. js kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f45b6ce402a5f61faeabd1534d7e3562af81294c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60651075"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973875"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Hızlı Başlangıç: Bing Web araması REST API'si ve Node.js kullanarak web araması
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Web Araması REST API ve Node. js kullanarak Web 'de arama yapın
 
-Bu hızlı başlangıçta, Bing Web araması API'si, ilk çağrı yapmak ve JSON yanıtını almak için kullanın. Bu Node.js uygulaması, API için bir arama isteği gönderir ve yanıtı gösterir. Bu uygulamanın, JavaScript'te yazılmış olsa da çoğu programlama dilleri ile uyumlu bir RESTful Web hizmeti API'dir.
+Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonelik anahtarını ayarlama
 
-Bu kod parçacığı, abonelik anahtarınızı depolamak için, kod dağıtırken anahtarlarınızın yanlışlıkla ortaya çıkmasını engellemek için iyi bir uygulama olarak `AZURE_SUBSCRIPTION_KEY` ortam değişkenini kullanır. Git [bilgisayarınızı API'leri sayfa](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) abonelik anahtarınızı aramak için.
+Bu kod parçacığı, abonelik anahtarınızı depolamak için, kod dağıtırken anahtarlarınızın yanlışlıkla ortaya çıkmasını engellemek için iyi bir uygulama olarak `AZURE_SUBSCRIPTION_KEY` ortam değişkenini kullanır. Abonelik anahtarınızı aramak için [API 'lerinizi sayfanıza](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) gidin.
 
 Ortam değışkeni kullanmaya alışkın değilseniz veya bu uygulamayı olabildiğince çabuk çalıştırmak istiyorsanız, `process.env['AZURE_SUBSCRIPTION_KEY']` değişkenini abonelik anahtar kümenizle dize olarak değiştirebilirsiniz.
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>İstekte bulunmak için işlev oluşturma
 
-Bu işlev, arama sorgusunu yola parametre olarak kaydederek güvenli bir GET isteği gönderir. `encodeURIComponent` geçersiz karakterleri atlatmak için kullanılır ve abonelik anahtarı bir üstbilgide geçilir. Geri çağrı, JSON gövdesini birleştirmek için `data` olayına, sorunları günlüğe kaydetmek için `error` olayına ve iletinin ne zaman tamamlanmış kabul edileceğini bilmek için de `end` olayına abone olan bir [yanıt](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) alır. İşlem tamamlandığında uygulama ilgi çekici üstbilgileri ve ileti gövdesini yazdırır. Renkleri değiştirebilir ve derinliği tercihinize göre ayarlayabilirsiniz; `1` derinliği yanıtın güzel bir özetini verir.
+Bu işlev, arama sorgusunu yola parametre olarak kaydederek güvenli bir GET isteği gönderir. `hostname`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.  `encodeURIComponent` geçersiz karakterleri atlatmak için kullanılır ve abonelik anahtarı bir üstbilgide geçilir. Geri çağrı, JSON gövdesini birleştirmek için `data` olayına, sorunları günlüğe kaydetmek için `error` olayına ve iletinin ne zaman tamamlanmış kabul edileceğini bilmek için de `end` olayına abone olan bir [yanıt](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) alır. İşlem tamamlandığında uygulama ilgi çekici üstbilgileri ve ileti gövdesini yazdırır. Renkleri değiştirebilir ve derinliği tercihinize göre ayarlayabilirsiniz; `1` derinliği yanıtın güzel bir özetini verir.
 
 ```javascript
 function bingWebSearch(query) {

@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: İçin Bing Web Araması SDK 'sını kullanınC#"
+title: "Hızlı başlangıç: C# için Bing Web Araması SDK'sını kullanma"
 titleSuffix: Azure Cognitive Services
 description: Bing Web Araması SDK'sı, Bing Web Araması özelliklerini C# uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
 services: cognitive-services
@@ -8,22 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 2c55aaa0843574981a7643b11161700992ea0b09
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018221"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976460"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Hızlı Başlangıç: İçin Bing Web Araması SDK 'sını kullanınC#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Hızlı başlangıç: C# için Bing Web Araması SDK'sını kullanma
 
 Bing Web Araması SDK'sı, Bing Web Araması özelliklerini C# uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
@@ -33,6 +29,8 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
   * [Visual Studio Code için C#](https://visualstudio.microsoft.com/downloads/)
   * [NuGet Paket Yöneticisi](https://github.com/jmrog/vscode-nuget-package-manager)
 * [.NET Core SDK](https://www.microsoft.com/net/download)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Proje oluşturma ve bağımlılıkları yükleme
 

@@ -1,5 +1,5 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik – hiper ölçek (Citus)
+title: Yüksek kullanılabilirlik – Hyperscale (Citus)-PostgreSQL için Azure veritabanı
 description: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma kavramları
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 616b5bff735f52d137c12c58ac6023c38a2d4044
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514751"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975542"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda yüksek kullanılabilirlik – hiper ölçek (Citus)
 
-Yüksek kullanılabilirlik (HA), bir sunucu grubundaki her düğümün bekleyen çoğaltmalarını tutarak veritabanı kapalı kalma süresini önler. Düğüm kapalıysa, hiper ölçek başarısız olan düğümden gelen bağlantıları bekleme durumuna geçirir. Yük devretme birkaç dakika içinde gerçekleşir ve Yükseltilen düğümlerin her zaman PostgreSQL zaman uyumlu akış çoğaltması aracılığıyla yeni verileri vardır.
+Yüksek oranda kullanılabilirlik (HA), bir sunucu grubundaki her düğümün hazır bekleyen çoğaltmalarını tutarak veritabanında kesinti süresi olmamasını sağlar. Bir düğüm kullanılamaz hale gelirse Hiper Ölçek başarısız düğümden gelen bağlantıları bekleme moduna alır. Yük devretme birkaç dakika içinde gerçekleşir ve yükseltilen düğümlerde, PostgreSQL zaman uyumlu akış çoğaltması sayesinde her zaman güncel veriler bulunur.
 
 Koordinatör düğümündeki HA avantajlarından yararlanmak için veritabanı uygulamalarının, bırakılan bağlantıları ve başarısız işlemleri algılaması ve yeniden denemesi gerekir. Yeni yükseltilen düzenleyiciye aynı bağlantı dizesiyle erişilebilecektir.
 

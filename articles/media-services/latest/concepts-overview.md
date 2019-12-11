@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910311"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970045"
 ---
 # <a name="media-services-concepts"></a>Media Services kavramlar
 
@@ -57,7 +57,7 @@ Yüksek kaliteli dijital medya dosyalarınızı varlıklara yükledikten sonra, 
 
 Media Services v3 ile kodlamak için **dönüşümler** ve **işler**oluşturmanız gerekir.
 
-![Dönüşümler](./media/encoding/transforms-jobs.png)
+![Dönüştürmeler](./media/encoding/transforms-jobs.png)
 
 - [Dönüşümler ve Işler](transforms-jobs-concept.md)
 - [Media Services kodlama](encoding-concept.md)
@@ -78,7 +78,7 @@ Dinamik paketleme, içeriğinizi canlı veya isteğe bağlı olarak akışınız
 
 ![Dinamik paketleme](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Media Services ile, canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifreli olarak dağıtabilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere.
+Media Services ile, canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya/ve üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services de AES anahtarları ve DRM sunmaya yönelik bir hizmet sağlar (PlayReady, Widevine ve FairPlay) lisansları yetkili istemcilere.
 
 Akışınıza şifreleme seçenekleri belirtiyorsanız, **Içerik anahtarı ilkesini** oluşturun ve **akış bulucuınızla**ilişkilendirin. **Içerik anahtarı ilkesi** , içerik anahtarının son istemcilere nasıl teslim edildiğini yapılandırmanızı sağlar.
 
@@ -88,7 +88,7 @@ Aşağıdaki resimde Media Services content protection iş akışı gösterilmek
 
 &#42;dinamik şifreleme, AES-128 "Clear Key", CBCS ve CENC 'yi destekler. 
 
-Videonuzun yalnızca belirli bir işlemesini veya alt kliplerini akışa almak için **dinamik bildirimleri** Media Services kullanabilirsiniz. Aşağıdaki örnekte, bir Mezzanine örneğini yedi ISO MP4 'leri video yorumlamasına (180 p-1080p) kodlamak için bir kodlayıcı kullanılmıştır. Kodlanmış varlık, aşağıdaki akış protokollerinden herhangi birine dinamik olarak paketlenebilir: HLS, MPEG DASH ve sorunsuz.  Diyagramın en üstünde, filtre olmadan varlık için HLS bildirimi gösterilir (tüm yedi yorumlamaları içerir).  Sol alt tarafta, "Ott" adlı bir filtrenin uygulandığı HLS bildirimi gösterilmiştir. "Ott" filtresi, 1 MB/sn 'nin altındaki tüm bit hızlarının kaldırılması gerektiğini belirtir. Bu, doğru iki kalite düzeyinin yanıtta kaldırılmasına neden olur. Sağ alt köşede, "mobil" adlı bir filtrenin uygulandığı HLS bildirimi gösterilir. "Mobil" filtresi, çözümlemenin 720 ' den büyük olduğu ve iki 1080p çevirinin kaldırılmasına neden olan çevirileri kaldırmayı belirtir.
+Videonuzun yalnızca belirli bir işlemesini veya alt kliplerini akışa almak için **dinamik bildirimleri** Media Services kullanabilirsiniz. Aşağıdaki örnekte, bir Mezzanine örneğini yedi ISO MP4 'leri video yorumlamasına (180 p-1080p) kodlamak için bir kodlayıcı kullanılmıştır. Kodlanmış varlık, aşağıdaki akış protokollerinden dinamik olarak paketlenebilir: HLS, MPEG DASH ve sorunsuz.  Diyagramın en üstünde, filtre olmadan varlık için HLS bildirimi gösterilir (tüm yedi yorumlamaları içerir).  Sol alt tarafta, "Ott" adlı bir filtrenin uygulandığı HLS bildirimi gösterilmiştir. "Ott" filtresi, 1 MB/sn 'nin altındaki tüm bit hızlarının kaldırılması gerektiğini belirtir. Bu, doğru iki kalite düzeyinin yanıtta kaldırılmasına neden olur. Sağ alt köşede, "mobil" adlı bir filtrenin uygulandığı HLS bildirimi gösterilir. "Mobil" filtresi, çözümlemenin 720 ' den büyük olduğu ve iki 1080p çevirinin kaldırılmasına neden olan çevirileri kaldırmayı belirtir.
 
 ![İşleme filtrelemesi](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
@@ -100,6 +100,9 @@ Videonuzun yalnızca belirli bir işlemesini veya alt kliplerini akışa almak i
 - [İçerik koruma](content-protection-overview.md)
 - [Dinamik bildirimler](filters-dynamic-manifest-overview.md)
 - [Filtreleri](filters-concept.md)
+
+> [!NOTE]
+> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="live-streaming"></a>Canlı akış
 

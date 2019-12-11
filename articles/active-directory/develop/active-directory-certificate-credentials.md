@@ -1,5 +1,5 @@
 ---
-title: Azure AD 'de sertifika kimlik bilgileri
+title: Azure AD sertifika kimlik bilgileri
 titleSuffix: Microsoft identity platform
 description: Bu makalede, uygulama kimlik doğrulaması için sertifika kimlik bilgilerinin kaydı ve kullanılması anlatılmaktadır
 services: active-directory
@@ -15,20 +15,21 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845374"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963877"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>Uygulama kimlik doğrulaması için sertifika kimlik bilgileri
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD uygulama kimlik doğrulama sertifikası kimlik bilgileri
 
 Azure Active Directory (Azure AD), bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0 Istemci kimlik bilgileri verme akışı ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) ve şirket adına akış ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
 
 Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir JSON Web Token (JWT) onaysıdır.
 
 ## <a name="assertion-format"></a>Onaylama biçimi
+
 Onaylama işlemlerini hesaplamak için, birçok [JSON Web Token](https://jwt.ms/) kütüphanesinden birini dilediğiniz dilde kullanabilirsiniz. Belirteç tarafından taşınan bilgiler aşağıdaki gibidir:
 
 ### <a name="header"></a>Üst bilgi

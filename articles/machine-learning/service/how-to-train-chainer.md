@@ -1,7 +1,7 @@
 ---
 title: Derin öğrenme Chainer modellerini eğitme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Chainer tahmin aracı sınıfını kullanarak pytorch eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.  Örnek betik, el yazısı y 'nin üstünde çalışan Chainer Python kitaplığını kullanarak derin bir öğrenme sinir ağı oluşturmak için el ile yazılmış rakam görüntülerini sınıflandırır.
+description: Pytorch eğitim betiklerinizi kurumsal ölçekte Azure Machine Learning Chainer tahmin aracı sınıfını kullanarak çalıştırmayı öğrenin.  Örnek betik, el yazısı y 'nin üstünde çalışan Chainer Python kitaplığını kullanarak derin bir öğrenme sinir ağı oluşturmak için el ile yazılmış rakam görüntülerini sınıflandırır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40c1b7e1e4089db3e95b0da810a961b7fd202aac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224972"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969182"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile Chainer modellerini eğitme ve kaydetme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 Bu öğreticide, sizin için eğitim betiği **chainer_mnist. Kopyala** zaten sağlanmış. Uygulamada, herhangi bir özel eğitim betiğini olduğu gibi götürebilmeniz ve kodunuzu değiştirmek zorunda kalmadan Azure ML ile çalıştırmanız gerekir.
 
-Azure ML 'nin izleme ve ölçüm yeteneklerini kullanmak için eğitim betiğinizin içine küçük miktarda Azure ML kodu ekleyin.  Eğitim betiği **chainer_mnist. Kopyala** , bazı ÖLÇÜMLERIN Azure ML çalıştırmak için betik içinde `Run` nesnesini kullanarak nasıl günlüğe alınacağını gösterir.
+Azure ML izleme ve ölçüm yeteneklerini kullanmak için eğitim betiğinizin içine küçük miktarda Azure ML kodu ekleyin.  Eğitim betiği **chainer_mnist. Kopyala** , bazı ÖLÇÜMLERIN Azure ML çalıştırmak için betik içinde `Run` nesnesini kullanarak nasıl günlüğe alınacağını gösterir.
 
 Belirtilen eğitim betiği, Chainer `datasets.mnist.get_mnist` işlevindeki örnek verileri kullanır.  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#data-upload) gibi adımları kullanmanız gerekebilir.
 
@@ -212,8 +212,8 @@ for f in run.get_file_names():
 
 Bu makalede, Azure Machine Learning üzerinde Chainer kullanarak derin bir öğrenme, sinir ağı eğitildiniz ve kaydettiniz. Modeli dağıtmayı öğrenmek için [model dağıtım](how-to-deploy-and-where.md) makalemize devam edin.
 
-* [Hiper parametreleri ayarla](how-to-tune-hyperparameters.md)
+* [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 
-* [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
+* [İzleme ölçümlerini eğitim sırasında çalıştırın](how-to-track-experiments.md)
 
 * [Azure 'da dağıtılmış derin öğrenme eğitimi için başvuru mimarimizi görüntüleyin](/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -1,29 +1,29 @@
 ---
-title: Azure içeri/dışarı aktarma hizmeti REST API'sini kullanma | Microsoft Docs
-description: Azure içeri/dışarı aktarma hizmeti REST API'si, nasıl yapılır hem başvuru malzemesi dahil olmak üzere kullanmak için kaynakları bulmak nereye öğrenin.
-author: muralikk
+title: Azure Içeri/dışarı aktarma hizmeti 'ni kullanma REST API | Microsoft Docs
+description: Azure Içeri/dışarı aktarma hizmeti REST API, hem nasıl yapılır hem de başvuru malzemeleri dahil olmak üzere kaynakları nerede bulacağınızı öğrenin.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 1e8b60f37cefb81fbbbbb7823be7752dd1188dc3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320287"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978875"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Azure İçeri/Dışarı Aktarma hizmeti REST API’sini kullanma
 
-Microsoft Azure içeri/dışarı aktarma hizmeti içeri/dışarı aktarma işleri programlı denetimini etkinleştirmek için bir REST API sunar. REST API tüm ile gerçekleştirebileceğiniz içeri/dışarı aktarma işlemlerini gerçekleştirmek için kullanabileceğiniz [Azure portalında](https://portal.azure.com/). Ayrıca, Azure portalında şu anda kullanılabilir değil bir işin tamamlanma sorgulama gibi ayrıntılı belirli işlemlerin gerçekleştirilmesi için REST API de kullanabilirsiniz.
+Microsoft Azure İçeri/Dışarı Aktarma Hizmeti içeri/dışarı aktarma işlerinin programlı denetimini etkinleştirmek için bir REST API sunar. [Azure Portal](https://portal.azure.com/)ile gerçekleştirebileceğiniz tüm içeri/dışarı aktarma işlemlerini gerçekleştirmek için REST API kullanabilirsiniz. Ayrıca, şu anda Azure portal kullanılamayan bir işin yüzde tamamlanmasını sorgulama gibi belirli ayrıntılı işlemleri gerçekleştirmek için REST API kullanabilirsiniz.
 
-Bkz: [Blob depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanarak](../storage-import-export-service.md) genel bakış içeri/dışarı aktarma hizmeti ve portalı oluşturup yönetmek içeri aktarma ve dışarı aktarma işleri için nasıl kullanılacağını gösteren öğretici.
+Içeri/dışarı aktarma hizmetine genel bir bakış ve içeri aktarma ve dışarı aktarma işlerini oluşturmak ve yönetmek için portalın nasıl kullanılacağını gösteren bir öğreticiye yönelik [Microsoft Azure içeri/dışarı aktarma hizmetini kullanarak](../storage-import-export-service.md) Içeri/dışarı aktarma hizmeti 'Ne veri aktarma
 
 ## <a name="service-endpoints"></a>Hizmet uç noktaları
 
-Azure içeri/dışarı aktarma hizmeti, bir kaynak sağlayıcısı için Azure Resource Manager ve içeri/dışarı aktarma işleri yönetmek için bir dizi REST API'si aşağıdaki HTTPS uç noktasında sağlar:
+Azure Içeri/dışarı aktarma hizmeti Azure Resource Manager için bir kaynak sağlayıcıdır ve içeri/dışarı aktarma işlerini yönetmek için aşağıdaki HTTPS uç noktasındaki bir REST API kümesi sağlar:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
@@ -31,7 +31,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="versioning"></a>Sürüm oluşturma
 
-İçeri/dışarı aktarma hizmeti istekleri belirtmelisiniz `api-version` parametresi ve değeri ayarlamak `2016-11-01`.
+Içeri/dışarı aktarma hizmetine yapılan isteklerin `api-version` parametresini belirtmesi ve değerini `2016-11-01`olarak ayarlaması gerekir.
 
 ## <a name="importexport-service-operations"></a>İçeri/dışarı aktarma hizmeti işlemleri
 
@@ -51,4 +51,4 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Depolama içeri/dışarı aktarma REST](/rest/api/storageimportexport)
+* [Depolama Içeri/dışarı aktarma REST](/rest/api/storageimportexport)

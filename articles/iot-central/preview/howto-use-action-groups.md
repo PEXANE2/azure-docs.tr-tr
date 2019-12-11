@@ -4,16 +4,16 @@ description: Tek bir IoT Central kuralından birden çok eylem çalıştırın v
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/21/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a93e96dd14411302bf5368b4825044e060b54a43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929895"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974368"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Birden çok eylemi bir veya daha fazla kuralla çalışacak şekilde gruplandırma (Önizleme özellikleri)
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, desteklenen eylem türlerine gönderilen bilgiler özetlen
 
 | Eylem türü | Çıkış biçimi |
 | ----------- | -------------- |
-| Email       | Standart IoT Central e-posta şablonu |
+| E-posta       | Standart IoT Central e-posta şablonu |
 | SMS         | Azure IoT Central uyarısı: $ {applicationName}-"$ {ruleName}", $ {triggerDate} $ {triggerTime} konumunda "$ {aygıtadı}" üzerinde tetiklendi |
 | Ses       | Azure ı. O. T orta uyarı: "$ {ruleName}" kuralı $ {triggerDate} $ {triggerTime} konumunda "$ {aygıtadı}" cihazında tetiklendi; uygulama $ {applicationName} |
 | Web Kancası     | {"SchemaId": "AzureIoTCentralRuleWebhook", "Data": {[Regular Web kancası yükü](howto-create-webhooks.md#payload)}} |

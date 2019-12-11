@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016772"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969454"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services kullanarak erişim denetimini içeren bir içerik koruma sistemi tasarımı 
 
@@ -131,11 +131,11 @@ Bu etkenler neden önemlidir?
 
 Lisans dağıtımı için genel bulut kullanırsanız, kalıcı ve kalıcı olmayan lisans lisans teslim maliyeti doğrudan bir etkiye sahip. Aşağıdaki iki farklı tasarım durumlarda göstermek için hizmet eder:
 
-* Aylık abonelik: Kalıcı bir lisans ve 1 ' den fazla içerik arasında anahtardan varlığa eşleme kullanın. Örneğin, çocukların tüm film için tek bir içerik anahtarı şifreleme için kullanırız. Bu durumda:
+* Aylık abonelik: kalıcı lisans ve 1-çok içerik anahtarı varlık eşleme kullanın. Örneğin, çocukların tüm film için tek bir içerik anahtarı şifreleme için kullanırız. Bu durumda:
 
     Lisans tüm çocukları filmler/cihaz için istenen toplam sayısı = 1
 
-* Aylık abonelik: Kalıcı olmayan bir lisans ve içerik anahtarı ve varlık arasında 1--1 eşleme kullanın. Bu durumda:
+* Aylık abonelik: kalıcı olmayan bir lisans ve içerik anahtarı varlık arasında 1-1 eşleme kullanın. Bu durumda:
 
     Tüm çocukları filmler/cihaz için istenen lisans sayısı [izlenen filmler sayısı] = [oturum sayısı] x
 
@@ -257,7 +257,7 @@ Uygulama sorunları ile ilgili Yardım için aşağıdaki sorun giderme bilgiler
 
 * Ayrıcalıkları verme grup üyeliğini talep. Azure AD uygulama bildirimi dosyasında aşağıdaki olduğundan emin olun: 
 
-    "Groupmembershipclaim": "All" (varsayılan değer null)
+    "groupMembershipClaims": "Tüm" (varsayılan değer null olur)
 
 * Kısıtlama gereksinimleri oluşturduğunuzda uygun TokenType ayarlayın.
 
@@ -336,7 +336,7 @@ Kaydolun ve Azure AD'de işaretçi uygulamayı yapılandırmak için aşağıdak
 
 2. Kaynak uygulama için yeni bir anahtar ekleyin.
 
-3. Groupmembershipclaim özelliğinin "Groupmembershipclaim" değerine sahip olması için uygulama bildirim dosyasını güncelleştirin: "Tümü".
+3. Uygulama bildirim dosyasını güncelleştirin, böylece groupMembershipClaims özelliği "groupMembershipClaims" değerine sahip: "All".
 
 4. Bölümünde player web uygulamasına işaret eden Azure AD uygulama **diğer uygulamalara izinler**, 1. adımda eklenen kaynak uygulama ekleyin. Altında **izin temsilci**seçin **erişim [resource_name]** . Bu seçenek, kaynak uygulama erişim erişim belirteçleri oluşturmak için web uygulamaya izin verir. Visual Studio ve Azure web uygulaması geliştirme, hem yerel hem de dağıtılan sürümü web uygulaması için bunu.
 
@@ -368,13 +368,13 @@ Bir müşteri Jwt'ler sağlamak için özel STS kullanmayı seçebilirsiniz. Ned
 
 Güvenlik anahtarları iki tür vardır:
 
-* Simetrik anahtar: Aynı anahtar, bir JWT oluşturmak ve doğrulamak için kullanılır.
-* Asimetrik anahtar: X509 sertifikasında ortak özel anahtar çifti, bir JWT şifrelemek/oluşturmak için özel anahtarla ve belirteci doğrulamak için ortak anahtarla birlikte kullanılır.
+* Simetrik anahtar: oluşturulacak ve JWT'nin doğrulamak için aynı anahtar kullanılır.
+* Asimetrik anahtar: genel-özel anahtar çifti x X509 sertifika JWT'nin şifrelemek/oluşturmak için bir özel anahtarla ve ortak anahtar belirteci doğrulamak için kullanılır.
 
 > [!NOTE]
 > .NET Framework kullanırsanız / C# geliştirme platformu olarak X509 bir asimetrik güvenlik anahtarı için kullanılan sertifika bir anahtar uzunluğu en az 2048 olması gerekir. Bu sınıf .NET Framework System.IdentityModel.Tokens.X509AsymmetricSecurityKey gereksinimdir. Aksi takdirde, şu özel durum oluşturulur:
 > 
-> IDX10630: İmzalama için ' System. IdentityModel. Tokens. X509AsymmetricSecurityKey ', ' 2048 ' bitten küçük olamaz.
+> IDX10630: 'imzalama System.IdentityModel.Tokens.X509AsymmetricSecurityKey', '2048' bitten küçük olamaz.
 
 ## <a name="the-completed-system-and-test"></a>Tamamlanmış Sistem ve test
 Böylece bir oturum açma hesabı geçmeden önce temel resim davranış olabilir. Bu bölüm size aşağıdaki senaryolarda tamamlanmış uçtan uca sistemde yardımcı olur:
@@ -408,15 +408,15 @@ Yazarlar için eklediğiniz veya oluşturduğunuz bir hesap başvurabilirsiniz.
 
 Aşağıdaki ekran görüntüleri, farklı bir etki alanı hesapları tarafından kullanılan farklı oturum açma sayfalarını gösterir:
 
-**Özel Azure AD kiracı etki alanı hesabı**: Özel Azure AD kiracı etki alanının özelleştirilmiş oturum açma sayfası.
+**Özel Azure AD kiracısı etki alanı hesabı**: özelleştirilmiş oturum açma sayfasına özel Azure ad Kiracı etki alanı.
 
 ![Özel Azure AD Kiracı etki alanı hesabı](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
-**Akıllı kart Ile Microsoft etki alanı hesabı**: İki öğeli kimlik doğrulama ile Microsoft kurumsal BT tarafından özelleştirilmiş oturum açma sayfası.
+**Akıllı kart Microsoft etki alanı hesabıyla**: Microsoft Kurumsal özelleştirilmiş oturum açma sayfasına iki öğeli kimlik doğrulaması ile BT.
 
 ![Özel Azure AD Kiracı etki alanı hesabı](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft hesabı**: Tüketiciler için Microsoft hesabı oturum açma sayfası.
+**Microsoft hesabı**: Tüketiciler için Microsoft hesabı'nın oturum açma sayfası.
 
 ![Özel Azure AD Kiracı etki alanı hesabı](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain3.png)
 
@@ -463,15 +463,20 @@ Aşağıdaki ekran görüntüsünde x X509 aracılığıyla asimetrik bir anahta
 Hem de önceki durumlarda, kullanıcı kimlik doğrulaması aynı kalır. Bu, Azure AD üzerinden gerçekleşir. Tek fark, Jwt'ler Azure AD yerine özel STS tarafından verilen ' dir. Dinamik CENC korumayı yapılandırdığınızda, lisans teslimat hizmeti kısıtlaması JWT, bir simetrik ya da asimetrik anahtar türünü belirtir.
 
 ## <a name="summary"></a>Özet
+
 Bu belgede Azure Media Services ve Media Player'ı kullanarak belirteci kimlik doğrulaması, tasarımı ve uygulaması aracılığıyla çok yerel DRM ve access control ile CENC açıklanmıştır.
 
 * Bir başvuru tasarım DRM/CENC alt sistemdeki tüm gerekli bileşenleri içeren sunuldu.
 * Bir başvuru uygulaması, Azure, medya Hizmetleri ve Media Player sunuldu.
 * Tasarım ve uygulama doğrudan ilgili bazı konu başlıkları da bahsedilmiştir.
 
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
  

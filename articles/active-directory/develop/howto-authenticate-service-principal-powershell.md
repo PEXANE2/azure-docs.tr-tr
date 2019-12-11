@@ -1,5 +1,5 @@
 ---
-title: PowerShell ile Azure uygulaması için kimlik oluşturma
+title: PowerShell ile Azure Uygulama kimliği oluşturma | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure PowerShell kullanarak Azure Active Directory uygulamasıyla hizmet sorumlusu oluşturma ve rol tabanlı erişim denetimi aracılığıyla bu uygulamaya kaynaklar için erişim verme işlemleri açıklanır. Bir sertifikayla uygulamanın kimliğinin nasıl doğrulandığı gösterilir.
 services: active-directory
@@ -15,12 +15,12 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2456d52a3863b362943547d8a0c0e478dbc572cf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b1a6732789ccaf1f5f33ce09592cfa06727908e1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917905"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963741"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 

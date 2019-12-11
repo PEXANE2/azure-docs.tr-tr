@@ -1,55 +1,55 @@
 ---
-title: Azure içeri/dışarı aktarma ayarlama aracı v1 | Microsoft Docs
-description: Sürücü hazırlık ayarlayın ve Azure içeri/dışarı aktarma hizmeti için aracı onarma hakkında bilgi edinin. Bu, içeri/dışarı aktarma Aracı'nın v1 başvurur.
-author: muralikk
+title: Azure Içeri/dışarı aktarma aracı v1 'yi ayarlama | Microsoft Docs
+description: Azure Içeri/dışarı aktarma hizmeti için sürücü hazırlama ve onarım aracını ayarlamayı öğrenin. Bu, Içeri/dışarı aktarma aracının v1 anlamına gelir.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477578"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978960"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Azure içeri/dışarı aktarma Aracı'nı ayarlama
-Microsoft Azure içeri/dışarı aktarma aracı Microsoft Azure içeri/dışarı aktarma hizmetiyle kullanabileceğiniz sürücü hazırlama ve onarım aracıdır. Aracı aşağıdaki işlevleri için kullanabilirsiniz:  
+# <a name="setting-up-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı ayarlama
+Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:  
   
--   İçeri aktarma işine oluşturmadan önce bir Windows Azure veri merkezine gönderin olacak sabit sürücüleri veri kopyalamak için bu aracı kullanabilirsiniz.  
+-   Bir içeri aktarma işi oluşturmadan önce, verileri bir Windows Azure veri merkezine alacağınız sabit sürücülere kopyalamak için bu aracı kullanabilirsiniz.  
   
--   İçeri aktarma işi tamamlandıktan sonra bozuldu eksik olduğu ya da çakışan tüm blobların diğer bloblarla onarmak için bu aracı kullanabilirsiniz.  
+-   Bir içeri aktarma işi tamamlandıktan sonra, bozuk olan, eksik olan veya diğer bloblarla çakışan Blobları onarmak için bu aracı kullanabilirsiniz.  
   
--   Tamamlanan dışarı aktarma işleminden sürücüleri aldıktan sonra bozuk veya eksik sürücülerindeki dosyaları onarmak için bu aracı kullanabilirsiniz.  
+-   Tamamlanmış bir dışarı aktarma işinden sürücüleri aldıktan sonra, sürücülerde bozuk veya eksik olan dosyaları onarmak için bu aracı kullanabilirsiniz.  
   
 ## <a name="prerequisites"></a>Önkoşullar  
-Sürücüleri içeri aktarma işine hazırlama, aşağıdaki önkoşulları karşılamanız gerekir:  
+Sürücüleri bir içeri aktarma işi için hazırlıyorsanız, aşağıdaki önkoşulları karşılamanız gerekir:  
   
--   Etkin bir Azure aboneliğine sahip olmalıdır.  
+-   Etkin bir Azure aboneliğiniz olmalıdır.  
   
--   Aboneliğiniz, içeri aktarmak için oluşturacağınız dosyaları depolamak için yeterli alan bir depolama hesabı eklemeniz gerekir.  
+-   Aboneliğiniz, içeri aktaralacağınız dosyaları depolamak için yeterli kullanılabilir alana sahip bir depolama hesabı içermelidir.  
   
--   Depolama hesabı için hesap anahtarları en az biri gerekir.  
+-   Depolama hesabı için en az bir hesap anahtarı gereklidir.  
   
--   Windows 7, Windows Server 2008 R2 veya daha yeni Windows işletim sistemi yüklü bir bilgisayara ("kopya makine") ihtiyacınız vardır.  
+-   Windows 7, Windows Server 2008 R2 veya daha yeni bir Windows işletim sistemi yüklü olan bir bilgisayara ("kopya makinesi") ihtiyacınız vardır.  
   
--   .NET Framework 4 kopyalama makineye yüklenmesi gerekir.  
+-   .NET Framework 4 ' ün kopya makinede yüklü olması gerekir.  
   
--   BitLocker'ın kopya makinede etkinleştirilmesi gerekir.  
+-   Kopyalama makinesinde BitLocker etkin olmalıdır.  
   
--   Kopyalama makineye bağlı alınan ya da boş 3,5 inçlik SATA sabit sürücüler için veri içeren bir veya daha fazla sürücü gerekir.  
+-   İçeri aktarılacak verileri içeren bir veya daha fazla sürücüye veya kopyalama makinesine bağlı 3,5-inç SATA sabit sürücülere sahip olmanız gerekir.  
   
--   Bir ağ paylaşımına veya yerel bir sabit sürücü üzerinde olup almayı planladığınız dosyaları kopyalama makineden erişilebilir olması gerekir. 
+-   İçeri aktarmayı planladığınız dosyalara, ağ paylaşımında veya yerel bir sabit sürücüde olup olmadıkları, kopyalama makinesinden erişilebilir olması gerekir. 
   
-Kısmen başarısız olan bir içeri aktarma onarmak çalışıyorsanız, ihtiyacınız olacak:  
+Kısmen başarısız olan bir içeri aktarmayı onarmaya çalışıyorsanız şunlar gerekir:  
   
 - Kopyalama günlük dosyaları  
   
 - Depolama hesabı anahtarı  
   
-  Kısmen başarısız olan bir dışarı aktarma onarmak çalışıyorsanız, ihtiyacınız olacak:  
+  Kısmen başarısız olan bir dışarı aktarmayı onarmaya çalışıyorsanız şunlar gerekir:  
   
 - Kopyalama günlük dosyaları  
   
@@ -57,24 +57,24 @@ Kısmen başarısız olan bir içeri aktarma onarmak çalışıyorsanız, ihtiya
   
 - Depolama hesabı anahtarı  
   
-## <a name="installing-the-azure-importexport-tool"></a>Azure içeri/dışarı aktarma aracını yükleme  
- Azure içeri/dışarı aktarma aracı aşağıdaki dosyalardan oluşur:  
+## <a name="installing-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracını yükleme  
+ Azure Içeri/dışarı aktarma aracı aşağıdaki dosyalardan oluşur:  
   
-- WAImportExport.exe  
+- Waımportexport. exe  
   
-- WAImportExport.exe.config  
+- Waımportexport. exe. config  
   
-- WAImportExportCore.dll  
+- Waımportexportcore. dll  
   
-- WAImportExportRepair.dll  
+- Waımportexportrepair. dll  
   
-- Microsoft.WindowsAzure.Storage.dll  
+- Microsoft. WindowsAzure. Storage. dll  
   
-- Hddid.dll  
+- hddıd. dll  
   
-  Çalışan bir dizine, örneğin, bu dosyaları kopyalayın `c:\WAImportExport`. Ardından, Yönetici modunda bir komut satırı penceresi açın ve yukarıdaki dizini geçerli dizin olarak ayarlayın.  
+  Bu dosyaları, örneğin `c:\WAImportExport`bir çalışma dizinine kopyalayın. Ardından, yönetici modunda bir komut satırı penceresi açın ve yukarıdaki dizini geçerli dizin olarak ayarlayın.  
   
-  Komut için Yardım çıktısını almak için parametresiz aracı çalıştırın:  
+  Komut için yardım almak üzere aracı parametresiz çalıştırın:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
@@ -250,7 +250,7 @@ Examples:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Dışarı aktarma işi için sürücü kullanımının önizlemesini yapma](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
+* [Bir dışarı aktarma işi için sürücü kullanımını Önizleme](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Kopyalama günlük dosyalarıyla iş durumunu gözden geçirme](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Bir içeri aktarma işini onarma](../storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [Bir dışarı aktarma işini onarma](../storage-import-export-tool-repairing-an-export-job-v1.md)   

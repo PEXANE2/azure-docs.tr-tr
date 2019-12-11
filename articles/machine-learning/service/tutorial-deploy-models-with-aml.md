@@ -1,5 +1,5 @@
 ---
-title: 'Görüntü sınıflandırma öğreticisi: modelleri dağıtma'
+title: 'Görüntü sınıflandırma Öğreticisi: modelleri dağıtma'
 titleSuffix: Azure Machine Learning
 description: Bu öğreticide, bir Python Jupyter not defterinde scikit-öğrenme ile görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning nasıl kullanılacağı gösterilmektedir. Bu öğretici, iki bölümden oluşan bir serinin ikinci bölümüdür.
 services: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fb92132a1e8e05052bc2f7c7d19797a4342db54b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476145"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974215"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Artık modeli, [Azure Container Instances](https://docs.microsoft.com/azure/cont
 > * Modeli Container Instances için dağıtın.
 > * Dağıtılan modeli test edin.
 
-Container Instances, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes hizmetini kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [dağıtma ve nerede](how-to-deploy-and-where.md).
+Container Instances, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes hizmeti kullanmayı düşünün. Daha fazla bilgi için bkz. [dağıtma ve nerede](how-to-deploy-and-where.md).
 
 >[!NOTE]
 > Bu makaledeki kod, Azure Machine Learning SDK sürümü 1.0.41 ile test edilmiştir.
@@ -67,7 +67,7 @@ import matplotlib.pyplot as plt
 import azureml
 from azureml.core import Workspace, Run
 
-# display the core SDK version number
+# Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 

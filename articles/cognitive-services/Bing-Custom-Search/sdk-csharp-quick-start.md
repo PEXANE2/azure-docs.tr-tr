@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: C# SDK 'yı kullanarak Bing özel arama uç noktanızı çağırın | Microsoft Docs"
+title: "Hızlı başlangıç: C# SDK 'yı kullanarak Bing özel arama uç noktanızı çağırma | Microsoft Docs"
 titleSuffix: Azure Cognitive Services
 description: C# SDK kullanarak Bing özel arama örneğinizi arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: scottwhi
-ms.openlocfilehash: c7ac6d051c8333a6329a3c2ed238d78fb9da4a30
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21b192d29f30d66e3d5f0ce6e04317d3ca7c860e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565710"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977157"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Hızlı Başlangıç: C# SDK kullanarak Bing özel arama uç noktanızı çağırma 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Hızlı başlangıç: C# SDK kullanarak Bing özel arama uç noktanızı çağırma 
 
 C# SDK 'yı kullanarak Bing özel arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bing Özel Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da Bing Özel Arama SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Bing Özel Arama örneği. Bkz [. hızlı başlangıç: Daha fazla bilgi için ilk](quick-start.md) Bing özel arama örneğinizi oluşturun.
+- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/) sürümü
 - Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
@@ -54,14 +54,14 @@ C# SDK 'yı kullanarak Bing özel arama örneğinden arama sonuçları istemeye 
 
 ## <a name="send-the-search-request-and-receive-a-response"></a>Arama isteğini gönderme ve yanıt alma
     
-1. İstemci `SearchAsync()` yöntemini kullanarak bir arama sorgusu gönderin ve yanıtı kaydedin. Dosyanızı `YOUR-CUSTOM-CONFIG-ID` örneğinizin yapılandırma kimliğiyle değiştirdiğinizden emin olun (kimliği [Bing özel arama portalında](https://www.customsearch.ai/)bulabilirsiniz). Bu örnek, "Xbox" için arama yapar.
+1. İstemcinizin `SearchAsync()` yöntemini kullanarak bir arama sorgusu gönderin ve yanıtı kaydedin. `YOUR-CUSTOM-CONFIG-ID`, örneğinizin yapılandırma KIMLIĞIYLE değiştirdiğinizden emin olun (KIMLIĞI [Bing özel arama portalında](https://www.customsearch.ai/)bulabilirsiniz). Bu örnek, "Xbox" için arama yapar.
 
     ```csharp
     // This will look up a single query (Xbox).
     var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
     ```
 
-2. `SearchAsync()` metodu bir `WebData` nesnesi döndürür. Bulduğu her türlü `WebPages` yinelemek için nesnesini kullanın. Bu kod ilk web sayfası sonucunu bulur ve web sayfasının `Name` ile `URL` değerlerini yazdırır.
+2. `SearchAsync()` metodu bir `WebData` nesnesi döndürür. Bulunan tüm `WebPages` yinelemek için nesnesini kullanın. Bu kod ilk web sayfası sonucunu bulur ve web sayfasının `Name` ile `URL` değerlerini yazdırır.
 
     ```csharp
     if (webData?.WebPages?.Value?.Count > 0)

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 481e2ab63263f77b513e6443479827cc9e168bbb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f1bb2731f5f14b80ca46f4fb28b9b9cb4284c4d7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926347"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972379"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları
 
@@ -679,6 +679,24 @@ Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, [Host.
     }
 }
 ```
+
+### <a name="using-route-parameters"></a>Rota parametrelerini kullanma
+
+Yol parametreleri tanımlı bir işlevin `route` modelini, her bağlamada kullanılabilir. Örneğin, `"route": "products/{id}"` olarak tanımlanmış bir yol varsa, tablo depolama bağlaması bağlama yapılandırmasındaki `{id}` parametresinin değerini kullanabilir.
+
+Aşağıdaki yapılandırma `{id}` parametresinin bağlama `rowKey`nasıl geçtiğini gösterir.
+
+```json
+{
+    "type": "table",
+    "direction": "in",
+    "name": "product",
+    "partitionKey": "products",
+    "tableName": "products",
+    "rowKey": "{id}"
+}
+```
+
 
 ### <a name="working-with-client-identities"></a>İstemci kimlikleriyle çalışma
 

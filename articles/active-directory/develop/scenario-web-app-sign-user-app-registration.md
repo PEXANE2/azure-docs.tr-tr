@@ -1,6 +1,6 @@
 ---
-title: Kullanıcılarda oturum açan Web uygulaması (uygulama kaydı)-Microsoft Identity platform
-description: Kullanıcılara oturum açan bir Web uygulaması oluşturma hakkında bilgi edinin (uygulama kaydı)
+title: Kullanıcılar tarafından oturum açan bir Web uygulamasını kaydetme-Microsoft Identity platform | Mavisi
+description: Kullanıcılara oturum açan bir Web uygulamasını nasıl kaydedeceğinizi öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766081"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964829"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -54,11 +54,11 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
    1. Uygulamanız için desteklenen hesap türlerini seçin. (Bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md).)
    1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **Aspnetcore-WebApp**yazın.
-   1. **Yeniden yönlendirme URI 'si**için, başarılı kimlik doğrulamasından sonra döndürülen belirteç yanıtlarını kabul edecek olan uygulama türünü ve URI hedefini ekleyin. Örneğin **https://localhost:44321** girin. Sonra **Kaydet**' i seçin.
+   1. **Yeniden yönlendirme URI 'si**için, başarılı kimlik doğrulamasından sonra döndürülen belirteç yanıtlarını kabul edecek olan uygulama türünü ve URI hedefini ekleyin. Örneğin, **https://localhost:44321** . Sonra **Kaydet**' i seçin.
 1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
    1. **Yanıt URL 'si**için **Web**türünde **https://localhost:44321/signin-oidc** ekleyin.
    1. **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** **https://localhost:44321/signout-oidc** olarak ayarlayın.
-   1. **Örtük izin**' ın altında **Kimlik belirteçleri**' ni seçin.
+   1. **Örtük onay**'ın altında **Kimlik belirteçleri**'ni seçin.
    1. **Kaydet**’i seçin.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)

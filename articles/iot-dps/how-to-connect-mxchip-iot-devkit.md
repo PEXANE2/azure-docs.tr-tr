@@ -1,6 +1,6 @@
 ---
 title: IoT Hub ile Mxyonga IoT DevKit 'i kaydettirmek için Azure IoT Hub cihaz sağlama hizmeti 'nin otomatik sağlamasını kullanma | Microsoft Docs
-description: Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti 'nin otomatik sağlamasını kullanma.
+description: Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti (DPS) otomatik sağlamayı kullanma.
 author: liydu
 ms.author: liydu
 ms.date: 06/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 2731bbcd6a6b0c8f7d82334c022c017d5eae35f0
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677015"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975661"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti 'ni otomatik sağlama
 

@@ -1,5 +1,5 @@
 ---
-title: Korumalı Web API 'SI-uygulama kaydı
+title: Korumalı Web API 'SI uygulama kaydı | Mavisi
 titleSuffix: Microsoft identity platform
 description: Korumalı bir Web API 'SI oluşturmayı ve uygulamayı kaydettirmek için gereken bilgileri oluşturmayı öğrenin.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c905dfd86fd80b9e55aa7bd5a9b9b03f277570c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 86c36661dd8b5d43417ca1d845eef5cdb146f1e9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802551"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962534"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
 
@@ -50,7 +50,7 @@ Uygulamayı oluşturduktan sonra, aşağıdaki adımları izleyerek kabul edilen
 
 Kullanıcı etkileşimli olarak oturum açmamış olduğundan Web API 'Lerinin yeniden yönlendirme URI 'SI kaydetmesi gerekmez.
 
-## <a name="expose-an-api"></a>API 'YI kullanıma sunma
+## <a name="expose-an-api"></a>Bir API’yi kullanıma sunma
 
 Web API 'Lerine özgü başka bir ayar, sunulan API ve sunulan kapsamdır.
 

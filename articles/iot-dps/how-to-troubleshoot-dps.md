@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub DPS ile bağlantıyı Tanıla ve sorunlarını giderme
-description: Azure IoT Hub DPS için cihaz bağlantısıyla yaygın olarak karşılaşılan hataları tanılamayı ve sorun gidermeyi öğrenin
+description: Azure IoT Hub cihaz sağlama hizmeti (DPS) için cihaz bağlantısıyla sık karşılaşılan hataları tanılamayı ve sorun gidermeyi öğrenin
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: b596a09e2185b38e6161ea4af2aa109e80faf248
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963427"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974828"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti ile sorun giderme
 
@@ -23,7 +23,7 @@ Kanıtlama hataları, kayıt hataları vb. gibi birçok olası başarısızlık 
 
 Aşağıdaki yordamda IoT Hub cihaz sağlama hizmeti ölçümünde uyarının nasıl görüntüleneceği ve ayarlanacağı açıklanır. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. IoT Hub cihaz sağlama hizmetinize gidin.
 
@@ -48,7 +48,7 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?]
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Hataları görüntülemek ve çözmek için log analitik kullanma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. IoT Hub 'ınıza gidin.
 
@@ -69,17 +69,17 @@ Daha fazla bilgi edinmek için bkz. [Microsoft Azure klasik uyarılar nelerdir?]
 
 8. Son olayları görüntülemek için **Çalıştır** ' a tıklayın.
 
-9. Sonuçlar varsa, hata hakkında daha fazla `OperationName`ayrıntı almak `ResultSignature`için, `ResultDescription` , ve (hata iletisi) bölümüne bakın `ResultType`.
+9. Sonuçlar varsa, hata hakkında daha fazla ayrıntı almak için `OperationName`, `ResultType`, `ResultSignature`ve `ResultDescription` (hata iletisi) arayın.
 
 
-## <a name="common-error-codes"></a>Genel hata kodları
+## <a name="common-error-codes"></a>Sık kullanılan hata kodları
 Sık karşılaşılan hataları anlamak ve çözmek için bu tabloyu kullanın.
 
-| Hata Kodu| Açıklama | HTTP durum kodu |
+| Hata Kodu| Açıklama | HTTP Durum Kodu |
 |-------|------------|------------|
 | 400 | İsteğin gövdesi geçerli değil; Örneğin, ayrıştırılamıyor veya nesne doğrulanamıyor.| 400 Hatalı biçim |
 | 401 | Yetkilendirme belirteci doğrulanamıyor; Örneğin, zaman aşımına uğradı veya isteğin URI 'SI için uygulanmaz. Bu hata kodu, TPM kanıtlama akışının bir parçası olarak cihazlara de döndürülür. | 401 Yetkisiz|
 | 404 | Cihaz sağlama hizmeti örneği veya bir kaynak (örn. bir kayıt) yok. |404 Bulunamadı |
 | 412 | İstekteki ETag, RFC7232 başına mevcut kaynağın ETag 'i ile eşleşmiyor. | 412 Önkoşul başarısız oldu |
 | 429 | İşlemler, hizmet tarafından kısıtlanıyor. Belirli hizmet limitleri için bkz. [cihaz sağlama hizmeti sınırlarını IoT Hub](https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 çok fazla istek |
-| 500 | Bir iç hata oluştu. | 500 İç sunucu hatası|
+| 500 | Bir iç hata oluştu. | 500 İç Sunucu Hatası|

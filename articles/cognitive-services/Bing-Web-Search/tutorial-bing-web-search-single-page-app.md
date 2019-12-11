@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Tek sayfa web uygulaması - Bing Web araması API'si oluşturma"
+title: 'Öğretici: Tek sayfalı web uygulaması oluşturma - Bing Web Araması API’si'
 titleSuffix: Azure Cognitive Services
 description: Bu tek sayfalı uygulama, Bing Web Araması API'si kullanılarak tek sayfalı bir uygulamada ilgili arama sonuçlarının nasıl alınabileceği, ayrıştırılabileceği ve görüntülenebileceğini gösterir.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390039"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977259"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web araması API'si kullanarak tek sayfalı uygulama oluşturma
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
 
 Bu tek sayfalı uygulama Bing Web Araması API'sinden arama sonuçlarını almayı, ayrıştırmayı ve görüntülemeyi gösterir. Öğretici standart HTML ile CSS kullanır ve JavaScript koduna odaklanır. HTML, CSS ve JS dosyaları, hızlı başlangıç yönergeleriyle birlikte [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search)'da sağlanır.
 
@@ -287,7 +287,7 @@ function handleBingResponse() {
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
-| Aşama | Olası hatalar | İşleyen |
+| Stage | Olası hatalar | İşleyen |
 |-------|--------------------|------------|
 | İstek nesnesini oluşturma | Geçersiz URL | `try` / `catch` bloğu |
 | İstekte bulunma | Ağ hataları, durdurulan bağlantılar | `error` ve `abort` olay işleyicileri |
@@ -421,7 +421,7 @@ Görüntü işleyicisi:
 * Görüntünün küçük resim boyutunu hesaplar (genişlik değişiklik gösterir, yükseklik ise 60 piksele sabitlenmiştir).
 * Bağlama göre görüntü sonucunun önüne gelen HTML'yi ekler.
 * Resmi içeren sayfaya bağlanan HTML `<a>` etiketini oluşturur.
-* Resmin küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur.
+* Görüntünün küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur.
 
 Görüntü işleyicisi, bulundukları yere bağlı olarak sonuçları farklı görüntülemek için `section` ve `index` bağımsız değişkenlerini kullanır. Kenar çubuğunda görüntü sonuçlarının arasına satır sonu (`<br>` etiketi) eklenerek, kenar çubuğunun bir görüntü sütunu göstermesi sağlanır. Diğer bölümlerde, ilk görüntü sonucunun (`(index === 0)`) önüne bir `<p>` etiketi gelir.
 

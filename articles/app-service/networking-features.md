@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6395d62947cda47c3779f15445db08b7515d055d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672324"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971766"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -38,15 +38,15 @@ Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir.  Ku
  
 | Gelen kullanım örnekleri | Özellik |
 |---------------------|-------------------|
-| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | Uygulama tarafından atanan adres |
-| Paylaştırılmamış, uygulamanız için adanmış gelen adres | Uygulama tarafından atanan adres |
+| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | uygulama tarafından atanan adres |
+| Paylaştırılmamış, uygulamanız için adanmış gelen adres | uygulama tarafından atanan adres |
 | Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın | Erişim kısıtlamaları |
 | Uygulamamı sanal ağım içindeki özel IP 'lerde kullanıma sunun | ıLB ATıCı </br> Hizmet uç noktaları ile Application Gateway |
 | VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet Uç Noktaları </br> ıLB ATıCı |
 | Uygulamamın sanal ağı 'nda özel bir IP 'de kullanıma sunulması | ıLB ATıCı </br> hizmet uç noktalarına sahip bir Application Gateway gelen için özel IP |
 | Bir WAF ile uygulamamı koruyun | Application Gateway + ıLB Ao </br> Hizmet uç noktaları ile Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
 | Farklı bölgelerde uygulamalarıma trafik yükünü dengelemek | Erişim kısıtlamalarına sahip Azure ön kapısı | 
-| Aynı bölgedeki Yük Dengeleme trafiği | Hizmet uç noktaları ile Application Gateway | 
+| Aynı bölgedeki Yük Dengeleme trafiği | [Hizmet uç noktaları ile Application Gateway][appgwserviceendpoints] | 
 
 Aşağıdaki giden kullanım örnekleri, uygulamanız için giden erişim ihtiyaçlarını çözümlemek üzere App Service ağ özelliklerini kullanmayı önerir. 
 
@@ -222,3 +222,4 @@ Birden çok ön uç uygulamanız, API uygulamasındaki diğer ön uç uygulamala
 [vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints

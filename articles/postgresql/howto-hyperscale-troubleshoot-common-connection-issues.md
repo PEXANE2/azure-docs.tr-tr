@@ -1,5 +1,5 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda bağlantı sorunlarını giderme-hiper ölçek (Citus)
+title: Bağlantı sorunlarını giderme-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
 description: PostgreSQL için Azure veritabanı 'nda bağlantı sorunlarını giderme-hiper ölçek (Citus) hakkında bilgi edinin
 keywords: PostgreSQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952153"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977514"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda bağlantı sorunlarını giderme-hiper ölçek (Citus)
 
@@ -50,7 +50,7 @@ Uygulama, hiper ölçeğe (Citus) bağlanamazsa, en yaygın nedenler güvenlik d
 
 * Düzenleyici düğüm güvenlik duvarı yapılandırması: hiper ölçek sunucusu güvenlik duvarının, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
 * İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarları yalnızca ada göre uygulama yapılmasına izin vermeyi gerektirir, ancak sunucunun IP adreslerine ve bağlantı noktalarına izin verir.
-* Kullanıcı hatası: bağlantı dizesini çift kontrol edin. Sunucu adı gibi yanlış parametre veya Kullanıcı adında *\@ServerName* sonekini unuttum olabilir.
+* Kullanıcı hatası: bağlantı dizesini çift kontrol edin. Sunucu adı gibi yanlış parametre yazmış olabilirsiniz. Çeşitli dil çerçeveleri ve psql için bağlantı dizelerini Azure portal bulabilirsiniz. Hiper ölçek (Citus) sunucu grubunuzda **bağlantı dizeleri** sayfasına gidin. Ayrıca, hiper ölçek (Citus) kümelerinin yalnızca bir veritabanı olduğunu ve önceden tanımlanmış adının **Citus**olduğunu aklınızda bulundurun.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 

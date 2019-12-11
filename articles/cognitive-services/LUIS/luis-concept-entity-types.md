@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422572"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976970"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>ISIS 'de varlıklar ve amaçları
 
@@ -37,7 +37,7 @@ Varlıkların, bir modeldeki her amaç için tüm eğitimlere sürekli olarak et
 
  [DatetimeV2](luis-reference-prebuilt-datetimev2.md), [Ordinal](luis-reference-prebuilt-ordinal.md), [e-posta](luis-reference-prebuilt-email.md)ve [telefon numarası](luis-reference-prebuilt-phonenumber.md)gibi yaygın kavramlara zaman kazanmak için kendi varlıklarınızı tanımlayabilir veya önceden oluşturulmuş varlıkları kullanabilirsiniz.
 
-|İfade|Varlık|Veriler|
+|İfade|Kurum|Veriler|
 |--|--|--|
 |New York 3 bilet satın alma|Önceden oluşturulmuş numarası<br>Location.Destination|3<br>New York|
 |5 Mart Londra New York'tan bilet satın alma|Location.Origin<br>Location.Destination<br>Önceden oluşturulmuş datetimeV2|New York<br>Londra<br>5 Mart 2018|
@@ -75,7 +75,7 @@ Ayrıştırma için tasarlamak, LUSıS 'nin istemci uygulamanıza derin bir varl
 
 Makine tarafından öğrenilen bir varlık, eğitim dıkları aracılığıyla öğrenilmiş içeriğe göre tetiklenir. **Kısıtlamalar** , bir [liste](reference-entity-list.md) veya [Regex](reference-entity-regular-expression.md)gibi makine tarafından öğrenilen bir varlığın tam metin eşleştirme tanımına bağlı olarak, tetiklemenin daha fazla kısıtlanacak makine tarafından öğrenilen bir varlığa uygulanan isteğe bağlı kurallardır. Örneğin, `size` makine tarafından öğrenilen bir varlık, `size` varlığını yalnızca `sizeList` varlığı içinde yer alan değerler ile karşılaşıldığında tetiklemek üzere kısıtlayan bir `sizeList` listesi varlığının kısıtlamasına sahip olabilir.
 
-[**Tanımlayıcılar**](luis-concept-feature.md) , tahmine yönelik sözcüklerin veya tümceciklerin uygunluğunu artırmak için uygulanan özelliklerdir. Bu değerler, amacı veya varlığı *tanımlamakta* kullanıldıklarından *tanımlayıcı* olarak adlandırılırlar. Tanımlayıcılar, önemli sözcükler veya ifadeler gibi ayırt edici nitelikleri veya veri özniteliklerini anlatmaktadır. Bu, HALDIR ve aracılığıyla öğrenir.
+[**Tanımlayıcılar**](luis-concept-feature.md) , tahmine yönelik sözcüklerin veya tümceciklerin uygunluğunu artırmak için uygulanan özelliklerdir. Bu değerler, amacı veya varlığı *tanımlamakta* kullanıldıklarından *tanımlayıcı* olarak adlandırılırlar. Tanımlayıcılar, önemli kelimeler veya veri özniteliklerini (örneğin, LUVE öğrendiği önemli sözcükler veya ifadeler) ayırt eder.
 
 LUSıS uygulamanızda bir ifade listesi özelliği oluşturduğunuzda, varsayılan olarak genel olarak etkinleştirilir ve tüm amaçlar ve varlıklar arasında eşit olarak uygulanır. Ancak, tümcecik listesini makine tarafından öğrenilen bir varlığın (veya *modelinin*) tanımlayıcı (özellik) olarak uygularsanız, kapsamı yalnızca o modele uygulanabilir ve artık diğer tüm modellerle kullanılmaz. Bir model için tanımlayıcı olarak bir ifade listesi kullanmak, uygulandığı modelin doğruluğunu ele alarak ayrışmaya yardımcı olur.
 
@@ -128,7 +128,7 @@ LUSıS `location` bulursa ve rolü tespit leyemiyorsa, konum varlığı yine de 
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Varlıklar, en fazla sayısından daha ihtiyacınız varsa
 
-Sınırdan daha fazlasına ihtiyacınız varsa desteğe başvurun. Bunu yapmak için sisteminizle ilgili ayrıntılı bilgiler toplayın, [Luo](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **destek**' i seçin. Azure aboneliğiniz destek hizmetleri içeriyorsa, [Azure teknik desteği](https://azure.microsoft.com/support/options/)'ne başvurun.
+Sınırdan daha fazlasına ihtiyacınız varsa desteğe başvurun. Bunu yapmak için sisteminizin hakkında ayrıntılı bilgi toplamak, Git [LUIS](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **Destek**. Destek Hizmetleri Azure aboneliğinize dahildir, başvurun [Azure teknik desteğine](https://azure.microsoft.com/support/options/).
 
 ## <a name="entity-prediction-status"></a>Varlık tahmin durumu
 
@@ -136,8 +136,9 @@ LUU portalı, bir örnekte varlığın seçtiğiniz varlıktan farklı bir varl�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Tebrikler ilgili](luis-concept-utterance.md)kavramları öğrenin.
+Kavramları iyi hakkında bilgi edinin [konuşma](luis-concept-utterance.md).
 
-LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .
+Bkz: [varlık Ekle](luis-how-to-add-entities.md) LUIS uygulamanızı varlıklar ekleme hakkında daha fazla bilgi için.
 
 Bkz. Öğretici: makine tarafından öğrenilen varlığı kullanarak bir noktadan yapılandırılmış verilerin nasıl ayıklanacağını öğrenmek için [Language Understanding (LUA) içindeki makine tarafından öğrenilen varlıklara sahip kullanıcı aracılığıyla yapılandırılmış verileri ayıklama](tutorial-machine-learned-entity.md) .
+ 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e98bf83cedc22aa565ba0f98089e9f6f217728
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6fc55130bd840de3960a44ddc1bd0617af185148
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787643"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969743"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -48,8 +48,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Facebook tarafından çalışma alanı **SP** tarafından başlatılan SSO 'yu destekler
+* Facebook tarafından çalışma alanı  **[Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı destekler (önerilir)](workplacebyfacebook-provisioning-tutorial.md)**
 * Facebook tarafından çalışma alanı **tam zamanında sağlamayı** destekler
-* Facebook tarafından çalışma alanı  **[Otomatik Kullanıcı sağlamayı](workplacebyfacebook-provisioning-tutorial.md) destekler**
 * Facebook mobil uygulaması 'nın çalışma alanı artık SSO 'yu etkinleştirmek için Azure AD ile yapılandırılabilir. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Galeriden Facebook tarafından çalışma alanı ekleme
@@ -103,19 +103,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -123,7 +123,7 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
 1. Uygulamalar listesinde **Facebook tarafından çalışma alanı**' nı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -204,7 +204,7 @@ Bu bölümde sizin için herhangi bir eylem yoktur. Bir kullanıcı Facebook tar
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
 Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Facebook tarafından çalışma alanında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -222,7 +222,7 @@ Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığ
 
     ![Bir kez](./media/workplacebyfacebook-tutorial/test04.png)
 
-4. **Izin ver**' e tıklayın.
+4. **İzin ver**’e tıklayın.
 
     ![Izin ver](./media/workplacebyfacebook-tutorial/test03.png)
 
@@ -236,7 +236,7 @@ Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığ
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Kullanıcı sağlamayı yapılandırma](workplacebyfacebook-provisioning-tutorial.md)
 

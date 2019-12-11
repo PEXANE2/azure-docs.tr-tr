@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti için cihaz kayıtlarını yönetme Azure portal
-description: Azure portalında cihaz sağlama hizmetiniz için cihaz kayıtlarını yönetme
+description: Azure portalında cihaz sağlama hizmetiniz (DPS) için cihaz kayıtlarını yönetme
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 03559183e46182c4f80fe3d16ec542add9b1692b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229725"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974947"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal ile cihaz kayıtlarını yönetme
 
@@ -34,7 +34,7 @@ Cihazları sağlama hizmeti ile kaydedebilmeniz için iki yol vardır:
      a. Kayıtları **Yönet**' e tıklayın ve ardından **kayıt grupları** sekmesini seçin.  
      b. Üstteki **Ekle** düğmesine tıklayın.  
      c. "Kayıt grubu Ekle" paneli göründüğünde, kayıt listesi girişi bilgilerini girin.  **Grup adı** gereklidir. Ayrıca, **sertifika türü**IÇIN "CA veya ara" yı seçin ve cihaz grubu Için kök **birincil sertifikayı** karşıya yükleyin.  
-     d. **Save (Kaydet)** düğmesine tıklayın. Kayıt grubunuzun başarıyla oluşturulması sırasında, Grup adının **kayıt grupları** sekmesinde göründüğünü görmeniz gerekir.  
+     d. **Kaydet** düğmesine tıklayın. Kayıt grubunuzun başarıyla oluşturulması sırasında, Grup adının **kayıt grupları** sekmesinde göründüğünü görmeniz gerekir.  
 
      [Portalda kayıt grubu ![](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
@@ -49,7 +49,7 @@ Cihazları sağlama hizmeti ile kaydedebilmeniz için iki yol vardır:
        a. Kayıtları **Yönet**' e tıklayın, sonra **bireysel** kayıtlar sekmesini seçin.  
        b. Üstteki **Ekle** düğmesine tıklayın.   
        c. "Kayıt Ekle" paneli göründüğünde, kayıt listesi girişinin bilgilerini girin. Önce cihaz için kanıtlama **mekanizmasını** seçin (X. 509.440 veya TPM). X. 509.440 kanıtlama, cihazın yaprak **birincil sertifikasını** karşıya yüklemenizi gerektirir. TPM, cihaz için **kanıtlama anahtarını** ve **kayıt kimliğini** girmenizi gerektirir.  
-       d. **Save (Kaydet)** düğmesine tıklayın. Kayıt grubunuzun başarıyla oluşturulması sırasında, cihazınızın **bireysel** kayıtlar sekmesinde görüntülendiğini görmeniz gerekir.  
+       d. **Kaydet** düğmesine tıklayın. Kayıt grubunuzun başarıyla oluşturulması sırasında, cihazınızın **bireysel** kayıtlar sekmesinde görüntülendiğini görmeniz gerekir.  
 
        [Portalda bireysel kayıt ![](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 

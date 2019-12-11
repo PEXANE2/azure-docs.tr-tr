@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: f9c7278e60c8342aa7d5b68ab8da7143abaf4c89
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/09/2019
+ms.openlocfilehash: b4029d49eeba53e7a502a7ac68081bb5a2d549f8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970523"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971936"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>MySQL sunucu sürümleri için desteklenen Azure veritabanı
 
@@ -26,15 +26,15 @@ MySQL için Azure veritabanı şu anda aşağıdaki sürümleri desteklemektedir
 
 ## <a name="mysql-version-56"></a>MySQL sürüm 5,6
 
-Hata çözme sürümü: 5.6.44
+Hata çözme sürümü: 5.6.45
 
-Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-44.html) bakın.
+Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-45.html) bakın.
 
 ## <a name="mysql-version-57"></a>MySQL sürüm 5,7
 
-Hata çözme sürümü: 5.7.26
+Hata çözme sürümü: 5.7.27
 
-Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-26.html) bakın.
+Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için MySQL [sürüm notlarına](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html) bakın.
 
 ## <a name="mysql-version-80"></a>MySQL sürüm 8,0
 

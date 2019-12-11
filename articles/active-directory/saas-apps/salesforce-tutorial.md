@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63cc4b902c0bd0281228e23076be6e0a18461597
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241431"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970066"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Öğretici: Salesforce ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -46,9 +46,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Salesforce, **SP** tarafından başlatılan SSO 'yu destekler
 
-* Salesforce **, tam zamanında** Kullanıcı sağlamayı destekler
+* Salesforce [ **Otomatik** Kullanıcı sağlamayı ve sağlamayı kaldırmayı](salesforce-provisioning-tutorial.md) destekler (önerilir)
 
-* Salesforce [ **Otomatik** Kullanıcı sağlamayı destekler](salesforce-provisioning-tutorial.md)
+* Salesforce **, tam zamanında** Kullanıcı sağlamayı destekler
 
 * Salesforce mobil uygulaması, artık SSO 'yu etkinleştirmek için Azure AD ile yapılandırılabilir. Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
@@ -125,7 +125,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
    
     > [!NOTE]
     > Salesforce Kullanıcı öznitelikleri, SAML doğrulaması için büyük/küçük harfe duyarlıdır.

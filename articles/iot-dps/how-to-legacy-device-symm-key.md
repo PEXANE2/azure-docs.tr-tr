@@ -1,6 +1,6 @@
 ---
 title: Simetrik anahtarlar kullanarak eski cihazları Sağlama-Azure IoT Hub cihaz sağlama hizmeti
-description: Cihaz sağlama hizmeti örneğiniz ile eski cihazları sağlamak için simetrik anahtarlar kullanma
+description: Cihaz sağlama hizmeti (DPS) örneğiniz ile eski cihazları sağlamak için simetrik anahtarlar kullanma
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9beda9c271c755c9ea61498b24a9e40bde35a7e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209924"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975117"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Simetrik anahtarlar kullanarak eski cihazları sağlama
 
@@ -56,7 +56,7 @@ SDK, sanal cihaz için örnek kodu içerir. Simülasyon cihazı, cihazın önyü
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    **yüklemesine başlamadan**önce`CMake` makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 2. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek Azure IoT C SDK'sı GitHub deposunu kopyalayın:
     

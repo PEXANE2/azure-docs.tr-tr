@@ -1,5 +1,5 @@
 ---
-title: Azure AD tarafından desteklenen farklı belirteç ve talep türleri hakkında bilgi edinin | Microsoft Docs
+title: Azure AD belirteç & talep türleri | Microsoft Docs
 description: Azure Active Directory (AAD) tarafından verilen SAML 2,0 ve JSON Web belirteçleri (JWT) belirteçlerinde talepleri anlamak ve değerlendirmek için bir kılavuz
 documentationcenter: na
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf4c976a1232d08df1be2549d2861295adf9ee1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 4acac79d79b584dac93d63f6d478627f7e953f81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532967"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965765"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML belirteci başvurusu
 
@@ -155,7 +155,7 @@ Bu, tipik bir SAML belirtecinin örneğidir.
       <t:KeyType>http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey</t:KeyType>
     </t:RequestSecurityTokenResponse>
 
-## <a name="related-content"></a>İlgili içerik
+## <a name="related-content"></a>İlgili içerikler
 
 * Belirteç yaşam süresi ilkesini Azure AD Graph API aracılığıyla yönetme hakkında daha fazla bilgi edinmek için bkz. Azure AD Graph [ilkesi işlemleri](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) ve [ilke varlığı](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity).
 * Örnekler de dahil olmak üzere PowerShell cmdlet 'leri aracılığıyla ilkeleri yönetme hakkında daha fazla bilgi ve örnek için bkz. [Azure AD 'de yapılandırılabilir belirteç ömürleri](active-directory-configurable-token-lifetimes.md). 

@@ -3,12 +3,12 @@ title: Visual Studio Code kullanarak Azure Işlevleri geliştirme
 description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f9ad40cd50863990b9af629c77321195dce5e97c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227046"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975593"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure Işlevleri geliştirme
 
@@ -20,7 +20,7 @@ Azure Işlevleri uzantısı şu avantajları sağlar:
 * Azure Işlevleri projenizi doğrudan Azure 'da yayımlayın.
 * Visual Studio Code avantajlarından yararlanarak işlevlerinizi çeşitli dillerde yazın.
 
-Uzantı, Azure Işlevleri sürüm 2. x çalışma zamanı tarafından desteklenen aşağıdaki dillerle kullanılabilir:
+Uzantı, sürüm 2. x ile başlayan Azure Işlevleri çalışma zamanı tarafından desteklenen aşağıdaki dillerde kullanılabilir:
 
 * [C#Medi](functions-dotnet-class-library.md)
 * <sup></sup> [ C# betik](functions-reference-csharp.md)*
@@ -138,7 +138,7 @@ Visual Studio Code, uygun bir istem kümesini izleyerek function. JSON dosyanız
 
 Aşağıda yeni bir depolama çıkış bağlaması tanımlamak için örnek istemler verilmiştir:
 
-| İstem | Value | Açıklama |
+| İstem | Değer | Açıklama |
 | -------- | ----- | ----------- |
 | **Bağlama yönünü seçin** | `out` | Bağlama bir çıkış bağlamadır. |
 | **Yön içeren bağlamayı seçin** | `Azure Queue Storage` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
@@ -190,7 +190,7 @@ Daha fazla bilgi için bkz. [kuyruk depolama çıkışı bağlama](functions-bin
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="publish-to-azure"></a>Azure'a Yayımlama
+## <a name="publish-to-azure"></a>Azure’da Yayımlama
 
 Visual Studio Code, Işlevler projenizi doğrudan Azure 'da yayımlamanıza olanak sağlar. Süreç kapsamında, Azure abonelik bir işlev uygulaması ve ilgili kaynakları oluşturursunuz. İşlev uygulaması, işlevlerinize ilişkin bir yürütme bağlamı sağlar. Proje, Azure aboneliğinizdeki yeni işlev uygulamasında paketlenir ve dağıtılır.
 
@@ -218,7 +218,7 @@ Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturu
 
 1. İstemlerin ardından, şu bilgileri sağlayın:
 
-    | İstem | Value | Açıklama |
+    | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
     | Azure 'da işlev uygulaması seçin | Azure 'da yeni İşlev Uygulaması oluşturma | Sonraki istem sırasında, yeni işlev uygulamanızı tanımlayan bir genel benzersiz ad yazın ve ardından ENTER ' u seçin. İşlev uygulaması adına ilişkin geçerli karakterler `a-z`, `0-9` ve `-` işaretidir. |
     | Bir işletim sistemi seçin | Windows | İşlev uygulaması Windows üzerinde çalışır. |
@@ -226,7 +226,7 @@ Aşağıdaki adımlar, projenizi gelişmiş oluşturma seçenekleriyle oluşturu
     | Yeni uygulamanız için bir çalışma zamanı seçin | Proje diliniz | Çalışma zamanının yayımlamakta olduğunuz projeyle eşleşmesi gerekir. |
     | Yeni kaynaklar için bir kaynak grubu seçin | Yeni kaynak grubu oluştur | Sonraki istem sırasında, `myResourceGroup`gibi bir kaynak grubu adı yazın ve ardından ENTER ' u seçin. Ayrıca, var olan bir kaynak grubunu seçebilirsiniz. |
     | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma | Sonraki istem sırasında, işlev uygulamanız tarafından kullanılan yeni depolama hesabı için genel olarak benzersiz bir ad yazın ve ENTER ' u seçin. Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakamlar ve küçük harfler içerebilir. Ayrıca var olan bir hesabı da seçebilirsiniz. |
-    | Yeni kaynaklar için bir konum seçin | bölge | Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir konum seçin. |
+    | Yeni kaynaklar için bir konum seçin | bölgesinde kullanılamıyor | Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir konum seçin. |
 
     İşlev uygulamanız oluşturulduktan ve dağıtım paketi uygulandıktan sonra bir bildirim görüntülenir. Oluşturduğunuz Azure kaynakları dahil olmak üzere oluşturma ve dağıtım sonuçlarını görüntülemek için bu bildirimde **çıktıyı görüntüle** ' yi seçin.
 
@@ -263,7 +263,7 @@ Azure Işlevleri uzantısı, yerel geliştirme bilgisayarınızda bir Işlevler 
 
 Işlevler projenizi yerel olarak çalıştırmak için aşağıdaki ek gereksinimleri karşılamanız gerekir:
 
-* Sürüm 2. x ' i yükler [Azure Functions Core Tools](functions-run-local.md#v2). Temel Araçlar paketi, projeyi yerel olarak başlattığınızda otomatik olarak indirilir ve yüklenir. Temel araçlar tüm Azure Işlevleri çalışma zamanını içerir, bu nedenle indirme ve yükleme biraz zaman alabilir.
+* [Azure Functions Core Tools](functions-run-local.md#v2)sürüm 2. x veya üstünü yükler. Temel Araçlar paketi, projeyi yerel olarak başlattığınızda otomatik olarak indirilir ve yüklenir. Temel araçlar tüm Azure Işlevleri çalışma zamanını içerir, bu nedenle indirme ve yükleme biraz zaman alabilir.
 
 * Seçtiğiniz dile özgü gereksinimleri yükleyin:
 
@@ -311,7 +311,7 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 İşlev uygulama ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru makalelerinin ortam değişkenleri bölümlerine bakın:
 
 * [C#derlemesi](functions-dotnet-class-library.md#environment-variables)
-* [C#betik (. CSX)](functions-reference-csharp.md#environment-variables)
+* [C# betiği (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -404,11 +404,11 @@ Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim k
 | **Azure Functions Core Tools yüklemeyi veya güncelleştirmeyi** | İşlevleri yerel olarak çalıştırmak için kullanılan [Azure Functions Core Tools]yüklenir veya güncelleştirir. |
 | **Neden**  | Bağlı bir git deposundan proje dosyalarını Azure 'daki belirli bir dağıtıma yeniden dağıtmanıza olanak tanır. Visual Studio Code yerel güncelleştirmeleri yeniden yayımlamak için [projenizi yeniden yayımlayın](#republish-project-files). |
 | **Ayarları yeniden adlandır** | Azure 'da var olan bir işlev uygulaması ayarının anahtar adını değiştirir. Bu komut yerel. Settings. JSON dosyanızdaki ayarları etkilemez. Azure 'daki ayarları yeniden adlandırdıktan sonra, [Bu değişiklikleri yerel projeye indirmeniz](#download-settings-from-azure)gerekir. |
-| **Uygulamasını** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
+| **Yeniden başlat** | İşlev uygulamasını Azure 'da yeniden başlatır. Güncelleştirmelerin dağıtımı, işlev uygulamasını da yeniden başlatır. |
 | **AzureWebJobsStorage ayarla**| `AzureWebJobsStorage` uygulama ayarının değerini ayarlar. Bu ayar, Azure Işlevleri için gereklidir. Azure 'da bir işlev uygulaması oluşturulduğunda ayarlanır. |
 | **Start** | Azure 'da durdurulmuş bir işlev uygulaması başlatır. |
 | **Akış günlüklerini başlatma** | Azure 'da işlev uygulaması için akış günlüklerini başlatır. Günlük bilgilerini neredeyse gerçek zamanlı olarak görmeniz gerekiyorsa Azure 'da uzaktan sorun giderme sırasında akış günlüklerini kullanın. Daha fazla bilgi için bkz. [akış günlükleri](#streaming-logs). |
-| **Durdurulması** | Azure 'da çalışan bir işlev uygulamasını sonlandırır. |
+| **Stop** | Azure 'da çalışan bir işlev uygulamasını sonlandırır. |
 | **Akış günlüklerini durdur** | Azure 'da işlev uygulaması için akış günlüklerini sonlandırır. |
 | **Yuva ayarı olarak değiştirme** | Etkinleştirildiğinde, belirli bir dağıtım yuvası için bir uygulama ayarının devam ettiğinden emin olur. |
 | **Azure Functions Core Tools kaldır** | Uzantısının gerektirdiği Azure Functions Core Tools kaldırır. |

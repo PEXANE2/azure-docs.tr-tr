@@ -1,19 +1,19 @@
 ---
 title: Akıllı sözleşmeleri oluşturma, derleme, & dağıtma öğreticisi-Azure blok zinciri hizmeti
 description: Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme seti 'ni kullanma hakkında öğretici.
-ms.date: 11/20/2019
+ms.date: 12/06/2019
 ms.topic: tutorial
 ms.reviewer: chrisseg
-ms.openlocfilehash: 2d2cb174656f5ed8f13d4463d416455ebb3f9ec9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325160"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972879"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
 
-Bu öğreticide, Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanın. Ayrıca bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için Truffle kullanırsınız.
+Bu öğreticide, Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanın. Ayrıca, bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için geliştirme setini da kullanırsınız.
 
 Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsiniz:
 
@@ -21,7 +21,6 @@ Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsi
 > * Akıllı sözleşme oluşturma
 > * Akıllı sözleşme dağıtma
 > * Bir işlem aracılığıyla akıllı sözleşme işlevini yürütme
-> * Sözleşme durumunu sorgula
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,11 +64,11 @@ Akıllı sözleşmeler, projenin **sözleşmeler** dizininde bulunur. Akıllı s
 1. VS Code Gezgini kenar çubuğunda, projenizdeki **sözleşmeler** klasörünü genişletin.
 1. **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri oluştur** ' u seçin.
 
-    ![Yapı sözleşmeleri](./media/send-transaction/build-contracts.png)
+    ![Yapı sözleşmeleri menüsünü seçin ](./media/send-transaction/build-contracts.png)
 
 Azure blok zinciri geliştirme seti, akıllı sözleşmeleri derlemek için Truffle kullanır.
 
-![Derleme çıkışı](./media/send-transaction/compile-output.png)
+![Truffle derleyici çıkışı](./media/send-transaction/compile-output.png)
 
 ## <a name="deploy-a-smart-contract"></a>Akıllı sözleşme dağıtma
 
@@ -85,104 +84,25 @@ Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak ü
 
 ## <a name="call-a-contract-function"></a>Sözleşme işlevini çağırma
 
-**Helloblockzincirleri** sözleşmesinin **SendRequest** işlevi **RequestMessage** durum değişkenini değiştirir. Bir blok zinciri ağının durumunun değiştirilmesi bir işlem aracılığıyla yapılır. **SendRequest** işlevini bir işlem aracılığıyla yürütmek için bir komut dosyası oluşturabilirsiniz.
+**Helloblockzincirleri** sözleşmesinin **SendRequest** işlevi **RequestMessage** durum değişkenini değiştirir. Bir blok zinciri ağının durumunun değiştirilmesi bir işlem aracılığıyla yapılır. Bir işlem aracılığıyla **SendRequest** işlevini çağırmak Için Azure blok zinciri geliştirme seti Akıllı sözleşme etkileşimi sayfasını kullanabilirsiniz.
 
-1. Truffle projenizin kökünde yeni bir dosya oluşturun ve `sendrequest.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
+1. Akıllı sözleşmeniz ile etkileşime geçmek için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **akıllı sözleşme etkileşimi sayfasını göster** ' i seçin.
 
-    ```javascript
-    var HelloBlockchain = artifacts.require("HelloBlockchain");
-        
-    module.exports = function(done) {
-      console.log("Getting the deployed version of the HelloBlockchain smart contract")
-      HelloBlockchain.deployed().then(function(instance) {
-        console.log("Calling SendRequest function for contract ", instance.address);
-        return instance.SendRequest("Hello, blockchain!");
-      }).then(function(result) {
-        console.log("Transaction hash: ", result.tx);
-        console.log("Request complete");
-        done();
-      }).catch(function(e) {
-        console.log(e);
-        done();
-      });
-    };
-    ```
+    ![Menüden akıllı sözleşme etkileşimi sayfasını göster ' i seçin](./media/send-transaction/contract-interaction.png)
 
-1. Azure blok zinciri geliştirme seti bir proje oluşturduğunda, Truffle yapılandırma dosyası, Consortium blok zinciri ağ uç noktası ayrıntılarınız ile oluşturulur. **Truffle-config. js** ' i projenizde açın. Yapılandırma dosyasında iki ağ listelenir: bir tane geliştirme ve bir tane, konsorsiyum ile aynı ada sahip.
-1. VS Code Terminal bölmesinde, komut dosyasını Konsorsiyumu blok zinciri ağınızda yürütmek için Truffle ' yi kullanın. Terminal bölmesi menü çubuğunda açılan menüde **Terminal** sekmesini ve **PowerShell** ' i seçin.
+1. Etkileşim sayfası, dağıtılan bir sözleşme sürümü seçmenize, işlevleri çağıralmanıza, geçerli durumu görüntülemenize ve meta verileri görüntülemenize olanak sağlar.
 
-    ```PowerShell
-    truffle exec sendrequest.js --network <blockchain network>
-    ```
+    ![Örnek akıllı sözleşme etkileşimi sayfası](./media/send-transaction/interaction-page.png)
 
-    \<blok zinciri ağı\>, **Truffle-config. js**içinde tanımlanan blok zinciri ağının adıyla değiştirin.
+1. Akıllı sözleşme işlevini çağırmak için, sözleşme eylemini seçin ve bağımsız değişkenlerinizi geçirin. **SendRequest** sözleşme eylemini seçin ve **Merhaba, blok zinciri! girin!** **RequestMessage** parametresi için. Bir işlem aracılığıyla **SendRequest** işlevini çağırmak için **Yürüt** ' ü seçin.
 
-Truffle, betiği blok zinciri ağınızda yürütür.
+    ![SendRequest eylemini Yürüt](./media/send-transaction/sendrequest-action.png)
 
-![Betik çıkışı](./media/send-transaction/execute-transaction.png)
+İşlem işlendikten sonra, etkileşim bölümü durum değişikliklerini yansıtır.
 
-Bir sözleşmenin işlevini bir işlem aracılığıyla yürüttüğünüzde, bir blok oluşturuluncaya kadar işlem işlenmez. Bir işlem yoluyla yürütülmesi amaçlanan işlevler, dönüş değeri yerine bir işlem KIMLIĞI döndürür.
+![Sözleşme durumu değişiklikleri](./media/send-transaction/contract-state.png)
 
-## <a name="query-contract-state"></a>Sözleşme durumunu sorgula
-
-Akıllı sözleşme işlevleri, durum değişkenlerinin geçerli değerini döndürebilir. Bir durum değişkeninin değerini döndürecek bir işlev ekleyelim.
-
-1. **Helloblockzincirine. Nuevo**Içinde, **helloblockzincirine** akıllı sözleşmeye bir **GetMessage** işlevi ekleyin.
-
-    ``` solidity
-    function getMessage() public view returns (string memory)
-    {
-        if (State == StateType.Request)
-            return RequestMessage;
-        else
-            return ResponseMessage;
-    }
-    ```
-
-    İşlevi, sözleşmenin geçerli durumuna bağlı olarak bir durum değişkeninde depolanan iletiyi döndürür.
-
-1. Akıllı sözleşmede değişiklikleri derlemek için **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri derle** ' yi seçin.
-1. Dağıtmak için, **Helloblockzincirine. Nuevo** öğesine sağ tıklayın ve menüden **sözleşmeleri dağıt** ' ı seçin. İstendiğinde, komut paletinde Azure blok zinciri Konsorsiyumu ağınızı seçin.
-1. Sonra, **GetMessage** işlevini çağırmak için kullanarak bir betik oluşturun. Truffle projenizin kökünde yeni bir dosya oluşturun ve `getmessage.js`adlandırın. Aşağıdaki Web3 JavaScript kodunu dosyaya ekleyin.
-
-    ```javascript
-    var HelloBlockchain = artifacts.require("HelloBlockchain");
-    
-    module.exports = function(done) {
-      console.log("Getting the deployed version of the HelloBlockchain smart contract")
-      HelloBlockchain.deployed().then(function(instance) {
-        console.log("Calling getMessage function for contract ", instance.address);
-        return instance.getMessage();
-      }).then(function(result) {
-        console.log("Request message value: ", result);
-        console.log("Request complete");
-        done();
-      }).catch(function(e) {
-        console.log(e);
-        done();
-      });
-    };
-    ```
-
-1. VS Code, Terminal bölmesinde, blok zinciri ağınızda betiği yürütmek için Truffle kullanın. Terminal bölmesi menü çubuğunda açılan menüde **Terminal** sekmesini ve **PowerShell** ' i seçin.
-
-    ```bash
-    truffle exec getmessage.js --network <blockchain network>
-    ```
-
-    \<blok zinciri ağı\>, **Truffle-config. js**içinde tanımlanan blok zinciri ağının adıyla değiştirin.
-
-Betik, getMessage işlevini çağırarak akıllı sözleşmeyi sorgular. **RequestMessage** durum değişkeninin geçerli değeri döndürüldü.
-
-![Betik çıkışı](./media/send-transaction/execute-get.png)
-
-Değerin **Merhaba, blok zinciri!** olmadığına dikkat edin. Bunun yerine, döndürülen değer bir yer tutucudur. Sözleşmeyi değiştirdiğinizde ve dağıttığınızda, değiştirilen sözleşme yeni bir adreste dağıtılır ve durum değişkenlerine akıllı sözleşme oluşturucusunda değerler atanır. Truffle örnek **2_deploy_contracts. js** geçiş betiği, akıllı sözleşmeyi dağıtır ve bir yer tutucu değerini bağımsız değişken olarak geçirir. Oluşturucu **RequestMessage** durum değişkenini yer tutucu değerine ayarlar ve döndürülen değer.
-
-1. **RequestMessage** durum değişkenini ayarlamak ve değeri sorgulamak için **SendRequest. js** ve **GetMessage. js** betiklerini yeniden çalıştırın.
-
-    ![Betik çıkışı](./media/send-transaction/execute-set-get.png)
-
-    **SendRequest. js** , **RequestMessage** durum değişkenini **Merhaba, blok zinciri!** olarak ayarlar ve **GetMessage. js** , **isteği RequestMessage** durum değişkeninin değeri için sorgular ve **Hello, blok zinciri!** döndürür.
+SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine**geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek**olarak kalmaya devam eder.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

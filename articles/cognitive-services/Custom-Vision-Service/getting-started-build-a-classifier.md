@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73519148"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978688"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
 
@@ -56,7 +56,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
     |__Yorlar__| Çok çeşitli resim Sınıflandırma görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. |
     |__Yemek__|Bir restoran menüsünde gördüğünüz gibi yemeklerin fotoğrafları için iyileştirildi. Bireysel meyve veya vegetables fotoğraflarını sınıflandırmak istiyorsanız, yiyecek etki alanını kullanın.|
     |__Sakal__|Hem doğal hem de yapay olan tanınabilir yer işaretleri için iyileştirilmiştir. Bu etki alanı, yer işareti fotoğrafta açık bir şekilde görünür olduğunda en iyi şekilde çalışıyor. Bu etki alanı, yer işareti, önündeki kişiler tarafından biraz engelde olsa bile çalışıyor.|
-    |__Maliyeti__|Bir alışveriş kataloğunda veya alışveriş web sitesinde bulunan görüntüler için iyileştirilmiştir. Dresler, Pants ve Shirts arasında yüksek duyarlıklı sınıflandırmaları istiyorsanız bu etki alanını kullanın.|
+    |__Perakende__|Bir alışveriş kataloğunda veya alışveriş web sitesinde bulunan görüntüler için iyileştirilmiştir. Dresler, Pants ve Shirts arasında yüksek duyarlıklı sınıflandırmaları istiyorsanız bu etki alanını kullanın.|
     |__Compact etki alanları__| Mobil cihazlardaki gerçek zamanlı sınıflandırmanın kısıtlamaları için iyileştirildi. Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir.|
 
 1. Son olarak, __proje oluştur__' u seçin.
@@ -67,9 +67,9 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
 
 ## <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Bu bölümde, sınıflandırıcının eğmesini sağlamaya yardımcı olmak için görüntüleri karşıya yükleyip el ile etiketlemelisiniz. 
+Bu bölümde, sınıflandırıcının eğmesini sağlamaya yardımcı olmak için görüntüleri karşıya yükleyip el ile etiketleyerek. 
 
-1. Görüntü eklemek için __Görüntü ekle__ düğmesine tıklayın ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Etiketlemeyle gezinmek için __Aç__ ' ı seçin. Etiket seçiminiz, karşıya yüklemek üzere seçtiğiniz tüm görüntü grubuna uygulanır, bu nedenle görüntüleri istediğiniz etiketlere göre ayrı gruplara karşıya yüklemek daha kolay olur. Ayrıca, her bir görüntünün etiketlerini karşıya yükledikten sonra değiştirebilirsiniz.
+1. Görüntü eklemek için __Görüntü ekle__ düğmesine tıklayın ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Etiketlemeyle gezinmek için __Aç__ ' ı seçin. Etiket seçiminiz, karşıya yüklemek üzere seçtiğiniz tüm görüntü grubuna uygulanır, bu nedenle görüntüleri istedikleri etiketlere göre ayrı gruplara yüklemek daha kolay olur. Ayrıca, her bir görüntünün etiketlerini karşıya yükledikten sonra değiştirebilirsiniz.
 
     ![Resim ekle denetimi, sol üst köşede ve alt ortadaki bir düğme olarak gösterilir.](./media/getting-started-build-a-classifier/add-images01.png)
 
@@ -103,13 +103,13 @@ Eğitim tamamlandıktan sonra, modelin performansı tahmini ve görüntülenir. 
 
 ![Eğitim sonuçları, sınıflandırıcının her bir etiketi için genel duyarlık ve geri çekmeyi ve duyarlık ve geri çekmeyi gösterir.](./media/getting-started-build-a-classifier/train03.png)
 
-### <a name="probability-threshold"></a>Olasılık eşiği
+### <a name="probability-threshold"></a>Olasılık Eşiği
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>Eğitim yinelemelerini yönetme
 
-Sınıflandırıcınızı her eğişinizde, kendi güncelleştirilmiş performans ölçümleriyle yeni bir _yineleme_ oluşturursunuz. Tüm yinelemelerinizi **performans** sekmesinin sol bölmesinde görüntüleyebilirsiniz. Sol bölmede, bir yinelemeyi silmek için kullanabileceğiniz **Sil** düğmesini de bulabilirsiniz. Bir yinelemeyi sildiğinizde, onunla benzersiz olarak ilişkili olan tüm görüntüleri silersiniz.
+Sınıflandırıcınızı her eğişinizde, kendi güncelleştirilmiş performans ölçümleriyle yeni bir _yineleme_ oluşturursunuz. Tüm yinelemelerinizi **performans** sekmesinin sol bölmesinde görüntüleyebilirsiniz. Ayrıca, bir yinelemeyi artık kullanımdan kaldırmak için kullanabileceğiniz **Sil** düğmesini de bulabilirsiniz. Bir yinelemeyi sildiğinizde, onunla benzersiz olarak ilişkili olan tüm görüntüleri silersiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

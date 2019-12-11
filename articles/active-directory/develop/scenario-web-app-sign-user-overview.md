@@ -1,5 +1,5 @@
 ---
-title: Kullanıcılara oturum açan Web uygulaması (genel bakış)-Microsoft Identity platform
+title: Bir Web uygulamasından Kullanıcı oturum açma-Microsoft Identity platform | Mavisi
 description: Kullanıcılara oturum açan bir Web uygulaması oluşturma hakkında bilgi edinin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316ab055a077b251e88421ab26997f8556a6e31f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 10a53f88a97cdba8626c9d6c421093e4ec327e19
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482481"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961616"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
@@ -30,9 +30,9 @@ Kullanıcıların oturum açması için Microsoft Identity platformunu kullanan 
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Kullanıcılar tarafından oturum açan ilk taşınabilir (ASP.NET Core) Web uygulamanızı oluşturmak istiyorsanız bu hızlı başlangıcı izleyin:
 
@@ -83,7 +83,7 @@ Web Apps bir kullanıcının kimliğini bir Web tarayıcısında doğrular. Bu s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 1354f7befd8c38537a555e17733f431dd488cf60
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 60832f9438a602945c63910a436d7638f15a201d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742047"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969443"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell için Özellikler & Araçları
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-Azure Cloud Shell üzerinde `Ubuntu 16.04 LTS`çalışır.
+Azure Cloud Shell `Ubuntu 16.04 LTS`çalışır.
 
 ## <a name="features"></a>Özellikler
 
@@ -36,30 +36,30 @@ Cloud Shell Azure CLı ve Azure PowerShell için hesap erişiminin güvenli bir 
 ### <a name="home-persistence-across-sessions"></a>Oturumlar arasında kalıcılığı $HOME
 
 Dosyaları oturumlarda kalıcı hale getirmek için Cloud Shell ilk başlatma sırasında bir Azure dosya paylaşımının iliştirilmesi için adım adım yol gösterir.
-İşlem tamamlandıktan sonra, Cloud Shell tüm gelecek oturumlar için depolama alanınızı otomatik `$HOME\clouddrive`olarak ekler (olarak bağlanır).
-Ayrıca, `$HOME` dizininiz Azure dosya paylaşımınızda bir. img olarak kalıcı hale getirilir.
-`$HOME` Ve makine durumunun dışındaki dosyalar oturumlarda kalıcı olmaz. SSH anahtarları gibi gizli dizileri depolarken en iyi uygulamaları kullanın. Azure Key Vault gibi hizmetlerde [Kurulum öğreticileri vardır](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+İşlem tamamlandığında Cloud Shell, tüm gelecek oturumlar için depolama alanınızı otomatik olarak ekler (`$HOME\clouddrive`olarak bağlanır).
+Ayrıca, `$HOME` dizininiz Azure dosya paylaşımınızda. img olarak kalıcı hale getirilir.
+`$HOME` ve makine durumunun dışındaki dosyalar oturumlarda kalıcı olmaz. SSH anahtarları gibi gizli dizileri depolarken en iyi uygulamaları kullanın. Azure Key Vault gibi hizmetlerde [Kurulum öğreticileri vardır](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
 [Cloud Shell 'de kalıcı dosyalar hakkında daha fazla bilgi edinin.](persisting-shell-storage.md)
 
 ### <a name="azure-drive-azure"></a>Azure sürücüsü (Azure:)
 
-Cloud Shell 'de PowerShell, Azure Drive (`Azure:`) ' da size başlar.
+Cloud Shell PowerShell, Azure Drive (`Azure:`) ' de size başlar.
 Azure sürücüsü Işlem, ağ, depolama vb. gibi Azure kaynakları için dosya sistemi gezintisine benzer kolay bulma ve gezinme sağlar.
 Bu kaynakları, içinde olduğunuz sürücüden bağımsız olarak yönetmek için tanıdık [Azure PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/azure) kullanmaya devam edebilirsiniz.
-Azure kaynaklarında yapılan tüm değişiklikler doğrudan Azure portal veya Azure PowerShell cmdlet 'leri aracılığıyla yapılır, Azure sürücüsüne yansıtılır.  Kaynaklarınızı yenilemek için `dir -Force` ' i çalıştırabilirsiniz.
+Azure kaynaklarında yapılan tüm değişiklikler doğrudan Azure portal veya Azure PowerShell cmdlet 'leri aracılığıyla yapılır, Azure sürücüsüne yansıtılır.  Kaynaklarınızı yenilemek için `dir -Force` çalıştırabilirsiniz.
 
 ![](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Exchange Online 'ı yönetme
 
-Cloud Shell içindeki PowerShell, Exchange Online modülünün özel bir derlemesini içerir.  Öğesini `Connect-EXOPSSession` çalıştırarak Exchange cmdlet 'lerinizi alın.
+Cloud Shell içindeki PowerShell, Exchange Online modülünün özel bir derlemesini içerir.  Exchange cmdlet 'lerinizi almak için `Connect-EXOPSSession` çalıştırın.
 
 ![](media/features-powershell/exchangeonline.png)
 
-           `Get-Command -Module tmp_*`'i çalıştırın.
+ `Get-Command -Module tmp_*` öğesini çalıştırın
 > [!NOTE]
-> Modül adı ile `tmp_`başlamalıdır, aynı ön eke sahip modüller yüklediyseniz, cmdlet 'leri de ortaya çıkmış olur. 
+> Modül adı `tmp_`ile başlamalıdır, aynı ön eke sahip modüller yüklediyseniz, cmdlet 'leri de kullanıma sunulacaktır. 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
@@ -69,26 +69,26 @@ Cloud Shell, Terkform, Anbotsız ve Chef InSpec gibi açık kaynaklı araçlar i
 
 ## <a name="tools"></a>Araçlar
 
-|Category   |Ad   |
+|Kategori   |Adı   |
 |---|---|
-|Linux araçları            |Bash<br> ZSH<br> dak<br> tmux<br> derinlemesine<br>               |
+|Linux araçları            |bash<br> ZSH<br> Dak<br> tmux<br> derinlemesine<br>               |
 |Azure Araçları            |[Azure CLI](https://github.com/Azure/azure-cli) ve [Azure klasik CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Işlevleri CLı](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Metin düzenleyicileri           |kod (Cloud Shell Düzenleyicisi)<br> v<br> Nano<br> Emacs    |
+|Metin düzenleyicileri           |kod (Cloud Shell Düzenleyicisi)<br> vim<br> nano<br> emacs    |
 |Kaynak denetimi         |git                    |
-|Derleme araçları            |yapabilir<br> Maven<br> npm<br> Pip         |
-|Kapsayıcılar             |[Docker Makinesi](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|Veritabanları              |MySQL istemcisi<br> PostgreSql istemcisi<br> [sqlcmd yardımcı programı](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Derleme araçları            |skype<br> maven<br> npm<br> Pip         |
+|Kapsayıcılar             |[Docker Makinesi](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLı](https://github.com/dcos/dcos-cli)         |
+|Veri tabanları              |MySQL istemcisi<br> PostgreSql istemcisi<br> [sqlcmd yardımcı programı](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |Diğer                  |IPython Istemcisi<br> [Cloud Foundry CLı](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Pupevcil hayvan sürgüsü](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Dil desteği
 
-|Dil   |Version   |
+|Dil   |Sürüm   |
 |---|---|
-|.NET Core  |2.0.0       |
-|Git         |1.9        |
-|Java       |1,8        |
-|Node.js    |8.9.4      |
-|PowerShell |[6.2.0](https://github.com/PowerShell/powershell/releases)       |
+|.NET Core  |2.2.402       |
+|Go         |1.9        |
+|Java       |1.8        |
+|Node.js    |8.16.0      |
+|PowerShell |[6.2.3](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 ve 3,5 (varsayılan)|
 
 ## <a name="next-steps"></a>Sonraki adımlar

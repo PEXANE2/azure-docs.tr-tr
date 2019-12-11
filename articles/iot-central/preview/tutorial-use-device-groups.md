@@ -3,17 +3,17 @@ title: Azure IoT Central uygulamanızda cihaz gruplarını kullanma | Microsoft 
 description: Bir operatör olarak, Azure IoT Central uygulamanızdaki cihazlardan telemetri çözümlemek için cihaz gruplarını nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/29/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 281806999b08c3babbb753459835850ad9d733eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 981046f9417876a68c215c6d01a63c7f0a634464
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895442"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976222"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>Öğretici: cihaz telemetrisini analiz etmek için cihaz gruplarını kullanma (Önizleme özellikleri)
 
@@ -26,10 +26,10 @@ Bir cihaz grubu, belirtilen bazı ölçütlerle eşleştiğinden, birlikte grupl
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Bir cihaz grubu oluşturma
+> * Cihaz grubu oluşturma
 > * Cihaz telemetrisini çözümlemek için bir cihaz grubu kullanma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, [Azure IoT Central oluşturma uygulamasını](./quick-deploy-iot-central.md) tamamlayıp [IoT Central uygulamanıza sanal bir cihaz ekleyerek](./quick-create-pnp-device.md) , birlikte çalışmak üzere **ortam algılayıcı** cihaz şablonu oluşturmanız gerekir.
 
@@ -43,7 +43,7 @@ Bir cihaz grubu oluşturmadan önce, bu öğreticide kullanmak üzere **ortam al
 
 ![Müşteri adını contoso olarak ayarla](./media/tutorial-use-device-groups/customer-name.png)
 
-## <a name="create-a-device-group"></a>Bir cihaz grubu oluşturma
+## <a name="create-a-device-group"></a>Cihaz grubu oluşturma
 
 Bir cihaz grubu oluşturmak için:
 
@@ -53,7 +53,7 @@ Bir cihaz grubu oluşturmak için:
 
     ![Yeni cihaz grubu](media/tutorial-use-device-groups/image1.png)
 
-1. Cihaz grubunuza **contoso cihazları**gibi bir ad verin. Ayrıca, bir açıklama ekleyebilirsiniz. Bir cihaz grubu yalnızca tek bir cihaz şablonundan cihaz içerebilir. Bu grup için kullanılacak **çevresel algılayıcı** cihaz şablonunu seçin.
+1. Cihaz grubunuza **contoso cihazları**gibi bir ad verin. Ayrıca, bir açıklama da ekleyebilirsiniz. Bir cihaz grubu yalnızca tek bir cihaz şablonundan cihaz içerebilir. Bu grup için kullanılacak **çevresel algılayıcı** cihaz şablonunu seçin.
 
 1. **Müşteri adı** özelliğini, **eşittir** karşılaştırma işlecini ve **contoso** 'yu değer olarak seçerek cihaz grubu için **contoso** 'ya ait olan cihazları tanımlamak üzere sorgu oluşturun. Birden çok sorgu ekleyebilirsiniz ve **Tüm** ölçütlere uyan cihazlar cihaz grubuna yerleştirilir. Oluşturduğunuz cihaz grubuna, uygulamaya erişimi olan herkes tarafından erişilebilir, böylece herkes cihaz grubunu görüntüleyebilir, değiştirebilir veya silebilir.
 

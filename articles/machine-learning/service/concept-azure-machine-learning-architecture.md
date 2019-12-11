@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1e67fc3a2f878e5e04834f67027c98e0b37e9059
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580625"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973603"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -23,14 +23,14 @@ Azure Machine Learning için mimari, kavramlar ve iş akışı hakkında bilgi e
 
 ![Azure Machine Learning mimarisi ve iş akışı](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Machine Learning modeli iş akışı genellikle bu diziyi izler:
 
 1. **Eğit**
     + **Python** 'da veya görsel tasarımcıda makine öğrenimi eğitim betikleri geliştirin.
-    + **İşlem hedefi**oluşturun ve yapılandırın.
-    + Bu ortamda çalıştırmak için betikleri yapılandırılan işlem hedefine **Gönder** . Eğitim sırasında betikler, **veri deposundan**okuma veya yazma yapılabilir. Ve yürütme kayıtları **çalışma alanında** **çalışır** olarak kaydedilir ve **denemeleri**altında gruplandırılır.
+    + Oluşturma ve yapılandırma bir **hedef işlem**.
+    + **Komut Gönderme** ortamında çalıştırmak için yapılandırılmış işlem hedefine. Eğitim sırasında betikler, **veri deposundan**okuma veya yazma yapılabilir. Ve yürütme kayıtları **çalışma alanında** **çalışır** olarak kaydedilir ve **denemeleri**altında gruplandırılır.
 
 1. **Paket** -tatmin edici bir çalıştırma oluşturulduktan sonra, kalıcı modeli **model kayıt defterine**kaydedin.
 
@@ -59,28 +59,28 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#compute-instance">Not defteri VM</a>
 + <a href="#compute-targets">İşlem hedefleri</a>
 + <a href="#datasets-and-datastores">Veri kümesi & veri depoları</a>
-+ <a href="#endpoints">Noktalarının</a>
-+ <a href="#environments">Lý</a>
++ <a href="#endpoints">Uç Noktalar</a>
++ <a href="#environments">Ortamlar</a>
 + [Tahmini](#estimators)
 + <a href="#experiments">Denemeler</a>
 + <a href="#github-tracking-and-integration">Git izleme</a>
 + <a href="#iot-module-endpoints">IoT modülleri</a>
-+ <a href="#logging">Açmak</a>
++ <a href="#logging">Günlüğe kaydetme</a>
 + <a href="#ml-pipelines">ML işlem hatları</a>
 + <a href="#models">Modelde</a>
-+ <a href="#runs">Çalışmaz</a>
++ <a href="#runs">Çalıştırma</a>
 + <a href="#run-configurations">Yapılandırmayı Çalıştır</a>
-+ <a href="#snapshots">Görüntüye</a>
++ <a href="#snapshots">Anlık Görüntü</a>
 + <a href="#training-scripts">Eğitim betiği</a>
 + <a href="#web-service-endpoint">Web Hizmetleri</a>
 + <a href="#workspaces">Alanında</a>
 
-### <a name="activities"></a>Etkinlikler
+### <a name="activities"></a>Olaylar
 
-Etkinlik uzun süren bir işlemi temsil eder. Aşağıdaki işlemler etkinlik örnekleridir:
+Bir etkinlik, uzun süre çalışan bir işlemi temsil eder. Aşağıdaki işlemleri etkinlikleri örnekleri şunlardır:
 
-* İşlem hedefi oluşturma veya silme
-* İşlem hedefinde betik çalıştırma
+* Oluşturma ya da işlem hedefi silme
+* Bir işlem hedefte betik çalıştırma
 
 Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya Web Kullanıcı arabirimi aracılığıyla bildirim sağlayabilir.
 
@@ -90,7 +90,7 @@ Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya W
 
 Not defteri VM 'Leri hakkında daha fazla bilgi edinin.
 
-### <a name="compute-targets"></a>İşlem hedefleri
+### <a name="compute-targets"></a>Hedef işlem
 
 [İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındıran işlem kaynağını belirtmenize olanak tanır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağıdır.
 
@@ -151,7 +151,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 ### <a name="experiments"></a>Denemeler
 
-Deneme, belirtilen bir betikten birçok çalıştırma gruplandırmasıdır. Her zaman bir çalışma alanına aittir. Bir çalıştırma gönderdiğinizde, bir deneme adı sağlarsınız. Çalıştırma bilgileri bu deneme kapsamında saklanır. Bir çalıştırma gönderirseniz ve var olmayan bir deneme adı belirtirseniz, yeni belirtilen ada sahip yeni bir deneme otomatik olarak oluşturulur.
+Deneme, belirtilen bir betikten birçok çalıştırma gruplandırmasıdır. Her zaman, bir çalışma alanına aittir. Bir farklı çalıştır gönderdiğinizde bir deney adı sağlayın. Çalıştırma için bilgileri, bu deneme altında depolanır. Bir çalıştırma gönderirseniz ve var olmayan bir deneme adı belirtirseniz, yeni belirtilen ada sahip yeni bir deneme otomatik olarak oluşturulur.
 
 Deneme kullanmanın bir örneği için bkz. [öğretici: İlk modelinize eğitme](tutorial-1st-experiment-sdk-train.md).
 
@@ -168,7 +168,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](c
 
 ### <a name="ml-pipelines"></a>ML işlem hatları
 
-Machine Learning işlem hatlarını kullanarak makine öğrenimi aşamalarını birlikte akışlı iş akışları oluşturabilir ve yönetebilirsiniz. Örneğin, bir işlem hattı veri hazırlığı, model eğitimi, model dağıtımı ve çıkarım/Puanlama aşamaları içerebilir. Her aşama, her biri çeşitli işlem hedeflerinde katılımsız olarak çalışabilen birden çok adımı kapsayabilir. 
+Machine Learning işlem hatlarını kullanarak makine öğrenimi aşamalarını birlikte akışlı iş akışları oluşturabilir ve yönetebilirsiniz. Örneğin, bir işlem hattı veri hazırlığı, model eğitimi, model dağıtımı ve çıkarım/Puanlama aşamaları içerebilir. Her aşamada, her biri çeşitli işlem hedeflerini katılımsız çalışabilir, birden çok adım kapsayabilir. 
 
 İşlem hattı adımları yeniden kullanılabilir ve bu adımın çıkışı değişmemişse sonraki adımları yeniden çalıştırmadan çalıştırılabilir. Örneğin, veriler değişmemişse maliyetli veri hazırlama adımlarını yeniden çalıştırmadan bir modeli yeniden eğitebilirsiniz. İşlem hatları, makine öğrenimi iş akışının ayrı alanlarında çalışırken veri bilimcilerinin işbirliği yapmasına de olanak tanır.
 
@@ -176,9 +176,9 @@ Bu hizmetle makine öğrenimi ardışık düzenleri hakkında daha fazla bilgi i
 
 ### <a name="models"></a>Modeller
 
-En basit olan model, bir girişi alan ve çıkış üreten bir kod parçasıdır. Machine Learning modeli oluşturmak, bir algoritma seçmeyi, verileri verilerle sağlamayı ve hiper parametreleri ayarlamayı içerir. Eğitim, eğitilen bir model üreten ve eğitim sürecinde modelin öğrendiği bir işlem olan yinelemeli bir işlemdir.
+En basit haliyle bir girdi alır ve çıktıyı üretir kod parçasını modelidir. Makine öğrenme modeli oluşturma, bir algoritma seçme, verilerle sağlama ve ayarlama hiperparametreleri içerir. Eğitim eğitim işlemi sırasında model öğrendikleriniz yalıtan eğitilen bir modelin üreten yinelemeli bir işlemdir.
 
-Bir model Azure Machine Learning bir çalıştırma tarafından üretilir. Ayrıca, Azure Machine Learning dışında eğitilen bir model de kullanabilirsiniz. Bir modeli Azure Machine Learning çalışma alanına kaydedebilirsiniz.
+Bir model, Azure Machine learning'de bir çalıştırma tarafından oluşturulur. Ayrıca, Azure Machine Learning dışında eğitilen bir model de kullanabilirsiniz. Bir modeli Azure Machine Learning çalışma alanına kaydedebilirsiniz.
 
 Azure Machine Learning çerçeve agstik. Bir model oluşturduğunuzda, Scikit-öğren, XGBoost, PyTorch, TensorFlow ve Chainer gibi popüler Machine Learning çerçevesini kullanabilirsiniz.
 
@@ -186,7 +186,7 @@ Scikit-öğren ve bir Estimator kullanarak bir modele eğitim verme örneği iç
 
 **Model kayıt defteri** , Azure Machine Learning çalışma alanınızdaki tüm modelleri izler.
 
-Modeller ad ve sürüm ile tanımlanır. Varolan bir adla aynı ada sahip bir modeli her kaydettiğinizde kayıt defteri yeni bir sürüm olduğunu varsayar. Sürüm artırılır ve yeni model aynı adla kaydedilir.
+Modelleri, ada ve sürüme göre tanımlanır. Varolan bir adla aynı ada sahip bir modeli her kaydettiğinizde kayıt defteri yeni bir sürüm olduğunu varsayar. Sürüm artırılır ve yeni model aynı adla kaydedilir.
 
 Modeli kaydettiğinizde, ek meta veri etiketleri sağlayabilir ve ardından modeller ararken etiketleri kullanabilirsiniz.
 
@@ -204,9 +204,9 @@ Bir çalıştırma, bir eğitim betiğinin tek yürütülmesinden oluşur. Azure
 * Çalıştırma (zaman damgası, süre vb.) için meta veriler
 * Betiğinizin günlüğe kaydettiği ölçümler
 * Deneme tarafından oto tarafından toplanan ve sizin tarafınızdan açıkça yüklenen çıkış dosyaları
-* Çalıştırmadan önce betiklerinizi içeren dizinin bir anlık görüntüsü
+* Bir anlık görüntüsünü çalıştırma önce komut dosyalarınızı içeren dizine
 
-Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma oluşturursunuz. Bir çalıştırmanın sıfır veya daha fazla alt çalıştırması olabilir. Örneğin, en üst düzey çalıştırmanın iki alt çalıştırması olabilir ve bunların her biri kendi alt öğesi olabilir.
+Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma oluşturursunuz. Bir çalıştırma, sıfır veya daha fazla alt çalıştırma olabilir. Örneğin, en üst düzey çalıştırmanın iki alt çalıştırması olabilir ve bunların her biri kendi alt öğesi olabilir.
 
 ### <a name="run-configurations"></a>Çalıştırma yapılandırması
 
@@ -217,18 +217,18 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 Örneğin, çalışma yapılandırması için bkz. [modelinizi eğitme için bir işlem hedefi seçme ve kullanma](how-to-set-up-training-targets.md).
 ### <a name="snapshots"></a>Anlık Görüntüler
 
-Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning Ayrıca ZIP dosyasını çalışma kaydının bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydına gözatabilir, anlık görüntüyü indirebilir.
+Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning, zip dosyası da çalıştırma kaydı bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydı göz atabilir ve anlık görüntü indirin.
 
 > [!NOTE]
 > Gereksiz dosyaların anlık görüntüye eklenmesini engellemek için, bir yoksayma dosyası (. gitignore veya. amlignore) yapın. Bu dosyayı Snapshot dizinine yerleştirin ve içinde yok sayılacak dosya adlarını ekleyin. . Amlignore dosyası [. gitignore dosyasıyla aynı söz dizimini ve desenleri](https://git-scm.com/docs/gitignore)kullanır. Her iki dosya de varsa,. amlignore dosyası önceliklidir.
 
-### <a name="training-scripts"></a>Eğitim betikleri
+### <a name="training-scripts"></a>Eğitim betikleriniz
 
-Bir modeli eğitebilmeniz için eğitim betiğini ve ilişkili dosyaları içeren dizini belirlersiniz. Eğitim sırasında toplanan bilgileri depolamak için kullanılan bir deneme adı da belirtirsiniz. Eğitim sırasında, tüm dizin eğitim ortamına (işlem hedefi) kopyalanır ve çalıştırma yapılandırması tarafından belirtilen komut dosyası başlatılır. Dizinin bir anlık görüntüsü de çalışma alanındaki denemeler altında depolanır.
+Bir modeli eğitmek için eğitim betiğini ve ilişkili dosyaları içeren dizini belirtin. Eğitim sırasında toplanan bilgileri depolamak için kullanılan bir deneme adı da belirtirsiniz. Eğitim sırasında, tüm dizin eğitim ortamına (işlem hedefi) kopyalanır ve çalıştırma yapılandırması tarafından belirtilen komut dosyası başlatılır. Dizinin bir anlık görüntü, ayrıca çalışma alanında denemeyi altında depolanır.
 
 Bir örnek için bkz. [öğretici: görüntü sınıflandırma modelini Azure Machine Learning eğitme](tutorial-train-models-with-aml.md).
 
-### <a name="workspaces"></a>Çalışma Alanları
+### <a name="workspaces"></a>Çalışma alanları
 
 [Çalışma alanı](concept-workspace.md) Azure Machine Learning için en üst düzey kaynaktır. Azure Machine Learning kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanını başkalarıyla paylaşabilirsiniz. Çalışma alanlarının ayrıntılı bir açıklaması için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: b-juche
-ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170028"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976256"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -29,19 +29,19 @@ Azure NetApp Files için kaynak sınırlarını anlamak, birimlerinizi yönetmen
 
 Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmaktadır:
 
-|  Resource  |  Varsayılan sınır  |  Destek isteği aracılığıyla ayarlanabilir  |
+|  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Azure aboneliği başına NetApp hesabı sayısı   |  10    |  Evet   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
+|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Yes   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
 |  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
-|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1\.   |    Hayır    |
-|  Bir sanal ağ içindeki (eşlenen VNET 'Ler dahil), Azure NetApp Files erişebilen IP sayısı   |    1000   |    Evet   |
+|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
+|  Bir sanal ağ içindeki (eşlenen VNET 'Ler dahil), Azure NetApp Files erişebilen IP sayısı   |    1000   |    Yes   |
 |  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
 |  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
 |  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
 |  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
 |  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
 
 ## Maxfiles limitleri<a name="maxfiles"></a> 
@@ -69,23 +69,23 @@ Azure portal gezinti düzleminden:
 1. **Yardım ve destek**' e tıklayın.
 2. **+ Yeni destek isteği**' ne tıklayın.
 3. Temel bilgiler sekmesinde, aşağıdaki bilgileri sağlayın: 
-    1. Sorun türü: **Hizmet ve abonelik sınırlarını (kotalar)** seçin.
-    2. Aboneliklerin Kotanın artması gereken kaynak için aboneliği seçin.
-    3. Kota türü: Depolama **seçin: Azure NetApp Files sınırları**.
-    4. **İleri: Çözümler**.
+    1. Sorun türü: **hizmet ve abonelik sınırlarını (kotalar)** seçin.
+    2. Abonelikler: kotanın artması gereken kaynak için aboneliği seçin.
+    3. Kota türü: **Depolama: Azure NetApp Files sınırlarını**seçin.
+    4. **İleri: çözümler**' e tıklayın.
 4. Ayrıntılar sekmesinde:
     1. Açıklama kutusunda, ilgili kaynak türü için aşağıdaki bilgileri sağlayın:
 
-        |  Resource  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışı nedeni       |
+        |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışı nedeni       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Hesap |  *Abonelik KIMLIĞI*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
+        |  Hesap |  *Abonelik kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Havuz    |  *Abonelik KIMLIĞI, hesap URI 'SI*  |  *İstenen yeni en büyük **Havuz** numarası*   |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Birim  |  *Abonelik KIMLIĞI, hesap URI 'si, havuz URI 'SI*   |  *İstenen yeni en yüksek **birim** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Maxfiles  |  *Abonelik KIMLIĞI, hesap URI 'SI, havuz URI 'si, birim URI 'SI*   |  *İstenen yeni en yüksek **maxfiles** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |    
 
     2. Uygun destek yöntemini belirtin ve sözleşme bilgilerinizi sağlayın.
 
-    3. **İleri: İsteği oluşturmak için** + oluştur ' a bakın. 
+    3. Ileri ' ye tıklayın, isteği oluşturmak için **+ Oluştur** ' a tıklayın. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  

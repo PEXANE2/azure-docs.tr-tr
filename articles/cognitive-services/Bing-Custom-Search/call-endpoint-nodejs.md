@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Node. js kullanarak Bing Özel Arama uç noktanızı çağırma | Microsoft Docs'
+title: 'Hızlı başlangıç: node. js kullanarak Bing Özel Arama uç noktanızı çağırma | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Node. js kullanarak Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: e95b9aa8f01142065202e029c6298fc4c4cb1294
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 97bf62c61aee63ce97496e54b99ad641d6150876
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565741"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972719"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Hızlı Başlangıç: Node. js kullanarak Bing Özel Arama uç noktanızı çağırma
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing Özel Arama uç noktanızı çağırma
 
 Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bu uygulama JavaScript 'e yazılırken, Bing Özel Arama API'si çoğu programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js)’da mevcuttur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Bing Özel Arama örneği. Bkz [. hızlı başlangıç: Daha fazla bilgi için ilk](quick-start.md) Bing özel arama örneğinizi oluşturun.
+- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 
 - [Node.js](https://www.nodejs.org/)
 
@@ -33,7 +33,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve istekler kitaplığı için bir `require()` ifade ekleyin. Abonelik anahtarınız, özel yapılandırma KIMLIĞINIZ ve bir arama terimi için değişkenler oluşturun. 
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir JavaScript dosyası oluşturun ve istekler kitaplığı için bir `require()` açıklaması ekleyin. Abonelik anahtarınız, özel yapılandırma KIMLIĞINIZ ve bir arama terimi için değişkenler oluşturun. 
 
     ```javascript
     var request = require("request");
@@ -45,7 +45,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
 
 ## <a name="send-and-receive-a-search-request"></a>Arama isteği gönderme ve alma 
 
-1. İsteğiniz içinde gönderilmekte olan bilgileri depolamak için bir değişken oluşturun. Arama teriminizi `q=` sorgu parametresine ekleyerek istek URL 'sini oluşturun ve arama örneğinizin özel yapılandırma kimliği ' ni olarak `customconfig=`yapın. parametreleri bir `&` karakterle ayırın. 
+1. İsteğiniz içinde gönderilmekte olan bilgileri depolamak için bir değişken oluşturun. Arama teriminizi `q=` sorgu parametresine ekleyerek istek URL 'sini ve arama örneğinizin özel yapılandırma KIMLIĞINI `customconfig=`olarak oluşturun. parametreleri bir `&` karakteriyle ayırın. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     var info = {

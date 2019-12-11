@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b0d71a7b010e91776a28330cfc32278c7060aab6
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901264"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976290"
 ---
 # <a name="content-protection-overview"></a>Content protection genel bakış 
 
@@ -87,6 +87,10 @@ Aşağıdaki noktalara dikkat edilmelidir:
   * **CENC**: PlayReady veya Widevine (ortak şifreleme) için
   * **CBCS-AAPL**: Fairplay IÇIN (AES CBC şifrelemesi)
   * **CBC**: AES zarf şifrelemesi için
+
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makaleler, içerik korumasına başlamanıza yardımcı olacak sonraki adımları anlatmaktadır:

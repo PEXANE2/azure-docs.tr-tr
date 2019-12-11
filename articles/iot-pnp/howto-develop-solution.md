@@ -1,20 +1,20 @@
 ---
 title: Azure IoT çözümünden IoT Tak ve Kullan önizleme cihazından etkileşim kurma | Microsoft Docs
 description: Çözüm geliştiricisi olarak, IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için hizmet SDK 'sını kullanma hakkında bilgi edinin.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 07/24/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5abfe0300bd61f5ccfbfccedf16659f055eb8ad4
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878001"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977599"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>IoT Tak ve Kullan önizleme cihazına bağlanma ve bunlarla etkileşim kurma
 
@@ -30,17 +30,17 @@ npm install
 
 ## <a name="run-the-service-samples"></a>Hizmet örneklerini çalıştırma
 
-Node. js hizmet SDK 'sının yeteneklerini araştırmak için aşağıdaki örnekleri kullanın. `IOTHUB_CONNECTION_STRING` Ortam değişkeninin kullandığınız kabukta ayarlandığından emin olun:
+Node. js hizmet SDK 'sının yeteneklerini araştırmak için aşağıdaki örnekleri kullanın. `IOTHUB_CONNECTION_STRING` ortam değişkeninin kullandığınız kabukta ayarlandığından emin olun:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Dijital ikizi alma ve arabirimleri listeleme
 
-**get_digital_twin. js** , cihazınız ile ilişkili dijital ikizi alır ve komut satırında bileşenini yazdırır. Çalışan bir cihaz örneğinin başarılı olması gerekmez.
+**get_digital_twin. js** , cihazınız ile ilişkili dijital ikizi alır ve kendi bileşenini komut satırında yazdırır. Çalışan bir cihaz örneğinin başarılı olması gerekmez.
 
-**get_digital_twin_interface_instance. js** , aygıtınızla ilişkili dijital ikizi 'ın tek bir arabirim örneğini alır ve komut satırına yazdırır. Cihaz örneğinin çalıştırılmasını gerektirmez.
+**get_digital_twin_interface_instance. js** , cihazınız ile ilişkili dijital ikizi tek bir arabirim örneğini alır ve komut satırına yazdırır. Cihaz örneğinin çalıştırılmasını gerektirmez.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak özellikleri edinme ve ayarlama
 
-**update_digital_twin. js** , tam bir düzeltme eki kullanarak cihazınızdaki dijital ikizi yazılabilir bir özelliği güncelleştirir. İsterseniz birden fazla arabirimde birden çok özelliği güncelleştirebilirsiniz. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği, bir özelliği güncelleştirme ile ilgili bir şeyi, terminalde güncelleştirilmiş bir dijital ikizi yazdırırken hizmet örneğini güncelleştiren bir şey gibi görünüyor.
+**update_digital_twin. js** , tam bir düzeltme eki kullanarak cihazlarınızın dijital ikizi yazılabilir bir özelliğini güncelleştirir. İsterseniz birden fazla arabirimde birden çok özelliği güncelleştirebilirsiniz. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği, bir özelliği güncelleştirme ile ilgili bir şeyi, terminalde güncelleştirilmiş bir dijital ikizi yazdırırken hizmet örneğini güncelleştiren bir şey gibi görünüyor.
 
 ### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak bir komut gönderin ve yanıtı alın
 
@@ -70,7 +70,7 @@ Bu örnek, **Modeldiscovery** arabirimini indirir ve bu modeli terminalde yazdı
 
 ### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>Yetenek modellerine ve arabirimlere göre IoT Hub sorguları çalıştırın
 
-IoT Hub sorgu dili aşağıdaki örneklerde `HAS_INTERFACE` gösterildiği `HAS_CAPABILITYMODEL` gibi ve destekler:
+IoT Hub sorgu dili, aşağıdaki örneklerde gösterildiği gibi `HAS_INTERFACE` ve `HAS_CAPABILITYMODEL` destekler:
 
 ```sql
 select * from devices where HAS_INTERFACE('id without version', version)

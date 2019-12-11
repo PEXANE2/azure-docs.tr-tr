@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform ve SAML taşıyıcı onaylama akışı | Mavisi
+title: Microsoft Identity platform & SAML taşıyıcı onaylama akışı | Mavisi
 description: SAML taşıyıcı onaylama akışını kullanarak kullanıcıdan kimlik bilgilerini istemeden Microsoft Graph verileri nasıl alabileceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b316568ba555de764c1aaa4ddf0e72d25cf24f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990955"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964619"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı
 OAuth 2,0 SAML taşıyıcı onaylama akışı, bir istemcinin var olan bir güven ilişkisini kullanması gerektiğinde bir SAML onaylama işlemi kullanarak bir OAuth erişim belirteci istemesini sağlar. SAML onaylaması 'na uygulanan imza, yetkili uygulamanın kimlik doğrulamasını sağlar. SAML onaylama, bir kimlik sağlayıcısı tarafından verilen ve bir hizmet sağlayıcısı tarafından tüketilen bir XML güvenlik belirtecidir. Hizmet sağlayıcı, güvenlikle ilgili amaçlar için onay konusunun konusunu belirlemek üzere içeriğine bağımlıdır.
@@ -80,7 +80,7 @@ Bu adımda, ADFS onaylama yanıtını kullanarak bir OAuth2 belirteci getirin.
 1. Aşağıda gösterildiği gibi, üst bilgi değerleriyle bir POST isteği oluşturun:
 
     ![POST isteği](./media/v2-saml-bearer-assertion/5.png)
-1. İsteğin gövdesinde, **client_id**, **client_secret**ve **assertion** (ÖNCEKI adımı elde edilen base64 kodlu SAML onaylama) öğesini değiştirin:
+1. İsteğin gövdesinde, **client_id**, **client_secret**ve **onaylama** 'yı (Base64 kodlamalı SAML onaylaması önceki adımı aldı) değiştirin:
 
     ![İstek gövdesi](./media/v2-saml-bearer-assertion/6.png)
 1. İstek başarıyla tamamlandığında, Azure Active Directory 'den bir erişim belirteci alacaksınız.

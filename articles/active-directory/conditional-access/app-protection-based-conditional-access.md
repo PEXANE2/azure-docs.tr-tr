@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381019"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964098"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Koşullu erişimle Cloud App erişimi için uygulama koruma ilkesi gerektir (Önizleme)
 
-Çalışanlarınız hem kişisel hem de iş görevleri için mobil cihazları kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi kısıtlayarak kurumsal verilerinizi koruyabilirsiniz. Önce bir uygulama koruma ilkesiyle istemci uygulamaları kullanın.
+Çalışanlarınız hem kişisel hem de iş amaçlı görevler için mobil cihazlar kullanır. Çalışanlarınızın üretken olduğundan emin olmaya devam ederken, veri kaybını da engellemek isteyebilirsiniz. Azure Active Directory (Azure AD) koşullu erişimi sayesinde, bulut uygulamalarınıza erişimi kısıtlayarak kurumsal verilerinizi koruyabilirsiniz. Önce bir uygulama koruma ilkesiyle istemci uygulamaları kullanın.
 
 Bu makalede, verilere erişim verilmeden önce bir uygulama koruma ilkesi gerektirebilecek koşullu erişim ilkelerinin nasıl yapılandırılacağı açıklanır.
 
@@ -60,7 +60,7 @@ Bu makalede, hakkında bilgi sahibi olduğunuz varsayılmaktadır:
 - [Azure Active Directory ' deki Koşullu erişimin](overview.md)temel kavramları.
 - [Koşullu erişim ilkesini yapılandırma](app-based-mfa.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uygulama koruma tabanlı bir koşullu erişim ilkesi oluşturmak için şunları yapmanız gerekir:
 
@@ -330,7 +330,7 @@ Bu senaryo, bir kullanıcının şu şekilde olduğunu varsayar:
 
 ### <a name="configuration"></a>Yapılandırma
 
-**1. Adım: Exchange Online için bir Azure AD koşullu erişim ilkesi yapılandırma**
+**1. Adım: Exchange Online ve SharePoint Online için bir Azure AD koşullu erişim ilkesi yapılandırma**
 
 Bu adımdaki koşullu erişim ilkesi için aşağıdaki bileşenleri yapılandırın:
 
@@ -338,7 +338,7 @@ Bu adımdaki koşullu erişim ilkesi için aşağıdaki bileşenleri yapılandı
 
 1. Koşullu erişim ilkenizin adını girin.
 1. **Atamalar**' ın altında, **Kullanıcılar ve gruplar**' da her bir koşullu erişim ilkesi için en az bir kullanıcı veya grup seçin.
-1. **Bulut uygulamaları**' nda **Office 365 Exchange Online**' ı seçin. 
+1. **Bulut uygulamaları**' nda **Office 365 Exchange online** ve **Office 365 SharePoint Online**' ı seçin. 
 
    ![Koşullu Erişim](./media/app-protection-based-conditional-access/02.png)
 

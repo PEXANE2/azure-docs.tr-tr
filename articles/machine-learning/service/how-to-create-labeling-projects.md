@@ -1,20 +1,20 @@
 ---
-title: Veri etiketlerini al
+title: Veri etiketleme projesi oluşturma
 titleSuffix: Azure Machine Learning
-description: Bu makalede, Machine Learning için verileri etiketlemek üzere etiketleme projelerini oluşturma ve çalıştırma hakkında bilgi verilmektedir.
+description: Machine Learning için verileri etiketlemek üzere etiketleme projeleri oluşturmak ve çalıştırmak için Ho hakkında bilgi edinin.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894700"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978245"
 ---
-# <a name="get-labels-for-data"></a>Veri etiketlerini al
+# <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
 Machine Learning projelerinde Voluminous verilerinin etiketlenmesi genellikle bir headache 'dir. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar vizyonu bileşeni olan projeler genellikle binlerce görüntü için Etiketler gerektirir.
  

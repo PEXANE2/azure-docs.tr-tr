@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821258"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973535"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 
@@ -102,7 +102,7 @@ Bu kaynaklar arasındaki oran başlangıçta gerçek dünya OLTP iş yüklerinde
 
 ![sınırlayıcı kutusu](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örneğin:
+DTU 'lar, farklı işlem boyutlarında ve hizmet katmanlarında Azure SQL veritabanları için ayrılan göreli kaynakları anlamak için kullanışlıdır. Örnek:
 
 - Bir veritabanının işlem boyutunu artırarak, bu veritabanı için kullanılabilir kaynak kümesini ikiye katlayarak DTU 'ları katlama.
 - 1750 DTU içeren bir Premium hizmet katmanı P11 veritabanı, 5 DTU ile temel bir hizmet katmanı veritabanından 350x daha fazla DTU işlem gücü sağlar.  
@@ -129,7 +129,7 @@ Mevcut bir şirket içi veya SQL Server sanal makine iş yükünü Azure SQL ver
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Elastik bir kaynak havuzundan faydalanabilir iş yükleri
 
-Havuzlar, düşük kaynak kullanımı ortalaması olan veritabanları için uygundur ve görece seyrek kullanım ani artışları vardır. SQL veritabanı, mevcut bir SQL veritabanı sunucusundaki veritabanlarının geçmiş kaynak kullanımını otomatik olarak değerlendirir ve Azure portal uygun havuz yapılandırmasını önerir. Daha fazla bilgi için bkz. [SQL veritabanı elastik havuzunu ne zaman düşünmeniz gerekir?](sql-database-elastic-pool.md).
+Havuzlar, düşük kaynak kullanımı ortalaması olan veritabanları için uygundur ve görece seyrek kullanım ani artışları vardır. Daha fazla bilgi için bkz. [SQL veritabanı elastik havuzunu ne zaman düşünmeniz gerekir?](sql-database-elastic-pool.md).
 
 ## <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 

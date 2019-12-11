@@ -1,19 +1,19 @@
 ---
 title: IoT Tak ve Kullan önizleme deposuna erişmek için güvenlik belirteci oluşturma | Microsoft Docs
 description: Programlama yoluyla IoT Tak ve Kullan önizleme modeli deposuna eriştiğinizde kullanılacak bir paylaşılan erişim imza belirteci oluşturun.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 08/06/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e5d6e7087a7e3d5f4a001e16c5cfa19a6df6a68e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880546"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976035"
 ---
 # <a name="generate-sas-token"></a>SAS belirteci oluştur
 
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Aşağıdaki kod parçacığı, C\#kullanarak bir SAS belirteci oluşturmayı gösterir:
+Aşağıdaki kod parçacığında, C\#kullanarak bir SAS belirteci oluşturma gösterilmektedir:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -74,7 +74,7 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>SAS belirtecini kullanma
 
-Bir SAS belirteci oluşturduktan sonra, bir HTTP POST isteği oluşturmak için kullanabilirsiniz. Örneğin:
+Bir SAS belirteci oluşturduktan sonra, bir HTTP POST isteği oluşturmak için kullanabilirsiniz. Örnek:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview

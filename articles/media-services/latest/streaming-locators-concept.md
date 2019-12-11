@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 6d13ca5b3657f1deac9e6b4218decf8fe57eb1d9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a227c5d0edfb9b49e70452cfcfd08b29ba381857
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113744"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969115"
 ---
 # <a name="streaming-locators"></a>Akış Bulucuları
 
@@ -24,7 +24,7 @@ ms.locfileid: "74113744"
 
 **Akış Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
 
-Bir **akış Bulucu**oluştururken bir **varlık** adı ve **akış ilkesi** adı belirtmeniz gerekir. Daha fazla bilgi için aşağıdaki konulara bakın:
+Bir **akış Bulucu**oluştururken bir **varlık** adı ve **akış ilkesi** adı belirtmeniz gerekir. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 * [Varlıklar](assets-concept.md)
 * [Akış İlkeleri](streaming-policy-concept.md)
@@ -75,6 +75,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 Ayrıca, HLS akışınızı CBCS (FairPlay) ile şifrelemek istiyorsanız ' Predefined_MultiDrmStreaming ' kullanın.
 
+> [!NOTE]
+> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+
 ## <a name="associate-filters-with-streaming-locators"></a>Filtreleri akış Konumlandırıcı ile ilişkilendir
 
 Bkz. [Filtreler: akış Bulleyicileri ile ilişkilendir](filters-concept.md#associating-filters-with-streaming-locator).
@@ -87,7 +90,7 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 
 İlişkili varlık adına göre akış Konumlandırıcı almak için aşağıdaki işlemleri kullanın:
 
-|Dil|API|
+|Dil|eklentisi|
 |---|---|
 |REST|[liststreamingkonumlandırıcı](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az AMS varlık listesi-akış-Konumlandırıcı](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|

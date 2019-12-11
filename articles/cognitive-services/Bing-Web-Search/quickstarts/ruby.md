@@ -1,26 +1,26 @@
 ---
-title: "Hızlı Başlangıç: Ruby - Bing Web araması API'si ile bir web araması"
+title: "Hızlı başlangıç: Ruby-Bing Web Araması API'si ile Web araması gerçekleştirme"
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Ruby kullanarak Bing Web araması REST API'si için istekleri göndermek için kullanın ve bir JSON yanıtı alırsınız.
+description: Bing Web Araması REST API Ruby kullanarak istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa8fc4c6b27c2a2c7d11a95ddb2ecca347ec0e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a902e869ed9fd2ae9274f0ad8eee11e43b8edc6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646844"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974334"
 ---
-# <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web araması API'si çağırmak için Ruby kullanma  
+# <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için Ruby kullanma  
 
-Bu hızlı başlangıçta, Bing Web araması API'si, ilk çağrı yapmak ve JSON yanıtını almak için kullanın. Bu Ruby uygulaması, API için bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Ruby uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama, Ruby ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `$uri` ve `path` öğelerinin geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `uri`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir. `uri` ve `path` öğelerinin geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/09/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847312"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964046"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Son Kullanıcı kaydı gerekmeden parola sıfırlamayı dağıtma
 
-Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR) dağıtmak için, kimlik doğrulama verilerinin mevcut olması gerekir. Bazı kuruluşların kullanıcılarına kendi kimlik doğrulama verilerini girmesi gerekir. Ancak birçok kuruluş, Active Directory zaten mevcut olan verilerle eşitlemeyi tercih eder. Eşitlenmiş veriler, şu durumlarda Kullanıcı etkileşimi gerektirmeden Azure AD ve SSPR için kullanılabilir hale getirilir:
+Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR) dağıtmak için, kimlik doğrulama verilerinin mevcut olması gerekir. Bazı kuruluşların kullanıcılarına kendi kimlik doğrulama verilerini girmesi gerekir. Diğer kuruluşlar Active Directory zaten mevcut olan verilerle eşitlemeyi tercih eder. Bu eşitlenmiş veriler, aşağıdaki gereksinimleri karşıladıysanız Kullanıcı etkileşimi gerektirmeden Azure AD ve SSPR için kullanılabilir hale getirilir:
 
 * Şirket içi dizininizdeki verileri düzgün biçimde biçimlendirin.
 * [Azure AD Connect Express ayarlarını kullanarak](../hybrid/how-to-connect-install-express.md)yapılandırın.
@@ -41,21 +41,18 @@ Azure AD Connect varsayılan ayarları kullanıyorsanız aşağıdaki eşlemeler
 | telephoneNumber 'dır | Ofis telefonu |
 | Mobil | Cep telefonu |
 
-Kullanıcı cep telefonu numarasını doğruladıktan sonra, Azure AD 'de kimlik doğrulaması iletişim bilgileri altındaki telefon alanı da bu sayıyla doldurulur.
+Kullanıcı cep telefonu numarasını doğruladıktan sonra, Azure AD 'de **kimlik doğrulaması iletişim bilgileri** altındaki *Telefon* alanı da bu sayıyla doldurulur.
 
 ## <a name="authentication-contact-info"></a>Kimlik doğrulaması iletişim bilgileri
 
-Genel yönetici, aşağıdaki ekran görüntüsünde gösterildiği gibi bir kullanıcının kimlik doğrulama iletişim bilgilerini el ile ayarlayabilir.
+Azure portal bir Azure AD kullanıcısının **kimlik doğrulama yöntemleri** sayfasında, bir genel yönetici, aşağıdaki örnekte gösterildiği gibi, kimlik doğrulama iletişim bilgilerini el ile ayarlayabilir:
 
 ![Azure AD 'de bir kullanıcının kimlik doğrulaması iletişim bilgileri][Contact]
 
-Telefon alanı doldurulursa ve SSPR ilkesinde cep telefonu etkin ise, Kullanıcı bu numarayı parola sıfırlama kaydı sayfasında ve parola sıfırlama iş akışı sırasında görür.
-
-Alternatif telefon alanı parola sıfırlama için kullanılmaz.
-
-E-posta alanı doldurulmuşsa ve SSPR ilkesinde e-posta etkinse, Kullanıcı bu e-postayı parola sıfırlama kaydı sayfasında ve parola sıfırlama iş akışı sırasında görür.
-
-Alternatif e-posta alanı doldurulmuşsa ve SSPR ilkesinde e-posta etkinse, Kullanıcı bu e-postayı parola sıfırlama kaydı sayfasında görmez, ancak parola sıfırlama iş akışı **sırasında görürler.**
+* **Telefon** alanı doldurulmuşsa ve SSPR ilkesinde **cep telefonu** etkinleştirilmişse, Kullanıcı bu numarayı parola sıfırlama kaydı sayfasında ve parola sıfırlama iş akışı sırasında görür.
+* **Alternatif telefon** alanı parola sıfırlama için kullanılmaz.
+* **E** -posta alanı doldurulmuşsa ve SSPR Ilkesinde **e-posta** etkinse, Kullanıcı bu e-postayı parola sıfırlama kaydı sayfasında ve parola sıfırlama iş akışı sırasında görür.
+* **Diğer e-posta** alanı doldurulmuşsa ve SSPR Ilkesinde **e-posta** etkinse, Kullanıcı bu e-postayı parola sıfırlama kaydı **sayfasında görmez,** ancak parola sıfırlama iş akışı sırasında görürler.
 
 ## <a name="security-questions-and-answers"></a>Güvenlik soruları ve yanıtları
 
@@ -69,7 +66,7 @@ Bir Kullanıcı kaydettiğinde, kayıt sayfası aşağıdaki alanları ayarlar:
 * **Kimlik doğrulama e-postası**
 * **Güvenlik soruları ve yanıtları**
 
-**Cep telefonu** veya **Alternatif e-posta**için bir değer sağladıysanız, kullanıcılar bu değerleri hizmet için kayıtlı olmasalar bile parolalarını sıfırlamak için hemen kullanabilir. Ayrıca, kullanıcılar ilk kez kaydolduklarında bu değerleri görür ve isterseniz bunları değiştirebilir. Başarıyla kaydolduktan sonra bu değerler, sırasıyla **kimlik doğrulama telefon** ve **kimlik doğrulama e-posta** alanlarında kalıcı olur.
+**Cep telefonu** veya **Alternatif e-posta**için bir değer sağladıysanız, kullanıcılar bu değerleri hizmet için kayıtlı olmasalar bile parolalarını sıfırlamak için hemen kullanabilir. Ayrıca, kullanıcılar ilk kez kaydolduklarında bu değerleri görür ve isterseniz bunları değiştirebilir. Başarıyla kaydolduktan sonra bu değerler, sırasıyla **kimlik doğrulama telefon** ve **kimlik doğrulama e-posta** alanlarında kalıcı hale getirilir.
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>PowerShell ile kimlik doğrulama verilerini ayarlama ve okuma
 

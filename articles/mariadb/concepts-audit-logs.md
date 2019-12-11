@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773089"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978058"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda denetim günlükleri
 
@@ -27,6 +27,9 @@ Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
 - `audit_log_events`: günlüğe kaydedilecek olayları denetler. Belirli denetim olayları için aşağıdaki tabloya bakın.
+- `audit_log_include_users`: Günlükler için dahil edilecek MariaDB kullanıcıları. Bu parametre için varsayılan değer boştur; bu, günlüğe kaydedilecek tüm kullanıcıları içerir. Bu, `audit_log_exclude_users`daha yüksek önceliğe sahiptir. Parametrenin uzunluk üst sınırı 512 karakterdir.
+> [!Note]
+> `audit_log_include_users` `audit_log_exclude_users`daha yüksek önceliğe sahiptir. Örneğin, `audit_log_include_users` = `demouser` ve `audit_log_exclude_users` = `demouser`, `audit_log_include_users` daha yüksek önceliğe sahip olduğu için Kullanıcı denetim günlüklerine dahil edilir.
 - `audit_log_exclude_users`: MariaDB kullanıcıları günlük kaydı dışında tutulacak. En fazla dört Kullanıcı için izin verir. Parametrenin uzunluk üst sınırı 256 karakterdir.
 
 | **Olay** | **Açıklama** |
@@ -121,7 +124,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`veya `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` veya `DELETE` |
 | `connection_id_d` | MariaDB tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `db_s` | Erişilen veritabanının adı |
 | `table_s` | Erişilen tablonun adı |

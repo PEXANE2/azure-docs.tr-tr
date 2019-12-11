@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: REST API ve Ruby kullanarak görüntüdeki yüzeyleri algılama'
+title: 'Hızlı Başlangıç: REST API ve Ruby kullanarak bir görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Ruby ile Yüz Tanıma API’sini kullanarak bir görüntüdeki yüzleri algılayacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e043d9bf0e87304868b2c573600578c911134856
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce76136f166660bf34c81aab065ba761e4c2867a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859181"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977888"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Hızlı Başlangıç: REST API ve Ruby kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Hızlı Başlangıç: REST API ve Ruby kullanarak bir görüntüdeki yüzleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Azure yüz REST API Ruby ile kullanacaksınız.
 
@@ -60,11 +60,11 @@ end
 puts response.body
 ```
 
-`request['Ocp-Apim-Subscription-Key']` Değeri abonelik anahtarınızla güncelleştirmeniz ve `uri` dizeyi doğru uç noktayı içerecek şekilde değiştirmeniz gerekir.
+`request['Ocp-Apim-Subscription-Key']` değerini abonelik anahtarınızla güncelleştirmeniz ve `uri` dizesini doğru uç noktayı içerecek şekilde değiştirmeniz gerekir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Ayrıca, `imageUri` alanı kendi giriş görüntünüzü işaret etmek üzere değiştirmek isteyebilirsiniz. Ayrıca, alınacak yüz özniteliklerini belirten `returnFaceAttributes` alanını da değiştirmek isteyebilirsiniz.
+`imageUri` alanını kendi giriş görüntünüzü işaret etmek için de değiştirmek isteyebilirsiniz. Ayrıca, alınacak yüz özniteliklerini belirten `returnFaceAttributes` alanını da değiştirmek isteyebilirsiniz.
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 

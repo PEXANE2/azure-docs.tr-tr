@@ -2,13 +2,13 @@
 title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 10/26/2019
-ms.openlocfilehash: 6457bafeeb0b241171311dc3dcea30b7b6993791
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/09/2019
+ms.openlocfilehash: ee88e939030650111acafec6c3b9906507176f48
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150672"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978858"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
 
@@ -36,7 +36,7 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | resourceId |Yes |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
@@ -116,7 +116,7 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | resourceName veya Resourceıdentifier |Yes |string |Kaynağın benzersiz tanımlayıcısı. |
 | apiVersion |Yes |string |Kaynak çalışma zamanı durumu API sürümü. Genellikle, biçiminde **yyyy-aa-gg**. |
@@ -349,7 +349,7 @@ Bir kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi dönd�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |string |Namespace sağlayıcısı |
 | resourceType |Hayır |string |Belirtilen ad alanı içinde kaynak türü. |
@@ -426,7 +426,7 @@ Bir kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | resourceName veya Resourceıdentifier |Yes |string |Adı veya bir kaynağın benzersiz tanımlayıcısı. Geçerli şablon kaynağında başvuran bir parametre olarak yalnızca kaynak adı belirtin. Daha önce dağıtılan bir kaynağa başvururken kaynak KIMLIĞI sağlayın. |
 | apiVersion |Hayır |string |Belirtilen kaynak API sürümü. Kaynak, aynı şablonu içinde sağlanan değil, bu parametreyi dahil edin. Genellikle, biçiminde **yyyy-aa-gg**. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
@@ -515,7 +515,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örneğin:
+Örnek:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` doğru değil
 
@@ -672,21 +672,20 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 `resourceGroup()` işlevi, [abonelik düzeyinde dağıtılan](deploy-to-subscription.md)bir şablonda kullanılamaz. Yalnızca bir kaynak grubuna dağıtılan şablonlarda kullanılabilir.
 
-Bir ortak resourceGroup işlevin kaynak grubu ile aynı konumda kaynakları oluşturmak için kullanılır. Aşağıdaki örnek, bir web sitesi için konum atamak için kaynak grubu konumu kullanır.
+Bir ortak resourceGroup işlevin kaynak grubu ile aynı konumda kaynakları oluşturmak için kullanılır. Aşağıdaki örnek, varsayılan bir parametre değeri için kaynak grubu konumunu kullanır.
 
 ```json
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "type": "Microsoft.Web/sites",
-      "name": "[parameters('siteName')]",
-      "location": "[resourceGroup().location]",
-      ...
-   }
-]
+"parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+}
 ```
 
 Kaynak grubundaki etiketleri bir kaynağa uygulamak için resourceGroup işlevini de kullanabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubundan etiket uygulama](resource-group-using-tags.md#apply-tags-from-resource-group).
+
+Birden çok kaynak grubuna dağıtmak için iç içe geçmiş şablonlar kullanırken, resourceGroup işlevini değerlendirmek için kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](resource-manager-cross-resource-group-deployment.md).
 
 ### <a name="resource-group-example"></a>Kaynak grubu örneği
 
@@ -730,7 +729,7 @@ Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz 
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Hayır |dize (içinde GUID biçimi) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
 | resourceGroupName |Hayır |string |Geçerli kaynak grubu varsayılan değerdir. Başka bir kaynak grubunda kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
@@ -864,14 +863,14 @@ Aşağıdaki [örnek şablonu](https://github.com/Azure/azure-docs-json-samples/
 
 Önceki örnekte varsayılan değerlere sahip çıktı.
 
-| Ad | Tür | Değer |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | sameRGOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentSubOutput | Dize | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/Servers/ServerName/Databases/databaseName |
 
-## <a name="subscription"></a>subscription
+## <a name="subscription"></a>aboneliği
 
 ```json
 subscription()
@@ -891,6 +890,10 @@ Geçerli dağıtım için abonelik ayrıntılarını döndürür.
     "displayName": "{name-of-subscription}"
 }
 ```
+
+### <a name="remarks"></a>Açıklamalar
+
+Birden çok aboneliğe dağıtmak için iç içe geçmiş şablonlar kullanırken, abonelik işlevini değerlendirmek için kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](resource-manager-cross-resource-group-deployment.md).
 
 ### <a name="subscription-example"></a>Abonelik örneği
 
@@ -920,7 +923,7 @@ Abonelik düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı d�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
@@ -1004,7 +1007,7 @@ Kiracı düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı dö
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
 | resourceName1 |Yes |string |Kaynağın adı. |

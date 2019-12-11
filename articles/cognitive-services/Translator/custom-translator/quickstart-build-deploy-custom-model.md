@@ -1,22 +1,22 @@
 ---
-title: 'Hızlı Başlangıç: Özel model oluşturma, dağıtma ve kullanma-özel çevirici'
+title: 'Hızlı başlangıç: özel model oluşturma, dağıtma ve kullanma-özel çevirici'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, özel çeviriciyi kullanarak bir çeviri sistemi oluşturmaya yönelik adım adım işleme devam edersiniz.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595546"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975763"
 ---
-# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Hızlı Başlangıç: Çeviri için özel model oluşturma, dağıtma ve kullanma
+# <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Hızlı başlangıç: çeviri için özel model oluşturma, dağıtma ve kullanma
 
 Bu makalede, özel çevirmenle bir çeviri sistemi oluşturmak için adım adım yönergeler sağlanmaktadır.
 
@@ -35,13 +35,13 @@ Bu makalede, özel çevirmenle bir çeviri sistemi oluşturmak için adım adım
 ![Proje oluşturma](media/quickstart/ct-how-to-create-project.png)
 
 
-## <a name="upload-documents"></a>Belgeleri karşıya yükle
+## <a name="upload-documents"></a>Belgeleri karşıya yükleme
 
 Sonra, [eğitim](training-and-model.md#training-dataset-for-custom-translator), [ayarlama](training-and-model.md#tuning-dataset-for-custom-translator) ve [Test](training-and-model.md#testing-dataset-for-custom-translator) belge kümelerini karşıya yükleyin. Hem [paralel](what-are-parallel-documents.md) hem de Birleşik belgeler yükleyebilirsiniz. Ayrıca [Sözlük](what-is-dictionary.md)yükleyebilirsiniz.
 
 Belgeler sekmesinden ya da belirli bir projenin sayfasından belge yükleyebilirsiniz.
 
-![Belgeleri karşıya yükle](media/quickstart/ct-how-to-upload.png)
+![Belgeleri karşıya yükleme](media/quickstart/ct-how-to-upload.png)
 
 Belgeler karşıya yüklenirken belge türünü (eğitim, ayarlama veya test) ve Dil çiftini seçin. Paralel belgeler karşıya yüklenirken Ayrıca bir belge adı belirtmeniz gerekir. Daha fazla ayrıntı için [belgeyi karşıya yükle](how-to-upload-document.md)sayfasını ziyaret edin.
 

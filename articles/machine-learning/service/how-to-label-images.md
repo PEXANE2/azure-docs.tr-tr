@@ -1,22 +1,22 @@
 ---
-title: Azure Machine Learning veri etiketleme aracını kullanma
+title: Etiketleme projesindeki resimleri etiketleme
 title.suffix: Azure Machine Learning
-description: Bu makalede, bir Azure Machine Learning etiketleme projesinde veri etiketleme araçlarının nasıl kullanılacağı öğretilir.
+description: Azure Machine Learning etiketleme projesindeki veri etiketleme araçlarını kullanmayı öğrenin.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bc7eaeefcef042417b29eb7c887cc19acf8c5c02
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b36eed1918be2c769bcf74c0d8dee09a5bd62756
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688226"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978143"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme
 
-Proje yöneticiniz Azure Machine Learning ' de bir etiketleme projesi oluşturduktan sonra etiketleme aracını kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede şunları açıklanmaktadır:
+Proje yöneticiniz Azure Machine Learning ' de bir etiketleme projesi oluşturduktan sonra etiketleme aracını kullanarak bir Machine Learning projesi için hızlı bir şekilde veri hazırlayabilir. Bu makalede açıklanır:
 
 > [!div class="checklist"]
 > * Etiketleme projelerinize erişme
@@ -106,9 +106,9 @@ Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için, **tüm b�
 
 Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışmanızı kaydetmek için **Gönder** ' i seçin veya sürmekte olan çalışmanız kaydedilmez.
 
-## <a name="finish-up"></a>Bitiş
+## <a name="finish-up"></a>Bitirme
 
-Etiketli verilerin bir sayfasını gönderdiğinizde, Azure 'un bir iş kuyruğundan bu verileri etiketledi. Etiketli daha fazla veri yoksa, bunu portal giriş sayfasının bağlantısı ile birlikte gösteren bir ileti alırsınız.
+Etiketli verilerin bir sayfasını gönderdiğinizde Azure, bir iş kuyruğundan sizin için etiketlendirilmiş yeni veri atar. Etiketli daha fazla veri yoksa, bunu portal giriş sayfasının bağlantısı ile birlikte gösteren bir ileti alırsınız.
 
 Etiketleme tamamlandığında, etiketleme portalının sağ üst köşesindeki adınızı seçin ve ardından **Oturumu Kapat**' ı seçin. Oturumu kapatma, sonunda Azure "sizin zaman aşımına uğrar" ve verilerinizi başka bir etiketleyici 'ye atacaktır.
 

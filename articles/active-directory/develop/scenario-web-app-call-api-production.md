@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu çağrıları API'leri (üretim taşıma) - web uygulaması
-description: Bir web uygulaması oluşturmayı öğrenin çağrıları veritabanını web API'leri (üretim taşıma)
+title: Web uygulamasını Web API 'Leri çağıran üretime taşıma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini üretime çağıran bir Web uygulamasını nasıl taşıyacağınızı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,31 +15,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b326cdb7303ff392c6129e0f0fa460ffe088305
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e40920b7045dad6f64b5699bc3c4c560eb399f2a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074943"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964965"
 ---
-# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web çağıran bir web uygulaması API'ler - üretim ortamına taşıyın
+# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Web uygulaması-üretime taşı
 
-Web API'leri çağırmak için bir belirteç almak nasıl artık bildiğinize göre üretim aşamasına geçme konusunda bilgi edinin.
+Artık, Web API 'Lerini çağırmak için bir belirteç edinmeyi öğrenmiş olduğunuza göre, üretime nasıl geçeceğinizi öğrenin.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gösteren tam ASP.NET Core web uygulaması aşamalı öğretici deneyerek daha fazla bilgi edinin:
+Web uygulaması tam ASP.NET Core aşamalı öğreticisini deneyerek daha fazla bilgi edinin ve şunları gösterir:
 
-- Birden fazla hedef kitle, Ulusal Bulutlar ile ya da sosyal medya kimliklerinden kullanıcıları oturum açma
-- Microsoft Graph çağrıları
-- Çeşitli Microsoft APIs çağırır
-- Artımlı onay işleme
-- Kendi Web API'sini çağırır
+- Birden çok seyirci, Ulusal bulutlar veya sosyal kimliklerle kullanıcıları oturum açma
+- Çağrılar Microsoft Graph
+- Birkaç Microsoft API 'Sini çağırır
+- Artımlı onayı işler
+- Kendi Web API 'nizi çağırır
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core web uygulaması Öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [ASP.NET Core Web uygulaması öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

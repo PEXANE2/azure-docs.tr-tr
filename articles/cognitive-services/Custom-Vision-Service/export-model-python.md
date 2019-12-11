@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718431"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969848"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Öğretici: Python’da TensorFlow modelini çalıştırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "73718431"
 > [!NOTE]
 > Bu öğretici yalnızca görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öğreticiyi kullanmak için aşağıdakileri yapmanız gerekir:
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Görüntüyü tahmin için hazırlama
 
-Görüntüyü tahmin için uygun hale getirmek üzere gerçekleştirmeniz gereken birkaç adım vardır. Bu adımlar eğitim sırasında gerçekleştirilen görüntü işleme adımlarına benzer:
+Görüntüyü tahmin için hazırlamak üzere uygulamanız gereken birkaç adım vardır. Bu adımlar eğitim sırasında gerçekleştirilen görüntü işleme adımlarına benzer:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Dosyayı açma ve BGR renk alanında bir görüntü oluşturma
 

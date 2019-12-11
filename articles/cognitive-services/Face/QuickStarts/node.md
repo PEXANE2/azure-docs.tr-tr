@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure REST API ve Node. js ile görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlangıç: Azure REST API ve Node. js ile görüntüdeki yüzeyleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Node. js ile REST API Azure yüz kullanacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 7035689f3813a94c7e24e4c6138016b11c1a4ef3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2a3deff1d6220d21c3796b22dc7c39ea284cb36b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859135"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977956"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı Başlangıç: Yüz REST API ve Node. js kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Hızlı başlangıç: yüz REST API ve Node. js kullanarak görüntüdeki yüzeyleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Node. js ile Azure yüz REST API kullanacaksınız.
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="set-up-the-node-environment"></a>Düğüm ortamını ayarlama
 
-Projenizi oluşturmak istediğiniz klasöre gidin ve yeni bir dosya oluşturun, *facedetection. js*. Ardından `requests` modülü bu projeye yükler. Bu, betiklerinizin HTTP istekleri yapmasına olanak sağlar.
+Projenizi oluşturmak istediğiniz klasöre gidin ve yeni bir dosya oluşturun, *facedetection. js*. Sonra `requests` modülünü bu projeye yükler. Bu, betiklerinizin HTTP istekleri yapmasına olanak sağlar.
 
 ```shell
 npm install request --save
@@ -38,7 +38,7 @@ npm install request --save
 
 ## <a name="write-the-nodejs-script"></a>Node. js betiğini yazma
 
-Aşağıdaki kodu *facedetection. js*dosyasına yapıştırın. Bu alanlar yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. `imageUrl` Alanı kendi giriş görüntünüzü gösterecek şekilde değiştirmek isteyebilirsiniz.
+Aşağıdaki kodu *facedetection. js*dosyasına yapıştırın. Bu alanlar yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` alanını abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve doğru uç nokta dizesini içermesi için `uriBase` dizesini değiştirmeniz gerekir. `imageUrl` alanını kendi giriş görüntünüzü gösterecek şekilde değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -59,7 +59,7 @@ const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
 ```
 
-Ardından, Yüz Tanıma API'si çağırmak ve giriş görüntüsünden yüz öznitelik verilerini almak için aşağıdaki kodu ekleyin. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir. Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
+Ardından, Yüz Tanıma API'si çağırmak ve giriş görüntüsünden yüz öznitelik verilerini almak için aşağıdaki kodu ekleyin. `returnFaceAttributes` alanı alınacak yüz özniteliklerini belirtir. Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
 
 
 ```javascript
@@ -100,7 +100,7 @@ Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve dosyayı `node
 node facedetection.js
 ```
 
-Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örneğin:
+Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örnek:
 
 ```json
 [

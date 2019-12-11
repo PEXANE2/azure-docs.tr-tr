@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti ile özel ayırma ilkeleri
-description: Azure IoT Hub cihaz sağlama hizmeti ile özel ayırma ilkelerini kullanma
+description: Azure IoT Hub cihaz sağlama hizmeti (DPS) ile özel ayırma ilkeleri kullanma
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2a17cc6c9f2211de31d4551bd12e6c832d4eee38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228729"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974879"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Özel ayırma ilkelerini kullanma
 
@@ -96,7 +96,7 @@ Bu bölümde, **contoso Toalar bölümünü** ve **contoso ısı pumps bölümü
 
 Bu bölümde, özel ayırma ilkenizi uygulayan bir Azure işlevi oluşturacaksınız. Bu işlev, kayıt KIMLIĞI **-contoso-tstrsd-007** veya **-contoso-hpsd-088**dizesini içerip içermediğini temel alarak bir cihazın ne kadar kolay bir şekilde kaydedilmesi gerektiğini belirler. Ayrıca, cihazın bir Toaster veya ısı göndericisi olup olmadığına bağlı olarak cihaz ikizi başlangıç durumunu da ayarlar.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Giriş sayfanızda **+ kaynak oluştur**' u seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. Giriş sayfanızda **+ kaynak oluştur**' u seçin.
 
 2. Market aramasını *Ara* kutusuna "işlev uygulaması" yazın. Aşağı açılan listeden **işlev uygulaması**' yi seçin ve ardından **Oluştur**' u seçin.
 
@@ -573,7 +573,7 @@ Buradaki adımlarda, bu makaledeki tüm kaynakları **contoso-US-Resource-Group*
 
 Kaynak grubunu ada göre silmek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
 2. **Ada göre filtrele...** metin kutusuna kaynaklarınızı içeren kaynak grubunun adını yazın, **contoso-US-Resource-Group**. 
 

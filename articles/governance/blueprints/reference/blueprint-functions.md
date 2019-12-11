@@ -1,14 +1,14 @@
 ---
 title: Azure şemaları işlevleri
 description: Azure şemaları tanımlarında ve atamalarında şema yapıtları ile kullanılabilecek işlevleri açıklar.
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.topic: reference
-ms.openlocfilehash: 92539da02ddbe22f943454aff54dae4ccb5af3ce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128765"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970899"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
@@ -29,9 +29,12 @@ Aşağıdaki işlevler desteklenir:
 
 Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini döndürür.
 
+> [!NOTE]
+> `artifacts()` işlevi Kaynak Yöneticisi şablonunun içinden kullanılamaz. İşlev yalnızca şema tanımı JSON ' de veya şema tanımı Azure PowerShell ya da [kod olarak planlar](https://github.com/Azure/azure-blueprints/blob/master/README.md)' ın bir parçası olarak REST API şema YÖNETIMI sırasında JSON yapısı içinde kullanılabilir.
+
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | artifactName |Yes |string |Şema yapıtı adı. |
 
@@ -110,9 +113,9 @@ _Mytemplateyapıt_ örneğinden veri almaya ilişkin bazı örnekler şunlardır
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Dize | "dize değeri" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Nesne | {"MyProperty": "My value", "anotherProperty": true} |
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Dize | "My value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | Doğru |
 
-## <a name="concat"></a>Concat
+## <a name="concat"></a>concat
 
 `concat(string1, string2, string3, ...)`
 
@@ -120,7 +123,7 @@ Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | string1 |Yes |string |Birleştirme için ilk değer. |
 | ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
@@ -145,7 +148,7 @@ Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanım
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
@@ -266,7 +269,7 @@ Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. Yapıtın
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Yes |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
@@ -320,7 +323,7 @@ Ardından, kaynak grubu yer tutucu nesnesine bir başvuru almak için herhangi b
 }
 ```
 
-## <a name="subscription"></a>subscription
+## <a name="subscription"></a>aboneliği
 
 `subscription()`
 

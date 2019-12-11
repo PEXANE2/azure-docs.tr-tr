@@ -3,12 +3,12 @@ title: Azure Işlevleri C# geliştirici başvurusu
 description: Kullanarak C#Azure işlevleri geliştirmeyi anlayın.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665585"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975491"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# geliştirici başvurusu
 
@@ -25,7 +25,15 @@ Bu makalede, aşağıdaki makaleleri zaten okuduğunuzu varsaymış olursunuz:
 
 ## <a name="supported-versions"></a>Desteklenen sürümler
 
-Azure Işlevleri 2. x çalışma zamanı .NET Core 2,2 kullanır. İşlev kodunuz, Visual Studio proje ayarlarını güncelleştirerek .NET Core 2,2 API 'Lerini kullanabilir. .NET Core 2,2 yüklü olmayan müşterilerin olumsuz şekilde etkilenmesinden kaçınmak için, Işlev şablonları .NET Core 2,2 ' a varsayılan değildir.
+Işlevler çalışma zamanının sürümleri .NET 'in belirli sürümleriyle çalışır. Aşağıdaki tabloda, projenizdeki belirli bir Işlev sürümü ile kullanılabilecek en yüksek .NET Core ve .NET Framework ve .NET Core düzeyi gösterilmektedir. 
+
+| İşlevler çalışma zamanı sürümü | En yüksek .NET sürümü |
+| ---- | ---- |
+| İşlevler 3. x | .NET Core 3,1 |
+| İşlevler 2.x | .NET Core 2.2 |
+| İşlevler 1.x | .NET Framework 4.6 |
+
+Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerine genel bakış](functions-versions.md)
 
 ## <a name="functions-class-library-project"></a>İşlevler sınıf kitaplığı projesi
 
@@ -49,7 +57,7 @@ Projeyi derlediğinizde, derleme çıkış dizininde aşağıdaki örnek gibi g�
 Bu dizin, Azure 'daki işlev uygulamanıza dağıtılır. Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları [projeye NuGet paketleri olarak eklenir](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Yapı işlemi her işlev için bir *function. JSON* dosyası oluşturur. Bu *function. JSON* dosyası doğrudan düzenlenmeyecek. Bu dosyayı düzenleyerek bağlama yapılandırmasını değiştiremez veya işlevi devre dışı bırakabilirsiniz. Bir işlevi nasıl devre dışı bırakacağınızı öğrenmek için bkz. [işlevleri devre dışı bırakma](disable-function.md#functions-2x---c-class-libraries).
+> Yapı işlemi her işlev için bir *function. JSON* dosyası oluşturur. Bu *function. JSON* dosyası doğrudan düzenlenmeyecek. Bu dosyayı düzenleyerek bağlama yapılandırmasını değiştiremez veya işlevi devre dışı bırakabilirsiniz. Bir işlevi nasıl devre dışı bırakacağınızı öğrenmek için bkz. [işlevleri devre dışı bırakma](disable-function.md).
 
 
 ## <a name="methods-recognized-as-functions"></a>İşlev olarak tanınan Yöntemler
@@ -247,7 +255,7 @@ public static class SimpleExample
 
 Azure Işlevleri 'nde `Console.Write` kullanmaktan kaçının. Daha fazla bilgi için bkz. **Azure Işlevlerini izleme** makalesindeki [ C# günlük yazma işlevleri](functions-monitoring.md#write-logs-in-c-functions) .
 
-## <a name="async"></a>Eş
+## <a name="async"></a>Zaman Uyumsuz
 
 Bir işlevi [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesnesi döndürün.
 

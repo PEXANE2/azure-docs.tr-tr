@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran Daemon uygulaması (Web API 'Lerini çağırma)-Microsoft Identity platform
-description: Web API 'Lerini çağıran bir Daemon uygulaması derlemeyi öğrenin (Web API 'Lerini çağırma)
+title: Bir Daemon uygulamasının Web API 'sini çağırma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir Daemon uygulaması derlemeyi öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af0bb023136ba07057e4078d5abfcb4a3194a56
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 46f1676ab1bdcf2b23907824bb9bf543b5f28ce6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175389"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962619"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulamadan bir Web API 'SI çağırma
 
@@ -29,7 +29,7 @@ Bir Daemon uygulaması, .NET Daemon uygulamasından bir Web API 'si çağırabil
 
 ## <a name="calling-a-web-api-daemon-application"></a>Web API Daemon uygulaması çağırma
 
-Bir API 'yi çağırmak için belirteci kullanma
+Bir API 'yi çağırmak için belirtecin kullanımı aşağıda verilmiştir:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -68,7 +68,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Çeşitli API 'Ler çağırma
 
-Daemon uygulamaları için, çağırdığınız Web API 'Lerinin önceden onaylanmış olması gerekir. Daemon uygulamalarında artımlı izin yoktur (Kullanıcı etkileşimi yoktur). Kiracı yöneticisinin uygulamayı ve tüm API izinlerini önceden onaylaması gerekir. Çeşitli API 'Ler çağırmak isterseniz, her bir kaynak için `AcquireTokenForClient` her seferinde bir belirteç edinmeniz gerekir. MSAL, gereksiz hizmet çağrılarını önlemek için uygulama belirteci önbelleğini kullanır.
+Daemon uygulamaları için, çağırdığınız Web API 'Lerinin önceden onaylanmış olması gerekir. Daemon uygulamalarında artımlı izin yoktur (Kullanıcı etkileşimi yoktur). Kiracı yöneticisinin uygulamayı ve tüm API izinlerini önceden onaylaması gerekir. Çeşitli API 'Ler çağırmak isterseniz, her bir kaynak için `AcquireTokenForClient`her seferinde bir belirteç edinmeniz gerekir. MSAL, gereksiz hizmet çağrılarını önlemek için uygulama belirteci önbelleğini kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Web API'si çağıran web API'lerini (arama API'leri) - Microsoft kimlik platformu
-description: Web API'si, çağrıları Aşağı Akış web API'leri (bir web API'sini çağırma) oluşturmayı öğrenin.
+title: Web API 'Lerini çağıran Web API 'SI-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir Web API 'SI oluşturmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074733"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965220"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API - çağıran web API'si bir API çağırma
+# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API 'Lerini çağıran Web API 'si-API çağrısı
 
-Bir belirteci aldıktan sonra korumalı web API'si çağırabilirsiniz. Bu ASP.NET/ASP.NET Core Web API denetleyicisi gerçekleştirilir.
+Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz. Bu, ASP.NET/ASP.NET Core Web API 'nizin denetleyicisinden yapılır.
 
-## <a name="controller-code"></a>Denetleyici kodlarının
+## <a name="controller-code"></a>Denetleyici kodu
 
-Gösterilen örnek kodun devamlılık işte [korumalı web API çağrıları web API'lerini - belirteç alınırken bir](scenario-web-api-call-api-acquire-token.md)adlı APİ'si denetleyicilerinin eylemleri (todolist adlı) bir aşağı akış API çağırma.
+Aşağıda, [korumalı Web API 'si çağrıları Web API 'lerinde](scenario-web-api-call-api-acquire-token.md)gösterilen örnek kodun devamı vardır. API denetleyicilerinin eylemlerde çağrılan, bir aşağı akış API 'si (ToDoList adlı) çağıran bir belirteç alınıyor.
 
-Belirteç aldığınız sonra aşağı akış API'sini çağırmak için bir taşıyıcı belirteç kullanın.
+Belirteci aldıktan sonra, aşağı akış API 'sini çağırmak için bunu bir taşıyıcı belirteç olarak kullanın.
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretim aşamasına geçme](scenario-web-api-call-api-production.md)
+> [Üretime taşı](scenario-web-api-call-api-production.md)

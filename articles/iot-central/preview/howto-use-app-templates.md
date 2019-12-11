@@ -3,17 +3,17 @@ title: Azure IoT Central uygulamasını dışarı aktarma | Microsoft Docs
 description: Bir çözüm Yöneticisi olarak, bir uygulama şablonunu yeniden kullanabilmek için dışarı aktarmak istiyorum.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9870b18be9fb75e25941a7e1d05e4164239aacbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480360"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977531"
 ---
 # <a name="export-your-application-preview-features"></a>Uygulamanızı dışa aktarma (Önizleme özellikleri)
 
@@ -30,7 +30,7 @@ Bu makalede, bir IoT Central uygulamasının yeniden kullanabilmek için bir ç�
 
 Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, cihaz veri geçmişini ve Kullanıcı verilerini oluşturabilirsiniz. Kopya, ücretlendirilebilecek Kullandıkça Öde uygulamasıdır. Bir uygulamayı kopyalayarak deneme uygulaması oluşturamazsınız.
 
-**Kopyala**' yı seçin. İletişim kutusunda yeni Kullandıkça Öde uygulamasının ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. Formdaki alanlar hakkında daha fazla bilgi edinmek için bkz. [uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı.
+**Kopyala**’yı seçin. İletişim kutusunda yeni Kullandıkça Öde uygulamasının ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. Formdaki alanlar hakkında daha fazla bilgi edinmek için bkz. [uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı.
 
 > [!NOTE]
 > Uygulamanızı yalnızca **Avrupa** ve **ABD** konumlarına **kopyalayabilirsiniz** .
@@ -54,7 +54,7 @@ Bir uygulama şablonu oluşturduğunuzda, var olan uygulamanızdan aşağıdaki 
 
 - Pano düzeni ve tanımladığınız tüm kutucuklar dahil olmak üzere varsayılan uygulama panosu.
 - Ölçümler, ayarlar, özellikler, komutlar ve Pano dahil cihaz şablonları.
-- Kuralın. Tüm kural tanımları dahildir. Ancak, e-posta eylemleri hariç eylemler dahil değildir.
+- Kurallar. Tüm kural tanımları dahildir. Ancak, e-posta eylemleri hariç eylemler dahil değildir.
 - Koşulları ve panoları dahil cihaz kümeleri.
 
 > [!WARNING]

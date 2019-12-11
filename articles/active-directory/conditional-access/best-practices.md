@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175771"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963945"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
@@ -35,7 +35,7 @@ Yeni bir ilke oluşturduğunuzda, hiçbir Kullanıcı, Grup, uygulama veya eriş
 
 İlkenizi çalışır hale getirmek için şunları yapılandırmanız gerekir:
 
-| Nesne           | Oluşturulacağı                                  | Kaydol |
+| Nesne           | Nasıl?                                  | Neden |
 | :--            | :--                                  | :-- |
 | **Bulut uygulamaları** |Bir veya daha fazla uygulama seçin.  | Koşullu erişim ilkesinin hedefi, yetkili kullanıcıların bulut uygulamalarına nasıl erişebileceğini denetlemenize olanak sağlamaktır.|
 | **Kullanıcılar ve gruplar** | Seçtiğiniz bulut uygulamalarınıza erişim yetkisi olan en az bir kullanıcı veya grup seçin. | Hiçbir Kullanıcı ve grup atanmamış koşullu erişim ilkesi hiçbir şekilde tetiklenmez. |
@@ -45,17 +45,18 @@ Yeni bir ilke oluşturduğunuzda, hiçbir Kullanıcı, Grup, uygulama veya eriş
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Koşullu erişim ilkeleri nasıl uygulanır?
 
-Bir bulut uygulamasına eriştiğinizde, birden fazla koşullu erişim ilkesi uygulanabilir. Bu durumda, uygulanan tüm ilkeler karşılanmalıdır. Örneğin, bir ilke MFA gerektiriyorsa ve ikincisi uyumlu bir cihaz gerektiriyorsa, MFA 'ya gitmeniz ve uyumlu bir cihaz kullanmanız gerekir. 
+Bir bulut uygulamasına eriştiğinizde, birden fazla koşullu erişim ilkesi uygulanabilir. Bu durumda, uygulanan tüm ilkeler karşılanmalıdır. Örneğin, bir ilke çok faktörlü kimlik doğrulaması (MFA) gerektiriyorsa ve başka bir uyumlu cihaz gerektiriyorsa, MFA 'yı doldurmanız ve uyumlu bir cihaz kullanmanız gerekir. 
 
 Tüm ilkeler iki aşamada zorlanır:
 
-- **İlk** aşamada, tüm ilkeler değerlendirilir ve karşılanmayan tüm erişim denetimleri toplanır. 
-
-- **İkinci** aşamada, karşılamadığınız gereksinimleri karşılamanız istenir. İlkelerden herhangi biri erişimi engellediyse, engellenir ve diğer ilke denetimlerini karşılamanız istenmez. İlkelerden hiçbiri sizi engelliyorsa, diğer ilke denetimlerini aşağıdaki sırayla karşılamanız istenir:
-
-   ![Sipariş](./media/best-practices/06.png)
-    
-   Dış MFA sağlayıcıları ve kullanım koşulları bundan sonra gelir.
+- 1\. Aşama: 
+   - Ayrıntı koleksiyonu: zaten karşılanması gereken ilkeleri belirlemek için ayrıntıları toplayın.
+   - Bu aşamada, cihaz uyumluluğu koşullu erişim ilkelerinizin parçasıysa kullanıcılar bir sertifika istemi görebilir. Bu istem, cihaz işletim sistemi Windows 10 olmadığında tarayıcı uygulamalarında meydana gelebilir.
+   - İlke değerlendirmesinin 1. aşaması, [yalnızca rapor modundaki](concept-conditional-access-report-only.md)tüm etkin ilkeler ve ilkeler için gerçekleşir.
+- 2\. Aşama:
+   - Zorlama: 1. aşamada toplanan ayrıntıları hesaba katılarak, kullanıcıyı karşılanmamış ek gereksinimleri karşılayacak şekilde isteyin.
+   - Sonuçları oturuma uygulayın. 
+   - İlke değerlendirmesinin 2. aşaması, etkinleştirilmiş tüm ilkeler için gerçekleşir.
 
 ### <a name="how-are-assignments-evaluated"></a>Atamalar nasıl değerlendirilir?
 
@@ -140,7 +141,7 @@ Azure portal oluşturduğunuz ilkeleri şu nedenle geçirmeyi düşünün:
 - Tüm koşullu erişim ilkelerinizi tek bir merkezi konumda yönetebilirsiniz.
 - Klasik Azure portalı kullanımdan kaldırılmıştır.   
 
-Daha fazla bilgi için, [Azure Portal klasik Ilkeleri geçirme](policy-migration.md)bölümüne bakın.
+Daha fazla bilgi için bkz. [Azure portalında klasik ilkeleri geçirme](policy-migration.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

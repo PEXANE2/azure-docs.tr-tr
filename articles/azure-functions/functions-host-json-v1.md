@@ -3,12 +3,12 @@ title: Azure Işlevleri 1. x için Host. JSON başvurusu
 description: V1 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 99a571483086343d4e7d6188b2f401abc616c1bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 256cd47fa0f309bef46c7f72951810d5f76d0fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230583"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975474"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için Host. JSON başvurusu
 
@@ -19,7 +19,7 @@ ms.locfileid: "74230583"
 *Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host.
 
 > [!NOTE]
-> Bu makalede, Azure işlevleri için olan 1.x.  2\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 2. x](functions-host-json.md).
+> Bu makalede, Azure işlevleri için olan 1.x.  2\. x ve sonraki Işlevlerde Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 2. x](functions-host-json.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -138,9 +138,9 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
+|GatewayMode|Ağ Geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
-|leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
+|leasePrefix|Yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -152,7 +152,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>işlevleri
+## <a name="functions"></a>işlevler
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -190,7 +190,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|enabled|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
 |healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
@@ -216,7 +216,7 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 |dynamicThrottlesEnabled|yanlış|Bu ayar etkinleştirildiğinde, istek işleme işlem hattının bağlantılar/iş parçacıkları/işlemler/bellek/CPU/vb gibi sistem performans sayaçlarını düzenli olarak denetlemesini sağlar. bu sayaçlardan herhangi biri yerleşik yüksek eşikten (%80%) olursa, sayaçlar normal düzeylere dönene kadar istekler 429 "çok meşgul" yanıtıyla reddedilir.|
 |maxConcurrentRequests|Sınırsız (`-1`)|Paralel olarak yürütülecek http işlevlerinin maksimum sayısı. Bu, kaynak kullanımının yönetilmesine yardımcı olabilecek eşzamanlılık denetlemenize olanak tanır. Örneğin, eşzamanlılık çok yüksek olduğunda sorunlara yol açacağından, çok fazla sistem kaynağı (bellek/CPU/yuva) kullanan bir http işleviniz olabilir. Ya da bir üçüncü taraf hizmetine giden istekleri yapan bir işleviniz olabilir ve bu çağrıların hız sınırlı olması gerekir. Bu durumlarda, burada bir kısıtlama uygulanması yardımcı olabilir.|
 |maxOutstandingRequests|Sınırsız (`-1`)|Belirli bir zamanda tutulan bekleyen istek sayısı üst sınırı. Bu sınır, kuyruğa alınmış ancak yürütmeyi başlatmayan isteklerin yanı sıra devam eden yürütmeler içerir. Bu sınırın üzerindeki tüm gelen istekler, 429 "çok meşgul" yanıtıyla reddedilir. Bu, çağıranların zamana dayalı yeniden deneme stratejileri kullanmasına izin verir ve ayrıca en fazla istek gecikme sürelerini denetlemenize yardımcı olur. Bu, yalnızca betik ana bilgisayar yürütme yolu içinde oluşan kuyruğu denetler. ASP.NET istek kuyruğu gibi diğer kuyruklar da etkin olmaya devam eder ve bu ayardan etkilenmez.|
-|routePrefix|API|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
+|routePrefix|api|Tüm yollar için geçerli olan rota öneki. Varsayılan ön eki kaldırmak için boş bir dize kullanın. |
 
 ## <a name="id"></a>id
 
@@ -251,11 +251,11 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
+|categoryFilter|Yok|Kategoriye göre filtrelemeyi belirtir| 
 |defaultLevel|Bilgi|`categoryLevels` dizide belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıdaki Application Insights gönderin.| 
-|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde oturum açın.| 
+|categoryLevels|Yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde oturum açın.| 
 
-## <a name="queues"></a>klarında
+## <a name="queues"></a>sıralar
 
 [Depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md)için yapılandırma ayarları.
 
@@ -292,7 +292,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|from|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
+|başlangıç|Yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -310,8 +310,8 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|İleti pompası başlatmalıdır geri çağırma eş zamanlı çağrı sayısı. Varsayılan olarak, İşlevler çalışma zamanı aynı anda birden çok ileti işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` ayarlayın. | 
-|prefetchCount|yok|Varsayılan temel alınan MessageReceiver tarafından kullanılacak PrefetchCount.| 
+|maxConcurrentCalls|16|İleti pompası başlatmalıdır geri çağırma eş zamanlı çağrı sayısı. Varsayılan olarak, İşlevler çalışma zamanı aynı anda birden çok ileti işler. Bir kerede yalnızca tek bir kuyruk veya konuda ileti işleme için çalışma zamanının ayarlayın `maxConcurrentCalls` 1. | 
+|prefetchCount|Yok|Varsayılan temel alınan MessageReceiver tarafından kullanılacak PrefetchCount.| 
 |autoRenewTimeout|00:05:00|En uzun süre içinde otomatik olarak ileti kilidi yenilenir.| 
 
 ## <a name="singleton"></a>Adet
@@ -336,9 +336,9 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
+|Locktanışmalationpollingınterval|Yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="tracing"></a>izleniyor
+## <a name="tracing"></a>izleme
 
 *Sürüm 1. x*
 

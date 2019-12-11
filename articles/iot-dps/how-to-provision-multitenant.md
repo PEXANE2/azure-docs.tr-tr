@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti 'nde çok kiracılı cihazları sağlama
-description: Cihaz sağlama hizmeti örneğiniz ile çok kiracılı cihazları sağlama
+description: Cihaz sağlama hizmeti (DPS) örneğiniz ile çok kiracılı cihazları sağlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228784"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974981"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Çoklu kiracı için sağlama 
 
@@ -146,7 +146,7 @@ Temizlemeyi kolaylaştırmak için, bu VM 'Ler oluşturulan IoT Hub 'larını i�
     --authentication-type password
     ```
 
-    Bu komutun tamamlanması birkaç dakika sürer. Komut tamamlandıktan sonra, Doğu ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
+    Bu komutun tamamlanması birkaç dakika sürecektir. Komut tamamlandıktan sonra, Doğu ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
 
 1. Azure Cloud Shell komutta aşağıdaki parametre değişikliklerini yaptıktan sonra bir **Batı ABD** Bölgesi sanal makinesi oluşturmak için komutunu yürütün:
 
@@ -167,7 +167,7 @@ Temizlemeyi kolaylaştırmak için, bu VM 'Ler oluşturulan IoT Hub 'larını i�
     --authentication-type password
     ```
 
-    Bu komutun tamamlanması birkaç dakika sürer. Komut tamamlandıktan sonra, Batı ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
+    Bu komutun tamamlanması birkaç dakika sürecektir. Komut tamamlandıktan sonra, Batı ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
 
 1. İki komut satırı kabuklarını açın. SSH kullanarak her kabukta bölgesel VM 'lerden birine bağlanın. 
 

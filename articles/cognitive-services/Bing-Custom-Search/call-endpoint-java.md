@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırın | Microsoft Docs'
+title: 'Hızlı başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırma | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Java 'daki Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564689"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973518"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Hızlı Başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırma
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Hızlı başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırma
 
 Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bu uygulama Java 'da yazıldığı sırada, Bing Özel Arama API'si birçok programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java)’da mevcuttur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Bing Özel Arama örneği. Bkz [. hızlı başlangıç: Daha fazla bilgi için ilk](quick-start.md) Bing özel arama örneğinizi oluşturun.
+- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 
 - En son [Java geliştirme seti](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
@@ -50,7 +50,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     import com.google.gson.JsonParser;
     ```
 
-2. adlı `CustomSrchJava`bir sınıf oluşturun ve abonelik anahtarınız, özel arama uç noktanız ve arama örneğinizin özel yapılandırma kimliği için değişkenler oluşturun. 
+2. `CustomSrchJava`adlı bir sınıf oluşturun ve abonelik anahtarınız, özel arama uç noktanız ve arama örneğinizin özel yapılandırma KIMLIĞI için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     ...
     ```
 
-3. Bing özel arama örneğinden gelen yanıtı `SearchResults` içermesi için adlı başka bir sınıf oluşturun.
+3. Bing Özel Arama örneğinizin yanıtını içermesi için `SearchResults` adlı başka bir sınıf oluşturun.
 
     ```csharp
     class SearchResults{
@@ -74,7 +74,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     }
     ```
 
-4. Bing özel arama API'si JSON yanıtını biçimlendirmek `prettify()` için adlı bir işlev oluşturun.
+4. JSON yanıtını Bing Özel Arama API'si biçimlendirmek için `prettify()` adlı bir işlev oluşturun.
 
     ```java
         // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -88,7 +88,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
 
 ## <a name="send-and-receive-a-search-request"></a>Arama isteği gönderme ve alma 
 
-1. Bir istek gönderen ve `SearchWeb()` bir `SearchResults` nesne döndüren adlı bir işlev oluşturun. Özel yapılandırma KIMLIĞINIZI, sorgunuzu ve uç nokta bilgilerinizi birleştirerek istek URL 'sini oluşturun. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
+1. İstek gönderen ve bir `SearchResults` nesnesi döndüren `SearchWeb()` adlı bir işlev oluşturun. Özel yapılandırma KIMLIĞINIZI, sorgunuzu ve uç nokta bilgilerinizi birleştirerek istek URL 'sini oluşturun. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     ...
     ```
 
-2. Bir akış oluşturun ve JSON yanıtını bir `SearchResults` nesneye depolayın.
+2. Bir akış oluşturun ve JSON yanıtını bir `SearchResults` nesnesinde depolayın.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
         }
     ```
 
-3. Uygulamanızın ana yönteminde, arama teriminizle çağırın `SearchWeb()` , 
+3. Uygulamanızın ana yönteminde, arama teriminizle birlikte `SearchWeb()` çağırın, 
 
     ```java
     System.out.println("\nJSON Response:\n");

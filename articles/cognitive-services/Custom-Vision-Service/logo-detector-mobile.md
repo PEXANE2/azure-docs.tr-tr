@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177784"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970236"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 - Visual Studio için iOS veya Android öykünücüsü
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (isteğe bağlı)
 
-## <a name="get-the-source-code"></a>Kaynak kodunu al
+## <a name="get-the-source-code"></a>Kaynak kodunu alma
 
 Belirtilen Web uygulamasını kullanmak istiyorsanız, GitHub 'daki [AI görsel sağlama](https://github.com/Microsoft/AIVisualProvision) deposundan uygulamanın kaynak kodunu kopyalayın veya indirin. Visual Studio 'da *kaynak/VisualProvision. sln* dosyasını açın. Daha sonra, uygulamayı çalıştırmak için bazı proje dosyalarını düzenleyeceksiniz.
 
@@ -131,7 +131,7 @@ Başarıyla tamamlandıktan sonra, gerekli kimlik bilgileri de dahil olmak üzer
 }
 ```
 
-@No__t-0 ve `tenantId` değerlerine göz atın. Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
+`clientId` ve `tenantId` değerlerini bir yere göz atın. Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
@@ -153,7 +153,7 @@ Uygulamayı çalıştırmak için aşağıdaki adımları izleyin:
 1. İlk ekranda, hizmet sorumlusu istemci KIMLIĞI, kiracı KIMLIĞI ve parolanızı girin. **Oturum aç** düğmesini seçin.
 
     > [!NOTE]
-    > Bazı Öykünücülerde, **oturum açma** düğmesi bu adımda etkinleştirilmemiş olabilir. Bu durumda, uygulamayı durdurun, *kaynak/VisualProvision/Pages/LoginPage. xaml* dosyasını açın, **oturum açma düğmesi**etiketli `Button` öğesini bulun, aşağıdaki satırı kaldırın ve uygulamayı yeniden çalıştırın.
+    > Bazı Öykünücülerde, **oturum açma** düğmesi bu adımda etkinleştirilmemiş olabilir. Bu durumda, uygulamayı durdurun, *kaynak/VisualProvision/Pages/LoginPage. xaml* dosyasını açın, **oturum açma düğmesi**etiketli `Button` öğesi bulun, aşağıdaki satırı kaldırın ve uygulamayı yeniden çalıştırın.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```

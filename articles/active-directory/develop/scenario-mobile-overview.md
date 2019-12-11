@@ -1,5 +1,5 @@
 ---
-title: Web API 'Lerini çağıran mobil uygulama-genel bakış
+title: Web API 'Lerini çağıran bir mobil uygulama oluşturun | Mavisi
 titleSuffix: Microsoft identity platform
 description: Web API 'Leri çağıran bir mobil uygulama oluşturmayı öğrenin (genel bakış)
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803751"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965475"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran mobil uygulama
 
-Web API 'Lerini çağıran bir mobil uygulama oluşturmak için bilmeniz gereken her şey hakkında bilgi edinin.
+Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,7 +34,7 @@ Web API 'Lerini çağıran bir mobil uygulama oluşturmak için bilmeniz gereken
 
 ## <a name="getting-started"></a>Başlangıç
 
-İlk mobil uygulamanızı oluşturun ve hızlı başlangıç yapın!
+İlk mobil uygulamanızı oluşturun ve hızlı başlangıç yapın.
 
 > [!div class="nextstepaction"]
 > [Hızlı başlangıç: bir Android uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-android.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti 'nde X. 509.440 sertifikalarını al
-description: Cihaz sağlama hizmeti örneğiniz ile X. 509.440 sertifikalarını alma
+description: Cihaz sağlama hizmeti (DPS) örneğiniz ile X. 509.440 sertifikalarını alma
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228747"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974896"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509.440 cihaz sertifikalarını alma
 
@@ -94,7 +94,7 @@ Daha sonra ikincil sertifika süre sonu yaklaştığında ve alınması gerekti�
 
 1. **Ayrı**kayıtlar ' a tıklayın ve LISTEDEKI kayıt kimliği girişine tıklayın. 
 
-2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Save (Kaydet)** düğmesine tıklayın.
+2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Kaydet** düğmesine tıklayın.
 
     ![İkincil sertifikayı kullanarak bireysel kayıtları yönetme](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ Daha sonra ikincil sertifika süre sonu yaklaştığında ve alınması gerekti�
 
 1. **Kayıt grupları**' na tıklayın ve listede Grup adına tıklayın. 
 
-2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Save (Kaydet)** düğmesine tıklayın.
+2. **Ikincil sertifika** ' ya tıklayın, ardından kayıt girişi için karşıya yüklenecek yeni sertifikayı seçmek için klasör simgesine tıklayın. **Kaydet** düğmesine tıklayın.
 
     Bu yeni ara sertifika, sağlama hizmetine zaten eklenmiş olan doğrulanmış bir kök CA sertifikası tarafından imzalanmalıdır. Daha fazla bilgi için bkz. [X. 509.440 sertifikaları](concepts-security.md#x509-certificates).
 

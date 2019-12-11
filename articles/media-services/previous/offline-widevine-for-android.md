@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 694cdf054f74db50bcf1781e60df0f93810ae60c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5137f35a4707aa68adfbf3f326ca9e4bfb40f0f4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875185"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970338"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı  
 
@@ -53,7 +53,7 @@ Android cihazlarda Widevine için çevrimdışı DRM uygulamadan önce, önce ş
 
 - Widevine DRM kullanarak çevrimiçi içerik koruma için tanıtılan kavramlarla ilgili bilgi sahibi olun. Bu, aşağıdaki belgelerde/örneklerde ayrıntılı olarak ele alınmıştır:
     - [DRM lisansları veya AES anahtarları sunmak için Azure Media Services kullanın](media-services-deliver-keys-and-licenses.md)
-    - [Multi-DRM ve Access Control CENC: Azure ve Azure Media Services başvuru tasarımı ve uygulama](media-services-cenc-with-multidrm-access-control.md)
+    - [Çoklu DRM ve Access Control ile CENC: Azure ve Azure Media Services Tasarım ve Uygulama Başvurusu](media-services-cenc-with-multidrm-access-control.md)
     - [.NET ile PlayReady ve/veya Widevine dinamik Common Encryption kullanma](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-drm/)
     - [.NET ile PlayReady ve/veya Widevine lisanslarını teslim etmek için Azure Media Services kullanın](https://azure.microsoft.com/resources/samples/media-services-dotnet-deliver-playready-widevine-licenses/)
 - Çevrimdışı Widevine DRM kayıttan yürütmeyi destekleyebilen açık kaynaklı bir video oynatıcı SDK 'sı olan Android için Google ExoPlayer SDK 'sı hakkında bilgi sahibi olun. 
@@ -129,11 +129,11 @@ Geliştiriciler, bir uygulamanın geliştirilmesi sırasında [Exoplayer gelişt
 
 ### <a name="working-with-older-android-devices"></a>Eski Android cihazlarla çalışma
 
-Bazı eski Android cihazlarda, aşağıdaki **policy_overrides** özellikleri için değerler ayarlamanız gerekir ( [Widevine lisans şablonunda](media-services-widevine-license-template-overview.md)tanımlanmıştır: **rental_duration_seconds**, **playback_duration_seconds**ve **license_ duration_seconds**. Alternatif olarak, sonsuz/sınırsız süre anlamına gelen sıfır olarak ayarlayabilirsiniz.  
+Bazı eski Android cihazlarda, aşağıdaki **policy_overrides** özellikleri için değerler ayarlamanız gerekir ( [Widevine lisans şablonunda](media-services-widevine-license-template-overview.md)tanımlanmıştır: **rental_duration_seconds**, **playback_duration_seconds**ve **license_duration_seconds**. Alternatif olarak, sonsuz/sınırsız süre anlamına gelen sıfır olarak ayarlayabilirsiniz.  
 
-Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz https://github.com/google/ExoPlayer/issues/3150 . ve. https://github.com/google/ExoPlayer/issues/3112 <br/>Değerleri açıkça ayarlamazsanız, **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
+Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz. https://github.com/google/ExoPlayer/issues/3150 ve https://github.com/google/ExoPlayer/issues/3112. <br/>Değerleri açıkça ayarlamazsanız, **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
 
-Android 5,0, ARMv8 ([GELIŞMIŞ RISC makinesi](https://en.wikipedia.org/wiki/ARM_architecture)) ve 64-bit platformlarını tamamen destekleyecek şekilde tasarlanan ilk Android sürümü olduğundan, Android 5,0 Lollipop veya sonrasında bu sorun oluşmaz, çünkü Android 4,4 KitKat özgün olarak tasarlanmıştı diğer eski Android sürümlerinde olduğu gibi ARMv7 ve 32-bit platformları destekler.
+Android 5,0, ARMv8 ([GELIŞMIŞ RISC makinesi](https://en.wikipedia.org/wiki/ARM_architecture)) ve 64-bit platformlarını tamamen destekleyecek şekilde tasarlanan ilk Android sürümü olduğundan, Android 5,0 Lollipop veya sonrasında bu sorun oluşmaz, çünkü Android 4,4 KitKat ilk olarak diğer eski Android sürümleriyle aynı şekilde ARMv7 ve 32 bit platformları desteklemek üzere tasarlanmıştır.
 
 ## <a name="using-xamarin-to-build-an-android-playback-app"></a>Android oynatma uygulaması oluşturmak için Xamarin kullanma
 
@@ -146,7 +146,7 @@ Ayrıca, aşağıdaki iş parçacığına bakın: [Xamarin bağlama](https://git
 
 ## <a name="chrome-player-apps-for-android"></a>Android için Chrome Player uygulamaları
 
-Android v için [Chrome sürümü ile başlayarak. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates), eme 'de kalıcı lisans destekleniyor. [Wdevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) artık Android için Chrome 'da da desteklenmektedir. Bu, son kullanıcılarınız Chrome 'un bu (veya üzeri) sürümü varsa, Chrome 'da çevrimdışı oynatma uygulamaları oluşturmanıza olanak tanır. 
+[Android v. 62 Için Chrome](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)sürümü ile başlayarak, eme 'de kalıcı lisans desteklenir. [Wdevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) artık Android için Chrome 'da da desteklenmektedir. Bu, son kullanıcılarınız Chrome 'un bu (veya üzeri) sürümü varsa, Chrome 'da çevrimdışı oynatma uygulamaları oluşturmanıza olanak tanır. 
 
 Ayrıca, Google bir aşamalı Web uygulaması (PWA) örneği üretti ve açık kaynaklı BT: 
 
@@ -157,8 +157,8 @@ Mobil Chrome tarayıcınızı bir Android telefonunda V62 (veya üzeri) sürüm�
 
 Yukarıdaki açık kaynaklı PWA uygulaması Node. js ' de yazılır. Bir Ubuntu sunucusunda kendi sürümünüzü barındırmak istiyorsanız, kayıttan yürütmeyi engelleyebilecek aşağıdaki yaygın sorunları göz önünde bulundurun:
 
-1. CORS sorunu: Örnek uygulamadaki örnek video içinde https://storage.googleapis.com/biograf-video-files/videos/ barındırılır. Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS girişi https://biograf-155113.appspot.com (Google 'ın örneğini barındırdığı etki alanı) diğer sitelere erişimi engellediği CORS üstbilgileri ile birlikte sunulur. Denerseniz, aşağıdaki HTTP hatasını görürsünüz: https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: İstenen kaynakta ' erişim-denetim-izin-Origin ' üst bilgisi yok. ' Https:\//13.85.80.81:8080 ' başlangıcının erişimine izin verilmiyor. Donuk bir yanıt ihtiyaçlarınıza hizmet veriyorsa, isteği CORS devre dışı olarak getirmek için isteğin modunu ' No-CORS ' olarak ayarlayın.
-2. Sertifika sorunu: Chrome v 58 ' den başlayarak Widevine için EME, HTTPS gerektirir. Bu nedenle, örnek uygulamayı bir x509 sertifikasıyla HTTPS üzerinden barındırmanıza gerek duyarsınız. Aşağıdaki gereksinimler nedeniyle olağan bir test sertifikası çalışmaz: Aşağıdaki minimum gereksinimleri karşıladığı bir sertifika edinmeniz gerekir:
+1. CORS sorunu: örnek uygulamadaki örnek video https://storage.googleapis.com/biograf-video-files/videos/ içinde barındırılır. Google, Google bulut depolama demeti içinde barındırılan tüm test örnekleri için CORS 'yi ayarladı. Bunlar, özel olarak CORS https://biograf-155113.appspot.com girişi (Google 'ın örneğini barındırdığı etki alanı) tarafından başka herhangi bir sitenin erişimini engellediği CORS başlıkları ile birlikte sunulur. Denerseniz, şu HTTP hatasını görürsünüz: yüklenemedi https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: istenen kaynakta ' erişim-denetim-Izin-Origin ' üst bilgisi yok. ' Https:\//13.85.80.81:8080 ' kaynağına izin verilmiyor. Donuk bir yanıt ihtiyaçlarınıza hizmet veriyorsa, isteği CORS devre dışı olarak getirmek için isteğin modunu ' No-CORS ' olarak ayarlayın.
+2. Sertifika sorunu: Chrome v 58 ' den başlayarak Widevine için EME, HTTPS gerektirir. Bu nedenle, örnek uygulamayı bir x509 sertifikasıyla HTTPS üzerinden barındırmanıza gerek duyarsınız. Aşağıdaki gereksinimler nedeniyle olağan bir test sertifikası çalışmıyor: aşağıdaki minimum gereksinimleri karşılayan bir sertifika edinmeniz gerekir:
     - Chrome ve Firefox, sertifikada SAN konusu alternatif adı ayarının mevcut olmasını gerektirir
     - Sertifika, güvenilir bir CA 'ya sahip olmalı ve kendinden imzalı bir geliştirme sertifikası çalışmıyor
     - Sertifika, Web sunucusunun veya ağ geçidinin DNS adıyla eşleşen bir CN 'ye sahip olmalıdır
@@ -175,7 +175,7 @@ Bazı istemciler/kullanıcılar ve kalıcı olmayan lisanslar (çevrimdışı ol
 1. Itentkeyauthorizationpolicyoption 1: kalıcı lisans ve license_type = "persistent" gibi bir talep içeren ContentKeyAuthorizationPolicyRestriction 1 kullanır
 2. Itentkeyauthorizationpolicyoption 2: kalıcı olmayan lisans kullanır ve license_type = "kalıcı olmayan" gibi bir talep içeren ContentKeyAuthorizationPolicyRestriction 2
 
-Bu şekilde, istemci uygulamasından bir lisans isteği geldiğinde, lisans isteğinden bir fark yoktur. Ancak, farklı bir Son Kullanıcı/cihaz için STS, farklı talepler (yukarıdaki iki license_type's biri) içeren farklı JWT belirteçleri vermek için iş mantığına sahip olmalıdır. JWT belirtecindeki talep değeri, lisans hizmeti 'nin ne tür bir lisans (kalıcı veya kalıcı değil) vermesini belirlemek için kullanılır.
+Bu şekilde, istemci uygulamasından bir lisans isteği geldiğinde, lisans isteğinden bir fark yoktur. Ancak, farklı bir Son Kullanıcı/cihaz için STS, farklı talepler (yukarıdaki iki license_type ' den biri) içeren farklı JWT belirteçleri vermek için iş mantığına sahip olmalıdır. JWT belirtecindeki talep değeri, lisans hizmeti 'nin ne tür bir lisans (kalıcı veya kalıcı değil) vermesini belirlemek için kullanılır.
 
 Bu, güvenli belirteç hizmeti 'nin (STS) bir belirtece karşılık gelen talep değerini eklemek için iş mantığı ve istemci/cihaz bilgilerine sahip olması gerektiği anlamına gelir.
 
@@ -187,11 +187,11 @@ Widevine güvenlik düzeyleri için, Google 'ın [WIDEVINE DRM mimarisine genel 
 
 Google 'ın [Widevine DRM mimarisine genel bakış](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)' da, aşağıdaki üç güvenlik düzeyini tanımlar:
 
-1.  Güvenlik düzeyi 1: Tüm içerik işleme, şifreleme ve denetim, güvenilir yürütme ortamı (t) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işlemleri farklı yongalar üzerinde gerçekleştirilebilir.
-2.  Güvenlik düzeyi 2: T içinde şifreleme gerçekleştirir (ancak video işleme değil): şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılım aracılığıyla işlenir. Ancak, düzey 2 ' de, şifreleme bilgileri yalnızca t içinde işlenir.
+1.  Güvenlik düzeyi 1: tüm içerik işleme, şifreleme ve denetim, güvenilir yürütme ortamı (t) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işlemleri farklı yongalar üzerinde gerçekleştirilebilir.
+2.  Güvenlik düzeyi 2: t içinde şifreleme gerçekleştirir (ancak video işleme değil): şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılım aracılığıyla işlenir. Ancak, düzey 2 ' de, şifreleme bilgileri yalnızca t içinde işlenir.
 3.  Güvenlik düzeyi 3 ' te cihazda t yok. Şifreleme bilgilerini ve konak işletim sistemindeki şifresi çözülmüş içeriği korumak için uygun ölçüler alınabilir. 3\. düzey bir uygulama de bir donanım şifreleme altyapısı içerebilir, ancak bu yalnızca performansı artırır, güvenliği etkilemez.
 
-Aynı zamanda, [Widevine lisans şablonu 'ndaki Azure Media Services belgelerde](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), content_key_specs 'in security_level özelliği aşağıdaki beş farklı değere sahip olabilir (kayıttan yürütme için istemci sağlamlık gereksinimleri):
+Aynı zamanda, [Widevine lisans şablonu 'ndaki Azure Media Services belgelerde](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), content_key_specs security_level özelliği aşağıdaki beş farklı değere sahip olabilir (kayıttan yürütme için istemci sağlamlık gereksinimleri):
 
 1.  Yazılım tabanlı beyaz kutu şifreleme gereklidir.
 2.  Yazılım şifreleme ve karıştırılmış bir kod çözücü gereklidir.
@@ -203,9 +203,9 @@ Her iki güvenlik düzeyi de Google Widevine tarafından tanımlanır. Fark, kul
 
 | **Widevine mimarisinde tanımlanan güvenlik düzeyleri** |**Widevine API 'de kullanılan güvenlik düzeyleri**|
 |---|---| 
-| **Güvenlik düzeyi 1**: Tüm içerik işleme, şifreleme ve denetim, güvenilir yürütme ortamı (t) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işlemleri farklı yongalar üzerinde gerçekleştirilebilir.|**security_level = 5**: Şifreleme, kod çözme ve medyanın tüm işlenmesi (sıkıştırılmış ve sıkıştırılmamış), donanım tarafından desteklenen bir t içinde işlenmelidir.<br/><br/>**security_level = 4**: İçeriğin şifrelenmiş ve kod çözme işlemi, donanım tarafından desteklenen bir t içinde gerçekleştirilmelidir.|
-**Güvenlik düzeyi 2**: T içinde şifreleme gerçekleştirir (ancak video işleme değil): şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılım aracılığıyla işlenir. Ancak, düzey 2 ' de, şifreleme bilgileri yalnızca t içinde işlenir.| **security_level = 3**: Anahtar malzeme ve şifre işlemleri, donanım tarafından desteklenen bir t içinde gerçekleştirilmelidir. |
-| **Güvenlik düzeyi 3**: Cihazda bir t yok. Şifreleme bilgilerini ve konak işletim sistemindeki şifresi çözülmüş içeriği korumak için uygun ölçüler alınabilir. 3\. düzey bir uygulama de bir donanım şifreleme altyapısı içerebilir, ancak bu yalnızca performansı artırır, güvenliği etkilemez. | **security_level = 2**: Yazılım şifreleme ve karıştırılmış bir kod çözücü gereklidir.<br/><br/>**security_level = 1**: Yazılım tabanlı beyaz kutu şifreleme gereklidir.|
+| **Güvenlik düzeyi 1**: tüm içerik işleme, şifreleme ve denetim, güvenilir yürütme ORTAMı (t) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işlemleri farklı yongalar üzerinde gerçekleştirilebilir.|**security_level = 5**: şifreleme, kod çözme ve medyanın tüm işlenmesi (sıkıştırılmış ve sıkıştırılmamış), donanım tarafından desteklenen bir t içinde işlenmelidir.<br/><br/>**security_level = 4**: içeriğin şifrelenmiş ve kod çözme işlemi, donanım tarafından desteklenen bir t içinde gerçekleştirilmelidir.|
+**Güvenlik düzeyi 2**: t içinde şifreleme gerçekleştirir (ancak video işleme değil): şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılım aracılığıyla işlenir. Ancak, düzey 2 ' de, şifreleme bilgileri yalnızca t içinde işlenir.| **security_level = 3**: Ana malzeme ve şifre işlemlerinin, donanım tarafından desteklenen bir t içinde gerçekleştirilmesi gerekir. |
+| **Güvenlik düzeyi 3**: CIHAZDA bir t 'ye sahip değil. Şifreleme bilgilerini ve konak işletim sistemindeki şifresi çözülmüş içeriği korumak için uygun ölçüler alınabilir. 3\. düzey bir uygulama de bir donanım şifreleme altyapısı içerebilir, ancak bu yalnızca performansı artırır, güvenliği etkilemez. | **security_level = 2**: yazılım şifreleme ve karıştırılmış bir kod çözücü gereklidir.<br/><br/>**security_level = 1**: yazılım tabanlı beyaz kutu şifreleme gereklidir.|
 
 ### <a name="question"></a>Soru
 
@@ -219,6 +219,10 @@ Her iki güvenlik düzeyi de Google Widevine tarafından tanımlanır. Fark, kul
 2.  Son kullanıcılara tüm içerikler yerine, video kalitesi katmanlarını ve ses izlerini seçmeli olarak indirme seçeneği sağlar. Çevrimdışı modda, tüm kalite katmanlarını indirmek için bir nokta yoktur. Bunu başarmanın iki yolu vardır:
     1.  İstemci denetimli: oynatıcı uygulaması otomatik olarak seçilir veya Kullanıcı, indirilecek video kalite katmanını ve ses izlerini seçer;
     2.  Hizmet denetimli: bir adet, HLS çalma listesini veya DASH MPD 'ı tek bir video kalite katmanına ve seçili ses izlemeleriyle sınırlayan bir (genel) filtresi oluşturmak için Azure Media Services dinamik bildirim özelliğini kullanabilir. Ardından, son kullanıcılara sunulan indirme URL 'SI bu filtreyi içerecektir.
+
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="summary"></a>Özet
 

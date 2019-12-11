@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: REST API ve JavaScript kullanarak görüntüdeki yüzeyleri algılama'
+title: 'Hızlı Başlangıç: REST API ve JavaScript kullanarak bir görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, Bilişsel Hizmetler’de JavaScript ile Yüz Tanıma API’sini kullanarak bir görüntüdeki yüzleri algılayacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3946f6d034baee528f9cd5abd6467b8c393e73de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859050"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977990"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Hızlı Başlangıç: REST API ve JavaScript kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Hızlı Başlangıç: REST API ve JavaScript kullanarak bir görüntüdeki yüzleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API JavaScript ile kullanacaksınız.
 
@@ -41,7 +41,7 @@ Yeni bir HTML dosyası oluşturun, *detectFaces. html*ve aşağıdaki kodu ekley
 </html>
 ```
 
-Ardından, belgenin `body` öğesi içine aşağıdaki kodu ekleyin. Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
+Ardından, belgenin `body` öğesinin içine aşağıdaki kodu ekleyin. Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>JavaScript betiğini yazma
 
-Aşağıdaki kodu, belgenizin hemen üstüne `h1` ekleyin. Bu kod, Yüz Tanıma API'si çağıran JavaScript kodunu ayarlar.
+Aşağıdaki kodu belgenize hemen `h1` öğesine ekleyin. Bu kod, Yüz Tanıma API'si çağıran JavaScript kodunu ayarlar.
 
 ```html
 <script type="text/javascript">
@@ -124,7 +124,7 @@ Aşağıdaki kodu, belgenizin hemen üstüne `h1` ekleyin. Bu kod, Yüz Tanıma 
 </script>
 ```
 
-`subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir; bu dizeyi amaçlanan kullanıma bağlı olarak değiştirmek isteyebilirsiniz.
+`subscriptionKey` alanını abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve doğru uç nokta dizesini içermesi için `uriBase` dizesini değiştirmeniz gerekir. `returnFaceAttributes` alanı alınacak yüz özniteliklerini belirtir; Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

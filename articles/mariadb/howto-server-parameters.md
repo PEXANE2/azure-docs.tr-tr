@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 59d18ea11699ed77763c162e4930b159fcd19fe2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/9/2019
+ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888674"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976307"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal kullanarak, MariaDB için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
@@ -37,21 +37,21 @@ Desteklenen sunucu parametrelerinin listesi sürekli olarak artmaktadır. Sunucu
 
 Innodb arabellek havuzu ve en fazla bağlantı olmayan yapılandırılabilir ve bağlı olduğu için [fiyatlandırma katmanı](concepts-pricing-tiers.md).
 
-|**Fiyatlandırma Katmanı**| **Sanal çekirdek**|**Innodb arabellek havuzu (MB)**| **En fazla bağlantı sayısı**|
-|---|---|---|---|
-|Temel| 1| 1024| 50|
-|Temel| 2| 2560| 100|
-|Genel Amaçlı| 2| 3584| 300|
-|Genel Amaçlı| 4| 7680| 625|
-|Genel Amaçlı| 8| 15360| 1250|
-|Genel Amaçlı| 16| 31232| 2500|
-|Genel Amaçlı| 32| 62976| 5000|
-|Genel Amaçlı| 64| 125952| 10000|
-|Bellek için İyileştirilmiş| 2| 7168| 600|
-|Bellek için İyileştirilmiş| 4| 15360| 1250|
-|Bellek için İyileştirilmiş| 8| 30720| 2500|
-|Bellek için İyileştirilmiş| 16| 62464| 5000|
-|Bellek için İyileştirilmiş| 32| 125952| 10000|
+|**Fiyatlandırma Katmanı**| **Sanal çekirdek**|**Innodb arabellek havuzu (MB)**|
+|---|---|---|
+|Temel| 1| 1024|
+|Temel| 2| 2560|
+|Genel Amaçlı| 2| 3584|
+|Genel Amaçlı| 4| 7680|
+|Genel Amaçlı| 8| 15360|
+|Genel Amaçlı| 16| 31232|
+|Genel Amaçlı| 32| 62976|
+|Genel Amaçlı| 64| 125952|
+|Bellek için İyileştirilmiş| 2| 7168|
+|Bellek için İyileştirilmiş| 4| 15360|
+|Bellek için İyileştirilmiş| 8| 30720|
+|Bellek için İyileştirilmiş| 16| 62464|
+|Bellek için İyileştirilmiş| 32| 125952|
 
 Bu ek sunucu parametreleri sistemde yapılandırılabilir değildir:
 

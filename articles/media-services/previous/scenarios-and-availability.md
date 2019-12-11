@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083203"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978177"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Senaryolar ve Media Services özelliklerinin veri merkezleri arasında kullanılabilirliği
 
@@ -37,7 +37,7 @@ Bu konuda, içeriğinizi [canlı](#live_scenarios) veya isteğe bağlı olarak s
 
 Azure Media Services’i kullanmaya başlamak için aşağıdakilerin bulunması gerekir:
 
-* Bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılar için bkz [Azure ücretsiz deneme sürümü](https://azure.microsoft.com).
+* Bir Azure hesabı. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com).
 * Bir Azure Media Services hesabı. Daha fazla bilgi için bkz. [Hesap Oluşturma](media-services-portal-create-account.md).
 * İçerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumunda olması gerekir.
 
@@ -167,7 +167,7 @@ Bu bölümde, Media Services özelliklerinin veri merkezleri arasında kullanıl
 
 ### <a name="ams-accounts"></a>AMS hesapları
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 Bir veri merkezinde Media Services’ın kullanılabilir olup olmadığını belirlemek için https://azure.microsoft.com/status/ adresine göz atın ve MEDYA tablosuna kaydırın.
 
@@ -175,16 +175,16 @@ Bir veri merkezinde Media Services’ın kullanılabilir olup olmadığını bel
 
 Media Services müşterileri **Standart** akış uç noktası veya **Premium** akış uç noktası seçebilir. Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
-|Ad|Durum|Veri merkezleri
+|Adı|Durum|Veri merkezleri
 |---|---|---|
-|Standart|GA|Tümü|
-|Premium|GA|Tümü|
+|Standart|Genel Kullanım|Tümü|
+|Premium|Genel Kullanım|Tümü|
 
 ### <a name="live-encoding"></a>Live encoding
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 Şu bölgeler hariç tüm veri merkezlerinde kullanılabilir: Almanya, Brezilya Güney, Hindistan Batı, Hindistan Güney ve Hindistan Orta. 
 
@@ -192,23 +192,23 @@ Media Services müşterileri **Standart** akış uç noktası veya **Premium** a
 
 AMS, isteğe bağlı iki kodlayıcı sunar: **Media Encoder Standard** ve **Media Encoder Premium İş Akışı**. Daha fazla bilgi için bkz. [Azure isteğe bağlı medya kodlayıcılarına genel bakış ve karşılaştırma](media-services-encode-asset.md). 
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 |Medya işlemci adı|Durum|Veri merkezleri
 |---|---|---|
-|Media Encoder Standard|GA|Tümü|
-|Media Encoder Premium İş Akışı|GA|Çin dışında tümü|
+|Media Encoder Standard|Genel Kullanım|Tümü|
+|Media Encoder Premium İş Akışı|Genel Kullanım|Çin dışında tümü|
 
 ### <a name="analytics-media-processors"></a>Analiz medya işlemcileri
 
 Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştürülebilir öngörüler türetmesini kolaylaştıran bir grup konuşma ve görme bileşenidir. Daha fazla bilgi için bkz. [Azure Media Services Analizi’ne Genel Bakış](media-services-analytics-overview.md).
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 |Medya işlemci adı|Durum|Veri merkezleri
 |---|---|---|
 |Azure Media Face Detector|Önizleme|Tümü|
-|Azure Media Indexer|GA|Tümü|
+|Azure Media Indexer|Genel Kullanım|Tümü|
 |Azure Media Motion Detector|Önizleme|Tümü|
 |Azure Media OCR|Önizleme|Tümü|
 |Azure Media Redactor|Önizleme|Tümü|
@@ -219,15 +219,15 @@ Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştü
 
 Microsoft Azure Media Services, medyanızı bilgisayarınızdan ayrıldığı andan başlayıp depolama, işleme ve teslim aşamaları boyunca güvenlik altına almanızı sağlar. Daha fazla bilgi için bkz. [AMS içeriğini koruma](media-services-content-protection-overview.md).
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 |Şifreleme|Durum|Veri merkezleri|
 |---|---|---| 
-|Depolama|GA|Tümü|
-|AES-128 anahtarları|GA|Tümü|
-|Fairplay|GA|Tümü|
-|PlayReady|GA|Tümü|
-|Widevine|GA|Almanya, Federal Devlet ve Çin dışında tümü.
+|Depolama|Genel Kullanım|Tümü|
+|AES-128 anahtarları|Genel Kullanım|Tümü|
+|Fairplay|Genel Kullanım|Tümü|
+|PlayReady|Genel Kullanım|Tümü|
+|Widevine|Genel Kullanım|Almanya, Federal Devlet ve Çin dışında tümü.
 
 ### <a name="reserved-units-rus"></a>Ayrılmış birimler (RU)
 
@@ -235,7 +235,7 @@ Sağlanan ayrılmış birim sayısı, verili bir hesapta eşzamanlı olarak işl
 
 Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 Tüm veri merkezlerinde kullanılabilir.
 
@@ -245,13 +245,17 @@ Media Services hesabı bir Ayrılmış birim türüyle ilişkilendirilir ve bu d
 
 Daha fazla bilgi için [ölçeklendirme](#scaling) bölümüne bakın.
 
-#### <a name="availability"></a>Kullanılabilirlik
+#### <a name="availability"></a>Erişilebilirlik
 
 |RU türü adı|Durum|Veri merkezleri
 |---|---|---|
-|S1|GA|Tümü|
-|S2|GA|Brezilya Güney ve Hindistan Batı dışında tümü|
-|S3|GA|Hindistan Batı dışında tümü|
+|S1|Genel Kullanım|Tümü|
+|S2|Genel Kullanım|Brezilya Güney ve Hindistan Batı dışında tümü|
+|S3|Genel Kullanım|Hindistan Batı dışında tümü|
+
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -259,6 +263,6 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

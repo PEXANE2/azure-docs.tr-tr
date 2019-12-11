@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-hiper ölçek (Citus)
+title: Güvenlik duvarı kuralları-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
 description: Bu makalede PostgreSQL için Azure veritabanı-hiper ölçek (Citus) güvenlik duvarı kuralları açıklanmaktadır.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273734"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975576"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-hiper ölçek (Citus)
 PostgreSQL için Azure veritabanı sunucu güvenlik duvarı, hangi bilgisayarların izne sahip olduğunu belirtene kadar Hyperscale (Citus) düzenleyici düğümüne tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.
@@ -31,7 +31,7 @@ Hiper ölçek (Citus) sunucu grubu güvenlik duvarı, grubun düzenleyici düğ�
 
 Güvenlik Duvarı bağlantıları engellediğinde, uygulama hatalarına neden olabilir. Örneğin PostgreSQL JDBC sürücüsünü kullanarak, aşağıdaki gibi bir hata oluşturur:
 
-> Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: Önemli: Ana bilgisayar\_"123.45.67.890", Kullanıcı "citus", veritabanı "citus", SSL için pg HBA. conf girişi yok
+> Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: Ana bilgisayar "123.45.67.890", Kullanıcı "citus", veritabanı "citus", SSL için SF\_HBA. conf girdisi
 
 Kuralların nasıl tanımlandığını öğrenmek için bkz. [güvenlik duvarı kuralları oluşturma ve yönetme](howto-hyperscale-manage-firewall-using-portal.md) .
 
@@ -45,7 +45,7 @@ PostgreSQL için Microsoft Azure veritabanına erişim-hiper ölçek (Citus) hiz
 Örneğin, bir JDBC istemcisi kullanarak aşağıdaki hata görünebilir.
 > Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: "YourUserName" kullanıcısı için parola kimlik doğrulaması başarısız oldu
 
-* **Dinamik IP adresi:** Dinamik IP adresleme ile Internet bağlantınız varsa ve güvenlik duvarından geçiş konusunda sorun yaşıyorsanız, aşağıdaki çözümlerden birini deneyebilirsiniz:
+* **Dinamik IP adresi:** Dinamik IP adresiyle kurulmuş bir İnternet bağlantınız varsa ve güvenlik duvarını aşmakta sorun yaşıyorsanız aşağıdaki çözümlerden birini deneyebilirsiniz:
 
 * Hiper ölçek (Citus) düzenleyici düğümüne erişen istemci bilgisayarlarınıza atanan IP adresi aralığı için Internet servis sağlayıcınıza (ISS) sorun ve IP adresi aralığını bir güvenlik duvarı kuralı olarak ekleyin.
 

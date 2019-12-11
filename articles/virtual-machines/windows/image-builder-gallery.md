@@ -1,26 +1,26 @@
 ---
-title: Windows sanal makineler için bir görüntü Galerisi ile Azure Image Builder kullanma (Önizleme)
-description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Windows görüntüleri oluşturun.
+title: Windows VM 'Leri için bir görüntü Galerisi ile Azure Image Builder kullanma (Önizleme)
+description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Windows VM görüntüleri oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698678"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976086"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: Bir Windows görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Windows görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
 Bu makale, [paylaşılan bir görüntü galerisinde](shared-image-galleries.md)bir görüntü sürümü oluşturmak Için Azure görüntü Oluşturucu 'yu nasıl kullanabileceğinizi gösterir ve ardından görüntüyü küresel olarak dağıtabilirsiniz.
 
 Görüntüyü yapılandırmak için bir. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şu şekildedir: [Helloımagetemplateforwinsig. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, şablon `distribute` bölümünün değeri olarak [Parçalama](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) .
+Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için, şablon, şablonun `distribute` bölümü [değeri olarak parçalama](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) .
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Compute
 
 ## <a name="set-variables-and-permissions"></a>Değişkenleri ve izinleri ayarla 
 
-Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız. `username` Ve`vmpassword`gibi değişkenlerin değerlerini kendi bilgileriniz ile değiştirin.
+Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız. `username` ve `vmpassword`gibi değişkenlerin değerlerini kendi bilgileriniz ile değiştirin.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -77,7 +77,7 @@ username="azureuser"
 vmpassword="passwordfortheVM"
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`edinebilirsiniz.
+Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
 
 ```azurecli-interactive
 subscriptionID="Subscription ID"
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Bu kaynak grubunda kaynak oluşturmak için Azure Image Builder iznini verin. `--assignee` Değer, görüntü Oluşturucu hizmeti için uygulama kayıt kimliğidir. 
+Bu kaynak grubunda kaynak oluşturmak için Azure Image Builder iznini verin. `--assignee` değeri, görüntü Oluşturucu hizmeti için uygulama kayıt KIMLIĞIDIR. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -191,7 +191,7 @@ VM 'yi oluştururken ayarladığınız Kullanıcı adını ve parolayı kullanar
 dir c:\
 ```
 
-Görüntü özelleştirmesi sırasında oluşturulmuş adlı `buildActions` bir dizin görmeniz gerekir.
+Görüntü özelleştirmesi sırasında oluşturulan `buildActions` adlı bir dizin görmeniz gerekir.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -211,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-Görüntü Oluşturucu tarafından oluşturulan görüntü sürümünü alın, bu her zaman ile `0.`başlar ve ardından görüntü sürümünü siler
+Image Builder tarafından oluşturulan görüntü sürümünü al, bu her zaman `0.`başlar ve sonra görüntü sürümünü siler
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

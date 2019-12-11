@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/20/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2b095f76eb2c2c9ca420e0049ced3e7af1e742c4
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405913"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977871"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Hızlı başlangıç: .NET için yüz istemci kitaplığı
 
@@ -36,7 +36,7 @@ ms.locfileid: "74405913"
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Kurulum
 
 ### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma
 
@@ -95,7 +95,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar ve arabirimler, yüz .NET SDK 'sının önemli özelliklerinden bazılarını işler:
 
-|Name|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
 |[Çok yönlü Işlemler](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |

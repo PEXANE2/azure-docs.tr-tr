@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84b7f56ebcbb87a31fbfb85ea6d88c3388870872
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824365"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976001"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Visual Studio Code için Azure Machine Learning kullanmaya başlama
 
@@ -25,7 +25,7 @@ Bu makalede, makine öğrenimi modellerini eğitmek ve dağıtmak için **Visual
 + Eğitim için, denemeleri yerel olarak veya uzaktan çalıştırılmasına yönelik destek sağlar. Her deneme için, hiper parametrelere ince ayar yapmak üzere birden çok çalıştırmanın özel ölçümlerini günlüğe kaydedebilirsiniz
 + Test ve üretim gereksinimleriniz için makine öğrenimi modellerini kolayca dağıtmak üzere Azure Machine Learning de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -94,8 +94,8 @@ Azure 'un çalışmalarınızın önemli bilgilerden haberdar olması için proj
     import azureml
     from azureml.core import Run
 
-    # access the Azure ML run
-    # init run param to check if running within AML
+    # Access the Azure ML run
+    # Init run param to check if running within AML
     def get_AMLRun():
         try:
             run = Run.get_submitted_run()
@@ -128,7 +128,7 @@ Azure 'un çalışmalarınızın önemli bilgilerden haberdar olması için proj
     ...
             acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
 
-            # log accuracies to AML logger if using AML
+            # Log accuracies to AML logger if using AML
             if run != None:
                 run.log('Validation Accuracy', np.float(acc_val))
                 run.log('Training Accuracy', np.float(acc_train))
@@ -137,14 +137,14 @@ Azure 'un çalışmalarınızın önemli bilgilerden haberdar olması için proj
     ...
     ```
 ### <a name="run-the-script-in-azure"></a>Betiği Azure 'da çalıştırma
-İşte bu kadar! Şimdi, kodunuzu bulutta çalıştırmak için yalnızca uzantıyı kullanın! Aşağıdaki izlenecek yol videosunun, yeni bir Azure ML çalışma alanı ve işlem oluşturmak için gereken süre miktarını ve eğitim betiğini çalıştırmak için gereken süreyi sıkıştırıp aldığını unutmayın.
+İşte bu kadar! Şimdi, kodunuzu bulutta çalıştırmak için yalnızca uzantıyı kullanın! Aşağıdaki izlenecek yol videosunun, yeni bir Azure Machine Learning çalışma alanı ve işlem oluşturmak için gereken süre miktarını ve eğitim betiğini çalıştırmak için gereken süreyi sıkıştırıp aldığını unutmayın.
 
    [Azure ML denemesi ![başlatın](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 Deneme Çalıştır düğmesine tıkladıktan sonra, istemleri aşağıdaki gibi yanıtlayın:
 
-1. Azure aboneliğinizi seçme
-1. *Yeni* BIR Azure ML çalışma alanı oluşturmayı seçin
+1. Azure aboneliğinizi seçin.
+1. *Yeni* bir Azure Machine Learning çalışma alanı oluşturmayı seçin.
 1. Çalışma için Python ortamını başlatmak üzere önceden yapılandırılmış bir şablon kümesinden seçim yapın. Şablonlar, şunlar için bir başlangıç noktası ve ekleme ayarları sağlar:
     1. **Pytorch**, **TensorFlow**veya **scikit-öğrenme**
     1. **Tek** veya **Dağıtılmış** işlem eğitimi
@@ -155,7 +155,7 @@ Deneme Çalıştır düğmesine tıkladıktan sonra, istemleri aşağıdaki gibi
 
     [bulutta eğitme ![](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-Birkaç saniye içinde, denemenin Azure 'a gönderildiği, VS Code bildiriminde **deneme çalıştırmasını görüntüle** bağlantısına tıklayarak veya VS Code tarafından Azure Machine Learning Studio 'da ilerleme durumunu görüntüleyebilirsiniz. Azure sekmesinde Yenile düğmesine vurun.
+Birkaç saniye içinde, deneme işleminin Azure 'a gönderildiği, VS Code bildiriminde **deneme çalıştırmasını görüntüle** bağlantısına tıklayarak vs Code ya da Azure sekmesindeki Yenile düğmesine basarak, Azure Machine Learning Studio 'da ilerleme durumunu görüntüleyebileceğiniz bir bildirim alırsınız.
 
 Şu anda, çalışma ölçümlerini görüntüleme yalnızca Studio 'da desteklenir. Yukarıda bahsedilen **Görünüm deneme çalıştırması** bağlantısı sizi, günlüğe kaydettiğiniz ölçümleri görebileceğiniz çalıştırmaya götürür.
 [Portalda ![deneme çalıştırması](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
@@ -195,7 +195,7 @@ Tek tek model eğitimi çalıştırmalarını izlemek ve analiz etmek için, ça
     [![deneme oluşturma](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
 
 
-### <a name="create-and-manage-compute-targets"></a>İşlem hedefleri oluşturma ve yönetme
+### <a name="create-and-manage-compute-targets"></a>Oluşturma ve yönetme işlem hedefleri
 
 Visual Studio Code için Azure Machine Learning sayesinde verilerinizi hazırlayabilir, modellerle eğitebilir ve bunları yerel olarak ve Uzaktan işlem hedeflerine dağıtabilirsiniz.
 
@@ -209,9 +209,9 @@ Uzantı Azure Machine Learning için çeşitli uzak işlem hedeflerini destekler
 
 1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin.
 
-1. Çalışma alanı düğümü altında, **işlem** düğümüne sağ tıklayıp **işlem oluştur**' u seçin.
+1. Çalışma alanı düğümünde sağ **işlem** düğüm ve **oluşturma işlem**.
 
-1. Listeden işlem hedefi türünü seçin.
+1. İşlem hedef listeden seçin.
 
 1. Komut paleti isteminde bir sanal makine boyutu seçin. "GPU" gibi metin ile hesaplamayı filtreleyebilirsiniz.
 
@@ -252,7 +252,7 @@ Azure Machine Learning deneme çalıştırmak için:
 
 1. Çalışma alanı düğümü altında, **denemeleri** düğümünü genişletin ve çalıştırmak istediğiniz denemeyi sağ tıklatın.
 
-1. **Deneme Çalıştır**' ı seçin.
+1. Seçin **denemeyi çalıştırma**.
 
 1. Modelinize eğitebilmeniz için çalıştırmak istediğiniz Python dosyasının adını seçin ve çalıştırmayı göndermek için ENTER tuşuna basın. Note: seçilen dosya, şu anda VS Code açık olan klasörde bulunmalıdır.
 
@@ -262,7 +262,7 @@ Azure Machine Learning deneme çalıştırmak için:
 
 [deneme ![yerel olarak çalıştırın](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
 
-### <a name="deploy-and-manage-models"></a>Modelleri dağıtma ve yönetme
+### <a name="deploy-and-manage-models"></a>Model dağıtıp yönetmek
 Azure Machine Learning, makine öğrenimi modellerinizi bulutta ve kenarda dağıtabilir ve yönetebilirsiniz.
 
 #### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>Modelinizi Visual Studio Code Azure Machine Learning için kaydedin
@@ -275,13 +275,13 @@ Modelinizi kaydetmek için:
 
 1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin.
 
-1. Çalışma alanı düğümü altında **modeller** ' e sağ tıklayın ve **modeli Kaydet**' i seçin.
+1. Çalışma alanı düğümü altında sağ **modelleri** ve **modelini kaydettirmek**.
 
 1. Komut paletinde, alanına bir model adı girin.
 
 1. Listeden bir **model dosyası** (tek modeller için) veya **model klasörünü** (örneğin, TensorFlow gibi birden çok dosya içeren modeller için) karşıya yüklemeyi seçin.
 
-1. Klasörünüzü veya dosyanızı seçin.
+1. Klasör veya dosyayı seçin.
 
 1. Model özelliklerinizi yapılandırmayı bitirdiğinizde pencerenin sağ alt köşesinde **Gönder**' i seçin.
 
@@ -304,7 +304,7 @@ Bir Web hizmeti dağıtmak için:
 
 1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanınızı genişletin.
 
-1. Çalışma alanı düğümü altında **modeller** düğümünü genişletin.
+1. Çalışma alanı düğümünde genişletin **modelleri** düğümü.
 
 1. Dağıtmak istediğiniz modele sağ tıklayın ve bağlam menüsünden **hizmeti kayıtlı modelden dağıt** ' ı seçin.
 
@@ -318,7 +318,7 @@ Bir Web hizmeti dağıtmak için:
 
 1. Hizmet özelliklerinizi yapılandırmayı bitirdiğinizde pencerenin sağ alt köşesinde dağıtılacak **Gönder** ' i seçin. Hizmet özellikleri dosyasında, yerel bir Docker dosyası veya bir Schema. JSON dosyası belirtebilirsiniz.
 
-Web hizmeti artık dağıtıldı.
+Web hizmeti artık dağıtılır.
 
 Bir Web hizmetini dağıtmaya ilişkin bir örnek aşağıda verilmiştir:
 

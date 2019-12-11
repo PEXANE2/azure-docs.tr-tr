@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821274"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973552"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Test ve prototipleme için ortak veri kümeleri
 
@@ -26,7 +26,7 @@ Depolama ve analiz hizmetleri ile çözümlerini prototip ve test etmek için ku
 
 | Veri kaynağı | Veriler hakkında | Dosyalar hakkında |
 |---|---|---|
-| [ABD devlet verileri](https://www.census.gov/data.html) | ABD 'de Agric, kele, tüketici, ekosistemleri, eğitim, enerji, finans, sağlık, yerel kamu, üretim, Maritime, okyanus, kamu güvenliği ve bilimçlerini kapsayan 190.000 'den fazla veri kümesi | HTML, XML, CSV, JSON, Excel ve diğer birçok biçimdeki çeşitli boyutlarda bulunan dosyalar. Kullanılabilir veri kümelerini dosya biçimine göre filtreleyebilirsiniz. |
+| [ABD devlet verileri](https://catalog.data.gov/dataset) | ABD 'de Agric, kele, tüketici, ekosistemleri, eğitim, enerji, finans, sağlık, yerel kamu, üretim, Maritime, okyanus, kamu güvenliği ve bilimçlerini kapsayan 250.000 'den fazla veri kümesi | HTML, XML, CSV, JSON, Excel ve diğer birçok biçimdeki çeşitli boyutlarda bulunan dosyalar. Kullanılabilir veri kümelerini dosya biçimine göre filtreleyebilirsiniz. |
 | [ABD Census verileri](https://www.census.gov/data.html) | ABD popülasyonu hakkında istatistiksel veriler | Veri kümeleri çeşitli biçimlerde. |
 | [NASA 'dan Dünya Bilimi verileri](https://earthdata.nasa.gov/) | Agricsal, Atmosphere, Biyoküre, Climate, cryosphere, insan boyutları, hydrosphere, Land Surface, Oceans, Sun-Earth etkileşimleri ve daha fazlasını kapsayan 32.000 ' den fazla veri koleksiyonu. | Veri kümeleri çeşitli biçimlerde. |
 | [Airline uçuş gecikmeleri ve diğer taşıma verileri](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Nakliklerdeki (nokta) nakliye için ABD Bakanlığı (BTS), büyük uçak taşıyıcılar tarafından çalıştırılan yurtiçi fışıkların zaman içindeki performansını izler. Zaman içinde, geciktirilen, iptal edilen ve ayrılan fışıklardan oluşan Özet bilgileri görüntülenir... Bu Web sitesine gönderilen Özet tablolarında. " | Dosyalar CSV biçimindedir. |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0798cffdca8d5876373c35f3f5fd657551586d43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845520"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974062"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 için çevrimdışı PlayReady akışı
 
@@ -60,13 +60,13 @@ Aşağıda, birinci bir Azure VM 'de barındırılan PlayReady lisans sunucusu k
 
 Varlık #1:
 
-* Aşamalı indirme URL 'SI:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA_URL (AMS):[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* Aşamalı indirme URL 'SI: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
 Varlık #2:
 
-* Aşamalı indirme URL 'SI:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (Şirket içi):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* Aşamalı indirme URL 'SI: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (Şirket içi): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 Kayıttan yürütme testi için Windows 10 ' da bir Evrensel Windows uygulaması kullandık. [Windows 10 Universal örneklerinde](https://github.com/Microsoft/Windows-universal-samples), [uyarlamalı akış örneği](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)adında bir temel oynatıcı örneği vardır. Her şey, indirilen videoyu seçmek ve bunu uyarlamalı akış kaynağı yerine kaynak olarak kullanmak üzere bizimle ilgili kod eklemektir. Değişiklikler düğme Click olay işleyicisi:
 
@@ -113,7 +113,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 
 ![PlayReady Protected fMP4 çevrimdışı modda kayıttan yürütme](./media/offline-playready-for-windows/offline-playready1.jpg)
 
-
 Video PlayReady koruması altında olduğundan, ekran görüntüsü videoyu dahil edemeyecektir.
 
 Özet bölümünde, Azure Media Services çevrimdışı modu elde ediyoruz:
@@ -122,6 +121,10 @@ Video PlayReady koruması altında olduğundan, ekran görüntüsü videoyu dahi
 * İçerik, aşamalı indirme için Azure Media Services veya Azure Storage 'da barındırılabilir;
 * PlayReady lisans teslimi Azure Media Services veya başka bir yerde olabilir;
 * Hazırlanan kesintisiz akış içeriği, DRM olarak PlayReady ile DASH veya pürüzsüz aracılığıyla çevrimiçi akış için de kullanılabilir.
+
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

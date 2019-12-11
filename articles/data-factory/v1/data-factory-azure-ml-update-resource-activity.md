@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory kullanarak Machine Learning modellerini güncelleştirme
-description: Azure Data Factory ve Azure Machine Learning kullanarak tahmine dayalı işlem hatları oluşturma işlemini açıklar.
+description: Azure Data Factory ve Azure Machine Learning kullanarak tahmine dayalı işlem hatları oluşturmayı açıklar.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683129"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978722"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
 
@@ -41,8 +41,8 @@ Bu makalede, [Azure Machine Learning ve Azure Data Factory kullanarak tahmine da
 ## <a name="overview"></a>Genel Bakış
 Zaman içinde, Azure ML Puanlama denemeleri 'in tahmine dayalı modellerinin yeni giriş veri kümeleri kullanılarak geri çekilmesi gerekir. Yeniden eğitimle işiniz bittiğinde, Puanlama Web hizmetini geri çekme ML modeliyle güncelleştirmek istiyorsunuz. Web Hizmetleri aracılığıyla yeniden eğitime ve Azure ML modellerini güncelleştirmeye yönelik tipik adımlar şunlardır:
 
-1. [Azure ML Studio](https://studio.azureml.net)bir deneme oluşturun.
-2. Modelden memnun olduğunuzda, hem **eğitim** denemesi hem de Puanlama/tahmine**dayalı deneme**için Web hizmetleri yayımlamak üzere Azure ML Studio kullanın.
+1. [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)' de bir deneme oluşturun.
+2. Modelden memnun olduğunuzda, hem **eğitim** denemesi hem de Puanlama/tahmine**dayalı deneme**için web hizmetleri yayımlamak üzere Azure Machine Learning Studio (klasik) kullanın.
 
 Aşağıdaki tabloda, bu örnekte kullanılan Web Hizmetleri açıklanmaktadır.  Ayrıntılar için bkz. [Machine Learning modellerini programlama yoluyla yeniden eğitme](../../machine-learning/machine-learning-retrain-models-programmatically.md) .
 
@@ -88,7 +88,7 @@ Web hizmeti, Azure Resource Manager uç noktası sunan yeni bir Web hizmeti tür
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Web hizmetini [Azure Machine Learning Web Hizmetleri portalında](https://services.azureml.net/)sorgularken URL 'deki yer tutucuları için değerler alabilirsiniz. Güncelleştirme kaynak uç noktasının yeni türü bir AAD (Azure Active Directory) belirteci gerektirir. AzureML bağlantılı hizmetinde **Serviceprincipalıd** ve **servicesprincipalkey**' i belirtin. [Azure kaynağını yönetmek için hizmet sorumlusu oluşturma ve izinleri atama](../../active-directory/develop/howto-create-service-principal-portal.md)bölümüne bakın. Örnek bir AzureML bağlantılı hizmet tanımı aşağıda verilmiştir: 
+Web hizmetini [Azure Machine Learning Web Hizmetleri portalında](https://services.azureml.net/)sorgularken URL 'deki yer tutucuları için değerler alabilirsiniz. Güncelleştirme kaynak uç noktasının yeni türü bir AAD (Azure Active Directory) belirteci gerektirir. Azure Machine Learning bağlı hizmetinde **Serviceprincipalıd** ve **servicesprincipalkey** ' i belirtin. [Azure kaynağını yönetmek için hizmet sorumlusu oluşturma ve izinleri atama](../../active-directory/develop/howto-create-service-principal-portal.md)bölümüne bakın. Örnek bir AzureML bağlantılı hizmet tanımı aşağıda verilmiştir: 
 
 ```json
 {
@@ -138,7 +138,7 @@ Bağlı hizmetin örnek JSON tanımı aşağıda verilmiştir:
 ```
 
 ### <a name="training-input-dataset"></a>Eğitim girişi veri kümesi:
-Aşağıdaki veri kümesi, Azure ML eğitimi Web hizmeti için giriş eğitim verilerini temsil eder. Azure ML Batch yürütme etkinliği bu veri kümesini giriş olarak alır.
+Aşağıdaki veri kümesi, Azure Machine Learning eğitimi Web hizmeti için giriş eğitim verilerini temsil eder. Azure Machine Learning Batch yürütme etkinliği bu veri kümesini bir giriş olarak alır.
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Aşağıdaki veri kümesi, Azure ML eğitimi Web hizmetinden çıkış iLearner 
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Azure ML eğitim uç noktası için bağlı hizmet
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Azure Machine Learning eğitim uç noktası için bağlı hizmet
 Aşağıdaki JSON kod parçacığı, eğitim Web hizmetinin varsayılan uç noktasını işaret eden Azure Machine Learning bağlı bir hizmeti tanımlar.
 
 ```JSON
@@ -208,12 +208,12 @@ Aşağıdaki JSON kod parçacığı, eğitim Web hizmetinin varsayılan uç nokt
 }
 ```
 
-**Azure ML Studio**'de **MlEndpoint** ve **apikey**değerlerini almak için aşağıdakileri yapın:
+**Azure Machine Learning Studio (klasik)** Içinde, **MlEndpoint** ve **apikey**değerlerini almak için aşağıdakileri yapın:
 
 1. Sol taraftaki menüden **Web Hizmetleri** ' ne tıklayın.
 2. Web hizmetleri listesinde **eğitim Web hizmeti** ' ne tıklayın.
 3. **API anahtarı** metin kutusu ' nun yanındaki Kopyala ' ya tıklayın. Panodaki anahtarı Data Factory JSON düzenleyicisine yapıştırın.
-4. **Azure ML Studio**'DA **Batch yürütme** bağlantısı ' na tıklayın.
+4. **Azure Machine Learning Studio (klasik)** ÖĞESINDE **toplu yürütme** bağlantısı ' na tıklayın.
 5. İstek **URI** 'sini **istek** bölümünden kopyalayın ve Data Factory JSON düzenleyicisine yapıştırın.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure ML güncelleştirilebilir Puanlama uç noktası için bağlı hizmet:

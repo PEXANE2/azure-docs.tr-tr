@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti-güvenlik kavramları
-description: Cihaz sağlama hizmeti ve IoT Hub olan cihazlara özgü güvenlik sağlama kavramlarını açıklar
+description: Cihaz sağlama hizmeti (DPS) ve IoT Hub olan cihazlara özgü güvenlik sağlama kavramlarını açıklar
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228817"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973467"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Cihaz sağlama hizmeti güvenlik kavramlarını IoT Hub 
 
@@ -54,7 +54,7 @@ Onay anahtarı TPM içinde bulunan, dahili olarak oluşturulan veya üretim zama
 
 Depolama kök anahtarı TPM 'de depolanır ve uygulamalar tarafından oluşturulan TPM anahtarlarını korumak için kullanılır, böylece bu anahtarlar TPM olmadan kullanılamaz. Depolama kök anahtarı TPM 'nin sahipliğini aldığınızda oluşturulur; TPM 'YI temizleyerek yeni bir kullanıcının sahipliğini kazanması için yeni bir depolama kök anahtarı oluşturulur. [Depolama kök anahtarı](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx)hakkında daha fazla bilgi edinin.
 
-## <a name="x509-certificates"></a>X. 509.440 sertifikaları
+## <a name="x509-certificates"></a>X.509 sertifikaları
 
 Bir kanıtlama mekanizması olarak X. 509.440 sertifikalarını kullanmak, üretimi ölçeklendirmek ve cihaz sağlamayı basitleştirmek için mükemmel bir yoldur. X. 509.440 sertifikaları genellikle, zincirdeki her bir sertifikanın bir sonraki daha yüksek sertifikanın özel anahtarıyla imzalandığı ve bu şekilde otomatik olarak imzalanan bir kök sertifikada sonlandıralındığı bir sertifika güven zinciri halinde düzenlenir. Bu düzenleme, bir cihazda yüklü olan son varlık "yaprak" sertifikasına her bir ara CA aracılığıyla bir güvenilen kök sertifika yetkilisi (CA) tarafından oluşturulan kök sertifikadan temsilci bir güven zinciri oluşturur. Daha fazla bilgi için bkz. [X. 509.440 CA sertifikalarını kullanarak cihaz kimlik doğrulaması](/azure/iot-hub/iot-hub-x509ca-overview). 
 

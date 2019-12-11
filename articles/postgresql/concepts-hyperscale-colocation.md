@@ -1,18 +1,18 @@
 ---
-title: PostgreSQL için Azure veritabanı 'nda sunucu kavramları
-description: Bu makalede, PostgreSQL sunucuları için Azure veritabanı 'nı yapılandırmaya ve yönetmeye yönelik konular ve yönergeler sağlanmaktadır.
+title: Tablo birlikte bulundurma-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
+description: Daha hızlı sorgular için ilgili bilgileri birlikte depolama
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482760"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967346"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda tablo bulundurma – hiper ölçek (Citus)
 
@@ -132,7 +132,7 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Tenant_id üzerindeki Filter ve JOIN nedeniyle, hiper ölçek (Citus), söz konusu kiracının verilerini içeren birlikte bulunan parçalar kümesi kullanılarak tüm sorgunun yanıtlandığını bilir. Tek bir PostgreSQL düğümü, sorguyu tek bir adımda yanıtlayabilir.
+Tenant_id FILTER ve JOIN nedeniyle hiper ölçek (Citus), bu belirli bir kiracının verilerini içeren birlikte bulunan parçalı parçalar kümesi kullanılarak tüm sorgunun yanıtlandığını bilir. Tek bir PostgreSQL düğümü, sorguyu tek bir adımda yanıtlayabilir.
 
 ![Daha iyi sorgu](media/concepts-hyperscale-colocation/colocation-better-query.png)
 

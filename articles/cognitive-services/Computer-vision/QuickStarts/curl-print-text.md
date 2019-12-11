@@ -1,54 +1,54 @@
 ---
 title: 'Hızlı başlangıç: yazdırılan metni Ayıkla-REST, kıvrımlı'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Görüntü İşleme API'si kullanarak bir görüntüden yazdırılan metni ayıklamanız gerekir.
+description: Bu hızlı başlangıçta, cURL ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f4b201a425075d5be55d831fd23bb1133f70256
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: af0fe8f7c264796dc32138b30507b26ea6baf63f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176878"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976953"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-curl"></a>Hızlı başlangıç: Görüntü İşleme REST API ve kıvrımlı kullanarak yazdırılan metni (OCR) Ayıkla
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklamanız gerekir. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılmış metni algılayabilir ve tanınan karakterleri, makine tarafından kullanılabilen bir karakter akışına ayıklayabilir.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Kıvrımlı](https://curl.haxx.se/windows)olmalıdır.
+- [cURL](https://curl.haxx.se/windows)’niz olmalıdır.
 - Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
-## <a name="create-and-run-the-sample-command"></a>Örnek komutunu oluşturma ve çalıştırma
+## <a name="create-and-run-the-sample-command"></a>Örnek komutu oluşturma ve çalıştırma
 
-Örneği oluşturmak ve çalıştırmak için aşağıdaki adımları uygulayın:
+Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki komutu bir metin düzenleyicisine kopyalayın.
-1. Komutta gereken yerde aşağıdaki değişiklikleri yapın:
-    1. @No__t-0 değerini abonelik anahtarınızla değiştirin.
+1. Gerektiğinde komutta aşağıdaki değişiklikleri yapın:
+    1. `<subscriptionKey>` değerini abonelik anahtarınızla değiştirin.
     1. İstek URL 'sinin (`westcentralus`) ilk kısmını kendi uç nokta URL 'inizdeki metinle değiştirin.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-    1. İsteğe bağlı olarak, istek gövdesinde (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) görüntü URL 'sini çözümlenecek farklı bir görüntünün URL 'si ile değiştirin.
+    1. İsteğe bağlı olarak, istek gövdesindeki görüntü URL’sini (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`), analiz edilecek farklı bir görüntünün URL’si ile değiştirin.
 1. Bir komut istemi penceresi açın.
-1. Komutu metin düzenleyicisinden komut istemi penceresine yapıştırın ve sonra komutu çalıştırın.
+1. Metin düzenleyicisindeki komutu komut istemi penceresine yapıştırın ve komutu çalıştırın.
 
 ```bash
 curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/ocr?language=unk&detectOrientation=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
 ```
 
-## <a name="examine-the-response"></a>Yanıtı inceleyin
+## <a name="examine-the-response"></a>Yanıtı inceleme
 
-JSON 'da başarılı bir yanıt döndürülür. Örnek uygulama, aşağıdaki örneğe benzer şekilde, komut istemi penceresinde başarılı bir yanıt ayrıştırır ve görüntüler:
+Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama, aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp komut istemi penceresinde görüntüler:
 
 ```json
 {
@@ -151,7 +151,7 @@ JSON 'da başarılı bir yanıt döndürülür. Örnek uygulama, aşağıdaki ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir görüntüyü çözümlemek, ünlüler ve köklikleri algılamak, küçük resim oluşturmak ve yazdırılmış ve el yazısı metin ayıklamak için kullanılan Görüntü İşleme API'si keşfeder. Görüntü İşleme API'si hızlı bir şekilde denemek için, [Açık API test konsolunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)deneyin.
+Görüntü analiz etmek, ünlüleri ve yer işaretlerini algılamak, küçük resim oluşturmak ve yazdırılan ve el yazısı metinleri ayıklamak için kullanılan Görüntü İşleme API’sini keşfedin. Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.
 
 > [!div class="nextstepaction"]
-> [Görüntü İşleme API'si keşfet](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Görüntü İşleme API’sini keşfetme](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

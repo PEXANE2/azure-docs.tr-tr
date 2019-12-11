@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958642"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997080"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın
 
@@ -30,7 +30,7 @@ Bu kılavuzda, kapsam dışına çıkan hesapların işlenmesini denetleyen ***S
 * ***Skipoutofscopesilmeleri*** 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır
 * ***Skipoutofscopesilmeleri*** 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılmayacak ve bu bayrak, *sağlama uygulama* düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
 
-Bu yapılandırma, *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, aşağıdaki adımlarda Workday uygulamasının ekran görüntüleri yer alır. Ancak bu, diğer sağlama uygulamalarıyla de kullanılabilir.
+Bu yapılandırma, *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, aşağıdaki adımlarda Workday uygulamasının ekran görüntüleri yer alır. Ancak bu, (ServiceNow, Salesforce, Dropbox vb.) gibi **diğer uygulamalarla** de kullanılabilir.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1\. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
 

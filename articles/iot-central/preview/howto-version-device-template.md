@@ -3,17 +3,17 @@ title: Azure IoT Central uygulamalarınız için cihaz şablonu sürüm oluştur
 description: Yeni sürümler oluşturarak ve canlı bağlı cihazlarınızı etkilemeden cihaz şablonlarınızda yineleme yapın
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 666c3030d91fba3c3bdfe23f808c4e830dff6ec1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f2ecb37ebe156b1eb092bda95f296c39c9e2baf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895598"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974973"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>Yeni bir cihaz şablonu sürümü oluşturma (Önizleme özellikleri)
 
@@ -45,7 +45,7 @@ Bir cihaz şablonunun sürümü için:
 1. **Cihaz şablonları** sayfasına gidin.
 1. Sürüm oluşturmaya çalıştığınız cihaz şablonunu seçin.
 1. Sayfanın üst kısmındaki **Sürüm** düğmesine tıklayın ve şablona yeni bir ad verin. Sizin için düzenlenebilecek yeni bir ad önerdi.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. Artık cihaz şablonunuz taslak modunda. Arabirimlerinizin hala kilitli olduğunu ve düzenlenebilmesi için ayrı ayrı sürüm oluşturulması gerektiğini görürsünüz. 
 
 ### <a name="versioning-an-interface"></a>Arabirim sürümü oluşturma
@@ -58,7 +58,7 @@ Bir arabirimin sürümü için:
 1. Taslak modunda olan cihaz şablonunu seçin.
 1. Sürüm ve düzenleme yapmak istediğiniz yayımlanmış modda olan arabirimi seçin.
 1. Arabirim sayfasının en üstündeki **Sürüm** düğmesine tıklayın. 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 1. Artık arabiriminiz taslak modunda. Mevcut özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya bu özellikleri düzenleyebilirsiniz. 
 
 > [!NOTE]

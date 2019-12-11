@@ -4,12 +4,12 @@ description: Düzenli aralıklarla satırları temizlemek için Azure SQL verita
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230390"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972243"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma
 
@@ -19,7 +19,7 @@ Bu C# işlevlerle çalışırken ilk deneyiminize sahipseniz, [Azure C# işlevle
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-+ Sürüm 2. x çalışma zamanını hedefleyen yerel bir işlev uygulaması oluşturmak için [Visual Studio kullanarak ilk işlevinizi oluşturma](functions-create-your-first-function-visual-studio.md) makalesindeki adımları izleyin. Ayrıca, projenizi Azure 'da bir işlev uygulamasına yayımlamalısınız.
++ Sürüm 2. x veya çalışma zamanının sonraki bir sürümünü hedefleyen bir yerel işlev uygulaması oluşturmak için [Visual Studio kullanarak ilk işlevinizi oluşturma](functions-create-your-first-function-visual-studio.md) makalesindeki adımları izleyin. Ayrıca, projenizi Azure 'da bir işlev uygulamasına yayımlamalısınız.
 
 + Bu makalede, AdventureWorksLT örnek veritabanındaki **SalesOrderHeader** tablosunda toplu temizleme işlemini yürüten bir Transact-SQL komutu gösterilmektedir. AdventureWorksLT örnek veritabanını oluşturmak için [Azure Portal Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)makalesindeki adımları uygulayın.
 
@@ -29,7 +29,7 @@ Bu C# işlevlerle çalışırken ilk deneyiminize sahipseniz, [Azure C# işlevle
 
 [Azure Portal Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)işlemi tamamlandığında oluşturduğunuz veritabanı için bağlantı dizesini almanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 

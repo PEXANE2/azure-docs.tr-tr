@@ -3,16 +3,16 @@ title: Azure Işlevleri bağlama uzantılarını el ile yükler veya güncelleş
 description: Dağıtılan işlev uygulamaları için Azure Işlevleri bağlama uzantılarını yüklemeyi veya güncelleştirmeyi öğrenin.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226517"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977497"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Portaldan Azure Işlevleri bağlama uzantılarını el ile yüklemeyi veya güncelleştirmeyi güncelleştirme
 
-Azure Işlevleri sürüm 2. x çalışma zamanı, Tetikleyiciler ve bağlamalar için kod uygulamak üzere bağlama uzantıları kullanır. Bağlama uzantıları NuGet paketlerinde sağlanır. Bir uzantıyı kaydetmek için aslında bir paket yüklersiniz. İşlevleri geliştirirken, bağlama uzantılarını yüklediğiniz yol geliştirme ortamına bağlıdır. Daha fazla bilgi için bkz. Tetikleyiciler ve bağlamalar için [bağlama uzantılarını kaydetme](./functions-bindings-register.md) makalesi.
+Azure Işlevleri çalışma zamanı, sürüm 2. x ile başlayarak Tetikleyiciler ve bağlamalar için kod uygulamak üzere bağlama uzantıları kullanır. Bağlama uzantıları NuGet paketlerinde sağlanır. Bir uzantıyı kaydetmek için aslında bir paket yüklersiniz. İşlevleri geliştirirken, bağlama uzantılarını yüklediğiniz yol geliştirme ortamına bağlıdır. Daha fazla bilgi için bkz. Tetikleyiciler ve bağlamalar için [bağlama uzantılarını kaydetme](./functions-bindings-register.md) makalesi.
 
 Bazen Azure portal bağlama uzantılarınızı el ile yüklemeniz veya güncelleştirmeniz gerekir. Örneğin, kayıtlı bir bağlamayı daha yeni bir sürüme güncelleştirmeniz gerekebilir. Ayrıca, portaldaki **tümleştir** sekmesine yüklenebilen desteklenen bir bağlamayı kaydetmeniz gerekebilir.
 

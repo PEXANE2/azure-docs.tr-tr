@@ -4,16 +4,16 @@ description: Azure IoT Central uygulamanızdan Azure Event Hubs, Azure Service B
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 10/15/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 35415fd1a552328faa8d1ad5812f44d8f4b6d5e4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894870"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974470"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Azure IoT Central verilerinizi dışarı aktarma (Önizleme özellikleri)
 
@@ -29,7 +29,7 @@ Bu makalede verilerinizi **azure Event Hubs**, **Azure Service Bus**veya **Azure
 > [!Note]
 > Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 IoT Central uygulamanızda yönetici olmanız gerekir
 
@@ -37,7 +37,7 @@ IoT Central uygulamanızda yönetici olmanız gerekir
 
 Sürekli veri dışa aktarmayı yapılandırmadan önce dışa aktarma hedefinin mevcut olması gerekir.
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluştur
+### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
 Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa, aşağıdaki adımları izleyin:
 
@@ -47,7 +47,7 @@ Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa
 
 3. Event Hubs ad alanında bir olay hub 'ı oluşturun. Ad alanına gidin ve bir olay hub 'ı örneği oluşturmak için en üstteki **+ Olay Hub 'ını** seçin.
 
-### <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluştur
+### <a name="create-service-bus-namespace"></a>Hizmet Veri Yolu ad alanı oluşturma
 
 Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoksa, aşağıdaki adımları izleyin:
 

@@ -2,18 +2,17 @@
 title: Azure IoT Hub 'ı kopyalama
 description: Azure IoT Hub 'ı kopyalama
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083278"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976154"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT Hub 'ı başka bir bölgeye kopyalama
 
@@ -73,9 +72,7 @@ Bu, bir IoT Hub 'ını bir bölgeden diğerine taşımak için önerdiğimiz gen
    1. Şablona aktarılmamış bir şey ekleyin. 
    
        Örneğin, tüketici grupları şablona aktarılmaz. Tüketici gruplarını şablona el ile eklemeniz veya hub oluşturulduktan sonra [Azure Portal](https://portal.azure.com) kullanmanız gerekir. [IoT Hub ileti yönlendirmeyi yapılandırmak için bir Azure Resource Manager şablonu kullanma](tutorial-routing-config-message-routing-rm-template.md)makalesindeki bir şablona bir tüketici grubu ekleme örneği vardır.
-
-       [İleti zenginleştirme](iot-hub-message-enrichments-overview.md) , şablona de aktarılmaz. Bunlar yönlendirme iletileriyle birlikte kullanılır ve ileti yönlendirme yapılandırması güncelleştirilirken yeni hub 'da el ile güncelleştirilmeleri gerekecektir.
-
+       
    1. Cihazları orijinal hub 'ından kopyaya kopyalayın. Bu, [IoT Hub 'ına kayıtlı cihazları yönetme](#managing-the-devices-registered-to-the-iot-hub)bölümünde ele alınmıştır.
 
 ## <a name="how-to-handle-message-routing"></a>İleti yönlendirmeyi işleme
@@ -104,16 +101,13 @@ Hub ileti yönlendirme kullanıyorsa iki seçeneğiniz vardır.
 
    * Hub ve yönlendirme uç noktası kaynakları aynı konumda olmadığından, küçük bir performans okuması olur.
 
-> [!NOTE]
-> Hub 'ınız [ileti iyileştirmeleri](iot-hub-message-enrichments-overview.md)kullanıyorsa, Kaynak Yöneticisi şablonuyla aktarılmadığından, bunları yeni IoT Hub 'ında el ile ayarlamanız gerekir.
-
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Hub 'ı başka bir bölgeye geçirmeye hazırlanma
 
 Bu bölüm, hub 'ı geçirmeye yönelik özel yönergeler sağlar.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Özgün hub 'ı bulun ve bir kaynak şablonuna dışarı aktarın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portal](https://portal.azure.com) oturum açın. 
 
 1. **Kaynak grupları** ' na gidin ve taşımak istediğiniz hub 'ı içeren kaynak grubunu seçin. Ayrıca **kaynaklar** ' a gidebilir ve bu şekilde hub 'ı bulabilirsiniz. Hub 'ı seçin.
 
@@ -353,7 +347,7 @@ Artık, yönlendirmeyi işlemeye nasıl karar verdiğinize bağlı olarak, eski 
 
 Yeni bir yerde şablonu kullanarak yeni hub 'ı oluşturun. Taşıyacağınız yönlendirme kaynaklarınız varsa, kaynakların yeni konumda ayarlanması ve şablondaki başvuruların eşleşecek şekilde güncelleştirilmiş olması gerekir. Yönlendirme kaynaklarını taşıdıysanız, güncelleştirilmiş anahtarlarla şablonda olmaları gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 
 1. Seçin **kaynak Oluştur**. 
 

@@ -1,5 +1,5 @@
 ---
-title: Portalı kullanarak Linux için paylaşılan Azure sanal makine görüntülerini oluşturma
+title: Portalı kullanarak Linux için paylaşılan Azure VM görüntülerini oluşturma
 description: Azure portal kullanarak sanal makine görüntülerini oluşturma ve paylaşma hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 9dff10848c42fd730f0bc77fd325f00cec554c9d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892881"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978705"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal kullanarak paylaşılan bir görüntü galerisi oluşturun
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Portalı kullanarak Azure Paylaşılan görüntü galerisi oluşturma
 
 [Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamalar, uygulama yapılandırması ve diğer işletim sistemi yapılandırmalarının dağıtım görevlerinin önyüklemesi için kullanılabilir. 
 

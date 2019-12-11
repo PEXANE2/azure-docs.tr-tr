@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 0e748e81de39b2bef14b543063adeb51b8b3ecdb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a31076d17ebaf8020fe4b3f82594b98a7c3bde74
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486712"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977463"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Soru-Cevap Oluşturma hizmetiniz için bir iş sürekliliği planı oluşturma
 
@@ -33,7 +33,7 @@ Yukarıda gösterilen üst düzey fikir aşağıdaki gibidir:
 
 4. Birincil ve ikincil yığınlar kurulduktan sonra, iki uç noktayı yapılandırmak ve bir yönlendirme yöntemi ayarlamak için [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) 'ı kullanın.
 
-5. Traffic Manager uç noktanız için bir SSL sertifikası oluşturmanız gerekir. Uygulama hizmetlerinize [SSL sertifikasını bağlayın](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) .
+5. Traffic Manager uç noktanız için bir Güvenli Yuva Katmanı (SSL) sertifikası oluşturmanız gerekir. Uygulama hizmetlerinize [SSL sertifikasını bağlayın](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) .
 
 6. Son olarak, bot veya uygulamanızdaki Traffic Manager uç noktasını kullanın.
 

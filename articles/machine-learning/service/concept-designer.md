@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: efc9d7fb31dc9f63780c3f94238bbbfb17756089
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707716"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973637"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcı (Önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -93,7 +93,7 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili baz
 | Azure Machine Learning işlem | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-İşlem hedefleri Machine Learning [çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda yönetirsiniz.
+İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio (klasik)](https://ml.azure.com)içinde çalışma alanınızda yönetirsiniz.
 
 ## <a name="deploy"></a>Kurulum
 
@@ -122,7 +122,7 @@ Bu güncelleştirmelerin sonucunda, görsel arabirim için bazı kavramlar ve te
 
 | Tasarımcıda kavram | Daha önce görsel arabirimde |
 | ---- |:----:|
-| Ardışık düzen taslağı | Deneyin |
+| Ardışık düzen taslağı | Deneme |
 | Gerçek zamanlı uç nokta | Web hizmeti |
 
 ### <a name="migrating-to-the-designer"></a>Tasarımcıya geçme

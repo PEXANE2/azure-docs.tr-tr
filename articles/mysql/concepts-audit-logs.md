@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773577"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972362"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda denetim günlükleri
 
@@ -29,7 +29,7 @@ Ayarlayabileceğiniz diğer parametreler şunlardır:
 - `audit_log_events`: günlüğe kaydedilecek olayları denetler. Belirli denetim olayları için aşağıdaki tabloya bakın.
 - `audit_log_include_users`: günlük kaydı için dahil edilecek MySQL kullanıcıları. Bu parametre için varsayılan değer boştur; bu, günlüğe kaydedilecek tüm kullanıcıları içerir. Bu, `audit_log_exclude_users`daha yüksek önceliğe sahiptir. Parametrenin uzunluk üst sınırı 512 karakterdir.
 > [!Note]
-> `audit_log_include_users` `audit_log_exclude_users` daha yüksek önceliğe sahiptir; Örneğin audit_log_include_users = `demouser` ve audit_log_exclude_users = `demouser`, `audit_log_include_users` daha yüksek önceliğe sahip olduğu için günlükleri denetler.
+> `audit_log_include_users` `audit_log_exclude_users`daha yüksek önceliğe sahiptir. Örneğin, `audit_log_include_users` = `demouser` ve `audit_log_exclude_users` = `demouser`, `audit_log_include_users` daha yüksek önceliğe sahip olduğu için Kullanıcı denetim günlüklerine dahil edilir.
 - `audit_log_exclude_users`: MySQL kullanıcılarının günlüğe kaydedilmesini hariç tutulacak. Parametrenin uzunluk üst sınırı 512 karakterdir.
 
 > [!Note]
@@ -129,7 +129,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`veya `DELETE` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` veya `DELETE` |
 | `connection_id_d` | MySQL tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `db_s` | Erişilen veritabanının adı |
 | `table_s` | Erişilen tablonun adı |

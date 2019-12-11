@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075081"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975066"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile otomatik olarak imzalanan bir Azure Application Gateway sertifikası oluşturma
 
@@ -106,7 +106,7 @@ CSR, sertifika isteğinde bulunan bir CA 'ya verilen ortak anahtardır. CA, bu b
 1. Sertifikayı oluşturmak için aşağıdaki komutu kullanın:
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Yeni oluşturulan sertifikayı doğrulayın
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Application Gateway sertifikayı karşıya yüklemek için. CRT sertifikasını. cer biçiminde bir temel-64 kodlanmış olarak dışarı aktarmanız gerekir. . CRT zaten Base-64 kodlu biçimde ortak anahtarı içerdiğinden, dosya uzantısını. CRT 'den. cer 'e yeniden adlandırmanız yeterlidir. 
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portalı
 
 Portaldan güvenilen kök sertifikayı karşıya yüklemek için **http ayarları** ' nı seçin ve **https** protokolünü seçin.
 

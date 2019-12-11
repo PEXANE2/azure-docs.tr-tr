@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/25/2019
+ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485491"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981150"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** üzerinden yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
 
@@ -32,9 +32,9 @@ ms.locfileid: "74485491"
 | Sanal makine başına özel IP adresleri |256 |
 | Ağ arabirimi başına genel IP adresleri |256 |
 | Sanal makine başına genel IP adresleri |256 |
-| Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı |500,000 |
+| [Bir sanal makinenin veya rol örneğinin her NIC 'ı için eşzamanlı TCP veya UDP akışı](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
 | Ağ arabirim kartları |65.536 |
-| Ağ Güvenlik Grupları |5,000 |
+| Ağ Güvenlik Grupları |5\.000 |
 | NSG başına NSG kuralları |1000 |
 | Bir güvenlik grubundaki kaynak veya hedef için belirtilen IP adresleri ve aralıklar |4,000 |
 | Uygulama güvenliği grupları |3\.000 |
@@ -62,7 +62,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | --- | --- |
 | Yük dengeleyiciler | 1000 | 
 | Kaynak başına kurallar, temel | 250 |
-| Kaynak başına kurallar, standart | 1\.500 | 
+| Kaynak başına kurallar, standart | 1,500 | 
 | IP yapılandırması başına kurallar | 299 |
 | NIC başına kurallar | 300 |
 | Ön uç IP yapılandırması, temel | 200 |

@@ -1,5 +1,5 @@
 ---
-title: Hiper Ölçek hakkında SSS
+title: SSS-Hyperscale (Citus)-PostgreSQL için Azure veritabanı
 description: Yaygın soruların cevapları müşteriler, hiper ölçekli hizmet katmanında bir Azure SQL veritabanı (genellikle hiper ölçek veritabanı denir) hakkında bilgi ister.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 89316811f39b4cab918b913b45ae5945686e6b15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818222"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974028"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 
@@ -39,7 +39,7 @@ Hyperscale hizmet katmanı yalnızca Azure SQL veritabanı 'ndaki sanal çekirde
 
 Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığı gibi veritabanı kullanılabilirliğine ve depolama türüne, performansa ve en büyük boyuta göre farklılaştırılır.
 
-| | Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
+| | Kaynak türü | Genel Amaçlı |  Hiper ölçeklendirme | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
 | **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
@@ -117,7 +117,7 @@ Hiper ölçek tüm SQL Server iş yüklerini destekler, ancak öncelikle OLTP i�
 
 Şu anda bir veri ambarı olarak SQL Server kullanarak etkileşimli analiz sorguları çalıştırıyorsanız, daha düşük bir maliyetle küçük ve orta ölçekli veri ambarlarını (100 TB 'a kadar birkaç TB) barındırabileceğiniz için Hiperscale harika bir seçenektir ve SQL Server veri War 'i geçirebilirsiniz. en az T-SQL kod değişiklikleriyle hiper ölçek için eHouse iş yükleri.
 
-Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarları kullanarak, SQL veri ambarı şu şekilde olabilir en iyi seçim.
+Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarlarından yararlanarak SQL veri ambarı en iyi seçim olabilir.
   
 ## <a name="hyperscale-compute-questions"></a>Hiper ölçekli Işlem soruları
 
@@ -278,7 +278,7 @@ Evet.  Coğrafi geri yükleme tam olarak desteklenmektedir.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Hiper ölçekli veritabanı ile Coğrafi çoğaltmayı ayarlayabilir miyim
 
-Şu anda değil.
+Şimdilik hayır.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Hiper ölçekli bir veritabanı yedeklemesini alabilir ve şirket içi sunucuma veya bir VM 'deki SQL Server geri yüklemenize olanak verebilir
 

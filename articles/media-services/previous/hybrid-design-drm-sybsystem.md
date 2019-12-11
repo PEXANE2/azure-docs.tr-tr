@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014662"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975202"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM alt sistemlerinin karma tasarımı 
 
@@ -69,7 +69,7 @@ Azure Media Services DRM, kapsamlı bir bulut video platformunun bir parçası o
 
 ### <a name="drm-license-delivery"></a>DRM lisansı verme
 
-* AMS DRM lisansı, AMS lisans teslim hizmeti tarafından dağıtılır.
+* AMS: DRM lisansı AMS lisans teslim hizmeti tarafından teslim edilir.
 * Üçüncü taraf: DRM lisansı, AMS dışında bir üçüncü taraf DRM lisans sunucusu tarafından dağıtılır.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Karma senaryonuz temelinde yapılandırma
@@ -89,7 +89,7 @@ Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyic
 
 * CENC (PlayReady ve Widevine) altındaki DASH gibi akış protokolü ve DRM şifreleme kombinasyonu, Widevine veya PlayReady altında PlayReady, HLS altında kesintisiz akış.
 * Dahil edilen her bir DRMs için varsayılan/katıştırılmış lisans teslimi URL 'Leri.
-* DASH MPD veya HLS çalma listesindeki lisans alma URL 'Lerinin (LA_URLs) Widevine ve FairPlay için sırasıyla anahtar KIMLIĞI (KıD) sorgu dizesi içerip içermediğini belirtir.
+* DASH MPD veya HLS çalma listesindeki lisans alma URL 'Lerinin (LA_URLs) Widevine ve FairPlay için anahtar KIMLIĞI (KıD) sorgu dizesini içerip içermediğini belirtir.
 
 ## <a name="scenarios-and-samples"></a>Senaryolar ve örnekler
 
@@ -97,24 +97,24 @@ Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyic
 
 |**& Kaynağı barındıran içerik**|**DRM şifrelemesi**|**DRM lisansı teslimi**|**İçerik anahtarını yapılandır**|**Varlık teslim ilkesini yapılandırma**|**Örnek**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Evet|Evet|Örnek 1|
-|AMS|AMS|Üçüncü taraf|Evet|Evet|Örnek 2|
-|AMS|Üçüncü taraf|AMS|Evet|Hayır|Örnek 3|
+|AMS|AMS|AMS|Yes|Yes|Örnek 1|
+|AMS|AMS|Üçüncü taraf|Yes|Yes|Örnek 2|
+|AMS|Üçüncü taraf|AMS|Yes|Hayır|Örnek 3|
 |AMS|Üçüncü taraf|Dışarıya|Hayır|Hayır|Örnek 4|
-|Üçüncü taraf|Üçüncü taraf|AMS|Evet|Hayır|    
+|Üçüncü taraf|Üçüncü taraf|AMS|Yes|Hayır|    
 
 Örneklerde, PlayReady koruması hem DASH hem de kesintisiz akış için geçerlidir. Aşağıdaki video URL 'Leri kesintisiz akış URL 'lardır. Karşılık gelen DASH URL 'Lerini almak için, yalnızca "(format = MPD-Time-CSF)" ekleyin. [Azure Medya test yürütücüyü](https://aka.ms/amtest) bir tarayıcıda test etmek için kullanabilirsiniz. Hangi akış protokolünü kullanacağınızı, hangi teknoloji altında kullanacağınızı yapılandırmanıza olanak tanır. IE11 ve Windows 10 ' da Microsoft Edge, EME aracılığıyla PlayReady 'yi destekler. Daha fazla bilgi için, bkz. [test aracı hakkında ayrıntılar](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Örnek 1
 
-* Kaynak (temel) URL 'SI: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
+* Kaynak (temel) URL: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
 * PlayReady LA_URL (DASH & Düzgünleştir): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine LA_URL (DASH): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
+* Wıdevine LA_URL (DASH): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
 * FairPlay LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
 
 ### <a name="sample-2"></a>Örnek 2
 
-* Kaynak (temel) URL 'SI: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* Kaynak (temel) URL: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
 * PlayReady LA_URL (DASH & Düzgünleştir): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
 ### <a name="sample-3"></a>Örnek 3
@@ -127,6 +127,10 @@ Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyic
 * Kaynak URL 'SI: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL (DASH & Düzgünleştir): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
 
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+
 ## <a name="summary"></a>Özet
 
 Özet olarak, DRM bileşenleri Azure Media Services, bu konuda açıklandığı gibi, içerik anahtarını ve varlık teslim ilkesini düzgün şekilde yapılandırarak bunları karma bir senaryoda kullanabilirsiniz.
@@ -136,6 +140,6 @@ Media Services öğrenme yollarını görüntüleyin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

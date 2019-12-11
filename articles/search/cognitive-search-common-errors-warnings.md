@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555038"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973977"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -37,7 +37,7 @@ API sürümü `2019-05-06`başlayarak, öğe düzeyinde Dizin Oluşturucu hatala
 | anahtar | Hatanın veya uyarıdan etkilenen belge KIMLIĞI. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | ad | Hatanın veya uyarının nerede oluştuğunu açıklayan işlem adı. Bu, şu yapı tarafından oluşturulur: [Kategori]. [alt kategori]. [resourceType]. Kaynak | Belgetextraction. azureblob. myBlobContainerName Enrichment. WebApiSkill. mySkillName Projection. Searchındex. OutputFieldMapping. mbir Putfieldname Projection. Searchındex. MergeOrUpload. Myındexname Projection. KnowledgeStore. Table. myTableName |
 | message | Hatanın veya uyarının üst düzey bir açıklaması. | Web API isteği başarısız olduğundan yetenek yürütülemedi. |
-| bilgileri | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... yığın izlemenin geri kalanı... |
+| details | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... yığın izlemenin geri kalanı... |
 | Belgetationlink | Hata ayıklama ve sorunu çözme hakkında ayrıntılı bilgiler içeren ilgili belgelere bir bağlantı. Bu bağlantı genellikle bu sayfada aşağıdaki bölümlerden birini işaret eder. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -307,3 +307,9 @@ Varolmayan/null olmayan verilere başvuran çıkış alanı eşlemeleri, her bel
 Bir bayt sıra işareti yoksa, metnin UTF-8 olarak kodlandığını kabul edilir.
 
 Bu uyarıyı geçici olarak çözmek için, bu Blobun metin kodlamasının ne olduğunu saptayın ve uygun bayt sırası işaretini ekleyin.
+
+<a name="cosmos-db-collection-has-a-lazy-indexing-policy"/>
+
+## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Uyarı: ' X ' Cosmos DB koleksiyonunun bir yavaş dizin oluşturma ilkesi vardır. Bazı veriler kaybolmuş olabilir
+
+[Yavaş](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) dizin oluşturma ilkelerine sahip koleksiyonlar tutarlı bir şekilde sorgulanamaz, bu da dizin oluşturucunun verileri eksiktir. Bu uyarıyı geçici olarak çözmek için dizin oluşturma ilkenizi tutarlı olarak değiştirin.

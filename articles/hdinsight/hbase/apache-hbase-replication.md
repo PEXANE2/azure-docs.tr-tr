@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931505"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995924"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama
 
@@ -275,6 +275,10 @@ Bir kümeyi çoğalttığınızda, çoğaltmak istediğiniz tabloları belirtmen
 
 Bir **kişi** tablosu oluşturmak ve tabloya bazı veriler eklemek Için [Apache HBase öğreticisi: HDInsight 'Ta Apache HBase 'i kullanmaya başlama](apache-hbase-tutorial-get-started-linux.md)yönergelerini izleyin.
 
+> [!NOTE]
+> Tabloları özel bir ad alanından çoğaltmak isterseniz, uygun özel ad alanlarının hedef kümede da tanımlandığından emin olmanız gerekir.
+>
+
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
 Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılacağını açıklamaktadır. Azure PowerShell ve Azure klasik CLı kullanarak betik eylemi çalıştırma hakkında bilgi için bkz. [betik eylemi kullanarak HDInsight kümelerini özelleştirme](../hdinsight-hadoop-customize-cluster-linux.md).
@@ -395,6 +399,10 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 - **Belirtilen tablolarda çoğaltmayı devre dışı bırak (Table1, Table2 ve TABLE3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> Hedef kümeyi silmek istiyorsanız, kaynak kümenin eş listesinden kaldırdığınızdan emin olun. Bu işlem, kaynak kümedeki HBase kabuğunda remove_peer ' 1 ' komutu çalıştırılarak yapılabilir. Bu durum, kaynak kümesi düzgün çalışmayabilir.
+>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

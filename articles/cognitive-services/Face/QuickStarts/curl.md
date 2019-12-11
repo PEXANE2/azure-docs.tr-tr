@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure REST API ve kıvrımlı bir görüntüdeki yüzeyleri algılama'
+title: 'Hızlı başlangıç: Azure REST API ve kıvrımlı bir görüntüdeki yüzeyleri algılama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, görüntüdeki yüzeyleri algılamak için Azure yüz REST API kıvrımlı olarak kullanacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: da929744922f8653bc293b68dbbadb9347a447e9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 59ffaa68cb2ee537b4eb688746f70eafb492d3a2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859144"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977854"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Hızlı Başlangıç: Yüz REST API ve kıvrımlı kullanarak görüntüdeki yüzeyleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Hızlı başlangıç: yüz REST API ve kıvrımlı kullanarak görüntüdeki yüzeyleri algılama
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini saptamak için Azure yüz REST API 'yi kıvrımlı olarak kullanacaksınız.
 
@@ -29,18 +29,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="write-the-command"></a>Komutu yazın
  
-Yüz Tanıma API'si çağırmak ve bir görüntüden yüz öznitelik verileri almak için aşağıdaki gibi bir komut kullanacaksınız. İlk olarak, kodu bir metin düzenleyicisine&mdash;kopyalayın, çalıştırmadan önce komutun belirli kısımlarında değişiklik yapmanız gerekir.
+Yüz Tanıma API'si çağırmak ve bir görüntüden yüz öznitelik verileri almak için aşağıdaki gibi bir komut kullanacaksınız. İlk olarak, kodu bir metin düzenleyicisine kopyalayın&mdash;, çalıştırmadan önce komutun belirli kısımlarında değişiklik yapmanız gerekir.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>Abonelik anahtarı
-Geçerli `<Subscription Key>` yüz abonelik anahtarınızla değiştirin.
+`<Subscription Key>` geçerli yüz abonelik anahtarınızla değiştirin.
 
 ### <a name="face-endpoint-url"></a>Yüz uç noktası URL 'SI
 
-URL `https://<My Endpoint String>.com/face/v1.0/detect` , sorgulanacak Azure yüz uç noktasını belirtir. Bu URL 'nin ilk kısmını, abonelik anahtarınıza karşılık gelen uç noktayla eşleşecek şekilde değiştirmeniz gerekebilir.
+URL `https://<My Endpoint String>.com/face/v1.0/detect` Sorgulanacak Azure yüz uç noktasını belirtir. Bu URL 'nin ilk kısmını, abonelik anahtarınıza karşılık gelen uç noktayla eşleşecek şekilde değiştirmeniz gerekebilir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -61,7 +61,7 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
 ## <a name="run-the-command"></a>Yeni bir “kurtarma VM’si” oluşturmak ve sorunlu VM’nin işletim sistemi diskini kurtarma VM’sine veri diski olarak takmak için
 
-Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve yeni komutu girin. Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örneğin:
+Değişikliklerinizi yaptıktan sonra, bir komut istemi açın ve yeni komutu girin. Konsol penceresinde JSON verileri olarak görünen yüz bilgilerini görmeniz gerekir. Örnek:
 
 ```json
 [

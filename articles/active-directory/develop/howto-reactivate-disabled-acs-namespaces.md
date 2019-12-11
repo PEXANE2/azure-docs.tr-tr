@@ -1,6 +1,6 @@
 ---
 title: Devre dışı bırakılan Azure Access Control Service (ACS) ad alanlarını yeniden etkinleştirme
-description: Azure Access Control Service (ACS) ad alanlarınızı bulmayı ve etkinleştirmeyi ve 4 Şubat 2019 ' e kadar etkin kalmasını sağlamak için bir uzantı istemeyi öğrenin.
+description: Azure Access Control Service (ACS) ad alanlarınızı bulup etkinleştirin ve 4 Şubat 2019 ' e kadar etkin kalmasını sağlamak için bir uzantı isteyin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917718"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966954"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Nasıl yapılır: devre dışı Access Control Service ad alanlarını yeniden etkinleştirme
 

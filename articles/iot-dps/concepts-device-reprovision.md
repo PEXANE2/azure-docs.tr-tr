@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub cihaz sağlama hizmeti-cihaz kavramları
-description: Azure IoT Hub cihaz sağlama hizmeti için cihaz yeniden sağlama kavramlarını açıklar
+description: Azure IoT Hub cihaz sağlama hizmeti (DPS) için cihaz yeniden sağlama kavramlarını açıklar
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0d6e5b5c7e8e8bf83646b417aa94658efd25b49e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228835"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975355"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Cihaz yeniden sağlama kavramlarını IoT Hub
 

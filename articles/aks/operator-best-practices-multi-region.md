@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21c1380862638ef671b31f0fdec42009d217aca7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893221"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971664"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -122,7 +122,7 @@ Tipik strateji, uygulamaların verilerini yazabilmesi için ortak bir depolama n
 
 Azure yönetilen diskleri kullanıyorsanız, şu gibi çoğaltma ve DR çözümlerini seçebilirsiniz:
 
-* [Azure 'da Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Azure 'da Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 * [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Uygulama tabanlı zaman uyumsuz çoğaltma
