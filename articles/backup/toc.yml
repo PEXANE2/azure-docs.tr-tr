@@ -222,6 +222,8 @@
       items:
         - name: Kurtarma Hizmetleri kasası oluşturma
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Kurtarma Hizmetleri kasası yapılandırmalarını güncelleştirme
+          href: use-restapi-update-vault-properties.md
         - name: Yedekleme ilkesini oluşturma ve güncelleştirme
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Azure VM'lerini yedekleme
