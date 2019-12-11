@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 2f80ba319db6d6d7ce512aba8191584ea5bba86b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9e4ac74df269f2e3db2431a3f01490a5769c9aca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73519454"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970253"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Hızlı Başlangıç: Java için Özel Görüntü İşleme SDK’sı ile görüntü sınıflandırma projesi oluşturma
 
-Bu makalede, Özel Görüntü İşleme Java SDK'sını kullanarak görüntü sınıflandırma modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Kendi Java uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Özel Görüntü İşleme Java SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra etiketler ekleyebilir, görüntüleri karşıya yükleyebilir, projeyi eğitebilir, projenin varsayılan tahmin uç nokta URL’sini alabilir ve bir görüntüyü programlama yoluyla test etmek için uç noktayı kullanabilirsiniz. Kendi Java uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +39,7 @@ Maven merkezi deposundan Özel Görüntü İşleme SDK’sını yükleyebilirsin
 
 [Bilişsel Hizmetler Java SDK'sı Örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) projesini kopyalayın veya indirin. **Vision/CustomVision/** klasörüne gidin.
 
-Bu Java projesi, __Özel Görüntü İşleme web sitesi__ üzerinden erişilebilen [Sample Java Project](https://customvision.ai/) adlı yeni bir Özel Görüntü İşleme görüntü sınıflandırma projesi oluşturur. Daha sonra bir sınıflandırıcıyı eğitip test etmek için görüntüleri karşıya yükler. Bu projede sınıflandırıcının, bir ağacın __Köknar__ mı yoksa __Japon Kirazı__ mı olduğunu belirlemesi hedeflenmiştir.
+Bu Java projesi, [Özel Görüntü İşleme web sitesi](https://customvision.ai/) üzerinden erişilebilen __Sample Java Project__ adlı yeni bir Özel Görüntü İşleme görüntü sınıflandırma projesi oluşturur. Daha sonra bir sınıflandırıcıyı eğitip test etmek için görüntüleri karşıya yükler. Bu projede sınıflandırıcının, bir ağacın __Köknar__ mı yoksa __Japon Kirazı__ mı olduğunu belirlemesi hedeflenmiştir.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -52,7 +52,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Java IDE'nize `Vision/CustomVision` projesini yükleyin ve _CustomVisionSamples.java_ dosyasını açın. **RunSample** metodunu bulun ve **ObjectDetection_Sample** yöntemi çağrısını not edin&mdash;bu yöntem, bu kılavuzda kapsanmayan nesne algılama senaryosunu yürütür. **ImageClassification_Sample** yöntemi bu örneğin birincil işlevini gerçekleştirir; yöntemin tanımına gidin ve kodu inceleyin.
+Java IDE'nize `Vision/CustomVision` projesini yükleyin ve _CustomVisionSamples.java_ dosyasını açın. **RunSample** metodunu bulun ve **ObjectDetection_Sample** yöntem çağrısını not edin&mdash;bu yöntem, bu kılavuzda kapsanmayan nesne algılama senaryosunu yürütür. **ImageClassification_Sample** yöntemi bu örneğin birincil işlevini gerçekleştirir; yöntemin tanımına gidin ve kodu inceleyin.
 
 ### <a name="create-a-custom-vision-service-project"></a>Özel Görüntü İşleme Hizmeti projesi oluşturma
 

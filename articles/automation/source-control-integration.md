@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/26/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850168"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996519"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
 
@@ -30,7 +30,7 @@ Azure Otomasyonu üç tür kaynak denetimi destekler:
 
 * Kaynak denetimi deposu (GitHub veya Azure Repos)
 * [Farklı Çalıştır hesabı](manage-runas-account.md)
-* Otomasyon hesabınızda [en son Azure modüllerine](automation-update-azure-modules.md) sahip olduğunuzdan emin olun
+* **Azurerd. Profile** modülü dahil olmak üzere otomasyon hesabınızda [en son Azure modüllerine](automation-update-azure-modules.md) sahip olduğunuzdan emin olun. 
 
 > [!NOTE]
 > Kaynak denetimi eşitleme işleri, kullanıcılar Otomasyon hesabı altında çalışır ve diğer otomasyon işleriyle aynı hızda faturalandırılır.

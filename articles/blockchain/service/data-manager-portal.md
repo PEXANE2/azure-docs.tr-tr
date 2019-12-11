@@ -4,12 +4,12 @@ description: Azure portal kullanarak Azure blok zinciri hizmeti için blok zinci
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 9c682f449fbab823134d626870c7dcfe8a8f2847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455821"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977037"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portalını kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
@@ -32,7 +32,7 @@ Bir blok zinciri Veri Yöneticisi örneği, bir Azure blok zinciri hizmeti işle
 
 Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği oluştururken tek bir giden bağlantı yapılandırırsınız. Blok zinciri Veri Yöneticisi, belirli bir blok zinciri Veri Yöneticisi örneği için birden çok Event Grid konu giden bağlantısını destekler. Blok zinciri verilerini tek bir hedefe gönderebilir veya birden çok hedefe blok zinciri verileri gönderebilirsiniz. Başka bir hedef eklemek için örneğe ek giden bağlantılar eklemeniz yeterlidir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Blok zinciri Veri Yöneticisi bağlamak istediğiniz Azure blok zinciri hizmeti üyesine gidin. **Blok zinciri veri Yöneticisi**seçin.
 1. **Add (Ekle)** seçeneğini belirleyin.
 
@@ -42,7 +42,7 @@ Giden bağlantı, blok zinciri verilerini Azure Event Grid gönderir. Örneği o
 
     Ayar | Açıklama
     --------|------------
-    Name | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin. Blok zinciri Veri Yöneticisi adı küçük harf ve rakam içerebilir ve en fazla 20 karakter uzunluğunda olabilir.
+    Adı | Bağlı bir blok zinciri Veri Yöneticisi için benzersiz bir ad girin. Blok zinciri Veri Yöneticisi adı küçük harf ve rakam içerebilir ve en fazla 20 karakter uzunluğunda olabilir.
     İşlem düğümü | Bir işlem düğümü seçin. Yalnızca okuma erişiminizin bulunduğu işlem düğümleri listelenir.
     Bağlantı adı | Blok zinciri işlem verilerinin gönderildiği giden bağlantıya ilişkin benzersiz bir ad girin.
     Olay Kılavuzu uç noktası | Blok zinciri Veri Yöneticisi örneğiyle aynı abonelikte bir olay Kılavuzu konusu seçin.
@@ -78,13 +78,15 @@ Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleş
 
 1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *ABI. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
-Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Derlenen anlaşma meta veri dosyasından dağıtılan bayt kodunu alabilirsiniz.
+Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Bytecode 'u panoya kopyalamak için Azure blok zinciri geliştirme seti uzantısını kullanın.
 
-1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. JSON dosyasında **Deployedbytecode** öğesini bulun.
-1. Tırnak işaretleri olmadan onaltılık değeri kopyalayın.
+1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
+1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
+1. **Işlem bayt kodunu kopyala**' yı seçin.
 
-    ![Meta verilerde bytecode ile Visual Studio Code bölmesi](./media/data-manager-portal/bytecode-metadata.png)
+    ![Copy TRANSACTION bytecode seçimiyle Visual Studio Code bölmesi](./media/data-manager-portal/bytecode-devkit.png)
+
+    Bytecode, panoya kopyalanır.
 
 1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
@@ -108,7 +110,7 @@ Blok zinciri Veri Yöneticisi, bir uygulama eklenirken sözleşme ABı ve byteco
 
     | Alan | Açıklama |
     |-------|-------------|
-    | Name  | Kapsayıcıyı adlandırın. Örneğin, *smartcontract* |
+    | Adı  | Kapsayıcıyı adlandırın. Örneğin, *smartcontract* |
     | Genel erişim düzeyi | *Özel (anonim erişim yok)* seçeneğini belirleyin |
 
 1. Kapsayıcıyı oluşturmak için **Tamam**'ı seçin.
@@ -144,7 +146,7 @@ Her blob için, paylaşılan erişim imzası oluşturun.
 
     Ayar | Açıklama
     --------|------------
-    Name | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
+    Adı | İzlenecek blok zinciri uygulaması için benzersiz bir ad girin.
     Sözleşme ABı | Sözleşme ABı dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
     Sözleşme bytecode 'u | Bytecode dosyasının URL yolu. Daha fazla bilgi için bkz. [sözleşme ABI ve bytecode URL 'Si oluşturma](#create-contract-abi-and-bytecode-url).
 

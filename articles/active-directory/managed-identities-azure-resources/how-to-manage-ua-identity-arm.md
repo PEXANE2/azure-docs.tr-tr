@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/16/2018
+ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a4415203871c8397af2b8f1f96ca4f08d6bfcc
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a1f113366363de40f8934a9db6cb3a82cc477f03
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547432"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996978"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme
 
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Azure kaynakları için Yönetilen kimlikler, Azure Active Directory bir yönetilen kimliğe sahip Azure hizmetleri sağlar. Kodunuzda kimlik bilgileri gerekmeden Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz. 
 
@@ -36,7 +35,7 @@ Bir Azure Resource Manager şablonu kullanarak Kullanıcı tarafından atanan y�
 - [Kullanıcı tarafından atanan yönetilen kimliği Sil](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için yönetilen kimliklerle bilmiyorsanız kullanıma [genel bakış bölümünde](overview.md). **Gözden geçirmeyi unutmayın [sistem tarafından atanan ve kullanıcı tarafından atanan bir yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="template-creation-and-editing"></a>Şablon oluşturma ve düzenlemesi

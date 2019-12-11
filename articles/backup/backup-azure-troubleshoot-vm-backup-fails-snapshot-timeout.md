@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928236"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996281"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -29,7 +29,6 @@ Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yükl�
   - Windows VM 'Leri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) izleyin.<br>
   - Linux sanal makineleri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) izleyin.
 
-
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError-anlık görüntü durumu için VM aracısıyla iletişim kurulamadı
 
 **Hata kodu**: guestagentsnapshottaskstatuserror<br>
@@ -44,6 +43,8 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Neden 3: [anlık görüntü durumu alınamaz veya bir anlık görüntü](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) alınamaz**
 
 **Neden 4: [yedekleme uzantısı güncelleştirme veya yükleme başarısız oluyor](#the-backup-extension-fails-to-update-or-load)**
+
+**Neden 5: [VM-Agent yapılandırma seçenekleri ayarlanmamış (Linux VM 'ler için)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM başarısız sağlama durumunda
 
@@ -196,6 +197,11 @@ Waagent için ayrıntılı günlük kaydı gerekiyorsa, şu adımları izleyin:
 1. /Etc/waagent.exe dosyasında şu satırı bulun: **ayrıntılı günlüğü etkinleştir (y | n)**
 2. **Logs. Verbose** değerini *n* ile *y*arasında değiştirin.
 3. Değişikliği kaydedin ve ardından bu bölümde daha önce açıklanan adımları tamamlayarak waagent 'ı yeniden başlatın.
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-aracı yapılandırma seçenekleri ayarlanmadı (Linux sanal makineleri için)
+
+Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Yapılandırma dosyası seçenekleri **uzantıları.** **yedekleme 'nin çalışması için,** etkinleştirme ve **sağlama.**
+VM Aracısı yapılandırma dosyası seçeneklerinin tam listesi için lütfen <https://github.com/Azure/WALinuxAgent#configuration-file-options> başvurun
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Anlık görüntü durumu alınamaz veya bir anlık görüntü alınamaz
 

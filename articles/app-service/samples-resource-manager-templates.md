@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 58871035eac89931dce0c1cd289cf3fab97c0c3e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b1d5f20ccd2f2c637d7db668af10ef331947d018
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688409"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971205"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service için Azure Resource Manager Şablonlar
 
@@ -33,6 +33,8 @@ App Services kaynakları için JSON sözdizimi ve özellikleri hakkında bilgi e
 | [Özel etki alanı ve SSL içeren uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| , Özel ana bilgisayar adına sahip bir App Service uygulaması dağıtır ve SSL bağlaması için Key Vault bir uygulama sertifikası alır. |
 | [GoLang uzantılı uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Golang site uzantısıyla bir App Service uygulaması dağıtır. Daha sonra Azure’da Golang üzerinde geliştirilmiş web uygulamalarını çalıştırabilirsiniz. |
 | [Java 8 ve Tomcat 8 ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Java 8 ve Tomcat 8 etkin bir App Service uygulaması dağıtır. Daha sonra Azure'da Java uygulamaları çalıştırabilirsiniz. |
+|**Uygulama koruma**||
+| [Azure Application Gateway ile tümleştirilmiş uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Bir App Service uygulaması ve bir Application Gateway dağıtır ve hizmet uç noktası ile erişim kısıtlamalarını kullanarak trafiği yalıtır. |
 |**Bağlı kaynaklarla Linux uygulaması**||
 | [MySQL ile Linux üzerinde uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Linux üzerinde MySQL için Azure veritabanı ile bir App Service uygulaması dağıtır. |
 | [Linux üzerinde PostgreSQL ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Linux üzerinde PostgreSQL için Azure veritabanı ile bir App Service uygulaması dağıtır. |
@@ -42,7 +44,7 @@ App Services kaynakları için JSON sözdizimi ve özellikleri hakkında bilgi e
 | [SQL veritabanı ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Temel hizmet düzeyinde bir App Service uygulaması ve SQL veritabanı dağıtır. |
 | [BLOB depolama bağlantısı olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Azure Blob depolama bağlantı dizesiyle bir App Service uygulaması dağıtır. Bundan sonra, uygulamadan BLOB depolama alanını kullanabilirsiniz. |
 | [Redsıs için Azure önbelleği olan uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Redsıs için Azure önbelleği ile bir App Service uygulaması dağıtır. |
-|**PowerApps için App Service Ortamı**||
+|**App Service Ortamı**||
 | [App Service ortamı v2 oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Sanal ağınızda bir App Service ortamı v2 oluşturur. |
 | [ILB adresli bir App Service ortamı v2 oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Sanal ağınızda özel bir iç yük dengeleyici adresine sahip App Service ortamı v2 oluşturur. |
 | [Bir ILB App Service ortamı veya ILB App Service ortamı v2 için varsayılan SSL sertifikasını yapılandırma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Bir ILB App Service ortamı veya ILB App Service ortamı v2 için varsayılan SSL sertifikasını yapılandırır. |

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108730"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996664"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -220,7 +220,7 @@ Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)* , *geçici (.)* 
 
 Yeniden yönlendirme hedefi olarak başka bir dinleyici veya dış site seçin.
 
-##### <a name="listener"></a>Oluşturulurken
+##### <a name="listener"></a>Dinleyici
 
 Trafiği bir dinleyicisinden ağ geçidinde diğerine yeniden yönlendirmek için yeniden yönlendirme hedefi olarak dinleyici ' i seçin. HTTP-HTTPS yeniden yönlendirmeyi etkinleştirmek istediğinizde bu ayar gereklidir. Gelen HTTP isteklerini, gelen HTTPS isteklerini denetleyen hedef dinleyiciye denetleyen kaynak dinleyicisinden trafiği yeniden yönlendirir. Ayrıca, yeniden yönlendirme hedefine iletilen istekteki özgün istekten sorgu dizesini ve yolunu eklemeyi de tercih edebilirsiniz.
 
@@ -256,7 +256,7 @@ Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak istediğinizde yara
 
 ### <a name="connection-draining"></a>Bağlantı boşaltma
 
-Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuz üyelerini dikkatlice kaldırmanıza yardımcı olur. Bu ayarı, kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulayabilirsiniz. Bir arka uç havuzunun tüm kayıt kaldırma örneklerinin yeni istek almamasını sağlar. Bu arada, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını izin verilir. Bağlantı boşaltma, arka uç havuzundan açıkça kaldırılan arka uç örnekleri için geçerlidir.
+Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuz üyelerini dikkatlice kaldırmanıza yardımcı olur. Bu ayarı, kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulayabilirsiniz. Bir arka uç havuzunun tüm kaydını kaldırmak örneklerinin mevcut bağlantıları sürdürmeye devam etmesini ve yapılandırılabilir bir zaman aşımı için, yeni istek veya bağlantı almamasını sağlar. Bunun tek istisnası, ağ geçidi ile yönetilen oturum benzeşimi nedeniyle kayıt kaldırma örnekleri için bir isteklerdir ve kayıt kaldırma örneklerine yönelik olarak bu örneklere yönelik olarak devam eder. Bağlantı boşaltma, arka uç havuzundan açıkça kaldırılan arka uç örnekleri için geçerlidir.
 
 ### <a name="protocol"></a>Protokol
 

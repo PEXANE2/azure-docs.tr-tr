@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c48bcab0a3d009b186832a6b728597f03788a7cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382982"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996740"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -38,7 +38,7 @@ Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken
 * Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez veya silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
 * Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
 * AKS kümesinde en fazla sekiz düğüm havuzu olabilir.
-* AKS kümesi, bu sekiz düğüm havuzunda en fazla 400 düğüme sahip olabilir.
+* AKS kümesi, bu sekiz düğüm havuzunda en fazla 800 düğüme sahip olabilir.
 * Tüm düğüm havuzları aynı alt ağda bulunmalıdır.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma

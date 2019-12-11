@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 2ceb53b50810aef501278710ae990c57fc45030c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805884"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971681"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Konuşmayı metne yönelik tümcecik listeleri
 
@@ -23,7 +24,7 @@ Konuşma hizmetini bir tümcecik listesi ile birlikte sunarak, konuşma tanıman
 
 Örnek olarak, "taşı" komutuna ve söylenen "Ward" bir hedefe sahipseniz, "Ward 'e taşı" girişini ekleyebilirsiniz. Bir tümcecik eklemek, ses "ilerlemek için taşı" yerine "ilerlemek" yerine tanınabilmesi olasılığını artırır.
 
-Tek sözcükler veya bütün ifadeler, bir tümcecik listesine eklenebilir. Tanıma sırasında, sese tam eşleşme varsa, tümcecik listesindeki bir giriş kullanılır. Önceki örnekte oluşturma, tümcecik listesi "Ward 'a taşı" Ifadesini içeriyorsa ve ses yakalanan seslerin her ikisi de "ilerlemek için" ve "Ward 'a taşı" gibi bir daha tanınırsa, tanınma sonucu "daha yavaş geçiş" olarak tanınacaktır.
+Tek sözcükler veya bütün ifadeler, bir tümcecik listesine eklenebilir. Tanıma sırasında, tüm tümcecik için tam eşleşme, sese ayrı bir tümcecik olarak dahil ediliyorsa tümcecik listesindeki bir giriş kullanılır. Tümcecikle tam eşleşme bulunamazsa, tanıma yardımlı değildir.
 
 >[!Note]
 > Şu anda, tümcecik listeleri yalnızca konuşmayı metin için destekler.
@@ -32,12 +33,7 @@ Tek sözcükler veya bütün ifadeler, bir tümcecik listesine eklenebilir. Tan�
 
 Aşağıdaki örneklerde `PhraseListGrammar` nesnesini kullanarak bir tümcecik listesinin nasıl oluşturulacağı gösterilmektedir.
 
-```C++
-auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
-phraselist->AddPhrase("Move to Ward");
-phraselist->AddPhrase("Move to Bill");
-phraselist->AddPhrase("Move to Ted");
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 PhraseListGrammar phraseList = PhraseListGrammar.FromRecognizer(recognizer);
@@ -46,19 +42,20 @@ phraseList.AddPhrase("Move to Bill");
 phraseList.AddPhrase("Move to Ted");
 ```
 
-```Python
-phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
-phrase_list_grammar.addPhrase("Move to Ward")
-phrase_list_grammar.addPhrase("Move to Bill")
-phrase_list_grammar.addPhrase("Move to Ted")
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
+phraselist->AddPhrase("Move to Ward");
+phraselist->AddPhrase("Move to Bill");
+phraselist->AddPhrase("Move to Ted");
 ```
 
-```JavaScript
-var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
-phraseListGrammar.addPhrase("Move to Ward");
-phraseListGrammar.addPhrase("Move to Bill");
-phraseListGrammar.addPhrase("Move to Ted");
-```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 PhraseListGrammar phraseListGrammar = PhraseListGrammar.fromRecognizer(recognizer);
@@ -67,30 +64,74 @@ phraseListGrammar.addPhrase("Move to Bill");
 phraseListGrammar.addPhrase("Move to Ted");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
+phrase_list_grammar.addPhrase("Move to Ward")
+phrase_list_grammar.addPhrase("Move to Bill")
+phrase_list_grammar.addPhrase("Move to Ted")
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```JavaScript
+var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
+phraseListGrammar.addPhrase("Move to Ward");
+phraseListGrammar.addPhrase("Move to Bill");
+phraseListGrammar.addPhrase("Move to Ted");
+```
+
+::: zone-end
+
 >[!Note]
 > Konuşma hizmetinin konuşmayı eşleştirmek için kullanacağı en fazla tümcecik listesi sayısı 1024 tümceciklerdir.
 
 Ayrıca, Clear () öğesini çağırarak `PhraseListGrammar` ilişkili tümcecikleri temizleyebilirsiniz.
 
-```C++
-phraselist->Clear();
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 phraseList.Clear();
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+phraselist->Clear();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```Java
+phraseListGrammar.clear();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
 ```Python
 phrase_list_grammar.clear()
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
 
 ```JavaScript
 phraseListGrammar.clear();
 ```
 
-```Java
-phraseListGrammar.clear();
-```
+::: zone-end
 
 > [!NOTE]
 > Bir `PhraseListGrammar` nesnesindeki değişiklikler bir sonraki tanıma göre veya konuşma hizmetine bir yeniden bağlantı sonrasında devreye girer.

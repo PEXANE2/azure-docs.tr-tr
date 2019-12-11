@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bff3547456c03ae313e7465238872670965765f1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ed67981a79e2bc998d0f1f64858206243c0a7070
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927675"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997216"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -105,7 +105,7 @@ script_params = {
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP veya ADLS Gen 2 ' den Parquet dosyası okunamadı
 
-AzureML, HTTP veya ADLS Gen 2 ' den Parquet dosyalarını okuyarak bir veri kümesi oluştururken hata oluşmasına neden olan, AzureML DataPrep SDK sürümü 1.1.25 'da bilinen bir sorun vardır. `Cannot seek once reading started.`ile başarısız olur. Bu sorunu gidermeye yönelik `azureml-dataprep`, lütfen 1.1.26 'den daha yüksek bir sürüme yükseltin veya 1.1.24 'den daha düşük bir sürüme indirgemeniz gerekir.
+AzureML, HTTP veya ADLS Gen 2 ' den Parquet dosyalarını okuyarak bir veri kümesi oluştururken hata oluşmasına neden olan AzureML veri hazırlama SDK sürümü 1.1.25 'da bilinen bir sorun vardır. `Cannot seek once reading started.`ile başarısız olur. Bu sorunu gidermeye yönelik `azureml-dataprep`, lütfen 1.1.26 'den daha yüksek bir sürüme yükseltin veya 1.1.24 'den daha düşük bir sürüme indirgemeniz gerekir.
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -141,7 +141,7 @@ Azure Databricks üzerinde otomatik makine öğrenimi özellikleri kullandığı
 
 Otomatik makine öğrenimi ayarları ' nda, 10 ' dan fazla yinelediğiniz bir `show_output`, çalıştırmayı gönderdiğinizde `False` olarak ayarlayın.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure Machine Learning SDK/otomatik makine öğrenimi için pencere öğesi
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>Azure Machine Learning SDK ve otomatik makine öğrenimi için pencere öğesi
 
 Azure Machine Learning SDK pencere öğesi, bir Databricks not defterinde desteklenmez çünkü Not defterleri HTML pencere öğelerini ayrıştıramaz. Azure Databricks Not defteri hücresinizdeki bu python kodunu kullanarak portalda pencere öğesini görüntüleyebilirsiniz:
 
@@ -261,6 +261,16 @@ kubectl get secret/azuremlfessl -o yaml
 ## <a name="recommendations-for-error-fix"></a>Hata düzeltilme önerileri
 Genel gözlemye bağlı olarak, Azure ML 'deki bazı yaygın hataları gidermeye yönelik Azure ML önerileri aşağıda verilmiştir.
 
+### <a name="metric-document-is-too-large"></a>Ölçüm belgesi çok büyük
+Azure Machine Learning hizmet, bir eğitim çalıştırmasında bir kez günlüğe kaydedilebilir ölçüm nesnelerinin boyutunda iç sınırlara sahiptir. Liste değerli bir ölçümü günlüğe kaydederken "ölçüm belgesi çok büyük" hatası ile karşılaşırsanız, listeyi daha küçük parçalara bölmeyi deneyin, örneğin:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+ Dahili olarak, çalıştırma geçmişi hizmeti aynı ölçüm adına sahip blokları bitişik bir liste olarak birleştirir.
+
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (modül adı yok)
 Azure ML 'de denemeleri gönderirken ModuleErrors 'da çalıştırıyorsanız, eğitim betiğinin bir paketin yüklenmesini beklediği ancak eklenmediği anlamına gelir. Paket adı 'nı sağladığınızda, Azure ML, paketi eğitiminizi için kullanılan ortama yükler. 
 
@@ -268,10 +278,11 @@ Denemeleri göndermek için [estimators](concept-azure-machine-learning-architec
 
 Azure ML, TensorFlow, PyTorch, Chainer ve Sköğren için çerçeveye özgü tahminler de sağlar. Bu tahmini kullanımı, Framework bağımlılıklarının eğitim için kullanılan ortamda sizin adınıza yüklü olduğundan emin olur. Yukarıda açıklandığı gibi ek bağımlılıklar belirtme seçeneğiniz vardır. 
  
- Azure ML tarafından sağlanan Docker görüntüleri ve içerikleri, [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)görülebilir.
+Azure ML tarafından sağlanan Docker görüntüleri ve içerikleri, [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)görülebilir.
 Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sköğren](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
->[Note!] Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
+> [!Note]
+> Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (ad tanımlı değil), AttributeError (nesne bir özniteliğe sahip değil)
 Bu özel durum, eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, hata iletisine bakmak için `run.get_details()` kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın, yeniden denemeden önce hatayı onarın. 

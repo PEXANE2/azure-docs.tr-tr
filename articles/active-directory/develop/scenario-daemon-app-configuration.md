@@ -1,6 +1,6 @@
 ---
-title: Web API 'Lerini çağıran Daemon uygulaması (uygulama yapılandırma)-Microsoft Identity platform
-description: Web API 'Lerini (App Configuration) çağıran bir Daemon uygulaması derlemeyi öğrenin
+title: Web API 'Lerini çağıran Daemon uygulamalarını yapılandırma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini (App Configuration) çağıran Daemon uygulamanız için kodu yapılandırmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fbd4af78e02dad2a8a74ee21f9cb8c6ef0a976
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175500"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962653"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -39,11 +39,11 @@ Daemon uygulamalarını destekleyen Microsoft kitaplıkları şunlardır:
 
 ## <a name="configuration-of-the-authority"></a>Yetkilisinin yapılandırması
 
-Daemon uygulamalarının temsilci izinleri kullanmadığında, ancak uygulama izinleri, *Desteklenen hesap türü* *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesap olamaz (örneğin, Skype, Xbox, Outlook.com)* . Aslında, Microsoft kişisel hesapları için Daemon uygulamasına izin vermek üzere kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
+Daemon uygulamalarının temsilci izinleri kullanmadığında, ancak uygulama izinleri, *Desteklenen hesap türü* *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örneğin, Skype, Xbox, Outlook.com) hesap*olamaz. Aslında, Microsoft kişisel hesapları için Daemon uygulamasına izin vermek üzere kiracı yöneticisi yoktur. *Kuruluşumdaki hesaplar* veya *herhangi bir kuruluştaki hesaplar*' ı seçmeniz gerekir.
 
 Bu nedenle, uygulama yapılandırmasında belirtilen yetkilinin kiracı ile bağlantılı olması gerekir (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
-Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız `organizations` kullanabilirsiniz. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için [bir kiracının tamamına Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) konusuna bakın. MSAL ' de şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
+Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız `organizations`kullanabilirsiniz. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için [bir kiracının tamamına Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) konusuna bakın. MSAL ' de şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
 
 ## <a name="application-configuration-and-instantiation"></a>Uygulama yapılandırma ve örnekleme
 
@@ -295,7 +295,7 @@ Daha ayrıntılı bilgi için bkz. [istemci onayları](msal-net-client-assertion
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python 'da, bu `ConfidentialClientApplication` özel anahtarıyla imzalanacak talepleri kullanarak istemci talepleri sağlayabilirsiniz.
+MSAL Python 'da, bu `ConfidentialClientApplication`özel anahtarıyla imzalanacak talepleri kullanarak istemci talepleri sağlayabilirsiniz.
 
 ```Python
 config = json.load(open(sys.argv[1]))

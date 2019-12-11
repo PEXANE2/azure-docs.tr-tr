@@ -7,22 +7,22 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: 6676a6f7c694ffd4f2edf3f63a8181863df0016c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227970"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995856"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 
 Müşteri tarafından yönetilen anahtarla Azure SQL [Saydam veri şifrelemesi (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) , bekleyen veri koruması için kendi anahtarını getir (bYok) senaryosunu sağlar ve kuruluşların anahtar ve veri yönetiminde görevlerin ayrılmasını sağlar. Müşteri tarafından yönetilen saydam veri şifrelemesi ile, müşteri, anahtar yaşam döngüsü yönetimi (anahtar oluşturma, karşıya yükleme, döndürme, silme), anahtar kullanımı izinleri ve anahtarların üzerinde işlemler denetimi hakkında tam bir denetim üzerinden ve bunların sorumluluğundadır.
 
-Bu senaryoda, TDE koruyucusu olarak adlandırılan veritabanı şifreleme anahtarı (DEK) şifrelemesi için kullanılan anahtar, bulut tabanlı bir dış anahtar yönetimi olan, müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)içinde depolanan, müşteri tarafından yönetilen bir asimetrik anahtardır sistemin. Key Vault, isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen, RSA şifreleme anahtarları için yüksek düzeyde kullanılabilir ve ölçeklenebilir güvenli depolama alanı. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıkların anahtarını kullanarak şifreleme/şifre çözme hizmetleri sağlar. Anahtar, Anahtar Kasası tarafından oluşturulabilir, içeri aktarılabilir veya [bir şirket ıçı HSM cihazından anahtar kasasına aktarılabilir](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+Bu senaryoda, TDE koruyucusu olarak adlandırılan veritabanı şifreleme anahtarı (DEK) şifrelemesi için kullanılan anahtar, bulut tabanlı bir dış anahtar yönetim sistemi olan müşterinin sahip olduğu ve müşteri tarafından yönetilen [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)içinde depolanan, müşteri tarafından yönetilen bir asimetrik anahtardır. Key Vault, isteğe bağlı olarak FIPS 140-2 düzey 2 tarafından doğrulanan donanım güvenlik modülleri (HSM 'ler) tarafından desteklenen, RSA şifreleme anahtarları için yüksek düzeyde kullanılabilir ve ölçeklenebilir güvenli depolama alanı. Depolanan bir anahtara doğrudan erişime izin vermez, ancak yetkili varlıkların anahtarını kullanarak şifreleme/şifre çözme hizmetleri sağlar. Anahtar, Anahtar Kasası tarafından oluşturulabilir, içeri aktarılabilir veya [bir şirket ıçı HSM cihazından anahtar kasasına aktarılabilir](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 Azure SQL veritabanı ve Azure SQL veri ambarı için, TDE koruyucusu mantıksal sunucu düzeyinde ayarlanır ve bu sunucuyla ilişkili olan tüm şifreli veritabanları tarafından devralınır. Azure SQL yönetilen örneği için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe bu belge boyunca hem SQL veritabanı mantıksal sunucusu hem de yönetilen örnek anlamına gelir. 
 

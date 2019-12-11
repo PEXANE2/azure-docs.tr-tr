@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 3b56747d9bc8c8ae5884d4fb654c20d49527fed5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186084"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974181"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Öğretici: AES-128 ile videoyu şifreleyin ve anahtar teslim hizmetini kullanın
 
@@ -57,7 +57,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 * [İçerik korumaya genel bakış](content-protection-overview.md) makalesini gözden geçirin.
 * Visual Studio Code veya Visual Studio 'Yu yükler.
-* [Media Services hesabı oluşturun](create-account-cli-quickstart.md).
+* [Bir Media Services hesabı oluşturma](create-account-cli-quickstart.md).
 * API ['leri](access-api-cli-how-to.md)kullanarak Media Services API 'leri kullanmak için gereken kimlik bilgilerini alın.
 
 ## <a name="download-code"></a>Kodu indirin
@@ -166,6 +166,10 @@ az group delete --name amsResourceGroup
 ## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
 Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
+
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

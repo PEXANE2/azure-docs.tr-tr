@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130572"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996672"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -128,7 +128,7 @@ Hayır. Örnekler, yükseltme etki alanları ve hata etki alanları arasında da
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Bağlantı boşaltma Application Gateway destekler mi?
 
-Evet. Bir arka uç havuzu içindeki üyeleri kesintiye uğramadan değiştirmek için bağlantı boşaltma ayarı yapabilirsiniz. Bu kurulum, bağlantı kapanıncaya veya yapılandırılabilir bir zaman aşımı süresi dolana kadar, mevcut bağlantıları önceki hedeflerine göndermeye devam etmenize olanak tanır. Bağlantı boşaltma yalnızca Şu anki uçuş bağlantılarının bitmesini bekler. Application Gateway, uygulama oturumu durumunun farkında değildir.
+Evet. Bir arka uç havuzu içindeki üyeleri kesintiye uğramadan değiştirmek için bağlantı boşaltma ayarı yapabilirsiniz. Daha fazla bilgi için [Application Gateway bağlantı boşaltma bölümüne](overview.md#connection-draining)bakın.
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Örnek boyutunu, kesintiye uğramadan büyük olarak değiştirebilir miyim?
 

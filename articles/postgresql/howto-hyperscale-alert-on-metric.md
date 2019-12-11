@@ -1,17 +1,17 @@
 ---
-title: PostgreSQL için Azure veritabanı için ölçüm uyarılarını yapılandırma-hiper ölçek (Citus)
+title: Uyarıları yapılandırma-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
 description: Bu makalede PostgreSQL için Azure veritabanı-hiper ölçek (Citus) için ölçüm uyarılarını yapılandırma ve erişme açıklanmaktadır
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5f45df16ac294f50e99cc7e05ab6eba43c0ae85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516025"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977616"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) ölçümlerinde uyarıları ayarlamak için Azure portal kullanın
 
@@ -25,9 +25,9 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırın.
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portalda](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure Izleyici REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure İzleyici REST API'si](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
 1. [Azure Portal](https://portal.azure.com/), Izlemek Istediğiniz PostgreSQL Için Azure veritabanı sunucusu ' nu seçin.
@@ -81,7 +81,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
     Birkaç dakika içinde, uyarı etkin ve daha önce açıklandığı gibi tetikler.
 
-## <a name="manage-your-alerts"></a>Uyarılarınızı yönetin
+## <a name="manage-your-alerts"></a>Uyarılarınızı yönetme
 
 Bir uyarı oluşturduktan sonra, bunu seçebilir ve aşağıdaki eylemleri gerçekleştirebilirsiniz:
 

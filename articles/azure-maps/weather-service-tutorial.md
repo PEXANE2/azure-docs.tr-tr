@@ -1,0 +1,195 @@
+---
+title: 'Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme | Microsoft Docs'
+description: "Öğretici: Bu öğreticide, Azure Notebooks (Python) kullanarak Azure Maps Hava durumu hizmeti 'nden gelen hava durumu tahmin verileriyle sensör verilerini nasıl katılabilmeniz gösterilmektedir."
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/09/2019
+ms.topic: tutorial
+ms.service: azure-maps
+services: azure-maps
+manager: philmea
+ms.custom: mvc
+ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979906"
+---
+# <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
+
+Rüzgar gücü, fossıl için bir alternatif enerji kaynağıdır ve bu da iklim değişikliğine karşı mücadele sağlar. Rüzgar kendisini doğası gereği uyumlu olmadığı için, Rüzgar enerji kapasitesini karşılamak üzere Rüzgar güç kapasitesini tahmin etmek ve ızgara kararlılığını sağlamak için, Rüzgar güç işleçlerini ML (makine öğrenimi) modellerini derlemeniz gerekir. Bu öğreticide, Azure Maps Hava durumu tahmin verilerinin, hava durumu okumalarıyla ilgili algılayıcı konumları kümesiyle nasıl birleştirileceği anlatılmaktadır. Hava durumu tahmin verileri, Azure Maps Hava durumu hizmeti çağırarak istenir.
+
+Bu öğreticide şunları yapacaksınız:
+
+> [!div class="checklist"]
+> * Bulutta [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) veri dosyalarıyla çalışın.
+> * Tanıtım verilerini dosyadan yükle.
+> * Python 'da Azure haritalar REST API 'Lerini çağırın.
+> * Haritada konum verileri oluşturma.
+> * Azure haritalar ile tanıtım verilerinin [günlük tahmin](https://aka.ms/AzureMapsWeatherDailyForecast) Hava durumu verilerini zenginleştirin.
+> * Tahmin verilerini grafiklerde çiz.
+
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu öğreticiyi tamamlayabilmeniz için öncelikle şunları yapmanız gerekir:
+
+1. [Azure haritalar hesabınızı yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)konusundaki yönergeleri izleyerek S0 fiyatlandırma katmanında bir Azure Maps hesabı aboneliği oluşturun.
+2. Hesabınız için birincil abonelik anahtarını alın, [hesabınız için birincil anahtarı al](./tutorial-search-location.md#getkey)bölümündeki yönergeleri izleyin.
+
+Azure Not defterleri hakkında bilgi edinmek ve nasıl başlaleyeceğinizi öğrenmek için, [Azure Not defteri oluşturma](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)yönergelerini izleyin.
+
+> [!Note]
+> Bu projenin Jupyter Not defteri dosyası, [Hava durumu haritaları Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)indirilebilir.
+
+## <a name="load-the-required-modules-and-frameworks"></a>Gerekli modülleri ve çerçeveleri yükleme
+
+Gerekli tüm modülleri ve çerçeveleri yüklemek için aşağıdaki betiği çalıştırın:
+
+```python
+import aiohttp
+import pandas as pd
+import datetime
+from IPython.display import Image, display
+```
+
+## <a name="import-weather-data"></a>Hava durumu verilerini içeri aktar
+
+Bu öğreticinin bir listesi için, dört farklı rüzgar türlül 'de yüklü sensörlerden gelen hava durumu verileri okugilerinden yararlanacağız. Örnek veriler, her türbin konumunun yakınında Hava durumu veri merkezlerinden toplanan 30 günden fazla hava durumu okuduklarını içerir. Tanıtım verileri, sıcaklık, Rüzgar hızı ve yön için veri okuduklarını içerir. Tanıtım verilerini [buradan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)indirebilirsiniz. Aşağıdaki komut dosyası tanıtım verilerini Azure Not defteri 'ne aktarır.
+
+```python
+df = pd.read_csv("./data/weather_dataset_demo.csv")
+```
+
+## <a name="request-daily-forecast-data"></a>Günlük tahmin verileri iste
+
+Örnek Senaryomuzda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için günlük hava durumu tahminini almak üzere Azure Maps Hava durumu hizmetinin [günlük tahmın API](https://aka.ms/AzureMapsWeatherDailyForecast) 'sini çağırır.
+
+
+```python
+subscription_key = "Your Azure Maps primary subscription key"
+
+# Get a lists of unique station IDs and their coordinates 
+station_ids = pd.unique(df[['StationID']].values.ravel())
+coords = pd.unique(df[['latitude','longitude']].values.ravel())
+
+years,months,days = [],[],[]
+dates_check=set()
+wind_speeds, wind_direction = [], []
+
+# Call azure maps weather service to get daily forecast data for 15 days from current date
+session = aiohttp.ClientSession()
+j=-1
+for i in range(0, len(coords), 2):
+    wind_speeds.append([])
+    wind_direction.append([])
+    
+    query = str(coords[i])+', '+str(coords[i+1])
+    forecast_response = await(await session.get("https://atlas.microsoft.com/weather/forecast/daily/json?query={}&api-version=1.0&subscription-key={}&duration=15".format(query, subscription_key))).json()
+    j+=1
+    for day in range(len(forecast_response['forecasts'])):
+            date = forecast_response['forecasts'][day]['date'][:10]
+            wind_speeds[j].append(forecast_response['forecasts'][day]['day']['wind']['speed']['value'])
+            wind_direction[j].append(forecast_response['forecasts'][day]['day']['windGust']['direction']['degrees'])
+            
+            if date not in dates_check:
+                year,month,day= date.split('-')
+                years.append(year)
+                months.append(month)
+                days.append(day)
+                dates_check.add(date)
+            
+await session.close()
+```
+
+Aşağıdaki komut dosyası, Azure haritalar [Get harita görüntüsü hizmetini](https://docs.microsoft.com/rest/api/maps/render/getmapimage)çağırarak haritadaki türbin konumlarını işler.
+
+```python
+# Render the turbine locations on the map by calling the Azure Maps Get Map Image service
+session = aiohttp.ClientSession()
+
+pins="default|la-25+60|ls12|lc003C62|co9B2F15||'Location A'{} {}|'Location B'{} {}|'Location C'{} {}|'Location D'{} {}".format(coords[1],coords[0],coords[3],coords[2],coords[5],coords[4], coords[7],coords[6])
+
+image_response = "https://atlas.microsoft.com/map/static/png?subscription-key={}&api-version=1.0&layer=basic&style=main&zoom=6&center={},{}&pins={}".format(subscription_key,coords[7],coords[6],pins)
+
+static_map_response = await session.get(image_response)
+
+poi_range_map = await static_map_response.content.read()
+
+await session.close()
+
+display(Image(poi_range_map))
+```
+
+![Türbin konumları](./media/weather-service-tutorial/location-map.png)
+
+
+Tanıtım verilerini tahmin verileriyle artırmak için, tanıtım verileri merkezinin istasyon KIMLIğINE bağlı olarak tahmin verilerini tanıtım verileriyle gruplandıracağız.
+
+```python
+# Group forecasted data for all locations
+df = df.reset_index(drop=True)
+forecast_data = pd.DataFrame(columns=['StationID','latitude','longitude','Year','Month','Day','DryBulbCelsius','WetBulbFarenheit','WetBulbCelsius','DewPointFarenheit','DewPointCelsius','RelativeHumidity','WindSpeed','WindDirection'])
+
+for i in range(len(station_ids)):
+    loc_forecast = pd.DataFrame({'StationID':station_ids[i], 'latitude':coords[0], 'longitude':coords[1], 'Year':years, 'Month':months, 'Day':days, 'WindSpeed':wind_speeds[i], 'WindDirection':wind_direction[i]})
+    forecast_data = pd.concat([forecast_data,loc_forecast], axis=0, sort=False)
+    
+combined_weather_data = pd.concat([df,forecast_data])
+grouped_weather_data = combined_weather_data.groupby(['StationID'])
+```
+
+Aşağıdaki tabloda, türbin konumlarından birine yönelik Birleşik geçmiş ve tahmin verileri görüntülenmektedir.
+
+```python
+# Display data for first location
+grouped_weather_data.get_group(station_ids[0]).reset_index()
+```
+
+<center>
+
+Gruplandırılmış verileri ![](./media/weather-service-tutorial/grouped-data.png)</center>
+
+## <a name="plot-forecast-data"></a>Tahmin verilerini çiz
+
+Rüzgar hızı ve yönünün sonraki 15 gün boyunca nasıl değiştirileceğini görmek için tahmin edilen değerleri tahmin ettikleri günlere göre çizeceğiz.
+
+```python
+# Plot wind speed
+curr_date = datetime.datetime.now().date()
+windsPlot_df = pd.DataFrame({ 'Location A': wind_speeds[0], 'Location B': wind_speeds[1], 'Location C': wind_speeds[2], 'Location D': wind_speeds[3]}, index=pd.date_range(curr_date,periods=15))
+windsPlot = windsPlot_df.plot.line()
+windsPlot.set_xlabel("Date")
+windsPlot.set_ylabel("Wind speed")
+```
+
+```python
+#Plot wind direction 
+windsPlot_df = pd.DataFrame({ 'Location A': wind_direction[0], 'Location B': wind_direction[1], 'Location C': wind_direction[2], 'Location D': wind_direction[3]}, index=pd.date_range(curr_date,periods=15))
+windsPlot = windsPlot_df.plot.line()
+windsPlot.set_xlabel("Date")
+windsPlot.set_ylabel("Wind direction")
+```
+
+Aşağıdaki grafikler, geçerli günden sonraki 15 gün içinde rüzgar hızı (sol grafik) ve Yön (sağ grafik) değişikliği için tahmin verilerini görselleştirir.
+
+<center>
+
+![rüzgar hızı çizim](./media/weather-service-tutorial/speed-date-plot.png) ![Rüzgar yönü çizimi](./media/weather-service-tutorial/direction-date-plot.png)</center>
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bu öğreticide, hava durumu tahmin verileri almak ve grafiklerde verileri görselleştirmek için Azure haritalar REST API 'Lerini nasıl çağıracağınız anlatılmaktadır.
+
+Azure Notebooks içinde Azure haritalar REST API 'Lerini çağırma hakkında daha fazla bilgi için, bkz. [Azure Notebooks kullanarak ev yönlendirme](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
+
+Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
+
+* [Günlük tahmin](https://aka.ms/AzureMapsWeatherDailyForecast)
+* [Render-harita görüntüsünü al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+
+Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/#reference).
+
+Azure Notebooks hakkında daha fazla bilgi için bkz. [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

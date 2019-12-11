@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 6a626c2e27bf26ed98dd3244c52671a4dfa4aa76
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2ea49eaf6fd48207996a92a997f15e5db3d3b199
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73519370"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961089"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme Python SDK’sı ile görüntü sınıflandırma projesi oluşturma
 
-Bu makalede, Özel Görüntü İşleme SDK'sini Python ile kullanarak görüntü sınıflandırma modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
+Bu makalede, bir görüntü sınıflandırma modeli oluşturmak için Python ile Özel Görüntü İşleme SDK 'sını kullanmaya nasıl başlacağınız gösterilmektedir. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

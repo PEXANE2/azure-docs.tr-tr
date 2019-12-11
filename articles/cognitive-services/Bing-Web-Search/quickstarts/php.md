@@ -1,26 +1,26 @@
 ---
-title: "Hızlı Başlangıç: PHP - Bing Web araması API'si ile bir arama yapın"
+title: 'Hızlı Başlangıç: PHP ile arama gerçekleştirme - Bing Web Araması API’si'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, PHP kullanarak Bing Web araması REST API'si için istekleri göndermek için kullanın ve bir JSON yanıtı alırsınız.
+description: Bu hızlı başlangıcı, PHP kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf3cf1f69f7b45dd90070f4074e85fa21359837d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648576"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961496"
 ---
-# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web araması API'si çağırmak için PHP kullanma  
+# <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Hızlı Başlangıç: Bing Web Araması API’sini çağırmak için PHP kullanma  
 
-Bu hızlı başlangıçta, Bing Web araması API'si, ilk çağrı yapmak ve JSON yanıtını almak için kullanın. Bu Node.js uygulaması, API için bir arama isteği gönderir ve yanıtı gösterir. Bu uygulamanın, JavaScript'te yazılmış olsa da çoğu programlama dilleri ile uyumlu bir RESTful Web hizmeti API'dir.
+Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -43,7 +43,7 @@ Başlamadan önce `php.ini` dosyasını bulun ve şu satırın açıklamasını 
 
 Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun. `<?php` ve `?>` açılış ve kapanış etiketlerini eklemeyi unutmayın.
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `$endpoint` öğesinin geçerli olduğunu doğrulayın ve `$accesskey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `$term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `$endpoint`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir. `$endpoint` öğesinin geçerli olduğunu doğrulayın ve `$accesskey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `$term` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
 
 ```php
 $accessKey = 'enter key here';

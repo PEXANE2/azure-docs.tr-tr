@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794308"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997131"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect bulut sağlama yeni yapılandırma
 
@@ -32,8 +32,7 @@ Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
 
 4.  **Yeni yapılandırma**' ya tıklayın.
 5.  Yapılandırma ekranında şirket içi etki alanı önceden doldurulur
-6. Bir **bildirim e-postası**girin. Bu e-postaya bildirim alınacaktır 
-7. sağlama sağlıklı değil.  
+6. Bir **bildirim e-postası**girin. Sağlama sağlıklı değilse, bu e-postaya bildirim gönderilir.  
 8. Seçicisi **etkinleştirmek** ve **Kaydet**' e gitmek için seçiciyi taşıyın.
 ![](media/tutorial-single-forest/configure2.png)
 

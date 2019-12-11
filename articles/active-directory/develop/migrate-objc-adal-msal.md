@@ -1,8 +1,7 @@
 ---
-let application: MSALPublicClientApplication!
-title: Uygulamaları MSAL 'e geçirin. ObjectiveC
+title: Uygulamaları MSAL 'ye geçirme (iOS/macOS) | Mavisi
 titleSuffix: Microsoft identity platform
-description: ObjectiveC için Microsoft kimlik doğrulama kitaplığı (iOS ve macOS için MSAL) ve ObjectiveC (ADAL için Azure AD kimlik doğrulama kitaplığı) arasındaki farklar hakkında bilgi edinin. ObjC) ve iOS ve macOS için MSAL 'e geçiş yapma.
+description: İOS/macOS için MSAL ve ObjectiveC için Azure AD kimlik doğrulama kitaplığı (ADAL) arasındaki farkları öğrenin. ObjC) ve iOS/macOS için MSAL 'e geçiş yapma.
 services: active-directory
 author: TylerMSFT
 manager: CelesteDG
@@ -15,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0fdb2ec3ab3deb8798aa7dbfc0c3e4e25f377
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917293"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963605"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
 

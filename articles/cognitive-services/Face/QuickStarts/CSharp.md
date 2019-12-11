@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure REST API ile görüntüdeki yüzeyleri algılayın veC#'
+title: 'Hızlı başlangıç: Azure REST API ile görüntüdeki yüzeyleri algılama veC#'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için ile birlikte C# REST API Azure yüz kullanacaksınız.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: f7e1507289d3c21d51a0ec8529598e5eeb089d37
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9d903a7d2d7e0cfe899da1fbb8869805f1f4f857
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859014"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961259"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Hızlı Başlangıç: Yüz REST API kullanarak görüntüdeki yüzeyleri algılayın veC#
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Hızlı başlangıç: yüz REST API kullanarak görüntüdeki yüzeyleri algılama veC#
 
 Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için ile C# REST API Azure yüz kullanacaksınız.
 
@@ -51,7 +51,7 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Gerekli alanları Ekle
 
-Aşağıdaki alanları içeren **Program** sınıfını ekleyin. Bu veriler, yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve bu `uriBase` dizeyi, kaynak uç nokta dizenizi içerecek şekilde değiştirmeniz gerekebilir.
+Aşağıdaki alanları içeren **Program** sınıfını ekleyin. Bu veriler, yüz hizmetine bağlanmayı ve giriş verilerinin nereden alınacağını belirtir. `subscriptionKey` alanını abonelik anahtarınızın değeri ile güncelleştirmeniz gerekir ve kaynak uç nokta dizenizi içermesi için `uriBase` dizesini değiştirmeniz gerekebilir.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -105,7 +105,7 @@ namespace DetectFace
 
 ### <a name="call-the-face-detection-rest-api"></a>Yüz algılamayı çağırın REST API
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Uzak görüntüdeki yüz bilgilerini algılamak için yüz tanıma API'si bir rest çağrısı oluşturur ( `requestParameters` dize hangi yüz özniteliklerini almak üzere belirtir). Ardından, çıkış verilerini bir JSON dizesine yazar.
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Uzak görüntüdeki yüz bilgilerini algılamak için Yüz Tanıma API'si bir REST çağrısı oluşturur (`requestParameters` dizesi alınacak yüz özniteliklerini belirtir). Ardından, çıkış verilerini bir JSON dizesine yazar.
 
 Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
 
@@ -244,7 +244,7 @@ Aşağıdaki adımlarda yardımcı yöntemleri tanımlayacaksınız.
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Başarılı bir yanıt, yüz verileri kolay okunabilir JSON biçiminde görüntüler. Örneğin:
+Başarılı bir yanıt, yüz verileri kolay okunabilir JSON biçiminde görüntüler. Örnek:
 
 ```json
 [

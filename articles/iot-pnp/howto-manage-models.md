@@ -1,19 +1,19 @@
 ---
 title: Depodaki IoT Tak ve Kullan önizleme modellerini yönetme | Microsoft Docs '
 description: IoT portalı, Azure CLı ve Visual Studio Code için Azure sertifikası 'nı kullanarak depodaki cihaz yeteneği modellerini yönetme.
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.author: philmea
+ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932871"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979113"
 ---
 # <a name="manage-models-in-the-repository"></a>Depodaki modelleri yönetme
 
@@ -47,7 +47,7 @@ Azure CLı, IoT Tak ve Kullan genel ve şirket modeli depolarında cihaz yetene�
 
 Visual Studio Code ' de **model deposu** görünümünü açmak için.
 
-1. Visual Studio Code açın, **CTRL + SHIFT + P**tuşlarını kullanın, yazın ve **IoT Tak ve Kullan seçin: Model deposunu**açın.
+1. Visual Studio Code açın, **CTRL + SHIFT + P**tuşlarını kullanın, yazın ve **IoT Tak ve kullan: model deposunu aç**' ı seçin.
 
 1. **Ortak model deposunu açmayı** veya **kuruluş modeli deposunu açmayı**seçebilirsiniz. Şirket modeli deposu için model deposu Bağlantı dizenizi girmeniz gerekir. Bu bağlantı dizesini, **Şirket deponuzdaki** **bağlantı dizeleri** sekmesinde [IoT için Azure sertifikası](https://preview.catalog.azureiotsolutions.com) 'nda bulabilirsiniz.
 
@@ -55,7 +55,7 @@ Visual Studio Code ' de **model deposu** görünümünü açmak için.
 
     Cihaz yetenek modellerini ve arabirimlerini eklemek, indirmek ve silmek için bu görünümü kullanın. Listedeki belirli öğeleri bulmak için bir filtre kullanabilirsiniz.
 
-1. Şirket modeli deponuz ve ortak model deposu arasında geçiş yapmak için **CTRL + SHIFT + P**kullanın, yazın ve IoT Tak ve kullan **seçin: Model deposunu**kapatın. Daha sonra **IoT Tak ve kullan kullanın: Model deposu** komutunu yeniden açın.
+1. Şirket modeli deponuz ve ortak model deposu arasında geçiş yapmak için **CTRL + SHIFT + P**kullanın, yazın ve **IoT Tak ve kullan: oturumu Kapat model deposunu**seçin. Daha sonra **ıot Tak ve kullan: model deposunu aç** komutunu yeniden kullanın.
 
 > [!NOTE]
 > VS Code, ortak model deposu salt okunurdur. Microsoft Iş ortakları, [Azure Sertifikalı IoT portalında](https://preview.catalog.azureiotsolutions.com)ortak depoyu güncelleştirebilir.

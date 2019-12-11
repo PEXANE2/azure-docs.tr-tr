@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a67870cc2494321aa739d6f59f18651013b7403b
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720814"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995958"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB ' de bir SQL API hesabını yönetmek için JavaScript SDK 'sını kullanarak Node. js web uygulaması oluşturma 
 
@@ -102,7 +102,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
 ## <a name="_Toc395783180"></a>Node. js uygulamasını Azure Cosmos DB bağlama
 İlk kurulum ve yapılandırma adımlarını tamamladığınıza göre yapılacak işler uygulamasının Azure Cosmos DB ile iletişim kurması için gereken kodu yazabilirsiniz.
 
-### <a name="create-the-model"></a>Modeli oluşturma
+### <a name="create-the-model"></a>Model oluşturma
 1. Proje dizininizin kökünde, **modeller**adlı yeni bir dizin oluşturun.  
 
 2. **models** dizininde **taskDao.js** adında yeni bir dosya oluşturun. Bu dosya, veritabanını ve kapsayıcısını oluşturmak için gereken kodu içerir. Ayrıca, Azure Cosmos DB görevleri okuma, güncelleştirme, oluşturma ve bulma yöntemlerini de tanımlar. 
@@ -115,7 +115,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
     const debug = require('debug')('todo:taskDao')
 
     // For simplicity we'll set a constant partition key
-    const partitionKey = '0'
+    const partitionKey = undefined
     class TaskDao {
       /**
        * Manages reading, adding, and updating Tasks in Cosmos DB
@@ -272,7 +272,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
    module.exports = config;
    ```
 
-3. **Config. js** dosyasında, [Azure Portal](https://portal.azure.com)Azure Cosmos DB hesabınızın anahtarlar SAYFASıNDA bulunan DEĞERLERI kullanarak Host ve AUTH_KEY değerlerini güncelleştirin. 
+3. **Config. js** dosyasında, [Azure Portal](https://portal.azure.com)Azure Cosmos DB hesabınızın anahtarlar SAYFASıNDA bulunan değerleri kullanarak konak ve AUTH_KEY değerlerini güncelleştirin. 
 
 4. **config.js** dosyasını kaydedin ve kapatın.
 

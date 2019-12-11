@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871648"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968707"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>İOS için çevrimdışı FairPlay Akışı 
 
@@ -112,9 +112,9 @@ Aşağıda gösterildiği gibi AssetDeliveryPolicyConfigurationKey ekleyin:
             objDictionary_AssetDeliveryPolicyConfigurationKey);
 ```
 
-Bu adımdan sonra, FPS varlık teslim ilkesindeki < Dictionary_AssetDeliveryPolicyConfigurationKey > dizesi aşağıdaki üç girişi içerir:
+Bu adımdan sonra, FPS varlık teslim ilkesinde < Dictionary_AssetDeliveryPolicyConfigurationKey > dizesi aşağıdaki üç girişi içerir:
 
-* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl veya AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, kullanılan FPS KSM/Key sunucusu ve aynı varlık teslimini yeniden kullanma gibi etkenlere bağlı olarak birden çok varlık genelinde ilke
+* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl veya AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, kullanılan FPS KSM/Key sunucusu gibi faktörlere ve aynı varlık teslim ilkesini birden çok varlık arasında yeniden kullanıp kullanmayacağınızı belirtir
 * AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
 * AssetDeliveryPolicyConfigurationKey. AllowPersistentLicense
 
@@ -123,18 +123,18 @@ Artık Media Services hesabınız, çevrimdışı FairPlay lisansları sunacak �
 ## <a name="sample-ios-player"></a>Örnek iOS oynatıcı
 FPS 'nin çevrimdışı mod desteği yalnızca iOS 10 ve üzeri sürümlerde kullanılabilir. FPS sunucu SDK 'Sı (sürüm 3,0 veya üzeri), belge ve FPS çevrimdışı modu için örnek içerir. Özellikle, FPS sunucu SDK 'Sı (sürüm 3,0 veya üzeri), çevrimdışı modla ilgili aşağıdaki iki öğeyi içerir:
 
-* Belgedeki "FairPlay streaming ve HTTP Canlı Akışı ile çevrimdışı oynatma." 14 Eylül 2016, elma. FPS, sunucu SDK 'Sı 4,0 sürümünde bu belge ana FPS belgesi ile birleştirilmiştir.
-* Örnek kod: \FairPlay Streaming Server SDK sürümü 3.1 \ Development\client\hlsaçlation_with_fps\hldağılmış Alog\. HLSCatalog örnek uygulamasında, çevrimdışı mod özelliklerini uygulamak için aşağıdaki kod dosyaları kullanılır:
+* Belge: "FairPlay streaming ve HTTP Canlı Akışı ile çevrimdışı oynatma." 14 Eylül 2016, elma. FPS, sunucu SDK 'Sı 4,0 sürümünde bu belge ana FPS belgesi ile birleştirilmiştir.
+* Örnek kod: \FairPlay Streaming Server SDK sürümü 3.1 \ Development\Client\ HLSCatalog_With_FPS \Hldağılmış Alog\. HLSCatalog örnek uygulamasında, çevrimdışı mod özelliklerini uygulamak için aşağıdaki kod dosyaları kullanılır:
 
     - AssetPersistenceManager. Swift kod dosyası: AssetPersistenceManager, bu örnekte nasıl yapılacağını gösteren ana sınıftır:
 
         - İndirme işlemini başlatmak ve iptal etmek ve mevcut varlıkları cihazları silmek için kullanılan API 'Ler gibi HLS akışlarını indirmeyi yönetin.
         - İndirme ilerlemesini izleyin.
-    - AssetListTableViewController. Swift ve AssetListTableViewCell. Swift kod dosyaları: AssetListTableViewController, bu örneğin ana arabirimidir. Örneğin, bir indirmeyi yürütmek, indirmek, silmek veya iptal etmek için kullanabileceği varlıkların bir listesini sağlar. 
+    - AssetListTableViewController. Swift ve AssetListTableViewCell. Swift kod dosyaları: AssetListTableViewController bu örneğin ana arabirimidir. Örneğin, bir indirmeyi yürütmek, indirmek, silmek veya iptal etmek için kullanabileceği varlıkların bir listesini sağlar. 
 
 Bu adımlarda çalışan bir iOS yürütücüsünün nasıl ayarlanacağı gösterilmektedir. FPS sunucu SDK 'Sı 4.0.1 sürümündeki HLSCatalog örneğinden başlattığınız varsayılarak aşağıdaki kod değişikliklerini yapın:
 
-Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kullanarak yöntemini `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kullanarak `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` yöntemini uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +167,7 @@ Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kull
     return ckcData
 ```
 
-Hldağık\shared\managers\contentkeydelegate.exe içinde, yöntemini `requestApplicationCertificate()`uygulayın. Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
+Hldağık\shared\managers\contentkeydelegate.exe ' de `requestApplicationCertificate()`yöntemini uygulayın. Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -208,11 +208,11 @@ Aşağıdaki sık sorulan sorular, sorun giderme konusunda yardım sağlar:
 - **Yalnızca ses ekle = yanlış olarak çevrimdışı modda video olmadan hala ses çalsın.** İçerik teslim ağı (CDN) önbellek anahtarı tasarımına bağlı olarak, içerik önbelleğe alınmış olabilir. Önbelleği temizleme.
 - **/SN, iOS 11 ' e ek olarak iOS 11 ' de de desteklenir.** Evet. FPS çevrimdışı modu, iOS 10 ve iOS 11 için desteklenir.
 - **"FairPlay streaming ile çevrimdışı kayıttan yürütme ve HTTP Canlı Akışı" belgelerini FPS sunucu SDK 'sında neden bulamıyorum?** Bu belge, FPS sunucu SDK 'Sı sürüm 4 ' te birleştirildiğinden "FairPlay streaming Programlama Kılavuzu" ile birleştirilmiştir.
-- **Son parametre, FPS çevrimdışı modu için aşağıdaki API 'de ne için stand?** 
+- **Son parametre, FPS çevrimdışı modu için AŞAĞıDAKI API 'de ne için stand?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Bu API için belgeler için bkz. [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametresi, birim olarak saat ile çevrimdışı kiralama süresini temsil eder.
-- **İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?** Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys` Klasör, indirilen fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. Klasör `.movpkg` , ses ve video içeriğini depolar. Bir tire ile biten ve ardından sayısal olan bir ada sahip ilk klasörün video içeriği vardır. Sayısal değer, video yorumlamaları 'nın en yüksek bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. "Data" adlı üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, Boot. xml, `.movpkg` klasör içeriğinin tamamının bir açıklamasını sağlar. 
+- **İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?** Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys` klasörü, her bir lisans hizmeti konağı için bir depolama dosyası ile indirilen FPS lisanslarını depolar. `.movpkg` klasörü ses ve video içeriğini depolar. Bir tire ile biten ve ardından sayısal olan bir ada sahip ilk klasörün video içeriği vardır. Sayısal değer, video yorumlamaları 'nın en yüksek bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. "Data" adlı üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, Boot. xml `.movpkg` klasörü içeriğinin tamamını içerir. 
 
 ![Çevrimdışı FairPlay iOS örnek uygulama dosyası yapısı](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
@@ -245,6 +245,10 @@ Aşağıdaki sık sorulan sorular, sorun giderme konusunda yardım sağlar:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>Ek notlar
+
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+
 ## <a name="summary"></a>Özet
 Bu belge, FPS çevrimdışı modunu uygulamak için kullanabileceğiniz aşağıdaki adımları ve bilgileri içerir:
 
@@ -252,3 +256,7 @@ Bu belge, FPS çevrimdışı modunu uygulamak için kullanabileceğiniz aşağı
 * FPS sunucu SDK 'sının örneğine dayalı bir iOS oynatıcı, çevrimiçi akış modunda veya çevrimdışı modda FPS içeriğini oynatacak bir iOS oynatıcı ayarlıyor.
 * Örnek FPS videoları, çevrimdışı modu ve çevrimiçi akışı test etmek için kullanılır.
 * Bir SSS, FPS çevrimdışı modu hakkında soruları yanıtlar.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

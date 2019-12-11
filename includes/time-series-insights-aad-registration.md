@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 11/14/2019
-ms.openlocfilehash: fa6921f8c4309f17cbd63e242a5416e7e81bb6c3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/06/2019
+ms.openlocfilehash: c3eeb59809a4028702022e8a18db633a26b01d5c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133501"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980482"
 ---
 1. [Azure portal](https://ms.portal.azure.com/) **Azure Active Directory** > **Yeni kayıt** > **uygulama kayıtları** seçin.
 
@@ -43,7 +43,7 @@ ms.locfileid: "74133501"
 
    [Yeni bir istemci parolası oluşturmak ![](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
 
-   **Kaydet**’e tıklayın.
+   **Kaydet** düğmesine tıklayın.
 
 1. Sertifikaların kimliğini kanıtlamak için kullanabileceği bir uygulama parolası oluşturmak için **sertifikalar & gizlilikler** ' ı ve sonra **yeni istemci gizli** anahtarını seçin.
 

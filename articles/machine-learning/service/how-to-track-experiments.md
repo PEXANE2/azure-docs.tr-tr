@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a60691222c6f5f31a5b5c97df029790c1fd690ed
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3de34c1da20df17fb5fb65cef28669fb73ff33a5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873903"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978569"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -263,11 +263,11 @@ Bir çalıştırma tamamlandıktan sonra bu sayfada artık görüntülenmez. Tam
 
    ![Ekran görüntüsü, Jupyter not defteri pencere öğesi](./media/how-to-track-experiments/run-details-widget.png)
 
-Ayrıca, çalışma alanınızda aynı görüntüleme bağlantısını da alabilirsiniz.
+   Ayrıca, çalışma alanınızda aynı görüntüleme bağlantısını da alabilirsiniz.
 
-```python
-print(run.get_portal_url())
-```
+   ```python
+   print(run.get_portal_url())
+   ```
 
 2. **[Çalıştırmalarını otomatik makine öğrenme]**  Grafikleri önceki bir çalıştırma işleminden erişmek için. `<<experiment_name>>` uygun deneme adıyla değiştirin:
 

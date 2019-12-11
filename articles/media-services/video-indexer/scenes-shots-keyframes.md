@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806735"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976613"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sahneler, çekimler, ana kareler
 
@@ -36,7 +36,7 @@ Video Indexer, ardışık çerçevelerin renk düzeninde hem sert hem de derecel
 
 ## <a name="keyframe-detection"></a>Ana kare algılama
 
-Resmi en iyi temsil eden çerçeveleri seçer. Ana kareler, Aesthetic Characteristics özelliklerine (örneğin, kontrast ve stablete) göre videonun tamamının seçtiği temsili çerçevelerdir. Video Indexer, ana kare kimliklerinin bir listesini, hangi müşterilerin ana kare küçük resmini ayıklayabileceği temel alınarak, alıcının meta verilerinin bir parçası olarak alır. 
+Video Indexer her bir görüntüsünü en iyi temsil eden çerçeveleri seçer. Ana kareler, Aesthetic Characteristics özelliklerine (örneğin, kontrast ve stablete) göre videonun tamamının seçtiği temsili çerçevelerdir. Video Indexer, ana kare kimliklerinin bir listesini, ana kareyi yüksek çözünürlüklü bir görüntü olarak hangi müşterilerin çıkarabileceği temel alınarak, yansımanın meta verilerinin bir parçası olarak alır.  
 
 ### <a name="extracting-keyframes"></a>Ana kareleri ayıklama
 

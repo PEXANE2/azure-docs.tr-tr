@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566380"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981278"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
@@ -25,7 +25,7 @@ Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak is
 
     ![Erişim paketi Istekleri-dizininizdeki kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Aşağıdaki seçeneklerden birini belirleyin:
+1. Aşağıdaki seçeneklerden birini seçin:
 
     |  |  |
     | --- | --- |
@@ -60,12 +60,13 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 
     ![Erişim paketi Istekleri-dizininizde olmayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Aşağıdaki seçeneklerden birini belirleyin:
+1. Aşağıdaki seçeneklerden birini seçin:
 
     |  |  |
     | --- | --- |
     | **Belirli bağlı kuruluşlar** | Yöneticinizin daha önce eklediği kuruluşların listesinden seçim yapmak istiyorsanız bu seçeneği belirleyin. Seçili kuruluşların tüm kullanıcıları bu erişim paketini isteyebilir. |
     | **Tüm bağlı kuruluşlar** | Bağlı Kuruluşlarınızın tüm kullanıcıları bu erişim paketini talep edebilir ise bu seçeneği belirleyin. |
+    | **Tüm kullanıcılar (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar)** | Tüm bağlı kuruluşlarınızdaki tüm kullanıcılar bu erişim paketini isteyebilse ve B2B izin verme veya reddetme listesi ayarlarının tüm yeni dış kullanıcılar için öncelikli olması durumunda bu seçeneği belirleyin. |
 
     Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
 
@@ -80,7 +81,7 @@ Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek i
 1. Bağlı Kuruluşlarınızın tümünü seçtikten sonra **Seç**' e tıklayın.
 
     > [!NOTE]
-    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../articles/active-directory/b2b/allow-deny-list.md).
+    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için [B2B kullanıcıları için izin verilenler veya Engellenenler davetleri belirli kuruluşlardan](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. [Onay](#approval) bölümüne atlayın.
 

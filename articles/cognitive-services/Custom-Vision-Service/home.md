@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 829921ae5600873fdc8f2946ae3ff355bffb06a8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177823"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978603"
 ---
 # <a name="what-is-custom-vision"></a>Özel Görüntü İşleme nedir?
 
-Özel Görüntü İşleme kendi görüntü sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve iyileştirmenize olanak tanıyan bir bilişsel hizmettir. Görüntü Sınıflandırıcısı, görsel özelliklerine göre resimlere (sınıfları temsil eden _sınıflar_) uygulanan bir AI hizmetidir. [Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinin aksine, özel görüntü işleme uygulanacak etiketleri belirlemenizi sağlar.
+Özel Görüntü İşleme, kendi resim sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve geliştirmenize olanak sağlayan bir bilişsel hizmettir. Görüntü Sınıflandırıcısı, görsel özelliklerine göre resimlere (sınıfları temsil eden _sınıflar_) uygulanan bir AI hizmetidir. [Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinin aksine, özel görüntü işleme uygulanacak etiketleri belirlemenizi sağlar.
 
 ## <a name="what-it-does"></a>Neler yapar?
 
@@ -31,9 +31,9 @@ ms.locfileid: "72177823"
 
 ### <a name="optimization"></a>İyileştirme
 
-Özel Görüntü İşleme Hizmeti, görüntüler arasındaki önemli farklılıkları hızlı bir şekilde tanımak için en iyi duruma getirilmiştir, bu sayede modelinize kısa bir veri miktarıyla prototip başlatabilirsiniz. Her etiket için 50 görüntü genellikle iyi bir başlangıç. Ancak, görüntüde hafif farklılıkları tespit etmek için en uygun değildir (örneğin, kalite güvencesi senaryolarındaki küçük bir yandan veya en yüzlerini algılama).
+Özel Görüntü İşleme hizmeti, görüntüler arasındaki önemli farkları hızlı bir şekilde tanımak üzere iyileştirildiğinden modelinizin prototipini oluşturmaya az miktarda veriyle başlayabilirsiniz. Her etiket için 50 görüntü genellikle iyi bir başlangıç. Ancak, görüntüde hafif farklılıkları tespit etmek için en uygun değildir (örneğin, kalite güvencesi senaryolarındaki küçük bir yandan veya en yüzlerini algılama).
 
-Ayrıca, belirli konu malzemesine sahip görüntüler için optimize edilmiş Özel Görüntü İşleme algoritmasından çok sayıda değişken arasından seçim yapabilirsiniz. Örneğin, yer işaretleri veya perakende öğeleri. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
+Ayrıca, örneğin, yer işaretleri veya perakende öğeleri gibi belirli konu&mdash;malzemelere sahip görüntüler için en iyi duruma getirilmiş Özel Görüntü İşleme algoritmasından çok sayıda değişken arasından seçim yapabilirsiniz. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
 
 ## <a name="what-it-includes"></a>Neleri içerir
 

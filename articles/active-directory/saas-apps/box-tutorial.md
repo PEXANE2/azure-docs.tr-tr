@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b808e13ec37b9667a3ab1aaa233532a076bf4970
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: aceec8ad6ca23a1bd89b93a6442d48aa81597e55
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558929"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Öğretici: Box ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -45,8 +45,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Kutu **SP** tarafından başlatılan SSO 'yu destekler
+* Kutu [ **Otomatik** Kullanıcı sağlamayı ve sağlamayı kaldırmayı](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) destekler (önerilir)
 * Kutu **, tam zamanında** Kullanıcı sağlamayı destekler
-* Kutu [ **Otomatik** Kullanıcı sağlamayı destekler](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial)
 
 ## <a name="adding-box-from-the-gallery"></a>Galeriden kutu ekleme
 
@@ -76,7 +76,7 @@ Azure AD SSO 'yu Box ile yapılandırmak ve test etmek için aşağıdaki yapı 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/) **, uygulama tümleştirme** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -84,9 +84,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.account.box.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.account.box.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`box.net`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın: `box.net`
 
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [istemci destek ekibi Iletişim kutusu](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) . Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -103,9 +103,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -151,6 +151,6 @@ Erişim panelinde kutu kutucuğuna tıkladığınızda, SSO 'yu ayarladığını
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile TRY kutusu](https://aad.portal.azure.com/)

@@ -1,7 +1,7 @@
 ---
-title: Konuşma Tanıma Hizmetleri nelerdir?
+title: Konuşma tanıma hizmeti nedir?
 titleSuffix: Azure Cognitive Services
-description: Konuşma Hizmetleri, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine sahip değildir. Konuşma SDK 'Sı, konuşma cihazları SDK 'Sı veya REST API 'Leri ile uygulamalarınıza, araçlara ve cihazlara konuşma ekleyin.
+description: Konuşma hizmeti, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine sahip değildir. Konuşma SDK 'Sı, konuşma cihazları SDK 'Sı veya REST API 'Leri ile uygulamalarınıza, araçlara ve cihazlara konuşma ekleyin.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b1c32042fcb70ff16bb9d014a9f3546f4435e83f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c366beb80eda7087f1f74fffbcfbf8b143676f32
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075787"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995907"
 ---
-# <a name="what-are-the-speech-services"></a>Konuşma Tanıma Hizmetleri nelerdir?
+# <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
-Konuşma Hizmetleri, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine yönelik bir birleşme özelliği. Konuşma [SDK 'sı](speech-sdk-reference.md), [konuşma cihazları SDK](https://aka.ms/sdsdk-quickstart)'Sı veya [REST API 'leri](rest-apis.md)ile uygulamalarınızı, araçları ve cihazlarınızı kolayca yapabilirsiniz.
+Konuşma hizmeti, konuşmadan metne, metinden konuşmaya ve konuşma çevirisi için tek bir Azure aboneliğine yönelik bir birleşme hizmetidir. Konuşma [SDK 'sı](speech-sdk-reference.md), [konuşma cihazları SDK](https://aka.ms/sdsdk-quickstart)'Sı veya [REST API 'leri](rest-apis.md)ile uygulamalarınızı, araçları ve cihazlarınızı kolayca yapabilirsiniz.
 
 > [!IMPORTANT]
-> Konuşma Hizmetleri Bing Konuşma API'si, Translator Konuşma Çevirisi ve Özel Konuşma Tanıma değiştirdi. Geçiş yönergeleri için bkz. _nasıl yapılır kılavuzlarından geçiş >_ .
+> Konuşma hizmeti Bing Konuşma API'si, Translator Konuşma Çevirisi ve Özel Konuşma Tanıma değiştirdi. Geçiş yönergeleri için bkz. _nasıl yapılır kılavuzlarından geçiş >_ .
 
-Bu özellikler Azure konuşma hizmetlerini yapar. Her bir özellik için genel kullanım örnekleri hakkında daha fazla bilgi edinmek veya API başvurusuna gitmek için bu tablodaki bağlantıları kullanın.
+Bu özellikler konuşma hizmetini yapar. Her bir özellik için genel kullanım örnekleri hakkında daha fazla bilgi edinmek veya API başvurusuna gitmek için bu tablodaki bağlantıları kullanın.
 
 | Hizmet | Özellik | Açıklama | SDK | REST |
 | ------- | ------- | ----------- | --- | ---- |
@@ -32,14 +32,14 @@ Bu özellikler Azure konuşma hizmetlerini yapar. Her bir özellik için genel k
 |         | [Toplu iş dökümü](batch-transcription.md) | Toplu iş dökümü, büyük hacimde verilerin zaman uyumsuz konuşmadan metne dökümünü sağlar. Bu, özelleştirme ve model yönetimi ile aynı uç noktayı kullanan REST tabanlı bir hizmettir. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
 |         | [Konuşma dökümü](conversation-transcription-service.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Yes | Hayır |
 |         | [Özel Konuşma Tanıma modelleri oluşturma](#customize-your-speech-experience) | Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
-| [Metin okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Metin Okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 |         | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | Hayır | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Konuşma Çevirisi](speech-translation.md) | Konuşma çevirisi | Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlara gerçek zamanlı, çok dilli konuşma çevirisi sağlar. Konuşmayı konuşmaya dönüştürme ve konuşmadan metne çevirme için bu hizmeti kullanın. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Hayır |
-| [Ses yardımcıları](voice-assistants.md) | Ses yardımcıları | Azure konuşma Hizmetleri 'ni kullanan sesli yardımcılar, geliştiricilerin uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Ses Yardımcısı hizmeti, bir cihaz ile bir yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar ve bu sayede, görev tamamlama için bir aygıt ve doğrudan hat konuşma kanalı veya tümleşik özel komutlar (Önizleme) hizmeti kullanılır. | [Evet](voice-assistants.md) | Hayır |
+| [Ses yardımcıları](voice-assistants.md) | Ses yardımcıları | Konuşma hizmetini kullanan sesli yardımcılar, geliştiricilerin uygulamalar ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Ses Yardımcısı hizmeti, bir cihaz ile bir yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar ve bu sayede, görev tamamlama için bir aygıt ve doğrudan hat konuşma kanalı veya tümleşik özel komutlar (Önizleme) hizmeti kullanılır. | [Evet](voice-assistants.md) | Hayır |
 
 ## <a name="news-and-updates"></a>Haberler ve güncelleştirmeler
 
-Azure konuşma Hizmetleri yenilikleri hakkında bilgi edinin.
+Konuşma hizmeti yenilikleri hakkında bilgi edinin.
 
 - Eylül 2019
   - Yayınlanan konuşma SDK 1.7.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
@@ -53,7 +53,7 @@ Azure konuşma Hizmetleri yenilikleri hakkında bilgi edinin.
   - Yayınlanan konuşma SDK 1.5.1. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
   - Yayınlanan konuşma SDK 1.5.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
 
-## <a name="try-speech-services"></a>Konuşma hizmetlerini deneyin
+## <a name="try-the-speech-service"></a>Konuşma hizmetini deneyin
 
 Her biri 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlanan en popüler programlama dillerinde hızlı başlangıçları sunuyoruz. Bu tablo her bir özellik için en popüler hızlı başlangıçlara sahiptir. Ek dilleri ve platformları araştırmak için sol taraftaki gezintiyi kullanın.
 
@@ -66,7 +66,7 @@ Her biri 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlan
 > [!NOTE]
 > Konuşmadan metne ve metinden konuşmaya Ayrıca REST uç noktalarına ve ilgili hızlı başlangıçlara sahiptir.
 
-Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
+Konuşma hizmetini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
 
 - [Öğretici: konuşma SDK 'Sı ve LUSıS ile konuşma amaçlarını tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
 - [Öğretici: konuşma SDK 'Sı ile sesinizi etkinleştirme,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
@@ -74,7 +74,7 @@ Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını 
 
 ## <a name="get-sample-code"></a>Örnek kodu alma
 
-Örnek kod, Azure konuşma hizmetlerinin her biri için GitHub 'da kullanılabilir. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek kararlı bir tanıma ve özel modellerle çalışma gibi yaygın senaryoları kapsar. SDK ve REST örneklerini görüntülemek için bu bağlantıları kullanın:
+Örnek kod, konuşma hizmeti için GitHub 'da kullanılabilir. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek kararlı bir tanıma ve özel modellerle çalışma gibi yaygın senaryoları kapsar. SDK ve REST örneklerini görüntülemek için bu bağlantıları kullanın:
 
 - [Konuşmadan metne, metinden konuşmaya ve konuşma çevirisi örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Toplu iş dökümü örnekleri (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
@@ -83,7 +83,7 @@ Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını 
 
 ## <a name="customize-your-speech-experience"></a>Konuşma deneyiminizi özelleştirin
 
-Azure konuşma Hizmetleri yerleşik modellerle iyi çalışmaktadır, ancak ürün veya ortamınızın deneyimini daha fazla özelleştirmek ve ayarlamak isteyebilirsiniz. Özelleştirme seçenekleri, akustik model ayarlamalarından markanızla ilgili benzersiz ses yazı tiplerine kadar değişir. Özel bir model oluşturduktan sonra Azure konuşma hizmetlerinden herhangi biriyle kullanabilirsiniz.
+Konuşma hizmeti yerleşik modellerle iyi çalışmaktadır, ancak ürününüzün veya ortamınızın deneyimini daha fazla özelleştirmek ve ayarlamak isteyebilirsiniz. Özelleştirme seçenekleri, akustik model ayarlamalarından markanızla ilgili benzersiz ses yazı tiplerine kadar değişir.
 
 | Konuşma Hizmeti | Platform | Açıklama |
 | -------------- | -------- | ----------- |

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Android SDK görüntüdeki yüzeyleri Algıla ve çerçevele'
+title: 'Öğretici: Android SDK ile görüntüdeki yüzleri algılama ve çerçeveleme'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, bir görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için Yüz Tanıma API'si kullanan basit bir Android uygulaması oluşturacaksınız.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858977"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977803"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Öğretici: Görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için bir Android uygulaması oluşturma
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Öğretici: Resimdeki yüzleri algılamak ve çerçeve içine almak için Android uygulaması oluşturma
 
-Bu öğreticide, bir görüntüdeki insan yüzlerini algılamak için, Java SDK 'Sı aracılığıyla Azure Yüz Tanıma API'si kullanan basit bir Android uygulaması oluşturacaksınız. Uygulama, seçilen görüntü görüntüler ve algılanan her yüz etrafında bir çerçeve çizer.
+Bu öğreticide, bir görüntüdeki insan yüzlerini algılamak için, Java SDK 'Sı aracılığıyla Azure Yüz Tanıma API'si kullanan bir Android uygulaması oluşturacaksınız. Uygulama, seçilen görüntü görüntüler ve algılanan her yüz etrafında bir çerçeve çizer.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın. Ardından, sırasıyla ve `FACE_ENDPOINT`olarak adlandırılan `FACE_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Yüz tanıma API'si abonelik anahtarı. Ücretsiz deneme aboneliği anahtarından alabilirsiniz [Bilişsel Hizmetler'i deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Veya yönergeleri [Bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yüz tanıma API'si hizmete abone ve anahtarınızı alın. Ardından, sırasıyla `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
 - [ANDROID STUDIO](https://developer.android.com/studio/) API düzeyi 22 veya üzeri (yüz istemci kitaplığı için gereklidir).
 
@@ -61,7 +61,7 @@ Yeni bir Android uygulaması projesi oluşturmak için aşağıdaki adımları i
 
 ### <a name="create-the-main-class"></a>Ana sınıfı oluşturma
 
-*MainActivity. Java* ' yı açın ve var `import` olan deyimleri aşağıdaki kodla değiştirin.
+*MainActivity. Java* ' yı açın ve var olan `import` deyimlerini aşağıdaki kodla değiştirin.
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_imports)]
 
@@ -85,7 +85,7 @@ Ardından, **MainActivity** sınıfının içeriğini aşağıdaki kodla değiş
 
 ### <a name="add-the-face-related-project-code"></a>Yüz ile ilgili proje kodunu ekleme
 
-**MainActivity. Java** ' ya dönün ve aşağıdaki `import` deyimleri ekleyin:
+**MainActivity. Java** ' ya dönün ve aşağıdaki `import` deyimlerini ekleyin:
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_face_imports)]
 
@@ -103,7 +103,7 @@ Uygulamanız, [algıla](https://westus.dev.cognitive.microsoft.com/docs/services
 
 Döndürülen her **yüz** , konumunu belirten, isteğe bağlı bir yüz öznitelikleri serisiyle birleştirilmiş bir dikdörtgen içerir. Bu örnekte, yalnızca yüz dikdörtgenler istenir.
 
-Aşağıdaki iki yöntemi **MainActivity** sınıfına ekleyin. Yüz Algılama tamamlandığında, uygulamanın **ImageView**öğesini değiştirmek Için **Drawfacerectanglesonbitmap** metodunu çağırdığına bakın. Bu yöntemi bir sonraki adımda tanımlayacaksınız.
+Aşağıdaki iki yöntemi **MainActivity** sınıfına ekleyin. Yüz algılama işlemi tamamlandığında, uygulama **ImageView**'ı değiştirmek Için **Drawfacerectanglesonbitmap** yöntemini çağırır. Bu yöntemi bir sonraki adımda tanımlayacaksınız.
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 

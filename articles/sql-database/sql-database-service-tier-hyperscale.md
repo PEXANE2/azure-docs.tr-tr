@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927656"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978637"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -245,7 +245,7 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Yönetilen Örnek | Azure SQL veritabanı yönetilen örneği şu anda hiper ölçekli veritabanları ile desteklenmiyor. |
 | Esnek Havuzlar |  Esnek havuzlar Şu anda SQL veritabanı Hyperscale ile desteklenmemektedir.|
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu BACPAC dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur.|
-| Kalıcı bellek içi nesneleri olan veritabanlarının geçirilmesi | Hiper ölçek yalnızca kalıcı olmayan bellek nesnelerini destekler (tablo türleri, yerel SPs 'ler ve işlevler).  Kalıcı bellek Içi tablolar ve diğer nesneler, bir veritabanını hiper ölçek hizmet katmanına geçirmeden önce, bellek içi nesneler olarak bırakılmalıdır ve yeniden oluşturulmalıdır.|
+| Bellek içi OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, yerel koda derlenmiş saklı yordamlar ve işlevler dahil olmak üzere bellek Içi OLTP nesne türlerinin bir alt kümesini destekler. Ancak, veritabanında bellek Içi OLTP nesneleri varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe doğrudan geçiş desteklenmez. Böyle bir veritabanının hiper ölçeğe geçirilmesi üç adım gerektirir: (1) tüm bellek Içi OLTP nesnelerini ve bunların bağımlılıklarını bırakın. Dayanıklı bellek için iyileştirilmiş tablolardaki verileri korumak için bunları disk tablolarına dönüştürün. (2) veritabanının hizmet katmanını Hyperscale olarak değiştirin. (3) daha önce bırakılan nesneleri yeniden oluşturun. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları kalmalıdır. Bellek için iyileştirilmiş tablo değişkenleri desteklenir. |
 | Değişiklik İzleme | Değişiklik İzleme Şu anda genel önizleme aşamasındadır ve yeni veya mevcut hiper ölçekli veritabanlarında etkinleştirilebilir. |
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |

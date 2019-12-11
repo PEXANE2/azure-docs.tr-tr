@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ff874ee74864c84c976096ac5f7fa4b20cfab48
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271507"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997012"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
 
@@ -86,7 +86,7 @@ OpenID Connect 'in Microsoft Identity Platform uygulaması, belirli bir kaynak i
 
 Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturum açma işlemini gerçekleştiriyorsa, `openid` kapsamını istemesi gerekir. `openid` kapsam, çalışma hesabı onay sayfasında "oturumunuzu aç" izninin yanı sıra kişisel Microsoft hesabı izin sayfasında "profilinizi görüntüleme ve Microsoft hesabı ile uygulama ve hizmetlere bağlanma" iznini olarak gösterir. Bu izinle, bir uygulama kullanıcı için `sub` talebi biçiminde benzersiz bir tanımlayıcı alabilir. Ayrıca uygulama, UserInfo uç noktasına erişim sağlar. `openid` kapsamı, uygulama tarafından kimlik doğrulaması için kullanılabilecek kimlik belirteçleri elde etmek için Microsoft Identity platform belirteci uç noktasında kullanılabilir.
 
-### <a name="email"></a>email
+### <a name="email"></a>e-posta
 
 `email` kapsamı `openid` kapsamı ve diğerleri ile kullanılabilir. Uygulama, kullanıcının birincil e-posta adresine `email` talebi biçiminde erişim sağlar. `email` talebi, yalnızca bir e-posta adresi kullanıcı hesabıyla ilişkiliyse, her zaman durum olmayan bir belirtece dahil edilir. `email` kapsamını kullanıyorsa, uygulamanız `email` talebinin belirteçte olmadığı bir durumu işlemeye hazırlanmalıdır.
 
@@ -98,7 +98,10 @@ Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturu
 
 [`offline_access` kapsamı](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) , uygulamanızın kullanıcı adına uzun bir süre boyunca kaynaklara erişmesini sağlar. Onay sayfasında, bu kapsam "erişim vermiş olduğunuz verilere erişimi koru" izni olarak görünür. Bir Kullanıcı `offline_access` kapsamını onayladığında, uygulamanız Microsoft Identity platform belirteci uç noktasından yenileme belirteçleri alabilir. Yenileme belirteçleri uzun süreli. Uygulamanız, eski kullanım süreleri dolana kadar yeni erişim belirteçleri alabilir.
 
-Uygulamanız `offline_access` kapsamını açıkça istemezse yenileme belirteçleri almaz. Bu, [OAuth 2,0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda `/token` uç noktasından yalnızca bir erişim belirteci alacağınız anlamına gelir. Erişim belirteci kısa bir süre için geçerlidir. Erişim belirtecinin genellikle bir saat içinde süresi dolar. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu almak için kullanıcıyı `/authorize` uç noktasına yeniden yönlendirmesi gerekir. Bu yeniden yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden onaylaması gerekebilir. `offline_access` kapsamı sunucu tarafından otomatik olarak istenirken, istemciniz yenileme belirteçlerini almak için yine de istekte bulunmalıdır.
+> [!NOTE]
+> Bu izin, yenileme belirteci sağlamayan akışlar ( [örtük akış](v2-oauth2-implicit-grant-flow.md)) için bile, bugün tüm onay ekranlarında görünür.  Bu, bir istemcinin örtük akış içinde başlayabileceği senaryoları kapsar ve sonra bir yenileme belirtecinin beklendiği kod akışına geçebilir.
+
+Microsoft Identity platformunda (v 2.0 uç noktasında yapılan istekler), uygulamanız yenileme belirteçleri almak için `offline_access` kapsamını açıkça istemelidir. Bu, [OAuth 2,0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda `/token` uç noktasından yalnızca bir erişim belirteci alacağınız anlamına gelir. Erişim belirteci kısa bir süre için geçerlidir. Erişim belirtecinin genellikle bir saat içinde süresi dolar. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu almak için kullanıcıyı `/authorize` uç noktasına yeniden yönlendirmesi gerekir. Bu yeniden yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden onaylaması gerekebilir. 
 
 Yenileme belirteçleri alma ve kullanma hakkında daha fazla bilgi için bkz. [Microsoft Identity platform protokol başvurusu](active-directory-v2-protocols.md).
 
@@ -123,7 +126,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı*kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse veya bir yöneticiye tüm kuruluş adına bu izinlere onay verildiyse, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
 
 > [!NOTE]
-> Şu anda `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("oturumunuzu oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir-`offline_access` uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenilemek için, `user.read` `sub` talebine erişim sağlarken, istemci veya uygulamanın kullanıcıyı doğru bir şekilde belirlemesine izin verir zaman içinde ilkel Kullanıcı bilgilerine erişin.  
+> Şu anda `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("oturumunuzu oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir-`offline_access` uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenileme erişimi sağlarken, `user.read` `sub` talebine erişim sağlarken, istemci veya uygulamanın zaman içinde kullanıcıyı doğru bir şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.  
 
 ![İş hesabı onayını gösteren örnek ekran görüntüsü](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -199,11 +202,11 @@ Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı M
 
 | Parametre     | Koşul     | Açıklama                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Gerekli | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi `common` GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. |
-| `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
-| `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
+| `tenant` | Gereklidir | İzin istemek istediğiniz dizin kiracısı. , Örnekte görüldüğü gibi `common` GUID veya kolay ad biçiminde veya genel olarak başvuru yapılabilir. |
+| `client_id` | Gereklidir | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
+| `redirect_uri` | Gereklidir |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
-|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. | 
+|`scope`        | Gereklidir      | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir.  Bu, OıDC kapsamlarını (`openid`, `profile`, `email`) içerebilir. | 
 
 
 Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, `scope` parametresinde istediğiniz tüm izinleri onaylaması istenir.  Statik (`/.default`) bir değer kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.

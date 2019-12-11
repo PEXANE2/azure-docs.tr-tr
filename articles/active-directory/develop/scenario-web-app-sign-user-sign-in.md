@@ -1,5 +1,5 @@
 ---
-title: Kullanıcılara oturum açan Web uygulaması (oturum açma)-Microsoft Identity platform
+title: Kullanıcılar tarafından oturum açan bir Web uygulaması yazma-Microsoft Identity platform | Mavisi
 description: Kullanıcılara oturum açan bir Web uygulaması oluşturmayı öğrenin (oturum açma)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b41e46401d600ebaba1febb86aafbd55c8399a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482555"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961990"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcı oturumu açan Web uygulaması: oturum açma ve oturum kapatma
 
@@ -35,7 +35,7 @@ Oturum açma iki bölümden oluşur:
 
 ### <a name="sign-in-button"></a>Oturum açma düğmesi
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core, oturum açma düğmesi `Views\Shared\_LoginPartial.cshtml`gösterilir. Yalnızca kimliği doğrulanmış hesap olmadığında gösterilir. Diğer bir deyişle, Kullanıcı henüz oturum açmamış veya oturumu kapatmamışsa görüntülenir.
 
@@ -108,7 +108,7 @@ def index():
 
 ### <a name="signin-action-of-the-controller"></a>denetleyicinin `SignIn` eylemi
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET ' de, Web uygulamasındaki **oturum açma** düğmesi seçildiğinde `AccountController` denetleyicisindeki `SignIn` eylemi tetiklenir. ASP.NET Core şablonlarının önceki sürümlerinde `Account` denetleyicisi Web uygulamasıyla katıştırılmıştır. Denetleyici artık ASP.NET Core çerçevesinin bir parçası olduğundan bu durum artık böyle değildir.
 
@@ -217,7 +217,7 @@ Daha fazla bilgi edinmek için [Microsoft Identity platform ve OpenID Connect Pr
 
 ### <a name="application-registration"></a>Uygulama kaydı
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Uygulama kaydı sırasında, oturum kapatma sonrası URI 'sini kaydedersiniz. Öğreticimizde, **kimlik doğrulama** sayfasındaki **Gelişmiş ayarlar** bölümünün **oturum kapatma URL 'si** alanında `https://localhost:44321/signout-oidc` kaydettiniz. Ayrıntılar için bkz. [WebApp uygulamasını kaydetme](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
 
@@ -237,7 +237,7 @@ Uygulama kaydı sırasında, fazladan bir oturum kapatma URL 'SI kaydetmeniz ger
 
 ### <a name="sign-out-button"></a>Oturum kapatma düğmesi
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core, oturum kapatma düğmesi `Views\Shared\_LoginPartial.cshtml`gösterilir. Yalnızca kimliği doğrulanmış bir hesap olduğunda gösterilir. Diğer bir deyişle, Kullanıcı daha önce oturum açmış olduğu zaman görüntülenir.
 
@@ -322,7 +322,7 @@ Python hızlı başlangıçta, oturum kapatma düğmesi [Şablonlar/index. html 
 
 ### <a name="signout-action-of-the-controller"></a>denetleyicinin `SignOut` eylemi
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET ' de, Web uygulamasındaki **Oturumu Kapat** düğmesinin seçilmesi `AccountController` denetleyicisindeki `SignOut` eylemini tetikler. ASP.NET Core şablonlarının önceki sürümlerinde, `Account` denetleyicisi Web uygulamasıyla katıştırılmıştır. Denetleyici artık ASP.NET Core çerçevesinin bir parçası olduğundan bu durum artık böyle değildir.
 
@@ -392,7 +392,7 @@ def logout():
 
 Oturum kapatma sonrası URI, uygulamaların genel oturum açma 'ya katılmasına olanak sağlar.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Çekirdeği](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ASP.NET Core OpenID Connect ara yazılımı, uygulamanızın `OnRedirectToIdentityProviderForSignOut`adlı bir OpenID Connect olayı sağlayarak Microsoft Identity platform `logout` uç noktası çağrısını kesmesini sağlar. Bu olaya abone olunacak bir örnek için (belirteç önbelleğini temizlemek için), bkz. [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156).
 

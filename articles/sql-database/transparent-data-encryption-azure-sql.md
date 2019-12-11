@@ -1,5 +1,5 @@
 ---
-title: Saydam veri şifrelemesi
+title: Saydam veri şifreleme
 description: SQL veritabanı ve veri ambarı için saydam veri şifrelemeye genel bakış. Belge, hizmet tarafından yönetilen saydam veri şifrelemesini ve Kendi Anahtarını Getir dahil olmak üzere avantajlarının yanı sıra yapılandırma seçeneklerini de kapsar.
 services: sql-database
 ms.service: sql-database
@@ -8,27 +8,27 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: b6af171eafbaf1f4d31bad649fcb0c69d8bdc24d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821700"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995890"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL veritabanı ve veri ambarı için saydam veri şifrelemesi
 
-Saydam veri şifrelemesi (TDE), bekleyen verileri şifreleyerek kötü niyetli çevrimdışı etkinlik tehditlerine karşı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure veri ambarı ' nı korumanıza yardımcı olur. Uygulamada değişiklik gerektirmeden, bekleyen veritabanı, ilişkili yedeklemeler ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemleri gerçekleştirir. Varsayılan olarak, TDE, tüm yeni dağıtılan Azure SQL veritabanları için etkinleştirilmiştir. TDE, SQL veritabanında mantıksal **ana** veritabanını şifrelemek için kullanılamaz.  **Ana** veritabanı, Kullanıcı veritabanlarında TDE işlemleri gerçekleştirmek için gereken nesneleri içerir.
+Saydam veri şifrelemesi (TDE), bekleyen verileri şifreleyerek kötü niyetli çevrimdışı etkinlik tehditlerine karşı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure veri ambarı ' nı korumanıza yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. TDE varsayılan olarak yeni dağıtılan tüm Azure SQL veritabanlarında etkindir. TDE, SQL veritabanında mantıksal **ana** veritabanını şifrelemek için kullanılamaz.  **Ana** veritabanı, Kullanıcı veritabanlarında TDE işlemleri gerçekleştirmek için gereken nesneleri içerir.
 
 TDE 'nin Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SQL veri ambarı 'nın eski veritabanları için el ile etkinleştirilmesi gerekiyor.
 Restore ile oluşturulan yönetilen örnek veritabanları kaynak veritabanından şifreleme durumunu devralma.
 
 Saydam veri şifrelemesi, veritabanı şifreleme anahtarı adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Bu veritabanı şifreleme anahtarı, saydam veri şifreleme koruyucusu tarafından korunuyor. Koruyucu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya Azure Key Vault (Kendi Anahtarını Getir) içinde depolanan bir asimetrik anahtardır. Saydam veri şifreleme koruyucusunu Azure SQL veritabanı ve veri ambarı için sunucu düzeyinde ve Azure SQL yönetilen örneği için örnek düzeyinde ayarlarsınız. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
 
-Veritabanı başlangıcında, şifrelenmiş veritabanı şifreleme anahtarının şifresi çözülür ve veritabanı dosyalarının şifresinin çözülmesi ve SQL Server veritabanı altyapısı işleminde yeniden şifrelenmesi için kullanılır. Saydam veri şifrelemesi, verileri sayfa düzeyinde gerçek zamanlı g/ç şifrelemesi ve şifre çözme işlemleri gerçekleştirir. Her sayfa, belleğe okunmadan ve sonra diske yazılmadan önce şifrelendiğinde çözülür. Saydam veri şifrelemesi hakkında genel bir açıklama için bkz. [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
+Veritabanı başlangıcında, şifrelenmiş veritabanı şifreleme anahtarının şifresi çözülür ve veritabanı dosyalarının şifresinin çözülmesi ve SQL Server veritabanı altyapısı işleminde yeniden şifrelenmesi için kullanılır. Saydam veri şifrelemesi, verileri sayfa düzeyinde gerçek zamanlı g/ç şifrelemesi ve şifre çözme işlemleri gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. Saydam veri şifrelemesi hakkında genel bir açıklama için bkz. [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 
 Azure sanal makinesinde çalışan SQL Server, Key Vault bir asimetrik anahtar da kullanabilir. Yapılandırma adımları SQL veritabanı ve SQL yönetilen örneği 'nde asimetrik anahtar kullanmaktan farklıdır. Daha fazla bilgi için [Azure Key Vault (SQL Server) kullanarak Genişletilebilir anahtar yönetimi](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)bölümüne bakın.
 
@@ -122,7 +122,7 @@ Ana veritabanında bir yönetici veya **DBManager** rolünün üyesi olan bir ot
 | --- | --- |
 | [ALTER DATABASE (Azure SQL veritabanı)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | ŞIFRELEMEYI ayarlama/kapatma bir veritabanının şifresini şifreler veya şifresini çözer |
 | [sys. dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Bir veritabanının şifreleme durumu ve ilişkili veritabanı şifreleme anahtarları hakkında bilgi döndürür |
-| [sys. dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Her bir veri ambarı düğümünün ve ilişkili veritabanı şifreleme anahtarlarının şifreleme durumu hakkında bilgi döndürür |
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Her bir veri ambarı düğümünün ve ilişkili veritabanı şifreleme anahtarlarının şifreleme durumu hakkında bilgi döndürür |
 |  | |
 
 Transact-SQL ' y i kullanarak, saydam veri şifreleme koruyucusunu Key Vault bir anahtara geçirebilirsiniz. PowerShell veya Azure portal kullanın.

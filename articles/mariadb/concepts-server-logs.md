@@ -1,17 +1,17 @@
 ---
 title: Yavaş sorgu günlükleri-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı 'nda kullanılabilen günlükleri ve farklı günlük düzeylerini etkinleştirmek için kullanılabilen parametreleri açıklar.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772113"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976324"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yavaş sorgu günlükleri
 MariaDB için Azure veritabanı 'nda yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -25,6 +25,8 @@ Azure portal, MariaDB sunucusu için Azure veritabanınızı seçin. **İzleme**
 
 Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak sunucu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-cli.md).
 
+Benzer şekilde, tanılama günlüklerini kullanarak günlükleri Azure Izleyici 'ye kanal oluşturarak aktarabilirsiniz. Daha fazla bilgi için [aşağıya](concepts-server-logs.md#diagnostic-logs) bakın.
+
 ## <a name="log-retention"></a>Günlük tutma
 Günlükler, oluşumlarından yedi güne kadar kullanılabilir. Kullanılabilir günlüklerin toplam boyutu 7 GB 'yi aşarsa, alan kullanılabilir olana kadar en eski dosyalar silinir.
 
@@ -35,10 +37,11 @@ Varsayılan olarak, yavaş sorgu günlüğü devre dışıdır. Etkinleştirmek 
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
-- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan değer 10 saniyedir.
+- **long_query_time**: sorgu günlüğe kaydedilen sorgu long_query_time daha uzun sürer (saniye cinsinden). Varsayılan olarak 10 saniyedir.
 - **log_slow_admin_statements**: varsa, slow_query_log YAZıLAN deyimlerde ALTER_TABLE ve ANALYZE_TABLE gibi yönetim deyimlerini içerir.
 - **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log kaydedilip kaydedilmeyeceğini belirler
 - **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
+- **log_output**: "dosya" ise, yavaş sorgu günlüğünün hem yerel sunucu depolamasına hem de Azure Izleyici tanılama günlüklerine yazılmasına izin verir. "None" ise, yavaş sorgu günlüğü yalnızca yerel sunucu depolamasına yazılır. 
 
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MariaDB [yavaş sorgu günlüğü belgelerine](https://mariadb.com/kb/en/library/slow-query-log-overview/) bakın.
 
@@ -75,7 +78,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `insert_id_s` | KIMLIĞI Ekle |
 | `sql_text_s` | Tam sorgu |
 | `server_id_s` | Sunucu KIMLIĞI |
-| `thread_id_s` | İş parçacığı KIMLIĞI |
+| `thread_id_s` | İş Parçacığı Kimliği |
 | `\_ResourceId` | Kaynak URI 'SI |
 
 ## <a name="next-steps"></a>Sonraki adımlar

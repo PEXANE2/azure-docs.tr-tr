@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574259"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996944"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için çalışma alanını Facebook ile yapılandırma
 
 Bu öğreticinin amacı, Facebook ve Azure AD çalışma alanında yapmanız gereken adımları, Azure AD 'den Facebook tarafından çalışma alanına otomatik olarak sağlamak ve devre dışı bırakmak için yapmanız gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Facebook tarafından çalışma alanıyla yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -34,11 +34,11 @@ Azure AD tümleştirmesini Facebook tarafından çalışma alanıyla yapılandı
 - Facebook tarafından çoklu oturum açma özellikli abonelikte çalışma alanı
 
 > [!NOTE]
-> Bu öğreticideki adımları test etmek için, üretim ortamının kullanılmasını önermiyoruz.
+> Bu öğreticideki adımları test etmek için üretim ortamı kullanarak önermiyoruz.
 
-Bu öğreticideki adımları test etmek için aşağıdaki önerileri izlemeniz gerekir:
+Bu öğreticideki adımları test etmek için bu önerileri izlemelidir:
 
-- Gerekli olmadığı takdirde üretim ortamınızı kullanmayın.
+- Gerekli olmadıkça, üretim ortamında kullanmayın.
 - Azure AD deneme ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
 
 ## <a name="assigning-users-to-workplace-by-facebook"></a>Facebook tarafından çalışma alanına kullanıcı atama
@@ -55,7 +55,7 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki 
 
 *   Facebook tarafından çalışma alanına bir Kullanıcı atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="enable-user-provisioning"></a>Kullanıcı sağlamayı etkinleştir
+## <a name="enable-user-provisioning"></a>Kullanıcı Sağlamayı Etkinleştir
 
 Bu bölüm, Azure AD 'nizi Facebook 'un Kullanıcı hesabı sağlama API 'SI ile çalışma alanına bağlama ve sağlama hizmetini Kullanıcı ve gruba göre Facebook tarafından çalışma alanında atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için size rehberlik eder Azure AD 'de atama.
 
@@ -88,7 +88,7 @@ Azure AD, atanan kullanıcıların hesap ayrıntılarını Facebook ile çalış
 
 9. Eşlemeler bölümünde, **Facebook ile Azure Active Directory kullanıcıları çalışma alanına eşitler** ' ı seçin.
 
-10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den Facebook tarafından çalışma alanına eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Facebook tarafından çalışma alanındaki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
+10. **Öznitelik eşlemeleri** bölümünde, Azure AD 'den Facebook tarafından çalışma alanına eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Facebook tarafından çalışma alanındaki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için Kaydet düğmesini seçin.
 
 11. Facebook tarafından çalışma alanı için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
@@ -99,7 +99,7 @@ Otomatik sağlamayı yapılandırma hakkında daha fazla bilgi için bkz. [https
 Artık bir test hesabı oluşturabilirsiniz. Hesabın Facebook tarafından çalışma alanına eşitlendiğinden emin olmak için 20 dakikaya kadar bekleyin.
 
 > [!NOTE]
-> Azure AD uygulamasının onaylandığından ve yeni yönergelerini karşıladığından emin olmak için Facebook ekibi tarafından çalışma alanı ile yakından çalışıyoruz. Facebook son tarihine göre çalışma alanı, 16 Aralık ve bunu karşılamaları beklenir. Bu anda müşterilerin hiçbir iş beklenmez. 28-Şubat-2020 tarihine kadar müşterilerin yeni tümleştirmeye geçiş yapması gerekir. Geçiş yolu kullanılabilir duruma geldiğinde buraya buraya göndereceğiz.    
+> Facebook tarafından çalışma alanındaki Azure AD üçüncü taraf uygulaması onaylandı. Müşteriler, 16 Aralık 'ta hizmet kesintiine sahip olmayacaktır. Yeni uygulamaya geçiş yapmanız gerektiğinde, Facebook Yönetici Konsolu 'nda çalışma alanında, 28 Şubat 2020 ' ün son tarihini belirten bir notun olduğunu göreceksiniz. Geçişin mümkün olduğunca basit tutulması için çalışıyoruz ve bu şekilde, bir ay sonuna kadar geçiş üzerinde bir güncelleştirme sağlayacağız.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

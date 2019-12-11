@@ -1,6 +1,6 @@
 ---
-title: Python istemci kitaplığı ile veri kümelerine erişme-takım veri bilimi Işlemi
-description: Yerel bir Python ortamından güvenli bir şekilde Azure Machine Learning verilerine erişmek ve bunları yönetmek için Python istemci kitaplığını yükleyip kullanın.
+title: Python istemci kitaplığı - Team Data Science Process ile veri kümelerine erişim
+description: Yükleme ve Python istemci kitaplığı erişebilir ve Azure Machine Learning verileri bir yerel Python ortamından güvenli bir şekilde yönetmek için kullanın.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498106"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978501"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python istemci kitaplığını kullanarak Python ile veri kümelerine erişim
-Microsoft Azure Machine Learning Python istemci kitaplığının önizlemesi, yerel bir Python ortamından Azure Machine Learning veri kümelerine güvenli erişim sağlayabilir ve bir çalışma alanında veri kümelerinin oluşturulmasını ve yönetilmesini sağlar.
+Microsoft Azure Machine Learning Python istemci kitaplığı önizlemesi, Azure Machine Learning veri kümeleriniz için yerel bir Python ortamından güvenli erişimi etkinleştirebilir ve oluşturulmasını ve yönetimini bir çalışma alanındaki veri kümesi sağlar.
 
-Bu konuda aşağıdakiler hakkında yönergeler sağlanmaktadır:
+Bu konu hakkında yönergeler sağlar:
 
-* Machine Learning Python istemci kitaplığı 'nı yükler
-* Yerel Python ortamınızdan Azure Machine Learning veri kümelerine erişim yetkisi alma yönergeleri dahil olmak üzere veri kümelerine erişin ve karşıya yükleyin
-* denemeleri 'deki ara veri kümelerine erişme
-* veri kümelerini numaralandırmak, meta verilere erişmek, bir veri kümesinin içeriğini okumak, yeni veri kümeleri oluşturmak ve mevcut veri kümelerini güncelleştirmek için Python istemci kitaplığını kullanın
+* Machine Learning Python istemci Kitaplığı'nı yükleyin
+* erişim ve veri kümeleri, Azure Machine Learning veri kümeleri, yerel Python ortamınızdan erişmek için yetki alma hakkında yönergeler dahil olmak üzere karşıya yükleyin
+* Ara veri kümeleri denemelerle erişim
+* veri kümelerini listeleme, meta verilerine erişim, bir veri kümesi içeriğini okumak, yeni veri kümeleri oluşturma ve mevcut veri kümelerini güncelleştirmek için Python istemci kitaplığını kullanma
 
 ## <a name="prerequisites"></a>Önkoşullar
-Python istemci kitaplığı, aşağıdaki ortamlar altında test edilmiştir:
+Python istemci kitaplığı altında aşağıdaki ortamları test edilmiştir:
 
 * Windows, Mac ve Linux
-* Python 2,7, 3,3 ve 3,4
+* Python 2.7, 3.3 ve 3.4
 
-Aşağıdaki paketlere bir bağımlılığı vardır:
+Bunu, aşağıdaki paketleri bağımlılık vardır:
 
-* istekleri
-* Python-dateutil
-* Pandas
+* istekler
+* Python dateutil
+* pandas
 
-Python, IPython ve yukarıda listelenen üç paket ile birlikte gelen [Anaconda](http://continuum.io/downloads#all) veya [Canopy](https://store.enthought.com/downloads/)gibi bir Python dağıtımı kullanmanızı öneririz. IPython kesinlikle gerekli olmasa da, verileri etkileşimli bir şekilde işlemek ve görselleştirmek için harika bir ortamdır.
+Bir Python dağıtım gibi kullanmanızı öneririz [Anaconda](http://continuum.io/downloads#all) veya [Kanopi](https://store.enthought.com/downloads/), Python, Ipython ile gelir ve yukarıda listelenen üç paketi yüklü. Ipython kesinlikle gerekli olmamakla birlikte, düzenleme ve etkileşimli veri görselleştirme için mükemmel bir ortamdır.
 
-### <a name="installation"></a>Azure Machine Learning Python istemci kitaplığı 'nı yüklemek
-Azure Machine Learning Python istemci kitaplığı, bu konuda özetlenen görevleri gerçekleştirmek için de yüklü olmalıdır. [Python paket dizininden](https://pypi.python.org/pypi/azureml)kullanılabilir. Bunu Python ortamınıza yüklemek için, yerel Python ortamınızdan aşağıdaki komutu çalıştırın:
+### <a name="installation"></a>Azure Machine Learning Python istemci Kitaplığı'nı yükleme
+Azure Machine Learning Python istemci kitaplığı, bu konuda açıklanan görevleri tamamlamak için ayrıca yüklenmelidir. Kullanılabilir olduğundan [Python paket dizinini](https://pypi.python.org/pypi/azureml). Python ortamınızda yüklemek için yerel Python ortamınızdan aşağıdaki komutu çalıştırın:
 
     pip install azureml
 
@@ -51,56 +51,56 @@ Alternatif olarak, [GitHub](https://github.com/Azure/Azure-MachineLearning-Clien
 
     python setup.py install
 
-Makinenizde git yüklüyse, doğrudan git deposundan yüklemek için PIP 'yi kullanabilirsiniz:
+Makinenizde git varsa, doğrudan git deposundan yüklemek için pip kullanabilirsiniz:
 
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Veri kümelerine erişmek için Studio kod parçacıklarını kullanma
-Python istemci kitaplığı, çalışan denemeleri adresinden mevcut veri kümelerinize programlı erişim sağlar.
+## <a name="datasetAccess"></a>Veri kümelerine erişmek için kod parçacıklarını kullanma
+Python istemci kitaplığı, programlı erişim, var olan veri kümelerine çalıştırılmış denemelerle sağlar.
 
-Studio web arabiriminden, yerel makinenizde Pandas DataFrame nesneleri olarak veri kümelerini indirmek ve seri durumdan çıkarmak için gerekli tüm bilgileri içeren kod parçacıkları oluşturabilirsiniz.
+Azure Machine Learning Studio (klasik) web arabiriminden, yerel makinenizde Pandas DataFrame nesneleri olarak veri kümelerini indirmek ve seri durumdan çıkarmak için gerekli tüm bilgileri içeren kod parçacıkları oluşturabilirsiniz.
 
 ### <a name="security"></a>Veri erişimi için güvenlik
-.NET tarafından Python istemci kitaplığıyla kullanılmak üzere sunulan kod parçacıkları, çalışma alanı kimliğinizi ve yetkilendirme belirtecini içerir. Bunlar, çalışma alanınıza tam erişim sağlar ve parola gibi korunması gerekir.
+Azure Machine Learning Studio (klasik) tarafından Python istemci kitaplığı ile kullanılmak üzere sunulan kod parçacıkları, çalışma alanı KIMLIĞINIZI ve yetkilendirme belirtecini içerir. Bu, çalışma alanınız için tam erişim sağlamak ve bir parola gibi korunmalıdır.
 
-Güvenlik nedenleriyle, kod parçacığı işlevselliği yalnızca rolü çalışma alanı için **sahip** olarak ayarlanmış kullanıcılar tarafından kullanılabilir. Rolünüzde, **Ayarlar**altındaki **Kullanıcılar** sayfasında Azure Machine Learning Studio (klasik) görüntülenir.
+Güvenlik nedenleriyle, kod parçacığı işlevleri yalnızca yap rollerine sahip kullanıcıların kullanılabilir **sahibi** çalışma alanı için. Rolünüzde, **Ayarlar**altındaki **Kullanıcılar** sayfasında Azure Machine Learning Studio (klasik) görüntülenir.
 
 ![Güvenlik][security]
 
-Rolünüz **sahip**olarak ayarlanmamışsa, bir sahip olarak yeniden davet edebilir veya çalışma alanının sahibinden kod parçacığını size vermesini isteyebilirsiniz.
+Rolünüz olarak ayarlanmamışsa **sahibi**, sahibi olarak ortamına yeniden davet ya da kod parçacığı ile sağlamak için çalışma alanının sahibi isteyin isteyebilirsiniz.
 
-Yetkilendirme belirtecini almak için aşağıdakilerden birini yapabilirsiniz:
+Yetkilendirme belirteci almak için aşağıdakilerden birini yapın:
 
-* Sahibinden belirteç isteyin. Sahipler, kendi yetkilendirme belirteçlerine Studio 'daki çalışma alanının ayarlar sayfasından erişebilirler. Sol bölmeden **Ayarlar** ' ı seçin ve birincil ve ikincil belirteçleri görmek IÇIN **Yetkilendirme belirteçleri** ' ne tıklayın. Birincil veya ikincil yetkilendirme belirteçleri kod parçacığında kullanılabilir olsa da, sahiplerin yalnızca ikincil yetkilendirme belirteçlerini paylaşması önerilir.
+* Bir sahibinden için bir belirteç isteyin. Sahipler, Azure Machine Learning Studio (klasik) içindeki çalışma alanının ayarlar sayfasından yetkilendirme belirteçlerine erişebilirler. Seçin **ayarları** sol bölmesinde ve **YETKİLENDİRME BELİRTEÇLERİ** birincil ve ikincil belirteçleri görmek için. Birincil veya ikincil yetkilendirme belirteçleri kod parçacığında kullanılabilir olsa da, sahipleri yalnızca ikincil yetkilendirme belirteçleri paylaşıma önerilir.
 
-![Yetkilendirme belirteçleri](./media/python-data-access/ml-python-access-settings-tokens.png)
+   ![Yetkilendirme belirteçleri](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Sahibinin rolüne yükseltilmesini isteyin. Bunu yapmak için, çalışma alanının geçerli bir sahibinin öncelikle çalışma alanından sizi kaldırması ve bunu bir sahip olarak yeniden davet etmesi gerekir.
+* Sahip rolüne Yükseltilecek isteyin. Bunu yapmak için geçerli bir çalışma alanı sahibi önce çalışma alanından kaldırın ardından ona sahip olarak yeniden davet gerekir.
 
-Geliştiriciler çalışma alanı kimliğini ve yetkilendirme belirtecini aldıktan sonra, rolünden bağımsız olarak kod parçacığını kullanarak çalışma alanına erişebilirler.
+Geliştiriciler çalışma alanı KIMLIĞINI ve yetkilendirme belirtecini aldıktan sonra, rolünden bağımsız olarak kod parçacığını kullanarak çalışma alanına erişebilirler.
 
-Yetkilendirme belirteçleri, **Ayarlar**altındakı **Yetkilendirme belirteçleri** sayfasında yönetilir. Bunları yeniden oluşturabilirsiniz, ancak bu yordam önceki belirtece erişimi iptal eder.
+Yetkilendirme belirteçleri üzerinde yönetilen **YETKİLENDİRME BELİRTEÇLERİ** altındaki **ayarları**. Bunları yeniden oluşturabilirsiniz, ancak bu yordamın önceki belirteç erişimi iptal eder.
 
 ### <a name="accessingDatasets"></a>Yerel Python uygulamasından veri kümelerine erişme
-1. Machine Learning Studio ' de, sol taraftaki Gezinti çubuğunda **veri kümeleri** ' ne tıklayın.
-2. Erişmek istediğiniz veri kümesini seçin. **Veri kümeleri listesinden veya** **örnekler** listesinden herhangi bir veri kümesinden birini seçebilirsiniz.
-3. Alt araç çubuğundan **veri erişim kodu oluştur**' a tıklayın. Veriler Python istemci kitaplığıyla uyumsuz bir biçimde ise, bu düğme devre dışı bırakılır.
+1. Machine Learning Studio (klasik) içinde, sol taraftaki Gezinti çubuğunda **veri kümeleri** ' ne tıklayın.
+2. Erişmek istediğiniz veri kümesini seçin. Veri kümelerinden birini seçebileceğiniz **MY veri KÜMELERİ** listesi veya **örnekleri** listesi.
+3. Alt araç çubuğundan tıklayın **veri erişim kodu oluşturmak**. Python istemci kitaplığı ile uyumlu bir biçimde veri olması durumunda bu düğmeyi devre dışı bırakıldı.
    
     ![Veri kümeleri][datasets]
-4. Görüntülenen pencereden kod parçacığını seçin ve panonuza kopyalayın.
+4. Görünen ve panonuza kopyalayın penceresinden kod parçacığını seçin.
    
-    ![Veri erişim kodu oluştur düğmesi][dataset-access-code]
-5. Kodu yerel Python uygulamanızın not defterine yapıştırın.
+    ![Veri erişim kodu düğme oluşturma][dataset-access-code]
+5. Kodu yerel Python uygulamanızı not defteri yapıştırın.
    
-    ![Kodu Not defterine yapıştırın][ipython-dataset]
+    ![Not defterinize kodu yapıştırın][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>Machine Learning denemeleri 'deki ara veri kümelerine erişin
-Machine Learning Studio bir deneme çalıştıktan sonra, modül çıkış düğümlerinden ara veri kümelerine erişmek mümkündür. Ara veri kümeleri, bir model aracı çalıştırıldığında oluşturulan ve ara adımlarda kullanılan veri veri kümeleridir.
+## <a name="accessingIntermediateDatasets"></a>Machine Learning denemelerini Ara kümelerinden erişim
+Machine Learning Studio klasik sürümünde çalıştırıldıktan sonra, modül çıkış düğümlerinden ara veri kümelerine erişmek mümkündür. Ara veri kümelerinde oluşturulan ve bir modeli aracı çalıştırdığınızda Ara adımları için kullanılan verilerdir.
 
-Veri biçimi Python istemci kitaplığıyla uyumlu olduğu sürece ara veri kümelerine erişilebilir.
+Ara veri kümeleri, veri biçimi Python istemci kitaplığı ile uyumlu olduğu sürece erişilebilir.
 
-Aşağıdaki biçimler desteklenir (bunlar için sabitler `azureml.DataTypeIds` sınıfta bulunur):
+Aşağıdaki biçimleri desteklenir (Bu sabittir `azureml.DataTypeIds` sınıfı):
 
 * Düz metin
 * GenericCSV
@@ -108,7 +108,7 @@ Aşağıdaki biçimler desteklenir (bunlar için sabitler `azureml.DataTypeIds` 
 * GenericCSVNoHeader
 * GenericTSVNoHeader
 
-Bir modül çıkış düğümünün üzerine gelerek biçimi belirleyebilirsiniz. Bir araç ipucunda düğüm adıyla birlikte görüntülenir.
+Modül çıkışı düğüm üzerinde gelerek biçimi belirleyebilirsiniz. Düğüm adına, bir araç ipucuyla birlikte görüntülenir.
 
 [Bölünmüş][split] modül gibi bazı modüller, Python istemci kitaplığı tarafından desteklenmeyen `Dataset`adlı bir biçime çıktı.
 
@@ -118,103 +118,103 @@ Desteklenen bir biçime çıkış almak için [CSV 'ye Dönüştür][convert-to-
 
 ![GenericCSV biçimi][csv-format]
 
-Aşağıdaki adımlarda bir deneme oluşturan, çalıştıran ve ara veri kümesine erişen bir örnek gösterilmektedir.
+Aşağıdaki adımlarda, bir denemeyi oluşturur, çalıştığı ve Ara dataset erişen bir örnek gösterilmektedir.
 
 1. Yeni bir deneme oluşturun.
-2. **Yetişkin Census geliri Ikili sınıflandırma veri kümesi** modülünü ekleyin.
+2. INSERT bir **yetişkinlere yönelik Görselleştirmenizdeki gelir ikili sınıflandırma dataset** modülü.
 3. [Bölünmüş][split] bir modül ekleyin ve girişini veri kümesi modül çıktısına bağlayın.
 4. CSV modülüne bir [dönüştürme][convert-to-csv] ekleyin ve girişini [bölünmüş][split] modül çıktılarından birine bağlayın.
-5. Denemeyi kaydedin, çalıştırın ve çalışmasının bitmesini bekleyin.
+5. Denemeyi kaydedin, çalıştırın ve çalışan bitmesini bekleyin.
 6. [CSV 'ye Dönüştür][convert-to-csv] modülüne çıkış düğümüne tıklayın.
-7. Bağlam menüsü göründüğünde, **veri erişim kodu oluştur**' u seçin.
+7. Bağlam menüsünü göründüğünde seçin **veri erişim kodu oluşturmak**.
    
-    ![Bağlam menüsü][experiment]
-8. Kod parçacığını seçin ve görüntülenen pencereden panonuza kopyalayın.
+    ![Bağlam Menüsü][experiment]
+8. Kod parçacığını seçin ve açılır penceresinden panonuza kopyalayın.
    
     ![Bağlam menüsünden erişim kodu oluştur][intermediate-dataset-access-code]
-9. Kodu Not defterinize yapıştırın.
+9. Kodu defterinizdeki yapıştırın.
    
-    ![Kodu Not defterine Yapıştır][ipython-intermediate-dataset]
-10. Matplotlib kullanarak verileri görselleştirebilirsiniz. Bu, Yaş sütunu için bir histogram içinde görüntülenir:
+    ![Not defterinize kodu yapıştırın][ipython-intermediate-dataset]
+10. Matplotlib kullanarak verileri görselleştirebilirsiniz. Bu yaş sütunu için bir çubuk grafik görüntüler:
     
-    ![Histogram][ipython-histogram]
+    ![Çubuk grafik][ipython-histogram]
 
-## <a name="clientApis"></a>Veri kümelerine erişmek, okumak, oluşturmak ve yönetmek için Python istemci kitaplığı Machine Learning kullanın
-### <a name="workspace"></a>Çalışma alanı
-Çalışma alanı, Python istemci kitaplığının giriş noktasıdır. Örnek oluşturmak için çalışma alanı kimliğiniz ve yetkilendirme belirtecinizle birlikte `Workspace` sınıfı sağlayın:
+## <a name="clientApis"></a>Erişim, okuma, oluşturma ve veri kümelerini yönetmek için Machine Learning Python istemci kitaplığını kullanın.
+### <a name="workspace"></a>Çalışma Alanı
+Çalışma alanı Python istemci kitaplığı için giriş noktasıdır. Örnek oluşturmak için çalışma alanı KIMLIĞINIZ ve yetkilendirme belirtecinizle birlikte `Workspace` sınıfı sağlayın:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
 
 
-### <a name="enumerate-datasets"></a>Veri kümelerini listeleme
-Belirli bir çalışma alanındaki tüm veri kümelerini numaralandırmak için:
+### <a name="enumerate-datasets"></a>Veri kümeleri listeleme
+Belirli bir çalışma alanındaki tüm veri kümelerini listelemek için:
 
     for ds in ws.datasets:
         print(ds.name)
 
-Yalnızca Kullanıcı tarafından oluşturulan veri kümelerini numaralandırmak için:
+Yalnızca kullanıcı tarafından oluşturulan veri kümelerini listelemek için:
 
     for ds in ws.user_datasets:
         print(ds.name)
 
-Yalnızca örnek veri kümelerini numaralandırmak için:
+Yalnızca örnek veri kümelerini listelemek için:
 
     for ds in ws.example_datasets:
         print(ds.name)
 
-Bir veri kümesine ad ile erişebilirsiniz (büyük/küçük harfe duyarlıdır):
+(Bu, büyük küçük harfe duyarlıdır) adına göre bir veri kümesine erişebilirsiniz:
 
     ds = ws.datasets['my dataset name']
 
-Ya da dizine göre erişebilirsiniz:
+Veya dizine göre erişebilirsiniz:
 
     ds = ws.datasets[0]
 
 
 ### <a name="metadata"></a>Meta Veriler
-Veri kümelerinde içeriğe ek olarak meta veriler vardır. (Ara veri kümeleri, bu kural için bir özel durumdur ve hiç meta veri içermez.)
+Veri kümeniz içerik yanı sıra meta veri yok. (Ara veri kümesi bu kural için bir özel durumdur ve tüm meta verilere sahip.)
 
-Bazı meta veri değerleri Kullanıcı tarafından oluşturma sırasında atanır:
+Bazı meta veri değerleri, oluşturma zamanında kullanıcı tarafından atanan:
 
     print(ds.name)
     print(ds.description)
     print(ds.family_id)
     print(ds.data_type_id)
 
-Diğer kullanıcılar Azure ML tarafından atanan değerlerdir:
+Diğer Azure ML tarafından atanan değerler şunlardır:
 
     print(ds.id)
     print(ds.created_date)
     print(ds.size)
 
-Kullanılabilir meta veriler hakkında daha fazla bilgi için `SourceDataset` sınıfına bakın.
+Bkz: `SourceDataset` mevcut olan meta veriler hakkında daha fazla bilgi için sınıf.
 
-### <a name="read-contents"></a>İçeriği oku
-Machine Learning Studio (klasik) tarafından sunulan kod parçacıkları, veri kümesini bir Pandas DataFrame nesnesine otomatik olarak indirip serisini kaldıramıyor. Bu, `to_dataframe` yöntemiyle yapılır:
+### <a name="read-contents"></a>İçeriğini okuma
+Machine Learning Studio (klasik) tarafından sunulan kod parçacıkları, veri kümesini bir Pandas DataFrame nesnesine otomatik olarak indirip serisini kaldıramıyor. Bunun `to_dataframe` yöntemi:
 
     frame = ds.to_dataframe()
 
-Ham verileri karşıdan yüklemeyi tercih ediyorsanız ve serisini kendi kendinize gerçekleştirmek istiyorsanız, bu bir seçenektir. Bu anda, Python istemci kitaplığının serisini kaldıramıyor ' ARFF ' gibi biçimler için tek seçenektir.
+Ham verileri indirebilirsiniz ve seri durumundan çıkarma kendiniz gerçekleştirmek isterseniz, bir seçenektir. Şu anda Python istemci kitaplığı seri durumdan çıkarılamıyor 'ARFF'ye' gibi biçimler için tek seçenek budur.
 
-İçeriği metin olarak okumak için:
+İçeriği metin okuma için:
 
     text_data = ds.read_as_text()
 
-İçeriği ikili olarak okumak için:
+İçeriğini ikili olarak okumak için:
 
     binary_data = ds.read_as_binary()
 
-Ayrıca, içeriğe yalnızca bir akış açabilirsiniz:
+Ayrıca yalnızca bir akışa içeriği açabilirsiniz:
 
     with ds.open() as file:
         binary_data_chunk = file.read(1000)
 
 
-### <a name="create-a-new-dataset"></a>Yeni bir veri kümesi oluştur
-Python istemci kitaplığı, Python programınızdaki veri kümelerini karşıya yüklemenize olanak sağlar. Bu veri kümeleri daha sonra çalışma alanınızda kullanıma sunulmuştur.
+### <a name="create-a-new-dataset"></a>Yeni veri kümesi oluşturma
+Python istemci kitaplığı Python programınızı veri kümelerinden yüklemenize olanak sağlar. Bu veri kümelerini ardından çalışma alanınızdaki kullanılabilir.
 
-Verilerinize bir Pandas veri çerçevesinde sahipseniz, aşağıdaki kodu kullanın:
+Verilerinizi bir pandas DataFrame varsa, aşağıdaki kodu kullanın:
 
     from azureml import DataTypeIds
 
@@ -225,7 +225,7 @@ Verilerinize bir Pandas veri çerçevesinde sahipseniz, aşağıdaki kodu kullan
         description='my description'
     )
 
-Verileriniz zaten serileştirilmiş ise şunları kullanabilirsiniz:
+Verilerinizi zaten serileştirildiği, kullanabilirsiniz:
 
     from azureml import DataTypeIds
 
@@ -236,7 +236,7 @@ Verileriniz zaten serileştirilmiş ise şunları kullanabilirsiniz:
         description='my description'
     )
 
-Python istemci kitaplığı, bir Pandas veri çerçevesini aşağıdaki biçimlere seri hale getirmek için (sabitleri `azureml.DataTypeIds` sınıfında bulunur):
+Python istemci kitaplığı aşağıdaki biçimde bir pandas DataFrame seri hale getiremiyor (Bu sabittir `azureml.DataTypeIds` sınıfı):
 
 * Düz metin
 * GenericCSV
@@ -244,10 +244,10 @@ Python istemci kitaplığı, bir Pandas veri çerçevesini aşağıdaki biçimle
 * GenericCSVNoHeader
 * GenericTSVNoHeader
 
-### <a name="update-an-existing-dataset"></a>Mevcut bir veri kümesini güncelleştirme
-Mevcut bir veri kümesiyle eşleşen bir ada sahip yeni bir veri kümesini karşıya yüklemeye çalışırsanız, bir çakışma hatası almalısınız.
+### <a name="update-an-existing-dataset"></a>Güncelleştirme var olan bir dataset
+Var olan bir dataset eşleşen bir ada sahip yeni bir veri kümesi karşıya denerseniz, bir çakışma hatası almanız gerekir.
 
-Mevcut bir veri kümesini güncelleştirmek için önce var olan veri kümesine bir başvuru almanız gerekir:
+Mevcut bir veri kümesini güncelleştirmek için önce varolan bir veri kümesi bir başvuru almak gerekir:
 
     dataset = ws.datasets['existing dataset']
 
@@ -255,7 +255,7 @@ Mevcut bir veri kümesini güncelleştirmek için önce var olan veri kümesine 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Ardından, Azure 'da veri kümesinin içeriğini seri hale getirmek ve değiştirmek için `update_from_dataframe` kullanın:
+Ardından `update_from_dataframe` seri hale getirmek ve Azure ile ilgili veri kümesinin içeriğini değiştirin:
 
     dataset = ws.datasets['existing dataset']
 
@@ -265,7 +265,7 @@ Ardından, Azure 'da veri kümesinin içeriğini seri hale getirmek ve değişti
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı `data_type_id` parametresi için bir değer belirtin.
+Farklı bir biçim verileri seri hale getirmek istiyorsanız, isteğe bağlı bir değer belirtin `data_type_id` parametresi.
 
     from azureml import DataTypeIds
 
@@ -280,7 +280,7 @@ Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-İsteğe bağlı olarak, `description` parametresi için bir değer belirterek yeni bir açıklama ayarlayabilirsiniz.
+İsteğe bağlı olarak, bir değer belirterek yeni bir açıklama ayarlayabilirsiniz `description` parametresi.
 
     dataset = ws.datasets['existing dataset']
 
@@ -293,7 +293,7 @@ Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-İsteğe bağlı olarak, `name` parametresi için bir değer belirterek yeni bir ad belirleyebilirsiniz. Şu andan itibaren veri kümesini yalnızca yeni adı kullanarak alacaksınız. Aşağıdaki kod, verileri, adı ve açıklamayı günceller.
+İsteğe bağlı olarak yeni bir ad için bir değer belirterek ayarlayabileceğiniz `name` parametresi. Şu andan itibaren yalnızca yeni bir ad kullanarak bir veri kümesini almak. Aşağıdaki kod, veri, ad ve açıklama güncelleştirir.
 
     dataset = ws.datasets['existing dataset']
 
@@ -310,9 +310,9 @@ Verileri farklı bir biçimde seri hale getirmek istiyorsanız, isteğe bağlı 
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-`data_type_id`, `name` ve `description` parametreleri isteğe bağlıdır ve önceki değerleri için varsayılandır. `dataframe` parametresi her zaman gereklidir.
+`data_type_id`, `name` Ve `description` parametreler isteğe bağlıdır ve varsayılan değerlerine önceki. `dataframe` Parametresi gerekli olduğu her zaman.
 
-Verileriniz zaten serileştirilmiş ise, `update_from_dataframe`yerine `update_from_raw_data` kullanın. `dataframe`yerine yalnızca `raw_data` geçirirseniz, benzer bir şekilde çalışmaktadır.
+Verilerinizi zaten serileştirilmiş kullanırsanız `update_from_raw_data` yerine `update_from_dataframe`. Yalnızca içinde geçirirseniz `raw_data` yerine `dataframe`, benzer şekilde çalışır.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

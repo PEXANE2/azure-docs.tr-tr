@@ -1,21 +1,21 @@
 ---
 title: IoT portalı için Azure Sertifikalı 'e ekleme | Microsoft Docs
 description: IoT için Azure Sertifikalı portala katılın.
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: b35aeff4c87c676b91e022edb56542a018cb707c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.author: philmea
+ms.openlocfilehash: 77559636dab00a570db416118b047200320c0308
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879545"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978994"
 ---
-# <a name="onboard-to-the-azure-certified-for-iot-portal"></a>IoT için Azure Sertifikalı portala ekleme
+# <a name="onboard-to-the-azure-certified-for-iot-portal"></a>IoT için Microsoft Azure Sertifikalı portalına ekleme
 
 [IoT Için Azure Sertifikalı portalı](https://aka.ms/ACFI) 'nı kullanarak şunları yapabilirsiniz:
 
@@ -35,4 +35,4 @@ Cihazınızı IoT sertifikalı cihaz kataloğuna yayımlamadan önce program sö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önerilen sonraki adım, [sertifika Için ıot Tak ve kullan cihazının](tutorial-certification-test.md)nasıl gönderileceğini öğrenirsiniz.
+Önerilen sonraki adım, [sertifika Için ıot Tak ve kullan cihazının nasıl gönderileceğini](tutorial-certification-test.md)öğrenirsiniz.

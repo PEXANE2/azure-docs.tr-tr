@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 11/17/2019
-ms.openlocfilehash: 97faa445a286574aa5fc05d084d21c0740bc8a8b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173849"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995941"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme 
 
@@ -315,10 +315,10 @@ Etkinlik günlüğü verilerini tabloyla eşlemek için aşağıdaki sorguyu kul
         | mv-expand events = Records
         | where isnotempty(events.metricName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             MetricName = tostring(events.metricName),
-            Count = toint(events.count),
+            Count = toint(events['count']),
             Total = todouble(events.total),
             Minimum = todouble(events.minimum),
             Maximum = todouble(events.maximum),
@@ -435,12 +435,12 @@ Artık tanılama ölçümlerini ve günlüklerinizi ve etkinlik günlüklerinizi
 
     ![Tanılama ayarları](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. **Tanılama ayarları** bölmesi açılır. Aşağıdaki adımları uygulayın:
+1. **Tanılama ayarları** bölmesi açılır. Aşağıdaki adımları izleyin:
    1. Tanılama günlük verilerinize *Adxexporteddata*adı verin.
    1. **Günlük**altında hem **SucceededIngestion** hem de **failedingestion** onay kutularını seçin.
    1. **Ölçüm**altında **sorgu performansı** onay kutusunu seçin.
    1. **Bir olay hub 'ının akışını** seçin onay kutusu.
-   1. **Yapılandır**' ı seçin.
+   1. **Yapılandır**’ı seçin.
 
       ![Tanılama ayarları bölmesi](media/ingest-data-no-code/diagnostic-settings-window.png)
 

@@ -3,12 +3,12 @@ title: Ne Azure Backup Sunucusu yedekleyebileceğiniz
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: a7794ac82c70239693e91b3ae65c6292a6b4ed7f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841363"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996162"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Sunucusu koruma matrisi
 
@@ -38,7 +38,8 @@ Bu makalede, Azure Backup Sunucusu ile koruyabileceğiniz çeşitli sunucular ve
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|Desteklenmiyor|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Server 2008 SP2|VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
 |Sunucular (32 bit ve 64 bit)|Windows Storage Server 2008|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi<br /> <br /> Azure Stack|V3, V2|Birim, paylaşım, klasör, dosya, sistem durumu/tam kurtarma|
-|SQL Server|SQL Server 2017|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3|Tüm dağıtım senaryoları: Veritabanı|
+|SQL Server|SQL Server 2019|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken) <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3|Tüm dağıtım senaryoları: Veritabanı|
+|SQL Server|SQL Server 2017|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi (iş yükü Azure sanal makinesi olarak çalışırken) <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3|Tüm dağıtım senaryoları: Veritabanı|
 |SQL Server|SQL Server 2016 SP2|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Tüm dağıtım senaryoları: Veritabanı|
 |SQL Server|SQL Server 2016 SP1|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Tüm dağıtım senaryoları: Veritabanı|
 |SQL Server|SQL Server 2016|Fiziksel sunucu <br /><br /> Şirket içi Hyper-V sanal makinesi <br /> <br /> Azure sanal makinesi <br /><br /> VMWare'de Windows sanal makinesi (VMWare'deki Windows sanal makinesinde çalışan iş yüklerini korur)<br /> <br /> Azure Stack|V3, V2|Tüm dağıtım senaryoları: Veritabanı|

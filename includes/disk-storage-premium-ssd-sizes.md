@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 52dbf03c7d4c2c2de565d6793fc867cf5b886db3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c88cba57ed987074c0dde3c8b251f54393667740
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74003932"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "75002641"
 ---
 | Premium SSD Boyutlar | P1 | P2 | P3 | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| GiB 'de disk boyutu | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1\.024 | 2\.048 | 4\.096 | 8,192 | 16.384 | 32.767 |
-| Disk başına IOPS | 120 | 120 | 120 | 120 | 240 | 500 | 1\.100 | 2\.300 | 5\.000 | 7\.500 | 7\.500 | 16.000 | 18.000 | 20.000 |
+| GiB 'de disk boyutu | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1,024 | 2\.048 | 4\.096 | 8,192 | 16.384 | 32,767 |
+| Disk başına IOPS | 120 | 120 | 120 | 120 | 240 | 500 | 1\.100 | 2\.300 | 5\.000 | 7\.500 | 7\.500 | 16,000 | 18.000 | 20.000 |
 | Disk başına çıkış | 25 MiB/sn | 25 MiB/sn | 25 MiB/sn | 25 MiB/sn | 50 MIB/sn | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MIB/sn | 250 MIB/sn| 500 MIB/sn | 750 MIB/sn | 900 MIB/sn |
 | Disk başına en fazla patlama ıOPS * * | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 | 3\.500 |
 | Disk başına en fazla patlama performansı * * | 170 MIB/sn | 170 MIB/sn | 170 MIB/sn | 170 MIB/sn | 170 MIB/sn | 170 MIB/sn | 170 MIB/sn | 170 MIB/sn |
@@ -26,4 +26,4 @@ ms.locfileid: "74003932"
 
 \*, şu anda önizleme aşamasında olan bir disk boyutunu gösterir, bölgesel kullanılabilirlik bilgileri için bkz. [yeni disk boyutları: yönetilen ve yönetilmeyen](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks#new-disk-sizes-managed-and-unmanaged).
 
-\** Şu anda önizleme aşamasında olan bir özelliği gösterir. daha fazla bilgi için bkz. [disk](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability) patlaması.
+\*\*Şu anda önizleme aşamasında olan bir özelliği gösterir. daha fazla bilgi için bkz. [disk](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability) patlaması.

@@ -1,63 +1,63 @@
 ---
-title: -V1 bir Azure içeri/dışarı aktarma dışarı aktarma işini onarma | Microsoft Docs
-description: Oluşturulmuş ve Azure içeri/dışarı aktarma hizmetini kullanarak çalışan bir dışarı aktarma işini onarma hakkında bilgi edinin.
-author: muralikk
+title: Azure Içeri/dışarı aktarma verme işini onarma-v1 | Microsoft Docs
+description: Azure Içeri/dışarı aktarma hizmeti kullanılarak oluşturulan ve çalıştırılan bir dışarı aktarma işini onarmayı öğrenin.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477952"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978024"
 ---
 # <a name="repairing-an-export-job"></a>Bir dışarı aktarma işini onarma
-Dışarı aktarma işi tamamlandıktan sonra Microsoft Azure içeri/dışarı aktarma aracı şirket içine çalıştırabilirsiniz:  
+Bir dışarı aktarma işi tamamlandıktan sonra şirket içi Microsoft Azure İçeri/Dışarı Aktarma Aracı 'nı çalıştırmak için şunları yapabilirsiniz:  
   
-1.  Azure içeri/dışarı aktarma hizmet veremedi tüm dosyaları indirin.  
+1.  Azure Içeri/dışarı aktarma hizmeti 'nin dışarı aktaramadı tüm dosyaları indirin.  
   
-2.  Sürücüdeki dosyalar doğru verildiğini doğrulayın.  
+2.  Sürücüdeki dosyaların doğru şekilde verildiğini doğrulayın.  
   
-Bu işlevselliği kullanmak için Azure depolama bağlantısı olması gerekir.  
+Bu işlevselliği kullanmak için Azure depolama bağlantısına sahip olmanız gerekir.  
   
-Bu komut bir içeri aktarma işini onarma **RepairExport**.
+Bir içeri aktarma işini onarmak için komutu **Repaırexport**' dir.
 
-## <a name="repairexport-parameters"></a>RepairExport parametreleri
+## <a name="repairexport-parameters"></a>Repaırexport parametreleri
 
-Aşağıdaki parametreler ile belirtilen **RepairExport**:  
+Aşağıdaki parametreler **Repaırexport**ile belirtilebilir:  
   
 |Parametre|Açıklama|  
 |---------------|-----------------|  
-|**/ r: < RepairFile\>**|Gereklidir. Bu onarım ilerlemesini izler ve kesintiye uğramış bir onarım devam etmek için Onar dosyasının yolu. Her sürücü bir ve yalnızca bir onarım dosyası olması gerekir. Belirli bir sürücü için onarım başlattığınızda, henüz mevcut olmayan bir onarım dosya yolunda geçer. Kesintiye uğramış bir onarım devam etmek için var olan bir onarım dosya adını geçmelidir. Hedef sürücüye karşılık gelen onarım dosyasını her zaman belirtilmesi gerekir.|  
-|**/ LOGDIR: < LogDirectory\>**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyası bu dizine yazılır. Hiçbir günlük dizini belirtilmezse, geçerli dizin günlük dizini kullanılır.|  
-|**/ d: < TargetDirectory\>**|Gereklidir. Doğrulama ve onarma dizin. Dışarı aktarma sürücünün kök dizininde genellikle budur ancak bir ağ dosya paylaşımına dışa aktarılan dosyaların bir kopyasını da içeren.|  
-|**/bk:<BitLockerKey\>**|İsteğe bağlı. Bir şifrelenmiş dışa aktarılan dosyaların depolandığı kilidini açmak için araç istiyorsanız BitLocker anahtarı belirtmeniz gerekir.|  
-|**/sn: < StorageAccountName\>**|Gereklidir. Dışarı aktarma işi için depolama hesabı adı.|  
-|**/sk:<StorageAccountKey\>**|**Gerekli** kapsayıcı SAS belirtilmedi ve yalnızca. Dışarı aktarma işi için depolama hesabı için hesap anahtarı.|  
-|**/csas:<ContainerSas\>**|**Gerekli** depolama hesap anahtarı belirtilmedi ve yalnızca. Dışarı aktarma işi ile ilişkili bloblara erişmek için kapsayıcı SAS.|  
-|**/ CopyLogFile: < DriveCopyLogFile\>**|Gereklidir. Sürücüyü Kopyala günlük dosyası yolu. Dosya Windows Azure içeri/dışarı aktarma hizmeti tarafından oluşturulan ve iş ile ilişkili blob depolamadan indirebilirsiniz. Kopyalama günlük dosyası başarısız bloblar ya da onarılması dosyaları hakkında bilgi içerir.|  
-|**/ Manıfestfıle: < DriveManifestFile\>**|İsteğe bağlı. Dışarı aktarma sürücünün bildirim dosyasının yolu. Bu dosya Windows Azure içeri/dışarı aktarma hizmeti tarafından oluşturulan ve dışarı aktarma sürücüsünde ve isteğe bağlı olarak işle ilişkili depolama hesabındaki bir blob içinde depolanan.<br /><br /> Dosyaları dışarı aktarma sürücüde içeriğini, bu dosyada bulunan MD5 karmaları ile doğrulanır. Bozulmuş belirlenen dosyaları indirilir ve hedef dizinler yeniden.|  
+|**/r: < RepairFile\>**|Gereklidir. Onarımın ilerlemesini izleyen ve kesilen bir onarımı sürdürmeye devam etmenizi sağlayan onarım dosyasının yolu. Her sürücünün bir ve yalnızca bir onarım dosyası olmalıdır. Belirli bir sürücü için onarım başlattığınızda, yolu henüz varolmayan bir onarım dosyasına geçitirsiniz. Kesilen bir onarımın sürdürülmesi için, var olan bir onarım dosyasının adını geçirmeniz gerekir. Hedef sürücüye karşılık gelen onarım dosyasının her zaman belirtilmesi gerekir.|  
+|**/logdir: < LogDirectory\>**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları, bu dizine yazılacak. Günlük dizini belirtilmemişse, geçerli dizin günlük dizini olarak kullanılacaktır.|  
+|**/d: < TargetDirectory\>**|Gereklidir. Doğrulanacak ve onarılacak dizin. Bu genellikle dışa aktarma sürücüsünün kök dizinidir, ancak dışarı aktarılmış dosyaların bir kopyasını içeren bir ağ dosya paylaşma da olabilir.|  
+|**/BK: BitLockerKey\> <**|İsteğe bağlı. Aracın, dışarıya kaydedilen dosyaların depolandığı bir şifrelenmiş kilit kilidini açmak istiyorsanız BitLocker anahtarını belirtmeniz gerekir.|  
+|**/sn: < StorageAccountName\>**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
+|**/SK: < StorageAccountKey\>**|Yalnızca bir kapsayıcı SAS belirtilmemişse **gereklidir** . Dışarı aktarma işi için depolama hesabının hesap anahtarı.|  
+|**/csas: < ContainerSas\>**|Yalnızca depolama hesabı anahtarı belirtilmemişse **gereklidir** . Dışarı aktarma işiyle ilişkili bloblara erişmek için kapsayıcı SAS.|  
+|**/CopyLogFile: < DriveCopyLogFile\>**|Gereklidir. Sürücü kopyalama günlük dosyasının yolu. Dosya, Windows Azure Içeri/dışarı aktarma hizmeti tarafından oluşturulur ve işle ilişkili blob depolamadan indirilebilir. Kopyalama günlük dosyası, başarısız Bloblar veya onarılabilecek dosyalar hakkında bilgiler içerir.|  
+|**/ManifestFile: < DriveManifestFile\>**|İsteğe bağlı. Dışa aktarma sürücüsünün bildirim dosyasının yolu. Bu dosya, Windows Azure Içeri/dışarı aktarma hizmeti tarafından oluşturulur ve dışa aktarma sürücüsüne ve isteğe bağlı olarak işle ilişkili depolama hesabındaki bir blobda depolanır.<br /><br /> Dışarı aktarma sürücüsündeki dosyaların içeriği bu dosyada bulunan MD5 karmalarıyla doğrulanır. Bozulmuş olduğu belirlenen tüm dosyalar, hedef dizinlere indirilir ve yeniden yazılır.|  
   
-## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Başarısız dışarı aktarmalar düzeltmek için RepairExport modunu kullanma  
-Dışarı aktarılamadı dosyaları indirmek için Azure içeri/dışarı aktarma Aracı'nı kullanabilirsiniz. Kopyalama günlük dosyasını dışarı aktarmak için başarısız olan dosyaların listesini içerir.  
+## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Başarısız dışarı aktarmaları düzeltmek için Repaırexport modunu kullanma  
+Dışarı aktarabileceğiniz dosyaları indirmek için Azure Içeri/dışarı aktarma aracını kullanabilirsiniz. Kopyalama günlük dosyası, dışarı aktarmayacak dosyaların bir listesini içerir.  
   
-Dışarı Aktarma hataları aşağıdaki olasılıkları nedenler:  
+Dışarı aktarma hatalarının nedenleri aşağıdaki olasılıkları içerir:  
   
--   Bozuk sürücüleri  
+-   Hasarlı sürücüler  
   
--   Aktarım işlemi sırasında değiştirilen depolama hesabı anahtarı  
+-   Aktarım işlemi sırasında depolama hesabı anahtarı değişti  
   
-Aracı çalıştırmak için **RepairExport** modu, ilk gerekir bilgisayarınıza dışa aktarılan dosyaları içeren sürücüde bağlanmak. Ardından, o sürücüye ile yolunu belirtme Azure içeri/dışarı aktarma aracı çalıştırın `/d` parametresi. İndirdiğiniz sürücünün kopyalama günlük dosyası yolunu belirtmeniz gerekir. Aşağıdaki komut satırı örneği dışarı aktarılamadı, hiçbir dosya onarmak için Aracı'nı çalıştırır:  
+Aracı **Repaırexport** modunda çalıştırmak için, önce, dosyaya verdiğiniz dosyaları içeren sürücüyü bilgisayarınıza bağlamanız gerekir. Ardından, Azure Içeri/dışarı aktarma aracı 'nı çalıştırın ve bu sürücünün yolunu `/d` parametresiyle belirtin. Ayrıca, indirdiğiniz sürücünün kopya günlük dosyasının yolunu da belirtmeniz gerekir. Aşağıdaki komut satırı örneği, dışarı aktarılmaya başarısız olan dosyaları onarmak için aracı çalıştırır:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-Dışarı aktarılamadı, bir blok blob'una gösteren bir kopya günlük dosyası örneği verilmiştir:  
+Aşağıda, blobdaki bir bloğun dışarı aktarılacağı bir blok olan bir kopya günlük dosyası örneği verilmiştir:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -76,20 +76,20 @@ Dışarı aktarılamadı, bir blok blob'una gösteren bir kopya günlük dosyas�
 </DriveLog>  
 ```  
   
-Kopyalama günlük dosyası, Windows Azure içeri/dışarı aktarma hizmeti bir blobun blok dosyasına dışarı aktarma sürücüdeki yükleme olan uygulanırken bir hata oluştu, gösterir. Dosyanın diğer bileşenleri başarıyla indirildi ve dosya uzunluğu doğru ayarlandı. Bu durumda, aracı sürücüsünde dosyasını açın, blok depolama hesabından indirin ve uzunluğu 65536 olan uzaklığı 65536'dan başlayan dosya aralığını yazın.  
+Kopyalama günlük dosyası, Microsoft Azure Içeri/dışarı aktarma hizmeti, blob 'un bloklarından birini dışarı aktarma sürücüsündeki dosyaya indirirken bir hata oluştuğunu belirtir. Dosyanın diğer bileşenleri başarıyla indirildi ve dosya uzunluğu doğru şekilde ayarlanmış. Bu durumda, araç dosyayı sürücüde açar, blok depolama hesabından indirir ve 65536 ' den başlayarak 65536 uzunluğunda bir dosya aralığına yazar.  
   
-## <a name="using-repairexport-to-validate-drive-contents"></a>Sürücü içeriğini doğrulamak için RepairExport kullanma  
-Azure içeri/dışarı aktarma ile de kullanabileceğiniz **RepairExport** sürücüsündeki içeriği doğrulamak için seçeneği doğru. Bildirim dosyası her dışarı aktarma sürücüde sürücü içeriğini için MD5s içerir.  
+## <a name="using-repairexport-to-validate-drive-contents"></a>Sürücü içeriğini doğrulamak için Repaırexport kullanma  
+Ayrıca, sürücüdeki içeriklerin doğru olduğunu doğrulamak için Azure Içeri/dışarı aktarma ile **Repaırexport** seçeneğini kullanabilirsiniz. Her dışarı aktarma sürücüsündeki bildirim dosyası, sürücünün içeriği için MD5s içerir.  
   
-Azure içeri/dışarı aktarma hizmeti Ayrıca bildirim dosyalarını bir depolama hesabına dışarı aktarma işlemi sırasında kaydedebilirsiniz. Bildirim dosyalarının konumunu aracılığıyla kullanılabilir [alma işi](/rest/api/storageimportexport/jobs) işi tamamlandığında işlemi. Bkz: [içeri/dışarı aktarma hizmet bildirimi dosyası biçimi](storage-import-export-file-format-metadata-and-properties.md) sürücü bildirim dosyasının biçimi hakkında daha fazla bilgi için.  
+Azure Içeri/dışarı aktarma hizmeti, bildirim dosyalarını dışarı aktarma işlemi sırasında bir depolama hesabına de kaydedebilir. Bildirim dosyalarının konumu, iş tamamlandığında [Iş al](/rest/api/storageimportexport/jobs) işlemi yoluyla kullanılabilir. Bir sürücü bildirim dosyasının biçimi hakkında daha fazla bilgi için bkz. [içeri/dışarı aktarma hizmet bildirimi dosyası biçimi](storage-import-export-file-format-metadata-and-properties.md) .  
   
-Aşağıdaki örnek, Azure içeri/dışarı aktarma aracı ile çalıştırmak gösterilmektedir **/ManifestFile** ve **/CopyLogFile** parametreleri:  
+Aşağıdaki örnek, **/ManifestFile** ve **/CopyLogFile** parametreleriyle Azure Içeri/dışarı aktarma aracının nasıl çalıştırılacağını göstermektedir:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
 ```  
   
-Bir bildirim dosyası örneği verilmiştir:  
+Aşağıda bir bildirim dosyası örneği verilmiştir:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -126,7 +126,7 @@ Bir bildirim dosyası örneği verilmiştir:
 </DriveManifest>  
 ``` 
   
-Onarım işlemi bittikten sonra aracı her dosya bildirim dosyasında başvurulan inceleyin ve MD5 karmaları ile dosya bütünlüğünü doğrulayın. Listesi için aşağıdaki bileşenleri geçer.  
+Onarım sürecini tamamladıktan sonra, araç, bildirim dosyasında başvurulan her bir dosyayı okur ve dosyanın MD5 karmalarıyla bütünlüğünü doğrular. Yukarıdaki bildirim için aşağıdaki bileşenlere gidecektir.  
 
 ```  
 G:\pictures\city\redmond.jpg, offset 0, length 3584  
@@ -148,11 +148,11 @@ G:\pictures\wild\canyon.jpg, offset 8163, length 2721
 G:\pictures\wild\canyon.jpg.properties  
 ```
 
-Doğrulama başarısız olan herhangi bir bileşeni aracı tarafından indirilir ve sürücüsüne aynı dosyaya yazılan.  
+Doğrulama başarısız olan herhangi bir bileşen araç tarafından indirilir ve sürücüdeki aynı dosyaya yeniden yazılır.  
   
 ## <a name="next-steps"></a>Sonraki adımlar
  
-* [Azure içeri/dışarı aktarma Aracı'nı ayarlama](storage-import-export-tool-setup-v1.md)   
+* [Azure Içeri/dışarı aktarma aracı 'nı ayarlama](storage-import-export-tool-setup-v1.md)   
 * [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kopyalama günlük dosyalarıyla iş durumunu gözden geçirme](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Bir içeri aktarma işini onarma](storage-import-export-tool-repairing-an-import-job-v1.md)   

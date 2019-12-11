@@ -1,39 +1,39 @@
 ---
-title: Azure içeri/dışarı aktarma aracı sorunlarını giderme | Microsoft Docs
-description: Azure içeri/dışarı aktarma aracı ve bunları nasıl ele alınacağını kullanılırken görülen yaygın sorunların bazıları hakkında bilgi edinin.
-author: muralikk
+title: Azure Içeri/dışarı aktarma aracı sorunlarını giderme | Microsoft Docs
+description: Azure Içeri/dışarı aktarma Aracı kullanılırken görülen yaygın sorunlardan bazıları ve bunların nasıl işleneceği hakkında bilgi edinin.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 9a4e47143515c7f9c21d701809c35d61853d91ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e463e1cdd340f852af46e39cca0dd9bfce7b8da
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320457"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978943"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Azure İçeri/Dışarı Aktarma Aracı ile ilgili sorunları giderme
-Bir sorunla karşılaşırsanız çalıştırıyorsa, Microsoft Azure içeri/dışarı aktarma aracı, hata iletileri döndürür. Bu konuda, kullanıcıların içine çalışabilir bazı yaygın sorunlar listelenmiştir.  
+Microsoft Azure İçeri/Dışarı Aktarma araç, sorunlar halinde çalıştırılıyorsa hata iletileri döndürür. Bu konuda, kullanıcıların çalıştırabilinen bazı yaygın sorunları listelenmektedir.  
   
-## <a name="a-copy-session-fails-what-i-should-do"></a>Bir kopya oturumu başarısız ne yapmalıyım?  
- Bir kopya oturumu başarısız olduğunda, iki seçenek vardır:  
+## <a name="a-copy-session-fails-what-i-should-do"></a>Bir kopyalama oturumu başarısız oluyor, ne yapmam gerekir?  
+ Bir kopyalama oturumu başarısız olduğunda, iki seçenek vardır:  
   
- Örneğin bir ağ paylaşımı için kısa bir süre çevrimdışı ve şimdi yeniden çevrimiçi olana yeniden denenebilir bir hatadır, kopya oturumu devam edebilir. Hata yeniden denenebilir, komut satırı parametreleri yanlış kaynak dosyası dizini belirtilen örneğin değilse, kopya oturumu iptal etmek gerekir. Bkz: [içeri aktarma işi için sabit disk hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md) kopyalama oturumları iptal ediliyor ve sürdürme hakkında daha fazla bilgi.  
+ Hata yeniden denenebilir, örneğin, ağ paylaşımının kısa bir süre için çevrimdışı olması ve şimdi yeniden çevrimiçi olması halinde kopyalama oturumunu sürdürebilirsiniz. Hata yeniden denenmez ise, örneğin komut satırı parametrelerinde yanlış kaynak dosya dizini belirttiyseniz kopyalama oturumunu iptal etmeniz gerekir. Kopyalama oturumlarını sürdürme ve iptal etme hakkında daha fazla bilgi için bkz. [bir Içeri aktarma işi Için sabit sürücüleri hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md) .  
   
-## <a name="i-cant-resume-or-abort-a-copy-session"></a>Ben sürdürmek veya kopya oturumu iptal değiştirilemez.  
- Kopya oturumu ilk kopyalama oturum için bir sürücü varsa, hata iletisi olması gerekir: "İlk kopya oturumu durduruldu veya sürdürülemez." Bu durumda, eski günlük dosyasını silin ve komutu yeniden çalıştırın.  
+## <a name="i-cant-resume-or-abort-a-copy-session"></a>Bir kopyalama oturumunu sürdürülemiyor veya iptal edemiyorum.  
+ Kopyalama oturumu bir sürücü için ilk kopyalama oturumundaysanız, hata iletisi şu şekilde olmalıdır: "ilk kopya oturumu devam ettirilemez veya iptal edilemez." Bu durumda, eski günlük dosyasını silip komutunu yeniden çalıştırabilirsiniz.  
   
- Bir kopya oturumu İlki bir sürücü için değilse, bu her zaman sürdürüldü durduruldu veya.  
+ Bir kopya oturumu bir sürücü için ilk değilse, her zaman devam edebilir veya iptal edilebilir.  
   
-## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Ben günlük dosyası kayıp, işi oluşturabilirsiniz?  
- Sürücü için günlük dosyası bu sürücüye veri kopyalama ilişkin tüm bilgileri içerir ve daha fazla dosya sürücü eklemek için gereken ve içeri aktarma işi oluşturmak için kullanılır. Günlük dosyası kaybolursa, sürücü için tüm kopyalama oturumları Yinele gerekecektir.  
+## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Günlük dosyası kaybedildim, işi hala oluşturabilir miyim?  
+ Bir sürücünün günlük dosyası, bu sürücüye veri kopyalama hakkında bilgilerin tamamını içerir ve sürücüye daha fazla dosya eklemek ve bir içeri aktarma işi oluşturmak için kullanılır. Günlük dosyası kaybolursa, sürücünün tüm kopyalama oturumlarını yeniden yapmanız gerekir.  
   
 ## <a name="next-steps"></a>Sonraki adımlar
  
-* [Azure içeri/dışarı aktarma Aracı'nı ayarlama](../storage-import-export-tool-setup-v1.md)   
+* [Azure içeri/dışarı aktarma aracı 'nı ayarlama](../storage-import-export-tool-setup-v1.md)   
 * [Sabit sürücüleri içeri aktarma işine hazırlama](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kopyalama günlük dosyalarıyla iş durumunu gözden geçirme](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Bir içeri aktarma işini onarma](../storage-import-export-tool-repairing-an-import-job-v1.md)   

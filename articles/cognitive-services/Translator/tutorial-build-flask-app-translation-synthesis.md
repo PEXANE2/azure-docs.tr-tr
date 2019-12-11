@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 7b9f1cfeb6ebcbc693135d83ad167092e16f478d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647324"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978467"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Öğretici: Azure bilişsel hizmetler ile bir Flask uygulaması derleme
 
@@ -44,7 +44,7 @@ Bu öğreticinin ne kadar ayrıntılı olmasını istediğiniz, birkaç faydalı
 * [Flask belgeleri](http://flask.pocoo.org/)
 * [Flask, Dummies için bir başlangıç kılavuzu](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için ihtiyacınız olan yazılım ve abonelik anahtarlarını gözden geçirelim.
 
@@ -106,7 +106,7 @@ Flask Web uygulamanızı oluşturmadan önce, projeniz için bir çalışma dizi
    | Platform | Shell | Komut |
    |----------|-------|---------|
    | macOS/Linux | Bash/ZSH | `source venv/bin/activate` |
-   | Windows | Bash | `source venv/Scripts/activate` |
+   | Windows | bash | `source venv/Scripts/activate` |
    | | Komut Satırı | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 
@@ -182,7 +182,7 @@ Bu kod, bir Kullanıcı `about.html` dosyasının işlendiği `http://your-web-a
 
 Bu örnekler, bir kullanıcı için HTML sayfalarının nasıl işleneceğini gösterir, ancak bir düğmeye basıldığında API 'Leri çağırmak için yollar kullanılabilir veya giriş sayfasından uzaklaşmak zorunda kalmadan istediğiniz sayıda eylem yapabilirsiniz. Çeviri, yaklaşım ve konuşma senkiyle ilgili yollar oluştururken bunu eylemde görürsünüz.
 
-### <a name="get-started"></a>Başlarken
+### <a name="get-started"></a>Kullanmaya Başlayın
 
 1. Projeyi IDE 'de açın, sonra çalışma dizininizin kökünde `app.py` adlı bir dosya oluşturun. Sonra, bu kodu `app.py` kopyalayın ve kaydedin:
 
@@ -319,7 +319,7 @@ Aşağıdaki bölümlerde, yaklaşım Analizi ve konuşma birleştirme için yol
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>Güncelleştirme `index.html`
+### <a name="update-indexhtml"></a>`index.html` dosyasını güncelleştirme
 
 Artık metni çevirecek bir işleve sahip olduğunuza ve bunu çağırmak için Flask uygulamanızda bir yola sahip olduğunuza göre, bir sonraki adım uygulamanız için HTML oluşturmaya başlamadır. Aşağıdaki HTML birkaç şeyi yapar:
 
@@ -556,7 +556,7 @@ Flask uygulamanızda `sentiment.py`çağıran bir yol oluşturalım. Bu yol, bir
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>Güncelleştirme `index.html`
+### <a name="update-indexhtml"></a>`index.html` dosyasını güncelleştirme
 
 Yaklaşım analizini çalıştırmaya yönelik bir işleviniz ve bunu çağırmak için Flask uygulamanızda bir yol olduğuna göre, sonraki adım uygulamanız için HTML yazmaya başlamadır. Aşağıdaki HTML birkaç şeyi yapar:
 
@@ -581,7 +581,7 @@ Yaklaşım analizini çalıştırmaya yönelik bir işleviniz ve bunu çağırma
    </div>
    ```
 
-### <a name="update-mainjs"></a>Güncelleştirme `main.js`
+### <a name="update-mainjs"></a>`main.js` dosyasını güncelleştirme
 
 Aşağıdaki kodda, Flask yönlendirmenize bir istek oluşturmak için HTML 'deki içerik kullanılır. Özellikle, metin alanı ve dil seçicisinin içeriği değişkenlere atanır ve sonra istek içinde `sentiment-analysis` yoluna geçirilir.
 
@@ -751,7 +751,7 @@ Flask uygulamanızda `synthesize.py`çağıran bir yol oluşturalım. Bu yol, bi
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>Güncelleştirme `index.html`
+### <a name="update-indexhtml"></a>`index.html` dosyasını güncelleştirme
 
 Metinden konuşmaya dönüştürmek için bir işleviniz olduğuna ve bunu çağırmak için Flask uygulamanızda bir yola sahip olduğunuza göre, sonraki adım uygulamanız için HTML yazmaya başlamadır. Aşağıdaki HTML birkaç şeyi yapar:
 
@@ -834,7 +834,7 @@ Metinden konuşmaya dönüştürmek için bir işleviniz olduğuna ve bunu çağ
 
 5. Çalışmanızı kaydettiğinizden emin olun.
 
-### <a name="update-mainjs"></a>Güncelleştirme `main.js`
+### <a name="update-mainjs"></a>`main.js` dosyasını güncelleştirme
 
 Aşağıdaki kodda, Flask yönlendirmenize bir istek oluşturmak için HTML 'deki içerik kullanılır. Özellikle, çeviri ve ses yazı tipi değişkenlere atanır ve sonra istek içinde `text-to-speech` yoluna geçirilir.
 
@@ -955,7 +955,7 @@ Belirtilen sunucu adresine gidin. Giriş alanına metin yazın, bir dil seçin v
 
 Bu, çevirileri gerçekleştiren, yaklaşımı çözümleyen ve sentezlenmiş konuşmayı karşılayan bir çalışan uygulamanız vardır. Uygulamayı sonlandırmak için **Ctrl + c** tuşlarına basın. Diğer Azure bilişsel [Hizmetler](https://docs.microsoft.com/azure/cognitive-services/)'i kullanıma aldığınızdan emin olun.
 
-## <a name="get-the-source-code"></a>Kaynak kodunu al
+## <a name="get-the-source-code"></a>Kaynak kodunu alma
 
 Bu proje için kaynak kodu [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial)' da kullanılabilir.
 

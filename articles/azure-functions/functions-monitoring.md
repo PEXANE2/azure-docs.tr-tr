@@ -4,12 +4,12 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226908"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978092"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -72,7 +72,7 @@ Işlevlerin erken sürümleri, artık önerilmeyen yerleşik izleme kullanır. B
 
 Her iki sayfanın da verileri alan Application Insights Analytics sorgusuna **Application Insights bir Çalıştır** bağlantısı olduğunu görebilirsiniz.
 
-![Application Insights içinde Çalıştır](media/functions-monitoring/run-in-ai.png)
+![Application Insights’ta çalıştırma](media/functions-monitoring/run-in-ai.png)
 
 Aşağıdaki sorgu görüntülenir. Çağrı listesinin son 30 güne sınırlı olduğunu görebilirsiniz. Listede 20 ' den fazla satır gösterilir (`where timestamp > ago(30d) | take 20`). Çağırma ayrıntıları listesi, son 30 gün için sınır yoktur.
 
@@ -155,7 +155,7 @@ Işlevler çalışma zamanı, "Host" ile başlayan bir kategoriye sahip Günlük
 
 Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de içerir. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) bir sabit listesi ve tamsayı kodu göreli önemi gösterir:
 
-|LogLevel    |Kod|
+|GünlükDüzeyi    |Kodlayın|
 |------------|---|
 |İzleme       | 0 |
 |Hata ayıklama       | 1 |
@@ -169,11 +169,11 @@ Günlük düzeyi `None`, sonraki bölümde açıklanmaktadır.
 
 ### <a name="log-configuration-in-hostjson"></a>Host. JSON içinde günlük yapılandırması
 
-[Host. JSON] dosyası, bir işlev uygulamasının Application Insights ne kadar günlüğe göndereceğini yapılandırır. Her kategori için, gönderileceği en düşük günlük düzeyini belirtirsiniz. İki örnek vardır: ilk örnek, [sürüm 2. x çalışma zamanı](functions-versions.md#version-2x) (.NET Core) işlevlerini hedefler ve ikinci örnek sürüm 1. x çalışma zamanı içindir.
+[Host. JSON] dosyası, bir işlev uygulamasının Application Insights ne kadar günlüğe göndereceğini yapılandırır. Her kategori için, gönderileceği en düşük günlük düzeyini belirtirsiniz. İki örnek vardır: ilk örnek, [sürüm 2. x ve sonraki](functions-versions.md#version-2x) sürümlerini işlevler çalışma zamanının (.NET Core ile) hedefliyor ve ikinci örnek sürüm 1. x çalışma zamanı içindir.
 
-### <a name="version-2x"></a>Sürüm 2. x
+### <a name="version-2x-and-higher"></a>Sürüm 2. x ve üzeri
 
-V2. x çalışma zamanı [.NET Core günlük filtresi hiyerarşisini](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)kullanır. 
+Işlev çalışma zamanının Sürüm V2. x ve sonraki sürümlerinde [.NET Core günlük kaydı filtresi hiyerarşisi](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)kullanılır. 
 
 ```json
 {
@@ -216,7 +216,7 @@ Bu örnek aşağıdaki kuralları ayarlar:
 
 [Host. JSON] aynı dizeyle başlayan birden çok kategori içeriyorsa, daha uzun olanlar önce eşleştirilir. `Host.Aggregator` çalışma zamanından her şeyin `Error` düzeyinde oturum açmasını, ancak `Information` düzeyinde `Host.Aggregator` oturum açmasını istediğinizi varsayalım:
 
-### <a name="version-2x"></a>Sürüm 2. x 
+### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
 ```json
 {
@@ -271,7 +271,7 @@ Günlükler, Application Insights 'daki **Customölçümler** tablosunda bulunab
 
 Bu günlüklerin tümü `Information` düzeyinde yazılır. `Warning` veya üzeri olarak filtrelemeniz durumunda bu verilerden herhangi birini görmezsiniz.
 
-### <a name="other-categories"></a>Diğer Kategoriler
+### <a name="other-categories"></a>Diğer kategoriler
 
 Önceden listelenmiş olanlar dışındaki kategoriler için tüm Günlükler, Application Insights **İziz** tablosunda mevcuttur.
 
@@ -283,7 +283,7 @@ Bu günlüklerin tümü `Information` düzeyinde yazılır. `Warning` veya üzer
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [Host. JSON] dosyasında yapılandırabilirsiniz.  Örnek buradadır:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [Host. JSON] dosyasında yapılandırabilirsiniz.  Bir örneği aşağıda verilmiştir:
 
 ```json
 {
@@ -296,9 +296,9 @@ Bu günlüklerin tümü `Information` düzeyinde yazılır. `Warning` veya üzer
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Host. JSON]içinde örnekleme yapılandırabilirsiniz.  Örnek buradadır:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Host. JSON]içinde örnekleme yapılandırabilirsiniz.  Bir örneği aşağıda verilmiştir:
 
-### <a name="version-2x"></a>Sürüm 2. x 
+### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
 ```json
 {
@@ -396,7 +396,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Özel Ölçüm günlüğü
 
-Functions çalışma zamanının [1. x sürümünde](functions-versions.md#creating-1x-apps) çalışırken Node. js işlevleri, Application Insights özel ölçümler oluşturmak için `context.log.metric` yöntemini kullanabilir. Bu yöntem şu anda sürüm 2. x içinde desteklenmiyor. Örnek bir yöntem çağrısı aşağıda verilmiştir:
+Functions çalışma zamanının [1. x sürümünde](functions-versions.md#creating-1x-apps) çalışırken Node. js işlevleri, Application Insights özel ölçümler oluşturmak için `context.log.metric` yöntemini kullanabilir. Bu yöntem şu anda sürüm 2. x ve üzeri sürümlerde desteklenmiyor. Örnek bir yöntem çağrısı aşağıda verilmiştir:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -408,9 +408,9 @@ Bu kod, Application Insights için Node. js SDK 'sını kullanarak `trackMetric`
 
 [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet paketini, Application Insights özel telemetri verileri göndermek için kullanabilirsiniz. Aşağıdaki C# örnek, [özel telemetri API](../azure-monitor/app/api-custom-events-metrics.md)'sini kullanır. Örnek, bir .NET sınıf kitaplığı içindir, ancak Application Insights kodu C# betiğe yöneliktir.
 
-### <a name="version-2x"></a>Sürüm 2. x
+### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
-Sürüm 2. x çalışma zamanı, telemetrinin geçerli işlemle otomatik olarak ilişkilendirilmesi için Application Insights yeni özellikleri kullanır. İşlem `Id`, `ParentId`veya `Name` alanlarını el ile ayarlamanız gerekmez.
+Çalışma zamanının sürüm 2. x ve sonraki sürümleri, geçerli işlemle Telemetriyi otomatik olarak ilişkilendirmek için Application Insights yeni özellikleri kullanır. İşlem `Id`, `ParentId`veya `Name` alanlarını el ile ayarlamanız gerekmez.
 
 ```cs
 using System;
@@ -588,7 +588,7 @@ module.exports = function (context, req) {
 
 `tagOverrides` parametresi, `operation_Id` işlevin çağırma KIMLIĞINE ayarlar. Bu ayar, belirli bir işlev çağrısı için otomatik olarak oluşturulan ve özel telemetrinin tümünü ilişkilendirmenizi sağlar.
 
-## <a name="dependencies"></a>Bağımlılıkları
+## <a name="dependencies"></a>Bağımlılıklar
 
 İşlev v2, HTTP istekleri, ServiceBus ve SQL bağımlılıklarını otomatik olarak toplar.
 

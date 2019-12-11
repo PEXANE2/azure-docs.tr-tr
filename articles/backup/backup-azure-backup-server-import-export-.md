@@ -4,12 +4,12 @@ description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak a
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173240"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996332"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı
 
@@ -53,7 +53,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma özelliğinin çevrimdışı dağ
 
     | Sovereign bulut bölgesi | Azure yayımlama ayarları dosyası bağlantısı |
     | --- | --- |
-    | Amerika Birleşik Devletleri | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Birleşik Devletler | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | Çin | [Bağlantı](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * Yayımlama ayarları dosyasını indirdiğiniz abonelikte aşağıda gösterildiği gibi, *Klasik* dağıtım modeline sahip bir Azure depolama hesabı oluşturulmuştur:
@@ -64,7 +64,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma özelliğinin çevrimdışı dağ
 * Azure 'a gönderilecek disklere yönelik olarak, yalnızca 2,5 inç SSD veya 2,5-inç veya 3,5-inç SATA II/III iç sabit sürücünün kullanıldığından emin olun. Sabit sürücüleri 10 TB 'a kadar kullanabilirsiniz. Hizmetin desteklediği en son sürücü kümesi için [Azure içeri/dışarı aktarma hizmeti belgelerini](../storage/common/storage-import-export-requirements.md#supported-hardware) denetleyin.
 * SATA sürücülerin, *hazırlama KONUMUNDAN* SATA sürücülere olan yedekleme verilerinin kopyasının yapıldığı bir bilgisayara ( *kopya bilgisayar*olarak adlandırılır) bağlanması gerekir. *Kopya bilgisayarda* BitLocker 'ın etkinleştirildiğinden emin olun
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını tamamlamanıza yardımcı olur. Içeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa, daha önce başvurulan [hizmete genel bakış](../storage/common/storage-import-export-service.md) belgelerine bakın.
 
@@ -90,7 +90,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
 
 2. İş akışını tamamlar ve çevrimdışı yedekleme kopyasını başlatmak için Azure Backup aracı yönetim konsolundan **Şimdi Yedekle** ' ye tıklayın. İlk yedekleme, bu adımın bir parçası olarak hazırlama alanına yazılır.
 
-    ![Şimdi Yedekle](./media/backup-azure-backup-import-export/backupnow.png)
+    ![Şimdi yedekle](./media/backup-azure-backup-import-export/backupnow.png)
 
     System Center Data Protection Manager veya Azure Backup sunucusu 'nda karşılık gelen iş akışını gerçekleştirmek için, **koruma grubuna**sağ tıklayın ve ardından **Kurtarma noktası oluştur** seçeneğini belirleyin. Sonra **çevrimiçi koruma** seçeneğini belirleyin.
 
@@ -218,4 +218,4 @@ Sonraki zamanlanmış yedekleme sırasında, Azure Backup ilk yedekleme kopyası
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Içeri/dışarı aktarma iş akışı hakkında herhangi bir soru için, [BLOB depolamaya veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md)konusuna bakın.
-* İş akışıyla ilgili sorular için Azure Backup [SSS](backup-azure-backup-faq.md) konusunun çevrimdışı yedekleme bölümüne bakın.
+

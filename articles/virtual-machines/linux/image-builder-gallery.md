@@ -1,27 +1,27 @@
 ---
-title: Linux sanal makineleri için bir görüntü Galerisi ile Azure Image Builder 'ı kullanma (Önizleme)
-description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Linux görüntüleri oluşturun.
+title: Linux VM 'Leri için bir görüntü Galerisi ile Azure Image Builder kullanma (Önizleme)
+description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Linux VM görüntüleri oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695415"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976137"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: Bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
 Bu makalede, [paylaşılan bir görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı nasıl kullanabileceğinizi ve daha sonra görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir.
 
 
 Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [Helloımagetemplateforsıg. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, şablon `distribute` bölümünün değeri olarak [Parçalama](image-builder-json.md#distribute-sharedimage) .
+Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için, şablon, şablonun `distribute` bölümü [değeri olarak parçalama](image-builder-json.md#distribute-sharedimage) .
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
@@ -77,7 +77,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`edinebilirsiniz.
+Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu, `az account show | grep id`kullanarak edinebilirsiniz.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Bu kaynak grubunda kaynak oluşturmak için Azure Image Builder iznini verin. `--assignee` Değer, görüntü Oluşturucu hizmeti için uygulama kayıt kimliğidir. 
+Bu kaynak grubunda kaynak oluşturmak için Azure Image Builder iznini verin. `--assignee` değeri, görüntü Oluşturucu hizmeti için uygulama kayıt KIMLIĞIDIR. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -186,7 +186,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM 'ye SSH.
+VM ile SSH bağlantısı kurun.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
@@ -220,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Görüntü Oluşturucu tarafından oluşturulan görüntü sürümünü alın, bu her zaman ile `0.`başlar ve ardından görüntü sürümünü siler
+Image Builder tarafından oluşturulan görüntü sürümünü al, bu her zaman `0.`başlar ve sonra görüntü sürümünü siler
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

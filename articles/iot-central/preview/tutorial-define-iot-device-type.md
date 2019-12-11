@@ -3,18 +3,18 @@ title: Azure IoT Central yeni bir IoT cihaz türü tanımlayın | Microsoft Docs
 description: Bu öğreticide, Azure IoT Central uygulamanızda yeni bir Azure IoT cihaz şablonu oluşturma, Oluşturucu olarak gösterilir. Türü için telemetri, durum, özellik ve komutları tanımlarsınız.
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2127bec4d5fdf0d3bf76fb31c548eab98f910d42
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407017"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979028"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir IoT cihaz türü tanımlama (Önizleme özellikleri)
 
@@ -124,15 +124,15 @@ Aşağıdaki tabloda bir telemetri yeteneğinin yapılandırma ayarları göster
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan telemetri değeri için görünen ad. |
-| Name | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Yetenek türü | Telemetri. |
-| Anlamsal tür | Telemetrinin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
+| Adı | Telemetri iletisindeki alanın adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Yetenek Türü | Telemetri. |
+| Anlam Türü | Telemetrinin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi telemetri veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
-| Severity | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
+| Önem Derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
 | Birim | Telemetri değeri için **mph**, **%** veya **&deg;C**gibi bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
-| Yorum | Telemetri yeteneği hakkında herhangi bir yorum. |
+| Açıklama | Telemetri yeteneği hakkında herhangi bir yorum. |
 | Açıklama | Telemetri yeteneğinin açıklaması. |
 
 ### <a name="properties"></a>Özellikler
@@ -144,16 +144,16 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan özellik değeri için görünen ad. |
-| Name | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Yetenek türü | Özelliði. |
-| Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
+| Adı | Özelliğin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Yetenek Türü | Özelliði. |
+| Anlam Türü | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz. |
 | Yazılabilir | Özellik yazılabilir değilse, cihaz özellik değerlerini IoT Central rapor edebilir. Özellik yazılabilir ise, cihaz özellik değerlerini IoT Central rapor edebilir ve IoT Central Özellik güncelleştirmelerini cihaza gönderebilir.
-| Severity | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
+| Önem Derecesi | Yalnızca olay anlam türü için kullanılabilir. Önem derecesi **hata**, **bilgi**veya **uyarılardır**. |
 | Durum değerleri | Yalnızca durum anlam türü için kullanılabilir. Her birinin görünen adı, adı, sabit listesi türü ve değeri olan olası durum değerlerini tanımlayın. |
 | Birim | Özellik değeri için **mph**, **%** veya **&deg;C**gibi bir birim. |
 | Görüntüleme birimi | Panolar ve formlarda kullanılacak bir görüntüleme birimi. |
-| Yorum | Özellik yeteneği hakkında herhangi bir açıklama. |
+| Açıklama | Özellik yeteneği hakkında herhangi bir açıklama. |
 | Açıklama | Özellik yeteneğinin açıklaması. |
 
 ### <a name="commands"></a>Komutlar
@@ -165,12 +165,12 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan komutun görünen adı. |
-| Name | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Yetenek türü | Komutundaki. |
+| Adı | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Yetenek Türü | Komutundaki. |
 | Komut | `SynchronousExecutionType`. |
-| Yorum | Komut özelliğiyle ilgili herhangi bir yorum. |
+| Açıklama | Komut özelliğiyle ilgili herhangi bir yorum. |
 | Açıklama | Komut yeteneğinin açıklaması. |
-| İstek | Etkinleştirilirse, istek parametresinin tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
+| İste | Etkinleştirilirse, istek parametresinin tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
 | Yanıt | Etkinleştirilirse, komut yanıtının tanımı: ad, görünen ad, şema, birim ve görüntü birimi. |
 
 ## <a name="manage-an-interface"></a>Arabirim yönetme
@@ -188,8 +188,8 @@ Aşağıdaki tabloda bir bulut özelliğinin yapılandırma ayarları gösterilm
 | Alan | Açıklama |
 | ----- | ----------- |
 | Görünen Ad | Panolar ve formlarda kullanılan bulut özelliği değeri için görünen ad. |
-| Name | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
-| Anlamsal tür | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
+| Adı | Bulut özelliğinin adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. |
+| Anlam Türü | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler. |
 | Şema | Çift, dize veya vektör gibi bulut özelliği veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. |
 
 ## <a name="add-customizations"></a>Özelleştirmeler ekleme
@@ -229,7 +229,7 @@ Bir cihaz şablonuna Pano eklemek için:
 
 ### <a name="configure-preview-device-to-view-dashboard"></a>Panoyu görüntülemek için Önizleme cihazını yapılandırma
 
-Panonuzu görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçin. Bu, işletmeni yayımlandıktan sonra bir kez gördüğünde panoyu görmenizi sağlar. Görünümlerinizin doğru verileri göstermesini doğrulamak için bu seçeneği kullanın. Aşağıdakiler arasından seçim yapabilirsiniz:
+Panonuzu görüntülemek ve test etmek için **Önizleme cihazını Yapılandır**' ı seçin. Bu, işletmeni yayımlandıktan sonra bir kez gördüğünde panoyu görmenizi sağlar. Görünümlerinizin doğru verileri göstermesini doğrulamak için bu seçeneği kullanın. Aşağıdakilerden birini seçebilirsiniz:
 
 - Önizleme cihazı yok.
 - Cihaz şablonunuz için yapılandırdığınız gerçek test cihazı.
@@ -250,7 +250,7 @@ Bir cihaz şablonuna form eklemek için:
 1. Formunuzdaki özellikleri düzenleyin.
 1. Değişiklikleri kaydedin.
 
-## <a name="publish-a-device-template"></a>Bir cihaz şablonu yayımlama
+## <a name="publish-a-device-template"></a>Cihaz şablonunu yayımlama
 
 Cihaz yetenek modelinizi uygulayan bir cihazı bağlayabilmeniz için önce cihaz şablonunuzu yayımlamanız gerekir.
 
@@ -359,8 +359,8 @@ Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca
 
     | Görünen ad      | Anlamsal tür | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | Yok.          | Date   |
-    | Müşteri adı     | Yok.          | Dize |
+    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
+    | Müşteri adı     | Hiçbiri          | Dize |
 
 2. **Kaydet**’i seçin.
 
@@ -376,7 +376,7 @@ Yetenek adını veya yetenek türünü özelleştiremezsiniz.
 
 Özelleştirmeyi bitirdiğinizde **Kaydet**' i seçin.
 
-### <a name="create-views"></a>Görünüm oluşturma
+### <a name="create-views"></a>Görünümleri oluşturma
 
 Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihazı hakkındaki ilgili bilgileri görüntüleyecek şekilde özelleştirebilirsiniz. Özelleştirmeleriniz, uygulamaya bağlı çevresel algılayıcı cihazlarını yönetmek için işlecini etkinleştirir. Cihazlarla etkileşim kurmak için kullanılacak bir operatör için iki tür görünüm oluşturabilirsiniz:
 
@@ -387,7 +387,7 @@ Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihaz�
 
 **Varsayılan görünümleri oluştur**' u seçerseniz **genel bakış** ve panolar **hakkında** ' yı oluşturabilirsiniz. 
 
-## <a name="publish-a-device-template"></a>Bir cihaz şablonu yayımlama
+## <a name="publish-a-device-template"></a>Cihaz şablonunu yayımlama
 
 Sanal bir ortam algılayıcısı oluşturmadan veya gerçek bir ortam sensöre bağlanmadan önce, cihaz şablonunuzu yayımlamanız gerekir.
 

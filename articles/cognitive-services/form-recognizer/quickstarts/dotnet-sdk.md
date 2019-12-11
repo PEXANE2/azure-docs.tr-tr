@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı | Microsoft Docs'
-description: .NET için form tanıyıcı istemci kitaplığını kullanarak, yapılandırılmış veri çıkışını eğitme, ayıklama, çözümleme ve alma işlemi gerçekleştirin.
+description: Veri çıkışını eğitmek, ayıklamak, analiz etmek ve elde etmek üzere .NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904598"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978620"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
@@ -37,7 +37,7 @@ ms.locfileid: "73904598"
 * Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Kurulum
 
 ### <a name="create-a-form-recognizer-azure-resource"></a>Form tanıyıcı Azure kaynağı oluşturma
 
@@ -91,7 +91,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar form tanıyıcı SDK 'nın ana işlevlerini işler.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Bu sınıf, tüm form tanıyıcı işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Traınrequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Kendi eğitim girişi verilerinizi kullanarak özel bir form tanıyıcı modeli eğitebilmeniz için bu sınıfı kullanın. |

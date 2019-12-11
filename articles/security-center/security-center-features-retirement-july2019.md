@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438637"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997233"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
 
@@ -53,7 +53,7 @@ Bir çalışma alanı seçtiğinizde görüntülenen olaylar panosunu kullanımd
 
 Çalışma Alanlarınızdaki önemli olaylarını görüntülemek için Azure Log Analytics 'in yerel yeteneklerini kullanmanızı öneririz.
 
-Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişilebilir olacaktır. Log Analytics, **çalışma alanı** > **kayıtlı aramalar**' a gidin. Verileriniz kaybolmaz veya değiştirilmez. Yerel önemli olayları, Log Analytics aynı ekrandan de mevcuttur.
+Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişilebilir olacaktır. Log Analytics ' de, **çalışma alanı** > **kaydedilmiş aramalar**' a gidin. Verileriniz kaybolmaz veya değiştirilmez. Yerel önemli olayları, Log Analytics aynı ekrandan de mevcuttur.
 
 ![Çalışma alanı kaydedilmiş aramaları][3]
 
@@ -169,7 +169,7 @@ Bağlı çözümleriniz varsa Azure Sentinel 'e geçiş yapmanız önerilir.
 
 Azure Güvenlik Merkezi, işletim sistemini güçlendirme amacıyla [150'den fazla önerilen kuraldan](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) oluşan bir küme uygulayarak güvenlik yapılandırmalarını izler. Bu kurallar güvenlik duvarları, denetim, parola ilkeleri ve daha fazlası ile ilgilidir. Bir makinenin yapılandırmasında güvenlik açığı varsa Güvenlik Merkezi bu konuyla ilgili bir güvenlik önerisi oluşturur. [Güvenlik Yapılandırması düzenleme ekranı](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) , müşterilerin Güvenlik Merkezi 'nde varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmesini sağlar.
 
-Bu önizleme özelliğini kullanımdan kaldırdı. Güvenlik yapılandırmalarınızı, kullanımdan kaldırma tarihinden sonra varsayılan değerlerine geri döndürmek için [aşağıdaki yönergeleri](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) kullanarak API veya PowerShell aracılığıyla bunu yapın
+Bu önizleme özelliğini kullanımdan kaldırdı. Güvenlik yapılandırmalarınızı, kullanımdan kaldırma tarihinden sonra varsayılan değerlerine geri döndürmek için [aşağıdaki yönergeleri](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)kullanarak API veya PowerShell aracılığıyla bunu yapın.
 
 ![Güvenlik yapılandırmasını düzenle][17]
 

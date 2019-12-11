@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922659"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997063"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kullanıcı hazırlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -139,7 +139,7 @@ SCıM RFC, çekirdek Kullanıcı ve grup şeması tanımlar, Ayrıca, şema uzan
    1. [Azure Active Directory portalında](https://aad.portal.azure.com)oturum açın, **Kurumsal uygulamalar**' ı seçin, uygulamanızı seçin ve **sağlama**' yı seçin.
    2. **Eşlemeler**altında, özel bir öznitelik eklemek istediğiniz nesneyi (Kullanıcı veya grup) seçin.
    3. Sayfanın alt kısmındaki **Gelişmiş seçenekleri göster**' i seçin.
-   4. *Appname için öznitelik listesini düzenle*' yi seçin.
+   4. **Appname için öznitelik listesini düzenle**' yi seçin.
    5. Öznitelik listesinin en altında, belirtilen alanlara özel öznitelikle ilgili bilgileri girin. Sonra **öznitelik Ekle**' yi seçin.
 
 SCıM uygulamaları için, öznitelik adı aşağıdaki örnekte gösterilen modele uymalıdır. "CustomExtensionName" ve "CustomAttribute" uygulamanızın gereksinimlerine göre özelleştirilebilir. Örneğin: urn: IETF: params: SCIM: schemas: Extension: 2.0: CustomExtensionName: CustomAttribute

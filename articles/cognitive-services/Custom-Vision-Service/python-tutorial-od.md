@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 5bd607011d5f66b0b10733e24cedda4c7ddce686
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 54a028afa9da22bddddb855558668cccb027f70b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73518902"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961055"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme Python SDK’sı ile nesne algılama projesi oluşturma
 
-Bu makalede, Özel Görüntü İşleme SDK'sını Python ile kullanarak nesne algılama modeli oluşturmaya başlarken size yardımcı olacak bilgiler ve örnek kod sağlanır. Oluşturulduktan sonra etiketli bölgeler ekleyebilir, görüntüleri yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı bir şekilde test etmek için uç noktayı kullanabilirsiniz. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın.
+This article shows you how to get started using the Custom Vision SDK with Python to build an object detection model. After it's created, you can add tagged regions, upload images, train the project, obtain the project's published prediction endpoint URL, and use the endpoint to programmatically test an image. Kendi Python uygulamanızı oluştururken bu örneği şablon olarak kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -47,9 +47,9 @@ Tercih ettiğiniz proje dizininde *sample.py* adlı yeni bir dosya oluşturun.
 
 ### <a name="create-the-custom-vision-service-project"></a>Özel Görüntü İşleme hizmeti projesi oluşturma
 
-Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Ayrıca, Özel Görüntü İşleme Web sitesinin ayarlar sayfasından uç nokta URL 'nizi alın.
+Yeni bir Özel Görüntü İşleme hizmeti projesi oluşturmak için betiğinize aşağıdaki kodu ekleyin. Abonelik anahtarlarınızı uygun tanımlara ekleyin. Also, get your Endpoint URL from the Settings page of the Custom Vision website.
 
-Projenizi oluştururken diğer seçenekleri belirtmek için [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) yöntemine bakın ( [bir algılayıcı derleme](get-started-build-detector.md) Web portalı kılavuzunda açıklanmıştır).  
+See the [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) method to specify other options when you create your project (explained in the [Build a detector](get-started-build-detector.md) web portal guide).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -76,7 +76,7 @@ project = trainer.create_project("My Detection Project", domain_id=obj_detection
 
 ### <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenizde nesne etiketleri oluşturmak için, *Sample.py*sonuna aşağıdaki kodu ekleyin:
+To create object tags in your project, add the following code to the end of *sample.py*:
 
 ```Python
 # Make two tags in the new project
@@ -88,7 +88,7 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 Nesne algılama projelerinde görüntüleri etiketlediğinizde etiketli her nesnenin bölgesini normalleştirilmiş koordinatları kullanarak belirtmeniz gerekir.
 
-Projeye görüntüler, etiket ve bölgeler eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. Bu öğreticide, bölgeler kod ile satır içi olarak kodlanmıştır. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik.
+Projeye görüntüler, etiket ve bölgeler eklemek için etiket oluşturduktan sonra aşağıdaki kodu ekleyin. For this tutorial, the regions are hardcoded inline with the code. Bölgeler, sınırlayıcı kutuyu normalleştirilmiş koordinatlarıyla belirtir ve koordinatlar şu sırayla verilir: sol, üst, genişlik, yükseklik.
 
 ```Python
 fork_image_regions = {
@@ -138,7 +138,7 @@ scissors_image_regions = {
 }
 ```
 
-Ardından, her bir örnek görüntüsünü bölge koordinatları ile karşıya yüklemek için bu ilişkilerin haritasını kullanın (tek bir toplu işte en fazla 64 görüntü yükleyebilirsiniz). Aşağıdaki kodu ekleyin.
+Then, use this map of associations to upload each sample image with its region coordinates (you can upload up to 64 images in a single batch). Aşağıdaki kodu ekleyin.
 
 ```Python
 # Update this with the path to where you downloaded the images.
@@ -170,9 +170,9 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-project-and-publish"></a>Projeyi eğitme ve yayımlama
+### <a name="train-the-project-and-publish"></a>Train the project and publish
 
-Bu kod, projedeki ilk yinelemeyi oluşturur ve ardından bu yinelemeyi tahmin uç noktasına yayınlar. Yayımlanan yinelemeye verilen ad, tahmin istekleri göndermek için kullanılabilir. Bir yineleme, yayımlanana kadar tahmin uç noktasında kullanılamaz.
+This code creates the first iteration in the project and then publishes that iteration to the prediction endpoint. The name given to the published iteration can be used to send prediction requests. An iteration is not available in the prediction endpoint until it is published.
 
 ```Python
 import time
@@ -189,7 +189,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Tahmin uç noktasında yayımlanmış yinelemeyi edinme ve kullanma
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Get and use the published iteration on the prediction endpoint
 
 Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın sonuna aşağıdaki kodu ekleyin:
 

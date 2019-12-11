@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7d7744aab6d83b3415f32ca9e311940836c6f93c
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123216"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997250"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -267,7 +267,7 @@ Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin 
 
 ## <a name="function-fails-runinput_data"></a>İşlevi başarısız: run(input_data)
 
-Hizmet başarıyla dağıtıldı, ancak Puanlama uç noktası veri göndermek çöküyor deyiminde yakalama hata ekleyebilirsiniz, `run(input_data)` ayrıntılı hata iletisi yerine döndürür, böylece işlev. Örneğin:
+Hizmet başarıyla dağıtıldı, ancak Puanlama uç noktası veri göndermek çöküyor deyiminde yakalama hata ekleyebilirsiniz, `run(input_data)` ayrıntılı hata iletisi yerine döndürür, böylece işlev. Örnek:
 
 ```python
 def run(input_data):
@@ -505,7 +505,7 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
     docker exec -it debug /bin/bash
     ```
 
-1. Hizmet tarafından kullanılan dosyaları bulmak için, kapsayıcıdaki Bash kabuğundan aşağıdaki komutu kullanın:
+1. Hizmet tarafından kullanılan dosyaları bulmak için, varsayılan dizin `/var/azureml-app`farklıysa, kapsayıcıda Bash kabuğundan aşağıdaki komutu kullanın:
 
     ```bash
     cd /var/azureml-app
@@ -526,7 +526,7 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
 
 1. Kapsayıcıda bulunan dosyalarda yaptığınız değişiklikleri, VS Code yerel dosyalarla eşitlenmiş şekilde kaydettiğinizden emin olun. Aksi takdirde, hata ayıklayıcı deneyimi beklendiği gibi çalışmaz.
 
-### <a name="stop-the-container"></a>Kapsayıcıyı durdur
+### <a name="stop-the-container"></a>Kapsayıcıyı durdurma
 
 Kapsayıcıyı durdurmak için aşağıdaki komutu kullanın:
 

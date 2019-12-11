@@ -4,12 +4,12 @@ description: Blok zinciri verilerini Azure Cosmos DB göndermek için Azure blok
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849997"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977412"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB 'a veri göndermek için blok zinciri Veri Yöneticisi kullanma
 
@@ -78,13 +78,15 @@ Sözleşme ABı, akıllı sözleşme arabirimlerini tanımlar. Akıllı sözleş
 
 1. **ABI** DIZISINI bir JSON dosyası olarak kaydedin. Örneğin, *ABI. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 
-Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Derlenen anlaşma meta veri dosyasından dağıtılan bayt kodunu alabilirsiniz.
+Blok zinciri Veri Yöneticisi, akıllı sözleşme için dağıtılan bayt kodunu gerektirir. Dağıtılan bytecode, akıllı sözleşme bytecode değerinden farklı. Bytecode 'u panoya kopyalamak için Azure blok zinciri geliştirme seti uzantısını kullanın.
 
-1. Solidity projenizin **Build/Contracts** klasöründe yer alan Sözleşme meta veri dosyasını açın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
-1. JSON dosyasında **Deployedbytecode** öğesini bulun.
-1. Tırnak işaretleri olmadan onaltılık değeri kopyalayın.
+1. Visual Studio Code gezgin bölmesinde, Solidity projenizin **Build/Contracts** klasörünü genişletin.
+1. Sözleşme meta verileri JSON dosyasına sağ tıklayın. Dosya adı akıllı sözleşme adı ve ardından **. JSON** uzantısıdır.
+1. **Işlem bayt kodunu kopyala**' yı seçin.
 
-    ![Meta verilerde bytecode ile Visual Studio Code bölmesi](./media/data-manager-portal/bytecode-metadata.png)
+    ![Copy TRANSACTION bytecode seçimiyle Visual Studio Code bölmesi](./media/data-manager-cosmosdb/bytecode-devkit.png)
+
+    Bytecode, panoya kopyalanır.
 
 1. **Bytecode** DEĞERINI bir JSON dosyası olarak kaydedin. Örneğin, *bytecode. JSON*. Dosyayı sonraki bir adımda kullanırsınız.
 

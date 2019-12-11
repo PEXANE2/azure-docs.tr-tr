@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155edf72a60e079a609853e953e3cf66024cc83c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f033563bbd7888e53d910773cd1e0c501eaad098
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794256"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997114"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu konu, kimlik çözümünüz olarak Azure AD Connect bulut sağlamasını seçme ve kullanma hakkında rehberlik sağlar.
@@ -48,7 +48,7 @@ Belgenin geri kalanı, bu Önkoşullar için adım adım yönergeler sağlar.
      | --- | --- |
      | **80** | SSL sertifikası doğrulanırken sertifika iptal listelerini (CRL 'Ler) indirir |
      | **443** | Hizmetle tüm giden iletişimi işler |
-     | **8080** (isteğe bağlı) | Aracılar, 8080 bağlantı noktası kullanılamıyorsa, her on dakikada bir 443, bağlantı noktası üzerinden durumlarını raporlar. Bu durum Azure AD portalında görüntülenir. 8080 numaralı bağlantı noktası Kullanıcı oturum açma işlemleri _için kullanılmaz._ |
+     | **8080** (isteğe bağlı) | Aracılar, 8080 bağlantı noktası kullanılamıyorsa, her on dakikada bir 443, bağlantı noktası üzerinden durumlarını raporlar. Bu durum Azure AD portalında görüntülenir. |
      
      Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
    - Güvenlik duvarınız veya ara sunucunuz güvenli sonekler belirtmenize izin veriyorsa **\*. msappproxy.net** ve **\*. ServiceBus.Windows.net**öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
@@ -73,7 +73,7 @@ Bu test, aracılarınızın 443 numaralı bağlantı noktası üzerinden Azure i
 
 Azure AD Connect bulut sağlama aracısının barındırması gereken Windows Server, yüklemeden önce TLS 1,2 ' i etkinleştirmiş olmalıdır.
 
-TLS 1,2 ' i etkinleştirmek için:
+TLS 1.2 etkinleştirmek için:
 
 1. Aşağıdaki kayıt defteri anahtarlarını ayarlayın:
     

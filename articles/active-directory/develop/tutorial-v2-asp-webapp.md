@@ -1,5 +1,5 @@
 ---
-title: Azure AD v 2.0 ASP.NET Web sunucusu Başlarken
+title: Azure AD ASP.NET Web uygulamasına oturum açma ekleme
 titleSuffix: Microsoft identity platform
 description: Geleneksel bir Web tarayıcısı tabanlı uygulama ve OpenID Connect Standard kullanarak ASP.NET çözümünde Microsoft oturum açma uygulama
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803712"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964744"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -395,7 +395,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
 1. `ClientId` yeni kaydettiğiniz uygulama KIMLIĞIYLE değiştirin.
 1. `redirectUri`, projenizin SSL URL 'siyle değiştirin.
 
-## <a name="test-your-code"></a>Kodunuzu test etme
+## <a name="test-your-code"></a>Kodunuzu test edin
 
 Visual Studio 'da uygulamanızı test etmek için F5 'e basarak projenizi çalıştırın. Tarayıcı, http://<span></span>localhost: {Port} konumunda açılır ve **Microsoft hesabıyla oturum açın** düğmesini görürsünüz. Oturum açma işlemini başlatmak için düğmeyi seçin.
 
@@ -446,7 +446,7 @@ Erişimi, `Authorize` özniteliğiyle korunan bir denetleyiciye anonim kullanıc
 
 Korumalı denetleyici görünümünü kullanmak için kimlik doğrulamanız istenir.
 
-## <a name="advanced-options"></a>Gelişmiş Seçenekler
+## <a name="advanced-options"></a>Gelişmiş seçenekler
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Web sitenizin tamamını koruyun

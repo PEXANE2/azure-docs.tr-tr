@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576394"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997199"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Tam zamanında sanal makine erişimini yönetme
 
-Tam zamanında (JıT) sanal makine (VM) erişimi, Azure VM 'lerinize gelen trafiği kilitlemek ve gerektiğinde VM 'lere bağlanmak için kolay erişim sağlarken saldırılara maruz kalma olasılığını azaltmak için kullanılabilir.
+Tam zamanında (JIT) sanal makine (VM) erişimi, gelen trafiği Azure VM’lerinize kilitlemek için kullanılabilir. Böylece, saldırılara maruz kalma riski azaltılırken VM’lere gerektiğinde bağlanılabilmesi için kolay erişim sağlar.
 
 > [!NOTE]
 > Tam zamanında özelliği, güvenlik merkezi 'nin standart katmanında bulunur. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md).
@@ -106,7 +106,7 @@ Güvenlik Merkezi 'nden bir JıT ilkesi yapılandırabilir ve bir sanal makineye
     - **Izin verilen kaynak IP adresleri**-bir istek onaylandığında bu bağlantı noktasında ızın verilen IP aralıkları.
     - **En fazla istek süresi**-belirli bir bağlantı noktasının açılabileceği en uzun zaman penceresi.
 
-     3. **Tamam** düğmesine tıklayın.
+     3. **Tamam**’a tıklayın.
 
 1. **Kaydet** düğmesine tıklayın.
 
@@ -176,10 +176,10 @@ Kolaylık olması için, güvenlik merkezi 'nde VM 'nin içinden JıT kullanarak
 
 Sanal makinelerinizden tam zamanında erişimi daha kolay hale getirmek için bir VM 'yi doğrudan VM içinden yalnızca tam zamanında erişime izin verecek şekilde ayarlayabilirsiniz.
 
-1. Azure portal **sanal makineler**' i seçin.
-2. Tam zamanında erişim ile sınırlamak istediğiniz sanal makineye tıklayın.
-3. Menüde **yapılandırma**' ya tıklayın.
-4. Tam **zamanında erişim** altında **tam zamanında ilkeyi etkinleştir**' e tıklayın. 
+1. [Azure Portal](https://ms.portal.azure.com), **sanal makineleri**arayıp seçin. 
+2. Tam zamanında erişim ile sınırlamak istediğiniz sanal makineyi seçin.
+3. Menüde **yapılandırma**' yı seçin.
+4. **Tam zamanında erişim**altında, **tam zamanında ilkesini etkinleştir**' i seçin. 
 
 Bu, aşağıdaki ayarları kullanarak VM için tam zamanında erişim imkanı sunar:
 

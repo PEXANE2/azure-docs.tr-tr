@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815775"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997284"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL veritabanı tekil ve havuza alınmış veritabanlarına çoğaltma
 
@@ -32,14 +32,17 @@ SQL Server çoğaltma, Azure SQL veritabanı 'ndaki bir [SQL veritabanı sunucus
 
 ## <a name="versions"></a>Sürümler  
 
-- Yayımcı ve dağıtıcı, en azından aşağıdaki sürümlerden birinde olmalıdır:  
-- SQL Server 2017 (14. x)
-- SQL Server 2016 (13. x)
-- SQL Server 2014 (12. x) SP1 CU3
-- SQL Server 2014 (12. x) RTM CU10
-- SQL Server 2012 (11. x) SP2 CU8 veya SP3
-- Daha eski bir sürümü kullanarak çoğaltmayı yapılandırmaya çalışmak, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 (oturum açma tarafından istenen > sunucu \<adı açılamıyor. Oturum açılamadı.).  
-- Azure SQL veritabanı 'nın tüm özelliklerini kullanmak için, en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümlerini kullanıyor olmanız gerekir.  
+Şirket içi SQL Server yayımcılar ve dağıtımcılar, en azından aşağıdaki sürümlerden birini kullanıyor olmalıdır:  
+
+- SQL Server 2016 ve üzeri
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) veya [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) veya [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> Desteklenmeyen bir sürüm kullanılarak çoğaltmayı yapılandırma denemesi, hata numarası MSSQL_REPL20084 (işlem aboneye bağlanamaz.) ve MSSQL_REPL40532 (oturum açma isteği tarafından istenen > sunucu \<açılamıyor. Oturum açılamadı.).  
+
+Azure SQL veritabanı 'nın tüm özelliklerini kullanmak için, en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [SQL Server veri araçları](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)sürümlerini kullanıyor olmanız gerekir.  
+
   
 ## <a name="remarks"></a>Açıklamalar
 
@@ -106,7 +109,7 @@ Azure SQL veritabanı abonelikleri için aşağıdaki seçenekler desteklenmez:
 Yayın ve gönderme temelli bir abonelik oluşturun. Daha fazla bilgi için bkz.
   
 - [Yayın oluşturma](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- Abone olarak Azure SQL veritabanı sunucu adını (örneğin, **Niazurestodbdns. Database. Windows. net '** ) ve Azure SQL veritabanı adını hedef veritabanı olarak (örneğin **AdventureWorks** ) kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) . ).  
+- Abone olarak Azure SQL veritabanı sunucu adını (örneğin, **Niazurestodbdns. Database. Windows. net '** ) ve Azure SQL veritabanı adını hedef veritabanı (örneğin **AdventureWorks**) olarak kullanarak [bir anında iletme aboneliği oluşturun](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) .  
 
 ## <a name="see-also"></a>Ayrıca Bkz.  
 

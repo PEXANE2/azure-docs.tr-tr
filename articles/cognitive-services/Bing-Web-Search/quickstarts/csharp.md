@@ -1,32 +1,32 @@
 ---
-title: "Hızlı Başlangıç: Bir web araması ile C# -Bing Web araması REST API'si"
+title: 'Hızlı başlangıç: C# -Bing Web araması REST API bir Web araması gerçekleştirme'
 titleSuffix: Azure Cognitive Services
-description: Bing Web araması REST API'si kullanarak istekleri göndermek için bu hızlı başlangıçta kullanmak C#ve bir JSON yanıtı alırsınız.
+description: Kullanarak C#istekleri Bing Web araması REST API göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20cb5f65ed33bc3e737bbba902ed2d891eaf83be
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6c847af4f6938923abdfced4d5e8b842ae84eca6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823367"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978824"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Hızlı Başlangıç: Bing Web arama REST API'sini kullanarak Web'de arama veC#
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Hızlı başlangıç: Bing Web Araması REST API kullanarak Web 'de arama yapın veC#
 
-Bu hızlı başlangıçta, Bing Web araması API'si, ilk çağrı yapmak ve JSON yanıtını almak için kullanın. Bu C# uygulama API'sine arama isteği gönderir ve yanıtı gösterir. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu C# uygulama, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
-* Windows: [Visual Studio 2017 veya üstü](https://www.visualstudio.com/downloads/)
+* Windows: [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Abonelik anahtarı
 
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Devam etmeden önce birkaç değişkeni ayarlamamız gerekir. `uriBase` öğesinin geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Bu kodu eklemeyi unutmayın `Program` yukarıda da belirtildiği gibi sınıf.
+Devam etmeden önce birkaç değişkeni ayarlamamız gerekir.  `uriBase`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir. `uriBase` öğesinin geçerli olduğunu doğrulayın ve `accessKey` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz. Yukarıda belirtilen `Program` sınıfa bu kodu eklemeyi unutmayın.
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Main metodunu tanımlama
 
-`Main()` Yöntemi gereklidir ve programı başlatıldığında çağrılan ilk yöntem ise. Bu uygulamada main metodu `accessKey` öğesini doğrular, istekte bulunur ve yanıtı yazdırır.
+`Main()` yöntemi zorunludur ve program başlatıldığında çağrılan ilk yöntem. Bu uygulamada main metodu `accessKey` öğesini doğrular, istekte bulunur ve yanıtı yazdırır.
 
 `main()` öğesinin sonraki bölümlerde oluşturulan metotlara bağlı olduğunu unutmayın.
 
@@ -109,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Arama sonuçları için bir yapı oluşturma
 
-Bu yapı arama sonuçlarını ve ilgili üst bilgileri döndürür. Bir sonuç nesnesi oluşturmak için Bing Web araması API'si için bir istek yaparken çağrılır.
+Bu yapı arama sonuçlarını ve ilgili üst bilgileri döndürür. Bir sonuç nesnesi oluşturmak için Bing Web Araması API'si bir istek yapıldığında çağrılır.
 
 ```csharp
 // Returns search results with headers.

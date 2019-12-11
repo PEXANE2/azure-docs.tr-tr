@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Java için Bing Web Araması SDK 'sını kullanma"
+title: "Hızlı başlangıç: Java için Bing Web Araması SDK'sını kullanma"
 titleSuffix: Azure Cognitive Services
 description: Bing Web Araması SDK'sı, Bing Web Araması özelliklerini Java uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 services: cognitive-services
@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 07/25/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 64d1ce1aa6435d9d1716364cb16f8fee7ca09ebb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 97266269a5fbb66f9787cb4a8042f3b3dc13a5ec
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597816"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977242"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Hızlı Başlangıç: Java için Bing Web Araması SDK 'sını kullanma
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Hızlı başlangıç: Java için Bing Web Araması SDK'sını kullanma
 
 Bing Web Araması SDK'sı, Bing Web Araması özelliklerini Java uygulamanızla tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
 Kodu hemen görmek istiyor musunuz? GitHub'daki [Java için Bing Web Araması SDK'sı örneklerini](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/) inceleyebilirsiniz.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,6 +30,8 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 * [JDK 7 veya 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) veya favori derleme otomasyonu aracınız
 * Abonelik anahtarı
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Bir proje oluşturun ve pod dosyanızı ayarlayın
 
@@ -127,7 +125,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Projeyi Maven ile oluşturduysanız paketin tanımlanmış olması gerekir. Aksi takdirde paketi bu adımda tamamlayın. Örneğin:
+Projeyi Maven ile oluşturduysanız paketin tanımlanmış olması gerekir. Aksi takdirde paketi bu adımda tamamlayın. Örnek:
 
 ```java
 package com.bingwebsearch.app

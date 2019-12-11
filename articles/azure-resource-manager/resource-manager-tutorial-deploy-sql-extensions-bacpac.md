@@ -2,15 +2,15 @@
 title: SQL BACPAC dosyalarını şablonlarla içeri aktarma
 description: SQL veritabanı uzantısı 'nı kullanarak SQL BACPAC dosyalarını Azure Resource Manager şablonlarıyla içeri aktarma hakkında bilgi edinin.
 author: mumian
-ms.date: 11/21/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 741521551335712400e5f61822d7dda31199d3df
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 9f5e2e402e13076dc538a9c9d55e5b67e0d86d4f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422189"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978926"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarıyla SQL BACPAC dosyalarını içeri aktarma
 
@@ -25,9 +25,9 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu dağıtma
 > * Dağıtımı doğrulama
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -44,17 +44,15 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Bir BACPAC dosyası [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)'da paylaşılır. Kendiniz bir dosya oluşturmak isterseniz bkz. [Azure SQL Veritabanı’nı bir BACPAC dosyasına dışarı aktarma](../sql-database/sql-database-export.md). Dosyayı kendi belirleyeceğiniz bir konumda yayımlarsanız öğreticinin ilerleyen bölümlerinde şemayı güncelleştirmeniz gerekir.
 
-BACPAC dosyası, Kaynak Yöneticisi şablonu kullanılarak içeri aktarılmadan önce bir Azure depolama hesabında depolanmalıdır.
+BACPAC dosyası, Kaynak Yöneticisi şablonu kullanılarak içeri aktarılmadan önce bir Azure depolama hesabında depolanmalıdır. Aşağıdaki PowerShell betiği BACPAC dosyasını şu adımlarla hazırlar:
 
-1. [Cloud Shell](https://shell.azure.com)'i açın.
-1. **Dosyaları karşıya yükle/indir**ve sonra **karşıya**Yükle ' yi seçin.
-1. Aşağıdaki URL 'YI belirtip **Aç**' ı seçin.
+* BACPAC dosyasını indirin.
+* Bir Azure Depolama hesabı oluşturun.
+* Bir depolama hesabı Blob kapsayıcı oluşturun.
+* BACPAC dosyasını kapsayıcıya yükleyin.
+* Depolama hesabı anahtarını ve BLOB URL 'sini görüntüleyin.
 
-    ```url
-    https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac
-    ```
-
-1. Aşağıdaki PowerShell betiğini kopyalayıp kabuk penceresine yapıştırın.
+1. Cloud Shell 'i açmak için **deneyin** ' i seçin ve ardından aşağıdaki PowerShell betiğini kabuk penceresine yapıştırın.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -63,10 +61,16 @@ BACPAC dosyası, Kaynak Yöneticisi şablonu kullanılarak içeri aktarılmadan 
     $resourceGroupName = "${projectName}rg"
     $storageAccountName = "${projectName}store"
     $containerName = "bacpacfiles"
-    $bacpacFile = "$HOME/SQLDatabaseExtension.bacpac"
-    $blobName = "SQLDatabaseExtension.bacpac"
+    $bacpacFileName = "SQLDatabaseExtension.bacpac"
+    $bacpacUrl = "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac"
 
+    # Download the bacpac file
+    Invoke-WebRequest -Uri $bacpacUrl -OutFile "$HOME/$bacpacFileName"
+
+    # Create a resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account
     $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
                                            -Name $storageAccountName `
                                            -SkuName Standard_LRS `
@@ -74,15 +78,17 @@ BACPAC dosyası, Kaynak Yöneticisi şablonu kullanılarak içeri aktarılmadan 
     $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
                                                   -Name $storageAccountName).Value[0]
 
+    # Create a container
     New-AzStorageContainer -Name $containerName -Context $storageAccount.Context
 
-    Set-AzStorageBlobContent -File $bacpacFile `
+    # Upload the BACPAC file to the container
+    Set-AzStorageBlobContent -File $HOME/$bacpacFileName `
                              -Container $containerName `
-                             -Blob $blobName `
+                             -Blob $bacpacFileName `
                              -Context $storageAccount.Context
 
     Write-Host "The storage account key is $storageAccountKey"
-    Write-Host "The BACPAC file URL is https://$storageAccountName.blob.core.windows.net/$containerName/$blobName"
+    Write-Host "The BACPAC file URL is https://$storageAccountName.blob.core.windows.net/$containerName/$bacpacFileName"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
@@ -101,10 +107,9 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
 3. Dosyayı açmak için **Aç**’ı seçin.
 
-    Şablonda tanımlanan üç kaynak vardır:
+    Şablonda iki kaynak tanımlanmış:
 
    * `Microsoft.Sql/servers`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * `Microsoft.SQL/servers/securityAlertPolicies`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies).
    * `Microsoft.SQL.servers/databases`.  Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
      Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
@@ -138,19 +143,21 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
     * SQL veritabanı uzantısının BACPAC dosyalarını içeri aktarmasını sağlamak için Azure hizmetlerinden gelen trafiğe izin vermeniz gerekir. Aşağıdaki güvenlik duvarı kuralı tanımını SQL Server tanımına ekleyin:
 
         ```json
-        {
-          "type": "firewallrules",
-          "apiVersion": "2015-05-01-preview",
-          "name": "AllowAllAzureIps",
-          "location": "[parameters('location')]",
-          "dependsOn": [
-            "[variables('databaseServerName')]"
-          ],
-          "properties": {
-            "startIpAddress": "0.0.0.0",
-            "endIpAddress": "0.0.0.0"
+        "resources": [
+          {
+            "type": "firewallrules",
+            "apiVersion": "2015-05-01-preview",
+            "name": "AllowAllAzureIps",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+              "[parameters('databaseServerName')]"
+            ],
+            "properties": {
+              "startIpAddress": "0.0.0.0",
+              "endIpAddress": "0.0.0.0"
+            }
           }
-        }
+        ]
         ```
 
         Şablonun şu şekilde olması gerekir:
@@ -161,22 +168,22 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
         ```json
         "resources": [
-            {
-              "type": "extensions",
-              "apiVersion": "2014-04-01",
-              "name": "Import",
-              "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', variables('databaseServerName'), variables('databaseName'))]"
-              ],
-              "properties": {
-                "storageKeyType": "StorageAccessKey",
-                "storageKey": "[parameters('storageAccountKey')]",
-                "storageUri": "[parameters('bacpacUrl')]",
-                "administratorLogin": "[variables('databaseServerAdminLogin')]",
-                "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
-                "operationMode": "Import"
-              }
+          {
+            "type": "extensions",
+            "apiVersion": "2014-04-01",
+            "name": "Import",
+            "dependsOn": [
+              "[resourceId('Microsoft.Sql/servers/databases', parameters('databaseServerName'), parameters('databaseName'))]"
+            ],
+            "properties": {
+              "storageKeyType": "StorageAccessKey",
+              "storageKey": "[parameters('storageAccountKey')]",
+              "storageUri": "[parameters('bacpacUrl')]",
+              "administratorLogin": "[parameters('adminUser')]",
+              "administratorLoginPassword": "[parameters('adminPassword')]",
+              "operationMode": "Import"
             }
+          }
         ]
         ```
 
@@ -192,6 +199,10 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
         * **Storageuri**: bir depolama hesabında depolanan bacpac dosyasının URL 'sini belirtin.
         * **administratorLoginPassword**: SQL yönetici parolasıdır. Oluşturulan bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
+Tamamlanan şablon aşağıdaki gibi görünür:
+
+[!code-json[](~/resourcemanager-templates/tutorial-sql-extension/azuredeploy2.json?range=1-106&highlight=38-49,62-76,86-103)]
+
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -199,7 +210,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 Dağıtım yordamı için [Şablonu dağıtma](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) bölümüne bakın. Bunun yerine aşağıdaki PowerShell dağıtım betiğini kullanın:
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
+$projectName = Read-Host -Prompt "Enter the same project name that is used earlier"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the SQL admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
@@ -207,7 +218,7 @@ $storageAccountKey = Read-Host -Prompt "Enter the storage account key"
 $bacpacUrl = Read-Host -Prompt "Enter the URL of the BACPAC file"
 $resourceGroupName = "${projectName}rg"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+#New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `

@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483843"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997335"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL veritabanı güvenlik özelliklerine genel bakış
 
@@ -138,11 +138,11 @@ SQL veritabanı dinamik veri maskeleme, hassas veri pozlamasını ayrıcalıklı
 
 ### <a name="data-discovery--classification"></a>Veri bulma ve sınıflandırma
 
-Veri bulma & sınıflandırması (Şu anda önizlemede), veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Bu, için altyapı işlevi görebilir:
+Veri bulma & sınıflandırması (Şu anda önizlemede), veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve korumak için Azure SQL veritabanı 'nda yerleşik olarak bulunan gelişmiş özellikleri sağlar. En önemli verilerinizi bulma ve sınıflandırma (iş/finans, Sağlık Hizmetleri, kişisel veriler vb.), kurumsal bilgi koruma ortamınızda bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
 
 - Hassas verilere yönelik anormal erişimlerde izleme (denetim) ve uyarı verme gibi çeşitli güvenlik senaryoları.
 - Son derece hassas veriler içeren veritabanlarının güvenliğine erişimi ve güvenliğini sağlamlaştırma.
-- Veri gizliliği standartları ve mevzuat uyumluluk gereksinimlerini karşılamanıza yardımcı olma.
+- Veri gizliliği standartlarına uymaya ve mevzuat uyumluluğu gereksinimlerini karşılamaya yardımcı olma.
 
 Daha fazla bilgi için bkz. [veri bulma ile çalışmaya başlama & sınıflandırma](sql-database-data-discovery-and-classification.md).
 

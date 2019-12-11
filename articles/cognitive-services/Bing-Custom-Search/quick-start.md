@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: İlk Bing Özel Arama örneği oluştur | Microsoft Docs'
+title: 'Hızlı başlangıç: ilk Bing Özel Arama örnek oluşturma | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Tanımladığınız etki alanlarını ve Web sayfalarını araybarındırabileceğiniz özel bir Bing örneği oluşturmak için bu makaleyi kullanın.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2806ca6f7079ffac3d2222363cd5b3839ef8f97d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405025"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978552"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Hızlı Başlangıç: İlk Bing Özel Arama örneğinizi oluşturma
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Hızlı başlangıç: İlk Bing Özel Arama örneğinizi oluşturma
 
 Bing Özel Arama hizmetini kullanmak için görünümünüzü veya web dilimini tanımlayan özel bir arama örneği oluşturmanız gerekir. Bu örnek, arama yapmak istediğiniz genel etki alanlarını, Web sitelerini ve Web sayfalarını, istediğiniz sıralama ayarlamalarıyla birlikte içerir. 
 
@@ -46,10 +46,10 @@ Bing Özel Arama örneği oluşturmak için:
 
 5. Değişiklikleri üretim ortamında yayımlamak ve örneğin uç noktalarını güncelleştirmek için **Yayımla** ' ya tıklayın.
 
-6.  **Uç noktalar**altındaki **Üretim** sekmesine tıklayın ve **özel yapılandırma kimliğinizi**kopyalayın. Bu kimliğe, çağrılarınızın `customconfig=` sorgu parametresine ekleyerek özel arama API'si çağrısı yapmanız gerekir.
+6.  **Uç noktalar**altındaki **Üretim** sekmesine tıklayın ve **özel yapılandırma kimliğinizi**kopyalayın. Bu KIMLIĞE, çağrılarınızın `customconfig=` sorgu parametresine ekleyerek Özel Arama API'si çağrısı yapmanız gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bing Özel Arama uç noktanızı çağırın](./call-endpoint-csharp.md)
+> [Hızlı başlangıç: Bing Özel Arama uç noktanızı çağırma](./call-endpoint-csharp.md)

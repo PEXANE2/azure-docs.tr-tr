@@ -1,23 +1,23 @@
 ---
 title: Cihaz ve Azure cihaz sağlama hizmeti arasında ek veri aktarma
-description: Bu belgede, cihaz ve DPS arasında ek verilerin nasıl aktarılacağı açıklanmaktadır
+description: Bu belgede cihaz ve cihaz sağlama hizmeti (DPS) arasında ek verilerin nasıl aktarılacağı açıklanmaktadır
 author: menchi
 ms.author: menchi
 ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e9482f7069616d61efb98f66590ce33cfe3cf350
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123174"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974862"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>Cihaz ve DPS arasında ek veri aktarma
 Bazen DPS’nin cihazı doğru IoT Hub’ına düzgün bir şekilde sağlamak için cihazlardan daha fazla veri alması gerekebilir. Bu verilerin cihaz tarafından sağlanması gerekir. Bunun tersine, DPS istemci tarafı LOGI 'yi kolaylaştırmak için cihaza veri döndürebilir. 
 
-## <a name="when-to-use-it"></a>Ne zaman kullanılır?
+## <a name="when-to-use-it"></a>Ne zaman kullanılmalı
 Bu özellik, [özel ayırma](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)geliştirmesi olarak kullanılabilir. Örneğin, cihazları, insan müdahalesi olmadan cihaz modeline göre ayırmak istiyorsunuz. Bu durumda, [özel tahsisi](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)kullanacaksınız. Cihazı, [kayıt cihazı çağrısının](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)bir parçası olarak model bilgilerini bildirmek üzere yapılandırabilirsiniz. DPS, cihazın bilgilerini özel ayırma Web kancasına geçilecektir. Ve işleviniz, cihaz modeli bilgilerini aldığında bu cihazın hangi IoT Hub gideceğine karar verebilir. Benzer şekilde, web kancası cihaza veri döndürmek istiyorsa, verileri web kancası yanıtında bir dize olarak geçirir.  
 
 ## <a name="device-sends-data-to-dps"></a>Cihaz, verileri DPS 'e gönderir

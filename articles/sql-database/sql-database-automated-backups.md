@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421427"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997301"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
@@ -67,7 +67,7 @@ Yedeklemeleri maksimum saklama süresinden daha uzun süre tutmanız gerekiyorsa
 
 ### <a name="backups-for-point-in-time-restore"></a>Zaman içinde bir noktaya geri yükleme için yedeklemeler
 
-SQL veritabanı, tam yedekleme, değişiklik yedeklemeleri ve işlem günlüğü yedeklemeleri otomatik olarak oluşturarak, zaman içinde nokta geri yükleme (ıNR) için self servis hizmetini destekler. Tam veritabanı yedeklemeleri haftalık olarak oluşturulur, fark veritabanı yedeklemeleri genellikle 12 saatte bir oluşturulur ve işlem günlüğü yedeklemeleri genellikle işlem boyutu ve veritabanı etkinliğinin miktarına göre sıklık ile her 5-10 dakikada bir oluşturulur. İlk tam yedekleme, bir veritabanı oluşturulduktan hemen sonra zamanlanır. Genellikle 30 dakika içinde tamamlanır, ancak veritabanı önemli boyutta olduğunda daha uzun sürebilir. Örneğin, ilk yedekleme geri yüklenen bir veritabanında veya bir veritabanı kopyasında daha uzun sürebilir. İlk tam yedeklemeden sonra, diğer tüm yedeklemeler otomatik olarak zamanlanır ve arka planda sessizce yönetilir. Tüm veritabanı yedeklerinin tam zamanlaması, genel sistem iş yükünü dengeleyerek SQL veritabanı hizmeti tarafından belirlenir. Yedekleme işlerini değiştiremez veya devre dışı bırakamezsiniz. 
+SQL veritabanı, tam yedekleme, değişiklik yedeklemeleri ve işlem günlüğü yedeklemeleri otomatik olarak oluşturarak, zaman içinde nokta geri yükleme (ıNR) için self servis hizmetini destekler. Tam veritabanı yedeklemeleri haftalık olarak oluşturulur, fark veritabanı yedeklemeleri genellikle 12 saatte bir oluşturulur ve işlem günlüğü yedeklemeleri genellikle işlem boyutu ve veritabanı etkinliğinin miktarına göre sıklık ile her 5-10 dakikada bir oluşturulur. İlk tam yedekleme, bir veritabanı oluşturulduktan hemen sonra zamanlanır. Genellikle 30 dakika içinde tamamlanır, ancak veritabanı önemli boyutta olduğunda daha uzun sürebilir. Örneğin, ilk yedekleme geri yüklenen bir veritabanında veya bir veritabanı kopyasında daha uzun sürebilir. İlk tam yedeklemeden sonra diğer tüm yedeklemeler otomatik olarak zamanlanır ve arka planda sessizce yönetilir. Tüm veritabanı yedeklemelerinin tam zamanlaması, genel sistem iş yükünü dengelediği için SQL Veritabanı hizmeti tarafından belirlenir. Yedekleme işlerini değiştiremez veya devre dışı bırakamazsınız. 
 
 INR yedeklemeleri coğrafi olarak yedekli ve [Azure Storage çapraz bölgesel çoğaltma](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) tarafından korunuyor
 
@@ -115,7 +115,7 @@ Veritabanınızı bir DTU tabanlı hizmet katmanından 35 güne ait varsayılan 
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>Yedek yedekleme saklama süresini değiştirme
 
-Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kullanarak değiştirebilirsiniz. Desteklenen değerler şunlardır: 7, 14, 21, 28 veya 35 gün. Aşağıdaki örneklerde, fr bekletmenin 28 güne nasıl değiştirileceği gösterilmektedir.
+Varsayılan yedek saklama süresini Azure portal, PowerShell veya REST API kullanarak değiştirebilirsiniz. Aşağıdaki örneklerde, fr bekletmenin 28 güne nasıl değiştirileceği gösterilmektedir.
 
 > [!WARNING]
 > Geçerli saklama süresini azaldıysanız, yeni saklama süresinden eski olan tüm mevcut yedeklemeler artık kullanılamaz. Geçerli saklama süresini artırırsanız, daha uzun süreli saklama süresine ulaşılana kadar SQL veritabanı mevcut yedekleri tutacaktır.

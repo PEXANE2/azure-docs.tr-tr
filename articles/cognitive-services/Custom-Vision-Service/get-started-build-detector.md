@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73520454"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969930"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme bir nesne algılayıcısı oluşturma
 
@@ -54,7 +54,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
     |Domain|Amaç|
     |---|---|
     |__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. |
-    |__Le__|Görüntülerde marka logolarını bulmak için iyileştirildi.|
+    |__Logo__|Görüntülerde marka logolarını bulmak için iyileştirildi.|
     |__Compact etki alanları__| Mobil cihazlarda gerçek zamanlı nesne algılama kısıtlamaları için iyileştirildi. Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir.|
 
 1. Son olarak, __proje oluştur__' u seçin.
@@ -100,7 +100,7 @@ Eğitim tamamlandıktan sonra modelin performansı hesaplanır ve görüntüleni
 
 ![Eğitim sonuçları, genel duyarlık ve geri çağırma ve ortalama duyarlık hassasiyetini gösterir.](./media/get-started-build-detector/trained-performance.png)
 
-### <a name="probability-threshold"></a>Olasılık eşiği
+### <a name="probability-threshold"></a>Olasılık Eşiği
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 

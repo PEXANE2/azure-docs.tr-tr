@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7c83350dbecaf20e9b35f159b2c01824777bc665
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604649"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973722"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Öğretici: Azure Storage 'da görüntü meta verileri oluşturmak için Görüntü İşleme kullanma
 
 Bu öğreticide, karşıya yüklenen görüntülerin meta verilerini oluşturmak için Azure Görüntü İşleme hizmetini bir Web uygulamasıyla tümleştirmeyi öğreneceksiniz. Bu, bir şirketin tüm görüntüleri için hızlı bir şekilde açıklayıcı açıklamalı alt yazılar veya aranabilir anahtar sözcükler oluşturmak istemesi gibi [dijital varlık yönetimi (Dam)](../Home.md#computer-vision-for-digital-asset-management) senaryolarında kullanışlıdır.
 
-GitHub 'daki [Azure depolama ve bilişsel hizmetler laboratuvarında](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) tam bir uygulama kılavuzu bulunabilir ve bu öğretici aslında laboratuvarın 5. alıştırisini ele alır. Her adımı izleyerek uçtan uca uygulamayı oluşturmak isteyebilirsiniz, ancak Görüntü İşleme var olan bir Web uygulamasıyla nasıl tümleştirilediğinin görmek isterseniz, buradan okuyun.
+GitHub 'daki [Azure depolama ve bilişsel hizmetler laboratuvarında](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) tam bir uygulama kılavuzu bulunabilir ve bu öğretici aslında laboratuvarın 5. alıştırisini ele alır. Her adımı izleyerek tam uygulamayı oluşturmak isteyebilirsiniz, ancak yalnızca Görüntü İşleme var olan bir Web uygulamasına tümleştirme hakkında bilgi edinmek istiyorsanız, buradan okuyun.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -33,10 +33,10 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) veya üzeri, "ASP.net ve Web geliştirme" ve "Azure geliştirme" iş yükleri yüklendi.
-- Görüntüler için ayrılmış bir blob kapsayıcısına sahip bir Azure depolama hesabı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. Alıştırmalarınızı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin).
+- Görüntü depolaması için ayarlanmış bir blob kapsayıcısına sahip bir Azure depolama hesabı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. alýþtýrmalarý](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin).
 - Azure Depolama Gezgini Aracı (bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 2. Alıştırmayı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) izleyin).
 - Azure depolama 'ya erişimi olan bir ASP.NET Web uygulaması (böyle bir uygulamayı hızlı bir şekilde oluşturmak için [Azure Storage laboratuvarının 3. alıştırmaya](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) uyun).
 
@@ -59,9 +59,9 @@ Azure hesabınız için bir Görüntü İşleme kaynağı oluşturmanız gerekir
 
 ## <a name="add-computer-vision-credentials"></a>Görüntü İşleme kimlik bilgileri ekle
 
-Daha sonra, Görüntü İşleme kaynaklarına erişebilmeleri için uygulamanıza gerekli kimlik bilgilerini ekleyeceksiniz
+Daha sonra, Görüntü İşleme kaynaklarına erişebilmesi için gerekli kimlik bilgilerini uygulamanıza eklersiniz
 
-Visual Studio 'da ASP.NET Web uygulamanızı açın ve projenin kökündeki **Web. config** dosyasına gidin. Aşağıdaki deyimlerini dosyanın `<appSettings>` bölümüne ekleyin, `VISION_KEY` önceki adımda kopyaladığınız anahtarla değiştirin ve yukarıdaki adımda kaydettiğiniz URL ile `VISION_ENDPOINT`.
+Visual Studio 'da ASP.NET Web uygulamanızı açın ve projenin kökündeki **Web. config** dosyasına gidin. Aşağıdaki deyimlerini dosyanın `<appSettings>` bölümüne ekleyin, `VISION_KEY` önceki adımda kopyaladığınız anahtarla değiştirin ve önceki adımda kaydettiğiniz URL ile `VISION_ENDPOINT`.
 
 ```xml
 <add key="SubscriptionKey" value="VISION_KEY" />
@@ -72,7 +72,7 @@ Ardından Çözüm Gezgini, projeye sağ tıklayın ve **Microsoft. Azure. Biliv
 
 ## <a name="add-metadata-generation-code"></a>Meta veri oluşturma kodu ekle
 
-Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşleme hizmetinden yararlanan kodu eklersiniz. Bu adımlar laboratuvardaki ASP.NET uygulaması için geçerlidir, ancak bunları kendi uygulamanıza uyarlayabilirsiniz. Bu noktada, Azure depolama kapsayıcısına görüntü yükleyebilecekleri ve bunları görünümde görüntüleyebilen bir ASP.NET Web uygulamasına sahip olduğunuz önemli şeyler vardır. Bunun hakkında emin değilseniz, [Azure depolama laboratuvarının 3. Alıştırmayı](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3)izlemeniz en iyisidir. 
+Daha sonra, görüntülerin meta verilerini oluşturmak için Görüntü İşleme hizmetinden yararlanan kodu ekleyeceksiniz. Bu adımlar laboratuvardaki ASP.NET uygulaması için geçerlidir, ancak bunları kendi uygulamanıza uyarlayabilirsiniz. Bu noktada, Azure depolama kapsayıcısına görüntü yükleyebilecekleri ve bunları görünümde görüntüleyebilen bir ASP.NET Web uygulamasına sahip olduğunuz önemli şeyler vardır. Bu adımla ilgili emin değilseniz, [Azure depolama laboratuvarının 3](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). adımını izlemeniz en iyisidir. 
 
 1. *HomeController.cs* dosyasını projenin **denetleyiciler** klasöründe açın ve dosyanın en üstüne aşağıdaki `using` deyimlerini ekleyin:
 
@@ -105,7 +105,7 @@ Daha sonra, görüntüler için meta veriler oluşturmak üzere Görüntü İşl
     await photo.SetMetadataAsync();
     ```
 
-1. Ardından, aynı dosyadaki **Dizin** yöntemine gidin; Bu yöntem, hedeflenen blob kapsayıcısında depolanan görüntü bloblarını numaralandırır ( **ıblobitem** örnekleri olarak) ve bunları uygulama görünümüne geçirir. Bu yöntemdeki `foreach` bloğunu aşağıdaki kodla değiştirin. Bu kod, her Blobun ekli meta verilerini almak için **Cloudblockblob. FetchAttributes** öğesini çağırır. Bilgisayar tarafından oluşturulan açıklamayı (`caption`) meta verilerden ayıklar ve görünüme geçirilen **Bloınfo** nesnesine ekler.
+1. Ardından, aynı dosyadaki **Dizin** yöntemine gidin. Bu yöntem, hedeflenen blob kapsayıcısında depolanan görüntü bloblarını numaralandırır ( **ıblobitem** örnekleri olarak) ve bunları uygulama görünümüne geçirir. Bu yöntemdeki `foreach` bloğunu aşağıdaki kodla değiştirin. Bu kod, her Blobun ekli meta verilerini almak için **Cloudblockblob. FetchAttributes** öğesini çağırır. Bilgisayar tarafından oluşturulan açıklamayı (`caption`) meta verilerden ayıklar ve görünüme geçirilen **Bloınfo** nesnesine ekler.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())
@@ -139,13 +139,13 @@ Tüm ekli meta verileri görüntülemek için, görüntüler için kullanmakta o
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Web uygulamanızda çalışmaya devam etmek istiyorsanız, [sonraki adımlar](#next-steps) bölümüne bakın. Bu uygulamayı kullanmaya devam etmeyi planlamıyorsanız, uygulamaya özgü tüm kaynakları silmeniz gerekir. Bunu yapmak için, Azure depolama aboneliğinizi ve Görüntü İşleme kaynağını içeren kaynak grubunu silmeniz yeterlidir. Bu işlem, depolama hesabını, ona yüklenen Blobları ve ASP.NET Web uygulamasına bağlanmak için gereken App Service kaynağını kaldırır. 
+Web uygulamanızda çalışmaya devam etmek istiyorsanız, [sonraki adımlar](#next-steps) bölümüne bakın. Bu uygulamayı kullanmaya devam etmeyi planlamıyorsanız, uygulamaya özgü tüm kaynakları silmeniz gerekir. Kaynakları silmek için, Azure depolama aboneliğinizi ve Görüntü İşleme kaynağını içeren kaynak grubunu silebilirsiniz. Bu işlem, depolama hesabını, ona yüklenen Blobları ve ASP.NET Web uygulamasına bağlanmak için gereken App Service kaynağını kaldırır. 
 
-Kaynak grubunu silmek için portalda **kaynak grupları** dikey penceresini açın, bu proje için kullandığınız kaynak grubuna gidin ve görünümün en üstündeki **kaynak grubunu sil** ' e tıklayın. Silinen bir kaynak grubu kurtarılamayacağından, silmek istediğinizi onaylamak için kaynak grubunun adını yazmanız istenir.
+Kaynak grubunu silmek için, portalda **kaynak grupları** sekmesini açın, bu proje için kullandığınız kaynak grubuna gidin ve görünümün en üstündeki **kaynak grubunu sil** ' e tıklayın. Silinen bir kaynak grubu kurtarılamayacağından, silmek istediğinizi onaylamak için kaynak grubunun adını yazmanız istenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure 'un Görüntü İşleme hizmetini mevcut bir Web uygulamasıyla tümleştirerek, karşıya yüklenen blob görüntüleri için otomatik olarak açıklamalı alt yazılar ve anahtar sözcükler oluşturabilirsiniz. Daha sonra, Web uygulamanıza nasıl arama işlevselliği ekleneceğini öğrenmek için Azure depolama Laboratuvarı, 6. alıştırma bölümüne bakın. Bu, Görüntü İşleme hizmetinin oluşturduğu arama anahtar sözcüklerinden yararlanır.
+Bu öğreticide, var olan bir Web uygulamasında Azure 'ın Görüntü İşleme hizmetini, karşıya yüklenen blob görüntüleri için otomatik olarak açıklamalı alt yazılar ve anahtar sözcükler oluşturacak şekilde ayarlayacağız. Daha sonra, Web uygulamanıza nasıl arama işlevselliği ekleneceğini öğrenmek için Azure depolama Laboratuvarı, 6. alıştırma bölümüne bakın. Bu, Görüntü İşleme hizmetinin oluşturduğu arama anahtar sözcüklerinden yararlanır.
 
 > [!div class="nextstepaction"]
 > [Uygulamanıza arama ekleyin](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise6)

@@ -1,76 +1,76 @@
 ---
-title: Azure içeri/dışarı aktarma Aracı'nı ayarlama | Microsoft Docs
-description: Sürücü hazırlık ayarlayın ve Azure içeri/dışarı aktarma hizmeti için aracı onarma hakkında bilgi edinin.
-author: muralikk
+title: Azure Içeri/dışarı aktarma aracını ayarlama | Microsoft Docs
+description: Azure Içeri/dışarı aktarma hizmeti için sürücü hazırlama ve onarım aracını ayarlamayı öğrenin.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 06/29/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: d2ce6c409ae9cbf99589d11dfc850e2324d1b0c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320474"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979045"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Azure içeri/dışarı aktarma Aracı'nı ayarlama
+# <a name="setting-up-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı ayarlama
 
-Microsoft Azure içeri/dışarı aktarma aracı Microsoft Azure içeri/dışarı aktarma hizmetiyle kullanabileceğiniz sürücü hazırlama ve onarım aracıdır. Aracı aşağıdaki işlevleri için kullanabilirsiniz:
+Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:
 
-* İçeri aktarma işine oluşturmadan önce bir Azure veri merkezine gönderin olacak sabit sürücüleri veri kopyalamak için bu aracı kullanabilirsiniz.
-* İçeri aktarma işi tamamlandıktan sonra bozuldu eksik olduğu ya da çakışan tüm blobların diğer bloblarla onarmak için bu aracı kullanabilirsiniz.
-* Tamamlanan dışarı aktarma işleminden sürücüleri aldıktan sonra bozuk veya eksik sürücülerindeki dosyaları onarmak için bu aracı kullanabilirsiniz.
+* Bir içeri aktarma işi oluşturmadan önce, verileri bir Azure veri merkezine alacağınız sabit sürücülere kopyalamak için bu aracı kullanabilirsiniz.
+* Bir içeri aktarma işi tamamlandıktan sonra, bozuk olan, eksik olan veya diğer bloblarla çakışan Blobları onarmak için bu aracı kullanabilirsiniz.
+* Tamamlanmış bir dışarı aktarma işinden sürücüleri aldıktan sonra, sürücülerde bozuk veya eksik olan dosyaları onarmak için bu aracı kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Eğer **sürücüleri hazırlama** içeri aktarma işi için aşağıdaki önkoşullar karşılanmalıdır:
+Sürücüleri bir içeri aktarma işi için **hazırlıyorsanız** , aşağıdaki önkoşulların karşılanması gerekir:
 
-* Etkin bir Azure aboneliğine sahip olmalıdır.
-* Aboneliğiniz, içeri aktarmak için oluşturacağınız dosyaları depolamak için yeterli alan bir depolama hesabı eklemeniz gerekir.
-* En az bir depolama hesabı erişim anahtarlarını gerekir.
-* Windows 7, Windows Server 2008 R2 veya daha yeni Windows işletim sistemi yüklü bir bilgisayara ("kopya makine") ihtiyacınız vardır.
-* .NET Framework 4 kopyalama makineye yüklenmesi gerekir.
-* BitLocker'ın kopya makinede etkinleştirilmesi gerekir.
-* Bir tane gerekir veya daha fazla makine için kopyalama bağlı 2.5 inç veya 3,5 inçlik SATAII veya III veya SSD sabit sürücüler boş.
-* Bir ağ paylaşımına veya yerel bir sabit sürücü üzerinde olup almayı planladığınız dosyaları kopyalama makineden erişilebilir olması gerekir.
+* Etkin bir Azure aboneliğiniz olmalıdır.
+* Aboneliğiniz, içeri aktaralacağınız dosyaları depolamak için yeterli kullanılabilir alana sahip bir depolama hesabı içermelidir.
+* En az bir depolama hesabı erişim anahtarı gerekir.
+* Windows 7, Windows Server 2008 R2 veya daha yeni bir Windows işletim sistemi yüklü olan bir bilgisayara ("kopya makinesi") ihtiyacınız vardır.
+* .NET Framework 4 ' ün kopya makinede yüklü olması gerekir.
+* Kopyalama makinesinde BitLocker etkin olmalıdır.
+* Kopyalama makinesine bağlı bir veya daha fazla boş 2,5-inç veya 3,5-inç SATAII veya III ya da SSD sabit sürücü gerekir.
+* İçeri aktarmayı planladığınız dosyalara, ağ paylaşımında veya yerel bir sabit sürücüde olup olmadıkları, kopyalama makinesinden erişilebilir olması gerekir.
 
-İçin çalışıyorsanız **alma onarım** , kısmen başarısız oldu, gerekir:
+Kısmen başarısız olan **bir içeri aktarmayı onarmaya** çalışıyorsanız şunlar gerekir:
 
 * Kopyalama günlük dosyaları
 * Depolama hesabı anahtarı
 
-İçin çalışıyorsanız **verme onarım** , kısmen başarısız oldu, gerekir:
+Kısmen başarısız olan **bir dışarı aktarmayı onarmaya** çalışıyorsanız şunlar gerekir:
 
 * Kopyalama günlük dosyaları
 * Bildirim dosyaları (isteğe bağlı)
 * Depolama hesabı anahtarı
 
-## <a name="installing-the-azure-importexport-tool"></a>Azure içeri/dışarı aktarma aracını yükleme
+## <a name="installing-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracını yükleme
 
-İlk olarak, [Azure içeri/dışarı aktarma Aracı'nı indirme](https://www.microsoft.com/download/details.aspx?id=55280) ve bilgisayarınızdaki bir dizine örneğin ayıklayın `c:\WAImportExport`.
+İlk olarak, [Azure içeri/dışarı aktarma aracını indirin](https://www.microsoft.com/download/details.aspx?id=55280) ve bilgisayarınızdaki bir dizine ayıklayın, örneğin `c:\WAImportExport`.
 
-Azure içeri/dışarı aktarma aracı aşağıdaki dosyalardan oluşur:
+Azure Içeri/dışarı aktarma aracı aşağıdaki dosyalardan oluşur:
 
-* dataset.csv
-* driveset.csv
-* hddid.dll
+* DataSet. csv
+* driveset. csv
+* hddıd. dll
 * Microsoft.Data.Services.Client.dll
-* Microsoft.WindowsAzure.Storage.dll
-* Microsoft.WindowsAzure.Storage.pdb
-* Microsoft.WindowsAzure.Storage.xml
-* WAImportExport.exe
-* WAImportExport.exe.config
-* WAImportExport.pdb
-* WAImportExportCore.dll
-* WAImportExportCore.pdb
-* WAImportExportRepair.dll
-* WAImportExportRepair.pdb
+* Microsoft. WindowsAzure. Storage. dll
+* Microsoft. WindowsAzure. Storage. pdb
+* Microsoft. WindowsAzure. Storage. xml
+* Waımportexport. exe
+* Waımportexport. exe. config
+* Waımportexport. pdb
+* Waımportexportcore. dll
+* Waımportexportcore. pdb
+* Waımportexportrepair. dll
+* Waımportexportrepair. pdb
 
-Ardından, bir komut istemi penceresi açın **Yönetici modunda**ve ayıklanan dosyaları içeren dizine değiştirin.
+Sonra, **yönetici modunda**bir komut istemi penceresi açın ve ayıklanan dosyaların bulunduğu dizine geçin.
 
-Aracı çalıştırmak, komut için çıkış Yardım'a (`WAImportExport.exe`) parametresiz:
+Komut için yardım almak üzere, (`WAImportExport.exe`) aracını parametresiz çalıştırın:
 
 ```
 WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013

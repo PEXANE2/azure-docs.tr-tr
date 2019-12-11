@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743204"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977820"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Hızlı başlangıç: Python için yüz istemci kitaplığı
 
@@ -31,12 +31,12 @@ Python için yüz istemci kitaplığını kullanarak şunları yapın:
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnekleri](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Kurulum
 
 ### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 Aşağıdaki sınıflar ve arabirimler, yüz Python SDK 'sının önemli özelliklerinden bazılarını işler.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
 |[Çok yönlü Işlemler](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
@@ -117,7 +117,7 @@ Aşağıdaki kod, görüntüye verilen görüntünün çıktısını verir ve De
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
 
-![Yüz çevresinde çizilmiş kırmızı bir dikdörtgenle genç kadın](../images/face-rectangle-result.png)
+![Yüz tanıma geçici olarak çizilen kırmızı bir dikdörtgen genç bir kadın](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
