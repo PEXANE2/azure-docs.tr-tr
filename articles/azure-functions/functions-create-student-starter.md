@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: b86ea2367a17baa8c57b8d0c0331c0cd3cfbb481
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227112"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976885"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Öğrenciler için Azure başlangıç kullanarak bir Işlev oluşturma
 
@@ -27,7 +27,7 @@ Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayım
 
 ![Azure portalında işlev uygulaması oluşturma](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında oturum açın.
 
@@ -74,7 +74,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-function"></a>HTTP ile tetiklenen bir işlev oluşturma
 
-1. Yeni işlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesini, **Portalda**'yı ve **Devam**'ı seçin.
+1. Yeni işlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesini, **Portalda**'yı ve **Devam**'ı seçin.
 
     ![İşlevler hızlı başlangıcı platform seçimi.](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
@@ -121,7 +121,7 @@ Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
     * [Daha yüksek planlarda desteklenen dillere bakın](supported-languages.md)
 * Windows desteklenen tek işletim sistemidir.
 * Ölçek, her gün 60 dakika boyunca çalışan [bir ücretsiz katman örneğiyle](https://azure.microsoft.com/pricing/details/app-service/windows/) kısıtlıdır. HTTP trafiği alındığından ancak başka hiçbir işlem yapılmadığında 0 ' dan 1 ' e kadar örnek olarak ölçeklendirirsiniz.
-* Yalnızca [2. x çalışma zamanı](functions-versions.md) desteklenir.
+* Işlevler çalışma zamanının yalnızca [sürüm 2. x ve üzeri](functions-versions.md) sürümleri desteklenir.
 * Tüm geliştirici araçları, işlevleri düzenlenmek ve yayımlamak için desteklenir. Buna VS Code, Visual Studio, Azure CLı ve Azure portal dahildir. Portal dışında bir şey kullanmak isterseniz, önce portalda bir uygulama oluşturmanız ve ardından tercih ettiğiniz araçta bir dağıtım hedefi olarak bu uygulamayı seçmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

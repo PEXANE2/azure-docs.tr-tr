@@ -7,14 +7,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
-ms.openlocfilehash: c803de599f6be98512b15e927c6d15f1c7d95ff1
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3ece5a9d225e48654a0a3a96c3b7b78327565841
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515749"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975185"
 ---
-# <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>Hızlı Başlangıç: Azure Veri Gezgini 'de örnek verileri alma
+# <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>Hızlı başlangıç: Azure Veri Gezgini 'de örnek verileri alma
 
 Bu makalede, örnek verileri bir Azure Veri Gezgini veritabanına alma (yükleme) işlemi gösterilmektedir. [Verileri almanın birkaç yolu](ingest-data-overview.md)vardır; Bu makale, test amacıyla uygun olan temel bir yaklaşıma odaklanmaktadır.
 
@@ -33,13 +33,16 @@ Bu makalede, örnek verileri bir Azure Veri Gezgini veritabanına alma (yükleme
 
 1. Uygulamanın sol üst köşesinden **Küme ekle**'yi seçin.
 
-1. **Küme Ekle** iletişim kutusunda, küme URL 'nizi forma `https://<ClusterName>.<Region>.kusto.windows.net/`girin ve ardından **Ekle**' yi seçin.
+1. **Küme Ekle** iletişim kutusunda, `https://<ClusterName>.<Region>.kusto.windows.net/`form URL 'nizi girin ve ardından **Ekle**' yi seçin.
 
-1. Aşağıdaki komutu yapıştırın ve **Çalıştır**' ı seçin.
+1. Aşağıdaki komutu yapıştırın ve **Çalıştır** ' ı seçerek StormEvents tablosu oluşturun.
 
     ```Kusto
     .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
+    ```
+1. Aşağıdaki komutu yapıştırın ve verileri StormEvents tablosuna almak için **Çalıştır** ' ı seçin.
 
+    ```Kusto
     .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
     ```
 
@@ -57,5 +60,5 @@ Bu makalede, örnek verileri bir Azure Veri Gezgini veritabanına alma (yükleme
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Veri Gezgini veri](ingest-data-overview.md) alımı, alım yöntemleri hakkında daha fazla bilgi edinmekdedir.
-* [Hızlı Başlangıç: Azure Veri Gezgini](web-query-data.md) Web Kullanıcı arabirimindeki verileri sorgulama.
+* [Hızlı başlangıç: Azure Veri Gezgini 'da veri sorgulama](web-query-data.md) Web Kullanıcı arabirimi.
 * [Sorguları](write-queries.md) kusto sorgu diliyle yazın.

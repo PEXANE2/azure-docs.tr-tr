@@ -1,5 +1,5 @@
 ---
-title: Web API 'Leri kullanıma sunmak için bir uygulama yapılandırma-Microsoft Identity platform
+title: Web API 'Leri kullanıma sunmak için bir uygulama yapılandırma-Microsoft Identity platform | Mavisi
 description: Yeni bir izni/kapsamı ve rolü kullanıma sunmak ve uygulamayı istemci uygulamaları için kullanılabilir hale getirmek üzere bir uygulamayı yapılandırmayı öğrenin.
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba582516002c3e34ca91ceddbfd826bafe0c282
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921458"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966121"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Hızlı başlangıç: Web API 'Lerini kullanıma sunmak için uygulama yapılandırma
 

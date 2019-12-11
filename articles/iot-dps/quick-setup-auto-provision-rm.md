@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager şablonu kullanarak Azure IoT Hub cihaz sağlamayı ayarlama
-description: Azure hızlı başlangıç-bir şablon kullanarak Azure IoT Hub cihaz sağlama hizmetini ayarlama
+description: Azure hızlı başlangıç-bir şablon kullanarak Azure IoT Hub cihaz sağlama hizmeti 'ni (DPS) ayarlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b40e126ca23190fbe50a717016b18719be6950e2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276391"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969591"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini bir Azure Resource Manager şablonuyla ayarlama
 
@@ -77,7 +77,7 @@ Kaynak grubunuzda sağlama hizmeti ve bağlı bir IoT hub’ı oluşturmak için
    }
    ```
 
-2. **parameters** bölümünü aşağıdaki içerikle değiştirin. Parameters bölümü, değerleri başka bir dosyadan geçirilebilecek parametreleri tanımlar. Bu bölüm, oluşturulacak IoT Hub ve sağlama hizmetinin adını tanımlar. Ayrıca hem IoT Hub 'ı hem de sağlama hizmeti için konumu tanımlar. Değerler, IoT Hub 'larını ve sağlama hizmetlerini destekleyen Azure bölgeleriyle kısıtlanır. Cihaz Sağlama Hizmeti için desteklenen konumların listesine, aşağıdaki `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırararak veya [Azure Durum](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" araması yaparak ulaşabilirsiniz.
+2. **parameters** bölümünü aşağıdaki içerikle değiştirin. Parameters bölümü, değerleri başka bir dosyadan geçirilebilecek parametreleri tanımlar. Bu bölüm, oluşturulacak IoT Hub ve sağlama hizmetinin adını tanımlar. Ayrıca hem IoT Hub 'ı hem de sağlama hizmeti için konumu tanımlar. Değerler, IoT Hub 'larını ve sağlama hizmetlerini destekleyen Azure bölgeleriyle kısıtlanır. Cihaz Sağlama Hizmeti için desteklenen konumların listesi için aşağıdaki `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` komutunu çalıştırabilir veya [Azure Durum](https://azure.microsoft.com/status/) sayfasına gidip "Cihaz Sağlama Hizmeti" araması yapabilirsiniz.
 
    ```json
     "parameters": {

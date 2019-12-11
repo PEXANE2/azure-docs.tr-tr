@@ -38,6 +38,8 @@
       href: avere-vfxt-demo-links.md
     - name: Azure için Avere vFXT hakkında SSS
       href: avere-vfxt-faq.md
+    - name: Olağanüstü durum kurtarma kılavuzu
+      href: disaster-recovery.md
     - name: Diğer belgeler
       items:
         - name: Ek belgeler

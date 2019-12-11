@@ -1,6 +1,6 @@
 ---
 title: Hızlı başlangıç-Node. js kullanarak Azure IoT Hub sanal TPM cihazı sağlama
-description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti için Node. js cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti (DPS) için Node. js cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 942bc64153e1c35e3fb9c5bbb989607b7e443e9a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5c5aa59c520560ad8424994d78e3c68bb0dc57a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423468"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976647"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Node. js cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturma ve sağlama
 
@@ -35,7 +35,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 1. Makinenizde [Node.js v4.0 veya üzeri](https://nodejs.org) bir sürümün yüklü olduğundan emin olun.
 
-1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek [ araçlarının son sürümleri için ](https://git-scm.com/download/)Software Freedom Conservancy’nin Git istemci araçlarına`git` bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
+1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 
 ## <a name="simulate-a-tpm-device"></a>TPM cihazının benzetimini yapma
@@ -66,7 +66,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
     ```
 
     > [!NOTE]
-    > Yukarıdaki paketleri yüklerken bazı bilinen sorunlarla karşılaşabilirsiniz. Bu sorunları çözmek için, `npm install --global --production windows-build-tools`Yönetici olarak çalıştır**modunda açtığınız komut istemini kullanarak** komutunu çalıştırın; yolu, yüklü sürümünüzle değiştirdikten sonra `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` komutunu çalıştırın ve ardından yukarıdaki yükleme komutlarını yeniden çalıştırın.
+    > Yukarıdaki paketleri yüklerken bazı bilinen sorunlarla karşılaşabilirsiniz. Bu sorunları çözmek için, **Yönetici olarak çalıştır** modunda açtığınız komut istemini kullanarak `npm install --global --production windows-build-tools` komutunu çalıştırın; yolu, yüklü sürümünüzle değiştirdikten sonra `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` komutunu çalıştırın ve ardından yukarıdaki yükleme komutlarını yeniden çalıştırın.
     >
 
 1. Kayıt sırasında kullandığınız bileşenleri içeren aşağıdaki paketleri yükleyin:
@@ -140,7 +140,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 1. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 1. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *TPM* seçeneğini belirleyin.
+   - Kimlik onay *Mekanizması* olarak **TPM** seçeneğini belirleyin.
    - Daha önce not ettiğiniz değerlerden TPM cihazınızın *kayıt kimliği* ve *onay anahtarı* ' nı girin.
    - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
@@ -178,7 +178,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
     > **Node.js için Azure IoT SDK'sı**, _AMQP_, _AMQP WS_ ve _MQTT WS_ gibi ek protokolleri destekler.  Diğer örnekler için bkz. [Node.js için Cihaz Sağlama Hizmeti SDK'sı örnekleri](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
     > 
 
-1. **globalDeviceEndpoint** ve **idScope** değişkenlerini ekleyin ve **ProvisioningDeviceClient** örneğini oluştururken bunları kullanın. **{globalDeviceEndpoint}** ve **{idScope}** değerlerini **1. Adım _’daki_** Genel Cihaz Uç Noktası **_ve_** Kimlik Kapsamı değerleriyle değiştirin:
+1. **globalDeviceEndpoint** ve **idScope** değişkenlerini ekleyin ve **ProvisioningDeviceClient** örneğini oluştururken bunları kullanın. **{globalDeviceEndpoint}** ve **{idScope}** değerlerini **1. Adım**’daki **_Genel Cihaz Uç Noktası_** ve **_Kimlik Kapsamı_** değerleriyle değiştirin:
    
     ```
     var provisioningHost = '{globalDeviceEndpoint}';

@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: C kullanarak Azure IoT Hub sanal bir TPM cihazı sağlama'
-description: Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır. Bu hızlı başlangıçta, Azure IoT Hub Cihazı Sağlama Hizmeti için C cihaz SDK'sını kullanarak bir simülasyon TPM cihazı oluşturur ve sağlarsınız.
+description: Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır. Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti (DPS) için C cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturup hazırlarsınız.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0330476650af205854b6d0d4be098c28b46e78a1
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 9ee40d4dadd25e37028a7381583d1f333bc4f19a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423184"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976868"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Hızlı başlangıç: Azure IoT C SDK'sını kullanarak simülasyon TPM cihazı sağlama
 
@@ -46,7 +46,7 @@ Bu bölümde, [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) il
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    **yüklemesine başlamadan**önce`CMake` makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 2. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
     
@@ -127,7 +127,7 @@ Bu bölümde, çalışır ve 2321 ile 2322 numaralı bağlantı noktaları üzer
 1. Kayıtları **Yönet** sekmesini seçin ve ardından üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 1. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *TPM* seçeneğini belirleyin.
+   - Kimlik onay *Mekanizması* olarak **TPM** seçeneğini belirleyin.
    - Daha önce not ettiğiniz değerlerden TPM cihazınızın *kayıt kimliği* ve *onay anahtarı* ' nı girin.
    - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
@@ -173,7 +173,7 @@ Bu bölümde, örnek kodu yapılandırarak cihazın önyükleme sırasını Ciha
     static const char* id_scope = "0ne00002193";
     ```
 
-5. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_TPM` yerine `SECURE_DEVICE_TYPE_X509` değerine ayarlandığından emin olun.
+5. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_X509` yerine `SECURE_DEVICE_TYPE_TPM` değerine ayarlandığından emin olun.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;

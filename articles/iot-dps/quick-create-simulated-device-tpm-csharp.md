@@ -1,6 +1,6 @@
 ---
 title: Hızlı Başlangıç-kullanarak Azure IoT Hub sanal bir TPM cihazı sağlamaC#
-description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti için cihaz C# SDK 'sını kullanarak sanal bir TPM cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti (DPS C# ) için cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 51249a8ac2f0fd0ed00d63ab60a2ab88b56e4304
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276464"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977004"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için cihaz SDK C# 'sını kullanarak sanal bir TPM cihazı oluşturma ve sağlama
 
@@ -39,7 +39,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 1. Makinenizde [.NET Core 2,1 SDK veya sonraki bir sürümünün](https://www.microsoft.com/net/download/windows) yüklü olduğundan emin olun. 
 
-1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek [ araçlarının son sürümleri için ](https://git-scm.com/download/)Software Freedom Conservancy’nin Git istemci araçlarına`git` bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
+1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 1. Bir komut istemi veya Git Bash’i açın. GitHub deposu için C# Azure IoT örneklerini kopyalayın:
 
@@ -76,7 +76,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 1. Azure portal, cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 1. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *TPM* seçeneğini belirleyin.
+   - Kimlik onay *Mekanizması* olarak **TPM** seçeneğini belirleyin.
    - Daha önce not ettiğiniz değerlerden TPM cihazınızın *kayıt kimliği* ve *onay anahtarı* ' nı girin.
    - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:

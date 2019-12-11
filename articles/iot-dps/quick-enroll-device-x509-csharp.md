@@ -1,6 +1,6 @@
 ---
 title: Kullanarak X. 509.952 cihazını Azure cihaz sağlama hizmeti 'ne kaydetmeC#
-description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta, kullanarak C#X. 509.952 cihazlarını Azure IoT Hub cihaz sağlama hizmetine kaydedin.
+description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta, kullanarak C#X. 509.440 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'NE (DPS) kaydedin.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423331"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974742"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Hızlı başlangıç: C# kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -30,7 +30,7 @@ Bu makaledeki adımlar hem Windows hem de Linux bilgisayarlarda çalışır, anc
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Visual Studio 2019](https://www.visualstudio.com/vs/)' i yükler.
+* [Visual Studio 2019](https://www.visualstudio.com/vs/)’u yükleyin.
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
 * [Git](https://git-scm.com/download/)'i yükleyin.
 
@@ -119,7 +119,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    > * Sağlama hizmeti yöneticisi için bağlantı dizesinin sabit kodlanması en iyi güvenlik yöntemlerine uygun değildir. Bunun yerine, bağlantı dizesi güvenli bir şekilde, örneğin güvenli yapılandırma dosyasının içinde veya kayıt defterinin içinde tutulmalıdır.
    > * İmzalama sertifikasının yalnızca ortak bölümünü karşıya yüklediğinizden emin olun. Özel anahtarları içeren .pfx (PKCS12) veya .pem dosyalarını asla sağlama hizmetine yüklemeyin.
 
-1. Aşağıdaki yöntemi `Program` sınıfına ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateEnrollmentGroupAsync` yöntemini çağırır.
+1. `Program` sınıfına aşağıdaki yöntemi ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateEnrollmentGroupAsync` yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()
@@ -163,7 +163,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    Console.ReadLine();
    ```
 
-1. Çözümü oluşturun.
+1. Çözümü derleyin.
 
 ## <a name="run-the-enrollment-group-sample"></a>Kayıt grubu örneğini çalıştırma
   

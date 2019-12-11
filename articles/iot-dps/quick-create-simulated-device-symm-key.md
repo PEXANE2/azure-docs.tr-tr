@@ -1,6 +1,6 @@
 ---
 title: Hızlı başlangıç-C kullanarak sanal cihazı Azure IoT Hub sağlamak için simetrik anahtar kullanma
-description: Bu hızlı başlangıçta, Azure IoT Hub Cihazı Sağlama Hizmeti ile simetrik anahtar kullanan bir simülasyon cihazı oluşturmak için C cihaz SDK’sını kullanacaksınız
+description: Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti (DPS) ile simetrik anahtar kullanan bir sanal cihaz oluşturmak için C cihaz SDK 'sını kullanacaksınız
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4d1e1ff5312cfb5aa0b2e378a24d5e0db7fb3605
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 20416f83c31857417e01de31b787528e20775cdf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423541"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976698"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Hızlı Başlangıç: Simetrik anahtarlar ile bir simülasyon cihazı sağlama
 
@@ -48,7 +48,7 @@ SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihaz
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    **yüklemesine başlamadan**önce`CMake` makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 2. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek Azure IoT C SDK'sı GitHub deposunu kopyalayın:
     
@@ -98,7 +98,7 @@ SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihaz
 
 3. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin ve **Kaydet** düğmesine basın.
 
-   - **Mekanizma**: Kimlik onay **Mekanizması** olarak *Simetrik Anahtar* seçeneğini belirleyin.
+   - **Mekanizma**: Kimlik onay *Mekanizması* olarak **Simetrik Anahtar** seçeneğini belirleyin.
 
    - **Anahtarları otomatik oluştur**: Bu kutuyu işaretleyin.
 
@@ -108,7 +108,7 @@ SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihaz
 
      ![Portalda simetrik anahtar kanıtı için bireysel kayıt ekleme](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
-4. Kaydınız kaydedildikten sonra, **birincil anahtar** ve **İkincil anahtar** oluşturulur ve kayıt girişine eklenir. Simetrik anahtar cihaz kaydınız **Bireysel Kayıtlar** sekmesindeki *Kayıt Kimliği* sütununun altında *symm-key-device-007* olarak gösterilir. 
+4. Kaydınız kaydedildikten sonra, **birincil anahtar** ve **İkincil anahtar** oluşturulur ve kayıt girişine eklenir. Simetrik anahtar cihaz kaydınız *Bireysel Kayıtlar* sekmesindeki *Kayıt Kimliği* sütununun altında **symm-key-device-007** olarak gösterilir. 
 
     Kaydı açın ve oluşturduğunuz **Birincil Anahtar** değerini kopyalayın.
 

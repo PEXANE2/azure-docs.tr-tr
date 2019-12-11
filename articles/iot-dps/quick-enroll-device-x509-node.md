@@ -1,6 +1,6 @@
 ---
 title: Node. js kullanarak X. 509.440 cihazlarını Azure cihaz sağlama hizmeti 'ne kaydetme
-description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta Node.js hizmet SDK'sı kullanarak X.509 cihazlarını Azure IoT Hub Cihaz Sağlama Hizmeti'ne kaydedeceksiniz
+description: Bu hızlı başlangıçta grup kayıtları kullanılmaktadır. Bu hızlı başlangıçta, Node. js hizmeti SDK 'sını kullanarak X. 509.952 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydedecaksınız
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6056859cf1742fc4bda6056ad7c1c78059a8407a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 68f274fb50b883c6f252a78f97f31e49e72b135c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423249"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974718"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Hızlı başlangıç: Node.js kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 

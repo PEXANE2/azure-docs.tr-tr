@@ -1,6 +1,6 @@
 ---
 title: Java kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetme
-description: Hızlı başlangıç-Java hizmeti SDK 'sını kullanarak TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Hızlı başlangıç-Java hizmeti SDK 'sını kullanarak TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne (DPS) kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4e6e5eb876bbf93c8228c2440a90aad608a24af9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: cadee1b72c15ded7c29d1eea341c1ea21b346a37
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422941"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976834"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Hızlı başlangıç: Java hizmeti SDK 'sını kullanarak cihaz sağlama hizmeti IoT Hub TPM cihazı kaydetme
 
@@ -78,8 +78,8 @@ Bu bölümde örnek koda TPM cihazınızın sağlama ayrıntılarını nasıl ek
            ```
 
    2. TPM cihazı ayrıntıları ekleyin:
-       1. *TPM cihazını benzetme* bölümündeki adımları izleyerek TPM cihazı benzetmesinin *Kayıt Kimliği* ve [TPM onay anahtarı](quick-create-simulated-device.md#simulatetpm) değerlerini alın.
-       2. Önceki adımda aldığınız **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini `[RegistrationId]``[TPM Endorsement Key]`ServiceEnrollmentSample.java **_örnek kod dosyasındaki_ ve**  değerlerinin yerine yazın:
+       1. [TPM cihazını benzetme](quick-create-simulated-device.md#simulatetpm) bölümündeki adımları izleyerek TPM cihazı benzetmesinin *Kayıt Kimliği* ve *TPM onay anahtarı* değerlerini alın.
+       2. Önceki adımda aldığınız **_Kayıt Kimliği_** ve **_Onay Anahtarı_** değerlerini **_ServiceEnrollmentSample.java_** örnek kod dosyasındaki `[RegistrationId]` ve `[TPM Endorsement Key]` değerlerinin yerine yazın:
         
            ```Java
            private static final String REGISTRATION_ID = "[RegistrationId]";

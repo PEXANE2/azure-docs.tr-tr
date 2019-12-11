@@ -1,6 +1,6 @@
 ---
 title: Kullanarak TPM cihazını Azure cihaz sağlama hizmeti 'ne kaydetmeC#
-description: Hızlı başlangıç-Service SDK kullanarak C# TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydetme. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Hızlı başlangıç-Service SDK kullanarak C# TPM cihazını Azure IoT Hub cihaz sağlama hizmeti 'NE (DPS) kaydedin. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a95a50e5931f42e442e11fe593a151dd273449e8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ee1b803459e0c81b86021b617a29e0b29ee19909
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423019"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976851"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Hızlı başlangıç: Service SDK kullanarak C# cihaz sağlama HIZMETI IoT Hub TPM cihazı kaydetme
 
@@ -93,7 +93,7 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
 
    * Bu hızlı başlangıcı [cihaz SDK 'sını kullanarak C# sanal bir cihaz oluşturma ve sağlama](quick-create-simulated-device-tpm-csharp.md) hızlı başlangıcı ile birlikte kullanıyorsanız, onay anahtarını ve kayıt kimliğini bu hızlı başlangıçta not ettiğiniz değerlerle değiştirin. Cihaz KIMLIĞINI bu hızlı başlangıçta önerilen değer ile değiştirebilir, kendi değerini kullanabilir veya bu örnekteki varsayılan değeri kullanabilirsiniz.
 
-1. Aşağıdaki yöntemi `Program` sınıfına ekleyin.  Bu kod, bireysel kayıt girişi oluşturur ve sonra tek bir kaydı sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateIndividualEnrollmentAsync` yöntemini çağırır.
+1. `Program` sınıfına aşağıdaki yöntemi ekleyin.  Bu kod, bireysel kayıt girişi oluşturur ve sonra tek bir kaydı sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateIndividualEnrollmentAsync` yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()
@@ -136,7 +136,7 @@ Bu bölümde, sağlama hizmetinize TPM cihazı için tek bir kayıt ekleyen bir 
    Console.ReadLine();
    ```
 
-1. Çözümü oluşturun.
+1. Çözümü derleyin.
 
 ## <a name="run-the-individual-enrollment-sample"></a>Bireysel kayıt örneğini çalıştırma
   

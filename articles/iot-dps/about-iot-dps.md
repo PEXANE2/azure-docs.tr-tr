@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Cihazı Sağlama Hizmeti’ne Genel Bakış | Microsoft Docs
-description: Bu makale Azure’da Cihaz Sağlama Hizmeti ve IoT Hub ile cihaz sağlamayı açıklar
+description: Cihaz sağlama hizmeti (DPS) ve IoT Hub Azure 'da cihaz sağlamayı açıklar
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c29e687a787e59a03bb6825493d808ba036a1d68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280526"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975372"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub Cihazı Sağlama Hizmeti doğru IoT hub’a, kullanıcı müdahalesi gerektirmeden tam zamanında sağlama olanağı sunan bir yardımcı hizmettir. Bu sayede müşteriler milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabilir.
@@ -102,7 +102,7 @@ Cihaz Sağlama Hizmeti birçok bölgede kullanılabilir. Tüm hizmetler için me
 > [!NOTE]
 > Cihaz Sağlama Hizmeti konumdan bağımsız, genel bir hizmettir. Ancak Cihaz Sağlama Hizmeti profilinizle ilişkili meta verilerin saklanacağı bir bölge belirtmeniz gerekir.
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 Cihaz Sağlama Hizmeti için %99,9 Hizmet Düzeyi Sözleşmesi mevcuttur, [SLA’yı okuyabilirsiniz](https://azure.microsoft.com/support/legal/sla/iot-hub/). [Azure SLA](https://azure.microsoft.com/support/legal/sla/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
 ## <a name="quotas"></a>Kotalar

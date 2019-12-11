@@ -1,6 +1,6 @@
 ---
 title: C kullanarak sanal bir X. 509.952 cihazını Azure IoT Hub sağlama
-description: Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır. Bu hızlı başlangıçta, Azure IoT Hub Cihazı Sağlama Hizmeti için C cihaz SDK'sını kullanarak bir simülasyon X.509 cihazı oluşturur ve sağlarsınız.
+description: Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır. Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti (DPS) için C cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturup hazırlarsınız.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 5d0b634de9d296bc56d18b2e7a4a92e6340b07c3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8ea962d1d7df9b3d4932a698703e42b27495298c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423139"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976902"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Hızlı başlangıç: Azure IoT C SDK'sını kullanarak simülasyon X.509 cihazı sağlama
 
@@ -46,7 +46,7 @@ Bu bölümde, X. 509.440 önyükleme sırasının örnek kodunu Içeren [Azure I
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    **yüklemesine başlamadan**önce`CMake` makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 2. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
     
@@ -120,7 +120,7 @@ Benzetim cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturma
 
 3. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin ve **Kaydet** düğmesine basın.
 
-    - **Mekanizma:** Kimlik onay **Mekanizması** olarak *X.509*'u seçin.
+    - **Mekanizma:** Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
     - **Birincil sertifika. pek veya. cer dosyası:** Daha önce oluşturduğunuz X509testcert. pek adlı sertifika dosyasını seçmek için **Dosya Seç** ' i seçin.
     - **IoT Hub Cihaz kimliği:** Cihaza bir kimlik vermek için **test-docs-cert-device** girin.
 
@@ -150,7 +150,7 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
     static const char* id_scope = "0ne00002193";
     ```
 
-4. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_X509` yerine `SECURE_DEVICE_TYPE_TPM` değerine ayarlandığından emin olun.
+4. Aynı dosyada `main()` işlevinin tanımını bulun. `hsm_type` değişkeninin aşağıda gösterildiği gibi `SECURE_DEVICE_TYPE_TPM` yerine `SECURE_DEVICE_TYPE_X509` değerine ayarlandığından emin olun.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;

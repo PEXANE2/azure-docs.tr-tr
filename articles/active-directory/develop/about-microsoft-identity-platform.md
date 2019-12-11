@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca1b6cc6288b75dc7194ead916f2ecb468b053d2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845918"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996995"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft Identity Platform'un gelişimi
 
@@ -26,13 +26,13 @@ Microsoft kimlik platformu, Azure Active Directory (Azure AD) geliştirici platf
 
 Bu aşamada, çoğu geliştirici Azure AD v 1.0 uç noktasından belirteçleri isteyerek Azure AD kimlik doğrulama kitaplığı 'nı (ADAL) kullanarak iş ve okul hesaplarının (Azure AD tarafından sağlanan) kimliğini doğrulamak için Azure AD v 1.0 platformu ile çalıştık Azure portal programlı uygulama yapılandırması için uygulama kaydı ve yapılandırması ve Azure AD Graph API.
 
-Microsoft Identity platform (v 2.0) ile, bu tür kullanıcılar için erişim alanınızı genişletin:
+Birleşik Microsoft Identity platformu (v 2.0) ile, bir kez kod yazabilir ve uygulamanızda herhangi bir Microsoft kimliğinin kimliğini doğrulayabilirsiniz. Birçok platformda, tam olarak desteklenen açık kaynaklı Microsoft kimlik doğrulama kitaplığı (MSAL) kimlik Platform uç noktalarına karşı kullanım için önerilir. MSAL kullanımı basittir, kullanıcılarınız için harika bir çoklu oturum açma (SSO) deneyimi sağlar, yüksek güvenilirlik ve performans elde etmenize yardımcı olur ve Microsoft güvenli geliştirme yaşam döngüsü (SDL) kullanılarak geliştirilir. API 'Leri çağırırken uygulamanızı artımlı izin avantajlarından yararlanarak, uygulamanın kullanımı çalışma zamanında bunu kabul edene kadar daha fazla kapsam için izin isteğini geciktirebilmeniz için uygulamanızı yapılandırabilirsiniz.  MSAL Ayrıca Azure Active Directory B2C destekler, böylece müşterileriniz, uygulamalarınıza ve API 'lerinize çoklu oturum açma erişimi sağlamak için tercih edilen sosyal, kurumsal veya yerel hesap kimliklerini kullanır.
+
+Microsoft Identity platformu ile bu tür kullanıcılar için erişim alanınızı genişletin:
 
 - İş ve okul hesapları (Azure AD tarafından sağlanan hesaplar)
 - Kişisel hesaplar (Outlook.com veya Hotmail.com gibi)
-- Kendi e-postalarını veya sosyal kimlik bilgilerini (LinkedIn, Facebook, Google gibi) Azure AD B2C teklif aracılığıyla getiren müşterileriniz
-
-Birleşik Microsoft Identity platformu ile kod yazabilir ve uygulamanızda herhangi bir Microsoft kimliğinin kimliğini doğrulayabilirsiniz. Çeşitli platformlar için, Microsoft kimlik doğrulama kitaplığı (MSAL) adlı tam olarak desteklenen bir açık kaynak kitaplığı vardır. MSAL kullanımı basittir, kullanıcılarınız için harika bir çoklu oturum açma (SSO) deneyimi sağlar, yüksek güvenilirlik ve performans elde etmenize yardımcı olur ve Microsoft güvenli geliştirme yaşam döngüsü (SDL) kullanılarak geliştirilir. API 'Leri çağırırken uygulamanızı artımlı izin avantajlarından yararlanarak, uygulamanın kullanımı çalışma zamanında bunu kabul edene kadar daha fazla kapsam için izin isteğini geciktirebilmeniz için uygulamanızı yapılandırabilirsiniz.
+- MSAL ve Azure AD B2C aracılığıyla kendi e-postalarını veya sosyal kimliğini (LinkedIn, Facebook, Google) getiren müşterileriniz
 
 Uygulamanızı kaydetmek ve yapılandırmak için Azure portal kullanabilir ve programlı uygulama yapılandırması için Microsoft Graph API 'sini kullanabilirsiniz.
 

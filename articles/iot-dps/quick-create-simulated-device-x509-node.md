@@ -1,6 +1,6 @@
 ---
 title: Node. js kullanarak Azure IoT Hub sanal X. 509.440 cihazı sağlama
-description: Azure IoT Hub Cihazı Sağlama Hizmeti için Node.js cihaz SDK'sını kullanarak sanal bir X.509 cihazı oluşturma ve sağlama. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Azure IoT Hub cihaz sağlama hizmeti (DPS) için Node. js cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturun ve sağlayın. Bu hızlı başlangıç, bireysel kayıtları kullanır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 5ba18ae304ee1d72306f233a5b288c358efcd696
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5a713018cb616fd1b82c253554932f6589185e0b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423375"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976477"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Node. js cihaz SDK 'sını kullanarak bir X. 509.952 sanal cihazı oluşturma ve sağlama
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -39,7 +39,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 3. Makinenizde [Git](https://git-scm.com/download/)’in yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. 
 
-4. Makinenizde [OpenSSL](https://www.openssl.org/)’nin yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Bu kitaplık kaynaktan derlenip yüklenebilir veya [bunun](https://wiki.openssl.org/index.php/Binaries) gibi bir [üçüncü taraftan](https://sourceforge.net/projects/openssl/) indirilip yüklenebilir. 
+4. Makinenizde [OpenSSL](https://www.openssl.org/)’nin yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Bu kitaplık kaynaktan derlenip yüklenebilir veya [bunun](https://sourceforge.net/projects/openssl/) gibi bir [üçüncü taraftan](https://wiki.openssl.org/index.php/Binaries) indirilip yüklenebilir. 
 
     > [!NOTE]
     > _Kök_, _ara_ ve/veya _yaprak_ X.509 sertifikalarınızı zaten oluşturduysanız, bu adımı ve sertifika oluşturma ile ilgili aşağıdaki tüm adımları atlayabilirsiniz.
@@ -79,7 +79,7 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
 5. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 6. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *X.509*'u seçin.
+   - Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
    - *Birincil sertifika. pek veya. cer dosyası*' nın altında, önceki adımlarda oluşturulan **{Certificate-Name} _cert. ped** sertifika dosyasını seçmek için *Dosya Seç* ' i seçin.  
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
      - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
@@ -114,7 +114,7 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
     ```
 
 4. **register\_x509.js** dosyasını düzenleyin. Aşağıdaki değişiklikleri yaptıktan sonra dosyayı kaydedin.
-    - `provisioning host` öğesini yukarıdaki **1. Adım _’da belirtilen_** Genel Cihaz Uç Noktası ile değiştirin.
+    - `provisioning host` öğesini yukarıdaki **1. Adım**’da belirtilen **_Genel Cihaz Uç Noktası_** ile değiştirin.
     - `id scope`, yukarıdaki **1. adımda** belirtilen **_kimlik kapsamıyla_** değiştirin. 
     - `registration id`, önceki bölümde belirtilen **_kayıt kimliğiyle_** değiştirin.
     - `cert filename` ve `key filename` öğelerini yukarıdaki **2. Adım**’da kopyaladığınız dosyalarla değiştirin. 

@@ -1,6 +1,6 @@
 ---
 title: Hızlı başlangıç-Java kullanarak Azure IoT Hub sanal bir TPM cihazı sağlama
-description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Hızlı başlangıç-Azure IoT Hub cihaz sağlama hizmeti (DPS) için Java cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturun ve sağlayın. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: fce7eca055150ce7a2d8503efa4e1f71fffb0c7c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 00f95fb249c80dffacdb10f6679f310dce218118
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423521"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976694"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: Azure IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir TPM cihazı oluşturma ve sağlama
 
@@ -38,7 +38,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 1. [Maven](https://maven.apache.org/install.html)'ı indirip yükleyin.
 
-1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek [ araçlarının son sürümleri için ](https://git-scm.com/download/)Software Freedom Conservancy’nin Git istemci araçlarına`git` bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
+1. `git` uygulamasının makinenizde yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 1. Bir komut istemi açın. Cihaz benzetim kod örneği için GitHub deposunu kopyalayın.
     
@@ -100,7 +100,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 1. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
 1. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *TPM* seçeneğini belirleyin.
+   - Kimlik onay *Mekanizması* olarak **TPM** seçeneğini belirleyin.
    - Daha önce not ettiğiniz değerlerden TPM cihazınızın *kayıt kimliği* ve *onay anahtarı* ' nı girin.
    - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:

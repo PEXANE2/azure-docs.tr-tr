@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: daf7cfdca2e9bfa4de68f490eb4a67f46cc59f42
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174296"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995873"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault istemci kitaplığı
 
@@ -36,7 +36,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 
 Bu hızlı başlangıçta, bir Linux Terminal penceresinde [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Apache Maven](https://maven.apache.org) çalıştırdığınız varsayılmaktadır.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Kurulum
 
 ### <a name="create-new-java-console-app"></a>Yeni Java konsol uygulaması oluşturma
 
@@ -168,7 +168,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Java için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
 
-Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appkullanılabilir.
+Konsol uygulamasının tamamı https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app kullanılabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -241,7 +241,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
 
 ```azurecli
-az group delete -g "myResourceGroup" -l "EastUS" 
+az group delete -g "myResourceGroup"
 ```
 
 ```azurepowershell

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect bulut sağlama SSS
+title: Azure AD Connect bulut sağlama hakkında SSS
 description: Bu belgede, bulut sağlaması için sık sorulan sorular açıklanmaktadır.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93c88b167884c455ffb995f35356b121bce8a207
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793559"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997097"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -42,7 +42,7 @@ Evet. Bulut sağlama, birden çok Active Directory ormanınızdan eşitleme yapm
 
 **S: aracı nasıl güncelleştirilir?**
 
-Aracılar Microsoft tarafından otomatik olarak yükseltilir. Bu, yeni aracı sürümlerini test etmek ve doğrulamak için devre dışı bırakma yükünü azaltır. 
+Aracılar Microsoft tarafından otomatik olarak yükseltilir. BT ekibi için bu, yeni aracı sürümlerini test etmek ve doğrulamak zorunda olma yükünü azaltır. 
 
 **S: otomatik yükseltmeyi devre dışı bırakabilir miyim?**
 

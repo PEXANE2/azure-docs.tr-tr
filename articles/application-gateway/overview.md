@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422305"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996587"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -111,7 +111,7 @@ Daha fazla bilgi için bkz. [WebSocket desteği](https://docs.microsoft.com/azur
 
 ## <a name="connection-draining"></a>Bağlantı boşaltma
 
-Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Etkinleştirildikten sonra Application Gateway, bir arka uç havuzunun tüm kayıt kaldırma örneklerinin yeni bir istek almamasını sağlarken, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını sağlar. Bu, arka uç havuzundan bir API çağrısıyla açıkça kaldırılan arka uç örnekleri için ve sistem durumu araştırmaları tarafından belirlendiği şekilde sağlıksız olarak bildirilen arka uç örnekleri için geçerlidir.
+Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Etkinleştirildikten sonra, Application Gateway, bir arka uç havuzunun tüm kaydını kaldırmak örneklerinin yeni bir istek almamasını sağlarken, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını sağlar. Bu, arka uç havuzundan bir Kullanıcı yapılandırma değişikliği tarafından açıkça kaldırılan arka uç örnekleri için ve sistem durumu araştırmaları tarafından belirlendiği şekilde sağlıksız olarak bildirilen arka uç örnekleri için geçerlidir. Bunun tek istisnası, ağ geçidi ile yönetilen oturum benzeşimi nedeniyle açıkça kaydı yapılmış olan ve kaydını kaldırmak örneklerine yönelik olarak devam edecek olan kaydını kaldırmak örneklerine yönelik isteklerdir.
 
 Daha fazla bilgi için [Application Gateway yapılandırmasına genel bakış](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining)' ın bağlantı boşaltma bölümüne bakın.
 
