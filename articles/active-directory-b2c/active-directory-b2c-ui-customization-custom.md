@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C | içinde özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme | Microsoft Docs
+title: Özel ilkeyle uygulamanızın kullanıcı arabirimini özelleştirme
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C özel bir ilke kullanarak Kullanıcı arabirimini özelleştirme hakkında bilgi edinin.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209440"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949635"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme
 
@@ -63,7 +64,7 @@ Başlığında ürününüzün marka adıyla HTML içeriği oluşturun.
 
 Bu HTML içeriğini blob depolamada barındırmak için aşağıdaki adımları uygulayın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Hub** menüsünde **yeni** > **depolama** > **depolama hesabı**' nı seçin.
 1. Depolama hesabınız için bir **abonelik** seçin.
 1. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
@@ -100,12 +101,12 @@ Blob depolamada ortak bir kapsayıcı oluşturmak için aşağıdaki adımları 
 Aşağıdaki adımları gerçekleştirerek, çıkış noktaları arası kaynak paylaşımı için blob depolamayı yapılandırın:
 
 1. Menüsünde **CORS**' yi seçin.
-1. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. `your-tenant-name`, Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+1. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
 1. **Izin verilen Yöntemler**için hem `GET` hem de `OPTIONS`seçin.
 1. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 1. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
 1. **Maksimum yaş**için 200 girin.
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ## <a name="test-cors"></a>Test CORS
 
@@ -119,7 +120,7 @@ Aşağıdaki adımları gerçekleştirerek hazırlandığınızı doğrulayın:
 
 UI özelleştirmesini yapılandırmak için, **ContentDefinition** ve onun alt öğelerini temel dosyadan uzantılar dosyasına kopyalayın.
 
-1. İlkenizin temel dosyasını açın. Örneğin, <em> **`TrustFrameworkBase.xml`** `SocialAndLocalAccounts/`</em>. Bu, önkoşullu olarak elde etmeniz gereken özel ilke başlangıç paketine eklenen ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
+1. İlkenizin temel dosyasını açın. Örneğin,  <em> **`TrustFrameworkBase.xml`** `SocialAndLocalAccounts/`</em>. Bu, önkoşullu olarak elde etmeniz gereken özel ilke başlangıç paketine eklenen ilke dosyalarından biridir, [özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)kullanmaya başlayın.
 1. **ContentDefinitions** öğesinin tüm içeriğini arayın ve kopyalayın.
 1. Uzantı dosyasını açın. Örneğin, *TrustFrameworkExtensions. xml*. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. **Buildingblocks** öğesinin bir alt öğesi olarak kopyaladığınız **ContentDefinitions** öğesinin tüm içeriğini yapıştırın.
@@ -175,9 +176,9 @@ Sample_templates/Wingtip klasörü aşağıdaki HTML dosyalarını içerir:
 |----------------|-------------|
 | *PhoneFactor. html* | Bu dosyayı Multi-Factor Authentication sayfası için şablon olarak kullanın. |
 | *ResetPassword. html* | Parolayı unuttum sayfası için bu dosyayı şablon olarak kullanın. |
-| *selfassırted. html* | Bu dosyayı bir sosyal hesap kaydolma sayfası, yerel hesap kaydolma sayfası veya yerel hesap oturum açma sayfası için şablon olarak kullanın. |
+| *selfasserted.html* | Bu dosyayı bir sosyal hesap kaydolma sayfası, yerel hesap kaydolma sayfası veya yerel hesap oturum açma sayfası için şablon olarak kullanın. |
 | *Birleşik. html* | Bu dosyayı Birleşik kaydolma veya oturum açma sayfası için şablon olarak kullanın. |
-| *updateprofile. html* | Bu dosyayı profil güncelleştirme sayfası için şablon olarak kullanın. |
+| *updateprofile.html* | Bu dosyayı profil güncelleştirme sayfası için şablon olarak kullanın. |
 
 Aşağıda, örneği kullanma adımları verilmiştir:
 
@@ -194,16 +195,16 @@ Kaydolma veya oturum açma özel ilkesini değiştirme bölümünde, `api.idpsel
 
 | İçerik tanımı KIMLIĞI | Açıklama |
 |-----------------------|-------------|
-| *api. Error* | **Hata sayfası**. Bu sayfa bir özel durum veya hata ile karşılaşıldığında görüntülenir. |
+| *api.error* | **Hata sayfası**. Bu sayfa bir özel durum veya hata ile karşılaşıldığında görüntülenir. |
 | *api. ıdpseçimlerin* | **Kimlik sağlayıcısı seçim sayfası**. Bu sayfa, kullanıcının oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarının bir listesini içerir. Bu seçenekler, kurumsal kimlik sağlayıcılarıdır, Facebook ve Google + gibi sosyal kimlik sağlayıcıları ya da yerel hesaplar. |
-| *api. ıdpseçimlerin. Signup* | **Kaydolma Için kimlik sağlayıcısı seçimi**. Bu sayfa, kullanıcının kaydolma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarının bir listesini içerir. Bu seçenekler, kurumsal kimlik sağlayıcılarıdır, Facebook ve Google + gibi sosyal kimlik sağlayıcıları ya da yerel hesaplar. |
-| *api. localaccountpasswordreset* | **Parolayı unuttum sayfası**. Bu sayfa, kullanıcının parola sıfırlama işlemini başlatmak için tamamlaması gereken bir form içerir.  |
-| *api. localaccountsignın* | **Yerel hesap oturum açma sayfası**. Bu sayfa, bir e-posta adresine veya Kullanıcı adına dayalı bir yerel hesapla oturum açmak için bir oturum açma formu içerir. Form bir metin girişi kutusu ve parola giriş kutusu içerebilir. |
-| *api. localaccountsignup* | **Yerel hesap kaydolma sayfası**. Bu sayfa, bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesaba kaydolma için bir kayıt formu içerir. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. |
+| *api.idpselections.signup* | **Kaydolma Için kimlik sağlayıcısı seçimi**. Bu sayfa, kullanıcının kaydolma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarının bir listesini içerir. Bu seçenekler, kurumsal kimlik sağlayıcılarıdır, Facebook ve Google + gibi sosyal kimlik sağlayıcıları ya da yerel hesaplar. |
+| *api.localaccountpasswordreset* | **Parolayı unuttum sayfası**. Bu sayfa, kullanıcının parola sıfırlama işlemini başlatmak için tamamlaması gereken bir form içerir.  |
+| *api.localaccountsignin* | **Yerel hesap oturum açma sayfası**. Bu sayfa, bir e-posta adresine veya Kullanıcı adına dayalı bir yerel hesapla oturum açmak için bir oturum açma formu içerir. Form bir metin girişi kutusu ve parola giriş kutusu içerebilir. |
+| *api.localaccountsignup* | **Yerel hesap kaydolma sayfası**. Bu sayfa, bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesaba kaydolma için bir kayıt formu içerir. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. |
 | *api. phonefactor* | **Multi-Factor Authentication sayfası**. Bu sayfada, kullanıcılar telefon numaralarını (metin veya ses kullanarak) kaydolma veya oturum açma sırasında doğrulayabilirler. |
-| *api. selfasted* | **Sosyal hesap kaydolma sayfası**. Bu sayfa, kullanıcıların Facebook veya Google + gibi bir sosyal kimlik sağlayıcısından mevcut bir hesabı kullanarak kaydolduklarında tamamlaması gereken bir kaydolma formu içerir. Bu sayfa, parola girişi alanları hariç, önceki sosyal hesap kaydolma sayfasına benzer. |
-| *api. selfasserted. profileUpdate* | **Profil güncelleştirme sayfası**. Bu sayfa, kullanıcıların profilini güncelleştirmek için kullanabileceği bir form içerir. Bu sayfa, parola girişi alanları hariç sosyal hesap kaydolma sayfasına benzerdir. |
-| *api. signuporsignın* | **Birleşik kaydolma veya oturum açma sayfası**. Bu sayfa, kullanıcıların kaydolma ve oturum açma öğelerinin yanı sıra kurumsal kimlik sağlayıcıları, Facebook veya Google + gibi sosyal kimlik sağlayıcıları veya yerel hesaplar tarafından kullanılabilir.  |
+| *api.selfasserted* | **Sosyal hesap kaydolma sayfası**. Bu sayfa, kullanıcıların Facebook veya Google + gibi bir sosyal kimlik sağlayıcısından mevcut bir hesabı kullanarak kaydolduklarında tamamlaması gereken bir kaydolma formu içerir. Bu sayfa, parola girişi alanları hariç, önceki sosyal hesap kaydolma sayfasına benzer. |
+| *api.selfasserted.profileupdate* | **Profil güncelleştirme sayfası**. Bu sayfa, kullanıcıların profilini güncelleştirmek için kullanabileceği bir form içerir. Bu sayfa, parola girişi alanları hariç sosyal hesap kaydolma sayfasına benzerdir. |
+| *api.signuporsignin* | **Birleşik kaydolma veya oturum açma sayfası**. Bu sayfa, kullanıcıların kaydolma ve oturum açma öğelerinin yanı sıra kurumsal kimlik sağlayıcıları, Facebook veya Google + gibi sosyal kimlik sağlayıcıları veya yerel hesaplar tarafından kullanılabilir.  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
