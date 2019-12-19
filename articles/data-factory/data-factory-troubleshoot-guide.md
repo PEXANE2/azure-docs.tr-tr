@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748366"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972345"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 
@@ -43,9 +43,9 @@ Bağlayıcı sorunları için ör. kopyalama etkinliğini kullanarak hatayla kar
 
 - **Öneri**: Databricks etkinliğinde Not defteri yolunu belirtin.
 
-<br/>    
-              
-- **İleti**: `Cluster   ... does not exist.`
+<br/>  
+
+- **İleti**: `Cluster... does not exist.`
 
 - **Neden**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ Bağlayıcı sorunları için ör. kopyalama etkinliğini kullanarak hatayla kar
 
 <br/>  
 
-- **İleti**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **İleti**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **Neden**: `Bad authoring.`
 
@@ -334,56 +334,56 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 ### <a name="error-code--4121"></a>Hata kodu: 4121
 
-- **İleti**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **İleti**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Neden**: Azure ML hizmetine erişmek için kullanılan kimlik bilgilerinin süresi doldu.
+- **Neden**: Azure Machine Learning erişmek için kullanılan kimlik bilgilerinin süresi doldu.
 
 - **Öneri**: Lütfen kimlik bilgisinin geçerli olduğunu doğrulayın ve yeniden deneyin
 
 
 ### <a name="error-code--4122"></a>Hata kodu: 4122
 
-- **İleti**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **İleti**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Neden**: Azure ML hizmeti bağlantılı hizmette belirtilen kimlik bilgileri geçersiz veya işlem için izne sahip değil.
+- **Neden**: Azure Machine Learning bağlantılı hizmette belirtilen kimlik bilgileri geçersiz veya işlem için izne sahip değil.
 
-- **Öneri**: lütfen bağlı hizmette kimlik bilgisinin geçerli olduğunu ve Azure ML hizmetine erişim izni olduğunu doğrulayın.
+- **Öneri**: lütfen bağlı hizmette kimlik bilgisinin geçerli olduğunu ve Azure Machine Learning erişim izni olduğunu doğrulayın.
 
 
 ### <a name="error-code--4123"></a>Hata kodu: 4123
 
-- **İleti**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **İleti**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Neden**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **Neden**: Azure ML işlem hattı Için pipelineparameters gibi etkinliğin özellikleri geçersizdir.
 
 - **Öneri**: Lütfen, bağlı hizmette belirtilen YAYıMLANAN Azure ML işlem hattının beklenen yükünü eşleştirmek için etkinlik özelliklerinin değerini denetleyin.
 
 
 ### <a name="error-code--4124"></a>Hata kodu: 4124
 
-- **İleti**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **İleti**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **Neden**: Yayınlanan Azure ML ardışık düzen uç noktası yok.
 
-- **Öneri**: lütfen Azure ML hizmeti 'Nde bağlı hizmette belirtilen YAYıMLANAN Azure ML ardışık düzen uç noktasının mevcut olduğunu doğrulayın.
+- **Öneri**: lütfen bağlı hizmette belirtilen yayınlanan Azure Machine Learning ardışık düzen uç noktasının Azure Machine Learning olduğundan emin olun.
 
 
 ### <a name="error-code--4125"></a>Hata kodu: 4125
 
-- **İleti**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **İleti**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Neden**: Azure ML hizmetinde sunucu hatası.
+- **Neden**: Azure Machine Learning sunucu hatası.
 
-- **Öneri**: lütfen daha sonra yeniden deneyin. Sorun devam ettiğinden yardım için Azure ML hizmeti ekibine başvurun.
+- **Öneri**: lütfen daha sonra yeniden deneyin. Sorun devam ettiğinden yardım için Azure Machine Learning ekibine başvurun.
 
 
 ### <a name="error-code--4126"></a>Hata kodu: 4126
 
-- **İleti**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **İleti**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **Neden**: Azure ML işlem hattı çalıştırması başarısız oldu.
 
-- **Öneri**: lütfen daha fazla hata günlüğü IÇIN Azure ML hizmetini DENETLEYIN ve ml ardışık düzenini onarın
+- **Öneri**: lütfen daha fazla hata günlüğü için Azure Machine Learning iade edın ve ml işlem hattını onarın.
 
 
 
@@ -422,7 +422,7 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: depolama için bağlantı dizesi geçersiz veya biçimi yanlış.
 
-- **Öneri**: lütfen Azure portalına gidin, depolama alanınızı bulun, bağlantı dizesini kopyalayın ve bağlı hizmetinize yapıştırın ve yeniden deneyin.
+- **Öneri**: lütfen Azure Portal gidin, depolama alanınızı bulun, bağlantı dizesini kopyalayın ve bağlı hizmetinize yapıştırın ve yeniden deneyin.
 
 
 ### <a name="error-code--2108"></a>Hata kodu: 2108
@@ -522,7 +522,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 ### <a name="error-code--2507"></a>Hata kodu: 2507
 
-- **İleti**: `The folder path does not exist or is empty: ....`
+- **İleti**: `The folder path does not exist or is empty: ...`
 
 - **Neden**: belirtilen yoldaki depolama hesabında hiçbir dosya yok.
 
@@ -648,7 +648,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 - **Neden**: hata iletisi, ' uzak ad çözümlenemedi. ' şuna benzer bir ileti içerdiğinde, bu, belirtilen küme URI 'si geçersiz anlamına gelebilir.
 
 
-- **Öneri**: kümenin silinmediğinden ve belirtilen URI 'nin doğru olduğundan emin olun. URI 'yi bir tarayıcıda açtığınızda, ambarı Kullanıcı arabirimini görmeniz gerekir. Küme bir sanal ağda ise, URI özel URI olmalıdır. Açmak için, aynı sanal ağın parçası olan bir VM kullanın. Daha fazla bilgi için, [bkz.](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services).
+- **Öneri**: kümenin silinmediğinden ve belirtilen URI 'nin doğru olduğundan emin olun. URI 'yi bir tarayıcıda açtığınızda, ambarı Kullanıcı arabirimini görmeniz gerekir. Küme bir sanal ağda ise, URI özel URI olmalıdır. Açmak için, aynı sanal ağın parçası olan bir VM kullanın. Daha fazla bilgi için, [bkz.](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)
                   
 
 <br>
@@ -668,12 +668,12 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 - **Neden**: hata iletisi, ' 502-Web sunucusu bir ağ geçidi veya proxy sunucusu görevi gören geçersiz bir yanıt aldı ' ile benzer bir ileti içerdiğinde, bu hata HDInsight hizmeti tarafından döndürülür.
 
 
-- **Öneri**: Azure HDInsight sorun giderme belgelerine bakın; örneğin, https://hdinsight.github.io/ambari/ambari-ui-502-error.html, https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlhttps://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
+- **Öneri**: Azure HDInsight sorun giderme belgelerine bakın; örneğin, https://hdinsight.github.io/ambari/ambari-ui-502-error.html , https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlhttps://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
                   
 
 <br>
 
-- **Neden**: hata iletisi bir ileti içerdiğinde ' şuna benzer bir ileti içerdiğinde, temptaton hizmeti çok fazla sayıda iş isteği gönderme ' veya ' sıra 500 kökü ile meşgul olduğundan, Bu, aynı anda HDInsight 'a çok fazla iş gönderildiği anlamına gelir.
+- **Neden**: hata iletisi ' e benzer bir ileti içerdiğinde, temptaton hizmeti çok fazla sayıda gönderme işi isteği ' veya ' sıra köküyle meşgul olduğundan, bu işlem, zaten 500 uygulamasına sahip. joblauncher zaten uygulamasına sahip, uygulamanın teslimini kabul edemez. Bu, aynı anda HDInsight 'a çok fazla iş gönderildiği anlamına gelir.
 
 - **Öneri**: HDInsight 'a gönderilen eşzamanlı iş sayısını sınırlamayı düşünün. İşlerin aynı etkinlik tarafından gönderiliyorsa Data Factory etkinlik eşzamanlılık bölümüne bakın. Yinelenen işlem hattı çalıştırmaları zaman içinde yayma için Tetikleyicileri değiştirin. Hatanın önereceği şekilde temptaton. parallellilik. job. Gönder ' i ayarlamak için HDInsight belgelerine bakın.
 
@@ -685,7 +685,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 - **Neden**: HDInsight kümesinde veya hizmetinde sorunlar vardır.
 
 
-- **Öneri**: Bu hata, ADF, çalışan işin durumunu almaya çalışırken HDInsight kümesinden yanıt alamazsanız oluşur. Küme üzerinde sorunların nedeni olabilir veya HDInsight hizmeti bir kesinti olabilir. Lütfen https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide'de HDInsight sorun giderme belgelerine başvurun veya daha fazla yardım için desteğe başvurun.
+- **Öneri**: Bu hata, ADF, çalışan işin durumunu almaya çalışırken HDInsight kümesinden yanıt alamazsanız oluşur. Küme üzerinde sorunların nedeni olabilir veya HDInsight hizmeti bir kesinti olabilir. Lütfen https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide 'de HDInsight sorun giderme belgelerine başvurun veya daha fazla yardım için desteğe başvurun.
                 
 
 
@@ -816,7 +816,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Öneri**:  
       1. HDInsight kümesinin ambarı Kullanıcı arabirimini bir tarayıcıda açarak kimlik bilgilerinin doğru olduğundan emin olun.
-      2. Küme VNet 'se ve şirket içinde barındırılan IR kullanılıyorsa, HDI URL 'sinin sanal ağlarda özel URL olması gerekir. Bu, küme adından sonra '-int ' olması gerektiği anlamına gelir. Örneğin "https://mycluster.azurehdinsight.net/", "https://mycluster-int.azurehdinsight.net/" olarak değiştirilmelidir.
+      2. Küme VNet 'se ve şirket içinde barındırılan IR kullanılıyorsa, HDI URL 'sinin sanal ağlarda özel URL olması gerekir. Bu, küme adından sonra '-int ' olması gerektiği anlamına gelir. Örneğin "https://mycluster.azurehdinsight.net/ ", "https://mycluster-int.azurehdinsight.net/" olarak değiştirilmelidir.
       2. Küme VNet 'daysa, şirket içinde barındırılan IR kullanılır ve özel URL kullanılmıştır ve bağlantı hala başarısız olduysa, IR 'nin yüklü olduğu VM HDI 'ya bağlanmada sorun yaşadı. IR 'nin yüklendiği VM 'ye bağlanın ve bir tarayıcıda ambarı Kullanıcı arabirimini açın. Küme için özel URL 'YI kullanın. Bu bağlantı tarayıcıdan çalışmalıdır. Değilse, daha fazla yardım için HDInsight destek ekibine başvurun.
       3. Şirket içinde barındırılan IR kullanılmıyorsa, HDI kümesine genel olarak erişilebilir olması gerekir. Bir tarayıcıda ambarı Kullanıcı arabirimini açın ve açıldığından emin olun. Küme veya hizmetlerle ilgili herhangi bir sorun varsa, yardım için HDInsight destek ekibine başvurun.
       Bu nedenle, genellikle ADF bağlantılı hizmette kullanılan HDI kümesi URL 'sine, test bağlantısının geçişine ve çalıştırmaların çalışması için ADF IR (Şirket içinde barındırılan veya Azure) için erişilebilir olması gerekir. Bu URL, VM 'den ya da herhangi bir ortak makineden bir tarayıcıdan açılarak kolayca doğrulanabilir.
@@ -977,7 +977,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Neden**: küme oluşturma başarısız oldu ve ADF, HDInsight hizmetinden geri bir hata almadı.
 
-- **Öneri**: Azure portalını açın ve girilen ada sahip HDI kaynağını bulmayı deneyin ve sağlama durumunu denetleyin. Daha fazla yardım için HDInsight destek ekibine başvurun.
+- **Öneri**: Azure Portal açın ve girilen ada sahip HDI kaynağını bulmayı deneyin ve sağlama durumunu denetleyin. Daha fazla yardım için HDInsight destek ekibine başvurun.
 
 
 ### <a name="error-code--2362"></a>Hata kodu: 2362
@@ -1018,7 +1018,7 @@ Fiddler 'i kullanarak izlenen Web uygulamasının HTTP oturumunu oluşturma:
 
 1. Web **UYGULAMANıZ https kullanıyorsa**, **Araçlar** >  > **Fiddler seçenekleri** ' ne gidin. **Yakalama HTTPS bağlantıları** ve **https trafiğinin şifresini çöz**' ü seçin.
 
-![Fiddler seçenekleri](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Fiddler seçenekleri](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Uygulamanız SSL sertifikaları kullanıyorsa, Fiddler sertifikasını cihazınıza ekleyin. **HTTPS** > **eylemleri** > , > **kök sertifikayı masaüstüne dışarı aktarmak**Için **Araçlar** > **Fiddler seçenekleri** ' ne gidin.
 
@@ -1028,17 +1028,17 @@ Fiddler 'i kullanarak izlenen Web uygulamasının HTTP oturumunu oluşturma:
 
 1. İstek oluştur:
 
-a. **Besteci** sekmesini seçin.
+   1. **Besteci** sekmesini seçin.
 
-b. HTTP yöntemini ve URL 'YI ayarlayın.
+   1. HTTP yöntemini ve URL 'YI ayarlayın.
+   
+   1. Gerekiyorsa üstbilgiler ve istek gövdesi ekleyin.
 
-c. Gerekiyorsa üstbilgiler ve istek gövdesi ekleyin.
+   1. **Yürüt**’ü seçin.
 
-d. **Yürüt**’ü seçin.
+1. Trafiği yeniden yakalamayı açın ve sayfada sorunlu işlemi doldurun.
 
-9. Trafiği yeniden yakalamayı açın ve sayfada sorunlu işlemi doldurun.
-
-10. **Tüm oturumları** > **kaydetmek** > **Dosya** ' ya gidin.
+1. **Tüm oturumları** > **kaydetmek** > **Dosya** ' ya gidin.
 
 Daha fazla bilgi için bkz. [Fiddler ile çalışmaya](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)başlama.
 
