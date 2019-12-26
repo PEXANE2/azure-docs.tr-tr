@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/04/2019
-ms.openlocfilehash: 6c5b913835b2080f30ff3dd73e6a59c1043ecf5d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.date: 11/27/2019
+ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823289"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707620"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -29,7 +29,7 @@ Aşağıdaki diyagramda yönetilen örneklerin temel özellikleri özetlenmekted
 
 ![Temel Özellikler](./media/sql-database-managed-instance/key-features.png)
 
-Yönetilen örnek dağıtım modeli, şirket içi veya IaaS, kendiliğinden oluşturulmuş veya ISV tarafından sağlanmış ortamdan çok sayıda uygulamayı, mümkün olduğunca düşük geçiş çabasıyla tam olarak yönetilen PaaS bulut ortamına geçirmek isteyen müşteriler için tasarlanmıştır. Müşteriler, Azure 'da tam otomatik [veri geçiş hizmeti 'ni (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) kullanarak, şirket içi SQL Server, şirket içi SQL Server ile uyumluluğu ve müşteri örneklerinin tamamen yalıtımına sahip olan yönetilen bir örneğe taşıyıp kaydırabilirler Yerel VNet desteği.  Yazılım Güvencesi sayesinde, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak, yönetilen bir örnekteki indirimli ücretler için mevcut lisanslarını Exchange 'e dönüştürebilirsiniz.  Yönetilen bir örnek, bulutta yüksek güvenlik ve zengin bir programlama yüzeyi gerektiren SQL Server örnekleri için en iyi geçiş hedefidir.
+Yönetilen örnek dağıtım modeli, şirket içi veya IaaS, kendiliğinden oluşturulmuş veya ISV tarafından sağlanmış ortamdan çok sayıda uygulamayı, mümkün olduğunca düşük geçiş çabasıyla tam olarak yönetilen PaaS bulut ortamına geçirmek isteyen müşteriler için tasarlanmıştır. Müşteriler, Azure 'da tam otomatik [veri geçiş hizmeti 'ni (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) kullanarak, şirket içi SQL Server, şirket içi SQL Server ile uyumluluğu ve yerel VNET desteğiyle müşteri örneklerinin yalıtımının tamamlanmasını sağlayan yönetilen bir örneğe kaldırıp kaydırabilirler.  Yazılım Güvencesi sayesinde, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak, yönetilen bir örnekteki indirimli ücretler için mevcut lisanslarını Exchange 'e dönüştürebilirsiniz.  Yönetilen bir örnek, bulutta yüksek güvenlik ve zengin bir programlama yüzeyi gerektiren SQL Server örnekleri için en iyi geçiş hedefidir.
 
 Yönetilen örnek dağıtım seçeneği amaçlar, aşamalı bir yayın planı aracılığıyla en son şirket içi SQL Server sürümüyle %100 ' a kadar yüzey alanı uyumluluğunu sağlar.
 
@@ -77,7 +77,7 @@ Yönetilen örnekler için [sanal çekirdek tabanlı satın alma modeli](sql-dat
 Sanal çekirdek modelinde, donanım nesilleri arasından seçim yapabilirsiniz.
 
 - **4. nesil** Mantıksal CPU 'Lar Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri, ekli SSD, fiziksel çekirdekler, çekirdek başına 7 GB RAM ve 8 ila 24 sanal çekirdek arasında işlem boyutları temel alır.
-- **5. nesil** Mantıksal CPU 'Lar Intel E5-2673 v4 (çok Iyi) 2,3 GHz işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasında işlem boyutlarını temel alır.
+- **5. nesil** Mantıksal CPU 'Lar Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri, hızlı NVMe SSD, hiper iş parçacıklı mantıksal çekirdek ve 4 ile 80 çekirdekler arasında işlem boyutlarını temel alır.
 
 [Yönetilen örnek kaynak limitlerdeki](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)donanım oluşturmaları arasındaki fark hakkında daha fazla bilgi bulabilirsiniz.
 
@@ -124,7 +124,7 @@ Aşağıdaki listede İş Açısından Kritik hizmet katmanının temel özellik
 
 Azure SQL Veritabanı yeni yönetilen örnekleri otomatik olarak dağıtmak, örnek özelliklerini güncelleştirmek ve artık gerekmediğinde örnekleri silmek için kullanabileceğiniz yönetim işlemleri sağlar. Bu bölümde yönetim işlemleri ve bunların tipik süreleri hakkında bilgi sağlanır.
 
-[Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, yönetilen örnek, [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)dayanır ve bu, Müşterinin sanal ağ alt ağı. Temelde, boş bir alt ağda bulunan her yönetilen örnek dağıtımı yeni bir sanal küme oluşturma ile sonuçlanır.
+[Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için yönetilen örnek, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eden [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)bağımlıdır. Temelde, boş bir alt ağda bulunan her yönetilen örnek dağıtımı yeni bir sanal küme oluşturma ile sonuçlanır.
 
 Dağıtılmış yönetilen örneklerin sonraki işlemlerinin, temel alınan sanal kümesinde de etkileri olabilir. Bu, ek sanal makinelerin dağıtımı, Yeni dağıtımlar veya mevcut yönetilen örneklere güncelleştirmeler planlarken dikkate alınması gereken bir ek yük ile birlikte, yönetim işlemlerinin süresini etkiler.
 
@@ -150,17 +150,17 @@ Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
 |Kategori  |İşlem  |Uzun süre çalışan segment  |Tahmini süre  |
 |---------|---------|---------|---------|
 |**Dağıtım** |Boş bir alt ağdaki ilk örnek|Sanal küme oluşturma|işlemlerin %90 ' i 4 saat içinde sona ermesini|
-|Dağıtım |Boş olmayan bir alt ağda (örneğin, gen 4 örneklerine sahip bir alt ağdaki ilk Gen 5 örneği) başka bir donanım oluşturma örneği|Sanal küme oluşturma *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
-|Dağıtım |Boş veya boş olmayan bir alt ağda 4 sanal çekirdekler için ilk örnek oluşturma|Sanal küme oluşturma * *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
-|Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., üçüncü, vb. örnek)|Sanal küme yeniden boyutlandırma|2,5 saat içinde işlem bitiş %90|
+|Kurulum |Boş olmayan bir alt ağda (örneğin, gen 4 örneklerine sahip bir alt ağdaki ilk Gen 5 örneği) başka bir donanım oluşturma örneği|Sanal küme oluşturma *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
+|Kurulum |Boş veya boş olmayan bir alt ağda 4 sanal çekirdekler için ilk örnek oluşturma|Sanal küme oluşturma * *|işlemlerin %90 ' i 4 saat içinde sona ermesini|
+|Kurulum |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., üçüncü, vb. örnek)|Sanal küme yeniden boyutlandırma|2,5 saat içinde işlem bitiş %90|
 |**Güncelleştirme** |Örnek özelliği değişikliği (yönetici parolası, AAD oturum açma, Azure Hibrit Avantajı bayrağı)|Yok|En fazla 1 dakika|
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
-|Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 saat 5 dakika içinde tamamlanır * *|
-|Güncelleştirme |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm 220 veritabanlarının çekirdeğini sağlamak için 5 saat + saat ile sona|
-|Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik hizmet katmanı)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma<br>-Veritabanı dosyaları iliştirme|2,5 saat içinde işlem bitiş %90|
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
+|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Veritabanı dosyaları iliştirme|işlemin %90 ' u 4 saat 5 dakika içinde tamamlanır * *|
+|Güncelleştir |Örnek ölçeği 4 sanal çekirdeğe kadar (Genel Amaçlı)|-Sanal küme yeniden boyutlandırma (ilk kez yapıldıysa, sanal küme oluşturulması gerekebilir * *)<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemlerin %90 ' i, tüm 220 veritabanlarının çekirdeğini sağlamak için 5 saat + saat ile sona|
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi)|-Sanal küme yeniden boyutlandırma<br>-Always on kullanılabilirlik grubu dengeli dağıtımı|işlemin %90 ' i, tüm veritabanlarının çekirdeğini sağlamak için 2,5 saat + saat (220 GB/saat)|
 |**Üzere**|Örnek silme|Tüm veritabanları için günlük kuyruğu yedeklemesi|%90 işlem en fazla 1 dakika içinde tamamlanır.<br>Note: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silmeyi zamanlar * * *|
 |Silme|Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|İşlem %90, en fazla 1,5 saat içinde tamamlanır|
 
@@ -250,7 +250,7 @@ Yönetilen örnek dağıtım seçeneği, şirket içi veya IaaS veritabanı uygu
 
 Geçiş yaklaşımı SQL yedeklemelerini Azure Blob depolamaya kullanır. Azure Depolama Blobu 'nda depolanan yedeklemeler, [T-SQL restore komutu](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)kullanılarak yönetilen bir örneğe doğrudan geri yüklenebilir.
 
-- Wide World Importers-standart veritabanı yedekleme dosyasının nasıl geri yükleneceğini gösteren bir hızlı başlangıç için bkz. [bir yedekleme dosyasını yönetilen bir örneğe geri yükleme](sql-database-managed-instance-get-started-restore.md). Bu hızlı başlangıçta, bir yedekleme dosyasını Azure blog depolama alanına yüklemeniz ve paylaşılan erişim imzası (SAS) anahtarı kullanarak güvence altına almanız gerekir.
+- Wide World Importers-standart veritabanı yedekleme dosyasının nasıl geri yükleneceğini gösteren bir hızlı başlangıç için bkz. [bir yedekleme dosyasını yönetilen bir örneğe geri yükleme](sql-database-managed-instance-get-started-restore.md). Bu hızlı başlangıçta, bir yedekleme dosyasını Azure Blob depolama alanına yüklemeniz ve paylaşılan erişim imzası (SAS) anahtarı kullanarak güvence altına almanız gerekir.
 - URL 'den geri yükleme hakkında daha fazla bilgi için bkz. [URL 'Den yerel GERI yükleme](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
@@ -279,7 +279,7 @@ Yönetilen örnek dağıtım seçeneği, bulutta her zaman güncel olmasını sa
 - Yönetilen örnek tam fiziksel yolların belirtilmesine izin vermiyor, böylece tüm ilgili senaryolar farklı şekilde desteklenmelidir: RESTORE DB MOVE Ile desteklemez, CREATE DB fiziksel yollara izin vermez, BULK INSERT yalnızca Azure Blob 'Ları ile çalışır, vb.
 - Yönetilen örnek, Windows kimlik doğrulamasını bulut alternatifi olarak [Azure AD kimlik doğrulamasını](sql-database-aad-authentication.md) destekler.
 - Yönetilen örnek, bellek Içi OLTP nesneleri içeren veritabanları için XTP dosya grubunu ve dosyalarını otomatik olarak yönetir
-- Yönetilen örnek SQL Server Integration Services (SSIS) destekler ve SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) barındırabilir, ancak bunlar Azure Data Factory (ADF) içinde yönetilen bir Azure-SSIS Integration Runtime (IR) üzerinde yürütülür, bkz. [ADF 'de Azure-SSIS IR oluşturma ](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). SQL veritabanında SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).
+- Yönetilen örnek SQL Server Integration Services (SSIS) destekler ve SSIS paketlerini depolayan SSIS kataloğunu (SSıSDB) barındırabilir, ancak bunlar Azure Data Factory (ADF) içinde yönetilen bir Azure-SSIS Integration Runtime (IR) üzerinde yürütülür. bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). SQL veritabanında SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Yönetilen örnek yönetimi özellikleri
 
@@ -297,7 +297,7 @@ Aşağıdaki tabloda Transact SQL aracılığıyla erişilebilen, uygulamanızı
 |`@@VERSION`|Microsoft SQL Azure (RTM)-12.0.2000.8 2018-03-07 telif hakkı (C) 2018 Microsoft Corporation.|Bu değer SQL veritabanı ile aynıdır.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Bu değer SQL veritabanı ile aynıdır.|
 |`SERVERPROPERTY('EngineEdition')`|8|Bu değer, yönetilen bir örneği benzersiz şekilde tanımlar.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Tam örnek DNS adı şu biçimde:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, burada `<instanceName>` müşteri tarafından sağlanan ad sırada `<dnsPrefix>` Genel DNS adı benzersizliği garanti etme adı otomatik olarak oluşturulan parçasıdır ("wcus17662feb9ce98", örneğin)|Örnek: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Aşağıdaki biçimdeki tam örnek DNS adı:`<instanceName>` `<dnsPrefix>`. database.windows.net; burada `<instanceName>` müşteri tarafından sağlanır. `<dnsPrefix>`, genel DNS adı benzersizliği garanti eden (örneğin, "wcus17662feb9ce98") ad bir parçası olan otomatik olarak oluşturulur.|Örnek: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

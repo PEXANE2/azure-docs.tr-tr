@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services akış uç noktasına genel bakış | Microsoft Docs
-description: Bu konu, Azure Media Services akış uç noktalarına genel bir bakış sunar.
+description: Bu makale Azure Media Services akış uç noktalarına genel bir bakış sunar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016443"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885645"
 ---
 # <a name="streaming-endpoints-overview"></a>Akış uç noktalarına genel bakış  
 
@@ -28,29 +28,29 @@ ms.locfileid: "69016443"
 
 Microsoft Azure Media Services (AMS) ' de bir **akış uç noktası** , içeriği doğrudan istemci oynatıcı uygulamasına veya daha fazla dağıtım için bir Content DELIVERY Network (CDN) teslim edebilen bir akış hizmetini temsil eder. Media Services Ayrıca sorunsuz Azure CDN tümleştirme sağlar. Bir StreamingEndpoint hizmetinden giden akış canlı bir akış, isteğe bağlı bir video veya Media Services hesabınızda varlığınızın aşamalı olarak indirilmesi olabilir. Her Azure Media Services hesabı varsayılan bir StreamingEndpoint içerir. Hesap altında ek StreamingEndpoints oluşturulabilir. İki StreamingEndpoints, 1,0 ve 2,0 sürümü vardır. 10 Ocak 2017 tarihinden itibaren, yeni oluşturulan AMS hesapları sürüm 2,0 **varsayılan** streamingendpoint ' i içerecektir. Bu hesaba eklediğiniz ek akış uç noktaları da sürüm 2,0 olacaktır. Bu değişiklik mevcut hesapları etkilemez; Mevcut StreamingEndpoints sürümü 1,0 olur ve sürüm 2,0 ' ye yükseltilebilir. Bu değişiklik ile davranış, faturalandırma ve özellik değişiklikleri olacaktır (daha fazla bilgi için aşağıda belgelenen **akış türleri ve sürümleri** bölümüne bakın).
 
-Azure Media Services akış uç noktası varlığına aşağıdaki özellikleri ekledi: **Cdnprovider**, **cdnprofıle**, **streamingendpointversion**. Bu özelliklere ayrıntılı genel bakış için, bkz [](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Azure Media Services şu özellikleri akış uç noktası varlığına ekledi: **Cdnprovider**, **cdnprofıle**, **streamingendpointversion**. Bu özelliklere ayrıntılı genel bakış için [, bkz](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Bir Azure Media Services hesabı oluşturduğunuzda, **durdurulmuş** durumda sizin için varsayılan standart akış uç noktası oluşturulur. Varsayılan akış uç noktasını silemezsiniz. Hedeflenen bölgedeki Azure CDN kullanılabilirliğine bağlı olarak, varsayılan olarak yeni oluşturulan varsayılan akış uç noktası, "StandardVerizon" CDN sağlayıcısı tümleştirmesini da içerir. 
                 
 > [!NOTE]
-> Azure CDN tümleştirme, akış uç noktası başlatılmadan önce devre dışı bırakılabilir. `hostname` Ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
+> Azure CDN tümleştirme, akış uç noktası başlatılmadan önce devre dışı bırakılabilir. `hostname` ve akış URL 'si, CDN 'yi etkinleştirebakılmaksızın aynı kalır.
 
 Bu konu, akış uç noktaları tarafından sunulan ana işlevlere genel bir bakış sunar.
 
 ## <a name="naming-conventions"></a>Adlandırma kuralları
 
-Varsayılan uç nokta için:`{AccountName}.streaming.mediaservices.windows.net`
+Varsayılan uç nokta için: `{AccountName}.streaming.mediaservices.windows.net`
 
-Ek uç noktalar için:`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
+Ek uç noktalar için: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Akış türleri ve sürümleri
 
 ### <a name="standardpremium-types-version-20"></a>Standart/Premium türleri (sürüm 2,0)
 
-Media Services Ocak 2017 sürümünden başlayarak iki akış türü vardır: **Standart** (Önizleme) ve **Premium**. Bu türler, "2,0" akış uç noktası sürümünün bir parçasıdır.
+Media Services Ocak 2017 sürümü ile başlayarak, iki akış türüne sahip olursunuz: **Standart** (Önizleme) ve **Premium**. Bu türler, "2,0" akış uç noktası sürümünün bir parçasıdır.
 
 
-|Type|Açıklama|
+|Tür|Açıklama|
 |--------|--------|  
 |**Standart**|Varsayılan akış uç noktası **Standart** bir türdür, akış birimleri ayarlanarak Premium türüne değiştirilebilir.|
 |**Premium** |Bu seçenek, daha yüksek ölçek veya denetim gerektiren profesyonel senaryolar için uygundur. Akış birimlerini ayarlayarak bir **Premium** türüne geçiş yapabilirsiniz.<br/>Ayrılmış akış uç noktaları yalıtılmış ortamda canlı ve kaynaklar için rekabet etmez.|
@@ -75,25 +75,25 @@ Ocak 10 2017 sürümünden önce AMS hesapları oluşturan kullanıcılar için,
 
 ### <a name="versions"></a>Sürümler
 
-|Type|Streammingendpointversion|Ölçek birimleri|CDN|Faturalandırma|
+|Tür|Streammingendpointversion|Ölçek birimleri|CDN|Faturalandırma|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klasik|1.0|0|NA|Boş|
-|Standart akış uç noktası (Önizleme)|2.0|0|Evet|Ücretli|
-|Premium Akış Birimleri|1.0|>0|Evet|Ücretli|
-|Premium Akış Birimleri|2.0|>0|Evet|Ücretli|
+|Klasik|1.0|0|Yok|Ücretsiz|
+|Standart akış uç noktası (Önizleme)|2.0|0|Yes|Ücretli|
+|Premium Akış Birimleri|1.0|>0|Yes|Ücretli|
+|Premium Akış Birimleri|2.0|>0|Yes|Ücretli|
 
 ### <a name="features"></a>Özellikler
 
 Özellik|Standart|Premium
 ---|---|---
-Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
+İşleme |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Evet|Evet
-Dinamik paketleme|Evet|Evet
-Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek akış birimleri.
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
-Aşamalı indirme|Evet|Evet
+Dinamik şifreleme|Yes|Yes
+Dinamik paketleme|Yes|Yes
+Ölçeklendirme|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek akış birimleri.
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
+Aşamalı indirme|Yes|Yes
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım. 
 
 <sup>1</sup> yalnızca CDN bitiş noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
@@ -102,7 +102,7 @@ SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pri
 
 ## <a name="migration-between-types"></a>Türler arasında geçiş
 
-Başlangıç | Bitiş | Action
+Başlangıç fiyatı | Bitiş | Eylem
 ---|---|---
 Klasik|Standart|Kabul etmeniz gerekiyor
 Klasik|Premium| Ölçek (ek akış birimleri)
@@ -120,6 +120,6 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
