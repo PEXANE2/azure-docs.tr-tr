@@ -9,7 +9,7 @@
   items:
     - name: Telemetri gönderme
       items:
-        - name: Başlarken
+        - name: başlarken
           href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: Kavramlar
   items:
+    - name: TLS 1.2 zorlaması
+      href: tls-1.2-everywhere.md
     - name: İleti zenginleştirmelerine genel bakış
       href: iot-hub-message-enrichments-overview.md
     - name: Cihaz yönetimine genel bakış

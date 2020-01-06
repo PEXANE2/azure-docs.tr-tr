@@ -10,7 +10,7 @@ services: azure-maps
 manager: philmea
 ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
 ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/16/2019
 ms.locfileid: "72429169"
@@ -496,7 +496,7 @@ Belirli bir konumun etrafında yalnızca POı sonuçlarını almak için, [yakı
 
 ## <a name="understanding-the-responses"></a>Yanıtları anlama
 
-Seattle 'daki bir adres için Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) 'Ne bir adres arama isteği oluşturalım. Aşağıdaki istek URL 'sini dikkatle görüyorsanız, `countrySet` parametresini, Amerika Birleşik Devletler, adresi aramak için **bizimle** ayarlayacağız.
+Seattle 'daki bir adres için Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) 'Ne bir adres arama isteği oluşturalım. Aşağıdaki istek URL 'sini dikkatle görüyorsanız, `countrySet` parametresini, Amerika Birleşik Devletleri, adresi aramak için **bizimle** ayarlayacağız.
 
 **Örnek sorgu:**
 

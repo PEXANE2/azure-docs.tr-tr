@@ -9,7 +9,7 @@ ms.date: 10/04/2019
 ms.author: victorh
 ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
 ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
 ms.locfileid: "73585405"
@@ -206,7 +206,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | CD | Kongo Demokratik Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Kıyısı|
+| CI | Fildişi Sahili (Côte d’Ivoire)|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|
@@ -238,7 +238,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong ÖIB|
+| HK | Hong Kong ÖiB|
 | HN | Honduras|
 | HR | Hırvatistan|
 | HT | Haiti|
@@ -281,7 +281,7 @@ Geomatch işlecini kullanıyorsanız, seçiciler aşağıdaki iki basamaklı ül
 | ML | Mali|
 | MM | Myanmar|
 | MN | Moğolistan|
-| MO | Makao ÖIB|
+| MO | Makao ÖİB|
 | MQ | Martinik|
 | MR | Moritanya|
 | MT | Malta|

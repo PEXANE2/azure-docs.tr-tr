@@ -156,7 +156,7 @@ Bu makalede, Azure Traffic Manager **coğrafi** trafik yönlendirme yöntemi tar
 
         - OM (Umman)
 
-        - PS (Filistin Devleti)
+        - PS (Filistin Yönetimi)
 
         - QA (Qtor)
 
@@ -436,7 +436,7 @@ Bu makalede, Azure Traffic Manager **coğrafi** trafik yönlendirme yöntemi tar
 
         - MN (Moğolistan)
 
-        - MO (Makao ÖIB)
+        - MO (Makao ÖİB)
 
         - MV (Maldivler)
 

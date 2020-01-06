@@ -3,12 +3,12 @@ title: CAF Foundation şema örneğine genel bakış
 description: Azure Foundation şema örneği için Bulut Benimseme Çerçevesi’ne (CAF) genel bakış ve mimari.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 8339b7335ff2946dcd602db6ece4637ac4bc1d92
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545445"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562570"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft Bulutu Benimseme çerçevesine genel bakış
 
@@ -43,7 +43,7 @@ Tam bu öğeler [Azure Mimari Merkezi - Referans Mimarileri](/azure/architecture
 > CAF Foundation, iş yükleri için temel mimariyi hazırlar.
 > Bu işlevsel mimarinin arkasında yine iş yüklerini dağıtmanız gerekir.
 
-Daha fazla bilgi için bkz. [Azure için Microsoft Bulut Benimseme Çerçevesi - Hazır](/azure/architecture/cloud-adoption/ready/azure-readiness-guide/govern-org-compliance?tabs=AzurePolicy).
+Daha fazla bilgi için bkz. [Azure için Microsoft Bulut Benimseme Çerçevesi - Hazır](/azure/cloud-adoption-framework/ready/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

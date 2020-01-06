@@ -4,8 +4,6 @@
   items:
     - name: Azure IoT Central nedir?
       href: overview-iot-central.md
-    - name: IoT Çözümü seçenekleri
-      href: overview-iot-options.md
     - name: Kullanıcı arabirimi turu
       href: overview-iot-central-tour.md
 - name: Hızlı Başlangıçlar

@@ -22,6 +22,12 @@
       href: quickstarts/python.md
     - name: Ruby
       href: quickstarts/ruby.md
+- name: İstemci kitaplığı
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp-sdk.md
+    - name: Başlayın
+      href: quickstarts/go-sdk.md
 - name: Öğreticiler
   items:
     - name: Tek sayfalı web uygulaması

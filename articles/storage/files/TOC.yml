@@ -53,8 +53,6 @@
       items:
         - name: Yetkilendirme
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Depolama güvenliği
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Depolama şifrelemesi
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: SMB üzerinden Azure AD kimlik doğrulaması
@@ -145,7 +143,7 @@
           href: storage-sync-files-storsimple-migration.md
         - name: AzCopy ile verileri taşıma
           items:
-            - name: Başlarken
+            - name: başlarken
               href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: Dosyalar ile kullanma
               href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json

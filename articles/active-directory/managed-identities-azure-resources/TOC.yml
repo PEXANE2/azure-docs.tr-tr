@@ -22,8 +22,6 @@
           href: tutorial-vm-windows-access-storage.md
         - name: Erişim anahtarı kullanarak Azure Depolama’ya erişme
           href: tutorial-windows-vm-access-storage.md
-        - name: SAS kullanarak Azure Depolama’ya erişme
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: Azure SQL’e erişme
           href: tutorial-windows-vm-access-sql.md
         - name: Azure Key Vault’a erişme

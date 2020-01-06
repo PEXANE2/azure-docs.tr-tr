@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74842315"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443472"
 highlightedContent:
   items:
   - title: Azure AD nedir?
@@ -210,13 +210,13 @@ conceptualContent:
       text: Daha fazla göster
   - title: Kimlik koruması
     links:
-    - url: ./identity-protection/overview.md
+    - url: ./identity-protection/overview-identity-protection.md
       itemType: overview
       text: Kimlik koruması nedir?
-    - url: ./identity-protection/quickstart-sign-in-risk-policy.md
-      itemType: quickstart
-      text: Oturum riski algılandığında erişimi engelleme
-    - url: ./identity-protection/howto-unblock-user.md
+    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+      itemType: how-to-guide
+      text: Risk ilkelerini yapılandırma
+    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
       itemType: how-to-guide
       text: Kullanıcıların engelini kaldırma
     footerLink:

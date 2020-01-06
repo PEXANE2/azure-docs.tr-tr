@@ -80,7 +80,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad ve Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Birleşik Devletler Küçük Harici Adaları                |                 |                |              |      ✓     |          ✓         |
-| Amerika Birleşik Devletler                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Amerika Birleşik Devletleri                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britanya Virjin Adaları                              |                 |                |              |      ✓     |          ✓         |
@@ -105,14 +105,14 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Fiji                                                |                  |                |              |      ✓     |          ✓        |
 | Fransız Polinezyası                                    |                 |                |              |      ✓     |          ✓         |
 | Heard Adası ve McDonald Adaları                   |                 |                |              |      ✓     |          ✓         |
-| Hong Kong ÖIB                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Hong Kong ÖiB                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Endonezya                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Hindistan                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japonya                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Güney Kore                                         |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
-| Makao ÖIB                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Makao ÖİB                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malezya                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronezya                                          |                 |                |              |      ✓     |          ✓         |
 | Moğolistan                                            |                 |                |              |      ✓     |          ✓         |

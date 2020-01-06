@@ -1,5 +1,5 @@
 - name: Redis için Azure Önbelleği Belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Redis için Azure Önbelleği hakkında

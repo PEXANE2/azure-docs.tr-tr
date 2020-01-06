@@ -12,3 +12,6 @@
         - name: İlke
           tocHref: /azure/azure-monitor
           topicHref: /azure/governance/policy
+        - name: İlke
+          tocHref: /azure/key-vault
+          topicHref: /azure/governance/policy

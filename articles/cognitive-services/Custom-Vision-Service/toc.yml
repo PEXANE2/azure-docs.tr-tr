@@ -68,8 +68,6 @@
           href: export-model-python.md
     - name: Hesap verilerini dışarı aktarma veya silme
       href: ./export-delete-data.md
-    - name: Sınırlı Deneme projenizi Azure’a taşıma
-      href: ./move-your-project-to-azure.md
     - name: Uygulamanızı 3.0 API’sine güncelleştirin
       href: ./update-application-to-3.0-sdk.md
 - name: Başvuru

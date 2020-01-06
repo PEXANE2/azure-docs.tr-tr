@@ -16,7 +16,7 @@ ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: 8353c8846820aa996214e6b119a2f9027b8b6fe6
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74232442"
@@ -31,7 +31,7 @@ DynaTrace ile tümleştirdiğimiz Service Fabric kümelerinizi izlemek için bir
 
 ## <a name="datadog"></a>Datadog
 
-Dataköpek, hem Windows hem de Linux örnekleri için bir VMSS uzantısına sahiptir. Veri köpek kullanarak Windows olay günlüklerini toplayabilir ve bu nedenle Windows 'da Service Fabric platform olayları toplayabilirsiniz. Tanılama verilerinizi [buradaki veri adaylarına](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric)gönderme yönergelerine göz atın.
+Dataköpek, hem Windows hem de Linux örnekleri için bir VMSS uzantısına sahiptir. Datadog kullanarak Windows olay günlüklerini toplayabilir ve bu nedenle Windows 'da Service Fabric platform olayları toplayabilirsiniz. Tanılama verilerinizi [buradaki veri adaylarına](https://www.datadoghq.com/blog/azure-monitoring-enhancements/#integrate-with-azure-service-fabric)gönderme yönergelerine göz atın.
 
 ## <a name="appdynamics"></a>AppDynamics
 

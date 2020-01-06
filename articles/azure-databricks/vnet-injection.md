@@ -109,13 +109,13 @@ Bu şablonu kullandığınızda, alt ağ trafiğinin el ile beyaz listesini alma
 
 Uygun ortak ve özel alt ağlarla bir sanal ağ oluşturmak için, [Databricks VNET 'e ekleme Için sanal ağ şablonunu](https://azure.microsoft.com/resources/templates/101-databricks-vnet-for-vnet-injection)kullanın.
 
-Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, sanal ağla birlikte kullandığınız ağ güvenlik gruplarına el ile beyaz liste kuralları eklemeniz gerekir.
+Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, sanal ağla birlikte kullandığınız ağ güvenlik gruplarına el ile izin verilenler listesi kuralları eklemeniz gerekir.
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks çalışma alanı
 
 Ortak ve özel alt ağları olan ve düzgün şekilde yapılandırılmış ağ güvenlik grupları içeren var olan bir sanal ağa bir Azure Databricks çalışma alanı dağıtmak için, [Databricks VNET ekleme Için çalışma alanı şablonunu](https://azure.microsoft.com/resources/templates/101-databricks-workspace-with-vnet-injection)kullanın.
 
-Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, sanal ağla birlikte kullandığınız ağ güvenlik gruplarına el ile beyaz liste kuralları eklemeniz gerekir.
+Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, sanal ağla birlikte kullandığınız ağ güvenlik gruplarına el ile izin verilenler listesi kuralları eklemeniz gerekir.
 
 ## <a name="whitelisting-subnet-traffic"></a>Alt ağ trafiğini beyaz listeleme
 

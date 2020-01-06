@@ -193,7 +193,7 @@
 - name: İlgili
   items:
     - name: Azure Machine Learning
-      href: ../service/
+      href: ../
     - name: Azure Yapay Zeka Galerisi
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics

@@ -16,7 +16,7 @@ ms.date: 11/26/2019
 ms.author: b-juche
 ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
 ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74546951"
@@ -116,7 +116,7 @@ DF olarak bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceğ
 Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak bir birim oluşturabilirsiniz. 
 
 > [!IMPORTANT] 
-> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
+> NFSv 4.1 özelliğine erişim için izin verilenler listesi gerekir.  İzin verilenler listesine eklenmeyi istemek için <anffeedback@microsoft.com>bir istek gönderebilirsiniz. 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>Nasıl yaparım? kök ele geçirme etkinleştirilsin mi?

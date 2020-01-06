@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
 ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/14/2019
 ms.locfileid: "74075518"
@@ -243,7 +243,7 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 | Azure lisans türü: Kullandıkça öde| Müşteri, sipariş | Azure procures son müşterisi ve Market, doğrudan Microsoft ile imzalanmış bir "Kullandıkça öde" sözleşmesi aracılığıyla teklif sunuyor.||
 | Bulut örneği adı| Sipariş verme| Bir VM dağıtımının gerçekleştiği Microsoft Bulut.||
 | Bulut örneği adı: Azure genel| Sipariş verme| Genel genel Microsoft bulutu.|| |
-| Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.| |
+| Bulut örneği adı: Azure Kamu | Sipariş verme| Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletleri.| |
 | Müşteri şehri| Müşteri| Müşteri tarafından sunulan şehir adı. Şehir, müşterinin Azure aboneliğindeki şehirden farklı olabilir.||
 | Müşteri Iletişim dili  | Müşteri| İletişim için müşterinin tercih ettiği dil.||
 | Müşteri şirket adı | Müşteri, sipariş | Müşterinin sunduğu şirket adı. Ad, müşterinin Azure aboneliğindeki şehirden farklı olabilir.|  |

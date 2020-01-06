@@ -61,7 +61,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | CD | Kongo Demokratik Cumhuriyeti|
 | CF | Orta Afrika Cumhuriyeti|
 | CH | İsviçre|
-| CI | Fildişi Kıyısı|
+| CI | Fildişi Sahili (Côte d’Ivoire)|
 | CL | Şili|
 | CM | Kamerun|
 | CN | Çin|
@@ -93,7 +93,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | GR | Yunanistan|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong ÖIB|
+| HK | Hong Kong ÖiB|
 | HN | Honduras|
 | HR | Hırvatistan|
 | HT | Haiti|
@@ -136,7 +136,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | ML | Mali|
 | MM | Myanmar|
 | MN | Moğolistan|
-| MO | Makao ÖIB|
+| MO | Makao ÖİB|
 | MQ | Martinik|
 | MR | Moritanya|
 | MT | Malta|

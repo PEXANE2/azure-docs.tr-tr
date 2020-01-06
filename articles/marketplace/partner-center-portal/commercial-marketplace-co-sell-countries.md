@@ -126,7 +126,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Haiti                               | HT        |
 | Heard Adası ve McDonald Adaları   | HM        |
 | Honduras                            | HN        |
-| Hong Kong ÖIB                       | HK        |
+| Hong Kong ÖiB                       | HK        |
 | Macaristan                             | HU        |
 | İzlanda                             | IS        |
 | Hindistan                               | IN        |
@@ -156,7 +156,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Lihtenştayn                       | LI        |
 | Litvanya                           | LT        |
 | Lüksemburg                          | LU        |
-| Makao ÖIB                           | MO        |
+| Makao ÖİB                           | MO        |
 | Madagaskar                          | MG        |
 | Malavi                              | MW        |
 | Malezya                            | MY        |

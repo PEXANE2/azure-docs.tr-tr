@@ -9,7 +9,7 @@ ms.author: magoedte
 ms.date: 03/20/2018
 ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
 ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/24/2019
 ms.locfileid: "72899101"
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 Çözüm panosunda **yapılandırma** ' ya tıklayarak DNS Analizi yapılandırma sayfasını açın. Yapabileceğiniz iki yapılandırma değişikliği türü vardır:
 
-- **Beyaz listelenmiş etki alanı adları**. Çözüm, tüm arama sorgularını işlemez. Etki alanı adı soneklerinin beyaz bir listesini tutar. Bu beyaz listedeki etki alanı adı sonekleri ile eşleşen etki alanı adlarına çözümlenerek arama sorguları çözüm tarafından işlenmez. Beyaz listeye alınan etki alanı adlarının işlenmemesi, Azure Izleyici 'ye gönderilen verileri iyileştirmenize yardımcı olur. Varsayılan beyaz liste, www.google.com ve www.facebook.com gibi popüler genel etki alanı adlarını içerir. Kaydırma yaparak, tüm varsayılan listeyi görüntüleyebilirsiniz.
+- **Beyaz listelenmiş etki alanı adları**. Çözüm, tüm arama sorgularını işlemez. Etki alanı adı soneklerinin beyaz bir listesini tutar. Bu beyaz listedeki etki alanı adı sonekleri ile eşleşen etki alanı adlarına çözümlenerek arama sorguları çözüm tarafından işlenmez. Beyaz listeye alınan etki alanı adlarının işlenmemesi, Azure Izleyici 'ye gönderilen verileri iyileştirmenize yardımcı olur. Varsayılan izin verilenler listesi, www.google.com ve www.facebook.com gibi popüler genel etki alanı adlarını içerir. Kaydırma yaparak, tüm varsayılan listeyi görüntüleyebilirsiniz.
 
   Arama öngörülerini görüntülemek istediğiniz herhangi bir etki alanı adı sonekini eklemek için listeyi değiştirebilirsiniz. Ayrıca, arama öngörülerini görüntülemek istemediğiniz tüm etki alanı adı sonekini da kaldırabilirsiniz.
 

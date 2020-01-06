@@ -73,7 +73,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Yunanistan                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hong Kong ÖIB                       | HK        | USD          |
+| Hong Kong ÖiB                       | HK        | USD          |
 | Macaristan                             | HU        | EUR          |
 | İzlanda                             | IS        | EUR          |
 | Hindistan                               | IN        | INR          |
@@ -96,7 +96,7 @@ Azure Market ve AppSource teklifleri, müşterinin fatura adresi tarafından tan
 | Lihtenştayn                       | LI        | EUR          |
 | Litvanya                           | LT        | EUR          |
 | Lüksemburg                          | LU        | EUR          |
-| Makao ÖIB                           | MO        | USD          |
+| Makao ÖİB                           | MO        | USD          |
 | Kuzey Makedonya                     | MK        | USD          |
 | Malezya                            | MY        | USD          |
 | Malta                               | MT        | EUR          |

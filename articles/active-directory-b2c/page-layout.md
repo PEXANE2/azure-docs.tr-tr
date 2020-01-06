@@ -12,7 +12,7 @@ ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
 ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/16/2019
 ms.locfileid: "72389680"
@@ -77,7 +77,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
   - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlar
   - Chrome çevirisi desteği
 - Birleşik ve kendiliğinden onaylanan sayfa
-  - Kullanıcı adı/e-posta ve parola alanları artık HTML öğesi formunu kullanır.  Bu, artık Edge ve IE 'nin bu bilgileri düzgün bir şekilde kaydetmesine izin verir
+  - Kullanıcı adı/e-posta ve parola alanları artık HTML öğesi formunu kullanır.  Bu, artık Microsoft Edge ve IE 'nin bu bilgileri düzgün bir şekilde kaydetmesine izin verir
   
 ### <a name="110"></a>1.1.0
 

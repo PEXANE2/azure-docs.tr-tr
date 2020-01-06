@@ -166,7 +166,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Çin                     |   | Ø |
 | Cocos (Keeling) Adaları   |   | Ø |
 | Kore Demokratik Halk Cumhuriyeti |   | Ø |
-| Hong Kong ÖIB             | ✓ | ✓ |
+| Hong Kong ÖİB             | ✓ | ✓ |
 | Hindistan                     | Ø | ✓ | 
 | Endonezya                 | ✓ | ✓ |
 | İran                      |   | Ø |
@@ -179,7 +179,7 @@ Ancak, haritalar tüm bölgeler için aynı düzeyde bilgi ve doğruluk düzeyin
 | Kırgızistan                |   | Ø |
 | Laos Demokratik Halk Cumhuriyeti |   | Ø |
 | Lübnan                   | ✓ | ✓ |
-| Makao ÖIB                 | ✓ | ✓ |
+| Makao ÖİB                 | ✓ | ✓ |
 | Malezya                  | ✓ | ✓ |
 | Maldivler                  |   | Ø |
 | Moğolistan                  |   | Ø |

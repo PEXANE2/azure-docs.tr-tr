@@ -32,7 +32,7 @@ Aşağıdaki tabloda, satıcı öngörülerinde kullanılan birçok terim için 
 | **Ücretlendirme tarihi**                                      | Müşterinin ücretinin hesaplandığı Tarih (genellikle kullanım döneminin hemen ardından).                                             |
 | **Bulut örneği adı**                              | Bir VM dağıtımının gerçekleştiği Microsoft Bulut.                                   |
 | **Bulut örneği adı: Azure genel**                | Genel genel Microsoft bulutu.                           |
-| **Bulut örneği adı: Azure Kamu**        | Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletler.                           |
+| **Bulut örneği adı: Azure Kamu**        | Aşağıdaki hükümetlerden biri için kamu 'ya özgü Microsoft bulutları: Çin, Almanya veya Amerika Birleşik Devletleri.                           |
 | **Koleksiyon durumu**  | Belirli bir ücret için, faturalandırma ve toplama yaşam döngüsünün en son durumu.  Örneğin, durum koleksiyon devam ediyor, toplanmış veya para iadesi olabilir.                  |
 | **Çekirdek boyutu**  | Teklifin üzerinde çalıştığı sanal makine tarafından sunulan sanal çekirdek sayısı.               |
 | **Müşteri şehri**  | Müşteri tarafından sunulan şehir adı. Bu, müşterinin Azure aboneliğindeki şehirden farklı olabilir.  |

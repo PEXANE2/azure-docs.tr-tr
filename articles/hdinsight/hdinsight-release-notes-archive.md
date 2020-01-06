@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 217a1160595bfcbd33fe260613289951370cf409
 ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/19/2019
 ms.locfileid: "74184318"
@@ -500,7 +500,7 @@ Bu sürüm, aşağıdaki düzeltme eklerine ek olarak Hive 1.2.1 ve Hive 2.1.0 s
 
 -   [*Hive-17621*](https://issues.apache.org/jira/browse/HIVE-17621): Hcatınputformat bölünmüş hesaplama sırasında Hive-site ayarları yok sayılır.
 
--   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): cachedstore: tablo/bölümlerin seçmeli önbelleğe alınmasına izin veren ve önceden çalışırken okuma izni veren bir beyaz liste/liste listesi yapılandırmaya sahiptir.
+-   [*HIVE-17629*](https://issues.apache.org/jira/browse/HIVE-17629): cachedstore: tablo/bölümlerin seçmeli önbelleğe alınmasına izin veren ve önceden çalışırken okuma izni veren bir izin verilenler listesi/liste listesi yapılandırmaya sahiptir.
 
 -   [*HIVE-17636*](https://issues.apache.org/jira/browse/HIVE-17636): blobmağazaları için birden çok\_AGG. q testi ekleyin.
 
