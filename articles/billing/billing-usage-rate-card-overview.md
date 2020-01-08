@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449118"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure kullanımınıza ilişkin program aracılığıyla içgörü elde etmek için Azure Faturalama API’lerini kullanın
 Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak için Azure Faturalama API'lerini kullanın. Azure Kaynak Kullanımı ve RateCard API'leri maliyetlerinizi doğru tahmin etmenize ve yönetmenize yardımcı olabilir. API’ler Kaynak Sağlayıcısı olarak ve Azure Resource Manager tarafından kullanıma sunulan API ailesi kapsamında uygulanır.  
@@ -71,4 +71,4 @@ Kullanım ve RateCard API’lerinin birleşimiyle mümkün olan bazı senaryolar
 
   * [RateCard API’si kod örneği](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz [Azure Resource Manager’a Genel Bakış](../azure-resource-manager/resource-group-overview.md).
+* Azure Resource Manager hakkında daha fazla bilgi edinmek için bkz [Azure Resource Manager’a Genel Bakış](../azure-resource-manager/management/overview.md).

@@ -4,16 +4,16 @@ description: Bu makalede Azure kurumsal kaydınızla kullanılabilecek REST API'
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841430"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644537"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Kurumsal REST API'leri
 
@@ -75,7 +75,7 @@ Kimlik doğrulaması ve yetkilendirme için her çağrıda API anahtarını geç
 
 ### <a name="swagger"></a>Swagger
 
-Aşağıdaki API'ler için [Enterprise Reporting v3 API'lerinde](https://consumption.azure.com/swagger/ui/index) bir Swagger uç noktası sağlanır. Swagger API'nin incelenmesine yardımcı olur. [AutoRest](https://github.com/Azure/AutoRest) veya [Swagger CodeGen](http://swagger.io/swagger-codegen/) aracılığıyla istemci SDK'ları oluşturmak için Swagger kullanın. 1 Mayıs 2014'ten sonra sağlanan veriler API aracılığıyla kullanılabilir.
+Aşağıdaki API'ler için [Enterprise Reporting v3 API'lerinde](https://consumption.azure.com/swagger/ui/index) bir Swagger uç noktası sağlanır. Swagger API'nin incelenmesine yardımcı olur. [AutoRest](https://github.com/Azure/AutoRest) veya [Swagger CodeGen](https://swagger.io/swagger-codegen/) aracılığıyla istemci SDK'ları oluşturmak için Swagger kullanın. 1 Mayıs 2014'ten sonra sağlanan veriler API aracılığıyla kullanılabilir.
 
 ### <a name="api-response-codes"></a>API yanıt kodları
 
@@ -138,7 +138,7 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | Kullanılan Hizmet | ServiceInfo | ConsumedService |   |
 | Örnek Kimliği | Bileşen | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
-| HizmetBilgisi2 | ServiceInfo2 | ServiceInfo2 |   |
+| ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | Etiketler | Etiketler | Etiketler |   |
 | DepolamaHizmetiTanımlayıcısı   | OrderNumber | StoreServiceIdentifier   |   |
