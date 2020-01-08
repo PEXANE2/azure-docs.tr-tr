@@ -51,6 +51,9 @@
           items:
             - name: En iyi teklif listeleme deneyimleri
               href: ./gtm-offer-listing-best-practices.md
+              items:
+                - name: Kategoriler
+                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Ürünü öne çıkarma
               href: ./gtm-how-to-get-featured.md
             - name: Market içerik doğrulaması
