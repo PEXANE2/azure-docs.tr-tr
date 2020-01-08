@@ -372,6 +372,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Tanımlama bilgisi tanımları
       href: cookie-definitions.md
+    - name: Hata kodları
+      href: error-codes.md
     - name: Bölge kullanılabilirliği ve veri yerleşikliği
       href: active-directory-b2c-reference-tenant-type.md
     - name: Faturalamayı etkinleştirme
