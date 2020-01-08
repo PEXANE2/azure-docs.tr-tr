@@ -43,7 +43,7 @@
           href: vmware-azure-tutorial.md
         - name: Olağanüstü durum kurtarma tatbikatı çalıştırma
           href: tutorial-dr-drill-azure.md
-        - name: Yük devretme ve yeniden çalışma işlemlerini çalıştırma
+        - name: Azure'a yük devretme
           href: vmware-azure-tutorial-failover-failback.md
     - name: Azure'a Hyper-V VM olağanüstü durum kurtarma
       items:
@@ -57,7 +57,7 @@
           href: hyper-v-vmm-azure-tutorial.md
         - name: Olağanüstü durum kurtarma tatbikatı çalıştırma
           href: tutorial-dr-drill-azure.md
-        - name: Yük devretme ve yeniden çalışma işlemlerini çalıştırma
+        - name: Azure'a yük devretme
           href: hyper-v-azure-failover-failback-tutorial.md
     - name: Azure’a geçiş
       items:
@@ -73,7 +73,7 @@
   items:
     - name: Site Recovery hakkında sık sorulan sorular
       href: site-recovery-faq.md
-    - name: Azure VM’leri için olağanüstü durum kurtarma hakkında
+    - name: Azure VM olağanüstü durum kurtarma hakkında
       items:
         - name: Azure-Azure arası mimari
           href: azure-to-azure-architecture.md
@@ -87,9 +87,9 @@
           href: azure-vm-disaster-recovery-with-accelerated-networking.md
         - name: Azure VM olağanüstü durum kurtarma ile ExpressRoute
           href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Azure Sanal Makineleri taşıma hakkında
+    - name: Azure VM’lerini başka bir bölgeye taşıma hakkında
       href: azure-to-azure-move-overview.md
-    - name: Azure'a VMware VM olağanüstü durum kurtarma hakkında
+    - name: VMware VM olağanüstü durum kurtarma hakkında
       items:
         - name: VMware olağanüstü durum kurtarmaya genel bakış
           href: vmware-azure-about-disaster-recovery.md
@@ -103,11 +103,13 @@
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware-Azure arası mimari
           href: vmware-azure-architecture.md
+        - name: Diskleri çoğaltmadan dışlama hakkında
+          href: exclude-disks-replication.md
         - name: Azure'dan VMware'e yeniden çalışma konumu seçenekleri
           href: concepts-types-of-failback.md
         - name: VMware olağanüstü durum kurtarma için çok kiracılı destek
           href: vmware-azure-multi-tenant-overview.md
-    - name: Azure'a Hyper-V VM olağanüstü durum kurtarma hakkında
+    - name: Hyper-V VM olağanüstü durum kurtarma hakkında
       items:
         - name: Sık sorulan sorular
           href: hyper-v-azure-common-questions.md
@@ -115,13 +117,17 @@
           href: hyper-v-azure-support-matrix.md
         - name: Hyper-V-Azure arası mimari
           href: hyper-v-azure-architecture.md
-    - name: Azure'a fiziksel sunucu olağanüstü durum kurtarma hakkında
+        - name: Diskleri çoğaltmadan dışlama hakkında
+          href: exclude-disks-replication.md
+    - name: Fiziksel sunucu olağanüstü durum kurtarma hakkında
       items:
         - name: VMware’dan/fizikselden Azure’a destek matrisi
           href: vmware-physical-azure-support-matrix.md
         - name: Fiziksel sunucu-Azure arası mimari
           href: physical-azure-architecture.md
-    - name: Azure'a olağanüstü durum kurtarma için ağ iletişimi hakkında
+        - name: Diskleri çoğaltmadan dışlama hakkında
+          href: exclude-disks-replication.md
+    - name: Olağanüstü durum kurtarma için ağ iletişimi hakkında
       items:
         - name: Site Recovery ile Azure Traffic Manager
           href: concepts-traffic-manager-with-site-recovery.md
@@ -131,7 +137,9 @@
           href: concepts-network-security-group-with-site-recovery.md
         - name: Site Recovery ile genel IP adreslerini kullanma
           href: concepts-public-ip-address-with-site-recovery.md
-    - name: Yük devretme ve kurtarma planları hakkında
+    - name: Yük devretme ve yeniden çalışma hakkında
+      href: failover-failback-overview.md
+    - name: Kurtarma planları hakkında
       href: recovery-plan-overview.md
     - name: Azure’a geçiş hakkında
       href: migrate-overview.md
@@ -231,13 +239,13 @@
               items:
                 - name: Mobility hizmetine genel bakış ve yükleme
                   href: vmware-physical-mobility-service-overview.md
-                - name: Mobility hizmetinin gönderme yüklemesini hazırlama
+                - name: Göndererek yükleme için hazırlanma
                   href: vmware-azure-install-mobility-service.md
-                - name: System Center Configuration Manager ile Mobility hizmetini dağıtma
+                - name: Mobility hizmetinin dağıtımını otomatikleştirin
                   href: vmware-azure-mobility-install-configuration-mgr.md
             - name: VMware VM’leri için çoğaltmayı etkinleştirme
               href: vmware-azure-enable-replication.md
-            - name: Diskleri dışlama
+            - name: Diskleri çoğaltmanın dışında tutma
               href: vmware-azure-exclude-disk.md
             - name: İzlenecek yol-VMWare VM’leri için çoğaltmayı çok kiracılı bir şekilde ve CSP ile ayarlama
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
@@ -249,17 +257,19 @@
               href: site-recovery-test-failover-to-azure.md
             - name: Azure'a yük devretme işlemini çalıştırma
               href: site-recovery-failover.md
-            - name: Azure’dan şirket içi VMware’e yeniden koruma
+            - name: Yeniden korumaya/yeniden çalışmaya hazırlanma
+              href: vmware-azure-prepare-failback.md
+            - name: Azure’dan şirket içi ortama yeniden koruma
               href: vmware-azure-reprotect.md
-            - name: Azure’dan VMware’e geçerek yeniden çalışma
+            - name: Azure’dan şirket içine yeniden çalışma
               href: vmware-azure-failback.md
-            - name: Azure'da yeniden çalışma işlem sunucularını ayarlama ve yönetme
+            - name: Azure'da yeniden çalışma işlem sunucularını ayarlama
               href: vmware-azure-set-up-process-server-azure.md
             - name: Yeniden çalışma için bir Linux ana hedef sunucusu ayarlama
               href: vmware-azure-install-linux-master-target.md
         - name: Yönetme
           items:
-            - name: VMware için mobility aracısını yönetme
+            - name: Mobility aracısını yönetme
               href: vmware-physical-manage-mobility-service.md
             - name: VMware için yapılandırma sunucusunu yönetme
               href: vmware-azure-manage-configuration-server.md
@@ -303,9 +313,9 @@
           href: physical-to-azure-failover-failback.md
         - name: Yönetme
           items:
-            - name: Fiziksel sunucu için mobility aracısını yönetme
+            - name: Mobility hizmetini yönetme
               href: vmware-physical-manage-mobility-service.md
-            - name: Fiziksel sunucu çoğaltması için yapılandırma sunucusunu yönetme
+            - name: Yapılandırma sunucusunu yönetme
               href: physical-manage-configuration-server.md
             - name: İşlem sunucularını yönetme
               href: vmware-azure-manage-process-server.md
@@ -345,7 +355,7 @@
           items:
             - name: Hyper-V VM’lerinde olağanüstü durum kurtarmada ağ eşlemesini hazırlama
               href: hyper-v-vmm-network-mapping.md
-            - name: Hyper-V’den Azure’a geçişte diskleri çoğaltmanın dışında tutma
+            - name: Diskleri çoğaltmanın dışında tutma
               href: hyper-v-exclude-disk.md
         - name: Yük devretme ve yeniden çalışma işlemlerini çalıştırma
           items:

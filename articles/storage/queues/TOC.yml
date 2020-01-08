@@ -13,8 +13,16 @@
           href: storage-quickstart-queues-portal.md
     - name: Kuyruklarla geliştirme
       items:
-        - name: .NET
+        - name: .NET (v12)
           href: storage-quickstart-queues-dotnet.md
+        - name: .NET (v11)
+          href: storage-quickstart-queues-dotnet-legacy.md
+        - name: Java (v12)
+          href: storage-quickstart-queues-java.md
+        - name: Python (v12)
+          href: storage-quickstart-queues-python.md
+        - name: JavaScript (v12)
+          href: storage-quickstart-queues-nodejs.md
 - name: Öğreticiler
   items:
     - name: Azure depolama kuyrukları ile çalışma
@@ -31,11 +39,11 @@
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Güvenlik
       items:
-        - name: Güvenliğe genel bakış
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Güvenlik önerileri
+          href: security-recommendations.md
         - name: Azure Depolama şifrelemesi
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Yetkilendirme
+        - name: Veri işlemlerini yetkilendirme
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
             - name: Azure AD ile kimlik doğrulama ve yetkilendirme
@@ -44,6 +52,8 @@
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: SAS ile yetkilendirme
               href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Yönetim işlemlerini yetkilendirme
+          href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Gelişmiş tehdit koruması
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Yerleşik güvenlik denetimleri
@@ -65,12 +75,8 @@
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: RA-GRS kullanarak HA Uygulamaları tasarlama
           href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Performans ve ölçeklenebilirlik
-      items:
-        - name: Ölçeklenebilirlik ve performans hedefleri
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Performans ve ölçeklenebilirlik denetim listesi
-          href: storage-performance-checklist.md
+    - name: Performans ve ölçeklenebilirlik denetim listesi
+      href: storage-performance-checklist.md
     - name: Eşzamanlılık
       href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: İzleme ve sorun giderme
@@ -99,9 +105,7 @@
       items:
         - name: Depolama hesabı oluşturma
           displayName: 'resource manager, resource manager template, template, ARM'
-          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Depolama hesabını yönetme
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Depolama hesabını yükseltme
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Kuyruk verilerinin güvenliğini sağlama
@@ -112,8 +116,10 @@
               items:
                 - name: Portal
                   href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell veya Azure CLI
-                  href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: RBAC ile erişim haklarını yönetme
               items:
                 - name: Portal
@@ -130,6 +136,8 @@
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Paylaşılan Anahtar ile yetkilendirme
               items:
+                - name: Hesap anahtarlarını görüntüleme ve yönetme
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Bağlantı dizelerini yapılandırma
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Azure Depolama REST API’sini kullanma
@@ -202,6 +210,14 @@
           href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Başvuru
   items:
+    - name: Ölçeklenebilirlik ve performans hedefleri
+      items:
+        - name: Kuyruk depolama
+          href: scalability-targets.md
+        - name: Standart depolama hesapları
+          href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Depolama kaynak sağlayıcısı
+          href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure PowerShell
       href: /powershell/module/az.storage
     - name: Azure CLI

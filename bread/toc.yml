@@ -139,6 +139,10 @@
     - name: Azure İzleyici
       tocHref: /azure/azure-monitor/
       topicHref: /azure/azure-monitor/
+      items:
+        - name: Application Insights
+          tocHref: /azure/azure-monitor/azure-monitor-app-hub
+          topicHref: /azure/azure-monitor/azure-monitor-app-hub
     - name: Azure Spatial Anchors
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
@@ -170,7 +174,7 @@
     - name: CloudSimple tarafından sunulan Azure VMware Çözümü
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
-    - name: Azure portal özelleştirmesi
+    - name: Azure portal belgeleri
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/\
     - name: Nesnelerin İnterneti
@@ -226,6 +230,19 @@
     - name: Resource Manager
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
+      items:
+        - name: Şablonlar
+          tocHref: /azure/azure-resource-manager/templates/
+          topicHref: /azure/azure-resource-manager/templates/
+        - name: Yönetim
+          tocHref: /azure/azure-resource-manager/management/
+          topicHref: /azure/azure-resource-manager/management/
+        - name: Yönetilen Uygulamalar
+          tocHref: /azure/azure-resource-manager/managed-applications/
+          topicHref: /azure/azure-resource-manager/managed-applications/
+        - name: Azure Özel Sağlayıcılar
+          tocHref: /azure/azure-resource-manager/custom-providers/
+          topicHref: /azure/azure-resource-manager/custom-providers/
     - name: SignalR Service
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -659,6 +676,9 @@
         - name: Geliştirme
           tocHref: /azure/security/develop/
           topicHref: /azure/security/develop/
+        - name: Karşılaştırmalar
+          tocHref: /azure/security/benchmarks/
+          topicHref: /azure/security/benchmarks/
     - name: Güvenlik Merkezi
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/

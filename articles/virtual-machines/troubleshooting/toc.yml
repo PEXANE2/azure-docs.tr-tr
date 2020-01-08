@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: 'Hizmetleri Yeniden Başlatma, Kapatma veya Durdurma'
+      href: boot-error-troubleshoot-windows.md
 - name: Cihaz adları değiştirildi
   href: troubleshoot-device-names-problems.md
 - name: VM kurtarma erişimi

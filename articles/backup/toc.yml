@@ -36,6 +36,14 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: Dosyaları Windows Server’a geri yükleme
       href: tutorial-backup-restore-files-windows-server.md
+    - name: Azure VM’lerindeki SAP HANA veritabanları – CLI kullanma
+      items:
+        - name: SAP HANA veritabanlarını yedekleme - CLI
+          href: tutorial-sap-hana-backup-cli.md
+        - name: SAP HANA veritabanlarını geri yükleme - CLI
+          href: tutorial-sap-hana-restore-cli.md
+        - name: Yedeklenmiş SAP HANA veritabanlarını yönetme - CLI
+          href: tutorial-sap-hana-manage-cli.md
 - name: Örnekler
   items:
     - name: Azure PowerShell
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: Azure VM’lerindeki SAP HANA veritabanları
       items:
+        - name: Azure VM’lerinde SAP HANA Yedeklemesi hakkında
+          href: sap-hana-db-about.md
         - name: Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
           href: backup-azure-sap-hana-database.md
         - name: Azure VM’lerindeki SAP HANA veritabanlarını geri yükleme

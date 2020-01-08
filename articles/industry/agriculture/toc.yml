@@ -1,42 +1,42 @@
 - name: Genel Bakış
   items:
-    - name: FarmBeats nedir?
-      href: overview.md
+    - name: Azure FarmBeats nedir?
+      href: overview-azure-farmbeats.md
 - name: Öğreticiler
   expanded: true
   items:
     - name: Toprak nemi haritası oluşturma
-      href: generate-soil-moisture-map.md
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Geçmiş telemetri verilerini alma
-      href: ingest-historical-telemetry-data.md
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
 - name: Kavramlar
   items:
     - name: Tümleştirme desenleri
-      href: integration-patterns.md
+      href: integration-patterns-in-azure-farmbeats.md
     - name: Algılayıcı iş ortağı tümleştirmesi
-      href: sensor-partner-integration.md
+      href: sensor-partner-integration-in-azure-farmbeats.md
     - name: Görüntüleme iş ortağı tümleştirmesi
-      href: imagery-partner-integration.md
+      href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Nasıl Yapılır Kılavuzları
   items:
-    - name: FarmBeats'i dağıtma
-      href: prepare-for-deployment.md
+    - name: Azure FarmBeats'i yükleme
+      href: install-azure-farmbeats.md
     - name: Kullanıcıları yönetme
-      href: manage-users.md
+      href: manage-users-in-azure-farmbeats.md
     - name: Grupları yönetme
-      href: manage-farms.md
+      href: manage-farms-in-azure-farmbeats.md
     - name: Algılayıcı verilerini alma
       href: get-sensor-data-from-sensor-partner.md
     - name: Haritalar oluşturma
-      href: generate-maps.md
+      href: generate-maps-in-azure-farmbeats.md
     - name: Kuralları yapılandırma ve uyarıları yönetme
-      href: configure-rules-alerts.md
+      href: configure-rules-alerts-in-azure-farmbeats.md
     - name: Dron görüntülerini alma
-      href: get-drone-imagery.md
+      href: get-drone-imagery-in-azure-farmbeats.md
 - name: Sorun giderme
   items:
-    - name: FarmBeats'in sorunlarını giderme
-      href: troubleshoot-project-farmbeats.md
+    - name: Azure FarmBeats sorunlarını giderme
+      href: troubleshoot-azure-farmbeats.md
 - name: Başvuru
   items: null
-  href: references-for-farmbeats.md
+  href: references-for-azure-farmbeats.md

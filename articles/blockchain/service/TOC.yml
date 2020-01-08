@@ -61,23 +61,23 @@
       href: data-manager-cosmosdb.md
 - name: Kaynaklar
   items:
+    - name: Azure Blok Zinciri geliştirme seti
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Blok Zinciri REST API
       href: 'https://docs.microsoft.com/rest/api/blockchain/'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Azure Blok Zinciri Hizmeti Visual Studio Code uzantısı
-      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Kod örnekleri
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Topluluk
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Forum
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN destek forumu
       href: 'https://aka.ms/workbenchforum'
+    - name: Topluluk desteği
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Stack Overflow desteği
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
     - name: Ürün geri bildirimi
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
     - name: Bölge kullanılabilirliği
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

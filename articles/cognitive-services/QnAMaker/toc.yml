@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: Postman veya cURL ile yanıtlar alma
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Toplu iş dosyasıyla test etme
+      href: Quickstarts/batch-testing.md
     - name: REST API’sini kullanma
       items:
         - name: Yeni bilgi bankası oluşturma
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: Bilgi bankası yayımlama
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: Yanıt alma

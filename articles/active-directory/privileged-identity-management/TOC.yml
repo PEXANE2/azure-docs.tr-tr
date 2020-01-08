@@ -45,6 +45,8 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD rollerini yönetme
       items:
+        - name: Özellik güncelleştirmesi
+          href: azure-ad-roles-features.md
         - name: Rol atama
           href: pim-how-to-add-role-to-user.md
         - name: İstekleri onaylama

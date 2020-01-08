@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: Havuza alınmış konak havuzları için yük dengeleme
           href: configure-host-pool-load-balancing.md
+        - name: Kişisel masaüstü atama türü
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: Windows Sanal Masaüstü lisansı kullanma
       href: apply-windows-license.md
     - name: Oturum konak görüntüsünü özelleştirme
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: Akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Tanılama aracını dağıtma
-      href: deploy-diagnostics.md
+    - name: Hizmet tanılamalarını kullanma
+      items:
+        - name: Tanılama aracını dağıtma
+          href: deploy-diagnostics.md
+        - name: Log Analytics ile tanılamaları kullanma
+          href: diagnostics-log-analytics.md
     - name: Yerleşik uygulamaları yayımlama
       href: publish-apps.md
     - name: MSIX uygulama iliştirmeyi ayarlama
@@ -78,8 +84,6 @@
   items:
     - name: Windows Sanal Masaüstü ortamı
       href: environment-setup.md
-    - name: Uzak oturumlar için bant genişliği önerileri
-      href: bandwidth-recommendations.md
     - name: Kullanıcı bağlantı gecikmesini belirleme
       href: connection-latency.md
     - name: Windows Sanal Masaüstü'ne temsilci erişimi
@@ -110,8 +114,10 @@
       href: troubleshoot-windows-7-vm.md
     - name: Windows Sanal Masaüstü yönetim aracı sorunlarını giderme
       href: troubleshoot-management-tool.md
-    - name: Uzak Masaüstü istemcisi bağlantıları
-      href: troubleshoot-client-connection.md
+    - name: Uzak Masaüstü hizmeti bağlantıları
+      href: troubleshoot-service-connection.md
+    - name: Uzak Masaüstü istemcisi sorunları
+      href: troubleshoot-client.md
     - name: Windows Sanal Masaüstü PowerShell
       href: troubleshoot-powershell.md
     - name: Grafik performansı sorunlarını tanılama

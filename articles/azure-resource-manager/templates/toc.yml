@@ -1,0 +1,261 @@
+- name: Azure Resource Manager şablonu belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Resource Manager şablonları nelerdir?
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Şablon oluşturma - portal
+      href: quickstart-create-templates-use-the-portal.md
+    - name: Şablon oluşturma - VS Code
+      href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Şablon oluşturma - Visual Studio
+      href: create-visual-studio-deployment-project.md
+    - name: Şablon oluşturma - IntelliJ IDEA
+      href: create-templates-use-intellij.md
+- name: Öğreticiler
+  items:
+    - name: Başlangıç
+      items:
+        - name: 1 - İlk şablonu oluşturma
+          href: template-tutorial-create-first-template.md
+        - name: 2 - Kaynak ekleme
+          href: template-tutorial-add-resource.md
+        - name: 3 - Parametre ekleme
+          href: template-tutorial-add-parameters.md
+        - name: 4 - Şablon işlevleri ekleme
+          href: template-tutorial-add-functions.md
+        - name: 5 - Değişkenleri ekleme
+          href: template-tutorial-add-variables.md
+        - name: 6 - Çıkışları ekleme
+          href: template-tutorial-add-outputs.md
+        - name: 7 - Dışarı aktarılan şablonu kullanma
+          href: template-tutorial-export-template.md
+        - name: 8 - Hızlı başlangıç şablonu kullanma
+          href: template-tutorial-quickstart-template.md
+        - name: 9 - Etiketleri ekleme
+          href: template-tutorial-add-tags.md
+        - name: 10 - Parametre dosyasını kullanma
+          href: template-tutorial-use-parameter-file.md
+    - name: Gelişmiş
+      items:
+        - name: Şablon başvurusunu kullanma
+          href: template-tutorial-create-encrypted-storage-accounts.md
+        - name: Birden çok örnek oluşturma
+          displayName: 'iteration,copy'
+          href: template-tutorial-create-multiple-instances.md
+        - name: Kaynak dağıtım sırasını ayarlama
+          displayName: 'dependent resources, dependency'
+          href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: Koşulları kullanma
+          href: template-tutorial-use-conditions.md
+        - name: Key Vault oluşturma
+          displayName: secrets
+          href: template-tutorial-use-key-vault.md
+        - name: Bağlı şablonlar oluşturma
+          href: template-tutorial-create-linked-templates.md
+        - name: VM uzantılarını dağıtma
+          displayName: virtual machine extensions
+          href: template-tutorial-deploy-vm-extensions.md
+        - name: SQL uzantılarını dağıtma
+          href: template-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Güvenli yapıtlar
+          href: template-tutorial-secure-artifacts.md
+        - name: Azure Pipelines ile sürekli tümleştirme
+          displayName: DevOps
+          href: template-tutorial-use-azure-pipelines.md
+        - name: VS dağıtım betiğini Az PowerShell kullanacak şekilde güncelleştirme
+          href: update-visual-studio-deployment-script.md
+        - name: Güvenli dağıtım uygulamalarını kullanma
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Dağıtım Yöneticisi’nde sistem durumu denetimini kullanma
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: Şablon dağıtımı sorunlarını giderme
+          href: template-tutorial-troubleshoot.md
+- name: Örnekler
+  items:
+    - name: Azure Hızlı Başlangıç Şablonları
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: Şablon örnekleri
+      href: template-samples.md
+- name: Kavramlar
+  items:
+    - name: Şablon en iyi uygulamalar
+      href: template-best-practices.md
+    - name: Bulut tutarlılığına yönelik şablonlar
+      href: templates-cloud-consistency.md
+    - name: Dağıtım modları
+      href: deployment-modes.md
+    - name: Dağıtım Yöneticisi
+      items:
+        - name: Genel Bakış
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: Sistem durumu denetimi
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
+- name: Nasıl yapılır
+  items:
+    - name: Şablon oluşturma
+      items:
+        - name: VS Code kullanma
+          href: use-vs-code-to-create-template.md
+        - name: Şablon ifadeleri yazma
+          href: template-expressions.md
+        - name: Parametreler
+          href: template-parameters.md
+        - name: Değişkenler
+          href: template-variables.md
+        - name: Kullanıcı tanımlı işlevler
+          href: template-user-defined-functions.md
+        - name: Kaynaklar
+          items:
+            - name: Alt kaynak adı ve türü
+              href: child-resource-name-type.md
+            - name: Koşullu dağıtım
+              href: conditional-resource-deployment.md
+            - name: Kaynak bağımlılıkları ayarlama
+              href: define-resource-dependency.md
+            - name: Kaynak konumu ayarlama
+              href: resource-location.md
+            - name: Şablon uzantılarını kullanma
+              href: add-resource-extensions.md
+        - name: Çıkışlar
+          href: template-outputs.md
+        - name: Şablonları modüllere ayırma
+          displayName: 'linked templates, nested templates'
+          href: linked-templates.md
+        - name: Birden çok örnek oluşturma
+          href: create-multiple-instances.md
+        - name: Abonelik düzeyi kaynakları
+          href: deploy-to-subscription.md
+        - name: Yönetim grubu düzeyi kaynakları
+          href: deploy-to-management-group.md
+    - name: Şablon dağıtma
+      items:
+        - name: Dağıtma - portal
+          displayName: deployment
+          href: deploy-portal.md
+        - name: Dağıtma - CLI
+          displayName: deployment
+          href: deploy-cli.md
+        - name: Dağıtma - PowerShell
+          displayName: deployment
+          href: deploy-powershell.md
+        - name: Dağıtma - REST API
+          displayName: deployment
+          href: deploy-rest.md
+        - name: Durum çözümlemesi dağıtımı
+          href: template-deploy-what-if.md
+        - name: Hata durumunda yeniden dağıtma
+          displayName: rollback
+          href: rollback-on-error.md
+        - name: SAS belirteciyle şablon güvenliğini sağlama
+          href: secure-template-with-sas-token.md
+        - name: Birden çok kaynak grubuna veya aboneliğe dağıtma
+          href: cross-resource-group-deployment.md
+    - name: Parametreleri sağlama
+      items:
+        - name: Parametre dosyası oluşturma
+          href: parameter-files.md
+        - name: Hassas değerleri geçirme
+          displayname: key vault
+          href: key-vault-parameter.md
+    - name: CI/CD
+      items:
+        - name: İşlem hatları ile VS projesi
+          href: add-template-to-azure-pipelines.md
+    - name: Şablonu dışarı aktarma
+      href: export-template-portal.md
+    - name: Dağıtım geçmişini görüntüleme
+      href: deployment-history.md
+    - name: Dağıtımlarla ilgili sorunları giderme
+      items:
+        - name: Dağıtım hatalarını giderme
+          href: common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: error-storage-account-name.md
+        - name: DeploymentQuotaExceeded
+          href: deployment-quota-exceeded.md
+        - name: InvalidTemplate
+          href: error-invalid-template.md
+        - name: Linux dağıtım sorunları
+          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: error-register-resource-provider.md
+        - name: NotFound
+          href: error-not-found.md
+        - name: ParentResourceNotFound
+          href: error-parent-resource.md
+        - name: Linux için sağlama ve ayırma sorunları
+          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Windows için sağlama ve ayırma sorunları
+          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: error-policy-requestdisallowedbypolicy.md
+        - name: ReservedResourceName
+          href: error-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: error-resource-quota.md
+        - name: SkuNotAvailable
+          href: error-sku-not-available.md
+        - name: Windows dağıtım sorunları
+          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+- name: Başvuru
+  items:
+    - name: Şablon dosya yapısı
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: template-syntax.md
+    - name: Şablon başvurusu
+      href: /azure/templates/
+    - name: Şablon işlevleri
+      items:
+        - name: Tüm işlevler
+          href: template-functions.md
+        - name: Dizi ve nesne işlevleri
+          href: template-functions-array.md
+        - name: Karşılaştırma işlevleri
+          href: template-functions-comparison.md
+        - name: Dağıtım işlevleri
+          href: template-functions-deployment.md
+        - name: Mantıksal işlevler
+          href: template-functions-logical.md
+        - name: Sayısal işlevler
+          href: template-functions-numeric.md
+        - name: Kaynak işlevleri
+          href: template-functions-resource.md
+        - name: Dize işlevleri
+          href: template-functions-string.md
+    - name: Kaynak özellikleri
+      items:
+        - name: Tam modda silme
+          href: complete-mode-deletion.md
+        - name: Uzantı kaynak türleri
+          href: extension-resource-types.md
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: Kaynaklar
+  items:
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

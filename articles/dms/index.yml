@@ -2,18 +2,18 @@
 title: Azure Veritabanı Geçiş Hizmeti belgeleri
 summary: Azure Veritabanı Geçiş Hizmeti çok kısa kapalı kalma süreleriyle birden çok veri kaynağından Azure Veri platformlarına sorunsuz geçiş sağlar. Hizmet, geçişi yapmadan önce yapılması gereken değişiklikler konusunda size yol gösteren önerilerin sağlandığı değerlendirme raporlarını oluşturmak için Data Migration Yardımcısı'nı kullanır. Geçiş işlemine başlamaya hazır olduğunuzda, Azure Veritabanı Geçiş Hizmeti tüm gerekli adımları uygular.
 metadata:
-  description: " Azure Veritabanı Geçiş Hizmeti'ni kullanarak çok kısa kapalı kalma süreleriyle birden çok veri kaynağından Azure Veri platformlarına sorunsuz geçişler yapmayı öğrenin."
+  description: Azure Veritabanı Geçiş Hizmeti'ni kullanarak çok kısa kapalı kalma süreleriyle birden çok veri kaynağından Azure Veri platformlarına sorunsuz geçişler yapmayı öğrenin.
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/25/2019
+  ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 1d064144d040a45fbc655879a6869da4ceaa4b79
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73584003"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437873"
 landingContent:
 - title: Azure Veritabanı Geçiş Hizmeti hakkında
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: quickstart-create-data-migration-service-portal.md
     - text: Karma modda hizmet oluşturma – Portal
       url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: Bilinen sorunlar - Karma modu kullanma
+      url: known-issues-dms-hybrid-mode.md
   - linkListType: video
     links:
     - text: Azure Veri Geçiş Hizmetine Giriş
@@ -65,6 +69,8 @@ landingContent:
     links:
     - text: Bilinen sorunlar - SQL Veritabanı tek veritabanına çevrimiçi geçiş
       url: known-issues-azure-sql-online.md
+    - text: Bilinen sorunlar - SQL Veritabanı yönetilen örneğine çevrimiçi geçiş
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: SQL Veritabanı yönetilen örneği geçişlerinin ağ topolojileri
       url: resource-network-topologies.md
     - text: SQL Server'dan SQL Veritabanı yönetilen örneğine çevrimiçi geçişler için özel roller
@@ -105,7 +111,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Veri geçişi senaryolarına göre hizmet ve araçlar
+    - text: Veri geçişi senaryolarına göre hizmetler ve araçlar
       url: dms-tools-matrix.md
     - text: Veritabanı Geçiş Kılavuzu
       url: https://datamigration.microsoft.com/

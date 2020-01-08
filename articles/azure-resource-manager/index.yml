@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Azure Resource Manager belgeleri
-summary: Resource Manager şablonu, projenizin altyapısını ve yapılandırmasını tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır.
+summary: Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure çözümlerinizi güvenilir bir şekilde dağıtmak ve yönetmek için altyapıyı kod olarak kullanın.
+brand: azure
 metadata:
   title: Azure Resource Manager belgeleri
-  description: Azure Resource Manager şablonu geliştirip bunları Azure kaynaklarını dağıtmak için kullanmayı öğrenin
-  services: azure-resource-manager
+  description: Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir.
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483435"
-landingContent:
-- title: Resource Manager hakkında
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642481"
+highlightedContent:
+  items:
+  - title: Şablonlar nelerdir?
+    itemType: overview
+    url: templates/overview.md
+  - title: İlk şablonunuzu oluşturma
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: Resource Manager nedir?
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: Resource Manager şablonlarını dağıtma
     links:
-    - text: Resource Manager nedir?
-      url: resource-group-overview.md
-    - text: Resource Manager şablonu nedir?
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: Genel Bakış
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: Başlangıç öğretici serisi
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: Şablon dosya yapısı
+    - url: templates/template-functions.md
+      itemType: reference
+      text: Şablon işlevleri
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: Dağıtma
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: En iyi uygulamalar
+    footerLink:
+      url: templates/index.yml
+      text: Daha fazla göster
+  - title: Kaynakları yönetme
     links:
-    - text: En iyi uygulamalar
-      url: template-best-practices.md
-    - text: Dağıtım modları
-      url: deployment-modes.md
-    - text: Bağlı şablonlar
-      url: resource-group-linked-templates.md
-    - text: Abonelik düzeyi dağıtımı
-      url: deploy-to-subscription.md
-    - text: Dağıtım Yöneticisi
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: Genel Bakış
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: Kaynakları etiketleme
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: Kaynakları taşıma
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: Kaynakları kilitleme
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: Kaynak sağlayıcıları ve türleri
+    footerLink:
+      url: management/index.yml
+      text: Daha fazla göster
+  - title: Yönetilen Uygulamalar
     links:
-    - text: Yenilikler
-      url: https://youtu.be/3D-JIKShrws
-- title: Başlarken
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: Genel Bakış
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: Hizmet kataloğu uygulaması yayımlama
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: Kullanıcı arabirimi tanımı oluşturma
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: Market'e ekleme
+    footerLink:
+      url: managed-applications/index.yml
+      text: Daha fazla göster
+  - title: Azure Özel Sağlayıcılar
     links:
-    - text: Şablon oluşturma - portal
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: şablon oluşturma - VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: şablon oluşturma - Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: Başlangıç öğretileri
-      url: template-tutorial-create-first-template.md
-    - text: Birden çok örnek dağıtma
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: Dağıtım sırasını ayarlama
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: Anahtar kasasını tümleştirme
-      url: resource-manager-tutorial-use-key-vault.md
-- title: Şablon geliştirme
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: VS Code kullanma
-      url: resource-manager-tools-vs-code.md
-    - text: İşlev kullanma
-      url: resource-group-template-functions.md
-    - text: Parametreleri tanımlama
-      url: template-parameters.md
-    - text: Değişkenleri tanımlama
-      url: template-variables.md
-    - text: Kaynakları tanımlama
-      url: child-resource-name-type.md
-    - text: Çıktıları tanımlama
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Azure Hızlı Başlangıç şablonları
-      url: template-deployment-overview.md
-- title: Şablon dağıtma
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: PowerShell kullanarak
-      url: resource-group-template-deploy.md
-    - text: CLI kullanarak
-      url: resource-group-template-deploy-cli.md
-    - text: Portalı kullanarak
-      url: resource-group-template-deploy-portal.md
-    - text: REST API kullanarak
-      url: resource-group-template-deploy-rest.md
-- title: Şablonları yönetme
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Şablonları dışarı aktarma
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: Kaynakları yönetme
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Kaynakları taşıma
-      url: resource-group-move-resources.md
-    - text: Kaynakları etiketleme
-      url: resource-group-using-tags.md
-    - text: Kaynakları kilitleme
-      url: resource-group-lock-resources.md
-- title: İzleme ve sorun giderme
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Etkinlik günlüklerini görüntüleme
-      url: resource-group-audit.md
-    - text: Dağıtım işlemini görüntüleme
-      url: resource-manager-deployment-operations.md
-    - text: Dağıtım hatalarını giderme
-      url: resource-manager-common-deployment-errors.md
-- title: Başvuru içeriğini keşfetme
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Kaynak sağlayıcıları ve türleri
-      url: resource-manager-supported-services.md
-    - text: Şablon başvurusu
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: Genel Bakış
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: Özel sağlayıcı oluşturma
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: Özel eylemler ve kaynaklar oluşturma
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: Azure REST API'sine özel eylemler ekleme
+    footerLink:
+      url: custom-providers/index.yml
+      text: Daha fazla göster

@@ -115,11 +115,11 @@
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Güvenlik
           items:
-            - name: Güvenliğe genel bakış
-              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Güvenlik önerileri
+              href: security-recommendations.md
             - name: Azure Depolama şifrelemesi
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Yetkilendirme
+            - name: Veri işlemlerini yetkilendirme
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
                 - name: Azure AD ile yetkilendir
@@ -130,6 +130,8 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Bloblara anonim erişim
                   href: storage-manage-access-to-resources.md
+            - name: Yönetim işlemlerini yetkilendirme
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Sabit bloblar
               href: storage-blob-immutable-storage.md
             - name: Gelişmiş tehdit koruması
@@ -165,8 +167,6 @@
               href: storage-lifecycle-management-concepts.md
         - name: 'Performans, ölçeklendirme ve maliyet iyileştirmesi'
           items:
-            - name: Ölçeklenebilirlik ve performans hedefleri
-              href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Performans ve ölçeklenebilirlik denetim listesi
               href: storage-performance-checklist.md
             - name: Blob depolamada gecikme süresi
@@ -259,11 +259,9 @@
           items:
             - name: Genel amaçlı depolama hesabı oluşturma
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
-              href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Blok blobu depolama hesabı oluşturma
               href: storage-blob-create-account-block-blob.md
-            - name: Depolama hesabını yönetme
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Depolama hesabını yükseltme
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Hesap türünü ve SKU adını alma (.NET)
@@ -276,8 +274,6 @@
               href: storage-blob-containers-list.md
             - name: Özellikleri ve meta verileri yönetme (.NET)
               href: storage-blob-container-properties-metadata.md
-            - name: Değiştirilemezlik ilkelerini ayarlama ve yönetme
-              href: storage-blob-immutability-policies-manage.md
         - name: Blobları oluşturma ve yönetme
           items:
             - name: Blobları listeleme (.NET)
@@ -296,8 +292,10 @@
                   items:
                     - name: Portal
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell veya Azure CLI
-                      href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: PowerShell
+                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: Azure CLI
+                      href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: RBAC ile erişim haklarını yönetme
                   items:
                     - name: Portal
@@ -314,6 +312,8 @@
                       href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Paylaşılan Anahtar ile yetkilendirme
                   items:
+                    - name: Hesap anahtarlarını görüntüleme ve yönetme
+                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Bağlantı dizelerini yapılandırma
                       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Azure Depolama REST API’sini kullanma
@@ -368,6 +368,8 @@
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Aktarım Katmanı Güvenliğini etkinleştirme
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Değiştirilemezlik ilkelerini ayarlama ve yönetme
+              href: storage-blob-immutability-policies-manage.md
         - name: Olağanüstü durum kurtarma
           items:
             - name: Hesap yük devretmesini başlatma
@@ -394,7 +396,7 @@
           items:
             - name: AzCopy
               items:
-                - name: Başlarken
+                - name: başlarken
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Bloblarla kullanma
                   href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -442,6 +444,18 @@
               href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Başvuru
       items:
+        - name: Ölçeklenebilirlik ve performans hedefleri
+          items:
+            - name: Blob depolama
+              href: scalability-targets.md
+            - name: Standart depolama hesapları
+              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Premium blok blobu depolama hesapları
+              href: scalability-targets-premium-block-blobs.md
+            - name: Premium sayfa blobu depolama hesapları
+              href: scalability-targets-premium-page-blobs.md
+            - name: Depolama kaynak sağlayıcısı
+              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: /powershell/module/az.storage
         - name: Azure CLI
@@ -675,8 +689,6 @@
           items:
             - name: Data Lake’iniz için depolama hesabı oluşturma
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Depolama hesabını yönetme
-              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Depolama Gezgini ile verileri yönetme
               href: ../blobs/data-lake-storage-explorer.md
             - name: Depolama hesabını yükseltme
@@ -699,7 +711,7 @@
           items:
             - name: AzCopy
               items:
-                - name: Başlarken
+                - name: başlarken
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Data Lake Storage 2. Nesil ile kullanma
                   href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

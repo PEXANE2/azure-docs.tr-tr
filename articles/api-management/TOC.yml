@@ -6,6 +6,8 @@
       href: api-management-key-concepts.md
     - name: API Management özelliklerinin kullanılabilirliği
       href: api-management-features.md
+    - name: AKS'de dağıtılan mikro hizmetleri yönetme
+      href: api-management-kubernetes.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

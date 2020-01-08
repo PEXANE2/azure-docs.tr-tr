@@ -1,0 +1,57 @@
+- name: Azure Özel Sağlayıcılar Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Özel Sağlayıcılar nelerdir?
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Özel bir kaynak sağlayıcısı oluşturma
+      href: create-custom-provider.md
+- name: Öğreticiler
+  items:
+    - name: Özel sağlayıcıları kullanmaya başlama
+      href: tutorial-get-started-with-custom-providers.md
+    - name: Azure İşlevleri’ni ayarlama
+      href: tutorial-custom-providers-function-setup.md
+    - name: Bir RESTful uç noktası yazma
+      href: tutorial-custom-providers-function-authoring.md
+    - name: Özel sağlayıcılar oluşturma ve bunları kullanma
+      href: tutorial-custom-providers-create.md
+    - name: Kaynakları genişletme
+      href: tutorial-resource-onboarding.md
+- name: Kavramlar
+  items:
+    - name: İlişkilendirmeler için Azure ilkesi
+      href: concepts-built-in-policy.md
+    - name: Kaynak ekleme
+      href: concepts-resource-onboarding.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Azure'a özel eylemler ekleme
+      href: custom-providers-action-endpoint-how-to.md
+    - name: Azure'a özel kaynaklar ekleme
+      href: custom-providers-resources-endpoint-how-to.md
+- name: Başvuru
+  items:
+    - name: Özel kaynak ara sunucu başvurusu
+      href: proxy-resource-endpoint-reference.md
+    - name: Özel kaynak önbellek başvurusu
+      href: proxy-cache-resource-endpoint-reference.md
+    - name: Özel sağlayıcı RESTful uç nokta başvurusu
+      href: reference-custom-providers-csharp-endpoint.md
+    - name: REST
+      href: /rest/api/customproviders/
+- name: Kaynaklar
+  items:
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Resource Manager şablonu en iyi uygulamaları
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-custom-providers'

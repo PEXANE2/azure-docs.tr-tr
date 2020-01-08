@@ -91,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Özel giriş ve HTTPS için traefik kullanma
           href: how-to/ingress-https-traefik.md
+        - name: Özel giriş ve HTTPS için NGINX kullanma
+          href: how-to/ingress-https-nginx.md
         - name: Geliştirme makinenizi AKS kümesine bağlama (önizleme)
           href: how-to/connect.md
     - name: Sorun giderme

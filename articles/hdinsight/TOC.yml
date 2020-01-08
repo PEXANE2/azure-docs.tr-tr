@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight kümelerini yönetme - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Runbook'larla küme oluşturma
+          href: ./manage-clusters-runbooks.md
         - name: ETL işlem hattı oluşturma
           href: ./hdinsight-sales-insights-etl.md
     - name: Örnekler
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: .NET kullanarak küme oluşturma
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: Küme depolama alanını kullanma
-          items:
-            - name: Azure Depolama’yı kullanma
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage 2. Nesil kullanma
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage 1. Nesil kullanma
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Küme oluşturma hataları
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: Küme depolama alanını kullanma
+                  items:
+                    - name: Azure Depolama’yı kullanma
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: Azure Data Lake Storage 2. Nesil kullanma
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: Azure Data Lake Storage 1. Nesil kullanma
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: Kümeleri genişletme
           items:
             - name: HDInsight uygulamaları yükleme
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: Kavramlar
       items:
+        - name: Kafka iş yüklerini 4.0'a geçirme
+          href: ./kafka/migrate-versions.md
         - name: Depolama ve ölçeklenebilirlik
           href: ./kafka/apache-kafka-scalability.md
         - name: Veriler için yüksek kullanılabilirlik
@@ -545,6 +564,8 @@
       items:
         - name: Geliştirme
           items:
+            - name: Kafka REST ara sunucusunu kullanma
+              href: ./kafka/rest-proxy.md
             - name: Otomatik konu oluşturmayı etkinleştirme
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: IoT Hub ile Apache Kafka kullanma
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Azaltıcı yavaş çalışıyor
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Apache Hive ağ geçidi zaman aşımı
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Apache Hive Görünümünde zaman aşımı
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: Tablo oluşturma izin hatası
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: Nasıl yapılır
       items:
+        - name: Kimlik bilgileri yönetimi için Kimlik Aracısı kullanma
+          href: ./domain-joined/identity-broker.md
         - name: ESP kümeleri oluşturma ve şirket içi ile eşitleme
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: HDInsight için sanal ağ oluşturma
           href: ./hdinsight-create-virtual-network.md
         - name: HDInsight’a şirket içi ağınızla bağlanma
           href: ./connect-on-premises-network.md
-        - name: HDInsight’ta kurumsal güvenliği yapılandırma
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: Azure AD DS kullanarak ESP kümelerini yapılandırma
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: Azure AD kullanıcılarını HDInsight kümesine eşitleme

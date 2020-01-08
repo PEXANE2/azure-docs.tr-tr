@@ -24,19 +24,19 @@
 - name: Kavramlar
   items:
     - name: Derin Öğrenme ve AI çerçeveleri
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: Programlama dilleri
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: Geliştirme araçları
       href: dsvm-tools-development.md
     - name: ML ve veri bilimi araçları
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: Veri platformları
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: Veri alma araçları
       href: dsvm-tools-ingestion.md
-    - name: Veri keşfi ve görselleştirme araçları
-      href: dsvm-tools-explore-and-visualize.md
+    - name: Üretkenlik araçları
+      href: dsvm-tools-productivity.md
     - name: Kurumsal güvenlik ve rehberlik
       href: dsvm-enterprise-overview.md
 - name: Örnekler

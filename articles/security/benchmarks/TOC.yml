@@ -1,0 +1,30 @@
+- name: Azure Güvenlik Karşılaştırması
+  href: index.yml
+- name: Giriş
+  href: introduction.md
+- name: Güvenlik Denetimleri
+  items:
+    - name: Genel Bakış
+      href: overview.md
+    - name: Ağ Güvenliği
+      href: security-control-network-security.md
+    - name: Günlüğe Kaydetme ve İzleme
+      href: security-control-logging-monitoring.md
+    - name: Kimlik ve Erişim Denetimi
+      href: security-control-identity-access-control.md
+    - name: Veri Koruma
+      href: security-control-data-protection.md
+    - name: Güvenlik Açığı Yönetimi
+      href: security-control-vulnerability-management.md
+    - name: Envanter ve Varlık Yönetimi
+      href: security-control-inventory-asset-management.md
+    - name: Güvenli Yapılandırma
+      href: security-control-secure-configuration.md
+    - name: Kötü Amaçlı Yazılımdan Koruma
+      href: security-control-malware-defense.md
+    - name: Veri Kurtarma
+      href: security-control-data-recovery.md
+    - name: Olay Yanıtı
+      href: security-control-incident-response.md
+    - name: Sızma Testleri ve Red Team Alıştırmaları
+      href: security-control-penetration-tests-red-team-exercises.md

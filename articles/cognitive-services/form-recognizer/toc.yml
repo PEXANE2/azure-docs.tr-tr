@@ -4,23 +4,53 @@
   items:
     - name: Form Tanıma nedir?
       href: overview.md
+    - name: Yenilikler
+      href: whats-new.md
 - name: Hızlı Başlangıçlar
   expaned: true
   items:
+    - name: Örnek etiketleme aracını kullanma
+      items:
+        - name: Özel modeli etiketlerle eğitme
+          href: quickstarts/label-tool.md
     - name: REST API’sini kullanma
       items:
-        - name: Özel model eğitme ve verileri ayıklama
+        - name: Özel modeli etiketler olmadan eğitme ve kullanma
           items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract.md
+                - name: Python
+                  href: quickstarts/python-train-extract.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract-v1.md
+                - name: Python
+                  href: quickstarts/python-train-extract-v1.md
+        - name: Özel modeli etiketlerle eğitme ve kullanma
+          items:
             - name: Python
-              href: quickstarts/python-train-extract.md
+              href: quickstarts/python-labeled-data.md
         - name: Önceden oluşturulmuş makbuz modelini kullanma
           items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts.md
+                - name: Python
+                  href: quickstarts/python-receipts.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts-v1.md
+                - name: Python
+                  href: quickstarts/python-receipts-v1.md
+        - name: Metin düzeni bilgilerini alma
+          items:
             - name: Python
-              href: quickstarts/python-receipts.md
+              href: quickstarts/python-layout.md
     - name: .NET SDK’sini kullanma
       href: quickstarts/dotnet-sdk.md
 - name: Öğreticiler
@@ -43,8 +73,10 @@
           href: deploy-form-recognizer-on-container-instances.md
 - name: Başvuru
   items:
-    - name: Form Tanıma API’si
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Form Tanıma API'si v2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: Form Tanıma API'si v1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: SDK’lar
       items:
         - name: .NET

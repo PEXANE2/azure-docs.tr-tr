@@ -35,6 +35,7 @@
               href: quickstart-v2-aspnet-core-webapp.md
             - name: NodeJS
               href: quickstart-v2-nodejs-webapp.md
+              displayName: OIDC
             - name: Java
               href: quickstart-v2-java-webapp.md
             - name: Python
@@ -135,7 +136,7 @@
                   href: scenario-web-app-call-api-app-registration.md
                 - name: Kod yapılandırması
                   href: scenario-web-app-call-api-app-configuration.md
-                - name: Oturum açma
+                - name: Genel oturum kapatma
                   href: scenario-web-app-call-api-sign-in.md
                 - name: Uygulama için belirteç alma
                   href: scenario-web-app-call-api-acquire-token.md
@@ -213,7 +214,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
-                    - name: Xamarin iOS ve Android Uygulamalarıyla aracıları kullanma
+                    - name: Xamarin iOS ve Android ile aracıları kullanma
+                      displayName: Microsoft Authenticator Microsoft Intune
                       href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Evrensel Windows Platformu
                       href: msal-net-uwp-considerations.md
@@ -241,13 +243,13 @@
                   href: msal-compare-msal-js-and-adal-js.md
                 - name: MSAL.Android’e geçiş
                   href: migrate-android-adal-msal.md
-                - name: MSAL.iOS ve MacOS’a geçiş
+                - name: MSAL.iOS / MacOS'a geçiş
                   href: migrate-objc-adal-msal.md
                 - name: MSAL Python’a geçiş
                   href: migrate-python-adal-msal.md
                 - name: Java için MSAL’ye geçiş
                   href: migrate-adal-msal-java.md
-                - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
+                - name: Aracıları kullanarak Xamarin uygulamalarını MSAL.NET’e geçirme
                   href: msal-net-migration-ios-broker.md
             - name: Desteklenen kimlik doğrulama akışları
               href: msal-authentication-flows.md
@@ -263,7 +265,7 @@
               items:
                 - name: İstemci uygulamaları
                   href: msal-client-applications.md
-                - name: Uygulama yapılandırması (.NET)
+                - name: Uygulama yapılandırması
                   href: msal-client-application-configuration.md
                 - name: Uygulamaları başlatma (.NET)
                   href: msal-net-initializing-client-applications.md
@@ -317,7 +319,7 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Bilinen sorunlar - Safari
                       href: msal-js-known-issues-safari-browser.md
-                - name: iOS ve macOS için MSAL SSL sorunları
+                - name: SSL sorunlarını giderme (MSAL iOS/macOS)
                   href: ssl-issues.md
         - name: Kimlik doğrulama protokolü
           items:
@@ -388,7 +390,7 @@
       items:
         - name: Kimlik Doğrulaması
           items:
-            - name: Rol taleplerini yapılandırma
+            - name: Rol talebini yapılandırma
               href: active-directory-enterprise-app-role-management.md
             - name: Talep özelleştirme - Portal
               href: active-directory-saml-claims-customization.md
@@ -400,9 +402,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Uygulama yapılandırması
           items:
-            - name: Uygulama kayıtları’ndan (Eski) Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
+            - name: Yeni Azure portalı uygulama kaydı eğitim kılavuzu
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Uygulama Kaydı Portalı’ndan Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
+            - name: Yeni Azure portalı uygulama kaydı deneyimi
               href: app-registration-portal-training-guide.md
             - name: Tek kiracılı bir uygulamayı çok kiracılı uygulamaya dönüştürme
               href: howto-convert-app-to-be-multi-tenant.md
@@ -418,7 +420,7 @@
               href: howto-add-app-roles-in-azure-ad-apps.md
             - name: Marka yönergeleri
               href: howto-add-branding-in-azure-ad-apps.md
-            - name: Yayımcı etki alanı
+            - name: Yayımcı etki alanını yapılandırma
               href: howto-configure-publisher-domain.md
             - name: Hizmet Koşulları ve Gizlilik Bildirimi
               href: howto-add-terms-of-service-privacy-statement.md
@@ -432,7 +434,7 @@
                   href: msal-net-token-cache-serialization.md
                 - name: Belirteç önbelleği temizleme
                   href: msal-net-clear-token-cache.md
-                - name: Seçeneklerle genel istemci örneği oluşturma
+                - name: Genel istemci uygulaması örneği oluşturma
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Seçeneklerle gizli istemci örneği oluşturma
                   href: msal-net-instantiate-confidential-client-config-options.md
@@ -462,13 +464,13 @@
                   href: redirect-uris-ios.md
             - name: Python için MSAL
               items:
-                - name: Belirteç önbelleği serileştirme
+                - name: Özel belirteç önbelleği serileştirme
                   href: msal-python-token-cache-serialization.md
             - name: Java için MSAL
               items:
-                - name: Belirteç önbelleği serileştirme
+                - name: Özel belirteç önbelleği serileştirme
                   href: msal-java-token-cache-serialization.md
-                - name: Belirteç önbelleğinden hesap ekleme ve kaldırma
+                - name: Belirteç önbelleğinden hesap alma ve kaldırma
                   href: msal-java-get-remove-accounts-token-cache.md
         - name: Visual Studio ile çalışma
           items:
@@ -482,7 +484,7 @@
               href: vs-active-directory-webapi-getting-started.md
             - name: WebAPI projeme ne oldu?
               href: vs-active-directory-webapi-what-happened.md
-            - name: Kimlik doğrulama algılama sırasında bir hata oluştu
+            - name: Kimlik doğrulaması sırasında hataları tanılama
               href: vs-active-directory-error.md
     - name: Başvurular
       items:

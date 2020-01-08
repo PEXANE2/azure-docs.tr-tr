@@ -25,6 +25,10 @@
   items:
     - name: Kimlik doğrulama özelliklerine sahip sunucusuz gerçek zamanlı uygulama derleme
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: İzleme
+      items:
+        - name: SignalR Service'i izlemek için tanılama günlüklerini kullanma
+          href: signalr-tutorial-diagnostic-logs.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -100,7 +104,7 @@
     - name: SSS
       href: signalr-resource-faq.md
     - name: SignalR Service abonelik düzeyi sınırları
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videolar

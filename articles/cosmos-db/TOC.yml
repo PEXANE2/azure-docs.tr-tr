@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: Sağlama işleme hızı - Otomatik Pilot modu
           href: provision-throughput-autopilot.md
+        - name: Otomatik Pilot ile ilgili SSS
+          href: autopilot-faq.md
     - name: SQL sorgusu başvurusu
       items:
         - name: Başlarken
@@ -982,6 +984,8 @@
       items:
         - name: İzleyici Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Tanılama günlükleriyle izleme
+          href: cosmosdb-monitor-resource-logs.md
         - name: Cosmos için Azure İzleyici (önizleme)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: Cosmos DB hesabından ölçümleri görüntüleme

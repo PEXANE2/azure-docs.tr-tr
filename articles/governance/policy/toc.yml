@@ -300,6 +300,11 @@
     - name: Uyumlu olmayan kaynakları düzeltme
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Azure Anahtar Kasası tümleştirme
+      items:
+        - name: Azure İlkesi ile Key Vault'u tümleştirme
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Azure Lighthouse tümleştirmesi
       items:
         - name: İlkeyi uygun ölçekte dağıtma

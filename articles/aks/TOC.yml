@@ -218,6 +218,8 @@
           maintainContext: true
         - name: Sertifikaları döndürme
           href: certificate-rotation.md
+        - name: Özel küme oluşturma
+          href: private-clusters.md
     - name: İzleme ve günlüğe kaydetme
       items:
         - name: Kapsayıcılar için Azure İzleyici
@@ -308,6 +310,9 @@
           href: gpu-cluster.md
         - name: PostgreSQL için Azure Veritabanı kullanma
           href: ../postgresql/concepts-aks.md
+          maintainContext: true
+        - name: Azure API Management'ı kullanma
+          href: ../api-management/api-management-kubernetes.md
           maintainContext: true
     - name: Hizmet ağı seçme ve dağıtma
       items:

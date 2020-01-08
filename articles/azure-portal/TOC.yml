@@ -16,6 +16,10 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Azure portalı tercihlerinizi ayarlama
+      href: set-preferences.md
+    - name: Tüm kullanıcılar için etkinlik dışı zaman aşımı ayarlarını belirleme
+      href: admin-timeout.md
     - name: Yüksek karşıtlığı açma veya tema değiştirme
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Ekleme, kaldırma ve sık kullanılanları sıralama'

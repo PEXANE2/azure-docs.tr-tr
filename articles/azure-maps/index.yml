@@ -1,59 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Haritalar Belgeleri
+summary: Microsoft Azure Haritalar, tüm sektörlerden geliştiriciler ve güçlü jeo-uzamsal özellikler sunar. Ayrıca web ve mobil uygulamalara coğrafik bağlam sağlamak amacıyla kullanılabilen en yeni eşleme verileriyle donatılmıştır. Azure Haritalar, geliştirmeyi kolay, esnek ve birden çok platform arasında taşınabilir hale getirmek için hem Web hem de Android SDK’ları tarafından gerçekleştirilen Haritalar, Arama, Yönlendirme, Trafik, Ulaşım, Hava Durumu, Saat Dilimleri, Coğrafi Konum, Coğrafi Sınırlama, Harita Verileri ve Uzamsal İşlemlere yönelik, Azure One API’yle uyumlu bir REST API kümesidir.
 metadata:
-  document_id: null
   title: Azure Haritalar Belgeleri | Microsoft Docs
-  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
-  author: philmea
-  manager: null
+  description: Azure Haritalar hakkında bilgi edinin ve web veya mobil uygulamanıza jeo-uzamsal hizmetler sağlamak için bunu nasıl kullanacağınızı öğrenin.
   ms.service: azure-maps
-  services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/14/2019
+  author: philmea
   ms.author: philmea
-abstract:
-  description: 'Azure Haritalar, tüm sektörlerden geliştiriciler ve güçlü jeo-uzamsal özellikler sunar. Ayrıca web ve mobil uygulamalara coğrafik bağlam sağlamak amacıyla kullanılabilen en yeni eşleme verileriyle donatılmıştır. Azure Haritalar, geliştirmeyi kolay, esnek ve birden çok platform arasında taşınabilir hale getirmek için hem Web hem de Android SDK’ları tarafından gerçekleştirilen Haritalar, Arama, Yönlendirme, Trafik, Ulaşım, Saat Dilimleri, Coğrafi Konum, Coğrafi Sınırlama, Harita Verileri ve Uzamsal İşlemlere yönelik, Azure One API’yle uyumlu bir REST API kümesidir.'
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: Azure Haritalar’ı kullanarak jeo-uzamsal uygulamalar oluşturmayı öğrenin.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
-            text: Web uygulaması oluşturma
-            href: /azure/azure-maps/quick-demo-map-app
-  - title: Adım Adım Öğreticiler
-    items:
-      - html: <b>Web SDK Öğreticileri</b>
-      - type: paragraph
-        text: Azure Haritalar Web SDK’sını kullanarak jeo-uzamsal web uygulamaları oluşturma.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-search-location">İlgi noktası arama</a>
-          - html: <a href="/azure/azure-maps/tutorial-route-location">İlgi noktasına yönlendirme</a>
-          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Seyahat moduyla birden fazla rota</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Depo bulucu oluşturma</a>
-      - html: <b>REST API Öğreticileri</b>
-      - type: paragraph
-        text: Azure Haritalar REST hizmetlerine çağrılacak jeo-uzamsal uygulamalar oluşturun.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-geofence">Bölge sınırı ayarlama</a>
-          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">Uzamsal analiz</a>
-          - html: <a href=/azure/azure-maps/tutorial-ev-routing">Azure Notebooks kullanarak EV yönlendirme (Python)</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsW
-        items:
-          - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Harita denetimi</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Çizim araçları modülü</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Hizmetler modülü</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Veri hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Coğrafi Konum hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Ulaşım hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">İşleme hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Yönlendirme hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Arama hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Uzamsal hizmet</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Saat dilimi hizmeti</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Trafik hizmeti</a></p>'
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75408644"
+landingContent:
+- title: Azure Haritalar hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Haritalar nedir?
+      url: about-azure-maps.md
+  - linkListType: concept
+    links:
+    - text: Azure Haritalar Kapsamı
+      url: render-coverage.md
+    - text: Yerelleştirme desteği
+      url: supported-languages.md
+    - text: Desteklenen eşleme stilleri
+      url: supported-map-styles.md
+  - linkListType: video
+    links:
+    - text: Azure Haritalar tanıtımı
+      url: https://sec.ch9.ms/ch9/d498/3d435d2c-ac85-421b-b3a7-5e0c7630d498/IoT_AzureMaps_high.mp4
+- title: Başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Haritalar'ı kullanarak web uygulaması oluşturma
+      url: quick-demo-map-app.md
+  - linkListType: concept
+    links:
+    - text: Haritalar hesabı için doğru fiyatlandırma katmanını seçme
+      url: choose-pricing-tier.md
+    - text: Azure Haritalar ile kimlik doğrulaması
+      url: azure-maps-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Haritalar hesaplarını yönetme
+      url: how-to-manage-account-keys.md
+    - text: Azure Haritalar ile kimlik doğrulamasını yönetme
+      url: how-to-manage-authentication.md
+    - text: Azure Haritalar hesabı fiyatlandırma katmanını yönetme
+      url: how-to-manage-pricing-tier.md
+    - text: Azure Haritalar API'si kullanım ölçümlerini görüntüleme
+      url: how-to-view-api-usage.md
+- title: Web SDK'sıyla geliştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Web harita denetimini kullanmaya başlama
+      url: how-to-use-map-control.md
+    - text: Azure Haritalar web SDK'sı kod örnekleri
+      url: https://azuremapscodesamples.azurewebsites.net/
+    - text: Web SDK destekleyen tarayıcılar
+      url: supported-browsers.md
+  - linkListType: tutorial
+    links:
+    - text: İlgi noktası arama
+      url: tutorial-search-location.md
+    - text: İlgi noktasına yönlendirme
+      url: tutorial-route-location.md
+    - text: Depo bulucu oluşturma
+      url: tutorial-create-store-locator.md
+  - linkListType: reference
+    links:
+    - text: Harita denetimi
+      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+    - text: Çizim araçları modülü
+      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+    - text: Hizmet modülü
+      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+- title: Android SDK ile geliştirme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Android harita denetimini kullanmaya başlama
+      url: how-to-use-android-map-control-library.md
+    - text: Özellik için meta veri bilgilerini görüntüleme
+      url: display-feature-information-android.md
+    - text: Haritaya kutucuk katmanı ekleme
+      url: how-to-add-tile-layer-android-map.md
+    - text: Haritaya şekil ekleme
+      url: how-to-add-shapes-to-android-map.md
+- title: Konum Tabanlı Hizmetler ile geliştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yakınlaştırma düzeyleri ve kutucuk kılavuzları
+      url: zoom-levels-and-tile-grid.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Notebooks Kullanarak EV Yönlendirme (Python)
+      url: tutorial-ev-routing.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adres arama (coğrafi kodlama)
+      url: how-to-search-for-address.md
+    - text: Arama için en iyi yöntemler
+      url: how-to-use-best-practices-for-search.md
+    - text: Statik haritada özel veri işleme
+      url: how-to-render-custom-data.md
+  - linkListType: reference
+    links:
+    - text: Arama Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/search
+    - text: Yönlendirme Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/route
+    - text: Trafik Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/traffic
+    - text: Saat Dilimleri Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/timezone
+- title: Uzamsal Analiz
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Haritalar Event Grid tümleştirmesi
+      url: azure-maps-event-grid-integration.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Haritalar'ı kullanarak bölge sınırı ayarlama
+      url: tutorial-geofence.md
+    - text: Azure Haritalar'ı kullanarak IoT uzamsal analiz gerçekleştirme
+      url: tutorial-iot-hub-maps.md
+  - linkListType: reference
+    links:
+    - text: Veri Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/data
+    - text: Uzamsal Hizmet
+      url: https://docs.microsoft.com/rest/api/maps/spatial
+- title: Ulaşım hizmetleriyle geliştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ulaşım hizmeti veri yapıları
+      url: mobility-service-data-structure.md
+  - linkListType: how-to-guide
+    links:
+    - text: Genel geçiş yolları isteme
+      url: how-to-request-transit-data.md
+    - text: Gerçek zamanlı genel aktarım verilerini isteme
+      url: how-to-request-real-time-data.md
+  - linkListType: reference
+    links:
+    - text: Ulaşım Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/mobility
+- title: Hava Durum Hizmetleriyle geliştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Hava Durumu Hizmeti kavramı
+      url: weather-services-concepts.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Notebooks kullanarak hava durumu verilerini analiz etme (Python)
+      url: weather-service-tutorial.md
+  - linkListType: reference
+    links:
+    - text: Hava Durumu Hizmeti
+      url: https://docs.microsoft.com/rest/api/maps/weather

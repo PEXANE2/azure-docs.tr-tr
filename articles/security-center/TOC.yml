@@ -49,6 +49,8 @@
       items:
         - name: Güvenlik uyarılarına genel bakış
           href: security-center-alerts-overview.md
+        - name: Uyarıların başvuru listesi
+          href: alerts-reference.md
         - name: Güvenlik uyarılarını yönetme
           href: security-center-managing-and-responding-alerts.md
         - name: Güvenlik olaylarını yönetme
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure hizmet katmanları için tehdit algılama
           href: security-center-alerts-service-layer.md
-        - name: Azure Güvenlik Ürünleriyle tümleştirme
+        - name: Azure WAF ve Azure DDoS Koruması için tehdit algılama
           href: security-center-alerts-integration.md
         - name: Bulut Akıllı Uyarı bağıntısı (olaylar)
           href: security-center-alerts-cloud-smart.md
@@ -75,6 +77,14 @@
       href: security-center-secure-score.md
     - name: Gelişmiş güvenliğe yükseltme
       href: security-center-onboarding.md
+    - name: VM'lerinizi güvenlik açıkları için tarama
+      items:
+        - name: Güvenlik açığı taramasına genel bakış
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: VM'ler için tümleşik güvenlik açığı tarayıcısı
+          href: built-in-vulnerability-assessment.md
+        - name: Dış tarayıcıları kullanma
+          href: partner-vulnerability-assessment.md
     - name: Microsoft Defender ATP ile sunucularınızı koruma
       href: security-center-wdatp.md
     - name: Azure VM’lerinde SQL için gelişmiş veri güvenliğini kullanma
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: Güvenlik duruşunu güçlendirme
           href: security-center-monitoring.md
+        - name: Öneriler için başvuru listesi
+          href: recommendations-reference.md
         - name: Makinelerinizi ve uygulamalarınızı koruma
           href: security-center-virtual-machine-protection.md
-        - name: Makinelere ve uygulamalara yönelik öneriler başvurusu
-          href: recommendations-compute-and-apps.md
         - name: Ağ kaynaklarını koruma
           href: security-center-network-recommendations.md
-        - name: Ağ önerileri başvurusu
-          href: recommendations-network.md
         - name: Verileri ve depolama hizmetlerini koruma
           href: security-center-sql-service-recommendations.md
         - name: Kimliği ve erişimi koruma
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Endpoint Protection yükleyin
           href: security-center-install-endpoint-protection.md
-        - name: Güvenlik açığı değerlendirmesi yüklü değil
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: Tehdit raporları
           href: security-center-threat-report.md
         - name: Güvenilirlik puanı uyarısı

@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure Tablo depolama belgeleri
+summary: Azure Tablo Depolama, yapılandırılmış NoSQL verilerini bulutta depolayan ve şemasız bir tasarım ile anahtar/öznitelik deposu sağlayan bir hizmettir.
+metadata:
+  title: Azure Tablo depolama belgeleri
+  description: Azure Tablo Depolama, yapılandırılmış NoSQL verilerini bulutta depolayan ve şemasız bir tasarım ile anahtar/öznitelik deposu sağlayan bir hizmettir.
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75551905"
+landingContent:
+- title: Tablo depolama hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Tablo depolama nedir?
+      url: table-storage-overview.md
+    - text: Tablo depolamayı veya Tablo API’sini seçme
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: Tablo tasarım kılavuzu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Etkili okuma ve yazma işlemleri için tasarım
+      url: table-storage-design-guidelines.md
+    - text: Sorgulama için tasarım
+      url: table-storage-design-for-query.md
+    - text: Veri değişikliği için tasarım
+      url: table-storage-design-for-modification.md
+    - text: Tablo tasarımı desenleri
+      url: table-storage-design-patterns.md
+- title: Performans, ölçeklendirme ve maliyet iyileştirmesi
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tablo depolama için performans denetim listesi
+      url: storage-performance-checklist.md
+    - text: En uygun performans için tasarım
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: Tablo depolama için ölçeklenebilirlik hedefleri
+      url: scalability-targets.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portalında tablo oluşturma
+      url: table-storage-quickstart-portal.md

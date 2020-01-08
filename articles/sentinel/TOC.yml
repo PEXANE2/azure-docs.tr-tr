@@ -32,70 +32,78 @@
     - name: Veri kaynaklarını bağlama
       href: connect-data-sources.md
       items:
-        - name: Microsoft hizmetlerini bağlama
+        - name: Hizmetten hizmete bağlanma
           items:
-            - name: Azure AD’yi bağlama
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Office 365'i bağlama
+            - name: Office 365
               href: connect-office-365.md
-            - name: Cloud App Security'yi bağlama
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Azure Etkinlik Günlüğü’nü bağlama
+            - name: Azure Etkinlik Günlüğü
               href: connect-azure-activity.md
-            - name: Azure AD Kimlik Koruması bağlantısı kurma
+            - name: Azure AD Kimlik Koruması
               href: connect-azure-ad-identity-protection.md
-            - name: Azure Information Protection’ı bağlama
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Microsoft Defender ATP’yi bağlama
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Azure ATP'yi bağlama
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Azure Güvenlik Merkezi’ni bağlama
+            - name: Azure Güvenlik Merkezi
               href: connect-azure-security-center.md
-            - name: Etki alanı adı sunucusunu bağlama
+            - name: Etki alanı adı sunucusu
               href: connect-dns.md
-            - name: Microsoft web uygulaması güvenlik duvarına bağlanma
+            - name: Microsoft web uygulaması güvenlik duvarı
               href: connect-microsoft-waf.md
-            - name: Windows güvenlik duvarını bağlama
+            - name: Windows güvenlik duvarı
               href: connect-windows-firewall.md
-            - name: Windows güvenlik olaylarını bağlama
+            - name: Windows güvenlik olayları
               href: connect-windows-security-events.md
         - name: Dış çözümleri bağlama
           items:
-            - name: Genel CEF’yi bağlama
-              href: connect-common-event-format.md
-            - name: AWS’ye bağlanma
-              href: connect-aws.md
-            - name: Barracuda’yı bağlama
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: Check Point’i bağlama
-              href: connect-checkpoint.md
-            - name: Palo Alto Networks’e bağlanma
-              href: connect-paloalto.md
-            - name: Fortinet’i bağlama
-              href: connect-fortinet.md
-            - name: F5’i bağlama
-              href: connect-f5.md
-            - name: F5 BIG-IP'yi bağlama
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: Syslog’u bağlama
+            - name: Syslog
               href: connect-syslog.md
-            - name: Symantec ICDX’i bağlama
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: Cisco’yu bağlama
-              href: connect-cisco.md
-            - name: Barracuda CloudGen Firewall'u bağlama
+            - name: Barracuda CloudGen Firewall
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Citrix Analytics'i bağlama (Güvenlik)
+            - name: Citrix Analytics (Güvenlik)
               href: connect-citrix-analytics.md
-            - name: ExtraHop Reveal(x)'i bağlama
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: Zscaler'i bağlama
-              href: connect-zscaler.md
+            - name: CEF tabanlı çözümler
+              href: connect-common-event-format.md
+              items:
+                - name: 1. ADIM Aracıyı dağıtma
+                  href: connect-cef-agent.md
+                - name: 2. ADIM Güvenlik çözümünüzü yapılandırma
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Denetim Noktası
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: 3. ADIM Bağlantıyı doğrulama
+                  href: connect-cef-verify.md
         - name: Tehdit zekasını bağlama
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama

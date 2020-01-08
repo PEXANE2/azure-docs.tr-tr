@@ -3,6 +3,12 @@
 - name: Azure faturalamayı anlama
   expanded: true
   items:
+    - name: Ödeme hesapları ve kapsamlar
+      href: billing-view-all-accounts.md
+    - name: Microsoft Müşteri Sözleşmesi için ödeme hesapları
+      href: billing-mca-overview.md
+    - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
+      href: mpa-overview.md
     - name: Faturanızı anlama
       href: billing-understand-your-bill.md
     - name: Faturanızı anlama - Microsoft Müşteri Sözleşmesi
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: Faturanızı ödeme - Microsoft Müşteri Sözleşmesi
       href: billing-how-to-pay-bill.md
-    - name: Microsoft Müşteri Sözleşmesi için ödeme hesapları
-      href: billing-mca-overview.md
-    - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
-      href: mpa-overview.md
 - name: Maliyetleri yönetme
   items:
     - name: Beklenmeyen maliyetleri engelleme
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: İş ortağı kimliğini bağlama
       href: billing-partner-admin-link-started.md
-    - name: Fatura hesaplarını görüntüleme
-      href: billing-view-all-accounts.md
     - name: Maliyetleri fatura bölümleriyle düzenleme
       href: billing-mca-section-invoice.md
     - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
@@ -216,7 +216,7 @@
     - name: Azure AD kiracısını bağlama
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Limitler ve kotalar
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Sorun giderme
   items:
     - name: Abonelik bulunamadı

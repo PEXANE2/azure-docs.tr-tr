@@ -1,0 +1,138 @@
+- name: Azure kaynaklarını yönetme belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Resource Manager nedir?
+      href: overview.md
+- name: Kavramlar
+  items:
+    - name: Abonelik ve hizmet sınırlamaları
+      href: azure-subscription-service-limits.md
+    - name: Resource Manager ve klasik dağıtım
+      href: deployment-models.md
+    - name: Azure ortak güvenlik öznitelikleri
+      href: azure-resource-manager-security-controls.md
+    - name: Hizmete göre kaynak sağlayıcıları
+      href: azure-services-resource-providers.md
+    - name: Kaynak örneği sınırı
+      href: resources-without-resource-group-limit.md
+- name: Nasıl yapılır
+  items:
+    - name: Taşıma - kaynak grupları/abonelikler
+      items:
+        - name: Kaynakları taşıma
+          href: move-resource-group-and-subscription.md
+        - name: Desteklenen kaynaklar
+          href: move-support-resources.md
+        - name: Taşıma sorunlarını giderme
+          href: troubleshoot-move.md
+        - name: Hizmetler
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: Klasik dağıtım
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: Ağ
+              href: ./move-limitations/networking-move-limitations.md
+            - name: Kurtarma Hizmetleri
+              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtual Machines
+              href: ./move-limitations/virtual-machines-move-limitations.md
+    - name: Taşıma - bölgeler
+      items:
+        - name: Bölgeler arasında taşıma
+          href: move-region.md
+        - name: Desteklenen hizmetler
+          href: region-move-support.md
+        - name: Hizmetler
+          items:
+            - name: Azure VM’leri
+              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Sanal ağ
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Ağ güvenlik grubu (NSG)
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Genel IP adresleri
+              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Etiketler
+      items:
+        - name: Kaynakları etiketleme
+          href: tag-resources.md
+        - name: Etiket desteği
+          href: tag-support.md
+    - name: Yönetme
+      items:
+        - name: Kaynak gruplarını yönetme
+          items:
+            - name: Azure portalı kullanma
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-portal.md
+            - name: Azure CLI kullanma
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-cli.md
+            - name: Azure PowerShell kullanma
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-powershell.md
+        - name: Kaynakları yönetme
+          items:
+            - name: Azure portalı kullanma
+              displayName: 'open,delete,deploy,move,lock,tag,monitor'
+              href: manage-resources-portal.md
+            - name: Azure CLI kullanma
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-cli.md
+            - name: Azure PowerShell kullanma
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-powershell.md
+        - name: Kaynak gruplarını ve kaynakları silme
+          href: delete-resource-group.md
+        - name: Kaynakları kilitleme
+          href: lock-resources.md
+        - name: EA abonelikleri oluşturma
+          href: programmatically-create-subscription.md
+        - name: EA abonelikleri oluşturmak için erişim izni verme
+          href: grant-access-to-create-subscription.md
+        - name: Kiracılar arasında kimlik doğrulaması
+          href: authenticate-multi-tenant.md
+    - name: Etkinlik günlüklerini görüntüleme
+      href: view-activity-logs.md
+    - name: Kaynak sağlayıcıları ve türleri
+      href: resource-providers-and-types.md
+    - name: İstekleri azaltma
+      href: request-limits-and-throttling.md
+    - name: Zaman uyumsuz işlemleri izleme
+      href: async-operations.md
+- name: Başvuru
+  items:
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: Kaynaklar
+  items:
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Kişisel verileri yönetme
+      href: resource-manager-personal-data.md
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

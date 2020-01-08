@@ -28,6 +28,8 @@
     - name: Kavramlar
       expanded: false
       items:
+        - name: B2B en iyi yöntemleri
+          href: b2b-fundamentals.md
         - name: B2B lisansı
           href: licensing-guidance.md
         - name: B2B ve Office 365 dış paylaşım

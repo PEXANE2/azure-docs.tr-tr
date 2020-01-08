@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: Redis için Azure Önbelleği Belgeleri
+summary: Uygulamaların verilere yüksek hacimli ve düşük gecikmeli bir şekilde erişmesini sağlayan güvenli bir veri arabelleği ve mesajlaşma aracısı olan Redis için Azure Önbelleği'ni nasıl kullanacağınızı öğrenin. Öğreticiler, API başvuruları ve diğer belgeler, Azure’daki herhangi bir uygulamadan Redis için Azure Önbelleği'ni nasıl kullanabileceğiniz ile ilgili bilgiler içerir.
+metadata:
+  title: Redis için Azure Önbelleği Belgeleri
+  description: Uygulamaların verilere hızla erişmesini sağlayan güvenli bir veri arabelleği ve mesajlaşma aracısı olan Redis için Azure Önbelleği'ni nasıl kullanacağınızı öğrenin. Öğreticiler, API başvuruları ve daha fazlası.
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75470041"
+landingContent:
+- title: Redis için Azure Önbelleği hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Redis için Azure Cache nedir?
+      url: cache-overview.md
+    - text: Redis için Azure Önbelleği Premium katmanı hakkında bilgi edinin
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: Yönetim seçenekleri
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: Güvenlik önbelleği
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: En iyi uygulamalar
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: Performansı geliştirme
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: Sık sorulan sorular
+      url: cache-faq.md
+    - text: Redis için Azure Cache'in en iyi yöntemleri
+      url: cache-best-practices.md
+    - text: Azure için Redis Cache için ASP.NET Oturum Durumu Sağlayıcısı
+      url: cache-aspnet-session-state-provider.md
+- title: 'Hızlı Başlangıçlar: Redis için Azure Önbelleği'
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET Framework uygulamasını kodlama
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: .NET Core uygulamasını kodlama
+      url: cache-dotnet-core-quickstart.md
+    - text: ASP.NET web uygulamasını kodlama
+      url: cache-web-app-howto.md
+    - text: Java uygulamasını kodlama
+      url: cache-java-get-started.md
+    - text: Node.js uygulamasını kodlama
+      url: cache-nodejs-get-started.md
+    - text: Python uygulamasını kodlama
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: Örnekler
+      url: cache-redis-samples.md
+- title: SDK'lar ve komut satırları
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST API
+      url: /rest/api/redis/
+    - text: Redis İstemcisi
+      url: https://redis.io/clients
+    - text: Redis komutları
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: Sorun giderme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: İstemci tarafı sorunlarını giderme
+      url: cache-troubleshoot-client.md
+    - text: Sunucu tarafı sorunlarını giderme
+      url: cache-troubleshoot-server.md
+    - text: Zaman aşımı sorunlarını giderme
+      url: cache-troubleshoot-timeouts.md
+    - text: Veri kaybı sorunlarını giderme
+      url: cache-troubleshoot-data-loss.md

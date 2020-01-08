@@ -76,6 +76,8 @@
 - name: Bulut İş Ortağı Portalı
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: İş Ortağı Merkezi'ne Bulut İş Ortağı Portalı geçişi
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: Portal Turu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: Gözden geçirme geri bildirimini işleme
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: Ekleme için API
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Dynamics 365 teklifleri
           items:
             - name: Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
@@ -512,13 +516,33 @@
     - name: Destek seçenekleri
       href: ./partner-center-portal/support.md
     - name: İş Ortağı Merkezi Analizi
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: Ticari Market için analiz
+          href: ./partner-center-portal/analytics.md
+        - name: Özet panosu
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: Siparişler panosu
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: Kullanım panosu
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: Müşteri panosu
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: Market İçgörüleri panosu
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: İndirmeler panosu
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: Derecelendirme ve incelemeler panosu
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: Sık sorulan sorular ve terminoloji
+          href: ./partner-center-portal/faq-terminology.md
     - name: Ödeme alma
       items:
         - name: Ödeme alma
           href: ./partner-center-portal/get-paid.md
         - name: Ödeme hesabınızı ve vergi formlarınızı ayarlama
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: Faturalandırma ayrıntıları
+          href: ./partner-center-portal/billing-details.md
         - name: 'Ödeme eşikleri, yöntemleri ve zaman çerçeveleri'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Ödeme özeti

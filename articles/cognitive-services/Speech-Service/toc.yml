@@ -1,13 +1,13 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
 - name: Konuşma hizmeti belgeleri
   href: index.md
 - name: Genel Bakış
-  expanded: false
+  expanded: true
   items:
     - name: Konuşma tanıma hizmeti nedir?
       href: overview.md
     - name: Dil ve bölge desteği
       href: language-support.md
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
 - name: Konuşmayı metne dönüştürme
   expanded: false
   items:
@@ -51,30 +51,38 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Sürüm notları
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API'leri
           items:
             - name: Konuşmayı metne dönüştürme REST API'si
               href: rest-speech-to-text.md
-            - name: Toplu transkripsiyon REST API'leri
+            - name: Toplu transkripsiyon REST API'si
               href: batch-transcription.md
     - name: Kaynaklar
       items:
         - name: Konuşmayı metne dönüştürme hakkında SSS
           href: faq-stt.md
+          displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
 - name: Metin okuma
-  exanded: false
+  expanded: false
   items:
     - name: Genel Bakış
       items:
@@ -104,18 +112,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Sürüm notları
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API'leri
           items:
             - name: Metin okuma REST API'si
@@ -124,13 +139,15 @@
       items:
         - name: Metin okuma hakkında SSS
           href: faq-text-to-speech.md
+          displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
 - name: Amaç tanıma
-  exanded: false
+  expanded: false
   items:
     - name: Hızlı Başlangıçlar
       items:
         - name: 'Konuşmayı, amaçları ve varlıkları tanıma'
           href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
     - name: Nasıl yapılır kılavuzları
       items:
         - name: 'LUIS ile konuşma amaçlarını tanıma, C#'
@@ -141,24 +158,31 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Sürüm notları
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: LUIS Hizmeti
           items:
             - name: LUIS Geliştirici Kaynakları
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Konuşma çevirisi
-  exanded: false
+  expanded: false
   items:
     - name: Genel Bakış
       items:
@@ -182,18 +206,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Sürüm notları
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
     - name: Kaynaklar
       items:
         - name: Konuşma çevirisi hakkında SSS
@@ -217,18 +248,25 @@
           items:
             - name: C++
               href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
               href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: JavaScript
               href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: Sürüm notları
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API'leri
           items:
             - name: Konuşma transkripsiyonu REST API'leri
@@ -258,6 +296,8 @@
           href: quickstart-custom-speech-commands-create-new.md
         - name: Parametreler içeren Özel Komut oluşturma (Önizleme)
           href: quickstart-custom-speech-commands-create-parameters.md
+        - name: Özel Ses ile Özel Komutları Kullanma (Önizleme)
+          href: quickstart-custom-speech-commands-select-custom-voice.md
         - name: Konuşma SDK'sı ile Özel Komutları kullanma (Önizleme)
           href: quickstart-custom-speech-commands-speech-sdk.md
     - name: Nasıl yapılır kılavuzları
@@ -266,6 +306,10 @@
           href: how-to-custom-speech-commands-fulfill-sdk.md
         - name: Özel Komutlara parametre doğrulaması ekleme
           href: how-to-custom-speech-commands-validations.md
+        - name: Özel Komuta onay ekleme
+          href: how-to-custom-speech-commands-confirmations.md
+        - name: Özel Komuta tek adımlı düzeltme ekleme
+          href: how-to-custom-speech-commands-one-step-correction.md
     - name: Öğreticiler
       items:
         - name: Konuşma SDK’sı ile botunuzu ses ile etkinleştirme
@@ -275,7 +319,7 @@
         - name: Ses yardımcıları hakkında SSS
           href: faq-voice-assistants.md
 - name: Özelleştirme
-  exanded: false
+  expanded: false
   items:
     - name: Konuşmayı metne dönüştürme
       items:
@@ -329,6 +373,8 @@
           items:
             - name: 'Nasıl yapılır: Ses İçeriği Oluşturma'
               href: how-to-audio-content-creation.md
+    - name: Özel anahtar sözcük adlandırma yönergeleri
+      href: speech-devices-sdk-kws-guidelines.md
     - name: Özel anahtar sözcük belirleme
       href: speech-devices-sdk-create-kws.md
 - name: Konuşma Hizmeti
@@ -346,16 +392,20 @@
         - name: Konuşma Hizmeti Kaynağı Oluşturma
           href: 'get-started.md#create-a-speech-resource-in-azure'
         - name: Kapsayıcılar
-          exanded: false
+          expanded: false
           items:
             - name: Kapsayıcıları yükleme ve çalıştırma
               href: speech-container-howto.md
+              displayName: 'containers,install container,run container'
             - name: Kapsayıcıları yapılandırma
               href: speech-container-configuration.md
+              displayName: 'containers,configure containers,container config,configuration'
             - name: Kubernetes ve Helm
               href: speech-container-howto-on-premises.md
+              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
             - name: Azure Container Instances
               href: deploy-speech-on-container-instances.md
+              displayName: 'ACI,azure container instances,container instances,containers'
     - name: Örnekler
       items:
         - name: Metin okuma REST örnekleri
@@ -389,20 +439,16 @@
       items:
         - name: Proje oluşturma
           href: quickstarts/create-project.md
-        - name: 'C# ile Konuşma SDK''sını Ayarlama'
-          href: quickstarts/setup-platform.md?pivots=programming-language-csharp
-        - name: C++ ile Konuşma SDK'sını Ayarlama
-          href: quickstarts/setup-platform.md?pivots=programming-language-cpp
-        - name: Java ile Konuşma SDK'sını Ayarlama
-          href: quickstarts/setup-platform.md?pivots=programming-language-java
-        - name: Python ile Konuşma SDK'sını Ayarlama
-          href: quickstarts/setup-platform.md?pivots=programming-language-python
-        - name: Diğer Platformlarla Konuşma SDK'sını Ayarlama
-          href: quickstarts/setup-platform.md?pivots=programming-language-more
+        - name: Konuşma SDK'sını Ayarlama
+          href: quickstarts/setup-platform.md
+          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Günlü kaydını etkinleştir
+        - name: Günlüğü etkinleştirme
           href: how-to-use-logging.md
+        - name: Bellek kullanımını izleme
+          href: how-to-track-speech-sdk-memory-usage.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
     - name: Örnekler
       items:
         - name: Konuşma SDK’sı Örnekleri (GitHub)
@@ -426,7 +472,7 @@
         - name: Konuşma SDK’sı sürüm notları
           href: releasenotes.md
 - name: Cihazlar
-  exanded: false
+  expanded: false
   items:
     - name: Genel Bakış
       items:
@@ -452,8 +498,12 @@
       items:
         - name: Konuşma Cihazları SDK’sında sorun giderme
           href: speech-devices-sdk-troubleshooting.md
+    - name: Başvuru
+      items:
+        - name: Konuşma Cihazları SDK’sı Sürüm notları
+          href: devices-sdk-release-notes.md
 - name: Geçiş
-  exanded: false
+  expanded: false
   items:
     - name: Bing Konuşma’dan
       href: how-to-migrate-from-bing-speech.md
@@ -462,10 +512,11 @@
     - name: Translator Konuşma Çevirisi API’sinden
       href: how-to-migrate-from-translator-speech-api.md
 - name: Kaynaklar
-  exanded: false
+  expanded: false
   items:
     - name: Destek
       href: support.md
+      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Bölgeler
       href: regions.md
     - name: Fiyatlandırma ve limitler

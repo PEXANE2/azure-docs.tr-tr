@@ -55,14 +55,16 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Kaynaklar
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Kod örnekleri
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Topluluk
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Destek forumu
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN destek forumu
       href: 'https://aka.ms/workbenchforum'
+    - name: Topluluk desteği
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Stack Overflow desteği
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: Ürün geri bildirimi
       href: 'https://aka.ms/blockchainuservoice'
 - name: Çözüm şablonları

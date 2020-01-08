@@ -87,15 +87,15 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework derleyicisi
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: .NET Azure SDK
+        - name: .NET için Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring sağlayıcısı
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Java Azure SDK
+        - name: Java için Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Python Azure SDK
+        - name: Python için Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: JavaScript Azure SDK
+        - name: JavaScript için Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'

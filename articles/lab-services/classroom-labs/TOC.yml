@@ -28,6 +28,8 @@
           href: classroom-labs-scenarios.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Yönetici kılavuzu
+      href: administrator-guide.md
     - name: Sınıf laboratuvarları - sınıf türleri
       items:
         - name: Sınıf türlerine genel bakış
@@ -52,6 +54,8 @@
           href: how-to-connect-peer-virtual-network.md
         - name: Paylaşılan görüntü galerisi ekleme ve kaldırma
           href: how-to-attach-detach-shared-image-gallery.md
+        - name: Sınıf laboratuvarına sahip olarak kullanıcı ekleme
+          href: how-to-add-user-lab-owner.md
     - name: Sınıf laboratuvarı oluşturma ve yapılandırma (eğitmen)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme
@@ -70,6 +74,8 @@
           href: how-to-use-shared-image-gallery.md
         - name: Linux için uzak masaüstü bağlantısını etkinleştirme
           href: how-to-enable-remote-desktop-linux.md
+        - name: Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme
+          href: how-to-enable-shutdown-disconnect.md
         - name: Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
           href: how-to-enable-nested-virtualization-template-vm.md
         - name: Windows şablon VM’si hazırlama

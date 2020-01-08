@@ -8,7 +8,17 @@
       href: terminology.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Uygulamalar
+    - name: Azure kaynağını izleme
+      href: learn/quick-monitor-azure-resource.md
+    - name: Sanal makineleri izleme
+      items:
+        - name: Toplama - Azure VM’leri
+          href: learn/quick-collect-azurevm.md
+        - name: Toplama - Linux bilgisayarı
+          href: learn/quick-collect-linux-computer.md
+        - name: Toplama - Windows bilgisayarı
+          href: learn/quick-collect-windows-computer.md
+    - name: Uygulamaları izleme
       items:
         - name: .NET uygulaması
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Web uygulaması
           href: app/website-monitoring.md
-    - name: Sanal makineler
-      items:
-        - name: Toplama - Azure VM’leri
-          href: learn/quick-collect-azurevm.md
-        - name: Toplama - Linux bilgisayarı
-          href: learn/quick-collect-linux-computer.md
-        - name: Toplama - Windows bilgisayarı
-          href: learn/quick-collect-windows-computer.md
 - name: Öğreticiler
   items:
-    - name: Günlükler
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: Günlük sorguları
-          href: log-query/get-started-queries.md
-        - name: Günlük verilerini içeren pano
-          href: learn/tutorial-logs-dashboards.md
-        - name: Günlük verileriyle uyarı oluşturma
-          href: learn/tutorial-response.md
+    - name: Ölçüm grafiği oluşturma
+      href: learn/tutorial-metrics-explorer.md
+    - name: Azure kaynağından günlükleri topla
+      href: learn/tutorial-resource-logs.md
+    - name: Günlük sorguları yazma
+      href: log-query/get-started-queries.md
+    - name: Günlük sorgusundan pano oluşturma
+      href: learn/tutorial-logs-dashboards.md
+    - name: Günlük sorgusundan uyarı oluşturma
+      href: learn/tutorial-response.md
+    - name: Performans ve zamanlamaya göre otomatik ölçeklendirme
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: Uygulama çalışma zamanı özel durumlarını belirleme
@@ -52,10 +56,6 @@
           href: learn/tutorial-users.md
         - name: Uygulama verilerini içeren pano
           href: learn/tutorial-app-dashboards.md
-    - name: Platform ölçüm ve günlük verilerini arşivleme
-      href: learn/tutorial-archive-data.md
-    - name: Performans ve zamanlamaya göre otomatik ölçeklendirme
-      href: learn/tutorial-autoscale-performance-schedule.md
 - name: Örnekler
   items:
     - name: Azure PowerShell
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: Kaynak gruplarını izleme
           href: insights/resource-group-insights.md
-        - name: Platform günlüklerine genel bakış
-          href: platform/platform-logs-overview.md
-        - name: Kaynak günlükleri
+        - name: Platform günlükleri
           items:
             - name: Genel Bakış
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: Azure İzleyici günlüklerinde toplama
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: Depolamaya arşivleme
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: Event Hubs’a akış sağlama
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: Etkinlik günlüğü
-          items:
-            - name: Genel Bakış
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: Tanılama ayarıyla toplama
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: Görüntüleme ve alma
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: Etkinlik günlüğünü görüntüleme
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: Toplama ve analiz etme
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: Kiracılar genelinde toplama
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: Dışarı Aktarma
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: Şema
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: Hedeflere gönderme
+              items:
+                - name: Log Analytics çalışma alanı
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Azure Storage
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: Eski Etkinlik günlüğü koleksiyonu
+              items:
+                - name: Genel Bakış
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: Toplama ve analiz etme
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: Kiracılar genelinde toplama
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Dışarı Aktarma
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: Tanılama ayarları
           items:
             - name: Tanılama ayarı oluşturma
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: Kaynak Yöneticisi ile tanılama ayarı oluşturma
+            - name: Resource Manager ile oluşturma
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: Blob depolama biçimiyle değiştirme
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Windows aracıları
                   href: platform/agent-windows.md
+                - name: Linux aracıları
+                  href: platform/agent-linux.md
                 - name: Windows için VM Uzantısı
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: Linux için VM Uzantısı
@@ -1161,10 +1159,16 @@
       items:
         - name: Desteklenen ölçümler
           href: platform/metrics-supported.md
+        - name: Tanılama Ayarlarıyla dışarı aktarılabilir ölçümler
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: Yeni uyarılarda desteklenen ölçümler
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Platform günlüğü hizmetleri, kategorileri ve şemaları'
-      href: platform/diagnostic-logs-schema.md
+    - name: Platform günlükleri
+      items:
+        - name: 'Kaynak günlüğü hizmetleri, kategorileri ve şemaları'
+          href: platform/diagnostic-logs-schema.md
+        - name: Etkinlik günlüğü şeması
+          href: platform/activity-log-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (Önizleme)

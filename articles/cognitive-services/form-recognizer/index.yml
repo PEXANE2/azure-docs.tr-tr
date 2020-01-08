@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Form Tanıma belgeleri
-summary: Azure Form Tanıma, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bir bilişsel hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. Denetimsiz öğrenme, el ile veri etiketleme veya yoğun kodlama ve bakım olmadan, modelin alanlar ve girdiler arasındaki düzen ve ilişkileri anlamasına izin verir.
+summary: Azure Form Tanıma, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bir bilişsel hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. Denetimsiz öğrenme, el ile veri etiketleme veya yoğun kodlama olmadan, modelin düzeni ve alan verilerini anlamasına izin verir. Ayrıca el ile etiketlenen verilerle denetimli öğrenme de uygulayabilirsiniz. Etiketli verilerle eğitilen modeller daha iyi performans gösterebilir ve daha karmaşık belgelerle çalışabilir.
 metadata:
   title: Form Tanıma belgeleri - Hızlı Başlangıçlar, Öğreticiler, API Başvuruları - Azure Bilişsel Hizmetler | Microsoft Docs
-  description: Azure Form Tanıma, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bir bilişsel hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. Denetimsiz öğrenme, el ile veri etiketleme veya yoğun kodlama ve bakım olmadan, modelin alanlar ve girdiler arasındaki düzen ve ilişkileri anlamasına izin verir.
+  description: Azure Form Tanıma, form belgelerinden anahtar-değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bir bilişsel hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. Denetimsiz öğrenme, el ile veri etiketleme veya yoğun kodlama olmadan, modelin düzeni ve alan verilerini anlamasına izin verir. Ayrıca el ile etiketlenen verilerle denetimli öğrenme de uygulayabilirsiniz. Etiketli verilerle eğitilen modeller daha iyi performans gösterebilir ve daha karmaşık belgelerle çalışabilir.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: form-recognizer
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 3a3146c6a918916792a331c0dab74683db82a02d
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 835eb7bece58e93375c09c51149381d7882702de
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931296"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75446503"
 landingContent:
 - title: Form Tanıma hakkında
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Form Tanıma nedir?
       url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Form Tanıma'daki yenilikler
+      url: whats-new.md
   - linkListType: video
     links:
     - text: Form Tanıma ile yapay zeka destekli işlem otomasyonu
@@ -38,18 +42,38 @@ landingContent:
       url: quickstarts/python-train-extract.md
     - text: REST API kullanma (cURL)
       url: quickstarts/curl-train-extract.md
-- title: Makbuzlardan verileri ayıklama
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: .NET SDK’sini kullanma
-      url: quickstarts/dotnet-sdk.md
 - title: Eğitim verileri kümesi oluşturma
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Eğitim verileri kümesi oluşturma
       url: build-training-data-set.md
+- title: Etiketleri kullanarak özel bir modeli eğitme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Etiketli veriler
+      url: overview.md#train-with-labels
+  - linkListType: quickstart
+    links:
+    - text: Örnek etiketleme aracını kullanarak eğitme
+      url: quickstarts/label-tool.md
+    - text: REST API ve Python kullanarak etiketlerle eğitme
+      url: quickstarts/python-labeled-data.md
+- title: Makbuzlardan verileri ayıklama
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: REST API kullanma (Python)
+      url: quickstarts/python-receipts.md
+    - text: REST API kullanma (cURL)
+      url: quickstarts/curl-receipts.md
+- title: Metin düzeni bilgilerini alma
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: REST API kullanma (Python)
+      url: quickstarts/python-layout.md
 - title: Kapsayıcıları kullanma
   linkLists:
   - linkListType: get-started
@@ -68,8 +92,10 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Form Tanıma API’si
-      url: https://aka.ms/form-recognizer/api
+    - text: Form Tanıma API'si v2.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm
+    - text: Form Tanıma API'si v1.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
     - text: .NET SDK
       url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
     - text: Azure PowerShell

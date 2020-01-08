@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure güvenlik karşılaştırmaları belgeleri
+summary: En iyi yöntemlerimiz ve kılavuzlarımızla Azure’da bulut çözümünüzün güvenliğini sağlamayı öğrenin.
+metadata:
+  title: Azure güvenlik karşılaştırmaları
+  description: Azure Güvenlik Denetimleri Karşılaştırması, Azure'da uygulamalarınızın ve verilerinizin güvenliğini geliştirmeye yardımcı olacak öneriler içerir.
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 97f5463ee4348f8e17b8cf571262c361908d7265
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563871"
+landingContent:
+- title: Azure Güvenlik Karşılaştırması hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Genel Bakış
+      url: overview.md
+    - text: Güvenlik Denetimlerine giriş
+      url: introduction.md
+    - text: Bulutta paylaşılan sorumluluk
+      url: ../fundamentals/shared-responsibility.md
+- title: Güvenlik Denetimleri
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ağ Güvenliği
+      url: security-control-network-security.md
+    - text: Günlüğe Kaydetme ve İzleme
+      url: security-control-logging-monitoring.md
+    - text: Kimlik ve Erişim Denetimi
+      url: security-control-identity-access-control.md
+    - text: Veri Koruma
+      url: security-control-data-protection.md
+    - text: Güvenlik Açığı Yönetimi
+      url: security-control-vulnerability-management.md
+    - text: Daha fazla göster
+      url: security-control-inventory-asset-management.md
+- title: Azure Güvenliği ile İlgili Diğer Bilgiler
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Güvenliğinin Temelleri
+      url: ../fundamentals/index.yml
+    - text: Azure Güvenlik Merkezi
+      url: ../../security-center/index.yml
+    - text: Azure Key Vault
+      url: ../../key-vault/index.yml

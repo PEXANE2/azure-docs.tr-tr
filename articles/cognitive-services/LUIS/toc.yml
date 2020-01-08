@@ -66,13 +66,8 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: Veri kümelerini toplu olarak sınama
           href: luis-tutorial-batch-testing.md
-        - name: Ortak ifade biçimleri ekleme
+        - name: Tahminleri geliştirmek için desenler ekleme
           href: luis-tutorial-pattern.md
-        - name: Bağlamsal olarak ilişkili desenleri ayıklama
-          href: luis-tutorial-pattern-roles.md
-          displayName: roles
-        - name: Serbest biçimli verileri ayıklama
-          href: luis-tutorial-pattern-any.md
     - name: Bot ile kullanma
       items:
         - name: 'C# ile'
@@ -173,6 +168,8 @@
         - name: Tanımlayıcı ekleme
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
+        - name: V3 Authoring'e geçme
+          href: luis-migration-authoring-entities.md
         - name: REST API’ler ile
           items:
             - name: Node.js kullanarak program aracılığıyla uygulama derleme

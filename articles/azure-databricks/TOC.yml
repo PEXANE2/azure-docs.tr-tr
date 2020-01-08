@@ -123,6 +123,9 @@
         - name: Kümeleri yapılandırma
           href: /azure/databricks/clusters/configure
           maintainContext: true
+        - name: Özel kapsayıcılar
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
         - name: Küme düğümlerini başlatma
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
@@ -772,6 +775,14 @@
             - name: TensorFlow ile verileri TFRecord dosyalarına kaydetme
               href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
+            - name: Özellik Kazandırma
+              items:
+                - name: Özellik Kazandırmaya genel bakış
+                  href: /azure/databricks/applications/deep-learning/featurization/index
+                  maintainContext: true
+                - name: Öğrenmeyi aktarma
+                  href: /azure/databricks/applications/deep-learning/featurization/transfer-learning-keras
+                  maintainContext: true
         - name: Tek düğümlü eğitim
           items:
             - name: Tek düğümlü eğitime genel bakış
@@ -826,9 +837,12 @@
             - name: TensorFlow kullanarak model çıkarımı
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Dağıtılmış görüntü modeli çıkarımı için başvuru çözümü
-              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+            - name: Model çıkarım performansını ayarlama
+              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
               maintainContext: true
+        - name: Dağıtılmış görüntü modeli çıkarımı için başvuru çözümü
+          href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+          maintainContext: true
     - name: MLflow
       items:
         - name: MLflow'a genel bakış
@@ -1062,6 +1076,9 @@
           items:
             - name: Küme yapılandırmasına genel bakış
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Kapsayıcı Hizmetlerini Etkinleştirme
+              href: /azure/databricks/administration-guide/clusters/container-services
               maintainContext: true
             - name: Genomiks için Databricks Runtime’ı Etkinleştirme
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
@@ -1518,11 +1535,37 @@
       href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Databricks CLI
-      href: /azure/databricks/dev-tools/databricks-cli
-      maintainContext: true
-    - name: Stack CLI
-      href: /azure/databricks/dev-tools/stack
-      maintainContext: true
+      items:
+        - name: Databricks CLI'ya genel bakış
+          href: /azure/databricks/dev-tools/cli/index
+          maintainContext: true
+        - name: Kümeler
+          href: /azure/databricks/dev-tools/cli/clusters-cli
+          maintainContext: true
+        - name: DBFS
+          href: /azure/databricks/dev-tools/cli/dbfs-cli
+          maintainContext: true
+        - name: Gruplar
+          href: /azure/databricks/dev-tools/cli/groups-cli
+          maintainContext: true
+        - name: Örnek havuzları
+          href: /azure/databricks/dev-tools/cli/instance-pools-cli
+          maintainContext: true
+        - name: İşler
+          href: /azure/databricks/dev-tools/cli/jobs-cli
+          maintainContext: true
+        - name: Kitaplıklar
+          href: /azure/databricks/dev-tools/cli/libraries-cli
+          maintainContext: true
+        - name: Gizli Diziler
+          href: /azure/databricks/dev-tools/cli/secrets-cli
+          maintainContext: true
+        - name: Yığın
+          href: /azure/databricks/dev-tools/cli/stack-cli
+          maintainContext: true
+        - name: Çalışma alanı
+          href: /azure/databricks/dev-tools/cli/workspace-cli
+          maintainContext: true
     - name: Azure Databricks REST API
       href: /rest/api/databricks
     - name: Resource Manager şablonu
@@ -1620,6 +1663,9 @@
                   maintainContext: true
                 - name: Databricks Runtime 6.2 ML
                   href: /azure/databricks/release-notes/runtime/6.2ml
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 Genomics
+                  href: /azure/databricks/release-notes/runtime/6.2genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

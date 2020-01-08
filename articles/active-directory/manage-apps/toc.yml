@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: Uygulama Ara Sunucusu üzerinden şirket içi uygulama ekleme
       href: application-proxy-add-on-premises-application.md
+- name: Örnekler
+  items:
+    - name: Uygulama Ara Sunucusu için Azure PowerShell örnekleri
+      href: application-proxy-powershell-samples.md
 - name: Kavramlar
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: Uygulama sağlama (SCIM)
       items:
+        - name: Sağlama nasıl çalışır?
+          href: how-provisioning-works.md
         - name: Otomatik kullanıcı sağlama dağıtımı planlama
           href: plan-auto-user-provisioning.md
-        - name: SCIM etkin uygulamalar için otomatik sağlama
-          href: use-scim-to-provision-users-and-groups.md
-        - name: El ile - otomatik sağlama karşılaştırması
-          href: application-provisioning-config-how-to.md
     - name: Bulutta İK sağlama
       items:
         - name: Bulutta İK kullanıcı sağlama dağıtımı planlama
@@ -139,6 +141,8 @@
           items:
             - name: Kullanıcı onayını yapılandırma
               href: configure-user-consent.md
+            - name: Kiracı genelinde yönetici onayı verme
+              href: grant-admin-consent.md
             - name: Yönetici onayı iş akışını yapılandırma (önizleme)
               href: configure-admin-consent-workflow.md
             - name: Kullanıcıları ve grupları bir uygulamaya atama yöntemleri
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Uygulama sağlama (SCIM)
       items:
-        - name: Uygulama sağlamayı yapılandırma
+        - name: Galeri uygulaması için sağlamayı yapılandırma
+          href: configure-automatic-user-provisioning-portal.md
+        - name: SCIM uç noktası oluşturma ve sağlamayı yapılandırma
+          href: use-scim-to-provision-users-and-groups.md
+        - name: Öznitelik eşlemelerini düzenleme
           items:
-            - name: Otomatik kullanıcı sağlamayı yapılandırma
-              href: configure-automatic-user-provisioning-portal.md
-            - name: Otomatik sağlama için SCIM kullanma
-              href: use-scim-to-provision-users-and-groups.md
             - name: Öznitelik eşlemelerini özelleştirme
               href: Customize-application-attributes.md
             - name: Öznitelik eşlemeleri için ifadeler yazma
               href: functions-for-customizing-application-data.md
+        - name: Kullanıcıları ve grupları kapsamda dahil etme veya dışlama
+          items:
             - name: Sağlanacak kullanıcıların veya grupların kapsamını belirleme
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Kapsam dışı kullanıcılar için silme işlemini atlama
               href: skip-out-of-scope-deletions.md
+        - name: Sağlamayı izleme ve raporlama
+          items:
             - name: Sağlama durumunu ve performansını izleme
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Uygulama sağlama hakkında rapor oluşturma
               href: check-status-user-account-provisioning.md
             - name: Yapılandırmanızı dışarı ve içeri aktarma
               href: export-import-provisioning-configuration.md
-            - name: MS Graph kullanarak yapılandırmayı otomatikleştirme
-              href: application-provisioning-configure-api.md
+        - name: MS Graph kullanarak yapılandırmayı otomatikleştirme
+          href: application-provisioning-configure-api.md
         - name: Kullanıcı hazırlama sorunlarını giderme
           items:
             - name: Uygulama hazırlama sorunlarını giderme

@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: Azure Notebooks kullanarak hava durumu verilerini analiz etme (Python)
           href: weather-service-tutorial.md
+    - name: Google Haritalar'dan geçiş yapma
+      items:
+        - name: Google Haritalar'dan geçiş yapma
+          href: migrate-from-google-maps.md
+        - name: Web uygulamasını geçirme
+          href: migrate-from-google-maps-web-app.md
+        - name: Android uygulamasını geçirme
+          href: migrate-from-google-maps-android-app.md
+        - name: Web hizmetini geçirme
+          href: migrate-from-google-maps-web-services.md
 - name: Kavramlar
   items:
     - name: Azure Haritalar ile kimlik doğrulaması
@@ -103,44 +113,48 @@
               href: create-data-source-web-sdk.md
             - name: Sembol katmanı ekleme
               href: map-add-pin.md
+            - name: Açılır pencere ekleme
+              href: map-add-popup.md
             - name: Baloncuk katmanı ekleme
               href: map-add-bubble-layer.md
+            - name: HTML işaretçileri ekleme
+              href: map-add-custom-html.md
             - name: Çizgi katmanı ekleme
               href: map-add-line-layer.md
             - name: Çokgen katmanı ekleme
               href: map-add-shape.md
-            - name: Derinleştirme çokgen katmanı ekleme
+            - name: Çokgen kalıp katmanı ekleme
               href: map-extruded-polygon.md
             - name: Isı haritası katmanı ekleme
               href: map-add-heat-map-layer.md
-            - name: Açılır pencere ekleme
-              href: map-add-popup.md
+            - name: Görüntü katmanı ekleme
+              href: map-add-image-layer.md
+            - name: Kutucuk katmanları ekleme
+              href: map-add-tile-layer.md
+            - name: Trafiği gösterme
+              href: map-show-traffic.md
             - name: Küme noktası verileri
               href: clustering-point-data-web-sdk.md
             - name: Veri temelli stil ifadeleri kullanma
               href: data-driven-style-expressions-web-sdk.md
             - name: Görüntü şablonlarını kullanma
               href: how-to-use-image-templates-web-sdk.md
-            - name: Görüntü katmanı ekleme
-              href: map-add-image-layer.md
-            - name: Kutucuk katmanları ekleme
-              href: map-add-tile-layer.md
-            - name: HTML işaretçileri
-              href: map-add-custom-html.md
-            - name: Trafiği gösterme
-              href: map-show-traffic.md
             - name: Olaylara tepki verme
               href: map-events.md
             - name: Uygulamanızın erişilebilir olmasını sağlama
               href: map-accessibility.md
         - name: Çizim araçları
           items:
+            - name: Çizim araçları modülünü kullanma
+              href: set-drawing-options.md
             - name: Çizim araç çubuğu ekleme
               href: map-add-drawing-toolbar.md
-            - name: Çizim seçeneklerini ayarlama
-              href: set-drawing-options.md
             - name: Şekil verilerini alma
               href: map-get-shape-data.md
+            - name: Çizim olaylarına tepki verme
+              href: drawing-tools-events.md
+            - name: Etkileşim türleri ve klavye kısayolları
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: Hizmetler modülü
           items:
             - name: Hizmetler modülünü kullanma
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Haritalar videoları
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Açık kaynak projeleri
+      href: open-source-projects.md
     - name: Azure Haritalar örnek olay incelemeleri
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Haritalar sözlüğü

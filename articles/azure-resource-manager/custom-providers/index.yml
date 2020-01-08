@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Azure Özel Sağlayıcılar belgeleri
+summary: Azure deneyimini genişleten özel API'leri tanımlama
+metadata:
+  title: Azure Özel Sağlayıcılar belgeleri
+  description: Azure Özel Sağlayıcılar özel API'ler tanımlamanıza olanak tanıyan bir Azure'a genişletilebilirlik platformudur
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648353"
+landingContent:
+- title: Azure Özel Sağlayıcılar hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Özel Sağlayıcılar nelerdir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Özel sağlayıcı ilişkilendirmeleri için Azure İlkesi
+      url: concepts-built-in-policy.md
+    - text: Kaynak eklemeye genel bakış
+      url: concepts-resource-onboarding.md
+- title: Özel sağlayıcılar oluşturma
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Özel bir kaynak sağlayıcısı oluşturma
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: Özel sağlayıcıları kullanmaya başlama
+      url: tutorial-get-started-with-custom-providers.md
+    - text: Azure İşlevleri’ni ayarlama
+      url: tutorial-custom-providers-function-setup.md
+    - text: Bir RESTful uç noktası yazma
+      url: tutorial-custom-providers-function-authoring.md
+    - text: Özel sağlayıcılar oluşturma ve bunları kullanma
+      url: tutorial-custom-providers-create.md
+    - text: Kaynakları genişletme
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure'a özel eylemler ekleme
+      url: custom-providers-action-endpoint-how-to.md
+    - text: Azure'a özel kaynaklar ekleme
+      url: custom-providers-resources-endpoint-how-to.md
+- title: Örnekler
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Özel kaynak ara sunucu başvurusu
+      url: proxy-resource-endpoint-reference.md
+    - text: Özel kaynak önbellek başvurusu
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: Özel sağlayıcı RESTful uç nokta başvurusu
+      url: reference-custom-providers-csharp-endpoint.md

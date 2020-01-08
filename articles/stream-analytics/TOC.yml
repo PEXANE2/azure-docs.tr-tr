@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: Başvuru verisi girişleri
           href: stream-analytics-use-reference-data.md
-        - name: .NET özel seri durumdan çıkarıcıları yazma
+        - name: Özel seri durumdan çıkarıcıları kullanarak herhangi bir biçimdeki verileri okuma
           href: custom-deserializer-examples.md
     - name: Bir iş için çıktı türleri
       items:
@@ -174,9 +174,9 @@
       items:
         - name: Araçları yükleme
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Örnek verilerle test etme
+        - name: Örnek verilerle yerel olarak test etme
           href: stream-analytics-vs-tools-local-run.md
-        - name: Canlı verilerle test etme
+        - name: Canlı verilerle yerel olarak test etme
           href: stream-analytics-live-data-local-testing.md
         - name: Visual Studio'da işleri görüntüleme
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Örnek verilerle test etme
-          href: vscode-local-run.md
+        - name: Örnek verilerle yerel olarak test etme
+          href: visual-studio-code-local-run.md
+        - name: Canlı verilerle yerel olarak test etme
+          href: visual-studio-code-local-run-live-input.md
         - name: CI/CD işlem hattı ayarlama
           href: setup-cicd-vs-code.md
         - name: İşleri keşfetme
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: Sorun giderme
       items:
         - name: Girdi

@@ -67,12 +67,16 @@
           href: known-issues-troubleshooting-dms.md
         - name: Bilinen Sorunlar - Azure SQL DB tek veritabanına çevrimiçi geçiş
           href: known-issues-azure-sql-online.md
+        - name: Bilinen Sorunlar - Azure SQL DB yönetilen örneğine çevrimiçi geçiş
+          href: known-issues-azure-sql-db-managed-instance-online.md
         - name: Bilinen Sorunlar - MySQL için Azure DB’ye çevrimiçi geçiş
           href: known-issues-azure-mysql-online.md
-        - name: Bilinen Sorunlar - PostgreSQL'den PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
+        - name: Bilinen Sorunlar - PostgreSQL'den PostgreSQL için Azure DB – Tek sunucuya çevrimiçi geçiş
           href: known-issues-azure-postgresql-online.md
-        - name: Bilinen Sorunlar - Oracle'dan PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
+        - name: Bilinen Sorunlar - Oracle'dan PostgreSQL için Azure DB – Tek sunucuya çevrimiçi geçiş
           href: known-issues-oracle-azure-postgresql-online.md
+        - name: Bilinen Sorunlar - Karma modu kullanma
+          href: known-issues-dms-hybrid-mode.md
     - name: Videolar
       items:
         - name: Veritabanı Geçiş Kılavuzu’nu kullanma
@@ -93,7 +97,7 @@
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
     - name: Araçlar ve rehberlik
       items:
-        - name: Veri geçişi senaryolarında kullanılabilen hizmet ve araçlar
+        - name: Veri geçişi senaryolarında kullanılabilen hizmetler ve araçlar
           href: dms-tools-matrix.md
         - name: Azure Veritabanı Geçiş Kılavuzu
           href: 'https://aka.ms/datamigration'
