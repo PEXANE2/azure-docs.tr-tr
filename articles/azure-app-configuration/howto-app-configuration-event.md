@@ -1,5 +1,6 @@
 ---
-title: Azure Uygulama yapılandırması 'nı olayları bir Web uç noktasına göndermek için ayarlama öğreticisi | Microsoft Docs
+title: "Öğretici: bir Web uç noktasına olay göndermek için Azure Uygulama yapılandırması 'Nı kullanma"
+titleSuffix: Azure App Configuration
 description: Bu öğreticide, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerini ayarlamayı öğreneceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,18 +14,18 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433699"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme
 
 Bu hızlı başlangıçta, bir Web uç noktasına anahtar-değer değiştirme olayları göndermek için Azure uygulama yapılandırma olay aboneliklerini ayarlamayı öğreneceksiniz. Azure uygulama yapılandırma kullanıcıları, anahtar değerleri değiştirildiğinde yayınlanan olaylara abone olabilir. Bu olaylar Web kancaları, Azure Işlevleri, Azure depolama kuyrukları veya Azure Event Grid tarafından desteklenen diğer herhangi bir olay işleyicisini tetikleyebilir. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/). İsteğe bağlı olarak Azure Cloud Shell kullanabilirsiniz.
 

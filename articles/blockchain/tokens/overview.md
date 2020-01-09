@@ -4,12 +4,12 @@ description: Azure blok zinciri belirteçleri, belirteç verme ve yönetimi içi
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326079"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387182"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Azure Blok Zinciri Belirteçleri nedir?
 
@@ -40,6 +40,14 @@ Azure blok zinciri belirteçleri hesap yönetimi hakkında daha fazla bilgi içi
 ## <a name="token-taxonomy-framework"></a>Belirteç taksonomi çerçevesi
 
 Azure blok zinciri belirteçleri, belirteç taksonomi çerçevesi (TTF) adlı standartlara dayalı bir temel üzerinde oluşturulmuştur. TTF, [belirteç taksonomi girişimi](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) belirteci çalışma grubundan oluşturulan teslim edilebilirler kümesidir. TTı çalışma grubu, belirteçler için bir iş Taksonomi ve Ethereum, çekirdek, Corda ve hiper muhasebe dokusunu dahil olmak üzere tüm önemli defterlerde uygulanabilen davranışları tanımlar. Çalışma grubunun hedefi, bir iş perspektifinden, basitme ve herkese belirteci tabanlı geliştirmeyi sağlamak için belirteçlerin kullanımını standartlayan bir çerçeve oluşturmaktır. Sektörün bu belirteçleri ve davranışlarını iş düzeyinde tanımlamasına izin vererek, belirteçlerin ayrıntılı uygulanması belirteçleri belirleyen iş mantığından soyutlanmıştır.
+
+## <a name="support-and-feedback"></a>Destek ve geri bildirim
+
+Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.microsoft.com/blog/topics/blockchain/) ' nı ziyaret ederek, blok zinciri hizmeti tekliflerini ve Azure blok zinciri Mühendisliği ekibinin bilgilerini güncel tutun.
+
+Azure blok zinciri belirteçleri önizlemesine erişim sağlamak için [Azure blok zinciri belirteçleri ekibine başvurun](https://aka.ms/PreviewForm).
+
+Ürün geri bildirimi sağlamak veya yeni özellikler istemek için, [blok zinciri Için Azure geri bildirim Forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir oylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

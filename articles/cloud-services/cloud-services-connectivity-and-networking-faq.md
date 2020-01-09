@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Cloud Services SSS için bağlantı ve ağ sorunları | Microsoft Docs
+title: Bağlantı ve ağ sorunları
+titleSuffix: Azure Cloud Services
 description: Bu makalede Microsoft Azure Cloud Services için bağlantı ve ağ hakkında sık sorulan sorular listelenmektedir.
 services: cloud-services
 documentationcenter: ''
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386757"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: Sık sorulan sorular (SSS)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: sık sorulan sorular (SSS)
 
 Bu makalede, [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)bağlantı ve ağ sorunları hakkında sık sorulan sorular yer almaktadır. Boyut bilgileri için [Cloud SERVICES VM boyutu sayfasına](cloud-services-sizes-specs.md)bakın.
 
@@ -64,14 +65,14 @@ Kullanılan dağıtım algoritması, trafiği kullanılabilir sunucularla eşlem
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Gelen trafiği bulut hizmetimin varsayılan URL 'sine özel bir URL 'ye nasıl yönlendirebilirim?
 
-IIS 'nin URL yeniden yazma modülü, bulut hizmeti için varsayılan URL 'ye gelen trafiği (örneğin, \*. cloudapp.net) bir özel ad/URL 'ye yönlendirmek için kullanılabilir. URL yeniden yazma modülü Web rolleri üzerinde varsayılan olarak etkinleştirildiğinden ve kuralları uygulamanın Web. config dosyasında yapılandırılmışsa, yeniden başlatmalar/regörüntülerden bağımsız olarak her zaman VM 'de kullanılabilir. Daha fazla bilgi için bkz.
+IIS 'nin URL yeniden yazma modülü, bulut hizmeti için varsayılan URL 'ye gelen trafiği (örneğin, \*. cloudapp.net) özel bir ad/URL 'ye yönlendirmek için kullanılabilir. URL yeniden yazma modülü Web rolleri üzerinde varsayılan olarak etkinleştirildiğinden ve kuralları uygulamanın Web. config dosyasında yapılandırılmışsa, yeniden başlatmalar/regörüntülerden bağımsız olarak her zaman VM 'de kullanılabilir. Daha fazla bilgi için bkz.
 
 - [URL yeniden yazma modülü için yeniden yazma kuralları oluşturma](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Varsayılan bağlantıyı kaldır](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Bulut hizmetimin varsayılan URL 'SI için gelen trafiği nasıl engelleyebilir/devre dışı bırakabilirim?
 
-Bulut hizmetinizin varsayılan URL 'sine/adına gelen trafiği engelleyebilirsiniz (örneğin, \*. cloudapp.net). Belirtilen şekilde, bulut hizmeti tanımı (*. csdef) dosyasındaki site bağlama\.yapılandırması altında, ana bilgisayar üst bilgisini özel bir DNS adına (örneğin, www MyCloudService.com) ayarlayın:
+Bulut hizmetinizin varsayılan URL 'sine/adına gelen trafiği engelleyebilirsiniz (örneğin, \*. cloudapp.net). Belirtilen şekilde, bulut hizmeti tanımı (*. csdef) dosyasındaki site bağlama yapılandırması altında, ana bilgisayar üst bilgisini özel bir DNS adına (örneğin, www\.MyCloudService.com) ayarlayın:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

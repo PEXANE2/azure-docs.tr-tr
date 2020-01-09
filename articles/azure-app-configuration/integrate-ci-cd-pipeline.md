@@ -1,5 +1,6 @@
 ---
-title: Azure Uygulama yapılandırması 'nı kullanarak sürekli tümleştirme ve teslim işlem hattı ile tümleştirme öğreticisi | Microsoft Docs
+title: 'Öğretici: sürekli tümleştirme ve teslim işlem hattı ile tümleştirme'
+titleSuffix: Azure App Configuration
 description: Bu öğreticide sürekli tümleştirme ve teslim sırasında Azure Uygulama yapılandırmasındaki verileri kullanarak yapılandırma dosyası oluşturmayı öğreneceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8adfee1e707181e78f4e845f61477b08af935e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433646"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
@@ -37,7 +38,7 @@ Aşağıdaki örnek, uygulama yapılandırma verilerinin hızlı başlangıçlar
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi indirip yükleyin.
 

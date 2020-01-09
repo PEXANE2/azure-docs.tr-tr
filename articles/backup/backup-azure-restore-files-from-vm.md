@@ -3,12 +3,12 @@ title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392557"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -174,7 +174,7 @@ RAID diskinde yapılandırılmış başka bir LVM varsa, LVM bölümleri için �
 
 Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumluluk gösterilmektedir. Dosyaları kurtarırken, önceki veya sonraki bir işletim sistemi sürümüne dosya geri yükleme yapamazsınız. Örneğin, bir dosyayı Windows Server 2016 VM 'den Windows Server 2012 veya Windows 8 bilgisayarına geri alamazsınız. Bir VM 'den aynı sunucu işletim sistemine veya uyumlu istemci işletim sistemine dosyaları geri yükleyebilirsiniz.
 
-|Sunucu işletim sistemi | Uyumlu istemci işletim sistemi  |
+|Sunucu İşletim Sistemi | Uyumlu istemci işletim sistemi  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
@@ -205,15 +205,15 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 
 |Bileşen | Sürüm  |
 | --------------- | ---- |
-| Bash | 4 ve üzeri |
+| bash | 4 ve üzeri |
 | Python | 2.6.6 ve üzeri  |
-| IOCTL | 1,2 desteklenmelidir  |
+| TLS | 1,2 desteklenmelidir  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
 
-Bu bölümde, disk sayısı 16 > ve her disk boyutu > 4 TB olan Azure sanal makine yedeklemelerinden nasıl dosya kurtarmasının gerçekleştirileceği açıklanmaktadır.
+Bu bölümde, disk sayısı 16 > ve her disk boyutu > 32 TB olan Azure sanal makine yedeklemelerinden nasıl dosya kurtarmasının gerçekleştirileceği açıklanmaktadır.
 
-Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda disk (> 16) veya büyük diskler (her biri > 4 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
+Dosya kurtarma işlemi tüm diskleri yedekten iliştirdiğinden, çok sayıda disk (> 16) veya büyük diskler (> 32 TB) kullanıldığında, aşağıdaki eylem noktaları önerilir:
 
 - Dosya kurtarma için ayrı bir geri yükleme sunucusunu (Azure VM D2v3 VM 'Ler) saklayın. Bu yalnızca dosya kurtarma 'yı kullanabilir ve gerekli olmadığında kapatılabilir. Özgün makineye geri yükleme, sanal makinenin kendisi üzerinde önemli bir etkiye sahip olacağı için önerilmez.
 - Sonra, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için betiği bir kez çalıştırın.
