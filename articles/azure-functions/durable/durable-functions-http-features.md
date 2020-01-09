@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232882"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433279"
 ---
 # <a name="http-features"></a>HTTP özellikleri
 
@@ -32,7 +32,8 @@ Aşağıdaki yerleşik HTTP API 'Leri desteklenir.
 * [Bir Orchestration 'a dış olay gönderme](durable-functions-http-api.md#raise-event)
 * [Düzenleme geçmişini temizle](durable-functions-http-api.md#purge-single-instance-history)
 * [Bir varlığa işlem olayı gönderme](durable-functions-http-api.md#signal-entity)
-* [Bir varlığın durumunu sorgulama](durable-functions-http-api.md#query-entity)
+* [Bir varlığın durumunu al](durable-functions-http-api.md#get-entity)
+* [Varlıkların listesini sorgulama](durable-functions-http-api.md#list-entities)
 
 Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik HTTP API 'Lerinin tam bir açıklaması için bkz. [http API 'leri makalesi](durable-functions-http-api.md) .
 
@@ -178,7 +179,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-Önceki örnekte `tokenSource` parametresi, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)IÇIN Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler `https://management.core.windows.net`Kaynak URI 'SI tarafından tanımlanır. Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki VM 'Leri yönetme iznine sahip olduğu varsayılır `myRG`.
+Önceki örnekte `tokenSource` parametresi, [Azure Resource Manager](../../azure-resource-manager/management/overview.md)IÇIN Azure AD belirteçlerini almak üzere yapılandırılmıştır. Belirteçler `https://management.core.windows.net`Kaynak URI 'SI tarafından tanımlanır. Örnek, geçerli işlev uygulamasının yerel olarak çalıştığını ya da yönetilen kimliğe sahip bir işlev uygulaması olarak dağıtıldığını varsayar. Yerel kimliğin veya yönetilen kimliğin, belirtilen kaynak grubundaki VM 'Leri yönetme iznine sahip olduğu varsayılır `myRG`.
 
 Çalışma zamanında, yapılandırılmış belirteç kaynağı otomatik olarak bir OAuth 2,0 erişim belirteci döndürür. Kaynak daha sonra, Giden isteğin yetkilendirme üstbilgisine bir taşıyıcı belirteci olarak belirteç ekler. Bu model, aşağıdaki nedenlerden dolayı HTTP isteklerine el ile Yetkilendirme üstbilgileri eklemenin bir geliştirmedir:
 

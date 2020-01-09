@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge filigran ağ bağlantıları ve güç kaynağı
+title: 'Öğretici: bir Azure FXT Edge filminin kablolarını bağlama'
 description: Azure FXT Edge Filer donanımı için ağ bağlantı noktalarını kablo ve ek güç iliştirme
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254864"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550953"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Öğretici: Azure FXT Edge Filer düğümüne ağ bağlantıları oluşturma ve güç sağlama
 
@@ -25,7 +25,7 @@ Bu öğreticide şunları öğreneceksiniz:
 > * Kabloları kablo yönetimi ARM (CMA) aracılığıyla yönlendirme
 > * Gücü çıkarılan cihaza bağlama ve şirket içinde açma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce, Azure FXT Edge Filer 'ın standart bir ekipman rafıyla yüklenmesi gerekir. CMA 'nın, dosyalayıcı düğümüne yüklenmesi gerekir. 
 
@@ -35,7 +35,7 @@ Azure FXT Edge filin arkasında yer alan çeşitli bağlantı noktalarını beli
  
 ![Kablolu bir cihazın geri dönmesi](media/fxt-back-annotated.png)
 
-## <a name="cable-the-device"></a>Cihazı kablo
+## <a name="cable-the-device"></a>Cihazın kablolarını bağlama
 
 * [Ağ bağlantı noktalarında](#network-ports)açıklandığı gıbı, RJ-45 bağlantı noktalarını veri merkezinize ait ağ kaynağına bağlayın.  
 * [Idrac bağlantı noktasını](#idrac-port) GÜVENLI bir DHCP sunucusu ile ayrı bir ağa güvenli bir şekilde bağlayın. 

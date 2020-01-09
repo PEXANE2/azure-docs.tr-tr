@@ -3,18 +3,18 @@ title: Sertifika için Ready bir IoT Tak ve Kullan önizleme cihazı oluşturun 
 description: Bir cihaz geliştiricisi olarak, sertifika için HAZIRAN IoT Tak ve Kullan önizleme cihazını nasıl oluşturabileceğiniz hakkında bilgi edinin.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569633"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550275"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sertifika için hazırlamış bir IoT Tak ve Kullan önizleme cihazı oluşturun
 
@@ -35,7 +35,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Vs Code Uzantı paketi Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-Ayrıca, hızlı başlangıçta oluşturduğunuz IoT Tak ve Kullan cihazının olması gerekir: cihaz [oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device.md).
+Ayrıca, hızlı başlangıçta oluşturduğunuz IoT Tak ve Kullan cihazının olması gerekir: cihaz [oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device-windows.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Yetenek modeli ve arabirimleri depolayın
 
@@ -58,7 +58,7 @@ Sertifika sürecini geçirmek için, **cihaz bilgileri** arabirimini yetenek mod
 ```
 
 > [!NOTE]
-> [Hızlı başlangıç: bir cihaz oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device.md), modelinize **cihaz bilgileri** arabirimini eklemiş oldunuz.
+> [Hızlı başlangıç: bir cihaz oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device-windows.md), modelinize **cihaz bilgileri** arabirimini eklemiş oldunuz.
 
 Cihaz modelinize **cihaz bilgileri** arabirimini dahil etmek için, arabirim kimliğini yetenek modelinin `implements` özelliğine ekleyin:
 

@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392390"
 ---
-| Kaynak | Hedef        |
+| Kaynak | Hedefleyin        |
 |----------|---------------|
 | Tek blob kapsayıcısının en büyük boyutu | Maksimum depolama hesabı kapasitesinden aynı |
 | Blok Blobu veya ekleme blobu içindeki maksimum blok sayısı | 50.000 bloklar |
@@ -25,4 +25,4 @@ ms.locfileid: "73905802"
 |Tek sayfalı blob için hedef işleme | Saniyede 60 MIB 'ye kadar |
 |Tek Blok Blobu için hedef aktarım hızı |Depolama hesabı giriş/çıkış sınırlarını artırma<sup>1</sup> |
 
-<sup>1</sup> tek nesne aktarım hızı, aşağıdakiler dahil olmak üzere çeşitli faktörlere bağlıdır, ancak bunlarla sınırlı değildir: eşzamanlılık, istek boyutu, performans katmanı, karşıya yükleme için kaynak hızı ve indirmeleri için hedef. [Yüksek performanslı Blok Blobu](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) performans geliştirmelerinden faydalanmak için, > 4 MIB 'Nin bir put blob 'Unu veya put blok isteği boyutunu (Premium performans bloğu BLOB depolama alanı veya Data Lake Storage 2. için > 256 KiB) kullanın.
+tek bir blob için <sup>1</sup> aktarım hızı, aşağıdakiler dahil olmak üzere çeşitli faktörlere bağlıdır, ancak bunlarla sınırlı değildir: eşzamanlılık, istek boyutu, performans katmanı, karşıya yükleme için kaynak hızı ve indirmeleri için hedef. [Yüksek verimlilik blok bloblarının](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)performans geliştirmelerinden faydalanmak için, daha büyük blob 'ları veya blokları karşıya yükleyin. Özellikle, standart depolama hesapları için 4 MiB 'den büyük bir blob veya blok boyutu ile [PUT blobu](/rest/api/storageservices/put-blob) veya [PUT bloğu](/rest/api/storageservices/put-block) işlemini çağırın. Premium Blok Blobu veya Data Lake Storage 2. depolama hesapları için 256 KiB 'den büyük bir blok veya blob boyutu kullanın.

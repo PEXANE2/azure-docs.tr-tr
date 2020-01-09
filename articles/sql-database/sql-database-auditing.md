@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928708"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551633"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
@@ -70,7 +70,7 @@ Belirli bir veritabanı veya varsayılan sunucu ilkesi olarak bir denetim ilkesi
 
 Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması açıklanmaktadır.
 
-1. [Azure Portal](https://portal.azure.com) gidin.
+1. [Azure portalına](https://portal.azure.com) gidin.
 2. SQL veritabanı/sunucu bölmeniz içindeki güvenlik başlığı altında bulunan **Denetim** ' e gidin.
 
     <a id="auditing-screenshot"></a>![Gezinti Bölmesi][1]
@@ -108,7 +108,7 @@ Aşağıdaki bölümde Azure portal kullanılarak denetim yapılandırması aç�
 
     ![Olay hub'ı](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. **Kaydet** düğmesine tıklayın.
+9. **Save (Kaydet)** düğmesine tıklayın.
 10. Denetlenen olayları özelleştirmek istiyorsanız bunu [PowerShell cmdlet 'leri](#subheading-7) veya [REST API](#subheading-9)aracılığıyla yapabilirsiniz.
 11. Denetim ayarlarınızı yapılandırdıktan sonra, yeni tehdit algılama özelliğini açıp e-postaları güvenlik uyarılarını alacak şekilde yapılandırabilirsiniz. Tehdit algılama 'yı kullandığınızda, olası güvenlik tehditlerini gösterebilen anormal veritabanı etkinliklerinde proaktif uyarılar alırsınız. Daha fazla bilgi için bkz. [tehdit algılamayı kullanmaya başlama](sql-database-threat-detection-get-started.md).
 
@@ -243,7 +243,7 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 - AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
 
 
-## <a id="subheading-7"></a>Azure PowerShell kullanarak SQL veritabanı denetimini yönetme
+## <a id="subheading-7"></a>Azure PowerShell kullanarak Azure SQL Server ve veritabanı denetimini yönetme
 
 **PowerShell cmdlet 'leri (ek filtreleme IÇIN WHERE yan tümcesi desteği dahil)** :
 
@@ -256,7 +256,7 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
 Betik örneği için bkz. [PowerShell kullanarak denetim ve tehdit algılamayı yapılandırma](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
-## <a id="subheading-9"></a>REST API kullanarak SQL veritabanı denetimini yönetme
+## <a id="subheading-8"></a>REST API kullanarak Azure SQL Server ve veritabanı denetimini yönetme
 
 **REST API**:
 
@@ -272,7 +272,7 @@ Ek filtreleme için WHERE yan tümcesi desteğiyle genişletilmiş ilke:
 - [Veritabanı *genişletilmiş* denetim ilkesini al](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Sunucu *genişletilmiş* denetim ilkesini al](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Azure Resource Manager şablonları kullanarak SQL veritabanı denetimini yönetme
+## <a id="subheading-9"></a>Azure Resource Manager şablonları kullanarak Azure SQL Server ve veritabanı denetimini yönetme
 
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şablonları kullanarak Azure SQL veritabanı denetimini aşağıdaki örneklerde gösterildiği gibi yönetebilirsiniz:
 
@@ -289,10 +289,9 @@ Ek filtreleme için WHERE yan tümcesi desteğiyle genişletilmiş ilke:
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

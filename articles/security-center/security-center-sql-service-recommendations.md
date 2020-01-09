@@ -11,27 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2019
+ms.date: 12/19/2019
 ms.author: memildin
-ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663902"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552874"
 ---
-# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Azure veri ve depolama hizmetlerini koruma
-Bu konu başlığı altında, veri ve depolama kaynakları için güvenlik önerilerini görüntüleme ve uygulama işlemlerinin nasıl yapılacağı gösterilmektedir. Azure Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz edilirken bu önerileri buldu.
+# <a name="protect-azure-data-and-storage-services"></a>Azure veri ve depolama hizmetlerini koruma
+Azure Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızın güvenliğini sağlamak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
+
+Bu makalede, güvenlik merkezi 'nin kaynak güvenliği bölümünün **veri güvenliği sayfası** açıklanmaktadır.
+
+Bu sayfada görebileceğiniz önerilerin tam listesi için bkz. [veri ve depolama önerileri](recommendations-reference.md#recs-datastorage).
+
 
 ## <a name="view-your-data-security-information"></a>Veri güvenliği bilgilerinizi görüntüleyin
 
 1. **Kaynak güvenliği durumu** bölümünde, **veri ve depolama kaynakları**' na tıklayın.
 
-    ![Veri & depolama kaynakları](./media/security-center-monitoring/click-data.png)
+    ![Veri ve depolama kaynakları](./media/security-center-monitoring/click-data.png)
 
     Veri **güvenliği** sayfası, veri kaynaklarına yönelik önerilerle açılır.
 
-    ![Veri Kaynakları](./media/security-center-monitoring/sql-overview.png)
+    [![veri kaynakları](./media/security-center-monitoring/sql-overview.png)](./media/security-center-monitoring/sql-overview.png#lightbox)
 
     Bu sayfadan şunları yapabilirsiniz:
 
@@ -58,29 +63,11 @@ Bu konu başlığı altında, veri ve depolama kaynakları için güvenlik öner
 
 4. **Düzeltme adımlarını** Izleyin ve **Kaydet**' e tıklayın.
 
-## <a name="data-and-storage-recommendations"></a>Veri ve depolama önerileri
 
-|Kaynak türü|Güvenlik puanı|Öneri|Açıklama|
-|----|----|----|----|
-|Depolama hesabı|20|Depolama hesaplarına Güvenli aktarım etkinleştirilmelidir|Güvenli aktarım, depolama hesabınızı yalnızca güvenli bağlantılardan (HTTPS) istekleri kabul edecek şekilde zorlayan bir seçenektir. HTTPS, sunucu ile hizmet arasında kimlik doğrulaması sağlar ve aradaki bağlantıyı izinsiz izleme, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı korur.|
-|Redis|20|Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir|Redsıs için yalnızca SSL aracılığıyla bağlantıları Azure önbelleğine etkinleştirin. Güvenli bağlantı kullanımı, sunucu ve hizmet arasında kimlik doğrulaması sağlar ve aradaki bağlantıyı izinsiz izleme, gizlice dinleme ve oturum ele geçirme gibi ağ katmanı saldırılarına karşı korur.|
-|SQL|15|SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir|Rest verilerini korumak ve uyumluluk gereksinimlerini karşılamak için saydam veri şifrelemesini etkinleştirin.|
-|SQL|15|SQL Server denetimi etkinleştirilmelidir|Azure SQL sunucuları için denetimi etkinleştirin. (Yalnızca Azure SQL hizmeti. , Sanal makinelerinizde çalışan SQL içermez.)|
-|Data Lake Analytics|5|Data Lake Analytics tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
-|Data Lake Store|5|Azure Data Lake Store tanılama günlükleri etkinleştirilmelidir|Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar. |
-|SQL|30|SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.|
-|SQL|20|SQL Server için bir Azure AD yöneticisi sağlama|Azure AD kimlik doğrulamasını etkinleştirmek için SQL sunucunuz için bir Azure AD yöneticisi sağlayın. Azure AD kimlik doğrulaması, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.|
-|Depolama hesabı|15|Güvenlik Duvarı ve sanal ağ yapılandırmalarına sahip depolama hesaplarına erişim kısıtlı olmalıdır|Depolama hesabı güvenlik duvarı ayarlarınızda Kısıtlanmamış ağ erişimini denetleyin. Bunun yerine, ağ kurallarını yalnızca izin verilen ağların uygulamalarının depolama hesabına erişebilmesi için yapılandırın. Belirli Internet veya şirket içi istemcilerden gelen bağlantılara izin vermek için, belirli Azure sanal ağlarından veya genel Internet IP adresi aralıklarına giden trafiğe erişim izni verebilirsiniz.|
-|Depolama hesabı|1|Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir|Depolama hesaplarınız için yeni Azure Resource Manager v2 kullanarak, daha güçlü erişim denetimi (RBAC), daha iyi denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, için Anahtar Kasası erişimi gibi güvenlik geliştirmeleri sağlayın. daha kolay güvenlik yönetimi için gizlilikler ve Azure AD tabanlı kimlik doğrulaması ve Etiketler ve kaynak grupları desteği.|
+## <a name="next-steps"></a>Sonraki adımlar
 
-## <a name="see-also"></a>Ayrıca bkz.
 Diğer Azure kaynak türlerine uygulanan öneriler hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
+* [Azure Güvenlik Merkezi 'nin güvenlik önerilerinin tam başvuru listesi](recommendations-reference.md)
 * [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 * [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
-
-Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
-
-* [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md) -- Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) -- Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) -- Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.

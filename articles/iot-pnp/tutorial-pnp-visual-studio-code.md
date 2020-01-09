@@ -3,18 +3,18 @@ title: IoT Tak ve Kullan önizleme cihazı oluşturma ve test etme | Microsoft D
 description: Bir cihaz geliştiricisi olarak, IoT Tak ve Kullan önizleme cihazı için yeni bir cihaz yetenek modeli oluşturmak ve test etmek üzere VS Code nasıl kullanacağınızı öğrenin.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569892"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550341"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Öğretici: Visual Studio Code kullanarak cihaz yetenek modeli oluşturma ve test etme
 
@@ -259,7 +259,7 @@ Artık cihaz yetenek modelinizi oluşturan üç dosya vardır:
 * Environmentalalgılayıcı. Interface. JSON
 * SensorboxModel. capabilitymodel. JSON
 
-## <a name="publish-the-model"></a>Modeli Yayımla
+## <a name="publish-the-model"></a>Modeli yayımlayın
 
 Azure IoT gezgin aracının cihaz yetenek modelinizi okuyabilmesi için, bunu şirket deponuzda yayımlamanız gerekir. VS Code yayımlamak için şirket deposu için bağlantı dizesine ihtiyacınız vardır:
 
@@ -329,13 +329,13 @@ VS Code içindeki saplaması koduna yönelik uygulamalar sağlamak için:
 
 IoT Tak ve Kullan cihazınızı bir Azure IoT Hub ile test etmek için kodu çalıştırmadan önce kodu derlemeniz gerekir.
 
-Kodu Windows üzerinde derlemek ve çalıştırmak için **sensorbox_app** klasöründeki **README.MD** dosyasındaki yönergeleri izleyin. Aşağıdaki bölümde, cihaz kodunu çalıştırdığınızda kullanılacak bir cihaz bağlantı dizesi alma yönergeleri yer almaktadır.
+Kodu Windows üzerinde derlemek ve çalıştırmak için **sensorbox_app** klasöründeki **README.MD** dosyasında yer alan yönergeleri izleyin. Aşağıdaki bölümde, cihaz kodunu çalıştırdığınızda kullanılacak bir cihaz bağlantı dizesi alma yönergeleri yer almaktadır.
 
 ## <a name="test-the-code"></a>Kodu test etme
 
 Kodu çalıştırdığınızda, IoT Hub bağlanır ve örnek telemetri ve özellik değerleri göndermeye başlar. Cihaz ayrıca IoT Hub gönderilen komutlara da yanıt verir. Bu davranışı doğrulamak için:
 
-1. IoT Hub 'ı oluşturmak için:
+1. IoT hub'ı oluşturmak için:
 
     ```azurecli-interactive
     az group create --name environmentalsensorresources --location centralus

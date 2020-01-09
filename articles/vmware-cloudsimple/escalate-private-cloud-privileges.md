@@ -1,5 +1,6 @@
 ---
-title: Özel bulut ayrıcalıklarını ilerletin-CloudSimple 'a göre Azure VMware çözümü
+title: Özel bulut ayrıcalıklarını ilerletin
+titleSuffix: Azure VMware Solution by CloudSimple
 description: VCenter 'daki yönetim işlevleri için özel bulutunuzda ayrıcalıkların nasıl ilerletiloluşturulacağını açıklar
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372780"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından özel bulut vCenter ayrıcalıklarını ilerletin
 
@@ -24,7 +25,7 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 > [!CAUTION]
 > Yönetim bileşenleri için herhangi bir yapılandırma değişikliği yapmayın. İlerletilen ayrıcalıklı durum sırasında gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir veya sisteminizin kullanılamaz hale gelmesine neden olabilir.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -38,7 +39,7 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
     ![VSphere ayrıcalığını değiştirme](media/escalate-private-cloud-privilege.png)
 
-4. VSphere Kullanıcı türünü seçin.  Yalnızca `CloudOwner@cloudsimple.local` Yerel Kullanıcı ilerletilenebilir.
+4. VSphere Kullanıcı türünü seçin.  Yalnızca yerel kullanıcı `CloudOwner@cloudsimple.local` ilerletilenebilir.
 
 5. Açılan listeden ilerleme zaman aralığını seçin. Görevi tamamlamanıza olanak sağlayacak en kısa süreyi seçin.
 
@@ -46,7 +47,7 @@ Yeni kullanıcılar vCenter SSO etki alanında oluşturulabilir ve vCenter eriş
 
     ![Ayrıcalığı ilerlet iletişim kutusu](media/escalate-private-cloud-privilege-dialog.png)
 
-7. **Tamam**'ı tıklatın.
+7. **Tamam**’a tıklayın.
 
 8. Yükseltme işlemi birkaç dakika sürebilir. İşlem tamamlandığında **Tamam**’a tıklayın.
 
@@ -59,7 +60,7 @@ Ayrıcalık yükseltme başlar ve seçilen aralığın sonuna kadar sürer.  Yö
 
 Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme dönemini genişletebilirsiniz.  Yönetim görevlerini tamamlamanıza izin veren ek ilerleme zaman aralığını seçin.
 
-1. Cloudsimple portalındaki **kaynaklar** > **özel bulutlarında** , ayrıcalık yükseltme 'yi genişletmek istediğiniz özel bulutu seçin.
+1. CloudSimple portalındaki **özel bulutları** > **kaynaklarda** , ayrıcalık yükseltme 'Yi genişletmek istediğiniz özel bulutu seçin.
 
 2. Özet sekmesinin altındaki **ayrıcalık yükseltmeyi Genişlet**' e tıklayın.
 
@@ -73,11 +74,11 @@ Görevlerinizi tamamlaması için ek süre gerekliyse, ayrıcalık yükseltme d�
 
 Yönetim görevleriniz tamamlandıktan sonra, ayrıcalıklarınızı geçersiz bir şekilde ilerletin.  
 
-1. Cloudsimple portalındaki **kaynaklar** > **özel bulutlarında** , ayrıcalıklarını yükseltmek istediğiniz özel bulutu seçin.
+1. CloudSimple portalındaki **özel bulutları** > **kaynaklarda** , ayrıcalıklarını yükseltmek istediğiniz özel bulutu seçin.
 
 2. **Ön yükseltme**' ye tıklayın.
 
-3. **Tamam**'ı tıklatın.
+3. **Tamam**’a tıklayın.
 
 > [!IMPORTANT]
 > Herhangi bir hatayı önlemek için vCenter oturumunu kapatın ve yükseltme ayrıcalıklarından sonra tekrar oturum açın.

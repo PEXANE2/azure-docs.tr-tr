@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446954"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
 
@@ -23,14 +23,14 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 
 ## <a name="speech-devices-sdk-170"></a>Konuşma cihazları SDK 1.7.0:
 
-*   Linux ARM artık destekleniyor.
-*   Roobov2 için ilk ikililer sağlanır (Linux ARM64).
-*   Windows kullanıcıları, kullanılacak mikrofonu belirtmek için AudioConfig. Fromdefaultmikro Phoneınput () veya AudioConfig. Frommikro Phoneınput (aygıtadı) kullanabilir.
-*   Kitaplık boyutu iyileştirildi.
-*   Aynı konuşma/amaç tanıyıcı nesnesini kullanarak çok yönlü tanıma desteği.
-*   Tanımayı durdururken ortaya çıkabilecek zaman zaman asılı kalma özelliğini düzeltir.
-*   Örnek uygulamalar artık dosyanın biçimini göstermek için örnek katılımcılar. Properties dosyası içerir.
-*   [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.7.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
+- Linux ARM artık destekleniyor.
+- Roobo v2 için ilk ikili dosyalar sağlanır (Linux ARM64).
+- Windows kullanıcıları, kullanılacak mikrofonu belirlemek için `AudioConfig.fromDefaultMicrophoneInput()` veya `AudioConfig.fromMicrophoneInput(deviceName)` kullanabilir.
+- Kitaplık boyutu iyileştirildi.
+- Aynı konuşma/amaç tanıyıcı nesnesini kullanarak çok yönlü tanıma desteği.
+- Tanımayı durdururken ortaya çıkabilecek zaman zaman asılı kalma özelliğini düzeltir.
+- Örnek uygulamalar artık dosyanın biçimini göstermek için örnek katılımcılar. Properties dosyası içerir.
+- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.7.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
 
 ## <a name="speech-devices-sdk-160"></a>Konuşma cihazları SDK 1.6.0:
 
@@ -68,8 +68,8 @@ Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
 
 - [Anahtar sözcük yükleme](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) basitleştirildi, artık uygulamanın bir parçasıdır ve cihaza ayrı yükleme gerektirmez.
 - Anahtar sözcük tanıma değiştirilmiştir ve iki olay desteklenir.
-  - Recognizinganahtar sözcüğü, konuşma sonucu içeren (doğrulanmamış) anahtar sözcük metnini gösterir.
-  - Recognizedanahtar sözcüğü, anahtar sözcük tanımanın verilen anahtar sözcüğü tanımayı tamamladığını gösterir.
+  - `RecognizingKeyword,`, konuşma sonucunu içeren (doğrulanmamış) anahtar sözcük metnini gösterir.
+  - `RecognizedKeyword`, anahtar sözcük tanımanın verilen anahtar sözcüğü tanımayı tamamladığını gösterir.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Konuşma cihazları SDK 1.1.0:2018-kas sürümü
 

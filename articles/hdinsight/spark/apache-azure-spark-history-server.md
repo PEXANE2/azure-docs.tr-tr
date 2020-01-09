@@ -1,6 +1,6 @@
 ---
-title: Uygulamalarda hata ayıklamak için genişletilmiş Spark geçmiş sunucusu-Azure HDInsight
-description: Spark uygulamalarında hata ayıklamak ve tanılamak için genişletilmiş Spark geçmiş sunucusunu kullanın-Azure HDInsight.
+title: Uygulamalarda hata ayıklamak için Apache Spark geçmiş sunucuda genişletilmiş özellikleri kullanma-Azure HDInsight
+description: Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusundaki genişletilmiş özellikleri kullanın-Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,238 +8,244 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 7e9ab0e41086a4c9478f95c5a56754640feeab4e
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561824"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552738"
 ---
-# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
+# <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Spark uygulamalarında hata ayıklamak ve tanılamak için Apache Spark geçmiş sunucusunun genişletilmiş özelliklerini kullanın
 
-Bu makalede, hata ayıklama ve tanılama uygulamalarının çalıştırılması için genişletilmiş Apache Spark geçmiş sunucusunun nasıl kullanılacağına ilişkin yönergeler sunulmaktadır. Uzantı, veri sekmesini ve grafik sekmesini ve tanılama sekmesini içerir. **Veriler** sekmesinde, kullanıcılar Spark işinin giriş ve çıkış verilerini denetleyebilir. **Grafik** sekmesinde, kullanıcılar veri akışını denetleyebilir ve iş grafiğini yeniden oynatılabilir. **Tanılama** sekmesinde, Kullanıcı **veri eğme**, **zaman eğriltme**ve **yürütücü kullanım analizine**başvurabilir.
+Bu makalede, Apache Spark geçmiş sunucusunun genişletilmiş özelliklerinin, tamamlanan veya çalışan Spark uygulamalarında hata ayıklamak ve tanılamak için nasıl kullanılacağı gösterilir. Uzantı bir **veri** sekmesi, bir **grafik** sekmesi ve bir **Tanılama** sekmesi içerir. **Veri** sekmesinde Spark işinin giriş ve çıkış verilerini kontrol edebilirsiniz. **Grafik** sekmesinde veri akışını denetleyebilir ve iş grafiğini yeniden çalabilirsiniz. **Tanılama** sekmesinde **veri eğme**, **zaman eğriltme**ve **yürütücü Kullanım Analizi** özelliklerine başvurabilirsiniz.
 
-## <a name="get-access-to-apache-spark-history-server"></a>Apache Spark geçmiş sunucusuna erişim sağlayın
+## <a name="get-access-to-the-spark-history-server"></a>Spark geçmiş sunucusuna erişim sağlayın
 
-Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalıştırıldığı Web Kullanıcı arabirimi.
+Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalıştırıldığı Web kullanıcı arabirimidir. Azure portal ya da URL 'den açabilirsiniz.
 
-### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Azure portal Apache Spark geçmiş sunucusu Web Kullanıcı arabirimini açın
+### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>Spark geçmiş sunucusu Web Kullanıcı arabirimini Azure portal açın
 
 1. [Azure Portal](https://portal.azure.com/)Spark kümesini açın. Daha fazla bilgi için bkz. [kümeleri listeleme ve gösterme](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. **Küme panolarından** **Spark geçmiş sunucusu**' nu seçin. İstendiğinde Spark kümesi için yönetici kimlik bilgilerini girin.
 
-    ![Portal Spark geçmiş sunucusunu Başlat](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark geçmiş sunucusu")
+    ![Spark geçmiş sunucusunu Azure portal başlatın.](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark geçmiş sunucusu")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>URL 'ye göre Spark geçmiş sunucusu Web Kullanıcı arabirimini açın
 
-CLUSTERNAME 'ın Spark Kümenizin adı olduğu `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` göz atarak Spark geçmiş sunucusunu açın.
+Spark geçmiş sunucusunu `https://CLUSTERNAME.azurehdinsight.net/sparkhistory`göz atarak açın, burada **clustername** , Spark kümenizin adıdır.
 
-Spark geçmiş sunucusu Web Kullanıcı arabirimi şuna benzer olabilir:
+Spark geçmiş sunucusu Web Kullanıcı arabirimi şu resme benzer şekilde görünebilir:
 
-![HDInsight Spark geçmiş sunucusu](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
+![Spark geçmiş sunucusu sayfası.](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
-## <a name="data-tab-in-spark-history-server"></a>Spark geçmiş sunucusunda veri sekmesi
+## <a name="use-the-data-tab-in-the-spark-history-server"></a>Spark geçmiş sunucusundaki veri sekmesini kullanın
 
-Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki **veriler** ' i seçin.
+İş KIMLIĞINI seçin ve ardından veri görünümünü görmek için araç menüsündeki **veriler** ' i seçin.
 
-+ Sekmeleri ayrı olarak seçerek **girişleri**, **çıkışları**ve **tablo işlemlerini** gözden geçirin.
++ Ayrı sekmeleri seçerek **girişleri**, **çıkışları**ve **tablo işlemlerini** gözden geçirin.
 
-    ![Spark uygulama sekmeleri için veriler](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
+    ![Spark uygulaması için veriler sayfasında veri sekmeleri.](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
-+ Düğme **Kopyala**' yı seçerek tüm satırları kopyalayın.
++ **Kopyala** düğmesini seçerek tüm satırları kopyalayın.
 
-    ![Spark uygulaması kopyalama verileri](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
+    ![Spark uygulaması sayfasındaki verileri kopyalayın.](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
-+ Düğme **CSV**'yi seçerek tüm verileri CSV dosyası olarak kaydedin.
++ Tüm verileri olarak kaydedin. **CSV düğmesini seçerek** CSV dosyası.
 
-    ![Spark uygulaması kaydetme verileri](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
+    ![Verileri bir olarak kaydedin. Spark uygulaması için veriler sayfasından CSV dosyası.](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
-+ Arama sonucu, alan **aramasına**anahtar sözcükler girerek hemen görüntülenecektir.
++ **Arama** alanına anahtar sözcükler girerek verilerde arama yapın. Arama sonuçları hemen görüntülenecektir.
 
-    ![Spark uygulaması arama verileri](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
+    ![Spark uygulaması için verilerde veri arama sayfası.](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
-+ Tabloyu sıralamak için sütun üst bilgisini seçin, daha fazla ayrıntı göstermek için bir satırı genişletmek üzere artı işaretini seçin ya da bir satırı daraltmak için eksi işaretini seçin.
++ Tabloyu sıralamak için sütun başlığını seçin. Daha fazla ayrıntı göstermek için bir satırı genişletmek üzere artı işaretini seçin. Bir satırı daraltmak için eksi işaretini seçin.
 
-    ![Spark uygulama tablosu verileri](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
+    ![Spark uygulaması için veriler sayfasında veri tablosu.](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
-+ Tek bir dosyayı indirin sağ tarafta bulunan düğme **kısmi indirmeyi** seçip seçili dosya artık mevcut değilse, hata iletilerini göstermek için yeni bir sekme açar.
++ Sağdaki **kısmi indirme** düğmesini seçerek tek bir dosyayı indirin. Seçili dosya yerel olarak indirilecek. Dosya artık mevcut değilse, bu işlem hata iletilerini göstermek için yeni bir sekme açar.
 
-    ![Spark uygulaması indirme satırı verileri](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
+    ![Spark uygulaması için veriler sayfasında veri indirme satırı.](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
 
-+ Tam yolu **Kopyala**, indirme menüsünden genişleyen **göreli yolu Kopyala** ' yı seçerek tam yolu veya göreli yolu kopyalayın. Azure Data Lake depolama dosyaları için **Azure Depolama Gezgini ' de açın** Azure Depolama Gezgini başlatılır ve oturum açarken klasörü bulun.
++ İndirme menüsünden genişleterek **tam yolu** Kopyala veya **göreli yolu Kopyala** seçeneğini belirleyerek bir tam yolu veya göreli yolu kopyalayın. Azure Data Lake Storage dosyalar için **Azure Depolama Gezgini aç** ' ı seçerek Azure Depolama Gezgini başlatın ve oturum açtıktan sonra klasörü bulun.
 
-    ![Spark uygulaması kopyalama yolu verileri](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
+    ![Spark uygulaması için veriler sayfasında tam yolu kopyalayın ve göreli yol seçeneklerini kopyalayın.](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
 
-+ Tek sayfada görüntülenecek çok fazla satır olduğunda sayfalarda gezinmek için tablonun altındaki sayıyı seçin.
++ Tek bir sayfada görüntülenecek çok fazla satır varsa, gezinmek için tablonun altındaki sayfa numaralarını seçin.
 
-    ![Spark uygulama sayfası verileri](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
+    ![Spark uygulaması için veriler sayfasında sayfa numaraları.](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
-+ Araç ipucunu göstermek için verilerin yanındaki soru işaretine gelin veya daha fazla bilgi almak için soru işaretini seçin.
++ Daha fazla bilgi için, araç ipucunu göstermek üzere **Spark uygulamasının veriler** ' in yanındaki soru işaretine gelin veya seçin.
 
-    ![Spark uygulaması için veriler daha fazla bilgi](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
+    ![Spark uygulaması için veriler sayfasında daha fazla bilgi alın.](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
 
-+ **Bize geri bildirim sağlayın**' a tıklayarak sorunlar ile geri bildirim gönderin.
++  Sorunlar hakkında geri bildirim göndermek için **bize geri bildirim sağla**' yı seçin.
 
-    ![Spark Graph bize geri bildirim sağlar](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![Spark uygulaması için veriler sayfasında geri bildirim sağlayın.](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
-## <a name="graph-tab-in-apache-spark-history-server"></a>Apache Spark geçmiş sunucuda grafik sekmesi
+## <a name="use-the-graph-tab-in-the-spark-history-server"></a>Spark geçmiş sunucusunda Graph sekmesini kullanma
 
-İş KIMLIĞI ' ni seçin ve ardından araç menüsündeki **Graph** ' a tıklayarak iş grafiği görünümünü alın.
++ İş KIMLIĞINI seçin ve sonra iş grafiğini görmek için araç menüsündeki **grafik** ' i seçin. Varsayılan olarak, grafik tüm işleri gösterir. **Iş kimliği** açılır menüsünü kullanarak sonuçları filtreleyin.
 
-+ Oluşturulan iş grafiğine göre işinize genel bakışı gözden geçirin.
+    ![Spark uygulaması & Iş grafiği sayfasında Iş KIMLIĞI açılır menüsü.](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
-+ Varsayılan olarak, tüm işleri gösterir ve **Iş kimliğine**göre filtrelenebilir.
++ Varsayılan olarak **ilerleme** seçilidir. **Görüntüle** açılan menüsünde **Oku** veya **yazılmış** ' i seçerek veri akışını kontrol edin.
 
-    ![Spark uygulaması ve iş grafiği iş KIMLIĞI](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
+    ![Spark uygulaması & Iş grafiği sayfasında veri akışını kontrol edin.](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
 
-+ Varsayılan olarak, **ilerleme** seçilidir. Kullanıcı, **ekran**açılan listesinde **Oku/yazılır** ' i seçerek veri akışını denetleyebilir.
++ Her görevin arka plan rengi bir ısı eşlemesine karşılık gelir.
 
-    ![Spark uygulaması ve iş grafiği görüntüsü](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
+   ![Spark uygulaması & Iş grafiği sayfasında ısı haritası.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
-    Grafik düğümü, heatmap 'i gösteren renkli renkte görüntülenir.
-
-    ![Spark uygulaması ve iş grafiği ısı haritasını](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
-
-+ **Kayıttan yürütme** düğmesini seçip Durdur düğmesini seçerek işi yeniden yürütün. Kayıttan yürütme sırasında farklı durumu göstermek için görev Color olarak görüntülenir:
 
     |Renk |Açıklama |
     |---|---|
     |Yeşil|İş başarıyla tamamlandı.|
-    |Orange|Başarısız olan, ancak işin nihai sonucunu etkilemeyen görev örnekleri. Bu görevler daha sonra başarılı olabilecek örnekleri tekrarlamıştır veya yeniden dener.|
+    |Orange|Görev başarısız oldu, ancak bu, işin nihai sonucunu etkilemez. Bu görevler daha sonra başarılı olabilecek yinelenen veya yeniden deneme örnekleri var.|
     |Mavi|Görev çalışıyor.|
     |Beyaz|Görev çalışmayı bekliyor veya aşama atlandı.|
     |Kırmızı|Görev başarısız oldu.|
 
-    ![Spark uygulaması ve iş grafiği renk örneği, çalışıyor](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
+     ![Spark uygulaması & Iş grafiği sayfasında bir görevi çalıştırma.](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
-    Atlanan aşama beyaz olarak görüntülenir.
-    Spark uygulaması ve iş grafiği renk örneği ![](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png) atla
+     Atlanan aşamalar beyaz olarak görüntülenir.
+    Spark uygulaması & Iş grafiği sayfasında atlanan bir görevi ![.](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
-    ![Spark uygulaması ve iş grafiği renk örneği, başarısız oldu](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
+    ![Spark uygulaması & Iş grafiği sayfasında başarısız olan bir görev.](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
-    > [!NOTE]  
-    > Her iş için kayıttan yürütmeye izin verilir. Tamamlanmamış iş için kayıttan yürütme desteklenmez.
+     > [!NOTE]  
+     > Tamamlanan İşler için kayıttan yürütme kullanılabilir. İşi yeniden oynatmak için **kayıttan yürütme** düğmesini seçin. Durdur düğmesini seçerek işi istediğiniz zaman durdurun. Bir iş kayıttan yürütüldüğünde, her görev durumunu renge göre görüntüler. Tamamlanmamış işler için kayıttan yürütme desteklenmez.
 
-+ Fare, iş grafiğini yakınlaştırmak/uzaklaştırmak için kayar veya ekrana sığacak hale getirmek için **Yakınlaştır** ' a tıklayın.
++ İş grafiğinde yakınlaştırmak veya uzaklaştırmak için kaydırma yapın ya da ekrana sığacak şekilde **yakınlaştırmak Için Yakınlaştır** ' ı seçin.
 
-    ![Spark uygulaması ve iş grafiği sığacak kadar yaklaştır](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
+    ![Spark uygulaması & Iş grafiği sayfasına sığacak şekilde Yakınlaştır ' ı seçin.](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
 
-+ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünde üzerine gelin ve aşama sayfasını açmak için aşama ' a tıklayın.
++ Görevler başarısız olduğunda, araç ipucunu görmek için grafik düğümünün üzerine gelin ve sonra yeni bir sayfada açmak için aşamayı seçin.
 
-    ![Spark uygulaması ve iş grafiği araç ipucu](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+    ![Spark uygulaması & Iş grafiği sayfasında araç ipucunu görüntüleyin.](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
-+ İş grafiği sekmesinde, aşağıdaki koşullara uyan görevler varsa, aşamalar araç ipucu ve küçük simge olarak görüntülenir:
-  + Veri eğriltme: veri okuma boyutu > Bu aşama içindeki tüm görevlerin ortalama veri okuma boyutu * 2 ve veri okuma boyutu > 10 MB.
-  + Zaman eğriltme: yürütme süresi > Bu aşama içindeki tüm görevlerin ortalama yürütme süresi * 2 ve yürütme süresi > 2 dakika.
++ Spark uygulaması & Iş grafiği sayfasında, görevler şu koşullara uyuyorsa araç ipuçları ve küçük simgeler görüntülenir:
+  + Veri eğriltme: veri okuma boyutu > Bu aşama içindeki tüm görevlerin ortalama veri okuma boyutu * 2 *ve* veri okuma boyutu > 10 MB.
+  + Zaman eğriltme: yürütme süresi > Bu aşama içindeki tüm görevlerin ortalama yürütme süresi * 2 *ve* yürütme süresi > 2 dakika.
 
-    ![Spark uygulaması ve iş grafiği eğriltme simgesi](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
+    ![Spark uygulaması & Iş grafiği sayfasında eğilmiş görev simgesi.](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
-+ İş grafiği düğümü her aşama için aşağıdaki bilgileri görüntüler:
-  + Numarasını.
-  + Ad veya açıklama.
-  + Toplam görev numarası.
-  + Okunan veriler: giriş boyutu ve karışık okuma boyutu toplamı.
-  + Veri yazma: çıkış boyutunun ve karışık yazma boyutunun toplamı.
-  + Yürütme Süresi: son denemede ilk deneme ve tamamlanma zamanının başlangıç saati arasındaki süre.
-  + Satır sayısı: giriş kayıtlarının toplamı, çıkış kayıtları, okuma kayıtlarını karıştırma ve yazma kayıtlarını karıştırma.
-  + Lemesine.
-
-    > [!NOTE]  
-    > Varsayılan olarak, iş grafiği düğümü her bir aşamanın son denemesinden (aşama yürütme süresi hariç) bilgileri görüntüler, ancak oynatma grafiği düğümü sırasında her girişimin bilgileri gösterilir.
++ İş grafiği düğümü her aşama hakkında aşağıdaki bilgileri görüntüler:
+  + Kimlik
+  + Ad veya açıklama
+  + Toplam görev numarası
+  + Okunan veriler: giriş boyutu ve karışık okuma boyutu toplamı
+  + Veri yazma: çıkış boyutunun ve karışık yazma boyutunun toplamı
+  + Yürütme Süresi: son denemede ilk deneme ve tamamlanma zamanının başlangıç saati arasındaki süre
+  + Satır sayısı: giriş kayıtlarının toplamı, çıkış kayıtları, okuma kayıtlarını karıştırma ve yazma kayıtlarını karıştırma
+  + İlerleme durumu
 
     > [!NOTE]  
-    > Okuma ve yazma veri boyutu için 1 MB/1000 KB = 1000 * 1000 bayt kullanılır.
+    > Varsayılan olarak, iş grafiği düğümü her aşamanın son denemesindeki bilgileri (aşama yürütme süresi dışında) görüntüler. Ancak kayıttan yürütme sırasında, iş grafiği düğümü her girişimde ilgili bilgileri gösterir.
 
-+ Sorunları **bize geri bildirim**gönderin ' i seçerek geri bildirimde bulunun.
+    > [!NOTE]  
+    > Veri okuma ve veri yazma boyutları için, 1MB = 1000 KB = 1000 * 1000 bayt kullandık.
 
-    ![Spark uygulaması ve iş grafiği geri bildirimi](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
++ Sorunlar hakkında görüşlerinizi **bize geri bildirim sağlayın**' i seçerek gönderin.
 
-## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Apache Spark geçmiş sunucusunda Tanılama sekmesi
+    ![Spark uygulaması & Iş grafiği sayfasındaki geri bildirim seçeneği.](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
-İş KIMLIĞI ' ni seçin ve ardından araç menüsünde **Tanılama** ' yı seçerek iş tanılama görünümünü alın. Tanılama sekmesi **veri eğriltme**, **zaman eğriltme**ve **yürütücü kullanım analizini**içerir.
+## <a name="use-the-diagnosis-tab-in-the-spark-history-server"></a>Spark geçmiş sunucusundaki tanılama sekmesini kullanın
+
+İş KIMLIĞI ' ni seçin ve ardından araç menüsünde **Tanılama** ' yı seçerek iş tanılama görünümünü görüntüleyin. **Tanılama** sekmesi **veri eğriltme**, **zaman eğriltme**ve **yürütücü kullanım analizini**içerir.
 
 + Sırasıyla sekmeleri seçerek **veri eğriltme**, **zaman eğriltme**ve **yürütücü kullanım analizini** gözden geçirin.
 
-    ![Mini UI tanılama veri eğriltme sekmesi yeniden](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
+    ![Tanılama sekmesinin içindeki veri eğriltme sekmesi.](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
 ### <a name="data-skew"></a>Veri eğriltme
 
-**Veri eğriltme** sekmesini seçin, ilgili asimetrik görevler belirtilen parametrelere göre görüntülenir.
+**Veri eğriltme** sekmesini seçin. Karşılık gelen eğilmiş görevler belirtilen parametrelere göre görüntülenir.
 
-+ **Parametreleri belirtin** -ilk bölüm, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Yerleşik kural: veri okuma, ortalama görev verilerinin üç katından daha büyük ve okunan görev verisi 10 MB 'tan fazla. Çarpıtılmış görevler için kendi kuralınızı tanımlamak istiyorsanız, parametrelerinizi, **asimetrik aşamayı**ve **çarpıklık** bölümünü seçebilirsiniz.
+#### <a name="specify-parameters"></a>Parametreleri belirtin
 
-+ **Çarpıkık aşama** -ikinci bölüm, yukarıda belirtilen ölçütlere uyan, eğimli görevlere sahip aşamaları görüntüler. Bir aşamada birden çok asimetrik görev varsa, asimetrik aşama tablosu yalnızca en çok eğilmiş görevi görüntüler (ör. veri eğriliği için en büyük veriler).
+**Parametreleri belirtin** bölümü, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: okunan görev verileri ortalama görev verilerinin üç katından fazla okunan ve okunan görev verisi 10 MB 'tan fazla. Asimetrik görevler için kendi kuralınızı tanımlamak istiyorsanız parametrelerinizi seçebilirsiniz. **Asimetrik aşama** ve **eğriltme char** bölümleri buna uygun olarak güncelleştirilir.
 
-    ![Mini UI tanılama veri eğriltme sekmesi](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+#### <a name="skewed-stage"></a>Eğilmiş aşama
 
-+ **Grafiği eğriltme** : eğme aşaması tablosundaki bir satır seçildiğinde, eğriltme grafiği, verileri okuma ve yürütme zamanına göre daha fazla görev dağıtım ayrıntısı görüntüler. Asimetrik görevler kırmızı olarak işaretlenir ve normal görevler mavi olarak işaretlenir. Performans değerlendirmesi için grafik yalnızca en fazla 100 örnek görevi görüntüler. Görev ayrıntıları sağ alt panelde görüntülenir.
+**Asimetrik aşama** bölümü, belirtilen ölçütlere uyan, asimetrik görevlere sahip aşamaları görüntüler. Bir aşamada birden çok asimetrik görev varsa, **asimetrik aşama** bölümü yalnızca en çok asimetrik görevi (yani veri eğriliği için en büyük verileri) görüntüler.
 
-    ![10. aşama için mini UI eğriltme grafiği](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+![Tanılama sekmesi içindeki veri eğriltme sekmesinin daha büyük görünümü.](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+
+##### <a name="skew-chart"></a>Grafiği eğ
+
+**Eğme aşaması** tablosunda bir satır seçtiğinizde, **eğriltme grafiği** verileri okuma ve yürütme zamanına göre daha fazla görev dağıtım ayrıntısı görüntüler. Asimetrik görevler kırmızı olarak işaretlenir ve normal görevler mavi olarak işaretlenir. Performans değerlendirmesi için grafik en fazla 100 örnek görevi görüntüler. Görev ayrıntıları sağ alt panelde görüntülenir.
+
+![Spark Kullanıcı arabirimindeki 10. aşama için eğriliği grafiği.](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
 
 ### <a name="time-skew"></a>Zaman eğriltme
 
 **Zaman eğriltme** sekmesi, görev yürütme zamanına göre asimetrik görevleri görüntüler.
 
-+ **Parametreleri belirtin** -ilk bölüm, zaman eğriliğini algılamak için kullanılan parametreleri görüntüler. Zaman eğriliğini algılamaya yönelik varsayılan ölçüt: görev yürütme süresi, ortalama yürütme süresinin üç katından büyük ve görev yürütme süresi 30 saniyeden fazla. Parametreleri gereksinimlerinize göre değiştirebilirsiniz. **Asimetrik aşama** ve **eğme grafiği** , yukarıdaki **veri eğriltme** sekmesinde olduğu gibi ilgili aşamaları ve görev bilgilerini görüntüler.
+#### <a name="specify-parameters"></a>Parametreleri belirtin
 
-+ **Zaman eğriliğini**seçin, sonra filtrelenmiş sonuç, bölüm **belirtme**bölümünde ayarlanan parametrelere göre **asimetrik aşama** bölümünde görüntülenir. **Asimetrik aşama** bölümünde bir öğe seçin, ardından karşılık gelen grafik section3 içinde drafted ve görev ayrıntıları sağ alt panelde görüntülenir.
+**Parametreleri belirtin** bölümü, zaman eğriliği algılamak için kullanılan parametreleri görüntüler. Varsayılan kural: görev yürütme süresi, ortalama yürütme zamanının üç katından fazla ve görev yürütme süresi 30 saniyeden fazla. Parametreleri gereksinimlerinize göre değiştirebilirsiniz. **Çarpıklık** ve **eğme grafiğinde** , ilgili aşamalar ve görev bilgileri, tıpkı **veri eğriltme** sekmesinde olduğu gibi görüntülenir.
 
-    ![Mini UI tanılama zaman eğriltme bölümü](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+**Zaman eğriliği**seçtiğinizde, filtrelenmiş sonuç, **parametreleri belirt** bölümünde ayarlanan parametrelere göre **asimetrik aşama** bölümünde görüntülenir. **Çarpıtılmış aşama** bölümünde bir öğe seçtiğinizde, ilgili grafik üçüncü bölümde drafted ve görev ayrıntıları sağ alt panelde görüntülenir.
 
-### <a name="executor-usage-analysis"></a>Yürütücü Kullanım Analizi
+![Tanılama sekmesi içindeki zaman eğriltme sekmesi.](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
-Yürütücü kullanım grafiği, Spark işi gerçek yürütücü ayırmayı ve çalışma durumunu görselleştirir.  
+### <a name="executor-usage-analysis-graphs"></a>Yürütücü Kullanım Analizi grafikleri
 
-+ **Yürütücü Kullanım Analizi**' ni seçin, sonra da Yürütücü kullanımı hakkında dört tür eğrileri, **ayrılmış Yürüticileri**, **yürüticileri**, **Boşta**çalışma ve **en fazla yürütücü örneklerini**içeren drafted. Ayrılmış yürüticilere ilgili olarak, her "yürütücü eklenmiş" veya "yürütücü kaldırıldı" olayı ayrılan yürütmeleri arttırır veya azaltacaktır, daha fazla karşılaştırma için "Işler" sekmesinde "olay zaman çizelgesini" kontrol edebilirsiniz.
+**Yürütücü kullanım grafiği** , işin gerçek yürütücü ayırmasını ve çalışma durumunu görüntüler.  
 
-    ![Mini UI tanılama yürüticileri sekmesi](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+**Yürütücü Kullanım Analizi**' ni seçtiğinizde, yürütücü kullanımı hakkında dört farklı eğri drafted: **ayrılmış Yürüticileri**, **yürüticileri**, **boştaki yürüticileri**ve **en fazla yürütücü örneğini**çalıştırın. Her **yürütücü eklenen** veya **yürütücü tarafından kaldırılan** olay, ayrılan yürütmeleri arttırır veya azaltır. Daha fazla karşılaştırma için **işler** sekmesinde **olay zaman çizelgesini** kontrol edebilirsiniz.
 
-+ Tüm taslaklarına karşılık gelen içeriği seçmek veya seçimini kaldırmak için renk simgesini seçin.
+![Tanılama sekmesinin içindeki yürütücü Kullanım Analizi sekmesi.](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
-    ![Mini UI tanısı grafik seç](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
+Tüm taslaklarına karşılık gelen içeriği seçmek veya seçimini kaldırmak için renk simgesini seçin.
+
+ ![Yürütücü Kullanım Analizi sekmesinde grafiği seçin.](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 ## <a name="faq"></a>SSS
 
-### <a name="1-revert-to-community-version"></a>1. topluluk sürümüne dönün
+### <a name="how-do-i-revert-to-the-community-version"></a>Nasıl yaparım? topluluk sürümüne dönmek istiyor musunuz?
 
-Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın:
+Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın.
 
 1. Kümeyi ambarı 'nda açın.
-1. **Spark2** > **configs** > **özel Spark2-varsayılanlar**sayfasına gidin.
-1. **Özellik Ekle...** seçeneğini belirleyin, **spark. UI. geliştirmesi ekleyin. Enabled = False**, Kaydet.
+1. **Spark2** > **configs**sayfasına gidin.
+1. **Özel spark2-varsayılanlar**' ı seçin.
+1. **Özellik Ekle...** seçeneğini belirleyin.
+1. **Spark. UI. geliştirmesi. Enabled = False**ekleyin ve sonra kaydedin.
 1. Özelliği şimdi **yanlış** olarak ayarlanır.
 1. Yapılandırmayı kaydetmek için **Kaydet** ' i seçin.
 
-    ![Apache ambarı özelliği kapanır](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
+    ![Apache ambarı 'nda bir özelliği devre dışı bırakın.](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
-1. Sol bölmede **Spark2** öğesini seçin, **Özet** sekmesinde, **Spark2 geçmiş sunucusu**' nu seçin.
+1. Sol panelde **Spark2** öğesini seçin. Ardından **Özet** sekmesinde **Spark2 geçmiş sunucusu**' nu seçin.
 
-    ![Apache ambarı Spark2 Özet görünümü](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
+    ![Apache ambarı 'ndaki Özet görünümü.](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-1. **Spark2 geçmiş sunucusunun** **yeniden başlatılmasını** seçerek geçmiş sunucusunu yeniden başlatın.
+1. Spark geçmiş sunucusunu yeniden başlatmak için **Spark2 geçmiş sunucusunun**sağ tarafındaki **başlatılan** düğmesini seçin ve ardından açılan menüden **Yeniden Başlat** ' ı seçin.
 
-    ![Apache ambarı Spark2 geçmişi yeniden başlatması](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
-1. Spark geçmiş sunucusu Web Kullanıcı arabirimini yenileyerek, bu işlem topluluk sürümüne geri döndürülecek.
+    ![Apache ambarı 'nda Spark geçmiş sunucusunu yeniden başlatın.](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
-### <a name="2-upload-history-server-event"></a>2. geçmiş sunucusu olayını karşıya yükle
+1. Spark geçmiş sunucusu Web Kullanıcı arabirimini yenileyin. Topluluk sürümüne döndürülür.
 
-Geçmiş sunucu hatasıyla karşılaşırsanız, olayı sağlamak için aşağıdaki adımları izleyin:
+### <a name="how-do-i-upload-a-spark-history-server-event-to-report-it-as-an-issue"></a>Nasıl yaparım?, bir Spark geçmiş sunucu olayını bir sorun olarak bildirmek üzere karşıya yükleyebilir mi?
 
-1. Geçmiş sunucusu Web Kullanıcı arabiriminde **İndir** ' i seçerek olayı indirin.
+Spark geçmiş sunucusunda bir hata halinde çalıştırırsanız, olayı raporlamak için aşağıdaki adımları uygulayın.
 
-    ![Spark2 geçmiş sunucusu indirme](./media/apache-azure-spark-history-server/sparkui-download-event.png)
+1. Spark geçmiş sunucusu Web Kullanıcı arabiriminde **İndir** ' i seçerek olayı indirin.
 
-2. Veri/grafik sekmesinden **bize geri bildirim sağla** ' yı seçin.
+    ![Olayı Spark geçmiş sunucusu kullanıcı arabirimine indirin.](./media/apache-azure-spark-history-server/sparkui-download-event.png)
 
-    ![Spark Graph bize geri bildirim sağlar](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+2. **Spark uygulaması & Iş grafiği** sayfasından **bize geri bildirim sağla** ' yı seçin.
 
-3. Hatanın başlığını ve açıklamasını girip, ZIP dosyasını düzenleme alanına sürükleyin ve sonra **yeni sorun gönder**' e tıklayın.
+    ![Spark uygulaması & Iş grafiği sayfasında geri bildirim sağlayın](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
-    ![Apache Spark dosyası sorun örneği](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
+3. Hatanın başlığını ve açıklamasını girin. Sonra,. zip dosyasını düzenleme alanına sürükleyin ve **yeni sorun gönder**' i seçin.
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. bir düzeltme senaryosu için jar dosyasını yükseltin
+    ![Karşıya yükleyin ve yeni bir sorun gönderin.](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-Düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanın, Spark-Enhancement. jar * öğesini yükseltecek.
+### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>Bir düzeltme senaryosunda. jar dosyasını yükseltmek Nasıl yaparım? mi?
+
+Bir düzeltme ile yükseltmek istiyorsanız, `spark-enhancement.jar*`Yükseltilecek aşağıdaki betiği kullanın.
 
 **upgrade_spark_enhancement. sh**:
 
@@ -288,23 +294,23 @@ Düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanın, Spark-E
     fi
    ```
 
-**Kullanım**:
+#### <a name="usage"></a>Kullanım
 
 `upgrade_spark_enhancement.sh https://${jar_path}`
 
-**Örnek**:
+#### <a name="example"></a>Örnek
 
 `upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`
 
-**Azure portal bash dosyasını kullanmak için**
+#### <a name="use-the-bash-file-from-the-azure-portal"></a>Azure portal bash dosyasını kullanın
 
-1. [Azure Portal](https://ms.portal.azure.com)başlatın ve kümenizi seçin.
-2. Aşağıdaki parametrelerle bir [betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md) doldurun:
+1. [Azure Portal](https://ms.portal.azure.com)başlatın ve sonra kümenizi seçin.
+2. Aşağıdaki parametrelerle bir [betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md) doldurun.
 
     |Özellik |Değer |
     |---|---|
     |Betik türü|-Özel|
-    |Adı|UpgradeJar|
+    |Ad|UpgradeJar|
     |Bash betiği URI 'SI|`https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh`|
     |Düğüm türleri|Baş, çalışan|
     |Parametreler|`https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`|
@@ -313,15 +319,15 @@ Düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanın, Spark-E
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-+ Şu anda yalnızca Spark 2,3 ve 2,4 kümesi için geçerlidir.
++ Şu anda Spark geçmiş sunucusu yalnızca Spark 2,3 ve 2,4 için geçerlidir.
 
-+ RDD kullanan giriş/çıkış verileri, veri sekmesinde gösterilmez.
++ RDD kullanan giriş ve çıkış verileri, **veri** sekmesinde görüntülenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + [HDInsight üzerinde Apache Spark kümesi için kaynakları yönetme](apache-spark-resource-manager.md)
 + [Apache Spark ayarlarını yapılandırma](apache-spark-settings.md)
 
-## <a name="contact-us"></a>Bize ulaşın
+## <a name="feedback"></a>Geri Bildirim
 
-Herhangi bir geri bildiriminiz varsa veya bu aracı kullanırken herhangi bir sorunla karşılaşırsanız ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)) adresine bir e-posta gönderin.
+Bu aracı kullanırken geri bildiriminiz varsa veya herhangi bir sorunla karşılaşırsanız ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)) adresine bir e-posta gönderin.

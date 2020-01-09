@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480553"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433026"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
@@ -88,12 +88,12 @@ Isı haritaları haritadaki verilerin yoğunluğunu görüntülemenin harika bir
 
 Kümelenmiş veri noktaları içeren bir katmanda fare olayları gerçekleştiğinde, kümelenmiş veri noktası olaya GeoJSON Point özellik nesnesi olarak döndürülür. Bu nokta özelliği aşağıdaki özelliklere sahip olacaktır:
 
-| Özellik adı | Tür | Açıklama |
-|---------------|------|-------------|
-| içi | boole | Özelliğin bir kümeyi temsil ettiğini belirtir. |
-| cluster_id | string | Veri kaynağı `getClusterExpansionZoom`, `getClusterChildren`ve `getClusterLeaves` yöntemlerle kullanılabilecek benzersiz bir KIMLIK. |
-| point_count | number | Kümenin içerdiği noktaların sayısı. |
-| point_count_abbreviated | string | Long ise `point_count` değeri abbreviates bir dize. (örneğin, 4.000 4K olur) |
+| Özellik adı             | Tür    | Açıklama   |
+|---------------------------|---------|---------------|
+| `cluster`                 | boole | Özelliğin bir kümeyi temsil ettiğini belirtir. |
+| `cluster_id`              | string  | Veri kaynağı `getClusterExpansionZoom`, `getClusterChildren`ve `getClusterLeaves` yöntemlerle kullanılabilecek benzersiz bir KIMLIK. |
+| `point_count`             | number  | Kümenin içerdiği noktaların sayısı.  |
+| `point_count_abbreviated` | string  | Long ise `point_count` değeri abbreviates bir dize. (örneğin, 4.000 4K olur)  |
 
 Bu örnek, küme noktalarını işleyen ve bir sonraki yakınlaştırma düzeyine haritanın tetiklendiği, hesaplanacağı ve yakınlaştırdığında bir tıklama olayı ekleyerek kümenin `DataSource` sınıfının `getClusterExpansionZoom` yöntemini ve tıklanan kümelenmiş veri noktasının `cluster_id` özelliğini kullanarak bunları bozmasını sağlar. 
 

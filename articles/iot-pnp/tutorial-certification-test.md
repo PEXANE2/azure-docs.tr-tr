@@ -7,13 +7,13 @@ services: iot-pnp
 ms.topic: tutorial
 ms.author: koichih
 author: konichi3
-ms.date: 06/21/2019
-ms.openlocfilehash: 1516a132372a81d06d82de2409c48220f27b8d87
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 12/27/2019
+ms.openlocfilehash: dc2c33659f3f3a3df0f11fcc6ab36a9fc993da43
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878085"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550171"
 ---
 # <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>Öğretici: IoT Tak ve Kullan önizleme cihazınızı onaylama
 
@@ -28,7 +28,7 @@ Bu öğreticide şunları öğrenirsiniz:
 > * IoT Tak ve Kullan arabirimlerini gözden geçirin ve sertifika testlerini çalıştırın.
 > * Sertifikalı IoT Tak ve Kullan cihazını katalogda yayımlama.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -37,7 +37,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Daha fazla bilgi için bkz. [IoT Için Azure Sertifikalı](howto-onboard-portal.md) ekleme portalı 'na ekleme.
 
-## <a name="certification-requirements"></a>Sertifika gereksinimleri
+## <a name="certification-requirements"></a>Sertifikasyon gereksinimleri
 
 IoT Tak ve Kullan cihazınızı onaylamak için cihazınızın aşağıdaki gereksinimleri karşılaması gerekir:
 

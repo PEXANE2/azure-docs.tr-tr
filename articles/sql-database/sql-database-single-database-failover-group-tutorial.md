@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6e3b4be836699cc200d30168c14462f81136646b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8c4c346dd004e435846aff5592a20cd747c45df7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821089"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552636"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı tek veritabanı ekleme
 
@@ -427,6 +427,10 @@ AZ CLı kullanarak kaynak grubunu silin.
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ---
+
+
+> [!IMPORTANT]
+> Kaynak grubunu korumak, ancak ikincil veritabanını silmek istiyorsanız, onu silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
 
 
 ## <a name="full-scripts"></a>Tam betikler

@@ -10,14 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373256"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure sanal ağ için IPv6 nedir? (Önizleme)
 
@@ -59,7 +59,7 @@ Azure VNet için IPv6 aşağıdaki özellikleri içerir:
     - Bu özelliği özel gereksinimlerinize göre ölçeklendirmeye ve ayarlamaya yönelik giden bağlantı üzerinde tam bildirime dayalı denetim sağlayan isteğe bağlı giden kurallar.
     - Tek bir yük dengeleyicinin birden çok IPv6 genel IP adresi kullanmasını sağlayan isteğe bağlı birden çok ön uç yapılandırması-aynı ön uç Protokolü ve bağlantı noktası ön uç adresleri arasında yeniden kullanılabilir.
     - İsteğe bağlı IPv6 bağlantı noktaları, Yük Dengeleme kurallarının *kayan IP* özelliğini kullanarak arka uç örneklerinde yeniden kullanılabilir 
-- Azure sanal ağları 'nda esnek çok katmanlı uygulamalar oluşturmak için [Standart ıPV6 iç Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) desteği.  
+- Azure sanal ağları 'nda esnek çok katmanlı uygulamalar oluşturmak için [Standart IPv6 iç Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) desteği.  
 - Eski dağıtımlarla uyumluluk için temel IPv6 genel Load Balancer desteği
 - [Ayrılmış IPv6 genel IP adresleri ve adres aralıkları](ipv6-public-ip-address-prefix.md) , şirketiniz ve müşterileriniz için Azure 'da barındırılan uygulamalarınızın daha kolay bir şekilde listelenmesini sağlayan kararlı, öngörülebilir IPv6 adresleri sağlar.
 - Örnek Düzeyinde Ortak IP, IPv6 Internet bağlantısını doğrudan ayrı sanal makinelere sağlar.

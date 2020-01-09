@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric yedeklemeyi geri yükleme | Microsoft Docs
+title: Azure Service Fabric yedeklemeyi geri yükleme
 description: Uygulama verilerinizin bir yedeklemesinden verileri geri yüklemek için Service Fabric içindeki düzenli yedekleme ve geri yükleme özelliğini kullanın.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819313"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377914"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
 

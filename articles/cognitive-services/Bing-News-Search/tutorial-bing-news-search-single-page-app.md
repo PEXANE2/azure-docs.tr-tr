@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383124"
 ---
-# <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması oluşturma
+# <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: tek sayfalı Web uygulaması oluşturma
 
 Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber türündeki sonuçları almanızı sağlar. Bu öğreticide, Bing Haber Arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)’da mevcuttur.
 
@@ -29,7 +29,7 @@ Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber t
 > [!NOTE]
 > Sayfanın en altındaki JSON ve HTTP başlıklarına tıklandığında, JSON yanıt ve HTTP istek bilgileri gösterilir. Bu ayrıntılar hizmeti keşfederken yararlı olabilir.
 
-Öğretici uygulamasında aşağıdakilerin nasıl yapılacağı gösterilmektedir:
+Öğretici uygulaması şunları gösterir:
 > [!div class="checklist"]
 > * JavaScript'te Bing Haber Arama API'sine çağrı yapma
 > * Arama seçeneklerini Bing Haber API'sine geçirme
@@ -61,7 +61,7 @@ HTML, arama sonuçlarının gösterildiği bölümleri de (HTML `<div>` etiketle
 
 Bing Arama API'si abonelik anahtarını koda eklemek zorunda kalmamak için, tarayıcının kalıcı depolamasını kullanarak anahtarı depolarız. Anahtar depolanmadan önce, kullanıcıdan anahtarı isteriz. Anahtar daha sonra API tarafından reddedilirse, depolanan anahtarı geçersiz kılarız. Böylelikle kullanıcıdan yeniden anahtar istenir.
 
-`localStorage` nesnesini (tüm tarayıcılar bunu desteklemez) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevi, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır.
+`localStorage` nesnesini (tüm tarayıcılar bunu desteklemez) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevi, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ``` javascript
 // Cookie names for data we store
@@ -271,7 +271,7 @@ function handleBingResponse() {
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
-|Aşama|Olası hatalar|İşleyen|
+|Stage|Olası hatalar|İşleyen|
 |-|-|-|
 |JavaScript istek nesnesi oluşturma|Geçersiz URL|`try`/`catch` bloğu|
 |İstekte bulunma|Ağ hataları, durdurulan bağlantılar|`error` ve `abort` olay işleyicileri|
@@ -377,9 +377,9 @@ Haber işleyici işlevi:
 > [!div class="checklist"]
 > * Paragraf etiketi oluşturur, bu etiketi `news` sınıfına atar ve html dizisine gönderir.
 > * Resmin küçük resim boyutunu hesaplar (genişlik 60 piksele sabitlenir, yükseklik buna orantılı olarak hesaplanır).
-> * Resmin küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur. 
+> * Görüntünün küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur. 
 > * Görüntüye ve bu görüntüyü içeren sayfaya bağlanan HTML `<a>` etiketlerini oluşturur.
-> * Resim ve bu resmin bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
+> * Görüntü ve bu görüntünün bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
 
 Küçük resim boyutu hem `<img>` etiketinde hem de küçük resmin URL'sindeki `h` ve `w` alanlarında kullanılır. Ardından [Bing küçük resim hizmeti](../bing-web-search/resize-and-crop-thumbnails.md) tam olarak bu boyutta bir küçük resim verir.
 
@@ -397,7 +397,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir ara sunucudan alınan yanıtın, `Access-Control-Expose-Headers` yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir proxy 'den gelen yanıtın, yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir `Access-Control-Expose-Headers` üst bilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

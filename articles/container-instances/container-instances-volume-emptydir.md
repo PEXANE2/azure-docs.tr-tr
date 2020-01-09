@@ -3,16 +3,16 @@ title: EmptyDir birimini kapsayıcı grubuna bağla
 description: Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için emptyDir birimini nasıl bağlayacağınızı öğrenin
 ms.topic: article
 ms.date: 02/08/2018
-ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533242"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552466"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances bir emptyDir birimi bağlama
 
-Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için *Emptydir* birimini nasıl bağlayacağınızı öğrenin.
+Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için *Emptydir* birimini nasıl bağlayacağınızı öğrenin. Kapsayıcılı iş yükleriniz için *Emptydir* birimlerini kısa ömürlü önbellekler olarak kullanın.
 
 > [!NOTE]
 > Bir *Emptydir* birimi bağlamak Şu anda Linux kapsayıcılarıyla kısıtlıdır. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklarını [genel bakışta](container-instances-overview.md#linux-and-windows-containers)bulabilirsiniz.
@@ -27,7 +27,7 @@ Bir *Emptydir* birimi için bazı örnekler kullanılmıştır:
 * Uzun süre çalışan görevler sırasında işaret noktası oluşturma
 * Bir sepet kapsayıcısı tarafından alınan ve uygulama kapsayıcısı tarafından sunulan verileri depolayın
 
-*Emptydir* birimindeki veriler, kapsayıcı Kilitlenmelerinde kalıcı hale getirilir. Ancak yeniden başlatılan kapsayıcılar, verileri bir *Emptydir* biriminde kalıcı hale getirmek için garanti edilmez.
+*Emptydir* birimindeki veriler, kapsayıcı Kilitlenmelerinde kalıcı hale getirilir. Ancak yeniden başlatılan kapsayıcılar, verileri bir *Emptydir* biriminde kalıcı hale getirmek için garanti edilmez. Bir kapsayıcı grubunu durdurursanız *Emptydir* birimi kalıcı olmaz.
 
 ## <a name="mount-an-emptydir-volume"></a>EmptyDir birimi bağlama
 

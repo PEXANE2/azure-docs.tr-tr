@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084137"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376299"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
 
@@ -132,7 +132,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 7. VMware sunucusu ile bağlantı için yapılandırma sunucusu tarafından kullanılacak kimlik bilgilerini girin. Site Recovery, bu kimlik bilgilerini çoğaltma için kullanılabilen VMware VM’lerini otomatik olarak bulmak üzere kullanır. **Ekle** > **devam et**' i seçin. Buraya girilen kimlik bilgileri yerel olarak kaydedilir.
 8. **Sanal makine kimlik bilgilerini Yapılandır**sayfasında, çoğaltma sırasında Mobility hizmetini otomatik olarak yüklemek için sanal makinelerin Kullanıcı adını ve parolasını girin. **Windows** makineleri için hesabın, çoğaltmak istediğiniz makinelerde yerel yönetici ayrıcalıklarına ihtiyacı vardır. **Linux**için kök hesabının ayrıntılarını sağlayın.
 9. Kaydı tamamlamak için **Yapılandırmayı son haline getir** seçeneğini belirleyin.
-10. Kayıt tamamlandıktan sonra, Azure portal açın ve Configuration Server ve VMware sunucusunun **Kurtarma Hizmetleri kasasında** listelendiğini doğrulayın >  > **Site Recovery altyapıyı** **yönetin** >  **Yapılandırma sunucuları**.
+10. Kayıt tamamlandıktan sonra, Azure portal açın ve Configuration Server ve VMware sunucusunun **Kurtarma Hizmetleri Kasası** 'nda listelendiğini doğrulayın >  > **Site Recovery altyapısı** > **yapılandırma sunucularını** **yönetin** .
 
 ## <a name="upgrade-the-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
@@ -141,6 +141,10 @@ Yapılandırma sunucusunu en son sürüme yükseltmek için bkz. [VMware VM ola�
 ## <a name="manage-the-configuration-server"></a>Yapılandırma sunucusunu yönetme
 
 Devam eden çoğaltmanın kesintiye uğramasını önlemek için yapılandırma sunucusu bir kasaya kaydedildikten sonra yapılandırma sunucusunun IP adresinin değişmediğinden emin olun. Ortak yapılandırma sunucusu yönetim görevleri hakkında daha fazla bilgi edinmek için bkz. [VMware VM olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme](vmware-azure-manage-configuration-server.md).
+
+## <a name="troubleshoot-deployment-issues"></a>Dağıtım sorunlarını giderme
+
+Dağıtım & bağlantı sorunlarını gidermek için [sorun giderme makalemizi](vmware-azure-troubleshoot-configuration-server.md) inceleyin.
 
 ## <a name="faqs"></a>SSS
 
@@ -183,13 +187,11 @@ Devam eden çoğaltmanın kesintiye uğramasını önlemek için yapılandırma 
 
     Bir şirket içi ortamda, v-Center ile doğrudan görüş ve veri aktarımı gecikme sürelerini en aza indirmek için bir yapılandırma sunucusu ayarlayın. Yapılandırma sunucusunun zamanlanan yedeklemelerini yeniden [çalışma amacıyla](vmware-azure-manage-configuration-server.md#failback-requirements)gerçekleştirebilirsiniz.
 
+* Yapılandırma sunucusu veya genişleme işlem sunucusu üzerindeki önbellek sürücüsünü değiştirebilir miyim?
+
+    Hayır, Kurulum tamamlandıktan sonra önbellek sürücüsü değiştirilemez.
+
 Yapılandırma sunucuları hakkında daha fazla bilgi için bkz. [yapılandırma sunucusu sık sorulan sorular](vmware-azure-common-questions.md#configuration-server).
-
-## <a name="troubleshoot-deployment-issues"></a>Dağıtım sorunlarını giderme
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

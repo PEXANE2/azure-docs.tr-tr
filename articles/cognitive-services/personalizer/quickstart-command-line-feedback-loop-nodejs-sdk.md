@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js için kişiselleştirici istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: node. js için kişiselleştirici istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Bir öğrenme döngüsü kullanarak Node. js için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıçta, bir öğrenme döngüsü kullanılarak Node. js için kişiselleştirici istemci kitaplığı ile çalışmaya başlama gösterilmektedir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446364"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için kişiselleştirici istemci kitaplığı
 
@@ -28,7 +28,7 @@ Node. js için kişiselleştirici istemci kitaplığı ile çalışmaya başlay�
 
 [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [paketi (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Geçerli [Node. js](https://nodejs.org) ve NPM sürümü.

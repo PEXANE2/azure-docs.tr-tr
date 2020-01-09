@@ -1,18 +1,17 @@
 ---
-title: Azure FXT Edge Filer fiziksel cihazı yükleme öğreticisi | Microsoft Docs
+title: 'Öğretici: Azure FXT Edge Filer fiziksel cihazı kurma'
 description: Microsoft Azure FXT Edge Filer karma depolama önbelleğinin fiziksel cihaz bileşenini açma, bölme ve kablo oluşturma
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256052"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551038"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Öğretici: Azure FXT Edge Filer 'ı kurma 
 
@@ -25,7 +24,7 @@ Azure FXT Edge Filer düğümünü yüklemek yaklaşık bir saat sürer.
 Bu öğreticide aşağıdaki kurulum adımları yer almaktadır: 
 
 > [!div class="checklist"]
-> * Cihazın paketini açın
+> * Cihazı kutusundan çıkarma
 > * Cihazı bir rafa bağlama
 > * Ön ucu (isteğe bağlı) yükler
 
@@ -43,11 +42,11 @@ Başlamadan önce, kullanacağınız veri merkezi ve rafın bu özelliklere sahi
 
 Her Azure FXT Edge Filer düğümü tek bir kutuda gönderilir. Bir cihazın paketini açmak için bu adımları uygulayın.
 
-1. Kutuyu düz, düzey bir yüzeye yerleştirin.
+1. Kutuyu düz ve sabit bir yüzeye yerleştirin.
 
-2. Kutuyu ve paketlemeyi, kırma, keser, su hasarı veya başka bir açık hasar için paketleme. Kutu veya paketleme ciddi hasar görmüşse bunu açmayın. Cihazın iyi çalışma sırasında olup olmadığını değerlendirmenize yardımcı olmak için Microsoft Desteği başvurun.
+2. Kutuda ve ambalajda ezik, kesik, su hasarı veya gözle görülür herhangi bir hasar olup olmadığını kontrol edin. Kutu veya paketleme ciddi hasar görmüşse bunu açmayın. Cihazın iyi durumda olup olmadığının değerlendirilmesi için Microsoft Desteği ile iletişim kurun.
 
-3. Kutunun paketini açın. Aşağıdaki öğeleri içerdiğinden emin olun:
+3. Kutuyu açın. Aşağıdaki öğeleri içerdiğinden emin olun:
    * Tek bir kasa FXT cihazı
    * İki güç kablosu
    * Tek bir ön ve anahtar
@@ -63,7 +62,7 @@ Cihazın, yüklemeden veya kapatmadan önce oda ile aynı sıcaklığa ulaşmas�
 
 Sonraki adım, cihazınızı takmaya yönelik bir adımdır.
 
-## <a name="rack-the-device"></a>Cihazı raf
+## <a name="rack-the-device"></a>Cihazı rafa yerleştirme
 
 Azure FXT Edge Filer cihazı, standart 19 inç bir rafa yüklenmiş olmalıdır. 
 
@@ -97,7 +96,7 @@ Ek bileşen kare veya yuvarlak delikleri olan raflar için, bu yordamı izleyere
 
 1. Sol ve sağ tarafındaki demiryolu bitiş parçalarını, **içe yönlü olarak** etiketlenen şekilde konumlandırın. Her bir son parçayı dikey Raf flantlerinin ön tarafındaki deliklere oturmasını sağlayacak şekilde konumlandırın. (1)
 
-2. Her bir son parçayı, bağlamak istediğiniz alana en alta ve en üst deliklere hizalayın. (
+2. Her bir son parçayı, bağlamak istediğiniz alana en alta ve en üst deliklere hizalayın. (2)
 
 3. Dikey Raf flanş üzerinde tam olarak oturana kadar, ve mandal bir yere tıkladığı sürece, rayın arka ucuna katılın. Bu adımları, ön uç parçasını dikey Raf flanş üzerinde konumlandırmak ve oturmek için tekrarlayın. 03
 
@@ -111,9 +110,9 @@ Ek bileşen kare veya yuvarlak delikleri olan raflar için, bu yordamı izleyere
 İş parçacıklı delikleri olan raflar için, bu yordamı izleyerek rayları toplayın ve yükler.
 
 1. PIN 'leri ön ve arka bağlama ayraçları düz eğimli bir screwsürücü ile kaldırın. (1)
-1. Montaj ayraçlarından kaldırmak için, demiryolu halkalarını çekin ve döndürün. (
+1. Montaj ayraçlarından kaldırmak için, demiryolu halkalarını çekin ve döndürün. (2)
 1. Sol ve sağ montaj rayları, iki adet sayıda screws kullanarak ön dikey rafa monte edilebilir olarak ekleyin. 03
-1. Sol dikey dolapta, sol ve sağ köşeli ayraçlara doğru kaydırın ve iki adet screws çifti kullanarak bunları ekleyin. 4
+1. Sol dikey dolapta, sol ve sağ köşeli ayraçlara doğru kaydırın ve iki adet screws çifti kullanarak bunları ekleyin. (4)
 
 ![Numaralandırılmış adımlarla birlikte toulan rayların yüklenmesi ve kaldırılması diyagramı](media/fxt-install/installing-removing-tooled-rails-400.png)
 
@@ -122,7 +121,7 @@ Ek bileşen kare veya yuvarlak delikleri olan raflar için, bu yordamı izleyere
 Azure FXT Edge Filer cihazını rafa bağlamak için aşağıdaki adımları izleyin.
 
 1. İç slaydı, parçalara çıkana kadar raf dışına çekin. (1)
-1. Cihazın her tarafında arka rayları bulun ve bunları slayt derlemelerindeki arka uç yuvalarına düşürün. ( 
+1. Cihazın her tarafında arka rayları bulun ve bunları slayt derlemelerindeki arka uç yuvalarına düşürün. (2) 
 1. Tüm RAIL rap 'leri J yuvalarında kümelendirilene kadar cihazı aşağı döndürün. 03
 1. Kilit bir yere tıklatalana kadar cihazı içe gönderin.
 1. Her iki rayda (4) slayt yayını kilidi düğmelerine basın ve cihazı rafa kaydırın.

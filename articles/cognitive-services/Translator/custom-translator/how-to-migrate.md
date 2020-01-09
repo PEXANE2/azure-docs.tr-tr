@@ -1,5 +1,5 @@
 ---
-title: Microsoft Translator hub çalışma alanı ve projeleri geçişi yapılsın mı? -Özel çevirici
+title: Microsoft Translator Hub çalışma ve projeleri geçişini? -Özel Translator
 titleSuffix: Azure Cognitive Services
 description: Bu makalede, hub çalışma alanınızı ve projelerinizi Azure bilişsel hizmetler özel çeviricisine nasıl geçirebileceğiniz açıklanır.
 author: swmachan
@@ -9,134 +9,134 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446776"
 ---
-# <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma alanını ve projelerini özel çevirmene geçirme
+# <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub çalışma ve projeleri için özel Translator geçirme
 
-[Microsoft Translator hub](https://hub.microsofttranslator.com/) çalışma alanınızı ve projelerinizi özel çevirmene kolayca geçirebilirsiniz. Geçiş, Microsoft hub 'dan bir çalışma alanı veya proje seçilerek, sonra özel çevirmende bir çalışma alanı seçerek ve ardından aktarmak istediğiniz eğitimleri seçerek başlatılır. Geçiş başladıktan sonra, seçilen eğitim ayarları tüm ilgili belgelerle birlikte aktarılır. Dağıtılan modeller eğitilir ve tamamlama sonrasında otomatik olarak dağıtılabilir.
+Kolayca geçirebilirsiniz, [Microsoft Translator Hub](https://hub.microsofttranslator.com/) çalışma alanı ve özel Translator projelerinin. Geçiş, bir çalışma alanı veya proje, ardından çalışma alanı seçme içinde özel Translator ve ardından aktarmak istediğiniz eğitimleri seçerek Microsoft Hub'ından başlatılır. Geçiş başladıktan sonra seçilen eğitim ayarları ile ilgili tüm belgelerinin aktarılır. Dağıtılan modellerinde eğitilir ve tamamlandıktan sonra autodeployed olabilir.
 
-Bu eylemler geçiş sırasında gerçekleştirilir:
-* Tüm belgeler ve proje tanımlarının adları, adının önüne "hub_" eklenmiş olarak aktarılır. Otomatik olarak oluşturulan test ve ayarlama verileri hub_systemtune_\<ModelId > veya hub_systemtest_\<ModelId > olarak adlandırılır.
-* Geçiş gerçekleşirken dağıtılan durumda olan tüm insanlar otomatik olarak Merkez eğitiminin belgeleri kullanılarak eğitilecektir. Bu eğitim aboneliğinize ücretlendirilmeyecektir. Geçiş için otomatik dağıtım seçilmişse, eğitilen model tamamlama sonrasında dağıtılır. Düzenli barındırma ücretleri uygulanır.
-* Dağıtılmış durumda olmayan tüm geçirilen değişiklikler geçirilmiş taslak durumuna alınacaktır. Bu durumda, geçirilen tanım ile bir modeli eğitme seçeneğine sahip olursunuz, ancak düzenli eğitim ücretleri uygulanır.
-* Herhangi bir noktada, hub eğitiminden geçirilen BLEU puanı, "MT hub 'ında Bleu puanı" başlığında bulunan modelin Traıningdetails sayfasında bulunabilir.
+Bu Eylemler, geçiş sırasında gerçekleştirilir:
+* Tüm belgeler ve proje tanımları "hub_ adının önüne" öğesine aktarılan adları gerekir. Otomatik olarak oluşturulan test ve ayarlama verileri hub_systemtune_\<ModelId > veya hub_systemtest_\<ModelId > olarak adlandırılır.
+* Geçiş başladığında, dağıtılmış durumda olan tüm eğitimleri Hub eğitim belgeleri kullanarak otomatik olarak Eğitilecek. Bu eğitim, aboneliğiniz için ücretlendirilmez. Otomatik dağıtımı seçildi geçiş için eğitilen modeli tamamlanmasından sonra dağıtılacak. Normal barındırma ücretleri uygulanır.
+* Dağıtılmış durumda değildi geçirilen tüm eğitimleri geçirilen taslak durumuna yerleştirilir. Bu durumda, geçirilen tanımıyla modeli seçeneğine sahip olur, ancak normal eğitim ücretleri geçerli olacaktır.
+* Herhangi bir noktada, eğitim, "Bleu puan" MT hub'ında modelinde TrainingDetails sayfasında bulunabilir Hub'ından BLEU puanı geçişi başlığı.
 
 > [!Note] 
-> Bir eğitimin başarılı olması için, özel çevirmen en az 10.000 benzersiz ayıklanan tümce gerektirir. Özel çevirmen [Önerilen en düşük](sentence-alignment.md#suggested-minimum-number-of-sentences)boyuttan daha az bir eğitim yapamıyor.
+> Bir eğitimin başarılı olması için, özel çevirmen en az 10.000 benzersiz ayıklanan tümce gerektirir. Özel çevirmen [Önerilen en düşük](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)boyuttan daha az bir eğitim yapamıyor.
 
-## <a name="find-custom-translator-workspace-id"></a>Özel çevirmen çalışma alanı KIMLIĞI bul
+## <a name="find-custom-translator-workspace-id"></a>Özel Translator çalışma alanı kimliği bulunamıyor
 
-[Microsoft Translator hub](https://hub.microsofttranslator.com/) çalışma alanını geçirmek Için özel çevirmende hedef çalışma alanı kimliği gereklidir. Özel Translator 'daki hedef çalışma alanı, tüm Hub çalışma alanlarınızın ve projelerinizin geçirilecek yerdir.
+Geçirilecek [Microsoft Translator Hub](https://hub.microsofttranslator.com/) çalışma alanında, hedef çalışma alanı Kimliğini özel Translator gerekir. Burada tüm Hub çalışma alanları ve projeler için geçirilmesi özel Translator, hedef çalışma alanıdır.
 
-Hedef çalışma alanı KIMLIĞINIZI özel çevirici ayarları sayfasında bulacaksınız:
+Özel Translator Ayarları sayfasında, hedef çalışma alanı kimliği bulacaksınız:
 
-1. Özel çevirmen portalındaki "ayar" sayfasına gidin.
+1. Özel Translator Portalı'nda "Ayarını" sayfasına gidin.
 
-2. Çalışma alanı KIMLIĞINI temel bilgiler bölümünde bulacaksınız.
+2. Çalışma alanı kimliği temel bilgileri bölümünde bulabilirsiniz.
 
-    ![Hedef çalışma alanı KIMLIĞINI bulma](media/how-to/how-to-find-destination-ws-id.png)
+    ![Hedef çalışma alanı kimliği bulma](media/how-to/how-to-find-destination-ws-id.png)
 
-3. Geçiş işlemi sırasında başvurmak için hedef çalışma alanı KIMLIĞINIZI saklayın.
+3. Geçiş işlemi sırasında başvurmak için çalışma alanı kimliği, hedef tutun.
 
-## <a name="migrate-a-project"></a>Projeyi geçirme
+## <a name="migrate-a-project"></a>Bir projeyi geçir
 
-Projelerinizi seçmeli olarak geçirmek istiyorsanız, Microsoft Translator hub size bu özelliği sunar.
+Microsoft Translator Hub projelerinizi seçmeli olarak geçirmek istiyorsanız, bu özelliği sunar.
 
 Bir projeyi geçirmek için:
 
-1. Microsoft Translator hub 'da oturum açın.
+1. Microsoft Translator Hub'ına oturum açın.
 
 2. "Projeler" sayfasına gidin.
 
-3. Uygun proje için "geçir" bağlantısına tıklayın.
+3. Uygun bir proje için "Geçiş" bağlantısına tıklayın.
 
-    ![Hub 'dan geçiş yapma](media/how-to/how-to-migrate-from-hub.png)
+    ![Hub'ından geçirme](media/how-to/how-to-migrate-from-hub.png)
 
-4. Geçiş bağlantısına bastıktan sonra, aşağıdakileri sağlayan bir form görüntülenir:
-   * Özel çevirmende aktarmak istediğiniz çalışma alanını belirtin
-   * Başarılı ilerler veya yalnızca dağıtılan ilerler ile tüm eğitimleri aktarmak isteyip istemediğinizi belirtin. Varsayılan olarak, tüm başarılı traınler aktarılır.
-   * Eğitim tamamlandığında eğitime otomatik olarak dağıtılıp dağıtılmayacağını belirtin. Varsayılan olarak, eğitimin tamamlanma sonrasında otomatik olarak dağıtılmayacak.
+4. Taşıma bağlantısını bastığınız andan, olanak tanıyan bir form sunulur:
+   * Özel Translator üzerinde aktarmak istediğiniz çalışma alanını belirtin
+   * Tüm eğitimleri başarılı eğitimleri veya yalnızca dağıtılan eğitimleri ile Aktarım isteyip istemediğinizi belirtin. Varsayılan olarak tüm başarılı eğitimleri aktarılır.
+   * Eğitim tamamlandığında dağıtılan, eğitim otomatik isteyip istemediğinizi belirtin. Varsayılan olarak, otomatik tamamlanmasından sonra dağıtılan eğitim olmayacaktır.
 
-5. "Istek gönder" seçeneğine tıklayın.
+5. "İstek Gönder" e tıklayın.
 
-## <a name="migrate-a-workspace"></a>Çalışma alanını geçirme
+## <a name="migrate-a-workspace"></a>Bir çalışma alanı geçirme
 
-Tek bir projeyi geçirmeye ek olarak, çalışma alanındaki başarılı değişikliklerle tüm projeleri de geçirebilirsiniz. Bu, çalışma alanındaki her projenin geçiş bağlantısına basılmasına rağmen değerlendirilmesine neden olur. Bu özellik, tümünü aynı ayarlarla özel çevirmene geçirmek isteyen birçok projesi olan kullanıcılar için uygundur. Bir çalışma alanı geçişi, çevirmen hub 'ının ayarlar sayfasından başlatılabilir.
+Tek bir projeye geçiş ek olarak, tüm projeleri bir çalışma alanında başarılı eğitimleri ile taşıyabilirsiniz. Bu her proje çalışma alanında geçiş bağlantısı basılmış gibi sorgulamanıza değerlendirilecek neden olur. Bu özellik, bunların tümünün aynı ayarlarla özel Translator'a geçiş yapmak istiyorsanız, birden çok projeli kullanıcılar için uygundur. Bir çalışma alanı geçişi Translator Hub Ayarları sayfasından başlatılabilir.
 
-Çalışma alanını geçirmek için:
+Bir çalışma alanı geçirmek için:
 
-1. Microsoft Translator hub 'da oturum açın.
+1. Microsoft Translator Hub'ına oturum açın.
 
 2. "Ayarlar" sayfasına gidin.
 
-3. "Ayarlar" sayfasında "çalışma alanı verilerini özel çevirmene geçir" düğmesine tıklayın.
+3. "Ayarlar" sayfasında "Özel Translator geçiş çalışma alanında veri" tıklayın.
 
-    ![Hub 'dan geçiş yapma](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Hub'ından geçirme](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. Sonraki sayfada, bu iki seçeneklerinden birini seçin:
 
-    a. Yalnızca dağıtılan Traınler: Bu seçeneğin belirlenmesi yalnızca dağıtılan sistemlerinizi ve ilgili belgelerinizi taşıyacaktır.
+    a. Yalnızca eğitimleri dağıtılan: Bu seçeneğin belirlenmesi geçirme yalnızca dağıtılan sistemler ve ilgili belgeler.
 
-    b. Tüm başarılı Insanlar: Bu seçeneğin belirlenmesi, tüm başarılı çalışmanızı ve ilgili belgelerinizi geçirebilir.
+    b. Tüm başarılı eğitimleri: Bu seçeneğin belirlenmesi, başarılı eğitimleri ve ilgili belgelerin geçirir.
 
-    c. Özel çevirmende hedef çalışma alanı KIMLIĞINIZI girin.
+    c. İçinde özel Translator, hedef çalışma alanı kimliği girin.
 
-    ![Hub 'dan geçiş yapma](media/how-to/how-to-migrate-from-hub-screen.png)
+    ![Hub'ından geçirme](media/how-to/how-to-migrate-from-hub-screen.png)
 
-5. Istek Gönder ' e tıklayın.
+5. İstek Gönder'e tıklayın.
 
 ## <a name="migration-history"></a>Geçiş geçmişi
 
-Hub 'dan çalışma alanı/proje geçişi isteğinde bulunuldığınızda, geçiş geçmişinizi özel çevirici ayarları sayfasında bulabilirsiniz.
+Çalışma alanı istediniz / Hub'ından geçiş projesi, geçiş geçmişini özel Translator Ayarları sayfasında bulabilirsiniz.
 
 Geçiş geçmişini görüntülemek için aşağıdaki adımları izleyin:
 
-1. Özel çevirmen portalındaki "ayar" sayfasına gidin.
+1. Özel Translator Portalı'nda "Ayarını" sayfasına gidin.
 
-2. Ayarlar sayfasının geçiş geçmişi bölümünde geçiş geçmişi ' ne tıklayın.
+2. Geçiş geçmişini Ayarlar sayfasında geçiş geçmişini bölümüne tıklayın.
 
     ![Geçiş geçmişi](media/how-to/how-to-migration-history.png)
 
-Geçiş geçmişi sayfası, istediğiniz her geçişin özeti olarak aşağıdaki bilgileri görüntüler.
+Geçiş geçmişi sayfası aşağıdaki istediğiniz her geçiş için Özet bilgiler görüntüler.
 
-1. Geçirme ölçütü: Bu geçiş isteğini gönderen kullanıcının adı ve e-postası
+1. Tarafından geçirilen: Ad ve e-posta kullanıcının bu geçiş isteği gönderildi
 
-2. Geçirme tarihi: geçişin tarih ve saat damgası
+2. Üzerinde geçişi: Tarih ve zaman damgası geçiş
 
-3. Projeler: başarılı bir şekilde geçirilmekte olan geçiş v/s proje sayısı için istenen proje sayısı.
+3. Projeler: İstenen proje v/sn sayısı geçiş başarıyla geçirildi projeleri sayısı.
 
-4. Seyahat: geçiş için istenen istek sayısı/sn başarılı bir şekilde geçirildi.
+4. Eğitimleri: İstenen geçiş v/sn sayısı eğitimleri başarıyla geçirildi eğitimleri sayısı.
 
-5. Belgeler: geçiş v/s belgelerinin başarıyla geçirildiği belge sayısı.
+5. Belgeler: Belge v/sn sayısı geçiş başarıyla geçirildi istenen belge sayısı.
 
     ![Geçiş geçmişi ayrıntıları](media/how-to/how-to-migration-history-details.png)
 
-Projeleriniz, seyahat ve belgeler hakkında daha ayrıntılı geçiş raporu isterseniz, ayrıntıları dışa aktarma ayrıntılarına CSV olarak sahipsiniz seçeneğini kullanabilirsiniz.
+Geçiş raporu projeleri, eğitimleri ve belgeleri hakkında daha ayrıntılı istiyorsanız ayrıntıları csv dosyası olarak dışarı aktarma seçeneğiniz vardır.
 
-## <a name="implementation-notes"></a>Uygulama notları
+## <a name="implementation-notes"></a>Uygulama Notları
 * Yalnızca özel çevirmende bulunmayan dil çiftlerine sahip sistemler, verilere erişmek veya özel çevirici aracılığıyla dağıtımı geri almak için kullanılabilir. Bu projeler, Projeler sayfasında "kullanılamaz" olarak işaretlenir. Özel çevirmenle yeni dil çiftlerini etkinleştirdiğimiz için, projeler eğecek ve dağıtılacak şekilde etkin hale gelir. 
-* Projeyi hub 'dan özel çevirmene geçirmek, hub 'ınız veya projeleriniz üzerinde herhangi bir etkiye sahip olmayacaktır. Geçiş sırasında proje veya belge hub 'ından silinmez ve modellerin dağıtımı geri alınamadı.
-* Her proje için yalnızca bir kez geçiş yapabilirsiniz. Bir projede geçiş tekrarlamanız gerekiyorsa lütfen bizimle iletişime geçin.
-* Özel çevirici, Ingilizce veya Ingilizce için NMT dil çiftlerini destekler. [Desteklenen dillerin tüm listesini görüntüleyin](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub temel modeller gerektirmez ve bu nedenle birkaç bin dili destekler. Desteklenmeyen bir dil çiftini geçirebilirsiniz, ancak yalnızca belge ve proje tanımlarının geçişini gerçekleştiririz. Yeni modeli eğitmeyeceksiniz. Ayrıca, bu belgeler ve projeler Şu anda kullanılamayacağını göstermek için etkin değil olarak görüntülenecektir. Bu projeler ve/veya belgeler için destek eklenirse, etkin ve sürdürülebilir hale gelir.
-* Özel çevirici Şu anda monolingual eğitim verilerini desteklememektedir. Desteklenmeyen dil çiftleri gibi, monolingual belgelerini geçirebilirsiniz, ancak monolingual verileri desteklenene kadar etkin değil olarak gösterilir.
-* Özel çevirmen, eğitebilmek için 10.000 paralel cümleler gerektirir. Microsoft hub, daha küçük bir veri kümesi üzerinde eğitim verebilir. Bu gereksinimi karşılamayan bir eğitim geçirilirse, bu işlem eğitilemez.
+* Bir proje hub'dan özel Translator'a geçiş Hub eğitimleri veya projeleri herhangi bir etkisi yoktur. Biz projeleri veya belgeler hub'dan bir geçiş sırasında silmeyin ve biz modelleri dağıtımını kaldırmayı değil.
+* Yalnızca proje bir kez geçirmeye izin verilir. Bir geçiş projesi üzerinde yinelemek ihtiyacınız varsa lütfen bizimle iletişime geçin.
+* Özel çevirici, Ingilizce veya Ingilizce için NMT dil çiftlerini destekler. [Desteklenen dillerin tüm listesini görüntüleyin](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub temel modelleri gerektirmez ve bu nedenle birkaç bin dilleri destekler. Ancak, yalnızca belgeleri geçirmek eder ve tanımları proje bir desteklenmeyen dili çifti geçirebilirsiniz. Biz yeni modeli eğitmek mümkün olmayacaktır. Ayrıca, bu belge ve projeleri etkin değil olarak şu anda kullanılamaz olduğunu belirtmek için görüntülenir. Bu projeler ve/veya belgeler için ek destek, etkin ve trainable olur.
+* Özel Translator tek dilli Kinsoku'ya eğitim verilerini şu anda desteklemiyor. Desteklenmeyen dil çiftleri gibi tek dilli Kinsoku'ya belgeleri geçirebilirsiniz, ancak tek dilli Kinsoku'ya veri desteklenen kadar bunlar devre dışı olarak göster.
+* Özel Translator eğitmek için 10 k paralel cümleler gerektirir. Microsoft Hub daha küçük bir veri kümesini eğitme. Bu gereksinimi karşılamayan bir eğitim geçirilirse, bu işlem eğitilemez.
 
-## <a name="custom-translator-versus-hub"></a>Özel Translator ile hub karşılaştırması
+## <a name="custom-translator-versus-hub"></a>Özel Translator Hub karşılaştırması
 
-Bu tablo, Microsoft Translator hub ve özel çevirmen arasındaki özellikleri karşılaştırır.
+Bu tabloda, Microsoft Translator Hub özel Translator arasındaki özellikler karşılaştırılmaktadır.
 
 |   | Hub | Özel Çevirmen |
 |:-----|:----:|:----:|
 |Özelleştirme özelliği durumu   | Genel Erişilebilirlik  | Genel Erişilebilirlik |
-| Metin API 'SI sürümü  | V2    | Yüklemesinde  |
-| SMT özelleştirmesi | Evet   | Hayır |
-| NMT özelleştirmesi | Hayır    | Evet |
-| Yeni Birleşik konuşma Hizmetleri özelleştirmesi | Hayır    | Evet |
+| Metin çevirisi API'si sürümü  | V2    | V3  |
+| SMT özelleştirme | Evet   | Hayır |
+| NMT özelleştirme | Hayır    | Evet |
+| Yeni birleşik konuşma Hizmetleri özelleştirme | Hayır    | Evet |
 | İzleme Yok | Evet | Evet |
 
 ## <a name="new-languages"></a>Yeni diller
@@ -145,5 +145,5 @@ Microsoft Translator için yeni bir dil sistemi oluşturma konusunda çalışan 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir modeli eğitme](how-to-train-model.md).
-- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla kullanmaya başlayın.
+- [Bir model eğitip](how-to-train-model.md).
+- Dağıtılan özel çeviri modeliniz aracılığıyla kullanmaya başlama [Microsoft Translator Text API v3 sürümüne](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

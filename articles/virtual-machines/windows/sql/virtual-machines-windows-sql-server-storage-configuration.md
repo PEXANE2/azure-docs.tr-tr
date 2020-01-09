@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/05/2017
+ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374021"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 'Ler için depolama yapılandırması
 
@@ -28,7 +28,7 @@ Bu konu, Azure 'un sağlama ve mevcut VM 'Ler için SQL Server sanal makinelerin
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz aşağıdaki özellikleri gerektirir:
 
@@ -40,7 +40,7 @@ Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz a
 
 Aşağıdaki bölümlerde, yeni SQL Server sanal makineler için depolamanın nasıl yapılandırılacağı açıklanır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 SQL Server Galeri görüntüsü kullanarak bir Azure VM sağlarken, **SQL Server ayarları** sekmesinde **yapılandırmayı Değiştir** ' i seçerek performans için iyileştirilmiş depolama yapılandırması sayfasını açın. Değerleri varsayılan olarak bırakabilir ya da iş yükünüze göre gereksinimlerinize en uygun disk yapılandırma türünü değiştirebilirsiniz. 
 
@@ -110,7 +110,6 @@ SQL Server VM oluşturma işlemi sırasında yapılandırılmış sürücüler i
 ![Mevcut SQL Server VM için depolamayı yapılandırma](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-
 ## <a name="storage-configuration"></a>Depolama yapılandırması
 
 Bu bölümde, Azure 'un Azure portal SQL VM sağlaması veya yapılandırması sırasında otomatik olarak gerçekleştirdiği depolama yapılandırması değişikliklerine yönelik bir başvuru sağlanmaktadır.
@@ -145,7 +144,7 @@ Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunla
 | --- | --- | --- |
 | **Genel** |Çoğu iş yüklerini destekleyen varsayılan ayar |Hiçbiri |
 | **İşlemsel işleme** |Geleneksel veritabanı OLTP iş yükleri için depolamayı iyileştirir |İzleme bayrağı 1117<br/>İzleme bayrağı 1118 |
-| **Veri depolama** |Analitik ve raporlama iş yükleri için depolamayı iyileştirir |İzleme bayrağı 610<br/>İzleme bayrağı 1117 |
+| **Veri ambarı** |Analitik ve raporlama iş yükleri için depolamayı iyileştirir |İzleme bayrağı 610<br/>İzleme bayrağı 1117 |
 
 > [!NOTE]
 > Yalnızca depolama yapılandırması adımında bir SQL sanal makinesi sağladığınızda iş yükü türünü belirtebilirsiniz.

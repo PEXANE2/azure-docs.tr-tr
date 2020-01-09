@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge Filer kümesi oluşturma
+title: 'Öğretici: Azure FXT Edge Filer önbellek kümesi oluşturma'
 description: Azure FXT Edge Filsi ile karma depolama önbelleği kümesi oluşturma
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 54d70f60d4b7290b60c864817c756648fef1f481
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256077"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551276"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesi oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları öğreneceksiniz:
 
 Bu yordam, IP adreslerini ve ağ kaynaklarını belirlemek için yapmanız gereken araştırma miktarına bağlı olarak 15 ila 45 dakika arasında sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce bu önkoşulları doldurun:
 
@@ -103,19 +103,19 @@ Ağ bağlantısını denetlemek için, düğümün ağ bağlantısı LED 'Leri '
 
 Düğüm önyüklendiğinde bir IP adresi ister. Bir DHCP sunucusuna bağlıysa, DHCP tarafından sağlanmış IP adresini kabul eder. (Bu IP adresi geçicidir. Kümeyi oluşturduğunuz zaman değişecektir.)
 
-Bir DHCP sunucusuna bağlı değilse veya yanıt almazsa, düğüm, 169,254 biçiminde bir otomatik olarak atanan IP adresi ayarlamak için Bonjour yazılımını kullanır. \*. \*. Ancak, bir küme oluşturmak için kullanmadan önce düğümün ağ kartlarının birinde geçici bir statik IP adresi ayarlamanız gerekir. Yönergeler bu eski belgeye dahildir; güncel bilgiler için Microsoft hizmetine ve desteğe başvurun: [Ek A: BIR FXT düğümünde STATIK IP adresi ayarlama](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+Bir DHCP sunucusuna bağlı değilse veya yanıt almazsa, düğüm, 169,254 formunda otomatik olarak atanan bir IP adresi ayarlamak için Bonjour yazılımını kullanır.\*.\*. Ancak, bir küme oluşturmak için kullanmadan önce düğümün ağ kartlarının birinde geçici bir statik IP adresi ayarlamanız gerekir. Yönergeler bu eski belgeye dahildir; güncel bilgiler için Microsoft hizmetine ve desteğe başvurun: [Ek A: BIR FXT düğümünde STATIK IP adresi ayarlama](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
 ### <a name="find-the-ip-address"></a>IP adresini bulma
 
 Azure FXT Edge Filer düğümüne bağlanarak IP adresini bulun. Seri kablo kullanabilir, USB ve VGA bağlantı noktalarına doğrudan bağlantı veya bir KVM anahtarıyla bağlanabilirsiniz. (Bağlantı noktası bağlantı ayrıntıları için bkz. [Başlangıç parolalarını ayarlama](fxt-node-password.md).)
 
-Bağlandıktan sonra, Kullanıcı adı `root` ile oturum açın ve düğümü ilk kez önyüklerken ayarladığınız parolayı belirleyin.  
+Bağlandıktan sonra, Kullanıcı adı `root` ve düğümü ilk kez önyüklerken ayarladığınız parolayla oturum açın.  
 
 Oturum açtıktan sonra, düğümün IP adresini belirlemeniz gerekir.
 
-Bu sisteme atanan adresleri görmek için `ifconfig` komutunu kullanın.
+Bu sisteme atanan adresleri görmek için komut `ifconfig` kullanın.
 
-Örneğin, `ifconfig | grep -B5 inet` komutu internet adresleriyle bağlantı noktalarını arar ve bağlantı noktası tanımlayıcısını göstermek için beş bağlam satırı sağlar.
+Örneğin, komut `ifconfig | grep -B5 inet` Internet adresleriyle bağlantı noktalarını arar ve bağlantı noktası tanımlayıcısını göstermek için beş bağlam satırı sağlar.
 
 İfconfig raporunda gösterilen tüm IP adreslerini yazın. E0A veya e0b gibi bağlantı noktası adlarıyla listelenen adresler iyi seçeneklerdir. Bu adlar yalnızca Idrac/ıPMı hizmeti bağlantı noktalarında kullanıldığından, E7 * adlarıyla listelenen herhangi bir IP adresini kullanmayın.  
 
@@ -174,7 +174,7 @@ Sayfa, **temel yapılandırma** ve **ağ yapılandırması**olmak üzere iki ana
 
 * **Yönetici parolası** -varsayılan yönetici kullanıcı için parolayı ayarlayın `admin`.
   
-  Kümeyi yöneten her kişi için bireysel kullanıcı hesapları ayarlamanız gerekir, ancak `admin` kullanıcısını kaldıramazsınız. Ek kullanıcılar oluşturmanız gerekiyorsa `admin` olarak oturum açın.
+  Kümeyi yöneten her kişi için bireysel kullanıcı hesapları ayarlamanız gerekir, ancak Kullanıcı `admin`kaldıramazsınız. Ek kullanıcılar oluşturmanız gerekiyorsa `admin` olarak oturum açın.
  
   Küme Denetim Masası 'ndaki **yönetim** > **kullanıcıları** ayarları sayfasında `admin` parolasını değiştirebilirsiniz. Ayrıntılar için, [küme yapılandırma kılavuzundaki](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html) **Kullanıcılar** belgelerini okuyun.
 
@@ -204,7 +204,7 @@ Bu bölüm ayrıca her iki ağ tarafından kullanılan DNS ve NTP sunucuları i�
 
 * **YÖNETIM IP** -küme Denetim Masası 'na erişmek IÇIN kullanacağınız IP adresini belirtin. Bu adres kümenin birincil düğümü tarafından talep edilir, ancak özgün birincil düğüm kullanılamaz hale gelirse otomatik olarak sağlıklı bir düğüme geçer.
 
-  Çoğu küme yalnızca bir yönetim IP adresi kullanır. Birden fazla istiyorsanız, küme  > **Yönetim ağı** ayarları sayfasını **kullanarak kümeyi oluşturduktan**sonra bunları ekleyebilirsiniz. [Küme yapılandırma kılavuzunda](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html)daha fazla bilgi edinin.
+  Çoğu küme yalnızca bir yönetim IP adresi kullanır. Birden fazla istiyorsanız, küme > **Yönetim ağı** ayarları sayfasını **kullanarak kümeyi oluşturduktan** sonra bunları ekleyebilirsiniz. [Küme yapılandırma kılavuzunda](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html)daha fazla bilgi edinin.
 
 * **Ağ maskesi** -yönetim ağı için ağ maskesini belirtin.
 
@@ -212,7 +212,7 @@ Bu bölüm ayrıca her iki ağ tarafından kullanılan DNS ve NTP sunucuları i�
 
 * **VLAN etiketi (isteğe bağlı)** -kümeniz VLAN etiketleri kullanıyorsa, yönetim ağının etiketini belirtin.
 
-  Ek VLAN ayarları, **küme** > **VLAN** ayarları sayfasında yapılandırılır. Daha fazla bilgi edinmek için, küme yapılandırma kılavuzundaki VLAN ve [cluster > VLAN](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) [ile çalışma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) bölümünü okuyun.
+  Ek VLAN ayarları, **Cluster** > **VLAN** ayarları sayfasında yapılandırılır. Daha fazla bilgi edinmek için, küme yapılandırma kılavuzundaki VLAN ve [cluster > VLAN](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) [ile çalışma](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) bölümünü okuyun.
 
 * **MTU** -gerekirse, kümenizin yönetim ağı için en yüksek iletim BIRIMINI (MTU) ayarlayın.
 
@@ -226,7 +226,7 @@ Küme ağ ayarları, küme düğümleri arasındaki trafik için ve küme düğ�
 
 * **Ilk IP** ve **son IP** -iç küme iletişimi IÇIN kullanılacak aralığı tanımlayan IP adreslerini girin. Burada kullanılan IP adresleri, DHCP tarafından ayrılmamış ve atanmamış olmalıdır.
 
-  Kümeyi oluşturduktan sonra daha fazla IP adresi ekleyebilirsiniz. **@No__t-** 1**küme ağları** ayarları sayfasını kullanın ([küme yapılandırma kılavuzu belgeleri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
+  Kümeyi oluşturduktan sonra daha fazla IP adresi ekleyebilirsiniz. **Küme > ** **kümesi ağları** ayarları sayfasını ([küme yapılandırma kılavuzu belgeleri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)) kullanın.
 
   **Aralıktaki IP sayısı** değeri hesaplanır ve otomatik olarak gösterilir.
 
@@ -282,7 +282,7 @@ Kümeyi oluşturduktan sonra, ağınızın ve iş akışınızın yapılandırma
 
 Yeni kümenizi ayarlamak için Denetim Masası web arabirimini kullanın. Küme oluşturma durumu ekranınızdan bağlantıyı izleyin veya kümede ayarladığınız yönetim IP adresine gidin.
 
-Web arabiriminde `admin` Kullanıcı adı ve kümeyi oluştururken ayarladığınız parolayla oturum açın.
+Kullanıcı adı `admin` ve kümeyi oluştururken ayarladığınız parolayla web arabiriminde oturum açın.
 
 ![Denetim Masası oturum açma alanlarını gösteren Web tarayıcısı](media/fxt-cluster-create/admin-login.png)
 
@@ -379,13 +379,13 @@ Destek karşıya yüklemelerini ayarlamak için bu adımları izleyin.
 1. **Karşıya yükleme bilgilerini yeniden doğrula** düğmesine tıklayın.
 1. **Benzersiz küme adında** kümenin destek adını ayarlayın-personeli desteklemek için kümenizi benzersiz şekilde tanımladığından emin olun.
 1. **Istatistik izleme**, **genel bilgiler karşıya yükleme**ve **kilitlenme bilgileri karşıya yükleme**kutularını işaretleyin.
-1. **Gönder**' e tıklayın.  
+1. **Gönder**'e tıklayın.  
 
    ![Destek ayarları sayfasının tamamlanan müşteri bilgisi bölümünün bulunduğu ekran görüntüsü](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Bölümü genişletmek için **güvenli proaktif destek (SPS)** sol tarafındaki üçgeni tıklatın.
 1. **SPS 'Yi etkinleştir bağlantısının**kutusunu işaretleyin.
-1. **Gönder**' e tıklayın.
+1. **Gönder**'e tıklayın.
 
    ![Destek ayarları sayfasında tamamlanmış güvenli proaktif destek bölümünün bulunduğu ekran görüntüsü](media/fxt-cluster-create/fxt-support-sps.png)
 
@@ -394,4 +394,4 @@ Destek karşıya yüklemelerini ayarlamak için bu adımları izleyin.
 Temel Kümeyi oluşturduktan ve gizlilik ilkesini kabul ettikten sonra, küme düğümlerinin geri kalanını ekleyin. 
 
 > [!div class="nextstepaction"]
-> [Küme düğümleri Ekle](fxt-add-nodes.md)
+> [Küme düğümleri ekleme](fxt-add-nodes.md)

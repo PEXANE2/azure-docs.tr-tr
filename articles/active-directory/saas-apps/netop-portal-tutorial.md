@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893272"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Öğretici: NetOp Portal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, NetOp portalını Azure Active Directory (Azure AD) ile tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -84,7 +84,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** başlatılmış modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının  **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+1. **Temel SAML yapılandırması** bölümünde uygulama, **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
 1. NetOp portal uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. En üst portal uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | ---------------| --------- |
     | NRC-HESAP KIMLIĞI | "ADFS tanıtım" |
     | NRC-E-POSTA | User. UserPrincipalName |
@@ -120,7 +120,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -146,7 +146,7 @@ Bu bölümde, B. Simon 'u, NetOp portalına erişim vererek Azure çoklu oturum 
 
 ### <a name="create-netop-portal-test-user"></a>NetOp Portal test kullanıcısı oluştur
 
-Bu bölümde, NetOp portalında Britta Simon adlı bir Kullanıcı oluşturacaksınız. NetOp Portal platformunda kullanıcıları eklemek için [NetOp Portal destek ekibi](mailto:casemanager@netop.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, NetOp portalında Britta Simon adlı bir Kullanıcı oluşturacaksınız. NetOp Portal platformunda kullanıcıları eklemek için [NetOp Portal destek ekibi](mailto:casemanager@netop.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

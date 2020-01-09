@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375024"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamı için ağ değerlendirmeleri #
 
@@ -244,7 +244,7 @@ Azure SQL örneği içeren bir alt ağda Hizmet Uç Noktaları etkinleştirilirs
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

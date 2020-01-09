@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386995"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Hızlı Başlangıç: Azure depolama hesabını Azure CDN ile tümleştirme
 Bu hızlı başlangıçta [Azure İçerik Teslim Ağı'nı (CDN)](cdn-overview.md) Azure depolamadan önbelleğe içerik almak için etkinleştireceksiniz. Azure CDN, geliştiricilere yüksek bant genişlikli içerik sunmak için genel bir çözüm sunmaktadır. İşlem örneklerinin bloblarını ve statik içeriğini Birleşik Devletler, Avrupa, Asya, Avustralya ve Güney Amerika'daki fiziksel düğümlerde önbelleğe alabilir.
@@ -57,7 +57,7 @@ Bir depolama hesabı oluşturmak için Azure portal ve PowerShell dahil olmak ü
    
     http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;kapsayicim&gt;*
 
-    Burada  *&lt;StorageAccountLabel&gt;* , **Ad** kutusuna girdiğiniz değeri gösterir.
+    Burada *&lt;StorageAccountLabel&gt;* , **Ad** kutusuna girdiğiniz değeri gösterir.
    
     > [!IMPORTANT]    
     > URL etiketi, depolama hesabının URI'sinin alt etki alanını oluşturur ve Azure'da barındırılan tüm hizmetler arasında benzersiz olması gerekir.
@@ -75,7 +75,7 @@ Bir depolama hesabı oluşturmak için Azure portal ve PowerShell dahil olmak ü
     | **Performans** | Varsayılan değeri kullanın. |
     | **Güvenli aktarım gereklidir** | Varsayılan değeri kullanın. |
     | **Abonelik** | Açılan listeden bir Azure aboneliği seçin. |
-    | **Kaynak grubu** | **Yeni oluştur**’u seçin ve kaynak grubu adınız olarak *my-resource-group-123* girin. Bu adın küresel olarak benzersiz olması gerekir. Ad zaten kullanılıyorsa, farklı bir ad girebilir ya da **Var olanı kullan**'ı seçip açılan listeden **my-resource-group-123**'ü seçebilirsiniz. <br />Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../azure-resource-manager/resource-group-overview.md#resource-groups).| 
+    | **Kaynak grubu** | **Yeni oluştur**’u seçin ve kaynak grubu adınız olarak *my-resource-group-123* girin. Bu adın küresel olarak benzersiz olması gerekir. Ad zaten kullanılıyorsa, farklı bir ad girebilir ya da **Var olanı kullan**'ı seçip açılan listeden **my-resource-group-123**'ü seçebilirsiniz. <br />Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../azure-resource-manager/management/overview.md#resource-groups).| 
     | **Sanal ağları yapılandırma** | Varsayılan değeri kullanın. |  
     
 5. Oluşturulduktan sonra depolama hesabını panonuza kaydetmek için **Panoya sabitle**'yi seçin.

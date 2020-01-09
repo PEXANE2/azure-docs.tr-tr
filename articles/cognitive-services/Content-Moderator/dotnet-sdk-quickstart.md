@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: .NET için Content Moderator istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: .NET için Content Moderator istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: .NET için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıç ile .NET için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: cb812a0432e5fdb2828054751ef35f3de82226e7
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 52f00b1c35daab142e4131c60110aa0ed686a6bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382064"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Hızlı başlangıç: .NET için Content Moderator istemci kitaplığı
 
@@ -29,7 +29,7 @@ ms.locfileid: "74539025"
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [örnekleri](https://docs.microsoft.com/azure/cognitive-services/content-moderator/samples-dotnet)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -96,7 +96,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar, Content Moderator .NET SDK 'nın bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagedenetlemesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|

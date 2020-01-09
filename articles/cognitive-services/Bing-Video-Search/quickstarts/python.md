@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 270117430b997921e0df486b1760db317bcb1611
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383764"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382693"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Video Arama REST API ve Python kullanarak video arama
 
@@ -40,7 +40,7 @@ Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://
     import requests
     from IPython.display import HTML
     ```
-2.  Abonelik anahtarınız, arama uç noktası ve arama teriminiz için değişkenler oluşturun.
+2.  Abonelik anahtarınız, arama uç noktası ve arama teriminiz için değişkenler oluşturun. `search_url`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
     
     ```python
     subscription_key = None

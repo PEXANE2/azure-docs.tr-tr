@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392137"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Hizmeti örneği oluşturma
 
@@ -30,9 +30,9 @@ Uygulamanız Azure’da bir SignalR hizmeti örneğine bağlanır.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Kaynak adı** | Genel olarak benzersiz bir ad | Yeni SignalR Hizmeti örneğinizi tanımlayan ad. Geçerli karakterler: `a-z`, `0-9`, ve `-`.  | 
     | **Abonelik** | Aboneliğiniz | Yeni SignalR Hizmeti örneğinin oluşturulacağı abonelik. | 
-    | **[Kaynak Grubu](../../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | SignalR Hizmeti örneğinizin oluşturulacağı yeni kaynak grubunun adı. | 
-    | **Location** | Batı ABD | Size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
-    | **Fiyatlandırma katmanı** | Boş | Azure SignalR Hizmetini ücretsiz deneyin. |
+    | **[Kaynak Grubu](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | SignalR Hizmeti örneğinizin oluşturulacağı yeni kaynak grubunun adı. | 
+    | **Konum** | Batı ABD | Size yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | **Fiyatlandırma katmanı** | Ücretsiz | Azure SignalR Hizmetini ücretsiz deneyin. |
     | **Birim sayısı** |  Geçerli değil | Birim sayısı, SignalR Hizmeti örneğinizin kaç bağlantı kabul edebileceğini belirtir. Bu yalnızca Standart katmanda yapılandırılabilir. |
     | **Hizmet modu** |  Sunucusuz | Azure Işlevleri veya REST API kullanmak için. |
 

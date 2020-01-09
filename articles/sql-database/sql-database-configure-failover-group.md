@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827147"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553078"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 
@@ -35,6 +35,7 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanınızı veritabanına ekleyin.
+
 
 1. [Azure Portal](https://portal.azure.com)sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna Azure SQL yazın. Seçim **Azure SQL** ' in yanındaki yıldızı seçerek bunu sık kullanılanlara ekleyin ve sol gezinti bölmesinde bir öğe olarak ekleyin. 
 1. Yük devretme grubuna eklemek istediğiniz tek veritabanını seçin. 
@@ -183,6 +184,9 @@ Yük devretme grubunu birincil sunucuya geri çevir:
 
 ---
 
+> [!IMPORTANT]
+> İkincil veritabanını silmeniz gerekiyorsa, silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
+
 ## <a name="elastic-pool"></a>Elastik havuz
 Yük devretme grubunu oluşturun ve Azure portal veya PowerShell kullanarak buna bir elastik havuz ekleyin.  
 
@@ -328,11 +332,14 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 ---
 
+> [!IMPORTANT]
+> İkincil veritabanını silmeniz gerekiyorsa, silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
+
 ## <a name="managed-instance"></a>Yönetilen örnek
 
 Azure portal veya PowerShell kullanarak iki yönetilen örnek arasında bir yük devretme grubu oluşturun. 
 
-Her bir yönetilen örneğin sanal ağı için bir ağ geçidi oluşturmanız, iki ağ geçidini bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir.
+Her bir yönetilen örneğin sanal ağı için [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 'u yapılandırmanız veya ağ geçidi oluşturmanız gerekir, iki ağ geçidini birbirine bağlamanız ve ardından yük devretme grubu oluşturmanız gerekir. 
 
 ### <a name="prerequisites"></a>Ön koşullar
 Aşağıdaki önkoşulları göz önünde bulundurun:
@@ -344,7 +351,7 @@ Aşağıdaki önkoşulları göz önünde bulundurun:
 
 ### <a name="create-primary-virtual-network-gateway"></a>Birincil sanal ağ geçidi oluştur 
 
-Azure portal veya PowerShell ile birincil sanal ağ geçidini oluşturun. 
+[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)'u yapılandırmadıysanız Azure Portal veya PowerShell ile birincil sanal ağ geçidini oluşturabilirsiniz. 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 

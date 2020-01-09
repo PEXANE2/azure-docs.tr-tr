@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920710"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549950"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıcı tamamladığınızda, uygulamanız kişisel Microsoft h
 
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -52,7 +52,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini çözümünüze el ile eklemek için şu adımları izleyin:
 >
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+> 1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 >
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](/azure/active-directory/develop/) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
@@ -61,7 +61,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >    - **Yeniden yönlendirme URI 'sini** Şu anda boş bırakın ve **Kaydet**' i seçin.
 > 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsamples/secure/aad` ve `http://localhost:8080/msal4jsamples/graph/me`ekleyin.
+>    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsample/secure/aad` ve `http://localhost:8080/msal4jsample/graph/me`ekleyin.
 >    - **Kaydet**’i seçin.
 > 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
 >
@@ -121,7 +121,7 @@ Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' a tıkla
 
 1. Ön sayfada, Azure Active Directory yeniden yönlendirmek için **oturum aç** düğmesini seçin ve kullanıcıdan kimlik bilgilerini girmesini isteyebilirsiniz.
 
-1. Kullanıcının kimliği doğrulandıktan sonra, *http://localhost:8080/msal4jsamples/secure/aad* yeniden yönlendirilir. Bunlar artık oturum açırlar ve sayfada oturum açmış hesap hakkında bilgi gösterilir. Örnek kullanıcı arabirimi aşağıdaki düğmelere sahiptir:
+1. Kullanıcının kimliği doğrulandıktan sonra, *http://localhost:8080/msal4jsample/secure/aad* yeniden yönlendirilir. Bunlar artık oturum açırlar ve sayfada oturum açmış hesap hakkında bilgi gösterilir. Örnek kullanıcı arabirimi aşağıdaki düğmelere sahiptir:
     - *Oturumu*kapat: geçerli kullanıcıyı uygulamanın dışına imzalar ve bunları giriş sayfasına yönlendirir.
     - *Kullanıcı bilgilerini göster*: Microsoft Graph için bir belirteç alır ve Microsoft Graph çağırır, bu belirteç içeren bir istekle birlikte oturum açan kullanıcı hakkında temel bilgileri döndürür.
 

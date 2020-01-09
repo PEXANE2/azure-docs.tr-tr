@@ -2,18 +2,18 @@
 title: Azure HDInsight 'ta Phoenix performansı
 description: Azure HDInsight kümeleri için Apache Phoenix performansını iyileştirmek için en iyi uygulamalar
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810436"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552653"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix performansı için en iyi yöntemler
 
@@ -31,34 +31,34 @@ Phoenix 'teki bir tabloda tanımlanan birincil anahtar, verilerin temel alınan 
 
 Örneğin, kişiler için bir tablonun adı, soyadı, telefon numarası ve adres, hepsi de aynı sütun ailesinde bulunur. Artan sıra numarasına göre bir birincil anahtar tanımlayabilirsiniz:
 
-|rowkey|       address|   telefon| firstName| lastName|
+|rowkey|       address|   phone| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Oyji|
 
 Bununla birlikte, genellikle lastName ile sorgulama yaptıysanız bu birincil anahtar iyi şekilde gerçekleştirilemeyebilir, çünkü her sorgu her lastName değerini okumak için tam tablo taraması gerektirir. Bunun yerine, lastName, firstName ve sosyal güvenlik numarası sütunlarında bir birincil anahtar tanımlayabilirsiniz. Bu son sütun, babalar ve son gibi aynı adreste bulunan iki sakın belirsizliğini ortadan kaldırmaya yönelik bir addır.
 
-|rowkey|       address|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Oyji| 222 |
 
 Bu yeni birincil anahtarla, Phoenix tarafından oluşturulan satır anahtarları şöyle olacaktır:
 
-|rowkey|       address|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  Çüji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Oyji| 222 |
 
 Yukarıdaki ilk satırda, rowkey verileri gösterilen şekilde gösterilir:
 
-|rowkey|       key|   value| 
+|rowkey|       anahtar|   değer|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
-|  Dole-John-111|telefon |1-425-000-0002|  
+|  Dole-John-111|phone |1-425-000-0002|  
 |  Dole-John-111|firstName |John|  
 |  Dole-John-111|lastName |Dole|  
-|  Dole-John-111|socialSecurityNum |111| 
+|  Dole-John-111|socialSecurityNum |111|
 
 Bu rowkey artık verilerin yinelenen bir kopyasını depolar. Bu değer, temel alınan HBase tablosundaki her hücreye dahil edildiğinden, birincil anahtarınıza eklediğiniz sütunların boyutunu ve sayısını göz önünde bulundurun.
 
@@ -72,7 +72,7 @@ Ayrıca, belirli sütunlara birlikte erişiliyorsa, bu sütunları aynı sütun 
 
 ### <a name="column-design"></a>Sütun tasarımı
 
-* Büyük sütunların g/ç maliyetlerine bağlı olarak, VARCHAR sütunlarını yaklaşık 1 MB 'tan tutun. Sorgular işlenirken, HBase, hücreleri istemciye göndermeden önce tam olarak bir şekilde çıkarır ve istemci bunları uygulama koduna teslim etmeden önce tam olarak alır.
+* Büyük sütunların g/ç maliyetlerinden dolayı VARCHAR sütunlarını yaklaşık 1 MB 'ye saklayın. Sorgular işlenirken, HBase, hücreleri istemciye göndermeden önce tam olarak bir şekilde çıkarır ve istemci bunları uygulama koduna teslim etmeden önce tam olarak alır.
 * Sütun değerlerini protoarabelleğe, avro, msgpack veya BSON gibi bir kompakt biçim kullanarak depolayın. JSON, daha büyük olduğu için önerilmez.
 * Gecikme süresini ve g/ç maliyetlerini kesmek için depolamadan önce verileri sıkıştırmayı göz önünde bulundurun.
 
@@ -113,7 +113,7 @@ Kapsanan dizinler, dizinli değerlere ek olarak satırdaki verileri içeren dizi
 
 Örneğin, örnek kişi tablosunda yalnızca socialSecurityNum sütununda ikincil bir dizin oluşturabilirsiniz. Bu ikincil dizin, socialSecurityNum değerlerine göre filtreleyen sorguları hızlandıracaktır, ancak diğer alan değerlerinin alınması ana tabloya karşı başka bir okuma gerektirir.
 
-|rowkey|       address|   telefon| firstName| lastName| socialSecurityNum |
+|rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  Çüji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Oyji| 222 |
@@ -153,7 +153,7 @@ Sorgu tasarımında başlıca noktalar şunlardır:
 
 Örnek olarak, Uçuş gecikmesi bilgilerini depolayan FıŞıKLARı adlı bir tablonuz olduğunu varsayalım.
 
-Airlineıd ile tüm fışıklardan birini `19805`seçmek için airlineıd, birincil anahtarda veya herhangi bir dizinde olmayan bir alandır:
+Havayolu kimliği `19805`olan tüm fışıklardan birini seçmek için airlineıd, birincil anahtarda veya herhangi bir dizinde olmayan bir alandır:
 
     select * from "FLIGHTS" where airlineid = '19805';
 
@@ -168,7 +168,7 @@ Sorgu planı şöyle görünür:
 
 Bu planda, FıŞıKLARA göre tam tarama tümceciğini ifade edin. Bu tümcecik, yürütmenin, daha verimli Aralık TARAMASı veya tarama atlama seçeneği yerine tablodaki tüm satırların üzerinde tarama yaptığını gösterir.
 
-Şimdi, flightnum 'ın 1 ' den büyük olduğu taşıyıcı `AA` için 2 Ocak 2014 ' de fışıkları sorgulamak istediğinizi varsayalım. Yıl, ay, dayofmonth, taşıyıcı ve flightnum sütunlarının örnek tabloda bulunduğunu ve bileşik birincil anahtarın bir parçası olduğunu varsayalım. Sorgu şöyle görünür:
+Şimdi, flightnum 'ın 1 ' den büyük olduğu `AA` taşıyıcı için 2 Ocak 2014 tarihinde fışıkları sorgulamak istediğinizi varsayalım. Yıl, ay, dayofmonth, taşıyıcı ve flightnum sütunlarının örnek tabloda bulunduğunu ve bileşik birincil anahtarın bir parçası olduğunu varsayalım. Sorgu şöyle görünür:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
@@ -182,7 +182,7 @@ Elde edilen plan:
 
 Köşeli ayraçlar içindeki değerler, birincil anahtarların değer aralığıdır. Bu durumda, Aralık değerleri 2014, Month 1 ve dayofmonth 2 ile düzeltilir, ancak 2 ve üzerinde (`*`) başlayan flightnum değerlerine izin verir. Bu sorgu planı, birincil anahtarın beklenen şekilde kullanıldığını onaylar.
 
-Ardından, fışıkları tablosunda yalnızca taşıyıcı alanında olan adlı `carrier2_idx` bir dizin oluşturun. Bu dizin Ayrıca, verileri dizinde depolanan kapsanan sütunlar olarak da flightdate,,,, Origin ve flightnum bilgilerini içerir.
+Daha sonra, yalnızca taşıyıcı alanındaki `carrier2_idx` adlı FıŞıKLARı tablosunda bir dizin oluşturun. Bu dizin Ayrıca, verileri dizinde depolanan kapsanan sütunlar olarak da flightdate,,,, Origin ve flightnum bilgilerini içerir.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
@@ -200,7 +200,7 @@ Plan sonuçlarını açıkla bölümünde görünebilen öğelerin tamamı liste
 
 Genellikle, tek bir kenar küçük olmadığı ve özellikle sık sorgularda, birleşimlerden kaçınmak istersiniz.
 
-Gerekirse, `/*+ USE_SORT_MERGE_JOIN */` ipucu ile büyük birleşimler yapabilirsiniz, ancak büyük bir birleştirme çok sayıda satır üzerinde pahalı bir işlemdir. Tüm sağ taraftaki tabloların genel boyutu kullanılabilir belleği aşarsa, `/*+ NO_STAR_JOIN */` ipucunu kullanın.
+Gerekirse, `/*+ USE_SORT_MERGE_JOIN */` ipucuyla büyük birleşimler yapabilirsiniz, ancak büyük bir birleştirme çok sayıda satır üzerinde pahalı bir işlemdir. Tüm sağ taraftaki tabloların genel boyutu kullanılabilir belleği aşarsa, `/*+ NO_STAR_JOIN */` ipucunu kullanın.
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -212,11 +212,11 @@ Okuma ağır kullanım örnekleri için, dizinleri kullandığınızdan emin olu
 
 ### <a name="write-heavy-workloads"></a>Yazma ağır iş yükleri
 
-Birincil anahtarın tek bir şekilde artdığı, yazma ağır iş yükleri için, gereken ek taramalar nedeniyle genel okuma aktarım hızı masrafında yazma etkin noktalarına karşı, yazma etkin noktalarına karşı, anahtar demetleri oluşturun. Ayrıca, çok sayıda kayıt yazmak için UPSERT kullanırken, oto yürütmeyi kapatın ve kayıtları toplu olarak uygulayın.
+Birincil anahtarın tek bir şekilde artdığı, yazma ağır iş yükleri için, gereken ek taramalar nedeniyle genel okuma aktarım hızı masrafında yazma etkin noktalarına karşı, yazma etkin noktalarına karşı bir işlem yapmaktan kaçınmak için anahtar demetleri oluşturun. Ayrıca, çok sayıda kayıt yazmak için UPSERT kullanırken, oto yürütmeyi kapatın ve kayıtları toplu olarak uygulayın.
 
 ### <a name="bulk-deletes"></a>Toplu silmeler
 
-Büyük bir veri kümesini silerken, SILME sorgusunu vermeden önce, istemci silinen tüm satırların satır anahtarlarını anımsaması gerekmiyorsa, tekrar yürütme özelliğini etkinleştirin. Yeniden yürütme, istemcinin SILME işleminden etkilenen satırları arabelleğe almasını engeller. bu sayede, Phoenix 'in onları istemciye döndürme masrafı olmadan doğrudan bölge sunucularında silmesine izin vermez.
+Büyük bir veri kümesini silerken, SILME sorgusunu vermeden önce, istemci silinen tüm satırlar için satır anahtarlarını anımsaması gerekmiyorsa, tekrar yürütme özelliğini etkinleştirin. Yeniden yürütme, istemcinin SILME işleminden etkilenen satırları arabelleğe almasını engeller. bu sayede, Phoenix 'in onları istemciye döndürme masrafı olmadan doğrudan bölge sunucularında silmesine izin vermez.
 
 ### <a name="immutable-and-append-only"></a>Sabit ve salt ekleme
 

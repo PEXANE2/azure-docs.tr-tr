@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: d1612db9b0c0f6a5ec85734d5a26ed0e25cb8c07
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446637"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Go kullanarak görüntü öngörülerini alın
 
@@ -26,13 +26,13 @@ Bu hızlı başlangıç, Bing Görsel Arama API'si çağırmak ve sonuçları g�
 * [Go ikililerini](https://golang.org/dl/)yükler.
 * Go-derin yazıcı, sonuçları göstermek için kullanılır. Go-Spew komutunu `$ go get -u https://github.com/davecgh/go-spew` komutuyla yükleyebilirsiniz.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Proje ve kitaplıklar
 
 IDE veya Düzenleyicinizde bir go projesi oluşturun. Ardından istekler için `net/http` içeri aktarın, yanıtı okumak için `ioutil` ve sonuçların JSON metnini işlemek için `encoding/json`. `go-spew` kitaplığı JSON sonuçlarını ayrıştırmak için kullanılır.
 
-```
+```go
 package main
 
 import (
@@ -54,7 +54,7 @@ import (
 
 `BingAnswer` yapısı, çok düzeyli ve karmaşık olan JSON yanıtında döndürülen verileri biçimlendirir. Aşağıdaki uygulama bazı temel bilgileri içerir:
 
-```
+```go
 type BingAnswer struct {
     Type         string `json:"_type"`
     Instrumentation struct {
@@ -109,9 +109,9 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Ana işlev ve değişkenler  
 
-Aşağıdaki kod Main işlevini bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `batchNumber`, POST verilerinin baştaki ve sondaki sınırları için gereken bir GUID 'dir. `fileName` değişkeni GÖNDERI için görüntü dosyasını tanımlar. Aşağıdaki bölümlerde kodun ayrıntıları açıklanmaktadır:
+Aşağıdaki kod Main işlevini bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `batchNumber`, POST verilerinin baştaki ve sondaki sınırları için gereken bir GUID 'dir. `fileName` değişkeni GÖNDERI için görüntü dosyasını tanımlar. `endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenecek [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir:
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.se
     endpoint := "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch"
@@ -161,7 +161,7 @@ func main() {
 
 Görsel Arama uç noktasına bir POST isteği, POST verilerini kapsayan baştaki ve sondaki sınırları gerektirir. Baştaki sınır, bir Batch numarası, içerik türü tanımlayıcısı `Content-Disposition: form-data; name="image"; filename=`ve GÖNDERILECEK görüntünün dosya adını içerir. Sondaki sınır yalnızca toplu iş numarasıdır. Bu işlevler `main` bloğuna dahil edilmez:
 
-```
+```go
 func BuildFormDataStart(batNum string, fileName string) string{
 
     startBoundary := "--batch_" + batNum + "\r\n"
@@ -180,7 +180,7 @@ func BuildFormDataEnd(batNum string) string{
 
 Bu kod segmenti görüntü verilerini içeren POST isteğini oluşturur:
 
-```
+```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
     file, err := os.Open(fileName)
     if err != nil {
@@ -209,7 +209,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 Aşağıdaki kod, isteği gönderir ve sonuçları okur:
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -228,7 +228,7 @@ resp, err := client.Do(req)
 
 `Unmarshall` işlevi, Görsel Arama API tarafından döndürülen JSON metnindeki bilgileri ayıklar. `go-spew` oldukça yazıcı sonuçları görüntüler:
 
-```
+```go
     // Create a new answer.  
     ans := new(BingAnswer)
     err = json.Unmarshal(resbody, &ans)
@@ -251,7 +251,7 @@ resp, err := client.Do(req)
 
 Sonuçlar, GÖNDERI gövdesinde bulunan görüntüye benzer görüntüleri belirler. Faydalı alanlar `WebSearchUrl` ve `Name`:
 
-```
+```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
      (struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) {
       WebSearchUrl: (string) (len=129) "https://www.bing.com/images/search?view=detailv2&FORM=OIIRPO&id=B9E6621161769D578A9E4DD9FD742128DE65225A&simid=608046863828453626",

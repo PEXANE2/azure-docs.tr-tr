@@ -1,17 +1,17 @@
 ---
 title: Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme
-description: Redsıs için Azure Cache ile yaygın istemci tarafı sorunlarını çözmeyi öğrenin
+description: Redsıs istemci belleği baskısı, trafik patlaması, yüksek CPU, sınırlı bant genişliği, büyük istekler veya büyük yanıt boyutu gibi Redsıs için Azure önbelleğiyle ilgili yaygın istemci tarafı sorunlarını çözmeyi öğrenin.
 author: yegu-ms
-ms.service: cache
-ms.topic: conceptual
-ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 10/18/2019
+ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433370"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme
 
@@ -102,7 +102,7 @@ Büyük yanıt boyutları için çözümler farklılaştırılabilecek ancak şu
 1. Uygulamanızın kullandığı bağlantı nesnelerinin sayısını artırın.
     - Farklı bağlantı nesneleri üzerinde istek yapmak için hepsini bir kez deneme yaklaşımı kullanın.
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
-- [Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-server.md)
+- [Redis için Azure Cache sunucu tarafı sorunlarını giderme](cache-troubleshoot-server.md)
 - [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+ms.date: 12/30/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707635"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552755"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -61,7 +61,7 @@ Yönetilen örneklerin otomatik yedeklemeleri vardır, böylece kullanıcılar `
   - Bant seçenekleri: `REWIND`, `NOREWIND`, `UNLOAD`ve `NOUNLOAD` desteklenmez.
   - Günlüğe özel seçenekler: `NORECOVERY`, `STANDBY`ve `NO_TRUNCATE` desteklenmez.
 
-Algılan 
+Sınırlamalar: 
 
 - Yönetilen bir örnek ile, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
 - Hizmet tarafından yönetilen Saydam Veri Şifrelemesi (TDE) ile şifrelenen bir veritabanında `BACKUP DATABASE ... WITH COPY_ONLY` çalıştıramazsınız. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
@@ -191,7 +191,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - [Arabellek havuzu uzantısı](/sql/database-engine/configure-windows/buffer-pool-extension) desteklenmiyor.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` desteklenmez. Bkz. [Alter Server CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Mediğinden
+### <a name="collation"></a>Harmanlama
 
 Varsayılan örnek harmanlama `SQL_Latin1_General_CP1_CI_AS` ve oluşturma parametresi olarak belirtilebilir. Bkz. [harmanlamalar](/sql/t-sql/statements/collations).
 
@@ -299,7 +299,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
 
 Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 
-- Kullanıldığı
+- Proxy'ler
 - Boştaki bir CPU 'da iş planlama
 - Aracıyı etkinleştirme veya devre dışı bırakma
 - Uyarılar
@@ -406,41 +406,12 @@ Operations
 - Anlık görüntü ve Iki yönlü çoğaltma türleri desteklenir. Birleştirme çoğaltması, eşler arası çoğaltma ve güncelleştirilebilir abonelikler desteklenmez.
 - [Işlem çoğaltma](sql-database-managed-instance-transactional-replication.md) , yönetilen örnek üzerinde bazı kısıtlamalarla genel önizleme için kullanılabilir:
     - Tüm çoğaltma katılımcıları türleri (yayımcı, dağıtıcı, çekme abonesi ve anında Iletme abonesi) yönetilen örneklere yerleştirilebilir, ancak yayımcı ve dağıtıcı hem bulutta hem de şirket içinde olmalıdır.
-    - Yönetilen örnekler SQL Server son sürümleriyle iletişim kurabilir. Desteklenen sürümlere [buradan](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)bakın.
+    - Yönetilen örnekler SQL Server son sürümleriyle iletişim kurabilir. Daha fazla bilgi için [Desteklenen sürümler matrisine](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems) bakın.
     - İşlemsel çoğaltma bazı [ek ağ gereksinimlerine](sql-database-managed-instance-transactional-replication.md#requirements)sahiptir.
 
-Çoğaltmayı yapılandırma hakkında daha fazla bilgi için bkz. [çoğaltma öğreticisi](replication-with-sql-database-managed-instance.md).
-
-
-[Yük devretme grubundaki](sql-database-auto-failover-group.md)bir veritabanında çoğaltma etkinleştirilirse, yönetilen örnek yöneticisinin eski birincil üzerindeki tüm yayınları temizlemesi ve yük devretme gerçekleştikten sonra yeni birincil üzerinde yeniden yapılandırması gerekir. Bu senaryoda aşağıdaki etkinlikler gereklidir:
-
-1. Varsa, veritabanında çalışan tüm çoğaltma işlerini durdurun.
-2. Yayımcı veritabanında aşağıdaki betiği çalıştırarak, yayımcıdan abonelik meta verilerini bırakın:
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. Abonelik meta verilerini aboneden bırakın. Abone örneğindeki abonelik veritabanında aşağıdaki betiği çalıştırın:
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. Yayımlanan veritabanında aşağıdaki betiği çalıştırarak tüm çoğaltma nesnelerini yayımcıya zorla bırakın:
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. Eski dağıtıcıyı orijinal birincil örnekten zorla bırakma (dağıtıcıya sahip olmak için kullanılan eski bir birincili geri yük devreder). Aşağıdaki betiği, eski dağıtımcı yönetilen örneğindeki ana veritabanında çalıştırın:
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+İşlem çoğaltmasını yapılandırma hakkında daha fazla bilgi için aşağıdaki öğreticilere bakın:
+- [Mı yayımcısı ile abone arasında çoğaltma](replication-with-sql-database-managed-instance.md)
+- [Mı yayımcısı, mı dağıtıcısı ve SQL Server abonesi arasında çoğaltma](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>RESTORE ekstresi 
 
@@ -470,7 +441,7 @@ Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve da
 - Bellek için iyileştirilmiş mevcut dosya grubu XTP olarak yeniden adlandırılır. 
 - `SINGLE_USER` ve `RESTRICTED_USER` seçenekleri `MULTI_USER`'e dönüştürülür.
 
-Algılan 
+Sınırlamalar: 
 
 - Bozulan veritabanlarının yedeklemeleri, bozulmanın türüne bağlı olarak geri yüklenebilir, ancak bozulma düzeltilinceye kadar otomatik yedeklemeler alınmaz. Bu sorunu engellemek için `DBCC CHECKDB` kaynak örneğinde çalıştırıp yedekleme `WITH CHECKSUM` kullandığınızdan emin olun.
 - Bu belgede açıklanan (örneğin, `FILESTREAM` veya `FILETABLE` nesneleri) herhangi bir sınırlama içeren bir veritabanının `.BAK` dosyasını geri yükleme, yönetilen örnek üzerinde geri yüklenemez.
@@ -526,7 +497,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 - Bir bölgede dağıtabileceğiniz sanal çekirdek sayısı ve örnek türleri bazı [kısıtlamalar ve sınırlara](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)sahiptir.
 - [Alt ağda uygulanması gereken bazı güvenlik kuralları](sql-database-managed-instance-connectivity-architecture.md#network-requirements)vardır.
 
-### <a name="vnet"></a>ADLı
+### <a name="vnet"></a>VNET
 - VNet, kaynak modeli kullanılarak dağıtılabilir-sanal ağ için klasik model desteklenmez.
 - Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneği veya VNet 'i başka bir kaynak grubuna veya aboneliğe taşımak desteklenmez.
 - App Service ortamları, mantıksal uygulamalar ve yönetilen örnekler (coğrafi çoğaltma, Işlemsel çoğaltma veya bağlı sunucular aracılığıyla kullanılan) gibi bazı hizmetler, sanal ağları [genel eşleme](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)kullanılarak bağlanmışsa farklı bölgelerdeki yönetilen örneklere erişemez. Sanal ağ geçitleri aracılığıyla ExpressRoute veya VNet-VNet aracılığıyla bu kaynaklara bağlanabilirsiniz.
@@ -535,11 +506,55 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 `tempdb` en büyük dosya boyutu, bir Genel Amaçlı katmanında çekirdek başına 24 GB 'den büyük olamaz. Bir İş Açısından Kritik katmanındaki en büyük `tempdb` boyutu örnek depolama boyutuyla sınırlıdır. `Tempdb` günlük dosyası boyutu Genel Amaçlı katmanında 120 GB ile sınırlıdır. Bazı sorgular, `tempdb` çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
 
+### <a name="msdb"></a>MSDB
+
+Yönetilen örnekteki aşağıdaki MSDB şemaları, kendi önceden tanımlanmış rollerine ait olmalıdır:
+
+- Genel roller
+  - TargetServersRole
+- [Düzeltilen veritabanı rolleri](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail rolleri](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+  - DatabaseMailUserRole
+- [Tümleştirme Hizmetleri rolleri](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+  - db_ssisadmin
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> Önceden tanımlanmış rol adlarını, şema adlarını ve şema sahiplerini müşterilere göre değiştirmek, hizmetin normal işlemlerini etkiler. Bunlar üzerinde yapılan tüm değişiklikler, algılanan en kısa sürede önceden tanımlanmış değerlere geri döndürülecek veya normal hizmet işlemini sağlamak için en son bir sonraki hizmet güncelleştirmesinde olacaktır.
+
 ### <a name="error-logs"></a>Hata günlükleri
 
 Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. Azure Data Studio için [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) veya [yönetilen örnek uzantısı (Önizleme)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) .
 
-## <a name="Issues"></a>Bilinen sorunlar
+## <a name="Issues"></a> Bilinen sorunlar
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL Aracısı rollerinin sysadmin olmayan oturumlar için açık yürütme izinlerine ihtiyacı vardır
+
+**Tarih:** Dec 2019
+
+Sysadmin olmayan oturum açma işlemleri [SQL Agent sabit veritabanı rollerine](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)eklenirse, bu oturumların çalışması için ana saklı YORDAMLARA açık yürütme izinlerinin verilmesi gereken bir sorun vardır. Bu sorunla karşılaşılırsa, "nesne üzerinde yürütme izni reddedildi < object_name > (Microsoft SQL Server, hata: 229)" hata mesajını görürsünüz.
+
+**Geçici çözüm**: SQL Aracısı sabit veritabanı rollerinden birine oturum açma işlemleri eklediğinizde: bu rollere eklenen her oturum açma için SQLAgentUserRole, SQLAgentReaderRole veya da SQLAgentOperatorRole rolünün, listelenen saklı YORDAMLARA açıkça yürütme izinleri vermek Için aşağıdaki T-SQL betiğini yürütür.
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL Aracısı işleri, aracı işleminin yeniden başlatılmasına göre kesintiye uğrar
+
+**Tarih:** Dec 2019
+
+SQL Aracısı, her defasında iş her başlatıldığında yeni bir oturum oluşturur ve bellek tüketimini kademeli olarak artırır. Zamanlanan işlerin yürütülmesini engelleyecek iç bellek sınırına ulaşmaktan kaçınmak için, bellek tüketimi eşiğe ulaştığında Aracı işlemi yeniden başlatılır. Yeniden başlatma sırasında çalışan işlerin yürütülmesini kesintiye neden olabilir.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Bellek içi OLTP bellek sınırları uygulanmadı
 

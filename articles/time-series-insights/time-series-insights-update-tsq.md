@@ -1,6 +1,6 @@
 ---
 title: Önizlemede veri sorgulama-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights Preview veri sorgulama hakkında bilgi edinin.
+description: Veri sorgulama kavramları ve HTTP REST API genel bakış Azure Time Series Insights önizlemede.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374587"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri sorgulama
 
@@ -39,8 +39,8 @@ Aşağıdaki temel API 'Ler desteklenir.
 
 Aşağıdaki ortam API 'Leri kullanılabilir:
 
-* [Ortam API 'Si al](/rest/api/time-series-insights/management/environments/get): çağıranın erişim yetkisine sahip olduğu ortamların listesini döndürür.
-* [Ortam kullanılabilirliği API 'si](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): olay zaman damgası `$ts`üzerinden olay sayısı dağılımını döndürür. Bu API, varsa olay sayısını döndürerek zaman damgasında herhangi bir olay olup olmadığını belirlemenize yardımcı olur.
+* [Ortamları al API 'si](/rest/api/time-series-insights/management/environments/get): çağıranın erişim yetkisine sahip olduğu ortamların listesini döndürür.
+* [Ortamları al kullanılabilirlik API 'si](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): olay sayısı `$ts`olay zaman damgası üzerinden dağılımını döndürür. Bu API, varsa olay sayısını döndürerek zaman damgasında herhangi bir olay olup olmadığını belirlemenize yardımcı olur.
 * [Olay şeması API 'Si al](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): belirli bir arama yayılması için olay şeması meta verilerini döndürür. Bu API, belirtilen arama alanı için şemada bulunan tüm meta verileri ve özellikleri almaya yardımcı olur.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Zaman serisi modeli-sorgu (TSD-Q) API 'Leri

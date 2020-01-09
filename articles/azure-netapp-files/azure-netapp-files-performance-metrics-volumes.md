@@ -1,27 +1,20 @@
 ---
-title: Azure NetApp Files için performans kıyaslama test önerileri | Microsoft Docs
-description: Azure NetApp Files kullanarak birim performansı ve ölçümleri için kıyaslama testi önerileri sağlar.
-services: azure-netapp-files
-documentationcenter: ''
+title: Önerilen performans kıyaslama testleri-Azure NetApp Files
+description: Azure NetApp Files kullanarak birim performansı ve ölçümleri için kıyaslama testi önerileri hakkında bilgi edinin.
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: b-juche
-ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881724"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551531"
 ---
-# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files için performans kıyaslama test önerileri
+# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files için performans kıyaslamaları test önerileri
 
 Bu makale, Azure NetApp Files kullanarak birim performansı ve ölçümleri için kıyaslama testi önerileri sağlar.
 
@@ -56,20 +49,20 @@ Bu bölümdeki FIO örnekleri aşağıdaki kurulumu kullanır:
 
 Aşağıdaki örneklerde FIO rastgele okuma ve yazma işlemleri gösterilmektedir.
 
-### <a name="fio-8k-block-size-100-random-reads"></a>FIO: 8k blok boyutu% 100 rastgele okuma
+### <a name="fio-8k-block-size-100-random-reads"></a>FIO: 8k blok boyutu %100 rastgele okuma
 
 `fio --name=8krandomreads --rw=randread --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128 --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-68k-read-iops-displayed"></a>Çıktı: 68k okuma ıOPS 'si görüntülendi
+### <a name="output-68k-read-iops-displayed"></a>Çıkış: 68k okuma ıOPS görüntülendi
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [r(4)][84.4%][r=537MiB/s,w=0KiB/s][r=68.8k,w=0 IOPS][eta 00m:05s]`
 
-### <a name="fio-8k-block-size-100-random-writes"></a>FIO: 8k blok boyutu% 100 rastgele yazma
+### <a name="fio-8k-block-size-100-random-writes"></a>FIO: 8k blok boyutu %100 rastgele yazma işlemleri
 
 `fio --name=8krandomwrites --rw=randwrite --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-73k-write-iops-displayed"></a>Çıktı: 73K yazma ıOPS görüntülendi
+### <a name="output-73k-write-iops-displayed"></a>Çıkış: 73K yazma ıOPS görüntülendi
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [w(4)][26.7%][r=0KiB/s,w=571MiB/s][r=0,w=73.0k IOPS][eta 00m:22s]`
@@ -78,20 +71,20 @@ Aşağıdaki örneklerde FIO rastgele okuma ve yazma işlemleri gösterilmektedi
 
 Bu bölümdeki örneklerde FIO sıralı okuma ve yazma işlemleri gösterilmektedir.
 
-### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: 64K blok boyutu% 100 sıralı okuma
+### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: 64K blok boyutu %100 sıralı okuma
 
 `fio --name=64kseqreads --rw=read --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-118-gbits-throughput-displayed"></a>Çıktı: 11,8 Gbit/sn aktarım hızı görüntülendi
+### <a name="output-118-gbits-throughput-displayed"></a>Çıkış: 11,8 Gbit/s aktarım hızı görüntülendi
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [R(4)][40.0%][r=1313MiB/s,w=0KiB/s][r=21.0k,w=0 IOPS][eta 00m:09s]`
 
-### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: 64K blok boyutu% 100 sıralı yazma
+### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: 64K blok boyutu 100% sıralı yazma
 
 `fio --name=64kseqwrites --rw=write --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-122-gbits-throughput-displayed"></a>Çıktı: 12,2 Gbit/sn aktarım hızı görüntülendi
+### <a name="output-122-gbits-throughput-displayed"></a>Çıkış: 12,2 Gbit/s aktarım hızı görüntülendi
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [W(4)][85.7%][r=0KiB/s,w=1356MiB/s][r=0,w=21.7k IOPS][eta 00m:02s]`
@@ -120,7 +113,7 @@ Ayrıca, ölçüm sayfasına giderek, NetApp için filtreleyerek ve ilgilendiği
 
 ### <a name="azure-monitor-api-access"></a>Azure Izleyici API erişimi
 
-REST API çağrılarını kullanarak Azure NetApp Files sayaçlarına erişebilirsiniz. Bkz [. Azure izleyici ile desteklenen ölçümler: Kapasite havuzları ve birimlere yönelik sayaçlar için Microsoft. NetApp/netappaccounts/capacityhavuzlar/birimler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) .
+REST API çağrılarını kullanarak Azure NetApp Files sayaçlarına erişebilirsiniz. Kapasite havuzları ve birimlere yönelik sayaçlar için bkz. [Azure izleyici Ile desteklenen ölçümler: Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) .
 
 Aşağıdaki örnekte, mantıksal birim boyutunu görüntülemek için bir GET URL 'SI gösterilmektedir:
 

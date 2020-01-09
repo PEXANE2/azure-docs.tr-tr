@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: f0937ee53e66cb1bf0c5d6b55a8dde045570e924
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309847"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551395"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -22,19 +22,21 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
 ### <a name="timing-metrics"></a>Zamanlama ölçümleri
 
-İstek ve yanıtın zamanlaması ile ilgili aşağıdaki ölçümler kullanılabilir. Bu ölçümleri çözümleyerek, WAN, Application Gateway, Application Gateway ile arka uç arasındaki ağ veya uygulama performansı arasında uygulama üzerinde yavaşlama olup olmadığını belirleyebilirsiniz.
+İstek ve yanıtın zamanlaması ile ilgili aşağıdaki ölçümler kullanılabilir. Belirli bir dinleyici için bu ölçümleri çözümleyerek, WAN, Application Gateway, Application Gateway ile arka uç uygulaması arasındaki ağ veya arka uç uygulama performansı arasındaki uygulamada yavaşlamanın olup olmadığını belirleyebilirsiniz.
+
+> [!NOTE]
+>
+> Application Gateway birden fazla dinleyici varsa, anlamlı çıkarımı almak için farklı gecikme ölçümlerini karşılaştırırken her zaman *dinleyici* boyutuna göre filtreleyin.
 
 - **İstemci RTT**
 
-  İstemcilerle Application Gateway arasında ortalama gidiş dönüş süresi. Bu ölçüm, bağlantı kurmak ve bildirimleri döndürmek için ne kadar sürdüğünü gösterir.
+  İstemcilerle Application Gateway arasında ortalama gidiş dönüş süresi. Bu ölçüm, bağlantı kurmak ve bildirimleri döndürmek için ne kadar sürdüğünü gösterir. 
 
 - **Application Gateway toplam süre**
 
   Bir isteğin işlenmesi için geçen ortalama süre ve gönderilecek yanıt. Bu, yanıt gönderme işlemi tamamlandığında Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığının ortalaması olarak hesaplanır. Bu, genellikle Application Gateway işleme süresini, istek ve Yanıt paketlerinin ağ üzerinden hareket etmekte olduğu süreyi ve arka uç sunucusunun yanıt vermesi gerektiğini unutmayın.
-
-- **Arka uç bağlantı saati**
-
-  Arka uç sunucusuyla bağlantı kurmaya harcanan süre. 
+  
+*ISTEMCI RTT* , *uygulama ağ geçidinin toplam süresinden*çok daha fazla ise, istemci tarafından gözlenen gecikme süresi istemci ile Application Gateway arasındaki ağ bağlantısı nedeniyle anlaşılabilirler. Her iki gecikme süresi de karşılaştırılamadığında, aşağıdakilerden herhangi biri olabilir: Application Gateway, Application Gateway ve arka uç uygulaması arasındaki ağ veya arka uç uygulama performansı.
 
 - **Arka uç ilk bayt yanıt süresi**
 
@@ -43,6 +45,13 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 - **Arka uç son bayt yanıt süresi**
 
   Arka uç sunucusuna bağlantı kurma ve yanıt gövdesinin son baytını alma arasındaki zaman aralığı
+  
+*Uygulama ağ geçidi toplam süre* , belirli bir dinleyici Için *arka uç son bayt yanıt süresinden* çok daha fazla ise, yüksek gecikme süresinin Application Gateway nedeni olabilir. Öte yandan, iki ölçüm karşılaştırılabilir ise, sorun Application Gateway ile arka uç uygulaması arasındaki ağ veya arka uç uygulamasının performansı olabilir.
+
+- **Arka uç bağlantı saati**
+
+  Bir arka uç uygulamasıyla bağlantı kurmaya harcanan süre. SSL söz konusu olduğunda, el sıkışma durumunda harcanan süreyi içerir. Bu ölçümün yalnızca bağlantı süresini ölçdiğinden ve bu nedenle diğer gecikme süreleriyle doğrudan karşılaştırılmamalıdır. Bununla birlikte, *arka uç bağlantı zamanının* desen diğer gecikme sürelerinin düzeniyle karşılaştırılırken, ağdaki bir çeşitleme, uygulamanın Gatway ve arka uç uygulamasının yanı sıra diğer gecikme sürelerinin artışının çıkarsanıp anlaşılamadığını belirtebilir. 
+  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway ölçümleri
 
@@ -62,7 +71,7 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Geçerli kapasite birimleri**
 
-   Tüketilen Kapasite birimi sayısı. Kapasite birimleri, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyeti ölçer. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç belirleyici vardır. Her kapasite birimi en fazla şundan oluşur: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps üretilen iş.
+   Tüketilen Kapasite birimi sayısı. Kapasite birimleri, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyeti ölçer. Kapasite birimi işlem biriminin, kalıcı bağlantıların ve aktarım hızının üç belirleyici vardır. Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
 
 - **Geçerli işlem birimleri**
 
@@ -115,6 +124,10 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
+- **CPU kullanımı**
+
+  Application Gateway ayrılan CPU 'ların kullanımını görüntüler.  Normal koşullar altında CPU kullanımı, Application Gateway arkasında barındırılan Web sitelerinde gecikmeye neden olabileceğinden ve istemci deneyimini kesintiye uğratan düzenli olarak %90 ' ı aşmamalıdır. Örnek sayısını artırarak veya daha büyük bir SKU boyutuna geçerek ya da her ikisini de yaparak Application Gateway yapılandırmasını değiştirerek, dolaylı olarak bir CPU kullanımını denetleyebilir veya geliştirebilirsiniz.
+
 - **Geçerli bağlantılar**
 
   Application Gateway ile kurulan geçerli bağlantı sayısı
@@ -157,7 +170,7 @@ Uygulama ağ geçidine gidin, **izleme** ' nin altında **ölçümleri**seçin. 
 
 Aşağıdaki görüntüde, son 30 dakika boyunca üç ölçüm görüntülenirken bir örnek görürsünüz:
 
-[![](media/application-gateway-diagnostics/figure5.png "Ölçüm görünümü")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Geçerli ölçüm listesini görmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md).
 
@@ -173,7 +186,7 @@ Aşağıdaki örnek, aktarım hızı bir eşiğe ulaştığında bir yöneticiye
 
 2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam**' ı seçin.
 
-   * **Koşul** seçicide dört değerden birini seçin: **Büyüktür,** **büyüktür veya eşittir**, **küçüktür**ya da **küçüktür veya eşittir**.
+   * **Koşul** seçicide dört değerden birini seçin: **büyüktür**, **büyüktür veya eşittir**, **küçüktür**veya **küçüktür veya eşittir**.
 
    * **Süre** seçicide beş dakikadan altı saat arasında bir dönem seçin.
 

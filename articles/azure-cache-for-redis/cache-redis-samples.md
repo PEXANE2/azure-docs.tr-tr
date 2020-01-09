@@ -1,18 +1,17 @@
 ---
 title: Redis için Azure Önbelleği örnekleri
-description: Redis için Azure Cache’i kullanmayı öğrenin
+description: "Aşağıdaki kod örnekleri ile birlikte Reda için Azure Cache 'i nasıl kullanacağınızı öğrenin: bir önbelleğe bağlanma, verileri önbellekte okuma ve yazma, Redsıs sağlayıcıları için Azure Cache ASP.NET."
 author: yegu-ms
-ms.service: cache
-ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 9097a25c0223faebd91fe3c01ff3edea6c4e6f9f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433400"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Redis için Azure Önbelleği örnekleri
 Bu konu, Redsıs örnekleri için Azure önbelleğinin bir listesini, bir önbelleğe bağlanma, önbelleğe veri okuma ve önbellekten veri yazma ve Redsıs sağlayıcıları için ASP.NET Azure önbelleğini kullanma gibi senaryoları kapsayan bir liste sağlar. Bazı örnekler indirilebilir projelerdir ve bazıları adım adım rehberlik sağlar ve kod parçacıkları içerir ancak indirilebilir bir projeye bağlantı vermez.
@@ -62,4 +61,3 @@ Azure [Yönetim kitaplıkları kullanılarak redsıs Için Azure önbelleğini y
 
 ## <a name="bandwidth-monitor"></a>Bant genişliği İzleyicisi
 [Bant genişliği izleyici](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) örneği, istemcide kullanılan bant genişliğini izlemenize olanak sağlar. Bant genişliğini ölçmek için, örneği önbellek istemci makinesinde çalıştırın, önbelleğe çağrılar yapın ve bant genişliği izleyici örneği tarafından raporlanan bant genişliğini gözlemleyin.
-

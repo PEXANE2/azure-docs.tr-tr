@@ -1,5 +1,6 @@
 ---
-title: Azure CLı betik örneği-Azure uygulama yapılandırma deposu oluşturma | Microsoft Docs
+title: Azure CLı betik örneği-Azure uygulama yapılandırma deposu oluşturma
+titleSuffix: Azure App Configuration
 description: Azure CLı betik örneği-Azure uygulama yapılandırma deposu oluşturma
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d57de8219cb73864ed722c6906a1bd75fec51a50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433584"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposu oluşturma
 
@@ -29,7 +30,7 @@ Bu örnek betik, yeni bir kaynak grubunda rastgele bir ada sahip yeni bir Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
 

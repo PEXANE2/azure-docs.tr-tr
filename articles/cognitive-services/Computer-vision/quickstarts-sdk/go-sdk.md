@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: go için istemci kitaplığı Görüntü İşleme | Microsoft Docs'
+title: 'Hızlı başlangıç: go için istemci kitaplığı Görüntü İşleme'
 titleSuffix: Azure Cognitive Services
-description: Go için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıç ile Go için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382318"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Hızlı başlangıç: go için istemci kitaplığı Görüntü İşleme
 
@@ -28,7 +28,7 @@ Git için Görüntü İşleme istemci kitaplığını kullanın:
 
 [Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision) | [paketi](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * En son [Go](https://golang.org/dl/) sürümü
@@ -99,7 +99,7 @@ Daha sonra, farklı Görüntü İşleme işlemleri gerçekleştirmek için kod e
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme go SDK 'sının bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Bu sınıf, görüntü analizi ve metin okuma gibi tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
 |[Imageanalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Bu tür, bir **analiz Zeımage** işlev çağrısının sonuçlarını içerir. Kategoriye özgü işlevlerin her biri için benzer türler vardır.|

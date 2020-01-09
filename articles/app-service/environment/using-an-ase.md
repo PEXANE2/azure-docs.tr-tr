@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 806d6ddb09cbaf14c9c488e3d3b39909c22ef284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374939"
 ---
 # <a name="use-an-app-service-environment"></a>App Service ortamı kullanma #
 
@@ -61,7 +61,7 @@ AS 'de bir uygulama oluşturmak için:
 
     c. **Konum** açılır listesinden atıcı ' i seçin. 
     
-    d. **Yalıtılmış** bir fiyatlandırma katmanı seçin. **Seç**' i seçin.
+    d. **Yalıtılmış** bir fiyatlandırma katmanı seçin. Seçin **seçin**.
 
     e. **Tamam**’ı seçin.
     
@@ -71,7 +71,7 @@ AS 'de bir uygulama oluşturmak için:
     > Linux uygulamaları ve Windows uygulamaları aynı App Service planında olamaz, ancak aynı App Service Ortamı olabilir. 
     >
 
-2. **Oluştur**'u seçin.
+2. **Oluştur**’u seçin.
 
 ## <a name="how-scale-works"></a>Ölçeklendirmenin çalışması ##
 
@@ -172,7 +172,7 @@ ATıCı 'yi silmek için:
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
