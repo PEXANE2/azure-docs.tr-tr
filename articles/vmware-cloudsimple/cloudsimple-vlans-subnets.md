@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543791"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372746"
 ---
 # <a name="vlans-and-subnets-overview"></a>VLAN 'Lara ve alt ağlara genel bakış
 
@@ -21,7 +21,7 @@ CloudSimple, CloudSimple hizmetinizin dağıtıldığı bölge başına bir ağ 
 
 ![CloudSimple ağ topolojisi](media/cloudsimple-network-topology.png)
 
-## <a name="vlans"></a>VLAN
+## <a name="vlans"></a>VLAN'lar
 
 Her özel bulut için bir VLAN (katman 2 ağ) oluşturulur.  Katman 2 trafiği özel bulutun sınırında kalır ve özel buluttaki yerel trafiği yalıtmanızı sağlar.  Özel bulutta oluşturulan bir VLAN, yalnızca o özel bulutta dağıtılmış bağlantı noktası grupları oluşturmak için kullanılabilir.  Özel bir bulutta oluşturulan bir VLAN, özel bulutun konaklarına bağlı tüm anahtarlarda otomatik olarak yapılandırılır.
 
@@ -38,7 +38,7 @@ Tüm alt ağlar varsayılan olarak birbirleriyle iletişim kurabilir ve özel bu
 * Minimum vSphere/vSAN alt ağları CıDR aralığı ön eki: **/24**
 * Maksimum vSphere/vSAN alt ağları CıDR aralığı ön eki: **/21**
 
-> [!IMPORTANT]
+> [!CAUTION]
 > VSphere/vSAN CıDR aralığındaki IP adresleri özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN alt ağları CıDR Aralık sınırları
