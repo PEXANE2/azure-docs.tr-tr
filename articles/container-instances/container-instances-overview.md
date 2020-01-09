@@ -4,12 +4,12 @@ description: Azure Container Instances hizmeti, sanal makinelerin yönetilmesi g
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533539"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552330"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances nedir?
 
@@ -21,13 +21,19 @@ Yalıtılmış kapsayıcılarda çalışabileceğiniz senaryolar (basit uygulama
 
 Kapsayıcılar, sanal makinelerde (VM) önemli başlangıç süresi avantajları sunar. Azure Container Instances, sanal makineleri sağlamaya ve yönetmeye gerek kalmadan saniyeler içinde Azure’da kapsayıcıları başlatabilir.
 
-## <a name="public-ip-connectivity-and-dns-name"></a>Genel IP bağlantısı ve DNS adı
+## <a name="container-access"></a>Kapsayıcı erişimi
 
-Azure Container Instances, kapsayıcılarınızın İnternet üzerinde bir IP adresi ve tam etki alanı adı (FQDN) ile doğrudan kullanıma sunulmasına olanak sağlar. Bir kapsayıcı örneği oluşturduğunuzda, uygulamanızın *customlabel*.*azureregion*.azurecontainer.io üzerinden ulaşılabilir olmasını sağlamak amacıyla bir özel DNS ad etiketi belirleyebilirsiniz.
+Azure Container Instances, kapsayıcı gruplarınızın bir IP adresi ve tam etki alanı adı (FQDN) ile doğrudan internet 'e sunulmasını sağlar. Bir kapsayıcı örneği oluşturduğunuzda, uygulamanızın *customlabel*.*azureregion*.azurecontainer.io üzerinden ulaşılabilir olmasını sağlamak amacıyla bir özel DNS ad etiketi belirleyebilirsiniz.
+
+Azure Container Instances Ayrıca, uygulama geliştirme ve sorun giderme konusunda yardımcı olmak üzere etkileşimli bir kabuk sağlayarak çalışan bir kapsayıcıda bir komutun yürütülmesini destekler. Erişim, istemci bağlantılarını güvenli hale getirmek için TLS kullanarak HTTPS üzerinden yer alır.
+
+> [!IMPORTANT]
+> Azure Container Instances 13 Ocak 2020 tarihinden itibaren, sunuculardan ve uygulamalardan gelen tüm güvenli bağlantıların TLS 1,2 kullanması gerekir. TLS 1,0 ve 1,1 desteği kullanımdan kaldırılacak.
 
 ## <a name="hypervisor-level-security"></a>Hiper yönetici düzeyinde güvenlik
 
 Geçmişte kapsayıcılar, uygulama bağımlılığı yalıtımı ve kaynak idaresi olanakları sağlıyor ancak birden çok kiracılı zorlu kullanımlar için yeterli kabul edilmiyordu. Azure Container Instances, uygulamanızın bir kapsayıcıda, sanal makinedeki gibi yalıtılmasını sağlar.
+
 
 ## <a name="custom-sizes"></a>Özel boyutlar
 
@@ -37,7 +43,7 @@ Machine Learning gibi işlem yoğunluğu olan işler için Azure Container Insta
 
 ## <a name="persistent-storage"></a>Kalıcı depolama
 
-Azure Container Instances ile durum alma ve durumu kalıcı hale getirme işlemleri için, [Azure Dosyaları paylaşımlarını doğrudan bağlama](container-instances-mounting-azure-files-volume.md) olanağı sunuyoruz.
+Azure Container Instances durumu almak ve kalıcı hale getirmek için Azure depolama tarafından desteklenen [Azure dosya paylaşımlarının doğrudan bağlamasını](container-instances-mounting-azure-files-volume.md) sunuyoruz.
 
 ## <a name="linux-and-windows-containers"></a>Linux ve Windows kapsayıcıları
 

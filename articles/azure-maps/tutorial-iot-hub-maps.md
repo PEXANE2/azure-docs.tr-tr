@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432805"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal Analizi uygulama
 
@@ -77,7 +77,7 @@ Aşağıdaki şekilde, mavi ve kiralık araç rotasında yeşil bir çizgi olara
   ![Geofence rotası](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -104,7 +104,8 @@ Bu öğreticideki adımları tamamlayabilmeniz için öncelikle Azure portal bir
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma 
 
-Azure haritalar uzamsal analizlerini temel alan iş mantığını uygulamak için, oluşturduğumuz kaynak grubunda bir Azure Maps hesabı oluşturuyoruz. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri izleyin ve hesabınız için birincil abonelik anahtarını almak üzere [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
+Azure haritalar uzamsal analizlerini temel alan iş mantığını uygulamak için, oluşturduğumuz kaynak grubunda bir Azure Maps hesabı oluşturuyoruz. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+
 
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
@@ -167,7 +168,7 @@ Postman uygulamasını açın ve Azure Maps, veri yükleme API 'sini kullanarak 
     
     URL yolundaki `dataFormat` parametresine karşılık gelen "geojson" değeri, karşıya yüklenen verilerin biçimini temsil eder.
 
-3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure Maps birincil abonelik anahtarınızla değiştirin.
+3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure haritalar anahtarınızla değiştirin.
    
     ![Anahtar-değer params Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 

@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 631a9e2d44b798404ee7567d3ccfed90628d2f8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432858"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Haritaya görüntü katmanı ekleme
 
-Bu makalede, bir görüntüyü haritada sabit bir koordinat kümesiyle nasıl kaplabir şekilde kullanabileceğiniz gösterilmektedir. Haritadaki bir görüntünün fazla yerleşimi tamamlandığında çok sayıda senaryo vardır. Aşağıda, haritalar üzerinde yer alan görüntülerin türüne birkaç örnek verilmiştir;
+Bu makalede, bir görüntünün harita üzerindeki sabit bir koordinat kümesiyle nasıl kaplamanız gösterilmektedir. Haritalar üzerinde sık sık çakışan görüntü türüne örnek olarak aşağıda verilmiştir:
 
-* Drones 'den yakalanan görüntüler.
-* Floorplanlar oluşturma.
-* Geçmiş veya diğer özel harita görüntüleri.
-* İş sitelerinin planları.
-* Hava durumu radar görüntüleri.
+* Dronlarla 'den yakalanan görüntüler
+* Floorplanlar oluşturma
+* Geçmiş veya diğer özel harita görüntüleri
+* İş sitelerinin şemaları
+* Hava durumu radar resimleri
 
 > [!TIP]
-> Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , bir harita üzerindeki görüntüyü kaplama için hızlı bir yoldur. Ancak, görüntü büyükse, tarayıcı onu yüklemek için çıkabilir. Bu durumda, görüntünüzü kutucuklara bölmek ve bir [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)olarak haritaya yüklemek için göz önünde bulundurun.
+> Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , bir harita üzerindeki görüntüyü kaplama için kolay bir yoldur. Tarayıcıların büyük bir görüntüyü yükleme güçlüğü olabileceğini unutmayın. Bu durumda, görüntünüzü kutucuklara bölmek ve bir [Tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)olarak haritaya yüklemek göz önünde bulundurun.
 
 Görüntü katmanı aşağıdaki görüntü biçimlerini destekler:
 
@@ -38,7 +38,7 @@ Görüntü katmanı aşağıdaki görüntü biçimlerini destekler:
 
 ## <a name="add-an-image-layer"></a>Görüntü katmanı ekleme
 
-Aşağıdaki kodda, haritadaki 1922 ' den bir [Newark New Jersey haritasının](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) bir görüntüsü yer alır. Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , BIR görüntüye URL geçirerek ve `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`biçimindeki dört köşelerin koordinatları koordinatlarıyla oluşturulur.
+Aşağıdaki kod, haritadaki [1922 ' den bir Newark, New Jersey haritasının](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) bir görüntüsünü yer paylaşımlı olarak yer alır. Bir [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) , BIR görüntüye URL geçirerek ve `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`biçimdeki dört köşelerin koordinatları ile oluşturulur.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Önceki kodun çalışan kod örneğinin tamamı aşağıda verilmiştir.
 
 <br/>
 
@@ -62,9 +62,9 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 ## <a name="import-a-kml-ground-overlay"></a>KML zemin kaplamasını içeri aktarma
 
-Bu örnek, KML zemin kaplama bilgilerinin haritada bir görüntü katmanı olarak nasıl ekleneceğini gösterir. KML zemin Yerpaylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve saat yönünde bir döndürme sağlar, ancak görüntü katmanı görüntünün her bir köşesinde koordinatları bekler. Bu örnekteki KML kii kaplama, [Wikımedıa](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'Dan alınan Chartres Cathedral ve kaynaklıdır.
+Bu sonraki örnek, KML zemin kaplama bilgilerinin haritada bir görüntü katmanı olarak nasıl ekleneceğini gösterir. KML sol yer paylaşımları, Kuzey, Güney, Doğu ve Batı koordinatları ve bir sayaç saat yönünde döndürme sağlar, ancak görüntü katmanı görüntünün her bir köşesinde koordinatları bekler. Bu örnekteki KML zemin kaplaması Chartres Cathedral ' dir ve [Wikımedıa](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)'dan kaynaklıdır.
 
-Aşağıdaki kod, KML zemin kaplamasıyla Kuzey, Güney, Doğu, Batı ve döndürme bilgilerini görüntünün dört köşesini hesaplamak için [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) sınıfının statik `getCoordinatesFromEdges` işlevini kullanır.
+Aşağıdaki kod, [ımagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) sınıfının statik `getCoordinatesFromEdges` işlevini kullanır. Görüntünün dört köşesini Kuzey, Güney, Doğu ve Batı ve KML zemin kaplamasıyla döndürme bilgilerini hesaplar.
 
 <br/>
 
@@ -73,7 +73,7 @@ Aşağıdaki kod, KML zemin kaplamasıyla Kuzey, Güney, Doğu, Batı ve döndü
 
 ## <a name="customize-an-image-layer"></a>Görüntü katmanını özelleştirme
 
-Görüntü katmanında birçok stil seçeneği vardır. İşte deneyebileceğiniz bir araç.
+Görüntü katmanında birçok stil seçeneği vardır. İşte denemek için bir araç.
 
 <br/>
 

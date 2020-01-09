@@ -8,31 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: eecca2372c7265d456276a966cc441b15c17272a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446626"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Java kullanarak görüntü öngörülerini alın
 
 Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülemek için bu hızlı başlangıcı kullanın. Bu Java uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Java 'da yazılmış olsa da, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üst bilgisini içermelidir. `name` parametresini "image" olarak ayarlamanız gerekir ve `filename` parametresini herhangi bir dizeye ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
-
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
-
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
-
---boundary_1234-abcd--
-```
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks)
 * [Gson Java kitaplığı](https://github.com/google/gson)
@@ -63,7 +52,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun:
+2. API uç noktanız, abonelik anahtarınız ve görüntünüzün yolu için değişkenler oluşturun. `endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenecek [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -71,18 +60,30 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     static String imagePath = "path-to-your-image";
     ```
 
+    
+    Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üst bilgisini içermelidir. `name` parametresini "image" olarak ayarlamanız gerekir ve `filename` parametresini herhangi bir dizeye ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
+    
+    ```
+    --boundary_1234-abcd
+    Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+    
+    ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+    
+    --boundary_1234-abcd--
+    ```
+
 ## <a name="create-the-json-parser"></a>JSON ayrıştırıcısı oluşturma
 
 `JsonParser`kullanarak, API 'den gelen JSON yanıtının daha okunaklı olmasını sağlamak için bir yöntem oluşturun:
 
-    ```java
-    public static String prettify(String json_text) {
-            JsonParser parser = new JsonParser();
-            JsonObject json = parser.parse(json_text).getAsJsonObject();
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            return gson.toJson(json);
-        }
-    ```
+```java
+public static String prettify(String json_text) {
+        JsonParser parser = new JsonParser();
+        JsonObject json = parser.parse(json_text).getAsJsonObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(json);
+    }
+```
 
 ## <a name="construct-the-search-request-and-query"></a>Arama isteği ve sorgu oluşturma
 
@@ -120,11 +121,11 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 2. JSON dizesini depolayın ve yanıtı yazdırın:
 
-```java
-String json = new Scanner(stream).useDelimiter("\\A").next();
-System.out.println("\nJSON Response:\n");
-System.out.println(prettify(json));
-```
+    ```java
+    String json = new Scanner(stream).useDelimiter("\\A").next();
+    System.out.println("\nJSON Response:\n");
+    System.out.println(prettify(json));
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

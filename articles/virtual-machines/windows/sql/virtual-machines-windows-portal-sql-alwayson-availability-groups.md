@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374272"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure sanal makinelerinde Always on kullanılabilirlik gruplarını otomatik olarak yapılandırın: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure sanal makinelerinde Always on kullanılabilirlik gruplarını otomatik olarak yapılandırma: Kaynak Yöneticisi
 
 Bu öğreticide, Azure Resource Manager sanal makineler kullanan SQL Server kullanılabilirlik grubu oluşturma gösterilmektedir. Öğretici, bir şablonu yapılandırmak için Azure dikey pencerelerini kullanır. Varsayılan ayarları gözden geçirebilir, gerekli ayarları yazabilir ve bu öğreticiyi ilerlediyseniz portalda dikey pencereleri güncelleştirebilirsiniz.
 
@@ -65,25 +65,25 @@ Azure, tüm çözüm için bir galeri görüntüsü sağlar. Şablonu bulmak iç
 1. Hesabınızı kullanarak Azure portal oturum açın.
 2. Azure portal **Yeni** bölmeyi açmak Için **kaynak oluştur ' a** tıklayın.
 3. **Yeni** bölmede **AlwaysOn**' ı arayın.
-   ![AlwaysOn şablonu bul](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
+   AlwaysOn şablonu](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png) ![bulun
 4. Arama sonuçlarında **SQL Server AlwaysOn kümesi**' ni bulun.
-   ![AlwaysOn şablonu](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+   AlwaysOn şablonu](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png) ![
 5. **Bir dağıtım modeli seçin**sayfasında **Kaynak Yöneticisi**' yi seçin.
 
-### <a name="basics"></a>Temel
+### <a name="basics"></a>Temel Bilgiler
 **Temel bilgiler** ' e tıklayın ve aşağıdaki ayarları yapılandırın:
 
 * **Yönetici Kullanıcı adı** , etki alanı Yöneticisi izinlerine sahip bir kullanıcı hesabıdır ve SQL Server her iki örneğine SQL Server sysadmin sabit sunucu rolünün bir üyesidir. Bu öğretici için **DomainAdmin**kullanın.
 * **Parola** , etki alanı yönetici hesabının parolasıdır. Karmaşık bir parola kullanın. Parolayı onaylayın.
 * **Abonelik** , Azure 'un, kullanılabilirlik grubu için dağıtılan tüm kaynakları çalıştırabildiği bir aboneliğiniz. Hesabınızda birden çok abonelik varsa, farklı bir abonelik belirtebilirsiniz.
-* **Kaynak grubu** , bu şablon tarafından oluşturulan tüm Azure kaynaklarının ait olduğu grubun adıdır. Bu öğretici için, **SQL-ha-RG**kullanın. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+* **Kaynak grubu** , bu şablon tarafından oluşturulan tüm Azure kaynaklarının ait olduğu grubun adıdır. Bu öğretici için, **SQL-ha-RG**kullanın. Daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../../../azure-resource-manager/management/overview.md#resource-groups).
 * **Konum** , öğreticinin kaynakları oluşturduğu Azure bölgesidir. Bir Azure bölgesi seçin.
 
 Aşağıdaki ekran görüntüsünde, tamamlanmış bir **temel bilgiler** dikey penceresi verilmiştir:
 
-![Temel](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
+![Temel Bilgiler](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
-**Tamam**'ı tıklatın.
+**Tamam**’a tıklayın.
 
 ### <a name="domain-and-network-settings"></a>Etki alanı ve ağ ayarları
 Bu Azure Galeri şablonu, bir etki alanı ve etki alanı denetleyicileri oluşturur. Ayrıca bir ağ ve iki alt ağ oluşturur. Şablon, mevcut bir etki alanında veya sanal ağda sunucu oluşturamaz. Sonraki adım etki alanı ve ağ ayarlarını yapılandırır.
@@ -116,7 +116,7 @@ Gerekirse, bu değerleri değiştirebilirsiniz. Bu öğreticide, önceden ayarla
 
 ![kullanılabilirlik grubu ayarları](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
-**Tamam**'ı tıklatın.
+**Tamam**’a tıklayın.
 
 ### <a name="virtual-machine-size-storage-settings"></a>Sanal makine boyutu, depolama ayarları
 **VM boyutu, depolama ayarları**üzerinde SQL Server bir sanal makine boyutu seçin ve diğer ayarları gözden geçirin.
@@ -185,19 +185,19 @@ SQL Server Configuration en iyi uygulamaları hakkında daha fazla bilgi için b
 Ayarları gözden geçirin ve ardından **Tamam**' a tıklayın.
 
 ### <a name="summary"></a>Özet
-Özet sayfasında, Azure ayarları doğrular. Şablonu da indirebilirsiniz. Özeti gözden geçirin. **Tamam**'ı tıklatın.
+Özet sayfasında, Azure ayarları doğrular. Şablonu da indirebilirsiniz. Özeti gözden geçirin. **Tamam**’a tıklayın.
 
 ### <a name="buy"></a>Satın Al
 Bu son dikey pencere, **kullanım koşullarını**ve **Gizlilik ilkesini**içerir. Bu bilgileri gözden geçirin. Azure 'un sanal makineleri ve kullanılabilirlik grubu için tüm diğer gerekli kaynakları oluşturmaya başlaması için hazır olduğunuzda **Oluştur**' a tıklayın.
 
 Azure portal, kaynak grubunu ve tüm kaynakları oluşturur.
 
-## <a name="monitor-deployment"></a>Dağıtımı izle
+## <a name="monitor-deployment"></a>Dağıtımı izleme
 Azure portal dağıtım ilerlemesini izleyin. Dağıtımı temsil eden bir simge Azure portal panosuna otomatik olarak sabitlenmiştir.
 
 ![Azure panosu](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
-## <a name="connect-to-sql-server"></a>SQL Server'a bağlanma
+## <a name="connect-to-sql-server"></a>SQL Server’a bağlanma
 SQL Server yeni örnekleri, internet 'e bağlı IP adreslerine sahip sanal makinelerde çalışır. Her bir SQL Server sanal makinesine doğrudan uzak masaüstü (RDP) ekleyebilirsiniz.
 
 RDP 'ye bir SQL Server için aşağıdaki adımları izleyin:
@@ -205,9 +205,9 @@ RDP 'ye bir SQL Server için aşağıdaki adımları izleyin:
 1. Azure portal panosunda, dağıtımın başarılı olduğunu doğrulayın.
 2. **Kaynaklar**' a tıklayın.
 3. **Kaynaklar** dikey penceresinde, SQL Server çalıştıran sanal makinelerden birinin bilgisayar adı olan **SqlServer-0**' a tıklayın.
-4. **SqlServer-0**dikey penceresinde **Bağlan**' a tıklayın. Tarayıcınız uzak bağlantı nesnesini açmak mı yoksa kaydetmek mi istediğinizi sorar. Tıklayın **açık**.
+4. **SqlServer-0**dikey penceresinde **Bağlan**' a tıklayın. Tarayıcınız uzak bağlantı nesnesini açmak mı yoksa kaydetmek mi istediğinizi sorar. **Aç**'a tıklayın.
 5. **Uzak Masaüstü bağlantısı** , bu uzak bağlantı yayımcısının belirlenemediğini uyarabilir. **Bağlan**'a tıklayın.
 6. Windows güvenliği, birincil etki alanı denetleyicisinin IP adresine bağlanmak için kimlik bilgilerinizi girmenizi ister. **Başka bir hesap kullan**' a tıklayın. **Kullanıcı adı**için **contoso\DomainAdmin**yazın. Şablonda yönetici kullanıcı adını ayarladığınızda bu hesabı yapılandırdınız. Şablonu yapılandırdığınızda seçtiğiniz karmaşık parolayı kullanın.
-7. **Uzak Masaüstü** , güvenlik sertifikasıyla ilgili sorunlar nedeniyle uzak bilgisayarın kimliğinin doğrulanmadığını uyarabilir. Size güvenlik sertifikası adını gösterir. Öğreticiyi izlediyseniz, ad **SqlServer-0.contoso.com**olur. Yordamı tamamlamak için **Evet**yüklemesini desteklemesi gerekir.
+7. **Uzak Masaüstü** , güvenlik sertifikasıyla ilgili sorunlar nedeniyle uzak bilgisayarın kimliğinin doğrulanmadığını uyarabilir. Size güvenlik sertifikası adını gösterir. Öğreticiyi izlediyseniz, ad **SqlServer-0.contoso.com**olur. **Evet**’e tıklayın.
 
 Artık SQL Server sanal makinesine RDP ile bağlanırsınız. SQL Server Management Studio açabilir, SQL Server varsayılan örneğine bağlanabilir ve kullanılabilirlik grubunun yapılandırıldığını doğrulayabilirsiniz.

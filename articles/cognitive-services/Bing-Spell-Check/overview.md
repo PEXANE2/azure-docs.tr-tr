@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 996db9690d19cc40c3963922d4edb3b59469752b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383008"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Bing Yazım Denetimi API’si nedir?
 
@@ -31,7 +31,7 @@ Bing Yazım Denetimi API'si, metin üzerinde bağlamsal dilbilgisi ve yazım den
 |Benzer sözcükler arasında ayrım yapın     | Sese benzer ancak anlamı farklıdır (örneğin, "bkz." ve "Sea") sözcükler arasında doğru kullanımı bulur        |
 |Marka, başlık ve popüler kullanım desteği     | Yeni markalar, başlıkları ve diğer popüler ifadeleri ortaya çıktı olarak tanır |
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Bing Yazım Denetimi API'si, HTTP istekleri yapan ve JSON yanıtlarını ayrıştırabilen herhangi bir programlama dilinden kolayca çağrılabilir. Hizmete REST API veya Bing Yazım Denetimi SDK 'Ları kullanılarak erişilebilir. 
 
@@ -44,3 +44,5 @@ Bing Yazım Denetimi API'si, HTTP istekleri yapan ve JSON yanıtlarını ayrış
 İlk olarak, çeşitli metinleri hızlı bir şekilde nasıl kontrol etbileceğinizi görmek için Bing Yazım Denetimi Search API [etkileşimli tanıtımı](https://azure.microsoft.com/services/cognitive-services/spell-check/) ' nı deneyin.
 
 API'yi çağırmaya hazır olduğunuzda, bir [Bilişsel hizmetler API hesabı](../../cognitive-services/cognitive-services-apis-create-account.md) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+
+Ayrıca, kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) da ziyaret edebilirsiniz.

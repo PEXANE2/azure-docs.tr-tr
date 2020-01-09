@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810400"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552789"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL veritabanı örnek havuzları (Önizleme) nedir?
 
@@ -61,7 +61,7 @@ Aşağıdaki listede, örnek havuzlarının göz önünde bulundurulması gereke
 
 Örnek havuzlarının normal yönetilen örneklere benzer mimarisi vardır (*tek örnekler*).  [Azure sanal ağları (VNet) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
 
-İki dağıtım modeli arasındaki temel fark, örnek havuzların, [Windows Iş nesneleri](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen kaynak olan aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin vermesinin, tek örneklerin her zaman açık olduğu durumlar bir sanal makine düğümü.
+İki dağıtım modeli arasındaki temel fark, örnek havuzların [Windows Iş nesneleri](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin verişleridir, tek örnekler her zaman bir sanal makine düğümünde yer alır.
 
 Aşağıdaki diyagramda, aynı alt ağda dağıtılan bir örnek havuz ve iki tekil örnek gösterilmektedir ve her iki dağıtım modeli için de ana mimari ayrıntıları gösterilmektedir:
 
@@ -126,7 +126,7 @@ Bir havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha
 
 Bir havuz içindeki tek örneklerle veya veritabanlarıyla ilgili sorunlar yaşıyorsanız, Azure SQL veritabanı yönetilen örnekleri için normal bir destek bileti oluşturmanız gerekir.
 
-Daha büyük yönetilen örnek dağıtımları oluşturmak için (örnek havuzlarla veya bunlarla birlikte), daha büyük bir bölgesel kota edinmeniz gerekebilir. [Daha büyük bir kota istemek için Standart yönetilen örnek yordamını](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)kullanın, ancak örnek havuzlar kullanıyorsanız dağıtım mantığının, *Havuz düzeyindeki* toplam Vcore tüketimini, sizin olup olmadığınızı belirleme kotasıyla karşılaştırarak kotayı daha fazla artırmadan yeni kaynaklar oluşturmalarına izin verildi.
+Daha büyük yönetilen örnek dağıtımları oluşturmak için (örnek havuzlarla veya bunlarla birlikte), daha büyük bir bölgesel kota edinmeniz gerekebilir. [Daha büyük bir kota istemek için Standart yönetilen örnek yordamını](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)kullanın, ancak örnek havuzları kullanıyorsanız, dağıtım mantığı *Havuz düzeyindeki* toplam Vcore tüketimini, kotayı daha fazla artırmadan yeni kaynaklar oluşturmanıza izin verilip verilmeyeceğini öğrenmek için havuzunuza göre karşılaştırır.
 
 ## <a name="instance-pool-billing"></a>Örnek havuzu Faturalaması
 
@@ -136,7 +136,7 @@ Havuzun sanal çekirdek fiyatı, bu havuzda kaç örnek dağıtıldığına bak�
 
 Işlem fiyatı (sanal çekirdekler cinsinden ölçülür) için, iki fiyatlandırma seçeneği mevcuttur:
 
-  1. *Lisans dahil*: mevcut SQL Server lisanslarını yazılım güvencesi ile uygulayın.
+  1. *Lisans dahil*: SQL lisansı fiyatları dahildir. Bu, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını uygulamalarını seçen müşteriler içindir.
   2. *Azure hibrit avantajı*: SQL Server için Azure hibrit avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Bir havuzdaki tek tek örnekler için farklı fiyatlandırma seçeneklerinin ayarlanması mümkün değildir. Üst havuzdaki tüm örnekler, lisans dahil fiyattan veya Azure Hibrit Avantajı fiyattan olmalıdır. Havuzun lisans modeli, havuz oluşturulduktan sonra değiştirilebilir.

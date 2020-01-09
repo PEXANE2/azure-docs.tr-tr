@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378220"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
@@ -121,7 +121,7 @@ Syslog, Docker günlükleri, Journal ve dmesg, yönetilen hizmet tarafından iş
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir. Bir ARO kümesinde `kubectl top` çalıştıramıyorum.
 
-`kubectl top` Red Hat OpenShift üzerinde kullanılamaz. Bu, OpenShift izleme yığınına dahil olmayan, her ikisi de Heapster (kullanım dışı) veya ölçüm-sunucu (ınubating veya Alpha) için bir yedekleme ölçümleri kaynağı gerektirir.
+Müşteriler, komut `oc adm top nodes` veya müşteri-yönetici kümerolü ile `kubectl top nodes` kullanarak düğüm düzeyindeki CPU/bellek ölçümlerine erişebilirler.  Müşteriler Ayrıca, `pods` CPU/bellek ölçümlerine `oc adm top pods` veya komutla erişebilir `kubectl top pods`
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO için varsayılan Pod Zamanlayıcı Yapılandırması nedir?
 
@@ -137,7 +137,7 @@ Daha ayrıntılı bilgi için [sanal makine ölçek kümesi için hata etki alan
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Pod yerleşimini yönetmenin bir yolu var mı?
 
-Yaklaşan müşteri yönetici güncelleştirmesiyle, müşteriler düğümleri alma ve etiketleri görüntüleme yeteneğine sahip olur.  Bu, ölçek kümesindeki tüm VM 'leri hedeflemek için bir yol sağlar.
+Müşteriler, düğüm alma ve etiketleri müşteri yöneticisi olarak görüntüleme imkanına sahiptir.  Bu, ölçek kümesindeki tüm VM 'leri hedeflemek için bir yol sağlar.
 
 Belirli Etiketler kullanılırken dikkatli olunmalıdır:
 
@@ -147,7 +147,7 @@ Belirli Etiketler kullanılırken dikkatli olunmalıdır:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Bir Aro kümesindeki maksimum sayıda Pod nedir?  ARO 'daki düğüm başına en fazla düğüm sayısı nedir?
 
-Daha fazla ayrıntı için [yukarı akış OpenShift docs](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) bölümüne bakın. Red Hat OpenShift 3,11 ' de 250-Pod/node sınırı vardır. bu sayede, Aro kümesinde desteklenen maksimum sayıda Pod 'nin 250 * 20 = 5000 [olması gerekir.](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)
+ Azure Red Hat OpenShift 3,11, [Aro 'nin 20 işlem düğüm sınırına](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)sahip olması için bir 50-Pod düğüm sınırına sahiptir, bu nedenle bir Aro kümesinde desteklenen maksimum sayıda Pod 'nin 50 * 20 = 1000 olması gerekir.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Özel VNET üzerinde dağıtım için IP aralıklarını belirtebilir, eşlendikten sonra diğer kurumsal VNET 'ler ile çakışıyor önleyebilirsiniz.
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: e2ae9afaf7c1dcc1794b90d4851fdd60298b5ad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823884"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552568"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna Azure SQL veritabanı elastik havuzu ekleme
 
@@ -378,7 +378,6 @@ PowerShell kullanarak kaynaklarınızı temizleyin.
    Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
    Write-host "Resource group removed =" $resourceGroupName
    ```
----
 
 Öğreticinin bu bölümü aşağıdaki PowerShell cmdlet 'ini kullanır:
 
@@ -386,7 +385,10 @@ PowerShell kullanarak kaynaklarınızı temizleyin.
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu kaldırır | 
 
-Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+---
+
+> [!IMPORTANT]
+> Kaynak grubunu korumak, ancak ikincil veritabanını silmek istiyorsanız, onu silmeden önce yük devretme grubundan kaldırın. İkincil bir veritabanının yük devretme grubundan kaldırılmadan önce silinmesi öngörülemeyen davranışlara neden olabilir. 
 
 ## <a name="full-script"></a>Tam betik
 

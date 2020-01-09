@@ -1,5 +1,6 @@
 ---
-title: CloudSimple-CloudSimple bakımı ve güncelleştirmeleri tarafından Azure VMware çözümü
+title: CloudSimple bakım ve güncelleştirmeleri
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Zamanlanmış bakım ve güncelleştirmeler için CloudSimple hizmeti işlemini açıklar
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372832"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple bakım ve güncelleştirmeleri
 
@@ -37,9 +38,9 @@ CloudSimple Ayrıca hatalara karşı sürekli olarak aşağıdaki işlemleri izl
 * Sabit diskler
 * Fiziksel NIC bağlantı noktaları
 * Sunucular
-* Larına
-* Açılma
-* Anahtarlar
+* Fanlar
+* Güç
+* Geçişler
 * Bağlantı noktalarını Değiştir
 
 Bir disk veya düğüm başarısız olursa, etkilenen VMware kümesine hemen sistem durumuna geri getirmek için yeni bir düğüm otomatik olarak eklenir.

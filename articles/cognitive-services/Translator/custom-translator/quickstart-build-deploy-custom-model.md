@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446739"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Hızlı başlangıç: çeviri için özel model oluşturma, dağıtma ve kullanma
 
 Bu makalede, özel çevirmenle bir çeviri sistemi oluşturmak için adım adım yönergeler sağlanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Özel çevirmen](https://portal.customtranslator.azure.ai) portalını kullanmak için, oturum açmak için bir [MICROSOFT HESABı](https://signup.live.com) veya [Azure AD hesabına](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure üzerinde barındırılan kuruluş hesabı) ihtiyacınız olacaktır.
 
@@ -37,7 +37,7 @@ Bu makalede, özel çevirmenle bir çeviri sistemi oluşturmak için adım adım
 
 ## <a name="upload-documents"></a>Belgeleri karşıya yükleme
 
-Sonra, [eğitim](training-and-model.md#training-dataset-for-custom-translator), [ayarlama](training-and-model.md#tuning-dataset-for-custom-translator) ve [Test](training-and-model.md#testing-dataset-for-custom-translator) belge kümelerini karşıya yükleyin. Hem [paralel](what-are-parallel-documents.md) hem de Birleşik belgeler yükleyebilirsiniz. Ayrıca [Sözlük](what-is-dictionary.md)yükleyebilirsiniz.
+Sonra, [eğitim](training-and-model.md#training-document-type-for-custom-translator), [ayarlama](training-and-model.md#tuning-document-type-for-custom-translator) ve [Test](training-and-model.md#testing-dataset-for-custom-translator) belge kümelerini karşıya yükleyin. Hem [paralel](what-are-parallel-documents.md) hem de Birleşik belgeler yükleyebilirsiniz. Ayrıca [Sözlük](what-is-dictionary.md)yükleyebilirsiniz.
 
 Belgeler sekmesinden ya da belirli bir projenin sayfasından belge yükleyebilirsiniz.
 
@@ -49,7 +49,7 @@ Belgeler karşıya yüklenirken belge türünü (eğitim, ayarlama veya test) ve
 
 Tüm gerekli belgeleriniz karşıya yüklendiğinde, bir sonraki adım modelinize inşa edilir.
 
-Oluşturduğunuz projeyi seçin. Bu projeyle bir dil çiftini paylaşan tüm karşıya yüklediğiniz belgeleri görürsünüz. Modelinize dahil etmek istediğiniz belgeleri seçin. [Eğitim](training-and-model.md#training-dataset-for-custom-translator), [ayarlama](training-and-model.md#tuning-dataset-for-custom-translator)ve [Test](training-and-model.md#testing-dataset-for-custom-translator) verilerini seçebilir ya da yalnızca eğitim verilerini seçebilir ve özel çeviricisinin modelinizin ayarlama ve test kümelerini otomatik olarak oluşturmasını sağlayabilirsiniz.
+Oluşturduğunuz projeyi seçin. Bu projeyle bir dil çiftini paylaşan tüm karşıya yüklediğiniz belgeleri görürsünüz. Modelinize dahil etmek istediğiniz belgeleri seçin. [Eğitim](training-and-model.md#training-document-type-for-custom-translator), [ayarlama](training-and-model.md#tuning-document-type-for-custom-translator)ve [Test](training-and-model.md#testing-dataset-for-custom-translator) verilerini seçebilir ya da yalnızca eğitim verilerini seçebilir ve özel çeviricisinin modelinizin ayarlama ve test kümelerini otomatik olarak oluşturmasını sağlayabilirsiniz.
 
 ![Bir model oluşturma](media/quickstart/ct-how-to-train.png)
 

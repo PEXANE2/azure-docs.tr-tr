@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378390"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs 'da bırakılan bildirimleri tanılama
 
@@ -103,7 +103,7 @@ Her toplu işlem anında iletme bildirimi hizmetine gönderilir ve bu da kayıtl
 
 Bu durumda, hatalı kayıt veritabanından kaldırılır. Daha sonra, bu toplu işteki cihazların geri kalanı için bildirim teslimi yeniden deneniyoruz.
 
-Bir kayıtla ilgili başarısız teslimat girişimi hakkında daha fazla bilgi almak için, Ileti telemetri başına Notification Hubs REST API 'Leri kullanabilirsiniz [: bildirim iletisi telemetrisi](https://msdn.microsoft.com/library/azure/mt608135.aspx) ve [PNS geri bildirimleri](https://msdn.microsoft.com/library/azure/mt705560.aspx)alın. Örnek kod için [rest gönder örneğine](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)bakın.
+Bir kayıtla ilgili başarısız teslimat girişimi hakkında daha fazla bilgi almak için, Ileti telemetri başına Notification Hubs REST API 'Leri kullanabilirsiniz [: bildirim iletisi telemetrisi](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) ve [PNS geri bildirimleri](https://msdn.microsoft.com/library/azure/mt705560.aspx)alın. Örnek kod için [rest gönder örneğine](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)bakın.
 
 ## <a name="push-notification-service-issues"></a>Anında iletme bildirimi hizmeti sorunları
 
@@ -127,7 +127,7 @@ Notification Hubs ' de bırakılan bildirimlerin kök nedenini tanılamaya yöne
 
 İlgili anında iletme bildirimi hizmeti Geliştirici portalındaki (APNs, FCM, Windows Notification hizmeti vb.) kimlik bilgilerini doğrulayın. Daha fazla bilgi için bkz. [öğretici: Azure Notification Hubs kullanarak Evrensel Windows platformu uygulamalara bildirim gönderme](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
-#### <a name="azure-portal"></a>Azure portalında ####
+#### <a name="azure-portal"></a>Azure Portal ####
 
 Anında iletme bildirimi hizmeti Geliştirici portalından edindiğiniz kimlik bilgilerini gözden geçirmek ve eşleştirmek için Azure portal **erişim ilkeleri** sekmesine gidin.
 
@@ -168,7 +168,7 @@ Birçok müşteri, Bildirim Hub 'larını görüntülemek ve yönetmek için [Se
 
 ### <a name="verify-message-notifications"></a>İleti bildirimlerini doğrulama
 
-#### <a name="azure-portal"></a>Azure portalında ####
+#### <a name="azure-portal"></a>Azure Portal ####
 
 Bir hizmet arka ucu ve çalışır duruma girmeden istemcilerinize test bildirimi göndermek için, **destek + sorun giderme**altında, **Test gönder**' i seçin.
 
@@ -245,7 +245,7 @@ Bu ileti Notification Hubs ' de yapılandırılan kimlik bilgilerinin geçersiz 
 
 ### <a name="review-telemetry"></a>Telemetriyi İnceleme ###
 
-#### <a name="azure-portal"></a>Azure portalında ####
+#### <a name="azure-portal"></a>Azure Portal ####
 
 Portalda, Bildirim Hub 'ınızdaki tüm etkinliklere hızlı bir genel bakış edinebilirsiniz.
 

@@ -1,28 +1,19 @@
 ---
-title: Azure 'da bir Service Fabric kümesini izleme | Microsoft Docs
+title: Azure 'da bir Service Fabric kümesini izleme
 description: Bu öğreticide, Service Fabric olaylarını görüntüleyerek, EventStore API 'Lerini sorgulayarak, performans sayaçlarını izleyerek ve sistem durumu raporlarını görüntüleyerek bir kümeyi izlemeyi öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376639"
 ---
-# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure 'da bir Service Fabric kümesini izleme
+# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure 'da bir Service Fabric kümesini Izleme
 
 İzleme ve tanılama, iş yüklerini herhangi bir bulut ortamında geliştirmek, test etmek ve dağıtmak için önemlidir. Bu öğretici, bir serinin ikinci bölümüdür ve olaylar, performans sayaçları ve sistem durumu raporları kullanarak bir Service Fabric kümesini nasıl izleyip tanıleyeceğinizi gösterir.   Daha fazla bilgi için [küme izleme](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) ve [altyapı izleme](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)hakkında genel bakış konusunu okuyun.
 
@@ -45,7 +36,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -219,7 +210,7 @@ Güvenilir aktör olayları benzer bir biçimde görüntülenebilir:
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, küme şablonundaki tanılama uzantısının `scheduledTransferKeywordFilter` yapılandırmasında öğesini değiştirebilirsiniz. Bunların değerlerinin ayrıntıları, [güvenilir aktör olayları başvurusunda](service-fabric-reliable-actors-diagnostics.md#keywords)bulunur.
+Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, yapılandırma içindeki `scheduledTransferKeywordFilter` küme şablonundaki tanılama uzantısı için değiştirebilirsiniz. Bunların değerlerinin ayrıntıları, [güvenilir aktör olayları başvurusunda](service-fabric-reliable-actors-diagnostics.md#keywords)bulunur.
 
 ```json
 "EtwEventSourceProviderConfiguration": [

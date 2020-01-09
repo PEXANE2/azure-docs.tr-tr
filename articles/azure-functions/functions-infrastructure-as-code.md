@@ -1,21 +1,21 @@
 ---
-title: Azure Işlevlerinde bir işlev uygulaması için kaynak dağıtımını otomatikleştirme
+title: Azure 'da işlev uygulama kaynağı dağıtımını otomatikleştirme
 description: İşlev uygulamanızı dağıtan bir Azure Resource Manager şablonu oluşturmayı öğrenin.
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9c222937831c0e8017a390b16ef192783e9e564a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10efe5d09771f4c5f3a2564ef99ff9cae8cf06c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230516"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433155"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
 Bir işlev uygulamasını dağıtmak için bir Azure Resource Manager şablonu kullanabilirsiniz. Bu makalede, bu işlemi gerçekleştirmek için gerekli kaynaklar ve parametreler özetlenmektedir. İşlev uygulamanızdaki [tetikleyicilere ve bağlamalara](functions-triggers-bindings.md) bağlı olarak ek kaynaklar dağıtmanız gerekebilir.
 
-Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/resource-group-authoring-templates.md).
+Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md).
 
 Örnek şablonlar için bkz.:
 - [Tüketim planında işlev uygulaması]
@@ -139,7 +139,7 @@ Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | İç sıraya alma için Işlev çalışma zamanının bulunduğu depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Bu uygulamadaki işlevler için kullanılacak dil yığını                                   | `dotnet`, `node`, `java`veya `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Bu uygulamadaki işlevler için kullanılacak dil yığını                                   | `dotnet`, `node`, `java` veya `python` |
 | WEBSITE_NODE_DEFAULT_VERSION | Yalnızca `node` dil yığını kullanılıyorsa gereklidir, kullanılacak sürümü belirtir              | `10.14.1`                             |
 
 Bu özellikler `siteConfig` özelliğindeki `appSettings` koleksiyonunda belirtilir:
@@ -462,7 +462,7 @@ App Service planındaki bir işlev uygulaması, daha önce oluşturulan planın 
 
 Linux uygulamaları, `siteConfig`altına bir `linuxFxVersion` özelliği de içermelidir. Yalnızca kod dağıtıyorsanız, bunun değeri istenen çalışma zamanı yığınınıza göre belirlenir:
 
-| yığın            | Örnek değer                                         |
+| Toplu İş            | Örnek değer                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |

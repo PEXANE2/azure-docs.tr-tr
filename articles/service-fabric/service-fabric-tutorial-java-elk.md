@@ -1,26 +1,17 @@
 ---
-title: Azure'da ELK kullanarak Service Fabric’teki uygulamalarınızı izleme | Microsoft Docs
+title: Azure 'da ELK kullanarak uygulamalarınızı Service Fabric izleyin
 description: Bu öğreticide, ELK’nın nasıl ayarlanacağını ve Service Fabric uygulamalarınızın nasıl izleneceğini öğrenin.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61388732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376672"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Öğretici: ELK kullanarak Service Fabric uygulamalarınızı izleme
 
@@ -40,7 +31,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * Uygulama için izleme ve tanılamayı ayarlama
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -109,7 +100,7 @@ Bu öğretici için önceden yapılandırılmış bir ELK ortamı kullanabilirsi
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Oluşturma veya aşağıdaki içeriklerle mevcut Logstash yapılandırma dosyanızı değiştirin: Dosyayı oluşturuyorsanız, oluşturulacak sahip ```/opt/bitnami/logstash/conf/access-log.conf``` Azure'da ELK Bitnami görüntüsünün kullanıyorsanız.
+4. Aşağıdaki içeriklerle mevcut Logstash yapılandırma dosyanızı oluşturun veya değiştirin: Dosyayı oluşturuyorsanız, Azure’da ELK Bitnami görüntüsünün kullanılması durumunda dosyanın ```/opt/bitnami/logstash/conf/access-log.conf``` konumunda oluşturulması gerekir.
 
     ```json
     input
@@ -149,7 +140,7 @@ Bu öğretici için önceden yapılandırılmış bir ELK ortamı kullanabilirsi
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Kibana panonuza erişin **http:\//SERVER-IP** ve Kibana için kullanıcı adı ve parola girin. Azure’da ELK görüntüsünü kullandıysanız varsayılan kullanıcı adı 'user' ve parola da **Önyükleme Tanılaması**’ndan alınan paroladır.
+8. **Http:\//SERVER-IP** adlı kibana panonuza erişin ve kibana için Kullanıcı adını ve parolayı girin. Azure’da ELK görüntüsünü kullandıysanız varsayılan kullanıcı adı 'user' ve parola da **Önyükleme Tanılaması**’ndan alınan paroladır.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

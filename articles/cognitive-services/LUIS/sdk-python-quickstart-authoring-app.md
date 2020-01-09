@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma'
 titleSuffix: Azure Cognitive Services
-description: Python için LUSıS istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+description: Bu hızlı başlangıç ile Python için LUSıS istemci kitaplığı 'nı kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381503"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Hızlı başlangıç: Language Understanding (LUSıS) Python için istemci kitaplığı yazma
 
@@ -30,7 +30,7 @@ Python için Language Understanding (LUSıS) yazma istemci kitaplığını şu �
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [yazma paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Language Understanding (LUSıS) portal hesabı: [ücretsiz bir tane oluşturun](https://www.luis.ai).
 * [Python 3. x](https://www.python.org/)

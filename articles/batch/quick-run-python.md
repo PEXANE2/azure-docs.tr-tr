@@ -1,6 +1,6 @@
 ---
 title: "Hızlı başlangıç: Azure Batch işi çalıştırma-Python API 'SI"
-description: Bir Batch işini ve görevleri Batch Python istemci kitaplığı kullanarak hızlıca çalıştırın.
+description: Batch Python istemci kitaplığını kullanarak Azure Batch bir örnek işi ve görevleri hızlıca çalıştırın. Batch hizmetinin temel kavramlarını öğrenin.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390230"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı başlangıç: Python API’si ile ilk Batch işinizi çalıştırma
 
@@ -29,7 +29,7 @@ Uygulama, Azure depolamaya birkaç veri dosyası yükler ve sonra Batch işlem d
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python sürüm 2.7 veya 3.3 ya da üzeri](https://www.python.org/downloads/)
 
@@ -51,7 +51,7 @@ GitHub’dan [örnek uygulamayı indirin veya kopyalayın](https://github.com/Az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Python betiğini içeren dizine `python_quickstart_client.py` ' a gidin.
+`python_quickstart_client.py`Python betiğini içeren dizine gidin.
 
 Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 
@@ -59,7 +59,7 @@ Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 pip install -r requirements.txt
 ```
 
-`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
+`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -207,7 +207,7 @@ for idx, input_file in enumerate(input_files):
 batch_service_client.task.add_collection(job_id, tasks)
 ```
 
-### <a name="view-task-output"></a>Görev çıktısını görüntüleme
+### <a name="view-task-output"></a>Görev çıkışını görüntüleme
 
 Uygulama, görevlerin tamamlandığından emin olmak için görev durumunu izler. Daha sonra uygulama, tamamlanan her görev tarafından oluşturulan `stdout.txt` dosyasını görüntüler. Görev başarıyla çalıştırıldığında, görev komutunun çıkışı `stdout.txt` dosyasına yazılır:
 

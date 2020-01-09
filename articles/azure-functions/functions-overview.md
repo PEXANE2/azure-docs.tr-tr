@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 28a2732965ee0a19f69dcd0fc2cd7705cb5f94a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.openlocfilehash: 7208825581a0bf16f6ee3a3947387b01abfd16d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433064"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure İşlevleri'ne giriş  
 Azure İşlevleri, küçük kod parçalarını veya "işlevleri" bulutta kolayca çalıştırmaya yönelik bir çözümdür. Tüm uygulama veya bunu çalıştıracak altyapı hakkında endişelenmeden elinizdeki sorun için ihtiyacınız olan kodu yazabilirsiniz. İşlevler, geliştirmeyi daha da üretken hale getirir ve tercih C#ettiğiniz geliştirme dilini (Java, JavaScript, PowerShell ve Python gibi) kullanabilirsiniz. Yalnızca kodunuzun çalıştığı zaman için ödeme yapın ve ihtiyaca göre ölçekleme konusunda Azure'a güvenin. Azure İşlevleri, Microsoft Azure'da [sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar geliştirmenizi sağlar.
@@ -61,7 +61,8 @@ Azure İşlevleri, çeşitli Azure ve üçüncü taraf hizmetleri ile tümleşti
 ## <a name="pricing"></a>İşlevlerin maliyeti ne kadardır?
 Azure İşlevleri iki fiyatlandırma planı türüne sahiptir. Gereksinimlerinize en uygun olanı seçin: 
 
-* **Tüketim planı** - İşleviniz çalıştığında Azure tüm gerekli bilgi işlem kaynaklarını sağlar. Kaynak yönetimi hakkında endişelenmenize gerek yoktur ve yalnızca kodunuzun çalıştığı süre için ödeme yaparsınız. 
+* **Tüketim planı** - İşleviniz çalıştığında Azure tüm gerekli bilgi işlem kaynaklarını sağlar. Kaynak yönetimi hakkında endişelenmenize gerek yoktur ve yalnızca kodunuzun çalıştığı süre için ödeme yaparsınız.
+* **Premium plan** -her zaman çevrimiçi olan ve hemen yanıt vermeye yönelik bir dizi önceden çarpımış örnek belirtirsiniz. İşleviniz çalıştığında Azure, gereken ek hesaplama kaynaklarını sağlar. Sürekli olarak çalışan önceden çarpımış örnekler için ödeme yaparsınız ve Azure olarak kullandığınız ek örnekler, uygulamanızı içinde ve dışarı ölçeklendirirken.
 * **App Service planı** - İşlevlerinizi web uygulamalarınız gibi çalıştırın. Diğer uygulamalarınız için App Service'i zaten kullanıyor olmanız halinde işlevlerinizi hiçbir ek ücret ödemeden aynı planda çalıştırabilirsiniz. 
 
 Barındırma planları hakkında daha fazla bilgi için bkz. [Azure İşlevleri barındırma planı karşılaştırma](functions-scale.md). Fiyatlandırma ayrıntılarının tümü [İşlevler Fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/functions/) bulunur.

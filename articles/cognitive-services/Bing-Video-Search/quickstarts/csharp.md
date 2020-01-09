@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 4a8f7383a298fdb66456eaadeb99b22478c9f39b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382710"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Hızlı başlangıç: Bing Video Arama REST API kullanarak videoları arayın veC#
 
@@ -42,7 +42,7 @@ Bu örneğe ilişkin kaynak kodu, [GitHub 'da](https://github.com/Azure-Samples/
     using System.Collections.Generic;
     ```
 
-2. Abonelik anahtarınız, uç noktanız ve arama teriminiz için değişken ekleyin.
+2. Abonelik anahtarınız, uç noktanız ve arama teriminiz için değişken ekleyin. `uriBase`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
 
     ```csharp
     const string accessKey = "enter your key here";

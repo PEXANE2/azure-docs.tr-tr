@@ -7,26 +7,26 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433008"
 ---
-# <a name="create-a-data-source"></a>Bir veri kaynağı oluşturun
+# <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
 Azure Haritalar Web SDK 'Sı, verileri sorgulamak ve işlemek için en iyi duruma getirmek üzere verileri en iyi duruma getirir. Şu anda iki tür veri kaynağı vardır:
 
 **GeoJSON veri kaynağı**
 
-Coğrafi JSON tabanlı veri kaynağı, `DataSource` sınıfını kullanarak verileri yerel olarak yükleyebilir ve saklayabilir. GeoJSON verileri, [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) ad alanındaki yardımcı sınıflar kullanılarak el ile oluşturulabilir veya oluşturulabilir. Sınıfı `DataSource` , yerel veya uzak coğrafi JSON dosyalarını içeri aktarmaya yönelik işlevler sağlar. Uzak GeoJSON dosyaları CORs etkin bir uç noktada barındırılmalıdır. Sınıfı `DataSource` , kümeleme noktası verileri için işlevsellik sağlar. Veriler, `DataSource` sınıfla kolayca eklenebilir, kaldırılabilir ve güncelleştirilir.
+GeoJSON tabanlı veri kaynağı, `DataSource` sınıfını kullanarak verileri yerel olarak yükleyebilir ve saklayabilir. GeoJSON verileri, [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) ad alanındaki yardımcı sınıflar kullanılarak el ile oluşturulabilir veya oluşturulabilir. `DataSource` sınıfı, yerel veya uzak coğrafi JSON dosyalarını içeri aktarmaya yönelik işlevler sağlar. Uzak GeoJSON dosyaları CORs etkin bir uç noktada barındırılmalıdır. `DataSource` sınıfı, kümeleme noktası verileri için işlevsellik sağlar. Veriler `DataSource` sınıfıyla kolayca eklenebilir, kaldırılabilir ve güncelleştirilir.
 
 
 > [!TIP]
-> Bir `DataSource`içindeki tüm verilerin üzerine yazmak istiyorsanız, `clear` sonra `add` işlevlerine çağrılar yaparsanız, eşleme bir gecikmeye neden olabilecek iki kez yeniden işlemeye çalışacaktır. Bunun yerine, `setShapes` veri kaynağındaki tüm verileri kaldıracak ve değiştirecek ve yalnızca haritanın tek bir yeniden işlemesini tetikleyeceği işlevi kullanın.
+> `DataSource`tüm verilerin üzerine yazmak isterseniz, `clear` sonra işlevler `add`, eşleme, bir gecikmeye neden olabilecek iki kez yeniden işlemeye çalışacaktır. Bunun yerine, veri kaynağındaki tüm verileri kaldıracak ve değiştirecek ve yalnızca haritanın tek bir yeniden işlemesini tetikleyeceği `setShapes` işlevini kullanın.
 
 **Vektör kutucuk kaynağı**
 
@@ -37,9 +37,9 @@ Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğin
  - Vektör eşlemlerdeki verilerin stilini değiştirmek, yeni stilin istemciye uygulanmasından bu yana verilerin indirilmesini gerektirmez. Buna karşılık, bir raster kutucuk katmanının stilini değiştirmenin genellikle yeni stilin uygulanmış olduğu sunucudan kutucuk yüklemesi gerekir.
  - Veriler vektör biçiminde teslim edildiğinden, verileri hazırlamak için gereken sunucu tarafı işleme, daha yeni verilerin daha hızlı kullanılabilir hale getirilme anlamına gelir.
 
-Vektör kaynağı kullanan tüm katmanların bir `sourceLayer` değer belirtmesi gerekir. 
+Vektör kaynağı kullanan tüm katmanlarda bir `sourceLayer` değeri belirtilmelidir. 
 
-Oluşturulduktan sonra veri kaynakları, bir `map.sources` [sourcemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)olan özelliği aracılığıyla haritaya eklenebilir. Aşağıdaki kod, oluşturma `DataSource` ve eşlemeye ekleme işlemlerinin nasıl yapılacağını gösterir.
+Oluşturulduktan sonra veri kaynakları, bir [Sourcemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)olan `map.sources` özelliği aracılığıyla haritaya eklenebilir. Aşağıdaki kod, bir `DataSource` oluşturma ve eşlemenin nasıl ekleneceğini gösterir.
 
 ```javascript
 //Create a data source and add it to the map.

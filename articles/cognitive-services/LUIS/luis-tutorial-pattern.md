@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: desenler-LUSıS'
 titleSuffix: Azure Cognitive Services
-description: Daha az örnek konuşma sağlayıp amaç ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yok sayılabilir metni tanımlama söz dizimini içeren şablon konuşma örneğiyle sağlanır.
+description: Bu öğreticide daha az örnek Aralık sağlarken amacı ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimi içeren bir şablon söylenişi örneği olarak sağlanır.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,29 +9,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d52b2485436f0a9075dcc3f505806e46094340a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381707"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Öğretici: ortak desen şablonu söylenişi biçimleri ekleme
+# <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Öğretici: tahminleri geliştirmek için ortak desen şablonu söylenişi biçimleri ekleme
 
-Bu öğreticide daha az örnek konuşma sağlayıp amaç ve varlık tahminini artırmak için desenleri kullanacaksınız. Desen, varlıkları ve yok sayılabilir metni tanımlama söz dizimini içeren şablon konuşma örneğiyle sağlanır. Desen, ifade eşleme ve makine öğrenimi işlemlerinin birleşimidir.  Şablon konuşma örneği amaç konuşmalarıyla birlikte LUIS hizmetinin amaca uygun konuşmaları anlamasını kolaylaştırır. 
+Bu öğreticide, daha az örnek elde etmenizi sağlayan amaç ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yok sayılamayan metinleri tanımlamak için sözdizimi içeren bir amaca atanan şablon utterine atanır.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 > [!div class="checklist"]
-> * Örnek uygulamayı içeri aktar 
-> * Amaç oluşturma
-> * Eğitim
-> * Yayımlama
-> * Uç noktasındaki amaçları ve varlıkları alma
 > * Desen oluşturma
 > * Desen tahmin geliştirmelerini onaylama
 > * Metni yok sayılabilir olarak işaretleme ve desen içine yerleştirme
@@ -39,321 +32,331 @@ Bu öğreticide daha az örnek konuşma sağlayıp amaç ve varlık tahminini ar
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
+## <a name="utterances-in-intent-and-pattern"></a>Amaç ve desen için söylenme
 
-Son öğreticide oluşturulan **HumanResources** adlı uygulamayla devam edin. 
+LUSıS uygulamasında depolanan iki tür utterde vardır:
+
+* Amaç ile örnek söylenme
+* Desen içindeki şablon utsliği
+
+Şablon utinlerini bir desen olarak eklemek, bir amaca göre daha az örnek elde etmenizi sağlar.
+
+Bir model, ifade eşleştirmesinin ve Machine Learning 'in bir birleşimi olarak uygulanır.  Şablon, örnek söyleydikleriyle birlikte, ne kadar çok uygun olduğunu halden daha iyi bir şekilde anlayar.
+
+## <a name="import-example-app-and-clone-to-new-version"></a>Örnek uygulamayı ve kopyayı yeni sürüme aktar
 
 Aşağıdaki adımları kullanın:
 
-1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json) indirip kaydedin.
+1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)indirip kaydedin.
 
-2. JSON'ı yeni bir uygulamaya içeri aktarın.
+1. JSON 'ı [Önizleme Luin portalına](https://preview.luis.ai)yeni bir uygulamaya aktarın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patterns` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
+1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patterns` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Yeni amaçları ve konuşmalarını oluşturma
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Gezinti çubuğundan **Oluştur** ' u seçin.
 
-2. **Intents** (Amaçlar) sayfasında **Create new intent** (Yeni amaç oluştur) öğesini seçin. 
+1. Yeni bir amaç oluşturmak için **amaçlar** sayfasında **+ Oluştur** ' u seçin.
 
-3. Açılan iletişim kutusuna `OrgChart-Manager` girip **Done** (Bitti) öğesini seçin.
+1. Açılan iletişim kutusuna `OrgChart-Manager` girip **Done** (Bitti) öğesini seçin.
 
     ![Yeni ileti oluşturma açılır penceresi](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-4. Amaca örnek konuşmalar ekleyin.
+1. Amaca örnek konuşmalar ekleyin. Bu uttaslar _tam olarak_ benzer değildir ancak ayıklanabilen bir desen vardır.
 
     |Örnek konuşmalar|
     |--|
-    |Who is John W. Smith the subordinate of? (John W. Smith kimin astı?)|
-    |Who does John W. Smith report to? (John W. Smith kime rapor veriyor?)|
-    |Who is John W. Smith's manager? (John W. Smith'in yöneticisi kim?)|
-    |Who does Jill Jones directly report to? (Jill Jones kime bağlı?)|
-    |Who is Jill Jones supervisor? (Jill Jones'un süpervizörü kim?)|
+    |`Who is John W. Smith the subordinate of?`|
+    |`Who does John W. Smith report to?`|
+    |`Who is John W. Smith's manager?`|
+    |`Who does Jill Jones directly report to?`|
+    |`Who is Jill Jones supervisor?`|
 
-    [![LU, hedefe yeni söyleyeni ekleme gibi bir ekran görüntüsü](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "LU, hedefe yeni söyleyeni ekleme gibi bir ekran görüntüsü")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    Amacın konuşmalarında employee varlığı yerine keyPhrase varlığı etiketlenmişse endişelenmeyin. İkisi de uç noktanın Test bölmesinde doğru şekilde tahmin edilir.
 
-    Amacın konuşmalarında employee varlığı yerine keyPhrase varlığı etiketlenmişse endişelenmeyin. İkisi de uç noktanın Test bölmesinde doğru şekilde tahmin edilir. 
+1. Sol gezinti bölmesinden **Intents** (Amaçlar) öğesini seçin.
 
-5. Sol gezinti bölmesinden **Intents** (Amaçlar) öğesini seçin.
+1. Yeni bir amaç oluşturmak için **+ Oluştur** ' u seçin. Açılan iletişim kutusuna `OrgChart-Reports` girip **Done** (Bitti) öğesini seçin.
 
-6. **Create new intent** (Yeni amaç oluştur) öğesini seçin. 
-
-7. Açılan iletişim kutusuna `OrgChart-Reports` girip **Done** (Bitti) öğesini seçin.
-
-8. Amaca örnek konuşmalar ekleyin.
+1. Amaca örnek konuşmalar ekleyin.
 
     |Örnek konuşmalar|
     |--|
-    |Who are John W. Smith's subordinates? (John W. Smith'in astları kimler?)|
-    |John W. Smith? (Kimler John W. Smith'e rapor veriyor?)|
-    |Who does John W. Smith manage? (John W. Smith kimleri yönetiyor?)|
-    |Who are Jill Jones direct reports? (Jill Jones'a bağlı çalışanlar kimler?)|
-    |Who does Jill Jones supervise? (Jill Jones kime süpervizörlük yapıyor?)|
+    |`Who are John W. Smith's subordinates?`|
+    |`Who reports to John W. Smith?`|
+    |`Who does John W. Smith manage?`|
+    |`Who are Jill Jones direct reports?`|
+    |`Who does Jill Jones supervise?`|
 
-## <a name="caution-about-example-utterance-quantity"></a>Örnek konuşma miktarıyla ilgili uyarı
+### <a name="caution-about-example-utterance-quantity"></a>Örnek konuşma miktarıyla ilgili uyarı
 
 [!INCLUDE [Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train"></a>Eğitim
+### <a name="train-the-app-before-testing-or-publishing"></a>Test veya yayımlamadan önce uygulamayı eğitme
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish"></a>Yayımlama
+### <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak üzere yayımlayın
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Uç noktadan amacı ve varlıkları alma
+### <a name="get-intent-and-entities-from-endpoint"></a>Uç noktasından amacı ve varlıkları alma
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Adres çubuğundaki URL'nin sonuna gidip `Who is the boss of Jill Jones?` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. 
+1. Adres çubuğundaki URL'nin sonuna gidip `Who is the boss of Jill Jones?` yazın. Son QueryString parametresi, söylenişi `query`.
 
     ```json
     {
-        "query": "who is the boss of jill jones?",
-        "topScoringIntent": {
-            "intent": "OrgChart-Manager",
-            "score": 0.353984952
-        },
-        "intents": [
-            {
-                "intent": "OrgChart-Manager",
-                "score": 0.353984952
-            },
-            {
-                "intent": "OrgChart-Reports",
-                "score": 0.214128986
-            },
-            {
-                "intent": "EmployeeFeedback",
-                "score": 0.08434003
-            },
-            {
-                "intent": "MoveEmployee",
-                "score": 0.019131
-            },
-            {
-                "intent": "GetJobInformation",
-                "score": 0.004819009
-            },
-            {
-                "intent": "Utilities.Confirm",
-                "score": 0.0043958663
-            },
-            {
-                "intent": "Utilities.StartOver",
-                "score": 0.00312064588
-            },
-            {
-                "intent": "Utilities.Cancel",
-                "score": 0.002265454
-            },
-            {
-                "intent": "Utilities.Help",
-                "score": 0.00133465114
-            },
-            {
-                "intent": "None",
-                "score": 0.0011388344
-            },
-            {
-                "intent": "Utilities.Stop",
-                "score": 0.00111166481
-            },
-            {
-                "intent": "FindForm",
-                "score": 0.0008900076
-            },
-            {
-                "intent": "ApplyForJob",
-                "score": 0.0007836131
-            }
-        ],
-        "entities": [
-            {
-                "entity": "jill jones",
-                "type": "Employee",
-                "startIndex": 19,
-                "endIndex": 28,
-                "resolution": {
-                    "values": [
-                        "Employee-45612"
-                    ]
+        "query": "Who is the boss of Jill Jones?",
+        "prediction": {
+            "topIntent": "OrgChart-Manager",
+            "intents": {
+                "OrgChart-Manager": {
+                    "score": 0.313054234
+                },
+                "OrgChart-Reports": {
+                    "score": 0.2462688
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0488328524
+                },
+                "GetJobInformation": {
+                    "score": 0.0156933
+                },
+                "MoveEmployee": {
+                    "score": 0.011265873
+                },
+                "Utilities.StartOver": {
+                    "score": 0.003065792
+                },
+                "Utilities.Stop": {
+                    "score": 0.00300148362
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00271081156
+                },
+                "None": {
+                    "score": 0.00212835032
+                },
+                "ApplyForJob": {
+                    "score": 0.0020669254
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00200891262
+                },
+                "FindForm": {
+                    "score": 0.00194145238
+                },
+                "Utilities.Help": {
+                    "score": 0.00182301877
                 }
             },
-            {
-                "entity": "boss of jill jones",
-                "type": "builtin.keyPhrase",
-                "startIndex": 11,
-                "endIndex": 28
+            "entities": {
+                "keyPhrase": [
+                    "boss of Jill Jones"
+                ],
+                "Employee": [
+                    [
+                        "Employee-45612"
+                    ]
+                ],
+                "$instance": {
+                    "keyPhrase": [
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "boss of Jill Jones",
+                            "startIndex": 11,
+                            "length": 18,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "Employee": [
+                        {
+                            "type": "Employee",
+                            "text": "Jill Jones",
+                            "startIndex": 19,
+                            "length": 10,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
+        }
     }
     ```
 
-Bu sorgu başarılı oldu mu? Bu eğitim döngüsü için başarılı oldu. İlk iki amacın puanları birbirine yakın. LUIS eğitimi her seferinde aynı olmadığından biraz fark vardır. Bu iki puan bir sonraki eğitim döngüsünde tersine çevrilebilir. Sonuç olarak yanlış amaç döndürülebilir. 
+Bu sorgu başarılı oldu mu? Bu eğitim döngüsü için başarılı oldu. İki üst amaca ait puanlar kapalı, ancak en yüksek amaç önemli ölçüde yüksek değil (%60 üzerinde) ve bir sonraki amaç puanı üzerinde yeterince fazla değil.
 
-Doğru amacın puan yüzdesini bir sonraki en yüksek puandan bir miktar daha yüksek ve uzak hale getirmek için desenleri kullanın. 
+LUIS eğitimi her seferinde aynı olmadığından biraz fark vardır. Bu iki puan bir sonraki eğitim döngüsünde tersine çevrilebilir. Sonuç olarak yanlış amaç döndürülebilir.
 
-Bu ikinci tarayıcı penceresini açık bırakın. Öğreticinin sonraki bölümlerinde kullanacaksınız. 
+Doğru amacın puan yüzdesini bir sonraki en yüksek puandan bir miktar daha yüksek ve uzak hale getirmek için desenleri kullanın.
+
+Bu ikinci tarayıcı penceresini açık bırakın. Öğreticinin sonraki bölümlerinde kullanacaksınız.
 
 ## <a name="template-utterances"></a>Konuşma şablonları
 İnsan Kaynakları etki alanının doğası gereği kuruluşlardaki çalışan ilişkileri hakkında sorulabilecek sorular farklı şekillerde yöneltilebilir. Örneğin:
 
 |Konuşmalar|
 |--|
-|Who does Jill Jones report to? (Jill Jones kime rapor veriyor?)|
-|Who reports to Jill Jones? (Jill Jones'a kim rapor veriyor?)|
+|`Who does Jill Jones report to?`|
+|`Who reports to Jill Jones?`|
 
-Bu konuşmalar birbirine çok yakın olduğundan bağlam açısından farklarını belirlemek için birden fazla konuşma örneği sağlamanız gerekir. Amaç için bir desen eklediğinizde LUIS, bir amaç için sık kullanılan konuşma desenlerini çok sayıda konuşma örneği eklemeden öğrenir. 
+Bu konuşmalar birbirine çok yakın olduğundan bağlam açısından farklarını belirlemek için birden fazla konuşma örneği sağlamanız gerekir. Amaç için bir desen eklediğinizde LUIS, bir amaç için sık kullanılan konuşma desenlerini çok sayıda konuşma örneği eklemeden öğrenir.
 
 Bu amaç için bazı konuşma şablonu örnekleri şunlardır:
 
 |Konuşma şablonu örnekleri|söz dizimini anlamı|
 |--|--|
-|Who does {Employee} report to[?] ({Çalışan} kime rapor veriyor[?])|{Çalışan} değişebilir, [?] öğesini yoksay}|
-|Who reports to {Employee}[?] ({Çalışana} kim rapor veriyor[?])|{Çalışan} değişebilir, [?] öğesini yoksay}|
+|`Who does {Employee} report to[?]`|`{Employee}` değiştirilebilir<br>`[?]` yoksay|
+|`Who reports to {Employee}[?]`|`{Employee}` değiştirilebilir<br>`[?]` yoksay|
 
-`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı `[?]` söz dizimi isteğe bağlı kelimeleri veya noktalama işaretlerini belirtir. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
+`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı sözdizimi, `[?]`, işaret kelimeleri veya isteğe bağlı noktalama. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
 
-Söz dizimi normal ifade gibi görünür ancak normal ifade değildir. Yalnızca küme ayracı `{}` ve köşeli ayraç `[]` söz dizimi desteklenir. İki düzeye kadar iç içe yerleştirme yapılabilir.
+Sözdizimi bir normal ifade gibi göründüğünden, normal bir ifade değildir. Yalnızca küme ayracı `{}` ve köşeli ayraç `[]` söz dizimi desteklenir. İki düzeye kadar iç içe yerleştirme yapılabilir.
 
-Bir desenin bir konuşmayla eşleştirilebilmesi için ilk konuşmadaki varlıkların öncelikle konuşma şablonundaki varlıklarla eşleşmesi gerekir. Ancak şablon varlıkların değil yalnızca amaçların tahmin edilmesine yardımcı olur. 
+Bir desenin bir konuşmayla eşleştirilebilmesi için ilk konuşmadaki varlıkların öncelikle konuşma şablonundaki varlıklarla eşleşmesi gerekir. Bu, varlıkların varlıklar içeren desenler başarılı olmadan önce, büyük bir tahmine sahip bir şekilde daha fazla örneğe sahip olması anlamına gelir. Ancak şablon varlıkların değil yalnızca amaçların tahmin edilmesine yardımcı olur.
 
 **Desenler daha az örnek konuşma sağlamanızı mümkün kılsa da varlıkların algılanmaması durumunda desen eşleşmez.**
 
-## <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Kuruluş Yöneticisi amacı için desenler ekleme
+### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Kuruluş Yöneticisi amacı için desenler ekleme
 
 1. Üst menüden **Build** (Derle) öğesini seçin.
 
-2. Sol gezinti bölmesinin **Improve app performance** (Uygulama performansını geliştir) bölümünde **Patterns** (Desenler) öğesini seçin.
+1. Sol gezinti bölmesinin **Improve app performance** (Uygulama performansını geliştir) bölümünde **Patterns** (Desenler) öğesini seçin.
 
-3. **OrgChart-Manager** amacını seçip aşağıdaki konuşma şablonlarını girin:
-
-    |Konuşma şablonları|
-    |:--|
-    |Who is {Employee} the subordinate of[?] ({Çalışan} kimin astı[?])|
-    |Who does {Employee} report to[?] ({Çalışan} kime rapor veriyor[?])|
-    |Who is {Employee}['s] manager[?] ({Çalışan}['ın] yöneticisi kim[?]|
-    |Who does {Employee} directly report to[?] ({Çalışan} kime bağlı[?])|
-    |Who is {Employee}['s] supervisor[?] ({Çalışan}['ın] süpervizörü kim[?]|
-    |Who is the boss of {Employee}[?] ({Çalışanın} patronu kim[?])|
-
-    Rollere sahip varlıklar rol adının da bulunduğu söz dizimini kullanır ve [ayrı bir rol öğreticisinde](luis-tutorial-pattern-roles.md) ele alınmaktadır. 
-
-    Konuşma şablonunu yazdığınızda LUIS sol küme ayracını `{` girdiğinizde varlığı doldurmanıza yardımcı olur.
-
-    [![Amaç için konuşma şablonu girme ekran görüntüsü](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
-
-4. Desenler sayfasında, **kuruluş şeması-raporlar** hedefini seçin, sonra aşağıdaki şablon utslerini girin:
+1. **OrgChart-Manager** amacını seçip aşağıdaki konuşma şablonlarını girin:
 
     |Konuşma şablonları|
     |:--|
-    |Who are {Employee}['s] subordinates[?] ({Çalışan}['ın] astları kimler[?]|
-    |Who reports to {Employee}[?] ({Çalışana} kim rapor veriyor[?])|
-    |Who does {Employee} manage[?] ({Çalışan} kimi yönetiyor[?])|
-    |Who are {Employee} direct reports[?] ({Çalışana} bağlı çalışanlar kimler[?])|
-    |Who does {Employee} supervise[?] ({Çalışan} kime süpervizörlük yapıyor[?])|
-    |Who does {Employee} boss[?] ({Çalışan} kime patronluk yapıyor[?])|
+    |`Who is {Employee} the subordinate of[?]`|
+    |`Who does {Employee} report to[?]`|
+    |`Who is {Employee}['s] manager[?]`|
+    |`Who does {Employee} directly report to[?]`|
+    |`Who is {Employee}['s] supervisor[?]`|
+    |`Who is the boss of {Employee}[?]`|
 
-## <a name="query-endpoint-when-patterns-are-used"></a>Desenler kullanıldığında uç noktayı sorgulama
+1. Desenler sayfasında, **kuruluş şeması-raporlar** hedefini seçin, sonra aşağıdaki şablon utslerini girin:
+
+    |Konuşma şablonları|
+    |:--|
+    |`Who are {Employee}['s] subordinates[?]`|
+    |`Who reports to {Employee}[?]`|
+    |`Who does {Employee} manage[?]`|
+    |`Who are {Employee} direct reports[?]`|
+    |`Who does {Employee} supervise[?]`|
+    |`Who does {Employee} boss[?]`|
+
+### <a name="query-endpoint-when-patterns-are-used"></a>Desenler kullanıldığında uç noktayı sorgulama
 
 Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zamanı uç noktasında eğitin, yayımlar ve sorgular.
 
-1. Uygulamayı yeniden eğitin ve yayımlayın.
+1. **Eğitim**' i seçin. Eğitim tamamlandıktan sonra **Yayımla** ' yı seçin ve **Üretim** yuvasını seçin ve **bitti**' yi seçin.
 
-1. Tarayıcıda uç nokta URL'si sekmesine geçin.
+1. Yayımlama işlemi tamamlandıktan sonra, tarayıcı sekmelerini uç nokta URL 'SI sekmesine geri geçirin.
 
-1. Adres çubuğundaki URL'nin sonuna gidip konuşma olarak `Who is the boss of Jill Jones?` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. 
+1. Adres çubuğundaki URL'nin sonuna gidip konuşma olarak `Who is the boss of Jill Jones?` yazın. Son QueryString parametresi `query`.
 
     ```json
     {
-        "query": "who is the boss of jill jones?",
-        "topScoringIntent": {
-            "intent": "OrgChart-Manager",
-            "score": 0.9999989
-        },
-        "intents": [
-            {
-                "intent": "OrgChart-Manager",
-                "score": 0.9999989
+        "query": "Who is the boss of Jill Jones?",
+        "prediction": {
+            "topIntent": "OrgChart-Manager",
+            "intents": {
+                "OrgChart-Manager": {
+                    "score": 0.999997854
+                },
+                "OrgChart-Reports": {
+                    "score": 6.13748343E-05
+                },
+                "EmployeeFeedback": {
+                    "score": 8.052567E-06
+                },
+                "GetJobInformation": {
+                    "score": 1.18197136E-06
+                },
+                "MoveEmployee": {
+                    "score": 7.65549657E-07
+                },
+                "None": {
+                    "score": 3.975E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.53E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.38181822E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.38181822E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.38181822E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.25833333E-09
+                },
+                "FindForm": {
+                    "score": 1.15384613E-09
+                },
+                "ApplyForJob": {
+                    "score": 5.26923061E-10
+                }
             },
-            {
-                "intent": "OrgChart-Reports",
-                "score": 7.616303E-05
-            },
-            {
-                "intent": "EmployeeFeedback",
-                "score": 7.84204349E-06
-            },
-            {
-                "intent": "GetJobInformation",
-                "score": 1.20674213E-06
-            },
-            {
-                "intent": "MoveEmployee",
-                "score": 7.91245157E-07
-            },
-            {
-                "intent": "None",
-                "score": 3.875E-09
-            },
-            {
-                "intent": "Utilities.StartOver",
-                "score": 1.49E-09
-            },
-            {
-                "intent": "Utilities.Confirm",
-                "score": 1.34545453E-09
-            },
-            {
-                "intent": "Utilities.Help",
-                "score": 1.34545453E-09
-            },
-            {
-                "intent": "Utilities.Stop",
-                "score": 1.34545453E-09
-            },
-            {
-                "intent": "Utilities.Cancel",
-                "score": 1.225E-09
-            },
-            {
-                "intent": "FindForm",
-                "score": 1.123077E-09
-            },
-            {
-                "intent": "ApplyForJob",
-                "score": 5.625E-10
-            }
-        ],
-        "entities": [
-            {
-                "entity": "jill jones",
-                "type": "Employee",
-                "startIndex": 19,
-                "endIndex": 28,
-                "resolution": {
-                    "values": [
+            "entities": {
+                "keyPhrase": [
+                    "boss of Jill Jones"
+                ],
+                "Employee": [
+                    [
                         "Employee-45612"
                     ]
-                },
-                "role": ""
-            },
-            {
-                "entity": "boss of jill jones",
-                "type": "builtin.keyPhrase",
-                "startIndex": 11,
-                "endIndex": 28
+                ],
+                "$instance": {
+                    "keyPhrase": [
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "boss of Jill Jones",
+                            "startIndex": 11,
+                            "length": 18,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "Employee": [
+                        {
+                            "type": "Employee",
+                            "text": "Jill Jones",
+                            "startIndex": 19,
+                            "length": 10,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
+        }
     }
     ```
 
-Amaç tahmini artık önemli ölçüde daha önemlidir.
+Amaç tahmini artık önemli ölçüde daha önemlidir ve bir sonraki en yüksek amaç puanı önemli ölçüde düşüktür. Bu iki amaç, eğitim sırasında-flop ' i çevirmez.
 
-## <a name="working-with-optional-text-and-prebuilt-entities"></a>İsteğe bağlı metin ve önceden oluşturulmuş varlıklarla çalışma
+### <a name="working-with-optional-text-and-prebuilt-entities"></a>İsteğe bağlı metin ve önceden oluşturulmuş varlıklarla çalışma
 
 Bu öğreticinin önceki bölümlerinde kullanılan desen konuşma şablonları s harfinin iyelik olarak kullanılması `'s` ve soru işaretinin kullanılması `?` gibi birkaç isteğe bağlı metin örneğine sahiptir. Söylenişi metninde geçerli ve gelecek tarihlere izin vermeniz gerektiğini varsayalım.
 
@@ -366,9 +369,9 @@ Bu öğreticinin önceki bölümlerinde kullanılan desen konuşma şablonları 
 |OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
 |OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-Bu örneklerin her birinde LUIS'in doğru tahmin yapabilmesi için gerekli olan bir fiil çekimi (`was`, `is`, `will be`) ve tarih (`March 3`, `now` ve `in a month`) bulunmaktadır. Son iki örnekte `in` ve `on` haricinde neredeyse aynı metnin kullanıldığına dikkat edin.
+Bu örneklerin her birinde LUIS'in doğru tahmin yapabilmesi için gerekli olan bir fiil çekimi (`was`, `is`, `will be`) ve tarih (`March 3`, `now` ve `in a month`) bulunmaktadır. Tablodaki son iki örneğin `in` ve `on`hariç neredeyse aynı metni kullandığına dikkat edin.
 
-Bu isteğe bağlı bilgilere izin veren örnek şablon örnekleri: 
+Bu isteğe bağlı bilgilere izin veren örnek şablon örnekleri:
 
 |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
 |:--|:--|
@@ -381,21 +384,21 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
 
 **Soru: her bir şablon için ilk harf olan her bir `w` harf, küçük harfle neden. İsteğe bağlı olarak büyük veya küçük harf olmaması gerekir mi?** İstemci uygulaması tarafından sorgu uç noktasına gönderilen konuşma küçük harfe dönüştürülür. Konuşma şablonu ve uç nokta konuşmasında büyük harf veya küçük harf kullanılabilir. Karşılaştırma her zaman küçük harfe dönüştürme sonrasında gerçekleştirilir.
 
-**Soru: March 3 (Mart 3) hem sayı `3` hem de tarih `March 3` olarak tahmin ediliyorsa konuşma şablonunun sayı bölümü neden önceden oluşturulmuş durumda değil?** Konuşma şablonu tahmini `March 3` olarak doğrudan veya `in a month` çıkarımıyla bağlamsal olarak kullanmaktadır. Tarih, sayı içerebilir ancak her sayı tarih olmayabilir. Her zaman tahmin JSON sonuçlarında döndürülmesini istediğiniz türü en iyi temsil eden varlığını kullanın.  
+**Soru: March 3 (Mart 3) hem sayı `3` hem de tarih `March 3` olarak tahmin ediliyorsa konuşma şablonunun sayı bölümü neden önceden oluşturulmuş durumda değil?** Konuşma şablonu tahmini `March 3` olarak doğrudan veya `in a month` çıkarımıyla bağlamsal olarak kullanmaktadır. Tarih, sayı içerebilir ancak her sayı tarih olmayabilir. Her zaman tahmin JSON sonuçlarında döndürülmesini istediğiniz türü en iyi temsil eden varlığını kullanın.
 
-**Soru: `Who will {Employee}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz. 
+**Soru: `Who will {Employee}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz.
 
 **Unutmayın: Önce varlıklar bulunur, ardından desen eşleştirilir.**
 
-## <a name="edit-the-existing-pattern-template-utterance"></a>Var olan konuşma şablonu desenini düzenleme
+### <a name="edit-the-existing-pattern-template-utterance"></a>Var olan konuşma şablonu desenini düzenleme
 
-1. LUIS web sitesinin üst menüsünden **Build** (Derle) öğesini seçip sol taraftaki menüden **Patterns** (Desenler) öğesini belirleyin. 
+1. Önizleme LUU portalında, üstteki menüden **Oluştur** ' u seçin ve ardından sol menüdeki **desenler** ' i seçin.
 
-1. Mevcut şablon için arama yapın, `Who is {Employee}['s] manager[?]`ve sağ taraftaki üç nokta (***...***) simgesini seçin ve ardından açılır menüden **Düzenle** ' yi seçin. 
+1. Mevcut şablon için arama yapın, `Who is {Employee}['s] manager[?]`ve sağ taraftaki üç nokta (***...***) simgesini seçin ve ardından açılır menüden **Düzenle** ' yi seçin.
 
 1. Konuşma şablonunu şu şekilde değiştirin: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
-## <a name="add-new-pattern-template-utterances"></a>Yeni konuşma şablonu deseni ekleme
+### <a name="add-new-pattern-template-utterances"></a>Yeni konuşma şablonu deseni ekleme
 
 1. **Build** (Derle) menüsünün **Patterns** (Desenler) bölümünde birden fazla yeni konuşma şablonu deseni ekleyebilirsiniz. Intent (Amaç) açılan menüsünden **OrgChart-Manager** öğesini seçin ve aşağıdaki konuşma şablonlarını girin:
 
@@ -405,28 +408,33 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. Uygulamayı eğitin.
+2. Uygulamayı eğitebilmeniz için gezinti çubuğunda **eğitme** ' yi seçin.
 
-3. Panelin en üstündeki **Test** öğesini seçerek test panelini açın. 
+3. Eğitim tamamlandıktan sonra, test panelini açmak için panelin en üstündeki **Test** ' i seçin.
 
-4. Desenin eşleştirildiğini ve amaç puanının oldukça yüksek olduğunu doğrulamak için birkaç test konuşması girin. 
+4. Desenin eşleştirildiğini ve amaç puanının oldukça yüksek olduğunu doğrulamak için birkaç test konuşması girin.
 
     İlk konuşmayı girdikten sonra tüm tahmin sonuçlarını görebilmek için sonucun altındaki **Inspect** (İncele) öğesini seçin. Her bir söylemeye, **kuruluş şeması Yöneticisi** amacına sahip olmalıdır ve çalışanların ve datetimeV2 varlıkların değerlerini ayıklamalıdır.
 
     |İfade|
     |--|
-    |Who will be Jill Jones manager (Jill Jones yöneticisi kim olacak)|
-    |who will be jill jones's manager (jill jones'un yöneticisi kim olacak)|
-    |Who will be Jill Jones's manager? (Jill Jones'un yöneticisi kim olacak?)|
-    |who will be Jill jones manager on March 3 (3 Mart'ta Jill jones yöneticisi kim olacak)|
-    |Who will be Jill Jones manager next Month (Önümüzdeki ay Jill Jones yöneticisi kim olacak)|
-    |Who will be Jill Jones manager in a month? (Bir ay içinde Jill Jones yöneticisi kim olacak?)|
+    |`Who will be Jill Jones manager`|
+    |`who will be jill jones's manager`|
+    |`Who will be Jill Jones's manager?`|
+    |`who will be Jill jones manager on March 3`|
+    |`Who will be Jill Jones manager next Month`|
+    |`Who will be Jill Jones manager in a month?`|
 
-Bu konuşmaların tümü varlık bulduğundan aynı desenle eşleşir ve yüksek tahmin puanına sahiptir.
+Bu konuşmaların tümü varlık bulduğundan aynı desenle eşleşir ve yüksek tahmin puanına sahiptir. Birçok farklı çeşitliliğe uyum sağlayacak birkaç desen eklediniz. Şablonda şablon utinine sahip olmak için herhangi bir örnek ekleme gerekmedi.
 
-## <a name="use-the-or-operator-and-groups"></a>OR işlecini ve gruplarını kullanın
+Belirtilen desenlerin kullanımı:
+* daha yüksek tahmin puanları
+* amaç ile aynı örnek,
+* yalnızca birkaç kaynak ile oluşturulmuş şablon, desen içinde
 
-Önceki şablon dıklıları çok yakın. Şablon uttaslarını azaltmak için **grup** `()` ve **veya** `|` söz dizimini kullanın. 
+### <a name="use-the-or-operator-and-groups"></a>OR işlecini ve gruplarını kullanın
+
+Önceki şablon dıklıları çok yakın. Şablon uttaslarını azaltmak için **grup** `()` ve **veya** `|` söz dizimini kullanın.
 
 Aşağıdaki 2 desenleri, Grup `()` ve veya `|` söz dizimini kullanarak tek bir düzende birleştirebilir.
 
@@ -435,39 +443,132 @@ Aşağıdaki 2 desenleri, Grup `()` ve veya `|` söz dizimini kullanarak tek bir
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-Yeni şablon söylenişi şu şekilde olacaktır: 
+Yeni şablon söylenişi şu şekilde olacaktır:
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
+`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-Bu, gerekli fiil zaman hali etrafında bir **Grup** kullanır ve isteğe bağlı `in` ve aralarında bir **veya** dikey çizgi ile `on`. 
+Bu, gerekli fiil zaman hali etrafında bir **Grup** kullanır ve isteğe bağlı `in` ve aralarında bir **veya** dikey çizgi ile `on`.
 
-1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. `manager`arayarak listeyi daraltın. 
+1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. `manager`arayarak listeyi daraltın.
 
-    ![' Manager ' terimiyle ilgili kuruluş yöneticisi amaç desenlerinde ara](./media/luis-tutorial-pattern/search-patterns.png)
+1. Şablonun tek bir sürümünü saklayın (bir sonraki adımda düzenlemek için) ve diğer çeşitlemeleri silin.
 
-1. Şablonun tek bir sürümünü saklayın (bir sonraki adımda düzenlemek için) ve diğer çeşitlemeleri silin. 
+1. Şablon utterliğini şu şekilde değiştirin:
 
-1. Şablon utterliğini şu şekilde değiştirin: 
+    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
+2. Uygulamayı eğitebilmeniz için gezinti çubuğunda **eğitme** ' yi seçin.
 
-1. Uygulamayı eğitin.
+3. Eğitim tamamlandıktan sonra, test panelini açmak için panelin en üstündeki **Test** ' i seçin.
 
-1. Utterance 'in sürümlerini test etmek için test bölmesini kullanın:
+    Utterance 'in sürümlerini test etmek için test bölmesini kullanın:
 
     |Test bölmesine girilecek söylenme|
     |--|
     |`Who is Jill Jones manager this month`|
     |`Who is Jill Jones manager on July 5th`|
     |`Who was Jill Jones manager last month`|
-    |`Who was Jill Jones manager on July 5th`|    
+    |`Who was Jill Jones manager on July 5th`|
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
+Daha fazla desen söz dizimi kullanarak, uygulamanızda saklanması gereken şablon Puanlarınızın sayısını, hala yüksek bir tahmin puanı elde ederek azaltabilirsiniz.
 
-## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Söylenişi başlangıç ve bitiş bağlayıcılarını kullanma
+### <a name="use-the-utterance-beginning-and-ending-anchors"></a>Söylenişi başlangıç ve bitiş bağlayıcılarını kullanma
 
-Desen sözdizimi, `^`bir giriş işaretinin başlangıç ve bitiş noktası sözdizimini sağlar. Başlangıç ve bitiş söylenişi bağlayıcıları, tek özel ve büyük olasılıkla sabit değerli bir şekilde hedeflemek veya hedef amaçlar için ayrı olarak kullanılmak üzere birlikte kullanılabilir. 
+Desen sözdizimi, `^`bir giriş işaretinin başlangıç ve bitiş noktası sözdizimini sağlar. Başlangıç ve bitiş söylenişi bağlayıcıları, tek özel ve büyük olasılıkla sabit değerli bir şekilde hedeflemek veya hedef amaçlar için ayrı olarak kullanılmak üzere birlikte kullanılabilir.
+
+## <a name="using-patternany-entity"></a>Model kullanma. herhangi bir varlık
+
+pattern.any varlığı, ifade nedeniyle varlığın sonunun konuşmanın geri kalanından ayrılmasının zor olduğu durumlarda serbest biçimli verileri bulmanızı sağlar.
+
+Bu İnsan Kaynakları uygulaması, çalışanların şirket formlarını bulmasına yardımcı olmaktadır.
+
+|İfade|
+|--|
+|Where is **HRF-123456**? (HRF-123456 nerede?)|
+|Who authored **HRF-123234**? (HRF-123234'ü kim yazdı?)|
+|**HRF-456098** is published in French? (HRF-456098 Fransızca mı yayımlandı?)|
+
+Ancak her formun hem bir biçimlendirilmiş adı (yukarıdaki tabloda kullanılan) hem de kolay adı (`Request relocation from employee new to the company 2018 version 5` gibi) vardır.
+
+Formun kolay adı konuşmada şu şekilde olur:
+
+|İfade|
+|--|
+|Where is **Request relocation from employee new to the company 2018 version 5**? (Yeni şirket çalışanı taşınma talep formu 2018 sürüm 5 nerede?)|
+|Who authored **"Request relocation from employee new to the company 2018 version 5"** ? (Yeni şirket çalışanı taşınma talep formu 2018 sürüm 5'i kim yazdı?)|
+|**Request relocation from employee new to the company 2018 version 5** is published in French? (Yeni şirket çalışanı taşınma talep formu 2018 sürüm 5 Fransızca mı yayımlandı?)|
+
+Sözcüklerin uzunluklarının değişmesi, LUIS'in varlığın sonunu belirleme konusunda karışıklık yaşamasına neden olabilir. Pattern.any varlığını bir desen içinde kullanmak, form adının başını ve sonunu belirterek LUIS'in form adını doğru şekilde ayıklamasına yardımcı olmanızı sağlar.
+
+|Konuşma şablonu örneği|
+|--|
+|Where is {FormName}[?] ({FormName} nerede[?])|
+|Who authored {FormName}[?] ({FormName} kim yazdı[?])|
+|{FormName} is published in French[?] ({FormName} Fransızca mı yayımlandı[?])|
+
+### <a name="add-example-utterances-with-patternany"></a>Desen ile örnek ekleme
+
+1. Üst gezinti bölmesinden **Build** (Derle) öğesini, sol gezinti bölmesinden de **Intents** (Amaçlar) öğesini seçin.
+
+1. Amaç listesinden **FindForm** öğesini seçin.
+
+1. Birkaç örnek konuşma ekleyin:
+
+    |Örnek konuşma|Form adı|
+    |--|--|
+    |Where is the form **What to do when a fire breaks out in the Lab** and who needs to sign it after I read it? (Laboratuvarda yangın çıktığında yapılacak işlemler formu nerede ve ben okuduktan sonra kimin imzalaması gerekiyor?)|Bir yangın laboratuvarda kesilse ne yapmalı
+    |Where is **Request relocation from employee new to the company** on the server? (Yeni şirket çalışanı taşınma talep formu sunucuda nerede?)|Şirketten yeni çalışana yeniden konumlandırma isteği|
+    |Who authored "**Health and wellness requests on the main campus**" and what is the most current version? ("Ana kampüsteki sağlık ve sağlıklı yaşam istekleri"ni kim yazdı ve en güncel sürümü nedir?)|Ana kampüs üzerinde sistem durumu ve welllik istekleri|
+    |I'm looking for the form named "**Office move request including physical assets**". ("Fiziksel eşyalar dahil olmak üzere ofis taşıma isteği" adlı formu arıyorum.) |Fiziksel varlıklar dahil Office taşıma isteği|
+
+    Form adlarındaki değişik kullanımlar nedeniyle Pattern.any varlığı olmadan LUIS'in form başlığının sonunu belirlemesi zor olacaktır.
+
+### <a name="create-a-patternany-entity"></a>Pattern.any varlığı oluşturma
+Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Yalnızca bir düzende çalışarak, model varlığın başlangıcını ve sonunu sözdizimiyle işaret ettiğinden.
+
+1. Sol gezinti panelinden **Entities** (Varlıklar) öğesini seçin.
+
+1. **+ Oluştur**' u seçin, `FormName`adı girin ve **model. herhangi bir** tür olarak seçin. **Oluştur**’u seçin.
+
+### <a name="add-a-pattern-that-uses-the-patternany"></a>Pattern.any kullanan bir desen ekleme
+
+1. Sol gezinti bölmesinden **Patterns** (Desenler) öğesini seçin.
+
+1. **FindForm** amacını seçin.
+
+1. Aşağıdaki yeni varlığı kullanan konuşma şablonlarını girin:
+
+    |Konuşma şablonları|
+    |--|
+    |`Where is the form ["]{FormName}["] and who needs to sign it after I read it[?]`|
+    |`Where is ["]{FormName}["] on the server[?]`|
+    |`Who authored ["]{FormName}["] and what is the most current version[?]`|
+    |`I'm looking for the form named ["]{FormName}["][.]`|
+
+1. Uygulamayı eğitin.
+
+### <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Serbest biçimli metin ayıklama için yeni deseni test etme
+1. Üst çubuktan **Test**'i seçerek test panelini açın.
+
+1. Aşağıdaki konuşmayı girin:
+
+    `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
+
+1. Varlık ve amaç test sonuçlarını görmek için sonucun altındaki **Inspect** (Denetle) öğesini seçin.
+
+    Önce `FormName` varlığı bulunmuş, ardından amacı belirten desen bulunmuştur. Test sonucunda varlıklar algılanmadıysa ve bu nedenle desen bulunmadıysa amaçla (desenle değil) ilgili daha fazla örnek konuşma eklemeniz gerekir.
+
+1. Üst gezinti çubuğundan **Test** düğmesini seçerek test panelini kapatın.
+
+### <a name="using-an-explicit-list"></a>Açık liste kullanma
+
+Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın.
+
+## <a name="what-did-this-tutorial-accomplish"></a>Bu öğretici ne başardı?
+
+Bu öğreticide, LUTO 'ın daha fazla örnek eklemek zorunda kalmadan önemli ölçüde daha yüksek bir puana sahip olma amacını tahmin etmeye yönelik desenler eklenmiştir. Varlıkları ve yok sayılabilir metinleri işaretlemek LUIS'in deseni daha fazla konuşmaya uygulamasını mümkün hale getirdi.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -475,7 +576,6 @@ Desen sözdizimi, `^`bir giriş işaretinin başlangıç ve bitiş noktası söz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide çok sayıda örnek konuşma olmadan tahmin edilmesi zor olan konuşmalar için iki amaç eklendi. Bunlar için desen eklemek, LUIS'in amacı önemli ölçüde daha yüksek bir puanla amacı daha iyi tahmin etmesini sağladı. Varlıkları ve yok sayılabilir metinleri işaretlemek LUIS'in deseni daha fazla konuşmaya uygulamasını mümkün hale getirdi.
 
 > [!div class="nextstepaction"]
 > [Desen ile rol kullanmayı öğrenin](luis-tutorial-pattern-roles.md)

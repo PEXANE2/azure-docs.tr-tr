@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 2328313e15fafb3c0f96fdb77f3023afc1e4774f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 41fa0b469d0d86b8c1d9234455ade0395fa86f3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383962"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Hızlı başlangıç: PHP kullanarak Bing Varlık Arama REST API bir arama isteği gönderme
 
@@ -23,7 +23,7 @@ Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görünt
 
 Bu uygulama PHP 'de yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [PHP 5.6.x](https://php.net/downloads.php) veya üzeri
 
@@ -31,12 +31,13 @@ Bu uygulama PHP 'de yazıldığı sırada API, çoğu programlama dili ile uyuml
 
 ## <a name="search-entities"></a>Varlık arama
 
-Bu uygulamayı çalıştırmak için şu adımları izleyin.
+Bu uygulamayı çalıştırmak için aşağıdaki adımları izleyin.
 
 1. Sık kullandığınız IDE ile yeni bir PHP projesi oluşturun.
 2. Aşağıda sağlanan kodu ekleyin.
 3. `key` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-4. Programı çalıştırın.
+4. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
+5. Programı çalıştırın.
 
 ```php
 <?php

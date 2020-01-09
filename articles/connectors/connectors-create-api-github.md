@@ -1,20 +1,20 @@
 ---
-title: GitHub 'a Bağlan
-description: GitHub REST API 'Leri ve Azure Logic Apps GitHub olaylarını izleme
+title: GitHub deponuzu erişin, izleyin ve yönetin
+description: Azure Logic Apps ile otomatik iş akışları oluşturarak GitHub olaylarını izleyin ve GitHub deponuzu yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378458"
 ---
-# <a name="connect-to-github-from-azure-logic-apps"></a>Azure Logic Apps GitHub 'a bağlanma
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak GitHub deponuzu izleyin ve yönetin
 
 GitHub, git ve diğer özelliklerde tüm dağıtılmış düzeltme denetimi ve kaynak kodu yönetimi (SCM) işlevlerini sunan Web tabanlı bir git deposu barındırma hizmetidir.
 
@@ -26,7 +26,7 @@ Bir mantıksal uygulamada GitHub bağlayıcısını kullanmak için, önce bir *
 
 | Özellik | Gereklidir | Açıklama | 
 | -------- | -------- | ----------- | 
-| Belirteç | Yes | GitHub kimlik bilgilerinizi sağlayın. |
+| Belirteç | Evet | GitHub kimlik bilgilerinizi sağlayın. |
 
 Bağlantıyı oluşturduktan sonra, eylemleri yürütebilir ve bu makalede açıklanan Tetikleyicileri dinleyebilirsiniz.
 

@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Orta e-ticaret ürün görüntüleri-Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Belirtilen etiketlerle ürün görüntülerini çözümlemek ve sınıflandırmak için bir uygulama ayarlayın (Azure Görüntü İşleme ve Özel Görüntü İşleme kullanarak). Sakıncalı resimleri daha fazla gözden geçirilecek şekilde etiketleyin (Azure Content Moderator kullanarak).
+description: Bu öğreticide, bir uygulamayı belirtilen etiketlerle (Azure Görüntü İşleme ve Özel Görüntü İşleme kullanarak) ürün görüntülerini çözümlemek ve sınıflandırmak için nasıl ayarlanacağı gösterilmektedir. Sakıncalı resimleri daha fazla gözden geçirilecek şekilde etiketleyin (Azure Content Moderator kullanarak).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382166"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta e-ticaret ürün görüntüleri
 
@@ -34,7 +34,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Content Moderator abonelik anahtarı. Content Moderator hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 - Görüntü İşleme abonelik anahtarı (yukarıdaki yönergeleri de aynı şekilde).

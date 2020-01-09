@@ -1,5 +1,6 @@
 ---
-title: ASP.NET Core uygulamasında Azure Uygulama yapılandırması dinamik yapılandırmasını kullanma öğreticisi | Microsoft Docs
+title: "Öğretici: ASP.NET Core 'de uygulama yapılandırması dinamik yapılandırması 'Nı kullanın"
+titleSuffix: Azure App Configuration
 description: Bu öğreticide ASP.NET Core uygulamalar için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edineceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433702"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
 
@@ -195,13 +196,13 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. [Azure Portal](https://portal.azure.com)’da oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+4. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 5. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 
     | Anahtar | Değer |
     |---|---|
-    | TestApp: ayarlar: BackgroundColor | green |
+    | TestApp: ayarlar: BackgroundColor | yeşil |
     | TestApp: ayarlar: FontColor | Açık gri |
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-canlı güncelleştirmeler ile şimdi! |
 

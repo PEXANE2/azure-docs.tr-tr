@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3e72bd366cdbba1d73bc05f98d3848e2d4f0ca6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: 5164e47c9c93653bfcd01093c01142b69c0bd57f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433246"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama bağlamaları
 
@@ -336,7 +336,18 @@ Zarar iletilerini el ile işlemek için kuyruk iletisinin [Dequeuecount](#trigge
 
 ## <a name="trigger---polling-algorithm"></a>Tetikleyici-yoklama algoritması
 
-Sıra tetikleyicisi, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular.  Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti olup olmadığını denetler; hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler. Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder. En uzun bekleme süresi, [Host. JSON dosyasındaki](functions-host-json.md#queues)`maxPollingInterval` özelliği aracılığıyla yapılandırılabilir.
+Sıra tetikleyicisi, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular.
+
+Algoritma aşağıdaki mantığı kullanır:
+
+- Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti arar
+- Hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler.
+- Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder.
+- En uzun bekleme süresi, [Host. JSON dosyasındaki](functions-host-json.md#queues)`maxPollingInterval` özelliği aracılığıyla yapılandırılabilir.
+
+Yerel geliştirme için en fazla yoklama aralığı varsayılan olarak iki saniyedir.
+
+Faturalandırmayla ilgili olarak, çalışma zamanı tarafından yoklama harcanan süre "ücretsizdir" ve hesabınıza göre sayılmaz.
 
 ## <a name="trigger---concurrency"></a>Tetikleyici-eşzamanlılık
 

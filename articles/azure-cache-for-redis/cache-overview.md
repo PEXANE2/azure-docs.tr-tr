@@ -1,18 +1,18 @@
 ---
-title: Redsıs için Azure önbelleği nedir?
-description: Redin için Azure önbelleğinin ne olduğunu ve nasıl yaygın olarak kullanıldığını öğrenin.
+title: Redis için Azure Cache nedir?
+description: Önbellek, içerik önbelleğe alma, Kullanıcı oturumu önbelleğe alma, iş ve İleti Kuyruklama ve dağıtılmış işlemler dahil olmak üzere redne ve genel kullanım için Azure önbelleği olduğunu öğrenin.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/26/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 03/26/2018
+ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433415"
 ---
 # <a name="azure-cache-for-redis-description"></a>Redis açıklaması için Azure önbelleği
 

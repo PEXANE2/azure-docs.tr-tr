@@ -7,13 +7,13 @@ ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432798"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK destekleyen tarayıcılar
 
@@ -40,7 +40,7 @@ Azure Haritalar Web SDK 'Sı, aşağıdaki masaüstü tarayıcılarını destekl
 
 Ayrıca, bu makalenin ilerleyen kısımlarında bulunan [eski tarayıcıları de hedefleyin](#Target-Legacy-Browsers) .
 
-## <a name="mobile"></a>Mobil
+## <a name="mobile"></a>Cep Telefonu
 
 Azure Haritalar Web SDK 'Sı, aşağıdaki mobil tarayıcıları destekler:
 
@@ -59,7 +59,7 @@ Azure Haritalar Web SDK 'Sı, aşağıdaki mobil tarayıcıları destekler:
 
 Node. js ' de aşağıdaki Web SDK modülleri de desteklenir:
 
-- Hizmetler modülü ([Belgeler](how-to-use-services-module.md) | [NPM modülü](https://www.npmjs.com/package/azure-maps-rest))
+- Hizmetler modülü ([belge](how-to-use-services-module.md) | [NPM modülü](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="Target-Legacy-Browsers"></a>Hedef eski tarayıcılar
 
@@ -68,7 +68,7 @@ WebGL 'yi desteklemeyen veya yalnızca sınırlı desteği olan eski tarayıcıl
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure haritalar + leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'da Azure Maps <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>+ leaflet</a> 'e Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() tarafından bakın.
+<a href='https://codepen.io'>Codepen</a>'da Azure Maps <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>+ leaflet</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) bölümüne bakın.
 </iframe>
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374089"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 'da Windows sanal makinelerinde çalışan SQL Server hakkında sık sorulan sorular
 
@@ -66,7 +66,7 @@ Bu makalede, [Azure 'da Windows sanal makineleri üzerinde SQL Server](https://a
    Hayır. SQL Server içeren sanal makine galeri görüntüleri için, Azure portal veya [PowerShell](virtual-machines-windows-ps-sql-create.md)aracılığıyla, belirtilen görüntülerden birini seçmeniz gerekir. Bununla birlikte, bir Windows sanal makinesini dağıtabilir ve kendisine SQL Server kendi kendine yükleyebilirsiniz. Sonra, portalda SQL Server VM yönetmek için [SQL Server VM SQL Server VM kaynak sağlayıcısına kaydetmelisiniz](virtual-machines-windows-sql-register-with-resource-provider.md) ve otomatik düzeltme eki uygulama ve otomatik yedeklemeler gibi özelliklerden yararlanabilirsiniz. 
 
 
-## <a name="creation"></a>Oluşturulurken
+## <a name="creation"></a>Oluşturma
 
 1. **SQL Server bir Azure sanal makinesi mi Nasıl yaparım??**
 
@@ -84,12 +84,12 @@ Bu makalede, [Azure 'da Windows sanal makineleri üzerinde SQL Server](https://a
 
 1. **Yalnızca bekleme/yük devretme için kullanılıyorsa Azure sanal makinesindeki SQL Server'ı lisanslamak için ödeme yapmam gerekir mi?**
 
-   Bekleme bir ikincil kullanılabilirlik grubu veya yük devretme kümelenmiş örneği için ücretsiz bir pasif lisansa sahip olmak için, [Lisanslama Kılavuzu PDF](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf)tarafından belirtilen aşağıdaki ölçütlerin tümünü karşılamanız gerekir:
+   Bekleme bir ikincil kullanılabilirlik grubu veya yük devretme kümelenmiş örneği için ücretsiz bir pasif lisansa sahip olmak için, [ürün lisanslama koşullarına](https://www.microsoft.com/licensing/product-licensing/products)göre belirtilen aşağıdaki ölçütlerin tümünü karşılamanız gerekir:
 
    1. [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)aracılığıyla [Lisans Taşınabilirliği](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) vardır. 
-   1. Pasif SQL Server örneği, istemcilere SQL Server verileri sunabilir veya etkin SQL Server iş yüklerini çalıştırmaz. Yalnızca birincil sunucuyla eşitlenmek ve pasif veritabanını bir sıcak bekleme durumunda tutmak için kullanılır. Etkin SQL Server iş yüklerini çalıştıran istemcilere rapor veya ikincil sunucudan ek yedeklemeler gibi "iş" işlemi gerçekleştiriyorsa, ücretli bir lisanslı SQL Server örneği olması gerekir. 
+   1. Pasif SQL Server örneği, istemcilere SQL Server verileri sunabilir veya etkin SQL Server iş yüklerini çalıştırmaz. Yalnızca birincil sunucuyla eşitlenmek ve pasif veritabanını bir sıcak bekleme durumunda tutmak için kullanılır. Etkin SQL Server iş yüklerini çalıştıran istemcilere rapor veya ürün koşullarında belirtilen dışında herhangi bir işi gerçekleştirirken, bu veriler, ücretli bir lisanslı SQL Server örneği olmalıdır. İkincil örnekte aşağıdaki etkinliğe izin verilir: veritabanı tutarlılık denetimleri veya CheckDB, tam yedeklemeler, işlem günlüğü yedeklemeleri ve izleme kaynak kullanımı verileri. Ayrıca, her 90 günde kısa olağanüstü durum kurtarma sınaması için birincil ve karşılık gelen olağanüstü durum kurtarma örneğini aynı anda çalıştırabilirsiniz. 
    1. Etkin SQL Server Lisansı yazılım güvencesi kapsamında ele alınmıştır ve yalnızca lisanslı etkin sunucu ile aynı işlem miktarına kadar **bir** pasif ikincil SQL Server örneğine izin verir. 
-   1. İkincil SQL Server VM, kendi lisansını getir (KLG) veya Azure Hibrit Avantajı (AHB) [Lisans modelini](virtual-machines-windows-sql-ahb.md)kullanır. 
+   1. İkincil SQL Server VM, Azure portal [olağanüstü durum kurtarma](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) lisansını kullanır.
 
 1. **Kullandıkça ödeme galeri görüntülerinden biri kullanılarak oluşturulan sanal makineyi kendi SQL Server lisansımı kullanmak için değiştirebilir miyim?**
 
@@ -163,8 +163,8 @@ Bu makalede, [Azure 'da Windows sanal makineleri üzerinde SQL Server](https://a
 
 1. **SQL Server sürümünü veya sürümünü değiştirmek için kurulum medyasını nereden alabilirim?**
 
-  [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım güvencesi olmayan müşteriler, istenen sürümü olan bir market SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
-
+   [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) sahibi olan müşteriler, yükleme medyasını [toplu lisanslama merkezinden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)elde edebilir. Yazılım güvencesi olmayan müşteriler, istenen sürümü olan bir market SQL Server VM görüntüsünden kurulum medyasını kullanabilir.
+   
 1. **Güncelleştirmeler ve hizmet paketleri bir SQL Server VM nasıl uygulanır?**
 
    Sanal makineler güncelleştirmeleri ne zaman ve nasıl uygulayacağınız dahil olmak üzere ana makine üzerinde denetim sağlar. İşletim sistemi için Windows güncelleştirmelerini el ile uygulayabilir veya [Otomatik Düzeltme](virtual-machines-windows-sql-automated-patching.md)için adlandırılan bir zamanlama hizmetini etkinleştirebilirsiniz. Otomatik Düzeltme Eki Uygulama, önemli olarak işaretlenmiş tüm güncelleştirmeleri, bu kategorideki SQL Server güncelleştirmeleri de dahil olmak üzere yükler. SQL Server için diğer isteğe bağlı güncelleştirmeler el ile yüklenmelidir.
@@ -172,6 +172,12 @@ Bu makalede, [Azure 'da Windows sanal makineleri üzerinde SQL Server](https://a
 1. **SQL Server 2008/2008 R2 örneğinden SQL Server VM kaynak sağlayıcısına kaydettikten sonra yükseltebilir miyim?**
 
    Evet. SQL Server sürümünü yükseltmek için herhangi bir kurulum medyası kullanabilir ve sonra [SQL IaaS uzantı modınızı](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) _aracıdan_ _tam_' a yükseltebilirsiniz. Bunun yapılması, Portal yönetilebilirliği, otomatik yedeklemeler ve otomatik düzeltme eki uygulama gibi SQL IaaS uzantısının tüm avantajlarına erişmenizi sağlayacaktır. 
+
+1. **2008 ve SQL Server 2008 R2 örneklerinden SQL Server destek bitmem için nasıl ücretsiz genişletilmiş güvenlik güncelleştirmeleri alabilirim?**
+
+   SQL Server olduğu gibi bir Azure SQL sanal makinesine taşıyarak, [ücretsiz genişletilmiş güvenlik güncelleştirmeleri](virtual-machines-windows-sql-server-2008-eos-extend-support.md) alabilirsiniz. Daha fazla bilgi için bkz. [Destek seçenekleri sonu](/sql/sql-server/end-of-support/sql-server-end-of-life-overview). 
+  
+   
 
 ## <a name="general"></a>Genel
 

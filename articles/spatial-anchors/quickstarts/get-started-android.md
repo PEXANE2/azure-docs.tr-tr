@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7c62ded627ab6f6ead5c03ef8cf298b4ee622265
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376469"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Android uygulaması oluşturma
 
@@ -33,8 +33,8 @@ Bu hızlı başlangıçta, Java veya C++/Ndk'teki [Azure uzamsal bağlayıcılar
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
 - <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>Içeren bir Windows veya MacOS makinesi.
-  - Windows üzerinde çalışıyorsa, <a href="https://git-scm.com/download/win" target="_blank">Windows Için git</a>de gerekecektir.
-  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ardından `brew install git`çalıştırın.
+  - Windows üzerinde çalışıyorsa, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> de gerekir.
+  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Sonra `brew install git` ve `brew install git-lfs`çalıştırın.
   - NDK örneğini oluşturmak için, Android Studio ' de NDK ve CMake 3,6 veya daha büyük SDK Tools yüklemeniz gerekir.
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
   - Bilgisayarınızın Android cihazından iletişim kurması için ek cihaz sürücüleri gerekebilir. Ek bilgi ve yönergeler için [buraya](https://developer.android.com/studio/run/device.html) bakın.
@@ -80,7 +80,7 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-`Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`açın.
+Açık `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 
@@ -88,7 +88,7 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-`Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`açın.
+Açık `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 

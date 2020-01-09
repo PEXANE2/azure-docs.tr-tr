@@ -1,5 +1,5 @@
 ---
-title: Azure’da ölçeklenebilir bir uygulama için VM ve depolama hesabı oluşturma | Microsoft Docs
+title: Azure 'da ölçeklenebilir bir uygulama için VM ve depolama hesabı oluşturma
 description: Azure blob depolama kullanarak ölçeklenebilir bir uygulama çalıştırmak için kullanılacak bir VM’yi dağıtmayı öğrenme
 author: roygara
 ms.service: storage
@@ -7,22 +7,22 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 49689585b3f52bbee300ff68d2c2653f5e7ff8d0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372321"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Ölçeklenebilir bir uygulama için sanal makine ve depolama hesabı oluşturma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu öğretici, Azure depolama hesabı ile büyük miktarda rastgele veri yükleyen ve indiren bir uygulamayı nasıl dağıtacağınızı gösterir. İşinizi tamamladığınızda, bir sanal makine üzerinde bir depolama hesabına büyük miktarlarda veri yükleyip indirdiğiniz bir konsol uygulaması çalıştırırsınız.
+Bu öğretici, bir serinin birinci bölümüdür. Bu öğretici, Azure depolama hesabı ile büyük miktarda rastgele veri yükleyen ve indiren bir uygulamayı nasıl dağıtacağınızı gösterir. İşinizi tamamladığınızda, bir sanal makine üzerinde bir depolama hesabına büyük miktarlarda veri yükleyip indirdiğiniz bir konsol uygulaması çalıştırırsınız.
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Depolama hesabı oluşturma
-> * Sanal makine oluşturma
+> * Sanal makine oluşturun
 > * Özel betik uzantısı yapılandırma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
@@ -55,7 +55,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
   -Kind Storage `
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
 Sanal makine yapılandırması oluşturun. Bu yapılandırma, sanal makineyi dağıtırken kullanılan sanal makine görüntüsü, boyutu ve kimlik doğrulama yapılandırması gibi ayarları içerir. Bu adımı çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır.
 
@@ -127,7 +127,7 @@ Serinin birinci bölümünde, bir depolama hesabı oluşturmayı, bir sanal maki
 
 > [!div class="checklist"]
 > * Depolama hesabı oluşturma
-> * Sanal makine oluşturma
+> * Sanal makine oluşturun
 > * Özel betik uzantısı yapılandırma
 
 Üstel yeniden deneme ve paralelliği kullanarak depolama hesabına büyük miktarlarda veri yüklemek için serinin ikinci bölümüne ilerleyin.

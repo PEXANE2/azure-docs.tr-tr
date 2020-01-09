@@ -1,17 +1,17 @@
 ---
-title: Redsıs için Premium Azure önbelleği için bir sanal ağ yapılandırma
+title: Bir sanal ağ ve Redsıs için Premium Azure önbelleği yapılandırma
 description: Redsıs örnekleri için Premium katman Azure önbelleğiniz için sanal ağ desteği oluşturma ve yönetme hakkında bilgi edinin
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: yegu
-ms.openlocfilehash: 03cc5bd4e6e7198a6a3a916226c72e9b0f9ff1b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f449dc08dede30a7dec977bb66e0a2c0b509a1f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433482"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. VNet, buluttaki özel bir ağ. Redsıs örneği için bir Azure önbelleği bir sanal ağ ile yapılandırıldığında, bu, genel olarak adreslenebilir değildir ve yalnızca VNet içindeki sanal makineler ve uygulamalardan erişilebilir. Bu makalede, Redsıs örneği için Premium bir Azure önbelleği için sanal ağ desteğinin nasıl yapılandırılacağı açıklanır.

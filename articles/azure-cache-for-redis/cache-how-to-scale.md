@@ -1,17 +1,17 @@
 ---
 title: Redsıs için Azure önbelleğini ölçeklendirme
-description: Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmeyi öğrenin
+description: Azure portal, Azure PowerShell ve Azure CLı gibi araçları kullanarak Redsıs örnekleri için Azure önbelleğinizi ölçeklendirmeyi öğrenin.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.author: yegu
-ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122130"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433512"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini ölçeklendirme
 Redin için Azure önbelleğinde, önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek teklifleri vardır. Bir önbellek oluşturulduktan sonra, uygulamanızın gereksinimlerinin değiştirilmesi durumunda önbelleğin boyutunu ve fiyatlandırma katmanını ölçeklendirebilirsiniz. Bu makalede, Azure portal ve Azure PowerShell ve Azure CLı gibi araçları kullanarak önbelleğinizi nasıl ölçekleyebilirsiniz.
@@ -22,16 +22,16 @@ Redsıs için Azure cache [izleme](cache-how-to-monitor.md) özelliklerini kulla
 Ölçeklendirmeniz gerekip gerekmediğini belirlemenize yardımcı olması için aşağıdaki ölçümleri izleyebilirsiniz.
 
 * Redsıs sunucu yükü
-* Bellek kullanımı
+* Memory Usage
 * Ağ bant genişliği
-* CPU kullanımı
+* CPU Kullanımı
 
 Önbelleğinizin artık uygulamanızın gereksinimlerini karşılamadığını belirlerseniz, uygulamanız için uygun olan daha büyük veya daha küçük bir önbellek fiyatlandırma katmanına ölçeklendirebilirsiniz. Hangi önbellek fiyatlandırma katmanını kullanacağınızı belirleme hakkında daha fazla bilgi için bkz. [redne Için Azure Cache ve size ne kadar bellek kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="scale-a-cache"></a>Bir önbelleği ölçeklendirme
 Önbelleğinizi ölçeklendirmek için [Azure Portal](https://portal.azure.com) [önbelleğe](cache-configure.md#configure-azure-cache-for-redis-settings) gidin ve **Kaynak menüsünden** **Ölçekle** ' ye tıklayın.
 
-![Ölçek](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Ölçeklendirme](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 **Fiyatlandırma katmanı Seç** dikey penceresinde istediğiniz fiyatlandırma katmanını seçin ve **Seç**' e tıklayın.
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: aahi
 zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: 93912ef93ab1065bf3b7c5010c485f99229a06a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 67e404675d6a4917b6e26c0c5dd5e067a3408652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446304"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığını kullanma
 
@@ -24,7 +24,7 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 
 Şunları yapmak için Metin Analizi istemci kitaplığını kullanın:
 
-* Yaklaşım analizi
+* Duygu analizi
 * Dil algılama
 * Varlık tanıma
 * Anahtar tümcecik ayıklama

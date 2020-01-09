@@ -1,17 +1,17 @@
 ---
-title: Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
+title: Redsıs kümelemesini yapılandırma-Redsıs için Premium Azure önbelleği
 description: Redsıs örnekleri için Premium katman Azure önbelleğiniz için Redsıs Kümelemesi oluşturmayı ve yönetmeyi öğrenin
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: yegu
-ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433444"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
@@ -122,14 +122,13 @@ Reddo kümeleme protokolü, her bir istemcinin her parçaya doğrudan kümeleme 
 
 > [!NOTE]
 > İstemci olarak StackExchange. Redsıs kullanıyorsanız, kümelemenin doğru bir şekilde çalışması için [StackExchange. redsıs](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 veya üzeri sürümünün en son sürümünü kullandığınızdan emin olun. Taşıma özel durumlarıyla ilgili herhangi bir sorununuz varsa daha fazla bilgi için bkz. [özel durumları taşıma](#move-exceptions) .
-> 
-> 
+>
 
 ### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>Kümeleme etkinleştirildiğinde Nasıl yaparım? önbellekme bağlansın mı?
 Kümelemeye sahip olmayan bir önbelleğe bağlanırken kullandığınız [uç noktaları](cache-configure.md#properties), [bağlantı noktalarını](cache-configure.md#properties)ve [anahtarları](cache-configure.md#access-keys) kullanarak önbelleğinize bağlanabilirsiniz. Redsıs, arka uçta kümelendirmeyi yönetir, böylece istemciden yönetmeniz gerekmez.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Önbelleğim bireysel parçalara doğrudan bağlanabilir miyim?
-Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm `-c` anahtarla başlatıldığında temel desteği uygular. Daha fazla bilgi için bkz. [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial) [https://redis.io](https://redis.io) [kümeyle birlikte yürütme](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) .
+Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm `-c` anahtarla başlatıldığında temel desteği uygular. Daha fazla bilgi için bkz. [redsıs kümesi öğreticisindeki](https://redis.io/topics/cluster-tutorial) [https://redis.io](https://redis.io) [kümeyle yürütme](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) .
 
 SSL olmayan için aşağıdaki komutları kullanın.
 
@@ -142,7 +141,7 @@ SSL olmayan için aşağıdaki komutları kullanın.
 SSL için `1300N` `1500N`ile değiştirin.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Daha önce oluşturulmuş bir önbellek için kümeleme yapılandırabilir miyim?
-Evet. İlk olarak, yoksa ölçeklendirmeye göre önbelleğinizin Premium olduğundan emin olun. Daha sonra, clsuter etkinleştirme seçeneği dahil olmak üzere küme yapılandırma seçeneklerini görebilmeniz gerekir. Önbellek oluşturulduktan sonra veya kümelemeyi ilk kez etkinleştirdikten sonra küme boyutunu değiştirebilirsiniz.
+Evet. İlk olarak, yoksa ölçeklendirmeye göre önbelleğinizin Premium olduğundan emin olun. Daha sonra, küme yapılandırma seçeneklerini, kümeyi etkinleştirme seçeneği de dahil olmak üzere görebilmeniz gerekir. Önbellek oluşturulduktan sonra veya kümelemeyi ilk kez etkinleştirdikten sonra küme boyutunu değiştirebilirsiniz.
 
    >[!IMPORTANT]
    >Kümelemeyi etkinleştirme işlemini geri alamazsınız. Ve kümeleme etkin olan bir önbellek ve yalnızca bir parça, kümeleme *olmadan* aynı boyuttaki bir önbellekten *farklı* davranır.
@@ -171,10 +170,3 @@ Daha fazla Premium önbellek özelliği kullanmayı öğrenin.
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
-
-
-
-
-
-
-

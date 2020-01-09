@@ -1,5 +1,5 @@
 ---
-title: Azure Depolama’dan büyük miktarda rastgele verileri indirme | Microsoft Docs
+title: Azure depolama 'dan büyük miktarda rastgele verileri indirin | Microsoft Docs
 description: Azure Depolama hesabından büyük miktarda rastgele verileri indirmek için Azure SDK’nın nasıl kullanılacağını öğrenin
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372100"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Depolama’dan büyük miktarda rastgele verileri indirme
 
@@ -25,9 +25,9 @@ Serinin üçüncü bölümünde şunları öğrenirsiniz:
 > * Uygulamayı çalıştırma
 > * Bağlantı sayısını doğrulama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için önceki depolama öğreticisini tamamlamış olmanız gerekir: [Büyük miktarlarda rastgele verileri paralel olarak Azure depolama 'Ya yükleyin][previous-tutorial].
+Bu öğreticiyi tamamlayabilmeniz için önceki depolama öğreticisini tamamlamış olmanız gerekir: [büyük miktarlarda rastgele verileri Azure depolama 'ya paralel olarak yükleyin][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Sanal makinenize uzaktan bağlanma
 
@@ -98,10 +98,10 @@ dotnet run
 Uygulama, **storageconnectionstring** içinde belirtilen depolama hesabında bulunan kapsayıcıları okur. Kapsayıcılarda [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) yöntemini kullanarak aynı anda 10 blobda gezinir ve [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak bunları yerel makineye indirir.
 Aşağıdaki tabloda, indirilen her blob için tanımlanan [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) gösterilir.
 
-|Özellik|Value|Açıklama|
+|Özellik|Değer|Açıklama|
 |---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Bu özellik, karşıya yüklenen içeriğin MD5 karmasının denetimini devre dışı bırakır. MD5 doğrulaması devre dışı bırakıldığında daha hızlı bir aktarım üretilir. Ancak aktarılan dosyaların geçerliliği veya bütünlüğü onaylanmaz. |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Bu özellik, bir MD5 karmasının hesaplanıp hesaplanmayacağını ve depolanıp depolanmayacağını belirler.   |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| doğru| Bu özellik, karşıya yüklenen içeriğin MD5 karmasının denetimini devre dışı bırakır. MD5 doğrulaması devre dışı bırakıldığında daha hızlı bir aktarım üretilir. Ancak aktarılan dosyaların geçerliliği veya bütünlüğü onaylanmaz. |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| yanlış| Bu özellik, bir MD5 karmasının hesaplanıp hesaplanmayacağını ve depolanıp depolanmayacağını belirler.   |
 
 Aşağıdaki örnekte `DownloadFilesAsync` görevi gösterilmektedir:
 

@@ -8,12 +8,12 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517858"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75541809"
 ---
 1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
@@ -38,5 +38,5 @@ ms.locfileid: "73517858"
 
 - **Veri Içeri aktarma** veya **veri modüllerini dışarı aktarma**
         
-    Deneyde bir veri **Içeri aktarma** veya **veri verme** modülünüzün olması durumunda veri mağazalarını kullanmak için veri kaynağını güncelleştirmeniz gerekir. Bir veri deposu oluşturmayı öğrenmek için bkz. [Azure Storage hizmetlerindeki verilere erişme](../articles/machine-learning/service/how-to-access-data.md). Bulut depolama hesabı bilgileriniz, kolaylık sağlamak için **verileri Içeri aktarma** veya **verileri dışarı aktarma** modülünün açıklamalarına eklenmiştir. 
+    Deneyde bir veri **Içeri aktarma** veya **veri verme** modülünüzün olması durumunda veri mağazalarını kullanmak için veri kaynağını güncelleştirmeniz gerekir. Bir veri deposu oluşturmayı öğrenmek için bkz. [Azure Storage hizmetlerindeki verilere erişme](../articles/machine-learning/how-to-access-data.md). Bulut depolama hesabı bilgileriniz, kolaylık sağlamak için **verileri Içeri aktarma** veya **verileri dışarı aktarma** modülünün açıklamalarına eklenmiştir. 
       

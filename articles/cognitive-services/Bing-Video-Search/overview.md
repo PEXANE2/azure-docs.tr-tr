@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/26/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4f3a52590a9a0c50bdc87f87792027333fc5269f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382727"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Arama API'si nedir?
 
@@ -31,7 +31,7 @@ Bing Video Arama API'si, hizmet ve uygulamalarınıza video arama özellikleri e
 | [Popüler videoları al](trending-videos.md) | Dünyanın dört bir yanındaki popüler videolar için arama yapın.                                                                                                          |
 | [Video öngörüleri edinin](video-insights.md) | Dünyanın dört bir yanındaki popüler videolar için bir arama özelleştirin.                                                                                                          |
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Bing Video Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. Hizmeti [REST API](csharp.md) veya [SDK](video-search-sdk-quickstart.md) kullanarak kullanabilirsiniz.
 
@@ -53,3 +53,5 @@ API'yi çağırmaya hazır olduğunuzda, bir [Bilişsel hizmetler API hesabı](h
 * [Bing video arama API'si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) başvuru sayfası, arama sonuçları istemek için kullanılan bitiş noktaları, üst bilgiler ve sorgu parametrelerinin listesini içerir.
 
 * Bing Arama API'leri ile edinilen içeriğin ve bilgilerin kabul edilebilir kullanımları [Bing Kullanımı ve Görüntü Gereksinimleri](./useanddisplayrequirements.md) konusunda belirtilmektedir.
+
+* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.

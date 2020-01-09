@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392822"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR hizmetindeki mesajlar ve bağlantılar
 
@@ -38,8 +38,6 @@ Faturalandırma için yalnızca Azure SignalR hizmetinden gelen giden iletiler s
 
 Örneğin, üç istemciniz ve bir uygulama sunucunuz olduğunu varsayalım. Bir istemci, sunucunun tüm istemcilere yayınlamasına izin vermek için 4 KB 'lik bir ileti gönderir. İleti sayısı sekiz ' dır: hizmetten uygulama sunucusuna bir ileti ve hizmetten istemcilere yapılan üç ileti. Her ileti iki adet 2 KB 'lik ileti olarak sayılır.
 
-Azure portal gösterilen ileti sayısı, 100 ' den fazla olacak şekilde biriktirene kadar 0 olarak kalır.
-
 ## <a name="how-connections-are-counted"></a>Bağlantılar nasıl sayılır?
 
 Azure SignalR hizmeti ile sunucu bağlantıları ve istemci bağlantıları vardır. Varsayılan olarak, her bir uygulama sunucusu hub başına beş ilk bağlantı ile başlar ve her istemcide bir istemci bağlantısı vardır.
@@ -54,7 +52,7 @@ Uygulama sunucusunun kullanım ömrü boyunca, hizmet ve uygulama sunucusu eşit
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Gelen/giden trafik nasıl sayılır?
 
-Gelen trafik ve giden trafik arasındaki ayrım, Azure SignalR hizmeti perspektifine dayanır. Trafik bayt cinsinden hesaplanır. İleti sayısı gibi trafik da bir örnekleme oranına sahiptir. Azure portal gelen/giden grafik, hub başına her 100 KB güncelleştirilir.
+Gelen trafik ve giden trafik arasındaki ayrım, Azure SignalR hizmeti perspektifine dayanır. Trafik bayt cinsinden hesaplanır.
 
 ## <a name="related-resources"></a>İlgili kaynaklar
 

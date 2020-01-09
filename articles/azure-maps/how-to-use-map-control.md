@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d70d0e1107a6ee1b53b178d8912c1b808472b142
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432908"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure haritalar harita denetimini kullanma
 
@@ -36,7 +36,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
 
     b. Alternatif olarak, Azure Maps web SDK kaynak kodunu [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) NPM paketini kullanarak yerel olarak yükleyin ve uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir.
 
-    > NPM Install Azure-Maps-Control
+    > **NPM Install Azure-Maps-Control**
 
     Ardından, Azure Maps stil sayfasına ve betik kaynağı başvurularına başvuruları dosyanın `<head>` öğesine ekleyin:
 
@@ -74,7 +74,7 @@ Harita Denetimi istemci tarafı JavaScript kitaplığını kullanarak bir Web sa
     </body>
     ```
 
-5. Harita denetimini başlatmak için, HTML gövdesinde yeni bir bölüm tanımlayın ve bir betik oluşturun. `Map` sınıfının bir örneğini oluştururken eşleme `<div>` `id` veya `HTMLElement` (örneğin, `document.getElementById('myMap')`) ilk parametre olarak geçirin. [Kimlik doğrulama seçeneklerini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)kullanarak haritanın kimliğini doğrulamak Için kendi Azure haritalar hesap anahtarınızı veya Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi kullanın. Bir hesap oluşturmanız veya anahtarınızı bulmanız gerekiyorsa bkz. [Azure Maps hesabınızı ve anahtarlarınızı yönetme](how-to-manage-account-keys.md). **Dil** seçeneği, harita etiketleri ve denetimleri için kullanılacak dili belirtir. Desteklenen diller hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md). Kimlik doğrulaması için bir abonelik anahtarı kullanılıyorsa.
+5. Harita denetimini başlatmak için, HTML gövdesinde yeni bir bölüm tanımlayın ve bir betik oluşturun. `Map` sınıfının bir örneğini oluştururken eşleme `<div>` `id` veya `HTMLElement` (örneğin, `document.getElementById('myMap')`) ilk parametre olarak geçirin. [Kimlik doğrulama seçeneklerini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)kullanarak haritanın kimliğini doğrulamak Için kendi Azure haritalar hesap anahtarınızı veya Azure ACTIVE DIRECTORY (AAD) kimlik bilgilerinizi kullanın. Bir hesap oluşturmanız veya anahtarınızı bulmanız gerekiyorsa, hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. **Dil** seçeneği, harita etiketleri ve denetimleri için kullanılacak dili belirtir. Desteklenen diller hakkında daha fazla bilgi için bkz. [desteklenen diller](supported-languages.md). Kimlik doğrulaması için bir abonelik anahtarı kullanılıyorsa.
 
     ```HTML
     <script type="text/javascript">
@@ -210,6 +210,26 @@ Aşağıda, dil "fr-FR" olarak ayarlanan ve bölgesel görünüm "Auto" olarak a
 ![Fransızca 'da etiketleri gösteren harita resmi](./media/how-to-use-map-control/websdk-localization.png)
 
 Desteklenen dillerin ve bölgesel görünümlerin tamamen listesi [burada](supported-languages.md)belgelenmiştir.
+
+## <a name="azure-government-cloud-support"></a>Azure Kamu bulut desteği
+
+Azure Haritalar Web SDK 'Sı, Azure Kamu Bulutu 'nı destekler. Azure Maps web SDK 'sına erişmek için kullanılan tüm JavaScript ve CSS URL 'Leri aynı kalır, ancak Azure haritalar platformunun Azure Kamu bulut sürümüne bağlanmak için aşağıdaki görevlerin yapılması gerekir.
+
+Etkileşimli harita denetimini kullanırken, `Map` sınıfının bir örneğini oluşturmadan önce aşağıdaki kod satırını ekleyin. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Harita ve hizmetlerin kimliğini doğrularken Azure Kamu bulutu platformundan Azure Maps kimlik doğrulama ayrıntılarını kullandığınızdan emin olun.
+
+Hizmetler modülünü kullanırken, bir API URL uç noktası örneği oluşturulurken hizmetler için etki alanının ayarlanması gerekir. Örneğin, aşağıdaki kod `SearchURL` sınıfının bir örneğini oluşturur ve etki alanını Azure Kamu bulutuna yönlendirir.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Azure haritalar REST hizmetlerine doğrudan erişiyorsanız, URL etki alanını `atlas.azure.us`değiştirin. Örneğin, arama API 'si hizmetini kullanıyorsanız, `https://atlas.microsoft.com/search/` URL etki alanını `https://atlas.azure.us/search/`olarak değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

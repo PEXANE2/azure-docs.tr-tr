@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433388"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Şablon kullanarak Redsıs için bir Web uygulaması ve Azure önbelleği oluşturma
 
@@ -20,7 +20,7 @@ ms.locfileid: "74122643"
 
 Bu konu başlığında, Reda için Azure Cache ile Azure Web uygulaması dağıtan bir Azure Resource Manager şablonu oluşturmayı öğreneceksiniz. Hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağını nasıl tanımlayacağınızı öğreneceksiniz. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
 
-Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/resource-group-authoring-templates.md). Önbellek kaynak türleri için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Cache kaynak türleri](/azure/templates/microsoft.cache/allversions).
+Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md). Önbellek kaynak türleri için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Cache kaynak türleri](/azure/templates/microsoft.cache/allversions).
 
 Tüm şablon için bkz. [redsıs şablonu Için Azure Cache Ile Web uygulaması](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
@@ -28,7 +28,7 @@ Tüm şablon için bkz. [redsıs şablonu Için Azure Cache Ile Web uygulaması]
 Bu şablonda şunları dağıtacaksınız:
 
 * Azure Web Uygulaması
-* Redis için Azure Önbelleği
+* Redis için Azure Cache
 
 Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıklayın:
 
@@ -40,7 +40,7 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Adlar için değişkenler
-Bu şablon, kaynakların adlarını oluşturmak için değişkenleri kullanır. Kaynak grubu kimliğini temel alan bir değer oluşturmak için [Uniquestring](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) işlevini kullanır.
+Bu şablon, kaynakların adlarını oluşturmak için değişkenleri kullanır. Kaynak grubu kimliğini temel alan bir değer oluşturmak için [Uniquestring](../azure-resource-manager/templates/template-functions-string.md#uniquestring) işlevini kullanır.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -52,7 +52,7 @@ Bu şablon, kaynakların adlarını oluşturmak için değişkenleri kullanır. 
 ## <a name="resources-to-deploy"></a>Dağıtılacak kaynaklar
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+### <a name="azure-cache-for-redis"></a>Redis için Azure Cache
 Web uygulamasıyla birlikte kullanılan redo için Azure önbelleğini oluşturur. Önbelleğin adı **CacheName** değişkeninde belirtilir.
 
 Şablon, kaynak grubuyla aynı konumda bulunan önbelleği oluşturur.

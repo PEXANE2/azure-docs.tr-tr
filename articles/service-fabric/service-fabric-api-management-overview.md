@@ -1,25 +1,16 @@
 ---
-title: API Management genel bakış ile Azure Service Fabric | Microsoft Docs
+title: API Management genel bakış ile Azure Service Fabric
 description: Bu makale, Azure API Management Service Fabric uygulamalarınıza yönelik bir ağ geçidi olarak kullanılmasına giriş niteliğindedir.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378119"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric Azure API Management genel bakış
 
@@ -27,7 +18,7 @@ Bulut uygulamalarının normalde kullanıcılar, cihazlar ve diğer uygulamalara
 
 Bu makale, Azure API Management Service Fabric uygulamalarınıza yönelik bir ağ geçidi olarak kullanılmasına giriş niteliğindedir. API Management, arka uç Service Fabric hizmetlerinize zengin bir yönlendirme kuralları kümesiyle API 'Ler yayımlamanıza olanak tanıyan doğrudan Service Fabric ile tümleşir. 
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
 > [!IMPORTANT]
 > Bu özellik, gerekli sanal ağ desteği nedeniyle API Management **Premium** ve **Geliştirici** katmanlarında kullanılabilir.
@@ -48,7 +39,7 @@ Bu senaryoda, Web Kullanıcı arabirimi hala bir Web hizmeti aracılığıyla su
 
 ## <a name="application-scenarios"></a>Uygulama senaryoları
 
-Service Fabric hizmetler durum bilgisiz ya da durum bilgisi olabilir ve üç düzenden biri kullanılarak bölümlenebilir: Singleton, INT-64 aralığı ve adlandırılmış. Hizmet uç noktası çözümlemesi, belirli bir hizmet örneğinin belirli bir bölümünü tanımlamayı gerektirir. Bir hizmetin uç noktasını çözümlerken, tek bir bölüm olması dışında hizmet örneği adının (örneğin, `fabric:/myapp/myservice`) yanı sıra hizmetin belirli bir bölümünün belirtilmesi gerekir.
+Service Fabric hizmetler durum bilgisiz ya da durum bilgisi olabilir ve üç düzenden biri kullanılarak bölümlenebilir: Singleton, INT-64 aralığı ve adlandırılmış. Hizmet uç noktası çözümlemesi, belirli bir hizmet örneğinin belirli bir bölümünü tanımlamayı gerektirir. Bir hizmetin uç noktası çözümlenirken, tek bir bölüm olması dışında hizmet örneği adının (örneğin, `fabric:/myapp/myservice`) yanı sıra hizmetin belirli bir bölümünün de belirtilmesi gerekir.
 
 Azure API Management, herhangi bir durum bilgisi olmayan hizmetler, durum bilgisi olan hizmetler ve herhangi bir bölümleme şeması ile birlikte kullanılabilir.
 
@@ -57,7 +48,7 @@ Azure API Management, herhangi bir durum bilgisi olmayan hizmetler, durum bilgis
 En basit durumda, trafik durum bilgisi olmayan bir hizmet örneğine iletilir. Bunu başarmak için bir API Management işlemi, Service Fabric arka ucunda belirli bir durum bilgisi olmayan hizmet örneğiyle eşleşen bir Service Fabric arka ucu olan bir gelen işlem ilkesi içerir. Bu hizmete gönderilen istekler hizmetin rastgele bir örneğine gönderilir.
 
 #### <a name="example"></a>Örnek
-Aşağıdaki senaryoda, bir Service Fabric uygulaması, iç HTTP API 'sini kullanıma sunan `fabric:/app/fooservice`, adlı, durum bilgisi olmayan bir hizmet içerir. Hizmet örneği adı iyi bilinmektedir ve API Management gelen işlem ilkesinde doğrudan sabit kodlanmış olabilir. 
+Aşağıdaki senaryoda bir Service Fabric uygulaması, iç HTTP API 'sini kullanıma sunan `fabric:/app/fooservice`adlı, durum bilgisi olmayan bir hizmet içerir. Hizmet örneği adı iyi bilinmektedir ve API Management gelen işlem ilkesinde doğrudan sabit kodlanmış olabilir. 
 
 ![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-static-stateless]
 
@@ -67,9 +58,9 @@ Durum bilgisi olmayan hizmet senaryosuna benzer şekilde trafik, durum bilgisi o
 
 #### <a name="example"></a>Örnek
 
-Aşağıdaki senaryoda bir Service Fabric uygulaması, iç HTTP API 'sini kullanıma sunan adlandırılmış `fabric:/app/userservice` bir durum bilgisi olmayan hizmet içerir. Hizmet örneği adı iyi bilinmektedir ve API Management gelen işlem ilkesinde doğrudan sabit kodlanmış olabilir.  
+Aşağıdaki senaryoda bir Service Fabric uygulaması, iç HTTP API 'sini kullanıma sunan `fabric:/app/userservice` adlı bölümlenmiş bir durum bilgisi olan hizmet içerir. Hizmet örneği adı iyi bilinmektedir ve API Management gelen işlem ilkesinde doğrudan sabit kodlanmış olabilir.  
 
-Hizmet, iki bölümden oluşan Int64 bölüm şeması ve ile yayılan `Int64.MinValue` `Int64.MaxValue`bir anahtar aralığı kullanılarak bölümlenir. Arka uç ilkesi, burada, Bölüm anahtarını hesaplamak için herhangi bir algoritma kullanılabilse de `id` , URL isteği yolunda belirtilen değeri 64 bitlik bir tamsayıya dönüştürerek bu aralıktaki bir bölüm anahtarını hesaplar. 
+Hizmet, iki bölümden oluşan Int64 bölüm şeması ve `Int64.MaxValue``Int64.MinValue` yayılan bir anahtar aralığı kullanılarak bölümlenir. Arka uç ilkesi, burada, Bölüm anahtarını hesaplamak için herhangi bir algoritma kullanılabilse de, URL isteği yolunda belirtilen `id` değerini 64 bitlik bir tamsayıya dönüştürerek bu aralıktaki bir bölüm anahtarını hesaplar. 
 
 ![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-static-stateful]
 
@@ -85,10 +76,10 @@ Bu örnekte, aşağıdaki formül kullanılarak dinamik olarak oluşturulan bir 
  
 - `fabric:/app/users/<username>`
 
-  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolunda belirtilen değerden oluşturulur. Örneğin:
+  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında URL isteği yolunda belirtilen `name` değerinden oluşturulur. Örneğin:
 
-  - Hizmet örneğine yönlendirilme isteği `/api/users/foo``fabric:/app/users/foo`
-  - Hizmet örneğine yönlendirilme isteği `/api/users/bar``fabric:/app/users/bar`
+  - `/api/users/foo` isteği hizmet örneğine yönlendirilir `fabric:/app/users/foo`
+  - `/api/users/bar` isteği hizmet örneğine yönlendirilir `fabric:/app/users/bar`
 
 ![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-dynamic-stateless]
 
@@ -104,12 +95,12 @@ Bu örnekte, aşağıdaki formül kullanılarak dinamik olarak oluşturulan bir 
  
 - `fabric:/app/users/<username>`
 
-  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, arka uç ilke tanımında `name` URL istek yolu sağlanmış değerden oluşturulur. Örneğin:
+  Her hizmetin benzersiz bir adı vardır, ancak hizmetler Kullanıcı veya yönetici girişine yanıt olarak oluşturulduğundan ve bu nedenle APIM ilkelerine veya yönlendirme kurallarına sabit olarak kodlanamadığından bilinen adlar bilinmez. Bunun yerine, bir isteğin gönderileceği hizmetin adı, URL istek yolu belirtilen `name` değerinden arka uç ilke tanımında oluşturulur. Örneğin:
 
-  - Hizmet örneğine yönlendirilme isteği `/api/users/foo``fabric:/app/users/foo`
-  - Hizmet örneğine yönlendirilme isteği `/api/users/bar``fabric:/app/users/bar`
+  - `/api/users/foo` isteği hizmet örneğine yönlendirilir `fabric:/app/users/foo`
+  - `/api/users/bar` isteği hizmet örneğine yönlendirilir `fabric:/app/users/bar`
 
-Her hizmet örneği aynı zamanda iki bölümden oluşan Int64 bölüm şeması ve ile yayılan `Int64.MinValue` `Int64.MaxValue`bir anahtar aralığı kullanılarak bölümlenir. Arka uç ilkesi, burada, Bölüm anahtarını hesaplamak için herhangi bir algoritma kullanılabilse de `id` , URL isteği yolunda belirtilen değeri 64 bitlik bir tamsayıya dönüştürerek bu aralıktaki bir bölüm anahtarını hesaplar. 
+Her hizmet örneği aynı zamanda iki bölümden oluşan Int64 bölüm şeması ve `Int64.MaxValue``Int64.MinValue` yayılan bir anahtar aralığı kullanılarak bölümlenir. Arka uç ilkesi, burada, Bölüm anahtarını hesaplamak için herhangi bir algoritma kullanılabilse de, URL isteği yolunda belirtilen `id` değerini 64 bitlik bir tamsayıya dönüştürerek bu aralıktaki bir bölüm anahtarını hesaplar. 
 
 ![Azure API Management topolojisine genel bakış ile Service Fabric][sf-apim-dynamic-stateful]
 

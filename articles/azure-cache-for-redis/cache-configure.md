@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122866"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433545"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -46,7 +46,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
     * [Coğrafi çoğaltma](#geo-replication)
     * [Sanal Ağ](#virtual-network)
     * [Güvenlik duvarı](#firewall)
-    * [Özelliklerinin](#properties)
+    * [Özellikler](#properties)
     * [Kaynaktaki](#locks)
     * [Otomasyon betiği](#automation-script)
 * Yönetim
@@ -70,7 +70,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü**kullanılarak **re
 
 Önbelleğiniz üzerinde gerçekleştirilen eylemleri görüntülemek için **etkinlik günlüğü** ' ne tıklayın. Bu görünümü diğer kaynakları içerecek şekilde genişletmek için filtrelemeyi de kullanabilirsiniz. Denetim günlükleriyle çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/resource-group-audit.md). Redsıs olayları için Azure önbelleğini izleme hakkında daha fazla bilgi için bkz. [işlemler ve uyarılar](cache-how-to-monitor.md#operations-and-alerts).
 
-### <a name="access-control-iam"></a>Erişim denetimi (ıAM)
+### <a name="access-control-iam"></a>Erişim denetimi (IAM)
 
 **Erişim denetimi (IAM)** bölümü Azure Portal rol tabanlı erişim denetımı (RBAC) için destek sağlar. Bu yapılandırma, kuruluşların erişim yönetimi gereksinimlerini yalnızca ve tam olarak karşıladığından yardımcı olur. Daha fazla bilgi için [Azure Portal rol tabanlı erişim denetimi](../role-based-access-control/role-assignments-portal.md)bölümüne bakın.
 
@@ -98,13 +98,13 @@ Tanıla ' ya tıklayın ve sorunları çözmeye yönelik yaygın sorunlar ve str
 * [Coğrafi çoğaltma](#geo-replication)
 * [Sanal Ağ](#virtual-network)
 * [Güvenlik duvarı](#firewall)
-* [Özelliklerinin](#properties)
+* [Özellikler](#properties)
 * [Kaynaktaki](#locks)
 * [Otomasyon betiği](#automation-script)
 
 
 
-### <a name="access-keys"></a>Erişim anahtarları
+### <a name="access-keys"></a>Erişim tuşları
 Önbelleğiniz için erişim anahtarlarını görüntülemek veya yeniden oluşturmak için **erişim tuşları** ' na tıklayın. Bu anahtarlar, önbelleğinize bağlanan istemciler tarafından kullanılır.
 
 ![Redsıs erişim tuşları için Azure önbelleği](./media/cache-configure/redis-cache-manage-keys.png)
@@ -120,7 +120,7 @@ Aşağıdaki ayarlar **Gelişmiş ayarlar** dikey penceresinde yapılandırılı
 SSL olmayan erişim yeni önbellekler için varsayılan olarak devre dışı bırakılmıştır. SSL olmayan bağlantı noktasını etkinleştirmek için, **Gelişmiş ayarlar** dikey PENCERESINDE **yalnızca SSL aracılığıyla erişime izin ver** ' **e tıklayın ve** ardından **Kaydet**' e tıklayın.
 
 > [!NOTE]
-> Redsıs için Azure önbelleğine SSL erişimi varsayılan olarak TLS 1,0 ' i destekler. Desteklenen en düşük TLS sürümü, **Gelişmiş ayarlar** dikey penceresinde **En düşük TLS sürümü** AÇıLAN listesini kullanarak isteniyorsa TLS 1,2 ' e kadar yükseltilebilir ve ardından **Kaydet**' e tıklayabilirsiniz.
+> Redu için Azure önbelleğine SSL erişimi şu anda TLS 1,0, 1,1 ve 1,2 destekler, ancak 1,0 ve 1,1 sürümleri yakında kullanımdan kaldırılıyor.  Daha fazla bilgi için lütfen [TLS 1,0 ve 1,1 ' i kaldırın sayfasını](cache-remove-tls-10-11.md) okuyun.
 
 ![Redsıs erişim bağlantı noktaları için Azure önbelleği](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -193,7 +193,7 @@ Her fiyatlandırma katmanı, istemci bağlantıları, bellek ve bant genişliği
 Önbelleğinizi yükseltmek için, fiyatlandırma katmanını değiştirmek ve önbelleğinizi [ölçeklendirmek](#scale) üzere **Şimdi Yükselt** ' e tıklayın. Fiyatlandırma Katmanı seçme hakkında daha fazla bilgi için bkz. [redne Için Azure önbelleğinin ve boyutun ne kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Ölçek
+### <a name="scale"></a>Ölçeklendirme
 Önbelleğiniz için fiyatlandırma katmanını görüntülemek veya değiştirmek için **Ölçeklendir** ' e tıklayın. Ölçeklendirme hakkında daha fazla bilgi için bkz. [redsıs Için Azure önbelleğini ölçeklendirme](cache-how-to-scale.md).
 
 ![Redsıs fiyatlandırma katmanı için Azure önbelleği](./media/cache-configure/pricing-tier.png)
@@ -263,13 +263,13 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 > 
 > 
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Güvenlik duvarı kuralları yapılandırması, Redsıs katmanlarında tüm Azure önbelleği için kullanılabilir.
 
 Önbellek güvenlik duvarı kurallarını görüntülemek ve yapılandırmak için **güvenlik duvarı** ' na tıklayın.
 
-![Güvenlik duvarı](./media/cache-configure/redis-firewall-rules.png)
+![Güvenlik Duvarı](./media/cache-configure/redis-firewall-rules.png)
 
 Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları belirtebilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Bir güvenlik duvarı kuralı kaydedildiğinde, kural yürürlüğe girmeden önce kısa bir gecikme olur. Bu gecikme genellikle bir dakikadan azdır.
 
@@ -456,9 +456,9 @@ Veritabanları hakkında daha fazla bilgi için bkz. [redsıs veritabanları nel
 > * BGREWRITEAOF
 > * BGSAVE
 > * KURULUMUNUN
-> * H
+> * HATA AYIKLAMA
 > * GEÇIREMEZSINIZ
-> * Kaydet
+> * KAYDET
 > * Event
 > * SLA 'lar
 > * KÜME kümesi yazma komutları devre dışı bırakıldı, ancak salt okunurdur küme komutlarına izin verilir.

@@ -1,28 +1,18 @@
 ---
-title: Azure'da Service Fabric üzerinde Linux kapsayıcı uygulaması oluşturma | Microsoft Docs
+title: Azure 'da Service Fabric Linux kapsayıcı uygulaması oluşturma
 description: Bu hızlı başlangıçta uygulamanızla bir Docker görüntüsü oluşturacak, görüntüyü bir kapsayıcı kayıt defterine iletecek ve kapsayıcınızı bir Service Fabric kümesine dağıtacaksınız.
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372695"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Hızlı Başlangıç: Linux kapsayıcıları Service Fabric'e dağıtma
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Hızlı başlangıç: Linux kapsayıcıları Service Fabric'e dağıtma
 
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları dağıtmayı ve yönetmeyi sağlayan bir dağıtılmış sistemler platformudur.
 
@@ -30,7 +20,7 @@ Bu hızlı başlangıçta, Linux kapsayıcılarını Azure 'da bir Service Fabri
 
 ![Oylama uygulaması web sayfası][quickstartpic]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -40,14 +30,14 @@ Bu hızlı başlangıcı tamamlamak için:
 
 3. [SERVICE fabrıc SDK ve CLI](service-fabric-get-started-linux.md#installation-methods) 'yi yükler
 
-4. [Git](https://git-scm.com/) 'i yükler
+4. [GIT](https://git-scm.com/)’i yükleme
 
 
 ## <a name="get-the-application-package"></a>Uygulama paketini alma
 
 Kapsayıcıları Service Fabric üzerinde dağıtmak için ayrı kapsayıcıları ve uygulamayı açıklayan bildirim dosyası (uygulama tanımı) kümesine ihtiyacınız vardır.
 
-Bir konsolunda, uygulama tanımının bir kopyasını klonlamak için git ' i kullanın; ardından dizinleri kopyanızda `Voting` dizin olarak değiştirin.
+Bir konsolunda, uygulama tanımının bir kopyasını klonlamak için git ' i kullanın; ardından dizinleri kopyanızda `Voting` dizinine değiştirin.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -189,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 Kümenizle çalışmayı tamamladıysanız, sertifikayı sertifika deposundan kaldırabilirsiniz. Örneğin:
-- Windows'da: [SERTIFIKALAR MMC ek bileşenini](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)kullanın. Ek bileşeni eklerken **Kullanıcı hesabım**’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
-- Mac'te: Anahtarlık uygulamasını kullanın.
-- Ubuntu 'da: Sertifikaları görüntülemek ve sertifikayı kaldırmak için kullandığınız adımları izleyin.
+- Windows: [Sertifikalar MMC ek bileşenini](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) kullanın. Ek bileşeni eklerken **Kullanıcı hesabım**’ı seçtiğinizden emin olun. `Certificates - Current User\Personal\Certificates` sayfasına gidip sertifikayı kaldırın.
+- Mac: Anahtarlık uygulamasını kullanın.
+- Ubuntu: Sertifikaları görüntülemek ve sertifikayı kaldırmak için kullandığınız adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

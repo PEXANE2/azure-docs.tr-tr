@@ -3,12 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/15/2018
-ms.openlocfilehash: 890118bf40a621cf92b3999d3ef858955a79d196
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 12/09/2018
+ms.openlocfilehash: c5f736f00c7c048de73b7f4696e29a699107c9cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67134905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382522"
 ---
-Olmalıdır bir [Bilişsel hizmetler API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Bing arama API'lerine erişim. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Devam etmeden önce Azure panosundan ücretsiz denemenizi etkinleştirdikten sonra sağlanan erişim anahtarı veya Ücretli abonelik anahtarı gerekir.
+## <a name="create-an-azure-resource"></a>Azure kaynağı oluşturma
+
+Aşağıdaki Azure kaynaklarından birini oluşturarak Bing Video Arama API'si kullanmaya başlayın.
+
+* [Deneme kaynağı oluşturma](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Azure aboneliği gerekmez.
+    * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir olacaktır.
+
+* [Bing arama v7 kaynağı oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.
+    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyin ve daha sonra üretime yönelik ücretli bir katmana yükseltin.
+
+* [Çoklu hizmet kaynağı oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.  
+    * Birden çok bilişsel hizmetler genelinde uygulamalarınız için aynı anahtarı ve uç noktayı kullanın.

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391839"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -28,6 +28,7 @@ Azure VM Aracısı durdurulmuş, süresi geçmiş, tutarsız durumda veya yükl�
 - **Azure Portal > vm > ayarları > Özellikler dikey penceresini açın** > VM **durumunun** **çalıştığından** ve **Aracı durumunun** **hazırlanmaya**çalıştığından emin olun. VM Aracısı durdurulmuşsa veya tutarsız bir durumdaysa aracıyı yeniden başlatın<br>
   - Windows VM 'Leri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) izleyin.<br>
   - Linux sanal makineleri için, Konuk aracısını yeniden başlatmak için aşağıdaki [adımları](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) izleyin.
+- **Azure Portal > VM > ayarları > uzantıları 'Nı açın** > tüm uzantıların **sağlama başarılı** durumunda olduğundan emin olun. Aksi takdirde, bu sorunu çözmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) izleyin.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError-anlık görüntü durumu için VM aracısıyla iletişim kurulamadı
 
@@ -53,7 +54,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 
 Bu hata, uzantı hatalarından biri VM 'yi sağlama başarısız durumuna koyarken oluşur.<br>**Azure Portal > VM > ayarlar > uzantıları > uzantıları durumunu açın** ve tüm uzantıların **sağlama başarılı** durumunda olup olmadığını denetleyin.
 
-- VMSnapshot uzantısı başarısız durumdaysa, başarısız olan uzantıya sağ tıklayın ve kaldırın. Geçici yedekleme tetikleyin, bu, uzantıları yeniden yükler ve yedekleme işini çalıştırır.  <br>
+- VMSnapshot uzantısı hatalı durumdaysa, başarısız olan uzantıya sağ tıklayın ve kaldırın. İsteğe bağlı yedekleme tetikleyin, bu, uzantıları yeniden yükler ve yedekleme işini çalıştırır.  <br>
 - Başka herhangi bir uzantı başarısız durumdaysa, yedeklemeyi kesintiye uğratabilirler. Uzantı sorunlarının çözümlendiğinden emin olun ve yedekleme işlemini yeniden deneyin.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>Usererrorrpcollectionlimitulaşıldı-geri yükleme noktası koleksiyonu en yüksek sınırına ulaşıldı
@@ -229,7 +230,7 @@ Uzantıyı kaldırmak için:
 1. [Azure Portal](https://portal.azure.com/), yedekleme hatası yaşayan VM 'ye gidin.
 2. Seçin **ayarları**.
 3. **Uzantılar**'ı seçin.
-4. **VMSnapshot uzantısını**seçin.
+4. **Anlık görüntü uzantısı**' nı seçin.
 5. **Kaldır**'ı seçin.
 
 Linux VM için, VMSnapshot uzantısı Azure portal görünmüyorsa, [Azure Linux aracısını güncelleştirin](../virtual-machines/linux/update-agent.md)ve sonra yedeklemeyi çalıştırın.

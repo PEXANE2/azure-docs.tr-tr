@@ -1,25 +1,14 @@
 ---
-title: Uygulama yükseltmeleri sorunlarını giderme | Microsoft Docs
+title: Uygulama yükseltme sorunlarını giderme
 description: Bu makalede, bir Service Fabric uygulamasının yükseltilme ve bunların nasıl çözümleneceği konularında karşılaşılan bazı yaygın sorunlar ele alınmaktadır.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: f5df528c7e46a5cb2a5df98f0088a451eb08cd6a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377931"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Uygulama yükseltme ile ilgili sorunları giderme
 
@@ -153,7 +142,7 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-Sistem durumu denetimi hatalarının araştırmasından önce Service Fabric durum modelinin anlaşılmasına gerek vardır. Bunun yanı sıra, bu tür derinlemesine bir bilgi sahibi olmak zorunda kalmadan, iki hizmetin sağlıksız olduğunu görebiliriz: *Fabric:/DemoApp/Svc3* ve *Fabric:/DemoApp/Svc2*, hata durumu raporlarının yanı sıra (Bu durumda "ınjectedfault"). Bu örnekte, en fazla dört hizmet sağlam değildir ve bu,% 0 ' ın varsayılan hedefinin altında (*Maxyüztunhealthi Hizmetleri*) oluşur.
+Sistem durumu denetimi hatalarının araştırmasından önce Service Fabric durum modelinin anlaşılmasına gerek vardır. Bunun yanı sıra, bu tür derinlemesine bir bilgi sahibi olmak zorunda kalmadan, iki hizmetin sağlıksız olduğunu görebiliriz: *Fabric:/DemoApp/Svc3* ve *Fabric:/DemoApp/Svc2*, hata durumu raporlarının yanı sıra (Bu durumda "ınjectedfault"). Bu örnekte, en fazla dört hizmet sağlam değildir ve bu, %0 ' ın varsayılan hedefinin altında (*Maxyüztunhealthi Hizmetleri*) oluşur.
 
 Yükseltme işlemi başlatılırken el ile yapılan bir **FailureAction** belirtilerek yükseltme işlemi başarısız olduğunda askıya alındı. Bu mod, başka bir işlem yapmadan önce, başarısız durumunda canlı sistemi araştırmamızı sağlar.
 
@@ -201,13 +190,13 @@ Yükseltme, son askıya alındığı yükseltme etki alanından devam eder ve da
 
 Olası neden 1:
 
-Service Fabric, tüm yüzdeleri sistem durumu değerlendirmesi için gerçek varlık numaralarına (örneğin çoğaltmalar, bölümler ve hizmetler) çevirir ve her zaman tüm varlıklara yuvarlanır. Örneğin, en fazla *Maxyüztunhealthyıreplicasperpartition* değeri% 21 ise ve beş çoğaltma varsa Service Fabric, en fazla sağlıksız çoğaltmaya (yani, `Math.Ceiling (5*0.21)`) izin verir. Bu nedenle, sistem durumu ilkeleri uygun şekilde ayarlanmalıdır.
+Service Fabric, tüm yüzdeleri sistem durumu değerlendirmesi için gerçek varlık numaralarına (örneğin çoğaltmalar, bölümler ve hizmetler) çevirir ve her zaman tüm varlıklara yuvarlanır. Örneğin, en fazla *Maxyüztunhealthyıreplicasperpartition* değeri %21 ise ve beş çoğaltma varsa Service Fabric, en fazla sağlıksız çoğaltmaya (yani,`Math.Ceiling (5*0.21)`) izin verir. Bu nedenle, sistem durumu ilkeleri uygun şekilde ayarlanmalıdır.
 
 Olası neden 2:
 
-Sistem durumu ilkeleri, belirli hizmet örneklerinin değil, toplam hizmet yüzdeleriyle belirtilmiştir. Örneğin, bir yükseltmeden önce, bir uygulamanın dört hizmet örneği varsa, B, C ve D ise, hizmet D 'nin sağlıksız olduğu ancak uygulamaya çok az etkisi olan. Yükseltme sırasında sağlıksız olan sağlıklı hizmeti D 'yi yoksaymak ve *Maxyüztunhealthyıservices* parametresini yalnızca A, B ve C 'nin sağlıklı olması gerektiğini varsayarak% 25 olarak ayarlamak istiyoruz.
+Sistem durumu ilkeleri, belirli hizmet örneklerinin değil, toplam hizmet yüzdeleriyle belirtilmiştir. Örneğin, bir yükseltmeden önce, bir uygulamanın dört hizmet örneği varsa, B, C ve D ise, hizmet D 'nin sağlıksız olduğu ancak uygulamaya çok az etkisi olan. Yükseltme sırasında sağlıksız olan sağlıklı hizmeti D 'yi yoksaymak ve *Maxyüztunhealthyıservices* parametresini yalnızca A, B ve C 'nin sağlıklı olması gerektiğini varsayarak %25 olarak ayarlamak istiyoruz.
 
-Bununla birlikte, yükseltme sırasında C iyi durumda olduğunda D iyi hale gelebilir. Hizmetin yalnızca% 25 ' i sağlıksız olduğu için yükseltme işlemi yine de başarılı olur. Ancak, C yerine beklenmedik şekilde sağlıksız olması nedeniyle beklenmeyen hatalara neden olabilir. Bu durumda, D, B ve C 'den farklı bir hizmet türü olarak modellenmelidir. Sistem durumu ilkeleri hizmet türü başına belirtildiğinden, farklı hizmetlere uygun olmayan farklı yüzde eşikleri uygulanabilir. 
+Bununla birlikte, yükseltme sırasında C iyi durumda olduğunda D iyi hale gelebilir. Hizmetin yalnızca %25 ' i sağlıksız olduğu için yükseltme işlemi yine de başarılı olur. Ancak, C yerine beklenmedik şekilde sağlıksız olması nedeniyle beklenmeyen hatalara neden olabilir. Bu durumda, D, B ve C 'den farklı bir hizmet türü olarak modellenmelidir. Sistem durumu ilkeleri hizmet türü başına belirtildiğinden, farklı hizmetlere uygun olmayan farklı yüzde eşikleri uygulanabilir. 
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Uygulama yükseltme için bir sistem durumu ilkesi belirtmedi, ancak hiçbir zaman belirtilmediği zaman aşımları için yükseltme yine de başarısız oluyor
 
@@ -215,7 +204,7 @@ Durum ilkeleri yükseltme isteğine sağlanmazsa, geçerli uygulama sürümünü
 
 ### <a name="incorrect-time-outs-are-specified"></a>Yanlış zaman aşımları belirtildi
 
-Zaman aşımları sürekli olarak ayarlandığında ne olacağını merak etmiş olabilirsiniz. Örneğin, *Upgradedomaintimeout*öğesinden daha az bir *upgradetimeout* olabilir. Yanıt bir hata döndürülür. *Upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckretrytimeout*toplamından daha azsa veya *Upgradedomaintimeout* , *healthcheckwaitduration* 'ın toplamından azsa ve *Healthcheckstableduration*.
+Zaman aşımları sürekli olarak ayarlandığında ne olacağını merak etmiş olabilirsiniz. Örneğin, *Upgradedomaintimeout*öğesinden daha az bir *upgradetimeout* olabilir. Yanıt bir hata döndürülür. *Upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckretrytimeout*toplamından daha azsa veya *upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckstableduration*miktarından küçükse hatalar döndürülür.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>Yükseltmelerim çok uzun sürüyor
 
@@ -223,9 +212,9 @@ Yükseltmenin tamamlanma süresi, belirtilen sistem durumu denetimlerine ve zama
 
 Aşağıda, zaman aşımının yükseltme süreleriyle nasıl etkileşime gireceğini gösteren hızlı bir yenileyici verilmiştir:
 
-Yükseltme etki alanına yönelik yükseltmeler *Healthcheckwaitduration* + *Healthcheckstableduration*değerinden daha hızlı tamamlanamaz.
+Bir yükseltme etki alanına yönelik yükseltmeler, *Healthcheckstableduration* + *healthcheckwaitduration* 'dan daha hızlı tamamlanamaz.
 
-Yükseltme hatası, *Healthcheckwaitduration* + *Healthcheckretrytimeout*değerinden daha hızlı bir şekilde oluşamaz.
+ + *Healthcheckretrytimeout*için yükseltme hatası *Healthcheckwaitduration* değerinden daha hızlı bir şekilde oluşamaz.
 
 Yükseltme etki alanı için yükseltme saati, *Upgradedomaintimeout*ile sınırlıdır.  *Healthcheckretrytimeout* ve *Healthcheckstableduration* her ikisi de sıfır değil ve uygulamanın sistem durumu geri ve ileri geçiş devam ederse, yükseltme son kez *upgradedomaintimeout*tarihinde zaman aşımına uğrar. Geçerli yükseltme etki alanı için yükseltme başladıktan sonra *Upgradedomaintimeout, bir süre sonra zaman aşımına uğramaya* başlar.
 

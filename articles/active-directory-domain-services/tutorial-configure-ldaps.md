@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703707"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549457"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -63,7 +63,7 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 
 * **Güvenilir veren** -sertifika, Güvenli LDAP kullanılarak yönetilen etki alanına bağlanan bilgisayarlar tarafından güvenilen bir yetkili tarafından verilmelidir. Bu yetkili, genel bir CA veya bu bilgisayarlar tarafından güvenilen bir kuruluş CA 'sı olabilir.
 * **Yaşam süresi** -sertifika en az sonraki 3-6 ay için geçerli olmalıdır. Sertifikanın süresi dolarsa, yönetilen etki alanınız için Güvenli LDAP erişimi bozulur.
-* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *aadds.contoso.com*olarak adlandırılmışsa, sertifikanın konu adı **aadds.contoso.com*olmalıdır.
+* **Konu adı** -sertifikadaki Konu adı, yönetilen etki alanınız olmalıdır. Örneğin, etki alanınız *aadds.contoso.com*olarak adlandırılmışsa, sertifikanın konu adı * *. aadds.contoso.com*olmalıdır.
     * Güvenli LDAP 'nin Azure AD Domain Services ile düzgün şekilde çalıştığından emin olmak için sertifikanın DNS adı veya konu diğer adı bir joker sertifika olmalıdır. Etki alanı denetleyicileri rastgele adlar kullanır ve hizmetin kullanılabilir durumda kalmasını sağlamak için kaldırılabilir veya eklenebilir.
 * **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, SSL sunucusu kimlik doğrulaması için geçerli olmalıdır.
@@ -221,7 +221,7 @@ Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen g
     | Protokol                          | TCP          |
     | Eylem                            | Allow        |
     | Öncelik                          | 401          |
-    | Adı                              | AllowLDAPS   |
+    | Ad                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 

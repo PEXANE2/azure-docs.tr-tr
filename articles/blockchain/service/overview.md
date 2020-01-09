@@ -4,12 +4,12 @@ description: Azure blok zinciri hizmeti 'ne genel bakış
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387386"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti nedir?
 
@@ -19,7 +19,7 @@ Azure blok zinciri hizmeti, kullanıcılara blok zinciri ağlarını Azure 'da b
 * Yerleşik konsorsiyum yönetimi
 * Tanıdık geliştirme araçlarıyla akıllı sözleşmeler geliştirin
 
-Azure blok zinciri hizmeti birden çok defter protokolünü destekleyecek şekilde tasarlanmıştır. Şu anda, [iBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensus mekanizması kullanılarak Ethereum [çekirdek](https://www.jpmorgan.com/Quorum) defterine yönelik destek sağlar.
+Azure blok zinciri hizmeti birden çok defter protokolünü destekleyecek şekilde tasarlanmıştır. Şu anda, [iBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensus mekanizması kullanılarak Ethereum [çekirdek](https://www.goquorum.com/) defterine yönelik destek sağlar.
 
 Bu özellikler neredeyse hiç yönetim gerektirmez ve tümüyle ek ücret ödemeden sağlanır. Sanal makineleri ve altyapıyı yönetmek için zaman ve kaynak ayırmak yerine, uygulama geliştirme ve iş mantığına odaklanırsınız. Ayrıca, yeni beceriler öğrenmek zorunda kalmadan çözümlerinizi teslim etmek için seçtiğiniz açık kaynak araçları ve platformuyla uygulamanızı geliştirmeye devam edebilirsiniz.
 
@@ -67,10 +67,17 @@ Azure blok zinciri hizmeti için blok zinciri Veri Yöneticisi, Azure hizmetleri
 
 ## <a name="support-and-feedback"></a>Destek ve geri bildirim
 
-Yardıma mı ihtiyacınız var?
+Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.microsoft.com/blog/topics/blockchain/) ' nı ziyaret ederek, blok zinciri hizmeti tekliflerini ve Azure blok zinciri Mühendisliği ekibinin bilgilerini güncel tutun.
 
-* [Azure blok zinciri blogu](https://azure.microsoft.com/blog/topics/blockchain/), [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)ve [Azure blok zinciri forumunu](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)ziyaret edin.
-* Görüş bildirmek veya yeni özellikler istemek için [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service) aracılığıyla bir giriş oluşturun.
+Ürün geri bildirimi sağlamak veya yeni özellikler istemek için, [blok zinciri Için Azure geri bildirim Forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir oylayın.
+
+### <a name="community-support"></a>Topluluk desteği
+
+Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
+
+* [Azure blok zinciri MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

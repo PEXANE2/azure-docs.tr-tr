@@ -1,25 +1,25 @@
 ---
-title: .NET uygulamaları ile redin için Azure önbelleğini nasıl kullanacağınızı öğrenmek için hızlı başlangıç
+title: 'Hızlı başlangıç: .NET uygulamalarıyla Redsıs için Azure önbelleğini kullanma'
 description: Bu hızlı başlangıçta, .NET uygulamalarınızdan Redsıs için Azure önbelleğine erişme hakkında bilgi edinin
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2738805043b701d9e116d962f88225a6c6ae3e9b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 05/18/2018
+ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433523"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Hızlı başlangıç: .NET Framework bir uygulamayla Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Framework uygulamasına katabilirsiniz. Özel olarak [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini .NET konsol uygulamasında C# kodla birlikte kullanırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
@@ -69,7 +69,7 @@ Yükleme tamamlandıktan sonra *StackExchange.Redis* önbellek istemcisi, projen
 
 ## <a name="connect-to-the-cache"></a>Önbelleğe bağlanma
 
-Visual Studio’da, *App.config* dosyanızı açın ve `appSettings`CacheSecrets.config`file` dosyasına başvuran bir özniteliği içerecek şekilde güncelleştirin.
+Visual Studio 'da *app. config* dosyanızı açın ve *cachegizlilikler. config* dosyasına başvuran bir `appSettings` `file` özniteliği içerecek şekilde güncelleştirin.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -121,7 +121,7 @@ Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu ya
 
 ## <a name="executing-cache-commands"></a>Önbellek komutlarını yürütme
 
-Konsol uygulamanıza yönelik `Main` sınıfının `Program` yordamı için aşağıdaki kodu ekleyin:
+Konsol uygulamanıza yönelik `Program` sınıfının `Main` yordamı için aşağıdaki kodu ekleyin:
 
 ```csharp
         static void Main(string[] args)
@@ -177,7 +177,7 @@ Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu ku
 
 Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önbelleğe alabilir, ancak bir .NET nesnesi önbelleğe alınmadan önce serileştirilmelidir. Bu .NET nesne serileştirmesi uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye seri hale getirici tercihinde esneklik sağlar.
 
-Nesneleri seri hale getirmenin basit bir yolu, `JsonConvert`Newtonsoft.Json[’da ](https://www.nuget.org/packages/Newtonsoft.Json/) seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
+Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
 Visual Studio’da, **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**’na tıklayın ve Paket Yöneticisi Konsolu penceresinden aşağıdaki komutu çalıştırın.
 
@@ -209,7 +209,7 @@ Aşağıdaki `Employee` sınıf tanımını *Program.cs* dosyasına ekleyin:
         }
 ```
 
-`Main()`Program.cs*dosyasındaki* yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
+*Program.cs* dosyasındaki `Main()` yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
 
 ```csharp
             // Store .NET object to cache

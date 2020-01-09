@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 13e25ce0a237d34b98ec42140b86c4955f9058cb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384160"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Hızlı başlangıç: Java kullanarak Bing Varlık Arama REST API arama isteği gönderme
 
@@ -23,7 +23,7 @@ Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görünt
 
 Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 * [Gson kitaplığı](https://github.com/google/gson)
@@ -50,7 +50,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
    import com.google.gson.JsonParser;
    ```
 
-2. Yeni bir sınıfta, API uç noktası, abonelik anahtarınız ve bir arama sorgusu için değişkenler oluşturun.
+2. Yeni bir sınıfta, API uç noktası, abonelik anahtarınız ve bir arama sorgusu için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
    ```java
    public class EntitySearch {

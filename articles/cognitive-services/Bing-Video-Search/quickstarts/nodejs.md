@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382676"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Video Arama REST API ve Node. js kullanarak video arama
 
@@ -39,7 +39,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     let https = require('https');
     ```
 
-2. API uç noktanız, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun.
+2. API uç noktanız, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. `host`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
 
     ```javascript
     let subscriptionKey = 'enter key here';

@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391893"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -109,7 +109,6 @@ VM yedeklemelerini yapılandırırken, aşağıdaki yöntemleri takip ederiz:
 - Bir ilkede ayarlanan varsayılan zamanlama sürelerini değiştirin. Örneğin, ilkedeki varsayılan süre 12:00 ise, kaynakların en iyi şekilde kullanılması için zamanlamayı birkaç dakikaya kadar artırın.
 - VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
 - Hızlı geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir
-- Anlık görüntü aynı depolama hesabında olduğundan, genel amaçlı v1 depolama katmanından (anlık görüntü) geri yüklemeler dakikalar içinde tamamlanır. Genel amaçlı v2 depolama katmanından (kasadan) geri yüklemeler saat sürebilir. Verilerin genel amaçlı v1 depolamada kullanılabildiği durumlarda, daha hızlı [geri yükleme Için anında geri yükleme](backup-instant-restore-capability.md) özelliğini kullanmanızı öneririz. (Verilerin bir kasadan geri yüklenmesi gerekiyorsa daha fazla zaman alır.)
 - Depolama hesabı başına disk sayısı sınırı, diskler hizmet olarak altyapı (IaaS) VM 'sinde çalışan uygulamalar tarafından ne kadar yoğun erişildiğine bağlıdır. Genel bir uygulama olarak, tek bir depolama hesabında 5 ila 10 disk veya daha fazlası varsa, bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengeleyin.
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
@@ -124,14 +123,14 @@ Korumalı örnek boyutu hesaplaması, sanal makinenin *gerçek* boyutuna göre b
 
 Benzer şekilde, yedekleme depolama alanı faturanız, her kurtarma noktasındaki gerçek verilerin toplamı olan Azure Backup depolanan veri miktarına bağlıdır.
 
-Örneğin, her biri en fazla 4 TB boyutunda iki ek veri diskine sahip olan a2 standart boyutlu bir VM alın. Aşağıdaki tabloda, bu disklerin her birinde depolanan gerçek veriler gösterilmektedir:
+Örneğin, her biri en fazla 32 TB boyutunda iki ek veri diskine sahip olan a2 standart boyutlu bir VM alın. Aşağıdaki tabloda, bu disklerin her birinde depolanan gerçek veriler gösterilmektedir:
 
 **Disk** | **En büyük boyut** | **Gerçek veriler var**
 --- | --- | ---
-İşletim sistemi diski | 4095 GB | 17 GB
+İşletim sistemi diski | 32 TB | 17 GB
 Yerel/geçici disk | 135 GB | 5 GB (yedeklemeye dahil değil)
-Veri diski 1 | 4095 GB | 30 GB
-Veri diski 2 | 4095 GB | 0 GB
+Veri diski 1 | 32 TB| 30 GB
+Veri diski 2 | 32 TB | 0 GB
 
 Bu durumda sanal makinenin gerçek boyutu 17 GB + 30 GB + 0 GB = 47 GB 'dir. Bu korumalı örnek boyutu (47 GB) aylık faturanın temelini oluşturur. VM 'deki veri miktarı büyüdükçe, faturalandırma değişiklikleri için kullanılan korumalı örnek boyutu.
 

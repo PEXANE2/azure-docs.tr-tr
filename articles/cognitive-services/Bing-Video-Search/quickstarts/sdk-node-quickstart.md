@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 07/18/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5c8bd4ccadcc3c1947905e6bd74b48045a62ab57
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 10d59da26c4ad583e3cb80b7d5cfc0d569f83ac1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382625"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Hızlı başlangıç: node. js için Bing Video Arama SDK ile video araması gerçekleştirme
 

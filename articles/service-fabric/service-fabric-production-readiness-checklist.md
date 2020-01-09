@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric üretim hazırlığı denetim listesi | Microsoft Docs
+title: Azure Service Fabric üretim hazırlığı denetim listesi
 description: En iyi yöntemleri izleyerek Service Fabric uygulamanızı ve küme üretimini hazırlayın.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/05/2019
-ms.author: atsenthi
-ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376809"
 ---
 # <a name="production-readiness-checklist"></a>Üretim hazırlığı denetim listesi
 
@@ -27,12 +16,12 @@ Uygulamanız ve kümeniz üretim trafiği almaya hazırlanıyor mi? Uygulamanız
 
 
 ## <a name="prerequisites-for-production"></a>Üretime yönelik önkoşullar
-1. Azure Service Fabric en iyi uygulamalar: [Uygulama tasarımı](./service-fabric-best-practices-applications.md), [güvenlik](./service-fabric-best-practices-security.md), [ağ](./service-fabric-best-practices-networking.md), [Kapasite planlama ve ölçekleme](./service-fabric-best-practices-capacity-scaling.md), [kod olarak altyapı](./service-fabric-best-practices-infrastructure-as-code.md)ve [izleme ve tanılama](./service-fabric-best-practices-monitoring.md). 
+1. Azure Service Fabric en iyi uygulamalar: [uygulama tasarımı](./service-fabric-best-practices-applications.md), [güvenlik](./service-fabric-best-practices-security.md), [ağ](./service-fabric-best-practices-networking.md), [Kapasite planlama ve ölçekleme](./service-fabric-best-practices-capacity-scaling.md), [kod olarak altyapı](./service-fabric-best-practices-infrastructure-as-code.md)ve [izleme ve tanılama](./service-fabric-best-practices-monitoring.md). 
 1. Aktör programlama modelini kullanıyorsanız Reliable Actors güvenlik yapılandırmasını Uygula
 1. 20 ' den fazla çekirdeğe veya 10 düğüme sahip kümeler için sistem hizmetleri için ayrılmış bir birincil düğüm türü oluşturun. Sistem hizmetlerinin birincil düğüm türünü ayırmak için [yerleştirme kısıtlamaları](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) ekleyin.
 1. Birincil düğüm türü için bir D2v2 veya daha yüksek SKU kullanın. En az 50 GB sabit disk kapasitesine sahip bir SKU seçmeniz önerilir.
 1. Üretim kümeleri [güvenli](service-fabric-cluster-security.md)olmalıdır. Güvenli küme ayarlamaya ilişkin bir örnek için, bu [küme şablonuna](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)bakın. Sertifikalar için ortak adları kullanın ve kendinden imzalı sertifikaları kullanmaktan kaçının.
-1. Düğümlerde [ve hizmetlerde kaynak kısıtlamalarını](service-fabric-resource-governance.md)ekleyerek düğüm kaynaklarının% 75 ' inden fazlasını tüketmez. 
+1. Düğümlerde [ve hizmetlerde kaynak kısıtlamalarını](service-fabric-resource-governance.md)ekleyerek düğüm kaynaklarının %75 ' inden fazlasını tüketmez. 
 1. [Dayanıklılık düzeyini](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)anlayın ve ayarlayın. Durum bilgisi olan iş yüklerini çalıştıran düğüm türleri için gümüş veya daha yüksek dayanıklılık düzeyi önerilir. Birincil düğüm türü, gümüş veya daha yüksek bir dayanıklılık düzeyine ayarlanmış olmalıdır.
 1. Düğüm türünün [güvenilirlik düzeyini](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) anlayın ve seçin. Gümüş veya daha yüksek güvenilirlik önerilir.
 1. Kümenizin [kapasite gereksinimlerini](service-fabric-cluster-capacity.md) belirlemek için iş yüklerinizi test edin ve ölçeklendirin. 
@@ -52,7 +41,7 @@ Uygulamanız ve kümeniz üretim trafiği almaya hazırlanıyor mi? Uygulamanız
 
 
 Service Fabric Reliable Services veya Reliable Actors programlama modeli kullanıyorsanız, aşağıdaki öğelerin işaretli olması gerekir:
-1. Yerel geliştirme sırasında uygulamaları yükselterek hizmet kodunuzun, `RunAsync` yöntemde iptal belirtecini ele geçirin ve özel iletişim dinleyicilerini kapatmadığını denetleyin.
+1. Yerel geliştirme sırasında uygulamaları yükselterek, hizmet kodunuzun `RunAsync` yönteminde iptal belirtecini ele geçirin ve özel iletişim dinleyicilerini kapatmadığını denetleyin.
 1. Güvenilir koleksiyonlar kullanırken [yaygın olarak karşılaşılan alt sınırın](service-fabric-work-with-reliable-collections.md) önüne kaçının.
 1. Yük testlerini çalıştırırken .NET CLR bellek performansı sayaçlarını izleyin ve yüksek hızların çöp toplama veya ard arda büyümesini kontrol edin.
 1. [Reliable Services ve Reliable Actors](service-fabric-reliable-services-backup-restore.md) çevrimdışı yedeklemesini koruyun ve geri yükleme işlemini test edin.

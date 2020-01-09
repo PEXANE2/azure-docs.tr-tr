@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: fd3d53dce398c445d309a19f1f58a8d298080c45
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ea526648b1b37919eb41953937d3afa72f7f39e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446247"
 ---
 <a name="HOLTop"></a>
 
@@ -21,7 +21,7 @@ ms.locfileid: "73750242"
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
+* [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -31,49 +31,26 @@ ms.locfileid: "73750242"
 
 ### <a name="create-a-new-net-core-application"></a>Yeni bir .NET Core uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `text-analytics quickstart`adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek C# bir kaynak dosyası olan basit bir "Merhaba Dünya" projesi oluşturur: *program.cs*. 
+Visual Studio IDE 'yi kullanarak yeni bir .NET Core konsol uygulaması oluşturun. Bu, tek C# bir kaynak dosyası olan basit bir "Merhaba Dünya" projesi oluşturur: *program.cs*.
 
-```console
-dotnet new console -n text-analytics-quickstart
-```
+**Çözüm Gezgini** çözüme sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yüklemelisiniz. Açılan paket yöneticisinde, **Araştır** ' ı seçin ve `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`arayın. Üzerine tıklayın ve sonra **uygulamasını**. [Paket Yöneticisi konsolunu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
 
-Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin. Uygulamayı ile oluşturabilirsiniz:
-
-```console
-dotnet build
-```
-
-Derleme çıktısı hiçbir uyarı veya hata içermemelidir. 
-
-```console
-...
-Build succeeded.
- 0 Warning(s)
- 0 Error(s)
-...
-```
-
-Proje dizininden *program.cs* dosyasını açın ve aşağıdaki `using` yönergelerini ekleyin:
+*Program.cs* dosyasını açın ve aşağıdaki `using` yönergeleri ekleyin:
 
 [!code-csharp[Import directives](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=imports)]
 
-Uygulamanın `Program` sınıfında, daha önce oluşturduğunuz ortam değişkenlerinden kaynak anahtarı ve uç nokta için değişkenler oluşturun. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+Uygulamanın `Program` sınıfında, kaynağınızın anahtarı ve uç noktası için değişkenler oluşturun. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-csharp[initial variables](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=vars)]
+```csharp
+private static readonly string key = "<replace-with-your-text-analytics-key-here>";
+private static readonly string endpoint = "<replace-with-your-text-analytics-endpoint-here>";
+```
 
 Uygulamanın `Main` yöntemini değiştirin. Burada, daha sonra çağrılan yöntemleri tanımlayacaksınız.
 
 [!code-csharp[main method](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=main)]
-
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
-
-Uygulama dizini içinde, aşağıdaki komutla .NET için Metin Analizi istemci Kitaplığı ' nı yüklemelisiniz:
-
-```console
-dotnet add package Microsoft.Azure.CognitiveServices.Language.TextAnalytics --version 4.0.0
-```
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -82,7 +59,7 @@ Metin Analizi istemci, anahtarınızı kullanarak Azure 'da kimlik doğrulayan b
 ## <a name="code-examples"></a>Kod örnekleri
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [Yaklaşım analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Varlık tanıma](#entity-recognition)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
@@ -99,7 +76,7 @@ Uç noktanız ve anahtarınızı içeren bir `ApiKeyServiceClientCredentials` ne
 
 Programınızın `main()` yönteminde, istemcinin örneğini oluşturmak için kimlik doğrulama yöntemini çağırın.
 
-## <a name="sentiment-analysis"></a>Yaklaşım analizi
+## <a name="sentiment-analysis"></a>Duygu analizi
 
 Daha önce oluşturduğunuz istemciyi alan `SentimentAnalysisExample()` adlı yeni bir işlev oluşturun ve [Sentiment ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.sentiment?view=azure-dotnet) işlevini çağırın. Döndürülen [Sentimentresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.models.sentimentresult?view=azure-dotnet) nesnesi başarılı olursa yaklaşım `Score` ve değilse bir `errorMessage` içerecektir. 
 
@@ -155,7 +132,7 @@ Entities:
         Offset: 116,    Length: 11,     Score: 0.800
 ```
 
-## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
+## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
 Daha önce oluşturduğunuz istemciyi alan `KeyPhraseExtractionExample()` adlı yeni bir işlev oluşturun ve [KeyPhrases ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) işlevini çağırın. Sonuç, başarılı olursa `KeyPhrases` algılanan anahtar tümceciklerin listesini ve değilse bir `errorMessage` içerir. Algılanan tüm anahtar tümceleri yazdır.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432985"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmetini kullanarak gerçek zamanlı veriler isteme
 
@@ -27,9 +27,10 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
  * Belirli bir bisiklet yerleştirme istasyonu için gerçek zamanlı bilgi isteyin.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure Maps ortak Aktarma API 'Lerine yönelik herhangi bir çağrı yapmak için bir haritalar hesabı ve anahtarı gerekir. Hesap oluşturma hakkında daha fazla bilgi için hesabı [Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri izleyin ve hesabınız için birincil bir abonelik anahtarı almak üzere [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
+Azure Maps ortak Aktarma API 'Lerine yönelik herhangi bir çağrı yapmak için bir haritalar hesabı ve anahtarı gerekir. Hesap oluşturma ve anahtar alma hakkında bilgi için, hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtarı al](quick-demo-map-app.md#get-the-primary-key-for-your-account) ' daki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
+
 
 Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanır. Tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
 
@@ -129,7 +130,7 @@ Get aktarma Dock Info API 'sine bir istek yapmak için bu istasyonda **Dockıd**
 
 **Dockıd**'yi almak için aşağıdaki adımları izleyerek yakında bulunan transit API 'sine yönelik bir istek oluşturun:
 
-1. Postman 'da, **yeni istek** | **Al** isteği ' ne tıklayın ve **takma birimi kimliğini alın**.
+1. Postman 'da, **Isteği al** | **yeni istek** ' a tıklayın ve **yuva kimliğini alın**.
 
 2.  Oluşturucu sekmesinde, http **Al** metodunu seçin, AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
  
@@ -178,7 +179,7 @@ Get aktarma Dock Info API 'sine bir istek yapmak için bu istasyonda **Dockıd**
 
 Seçilen yerleştirme için gerçek zamanlı verileri almak üzere aktarma yerleştirme noktası bilgi API 'sine bir istek yapmak için aşağıdaki adımları izleyin.
 
-1. Postman 'da **yeni istek** | **Al** isteği ' ne tıklayın ve **gerçek zamanlı yerleştirme verilerini alın**.
+1. Postman 'da, **Isteği al** | **yeni istek** ' a tıklayın ve **gerçek zamanlı yerleştirme verilerini alın**.
 
 2.  Oluşturucu sekmesinde, http **Al** metodunu seçin, AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
  

@@ -3,18 +3,18 @@ title: Cloud Services roller için iletişim | Microsoft Docs
 description: Cloud Services rol örneklerinde, diğer rol örnekleri arasında veya aralarında iletişim kuran bu noktalar için tanımlı uç noktalar (http, https, TCP, UDP) bulunabilir.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: gwallace
-ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359094"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386349"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure 'da rol örnekleri için iletişimi etkinleştirme
 Bulut hizmeti rolleri, iç ve dış bağlantılarla iletişim kurar. İç bağlantılara **iç uç noktalar**çağrıldığında dış bağlantılara **giriş uç noktaları** denir. Bu konuda, uç noktalar oluşturmak için [hizmet tanımının](cloud-services-model-and-package.md#csdef) nasıl değiştirileceği açıklanmaktadır.
@@ -73,7 +73,7 @@ Bir bağlantı noktası aralığı da kullanabilirsiniz.
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>Çalışan rolleri ile Web rolleri
+## <a name="worker-roles-vs-web-roles"></a>Çalışan rolleri ve Web rolleri karşılaştırması
 Hem çalışan hem de Web rolleriyle çalışırken uç noktalarla bir küçük farklılık vardır. Web rolü, **http** protokolünü kullanan en az bir giriş uç noktası içermelidir.
 
 ```xml
@@ -215,7 +215,7 @@ namespace WorkerRole1
 ## <a name="network-traffic-rules-to-control-role-communication"></a>Rol iletişimini denetlemek için ağ trafiği kuralları
 İç uç noktaları tanımladıktan sonra, rol örneklerinin birbirleriyle nasıl iletişim kurabildiğini denetlemek için ağ trafiği kuralları (oluşturduğunuz uç noktalara göre) ekleyebilirsiniz. Aşağıdaki diyagramda, rol iletişimini denetlemek için bazı yaygın senaryolar gösterilmektedir:
 
-![Ağ trafiği kuralları senaryoları](./media/cloud-services-enable-communication-role-instances/scenarios.png "Ağ trafiği kuralları senaryoları")
+![Ağ trafiği kuralları senaryoları](./media/cloud-services-enable-communication-role-instances/scenarios.png "Ağ Trafik Kuralı Senaryoları")
 
 Aşağıdaki kod örneğinde, önceki diyagramda gösterilen roller için rol tanımları gösterilmektedir. Her rol tanımı, tanımlı en az bir iç uç nokta içerir:
 
@@ -294,7 +294,7 @@ Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ tra
 ```
 
 ### <a name="scenario-3"></a>Senaryo 3
-Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ trafiğine izin **verir.**
+Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **trafiğine izin verir.**
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -323,7 +323,7 @@ Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ tra
 ```
 
 ### <a name="scenario-4"></a>Senaryo 4
-Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2**ve **WorkerRole1** arasında ağ trafiğine izin **verir.**
+Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2**ve **WorkerRole1** arasında ağ **trafiğine izin verir.**
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -367,4 +367,7 @@ Yukarıda kullanılan öğelere yönelik bir XML şeması başvurusu [burada](/p
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bulut hizmeti [modeli](cloud-services-model-and-package.md)hakkında daha fazla bilgi edinin.
+
+
+
 

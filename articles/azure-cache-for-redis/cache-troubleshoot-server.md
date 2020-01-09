@@ -1,17 +1,17 @@
 ---
 title: Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme
-description: Redsıs için Azure önbelleğiyle ilgili genel sunucu tarafı sorunlarını çözmeyi öğrenin
+description: Bellek baskısı, yüksek CPU, uzun süre çalışan komutlar veya bant genişliği sınırlamaları gibi Reda için Azure önbelleğiyle ilgili genel sunucu tarafı sorunlarını çözmeyi öğrenin.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: 22cb4beb3411c617882972e1b91c5f538019fae4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433344"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme
 
@@ -73,9 +73,9 @@ Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu duruml
 - Olası etkilerden önce bildirilmesi için önbellek okuma veya önbellek yazma gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
 - Daha fazla ağ bant genişliği kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
-- [Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-client.md)
+- [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
 - [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 - [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)

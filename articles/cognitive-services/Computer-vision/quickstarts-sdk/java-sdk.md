@@ -1,21 +1,20 @@
 ---
 title: 'Hızlı başlangıç: Java için Görüntü İşleme istemci kitaplığı'
-titleSuffix: Azure Cognitive Services
-description: Java için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıçta, Java için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9c73d28952a165f07711d1aace665bbe742f0124
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: e909e5c6a429d85befd49e6b67e59a46ef8ef30b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382234"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Hızlı başlangıç: Java için Görüntü İşleme istemci kitaplığı
 
@@ -28,7 +27,7 @@ Java için Görüntü İşleme istemci kitaplığını kullanarak şunları yap�
 
 [Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Yapıt (maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
@@ -134,7 +133,7 @@ Sonra, bir [ComputerVisionClient](https://docs.microsoft.com/java/api/com.micros
 > [!NOTE]
 > Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
-## <a name="analyze-an-image"></a>Resim çözümleme
+## <a name="analyze-an-image"></a>Bir resmi çözümleme
 
 Aşağıdaki kod, yerel bir görüntüyü çözümlemek ve sonuçları yazdırmak için istemci nesnesini kullanan `AnalyzeLocalImage`bir yöntemi tanımlar. Yöntemi bir metin açıklaması, kategori, etiket listesi, algılanan yüzeyler, yetişkinlere yönelik içerik bayrakları, ana renkler ve görüntü türü döndürür.
 
@@ -153,7 +152,7 @@ Ardından, analizinizden hangi görsel özellikleri çıkarmak istediğinizi bel
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
-### <a name="analyze"></a>Çözümle
+### <a name="analyze"></a>Çözümleyin
 Bu yöntem, her görüntü analizi kapsamındaki ayrıntılı sonuçları konsola yazdırır. Bu yöntem çağrısını bir try/catch bloğunda çevrelemeyi öneririz. **AnalyzeImageInStream** yöntemi, ayıklanan tüm bilgileri Içeren bir **ımageanalysis** nesnesi döndürür.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
@@ -162,43 +161,43 @@ Aşağıdaki bölümlerde bu bilgilerin ayrıntılı olarak nasıl ayrıştırı
 
 ### <a name="get-image-description"></a>Görüntü açıklamasını al
 
-Aşağıdaki kod, görüntü için oluşturulan açıklamalı alt yazıların listesini alır. Daha fazla ayrıntı için bkz. [görüntüleri açıkla](../concept-describing-images.md) .
+Aşağıdaki kod, görüntü için oluşturulan açıklamalı alt yazıların listesini alır. Daha fazla bilgi için bkz. [görüntüleri açıklama](../concept-describing-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
 
 ### <a name="get-image-category"></a>Görüntü kategorisini al
 
-Aşağıdaki kod görüntünün algılanan kategorisini alır. Daha fazla ayrıntı için bkz. [görüntüleri kategorilere ayırma](../concept-categorizing-images.md) .
+Aşağıdaki kod görüntünün algılanan kategorisini alır. Daha fazla bilgi için bkz. [görüntüleri kategorilere ayırma](../concept-categorizing-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
 
 ### <a name="get-image-tags"></a>Görüntü etiketlerini al
 
-Aşağıdaki kod görüntüde algılanan etiketlerin kümesini alır. Daha fazla ayrıntı için [içerik etiketlerine](../concept-tagging-images.md) bakın.
+Aşağıdaki kod görüntüde algılanan etiketlerin kümesini alır. Daha fazla bilgi için bkz. [içerik etiketleri](../concept-tagging-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
 ### <a name="detect-faces"></a>Yüz algılama
 
-Aşağıdaki kod görüntüde dikdörtgen koordinatlarıyla algılanan yüzeyleri döndürür ve yüz niteliklerini seçer. Daha fazla ayrıntı için bkz. [yüz algılama](../concept-detecting-faces.md) .
+Aşağıdaki kod görüntüde dikdörtgen koordinatlarıyla algılanan yüzeyleri döndürür ve yüz niteliklerini seçer. Daha fazla bilgi için bkz. [yüz algılama](../concept-detecting-faces.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
 ### <a name="detect-adult-racy-or-gory-content"></a>Yetişkin, kcy veya Gori içeriğini algılama
 
-Aşağıdaki kod görüntüde yetişkinlere yönelik içeriğin algılanan varlığını yazdırır. Daha fazla ayrıntı için bkz. [yetişkin, korcy, Gori içeriği](../concept-detecting-adult-content.md) .
+Aşağıdaki kod görüntüde yetişkinlere yönelik içeriğin algılanan varlığını yazdırır. Daha fazla bilgi için bkz. [yetişkin, korcy, Gori içeriği](../concept-detecting-adult-content.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
 
 ### <a name="get-image-color-scheme"></a>Görüntü renk düzenini al
 
-Aşağıdaki kod görüntüde, baskın renkler ve vurgu rengi gibi algılanan renk özniteliklerini yazdırır. Daha fazla ayrıntı için bkz. [renk şemaları](../concept-detecting-color-schemes.md) .
+Aşağıdaki kod görüntüde, baskın renkler ve vurgu rengi gibi algılanan renk özniteliklerini yazdırır. Daha fazla bilgi için bkz. [renk şemaları](../concept-detecting-color-schemes.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
 
 ### <a name="get-domain-specific-content"></a>Etki alanına özgü içerik al
 
-Görüntü İşleme, görüntüler üzerinde daha fazla analiz yapmak için özel model kullanabilir. Daha fazla ayrıntı için bkz. [etki alanına özgü içerik](../concept-detecting-domain-content.md) . 
+Görüntü İşleme, görüntüler üzerinde daha fazla analiz yapmak için özel model kullanabilir. Daha fazla bilgi için bkz. [etki alanına özgü içerik](../concept-detecting-domain-content.md). 
 
 Aşağıdaki kod görüntüde algılanan ünlüler hakkında verileri ayrıştırır.
 

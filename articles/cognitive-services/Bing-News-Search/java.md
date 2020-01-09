@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ad322d9418d81c516b97cd8bd4b039b1640aa9c0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383621"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Java ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirme
 
@@ -26,7 +26,7 @@ Bu uygulama Java ile yazılmış olmakla birlikte API, çoğu programlama diliyl
 
 Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) kullanılabilir 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Java Development Kit (JDK) 7 veya 8](https://aka.ms/azure-jdks)
 
@@ -34,8 +34,6 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
-
-Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
@@ -52,7 +50,7 @@ Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azur
     import com.google.gson.JsonParser;
     ```
 
-2. API uç noktası, abonelik anahtarınız ve arama terimiyle ilgili değişkenlerle yeni bir sınıf oluşturun.
+2. API uç noktası, abonelik anahtarınız ve arama terimiyle ilgili değişkenlerle yeni bir sınıf oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {

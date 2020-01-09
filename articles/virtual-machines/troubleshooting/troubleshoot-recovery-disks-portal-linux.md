@@ -12,15 +12,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 87b4d761eb7bd1c4a16998e44e8160cda24a05b4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e45de5c12f0d93645a0b1253acf8300527cafdbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374650"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux VM sorunlarını giderme
-Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini engelleyen ' de `/etc/fstab` geçersiz bir giriş olabilir. Bu makalede, tüm hataları onarmak için sanal sabit diskinizi başka bir Linux VM 'sine bağlamak üzere Azure portal kullanımı ve ardından özgün VM 'nizi yeniden oluşturmanız için Ayrıntılar açıklanır.
+Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, `/etc/fstab` sanal makinenin başarıyla önyükleme yapabilmesi için geçersiz bir giriş olabilir. Bu makalede, tüm hataları onarmak için sanal sabit diskinizi başka bir Linux VM 'sine bağlamak üzere Azure portal kullanımı ve ardından özgün VM 'nizi yeniden oluşturmanız için Ayrıntılar açıklanır.
 
 ## <a name="recovery-process-overview"></a>Kurtarma işlemine genel bakış
 Sorun giderme işlemi aşağıdaki gibidir:
@@ -37,7 +37,7 @@ Sorun giderme işlemi aşağıdaki gibidir:
 > Bu makale, yönetilmeyen disk içeren VM için geçerlidir.
 
 ## <a name="determine-boot-issues"></a>Önyükleme sorunlarını belirleme
-SANAL makinenizin neden doğru şekilde önyüklenemediğini öğrenmek için önyükleme tanılamayı ve VM ekran görüntüsünü inceleyin. Ortak bir örnek içinde `/etc/fstab`geçersiz bir giriş veya silinmekte veya taşınmakta olan temel bir sanal sabit disk olabilir.
+SANAL makinenizin neden doğru şekilde önyüklenemediğini öğrenmek için önyükleme tanılamayı ve VM ekran görüntüsünü inceleyin. Ortak bir örnek, `/etc/fstab`veya silinmekte olan veya taşınmakta olan temel bir sanal sabit disk için geçersiz bir giriş olabilir.
 
 Portalda VM 'nizi seçin ve sonra da **destek + sorun giderme** bölümüne gidin. VM 'nizden akan konsol iletilerini görüntülemek için **önyükleme tanılama** ' ya tıklayın. VM 'nin neden bir sorunla karşılaşacağını tespit edebilir olup olmadığınızı görmek için konsol günlüklerini gözden geçirin. Aşağıdaki örnekte, el ile etkileşim gerektiren bakım modunda takılmış bir VM gösterilmektedir:
 
@@ -50,7 +50,7 @@ Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir k
 
 1. [Azure Portal](https://portal.azure.com)gidin. Kenar çubuğundan **sanal makineler** ' i seçin ve ardından sorunlu VM 'yi seçin.
 1. Sol bölmede, **diskler**' i seçin ve ardından işletim sistemi diskinin adını seçin.
-    ![İşletim sistemi diskinin adı hakkında resim](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+    işletim sistemi diskinin adı hakkında ![görüntü](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
 1. İşletim sistemi diskinin **genel bakış** sayfasında **anlık görüntü oluştur**' u seçin.
 1. İşletim sistemi diskiyle aynı konumda bir anlık görüntü oluşturun.
 
@@ -105,9 +105,9 @@ Sonraki birkaç adımda, sorun giderme amacıyla başka bir VM kullanırsınız.
 ## <a name="mount-the-attached-data-disk"></a>Bağlı veri diskini bağlama
 
 > [!NOTE]
-> Aşağıdaki örneklerde bir Ubuntu VM 'de gereken adımlar ayrıntılı olarak verilmiştir. Red Hat Enterprise Linux veya SUSE gibi farklı bir Linux kaldırı kullanıyorsanız, günlük dosyası konumları ve `mount` komutları biraz farklı olabilir. Komutlarınıza ilişkin uygun değişiklikler için özel olarak verilen belgelere başvurun.
+> Aşağıdaki örneklerde bir Ubuntu VM 'de gereken adımlar ayrıntılı olarak verilmiştir. Red Hat Enterprise Linux veya SUSE gibi farklı bir Linux dağıldıysanız, günlük dosyası konumları ve `mount` komutları biraz farklı olabilir. Komutlarınıza ilişkin uygun değişiklikler için özel olarak verilen belgelere başvurun.
 
-1. Uygun kimlik bilgilerini kullanarak sorun giderme sanal makinesine SSH. Bu disk, sorun giderme sanal makinesine bağlı ilk veri diskidir, büyük olasılıkla bağlı `/dev/sdc`demektir. Eklenen `dmseg` diskleri listelemek için kullanın:
+1. Uygun kimlik bilgilerini kullanarak sorun giderme sanal makinesine SSH. Bu disk, sorun giderme sanal makinesine bağlı ilk veri diskidir, büyük olasılıkla `/dev/sdc`bağlıdır. Eklenen diskleri listelemek için `dmseg` kullanın:
 
     ```bash
     dmesg | grep SCSI
@@ -122,22 +122,22 @@ Sonraki birkaç adımda, sorun giderme amacıyla başka bir VM kullanırsınız.
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    Yukarıdaki örnekte, işletim sistemi diski `/dev/sda` ve her sanal makine `/dev/sdb`için belirtilen geçici disk ' dir. Birden çok veri diskine sahipseniz,, vb. olmaları gerekir `/dev/sdd`. `/dev/sde`
+    Yukarıdaki örnekte, işletim sistemi diski `/dev/sda` ve her sanal makine için belirtilen geçici disk `/dev/sdb`. Birden çok veri diskine sahipseniz, bunlar `/dev/sdd`, `/dev/sde`vb. olmalıdır.
 
-2. Var olan sanal sabit diskinizi bağlamak için bir dizin oluşturun. Aşağıdaki örnek adlı `troubleshootingdisk`bir dizin oluşturur:
+2. Var olan sanal sabit diskinizi bağlamak için bir dizin oluşturun. Aşağıdaki örnek, `troubleshootingdisk`adlı bir dizin oluşturur:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Var olan sanal sabit diskinizde birden çok bölüm varsa, gerekli bölümü bağlayın. Aşağıdaki örnek, konumundaki `/dev/sdc1`ilk birincil bölümü bağlar:
+3. Var olan sanal sabit diskinizde birden çok bölüm varsa, gerekli bölümü bağlayın. Aşağıdaki örnek `/dev/sdc1`ilk birincil bölümünü bağlar:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > En iyi yöntem, sanal sabit diskin evrensel benzersiz tanımlayıcısını (UUID) kullanarak Azure 'daki VM 'Lere veri disklerini bağlamasıdır. Bu kısa sorun giderme senaryosunda, UUID 'yi kullanarak sanal sabit diski bağlama gerekli değildir. Ancak, normal kullanım altında, sanal `/etc/fstab` sabit disklerin UUID yerine cihaz adı kullanılarak bağlanması için düzenlemenin başarısız olması VM 'nin önyüklenememesine neden olabilir.
+    > En iyi yöntem, sanal sabit diskin evrensel benzersiz tanımlayıcısını (UUID) kullanarak Azure 'daki VM 'Lere veri disklerini bağlamasıdır. Bu kısa sorun giderme senaryosunda, UUID 'yi kullanarak sanal sabit diski bağlama gerekli değildir. Ancak, normal kullanım altında, sanal sabit diskleri UUID yerine cihaz adı kullanarak bağlamak için `/etc/fstab` düzenlemesi, VM 'nin önyüklenememesine neden olabilir.
 
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Özgün sanal sabit diskteki sorunları çözme
@@ -152,7 +152,7 @@ Hatalar çözümlendikten sonra, var olan sanal sabit diski sorun giderme sanal 
     cd /
     ```
 
-    Şimdi var olan sanal sabit diski çıkarın. Aşağıdaki örnek, cihazı şu adreste `/dev/sdc1`kaldırır:
+    Şimdi var olan sanal sabit diski çıkarın. Aşağıdaki örnek `/dev/sdc1`adresinden cihazı kaldırır:
 
     ```bash
     sudo umount /dev/sdc1
@@ -170,12 +170,12 @@ Azure portal artık VM 'nin işletim sistemi diskini değiştirmeyi destekler. B
 
 1. [Azure Portal](https://portal.azure.com)gidin. Kenar çubuğundan **sanal makineler** ' i seçin ve ardından sorunlu VM 'yi seçin.
 1. Sol bölmede, **diskler**' i seçin ve ardından **Işletim sistemi diski Değiştir**' i seçin.
-        ![Azure portal takas OS disk ile ilgili görüntü](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+        Azure portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png) değiştirme işletim sistemi diski hakkında görüntü ![
 
 1. Onarılmakta olduğunuz yeni diski seçin ve ardından değişikliği onaylamak için VM 'nin adını yazın. Diski listede görmüyorsanız, diski sorun giderme VM 'sinden ayırdıktan sonra 10 ~ 15 dakika bekleyin. Ayrıca, diskin VM ile aynı konumda olduğundan emin olun.
-1. Tamam ' ı seçin.
+1. Tamam'ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure VM Ile SSH bağlantılarında sorun giderme](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [bir LINUX sanal makinesinde uygulama bağlantı sorunlarını giderme](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

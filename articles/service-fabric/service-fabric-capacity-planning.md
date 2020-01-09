@@ -1,25 +1,14 @@
 ---
-title: Service Fabric uygulamalar için kapasite planlaması | Microsoft Docs
+title: Service Fabric uygulamalar için kapasite planlaması
 description: Bir Service Fabric uygulaması için gereken işlem düğümlerinin sayısını belirlemeyi açıklar
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377217"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric uygulamalar için kapasite planlaması
 Bu belge, Azure Service Fabric uygulamalarınızı çalıştırmanız için gereken kaynak miktarını (CPU, RAM, disk depolama) nasıl tahmin edecağınızı öğretir. Kaynak gereksinimlerinizin zaman içinde değiştirilmesi yaygındır. Genellikle hizmetinizi geliştirirken/test ettiğiniz ve daha fazla kaynak oluşturmanız durumunda daha fazla kaynak yapmanız gerekir. Uygulamanızı tasarlarken, uzun süreli gereksinimleri göz önünde bulundurun ve hizmetinizin yüksek müşteri taleplerini karşılayacak şekilde ölçeklendirilmesine izin veren seçimler yapın.
@@ -33,7 +22,7 @@ VM 'lerde büyük miktarlarda veri yöneten hizmetler için kapasite planlaması
 ## <a name="determine-how-many-nodes-you-need"></a>Kaç tane düğüme ihtiyacınız olduğunu belirleme
 Hizmetinizi bölümlemek, hizmetinizin verilerini ölçeklendirmenize olanak tanır. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlendirme Service Fabric](service-fabric-concepts-partitioning.md). Her bölüm tek bir VM 'ye sığmalıdır, ancak birden çok (küçük) bölüm tek bir VM 'ye yerleştirilebilir. Bu nedenle, daha fazla küçük bölüm olması, daha büyük bir bölümden daha fazla esneklik elde etmenizi sağlar. Çok sayıda bölüm Service Fabric ek yükü artar ve bu işlemler bölümler arasında işlem gerçekleştiremez. Ayrıca, hizmet kodunuzun farklı bölümlerde bulunan veri parçalarına genellikle erişmesi gerektiğinde daha olası ağ trafiği de vardır. Hizmetinizi tasarlarken, etkili bir bölümleme stratejisine ulaşmak üzere bu uzmanları ve dezavantajları dikkatle düşünmeniz gerekir.
 
-Uygulamanızın bir yılda DB_Size GB 'a büyümesini istediğiniz bir mağaza boyutu olan tek durumlu bir hizmete sahip olduğunu varsayalım. Bu yıldan daha fazla büyümeye çalıştığınız sürece daha fazla uygulama (ve bölüm) eklemek istiyorsunuz.  Hizmetinizin yineleme sayısını belirleyen çoğaltma faktörü (RF) Toplam DB_Size etkiler. Tüm çoğaltmalarda toplam DB_Size, çoğaltma faktörü DB_Size ile çarpılır.  Node_Size, hizmetiniz için kullanmak istediğiniz düğüm başına disk alanını/RAM 'i temsil eder. En iyi performansı elde etmek için DB_Size, küme genelinde belleğe sığması gerekir ve VM 'nin RAM 'i etrafında olan bir Node_Size seçilmelidir. RAM kapasitesinden daha büyük bir Node_Size ayırarak, Service Fabric çalışma zamanı tarafından belirtilen disk belleğine bağlı olursunuz. Bu nedenle, tüm verileriniz etkin olarak kabul edildiğinde (veriler disk belleğine alınmış/giden olduğundan) performans en iyi durumda olmayabilir. Ancak, yalnızca verilerin bir bölümünün sık kullanıldığı birçok hizmet için, daha düşük maliyetli hale gelir.
+Uygulamanızın bir yılda DB_Size GB 'a büyümesini istediğiniz depo boyutu olan tek durumlu bir hizmete sahip olduğunu varsayalım. Bu yıldan daha fazla büyümeye çalıştığınız sürece daha fazla uygulama (ve bölüm) eklemek istiyorsunuz.  Hizmetinizin yineleme sayısını belirleyen çoğaltma faktörü (RF) Toplam DB_Size etkiler. Tüm çoğaltmalarda toplam DB_Size çoğaltma faktörü DB_Size ile çarpılır.  Node_Size, hizmetiniz için kullanmak istediğiniz düğüm başına disk alanını/RAM 'i temsil eder. En iyi performansı elde etmek için DB_Size kümedeki belleğe sığması gerekir ve VM 'nin RAM 'in çevresindeki bir Node_Size seçilmelidir. RAM kapasitesinden daha büyük bir Node_Size ayırarak, Service Fabric çalışma zamanı tarafından belirtilen disk belleğine bağlı olursunuz. Bu nedenle, tüm verileriniz etkin olarak kabul edildiğinde (veriler disk belleğine alınmış/giden olduğundan) performans en iyi durumda olmayabilir. Ancak, yalnızca verilerin bir bölümünün sık kullanıldığı birçok hizmet için, daha düşük maliyetli hale gelir.
 
 En yüksek performans için gereken düğüm sayısı şu şekilde hesaplanabilir:
 
@@ -44,11 +33,11 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 
 ## <a name="account-for-growth"></a>Büyüme hesabı
-Hizmetin büyümesini istediğiniz DB_Size göre düğüm sayısını, ile başlayan DB_Size 'e ek olarak hesaplamak isteyebilirsiniz. Daha sonra, düğüm sayısını daha fazla sağlamaktan emin olmak için hizmetinizin büyüdükçe düğüm sayısını büyütün. Ancak bölüm sayısı, hizmetinizi en yüksek büyümeye çalıştırdığınız zaman gereken düğüm sayısını temel almalıdır.
+İle başladığınızdan DB_Size ek olarak, hizmetinizin büyümesini istediğiniz DB_Size göre düğüm sayısını hesaplamak isteyebilirsiniz. Daha sonra, düğüm sayısını daha fazla sağlamaktan emin olmak için hizmetinizin büyüdükçe düğüm sayısını büyütün. Ancak bölüm sayısı, hizmetinizi en yüksek büyümeye çalıştırdığınız zaman gereken düğüm sayısını temel almalıdır.
 
 Herhangi bir zamanda, bazı ek makinelerin her zaman kullanılabilir olması iyi bir hale gelir, böylece beklenmedik ani artışlar veya hata (örneğin, birkaç VM 'ye geçer) işleyebilmenizi sağlayabilirsiniz.  Ek kapasitenin beklenen artışlar kullanılarak belirlenmesi gerekir, ancak bir başlangıç noktası birkaç ek VM (yüzde 5-10 ek) ayırabilmelidir.
 
-Önceki bir durum bilgisi olan tek bir hizmeti varsayar. Birden fazla durum bilgisi içeren hizmetiniz varsa, diğer hizmetlerle ilişkili DB_Size denklemi denkleme eklemeniz gerekir. Alternatif olarak, her durum bilgisi olan her hizmet için düğüm sayısını ayrı olarak hesaplamanız gerekir.  Hizmetiniz dengeli olmayan çoğaltmalara veya bölümlere sahip olabilir. Bölümlerin diğerlerinden daha fazla veriye sahip olabileceğini göz önünde bulundurun. Bölümlendirme hakkında daha fazla bilgi için bkz. [en iyi yöntemler üzerinde bölümlendirme makalesi](service-fabric-concepts-partitioning.md). Ancak, önceki Denklem bölüm ve çoğaltma belirsiz bir biçimde olduğundan, Service Fabric çoğaltmaların düğümler arasında iyileştirilmiş bir şekilde yayıldığından emin olunmasını sağlar.
+Önceki bir durum bilgisi olan tek bir hizmeti varsayar. Birden fazla durum bilgisi içeren hizmetiniz varsa, diğer hizmetlerle ilişkili DB_Size denklemi eklemeniz gerekir. Alternatif olarak, her durum bilgisi olan her hizmet için düğüm sayısını ayrı olarak hesaplamanız gerekir.  Hizmetiniz dengeli olmayan çoğaltmalara veya bölümlere sahip olabilir. Bölümlerin diğerlerinden daha fazla veriye sahip olabileceğini göz önünde bulundurun. Bölümlendirme hakkında daha fazla bilgi için bkz. [en iyi yöntemler üzerinde bölümlendirme makalesi](service-fabric-concepts-partitioning.md). Ancak, önceki Denklem bölüm ve çoğaltma belirsiz bir biçimde olduğundan, Service Fabric çoğaltmaların düğümler arasında iyileştirilmiş bir şekilde yayıldığından emin olunmasını sağlar.
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>Maliyet hesaplama için bir elektronik tablo kullanma
 Şimdi formülde bazı gerçek sayılar koyalım. [Örnek bir elektronik tablo](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx) , üç tür veri nesnesi içeren bir uygulama için kapasitenin nasıl planlanacağını göstermektedir. Her nesne için boyutunu ve kaç tane nesneyi beklediğinizi yaklaşık olarak yaptık. Ayrıca, her bir nesne türünün kaç tane yineleme istediğini seçtik. Elektronik tablo, kümede depolanacak toplam bellek miktarını hesaplar.

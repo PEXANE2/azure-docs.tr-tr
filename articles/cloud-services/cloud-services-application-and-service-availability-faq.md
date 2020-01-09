@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure Cloud Services SSS için uygulama ve hizmet kullanılabilirliği sorunları | Microsoft Docs
+title: Uygulama ve hizmet kullanılabilirliği sorunları SSS
+titleSuffix: Azure Cloud Services
 description: Bu makalede Microsoft Azure Cloud Services yönelik uygulama ve hizmet kullanılabilirliği hakkında sık sorulan sorular listelenmektedir.
 services: cloud-services
 documentationcenter: ''
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d229291793334964569f6c35eaec68a94ca6b69f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154892"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386927"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için uygulama ve hizmet kullanılabilirliği sorunları: Sık sorulan sorular (SSS)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için uygulama ve hizmet kullanılabilirliği sorunları: sık sorulan sorular (SSS)
 
 Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)yönelik uygulama ve hizmet kullanılabilirliği sorunları hakkında sık sorulan sorular yer almaktadır. Boyut bilgileri için [Cloud SERVICES VM boyutu sayfasına](cloud-services-sizes-specs.md) de başvurabilirsiniz.
 

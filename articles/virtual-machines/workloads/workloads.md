@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 11d503e7dd15f148208da65d551f9c6ae71a7e7f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: a08a8c6afd4670bea1c3775466d23135016bf08c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373273"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Azure sanal makinelerinde iş yükleri
 
@@ -27,8 +27,9 @@ Azure 'daki sanal makineler birçok iş yükünü destekleyebilir. Her iş yük�
 
 - Azure 'da [yüksek performanslı bilgi işlem](./hpc/overview.md) , karmaşık, yoğun işlem yoğunluklu sorunları çözümlemek için CPU veya GPU iyileştirmeli sanal makineleri kullanır.
 - Azure 'da [SAP](./sap/get-started.md) , iş AÇıSıNDAN kritik sap iş yüklerinizi ve senaryolarını ölçeklenebilir, uyumlu ve kurumsal olarak kanıtlanmış bir platformda çalıştırabilir.
-- [Oracle](./oracle/oracle-considerations.md) , Oracle Linux tabanlı sanal makine görüntüleri üzerinde Azure 'da Oracle DB 12,1 Standard ve Enterprise Edition 'ın çalıştırılmasını destekler. 
-- [Ana bilgisayar yeniden barındırma](./mainframe-rehosting/overview.md) 
+- [Oracle](./oracle/oracle-considerations.md) , Oracle Linux tabanlı sanal makine görüntüleri üzerinde Azure 'da Oracle DB 12,1 Standard ve Enterprise Edition 'ın çalıştırılmasını destekler.
+- Azure 'da [Red Hat](./redhat/redhat-overview.md) , çeşitli Red Hat Enterprise Linux görüntü teklifleri ve Red Hat güncelleştirme altyapısı aracılığıyla isteğe bağlı güncelleştirmeler sunacak şekilde desteklenir.
+- [Ana bilgisayar yeniden barındırma](./mainframe-rehosting/overview.md)
 
 
 

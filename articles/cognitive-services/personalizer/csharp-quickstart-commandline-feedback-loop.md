@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: .NET için kişiselleştirici istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: .NET için kişiselleştirici istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Bir öğrenme döngüsü kullanarak .NET için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıçta, öğrenme döngüsü kullanılarak .NET için kişiselleştirici istemci kitaplığı ile çalışmaya başlama gösterilmektedir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c17bf54d89e3a98ca667eeba40f2d2b166550833
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446382"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Hızlı başlangıç: .NET için kişiselleştirici istemci kitaplığı
 
@@ -28,7 +28,7 @@ Bu C# hızlı başlangıçta kişiselleştirilmiş Içeriği kişiselleştirici 
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -213,4 +213,3 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Kişiselleştirici nedir?](what-is-personalizer.md)
 * [Kişiselleştirici 'yi nerede kullanabilirsiniz?](where-can-you-use-personalizer.md)
 * [Sorun giderme](troubleshooting.md)
-

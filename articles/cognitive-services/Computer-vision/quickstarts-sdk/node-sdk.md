@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: node. js için Görüntü İşleme istemci kitaplığı | Microsoft Docs'
-description: Node. js için Görüntü İşleme istemci kitaplığı ile çalışmaya başlama...
+title: 'Hızlı başlangıç: node. js için Görüntü İşleme istemci kitaplığı'
+description: Bu hızlı başlangıç ile Node. js için Görüntü İşleme istemci kitaplığı ile çalışmaya başlama
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 199ead07e499575de21c6878cd348e648f604171
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05bc30fb8401597695848290a3d4f6c0d10ce836
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382251"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için Görüntü İşleme istemci kitaplığı
 
@@ -27,12 +27,12 @@ Node. js için Görüntü İşleme istemci kitaplığını kullanarak şunları 
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [paketi (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Node. js](https://nodejs.org/) ' nin geçerli sürümü
 
-## <a name="setting-up"></a>Kurulum
+## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Görüntü İşleme Azure kaynağı oluşturma
 
@@ -83,7 +83,7 @@ Ardından, bir işlev `computerVision` tanımlayın ve birincil işlev ve geri �
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Node. js SDK 'sının bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve birçok görüntü işlemini yapmak için kullanırsınız.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir **Visualfeaturetypes** değeri kümesi belirtirsiniz. |

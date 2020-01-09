@@ -3,18 +3,18 @@ title: Node.js Başlangıç kılavuzu
 description: Basit bir Node.js web uygulaması oluşturma ve Azure bulut hizmetine dağıtma hakkında bilgi edinin.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 81ad3bce6c7e331fd67fba60b35de6b8a37c5da9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386196"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Bir Node.js uygulaması derleme ve Azure Cloud Service’e dağıtma
 
@@ -31,7 +31,7 @@ Uygulama basit bir "hello world" uygulamasıdır:
 
 ![Hello World web sayfasını gösteren bir web tarayıcısı][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 > [!NOTE]
 > Bu öğretici Windows gerektiren Azure PowerShell’i kullanır.
 
@@ -49,14 +49,14 @@ Temel Node.js iskelesiyle birlikte yeni bir Azure Cloud Service projesi oluştur
 
         New-AzureServiceProject helloworld
 
-    ![New-AzureService helloworld komutunun sonucu][The result of the New-AzureService helloworld command]
+    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
 
     **New-AzureServiceProject** cmdlet’i bir Node.js uygulamasını Cloud Service’te yayımlamaya yönelik basit bir yapı oluşturur. Azure’da yayımlamak için gerekli yapılandırma dosyalarını içerir. Cmdlet ayrıca çalışma dizininizi hizmetin diziniyle değiştirir.
 
     Cmdlet aşağıdaki dosyaları oluşturur:
 
-   * **ServiceConfiguration. Cloud. cscfg**, **ServiceConfiguration. Local. cscfg** ve **ServiceDefinition. csdef**: Uygulamanızı yayımlamak için gerekli olan Azure 'a özgü dosyalar. Daha fazla bilgi için bkz. [Azure için Barındırılan Hizmet Oluşturmaya Genel Bakış].
-   * **Deploymentsettings. JSON**: Azure PowerShell dağıtım cmdlet 'leri tarafından kullanılan yerel ayarları depolar.
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** ve **ServiceDefinition.csdef**: Uygulamanızı yayımlamak için gereken Azure’a özel dosyalar. Daha fazla bilgi için bkz. [Azure için Barındırılan Hizmet Oluşturmaya Genel Bakış].
+   * **deploymentSettings.json**: Azure PowerShell dağıtım cmdlet’leri tarafından kullanılan yerel ayarları depolar.
 4. Yeni bir web rolü eklemek için aşağıdaki komutu girin:
 
        Add-AzureNodeWebRole
@@ -120,7 +120,7 @@ Yayımlama başarılı olduktan sonra aşağıdakine benzer bir yanıt görürs�
 
 Dağıtım tamamlandıktan sonra bir tarayıcı penceresi açın ve bulut hizmetine gidin.
 
-![Hello world sayfasını gösteren bir tarayıcı penceresi; URL sayfanın Azure’da barındırıldığını gösterir.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
+![A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
 
 Uygulamanız artık Azure üzerinde çalışıyor.
 
@@ -177,3 +177,6 @@ Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi].
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+
+
+

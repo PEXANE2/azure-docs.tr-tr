@@ -3,20 +3,20 @@ title: Bulut hizmeti oluşturma ve dağıtma | Microsoft Docs
 description: Azure portal kullanarak bir bulut hizmeti oluşturmayı ve dağıtmayı öğrenin.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386179"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Bulut hizmeti oluşturma ve dağıtma
-Azure portal bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sunar: *Hızlı oluştur* ve *özel oluştur*.
+Azure portal bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sunar: *hızlı oluşturma* ve *özel oluşturma*.
 
 Bu makalede yeni bir bulut hizmeti oluşturmak için hızlı oluşturma yönteminin nasıl kullanılacağı ve sonra Azure 'da bir bulut hizmeti paketini karşıya yüklemek ve dağıtmak için **karşıya yükleme** işleminin nasıl yapılacağı açıklanır. Bu yöntemi kullandığınızda Azure portal, hareket halindeyken tüm gereksinimlerin tamamlanmasına yönelik uygun olan bağlantıları sağlar. Bulut hizmetinizi oluştururken dağıtmaya hazırsanız, her ikisini de özel oluştur 'u kullanarak yapabilirsiniz.
 
@@ -44,7 +44,7 @@ Bir hizmet paketini dışarı aktarmadan önce üç bulut hizmeti özelliği iç
 
 * Veri şifreleme için Güvenli Yuva Katmanı (SSL) kullanan bir bulut hizmeti dağıtmak istiyorsanız, uygulamanızı SSL için [yapılandırın](cloud-services-configure-ssl-certificate-portal.md#modify) .
 * Rol örneklerine uzak masaüstü bağlantılarını yapılandırmak istiyorsanız, Uzak Masaüstü için [rolleri yapılandırın](cloud-services-role-enable-remote-desktop-new-portal.md) .
-* Bulut hizmetiniz için ayrıntılı izleme yapılandırmak istiyorsanız, bulut hizmeti için Azure Tanılama etkinleştirin. *En az izleme* (varsayılan izleme düzeyi), rol örnekleri (sanal makineler) için konak işletim sistemlerinden toplanan performans sayaçlarını kullanır. *Ayrıntılı izleme* , uygulama işleme sırasında oluşan sorunların daha yakından analizine olanak tanımak için rol örnekleri içindeki performans verilerine dayalı ek ölçümler toplar. Azure Tanılama nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure 'da tanılamayı etkinleştirme](cloud-services-dotnet-diagnostics.md).
+* Bulut hizmetiniz için ayrıntılı izleme yapılandırmak istiyorsanız, bulut hizmeti için Azure Tanılama etkinleştirin. *Minimum izleme* (varsayılan izleme düzeyi), rol örnekleri (sanal makineler) için konak işletim sistemlerinden toplanan performans sayaçlarını kullanır. *Ayrıntılı izleme* , uygulama işleme sırasında oluşan sorunların daha yakından analizine olanak tanımak için rol örnekleri içindeki performans verilerine dayalı ek ölçümler toplar. Azure Tanılama nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure 'da tanılamayı etkinleştirme](cloud-services-dotnet-diagnostics.md).
 
 Web rollerinin veya çalışan rollerinin dağıtımlarıyla bir bulut hizmeti oluşturmak için [hizmet paketini oluşturmanız](cloud-services-model-and-package.md#servicepackagecspkg)gerekir.
 
@@ -91,3 +91,6 @@ Dağıtım paketiniz [sertifikaları kullanacak şekilde yapılandırıldıysa](
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [Bulut hizmetinizi yönetin](cloud-services-how-to-manage-portal.md).
 * [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma.
+
+
+

@@ -1,6 +1,6 @@
 ---
 title: Azure Hızlı Başlangıç - Batch işi çalıştırma - .NET
-description: Bir Batch işini ve görevleri Batch .NET istemci kitaplığı ile hızlıca çalıştırın.
+description: Batch .NET istemci kitaplığı ile bir C# uygulamadan Azure Batch örnek işi ve görevleri hızlıca çalıştırın.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390312"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Hızlı Başlangıç: .NET API ile ilk Azure Batch işinizi çalıştırma
 
@@ -25,13 +25,13 @@ Bu hızlı başlangıç, Azure Batch .NET API üzerinde derlenmiş bir C# uygula
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) . 
 
 * Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın. 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 

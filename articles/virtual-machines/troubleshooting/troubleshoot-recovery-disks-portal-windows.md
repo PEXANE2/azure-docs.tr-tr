@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 18bd531e122ed72aa1cc481d6cf76590412c73c6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374565"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure portal kullanarak işletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme
 Azure 'daki Windows sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini önleyen başarısız bir uygulama güncelleştirmesidir. Bu makalede, tüm hataları onarmak için sanal sabit diskinizi başka bir Windows sanal makineye bağlamak üzere Azure portal kullanma ve ardından özgün VM 'nizi yeniden oluşturma ayrıntıları yer aldığı açıklanır. 
@@ -41,7 +41,7 @@ Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir k
 
 1. [Azure Portal](https://portal.azure.com)gidin. Kenar çubuğundan **sanal makineler** ' i seçin ve ardından sorunlu VM 'yi seçin.
 1. Sol bölmede, **diskler**' i seçin ve ardından işletim sistemi diskinin adını seçin.
-    ![İşletim sistemi diskinin adı hakkında resim](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+    işletim sistemi diskinin adı hakkında ![görüntü](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
 1. İşletim sistemi diskinin **genel bakış** sayfasında **anlık görüntü oluştur**' u seçin.
 1. İşletim sistemi diskiyle aynı konumda bir anlık görüntü oluşturun.
 
@@ -131,14 +131,14 @@ Azure portal artık VM 'nin işletim sistemi diskini değiştirmeyi destekler. B
 
 1. [Azure Portal](https://portal.azure.com)gidin. Kenar çubuğundan **sanal makineler** ' i seçin ve ardından sorunlu VM 'yi seçin.
 1. Sol bölmede, **diskler**' i seçin ve ardından **Işletim sistemi diski Değiştir**' i seçin.
-        ![Azure portal takas OS disk ile ilgili görüntü](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+        Azure portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png) değiştirme işletim sistemi diski hakkında görüntü ![
 
 1. Onarılmakta olduğunuz yeni diski seçin ve ardından değişikliği onaylamak için VM 'nin adını yazın. Diski listede görmüyorsanız, diski sorun giderme VM 'sinden ayırdıktan sonra 10 ~ 15 dakika bekleyin. Ayrıca, diskin VM ile aynı konumda olduğundan emin olun.
-1. Tamam ' ı seçin.
+1. Tamam'ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure VM 'ye YÖNELIK RDP bağlantılarında sorun giderme](troubleshoot-rdp-connection.md). VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [WINDOWS VM 'de uygulama bağlantı sorunlarını giderme](troubleshoot-app-connection.md).
 
-Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/resource-group-overview.md).
+Kaynak Yöneticisi kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 
 

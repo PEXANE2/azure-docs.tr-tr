@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 86ba98bfb4003a723cfaaf2d1c51301314ca47cf
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432717"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 <a id="createaccount"></a>
 
@@ -55,13 +55,15 @@ Aşağıdaki adımları uygulayarak yeni bir Haritalar hesabı oluşturun:
 
 ## <a name="get-the-primary-key-for-your-account"></a>Hesabınızın birincil anahtarını alma
 
-Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini sorgulamanıza olanak sağlayan anahtarı alın.
+Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini sorgulamanıza olanak sağlayan anahtarı alın. Azure haritalar hizmetlerini çağırırken hesabınızın birincil anahtarını abonelik anahtarı olarak kullanmanızı öneririz.
 
 1. Portalda Haritalar hesabınızı açın.
 2. Ayarlar bölümünde **kimlik doğrulaması**' nı seçin.
 3. **Birincil Anahtar**’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
 
 ![Portalda Birincil Anahtar’ı alma](./media/tutorial-search-location/get-key.png)
+
+Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
@@ -114,7 +116,7 @@ Harita Denetimi API’si, Haritalar’ı web uygulamanızla kolayca tümleştirm
     </html>
     ```
 
-   HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `onload` işlevini çağıracak olan `GetMap` olayına dikkat edin. `GetMap` işlevi, Azure Maps API 'Lerine erişmek için satır içi JavaScript kodunu içerecektir.
+   HTML üst bilgisinin Azure Harita Denetimi kitaplığı tarafından barındırılan CSS ve JavaScript kaynak dosyalarını içerdiğine dikkat edin. Sayfanın gövdesinde bulunan ve sayfa yüklendiğinde `GetMap` işlevini çağıracak olan `onload` olayına dikkat edin. `GetMap` işlevi, Azure Maps API 'Lerine erişmek için satır içi JavaScript kodunu içerecektir.
 
 3. HTML dosyasının `GetMap` işlevine aşağıdaki JavaScript kodunu ekleyin. Dize `<Your Azure Maps Key>`, haritalar hesabınızdan kopyaladığınız birincil anahtarla değiştirin.
 

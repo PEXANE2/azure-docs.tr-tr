@@ -3,23 +3,25 @@ title: Azure IoT Tak ve Kullan önizleme cihazı oluşturma (Linux) | Microsoft 
 description: Cihaz kodu oluşturmak için bir cihaz yetenek modeli kullanın. Ardından, cihaz kodunu çalıştırın ve cihazın IoT Hub bağlanmasına bakın.
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/10/2019
+ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ff8303b6af73605aae82bae4d70f9648154f9744
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: d2cc440572d6f33480972c15f5c498cc384cb2e3
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406231"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550545"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Linux) oluşturmak için cihaz yetenek modeli kullanma
 
+[!INCLUDE [iot-pnp-quickstarts-1-selector.md](../../includes/iot-pnp-quickstarts-1-selector.md)]
+
 Bir _cihaz yetenek modeli_ (DCM) IoT Tak ve kullan cihazının yeteneklerini açıklar. DCM, genellikle bir Ürün SKU 'SU ile ilişkilendirilir. DCM 'de tanımlanan yetenekler yeniden kullanılabilir arabirimler halinde düzenlenmiştir. Bir DCM 'den iskelet cihaz kodu oluşturabilirsiniz. Bu hızlı başlangıçta, DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için Ubuntu Linux VS Code nasıl kullanacağınızı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç, masaüstü ortamıyla Ubuntu Linux kullandığınızı varsayar. Bu öğreticideki adımlar Ubuntu 18,04 kullanılarak test edilmiştir.
 
@@ -55,44 +57,7 @@ Bir Microsoft iş veya okul hesabıyla oturum açtığınızda veya varsa Micros
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>IoT Hub 'ı hazırlama
-
-Ayrıca, bu hızlı başlangıcı tamamlayabilmeniz için Azure aboneliğinizde bir Azure IoT Hub 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. Kullanabileceğiniz bir IoT Hub 'ınız yoksa, oluşturmak için bu bölümün geri kalanını izleyin.
-
-Azure CLı 'yi yerel olarak kullanıyorsanız, `az` sürümü **2.0.75** veya üzeri olmalıdır ve Azure Cloud Shell en son sürümü kullanır. Makinenizde yüklü sürümü denetlemek için `az --version` komutunu kullanın.
-
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-Bu hızlı başlangıçtaki adımlar, uzantının **0.8.5** veya üzeri bir sürümünü gerektirir. Yüklediğiniz sürümü ve gerekirse güncelleştirilecek `az extension update` komutunu denetlemek için `az extension list` komutunu kullanın.
-
-IoT Hub 'ınız yoksa, aşağıdaki komutları kullanarak bir tane oluşturun ve `<YourIoTHubName>` istediğiniz benzersiz bir adla değiştirin. Bu komutları yerel olarak çalıştırıyorsanız, önce `az login`kullanarak Azure aboneliğinizde oturum açın. Bu komutları Azure Cloud Shell 'de çalıştırıyorsanız, otomatik olarak oturum açtınız:
-
-  ```azurecli-interactive
-  az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name <YourIoTHubName> \
-    --resource-group pnpquickstarts_rg --sku S1
-  ```
-
-Önceki komutlar, Orta ABD bölgesinde `pnpquickstarts_rg` ve IoT Hub 'ı adlı bir kaynak grubu oluşturur.
-
-> [!IMPORTANT]
-> Genel Önizleme sırasında IoT Tak ve Kullan özellikleri yalnızca **Orta ABD**, **Kuzey Avrupa**ve **Japonya Doğu** bölgelerinde oluşturulan IoT Hub 'larında kullanılabilir.
-
-IoT Hub 'ınızda bir cihaz kimliği oluşturmak için aşağıdaki komutu çalıştırın. **Youriothubname** ve **yourdeviceıd** yertutucuları kendi _IoT Hub adı_ ve seçtiğiniz bir _cihaz kimliği_ ile değiştirin.
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
-```
-
-Yeni kaydettiğiniz cihazın _Cihaz bağlantı dizesini_ almak için aşağıdaki komutları çalıştırın (daha sonra kullanmak üzere).
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
@@ -216,13 +181,13 @@ Cihaz istemcisi örneği başladıktan sonra, Azure CLı ile çalışıp çalı�
 Örnek cihazın gönderdiği Telemetriyi görüntülemek için aşağıdaki komutu kullanın. Çıktıda bir telemetri görmeniz için bir dakika veya iki dakika beklemeniz gerekebilir:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDeviceID>
 ```
 
 Cihaz tarafından gönderilen tüm özellikleri görüntülemek için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
+az iot dt list-properties --device-id <YourDeviceID> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
 ```
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]

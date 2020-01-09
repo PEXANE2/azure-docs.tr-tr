@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak kasasının yapılandırmasını g
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: cbd958dd71d2d62f7b4c7e8d66ab7e56dc679a51
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390549"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ' GET ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | TAMAM        |
 
@@ -83,7 +83,7 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
 
 Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
-|Adı  |Gereklidir  |Tür  |Açıklama  |
+|Ad  |Gereklidir  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  doğru       |Dize         |   Kaynak konumu      |
@@ -92,7 +92,7 @@ Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/res
 
 #### <a name="example-request-body"></a>Örnek istek gövdesi
 
-Aşağıdaki örnek, geçici silme sate ' Disabled ' olarak güncelleştirmek için kullanılır.
+Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirmek için kullanılır.
 
 ```json
 {
@@ -107,7 +107,7 @@ Aşağıdaki örnek, geçici silme sate ' Disabled ' olarak güncelleştirmek i�
 
 ' PATCH ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | TAMAM        |
 

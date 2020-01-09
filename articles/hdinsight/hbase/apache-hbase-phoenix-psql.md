@@ -2,22 +2,22 @@
 title: Psql-Azure HDInsight kullanarak Apache Phoenix toplu yükleme
 description: Azure HDInsight 'ta Apache Phoenix tablolarına toplu yükleme verileri yüklemek için psql aracını kullanma
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/10/2017
-ms.author: ashishth
-ms.openlocfilehash: f00f6bcf07cbdc5aeaeb04aeccf7e88cf4822dbf
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311716"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552619"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Psql kullanarak Apache Phoenix’e toplu veri yükleme
 
-[Apache Phoenix](https://phoenix.apache.org/) , [Apache HBase](../hbase/apache-hbase-overview.md)üzerinde oluşturulmuş açık kaynaklı, yüksek düzeyde paralel ilişkisel veritabanıdır. Phoenix, HBase üzerinde SQL benzeri sorgular sağlar. Phoenix, kullanıcıların SQL tabloları, dizinler, görünümler ve diziler oluşturma, silme ve değiştirme ve satırları tek tek ve toplu olarak değiştirme olanağı sağlamak için JDBC sürücülerini kullanır. Phoenix, HBase üzerinde düşük gecikme süreli uygulamalar oluşturmak için MapReduce kullanarak sorguları derlemek yerine noSQL yerel derlemesini kullanır. Phoenix, verilerle birlikte bulunan kodu yürüterek, istemci tarafından sağlanan kodu çalıştırmanın sunucu adres alanında çalıştırmayı desteklemek için ortak işlemciler ekler. Bu, istemci/sunucu veri aktarımını en aza indirir.  HDInsight 'ta Phoenix 'i kullanarak verilerle çalışmak için, önce tablolar oluşturun ve ardından bunlara veri yükleyin.
+[Apache Phoenix](https://phoenix.apache.org/) , [Apache HBase](../hbase/apache-hbase-overview.md)üzerinde oluşturulmuş açık kaynaklı, yüksek düzeyde paralel ilişkisel veritabanıdır. Phoenix, HBase üzerinde SQL benzeri sorgular sağlar. Phoenix, kullanıcıların SQL tabloları, dizinler, görünümler ve diziler oluşturma, silme ve değiştirme ve satırları tek tek ve toplu olarak değiştirme olanağı sağlamak için JDBC sürücülerini kullanır. Phoenix, HBase üzerinde düşük gecikme süreli uygulamalar oluşturmak için MapReduce kullanarak sorguları derlemek yerine noSQL yerel derlemesini kullanır. Phoenix, istemci tarafından sağlanan kodu sunucunun adres alanında çalıştırmayı desteklemek için ortak işlemciler ekler ve kodun verilerle birlikte yürütülmesi sağlanır. Bu, istemci/sunucu veri aktarımını en aza indirir.  HDInsight 'ta Phoenix 'i kullanarak verilerle çalışmak için, önce tablolar oluşturun ve ardından bunlara veri yükleyin.
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>Apache Phoenix ile toplu yükleme
 
@@ -33,7 +33,7 @@ Verileri yüklemeye başlamadan önce, Phoenix 'in etkinleştirildiğini ve sorg
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Tabloları toplu olarak yüklemek için `psql` kullanın
 
-1. Yeni bir tablo oluşturun ve sonra sorgunuzu dosya adı `createCustomersTable.sql`ile kaydedin.
+1. `createCustomersTable.sql`adlı bir dosya oluşturun ve aşağıdaki kodu dosyasına kopyalayın. Sonra dosyayı kaydedin ve kapatın.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,77 +44,118 @@ Verileri yüklemeye başlamadan önce, Phoenix 'in etkinleştirildiğini ve sorg
         Country varchar);
     ```
 
-2. CSV dosyanızı (gösterilen örnek içerikler) yeni oluşturduğunuz tablonuza yüklemek üzere bir `/tmp/` dizinine `customers.csv` olarak kopyalayın.  CSV dosyasını istediğiniz kaynak konumunuza kopyalamak için `hdfs` komutunu kullanın.
+1. `listCustomers.sql`adlı bir dosya oluşturun ve aşağıdaki kodu dosyasına kopyalayın. Sonra dosyayı kaydedin ve kapatın.
 
+    ```sql
+    SELECT * from Customers;
     ```
+
+1. `customers.csv`adlı bir dosya oluşturun ve aşağıdaki kodu dosyasına kopyalayın. Sonra dosyayı kaydedin ve kapatın.
+
+    ```txt
     1,Samantha,260000.0,18,US
     2,Sam,10000.5,56,US
-    3,Anton,550150.0,Norway
-    ... 4997 more rows 
+    3,Anton,550150.0,42,Norway
     ```
 
-    ```bash
-    hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
+1. `customers2.csv`adlı bir dosya oluşturun ve aşağıdaki kodu dosyasına kopyalayın. Sonra dosyayı kaydedin ve kapatın.
+
+    ```txt
+    4,Nicolle,180000.0,22,US
+    5,Kate,210000.5,24,Canada
+    6,Ben,45000.0,32,Poland
     ```
 
-3. Giriş verilerinin düzgün yüklendiğini doğrulamak için bir SQL SELECT sorgusu oluşturun, sonra sorgunuzu dosya adı `listCustomers.sql`ile kaydedin. Herhangi bir SQL sorgusu kullanabilirsiniz.
-     ```sql
-    SELECT Name, Income from Customers group by Country;
+1. Bir komut istemi açın ve dizini yeni oluşturulan dosyaların konumuyla değiştirin. Aşağıdaki CLUSTERNAME değerini, HBase kümenizin gerçek adıyla değiştirin. Ardından, dosyaları kümenizin yayın düğümüne yüklemek için kodu yürütün:
+
+    ```cmd
+    scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-4. *Yeni* bir Hadoop komut penceresi açarak verileri toplu olarak yükleyin. İlk olarak `cd` komutuyla yürütme dizini konumuna geçin ve `psql` aracını (Python `psql.py` komutu) kullanın. 
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
-    Aşağıdaki örnek, yukarıdaki 2. adımdaki gibi `hdfs` kullanarak bir depolama hesabındaki `customers.csv` dosyasını yerel geçici dizininize kopyalamalarından bekler.
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. SSH oturumunuzda, dizini **psql** aracının konumuyla değiştirin. Aşağıdaki komutu yürütün:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
-
-    python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE]   
-    > `ZookeeperQuorum` adını belirlemek için dosya `/etc/hbase/conf/hbase-site.xml` `hbase.zookeeper.quorum`Özellik adı ile [Apache ZooKeeper](https://zookeeper.apache.org/) çekirdek dizesini bulun.
+1. Verileri toplu olarak yükleyin. Aşağıdaki kod, **müşteriler** tablosunu oluşturur ve sonra verileri karşıya yükler.
 
-5. `psql` işlemi tamamlandıktan sonra komut pencerenizde bir ileti görmeniz gerekir:
-
+    ```bash
+    python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
-    CSV Upsert complete. 5000 rows upserted
-    Time: 4.548 sec(s)
+
+    `psql` işlemi tamamlandıktan sonra şöyle bir ileti görürsünüz:
+
+    ```output
+    csv columns from database.
+    CSV Upsert complete. 3 rows upserted
+    Time: 0.081 sec(s)
+    ```
+
+1. Müşteriler tablosunun içeriğini görüntülemek için `psql` kullanmaya devam edebilirsiniz. Aşağıdaki kodu yürütün:
+
+    ```bash
+    python psql.py /tmp/listCustomers.sql
+    ```
+
+    Alternatif olarak, verileri sorgulamak için [HBase kabuğu](./query-hbase-with-hbase-shell.md)veya [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md) kullanabilirsiniz.
+
+1. Ek verileri karşıya yükleyin. Artık tablo zaten var olduğuna göre, komut tabloyu belirtir. Aşağıdaki komutu yürütün:
+
+    ```bash
+    python psql.py -t CUSTOMERS /tmp/customers2.csv
     ```
 
 ## <a name="use-mapreduce-to-bulk-load-tables"></a>MapReduce kullanarak tabloları toplu yükleme
 
 Küme üzerinden dağıtılmış daha yüksek aktarım hızı için MapReduce yükleme aracını kullanın. Bu yükleyici önce tüm verileri HFiles 'a dönüştürür ve sonra oluşturulan HFiles 'ı HBase 'e sağlar.
 
+1. Bu bölüm, SSH oturumu ve daha önce oluşturulan nesneler ile devam eder. Yukarıdaki adımları kullanarak gereken şekilde **müşteriler** tablosu ve **Customers. csv** dosyasını oluşturun. Gerekirse, SSH bağlantınızı yeniden kurun.
+
+1. **Müşteriler** tablosunun içeriğini kesin. Açık SSH oturumunuzla aşağıdaki komutları yürütün:
+
+    ```bash
+    hbase shell
+    truncate 'CUSTOMERS'
+    exit
+    ```
+
+1. `customers.csv` dosyasını, baş düğümüne 'dan Azure depolama 'ya kopyalayın.
+
+    ```bash
+    hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv
+    ```
+
+1. MapReduce toplu yükleme komutu için yürütme dizinine geçin:
+
+    ```bash
+    cd /usr/hdp/current/phoenix-client
+    ```
+
 1. Phoenix istemci jar ile `hadoop` komutunu kullanarak CSV MapReduce yükleyicisini başlatın:
 
     ```bash
-    hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
+    HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar phoenix-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /tmp/customers.csv
     ```
 
-2. Önceki adımda `CreateCustomersTable.sql` gibi bir SQL ifadesiyle yeni bir tablo oluşturun.
+    Karşıya yükleme tamamlandıktan sonra aşağıdakine benzer bir ileti görürsünüz:
 
-3. Tablonuzun şemasını doğrulamak için `!describe inputTable`çalıştırın.
-
-4. Giriş verilerinize ilişkin konum yolunu (örneğin, örnek `customers.csv` dosyası) saptayın. Giriş dosyaları, KADB/ADLS depolama hesabınızda olabilir. Bu örnek senaryoda, giriş dosyaları `<storage account parent>/inputFolderBulkLoad` dizinidir.
-
-5. MapReduce toplu yükleme komutu için yürütme dizinine geçin:
-
-    ```bash
-    cd /usr/hdp/current/phoenix-client/bin
+    ```output
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing master protocol: MasterService
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing zookeeper sessionid=0x26f15dcceff02c3
+    19/12/18 18:30:57 INFO zookeeper.ZooKeeper: Session: 0x26f15dcceff02c3 closed
+    19/12/18 18:30:57 INFO zookeeper.ClientCnxn: EventThread shut down
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Incremental load complete for table=CUSTOMERS
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Removing output directory /tmp/50254426-aba6-400e-88eb-8086d3dddb6
     ```
 
-6. `ZookeeperQuorum` değerini, özellik adı `hbase.zookeeper.quorum`ile `/etc/hbase/conf/hbase-site.xml`bulun.
-
-7. Sınıf yolunu ayarlayın ve `CsvBulkLoadTool` aracı komutunu çalıştırın:
-
-    ```bash
-    /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
-
-    org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
-    ```
-
-8. MapReduce 'yi Azure Data Lake Storage kullanmak için, `hbase-site.xml`içindeki `hbase.rootdir` değeri olan Data Lake Storage kök dizinini bulun. Aşağıdaki komutta Data Lake Storage kök dizini `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Bu komutta, Data Lake Storage giriş ve çıkış klasörlerini parametre olarak belirtin:
+1. MapReduce 'yi Azure Data Lake Storage kullanmak için, `hbase-site.xml`içindeki `hbase.rootdir` değeri olan Data Lake Storage kök dizinini bulun. Aşağıdaki komutta Data Lake Storage kök dizini `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. Bu komutta, Data Lake Storage giriş ve çıkış klasörlerini parametre olarak belirtin:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -123,6 +164,8 @@ Küme üzerinden dağıtılmış daha yüksek aktarım hızı için MapReduce y�
 
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
+
+1. Verileri sorgulamak ve görüntülemek için, **psql** ' i daha önce açıklandığı gibi kullanabilirsiniz. Ayrıca, [HBase kabuğu](./query-hbase-with-hbase-shell.md)veya [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md)da kullanabilirsiniz.
 
 ## <a name="recommendations"></a>Öneriler
 

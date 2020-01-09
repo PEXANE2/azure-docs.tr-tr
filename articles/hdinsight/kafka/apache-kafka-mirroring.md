@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767715"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552218"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>HDInsight üzerinde Kafka ile Apache Kafka konuları çoğaltmak için MirrorMaker kullanın
 
@@ -86,36 +86,41 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
 
         ![HDInsight Kafka VNET eşlemesi Ekle](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. IP tanıtımı yapılandırın:
-    1. Birincil kümenin ambarı panosuna gidin: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. **Kafka** > **Hizmetleri** ' ni seçin. **Configs** sekmesini Clienselectck.
-    1. Aşağıdaki yapılandırma satırlarını alt **Kafka-env şablonu** bölümüne ekleyin. **Kaydet**’i seçin.
+### <a name="configure-ip-advertising"></a>IP tanıtımı yapılandırma
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+Bir istemcinin etki alanı adları yerine aracı IP adreslerini kullanarak bağlanmasını sağlamak için IP tanıtıcılarını yapılandırın.
 
-    1. **Yapılandırma kaydet** ekranına bir Note girin ve **Kaydet**' e tıklayın.
-    1. Yapılandırma Uyarısı sorulursa, **yine de devam et**' e tıklayın.
-    1. **Yapılandırma değişikliklerini kaydet**' de **Tamam ' ı** seçin.
-    1. Yeniden başlatma **gerekli** bildiriminde **etkilenen tüm** ** > yeniden Başlat '** ı seçin. **Tümünü yeniden başlatmayı Onayla**seçeneğini belirleyin.
+1. Birincil kümenin ambarı panosuna gidin: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+1. **Kafka** > **Hizmetleri** ' ni seçin. **Configs** sekmesini Clienselectck.
+1. Aşağıdaki yapılandırma satırlarını alt **Kafka-env şablonu** bölümüne ekleyin. **Kaydet**’i seçin.
 
-        ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. Tüm ağ arabirimlerini dinlemek için Kafka yapılandırın.
-    1. **Hizmetler** > **Kafka**' nin altındaki **configs** sekmesinde kalın. **Kafka Broker** bölümünde **Listeners** özelliğini `PLAINTEXT://0.0.0.0:9092`olarak ayarlayın.
-    1. **Kaydet**’i seçin.
-    1. **Yeniden Başlat**' ı seçin ve **tümünün yeniden başlatılmasını onaylayın**.
+1. **Yapılandırma kaydet** ekranına bir Note girin ve **Kaydet**' e tıklayın.
+1. Yapılandırma Uyarısı sorulursa, **yine de devam et**' e tıklayın.
+1. **Yapılandırma değişikliklerini kaydet**' de **Tamam ' ı** seçin.
+1. Yeniden başlatma **gerekli** bildiriminde **etkilenen tüm** ** > yeniden Başlat '** ı seçin. **Tümünü yeniden başlatmayı Onayla**seçeneğini belirleyin.
 
-1. Birincil küme için Kayıt Aracısı IP adreslerini ve Zookeeper adreslerini kaydeder.
-    1. Ambarı panosunda **konaklar** ' ı seçin.
-    1. Aracılar ve zookeepers için IP adreslerini bir yere göz önünde yapın. Aracı düğümlerinin, ana bilgisayar adının ilk iki harfi ve Zookeeper düğümleri ana bilgisayar adının ilk iki harfi olarak **ZK** **'a sahiptir.**
+    ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![Apache ambarı görünümü düğüm IP adresleri](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Tüm ağ arabirimlerini dinlemek için Kafka yapılandırın.
+    
+1. **Hizmetler** > **Kafka**' nin altındaki **configs** sekmesinde kalın. **Kafka Broker** bölümünde **Listeners** özelliğini `PLAINTEXT://0.0.0.0:9092`olarak ayarlayın.
+1. **Kaydet**’i seçin.
+1. **Yeniden Başlat**' ı seçin ve **tümünün yeniden başlatılmasını onaylayın**.
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Birincil küme için Kayıt Aracısı IP adreslerini ve Zookeeper adreslerini kaydeder.
+
+1. Ambarı panosunda **konaklar** ' ı seçin.
+1. Aracılar ve zookeepers için IP adreslerini bir yere göz önünde yapın. Aracı düğümlerinin, ana bilgisayar adının ilk iki harfi ve Zookeeper düğümleri ana bilgisayar adının ilk iki harfi olarak **ZK** **'a sahiptir.**
+
+    ![Apache ambarı görünümü düğüm IP adresleri](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. İkinci küme için önceki üç adımı tekrarlayın **Kafka-ikincil-küme**: IP reklacılarını yapılandırın, dinleyicileri ayarlayın ve Broker ve Zookeeper IP adreslerini bir yere göz önünde yapın.
 

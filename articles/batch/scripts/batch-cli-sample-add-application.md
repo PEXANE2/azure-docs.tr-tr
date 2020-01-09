@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Betik Örneği - Batch’te Uygulama Ekleme | Microsoft Docs
-description: Azure CLI Betik Örneği - Batch’te Uygulama Ekleme
+title: Azure CLI Betik Örneği - Batch’te Uygulama Ekleme
+description: Bu örnek betik, bir Azure Batch havuzuyla veya görevle kullanım için bir uygulamanın nasıl ekleneceğini gösterir.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: ba7f64910e033751df7d158a6fddf36371f2933f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9c580fa7ed4834ca516d373b3c7bb47f4cfd1b38
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390459"
 ---
-# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLı örneği: Azure Batch hesabına uygulama ekleme
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI örneği: Azure Batch hesabına uygulama ekleme
 
 Bu betik, kullanmak üzere bir Azure Batch havuzu veya göreviyle uygulama eklemeyi gösterir. Batch hesabınıza eklemek üzere bir uygulama ayarlamak için, yürütülebilir dosyanızı tüm bağımlılıklarıyla birlikte bir zip dosyasına paketleyin. 
 

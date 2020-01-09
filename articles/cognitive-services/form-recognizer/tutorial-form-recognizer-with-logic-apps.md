@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446467"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Öğretici: faturaları çözümlemek için Azure Logic Apps ile form tanıyıcı kullanma
 
@@ -31,7 +31,7 @@ Bu öğreticinin şu şekilde ele alınmaktadır:
 > * Mantıksal uygulamayı form tanıyıcı kaynağı kullanacak şekilde yapılandırma
 > * Mantıksal uygulamayı çalıştırarak iş akışını test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
 
@@ -83,14 +83,14 @@ Haydi başlayalım! İş akışınızı ayarlamak için bu adımları izleyin.
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Ad** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-subscription-name*> | Azure abonelik adınız |
-   | **Kaynak grubu** | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](./../../azure-resource-manager/resource-group-overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
-   | **Konum** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
+   | **Kaynak grubu** | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](./../../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
+   | **Konum** | *Azure-region*> < | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
 
-1. Azure 'un uygulamanızı dağıtmasından sonra Azure araç çubuğunda **bildirimler** >  dağıtılan mantıksal uygulamanız Için**Kaynağa Git** ' i seçin. Ya da, arama kutusuna adı yazarak mantıksal uygulamanızı bulabilir ve seçebilirsiniz.
+1. Azure 'un uygulamanızı dağıtmasından sonra, Azure araç çubuğunda **bildirimler** > dağıtılan mantıksal uygulamanız Için **Kaynağa Git** ' i seçin. Ya da, arama kutusuna adı yazarak mantıksal uygulamanızı bulabilir ve seçebilirsiniz.
 
    Logic Apps Tasarımcısı açılır ve bir tanıtım videosu ile sık kullanılan tetikleyicilerin bulunduğu bir sayfa görüntülenir. **Şablonlar** altında **Boş Mantıksal Uygulama**'yı seçin.
 
@@ -131,7 +131,7 @@ Faturaları çözümlemek için form tanıyıcı hizmetini kullanabilmeniz için
     > [!div class="mx-imgBorder"]
     > Form tanıyıcı için bağlantı adı ![](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    **Oluştur**’a tıklayın.
+    **Oluştur**'a tıklayın.
 
 1. **Modeli eğitme** iletişim kutusunda, **kaynak**için örnek verileri karşıya yüklediğiniz kapsayıcının URL 'sini girin.
 
@@ -175,7 +175,7 @@ Bu bölümde, mantıksal uygulamayı faturalar içindeki tablodaki bilgileri ay�
     > [!div class="mx-imgBorder"]
     > Fatura](media/tutorial-form-recognizer-with-logic-apps/select-tables.png) tablo bilgilerini ![Ayıkla
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
 

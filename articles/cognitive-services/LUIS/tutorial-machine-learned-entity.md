@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 2d3bffd025d484ac928e21003b7cba9c63d2c514
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381775"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Öğretici: Language Understanding (LUSıS) içindeki makine tarafından öğrenilen varlıklarla yapılandırılmış verileri Kullanıcı utkiden Ayıkla
 
@@ -24,9 +24,7 @@ Bu öğreticide, makine tarafından öğrenilen varlığı kullanarak bir utterd
 
 Makine tarafından öğrenilen varlık, kendi tanımlayıcılarını ve kısıtlamalarını içeren alt bileşen varlıkları sağlayarak [model ayrıştırma kavramını](luis-concept-model.md#v3-authoring-model-decomposition) destekler.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
@@ -66,7 +64,7 @@ Toppings veya Crust için alt bileşenler oluşturma gibi ek bir ayrıştırma d
 
 ## <a name="import-example-json-to-begin-app"></a>Uygulamayı başlatmak için example. JSON al
 
-1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)indirip kaydedin.
+1.  [Uygulama json dosyasını](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)indirip kaydedin.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

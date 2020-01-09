@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374755"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
@@ -24,6 +24,7 @@ Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights öni
 > [!TIP]
 >  * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
 > * Zaman serisi modeli Kullanıcı arabiriminize nasıl gidebileceğinizi öğrenmek için [Azure Time Series Insights önizleme Gezgini](time-series-insights-update-explorer.md) hakkında bilgi edinin.
+> * Time Series Insights Web gezginini kullanarak [zaman serisi modeliyle çalışmayı](time-series-insights-update-how-to-tsm.md) öğrenin.
 
 ## <a name="summary"></a>Özet
 
@@ -48,11 +49,11 @@ Bu sınırlamalar, contoso 'nun yeni oven 'i ile birlikte akıllı veri toplama 
 
 Zaman serisi modeli, bu kurgusal örnekte karşılaşılan birçok senaryoya **uygun bir çözüm sağlar** :
 
-[![zaman serisi modeli grafiğini oluşturma](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[![zaman serisi modeli akıllı oven grafik örneği](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Zaman serisi modeli sorgular ve gezinmede önemli bir rol oynar, bu da karşılaştırmalar, zaman aralıklarıyla ve algılayıcı ile cihaz çeşitleri arasında çizilmesine izin vererek verileri ayırır.
-* Zaman serisi modelinde kalıcı veriler, zaman serisi sorgu hesaplamalarıyla değişken olarak korunduğu ve bunları sorgu zamanında kullandığı için veriler daha kapsamlı hale getirilir.
-* Zaman serisi modeli, geliştirilmiş görselleştirme ve yönetim özellikleri için verileri düzenler ve toplar.
+* Zaman serisi modeli sorgular ve gezinmede önemli bir rol oynar, bu da karşılaştırmalar, zaman aralıklarıyla ve algılayıcı ile cihaz çeşitleri arasında çizilmesine izin vererek verileri ayırır. (**A**) 
+* Zaman serisi modelinde kalıcı veriler, zaman serisi sorgu hesaplamalarıyla değişken olarak korunduğu ve bunları sorgu sırasında yeniden kullandığı için veriler daha kapsamlı hale getirilir.
+* Zaman serisi modeli, geliştirilmiş görselleştirme ve yönetim özellikleri için verileri düzenler ve toplar. (**B**) 
 
 ### <a name="key-capabilities"></a>Temel işlevler
 
@@ -72,7 +73,7 @@ Zaman serisi modelinin üç çekirdek bileşeni vardır:
 
 Bu bileşenler, zaman serisi modeli belirtmek ve Azure Time Series Insights verilerinizi düzenlemek için birleştirilir.
 
-[![zaman serisi modeline genel bakış](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[![zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 [Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) arabirimi aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
 
@@ -90,7 +91,7 @@ Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan son
 
 [Contoso rüzgar grubu tanıtımı](https://insights.timeseries.azure.com/preview/samples) çeşitli canlı örnek örnekleri sunar.
 
-[![zaman serisi model örnekleri](media/v2-update-tsm/instance.png)](media/v2-update-tsm/instance.png#lightbox)
+[![zaman serisi modeli örneği örneği](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>Örnek özellikleri
 
@@ -112,18 +113,18 @@ Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan son
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -138,7 +139,7 @@ Belirli bir Time Series Insights ortamında birden fazla hiyerarşiyi yapıland�
 
 [Contoso rüzgar grubu demo](https://insights.timeseries.azure.com/preview/samples) istemci arabirimi standart bir örnek ve tür hiyerarşisi görüntüler.
 
-[![zaman serisi modeli hiyerarşileri](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[![zaman serisi modeli hiyerarşisi örneği](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Hiyerarşi tanımı
 
@@ -215,7 +216,7 @@ Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 | ID4 | "derleniyor" = "1000", "Floor" = "10"  |
 | ID5 | Hiçbir "derleme", "kat" veya "Oda" ayarlanmamış. |
 
-**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru şekilde sıralı *oluşturma*, *kat*ve *Oda* içerdiğinden, [Azure Time Series Insights Gezgini](time-series-insights-update-explorer.md) 'nde **H1** hiyerarşisinin bir parçası olarak görüntülenir parametrelere.
+**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Explorer](time-series-insights-update-explorer.md) 'ın **H1** hiyerarşisinin bir parçası olarak görüntülenir.
 
 Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe olmayan örnekler* altında sınıflandırılmaktadır.
 
@@ -227,7 +228,7 @@ Bir türü veya daha fazla değişken olabilir. Örneğin, bir zaman serisi mode
 
 [Contoso rüzgar grubu gösterimi](https://insights.timeseries.azure.com/preview/samples) , ilgili örneklerle Ilişkili çeşitli zaman serisi modeli türlerini görselleştirir.
 
-[![zaman serisi model türleri](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
+[![zaman serisi model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > Time Series Insights örneği API 'SI ve CRUD desteği için bkz. [veri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) MAKALESI ve [API Rest belge türü](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
@@ -241,7 +242,7 @@ Zaman serisi model türleri **kimlik**, **ad**, **Açıklama**ve **değişkenler
 | id | Türün UUID 'SI. |
 | ad | Tür için bir ad sağlamak üzere kullanılan dize. |
 | açıklama | Tür için bir dize açıklaması. |
-| değişkenlerinin | Türle ilişkili değişkenleri belirtin. |
+| değişkenler | Türle ilişkili değişkenleri belirtin. |
 
 Türler aşağıdaki JSON örneğine uyar:
 
@@ -295,7 +296,7 @@ Her değişken üç *türden*biri olabilir: *sayısal*, *kategorik*ve *Toplam*.
 
 Aşağıdaki tabloda, her değişken türü için uygun olan özellikler görüntülenmektedir.
 
-[![zaman serisi model türleri](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
+[![zaman serisi modeli değişken tablosu](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>Sayısal değişkenler
 
@@ -342,7 +343,9 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 ```JSON
 "Status": {
   "kind": "categorical",
-  "value": "toLong($event.[Status].Double)",
+  "value": {
+     "tsx": "toLong($event.[Status].Double)" 
+},
   "interpolation": {
     "kind": "step",
     "boundary": {
@@ -389,5 +392,7 @@ Değişkenler, zaman serisi modelinin tür tanımında depolanır ve depolanan t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bkz. [Azure Time Series Insights Preview Storage and ınress](./time-series-insights-update-storage-ingress.md).
+
 - [Azure Time Series Insights önizlemede veri modellemesinde](./time-series-insights-update-how-to-tsm.md) yaygın zaman serisi modeli işlemleri hakkında bilgi edinin
+
 - Yeni [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.

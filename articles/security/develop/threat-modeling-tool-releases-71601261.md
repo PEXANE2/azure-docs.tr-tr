@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool yayınları-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool Release 1/29/2019-Azure
 description: Tehdit modelleme aracı için sürüm notlarını belgeleme
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: jegeib
-ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cec5abe358189184648c5a40a809b570f243fbf4
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928093"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548791"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.60126.1 - 29.1.2019
 
@@ -37,7 +29,7 @@ Microsoft Threat Modeling Tool sürüm 7.1.60126.1 Ocak 29 2019 ' de yayımlanm�
 
 ### <a name="model-validation-option"></a>Model doğrulama seçeneği
 
-Müşteri geri bildirimlerine bağlı olarak, model doğrulamasını etkinleştirmek veya devre dışı bırakmak için araca bir seçenek eklenmiştir. Daha önce, şablonunuz iki nesne arasında tek bir tek yönlü veri akışı kullanıyorsa, şunu belirten Iletiler çerçevesinde bir hata iletisi almış olabilirsiniz: ObjectsName en az bir ' any ' gerektirir. Model doğrulamayı devre dışı bırakmak, bu uyarıların görünümde gösterilmesini engeller.
+Müşteri geri bildirimlerine bağlı olarak, model doğrulamasını etkinleştirmek veya devre dışı bırakmak için araca bir seçenek eklenmiştir. Daha önce, şablonunuz iki nesne arasında tek bir tek yönlü veri akışı kullanıyorsa, Ileti çerçevesinde şunu belirten bir hata iletisi almış olabilirsiniz: ObjectsName en az bir ' any ' gerektirir. Model doğrulamayı devre dışı bırakmak, bu uyarıların görünümde gösterilmesini engeller.
 
 Model doğrulamayı aç ve Kapat seçeneği, Dosya > ayarları-> Seçenekler menüsünde bulunabilir. Bu ayar için varsayılan değer devre dışı bırakıldı.
 
@@ -60,7 +52,7 @@ Model doğrulamayı aç ve Kapat seçeneği, Dosya > ayarları-> Seçenekler men
 
 Windows 10 Enterprise LTSB (sürüm 1507) gibi .NET 4.7.1 veya üstünü yükleyemeyecek Windows 10 sistemlerinin kullanıcıları, yükseltmeden sonra aracı açamaz. Windows 'un bu eski sürümleri artık Threat Modeling Tool için desteklenen platformlar değildir ve en son güncelleştirmeyi yüklememelidir.
 
-#### <a name="workaround"></a>Geçici Çözüm
+#### <a name="workaround"></a>Geçici çözüm
 
 En son güncelleştirmeyi yüklemiş olan Windows 10 Enterprise LTSB (sürüm 1507) kullanıcıları, uygulamalar & Özellikler 'deki kaldırma iletişim kutusu aracılığıyla Threat Modeling Tool önceki sürümüne geri dönebilir.
 

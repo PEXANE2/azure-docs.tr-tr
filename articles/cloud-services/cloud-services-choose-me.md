@@ -2,17 +2,17 @@
 title: Azure Cloud Services nedir? | Microsoft Docs
 description: Azure Cloud Services ne olduğunu öğrenin.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386859"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services 'ye Genel Bakış
 Azure Cloud Services bir [hizmet olarak platform](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) örneğidir. [Azure App Service](../app-service/overview.md)gibi, bu teknoloji ölçeklenebilir, güvenilir ve çalışır maliyetli uygulamaları destekleyecek şekilde tasarlanmıştır. App Service sanal makinelerde (VM) barındırıldığından aynı şekilde Azure Cloud Services de aynı şekilde barındırılır. Ancak VM 'Lerde daha fazla denetiminiz vardır. Azure Cloud Services kullanan VM 'Lere kendi yazılımınızı yükleyebilir ve bunlara uzaktan erişebilirsiniz.
@@ -23,7 +23,7 @@ Daha fazla denetim de daha az kullanım kolaylığı anlamına gelir. Ek denetim
 
 İki tür Azure Cloud Services rolü vardır. İkisi arasındaki tek fark, rolünüzün VM 'lerde barındırılmasından farklı olur:
 
-* **Web rolü**: Uygulamanızı IIS üzerinden otomatik olarak dağıtır ve barındırır.
+* **Web rolü**: uygulamanızı IIS üzerinden otomatik olarak dağıtır ve barındırır.
 
 * **Çalışan rolü**: IIS kullanmaz ve uygulamanızı tek başına çalıştırır.
 
@@ -48,6 +48,9 @@ Azure Cloud Services PaaS doğası diğer etkileri de vardır. En önemli bir de
 * [Node. js ' de bir bulut hizmeti uygulaması oluşturma](cloud-services-nodejs-develop-deploy-app.md) 
 * [PHP 'de bir bulut hizmeti uygulaması oluşturma](../cloud-services-php-create-web-role.md) 
 * [Python 'da bir bulut hizmeti uygulaması oluşturma](cloud-services-python-ptvs.md)
+
+
+
 
 
 

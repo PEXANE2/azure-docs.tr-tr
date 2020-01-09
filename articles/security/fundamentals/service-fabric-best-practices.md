@@ -1,26 +1,18 @@
 ---
-title: Azure Service Fabric en iyi güvenlik uygulamaları | Microsoft Docs
+title: Azure Service Fabric güvenliği için en iyi uygulamalar
 description: Bu makalede, Azure Service Fabric güvenliği için bir dizi en iyi yöntem sunulmaktadır.
-services: security
-documentationcenter: na
 author: unifycloud
-manager: barbkess
-editor: tomsh
-ms.assetid: ''
+ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/16/2019
-ms.author: tomsh
-ms.openlocfilehash: dc063621e6b3e1d0d3e1a51d744ca9d9a6ef8c8d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934622"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548828"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
 Azure 'da uygulama dağıtmak hızlı, kolay ve ekonomik bir işlemdir. Bulut uygulamanızı üretime dağıtmadan önce, uygulamanızda güvenli kümeler uygulamaya yönelik temel ve önerilen en iyi yöntemler listesini gözden geçirin.
@@ -67,11 +59,11 @@ Ayrıca, aşağıdaki yapılandırma seçeneklerini göz önünde bulundurun:
 
 -   Düğümden düğüme güvenlik: Bu senaryo, sanal makineler ve kümedeki bilgisayarlar arasındaki iletişimin güvenliğini sağlar. Bu güvenlik biçimi, yalnızca kümeye katılması gereken bilgisayarların kümedeki uygulamaları ve Hizmetleri barındırmasını sağlar.
 Bu senaryoda, Azure 'da çalışan kümeler ya da Windows üzerinde çalışan tek başına kümeler Windows Server makineleri için [sertifika güvenliği](../../service-fabric/service-fabric-windows-cluster-x509-security.md) veya [Windows güvenliği](../../service-fabric/service-fabric-windows-cluster-windows-security.md) kullanabilir.
--   İstemciden düğüme güvenlik: Bu senaryo Service Fabric istemci ile kümedeki tek tek düğümler arasındaki iletişimin güvenliğini sağlar.
+-   İstemciden düğüme güvenlik: Bu senaryo, Service Fabric istemci ile kümedeki tek tek düğümler arasındaki iletişimin güvenliğini sağlar.
 -   Rol tabanlı Access Control (RBAC): Bu senaryo, kümeye erişen her yönetici ve Kullanıcı istemci rolü için ayrı kimlikler (sertifikalar, Azure AD vb.) kullanır. Kümeyi oluştururken rol kimliklerini belirtirsiniz.
 
 >[!NOTE]
->**Azure kümeleri için güvenlik önerisi:** Düğümden düğüme güvenlik için istemcilerin ve sertifikaların kimliğini doğrulamak üzere Azure AD güvenliği ' ni kullanın.
+>**Azure kümeleri Için güvenlik önerisi:** Düğümden düğüme güvenlik için istemcilerin ve sertifikaların kimliğini doğrulamak üzere Azure AD güvenliği ' ni kullanın.
 
 Tek başına bir Windows kümesini yapılandırmak için bkz. [tek başına Windows kümesi için ayarları yapılandırma](../../service-fabric/service-fabric-cluster-manifest.md).
 
@@ -102,12 +94,12 @@ Küme güvenli değilse, herkes kümeye anonim olarak bağlanabilir ve yönetim 
 
 X. 509.440 sertifikalarını kullanma hakkında daha fazla bilgi için bkz. [Service Fabric kümesi için sertifika ekleme veya kaldırma](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md).
 
-## <a name="configure-security-policies"></a>Güvenlik ilkelerini yapılandır
+## <a name="configure-security-policies"></a>Güvenlik ilkelerini yapılandırma
 Service Fabric Ayrıca, uygulamalar tarafından kullanılan kaynakların güvenliğini sağlar. Dosyalar, dizinler ve sertifikalar gibi kaynaklar, uygulama dağıtıldığında Kullanıcı hesapları altında depolanır. Bu özellik, paylaşılan barındırılan bir ortamda bile, çalışan uygulamaların diğerinden daha güvenli olmasını sağlar.
 
--   Active Directory bir etki alanı grubu veya Kullanıcı kullanın: Active Directory Kullanıcı veya grup hesabı için kimlik bilgileri altında hizmeti çalıştırın. Azure Active Directory değil, etki alanı içinde şirket içi Active Directory kullandığınızdan emin olun. Etki alanındaki bir etki alanı kullanıcısı veya grubu kullanılarak izin verilen diğer kaynaklara erişin. Örneğin, dosya paylaşımları gibi kaynaklar.
+-   Bir Active Directory etki alanı grubu veya Kullanıcı kullanın: bir Active Directory Kullanıcı veya grup hesabı için kimlik bilgileri altında hizmeti çalıştırın. Azure Active Directory değil, etki alanı içinde şirket içi Active Directory kullandığınızdan emin olun. Etki alanındaki bir etki alanı kullanıcısı veya grubu kullanılarak izin verilen diğer kaynaklara erişin. Örneğin, dosya paylaşımları gibi kaynaklar.
 
--   HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama: Hizmet bildirimi uç nokta kaynaklarını HTTP ile bildirdiği zaman bir hizmete **runas** ilkesi uygulamak Için **securityaccesspolicy** özelliğini belirtin. HTTP uç noktalarına ayrılan bağlantı noktaları, hizmetin altında çalıştığı RunAs Kullanıcı hesabı için doğru şekilde erişim denetimli listelerdir. İlke ayarlanmamışsa, http. sys hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olabilirsiniz.
+-   HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama: hizmet bildirimi uç nokta kaynaklarını HTTP ile bildirdiği zaman bir hizmete **runas** ilkesi uygulamak Için **securityaccesspolicy** özelliğini belirtin. HTTP uç noktalarına ayrılan bağlantı noktaları, hizmetin altında çalıştığı RunAs Kullanıcı hesabı için doğru şekilde erişim denetimli listelerdir. İlke ayarlanmamışsa, http. sys hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olabilirsiniz.
 
 Service Fabric kümesinde güvenlik ilkeleri kullanmayı öğrenmek için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](../../service-fabric/service-fabric-application-runas-security.md).
 
@@ -152,7 +144,7 @@ HTTP Protokolü güvenli değildir ve gizlice dinleme saldırılarına tabidir. 
 SSL sertifikalarını kullanma hakkında daha fazla bilgi için bkz. [Azure uygulamaları IÇIN SSL yapılandırma](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Azure Service Fabric ağ yalıtımı ve güvenliği kullanma
-Örnek olarak [Azure Resource Manager şablonunu](../../azure-resource-manager/resource-group-authoring-templates.md) kullanarak 3 NodeType güvenli bir küme ayarlayın. Şablon ve ağ güvenlik gruplarını kullanarak gelen ve giden ağ trafiğini denetleyin.
+Örnek olarak [Azure Resource Manager şablonunu](../../azure-resource-manager/templates/template-syntax.md) kullanarak 3 NodeType güvenli bir küme ayarlayın. Şablon ve ağ güvenlik gruplarını kullanarak gelen ve giden ağ trafiğini denetleyin.
 
 Şablonda, sanal makine ölçek kümelerinin her biri için bir NSG vardır ve kümenin içinde ve dışında trafiği denetlemek için kullanılır. Kurallar, sistem hizmetleri ve şablonda belirtilen uygulama bağlantı noktaları için gereken tüm trafiğe izin vermek üzere varsayılan olarak yapılandırılır. Uygulamalarınız için yeni kurallar ekleme dahil olmak üzere bu kuralları gözden geçirin ve gereksinimlerinize uyacak değişiklikler yapın.
 

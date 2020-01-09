@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433003"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
 
@@ -21,11 +21,11 @@ Azure haritalar hesabı oluşturduktan sonra, Azure Active Directory (Azure AD) 
 
 ## <a name="view-authentication-details"></a>Kimlik doğrulama ayrıntılarını görüntüle
 
+Azure haritalar hesabı oluşturulduktan sonra birincil ve ikincil anahtarlar oluşturulur. [Paylaşılan anahtar kimlik doğrulaması](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)kullanılarak Azure Maps çağrılırken, birincil anahtar abonelik anahtarı olarak kullanılması önerilir. İkincil anahtar, kayan anahtar değişiklikleri gibi senaryolarda kullanılabilir. Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](https://aka.ms/amauth).
+
 Kimlik doğrulama ayrıntılarınızı Azure portal görüntüleyebilirsiniz. Hesabınıza gidin ve **Ayarlar** menüsünde **kimlik doğrulaması** ' nı seçin.
 
 ![Kimlik doğrulaması ayrıntıları](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- Daha fazla bilgi için bkz. [Azure Maps Ile kimlik doğrulama](https://aka.ms/amauth).
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>Azure AD uygulama kaydını ayarlama
@@ -67,7 +67,7 @@ Azure haritalar hesabını Azure AD kiracınızla ilişkilendirdikten sonra, bir
 
 2. **Rol ataması Ekle** penceresinde, **rol**altında **Azure Maps Tarih okuyucusu (Önizleme)** seçeneğini belirleyin. **Erişim ata**' nın altında **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin. **Seç**' in altında Kullanıcı veya uygulamayı seçin. **Kaydet**’i seçin.
 
-    ![Rol ataması Ekle](./media/how-to-manage-authentication/add-role-assignment.png)
+    ![Rol ataması ekle](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Kullanılabilir Azure Maps RBAC rollerini görüntüleme
 
@@ -91,12 +91,12 @@ Uygulamanızı kaydettikten ve Azure Maps ile ilişkilendirdikten sonra, erişim
 
 * Uygulamanız Azure Maps web SDK 'Sı ile kullanıcı belirteci kimlik doğrulamasını kullanıyorsa, HTML sayfanızı Azure Maps istemci KIMLIĞI ve Azure AD uygulama KIMLIĞI ile yapılandırmanız gerekir.
 
-* Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa Azure ad kaynak KIMLIĞI `https://atlas.microsoft.com/`, Azure Maps istemci KIMLIĞI, Azure AD uygulama KIMLIĞI ve Azure AD uygulama kayıt parolası ile Azure AD belirteç uç noktası `https://login.microsoftonline.com` bir belirteç istemeniz gerekir veya Sertifika.
+* Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa Azure ad kaynak KIMLIĞI `https://atlas.microsoft.com/`, Azure Maps istemci KIMLIĞI, Azure AD uygulama KIMLIĞI ve Azure AD uygulama kayıt parolası ya da sertifikası ile Azure AD belirteç uç noktası `https://login.microsoftonline.com` bir belirteç istemeniz gerekir.
 
 | Azure ortamı   | Azure AD belirteç uç noktası | Azure Kaynak KIMLIĞI |
 | --------------------|-------------------------|-------------------|
-| Azure genel        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
-| Azure Kamu    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
+| Azure Genel        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Devlet Kurumları    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 Kullanıcılar ve hizmet sorumluları için Azure AD 'den erişim belirteçleri isteme hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 

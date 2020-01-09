@@ -1,20 +1,18 @@
 ---
-title: Dayanıklı İşlevler-Azure 'da olağanüstü durum kurtarma ve coğrafi dağıtım
+title: Olağanüstü durum kurtarma ve coğrafi dağıtım Azure Dayanıklı İşlevler
 description: Dayanıklı İşlevler ' de olağanüstü durum kurtarma ve coğrafi dağıtım hakkında bilgi edinin.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433343"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>Olağanüstü durum kurtarma ve coğrafi dağıtım
-
-## <a name="overview"></a>Genel Bakış
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Dayanıklı İşlevler olağanüstü durum kurtarma ve coğrafi dağıtım
 
 Dayanıklı İşlevler, Azure depolama 'da tüm durum kalıcı hale getirilir. [Görev hub 'ı](durable-functions-task-hubs.md) , Azure depolama kaynakları için, düzenleme için kullanılan mantıksal bir kapsayıcıdır. Orchestrator ve Activity işlevleri aynı görev merkezine ait olduklarında yalnızca birbirleriyle etkileşim kurabilir.
 Açıklanan senaryolar kullanılabilirliği artırmak ve olağanüstü durum kurtarma etkinlikleri sırasında kapalı kalma süresini en aza indirmek için dağıtım seçenekleri önerin.

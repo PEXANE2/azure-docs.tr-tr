@@ -3,19 +3,19 @@ title: Azure Cloud Services ve ASP.NET kullanmaya başlama | Microsoft Belgeleri
 description: ASP.NET MVC ve Azure kullanarak çok katmanlı bir uygulama oluşturma hakkında bilgi edinin. Uygulama, web rolü ve çalışan rolü ile birlikte bir bulut hizmetinde çalışır. Entity Framework, SQL Database ve Azure Storage kuyruklarını ve blob’larını kullanır.
 services: cloud-services, storage
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: gwallace
-ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tagore
+ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827663"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386740"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -42,7 +42,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 * Dosyaları karşıya yükleme ve Azure Blob hizmetine depolama.
 * Katmanlar arasında iletişim için Azure Queue hizmetini kullanma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Öğretici *web rolü* ve *çalışan rolü* terminolojisi gibi [Azure bulut hizmetleri hakkında temel kavramları](cloud-services-choose-me.md) anladığınızı varsayar.  Ayrıca Visual Studio’da [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) veya [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projeleri ile nasıl çalışılacağını bildiğinizi varsayar. Örnek uygulama MVC kullanır, ancak öğreticinin büyük bölümü Web Forms için de geçerlidir.
 
 Uygulamayı bir Azure aboneliği olmadan yerel olarak çalıştırabilirsiniz, ancak uygulamayı buluta dağıtmak için bir abonelik gerekecektir. Bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) veya [ücretsiz deneme için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)
@@ -124,7 +124,7 @@ Azure bulut hizmeti, uygulamanın çalıştırılacağı ortamıdır.
 5. Uygulamayı dağıtmak istediğiniz bölgeyi seçin.
 
     Bu alan, bulut hizmetinizin hangi veri merkezinde barındırılacağını belirtir. Bir üretim uygulaması için müşterilerinize en yakın bölgeyi seçmeniz gerekir. Bu öğretici için size en yakın bölgeyi seçin.
-5.           **Oluştur**'a tıklayın.
+5. **Oluştur**'a tıklayın.
 
     Aşağıdaki görüntüde bulut hizmeti CSvccontosoads.cloudapp.net URL’si ile oluşturulur.
 
@@ -153,7 +153,7 @@ Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullan
 9. Yeni sunucu için **Seçin**’e tıklayın.
 
     ![Yeni SQL Veritabanı sunucusu](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10.           **Oluştur**'a tıklayın.
+10. **Oluştur**'a tıklayın.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
 Azure Storage hesabı kuyruk ve blob verilerini buluta depolamaya yönelik kaynaklar sağlar.
@@ -176,7 +176,7 @@ Gerçek bir uygulamada genellikle uygulama verilerine karşı günlük verileri 
     Bulut hizmeti ve depolama hesabı farklı veri merkezlerinde (farklı bölgelerde) olduğunda gecikme artar ve veri merkezinin dışındaki bant genişliği için sizden ücret alınır. Bir veri merkezi içinde bant genişliği ücretsizdir.
 
     Azure benzeşim grupları bir veri merkezinde bulunan kaynaklar arasındaki uzaklığı en aza indirmeye yönelik bir mekanizma sağlar. Bu öğretici benzeşim gruplarını kullanmaz. Daha fazla bilgi için bkz. [Azure’da Benzeşim Grubu Oluşturma](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
     ![Yeni depolama hesabı](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -229,7 +229,7 @@ Hem web rolü projesinin hem de çalışan rolü projesinin Azure Storage hesab�
 1. **Çözüm Gezgini**’nde **ContosoAdsCloudService** projesindeki **Roller** altında **ContosoAdsWeb**’e sağ tıklayın ve ardından **Özellikler**’e tıklayın.
 
     ![Rol özellikleri](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. **Ayarlar** sekmesine tıklayın. **Hizmet Yapılandırma** açılır kutusunda **Bulut**’u seçin.
+2. **Ayarlar** sekmesine tıklayın. **Hizmet yapılandırması** açılan kutusunda **bulut**' u seçin.
 
     ![Bulut yapılandırması](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. **StorageConnectionString** girdisini seçtiğinizde satırın sağ uç kısmında bir üç nokta ( **...** ) göreceksiniz. **Depolama Hesabı Bağlantı Dizesi Oluştur** iletişim kutusunu açmak için üç nokta düğmesine tıklayın.
@@ -280,7 +280,7 @@ Visual Studio kullanıcı arabirimini kullanılarak yapılandırdığınız rol 
 ### <a name="deploy-the-project-to-azure"></a>Projeyi Azure’a dağıtma
 1. **Çözüm Gezgini**’nde **ContosoAdsCloudService** bulut projesine sağ tıklayın ve ardından **Yayımla** öğesini seçin.
 
-   ![Yayımla menüsü](./media/cloud-services-dotnet-get-started/pubmenu.png)
+   ![Yayımlama menüsü](./media/cloud-services-dotnet-get-started/pubmenu.png)
 2. **Azure Uygulaması Yayımlama** sihirbazının **Oturum aç** adımında **Sonraki** öğesine tıklayın.
 
     ![Oturum açma adımı](./media/cloud-services-dotnet-get-started/pubsignin.png)
@@ -361,7 +361,7 @@ Contoso Ads uygulamasının oluşturulması aşağıdaki adımları içerir:
 
     Bu bütünleştirilmiş kod, görüntüleri küçük resimlere dönüştürmek için arka uç tarafından kullanılır.
 
-### <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
+### <a name="configure-connection-strings"></a>Bağlantı ayarlarını yapılandırma
 Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı dizelerini yapılandırırsınız. Öğreticinin önceki bölümlerinde verilen dağıtım yönergeleri, uygulamanın bulutta çalıştığı durumlar için bağlantı dizelerinin nasıl ayarlandığını açıklamaktadır.
 
 1. ContosoAdsWeb projesinde uygulamanın Web.config dosyasını açın ve aşağıdaki `connectionStrings` öğesini `configSections` öğesinden sonra ekleyin.
@@ -387,9 +387,9 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 7. ContosoAdsWorker rol özelliklerine bir depolama bağlantı dizesi eklemek için aynı yordamı izleyin.
 8. Hala **ContosoAdsWorker [Rolü]** özellikler penceresindeyken başka bir bağlantı dizesi ekleyin:
 
-   * Adı: ContosoAdsDbConnectionString
-   * Şunu yazın: Dize
-   * Değer: Web rolü projesi için kullandığınız bağlantı dizesini yapıştırın. (Aşağıdaki örnek Visual Studio 2013 içindir. Bu örneği kopyalarsanız ve Visual Studio 2015 veya sonraki bir sürümü kullanıyorsanız Veri Kaynağını değiştirmeyi unutmayın.)
+   * Ad: ContosoAdsDbConnectionString
+   * Türü: Dize
+   * Değer: Web rolü projesi kullandığınız bağlantı dizesinin aynısını yapıştırın. (Aşağıdaki örnek Visual Studio 2013 içindir. Bu örneği kopyalarsanız ve Visual Studio 2015 veya sonraki bir sürümü kullanıyorsanız Veri Kaynağını değiştirmeyi unutmayın.)
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
@@ -404,8 +404,8 @@ Bir proje veya klasöre dosya eklemek için proje veya klasöre sağ tıklayıp 
 2. ContosoAdsWeb projesinde indirilen projeden aşağıdaki dosyaları ekleyin.
 
    * *Global.asax.cs*.  
-   * *Views\shared* klasöründe: Layout. cshtml.  *\_*
-   * *Views\home* klasöründe: *Index. cshtml*.
+   * *Görünümler/Paylaşılan* klasöründe: *\_Layout.cshtml*.
+   * *Görünümler/Giriş* klasöründe: *Index.cshtml*.
    * *Denetleyiciler* klasöründe: *AdController.cs*.
    * *Görünümler/Reklam* klasöründe (öncelikle klasörü oluşturun): beş *.cshtml* dosyası.
 3. ContosoAdsWorker projesinde indirilen projeden *WorkerRole.cs* ekleyin.
@@ -774,5 +774,8 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure Cloud Services Bölüm 1: Giriş](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services nasıl yönetilir?](cloud-services-how-to-manage-portal.md)
-* [Azure Depolama](https://docs.microsoft.com/azure/storage/)
+* [Azure depolama alanı](https://docs.microsoft.com/azure/storage/)
 * [Bulut hizmeti sağlayıcısı seçme](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+
+
+

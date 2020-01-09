@@ -1,30 +1,22 @@
 ---
-title: Threat Modeling Tool yayınları-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool Release 9/12/2018-Azure
 description: Tehdit modelleme aracı için sürüm notlarını belgeleme
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
-ms.author: jegeib
-ms.openlocfilehash: ce5f2b5541da3b3a3db046ba0dc768e3fbe2431e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ad489d6de222380e85a962c7b50c63a5c2122c72
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928111"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548811"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA sürüm 7.1.50911.2-9/12/2018
 
-Microsoft Threat Modeling Tool artık desteklenen genel kullanıma açık (GA) bir yayın olarak indirileceği hakkında duyurmaktan mutluluk duyuyoruz. Bu sürüm, önemli gizlilik ve güvenlik güncelleştirmelerinin yanı sıra hata düzeltmeleri, özellik güncelleştirmeleri ve kararlılık geliştirmeleri içerir. 2017 Preview sürümünün mevcut kullanıcılarının, istemcisini açmadan önce ClickOnce teknolojisi aracılığıyla en son sürüme güncelleştirmesi istenir. Aracın yeni kullanıcıları için, [istemciyi indirmek üzere buraya tıklayın](https://aka.ms/threatmodelingtool).
+Microsoft Threat Modeling Tool artık desteklenen genel kullanıma açık (GA) bir yayın olarak indirileceği hakkında duyurmaktan mutluluk duyuyoruz. Bu sürüm, önemli gizlilik ve güvenlik güncelleştirmelerinin yanı sıra hata düzeltmeleri, özellik güncelleştirmeleri ve kararlılık geliştirmeleri içerir. 2017 Preview sürümünün mevcut kullanıcılarının, istemcisini açmadan önce ClickOnce teknolojisi aracılığıyla en son sürüme güncelleştirmesi istenir. Aracın yeni kullanıcıları için [istemcisini indirebilirsiniz](https://aka.ms/threatmodelingtool).
 
 Bu sürümle, 2017 önizlemesi için desteği sonlandırıyoruz ve önizleme güncelleştirmesinin tüm kullanıcılarını GA sürümüne öneririz. 15 2018 Ekim 'de veya sonrasında, Threat Modeling Tool için gereken en düşük ClickOnce sürümünü ayarlayacağız ve tüm önizleme istemcilerinin yükseltilmesi gerekecektir.
 
@@ -62,7 +54,7 @@ Aracın analiz görünümünde, kullanıcının Windows 'da okunabilirlik için 
 
 ![Yüksek çözünürlüklü ekranlarda bilinen sorun](./media/threat-modeling-tool-releases-71509112/tmt_screen_resolution-300x153.png)
 
-#### <a name="workaround"></a>Geçici Çözüm
+#### <a name="workaround"></a>Geçici çözüm
 
 Kullanıcı azaltma metnine tıklayabilir ve standart Windows Yakınlaştırma denetimini (Crtl-fare tekerleği yukarı) kullanarak bu bölümün büyütme oranını artırabilir.
 
@@ -74,7 +66,7 @@ Kullanıcı azaltma metnine tıklayabilir ve standart Windows Yakınlaştırma d
 
 ![OneDrive özelliği kaldırıldı](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
-#### <a name="workaround"></a>Geçici Çözüm
+#### <a name="workaround"></a>Geçici çözüm
 
 OneDrive kullanıcıları, OneDrive 'da depolanan dosyalarına standart ve "bir model aç" iletişim kutusu aracılığıyla erişmek için Microsoft 'un [OneDrive Windows](https://onedrive.live.com/about/en-us/download/) istemcisini kullanmasını teşvik edilir.
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374327"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Sanal Makinelerinde SQL Server nedir? (Windows)
 
@@ -103,14 +103,16 @@ Varolan bir veritabanınız varsa, bunu yeni sağlanan SQL VM'ye taşımak ister
 
 Azure portal, SQL sanal makineleriniz dahil olmak üzere [tüm Azure SQL kaynaklarınızı](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) yönetebileceğiniz tek bir sayfa sağlar.
 
-**Azure SQL kaynakları** sayfasına erişmek için Azure Portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın.
+**Azure SQL kaynakları** sayfasına erişmek için Azure Portal menüsünde **Azure SQL** ' i seçin veya HERHANGI bir sayfadan **Azure SQL** araması yapın ve seçin.
+
+![Azure SQL araması](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > **Azure SQL** , tüm SQL veritabanlarına, elastik havuzlara, veritabanı SUNUCULARıNA, SQL yönetilen örneklere ve SQL sanal makinelerinize erişmenin hızlı ve kolay bir yolunu sunar. Azure SQL bir hizmet veya kaynak değil. 
 
 Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle**' yi seçin. 
 
-![Azure SQL Portal sayfası](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![Azure SQL kaynağı oluşturma](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 **+ Ekle**' yi seçtikten sonra herhangi bir kutucukta **Ayrıntıları göster** ' i seçerek farklı seçeneklerle ilgili ek bilgileri görüntüleyin.
 
@@ -139,7 +141,7 @@ Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. B
 ### <a name="networking"></a>Networking (Ağ İletişimi)
 * [Sanal Ağ’a genel bakış](../../../virtual-network/virtual-networks-overview.md)
 * [Azure’da IP adresleri](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
-* [Azure Portal'da Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)
+* [Azure portalda Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 * [SQL Server belgeleri](https://docs.microsoft.com/sql/index)

@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını geri yükleme
 description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yedeklenen SQL Server veritabanlarının nasıl geri yükleneceği açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390756"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
 
@@ -23,7 +23,7 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 - İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
 - Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabilirsiniz:
 
@@ -37,7 +37,7 @@ Bir veritabanını geri yüklemeden önce aşağıdakileri göz önünde bulabil
 - Bu veritabanlarından herhangi birine bir bağlantı almaya çalışabilir olabilecek tüm uygulamaları kapatın.
 - Sunucuda çalışan birden fazla örneize sahipseniz, tüm örnekler çalışır durumda olmalıdır, aksi takdirde sunucu, veritabanını geri yüklemeniz için hedef sunucular listesinde görünmez.
 
-## <a name="restore-a-database"></a>Bir veritabanını geri yükleme
+## <a name="restore-a-database"></a>Veritabanını geri yükleme
 
 Geri yüklemek için aşağıdaki izinlere sahip olmanız gerekir:
 
@@ -110,7 +110,15 @@ Yedekleme verilerini bir veritabanı yerine. bak dosyaları olarak geri yükleme
 
 1. Geri yükleme **yapılandırma** menüsünde, geri yükleme **yeri**' nin altında, **dosya olarak geri yükle**' yi seçin.
 2. Yedekleme dosyalarını geri yüklemek istediğiniz SQL Server adını seçin.
-3. **Sunucu üzerindeki hedef yolda** , adım 2 ' de seçilen sunucudaki klasör yolunu girin. Bu, hizmetin tüm gerekli yedekleme dosyalarının dökümünü alacak konumudur. Genellikle, bir ağ paylaşımının yolu veya hedef yolu olarak belirtildiğinde bağlı bir Azure dosya paylaşımının yolu, bu dosyalara aynı ağdaki diğer makineler veya bunlara bağlı aynı Azure dosya paylaşımıyla daha kolay erişim sağlar.
+3. **Sunucu üzerindeki hedef yolda** , adım 2 ' de seçilen sunucudaki klasör yolunu girin. Bu, hizmetin tüm gerekli yedekleme dosyalarının dökümünü alacak konumudur. Genellikle, bir ağ paylaşımının yolu veya hedef yolu olarak belirtildiğinde bağlı bir Azure dosya paylaşımının yolu, bu dosyalara aynı ağdaki diğer makineler veya bunlara bağlı aynı Azure dosya paylaşımıyla daha kolay erişim sağlar.<BR>
+
+>Veritabanı yedekleme dosyalarını, hedef kayıtlı VM 'ye bağlanmış bir Azure dosya paylaşımında geri yüklemek için NT AUTHORITY\SYSTEM 'ın dosya paylaşımında erişime sahip olduğundan emin olun. VM 'de takılı olan AFS 'ye okuma/yazma izinleri vermek için aşağıda verilen adımları gerçekleştirebilirsiniz:
+>- NT AUTHORITY\SYSTEM kabuğu 'na girmek için `PsExec -s cmd` Çalıştır
+>   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` yürütme
+>   - `dir \\<storageacct>.file.core.windows.net\<filesharename>` erişimi doğrulama
+>- Yol olarak `\\<storageacct>.file.core.windows.net\<filesharename>` için yedekleme kasasından dosya olarak geri yükleme başlatın<BR>
+PsExec 'i <https://docs.microsoft.com/sysinternals/downloads/psexec> aracılığıyla indirebilirsiniz
+
 4. **Tamam**’ı seçin.
 
 ![Dosya olarak geri yükle ' yi seçin](./media/backup-azure-sql-database/restore-as-files.png)

@@ -1,26 +1,30 @@
 ---
 title: Yönetilen örnek veritabanında çoğaltmayı yapılandırma
-description: Azure SQL veritabanı yönetilen örnek veritabanında işlem çoğaltmasını yapılandırma hakkında bilgi edinin
+description: Azure SQL veritabanı yönetilen örneği yayımcısı/dağıtıcı ve yönetilen örnek abonesi arasında işlemsel çoğaltmayı yapılandırmayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: MashaMSFT
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822584"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372490"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma
 
 İşlemsel çoğaltma, verileri bir Azure SQL veritabanı yönetilen örnek veritabanına SQL Server veritabanından veya başka bir örnek veritabanından çoğaltmanıza olanak sağlar. 
+
+Bu makalede, yönetilen bir örnek yayımcısı/dağıtıcı ve yönetilen örnek abonesi arasındaki çoğaltmanın nasıl yapılandırılacağı gösterilir. 
+
+![İki yönetilen örnek arasında Çoğalt](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 Azure SQL veritabanı yönetilen örneği 'nde bir örnek veritabanında yapılan değişiklikleri şu şekilde göndermek için işlem çoğaltmayı da kullanabilirsiniz:
 
@@ -31,7 +35,8 @@ Azure SQL veritabanı yönetilen örneği 'nde bir örnek veritabanında yapıla
 İşlemsel çoğaltma, [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance.md)'nin Genel önizlemededir. Yönetilen bir örnek, Yayımcı, dağıtıcı ve abone veritabanlarını barındırabilirler. Kullanılabilir konfigürasyonlar için [işlem çoğaltma yapılandırmalarına](sql-database-managed-instance-transactional-replication.md#common-configurations) bakın.
 
   > [!NOTE]
-  > Bu makale, kaynak grubu oluşturmaya başlamadan önce Azure veritabanı yönetilen örneği ile uçtan uca çoğaltma yapılandırma konusunda bir kullanıcıya kılavuzluk amaçlıdır. Zaten dağıtılan yönetilen örneklere sahipseniz, yayımcı veritabanınızı oluşturmak için [4. adıma](#4---create-a-publisher-database) atlayın veya zaten bir yayımcı ve abone veritabanınız varsa ve çoğaltmayı yapılandırmaya başlamaya hazırsanız [6. adıma](#6---configure-distribution) geçin.  
+  > - Bu makale, kaynak grubu oluşturmaya başlamadan önce Azure veritabanı yönetilen örneği ile uçtan uca çoğaltma yapılandırma konusunda bir kullanıcıya kılavuzluk amaçlıdır. Zaten dağıtılan yönetilen örneklere sahipseniz, yayımcı veritabanınızı oluşturmak için [4. adıma](#4---create-a-publisher-database) atlayın veya zaten bir yayımcı ve abone veritabanınız varsa ve çoğaltmayı yapılandırmaya başlamaya hazırsanız [6. adıma](#6---configure-distribution) geçin.  
+  > - Bu makale, aynı yönetilen örnek üzerinde yayımcısını ve dağıtıcısını yapılandırır. Dağıtıcıyı ayrı bir manşlı örneğine yerleştirmek için, [BIR mı yayımcısı ile MI mi dağıtıcısı arasında çoğaltmayı yapılandırma](sql-database-managed-instance-configure-replication-tutorial.md)öğreticisine bakın. 
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -67,10 +72,10 @@ Azure SQL veritabanı 'nda yönetilen bir örnekte aşağıdaki özellikler dest
 
 ## <a name="2---create-managed-instances"></a>2-yönetilen örnekler oluşturma
 
-Aynı sanal ağ ve alt ağ üzerinde iki [yönetilen örnek](sql-database-managed-instance-create-tutorial-portal.md) oluşturmak için [Azure Portal](https://portal.azure.com) kullanın. İki yönetilen örnek şu şekilde adlandırılmalıdır:
+Aynı sanal ağ ve alt ağ üzerinde iki [yönetilen örnek](sql-database-managed-instance-create-tutorial-portal.md) oluşturmak için [Azure Portal](https://portal.azure.com) kullanın. Örneğin, iki yönetilen örneği adlandırın:
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub` (rastgele seçme için bazı karakterlerle birlikte)
+- `sql-mi-sub` (rastgele seçme için bazı karakterlerle birlikte)
 
 Ayrıca, Azure SQL veritabanı yönetilen örneklerinizi [bağlamak için bir Azure VM yapılandırmanız](sql-database-managed-instance-configure-vm.md) gerekecektir. 
 
@@ -80,9 +85,13 @@ Ayrıca, Azure SQL veritabanı yönetilen örneklerinizi [bağlamak için bir Az
 
 Dosya paylaşımının yolunu şu biçimde kopyalayın: `\\storage-account-name.file.core.windows.net\file-share-name`
 
+Örnek: `\\replstorage.file.core.windows.net\replshare`
+
 Depolama erişim anahtarlarını şu biçimde kopyalayın: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
- Daha fazla bilgi için bkz. [Depolama erişim anahtarlarını görüntüleme ve kopyalama](../storage/common/storage-account-manage.md#access-keys). 
+Örnek: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+
+Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md). 
 
 ## <a name="4---create-a-publisher-database"></a>4-Yayımcı veritabanı oluşturma
 
@@ -160,8 +169,9 @@ Yayımcı tarafından yönetilen örnek `sql-mi-pub`, sorgu yürütmesini [sqlcm
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.windows.net\file-share-name"
+-- example: file_storage "\\replstorage.file.core.windows.net\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -173,6 +183,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > File_storage parametresi için yalnızca ters eğik çizgi (`\`) kullandığınızdan emin olun. Eğik çizgi (`/`) kullanmak dosya paylaşımıyla bağlantı kurulurken hataya neden olabilir. 
 
 Bu betik, yönetilen örnekte yerel bir yayımcıyı yapılandırır, bağlantılı bir sunucu ekler ve SQL Server Agent bir dizi iş oluşturur. 
 
@@ -322,10 +335,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/manage-resources-portal.md#delete-resources) ve ardından `SQLMI-Repl`kaynak grubunu silerek Azure kaynaklarınızı temizleyebilirsiniz. 
+[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) ve ardından `SQLMI-Repl`kaynak grubunu silerek Azure kaynaklarınızı temizleyebilirsiniz. 
 
    
 ## <a name="see-also"></a>Ayrıca Bkz.
 
 - [İşlem çoğaltması](sql-database-managed-instance-transactional-replication.md)
+- [Öğretici: bir mı yayımcısı ile SQL Server abonesi arasında işlemsel çoğaltmayı yapılandırma](sql-database-managed-instance-configure-replication-tutorial.md)
 - [Yönetilen örnek nedir?](sql-database-managed-instance.md)

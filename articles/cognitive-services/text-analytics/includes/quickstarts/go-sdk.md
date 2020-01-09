@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9b148e413bc7dc6af7eff064e5ff3ec6385cfef4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75d32cc038d3dbf0f06a844d35a3e626ffaa67f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446292"
 ---
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [paketi (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -82,7 +82,7 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [Yaklaşım analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Varlık tanıma](#entity-recognition)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
@@ -90,15 +90,25 @@ Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşa
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 
-Yeni bir işlevde, kaynağınızın Azure uç noktası ve abonelik anahtarı için değişkenler oluşturun. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT`ortam değişkenlerinden bu değerleri alın. Uygulamayı düzenleme başladıktan sonra bu ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için kullandığınız düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+Yeni bir işlevde, kaynağınızın Azure uç noktası ve abonelik anahtarı için değişkenler oluşturun.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 Yeni bir [Baseclient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) nesnesi oluşturun. Anahtarınızı oto Rest 'e geçirin [. Newbiliveservicesauthorizer ()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) işlevi, daha sonra istemcinin `authorizer` özelliğine geçirilir.
 
-[!code-go[Client creation ](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=client)]
+```go
+func GetTextAnalyticsClient() textanalytics.BaseClient {
+    var key string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
-## <a name="sentiment-analysis"></a>Yaklaşım analizi
+    textAnalyticsClient := textanalytics.New(endpoint)
+    textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(key)
+
+    return textAnalyticsClient
+}
+```
+
+## <a name="sentiment-analysis"></a>Duygu analizi
 
 `SentimentAnalysis()` adlı yeni bir işlev oluşturun ve daha önce oluşturulan `GetTextAnalyticsClient()` yöntemi kullanarak bir istemci oluşturun. Analiz etmek istediğiniz belgeleri içeren [Multilanguageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id`, `Language` ve bir `text` özniteliği içerir. `text` özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. 
 
@@ -106,7 +116,7 @@ Yeni bir [Baseclient](https://godoc.org/github.com/Azure/azure-sdk-for-go/servic
 
 [!code-go[Sentiment analysis sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=sentimentAnalysis)]
 
-Projenizdeki `SentimentAnalysis()` çağırın.
+projenizdeki `SentimentAnalysis()` çağırın.
 
 ### <a name="output"></a>Çıktı
 
@@ -143,7 +153,7 @@ Document ID: 2 , Language: Chinese_Simplified
 
 [!code-go[entity recognition sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=entityRecognition)]
 
-Projenizdeki `ExtractEntities()` çağırın.
+projenizdeki `ExtractEntities()` çağırın.
 
 ### <a name="output"></a>Çıktı
 
@@ -175,7 +185,7 @@ Document ID: 2
     Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
+## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
 `ExtractKeyPhrases()` adlı yeni bir işlev oluşturun ve daha önce oluşturulan `GetTextAnalyticsClient()` yöntemi kullanarak bir istemci oluşturun. Analiz etmek istediğiniz belgeleri içeren [Multilanguageınput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) nesnelerinin bir listesini oluşturun. Her nesne bir `id`, `language`ve bir `text` özniteliği içerir. `text` özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir.
 

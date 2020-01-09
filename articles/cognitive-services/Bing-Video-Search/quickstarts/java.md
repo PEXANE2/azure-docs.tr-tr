@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382659"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Hızlı başlangıç: Bing Video Arama REST API ve Java kullanarak video arama
 
@@ -59,7 +59,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     }
     ```
 
-3. API uç noktası ana bilgisayarınız ve yolunuz, abonelik anahtarınız ve arama teriminiz için değişkenlerle birlikte `SearchVideos()` adlı yeni bir yöntem oluşturun. `SearchResults` nesnesi döndürür. 
+3. API uç noktası ana bilgisayarınız ve yolunuz, abonelik anahtarınız ve arama teriminiz için değişkenlerle birlikte `SearchVideos()` adlı yeni bir yöntem oluşturun. `SearchResults` nesnesi döndürür. `host`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {

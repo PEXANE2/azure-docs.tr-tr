@@ -2,16 +2,16 @@
 title: Redis için Azure Önbelleği SSS
 description: Redsıs için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.author: yegu
-ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433462"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -74,7 +74,7 @@ Bu bölümdeki SSS 'ler ortak izleme ve sorun giderme sorularını kapsar. Reds�
 ## <a name="prior-cache-offering-faqs"></a>Önceki önbellek SSS sunumu
 * [Hangi Azure önbellek teklifi bana uygun?](#which-azure-cache-offering-is-right-for-me)
 
-### <a name="what-is-azure-cache-for-redis"></a>Redsıs için Azure önbelleği nedir?
+### <a name="what-is-azure-cache-for-redis"></a>Redis için Azure Cache nedir?
 Redsıs için Azure önbelleği, popüler açık kaynaklı yazılım [redin](https://redis.io/)tabanlıdır. Microsoft tarafından yönetilen ve Azure 'daki herhangi bir uygulamadan erişilebilen, redin için güvenli ve adanmış bir Azure önbelleği erişimi sağlar. Daha ayrıntılı bir genel bakış için Azure.com adresindeki [redsıs ürün Için Azure önbelleği](https://azure.microsoft.com/services/cache/) sayfasına bakın.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Redsıs için Azure önbelleği 'ni kullanmaya nasıl başlarım?
@@ -128,7 +128,7 @@ Bu tablodan aşağıdaki ekibinizle çizebilirsiniz:
 | Fiyatlandırma katmanı | Boyut | CPU çekirdekleri | Kullanılabilir bant genişliği | 1 KB değer boyutu | 1 KB değer boyutu |
 | --- | --- | --- | --- | --- | --- |
 | **Standart önbellek boyutları** | | |**Megabit/sn (MB/sn)/megabayt/sn (MB/s)** |**Saniye başına istek (RPS) SSL olmayan** |**İstek/saniye (RPS) SSL** |
-| C0 | 250 MB | Paylaşımlı | 100 / 12.5  |  15.000 |   7\.500 |
+| C0 | 250 MB | Paylaşılan | 100 / 12.5  |  15.000 |   7\.500 |
 | C1 |   1 GB | 1      | 500 / 62.5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500 / 62.5  |  41.000 |  37.000 |
 | C3 |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
@@ -307,7 +307,7 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 * Çalıştırdığınız farklı işlemlerle ilişkili performans maliyetlerinden haberdar olun. Örneğin, `KEYS` komutu bir O (n) işlemidir ve kaçınılması gerekir. [Redis.io sitesinde](https://redis.io/commands/) , desteklediği her bir işlem için zaman karmaşıklığı etrafında ayrıntılar bulunur. Her bir işlemin karmaşıklığını görmek için her bir komuta tıklayın.
 
 #### <a name="configuration-and-concepts"></a>Yapılandırma ve kavramlar
-* Üretim sistemleri için standart veya Premium katmanını kullanın. Temel katman, veri çoğaltması olmayan ve SLA olmayan tek düğümlü bir sistemdir. Ayrıca, en az bir C1 önbelleği kullanın. C0 önbellekleri genellikle basit geliştirme ve test senaryoları için kullanılır.
+* Üretim sistemleri için standart veya Premium katmanını kullanın. Temel Katman, veri çoğaltma ve SLA bulunmayan tek düğümlü bir sistemdir. Ayrıca en az C1 önbelleği kullanın. C0 önbellekleri genellikle basit geliştirme ve test senaryoları için kullanılır.
 * Redthe 'ın **bellek içi** veri deposu olduğunu unutmayın. Veri kaybının gerçekleşebileceği senaryolara dikkat etmeniz için [Bu makaleyi](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) okuyun.
 * [Düzeltme eki uygulama ve yük devretme nedeniyle](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md), sisteminizi, bağlantı bliıt 'leri işleyebilecek şekilde geliştirin.
 
@@ -330,7 +330,7 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 <a name="cache-benchmarking"></a>
 
 ### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?
-* Önbelleğinizin sistem durumunu [izleyebilmeniz](cache-how-to-monitor.md#enable-cache-diagnostics) için [önbellek tanılamayı etkinleştirin](cache-how-to-monitor.md). Azure portalında ölçümleri görüntüleyebilir ve ayrıca istediğiniz araçları kullanarak bunları [indirebilir ve gözden geçirebilirsiniz](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring).
+* Önbelleğinizin sistem durumunu [izleyebilmeniz](cache-how-to-monitor.md) için [önbellek tanılamayı etkinleştirin](cache-how-to-monitor.md#enable-cache-diagnostics). Azure portalında ölçümleri görüntüleyebilir ve ayrıca istediğiniz araçları kullanarak bunları [indirebilir ve gözden geçirebilirsiniz](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring).
 * Redsıs sunucunuza test yüklemek için Redis-benchmark. exe ' yi kullanabilirsiniz.
 * Redin yük testi istemcisinin ve Azure önbelleğinin aynı bölgede bulunduğundan emin olun.
 * Redis-cli. exe ' yi kullanın ve ıNFO komutunu kullanarak önbelleği izleyin.
@@ -411,7 +411,7 @@ Sunucu GC 'yi etkinleştirmek, istemcisini iyileştirebilirler ve StackExchange.
 
 * [Sunucu GC 'yi etkinleştirmek için](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
 * [Atık Toplamanın Temelleri](/dotnet/standard/garbage-collection/fundamentals)
-* [Çöp toplama ve performans](/dotnet/standard/garbage-collection/performance)
+* [Atık Toplama ve Performans](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Bağlantılar etrafında performans konuları
@@ -462,7 +462,7 @@ Redsıs ile konuşmak için kullandığınız istemcide zaman aşımları meydan
 >
 >
 
-### <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+### <a name="azure-cache-for-redis"></a>Redis için Azure Cache
 Redo için Azure Cache, 120 GB 'a kadar olan ve% 99,9 kullanılabilirlik SLA 'sı olan boyutlarda genel kullanıma sunulmuştur. Yeni [Premium katmanı](cache-premium-tier-intro.md) ,% 99,9 SLA Ile 1,2 TB 'a kadar, KÜMELEME, VNET ve kalıcılık desteği sunar.
 
 Redsıs için Azure önbelleği, müşterilere Microsoft tarafından yönetilen, redin için güvenli ve adanmış bir Azure önbelleği kullanma olanağı sunar. Bu teklifle, redin tarafından sunulan zengin özellik kümesi ve ekosistemden ve Microsoft 'un güvenilir barındırma ve izleme özelliğinden faydalanabilirsiniz.
@@ -471,7 +471,7 @@ Yalnızca anahtar-değer çiftleri ile ilgilenen geleneksel önbellekler aksine 
 
 Redsıs başarısına yönelik başka bir anahtar, onun etrafında yerleşik olarak bulunan sağlam ve canlı açık kaynaklı ekosistemdir. Bu, birden çok dilde kullanılabilir olan çeşitli redin istemcileri kümesine yansıtılır. Bu ekosistem ve çok sayıda istemci, Azure 'un içinde derlemenize olanak tanıyan neredeyse tüm iş yükleri için Azure önbelleğinin kullanılmasını sağlar.
 
-Redin için Azure önbelleği kullanmaya başlama hakkında daha fazla bilgi için bkz. redsıs için [Azure önbelleğini](cache-dotnet-how-to-use-azure-redis-cache.md) ve [redsıs belgeleri Için Azure önbelleğini](index.md)kullanma.
+Redin için Azure önbelleği kullanmaya başlama hakkında daha fazla bilgi için bkz. redsıs için [Azure önbelleğini](cache-dotnet-how-to-use-azure-redis-cache.md) ve [redsıs belgeleri Için Azure önbelleğini](index.yml)kullanma.
 
 ### <a name="managed-cache-service"></a>Yönetilen Önbellek Hizmeti
 [Yönetilen Önbellek Hizmeti 30 Kasım 2016 tarihinde kullanımdan kaldırıldı.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

@@ -3,12 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/12/2019
-ms.openlocfilehash: 4c69ebd7e1d4d649bfd2896ae87f0047c5988325
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/16/2019
+ms.openlocfilehash: 7c7e6fb7cc99a155c4e89ae930943f79a725beb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188700"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382871"
 ---
-Olmalıdır bir [Bilişsel hizmetler API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Bing yazım denetimi API'si erişim. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/try/cognitive-services/?api=text-analytics). Devam etmeden önce erişim anahtarına ihtiyaç duyarsınız [ücretsiz denemenizi etkinleştirdikten sonra sağlanan](https://azure.microsoft.com/try/cognitive-services/my-apis/), ya da Azure panonuzdan bir Ücretli bir abonelik anahtarı.
+## <a name="create-an-azure-resource"></a>Azure kaynağı oluşturma
+
+Aşağıdaki Azure kaynaklarından birini oluşturarak Bing Yazım Denetimi API'si kullanmaya başlayın.
+
+* [Deneme kaynağı oluşturma](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api-v7):
+    * Azure aboneliği gerekmez.
+    * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir olacaktır.
+
+* [Bing yazım denetimi kaynağı oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7):
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.
+    * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyin ve daha sonra üretime yönelik ücretli bir katmana yükseltin.
+    * Bing Yazım Denetimi API'si, [Bing arama v7 kaynağının](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)bazı katmanlarında de sunulur.
+    
+* [Çoklu hizmet kaynağı oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.  
+    * Birden çok bilişsel hizmetler genelinde uygulamalarınız için aynı anahtarı ve uç noktayı kullanın.

@@ -3,12 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
-ms.translationtype: MT
+ms.openlocfilehash: 977d0cb445369cbc51ce3b90712d58ce8b6ebdc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433074"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -115,7 +115,7 @@ Azure 'da yayımlanan uygulamalar tarafından kullanılan Işlevlerin çalışma
 
 ### <a name="locally-developed-application-versions"></a>Yerel olarak geliştirilen uygulama sürümleri
 
-Aşağıdaki Updates işlev uygulamalarının hedeflenen sürümleri yerel olarak değiştirmesini sağlayabilirsiniz.
+Hedeflenen sürümleri yerel olarak değiştirmek için uygulama işlevleri işlevine aşağıdaki güncelleştirmeleri yapabilirsiniz.
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio çalışma zamanı sürümleri
 

@@ -4,12 +4,12 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391296"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
@@ -52,7 +52,7 @@ Varsayılan olarak, anlık görüntüler iki gün boyunca tutulur. Bu özellik g
 
 ## <a name="cost-impact"></a>Maliyet etkisi
 
-Artımlı anlık görüntüler, anlık kurtarma için kullanılan VM 'nin depolama hesabında depolanır. Artımlı anlık görüntü, bir anlık görüntünün kapladığı alanın, anlık görüntü oluşturulduktan sonra yazılan sayfaların kapladığı alana eşit olduğu anlamına gelir. Faturalandırma, anlık görüntü tarafından bulunan GB başına kullanılan alan için ve GB başına fiyat, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/managed-disks/)belirtilen şekilde aynıdır.
+Artımlı anlık görüntüler, anlık kurtarma için kullanılan sanal makinenin depolama hesabında depolanır. Artımlı anlık görüntü, bir anlık görüntünün kapladığı alanın, anlık görüntü oluşturulduktan sonra yazılan sayfaların kapladığı alana eşit olduğu anlamına gelir. Faturalandırma, anlık görüntünün kapladığı GB başına kullanılan alan için hala ve GB başına fiyat, [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/managed-disks/)belirtilen şekilde aynıdır. Yönetilmeyen diskler kullanan VM 'Ler için, anlık görüntüler her diskin VHD dosyasının menüsünde görülebilir. Yönetilen diskler için anlık görüntüler, belirlenen bir kaynak grubundaki bir geri yükleme noktası koleksiyonu kaynağında depolanır ve anlık görüntülerin kendisi doğrudan görünür olmaz.
 
 >[!NOTE]
 > Anlık görüntü saklama, haftalık ilkeler için 5 güne kadar düzeltilir.

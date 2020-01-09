@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: PHP ile bir haber araması gerçekleştirin Bing Haber Arama REST API'
+title: 'Hızlı başlangıç: PHP ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıcı, PHP kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için kullanın.
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383107"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Hızlı Başlangıç: PHP ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: PHP ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
 
 İlk Bing Resim Arama API’si çağrınızı yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API’ye bir arama sorgusu gönderir ve ham sonuçları görüntüler.
 
 Bu uygulama PHP 'de yazıldığı sırada API, en fazla programlama dili ile uyumlu bir Web hizmeti hizmetidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * PHP 5,6 veya üzeri
 
@@ -40,6 +40,7 @@ Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https:/
 2. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
 4. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
+5. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 5. Programı çalıştırın.
 
 ```php

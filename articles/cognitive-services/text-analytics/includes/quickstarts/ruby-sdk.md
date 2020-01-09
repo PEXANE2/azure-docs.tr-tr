@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446260"
 ---
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [paketi (rubygems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -45,12 +45,14 @@ Ruby dosyanızda aşağıdaki paketleri içeri aktarın.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-`TEXT_ANALYTICS_ENDPOINT` ve `TEXT_ANALYTICS_SUBSCRIPTION_KEY`adlı kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir. 
+Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>Nesne modeli 
 
@@ -65,7 +67,7 @@ Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir.
 Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Yaklaşım Analizi](#sentiment-analysis)
+* [Yaklaşım analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Varlık tanıma](#entity-recognition)
 * [Anahtar tümceciği ayıklama](#key-phrase-extraction)
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-Bu sınıfta, istemcinin kimliğini doğrulamak için `initialize` adlı bir işlev oluşturun. `TEXT_ANALYTICS_SUBSCRIPTION_KEY` ve `TEXT_ANALYTICS_ENDPOINT` ortam değişkenlerinizi kullanın. 
+Bu sınıfta, anahtarınızı ve uç noktanızı kullanarak istemcinin kimliğini doğrulamak için `initialize` adlı bir işlev oluşturun. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
@@ -91,7 +93,7 @@ Sınıfının dışında, istemcinin örneğini oluşturmak için `new()` işlev
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Yaklaşım analizi
+## <a name="sentiment-analysis"></a>Duygu analizi
 
 İstemci nesnesinde, daha sonra oluşturulacak giriş belgelerinin listesini alan `AnalyzeSentiment()` adlı bir işlev oluşturun. İstemcinin `sentiment()` işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
@@ -204,7 +206,7 @@ Document ID: 2
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
+## <a name="key-phrase-extraction"></a>Anahtar tümcecik ayıklama
 
 İstemci nesnesinde, daha sonra oluşturulacak giriş belgelerinin listesini alan `ExtractKeyPhrases()` adlı bir işlev oluşturun. İstemcinin `key_phrases()` işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin KIMLIĞINI ve ayıklanan anahtar tümceciklerini yazdırın.
 

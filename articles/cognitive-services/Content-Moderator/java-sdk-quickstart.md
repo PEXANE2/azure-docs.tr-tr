@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Java için Content Moderator istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Java için Azure bilişsel hizmetler Content Moderator istemci kitaplığı 'nı kullanmaya başlama hakkında bilgi edinin.
+description: Bu hızlı başlangıçta, Java için Azure bilişsel hizmetler Content Moderator istemci kitaplığı ile çalışmaya başlama hakkında bilgi edinin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 53ac5c10672c433cb16d9ad326d936affe82a8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381945"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Hızlı başlangıç: Java için Content Moderator istemci kitaplığı
 

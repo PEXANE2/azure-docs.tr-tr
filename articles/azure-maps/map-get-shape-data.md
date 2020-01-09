@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7706fba1efad1bd0ce7110e129dcf113689af9a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bc8efe46453f76d353842b32bd52b41838979b49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432818"
 ---
-# <a name="get-shape-data"></a>Şekil verilerini al
+# <a name="get-shape-data"></a>Şekil verilerini alma
 
 Bu makalede, [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) **Drawingmanager. GetSource ()** işlevini kullanarak haritada çizilmiş şekil verilerini alma işlemi gösterilmektedir. Çizilmiş bir şeklin coğrafi JSON verilerini ayıklamak ve başka bir yerde kullanmak isteyebileceğiniz çeşitli senaryolar olabilir.  
 
@@ -36,11 +36,19 @@ Aşağıda, işlevleri test etmek üzere bir şekil ekleyebileceğiniz, çalış
 
 <br/>
 
-<iframe height="686" title="Şekil verilerini al" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Şekil verileri alın</a> kalemine bakın.
+<iframe height="686" title="Şekil verilerini alma" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>şekil verilerini alın</a> kalemine bakın.
 </iframe>
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Çizim araçları modülünün ek özelliklerini kullanmayı öğrenin:
+
+> [!div class="nextstepaction"]
+> [Çizim olaylarına tepki verme](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Etkileşim türleri ve klavye kısayolları](drawing-tools-interactions-keyboard-shortcuts.md)
 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 

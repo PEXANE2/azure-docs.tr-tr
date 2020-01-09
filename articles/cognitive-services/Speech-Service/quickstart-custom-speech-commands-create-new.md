@@ -10,24 +10,29 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446867"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Hızlı başlangıç: özel komut oluşturma (Önizleme)
 
 Bu makalede, barındırılan özel komutlar uygulaması oluşturmayı ve test yapmayı öğreneceksiniz.
 Uygulama "TV 'yi aç" gibi bir söylik algılar ve "Tamam, TV 'yi açarak" daha basit bir iletiyle yanıt verir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Bir konuşma aboneliği. [Konuşma hizmetini ücretsiz deneyin](~/articles/cognitive-services/speech-service/get-started.md).
+- Bir konuşma aboneliği. 
+
+Konuşma aboneliğiniz yoksa, [konuşma Studio](https://speech.microsoft.com/) 'ya giderek ve **konuşma kaynağı oluştur**' u seçerek bir tane oluşturabilirsiniz.
+
+  > [!div class="mx-imgBorder"]
+  > [![proje oluşturun](media/custom-speech-commands/create-new-subscription.png)](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > Önizleme süresince, abonelik anahtarları için yalnızca westus2 bölgesi desteklenir.
+  > Önizleme süresince yalnızca westus2 bölgesi desteklenir.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Özel komutlar için konuşma Studio 'ya gidin
 
@@ -65,6 +70,20 @@ Varsayılan görünüm, oluşturduğunuz özel komutlar uygulamalarının bir li
 1. Oluşturulduktan sonra projenizi seçin.
 
 Artık görünümlerinizin özel komutlar uygulamanıza genel bir bakış olması gerekir.
+
+## <a name="update-luis-resources-optional"></a>LUSıS kaynaklarını güncelleştirme (Isteğe bağlı)
+
+Yeni proje penceresinde yazma kaynak kümesini güncelleştirebilir ve çalışma zamanı sırasında girişleri tanımak için kullanılan bir tahmin kaynağı ayarlayabilirsiniz. 
+
+> [!NOTE]
+> Uygulamanız, yazma kaynağı tarafından belirtilen 1.000 isteklerinin ötesinde tahmin isteğinde bulunan bir tahmin kaynağı ayarlamanız gerekecektir.
+
+> [!div class="mx-imgBorder"]
+> ![LUSıS kaynaklarını ayarlama](media/custom-speech-commands/set-luis-resources.png)
+
+1. Sol bölmedeki **Ayarlar** ' ı ve ardından orta bölmedeki **lusıs kaynakları** ' nı seçerek lusıs kaynakları bölmesine gidin.
+1. Bir tahmin kaynağı seçin veya **Yeni kaynak oluştur** ' u seçerek bir tane oluşturun
+1. **Kaydet**’i seçin
 
 ## <a name="create-a-new-command"></a>Yeni bir komut oluştur
 
@@ -116,11 +135,10 @@ turn on the tv
 > [!div class="mx-imgBorder"]
 > ![tamamlama kuralı oluşturma](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Ayar    | Önerilen değer                        | Açıklama                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| Kural Adı  | "ConfirmationResponse"                 | Kuralın amacını açıklayan bir ad          |
-| Koşullar | Hiçbiri                                   | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
+| Ayar    | Önerilen değer                          | Açıklama                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| Kural Adı  | "ConfirmationResponse"                   | Kuralın amacını açıklayan bir ad          |
+| Koşullar | Hiçbiri                                     | Kuralın ne zaman çalıştırılabilmesine belirleme koşulları    |
 | Eylemler    | SpeechResponse "-Tamam, TV 'yi açma" | Kural koşulu true olduğunda gerçekleştirilecek eylem |
 
 ## <a name="try-it-out"></a>Deneyin

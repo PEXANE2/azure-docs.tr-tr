@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell betik örneği-yönetilen diskleri aynı veya farklı aboneliğe kopyalama (taşıma)
-description: Azure PowerShell betik örneği-yönetilen diskleri aynı veya farklı aboneliğe kopyalama (taşıma)
+title: Yönetilen diskleri bir aboneliğe kopyalama-PowerShell örneği
+description: Azure PowerShell betik örneği-yönetilen diskleri aynı veya farklı bir aboneliğe kopyalama (veya taşıma)
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: bb473a2f543c1621b99904b5a58dc7fc6625f6fc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e655ce33c8952acab7228f4caae81f09c2d56ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375908"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Yönetilen diskleri aynı abonelikte veya PowerShell ile farklı bir abonelikte kopyalama
 

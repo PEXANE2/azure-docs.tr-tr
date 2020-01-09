@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446668"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Görsel Arama API’si nedir?
 
@@ -26,7 +26,7 @@ Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir g�
 > [!IMPORTANT]
 > Bing Resim Arama API'si kullanarak görüntü öngörüleri alırsanız, daha kapsamlı öngörüler sağlayan Bing Görsel Arama API'si geçmeyi göz önünde bulundurun.
 
-## <a name="insights"></a>Insights
+## <a name="insights"></a>Bilgiler
 
 Bing Görsel Arama kullanarak aşağıdaki öngörüleri bulabilirsiniz:
 
@@ -44,7 +44,7 @@ Bing Görsel Arama, öngörülere ek olarak, giriş görüntüsünden elde edile
 
 Bing Görsel Arama sonuçlar, görüntüde ilgilendiğiniz bölgelere yönelik sınırlayıcı kutuları da içerir. Örneğin, görüntüde birkaç ünlüler varsa, sonuçlar tanınan ünlülerin her biri için sınırlayıcı kutular içerebilir. Ya da Bing görüntüde bir ürün veya giyiği tanırsa, sonuç tanınan öğe için bir sınırlayıcı kutusu içerebilir.
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Bing Görsel Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. Hizmet için REST API ya da SDK 'sını kullanabilirsiniz.
 
@@ -57,10 +57,12 @@ Bing Görsel Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp J
 İlk olarak Bing Görsel Arama API'si [etkileşimli tanıtımı](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)deneyin.
 Demo, bir arama sorgusunu hızlı bir şekilde nasıl özelleştirebileceğinizi ve görüntüleri görüntüler.
 
-İlk isteğinizi hızla kullanmaya başlamak için hızlı başlangıçlara bakın: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+İlk isteğinize hızlı bir başlangıç yapmak için, şu hızlı başlangıçlara bakın: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Görüntüler-görsel arama](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) başvurusu, uç noktalar, istek üstbilgileri, yanıtlar ve görüntü tabanlı arama sonuçları istemek için kullanabileceğiniz sorgu parametreleri hakkında tanımları ve bilgileri açıklar.
 
 * [BING arama API kullanımı ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md) , Bing arama API 'leri aracılığıyla elde edilen içerik ve bilgilerin kabul edilebilir kullanımlarını belirtir.
+
+* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.

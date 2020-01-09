@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227096"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433222"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Öğretici: Işlevleri bir Azure sanal ağı ile tümleştirme
 
@@ -61,7 +61,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | **Abonelik** | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. | 
-    | **[Kaynak grubu](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | `myResourceGroup`veya işlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. İşlev uygulaması, WordPress VM ve barındırma planı için aynı kaynak grubunu kullanmak, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
+    | **[Kaynak grubu](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup`veya işlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. İşlev uygulaması, WordPress VM ve barındırma planı için aynı kaynak grubunu kullanmak, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
     | **Sanal makine adı** | VNET-WordPress | VM adının kaynak grubunda benzersiz olması gerekir |
     | **[Geli](https://azure.microsoft.com/regions/)** | (Avrupa) Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
     | **Boyut** | B1S | **Boyutu Değiştir** ' i seçin ve ardından 1 vCPU ve 1 GB belleği olan B1S standart görüntüsünü seçin. |
@@ -75,7 +75,7 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | **Adı** | MyResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
+    | **Ad** | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
     | **Adres aralığı** | 10.10.0.0/16 | Sanal ağ için tek bir adres aralığı kullanın. |
     | **Alt ağ adı** | Öğretici-net | Alt ağın adı. |
     | **Adres aralığı** (alt ağ) | 10.10.1.0/24   | Alt ağ boyutu, alt ağa kaç arabirim eklenebileceğini tanımlar. Bu alt ağ WordPress sitesi tarafından kullanılır.  Bir `/24` alt ağı 254 ana bilgisayar adresi sağlar. |
@@ -138,7 +138,7 @@ VNet tümleştirmesi etkinken, sanal ağda çalışan VM 'ye istekleri iletmek i
 
     | Ayar  | Önerilen değer  | Açıklama      |
     | -------- | ---------------- | ---------------- |
-    | **Adı** | Bit | Ad herhangi bir değer olabilir. Proxy 'yi tanımlamak için kullanılır. |
+    | **Ad** | Tesis | Ad herhangi bir değer olabilir. Proxy 'yi tanımlamak için kullanılır. |
     | **Rota şablonu** | /bitki | Bir VM kaynağıyla eşleşen rota. |
     | **Arka uç URL 'SI** | http://< YOUR_VM_IP >/wp-content/themes/twentyseventeen/Assets/images/header.jpg | `<YOUR_VM_IP>`, daha önce oluşturduğunuz WordPress sanal makinenizin IP adresi ile değiştirin. Bu eşleme, siteden tek bir dosya döndürüyor. |
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446689"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Metin Çevirisi API'si 3,0: Breakcümlesi
 
@@ -37,7 +37,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>api sürümü</td>
+    <td>api-version</td>
     <td>*Gerekli sorgu parametresi*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer `3.0`olmalıdır.</td>
   </tr>
   <tr>
@@ -60,11 +60,11 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>İçerik türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler: `application/json`.</td>
+    <td>Content-Type</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
   </tr>
   <tr>
-    <td>İçerik uzunluğu</td>
+    <td>İçerik Uzunluğu</td>
     <td>*Gerekli istek üst bilgisi*.<br/>İstek gövdesinin uzunluğu.</td>
   </tr>
   <tr>
@@ -109,7 +109,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -134,7 +134,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
 
 <table width="100%">
-  <th width="20%">Durum kodu</th>
+  <th width="20%">Durum Kodu</th>
   <th>Açıklama</th>
   <tr>
     <td>200</td>

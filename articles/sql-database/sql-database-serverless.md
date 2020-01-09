@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372339"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Veritabanı sunucusuz
 
@@ -177,30 +177,27 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Sunucusuz işlem katmanında yeni veritabanı oluştur 
 
+Aşağıdaki örnekler sunucusuz işlem katmanında yeni bir veritabanı oluşturur. Örnekler, en düşük sanal çekirdekler, maksimum sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
+
 #### <a name="use-azure-portal"></a>Azure portalını kullanma
 
 Bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](sql-database-single-database-get-started.md).
 
+
 #### <a name="use-powershell"></a>PowerShell'i kullanma
-
-Aşağıdaki örnek sunucusuz işlem katmanında yeni bir veritabanı oluşturur.  Bu örnek, en az sanal çekirdekler, en fazla sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>Azure CLI kullanma
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```powershell
+```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
   -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanma
 
@@ -215,11 +212,10 @@ Ayrıntılar için bkz. [veritabanı oluşturma](/sql/t-sql/statements/create-da
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşıma
 
+Aşağıdaki örneklerde, bir veritabanı sağlanan işlem katmanından sunucusuz işlem katmanına taşınır. Örnekler, en düşük sanal çekirdekler, maksimum sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
+
 #### <a name="use-powershell"></a>PowerShell'i kullanma
 
-Aşağıdaki örnek, bir veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşımakta. Bu örnek, en az sanal çekirdekler, en fazla sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -227,14 +223,13 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Azure CLI kullanma
 
-```powershell
+```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanma
 
@@ -253,15 +248,14 @@ Bir sunucusuz veritabanı, sağlanan bir işlem veritabanını sunucusuz bir iş
 
 ## <a name="modifying-serverless-configuration"></a>Sunucusuz yapılandırmayı değiştirme
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="use-powershell"></a>PowerShell'i kullanma
 
 Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek, `MaxVcore`, `MinVcore`ve `AutoPauseDelayInMinutes` bağımsız değişkenlerini kullanarak PowerShell 'deki [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="use-azure-cli"></a>Azure CLI kullanma
 
 Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek, `capacity`, `min-capacity`ve `auto-pause-delay` bağımsız değişkenlerini kullanarak Azure CLı 'deki [az SQL DB Update](/cli/azure/sql/db#az-sql-db-update) komutu kullanılarak gerçekleştirilir.
 
-* * *
 
 ## <a name="monitoring"></a>İzleme
 
@@ -296,22 +290,21 @@ Bir sunucusuz veritabanının uygulama paketinin ve Kullanıcı havuzunun kaynak
 
 Azure portal veritabanı durumu, içerdiği veritabanlarını listeleyen sunucunun Genel Bakış bölmesinde görüntülenir. Veritabanı durumu, veritabanının genel bakış bölmesinde de görüntülenir.
 
-Aşağıdaki PowerShell komutunu kullanarak bir veritabanının duraklatma ve devam durumunu sorgulama:
+Bir veritabanının duraklatma ve devam durumunu sorgulamak için aşağıdaki komutları kullanma:
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="use-powershell"></a>PowerShell'i kullanma
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>Azure CLI kullanma
 
-```powershell
+```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
 
-* * *
 
 ## <a name="resource-limits"></a>Kaynak sınırları
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868499"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552670"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
 
@@ -32,9 +32,9 @@ Bu makalede, kapsayıcılarınızın ve uygulamalarının güvenliğini nasıl i
 [Azure Güvenlik Merkezi 'nin kapsayıcı Güvenlik sekmesini ![](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Güvenlik açığı yönetimi-kapsayıcı görüntülerini tarama (Önizleme)
-Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
+Azure Container Registry izlemek için Güvenlik Merkezi 'nin standart katmanında olduğunuzdan emin olun (bkz. [fiyatlandırma](/azure/security-center/security-center-pricing)). Sonra isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirin. Yeni bir görüntü gönderildiğinde, Güvenlik Merkezi, sektör lideri güvenlik açığı tarama satıcısı, Qualys 'den bir tarayıcı kullanarak görüntüyü tarar.
 
-Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi önerilerinin ayrıntıları için [buradaki](recommendations-compute-and-apps.md)önerilerin listesine bakın.
+Sorunlar bulunduğunda: Qualys veya Güvenlik Merkezi tarafından – Güvenlik Merkezi panosunda bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin önerilerin ayrıntıları için bkz. [önerilerin başvuru listesi](recommendations-reference.md).
 
 ## <a name="environment-hardening"></a>Ortam sağlamlaştırma
 

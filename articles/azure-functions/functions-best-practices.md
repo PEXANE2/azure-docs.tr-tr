@@ -3,14 +3,14 @@ title: Azure Işlevleri için en iyi uygulamalar
 description: Azure Işlevleri için en iyi uygulamaları ve desenleri öğrenin.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433308"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansını ve güvenilirliğini iyileştirin
 
@@ -70,7 +70,11 @@ Azure Işlevleri platformunda kullandığınız bileşenler için zaten sağlanm
 
 ### <a name="share-and-manage-connections"></a>Bağlantıları paylaşma ve yönetme
 
-Mümkün olduğunda dış kaynaklarla bağlantıları yeniden kullanın.  Bkz. [Azure işlevlerinde bağlantıları yönetme](./manage-connections.md).
+Mümkün olduğunda dış kaynaklarla bağlantıları yeniden kullanın. Bkz. [Azure işlevlerinde bağlantıları yönetme](./manage-connections.md).
+
+### <a name="avoid-sharing-storage-accounts"></a>Depolama hesaplarını paylaşmayı önleyin
+
+Bir işlev uygulaması oluşturduğunuzda, bunu bir depolama hesabıyla ilişkilendirmeniz gerekir. Depolama hesabı bağlantısı [AzureWebJobsStorage uygulama ayarında](./functions-app-settings.md#azurewebjobsstorage)tutulur. Performansı en üst düzeye çıkarmak için, her bir işlev uygulaması için ayrı bir depolama hesabı kullanın. Bu, her ikisi de yüksek hacimli depolama işlemleri üreten Dayanıklı İşlevler veya Olay Hub 'ı tetiklenen işlevleriniz olduğunda özellikle önemlidir. Uygulama mantığınızın, doğrudan (depolama SDK 'sını kullanarak) veya depolama bağlamalarından biri aracılığıyla Azure depolama ile etkileşime geçtiğinde, ayrılmış bir depolama hesabı kullanmanız gerekir. Örneğin, blob depolamaya bazı veriler yazan bir olay hub 'ı tetiklemeli işleviniz varsa, işlev uygulaması için bir tane&mdash;ve işlev tarafından saklanan Bloblar için başka bir depolama hesabı kullanın.
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Aynı işlev uygulamasında test ve üretim kodunu karıştırmayın
 
@@ -84,9 +88,17 @@ Mümkün olduğunda dış kaynaklarla bağlantıları yeniden kullanın.  Bkz. [
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Zaman uyumsuz kod kullan ancak çağrı engellemeyi önleyin
 
-Zaman uyumsuz programlama önerilen en iyi uygulamadır. Ancak, her zaman `Result` özelliğine başvurmaktan kaçının veya bir `Task` örneğine `Wait` metodunu çağırarak. Bu yaklaşım iş parçacığı tükenmesine yol açabilir.
+Zaman uyumsuz programlama, özellikle ı/O işlemlerini engellemeye yönelik önerilen en iyi uygulamadır.
+
+' C#De, her zaman `Result` özelliğine başvurmaktan kaçının veya bir `Task` örneğine `Wait` metodunu çağırarak. Bu yaklaşım iş parçacığı tükenmesine yol açabilir.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>Birden çok çalışan işlemi kullanma
+
+Varsayılan olarak, Işlevler için herhangi bir konak örneği tek bir çalışan işlemi kullanır. Özellikle Python gibi tek iş parçacıklı Çalışma zamanları ile performansı artırmak için, ana bilgisayar başına çalışan işlem sayısını (10 ' a kadar) artırmak için [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) kullanın. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir. 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda toplu iş içinde ileti alma
 

@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381996"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksınız. İlk olarak bir uygulama, **Amaç**ve **varlıkların**temel parçalarını oluşturursunuz. Ardından, tahmin edilen amacı almak için etkileşimli test panelinde örnek bir Kullanıcı yazarak uygulamayı test edersiniz.
 
@@ -37,9 +35,9 @@ Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulaman�
 
    |Ayar adı| Değer | Amaç|
    |--|--|--|
-   |Ad|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>Gerekli|
-   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>Gerekli|
-   |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>seçim|
+   |Ad|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>{1&gt;gerekli&lt;1}|
+   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>{1&gt;gerekli&lt;1}|
+   |Açıklama (Isteğe bağlı)|`App made with LUIS Portal`|Uygulamanın açıklaması<br>isteğe bağlı|
    |Tahmin kaynağı (Isteğe bağlı) |-  |' Yi seçmeyin. LUSıS, yazma ve 1.000 tahmin uç noktası istekleri için ücretsiz olarak kullanabileceğiniz bir başlangıç anahtarı sağlar. |
 
    ![Yeni uygulama ayarlarını girin](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -60,7 +58,7 @@ Uygulamanın _iki farklı amacı_ aşağıdaki amaçlar için hizalanacaktır:
 
 Amaç oluşturmak için aşağıdaki adımları izleyin:
 
-1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olursunuz. **Oluştur**'u seçin.
+1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olursunuz. **Oluştur**’u seçin.
 
    [Yeni amaç oluşturmak için Oluştur ' u ![seçin](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -97,7 +95,7 @@ Aşağıdaki 15 örnek utbotları `FindForm` amacına ekleyin.
 Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
 
 * söylenişi uzunluğu
-* edilen
+* noktalama işareti
 * sözcük seçimi
 * fiil zaman hali (yani, was, olacaktır)
 * sözcük sırası

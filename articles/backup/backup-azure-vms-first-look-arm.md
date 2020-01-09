@@ -3,12 +3,12 @@ title: VM ayarlarından bir Azure VM 'yi yedekleme
 description: Bu makalede, Azure Backup hizmetiyle tek bir Azure VM veya birden fazla Azure VM 'yi nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391446"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
 
@@ -31,7 +31,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM ayarlarından yedekleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm hizmetler** ' e tıklayın ve filtreye, **sanal makineler**yazın ve ardından **sanal makineler**' e tıklayın.
 3. VM 'Ler listesinden yedeklemek istediğiniz VM 'yi seçin.
 4. VM menüsünde **Yedekle**' ye tıklayın.
@@ -61,10 +61,6 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 10. Yedeklemeyi etkinleştirdikten sonra bir ilk yedekleme çalışır. İlk yedeklemeyi hemen başlatabilir veya yedekleme zamanlamasına uygun şekilde çalışmaya başlayabilirsiniz.
     - İlk Yedekleme tamamlanana kadar, son yedekleme **durumu** **uyarı (ilk yedekleme beklemede)** olarak gösterilir.
     - Sonraki zamanlanmış yedeklemenin ne zaman çalışacağını görmek için yedekleme ilkesi adına tıklayın.
-
-> [!NOTE]
-> Azure Backup hizmet, anlık görüntüyü depolamak için (örneğin: AzureBackupRG_northeurope_1) **AzureBackupRG_geography_number** , farklı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin "anlık kurtarma anlık görüntüsünü sakla" bölümünde belirtildiği gibi gün boyunca tutulur. Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
-Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
 
 ## <a name="run-a-backup-immediately"></a>Yedeklemeyi hemen Çalıştır
 

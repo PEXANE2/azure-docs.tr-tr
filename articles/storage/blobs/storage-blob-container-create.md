@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372219"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET ile Azure depolama 'da kapsayıcı oluşturma veya silme
 
@@ -126,7 +126,7 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 
 **Delete** ve **DeleteAsync** yöntemleri, kapsayıcı yoksa bir özel durum oluşturur.
 
-**Deleteifnotexists** ve **Deleteifnotexistsasync** yöntemleri kapsayıcının silinip silinmediğini gösteren bir Boole değeri döndürür. Belirtilen kapsayıcı yoksa, bu yöntemler kapsayıcının silinmediğini göstermek için **false** döndürür.
+**Deleteifexists** ve **Deleteifvartsasync** yöntemleri kapsayıcının silinip silinmediğini gösteren bir Boole değeri döndürür. Belirtilen kapsayıcı yoksa, bu yöntemler kapsayıcının silinmediğini göstermek için **false** döndürür.
 
 Bir kapsayıcıyı sildikten sonra, en az 30 saniye için aynı ada sahip bir kapsayıcı ve muhtemelen daha uzun bir kapsayıcı oluşturamazsınız. Kapsayıcı silinirken, aynı ada sahip bir kapsayıcı oluşturma girişimi, HTTP hata kodu 409 (çakışma) ile başarısız olur. Kapsayıcı silinirken, kapsayıcıda veya içerdiği bloblarda bulunan diğer işlemler 404 (bulunamadı) HTTP hata kodu ile başarısız olur.
 

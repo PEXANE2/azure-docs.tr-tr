@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5b33d8fc804d339d3808e5231998fbba41cd4ee9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8a7da1bf80025cfe9b59c42f3338254b86f2ff05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376350"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Öğretici: New York Taxicab verilerini Azure SQL veri ambarı 'na yükleme
 
@@ -24,7 +24,7 @@ Bu öğretici, genel bir Azure blobundan Azure SQL veri ambarı 'na New York Tax
 
 > [!div class="checklist"]
 > * Azure Portal'da veri ambarı oluşturma
-> * Azure Portal'da sunucu düzeyinde bir güvenlik duvarı kuralı ayarlandı
+> * Azure Portal'da sunucu düzeyinde bir güvenlik duvarı kuralı ayarlama
 > * SSMS ile veri ambarına bağlanma
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturma
 > * Azure blob depolama alanında veriler için dış tablolar oluşturma
@@ -32,7 +32,7 @@ Bu öğretici, genel bir Azure blobundan Azure SQL veri ambarı 'na New York Tax
 > * Yüklendikleri sırada verilerin ilerleme durumunu görüntüleme
 > * Yeni yüklenen verilere ilişkin istatistikler oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -45,7 +45,7 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Boş bir SQL veri ambarı oluşturun
 
-Azure SQL veri ambarı, tanımlı bir [işlem kaynakları] bellek-eşzamanlılık-limits.md) kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/resource-group-overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
+Azure SQL veri ambarı, tanımlı bir [işlem kaynakları] bellek-eşzamanlılık-limits.md) kümesiyle oluşturulur. Veritabanı bir [Azure kaynak grubu](../azure-resource-manager/management/overview.md) ve bir [Azure SQL mantıksal sunucusu](../sql-database/sql-database-features.md) içinde oluşturulur. 
 
 Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin. 
 
@@ -85,7 +85,7 @@ Boş bir SQL veri ambarı oluşturmak için bu adımları izleyin.
 
     ![performansı yapılandırma](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. **Apply (Uygula)** düğmesine tıklayın.
+8. **Uygula**'ya tıklayın.
 9. SQL Veri Ambarı sayfasında, boş veritabanı için bir **harmanlama** seçin. Bu öğreticide varsayılan değeri kullanın. Harmanlamalar hakkında daha fazla bilgi için bkz. [Harmanlamalar](/sql/t-sql/statements/collations)
 
 11. SQL Veritabanı formunu tamamladıktan sonra veritabanını sağlamak için **Oluştur**’a tıklayın. Sağlama birkaç dakika sürer. 
@@ -120,7 +120,7 @@ SQL Veri Ambarı hizmeti, dış uygulama ve araçların sunucuya ya da sunucu ü
 
 4. Geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için araç çubuğunda **İstemci IP’si Ekle** öğesine tıklayın. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
-5. **Kaydet** düğmesine tıklayın. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
+5. **Save (Kaydet)** düğmesine tıklayın. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
 
 6. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -152,7 +152,7 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
     | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
     | Sunucu adı | Tam sunucu adı | Ad şuna benzer olmalıdır: **MyNewServer-20180430.Database.Windows.net**. |
     | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
-    | Oturum Aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
+    | Oturum aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 
     ![sunucuya bağlan](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -182,7 +182,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. **Yürüt**’e tıklayın.
+3. **Yürüt**'e tıklayın.
 
 4. **mySampleDataWarehouse**’a sağ tıklayıp **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.  
 
@@ -196,7 +196,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. **Yürüt**’e tıklayın.
+6. **Yürüt**'e tıklayın.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Yükleme kullanıcısı olarak sunucuya bağlanma
 
@@ -633,7 +633,7 @@ Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanı
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
 > * Azure Portal'da veri ambarı oluşturuldu
-> * Azure Portal'da sunucu düzeyinde bir güvenlik duvarı kuralı ayarlandı
+> * Azure Portal'da sunucu düzeyinde bir güvenlik duvarı kuralı ayarlama
 > * SSMS ile veri ambarına bağlandı
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturuldu
 > * Azure Depolama Blobu'ndaki veriler için dış tablolar oluşturuldu

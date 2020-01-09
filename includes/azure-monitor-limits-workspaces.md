@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392288"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -33,7 +33,7 @@ ms.locfileid: "72302358"
 | Ücretsiz katmanı  | 10 | Bu sınır arttırılamıyor. |
 | Diğer tüm katmanlar | Sınırsız | Bir kaynak grubu içindeki kaynak sayısıyla ve abonelik başına kaynak grubu sayısına göre sınırlandırılırsınız. |
 
-**Azure portalda**
+**Azure Portal**
 
 | Kategori | Sınırlar | Yorumlar |
 |:---|:---|:---|
@@ -51,7 +51,7 @@ ms.locfileid: "72302358"
 
 | Kategori | Sınırlar | Yorumlar |
 |:---|:---|:---|
-| Tek bir sorguda döndürülen en fazla kayıt sayısı | 500.000 | |
+| Tek bir sorguda döndürülen en fazla kayıt sayısı | 500,000 | |
 | Döndürülen en fazla veri boyutu | 64.000.000 bayt (~ 61 MIB)| |
 | En fazla sorgu çalışma süresi | 10 dakika | Ayrıntılar için bkz. [zaman aşımları](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | En yüksek istek hızı | AAD kullanıcısı veya istemci IP adresi başına 30 saniye başına 200 istek | Ayrıntılar için [Hız sınırlarına](https://dev.loganalytics.io/documentation/Using-the-API/Limits) bakın. |
@@ -62,8 +62,7 @@ ms.locfileid: "72302358"
 |:---|:---|:---|
 | Tablodaki en fazla sütun         | 500 | |
 | Sütun adı için en fazla karakter | 500 | |
-| Kapasiteden bölgeler | Orta Batı ABD | Geçici kapasite sınırında olduğundan bu bölgede şu anda yeni bir çalışma alanı oluşturamazsınız. Bu sınır Kasım 2019 sonuna kadar planlanarak yapılır. |
-| Veri dışarı aktarma | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
+| Verileri dışarı aktar | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
 
 **Veri alımı birim oranı**
 
