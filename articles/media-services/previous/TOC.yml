@@ -7,7 +7,7 @@
       href: scenarios-and-availability.md
     - name: Kavramlar
       href: media-services-concepts.md
-- name: Başlarken
+- name: başlarken
   items:
     - name: Hesap oluşturma ve yönetme
       href: media-services-portal-create-account.md
@@ -50,6 +50,7 @@
 - name: Nasıl yapılır
   items:
     - name: Eski bileşenler
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: Azure Medya Kodlayıcısı’ndan geçiş
@@ -462,6 +463,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: Kesintisiz Akış HEVC
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: Eski bileşenler
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: Kaynaklar
   items:
     - name: Azure Media Services topluluğu
