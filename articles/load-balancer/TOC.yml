@@ -35,7 +35,7 @@
     - name: Sanal makinelerin internet trafiğinde yük dengeleme
       href: tutorial-load-balancer-standard-manage-portal.md
     - name: Sanal makinelerin iç trafiğinde yük dengeleme
-      href: tutorial-load-balancer-basic-internal-portal.md
+      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Farklı kullanılabilirlik bölgelerindeki VM’lerin yükünü dengeleme
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Belirli bir kullanılabilirlik bölgesi içinde VM yükünü dengeleme

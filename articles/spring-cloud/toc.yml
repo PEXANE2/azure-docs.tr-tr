@@ -35,7 +35,7 @@
     - name: Uygulamanızı Azure MySQL'e bağlama
       href: spring-cloud-tutorial-bind-mysql.md
     - name: Jenkins ve Azure CLI kullanarak uygulamaları Azure Spring Cloud’a dağıtma
-      href: /jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: Kavramlar
   items:
     - name: Azure Spring Cloud kotalarını ve sınırlarını anlama
