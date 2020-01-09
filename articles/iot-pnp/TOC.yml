@@ -71,8 +71,12 @@
       href: howto-develop-solution.md
 - name: Başvuru
   items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: Dijital İkiz
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+    - name: Dijital İkiz hizmeti
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+    - name: Dijital İkiz model deposu
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
     - name: REST güvenlik belirteci oluşturma
       href: howto-generate-sas-token.md
 - name: İlgili

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449321"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Önceden satın alma ile Azure Databricks maliyetlerini iyileştirme
 
@@ -41,8 +41,8 @@ Satın almadan önce, farklı iş yükleri ve katmanlar için kullanılan toplam
 
 [Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) Databricks planları satın alabilirsiniz. Ayrılmış kapasite satın almak için, en az bir kurumsal abonelik için sahip rolüne sahip olmanız gerekir.
 
-- Şu anda, önceden satın alma yalnızca Kurumsal Anlaşma müşterileri için kullanılabilir.
-- En az bir Kurumsal abonelik için Sahip rolünde olmanız gerekir.
+- Şunlar için Sahip rolünde olmanız gerekir: en az bir Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P or MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da kullandıkça öde fiyatlarıyla sunulan bireysel abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P).
+- EA abonelikleri için, EA Portal’da Ayrılmış Örnek Ekle seçeneğinin etkinleştirilmesi gerekir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Veya bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
 
 **Satın almak için:**

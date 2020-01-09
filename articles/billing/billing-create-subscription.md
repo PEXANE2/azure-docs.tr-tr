@@ -1,5 +1,5 @@
 ---
-title: Ek bir Azure aboneliği oluşturma | Microsoft Docs
+title: Ek Azure aboneliği oluşturma
 description: Azure portalında nasıl yeni bir Azure aboneliği ekleneceğini öğrenin.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 0f4df548313e02a9e8eb857bf2c1d798d5ccdcc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449625"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Ek Azure aboneliği oluşturma
 

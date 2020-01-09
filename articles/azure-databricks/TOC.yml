@@ -1477,6 +1477,9 @@
         - name: Databricks Connect
           href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
+        - name: Jenkins ile CI/CD
+          href: /azure/databricks/dev-tools/ci-cd
+          maintainContext: true
         - name: Veri işlem hatlarında bağımlılıkları yönetme
           href: /azure/databricks/dev-tools/data-pipelines
           maintainContext: true
@@ -1578,6 +1581,9 @@
           items:
             - name: Platform sürüm notları
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Ocak 2020
+              href: /azure/databricks/release-notes/product/2020/january
               maintainContext: true
             - name: Aralık 2019
               href: /azure/databricks/release-notes/product/2019/december

@@ -62,12 +62,12 @@
           href: migrate-support-matrix-hyper-v.md
         - name: Fiziksel sunucu değerlendirmesi ve geçişi için destek matrisi
           href: migrate-support-matrix-physical.md
+        - name: Azure Geçişi aleti için destek matrisi
+          href: migrate-appliance.md
     - name: Hyper-V geçiş mimarisi
       href: hyper-v-migration-architecture.md
     - name: Aracı tabanlı geçiş mimarisi
       href: agent-based-migration-architecture.md
-    - name: Azure Geçişi gereci
-      href: migrate-appliance.md
     - name: Azure Geçişi çoğaltma gereci
       href: migrate-replication-appliance.md
     - name: Değerlendirmeler için en iyi yöntemler
@@ -80,6 +80,8 @@
   items:
     - name: Önceki sürümle çalışma
       href: migrate-v1.md
+    - name: Azure Geçişi projelerini oluşturma ve yönetme
+      href: create-manage-projects.md
     - name: VMware aletini dağıtma
       href: how-to-set-up-appliance-vmware.md
     - name: Hyper-V aletini dağıtma
@@ -123,7 +125,13 @@
 - name: Sorun giderme
   items:
     - name: Azure Geçişi sorunlarını giderme
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: Azure Geçişi projeleri sorunlarını giderme
+      href: troubleshoot-project.md
+    - name: Azure Geçişi aleti/bulma sorunlarını giderme
+      href: troubleshoot-appliance-discovery.md
+    - name: Değerlendirme/bağımlılık görselleştirmesi sorunlarını giderme
+      href: troubleshoot-assessment.md
 - name: Kaynaklar
   items:
     - name: Bulut Benimseme Çerçevesi kapsamında geçiş

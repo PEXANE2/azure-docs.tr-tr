@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Şablon oluşturma - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Şablon oluşturma - Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: Şablon oluşturma - IntelliJ IDEA
-      href: create-templates-use-intellij.md
 - name: Öğreticiler
   items:
     - name: Başlangıç
@@ -101,8 +97,9 @@
   items:
     - name: Şablon oluşturma
       items:
-        - name: VS Code kullanma
-          href: use-vs-code-to-create-template.md
+        - name: Şablon dosya yapısı
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: Şablon ifadeleri yazma
           href: template-expressions.md
         - name: Parametreler
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: Yönetim grubu düzeyi kaynakları
           href: deploy-to-management-group.md
+    - name: Yazma araçlarını kullanma
+      items:
+        - name: VS Code
+          href: use-vs-code-to-create-template.md
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Şablon dağıtma
       items:
         - name: Dağıtma - portal
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: Başvuru
   items:
-    - name: Şablon dosya yapısı
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: Şablon başvurusu
       href: /azure/templates/
     - name: Şablon işlevleri

@@ -32,6 +32,8 @@
       href: ingest-data-overview.md
     - name: Veri görselleştirmeye genel bakış
       href: viz-overview.md
+    - name: Güvenliğe genel bakış
+      href: security.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Küme ve veritabanı oluşturma
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: Güvenlik
+      items:
+        - name: Küme güvenliğini yönetme
+          href: manage-cluster-security.md
+        - name: Yönetilen kimlikleri yapılandırma
+          href: managed-identities.md
+        - name: Müşteri tarafından yönetilen anahtarları yapılandırma
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager şablonu
+              href: customer-managed-keys-resource-manager.md
     - name: Yönetme
       items:
         - name: Küme
@@ -154,11 +168,9 @@
               href: manage-cluster-horizontal-scaling.md
             - name: Kümelerin dikey ölçeklemesini yönetme
               href: manage-cluster-vertical-scaling.md
-            - name: Küme güvenliğini yönetme
-              href: manage-cluster-security.md
             - name: Küme durumunu denetleme
               href: check-cluster-health.md
-        - name: Database
+        - name: Veritabanı
           items:
             - name: Takipçi veritabanları
               href: follower.md

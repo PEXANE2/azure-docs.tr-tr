@@ -4,16 +4,16 @@ description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve i
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849896"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644571"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure kurumsal kayıt faturaları
 
@@ -22,8 +22,6 @@ Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alaca�
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Fazla kullanım faturası için PO numarasını değiştirme
 
 EA yöneticisi fatura tarihinden önce bir satın alma siparişi (PO) numarası ayarlamadığı sürece Azure EA portalı otomatik olarak bir varsayılan numara oluşturur. EA yöneticisi, otomatik fatura bildirimi e-postasını aldıktan sonraki yedi gün içinde de PO numarasını güncelleştirebilir.
-
-Satın Alma Siparişi numarası, belirli bir hesap veya abonelik için de girilebilir. Raporlarda varsayılan olarak hiyerarşinin en alt düzeyindeki Satın Alma Siparişi numarası yer alır. Başka bir deyişle abonelik Satın Alma Siparişi numarası girilmemesi durumunda hesap Satın Alma Siparişi numarası, hesap Satın Alma Siparişi girilmemesi durumunda da bölüm Satın Alma Siparişi numarası kullanılır.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Azure hizmetleri satın alma siparişi numarasını güncelleştirmek için:
 
@@ -150,7 +148,7 @@ Belirli hesaplardaki ayrıntılı kullanımı görüntülemek için **Raporlar**
 
 Dolaylı kayıtlarda, maliyetle ilgili bilgileri görebilmeniz için önce iş ortağınızın ek ücret işlevini etkinleştirmesi gerekir.
 
-## <a name="reports"></a>Reports
+## <a name="reports"></a>Raporlar
 
 Kuruluş Yöneticileri, Enterprise Portal'da portalında kullanım verilerinin özetini, tüketilen parasal taahhüdü ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
 
@@ -372,7 +370,7 @@ Enterprise Portal'daki yuvarlama ve dönüştürme kurallarını modellemek içi
 | Yuvarlama Fiyatlandırması (2 ondalık basamak) | =MROUND({_kaynak_}, 0,02) |
 | Yuvarlama Fiyatlandırması (0 ondalık basamak) | =MROUND({_kaynak_}, 2) |
 
-**Tablo**  **2**  **- Bulut Hizmeti ve Sanal Makine Saati Dönüştürme İşlevi**
+**Tablo** **2** **- Bulut Hizmeti ve Sanal Makine Saati Dönüştürme İşlevi**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>İndirilen Kullanım Dosyası ile Kullanım Özeti Portalı Görünümü arasında geçiş yapma
 
@@ -419,7 +417,7 @@ Fiyatın alana ve bölgeye göre değiştiği hizmetler için geçerli coğrafi 
 | Bölge 2 | Asya Pasifik Doğu <br> Asya Pasifik Güneydoğu <br> Japonya Doğu <br> Japonya Batı <br> Avustralya Doğu <br> Avustralya Güneydoğu | Asya Pasifik <br> Japonya <br> Latin Amerika <br> Orta Doğu/Afrika <br> Avustralya Doğu <br> Avustralya Güneydoğu |
 | Bölge 3 | Güney Brezilya |   |
 
-**Tablo**  **4**  **- Veri Aktarım Bölgeleri**
+**Tablo**  **4**  **– Veri Aktarım Bölgeleri**
 
 Aynı veri merkezinde barındırılan hizmetler (O365 ve Azure gibi) arasındaki veri çıkışından ücret alınmaz.
 
@@ -559,7 +557,7 @@ Ayrıntılı bilgi için lütfen bu ek bilgi kaynaklarını inceleyin. Bu dosyal
 | [**Hizmet Kolay Adları**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Tüm etkin hizmetlere ait hizmet kategorisi, hizmet kolay adı, taahhüt adı ve parça numarası, tüketim adı ve parça numarası, ölçü birimleri ve raporlardaki kullanım ile Enterprise Portal'da görüntülenen kullanım arasındaki dönüştürme faktörlerinin bir listesini sunar. | Hizmet\_Kolay\_Adları.xlsx |
 | [**Hizmet İndirme Alanları**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Bu elektronik tabloda Kullanım İndirme Raporundaki hizmetle ilgili alanların tüm olası birleşimlerinin bir listesi bulunur. | Hizmet\_İndirme\_Alanları.xlsx |
 
-**Tablo**  **5**  **- Ek Bilgi Kaynakları**
+**Tablo** **5** **- Ek Bilgi Kaynakları**
 
 ## <a name="power-bi-reporting"></a>Power BI raporları
 

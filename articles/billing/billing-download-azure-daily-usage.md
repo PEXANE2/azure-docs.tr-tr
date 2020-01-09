@@ -3,21 +3,17 @@ title: Azure kullanımını ve ücretlerini Görüntüleme ve İndirme
 description: Günlük Azure kullanımınızın ve ücretlerinizin nasıl indirileceğini veya görüntüleneceğini açıklar.
 keywords: faturalama kullanımı, kullanım ücretleri, kullanım indirmesi, kullanımı görüntüleme, azure faturası, azure kullanımı
 author: bandersmsft
-manager: jureid
+ms.author: banders
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.author: banders
-ms.openlocfilehash: dcf4e3b9d85909c8f1d149c9d1940a6755b431a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/03/2020
+ms.openlocfilehash: dbb7956bf58d6b997f782d8f88e1eeaf19d6ade8
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224005"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665093"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme
 
@@ -35,8 +31,8 @@ Microsoft Müşteri Sözleşmeniz (MCA) varsa, Azure kullanımınızı ve ücret
 1. Erişiminize bağlı olarak, bir Ödeme hesabı veya Faturalama profili seçmeniz gerekebilir.
 1. Soldaki menüde **Faturalama** altındaki **Faturalar**’ı seçin.
 1. Fatura kılavuzunda, indirmek istediğiniz kullanıma karşılık gelen faturalama döneminin satırını bulun.
-1. Sağ taraftaki indir simgesine veya üç noktaya (`...`) tıklayın.
-1. İndirme menüsünden **Azure kullanımı ve ücretlerini indir**’i seçin.
+1. Sağ taraftaki **indir simgesini** veya üç noktayı (`...`) seçin.
+1. İndirme bölmesi sağ tarafta açılır. **Kullanım Ayrıntıları** bölümünde **İndir** seçeneğini belirleyin.
 
 ## <a name="download-usage-for-ea-customers"></a>Kurumsal Anlaşma müşterileri için kullanımı indirme
 

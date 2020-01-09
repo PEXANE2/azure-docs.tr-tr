@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 06/30/2019
 ms.author: banders
-ms.openlocfilehash: 07f8d897d55868923ecca03797cf18a5346d667c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 20eacdb1ab8f7ebdf118646cd548d7b60b2d2ebc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225802"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644354"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alma
 
@@ -65,9 +65,9 @@ Verileri API'yi kullanarak alabilir veya Azure portalından indirebilirsiniz.
 
 Yeni verileri almak için [Kullanım Ayrıntıları API’sini](/rest/api/consumption/usagedetails/list) çağırırsınız. Terminolojiyle ilgili ayrıntılar için bkz. [Kullanım terimleri](billing-understand-your-usage.md). Çağrıyı yapan kurumsal anlaşmanın Kuruluş Yöneticisi olmalı ve [EA portalını](https://ea.azure.com) kullanmalıdır. Salt okuma erişimli Kuruluş Yöneticileri de verileri alabilir.
 
-Veriler, [Enterprise müşterileri için Raporlama API'leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)'nda sağlanmaz.
+Bu verilerin [Kurumsal müşteriler için Raporlama API’leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)’nda sağlanmadığını unutmayın.
 
-Aşağıda örnek bir API çağrısı verilmiştir:
+Aşağıda örnek bir Kullanım Ayrıntıları API’si çağrısı verilmiştir:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ Aşağıdaki tabloda verilen ölçüm ve filtre bilgileri yaygın rezervasyon so
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Yeni verileri içeren kullanım CSV dosyasını indirme
 
-EA yöneticisiyseniz yeni kullanım verilerini içeren CSV dosyasını Azure portalından indirebilirsiniz. Bu veriler [EA portalından](https://ea.azure.com) sağlanmaz.
+EA yöneticisiyseniz yeni kullanım verilerini içeren CSV dosyasını Azure portalından indirebilirsiniz. Bu verilere EA portalından erişilemez (ea.azure.com). Yeni verileri görmek için Azure portalından (portal.azure.com) kullanım dosyasını indirmeniz gerekir.
 
 Azure portalında [Maliyet yönetimi + faturalama](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)'ya gidin.
 
@@ -148,7 +148,7 @@ Rezervasyon maliyetleri, [maliyet analizinde](https://aka.ms/costanalysis) kulla
 
 ![Maliyet analizinde amorti edilmiş maliyetin nerede seçileceğini gösteren örnek](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Kullanımın, satın almaların ve para iadelerinin dökümünü görmek için ücret türüne göre gruplandırın; rezervasyon ve isteğe bağlı maliyetlerin dökümü için rezervasyona göre gruplandırın. Gerçek maliyete baktığınızda göreceğiniz tek rezervasyon maliyetinin satın almalar olduğunu unutmayın. Öte yandan amorti edilmiş maliyete baktığınızda maliyetler avantajı kullanan tek tek kaynaklara ayrılmış olacaktır. Amorti edilmiş maliyete baktığınızda bir de yeni **UnusedReservation** ücret türünü görürsünüz.
+Kullanımın, satın almaların ve para iadelerinin dökümünü görmek için ücret türüne göre gruplandırın; rezervasyon ve isteğe bağlı maliyetlerin dökümü için rezervasyona göre gruplandırın. Gerçek maliyete baktığınızda göreceğiniz tek rezervasyon maliyetinin satın almalar olduğunu unutmayın. Ayrıca, amorti edilmiş maliyete baktığınızda maliyetler avantajı kullanan ayrı kaynaklara ayrılmış olacaktır. Amorti edilmiş maliyete baktığınızda bir de yeni **UnusedReservation** ücret türünü görürsünüz.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

@@ -1,0 +1,86 @@
+- name: İnternet eşlemesi belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Internet eşlemesi hakkında
+      href: overview.md
+    - name: Internet eşlemesi ve Eşleme Hizmeti
+      href: overview-peering-service.md
+- name: Kavramlar
+  items:
+    - name: Eşleme ilkesi
+      href: policy.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Microsoft ile eşleme ayarlama önkoşulları
+      href: prerequisites.md
+    - name: Doğrudan eşleme kılavuzu
+      href: walkthrough-direct-all.md
+    - name: Exchange eşleme kılavuzu
+      href: walkthrough-exchange-all.md
+    - name: Eşleme Hizmeti iş ortağı kılavuzu
+      href: walkthrough-peering-service-all.md
+    - name: Eşdüzey ASN’yi Azure aboneliğiyle ilişkilendir
+      items:
+        - name: Portal
+          href: howto-subscription-association-portal.md
+        - name: Azure PowerShell
+          href: howto-subscription-association-powershell.md
+    - name: Doğrudan eşleme üzerinde Eşleme Hizmeti’ni etkinleştir
+      items:
+        - name: Portal
+          href: howto-peering-service-portal.md
+        - name: Azure PowerShell
+          href: howto-peering-service-powershell.md
+    - name: Doğrudan eşleme oluşturma veya değiştirme
+      items:
+        - name: Portal
+          href: howto-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-direct-powershell.md
+    - name: Eski bir Doğrudan eşlemeyi Azure kaynağına dönüştürme
+      items:
+        - name: Portal
+          href: howto-legacy-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-direct-powershell.md
+    - name: Bir Exchange eşleme oluşturma veya değiştirme
+      items:
+        - name: Portal
+          href: howto-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-exchange-powershell.md
+    - name: Eski bir Exchange eşlemeyi Azure kaynağına dönüştürme
+      items:
+        - name: Portal
+          href: howto-legacy-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-exchange-powershell.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/network'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network'
+    - name: Java
+      href: 'https://docs.microsoft.com/java/api/'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Resource Manager şablonu
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: 'https://docs.microsoft.com/learn/browse/'
+    - name: Azure yol haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Ağ blogu
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Ağ geri bildirimi
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: İnternet eşlemesi hakkında SSS
+      href: faqs.md
+    - name: Eşleme Hizmeti hakkında SSS
+      href: service-faqs.md

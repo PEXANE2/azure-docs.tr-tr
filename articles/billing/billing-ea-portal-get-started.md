@@ -4,16 +4,16 @@ description: Bu makalede, Azure EA müşterilerinin Azure EA portalını nasıl 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841379"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660673"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Azure EA portalı ile çalışmaya başlama
 
@@ -48,12 +48,13 @@ Aşağıdaki diyagramda basit Azure EA hiyerarşileri gösterilmektedir.
 
 ## <a name="enterprise-user-roles"></a>Kurumsal kullanıcı rolleri
 
-Kaydınızdaki Azure hizmetlerini yönetmek için dört farklı kurumsal yönetici kullanıcı rolü vardır:
+Kaydınızdaki Azure hizmetlerini yönetmek için beş farklı kurumsal yönetici kullanıcı rolü bulunur:
 
 - Kuruluş yöneticisi
 - Departman yöneticisi
 - Hesap sahibi
 - Hizmet yöneticisi
+- Bildirim ilgili kişisi
 
 Roller iki farklı Microsoft Azure portalındaki görevleri gerçekleştirmek için kullanılır. Azure EA portalı (https://ea.azure.com) fatura ve maliyetleri yönetmenize yardımcı olmak için kullanılır. Azure portalı (https://portal.azure.com), Azure hizmetlerini yönetmek için kullanılır.
 
@@ -101,9 +102,15 @@ Her hesap için benzersiz bir İş, Okul veya Microsoft Hesabı gerekir. Azure E
 
 Hizmet yöneticisinin Azure portalındaki hizmetleri yönetme ve kullanıcıları eş yönetici rolüne atama izinleri vardır.
 
+### <a name="notification-contact"></a>Bildirim ilgili kişisi
+
+Bildirim ilgili kişisi kayıtla ilgili kullanım bildirimlerini alır.
+
 ## <a name="activate-your-enrollment"></a>Kaydınızı etkinleştirme
 
 Hizmetinizi etkinleştirmek için başlangıçtaki kuruluş yöneticisi [https://ea.azure.com](https://ea.azure.com) adresindeki Azure EA portalını açar ve davet e-postasındaki e-posta adresini kullanarak oturum açar.
+
+EA yöneticisi olarak ayarlandıysanız, Azure EA portalında oturum açmak için etkinleştirme e-postasını almanız gerekmez. [https://ea.azure.com](https://ea.azure.com) adresine gidip e-posta adresinizi (iş veya okul e-posta adresi ya da Live ID) ve parolanızı kullanarak oturum açabilirsiniz.
 
 Birden fazla kaydınız varsa etkinleştirilecek bir kayıt seçin. Varsayılan olarak, yalnızca etkin kayıtlar gösterilir. Kayıt geçmişini görüntülemek için, Azure EA portalının sağ üst köşesindeki **Etkin** seçeneğinin işaretini kaldırın.
 

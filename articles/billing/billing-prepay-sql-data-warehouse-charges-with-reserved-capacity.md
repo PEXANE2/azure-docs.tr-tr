@@ -1,5 +1,5 @@
 ---
-title: Azure ayrılmış kapasitesi ile SQL Veri Ambarı ücretlerinden maliyet tasarrufu sağlama
+title: Azure ayrılmış kapasitesi ile SQL Veri Ambarı ücretlerinden tasarruf etme
 description: Para tasarrufu sağlamak için ayrılmış kapasite ile SQL Veri Ambarı ücretleri için nasıl maliyet tasarrufu yapacağınızı öğrenin.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 75e008a6a19baacec40a809530e3a1f624a33f2b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f6a6b37a8250fd794e7810f7da5a567e14c8bc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388729"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Ayrılmış kapasite ile SQL Veri Ambarı ücretlerinden maliyet tasarrufu sağlama
 

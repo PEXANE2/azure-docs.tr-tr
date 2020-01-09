@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 2ac2d552aed5b11eaf5a8e4708b2cabc33ba1bb3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d12e3b91dad2b7e7d28c6bd50fd62623e07e580b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449408"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Diğer hesaplardan Azure aboneliklerinin fatura sahipliğini alma
 
@@ -33,27 +33,45 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Sol taraftan **Fatura bölümleri**’ni seçin. Erişiminize bağlı olarak, bir faturalama hesabı veya faturalama profili seçmeniz gerekebilir. Ödeme hesabı veya faturalama profilinde **Fatura bölümleri**'ni seçin.
+3. Faturalama kapsamları sayfasında, aboneliklerin kullanıma ilişkin ücretleri ödemek için kullanılacak ödeme hesabını seçin. Ödeme hesabının **Microsoft Müşteri Sözleşmesi** türünde olması gerekir.
+
+    ![Portalda maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
+
+    > [!NOTE]
+    >
+    > Azure portalı, en son eriştiğiniz faturalama kapsamını anımsar ve Maliyet Yönetimi ve Faturalama sayfasına sonraki gelişinizde bunu görüntüler. Daha önce Maliyet Yönetimi ve Faturalama sayfasını ziyaret ettiyseniz faturalama kapsamı sayfasını görmezsiniz. Bu durumda, [doğru kapsamda](#check-for-access) olup olmadığınızı denetleyin. Aksi takdirde, bir Microsoft Müşteri Sözleşmesi’ne yönelik ödeme hesabını seçmek için [kapsamı değiştirin](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+
+4. Soldaki **Faturalama profilleri** seçeneğini belirleyin.
    
-   ![Fatura bölümlerinin seçilmesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Faturalama profili seçmeyi gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Listeden bir fatura bölümü seçin. Aboneliklerin sahipliğini üstlendiğinizde bu fatura bölümüne faturalanır.
+    > [!Note]
+    >
+    > Doğru faturalama kapsamında değilseniz Faturalama profilleri göremezsiniz. Microsoft Müşteri Sözleşmesi’nden ödeme hesabı seçip Faturalama profili belirlemeniz gerekir. Kapsam değiştirmeyi öğrenmek için bkz. [Azure portalında faturalama kapsamı değiştirme](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Ekle**’yi seçin.
+5. Listeden bir **Faturalama profili** seçin. Aboneliklerin sahipliğini üstlendiğinizde bu aboneliklere ilişkin kullanımlar bu faturalama profiline faturalanır.
+
+6. Sol taraftan **Fatura bölümleri**’ni seçin. 
+
+    ![Fatura bölümlerinin seçilmesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Listeden bir fatura bölümü seçin. Aboneliklerin sahipliğini üstlendiğinizde bu aboneliklere ilişkin kullanımlar faturalama profilinin faturasının bu bölümüne atanır.
+
+8. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Yeni istek ekle**’yi seçin.
  
-   ![Aktarım isteklerinin seçilmesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
+    ![Aktarım isteklerinin seçilmesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-6. Kendisinden fatura sahipliğini istediğiniz kullanıcının e-posta adresini girin. Kullanıcının bir Microsoft Çevrimiçi Hizmet Programı ödeme hesabında Hesap Yöneticisi veya Kurumsal Anlaşmada hesap sahibi olması gerekir. Daha fazla bilgi için bkz. [Ödeme hesaplarınızı Azure portalında görüntüleme](billing-view-all-accounts.md). **Aktarım isteği gönder**’i seçin.
+9. Kendisinden fatura sahipliğini istediğiniz kullanıcının e-posta adresini girin. Kullanıcının bir Microsoft Çevrimiçi Hizmet Programı ödeme hesabında Hesap Yöneticisi veya Kurumsal Anlaşmada hesap sahibi olması gerekir. Daha fazla bilgi için bkz. [Ödeme hesaplarınızı Azure portalında görüntüleme](billing-view-all-accounts.md). **Aktarım isteği gönder**’i seçin.
 
-   ![Aktarım isteği gönderme işlemini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
+    ![Aktarım isteği gönderme işlemini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
 
-7. Kullanıcı, aktarma isteğinizi gözden geçirme yönergelerini içeren bir e-posta alır.
+10. Kullanıcı, aktarma isteğinizi gözden geçirme yönergelerini içeren bir e-posta alır.
 
-   ![Aktarım isteğini gözden geçirme e-postasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
+    ![Aktarım isteğini gözden geçirme e-postasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
 
-8. Kullanıcı, aktarma isteğini onaylamak için e-postadaki bağlantıyı seçer ve yönergeleri izler.
+11. Kullanıcı, aktarma isteğini onaylamak için e-postadaki bağlantıyı seçer ve yönergeleri izler.
 
     ![Aktarım isteğini gözden geçirme e-postasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
 
@@ -63,16 +81,23 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Azure portalında maliyet yönetimi + faturalama aramasını gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
+3. Faturalama kapsamları sayfasında, aktarım isteğinin gönderildiği ödeme hesabını seçin.
 
-3. Sol taraftan **Fatura bölümleri**’ni seçin. Erişiminize bağlı olarak, bir faturalama hesabı veya faturalama profili seçmeniz gerekebilir. Ödeme hesabı veya faturalama profilinde **Fatura bölümleri**'ni seçin.
+4. Soldaki **Faturalama profilleri** seçeneğini belirleyin.
    
-   ![Fatura bölümlerinin seçilmesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Faturalama profili seçmeyi gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Listeden aktarım isteğini gönderdiğiniz fatura bölümünü seçin.
+5. Aktarım isteğinin gönderildiği **Faturalama profilini** seçin.
 
-5. Sol alt taraftaki **Aktarım istekleri**'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir:
+6. Sol taraftan **Fatura bölümleri**’ni seçin. 
+
+    ![Fatura bölümlerinin seçilmesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Aktarım isteğinin gönderildiği listeden fatura bölümünü seçin.
+
+8. Sol alt taraftaki **Aktarım istekleri**'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir:
 
     ![Aktarım isteklerinin listesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
@@ -95,9 +120,9 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
    |İptal edildi|Aktarım isteğine erişimi olan birisi isteği iptal etti|
    |Reddedildi|Kullanıcı aktarım isteğini reddetti|
 
-7. Ayrıntılarını görüntülemek için bir aktarım isteği seçin. Aktarım ayrıntıları sayfasında aşağıdaki bilgiler görüntülenir:
+9. Ayrıntılarını görüntülemek için bir aktarım isteği seçin. Aktarım ayrıntıları sayfasında aşağıdaki bilgiler görüntülenir:
    
-   ![Aktarılan aboneliklerin listesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
+    ![Aktarılan aboneliklerin listesini gösteren ekran görüntüsü](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
     
    |Sütun  |Tanım|
    |---------|---------|

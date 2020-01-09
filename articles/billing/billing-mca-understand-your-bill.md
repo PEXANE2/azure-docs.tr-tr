@@ -1,5 +1,5 @@
 ---
-title: Microsoft Müşteri Sözleşmesi faturanızdaki ücretleri anlama - Azure
+title: Microsoft Müşteri Sözleşmesi faturanızdaki ücretler - Azure
 description: Faturanızdaki ücretleri okumayı ve anlamayı öğrenin.
 author: jureid
 manager: jureid
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e9c74fd18bf80dfb8fa406912795fb53e655bd88
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b5dfffecbd2908e987b76f29b14937f0e50ce64f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389001"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Microsoft Müşteri Sözleşmesi faturanızdaki ücretleri anlama
 

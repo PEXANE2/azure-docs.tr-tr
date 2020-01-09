@@ -11,23 +11,23 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 12/19/2019
-  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
-  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.openlocfilehash: d094dce17f9f79b37bc5a226d756713f6e57be6a
+  ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75642481"
+  ms.lasthandoff: 01/06/2020
+  ms.locfileid: "75680656"
 highlightedContent:
   items:
+  - title: Resource Manager nedir?
+    itemType: overview
+    url: management/overview.md
   - title: Şablonlar nelerdir?
     itemType: overview
     url: templates/overview.md
   - title: İlk şablonunuzu oluşturma
     itemType: tutorial
     url: templates/template-tutorial-create-first-template.md
-  - title: Resource Manager nedir?
-    itemType: overview
-    url: management/overview.md
 conceptualContent:
   items:
   - title: Resource Manager şablonlarını dağıtma
@@ -40,10 +40,13 @@ conceptualContent:
       text: Başlangıç öğretici serisi
     - url: templates/template-syntax.md
       itemType: reference
-      text: Şablon dosya yapısı
+      text: Şablon söz dizimi
     - url: templates/template-functions.md
       itemType: reference
       text: Şablon işlevleri
+    - url: /azure/templates/
+      itemType: reference
+      text: Şablon başvurusu
     - url: templates/deploy-powershell.md
       itemType: how-to-guide
       text: Dağıtma
@@ -70,6 +73,9 @@ conceptualContent:
     - url: management/resource-providers-and-types.md
       itemType: concept
       text: Kaynak sağlayıcıları ve türleri
+    - url: management/azure-subscription-service-limits.md
+      itemType: concept
+      text: Abonelik ve hizmet sınırlamaları
     footerLink:
       url: management/index.yml
       text: Daha fazla göster
@@ -80,13 +86,13 @@ conceptualContent:
       text: Genel Bakış
     - url: managed-applications/publish-service-catalog-app.md
       itemType: tutorial
-      text: Hizmet kataloğu uygulaması yayımlama
+      text: Uygulamayı hizmet kataloğunda yayımlama
     - url: managed-applications/create-uidefinition-overview.md
       itemType: how-to-guide
-      text: Kullanıcı arabirimi tanımı oluşturma
+      text: Uygulama oluşturmaya yönelik portal bölmesini tanımlama
     - url: managed-applications/publish-marketplace-app.md
       itemType: tutorial
-      text: Market'e ekleme
+      text: Uygulamayı Market’e ekleme
     footerLink:
       url: managed-applications/index.yml
       text: Daha fazla göster

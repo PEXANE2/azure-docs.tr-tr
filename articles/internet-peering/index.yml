@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: İnternet eşlemesi belgeleri
+summary: Microsoft ile İnternet eşlemesi hakkında bilgi edinin.
+metadata:
+  title: İnternet eşlemesi belgeleri
+  titleSuffix: Azure
+  description: Microsoft ile eşleme hakkında bilgi edinin.
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773528"
+landingContent:
+- title: Internet eşlemesi hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Internet eşlemesi hakkında
+      url: overview.md
+    - text: Internet eşlemesi ve Eşleme Hizmeti
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: Eşleme ilkesi
+      url: policy.md
+    - text: Microsoft ile eşleme ayarlama önkoşulları
+      url: prerequisites.md
+    - text: İnternet eşlemesi hakkında SSS
+      url: faqs.md
+- title: başlarken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
+      url: howto-subscription-association-portal.md
+- title: Exchange eşlemesi
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exchange eşleme kılavuzu
+      url: walkthrough-exchange-all.md
+    - text: Portalı kullanarak bir Exchange eşlemesi oluşturma veya değiştirme
+      url: howto-exchange-portal.md
+    - text: Portalı kullanarak eski bir Exchange eşlemesini bir Azure kaynağına dönüştürme
+      url: howto-legacy-exchange-portal.md
+- title: Doğrudan eşleme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Doğrudan eşleme kılavuzu
+      url: walkthrough-direct-all.md
+    - text: Portalı kullanarak Doğrudan eşleme oluşturma veya değiştirme
+      url: howto-direct-portal.md
+    - text: Portalı kullanarak eski bir Doğrudan eşlemeyi bir Azure kaynağına dönüştürme
+      url: howto-legacy-direct-portal.md
+- title: Eşleme Hizmeti
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Eşleme Hizmeti hakkında SSS
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Eşleme Hizmeti iş ortağı kılavuzu
+      url: walkthrough-peering-service-all.md
+    - text: Portalı kullanarak Doğrudan eşleme üzerinde Eşleme Hizmeti’ni etkinleştirme
+      url: howto-peering-service-portal.md

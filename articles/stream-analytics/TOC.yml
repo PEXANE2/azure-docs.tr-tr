@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Blob özel yol desenleri
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Stream Analytics işinizi iyileştirin
+      items:
+        - name: Akış Birimlerini anlama ve ayarlama
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Sorgu performansını artırma
+          href: stream-analytics-parallelization.md
+        - name: Girişinizi yeniden bölümleme
+          href: repartition.md
+        - name: İşinizin aktarım hızını artırma
+          href: stream-analytics-scale-jobs.md
     - name: İşin durumları
       href: job-states.md
     - name: Pencere işlevleri
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: İşleri izleme - Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Ölçek
-      items:
-        - name: Akış birimleri ile ölçeklendirme
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Paralelleştirmesiyle ölçeklendirme
-          items:
-            - name: Sorgu paralelleştirmesi
-              href: stream-analytics-parallelization.md
-            - name: Aktarım hızını artırma
-              href: stream-analytics-scale-jobs.md
-        - name: ML işlevleriyle ölçeklendirme
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Yeniden bölümleme ile ölçeklendirme
-          href: repartition.md
     - name: Otomatikleştirme
       items:
         - name: .NET SDK’sını kullanma
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: İş diyagramını kullanarak hata ayıklama
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: ML işlevleriyle ölçeklendirme
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics Sorgu Dili
   items:
     - name: Yerleşik İşlevler

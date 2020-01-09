@@ -8,12 +8,14 @@
     - name: Azure Active Directory’deki yenilikler
       href: whats-new.md
 - name: Hızlı Başlangıçlar
+  expanded: true
   items:
     - name: Portala erişme ve kiracı oluşturma
       href: active-directory-access-create-new-tenant.md
     - name: Atanan üyeler ile gruplarınızı görüntüleme
       href: active-directory-groups-view-azure-portal.md
 - name: Kavramlar
+  expanded: true
   items:
     - name: Kimlik secure score’u
       href: identity-secure-score.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Avrupa müşterileri için kimlik verisi depolama
       href: active-directory-data-storage-eu.md
+    - name: Avustralya müşterileri için kimlik verisi depolama
+      href: active-directory-data-storage-australia.md
     - name: Microsoft 365 Kamu’daki yenilikler
       href: whats-new-microsoft-365-government.md
     - name: Azure AD İşlem başvurusu
@@ -97,6 +101,7 @@
         - name: Silinen bir kullanıcıyı geri yükleme
           href: active-directory-users-restore.md
 - name: Kaynaklar
+  expanded: true
   items:
     - name: Azure Active Directory için destek alma
       href: active-directory-troubleshooting-support-howto.md

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama - Azure
+title: Microsoft Müşteri Sözleşmesi için faturalamayı ayarlama - Azure
 description: Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama hakkında bilgi edinin.
 author: amberbhargava
 manager: amberb
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 5d01fa5f4bb7367bdd1939d77dc1f80bd4436765
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8855552ef4bc5e8135d1df62cca384b5ee14a02d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388355"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama
 
@@ -187,7 +187,7 @@ Ayarlamayı tamamlamak için hem yeni faturalama hesabına hem de Kurumsal Anla�
     - Yeni ödeme hesabında, Kurumsal Anlaşma hiyerarşinize karşılık gelen bir faturalandırma hiyerarşisi oluşturulur. Daha fazla bilgi için bkz. [Faturalandırma hiyerarşinizdeki değişiklikleri anlayın](#understand-changes-to-your-billing-hierarchy).
     - Kurumsal Anlaşma kaydınızdaki yöneticilere, kuruluşunuzun faturalandırmasını yönetmeye devam edebilmeleri için yeni ödeme hesabına erişim izni verilir.
     - Azure aboneliklerinizin faturaları yeni hesaba geçirilir. **Bu geçiş sırasında Azure hizmetleriniz etkilenmez. Herhangi bir kesinti olmadan çalışmaya devam ederler.**
-    - Azure Rezervasyonlarınız varsa avantajlar veya koşullar değişmeden yeni ödeme hesabınıza taşınır. 
+    - Azure Rezervasyonlarınız varsa avantajlar veya koşullar değişmeden yeni ödeme hesabınıza taşınır.
 
 4. Geçişinizin durumunu **Geçiş durumu** sayfasından izleyebilirsiniz.
 

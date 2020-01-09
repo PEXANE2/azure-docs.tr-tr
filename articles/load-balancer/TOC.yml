@@ -8,20 +8,28 @@
       href: load-balancer-standard-overview.md
 - name: Hızlı Başlangıç
   items:
-    - name: Standard Load Balancer oluşturma - Portal
-      href: quickstart-load-balancer-standard-public-portal.md
-    - name: Standard Load Balancer oluşturma - Azure CLI
-      href: quickstart-load-balancer-standard-public-cli.md
-    - name: Standard Load Balancer oluşturma - Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Standart Load Balancer oluşturma - Şablon
-      href: quickstart-load-balancer-standard-public-template.md
-    - name: Basic Load Balancer oluşturma - Portal
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: Basic Load Balancer oluşturma - Azure CLI
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: Basic Load Balancer oluşturma - Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
+    - name: Standart Load Balancer oluşturma
+      items:
+        - name: Portal
+          href: quickstart-load-balancer-standard-public-portal.md
+        - name: Azure CLI
+          href: quickstart-load-balancer-standard-public-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-standard-load-balancer-powershell.md
+        - name: Şablon
+          href: quickstart-load-balancer-standard-public-template.md
+    - name: Temel Yük Dengeleyici Oluşturma
+      items:
+        - name: Portal
+          href: quickstart-create-basic-load-balancer-portal.md
+        - name: Azure CLI
+          href: quickstart-create-basic-load-balancer-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-basic-load-balancer-powershell.md
+        - name: Şablon
+          href: load-balancer-get-started-internet-arm-template.md
+        - name: REST API
+          href: create-load-balancer-rest-api.md
 - name: Öğreticiler
   items:
     - name: Sanal makinelerin internet trafiğinde yük dengeleme
@@ -42,8 +50,16 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
-    - name: Sistem durumu araştırmaları
-      href: load-balancer-custom-probe-overview.md
+    - name: Sistem durumunu izleme
+      items:
+        - name: Sistem durumu araştırmaları
+          href: load-balancer-custom-probe-overview.md
+        - name: Standard Load Balancer ölçümleri ve tanılamaları
+          href: load-balancer-standard-diagnostics.md
+        - name: Temel Yük Dengeleyici için Azure İzleyici günlükleri
+          href: load-balancer-monitor-log.md
+        - name: REST ile Load Balancer ölçümleri alma
+          href: load-balancer-query-metrics-rest-api.md
     - name: Yüksek Kullanılabilirlik bağlantı noktaları
       href: load-balancer-ha-ports-overview.md
     - name: IPv6 desteği
@@ -58,72 +74,63 @@
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer ve Kullanılabilirlik Bölgeleri
       href: load-balancer-standard-availability-zones.md
-    - name: Standard Load Balancer ölçümleri ve tanılamaları
-      href: load-balancer-standard-diagnostics.md
     - name: Yerleşik güvenlik denetimleri
       href: load-balancer-security-controls.md
 - name: Nasıl yapılır
   items:
     - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma'
-      href: load-balancer-get-started-internet-az-portal.md
       items:
-        - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma (PowerShell)'
-          href: load-balancer-get-started-internet-az-powershell.md
-        - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma (CLI)'
+        - name: Portal
+          href: load-balancer-get-started-internet-az-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-az-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-az-powershell.md
     - name: 'Bölgesel, genel bir Standard Load Balancer oluşturma'
-      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
       items:
-        - name: 'Bölgesel, genel bir Standard Load Balancer oluşturma (PowerShell)'
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: 'Bölgesel olarak yedekli, genel bir Standard Load Balancer oluşturma (CLI)'
+        - name: Portal
+          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: Farklı kullanılabilirlik bölgelerindeki VM’lerin yükünü dengeleme (CLI)
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Bir bölge içerisindeki VM’lerin yükünü dengeleme (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Giden kuralları yapılandırma
       items:
-        - name: Giden kurallarını yapılandırma - CLI
+        - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
-        - name: Giden kurallarını yapılandırma - PowerShell
+        - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
-    - name: REST API kullanarak Azure Load Balancer oluşturma
-      href: create-load-balancer-rest-api.md
-    - name: Basic Load Balancer oluşturma (Şablon)
-      href: load-balancer-get-started-internet-arm-template.md
     - name: IPv6 ile genel Load Balancer oluşturma
-      href: load-balancer-ipv6-internet-ps.md
       items:
-        - name: IPv6 ile genel Load Balancer oluşturma (CLI)
+        - name: Azure CLI
           href: load-balancer-ipv6-internet-cli.md
-        - name: IPv6 ile genel Load Balancer oluşturma (Şablon)
+        - name: Azure PowerShell
+          href: load-balancer-ipv6-internet-ps.md
+        - name: Şablon
           href: load-balancer-ipv6-internet-template.md
     - name: İç Load Balancer yapılandırma
       items:
-        - name: İç Load Balancer yapılandırma (PowerShell)
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: İç Load Balancer yapılandırma (CLI)
+        - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
-        - name: İç Load Balancer yapılandırma (Şablon)
+        - name: Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Şablon
           href: load-balancer-get-started-ilb-arm-template.md
     - name: Yük Dengeleyici için TCP boşta kalma zaman aşımı yapılandırma
       href: load-balancer-tcp-idle-timeout.md
     - name: Load Balancer için dağıtım modunu yapılandırma
       href: load-balancer-distribution-mode.md
-    - name: Yük dengeleme hizmetlerini birleştirme
-      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: Birden fazla IP yapılandırması kullanma
       href: load-balancer-multiple-ip.md
       items:
-        - name: Birden fazla IP yapılandırması kullanma (CLI)
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
-        - name: Birden fazla IP yapılandırması kullanma (PowerShell)
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Azure Load Balancer için Azure İzleyici günlükleri
-      href: load-balancer-monitor-log.md
-    - name: REST ile Load Balancer ölçümleri alma
-      href: load-balancer-query-metrics-rest-api.md
     - name: İç Load Balancer için Yüksek Kullanılabilirliğe Sahip Bağlantı Noktalarını Yapılandırma
       href: load-balancer-configure-ha-ports.md
     - name: Bölgeler arasında taşıma
@@ -160,22 +167,6 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
-- name: İlgili
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Express Route
-      href: /azure/expressroute/
-    - name: Sanal Ağ
-      href: /azure/virtual-network/
-    - name: VPN Gateway
-      href: /azure/vpn-gateway/
-    - name: Sanal Makine
-      href: /azure/virtual-machines/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: DNS
-      href: /azure/dns/
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin
@@ -188,5 +179,5 @@
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Hizmet güncelleştirmeleri
+    - name: Ürün güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'

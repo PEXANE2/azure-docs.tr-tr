@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: Yansıtmalar
       href: knowledge-store-projection-overview.md
-    - name: Artımlı dizin oluşturma
+    - name: Artımlı zenginleştirme
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Nasıl yapılır kılavuzları
   items:
@@ -237,9 +237,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Dizin alanlarına eşleme
               href: cognitive-search-output-field-mapping.md
-            - name: Görüntülerdeki bilgileri işleme ve ayıklama
+            - name: Görüntülerdeki bilgileri ayıklama
               href: cognitive-search-concept-image-scenarios.md
-            - name: Artımlı dizin ayarlama
+            - name: Önbellek (artımlı) zenginleştirme
               href: search-howto-incremental-index.md
         - name: Özel beceriler
           items:
@@ -330,7 +330,11 @@
     - name: REST (Yönetim)
       href: /rest/api/searchmanagement
     - name: REST (Önizleme)
-      href: search-api-preview.md
+      items:
+        - name: API sürümü 2019-05-06-Preview
+          href: search-api-preview.md
+        - name: ResetSkills API’si
+          href: preview-api-resetskills.md
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.search/searchservices
     - name: OData dil başvurusu

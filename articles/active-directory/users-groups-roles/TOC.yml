@@ -31,6 +31,8 @@
       href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Grup tabanlı lisanslama ile ilgili temel bilgiler
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Gruplarla erişimi yönetme
+      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
@@ -80,8 +82,6 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Grupları yönetme
       items:
-        - name: Gruplarla erişimi yönetme
-          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Grup ve üye listelerinde arama yapma (önizleme)
           href: groups-members-owners-search.md
         - name: Grup oluşturma (Azure portalı)
@@ -122,9 +122,7 @@
           items:
             - name: Dinamik grup oluşturma
               href: groups-create-rule.md
-            - name: Üyelik kuralını güncelleştirme
-              href: groups-update-rule.md
-            - name: Dinamik grup kuralları ve söz dizimi
+            - name: Dinamik grup kuralları söz dizimi
               href: groups-dynamic-membership.md
             - name: Grup üyeliği türünü değiştirme
               href: groups-change-type.md

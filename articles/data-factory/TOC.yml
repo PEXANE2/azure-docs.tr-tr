@@ -84,6 +84,8 @@
       items:
         - name: Eşleme veri akışıyla verileri dönüştürme
           href: tutorial-data-flow.md
+        - name: Eşleme veri akışı video öğreticileri
+          href: data-flow-tutorials.md
         - name: Hazırlama veri akışıyla verileri hazırlama
           href: wrangling-data-flow-tutorial.md
     - name: Dış dönüşümler

@@ -108,6 +108,9 @@
     - name: Otomasyon
       tocHref: /azure/automation/
       topicHref: /azure/automation/
+    - name: İnternet Eşlemesi
+      tocHref: /azure/internet-peering/
+      topicHref: /azure/internet-peering/
     - name: Blok zinciri
       tocHref: /azure/blockchain/
       topicHref: /azure/blockchain/

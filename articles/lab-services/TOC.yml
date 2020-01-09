@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Laboratuvarınızı ölçeklendirme
           href: devtest-lab-scale-lab.md
+        - name: Laboratuvar VM’leri için yönetilen kimlikleri etkinleştirme
+          href: enable-managed-identities-lab-vms.md
         - name: Sanal makine temellerini yönetme
           items:
             - name: Azure Market görüntülerini yapılandırma
