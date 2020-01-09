@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365351"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki tarih saat değerleriyle çalışma
 
@@ -31,11 +31,11 @@ Timespans bir Decimal ve ardından bir zaman birimi tarafından ifade edilir:
 
 |tirme   | zaman birimi    |
 |:---|:---|
-|TID           | günündeki          |
+|d           | gün          |
 |h           | saat         |
-|m           | dakikaya       |
-|s           | İkincisi       |
-|SWM          | milisaniy  |
+|m           | dakika       |
+|s           | saniye       |
+|ms          | milisaniye  |
 |mikrosaniye ölçeğinde | mikrosaniye ölçeğinde  |
 |sayaç        | nanosaniyelik   |
 
@@ -128,7 +128,7 @@ Event
 
 Bu sorgu aşağıdaki sonuçları üretir:
 
-|timestamp|biriktirme|
+|timestamp|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7\.136|
 |2018-07-29T00:00:00.000|12.315|
@@ -152,7 +152,7 @@ Event
 | Veri türlerini Dönüştür | [totarihsaat](/azure/kusto/query/todatetimefunction)  [ToTimeSpan](/azure/kusto/query/totimespanfunction)  |
 | Değerin boyutunu bin boyutuna yuvarla | [bölme](/azure/kusto/query/binfunction) |
 | Belirli bir tarih veya saat alın | [](/azure/kusto/query/agofunction) [hemen](/azure/kusto/query/nowfunction) önce   |
-| Değerin bir kısmını al | [datetime_part](/azure/kusto/query/datetime-partfunction) [GetMonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [GetYear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [DayOfWeek](/azure/kusto/query/dayofweekfunction) [DayOfYear](/azure/kusto/query/dayofyearfunction) [WeekOfYear](/azure/kusto/query/weekofyearfunction) |
+| Değerin bir kısmını al | [datetime_part](/azure/kusto/query/datetime-partfunction) [GetMonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [DayOfWeek](/azure/kusto/query/dayofweekfunction) [DayOfYear](/azure/kusto/query/dayofyearfunction) [WeekOfYear](/azure/kusto/query/weekofyearfunction) |
 | Göreli tarih değeri alın  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [ENDOFYEAR](/azure/kusto/query/endofmonthfunction) [](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [STARTOFMONTH](/azure/kusto/query/startofmonthfunction) [STARTOFYEAR](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Sonraki adımlar

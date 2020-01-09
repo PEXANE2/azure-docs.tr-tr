@@ -1,28 +1,26 @@
 ---
 title: İzleme ve Azure Stream Analytics işleri programlama yoluyla yönetme
 description: Bu makalede, Stream Analytics işleri REST API'leri, Azure SDK veya PowerShell oluşturulan program aracılığıyla izlemek açıklar.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: bf84a5b89e4769e37c45714a30d5d98300a4328d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431663"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Program aracılığıyla bir Stream Analytics işi İzleyicisi oluşturma
 
 Bu makalede, bir Stream Analytics işi için izlemeyi etkinleştirmek gösterilmektedir. REST API'leri, Azure SDK veya PowerShell oluşturulan bir Stream Analytics işlerini izleme varsayılan olarak etkin yok. El ile Azure portalında iş izleme sayfasına giderek ve etkinleştir düğmesine tıklayarak etkinleştirebilmeniz için veya bu makaledeki adımları izleyerek bu işlemi otomatikleştirebilirsiniz. İzleme verilerini, Azure portalını kullanarak Stream Analytics işine ilişkin ölçümleri alanında gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu işlem başlamadan önce aşağıdaki önkoşullara sahip olmalıdır:
+Bu işleme başlamadan önce, aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * Visual Studio 2019 veya 2015
 * [Azure .NET SDK'sı](https://azure.microsoft.com/downloads/) indirilmesi ve yüklenmesi
@@ -137,7 +135,7 @@ Aşağıdaki kod gereken değişkenleri ve yönetim istemcilerin ayarlar.
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Var olan bir Stream Analytics işi için izlemeyi etkinleştir
 
-Aşağıdaki kod etkinleştirir için izleme bir **mevcut** Stream Analytics işi. Kodun ilk bölümünü belirli bir Stream Analytics işi hakkında bilgi almak için Stream Analytics hizmetinde bir GET isteği yapar. Kullandığı *kimliği* (GET istekten alınan) özelliği için Put yöntemini PUT gönderir kod yarısını istek Insights hizmeti için Stream Analytics işi için izlemeyi etkinleştirmek için ikinci bir parametre olarak.
+Aşağıdaki kod etkinleştirir için izleme bir **mevcut** Stream Analytics işi. Kodun ilk bölümünü belirli bir Stream Analytics işi hakkında bilgi almak için Stream Analytics hizmetinde bir GET isteği yapar. Stream Analytics işi için izlemeyi etkinleştirmek üzere öngörülere bir PUT isteği gönderen ve kodun ikinci yarısında bulunan *ID* ÖZELLIĞINI (Get isteğinden alınan) bir parametre olarak kullanır.
 
 > [!WARNING]
 > Daha önce farklı Stream Analytics işi, Azure portalından veya programlama aracılığıyla için izleme etkinleştirdiyseniz, kod, aşağıda **olduğunda kullanılan aynı depolama hesabı adını sağlamanızı öneririz, daha önce izleme etkin.**

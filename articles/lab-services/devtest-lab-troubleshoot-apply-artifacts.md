@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807894"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456981"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs sanal makinesine yapıtlar uygulanırken sorunları giderme
 Yapıları bir sanal makineye uygulamak çeşitli nedenlerle başarısız olabilir. Bu makale, olası nedenleri belirlemenize yardımcı olmak için bazı yöntemlerle size rehberlik eder.
@@ -66,10 +66,10 @@ Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayı
     - Etkinlik günlüğüne laboratuvar VM sayfası gezinti çubuğundan erişebilirsiniz. Bunu seçtiğinizde, **sanal makineye yapıtları uygulama** (yapıtları Uygula işlemi doğrudan tetikleolduysa) veya **sanal makineler ekleme veya değiştirme** (yapıtlar işlemi VM oluşturma işleminin bir parçasıysa) için bir giriş görürsünüz.
     - Bu girişlerin altındaki hataları arayın. Bazen hata buna uygun şekilde etiketlenmez ve her bir girdiyi araştırmanız gerekir.
     - Her girişin ayrıntılarını incelerken, JSON yükünün içeriğini gözden geçirdiğinizden emin olun. Bu belgenin altında bir hata görebilirsiniz.
-- **Yapıt yürütülmeye çalışılırken**. Bu, ağ veya depolama sorunlarından dolayı olabilir. Ayrıntılar için bu makalenin devamındaki ilgili bölüme bakın. Ayrıca, betiğin yazıldığı gibi bir durum da oluşabilir. Örnek:
+- **Yapıt yürütülmeye çalışılırken**. Bu, ağ veya depolama sorunlarından dolayı olabilir. Ayrıntılar için bu makalenin devamındaki ilgili bölüme bakın. Ayrıca, betiğin yazıldığı gibi bir durum da oluşabilir. Örneğin:
     - Bir PowerShell betiği **zorunlu parametrelere**sahiptir, ancak kullanıcının boş bırakmasını sağladığından veya artifactfile. JSON tanım dosyasında özellik için varsayılan bir değer olmadığından, bu değere bir değer geçirilemez. Komut dosyası, Kullanıcı girişi beklediği için askıda kalacak.
     - Bir PowerShell betiği, yürütmenin parçası olarak **Kullanıcı girişi gerektirir** . Betiklerin, herhangi bir kullanıcı müdahalesi gerektirmeden sessizce çalışacak şekilde yazılması gerekir.
-- **VM aracısının hazırlanmaya uzun sürme**. VM ilk başlatıldığında veya özel Betik uzantısı ilk kez, yapıtları uygulamak için isteği sunacak şekilde yüklendiğinde, VM, VM Aracısı 'nı yükseltmeyi veya VM aracısının başlamasını beklemek isteyebilir. VM aracısının başlatılması uzun süren bir hizmet olabilir. Bu gibi durumlarda, daha fazla sorun giderme için bkz. [Azure sanal makine aracısına genel bakış](/virtual-machines/extensions/agent-windows.md) .
+- **VM aracısının hazırlanmaya uzun sürme**. VM ilk başlatıldığında veya özel Betik uzantısı ilk kez, yapıtları uygulamak için isteği sunacak şekilde yüklendiğinde, VM, VM Aracısı 'nı yükseltmeyi veya VM aracısının başlamasını beklemek isteyebilir. VM aracısının başlatılması uzun süren bir hizmet olabilir. Bu gibi durumlarda, daha fazla sorun giderme için bkz. [Azure sanal makine aracısına genel bakış](../virtual-machines/extensions/agent-windows.md) .
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Betik nedeniyle yapıtın askıda görünüp göründüğünü doğrulamak için
 
@@ -101,7 +101,7 @@ Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayı
     Bu örnekte, bir sinyal gönderildiği için VM Aracısı başlangıç zamanının 10 dakika ve 20 saniye sürdüğünü görebilirsiniz. Bu durumda, OOBE hizmetinin başlaması uzun sürüyor.
 
 > [!TIP]
-> Azure uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](/virtual-machines/extensions/overview.md).
+> Azure uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](../virtual-machines/extensions/overview.md).
 
 ## <a name="storage-errors"></a>Depolama hataları
 DevTest Labs, bir laboratuvarın önbellek yapıtları için oluşturulan depolama hesabına erişmesi gerekir. DevTest Labs bir yapıt uygularsa, yapı yapılandırmasını ve dosyalarını yapılandırılan depolardan okur. Varsayılan olarak, DevTest Labs **ortak yapıt**deposuna erişimi yapılandırır.

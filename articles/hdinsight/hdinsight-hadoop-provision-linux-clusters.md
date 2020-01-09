@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435570"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını içeren kümeler ayarlayın
 
@@ -57,7 +57,7 @@ Ekrandaki yönergeleri izleyin. Ayrıntılar aşağıda verilmiştir:
 
 ## <a name="resource-group-name"></a>Kaynak grubu adı
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) , Azure Kaynak grubu olarak adlandırılan, uygulamanızdaki kaynaklarla bir grup olarak çalışmanıza yardımcı olur. Uygulamanıza yönelik tüm kaynakları tek bir eşgüdümlü işlemle dağıtabilir, güncelleştirebilir, izleyebilir veya silebilirsiniz.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) , Azure Kaynak grubu olarak adlandırılan, uygulamanızdaki kaynaklarla bir grup olarak çalışmanıza yardımcı olur. Uygulamanıza yönelik tüm kaynakları tek bir eşgüdümlü işlemle dağıtabilir, güncelleştirebilir, izleyebilir veya silebilirsiniz.
 
 ## <a name="cluster-types"></a>Küme türleri ve yapılandırma
 
@@ -108,7 +108,7 @@ SSH Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 * İzin verilen özel karakterler: _ ve @
 * Karakterlere izin verilmiyor: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ boşluk
 * En fazla uzunluk: 64
-* Ayrılmış adlar: Hadoop, kullanıcılar, Oozie, Hive, mapred, ambarı-qa, Zookeeper, tez, Ise, Sqoop, Yarn, hcat, AMS, HBase, fırtınası, yönetici, yönetici, Kullanıcı, Kullanıcı1, test, kullanıcı2, test1, User3, admin1, 1, 123, a, ACTUser, adm, Admin2, ASPNET, Backup, Console, David, Konuk, John, Owner, root, Server, SQL, support, SUPPORT_388945a0, sys, test2, test3, User4, user5, Spark
+* Ayrılmış adlar: Hadoop, kullanıcılar, Oozie, Hive, mapred, ambarı-qa, Zookeeper, tez, Ise, Sqoop, Yarn, hcat, AMS, HBase, fırtınası, yönetici, yönetici, Kullanıcı, Kullanıcı1, test, kullanıcı2, test1, User3, admin1, 1, 123, a, ACTUser, adm, Admin2, ASPNET, Backup, Console, David, Konuk, John, Owner, root, Server, SQL, support, support_388945a0, sys, test2, test3, User4, user5, Spark
 
 Kurumsal güvenlik paketi, HDInsight 'ı Active Directory ve Apache Ranger ile tümleştirmenize olanak tanır. Kurumsal güvenlik paketi kullanılarak birden çok Kullanıcı oluşturulabilir.
 
@@ -226,7 +226,7 @@ Farklı SDK 'Ları kullanarak bir küme oluştururken veya Azure PowerShell kull
 > [!IMPORTANT]  
 > Bir kümede 32 ' den fazla çalışan düğümüne ihtiyacınız varsa, en az 8 çekirdek ve 14 GB RAM içeren bir baş düğüm boyutu seçmeniz gerekir.
 
-Daha fazla bilgi için bkz. [sanal makineler Için boyutlar](../virtual-machines/windows/sizes.md). Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight).
+Daha fazla bilgi için [sanal makine boyutları](../virtual-machines/windows/sizes.md). Çeşitli boyutlardaki fiyatlar hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight).
 
 ## <a name="classic-cluster-setup"></a>Klasik küme kurulumu
 
@@ -254,19 +254,19 @@ Apache Mahout ve basamaklı gibi bazı yerel Java bileşenleri, küme üzerinde 
 
 Bazen, oluşturma işlemi sırasında aşağıdaki yapılandırma dosyalarını yapılandırmak isteyebilirsiniz:
 
-* Clusterıdentity. xml
+* clusterIdentity.xml
 * Core-site. xml
 * Gateway. xml
 * HBase-env. xml
 * HBase-site. xml
-* HDFS-site. xml
+* hdfs-site.xml
 * Hive-env. xml
 * Hive-site. xml
 * mapred-site
-* Oozie-site. xml
+* oozie-site.xml
 * Oozie-env. xml
-* Storm-site. xml
-* Tez-site. xml
+* storm-site.xml
+* tez-site.xml
 * webhcat-site. xml
 * Yarn-site. xml
 

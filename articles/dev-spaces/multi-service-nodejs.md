@@ -3,14 +3,14 @@ title: 'Birden çok bağımlı hizmet çalıştırma: node. js & Visual Studio C
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Bu öğreticide, Azure Kubernetes hizmetinde Multi-Service Node. js uygulamasında hata ayıklamak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 357a03e154e3c0146d3275e8cba64bc2d966f5b8
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438302"
 ---
 # <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: node. js ve Azure Dev Spaces ile Visual Studio Code
 
@@ -26,7 +26,7 @@ Bu bölümde `mywebapi` adlı ikinci bir hizmet oluşturacak ve bu hizmetin `web
 Bu kılavuz için `mywebapi` `samples` adlı bir klasör altında zaten örnek koda sahip olmanız gerekir (yoksa, GitHub deposunu indirmek için https://github.com/Azure/dev-spaces ' e gidin ve **Kopyala veya indir** ' i seçin.) Bu bölümün kodu `samples/nodejs/getting-started/mywebapi`.
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
-1. `mywebapi`Ayrı bir VS Code penceresinde klasörünü açın.
+1. *Ayrı bir VS Code penceresinde*`mywebapi` klasörünü açın.
 1. **Komut Paleti**'ni açın (**Görünüm | Komut Paleti** menüsünü kullanarak) ve otomatik tamamlama özelliğini kullanarak komutu yazın ve seçin: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Bu komut, projeyi dağıtım için yapılandıran `azds prep` komutuyla karıştırılmamalıdır.
 1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. Hata ayıklama konsolunda *80 numaralı bağlantı noktasında dinleme* yapıldığında bu dosyanın size hazırlandığından emin olacaksınız.
 1. Uç nokta URL'sini not alın; `http://localhost:<portnumber>` benzeri bir URL olacaktır. **İpucu: VS Code durum çubuğu turuncu olarak açılır ve tıklatılabilir bir URL görüntüler.** Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamınızda çalışıyordur. Bunun localhost adresi olmasının nedeni `mywebapi` hizmetinin hiçbir genel uç nokta tanımlamamış olması ve buna yalnızca Kubernetes örneğinin içinden erişilebilmesidir. Size rahatlık sağlamak ve yerel makinenizden özel hizmetle etkileşimi kolaylaştırmak için, Azure Dev Spaces Azure'da çalıştırılan kapsayıcıya geçici bir SSH tüneli oluşturur.
@@ -41,7 +41,7 @@ Bu kılavuz için `mywebapi` `samples` adlı bir klasör altında zaten örnek k
     var request = require('request');
     ```
 
-3. *GET işleyicisinin kodunu*değiştirin`/api`. İsteği işlerken, o da `mywebapi` hizmetine bir çağrı yapar ve her iki hizmetten de sonuçları döndürür.
+3. `/api` GET işleyicisinin kodunu *değiştirin*. İsteği işlerken, o da `mywebapi` hizmetine bir çağrı yapar ve her iki hizmetten de sonuçları döndürür.
 
     ```javascript
     app.get('/api', function (req, res) {
@@ -56,7 +56,7 @@ Bu kılavuz için `mywebapi` `samples` adlı bir klasör altında zaten örnek k
        });
     });
     ```
-   1. *sonundaki* satırını `server.close()`kaldırma`server.js`
+   1. `server.js` sonundaki `server.close()` satırını *kaldırma*
 
 Önceki kod örneğinde `azds-route-as` üst bilgisi gelen istekten giden isteğe iletilmektedir. Daha sonra bunun takımlara işbirliğine dayalı geliştirme açısından nasıl yardımcı olduğunu göreceksiniz.
 

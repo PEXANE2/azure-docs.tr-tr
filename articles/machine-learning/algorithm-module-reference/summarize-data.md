@@ -1,7 +1,7 @@
 ---
-title: Verileri özetleme
-titleSuffix: Azure Machine Learning service
-description: Bir veri kümesindeki sütunlar için temel bir açıklayıcı istatistik raporu oluşturmak üzere Azure Machine Learning hizmetinde özetleme verileri modülünü nasıl kullanacağınızı öğrenin.
+title: Verileri Özetleme
+titleSuffix: Azure Machine Learning
+description: Bir veri kümesindeki sütunlar için temel bir açıklayıcı istatistik raporu oluşturmak üzere Azure Machine Learning ' de özetleme verileri modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428448"
 ---
-# <a name="summarize-data"></a>Verileri özetleme
+# <a name="summarize-data"></a>Verileri Özetleme
 
 Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
@@ -53,13 +53,13 @@ Modülden rapor aşağıdaki istatistikleri içerebilir.
 |**Benzersiz değer sayısı**|Sütundaki benzersiz değer sayısı|
 |**Eksik değer sayısı**|Sütundaki benzersiz değer sayısı|
 |**Min**|Sütundaki en düşük değer|  
-|**Biçimlendir**|Sütundaki en yüksek değer|
+|**en fazla**|Sütundaki en yüksek değer|
 |**Ortası**|Tüm sütun değerlerinin ortalaması|
 |**Ortalama sapma**|Sütun değerlerinin ortalama sapması|
 |**1. DÖRTTEBİRLİK**|İlk dörttebir değer|
-|**Ortanca**|Ortanca sütun değeri|
+|**ORTANCA**|Ortanca sütun değeri|
 |**3. DÖRTTEBİRLİK**|Üçüncü dörttebir değer|
-|**Modundaysa**|Sütun değerlerinin modu|
+|**Mode**|Sütun değerlerinin modu|
 |**Aralık**|Maksimum ve minimum değerler arasındaki değer sayısını temsil eden tamsayı|
 |**Örnek varyans**|Sütun varyansı; bkz. nota|
 |**Örnek standart sapması**|Sütun için standart sapma; bkz. nota|
@@ -73,4 +73,4 @@ Modülden rapor aşağıdaki istatistikleri içerebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın.  
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.  

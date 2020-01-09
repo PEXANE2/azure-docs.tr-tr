@@ -1,44 +1,35 @@
 ---
-title: Windows üzerinde Azure Service Fabric Linux kümesi ayarlama | Microsoft Docs
-description: Bu makalede, Windows geliştirme makineler üzerinde çalışan Service Fabric Linux kümelerinde ayarlama ele alınmaktadır. Bu platform geliştirme için yararlıdır.
-services: service-fabric
-documentationcenter: .net
+title: Windows 'da Azure Service Fabric Linux kümesi ayarlama
+description: Bu makalede, Windows geliştirme makinelerinde çalışan Linux kümelerinin Service Fabric nasıl ayarlanacağı ele alınmaktadır. Bu, özellikle platformlar arası geliştirme için yararlıdır.
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 806e77a928d25e30aed24147525f74507bc32795
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462985"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows Geliştirici makinenizde Linux Service Fabric kümesi ayarlama
 
-Bu belge, Windows geliştirme makinelerinde yerel Linux Service Fabric ayarlama ele alınmaktadır. Yerel Linux kümesi ayarlama, hızlı bir şekilde Linux kümeleri için hedeflenen uygulamaları test etmek kullanışlıdır ancak bir Windows makinede geliştirilir.
+Bu belgede, Windows geliştirme makinelerinde yerel bir Linux Service Fabric ayarlama ele alınmaktadır. Yerel bir Linux kümesi ayarlamak, Linux kümelerine hedeflenmiş ancak bir Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için kullanışlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
-Service Fabric Linux tabanlı kümeler, Windows üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
+## <a name="prerequisites"></a>Ön koşullar
+Linux tabanlı Service Fabric kümeleri Windows üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM
 * [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)'ın en son sürümü
-* Docker, Linux modunda çalıştırılması gerekir
+* Docker, Linux modunda çalışıyor olmalıdır
 
 >[!TIP]
-> * Resmi Docker belirtilen adımları takip edebilirsiniz [belgeleri](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) , Windows Docker yüklemek için. 
+> * Windows 'a Docker yüklemek için resmi Docker [belgelerinde](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) bahsedilen adımları izleyebilirsiniz. 
 > * Yüklemeyi tamamladıktan sonra, [burada](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine) anlatılan adımları izleyerek yüklemeyi doğru yaptığınızı onaylayın
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Yerel bir kapsayıcı oluşturma ve Service Fabric’i ayarlama
-Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde çalıştırılan bir service fabric kümesi için PowerShell'de aşağıdaki adımları uygulayın:
+Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümesi çalıştırmak için PowerShell 'de aşağıdaki adımları gerçekleştirin:
 
 
 1. Ana bilgisayarınızda Docker daemon yapılandırmasını aşağıdakiyle güncelleştirin ve Docker daemon programını yeniden başlatın: 
@@ -49,7 +40,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde çalıştırılan bir ser
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Güncelleştirmek için tavsiye edilir - Docker simgesi Git yoludur > Ayarlar > Daemon > Gelişmiş ve orada güncelleştirin. Ardından, değişikliklerin etkili olması Docker Daemon programını yeniden başlatın. 
+    Güncelleştirme için tavsiye edilen yöntem, Docker simgesine > Ayarlar > Daemon > Gelişmiş ' e gidin ve orada güncelleştirin. Sonra, değişikliklerin etkili olması için Docker Daemon programını yeniden başlatın. 
 
 2. Service Fabric Görüntünüzü derlemek için yeni bir dizinde `Dockerfile` adlı bir dosya oluşturun:
 
@@ -104,12 +95,12 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde çalıştırılan bir ser
     docker logs sftestcluster
     ```
 
-6. Adım 5 başarıyla tamamlandıktan sonra gidebilirsiniz ``http://localhost:19080`` , Windows ve, Service Fabric gezginini görebilirsiniz olacaktır. Bu noktada, Windows Geliştirici makinenizde herhangi bir aracı kullanarak bu kümeye bağlanın ve Linux Service Fabric kümeleri için hedeflenen uygulamayı dağıtma. 
+6. 5\. adım başarıyla tamamlandıktan sonra, Windows ``http://localhost:19080`` adresine giderek Service Fabric Gezgini ' ni görebileceksiniz. Bu noktada, Windows Geliştirici makinenizden herhangi bir aracı kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümelerine hedeflenmiş uygulamayı dağıtabilirsiniz. 
 
     > [!NOTE]
     > Eclipse eklentisi Windows üzerinde şu anda desteklenmemektedir. 
 
-7. İşiniz bittiğinde, durdurun ve şu komutla kapsayıcıyı temizleme:
+7. İşiniz bittiğinde kapsayıcıyı şu komutla durdurun ve temizleyin:
 
     ```powershell 
     docker rm -f sftestcluster
@@ -122,8 +113,8 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde çalıştırılan bir ser
  * DNS hizmeti çalışmıyor ve desteklenmiyor [Sorun No. 132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Kullanmaya başlama [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
-* Diğer [Java örnekleri](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Tutulma](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) ile çalışmaya başlama
+* Diğer [Java örneklerine](https://github.com/Azure-Samples/service-fabric-java-getting-started) göz atın
 
 
 <!-- Image references -->

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443593"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 'de Windows yeniden başlatma döngüsü
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesinde (VM) karşılaşabileceğiniz yeniden başlatma döngüsü açıklanır.
@@ -62,7 +62,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
 
 4. Kurtarma VM 'sinde, Windows kayıt defteri Düzenleyicisi 'Ni (regedit) açın.
 
-5. **HKEY_LOCAL_MACHINE** anahtarını seçin ve menüden **Dosya** > **yükleme Hive** ' yi seçin.
+5. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden > **dosyayı** **Hive yükle** ' yi seçin.
 
 6. **\Windows\system32\config** klasöründeki sistem dosyasına gidin.
 
@@ -86,7 +86,7 @@ Bu sorunu çözmek için, [işletim sistemi diskini yedekleyin](../windows/snaps
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. **Brokensystem** anahtarını seçin ve menüden **Dosya** > **yükleme Hive** öğesini seçin.
+13. **Brokensystem** anahtarını seçin ve sonra menüden > **dosyayı** **Kaldır** ' ı seçin.
 
 14. İşletim sistemi diskini sorun giderme VM 'sinden ayırın.
 

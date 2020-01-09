@@ -1,5 +1,5 @@
 ---
-title: Web görünümlerini & tarayıcıları özelleştirme | Mavisi
+title: Web görünümleri & tarayıcıları özelleştirme (MSAL iOS/macOS) | Mavisi
 titleSuffix: Microsoft identity platform
 description: MSAL iOS/macOS tarayıcı deneyimini kullanıcıları oturum açmak üzere özelleştirmeyi öğrenin.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5dbdadc6afa3a6822a76fdcecdfcaa6f2ad8c98
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f409ff519c699ed712ec05213979d9c3308d4197
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424579"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Nasıl yapılır: iOS/macOS için tarayıcıları ve Web görünümlerini özelleştirme
 
@@ -66,10 +66,10 @@ Kullandığınız tarayıcı, tanımlama bilgilerini paylaşma nedeniyle SSO den
 
 | Teknoloji    | Tarayıcı türü  | iOS kullanılabilirliği | macOS kullanılabilirliği | Tanımlama bilgilerini ve diğer verileri paylaşır  | MSAL kullanılabilirliği | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Yes | Yalnızca iOS | w/Safari örnekleri
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Yes | Yalnızca iOS |  w/Safari örnekleri
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Evet | Yalnızca iOS | w/Safari örnekleri
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Evet | Yalnızca iOS |  w/Safari örnekleri
 | [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Sistem | iOS11 ve yukarı | Yok | Hayır | Yalnızca iOS | Hayır * *
-| **SFSafariViewController** | Sistem | iOS10 | Yok | Yes | Yalnızca iOS |  w/Safari örnekleri
+| **SFSafariViewController** | Sistem | iOS10 | Yok | Evet | Yalnızca iOS |  w/Safari örnekleri
 | **WKWebView**  | Uygulama içi | iOS8 ve yukarı | macOS 10,10 ve yukarı | Hayır | iOS ve macOS | Hayır * *
 
 \* * SSO 'nun çalışması için, belirteçlerin uygulamalar arasında paylaşılması gerekir. Bu, bir belirteç önbelleği veya iOS için Microsoft Authenticator gibi aracı uygulaması gerektirir.
@@ -88,7 +88,7 @@ Her istek, `acquireTokenWithParameters:completionBlock:` API 'sine geçirmeden �
 
 Ayrıca, MSAL, `MSALInteractiveTokenParameters.webviewParameters.customWebView` özelliğini ayarlayarak özel bir `WKWebView` geçirmeyi destekler.
 
-Örnek:
+Örneğin:
 
 Objective-C
 ```objc

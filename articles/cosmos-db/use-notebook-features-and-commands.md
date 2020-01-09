@@ -4,23 +4,23 @@ description: Azure Cosmos DB yerleşik not defterlerini kullanarak genel işleml
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 12/07/2019
 ms.author: dech
-ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f5ab1491c8561c90b06374a0a58f160cbcdd1cad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444643"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Azure Cosmos DB yerleşik Not defteri komutlarını ve özelliklerini kullanın
 
-Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi analiz etmenize ve görselleştirmenize olanak tanır. Bu makalede, yerleşik Not defteri komutlarının ve özelliklerinin genel işlemleri yapmak için nasıl kullanılacağı açıklanır.
+Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi analiz etmenize ve görselleştirmenize olanak tanır. Bu makale, ortak işlemleri gerçekleştirmek için yerleşik not defteri komutlarını kullanmayı açıklar.
 
 ## <a name="install-a-new-package"></a>Yeni bir paket yükler
 Azure Cosmos hesaplarınız için Not defteri desteğini etkinleştirdikten sonra, yeni bir not defteri açıp bir paket yükleyebilirsiniz.
 
-Yeni bir kod hücresinde, istenen Python paketiyle değiştirerek ``PackageToBeInstalled`` aşağıdaki kodu ekleyin ve çalıştırın.
+Yeni bir kod hücresinde, istenen Python paketiyle ``PackageToBeInstalled`` değiştirerek aşağıdaki kodu ekleyin ve çalıştırın.
 ```python
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
@@ -32,14 +32,14 @@ Bu paket, Azure Cosmos hesap çalışma alanındaki herhangi bir not defterinden
 
 ## <a name="run-a-sql-query"></a>SQL sorgusu çalıştırma
 
-Bir [SQL sorgusunu](sql-query-getting-started.md) hesabınızdaki ``%%sql`` herhangi bir kapsayıcıya karşı çalıştırmak için Magic komutunu kullanabilirsiniz. Sözdizimini kullanın:
+Hesabınızdaki herhangi bir kapsayıcıya karşı bir [SQL sorgusu](sql-query-getting-started.md) çalıştırmak için ``%%sql`` Magic komutunu kullanabilirsiniz. Sözdizimini kullanın:
 
 ```bash
 %%sql --database {database_id} --container {container_id}
 {Query text}
 ```
 
-- Ve ``{database_id}`` ' ``{container_id}`` i, Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. Ve bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür. ``--container`` ``--database``
+- ``{database_id}`` ve ``{container_id}`` değerini Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database`` ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır.
 
 Örneğin: 
@@ -47,18 +47,18 @@ Bir [SQL sorgusunu](sql-query-getting-started.md) hesabınızdaki ``%%sql`` herh
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
-Not ```%%sql?``` defterindeki SQL Magic komutunun Yardım belgelerini görmek için bir hücrede çalıştırın.
+Not defterindeki SQL Magic komutu için Yardım belgelerini görmek üzere hücrede ```%%sql?``` çalıştırın.
 
 ## <a name="run-a-sql-query-and-output-to-a-pandas-dataframe"></a>Bir Pandas DataFrame 'e SQL sorgusu ve çıkışı çalıştırma
 
-Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)'e aktarabilirsiniz. Sözdizimini kullanın: 
+Bir ``%%sql`` sorgusunun sonuçlarını [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dataframe)'e aktarabilirsiniz. Sözdizimini kullanın: 
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output {outputDataFrameVar}
 {Query text}
 ```
-- Ve ``{database_id}`` ' ``{container_id}`` i, Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. Ve bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür. ``--container`` ``--database``
-- Sonuçları ``{outputDataFrameVar}`` içerecek dataframe değişkeninin adıyla değiştirin.
+- ``{database_id}`` ve ``{container_id}`` değerini Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database`` ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
+- ``{outputDataFrameVar}``, sonuçları içerecek olan DataFrame değişkeninin adıyla değiştirin.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır. 
 
 Örneğin:
@@ -82,27 +82,62 @@ df_cosmos.head(10)
 8   Viewed  33.00   Tuvalu  Red Top
 9   Viewed  14.00   Cape Verde  Flip Flop Shoes
 ```
+## <a name="upload-json-items-to-a-container"></a>JSON öğelerini bir kapsayıcıya yükleme
+Bir JSON dosyasındaki verileri belirtilen Azure Cosmos kapsayıcısına yüklemek için ``%%upload`` Magic komutunu kullanabilirsiniz. Öğeleri karşıya yüklemek için aşağıdaki komutu kullanın:
+
+```bash
+%%upload --databaseName {database_id} --containerName {container_id} --url {url_location_of_file}
+```
+
+- ``{database_id}`` ve ``{container_id}`` değerini Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database`` ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
+- ``{url_location_of_file}``, JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
+
+Örneğin:
+
+```bash
+%%upload --database databaseName --container containerName --url 
+https://contoso.com/path/to/data.json
+```
+```bash
+Documents successfully uploaded to ContainerName
+Total number of documents imported : 2654
+Total time taken : 00:00:38.1228087 hours
+Total RUs consumed : 25022.58
+```
+Çıkış istatistikleriyle, öğeleri karşıya yüklemek için kullanılan geçerli RU/s 'yi hesaplayabilirsiniz. Örneğin, 38 saniyenin üzerinde 25.000 ru kullanılıyorsa, geçerli RU/s, 25.000 ru/38 saniye = 658 RU/s olur.
 
 ## <a name="set-default-database-for-queries"></a>Sorgular için varsayılan veritabanını ayarla
-Not defteri için kullanılacak varsayılan veritabanı ```%%sql``` komutlarını ayarlayabilirsiniz. Veritabanınızın ```{database_id}``` adıyla değiştirin.
+Not defteri için kullanılacak varsayılan veritabanı ```%%sql``` komutları ayarlayabilirsiniz. ```{database_id}```, veritabanınızın adıyla değiştirin.
 
 ```bash
 %database {database_id}
 ```
-Not ```%database?``` defterindeki belgeleri görmek için bir hücrede çalıştırın.
+Not defterindeki belgeleri görmek için ```%database?``` bir hücrede çalıştırın.
 
 ## <a name="set-default-container-for-queries"></a>Sorgular için varsayılan kapsayıcıyı ayarla
-Not defteri için kullanılacak varsayılan kapsayıcı ```%%sql``` komutlarını ayarlayabilirsiniz. Kapsayıcının ```{container_id}``` adıyla değiştirin.
+Not defteri için kullanılacak varsayılan kapsayıcı ```%%sql``` komutları ayarlayabilirsiniz. ```{container_id}```, kapsayıcının adıyla değiştirin.
 
 ```bash
 %container {container_id}
 ```
-Not ```%container?``` defterindeki belgeleri görmek için bir hücrede çalıştırın.
+Not defterindeki belgeleri görmek için ```%container?``` bir hücrede çalıştırın.
+
+## <a name="use-built-in-nteract-data-explorer"></a>Yerleşik nteryasası Veri Gezgini 'ni kullanma
+Yerleşik [nteryasası Veri Gezgini](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897) 'ni kullanarak bir veri çerçevesini filtreleyebilir ve görselleştirebilirsiniz. Bu özelliği etkinleştirmek için, ``pd.options.display.html.table_schema`` seçeneğini ``True`` ve istenen değere ``pd.options.display.max_rows`` ayarlayın (``pd.options.display.max_rows``, tüm sonuçları gösterecek şekilde ``None`` ayarlayabilirsiniz).
+
+```python
+import pandas as pd
+pd.options.display.html.table_schema = True
+pd.options.display.max_rows = None
+
+df_cosmos.groupby("Item").size()
+```
+![nteryasası Veri Gezgini](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
 
 ## <a name="use-the-built-in-python-sdk"></a>Yerleşik Python SDK 'sını kullanma
-[SQL API için Azure Cosmos DB Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) 'nın sürüm 4 ' ü yüklenir ve Cosmos hesabı için Not defteri ortamına dahil edilmiştir.
+[SQL API için Azure Cosmos DB Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) 'nın sürüm 4 ' ü yüklenir ve Azure Cosmos hesabı için Not defteri ortamına dahil edilmiştir.
 
-Herhangi bir SDK işlemini çalıştırmak ``cosmos_client`` için yerleşik örneği kullanın. 
+Herhangi bir SDK işlemini çalıştırmak için yerleşik ``cosmos_client`` örneğini kullanın. 
 
 Örneğin:
 
@@ -121,11 +156,11 @@ Bkz. [Python SDK örnekleri](https://github.com/Azure/azure-sdk-for-python/tree/
 > [!IMPORTANT]
 > Yerleşik Python SDK 'Sı yalnızca SQL (çekirdek) API hesapları için desteklenir. Diğer API 'Ler için, API 'ye karşılık gelen [Ilgili Python sürücüsünü yüklemeniz](#install-a-new-package) gerekir. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Özel bir örneği oluşturma``cosmos_client``
-Daha fazla esneklik için, aşağıdakileri yapmak için özel bir örneği ``cosmos_client`` oluşturabilirsiniz:
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Özel bir ``cosmos_client`` örneği oluşturma
+Daha fazla esneklik için, aşağıdakileri yapmak üzere ``cosmos_client`` özel bir örneği oluşturabilirsiniz:
 
 - [Bağlantı ilkesini](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) özelleştirme
-- İşlemleri, farklı bir Cosmos hesabına karşı çalıştırın
+- İşlemleri, farklı bir Azure Cosmos hesabına göre çalıştırma
 
 Geçerli hesabın bağlantı dizesine ve birincil anahtarına [ortam değişkenleri](#access-the-account-endpoint-and-primary-key-env-variables)aracılığıyla erişebilirsiniz. 
 
@@ -134,7 +169,7 @@ import os
 import azure.cosmos.cosmos_client as cosmos
 import azure.cosmos.documents as documents
 
-# These should be set to a region you've added for Cosmos DB
+# These should be set to a region you've added for Azure Cosmos DB
 region_1 = "Central US" 
 region_2 = "East US 2"
 
@@ -142,7 +177,7 @@ custom_connection_policy = documents.ConnectionPolicy()
 custom_connection_policy.PreferredLocations = [region_1, region_2] # Set the order of regions the SDK will route requests to. The regions should be regions you've added for Cosmos, otherwise this will error.
 
 # Create a new instance of CosmosClient, getting the endpoint and key from the environment variables
-custom_client = cosmos.CosmosClient(os.environ["COSMOS_ENDPOINT"], {'masterKey': os.environ["COSMOS_KEY"]}, connection_policy=custom_connection_policy)
+custom_client = cosmos.CosmosClient(url=os.environ["COSMOS_ENDPOINT"], credential=os.environ["COSMOS_KEY"], connection_policy=custom_connection_policy)
 ```
 ## <a name="access-the-account-endpoint-and-primary-key-env-variables"></a>Hesap uç noktasına ve birincil anahtar env değişkenlerine erişin
 ```python
@@ -152,10 +187,10 @@ endpoint = os.environ["COSMOS_ENDPOINT"]
 primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
-> ``COSMOS_ENDPOINT`` Ve``COSMOS_KEY`` ortam değişkenleri yalnızca SQL API için geçerlidir. Diğer API 'Ler için, Cosmos hesabınızdaki **bağlantı dizeleri** veya **anahtarlar** dikey penceresinde uç noktasını ve anahtarı bulun.  
+> ``COSMOS_ENDPOINT`` ve ``COSMOS_KEY`` ortam değişkenleri yalnızca SQL API 'SI için geçerlidir. Diğer API 'Ler için, Azure Cosmos hesabınızdaki **bağlantı dizeleri** veya **anahtarlar** dikey penceresinde uç noktasını ve anahtarı bulun.  
 
 ## <a name="reset-notebooks-workspace"></a>Not defteri çalışma alanını Sıfırla
-Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Cosmos kaynaklarınız etkilenmeyecektir.  
+Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Azure Cosmos kaynaklarınızın etkilenmemesi gerekir.  
 
 ![Not defteri çalışma alanını Sıfırla](media/use-notebook-features-and-commands/reset-workspace.png)
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439642"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından Delta kopyası
 
@@ -38,10 +38,13 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 - **Kopyalama** yalnızca kaynak veritabanındaki değişiklikleri hedef depoya kopyalar. Kaynak veritabanındaki değişiklikleri tanımlayan sorgu "SELECT * FROM Data_Source_Table, burada TIMESTAMP_Column >" son yüksek filigran "ve TIMESTAMP_Column < =" geçerli yüksek filigran "' ile benzerdir.
 - **Sqlserverstoredprocedure** , bir sonraki sefer değişim kopyası için geçerli yüksek eşik değerini bir dış denetim tablosuna yazar.
 
-Şablon beş parametreyi tanımlar:
+Şablon aşağıdaki parametreleri tanımlar:
 - *Data_Source_Table_Name* , kaynak veritabanındaki, verileri yüklemek istediğiniz tablodur.
 - *Data_Source_WaterMarkColumn* , yeni veya güncelleştirilmiş satırları tanımlamak için kullanılan kaynak tablodaki sütunun adıdır. Bu sütunun türü genellikle *DateTime*, *Int*veya benzerdir.
-- *Data_Destination_Folder_Path* veya *Data_Destination_Table_Name* , verilerin hedef deponuzda kopyalandığı yerdir.
+- *Data_Destination_Container* , verilerin hedef deponuzda kopyalandığı yerin kök yoludur.
+- *Data_Destination_Directory* , verilerin hedef deponuzda kopyalandığı yerin kökünün altındaki Dizin yoludur.
+- *Data_Destination_Table_Name* , verilerin hedef deponuzda kopyalandığı yerdir ("Azure SYNAPSE Analytics (eskı ADıYLA SQL DW)" veri hedefi olarak seçildiğinde geçerlidir).
+- *Data_Destination_Folder_Path* , verilerin hedef deponuzda kopyalandığı yerdir ("dosya sistemi" veya "Azure Data Lake Storage 1." veri hedefi olarak seçildiğinde geçerlidir).
 - *Control_Table_Table_Name* , üst eşik değerini depolayan dış denetim tablosudur.
 - *Control_Table_Column_Name* , üst eşik değerini depolayan dış denetim tablosundaki sütundur.
 
@@ -100,20 +103,18 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
     ![Denetim tablosu veri deposuna yeni bir bağlantı oluşturun](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. **Bu şablonu kullan**'ı seçin.
-
-     ![Bu şablonu kullan](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. Aşağıdaki örnekte gösterildiği gibi kullanılabilir ardışık düzeni görürsünüz:
+  
+    ![İşlem hattını gözden geçirme](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![İşlem hattını gözden geçirme](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. **Saklı yordam**' i seçin. **Saklı yordam adı**için **[dbo] öğesini seçin. [ update_watermark]** . **Parametreyi Içeri aktar**' ı seçin ve ardından **dinamik içerik Ekle**' yi seçin.  
 
-9. **Saklı yordam**' i seçin. **Saklı yordam adı**için **[update_watermark]** öğesini seçin. **Parametreyi Içeri aktar**' ı seçin ve ardından **dinamik içerik Ekle**' yi seçin.  
-
-     ![Saklı yordam etkinliğini ayarlama](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![Saklı yordam etkinliğini ayarlama](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. **{Activity (' LookupCurrentWaterMark '). Output. firstRow. Newsulu Markvalue} içeriğini\@** yazın ve ardından **son**' u seçin.  
 
-     ![Saklı yordamın parametrelerinin içeriğini yazma](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![Saklı yordamın parametrelerinin içeriğini yazma](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
 
@@ -132,13 +133,12 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-14. İşlem hattını yeniden çalıştırmak için **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
 
-    ![\* * Hata Ayıkla * * öğesini seçin](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+14. İşlem hattını yeniden çalıştırmak için **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
 
     Hedefe yalnızca yeni satırların kopyalandığını görürsünüz.
 
-15. Seçim Veri hedefi olarak SQL veri ambarı ' nı seçtiyseniz, SQL veri ambarı PolyBase için gerekli olan hazırlama için Azure Blob depolama alanına da bir bağlantı sağlamanız gerekir. Kapsayıcının blob depolamada zaten oluşturulduğundan emin olun.
+15. Seçim Veri hedefi olarak Azure SYNAPSE Analytics (eski adıyla SQL DW) seçeneğini belirlerseniz, SQL veri ambarı PolyBase için gerekli olan hazırlama için Azure Blob depolama alanına da bir bağlantı sağlamanız gerekir. Şablon sizin için bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra, kapsayıcının blob depolamada oluşturulup oluşturulmayacağını denetleyin.
     
     ![PolyBase 'i yapılandırma](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

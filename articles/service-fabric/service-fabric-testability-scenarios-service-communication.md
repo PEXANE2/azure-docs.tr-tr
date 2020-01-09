@@ -1,59 +1,50 @@
 ---
-title: 'Test Edilebilirlik: Hizmet iletişimi | Microsoft Docs'
-description: Hizmetten hizmete iletişimi, bir Service Fabric uygulamasının bir kritik tümleştirme noktasıdır. Bu makalede, tasarım konuları ve test teknikleri açıklar.
-services: service-fabric
-documentationcenter: .net
+title: 'Test Edilebilirlik: hizmet iletişimi'
+description: Hizmetten hizmete iletişim, Service Fabric bir uygulamanın kritik bir tümleştirme noktasıdır. Bu makalede tasarım konuları ve test teknikleri açıklanmaktadır.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465555"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric Test Edilebilirlik senaryoları: Hizmet iletişimleri
-Mikro hizmetler ve hizmet odaklı mimari stilleri yüzeyini doğal olarak Azure Service Fabric. Bu dağıtılmış mimariler türlerinde bileşenlerden mikro hizmet uygulamaları genellikle birbirine konuşmak için gereken birden çok hizmet oluşur. En basit durumlarda bile, genellikle en az bir durum bilgisi olmayan web hizmeti ve iletişim kurması gereken bir durum bilgisi olan veri depolama hizmeti vardır.
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric test edilebilir senaryolar: hizmet iletişimi
+Azure Service Fabric 'de doğal olarak mikro hizmetler ve hizmet odaklı mimari stilleri yüzeyi. Bu dağıtılmış mimarilerde, bileşen, mikro hizmet uygulamaları genellikle birbirleriyle konuşmak zorunda olan birden çok hizmetten oluşur. En basit durumlar da genellikle en az bir durum bilgisiz Web hizmetiniz ve iletişim kurması gereken durum bilgisi olan bir veri depolama hizmetidir.
 
-Her hizmetin diğer hizmetlere yönelik bir uzak API'ye kullanıma sunduğundan hizmetten hizmete iletişimi bir uygulamanın kritik tümleştirme noktasıdır. Genel olarak g/ç içeren bir dizi API sınırları ile çalışma bazı dikkatli bir iyi miktarda sınama ve doğrulama gerektirir.
+Hizmetten hizmete iletişim, her hizmet diğer hizmetlere uzak bir API kullanıma sunduğundan, uygulamanın kritik bir tümleştirme noktasıdır. G/ç içeren bir API sınırları kümesiyle çalışmak, iyi bir test ve doğrulama miktarı ile bazı önemli işlemleri gerektirir.
 
-Bu hizmet sınırları birlikte dağıtılmış bir sistemde kablolu alırken vermeniz gereken çok sayıda önemli noktalar vardır:
+Bu hizmet sınırlarının dağıtılmış bir sistemde birbirine kablolu olması durumunda yapmanız gereken birçok önemli noktalar vardır:
 
-* *Aktarım Protokolü*. En fazla aktarım hızı için HTTP artan birlikte çalışabilirliğini ya da özel ikili protokolü kullanacak mısınız?
-* *Hata işleme*. Kalıcı ve geçici hataları nasıl işleneceğini? Bir hizmet farklı bir düğüme hareket ettiğinde ne?
-* *Zaman aşımları ve gecikme süresi*. Çok verili uygulamalarda, gecikme süresi yığını aracılığıyla ve kullanıcıyı her hizmet katmanı nasıl işleyeceğini?
+* *Aktarım Protokolü*. Artan birlikte çalışabilirlik için HTTP veya en yüksek aktarım hızı için özel bir ikili protokol kullanacaksınız misiniz?
+* *Hata işleme*. Kalıcı ve geçici hatalar nasıl ele alınacaktır? Bir hizmet farklı bir düğüme taşınırsa ne olur?
+* *Zaman aşımları ve gecikme süresi*. Çoklu katmanlı uygulamalarda, her bir hizmet katmanı yığın ve kullanıcıya gecikme süresini nasıl işler?
 
-Service Fabric tarafından sağlanan yerleşik hizmet iletişimi bileşenlerini birini kullanın veya kendi hizmetlerinizi arasındaki etkileşimler test derleme uygulamanızdaki dayanıklılık sağlamak için önemlidir.
+Service Fabric tarafından sunulan yerleşik hizmet iletişim bileşenlerinden birini kullanıp kullanmayacağınızı veya kendi kendinize inşa etmeksizin, hizmetleriniz arasındaki etkileşimleri test etmeniz, uygulamanızda dayanıklılık sağlamak açısından önemlidir.
 
-## <a name="prepare-for-services-to-move"></a>Hizmetleri taşımak için hazırlama
-Hizmet örnekleri zaman içinde hareket ettirin. Özel olarak tasarlanmış en iyi kaynak Dengeleme için yükleme ölçümleri ile yapılandırıldığında bu özellikle doğrudur. Service Fabric service örneklerinizi yükseltmeleri, yük devretme işlemleri, Ölçek genişletme ve dağıtılmış bir sistemin ömrü boyunca gerçekleşen diğer durumlarda sırasında bile, kullanılabilirliği en üst düzeye taşır.
+## <a name="prepare-for-services-to-move"></a>Hizmetlerin taşınmasına hazırlanma
+Hizmet örnekleri zaman içinde hareket edebilir. Bu durum özellikle, özel olarak tasarlanmış en iyi kaynak Dengeleme için yük ölçümleriyle yapılandırıldıklarında geçerlidir. Service Fabric, hizmet örneklerinizi yükseltmeler, yük devretme, genişleme ve dağıtılmış bir sistemin kullanım ömrü boyunca oluşan diğer durumlar gibi kullanılabilirliği en üst düzeye çıkarmak üzere taşıyın.
 
-Hizmetleri kümedeki yerleri gibi istemcilerinizi ve diğer hizmetlere bunlar bir hizmetinizle iletişim kurmasına, iki senaryo işlemeye hazırlıklı olmalıdır:
+Hizmetler kümede bir gezindiğinden, istemcileriniz ve diğer hizmetleriniz bir hizmetle iletişim kurduklarında iki senaryoyu işlemeye hazır olmalıdır:
 
-* Hizmet örneği veya bölüm çoğaltma için açıklandı en son ne zaman beri taşınmıştır. Bu hizmet yaşam döngüsü normal bir parçası olan ve uygulama ömrü boyunca gerçekleşmesi beklenmelidir.
-* Hizmet örneği veya bölüm geçme işleminde yinelemedir. Bir hizmetin bir düğümden diğerine yük devretme Service Fabric'te çok hızlı bir şekilde meydana gelse bir gecikme olabilir kullanılabilirlik hizmetinizin iletişim bileşeni başlatmak yavaş ise.
+* Hizmet örneği veya bölüm çoğaltması, son olarak bu yana taşındığınız zamandan beri taşındı. Bu, hizmet yaşam döngüsünün normal bir parçasıdır ve uygulamanızın ömrü boyunca gerçekleşmesi beklenmelidir.
+* Hizmet örneği veya bölüm çoğaltması taşıma sürecinde. Bir hizmetin bir düğümden diğerine yük devretmesi Service Fabric çok hızlı bir şekilde gerçekleşse de, hizmetinizin iletişim bileşeninin başlaması yavaşsa bir gecikme olabilir.
 
-Bu senaryolar düzgün bir şekilde işlemek için düzgün çalışmasını sistemi önemlidir. Bunu yapmak için unutmayın:
+Düzgün çalışan bir sistem için bu senaryoları sorunsuz bir şekilde işlemek önemlidir. Bunu yapmak için aşağıdakileri göz önünde bulundurun:
 
-* Her hizmet için bağlı olan bir *adresi* , (örneğin, HTTP veya WebSockets) dinler. Bir hizmet örneği veya bölüm hareket ettirdiğinde adresi bitim değiştirir. (Bu farklı bir IP adresi ile farklı bir düğüme taşınır.) Yerleşik iletişim bileşenleri kullanıyorsanız, bunlar yeniden çözümleme hizmeti adresleri sizin için işler.
-* Olabilir hizmet örneği başlatır, dinleyici yukarı hizmet gecikme süresine geçici bir artış yeniden. Bu hizmet örneği taşındıktan sonra ne kadar hızlı hizmet dinleyici açılır bağlıdır.
-* Herhangi bir mevcut bağlantı kapatılıp yeni bir düğüm üzerinde hizmet açıldıktan sonra gerekir. Normal bir düğümün kapanması veya yeniden başlatma düzgün biçimde kapatılması varolan bağlantılar için zaman verir.
+* Bağlanılan her hizmet, dinlediği bir *adrese* sahiptir (ÖRNEĞIN, http veya WebSockets). Bir hizmet örneği veya bölümü taşındığınızda, adres uç noktası değişir. (Farklı bir IP adresi olan farklı bir düğüme gider.) Yerleşik iletişim bileşenleri kullanıyorsanız, hizmet adreslerini sizin için yeniden çözümlemeyi işleyeceğiz.
+* Hizmet örneği dinleyiciyi yeniden başlattığı için hizmet gecikmesi durumunda geçici bir artış olabilir. Bu, hizmet örneği taşındıktan sonra hizmetin dinleyiciyi ne kadar hızlı açtığı üzerine bağlıdır.
+* Yeni bir düğümde hizmet açıldıktan sonra, mevcut tüm bağlantıların kapatılıp yeniden açılması gerekir. Düzgün bir şekilde kapatma veya yeniden başlatma, mevcut bağlantıların düzgün şekilde kapatılmasını sağlar.
 
-### <a name="test-it-move-service-instances"></a>Test: Hizmet örnekleri Taşı
-Service Fabric'in Test Edilebilirlik araçlarını kullanarak, bu durumlar farklı şekilde test etmek için bir test senaryosu yazabilirsiniz:
+### <a name="test-it-move-service-instances"></a>Test et: hizmet örneklerini taşıma
+Service Fabric yük kararlılığı araçlarını kullanarak, bu durumları farklı yollarla test etmek için bir test senaryosu yazabilirsiniz:
 
-1. Bir durum bilgisi olan hizmetin birincil çoğaltma taşıyın.
+1. Durum bilgisi olan bir hizmetin birincil çoğaltmasını taşıyın.
    
-    Durum bilgisi olan hizmet bölüm birincil çoğaltması, birkaç nedenden için taşınabilir. Bu, hizmetlerinizi taşımak için oldukça denetimli bir biçimde nasıl tepki görmek için belirli bir bölüme birincil çoğaltmasını hedeflemek için kullanın.
+    Durum bilgisi olan bir hizmet bölümünün birincil çoğaltması herhangi bir sayıda nedenden dolayı taşınabilir. Hizmetlerinizin, çok denetimli bir biçimde taşımaya nasıl tepki vermesini görmek için, belirli bir bölümün birincil çoğaltmasını hedeflemek üzere bunu kullanın.
    
     ```powershell
    
@@ -62,9 +53,9 @@ Service Fabric'in Test Edilebilirlik araçlarını kullanarak, bu durumlar farkl
     ```
 2. Bir düğümü durdurun.
    
-    Bir düğüm durdurulduğunda, Service Fabric hizmet örneği veya o düğümle kümedeki kullanılabilir diğer düğümlerden birine olan bölümleri tümünün taşır. Bir durum burada kümenizi ve tüm hizmet örneklerinin bir düğüm kaybolur ve çoğaltmaları bu düğüme taşımak zorunda test etmek için bunu kullanın.
+    Bir düğüm durdurulduğunda Service Fabric, bu düğümdeki tüm hizmet örneklerinin veya bölümlerinin kümedeki diğer kullanılabilir düğümlerden birine taşınması. Bu işlemi, bir düğümün kümenizdeki kaybedildiği ve bu düğümdeki tüm hizmet örneklerinin ve çoğaltmaların taşınması gereken bir durumu sınamak için kullanın.
    
-    PowerShell kullanarak bir düğümü durdurabilirsiniz **Stop-ServiceFabricNode** cmdlet:
+    PowerShell **stop-ServiceFabricNode** cmdlet 'ini kullanarak bir düğümü durdurabilirsiniz:
    
     ```powershell
    
@@ -72,15 +63,15 @@ Service Fabric'in Test Edilebilirlik araçlarını kullanarak, bu durumlar farkl
    
     ```
 
-## <a name="maintain-service-availability"></a>Hizmet kullanılabilirliği sürdürmek
-Bir platform, Service Fabric, hizmetlerinizi yüksek kullanılabilirlik sağlamak için tasarlanmıştır. Ancak olağanüstü durumlarda, temel alınan altyapı yine de kullanım dışı kalması sorunlara yol açabilir. Bu senaryolar için de test önemlidir.
+## <a name="maintain-service-availability"></a>Hizmet kullanılabilirliğini sürdürme
+Bir platform olarak Service Fabric, hizmetlerinizin yüksek kullanılabilirlik sağlamak için tasarlanmıştır. Ancak olağanüstü durumlarda, temel alınan altyapı sorunları yine de kullanılamamasına neden olabilir. Bu senaryolar için de test edilmesi önemlidir.
 
-Durum bilgisi olan hizmetler çekirdek tabanlı bir sistem durumu yüksek kullanılabilirlik için çoğaltma için kullanın. Bu, bir çekirdeği yazma işlemleri gerçekleştirmek kullanılabilir olması gerektiğini anlamına gelir. Yaygın bir donanım hatası gibi nadir durumlarda bir çekirdeği kullanılamıyor olabilir. Bu gibi durumlarda, yazma işlemleri gerçekleştirmek mümkün olmayacaktır, ancak yine de okuma işlemleri gerçekleştirmek mümkün olacaktır.
+Durum bilgisi olan hizmetler, yüksek kullanılabilirlik için durumu çoğaltmak üzere çekirdek tabanlı bir sistem kullanır. Bu, bir çoğaltma çekirdeğinin yazma işlemleri gerçekleştirmek için kullanılabilir olması gerektiği anlamına gelir. Yaygın olarak karşılaşılan bir donanım arızası gibi nadir durumlarda, çoğaltmaların bir çekirdeği kullanılamayabilir. Bu durumlarda, yazma işlemleri gerçekleştiremeyeceksiniz, ancak yine de okuma işlemleri yapabileceksiniz.
 
-### <a name="test-it-write-operation-unavailability"></a>Test: Yazma işlemi olarak kullanım dışı kalması
-Service Fabric'te Test Edilebilirlik Araçları'nı kullanarak bir test olarak çekirdek kayıp sevk eden bir hata ekleyebilir. Bu tür bir senaryonun ender olsa da, istemciler ve durum bilgisi olan bir hizmete bağlı hizmetler nerede bunlar yazma istekleri yapamaz durumları işlemek için hazır olduğunu önemlidir. Durum bilgisi olan hizmet bu olasılığını bilmektedir ve arayanlara düzgün bir şekilde iletişim kurmak önemlidir.
+### <a name="test-it-write-operation-unavailability"></a>Test et: yazma işlemi kullanılamaz
+Service Fabric ' de, yük kararlılığı araçları 'nı kullanarak, çekirdek kaybını test olarak karşılayan bir hata ekleyebilirsiniz. Böyle bir senaryo nadir olsa da, durum bilgisi olan bir hizmete bağlı olan istemci ve hizmetlerin, bunlara yazma istekleri yapamadığı durumları işlemek için hazır olması önemlidir. Ayrıca, durum bilgisi olan hizmetin kendisi bu olasılığa karşı farkında ve arayanlara sorunsuz bir şekilde iletişim kurabildiğinden de önemlidir.
 
-PowerShell kullanarak çekirdek kayıp zorlarsınız **Invoke-ServiceFabricPartitionQuorumLoss** cmdlet:
+PowerShell **Invoke-Servicefabricpartitionquorumkaybetme** cmdlet 'ini kullanarak çekirdek kaybını sağlayabilirsiniz:
 
 ```powershell
 
@@ -88,10 +79,10 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-Bu örnekte, ayarladığımız `QuorumLossMode` için `QuorumReplicas` tüm çoğaltmaları duruma geçirmek zorunda kalmadan çekirdek kayıp anlamına istediğimizi belirtmek için. Bu şekilde, okuma işlemleri hala yapılabilir. Bölüm kullanılamaz olduğu bir senaryoyu test etmek için bu anahtarı ayarlayabilirsiniz `AllReplicas`.
+Bu örnekte, tüm çoğaltmaları kapatmadan önce çekirdek kaybına ulaşılmasını istediğinizi belirtmek için `QuorumReplicas` `QuorumLossMode` ayarlamamız gerekir. Bu şekilde, okuma işlemleri yine de mümkündür. Bölümün tamamının kullanılamadığı bir senaryoyu test etmek için, bu anahtarı `AllReplicas`olarak ayarlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Test Edilebilirlik eylemleri hakkında daha fazla bilgi edinin](service-fabric-testability-actions.md)
+[Test edilebilirlik eylemleri hakkında daha fazla bilgi edinin](service-fabric-testability-actions.md)
 
-[Test Edilebilirlik senaryoları hakkında daha fazla bilgi edinin](service-fabric-testability-scenarios.md)
+[Test edilebilir senaryolar hakkında daha fazla bilgi edinin](service-fabric-testability-scenarios.md)
 

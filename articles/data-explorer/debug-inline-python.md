@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: f0bf81ce6392e1650d9986d81a55eac9c416c24d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444464"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>VS Code kullanarak kusto sorgu dili satır içi Python hatalarını ayıklama
 
@@ -23,7 +23,7 @@ Kusto sorgu dili araçları, Python algoritmalarının geliştirilmesi ve hata a
 > [!NOTE]
 > Bu iş akışı, yalnızca görece küçük giriş tablolarında (en fazla MB) hata ayıklamak için kullanılabilir. Bu nedenle, hata ayıklama için girişi sınırlandırlamanız gerekebilir.  Büyük bir tabloyu işlemek gerekirse, `| take`, `| sample`veya `where rand() < 0.x`kullanarak hata ayıklama için sınırlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Python [Anaconda dağıtımını](https://www.anaconda.com/distribution/#download-section)yükler. **Gelişmiş Seçenekler**' de, **path ortam değişkenine Anaconda Ekle**' yi seçin.
 2. [Visual Studio Code](https://code.visualstudio.com/Download)'u yükleme

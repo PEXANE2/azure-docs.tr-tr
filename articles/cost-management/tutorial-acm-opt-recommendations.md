@@ -1,5 +1,5 @@
 ---
-title: Öğretici - iyileştirme önerilerden yararlanarak Azure maliyetlerini azaltma | Microsoft Docs
+title: Öğretici-Azure maliyetlerini önerilerle azaltma
 description: Bu öğreticide, iyileştirme önerileri hareket olduğunda Azure maliyetleri azaltmanıza yardımcı olur.
 services: cost-management
 keywords: ''
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a9dbb121cab49024aaf0dc65bbac938764d9f8b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c3fc60ca623649a175fb1078efc6903ebde2811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229843"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444581"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Öğretici: önerilerden maliyetleri en iyi duruma getirme
 
-Azure maliyet yönetimi, maliyet iyileştirme önerileri sağlamak için Azure Danışmanı ile çalışır. Azure Danışmanı en iyi duruma getirmek ve boşta ve az kullanılan kaynakları belirleyerek verimliliğini geliştirmenize yardımcı olur. Bu öğretici size burada isteyeceğiniz az kullanılan Azure kaynakları tanımlamak ve maliyetleri azaltmak için eyleme sonra bir örneği açıklanmaktadır.
+Azure Maliyet Yönetimi, Azure Danışmanı ile birlikte çalışarak maliyet iyileştirme önerileri sunar. Azure Danışmanı boşta olan ve az kullanılan kaynakları belirleyerek verimliliği iyileştirmenize ve geliştirmenize yardımcı olur. Bu öğretici size burada isteyeceğiniz az kullanılan Azure kaynakları tanımlamak ve maliyetleri azaltmak için eyleme sonra bir örneği açıklanmaktadır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir öneri daha uygun maliyetli bir seçenek için bir sanal makine yeniden boyutlandırmak için eylem gerçekleştir
 > * Sanal makine başarıyla boyutlandırılmış emin olmak için gerekeni doğrulayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Çeşitli kapsamlar ve Azure hesap türleri için öneriler mevcuttur. Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md). Maliyet verilerini görüntülemek için aşağıdaki kapsamlardan birine veya daha fazlasına en azından yazma erişiminiz olmalıdır. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
 
 - Abonelik
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Etkinlik için en az 14 gün etkin sanal makinelere sahip olmalıdır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
 
 ## <a name="view-cost-optimization-recommendations"></a>Maliyet iyileştirme önerileri görüntüleme
@@ -47,9 +47,9 @@ Bir yönetim grubunun önerilerini görüntülemek için, istenen kapsamı Azure
 
 ![Azure portalında gösterilen maliyet Yönetimi Danışmanı önerileri](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-Öneriler listesi, kullanım verimsizliklerini tanımlar veya ek paradan tasarruf etmenize yardımcı olabilecek satın alma önerileri gösterilir. Toplanan **olası yıllık tasarruflar** , öneri kurallarını karşılayan tüm VM 'lerinizi kapatırsanız veya serbest bırakırsanız kaydedebilmeniz gereken toplam miktarı gösterir. Bunları kapatmak istemiyorsanız, bunları daha ucuz bir VM SKU için yeniden boyutlandırma düşünmelisiniz.
+Öneriler listesi, kullanım verimsizliklerini tanımlar veya ek paradan tasarruf etmenize yardımcı olabilecek satın alma önerileri gösterilir. Toplam **olası yıllık tasarrufları** kapatma ya da tüm öneri kurallara uygun olan Vm'leriniz serbest kaydedebileceğiniz toplam tutarı gösterir. Bunları kapatmak istemiyorsanız, bunları daha ucuz bir VM SKU için yeniden boyutlandırma düşünmelisiniz.
 
-Olası **yıllık tasarruflarla**birlikte **etki** kategorisi, mümkün olduğunca tasarruf etme potansiyeli olan önerileri belirlemenize yardımcı olmak için tasarlanmıştır.
+**Etkisi** kategori ile birlikte **olası yıllık tasarrufları**, mümkün olduğunca tasarruf etme olasılığı olan önerileri belirlemenize yardımcı olması için tasarlanmıştır.
 
 Yüksek etki önerileri şunlardır:
 - [Kullandıkça Öde maliyetlerinden tasarruf etmek için ayrılmış sanal makine örnekleri satın alın](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
@@ -69,7 +69,7 @@ Azure Danışmanı, sanal makine kullanımınızı yedi gün boyunca izler ve da
 
 Bazı senaryolar tasarım gereği düşük kullanımı sonuçlanabilir olsa da, genellikle daha ucuz boyutları için sanal makinelerinizin boyutunu değiştirerek tasarruf sağlayabilirsiniz. Bir yeniden boyutlandırma eylemi seçerseniz tasarruf ettiğiniz gerçek miktarlar değişiklik gösterebilir. Bir sanal makine yeniden boyutlandırma, bir örneği atalım.
 
-Öneriler listesinde, **doğru boyut ' a tıklayın veya kapalı sanal makineler** önerisi ' ne tıklayın. Sanal makine adayları listesinde, yeniden boyutlandırma ve ardından sanal makineyi bir sanal makine seçin. Kullanım ölçümlerini doğrulayabilir sanal makinenin ayrıntıları gösterilir. **Olası yıllık tasarruf** değeri, sanal makineyi kapatırsanız veya kaldırırsanız kaydedebilecekleri şeydir. Bir VM'yi yeniden boyutlandırmadan büyük olasılıkla, maliyet tasarrufu sağlayacak, ancak tam olası yıllık tasarruf miktarı kaydetmez.
+Öneriler listesinde tıklayın **doğru boyuta getirin veya kapatma potansiyelinden az kullanılmasına neden sanal makineler** öneri. Sanal makine adayları listesinde, yeniden boyutlandırma ve ardından sanal makineyi bir sanal makine seçin. Kullanım ölçümlerini doğrulayabilir sanal makinenin ayrıntıları gösterilir. **Olası yıllık tasarrufları** değerdir, kapatma veya VM kaldırırsanız tasarruf edebilirsiniz. Bir VM'yi yeniden boyutlandırmadan büyük olasılıkla, maliyet tasarrufu sağlayacak, ancak tam olası yıllık tasarruf miktarı kaydetmez.
 
 ![Öneri ayrıntılarını örneği](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
@@ -80,7 +80,7 @@ VM ayrıntılarında uygun boyutlandırma aday olduğundan emin olmak için sana
 Geçerli sanal makinenin boyutu unutmayın. Sanal makine yeniden boyutlandırıldı olduğunu doğruladıktan sonra sanal makinelerin listesini görebilmesi için sanal makine ayrıntıları kapatın.
 
 Kapatılacak veya yeniden boyutlandırılacak aday listesinde, * * yeniden boyutlandır *&lt;Fromvirtualdeninesku&gt;* "&lt;Tovirtual, inesku&gt;* * * olarak belirleyin.
-sanal makineyi yeniden boyutlandırma seçeneğiyle ![örnek önerisi](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![Sanal makine yeniden boyutlandırma seçeneği ile örnek önerisi](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Ardından, kullanılabilir boyutlandırma seçeneklerin bir listesi ile sunulur. Senaryonuz için en iyi performans ve uygun maliyet sağlayacak bir tane seçin. Aşağıdaki örnekte, seçilen seçenek **Standard_D8s_v3** **Standard_D2s_v3**olarak yeniden boyutlandırır.
 
@@ -108,4 +108,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Maliyet yönetimi en iyi yöntemler makalesi okumadıysanız, maliyetleri yönetmenize yardımcı olmak için dikkate alınması gereken üst düzey yönergeler ve sağlar.
 
 > [!div class="nextstepaction"]
-> [Maliyet yönetimi en iyi uygulamaları](cost-mgt-best-practices.md)
+> [Maliyet yönetimi en iyi uygulamalar](cost-mgt-best-practices.md)

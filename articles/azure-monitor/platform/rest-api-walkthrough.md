@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363515"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Izleme REST API izlenecek yol
 
@@ -97,7 +97,7 @@ Bir hizmet için kullanılabilen ölçüm listesine erişmek için [Azure Izleyi
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https: \/ \/management. Azure.com/subscriptions/ *{SubscriptionID}* /ResourceGroups/ *{resourcegroupname}* /Providers/ *{resourceprovidernamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.insights/metricDefinitions? api-Version = *{apiversion}*
+**İstek URI 'si**: https:\/\/Management.Azure.com/subscriptions/ *{SubscriptionID}* /ResourceGroups/ *{resourcegroupname}* /Providers/ *{resourceprovidernamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.insights/metricDefinitions? api-Version = *{apiversion}*
 
 Örneğin, bir Azure depolama hesabının ölçüm tanımlarını almak için, istek şu şekilde görünür:
 
@@ -241,7 +241,7 @@ Herhangi bir filtreleme isteği için ölçüm adı ' Value ' değerini (' local
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https \://Management.Azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/Microsoft.insights/Metrics? metricnames = *{Metric}* & TimeSpan = *{starttime/BitişZamanı}* & $Filter = *{Filter}* & ResultType = metaveri & api-Version = *{ apiVersion}*
+**İstek URI 'si**: https\://Management.Azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* /{Resource- *Type* } */{Resource-name}* /Providers/Microsoft.insights/Metrics? metricnames = *{Metric}* & timespan = *{starttime/bitişsaati}* & $Filter = *{Filter}* & ResultType = metaveri & api-Version = *{ apiVersion}*
 
 Örneğin, ' Işlemler ' ölçümü için "API adı boyutu", belirtilen zaman aralığı boyunca GeoType Dimension = ' PRIMARY ' olan ' API Name Dimension ' için yayınlanan boyut değerlerinin listesini almak için, istek aşağıdaki gibi olacaktır:
 
@@ -314,7 +314,7 @@ Herhangi bir filtreleme isteği için ölçüm adı ' Value ' değerini (' local
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / {Resource-*Type* } / *{Resource-Name}* /Providers/ Microsoft. Insights/ölçümler? metricnames = *{Metric}* & TimeSpan = *{StartTime/bitişsaati}* & $Filter = *{Filter}* & ınterval = *{timegre}* & toplama = *{Aggreation}* & api-Version = *{Apiversion}*
+**İstek URI 'si**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / {Resource- *Type* }/ *{Resource-name}* /Providers/Microsoft.insights/Metrics? metricnames = *{Metric}* & timespan = *{StartTime/bitişsaati}* & $Filter = *{Filter}* & Interval = *{timegre}* & toplama = *{Aggreation}* & api-Version = *{Apiversion}*
 
 Örneğin, en iyi 3 API 'yi azalan değerde, bir 5 dakikalık Aralık sırasında ' Işlem ' sayısına göre, yani GeotType 'ın ' PRIMARY ' olması halinde, istek şu şekildedir:
 
@@ -393,7 +393,7 @@ Bir hizmet için kullanılabilen ölçüm listesine erişmek için [Azure Izleyi
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https: \/ \/management. Azure.com/subscriptions/ *{SubscriptionID}* /ResourceGroups/ *{resourcegroupname}* /Providers/ *{resourceprovidernamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.insights/metricDefinitions? api-Version = *{apiversion}*
+**İstek URI 'si**: https:\/\/Management.Azure.com/subscriptions/ *{SubscriptionID}* /ResourceGroups/ *{resourcegroupname}* /Providers/ *{resourceprovidernamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.insights/metricDefinitions? api-Version = *{apiversion}*
 
 Örneğin, bir Azure mantıksal uygulaması için ölçüm tanımlarını almak üzere, istek şu şekilde görünür:
 
@@ -466,7 +466,7 @@ Kullanılabilir Ölçüm tanımları bilindikten sonra ilgili ölçüm değerler
 
 **Yöntem**: Get
 
-**İstek URI 'si**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / {Resource-*Type* } / *{Resource-Name}* /Providers/ Microsoft. Insights/ölçümler? $filter = *{Filter}* & api-Version = *{apiversion}*
+**İstek URI 'si**: *https://management.azure.com/subscriptions/ {Subscription-ID}* /ResourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{* Resource- *Name}/ {resource-Name}* /Providers/Microsoft.insights/Metrics? $Filter = *{Filter}* & api-Version = *{apiversion}*
 
 Örneğin, belirli bir zaman aralığı ve 1 saatlik zaman dilimi için RunsSucceeded ölçüm veri noktalarını almak için, istek aşağıdaki gibi olacaktır:
 
@@ -620,7 +620,7 @@ Azure Kaynak Gezgini kullanma, Azure portal istenen kaynağı görüntüleme, Po
 
 ![Alt "Azure Kaynak Gezgini"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 Kaynak KIMLIĞI Azure portal de elde edilebilir. Bunu yapmak için, istenen kaynağa gidin ve Özellikler ' i seçin. Kaynak KIMLIĞI, aşağıdaki ekran görüntüsünde görüldüğü gibi Özellikler bölümünde görüntülenir:
 

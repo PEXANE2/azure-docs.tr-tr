@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427636"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 'de model performansını değerlendirme (klasik)
 
 Bu makalede, Azure Machine Learning Studio (klasik) ' de bir modelin performansının nasıl değerlendirileceği gösterilmektedir ve bu görev için kullanılabilen ölçümlere ilişkin kısa bir açıklama sunulmaktadır. Yaygın olarak denetlenen üç öğrenme senaryosu sunulmaktadır: 
 
 * regresyon
-* İkili sınıflandırma 
-* Birden çok Lass sınıflandırması
+* ikili sınıflandırma 
+* birden çok Lass sınıflandırması
 
 
 
@@ -41,10 +41,10 @@ Alternatif olarak, giriş verilerinin farklı alt kümelerine otomatik olarak bi
 Aşağıdaki bölümlerde, hem [değerlendirme modelini][evaluate-model] hem de [çapraz doğrulama model][cross-validate-model] modüllerini kullanarak basit regresyon ve sınıflandırma modelleri oluşturacağız ve performanslarını değerlendiririz.
 
 ## <a name="evaluating-a-regression-model"></a>Regresyon modelini değerlendirme
-Bir otomobil 'nin boyut, Horsepower, altyapı özellikleri gibi özellikleri kullanarak bir fiyat tahmin etmek istediğimiz olduğunu varsayalım. Bu, hedef değişkenin (*Fiyat*) sürekli sayısal bir değer olduğu tipik bir gerileme sorunudur. Belirli bir otomobilin özellik değerleri verildiğinde, bu otomobilin fiyatını tahmin edebilen bir doğrusal regresyon modeline uyabiliriz. Bu regresyon modeli, eğitidiğimiz veri kümesini öğrenmek için kullanılabilir. Tahmin edilen otomobil fiyatlarına sahip olduktan sonra, tahmine dayalı olarak gerçek fiyatlardan ne kadar tahmin edilebileceğini inceleyerek model performansını değerlendirebiliriz. Bunu göstermek için, ML Studio (klasik) içindeki **kayıtlı veri kümeleri** bölümünde bulunan *otomatik mobil fiyat verileri (ham) veri kümesini* kullanırız.
+Bir otomobil 'nin boyut, Horsepower, altyapı özellikleri gibi özellikleri kullanarak bir fiyat tahmin etmek istediğimiz olduğunu varsayalım. Bu, hedef değişkenin (*Fiyat*) sürekli sayısal bir değer olduğu tipik bir gerileme sorunudur. Belirli bir otomobilin özellik değerleri verildiğinde, bu otomobilin fiyatını tahmin edebilen bir doğrusal regresyon modeline uyabiliriz. Bu regresyon modeli, eğitidiğimiz veri kümesini öğrenmek için kullanılabilir. Tahmin edilen otomobil fiyatlarına sahip olduktan sonra, tahmine dayalı olarak gerçek fiyatlardan ne kadar tahmin edilebileceğini inceleyerek model performansını değerlendirebiliriz. Bunu göstermek için, Machine Learning Studio (klasik) içindeki **kayıtlı veri kümeleri** bölümünde bulunan *otomatik mobil fiyat verileri (ham) veri kümesini* kullanırız.
 
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıdaki modülleri, Azure Machine Learning Studio klasik sürümünde çalışma alanınıza ekleyin:
+Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
 * Otomobil fiyat verileri (ham)
 * [Doğrusal regresyon][linear-regression]
@@ -83,10 +83,10 @@ Denemeyi çalıştırdıktan sonra, [çapraz doğrulama modeli][cross-validate-m
 Şekil 4. Regresyon modelinin çapraz doğrulama sonuçları.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Ikili sınıflandırma modelini değerlendirme
-İkili sınıflandırma senaryosunda, hedef değişkeni yalnızca iki olası sonuç içerir, örneğin: {0, 1} veya {false, true}, {negative, pozitif}. Bazı demografik ve istihdam değişkenlerine sahip yetişkin çalışanları veri kümesi verildiğini ve {"< = 50 K", "> 50 K"} değerlerine sahip bir ikili değişken olan gelir düzeyini tahmin etmek isteyip istemediğiniz varsayıyoruz. Diğer bir deyişle, negatif sınıf, yılda 50 K veya daha küçük bir değere sahip olan çalışanları temsil eder ve pozitif sınıf diğer tüm çalışanları temsil eder. Regresyon senaryosunda, bir modeli eğtireceğiz, bazı verileri değerlendiyoruz ve sonuçları değerlendiririz. Buradaki temel fark, Azure Machine Learning Studio hesaplar ve çıktılar için klasik sürümü olan ölçüm seçimleridir. Gelir düzeyi tahmin senaryosunu göstermek için [yetişkinlere](https://archive.ics.uci.edu/ml/datasets/Adult) yönelik veri kümesini, yaygın olarak kullanılan bir ikili sınıflandırıcının bir Studio (klasik) denemesi oluşturmak ve iki sınıf lojistik regresyon modelinin performansını değerlendirmek için kullanacağız.
+İkili sınıflandırma senaryosunda, hedef değişkeni yalnızca iki olası sonuç içerir, örneğin: {0, 1} veya {false, true}, {negative, pozitif}. Bazı demografik ve istihdam değişkenlerine sahip yetişkin çalışanları veri kümesi verildiğini ve {"< = 50 K", "> 50 K"} değerlerine sahip bir ikili değişken olan gelir düzeyini tahmin etmek isteyip istemediğiniz varsayıyoruz. Diğer bir deyişle, negatif sınıf, yılda 50 K veya daha küçük bir değere sahip olan çalışanları temsil eder ve pozitif sınıf diğer tüm çalışanları temsil eder. Regresyon senaryosunda, bir modeli eğtireceğiz, bazı verileri değerlendiyoruz ve sonuçları değerlendiririz. Buradaki temel fark, ölçüm Azure Machine Learning Studio (klasik) hesaplar ve çıktılar seçimleridir. Gelir düzeyi tahmin senaryosunu göstermek için [yetişkinlere](https://archive.ics.uci.edu/ml/datasets/Adult) yönelik veri kümesini, yaygın olarak kullanılan bir ikili sınıflandırıcının bir Studio (klasik) denemesi oluşturmak ve iki sınıf lojistik regresyon modelinin performansını değerlendirmek için kullanacağız.
 
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıdaki modülleri, Azure Machine Learning Studio klasik sürümünde çalışma alanınıza ekleyin:
+Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
 * Yetişkin Census geliri Ikili sınıflandırma veri kümesi
 * [İki sınıf Lojistik gerileme][two-class-logistic-regression]
@@ -105,7 +105,7 @@ Denemeyi çalıştırdıktan sonra, [modeli değerlendir][evaluate-model] modül
 
 Doğruluk, doğru sınıflandırılan örneklerin oranını sağlar. Bu, genellikle bir sınıflandırıcının değerlendirmesi sırasında baktığın ilk ölçümdür. Bununla birlikte, test verileri dengesiz olduğunda (örneklerin çoğu sınıflardan birine aittir) veya sınıflardan birindeki performanstan daha fazla ilgileniyorsanız, doğruluk gerçekten bir sınıflandırıcının verimliliğini yakalamaz. Gelir düzeyi sınıflandırma senaryosunda, örneklerin %99 ' unun yıl başına 50 ' ye eşit veya daha az alan kişileri gösterdiği bazı verileri test ettiğini varsayın. Tüm örnekler için "< = 50K" sınıfını tahmin ederek 0,99 doğruluğu elde etmek mümkündür. Bu durumdaki sınıflandırıcının genel olarak iyi bir iş yapmakta olduğu görülüyor, ancak gerçekte, yüksek gelir bireylerini sınıflandırmayacak (%1) kopyalan.
 
-Bu nedenle, değerlendirmenin daha belirgin yönlerini yakalayan ek ölçümleri hesaplamak yararlı olur. Bu tür ölçümlerin ayrıntılarına geçmeden önce, bir ikili sınıflandırma değerlendirmesinin karışıklık matrisini anlamak önemlidir. Eğitim kümesindeki sınıf etiketleri, genellikle pozitif veya negatif olarak ifade ettiğimiz yalnızca iki olası değeri alabilir. Bir sınıflandırıcının doğru şekilde tahmin edilen pozitif ve negatif örneklere, sırasıyla doğru pozitif sonuçlar (TP) ve gerçek negatifler (TN) denir. Benzer şekilde, yanlış sınıflandırılmış örneklere yanlış pozitif durumlar (FP) ve yanlış negatifler (FN) denir. Karışıklık matrisi, bu dört kategorinin her biri altında kalan örneklerin sayısını gösteren bir tablodur. Azure Machine Learning Studio klasik sürümü otomatik olarak veri kümesindeki iki sınıftan hangisinin pozitif sınıf olduğunu belirler. Sınıf etiketleri Boole veya tamsayı ise, ' true ' veya ' 1 ' olarak etiketlenmiş örnekler pozitif sınıfa atanır. Etiketler, gelir veri kümesi gibi dizelerdir, Etiketler alfabetik olarak sıralanır ve ikinci düzey pozitif sınıf olduğunda, ilk düzey negatif sınıf olarak seçilir.
+Bu nedenle, değerlendirmenin daha belirgin yönlerini yakalayan ek ölçümleri hesaplamak yararlı olur. Bu tür ölçümlerin ayrıntılarına geçmeden önce, bir ikili sınıflandırma değerlendirmesinin karışıklık matrisini anlamak önemlidir. Eğitim kümesindeki sınıf etiketleri, genellikle pozitif veya negatif olarak ifade ettiğimiz yalnızca iki olası değeri alabilir. Bir sınıflandırıcının doğru şekilde tahmin edilen pozitif ve negatif örneklere, sırasıyla doğru pozitif sonuçlar (TP) ve gerçek negatifler (TN) denir. Benzer şekilde, yanlış sınıflandırılmış örneklere yanlış pozitif durumlar (FP) ve yanlış negatifler (FN) denir. Karışıklık matrisi, bu dört kategorinin her biri altında kalan örneklerin sayısını gösteren bir tablodur. Azure Machine Learning Studio (klasik) otomatik olarak, veri kümesindeki iki sınıftan hangisinin pozitif sınıf olduğunu belirler. Sınıf etiketleri Boole veya tamsayı ise, ' true ' veya ' 1 ' olarak etiketlenmiş örnekler pozitif sınıfa atanır. Etiketler, gelir veri kümesi gibi dizelerdir, Etiketler alfabetik olarak sıralanır ve ikinci düzey pozitif sınıf olduğunda, ilk düzey negatif sınıf olarak seçilir.
 
 ![İkili sınıflandırma karışıklık matrisi](./media/evaluate-model-performance/6a.png)
 
@@ -136,7 +136,7 @@ Regresyon örneğinde olduğu gibi, verilerin farklı alt kümelerini otomatik o
 Bu deneyde, Iris tesisindeki üç farklı türde (sınıf) örnekler içeren popüler [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "İs") veri kümesini kullanacağız. Her örnek için dört Özellik değeri (sepal uzunluğu/genişliği ve Petal uzunluğu/genişliği) vardır. Önceki denemeleri, modelleri aynı veri kümelerini kullanarak eğitimli ve test ediyoruz. Burada, verilerin iki alt kümesini oluşturmak, birincinin üzerinde eğmek ve ikincisi değerlendirmek ve değerlendirmek için [bölünmüş veri][split] modülünü kullanacağız. Iris veri kümesi, [UCI Machine Learning deposunda](https://archive.ics.uci.edu/ml/index.html)herkese açık bir şekilde bulunabilir ve [içeri aktarma verileri][import-data] modülü kullanılarak indirilebilir.
 
 ### <a name="creating-the-experiment"></a>Deneme oluşturma
-Aşağıdaki modülleri, Azure Machine Learning Studio klasik sürümünde çalışma alanınıza ekleyin:
+Azure Machine Learning Studio (klasik) çalışma alanınıza aşağıdaki modülleri ekleyin:
 
 * [Verileri içeri aktar][import-data]
 * [Birden çok Lass karar ormanı][multiclass-decision-forest]

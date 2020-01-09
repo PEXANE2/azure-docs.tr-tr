@@ -1,18 +1,18 @@
 ---
-title: IP adresleri erişimini kısıtlama
-description: İstemci IP adreslerini veya adres aralıklarını açıkça seçerek Azure App Service uygulamanızın güvenliğini nasıl sağlayacağınızı öğrenin.
+title: Azure App Service erişim kısıtlamaları
+description: Erişim kısıtlamalarını belirterek uygulamanızın Azure App Service güvenliğini nasıl sağlayacağınızı öğrenin.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422234"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları #
 
@@ -24,7 +24,7 @@ Uygulamanıza bir istek yapıldığında, KIMDEN adresi erişim kısıtlamaları
 
 Erişim kısıtlamaları özelliği, kodunuzun çalıştırıldığı çalışanların ana bilgisayarlarının yukarı akış olan App Service ön uç rollerinde uygulanır. Bu nedenle, erişim kısıtlamaları etkin bir ağ ACL 'lardır.
 
-Bir Azure sanal ağından (VNet) Web uygulamanıza erişimi kısıtlama özelliği, [hizmet uç noktaları][serviceendpoints]olarak adlandırılır. Hizmet uç noktaları, seçilen alt ağlardan çok kiracılı bir hizmete erişimi sınırlamanıza olanak tanır. Hem ağ tarafında hem de etkinleştirildiği hizmette etkin olmalıdır. App Service Ortamı barındırılan uygulamalarla trafiği kısıtlamak için çalışmaz.  Bir App Service Ortamı kullanıyorsanız, uygulamanıza erişimi IP adresi kurallarıyla kontrol edebilirsiniz.
+Bir Azure sanal ağından (VNet) Web uygulamanıza erişimi kısıtlama özelliği, [hizmet uç noktaları][serviceendpoints]olarak adlandırılır. Hizmet uç noktaları, seçilen alt ağlardan çok kiracılı bir hizmete erişimi sınırlamanıza olanak tanır. Hem ağ tarafında hem de etkinleştirildiği hizmette etkin olmalıdır. App Service Ortamı barındırılan uygulamalarla trafiği kısıtlamak için çalışmaz. Bir App Service Ortamı kullanıyorsanız, uygulamanıza erişimi IP adresi kurallarıyla kontrol edebilirsiniz.
 
 ![erişim kısıtlamaları akışı](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -58,7 +58,7 @@ Hizmet uç noktaları, seçili Azure sanal ağ alt ağlarına erişimi kısıtla
 
 Hizmet uç noktaları, bir App Service Ortamı çalışan uygulamalara erişimi kısıtlamak için kullanılamaz. Uygulamanız bir App Service Ortamı olduğunda, IP erişim kuralları ile uygulamanıza erişimi denetleyebilirsiniz. 
 
-Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer WAF cihazları ile yapılandırabilirsiniz. Ayrıca, çok katmanlı uygulamaları güvenli arka uçlarla da yapılandırabilirsiniz. Bazı olasılıklar hakkında daha fazla ayrıntı için, [ağ özelliklerini okuyun ve App Service](networking-features.md).
+Hizmet uç noktaları ile uygulamanızı uygulama ağ geçitleri veya diğer WAF cihazları ile yapılandırabilirsiniz. Ayrıca, çok katmanlı uygulamaları güvenli arka uçlarla da yapılandırabilirsiniz. Bazı olasılıklarla ilgili daha fazla ayrıntı için, [ağ özelliklerini okuyun ve App Service](networking-features.md) ve [hizmet uç noktalarıyla tümleştirme Application Gateway](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Erişim kısıtlama kurallarını yönetme
 
@@ -90,34 +90,49 @@ Uygulamanıza erişimi denetleyebilmenin yanı sıra, uygulamanız tarafından k
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Erişim kısıtlama kuralları programlama yoluyla düzenleme ##
 
-Şu anda yeni erişim kısıtlamaları özelliği için CLı veya PowerShell yoktur, ancak değerler Kaynak Yöneticisi uygulama yapılandırmasında bir [Azure REST API](https://docs.microsoft.com/rest/api/azure/) put işlemiyle el ile ayarlanabilir. Örnek olarak, gerekli JSON 'u eklemek için resources.azure.com kullanabilir ve ıpsecurityrestrictions bloğunu düzenleyebilirsiniz.
+[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) ve [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) , erişim kısıtlamalarını düzenlemeyle ilgili destek içerir. Azure CLı kullanarak erişim kısıtlaması ekleme örneği:
+
+```azurecli-interactive
+az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
+    --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
+```
+Azure PowerShell kullanarak erişim kısıtlaması ekleme örneği:
+
+```azurepowershell-interactive
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
+    -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
+```
+
+Değerler ayrıca, Kaynak Yöneticisi veya Azure Resource Manager şablonu kullanarak uygulama yapılandırmasında bir [Azure REST API](https://docs.microsoft.com/rest/api/azure/) put işlemiyle el ile de ayarlanabilir. Örnek olarak, gerekli JSON 'u eklemek için resources.azure.com kullanabilir ve ıpsecurityrestrictions bloğunu düzenleyebilirsiniz.
 
 Bu bilgilerin Kaynak Yöneticisi konumu:
 
 management.azure.com/subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grupları**/Providers/Microsoft.Web/Sites/**Web uygulaması adı**/config/Web? api-Version = 2018-02-01
 
 Önceki örnek için JSON sözdizimi şöyledir:
-
-    {
-      "properties": {
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "122.133.144.0/24",
-            "action": "Allow",
-            "tag": "Default",
-            "priority": 100,
-            "name": "IP example rule"
-          }
-        ]
+```json
+{
+  "properties": {
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "122.133.144.0/24",
+        "action": "Allow",
+        "priority": 100,
+        "name": "IP example rule"
       }
-    }
+    ]
+  }
+}
+```
 
-## <a name="function-app-ip-restrictions"></a>İşlev Uygulaması IP kısıtlamaları
+## <a name="azure-function-app-access-restrictions"></a>Azure İşlev Uygulaması erişim kısıtlamaları
 
-App Service planlarla aynı işlevselliğe sahip her iki Işlev uygulaması için de IP kısıtlamaları mevcuttur. IP kısıtlamalarının etkinleştirilmesi, izin verilmeyen IP 'Ler için Portal kod düzenleyicisini devre dışı bırakır.
+Erişim kısıtlamaları, App Service planlarla aynı işlevselliğe sahip her iki Işlev uygulaması için de kullanılabilir. Erişim kısıtlamalarını etkinleştirmek, izin verilmeyen IP 'Ler için Portal kod düzenleyicisini devre dışı bırakır.
 
-[Daha fazla bilgi edinin](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+## <a name="next-steps"></a>Sonraki adımlar
+[Azure Işlev uygulamaları için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
+[Hizmet uç noktaları ile Application Gateway tümleştirme](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440179"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Data Factory kullanarak SAP Business Warehouse 'tan (bant gen
 > [!TIP]
 > Açık Hub tümleştirmesi ve değişim ayıklama akışı SAP BW dahil SAP BW verileri kopyalama hakkında genel bilgi için, bkz. [Azure Data Factory kullanarak SAP Business Warehouse 'Tan açık hub aracılığıyla veri kopyalama](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Azure Data Factory**: yoksa [bir veri fabrikası oluşturmak](quickstart-create-data-factory-portal.md#create-a-data-factory)için adımları izleyin.
 
@@ -101,7 +101,7 @@ Azure portalında veri fabrikanıza gidin. Data Factory Kullanıcı arabirimini 
 
     ![Kopyalama ayarlarını yapılandırma](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **Özet** sayfasında ayarları gözden geçirin. Sonra **İleri**’yi seçin.
+12. **Özet** sayfasında, ayarları inceleyin. Sonra **İleri**’yi seçin.
 
 13. **Dağıtım** sayfasında, işlem hattını Izlemek için **izleyici** ' yi seçin.
 
@@ -156,11 +156,15 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
 
    - **Sapopenhubdestinationname**: verileri kopyalamak Için Açık hub tablosu adını belirtin.
 
-   - **ADLSGen2SinkPath**: verileri kopyalamak için hedef Azure Data Lake Storage 2. yolunu belirtin. Yol yoksa Data Factory kopyalama etkinliği yürütme sırasında bir yol oluşturur.
+   - **Data_Destination_Container**: verileri kopyalamak için hedef Azure Data Lake Storage 2. kapsayıcısını belirtin. Kapsayıcı yoksa Data Factory kopyalama etkinliği yürütme sırasında bir tane oluşturur.
+  
+   - **Data_Destination_Directory**: verileri kopyalamak için Azure Data Lake Storage 2. kapsayıcısı altında klasör yolunu belirtin. Yol yoksa Data Factory kopyalama etkinliği yürütme sırasında bir yol oluşturur.
+  
+   - **Highsulu Markblobcontainer**: üst eşik değerini depolamak için kapsayıcıyı belirtin.
 
-   - **Highsulu Markblobpath**: `container/path`gibi üst eşik değerini depolamak için yolu belirtin.
+   - **Highsulu Markblobdirectory**: üst-eşik değerini depolamak için kapsayıcı altında klasör yolunu belirtin.
 
-   - **Highsulu markblobname**: `requestIdCache.txt`gibi yüksek eşik değerini depolamak için blob adını belirtin. BLOB depolama alanında, The Highsulu Markblobpath + Highsulu Markblobname adlı, *Container/Path/requestIdCache. txt*gibi karşılık gelen yola gidin. 0 içerikli bir blob oluşturun.
+   - **Highsulu markblobname**: `requestIdCache.txt`gibi yüksek eşik değerini depolamak için blob adını belirtin. BLOB depolama alanında, karşılık gelen Highsulu Markblobcontainer + Highsulu Markblobdirectory + Highsulu Markblobname ( *Container/Path/requestIdCache. txt*) yoluna gidin. 0 içerikli bir blob oluşturun.
 
       ![Blob içeriği](media/load-sap-bw-data/blob.png)
 
@@ -185,11 +189,11 @@ Veri Fabrikası **Başlarken** sayfasında, yerleşik şablonu kullanmak için �
          }
          ```
 
-      3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı**Için, daha önce **highsulu Markblobpath** ve **highsulu markblobname**içinde yapılandırdığınız aynı değerleri kullanın.
+      3. **BLOB oluştur** eylemi ekleyin. **Klasör yolu** ve **BLOB adı**Için, daha önce *highsulu Markblobcontainer + highsulu Markblobdirectory* ve *highsulu markblobname*içinde yapılandırdığınız aynı değerleri kullanın.
 
       4. **Kaydet**’i seçin. Daha sonra, Data Factory işlem hattında kullanılacak **http post URL 'sinin** değerini kopyalayın.
 
-4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra, yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için **hata ayıkla** > **son** ' u seçin. Ya da değişiklikleri yayımlamak için **Tümünü Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek için **Tetikle** ' ı seçin.
+4. Data Factory işlem hattı parametrelerini sağlamadıktan sonra, yapılandırmayı doğrulamak üzere bir çalıştırma çağırmak için **hata ayıkla** > **son** ' u seçin. Ya da tüm değişiklikleri yayımlamak için **Yayımla** ' yı seçin ve ardından bir çalıştırmayı yürütmek Için **tetikleyici Ekle** ' yi seçin.
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW açık hub hedefi yapılandırması
 

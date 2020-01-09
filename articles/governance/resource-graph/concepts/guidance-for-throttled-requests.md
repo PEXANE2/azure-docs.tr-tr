@@ -1,14 +1,14 @@
 ---
 title: Kısıtlanan istekler için yönergeler
-description: Azure Kaynak Grafiği tarafından kısıtlanacak istekleri önlemek için Batch, Stagger, sayfal ve sorgu paralel olarak sorgulama yapmayı öğrenin.
-ms.date: 11/21/2019
+description: Azure Kaynak Grafiği tarafından daraltılan isteklerin önüne geçmek için, paralel olarak Grup, Stagger, sayfal ve sorgu yapmayı öğrenin.
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304672"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436073"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Kaynak grafiğinde kısıtlanmış isteklere yönelik kılavuz
 
@@ -17,7 +17,7 @@ Azure Kaynak Grafiği verilerinin programlı ve sık kullanımını oluştururke
 Bu makalede, Azure Kaynak Grafında sorguların oluşturulmasıyla ilgili dört alan ve desen ele alınmaktadır:
 
 - Azaltma üst bilgilerini anlama
-- Sorguları toplu işleme
+- Sorguları gruplandırma
 - Kademelendirme sorguları
 - Sayfalandırmaya etkisi
 
@@ -37,9 +37,9 @@ Her sorgu yanıtında, Azure Kaynak Grafiği iki daraltma üst bilgisi ekler:
 
 Sorgu isteklerinde _geri_ dönmek üzere üst bilgileri kullanmanın bir örneğini görmek için bkz. [sorgudaki örnek paralel](#query-in-parallel).
 
-## <a name="batching-queries"></a>Sorguları toplu işleme
+## <a name="grouping-queries"></a>Sorguları gruplandırma
 
-Bir aboneliğe, kaynak grubuna veya tek tek kaynağa göre sorguları toplu hale getirme, paralelleştirme sorgularıyla daha etkilidir. Daha büyük bir sorgunun kota maliyeti genellikle birçok küçük ve hedeflenen sorgunun kota maliyetinden düşüktür. Toplu iş boyutunun _300_' den küçük olması önerilir.
+Sorguları aboneliğe, kaynak grubuna veya tek tek kaynağa göre gruplandırma, paralelleştirme sorgularıyla daha etkilidir. Daha büyük bir sorgunun kota maliyeti genellikle birçok küçük ve hedeflenen sorgunun kota maliyetinden düşüktür. Grup boyutunun _300_' den küçük olması önerilir.
 
 - Kötü iyileştirilmiş bir yaklaşım örneği
 
@@ -62,19 +62,19 @@ Bir aboneliğe, kaynak grubuna veya tek tek kaynağa göre sorguları toplu hale
   }
   ```
 
-- İyileştirilmiş bir toplu işlem yaklaşımının örnek #1
+- En iyi duruma getirilmiş gruplama yaklaşımının örnek #1
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Bir aboneliğe, kaynak grubuna veya tek tek kaynağa göre sorguları toplu hale
   }
   ```
 
-- İyileştirilmiş bir toplu işlem yaklaşımının örnek #2
+- Tek bir sorguda birden çok kaynak almak için en iyi duruma getirilmiş gruplama yaklaşımının örnek #2
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralel olarak sorgula
 
-Toplu işlemenin paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca toplu olarak oluşturamamasına neden olur. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Aşağıda, bu senaryolarda azaltma üst bilgilerine göre nasıl _geri_ alınacağını gösteren bir örnek verilmiştir:
+Gruplandırmanın paralelleştirme üzerinde kullanılması önerilse de, sorguların kolayca gruplanamamasının zaman vardır. Bu durumlarda, paralel bir biçimde birden fazla sorgu göndererek Azure Kaynak grafiğini sorgulamak isteyebilirsiniz. Aşağıda, bu senaryolarda azaltma üst bilgilerine göre nasıl _geri_ alınacağını gösteren bir örnek verilmiştir:
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici 2: Kredi risk modellerini eğitme'
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio klasik sürümünde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. Modellerin nasıl eğiteleceğini ve değerlendirileceğini gösterir.
+description: Azure Machine Learning Studio (klasik) ' de kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. Modellerin nasıl eğiteleceğini ve değerlendirileceğini gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
 ms.author: sgilley
@@ -10,20 +10,20 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b3f0ebe2cad68759e7feeb7a7cc3dadbbd03ee7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9aeaed6565e69409bc55a71985296b2393226ba4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838650"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427478"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Öğretici 2: Kredi risk modellerini eğitme-Azure Machine Learning Studio (klasik)
 
-Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio klasik sürümünde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür**.
+Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür**.
 
 Bir kişinin kredi başvurusunda verdiği bilgilere dayanarak kredi riskini tahmin etmeniz gerektiğini varsayalım.  
 
-Kredi risk değerlendirmesi karmaşık bir sorundur, ancak bu öğreticide bir bit basitleştirilmesi sağlanır. Bunu, Microsoft Azure Machine Learning Studio (klasik) kullanarak tahmine dayalı analiz çözümü oluşturma hakkında bir örnek olarak kullanacaksınız. Bu çözüm için Azure Machine Learning Studio klasik sürümünü ve bir Machine Learning Web hizmetini kullanacaksınız.  
+Kredi risk değerlendirmesi karmaşık bir sorundur, ancak bu öğreticide bir bit basitleştirilmesi sağlanır. Bunu, Microsoft Azure Machine Learning Studio (klasik) kullanarak tahmine dayalı analiz çözümü oluşturma hakkında bir örnek olarak kullanacaksınız. Bu çözüm için Azure Machine Learning Studio (klasik) ve bir Machine Learning Web hizmeti kullanacaksınız.  
 
 Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski verileriyle karşılaşırsınız.  Daha sonra tahmine dayalı bir model geliştirip eğirsiniz.  Son olarak, modeli bir Web hizmeti olarak dağıtırsınız.
 
@@ -38,13 +38,13 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 [Öğreticinin üçüncü kısmında](tutorial-part3-credit-risk-deploy.md), modeli bir Web hizmeti olarak dağıtacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Öğreticiden birinin bir kısmını](tutorial-part1-credit-risk.md)doldurun.
 
 ## <a name="train"></a>Birden çok modeli eğitme
 
-Makine öğrenimi modelleri oluşturmak için Azure Machine Learning Studio klasik sürümünü kullanmanın avantajlarından biri, tek bir deneyde aynı anda birden fazla model türü deneyebilme ve sonuçları karşılaştırmaktır. Bu tür bir deneme, sorununuz için en iyi çözümü bulmanıza yardımcı olur.
+Makine öğrenimi modelleri oluşturmak için Azure Machine Learning Studio (klasik) kullanmanın avantajlarından biri, tek bir deneyde aynı anda birden fazla türde model deneyebilme ve sonuçları karşılaştırmaktır. Bu tür bir deneme, sorununuz için en iyi çözümü bulmanıza yardımcı olur.
 
 Bu öğreticide geliştirdiğimiz deneymde, iki farklı model türü oluşturacak ve sonra Puanlama sonuçlarını karşılaştırarak son denememiz için hangi algoritmayı kullanmak istediğinize karar verirsiniz.  
 
@@ -57,7 +57,7 @@ Aralarından seçim yapabileceğiniz çeşitli modeller vardır. Kullanılabilir
 
 Bu denemenize hem [Iki sınıf önceden desteklenen karar ağacı][two-class-boosted-decision-tree] modülünü hem de [Iki sınıf desteği vektör makinesi][two-class-support-vector-machine] modülünü ekleyeceksiniz.
 
-### <a name="two-class-boosted-decision-tree"></a>İki sınıf önceden artırılmış karar ağacı
+### <a name="two-class-boosted-decision-tree"></a>İki Sınıflı Artırmalı Karar Ağacı
 
 İlk olarak, artırılmış karar ağacı modelini ayarlayın.
 
@@ -88,7 +88,7 @@ Denemenin bu bölümü artık şuna benzer:
 
 1. **Tamam** onay işaretine tıklayın.
 
-### <a name="two-class-support-vector-machine"></a>İki Sınıflı Destek Vektör Makinesi
+### <a name="two-class-support-vector-machine"></a>Çift Sınıflı Destek Vektör Makinesi
 
 Ardından, SVM modelini ayarlarsınız.  
 

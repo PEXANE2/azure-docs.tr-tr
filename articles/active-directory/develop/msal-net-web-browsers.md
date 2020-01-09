@@ -1,5 +1,5 @@
 ---
-title: MSAL.NET ile Web tarayıcıları kullanma | Mavisi
+title: Web tarayıcıları kullanma (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
@@ -14,14 +14,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424166"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>MSAL.NET 'de Web tarayıcıları kullanma
+# <a name="using-web-browsers-msalnet"></a>Web tarayıcıları kullanma (MSAL.NET)
+
 Etkileşimli kimlik doğrulaması için Web tarayıcıları gereklidir. Varsayılan olarak, MSAL.NET, Xamarin. iOS ve Xamarin. Android üzerindeki [sistem Web tarayıcısını](#system-web-browser-on-xamarinios-xamarinandroid) destekler. Ancak, [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) ve [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) uygulamalarında gereksinimlerinize (UX, çoklu oturum açma (SSO) ve güvenlik için ihtiyacı vardır) bağlı olarak [Katıştırılmış Web tarayıcısını de etkinleştirebilirsiniz](#enable-embedded-webviews-on-ios-and-android) . Aynı şekilde, grafik varlığına veya Android 'de Chrome özel sekmelerini destekleyen bir tarayıcıya göre [dinamik olarak](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) hangi Web tarayıcısını kullanacağınızı seçebilirsiniz. MSAL.NET yalnızca .NET Core masaüstü uygulamalarında sistem tarayıcısını destekler.
 
 ## <a name="web-browsers-in-msalnet"></a>MSAL.NET 'de Web tarayıcıları
@@ -47,13 +48,13 @@ Genellikle, platform varsayılanını kullanmanız önerilir ve bu genellikle si
 
 | Çerçeve        | Eklenen | Sistem | Varsayılan |
 | ------------- |-------------| -----| ----- |
-| .NET klasik     | Yes | Evet ^ | Eklenen |
+| .NET klasik     | Evet | Evet ^ | Eklenen |
 | .NET Core     | Hayır | Evet ^ | Sistem |
 | .NET Standard | Hayır | Evet ^ | Sistem |
-| UWP | Yes | Hayır | Eklenen |
-| Xamarin.Android | Yes | Yes  | Sistem |
-| Xamarin.iOS | Yes | Yes  | Sistem |
-| Xamarin.Mac| Yes | Hayır | Eklenen |
+| UWP | Evet | Hayır | Eklenen |
+| Xamarin.Android | Evet | Evet  | Sistem |
+| Xamarin.iOS | Evet | Evet  | Sistem |
+| Xamarin.Mac| Evet | Hayır | Eklenen |
 
 ^ "http://localhost" yeniden yönlendirme URI 'SI gerektirir
 

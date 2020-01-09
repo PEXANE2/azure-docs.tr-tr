@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443441"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Uygulamalarım (Önizleme) portalında çalışma alanları oluşturma
 
@@ -45,7 +45,7 @@ Kullanıcılarınız, erişimi olan bulut tabanlı uygulamaları görüntülemek
    ![Kullanıcı Önizleme özellikleri](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> Uygulamalar portalı 'nı açmak için, kullanıcılar bağlantı `https://myapps.microsoft.com` veya kuruluşunuzun `https://myapps.microsoft.com/contoso.com`gibi özelleştirilmiş bağlantıyı kullanabilir. Kullanıcılar uygulamalarım önizleme sürümüne yönlendirilmemişse, kullanıcılar `https://myapplications.microsoft.com` veya `https://myapplications.microsoft.com/contoso.com`denemelidir.
+> Uygulamalar portalı 'nı açmak için, kullanıcılar bağlantı `https://myapps.microsoft.com` veya kuruluşunuzun `https://myapps.microsoft.com/contoso.com`gibi özelleştirilmiş bağlantıyı kullanabilir. Yeni uygulamalarım deneyimini etkinleştirdikten sonra, **güncelleştirilmiş uygulamalar deneyimimin kullanılabilir olduğu** başlık, uygulamalar sayfasının en üstünde görüntülenir ve kullanıcılar yeni deneyimi görüntülemek için **deneyin** seçeneğini belirleyebilir. Kullanıcılar yeni deneyimi kullanmayı durdurmak için sayfanın üst kısmındaki **yeni deneyim dışında bırak** başlığından **Evet** ' i seçebiliyor.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -59,7 +59,7 @@ Bir çalışma alanı oluşturmak için bir Azure AD Premium P1 veya P2 lisansı
 
 4. **Yeni çalışma alanı**' nı seçin. **Yeni çalışma alanı** sayfasında, çalışma alanı Için bir **ad** girin (adında "çalışma alanı" kullanmaktan önermiyoruz. Sonra bir **Açıklama**girin.
 
-   ![Yeni çalışma alanı oluştur](media/access-panel-workspaces/new-workspace.png)
+   ![Yeni bir çalışma alanı oluşturma](media/access-panel-workspaces/new-workspace.png)
 
 5. **Gözden geçir + oluştur**' u seçin. Yeni çalışma alanının özellikleri görüntülenir.
 
@@ -88,7 +88,7 @@ Bir çalışma alanı oluşturmak için bir Azure AD Premium P1 veya P2 lisansı
 Denetim günlükleri, çalışma alanı oluşturma Son Kullanıcı eylemleri dahil olmak üzere uygulama çalışma alanları operasyonlarımı kaydeder. Uygulamalarımın aşağıdaki olayları oluşturulmuştur:
 
 * Çalışma alanı oluşturma
-* Çalışma alanını Düzenle
+* Çalışma alanını düzenleme
 * Çalışma alanını sil
 * Uygulama başlatma (Son Kullanıcı)
 * Self Servis uygulama ekleme (Son Kullanıcı)
@@ -98,6 +98,15 @@ Etkinlik bölümündeki Denetim **günlükleri** > **Azure Active Directory** > 
 
    ![Kullanıcılara ve gruplara roller atama](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>Hesap Sayfalarım için destek alın
+
+Uygulamalarım sayfasında, bir Kullanıcı hesap ayarlarını açmak için **hesabım > ** hesabımı **görüntüle** seçeneğini belirleyebilir. Azure **ad Hesabım** sayfasında, kullanıcılar güvenlik bilgilerini, cihazlarını, parolalarını ve daha fazlasını yönetebilir. Office hesap ayarlarına de erişebilirler.
+
+Azure AD hesabı sayfası veya Office hesabı sayfasında bir sorun için destek isteği göndermeniz gerekiyorsa, isteğiniz doğru şekilde yönlendirilmek için aşağıdaki adımları izleyin: 
+
+* **Azure AD "Hesabım"** sayfasındaki sorunlar için Azure Portal içinden bir destek isteği açın. **Yeni destek isteği** > **Azure Active Directory** **Azure Portal** > gidin.
+
+* **Office "Hesabım"** sayfasındaki sorunlar için Microsoft 365 Yönetim Merkezi içinden bir destek isteği açın. **Microsoft 365 yönetim merkezi** > **destek**bölümüne gidin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Active Directory uygulamalar için son kullanıcı deneyimleri](end-user-experiences.md)

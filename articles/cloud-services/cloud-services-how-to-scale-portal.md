@@ -2,17 +2,17 @@
 title: Portalda bir bulut hizmetini otomatik ölçeklendirme | Microsoft Docs
 description: Azure 'da bir bulut hizmeti Web rolü veya çalışan rolü için otomatik ölçek kurallarını yapılandırmak üzere portalını nasıl kullanacağınızı öğrenin.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360846"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma
 
@@ -41,7 +41,7 @@ Uygulamanız için ölçeklendirmeyi yapılandırmadan önce aşağıdaki bilgil
 Bulut hizmetinizi seçtikten sonra, bulut hizmeti dikey penceresinin görünür olması gerekir.
 
 1. Bulut hizmeti dikey penceresinde, **Roller ve örnekler** kutucuğunda, bulut hizmetinin adını seçin.   
-   **ÖNEMLİ**: Rolün altındaki rol örneğine değil, bulut hizmeti rolüne tıkladığınızdan emin olun.
+   **Önemli**: rolün altındaki rol örneğine değil, bulut hizmeti rolüne tıkladığınızdan emin olun.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **Ölçek** kutucuğunu seçin.
@@ -105,3 +105,6 @@ Bu ayar, rolden otomatik ölçeklendirmeyi kaldırır ve ardından örnek sayıs
 3. Ölçeklendirilecek rolün örnekleri.
 
 Ölçek ayarlarını yapılandırdıktan sonra üstteki **Kaydet** simgesini seçin.
+
+
+

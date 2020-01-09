@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde yetkilendirme ve roller-Azure Active Directory
+title: Yetkilendirme yönetiminde yetkilendirme ve roller-Azure AD
 description: Erişim yönetimini, BT yöneticilerinden departman yöneticilerine ve proje yöneticilerine, erişimi yönetebilmeleri için nasıl atayacağınızı öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422596"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
@@ -69,7 +69,7 @@ Temsilcinin ardından, pazarlama departmanı aşağıdaki tabloya benzer rollere
 | --- | --- | --- | --- |
 | Hana | BT Yöneticisi | Genel yönetici veya Kullanıcı Yöneticisi |  |
 | Mamta | Pazarlama Yöneticisi | Kullanıcı | Katalog Oluşturucu ve Katalog sahibi |
-| Olduğundan | Pazarlama lideri | Kullanıcı | Katalog sahibi |
+| Bob | Pazarlama lideri | Kullanıcı | Katalog sahibi |
 | Jessica | Pazarlama Projesi Yöneticisi | Kullanıcı | Paket Yöneticisi 'ne erişim |
 
 ## <a name="entitlement-management-roles"></a>Yetkilendirme Yönetimi rolleri
@@ -84,14 +84,14 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 Ayrıca, atanan bir onaylayan ve bir erişim paketinin istek sahibi de haklara sahiptir, ancak bu roller rol değildir.
 
-| Right | Açıklama |
+| Sağ | Açıklama |
 | --- | --- |
 | Kişi | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
-| Sahibinin | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
+| Requestor | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
 
 Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceği görevler listelenmiştir.
 
-| Görev | Yöneticileri | Katalog Oluşturucu | Katalog sahibi | Paket Yöneticisi 'ne erişim |
+| Görev | Yönetici | Katalog Oluşturucu | Katalog sahibi | Paket Yöneticisi 'ne erişim |
 | --- | :---: | :---: | :---: | :---: |
 | [Bir katalog oluşturucuya temsilci seçme](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Bağlı kuruluş ekleme](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -125,7 +125,7 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 | [Genel yönetici](../users-groups-roles/directory-assign-admin-roles.md) | Yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Kullanıcı Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
+| [Exchange yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
 | [Takımlar Hizmet Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
 | [SharePoint Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Uygulama Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md) | Katalog sahibi |  |  | :heavy_check_mark: |  |

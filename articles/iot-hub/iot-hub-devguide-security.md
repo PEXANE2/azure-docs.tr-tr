@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429300"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -37,11 +37,11 @@ Aşağıdaki yollarla [izin](#iot-hub-permissions) verebilirsiniz:
 
 * **IoT Hub düzeyi paylaşılan erişim ilkeleri**. Paylaşılan erişim ilkeleri, [izinlerin](#iot-hub-permissions)herhangi bir birleşimini verebilir. [Azure Portal](https://portal.azure.com)ilkeleri, [IoT Hub kaynak REST API 'lerini](/rest/api/iothub/iothubresource)kullanarak veya [az IoT Hub ilkesi](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI kullanarak belirleyebilirsiniz. Yeni oluşturulan bir IoT Hub 'ı aşağıdaki varsayılan ilkelere sahiptir:
   
-  | Paylaşılan Erişim İlkesi | İzinler |
+  | Paylaşılan erişim Ilkesi | İzinler |
   | -------------------- | ----------- |
   | iothubowner | Tüm izinler |
   | hizmet | **Serviceconnect** izinleri |
-  | cihaz | **Deviceconnect** izinleri |
+  | device | **Deviceconnect** izinleri |
   | registryRead | **Registryread** izinleri |
   | registryReadWrite | **Registryread** ve **registrywrite** izinleri |
 
@@ -57,14 +57,14 @@ Aşağıdaki yollarla [izin](#iot-hub-permissions) verebilirsiniz:
 > [!NOTE]
 > Ayrıntılı bilgi için bkz. [izinler](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-Azure IoT Hub, paylaşılan erişim ilkelerine ve kimlik kayıt defteri güvenlik kimlik bilgilerine karşı bir belirteci doğrulayarak uç noktalara erişim izni verir.
+Azure IoT Hub, bir belirteci paylaşılan erişim ilkeleri ve kimlik kayıt defteri güvenlik kimlik bilgileri ile doğrulayarak uç noktalara erişim izni verir.
 
 Simetrik anahtarlar gibi güvenlik kimlik bilgileri hiçbir şekilde kablo üzerinden gönderilmez.
 
 > [!NOTE]
-> Azure IoT Hub kaynak sağlayıcısı, [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)tüm sağlayıcılar gibi Azure aboneliğiniz aracılığıyla güvenli hale getirilir.
+> Azure IoT Hub kaynak sağlayıcısı, [Azure Resource Manager](../azure-resource-manager/management/overview.md)tüm sağlayıcılar gibi Azure aboneliğiniz aracılığıyla güvenli hale getirilir.
 
 Güvenlik belirteçleri oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [IoT Hub güvenlik belirteçleri](iot-hub-devguide-security.md#security-tokens).
 
@@ -72,7 +72,7 @@ Güvenlik belirteçleri oluşturma ve kullanma hakkında daha fazla bilgi için 
 
 MQTT, AMQP ve HTTPS gibi desteklenen her protokol, belirteçleri farklı şekillerde aktarır.
 
-MQTT kullanılırken, Connect paketi, Kullanıcı adı alanında ClientID `{iothubhostname}/{deviceId}` ve Password alanındaki bir SAS belirteci olarak DeviceID 'yi içerir. `{iothubhostname}`IoT Hub 'ının tam CName 'i olmalıdır (örneğin, contoso.azure-devices.net).
+MQTT kullanılırken, CONNECT paketinde ClientID, username alanındaki `{iothubhostname}/{deviceId}` ve Password alanındaki bir SAS belirteci olarak DeviceID bulunur. `{iothubhostname}` IoT Hub 'ının tam CName 'i olmalıdır (örneğin, contoso.azure-devices.net).
 
 [AMQP](https://www.amqp.org/)kullanırken, IoT Hub [SASL PLAIN](https://tools.ietf.org/html/rfc4616) ve [AMQP talepler tabanlı güvenliği](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)destekler.
 
@@ -80,8 +80,8 @@ AMQP talepler tabanlı güvenlik kullanıyorsanız, standart bu belirteçlerin n
 
 SASL PLAIN için **Kullanıcı adı** şu olabilir:
 
-* `{policyName}@sas.root.{iothubName}`IoT Hub düzeyi belirteçleri kullanıyorsanız.
-* `{deviceId}@sas.{iothubname}`cihaz kapsamlı belirteçler kullanılıyorsa.
+* IoT Hub düzeyi belirteçleri kullanılıyorsa `{policyName}@sas.root.{iothubName}`.
+* cihaz kapsamlı belirteçler kullanılıyorsa `{deviceId}@sas.{iothubname}`.
 
 Her iki durumda da, parola alanı [IoT Hub güvenlik belirteçleri](iot-hub-devguide-security.md#security-tokens)bölümünde açıklandığı gibi belirteci içerir.
 
@@ -89,7 +89,7 @@ HTTPS, **Yetkilendirme** isteği üstbilgisine geçerli bir belirteç ekleyerek 
 
 #### <a name="example"></a>Örnek
 
-Kullanıcı adı (DeviceID, büyük/küçük harfe duyarlıdır):`iothubname.azure-devices.net/DeviceId`
+Kullanıcı adı (DeviceID büyük/küçük harfe duyarlıdır): `iothubname.azure-devices.net/DeviceId`
 
 Parola ( [cihaz Gezgini](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) ARACıYLA bir SAS belirteci OLUŞTURABILIRSINIZ; CLI uzantısı komutu [az IoT Hub Generate-SAS-Token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)veya [Visual Studio Code için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
@@ -134,17 +134,17 @@ Güvenlik belirtecinin biçimi aşağıdaki biçimdedir:
 
 Beklenen değerler şunlardır:
 
-| Value | Açıklama |
+| Değer | Açıklama |
 | --- | --- |
-| imza |Şu biçimdeki bir HMAC-SHA256 imza dizesi: `{URL-encoded-resourceURI} + "\n" + expiry`. **Önemli**: Anahtarın Base64 olarak kodu çözülür ve HMAC-SHA256 hesaplamayı gerçekleştirmek için anahtar olarak kullanılır. |
+| imza |Şu biçimdeki HMAC-SHA256 imza dizesi: `{URL-encoded-resourceURI} + "\n" + expiry`. **Önemli**: anahtarın Base64 olarak kodu çözülür ve HMAC-SHA256 hesaplamayı gerçekleştirmek için anahtar olarak kullanılır. |
 | ResourceURI |Bu belirteçle erişilebilen bitiş noktalarının, IoT Hub 'ın ana bilgisayar adı (protokol yok) ile başlayan URI ön eki (segmente göre). Örneğin, `myHub.azure-devices.net/devices/device1` |
 | kaç |Süre 00:00:00 UTC 'den bu yana 1 Ocak 1970 ' de geçen saniye sayısı için UTF8 dizeleri. |
 | {URL-Encoded-resourceURI} |Küçük harf URL 'SI-küçük harf Kaynak URI 'sinin kodlaması |
 | PolicyName |Bu belirtecin başvurduğu paylaşılan erişim ilkesinin adı. Belirteç, cihaz kayıt defteri kimlik bilgilerine başvuruyorsa yok. |
 
-**Ön eke göz önüne**dön: URI öneki, karakteriyle değil, segmente göre hesaplanır. Örneğin `/a/b` , için bir `/a/b/c` ön `/a/bc`ektir.
+**Ön eke Not**: URI öneki, karakterle değil, segmente göre hesaplanır. Örneğin `/a/b`, `/a/b/c` için bir ön ektir, ancak `/a/bc`için değildir.
 
-Aşağıdaki Node. js kod parçacığında, girdilerden belirteç `resourceUri, signingKey, policyName, expiresInMins`hesaplayan **generatesastoken** adlı bir işlev gösterilmektedir. Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
+Aşağıdaki Node. js kod parçacığında, `resourceUri, signingKey, policyName, expiresInMins`giriş belirtecini hesaplayan **Generatesastoken** adlı bir işlev gösterilmektedir. Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -240,26 +240,26 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 Güvenlik belirteçleriyle IoT Hub **Deviceconnect** izinleri almanın iki yolu vardır: [kimlik kayıt defterinden simetrik bir cihaz anahtarı](#use-a-symmetric-key-in-the-identity-registry)kullanın veya [paylaşılan erişim anahtarı](#use-a-shared-access-policy)kullanın.
 
-Cihazlardan erişilebilen tüm işlevlerin, ön `/devices/{deviceId}`uçlarla uç noktalar üzerinde tasarlanarak sunulduğunu unutmayın.
+Cihazlardan erişilebilen tüm işlevlerin, `/devices/{deviceId}`ön uç noktalar üzerinde tasarlanarak sunulduğunu unutmayın.
 
 > [!IMPORTANT]
 > IoT Hub belirli bir cihazın kimlik doğrulamasını yapmanın tek yolu, cihaz kimliği simetrik anahtar kullanmaktır. Cihaz işlevselliğine erişmek için paylaşılan erişim ilkesi kullanıldığında, çözüm güvenlik belirtecini güvenilen bir alt bileşen olarak veren bileşeni göz önünde bulundurmalıdır.
 
 Cihaza yönelik uç noktalar (Protokolden bağımsız olarak) vardır:
 
-| Uç Nokta | İşlevi |
+| Uç nokta | İşlev |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |Cihazdan buluta iletiler gönderme. |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |Buluttan cihaza iletileri alın. |
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>Kimlik kayıt defterinde bir simetrik anahtar kullanın
 
-Bir belirteç oluşturmak için bir cihaz kimliğinin simetrik anahtarı kullanılırken, belirtecin PolicyName (`skn`) öğesi atlanır.
+Belirteç oluşturmak için bir cihaz kimliğinin simetrik anahtarı kullanılırken, belirtecin policyName (`skn`) öğesi atlanır.
 
 Örneğin, tüm cihaz işlevselliğine erişmek için oluşturulan bir belirteç aşağıdaki parametrelere sahip olmalıdır:
 
-* Kaynak URI 'SI `{IoT hub name}.azure-devices.net/devices/{device id}`:,
-* imzalama anahtarı: `{device id}` kimlik için herhangi bir simetrik anahtar,
+* Kaynak URI 'SI: `{IoT hub name}.azure-devices.net/devices/{device id}`,
+* imzalama anahtarı: `{device id}` kimliği için herhangi bir simetrik anahtar,
 * ilke adı yok,
 * herhangi bir süre sonu süresi.
 
@@ -281,7 +281,7 @@ Device1 için tüm işlevlere erişim izni veren sonuç şöyle olacaktır:
 
 ### <a name="use-a-shared-access-policy"></a>Paylaşılan erişim ilkesi kullanma
 
-Paylaşılan erişim ilkesinden bir belirteç oluşturduğunuzda, `skn` alanı ilkenin adı olarak ayarlayın. Bu ilke **Deviceconnect** izni vermelidir.
+Paylaşılan erişim ilkesinden bir belirteç oluşturduğunuzda `skn` alanını ilkenin adı olarak ayarlayın. Bu ilke **Deviceconnect** izni vermelidir.
 
 Cihaz işlevselliğine erişmek için paylaşılan erişim ilkeleri kullanmanın iki ana senaryosu şunlardır:
 
@@ -292,8 +292,8 @@ Paylaşılan erişim ilkesi potansiyel olarak herhangi bir cihaz olarak bağlanm
 
 Örnek olarak, **cihaz** adlı önceden oluşturulmuş paylaşılan erişim ilkesini kullanan bir belirteç hizmeti, aşağıdaki parametrelerle bir belirteç oluşturur:
 
-* Kaynak URI 'SI `{IoT hub name}.azure-devices.net/devices/{device id}`:,
-* imzalama anahtarı: `device` ilkenin anahtarlarından biri,
+* Kaynak URI 'SI: `{IoT hub name}.azure-devices.net/devices/{device id}`,
+* imzalama anahtarı: `device` ilkesi anahtarlarından biri,
 * ilke adı: `device`,
 * herhangi bir süre sonu süresi.
 
@@ -311,7 +311,7 @@ Device1 için tüm işlevlere erişim izni veren sonuç şöyle olacaktır:
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697&skn=device`
 
-Bir protokol ağ geçidi, tüm cihazlar için aynı belirteci kullanarak yalnızca kaynak URI 'sini olarak `myhub.azure-devices.net/devices`ayarlar.
+Bir protokol ağ geçidi, tüm cihazlar için aynı belirteci kullanarak yalnızca kaynak URI 'sini `myhub.azure-devices.net/devices`olarak ayarlar.
 
 ### <a name="use-security-tokens-from-service-components"></a>Hizmet bileşenlerinden güvenlik belirteçlerini kullanma
 
@@ -319,7 +319,7 @@ Hizmet bileşenleri yalnızca daha önce açıklandığı gibi, gerekli izinleri
 
 Uç noktalarda sunulan hizmet işlevleri aşağıda verilmiştir:
 
-| Uç Nokta | İşlevi |
+| Uç nokta | İşlev |
 | --- | --- |
 | `{iot hub host name}/devices` |Cihaz kimliklerini oluşturun, güncelleştirin, alın ve silin. |
 | `{iot hub host name}/messages/events` |Cihazdan buluta iletileri alma. |
@@ -328,8 +328,8 @@ Uç noktalarda sunulan hizmet işlevleri aşağıda verilmiştir:
 
 Örnek olarak, **Registryread** adlı önceden oluşturulmuş paylaşılan erişim ilkesi kullanılarak oluşturulan bir hizmet, aşağıdaki parametrelerle bir belirteç oluşturur:
 
-* Kaynak URI 'SI `{IoT hub name}.azure-devices.net/devices`:,
-* imzalama anahtarı: `registryRead` ilkenin anahtarlarından biri,
+* Kaynak URI 'SI: `{IoT hub name}.azure-devices.net/devices`,
+* imzalama anahtarı: `registryRead` ilkesi anahtarlarından biri,
 * ilke adı: `registryRead`,
 * herhangi bir süre sonu süresi.
 
@@ -371,7 +371,7 @@ Cihazlarda X. 509.440 sertifikalarını yapılandırmak için [az IoT Hub Device
 
 **Registrymanager** sınıfı, bir cihazı kaydetmek için programlı bir yol sağlar. Özellikle, **Adddeviceasync** ve **updatedeviceasync** yöntemleri, bir cihazı IoT Hub Identity kayıt defterine kaydetmenizi ve güncelleştirmenizi sağlar. Bu iki yöntem bir **cihaz** örneğini giriş olarak alır. **Cihaz** sınıfı, birincil ve ikincil X. 509.952 sertifikası parmak izlerini belirtmenizi sağlayan bir **kimlik doğrulama** özelliği içerir. Parmak izi, X. 509.440 sertifikasının bir SHA256 karmasını temsil eder (ikili DER kodlaması kullanılarak depolanır). Birincil parmak izi veya ikincil bir parmak izi ya da her ikisi belirtme seçeneğiniz vardır. Birincil ve ikincil parmak izleri, sertifika geçişi senaryolarını işlemek için desteklenir.
 
-X. 509.440 sertifika parmak\# izi kullanarak bir cihazı kaydetmek için örnek C kod parçacığı aşağıda verilmiştir:
+X. 509.440 sertifika parmak izi kullanarak bir cihazı kaydetmek için örnek bir C\# kod parçacığı aşağıda verilmiştir:
 
 ```csharp
 var device = new Device(deviceId)
@@ -418,7 +418,7 @@ Belirteç hizmeti deseninin ana adımları şunlardır:
 
 2. Bir cihaz/modülün IoT Hub 'ınıza erişmesi gerektiğinde, belirteç hizmetinizden imzalı bir belirteç ister. Cihaz, belirteç oluşturmak için kullanılan cihaz/modül kimliğini belirleyebilmek için özel kimlik kayıt defteriniz/kimlik doğrulama şemanızdaki kimlik doğrulaması yapabilir.
 
-3. Belirteç hizmeti bir belirteç döndürür. `/devices/{deviceId}` Belirteç, veya `/devices/{deviceId}/module/{moduleId}` olarak `resourceURI`kullanılarak oluşturulur, `deviceId` veya `moduleId` kimliği doğrulanmış modül olarak. Belirteç hizmeti, belirteci oluşturmak için paylaşılan erişim ilkesini kullanır.
+3. Belirteç hizmeti bir belirteç döndürür. Belirteç, kimlik doğrulamasından geçen modül olarak `deviceId` veya `moduleId` `resourceURI`olarak `/devices/{deviceId}` veya `/devices/{deviceId}/module/{moduleId}` kullanılarak oluşturulur. Belirteç hizmeti, belirteci oluşturmak için paylaşılan erişim ilkesini kullanır.
 
 4. Cihaz/modül, doğrudan IoT Hub ile belirtecini kullanır.
 

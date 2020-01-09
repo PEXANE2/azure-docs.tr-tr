@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 12/13/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fb4deaf3d8fdc0347058b0af2079aebbd4cb22e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424539"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
 Bu makale, Microsoft Identity platform kullanarak uygulama geliştirmeyi öğrenirken yararlı olan bazı temel geliştirici kavramları ve terminolojisi için tanımlar içerir.
 
-## <a name="access-token"></a>Erişim belirteci
+## <a name="access-token"></a>erişim belirteci
 
 Bir [yetkilendirme sunucusu](#authorization-server)tarafından verilen ve [korunan bir kaynak sunucusuna](#resource-server)erişmek için bir [istemci uygulaması](#client-application) tarafından kullanılan [güvenlik belirteci](#security-token) türü. Genellikle [JSON Web token (JWT)][JWT]biçiminde, belirteç, istenen erişim düzeyi için [kaynak sahibi](#resource-owner)tarafından istemciye verilen yetkilendirmeyi içerir. Belirteç, konuyla ilgili tüm ilgili [talepleri](#claim) içerir ve bu, istemci uygulamanın belirli bir kaynağa erişirken kimlik bilgileri olarak kullanılmasını sağlar. Bu Ayrıca, kaynak sahibinin kimlik bilgilerini istemciye kullanıma sunma gereksinimini ortadan kaldırır.
 
@@ -41,7 +41,7 @@ Azure AD 'nin, belirli bir uygulamayı ve ilişkili konfigürasyonları tanımla
 
 ## <a name="application-manifest"></a>uygulama bildirimi
 
-Uygulamanın kimlik yapılandırmasının JSON gösterimini üreten, ilişkili [uygulama][AAD-Graph-App-Entity] ve [ServicePrincipal][AAD-Graph-Sp-Entity] varlıklarını güncelleştirmek için bir mekanizma olarak kullanılan [Azure Portal][AZURE-portal]tarafından sunulan bir özellik. Daha fazla ayrıntı için bkz. [Azure Active Directory uygulama bildirimini anlama][AAD-App-Manifest] .
+Uygulamanın kimlik yapılandırmasının JSON gösterimini üreten, ilişkili [uygulama][Graph-App-Resource] ve [ServicePrincipal][Graph-Sp-Resource] varlıklarını güncelleştirmek için bir mekanizma olarak kullanılan [Azure Portal][AZURE-portal]tarafından sunulan bir özellik. Daha fazla ayrıntı için bkz. [Azure Active Directory uygulama bildirimini anlama][AAD-App-Manifest] .
 
 ## <a name="application-object"></a>Uygulama nesnesi
 
@@ -102,7 +102,7 @@ Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][A
 
 İstemci uygulaması, bir [OAuth2 yetkilendirme verme](#authorization-grant) akışına katılmak için bir kaynak sahibinden [Yetkilendirme](#authorization) ister ve kaynak sahibinin adına API 'ler/veriye erişebilir. OAuth2 yetkilendirme çerçevesi, istemci kimlik bilgilerinin gizliliğini koruma özelliğine bağlı olarak, "gizli" ve "genel" olmak üzere [iki tür istemci tanımlar][OAuth2-Client-Types]. Uygulamalar bir Web sunucusu üzerinde çalışan bir [Web istemcisi (gizli)](#web-client) , bir cihazda yüklü bir [yerel istemci (genel)](#native-client) veya bir cihazın tarayıcısında çalışan [Kullanıcı Aracısı tabanlı bir istemci (genel)](#user-agent-based-client) uygulayabilir.
 
-## <a name="consent"></a>izniniz
+## <a name="consent"></a>İzniniz
 
 Kaynak sahibinin adına, belirli [izinler](#permissions)altında korumalı kaynaklara erişmek için bir [istemci uygulamasına](#client-application)yetkilendirme izni veren [kaynak sahibi](#resource-owner) işlemi. İstemci tarafından istenen izinlere bağlı olarak, bir yöneticiye veya kullanıcıya sırasıyla kuruluş/bireysel verilerine erişim izni vermeniz istenir. [Birden çok kiracılı](#multi-tenant-application) bir senaryoda, uygulamanın [hizmet sorumlusu](#service-principal-object) Ayrıca, Kullanıcı kiracının kiracısına da kaydedilir.
 
@@ -116,7 +116,7 @@ Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][A
 
 ## <a name="microsoft-identity-platform"></a>Microsoft kimlik platformu
 
-Microsoft Identity Platform, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler. Daha fazla bilgi için bkz. [Microsoft Identity platform hakkında](about-microsoft-identity-platform.md) .
+Microsoft kimlik platformu, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler. Daha fazla bilgi için bkz. [Microsoft Identity platform hakkında](about-microsoft-identity-platform.md) .
 
 ## <a name="multi-tenant-application"></a>çok kiracılı uygulama
 
@@ -137,7 +137,7 @@ Bir cihaza yerel olarak yüklenen bir [istemci uygulaması](#client-application)
 
 Ayrıca, [izin](#consent) süreci sırasında da yüzey, yönetici veya kaynak sahibine, kiracısındaki kaynaklara istemci erişimini verme/reddetme fırsatı verir.
 
-İzin istekleri, istenen "temsilci Izinleri" ve "uygulama Izinleri" (ikincisi genel yönetici rolünde üyelik gerektirir) seçilerek [Azure Portal][AZURE-portal]bir uygulama için **API izinleri** sayfasında yapılandırılır. Ortak bir [istemci](#client-application) kimlik bilgilerini güvenli bir şekilde koruyamadığı için, bir [Gizli istemci](#client-application) hem temsilci hem de uygulama izinlerini isteme olanağına sahip olsa da yalnızca temsilci izinleri isteyebilir. İstemcinin [uygulama nesnesi](#application-object) , belirtilen Izinleri [requiredResourceAccess özelliğinde][AAD-Graph-App-Entity]depolar.
+İzin istekleri, istenen "temsilci Izinleri" ve "uygulama Izinleri" (ikincisi genel yönetici rolünde üyelik gerektirir) seçilerek [Azure Portal][AZURE-portal]bir uygulama için **API izinleri** sayfasında yapılandırılır. Ortak bir [istemci](#client-application) kimlik bilgilerini güvenli bir şekilde koruyamadığı için, bir [Gizli istemci](#client-application) hem temsilci hem de uygulama izinlerini isteme olanağına sahip olsa da yalnızca temsilci izinleri isteyebilir. İstemcinin [uygulama nesnesi](#application-object) , belirtilen Izinleri [requiredResourceAccess özelliğinde][Graph-App-Resource]depolar.
 
 ## <a name="resource-owner"></a>kaynak sahibi
 
@@ -147,25 +147,25 @@ Ayrıca, [izin](#consent) süreci sırasında da yüzey, yönetici veya kaynak s
 
 [OAuth2 yetkilendirme çerçevesi][OAuth2-Role-Def]tarafından tanımlandığı gibi, korumalı kaynakları barındıran bir sunucu, bir [erişim belirteci](#access-token)sunan [istemci uygulamalarına](#client-application) göre korunan kaynak isteklerini kabul edip yanıt verebilir. Korumalı kaynak sunucu veya kaynak uygulama olarak da bilinir.
 
-Kaynak sunucu API 'Leri kullanıma sunar ve OAuth 2,0 yetkilendirme çerçevesini kullanarak [kapsamlar](#scopes) ve [Roller](#roles)aracılığıyla korunan kaynaklarına erişimi zorlar. Azure AD kiracı verilerine erişim sağlayan Azure AD Graph API ve posta ve takvim gibi verilere erişim sağlayan Office 365 API 'Lerine örnek olarak verilebilir. Bunların her ikisine de [Microsoft Graph API 'si][Microsoft-Graph]aracılığıyla erişilebilir.
+Kaynak sunucu API 'Leri kullanıma sunar ve OAuth 2,0 yetkilendirme çerçevesini kullanarak [kapsamlar](#scopes) ve [Roller](#roles)aracılığıyla korunan kaynaklarına erişimi zorlar. Örnek olarak, Azure AD kiracı verilerine erişim sağlayan [MICROSOFT Graph API][Microsoft-Graph] ve posta ve takvim gibi verilere erişim sağlayan Office 365 API 'leri bulunur. 
 
-Bir istemci uygulaması gibi, kaynak uygulamanın kimlik yapılandırması da bir Azure AD kiracısında [kayıt](#application-registration) yoluyla oluşturulur ve hem uygulama hem de hizmet sorumlusu nesnesi sağlanır. Azure AD Graph API gibi bazı Microsoft tarafından sağlanan API 'Ler, sağlama sırasında tüm kiracılarda önceden kaydedilmiş hizmet sorumlularına sahip olarak sunulur.
+Bir istemci uygulaması gibi, kaynak uygulamanın kimlik yapılandırması da bir Azure AD kiracısında [kayıt](#application-registration) yoluyla oluşturulur ve hem uygulama hem de hizmet sorumlusu nesnesi sağlanır. Microsoft Graph API 'SI gibi bazı Microsoft tarafından sağlanan API 'Ler, sağlama sırasında tüm kiracılarda önceden kaydedilmiş hizmet sorumlularına sahip olarak kullanılabilir hale getirilir.
 
 ## <a name="roles"></a>roles
 
 [Kapsamlar](#scopes)gibi roller, [kaynak sunucunun](#resource-server) korunan kaynaklarına erişimi yönetebilmeleri için bir yol sağlar. İki tür vardır: bir "Kullanıcı" rolü, kaynağa erişmesi gereken kullanıcılar/gruplar için rol tabanlı erişim denetimi uygular, ancak bir "uygulama" rolü erişim gerektiren [istemci uygulamalar](#client-application) için aynısını uygular.
 
-Roller, kaynak tanımlı dizelerdir (örneğin, "harcama onaylayan", "salt okunurdur", "Directory. ReadWrite. All"), kaynağın [uygulama bildirimi](#application-manifest)aracılığıyla [Azure Portal][AZURE-portal] yönetilir ve kaynağın [approles özelliğinde][AAD-Graph-Sp-Entity]depolanır. Azure portal, kullanıcıları "Kullanıcı" rollerine atamak ve "uygulama" rolüne erişmek için istemci [uygulama izinlerini](#permissions) yapılandırmak için de kullanılır.
+Roller, kaynak tanımlı dizelerdir (örneğin, "harcama onaylayan", "salt okunurdur", "Directory. ReadWrite. All"), kaynağın [uygulama bildirimi](#application-manifest)aracılığıyla [Azure Portal][AZURE-portal] yönetilir ve kaynağın [approles özelliğinde][Graph-Sp-Resource]depolanır. Azure portal, kullanıcıları "Kullanıcı" rollerine atamak ve "uygulama" rolüne erişmek için istemci [uygulama izinlerini](#permissions) yapılandırmak için de kullanılır.
 
-Azure AD 'nin Graph API tarafından sunulan uygulama rollerinin ayrıntılı bir açıklaması için bkz. [Graph API Izin kapsamları][AAD-Graph-Perm-Scopes]. Adım adım bir uygulama örneği için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal][AAD-RBAC].
+Microsoft Graph API tarafından kullanıma sunulan uygulama rollerinin ayrıntılı bir açıklaması için bkz. [Graph API Izin kapsamları][Graph-Perm-Scopes]. Adım adım bir uygulama örneği için bkz. [RBAC kullanarak erişimi yönetme ve Azure Portal][AAD-RBAC].
 
 ## <a name="scopes"></a>scopes
 
 [Roller](#roles)gibi, kapsamlar da [kaynak sunucunun](#resource-server) korunan kaynaklarına erişimi yönetebilmeleri için bir yol sağlar. Kapsamlar, kaynağa sahibine göre atanmış erişim verilmiş bir [istemci uygulaması](#client-application) için [kapsam tabanlı][OAuth2-Access-Token-Scopes] erişim denetimi uygulamak için kullanılır.
 
-Kapsamlar, kaynağın [uygulama bildirimi](#application-manifest)aracılığıyla [Azure Portal][AZURE-portal] yönetilen ve kaynağın [oauth2Permissions özelliğinde][AAD-Graph-Sp-Entity]depolanan kaynak tanımlı dizelerdir (örneğin, "posta. Read", "Directory. ReadWrite. All"). Azure portal Ayrıca, bir kapsama erişmek için istemci uygulaması için [temsilci izinleri](#permissions) yapılandırmak üzere kullanılır.
+Kapsamlar, kaynağın [uygulama bildirimi](#application-manifest)aracılığıyla [Azure Portal][AZURE-portal] yönetilen ve kaynağın [oauth2Permissions özelliğinde][Graph-Sp-Resource]depolanan kaynak tanımlı dizelerdir (örneğin, "posta. Read", "Directory. ReadWrite. All"). Azure portal Ayrıca, bir kapsama erişmek için istemci uygulaması için [temsilci izinleri](#permissions) yapılandırmak üzere kullanılır.
 
-En iyi yöntem adlandırma kuralı, "Resource. Operation. Constraint" biçimini kullanmaktır. Azure AD 'nin Graph API tarafından sunulan kapsamlar hakkında ayrıntılı bir tartışma için bkz. [Graph API Izin kapsamları][AAD-Graph-Perm-Scopes]. Office 365 hizmetleri tarafından sunulan kapsamlar için bkz. [office 365 API izinleri başvurusu][O365-Perm-Ref].
+En iyi yöntem adlandırma kuralı, "Resource. Operation. Constraint" biçimini kullanmaktır. Microsoft Graph API tarafından sunulan kapsamlar hakkında ayrıntılı bir tartışma için bkz. [Graph API Izin kapsamları][Graph-Perm-Scopes]. Office 365 hizmetleri tarafından sunulan kapsamlar için bkz. [office 365 API izinleri başvurusu][O365-Perm-Ref].
 
 ## <a name="security-token"></a>güvenlik belirteci
 
@@ -207,7 +207,7 @@ Bir Web sunucusundan kod indiren ve tek sayfalı uygulama (SPA) gibi bir Kullan�
 
 ## <a name="user-principal"></a>Kullanıcı sorumlusu
 
-Bir hizmet sorumlusu nesnesinin bir uygulama örneğini temsil etmek için kullanıldığı yönteme benzer şekilde, bir Kullanıcı asıl nesnesi bir kullanıcıyı temsil eden başka bir güvenlik sorumlusu türüdür. Azure AD Graph [Kullanıcı varlığı][AAD-Graph-User-Entity] , Kullanıcı ile ilgili, ad, Kullanıcı asıl adı, dizin rolü üyeliği vb. gibi özellikler de dahil olmak üzere bir kullanıcı nesnesi için şemayı tanımlar. Bu, çalışma zamanında bir Kullanıcı sorumlusu oluşturmak için Azure AD 'nin Kullanıcı kimliği yapılandırmasını sağlar. Kullanıcı sorumlusu, kimliği doğrulanmış bir kullanıcıyı çoklu oturum açma, [izin](#consent) temsilcisini kaydetme, erişim denetimi kararları alma, vb. için temsil etmek üzere kullanılır.
+Bir hizmet sorumlusu nesnesinin bir uygulama örneğini temsil etmek için kullanıldığı yönteme benzer şekilde, bir Kullanıcı asıl nesnesi bir kullanıcıyı temsil eden başka bir güvenlik sorumlusu türüdür. Microsoft Graph [Kullanıcı kaynak türü][Graph-User-Resource] , Kullanıcı ve soyadı, Kullanıcı asıl adı, dizin rolü üyeliği vb. gibi kullanıcı ile ilgili özellikler dahil olmak üzere bir kullanıcı nesnesi için şemayı tanımlar. Bu, çalışma zamanında bir Kullanıcı sorumlusu oluşturmak için Azure AD 'nin Kullanıcı kimliği yapılandırmasını sağlar. Kullanıcı sorumlusu, kimliği doğrulanmış bir kullanıcıyı çoklu oturum açma, [izin](#consent) temsilcisini kaydetme, erişim denetimi kararları alma, vb. için temsil etmek üzere kullanılır.
 
 ## <a name="web-client"></a>Web istemcisi
 
@@ -226,10 +226,10 @@ Yeni tanımlara yönelik istekler de dahil olmak üzere bu içeriği iyileştirm
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: /graph/permissions-reference
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
+[Graph-Perm-Scopes]: /graph/permissions-reference
+[Graph-App-Resource]: /graph/api/resources/application
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md

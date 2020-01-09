@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465001"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
 
@@ -42,7 +42,7 @@ Bilmeniz gereken tek şey, bir Azure IaaS VM yük devretme kümesinde, sunucu ba
 Ayrıca, bu teknolojilerin genel olarak anlaşılmasına de sahip olmanız gerekir:
 
 - [Azure Premium dosya paylaşma](../../../storage/files/storage-how-to-create-premium-fileshare.md)
-- [Azure Kaynak grupları](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure kaynak grupları](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](virtual-machines-windows-sql-server-agent-extension.md) [basit yönetim moduyla](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, karşılık gelen VM 'Ler için **SQL sanal makine** kaynağını silin ve ardından bunları basıt modda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak **SQL sanal makine** kaynağını silerken, **doğru sanal makinenin yanındaki onay kutusunu temizleyin**. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı hafif yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'Leri için çalışmaz.
@@ -71,7 +71,7 @@ Lisanslama SQL Server hakkında tüm bilgiler için bkz. [fiyatlandırma](https:
 
 Premium dosya paylaşımıyla yük devretme kümesi için FILESTREAM desteklenmez. FILESTREAM kullanmak için [depolama alanları doğrudan](virtual-machines-windows-portal-sql-create-failover-cluster.md)kullanarak kümenizi dağıtın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
 
@@ -84,7 +84,6 @@ Bu makaledeki adımları tamamlamadan önce, zaten şunları yapmalısınız:
    - Her FCı için bir IP adresi.
 - Etki alanı denetleyicilerine işaret eden Azure ağı üzerinde yapılandırılmış DNS.
 - Veri dosyalarınız için veritabanınızın depolama kotasına dayalı bir [Premium dosya paylaşma](../../../storage/files/storage-how-to-create-premium-fileshare.md) .
-- Veri dosyalarınız için kullanılan Premium dosya paylaşımından farklı yedeklemeler için bir dosya paylaşma. Bu dosya paylaşımının standart ya da Premium olması olabilir.
 
 Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsiniz. İlk adım, sanal makineleri oluşturmaktır.
 
@@ -100,7 +99,7 @@ Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsini
 
    1. Azure portal Azure Marketi 'ni açmak için **kaynak oluştur** ' u seçin. **Kullanılabilirlik kümesi**araması yapın.
    1. **Kullanılabilirlik kümesi**seçin.
-   1. **Oluştur**'u seçin.
+   1. **Oluştur**’u seçin.
    1. **Kullanılabilirlik kümesi oluştur**altında şu değerleri girin:
       - **Ad**: kullanılabilirlik kümesi için bir ad.
       - **Abonelik**: Azure aboneliğiniz.
@@ -144,7 +143,7 @@ Bu önkoşulları yerine, yük devretme kümenizi oluşturmaya başlayabilirsini
    1. Varsayılan örneği seçin.
    1. **Veritabanı motoru Hizmetleri**altındaki tüm özellikleri kaldırın. **Paylaşılan özellikleri**kaldırmayın. Aşağıdaki ekran görüntüsüne benzer bir şey göreceksiniz:
 
-        ![Özellik seç](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Özellik Seçin](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. **İleri**' yi ve ardından **Kaldır**' ı seçin.
 
@@ -240,7 +239,7 @@ PowerShell 'i kullanarak kümeyi doğrulamak için sanal makinelerden birindeki 
 
 Kümeyi doğruladıktan sonra, yük devretme kümesini oluşturun.
 
-### <a name="create-the-failover-cluster"></a>Yük devretme kümesi oluşturma
+### <a name="create-the-failover-cluster"></a>Yük devretme kümesini oluşturma
 
 Yük devretme kümesini oluşturmak için şunlar gerekir:
 - Küme düğümleri olacak sanal makinelerin adları.
@@ -326,7 +325,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. **Add (Ekle)** seçeneğini belirleyin. **Load Balancer**Için Azure Marketi 'nde arama yapın. **Load Balancer**seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Aşağıdaki değerleri kullanarak yük dengeleyiciyi ayarlayın:
 
@@ -357,7 +356,7 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Arka uç havuzunu oluşturmak için **Tamam ' ı** seçin.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Yük dengeleyici durum araştırması yapılandırma
+### <a name="configure-a-load-balancer-health-probe"></a>Yük dengeleyici durum araştırmasını yapılandırma
 
 1. Yük dengeleyici dikey penceresinde **sistem durumu araştırmaları**' nı seçin.
 
@@ -431,7 +430,7 @@ Küme araştırmasını ayarladıktan sonra, PowerShell 'de tüm küme parametre
 
 ## <a name="step-8-test-fci-failover"></a>8\. Adım: FCı yük devretmesini test etme
 
-Küme işlevselliğini doğrulamak için FCı yük devretmesini test edin. Aşağıdaki adımları uygulayın:
+Küme işlevselliğini doğrulamak için FCı yük devretmesini test edin. Aşağıdaki adımları izleyin:
 
 1. RDP kullanarak SQL Server FCı kümesi düğümlerinden birine bağlanın.
 

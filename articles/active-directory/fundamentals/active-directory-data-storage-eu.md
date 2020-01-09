@@ -1,5 +1,5 @@
 ---
-title: Avrupalı müşteriler - Azure Active Directory için kimlik verileri depolama | Microsoft Docs
+title: Avrupa müşterileri için kimlik veri depolaması-Azure AD
 description: Azure Active Directory kimlik doğrulamayla ilgili veriler, Avrupalı müşteriler için depoladığı hakkında bilgi edinin.
 services: active-directory
 author: msaburnley
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f81cf42e5c57be4a0b69ada6560d46951a3a3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422992"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Kimlik Azure Active Directory'de Avrupalı müşteriler için veri depolama
 Kimlik verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik verilerinizin nerede depolandığı hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
@@ -30,11 +30,11 @@ Avrupa 'da adres sağlayan müşteriler için Azure AD, Avrupa veri merkezlerind
 - Microsoft Authenticator uygulamasını kullanarak anında iletme bildirimleri ABD veri merkezlerinden kaynaklarından geliyor. Buna ek olarak, cihaz satıcısına özgü hizmetler de oynatma halinde gelebilir ve bu hizmetler Avrupa dışında olabilir.
 - OATH kodları her zaman ABD'de doğrulanır. 
 
-Azure Multi-Factor Authentication sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [Azure Multi-Factor Authentication Kullanıcı verileri toplama](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+Azure Multi-Factor Authentication Sunucusu (MFA sunucusu) ve bulut tabanlı Azure MFA tarafından hangi kullanıcı bilgilerinin toplandığı hakkında daha fazla bilgi için bkz. [azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Azure AD B2C ilke yapılandırma verileri ve anahtar kapsayıcıları ABD veri merkezlerinde depolanır. Bunlar Kullanıcı kişisel verilerini içermez. İlke konfigürasyonları hakkında daha fazla bilgi için [Azure Active Directory B2C bakın: Yerleşik ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) makalesi.
+Azure AD B2C ilke yapılandırma verileri ve anahtar kapsayıcıları ABD veri merkezlerinde depolanır. Bunlar Kullanıcı kişisel verilerini içermez. İlke yapılandırması hakkında daha fazla bilgi için [Azure Active Directory B2C: Yerleşik ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) makalesine bakın.
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -50,10 +50,10 @@ Azure AD DS, kullanıcı verilerini müşterinin seçtiği Azure Sanal Ağı ile
 - Uygulama için onaylanan Federasyon etki alanları listesi
 - Uygulamanın belirteç imzalama ortak anahtarı 
 
-Microsoft Exchange Server 'da Federasyon hakkında daha fazla bilgi için bkz [. Federasyon: Exchange 2013 yardım](https://docs.microsoft.com/exchange/federation-exchange-2013-help) makalesi.
+Microsoft Exchange Server 'da Federasyon hakkında daha fazla bilgi için bkz. [Federasyon: Exchange 2013 yardım](https://docs.microsoft.com/exchange/federation-exchange-2013-help) makalesi.
 
 
-## <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+## <a name="other-considerations"></a>Diğer konular
 
 Azure AD ile tümleştirilen hizmet ve uygulamaların kimlik verilerine erişimi vardır. Kimlik verilerinin belirli bir hizmet ve uygulama tarafından nasıl işlendiğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını öğrenmek için kullandığınız her hizmeti ve uygulamayı değerlendirin.
 

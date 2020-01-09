@@ -2,19 +2,19 @@
 title: BLOB depolama modülü olaylarına tepki verme-Azure Event Grid IoT Edge | Microsoft Docs
 description: BLOB depolama modülü olaylarına tepki verme
 author: arduppal
-manager: mchad
+manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 10/02/2019
+ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437278"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)
 Bu makalede, Azure Blob depolama 'yı IoT modülü 'nde dağıtma işlemi gösterilmektedir. Bu, blob oluşturma ve BLOB silme hakkında olay göndermek için Event Grid yayımcı görevi gören Event Grid.  
@@ -45,9 +45,9 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 1. Cihaz listesinden hedef cihazın KIMLIĞINE tıklayın
 1. **Modülleri Ayarlama**'yı seçin. Sayfayı açık tutun. Sonraki bölümde bulunan adımlarla devam edersiniz.
 
-### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
+### <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modül eklemek**, **yolları belirtin**, ve **gözden geçirin, dağıtım**.
 
 ### <a name="add-modules"></a>Modül Ekle
 
@@ -63,8 +63,8 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
         {
           "Env": [
            "inbound:serverAuth:tlsPolicy=enabled",
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+           "inbound:clientAuth:clientCert:enabled=false",
+           "outbound:webhook:httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -77,11 +77,12 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
           }
         }
     ```    
+
  1. **Kaydet**’e tıklayın
  1. Azure Işlevleri modülünü eklemek için sonraki bölüme geçin
 
     >[!IMPORTANT]
-    > Bu öğreticide, istemci kimlik doğrulamasının devre dışı bırakılması ve HTTP abonelerine izin vermek için Event Grid modülünü dağıtacaksınız. Üretim iş yükleri için, istemci kimlik doğrulaması etkinleştirilmiş olarak yalnızca HTTPs isteklerini ve aboneleri etkinleştirmenizi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md).
+    > Bu öğreticide, istemci kimlik doğrulaması devre dışı bırakmak ve HTTP abonelerine izin vermek için Event Grid modülünü dağıtmayı öğreneceksiniz. Üretim iş yükleri için, istemci kimlik doğrulaması etkinleştirilmiş olarak yalnızca HTTPs isteklerini ve aboneleri etkinleştirmenizi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md).
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Azure Işlevi IoT Edge modülünü dağıtma
@@ -118,9 +119,6 @@ Bu bölümde, olayların sunulabileceği bir Event Grid abonesi olarak görev ya
 1. **Kaydet**’e tıklayın
 1. Azure Blob depolama modülünü eklemek için sonraki bölüme geçin
 
-> [!NOTE]
-> Blob Storage modülü HTTP kullanarak olayları yayımlar. Event Grid modülünün hem HTTP hem de HTTPS isteklerine şu yapılandırmayla izin verdiğini onaylayın: `inbound:serverAuth:tlsPolicy=enabled`.
-
 ## <a name="deploy-azure-blob-storage-module"></a>Azure Blob depolama modülünü dağıtma
 
 Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olaylar olarak görev yapacak Azure Blob depolama modülünün nasıl dağıtılacağı gösterilmektedir.
@@ -132,7 +130,7 @@ Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olayla
 3. Kapsayıcının adını, görüntüsünü ve kapsayıcı oluşturma seçeneklerini belirtin:
 
    * **Ad**: azureblobstorageoniotedge
-   * **Görüntü URI 'si**: MCR.Microsoft.com/Azure-Blob-Storage:1.2.2-Preview
+   * **Görüntü URI 'si**: MCR.Microsoft.com/Azure-Blob-Storage:latest
    * **Kapsayıcı oluşturma seçenekleri**:
 
 ```json
@@ -152,12 +150,18 @@ Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olayla
          }
        }
 ```
+> [!IMPORTANT]
+> - Blob Storage modülü, HTTPS ve HTTP kullanarak olayları yayımlayabilir. 
+> - EventGrid için istemci tabanlı kimlik doğrulamasını etkinleştirdiyseniz, aşağıdaki gibi https 'ye izin vermek için EVENTGRID_ENDPOINT değerini güncelleştirdiğinizden emin olun: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 
+> - Ve yukarıdaki JSON 'a `AllowUnknownCertificateAuthority=true` başka bir ortam değişkeni ekleyin. HTTP üzerinden EventGrid ile görüşülürken, **Allowunknowncertificateauthority** depolama modülünün otomatik olarak Imzalanan eventgrid sunucu sertifikalarına güvenmesini sağlar.
+
+
 
 4. Aşağıdaki bilgilerle kopyaladığınız JSON 'yi güncelleştirin:
 
    - `<your storage account name>`, anımsayabileceğiniz bir adla değiştirin. Hesap adları, küçük harf ve sayılarla 3 ile 24 karakter uzunluğunda olmalıdır. Boşluk yok.
 
-   - `<your storage account key>`, 64 baytlık bir Base64 anahtarıyla değiştirin. [Generateplus](https://generate.plus/en/base64?gp_base64_base[length]=64)gibi araçlarla bir anahtar oluşturabilirsiniz. Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
+   - `<your storage account key>`, 64 baytlık bir Base64 anahtarıyla değiştirin. Bir anahtar gibi araçlarla oluşturabilirsiniz [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Diğer modüllerden blob depolamaya erişmek için bu kimlik bilgilerini kullanacaksınız.
 
    - `<event grid module name>` Event Grid modülünüzün adıyla değiştirin.
    - `<storage mount>`, kapsayıcı işletim sisteminize göre değiştirin.
@@ -174,10 +178,10 @@ Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olayla
 
 Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
 
-### <a name="review-deployment"></a>Dağıtımı gözden geçir
+### <a name="review-deployment"></a>Dağıtım gözden geçirin
 
 1. İnceleme Bölümü, önceki bölümde yaptığınız seçimlere göre oluşturulan JSON dağıtım bildirimini gösterir. Aşağıdaki dört modülü gördüistediğinizi onaylayın: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **abone** ve **azureblobstorageoniotedge** tüm dağıtılan.
-2. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
+2. Dağıtım bilgilerinizi gözden geçirin ve ardından **Gönder**.
 
 ## <a name="verify-your-deployment"></a>Dağıtımınızı doğrulama
 
@@ -210,6 +214,10 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
         ]
     ```
 
+    > [!IMPORTANT]
+    > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+
 2. Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, **Microsoftstorage** konusu için bir Event Grid aboneliği oluşturmanız gerekir.
     1. Aşağıdaki içerikle blobsubscription. JSON oluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
 
@@ -235,6 +243,11 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
     curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
     ```
 
+    > [!IMPORTANT]
+    > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+    > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+
+
     3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
 
     ```sh
@@ -259,6 +272,10 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
           }
         }
     ```
+
+    > [!IMPORTANT]
+    > - HTTPS akışı için, istemci kimlik doğrulaması SAS anahtarı aracılığıyla etkinleştirildiyse, daha önce belirtilen SAS anahtarı üst bilgi olarak eklenmelidir. Bu nedenle, kıvrımlı istek şu şekilde olacaktır: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+    > - HTTPS akışı için, istemci kimlik doğrulaması sertifika aracılığıyla etkinleştirildiyse, kıvrımlı istek şu şekilde olur: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
 2. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) indirin ve [yerel depolama birimine bağlayın](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
@@ -335,13 +352,13 @@ Desteklenen olay özelliklerinin listesi ve bunların türleri ve açıklamalar�
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tanımlı yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| Verileri | object | BLOB depolama olay verileri. |
-| Veri sürümü | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| data | object | BLOB depolama olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
@@ -349,12 +366,12 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | -------- | ---- | ----------- |
 | api | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve `PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob`, `DeleteAfterUpload` ve `AutoDelete`. <p>DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde `DeleteAfterUpload` olayı oluşturulur. </p><p>Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde `AutoDelete` olay oluşturulur.</p></li></ul>|
 | Clientrequestıd 'ye sahip | string | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek kimliği. Bu kimlik, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. Ayrıntılar için bkz. [günlük biçimi](/rest/api/storageservices/storage-analytics-log-format). |
-| No | string | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek kimliği. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)bakın. |
+| requestId | string | Depolama API 'SI işlemi için hizmet tarafından oluşturulan istek kimliği. , Günlüklerdeki "istek-kimliği-üst bilgi" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve ' x-MS-Request-id ' üst bilgisinde API çağrısını başlatma işleminden döndürülür. [Günlük biçimine](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)bakın. |
 | Özelliği | string | İşlemleri koşullu olarak gerçekleştirmek için kullanabileceğiniz değer. |
 | contentType | string | Blob için belirtilen içerik türü. |
 | contentLength | integer | Blobun bayt cinsinden boyutu. |
-| BlobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
-| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: *\<storage-Account-name \>. blob.core.windows.net/\<container-adı \> / \<file-name \>* . <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: *\<storage-Account-name \>. dfs.core.windows.net/\<file-sistem-adı \> / \<file-Name*\>. |
+| blobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
+| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: *\<depolama hesabı-adı\>. blob.core.windows.net/\<kapsayıcı-adı\>/\<dosya adı\>* . <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: *\<depolama hesabı-adı\>. dfs.core.windows.net/\<dosya-sistem adı\>/\<dosya adı* \>. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

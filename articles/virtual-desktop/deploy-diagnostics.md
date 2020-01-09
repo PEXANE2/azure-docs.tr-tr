@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452419"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -25,7 +25,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 
@@ -50,7 +50,7 @@ Bu bölümde, bir hizmet sorumlusu ile Azure Active Directory uygulamasını olu
 >[!NOTE]
 >API izinleri Windows Sanal Masaüstü ' dir, Log Analytics ve Microsoft Graph API izinleri Azure Active Directory uygulamasına eklenir.
 
-1. PowerShell 'i yönetici olarak açın.
+1. Yönetici olarak PowerShell’i açın.
 2. Tanılama aracı için kullanmak istediğiniz Azure aboneliğinde sahip veya katkıda bulunan izinleri olan bir hesapla Azure 'da oturum açın:
    ```powershell
    Login-AzAccount
@@ -256,3 +256,8 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 - [Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Eşik: 2000 MS 'den yüksek, sağlıksız olarak işaretlendi.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Log Analytics tanılama 'Yı kullanarak](diagnostics-log-analytics.md)etkinlik günlüklerinin nasıl izleneceğini öğrenin.
+- Yaygın hata senaryoları ve [sorunları belirleme ve tanılama konularında](diagnostics-role-service.md)bunları nasıl gidereceğiniz hakkında bilgi edinin.

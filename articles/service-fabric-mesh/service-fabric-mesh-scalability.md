@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric kafes uygulamalarının ölçeklenebilirliği | Microsoft Docs
+title: Azure Service Fabric kafes uygulamalarının ölçeklenebilirliği
 description: Uygulamaları Service Fabric kafese dağıtmanın avantajlarından biri, el ile veya otomatik ölçeklendirme ilkeleriyle hizmetlerinizi kolayca ölçeklendirebilme olanağıdır.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662988"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459005"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric kafes uygulamalarını ölçeklendirme
 
@@ -27,7 +23,7 @@ Uygulama kaynağı için dağıtım şablonunda her hizmet, hizmetin dağıtılm
 Hizmet örneklerinin el ile ölçeklendirilmesi örnekleri için bkz. [hizmetlerinizi el ile ölçeklendirin veya out](service-fabric-mesh-tutorial-template-scale-services.md).
 
 ## <a name="autoscaling-service-instances"></a>Otomatik Ölçeklendirme hizmeti örnekleri
-Otomatik ölçeklendirme, hizmet örneklerinizin sayısını (yatay ölçeklendirme) dinamik olarak ölçeklendirmek için Service Fabric ek bir yetenektir. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve CPU veya bellek kullanımına göre hizmet örneklerinin sağlanması veya kaldırılmasına olanak sağlar.  Otomatik ölçeklendirme, iş yükünüz için doğru hizmet örneği sayısını çalıştırmanıza ve maliyeti iyileştirmek için optimize etmenize olanak sağlar.
+Otomatik ölçeklendirme, hizmet örneklerinizin sayısını (yatay ölçeklendirme) dinamik olarak ölçeklendirmek için Service Fabric ek bir yetenektir. Otomatik ölçeklendirme, büyük esneklik sağlar ve sağlama veya CPU veya bellek kullanım oranlarına dayalı hizmet örnekleri kaldırılmasını sağlar.  Otomatik ölçeklendirme, iş yükünüz için doğru hizmet örneği sayısını çalıştırmanıza ve maliyeti iyileştirmek için optimize etmenize olanak sağlar.
 
 Hizmet kaynak dosyasında hizmet başına otomatik ölçeklendirme ilkesi tanımlandı. Her ölçeklendirme ilkesi iki bölümden oluşur:
 

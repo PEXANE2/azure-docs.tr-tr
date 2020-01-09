@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak Azure VM yedeklemesi 'nin yedeklem
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450156"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak bir Azure VM 'yi yedekleme
 
@@ -41,10 +41,10 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |204 Içerik yok     |         |  Hiçbir içerik döndürülmeden Tamam      |
-|202 kabul edildi     |         |     Eden    |
+|202 kabul edildi     |         |     Kabul edildi    |
 
 ##### <a name="example-responses"></a>Örnek yanıtlar
 
@@ -104,9 +104,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses-1"></a>Lerinde
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       TAMAM |
+|200 OK     | [Workloadkorunabilir Tableıtemresourcelist](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       TAMAM |
 
 #### <a name="example-responses-1"></a>Örnek yanıtlar
 
@@ -158,7 +158,7 @@ Yanıt, tüm korumasız Azure VM 'lerinin listesini içerir ve her `{value}`, Az
 Örnekte yukarıdaki değerler şu şekilde çeviri yapar:
 
 - containerName = "ıaasvmcontainer; iaasvmcontainerv2; testRG; testVM"
-- Korunabilir bir Dıtemname = "VM; iaasvmcontainerv2; testRG; testVM"
+- protectedItemName = "vm;iaasvmcontainerv2;testRG;testVM"
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM için korumayı etkinleştirme
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Korumalı bir öğe oluşturmak için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Korunabilir kaynak özellikleri         |
 
@@ -208,10 +208,10 @@ Korumalı bir öğenin oluşturulması [zaman uyumsuz bir işlemdir](https://doc
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     |    [Korunabilir kaynak](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  TAMAM       |
-|202 kabul edildi     |         |     Eden    |
+|200 OK     |    [Korunabilir kaynak](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  TAMAM       |
+|202 kabul edildi     |         |     Kabul edildi    |
 
 ##### <a name="example-responses"></a>Örnek yanıtlar
 
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |properties     | [Iaasvmbackuprequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource özellikleri         |
 
@@ -319,9 +319,9 @@ Aşağıdaki istek gövdesi, korumalı bir öğe için bir yedeklemeyi tetikleme
 
 Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|202 kabul edildi     |         |     Eden    |
+|202 kabul edildi     |         |     Kabul edildi    |
 
 #### <a name="example-responses-3"></a>Örnek yanıtlar
 
@@ -433,16 +433,38 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>Lerinde
+#### <a name="responses-2"></a>Lerinde
 
 Korumayı *silme* [işlemi zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
 Bu, başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 204 (NoContent) olarak iki yanıt döndürür.
 
-|Adı  |Tür  |Açıklama  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 kabul edildi     |         |     Eden    |
+|202 kabul edildi     |         |     Kabul edildi    |
+
+> [!IMPORTANT]
+> Yanlışlıkla silme senaryolarına karşı korunmak için, kurtarma hizmetleri Kasası için bir [geçici silme özelliği](use-restapi-update-vault-properties.md#soft-delete-state) bulunur. Kasanın geçici silme durumu etkin olarak ayarlandıysa, silme işlemi verileri hemen silmez. 14 gün boyunca tutulur ve sonra kalıcı olarak temizlenir. Bu 14 günlük dönem için müşteri, depolama için ücretlendirilmez. Silme işlemini geri almak için [geri al-Sil bölümüne](#undo-the-stop-protection-and-delete-data)bakın.
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>Korumayı durdurma ve verileri silme işlemini geri alma
+
+Yanlışlıkla silmenin geri alınması, yedekleme öğesinin oluşturulmasına benzer. Silme işlemini geri aldıktan sonra, öğe korunur ancak gelecekteki yedeklemeler tetiklenmez.
+
+Silmeyi geri al, [ilkeyi değiştirmeye](#changing-the-policy-of-protection) ve/veya [korumayı etkinleştirmeye](#enabling-protection-for-the-azure-vm)çok benzeyen bir *PUT* işlemidir. Silme işlemini [istek gövdesinde](#example-request-body) *ısrehibulunan* değişkeni ile geri alma ve isteği gönderme amacını sağlamanız yeterlidir. Örneğin: testVM silme işlemini geri almak Için aşağıdaki istek gövdesinin kullanılması gerekir.
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+Yanıt, [isteğe bağlı bir yedeklemenin tetiklenmesi için](#example-responses-3)belirtilen biçimde olacaktır. Sonuç iş, [REST API belge kullanan izleme işlerinde](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

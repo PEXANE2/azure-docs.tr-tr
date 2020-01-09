@@ -1,29 +1,20 @@
 ---
-title: Azure Service Fabric Mesh içinde çalışan uygulama bir otomatik ölçeklendirme | Microsoft Docs
+title: Azure Service Fabric ağı 'nda çalışan bir uygulamayı otomatik ölçeklendirme
 description: Bir Service Fabric Mesh uygulamasının Hizmetleri için otomatik ölçeklendirme ilkeleri yapılandırmayı öğrenin.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461983"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Bir Service Fabric Mesh uygulaması için otomatik ölçeklendirme ilkeleri oluşturma
-Service Fabric Mesh’e uygulamaları dağıtmanın ana avantajlarından biri, hizmetlerinizin ölçeğini kolayca artırabilmeniz veya azaltabilmenizdir. Hizmetlerinizdeki değişen yük miktarlarını işlemek ve kullanılabilirliği artırmak için bu kullanılmalıdır. El ile veya hizmetlerinizi ölçeklendirmek veya otomatik ölçeklendirme ilkeleri ayarlayın.
+Service Fabric kafese uygulama dağıtmanın başlıca avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme olanağı sağlar. Bu, hizmetinizdeki farklı yük miktarını işlemek veya kullanılabilirliği iyileştirmek için kullanılmalıdır. El ile veya hizmetlerinizi ölçeklendirmek veya otomatik ölçeklendirme ilkeleri ayarlayın.
 
 [Otomatik ölçeklendirme](service-fabric-mesh-scalability.md#autoscaling-service-instances) (yatay ölçeklendirme), hizmet örneği sayısını dinamik olarak ölçeklendirmenize olanak tanıyor. Otomatik ölçeklendirme, büyük esneklik sağlar ve sağlama veya CPU veya bellek kullanım oranlarına dayalı hizmet örnekleri kaldırılmasını sağlar.
 

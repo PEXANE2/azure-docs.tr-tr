@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama
 description: Bu makalede, bölge sınırlaması ve jeo-uzamsal toplama için Azure Stream Analytics nasıl kullanılacağı açıklanır.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: d44b2fae677554594f0cc280c1129bbd6effddf2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443634"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics ile bölge sınırlama ve jeo uzamsal toplama senaryoları
 
@@ -36,7 +35,7 @@ Yerleşik Jeo-uzamsal işlevler, bir öğenin belirli bir bölge poligonun için
 
 Aşağıdaki tabloda, Azure Blob depolama veya bir Azure SQL tablosu 'nda depolanabilecek bölge başvurusu verilerinin bir örneği verilmiştir. Her site bir jeo-uzamsal çokgen ile temsil edilir ve her cihaz izin verilen bir site KIMLIĞIYLE ilişkilendirilir.
 
-|SiteId|SiteName|Bölge sınırı|Alloweddeviceıd|
+|SiteId|Site adı|Bölge sınırı|Alloweddeviceıd|
 |------|--------|--------|---------------|
 |1|"Redmond derleniyor 41"|"ÇOKGEN ((-122.1337357922017 47.63782998329432,-122.13373042778369 47.637634793257305,-122.13346757130023 47.637642022530954,-122.13348902897235 47.637508280806806,-122.13361777500506 47.637508280806806,-122.13361241058703 47.63732393354484,-122.13265754417773 47.63730947490855,-122.13266290859576 47.637519124743164,-122.13302232460376 47.637515510097955,-122.13301696018573 47.63764925180358,-122.13272728161212 47.63764925180358,-122.13274873928424 47.63784082716388,-122.13373579220172 47.63782998329432))"|Kenarı|
 |2|"Redmond derleniyor 40"|"ÇOKGEN ((-122.1336154507967 47.6366745947009,-122.13361008637867 47.636483015064535,-122.13349206918201 47.636479400347675,-122.13349743360004 47.63636372927573,-122.13372810357532 47.63636372927573,-122.13373346799335 47.63617576323771,-122.13263912671528 47.63616491902258,-122.13264985555134 47.63635649982525,-122.13304682248554 47.636367344000604,-122.13305218690357 47.63650831807564,-122.13276250832996 47.636497473929516,-122.13277323716602 47.63668543881025,-122.1336154507967 47.6366745947009))"|A|
@@ -99,12 +98,12 @@ Bu çokgenler yalnızca başvuru amaçlıdır ve gerçek şehir mantıksal veya 
 
 Aşağıdaki tabloda, "rides" akış verileri yer almaktadır.
 
-|UserID|FromLocation|ToLocation|Üçlü Requestedtime|
+|Kullanıcı Kimliği|FromLocation|ToLocation|Üçlü Requestedtime|
 |------|------------|----------|-----------------|
 |A|"NOKTA (-74.00726861389182 40.71610611981975)"|"NOKTA (-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
 |Kenarı|"NOKTA (-74.00249841021645 40.723827238895666)"|"NOKTA (-74.01160699942085 40.71378884930115)"|"2019-03-12T07:01:00Z"|
 |,|"NOKTA (-73.99680120565864 40.716439898624024)"|"NOKTA (-73.98289663412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
-|TID|"NOKTA (-74.00741090068288 40.71615626755086)"|"NOKTA (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
+|"D"|"NOKTA (-74.00741090068288 40.71615626755086)"|"NOKTA (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
 
 Aşağıdaki sorgu, cihaz akışını bölge başına başvuru verileriyle birleştirir ve her dakika 15 dakikalık bir zaman penceresinde her bölge için istek sayısını hesaplar.
 

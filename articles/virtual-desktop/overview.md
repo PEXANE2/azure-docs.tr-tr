@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348819"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -67,7 +67,7 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 |İşletim Sistemi|Gerekli lisans|
 |---|---|
 |Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
-|Windows 7 kurumsal |Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
 |Windows Server 2012 R2, 2016, 2019|Yazılım güvencesi içeren RDS Istemci erişim lisansı (CAL)|
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
@@ -90,7 +90,7 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri aşağıd
 
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
-* *. core.windows.net
+* *.core.windows.net
 * *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
@@ -110,8 +110,11 @@ En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığ
 
 Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows](connect-windows-7-and-10.md)
+* [Web](connect-web.md)
+* [Mac](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android (Önizleme)](connect-android.md)
 
 ## <a name="supported-virtual-machine-os-images"></a>Desteklenen sanal makine işletim sistemi görüntüleri
 
@@ -119,7 +122,7 @@ Windows sanal masaüstü aşağıdaki x64 işletim sistemi görüntülerini dest
 
 * Windows 10 Enterprise multi-session, sürüm 1809 veya üzeri
 * Windows 10 Enterprise, sürüm 1809 veya üzeri
-* Windows 7 kurumsal
+* Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
@@ -130,14 +133,14 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows 7 kurumsal|Yes|Yes|Hayır|Hayır|El ile|
-|Windows Server 2019|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows Server 2016|Yes|Yes|Yes|Yes|Automatic|
-|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
+|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
+|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
+|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
+|Windows 7 Enterprise|Evet|Evet|Hayır|Hayır|Manual|
+|Windows Server 2019|Evet|Evet|Hayır|Hayır|Automatic|
+|Windows Server 2016|Evet|Evet|Evet|Evet|Automatic|
+|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Automatic|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

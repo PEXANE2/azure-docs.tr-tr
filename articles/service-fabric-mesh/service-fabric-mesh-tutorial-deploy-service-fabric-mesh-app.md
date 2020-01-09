@@ -1,32 +1,23 @@
 ---
-title: 'Öğretici: Service Fabric Mesh uygulaması dağıtma | Microsoft Docs'
+title: Öğretici-Service Fabric bir kafes uygulaması dağıtma
 description: Visual Studio kullanarak arka uç web hizmetiyle iletişim kuran ASP.NET Core web sitesi içeren bir Azure Service Fabric Mesh uygulamasını dağıtmayı öğrenin.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eef4cfaff38a96597794354cc991f5d3eeae9404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351857"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Öğretici: Bir Service Fabric Mesh uygulaması dağıtma
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Öğretici: Service Fabric Mesh uygulaması dağıtma
 
 Bir serinin üçüncü kısmı olan bu öğreticide doğrudan Visual Studio'dan bir Azure Service Fabric Mesh web uygulaması yayımlamayı öğreneceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Visual Studio kullanarak uygulamayı yayımlayın.
 > * Uygulama dağıtım durumunu denetleme
@@ -42,7 +33,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -120,9 +111,9 @@ Bu noktada uygulamanız artık dağıtılmış durumdadır. `app show` komutunu 
 az mesh app show --resource-group $rg --name todolistapp
 ```
 
-## <a name="get-the-ip-address-of-your-deployment"></a>Dağıtımınızın IP adresini alma
+## <a name="get-the-ip-address-of-your-deployment"></a>Dağıtımınızın IP adresini alın
 
-Uygulamanız için IP adresini almak istiyorsanız, aşağıdaki komutu kullanın:
+Uygulamanızın IP adresini almak istiyorsanız aşağıdaki komutu kullanın:
   
 ```azurecli-interactive
 az mesh gateway show --resource-group myResourceGroup --name todolistappGateway

@@ -1,18 +1,18 @@
 ---
 title: İşleme özellikleri-Azure Batch
-description: Azure Batch içindeki belirli işleme özellikleri
+description: Standart Azure Batch özellikleri, işleme iş yüklerini ve uygulamaları çalıştırmak için kullanılır. Batch, iş yüklerini işlemeyi desteklemek için belirli özellikler içerir.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449719"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch işleme özellikleri
 
@@ -30,10 +30,10 @@ Bir Windows 2016 görüntüsü ve bir CentOS görüntüsü vardır.  [Azure Mark
 
 Örnek havuz yapılandırması için bkz. [Azure CLI işleme öğreticisi](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Azure portal ve Batch Explorer, bir havuz oluşturduğunuzda bir işleme VM görüntüsü seçmek için GUI araçları sağlar.  Bir Batch API 'SI kullanıyorsanız, bir havuz oluştururken [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) için aşağıdaki özellik değerlerini belirtin:
 
-| Yayımcı | Sunduğu | Sku | Version |
+| Yayımcı | Teklif | Sku | Sürüm |
 |---------|---------|---------|--------|
-| toplu iş | işleme-centos73 | çizmeye | latest |
-| toplu iş | işleme-windows2016 | çizmeye | latest |
+| batch | işleme-centos73 | işleme | latest |
+| batch | işleme-windows2016 | işleme | latest |
 
 Havuz VM 'lerinde ek uygulamalar gerekliyse diğer seçenekler kullanılabilir:
 
@@ -56,19 +56,19 @@ Kullanılacak uygulamalar ve havuz yapılandırmasında bir lisans ücreti belir
 
 Uygulamaları seçmek ve uygulama fiyatlarını göstermek için Azure portal veya Batch Explorer kullanabilirsiniz.
 
-Bir uygulamayı kullanma girişiminde bulunuldu, ancak uygulama havuz yapılandırmasının `applicationLicenses` özelliğinde belirtilmemişse veya bir lisans sunucusuna erişmediyse, uygulama yürütmesi bir lisanslama hatası ve sıfır olmayan çıkış kodu ile başarısız olur.
+Bir uygulamayı kullanma girişiminde bulunuldu, ancak uygulama havuz yapılandırmasının `applicationLicenses` özelliğinde belirtilemezse veya bir lisans sunucusuna ulaşmadıysa, uygulama yürütmesi bir lisanslama hatası ve sıfır olmayan çıkış kodu ile başarısız olur.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Önceden yüklenmiş uygulamalar için ortam değişkenleri
 
 Görevleri işlemek için komut satırı oluşturabilmeniz için, işleme uygulaması yürütülebilir dosyalarının yükleme konumu belirtilmelidir.  Azure Marketi VM görüntülerinde, gerçek yolları belirtmek yerine kullanılabilen sistem ortam değişkenleri oluşturulmuştur.  Bu ortam değişkenleri, her görev için oluşturulan [Standart Batch ortam değişkenlerine](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) ek niteliğindedir.
 
-|Uygulama|Uygulama çalıştırılabilir|Ortam Değişkeni|
+|Uygulama|Uygulama çalıştırılabilir|Ortam değişkeni|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
 |Autodesk Maya 2017|render. exe|MAYA_2017_EXEC|
 |Autodesk Maya 2018|render. exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray tek başına|Vray. exe|VRAY_ 3.60.4 _EXEC|
+|Chaos Group V-Ray tek başına|Vray. exe|VRAY_3.60.4_EXEC|
 Arnold 2017 komut satırı|açılış. exe|ARNOLD_2017_EXEC|
 |Arnold 2018 komut satırı|açılış. exe|ARNOLD_2018_EXEC|
 |Blender|Blender. exe|BLENDER_2018_EXEC|

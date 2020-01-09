@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makine ölçek kümeleri hakkında SSS | Microsoft Docs
-description: Sanal makine ölçek kümeleri hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure sanal makine ölçek kümeleri hakkında SSS
+description: Azure 'daki sanal makine ölçek kümeleri hakkında en sık sorulan soruların yanıtlarını alın.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356210"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -229,7 +229,7 @@ Bir Linux VM oluşturma sırasında SSH ortak anahtarlarını düz metin sağlay
 }
 ```
 
-linuxConfiguration öğe adı | Gerekli | Tür | Açıklama
+linuxConfiguration öğe adı | Gereklidir | Tür | Açıklama
 --- | --- | --- | ---
 SSH | Hayır | Koleksiyon | Bir Linux işletim sistemi için SSH anahtar yapılandırmasını belirtir
 yol | Evet | Dize | Burada SSH anahtarlarını veya sertifika klasöründe bulunmalıdır Linux dosya yolunu belirtir
@@ -239,7 +239,7 @@ Bir örnek için bkz. [101 vm sshkey GitHub Hızlı Başlangıç şablonu](https
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Ne zaman çalıştırabilir `Update-AzVmss` birden fazla sertifika aynı anahtar kasasından ekledikten sonra şu iletiyi görüyorum:
 
->Güncelleştirme-AzVmss: Liste gizli dizisi, izin verilmeyen/Subscriptions/\<My-Subscription-id >/resourceGroups/internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/internal-keyvault-dev örneklerini içerir.
+>Update-AzVmss: LIST Secret, izin verilmeyen/Subscriptions/\<My-Subscription-ID >/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev yinelenen örneklerini içeriyor.
 
 Bu var olan bir kaynak kasası için yeni bir kasa sertifika kullanmak yerine aynı kasaya yeniden eklemeyi denerseniz oluşabilir. `Add-AzVmssSecret` Komut düzgün çalışmaz ek gizli dizileri ekliyorsanız.
 
@@ -343,6 +343,13 @@ Daha fazla bilgi için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com
 
 Evet. [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) ve [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)için Azure hızlı başlangıç şablonlarında bazı örnek MSI şablonlarına bakabilirsiniz.
 
+## <a name="deleting"></a>Siliniyor 
+
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Örnek silinirken, sanal makine ölçek kümesi örneklerine göre ayarlanan kilitler dikkate alınır mi?
+
+Azure portalında, tek bir örneği veya toplu silme özelliğini birden çok örnek seçerek silebilirsiniz. Bir kilidi olan tek bir örneği silmeye çalışırsanız kilit dikkate alınır ve örneği silemezsiniz demektir. Ancak, birden çok örneği toplu olarak seçerseniz ve bu örneklerden herhangi birinde bir kilit varsa, kilitler kullanılamaz ve seçilen örneklerin hepsi silinir. 
+ 
+Azure CLı 'de yalnızca tek bir örneği silebilirsiniz. Bir kilidi olan tek bir örneği silmeye çalışırsanız kilit dikkate alınır ve bu örneği silemezsiniz. 
 
 ## <a name="extensions"></a>Uzantılar
 
@@ -463,7 +470,7 @@ Bir özel depolama hesabında barındırılan özel bir betik yürütmek için k
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Kümedeki tüm VM NIC için geçerli olacak şekilde, bir ölçek kümesi için bir ağ güvenlik grubu (NSG) atamak mümkün mü?
 
@@ -507,7 +514,7 @@ Evet. Bir ağ güvenlik grubunun doğrudan bir ölçek kümesi ağ profili Netwo
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Aynı bölgede ve aynı abonelik içinde sanal makine ölçek kümeleri için bir VIP takası ne yapmalıyım?
 
-İki sanal makine ölçek kümeleri ile Azure Load Balancer ön uçları sahip ve aynı abonelik ve aynı bölgede olmaları, her bir genel IP adreslerini serbest bırakın ve diğer atayın. Bkz [. VIP takas: Örneğin Azure Resource Manager](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) için mavi yeşil dağıtım. Bu gecikme gelmez serbest/ayrılan ağ kaynakları gibi ancak düzeyi. Azure Application Gateway iki arka uç havuzları ve yönlendirme kuralı'nı kullanmayı daha hızlı bir seçenektir. Alternatif olarak, uygulamanızla barındırabilir [Azure uygulama Hizmeti'ni](https://azure.microsoft.com/services/app-service/) hazırlama ve üretim yuvası arasında hızlı geçiş yapmak için destek sağlar.
+İki sanal makine ölçek kümeleri ile Azure Load Balancer ön uçları sahip ve aynı abonelik ve aynı bölgede olmaları, her bir genel IP adreslerini serbest bırakın ve diğer atayın. Bkz: [VIP takas: Mavi-yeşil dağıtım Azure Resource Manager'daki](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) örneğin. Bu gecikme gelmez serbest/ayrılan ağ kaynakları gibi ancak düzeyi. Azure Application Gateway iki arka uç havuzları ve yönlendirme kuralı'nı kullanmayı daha hızlı bir seçenektir. Alternatif olarak, uygulamanızla barındırabilir [Azure uygulama Hizmeti'ni](https://azure.microsoft.com/services/app-service/) hazırlama ve üretim yuvası arasında hızlı geçiş yapmak için destek sağlar.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Statik özel IP adresi ayırma kullanmak için özel IP adresleri aralığı nasıl belirtebilirim?
 
@@ -564,7 +571,7 @@ Her VM için genel bir IP adresi atayan bir sanal makine ölçek kümesi oluştu
 
 Evet. Birden çok Application Gateway arka uç adres havuzu için kaynak kimliklerini, ölçek kümesi ağ profilinizin _ıpconfigurations_ bölümündeki _Applicationgatewaybackendadddresspoir_ listesine ekleyebilirsiniz.
 
-## <a name="scale"></a>Ölçek
+## <a name="scale"></a>Ölçeklendirme
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>Hangi durumda miyim ikiden az VM içeren bir sanal makine ölçek kümesi oluşturursunuz?
 

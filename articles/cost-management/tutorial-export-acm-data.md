@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure maliyet yönetimi 'nden aktarılmış verileri oluşturma ve yönetme
+title: Öğretici-Azure maliyet yönetimi 'nden verileri dışarı aktarma
 description: Bu makalede, dış sistemlerde kullanabilmeniz için, dışarıya aktarılmış Azure maliyet yönetimi verilerini nasıl oluşturabileceğiniz ve yönetebileceğiniz gösterilmektedir.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a462b3d165a596673049abbbb8b5b8d346f5fc9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d5f6bc4620d60d3eb776a6229450e02035b8290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441013"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Günlük bir dışarı aktarma oluşturma
 > * Verilerin toplandığını doğrulama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Veri dışa aktarma, [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) müşterileri de dahil olmak üzere çeşitli Azure hesap türleri için kullanılabilir. Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md). Aşağıdaki Azure izinleri veya kapsamları, Kullanıcı ve grup tarafından verilerin dışarı aktarılması için abonelik başına desteklenir. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
 
 - Sahip – Bir abonelik için zamanlanan dışarı aktarmaları oluşturabilir, değiştirebilir veya silebilir.
@@ -42,7 +42,7 @@ Azure Depolama hesapları için:
 - Yazma izinlerinin, dışarı aktarma üzerindeki izinlerden bağımsız olarak yapılandırılmış depolama hesabını değiştirmesi gerekir.
 - Azure depolama hesabınızın blob veya dosya depolama için yapılandırılmış olması gerekir.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-daily-export"></a>Günlük bir dışarı aktarma oluşturma
@@ -50,7 +50,7 @@ Azure Depolama hesapları için:
 Veri dışa aktarma oluşturmak veya görüntülemek veya bir dışarı aktarma zamanlamak için, Azure portal istenen kapsamı açın ve menüden **Maliyet Analizi** ' ni seçin. Örneğin, **abonelikler**' e gidin, listeden bir abonelik seçin ve ardından menüde **Maliyet Analizi** ' ni seçin. Maliyet Analizi sayfasının en üstünde **dışarı aktar** ' a tıklayın ve ardından bir dışarı aktarma seçeneği belirleyin. Örneğin, **dışarı aktarmayı zamanla**' yı tıklatın.  
 
 > [!NOTE]
-> - Aboneliklerin yanı sıra, kaynak grupları, hesaplar, departmanlar ve kayıtlar üzerinde dışarı aktarmalar oluşturabilirsiniz. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
+> - Aboneliklerin yanı sıra kaynak grupları, hesaplar, departmanlar ve kayıtlar üzerinde de dışarı aktarma işlemleri oluşturabilirsiniz. Kapsamlar hakkında daha fazla bilgi için bkz. [kapsamları anlama ve bunlarla çalışma](understand-work-scopes.md).
 >- Faturalandırma hesabı kapsamında veya bir müşterinin kiracısında bir iş ortağı olarak oturum açtığınızda, iş ortağı depolama hesabınıza bağlı bir Azure depolama hesabına veri aktarabilirsiniz. Ancak, CSP kiracınızda etkin bir aboneliğiniz olması gerekir.
 >
 
@@ -63,7 +63,7 @@ Azure depolama hesabınız için bir abonelik belirtin, ardından depolama hesab
 
 ![Depolama hesabı ayrıntılarını gösteren yeni dışarı aktarma örneği](./media/tutorial-export-acm-data/storage_exports.png)
 
-Dışarı aktarma ayrıntılarınızı gözden geçirin ve **Oluştur**' a tıklayın.
+Dışarı aktarma ayrıntılarını gözden geçirin ve tıklayın **Oluştur**.
 
 Yeni dışarı aktarmanız, dışarı aktarma listesinde görünür. Varsayılan olarak, yeni dışarı aktarmaları etkinleştirilir. Zamanlanmış bir dışarı aktarmayı devre dışı bırakmak veya silmek istiyorsanız, listedeki herhangi bir öğeye ve ardından **Devre dışı bırak** veya **Sil** seçeneklerinden birine tıklayın.
 
@@ -71,19 +71,19 @@ Başlangıçta, dışarı aktarmanın çalışmaya başlaması bir ila iki saat 
 
 ### <a name="export-schedule"></a>Dışarı aktarma zamanlaması
 
-Zamanlanan dışarı aktarmalar, ilk olarak dışa aktarma işlemini oluşturduğunuz zaman ve haftanın günüyle etkilenir. Zamanlanan bir dışarı aktarma oluşturduğunuzda dışarı aktarma işlemi her bir sonraki dışarı aktarma oluşumu için aynı günde çalışır. Örneğin, 1:00 PM 'de günlük bir dışarı aktarma oluşturursunuz. Sonraki dışa aktarma işlemi, aşağıdaki gün 1:00 PM 'de çalışır. Geçerli zaman, diğer tüm dışarı aktarma türlerini aynı şekilde etkiler — her zaman dışa aktarma işlemini ilk oluşturduğunuz zaman aynı günde çalışır. Farklı bir örnekte, Pazartesi günü 4:00 PM 'de haftalık bir dışarı aktarma oluşturursunuz. Sonraki rapor 4:00 PM 'de aşağıdaki Pazartesi günü çalışır. *İçe aktarılmış veriler, çalışma zamanının dört saat içinde kullanılabilir.*
+Zamanlanmış dışarı aktarmalar, başlangıçta dışarı aktarmayı başlattığınız saatten ve haftanın gününden etkilenir. Zamanlanmış dışarı aktarma oluşturduğunuzda, izleyen her dışarı aktarma tekrarı günün aynı saatinde çalıştırılır. Örneğin saat 13:00'da günlük dışarı aktarma oluşturursunuz. Bir sonraki dışarı aktarma ertesi gün 13:00'da çalıştırılır. Geçerli saat diğer tüm dışarı aktarma türlerini aynı şekilde etkiler; her zaman günün ilk dışarı aktarmayı oluşturduğunuz saatinde çalıştırılır. Başka bir örnekte Pazartesi saat 16:00'da haftalık dışarı aktarma oluşturursunuz. Bir sonraki dışarı aktarma sonraki hafta 16:00'da çalıştırılır. *Dışarı aktarılan veriler çalıştırma zamanını izleyen dört saat içinde kullanılabilir.*
 
-Her dışarı aktarma yeni bir dosya oluşturur, bu nedenle eski dışarı aktarmalar üzerine yazılmaz.
+Her dışarı aktarma işlemi yeni bir dosya oluşturur, dolayısıyla daha eski dışarı aktarmaların üzerine yazılmaz.
 
-Üç tür dışa aktarma seçeneği vardır:
+Üç dışarı aktarma türü seçeneği vardır:
 
-**Aylık maliyetler Için günlük dışa aktarma** : ilk dışa aktarma hemen çalışır. Sonraki dışarı aktarmalar, ilk dışa aktarma ile aynı anda bir sonraki günü çalışır. En son veriler, önceki günlük dışarı aktarımlardan toplanır.
+**Aylık maliyetler Için günlük dışa aktarma** : ilk dışa aktarma hemen çalışır. İzleyen dışarı aktarmalar ertesi gün ilk dışarı aktarmayla aynı saatte çalıştırılır. En son veriler önceki günlük dışarı aktarmalardan toplanır.
 
-**Son 7 güne ait maliyetlerin haftalık dışa aktarılması** : ilk dışa aktarma hemen çalışır. Sonraki dışarı aktarmalar, haftanın gününde ve ilk dışa aktarma ile aynı zamanda çalışır. Maliyetler son yedi güne yöneliktir.
+**Son 7 güne ait maliyetlerin haftalık dışa aktarılması** : ilk dışa aktarma hemen çalışır. İzleyen dışarı aktarmalar sonraki hafta, ilk dışarı aktarmayla aynı gün çalıştırılır. Bunlar son yedi günün maliyetleridir.
 
-**Özel** – haftalık ve aylık dışarı aktarmaları, hafta-tarih ve ay-tarih seçenekleriyle zamanlamanıza izin verir. *İlk dışarı aktarma işlemi hemen çalışacaktır.*
+**Özel** – haftalık ve aylık dışarı aktarmaları, hafta-tarih ve ay-tarih seçenekleriyle zamanlamanıza izin verir. *İlk dışarı aktarma hemen çalıştırılır.*
 
-Kullandıkça öde, MSDN veya Visual Studio aboneliğiniz varsa faturanızda fatura dönemi takvim ayına hizalanmayabilir. Bu tür abonelikler ve kaynak grupları için, fatura döneminize veya takvim aylarınıza hizalanmış bir dışarı aktarma işlemi oluşturabilirsiniz. Faturanızda bir dışa aktarma oluşturmak için, **özel**' e gidin ve **faturalandırma dönemi**' ni seçin.  Takvim aya hizalanmış bir dışarı aktarma oluşturmak için, **ay-tarih**' i seçin.
+Kullandıkça Öde, MSDN veya Visual Studio aboneliğiniz varsa faturalama döneminiz takvim ayıyla uyumlu olmayabilir. Bu tür aboneliklerde ve kaynak gruplarında, fatura döneminizle veya takvim aylarıyla uyumlu bir dışarı aktarma oluşturabilirsiniz. Faturanızda bir dışa aktarma oluşturmak için, **özel**' e gidin ve **faturalandırma dönemi**' ni seçin.  Takvim aya hizalanmış bir dışarı aktarma oluşturmak için, **ay-tarih**' i seçin.
 >
 >
 

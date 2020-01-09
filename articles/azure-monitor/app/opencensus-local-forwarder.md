@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus dağıtılmış izleme yerel ileticisi (Önizleme) | Microsoft docs
+title: Azure Application Insights OpenCensus yerel ileticisi (Önizleme)
 description: Python ve Azure 'da bulunan dillerdeki dağıtılmış izlemeleri ve yayılmaları iletme ve Azure 'a git Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406599"
 ---
 # <a name="local-forwarder-preview"></a>Yerel iletici (Önizleme)
 
@@ -25,12 +25,12 @@ Yerel iletici [GitHub üzerinde açık kaynaklı bir projem](https://github.com/
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Windows hizmeti
+#### <a name="windows-service"></a>Windows Hizmeti
 
 Windows altında yerel iletici çalıştırmanın en kolay yolu Windows hizmeti olarak yüklemek. Yayın, işletim sistemiyle kolayca kaydedilemeyen bir Windows hizmeti yürütülebilir dosyası (*windowsservicehost/Microsoft. LocalForwarder. WindowsServiceHost. exe*) ile birlikte gelir.
 
 > [!NOTE]
-> Yerel iletici hizmeti en az .NET Framework 4,7 gerektirir. .NET Framework 4,7 yoksa hizmet yüklenir, ancak başlatılmaz. .NET Framework 'nin son sürümüne erişmek için **[.NET Framework indirme sayfasını ziyaret edin](
+> Yerel iletici hizmeti en az .NET Framework 4,7 gerektirir. .NET Framework 4,7 yoksa hizmet yüklenir, ancak başlatılmaz. .NET Framework'ün en son sürümüne erişim sağlamak **[.NET Framework Yükleme sayfasını ziyaret edin](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. LF 'yi indirin. GitHub 'daki [Yerel iletici yayın sayfasından](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) windowsservicehost. zip dosyası.
@@ -105,7 +105,7 @@ Birçok Linux kullanıcısı yerel ileticiyi bir daemon olarak çalıştırmak i
 Örnek olarak, systemd kullanarak bir Daemon hizmeti oluşturalım. Çerçeveye bağımlı sürümü kullanacağız, ancak aynı zamanda bir kendi içinde de aynı şekilde yapılabilir.
 
 * *localforwarder. Service* adlı aşağıdaki hizmet dosyasını oluşturun ve */lib/systemd/System*dizinine yerleştirin.
-Bu örnek, Kullanıcı adınızın SAMPLE_USER olduğunu varsayar ve yerel iletici çerçevesine bağımlı ikili dosyaları ( */consolehost/Publish*) */Home/sample_user/localforwarder_dir*dizinine kopyaladınız.
+Bu örnek, Kullanıcı adınızın SAMPLE_USER olduğunu varsayar ve yerel iletici çerçevesine bağımlı ikili dosyaları ( */consolehost/Publish*) */home/SAMPLE_USER/LOCALFORWARDER_DIR*olarak kopyaladınız.
 
 ```
 # localforwarder.service

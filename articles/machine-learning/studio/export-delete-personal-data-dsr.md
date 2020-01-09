@@ -1,7 +1,7 @@
 ---
 title: Verilerinizi dışarı aktarın ve silin
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) tarafından depolanan ürün içi veriler, Azure portal ve ayrıca kimliği doğrulanmış REST API 'Leri aracılığıyla dışarı ve silme için kullanılabilir. Telemetri verilerine Azure Gizlilik portalı üzerinden erişilebilir. Bu makalede nasıl yapılacağı gösterilir.
+description: Azure Machine Learning Studio (klasik) tarafından depolanan ürün içi veriler, Azure portal ve ayrıca kimliği doğrulanmış REST API 'Leri aracılığıyla dışarı ve silme için kullanılabilir. Telemetri verilerine Azure Gizlilik portalı üzerinden erişilebilir. Bu makalede, nasıl gösterir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9d17ff38ad521dcc282be4f06d33021faeb495b8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427580"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio ürün içi kullanıcı verilerini dışa aktarma ve silme (klasik)
 
-Azure portal, Studio (klasik) arabirimi, PowerShell ve kimliği doğrulanmış REST API 'Lerini kullanarak Azure Machine Learning Studio (klasik) tarafından depolanan ürün içi verileri silebilir veya dışarı aktarabilirsiniz. Bu makalede nasıl yapılacağı açıklanır. 
+Azure portal, Studio (klasik) arabirimi, PowerShell ve kimliği doğrulanmış REST API 'Lerini kullanarak Azure Machine Learning Studio (klasik) tarafından depolanan ürün içi verileri silebilir veya dışarı aktarabilirsiniz. Bu makalede nasıl yapılacağı açıklanmaktadır. 
 
-Telemetri verilerine Azure Gizlilik portalı üzerinden erişilebilir. 
+Telemetri verilerini Azure gizlilik portal üzerinden erişilebilir. 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -61,7 +61,7 @@ Kullanıcılar bir çalışma alanındaki varlıkları seçip Sil düğmesini se
 
 ![Machine Learning Studio varlıkları silme (klasik)](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
-### <a name="delete-an-entire-workspace"></a>Tüm çalışma alanını sil
+### <a name="delete-an-entire-workspace"></a>Tüm bir çalışma alanını silme
 
 Kullanıcılar, çalışma alanının tamamını da silebilir:
 - Ücretli çalışma alanı: Azure portal ile silin.
@@ -70,7 +70,7 @@ Kullanıcılar, çalışma alanının tamamını da silebilir:
 ![Machine Learning Studio (klasik) içinde ücretsiz bir çalışma alanını silme](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-classic-data-with-powershell"></a>PowerShell ile Studio (klasik) verilerini dışa aktarma
-Komutları kullanarak tüm bilgilerinizi klasik Azure Machine Learning Studio taşınabilir bir biçimde dışarı aktarmak için PowerShell kullanın. Bilgi için bkz. [Azure Machine Learning Studio Için PowerShell modülü (klasik)](powershell-module.md) makalesi.
+Komutları kullanarak tüm bilgilerinizi Azure Machine Learning Studio (klasik) konumundan taşınabilir biçime aktarmak için PowerShell 'i kullanın. Bilgi için bkz. [Azure Machine Learning Studio Için PowerShell modülü (klasik)](powershell-module.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432002"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure tabanlı sanal makinenize bağlanın
 
@@ -33,28 +33,29 @@ Aşağıdaki makalede, yerleşik Windows RDP desteğinin sanal makinenize bağla
 
 Linux tabanlı VM 'yi bağlamak için güvenli bir kabuk Protokolü (SSH) istemcisine ihtiyacınız vardır.  Bu tartışma, ücretsiz [Putty](https://www.ssh.com/ssh/putty/) Shh terminalini kullanacaktır.
 
-1. [Azure Portal](https://ms.portal.azure.com) **sanal makineler** dikey PENCERESINDE, bağlanmak istediğiniz VM 'yi seçin.  
-2. Zaten çalışmıyorsa VM 'yi **başlatın** .
-3. **Genel bakış** sayfasını açmak için VM adına tıklayın.
-4. VM 'nizin genel IP adresi ve DNS adı ' nı aklınızda edin.  (Bu değerler ayarlanmamışsa, [bir ağ arabirimi oluşturmanız](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) gerekir
+1. [Azure portalına](https://ms.portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin. 
+2. Bağlanmak istediğiniz VM 'yi seçin.  
+3. Zaten çalışmıyorsa VM 'yi **başlatın** .
+4. **Genel bakış** sayfasını açmak için VM adına tıklayın.
+5. VM 'nizin genel IP adresi ve DNS adı ' nı aklınızda edin.  (Bu değerler ayarlanmamışsa, [bir ağ arabirimi oluşturmanız](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) gerekir
 
    ![VM genel bakış ayarları](./media/publishvm_019.png)
  
-5. PuTTY uygulamasını açın.  
-6. PuTTY yapılandırması iletişim kutusunda, sanal makinenizin IP adresini veya DNS adını girin. 
+6. PuTTY uygulamasını açın.  
+7. PuTTY yapılandırması iletişim kutusunda, sanal makinenizin IP adresini veya DNS adını girin. 
 
    ![PuTTY Terminal ayarları](./media/publishvm_020.png)
  
-7. Bir PuTTY terminali açmak için **Aç** ' a tıklayın.  
-8. İstendiğinde, Linux VM hesabınızın hesap adını ve parolasını girin. 
+8. Bir PuTTY terminali açmak için **Aç** ' a tıklayın.  
+9. İstendiğinde, Linux VM hesabınızın hesap adını ve parolasını girin. 
 
-   Bağlantı sorunlarınız varsa, SSH istemcinizin belgelerine bakın. Örneğin, [Bölüm 10: ortak hata iletileri](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+Bağlantı sorunlarınız varsa, SSH istemcinizin belgelerine bakın. Örneğin, [Bölüm 10: ortak hata iletileri](https://www.ssh.com/ssh/putty/putty-manuals).
 
 Sağlanan bir Linux sanal makinesine masaüstü ekleme dahil daha fazla bilgi için bkz. [Azure 'da bir LINUX VM 'sine bağlanmak Için uzak masaüstü 'Nü yüklemek ve yapılandırmak](../../../virtual-machines/linux/use-remote-desktop.md).
 
 
 ## <a name="stop-unused-vms"></a>Kullanılmayan VM 'Leri durdur
-Bir VM çalışırken *veya boşta KALDıĞıNDA*VM barındırma için Azure faturaları.  Bu nedenle, şu anda kullanılmayan VM 'Leri durdurmak en iyi uygulamadır.  Örneğin, test, yedekleme veya kullanımdan kaldırılan VM 'Ler, kapanmaya yönelik adaylardır. Bir VM 'yi kapatmak için aşağıdaki adımları gerçekleştirin:
+Bir VM çalışırken *veya boşta KALDıĞıNDA*VM barındırma için Azure faturaları.  Bu nedenle, şu anda kullanılmayan VM 'Leri durdurmak en iyi uygulamadır.  Örneğin, test, yedekleme veya kullanımdan kaldırılan VM 'Ler, kapanmaya yönelik adaylardır. Bir VM 'yi kapatmak için aşağıdaki adımları izleyin:
 
 1. **Sanal makineler** dikey penceresinde, durdurmak istediğiniz VM 'yi seçin. 
 2. Sayfanın üst kısmındaki araç çubuğunda **Durdur** düğmesine tıklayın.
@@ -68,4 +69,4 @@ Durdurulmuş bir sanal makineyi daha sonra yeniden etkinleştirmek istiyorsanız
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uzaktan bağlandıktan sonra, [VM 'nizi yapılandırmaya](./cpp-configure-vm.md)hazırsınızdır.
+Uzaktan bağlandıktan sonra, [VM 'nizi yapılandırmaya](./cpp-configure-vm.md)hazırsınız demektir.

@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 08/13/2018
+ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442885"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -23,7 +23,7 @@ Azure Kubernetes hizmeti (AKS) kümeleri oluştururken veya yönetirken, zaman z
 [Kubernetes kümelerinde sorun gidermeye yönelik resmi kılavuzunu](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)deneyin.
 Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları gidermeye yönelik bir Microsoft mühendis tarafından yayımlanan bir [sorun giderme kılavuzu](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)vardır.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmalıyım? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmam gerekir? 
 
 [Çekirdek istemeniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)gerekir.
 
@@ -32,7 +32,7 @@ Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları g
 Azure portal bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm sayısı ayarı varsayılan olarak 30 ' dur.
 Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu varsayılan ayar, `az aks create` komutunda `–-max-pods` bayrağı kullanılarak değiştirilebilir.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmam gerekir?
 
 Azure CNı (Gelişmiş ağ) kullanılıyorsa, AKS, yapılandırılmış düğüm başına "en yüksek pods" temelinde IP adresleri ayırır. Düğüm başına yapılandırılan maksimum düğüm sayısına bağlı olarak, alt ağ boyutu düğüm sayısının ve düğüm başına en fazla Pod 'ın ürünüyle daha büyük olmalıdır. Aşağıdaki denklem şunları özetler:
 
@@ -40,7 +40,7 @@ Alt ağ boyutu > kümedeki düğümlerin sayısı (gelecekteki ölçekleme gerek
 
 Daha fazla bilgi için bkz. [kümeniz IÇIN IP adresleme planlaması](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmalıyım?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmam gerekir?
 
 Pod 'un bu modda takılmasının çeşitli nedenleri olabilir. Şöyle görünebilir:
 
@@ -53,17 +53,17 @@ Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda h
 
 Ne yazık ki, mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor. Açıkça yeni kümeler oluşturmanız gerekir. CLı kullanıyorsanız, RBAC varsayılan olarak etkindir. AKS portalını kullanıyorsanız, oluşturma iş akışında RBAC 'yi etkinleştirmek için iki durumlu bir düğme bulunur.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmam gerekir?
 
 Panodaki uyarıların nedeni, kümenin RBAC ile etkin hale gelir ve erişim varsayılan olarak devre dışı bırakılmıştır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmalıyım?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmam gerekir?
 
 Bir küme dışında hizmetinize erişmenin en kolay yolu, `kubectl proxy`çalıştırmak için, localhost bağlantı noktası 8001 ' e, Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un `kube-system` ad alanında çalışıp çalışmadığını denetleyin. Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmam gerekir?
 
 Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. `tunnelfront` Pod 'ın, `kubectl get pods --namespace kube-system` komutunu kullanarak *kuin-System* ad alanında çalışıp çalışmadığını denetleyin. Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
 
@@ -79,7 +79,7 @@ Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken o
 
 1. Küme `failed` durum dışına çıkana kadar `upgrade` ve `scale` işlemleri başarılı olmayacaktır. Ortak kök sorunları ve çözümleri şunları içerir:
     * **Yetersiz işlem (CRP) kotasıyla**ölçekleme. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından, ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir işlem kotası artışı istemek için bu adımları](../azure-supportability/resource-manager-core-quotas-request.md) izleyin.
-    * Gelişmiş ağ ve **yetersiz alt ağ (ağ) kaynaklarıyla**bir kümeyi ölçeklendirin. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir kaynak kotası artışı istemek için bu adımları](../azure-resource-manager/resource-manager-quota-errors.md#solution) izleyin.
+    * Gelişmiş ağ ve **yetersiz alt ağ (ağ) kaynaklarıyla**bir kümeyi ölçeklendirin. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir kaynak kotası artışı istemek için bu adımları](../azure-resource-manager/templates/error-resource-quota.md#solution) izleyin.
 2. Yükseltme hatasının temeldeki nedeni çözümlendikten sonra, kümenizin başarılı bir durumda olması gerekir. Başarılı bir durum doğrulandıktan sonra, özgün işlemi yeniden deneyin.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Bu durumun yükseltilme veya ölçeklendirilmesi sırasında hata alıyorum, bu durum kümemdeki Şu anda yükseltilmekte veya yükseltme başarısız oldu
@@ -155,8 +155,8 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1,12 | 1.12.9 veya üzeri |
-| 1,13 | 1.13.6 veya üzeri |
+| 1.12 | 1.12.9 veya üzeri |
+| 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
 
 
@@ -164,8 +164,8 @@ Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktala
 
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1,12 | 1.12.0 veya üzeri |
-| 1,13 | 1.13.0 veya üzeri |
+| 1.12 | 1.12.0 veya üzeri |
+| 1.13 | 1.13.0 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 
@@ -265,8 +265,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | -- | :--: |
 | 1,10 | 1.10.10 veya üzeri |
 | 1,11 | 1.11.5 veya üzeri |
-| 1,12 | 1.12.3 veya üzeri |
-| 1,13 | 1.13.0 veya üzeri |
+| 1.12 | 1.12.3 veya üzeri |
+| 1.13 | 1.13.0 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, birkaç dakika bekleyip yeniden denemeden sorunu azaltabilirsiniz.
@@ -286,8 +286,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | -- | :--: |
 | 1,10 | 1.10.12 veya üzeri |
 | 1,11 | 1.11.6 veya üzeri |
-| 1,12 | 1.12.4 veya üzeri |
-| 1,13 | 1.13.0 veya üzeri |
+| 1.12 | 1.12.4 veya üzeri |
+| 1.13 | 1.13.0 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, aşağıdaki adımları deneyerek sorunu azaltabilirsiniz:
@@ -307,8 +307,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
 | 1,11 | 1.11.9 veya üzeri |
-| 1,12 | 1.12.7 veya üzeri |
-| 1,13 | 1.13.4 veya üzeri |
+| 1.12 | 1.12.7 veya üzeri |
+| 1.13 | 1.13.4 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, diski el ile ayırarak sorunu azaltabilirsiniz.
@@ -321,8 +321,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
-| 1,12 | 1.12.9 veya üzeri |
-| 1,13 | 1.13.6 veya üzeri |
+| 1.12 | 1.12.9 veya üzeri |
+| 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
 | 1,15 ve üzeri | Yok |
 
@@ -341,8 +341,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
-| 1,12 | 1.12.10 veya üzeri |
-| 1,13 | 1.13.8 veya üzeri |
+| 1.12 | 1.12.10 veya üzeri |
+| 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
 | 1,15 ve üzeri | Yok |
 
@@ -364,16 +364,16 @@ Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız 
  
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1,12 | 1.12.6 veya üzeri |
-| 1,13 | 1.13.4 veya üzeri |
+| 1.12 | 1.12.6 veya üzeri |
+| 1.13 | 1.13.4 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Kubernetes 'in hangi sürümleri, Sovereign bulutu üzerinde Azure dosyaları destekliyor?
 
 | Kubernetes sürümü | Önerilen sürüm |
 | -- | :--: |
-| 1,12 | 1.12.0 veya üzeri |
-| 1,13 | 1.13.0 veya üzeri |
+| 1.12 | 1.12.0 veya üzeri |
+| 1.13 | 1.13.0 veya üzeri |
 | 1,14 | 1.14.0 veya üzeri |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure dosyaları kullanılırken varsayılan mountOptions nedir?
@@ -459,8 +459,8 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 
 | Kubernetes sürümü | Sabit sürüm |
 | -- | :--: |
-| 1,12 | 1.12.6 veya üzeri |
-| 1,13 | 1.13.4 veya üzeri |
+| 1.12 | 1.12.6 veya üzeri |
+| 1.13 | 1.13.4 veya üzeri |
 | 1,14 ve üzeri | Yok |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
@@ -482,3 +482,17 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 ```
 
 Birkaç dakika sonra, aracı düğümü güncelleştirilmiş depolama anahtarıyla Azure dosya takasını yeniden dener.
+
+### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>Küme otomatik algılama işlemi, düğüm grubu boyutlarını düzeltemedi hata vererek ölçeklendirme yapamıyor
+
+Kümenizin otomatik olarak ölçeklendirilmesi/ölçeği yoksa [küme otomatik Scaler günlüklerinde][view-master-logs]aşağıdaki gibi bir hata görürseniz.
+
+```console
+E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
+```
+
+Bu hata, küme otomatik Scaler, kümenin gerçekten kümeden farklı bir değerle bittiği bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle yapılır. Bu durumdan yararlanmak için [küme otomatik Scaler][cluster-autoscaler]'ı devre dışı bırakıp yeniden etkinleştirmeniz yeterlidir.
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

@@ -4,15 +4,15 @@ description: Uygulama bileşenlerini ve bunların bağımlılıklarını otomati
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/09/2018
-ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fa47606112c562402a42bd5ca503ed2d9a311268
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400391"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>VM'ler için Azure İzleyici (Önizleme) sık sorulan sorular
 Bu Microsoft SSS, VM'ler için Azure İzleyici hakkında sık sorulan soruların bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Sık sorulan bir soru, böylece hızla ve kolayca bulunabilir, bu makaleye ekleriz.
@@ -67,7 +67,7 @@ Bir sistem durumu ölçüt örneğinin herhangi bir ayarını değiştirirseniz,
 Hayır, tek tek işlemci ve mantıksal işlemci düzeyi durum ölçütleri bir Windows için dahil değildir, Azure VM 'nin kullanabildiği toplam mantıksal CPU sayısına göre CPU basıncını etkin bir şekilde değerlendirmek için varsayılan olarak yalnızca toplam CPU kullanımı izlenir. 
 
 ## <a name="are-all-health-criteria-thresholds-configurable"></a>Tüm durum ölçütleri eşikleri yapılandırılabilir mi?  
-Windows VM 'yi hedefleyen sistem durumu ölçütlerine yönelik eşikler, sistem durumları *çalışıyor* veya *kullanılabilir*olarak ayarlandığı için değiştirilebilir değildir. [Iş yükü IZLEYICISI API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)'sinden sistem durumunu sorgulayıp, şu durumlarda hizmet veya varlık için **4** *eşik* değeriyle **LessThan** veya **GreaterThan** *değerini görüntüler* :
+Sistem durumlarına ayarlanır çünkü hedef bir Windows VM durumu ölçütlerini eşikleri değiştirilebilir, olmayan *çalıştıran* veya *kullanılabilir*. Sistem sağlığı durumunu sorgulanırken [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), görüntülediği *comparisonOperator* değerini **LessThan** veya **GreaterThan** ile bir *eşiği* değerini **4** hizmet veya varlık varsa:
    - DNS istemcisi hizmet durumu-hizmet çalışmıyor. 
    - DHCP istemci hizmeti sistem durumu-hizmet çalışmıyor. 
    - RPC hizmet durumu-hizmet çalışmıyor. 
@@ -77,13 +77,13 @@ Windows VM 'yi hedefleyen sistem durumu ölçütlerine yönelik eşikler, sistem
    - Windows Uzaktan Yönetimi hizmetinin sistem durumu – hizmet çalışmıyor. 
    - Mantıksal Disk, dosya sistemi hatası veya bozulma – kullanılamıyor.
 
-Aşağıdaki Linux durum ölçütlerine yönelik eşikler, sistem durumu zaten *true*olarak ayarlandığından değiştirilebilir değildir. Sistem durumu, içeriğine bağlı olarak varlık için Iş yükü Izleme API 'sinden sorgulandığında, değeri **LessThan** ve *eşik* değeri **1** olan *ComparisonOperator* ' i görüntüler.
+Sistem durumu zaten ayarlandığından aşağıdaki Linux durumu ölçütlerini eşikleri değiştirilebilir, olmayan *true*. Sistem durumunu görüntüler *comparisonOperator* bir değerle **LessThan** ve *eşiği* değerini **1** gelen sorgulandığında İş yükü izleme API bağlama bağlı olarak varlığı için:
    - Mantıksal Disk durumu – mantıksal disk değil çevrimiçi / kullanılabilir
    - Disk durumu – Disk değil çevrimiçi / kullanılabilir
    - Ağ bağdaştırıcısı durumu - ağ bağdaştırıcısı devre dışı bırakıldı
 
 ## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Sistem durumu özelliğine dahil olan uyarıları değiştirmek Nasıl yaparım??
-Her sistem durumu ölçütü için tanımlanan uyarı kuralları, Azure portalında görüntülenmez. Bir sistem durumu uyarı kuralını yalnızca [Iş yükü IZLEYICISI API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)'sinde etkinleştirebilir veya devre dışı bırakabilirsiniz. Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](../../azure-monitor/platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, VM 'ye karşı gerçekleştirilen tüm *sistem durumu uyarılarının* aynı eylem gruplarını tetiklenmesi IÇIN bir VM 'ye karşı eylem grupları atayabilirsiniz. Geleneksel Azure uyarıları ayrı bir eylem grubu her sistem durumu uyarı kuralının kavramı yoktur. Ayrıca, sistem durumu uyarı tetiklendiğinde e-posta veya SMS bildirimleri sağlamak için yapılandırılmış olan eylem grupları desteklenir. 
+Her sistem durumu ölçütü için tanımlanan uyarı kuralları, Azure portalında görüntülenmez. Etkinleştirebilir veya sistem durumu uyarısı devre dışı yalnızca kural [iş yükü İzleyicisi API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ayrıca, Azure portal sistem durumu uyarıları için bir [Azure izleyici eylem grubu](../../azure-monitor/platform/action-groups.md) atayamazsınız. Bir sistem durumu uyarısı tetiklendiğinde tetiklenecek bir eylem grubunu yapılandırmak için yalnızca bildirim ayarı API 'sini kullanabilirsiniz. Şu anda, bir VM'ye karşı Eylem grupları atayabilirsiniz böylece tüm *sistem durumu uyarılarını* aynı Eylem grupları karşı VM tetikleyici tetiklendi. Geleneksel Azure uyarıları ayrı bir eylem grubu her sistem durumu uyarı kuralının kavramı yoktur. Ayrıca, sistem durumu uyarı tetiklendiğinde e-posta veya SMS bildirimleri sağlamak için yapılandırılmış olan eylem grupları desteklenir. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Sanal Makinem için performans grafikleri bazı veya tüm veriler göremiyorum
 Disk tablosunda veya bazı performans grafiklerinde performans verilerini görmüyorsanız, performans sayaçlarınız çalışma alanında yapılandırılmamış olabilir. Çözümlemek için aşağıdaki [PowerShell betiğini](vminsights-enable-at-scale-powershell.md#enable-with-powershell)çalıştırın.

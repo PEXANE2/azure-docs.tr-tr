@@ -5,18 +5,18 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422143"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı dağıtın
 
 Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node. js ve diğerleri gibi diller desteğiyle önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta, bir [Azure Container Registry](/azure/container-registry) (ACR) App Service bir görüntünün nasıl dağıtılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Azure hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
@@ -24,9 +24,9 @@ Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node. js ve diğerleri g
 * [Vs Code için Azure App Service uzantısı](vscode:extension/ms-azuretools.vscode-azureappservice). Bu uzantıyı Azure platformunda bir hizmet olarak (PaaS) Linux Web Apps oluşturmak, yönetmek ve dağıtmak için kullanabilirsiniz.
 * [Vs Code Için Docker uzantısı](vscode:extension/ms-azuretools.vscode-docker). Bu uzantıyı, yerel Docker görüntüleri ve komutlarının yönetimini basitleştirmek ve oluşturulan uygulama görüntülerini Azure 'a dağıtmak için kullanabilirsiniz.
 
-## <a name="create-an-image"></a>Görüntü oluşturma
+## <a name="create-an-image"></a>Görüntü oluştur
 
-Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/azure/container-registry)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. [Hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](/azure/container-registry/container-registry-get-started-portal)' daki yönergeleri izleyin, ancak `hello-world` görüntüsü yerine `mcr.microsoft.com/azuredocs/go` görüntüsünü kullanın.
+Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/azure/container-registry)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. [Hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](/azure/container-registry/container-registry-get-started-portal)' daki yönergeleri izleyin, ancak `hello-world` görüntüsü yerine `mcr.microsoft.com/azuredocs/go` görüntüsünü kullanın. Başvuru için, [Azure örnekleri deposunda örnek Dockerfile bulunur](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
 > Kapsayıcı kayıt defterini oluştururken **Yönetici Kullanıcı** seçeneğini **etkinleştirmek** için ayarladığınızdan emin olun. Ayrıca, Azure portal kayıt defteri sayfanızın **erişim tuşları** bölümünden de ayarlayabilirsiniz. App Service erişim için bu ayar gereklidir.
@@ -67,7 +67,7 @@ Dağıtımdan sonra uygulamanız `http://<app name>.azurewebsites.net`kullanıla
 
 **App Service planı** , Web sitenizi barındırmak için kullanılacak fiziksel kaynakları tanımlar. Bu hızlı başlangıç, **Linux** altyapısında **temel** bir barındırma planı kullanır. Bu, sitenin diğer Web sitelerinden daha farklı bir Linux makinesinde barındırılması anlamına gelir. **Temel** planla başlatırsanız, bir makinede çalışan tek site olmak üzere ölçeğini ölçeklendirmek için Azure Portal kullanabilirsiniz.
 
-## <a name="browse-the-website"></a>Web sitesine gidin
+## <a name="browse-the-website"></a>Web sitesine Gözat
 
 İşlemin durumunu göstermek için dağıtım sırasında **Çıkış** paneli açılır. İşlem tamamlandığında, **App SERVICE** Explorer 'da oluşturduğunuz uygulamayı bulun, sağ tıklayın ve siteyi tarayıcınızda açmak Için **Web sitesine gidin** ' i seçin.
 

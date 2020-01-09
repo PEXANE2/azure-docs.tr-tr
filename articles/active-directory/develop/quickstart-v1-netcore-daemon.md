@@ -1,5 +1,5 @@
 ---
-title: Belirteç al & Konsol uygulamalarından Microsoft Graph API 'Leri çağırma (v 1.0) | Mavisi
+title: Belirteç al & çağrısı Microsoft Graph (.NET Core konsolu) (v 1.0) | Mavisi
 description: Azure AD ile tümleştirilen bir .NET Daemon uygulaması oluşturun & OAuth 2,0 kullanarak Azure AD korumalı API 'Leri çağırır
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d44dfe3eb03ff086d3785311c34ab1a6a5b3982a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424046"
 ---
-# <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Hızlı başlangıç: konsol uygulamasının kimliği (v 1.0) ile belirteç alma ve Microsoft Graph API çağrısı 
+# <a name="quickstart-acquire-token-and-call-microsoft-graph-using-console-apps-identity-v10"></a>Hızlı başlangıç: konsol uygulamasının kimliğini (v 1.0) kullanarak belirteci alın ve Microsoft Graph çağırın
 
 [Microsoft Identity platform](v2-overview.md) , Azure Active Directory (Azure AD) geliştirici platformunun bir evmidir. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar.
 

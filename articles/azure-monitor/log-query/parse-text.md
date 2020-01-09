@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 5a3b6852563955bfac940073bdda7d0afa02e77f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 82ad197a1f64040dfb91aa73d7a6dfd4210f99a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365283"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde metin verilerini ayrıştırma
 Azure Izleyici tarafından toplanan bazı günlük verileri, tek bir özellikte birden fazla bilgi parçası içerecektir. Bu verilerin birden çok özelliğe çözümlenmesi, sorgularda kullanmayı kolaylaştırır. Ortak bir örnek, tek bir özellikte birden fazla değeri olan bir günlük girişinin tamamını toplayan [özel bir günlüğlük](../../log-analytics/log-analytics-data-sources-custom-logs.md) örneğidir. Farklı değerler için ayrı özellikler oluşturarak, her biri üzerinde arama ve toplama yapabilirsiniz.
@@ -138,7 +138,7 @@ MyCustomCSVLog_CL
 Verileriniz bilinen bir yapıda biçimlendirildiyse, önceden tanımlı yapıları ayrıştırmak için [kusto sorgu dilinde](/azure/kusto/query/) işlevlerden birini kullanabilirsiniz:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
-- ['SINI](/azure/kusto/query/parse-xmlfunction)
+- [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
 - [URL](/azure/kusto/query/parseurlfunction)
 - [URL sorgusu](/azure/kusto/query/parseurlqueryfunction)
@@ -189,4 +189,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](log-query-overview.md) hakkında bilgi edinin.
+* Hakkında bilgi edinin [oturum sorguları](log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.

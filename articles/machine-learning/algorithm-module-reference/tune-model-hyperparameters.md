@@ -1,7 +1,7 @@
 ---
 title: Model Hiper Parametrelerini Ayarlama
-titleSuffix: Azure Machine Learning service
-description: En uygun parametre ayarlarını belirleyebilmek üzere bir modelde bir parametre tarama işlemi gerçekleştirmek için Azure Machine Learning hizmetinde ayarlama modeli hiper parametreleri modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: En uygun parametre ayarlarını belirleyebilmek için bir modelde parametre süpürme gerçekleştirmek üzere Azure Machine Learning model hiper parametreleri modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428400"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hiper Parametrelerini Ayarlama
 
@@ -155,5 +155,5 @@ Azure Machine Learning neredeyse tüm öğrenenler, tümleşik bir parametre sü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 

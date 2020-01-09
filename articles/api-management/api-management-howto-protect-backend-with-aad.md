@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory ve API Management ile OAuth 2,0 kullanarak API 'YI koruma | Microsoft Docs
+title: AAD ile OAuth 2,0 kullanarak bir API 'YI koruma ve API Management
+titleSuffix: Azure API Management
 description: Azure Active Directory ve API Management ile Web API arka ucunu nasıl koruyacağınızı öğrenin.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442506"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2,0 kullanarak API 'YI koruma
 
@@ -26,7 +27,7 @@ Bu kılavuzda, Azure Active Directory (Azure AD) ile OAuth 2,0 protokolünü kul
 > [!NOTE]
 > Bu özellik, API Management **Geliştirici**, **Standart** ve **Premium** katmanlarında kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 * Bir API Management örneği
 * API Management örneğini kullanan yayımlanmış bir API
@@ -60,9 +61,7 @@ Bir API 'yi Azure AD ile korumak için ilk adım, API 'YI temsil eden bir uygula
 
 1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin.
 
-Uygulama oluşturulduğunda, sonraki adımda kullanmak üzere **uygulama kimliği**' ni bir yere getirin. 
-
-1. **BIR API 'Yi kullanıma** sunma ' yı seçin ve **Kaydet** ' e tıklayıp bir uygulama kimliği URI 'si oluşturun.
+1. **BIR API 'Yi kullanıma** sunma ' yı seçin ve **uygulama kimliği URI** 'sini varsayılan değerle ayarlayın. Daha sonra bu değeri kaydedin.
 
 1. **Kapsam Ekle** SAYFASıNDA, API tarafından desteklenen yeni bir kapsam oluşturun. (örn., okuma) ve kapsamı oluşturmak için *Kapsam Ekle* ' ye tıklayın. API 'niz tarafından desteklenen tüm kapsamları eklemek için bu adımı tekrarlayın.
 
@@ -80,7 +79,7 @@ API 'YI çağıran her istemci uygulamasının, Azure AD 'de bir uygulama olarak
     - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `client-app`. 
     - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde hesaplar**' ı seçin. 
 
-1. **Yeniden yönlendirme URI** 'si bölümünde URL 'yi `Web` seçip girin`https://contoso5.portal.azure-api.net/signin`
+1. **Yeniden yönlendirme URI 'si** bölümünde `Web` ' yi seçin ve URL 'yi girin `https://contoso5.portal.azure-api.net/signin`
 
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin. 
 
@@ -100,13 +99,13 @@ API 'yi ve geliştirici konsolunu temsil etmek üzere iki uygulama kaydettirdiğ
 
 1. **Uygulama kayıtları**gidin. 
 
-1. Uygulama `client-app`için sayfa listesinde ve ' ı seçin, **API izinleri**' ne gidin.
+1. `client-app`' yi seçin ve uygulama için sayfa listesinde **API izinleri**' ne gidin.
 
 1. **Izin Ekle**' yi seçin.
 
-1. **BIR API seçin**altında bulun ve seçin `backend-app`.
+1. **BIR API seçin**altında `backend-app`bulun ve seçin.
 
-1. **Temsilci izinleri**altında, uygun izinleri `backend-app` seçin ve ardından **izin Ekle**' ye tıklayın.
+1. **Temsilci izinleri**altında, `backend-app` için uygun izinleri seçin ve ardından **izin Ekle**' ye tıklayın.
 
 1. İsteğe bağlı olarak, **API izinleri** sayfasında, bu dizindeki tüm kullanıcılar adına izin vermek için sayfanın altındaki **<-kiracı adı > Için yönetici izni ver** ' e tıklayın. 
 
@@ -118,11 +117,11 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. Azure portal, API Management örneğinize gidin.
 
-1. **OAuth 2,0** > **Ekle**' yi seçin.
+1. Add **OAuth 2,0** > seçin.
 
 1. Bir **görünen ad** ve **Açıklama**sağlayın.
 
-1. **İstemci kayıt sayfası URL 'si**için, gibi bir yer tutucu değeri `http://localhost`girin. **İstemci kayıt sayfası URL 'si** , kullanıcıların bunu destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği bir sayfaya işaret eder. Bu örnekte, kullanıcılar kendi hesaplarını oluşturmaz ve yapılandırmadıkları için bunun yerine bir yer tutucu kullanırsınız.
+1. **İstemci kayıt sayfası URL 'si**için `http://localhost`gibi bir yer tutucu değeri girin. **İstemci kayıt sayfası URL 'si** , kullanıcıların bunu destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği bir sayfaya işaret eder. Bu örnekte, kullanıcılar kendi hesaplarını oluşturmaz ve yapılandırmadıkları için bunun yerine bir yer tutucu kullanırsınız.
 
 1. **Yetkilendirme verme türleri**için **yetkilendirme kodu**' nu seçin.
 
@@ -150,9 +149,9 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. **Oluştur**’u seçin.
 
-1. İstemci uygulamanızın **Ayarlar** sayfasına dönün.
+1. İstemci uygulamanıza geri dönün ve **kimlik doğrulaması**' nı seçin.
 
-1. **Yanıt URL 'leri**' ni seçin ve **redirect_url** ilk satıra yapıştırın. Bu örnekte, ilk satırdaki URL `https://localhost` ile değiştirdik.  
+1. **Yeniden yönlendirme URI 'leri**altında, türü **Web**olarak SEÇIN, **yeniden yönlendirme URI 'si**altına **redirect_url** yapıştırın ve kaydedin.
 
 Bir OAuth 2,0 yetkilendirme sunucusu yapılandırdığınıza göre, Geliştirici Konsolu Azure AD 'den erişim belirteçleri alabilir. 
 
@@ -160,7 +159,7 @@ Sonraki adım, API 'niz için OAuth 2,0 Kullanıcı yetkilendirmesini etkinleşt
 
 1. API Management örneğinizi inceleyin ve **API**'lere gidin.
 
-2. Korumak istediğiniz API 'YI seçin. Örneğin, kullanabilirsiniz `Echo API`.
+2. Korumak istediğiniz API 'YI seçin. Örneğin, `Echo API`kullanabilirsiniz.
 
 3. Git **ayarları**.
 
@@ -181,7 +180,7 @@ Artık OAuth 2,0 kullanıcı yetkilendirmesi API 'niz üzerinde etkin olduğuna 
 
 3. Yetkilendirme açılan listesinden **yetkilendirme kodu** ' nu seçin ve Azure AD kiracısında oturum açmanız istenir. Zaten hesapla oturum açtıysanız, bu durum istenmez.
 
-4. Başarılı oturum açma işleminden sonra, Azure `Authorization` ad 'den bir erişim belirteciyle isteğe bir üst bilgi eklenir. Örnek belirteç (Base64 kodlamalı) aşağıda verilmiştir:
+4. Başarılı oturum açma işleminden sonra, Azure AD 'den bir erişim belirteciyle isteğe `Authorization` bir üst bilgi eklenir. Örnek belirteç (Base64 kodlamalı) aşağıda verilmiştir:
 
    ```
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
@@ -194,16 +193,16 @@ Artık OAuth 2,0 kullanıcı yetkilendirmesi API 'niz üzerinde etkin olduğuna 
 
 Bu noktada, bir Kullanıcı geliştirici konsolundan bir çağrı yapmaya çalıştığında, kullanıcıdan oturum açması istenir. Geliştirici Konsolu kullanıcı adına bir erişim belirteci edinir ve API 'ye yapılan istekteki belirteci içerir.
 
-Ancak, API 'nizi belirteç olmadan veya geçersiz bir belirteçle çağırırsa ne olacak? Örneğin, `Authorization` üst bilgi olmadan API 'yi çağırmayı deneyin, çağrı devam edecektir. Bunun nedeni API Management, bu noktada erişim belirtecini doğrulamaktır. Yalnızca `Authorization` üstbilgiyi arka uç API 'sine geçirir.
+Ancak, API 'nizi belirteç olmadan veya geçersiz bir belirteçle çağırırsa ne olacak? Örneğin, `Authorization` üst bilgisi olmadan API 'yi çağırmayı deneyin, çağrı devam edecektir. Bunun nedeni API Management, bu noktada erişim belirtecini doğrulamaktır. Yalnızca `Authorization` üst bilgisini arka uç API 'sine geçirir.
 
-Her gelen isteğin erişim belirteçlerini doğrulayarak, API Management istekleri önceden yetkilendirmek için [JWT Ilkesini doğrula](api-management-access-restriction-policies.md#ValidateJWT) ' yı kullanabilirsiniz. Bir istekte geçerli bir belirteç yoksa API Management engeller. Örneğin, aşağıdaki ilkeyi `<inbound>` konusunun ilke bölümüne `Echo API`ekleyin. Bir erişim belirtecindeki hedef kitle talebini denetler ve belirteç geçerli değilse bir hata mesajı döndürür. İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [Ilkeleri ayarlama veya düzenleme](set-edit-policies.md).
+Her gelen isteğin erişim belirteçlerini doğrulayarak, API Management istekleri önceden yetkilendirmek için [JWT Ilkesini doğrula](api-management-access-restriction-policies.md#ValidateJWT) ' yı kullanabilirsiniz. Bir istekte geçerli bir belirteç yoksa API Management engeller. Örneğin, `Echo API``<inbound>` ilkesi bölümüne aşağıdaki ilkeyi ekleyin. Bir erişim belirtecindeki hedef kitle talebini denetler ve belirteç geçerli değilse bir hata mesajı döndürür. İlkeleri yapılandırma hakkında daha fazla bilgi için bkz. [Ilkeleri ayarlama veya düzenleme](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID of backend-app}</value>
+            <value>{Application ID URI of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>
@@ -211,7 +210,7 @@ Her gelen isteğin erişim belirteçlerini doğrulayarak, API Management istekle
 
 ## <a name="build-an-application-to-call-the-api"></a>API 'YI çağırmak için bir uygulama oluşturma
 
-Bu kılavuzda, OAuth 2,0 tarafından `Echo API` korunan örneği çağırmak için örnek istemci uygulaması olarak API Management geliştirici konsolunu kullandınız. Uygulama oluşturma ve OAuth 2,0 uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Code Samples](../active-directory/develop/sample-v1-code.md).
+Bu kılavuzda, OAuth 2,0 tarafından korunan `Echo API` çağırmak için örnek istemci uygulaması olarak API Management geliştirici konsolunu kullandınız. Uygulama oluşturma ve OAuth 2,0 uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Code Samples](../active-directory/develop/sample-v1-code.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.

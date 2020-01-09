@@ -1,6 +1,6 @@
 ---
-title: Azure tablo depolama veya Azure Cosmos DB tablo API'si Java kullanma
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+title: Java 'dan Azure Tablo Depolamayı veya Azure Cosmos DB Tablo API'si kullanma
+description: Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanarak bulutta yapılandırılmış verileri depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
@@ -8,22 +8,22 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 6b8b2d2d035183861f367c9425ec54d1c9babf34
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9e5f9d3fbd7fcf12271329ec324b38b03b4dcd7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444818"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java’dan Azure Tablo depolama veya Azure Cosmos DB Tablo API'sini kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu makale Azure Tablo depolama hizmeti ve Azure Cosmos DB’yi kullanarak genel senaryoları nasıl gerçekleştireceğinizi gösterir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Tablo **oluşturma**, **listeleme** ve **silme** işlemlerinin yanı sıra bir tablodaki varlıkları **ekleme**, **sorgulama**, **değiştirme** ve **silme** işlemleri ele alınmaktadır. Tablolar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps)’a bakın.
+Bu makale Azure Tablo depolama hizmeti ve Azure Cosmos DB’yi kullanarak genel senaryoları nasıl gerçekleştireceğinizi gösterir. Örnekler Java dilinde yazılır ve [Java Için Azure depolama SDK 'sını][Azure Storage SDK for Java]kullanır. Tablo **oluşturma**, **listeleme** ve **silme** işlemlerinin yanı sıra bir tablodaki varlıkları **ekleme**, **sorgulama**, **değiştirme** ve **silme** işlemleri ele alınmaktadır. Tablolar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps)’a bakın.
 
 > [!NOTE]
-> Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android için Azure Depolama SDK’sı][Azure Storage SDK for Android].
+> Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android Için Azure Storage SDK][Azure Storage SDK for Android].
 >
 
 ## <a name="create-an-azure-service-account"></a>Azure hizmet hesabı oluşturma
@@ -38,7 +38,7 @@ Bu makale Azure Tablo depolama hizmeti ve Azure Cosmos DB’yi kullanarak genel 
 ## <a name="create-a-java-application"></a>Java uygulaması oluşturma
 Bu kılavuzda bir Java uygulamasında yerel olarak veya Azure’daki bir web rolü ya da çalışan rolünde çalışan kod içinde çalıştırabileceğiniz depolama özelliklerini kullanacaksınız.
 
-Bu makaledeki örnekleri kullanmak için Java Geliştirme Seti’ni (JDK) yükleyin, sonra Azure aboneliğinde bir Azure depolama hesabı veya Azure Cosmos DB hesabı oluşturun. Bunu yaptıktan sonra, geliştirme sisteminizin en düşük gereksinimleri ve GitHub’daki [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java] deposunda listelenen bağımlılıkları karşıladığını doğrulayın. Sisteminiz bu gereksinimleri karşılıyorsa, bu depo için Azure Depolama Kitaplıklarını indirip sisteminize yükleme yönergelerini izleyebilirsiniz. Bu görevleri tamamladıktan sonra bu makaledeki örnekleri kullanan bir Java uygulaması oluşturabilirsiniz.
+Bu makaledeki örnekleri kullanmak için Java Geliştirme Seti’ni (JDK) yükleyin, sonra Azure aboneliğinde bir Azure depolama hesabı veya Azure Cosmos DB hesabı oluşturun. Bunu yaptıktan sonra, geliştirme sisteminizin GitHub 'daki [Java Için Azure depolama SDK 'sı][Azure Storage SDK for Java] deposunda listelenen en düşük gereksinimleri ve bağımlılıkları karşıladığını doğrulayın. Sisteminiz bu gereksinimleri karşılıyorsa, bu depo için Azure Depolama Kitaplıklarını indirip sisteminize yükleme yönergelerini izleyebilirsiniz. Bu görevleri tamamladıktan sonra bu makaledeki örnekleri kullanan bir Java uygulaması oluşturabilirsiniz.
 
 ## <a name="configure-your-application-to-access-table-storage"></a>Uygulamanızı tablo depolama alanına erişecek şekilde yapılandırma
 Tablolara erişmek üzere Azure depolama API’lerini veya Azure Cosmos DB Tablo API’sini kullanmak istediğiniz Java dosyasının üstüne aşağıdaki içeri aktarma deyimlerini ekleyin:
@@ -454,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Giriş özellikleri alt kümesi sorgulama
-Tabloya gönderilen bir sorgu, bir varlıktan yalnızca birkaç özellik alabilir. Projeksiyon olarak adlandırılan bu yöntem bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Aşağıdaki kodda yer alan sorgu, **select** yöntemini kullanarak yalnızca tablodaki varlıkların e-posta adreslerini döndürür. Sonuçlar bir **EntityResolver** yardımıyla bir **String** koleksiyonuna hedeflenir ve sunucudan döndürülen varlıkların tür dönüşümünü yapar. Projeksiyon hakkında daha fazla bilgi edinin [Azure tabloları: Upsert ve sorgu projeksiyon Tanıtımı] [Azure tabloları: Upsert ve sorgu projeksiyon Tanıtımı]. Projeksiyon yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır.
+Tabloya gönderilen bir sorgu, bir varlıktan yalnızca birkaç özellik alabilir. Projeksiyon olarak adlandırılan bu yöntem bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Aşağıdaki kodda yer alan sorgu, **select** yöntemini kullanarak yalnızca tablodaki varlıkların e-posta adreslerini döndürür. Sonuçlar bir **EntityResolver** yardımıyla bir **String** koleksiyonuna hedeflenir ve sunucudan döndürülen varlıkların tür dönüşümünü yapar. Projeksiyon hakkında daha fazla bilgi edinin [Azure tabloları: Upsert ve sorgu projeksiyon] [Azure tabloları: Upsert ve sorgu projeksiyon]. Projeksiyon yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır.
 
 ```java
 try
@@ -496,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Varlık Ekleme veya Değiştirme
-Genellikle tabloda zaten mevcut olup olmadığını bilmeden tabloya varlık eklemek istersiniz. insert-or-replace işlemi, mevcut değilse varlığı ekleyecek veya mevcutsa var olanı değiştirecek tek bir istekte bulunmanızı sağlar. Önceki örneklere ek olarak, aşağıdaki kod "Walter Harp" varlığını ekler veya değiştirir. Yeni bir varlık oluşturulduktan sonra bu kod **TableOperation.insertOrReplace** yöntemini çağırır. Bu kod daha sonra **CloudTable** nesnesi üzerinde tablo ile birlikte **execute** işlemini ve parametre olarak insert ya da replace tablo işlemini çağırır. Bir varlığın yalnızca bir kısmını güncelleştirmek için, bunun yerine **TableOperation.insertOrMerge** yöntemi kullanılabilir. Insert-or-replace işlemi yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır. Ekleme veya değiştirme ve Ekle-veya-merge bu hakkında daha fazla bilgi edinin [Azure tabloları: Upsert ve sorgu projeksiyon Tanıtımı] [Azure tabloları: Upsert ve sorgu projeksiyon Tanıtımı].
+Genellikle tabloda zaten mevcut olup olmadığını bilmeden tabloya varlık eklemek istersiniz. insert-or-replace işlemi, mevcut değilse varlığı ekleyecek veya mevcutsa var olanı değiştirecek tek bir istekte bulunmanızı sağlar. Önceki örneklere ek olarak, aşağıdaki kod "Walter Harp" varlığını ekler veya değiştirir. Yeni bir varlık oluşturulduktan sonra bu kod **TableOperation.insertOrReplace** yöntemini çağırır. Bu kod daha sonra **CloudTable** nesnesi üzerinde tablo ile birlikte **execute** işlemini ve parametre olarak insert ya da replace tablo işlemini çağırır. Bir varlığın yalnızca bir kısmını güncelleştirmek için, bunun yerine **TableOperation.insertOrMerge** yöntemi kullanılabilir. Insert-or-replace işlemi yerel depolama öykünücüsünde desteklenmez, bu nedenle bu kod yalnızca tablo hizmetinde bir hesap kullanırken çalıştırılır. Ekleme veya değiştirme ve Ekle-veya-merge bu hakkında daha fazla bilgi edinin [Azure tabloları: Upsert ve sorgu projeksiyon] [Azure tabloları: Upsert ve sorgu projeksiyon].
 
 ```java
 try
@@ -594,9 +594,9 @@ catch (Exception e)
 
 * [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md), Microsoft’un Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmanızı sağlayan ücretsiz ve tek başına uygulamasıdır.
-* [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java]
-* [Azure Depolama İstemcisi SDK Başvurusu][Azure Depolama İstemcisi SDK Başvurusu]
-* [Azure Depolama REST API][Azure Storage REST API]
+* [Java için Azure depolama SDK 'Sı][Azure Storage SDK for Java]
+* [Azure Depolama İstemcisi SDK Başvurusu][Azure Storage Client SDK Reference]
+* [Azure depolama REST API][Azure Storage REST API]
 * [Azure depolama ekibi blogu] [Azure depolama ekibi blogu]
 
 Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).

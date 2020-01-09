@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73591488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468099"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM Yeniden Başlatma İşlemlerini Anlama - bakım ve kapalı kalma süresi
 Azure 'da sanal makineye etkilenmesine neden olan üç senaryo vardır: planlanmamış donanım bakımı, beklenmedik kapalı kalma süresi ve planlı bakım.
@@ -83,8 +83,8 @@ Hata etki alanları ortak bir güç kaynağı ve ağ anahtarını paylaşan sana
 VM 'Leri yönetilmeyen disklerle kullanmayı planlıyorsanız, VM 'lerin sanal sabit disklerinin (VHD) [sayfa Blobları](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)olarak depolandığı depolama hesapları için aşağıdaki en iyi yöntemleri izleyin.
 
 1. **Bir VM ile ilişkili tüm diskleri (işletim sistemi ve veri) aynı depolama hesabında tutma**
-2. Bir depolama hesabına daha fazla VHD eklemeden önce **Depolama hesabındaki yönetilmeyen disk sayısına ilişkin [limitleri](../articles/storage/common/storage-scalability-targets.md) gözden geçirin**
-3. **Bir Kullanılabilirlik Kümesindeki her VM için ayrı depolama hesabı kullanın.** Depolama hesaplarını aynı Kullanılabilirlik Kümesinde birden fazla VM ile paylaşmayın. Yukarıdaki en iyi uygulamalardan ![, yönetilmeyen diskler](./media/virtual-machines-common-manage-availability/umd-updated.png) ardından, depolama hesaplarını paylaşmak için farklı kullanılabilirlik kümelerindeki VM 'Ler için kabul edilebilir.
+2. Bir depolama hesabına daha fazla VHD eklemeden önce **bir Azure depolama hesabındaki yönetilmeyen disk sayısı [sınırlarını](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) gözden geçirin**
+3. **Bir kullanılabilirlik kümesindeki her VM için ayrı bir depolama hesabı kullanın.** Depolama hesaplarını aynı Kullanılabilirlik Kümesinde birden fazla VM ile paylaşmayın. Yukarıdaki en iyi uygulamalardan ![, yönetilmeyen diskler](./media/virtual-machines-common-manage-availability/umd-updated.png) ardından, depolama hesaplarını paylaşmak için farklı kullanılabilirlik kümelerindeki VM 'Ler için kabul edilebilir.
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM etkileyen olayları önceden yanıtlamak için zamanlanmış olayları kullanma
 

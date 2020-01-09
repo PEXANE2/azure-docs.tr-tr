@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465100"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure PowerShell'i Azure Depolama ile kullanma
 
@@ -42,7 +42,7 @@ Bu alıştırmada, komutları normal bir PowerShell penceresine yazabilir veya [
 
 Depolama hesapları hakkında daha fazla bilgi için bkz. [depolamaya giriş](storage-introduction.md) ve [Azure depolama hesapları hakkında](storage-create-storage-account.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
@@ -161,7 +161,7 @@ Diğer anahtarı yeniden oluşturmak için `key1`yerine anahtar adı olarak `key
 Anahtarlarınızın birini yeniden oluşturun ve ardından yeni değeri görmek için geri alın.
 
 > [!NOTE]
-> Bir üretim depolama hesabı için anahtarı yeniden oluşturmadan önce dikkatli bir planlama gerçekleştirmeniz gerekir. Bir veya her iki anahtarın yeniden oluşturulması, yeniden oluşturulan anahtarı kullanarak herhangi bir uygulamanın erişimini geçersiz kılacaktır. Daha fazla bilgi için bkz. [Erişim anahtarları](storage-account-manage.md#access-keys)
+> Bir üretim depolama hesabı için anahtarı yeniden oluşturmadan önce dikkatli bir planlama gerçekleştirmeniz gerekir. Bir veya her iki anahtarın yeniden oluşturulması, yeniden oluşturulan anahtarı kullanarak herhangi bir uygulamanın erişimini geçersiz kılacaktır. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](storage-account-keys-manage.md).
 
 
 ### <a name="delete-a-storage-account"></a>Bir depolama hesabını silme

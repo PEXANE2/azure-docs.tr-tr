@@ -3,16 +3,16 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894037"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496932"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
-Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin bu ek 14 gün boyunca saklanması müşteriye hiçbir ücret vermez.
+Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin bu ek 14 gün boyunca saklanması müşteriye hiçbir ücret vermez. Azure, verilerinizin güvenliğini sağlamak için [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) kullanarak bekleyen yedeklenen verileri de şifreler.
 
 > [!NOTE]
 > Geçici silme yalnızca silinen yedekleme verilerini korur. Bir VM, yedekleme olmadan silinirse, geçici silme özelliği verileri korumaz. Tam esnekliği sağlamak için tüm kaynakların Azure Backup korumalı olması gerekir.
@@ -114,6 +114,11 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' olarak döndürülecek. Ancak koruma hala durdurulmuş. Korumayı yeniden etkinleştirmek için [yedeklemeyi sürdürmeniz](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) gerekir.
 
+### <a name="soft-delete-for-vms-using-rest-api"></a>REST API kullanarak VM 'Ler için geçici silme
+
+- [Burada](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)belirtildiği gibi REST API kullanarak yedekleri silin.
+- Kullanıcı bu silme işlemlerini geri almayı istiyorsa, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)bahsedilen adımlara bakın.
+
 ## <a name="disabling-soft-delete"></a>Geçici silme devre dışı bırakılıyor
 
 Geçici silme, yeni oluşturulan kasaların yanlışlıkla veya kötü amaçlı silmeleri arasında yedekleme verilerini korumak için varsayılan olarak etkindir.  Bu özelliğin devre dışı bırakılması önerilmez. Geçici silme işleminin devre dışı bırakılmasını göz önünde bulundurmanız gereken tek durumlar, korumalı öğelerinizi yeni bir kasaya taşımayı planlıyorsanız ve silinmeden ve yeniden korumadan önce 14 gün önce bekleyemez (örneğin, bir test ortamında). Yalnızca bir yedekleme Yöneticisi bu özelliği devre dışı bırakabilir. Bu özelliği devre dışı bırakırsanız, korumalı öğelerin tüm silmeleri, geri yükleme özelliği olmadan hemen kaldırılmasına neden olur. Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek isterseniz, kalıcı olarak silinmesi için silmeyi geri almanız ve silmeniz gerekir.
@@ -146,6 +151,10 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
+### <a name="disabling-soft-delete-using-rest-api"></a>REST API kullanarak geçici silme devre dışı bırakılıyor
+
+REST API kullanarak geçici silme işlevini devre dışı bırakmak için [burada](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)bahsedilen adımlara bakın.
+
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Geçici olarak silinen yedekleme öğelerini kalıcı olarak silme
 
 Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen durumda verileri yedekleyin, geçici olarak silinmiş durumda kalır. Bunları hemen kalıcı olarak silmek istiyorsanız silmeyi geri alın ve kalıcı olarak silmek için yeniden silin.
@@ -154,7 +163,7 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 
 Şu adımları uygulayın:
 
-1. [Geçici silme özelliğini devre dışı bırakmak](#disabling-soft-delete)için adımları izleyin. 
+1. [Geçici silme özelliğini devre dışı bırakmak](#disabling-soft-delete)için adımları izleyin.
 2. Azure portal, kasanıza gidin, **yedekleme öğeleri** ' ne gidin ve geçici olarak silinen VM 'yi seçin
 
 ![Geçici olarak silinen VM 'yi seçin](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
@@ -215,6 +224,14 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
+### <a name="using-rest-api"></a>REST API'sini kullanma
+
+Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar geçici olarak silinmiş durumda olur. Bunları hemen silmek için silme işleminin ters alınması ve sonra yeniden gerçekleştirilmesi gerekir.
+
+1. İlk olarak, [burada](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)bahsedilen adımlarla silme işlemlerini geri alın.
+2. Ardından, [burada](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)bahsedilen adımları kullanarak REST API kullanarak geçici silme işlevini devre dışı bırakın.
+3. Ardından, [burada](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)belirtildiği gibi REST API kullanarak yedeklemeleri silin.
+
 ## <a name="other-security-features"></a>Diğer güvenlik özellikleri
 
 ### <a name="storage-side-encryption"></a>Depolama tarafında şifreleme
@@ -223,7 +240,7 @@ Azure depolama, verilerinizi buluta kalıcı hale geldiğinde otomatik olarak ş
 
 Azure 'da, Azure depolama ile kasa arasındaki yoldaki veriler HTTPS tarafından korunur. Bu veriler, Azure omurga ağında kalır.
 
-Daha fazla bilgi için lütfen [bekleyen veriler Için Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)bölümüne bakın.
+Daha fazla bilgi için lütfen [bekleyen veriler Için Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)bölümüne bakın.  Şifreleme hakkında sahip olduğunuz tüm soruları yanıtlamak için lütfen [Azure Backup SSS bölümüne](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) bakın.
 
 ### <a name="vm-encryption"></a>VM şifrelemesi
 
@@ -237,7 +254,7 @@ Daha fazla bilgi için lütfen bkz. [Azure Backup kurtarma noktalarını yönetm
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="soft-delete"></a>Geçici silme
+### <a name="for-soft-delete"></a>Geçici silme için
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Her kasada geçici silme özelliğini etkinleştirmem gerekir mi?
 

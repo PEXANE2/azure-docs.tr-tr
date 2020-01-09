@@ -1,6 +1,6 @@
 ---
-title: Azure AD korumalı ASP.NET Web API 'SI çağırma-Microsoft Identity platform
-description: Bu hızlı başlangıçta, Windows Masaüstü (WPF) uygulamasından Azure Active Directory tarafından korunan bir ASP.NET Web API 'sinin nasıl çağrılacağını öğrenin. WPF istemcisi bir kullanıcının kimliğini doğrular, bir erişim belirteci ister ve Web API 'sini çağırır.
+title: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
+description: Bu hızlı başlangıçta, bir Windows Masaüstü (WPF) uygulamasından Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma hakkında bilgi edinin. WPF istemcisi bir kullanıcının kimliğini doğrular, bir erişim belirteci ister ve Web API 'sini çağırır.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,24 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424031"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Hızlı başlangıç: Azure AD tarafından korunan bir ASP.NET Web API 'SI çağırma
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
 
-Bu hızlı başlangıçta, bir Web API 'sini kullanıma sunar ve bunu yalnızca kimliği doğrulanmış kullanıcının erişebileceği şekilde koruyabilirsiniz. Bu örnek, kişisel hesaplar tarafından verilen belirteçleri (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory tümleştirilmiş herhangi bir şirketten veya kuruluştan iş ve okul hesaplarını kabul edecek şekilde bir ASP.NET Web API 'sinin nasıl kullanıma sunuleceği gösterilmektedir.
+Bu hızlı başlangıçta, bir Web API 'sini kullanıma sunar ve bunu yalnızca kimliği doğrulanmış kullanıcının erişebileceği şekilde koruyabilirsiniz. Bu örnek, kişisel hesaplar tarafından verilen belirteçleri (outlook.com, live.com ve diğerleri dahil) ve Microsoft kimliğiyle tümleştirilmiş herhangi bir şirketten veya kuruluştan iş ve okul hesaplarını kabul edecek şekilde bir ASP.NET Web API 'sinin nasıl kullanıma sunuleceği gösterilmektedir platformunun.
 
 Örnek ayrıca, bir Web API 'sine erişmek için bir erişim belirteci isteme şeklini gösteren bir Windows masaüstü uygulaması (WPF) istemcisi içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
@@ -49,7 +49,7 @@ Ya da [ÖRNEĞI ZIP dosyası olarak indirebilirsiniz](https://github.com/AzureAD
 
 Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları yapmanız gerekir:
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız birden fazla Azure AD kiracısında mevcutsa, sayfanın üstündeki menüdeki sağ üst köşedeki profilinizi seçin ve ardından dizin ' i **değiştirin**.
    Portal oturumunuzu istenen Azure AD kiracısına değiştirin.
 
@@ -76,7 +76,7 @@ Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları y
      - **Durumu** **etkin** olarak tut
      - **Kapsam Ekle** ' yi seçin
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>Hizmet ve istemci projelerini kayıtlı Web API 'siyle eşleşecek şekilde yapılandırma 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Hizmet projesini kayıtlı Web API 'siyle eşleşecek şekilde yapılandırma 
 
 1. Visual Studio 'da çözümü açın ve ardından **TodoListService** projesi kökünün altındaki **Web. config** dosyasını açın.
 1. `ida:ClientId` parametresinin değerini, uygulama kayıt portalı 'nda yeni kaydettiğiniz uygulamadan **ISTEMCI kimliği (uygulama kimliği)** ile değiştirin.
@@ -104,7 +104,7 @@ Bu adımda, uygulama kayıt portalı 'nda yeni bir uygulama kaydederek *TodoList
    - **Desteklenen hesap türlerini** **herhangi bir kuruluş dizinindeki hesaplara**değiştirin.
    - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın genel bakış sayfasından **kimlik doğrulama** bölümünü seçin.
-   - **Yeniden yönlendirme URL 'leri** | **ortak Istemciler Için önerilen yeniden yönlendirme URL 'leri (mobil, masaüstü)** bölümünde **urn: ietf: WG: OAuth: 2.0: OOB** ' yi denetleyin
+   - **Yeniden yönlendirme URI** 'leri | **ortak Istemciler Için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümünde, **https://login.microsoftonline.com/common/oauth2/nativeclient** denetleyin
    - **Kaydet**’i seçin.
 1. **API izinleri** bölümünü seçin
    - **Izin Ekle** düğmesine tıklayın ve ardından

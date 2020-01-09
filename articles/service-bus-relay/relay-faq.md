@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459096"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
 
@@ -80,13 +80,13 @@ Service Bus geçişine ileti göndermek, iletiyi alan geçiş dinleyicisine "tam
 **Nettcprelay** WCF bağlaması kullanılarak açılan geçişler, tek tek iletiler olarak olmayan iletileri kabul eder, ancak sistem üzerinden akan veri akışı olarak işlenir. Bu bağlamayı kullandığınızda, yalnızca gönderici ve dinleyici, gönderilen ve alınan ayrı mesajların çerçeveleme halinde görünürlüğe sahiptir. **Nettcprelay** bağlamasını kullanan geçişler için tüm veriler, faturalandırılabilir iletileri hesaplamak için bir akış olarak değerlendirilir. Bu durumda Service Bus, her bir geçiş aracılığıyla gönderilen veya alınan toplam veri miktarını 5 dakikalık bir esasına göre hesaplar. Daha sonra, bu süre boyunca o geçiş için faturalandırılabilir ileti sayısını öğrenmek üzere bu toplam veri miktarını 64 KB 'ye böler.
 
 ## <a name="quotas"></a>Kotalar
-| Kota adı | `Scope` |  Notlar | Value |
+| Kota adı | Kapsam |  Notlar | Değer |
 | --- | --- | --- | --- |
-| Geçiş sırasında eş zamanlı dinleyiciler |Varlık |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |25 |
-| Hizmet ad alanındaki tüm geçiş uç noktaları başına eş zamanlı geçiş bağlantıları |Ad Alanı |- |5,000 |
+| Geçiş sırasında eş zamanlı dinleyiciler |Kurum |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |25 |
+| Hizmet ad alanındaki tüm geçiş uç noktaları başına eş zamanlı geçiş bağlantıları |Ad Alanı |- |5\.000 |
 | Hizmet ad alanı başına geçiş uç noktaları |Ad Alanı |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) ve [Neteventrelaybinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) geçişleri için ileti boyutu |Ad Alanı |Bu kotaları aşan gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |64 KB |
-| [Httprelaytransportbindingelement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) ve [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) geçişleri için ileti boyutu |Ad Alanı |İleti boyutu için sınır yoktur. |Sınırsız |
+| [Httprelaytransportbindingelement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) ve [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) geçişleri için ileti boyutu |Ad Alanı |İleti boyutu için sınır yoktur. |İş çalışma zamanında |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Geçiş, kullanım kotalarına sahip mi?
 Varsayılan olarak, herhangi bir bulut hizmeti için, Microsoft tüm müşteri abonelikleri genelinde hesaplanan bir toplu aylık kullanım kotası ayarlar. İhtiyaçlarınızı Bu limitlerin aşılabileceğini anladık. Müşteri Hizmetleri 'ne dilediğiniz zaman başvurabilirsiniz, böylelikle ihtiyaçlarınızı anlayabiliriz ve bu limitleri uygun şekilde ayarlayabiliriz. Service Bus için, toplam kullanım kotaları aşağıdaki gibidir:
@@ -104,9 +104,9 @@ Geçiş ad alanı adı 6 ila 50 karakter uzunluğunda olmalıdır.
 
 Bir ad alanını bir Azure aboneliğinden başka bir aboneliğe taşımak için [Azure Portal](https://portal.azure.com) kullanabilir ya da PowerShell komutlarını kullanabilirsiniz. Bir ad alanını başka bir aboneliğe taşımak için ad alanı zaten etkin olmalıdır. Komutları çalıştıran kullanıcının hem kaynak hem de hedef aboneliklerde yönetici kullanıcı olması gerekir.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure Portal
 
-Bir abonelikteki Azure Relay ad alanlarını başka bir aboneliğe geçirmek üzere Azure portal kullanmak için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Bir abonelikteki Azure Relay ad alanlarını başka bir aboneliğe geçirmek üzere Azure portal kullanmak için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -131,7 +131,7 @@ Ortak özel durumlar ve gerçekleştirebileceğiniz önerilen eylemlerin bir aç
 Paylaşılan erişim Imzaları (SAS), SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Node. js, PHP, Python, Java, C ve C#' de kendi imzalarınızı oluşturma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile Service Bus kimlik doğrulaması][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Geçiş uç noktalarını beyaz listelemek mümkün mü?
-Evet. Geçiş istemcisi tam etki alanı adlarını kullanarak Azure Relay hizmetine bağlantı yapar. Müşteriler, DNS beyaz listesini destekleyen `*.servicebus.windows.net` güvenlik duvarları için bir giriş ekleyebilir.
+Evet. Geçiş istemcisi tam etki alanı adlarını kullanarak Azure Relay hizmetine bağlantı yapar. Müşteriler, DNS beyaz listesini destekleyen güvenlik duvarları üzerinde `*.servicebus.windows.net` için bir giriş ekleyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Ad alanı oluşturma](relay-create-namespace-portal.md)

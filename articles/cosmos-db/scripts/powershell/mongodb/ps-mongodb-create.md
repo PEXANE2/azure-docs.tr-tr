@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği-Azure Cosmos DB MongoDB API veritabanı ve koleksiyonu oluşturma
+title: MongoDB için Azure Cosmos DB API 'sinde veritabanı ve koleksiyon oluşturmak için PowerShell betiği
 description: Azure PowerShell betiği-Azure Cosmos DB MongoDB API veritabanı ve koleksiyonu oluşturma
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 54fd220978a66081979de456568173a7e2784280
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 347bd6d4d9788516d51d22f43ea60a223e91c49f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445000"
 ---
 # <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB-MongoDB API 'SI için veritabanı ve koleksiyon oluşturma
 

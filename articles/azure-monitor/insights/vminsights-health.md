@@ -4,15 +4,15 @@ description: Bu makalede, VM'ler için Azure İzleyici ile sanal makinelerin ve 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399784"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure sanal makinelerinizin sistem durumunu anlayın
 
@@ -34,19 +34,19 @@ VM'ler için Azure İzleyici yapılandırma hakkında daha fazla bilgi için bkz
 
 Bu bölümde, Azure Windows ve Linux VM 'lerini izlemek için varsayılan durum ölçütleri özetlenmektedir. Tüm durum ölçütleri, sağlıksız bir durum tespit edildiğinde bir uyarı gönderecek şekilde önceden yapılandırılmıştır.
 
-| İzleyici adı | Sıklık (dk) | Geriye doğru alma süresi (dk) | İşleç | Eşik | Durum durumunda uyar | Severity | İş yükü kategorisi | 
+| İzleyici adı | Sıklık (dk) | Geriye doğru alma süresi (dk) | İşleç | Eşik | Durum durumunda uyar | Önem Derecesi | İş yükü kategorisi | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Mantıksal disk çevrimiçi | 5 | 15 | <> | 1 (doğru) | Kritik | Sev1 | Linux | 
-| Mantıksal disk boş alanı | 5 | 15 | < | 200 MB (uyarı)<br> 100 MB (kritik) | Uyarı | Sev1<br> Sev2 | Linux | 
-| Mantıksal disk% boş ınomdes | 5 | 15 | < | %5 | Kritik | Sev1 | Linux | 
-| Mantıksal disk% boş alan | 5 | 15 | < | %5 | Kritik | Sev1 | Linux | 
+| Mantıksal Disk Boş Alan | 5 | 15 | < | 200 MB (uyarı)<br> 100 MB (kritik) | Uyarı | Sev1<br> Sev2 | Linux | 
+| Mantıksal Disk % Boş Inode'lar | 5 | 15 | < | %5 | Kritik | Sev1 | Linux | 
+| Mantıksal Disk % Boş Alan | 5 | 15 | < | %5 | Kritik | Sev1 | Linux | 
 | Ağ bağdaştırıcısı durumu | 5 | 15 | <> | 1 (doğru) | Uyarı | Sev2 | Linux | 
-| İşletim sistemi kullanılabilir megabayt belleği | 5 | 10 | < | 2,5 MB | Kritik | Sev1 | Linux | 
+| İşletim Sistemi Kullanılabilir Megabayt Belleği | 5 | 10 | < | 2,5 MB | Kritik | Sev1 | Linux | 
 | Disk Ortalama Disk sn/okuma | 5 | 25 | > | 0,s | Kritik | Sev1 | Linux | 
 | Disk Ortalama Disk sn/Aktarım | 5 | 25 | > | 0,s | Kritik | Sev1 | Linux | 
 | Disk Ortalama Disk sn/yazma | 5 | 25 | > | 0,s | Kritik | Sev1 | Linux | 
 | Disk durumu | 5 | 25 | <> | 1 (doğru) | Kritik | Sev1 | Linux | 
-| İşletim sistemi toplam yüzde Işlemci zamanı | 5 | 10 | >= | %95 | Kritik | Sev1 | Linux | 
+| İşletim Sistemi Toplam Yüzde İşlemci Zamanı | 5 | 10 | >= | %95 | Kritik | Sev1 | Linux | 
 | Toplam CPU kullanım yüzdesi | 5 | 10 | >= | %95 | Kritik | Sev1 | Windows | 
 | Dosya sistemi hatası veya bozulması | 60 | 60 | <> | 4 | Kritik | Sev1 | Windows | 
 | Okuma başına ortalama mantıksal disk saniye sayısı | 1 | 15 | > | 0.04 s | Uyarı | Sev2 | Windows | 
@@ -66,7 +66,7 @@ Bu bölümde, Azure Windows ve Linux VM 'lerini izlemek için varsayılan durum 
 | RPC hizmet durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
 | Sunucu hizmeti durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
 | Windows Uzaktan Yönetimi hizmet durumu | 5 | 12 | <> | 4 (çalışıyor) | Kritik | Sev1 | Windows | 
-| Kullanılabilir bellek megabayt | 5 | 10 | < | 100 MB | Kritik | Sev1 | Windows | 
+| Bellekteki Boş Megabayt Miktarı | 5 | 10 | < | 100 MB | Kritik | Sev1 | Windows | 
 | Boş sistem sayfa tablosu girdileri | 5 | 10 | <= | 5000 | Kritik | Sev1 | Windows | 
 | Saniye başına bellek sayfası | 5 | 10 | >= | 5000/sn | Uyarı | Sev1 | Windows | 
 | Kullanımdaki kaydedilmiş bellek yüzdesi | 5 | 10 | > | %80 | Kritik | Sev1 | Windows | 
@@ -218,7 +218,7 @@ Durum ölçütlerinin durumu, dört türden biri tarafından tanımlanır: **kri
 
 * Bileşen modeli
 * Durum Ölçütleri
-* Durum değişiklikleri
+* Durum Değişiklikleri
 
 ![Sistem durumu tanılama sayfasının bölümleri](./media/vminsights-health/health-diagnostics-page-02.png)
 
@@ -306,7 +306,7 @@ Bu görünümü, sayfanın en üstündeki açılan menülerde bulunan değerler 
 |Kaynak Grubu |Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 |Kaynak türü |Bir veya daha fazla kaynak türü seçin. Varsayılan olarak, yalnızca hedef **sanal makinelerin** uyarıları seçilir ve bu görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
 |Kaynak |Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
-|Severity |Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+|Önem Derecesi |Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 |İzleme koşulu |Koşul artık etkin değilse, uyarıları sistem tarafından tetiklenmişse veya çözülebiliyorsa, uyarıları filtrelemek için bir izleyici koşulu seçin. Ya da tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 |Uyarı durumu |Tüm durumların uyarılarını dahil etmek için bir uyarı durumu, **Yeni**, **bildirim**, **kapalı**veya **Tümü** seçin. |
 |Hizmeti izle |Tüm hizmetleri dahil etmek için bir hizmet seçin veya **Tümünü** seçin. Bu özellik için yalnızca VM öngörülerinin uyarıları desteklenir.|
@@ -325,7 +325,7 @@ Uyarıları yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure izleyi
 Bir veya birden çok uyarının uyarı durumunu seçip sol üst köşedeki **tüm uyarılar** sayfasında **Durumu Değiştir** ' i seçerek değiştirebilirsiniz. **Uyarı durumunu değiştir** bölmesindeki durumlardan birini seçin, **Açıklama** alanındaki değişikliğin açıklamasını ekleyin ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin. Bilgiler doğrulandığında ve değişiklikler uygulandığında, menüdeki **Bildirimler** altında ilerlemeyi izleyin.
 
 ### <a name="configure-alerts"></a>Uyarı yapılandırma
-Belirli uyarı yönetimi görevlerini Azure portal yönetemezsiniz. Bu görevlerin [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)kullanılarak gerçekleştirilmesi gerekir. Daha ayrıntılı şekilde belirtmek gerekirse:
+Belirli uyarı yönetimi görevlerini Azure portal yönetemezsiniz. Bu görevlerin [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)kullanılarak gerçekleştirilmesi gerekir. Bu avantajlar şunlardır:
 
 - Durum ölçütlerine yönelik bir uyarıyı etkinleştirme veya devre dışı bırakma
 - Durum ölçütleri uyarıları için bildirimleri ayarlama

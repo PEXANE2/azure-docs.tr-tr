@@ -1,17 +1,17 @@
 ---
-title: Makine öğrenimleri oluşturmak için Azure Işlevlerinde Python ve TensorFlow kullanın
+title: Azure 'da Machine Learning için Python ve TensorFlow kullanma
 description: Bu öğreticide, Azure Işlevleri 'nde TensorFlow makine öğrenimi modellerinin nasıl uygulanacağı gösterilmektedir
 author: anthonychu
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f8122a828f19c3daf6c23a866a99a214ee2c4427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409767"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Python 'da Azure Işlevleri oluşturmak için birkaç araç yüklemeniz gerekir.
 
@@ -113,7 +113,7 @@ func new --language python --template HttpTrigger --name classify
 - *\_\_init\_\_. Kopyala*: Main işlevi için bir dosya
 - *function. JSON*: işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan bir dosya
 
-### <a name="run-the-function"></a>İşlevi çalıştırın
+### <a name="run-the-function"></a>İşlevi çalıştırma
 
 Python sanal ortamının etkinleştirildiği terminalde, işlev uygulamasını başlatın.
 

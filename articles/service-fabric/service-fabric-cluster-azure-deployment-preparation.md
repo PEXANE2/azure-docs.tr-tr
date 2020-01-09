@@ -1,24 +1,14 @@
 ---
-title: Azure Service Fabric küme dağıtımını planlayın | Microsoft Docs
+title: Azure Service Fabric küme dağıtımını planlayın
 description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463325"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
@@ -28,7 +18,7 @@ ms.locfileid: "68600008"
 Azure Service Fabric uygulamalarını ve kümelerini başarıyla yönetmek için, üretim ortamınızın güvenilirliğini iyileştirmek üzere yapmanız gereken işlemler oldukça önerilir.  Daha fazla bilgi için [Service Fabric uygulama ve küme en iyi uygulamalarını](service-fabric-best-practices-overview.md)okuyun.
 
 ## <a name="select-the-os-for-the-cluster"></a>Küme için işletim sistemini seçin
-Service Fabric, Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümelerinin oluşturulmasına izin verir.  Kümenizi dağıtılmadan önce işletim sistemini seçmeniz gerekir:  Windows veya Linux.  Kümedeki her düğüm (sanal makine) aynı işletim sistemini çalıştırır, aynı kümede Windows ve Linux VM 'Leri karıştıramazsınız.
+Service Fabric, Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümelerinin oluşturulmasına izin verir.  Kümenizi dağıtılmadan önce, işletim sistemi: Windows veya Linux ' u seçmeniz gerekir.  Kümedeki her düğüm (sanal makine) aynı işletim sistemini çalıştırır, aynı kümede Windows ve Linux VM 'Leri karıştıramazsınız.
 
 ## <a name="capacity-planning"></a>Kapasite planlaması
 Herhangi bir üretim dağıtımı için kapasite planlaması önemli bir adımdır. Bu süreç kapsamında dikkat etmeniz gerekenler şunlardır:
@@ -47,7 +37,7 @@ Her düğüm türü için en az sanal makine boyutu, düğüm türü için seçt
 
 Birincil düğüm türü için en az sanal makine sayısı, seçtiğiniz [güvenilirlik katmanına][reliability] göre belirlenir.
 
-Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)bilgisiz iş yüklerine ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)bakın. 
+Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)bakın. 
 
 Düğüm sayısının alt sınırı, bu düğüm türünde çalıştırmak istediğiniz uygulama/hizmetlerin çoğaltmaları sayısını temel almalıdır.  [Service Fabric uygulamalar Için kapasite planlaması](service-fabric-capacity-planning.md) , uygulamalarınızı çalıştırmak için ihtiyacınız olan kaynakları tahmin etmenize yardımcı olur. Daha sonra değişen uygulama iş yükünü ayarlamak için kümenin ölçeğini değiştirebilir veya azaltabilirsiniz. 
 
@@ -57,13 +47,13 @@ Dayanıklılık katmanı, sistem sanal makinelerinizin temel alınan Azure altya
 Güvenilirlik katmanı, birincil düğüm türünde bu kümede çalıştırmak istediğiniz sistem hizmetlerinin çoğaltmaları sayısını ayarlamak için kullanılır. Kopyaların ne kadar fazla olması durumunda, sistem hizmetleri kümenizde daha güvenilir.  Hangi düzeyin kullanılacağı ve ne zaman kullanılacağı ile ilgili farklı düzeylerin ve önerilerin avantajları için, [kümenin güvenilirlik özelliklerine][reliability]bakın. 
 
 ## <a name="enable-reverse-proxy-andor-dns"></a>Ters proxy ve/veya DNS 'yi etkinleştir
-Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Hizmetler arasında bağlanmayı kolaylaştırmak için Service Fabric ek hizmetler sağlar: Bir [DNS hizmeti](service-fabric-dnsservice.md) ve [ters proxy hizmeti](service-fabric-reverseproxy.md).  Bir küme dağıtıldığında her iki hizmet de etkinleştirilebilir.
+Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Hizmetler arasında bağlanmayı kolaylaştırmak için Service Fabric ek hizmetler sağlar: bir [DNS hizmeti](service-fabric-dnsservice.md) ve [ters proxy hizmeti](service-fabric-reverseproxy.md).  Bir küme dağıtıldığında her iki hizmet de etkinleştirilebilir.
 
 Birçok hizmet, özellikle Kapsayıcılı hizmetler, mevcut bir URL adına sahip olduğundan, bu işlemi standart DNS Protokolü (Adlandırma Hizmeti protokolü yerine) kullanarak çözebiliyor ve özellikle uygulamanın "yükselt ve Shift" senaryolarında kullanışlıdır. Bu, tam olarak DNS hizmetinin yaptığı şeydir. DNS adlarını bir hizmet adıyla eşlemenizi sağlar ve bu nedenle uç nokta IP adreslerini çözümleyebilir.
 
 Ters proxy, HTTP uç noktalarını (HTTPS dahil) sunan kümedeki hizmetleri ele alınmaktadır. Ters proxy, belirli bir URI biçimi sağlayarak diğer hizmetlerin çağrılmasını büyük ölçüde basitleştirir.  Ters proxy, bir hizmetin birbirleriyle iletişim kurması için gerekli olan Resolve, Connect ve retry adımlarını da işler.
 
-## <a name="prepare-for-disaster-recovery"></a>Olağanüstü Durum Kurtarmaya Hazırlanma
+## <a name="prepare-for-disaster-recovery"></a>Olağanüstü durum kurtarmaya hazırlanma
 Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm farklı türdeki hataların varlığını sürdürmesini sağlamaktır. Bu özellikle, denetim için planlanmamış ve dışındaki hatalarda önemlidir. [Olağanüstü durum kurtarma Için hazırlanma](service-fabric-disaster-recovery.md) , Modellenmemiş ve doğru yönetilmiyorsa olağanüstü durumlar olabilecek bazı yaygın hata modlarını açıklar. Ayrıca, olağanüstü bir durum oluşması durumunda yapılacak azaltmaları ve eylemler de anlatılmaktadır.
 
 ## <a name="production-readiness-checklist"></a>Üretim hazırlığı denetim listesi

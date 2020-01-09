@@ -1,93 +1,84 @@
 ---
-title: Azure Service Fabric performans izleme | Microsoft Docs
-description: İzleme ve Tanılama, Azure Service Fabric kümeleri için performans sayaçları hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric performans Izleme
+description: Azure Service Fabric kümelerini izleme ve tanılamaya yönelik performans sayaçları hakkında bilgi edinin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ee1608c40801f568b38ace4670b0d5ea7f73003c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464709"
 ---
 # <a name="performance-metrics"></a>Performans ölçümleri
 
-Kümenizi ve bunun yanı sıra içinde çalışan uygulamaların performansının anlaşılması toplanan ölçümler. Service Fabric kümeleri için aşağıdaki performans sayaçlarını toplamayı öneririz.
+Kümenizin performansını ve üzerinde çalışan uygulamaları anlamak için ölçümlerin toplanması gerekir. Service Fabric kümeler için aşağıdaki performans sayaçlarını toplamayı öneririz.
 
 ## <a name="nodes"></a>Düğümler
 
-Kümenizdeki makineleri için daha iyi her makinede yük anlamak ve uygun küme kararları ölçeklendirme yapmak için aşağıdaki performans sayaçlarını toplamayı göz önünde bulundurun.
+Kümenizdeki makineler için, her makinede yükü daha iyi anlamak ve uygun küme ölçekleme kararları almak için aşağıdaki performans sayaçlarını toplamayı göz önünde bulundurun.
 
 | Sayaç kategorisi | Sayaç adı |
 | --- | --- |
-| Mantıksal Disk | Mantıksal Disk boş alan |
-| PhysicalDisk (başına Disk) | Ort. Disk okuma kuyruğu uzunluğu |
-| PhysicalDisk (başına Disk) | Ort. Disk yazma kuyruğu uzunluğu |
-| PhysicalDisk (başına Disk) | Ort. Disk sn/Okuma |
-| PhysicalDisk (başına Disk) | Ort. Disk sn/yazma |
-| PhysicalDisk (başına Disk) | Disk Okuma/sn |
-| PhysicalDisk (başına Disk) | Disk Okuma Bayt/sn |
-| PhysicalDisk (başına Disk) | Disk Yazma/sn |
-| PhysicalDisk (başına Disk) | Disk Yazma Bayt/sn |
-| Bellek | Kullanılabilir MBayt |
+| Mantıksal Disk | Mantıksal Disk Boş Alan |
+| FizikselDisk (disk başına) | Ortalama Disk okuma sırası uzunluğu |
+| FizikselDisk (disk başına) | Ortalama Disk yazma sırası uzunluğu |
+| FizikselDisk (disk başına) | Ortalama Disk sn/okuma |
+| FizikselDisk (disk başına) | Ortalama Disk sn/yazma |
+| FizikselDisk (disk başına) | Disk Okuma/sn |
+| FizikselDisk (disk başına) | Disk Okuma Bayt/sn |
+| FizikselDisk (disk başına) | Disk Yazma/sn |
+| FizikselDisk (disk başına) | Disk Yazma Bayt/sn |
+| Hafıza | Kullanılabilir MBayt |
 | PagingFile | Kullanım yüzdesi |
-| Processor(Total) | % İşlemci zamanı |
+| İşlemci (Toplam) | % İşlemci zamanı |
 | İşlem (hizmet başına) | % İşlemci zamanı |
-| İşlem (hizmet başına) | İşlem kimliği |
-| İşlem (hizmet başına) | Özel bayt sayısı |
-| İşlem (hizmet başına) | İş parçacığı sayısı |
-| İşlem (hizmet başına) | Sanal bayt sayısı |
-| İşlem (hizmet başına) | Çalışma kümesi |
-| İşlem (hizmet başına) | Çalışma kümesi - özel |
-| Ağ Interface(all-instances) | Bayt recd |
-| Ağ Interface(all-instances) | Gönderilen bayt sayısı |
-| Ağ Interface(all-instances) | Toplam bayt |
-| Ağ Interface(all-instances) | Çıkış sırası uzunluğu |
-| Ağ Interface(all-instances) | Atılan çıkış paketlerinin |
-| Ağ Interface(all-instances) | Atılan alınan paketler |
-| Ağ Interface(all-instances) | Giden paket hataları |
-| Ağ Interface(all-instances) | Hataları alınan paketler |
+| İşlem (hizmet başına) | KIMLIK Işlemi |
+| İşlem (hizmet başına) | Özel Baytlar |
+| İşlem (hizmet başına) | İş Parçacığı Sayısı |
+| İşlem (hizmet başına) | Sanal Bayt Sayısı |
+| İşlem (hizmet başına) | Çalışma Kümesi |
+| İşlem (hizmet başına) | Çalışma kümesi-özel |
+| Ağ arabirimi (tüm örnekler) | Bayt recd |
+| Ağ arabirimi (tüm örnekler) | Gönderilen Bayt |
+| Ağ arabirimi (tüm örnekler) | Toplam bayt |
+| Ağ arabirimi (tüm örnekler) | Çıkış sırası uzunluğu |
+| Ağ arabirimi (tüm örnekler) | Atılan giden paketler |
+| Ağ arabirimi (tüm örnekler) | Atılan alınan paketler |
+| Ağ arabirimi (tüm örnekler) | Giden paket hataları |
+| Ağ arabirimi (tüm örnekler) | Alınan paket hataları |
 
 ## <a name="net-applications-and-services"></a>.NET uygulamaları ve Hizmetleri
 
-.NET Hizmetleri kümenize dağıtıyorsanız aşağıdaki sayaçlarını topla. 
+Kümenize .NET Hizmetleri dağıtıyorsanız, aşağıdaki sayaçları toplayın. 
 
 | Sayaç kategorisi | Sayaç adı |
 | --- | --- |
-| .NET CLR bellek (hizmet başına) | İşlem kimliği |
-| .NET CLR bellek (hizmet başına) | # Toplam kaydedilmiş bayt |
-| .NET CLR bellek (hizmet başına) | # Toplam bayt ayrılmış |
-| .NET CLR bellek (hizmet başına) | # Tüm yığınlardaki bayt |
-| .NET CLR bellek (hizmet başına) | Büyük nesne yığın boyutu |
-| .NET CLR bellek (hizmet başına) | # GC işleme |
-| .NET CLR bellek (hizmet başına) | # Gen 0 toplamaları sayısı |
-| .NET CLR bellek (hizmet başına) | # Gen 1 toplamaları sayısı |
-| .NET CLR bellek (hizmet başına) | # Gen 2 toplamaları sayısı |
-| .NET CLR bellek (hizmet başına) | Gc'de zaman |
+| .NET CLR belleği (hizmet başına) | İşlem Kimliği |
+| .NET CLR belleği (hizmet başına) | Toplam kaydedilmiş bayt sayısı |
+| .NET CLR belleği (hizmet başına) | Toplam ayrılan bayt sayısı |
+| .NET CLR belleği (hizmet başına) | Tüm yığınlardaki bayt sayısı |
+| .NET CLR belleği (hizmet başına) | Büyük nesne yığın boyutu |
+| .NET CLR belleği (hizmet başına) | # GC tutamaçları |
+| .NET CLR belleği (hizmet başına) | # Gen 0 toplamaları |
+| .NET CLR belleği (hizmet başına) | # Gen 1 toplamaları |
+| .NET CLR belleği (hizmet başına) | Gen 2 toplamaları sayısı |
+| .NET CLR belleği (hizmet başına) | GC 'de% Time |
 
-### <a name="service-fabrics-custom-performance-counters"></a>Service Fabric'in özel performans sayaçları
+### <a name="service-fabrics-custom-performance-counters"></a>Service Fabric özel performans sayaçları
 
-Service Fabric özel performans Sayaçlarınızı önemli miktarda oluşturur. SDK'ın yüklü varsa, kapsamlı bir liste, Windows makinenizde Performans İzleyicisi uygulamanızda görebilirsiniz (Başlat > Performans İzleyicisi). 
+Service Fabric, önemli miktarda özel performans sayacı üretir. SDK yüklü ise, performans Izleyicisi uygulamanızda Windows makinenizde kapsamlı listeyi görebilirsiniz (> performans Izleyicisini başlatın). 
 
-Uygulamalarda sayaçları ekleyin dağıttığınız kümenize, Reliable Actors kullanıyorsanız `Service Fabric Actor` ve `Service Fabric Actor Method` kategorileri (bkz [Service Fabric güvenilir aktör tanılama](service-fabric-reliable-actors-diagnostics.md)).
+Kümenize dağıttığınız uygulamalarda, Reliable Actors kullanıyorsanız, `Service Fabric Actor` ve `Service Fabric Actor Method` kategorilerinden sayaç ekleyin (bkz. [Service Fabric Reliable Actors Diagnostics](service-fabric-reliable-actors-diagnostics.md)).
 
-Reliable Services veya uzaktan hizmet iletişimini kullanıyorsanız benzer şekilde sahibiz `Service Fabric Service` ve `Service Fabric Service Method` sayaç kategorileri, bkz: sayaçlarını Topla [ile uzaktan hizmet iletişimini izleme](service-fabric-reliable-serviceremoting-diagnostics.md) ve [güvenilir performans sayaçları Hizmetleri](service-fabric-reliable-services-diagnostics.md#performance-counters). 
+Reliable Services veya hizmet uzaktan Iletişim kullanıyorsanız, ' den sayaç toplamanız gereken `Service Fabric Service` ve `Service Fabric Service Method` sayaç kategorilerimiz vardır. bkz. [hizmet uzaktan iletişim](service-fabric-reliable-serviceremoting-diagnostics.md) ve [güvenilir hizmetler performans sayaçları](service-fabric-reliable-services-diagnostics.md#performance-counters)ile izleme. 
 
-Reliable Collections kullanımı, eklemenizi öneririz `Avg. Transaction ms/Commit` gelen `Service Fabric Transactional Replicator` işlem ölçüm başına ortalama yürütme gecikmesi toplanacak.
+Güvenilir koleksiyonlar kullanıyorsanız, işlem ölçümü başına ortalama işleme gecikmesini toplamak için `Service Fabric Transactional Replicator` `Avg. Transaction ms/Commit` eklenmesini öneririz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla bilgi edinin [olay oluşturma platformu düzeyinde](service-fabric-diagnostics-event-generation-infra.md) Service fabric'te
-* Performans ölçümlerini aracılığıyla [Log Analytics aracısını](service-fabric-diagnostics-oms-agent.md)
+* Service Fabric içindeki [platform düzeyinde olay oluşturma](service-fabric-diagnostics-event-generation-infra.md) hakkında daha fazla bilgi edinin
+* [Log Analytics Agent](service-fabric-diagnostics-oms-agent.md) aracılığıyla performans ölçümlerini toplayın

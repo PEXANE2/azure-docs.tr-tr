@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448084"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Makine tarafından öğrenilen varlığı örnek bir mekan etiketleme
 
-Bir varlığın bir örnek içinde etiketlenmesi, LUYA varlığın ne olduğu ve varlığın utterde görünebileceği bir örnektir. 
+Bir varlığın bir örnek içinde etiketlenmesi, LUYA varlığın ne olduğu ve varlığın utterde görünebileceği bir örnektir.
 
 ## <a name="labeling-machine-learned-entity"></a>Makine tarafından öğrenilen Varlık etiketleme
 
-`hi, please I want a cheese pizza in 20 minutes`tümceciğini göz önünde bulundurun. 
+`hi, please I want a cheese pizza in 20 minutes`tümceciğini göz önünde bulundurun.
 
 1. En soldaki metni seçin, ardından varlığın en sağ metnini seçip, ardından etiketlemek istediğiniz varlığı, bu durumda tam sırayı seçin. _Tüm sıra_ aşağıdaki görüntüde etiketlidir.
 
     > [!div class="mx-imgBorder"]
     > ![etiketi makine tarafından öğrenilen varlık](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Açılır penceredeki varlığı seçin. Etiketli tamamlanmış pizza sırası varlığı, etiketli tüm sözcükleri (Ingilizce 'de soldan sağa) içerir. 
+1. Açılır penceredeki varlığı seçin. Etiketli tamamlanmış pizza sırası varlığı, etiketli tüm sözcükleri (Ingilizce 'de soldan sağa) içerir.
 
 ## <a name="review-labeled-text"></a>Etiketli metni gözden geçirme
 
-Etiketledikten sonra, örnek bir şekilde gözden geçirin ve seçilen varlık için seçili varlıkla metnin altı çizili olduğundan emin olun. Düz çizgi, metnin etiketlendiği anlamına gelir. 
+Etiketledikten sonra, örnek bir şekilde gözden geçirin ve seçilen varlık için seçili varlıkla metnin altı çizili olduğundan emin olun. Düz çizgi, metnin etiketlendiği anlamına gelir.
 
 > [!div class="mx-imgBorder"]
 > ![makine tarafından öğrenilen varlığın tamamını etiketlendi](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -55,12 +55,12 @@ Alternatif olarak, metnin üzerindeki varlık adını seçip görüntülenen men
 
 Varlık paleti, önceki etiketleme deneyimine bir alternatif sunar. Bir varlıkla anında etiketlemek için metnin üzerine fırçanızı sağlar.
 
-1. Söylenişi tablosunun sağ üst köşesindeki vurgulayıcı simgesini seçerek varlık paletini açın. 
+1. Söylenişi tablosunun sağ üst köşesindeki vurgulayıcı simgesini seçerek varlık paletini açın.
 
     > [!div class="mx-imgBorder"]
     > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Varlık bileşenini seçin. Bu eylem, görsel olarak yeni bir imlece belirtilir. İmleç, portalda hareket ettirdiği şekilde fareyi izler. 
+2. Varlık bileşenini seçin. Bu eylem, görsel olarak yeni bir imlece belirtilir. İmleç, portalda hareket ettirdiği şekilde fareyi izler.
 
     > [!div class="mx-imgBorder"]
     > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
@@ -77,17 +77,26 @@ Varlıkların alt bileşenleri, en üst düzey varlıklarla tamamen aynı şekil
 > [!div class="mx-imgBorder"]
 > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
 
-Alt bileşenler yalnızca üst öğe de etiketlendirilmişse etiketlenebilir. 
+Alt bileşenler yalnızca üst öğe de etiketlendirilmişse etiketlenebilir.
+
+## <a name="labeling-entity-roles"></a>Varlık rollerini etiketleme
+
+Varlık rolleri, varlık paleti kullanılarak etiketlenir.
+
+1. Amaç ayrıntısı sayfasında bağlam araç çubuğundan **varlık paleti** ' ni seçin.
+1. Varlık paleti açıldıktan sonra varlık listesinden varlığı seçin.
+1. **Varlık denetçisi**' ne gidin ve mevcut bir rol seçin ya da yeni bir rol oluşturun.
+1. Örnek söylenişi metninde, metni varlık rolüyle etiketleyin. 
 
 ## <a name="unlabel-entities"></a>Varlıkların etiketini kaldır
 
-Bir varlığın etiketini kaldırmak için, metnin altındaki varlık adını seçin ve **etiketi kaldır**' ı seçin. Etiketi kaldırmak istediğiniz varlığın alt bileşenleri etiketlenmişse, alt bileşenlerin önce etiketlenmesi gerekir. 
+Bir varlığın etiketini kaldırmak için, metnin altındaki varlık adını seçin ve **etiketi kaldır**' ı seçin. Etiketi kaldırmak istediğiniz varlığın alt bileşenleri etiketlenmişse, alt bileşenlerin önce etiketlenmesi gerekir.
 
 ## <a name="editing-labels-using-the-entity-palette"></a>Varlık paletini kullanarak etiketleri düzenle
 
 Etiketleme sırasında bir hata yaparsanız, varlık paleti hızlı düzenlemelere izin veren kolay bir araçtır. Örneğin, bir varlık etiketi yanlışlıkla ek bir sözcüğe yayılmışsa ve zaten alt bileşenleri etiketlenmişse, bu durumda sözcüklerin gerekli daha kısa yayılmasını sağlamak için varlık paletini kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 1. Pizza tür alt bileşeni "Cheese pizza" ile birlikte "birlikte" ek yanlış bir sözcük içerir
 
@@ -98,7 +107,6 @@ Etiketleme sırasında bir hata yaparsanız, varlık paleti hızlı düzenlemele
 
     > [!div class="mx-imgBorder"]
     > makine tarafından öğrenilen varlık için varlık paleti ![](media/label-utterances/edit-label-with-palette-2.png)
-
 
 ## <a name="labels-for-matching-text-entities"></a>Eşleşen metin varlıklarının etiketleri
 

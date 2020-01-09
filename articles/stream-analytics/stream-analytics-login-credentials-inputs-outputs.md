@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics işlerinde oturum açma kimlik bilgilerini döndürme
 description: Bu makalede, giriş kimlik bilgilerini güncelleştirmek açıklanır ve çıkış işlerini Azure Stream Analytics'te havuzlarını.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aad6f237a37ce4782e2c103a7a14e0a3951093de
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425967"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Giriş ve çıkışları bir Stream Analytics işi yönelik oturum açma kimlik bilgilerini döndürme
 
@@ -32,7 +31,7 @@ Bu bölümde, biz size yeniden kimlik bilgileri Blob Depolama, Event Hubs, SQL v
 4. Stream Analytics işinizi Azure portalından Gözat > seçin **Durdur** ve durdurmak işin tamamlanmasını bekleyin.    
 5. Blob/tablo bulun depolama giriş/çıkış kimlik bilgilerini güncelleştirmek istiyorsanız.    
 6. Bulma **depolama hesabı anahtarı** alan ve yeni oluşturulan anahtarınızı yapıştırın > tıklatın **Kaydet**.    
-7. Bağlantı testi değişikliklerinizi kaydettiğinizde, otomatik olarak başlatılır, bildirimleri sekmesinden görüntüleyebilirsiniz. İki bildirimler-bir güncelleştirme kaydetmek için karşılık gelen vardır ve bağlantıyı test etmek için diğer karşılık gelir:  
+7. Değişikliklerinizi kaydettiğinizde bir bağlantı testi otomatik olarak başlayacaktır, Bildirimler sekmesinden görüntüleyebilirsiniz. İki bildirim vardır: biri, güncelleştirmeyi kaydetmeye karşılık gelir ve bağlantıyı test etmek için diğer karşılık gelir:  
    ![Anahtar düzenleme sonra bildirimler](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Devam [son durdurulma süresi, iş başlangıç](#start-your-job-from-the-last-stopped-time) bölümü.
 

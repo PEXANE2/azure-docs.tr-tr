@@ -1,5 +1,6 @@
 ---
-title: Azure API yönetimi ilkesi örneği-ağ geçidi ile arka uç arasında yetkilendirme için OAuth2 kullanın | Microsoft Docs
+title: Örnek Azure API Yönetimi İlkesi-ağ geçidi ve arka uç arasında yetkilendirme için OAuth2 kullanın
+titleSuffix: Azure API Management
 description: Azure API Management ilkesi örneği-ağ geçidi ile arka uç arasında yetkilendirme için OAuth2 kullanmayı gösterir. AAD'den erişim belirtecini alma ve bunu arka uca iletme işlemini de gösterir.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: fac10b728e4b7f09ec1019c3257f7c9e5d6e7714
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442362"
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>Ağ Geçidi ile arka uç arasında yetkilendirme için OAuth2 kullanma
 

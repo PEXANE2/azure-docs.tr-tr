@@ -7,18 +7,35 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b597ecb67ab30c8617029fe741af1014444a9b70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693156"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498093"
 ---
-# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure 'dan şirket içine yeniden çalışma sorunlarını giderme
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure’dan şirket içine yapılan yeniden çalışma işleminde sorun giderme
 
 Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak Azure 'a yük devretmeden sonra Azure VM 'lerinizi şirket içi VMware altyapınıza geri döndüğünüzde karşılaşabileceğiniz sorunları nasıl giderebileceğiniz açıklanır.
 
 Yeniden çalışma temelde iki ana adımdan oluşur. İlk adımda, yük devretmeden sonra çoğaltmaya başlayabilmeleri için Azure VM 'lerini şirket içinde yeniden korumanız gerekir. İkinci adım, Azure 'dan bir yük devretme işlemini şirket içi sitenize geri dönecek şekilde çalıştıralım.
+
+## <a name="common-issues"></a>Genel sorunlar
+
+- Salt okuma Kullanıcı vCenter bulmayı ve sanal makineleri koruyorsa, koruma başarılı olur ve yük devretme işlemi gerçekleştirilir. Yeniden koruma sırasında, veri depoları bulunamadığı için yük devretme başarısız olur. Belirti, veri depolarının yeniden koruma sırasında listelenmemiştir. Bu sorunu çözmek için vCenter kimlik bilgilerini izinleri olan uygun bir hesapla güncelleştirebilir ve ardından işi yeniden deneyebilirsiniz.
+- Bir Linux sanal makinesini kapatıp şirket içinde çalıştırdığınızda, ağ yöneticisi paketinin makineden kaldırıldığını görebilirsiniz. Bu kaldırma işlemi, sanal makine Azure 'da kurtarılırken ağ yöneticisi paketinin kaldırıldığı için oluşur.
+- Bir Linux sanal makinesi statik IP adresiyle yapılandırıldığında ve Azure 'a yük devretildiği zaman, IP adresi DHCP 'den alınır. Şirket içinde yük devrediğinizde, sanal makine IP adresini almak için DHCP kullanmaya devam eder. Makinede el ile oturum açın ve gerekirse IP adresini bir statik adrese geri ayarlayın. Bir Windows sanal makinesi, statik IP adresini yeniden alabilir.
+- ESXi 5,5 Free Edition veya vSphere 6 hiper yönetici ücretsiz sürümünü kullanıyorsanız, yük devretme başarılı olur ancak yeniden çalışma başarılı olmaz. Yeniden çalışmayı etkinleştirmek için programın değerlendirme lisansına yükseltin.
+- Yapılandırma sunucusuna işlem sunucusundan ulaşamadıysanız, bağlantı noktası 443 üzerindeki yapılandırma sunucusuna bağlantıyı denetlemek için Telnet kullanın. Ayrıca, işlem sunucusundan yapılandırma sunucusuna ping göndermeye da çalışırsınız. Ayrıca, bir işlem sunucusu yapılandırma sunucusuna bağlıyken sinyal içermelidir.
+- Fiziksel bir şirket içi sunucu olarak korunan bir Windows Server 2008 R2 SP1 sunucusu, Azure 'dan şirket içi bir siteye yeniden başarısız olabilir.
+- Aşağıdaki koşullarda yeniden başarısız olabilirsiniz:
+    - Makineleri Azure 'a geçirdiniz. [Daha fazla bilgi edinin](migrate-overview.md#what-do-we-mean-by-migration).
+    - Bir VM 'yi başka bir kaynak grubuna taşımış olursunuz.
+    - Azure VM 'yi silmiş olursunuz.
+    - VM 'nin korumasını devre dışı bırakmış olursunuz.
+    - VM 'yi Azure 'da el ile oluşturdunuz. Makinenin ilk olarak şirket içinde korunması ve yeniden korumadan önce Azure 'a yük devretmeli olması gerekir.
+    - Yalnızca bir ESXi konağına başarısız olabilirsiniz. VMware VM 'lerini veya fiziksel sunucuları Hyper-V konaklarına, fiziksel makinelere veya VMware iş istasyonlarına yeniden çalıştıramazsınız.
+
 
 ## <a name="troubleshoot-reprotection-errors"></a>Yeniden koruma hatalarıyla ilgili sorunları giderme
 
@@ -65,7 +82,7 @@ Yük devri yapılan bir VM 'yi yeniden korumak için, Mobility hizmetinin şirke
 
 **Veri deposuna ESXi konağından erişilemiyor.**
 
-Yeniden çalışma için [ana hedef önkoşullarını ve desteklenen veri depolarını](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) denetleyin.
+Yeniden çalışma için [ana hedef önkoşullarını ve desteklenen veri depolarını](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) denetleyin.
 
 
 ## <a name="troubleshoot-failback-errors"></a>Yeniden çalışma hatalarında sorun giderme

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427437"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) içinde örnek veri kümelerini kullanma
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http
   <td>
 Passenger, ABD 'nin ulaşım bölümünün (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">zamanında</a>) geçiş Bakanlığı veri koleksiyonundan alınan zaman içindeki performans verilerini alır.
 <p></p>
-Veri kümesi Nisan-Ekim 2013 ' de geçen süreyi içerir. Azure Machine Learning Studio klasik sürümüne yüklemeden önce, veri kümesi şu şekilde işlenir:
+Veri kümesi Nisan-Ekim 2013 ' de geçen süreyi içerir. Azure Machine Learning Studio (klasik) yüklenmeden önce veri kümesi şu şekilde işlenir:
 <ul>
   <li>Veri kümesi, kıst ABD 'de yalnızca 70 ortalamanızı havaalanları kapsayacak şekilde filtrelenmiştir</li>
   <li>İptal edilen fışıkları 15 dakikadan uzun bir süre gecikti olarak etiketlendi</li>
@@ -270,7 +270,7 @@ Demografik ve Tercihler dahil olmak üzere müşteriler hakkında bir meta veri 
 </tr>
 
 <tr>
-  <td>Restoran özellik verileri</td>
+  <td>Restoran özelliği verileri</td>
   <td>
 Restoran ve bunların özellikleri (yiyecek türü, dinleme stili ve konum gibi) için bir meta veri kümesi.
 <p></p>
@@ -281,7 +281,7 @@ Restoran ve bunların özellikleri (yiyecek türü, dinleme stili ve konum gibi)
 </tr>
 
 <tr>
-  <td>Restoran derecelendirmeleri</td>
+  <td>Restoran değerlendirmeleri</td>
   <td>
 Kullanıcılar tarafından, 0 ' dan 2 ' ye kadar bir ölçeğe göre restoranlar için verilen derecelendirmeleri içerir.
 <p></p>
@@ -329,7 +329,7 @@ Ayrıca, arka plan olayı sayısının (hadronic showers için h) yeterince tahm
   <td>
 NOAA 'den saatlik Land tabanlı hava durumu gözlemlerini (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">201304 ile 201310 arasında Birleşik veriler</a>).
 <p></p>
-Hava durumu verileri, Havaalanı hava durumu istasyonlarından yapılan ve Nisan-Ekim 2013 zaman dilimini kapsayan gözlemlerini kapsamaktadır. Azure Machine Learning Studio klasik sürümüne yüklemeden önce, veri kümesi şu şekilde işlenir:
+Hava durumu verileri, Havaalanı hava durumu istasyonlarından yapılan ve Nisan-Ekim 2013 zaman dilimini kapsayan gözlemlerini kapsamaktadır. Azure Machine Learning Studio (klasik) yüklenmeden önce veri kümesi şu şekilde işlenir:
 <ul>
   <li>Hava durumu istasyonu kimlikleri ilgili Havaalanı kimliklerine eşlendi</li>
   <li>70 ortalamanızı Havaalanı ile ilişkilendirilmemiş Hava durumu istasyonları filtrelendi</li>
@@ -344,7 +344,7 @@ Hava durumu verileri, Havaalanı hava durumu istasyonlarından yapılan ve Nisan
   <td>
 Veriler, XML verileri olarak depolanan her bir S & P 500 şirketinin makalelerini temel alan Vikipden (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) türetilir.
 <p></p>
-Azure Machine Learning Studio klasik sürümüne yüklemeden önce, veri kümesi şu şekilde işlenir:
+Azure Machine Learning Studio (klasik) yüklenmeden önce veri kümesi şu şekilde işlenir:
 <ul>
   <li>Belirli bir şirkete ait metin içeriğini Ayıkla</li>
   <li>Wiki biçimlendirmesini kaldır</li>
