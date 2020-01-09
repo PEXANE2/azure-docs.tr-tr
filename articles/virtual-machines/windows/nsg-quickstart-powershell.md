@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 3577c97b55baebe08ca4020b0c570160d551dfd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: ecc996cc07cfbf22a04a620ca426ca97056a9a9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371216"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell kullanarak Azure 'da bir VM 'ye bağlantı noktalarını ve uç noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -95,7 +95,7 @@ Yüksek oranda kullanılabilir Web uygulamaları için sanal makinelerinizi bir 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu örnekte, HTTP trafiğine izin vermek için basit bir kural oluşturdunuz. Aşağıdaki makalelerde daha ayrıntılı ortamlar oluşturma hakkında bilgi edinebilirsiniz:
 
-* [Azure Resource Manager’a genel bakış](../../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager’a genel bakış](../../azure-resource-manager/management/overview.md)
 * [Ağ güvenlik grubu nedir?](../../virtual-network/security-overview.md)
 * [Yük dengeleyiciler için Azure Resource Manager genel bakış](../../load-balancer/load-balancer-arm.md)
 

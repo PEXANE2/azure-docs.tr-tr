@@ -1,55 +1,54 @@
 ---
-title: Azure Stream Analytics Pencereleme işlevleri'ne giriş
-description: Bu makalede, Azure Stream Analytics işlerinde kullanılan dört Pencereleme işlevleri (atlayan atlamalı, kayan, oturumu) açıklanmaktadır.
-services: stream-analytics
+title: Azure Stream Analytics Pencereleme işlevlerine giriş
+description: Bu makalede Azure Stream Analytics işlerinde kullanılan dört Pencereleme işlevi (atlayan, atlamalı, kayan, oturum) açıklanmaktadır.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 530ff8d09d6c580a31ae26929fafcec5bb5b471b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369431"
 ---
-# <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics Pencereleme işlevleri'ne giriş
+# <a name="introduction-to-stream-analytics-windowing-functions"></a>Stream Analytics Pencereleme işlevlerine giriş
 
-Saat akış senaryolarda, zamana bağlı windows bulunan veriler üzerinde işlem gerçekleştirme yaygın modelidir. Stream Analytics, geliştiricilerin çok az bir çabayla Yazar karmaşık akış işleme işlerini Pencereleme işlevleri için yerel desteğe sahiptir.
+Zaman akışı senaryolarında, zamana bağlı Windows 'da bulunan veriler üzerinde işlem yapma ortak bir modeldir. Stream Analytics, geliştiricilerin çok az bir çabayla Yazar karmaşık akış işleme işlerini Pencereleme işlevleri için yerel desteğe sahiptir.
 
-Aralarından seçim zamana bağlı windows dört çeşit vardır: [**Atlayan**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [ **atlamalı**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [ **kayan**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics), ve [ **oturumu**  ](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) windows.  Pencere işlevleri kullanmak [ **GROUP BY** ](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) sorgu söz dizimi, Stream Analytics işlerinde yan tümcesi. Olayları kullanarak birden çok windows üzerinde toplayabilirsiniz [ **Windows()** işlevi](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
+Arasından seçim yapabileceğiniz dört tür zamana bağlı pencere [**vardır: atlayan**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**atlamalı**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**kayan**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)ve [**oturum**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) pencereleri.  Stream Analytics işlerinizde sorgu sözdiziminin [**Group By**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) yan tümcesinde pencere işlevlerini kullanırsınız. [ **Windows ()** işlevini](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)kullanarak olayları birden çok pencere üzerinde de toplayabilirsiniz.
 
-Tüm [Pencereleme](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) işlemleri çıktı sonuçları **son** penceresinin. Çıktı penceresi kullanılan toplama işleve göre tek bir olay olacaktır. Çıkış olayı penceresinin bitiş zaman damgası sahip olur ve tüm pencere işlevleri sabit uzunluk ile tanımlanır. 
+Tüm [Pencereleme](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) işlemleri çıkış, pencerenin **sonunda** oluşur. Pencerenin çıktısı, kullanılan toplama işlevine göre tek olay olacaktır. Çıkış olayı pencerenin sonundaki zaman damgasına sahip olur ve tüm pencere işlevleri sabit bir uzunluğa göre tanımlanır. 
 
-![Stream Analytics pencere işlevleri kavramı](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
+![Stream Analytics pencere işlevleri kavramları](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
 ## <a name="tumbling-window"></a>Atlayan pencere
-Dönen pencere işlevleri farklı zaman kesimler halinde veri akışı segmentlere ayırın ve bunları karşı bir işlev aşağıdaki örnekte verilene gerçekleştirmek için kullanılır. Atlayan pencere anahtar erişilebilirliktir, bunlar yinelemeniz, olmayan çakışma ve bir olay için birden fazla atlayan pencere ait olamaz ' dir.
+Atlayan pencere işlevleri, bir veri akışını ayrı zaman kesimlerine bölmek ve bunlara karşı aşağıdaki örnekte olduğu gibi bir işlev gerçekleştirmek için kullanılır. Atlayan pencerenin farkı tekrarlaması, çakışmaması ve bir olayın birden fazla atlayan pencereye ait olamamasıdır.
 
 ![Stream Analytics atlayan pencere](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
-## <a name="hopping-window"></a>Atlamalı pencere
-Atlamalı pencere işlevleri atlama İleri sabit bir süre süresi. Olayları birden fazla Hopping penceresi sonuç kümesine ait olabilir, böylece binebilir, atlayan windows alışık kolay olabilir. Bir atlayan pencere aynı Hopping pencere yapmak için pencere boyutu ile aynı olacak şekilde atlama boyutu belirtin. 
+## <a name="hopping-window"></a>Hopping penceresi
+Atlamalı pencere işlevleri, sabit bir süre kadar ileri gider. Bunlar çakışan Atlamalı pencereler olarak düşünülebilir ve olaylar, birden fazla Atlayan pencere sonuç kümesine ait olabilir. Bir atlamalı pencereyi, atlayan bir pencereyle aynı yapmak için, pencere boyutuyla aynı olacak atlama boyutunu belirtin. 
 
-![Stream Analytics atlama penceresi](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
+![Stream Analytics atlamalı penceresi](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Kayan pencere
-Atlayan veya atlamalı windows aksine, kayan pencere işlevleri bir çıktı üretir **yalnızca** bir olay gerçekleştiğinde. Her penceresinde en az bir olay olur ve pencereyi sürekli bir € (epsilon) ileri doğru taşır. Windows atlamalı gibi olayları için birden fazla kayan pencere ait olabilir.
+Kayan pencere işlevleri, ttan veya atlamalı pencerelerin aksine, **yalnızca** bir olay gerçekleştiğinde çıkış üretir. Her pencerede en az bir olay bulunur ve pencere sürekli olarak bir € (epsilon) ileri gider. Atlamalı pencereler gibi olaylar birden fazla kayan pencereye ait olabilir.
 
 ![Stream Analytics kayan pencere](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="session-window"></a>Oturum penceresi
-Oturum pencere işlevleri Grup benzer zamanlarda gelen olayları süreler filtreleme bulunduğu veri yok. Üç ana parametreye sahiptir: zaman aşımı, en uzun süre ve bölümleme anahtarı (isteğe bağlı).
+Oturum penceresi işlevleri, benzer zamanlarda gelen olayları, verilerin olmadığı zaman ölçeğini filtreleyerek gruplar. Üç ana parametreye sahiptir: zaman aşımı, maksimum süre ve bölümleme anahtarı (isteğe bağlı).
 
 ![Stream Analytics oturum penceresi](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
 
-İlk olay gerçekleştiğinde bir oturum penceresi başlar. Alınan son olayın belirtilen zaman aşımı süresi içinde başka bir olay oluşursa pencerenin yeni olay içerecek şekilde genişletir. Aksi takdirde zaman aşımı süresi içinde hiçbir olay meydana gelirse, pencerenin zaman aşımı kapatılır.
+İlk olay gerçekleştiğinde oturum penceresi başlar. Son alınan olaydan belirtilen zaman aşımı süresi içinde başka bir olay oluşursa, pencere yeni olayı içerecek şekilde genişletilir. Aksi takdirde, zaman aşımı içinde herhangi bir olay gerçekleşemez, pencere zaman aşımından sonra kapatılır.
 
-Olaylar belirtilen süre içinde gerçekleşen korumak ise en fazla süre ulaşılana kadar oturum penceresi genişletme tutmak. En uzun süresi denetimi aralıkları, belirtilen en fazla süre aynı boyutta olacak şekilde ayarlanır. Örneğin, pencerenin denetimleri varsa aşan en yüksek en fazla 10 ise süresi sorun t = 0, 10, 20, 30, vs.
+Olaylar belirtilen zaman aşımı süresi içinde gerçekleşirken, en fazla süreye ulaşılana kadar oturum penceresi Genişlemeden kalır. En uzun süre denetim aralıkları, belirtilen maksimum süre ile aynı boyut olarak ayarlanır. Örneğin, en fazla süre 10 ise, pencerenin en uzun süreyi aşması durumunda üzerindeki denetimler t = 0, 10, 20, 30 vb. olur.
 
-Bir bölüm anahtarı sağlandığında olayları anahtarıyla birlikte gruplanır ve oturum penceresi bağımsız olarak her gruba uygulanır. Bu bölümleme, farklı oturum windows farklı kullanıcılar veya cihazlar için gereken durumlarda yararlıdır.
+Bir bölüm anahtarı sağlandığında, olaylar anahtar tarafından birlikte gruplandırılır ve oturum penceresi her bir gruba bağımsız olarak uygulanır. Bu bölümlendirme, farklı kullanıcılar veya cihazlar için farklı oturum pencerelerinin olması gereken durumlarda faydalıdır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,18 +1,15 @@
 ---
-title: Web kancası kullanarak mevcut sorun yönetimi sistemleri için Azure hizmet durumu bildirimlerini yapılandırma
+title: Web kancası ile Azure hizmet durumu bildirimleri gönderme
 description: Mevcut sorun yönetimi sisteminize hizmet durumu olayları hakkında kişiselleştirilmiş bildirimler gönderin.
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
-ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 8f84b43519c197797b39397cfd15c4f90444177c
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 95926185057d9fc1177b974fe76b2da18ebfc124
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854376"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551684"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Sorun yönetim sistemleri için sistem durumu bildirimlerini yapılandırmak için Web kancası kullanın
 
@@ -34,9 +31,9 @@ Ancak, kullanmayı tercih ettiğiniz bir dış bildirim sisteminiz zaten var ola
 ## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Hizmet durumu Web kancası yükünü kullanarak özel bir bildirim yapılandırma
 Kendi özel Web kancası tümleştirmenizi ayarlamak için, hizmet durumu bildirimi aracılığıyla gönderilen JSON yükünü ayrıştırmaya ihtiyacınız vardır.
 
-[](../azure-monitor/platform/activity-log-alerts-webhook.md) Örnek`ServiceHealth` bir Web kancası yüküne bakın.
+[Bir örnek](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` Web kancası yüküne bakın.
 
-' A bakarak `context.eventSource == "ServiceHealth"`bir hizmet durumu uyarısı olduğunu doğrulayabilirsiniz. Aşağıdaki özellikler en ilgili özelliklerdir:
+`context.eventSource == "ServiceHealth"`arayarak bir hizmet durumu uyarısı olduğunu doğrulayabilirsiniz. Aşağıdaki özellikler en ilgili özelliklerdir:
 - **Data. Context. activityLog. Status**
 - **Data. Context. activityLog. Level**
 - **Data. Context. activityLog. SubscriptionID**
@@ -49,7 +46,7 @@ Kendi özel Web kancası tümleştirmenizi ayarlamak için, hizmet durumu bildir
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Bir olay için hizmet durumu panosu bağlantısı oluşturma
 Özel bir URL oluşturarak masaüstü veya mobil cihazda hizmet sistem durumu panonuz için doğrudan bir bağlantı oluşturabilirsiniz. Aşağıdaki biçimde *SubscriptionID* 'Nizin *trackingıd* ve ilk üç ve son üç basamağını kullanın:
 
-https<i></i>://App.Azure.com/h/ *&lt;trackingıd&gt;* /*ilk üç ve en son üç sayı SubscriptionID&gt; &lt;*
+https<i></i>://App.Azure.com/h/ *&lt;trackingıd&gt;* /*ilk üç ve en son üç sayı olan SubscriptionID&gt;&lt;*
 
 Örneğin, *SubscriptionID* 'niz Bba14129-e895-429b-8809-278e836ecdb3 ve *TRACKINGıD* 0DET-URB Ise, hizmet durumu URL 'niz şu şekilde olur:
 
@@ -59,7 +56,7 @@ https<i></i>://App.Azure.com/h/0DET-URB/bbadb3
 En düşük ve en yüksek öneme sahip olan yükteki **Level** özelliği *bilgilendirme*, *Uyarı*, *hata*veya *kritik*olabilir.
 
 ## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Etkilenen Hizmetleri, olay kapsamını tespit etmek için ayrıştırın
-Hizmet durumu uyarıları, birden çok bölgedeki ve hizmetlerde sorunlar hakkında bilgi verebilir. Tüm ayrıntıları almak için değerini `impactedServices`ayrıştırmalıdır.
+Hizmet durumu uyarıları, birden çok bölgedeki ve hizmetlerde sorunlar hakkında bilgi verebilir. Tüm ayrıntıları almak için `impactedServices`değerini ayrıştırmalıdır.
 
 İçinde olan içerik, atlamadığınızda, düzenli olarak ayrıştırılabilecek başka bir JSON nesnesi içeren kaçış [JSON](https://json.org/) dizesidir. Örneğin:
 

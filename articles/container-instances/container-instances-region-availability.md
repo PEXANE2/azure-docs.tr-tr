@@ -2,13 +2,14 @@
 title: Bölgeye göre kaynak kullanılabilirliği
 description: Farklı Azure bölgelerindeki Azure Container Instances hizmeti için işlem ve bellek kaynaklarının kullanılabilirliği.
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445822"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Container Instances kaynak kullanılabilirliği
 
@@ -25,24 +26,23 @@ Dağıtımlarınızdaki kotalar ve diğer sınırlar hakkında daha fazla bilgi 
 
 Aşağıdaki bölgeler ve kaynaklar, Linux ve [desteklenen](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016 tabanlı kapsayıcılar ile kapsayıcı grupları için kullanılabilir.
 
-| Konum | İşletim Sistemi | CPU | Bellek (GB) |
+| Bölgeler | İşletim Sistemi | En fazla CPU | Maksimum bellek (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı ABD | Linux | 4 | 16 |
-| Batı Avrupa, Batı ABD 2 | Linux | 4 | 14 |
+| Brezilya Güney, Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, Batı Avrupa, Batı ABD, Batı ABD 2 | Linux | 4 | 16 |
 | Avustralya Doğu, Japonya Doğu | Linux | 2 | 8 |
-| Orta Kuzey ABD, Güney Hindistan | Linux | 2 | 3,5 |
-| Batı Avrupa | Windows | 4 | 16 |
+| Orta Kuzey ABD | Linux | 2 | 3,5 |
+| Brezilya Güney, Japonya Doğu, Batı Avrupa | Windows | 4 | 16 |
 | Doğu ABD, Batı ABD | Windows | 4 | 14 |
-| Avustralya Doğu, Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD 2, Japonya Doğu, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, Batı ABD 2 | Windows | 2 | 3,5 |
+| Avustralya Doğu, Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD 2, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, Batı ABD 2 | Windows | 2 | 3,5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Kullanılabilirlik-Windows Server 2019 LTSC, 1809 dağıtımları (Önizleme)
 
 Windows Server 2019 tabanlı kapsayıcılar (Önizleme) ile kapsayıcı grupları için aşağıdaki bölgeler ve kaynaklar mevcuttur.
 
-| Konum | İşletim Sistemi | CPU | Bellek (GB) |
+| Bölgeler | İşletim Sistemi | En fazla CPU | Maksimum bellek (GB) |
 | -------- | -- | :---: | :-----------: |
-| Güneydoğu Asya, Kuzey Avrupa, Batı Avrupa, Orta ABD, Doğu ABD, Batı ABD, Batı ABD 2 | Windows | 4 | 16 |
-| Doğu ABD 2 | Windows | 2 | 3,5 |
+| Avustralya Doğu, Brezilya Güney, Kanada Orta, Orta Hindistan, Orta ABD, Doğu Asya, Doğu ABD, Japonya Doğu, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Güney Hindistan, UK Güney, Batı Avrupa | Windows | 4 | 16 |
+| Doğu ABD 2, Batı ABD 2 | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Kullanılabilirlik-sanal ağ dağıtımı (Önizleme)

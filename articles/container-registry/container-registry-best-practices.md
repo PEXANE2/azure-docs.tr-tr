@@ -3,16 +3,18 @@ title: En iyi kayıt defteri uygulamalar
 description: Bu en iyi yöntemleri izleyerek Azure kapsayıcı kayıt defterinizi nasıl verimli bir şekilde kullanabileceğinizi öğrenin.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445800"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry için en iyi yöntemler
 
 Bu en iyi yöntemleri izlemek, Azure’daki özel Docker kayıt defterinizin performansını ve maliyetini en iyi duruma getirmenize yardımcı olabilir.
+
+Ayrıca bkz. kayıt defterinizde resimleri etiketlendirme ve sürüm görüntülerinin yer aldığı stratejiler için [kapsayıcı görüntülerini etiketleme ve oluşturma önerilerine](container-registry-image-tag-version.md) bakın. 
 
 ## <a name="network-close-deployment"></a>Yakın ağ dağıtımı
 
@@ -31,7 +33,7 @@ Coğrafi çoğaltma özelliğini kullanmayı öğrenmek için [Azure Container R
 
 Depo ad alanlarından yararlanarak kuruluşunuz içinde tek bir kayıt defterinin birden çok grupta paylaşılmasına imkan tanıyabilirsiniz. Kayıt defterleri farklı dağıtımlarla ve takımlarla paylaşılabilir. İç içe ad alanlarını destekleyen Azure Container Registry, grup yalıtımı imkanı sunar.
 
-Örneğin, aşağıdaki kapsayıcı görüntüsü etiketlerini göz önünde bulundurun. Kurumsal çapta kullanılan `aspnetcore` gibi görüntüler kök ad alanına yerleştirilirken, Üretim ve Pazarlama gruplarına ait her bir kapsayıcı görüntüsü kendi ad alanını kullanır.
+Örneğin, aşağıdaki kapsayıcı görüntüsü etiketlerini göz önünde bulundurun. `aspnetcore`gibi şirket genelinde kullanılan görüntüler kök ad alanına yerleştirilir, ancak ürünlere ve pazarlama gruplarına ait kapsayıcı görüntülerinin her biri kendi ad alanlarını kullanır.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0

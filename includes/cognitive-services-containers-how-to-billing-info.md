@@ -5,28 +5,28 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: a24300958c27daaaf49cc3045a5e99d77c938ab7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "67704190"
 ---
-Kapsayıcıya sorguları için kullanılan bir Azure kaynak fiyatlandırma katmanını faturalandırılır `<ApiKey>`.
+Kapsayıcıya yönelik sorgular, `<ApiKey>`için kullanılan Azure kaynağının fiyatlandırma katmanında faturalandırılır.
 
-Azure Bilişsel hizmetler kapsayıcıları, kullanım ölçümü için fatura uç noktasına bağlı olmadan çalıştırmak için lisanslı değil. Kapsayıcılar, her zaman faturalandırma bilgileri fatura uç noktası ile iletişim kurmak etkinleştirmeniz gerekir. Bilişsel hizmetler kapsayıcıları analiz ediliyor, metin ve görüntü gibi müşteri verilerini Microsoft'a gönderme. 
+Azure bilişsel hizmetler kapsayıcıları, ölçüm için faturalandırma uç noktasına bağlı kalmadan çalıştırılmak üzere lisanslanmaz. Her zaman Faturalandırma bitiş noktasıyla faturalandırma bilgilerini iletmek için kapsayıcıları etkinleştirmeniz gerekir. Bilişsel hizmetler kapsayıcıları, müşteri verilerini (örneğin, çözümlenen resim veya metin gibi) Microsoft 'a göndermez. 
 
 ### <a name="connect-to-azure"></a>Azure'a Bağlanma
 
-Kapsayıcıyı çalıştırmak için fatura bağımsız değişken değerlerini gerekir. Bu değerler, fatura uç noktaya bağlanmak kapsayıcı sağlar. Kapsayıcı yaklaşık her 10 ila 15 dakika kullanım raporları. Kapsayıcı izin verilen zaman penceresi içinde Azure'a bağlanamazsa kapsayıcı çalışmaya devam eder, ancak fatura uç noktayı geri yüklenene kadar sorgular görmese. Bağlantı 10 kez aynı zaman aralığında 10-15 dakika denenir. Bağlantı kurulamıyor fatura uç nokta 10 içinde çalışır, kapsayıcı çalışmayı durdurur. 
+Kapsayıcının çalışması için faturalandırma bağımsız değişken değerlerinin olması gerekir. Bu değerler kapsayıcının faturalandırma uç noktasına bağlanmasına izin verir. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar. Kapsayıcı, izin verilen zaman penceresinde Azure 'a bağlanmazsa, kapsayıcı çalışmaya devam eder, ancak faturalandırma uç noktası geri yüklenene kadar sorgu hizmeti vermez. Bağlantı, 10 ila 15 dakika aynı zaman aralığında 10 kez denenir. 10 deneciler içindeki faturalandırma uç noktasına bağlanamıyorsa kapsayıcı çalışmayı durduruyor. 
 
 ### <a name="billing-arguments"></a>Faturalandırma bağımsız değişkenleri
 
-İçin `docker run` kapsayıcı başlatmak için komut geçerli değerlerle şunlardan üçünü belirtilmesi gerekir:
+Kapsayıcıyı başlatmak için `docker run` komutu için aşağıdaki seçeneklerden üçü de geçerli değerlerle belirtilmelidir:
 
 | Seçenek | Açıklama |
 |--------|-------------|
-| `ApiKey` | Fatura bilgileri izlemek için kullanılan Bilişsel hizmetler kaynağı API anahtarı.<br/>Bu seçeneğin değeri, belirtilen sağlanan kaynak için bir API anahtarı ayarlanmalıdır `Billing`. |
-| `Billing` | Bilişsel hizmetler kaynağın faturalandırma bilgileri izlemek için kullanılan uç nokta.<br/>Bu seçeneğin değeri, sağlanan bir Azure kaynak URI'sini uç noktasına ayarlamanız gerekir.|
-| `Eula` | Kapsayıcı lisansını kabul gösterir.<br/>Bu seçenek değeri ayarlanmalıdır **kabul**. |
+| `ApiKey` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının API anahtarı.<br/>Bu seçeneğin değeri, `Billing`belirtilen sağlanan kaynak için bir API anahtarı olarak ayarlanmalıdır. |
+| `Billing` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının uç noktası.<br/>Bu seçeneğin değeri, sağlanan bir Azure kaynağının uç nokta URI 'sine ayarlanmalıdır.|
+| `Eula` | Kapsayıcının lisansını kabul ettiğinizi gösterir.<br/>Bu seçeneğin değeri **kabul**edilecek şekilde ayarlanmalıdır. |
 
 

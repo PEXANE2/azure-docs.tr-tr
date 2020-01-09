@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici 1: kredi riskini tahmin etme'
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio klasik sürümünde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin bir parçasıdır.  Çalışma alanı oluşturma, verileri yükleme ve deneme oluşturma işlemlerinin nasıl yapılacağını gösterir.
+description: Azure Machine Learning Studio (klasik) ' de kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin bir parçasıdır.  Çalışma alanı oluşturma, verileri yükleme ve deneme oluşturma işlemlerinin nasıl yapılacağını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432254"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Öğretici 1: kredi riskini tahmin etme-Azure Machine Learning Studio (klasik)
 
@@ -25,7 +25,7 @@ Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde ge
 
 Bir kişinin kredi başvurusunda verdiği bilgilere dayanarak kredi riskini tahmin etmeniz gerektiğini varsayalım.  
 
-Kredi risk değerlendirmesi karmaşık bir sorundur, ancak bu öğreticide bir bit basitleştirilmesi sağlanır. Bunu, Microsoft Azure Machine Learning Studio (klasik) kullanarak tahmine dayalı analiz çözümü oluşturma hakkında bir örnek olarak kullanacaksınız. Bu çözüm için Azure Machine Learning Studio klasik sürümünü ve bir Machine Learning Web hizmetini kullanacaksınız.  
+Kredi risk değerlendirmesi karmaşık bir sorundur, ancak bu öğreticide bir bit basitleştirilmesi sağlanır. Bunu, Microsoft Azure Machine Learning Studio (klasik) kullanarak tahmine dayalı analiz çözümü oluşturma hakkında bir örnek olarak kullanacaksınız. Bu çözüm için Azure Machine Learning Studio (klasik) ve bir Machine Learning Web hizmeti kullanacaksınız.  
 
 Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski verileriyle karşılaşırsınız.  Daha sonra tahmine dayalı bir model geliştirip eğirsiniz.  Son olarak, modeli bir Web hizmeti olarak dağıtırsınız.
 
@@ -38,7 +38,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 Daha sonra bu denemeyi, 2. [bölüm içindeki modelleri eğmek](tutorial-part2-credit-risk-train.md) ve sonra [3. bölüm içinde dağıtmak](tutorial-part3-credit-risk-deploy.md)için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, Machine Learning Studio (klasik) en az bir kez daha önce kullandığınızı ve makine öğrenimi kavramlarını kavradığınızı varsaymaktadır. Bununla birlikte, bir uzman olduğunuz da varsayılmaz.
 
@@ -56,14 +56,14 @@ Machine Learning Studio (klasik) kullanmak için bir Microsoft Azure Machine Lea
 
 Bir çalışma alanı oluşturmak için, bkz. [Azure Machine Learning Studio (klasik) çalışma alanı oluşturma ve paylaşma](create-workspace.md).
 
-Çalışma alanınız oluşturulduktan sonra Machine Learning Studio açın (klasik) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Birden fazla çalışma alanınız varsa, pencerenin sağ üst köşesindeki araç çubuğundan çalışma alanını seçebilirsiniz.
+Çalışma alanınız oluşturulduktan sonra Machine Learning Studio açın (klasik) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Birden fazla çalışma alanı varsa, araç penceresinin sağ üst köşesindeki çalışma alanını seçebilirsiniz.
 
 ![Studio 'da çalışma alanı seçme (klasik)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Çalışma alanının sahibiyseniz, diğer kişileri çalışma alanına davet ederek üzerinde çalışmakta olduğunuz denemeleri paylaşabilirsiniz. Bunu, **Ayarlar** sayfasında Machine Learning Studio (klasik) olarak yapabilirsiniz. Her Kullanıcı için yalnızca Microsoft hesabı veya kuruluş hesabına ihtiyacınız vardır.
+> Çalışma alanının sahibiyseniz, diğer kişileri çalışma alanına davet ederek üzerinde çalışmakta olduğunuz denemeleri paylaşabilirsiniz. Bunu, **Ayarlar** sayfasında Machine Learning Studio (klasik) olarak yapabilirsiniz. Microsoft hesabı veya kuruluş hesabı her bir kullanıcı için yeterlidir.
 > 
-> **Ayarlar** sayfasında, **Kullanıcılar**' a ve ardından pencerenin alt kısmındaki **daha fazla kullanıcı davet et** ' e tıklayın.
+> Üzerinde **ayarları** sayfasında **kullanıcılar**, ardından **daha fazla kullanıcı davet** pencerenin alt kısmındaki.
 > 
 
 ## <a name="upload"></a>Mevcut verileri karşıya yükle
@@ -95,7 +95,7 @@ Daha sonra, model aslında yüksek riskli olmaları durumunda birini düşük kr
 
 ### <a name="convert-the-dataset-format"></a>Veri kümesi biçimini Dönüştür
 
-Özgün veri kümesi boş olarak ayrılmış bir biçim kullanır. Machine Learning Studio klasik sürümü, virgülle ayrılmış değer (CSV) dosyası ile daha iyi çalışarak, boşlukları virgülle değiştirerek veri kümesini dönüştürürsünüz.  
+Özgün veri kümesi boş olarak ayrılmış bir biçim kullanır. Machine Learning Studio (klasik), virgülle ayrılmış değer (CSV) dosyası ile daha iyi çalışarak, boşlukları virgülle değiştirerek veri kümesini dönüştürürsünüz.  
 
 Bu verileri dönüştürmenin birçok yolu vardır. Tek yönlü, aşağıdaki Windows PowerShell komutunu kullanmaktır:   
 
@@ -109,7 +109,7 @@ Her iki durumda da, denemenize kullanabileceğiniz **Almanca. csv** adlı bir do
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Veri kümesini Machine Learning Studio karşıya yükleme (klasik)
 
-Veriler CSV biçimine dönüştürüldükten sonra, Machine Learning Studio klasik sürümüne yüklemeniz gerekir. 
+Veriler CSV biçimine dönüştürüldükten sonra Machine Learning Studio (klasik) uygulamasına yüklemeniz gerekir. 
 
 1. Machine Learning Studio (klasik) giriş sayfasını açın ([https://studio.azureml.net](https://studio.azureml.net)). 
 
@@ -139,13 +139,13 @@ Bu, verileri bir deneme içinde kullanabileceğiniz bir veri kümesi modülüne 
 
 Studio (klasik) penceresinin solundaki **veri kümeleri** sekmesine tıklayarak, Studio 'ya (klasik) yüklediğiniz veri kümelerini yönetebilirsiniz.
 
-![Veri Kümelerini Yönet](./media/tutorial-part1-credit-risk/dataset-list.png)
+![Veri kümelerini yönet](./media/tutorial-part1-credit-risk/dataset-list.png)
 
 Diğer veri türlerini bir denemeye aktarma hakkında daha fazla bilgi için bkz. [eğitim verilerinizi Azure Machine Learning Studio Içeri aktarma (klasik)](import-data.md).
 
 ## <a name="create-an-experiment"></a>Deneme oluşturma
 
-Bu öğreticideki bir sonraki adım, yüklediğiniz veri kümesini kullanan Machine Learning Studio klasik sürümünde bir deneme oluşturmaktır.  
+Bu öğreticideki bir sonraki adım, karşıya yüklediğiniz veri kümesini kullanan Machine Learning Studio (klasik) ' de bir deneme oluşturmaktır.  
 
 1. Studio 'da (klasik) pencerenin alt kısmındaki **+ Yeni** ' ye tıklayın.
 1. **Denemeler**' i seçin ve ardından "boş deneme" ' ı seçin. 
@@ -173,7 +173,7 @@ Bu öğreticideki bir sonraki adım, yüklediğiniz veri kümesini kullanan Mach
 
 Verilerin ilk 100 satırını ve tüm veri kümesi için bazı istatistiksel bilgileri görüntüleyebilirsiniz: veri kümesinin çıkış bağlantı noktasına (alt kısımdaki küçük daire) tıklayın ve **Görselleştir**' i seçin.  
 
-Veri dosyası sütun başlıkları ile gelmediğinden, Studio 'nun klasik sürümü genel başlıklar (Sütun1, Col2, *vb.* ) sağlamıştır. İyi başlıklar bir model oluşturmak için gerekli değildir, ancak deneme sürümündeki verilerle çalışmayı kolaylaştırır. Ayrıca, bu modeli bir Web hizmetinde sonunda yayımladığınızda, başlıklar hizmetin kullanıcısına ait sütunları belirlemesine yardımcı olur.  
+Veri dosyası sütun başlıkları ile gelmediği için, Studio (klasik) genel başlıklar sağladı (Sütun1, Col2, *vb.* ). İyi başlıklar bir model oluşturmak için gerekli değildir, ancak deneme sürümündeki verilerle çalışmayı kolaylaştırır. Ayrıca, bu modeli bir Web hizmetinde sonunda yayımladığınızda, başlıklar hizmetin kullanıcısına ait sütunları belirlemesine yardımcı olur.  
 
 [Meta veri düzenleme][edit-metadata] modülünü kullanarak sütun başlıkları ekleyebilirsiniz.
 
@@ -191,7 +191,7 @@ Bir veri kümesiyle ilişkili meta verileri değiştirmek için [meta verileri D
 
     ![Düzenleme meta verileri ekleme](./media/tutorial-part1-credit-risk/experiment-with-edit-metadata-module.png)
 
-    Kırmızı ünlem işareti, Bu modülün özelliklerini henüz belirlemediğiniz anlamına gelir. Bunu bir sonraki adımda yapacaksınız.
+    Kırmızı ünlem işareti, Bu modülün özelliklerini henüz belirlemediğiniz anlamına gelir. Bundan sonra o işlemi yapacaksınız.
 
     > [!TIP]
     > Modüle çift tıklayıp metin girerek bir modüle yorum ekleyebilirsiniz. Bu, modülün denemenizde ne işe yaradığını bir bakışta görmenize yardımcı olabilir. Bu durumda, [meta verileri Düzenle][edit-metadata] modülüne çift tıklayın ve "sütun başlıkları ekle" açıklamasını yazın. Metin kutusunu kapatmak için tuvalde başka bir yere tıklayın. Yorumu göstermek için modüldeki aşağı oka tıklayın.

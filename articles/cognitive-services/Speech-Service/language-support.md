@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381061"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve bölge desteği
 
@@ -28,45 +28,45 @@ Hem Microsoft konuşma SDK 'Sı hem de REST API aşağıdaki dilleri (yerel ayar
 
  Yerel ayar | Dil | Desteklenen | Özelleştirilebilir
 ------|------------|-----------|-------------
-`ar-EG` | Arapça (Mısır) modern standart | Yes | Yes
-`ar-SA` | Arapça (Suudi Arabistan) | Yes | Yes
-`ar-AE` | Arapça (UAE) | Yes | Yes
-`ar-KW` | Arapça (Kuveyt) | Yes | Yes
-`ar-QA` | Arapça (Qtor) | Yes | Yes
-`ca-ES` | Katalanca | Yes | Hayır
-`da-DK` | Danca (Danimarka) | Yes | Hayır
-`de-DE` | Almanca (Almanya) | Yes | Yes
-`en-AU` | İngilizce (Avustralya) | Yes | Yes
-`en-CA` | İngilizce (Kanada) | Yes | Yes
-`en-GB` | İngilizce (Birleşik Krallık) | Yes | Yes
-`en-IN` | English (India) | Yes | Yes
-`en-NZ` | İngilizce (Yeni Zelanda) | Yes | Yes
-`en-US` | İngilizce (ABD) | Yes | Yes
-`es-ES` | İspanyolca (İspanya) | Yes | Yes
-`es-MX` | İspanyolca (Meksika) | Yes | Yes
-`fi-FI` | Fince (Finlandiya) | Yes | Hayır
-`fr-CA` | Fransızca (Kanada) | Yes | Yes
-`fr-FR` | Fransızca (Fransa) | Yes | Yes
-`gu-IN` | Gucerat dili (Hindistan) | Yes | Yes
-`hi-IN` | Hintçe (Hindistan) | Yes | Yes
-`it-IT` | İtalyanca (İtalya) | Yes | Yes
-`ja-JP` | Japonca (Japonya) | Yes | Yes
-`ko-KR` | Korece (Güney Kore) | Yes | Yes
-`mr-IN` | Marathi dili (Hindistan) | Yes | Yes
-`nb-NO` | Norveççe (Bokmal) (Norveç) | Yes | Hayır
-`nl-NL` | Hollanda dili (Hollanda) | Yes | Yes
-`pl-PL` | Lehçe (Polonya) | Yes | Hayır
-`pt-BR` | Portekizce (Brezilya) | Yes | Yes
-`pt-PT` | Portekizce (Portekiz) | Yes | Yes
-`ru-RU` | Rusça (Rusya) | Yes | Yes
-`sv-SE` | İsveççe (İsveç) | Yes | Hayır
-`ta-IN` | Tamilce (Hindistan) | Yes | Yes
-`te-IN` | Telugu dili (Hindistan) | Yes | Yes
-`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Yes | Yes
-`zh-HK` | Çince (Cantoneo, geleneksel) | Yes | Yes
-`zh-TW` | Çince (Tayvan Mandarin) | Yes | Yes
-`th-TH` | Tayca (Tayland) | Yes | Hayır
-`tr-TR` | Türkiye | Yes | Yes
+`ar-EG` | Arapça (Mısır) modern standart | Evet | Evet
+`ar-SA` | Arapça (Suudi Arabistan) | Evet | Evet
+`ar-AE` | Arapça (UAE) | Evet | Evet
+`ar-KW` | Arapça (Kuveyt) | Evet | Evet
+`ar-QA` | Arapça (Qtor) | Evet | Evet
+`ca-ES` | Katalanca | Evet | Hayır
+`da-DK` | Danca (Danimarka) | Evet | Hayır
+`de-DE` | Almanca (Almanya) | Evet | Evet
+`en-AU` | İngilizce (Avustralya) | Evet | Evet
+`en-CA` | İngilizce (Kanada) | Evet | Evet
+`en-GB` | İngilizce (Birleşik Krallık) | Evet | Evet
+`en-IN` | English (India) | Evet | Evet
+`en-NZ` | İngilizce (Yeni Zelanda) | Evet | Evet
+`en-US` | İngilizce (ABD) | Evet | Evet
+`es-ES` | İspanyolca (İspanya) | Evet | Evet
+`es-MX` | İspanyolca (Meksika) | Evet | Evet
+`fi-FI` | Fince (Finlandiya) | Evet | Hayır
+`fr-CA` | Fransızca (Kanada) | Evet | Evet
+`fr-FR` | Fransızca (Fransa) | Evet | Evet
+`gu-IN` | Gucerat dili (Hindistan) | Evet | Evet
+`hi-IN` | Hintçe (Hindistan) | Evet | Evet
+`it-IT` | İtalyanca (İtalya) | Evet | Evet
+`ja-JP` | Japonca (Japonya) | Evet | Evet
+`ko-KR` | Korece (Güney Kore) | Evet | Evet
+`mr-IN` | Marathi dili (Hindistan) | Evet | Evet
+`nb-NO` | Norveççe (Bokmal) (Norveç) | Evet | Hayır
+`nl-NL` | Hollanda dili (Hollanda) | Evet | Evet
+`pl-PL` | Lehçe (Polonya) | Evet | Hayır
+`pt-BR` | Portekizce (Brezilya) | Evet | Evet
+`pt-PT` | Portekizce (Portekiz) | Evet | Evet
+`ru-RU` | Rusça (Rusya) | Evet | Evet
+`sv-SE` | İsveççe (İsveç) | Evet | Hayır
+`ta-IN` | Tamilce (Hindistan) | Evet | Evet
+`te-IN` | Telugu dili (Hindistan) | Evet | Evet
+`zh-CN` | Çince (Basitleştirilmiş Mandarin) | Evet | Evet
+`zh-HK` | Çince (Cantoneo, geleneksel) | Evet | Evet
+`zh-TW` | Çince (Tayvan Mandarin) | Evet | Evet
+`th-TH` | Tayca (Tayland) | Evet | Hayır
+`tr-TR` | Türkiye | Evet | Evet
 
 ## <a name="text-to-speech"></a>Metin okuma
 
@@ -81,7 +81,7 @@ Sinir metin okuma, derin sinir ağlarla desteklenen yeni bir konuşma türü tü
 
 Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, sinir seslerde kullanıcılar AI sistemleriyle etkileşim kurarken büyük ölçüde dinleme performansını önemli ölçüde azaltır.
 
-Sinir seslerine ve bölgesel kullanılabilirliğe ait tam bir liste için bkz. [bölgeler](regions.md#standard-and-neural-voices).
+Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
 Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
 --------|----------|--------|---------|------------
@@ -90,6 +90,8 @@ Yerel ayar | Dil | Cinsiyet | Tam hizmet adı eşleme | Kısa ses adı
 `en-US` | English (US) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (en-US, JessaNeural)" | "en-US-JessaNeural"
 `it-IT` | İtalyanca (İtalya) | Kadın |"Microsoft Server konuşma Metin Okuma sesi (It-IT, ElsaNeural)" | "It-IT-ElsaNeural"
 `zh-CN` | Çince (ana kara) | Kadın | "Microsoft Server konuşma Metin Okuma sesi (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
+
+Sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğrenmek için bkz. [konuşma sen, biçimlendirme dili](speech-synthesis-markup.md#adjust-speaking-styles).
 
 > [!NOTE]
 > Konuşma senssıs isteklerinizin tam hizmet adı eşlemesini veya kısa ses adını kullanabilirsiniz.

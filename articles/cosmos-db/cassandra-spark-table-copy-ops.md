@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API'SİNİN spark'tan Tablo kopyalama işlemleri.
-description: Bu makalede, Azure Cosmos DB Cassandra API'SİNİN içindeki tablolar arasında veri kopyalama işlemi açıklanmaktadır
+title: Spark Azure Cosmos DB Cassandra API üzerinde tablo kopyalama işlemleri
+description: Bu makalede Azure Cosmos DB Cassandra API tablolar arasında veri kopyalama ayrıntıları
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60895190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445623"
 ---
-# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Azure Cosmos DB Cassandra API'SİNİN spark'tan Tablo kopyalama işlemleri
+# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Spark Azure Cosmos DB Cassandra API üzerinde tablo kopyalama işlemleri
 
-Bu makalede, Azure Cosmos DB Cassandra API'SİNİN spark'tan içindeki tablolar arasında verilerin nasıl kopyalanacağını açıklar. Bu makalede açıklanan komutları, Azure Cosmos DB Cassandra API'SİNİN tablolara Apache Cassandra tablolarından veri kopyalamak için de kullanılabilir.
+Bu makalede, Spark 'tan Azure Cosmos DB Cassandra API tablolar arasında verilerin nasıl kopyalanacağı açıklanır. Bu makalede açıklanan komutlar Ayrıca Apache Cassandra tablolarından Azure Cosmos DB Cassandra API tablolarına veri kopyalamak için de kullanılabilir.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API configuration
 
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="insert-sample-data"></a>Örnek verileri Ekle 
+## <a name="insert-sample-data"></a>Örnek veri Ekle 
 ```scala
 val booksDF = Seq(
    ("b00001", "Arthur Conan Doyle", "A study in scarlet", 1887,11.33),
@@ -65,7 +65,7 @@ booksDF.write
 
 ## <a name="copy-data-between-tables"></a>Tablolar arasında veri kopyalama
 
-### <a name="copy-data-between-tables-destination-table-exists"></a>Tablolar (hedef tablosunun varolduğunu) arasında veri kopyalama
+### <a name="copy-data-between-tables-destination-table-exists"></a>Tablolar arasında veri kopyalama (hedef tablo var)
 
 ```scala
 //1) Create destination table
@@ -93,7 +93,7 @@ sqlContext
   .show
 ```
 
-### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Tablolar (hedef tablo yok) arasında veri kopyalama
+### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Tablolar arasında veri kopyalama (hedef tablo yok)
 
 ```scala
 import com.datastax.spark.connector._

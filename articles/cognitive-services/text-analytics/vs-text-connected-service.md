@@ -1,21 +1,21 @@
 ---
 title: "Öğretici: Visual Studio 'da bağlı hizmetlerle Metin Analizi hizmetine bağlanma"
 titleSuffix: Azure Cognitive Services
-description: Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Studio Bağlı Hizmet özelliğinin kullanımına ilişkin ayrıntılar sağlanmaktadır.
+description: Metin Analizi hizmeti için Visual Studio bağlı hizmeti özelliğini nasıl kullanacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 317a5f4ae642dc2306ae84c42a042206b9059ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446150"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Öğretici: Visual Studio 'da bağlı hizmetlerle Metin Analizi hizmetine bağlanma
 
@@ -69,7 +69,7 @@ Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Stu
  
 ## <a name="use-the-text-analytics-service-to-detect-the-language-for-a-text-sample"></a>Metin örneğinin dilini algılamak için Metin Analizi Hizmeti’ni kullanın.
 
-1. Startup.cs’de deyimleri kullanarak aşağıdakileri ekleyin.
+1. Startup.cs’de deyimleri kullanarak aşağıdakileri ekleyin:
  
    ```csharp
    using System.IO;
@@ -193,7 +193,7 @@ Bu makalede ve beraberindeki makalelerde, Metin Analizi Hizmeti için Visual Stu
     }
     ```
 
-1. Çözümlenmiş metni, belirlenen dili ve analizdeki güvenirlik düzeyini temsil eden puanı göstermek için bir Görünüm ekleyin. Bunu yapmak için **Görünümler** klasörüne sağ tıklayın, **Ekle**’yi ve sonra **Görüntüle**’yi seçin. Görüntülenen iletişim kutusunda _TextAnalyzeResult_ adını sağlayın, _Görünümler_ klasörüne **TextAnalyzeResult.cshtml** adlı yeni bir dosya eklemek için varsayılanları kabul edin ve buna aşağıdaki içerikleri kopyalayın:
+1. Çözümlenmiş metni, belirlenen dili ve analizdeki güvenirlik düzeyini temsil eden puanı göstermek için bir Görünüm ekleyin. Bunu yapmak için **Görünümler** klasörüne sağ tıklayın, **Ekle**’yi ve sonra **Görüntüle**’yi seçin. Görüntülenen iletişim kutusunda _TextAnalyzeResult_ adını sağlayın, **Görünümler** klasörüne _TextAnalyzeResult.cshtml_ adlı yeni bir dosya eklemek için varsayılanları kabul edin ve buna aşağıdaki içerikleri kopyalayın:
     
     ```cshtml
     @using System

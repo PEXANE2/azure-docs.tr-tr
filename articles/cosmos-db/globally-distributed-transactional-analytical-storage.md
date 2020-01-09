@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos kapsayıcıları için küresel olarak dağıtılmış işlem ve analitik depolama
+title: Azure Cosmos kapsayıcıları için küresel olarak dağıtılmış işlem ve analitik (özel önizlemede) depolama
 description: Azure Cosmos kapsayıcıları için işlem ve analitik depolama ve yapılandırma seçenekleri hakkında bilgi edinin.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445398"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos kapsayıcıları için küresel olarak dağıtılmış işlem ve analitik depolama
 
-Azure Cosmos kapsayıcısı, iki depolama altyapısı tarafından dahili olarak, işlemsel depolama altyapısı ve güncelleştirilebilir analitik depolama altyapısı tarafından desteklenir. Her iki depolama altyapısı da daha hızlı güncelleştirmeler için günlük yapılandırılmış ve yazma için iyileştirilmiştir. Ancak, bunların her biri farklı kodlanır:
+Azure Cosmos kapsayıcısı, iki depolama altyapısı tarafından dahili olarak desteklenir-işlem depolama altyapısı ve güncelleştirilebilir analitik depolama altyapısı (özel önizlemede). Her iki depolama altyapısı da daha hızlı güncelleştirmeler için günlük yapılandırılmış ve yazma için iyileştirilmiştir. Ancak, bunların her biri farklı kodlanır:
 
 * **İşlemsel depolama altyapısı** – hızlı işlem okuma ve sorguları için satır odaklı biçimde kodlanır.
 
@@ -29,8 +29,8 @@ Azure Cosmos kapsayıcısı, iki depolama altyapısı tarafından dahili olarak,
 
 |Özellik  |İşlem depolama alanı  |Analitik depolama |
 |---------|---------|---------|
-|Azure Cosmos kapsayıcısı başına en fazla depolama alanı |   Sınırsız      |    Sınırsız     |
-|Mantıksal bölüm anahtarı başına en fazla depolama alanı   |   10 GB      |   Sınırsız      |
+|Azure Cosmos kapsayıcısı başına en fazla depolama alanı |   İş çalışma zamanında      |    İş çalışma zamanında     |
+|Mantıksal bölüm anahtarı başına en fazla depolama alanı   |   10 GB      |   İş çalışma zamanında      |
 |Depolama kodlaması  |   Satır odaklı, iç biçim kullanılarak.   |   Apache Parquet biçimi kullanılarak sütun odaklı. |
 |Depolama konumu |   Yerel/küme içi SSD 'Ler tarafından desteklenen çoğaltılmış depolama. |  Yüksek maliyetli uzak/kapalı küme SSD 'Ler tarafından desteklenen çoğaltılmış depolama.       |
 |Dayanıklılık  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

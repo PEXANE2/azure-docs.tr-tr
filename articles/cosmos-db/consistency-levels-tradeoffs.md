@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları
+title: Tutarlılık, kullanılabilirlik ve performans avantajları Azure Cosmos DB
 description: Azure Cosmos DB çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları.
 author: markjbrown
 ms.author: mjbrown
@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445557"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Tutarlılık, kullanılabilirlik ve performans dengeleri 
 
-Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmaya dayanan dağıtılmış veritabanları, bir denge sağlamalıdır. Bu denge, okuma tutarlılığı ile kullanılabilirlik, gecikme süresi ve aktarım hızı arasındadır.
+Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğaltmayı temel alan dağıtılan veritabanlarında bazı avantajlar arasında seçim yapılması gerekir. Bu seçim okuma tutarlılığı ve kullanılabilirlik, gecikme süresi ve aktarım hızı arasındadır.
 
 Azure Cosmos DB, veri tutarlılığını bir seçenek yelpazesi olarak yaklaşır. Bu yaklaşım, güçlü ve nihai tutarlılık için iki aşırı uç daha fazla seçenek içerir. Tutarlılık yelpazesi üzerinde beş iyi tanımlanmış model arasından seçim yapabilirsiniz. En güçlü ve en zayıf, modeller şunlardır:
 
-- *Lemenize*
-- *Sınırlanmış Eskime durumu*
-- *Oturumuna*
+- *Tanımlayıcı*
+- *Sınırlanmış eskime durumu*
+- *Oturumu*
 - *Tutarlı ön ek*
-- *Son*
+- *Nihai*
 
 Her model kullanılabilirlik ve performans avantajları sağlar ve kapsamlı SLA 'Lar tarafından desteklenir.
 
@@ -53,11 +53,11 @@ Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık mo
 |**Bölge (ler)**|**Çoğaltma modu**|**Tutarlılık düzeyi**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Tek veya birden çok yönetici|Herhangi bir tutarlılık düzeyi|< 240 dakika|< 1 hafta|
-|> 1|Tek yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
-|> 1|Tek yönetici|Sınırlanmış Eskime Durumu|*K* & *t*|< 15 dakika|
-|> 1|Tek yönetici|Strong|0|< 15 dakika|
-|> 1|Çoklu yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
-|> 1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K* & *t*|0|
+|>1|Tek yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
+|>1|Tek yönetici|Sınırlanmış Eskime Durumu|*K* & *t*|< 15 dakika|
+|>1|Tek yönetici|Strong|0|< 15 dakika|
+|>1|Çoklu yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
+|>1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K* & *t*|0|
 
 *K* = bir öğenin *"K"* sürümlerinin (yani Updates) sayısı.
 

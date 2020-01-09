@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure FXT Edge Filer küme yapılandırması-düğüm ekleme
+title: 'Öğretici: Azure FXT Edge Filer kümesine düğüm ekleme'
 description: Azure FXT Edge Filer depolama önbelleğine düğüm ekleme
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254934"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551956"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>Öğretici: küme düğümleri ekleme 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Öğretici: Azure FXT Edge Filer kümesine küme düğümleri ekleme
 
 Yeni bir Azure FXT Edge Filer kümesi yalnızca bir düğüm ile oluşturulur. Diğer yapılandırmayı yapmadan önce en az iki düğüm eklemeli ve yüksek kullanılabilirliği etkinleştirmelisiniz. 
 
@@ -68,7 +68,7 @@ Düğüm adı, IP adresi, yazılım sürümü ve uygunluk durumu listede görün
 
 Bir kümedeki tüm düğümlerin işletim sistemi aynı sürümünü kullanması gerekir, ancak bir düğüm eklemeden önce yazılımı güncelleştirmeniz gerekmez. **Birleşime Izin ver** düğmesine tıkladıktan sonra küme JOIN işlemi, kümedeki sürümle eşleşen işletim sistemi yazılımını otomatik olarak denetler ve kurar.
 
-Bu sayfadaki seçenekler hakkında daha fazla bilgi edinmek için küme yapılandırma kılavuzunda [ **küme** > **FXT düğümlerini** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) okuyun.
+Bu sayfadaki seçenekler hakkında daha fazla bilgi edinmek için küme yapılandırma kılavuzundaki [ **cluster** > **FXT düğümlerini** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) okuyun.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. "katılmasına Izin ver" düğmesine tıklayın 
 

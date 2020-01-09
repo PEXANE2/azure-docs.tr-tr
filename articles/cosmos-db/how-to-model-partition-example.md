@@ -1,17 +1,17 @@
 ---
-title: Gerçek dünyada bir örnek kullanarak Azure Cosmos DB verileri modelleme ve bölümleme
+title: Gerçek dünyada bir örnekle Azure Cosmos DB verileri modelleme ve bölümleme
 description: Azure Cosmos DB Core API 'sini kullanarak gerçek dünyada bir örnek modelleyip bölümleyeceğinizi öğrenin
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445386"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyada bir örnek kullanarak Azure Cosmos DB verileri modelleme ve bölümleme
 
@@ -21,7 +21,7 @@ Genellikle ilişkisel veritabanları ile çalışıyorsanız, büyük olasılık
 
 ## <a name="the-scenario"></a>Senaryo
 
-Bu alıştırmada, *kullanıcıların* *gönderi*oluşturbilecekleri bir blog platformunun etki alanını göz önünde bulunduracağız. Kullanıcılar ayrıca bu gönderilere yorum ekleyebilir ve bu postalara *yorum* ekleyebilir.
+Bu alıştırmada, *kullanıcıların* *gönderi*oluşturbilecekleri bir blog platformunun etki alanını göz önünde bulunduracağız. Kullanıcılar *Ayrıca bu* gönderilere yorum ekleyebilir ve bu postalara *yorum* ekleyebilir.
 
 > [!TIP]
 > Bazı kelimeleri *italik*olarak vurgulıyoruz; Bu sözcükler, modelimizin ' i işlemek zorunda olacağı "şeyleri" türünü belirler.
@@ -38,7 +38,7 @@ Belirtimize daha fazla gereksinim ekleniyor:
 
 Başlamak için çözümünüzün erişim desenlerini tanımlayarak ilk belirtimize bazı yapılara izin veririz. Azure Cosmos DB için bir veri modeli tasarlarken, modelin bu istekleri verimli bir şekilde sunacağına emin olmak için modelinizin hangi isteklerin sunacağına anlaşılması önemlidir.
 
-Genel işlemi daha kolay hale getirmek için, bu farklı istekleri komut veya sorgu olarak sınıflandırıyoruz. [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) 'den bazı sözlük, komutların yazma istekleri (yani, sistemi güncelleştirme amaçları) ve sorgular salt okunurdur. istekleri.
+Genel işlemi daha kolay hale getirmek için, bu farklı istekleri komut veya sorgu olarak sınıflandırıyoruz. Bu, [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) 'den bazı sözlük (örneğin, sistemi güncelleştirme amaçları) ve sorguları salt okuma isteklerdir.
 
 Platformumuzu göstermek için gereken isteklerin listesi aşağıda verilmiştir:
 
@@ -57,7 +57,7 @@ Bu aşamada, her varlığın (Kullanıcı, gönderi vs.) içereceği ayrıntıla
 
 Başlangıçtan itibaren erişim modellerimizi belirlemek için önemli olmasının önemi, çünkü bu istek listesi test paketimize gidiyor. Veri modelimizi her tekrarlıyoruz, her bir isteği ele alacak ve performansını ve ölçeklenebilirliğini denetlemeye devam edeceğiz.
 
-## <a name="v1-a-first-version"></a>V1 İlk sürüm
+## <a name="v1-a-first-version"></a>V1: ilk sürüm
 
 İki kapsayıcıyla başlıyoruz: `users` ve `posts`.
 
@@ -70,7 +70,7 @@ Bu kapsayıcı yalnızca Kullanıcı öğelerini depolar:
       "username": "<username>"
     }
 
-Bu kapsayıcıyı tarafından `id`bölümliyoruz, yani bu kapsayıcı içindeki her mantıksal bölüm yalnızca bir öğe içerecekse.
+Bu kapsayıcıyı `id`göre bölümliyoruz, yani bu kapsayıcı içindeki her mantıksal bölüm yalnızca bir öğe içermeyecektir.
 
 ### <a name="posts-container"></a>Gönderi kapsayıcısı
 
@@ -103,9 +103,9 @@ Bu kapsayıcı gönderi, yorum ve beğeni barındırır:
       "creationDate": "<like-creation-date>"
     }
 
-Bu kapsayıcıyı tarafından `postId`bölümliyoruz, yani bu kapsayıcı içindeki her mantıksal bölüm bir gönderi, bu gönderiyle ilgili tüm yorumlar ve bu gönderiyle ilgili tüm beğeni içerir.
+Bu kapsayıcıyı `postId`göre bölümliyoruz. Bu, söz konusu kapsayıcıdaki her mantıksal bölümün bir gönderi, bu gönderiyle ilgili tüm yorumlar ve söz konusu gönderiyle ilgili tüm beğeni içermesi anlamına gelir.
 
-Bu kapsayıcının barındırdığı üç varlık türü `type` arasında ayrım yapmak için bu kapsayıcıda depolanan öğelerde bir özellik sunduğumuz unutulmamalıdır.
+Bu kapsayıcının barındırdığı üç varlık türü arasında ayrım yapmak için bu kapsayıcıda depolanan öğelerde bir `type` özelliği sunduğumuz unutulmamalıdır.
 
 Ayrıca, eklemek yerine ilgili verilere başvurmayı seçtik (bu kavramlarla ilgili ayrıntılar için [Bu bölüme](modeling-data.md) bakın):
 
@@ -120,17 +120,17 @@ Ayrıca, eklemek yerine ilgili verilere başvurmayı seçtik (bu kavramlarla ilg
 
 ### <a name="c1-createedit-a-user"></a>= Kullanıcı Oluştur/Düzenle
 
-Yalnızca `users` kapsayıcıda bir öğe oluştururken veya güncelleştirtiğimiz için bu istek basittir. İstekler `id` bölüm anahtarına teşekkür ederiz.
+Bu istek yalnızca `users` kapsayıcısında bir öğe oluştururken veya güncelleştirtiğimiz için basittir. İstekler `id` bölüm anahtarına teşekkür ederiz.
 
 ![Kullanıcılar kapsayıcısına tek bir öğe yazma](./media/how-to-model-partition-example/V1-C1.png)
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
-| 7 MS | 5,71 RU | ✅ |
+| 7 ms | 5,71 RU | ✅ |
 
 ### <a name="q1-retrieve-a-user"></a>Q1 Kullanıcı alma
 
-Kullanıcının alınması, `users` kapsayıcıdan karşılık gelen öğe okunarak yapılır.
+Bir kullanıcının alınması, `users` kapsayıcısından ilgili öğe okunarak yapılır.
 
 ![Kullanıcılar kapsayıcısından tek bir öğe alma](./media/how-to-model-partition-example/V1-Q1.png)
 
@@ -140,17 +140,17 @@ Kullanıcının alınması, `users` kapsayıcıdan karşılık gelen öğe okuna
 
 ### <a name="c2-createedit-a-post"></a>Geç Gönderi Oluştur/Düzenle
 
-**[C1]** benzer şekilde, `posts` kapsayıcıya yazmanız yeterlidir.
+**[C1]** benzer şekilde, `posts` kapsayıcısına yazmanız yeterlidir.
 
 ![Gönderi kapsayıcısına tek bir öğe yazma](./media/how-to-model-partition-example/V1-C2.png)
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
-| 9 MS | 8,76 RU | ✅ |
+| 9 ms | 8,76 RU | ✅ |
 
 ### <a name="q2-retrieve-a-post"></a>Üç Gönderi alma
 
-İlgili belgeyi `posts` kapsayıcıdan alarak başlayacağız. Bu, belirtimizin uyarınca, bu kadar çok sayıda yorum ve bu gönderideki kaç tane beğeneni (3 ek SQL sorgusunun verilmek üzere) toplamamız gerekir.
+`posts` kapsayıcısından ilgili belgeyi alarak başladık. Bu, belirtimizin uyarınca, bu kadar çok sayıda yorum ve bu gönderideki kaç tane beğeneni (3 ek SQL sorgusunun verilmek üzere) toplamamız gerekir.
 
 ![Gönderi alma ve ek veri toplama](./media/how-to-model-partition-example/V1-Q2.png)
 
@@ -158,7 +158,7 @@ Ek sorguların her biri, ilgili kapsayıcısının bölüm anahtarında filtrele
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
-| 9 MS | 19,54 RU | ⚠ |
+| 9 ms | 19,54 RU | ⚠ |
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>S3 Kullanıcı Gönderilerini kısa biçimde listeleme
 
@@ -169,7 +169,7 @@ Ek sorguların her biri, ilgili kapsayıcısının bölüm anahtarında filtrele
 Bu uygulama birçok sakıncalar sunar:
 
 - ilk sorgu tarafından döndürülen her bir gönderi için açıklama ve beğeni toplanan sorguların verilmesi gerekir,
-- ana sorgu `posts` kapsayıcının bölüm anahtarını filtrelemez, bir fanı ve kapsayıcı genelinde bir bölüm taraması yapar.
+- ana sorgu, `posts` kapsayıcısının bölüm anahtarını üzerinde filtrelemez, bu, bir fanı ve kapsayıcı genelinde bir bölüm taramasıyla başa çıkar.
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -177,13 +177,13 @@ Bu uygulama birçok sakıncalar sunar:
 
 ### <a name="c3-create-a-comment"></a>C3 Açıklama oluşturma
 
-`posts` Kapsayıcıda karşılık gelen öğe yazılarak bir açıklama oluşturulur.
+`posts` kapsayıcısına karşılık gelen öğe yazılarak bir açıklama oluşturulur.
 
 ![Gönderi kapsayıcısına tek bir öğe yazma](./media/how-to-model-partition-example/V1-C2.png)
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
-| 7 MS | 8,57 RU | ✅ |
+| 7 ms | 8,57 RU | ✅ |
 
 ### <a name="q4-list-a-posts-comments"></a>Ç Bir postanın açıklamalarını listeleme
 
@@ -199,7 +199,7 @@ Ana sorgu kapsayıcının bölüm anahtarına filtre uygulayabilir, ancak kullan
 
 ### <a name="c4-like-a-post"></a>C4 Gönderi gibi
 
-Yalnızca **[C3]** gibi, `posts` kapsayıcıda karşılık gelen öğeyi oluşturacağız.
+Tıpkı **[C3]** gibi, `posts` kapsayıcısında karşılık gelen öğeyi oluşturacağız.
 
 ![Gönderi kapsayıcısına tek bir öğe yazma](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -219,11 +219,11 @@ Tıpkı **[S4]** gibi, bu gönderi için beğeneni sorgulıyoruz ve sonra Kullan
 
 ### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>[Q6] Kısa bir biçimde (akış) oluşturulan en son x gönderilerini listeleyin
 
-`posts` Kapsayıcıyı azalan oluşturma tarihine göre sıralanmış olarak sorgulayarak en son gönderileri, sonra da her gönderi için Kullanıcı adlarını ve açıklama sayılarını ve beğeni toplar.
+Azalan oluşturma tarihine göre sıralanmış `posts` kapsayıcısını sorgulayarak en son gönderileri geliştirdik, ardından Kullanıcı adlarını ve yorumların sayısını ve her bir gönderi için beğeneni toplar.
 
 ![En son postaların alınması ve ek verilerinin toplamı alınıyor](./media/how-to-model-partition-example/V1-Q6.png)
 
-Bir kez daha, ilk sorgumuz `posts` kapsayıcının bölüm anahtarını filtreleyip maliyetli bir fanı tetikler. Bu, çok daha büyük bir sonuç kümesini hedeflediğimizden ve sonuçları bir `ORDER BY` yan tümcesiyle sıraladığımızda daha kötüleştik, bu da istek birimleri açısından daha pahalı hale gelir.
+Bir kez daha, ilk sorgumuz `posts` kapsayıcısının bölüm anahtarını filtreetmez ve bu da maliyetli bir fanı tetikler. Çok daha büyük bir sonuç kümesini hedeflediğimizden ve sonuçları, istek birimleri bakımından daha pahalı hale getiren bir `ORDER BY` yan tümcesiyle sıraladığımızda bu bir tane daha kötütür.
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ Bir kez daha, ilk sorgumuz `posts` kapsayıcının bölüm anahtarını filtrele
 
 Bu sorunlardan her birini, birinciyle başlayarak çözelim.
 
-## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2 Okuma sorgularını iyileştirmek için normalleştirmeyi tanıtma
+## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2: okuma sorgularını iyileştirmek için bir denormalleştirme
 
 Bazı durumlarda ek istek verme nedenimiz nedeni, ilk isteğin sonuçlarının dönmesi gereken tüm verileri içermemesi nedenidir. Azure Cosmos DB gibi, ilişkisel olmayan bir veri deposuyla çalışırken, bu tür bir sorun genellikle veri kümesi genelinde verilerin uzlaştırılması yoluyla çözülür.
 
@@ -280,9 +280,9 @@ Ayrıca, açıklamaları ve bunları oluşturan kullanıcının Kullanıcı adı
 
 ### <a name="denormalizing-comment-and-like-counts"></a>Açıklama ve LIKE sayıları
 
-Her ne zaman bir yorum veya benzer bir şekilde bir açıklama eklediğimiz, ilgili postadaki `commentCount` `likeCount` veya öğesini de arttık. Kapsayıcımız `posts` tarafından `postId`bölümlendiğimiz için, yeni öğe (açıklama veya benzer) ve karşılık gelen gönderi aynı mantıksal bölümde yer. Sonuç olarak, bu işlemi gerçekleştirmek için bir [saklı yordam](stored-procedures-triggers-udfs.md) kullanabiliriz.
+Her ne zaman bir yorum veya benzer bir şekilde bir açıklama eklediğimiz, ilgili postadaki `commentCount` veya `likeCount` de arttık. `posts` kapsayımızın `postId`, yeni öğe (açıklama veya benzeri) ve karşılık gelen gönderi aynı mantıksal bölümde yer aldığı için. Sonuç olarak, bu işlemi gerçekleştirmek için bir [saklı yordam](stored-procedures-triggers-udfs.md) kullanabiliriz.
 
-Artık bir yorum ( **[C3]** ) oluştururken, `posts` kapsayıcıda yalnızca yeni bir öğe eklemek yerine, bu kapsayıcıda aşağıdaki saklı yordamı çağırdık:
+Artık bir yorum ( **[C3]** ) oluştururken, yalnızca `posts` kapsayıcısına yeni bir öğe eklemek yerine, bu kapsayıcıda aşağıdaki saklı yordamı çağırdık:
 
 ```javascript
 function createComment(postId, comment) {
@@ -314,19 +314,19 @@ function createComment(postId, comment) {
 Bu saklı yordam, post 'un KIMLIĞINI ve yeni açıklamanın gövdesini parametre olarak alır, ardından:
 
 - Gönderiyi alır
-- Şunu artırır`commentCount`
+- `commentCount` artırır
 - Gönderi yerini alır
 - yeni açıklamayı ekler
 
-Saklı yordamlar atomik işlem olarak yürütüldüğü için, değerinin `commentCount` ve gerçek açıklama sayısının her zaman eşitlenmiş durumda kalacakları garanti edilir.
+Saklı yordamlar atomik işlem olarak yürütüldüğü için, `commentCount` değerinin ve gerçek açıklama sayısının her zaman eşitlenmiş durumda kalacakları garanti edilir.
 
-Arttırmak için yeni beğeni eklerken benzer bir saklı yordam çağırdık `likeCount`.
+`likeCount`artırmak için yeni beğeni eklerken benzer bir saklı yordam çağırdık.
 
 ### <a name="denormalizing-usernames"></a>Kullanıcı adlarını denormallaştırın
 
 Kullanıcı adları, kullanıcılar farklı bölümlerde, ancak farklı bir kapsayıcıda yer aldığı için farklı bir yaklaşım gerektirir. Verileri bölümler ve kapsayıcılar arasında normalleştirmeye yönelik olması gerektiğinde, kaynak kapsayıcısının [değişiklik akışını](change-feed.md)kullanabiliriz.
 
-Bizim örneğimizde, kullanıcıların kullanıcı adlarını güncelleştirdiğinde tepki vermek `users` için kapsayıcının değişiklik akışını kullanırız. Bu durumda, `posts` kapsayıcıda başka bir saklı yordam çağırarak değişikliği yayıyoruz:
+Bizim örneğimizde, kullanıcıların kullanıcı adlarını güncelleştirdiğinde tepki vermek için `users` kapsayıcısının değişiklik akışını kullanırız. Bu durumda, `posts` kapsayıcısına başka bir saklı yordam çağırarak değişikliği yayıyoruz:
 
 ![Gönderi kapsayıcısına Kullanıcı adları eşitleniyor](./media/how-to-model-partition-example/denormalization-1.png)
 
@@ -354,13 +354,13 @@ function updateUsernames(userId, username) {
 
 Bu saklı yordam, kullanıcının KIMLIĞINI ve kullanıcının yeni kullanıcı adını parametreler olarak alır, ardından:
 
-- ile eşleşen `userId` tüm öğeleri getirir (gönderi, açıklamalar veya beğeni olabilir)
+- `userId` eşleşen tüm öğeleri getirir (gönderi, açıklamalar veya beğeni olabilir)
 - Bu öğelerin her biri için
-  - Şunu değiştirir`userUsername`
+  - `userUsername` değiştirir
   - öğeyi değiştirir
 
 > [!IMPORTANT]
-> Bu işlem, `posts` kapsayıcının her bölümünde bu saklı yordamın yürütülmesini gerektirdiğinden maliyetlidir. Kullanıcıların, kayıt sırasında uygun bir Kullanıcı adı seçeceğini ve bunu değiştirmeyeceği varsayıyoruz. bu nedenle, bu güncelleştirme çok seyrek çalışacaktır.
+> Bu işlem, `posts` kapsayıcısının her bölümünde bu saklı yordamın yürütülmesini gerektirdiğinden maliyetlidir. Kullanıcıların, kayıt sırasında uygun bir Kullanıcı adı seçeceğini ve bunu değiştirmeyeceği varsayıyoruz. bu nedenle, bu güncelleştirme çok seyrek çalışacaktır.
 
 ## <a name="what-are-the-performance-gains-of-v2"></a>V2 'nin performans artışı nelerdir?
 
@@ -394,7 +394,7 @@ Beğeni listelenirken aynı durum kesin.
 | --- | --- | --- |
 | 4 MS | 8,92 RU | ✅ |
 
-## <a name="v3-making-sure-all-requests-are-scalable"></a>YÜKLEMESİNDE Tüm isteklerin ölçeklenebilir olduğundan emin olma
+## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: tüm isteklerin ölçeklenebilir olduğundan emin olma
 
 Genel performans geliştirmelerimize baktığınızda, tam olarak iyileştirildiğimiz iki istek vardır: **[Q3]** ve **[Q6]** . Bunlar, hedefleytikleri kapsayıcıların bölüm anahtarını filtrelememe sorguları içeren isteklerdir.
 
@@ -404,18 +404,18 @@ Bu istek, ek sorguları kapsayan v2 sürümünde tanıtılan geliştirmelerden z
 
 ![Bir kullanıcının tüm gönderilerini alma](./media/how-to-model-partition-example/V2-Q3.png)
 
-Ancak kalan sorgu hala `posts` kapsayıcının bölüm anahtarında filtrelenemiyor.
+Ancak kalan sorgu hala `posts` kapsayıcısının bölüm anahtarında filtrelememektedir.
 
 Bu durumu göz önünde bulundurmanız, aslında basittir:
 
-1. Belirli bir Kullanıcı için tüm gönderileri getirmek `userId` istiyoruz, bu isteğin üzerine filtre uygulamak istiyor
-1. Şu şekilde bölümlenmemiş çünkü `posts` kapsayıcıya göre bölümlenmemiş`userId`
-1. Belirgin bir şekilde, bu isteği tarafından bölümlenen bir kapsayıcıya karşı yürüterek performans sorunumuzu çözeceğiz.`userId`
-1. Zaten bu tür bir kapsayıcınıza sahip olduğumuz bir kapsayıcıdır. `users`
+1. Belirli bir kullanıcı için tüm gönderileri getirmek istediğimiz *için bu isteğin `userId`* filtrelemeniz
+1. `userId` tarafından bölümlenmemiş `posts` kapsayıcıda yürütüldüğü için iyi bir sonuç vermez
+1. Açık *olduğunu* belirten bu isteği `userId` tarafından bölümlenen bir kapsayıcıya karşı yürüterek performans sorunumuzu çözeceğiz
+1. Zaten böyle bir kapsayıcıya sahip olduğumuz `users` kapsayıcısı var.
 
-Bu nedenle, `users` tüm gönderileri kapsayıcıyla çoğaltarak ikinci bir kat düzeyi sunuyoruz. Bunu yaparak, gönderilerimizin bir kopyasını, yalnızca farklı boyutlarda bölümleyerek, bu sayede daha verimli `userId`bir şekilde elde eteceğiz.
+Bu nedenle, tüm gönderileri `users` kapsayıcısına çoğaltarak ikinci bir kat düzeyi sunuyoruz. Bunu yaparak, gönderdiğimiz bir kopyasını, yalnızca farklı boyutlara göre bölümleyerek, `userId`tarafından alınması daha verimli hale getiririz.
 
-`users` Kapsayıcıda artık 2 tür öğe var:
+`users` kapsayıcısı artık 2 tür öğe içerir:
 
     {
       "id": "<user-id>",
@@ -437,16 +437,16 @@ Bu nedenle, `users` tüm gönderileri kapsayıcıyla çoğaltarak ikinci bir kat
       "creationDate": "<post-creation-date>"
     }
 
-Aşağıdakilere dikkat edin:
+Şunlara dikkat edin:
 
-- kullanıcıları gönderimler arasında `type` ayrım yapmak için Kullanıcı öğesinde bir alan ekledik,
-- Ayrıca, `id` alan ile yedekli `userId` olan `users` ancak kapsayıcı artık (daha önce değil `id` ) tarafından bölümlenerek `userId` gerekli olan Kullanıcı öğesine bir alan ekledik.
+- Kullanıcıların gönderilerinden ayırt edilebilmesi için Kullanıcı öğesinde bir `type` alanı sunuyoruz,
+- Ayrıca, Kullanıcı öğesinde, `id` alanla yedekli olan ancak `users` kapsayıcısı artık `userId` tarafından bölümlenerek (daha önce `id` olmasa da) bir `userId` alanı ekledik.
 
-Bu eğilimi başarmak için, değişiklik akışını yeniden kullanırız. Bu kez, kapsayıcıya yeni veya güncelleştirilmiş bir gönderi `posts` `users` göndermek için kapsayıcının değişiklik akışına tepki veririz. Ve liste gönderilerinin tam içeriğini döndürmesi gerekli olmadığı için, bu işlemleri işlemden kesebiliriz.
+Bu eğilimi başarmak için, değişiklik akışını yeniden kullanırız. Bu kez, `users` kapsayıcısına yeni veya güncelleştirilmiş bir gönderi göndermek için `posts` kapsayıcısının değişiklik akışına tepki veririz. Ve liste gönderilerinin tam içeriğini döndürmesi gerekli olmadığı için, bu işlemleri işlemden kesebiliriz.
 
 ![Kullanıcılar kapsayıcısına gönderi gönderme](./media/how-to-model-partition-example/denormalization-2.png)
 
-Şimdi sorgumuzu `users` kapsayıcıya yönlendirebilir ve kapsayıcının bölüm anahtarında filtre uygulayabilirsiniz.
+Şimdi sorgumuzu `users` kapsayıcısına yönlendirebilir, kapsayıcının bölüm anahtarında filtre uygulayabilirsiniz.
 
 ![Bir kullanıcının tüm gönderilerini alma](./media/how-to-model-partition-example/V3-Q3.png)
 
@@ -462,7 +462,7 @@ Burada benzer bir durumla uğraşmanız gerekir: Sparing ' de sunulan ek sorgula
 
 Aynı yaklaşımdan sonra, bu isteğin performansını ve ölçeklenebilirliğini en üst düzeye çıkarmak, yalnızca bir bölüme ait olması gerekir. Yalnızca sınırlı sayıda öğe döndürtiğimiz için bu Conceivable. Blog platformumuzu giriş sayfamızı doldurmak için, tüm veri kümesi üzerinde ilerlemeden yalnızca en son 100 gönderi almanız gerekir.
 
-Bu son isteği iyileştirmek için tasarımımız için üçüncü bir kapsayıcı sunuyoruz ve bu isteğin sunulması için tamamen ayrıldık. Gönderilerimizi bu yeni `feed` kapsayıcıya uzlaştırdık:
+Bu son isteği iyileştirmek için tasarımımız için üçüncü bir kapsayıcı sunuyoruz ve bu isteğin sunulması için tamamen ayrıldık. Gönderilerimizi bu yeni `feed` kapsayıcısına uzlaştırıyoruz:
 
     {
       "id": "<post-id>",
@@ -477,7 +477,7 @@ Bu son isteği iyileştirmek için tasarımımız için üçüncü bir kapsayıc
       "creationDate": "<post-creation-date>"
     }
 
-Bu kapsayıcı `type`, her zaman öğelerimizde olacak `post` şekilde bölümlenmiş. Bunun yapılması, bu kapsayıcıdaki tüm öğelerin aynı bölümde yer almasını sağlar.
+Bu kapsayıcı `type`göre bölümlenmiştir ve bu her zaman öğelerimizde `post` olacaktır. Bunun yapılması, bu kapsayıcıdaki tüm öğelerin aynı bölümde yer almasını sağlar.
 
 Daha fazla işlem yapmak için, daha önce bu yeni kapsayıcıya gönderdiğimiz değişiklik akışı ardışık düzenine ulaşmanız gerekir. Göz önünde bulundurmanız gereken önemli bir şey; yalnızca en son 100 gönderi depolıyoruz. Aksi takdirde, kapsayıcının içeriği bir bölümün en büyük boyutunun ötesine çıkabilir. Bu işlem, kapsayıcıya bir belge eklendiğinde bir [son tetikleyici](stored-procedures-triggers-udfs.md#triggers) çağırarak yapılır:
 
@@ -530,13 +530,13 @@ function truncateFeed() {
 }
 ```
 
-Son adım sorgumuzu yeni `feed` kapsayıcımızda yeniden yönlendirimdir:
+Son adım sorgumuzu yeni `feed` kapsayımuza yeniden yönlendirimdir:
 
 ![En son gönderilerin alınması](./media/how-to-model-partition-example/V3-Q6.png)
 
 | **Gecikme süresi** | **RU ücreti** | **Performans** |
 | --- | --- | --- |
-| 9 MS | 16,97 RU | ✅ |
+| 9 ms | 16,97 RU | ✅ |
 
 ## <a name="conclusion"></a>Sonuç
 
@@ -546,8 +546,8 @@ Tasarımımızın farklı sürümlerine tanıtıldığımız genel performans ve
 | --- | --- | --- | --- |
 | **=** | 7 MS/5,71 RU | 7 MS/5,71 RU | 7 MS/5,71 RU |
 | **Q1** | 2 ms/1 RU | 2 ms/1 RU | 2 ms/1 RU |
-| **GEÇ** | 9 MS/8,76 RU | 9 MS/8,76 RU | 9 MS/8,76 RU |
-| **ÜÇ** | 9 MS/19,54 RU | 2 ms/1 RU | 2 ms/1 RU |
+| **Geç** | 9 MS/8,76 RU | 9 MS/8,76 RU | 9 MS/8,76 RU |
+| **Üç** | 9 MS/19,54 RU | 2 ms/1 RU | 2 ms/1 RU |
 | **S3** | 130 MS/619,41 RU | 28 MS/201,54 RU | 4 MS/6,46 RU |
 | **C3** | 7 MS/8,57 RU | 7 MS/15,27 RU | 7 MS/15,27 RU |
 | **Ç** | 23 MS/27,72 RU | 4 MS/7,72 RU | 4 MS/7,72 RU |

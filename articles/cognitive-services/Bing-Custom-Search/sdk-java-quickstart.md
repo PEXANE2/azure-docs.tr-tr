@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Java için Bing Özel Arama istemci kitaplığı | Microsoft Docs'
-description: Bing Özel Arama örneğinizin arama sonuçlarını isteyerek, Java için Bing Özel Arama istemci kitaplığı ile çalışmaya başlayın.
+title: 'Hızlı başlangıç: Java için Bing Özel Arama istemci kitaplığı'
+description: Bu hızlı başlangıçta Bing Özel Arama örneğinizin arama sonuçlarını isteyerek, Java için Bing Özel Arama istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384562"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>Hızlı başlangıç: Java için Bing Özel Arama istemci kitaplığı
 
@@ -26,14 +26,14 @@ Java için Bing Özel Arama istemci kitaplığını kullanarak şunları yapın:
 
 [Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)geçerli sürümü.
 * [Gradle yapı aracı](https://gradle.org/install/)veya başka bir bağımlılık Yöneticisi.
 * Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 
-## <a name="setting-up"></a>Kurulum
+## <a name="setting-up"></a>Ayarlanıyor
 
 ### <a name="create-a-bing-custom-search-azure-resource"></a>Bing Özel Arama Azure kaynağı oluşturma
 

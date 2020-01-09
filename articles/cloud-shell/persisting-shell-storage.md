@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385565"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Dosyaları Azure Cloud Shell Sürdür
 Cloud Shell, dosyaları oturumlarda kalıcı hale getirmek için Azure dosya depolama kullanır. İlk başlangıçta Cloud Shell, dosyaları oturumlardaki kalıcı hale getirmek için yeni veya var olan bir dosya paylaşımından ilişkilendiremenizi ister.
 
 > [!NOTE]
 > Bash ve PowerShell aynı dosya paylaşımının aynısını paylaşır. Cloud Shell otomatik bağlama ile yalnızca bir dosya paylaşımının ilişkilendirilmesi olabilir.
+
+> [!NOTE]
+> Azure Storage güvenlik duvarı, Cloud Shell depolama hesapları için desteklenmez.
 
 ## <a name="create-new-storage"></a>Yeni depolama alanı oluştur
 

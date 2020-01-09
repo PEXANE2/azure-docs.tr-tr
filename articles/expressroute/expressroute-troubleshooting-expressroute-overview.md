@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033783"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551990"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
 Bu makale, ExpressRoute bağlantısını doğrulamanıza ve sorunlarını gidermenize yardımcı olur. ExpressRoute, bir bağlantı sağlayıcısı tarafından yaygın olarak kullanılan özel bir bağlantı üzerinden şirket içi bir ağı Microsoft bulutuna genişletir. ExpressRoute bağlantısı, geleneksel olarak üç farklı ağ bölgesi içerir ve aşağıdaki gibi:
 
--   Müşteri ağı
+-   Müşteri Ağı
 -   Sağlayıcı ağı
 -   Microsoft veri merkezi
 
 > [!NOTE]
-> ExpressRoute doğrudan bağlantı modelinde (10/100 GB/sn 'lik bant genişliğine sunulmaktadır), bu, Microsoft Enterprise Edge (MSEE) yönlendiricileri bağlantı noktasına doğrudan bağlanabilir. Bu nedenle, doğrudan bağlantı modelinde yalnızca müşteri ve Microsoft ağ alanları vardır.
+> ExpressRoute doğrudan bağlantı 10/100 modelinde, müşteriler doğrudan Microsoft Enterprise Edge (MSEE) yönlendiricileri bağlantı noktasına bağlanabilir. Bu nedenle, doğrudan bağlantı modelinde yalnızca müşteri ve Microsoft ağ alanları vardır.
 >
 
 

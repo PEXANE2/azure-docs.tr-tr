@@ -1,18 +1,18 @@
 ---
 title: FTP sunucusuna bağlan
-description: Azure Logic Apps ile FTP sunucusu üzerinde dosya oluşturma, izleme ve yönetme
+description: Azure Logic Apps kullanarak FTP sunucusu üzerinde dosya oluşturan, izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: c7b8c1ac94fd35a4a0cb30ad32d8c6ce39edc058
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446041"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak FTP dosyaları oluşturun, izleyin ve yönetin
 
@@ -23,7 +23,7 @@ Azure Logic Apps ve FTP Bağlayıcısı sayesinde, FTP sunucusundaki hesabınız
 * Dosya içeriğini ve meta verileri alın.
 * Arşivi klasörlere ayıklayın.
 
-FTP sunucusundan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. FTP sunucunuzdaki dosyaları yönetmek için mantıksal uygulamalarınızda çalıştırma eylemlerini kullanabilirsiniz. Ayrıca, diğer eylemlerdeki çıktıyı FTP eylemleriyle kullanmasını sağlayabilirsiniz. Örneğin, FTP sunucusundan düzenli olarak dosya alırsanız, Office 365 Outlook bağlayıcısını veya Outlook.com bağlayıcısını kullanarak bu dosyalar ve bunların içerikleri hakkında e-posta gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
+FTP sunucusundan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. FTP sunucunuzdaki dosyaları yönetmek için mantıksal uygulamalarınızda çalıştırma eylemlerini kullanabilirsiniz. Ayrıca, diğer eylemlerdeki çıktıyı FTP eylemleriyle kullanmasını sağlayabilirsiniz. Örneğin, FTP sunucusundan düzenli olarak dosya alırsanız, Office 365 Outlook bağlayıcısını veya Outlook.com bağlayıcısını kullanarak bu dosyalar ve bunların içerikleri hakkında e-posta gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [Azure Logic Apps ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin.
 
 ## <a name="limits"></a>Sınırlar
 
@@ -49,7 +49,7 @@ FTP Tetikleyicileri, FTP dosya sistemini yoklayarak ve Son yoklamadan bu yana de
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -65,81 +65,107 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak "FTP" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak `ftp` girin. **Tetikleyiciler** listesinden istediğiniz tetikleyiciyi seçin.
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin ve ardından **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak "FTP" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin ve ardından **Eylem Ekle**' yi seçin. Arama kutusuna filtreniz olarak `ftp` girin. **Eylemler** listesinden istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Bağlantınız için gerekli ayrıntıları sağlayın ve **Oluştur**' u seçin.
+1. Bağlantı bilgilerinizi girip **Oluştur**' u seçin.
 
-1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eyleminiz için bilgi sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="examples"></a>Örnekler
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP tetikleyicisi: bir dosya eklendiğinde veya değiştirildiğinde
+### <a name="add-ftp-trigger"></a>FTP tetikleyicisi Ekle
 
-Bu tetikleyici, bir FTP sunucusunda bir dosya eklendiğinde veya değiştirildiğinde tetikleyici algıladığında bir mantıksal uygulama iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen bir koşul ekleyebilir ve bu içeriğin belirli bir koşulu karşılayıp karşılamadığını temel alarak bu içeriği almak isteyip istemediğinizi karar verebilirsiniz. Son olarak, dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki bir klasöre koyabileceğiniz bir eylem ekleyebilirsiniz.
+**Bir dosya eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** TETIKLEYICI bir FTP sunucusunda bir dosyanın eklendiğini veya değiştirildiğini algıladığında bir mantıksal uygulama iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen ve içeriğin belirtilen bir koşulu karşılayıp karşılamadığını temel alarak bu içeriği almak için karar veren bir koşul ekleyebilirsiniz. Son olarak, dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki farklı bir klasöre koyabileceğiniz bir eylem ekleyebilirsiniz.
 
-**Kurumsal örnek**: Bu tetikleyiciyi, müşteri siparişlerini tanımlayan yeni dosyalar için FTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra **Dosya Içeriğini al**gıbı bir FTP eylemi kullanabilirsiniz, böylece siparişin içeriğini daha fazla işleme için alabilir ve bu siparişi bir Siparişler veritabanında depoaktarabilirsiniz.
+Örneğin, bu tetikleyiciyi, müşteri siparişlerini tanımlayan yeni dosyalar için FTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra bu yeni dosyanın özelliklerini almak için **dosya meta verilerini al** gıbı bir FTP eylemi kullanabilir ve daha sonra işleme için dosya **içeriğini al** ' ı kullanarak bu siparişi bir Siparişler veritabanında saklayabilirsiniz.
 
-Bu tetikleyiciyi gösteren bir örnek aşağıda verilmiştir: **bir dosya eklendiğinde veya değiştirildiğinde**
+**Bir dosya eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisinin nasıl kullanılacağını gösteren bir örnek aşağıda verilmiştir.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak "FTP" yazın. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosyalanmış eklendiğinde veya değiştirildiğinde-FTP**
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak `ftp` girin. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosyalanmış eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)**
 
-   ![FTP tetikleyicisini bul ve Seç](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
+   ![FTP tetikleyicisini bul ve Seç](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
 1. Bağlantınız için gerekli ayrıntıları sağlayın ve **Oluştur**' u seçin.
 
    Varsayılan olarak, bu bağlayıcı dosyaları metin biçiminde aktarır. Dosyaları ikili biçimde (örneğin, kodlama kullanıldığı yerde) aktarmak için **Ikili taşıma**' yı seçin.
 
-   ![FTP sunucusu bağlantısı oluştur](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
+   ![FTP sunucusuna bağlantı oluştur](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. **Klasör** kutusu ' nun yanında, bir liste görünecek şekilde klasör simgesini seçin. Yeni veya düzenlenmiş dosyalar için izlemek istediğiniz klasörü bulmak için, sağ açılı oku ( **>** ) seçin, bu klasöre gidin ve klasörü seçin.
+1. **Klasör** kutusunda, bir listenin görünmesi için klasör simgesini seçin. Yeni veya düzenlenmiş dosyalar için izlemek istediğiniz klasörü bulmak için, sağ açılı oku ( **>** ) seçin, bu klasöre gidin ve klasörü seçin.
 
-   ![İzlenecek klasörü bul ve Seç](./media/connectors-create-api-ftp/select-folder.png)  
+   ![İzlenecek klasörü bul ve Seç](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 
    Seçtiğiniz klasör **klasör** kutusunda görünür.
 
-   ![Seçili klasör](./media/connectors-create-api-ftp/selected-folder.png)  
+   ![Seçili klasör "Folder" özelliğinde görünüyor](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
+
+1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 Artık mantıksal uygulamanızın bir tetikleyicisi olduğuna göre, mantıksal uygulamanız yeni veya düzenlenmiş bir dosya bulduğunda çalıştırmak istediğiniz eylemleri ekleyin. Bu örnekte, yeni veya güncelleştirilmiş içeriği alan bir FTP eylemi ekleyebilirsiniz.
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>FTP eylemi: içerik al
+### <a name="add-ftp-action"></a>FTP eylemi Ekle
 
-Bu eylem, bu dosya eklendiğinde veya güncelleştirilirken FTP sunucusundaki bir dosyanın içeriğini alır. Örneğin, bir önceki örnekteki tetikleyiciyi ve dosya eklendikten veya düzenlendikten sonra dosyanın içeriğini alan bir eylemden ekleme yapabilirsiniz.
-
-Bu eylemi gösteren bir örnek aşağıda verilmiştir: **Içerik al**
+**Dosya meta verilerini al** EYLEMI, FTP sunucunuzdaki bir dosyanın özelliklerini alır ve **dosya içeriğini al** eylemi, FTP sunucunuzdaki bu dosya hakkındaki bilgilere göre dosya içeriğini alır. Örneğin, bu dosya eklendikten veya düzenlendikten sonra dosyanın içeriğini almak için önceki örnekteki tetikleyiciyi ve bu eylemleri ekleyebilirsiniz.
 
 1. Tetikleyici veya başka herhangi bir eylem altında **yeni adım**' ı seçin.
 
-1. Arama kutusuna filtreniz olarak "FTP" yazın. Eylemler listesi altında şu eylemi seçin: **Dosya Içeriğini al-FTP**
+1. Arama kutusuna filtreniz olarak `ftp` girin. Eylemler listesi altında şu eylemi seçin: **dosya meta verilerini al**
 
-   ![FTP eylemini seçin](./media/connectors-create-api-ftp/select-ftp-action.png)  
+   !["Dosya meta verilerini al" eylemini seçin](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 
 1. Zaten bir FTP sunucunuz ve hesabınızla bağlantınız varsa, sonraki adıma geçin. Aksi takdirde, bu bağlantı için gerekli ayrıntıları sağlayın ve **Oluştur**' u seçin.
 
    ![FTP sunucusu bağlantısı oluştur](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
-1. **Dosya Içeriğini al** eylemi açıldıktan sonra, dinamik içerik listesinin görünmesi için **Dosya** kutusunun içine tıklayın. Artık önceki adımlardan çıktılar için özellikler seçebilirsiniz. Dinamik içerik listesinden, eklenen veya güncellenen dosyanın içeriğine sahip olan **dosya içeriği** özelliğini seçin.  
+1. **Dosya meta verilerini al** eylemi görüntülendikten sonra, dinamik içerik listesinin görünmesi için **Dosya** kutusunun içine tıklayın. Artık önceki adımlardan çıktılar için özellikler seçebilirsiniz. Dinamik içerik listesinde **dosya meta verilerini al**' ın altında, dosyanın eklendiği veya güncelleştirildiği koleksiyona başvuran dosya **kimliği özelliği listesini** seçin.
 
-   ![Dosya bul ve Seç](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
+   !["Dosya kimliği listesi" özelliği bul ve Seç](./media/connectors-create-api-ftp/select-list-of-files-id-output.png)
 
-   **Dosya içeriği** özelliği artık **Dosya** kutusunda görünür.
+   Dosya **kimliği** özelliği artık **Dosya** kutusunda görünür.
 
-   ![Seçili "dosya Içeriği" özelliği](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
+   ![Seçili "dosya kimliği listesi" özelliği](./media/connectors-create-api-ftp/selected-list-file-ids-ftp-action.png)
 
-1. Mantıksal uygulamanızı kaydedin. İş akışınızı test etmek için, mantıksal uygulamanızın artık izlediği FTP klasörüne bir dosya ekleyin.
+1. Şimdi şu FTP eylemini ekleyin: **Dosya Içeriğini al**
+
+   !["Dosya içeriğini al" eylemini bulun ve seçin](./media/connectors-create-api-ftp/select-get-file-content-ftp-action.png)
+
+1. **Dosya Içeriğini al** eylemi görüntülendikten sonra, dinamik içerik listesinin görünmesi için **Dosya** kutusunun içine tıklayın. Artık önceki adımlardan çıktılar için özellikler seçebilirsiniz. Dinamik içerik listesinde, **dosya meta verilerini al**' ın altında, eklenen veya güncellenen dosyaya başvuran **ID** özelliğini seçin.
+
+   !["Kimlik" özelliği bul ve Seç](./media/connectors-create-api-ftp/get-file-content-id-output.png)
+
+   **ID** özelliği artık **Dosya** kutusunda görünür.
+
+   ![Seçili "ID" özelliği](./media/connectors-create-api-ftp/selected-get-file-content-id-ftp-action.png)
+
+1. Mantıksal uygulamanızı kaydedin.
+
+## <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
+
+İş akışınızın, istediğiniz içeriği döndürdüğünü denetlemek için karşıya yüklenen veya güncelleştirilmiş dosyadan içerik gönderen başka bir eylem ekleyin.
+
+1. **Dosya Içeriğini al** eyleminin altında, size dosyanın içeriğini gönderebilmeniz için bir eylem ekleyin. Bu örnek, Office 365 Outlook için **e-posta gönder** eylemini ekler.
+
+   ![E-posta göndermek için bir eylem ekleyin](./media/connectors-create-api-ftp/select-send-email-action.png)
+
+1. Eylem göründükten sonra, bilgileri sağlayın ve test etmek istediğiniz özellikleri ekleyin. Örneğin, **Dosya Içeriğini al** bölümünde **daha fazla göster** ' i seçtikten sonra dinamik içerik listesinde görünen **dosya içeriği** özelliğini ekleyin.
+
+   ![E-posta eylemi hakkında bilgi sağlayın](./media/connectors-create-api-ftp/selected-send-email-action.png)
+
+1. Mantıksal uygulamanızı kaydedin. Mantıksal uygulamayı çalıştırmak ve tetiklemek için, araç çubuğunda **Çalıştır**' ı seçin ve ardından mantıksal UYGULAMANıZıN izlediği FTP klasörüne bir dosya ekleyin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

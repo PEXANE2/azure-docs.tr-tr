@@ -3,17 +3,17 @@ title: Bulut hizmeti yaşam döngüsü olaylarını işle | Microsoft Docs
 description: Bulut hizmeti rolü yaşam döngüsü yöntemlerinin .NET 'te nasıl kullanılabileceğini öğrenin
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: fa4eebfa64a296e6830db3730de31ca9b0565678
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385822"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET’te Web veya Çalışan rolünün yaşam döngüsünü özelleştirme
 Bir çalışan rolü oluşturduğunuzda, yaşam döngüsü olaylarına yanıt vermenize izin veren Yöntemler sağlayan [Roleentrypoint](/previous-versions/azure/reference/ee758619(v=azure.100)) sınıfını genişletebilirsiniz. Web rolleri için bu sınıf isteğe bağlıdır, bu nedenle yaşam döngüsü olaylarına yanıt vermek için kullanılmalıdır.
@@ -72,8 +72,11 @@ Rol örneğiniz için uzun süre çalışan bir iş parçacığı uygulamak üze
 **Run** yönteminin geçersiz kılınması gerekli değildir; Varsayılan uygulama, sonsuza kadar uykudaki bir iş parçacığını başlatır. **Run** yöntemini geçersiz kılarsınız, kodunuz süresiz olarak engellenmelidir. **Run** yöntemi döndürürse, rol otomatik olarak düzgün şekilde geri dönüştürülür; diğer bir deyişle, Azure **durdurma** olayını yükseltir ve **OnStop** metodunu çağırarak, bu sayede, rol çevrimdışına alınmadan önce kapalı olması gerekir.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Web rolü için ASP.NET yaşam döngüsü yöntemlerini uygulama
-Bir Web rolü için başlatma ve kapalı dizileri yönetmek üzere **Roleentrypoint** sınıfı tarafından sağlananlara ek olarak ASP.net yaşam döngüsü yöntemlerini kullanabilirsiniz. Mevcut bir ASP.NET uygulamasını Azure 'a taşırken bu, uyumluluk amacıyla yararlı olabilir. ASP.NET yaşam döngüsü yöntemleri **Roleentrypoint** yöntemlerinin içinden çağırılır. **Uygulama\_başlatma** yöntemi **roleentrypoint. OnStart** yöntemi bittikten sonra çağrılır. **Uygulama\_End** yöntemi **roleentrypoint. OnStop** yöntemi çağrılmadan önce çağrılır.
+Bir Web rolü için başlatma ve kapalı dizileri yönetmek üzere **Roleentrypoint** sınıfı tarafından sağlananlara ek olarak ASP.net yaşam döngüsü yöntemlerini kullanabilirsiniz. Mevcut bir ASP.NET uygulamasını Azure 'a taşırken bu, uyumluluk amacıyla yararlı olabilir. ASP.NET yaşam döngüsü yöntemleri **Roleentrypoint** yöntemlerinin içinden çağırılır. **Uygulama\_start** yöntemi **Roleentrypoint. OnStart** yöntemi bittikten sonra çağrılır. **Uygulama\_End** yöntemi **Roleentrypoint. OnStop** yöntemi çağrılmadan önce çağrılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bulut hizmeti paketi oluşturmayı](cloud-services-model-and-package.md)öğrenin.
+
+
+
 

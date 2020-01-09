@@ -1,6 +1,6 @@
 ---
-title: 'Azure Application Insights akıllı algılama: Varsayılan bildirim alıcılarına yaklaşan değişiklikler | Microsoft Docs'
-description: İzleme telemetride olağandışı desenler için Azure Application Insights ile uygulama izlemelerini izleyin.
+title: Akıllı algılama bildirim değişikliği-Azure Application Insights
+description: Akıllı algılamada varsayılan bildirim alıcılarına geçiş yapın. Akıllı algılama, izleme telemetride olağandışı desenler için Azure Application Insights ile uygulama izlemelerini izlemenize olanak tanır.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
@@ -8,18 +8,18 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa1f98b5a9ee592a4c702e87e365eff7941194d4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432448"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Akıllı algılama e-posta bildirimi değişikliği
 
 Müşteri geri bildirimlerine bağlı olarak, 1 Nisan 2019 ' de, akıllı algılamada e-posta bildirimleri alan varsayılan rolleri değiştiriyoruz.
 
-## <a name="what-is-changing"></a>Ne değişiyor?
+## <a name="what-is-changing"></a>Değişen nedir?
 
 Şu anda, akıllı algılama e-posta bildirimleri varsayılan olarak _abonelik sahibine_, _abonelik katkıya_ve _abonelik okuyucu_ rollerine gönderilir. Bu roller genellikle izlemeyle aktif olarak ilgilenmeyen kullanıcıları içerdiğinden bu durum, bu kullanıcıların gereksiz bildirimler almasına neden olur. Bu deneyimi geliştirmek için, e-posta bildirimlerinin yalnızca [Izleme okuyucusuna](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) gitmesi ve varsayılan olarak [katkıda bulunan rollerinin izlenmesi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) için bir değişiklik yapıyoruz.
 

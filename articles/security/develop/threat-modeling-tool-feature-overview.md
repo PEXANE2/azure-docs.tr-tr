@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool özelliğe genel bakış-Azure
 description: Threat Modeling Tool bulunan tüm özellikler hakkında bilgi edinin
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728440"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552126"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool özelliğe genel bakış
 
@@ -37,7 +29,7 @@ Araçta Şu anda kullanılabilir olan özellikleri görmek için, [Başlarken](t
 
 ![Temel tehdit modeli](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-## <a name="navigation"></a>Gezinti
+## <a name="navigation"></a>Gezinme
 
 Yerleşik özellikleri tartışmadan önce, araçta bulunan ana bileşenleri gözden geçirelim.
 
@@ -62,8 +54,8 @@ Simgeler, üst düzey menülere yönelik kısayollardır:
 | --------------------------------------- | ------------ |
 | **açın** | Yeni bir dosya açar. |
 | **Kaydet** | Geçerli dosyayı kaydeder. |
-| **Tasarıma** | Model oluşturabileceğiniz **Tasarım** görünümünü açar. |
-| **Analiz edin** | Oluşturulan tehditleri ve bunların özelliklerini gösterir. |
+| **Tasarım** | Model oluşturabileceğiniz **Tasarım** görünümünü açar. |
+| **Çözümleme** | Oluşturulan tehditleri ve bunların özelliklerini gösterir. |
 | **Diyagram Ekle** | Yeni bir diyagram ekler (Excel 'deki yeni sekmelere benzer şekilde). |
 | **Diyagramı Sil** | Geçerli diyagramı siler. |
 | **Kopyala/Kes/Yapıştır** | Öğeleri kopyalar, keser ve yapıştırır. |
@@ -71,7 +63,7 @@ Simgeler, üst düzey menülere yönelik kısayollardır:
 | **Yakınlaştır/Uzaklaştır** | Daha iyi bir görünüm için diyagramı yakınlaştırır ve uzaklaştırır. |
 | **Geri Bildirim** | MSDN forumunu açar. |
 
-### <a name="canvas"></a>Tuvalinin
+### <a name="canvas"></a>Tuval
 
 Tuval, öğeleri sürükleyip bıraktığınızda yer alan alandır. Model oluşturmak için en hızlı ve en verimli yol sürükleyip bırakın. Ayrıca, menü ' de sağ tıklayıp, öğelerin genel sürümlerini gösterildiği gibi ekleyebilirsiniz:
 
@@ -99,7 +91,7 @@ Seçtiğiniz şablona bağlı olarak, kullanıma sunulan tüm kalıpları bulabi
 
 | Bileşen                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
-| **İletilerine** | Öğeler arasında veri akışı yok gibi bir hata olduğunda kullanıcıları uyaran iç araç mantığı. |
+| **İletiler** | Öğeler arasında veri akışı yok gibi bir hata olduğunda kullanıcıları uyaran iç araç mantığı. |
 | **Notlar** | El ile notlar, tasarım ve gözden geçirme süreci boyunca mühendislik ekiplerine göre dosyaya eklenir. |
 
 ### <a name="element-properties"></a>Öğe özellikleri
@@ -108,7 +100,7 @@ Seçtiğiniz şablona bağlı olarak, kullanıma sunulan tüm kalıpları bulabi
 
 | Element özelliği                               | Ayrıntılar      |
 | --------------------------------------- | ------------ |
-| **Name** | İşlemlerinizi, mağazalarınızı, karışık aktörleri ve akışları kolayca tanınabilmeleri için adlandırmak faydalı olur. |
+| **Ad** | İşlemlerinizi, mağazalarınızı, karışık aktörleri ve akışları kolayca tanınabilmeleri için adlandırmak faydalı olur. |
 | **Kapsam dışı** | Seçilirse, öğe tehdit oluşturma matrisinden alınır (önerilmez). |
 | **Kapsam dışı nedeni** | Kullanıcıların kapsam dışı neden seçili olduğunu bilmesini sağlamak için gerekçe alanı. |
 
@@ -120,7 +112,7 @@ Uygulamayı açtığınızda, **hoş geldiniz** ekranını görürsünüz.
 
 ### <a name="open-a-model"></a>Model açma
 
-İki seçeneği ortaya çıkarmak için **bir modeli aç** ' ın üzerine gelin: **Bu bilgisayardan açın** ve **OneDrive 'dan açın**. İlk seçenek **dosya açma** ekranını açar. İkinci seçenek, OneDrive için oturum açma sürecinde size götürür. Başarılı kimlik doğrulamasından sonra klasörler ve dosyalar ' ı seçebilirsiniz.
+İki seçeneği ortaya çıkarmak için **bir modeli aç** üzerine gelin: **Bu bilgisayardan açın** ve **OneDrive 'dan açın**. İlk seçenek **dosya açma** ekranını açar. İkinci seçenek, OneDrive için oturum açma sürecinde size götürür. Başarılı kimlik doğrulamasından sonra klasörler ve dosyalar ' ı seçebilirsiniz.
 
 ![Modeli aç](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -136,19 +128,19 @@ Uygulamayı açtığınızda, **hoş geldiniz** ekranını görürsünüz.
 
 Yeni bir model açtığınızda veya oluşturduğunuzda **Tasarım** görünümü açılır.
 
-### <a name="add-elements"></a>Öğe Ekle
+### <a name="add-elements"></a>Öğe ekleme
 
 Kılavuza iki şekilde öğe ekleyebilirsiniz:
 
-- **Sürükle ve bırak**: İstenen öğeyi kılavuza sürükleyin. Daha sonra ek bilgi sağlamak için öğe özelliklerini kullanın.
-- **Sağ tıklayın**: Kılavuzda herhangi bir yere sağ tıklayın ve açılan menüden öğeler ' i seçin. Seçtiğiniz öğenin genel bir temsili ekranda görüntülenir.
+- **Sürükleyip bırakma**: istenen öğeyi kılavuza sürükleyin. Daha sonra ek bilgi sağlamak için öğe özelliklerini kullanın.
+- **Sağ tıklayın**: kılavuzda herhangi bir yere sağ tıklayın ve açılan menüden öğeler ' i seçin. Seçtiğiniz öğenin genel bir temsili ekranda görüntülenir.
 
 ### <a name="connect-elements"></a>Bağlama öğeleri
 
 Öğeleri iki şekilde bağlayabilirsiniz:
 
-- **Sürükle ve bırak**: İstenen veri akışını kılavuza sürükleyin ve her iki ucu da uygun öğelere bağlayın.
-- **+ SHIFT 'e tıklayın**: İlk öğeye (veri gönderme) tıklayın, SHIFT tuşuna basın ve basılı tutun, sonra ikinci öğeyi (veri alma) seçin. Sağ tıklayın ve **Bağlan**' ı seçin. Çift yönlü bir veri akışı kullanıyorsanız, sipariş önemli değildir.
+- **Sürükleyip bırakma**: istenen veri akışını kılavuza sürükleyin ve her iki ucu da uygun öğelere bağlayın.
+- **+ SHIFT ' e tıklayın**: ilk öğeye (veri gönderme) tıklayın, SHIFT tuşuna basın ve basılı tutun, sonra ikinci öğeyi (veri alma) seçin. Sağ tıklayın ve **Bağlan**' ı seçin. Çift yönlü bir veri akışı kullanıyorsanız, sipariş önemli değildir.
 
 ### <a name="properties"></a>Özellikler
 
@@ -162,11 +154,11 @@ Kılavuza iki şekilde öğe ekleyebilirsiniz:
 
 ![Sonra](./media/threat-modeling-tool-feature-overview/properties2.png)
 
-### <a name="messages"></a>İletiler
+### <a name="messages"></a>Mesajlar
 
 Bir tehdit modeli oluşturur ve veri akışlarını öğelere bağlamayı unutursanız, bir bildirim alırsınız. İletiyi yoksayabilir veya sorunu gidermeye yönelik yönergeleri izleyebilirsiniz. 
 
-![İletiler](./media/threat-modeling-tool-feature-overview/messages.png)
+![Mesajlar](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Notlar
 
@@ -182,11 +174,11 @@ Diyagramınızı oluşturduktan sonra, **analiz** görünümüne geçmek için k
 
 Bir tehdit seçtiğinizde üç farklı işlev kullanabilirsiniz:
 
-| Özellik                               | Information      |
+| Özellik                               | Bilgi      |
 | --------------------------------------- | ------------ |
 | **Göstergeyi oku** | <p>Tehdit okundu olarak işaretlenir ve bu, gözden geçirdiğinizi planladığınız öğeleri izlemenize yardımcı olur.</p><p>![Okuma/okunmamış gösterge](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Etkileşim odağı** | <p>Bir tehdide ait olan diyagramdaki etkileşim vurgulanmıştır.</p><p>![Etkileşim odağı](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Tehdit özellikleri** | <p>Tehdit hakkında ek bilgiler **tehdit özellikleri** penceresinde görünür.</p><p>![Tehdit özellikleri](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Tehdit özellikleri** | <p>Tehdit hakkında ek bilgiler **tehdit özellikleri** penceresinde görünür.</p><p>![tehdit özellikleri](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Öncelik değişikliği
 
@@ -202,11 +194,11 @@ Oluşturulan her tehdit için öncelik düzeyini değiştirebilirsiniz. Farklı 
 
 ## <a name="reports"></a>Raporlar
 
-Önceliklerin değiştirilmesini ve oluşturulan her bir tehdidin durumunu güncellemeyi tamamladıktan sonra, dosyayı kaydedebilir ve/veya bir raporu yazdırabilirsiniz. **Raporla** > **tam rapor oluştur**' a gidin. Raporu adlandırın ve aşağıdaki görüntüye benzer bir şey görmeniz gerekir:
+Önceliklerin değiştirilmesini ve oluşturulan her bir tehdidin durumunu güncellemeyi tamamladıktan sonra, dosyayı kaydedebilir ve/veya bir raporu yazdırabilirsiniz. **Rapor** > **tam rapor oluştur**' a gidin. Raporu adlandırın ve aşağıdaki görüntüye benzer bir şey görmeniz gerekir:
 
 ![Rapor](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sorularınızı, yorumlarınızı ve kaygılarınızı tmtextsupport@microsoft.comile gönderin. Başlamak için Threat Modeling Tool **[indirin](https://aka.ms/threatmodelingtool)** .
+- tmtextsupport@microsoft.comsorularınızı, yorumlarınızı ve kaygılarınızı gönderin. Başlamak için Threat Modeling Tool **[indirin](https://aka.ms/threatmodelingtool)** .
 - Topluluğun şablonuna katkıda bulunmak için [GitHub](https://github.com/Microsoft/threat-modeling-templates) sayfamıza gidin.

@@ -8,48 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/10/2019
 ms.author: erhopf
-ms.openlocfilehash: f5929be58c5e2159e832005b0e0f8d01e014427e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379887"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
-Konuşma hizmetinden metin okuma, uygulamalarınızın, araçların veya cihazlarınızın metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve 4 dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Tam liste için bkz. [desteklenen diller](language-support.md#text-to-speech).
+Konuşma hizmetinden metin okuma, uygulamalarınızın, araçların veya cihazlarınızın metni insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için benzersiz özel bir ses oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve bir dizi dilde ve yerel ayara 5 sinir seste erişilebilir. Desteklenen seslerin, dillerin ve yerel ayarların tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
-Metin okuma teknolojisi, içerik oluşturucularının kullanıcılarıyla farklı yollarla etkileşime geçmesini sağlar. Metin okuma, kullanıcılara içerik sesiyle etkileşime geçme seçeneği sunarak erişilebilirliği iyileştirebilir. Kullanıcının görsel bir biçimde, öğrenimi bir eğitim veya geliştirme sırasında gezinme bilgileri gerektirmesi durumunda, metinden konuşmaya, mevcut bir deneyimi iyileştirebilir. Metin okuma, sesli botlar ve ses yardımcıları için de değerli bir eklentidir.
+> [!NOTE]
+> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
+> - [Bing Konuşma konuşma hizmetine geçirme](how-to-migrate-from-bing-speech.md)
 
-XML tabanlı bir biçimlendirme dili olan konuşma sentezleme dili (SSML) özelliğinden yararlanarak, metin okuma hizmetini kullanan geliştiriciler giriş metninin sentezleştirilmiş konuşmaya nasıl dönüştürüleceğini belirtebilir. SSML ile, sıklık, telaffuz, konuşma oranı, hacim ve daha fazlasını ayarlayabilirsiniz. Daha fazla bilgi için bkz. [SSML](#speech-synthesis-markup-language-ssml).
+## <a name="core-features"></a>Temel Özellikler 
 
-### <a name="standard-voices"></a>Standart sesler
+* Konuşma birleştirme-standart, sinir veya özel sesler kullanarak metin okumayı dönüştürmek için [konuşma SDK 'sını](quickstarts/text-to-speech-audio-file.md) veya [REST API](rest-text-to-speech.md) kullanın.
 
-Standart sesler Istatistiksel parametrik sen, ve/veya birleştirme birleştirme tekniklerini kullanarak oluşturulur. Bu sesler, yüksek oranda anlaşılır ve sessiz doğal bir şekilde yapılır. Uygulamalarınızın çok sayıda dilde 45 konuşmasını, çok çeşitli ses seçenekleriyle kolayca sağlayabilirsiniz. Bu sesler, kısaltmalar, kısaltma genişletmeleri, tarih/saat yorumlamalar, polyphones ve daha fazlası için destek de dahil olmak üzere yüksek telaffuz doğruluk sağlar. Kullanıcılarınızın içeriğinizle birlikte etkileşime geçmesini sağlayarak uygulama ve hizmetlerinize yönelik erişilebilirliği geliştirmek için standart ses kullanın.
+* Zaman uyumsuz birleştirme uzun seslidir-metin okuma dosyalarını 10 dakikadan uzun zaman uyumsuz bir şekilde birleştirmek için [uzun ses API](long-audio-api.md) 'sini kullanın (örneğin, ses defterleri veya seminerler). Konuşma SDK 'Sı veya konuşmadan metne REST API kullanarak senkinden farklı olarak, yanıtlar gerçek zamanlı olarak döndürülmez. Beklentiler, isteklerin zaman uyumsuz olarak gönderilmesi, yanıtların yoklandığının ve hizmetten kullanıma hazır hale getirilme sesinin indirilmesinden kaynaklandır. Yalnızca sinir sesleri desteklenir.
 
-### <a name="neural-voices"></a>Sinir sesleri
+* Standart sesler-Istatistiksel parametrik sen, ve/veya birleştirme birleştirme tekniklerini kullanarak oluşturulur. Bu sesler, yüksek oranda anlaşılır ve sessiz doğal bir şekilde yapılır. Uygulamalarınızın çok sayıda dilde 45 konuşmasını, çok çeşitli ses seçenekleriyle kolayca sağlayabilirsiniz. Bu sesler, kısaltmalar, kısaltma genişletmeleri, tarih/saat yorumlamalar, polyphones ve daha fazlası için destek de dahil olmak üzere yüksek telaffuz doğruluk sağlar. Standart seslerin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
-Sinir sesleri, konuşulan dilde stres ve kullanım desenlerini eşleştirirken ve konuşma birimlerinin bir bilgisayar sesine çıkarılması halinde geleneksel metin okuma sistemlerinin sınırlarını aşmak için derin sinir ağlarını kullanır. Standart metin okuma, bağımsız modeller tarafından yönetilen ayrı bir dil analizine ve akustik tahmin adımlarına sahiptir ve bu da muffled Voice senile sonuçlanabilir. Nöral özelliğimiz, prozodi tahmini ve ses sentezini aynı anda gerçekleştirdiği için daha akıcı ve kulağa daha doğal gelen bir ses elde edilir.
+* Sinir seslerde, geleneksel konuşma senillerinin sınırlarını aşmak için derin sinir ağları, konuşulan dilde stres ve kullanım gibi Prosody tahmini ve ses birleştirmesinin eşzamanlı olarak gerçekleştirilmesi, daha akıcı ve doğal bir çıkış ile sonuçlanır. Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır. Sinir sesin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
-Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır.
+* Konuşma birleştirme biçimlendirme dili (SSML)-konuşmayı metne çıktıları özelleştirmek için kullanılan XML tabanlı bir biçimlendirme dili. SSML ile, aralığı ayarlayabilir, duraklamalar ekleyebilir, söylenişi artırabilir veya yavaşlatır, konuşma hızını artırabilir veya azaltabilir, hacmi artırabilir veya azaltabilirsiniz ve tek bir belgeye birden çok ses özniteliği ekleyebilirsiniz. Bkz. [SSML](speech-synthesis-markup.md).
 
-Sinir sesleri, nötr ve peynsuz gibi farklı stilleri destekler. Örneğin, Jessa (en-US) sesi, normal ve mutlu konuşmalar için en iyi duruma getirilmiş cheertam olarak konuşabilmektedir. Ses çıkışını, [konuşma birleştirme biçimlendirme dilini](speech-synthesis-markup.md)kullanarak ton, sıklık ve hız gibi ayarlayabilirsiniz. Kullanılabilir seslerin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
+## <a name="get-started"></a>Kullanmaya Başlayın
 
-Sinir seslerin avantajları hakkında daha fazla bilgi edinmek için bkz. [Microsoft 'un yeni sinir metin okuma hizmeti, makinelerin kişiler gibi konuşmasına yardımcı olur](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
+Metinden konuşmaya hizmeti, [konuşma SDK 'sı](speech-sdk.md)aracılığıyla kullanılabilir. Hızlı başlangıçların çeşitli dillerde ve platformlarda kullanıma sunulduğu birkaç yaygın senaryo vardır:
 
-### <a name="custom-voices"></a>Özel sesler
+* [Konuşmayı bir ses dosyasına sentezleştirme](quickstarts/text-to-speech-audio-file.md)
+* [Konuşmayı konuşmacıyı sentezleştirme](quickstarts/text-to-speech.md)
+* [Uzun biçimli ses zaman uyumsuz olarak sentezleştir](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-Ses özelleştirmesi, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Özel ses yazı tipi oluşturmak için bir Studio kaydı yaparsınız ve ilgili betikleri eğitim verileri olarak karşıya yüklersiniz. Daha sonra hizmet, kaydınıza ayarlanmış benzersiz bir ses modeli oluşturur. Konuşmayı sentezleştirmek için bu özel ses yazı tipini kullanabilirsiniz. Daha fazla bilgi için bkz. [özel sesler](how-to-customize-voice-font.md).
+İsterseniz, metinden konuşmaya hizmetine [rest](rest-text-to-speech.md)aracılığıyla erişilebilir.
 
-## <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
+## <a name="sample-code"></a>Örnek kod
 
-Konuşma sentezi biçimlendirme dili (SSML), geliştiricilerin metin okuma hizmeti kullanılarak, giriş metninin birleştirilmiş konuşmaya nasıl dönüştürüldüğünü belirtmesini sağlayan XML tabanlı bir biçimlendirme dilidir. SSML, düz metin ile karşılaştırıldığında, geliştiricilerin sıklık, telaffuz, konuşma oranı, hacim ve metin okuma çıktısından daha fazlasını yapma olanağı sağlar. Bir dönemden sonra duraklatma gibi normal noktalama işaretleri veya bir tümce bir soru işaretiyle sona erdiğinde doğru innnation 'ın kullanılması otomatik olarak işlenir.
+Metinden konuşmaya yönelik örnek kod GitHub ' da kullanılabilir. Bu örnekler, en popüler programlama dillerinde metinden konuşmaya dönüştürmeyi kapsar.
 
-Metin okuma hizmetine gönderilen tüm metin girişlerinin SSML olarak yapılandırılması gerekir. Daha fazla bilgi için bkz. [konuşma sen, biçimlendirme dili](speech-synthesis-markup.md).
+- [Metinden konuşmaya örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Metinden konuşmaya örnekleri (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-### <a name="pricing-note"></a>Fiyatlandırma notunun
+## <a name="customization"></a>Özelleştirme 
+
+Standart ve sinir seslerinizin yanı sıra, ürün veya marka için benzersiz özel sesler oluşturabilir ve bunları hassas bir şekilde ayarlayabilirsiniz. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Daha fazla bilgi için bkz. [özel sesle çalışmaya başlama](how-to-custom-voice.md)
+
+## <a name="pricing-note"></a>Fiyatlandırma notunun
 
 Metin okuma hizmeti kullanılırken, noktalama, noktalama dahil olmak üzere her bir karakter için faturalandırılırsınız. SSML belgesinin kendisi faturalanabilir olsa da, metnin, alfabesine ve sıklık gibi bir şekilde konuşmaya dönüştürülmesini ayarlamak için kullanılan isteğe bağlı öğeler faturalanabilir karakter olarak sayılır. Faturalandırılabilir nelerin listesi aşağıda verilmiştir:
 
@@ -63,67 +72,12 @@ Ayrıntılı bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/prici
 > [!IMPORTANT]
 > Her Çince, Japonca ve Kore dili karakteri faturalandırma için iki karakter olarak sayılır.
 
-## <a name="core-features"></a>Temel Özellikler
-
-Bu tabloda, metinden konuşmaya için temel özellikler listelenmektedir:
-
-| Kullanım örneği                                  | SDK | REST  |
-| ----------------------------------------- | --- | ----- |
-| Metni konuşmaya dönüştürün.                   | Yes | Yes   |
-| Ses uyarlama için veri kümelerini karşıya yükleyin.     | Hayır  | Evet\* |
-| Ses yazı tipi modelleri oluşturun ve yönetin.      | Hayır  | Evet\* |
-| Ses yazı tipi dağıtımları oluşturun ve yönetin. | Hayır  | Evet\* |
-| Ses yazı tipi testleri oluşturun ve yönetin.       | Hayır  | Evet\* |
-| Abonelikleri yönetin.                     | Hayır  | Evet\* |
-
-_Bu hizmetlere \*, Cris.ai uç noktası kullanılarak kullanılabilir. Bkz. [Swagger başvurusu](https://westus.cris.ai/swagger/ui/index). Bu özel sesli eğitim ve yönetim API 'Leri, istekleri 5 saniyede 25 ' e sınırlayan azaltma uygular, ancak konuşma birleştirme API 'sinin kendisi için saniyede 200 istek sağlayan azaltma uygular. Kısıtlama gerçekleştiğinde ileti üstbilgileri aracılığıyla size bildirilir._
-
-## <a name="get-started-with-text-to-speech"></a>Metin okuma ile çalışmaya başlama
-
-Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hızlı başlangıç sunuyoruz. Bu tablo, dile göre düzenlenen metin okuma hızlarından oluşan bir liste içerir.
-
-### <a name="sdk-quickstarts"></a>SDK hızlı başlangıçlarını
-
-| Hızlı Başlangıç (SDK) | Platform | API Başvurusu |
-| ---------------- | -------- | ------------- |
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Göz atma](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Göz atma](https://aka.ms/csspeech/cppref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Göz atma](https://aka.ms/csspeech/cppref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Göz atma](https://aka.ms/csspeech/javaref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Göz atma](https://aka.ms/csspeech/javaref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Göz atma](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Göz atma](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Göz atma](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Göz atma](https://aka.ms/csspeech/objectivecref) |
-| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Pencere, Linux, macOS | [Göz atma](https://aka.ms/csspeech/pythonref) |
-
-### <a name="rest-quickstarts"></a>REST hızlı başlangıç
-
-| Hızlı Başlangıç (REST) | Platform | API başvurusu |
-| ----------------- | -------- | ------------- |
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Göz atma](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Pencere, macOS, Linux | [Göz atma](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Pencere, macOS, Linux | [Göz atma](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-
-## <a name="sample-code"></a>Örnek kod
-
-Metinden konuşmaya yönelik örnek kod GitHub ' da kullanılabilir. Bu örnekler, en popüler programlama dillerinde metinden konuşmaya dönüştürmeyi kapsar.
-
-- [Metinden konuşmaya örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Metinden konuşmaya örnekleri (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-- [Konuşma SDK'sı](speech-sdk-reference.md)
-- [Konuşma cihazları SDK 'Sı](speech-devices-sdk.md)
-- [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
+- [Konuşma SDK'sı](speech-sdk.md)
 - [REST API: metinden konuşmaya](rest-text-to-speech.md)
-- [REST API: toplu Iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ücretsiz bir konuşma hizmeti aboneliği alın](get-started.md)
-- [Özel ses tipi olarak oluşturma](how-to-customize-voice-font.md)
+- [Konuşma SDK 'sını alın](speech-sdk.md)

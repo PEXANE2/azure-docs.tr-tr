@@ -1,20 +1,18 @@
 ---
 title: Visual Studio 'da yerel olarak Azure Stream Analytics sorguları test etme
 description: Bu makalede, sorguların Visual Studio için Azure Stream Analytics araçları ile yerel olarak nasıl test edileceğini açıklar.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 01383531293635af8c15f891928eec004e05b54d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c4854d050cce18082def436243a669ba09c474ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369669"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Visual Studio ile yerel olarak Stream Analytics sorguları test etme
 
@@ -26,7 +24,7 @@ Visual Studio kullanarak Stream Analytics işi oluşturmayı öğrenmek için bu
 
 Azure Stream Analytics projenizde betiği düzenleyicide açmak için **Script. asaql** öğesine çift tıklayın. Sözdizimi hataları olup olmadığını görmek için sorguyu derleyebilirsiniz. Sorgu Düzenleyicisi IntelliSense, söz dizimi renklendirmesi ve bir hata işaretleyicisi destekler.
 
-![Sorgu Düzenleyicisi](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
+![Sorgu düzenleyicisi](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>Yerel giriş Ekle
 
@@ -38,7 +36,7 @@ Açılır pencerede, yerel yolunuzda örnek veriler ' i seçin ve **kaydedin**.
    
 ![Yerel giriş Ekle](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-**Local_EntryStream. JSON** adlı bir dosya, giriş klasörünüze otomatik olarak eklenir.
+Giriş klasörünüze **local_EntryStream. JSON** adlı bir dosya otomatik olarak eklenir.
    
 ![Yerel giriş klasörü dosya listesi](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
@@ -76,7 +74,7 @@ Yalnızca Event Hubs veya IoT Hub 'larından veri akışı örneği oluşturabil
 
 
 * [Hızlı başlangıç: Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Azure Stream Analytics işleri görüntülemek için Visual Studio 'Yu kullanma](stream-analytics-vs-tools.md)
+* [Azure Stream Analytics işleri görüntülemek için Visual Studio](stream-analytics-vs-tools.md)
 * [Visual Studio için Azure Stream Analytics araçları 'nı kullanarak canlı verileri yerel olarak test etme (Önizleme)](stream-analytics-live-data-local-testing.md)
 * [Öğretici: Azure DevOps kullanarak CI/CD ile Azure Stream Analytics işi dağıtma](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics araçlarıyla sürekli tümleştirme ve geliştirme](stream-analytics-tools-for-visual-studio-cicd.md)

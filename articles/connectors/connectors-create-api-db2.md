@@ -1,22 +1,22 @@
 ---
-title: IBM DB2 'ye bağlanma
-description: IBM DB2 REST API 'Leri ve Azure Logic Apps kaynakları yönetme
+title: IBM DB2 kaynaklarına erişin ve yönetin
+description: Azure Logic Apps kullanarak otomatik iş akışları oluşturarak IBM DB2 kaynaklarını okuyun, düzenleyin, güncelleştirin ve yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446190"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Azure Logic Apps ile IBM DB2 kaynaklarını yönetme
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM DB2 kaynaklarına erişin ve yönetin
 
-Azure Logic Apps ve IBM DB2 Bağlayıcısı sayesinde, DB2 veritabanınızda depolanan kaynaklara göre otomatik görevler ve iş akışları oluşturabilirsiniz. İş akışlarınız veritabanınızdaki kaynaklara bağlanabilir, veritabanı tablolarınızı okuyabilir ve listeleyebilir, satır ekleyebilir, satırları değiştirebilir, satırları silebilir ve daha fazlasını yapabilir. Verilerinize yanıt veren ve çıktıyı diğer eylemler için kullanılabilir hale getirmek için mantıksal uygulamalarınıza eylemler ekleyebilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [IBM DB2 BAĞLAYıCıSı](/connectors/db2/)sayesinde, DB2 veritabanınızda depolanan kaynaklara göre otomatik görevler ve iş akışları oluşturabilirsiniz. İş akışlarınız veritabanınızdaki kaynaklara bağlanabilir, veritabanı tablolarınızı okuyabilir ve listeleyebilir, satır ekleyebilir, satırları değiştirebilir, satırları silebilir ve daha fazlasını yapabilir. Verilerinize yanıt veren ve çıktıyı diğer eylemler için kullanılabilir hale getirmek için mantıksal uygulamalarınıza eylemler ekleyebilirsiniz.
 
 Bu makalede çeşitli veritabanı işlemlerini gerçekleştiren bir mantıksal uygulama oluşturma işlemi gösterilmektedir. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
@@ -42,12 +42,12 @@ IBM DB2 Bağlayıcısı, bağlayıcıdaki ilgili eylemlerle eşleşen bu veritab
 | Veritabanı tablolarını listeleme | Tabloları al |
 | Seç kullanarak bir satırı okuma | Satırı al |
 | Seç kullanarak tüm satırları oku | Satırları al |
-| INSERT kullanarak bir satır ekleme | Satır Ekle |
-| GÜNCELLEŞTIRME kullanarak bir satırı düzenleme | Satırı Güncelleştir |
+| INSERT kullanarak bir satır ekleme | Satır ekle |
+| GÜNCELLEŞTIRME kullanarak bir satırı düzenleme | Satırı güncelleştir |
 | SIL kullanarak bir satırı kaldırma | Satırı Sil |
 |||
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -83,14 +83,14 @@ Bağlantınızı ayarlamak için, istendiğinde bu bağlantı ayrıntılarını 
 | Özellik | Gereklidir | Açıklama |
 |----------|----------|-------------|
 | **Şirket içi ağ geçidi üzerinden Bağlan** | Hayır | Yalnızca şirket içi bağlantılar için geçerlidir. |
-| **Bağlantı Adı** | Yes | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" |
-| **Sunucu** | Yes | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası (örneğin, "myDB2server.cloudapp.net:50000") <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
-| **Veritabanı** | Yes | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
-| **Kullanıcı Adı** | Yes | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
-| **Parola** | Yes | Veritabanı için parolanız |
+| **Bağlantı Adı** | Evet | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" |
+| **Sunucu** | Evet | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası (örneğin, "myDB2server.cloudapp.net:50000") <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
+| **Veritabanı** | Evet | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
+| **Kullanıcı Adı** | Evet | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
+| **Parola** | Evet | Veritabanı için parolanız |
 ||||
 
-Örnek:
+Örneğin:
 
 ![Bulut tabanlı veritabanları için bağlantı ayrıntıları](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -102,17 +102,17 @@ Bağlantınızı oluşturmadan önce şirket içi veri ağ geçidiniz zaten yük
 
 | Özellik | Gereklidir | Açıklama |
 |----------|----------|-------------|
-| **Şirket içi ağ geçidi üzerinden Bağlan** | Yes | Şirket içinde bağlantı istediğinizde geçerlidir ve şirket içi bağlantı özelliklerini gösterir. |
-| **Bağlantı Adı** | Yes | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" | 
-| **Sunucu** | Yes | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası, örneğin, "myDB2server: 50000" <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
-| **Veritabanı** | Yes | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
-| **Kimlik doğrulaması** | Yes | Bağlantınızın kimlik doğrulama türü, örneğin, "temel" <p><p>**Note**: temel veya Windows (Kerberos) içeren listeden bu değeri seçin. |
-| **Kullanıcı Adı** | Yes | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
-| **Parola** | Yes | Veritabanı için parolanız |
-| **Ağ geçidi** | Yes | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
+| **Şirket içi ağ geçidi üzerinden Bağlan** | Evet | Şirket içinde bağlantı istediğinizde geçerlidir ve şirket içi bağlantı özelliklerini gösterir. |
+| **Bağlantı Adı** | Evet | Bağlantınızın adı, örneğin "MyLogicApp-DB2-Connection" | 
+| **Sunucu** | Evet | DB2 sunucunuzun adresi veya diğer adı iki nokta üst üste bağlantı noktası numarası, örneğin, "myDB2server: 50000" <p><p>**Note**: Bu değer, bir TCP/IP adresini veya diğer adı IPv4 veya IPv6 biçiminde, ardından iki nokta üst üste ve bir TCP/IP bağlantı noktası numarasına göre temsil eden bir dizedir. |
+| **Veritabanı** | Evet | Veritabanınızın adı <p><p>**Note**: Bu değer, bir DRDA Ilişkisel veritabanı adını (RDBNAM) temsil eden bir dizedir: <p>-DB2 for z/OS, veritabanının "z/ç için IBM DB2" konumu olarak bilinen bir 16 baytlık dizeyi kabul eder. <br>-DB2, veritabanının "ı için IBM DB2" ilişkisel veritabanı olarak bilinen bir 18 baytlık dizeyi kabul eder. <br>-LUW için-DB2 8 baytlık bir dizeyi kabul eder. |
+| **Kimlik doğrulaması** | Evet | Bağlantınızın kimlik doğrulama türü, örneğin, "temel" <p><p>**Note**: temel veya Windows (Kerberos) içeren listeden bu değeri seçin. |
+| **Kullanıcı Adı** | Evet | Veritabanı için Kullanıcı adınız <p><p>**Note**: Bu değer, uzunluğu belirli veritabanına göre olan bir dizedir: <p><p>-Z/ç için-DB2 8 baytlık bir dizeyi kabul eder. <br>-DB2, 10 baytlık bir dizeyi kabul eder. <br>-Linux veya UNIX için DB2, 8 baytlık bir dizeyi kabul eder. <br>-Windows için-DB2, 30 baytlık bir dizeyi kabul eder. |
+| **Parola** | Evet | Veritabanı için parolanız |
+| **Ağ geçidi** | Evet | Yüklü şirket içi veri ağ geçidinizin adı <p><p>**Note**: Azure aboneliğiniz ve kaynak grubunuz içindeki tüm yüklü veri ağ geçitlerini içeren listeden bu değeri seçin. |
 ||||
 
-Örnek:
+Örneğin:
 
 ![Şirket içi veritabanları için bağlantı ayrıntıları](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -153,8 +153,8 @@ Bir DB2 veritabanı tablosunda bir kayıt getirmek için mantıksal uygulamanız
 
    | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Yes | Bu örnekteki "alan" gibi istediğiniz kayda sahip tablo |
-   | **Alan KIMLIĞI** | Yes | Bu örnekte "99999" gibi istediğiniz kaydın KIMLIĞI |
+   | **Tablo adı** | Evet | Bu örnekteki "alan" gibi istediğiniz kayda sahip tablo |
+   | **Alan KIMLIĞI** | Evet | Bu örnekte "99999" gibi istediğiniz kaydın KIMLIĞI |
    ||||
 
    ![Tablo Seç](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -217,7 +217,7 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
    ![Çıktı satırlarını görüntüle](./media/connectors-create-api-db2/db2-connector-get-rows-outputs.png)
 
-## <a name="insert-row"></a>Satır Ekle
+## <a name="insert-row"></a>Satır ekle
 
 Bir DB2 veritabanı tablosuna tek bir kayıt eklemek için mantıksal uygulamanızdaki **satır ekle** eylemini kullanın. Bu eylem, örneğin `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`bir DB2 `INSERT` ifadesini çalıştırır.
 
@@ -233,13 +233,13 @@ Bir DB2 veritabanı tablosuna tek bir kayıt eklemek için mantıksal uygulaman�
 
    | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Yes | Kaydın ekleneceği tablo, örneğin "alan" |
-   | **Alan KIMLIĞI** | Yes | Eklenecek alanın KIMLIĞI, örneğin "99999" |
-   | **Alan açıklaması** | Yes | Eklenecek alanın açıklaması, örneğin "alan 99999" |
-   | **Bölge KIMLIĞI** | Yes | Eklenecek bölgenin KIMLIĞI, örneğin "102" |
+   | **Tablo adı** | Evet | Kaydın ekleneceği tablo, örneğin "alan" |
+   | **Alan KIMLIĞI** | Evet | Eklenecek alanın KIMLIĞI, örneğin "99999" |
+   | **Alan açıklaması** | Evet | Eklenecek alanın açıklaması, örneğin "alan 99999" |
+   | **Bölge KIMLIĞI** | Evet | Eklenecek bölgenin KIMLIĞI, örneğin "102" |
    |||| 
 
-   Örnek:
+   Örneğin:
 
    ![Tablo Seç](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -264,7 +264,7 @@ Mantıksal uygulamanızı el ile çalıştırmak için tasarımcı araç çubuğ
 
    ![Ekli satır ile çıktıyı görüntüleme](./media/connectors-create-api-db2/db2-connector-insert-row-outputs.png)
 
-## <a name="update-row"></a>Satırı Güncelleştir
+## <a name="update-row"></a>Satırı güncelleştir
 
 Bir DB2 veritabanı tablosundaki tek bir kaydı güncelleştirmek için mantıksal uygulamanızdaki **satırı Güncelleştir** eylemini kullanın. Bu eylem, örneğin `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`bir DB2 `UPDATE` ifadesini çalıştırır.
 
@@ -280,14 +280,14 @@ Bir DB2 veritabanı tablosundaki tek bir kaydı güncelleştirmek için mantıks
 
    | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Yes | Kaydın güncelleştirilmesi gereken tablo, örneğin "alan" |
-   | **Satır KIMLIĞI** | Yes | Güncelleştirilecek kaydın KIMLIĞI, örneğin "99999" |
-   | **Alan KIMLIĞI** | Yes | Yeni alan KIMLIĞI ("99999" gibi) |
-   | **Alan açıklaması** | Yes | Yeni alan açıklaması ("güncelleştirilmiş 99999" gibi) |
-   | **Bölge KIMLIĞI** | Yes | Yeni bölge KIMLIĞI ("102" gibi) |
+   | **Tablo adı** | Evet | Kaydın güncelleştirilmesi gereken tablo, örneğin "alan" |
+   | **Satır KIMLIĞI** | Evet | Güncelleştirilecek kaydın KIMLIĞI, örneğin "99999" |
+   | **Alan KIMLIĞI** | Evet | Yeni alan KIMLIĞI ("99999" gibi) |
+   | **Alan açıklaması** | Evet | Yeni alan açıklaması ("güncelleştirilmiş 99999" gibi) |
+   | **Bölge KIMLIĞI** | Evet | Yeni bölge KIMLIĞI ("102" gibi) |
    ||||
 
-   Örnek:
+   Örneğin:
 
    ![Tablo Seç](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -328,11 +328,11 @@ Bir DB2 veritabanı tablosundan tek bir kaydı silmek için, mantıksal uygulama
 
    | Özellik | Gereklidir | Açıklama |
    |----------|----------|-------------|
-   | **Tablo adı** | Yes | Kaydın silineceği tablo, örneğin "alan" |
-   | **Satır KIMLIĞI** | Yes | Silinecek kaydın KIMLIĞI, örneğin "99999" |
+   | **Tablo adı** | Evet | Kaydın silineceği tablo, örneğin "alan" |
+   | **Satır KIMLIĞI** | Evet | Silinecek kaydın KIMLIĞI, örneğin "99999" |
    ||||
 
-   Örnek:
+   Örneğin:
 
    ![Tablo Seç](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 

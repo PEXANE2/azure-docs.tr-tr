@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric en iyi güvenlik uygulamaları | Microsoft Docs
-description: Azure Service Fabric güvenliği için en iyi uygulamalar.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric güvenliği en iyi yöntemleri
+description: Azure Service Fabric kümelerini ve uygulamalarını güvenli tutmak için en iyi yöntemler ve tasarım konuları.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807451"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551769"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric güvenliği 
 
@@ -221,7 +212,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 - \* download.microsoft.com
 - \* servicefabric.azure.com
-- *. core.windows.net
+- *.core.windows.net
 
 Bu güvenlik duvarı kuralları, sanal ağınızdan izin verilen hedefler olarak ServiceFabric ve Storage dahil olmak üzere izin verilen giden ağ güvenlik gruplarınızı tamamlar.
 

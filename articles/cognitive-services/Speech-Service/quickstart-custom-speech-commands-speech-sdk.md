@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 3301c43aa71f041de1c53fb4083de73b6d2e4450
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381112"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
 
@@ -23,10 +23,10 @@ Barındırılan özel komutlar uygulaması oluşturduktan sonra, bir istemci cih
 
 Bu makalede şunları yapmanız gerekir:
 
-- Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama kimliği)
+- Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama KIMLIĞI)
 - Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir istemci uygulaması oluşturun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. Henüz bir özel komutlar uygulaması oluşturmadıysanız, bu önceki hızlı başlangıçlarda bunu yapabilirsiniz:
 
@@ -36,7 +36,7 @@ Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. H
 Ayrıca şunları da yapmanız gerekir:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Konuşma hizmeti için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanı
    > [!div class="mx-imgBorder"] 
    > ![uygulama](media/custom-speech-commands/fulfill-sdk-publish-application.png) Yayımla
 
-1. Uygulama kimliğini daha sonra kullanmak üzere yayımlama bildiriminden Kopyala
+1. Uygulama KIMLIĞINI daha sonra kullanmak üzere yayımlama bildiriminden Kopyala
 
 ## <a name="step-2-create-a-visual-studio-project"></a>2\. Adım: Visual Studio projesi oluşturma
 
@@ -309,7 +309,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
    const string region = "YourServiceRegion"; // The subscription service region. Note: only 'westus2' is currently supported
 
-   var speechCommandsConfig = DialogServiceConfig.FromSpeechCommandsAppId(speechCommandsApplicationId, speechSubscriptionKey, region);
+   var speechCommandsConfig = CustomCommandsConfig.FromSubscription(speechCommandsApplicationId, speechSubscriptionKey, region);
    speechCommandsConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-us");
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```

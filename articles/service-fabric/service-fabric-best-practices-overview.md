@@ -1,42 +1,33 @@
 ---
-title: Azure Service Fabric uygulama ve küme en iyi uygulamalar | Microsoft Docs
-description: Service Fabric kümeleri ve uygulamaları yönetmek için en iyi yöntemler.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric uygulama ve küme en iyi uygulamaları
+description: Azure Service Fabric kullanarak kümeleri, uygulamaları ve Hizmetleri yönetmeye yönelik en iyi yöntemler ve tasarım konuları.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206796"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551786"
 ---
-# <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric uygulama ve küme için en iyi yöntemler
+# <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric uygulama ve küme en iyi uygulamaları
 
-Bu makalede, Azure Service Fabric uygulama ve kümelerin yönetiminde en iyi uygulamalar için bağlantılar sağlar. Üretim ortamınızın güvenilirliği iyileştirmek için bu yöntemleri uygulamanız önerilir. Birini [Service Fabric kümesi şablonları](https://github.com/Azure-Samples/service-fabric-cluster-templates) üretim çözümünüze tasarlamaya başlayabileceğiniz ya da bu yöntemler eklemek için mevcut kullanarak şablonunuzu güncelleştirin.
+Bu makalede, Azure Service Fabric uygulamalarını ve kümelerini yönetmeye yönelik en iyi yöntemlere bağlantılar sağlanmaktadır. Üretim ortamınızın güvenilirliğini iyileştirmek için bu uygulamaları uygulamanız önemle önerilir. Üretim çözümünüzü tasarlamaya başlamak için [Service Fabric kümesi şablonlarından](https://github.com/Azure-Samples/service-fabric-cluster-templates) birini kullanın veya var olan şablonunuzu bu uygulamaları içerecek şekilde güncelleştirin.
 
 ## <a name="security"></a>Güvenlik
 
-* [En iyi güvenlik uygulamaları](service-fabric-best-practices-security.md)
+* [Güvenlik için en iyi uygulamalar](service-fabric-best-practices-security.md)
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
-* [Ağ için en iyi uygulamalar](service-fabric-best-practices-networking.md)
+* [Ağ için en iyi yöntemler](service-fabric-best-practices-networking.md)
 
 ## <a name="compute-planning-and-scaling"></a>İşlem planlama ve ölçeklendirme
 
-* [İşlem ölçeklendirme için en iyi yöntemler](service-fabric-best-practices-capacity-scaling.md)
-* [İşlem kapasitesini planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [İşlem ölçekleme için en iyi uygulamalar](service-fabric-best-practices-capacity-scaling.md)
+* [İşlem kapasitesi planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
 
 ## <a name="infrastructure-as-code"></a>Kod olarak altyapı
 
@@ -44,19 +35,19 @@ Bu makalede, Azure Service Fabric uygulama ve kümelerin yönetiminde en iyi uyg
 
 ## <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 
-* [Küme izleme ve tanılama için en iyi uygulamalar](service-fabric-best-practices-monitoring.md)
+* [Küme izleme ve Tanılama için en iyi uygulamalar](service-fabric-best-practices-monitoring.md)
 
 ## <a name="application-design"></a>Uygulama tasarımı
 
 * [Uygulama tasarımı için en iyi uygulamalar](service-fabric-best-practices-applications.md)
 
-## <a name="checklist"></a>Denetim listesi
+## <a name="checklist"></a>Denetim Listesi
 
-Önceki bölümlerde önerilen yöntemler uyguladıktan sonra üretim hazırlık listesindeki tüm iyi entegre ettik emin olun:
-* [Azure Service Fabric üretim hazırlık denetim listesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+Önceki bölümlerde önerilen uygulamaları uyguladıktan sonra, üretim hazırlığı denetim listesindeki en iyi uygulamaları tümleştirdiğinizden emin olun:
+* [Azure Service Fabric üretim hazırlığı denetim listesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Vm'leri veya Windows Server çalıştıran bilgisayarlarda bir küme oluşturun: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
-* Bir küme sanal makineleri veya Linux çalıştıran bilgisayarlara oluşturun: [Bir Linux kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
-* Service Fabric sorunlarını giderme: [Sorun giderme kılavuzları](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* VM 'lerde veya Windows Server çalıştıran bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
+* VM 'lerde veya Linux çalıştıran bilgisayarlarda küme oluşturma: [Linux kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
+* Sorun giderme Service Fabric: [sorun giderme kılavuzu](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

@@ -5,12 +5,12 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445746"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri
 
@@ -38,6 +38,10 @@ Temel görüntü güncelleştirmeleri kullanılabilir olduğunda veya Framework 
 
 Bu durumda, hem birincil hem de ikincil etiketlere sürekli olarak bakım yapılıyor. Temel görüntü senaryosundan bu, görüntü sahibinin hizmet verilen görüntüleri sağlamasına izin verir.
 
+### <a name="delete-untagged-manifests"></a>Etiketlenmemiş bildirimleri Sil
+
+Kararlı bir etiketi olan bir görüntü güncelleştirilirse, önceden etiketlenmiş görüntü etiketsiz olur ve bu, yalnız bırakılmış bir görüntüye neden olur. Önceki görüntünün bildirimi ve benzersiz katman verileri kayıt defterinde kalır. Kayıt defteri boyutunuzu korumak için, kararlı görüntü güncelleştirmelerinden kaynaklanan etiketlenmemiş bildirimleri düzenli aralıklarla silebilirsiniz. Örneğin, belirli bir süreden daha eski olan etiketlenmemiş bildirimleri [otomatik olarak temizle](container-registry-auto-purge.md) veya etiketlenmemiş bildirimler için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın.
+
 ## <a name="unique-tags"></a>Benzersiz Etiketler
 
 **Öneri**: özellikle birden çok düğümde ölçeklenebilen bir ortamda **dağıtımlar**için benzersiz Etiketler kullanın. Büyük olasılıkla bileşenlerin tutarlı bir sürümünün bilinçli dağıtımlarını istersiniz. Kapsayıcınız yeniden başlatılırsa veya bir Orchestrator daha fazla örnek ölçeklendiyse, ana bilgisayarınız yanlışlıkla daha yeni bir sürüm çekmez ve diğer düğümlerle tutarsız.
@@ -50,6 +54,12 @@ Benzersiz etiketleme, bir kayıt defterine gönderilen her görüntünün benzer
 * **Derleme kimliği** -Bu seçenek büyük olasılıkla artımlı olduğundan en iyi şekilde olabilir ve tüm yapıtları ve günlükleri bulmak için belirli bir yapıya geri ilişki kurmanıza olanak tanır. Bununla birlikte, bir bildirim Özeti gibi, insanların okuması zor olabilir.
 
   Kuruluşunuzun çeşitli yapı sistemleri varsa, yapı sistemi adı ile etiketin önüne önek bu seçenekte bir çeşittir: `<build-system>-<build-id>`. Örneğin, derlemeleri API ekibinin Jenkins derleme sisteminden ve Web ekibinin Azure Pipelines derleme sisteminden ayırt edebilirsiniz.
+
+### <a name="lock-deployed-image-tags"></a>Dağıtılan görüntü etiketlerini kilitle
+
+En iyi uygulama olarak, `write-enabled` özniteliğini `false`olarak ayarlayarak dağıtılan herhangi bir görüntü etiketini [kilitlemenizi](container-registry-image-lock.md) öneririz. Bu uygulama, yanlışlıkla bir görüntüyü kayıt defterinden kaldırmanızı ve dağıtımlarınızı kesintiye engel olmasını önler. Yayın işlem hattınızda kilitleme adımını dahil edebilirsiniz.
+
+Dağıtılan bir görüntünün kilitlenmesi, kayıt defterinizi sürdürmek için Azure Container Registry özellikleri kullanarak Kayıt defterinizden diğer, dağıtılmamış görüntüleri kaldırmanıza olanak tanır. Örneğin, etiketlenmemiş bildirimleri veya belirtilen süreden daha eski görüntüleri [otomatik olarak temizle](container-registry-auto-purge.md) veya etiketlenmemiş bildirimler için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

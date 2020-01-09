@@ -1,33 +1,24 @@
 ---
-title: Yedekleme ve geri yükleme Azure Service Fabric aktör | Microsoft Docs
-description: Yedekleme uygulamak ve, Azure Service Fabric aktör geri yükleme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric aktörleri yedekleme ve geri yükleme
+description: Azure Service Fabric aktörlerinizi yedekleme ve geri yükleme işlemlerinin nasıl uygulanacağını öğrenin.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: cb397141c86f40f02d8046838865106e0fb8992c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370468"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors uygulama, yedekleme ve geri yükleme
+# <a name="implement-reliable-actors-backup-and-restore"></a>Yedekleme ve geri yükleme Reliable Actors uygulama
 
 > [!NOTE]
-> Microsoft öneriyor kullanılacak [düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md) güvenilir durum bilgisi olan hizmetler ve Reliable Actors veri yedeklemeyi yapılandırmak için. 
+> Microsoft, güvenilir durum bilgisi olan hizmetler ve Reliable Actors veri yedeklemesini yapılandırmak için [düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md) kullanmayı önerir. 
 > 
 
-Aşağıdaki örnekte, bir özel aktör hizmeti uzaktan iletişim dinleyicisi zaten var. avantajlarından yararlanarak aktör verileri yedeklemek için bir yöntem sunar. `ActorService`:
+Aşağıdaki örnekte, özel bir aktör hizmeti, `ActorService`' de zaten mevcut olan uzaktan iletişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunar:
 
 ```csharp
 public interface IMyActorService : IService
@@ -103,7 +94,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-Bu örnekte, `IMyActorService` uygulayan bir uzak sözleşme `IService` (C#) ve `Service` (Java) ve ardından tarafından uygulanan `MyActorService`. Bu uzaktan iletişim anlaşması yöntemleri üzerinde ekleyerek `IMyActorService` artık uzaktan iletişimi Ara sunucu aracılığıyla oluşturarak bir istemciye kullanılabilir `ActorServiceProxy`:
+Bu örnekte, `IMyActorService`, `IService` (C#) ve `Service` (Java) uygulayan ve daha sonra `MyActorService`tarafından uygulanan bir uzaktan iletişim sözleşmedir. Bu uzaktan iletişim sözleşmesi eklendiğinde `IMyActorService` Yöntemler artık `ActorServiceProxy`aracılığıyla bir uzaktan iletişim proxy 'si oluşturularak bir istemci tarafından da kullanılabilir:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -118,10 +109,10 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Reliable Actors hakkında daha fazla bilgi için bu makaleleri okuyun:
+Reliable Actors hakkında daha fazla bilgi için aşağıdaki makaleleri okuyun:
 * [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
-* [Aktör yaşam döngüsü ve atık toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktörler API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
+* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432528"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java için Application Insights Sorun Giderme, Soru ve Yanıt
-[Java 'Da Azure Application Insights][java]sorular veya sorunlar var mı? İşte bazı ipuçları.
+[Java 'Da Azure Application Insights][java]sorular veya sorunlar var mı? Aşağıda birkaç ipucu verilmiştir.
 
 ## <a name="build-errors"></a>Derleme hataları
 **Çakışan Küreler veya IntelliJ fikri içinde, Maven veya Gradle aracılığıyla Application Insights SDK 'Sı eklerken derleme veya sağlama toplamı doğrulama hataları alıyorum.**
@@ -52,7 +52,6 @@ ms.locfileid: "72820809"
 * Java aracısını [Yapılandır](java-agent.md) ' ı izleyerek Java aracısını yapılandırdınız mı?
 * Hem Java Agent jar hem de AI-Agent. xml dosyasının aynı klasöre yerleştirildiğinden emin olun.
 * Otomatik toplamaya çalıştığınız bağımlılığın otomatik toplama için desteklendiğinden emin olun. Şu anda yalnızca MySQL, MsSQL, Oracle DB ve Redsıs bağımlılık koleksiyonu için Azure önbelleğini destekliyoruz.
-* JDK 1,7 veya 1,8 mi kullanıyorsunuz? Şu anda JDK 9 ' da bağımlılık toplamayı desteklemiyoruz.
 
 ## <a name="no-usage-data"></a>Kullanım verisi yok
 **İstekler ve yanıt süreleri hakkında veri görüyorum, ancak sayfa görüntüleme, tarayıcı veya Kullanıcı verisi yok.**
@@ -67,7 +66,7 @@ Hem istemci hem de sunucu telemetrinizi ayarlamak için aynı izleme anahtarın�
 ## <a name="disabling-telemetry"></a>Telemetri devre dışı bırakılıyor
 **Telemetri toplamayı nasıl devre dışı bırakabilirim?**
 
-Kodda:
+Kod:
 
 ```Java
 
@@ -75,7 +74,7 @@ Kodda:
     config.setTrackingIsDisabled(true);
 ```
 
-**Veya**
+**veya**
 
 ApplicationInsights. xml dosyasını güncelleştirin (Projenizdeki kaynaklar klasöründe). Kök düğümü altına aşağıdakileri ekleyin:
 

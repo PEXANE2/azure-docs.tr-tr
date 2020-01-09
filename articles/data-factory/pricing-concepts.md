@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/25/2018
-ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 12/27/2019
+ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684529"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552143"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örnekler aracılığıyla Data Factory fiyatlandırmasını anlama
 
@@ -126,13 +126,13 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
   - İşlem hattı etkinliği = $0,00003 (1 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.002/saat)
   - Dış ardışık düzen etkinliği = $0,000041 (10 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.00025/saat)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Normal bir Workday için eşleme veri akışı hata ayıklamasını kullanma (Önizleme fiyatlandırması)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Normal bir Workday için eşleme veri akışı hata ayıklamasını kullanma
 
-Veri mühendisi olarak her gün veri akışlarını tasarlama, oluşturma ve test etme konusunda siz sorumlusunuz. Sabah ADF Kullanıcı arabiriminde oturum açın ve veri akışları için hata ayıklama modunu etkinleştirin. Hata ayıklama oturumları için varsayılan TTL 60 dakikadır. Günde 10 saat boyunca çalışırsınız, bu nedenle hata ayıklama oturumunuzun süresi dolmaz. Bu nedenle, günün ücreti şu şekilde olacaktır:
+Veri mühendisi olarak her gün veri akışlarını tasarlama, oluşturma ve test etme konusunda siz sorumlusunuz. Sabah ADF Kullanıcı arabiriminde oturum açın ve veri akışları için hata ayıklama modunu etkinleştirin. Hata ayıklama oturumları için varsayılan TTL 60 dakikadır. Günde 8 saat boyunca çalışırsınız, bu nedenle hata ayıklama oturumunuzun süresi dolmaz. Bu nedenle, günün ücreti şu şekilde olacaktır:
 
-**10 (saat) x 8 (çekirdek) x $0,112 = $8,96**
+**8 (saat) x 8 (işlem için iyileştirilmiş çekirdek) x $0,193 = $12,35**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Eşleme verisi akışlarıyla blob deposundaki verileri dönüştürme (Önizleme fiyatlandırması)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Eşleme verisi akışlarıyla blob deposundaki verileri dönüştürme
 
 Bu senaryoda, bir saatlik zamanlamaya göre ADF eşleme veri akışları ' nda blob deposundaki verileri görsel olarak dönüştürmek istiyorsunuz.
 
@@ -153,7 +153,7 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
-| Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 \*, 10 TTL ile genel Işlem için 8 çekirdek |
+| Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 \*, 10 TTL ile genel Işlem için 16 çekirdek |
 | İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
 **Toplam senaryo fiyatlandırması: $0,3011**
@@ -161,9 +161,9 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 - Data Factory Işlemler = **$0,0001**
   - Okuma/yazma = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
   - İzleme = 2\*000005 = $0,00001 [1 Izleme = $0,25/50000 = 0,000005]
-- İşlem hattı düzenleme &amp; yürütme = **$0,301**
+- İşlem hattı düzenleme &amp; yürütme = **$1,463**
   - Etkinlik çalıştırmaları = 001\*2 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
-  - Veri akışı etkinlikleri = $0,299 20 dakika (10 dakikalık yürütme süresi + 10 dakikalık TTL) için eşit olarak dağıtılır. 8 çekirdek genel işlem ile Azure Integration Runtime $0.112/saat
+  - Veri akışı etkinlikleri = $1,461 20 dakika (10 dakikalık yürütme süresi + 10 dakikalık TTL) için eşit olarak dağıtılır. 16 çekirdek genel işlem ile Azure Integration Runtime $0.274/saat
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

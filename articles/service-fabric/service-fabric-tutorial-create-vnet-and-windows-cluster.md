@@ -1,30 +1,19 @@
 ---
-title: Azure 'da Windows çalıştıran bir Service Fabric kümesi oluşturma | Microsoft Docs
+title: Azure 'da Windows çalıştıran bir Service Fabric kümesi oluşturma
 description: Bu öğreticide, PowerShell kullanarak bir Azure sanal ağı ve ağ güvenlik grubuna Windows Service Fabric kümesi dağıtmayı öğreneceksiniz.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177977"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551735"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Service Fabric kümesini Azure sanal ağına dağıtma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Windows çalıştıran bir Azure Service Fabric kümesini PowerShell ve şablon kullanarak bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md) ve [ağ güvenlik grubuna](../virtual-network/virtual-networks-nsg.md) dağıtmayı öğrenirsiniz. İşiniz bittiğinde, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz vardır. Azure CLı kullanan bir Linux kümesi oluşturmak için bkz. [Azure 'da güvenli bir Linux kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Bu öğretici, bir serinin birinci bölümüdür. Windows çalıştıran bir Azure Service Fabric kümesini PowerShell ve şablon kullanarak bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md) ve [ağ güvenlik grubuna](../virtual-network/virtual-networks-nsg.md) dağıtmayı öğrenirsiniz. İşiniz bittiğinde, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz vardır. Azure CLı kullanan bir Linux kümesi oluşturmak için bkz. [Azure 'da güvenli bir Linux kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 Bu öğreticide bir üretim senaryosu açıklanır. Sınama amacıyla daha küçük bir küme oluşturmak istiyorsanız, bkz. [test kümesi oluşturma](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
@@ -40,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure PowerShell’de güvenli bir Service Fabric kümesi oluşturma
 > * X.509 sertifikasıyla kümenin güvenliğini sağlama
 > * PowerShell kullanarak kümeye bağlanma
-> * Bir kümeyi kaldırma
+> * Küme kaldırma
 
 Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
@@ -53,7 +42,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -112,6 +101,7 @@ Sanal ağ, alt ağ ve ağ güvenlik grubunun adları şablon parametrelerinde bi
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
 * Kısa ömürlü bağlantı noktası aralığı: 49152-65534 (en az 256 bağlantı noktası gerekir).
 * Uygulamanın kullanımına yönelik bağlantı noktaları: 80 ve 443
@@ -153,7 +143,7 @@ Varsayılan olarak, [Windows Defender virüsten koruma programı](/windows/secur
 
 [Azuredeploy. Parameters. JSON][parameters] parametre dosyası, kümeyi ve ilişkili kaynakları dağıtmak için kullanılan birçok değeri bildirir. Dağıtımınız için değiştirme parametreleri aşağıda verilmiştir:
 
-**Parametresinin** | **Örnek değer** | **Notlar** 
+**Parametre** | **Örnek değer** | **Notlar** 
 |---|---|---|
 |adminUserName|vmadmin| Küme VM’leri için yönetici kullanıcı adı. [VM Için Kullanıcı adı gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Küme VM’leri için yönetici parolası. [VM Için parola gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
@@ -177,12 +167,12 @@ Service Fabric kümesi, Web tabanlı [Service Fabric Explorer](service-fabric-vi
 
 Bu makalede, zaten bir kiracı oluşturmuş olduğunuz varsayılmaktadır. Yapmadıysanız, [Azure Active Directory kiracının nasıl alınacağını](../active-directory/develop/quickstart-create-new-tenant.md)okuyarak başlayın.
 
-Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili adımları basitleştirmek için bir Windows PowerShell komut dosyası kümesi oluşturduk. [Betikleri bilgisayarınıza indirin](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) .
+Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili adımları basitleştirmek için bir Windows PowerShell komut dosyası kümesi oluşturduk. [Betikleri bilgisayarınıza indirin](https://github.com/Azure-Samples/service-fabric-aad-helpers) .
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD uygulamaları oluşturma ve rollere kullanıcı atama
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturun: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, kullanıcılarınızı [Service Fabric tarafından desteklenen rollere](service-fabric-cluster-security-roles.md)atayın: salt okunurdur ve yönetici.
 
-`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın. Kullanıcılar için Kullanıcı adlarını ve parolaları belirtin. Örnek:
+`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın. Kullanıcılar için Kullanıcı adlarını ve parolaları belirtin. Örneğin:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -259,7 +249,7 @@ Betik, kümeyi oluştururken Kaynak Yöneticisi şablonu için gereken JSON 'ı 
 }
 ```
 
-Parametre değerlerini [azuredeploy. Parameters. JSON][parameters] parametreleri dosyasına ekleyin. Örnek:
+Parametre değerlerini [azuredeploy. Parameters. JSON][parameters] parametreleri dosyasına ekleyin. Örneğin:
 
 ```json
 "aadTenantId": {
@@ -443,7 +433,7 @@ Kümenizde EventStore hizmetini etkinleştirmek için **Microsoft. ServiceFabric
 
 Azure Izleyici günlükleri, küme düzeyindeki olayları izlemek için önerimiz. Kümenizi izlemek üzere Azure Izleyici günlüklerini ayarlamak için, [Küme düzeyindeki olayları görüntülemek için tanılamayı etkinleştirmeniz](#configure-diagnostics-collection-on-the-cluster)gerekir.  
 
-Çalışma alanının, kümeinizden gelen tanılama verilerine bağlanması gerekir.  Bu günlük verileri, WADServiceFabric * EventTable, WADWindowsEventLogsTable ve Wadeviltable tablolarında *Applicationdiagnosticsstorageaccountname* depolama hesabında depolanır.
+Çalışma alanı kümenizden gelen Tanılama verileri bağlanması gerekir.  Bu günlük verileri, WADServiceFabric * EventTable, WADWindowsEventLogsTable ve Wadeviltable tablolarında *Applicationdiagnosticsstorageaccountname* depolama hesabında depolanır.
 
 Azure Log Analytics çalışma alanını ekleyin ve çalışma alanına çözümü ekleyin:
 
@@ -713,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici serisindeki diğer makaleler, oluşturduğunuz kümeyi kullanır. Hemen bir sonraki makaleye geçmeyecekseniz ücretlendirmeden kaçınmak için [kümeyi silmeniz](service-fabric-cluster-delete.md) iyi olur.
+Bu öğretici serisindeki diğer makaleler, oluşturduğunuz kümeyi kullanır. Hemen bir sonraki makaleye geçmeyecekseniz ücret alınmaması için [kümeyi silmeniz](service-fabric-cluster-delete.md) iyi olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -729,7 +719,7 @@ Kümenizi ölçeklendirmeyi öğrenmek için aşağıdaki öğreticiye ilerleyin
 > * Azure PowerShell’de güvenli bir Service Fabric kümesi oluşturma
 > * X.509 sertifikasıyla kümenin güvenliğini sağlama
 > * PowerShell kullanarak kümeye bağlanma
-> * Bir kümeyi kaldırma
+> * Küme kaldırma
 
 Daha sonra, kümenizi nasıl izleyeceğinizi öğrenmek için aşağıdaki öğreticiye ilerleyin.
 > [!div class="nextstepaction"]

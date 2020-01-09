@@ -1,26 +1,18 @@
 ---
-title: Threat Modeling Tool yayınları-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Microsoft Threat Modeling Tool Release 4/9/2019-Azure
 description: Tehdit modelleme aracı için sürüm notlarını belgeleme
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jegeib
-ms.openlocfilehash: 6992ac58ebf8976714e5a478dd7b886efab2a4b7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 488168b1a17d3f5fac1ae7cca0a37676063bfe03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934798"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552075"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool güncelleştirme sürümü 7.1.60408.1-4/9/2019
 
@@ -47,7 +39,7 @@ Threat Modeling Tool istemci sürümü artık erişim kolaylığı için uygulam
 
 ### <a name="support-links-have-been-updated"></a>Destek bağlantıları güncelleştirildi
 
-Araç içindeki tüm destek bağlantıları, kullanıcıların bir MSDN Forumu yerine uygulamasına [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) doğrudan yönlendirilmesi için güncelleştirilmiştir.
+Araç içindeki tüm destek bağlantıları, kullanıcıları bir MSDN Forumu yerine [tmtextsupport@microsoft.com](mailto:tmtextsupport@microsoft.com) yönlendirecek şekilde güncelleştirilmiştir.
 
 ## <a name="system-requirements"></a>Sistem gereksinimleri
 

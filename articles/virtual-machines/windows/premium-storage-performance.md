@@ -1,18 +1,18 @@
 ---
-title: "Azure Premium Depolama: Windows VM 'lerinde performans için tasarım "
-description: Azure Premium Depolama kullanarak yüksek performanslı uygulamalar tasarlayın. Premium Depolama, Azure sanal makinelerinde çalışan g/ç yoğunluklu iş yükleri için yüksek performanslı ve düşük gecikmeli disk desteği sunar.
+title: "Azure Premium Depolama: Windows VM 'lerinde performans için tasarım | Microsoft Docs"
+description: Azure Premium SSD ile yönetilen diskleri kullanarak yüksek performanslı uygulamalar tasarlayın. Premium Depolama, Azure sanal makinelerinde çalışan g/ç yoğunluklu iş yükleri için yüksek performanslı ve düşük gecikmeli disk desteği sunar.
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 584c69f4079eeebf04a0e40021bfc843b40e8b1b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 12fb94bb4f98bde5c70343f18762cefe1ab120f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371351"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "74032949"
 >
 > VM 'niz hızlandırılmış ağı destekliyorsa etkinleştirildiğinden emin olun. Etkinleştirilmemişse, hem [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) hem de [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)üzerinde zaten dağıtılmış VM 'lerde etkinleştirebilirsiniz.
 
-Başlamadan önce Premium Storage 'a yeni başladıysanız, önce [IaaS VM 'leri için bir Azure disk türü seçin](disks-types.md) ve [depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri](../../storage/common/storage-scalability-targets.md)makalesini okuyun.
+Başlamadan önce Premium Storage 'a yeni başladıysanız, ilk olarak [IaaS VM 'leri Için Azure disk türünü seçin](disks-types.md) ve [Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik hedeflerini](../../storage/blobs/scalability-targets-premium-page-blobs.md)okuyun.
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
 

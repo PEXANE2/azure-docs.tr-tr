@@ -3,19 +3,19 @@ title: Azure Cosmos DB için Gelişmiş tehdit koruması
 description: Azure Cosmos DB, bekleyen verilerin şifrelenmesi ve nasıl uygulandığı hakkında bilgi edinin.
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445539"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için Gelişmiş tehdit koruması
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)
 
 Azure Cosmos DB için Gelişmiş tehdit koruması, Azure Cosmos DB hesaplara yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Bu koruma katmanı, güvenlik uzmanı olmadan bile tehditleri ele almanıza ve bunları Merkezi güvenlik izleme sistemleriyle tümleştirmenize olanak tanır.
 
@@ -27,6 +27,14 @@ Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde t
 > * Azure Cosmos DB için Gelişmiş tehdit koruması Şu anda Azure Kamu ve bağımsız bulut bölgelerinde kullanılamaz.
 
 Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsayıcılar ve veritabanlarına yönelik CRUD işlemleri de dahil olmak üzere, veritabanı üzerindeki işlemleri günlüğe kaydeden [Azure Cosmos DB tanılama günlüğünü](https://docs.microsoft.com/azure/cosmos-db/logging)etkinleştirmeyi öneririz.
+
+## <a name="threat-types"></a>Tehdit türleri
+
+Azure Cosmos DB için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar. Şu anda şu uyarıları tetikleyebilirler:
+
+- **Olağan dışı konumlardan erişim**: Bu uyarı, bir Azure Cosmos hesabına yönelik erişim modelinde bir değişiklik olduğunda tetiklenir ve bu, birisinin olağan dışı bir coğrafi konumdan Azure Cosmos DB uç noktasına bağlandığı yerdir. Bazı durumlarda, uyarı yeni bir uygulama veya geliştiricinin bakım işlemini ifade eden yasal bir eylemi algılar. Diğer durumlarda, uyarı eski bir çalışan, dış saldırgan vb. için kötü amaçlı bir eylem algılar.
+
+- **Olağan dışı veri ayıklama**: Bu uyarı, bir istemci bir Azure Cosmos DB hesabından olağan dışı miktarda veri ayıkladığında tetiklenir. Bu, hesapta depolanan tüm verilerin bir dış veri deposuna aktarılması için gerçekleştirilen bazı veri dışlanan belirtisi olabilir.
 
 ## <a name="set-up-advanced-threat-protection"></a>Gelişmiş tehdit koruması ayarlama
 
@@ -41,7 +49,7 @@ Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsay�
 3. **Gelişmiş güvenlik** yapılandırması dikey penceresinde:
 
     * **Gelişmiş tehdit koruması** seçeneğine tıklayarak **Açık**olarak ayarlayın.
-    * Yeni veya güncelleştirilmiş Gelişmiş tehdit koruması ilkesini kaydetmek için **Kaydet** ' e tıklayın.   
+    * Yeni veya güncelleştirilmiş Gelişmiş Tehdit Koruması ilkesini kaydetmek için **Kaydet**’e tıklayın.   
 
 ### <a name="set-up-atp-using-rest-api"></a>REST API kullanarak ATP ayarlama
 
@@ -101,5 +109,5 @@ Uyarı ayrıntıları ve önerilen eylemlerle birlikte bir e-posta bildirimi de 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tanılama günlüğü](monitor-cosmos-db.md#diagnostic-settings) hakkında daha fazla bilgi edinin Azure Cosmos DB
+* [Tanılama günlüğü](cosmosdb-monitor-resource-logs.md) hakkında daha fazla bilgi edinin Azure Cosmos DB
 * [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin

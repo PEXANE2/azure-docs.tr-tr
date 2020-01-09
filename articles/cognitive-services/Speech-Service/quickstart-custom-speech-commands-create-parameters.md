@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fc859625be0706dd130cf7714d0fabf196740e91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381010"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)
 
@@ -34,32 +34,32 @@ Bu makalede, bu uygulamayı parametreleri ile genişletecektir ve bu sayede bird
    > [!div class="mx-imgBorder"]
    > ![parametre oluştur](media/custom-speech-commands/create-on-off-parameter.png)
 
-   | Ayar            | Önerilen değer | Açıklama                                                                                               |
-   | ------------------ | --------------- | --------------------------------------------------------------------------------------------------------- |
-   | Adı               | Mikrofon           | Parametrağınız için açıklayıcı bir ad                                                                     |
-   | Geneldir          | denetlenmemiş       | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
-   | Gereklidir           | checked         | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
-   | Yanıt şablonu  | Açık veya kapalı mı?      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
-   | Tür               | Dize          | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
-   | Yapılandırma      | Dize listesi     | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
-   | Dize listesi değerleri | açık, kapalı         | Dize listesi parametresi için, olası değerler ve bunların eşanlamlıları kümesi                                |
+   | Ayar            | Önerilen değer     | Açıklama                                                                                               |
+   | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Ad               | Mikrofon               | Parametrağınız için açıklayıcı bir ad                                                                     |
+   | Geneldir          | unchecked           | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
+   | Gereklidir           | checked             | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
+   | Yanıt şablonu  | "-Açık veya kapalı mı?"      | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
+   | Tür               | Dize              | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
+   | Yapılandırma      | Dize listesi         | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
+   | Dize listesi değerleri | açık, kapalı             | Dize listesi parametresi için, olası değerler ve bunların eşanlamlıları kümesi                                |
 
    - Sonra, cihazların adını temsil etmek için ikinci bir parametre eklemek üzere `+` simgesini yeniden seçin. Bu örnek için bir TV ve fan
 
-   | Ayar            | Önerilen değer   | Açıklama                                                                                               |
-   | ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------- |
-   | Adı               | SubjectDevice     | Parametrağınız için açıklayıcı bir ad                                                                     |
-   | Geneldir          | denetlenmemiş         | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
-   | Gereklidir           | checked           | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
-   | Yanıt şablonu  | Hangi cihaz?     | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
-   | Tür               | Dize            | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
-   | Yapılandırma      | Dize listesi       | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
-   | Dize listesi değerleri | TV, fan           | Dize listesi parametresi için, olası değerler ve bunların eşanlamlıları kümesi                                |
-   | Eş anlamlılar (TV)      | televizyon, telefon | Bir dize listesi parametresinin olası her değeri için isteğe bağlı eş anlamlılar                                      |
+   | Ayar            | Önerilen değer       | Açıklama                                                                                               |
+   | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
+   | Ad               | SubjectDevice         | Parametrağınız için açıklayıcı bir ad                                                                     |
+   | Geneldir          | unchecked             | Bu parametre için bir değerin, projedeki tüm komutlara Global olarak uygulanıp uygulanmadığı belirten onay kutusu |
+   | Gereklidir           | checked               | Komutu tamamlamadan önce Bu parametre için bir değer gerekip gerekmediğini belirten onay kutusu          |
+   | Yanıt şablonu  | "-Hangi cihaz?"     | Bilinmiyorsa bu parametrenin değerini sormak için bir istem                                       |
+   | Tür               | Dize                | Parametre türü, örneğin sayı, dize veya tarih saat                                               |
+   | Yapılandırma      | Dize listesi           | Dizeler için, bir dize listesi girişleri olası değerler kümesiyle sınırlandırır                                      |
+   | Dize listesi değerleri | TV, fan               | Dize listesi parametresi için, olası değerler ve bunların eşanlamlıları kümesi                                |
+   | Eş anlamlılar (TV)      | televizyon, telefon     | Bir dize listesi parametresinin olası her değeri için isteğe bağlı eş anlamlılar                                      |
 
 ## <a name="add-sample-sentences"></a>Örnek cümleler ekleyin
 
-Parametreler ile, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örnek:
+Parametreler ile, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
 
 1. Tam parametre bilgileri-`"turn {OnOff} the {SubjectDevice}"`
 1. Kısmi parametre bilgileri-`"turn it {OnOff}"`
@@ -112,4 +112,3 @@ Test sohbeti panelini açın ve birkaç etkileşimi deneyin.
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
 > [Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)](./quickstart-custom-speech-commands-speech-sdk.md)
-

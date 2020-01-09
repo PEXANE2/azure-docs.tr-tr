@@ -3,20 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2019
-ms.openlocfilehash: 16ee9ae9a4eec6b38c57b984b3acb75479b437e6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 12/17/2019
+ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379513"
 ---
-Olmalıdır bir [Bilişsel hizmetler API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) Bing arama API'lerine erişim. Devam etmeden önce bir abonelik S9 fiyat katmanı başlattıktan sonra gösterildiği gibi sağlanan erişim anahtarına ihtiyaç duyarsınız [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+## <a name="create-an-azure-resource"></a>Azure kaynağı oluşturma
 
-Azure portalında bir abonelik başlatmak için:
-1. 'BingSearchV7' ifadesini içeren Azure portalının üst metin kutusuna girin `Search resources, services, and docs`.  
-2. Aşağı açılan listesinde Marketi bölümünde seçin `Bing Search v7`.
-3. Girin `Name` yeni kaynak için.
-4. Seçin `Pay-As-You-Go` abonelik.
-5. Seçin `S9` fiyatlandırma katmanı.
-6. Tıklayın `Enable` abonelik başlatmak için.
+Aşağıdaki Azure kaynaklarından birini oluşturarak Bing Görsel Arama API'si kullanmaya başlayın.
+
+* [Deneme kaynağı oluşturma](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Azure aboneliği gerekmez.
+    * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir olacaktır.
+
+* [Bing arama v7 kaynağı oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.
+    * `S9` fiyatlandırma katmanını seçin.
+
+* [Çoklu hizmet kaynağı oluşturma](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Kaynak silininceye kadar Azure portal ile kullanılabilir.  
+    * Birden çok bilişsel hizmetler genelinde uygulamalarınız için aynı anahtarı ve uç noktayı kullanın.

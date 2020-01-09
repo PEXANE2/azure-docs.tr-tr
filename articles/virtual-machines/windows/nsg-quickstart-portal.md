@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371420"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure portal bir sanal makineye bağlantı noktaları açma
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
 1. VM için kaynak grubunu arayıp seçin, **Ekle**' yi seçin ve **ağ güvenlik grubu**' nu arayıp seçin.
 
-2. **Oluştur**'u seçin.
+2. **Oluştur**’u seçin.
 
     **Ağ güvenlik grubu oluştur** penceresi açılır.
 
@@ -73,7 +73,7 @@ Gerçekleştirmeniz gereken son adım, ağ güvenlik grubunuzu bir alt ağ ile v
 
     Bu alt ağa bağlandığınız tüm VM 'Ler artık 80 numaralı bağlantı noktasında erişilebilir.
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
 [Bu makaledeki adımları Azure PowerShell kullanarak da gerçekleştirebilirsiniz](nsg-quickstart-powershell.md).
 
@@ -85,5 +85,5 @@ Yüksek oranda kullanılabilir Web uygulamaları için VM 'lerinizi bir Azure Y�
 Bu makalede, 80 numaralı bağlantı noktasında HTTP trafiğine izin veren bir gelen kuralı oluşturmuş ve sonra bu kuralı bir alt ağla ilişkilendirdikten sonra bir ağ güvenlik grubu oluşturdunuz. 
 
 Aşağıdaki makalelerde daha ayrıntılı ortamlar oluşturma hakkında bilgi edinebilirsiniz:
-- [Azure Resource Manager’a genel bakış](../../azure-resource-manager/resource-group-overview.md)
+- [Azure Resource Manager’a genel bakış](../../azure-resource-manager/management/overview.md)
 - [Güvenlik grupları](../../virtual-network/security-overview.md)

@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB hesabınız için sanal ağ ve alt ağ tabanlı erişimi yapılandırın
+title: Azure Cosmos hesabı için sanal ağ tabanlı erişimi yapılandırma
 description: Bu belgede Azure Cosmos DB için bir sanal ağ hizmeti uç noktası ayarlamak için gereken adımlar açıklanmaktadır.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 80e77e2caacfed7d662fdfa04aa9524bd7c2083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445427"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) erişimi yapılandırma
 
-Bir Azure sanal ağının yalnızca belirli bir alt ağından erişime izin vermek için Azure Cosmos DB hesaplarını yapılandırabilirsiniz. Bir Azure Cosmos DB hesabına erişimi, bir sanal ağdaki bir alt ağdan bağlantılarla sınırlamak için:
+Azure Cosmos DB hesaplarını, yalnızca Azure sanal ağının belirli bir alt ağından erişime izin verecek şekilde yapılandırabilirsiniz. Bir Azure Cosmos DB hesabına erişimi, bir sanal ağdaki bir alt ağdan bağlantılarla sınırlamak için:
 
 1. Alt ağ ve sanal ağ kimliğini Azure Cosmos DB göndermek için alt ağı etkinleştirin. Bu, belirli bir alt ağdaki Azure Cosmos DB için bir hizmet uç noktası etkinleştirerek elde edebilirsiniz.
 
@@ -82,7 +82,7 @@ Portaldan Azure Cosmos DB ölçümlerine erişiminizin olduğundan emin olmak i�
 
    ![Sanal ağı kaldır](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4. Değişikliklerinizi uygulamak için **Kaydet** ' i seçin.
+4. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
 
 ## <a id="configure-using-powershell"></a>Azure PowerShell kullanarak bir hizmet uç noktası yapılandırma
 

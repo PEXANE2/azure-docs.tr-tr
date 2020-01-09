@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74936046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432147"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Gelişmiş machine learning için verileri hazırlama görevleri
 Ön işleme ve verileri temizleme veri kümesi machine learning için etkili bir şekilde kullanılabilmesi için önce genellikle gerçekleştirilmesi gereken önemli görevlerdir. Ham veriler genellikle gürültülü ve güvenilmeyen ve değerleri eksik olabilir. Modelleme için bu verileri kullanarak, yanıltıcı sonuçlara neden olabilir. Bu görevler Team Data Science işlem (TDSP) bir parçasıdır ve genellikle ilk İnceleme bulmak ve gerekli ön işleme planlamak için kullanılan bir veri kümesinin izleyin. Özetlenen adımları daha ayrıntılı TDSP işlemi hakkında yönergeler için bkz: [Team Data Science Process](overview.md).
 
-Ön işleme ve temizleme görevlerini, veri araştırma görevi gibi çeşitli ortamlar, örneğin SQL veya Hive veya Azure Machine Learning Studio ve çeşitli araçları ve dilleri, R veya Python verilerinizin depolandığı bağlı olarak, gibi gerçekleştirilebilme ve nasıl biçimlendirilir. TDSP doğası gereği yinelemeli olduğundan, bu görevleri iş akışı işleminin çeşitli adımları yere alabilir.
+Veri araştırma görevi gibi önceden işleme ve temizleme görevleri, SQL veya Hive veya Azure Machine Learning Studio (klasik) gibi çok çeşitli ortamlarda ve verilerinizin bulunduğu yere bağlı olarak R veya Python gibi çeşitli araçlar ve dillerle gerçekleştirilebilir. depolanır ve nasıl biçimlendirilir. TDSP doğası gereği yinelemeli olduğundan, bu görevleri iş akışı işleminin çeşitli adımları yere alabilir.
 
-Bu makalede, Azure ML Studio (klasik) uygulamasına veri vermeden önce veya sonra alınabilecek çeşitli veri işleme kavramları ve görevleri açıklanır.
+Bu makalede, verileri Azure Machine Learning Studio (klasik) uygulamasına geri almadan önce veya sonra alınabilecek çeşitli veri işleme kavramları ve görevleri açıklanır.
 
-Veri keşif ve önceden işleme bir örnek için Azure ML Studio (klasik) içinde yapılan bir örnek için bkz. [önceden işleme veri](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videosu.
+Veri keşif ve önceden işleme bir örnek için Azure Machine Learning Studio (klasik) içinde yapılan bir örnek için bkz. [önceden işleme veri](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videosu.
 
 ## <a name="why-pre-process-and-clean-data"></a>Neden önceden işleme ve veri temizleme?
 Gerçek veriler çeşitli kaynaklardan veri toplandıktan ve işlemleri ve sürdürmenin veya bozuk veri kümesinin kaliteden ödün içerebilir. Ortaya çıkan tipik veri kalite sorunları şunlardır:
@@ -51,7 +51,7 @@ Biz, veri genel kalitesini denetleyerek denetleyebilirsiniz:
 
 Veri ile ilgili sorunlar bulduğunuzda **işleme adımları** genellikle temizleme eksik değerleri, veri normalleştirme ayrılma içerir. gerekli, kaldırma ve/veya değiştirmek için metin işleme katıştırılmış veri etkileyebilecek karakterler hizalama, karma veri ortak alanları ve diğer türleri.
 
-**Azure Machine Learning kullanan iyi biçimlendirilmiş bir tablo veri**.  Veriler zaten tablosal biçiminde ise, veri ön işleme Machine Learning doğrudan Azure ML Studio (klasik) ile gerçekleştirilebilir.  Veri tablosal biçimde, XML'de olduğu say değilse ayrıştırma verileri tablo biçimine dönüştürmek için gerekli olabilir.  
+**Azure Machine Learning kullanan iyi biçimlendirilmiş bir tablo veri**.  Veriler zaten tablosal formundadır, veri ön işleme Machine Learning doğrudan Azure Machine Learning Studio (klasik) ile gerçekleştirilebilir.  Veri tablosal biçimde, XML'de olduğu say değilse ayrıştırma verileri tablo biçimine dönüştürmek için gerekli olabilir.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Veri ön işleme önemli görevleri bazıları nelerdir?
 * **Veri temizleme**: doldurun veya eksik değerleri algılayacak ve gürültülü veri ve aykırı değerleri.

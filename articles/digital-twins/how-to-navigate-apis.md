@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: 135c760919f094f7b2d242ad37cc1cadb614e36e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/27/2019
+ms.openlocfilehash: 86ade45cd00e82e8787a117c23003d2a74750cf0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010002"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552177"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital TWINS yönetim API 'Lerini kullanma
 
@@ -37,7 +37,7 @@ Aşağıdaki listede, dijital TWINS API 'Lerinin bileşenleri gösterilmektedir.
 
 * [/PropertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): Bu API 'leri, *boşluklarınız*, *cihazlarınız*, *kullanıcılarınız*ve *sensörleriniz*için özel özellikler oluşturmak üzere kullanabilirsiniz. Bu özellikler anahtar/değer çiftleri olarak oluşturulur. Bu özellikler için veri türünü, *Primitivedatatype*ayarlayarak tanımlayabilirsiniz. Örneğin, sensörlerinizin *BasicTemperatureDeltaProcessingRefreshTime* adlı bir özelliği tanımlayabilir ve sonra sensörlerinizin her *biri için bu* özellik için bir değer atayabilirsiniz. Ayrıca, özelliği oluştururken, *Min* ve *Max* aralıklarının yanı sıra *validationdata*olarak izin verilen değerleri de ekleyerek bu değerler için kısıtlamalar da ekleyebilirsiniz.
 
-* [/Matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Bu API 'ler, gelen cihaz verilerinize değerlendirmek istediğiniz koşulları belirtmenize olanak tanır. Daha fazla bilgi için [Bu makaleye](concepts-user-defined-functions.md#matchers) bakın. 
+* [/Matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Bu API 'ler, gelen cihaz verilerinize değerlendirmek istediğiniz koşulları belirtmenize olanak tanır. Daha fazla bilgi için [bu makaleye](concepts-user-defined-functions.md#matchers) bakın. 
 
 * [/UserDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Bu API 'ler, kurulumdan gelen verileri işlemek için, *eşleştiriciler* tarafından tanımlanan koşullar gerçekleştiğinde yürütülecek özel bir işlev oluşturmanıza, silmesine veya güncelleştirmenize olanak tanır. *Kullanıcı tanımlı işlevler*olarak da adlandırılan bu özel işlevler hakkında daha fazla bilgi için [Bu makaleye](concepts-user-defined-functions.md#user-defined-functions) bakın. 
 

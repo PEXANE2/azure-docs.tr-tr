@@ -1,35 +1,26 @@
 ---
-title: Kod En Iyi uygulamalar olarak Azure Service Fabric altyapısı | Microsoft Docs
-description: Kod olarak altyapı olarak Service Fabric yönetmeye yönelik en iyi uygulamalar.
-services: service-fabric
-documentationcenter: .net
+title: Kod En Iyi uygulamalar olarak Azure Service Fabric altyapısı
+description: Azure Service Fabric 'yi kod olarak altyapı olarak yönetmeye yönelik en iyi yöntemler ve tasarım konuları.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 83439a913989875c5e26ee51901f10558e5debd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955606"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551837"
 ---
 # <a name="infrastructure-as-code"></a>Kod olarak altyapı
 
 Bir üretim senaryosunda, Kaynak Yöneticisi şablonları kullanarak Azure Service Fabric kümeleri oluşturun. Kaynak Yöneticisi şablonlar, kaynak özellikleri üzerinde daha fazla denetim sağlar ve tutarlı bir kaynak modeline sahip olduğunuzdan emin olun.
 
-Örnek Kaynak Yöneticisi şablonlar, [GitHub 'Daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)Windows ve Linux 'ta kullanılabilir. Bu şablonlar, küme şablonunuz için bir başlangıç noktası olarak kullanılabilir. Özel `azuredeploy.json` gereksinimlerinizi `azuredeploy.parameters.json` karşılayacak şekilde indirin ve düzenleyin.
+Örnek Kaynak Yöneticisi şablonlar, [GitHub 'Daki Azure örneklerinde](https://github.com/Azure-Samples/service-fabric-cluster-templates)Windows ve Linux 'ta kullanılabilir. Bu şablonlar, küme şablonunuz için bir başlangıç noktası olarak kullanılabilir. `azuredeploy.json` indirin ve `azuredeploy.parameters.json` ve bunları özel gereksinimlerinize uyacak şekilde düzenleyin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Yukarıda indirdiğiniz `azuredeploy.json` ve `azuredeploy.parameters.json` şablonlarını dağıtmak için aşağıdaki Azure CLI komutlarını kullanın:
+Yukarıda indirdiğiniz `azuredeploy.json` ve `azuredeploy.parameters.json` şablonlarını dağıtmak için aşağıdaki Azure CLı komutlarını kullanın:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"
@@ -100,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure sanal makine Işletim sistemi otomatik yükseltme yapılandırması 
-Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir işlemdir ve Azure Service Fabric kümeleri ana bilgisayar düzeltme eki yönetimi için [sanal makine ölçek kümesi otomatik Işletim sistemi yükseltmesini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) kullanmanız önerilir; Düzeltme Eki düzenleme uygulaması, Azure 'ın dışında barındırılmasına yönelik bir diğer çözümdür, ancak Azure 'da POA 'nın, sanal makine Işletim sistemi otomatik yükseltmesini tercih etmek için sık karşılaşılan bir nedenle Azure 'da POA 'nın barındırılmasına olanak sağlar. fazla. Otomatik işletim sistemi yükseltmesini etkinleştirmek için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonu özellikleri aşağıda verilmiştir:
+Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir işlemdir ve Azure Service Fabric kümeleri ana bilgisayar düzeltme eki yönetimi için [sanal makine ölçek kümesi otomatik Işletim sistemi yükseltmesini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) kullanmanız önerilir; Düzeltme Eki düzenleme uygulaması, POA 'nın Azure 'da barındırılmasına yönelik olarak Azure 'da barındırılması için tasarlanan alternatif bir çözümdür ve Azure 'da POA 'nın sanal makine Işletim sistemi otomatik yükseltmesini tercih etmek için sık karşılaşılan bir neden olabilir. Otomatik işletim sistemi yükseltmesini etkinleştirmek için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi şablonu özellikleri aşağıda verilmiştir:
 
 ```json
 "upgradePolicy": {
@@ -113,7 +104,7 @@ Sanal makinelerinizin yükseltilmesi Kullanıcı tarafından başlatılan bir i�
 ```
 Service Fabric ile otomatik IŞLETIM sistemi yükseltmeleri kullanırken, yeni işletim sistemi görüntüsü aynı anda bir güncelleştirme etki alanını kullanıma alarak Service Fabric çalıştıran hizmetlerin yüksek kullanılabilirliğe sahip olur. Service Fabric otomatik işletim sistemi yükseltmelerini kullanmak için, kümenizin gümüş dayanıklılık katmanını veya üstünü kullanacak şekilde yapılandırılması gerekir.
 
-Windows konak makinelerinizin Eşgüdümlü olmayan güncelleştirmeleri başlatmasını engellemek için aşağıdaki kayıt defteri anahtarının yanlış olarak ayarlandığından emin olun: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Windows konak makinelerinizin Eşgüdümlü olmayan güncelleştirmeleri başlatmasını engellemek için aşağıdaki kayıt defteri anahtarının yanlış olarak ayarlandığından emin olun: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Aşağıda, WindowsUpdate kayıt defteri anahtarını false olarak ayarlamak için, Işlem Sanal Makine Ölçek Kümesi Kaynak Yöneticisi Şablon özellikleri verilmiştir:
 ```json
@@ -142,6 +133,6 @@ Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Windows Server çalıştıran VM 'lerde veya bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* VM 'lerde veya Windows Server çalıştıran bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * VM 'lerde veya Linux çalıştıran bilgisayarlarda küme oluşturma: [Linux kümesi oluşturma](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * [Service Fabric destek seçenekleri](service-fabric-support.md) hakkında bilgi edinin

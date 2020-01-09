@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bbbf511286c63acf4a939e0a0e7d9c3dc9efa75b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8e14b065132e648f9c800655cfe69e5a2ec80c41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432266"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma
 
@@ -146,7 +146,7 @@ Aşağıda, bir çalışma kitabına eklenen ve CPU performansının kılavuz bi
 
 Çalışma kitabı parametreleri, sorgu veya metin bölümlerini el ile düzenlemeniz gerekmeden çalışma kitabındaki değerleri değiştirmenize izin verir.  Bu, temel analiz sorgu dilini anlamaya gerek gereksinimini ortadan kaldırır ve çalışma kitabı tabanlı raporlamanın potansiyel kitlelerini büyük ölçüde genişletir.
 
-Parametre değerleri, ``{parameterName}`` gibi küme ayraçları içine yerleştirerek sorgu, metin veya diğer parametre bölümlerinde yer alır.  Parametre adları, JavaScript tanımlayıcıları, temelde alfabetik karakterler veya alt çizgiler, sonra alfasayısal karakterler veya alt çizgiler ile benzer kurallarla sınırlandırılmıştır. Örneğin, **a1** 'ye izin verilir, ancak **1a** buna izin verilmez.
+Parametre değerleri, ``{parameterName}``gibi küme ayraçları içine yerleştirerek sorgu, metin veya diğer parametre bölümlerinde yer alır.  Parametre adları, JavaScript tanımlayıcıları, temelde alfabetik karakterler veya alt çizgiler, sonra alfasayısal karakterler veya alt çizgiler ile benzer kurallarla sınırlandırılmıştır. Örneğin, **a1** 'ye izin verilir, ancak **1a** buna izin verilmez.
 
 Parametreler doğrusal, bir çalışma kitabının üstünden başlayıp daha sonraki adımlara akar.  Daha sonra bir çalışma kitabında bildirildiği parametreler, daha önce tanımlananlar tarafından geçersiz kılınabilir.  Bu Ayrıca, daha sonra tanımlanan parametrelerden değerlere erişmek için sorgular kullanan parametrelere izin verir.  Bir parametrenin adımının kendisi içinde, parametreler aynı adımda daha önce belirtilen bir parametreye bağlı olabileceği gibi, parametreler de doğrusal, soldan sağa doğru yapılır.
  

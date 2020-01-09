@@ -1,59 +1,48 @@
 ---
-title: Azure Service Fabric uygulama modelini | Microsoft Docs
-description: Nasıl model ve uygulamaları ve Hizmetleri Service fabric'te açıklar.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric uygulama modeli
+description: Uygulama ve hizmet bildirim dosyalarını kullanarak Azure Service Fabric uygulamaları ve Hizmetleri modelleme ve açıklama.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 750970233cbcb14d901dbb5fa94f649f6ff8ae6c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621447"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551888"
 ---
-# <a name="model-an-application-in-service-fabric"></a>Bir Service Fabric uygulamasında model
-Bu makalede, Azure Service Fabric uygulama modelini ve bir uygulama ve hizmet bildirim dosyaları aracılığıyla nasıl tanımlanacağı hakkında genel bir bakış sağlar.
+# <a name="model-an-application-in-service-fabric"></a>Service Fabric bir uygulama modelleme
+Bu makalede, Azure Service Fabric uygulama modeline genel bir bakış ve bildirim dosyaları aracılığıyla bir uygulama ve hizmetin tanımlanması sunulmaktadır.
 
 ## <a name="understand-the-application-model"></a>Uygulama modelini anlama
-Bir uygulama, belirli bir işlev veya işlevler gerçekleştiren bağlı Hizmetleri koleksiyonudur. Bir hizmet tam ve tek başına bir işlevi gerçekleştirir ve başlatabilir ve diğer hizmetler bağımsız olarak çalışır.  Bir hizmet, kod, yapılandırma ve veri kümesinden oluşur. Her hizmet için ikili dosyaları yürütülebilir kod oluşur, çalışma zamanında yüklenmesi gereken hizmet ayarlarını yapılandırma oluşur ve veri hizmeti tarafından kullanılacak rastgele bir statik veri oluşur. Her bir bileşende bu hiyerarşik uygulama modeli, bağımsız olarak oluşturulabilir ve yükseltilebilir tutulan olabilir.
+Uygulama, belirli bir işlevi veya işlevleri gerçekleştiren bir Bileşen Hizmetleri koleksiyonudur. Bir hizmet, tüm ve tek başına işlevleri gerçekleştirir ve diğer hizmetlerden bağımsız olarak başlatılabilir ve çalıştırılabilir.  Bir hizmet, koddan, yapılandırmadan ve verilerden oluşur. Her hizmet için, kod yürütülebilir ikili dosyalardan oluşur, yapılandırma çalışma zamanında yüklenebilecek hizmet ayarlarından oluşur ve veriler, hizmet tarafından tüketilen rastgele statik verilerden oluşur. Bu hiyerarşik uygulama modelindeki her bileşeni bağımsız olarak sürümlenebilir ve yükseltilebilir.
 
 ![Service Fabric uygulama modeli][appmodel-diagram]
 
-Uygulama türü, bir uygulamanın bir kategorisi olan ve hizmet türlerinin bir paketi oluşur. Bir hizmetin bir kategori hizmet türüdür. Farklı ayarlar ve yapılandırmalar kategorisine sahip olabilir, ancak çekirdek işlevselliği aynı kalacak. Farklı hizmet yapılandırma çeşitlemeleri aynı hizmet türünün hizmet örnekleridir.  
+Uygulama türü, bir uygulamanın kategorileştirdayalıdır ve bir hizmet türü paketinden oluşur. Hizmet türü bir hizmetin kategorileştirsahiptir. Kategori farklı ayarlara ve yapılandırmalara sahip olabilir, ancak çekirdek işlevsellik aynı kalır. Bir hizmetin örnekleri aynı hizmet türünün farklı hizmet yapılandırması çeşitlemelerdir.  
 
-Sınıflar (veya "türleri") uygulamaları ve Hizmetleri XML dosyaları (uygulama bildiriminin ve hizmet bildirimleri) aracılığıyla açıklanmıştır.  Bildirimleri uygulamaları ve hizmetleri tanımlamak ve şablonları, kümenin görüntü deposundan karşı uygulamalar oluşturulabilir.  Bildirimler, ayrıntılı olarak değinilmiştir [uygulama ve hizmet bildirimleri](service-fabric-application-and-service-manifests.md). ServiceManifest.xml ve ApplicationManifest.xml dosyası için şema tanımı ile Service Fabric SDK'sı yüklü olduğundan ve araçları *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*. XML Şeması belgelenen [ServiceFabricServiceModel.xsd şema belgeleri](service-fabric-service-model-schema.md).
+Uygulama ve hizmetlerin sınıfları (veya "türleri"), XML dosyaları (uygulama bildirimleri ve hizmet bildirimleri) aracılığıyla açıklanır.  Bildirimler, uygulamaları ve Hizmetleri anlatmaktadır ve kümenin görüntü deposundan hangi uygulamaların örneklenebilir şablonlardır.  Bildirimler, [uygulama ve hizmet bildirimlerinde](service-fabric-application-and-service-manifests.md)ayrıntılı olarak ele alınmıştır. ServiceManifest. xml ve ApplicationManifest. xml dosyası için şema tanımı, Service Fabric SDK ve araçlar ile birlikte *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*ile yüklenir. XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
 
-Farklı uygulama örneklerinin kodunu aynı Service Fabric düğüm tarafından barındırıldığında bile ayrı işlem olarak çalıştırın. Ayrıca, her uygulama örneği yaşam döngüsü (örneğin yükseltme) yönetilebilir bağımsız olarak. Uygulama türleri tespiti kod, yapılandırma ve veri paketleri sırayla oluşan hizmet türleri, aşağıdaki diyagramda gösterilmiştir. Diyagram basitleştirmek için yalnızca kod/config/veri paketleri için `ServiceType4` her hizmet türü bazı verilebilir veya bunlar tüm paket türlerinin gösterilir.
+Farklı uygulama örneklerinin kodu, aynı Service Fabric düğümü tarafından barındırıldığında bile ayrı süreçler olarak çalışır. Ayrıca, her bir uygulama örneğinin yaşam döngüsü bağımsız olarak yönetilebilir (örneğin, yükseltilebilir). Aşağıdaki diyagramda, uygulama türlerinin hizmet türlerinden nasıl oluşturulduğu gösterilir. Bu, sırasıyla kod, yapılandırma ve veri paketlerinden oluşur. Diyagramı basitleştirmek için, yalnızca `ServiceType4` için kod/yapılandırma/veri paketleri gösterilir, ancak her hizmet türü bu paket türlerinin bazılarını veya tümünü içerebilir.
 
-![Service Fabric uygulama türleri ve hizmet türleri][cluster-imagestore-apptypes]
+![Uygulama türlerini ve hizmet türlerini Service Fabric][cluster-imagestore-apptypes]
 
-Kümedeki etkin bir hizmet türünün bir veya daha fazla örneğini olabilir. Örneğin, durum bilgisi olan hizmet örneği veya çoğaltmalar, yüksek güvenilirlik durumu kümedeki farklı düğümlere bulunan yinelemeler arasında çoğaltılması yoluyla elde edin. Çoğaltma, temelde hizmeti bir kümedeki bir düğümün başarısız olsa bile kullanılabilir olması artıklık sağlar. A [bölümlenmiş hizmet](service-fabric-concepts-partitioning.md) daha fazla kümedeki düğümler arasında alt durumu (ve bu durum için erişim düzenlerini) böler.
+Kümede etkin bir veya daha fazla hizmet türü örneği olabilir. Örneğin, durum bilgisi olan hizmet örnekleri veya çoğaltmalar, kümedeki farklı düğümlerde bulunan çoğaltmalar arasında durumu çoğaltarak yüksek güvenilirlik elde edin. Çoğaltma temelde, bir kümedeki bir düğüm başarısız olsa bile hizmetin kullanılabilir olması için artıklık sağlar. [Bölümlenmiş bir hizmet](service-fabric-concepts-partitioning.md) , kümedeki düğümler arasında durumunu daha da ayırır (ve bu duruma kadar erişim desenleri).
 
-Aşağıdaki diyagramda, uygulamalar ve hizmet örnekleri, bölümler ve çoğaltmalar arasındaki ilişkiyi gösterir.
+Aşağıdaki diyagramda uygulamalar ve hizmet örnekleri, bölümler ve çoğaltmalar arasındaki ilişki gösterilmektedir.
 
-![Bölümleri ve çoğaltmalarını hizmetinden][cluster-application-instances]
+![Bir hizmet içindeki bölümler ve çoğaltmalar][cluster-application-instances]
 
 > [!TIP]
-> Uygulama düzenini http:// kullanılabilir Service Fabric Explorer aracını kullanarak kümedeki görüntüleyebileceğiniz&lt;yourclusteraddress&gt;: 19080/Explorer. Daha fazla bilgi için [Service Fabric Explorer ile kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md).
+> &lt;http://adresinde bulunan Service Fabric Explorer aracını kullanarak bir kümedeki uygulamaların yerleşimini görüntüleyebilirsiniz&gt;: 19080/Explorer. Daha fazla bilgi için bkz. [Service Fabric Explorer kümeniz görselleştirme](service-fabric-visualizing-your-cluster.md).
 > 
 > 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hakkında bilgi edinin [uygulama ölçeklenebilirlik](service-fabric-concepts-scalability.md).
-- Hizmeti hakkında bilgi [durumu](service-fabric-concepts-state.md), [bölümleme](service-fabric-concepts-partitioning.md), ve [kullanılabilirlik](service-fabric-availability-services.md).
-- Nasıl uygulamaları ve Hizmetleri içinde tanımlandığı hakkında okuyun [uygulama ve hizmet bildirimleri](service-fabric-application-and-service-manifests.md).
-- [Uygulama barındırma modelleri](service-fabric-hosting-model.md) dağıtılmış hizmet ve hizmet ana bilgisayarı işlemi çoğaltmaları (veya örnekleri) arasındaki ilişkiyi açıklar.
+- [Uygulama ölçeklenebilirliği](service-fabric-concepts-scalability.md)hakkında bilgi edinin.
+- Hizmet [durumu](service-fabric-concepts-state.md), [bölümleme](service-fabric-concepts-partitioning.md)ve [kullanılabilirlik](service-fabric-availability-services.md)hakkında bilgi edinin.
+- [Uygulama ve hizmet bildirimlerinde](service-fabric-application-and-service-manifests.md)uygulamaların ve hizmetlerin nasıl tanımlandıkları hakkında bilgi edinin.
+- [Uygulama barındırma modelleri](service-fabric-hosting-model.md) , dağıtılan bir hizmetin ve hizmet ana bilgisayar işleminin çoğaltmaları (veya örnekleri) arasındaki ilişkiyi anlatmaktadır.
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png

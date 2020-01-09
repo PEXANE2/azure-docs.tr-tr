@@ -3,21 +3,21 @@ title: Azure bulut hizmetini izleme | Microsoft Docs
 description: Bir Azure bulut hizmeti izlemenin ne olduğunu ve bazı seçeneklerinizin ne olduğunu açıklar.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: gwallace
-ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386077"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bulut hizmeti Izlemeye giriş
 
-Herhangi bir bulut hizmeti için önemli performans ölçümlerini izleyebilirsiniz. Her bulut hizmeti rolü en az veri toplar: CPU kullanımı, ağ kullanımı ve disk kullanımı. Bulut hizmetinde `Microsoft.Azure.Diagnostics` uzantı bir role uygulanmışsa, bu rol ek veri noktaları toplayabilir. Bu makalede Cloud Services için Azure Tanılama bir giriş sunulmaktadır.
+Herhangi bir bulut hizmeti için önemli performans ölçümlerini izleyebilirsiniz. Her bulut hizmeti rolü en az veri toplar: CPU kullanımı, ağ kullanımı ve disk kullanımı. Bulut hizmetinde bir role uygulanmış `Microsoft.Azure.Diagnostics` uzantısı varsa, bu rol ek veri noktaları toplayabilir. Bu makalede Cloud Services için Azure Tanılama bir giriş sunulmaktadır.
 
 Temel izleme ile, rol örneklerinden alınan performans sayacı verileri, 3 dakikalık aralıklarla örneklenir ve toplanır. Bu temel izleme verileri depolama hesabınızda depolanmaz ve bununla ilişkili ek bir ücret yoktur.
 
@@ -44,7 +44,7 @@ Her bir rol oluşturulduğunda, Visual Studio buna Azure Tanılama uzantısını
 * .NET olay kaynağı
 * IIS günlükleri
 * Bildirim tabanlı ETW
-* Kilitlenme dökümleri
+* Kilitlenme bilgi dökümleri
 * Müşteri hata günlükleri
 
 > [!IMPORTANT]
@@ -71,7 +71,7 @@ Gelişmiş tanılamaları, **ServiceDefinition. csdef** ve **ServiceConfiguratio
 
 Bu, her **ServiceConfiguration. cscfg** dosyasına eklenmesi gereken yeni bir ayar tanımlar. 
 
-Büyük olasılıkla Azure 'a dağıtmak için **ServiceConfiguration. Cloud. cscfg** adlı iki **. cscfg** dosyasına ve öykünülmüş ortamda yerel dağıtımlar için kullanılan **ServiceConfiguration. Local. cscfg** adlı bir ada sahip olabilirsiniz. Her **. cscfg** dosyasını açın ve değiştirin. Adlı `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`bir ayar ekleyin. Değeri, klasik depolama hesabının **birincil bağlantı dizesine** ayarlayın. Geliştirme makinenizde yerel depolamayı kullanmak istiyorsanız kullanın `UseDevelopmentStorage=true`.
+Büyük olasılıkla Azure 'a dağıtmak için **ServiceConfiguration. Cloud. cscfg** adlı iki **. cscfg** dosyasına ve öykünülmüş ortamda yerel dağıtımlar için kullanılan **ServiceConfiguration. Local. cscfg** adlı bir ada sahip olabilirsiniz. Her **. cscfg** dosyasını açın ve değiştirin. `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`adlı bir ayar ekleyin. Değeri, klasik depolama hesabının **birincil bağlantı dizesine** ayarlayın. Geliştirme makinenizde yerel depolamayı kullanmak istiyorsanız `UseDevelopmentStorage=true`kullanın.
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -96,4 +96,7 @@ Windows Azure Tanılama uzantısı aracılığıyla belirttiğiniz performans sa
 
 - [Cloud Services Application Insights hakkında bilgi edinin](../azure-monitor/app/cloudservices.md)
 - [Performans sayaçlarını ayarlama](diagnostics-performance-counters.md)
+
+
+
 

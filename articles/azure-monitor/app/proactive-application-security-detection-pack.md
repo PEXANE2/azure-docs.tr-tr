@@ -1,18 +1,18 @@
 ---
-title: Akıllı algılama-Azure Application Insights ile güvenlik algılama paketi | Microsoft Docs
-description: Olası güvenlik sorunları için Azure Application Insights ile uygulamayı izleyin.
+title: Azure Application Insights ile güvenlik algılama paketi
+description: Azure Application Insights ve olası güvenlik sorunları için akıllı algılama ile uygulamayı izleyin.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: 10c8a38af9e4f04b874bfa75e9e78d241b093117
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ba35b3a3e1985f49ade468c4d2e82ca579fdac2a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432468"
 ---
 # <a name="application-security-detection-pack-preview"></a>Uygulama güvenliği algılama paketi (Önizleme)
 

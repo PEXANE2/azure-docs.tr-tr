@@ -1,23 +1,23 @@
 ---
-title: 'Öğretici: Metin Analizi bilişsel hizmet ile Power BI tümleştirin'
+title: 'Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme'
 titleSuffix: Azure Cognitive Services
-description: Power BI'da depolanan metindeki anahtar ifadeleri ayıklamak için Metin Analizi'ni nasıl kullanacağınızı öğrenin.
+description: Power BI depolanan metinden anahtar ifadeleri ayıklamak için Metin Analizi API'si nasıl kullanacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/30/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378543"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi bilişsel hizmet ile Power BI tümleştirin
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi Bilişsel Hizmeti ile Power BI’ı tümleştirme
 
 Microsoft Power BI Desktop, verilerinize bağlanmanıza, verilerinizi dönüştürmenize ve görselleştirmenize olanak sağlayan ücretsiz bir uygulamadır. Microsoft Azure Bilişsel Hizmetler’in parçası olan Metin Analizi hizmeti, doğal dil işleme özelliği sağlar. Ham yapılandırılmamış veriler olduğunda, en önemli ifadeleri ayıklayabilir, yaklaşımı analiz edebilir ve markalar gibi iyi bilindik varlıkları belirleyebilir. Birlikte bu araçlar, müşterilerinizin ne hakkında konuştuğunu ve bu konuda nasıl hissettiğini hızlıca görmenize yardımcı olabilir.
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Müşteri geri bildiriminden en önemli ifadeleri ayıklamak için Metin Analizi Anahtar İfadeler API’sini kullanma
 > * Müşteri geri bildiriminden sözcük bulutu oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Ücretsiz olarak indirin](https://powerbi.microsoft.com/get-started/).
@@ -114,7 +114,7 @@ Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorg
 Şimdi **Ana Sayfa** şeridindeki **Sorgu** grubunda **Gelişmiş Düzenleyici**’ye tıklayarak Gelişmiş Düzenleyici penceresini açın. Pencerede bulunan kodu silin ve aşağıdaki kodu yapıştırın. 
 
 > [!NOTE]
-> Aşağıdaki örnek uç noktayı, metin analizi kaynağınız `<your-custom-subdomain>`için oluşturulan uç noktayla değiştirin (içeren). [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip seçerek `Quick start`bu uç noktayı bulabilirsiniz.
+> Aşağıdaki örnek uç noktayı (`<your-custom-subdomain>`içeren) Metin Analizi kaynağınız için oluşturulan uç noktayla değiştirin. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip `Quick start`' yı seçerek bu uç noktayı bulabilirsiniz.
 
 
 ```fsharp
@@ -145,7 +145,7 @@ Power BI Desktop’ta Sorgu Düzenleyicisi penceresinde `FabrikamComments` sorgu
 
 Özel İşlev Çağır iletişim kutusu görüntülenir. **Yeni sütun adı** bölümüne `keyphrases` girin. **İşlev sorgusu** bölümünde, oluşturduğunuz özel işlevi (`KeyPhrases`) seçin.
 
-İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)** . Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (`language` ve `id` parametreleri için değerleri önceden doğrudan yazdığınızı unutmayın.) Açılan menüden `Merged` ([daha önce](#PreparingData) konu ve ileti alanlarını birleştirerek oluşturduğumuz sütun) seçeneğini belirleyin.
+İletişim kutusunda yeni bir alan görüntülenir: **metin (isteğe bağlı)** . Bu alan, Anahtar İfadeler API’sinin `text` parametresi için değer sağlamak amacıyla hangi sütunu kullanmak istediğimizi sorar. (`language` ve `id` parametrelerinin değerlerini zaten sabit olarak kodlayacağınızdan emin olmalısınız.) Açılır menüden `Merged` ( [daha önce](#PreparingData) konu ve ileti alanlarını birleştirerek oluşturduğunuz sütun) öğesini seçin.
 
 ![[Özel işlev çağırma]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -168,7 +168,7 @@ Her şey hazırsa Power BI, tablodaki her bir satır için bir kez özel işlevi
 > [!div class="mx-imgBorder"]
 > ![[kimlik doğrulaması anonim olarak ayarlanıyor]](../media/tutorials/power-bi/access-web-content.png)
 
-Anonim erişimi seçtiğiniz halde Kimlik Bilgilerini Düzenle bandını görüyorsanız, `KeyPhrases` [özel işlevdeki](#CreateCustomFunction) koda Metin Analizi erişim anahtarınızı yapıştırmayı unutmuş olabilirsiniz.
+Anonim erişim ' i seçtikten sonra bile kimlik bilgilerini düzenle başlığını görürseniz, Metin Analizi erişim anahtarınızı `KeyPhrases` [özel işlevindeki](#CreateCustomFunction)koda yapıştırmayı unutmuş olabilirsiniz.
 
 Ardından, veri kaynaklarınızın gizliliği hakkında bilgiler sunmanızın istendiği bir bant görüntülenebilir. 
 
@@ -217,7 +217,7 @@ Kelime bulutumuzu daha yakından incelemek için raporda Odak Modu aracına tık
 
 Microsoft Azure tarafından sunulan Bilişsel Hizmetler'den biri olan Metin Analizi hizmeti, yaklaşım analizi ve dil algılama özelliklerini de sunar. Dil algılama özellikle de müşteri geri bildirimi tamamen İngilizce dilinde değilse faydalıdır.
 
-Bu diğer API’lerin her ikisi de Anahtar İfadeler API’sine oldukça benzerdir. Başka bir deyişle, bu öğreticide oluşturduğunuza neredeyse benzer özel işlevleri kullanarak bunları Power BI Desktop ile tümleştirebilirsiniz. Boş bir sorgu oluşturup aşağıdaki uygun kodu daha önce yaptığınız gibi Gelişmiş Düzenleyici'ye yapıştırmanız yeterlidir. (Erişim anahtarınızı unutmayın!) Ardından, daha önce olduğu gibi, tabloya yeni sütun eklemek için işlevi kullanın.
+Bu diğer API’lerin her ikisi de Anahtar İfadeler API’sine oldukça benzerdir. Başka bir deyişle, bu öğreticide oluşturduğunuza neredeyse benzer özel işlevleri kullanarak bunları Power BI Desktop ile tümleştirebilirsiniz. Boş bir sorgu oluşturup aşağıdaki uygun kodu daha önce yaptığınız gibi Gelişmiş Düzenleyici'ye yapıştırmanız yeterlidir. (Erişim anahtarınızı unutmayın!) Daha sonra, daha önce olduğu gibi, tabloya yeni bir sütun eklemek için işlevini kullanın.
 
 Aşağıdaki Yaklaşım Analizi işlevi, metinde ifade edilen yaklaşımın ne ölçüde olumlu olduğunu gösteren bir puan döndürür.
 

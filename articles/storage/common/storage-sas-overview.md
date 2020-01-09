@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371828"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -25,7 +25,7 @@ Paylaşılan erişim imzası (SAS), verilerinizin güvenliğine ödün vermeden 
 
 Azure depolama, üç tür paylaşılan erişim imzasını destekler:
 
-- **Kullanıcı temsili SAS (Önizleme).** Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsili SAS yalnızca BLOB depolama için geçerlidir.
+- **Kullanıcı temsili SAS.** Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsili SAS yalnızca BLOB depolama için geçerlidir.
 
     Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -122,9 +122,9 @@ Paylaşılan erişim imzalarını kullanmaya başlamak için, her SAS türü iç
 
 ### <a name="user-delegation-sas"></a>Kullanıcı temsili SAS
 
-- [PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Azure CLı (Önizleme) ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Azure CLı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>Hizmet SAS
 

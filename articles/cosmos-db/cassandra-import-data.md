@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Verilerinizi Azure Cosmos DB Cassandra API'SİNİN hesabına geçirin"
-description: Bu öğreticide, Azure Cosmos DB Cassandra API'SİNİN hesabına Apache Cassandra veri kopyalamak için CQL kopyalama komutu ve Spark kullanmayı öğrenin.
+title: Verilerinizi Azure Cosmos DB bir Cassandra API hesabına geçirme-öğretici
+description: Bu öğreticide, Apache Cassandra 'dan verileri Azure Cosmos DB ' de bir Cassandra API hesabına kopyalamak için CQL copy komutunu & Spark 'ın nasıl kullanılacağını öğrenin
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: cc312a707f5ab74967b9d3bc050fec7bfcad9dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c754740369da6d0a8084b9b60ef178fb28e32f1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445682"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB'de Cassandra API hesabı, verilerinizi geçirme
 
@@ -33,13 +33,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites-for-migration"></a>Geçiş önkoşulları
 
-* **Aktarım hızınızı ihtiyaçlarınızı tahmin etmenize:** Azure Cosmos DB'de veri geçiriyorsanız Cassandra API hesabı önce iş yükünüz aktarım hızı gereksinimlerini tahmin etmelidir. Genel olarak, CRUD işlemlerine gereken ortalama aktarım hızıyla başlamanız ve ardından Ayıklama Dönüştürme Yükleme (ETL) için veya öngörülemeyen işlemler için gereken fazladan aktarım hızını eklemeniz önerilir. Geçişi planlamak için şu ayrıntılara ihtiyacınız vardır: 
+* **Aktarım hızınızı ihtiyaçlarınızı tahmin etmenize:** veri geçiriyorsanız Cassandra API'si için Azure Cosmos DB hesabı önce iş yükünüz aktarım hızı gereksinimlerini tahmin etmelidir. Genel olarak, CRUD işlemlerine gereken ortalama aktarım hızıyla başlamanız ve ardından Ayıklama Dönüştürme Yükleme (ETL) için veya öngörülemeyen işlemler için gereken fazladan aktarım hızını eklemeniz önerilir. Geçişi planlamak için şu ayrıntılara ihtiyacınız vardır: 
 
-  * **Mevcut veri boyutu veya tahmini veri boyutu:** En az bir veritabanı boyutu ve aktarım hızı gereksinim tanımlar. Yeni uygulama için veri boyutu tahmini yapıyorsanız, verilerin satırlara düzgün dağıtıldığını varsayabilir ve veri boyutuyla çarparak değeri tahmin edebilirsiniz. 
+  * **Mevcut veri boyutu veya tahmini veri boyutu:** Minimum veritabanı boyutunu ve aktarım hızı gereksinimini tanımlar. Yeni uygulama için veri boyutu tahmini yapıyorsanız, verilerin satırlara düzgün dağıtıldığını varsayabilir ve veri boyutuyla çarparak değeri tahmin edebilirsiniz. 
 
-  * **Gerekli aktarım hızı:** (Sorgu/get) yaklaşık okuma ve yazma (update/delete/INSERT) aktarım hızı. Bu değer hem gerekli istek birimlerini hem de eylemsizlik durumunda veri boyutu hesaplamak için gereklidir.  
+  * **Gerekli aktarım hızı:** (sorgu/get) okuma ve yazma (update/delete/INSERT) aktarım hızı. Bu değer hem gerekli istek birimlerini hem de eylemsizlik durumunda veri boyutu hesaplamak için gereklidir.  
 
-  * **Şema:** Cqlsh aracılığıyla mevcut Cassandra kümenize bağlanın ve Cassandra şemasını dışarı aktarın: 
+  * **Şema:** Cassandra cqlsh ve dışarı aktarma şema aracılığıyla mevcut Cassandra kümenize bağlanın: 
 
     ```bash
     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     Var olan iş yükü gereksinimlerinize tanımladıktan sonra bir Azure Cosmos hesabı, veritabanı ve kapsayıcıları toplanan performans gereksinimlerine göre oluşturmanız gerekir.  
 
-  * **Bir işlem RU ücreti belirler:** Cassandra API tarafından desteklenen SDK'ları kullanarak RU'ları belirleyebilirsiniz. Bu örnekte .NET sürümünün RU ücretleri gösterilmektedir.
+  * **Bir işlem RU ücreti belirlemek:** RU'ları Cassandra API tarafından desteklenen SDK'ları kullanarak belirleyebilirsiniz. Bu örnekte .NET sürümünün RU ücretleri gösterilmektedir.
 
     ```csharp
     var tableInsertStatement = table.Insert(sampleEntity);
@@ -61,13 +61,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
       }
     ```
 
-* **Gerekli aktarım hızı atayın:** Azure Cosmos DB, gereksinimleriniz büyüdükçe otomatik olarak depolamayı ve aktarım hızını ölçeklendirebilirsiniz. Aktarım hızı gereksinimlerinizi tahmin etmek için [Azure Cosmos DB istek birimi hesaplayıcısını](https://www.documentdb.com/capacityplanner) kullanabilirsiniz. 
+* **Gerekli aktarım hızını ayırma** Gereksinimleriniz arttıkça Azure Cosmos DB depolamayı ve aktarım hızını otomatik olarak ölçeklendirilebilir. Aktarım hızı gereksinimlerinizi tahmin etmek için [Azure Cosmos DB istek birimi hesaplayıcısını](https://www.documentdb.com/capacityplanner) kullanabilirsiniz. 
 
-* **Tablolar, Cassandra API hesabı oluşturun:** Veri geçişine başlamadan önce tüm tablolara Azure portalından veya cqlsh önceden oluşturun. Veritabanı düzeyinde aktarım hızına sahip bir Azure Cosmos hesap geçiriyorsanız, Azure Cosmos kapsayıcı oluştururken bir bölüm anahtarı sağlamanız emin olun.
+* **Tablo Cassandra API hesabı oluşturma:** veri geçişine başlamadan önce tüm tablolara Azure portalından veya cqlsh önceden oluşturun. Veritabanı düzeyinde aktarım hızına sahip bir Azure Cosmos hesap geçiriyorsanız, Azure Cosmos kapsayıcı oluştururken bir bölüm anahtarı sağlamanız emin olun.
 
-* **Aktarım hızını artırın:** Veri geçiş süresi, Azure Cosmos DB'de tablolar için sağlanan aktarım hızı miktarına bağlıdır. Geçiş süresince aktarım hızını artırın. Daha yüksek aktarım hızı ile, hız sınırlamayı önleyebilir ve daha kısa sürede geçişi tamamlayabilirsiniz. Geçişi tamamladıktan sonra maliyet tasarrufu sağlamak için aktarım hızını azaltın. Ayrıca, Azure Cosmos hesabının kaynak veritabanınızı aynı bölgede olması önerilir. 
+* **Aktarım hızını artırma:** Veri geçişinizin süresi, Azure Cosmos DB'deki tablolar için sağladığınız aktarım hızı miktarına bağlıdır. Geçiş süresince aktarım hızını artırın. Daha yüksek aktarım hızı ile, hız sınırlamayı önleyebilir ve daha kısa sürede geçişi tamamlayabilirsiniz. Geçişi tamamladıktan sonra maliyet tasarrufu sağlamak için aktarım hızını azaltın. Ayrıca, Azure Cosmos hesabının kaynak veritabanınızı aynı bölgede olması önerilir. 
 
-* **SSL etkinleştir:** Azure Cosmos DB, katı güvenlik gereksinimleri ve standartları vardır. Hesabınız ile etkileşim kurarken SSL’yi etkinleştirdiğinizden emin olun. SSH ile CQL kullandığınızda, SSL bilgilerini sağlama seçeneğine sahip olursunuz.
+* **SSL’yi etkinleştirme:** Azure Cosmos DB sıkı güvenlik gereksinimleri ve standartlarına sahiptir. Hesabınız ile etkileşim kurarken SSL’yi etkinleştirdiğinizden emin olun. SSH ile CQL kullandığınızda, SSL bilgilerini sağlama seçeneğine sahip olursunuz.
 
 ## <a name="options-to-migrate-data"></a>Verileri geçirme seçenekleri
 

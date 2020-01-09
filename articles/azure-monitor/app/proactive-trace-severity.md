@@ -1,18 +1,18 @@
 ---
-title: Akıllı algılama-Azure Application Insights izleme önem derecesine göre düşme | Microsoft Docs
-description: İzleme telemetride olağandışı desenler için Azure Application Insights ile uygulama izlemelerini izleyin.
+title: İzleme önem derecesi oranına göre düşme-Azure Application Insights
+description: Akıllı algılama ile izleme telemetrisinde olağan dışı desenler için Azure Application Insights ile uygulama izlemelerini izleyin.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: 83c1296beabaaae78289a653c6b30f6665f725c2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432411"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>İzleme önem oranına göre düşme (Önizleme)
 
@@ -21,12 +21,12 @@ ms.locfileid: "72820535"
 Bu özellik, uygulamanız için izleme günlüğü yapılandırma dışında özel bir kurulum gerektirmez (bkz. [.net](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) veya [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)için izleme günlüğü dinleyicisini yapılandırma). Uygulamanız yeterli sayıda özel durum telemetrisi oluşturduğunda etkin olur.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Bu tür akıllı algılama bildirimini ne zaman alabilirim?
-"İyi" izlemeler (bir *bilgi* düzeyiyle günlüğe kaydedilmiş *izlemeler) ve*"kötü" izlemeler (bir *Uyarı*düzeyi ile günlüğe kaydedilen izlemeler, *hata*veya *önemli*) ile birlikte düşürülmesi durumunda bu tür bir bildirim alabilirsiniz. önceki yedi gün içinde hesaplanan bir taban çizgisine kıyasla belirli bir gün.
+"İyi" izlemeler (bir *bilgi* düzeyiyle günlüğe kaydedilmiş *izlemeler) ve*"kötü" izlemeler (bir *Uyarı*düzeyiyle günlüğe kaydedilmiş izlemeler, *hata*veya *önemli*) ile karşılaştırıldığında, önceki yedi gün içinde hesaplanan bir taban çizgisine kıyasla, bu tür bir bildirim elde edebilirsiniz.
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Uygulamamın kesinlikle bir sorunu var mı?
 Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelmez. "İyi" ve "kötü" izlemeler arasındaki orandaki bir azalma bir uygulama sorunu belirtebilse de, bu oran değişikliği zararsız olabilir. Örneğin, artış, uygulamadaki yeni bir akışın var olan akışlardan daha fazla "kötü" izlemeler yaymasına neden olmuş olabilir.
 
-## <a name="how-do-i-fix-it"></a>Nasıl yaparım? düzeltilsin mi?
+## <a name="how-do-i-fix-it"></a>Bunu nasıl düzeltirim?
 Bildirimler tanılama sürecinde desteklanacak tanılama bilgilerini içerir:
 1. **Değerlendirme.** Bildirim, kaç tane işlemin etkilendiğini gösterir. Bu, soruna bir öncelik atamanıza yardımcı olabilir.
 2. **Kapsam.** Sorun tüm trafiği etkiliyor mu, yoksa yalnızca bir işlem mi? Bu bilgiler bildirimden elde edilebilir.

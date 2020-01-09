@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric ağ en iyi uygulamaları | Microsoft Docs
-description: Service Fabric ağını yönetmeye yönelik en iyi uygulamalar.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric ağ en iyi uygulamaları
+description: Azure Service Fabric kullanarak ağ bağlantısını yönetmeye yönelik en iyi yöntemler ve tasarım konuları.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262240"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551803"
 ---
-# <a name="networking"></a>Ağ
+# <a name="networking"></a>Networking (Ağ İletişimi)
 
 Azure Service Fabric kümelerini oluşturup yönetirken, düğümleriniz ve uygulamalarınız için ağ bağlantısı sağlayabilirsiniz. Ağ kaynakları IP adresi aralıklarını, sanal ağları, yük dengeleyicileri ve ağ güvenlik gruplarını içerir. Bu makalede, bu kaynaklar için en iyi yöntemleri öğreneceksiniz.
 
-Aşağıdaki özellikleri kullanan kümeler oluşturmayı öğrenmek için Azure [Service Fabric ağ düzenlerini](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) gözden geçirin: Var olan sanal ağ veya alt ağ, statik genel IP adresi, yalnızca Iç yük dengeleyici veya Iç ve dış yük dengeleyici.
+Şu özellikleri kullanan kümeler oluşturmayı öğrenmek için Azure [Service Fabric ağ düzenlerini](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) gözden geçirin: var olan sanal ağ veya alt ağ, STATIK genel IP adresi, yalnızca iç yük dengeleyici veya iç ve dış yük dengeleyici.
 
 ## <a name="infrastructure-networking"></a>Altyapı ağı
 Kaynak Yöneticisi şablonunuzda Enableiverek ağ özelliğini bildirerek, sanal makinenizin hızlandırmalı ağ ile performansını en üst düzeye çıkarın. Aşağıdaki kod parçacığı, bir sanal makine ölçek kümesi Networkınterfaceconfigurations Hızlandırılmış ağı etkinleştirilir:
@@ -48,13 +39,13 @@ Kaynak Yöneticisi şablonunuzda Enableiverek ağ özelliğini bildirerek, sanal
 ```
 Service Fabric küme, [hızlandırılmış ağ Ile Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)üzerinde sağlanabilir ve [hızlandırılmış ağ ile Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)'u kullanabilir.
 
-Azure sanal makine serisi SKU 'Larında hızlandırılmış ağ desteklenir: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 ve MS/MMS. Hızlandırılmış ağ, bir Service Fabric Windows kümesi için 1/23/2019 üzerinde Standard_DS8_v3 SKU 'SU kullanılarak başarıyla test edildi ve Service Fabric Linux kümesi için 01/29/2019 üzerinde Standard_DS12_v2 kullanılıyor.
+Hızlandırılmış ağ, Azure sanal makine serisi SKU 'Ları için desteklenir: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 ve MS/MMS. Hızlandırılmış ağ, Service Fabric bir Windows kümesi için 1/23/2019 Standard_DS8_v3 SKU 'SU kullanılarak başarıyla test edildi ve Service Fabric Linux kümesi için 01/29/2019 üzerinde Standard_DS12_v2 kullanılıyor.
 
 Mevcut bir Service Fabric kümesinde hızlandırılmış ağı etkinleştirmek için, önce aşağıdakileri gerçekleştirmek üzere bir [sanal makine ölçek kümesi ekleyerek bir Service Fabric kümesini ölçeklendirmelisiniz](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out):
 1. Hızlandırılmış ağ etkinken bir NodeType sağlama
 2. Hızlandırılmış ağ etkinken hizmetlerinizi ve durumlarını sağlanan NodeType öğesine geçirin
 
-Bir kullanılabilirlik kümesindeki tüm sanal makinelerin [durdurulması ve önce serbest kalması gerektiğinden, mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme altyapısını genişletme gerekir. Mevcut NIC 'de hızlandırılmış ağ etkinleştiriliyor](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Mevcut bir kümede hızlandırılmış ağı etkinleştirmek için genişleme altyapısının ölçeğini ayarlamak gerekir, çünkü yerinde hızlandırılmış ağın etkinleştirilmesi, [mevcut BIR NIC üzerinde hızlandırılmış ağı etkinleştirmeden önce](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms), bir kullanılabilirlik kümesindeki tüm sanal makinelerin durdurulması ve serbest kalması gerektiğinden kapalı kalma süresine neden olur.
 
 ## <a name="cluster-networking"></a>Küme ağı
 
@@ -76,7 +67,7 @@ Bir kullanılabilirlik kümesindeki tüm sanal makinelerin [durdurulması ve ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Windows Server çalıştıran VM 'lerde veya bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
+* VM 'lerde veya Windows Server çalıştıran bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)
 * VM 'lerde veya Linux çalıştıran bilgisayarlarda küme oluşturma: [Linux kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
 * [Service Fabric destek seçenekleri](service-fabric-support.md) hakkında bilgi edinin
 

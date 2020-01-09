@@ -1,24 +1,23 @@
 ---
 title: Örnek verilerle Azure Stream Analytics işi test etme
 description: Bu makalede, bir Azure Stream Analytics işini, örnek girişi test etmek ve örnek verileri karşıya yüklemek için Azure portal nasıl kullanılacağı açıklanır.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891749"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369873"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Örnek verilerle Azure Stream Analytics işi test etme
 
-Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen veriler üzerinde sorguları test edebilir veya Azure portalındaki yerel bir dosyadan örnek verileri karşıya yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](stream-analytics-live-data-local-testing.md) 'daki canlı verilerden veya [Visual Studio Code](vscode-local-run.md)yerel olarak da test edebilirsiniz. 
+Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu test edebilirsiniz. Giriş havuzınızdan gelen veriler üzerinde sorguları test edebilir veya Azure portalındaki yerel bir dosyadan örnek verileri karşıya yükleyebilirsiniz. Sorguları yerel örnek verilerden veya [Visual Studio](stream-analytics-live-data-local-testing.md) 'daki canlı verilerden veya [Visual Studio Code](visual-studio-code-local-run-live-input.md)yerel olarak da test edebilirsiniz.
 
 ## <a name="sample-incoming-data-from-input"></a>Girişten gelen veri örneği
 
@@ -30,7 +29,7 @@ Azure Stream Analytics akış girişinden olayları otomatik olarak getirir. Var
 
 3. Stream Analytics işi sayfasında, **Iş topolojisi** başlığı altında **sorgu** ' yı seçerek sorgu Düzenleyicisi penceresini açın. 
 
-4. Gelen olayların örnek listesini görmek için dosya simgesi olan giriş ' i seçin ve örnek olaylar **giriş önizlemede**otomatik olarak görünür. 
+4. Gelen olayların örnek listesini görmek için dosya simgesi olan giriş ' i seçin ve örnek olaylar **giriş önizlemede**otomatik olarak görünür.
 
    a. Verileriniz için serileştirme türü, JSON veya CSV olursa otomatik olarak algılanır. Açılır menüdeki seçeneğini değiştirerek JSON, CSV, AVRO el ile de değiştirebilirsiniz.
     
@@ -74,7 +73,7 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 
 1. Azure Portal’da oturum açın.
    
-2. Mevcut Stream Analytics işinizi bulun ve seçin.
+2. Var olan Stream Analytics işinizi bulun ve seçin.
 
 3. Stream Analytics işi sayfasında, **Iş topolojisi** başlığı altında **sorgu** ' yı seçerek sorgu Düzenleyicisi penceresini açın.
 
@@ -106,4 +105,4 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 
 * [Azure Stream Analytics için girişleri anlayın](stream-analytics-add-inputs.md)
 
-* [Azure Stream Analytics çıkışlarını anlayın](stream-analytics-define-outputs.md)
+* [Azure Stream Analytics çıkışları anlama](stream-analytics-define-outputs.md)

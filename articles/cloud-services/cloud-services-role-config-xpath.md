@@ -2,17 +2,17 @@
 title: Cloud Services rol yapılandırması XPath sayfa | Microsoft Docs
 description: Ayarları bir ortam değişkeni olarak göstermek için bulut hizmeti rol yapılandırmasında kullanabileceğiniz çeşitli XPath ayarları.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386094"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Rol yapılandırma ayarlarını XPath ile bir ortam değişkeni olarak kullanıma sunma
 Bulut hizmeti çalışanı veya Web rolü hizmeti tanım dosyasında, çalışma zamanı yapılandırma değerlerini ortam değişkenleri olarak kullanıma sunabilirsiniz. Aşağıdaki XPath değerleri desteklenir (API değerlerine karşılık gelir).
@@ -22,101 +22,101 @@ Bu XPath değerleri, [Microsoft. WindowsAzure. ServiceRuntime](/previous-version
 ## <a name="app-running-in-emulator"></a>Öykünücüde çalışan uygulama
 Uygulamanın öykünücüsünde çalıştığını gösterir.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/Deployment/@emulated" |
-| Kod |var x = RoleEnvironment. ıstreamted; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/Deployment/@emulated" |
+| Kodlayın |var x = RoleEnvironment. ıstreamted; |
 
 ## <a name="deployment-id"></a>Dağıtım Kimliği
 Örnek için dağıtım KIMLIĞINI alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/Deployment/@id" |
-| Kod |var DeploymentId = RoleEnvironment. DeploymentId; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/Deployment/@id" |
+| Kodlayın |var DeploymentId = RoleEnvironment. DeploymentId; |
 
-## <a name="role-id"></a>Rol Kimliği
+## <a name="role-id"></a>Rol KIMLIĞI
 Örnek için geçerli rol KIMLIĞINI alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@id" |
-| Kod |var kimliği = RoleEnvironment.CurrentRoleInstance.Id; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/@id" |
+| Kodlayın |var kimliği = RoleEnvironment.CurrentRoleInstance.Id; |
 
-## <a name="update-domain"></a>Etki alanını güncelleştir
+## <a name="update-domain"></a>Etki alanını güncelleştirme
 Örneğin güncelleştirme etki alanını alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
-| Kod |var ud = RoleEnvironment. Currentrotaınstance. UpdateDomain; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/@updateDomain" |
+| Kodlayın |var ud = RoleEnvironment. Currentrotaınstance. UpdateDomain; |
 
-## <a name="fault-domain"></a>Hata etki alanı
+## <a name="fault-domain"></a>Hatalı etki alanı
 Örneğin hata etki alanını alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
-| Kod |var FD = RoleEnvironment. Currentrotaınstance. FaultDomain; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/@faultDomain" |
+| Kodlayın |var FD = RoleEnvironment. Currentrotaınstance. FaultDomain; |
 
 ## <a name="role-name"></a>Rol adı
 Örneklerin rol adını alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
-| Kod |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/@roleName" |
+| Kodlayın |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Yapılandırma ayarı
 Belirtilen yapılandırma ayarının değerini alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/roleenvironment/currentınstance/ConfigurationSettings/configurationsetting [@name= ' Setting1 ']/@value" |
-| Kod |var Setting = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
+| {1&gt;XPath&lt;1} |XPath = "/Roleenvironment/currentınstance/ConfigurationSettings/configurationsetting [@name= ' Setting1 ']/@value" |
+| Kodlayın |var Setting = RoleEnvironment. GetConfigurationSettingValue ("Setting1"); |
 
 ## <a name="local-storage-path"></a>Yerel depolama yolu
 Örnek için yerel depolama yolunu alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/roleenvironment/currentınstance/localresources/localresource [@name= ' LocalStore1 ']/@path" |
-| Kod |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). RootPath |
+| {1&gt;XPath&lt;1} |XPath = "/Roleenvironment/currentınstance/localresources/localresource [@name= ' LocalStore1 ']/@path" |
+| Kodlayın |var localResourcePath = RoleEnvironment. GetLocalResource ("LocalStore1"). RootPath |
 
 ## <a name="local-storage-size"></a>Yerel depolama boyutu
 Örnek için yerel depolamanın boyutunu alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/roleenvironment/currentınstance/localresources/localresource [@name= ' LocalStore1 ']/@sizeInMB" |
-| Kod |var Localresourcesizeınmb = RoleEnvironment. GetLocalResource ("LocalStore1"). Maximumsizeınmegabayt; |
+| {1&gt;XPath&lt;1} |XPath = "/Roleenvironment/currentınstance/localresources/localresource [@name= ' LocalStore1 ']/@sizeInMB" |
+| Kodlayın |var Localresourcesizeınmb = RoleEnvironment. GetLocalResource ("LocalStore1"). Maximumsizeınmegabayt; |
 
 ## <a name="endpoint-protocol"></a>Uç nokta Protokolü
 Örnek için uç nokta protokolünü alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/endpoints/Endpoint [@name= ' Endpoint1 ']/@protocol" |
-| Kod |var Prot = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. Protocol |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@protocol" |
+| Kodlayın |var Prot = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. Protocol |
 
 ## <a name="endpoint-ip"></a>Uç nokta IP 'si
 Belirtilen bitiş noktasının IP adresini alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/endpoints/Endpoint [@name= ' Endpoint1 ']/@address" |
-| Kod |var adresi = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. IPEndpoint. Address |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@address" |
+| Kodlayın |var adresi = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. IPEndpoint. Address |
 
 ## <a name="endpoint-port"></a>Uç nokta bağlantı noktası
 Örnek için uç nokta bağlantı noktasını alır.
 
-| Type | Örnek |
+| Tür | Örnek |
 | --- | --- |
-| XPath |XPath = "/RoleEnvironment/CurrentInstance/endpoints/Endpoint [@name= ' Endpoint1 ']/@port" |
-| Kod |var bağlantı noktası = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. IPEndpoint. Port; |
+| {1&gt;XPath&lt;1} |XPath = "/RoleEnvironment/CurrentInstance/Endpoints/Endpoint [@name= ' Endpoint1 ']/@port" |
+| Kodlayın |var bağlantı noktası = RoleEnvironment. Currentrotaınstance. ınstanceendpoints ["Endpoint1"]. IPEndpoint. Port; |
 
 ## <a name="example"></a>Örnek
-`TestIsEmulated` [Burada XPath@emulated değeri](#app-running-in-emulator)olarak ayarlanan adlı bir ortam değişkeni ile bir başlangıç görevi oluşturan bir çalışan rolü örneği verilmiştir. 
+[@emulated XPath değerine](#app-running-in-emulator)ayarlanmış `TestIsEmulated` adlı bir ortam değişkenine sahip bir başlangıç görevi oluşturan bir çalışan rolü örneği aşağıda verilmiştir. 
 
 ```xml
 <WorkerRole name="Role1">
@@ -161,4 +161,7 @@ Belirtilen bitiş noktasının IP adresini alır.
 Bir [Servicepackage. cspkg](cloud-services-model-and-package.md#servicepackagecspkg) paketi oluşturun.
 
 Bir rol için [Uzak Masaüstü 'nü](cloud-services-role-enable-remote-desktop-new-portal.md) etkinleştirin.
+
+
+
 

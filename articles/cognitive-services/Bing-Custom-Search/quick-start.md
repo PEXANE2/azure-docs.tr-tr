@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: ilk Bing Özel Arama örnek oluşturma | Microsoft Docs'
+title: 'Hızlı başlangıç: İlk Bing Özel Arama örneğinizi oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Tanımladığınız etki alanlarını ve Web sayfalarını araybarındırabileceğiniz özel bir Bing örneği oluşturmak için bu makaleyi kullanın.
+description: Tanımladığınız etki alanlarını ve Web sayfalarını arayla özel bir Bing örneği oluşturmak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384756"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Hızlı başlangıç: İlk Bing Özel Arama örneğinizi oluşturma
 
@@ -25,7 +25,7 @@ Bing Özel Arama hizmetini kullanmak için görünümünüzü veya web dilimini 
 
 ![Bing Özel Arama portalının resmi](media/blockedCustomSrch.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 

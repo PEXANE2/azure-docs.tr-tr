@@ -1,33 +1,33 @@
 ---
 title: Bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak için PowerShell kullanma
 titleSuffix: Azure Storage
-description: PowerShell kullanarak Azure Active Directory kimlik bilgileriyle Kullanıcı temsili SAS (Önizleme) oluşturmayı öğrenin.
+description: PowerShell kullanarak Azure Active Directory kimlik bilgileriyle Kullanıcı temsili SAS oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371793"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, Azure PowerShell (Önizleme) ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
+Bu makalede, Azure PowerShell sahip bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>Önizleme modülünü yükler
+## <a name="install-the-powershell-module"></a>PowerShell modülünü yükler
 
-PowerShell kullanarak bir Kullanıcı temsili SAS oluşturmak için, önce az. Storage 1.3.1-Preview modülünü yüklemeniz gerekir. Modülünü yüklemek için şu adımları izleyin:
+PowerShell ile bir Kullanıcı temsili SAS oluşturmak için az. Storage modülünün Version 1.10.0 veya üzeri sürümünü yüklemelisiniz. Modülün en son sürümünü yüklemek için aşağıdaki adımları izleyin:
 
 1. Azure PowerShell önceki tüm yüklemelerini kaldırın:
 
@@ -48,23 +48,18 @@ PowerShell kullanarak bir Kullanıcı temsili SAS oluşturmak için, önce az. S
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Kullanıcı temsili SAS 'yi destekleyen bir Azure depolama önizleme modülü yükler:
+1. Azure PowerShell sürüm 3.2.0 veya sonraki bir sürümü yüklediğinizden emin olun. Azure Storage PowerShell modülünün en son sürümünü yüklemek için aşağıdaki komutu çalıştırın:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. PowerShell penceresini kapatıp yeniden açın.
 
-PowerShell en son az. Storage modülünü varsayılan olarak yüklediği için, konsolunu başlattığınızda 1.3.1-Preview modülünü açıkça yüklemeniz gerekebilir. Önizleme modülünü açıkça yüklemek için [Import-Module](/powershell/module/microsoft.powershell.core/import-module) komutunu çalıştırın:
+Az. Storage modülünün hangi sürümünün yüklü olduğunu denetlemek için şu komutu çalıştırın:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Azure PowerShell yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile yükleme Azure PowerShell](/powershell/azure/install-az-ps).

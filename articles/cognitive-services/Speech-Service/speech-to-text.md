@@ -1,62 +1,48 @@
 ---
 title: Konuşmayı metne dönüştürme-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmadan metne özelliği, uygulamaların, araçların veya cihazlarınızın komut girişi olarak tüketebileceği, görüntüleyeceği ve eylemde bulunduğu bir şekilde ses akışlarının gerçek zamanlı olarak dökümünü sağlar. Bu hizmet, metinden konuşmaya (konuşma birleştirme) ve konuşma çevirisi özellikleriyle sorunsuz bir şekilde çalışır.
+description: Konuşmadan metne özelliği, ses akışlarının metin halinde gerçek zamanlı olarak dökümünü sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metin girişini kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, metinden konuşmaya (konuşma birleştirme) ve konuşma çevirisi özellikleriyle sorunsuz bir şekilde çalışır.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 651a30bbcba7b4d4f5d00765c651be73953cd748
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379971"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
-Konuşma hizmetinden konuşmaya metin olarak da bilinen konuşmadan metne dönüştürme, ses akışlarının gerçek zamanlı bir şekilde akışını, uygulamalar, araçlar ya da cihazlarınızın komut girişi olarak tüketebileceği, görüntüleyeceği ve üzerinde işlem gerçekleştirebildiği metne olanak sağlar. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi tarafından desteklenir ve çeviri ve metinden konuşmaya sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Konuşma tanıma olarak da bilinen konuşma hizmetindeki konuşma metni, ses akışlarının gerçek zamanlı olarak dökümünü metne sağlar. Uygulamalarınız, araçlarınız veya cihazlarınız bu metni komut girişi olarak kullanabilir, görüntüleyebilir ve eylem gerçekleştirebilir. Bu hizmet, Microsoft 'un Cortana ve Office ürünleri için kullandığı aynı tanıma teknolojisi ile desteklenmektedir. <a href="./speech-translation.md" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Çeviri</a> ve <a href="./text-to-speech.md" target="_blank">metin okuma <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hizmeti teklifleriyle sorunsuz bir şekilde çalışır. Kullanılabilir konuşmadan metne yönelik dillerin tam listesi için bkz. [desteklenen diller](language-support.md#speech-to-text).
 
-Varsayılan olarak, konuşma-metin hizmeti, evrensel dil modelini kullanır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz.
+Konuşmadan metne hizmet varsayılan olarak evrensel dil modelini kullanmaktır. Bu model, Microsoft 'a ait veriler kullanılarak eğitildi ve buluta dağıtıldı. Konuşma ve dikte senaryoları için idealdir. Benzersiz bir ortamda tanıma ve döküm için konuşmayı metne dönüştürme özelliğini kullanırken özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. Özelleştirme, çevresel gürültü veya sektöre özgü sözlük adreslemeye yardımcı olur.
 
-Konuşmayı bir mikrofondan kolayca yakalayabilir, bir akıştan okuyabilir veya ses dosyalarına konuşma SDK 'Sı ve REST API 'Leri ile erişebilirsiniz. Konuşma SDK'sı WAV/PCM 16 bit, 16 kHz/8 kHz, tek kanallı sesten konuşma tanıma gerçekleştirebilir. Ek ses biçimleri, [konuşmadan metne REST uç noktası](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) veya [toplu iş dökümü hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)kullanılarak desteklenir.
-
-## <a name="core-features"></a>Temel Özellikler
-
-Konuşma SDK 'Sı ve REST API 'Leri aracılığıyla kullanılabilen özellikler şunlardır:
-
-| Kullanım örneği | SDK | REST |
-|--------- | --- | ---- |
-| Kısa mesafeli (15 saniye <). Yalnızca bir son döküm sonucunu destekler. | Yes | Evet\* |
-| Uzun ifade ve akış sesinin sürekli olarak dökümünü alma (> 15 saniye). , Geçici ve son döküm sonuçlarını destekler. | Yes | Hayır |
-| [Lusıs](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)ile tanıma sonuçlarından hedefleri türetebilirsiniz. | Yes | \*\* yok |
-| Ses dosyalarının zaman uyumsuz olarak toplu olarak dökümünü alma. | Hayır  | Evet\*\*\* |
-| Konuşma modellerini oluşturun ve yönetin. | Hayır | Evet\*\*\* |
-| Özel model dağıtımları oluşturun ve yönetin. | Hayır  | Evet\*\*\* |
-| Özel modellere karşı taban çizgisi modelinin doğruluğunu ölçmek için doğruluk testleri oluşturun. | Hayır  | Evet\*\*\* |
-| Abonelikleri yönetin. | Hayır  | Evet\*\*\* |
-
-_rest Işlevlerini kullanarak \*en fazla 60 saniyelik ses aktarabilirsiniz ve bir son geri alma sonucu elde edersiniz._
-
-\*\*_Luo amaçları ve varlıkları ayrı bır Luo aboneliği kullanılarak türetilebilir. Bu abonelikle, SDK YAĞıNıZı çağırır ve varlık ve amaç sonuçları sağlar. REST API ile, LUSıS aboneliğiniz ile amaç ve varlık türetebilirsiniz._
-
-\*\*\*_Bu hizmetler Cris.ai uç noktası kullanılarak kullanılabilir. Bkz. [Swagger başvurusu](https://westus.cris.ai/swagger/ui/index)._
+> [!NOTE]
+> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
+> - [Bing Konuşma konuşma hizmetine geçirme](how-to-migrate-from-bing-speech.md)
+> - [Özel Konuşma Tanıma konuşma hizmetine geçirme](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>Konuşmaya metne Başlarken
 
-Her biri 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlanan en popüler programlama dillerinde hızlı başlangıçları sunuyoruz. [Bu tablo](https://aka.ms/csspeech#5-minute-quickstarts) , bir konuşma SDK 'sı hızlı başlangıç listesini platform ve dile göre düzenlenmiş olarak içerir. Ayrıca, API başvurusu [burada](https://aka.ms/csspeech#reference)bulunabilir.
+Konuşmaya metin hizmetine [konuşma SDK 'sı](speech-sdk.md)aracılığıyla ulaşılabilir. Hızlı başlangıçların çeşitli dillerde ve platformlarda kullanıma sunulduğu birkaç yaygın senaryo vardır:
 
-Konuşmayı metne REST hizmetini kullanmayı tercih ediyorsanız bkz. [REST API 'leri](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+ - [Hızlı başlangıç: mikrofon girişi ile konuşmayı tanıma](quickstarts/speech-to-text-from-microphone.md)
+ - [Hızlı başlangıç: bir dosyadan konuşmayı tanıma](quickstarts/speech-to-text-from-file.md)
+ - [Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md)
+
+Konuşmayı metne REST hizmetini kullanmayı tercih ediyorsanız bkz. [REST API 'leri](rest-speech-to-text.md).
 
 ## <a name="tutorials-and-sample-code"></a>Öğreticiler ve örnek kod
 
 Konuşma hizmetini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
 
-- [Öğretici: konuşma SDK 'Sı ve LUSıS ile konuşma amaçlarını tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
+- [Öğretici: konuşma SDK 'Sı ve LUVE ile konuşmayla ilgili amaçları kullanarak konuşmayı tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
 
 Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bir dosya veya akıştan ses okuma, sürekli ve tek kararlı bir tanıma ve özel modellerle çalışma gibi yaygın senaryoları kapsar.
 
@@ -65,28 +51,9 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 ## <a name="customization"></a>Özelleştirme
 
-Konuşma hizmeti tarafından kullanılan standart taban çizgisi modeline ek olarak, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşmak için, kullanılabilir verilerle modelleri gereksinimlerinize göre özelleştirebilirsiniz. [özel konuşma tanıma](how-to-custom-speech.md)
+Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilirsiniz. Özelleştirme, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelmenize yardımcı olur. [özel konuşma tanıma](how-to-custom-speech.md). Özelleştirme seçenekleri dile/yerel ayara göre farklılık gösterir. desteği doğrulamak için [desteklenen diller](supported-languages.md) bölümüne bakın.
 
-> [!NOTE]
-> Özelleştirme seçenekleri dile/yerel ayara göre değişir (bkz. [desteklenen diller](supported-languages.md)).
-
-## <a name="migration-guides"></a>Geçiş kılavuzları
-
-> [!WARNING]
-> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı.
-
-Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
-
-- [Bing Konuşma konuşma hizmetine geçirme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-- [Özel Konuşma Tanıma konuşma hizmetine geçirme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
-
-## <a name="reference-docs"></a>Başvuru belgeleri
-
-- [Konuşma SDK'sı](https://aka.ms/csspeech)
-- [Konuşma cihazları SDK 'Sı](speech-devices-sdk.md)
-- [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
-- [REST API: metinden konuşmaya](rest-text-to-speech.md)
-- [REST API: toplu Iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
+[!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

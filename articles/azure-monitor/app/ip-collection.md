@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432597"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
 
@@ -101,7 +101,7 @@ Yalnızca tek bir Application Insights kaynağı için davranışı değiştirme
     
     Sonuç olarak bir özellik listesi döndürülecek. Özelliklerden biri `DisableIpMasking: true`okumalı. Yeni özelliği Azure Resource Manager dağıtmadan önce PowerShell 'i çalıştırırsanız, özellik mevcut olmayacaktır.
 
-### <a name="rest-api"></a>REST API 'SI
+### <a name="rest-api"></a>REST API
 
 Aynı değişiklikleri yapmak için [REST API](https://docs.microsoft.com/rest/api/azure/) yükü aşağıdaki gibidir:
 
@@ -154,7 +154,7 @@ namespace MyWebApp
 > [!NOTE]
 > `ISupportProperties`erişeerişemiyorsanız, Application Insights SDK 'nın en son kararlı sürümünü çalıştırdığınızdan emin olun. `ISupportProperties` yüksek kardinalite değerlerine yöneliktir, ancak `GlobalProperties` bölge adı, ortam adı vb. gibi düşük kardinalite değerleri için daha uygundur. 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>Telemetri başlatıcısı 'nı etkinleştirin. ASP.NET
+### <a name="enable-telemetry-initializer-for-aspnet"></a>ASP.NET için telemetri başlatıcısı 'nı etkinleştir
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

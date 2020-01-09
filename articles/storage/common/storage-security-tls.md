@@ -1,6 +1,7 @@
 ---
-title: Azure depolama istemcisi için güvenli TLS etkinleştirme | Microsoft Docs
-description: Azure Depolama'nın istemcide TLS 1.2 etkinleştirmeyi öğrenin.
+title: .NET ile güvenli TLS 'yi etkinleştirme
+titleSuffix: Azure Storage
+description: Azure depolama için .NET istemci kitaplığı 'nı kullanarak TLS 1,2 ' i etkinleştirmeyi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,26 +10,26 @@ ms.date: 06/25/2018
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 218708ffc9a680150d7b6bf559a00ca87054bbe8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371811"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Depolama istemcisi için güvenli TLS'yi etkinleştirme
 
-Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL) bilgisayar ağ üzerinden iletişim güvenlik sağlayan şifreleme kurallarıdır. SSL 1.0, 2.0 ve 3.0, savunmasız bulundu. Bunlar RFC tarafından yasaklanmış. TLS 1.0 güvenli blok şifreleme (DES CBC ve RC2 CBC) ve Stream şifre (RC4) kullanmak için güvenli hale gelir. PCI council geçiş daha yüksek TLS sürümlerini de önerilen. Daha fazla bilgi için gördüğünüz [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. Güvenlik açığı bulunan SSL 1,0, 2,0 ve 3,0. RFC tarafından yasaklanmış olmaları gerekir. TLS 1,0, güvenli olmayan blok şifresi (DES CBC ve RC2 CBC) ve akış şifresi (RC4) kullanımı için güvenli hale gelir. PCI Council Ayrıca daha yüksek TLS sürümlerine geçiş için önerilir. Daha fazla ayrıntı için [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)görebilirsiniz.
 
-Azure depolama, SSL 3.0 2015 tarihinden itibaren durdurdu ve TLS 1.2 genel HTTPs Uç noktalara kullanır ancak yine de TLS 1.0 ve TLS 1.1 geriye dönük uyumluluk için desteklenir.
+Azure Storage, 2015 sonrasında SSL 3,0 ' i durdurdu ve genel HTTPs uç noktalarında TLS 1,2 kullandığından, TLS 1,0 ve TLS 1,1 yine de geriye dönük uyumluluk için desteklenmektedir.
 
-Güvenli ve uyumlu Azure depolama bağlantı sağlamak için Azure depolama hizmeti çalıştırmak için istekler göndermeden önce TLS 1.2 veya istemci tarafı sürüme etkinleştirmeniz gerekir.
+Azure depolama 'ya güvenli ve uyumlu bir bağlantı sağlamak için, Azure depolama hizmetini çalıştırmak üzere istek göndermeden önce istemci tarafında TLS 1,2 veya daha yeni bir sürümü etkinleştirmeniz gerekir.
 
-## <a name="enable-tls-12-in-net-client"></a>TLS 1.2 .NET istemci etkinleştirme
+## <a name="enable-tls-12-in-net-client"></a>.NET istemcisinde TLS 1,2 'yi etkinleştirme
 
-TLS 1.2, işletim sistemi ve .NET Framework sürümünü anlaşmak için istemciyi hem TLS 1.2 desteklemesi gerekir. Daha fazla bilgi [TLS 1.2 desteği](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).
+İstemcisinin TLS 1,2 anlaşmasına sahip olması için, işletim sisteminin ve .NET Framework sürümünün her ikisi de TLS 1,2 ' i desteklemelidir. [TLS 1,2 desteğiyle ilgili](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)daha fazla ayrıntı görüntüleyin.
 
-Aşağıdaki örnek, TLS 1.2 .NET istemcinizde etkinleştirme işlemi gösterilmektedir.
+Aşağıdaki örnekte, .NET istemcisinde TLS 1,2 nasıl etkinleştirileceği gösterilmektedir.
 
 ```csharp
 
@@ -47,11 +48,11 @@ Aşağıdaki örnek, TLS 1.2 .NET istemcinizde etkinleştirme işlemi gösterilm
 
 ```
 
-## <a name="enable-tls-12-in-powershell-client"></a>TLS 1.2 PowerShell istemcisi etkinleştir
+## <a name="enable-tls-12-in-powershell-client"></a>PowerShell istemcisinde TLS 1,2 'yi etkinleştirme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)] 
 
-Aşağıdaki örnek, TLS 1.2 PowerShell istemcinizde etkinleştirme işlemi gösterilmektedir.
+Aşağıdaki örnek, PowerShell istemcinizdeki TLS 1,2 ' i nasıl etkinleştireceğinizi göstermektedir.
 
 ```powershell
 # Enable TLS 1.2 before connecting to Azure Storage
@@ -68,16 +69,16 @@ $listOfContainers = Get-AzStorageContainer -Context $ctx -Prefix $prefix
 $listOfContainers
 ```
 
-## <a name="verify-tls-12-connection"></a>TLS 1.2 bağlantısını doğrulama
+## <a name="verify-tls-12-connection"></a>TLS 1,2 bağlantısını doğrulama
 
-TLS 1.2 gerçekten kullanılıp kullanılmadığını doğrulamak için Fiddler'ı kullanabilirsiniz. İstemci ağ trafiği yakalamayı başlatmak için Fiddler'ı açın, ardından örnek yürütün. Ardından örnek yaptığı bağlantı TLS sürümü bulabilirsiniz.
+Fiddler 'i kullanarak TLS 1,2 'in gerçekten kullanıldığını doğrulayabilirsiniz. İstemci ağ trafiği yakalamaya başlamak için Fiddler 'ı açın ve ardından yukarıdaki örneği yürütün. Daha sonra, örneğin, bağlantının yaptığı bağlantıda TLS sürümünü bulabilirsiniz.
 
-Aşağıdaki ekran görüntüsünde, doğrulama için bir örnektir.
+Aşağıdaki ekran görüntüsü, doğrulama için bir örnektir.
 
-![TLS sürümü fiddler'da doğrulama işleminin ekran görüntüsü](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
+![Fiddler 'da TLS sürümünün doğrulanması ekran görüntüsü](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
-* [TLS PCI uyumluluğu](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
-* [Java istemci TLS etkinleştir](https://www.java.com/en/configure_crypto.html)
+* [TLS üzerinde PCI uyumluluğu](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)
+* [Java istemcisinde TLS 'yi etkinleştirme](https://www.java.com/en/configure_crypto.html)

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights Profiler sorunlarını giderme | Microsoft Docs
+title: Azure Application Insights Profiler sorunlarını giderme
 description: Bu makalede, Application Insights Profiler etkinleştirme veya kullanma konusunda sorun yaşayan geliştiricilere yardımcı olacak sorun giderme adımları ve bilgiler sunulmaktadır.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432379"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
 
@@ -111,7 +111,7 @@ Profil oluşturucuyu yapılandırırken, Web uygulamasının ayarlarına güncel
 
 Web uygulamanızı Profiler özellikli bir Web Apps kaynağına yeniden dağıtıyorsanız, aşağıdaki iletiyi görebilirsiniz:
 
-*Dizin boş değil:\\giriş\\sitesi\\Wwwroot\\App_Data\\işleri '*
+*Dizin boş değil:\\Home\\sitesi\\Wwwroot\\App_Data\\işleri '*
 
 Bu hata, betiklerden veya Azure DevOps dağıtım ardışık düzeninde Web Dağıtımı çalıştırırsanız oluşur. Çözüm, Web Dağıtımı görevine aşağıdaki ek dağıtım parametrelerini eklemektir:
 
@@ -143,7 +143,7 @@ Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
-    or
+    veya
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
@@ -163,6 +163,11 @@ Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
     Uygulamanız istek alırken profil oluşturucu çalışıyorsa şu ileti görüntülenir: *Ikey 'Den etkinlik algılandı*. 
 
     İzleme karşıya yüklenirken şu ileti görüntülenir: *izlemeyi karşıya yüklemeye başlayın*. 
+
+
+## <a name="edit-network-proxy-or-firewall-rules"></a>Ağ proxy veya güvenlik duvarı kurallarını Düzenle
+
+Uygulamanız bir ara sunucu veya güvenlik duvarı üzerinden Internet 'e bağlanırsa, uygulamanızın Application Insights Profiler hizmetiyle iletişim kurmasına izin vermek için kuralları düzenlemeniz gerekebilir. Application Insights Profiler tarafından kullanılan IP 'Ler, Azure Izleyici hizmeti etiketine dahildir.
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

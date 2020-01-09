@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Python için kişiselleştirici istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: Python için kişiselleştirici istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
-description: Bir öğrenme döngüsü kullanarak Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın.
+description: Bu hızlı başlangıçta, bir öğrenme döngüsü kullanılarak Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlama gösterilmektedir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378951"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Hızlı başlangıç: Python için kişiselleştirici istemci kitaplığı
 
@@ -28,7 +28,7 @@ Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın
 
 [Package (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
