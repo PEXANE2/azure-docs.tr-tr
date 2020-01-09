@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: Küme depolama alanını kullanma
-                  items:
-                    - name: Azure Depolama’yı kullanma
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: Azure Data Lake Storage 2. Nesil kullanma
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: Azure Data Lake Storage 1. Nesil kullanma
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Küme depolama alanını kullanma
+          items:
+            - name: Azure Depolama’yı kullanma
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Azure Data Lake Storage 2. Nesil kullanma
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage 1. Nesil kullanma
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: Kümeleri genişletme
           items:
             - name: HDInsight uygulamaları yükleme

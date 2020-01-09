@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Kapsayıcılar için Azure
 metadata:
-  document_id: null
   title: 'Kapsayıcılar için Azure - Hızlı Başlangıçlar, Öğreticiler, API Başvurusu'
   description: 'Kapsayıcılar için hızlı başlangıçları, öğreticileri ve araçları kullanarak Azure ile kapsayıcı uygulamalarını yönetmeye ve dağıtmaya başlayın.'
   keywords: 'Azure, Kapsayıcılar, Docker, API, Kubernetes'

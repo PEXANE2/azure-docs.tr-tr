@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure Media Services Belgeleri
 metadata:
-  document_id: null
   title: Azure Media Services Belgeleri | Microsoft Docs
   description: 'Azure Media Services, yayın kalitesinde video akışı elde etmenizi, erişilebilirlik ve dağıtımı iyileştirmenizi, içerikleri analiz etmenizi ve daha fazlasını yapmanızı sağlayan çözümler derlemenize olanak tanıyan bulut tabanlı bir platformdur.'
   services: media-services
