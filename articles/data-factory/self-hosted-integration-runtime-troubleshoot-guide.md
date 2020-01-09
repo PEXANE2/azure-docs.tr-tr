@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: 9adbc3d7d30aeb8c7cb2b89c326ac2b39a2e8d2b
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439884"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -20,114 +20,120 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 
 ## <a name="common-errors-and-resolutions"></a>Yaygın hatalar ve çözümler
 
-### <a name="error-message-self-hosted-integration-runtime-is-unable-to-connect-to-cloud-service"></a>Hata iletisi: şirket içinde barındırılan tümleştirme çalışma zamanı bulut hizmetine bağlanamıyor.
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Hata iletisi: şirket içinde barındırılan tümleştirme çalışma zamanı bulut hizmetine bağlanamıyor
 
-- **Belirti**: 
+![Şirket içinde barındırılan IR bağlantı sorunu](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
-    ![Şirket içinde barındırılan IR bağlantı sorunu](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+#### <a name="cause"></a>Nedeni 
 
-- **Neden**: şirket içinde barındırılan tümleştirme çalışma zamanı, Data Factory hizmetine (arka uç) bağlanamıyor. Genellikle, güvenlik duvarında ağ ayarlarından kaynaklanmasından kaynaklanmıştır.
+Şirket içinde barındırılan tümleştirme çalışma zamanı Data Factory hizmetine bağlanamaz (arka uç). Bu sorun genellikle güvenlik duvarındaki ağ ayarlarından kaynaklanır.
 
-- **Çözüm**: 
+#### <a name="resolution"></a>Çözünürlük
 
-    1. "Integration Runtime hizmeti" Windows hizmetinin çalışıp çalışmadığını denetleyin.
+1. Integration Runtime hizmetinin çalışıp çalışmadığını denetleyin.
     
-        ![Şirket içinde barındırılan IR hizmeti çalıştırma durumu](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Şirket içinde barındırılan IR hizmeti çalıştırma durumu](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-    2. [1] içinde gösterilen Windows hizmeti çalışıyorsa, uygun şekilde aşağıdaki yönergeleri izleyin:
+1. Hizmet çalışıyorsa Adım 3 ' e gidin.
 
-        1. Şirket içinde barındırılan tümleştirme çalışma zamanı 'nda "proxy" yapılandırılmamışsa (varsayılan ayarlar proxy yapılandırması değildir), şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu makinede aşağıdaki PowerShell komutunu çalıştırın: 
-            
-            ```powershell
-            (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
-            ```
-            > [!NOTE] 
-            > Hizmet URL 'SI, Veri Fabrikası konumunuza göre farklılık gösterebilir. Hizmet URL 'sini ADF Kullanıcı arabirimi-> Bağlantılar-> tümleştirme çalışma zamanları-> Şirket içinde barındırılan IR-> düğümlerini Düzenle-> görüntüleme hizmeti URL 'Lerini bulabilirsiniz.
-            
-            Beklenen yanıt aşağıda verilmiştir:
-            
-            ![PowerShell komut yanıtı](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
-            
-            Yanıt farklıysa, aşağıdaki yönergeleri uygun şekilde uygulayın:
-            
-            * "Uzak ad çözümlenemedi" hatasını alırsanız DNS ile ilgili bir sorun vardır. DNS çözümlemesi sorununu çözmek için lütfen ağ ekibine ulaşın! 
-            * "SSL/TLS sertifikası güvenilir değil" hatasını alırsanız lütfen "https://wu2.frontend.clouddatahub.net/" sertifikasının makinede güvenilir olup olmadığını denetleyin, bu sorunu hafifletmek için Sertifika Yöneticisi 'ni kullanarak ortak sertifikayı yüklemeyin.
-            * Windows-> Olay Görüntüleyicisi 'ni (Günlükler)-> uygulamalar ve hizmet günlükleri ' ni (genellikle DNS, güvenlik duvarı kuralı ve şirketin ağ ayarlarından kaynaklanan bir hata için Integration Runtime >) denetleyin. Bu sorun için, her şirkette ağ ayarları özelleştirildiği için lütfen daha fazla troubleshot için ağ ekibinize katılın.
+1. Şirket içinde barındırılan tümleştirme çalışma zamanı (varsayılan ayar) üzerinde yapılandırılmış bir proxy yoksa, şirket içinde barındırılan tümleştirme çalışma zamanının yüklendiği makinede aşağıdaki PowerShell komutunu çalıştırın:
 
-        2. Şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde "proxy" yapılandırılmışsa, proxy sunucunuzun hizmet uç noktanıza erişip erişemeyeceğini doğrulayın. Örnek bir komut için, [buna](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)bakın.    
+    ```powershell
+    (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
+    ```
+        
+   > [!NOTE]     
+   > Data Factory konumunuza bağlı olarak hizmet URL 'SI farklılık gösterebilir. Hizmet URL 'sini, **ADF Kullanıcı arabirimi** > **bağlantıları** > tümleştirme çalışma **zamanları** ' na ** >  > ,** **hizmet URL 'lerini görüntüleyin** ** > .**
+            
+    Beklenen yanıt aşağıda verilmiştir:
+            
+    ![PowerShell komut yanıtı](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+            
+1. Beklenen yanıtı almazsanız, durumunuza uygun şekilde aşağıdaki yöntemlerden birini kullanın:
+            
+    * "Uzak ad çözümlenemedi" iletisini alırsanız, bir etki alanı adı sistemi (DNS) sorunu vardır. Bu sorunu çözmesi için ağ ekibinize başvurun.
+    * "SSL/TLS sertifikası güvenilir değil" iletisini alırsanız, https://wu2.frontend.clouddatahub.net/ için sertifikanın makinede güvenilir olup olmadığını denetleyin ve ardından Sertifika Yöneticisi 'Ni kullanarak ortak sertifikayı yükler. Bu eylem sorunu azaltmalıdır.
+    * **Windows** > **Olay Görüntüleyicisi 'ne (Günlükler)**  > **uygulama ve hızmet günlükleri** > **Integration Runtime** , DNS, güvenlik duvarı kuralı veya şirket ağı ayarlarından kaynaklanan tüm hataları kontrol edin. (Böyle bir hata bulursanız bağlantıyı zorla kapatın.) Her şirket ağ ayarlarını özelleştirdiğinden, bu sorunları gidermek için ağ ekibinize başvurun.
+
+1. Şirket içinde barındırılan tümleştirme çalışma zamanında "proxy" yapılandırılmışsa, proxy sunucunuzun hizmet uç noktasına erişebileceğini doğrulayın. Örnek bir komut için bkz. [PowerShell, Web istekleri ve proxy 'ler](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
-            ```powershell
-            $user = $env:username
-            $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
-            Settings').ProxyServer
-            $pwd = Read-Host "Password?" -assecurestring
-            $proxy = new-object System.Net.WebProxy
-            $proxy.Address = $webproxy
-            $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
-            $proxy.credentials = $account
-            $url = "https://wu2.frontend.clouddatahub.net/"
-            $wc = new-object system.net.WebClient
-            $wc.proxy = $proxy
-            $webpage = $wc.DownloadData($url)
-            $string = [System.Text.Encoding]::ASCII.GetString($webpage)
-            $string
-            ```
+    ```powershell
+    $user = $env:username
+    $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
+    Settings').ProxyServer
+    $pwd = Read-Host "Password?" -assecurestring
+    $proxy = new-object System.Net.WebProxy
+    $proxy.Address = $webproxy
+    $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
+    $proxy.credentials = $account
+    $url = "https://wu2.frontend.clouddatahub.net/"
+    $wc = new-object system.net.WebClient
+    $wc.proxy = $proxy
+    $webpage = $wc.DownloadData($url)
+    $string = [System.Text.Encoding]::ASCII.GetString($webpage)
+    $string
+    ```
 
-            Beklenen yanıt aşağıda verilmiştir:
+Beklenen yanıt aşağıda verilmiştir:
             
-            ![PowerShell komut yanıtı 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![PowerShell komut yanıtı 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
-            > [!NOTE] 
-            > Ara sunucu konuları:
-            > * Ara sunucunun beyaz listeye alma gerektirip gerektirmediğini denetleyin. Varsa, [Bu etki alanlarını](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) beyaz listeye ekleyin.
-            > * "Wu2.frontend.clouddatahub.net/" için TLS/SSL sertifikası proxy sunucuda güvenilir ' i denetleyin.
-            > * Proxy 'de Active Directory kimlik doğrulaması kullanıyorsanız, hizmet hesabını "Integration Runtime hizmeti" olarak proxy 'ye erişebilen kullanıcı hesabı olarak değiştirin.
+> [!NOTE] 
+> Ara sunucu konuları:
+> * Proxy sunucusunun Güvenli Alıcılar listesine alınması gerekip gerekmediğini denetleyin. Bu durumda, [Bu etki alanlarının](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) Güvenli Alıcılar listesinde olduğundan emin olun.
+> * "Wu2.frontend.clouddatahub.net/" TLS/SSL sertifikasının proxy sunucusunda güvenilir olup olmadığını denetleyin.
+> * Proxy üzerinde Active Directory kimlik doğrulaması kullanıyorsanız, hizmet hesabını "Integration Runtime hizmeti" olarak proxy 'ye erişebilen kullanıcı hesabı olarak değiştirin.
 
 ### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Hata iletisi: şirket içinde barındırılan tümleştirme çalışma zamanı düğümü/mantıksal dolgu, etkin olmayan/"çalışıyor (sınırlı)" durumunda
 
-- **Neden**: aşağıdaki ekran görüntüsünde gösterildiği gibi, şirket IÇINDE barındırılan IR düğümünü etkin olmayan durumda görebilirsiniz:
+#### <a name="cause"></a>Nedeni 
 
-    ![Etkin olmayan şirket içinde barındırılan IR düğümü](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+Şirket içinde barındırılan tümleşik çalışma zamanı düğümü, aşağıdaki ekran görüntüsünde gösterildiği gibi **etkin olmayan** bir duruma sahip olabilir:
 
-    Düğümler birbirleriyle iletişim kuramadığında, bu durum oluşur. 
+![Etkin olmayan şirket içinde barındırılan IR düğümü](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-- **Çözüm**: 
+Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
 
-    Düğüm barındırılan VM 'de oturum açın ve olay görünümü 'nü açın, uygulama ve hizmet günlükleri-> Integration Runtime altında tüm hata günlüklerini filtreleyin. 
+#### <a name="resolution"></a>Çözünürlük
 
-     1. Hata günlüğü şunu içeriyorsa: 
+1. Düğüm tarafından barındırılan VM 'de oturum açın. **Uygulama ve hizmet günlükleri** altında > **Integration Runtime**, Olay Görüntüleyicisi açın ve tüm hata günlüklerini filtreleyin.
+
+1. Hata günlüğünde aşağıdaki hatayı içerip içermediğini kontrol edin: 
     
-        **Hata günlüğü**: System. ServiceModel. EndpointNotFoundException: net. TCP://xxxxxxx.bwld.com: 8060/externalservice. svc/workermanager ile bağlantı kurulamadı. 00:00:00.9940994 zaman aralığı için bağlantı denemesi. TCP hata kodu 10061: hedef makine etkin bir şekilde reddettiğinden bağlantı kurulamadı 10.2.4.10:8060.  ---> System .net. Sockets. SocketException: hedef makine etkin bir şekilde reddettiğinden bağlantı kurulamadı: 8060
-    
-           System .net. Sockets. Socket. DoConnect konumunda (EndPoint endPointSnapshot, SocketAddress socketAddress)
-           
-           System .net. Sockets. Socket. Connect (EndPoint remoteEP) konumunda
-           
-           System. ServiceModel. Channels. Socketconnectionınıtıator. Connect (Uri URI, TimeSpan zaman aşımı) konumunda
-    
-        **Çözüm:** komut satırını başlatın: telnet 10.2.4.10 8060
+    ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
+    System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 
+    10.2.4.10:8060
         
-        Aşağıdaki hatayla karşılaşırsanız, bu sorunu gidermeye yönelik yardım için lütfen BT arkadaşlarınızla iletişime geçin. Başarılı bir şekilde Telnet 'i başardıktan sonra, IR düğümü durumu için sorun yaşıyorsanız Microsoft desteği 'ne başvurun.
+    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+               
+    at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+               
+    at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+       
+1. If you see this error, run the following on a command line: 
+
+   **telnet 10.2.4.10 8060**.
+1. If you receive the following error, contact your IT department for help with fixing this issue. After you can successfully telnet, contact Microsoft Support if you still have issues with the integrative runtime node status.
         
-        ![Komut satırı hatası](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-     2. Hata günlüğü şunu içeriyorsa:
-     
-        **Hata günlüğü:** Worker Manager 'a bağlanılamıyor: net. TCP:/8060/ExternalService. svc/Host azranlcir01r1 için DNS girişi yok. Böyle bir konak bilinen özel durum ayrıntısı değil: System. ServiceModel. EndpointNotFoundException: Ana bilgisayar xxxxx için DNS girişi yok. ---> System .net. Sockets. SocketException: Bu tür bir konak System .net. DNS. GetAddrInfo (dize adı) adresinde System .net. DNS. ınternalgethostbyname (dize ana bilgisayar adı, Boolean includeIPv6) adresinde bilinir. DNS. GetHostEntry (dize hostNameOrAddress ) System. ServiceModel. Channels. DnsCache. Resolve (Uri URI)---iç özel durum yığın izleme---sunucu yığın izlemesi: System. ServiceModel. Channels. DnsCache. Resolve (URI URI) konumunda 
+1.  Check whether the error log contains the following:
+
+    ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
     
-        **Çözüm:** Aşağıdaki iki eylemden biri sorunu çözmeye yardımcı olabilir:
-         1. Tüm düğümleri aynı etki alanına yerleştirin.
-         2. Barındırılan tüm VM 'nin ana bilgisayar dosyasındaki konak eşlemesine IP ekleyin.
+1. To resolve the issue, try one or both of the following methods:
+    - Put all the nodes in the same domain.
+    - Add the IP to host mapping in all the hosted VM's host files.
 
 
-## <a name="next-steps"></a>Sonraki adımlar
+## Next steps
 
-Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
+For more help with troubleshooting, try the following resources:
 
-*  [Data Factory blogu](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN forumu](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
-*  [ADF eşleme veri akışları performans Kılavuzu](concepts-data-flow-performance.md)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Mapping data flows performance guide](concepts-data-flow-performance.md)

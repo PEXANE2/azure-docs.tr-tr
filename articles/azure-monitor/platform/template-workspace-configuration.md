@@ -4,33 +4,33 @@ description: Log Analytics çalışma alanları oluşturmak ve yapılandırmak i
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176389"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363396"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için [Azure Resource Manager şablonlarını](../../azure-resource-manager/resource-group-authoring-templates.md) kullanabilirsiniz. Şablonlarla gerçekleştirebileceğiniz görevlere örnekler şunlar olabilir:
+Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için [Azure Resource Manager şablonlarını](../../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Şablonlarla gerçekleştirebileceğiniz görevlere örnekler şunlar olabilir:
 
 * Fiyatlandırma katmanını ayarlama dahil bir çalışma alanı oluşturma 
 * Çözüm ekleme
 * Kayıtlı aramalar oluştur
-* Bilgisayar grubu oluşturma
-* Windows aracısının yüklü olduğu bilgisayarlardan IIS günlükleri toplamayı etkinleştir
-* Linux ve Windows bilgisayarlarından performans sayaçlarını toplayın
-* Linux bilgisayarlarda Syslog 'tan olay topla 
-* Windows olay günlüklerinden olay topla
+* Bir bilgisayar grubu oluşturun
+* Windows aracısının yüklü olduğu IIS günlükler bilgisayarlardan koleksiyonunu etkinleştir
+* Linux ve Windows bilgisayarlardan performans sayaçlarını Topla
+* Linux Bilgisayarları'nda syslog olaylarını Topla 
+* Windows olay günlüklerinden olaylarını Topla
 * Windows bilgisayarından özel günlükleri topla
-* Log Analytics aracısını bir Azure sanal makinesine ekleme
-* Log Analytics 'i Azure tanılama kullanılarak toplanan verileri dizinleyecek şekilde yapılandırma
+* Bir Azure sanal makinesi için log analytics aracısını ekleme
+* Azure Tanılama'yı kullanarak toplanan dizin verileri log analytics'e yapılandırın
 
 Bu makale, şablonlarla gerçekleştirebileceğiniz bazı yapılandırmayı gösteren şablon örnekleri sağlar.
 
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma Alanı   | Onlarla    | 2017-03-15-Önizleme |
+| Çalışma Alanı   | çalışma alanları    | 2017-03-15-Önizleme |
 | Arama      | Savedaramalarındaki aramalar | 2015-03-20 |
 | Veri kaynağı | kaynağı   | 2015-11-01-Önizleme |
 | Çözüm    | çözümler     | 2015-11-01-Önizleme |
@@ -113,8 +113,8 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
     }
     ```
 
-2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurusunu gözden geçirin. 
-3. Bu dosyayı bir yerel klasöre **deploylaworkspace Template. JSON** olarak kaydedin.
+2. Gereksinimlerinizi karşılayacak şekilde şablonunu düzenleyin. Gözden geçirme [Microsoft.OperationalInsights/workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvuru hangi özellikler ve değerler desteklendiğini öğrenin. 
+3. Bu dosyayı farklı Kaydet **deploylaworkspacetemplate.json** yerel bir klasöre.
 4. Bu şablonu dağıtmaya hazırsınız. Çalışma alanını oluşturmak için PowerShell veya komut satırı kullanın, bu durumda, komutun bir parçası olarak çalışma alanı adı ve konumu belirtin. Çalışma alanı adı tüm Azure abonelikleri genelinde genel olarak benzersiz olmalıdır.
 
    * PowerShell için, şablonu içeren klasörden aşağıdaki komutları kullanın:
@@ -130,20 +130,20 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
         azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
-Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:<br><br> ![Dağıtım tamamlandığında örnek sonuç](./media/template-workspace-configuration/template-output-01.png)
+Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonuç içeren aşağıdakine benzer bir ileti görürsünüz:<br><br> ![Dağıtım tamamlandığında örnek sonucu](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Log Analytics çalışma alanı yapılandırma
 
 Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
 
-1. Çalışma alanına çözümler ekleme
+1. Çözüm çalışma alanına ekleme
 2. Kayıtlı aramalar oluştur
-3. Bilgisayar grubu oluşturma
-4. Windows aracısının yüklü olduğu bilgisayarlardan IIS günlükleri toplamayı etkinleştir
-5. Linux bilgisayarlardan mantıksal disk performans sayaçlarını toplayın (% kullanılan ınomdes; Boş megabayt; % Kullanılan alan; Disk aktarımı/sn; Disk Okuma/sn; Disk yazma/sn)
-6. Linux bilgisayarlardan Syslog olaylarını topla
-7. Windows bilgisayarlardan uygulama olay günlüğünden hata ve uyarı olaylarını toplayın
-8. Windows bilgisayarlarından bellek kullanılabilir MBayt performans sayacını topla
+3. Bir bilgisayar grubu oluşturun
+4. Windows aracısının yüklü olduğu IIS günlükler bilgisayarlardan koleksiyonunu etkinleştir
+5. Mantıksal Disk performans sayaçları Linux bilgisayarından toplar (% kullanılan Inode'ları; Boş megabayt; % Kullanılan alan; Disk aktarımı/sn; Disk Okuma/sn; Disk Yazma/sn)
+6. Linux bilgisayarlardan Syslog olaylarını Topla
+7. Windows bilgisayarlardan uygulama olay günlüğü'ndeki hata ve uyarı olaylarını Topla
+8. Windows bilgisayarlardan bellek kullanılabilir MBayt performans sayacı Topla
 9. Azure tanılama tarafından bir depolama hesabına yazılan IIS günlüklerini ve Windows olay günlüklerini toplayın
 10. Windows bilgisayarından özel günlükleri topla
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8fb121999176e43f07283e970d7336a7c569eaca
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422061"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticide, bir [App Service ortamı v1](app-service-app-service-environmen
 > 
 > 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktadır. Henüz yapmadıysanız, bkz. [App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
@@ -104,5 +104,5 @@ Web uygulamanızı oluşturduktan sonra plan App Service, ölçeği ölçeklendi
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
-[ResourceGroups]: ../../azure-resource-manager/resource-group-overview.md
+[ResourceGroups]: ../../azure-resource-manager/management/overview.md
 [AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

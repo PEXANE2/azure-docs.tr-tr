@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444784"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB ORDER BY yan tümcesi
 
@@ -29,9 +29,9 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Sorgu sonuç kümesinin sıralaması yapılacak bir özellik veya ifade belirtir. Bir sıralama sütunu, ad veya özellik diğer adı olarak belirtilebilir.  
+   Bir özellik ya da üzerinde sorgu sonucu kümesini sıralama yapılacak ifade belirtir. Bir sıralama sütunu, ad veya özellik diğer adı olarak belirtilebilir.  
   
-   Birden çok özellik belirtilebilir. Özellik adları benzersiz olmalıdır. ORDER BY yan tümcesindeki sıralama özelliklerinin sırası, sıralanmış sonuç kümesinin organizasyonunu tanımlar. Diğer bir deyişle, sonuç kümesi ilk özelliğe göre sıralanır ve ardından sıralı liste ikinci özelliğe göre sıralanır ve bu şekilde devam eder.  
+   Birden çok özellik belirtilebilir. Özellik adları benzersiz olmalıdır. ORDER BY yan tümcesindeki sıralama özelliklerinin sırası, sıralanmış sonuç kümesinin organizasyonunu tanımlar. Diğer bir deyişle, sonuç kümesi ilk özelliği tarafından sıralanır ve ardından bu sıralı liste ikinci özelliği vb. göre sıralanır.  
   
    ORDER BY yan tümcesinde başvurulan özellik adları, select listesindeki bir özelliğe ya da herhangi bir belirsizlikleri olmadan FROM yan tümcesinde belirtilen koleksiyonda tanımlanan bir özelliğe karşılık gelmelidir.  
   
@@ -41,15 +41,18 @@ ORDER BY <sort_specification>
   
 - `<scalar_expression>`  
   
-   Ayrıntılar için [skaler ifadeler](sql-query-scalar-expressions.md) bölümüne bakın.  
+   Bkz: [skaler ifadelerin](sql-query-scalar-expressions.md) ayrıntıları bölümü.  
   
 - `ASC | DESC`  
   
-   Belirtilen sütundaki değerlerin artan veya azalan sırada sıralanması gerektiğini belirtir. ASC değeri en düşük değerden en yüksek değere göre sıralanır. DESC değeri en yüksek değerden en düşük değere göre yapılır. ASC varsayılan sıralama düzeni. Null değerler mümkün olan en düşük değer olarak değerlendirilir.  
+   Belirtilen sütundaki değerleri artan veya azalan olarak sıralanması gerektiğini belirtir. ASC en düşük değerden yüksek değer sıralar. DESC en yüksek değerden en düşük değere doğru sıralar. ASC varsayılan sıralama sırasıdır. Null değerler, en düşük olası değerler kabul edilir.  
   
 ## <a name="remarks"></a>Açıklamalar  
   
    ORDER BY yan tümcesi, dizin oluşturma ilkesinin sıralanmakta olan alanlar için bir dizin içermesini gerektirir. Azure Cosmos DB sorgusu çalışma zamanı, hesaplanan özelliklere karşı değil, özellik adına göre sıralamayı destekler. Azure Cosmos DB birden çok SıRALAMAYı destekler. Bir sorguyu birden çok sıra özellikleriyle çalıştırmak için, sıralanan alanlarda bir [bileşik dizin](index-policy.md#composite-indexes) tanımlamanız gerekir.
+   
+> [!Note] 
+> .NET SDK 3.4.0 veya üstünü kullanırken, sıralanan özellikler bazı belgeler için tanımsız olabileceğinden, bu özelliklerde açıkça bir dizin oluşturmanız gerekir. Varsayılan dizin oluşturma ilkesi, sıralama özelliğinin tanımsız olduğu belgelerin alınmasına izin vermez.
 
 ## <a name="examples"></a>Örnekler
 
@@ -61,7 +64,7 @@ ORDER BY <sort_specification>
     ORDER BY f.address.city
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -76,7 +79,7 @@ Sonuçlar şunlardır:
     ]
 ```
 
-Aşağıdaki sorgu, öğe oluşturma tarihleri sırasıyla aile `id`s alır. Öğe `creationDate`, *Dönem süresini*temsil eden bir sayı veya 1 Ocak 1970 ' den beri saniye cinsinden geçen süreyi temsil eder.
+Aşağıdaki sorgu, öğe oluşturma tarihleri sırasına göre aile `id`s 'yi alır. Öğe `creationDate`, *Dönem süresini*temsil eden bir sayı veya 1 Ocak 1970 ' den beri saniye cinsinden geçen süreyi temsil eder.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -84,7 +87,7 @@ Aşağıdaki sorgu, öğe oluşturma tarihleri sırasıyla aile `id`s alır. Ö�
     ORDER BY f.creationDate DESC
 ```
 
-Sonuçlar şunlardır:
+Sonuçlar:
 
 ```json
     [
@@ -99,7 +102,7 @@ Sonuçlar şunlardır:
     ]
 ```
 
-Ayrıca, birden çok özelliğe göre sıralama yapabilirsiniz. Birden çok özelliğe göre sipariş eden bir sorgu [bileşik dizin](index-policy.md#composite-indexes)gerektirir. Aşağıdaki sorguyu göz önünde bulundurun:
+Ayrıca, birden çok özelliğe göre sıralama yapabilirsiniz. Birden çok özelliğe göre sipariş eden bir sorgu [bileşik dizin](index-policy.md#composite-indexes)gerektirir. Şu sorguyu inceleyin:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -107,7 +110,7 @@ Ayrıca, birden çok özelliğe göre sıralama yapabilirsiniz. Birden çok öze
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Bu sorgu, şehir adının artan sırada aile `id` ' i alır. Birden çok öğe aynı şehir adına sahip ise, sorgu `creationDate` azalan sırada sıraya alınır.
+Bu sorgu, Aile `id` şehir adının artan sırasına göre alır. Birden çok öğe aynı şehir adına sahip ise, sorgu `creationDate` göre azalan sırada sıraya alınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

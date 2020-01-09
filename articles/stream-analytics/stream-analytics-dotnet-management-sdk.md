@@ -1,22 +1,21 @@
 ---
 title: Azure Stream Analytics için yönetim .NET SDK'sini
 description: Stream Analytics yönetim .NET SDK'sı ile çalışmaya başlayın. Ayarlama ve analiz işleri çalıştırma hakkında bilgi edinin. Bir proje, girişler, çıkışlar ve dönüştürmeleri oluşturun.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426270"
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: Ayarlama ve .NET için Azure Stream Analytics API'si kullanarak analytics işlerini çalıştırın
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Yönetim .NET SDK'sini: Ayarlamak ve .NET için Azure Stream Analytics API'si kullanarak analytics işlerini çalıştırın
 Ayarlama ve Stream Analytics API'si için .NET Yönetim SDK'sını kullanarak .NET kullanarak analytics işlerini çalıştırma hakkında bilgi edinin. Projesini ayarlarsınız, giriş ve çıkış kaynakları, dönüştürme ve başlangıç oluşturma ve işleri durdur. Analytics işleriniz için Blob depolama alanından veya bir olay hub'ından veri akışını yapabilirsiniz.
 
 Bkz: [Stream Analytics API'si için .NET için yönetim başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn889315.aspx).
@@ -26,12 +25,12 @@ Azure Stream Analytics, akış verileri bulutta üzerinden düşük gecikme sür
 > [!NOTE]
 > Bu makaledeki örnek kod ile Azure Stream Analytics yönetim .NET SDK'ın v2.x sürümünü güncelleştirdik. Kullanır (1.x) lagecy SDK sürümünü kullanan örnek kod için lütfen bkz [Stream Analytics için yönetim .NET SDK'sı v1.x kullanın](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu makaleye başlamadan önce aşağıdaki gereksinimleri olması gerekir:
+## <a name="prerequisites"></a>Ön koşullar
+Bu makaleye başlamadan önce, aşağıdaki gereksinimlere sahip olmanız gerekir:
 
-* Visual Studio 2019 veya 2015'i yükleyin.
+* Visual Studio 2019 veya 2015 ' ü yükler.
 * İndirme ve yükleme [Azure .NET SDK'sı](https://azure.microsoft.com/downloads/).
-* Aboneliğinizde bir Azure kaynak grubu oluşturun. Aşağıdaki örnek bir örnek Azure PowerShell Betiği verilmiştir. Azure PowerShell için bilgi [yüklemek ve Azure PowerShell yapılandırma](/powershell/azure/overview);  
+* Aboneliğinizde bir Azure kaynak grubu oluşturun. Aşağıdaki örnek bir örnek Azure PowerShell betiğine örnektir. Azure PowerShell için bilgi [yüklemek ve Azure PowerShell yapılandırma](/powershell/azure/overview);  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +49,7 @@ Bu makaleye başlamadan önce aşağıdaki gereksinimleri olması gerekir:
 * Bir giriş kaynağı ve bağlanmak iş için çıktı hedef ayarlayın.
 
 ## <a name="set-up-a-project"></a>Projesi kurun
-Bir analiz işi oluşturmak için önce projenizi ayarlayın, .NET için Stream Analytics API'si kullanın.
+Bir analiz işi oluşturmak için, .NET için Stream Analytics API 'sini kullanın, önce projenizi ayarlayın.
 
 1. Visual Studio C# .NET konsol uygulaması oluşturun.
 2. Paket Yöneticisi Konsolu'nda NuGet paketlerini yüklemek için aşağıdaki komutları çalıştırın. Azure Stream Analytics yönetim .NET SDK'sı ilk hesaptır. Azure istemci kimlik doğrulaması için ikinci bir bileşendir.
@@ -211,7 +210,7 @@ Giriş kaynakları, varsayılan olarak, belirli bir işin için Blob Depolama ve
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics Çıkış hedefi oluşturma
-Bir çıkış hedefi oluşturma, Stream Analytics giriş kaynağı oluşturma işlemiyle benzerdir. Giriş kaynakları gibi çıkış hedefleri için belirli bir işin bağlıdır. Farklı projeler için aynı çıkış hedefi kullanmak için yöntemi yeniden çağırın ve başka bir iş adı belirtmeniz gerekir.
+Çıkış hedefi oluşturmak, Stream Analytics giriş kaynağı oluşturmaya benzer. Giriş kaynakları gibi çıkış hedefleri için belirli bir işin bağlıdır. Farklı projeler için aynı çıkış hedefi kullanmak için yöntemi yeniden çağırın ve başka bir iş adı belirtmeniz gerekir.
 
 Aşağıdaki kod, bir çıkış hedefi (Azure SQL veritabanı) oluşturur. Çıkış hedefinin veri türü ve/veya serileştirme türü özelleştirebilirsiniz.
 

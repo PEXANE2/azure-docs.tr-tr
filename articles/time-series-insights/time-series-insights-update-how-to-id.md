@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452753"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi kimliği seçmeye yönelik en iyi uygulamalar
 
@@ -23,23 +23,28 @@ Bu makale, Azure Time Series Insights önizleme ortamınız için zaman serisi K
 
 ## <a name="choose-a-time-series-id"></a>Zaman Serisi Kimliği
 
-Zaman serisi kimliği seçerek bir veritabanı için bir bölüm anahtarı seçme gibi olur. Time Series Insights önizleme ortamı oluştururken seçilmesi gerekir. Bu, *sabit* bir özelliktir. Diğer bir deyişle, zaman serisi KIMLIĞIYLE bir Time Series Insights önizleme ortamı oluşturduktan sonra bu ortam için değiştiremezsiniz. 
+Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Zaman serisi kimliği seçerek bir veritabanı için bir bölüm anahtarı seçme gibi olur. Time Series Insights bir önizleme ortamı oluşturduğunuzda bu gereklidir. 
 
 > [!IMPORTANT]
-> Zaman serisi KIMLIĞI büyük/küçük harfe duyarlıdır.
+> Zaman serisi kimlikleri şunlardır:
+> * *Büyük/küçük harfe duyarlı* bir özellik: harf ve karakter casler, aramalarda, karşılaştırmalar, güncelleştirmelerde ve bölümleme sırasında kullanılır.
+> * *Sabit* bir özellik: oluşturulduktan sonra değiştirilemez.
 
-Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. İzleyebileceğiniz en iyi uygulamalardan bazıları şunlardır:
+> [!TIP]
+> Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla ***ıothub-Connection-Device-ID***olacaktır.
+
+İzlenecek en iyi anahtar uygulamalar şunlardır:
 
 * Birçok farklı değere sahip bir bölüm anahtarı seçin (örneğin, yüzlerce veya binlerce). Çoğu durumda bu, JSON 'unuzdaki cihaz KIMLIĞI, algılayıcı KIMLIĞI veya etiket KIMLIĞI olabilir.
 * Zaman serisi kimliği yaprak düğümü düzeyinde benzersiz olmalıdır, [zaman serisi modeli](./time-series-insights-update-tsm.md).
-* Olay kaynağınız bir IoT Hub ise, zaman serisi KIMLIĞINIZ büyük olasılıkla *ıothub-Connection-Device-ID*olacaktır.
 * Zaman serisi KIMLIĞININ Özellik adı dizesinin karakter sınırı 128 ' dir. Zaman serisi KIMLIĞININ Özellik değeri için, karakter sınırı 1.024 ' dir.
 * Zaman serisi KIMLIĞI için benzersiz bir özellik değeri eksikse, null değer olarak değerlendirilir ve Benzersizlik kısıtlamasının aynı kuralına uyar.
 * Zaman serisi KIMLIĞINIZ olarak en fazla *üç* anahtar özelliği de seçebilirsiniz. Kombinasyonu, zaman serisi KIMLIĞINI temsil eden bir bileşik anahtar olacaktır.  
-
   > [!NOTE]
   > Üç anahtar özelliği dize olmalıdır.
   > Tek seferde bir özellik yerine bu bileşik anahtarla sorgu yapmanız gerekir.
+
+## <a name="select-more-than-one-key-property"></a>Birden fazla anahtar özelliği seçin
 
 Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar özelliği seçmeyi anlatmaktadır.  
 
@@ -67,9 +72,11 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 }
 ```
 
-Azure portal, bu bileşik anahtarı şöyle girebilirsiniz: 
+Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz: 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

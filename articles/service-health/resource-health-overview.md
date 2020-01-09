@@ -1,17 +1,14 @@
 ---
-title: Azure Kaynak Durumu genel bakış | Microsoft Docs
+title: Azure Kaynak Durumu genel bakış
 description: Azure Kaynak Durumu genel bakış
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356788"
 ---
 # <a name="resource-health-overview"></a>Kaynak Durumu genel bakış
  
@@ -63,7 +60,7 @@ Kaynakla ilgili sorunlarla karşılaşırsanız, *Bilinmeyen* sistem durumu, pla
 
 ![Bir sanal makine için * Unknown * durumu](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Düşürüldü
+### <a name="degraded"></a>Düzeyi düşürüldü
 
 *Düşürülmüş* , kaynağınızın performans kaybı algıladığı, ancak kullanılmaya devam ettiği anlamına gelir.
 
@@ -83,7 +80,7 @@ Kaynak Durumu **sistem durumu geçmişi** bölümünde 14 güne geçmiş bir ge�
 
 ![Son iki hafta içindeki Kaynak Durumu olaylarının listesi](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 Bir kaynak için Kaynak Durumu açmak için:
 

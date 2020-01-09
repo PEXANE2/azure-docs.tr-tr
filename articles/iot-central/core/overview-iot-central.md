@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434964"
 ---
 <!---
 Purpose of an Overview article: 
@@ -99,7 +99,7 @@ Yöneticiler [, Kullanıcı rolleri ve izinleriyle](howto-administer.md)uygulama
 
 Azure IoT Central’a genel bir bakış elde ettiğinize göre, aşağıdaki önerilen adımlara geçebilirsiniz:
 
-- [Azure IoT Central ile Azure IoT çözüm hızlandırıcıları](overview-iot-options.md) arasındaki farklılıkları anlayın.
+- [IoT çözümleri oluşturmak için kullanılabilir Azure teknolojilerini ve hizmetlerini](../../iot-fundamentals/iot-services-and-technologies.md)anlayın.
 - [Azure IoT Central Kullanıcı Arabirimi](overview-iot-central-tour.md)’ni tanıma.
 - [Azure IoT Central uygulaması oluşturmaya](quick-deploy-iot-central.md) bağlama.
 - Aşağıdaki işlemlerin nasıl yapılacağını gösteren bir öğretici dizisini takip etme:

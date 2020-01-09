@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4432aecee882ff2e312587baa543dd66c0372a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448042"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Tahmin doğruluğunu artırmak için desenler ekleme
 Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sırası ve Word seçimindeki bir düzeni açığa çıkarmaya yönelik tahmin doğruluğunu artırmak için bir [desen](luis-concept-patterns.md) kullanın. Desenler, konumunu belirtmek için özel [sözdizimini](luis-concept-patterns.md#pattern-syntax) kullanır: [varlıklar](luis-concept-entity-types.md), varlık [rolleri](luis-concept-roles.md)ve isteğe bağlı metin.
@@ -26,7 +26,27 @@ Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sıras
 > [!CAUTION]
 > Desenler, alt bileşenleri değil, yalnızca makine tarafından öğrenilen varlık üst öğelerini içerir.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Desen oluşturmak için şablon utterance Ekle
+## <a name="adding-example-utterances-as-pattern"></a>Desen olarak örnek ekleme
+
+Bir varlık için bir model eklemek istiyorsanız, _en kolay_ yol, amaç ayrıntıları sayfasından deseninin oluşturulması olur. Bu, sözdiziminizin örnek uttaslı ile eşleşmesini sağlar.
+
+1. [ÖNIZLEME Luu portalında](https://preview.luis.ai), **uygulamalarım** sayfasından uygulamayı seçin.
+1. **Amaç** listesi sayfasında, bir şablon oluşturmak istediğiniz örnek olarak kullanılacak amaç adını seçin.
+1. Amaç ayrıntıları sayfasında, şablon olarak kullanmak istediğiniz örnek için satırı seçin ve bağlam araç çubuğundan **+ as desen ekle** ' yi seçin.
+
+    > [!div class="mx-imgBorder"]
+    > Amaç ayrıntıları sayfasında Şablon deseninin gösterildiği örnek olarak seçme ![ekran görüntüsü.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
+
+1. Açılır kutuda, **düzenleri Onayla** sayfasında **bitti** ' yi seçin. Varlıkların alt bileşenlerini, kısıtlamalarını veya tanımlayıcılarını tanımlamanız gerekmez. Yalnızca makineye öğrenilen varlığı listeetmeniz gerekir.
+
+    > [!div class="mx-imgBorder"]
+    > Amaç ayrıntıları sayfasında bir şablon deseninin olduğunu teyit eden örnek ekran görüntüsünü ![.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+
+1. Şablonu düzenlemeniz gerekiyorsa (örneğin, metni isteğe bağlı olarak seçme, `[]` (kare) ayraçları ile, bu düzenleme formunu **desenler** sayfasında yapmanız gerekir.
+
+1. Gezinti çubuğunda, uygulamayı yeni bir Düzenle eğiteiçin **eğitme** ' yi seçin.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Doğru sözdizimini kullanarak şablon söylenişi ekleyin
 
 1. Adını seçerek uygulamanızı açın **uygulamalarım** sayfasında ve ardından **desenleri** sol bölmede altında **uygulama performansını**.
 

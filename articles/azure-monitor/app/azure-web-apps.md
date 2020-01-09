@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407244"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -77,9 +77,9 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
+Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2 ASP.NET Core 3,0
 
-.NET Core, kendinden bağımsız dağıtım ve ASP.NET Core 3,0 ' den tam Framework 'ü hedeflemek aracı/uzantısı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) , önceki senaryolardan tümünde çalışır.)
+.NET Core, kendinden bağımsız dağıtım ve Linux tabanlı uygulamalardan tam Framework 'ü hedeflemek, aracı/uzantı tabanlı izleme ile Şu anda **desteklenmemektedir** . (Kod aracılığıyla[el ile izleme](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) , önceki senaryolardan tümünde çalışır.)
 
 1. App Service için Azure Denetim Masası 'nda Application Insights ' yi **seçin** .
 
@@ -92,7 +92,7 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2
 
      ![Web uygulamanızı izleme](./media/azure-web-apps/create-resource-01.png)
 
-2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. .NET Core, .NET Core 2,0, 2,1 ve 2,2 için **Önerilen koleksiyon** veya **devre dışı** olanakları sunmaktadır.
+2. Hangi kaynağı kullanacağınızı belirttikten sonra, uygulamanız için her platform için verileri nasıl toplayacağınızı Application Insights istediğinizi seçebilirsiniz. .NET Core, .NET Core 2,0, 2,1, 2,2 ve 3,0 için **Önerilen koleksiyon** veya **devre dışı** olanakları sunmaktadır.
 
     ![Platform başına seçenekleri belirleyin](./media/azure-web-apps/choose-options-new-net-core.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439973"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından toplu kopyalama
 
@@ -33,12 +33,16 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 - **ForEach** , arama etkinliğinden bölüm listesini alır ve her bölümü kopyalama etkinliğine yineler.
 - **Kopya** , her bölümü kaynak veritabanı deposundan hedef depoya kopyalar.
 
-Şablon beş parametreyi tanımlar:
+Şablon aşağıdaki parametreleri tanımlar:
 - *Control_Table_Name* , kaynak veritabanının bölüm listesini depolayan dış denetim tablonuz olur.
 - *Control_Table_Schema_PartitionID* , her bölüm kimliğini depolayan dış denetim tablonuzda bulunan sütun adının adıdır. Bölüm KIMLIĞININ, kaynak veritabanındaki her bölüm için benzersiz olduğundan emin olun.
 - *Control_Table_Schema_SourceTableName* , kaynak veritabanından her tablo adını depolayan dış denetim tablodır.
 - *Control_Table_Schema_FilterQuery* , kaynak veritabanındaki her bölümden verileri almak için filtre sorgusunu depolayan dış denetim tablonuzun sütununun adıdır. Örneğin, verileri yıla göre bölümlüyetmeniz durumunda, her satırda depolanan sorgu, LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from DataSource ' a benzer olabilir.
-- *Data_Destination_Folder_Path* , verilerin hedef deponuza kopyalandığı yoldur. Bu parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak SQL veri ambarı ' nı seçerseniz, bu parametre gerekli değildir. Ancak SQL veri ambarı 'ndaki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
+- *Data_Destination_Folder_Path* , verilerin hedef deponuza kopyalandığı yoldur (seçtiğiniz hedef "dosya sistemi" veya "Azure Data Lake Storage 1." ise geçerlidir). 
+- *Data_Destination_Container* , verilerin hedef deponuzda kopyalandığı kök klasör yoludur. 
+- *Data_Destination_Directory* , verilerin hedef deponuza kopyalandığı kök altındaki Dizin yoludur. 
+
+Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlerseniz, bu parametreler gerekli değildir. Ancak SQL veri ambarı 'ndaki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
@@ -68,7 +72,7 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 
 3. Verileri kopyalamakta olduğunuz kaynak veritabanına **Yeni** bir bağlantı oluşturun.
 
-     ![Kaynak veritabanıyla yeni bir bağlantı oluşturun](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Kaynak veritabanıyla yeni bir bağlantı oluşturun](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. Verileri kopyalamakta olduğunuz hedef veri deposuna **Yeni** bir bağlantı oluşturun.
 
@@ -76,8 +80,6 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 
 5. **Bu şablonu kullan**'ı seçin.
 
-    ![Bu şablonu kullan](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. Aşağıdaki örnekte gösterildiği gibi ardışık düzeni görürsünüz:
 
     ![İşlem hattını gözden geçirme](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,7 +92,7 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 
     ![Sonucu gözden geçirin](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Seçim Veri hedefi olarak SQL veri ambarı ' nı seçtiyseniz, SQL veri ambarı PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. BLOB depolama alanındaki kapsayıcının zaten oluşturulduğundan emin olun.
+9. Seçim Veri hedefi olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlediyseniz, SQL veri ambarı PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, BLOB depolama alanınızı otomatik olarak bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
     
     ![PolyBase ayarı](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

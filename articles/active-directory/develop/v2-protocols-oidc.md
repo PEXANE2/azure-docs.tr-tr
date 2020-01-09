@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform & OpenID Connect Protocol | Mavisi
+title: OpenID Connect Protokolü-Microsoft Identity platform | Mavisi
 description: OpenID Connect kimlik doğrulama protokolünün Microsoft Identity platform uygulamasını kullanarak Web uygulamaları oluşturun.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3778f31cb5dd68d3f3f49ed3cddf574b1cc3bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 270fda72378b61e6011d5bbf4ce43496df045c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423220"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
 
@@ -91,7 +91,7 @@ Web uygulamanızın kimlik doğrulaması yapması gerektiğinde, kullanıcıyı 
 > [!IMPORTANT]
 > /Authorization uç noktasından bir KIMLIK belirteci istemek için, [kayıt portalındaki](https://portal.azure.com) uygulama kaydı, kimlik doğrulama sekmesinde etkin id_tokens örtük olarak verilmelidir ( [uygulama bildiriminde](reference-app-manifest.md) `oauth2AllowIdTokenImplicitFlow` bayrağını `true`olarak ayarlar). Etkin değilse, bir `unsupported_response` hatası döndürülür: "' response_type ' giriş parametresi için sağlanan değere bu istemci için izin verilmiyor. Beklenen değer ' Code ' "
 
-Örnek:
+Örneğin:
 
 ```
 // Line breaks are for legibility only.

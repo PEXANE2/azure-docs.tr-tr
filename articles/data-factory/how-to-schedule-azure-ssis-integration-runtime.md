@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8d7d4c8d7e01c6a4bfa644b84f03f8a2ea5bfd06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440311"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime bir zamanlamaya göre başlatma ve durdurma
 Bu makalede, Azure Data Factory (ADF) kullanılarak Azure-SSIS Integration Runtime (IR) başlatma ve durdurma işlemlerinin nasıl planlanmasının nasıl yapılacağı açıklanır. Azure-SSIS IR, SQL Server Integration Services (SSIS) paketlerini yürütmek için adanmış, ADF işlem kaynağıdır. Azure-SSIS IR çalıştırmak, onunla ilişkili bir maliyettir. Bu nedenle, genellikle yalnızca Azure 'da SSIS paketlerini yürütmeniz gerektiğinde ve artık ihtiyacınız olmadığında IR 'nizi durdurmak istediğinizde IR 'nizi çalıştırmak istersiniz. Ayrıca, [IR 'yi el ile başlatmak veya durdurmak](manage-azure-ssis-integration-runtime.md)Için ADF kullanıcı ARABIRIMI (UI)/app veya Azure PowerShell kullanabilirsiniz.
@@ -27,7 +27,7 @@ Alternatif olarak, günlük ETL iş yüklerinizi yürütmeden ve bu işlemi tama
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure-SSIS IR zaten sağlamadıysanız [öğreticideki](tutorial-create-azure-ssis-runtime-portal.md)yönergeleri izleyerek sağlayın. 
 
 ## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Azure-SSIS IR başlatılan ve durduran ADF işlem hatlarını oluşturma ve zamanlama
@@ -64,12 +64,12 @@ Her gün gece yarısı çalışacak şekilde zamanlanan ve üçüncü işlem hat
    - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
    - **Yeni oluştur**' u seçin ve yeni kaynak grubunuzun adını girin.   
          
-   Kaynak grupları hakkında bilgi edinmek için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md) makalesi.
+   Kaynak grupları hakkında bilgi edinmek için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md) makalesi.
    
 6. **Sürüm**için **v2** 'yi seçin.
 7. **Konum**için, açılır listeden ADF oluşturma için desteklenen konumlardan birini seçin.
 8. **Panoya sabitle**’yi seçin.     
-9. **Oluştur**’a tıklayın.
+9. **Oluştur**'a tıklayın.
 10. Azure panosu 'nda şu durum ile şu kutucuğu görürsünüz: **dağıtım Data Factory**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -114,7 +114,7 @@ Her gün gece yarısı çalışacak şekilde zamanlanan ve üçüncü işlem hat
     1. **Rol**Için **katkıda bulunan**' ı seçin. 
     2. **Erişim atama**Için, **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin. 
     3. **Seç**için ADF adınızı arayın ve seçin. 
-    4. **Kaydet** düğmesine tıklayın.
+    4. **Save (Kaydet)** düğmesine tıklayın.
     
    ![ADF yönetilen kimlik rolü ataması](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -126,7 +126,7 @@ Her gün gece yarısı çalışacak şekilde zamanlanan ve üçüncü işlem hat
 
 1. Her işlem hattı için araç çubuğunda **test çalıştırması** ' nı seçin ve alt bölmedeki **Çıkış** penceresi ' ni görüntüleyin. 
 
-   ![Test Çalıştırma](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
+   ![Test çalıştırması](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
     
 2. Üçüncü işlem hattını test etmek için SQL Server Management Studio başlatın (SSMS). **Sunucuya Bağlan** penceresinde aşağıdaki eylemleri yapın. 
 
@@ -227,7 +227,7 @@ Zaten bir Azure Otomasyonu hesabınız yoksa, bu adımdaki yönergeleri izleyere
     4. **Konum**Için, Azure Otomasyonu hesabınız için bir konum seçin. 
     5. **Azure farklı çalıştır hesabı oluşturmayı** **Evet**olarak onaylayın. Azure Active Directory bir hizmet sorumlusu oluşturulur ve Azure aboneliğinizde **katkıda bulunan** bir rol atanır.
     6. Azure panosu 'nda kalıcı olarak göstermek için **panoya sabitle ' yi** seçin. 
-    7. **Oluştur**'u seçin. 
+    7. **Oluştur**’u seçin. 
 
    ![New-> İzleme ve Yönetim-> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -265,7 +265,7 @@ Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktad
 
     1. **Ad**için **StartStopAzureSsisRuntime**girin.
     2. **Runbook türü**için **PowerShell**' i seçin.
-    3. **Oluştur**'u seçin.
+    3. **Oluştur**’u seçin.
     
    ![Runbook ekleme düğmesi](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -364,7 +364,7 @@ Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktad
     4. İçin **,** geçerli zamandan birkaç dakika geçmiş bir saat girin. 
     5. **Yinelenme**için **yineleme**' yi seçin. 
     6. **Her yineleme**için **1** girin ve **günü**seçin. 
-    7. **Oluştur**'u seçin. 
+    7. **Oluştur**’u seçin. 
 
    ![Azure SSIS IR başlangıç zamanlaması](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444130"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu
 
@@ -42,7 +42,7 @@ Bu makaleyi okuduktan sonra aşağıdaki soruları yanıtlamak mümkün olacakt�
 
 ADF, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar ve bu sayede, ortamınız için veri taşıma aktarım hızını en üst düzeye çıkarmak amacıyla, geliştiricilerin ağ bant genişliğinizi ve depolama ıOPS ve bant genişliğini tamamen kullanmak üzere işlem hatları oluşturmalarına olanak tanır.  Bu, elde ettiğiniz aktarım hızı, kaynak veri deposu, hedef veri deposu ve kaynak ile hedef arasındaki ağ bant genişliği tarafından sunulan minimum aktarım hızını ölçerek tahmin edilebilecek bir anlamına gelir.  Aşağıdaki tabloda, ortamınız için veri boyutuna ve bant genişliği sınırına göre kopyalama süresi hesaplanır. 
 
-| Veri boyutu/ <br/> bant genişliği | 50 Mb/sn    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gb/sn  | 50 Gbps   |
+| Veri boyutu/ <br/> bant genişliği | 50 Mb/sn    | 100 Mb/sn  | 500 Mb/sn  | 1 Gbps   | 5 Gbps   | 10 Gb/sn  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
 | **1 GB**                    | 2,7 dk    | 1,4 dk   | 0,3 dk   | 0,1 dk  | 0,03 dk | 0,01 dk | 0,0 dk   |
 | **10 GB**                   | 27,3 dk   | 13,7 dk  | 2,7 dk   | 1,3 dk  | 0,3 dk  | 0,1 dk  | 0,03 dk  |
@@ -293,7 +293,8 @@ Aşağıda, önceki tabloda açıklanan özelliklerle birlikte kopyalama etkinli
 
 Desteklenen bazı veri depoları için performans izleme ve ayarlama başvuruları aşağıda verilmiştir:
 
-* Blob depolamayı ve tablo depolamayı içeren Azure depolama: Azure depolama [ölçeklenebilirlik hedefleri](../storage/common/storage-scalability-targets.md) ve [Azure depolama performansı ve ölçeklenebilirlik denetim listesi](../storage/common/storage-performance-checklist.md).
+* Azure Blob depolama: BLOB depolama için [ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md) , [BLOB depolaması için performans ve ölçeklenebilirlik denetim listesi](../storage/blobs/storage-performance-checklist.md).
+* Azure Tablo Depolama: tablo depolaması için tablo depolama ve performans [ve ölçeklenebilirlik denetim listesi](../storage/tables/storage-performance-checklist.md) [için ölçeklenebilirlik ve performans hedefleri](../storage/tables/scalability-targets.md) .
 * Azure SQL veritabanı: [performansı izleyebilir](../sql-database/sql-database-single-database-monitor.md) ve veritabanı işlem BIRIMI (DTU) yüzdesini kontrol edebilirsiniz.
 * Azure SQL veri ambarı: yeteneği, veri ambarı birimlerinde (DWU) ölçülür. Bkz. [Azure SQL veri ambarı 'nda işlem gücünü yönetme (genel bakış)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Azure Cosmos DB performans düzeyleri](../cosmos-db/performance-levels.md).

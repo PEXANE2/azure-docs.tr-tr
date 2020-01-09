@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454017"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT çekirdek cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -25,19 +25,24 @@ Bu makalede, bir cihaz geliştiricisi olarak Windows IoT çekirdek cihazını Mi
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
-- **Örnek Devkits** uygulama şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+- **Eski uygulama** uygulaması şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
 
 - Windows 10 IoT Core işletim sistemini çalıştıran bir cihaz. Daha fazla bilgi için bkz. [Windows 10 IoT çekirdek cihazınızı ayarlama](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 - [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
-## <a name="the-sample-devkits-application"></a>Örnek Devkits uygulaması
+## <a name="add-a-device-template"></a>Cihaz şablonu ekleme
 
-**Örnek Devkits** uygulama şablonundan oluşturulan bir uygulama, aşağıdaki özelliklere sahip bir **Windows IoT Core** cihaz şablonu içerir:
+Azure IoT Central uygulamanızda, aşağıdaki özelliklere sahip yeni bir **Windows IoT Core** cihaz şablonu ekleyin:
 
 - Cihaz için telemetri ölçümleri: **nem**, **sıcaklık**ve **basınç**.
 - **Fan hızını**denetleme ayarı.
 - Bir cihaz özelliği **Die numarası** ve bir bulut özelliği **konumu**.
+
+1. Cihaz şablonu ![cihaz şablonlarından **+ Yeni** ' yi seçin](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. **Windows IoT** Core ' u seçin ve cihaz şablonu eklemek ![Windows IoT çekirdek cihaz şablonunu oluşturun](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 Cihaz şablonunun yapılandırmasıyla ilgili tüm ayrıntılar için bkz. [Windows IoT çekirdek cihaz şablonu ayrıntıları](#device-template-details).
 
@@ -114,7 +119,7 @@ Birkaç dakika sonra, IoT Central uygulamanızda Telemetriyi izleyebilirsiniz.
 
 Sayısal ayarlar
 
-| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlatma |
+| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlangıç |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Fan hızı    | Fanın hızı   | RPM   | 0              | 0       | 1000    | 0       |
 

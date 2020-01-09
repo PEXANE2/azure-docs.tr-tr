@@ -1,28 +1,28 @@
 ---
-title: VM'ler için Azure İzleyici (Önizleme) bilinen sorunlar | Microsoft Docs
+title: VM'ler (Önizleme) bilinen sorunlar için Azure İzleyici | Microsoft Docs
 description: Bu makalede, Azure 'da sistem durumunu, uygulama bağımlılığı bulmayı ve Azure VM işletim sisteminin performans izlemesini birleştiren VM'ler için Azure İzleyici, Azure 'daki bir çözüm olan bilinen sorunlar ele alınmaktadır.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: f6719a8c28571faceb6ebad0567d13a4edc60fe6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450687"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici ile ilgili bilinen sorunlar (Önizleme)
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>VM'ler (Önizleme) için Azure İzleyici ile ilgili bilinen sorunlar
 
 Bu makalede, Azure 'da sistem durumunu, uygulama bileşenlerini bulmayı ve Azure VM işletim sisteminin performansını izlemeyi birleştiren VM'ler için Azure İzleyici, Azure 'daki bir çözüm olan bilinen sorunlar ele alınmaktadır. 
 
 ## <a name="health"></a>Sağlık 
 Aşağıda durum özelliğinin geçerli sürümüyle ilgili bilinen sorunlar verilmiştir:
 
-- Bir Azure VM kaldırılırsa veya silinirse, bir süre için VM listesi görünümünde görüntülenir. Ayrıca, kaldırılan veya silinen bir VM 'nin durumuna tıkladığınızda **sistem durumu tanılama** görünümü açılır ve sonra bir yükleme döngüsü başlatılır. Silinen VM 'nin adını seçtiğinizde VM 'nin silindiğini belirten bir ileti içeren bir bölme açılır.
-- Bir eşiği güncelleştirme gibi yapılandırma değişiklikleri, portal veya Iş yükü Izleyicisi API 'sinin hemen güncelleştirilemeyebilir, 30 dakikaya kadar sürer. 
+- Bir Azure VM kaldırılırsa veya silinirse, bir süre için VM listesi görünümünde görüntülenir. Ayrıca, kaldırıldı veya silinmiş bir VM'nin durumunu'ı tıklatarak açılır **sistem tanılama** görüntüleyin ve sonra bir yükleme döngüsü başlatır. Silinen sanal Makinenin adını seçerek, bir VM silinip silinmediğini belirten ileti ile bir bölme açılır.
+- Portalı veya iş yükü İzleyicisi API bunları hemen güncelleştirebilir olsa bile bir eşiği güncelleştirme gibi yapılandırma değişiklikleri, 30 dakika kadar yararlanın. 
 - Durum tanılama deneyimi diğer görünümlerden daha hızlı güncelleştirilir. Aralarında geçiş yaptığınızda bilgiler gecikiyor olabilir. 
 - Linux VM 'Ler için, tek bir VM görünümüne yönelik durum ölçütlerini listeleme sayfasının başlığı, Kullanıcı tanımlı VM adı yerine sanal makinenin tüm etki alanı adına sahiptir. 
 - Desteklenen yöntemlerden birini kullanarak bir VM için izlemeyi devre dışı bıraktıktan sonra yeniden dağıtmayı denerseniz, aynı çalışma alanında dağıtmanız gerekir. Farklı bir çalışma alanı seçer ve bu VM 'nin sistem durumunu görüntülemeyi denerseniz, bu durum tutarsız bir davranış gösterebilir.

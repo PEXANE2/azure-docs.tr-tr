@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351273"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure depolama geçişi hakkında sık sorulan sorular
 
@@ -47,7 +47,7 @@ Tüm depolama hesabını doğrudan yedekleme seçeneği yoktur. Ancak, bu depola
 
 1.  [AzCopy](storage-use-azcopy.md) komut satırı aracını yükler. Bu araç, VHD dosyasını depolama hesapları arasında taşımanızı sağlar.
 
-2.  Yükleyiciyi kullanarak Windows 'a AzCopy yükledikten sonra, bir komut Istemi penceresi açın ve bilgisayarınızdaki AzCopy yükleme klasörüne gidin. AzCopy, varsayılan olarak **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** veya **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**'e yüklenir.
+2.  Yükleyiciyi kullanarak Windows 'a AzCopy yükledikten sonra, bir komut Istemi penceresi açın ve bilgisayarınızdaki AzCopy yükleme klasörüne gidin. AzCopy varsayılan olarak, yüklü **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** veya **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Kapsayıcıyı taşımak için aşağıdaki komutu çalıştırın. Metni gerçek değerlerle değiştirmeniz gerekir.   
      
@@ -259,7 +259,7 @@ Diğer kişilere depolama kaynaklarına erişim sağlamak için:
 
 -   Bir kaynağa erişim sağlamak için paylaşılan erişim imzası (SAS) belirteci kullanın. 
 
--   Depolama hesabı için birincil veya ikincil anahtarı olan bir Kullanıcı sağlayın. Daha fazla bilgi için bkz. [depolama hesabınızı yönetme](storage-account-manage.md#access-keys).
+-   Depolama hesabı için birincil veya ikincil anahtarı olan bir Kullanıcı sağlayın. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](storage-account-keys-manage.md).
 
 -   Erişim ilkesini anonim erişime izin verecek şekilde değiştirin. Daha fazla bilgi için bkz. [kapsayıcılar ve bloblara anonim kullanıcı Izinleri verme](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
@@ -277,7 +277,7 @@ Diğer kişilere depolama kaynaklarına erişim sağlamak için:
 
 -   Okuma Erişimli Coğrafi olarak yedekli depolama kullanıyorsanız, verileri istediğiniz zaman ikincil bölgeden erişebilirsiniz. Aşağıdaki yöntemlerden birini kullanın:  
       
-    - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örnek:  
+    - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örneğin:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

@@ -1,5 +1,6 @@
 ---
-title: API Management'ta geliştirici portalındaki sayfaların içeriğini değiştirme | Microsoft Docs
+title: API Management geliştirici portalındaki sayfa içeriğini değiştirme
+titleSuffix: Azure API Management
 description: Azure API Management'ta geliştirici portalındaki sayfaların içeriğini düzenlemeyi öğrenin.
 services: api-management
 documentationcenter: ''
@@ -13,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430628"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management geliştirici portalındaki sayfaların içeriğini ve düzenini değiştirme
 Azure API Management'ta geliştirici portalını özelleştirmek için kullanılabilecek üç temel yöntem vardır:
 
 * [Statik sayfaların ve sayfa düzeni öğelerinin Içeriğini düzenleme][modify-content-layout] (Bu kılavuzda açıklanmıştır)
 * [Geliştirici portalı genelinde sayfa öğeleri için kullanılan stilleri güncelleştirme][customize-styles]
-* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (örneğin, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.)
+* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (ÖRNEĞIN, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -41,7 +42,7 @@ Tüm pencere öğeleri düzenlenebilir.
 
 Sayfaların her gün düzenlenmesi durumunda genelde yalnızca İçerik widget’ı değiştirilerek sayfalarda farklı içeriklerin yer alması sağlanır.
 
-## <a name="modify-layout-widget"> </a>Bir düzen pencere öğesinin içeriğini değiştirme
+## <a name="modify-layout-widget"> </a>Düzen pencere öğesinin içeriğini değiştirme
 
 Geliştirici portalı Azure Portal üzerinden erişilebilir.
 
@@ -56,7 +57,7 @@ Geliştirici portalı Azure Portal üzerinden erişilebilir.
 
 ## <a name="next-steps"> </a>Sonraki adımlar
 * [Geliştirici portalı genelinde sayfa öğeleri için kullanılan stilleri güncelleştirme][customize-styles]
-* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (örneğin, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.)
+* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (ÖRNEĞIN, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

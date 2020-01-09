@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462094"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Öğretici: Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme
 Bu öğreticide, Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına nasıl yanıt verileceğini öğreneceksiniz. Aşağıdaki adımları uygulayın:
@@ -50,7 +50,7 @@ Service Bus konunuza ileti göndermek için herhangi bir yöntemi kullanabilirsi
 3. **MessageSender** projesine gidin ve **Program.cs** öğesini seçin.
 4. Service Bus konu adınızı ve önceki adımdan aldığınız bağlantı dizesini girin:
 
-    ```CSharp
+    ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
@@ -69,7 +69,7 @@ Ardından, aşağıdaki adımları uygulayın:
 
 1. Ağaç görünümündeki **işlevleri** genişletin ve işlevinizi seçin. İşlevin kodunu şu kodla değiştirin: 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     
     using System.Net;
@@ -120,7 +120,7 @@ Ardından, aşağıdaki adımları uygulayın:
     ![İşlev uygulaması çıkışı](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
 3. **İşlev URL 'Sini al** ' ı seçin ve URL 'yi aklınızda yapın. 
 
-    ![İşlev URL 'sini al](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+    ![İşlev URL’sini al](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 # <a name="azure-functions-v1tabv1"></a>[Azure Işlevleri v1](#tab/v1)
 
@@ -131,7 +131,7 @@ Ardından, aşağıdaki adımları uygulayın:
     2. **Çalışma zamanı sürümü**için **~ 1** seçin. 
 2. Ağaç görünümündeki **işlevleri** genişletin ve işlevinizi seçin. İşlevin kodunu şu kodla değiştirin: 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using Newtonsoft.Json;
@@ -179,7 +179,7 @@ Ardından, aşağıdaki adımları uygulayın:
     ![İşlev uygulaması çıkışı](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
 4. **İşlev URL 'Sini al** ' ı seçin ve URL 'yi aklınızda yapın. 
 
-    ![İşlev URL 'sini al](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+    ![İşlev URL’sini al](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
 ---
 
@@ -291,10 +291,10 @@ Aşağıdaki adımları izleyerek bir mantıksal uygulamayı Azure Service Bus v
     5. **Bağlantı için bir ad**girin. Örneğin: **Konu aboneliğinden Iletiler alın**ve Service Bus ad alanını seçin. 
 
         ![Logic Apps Tasarımcısı-Service Bus ad alanını seçin](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. **RootManageSharedAccessKey**öğesini seçin.
+    6. Seçin **RootManageSharedAccessKey**.
 
         ![Logic Apps Tasarımcısı-paylaşılan erişim anahtarını seçin](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
-    7. **Oluştur**'u seçin. 
+    7. **Oluştur**’u seçin. 
     8. Konuyu ve aboneliğinizi seçin. 
     
         ![Logic Apps tasarımcı-Service Bus konu ve aboneliğinizi seçin](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)

@@ -14,18 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02b6ddf723e47e4608e631aef96f8a12d5f68698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369074"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Azure kaynaklarını sağlamak için Terrayform 'u yükleyip yapılandırın
  
 Terrayform [basit bir şablon oluşturma dili](https://www.terraform.io/docs/configuration/syntax.html)kullanarak bulut altyapısını tanımlamaya, önizlemeye ve dağıtmaya yönelik kolay bir yol sağlar. Bu makalede, Azure 'da kaynak sağlamak için Terrayform kullanmak için gereken adımlar açıklanmaktadır.
 
 Azure ile Terrayform kullanma hakkında daha fazla bilgi edinmek için [Terrayform hub 'ını](/azure/terraform)ziyaret edin.
+> [!NOTE]
+> Terkform 'a özgü destek için lütfen Topluluk kanallarından birini kullanarak doğrudan Terkform 'a ulaşın:
+>
+>   • Topluluk portalının [Terkform bölümü](https://discuss.hashicorp.com/c/terraform-core) , sorular, kullanım örnekleri ve yararlı desenler içerir.
+>
+>   • Sağlayıcıyla ilgili sorular için lütfen Topluluk portalının [Terkform sağlayıcıları](https://discuss.hashicorp.com/c/terraform-providers) bölümünü ziyaret edin.
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

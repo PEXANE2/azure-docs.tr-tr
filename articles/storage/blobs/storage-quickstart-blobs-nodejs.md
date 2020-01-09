@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0a6d7ce8f1f6b81c3dbae3d41842345be5d2e551
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465108"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitaplığı V12
 
@@ -29,11 +29,11 @@ JavaScript için Azure Blob depolama istemci kitaplığı V12 ' nı kullanarak �
 * Blobu yerel bilgisayarınıza indirme
 * Kapsayıcı silme
 
-[API başvuru belgeleri](/javascript/api/@azure/storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [paketi (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0) | [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+[API başvuru belgeleri](/javascript/api/@azure/storage-blob) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [paketi (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-blob) | [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -114,11 +114,11 @@ Proje dizininden:
 
 1. Yeni dosyayı *BLOB-QuickStart-V12* dizinine *BLOB-QuickStart-v12. js* olarak kaydedin.
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Nesne modeli
 
-Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanımına bağlı olmayan bir veri. BLOB depolama üç tür kaynak sunar:
+Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanıma bağlı olmayan verilerdir. BLOB depolama üç tür kaynak sunar:
 
 * Depolama hesabı
 * Depolama hesabındaki bir kapsayıcı
@@ -154,11 +154,11 @@ Bu kodu `main` işlevi içine ekleyin:
 ```javascript
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the environment variable is
-// created after the application is launched in a console or with Visual Studio,
-// the shell or application needs to be closed and reloaded to take the
-// environment variable into account.
-const CONNECT_STR = process.env.CONNECT_STR;
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
+// environment variable is created after the application is launched in a
+// console or with Visual Studio, the shell or application needs to be closed
+// and reloaded to take the environment variable into account.
+const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
@@ -174,7 +174,7 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 
 ```javascript
 // Create the BlobServiceClient object which will be used to create a container client
-const blobServiceClient = await BlobServiceClient.fromConnectionString(CONNECT_STR);
+const blobServiceClient = await BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
 // Create a unique name for the container
 const containerName = 'quickstart' + uuidv1();
@@ -308,16 +308,16 @@ Deleting container...
 Done
 ```
 
-Hata Ayıklayıcıdaki kodda adım adım ilerleyin ve işlem boyunca Azure portal denetleyin. Kapsayıcının oluşturulup oluşturulmakta olup olmadığını kontrol edin. Blobu kapsayıcının içinde açabilir ve içeriği görüntüleyebilirsiniz.
+Hata Ayıklayıcıdaki kodda adım adım ilerleyin ve işlem boyunca [Azure Portal](https://portal.azure.com) denetleyin. Kapsayıcının oluşturulup oluşturulmakta olup olmadığını kontrol edin. Blobu kapsayıcının içinde açabilir ve içeriği görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu hızlı başlangıçta, JavaScript kullanarak Blobları karşıya yükleme, indirme ve listeleme hakkında daha fazla öğrendiniz.
 
-BLOB depolama örnek uygulamalarını görmek için devam edin:
+Öğreticiler, örnekler, hızlı ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+> [JavaScript için Azure belgeleri](/azure/javascript/)
 
-* Daha fazla bilgi için bkz. [JavaScript Için Azure SDK](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
-* Öğreticiler, örnekler, hızlı ve diğer belgeler için, [JavaScript Için Azure SDK belgelerini](/azure/javascript/)ziyaret edin.
+* Daha fazla bilgi edinmek için bkz. [JavaScript Için Azure Blob depolama istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob).
+* BLOB depolama örnek uygulamalarını görmek için [Azure Blob depolama istemci kitaplığı V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)' ne geçin.

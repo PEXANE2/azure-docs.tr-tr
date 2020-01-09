@@ -1,17 +1,17 @@
 ---
 title: Azure özel bağlantısı ile bir Azure Cosmos hesabına bağlanma
 description: Özel bir uç nokta oluşturarak bir VM 'den Azure Cosmos hesabına güvenli bir şekilde erişme hakkında bilgi edinin.
-author: asudbring
+author: malopMSFT
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430313"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure özel bağlantısını kullanarak bir Azure Cosmos hesabına özel olarak bağlanma
 
@@ -35,7 +35,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *MyVirtualNetwork*girin. |
+    | Ad | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363549"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanını yönetme
 
@@ -37,7 +37,7 @@ Bu makalede, Powershell'den gerçekleştirebileceğiniz işlevlerin bazıların�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu örnekler, az. Operationalınsights modülünün Version 1.0.0 veya üzeri sürümleriyle çalışır.
 
 
@@ -177,6 +177,10 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> Özel bir günlük için yapılandırmayı tanımlayan **Customlograwjson** parametresinin biçimi karmaşık olabilir. Mevcut bir özel günlüğün yapılandırmasını almak için [Get-Azoperationalınsightsdatasource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) komutunu kullanın. **Properties** özelliği, **Customlograwjson** parametresi için gereken yapılandırmadır.
+
 Yukarıdaki örnekte regexDelimiter, yeni satır için "\\n" olarak tanımlanmıştır. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
 
 | Biçimlendir | JSON RegEx biçimi her bir standart RegEx için iki \\ kullanır, bu nedenle bir RegEx uygulamasında test etmek \\ \ ' a düşürüyorsam | | |
@@ -198,24 +202,24 @@ Azure kaynaklarını aracısız izleme için kaynakları etkin ve Log Analytics 
 
 | Kaynak Türü | Günlükler | Ölçümler |
 | --- | --- | --- |
-| Application Gatewayler    | Yes | Yes |
-| Otomasyon hesapları     | Yes | |
-| Batch hesapları          | Yes | Yes |
-| Data Lake analytics     | Yes | |
-| Data Lake store         | Yes | |
-| SQL esnek havuzu        |     | Yes |
-| Olay hub'ı ad alanı     |     | Yes |
-| IoT Hub’ları                |     | Yes |
-| Key Vault               | Yes | |
-| Yük Dengeleyiciler          | Yes | |
-| Logic Apps              | Yes | Yes |
-| Ağ Güvenlik Grupları | Yes | |
-| Redis için Azure Cache             |     | Yes |
-| Hizmet ara         | Yes | Yes |
-| Service Bus ad alanı   |     | Yes |
-| SQL (v12)               |     | Yes |
-| Web Siteleri               |     | Yes |
-| Web sunucu grupları        |     | Yes |
+| Application Gatewayler    | Evet | Evet |
+| Otomasyon hesapları     | Evet | |
+| Batch hesapları          | Evet | Evet |
+| Data Lake analytics     | Evet | |
+| Data Lake store         | Evet | |
+| SQL esnek havuzu        |     | Evet |
+| Olay hub'ı ad alanı     |     | Evet |
+| IoT Hub’ları                |     | Evet |
+| Key Vault               | Evet | |
+| Yük Dengeleyiciler          | Evet | |
+| Logic Apps              | Evet | Evet |
+| Ağ Güvenlik Grupları | Evet | |
+| Redis için Azure Cache             |     | Evet |
+| Hizmet ara         | Evet | Evet |
+| Service Bus ad alanı   |     | Evet |
+| SQL (v12)               |     | Evet |
+| Web Siteleri               |     | Evet |
+| Web sunucu grupları        |     | Evet |
 
 Kullanılabilir ölçümler ayrıntılarını başvurmak [ölçümleri Azure İzleyici ile desteklenen](../../azure-monitor/platform/metrics-supported.md).
 

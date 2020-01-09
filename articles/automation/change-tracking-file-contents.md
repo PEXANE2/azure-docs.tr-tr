@@ -2,19 +2,15 @@
 title: Azure Otomasyonu ile dosya içeriği değişikliklerini görüntüleme
 description: Değiştirilen bir dosyanın içeriğini görüntülemek için değişiklik izlemenin dosya içeriği değiştirme özelliğini kullanın.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418820"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Değişiklik İzleme ile izlenmekte olan bir dosyanın içeriğini görüntüleme
 
@@ -62,7 +58,7 @@ Aşağıdaki adımlarda, bir dosya için değişiklik izlemeyi açma işleminde 
 
 1. **Ayrıntıları değiştir** sayfasında, dosyanın içeriğini görmek için, sol üstteki, dosya bilgilerini görüntüle ' ye tıklayarak dosya **içeriğini görüntüle** ' ye tıklayın.
 
-   ![Değişiklik ayrıntıları](./media/change-tracking-file-contents/change-details.png)
+   ![değişiklik ayrıntıları](./media/change-tracking-file-contents/change-details.png)
 
 1. Yeni sayfa, dosya içeriğini yan yana görünümde gösterir. Ayrıca, değişikliklerin satır içi görünümünü görmek için **satır içi** ' ı da seçebilirsiniz.
 

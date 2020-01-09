@@ -1,25 +1,16 @@
 ---
 title: Azure Service Fabric kapsayıcısı uygulama bildirimi örnekleri
 description: Çok Kapsayıcılı Service Fabric bir uygulama için uygulama ve hizmet bildirimi ayarlarını yapılandırmayı öğrenin.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349387"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Birden çok kapsayıcılı uygulama ve hizmet bildirimi örnekleri
 Aşağıda, çok Kapsayıcılı Service Fabric bir uygulama için uygulama ve hizmet bildirimlerinin örnekleri verilmiştir. Bu örneklerin amacı, hangi ayarların kullanılabildiğini ve bunların nasıl kullanılacağını gösterir. Bu uygulama ve hizmet bildirimleri [Windows Server 2016 kapsayıcı örnek](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) bildirimlerini temel alır.
@@ -271,7 +262,7 @@ Uygulama türünü ve sürümünü bildirimli olarak açıklar. Bileşen hizmetl
 ### <a name="parameters-element"></a>Parameters öğesi
 Bu uygulama bildiriminde kullanılan parametreleri bildirir. Uygulama örneği oluşturulduğunda ve uygulama ya da hizmet yapılandırma ayarlarını geçersiz kılmak için kullanılabilir olduğunda, bu parametrelerin değeri sağlanabilir. Daha fazla bilgi için bkz. [Parameters öğesi](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Parameter öğesi
+### <a name="parameter-element"></a>Parameter Öğesi
 Bu bildirimde kullanılacak bir uygulama parametresi. Parametre değeri uygulama örneği oluşturma sırasında değiştirilebilir veya hiçbir değer sağlanmazsa varsayılan değer kullanılır. Daha fazla bilgi için bkz. [Parameter öğesi](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>Servicemanifestımport öğesi
@@ -397,7 +388,7 @@ Daha fazla bilgi için bkz. [Containerhost öğesi](service-fabric-service-model
 ### <a name="imagename-element"></a>GörüntüAdı öğesi
 https://hub.docker.com veya Azure Container Registry üzerindeki depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
-### <a name="commands-element"></a>Commands öğesi
+### <a name="commands-element"></a>Commands Öğesi
 Kapsayıcıya virgülle ayrılmış komutların bir listesini geçirin. Daha fazla bilgi için bkz. [Commands öğesi](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables öğesi

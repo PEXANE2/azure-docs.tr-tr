@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457106"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure IoT Hub 'ye bağlama (node. js)
 
@@ -78,7 +78,7 @@ Aşağıdaki öğeler isteğe bağlıdır:
 > [!NOTE]
 > İsteğe bağlı öğeleriniz yoksa, sanal algılayıcı verilerini kullanabilirsiniz.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -148,7 +148,7 @@ Algılayıcı PIN 'leri için aşağıdaki kabloyı kullanın:
 | LED VDD (PIN 18F)        | GPıO 24 (PIN 18)       | Beyaz kablo   |
 | LED arka plan (Iğne 17F)        | Iğne (PIN 20)           | Siyah kablo   |
 
-Başvurunuz için [Raspberry PI 2 & 3 PIN eşlemelerini](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) görüntülemek için tıklayın.
+Başvurunuz için [Raspberry PI 2 & 3 PIN eşlemelerini](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) görüntülemek için tıklayın.
 
 BME280, Raspberry Pi 'nize başarıyla bağlandıktan sonra görüntünün altında olması gerekir.
 
@@ -244,9 +244,9 @@ Aşağıdaki komutu çalıştırarak örnek uygulamayı çalıştırın:
    > [!NOTE]
    > Cihazın bağlantı dizesini tek tırnak içine yapıştırdığınızdan emin olun.
 
-Algılayıcı verilerini ve IoT Hub 'ınıza gönderilen iletileri gösteren aşağıdaki çıktıyı görmeniz gerekir.
+Sensör verilerinin ve IoT hub’ınıza gönderilen iletilerin gösterildiği aşağıdaki çıkışı görmelisiniz.
 
-![Raspberry Pi 'den IoT Hub 'ınıza gönderilen çıkış algılayıcı verileri](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Çıkış - Raspberry Pi'den IoT hub'ınıza gönderilen sensör verileri](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Hub 'ınız tarafından alınan iletileri okuyun
 

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c942661beea34e7a49223f4a8e4a4d6c0eb66e1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440627"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir HTTP uç noktasından veri kopyalama
 
@@ -50,7 +50,7 @@ Bu HTTP bağlayıcısını kullanarak şunları yapabilirsiniz:
 > [!TIP]
 > HTTP bağlayıcısını Data Factory ' de yapılandırmadan önce veri alımı için bir HTTP isteğini test etmek için, üst bilgi ve gövde gereksinimlerine yönelik API belirtimi hakkında bilgi edinin. Doğrulamak için Postman veya bir Web tarayıcısı gibi araçları kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -66,10 +66,10 @@ HTTP bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **httpServer**olarak ayarlanmalıdır. | Yes |
-| url | Web sunucusunun temel URL 'SI. | Yes |
+| type | **Type** özelliği **httpServer**olarak ayarlanmalıdır. | Evet |
+| url | Web sunucusunun temel URL 'SI. | Evet |
 | enableServerCertificateValidation | Bir HTTP uç noktasına bağlanırken sunucu SSL sertifika doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtin. HTTPS sunucunuz otomatik olarak imzalanan bir sertifika kullanıyorsa, bu özelliği **false**olarak ayarlayın. | Hayır<br /> (varsayılan değer **true**'dur) |
-| authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **anonim**, **temel**, **Özet**, **Windows**ve **ClientCertificate**'tir. <br><br> Bu kimlik doğrulama türleri için daha fazla özellik ve JSON örnekleri için bu tabloyu izleyen bölümlere bakın. | Yes |
+| authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **anonim**, **temel**, **Özet**, **Windows**ve **ClientCertificate**'tir. <br><br> Bu kimlik doğrulama türleri için daha fazla özellik ve JSON örnekleri için bu tabloyu izleyen bölümlere bakın. | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Temel, Özet veya Windows kimlik doğrulamasını kullanma
@@ -78,8 +78,8 @@ HTTP bağlantılı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| userName adı | HTTP uç noktasına erişmek için kullanılacak Kullanıcı adı. | Yes |
-| password | Kullanıcının parolasını ( **userName** değeri). Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
+| userName adı | HTTP uç noktasına erişmek için kullanılacak Kullanıcı adı. | Evet |
+| parola | Kullanıcının parolasını ( **userName** değeri). Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Evet |
 
 **Örnek**
 
@@ -113,7 +113,7 @@ ClientCertificate kimlik doğrulamasını kullanmak için **AuthenticationType**
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 kodlu sertifika verileri. | **Embeddedcertdata** veya **certparmak izi**belirtin. |
 | certThumbprint | Kendi kendine barındırılan Integration Runtime makinenizin sertifika deposunda yüklü olan sertifikanın parmak izi. Yalnızca kendi kendine barındırılan Integration Runtime türü **Connectvia** özelliğinde belirtildiğinde geçerlidir. | **Embeddedcertdata** veya **certparmak izi**belirtin. |
-| password | Sertifikayla ilişkili parola. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
+| parola | Sertifikayla ilişkili parola. Bu alan olarak işaretlemek bir **SecureString** Data Factory'de güvenle depolamak için türü. Ayrıca [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
 
 Kimlik doğrulaması için **Certparmak izi** kullanırsanız ve sertifika yerel bilgisayarın Kişisel deposunda yüklüyse, şirket içinde barındırılan Integration Runtime okuma izinleri verin:
 
@@ -176,7 +176,7 @@ Aşağıdaki özellikler, biçim tabanlı veri kümesindeki `location` ayarları
 
 | Özellik    | Açıklama                                                  | Gereklidir |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Veri kümesindeki `location` seçeneğinin altında bulunan tür özelliği **Httpserverlocation**olarak ayarlanmalıdır. | Yes      |
+| type        | Veri kümesindeki `location` seçeneğinin altında bulunan tür özelliği **Httpserverlocation**olarak ayarlanmalıdır. | Evet      |
 | relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. HTTP Bağlayıcısı, verileri birleştirilmiş URL 'den kopyalar: `[URL specified in linked service]/[relative URL specified in dataset]`.   | Hayır       |
 
 > [!NOTE]
@@ -208,63 +208,6 @@ Aşağıdaki özellikler, biçim tabanlı veri kümesindeki `location` ayarları
 }
 ```
 
-### <a name="legacy-dataset-model"></a>Eski veri kümesi modeli
-
->[!NOTE]
->Aşağıdaki veri kümesi modeli, geriye dönük uyumluluk için olduğu gibi hala desteklenmektedir. Yukarıdaki bölümde bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
-
-| Özellik | Açıklama | Gereklidir |
-|:--- |:--- |:--- |
-| type | Veri kümesinin **Type** özelliği **httpfile**olarak ayarlanmalıdır. | Yes |
-| relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. | Hayır |
-| requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |
-| additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
-| Istek gövdesi | HTTP isteğinin gövdesi. | Hayır |
-| biçim | HTTP uç noktasından verileri ayrıştırmadan olduğu gibi almak ve sonra verileri dosya tabanlı bir depoya kopyalamak istiyorsanız hem giriş hem de çıkış veri kümesi tanımlarının **Biçim** bölümünü atlayın.<br/><br/>Kopyalama sırasında HTTP yanıt içeriğini ayrıştırmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**ve **parquetformat**. **Biçim**altında, **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [JSON biçimi](supported-file-formats-and-compression-codecs.md#json-format), [metin biçimi](supported-file-formats-and-compression-codecs.md#text-format), [avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs.md#orc-format)ve [Parquet biçimi](supported-file-formats-and-compression-codecs.md#parquet-format). |Hayır |
-| compression | Veri sıkıştırma düzeyi ve türünü belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Desteklenen türler: **gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler: **en iyi** ve **en hızlı**. |Hayır |
-
-> [!NOTE]
-> Desteklenen HTTP isteği yük boyutu 500 KB 'ın üzerinde. Web uç noktanıza geçirmek istediğiniz yük boyutu 500 KB 'tan büyükse, yükü daha küçük öbeklerdeki toplu işlemeyi düşünün.
-
-**Örnek 1: Get metodunu kullanma (varsayılan)**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        }
-    }
-}
-```
-
-**Örnek 2: Post yöntemini kullanma**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST HTTP request>"
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
 Bu bölüm, HTTP kaynağının desteklediği özelliklerin bir listesini sağlar.
@@ -279,7 +222,7 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağında `storeSettings`
 
 | Özellik                 | Açıklama                                                  | Gereklidir |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` altındaki Type özelliği **Httpreadsetting**olarak ayarlanmalıdır. | Yes      |
+| type                     | `storeSettings` altındaki Type özelliği **Httpreadsetting**olarak ayarlanmalıdır. | Evet      |
 | requestMethod            | HTTP yöntemi. <br>İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır       |
 | Addtionalüstbilgileri         | Ek HTTP istek üstbilgileri.                             | Hayır       |
 | Istek gövdesi              | HTTP isteğinin gövdesi.                               | Hayır       |
@@ -327,14 +270,74 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağında `storeSettings`
 ]
 ```
 
-#### <a name="legacy-source-model"></a>Eski kaynak modeli
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+
+## <a name="legacy-models"></a>Eski modeller
 
 >[!NOTE]
->Aşağıdaki kopya kaynak modeli, geriye dönük uyumluluk için olduğu gibi hala desteklenmektedir. Yukarıdaki ileri giderek bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
+>Geriye dönük uyumluluk için aşağıdaki modeller hala desteklenmektedir. Yukarıdaki bölümlerde bahsedilen yeni modeli kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi yeni modeli oluşturmaya geçti.
+
+### <a name="legacy-dataset-model"></a>Eski veri kümesi modeli
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği **httpsource**olarak ayarlanmalıdır. | Yes |
+| type | Veri kümesinin **Type** özelliği **httpfile**olarak ayarlanmalıdır. | Evet |
+| relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. | Hayır |
+| requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |
+| additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
+| Istek gövdesi | HTTP isteğinin gövdesi. | Hayır |
+| biçim | HTTP uç noktasından verileri ayrıştırmadan olduğu gibi almak ve sonra verileri dosya tabanlı bir depoya kopyalamak istiyorsanız hem giriş hem de çıkış veri kümesi tanımlarının **Biçim** bölümünü atlayın.<br/><br/>Kopyalama sırasında HTTP yanıt içeriğini ayrıştırmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**ve **parquetformat**. **Biçim**altında, **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [JSON biçimi](supported-file-formats-and-compression-codecs-legacy.md#json-format), [metin biçimi](supported-file-formats-and-compression-codecs-legacy.md#text-format), [avro Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parquet biçimi](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Hayır |
+| compression | Veri sıkıştırma düzeyi ve türünü belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Desteklenen türler: **gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler: **en iyi** ve **en hızlı**. |Hayır |
+
+> [!NOTE]
+> Desteklenen HTTP isteği yük boyutu 500 KB 'ın üzerinde. Web uç noktanıza geçirmek istediğiniz yük boyutu 500 KB 'tan büyükse, yükü daha küçük öbeklerdeki toplu işlemeyi düşünün.
+
+**Örnek 1: Get metodunu kullanma (varsayılan)**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        }
+    }
+}
+```
+
+**Örnek 2: Post yöntemini kullanma**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "requestMethod": "Post",
+            "requestBody": "<body for POST HTTP request>"
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>Eski kopyalama etkinliği kaynak modeli
+
+| Özellik | Açıklama | Gereklidir |
+|:--- |:--- |:--- |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **httpsource**olarak ayarlanmalıdır. | Evet |
 | httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir.  | Hayır |
 
 **Örnek**
@@ -368,11 +371,6 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağında `storeSettings`
     }
 ]
 ```
-
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
-
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

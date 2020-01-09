@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: aa14854807727506f5d697d7871c97e219c096a3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950893"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425641"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -61,6 +61,43 @@ Aşağıdaki örnek, bir Restsize teknik profil göstermektedir:
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya REST API göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstransreference** öğelerinin bir koleksiyonunu içerebilir.
 
+## <a name="send-a-json-payload"></a>JSON yükü gönder
+
+REST API teknik profili, bir uç noktaya karmaşık bir JSON yükü göndermenizi sağlar.
+
+Karmaşık bir JSON yükü göndermek için:
+
+1. [Generatejson](json-transformations.md) talep dönüşümüyle JSON yükünüzü oluşturun.
+1. REST API teknik profilinde:
+    1. `GenerateJson` talep dönüştürmesi için bir başvuruya sahip bir giriş talep dönüştürmesi ekleyin.
+    1. `SendClaimsIn` meta veri seçeneğini `body` olarak ayarlayın
+    1. `ClaimUsedForRequestPayload` Metadata seçeneğini JSON yükünü içeren talebin adı olarak ayarlayın.
+    1. Giriş talebinde, JSON yükünü içeren giriş talebine bir başvuru ekleyin.
+
+Aşağıdaki örnek `TechnicalProfile` bir üçüncü taraf e-posta hizmeti (Bu durumda SendGrid) kullanarak bir doğrulama e-postası gönderir.
+
+```XML
+<TechnicalProfile Id="SendGrid">
+  <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://api.sendgrid.com/v3/mail/send</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
+  </CryptographicKeys>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="GenerateSendGridRequestBody" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="sendGridReqBody" />
+  </InputClaims>
+</TechnicalProfile>
+```
+
 ## <a name="output-claims"></a>Çıkış talepleri
 
 **Outputclaim** öğesi, REST API tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını REST API tanımlı adla eşlemeniz gerekebilir. `DefaultValue` özniteliğini ayarladığınız sürece REST API Identity provider tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
@@ -86,10 +123,11 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| ServiceUrl | Yes | REST API uç noktasının URL 'SI. |
-| AuthenticationType | Yes | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None`, `Basic`veya `ClientCertificate`. `None` değeri REST API adsız olmadığını gösterir. `Basic` değeri, REST API HTTP temel kimlik doğrulaması ile korunmuş olduğunu gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate` (önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca Azure AD B2C gibi uygun sertifikalara sahip hizmetler hizmetinize erişebilir. |
+| ServiceUrl | Evet | REST API uç noktasının URL 'SI. |
+| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None`, `Basic`, `Bearer`veya `ClientCertificate`. `None` değeri REST API adsız olmadığını gösterir. `Basic` değeri, REST API HTTP temel kimlik doğrulaması ile korunmuş olduğunu gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate` (önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer` değeri, REST API Client OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
 | SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`veya `QueryString`. `Body` değeri, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form` değeri, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header` değeri, istek üstbilgisinde gönderilen giriş talebinde bulunur. `QueryString` değeri, istek sorgu dizesinde gönderilen giriş talebinde bulunur. |
 | ClaimsFormat | Hayır | Çıkış taleplerinin biçimini belirtir. Olası değerler: `Body` (varsayılan), `Form`, `Header`veya `QueryString`. `Body` değeri, JSON biçiminde istek gövdesinde gönderilen çıkış talebinde bulunur. `Form` değeri, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen çıkış talebinde bulunur. `Header` değeri, istek üstbilgisinde gönderilen çıkış talebinde bulunur. `QueryString` değeri, istek sorgu dizesinde gönderilen çıkış talebinde bulunur. |
+| ClaimUsedForRequestPayload| Hayır | REST API gönderilecek yükü içeren bir dize talebinin adı. |
 | DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. Hata iletisi döndüren bölümüne bakın. |
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
@@ -112,8 +150,8 @@ Kimlik doğrulaması türü `Basic`olarak ayarlandıysa, **Cryptographickeys** �
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Yes | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
-| BasicAuthenticationPassword | Yes | Kimlik doğrulaması için kullanılan parola. |
+| BasicAuthenticationUsername | Evet | Kimlik doğrulaması için kullanılan Kullanıcı adı. |
+| BasicAuthenticationPassword | Evet | Kimlik doğrulaması için kullanılan parola. |
 
 Aşağıdaki örnek, temel kimlik doğrulaması ile bir teknik profil gösterir:
 
@@ -137,7 +175,7 @@ Kimlik doğrulaması türü `ClientCertificate`olarak ayarlandıysa, **Cryptogra
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| ClientCertificate | Yes | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
+| ClientCertificate | Evet | Kimlik doğrulaması için kullanılacak x509 sertifikası (RSA anahtar kümesi). |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -154,17 +192,38 @@ Kimlik doğrulaması türü `ClientCertificate`olarak ayarlandıysa, **Cryptogra
 </TechnicalProfile>
 ```
 
+Kimlik doğrulaması türü `Bearer`olarak ayarlandıysa, **Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
+
+| Öznitelik | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| Yataya Authenticationtoken | Hayır | OAuth 2,0 taşıyıcı belirteci. |
+
+```XML
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
 ## <a name="returning-error-message"></a>Hata iletisi döndürülüyor
 
 REST API, ' Kullanıcı CRM sisteminde bulunamadı ' gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluştuğunda, REST API aşağıdaki özniteliklere sahip bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir:
 
 | Öznitelik | Gereklidir | Açıklama |
 | --------- | -------- | ----------- |
-| version | Yes | 1.0.0 |
-| durum | Yes | 409 |
+| version | Evet | 1.0.0 |
+| status | Evet | 409 |
 | kod | Hayır | `DebugMode` etkinleştirildiğinde görünen, RESTAN uç nokta sağlayıcısından bir hata kodu. |
 | requestId | Hayır | `DebugMode` etkinleştirildiğinde görünen, yeniden Istenen uç nokta sağlayıcısından gelen istek tanımlayıcısı. |
-| userMessage | Yes | Kullanıcıya gösterilen bir hata iletisi. |
+| userMessage | Evet | Kullanıcıya gösterilen bir hata iletisi. |
 | developerMessage | Hayır | Sorunun ayrıntılı açıklaması ve nasıl düzeltileceğini `DebugMode` etkinleştirildiğinde görüntülenir. |
 | daha fazla bilgi | Hayır | `DebugMode` etkinleştirildiğinde görüntülenen ek bilgilere işaret eden bir URI. |
 
@@ -197,24 +256,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="examples"></a>Örnekler:
+## <a name="next-steps"></a>Sonraki adımlar
+
+Daha fazla teknik profil kullanma örnekleri için aşağıdaki makalelere bakın:
+
 - [Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](active-directory-b2c-custom-rest-api-netfw.md)
 - [HTTP temel kimlik doğrulaması kullanarak yeniden takip eden hizmetlerinizin güvenliğini sağlama](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [İzlenecek yol: Kullanıcı girişinde Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirme yapın](active-directory-b2c-rest-api-validation-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

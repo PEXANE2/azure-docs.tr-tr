@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415104"
 ---
 # <a name="get-help-with-your-system"></a>Sisteminizle ilgili yardım alın
 
@@ -19,15 +19,15 @@ Azure için avere vFXT 'niz ile ilgili yardıma ihtiyacınız varsa, destek alma
 
 * **Avere vfxt sorunu** - [aşağıda](#open-a-support-ticket-for-your-avere-vfxt)açıklanan şekilde avere vfxt 'niz için bir destek bileti açmak üzere Azure Portal kullanın.
 * **Kota** -kotayla ilgili bir sorununuz varsa, [Kota artışı isteyin](#request-a-quota-increase)
-* **Belgeler ve örnekler** -bu belge veya örneklerle ilgili sorunları buldıysanız, sorun ile sayfanın en altına gidin ve var olan sorunları aramak ve gerekirse yeni bir dosya eklemek Için **geri bildirim** bölümünü kullanın.  
+* **Belgeler ve örnekler** -bu belge veya örneklerle ilgili sorunları buldıysanız, sorun ile sayfanın en altına gidin ve var olan sorunları aramak ve gerekirse yeni bir dosya eklemek Için **geri bildirim** bölümünü kullanın.
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Avere vFXT 'niz için bir destek bileti açın
 
-Avere vFXT dağıtma veya kullanma sırasında sorunlarla karşılaşırsanız Azure portal aracılığıyla yardım isteyin.  
+Avere vFXT dağıtma veya kullanma sırasında sorunlarla karşılaşırsanız Azure portal aracılığıyla yardım isteyin.
 
-Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için aşağıdaki adımları izleyin. Bilet etiketleme, doğru destek kaynağına yönlendirmemize yardımcı olur. 
+Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için aşağıdaki adımları izleyin. Bilet etiketleme, doğru destek kaynağına yönlendirmemize yardımcı olur.
 
-1. [@No__t-1](https://portal.azure.com)' den **kaynak grupları**' nı seçin.
+1. [https://portal.azure.com](https://portal.azure.com), **kaynak grupları**' nı seçin.
 
    !["kaynak grupları" daire içinde Azure portal sol menünün ekran görüntüsü](media/avere-vfxt-ticket-rg.png)
 
@@ -43,7 +43,7 @@ Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için a
 
     !["temel bilgiler" üst bilgisi ve "hizmet" öğesinin etrafında bir daire olan Azure portal yeni destek isteği ekranının ekran görüntüsü. "Tüm hizmetler" düğmesi seçilidir ve açılan menü alanında "avere vFXT" değeri bulunur](media/avere-vfxt-ticket-service.png)
 
-1. İki sayfa üzerinde, sorun türünü ve sorununuzla en yakından eşleşen kategoriyi seçin. Sorunun oluştuğu saati içeren kısa bir başlık ve açıklama ekleyin. 
+1. İki sayfa üzerinde, sorun türünü ve sorununuzla en yakından eşleşen kategoriyi seçin. Sorunun oluştuğu saati içeren kısa bir başlık ve açıklama ekleyin.
 
    ![Yeni destek isteği ekranının, tamamlanması gereken çok sayıda alan içeren "sorun" üst bilgisi ile ekran görüntüsü](media/avere-vfxt-ticket-problem.png)
 

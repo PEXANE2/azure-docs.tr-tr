@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443386"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için doğru Federasyon protokolünü seçin
 
@@ -44,9 +44,9 @@ Aşağıdaki tabloda karşılaştırılmaktadır
 
 ## <a name="oauth-20-and-open-id-connect"></a>OAuth 2,0 ve açık KIMLIK Connect
 
-OAuth 2,0, yetkilendirme için [sektör standardı](https://oauth.net/2/) bir protokoldür. OıDC (OpenID Connect), oath 2,0 protokolünün üstünde oluşturulmuş bir [sektör standart](https://openid.net/connect/) kimlik doğrulama katmanıdır.
+OAuth 2,0, yetkilendirme için [sektör standardı](https://oauth.net/2/) bir protokoldür. OıDC (OpenID Connect), OAuth 2,0 protokolünün üstünde oluşturulmuş bir [sektör standart](https://openid.net/connect/) kimlik doğrulama katmanıdır.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 Microsoft, protokollerde yerleşik olarak bulunan kimlik doğrulaması ve yetkilendirmeler için OıDC/OAuth 2,0 kullanılmasını önerir. SAML ile ayrıca yetkilendirme uygulamanız gerekir.
 
@@ -74,7 +74,7 @@ Security Assertion Markup Language (SAML) genellikle Web uygulamaları için kul
 
 Web Hizmetleri Federasyonu (Wsbeslenir), .NET platformu kullanılarak geliştirilen Web uygulamaları için genellikle kullanılan bir [sektör standardıdır](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) .
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 SAML 2,0, yetişkinlere yönelik bir standarttır ve çoğu teknoloji platformu SAML 2,0 için açık kaynaklı kitaplıkları destekler. Müşterilerinizin SAML SSO 'yu yapılandırmak için bir yönetim arabirimi sağlayabilirsiniz. Microsoft Azure AD için SAML SSO ve SAML 2 ' yi destekleyen diğer kimlik sağlayıcıları yapılandırabilir
 

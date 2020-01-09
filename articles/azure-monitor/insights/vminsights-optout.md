@@ -4,15 +4,15 @@ description: Bu makalede, sanal makinelerinizin VM'ler için Azure İzleyici izl
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: 70e71688fde5aff4002c7d49b1408bcefeab1eed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399301"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici (Önizleme) ' de sanal makinelerinizin izlenmesini devre dışı bırakın
 
@@ -37,7 +37,7 @@ VM 'lerinizi izlemeyi devre dışı bırakmayı hazırlarken şu noktaları göz
 
 ## <a name="remove-azure-monitor-for-vms-completely"></a>VM'ler için Azure İzleyici tamamen kaldır
 
-Hala Log Analytics çalışma alanına ihtiyacınız varsa, VM'ler için Azure İzleyici tamamen kaldırmak için aşağıdaki adımları izleyin. @No__t_0 ve `ServiceMap` çözümlerini çalışma alanından kaldıracaksınız.  
+Hala Log Analytics çalışma alanına ihtiyacınız varsa, VM'ler için Azure İzleyici tamamen kaldırmak için aşağıdaki adımları izleyin. `InfrastructureInsights` ve `ServiceMap` çözümlerini çalışma alanından kaldıracaksınız.  
 
 >[!NOTE]
 >VM'ler için Azure İzleyici etkinleştirilmeden önce Hizmet Eşlemesi izleme çözümünü kullandıysanız ve bu uygulamayı kullanmaya devam ediyorsanız, bu çözümü aşağıdaki yordamın son adımında açıklanan şekilde kaldırmayın.  

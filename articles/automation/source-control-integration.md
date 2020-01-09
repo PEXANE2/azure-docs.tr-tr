@@ -2,19 +2,15 @@
 title: Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi
 description: Bu makalede, Azure Otomasyonu 'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 837ebd71886e9435a44080b06c079623c3936c69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417062"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
 
@@ -118,7 +114,7 @@ Azure Repos bir kişisel erişim belirteci oluşturma hakkında daha fazla bilgi
 
 <sup>1</sup> hizmet bağlantıları izni yalnızca, oto eşitlemesini etkinleştirdiyseniz gereklidir.
 
-## <a name="syncing"></a>Senkronizasyon
+## <a name="syncing"></a>Eşitleniyor
 
 **Kaynak denetimi** sayfasındaki tablodan kaynağı seçin. Eşitleme işlemini başlatmak için **Eşitlemeyi Başlat** ' a tıklayın.
 

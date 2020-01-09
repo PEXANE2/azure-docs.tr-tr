@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2251725597e44a15e421f33cc315be3fb1c7846f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459150"
 ---
 Azure Compute, belirli bir donanım türüyle sınırlanmış ve tek bir müşteriye ayrılmış olan sanal makine boyutları sunar.  Bu sanal makine boyutları, uyumluluk ve düzenleme gereksinimleri gibi öğeler içeren iş yükleri nedeniyle diğer müşterilerden yüksek ölçüde yalıtıma ihtiyaç duyan iş yükleri için idealdir.  Müşteriler Ayrıca, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölümlere ayırmak da tercih edebilir.
 
@@ -30,7 +30,7 @@ Yalıtılmış bir boyut kullanılması, sanal makinenizin o belirli sunucu örn
 Her kullanılabilir yalıtılmış boyut hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)bulabilirsiniz.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>15 Şubat 2020 ' de D15_v2/DS15_v2 yalıtımını devre dışı bırakma
-Kısa süre önce Azure ayrılmış ana bilgisayarının önizlemesini duyurduk. Bu, kuruluşunuzun Linux ve Windows sanal makinelerini tek kiracılı fiziksel sunucularda çalıştırmanıza olanak sağlar. Yalıtılmış Azure VM 'lerini Azure ayrılmış ana bilgisayarıyla tamamen değiştirmeyi planlıyoruz. **15 şubat 2020 '** den sonra, D15_v2/DS15_v2 Azure VM 'leri artık donanım yalıtılamayabilir.
+Azure ayrılmış ana bilgisayarı artık, kuruluşunuzun Linux ve Windows sanal makinelerini tek kiracılı fiziksel sunucularda çalıştırmanıza olanak tanır. Yalıtılmış Azure VM 'lerini Azure ayrılmış ana bilgisayarıyla tamamen değiştirmeyi planlıyoruz. **15 şubat 2020 '** den sonra, D15_v2/DS15_v2 Azure VM 'leri artık donanım yalıtılamayabilir.
 
 ## <a name="how-does-this-affect-me"></a>Bu değişiklik beni nasıl etkileyecek?
 15 Şubat 2020 ' den sonra, artık D15_v2/DS15_v2 Azure sanal makineleriniz için bir yalıtım garantisi sağlamayız. 
@@ -40,7 +40,7 @@ Sizin için donanım yalıtımı gerekmiyorsa uygulamanız gereken bir eylem yok
 
 15 Şubat 2020 tarihinden önce, yalıtım yapmanız gerekiyorsa, şunlardan birini yapmanız gerekir:
 
-• İş yükünüzü Azure adanmış ana bilgisayar önizlemesine [geçirin](https://azure.microsoft.com/blog/introducing-azure-dedicated-host)
+• İş yükünüzü Azure adanmış ana bilgisayara [geçirin](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) .
 
 • Aynı fiyat performansını almak için bir D15i_v2 ve Azure VM DS15i_v2 [erişim isteyin](https://aka.ms/D15iRequestAccess) . Bu seçenek yalnızca Kullandıkça öde ve bir yıllık ayrılmış örnek senaryolarında kullanılabilir.    
 
@@ -49,7 +49,7 @@ Sizin için donanım yalıtımı gerekmiyorsa uygulamanız gereken bir eylem yok
 Ayrıntılar için aşağıya bakın:
 
 ## <a name="timeline"></a>Zaman çizelgesi
-| Date | Eylem | 
+| Tarih | Eylem | 
 | --- | --- |
 | 18 Kasım 2019  | D/DS15i_v2 (PAYG, 1 yıllık RI) kullanılabilirliği |
 | 14 Şubat 2020  | DS15i_v2 1-yıl RI satın almak için geçen gün | 
@@ -76,7 +76,7 @@ Y **: Hayır**
 ### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>S: D15_v2 veya Ds15_v2 için zaten 1 veya 3 yıllık ayrılmış örnek satın aldım. İndirim, VM kullanımma nasıl uygulanır?
 **A**: 18 Kasım 2019 tarihinden önce satın alınan RIS, kapsamı otomatik olarak yenı yalıtılmış VM serisine genişletecektir. 
 
-| Uzaktan |  Örnek boyutu esnekliği | Avantaj uygunluk |   
+| RI |  Örnek boyutu esnekliği | Avantaj uygunluk |   
 | --- | --- | --- |
 |   D15_v2  |   Kapalı     |   D15_v2 ve D15i_v2 |    
 |   D15_v2  |   Açık  |   D15_v2 serisi ve D15i_v2 tüm RI avantajını alacaktır. |    
@@ -87,7 +87,7 @@ Benzer şekilde Dsv2 serisi için.
 ### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>S: dv2 için ek ayrılmış örnekler satın almak istiyorum. Hangisini seçmem gerekir?
 Y **: 18**Kasım 2019 ' den sonra satın alınan tüm RIS aşağıdaki davranışa sahiptir. 
 
-| Uzaktan |  Örnek boyutu esnekliği | Avantaj uygunluk |   
+| RI |  Örnek boyutu esnekliği | Avantaj uygunluk |   
 | --- | --- | --- |
 | D15_v2 |  Kapalı |   Yalnızca D15_v2  
 | D15_v2 |  Açık |    D15_v2 serisi, RI avantajını alacaktır. Yeni D15i_v2 bu RI türünden RI avantajına uygun olmayacaktır. | 

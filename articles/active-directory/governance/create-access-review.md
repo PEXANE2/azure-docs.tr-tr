@@ -1,5 +1,5 @@
 ---
-title: Gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma-Azure Active Directory | Microsoft Docs
+title: Gruplar & uygulamalar için erişim gözden geçirmesi oluşturma-Azure AD
 description: Azure Active Directory erişim gözden geçirmeleriyle grup üyelerinin veya uygulama erişiminin erişim incelemesini oluşturmayı öğrenin.
 services: active-directory
 author: msaburnley
@@ -15,20 +15,20 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499735"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422683"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplar ve uygulamalar için erişim gözden geçirmesi oluşturma
 
 Çalışanlar için gruplara ve uygulamalara erişim ve zaman içinde konuklar değişiklikleri. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Azure Active Directory (Azure AD) kullanarak Grup üyeleri veya uygulama erişimi için erişim gözden geçirmeleri oluşturabilir. Erişimi düzenli olarak gözden geçirmeniz gerekiyorsa yinelenen erişim İncelemeleri de oluşturabilirsiniz. Bu senaryolar hakkında daha fazla bilgi için bkz. [Kullanıcı erişimini yönetme](manage-user-access-with-access-reviews.md) ve [konuk erişimini yönetme](manage-guest-access-with-access-reviews.md).
 
 Bu makalede, Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD Premium P2
 - Genel yönetici veya Kullanıcı Yöneticisi
@@ -87,7 +87,7 @@ Daha fazla bilgi için [hangi kullanıcıların lisanslarına sahip olması gere
 
     Programların listesini görmek için, erişim İncelemeleri sayfasına gidin ve **Programlar**' ı seçin. Genel yönetici veya Kullanıcı Yöneticisi rollüyorsanız, ek programlar oluşturabilirsiniz. Örneğin, her uyumluluk girişimi veya iş hedefi için bir program olmasını seçebilirsiniz. Artık bir programa ihtiyacınız yoksa ve onunla bağlantılı denetimleri yoksa, onu silebilirsiniz.
 
-### <a name="upon-completion-settings"></a>Tamamlanma ayarları hakkında
+### <a name="upon-completion-settings"></a>Tamamlama ayarlarından sonra
 
 1. Bir gözden geçirme tamamlandıktan sonra ne olacağını belirtmek için **Tamamlama Ayarları** bölümüne bakın.
 
@@ -112,9 +112,9 @@ Daha fazla bilgi için [hangi kullanıcıların lisanslarına sahip olması gere
 
 1. Gözden geçirenin onay için bir neden vermesini gerektirmesini **sağlamak** için onay için bir **neden gerektir '** i ayarlayın.
 
-1. Bir erişim incelemesi başladığında ve bir gözden geçirme tamamlandığında yöneticilere, Azure AD 'nin gözden geçirenlere e-posta bildirimleri göndermesini **sağlamak Için** **posta bildirimleri** ayarlayın.
+1. Bir erişim incelemesi başladığında ve bir gözden geçirme tamamlandığında yöneticilere, Azure **ad 'nin gözden** geçirenlere e-posta bildirimleri göndermesini sağlamak için **posta bildirimleri** ayarlayın.
 
-1. Azure AD 'nin  , gözden geçirenleri tamamlamadıkları gözden geçirenler için sürmekte olan erişim gözden geçirmeleri gönderme anımsatıcıları sağlamak üzere **anımsatıcıları** ayarlayın.
+1. Azure AD 'nin, gözden geçirenleri tamamlamadıkları gözden geçirenler için sürmekte olan erişim gözden geçirmeleri gönderme anımsatıcıları **sağlamak üzere** **anımsatıcıları** ayarlayın.
 
     Varsayılan olarak, bitiş tarihine kadar olan sürenin yarısına ulaşıldığında, Azure AD henüz yanıt vermemiş olan gözden geçirenlere bir anımsatıcı gönderir.
 
@@ -124,7 +124,7 @@ Erişim gözden geçirmesi ayarlarını belirttikten sonra **Başlat**' a tıkla
 
 ![Erişim gözden geçirmeleri ve durumlarının listesi](./media/create-access-review/access-reviews-list.png)
 
-Varsayılan olarak, Azure AD gözden geçirenlere İnceleme başladıktan kısa bir bir e-posta gönderir. Azure AD 'ye e-posta gönderme seçeneğini belirlerseniz, gözden geçirenlere bir erişim incelemesinin tamamlanmasını beklediğini bildirin. Bunlara, [gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md)yönergelerini gösterebilirsiniz. Gözden geçirmeniz konuklarınız kendi erişimini gözden geçirmeleri için ise, bunları [gruplara veya uygulamalara yönelik erişimin](review-your-access.md)nasıl incelendiğinin talimatlarını gösterir.
+Varsayılan olarak, Azure AD gözden geçirenlere İnceleme başladıktan kısa bir bir e-posta gönderir. Azure AD 'ye e-posta gönderme seçeneğini belirlerseniz, gözden geçirenlere bir erişim incelemesinin tamamlanmasını beklediğini bildirin. Bunlara, [gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md)yönergelerini gösterebilirsiniz. Gözden geçirmeniz konuklarınız kendi erişimini gözden geçirmeleri için ise, bunları [gruplara veya uygulamalara yönelik erişimin nasıl incelendiğinin](review-your-access.md)talimatlarını gösterir.
 
 Konukları gözden geçirenler olarak atadıysanız ve daveti kabul etmediyse, bu kullanıcılar, gözden geçirenlerden önce daveti kabul etmeleri gerektiğinden, erişim incelemelerinden e-posta almamalıdır.
 

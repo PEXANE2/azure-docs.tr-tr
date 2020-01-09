@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382131"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430978"
 ---
 # <a name="how-to-investigate-risk"></a>Nasıl yapılır: riski araştırma
 
@@ -30,7 +30,7 @@ Kuruluşlar, verileri bir kuruluş olarak erişimi olabilecek diğer kaynaklarla
 
 ## <a name="navigating-the-reports"></a>Raporlarda gezinme
 
-Her rapor, raporun en üstünde gösterilen süre için tüm algılamalardan oluşan bir liste ile başlatılır. Her rapor, sütunları yönetici tercihine göre ekleme veya kaldırma için izin verir. Yöneticiler içindeki verileri indirmeyi seçebilir. CSV biçimi. Raporlar, raporun üst kısmında filtreler kullanılarak filtrelenebilir.
+Her rapor, raporun en üstünde gösterilen süre için tüm algılamalardan oluşan bir liste ile başlatılır. Her rapor, sütunları yönetici tercihine göre ekleme veya kaldırma için izin verir. Yöneticiler içindeki verileri indirmeyi seçebilir. CSV veya. JSON biçimi. Raporlar, raporun üst kısmında filtreler kullanılarak filtrelenebilir.
 
 Tek tek girişlerin seçilmesi, raporun üst kısmında, tehlikede veya güvende olan bir oturum açmayı onaylama, bir kullanıcıyı tehlikede onaylama veya Kullanıcı riskini kapatma gibi ek girişler sağlayabilir.
 
@@ -44,7 +44,7 @@ Riskli kullanıcılar raporu tarafından sağlanacak bilgiler ile yöneticiler �
 
 - Risk altında olan kullanıcılar risk düzeltildi mi, ne de risk kapatıldı mi?
 - Algılamalar hakkındaki ayrıntılar
-- Riskli oturum açma işlemlerinin geçmişi
+- Tüm riskli oturum açma işlemlerinin geçmişi
 - Risk geçmişi
  
 Yöneticiler daha sonra bu olaylar üzerinde işlem yapmak için seçim yapabilir. Yöneticiler şunları yapabilir:

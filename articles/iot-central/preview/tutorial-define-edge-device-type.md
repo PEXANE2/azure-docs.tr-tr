@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979096"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434863"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Öğretici: Azure IoT Central uygulamanızda yeni bir Azure IoT Edge cihaz türü tanımlama (Önizleme özellikleri)
 
@@ -57,7 +57,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Aşağı akış cihaz şablonlarına ilişkiler ekleyin.
 > * Cihaz şablonunuzu yayımlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için [bir Azure IoT Central uygulaması oluşturmanız](quick-deploy-iot-central.md)gerekir.
 
@@ -196,7 +196,7 @@ Aşağıdaki akış çizelgesinde IoT Central bir dağıtım bildirimi yaşam d�
 
 ![Dağıtım bildirimi yaşam döngüsü akış çizelgesi](./media/tutorial-define-edge-device-type/dmflow.png)
 
-Ardından, dağıtım bildiriminin ayrıntılarını içeren bir inceleme sayfası görürsünüz. Bu sayfada dağıtım bildiriminden modüllerin bir listesi gösterilir. Bu öğreticide `SimulatedTemperatureSensor` modülünün listelendiğini unutmayın. **Oluştur**'u seçin.
+Ardından, dağıtım bildiriminin ayrıntılarını içeren bir inceleme sayfası görürsünüz. Bu sayfada dağıtım bildiriminden modüllerin bir listesi gösterilir. Bu öğreticide `SimulatedTemperatureSensor` modülünün listelendiğini unutmayın. **Oluştur**’u seçin.
 
 ![Modülle birlikte Inceleme sayfasının ekran görüntüsü ve vurgulanmış oluştur](./media/tutorial-define-edge-device-type/edgedevicetemplatereview.png)
 
@@ -400,4 +400,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Artık Azure IoT Central uygulamanızda bir cihaz şablonu oluşturduğunuza göre, bunu bir sonraki adımda yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Cihaza Bağlan](./tutorial-connect-pnp-device.md)
+> [Sınır cihazını bağlama](./tutorial-add-edge-as-leaf-device.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 424dfc1dac21f227869f23e7401a083b06cef1d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035561"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354041"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Azure CLı ile bir Linux VM 'ye bağlantı noktalarını ve uç noktaları açma
 
@@ -92,5 +92,5 @@ Yüksek oranda kullanılabilir Web uygulamaları için sanal makinelerinizi bir 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu örnekte, HTTP trafiğine izin vermek için basit bir kural oluşturdunuz. Aşağıdaki makalelerde daha ayrıntılı ortamlar oluşturma hakkında bilgi edinebilirsiniz:
 
-* [Azure Resource Manager’a genel bakış](../../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager’a genel bakış](../../azure-resource-manager/management/overview.md)
 * [Ağ Güvenlik Grubu (NSG) Nedir?](../../virtual-network/security-overview.md)

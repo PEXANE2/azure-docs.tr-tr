@@ -4,15 +4,15 @@ description: System Center Operations Manager'a yaptığınız mevcut yatırım�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363668"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -34,7 +34,7 @@ Aşağıdaki diyagramda, yön ve bağlantı noktaları da dahil olmak üzere bir
 
 BT güvenlik ilkeleriniz ağınızdaki bilgisayarların Internet 'e bağlanmasına izin vermediğinden, yönetim sunucuları yapılandırma bilgilerini almak ve bu çözümlere bağlı olarak toplanan verileri göndermek için Log Analytics ağ geçidine bağlanacak şekilde yapılandırılabilir etkinletir. Operations Manager yönetim grubunuzu Azure Izleyici 'ye bir Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırma hakkında daha fazla bilgi ve adımlar için, bkz. [Log Analytics ağ geçidini kullanarak bilgisayarları Azure izleyici 'ye bağlama](../../azure-monitor/platform/gateway.md).  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 
@@ -73,15 +73,15 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 |Kaynak | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
 |---------|------|-----------------------|  
 |**Aracı**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|\*.ods.opinsights.azure.com| 443 |Evet|  
+|\*.oms.opinsights.azure.com| 443|Evet|  
+|\*.blob.core.windows.net| 443|Evet|  
+|\*.azure-automation.net| 443|Evet|  
 |**Yönetim sunucusu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Evet|  
+|\*.ods.opinsights.azure.com| 443| Evet|  
+|*.azure-automation.net | 443| Evet|  
 |**Konsolu Azure Izleyici 'ye Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -94,9 +94,9 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 |api.loganalytics.io| 80 ve 443||
 |docs.loganalytics.io| 80 ve 443||  
 
-### <a name="tls-12-protocol"></a>TLS 1,2 Protokolü
+### <a name="tls-12-protocol"></a>TLS 1.2 Protokolü
 
-Azure Izleyici 'ye geçişte verilerin güvenliğini sağlamak için aracıyı ve yönetim grubunu en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)inceleyin.
+Azure Izleyici 'ye geçişte verilerin güvenliğini sağlamak için aracıyı ve yönetim grubunu en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) daha eski sürümleri, savunmasız bulundu ve bunlar yine de şu anda geriye dönük uyumluluk izin vermek için çalışırken, bunlar **önerilmez**. Ek bilgi için gözden [TLS 1.2 kullanarak güvenli bir şekilde veri gönderen](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -105,8 +105,8 @@ Operations Manager yönetim grubunuzu Log Analytics çalışma alanlarınızdan 
 Log Analytics çalışma alanı ile Operations Manager yönetim grubunuzun ilk kaydı sırasında, yönetim grubu için proxy yapılandırmasını belirtme seçeneği Işletim konsolunda kullanılamaz.  Bu seçeneğin sağlanması için önce yönetim grubunun hizmete başarıyla kaydedilmiş olması gerekir.  Bu sorunu geçici olarak çözmek için, Işletim konsolunu çalıştıran sistemde Netsh kullanarak sistem proxy yapılandırmasını güncelleştirmeniz gerekir ve yönetim grubundaki tüm yönetim sunucularını yapılandırın.  
 
 1. Yükseltilmiş bir komut istemi açın.
-   a. **Başlat** ' a gidin ve **cmd**yazın.
-   b. **Komut istemi** ' ne sağ tıklayın ve yönetici olarak çalıştır * * seçeneğini belirleyin.
+   a. Git **Başlat** ve türü **cmd**.
+   b. Sağ **komut istemi** ve farklı çalıştır yönetici ** seçin.
 1. Aşağıdaki komutu girin ve **Enter** tuşuna basın:
 
     `netsh winhttp set proxy <proxy>:<port>`

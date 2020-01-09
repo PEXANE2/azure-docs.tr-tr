@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396489"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -31,7 +31,7 @@ Belirtilen günlük sorgularını düzenli aralıklarla otomatik olarak çalış
 
 Günlük arama kuralları aşağıdaki Ayrıntılar tarafından tanımlanır:
 
-- **Günlük sorgusu**.  Uyarı kuralı her tetiklendiğinde çalışan sorgu.  Bu sorgu tarafından döndürülen kayıtlar, bir uyarının tetiklenip tetiklenmeyeceğini tespit etmek için kullanılır. Analiz sorgusu, belirli bir Log Analytics çalışma alanı veya Application Insights uygulaması için, hatta [birden çok Log Analytics ve Application Insights kaynak](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) arasında, hatta kullanıcının erişimi ve tüm kaynaklara yönelik sorgu haklarını de kapsayabilir. 
+- **Günlük sorgusu**.  Uyarı kuralı her tetiklendiğinde çalıştırılan sorgu.  Bu sorgu tarafından döndürülen kayıtlar, bir uyarının tetiklenip tetiklenmeyeceğini tespit etmek için kullanılır. Analiz sorgusu, belirli bir Log Analytics çalışma alanı veya Application Insights uygulaması için, hatta [birden çok Log Analytics ve Application Insights kaynak](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) arasında, hatta kullanıcının erişimi ve tüm kaynaklara yönelik sorgu haklarını de kapsayabilir. 
     > [!IMPORTANT]
     > yalnızca [scheduledQueryRules API kullanılarak yapılandırılan Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) için Application Insights ve günlük uyarılarında [çapraz kaynak sorgu](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) desteği.
 
@@ -88,7 +88,7 @@ Ardından uyarı, sonuç kodu 500 olan herhangi bir kaydı aramak üzere 30 daki
 - **Aralık**: verilerin toplanması için gereken zaman aralığını tanımlar.  Örneğin, **beş dakika**belirlediyseniz, uyarı için belirtilen süre boyunca 5 dakikalık aralıklarla toplanan grup alanı her örneği için bir kayıt oluşturulur.
 
     > [!NOTE]
-    > Interval işlevini belirtmek için Query 'de bin işlevi kullanılmalıdır. As bin () eşit olmayan zaman aralıklarıyla sonuçlanabilir-uyarı, bin komutunu, çalışma zamanında uygun bir zaman ile bin_at komutuna otomatik olarak dönüştürür, böylece sabit bir nokta elde edin. Günlük uyarısının Ölçüm Ölçüm türü, üç bin () komutu örneğine sahip olan sorgularla çalışacak şekilde tasarlanmıştır
+    > Interval işlevini belirtmek için Query 'de bin işlevi kullanılmalıdır. As bin () eşit olmayan zaman aralıklarına yol açabilir-uyarı, bir sabit nokta ile sonuçları sağlamak için bin komutunu çalışma zamanında uygun bir zamana göre otomatik olarak bin_at komutuna dönüştürür. Günlük uyarısının Ölçüm Ölçüm türü, üç bin () komutu örneğine sahip olan sorgularla çalışacak şekilde tasarlanmıştır
     
 - **Eşik**: ölçüm ölçümü uyarı kuralları için eşik, bir toplam değer ve bir dizi ihlal tarafından tanımlanır.  Günlük aramasında herhangi bir veri noktası bu değeri aşarsa, bir ihlal olarak kabul edilir.  Sonuçlarda herhangi bir nesne için içindeki ihlal sayısı belirtilen değeri aşarsa, bu nesne için bir uyarı oluşturulur.
 
@@ -96,7 +96,7 @@ Ardından uyarı, sonuç kodu 500 olan herhangi bir kaydı aramak üzere 30 daki
 
 #### <a name="example-of-metric-measurement-type-log-alert"></a>Ölçüm Ölçüm türü günlük uyarısı örneği
 
-Herhangi bir bilgisayar 30 dakikada bir% 90 oranında işlemci kullanımını aşarsa, uyarı istediğiniz bir senaryoyu düşünün.  Aşağıdaki ayrıntılarla bir uyarı kuralı oluşturursunuz:  
+Herhangi bir bilgisayar 30 dakikada bir %90 oranında işlemci kullanımını aşarsa, uyarı istediğiniz bir senaryoyu düşünün.  Aşağıdaki ayrıntılarla bir uyarı kuralı oluşturursunuz:  
 
 - **Sorgu:** Perf | Burada ObjectName = = "Processor" ve CounterName = = "% Işlemci zamanı" | (TimeGenerated, 5 dk), bilgisayar için Aggregx değer = Ort (CounterValue)<br>
 - **Zaman aralığı:** 30 dakika<br>
@@ -123,7 +123,7 @@ Sorgu sonucu çizilmek ise, olarak görünür.
 ![Örnek sorgu sonuçları](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
 Bu örnekte, üç bilgisayarın her biri için 5 dakikalık depo gözlerinde, 5 dakika boyunca hesaplanan ortalama işlemci kullanımı görüyoruz. 90, SNC01 tarafından yalnızca bir kez 1:25 bin olarak ihlal ediliyor. SRV02, 1:10, 1:15 ve 1:25 sepetlerindeki 90 eşiğini aşıyor; srv03, 1:10, 1:15, 1:20 ve 1:30 90 eşiğini aşmaktadır.
-Uyarı toplam ihlal temelinde tetiklenecek şekilde yapılandırıldığından, SRV02 ve srv03 'in yalnızca ölçütü karşıladığını görüyoruz. Bu nedenle, birden çok zaman sepetlerine iki kez% 90 eşiğini ulaştıkları için, SRV02 ve srv03 için ayrı uyarılar oluşturulacaktır.  *Tetikleyici uyarısı:* parametresi, *sürekli ihlal* için yapılandırılmışsa, bu durumda **yalnızca** srv03 için bir uyarı tetiklenir ve bu durum 1:10 ' den 1:20 ' e kadar art arda üç zaman sepetinin eşiğine ulaştı. SRV02 için **değil** , 1:10 ile 1:15 arasındaki iki ardışık zaman sepetinin eşiğine ulaştığı için.
+Uyarı toplam ihlal temelinde tetiklenecek şekilde yapılandırıldığından, SRV02 ve srv03 'in yalnızca ölçütü karşıladığını görüyoruz. Bu nedenle, birden çok zaman sepetlerine iki kez %90 eşiğini ulaştıkları için, SRV02 ve srv03 için ayrı uyarılar oluşturulacaktır.  *Tetikleyici uyarısı:* parametresi, *sürekli ihlal* için yapılandırılmışsa, bu durumda **yalnızca** srv03 için bir uyarı tetiklenir ve bu durum 1:10 ' den 1:20 ' e kadar art arda üç zaman sepetinin eşiğine ulaştı. SRV02 için **değil** , 1:10 ile 1:15 arasındaki iki ardışık zaman sepetinin eşiğine ulaştığı için.
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Günlük arama uyarısı kuralı-tetikleme ve durum
 
@@ -138,7 +138,7 @@ Aşağıdaki her aralıkta, Azure uyarıları sistemi *contoso-log uyarısı*iç
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı.
 | 1:10 PM | 2 kayıt | 2 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
-| 1:15 PM | 5 kayıt | 5 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
+| 13:15 | 5 kayıt | 5 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
 | 1:20 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı. Uyarı durumu ETKIN kaldı.
 
 Önceki durumu örnek olarak kullanma:
@@ -149,22 +149,22 @@ Aşağıdaki her aralıkta, Azure uyarıları sistemi *contoso-log uyarısı*iç
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Günlük uyarılarını fiyatlandırma ve faturalama
 
-Günlük uyarıları için geçerli olan fiyatlandırma, [Azure Izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) sayfasında belirtilmiştir. Azure faturaları ' nda, günlük uyarıları `microsoft.insights/scheduledqueryrules` türü olarak temsil edilir:
+Günlük uyarıları için geçerli olan fiyatlandırma, [Azure Izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) sayfasında belirtilmiştir. Azure faturaları ' nda, günlük uyarıları tür ile `microsoft.insights/scheduledqueryrules` olarak temsil edilir:
 
 - Kaynak grubu ve uyarı özellikleriyle birlikte tam uyarı adıyla gösterilen Application Insights uyarıları günlüğe kaydet
 - Kaynak grubu ve uyarı özellikleriyle birlikte tam uyarı adıyla gösterilen Log Analytics Uyarıları günlüğe kaydedin; [Scheduledqueryrules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanılarak oluşturulduğunda
 
-[Eski Log Analytics API 'si](../../azure-monitor/platform/api-alerts.md) , Log Analytics kayıtlı aramanın parçası olarak uyarı eylemleri ve zamanlamaları vardır ve uygun [Azure kaynakları](../../azure-resource-manager/resource-group-overview.md)değildir. Bu nedenle, [yenı API 'ye geçiş](../../azure-monitor/platform/alerts-log-api-switch.md) **yapmadan** Log Analytics Azure portal kullanılarak veya [eski Log Analytics API 'si](../../azure-monitor/platform/api-alerts.md) Ile gizlenen sahte uyarı kuralları, Azure 'da faturalandırma için `microsoft.insights/scheduledqueryrules` ' te oluşturulur. @No__t-1 ' de faturalandırma için oluşturulan gizli sahte uyarı kuralları, kaynak grubu ve uyarı özellikleriyle birlikte `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` olarak gösterilir.
+[Eski Log Analytics API 'si](../../azure-monitor/platform/api-alerts.md) , Log Analytics kayıtlı aramanın parçası olarak uyarı eylemleri ve zamanlamaları vardır ve uygun [Azure kaynakları](../../azure-resource-manager/management/overview.md)değildir. Bu nedenle, [yenı API 'ye geçiş](../../azure-monitor/platform/alerts-log-api-switch.md) **yapmadan** veya [eski Log Analytics apı 'si](../../azure-monitor/platform/api-alerts.md) aracılığıyla Azure Portal kullanılarak Log Analytics için oluşturulan eski günlük uyarılarına Ilişkin faturalandırmayı etkinleştirmek için, Azure 'da faturalandırma için `microsoft.insights/scheduledqueryrules` üzerinde bir şekilde oluşturulur. Kaynak grubu ve uyarı özellikleriyle birlikte `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` gösterildiği gibi, `microsoft.insights/scheduledqueryrules` faturalama için oluşturulan gizli sahte uyarı kuralları.
 
 > [!NOTE]
-> @No__t-0 gibi geçersiz karakterler varsa, bu değerler gizli sözde uyarı kuralı adında `_` ile ve bu nedenle de Azure faturasında değiştirilirler.
+> `<, >, %, &, \, ?, /` gibi geçersiz karakterler varsa, bu değerler gizli sözde uyarı kuralı adında `_` ve bu nedenle de Azure faturasında yer alır.
 
 [Eski log ANALYTICS API](api-alerts.md)kullanarak uyarı kurallarının faturalandırılması için oluşturulan gizli scheduleQueryRules kaynaklarını kaldırmak için, kullanıcı aşağıdakilerden herhangi birini gerçekleştirebilir:
 
 - Kullanıcı [Log Analytics çalışma alanındaki uyarı kuralları IÇIN API tercihini](../../azure-monitor/platform/alerts-log-api-switch.md) değiştirebilir ve uyarı kurallarının veya izlemenin Azure Resource Manager uyumlu [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)'sine taşınmasını önler. Böylece faturalandırma için sahte gizli uyarı kuralları yapma gereksinimini ortadan kaldırır.
 - Ya da Kullanıcı API tercihi değiştirmek istemezseniz, kullanıcının [eski log ANALYTICS API](api-alerts.md) 'sini kullanarak özgün zamanlama ve uyarı eylemini **silmesi** veya [özgün günlük uyarı kuralında Azure Portal](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) silmesi gerekir
 
-Ayrıca, [eski log ANALYTICS API](api-alerts.md)kullanan uyarı kurallarının faturalandırılması için oluşturulan gizli scheduleQueryRules kaynakları IÇIN, put gibi herhangi bir değiştirme işlemi başarısız olur. @No__t-0 türü sözde kurallar, [eski log ANALYTICS API](api-alerts.md)kullanılarak oluşturulan uyarı kuralları için de kullanılır. [Eski log ANALYTICS API](api-alerts.md) kullanılarak herhangi bir uyarı kuralı değişikliği yapılmalıdır (veya) Kullanıcı, [Uyarı kuralları için API tercihini,](../../azure-monitor/platform/alerts-log-api-switch.md) bunun yerine [scheduledqueryrules API 'sini](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanacak şekilde değiştirebilir.
+Ayrıca, [eski log ANALYTICS API](api-alerts.md)kullanan uyarı kurallarının faturalandırılması için oluşturulan gizli scheduleQueryRules kaynakları IÇIN, put gibi herhangi bir değiştirme işlemi başarısız olur. `microsoft.insights/scheduledqueryrules` türü sözde kuralları, [eski log ANALYTICS API](api-alerts.md)kullanılarak oluşturulan uyarı kurallarının faturalandırılması amacıyla kullanılır. [Eski log ANALYTICS API](api-alerts.md) kullanılarak herhangi bir uyarı kuralı değişikliği yapılmalıdır (veya) Kullanıcı, [Uyarı kuralları için API tercihini,](../../azure-monitor/platform/alerts-log-api-switch.md) bunun yerine [scheduledqueryrules API 'sini](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanacak şekilde değiştirebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

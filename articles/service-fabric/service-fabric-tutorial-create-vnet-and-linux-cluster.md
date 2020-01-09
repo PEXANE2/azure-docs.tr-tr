@@ -1,32 +1,21 @@
 ---
-title: Azure'da Linux Service Fabric Kümesi oluşturma | Microsoft Docs
+title: Azure 'da bir Linux Service Fabric kümesi oluşturma
 description: Azure CLI kullanarak mevcut bir Azure sanal ağına Linux Service Fabric kümesi dağıtmayı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465402"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure sanal ağına bir Linux Service Fabric kümesi dağıtma
 
-Bu makalede, Azure CLı ve şablon kullanarak bir [Azure sanal ağına (VNet)](../virtual-network/virtual-networks-overview.md) bir Linux Service Fabric kümesi dağıtmayı öğreneceksiniz. Öğreticiyi tamamladığınızda, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz olur. PowerShell kullanarak Windows kümesi oluşturmak için bkz. [Azure’da güvenli bir Windows kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Bu makalede, Azure CLı ve şablon kullanarak bir [Azure sanal ağına (VNet)](../virtual-network/virtual-networks-overview.md) bir Linux Service Fabric kümesi dağıtmayı öğreneceksiniz. Öğretici tamamladığınızda, bulutta çalışan ve uygulama dağıtabileceğiniz bir kümeniz olur. PowerShell kullanarak Windows kümesi oluşturmak için bkz. [Azure’da güvenli bir Windows kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
@@ -53,12 +42,12 @@ Bu şablon, bir sanal ağa yedi sanal makine ve üç düğümlü türden oluşan
 
 * üç düğüm türü
 * birincil düğüm türünde (şablon parametrelerinde yapılandırılabilir) beş düğüm, diğer düğüm türlerinin her birindeki bir düğüm
-* İşletim Sistemi: Ubuntu 16,04 LTS (şablon parametrelerinde yapılandırılabilir)
-* sertifikanın güvenliğinin sağlanması (şablon parametrelerinde yapılandırılabilir)
+* İşletim sistemi: Ubuntu 16.04 LTS (şablon parametrelerinde yapılandırılabilir)
+* sertifikanın güvenliğinin sağlanması (şablon parametrelerinden yapılandırılabilir)
 * [DNS hizmeti](service-fabric-dnsservice.md) etkin
 * Bronz [dayanıklılık düzeyi](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (şablon parametrelerinde yapılandırılabilir)
 * Gümüş [güvenilirlik düzeyi](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (şablon parametrelerinden yapılandırılabilir)
-* istemci bağlantı uç noktası: 19000 (şablon parametrelerinde yapılandırılabilir)
+* istemci bağlantısı uç noktası: 19000 (şablon parametrelerinde yapılandırılabilir)
 * HTTP ağ geçidi uç noktası: 19080 (şablon parametrelerinde yapılandırılabilir)
 
 ### <a name="azure-load-balancer"></a>Azure yük dengeleyici
@@ -90,7 +79,7 @@ Başka bir uygulama bağlantı noktası gerekiyorsa, gelen trafiğe izin vermek 
 |clusterName|mysfcluster123| Kümenin adı. |
 |location|southcentralus| Kümenin konumu. |
 |certificateThumbprint|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika SHA1 parmak izi değerini girin. Örneğin: "6190390162C988701DB5676EB81083EA608DCCF3". </p>|
-|certificateUrlValue|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika URL’sini girin. Örneğin, "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika URL’sini girin. Örneğin, "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için kaynak kasa değerini girin. Örneğin: "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>

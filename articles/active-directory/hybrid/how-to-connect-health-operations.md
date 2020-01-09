@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Connect Health işlemleri
-description: Bu makalede, Azure AD Connect Health dağıttıktan sonra gerçekleştirilen ek işlemleri açıklar.
+title: Azure Active Directory Connect Health işlemler
+description: Bu makalede, Azure AD Connect Health dağıttıktan sonra gerçekleştirilebilecek ek işlemler açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -14,150 +14,156 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 57bc60cab7e6980f7051af6fc4685bd2a426f4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422428"
 ---
-# <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemleri
-Bu konuda, Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
+# <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health işlemler
+Bu konuda Azure Active Directory (Azure AD) Connect Health kullanarak gerçekleştirebileceğiniz çeşitli işlemler açıklanmaktadır.
 
-## <a name="enable-email-notifications"></a>E-posta bildirimlerini etkinleştirme
-Uyarıları kimlik altyapınızı iyi durumda değil belirttiğinizde, e-posta bildirimleri göndermek için Azure AD Connect Health hizmeti yapılandırabilirsiniz. Bu, bir uyarı oluşturulduğunda ve Çözümlenmiş olduğunda gerçekleşir.
+## <a name="enable-email-notifications"></a>E-posta bildirimlerini etkinleştir
+Uyarılar kimlik altyapınızın sağlıklı olmadığını gösteriyorsa, Azure AD Connect Health hizmetini e-posta bildirimleri gönderecek şekilde yapılandırabilirsiniz. Bu, bir uyarı oluşturulduğunda ve ne zaman çözümlendiğinde oluşur.
 
-![Ekran görüntüsü, Azure AD Connect Health e-posta bildirimi ayarları](./media/how-to-connect-health-operations/email_noti_discover.png)
+![Azure AD Connect Health e-posta bildirimi ayarlarının ekran görüntüsü](./media/how-to-connect-health-operations/email_noti_discover.png)
 
 > [!NOTE]
 > E-posta bildirimleri varsayılan olarak etkindir.
 >
->
 
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Azure AD Connect Health e-posta bildirimlerini etkinleştirmek için
-1. Açık **uyarılar** e-posta bildirimi almak istediğiniz hizmet için dikey pencere.
-2. Eylem çubuğundaki **bildirim ayarları**.
-3. E-posta bildirim anahtarında seçin **ON**.
-4. E-posta bildirimleri almak için tüm genel yöneticilerin istiyorsanız onay kutusunu işaretleyin.
-5. Herhangi bir e-posta adreslerine e-posta bildirimleri almak istemiyorsanız, bunları belirlemek **ek e-posta alıcılarını** kutusu. Bir e-posta adresi bu listeden kaldırmak için girişe sağ tıklayın ve seçin **Sil**.
-6. Değişiklikleri sonlandırmak için tıklatın **Kaydet**. Yalnızca kaydettikten sonra değişiklikler geçerli olacaktır.
-
-## <a name="delete-a-server-or-service-instance"></a>Bir sunucu veya hizmet örneği silme
+1. E-posta bildirimi almak istediğiniz hizmetin **Uyarılar** dikey penceresini açın.
+2. Eylem çubuğundan **bildirim ayarları**' na tıklayın.
+3. E-posta bildirim anahtarında **Açık**' ı seçin.
+4. Tüm genel yöneticilerin e-posta bildirimleri almasını istiyorsanız onay kutusunu işaretleyin.
+5. Diğer herhangi bir e-posta adresinden e-posta bildirimleri almak istiyorsanız, bunları **ek e-posta alıcıları** kutusunda belirtin. Bu listeden bir e-posta adresini kaldırmak için girişe sağ tıklayıp **Sil**' i seçin.
+6. Değişiklikleri sonlandırmak için **Kaydet**' e tıklayın. Değişiklikler yalnızca kaydettikten sonra geçerli olur.
 
 >[!NOTE] 
-> Silme adımları için Azure AD premium lisansı gereklidir.
+> Arka uç hizmetimizde eşitleme isteklerini işlerken sorunlar olduğunda, bu hizmet, kiracınızın yönetim iletişim e-posta adresine (es) hata ayrıntılarını içeren bir bildirim e-postası gönderir. Müşterilerin belirli durumlarda bu iletilerin hacminin canlı büyüklükte olduğunu öğrendiğimiz ve bu iletileri gönderme şeklini değiştirdiğimiz için geri bildirimde bulunduk. 
+>
+> Her gerçekleştiğinde her eşitleme hatası için bir ileti göndermek yerine, arka uç hizmetinin döndürdüğü tüm hataların günlük özetini göndereceğiz. Bu, müşterilerin bu hataları daha verimli bir şekilde işlemesini sağlar ve yinelenen hata iletilerinin sayısını azaltır.
+>
+> Bu değişikliği 15 Ocak 2020 ' de uygulanacak şekilde planlıyoruz.
 
-Bazı durumlarda, izlenmekte olan bir sunucuyu kaldırmak isteyebilirsiniz. Azure AD Connect Health hizmetinden bir sunucuyu kaldırmak için bilmeniz gerekenler aşağıda verilmiştir.
-
-Bir sunucu silmekte olduğunuz, aşağıdakilere dikkat edin:
-
-* Bu eylem bu sunucudan daha fazla veri toplamayı durdurur. Bu sunucu izleme hizmetinden kaldırılır. Bu eylemi gerçekleştirdikten sonra yeni uyarıları, izleme veya bu sunucu için kullanım analizi verilerini görüntülemek mümkün değildir.
-* Bu eylem Health Aracısı sunucunuzdan kaldırmaz. Sistem Durumu Aracısı bu adımı gerçekleştirmeden önce kaldırmadıysanız sunucuda sistem durumu aracısı ile ilgili hatalar görebilirsiniz.
-* Bu eylem bu sunucudan zaten toplanmış olan verileri silmez. Bu verileri Azure veri bekletme ilkesi uygun şekilde silinir.
-* Bu eylemi gerçekleştirdikten sonra aynı sunucuyu izlemeye başlamak isterseniz yeniden, kaldırıp sistem durumu aracısı bu sunucuda yeniden yüklemeniz gerekir.
-
-### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health hizmetinden bir sunucu silme
+## <a name="delete-a-server-or-service-instance"></a>Sunucu veya hizmet örneğini silme
 
 >[!NOTE] 
-> Silme adımları için Azure AD premium lisansı gereklidir.
+> Silme adımları için Azure AD Premium lisansı gereklidir.
 
-Azure AD Connect Health'i Active Directory Federasyon Hizmetleri (AD FS) için ve Azure AD Connect (eşitleme):
+Bazı örneklerde, bir sunucunun izlenmesini kaldırmak isteyebilirsiniz. Azure AD Connect Health hizmetinden bir sunucuyu kaldırmak için bilmeniz gerekenler aşağıda verilmiştir.
 
-1. Açık **sunucu** dikey penceresinden **sunucu listesi** kaldırılacak sunucu adını seçerek dikey.
-2. Üzerinde **sunucu** eylem çubuğunda dikey **Sil**.
-![Ekran görüntüsü, Azure AD Connect Health sunucu Sil](./media/how-to-connect-health-operations/DeleteServer2.png)
+Bir sunucuyu silerken, aşağıdakilere dikkat edin:
+
+* Bu eylem, bu sunucudan daha fazla veri toplamayı durduruyor. Bu sunucu izleme hizmetinden kaldırılmıştır. Bu eylemden sonra, bu sunucu için yeni uyarıları, izlemeyi veya kullanım analizi verilerini görüntüleyemezsiniz.
+* Bu eylem, sistem durumu aracısını sunucudan kaldırmaz. Bu adımı gerçekleştirmeden önce sistem durumu aracısını kaldırmadıysanız, sunucuda sistem durumu aracısıyla ilgili hatalarla karşılaşabilirsiniz.
+* Bu eylem, bu sunucudan zaten toplanmış olan verileri silmez. Bu veriler, Azure veri bekletme ilkesine göre silinir.
+* Bu eylemi gerçekleştirdikten sonra, aynı sunucuyu yeniden izlemeye başlamak istiyorsanız, sistem durumu aracısını bu sunucuya kaldırmanız ve yeniden yüklemeniz gerekir.
+
+### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health hizmetinden bir sunucuyu silme
+
+>[!NOTE] 
+> Silme adımları için Azure AD Premium lisansı gereklidir.
+
+Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ve Azure AD Connect (eşitleme) için Azure AD Connect Health:
+
+1. Kaldırılacak sunucu adını seçerek sunucu **listesi** dikey penceresinden **sunucu** dikey penceresini açın.
+2. **Sunucu** dikey penceresinde, eylem çubuğundan **Sil**' e tıklayın.
+Sunucu Azure AD Connect Health silme ![ekran görüntüsü](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Onay kutusuna sunucu adını yazarak doğrulayın.
-4. Tıklayın **Sil**.
+4. **Sil**'e tıklayın.
 
-Azure AD Connect Health'i için Azure Active Directory etki alanı Hizmetleri:
+Azure Active Directory Domain Services için Azure AD Connect Health:
 
-1. Açık **etki alanı denetleyicileri** Pano.
-2. Etki alanı denetleyicisinin kaldırılmasını seçin.
-3. Eylem çubuğundaki **Sil Seçili**.
-4. Sunucu silme eylemi onaylayın.
-5. Tıklayın **Sil**.
+1. **Etki alanı denetleyicileri** panosunu açın.
+2. Kaldırılacak etki alanı denetleyicisini seçin.
+3. Eylem çubuğundan **Seçileni Sil**' e tıklayın.
+4. Sunucuyu silme eylemini onaylayın.
+5. **Sil**'e tıklayın.
 
-### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Azure AD Connect Health hizmetinden bir hizmet örneği silme
-Bazı durumlarda, bir hizmet örneği kaldırmak isteyebilirsiniz. Bir hizmet örneği Azure AD Connect Health hizmetten kaldırmak için bilmeniz gerekenler aşağıda verilmiştir.
+### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Hizmet örneğini Azure AD Connect Health hizmetten silme
+Bazı örneklerde, bir hizmet örneğini kaldırmak isteyebilirsiniz. Azure AD Connect Health hizmetinden bir hizmet örneğini kaldırmak için bilmeniz gerekenler aşağıda verilmiştir.
 
-Bir hizmet örneği silmekte olduğunuz, aşağıdakilere dikkat edin:
+Bir hizmet örneğini silerken, aşağıdakilere dikkat edin:
 
-* Bu eylem izleme hizmetinden mevcut hizmet örneğinin kaldırır.
-* Bu eylemi kaldırın veya bu hizmet örneği bir parçası olarak izlenen sunucuların sistem durumu aracısını kaldırın desteklemez. Sistem Durumu Aracısı bu adımı gerçekleştirmeden önce kaldırmadıysanız sunucularda sistem durumu aracısı ile ilgili hatalar görebilirsiniz.
-* Bu hizmete ait tüm verileri Azure veri bekletme ilkesi uygun şekilde silinir.
-* Bu eylemi gerçekleştirdikten sonra hizmeti izlemeye başlamak istiyorsanız, kaldırmak ve tüm sunucularda sistem durumu aracısını yeniden yükleyin. Bu eylemi gerçekleştirdikten sonra aynı sunucuyu izlemeye tekrar başlamak istiyorsanız, kaldırma, yeniden yükleyin ve bu sunucuda sistem durumu aracısı kaydedin.
+* Bu eylem, geçerli hizmet örneğini izleme hizmetinden kaldırır.
+* Bu eylem, bu hizmet örneğinin parçası olarak izlenen sunuculardan herhangi birinden sistem durumu Aracısı 'nı kaldırmaz veya kaldırmaz. Bu adımı gerçekleştirmeden önce sistem durumu aracısını kaldırmadıysanız, sunuculardaki sistem durumu aracısıyla ilgili hatalarla karşılaşabilirsiniz.
+* Bu hizmet örneğindeki tüm veriler, Azure veri bekletme ilkesine göre silinir.
+* Bu eylemi gerçekleştirdikten sonra, hizmeti izlemeye başlamak istiyorsanız tüm sunucularda sistem durumu aracısını kaldırın ve yeniden yükleyin. Bu eylemi gerçekleştirdikten sonra, aynı sunucuyu yeniden izlemeye başlamak istiyorsanız, bu sunucuda sistem durumu aracısını kaldırın, yeniden yükleyin ve kaydedin.
 
-#### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Bir hizmet örneği Azure AD Connect Health hizmetinden silmek için
-1. Açık **hizmet** dikey penceresinden **hizmet listesi** dikey penceresinde, kaldırmak istediğiniz hizmet tanımlayıcısı (grup adı) seçerek. 
-2. Üzerinde **hizmet** eylem çubuğunda dikey **Sil**. 
-![Ekran görüntüsü, Azure AD Connect Health hizmeti Sil](./media/how-to-connect-health-operations/DeleteServer.png)
-3. Hizmet adını onay kutusuna yazarak onaylayın (örneğin: sts.contoso.com).
-4. Tıklayın **Sil**.
+#### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health hizmetinden bir hizmet örneğini silmek için
+1. Kaldırmak istediğiniz hizmet tanımlayıcısını (grup adı) seçerek hizmet **listesi** dikey penceresinden **hizmet** dikey penceresini açın. 
+2. **Hizmet** dikey penceresinde, eylem çubuğundan **Sil**' e tıklayın. 
+hizmet Azure AD Connect Health silme](./media/how-to-connect-health-operations/DeleteServer.png) ekran görüntüsünü ![
+3. Onay kutusuna hizmet adını yazarak onaylayın (örneğin: sts.contoso.com).
+4. **Sil**'e tıklayın.
    <br><br>
 
-[//]: # (RBAC bölümünün Başlat)
-## <a name="manage-access-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile erişimi yönetme
-[Rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/role-assignments-portal.md) kullanıcılar ve gruplar dışında genel Yöneticiler, Azure AD Connect Health erişim sağlar. RBAC rolleri için hedeflenen kullanıcılar atar ve gruplar ve genel Yöneticiler dizininizdeki sınırlamak için bir mekanizma sağlar.
+[//]: # (RBAC bölümünün başlangıcı)
+## <a name="manage-access-with-role-based-access-control"></a>Rol tabanlı Access Control erişimi yönetme
+Azure AD Connect Health için [rol tabanlı Access Control (RBAC)](../../role-based-access-control/role-assignments-portal.md) , genel yönetici dışındaki kullanıcılara ve gruplara erişim sağlar. RBAC, istenen kullanıcılara ve gruplara roller atar ve dizininizin içindeki genel yöneticileri sınırlandırmak için bir mekanizma sağlar.
 
 ### <a name="roles"></a>Roller
-Azure AD Connect Health aşağıdaki yerleşik roller destekler:
+Azure AD Connect Health aşağıdaki yerleşik rolleri destekler:
 
 | Rol | İzinler |
 | --- | --- |
-| Sahip |Sahipleri *erişimini yönetme* (örneğin, bir rol bir kullanıcı veya grup için atama), *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleme) Portal'dan ve *ayarlarını değiştirme* (için Örneğin, e-posta bildirimleri) Azure AD Connect Health içindeki. <br>Varsayılan olarak, Azure AD genel Yöneticiler bu role atanmış ve bu ayar değiştirilemez. |
-| Katılımcı |Katkıda Bulunanlar için *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleme) Portal'dan ve *ayarlarını değiştirme* (örneğin, e-posta bildirimleri) Azure AD Connect Health içindeki. |
-| Okuyucu |Okuyucuların *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleme) içinde Azure AD Connect Health portalından. |
+| Sahip |Sahipler *erişimi yönetebilir* (örneğin, bir kullanıcıya veya gruba bir rol atayabilir), portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir) ve Azure AD Connect Health içindeki ayarları (örneğin, e-posta bildirimleri) *değiştirebilirsiniz* . <br>Varsayılan olarak, Azure AD Genel yöneticilerine bu rol atanır ve bu ayar değiştirilemez. |
+| Katılımcı |Katkıda bulunanlar portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir) ve Azure AD Connect Health içindeki ayarları (örneğin, e-posta bildirimleri) *değiştirebilir* . |
+| Okuyucu |Okuyucular Azure AD Connect Health içindeki portaldan *tüm bilgileri görüntüleyebilir* (örneğin, uyarıları görüntüleyebilir). |
 
-Rolleri portal deneyimi içinde kullanılabilir olsa bile, diğer tüm rolleri (örneğin, kullanıcı erişim yöneticileri veya DevTest Labs kullanıcıların) Azure AD Connect Health, erişmek için herhangi bir etkisi sahip.
+Diğer tüm rollerin (örneğin, Kullanıcı erişimi yöneticileri veya DevTest Labs kullanıcıları), roller Portal deneyiminde kullanılabilir olsa bile Azure AD Connect Health içinde erişim için hiçbir etkisi yoktur.
 
 ### <a name="access-scope"></a>Erişim kapsamı
-Azure AD Connect Health, iki düzeyde yönetme erişimi destekler:
+Azure AD Connect Health, erişimin iki düzeyde yönetilmesini destekler:
 
-* **Tüm hizmet örnekleri**: Bu, çoğu durumda önerilen yoludur. Azure AD Connect Health tarafından izlenen tüm rol türlerinde tüm hizmet örnekleri (örneğin, bir AD FS grubu) için erişimi denetler.
-* **Hizmet örneği**: Bazı durumlarda, erişim rol türleri veya bir hizmet örneği tarafından göre ayırmak gerekebilir. Bu durumda, hizmet örneği düzeyinde erişimi yönetebilir.  
+* **Tüm hizmet örnekleri**: Bu, çoğu durumda önerilen yoldur. Azure AD Connect Health tarafından izlenmekte olan tüm rol türlerinde tüm hizmet örneklerinin (örneğin, bir AD FS grubu) erişimini denetler.
+* **Hizmet örneği**: bazı durumlarda, rol türlerine veya bir hizmet örneğine göre erişimi ayırt etmeniz gerekebilir. Bu durumda, erişimi hizmet örneği düzeyinde yönetebilirsiniz.  
 
-Son kullanıcı erişimi düzeyinde dizin veya hizmet varsa izin verilir örnek düzeyi.
+Bir son kullanıcı, dizin ya da hizmet örneği düzeyinde erişime sahipse izin verilir.
 
-### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Kullanıcıları veya grupları Azure AD Connect Health erişmesine izin ver
-Aşağıdaki adımlarda, erişime izin verecek şekilde gösterilmektedir.
-#### <a name="step-1-select-the-appropriate-access-scope"></a>1\. adım: Uygun erişim kapsamı seçin
-Bir kullanıcı erişim izin vermek için *tüm hizmet örnekleri* Azure AD Connect Health düzey, Azure AD Connect Health ana dikey penceresini açın.<br>
+### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Kullanıcıların veya grupların Azure AD Connect Health erişimine izin ver
+Aşağıdaki adımlarda erişime nasıl izin verilecek gösterilmektedir.
+#### <a name="step-1-select-the-appropriate-access-scope"></a>1\. Adım: uygun erişim kapsamını seçin
+Azure AD Connect Health içindeki *tüm hizmet örnekleri* düzeyinde kullanıcı erişimine izin vermek için Azure AD Connect Health Ana dikey penceresini açın.<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2\. adım: Kullanıcılar ve gruplar ekleyin ve Rolleri Ata
-1. Gelen **yapılandırma** bölümünde **kullanıcılar**.<br>
-   ![Ekran görüntüsü, Azure AD Connect Health kaynak kenar çubuğu](./media/how-to-connect-health-operations/startRBAC.png)
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2\. Adım: kullanıcıları ve grupları ekleme ve rol atama
+1. **Yapılandır** bölümünde **Kullanıcılar**' a tıklayın.<br>
+   Azure AD Connect Health kaynak kenar çubuğu ![ekran görüntüsü](./media/how-to-connect-health-operations/startRBAC.png)
 2. **Add (Ekle)** seçeneğini belirleyin.
-3. İçinde **bir rol seçin** bölmesinde, bir rol seçin (örneğin, **sahibi**).<br>
-   ![Ekran Azure AD Health RBAC kullanıcıların bağlanmasına penceresi](./media/how-to-connect-health-operations/RBAC_add.png)
-4. Adına veya tanımlayıcısına hedeflenen kullanıcı veya grubun yazın. Aynı anda bir veya daha fazla kullanıcılar veya gruplar seçebilirsiniz. **Seç**'e tıklayın.
-   ![Ekran Azure AD Health RBAC kullanıcıların bağlanmasına penceresi](./media/how-to-connect-health-operations/RBAC_select_users.png)
+3. **Rol seçin** bölmesinde bir rol (örneğin, **sahip**) seçin.<br>
+   Azure AD Connect Health RBAC kullanıcıları penceresinin ekran görüntüsünü ![](./media/how-to-connect-health-operations/RBAC_add.png)
+4. Hedeflenen kullanıcı veya grubun adını veya tanımlayıcısını yazın. Aynı anda bir veya daha fazla Kullanıcı veya grup seçebilirsiniz. **Seç**'e tıklayın.
+   Azure AD Connect Health RBAC kullanıcıları penceresinin ekran görüntüsünü ![](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. **Tamam**’ı seçin.<br>
-6. Rol ataması tamamlandıktan sonra kullanıcıları ve grupları listesinde görünür.<br>
-   ![Vurgulanmış yeni kullanıcılarla ekran Azure AD Health RBAC kullanıcıların bağlanmasına penceresi](./media/how-to-connect-health-operations/RBAC_user_list.png)
+6. Rol ataması tamamlandıktan sonra, kullanıcılar ve gruplar listede görüntülenir.<br>
+   Yeni kullanıcılar vurgulanmış şekilde Azure AD Connect Health RBAC kullanıcıları penceresinin ekran görüntüsünü ![](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
-Listelenen kullanıcılar ve gruplar, atanan rollerinin göre yararlanabiliyor.
-
-> [!NOTE]
-> * Genel yöneticiler her zaman tüm işlemleri tam erişime sahiptir, ancak genel yönetici hesapları yukarıdaki listede yok.
-> * Azure AD Connect Health kullanıcılar davet özelliği desteklenmiyor.
->
->
-
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3\. adım: Dikey konumu kullanıcılar veya gruplar ile paylaşma
-1. İzinleri atadıktan sonra bir kullanıcının Azure AD Connect Health giderek erişebildiği [burada](https://aka.ms/aadconnecthealth).
-2. Dikey penceresinde kullanıcı, dikey ya da farklı bölümlerini, panoya sabitleyebilirsiniz. Tıklamanız yeterlidir **panoya Sabitle** simgesi.<br>
-   ![PIN simgesinin vurgulandığı ekran görüntüsü, Azure AD Connect Health RBAC PIN dikey](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+Artık listelenen kullanıcılar ve gruplar, kendilerine atanan rollerine göre erişime sahiptir.
 
 > [!NOTE]
-> Okuyucu rolüne atanmış olan bir kullanıcı Azure AD Connect Health uzantısını Azure Market'ten Al mümkün değil. Kullanıcı, "oluşturma işlemi, bunu yapmak için" gerekli gerçekleştirilemiyor. Kullanıcı için yukarıdaki bağlantıya giderek için dikey yine de alabilirsiniz. Kullanıcı, sonraki kullanım için dikey pencereyi panoya sabitleyebilirsiniz.
+> * Genel yöneticilerin her zaman tüm işlemlere tam erişimi vardır, ancak genel yönetici hesapları önceki listede yoktur.
+> * Kullanıcıları davet etme özelliği Azure AD Connect Health içinde desteklenmez.
 >
 >
 
-### <a name="remove-users-or-groups"></a>Kullanıcılarını veya gruplarını kaldırın
-Bir kullanıcı ya da Azure AD Connect Health RBAC için eklenen bir grubu kaldırabilirsiniz. Yalnızca kullanıcı veya grup sağ tıklatın ve seçin **Kaldır**.<br>
-![Ekran görüntüsü, Azure AD Health RBAC kullanıcıların bağlanmasına penceresinin vurgulanmış Kaldır](./media/how-to-connect-health-operations/RBAC_remove.png)
+#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3\. Adım: dikey pencere konumunu kullanıcılarla veya gruplarla paylaşma
+1. İzinleri atadıktan sonra, bir Kullanıcı [buraya](https://aka.ms/aadconnecthealth)giderek Azure AD Connect Health erişebilir.
+2. Dikey pencerede Kullanıcı dikey pencereyi veya farklı parçalarını panoya sabitleyebilir. **Panoya sabitle** simgesine tıklamanız yeterlidir.<br>
+   Azure AD Connect Health RBAC pin dikey penceresinin, PIN simgesi vurgulanmış şekilde ![ekran görüntüsü](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
-[//]: # (RBAC bölüm sonu)
+> [!NOTE]
+> Atanmış okuyucu rolüne sahip bir Kullanıcı Azure Marketi 'nden Azure AD Connect Health uzantısını alamıyor. Kullanıcı bu işlemi gerçekleştirmek için gerekli "Oluştur" işlemini gerçekleştiremiyor. Kullanıcı, önceki bağlantıya giderek dikey pencereye yine de alabilir. Sonraki kullanımlar için Kullanıcı dikey pencereyi panoya sabitleyebilir.
+>
+>
+
+### <a name="remove-users-or-groups"></a>Kullanıcıları veya grupları kaldır
+RBAC Azure AD Connect Health eklenen bir kullanıcıyı veya grubu kaldırabilirsiniz. Kullanıcıya veya gruba sağ tıklayıp **Kaldır**' ı seçmeniz yeterlidir.<br>
+Azure AD Connect Health RBAC kullanıcıları penceresinin ekran görüntüsünü ![vurgulanmış şekilde kaldır](./media/how-to-connect-health-operations/RBAC_remove.png)
+
+[//]: # (RBAC bölümünün sonu)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)

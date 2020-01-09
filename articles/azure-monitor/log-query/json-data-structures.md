@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 82ac27e10a74dc99adb7615d604502e696aa9edb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 940c82e9ef7016639a3ab334040c408f83996e2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365317"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki JSON ve veri yapıları ile çalışma
 
@@ -55,7 +55,7 @@ print hosts_report
 ```
 
 
-## <a name="working-with-objects"></a>Nesnelerle çalışma
+## <a name="working-with-objects"></a>Nesneler ile çalışma
 
 ### <a name="parsejson"></a>parseJSON
 JSON yapınız içindeki birden çok öğeye erişmek için, dinamik bir nesne olarak erişmek daha kolay olur. Metin verilerini dinamik bir nesneye dönüştürmek için `parsejson` kullanın. Dinamik bir türe dönüştürüldükten sonra, verileri çözümlemek için ek işlevler kullanılabilir.

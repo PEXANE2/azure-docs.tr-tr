@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422852"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -73,11 +73,14 @@ Günümüzde, oturum açma girişimlerinin çoğu eski kimlik doğrulamasından 
 
 Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir protokol tarafından yapılan tüm kimlik doğrulama istekleri engellenir. Güvenlik Varsayılanları Exchange ActiveSync 'ı engellemez.
 
+> [!WARNING]
+> Güvenlik varsayılanlarını etkinleştirmeden önce, yöneticileriniz tarafından daha eski kimlik doğrulama protokolleri kullanmıyor olduğundan emin olun. Daha fazla bilgi için bkz. [eski kimlik doğrulamasından nasıl uzaklaşın](concept-fundamentals-block-legacy-authentication.md).
+
 ### <a name="protecting-privileged-actions"></a>Ayrıcalıklı eylemleri koruma
 
 Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure portalı 
+- Azure Portal 
 - Azure PowerShell 
 - Azure CLI
 
@@ -89,22 +92,30 @@ Kiracınızda güvenlik varsayılanlarını etkinleştirdikten sonra, Azure port
 
 Kullanıcı Multi-Factor Authentication için kayıtlı değilse, kullanıcının devam edebilmesi için Microsoft Authenticator uygulamasını kullanarak kaydetmesi gerekecektir. 14 günlük Multi-Factor Authentication kayıt süresi sağlanmaz.
 
+> [!NOTE]
+> Azure AD Connect eşitleme hesabı güvenlik varsayılanlarını dışarıda bırakılır ve Multi-Factor Authentication 'ı kaydetmesi veya gerçekleştirmesi istenmez. Kuruluşlar bu hesabı başka amaçlar için kullanmamalıdır.
+
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
 Aşağıdaki ek konular kiracınızın güvenlik varsayılanlarını dağıtma ile ilgilidir.
 
-### <a name="older-protocols"></a>Eski protokoller
+### <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-Posta istemcileri, kimlik doğrulama isteklerini yapmak için eski kimlik doğrulama protokollerini (IMAP, SMTP ve POP3 gibi) kullanır. Bu protokoller Multi-Factor Authentication desteklemez. Microsoft 'un gördüğü hesabın çoğu, Multi-Factor Authentication atlamaya çalışan eski protokollere karşı saldırılara karşı bir çalışmalardır. 
+Güvenlik Varsayılanları **yalnızca bildirimleri kullanarak Microsoft Authenticator uygulamasını kullanarak**Azure Multi-Factor Authentication 'nin kaydedilmesine ve kullanımına izin verir. Koşullu erişim, yöneticinin etkinleştirmek üzere seçtiği herhangi bir kimlik doğrulama yönteminin kullanılmasına izin verir.
 
-Multi-Factor Authentication, bir yönetici hesapta oturum açmak için gerekli olduğundan ve saldırganların onu atlayamazsa, güvenlik Varsayılanları eski protokollerden yönetici hesaplarına yapılan tüm kimlik doğrulama isteklerini engeller.
+|   | Güvenlik varsayılanları | Koşullu Erişim |
+| --- | --- | --- |
+| Mobil uygulama aracılığıyla bildirim | X | X |
+| Mobil uygulama veya donanım belirtecinden doğrulama kodu |   | X |
+| Telefona kısa mesaj |   | X |
+| Telefon çağrısı |   | X |
+| Uygulama parolaları |   | X * * |
 
-> [!WARNING]
-> Bu ayarı etkinleştirmeden önce, yöneticileriniz tarafından daha eski kimlik doğrulama protokolleri kullanmıyor olduğundan emin olun. Daha fazla bilgi için bkz. [eski kimlik doğrulamasından nasıl uzaklaşın](concept-fundamentals-block-legacy-authentication.md).
+\* * Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 
-Güvenlik Varsayılanları tarafından etkinleştirilen aynı davranışı sağlayan ilkeleri yapılandırmak için koşullu erişimi kullanabilirsiniz. Koşullu erişim kullanıyorsanız ve ortamınızda koşullu erişim ilkeleri etkinleştirilmişse, güvenlik Varsayılanları sizin için kullanılamaz. Koşullu erişim sağlayan ancak ortamınızda hiç koşullu erişim ilkesi etkinleştirilmemiş bir lisansınız varsa, koşullu erişim ilkelerini etkinleştirene kadar güvenlik varsayılanlarını kullanmaya hoş geldiniz.
+Güvenlik varsayılanlarına benzer ilkeleri yapılandırmak için koşullu erişimi kullanabilirsiniz, ancak güvenlik Varsayılanları ' nda kullanılamayan Kullanıcı dışlamaları dahil daha fazla ayrıntı düzeyi vardır. Koşullu erişim kullanıyorsanız ve ortamınızda koşullu erişim ilkeleri etkinleştirilmişse, güvenlik Varsayılanları sizin için kullanılamaz. Koşullu erişim sağlayan ancak ortamınızda hiç koşullu erişim ilkesi etkinleştirilmemiş bir lisansınız varsa, koşullu erişim ilkelerini etkinleştirene kadar güvenlik varsayılanlarını kullanmaya hoş geldiniz. Azure AD Lisansı hakkında daha fazla bilgi için [Azure AD fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/)bulabilirsiniz.
 
 ![Uyarı iletisi yalnızca güvenlik varsayılanlarına veya koşullu erişime sahip olabilirsiniz](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

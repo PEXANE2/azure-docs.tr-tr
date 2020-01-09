@@ -1,23 +1,23 @@
 ---
-title: Tümleşik çözümler | Mavisi
+title: Tümleşik çözümler-Azure Marketi
 description: Azure Marketi ve Microsoft AppSource ile tümleşik çözümler
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 12/16/2019
 ms.author: v-qiwe
-ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b00cc2917ac15797ed98af9793533d9bc12eeaaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818556"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427198"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
-Tek bir paketlenmiş teklifte, tümleşik bir çözüm, yazılım satıcılarından gelen ve hizmet ortağının dağıtımı ve desteğiyle ilgili nokta çözümü teknolojilerini birleştirir. Hizmet ortağı Azure Marketi 'nde teklifi listeler veya bir [danışmanlık hizmeti](https://docs.microsoft.com/azure/marketplace/consulting-services)olarak Microsoft AppSource.
+Tek bir paketlenmiş teklifte, tümleşik bir çözüm, yazılım satıcılarından gelen ve hizmet ortağının dağıtımı ve desteğiyle ilgili nokta çözümü teknolojilerini birleştirir. Hizmet ortağı Microsoft AppSource veya Azure Marketi 'nde teklif bir [danışmanlık hizmeti](https://docs.microsoft.com/azure/marketplace/consulting-services)olarak listelenir.
 
 Tümleşik çözümler, belirli bir müşteri ihtiyacı veya senaryosuna yönelik olarak ele hedeflenir. Sağlayıcılar, sektör Challenge veya sorunlu noktaları anlamak için başlar. Daha sonra müşterilere yönelik Birleşik ve yinelenebilir bir dağıtım deneyimi oluşturmak için iki veya daha fazla en iyi sürümü tümleştirirler. Sağlayıcılar müşterileri hızla çalışır duruma alır. İlgili özelleştirme, danışmanlık ve çözüm desteği sunarak müşteriyle tek bir iletişim noktası sunar. Sonuç, teknoloji ve hizmetler de dahil olmak üzere tümleşik bir çözümdür.
 
@@ -39,17 +39,17 @@ Tümleşik çözümler programına genel bir bakış için [Bu videoyu](https://
 
     * Uygulama Geliştirme
     * Uygulama Tümleştirme
-    * Uygulama yaşam döngüsü yönetimi
-    * Bulut platformu
+    * Uygulama Yaşam Döngüsü Yönetimi
+    * Bulut Platformu
     * Veri Analizi
-    * Veri merkezi
+    * Datacenter
     * Veri Platformu
     * DevOps
 
 * Çözüm, bir bütün müşteri çözümü ve deneyimi için IP ve Hizmetleri bir araya getiren en az iki iş ortağı kuruluş içermelidir.
 * İş ortağı IP 'si Azure, Dynamics 365 veya güç platformunda oluşturulmalıdır.
 * Tümleşik çözümün IP 'si yalnızca yazılım satıcısının ve temel hizmetler-sağlayıcı tekliflerinin IP 'sinden farklılaştırmalıdır.
-* Tüm iş ortakları, Azure Marketi, Microsoft AppSource veya her ikisiyle de listelenmiş ve sonunda işlem yapılabilir bir tekrarlanabilir teklif oluşturma amacını paylaşır.
+* Tüm iş ortakları, listelenme ve sonunda Microsoft AppSource, Azure Marketi veya her ikisi aracılığıyla işlem yapılabilir bir yinelenebilir teklif oluşturma amacını paylaşır.
 
 ## <a name="submit-a-nomination"></a>Aday gönder
 
@@ -71,7 +71,7 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
     * Destek yaklaşımı
     * Pazarlama etkinlikleri
     * Satış süreci
-    * Etkinlikler
+    * Olaylar
 
     Tümleştirme yaklaşımına ilişkin tartışmanızın aşağıdaki noktaları olması gerekir: 
     * Tümleştirme noktaları
@@ -93,9 +93,9 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
 
 1. Çözümün teknik tümleştirmesini tamamen geliştirin.
 
-1. Azure Marketi veya Microsoft AppSource için çözüm fiyatlandırmasına ve tek bir fiyat noktasına karar verin.
+1. Microsoft AppSource veya Azure Marketi 'nde yüzey olarak çözüm fiyatlandırmasına ve tek bir fiyat noktasına karar verin.
 
-1. Azure Marketi veya Microsoft AppSource listesi için pazarlama yardımcı malzemeleri için aşağıdakiler de dahil olmak üzere doldurun:
+1. Microsoft AppSource veya Azure market listesi için pazarlama yardımcı malzemeleri için aşağıdakiler de dahil olmak üzere doldurun:
 
     * Birleştirilmiş bir çözüm adı.
     * Tümleşik çözümün listeleme açıklaması. [Teklif listesi en iyi uygulamalarını](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)izleyin.
@@ -105,13 +105,13 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
 
 ## <a name="publish-your-integrated-solution"></a>Tümleşik çözümünüzü yayımlayın 
 
-Teknik tümleştirmeyi ve pazarlama yardımcı malzemeleri tamamladıktan sonra, [Azure Marketi ve Microsoft AppSource danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services)için yayımcı kılavuzuna bakın. Çözümünüzün Azure Marketi 'nde mi yoksa Microsoft AppSource mi yayımlanacağını öğrenmek için bu kaynağı kullanın. Ayrıca, yayımlama yapıtlarınızı hazırlama ve Yayımlama sürecini tamamlamaya yönelik kılavuzu kullanın.
+Teknik tümleştirmeyi ve pazarlama yardımcı malzemeleri tamamladıktan sonra, [Microsoft AppSource ve Azure Marketi Için danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services)yayımcısı Kılavuzu ' na bakın. Çözümünüzün Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanmayacağını öğrenmek için bu kaynağı kullanın. Ayrıca, yayımlama yapıtlarınızı hazırlama ve Yayımlama sürecini tamamlamaya yönelik kılavuzu kullanın.
 
 Danışmanlık hizmeti teklifleri için beş hizmet türü kullanılabilir olsa da, tümleşik bir çözüm kavram kanıtı ya da tam bir uygulama olmalıdır.
 
 ## <a name="go-to-market-with-your-integrated-solution"></a>Tümleşik çözümünüz ile pazara gitme 
 
-Çözümünüz Azure Market veya AppSource 'ta canlı olduğunda, pazarlama etkinlikleriyle tanıma ve talebi yönlendirmek isteyeceksiniz. [Proje planı ve zaman çizelgesinde](https://aka.ms/AA5qiuc)listelenen etkinlikleri gözden geçirin. Bu kaynak, iş ortaklarının kendi ekiplerinde ve bir diğeri içinde sürücü kullanabildiği etkinlikleri içerir. Daha sonra Market 'te yayımlayan iş ortakları için [pazara karşı avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) erişin. Tüm Tümleşik çözüm teklifleri, deneme düzeyi avantajlarına uygun.
+Çözümünüz Microsoft AppSource veya Azure Marketi 'nde etkin olduğunda, pazarlama etkinlikleriyle tanıma ve talep etmek isteyeceksiniz. [Proje planı ve zaman çizelgesinde](https://aka.ms/AA5qiuc)listelenen etkinlikleri gözden geçirin. Bu kaynak, iş ortaklarının kendi ekiplerinde ve bir diğeri içinde sürücü kullanabildiği etkinlikleri içerir. Daha sonra Market 'te yayımlayan iş ortakları için [pazara karşı avantajlarına](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) erişin. Tüm Tümleşik çözüm teklifleri, deneme düzeyi avantajlarına uygun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

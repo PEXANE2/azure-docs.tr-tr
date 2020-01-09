@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics için sorun giderme girişler
 description: Bu makalede, giriş bağlantılarınızı Azure Stream Analytics işlerinde sorun giderme teknikleri açıklar.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354293"
 ---
-# <a name="troubleshoot-input-connections"></a>Giriş bağlantı sorunlarını giderme
+# <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
 Bu sayfa, giriş bağlantıları ve bunları nasıl giderebileceğinizden ile ilgili yaygın sorunları açıklar.
 
@@ -31,7 +30,7 @@ Bu sayfa, giriş bağlantıları ve bunları nasıl giderebileceğinizden ile il
         
     Veri şekli anlamak için örnek verileri İnceleme: şema ve [veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
-## <a name="malformed-input-events-causes-deserialization-errors"></a>Giriş yanlış biçimlendirilmiş olaylar neden serileştirme kaldırma hataları 
+## <a name="malformed-input-events-causes-deserialization-errors"></a>Yanlış biçimlendirilmiş giriş olayları seri durumundan çıkarma hatalarına neden oluyor 
 Stream Analytics işinizin Giriş akışı yanlış biçimlendirilmiş iletiler içerdiğinde seri durumundan çıkarma sorunları nedeniyle oluşur. Örneğin, hatalı bir ileti parantezin eksik olması veya bir JSON nesnesinde bir küme ayracı veya hatalı zaman damgası biçimi zaman alanı kaynaklanabilir. 
  
 Bir Stream Analytics işi girdi hatalı bir ileti aldığında, iletiyi bırakır ve bir uyarı ile bildirir. Bir uyarı sembolü gösterilir **girişleri** Stream Analytics işinizin kutucuk. İşi çalışır durumda olduğu sürece, bu uyarı işareti vardır:
@@ -50,7 +49,7 @@ Giriş olayları seri durumdan çıkarma hataya açık anlamak için ayrıntıl�
 
 2. Giriş Ayrıntıları kutucuğu, her bir sorunun ayrıntılarını içeren uyarıların bir listesini görüntüler. Aşağıdaki örnek uyarı iletisi bölümü, uzaklığı ve seri numaraları içeren JSON verileri hatalı biçimlendirilmiş olduğu. 
 
-   ![Uzaklığı olan Stream Analytics uyarı iletisi](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Uzaklığa sahip Stream Analytics uyarı iletisi](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
 3. Hatalı biçimdeki JSON verilerini bulmak için kullanılabilir CheckMalformedEvents.cs kod çalıştırma [GitHub örnekleri depomuzdan](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Bu kod okuma bölüm kimliği, uzaklığı ve bu uzaklık içinde bulunan veri yazdırır. 
 
@@ -61,7 +60,7 @@ Giriş olayları seri durumdan çıkarma hataya açık anlamak için ayrıntıl�
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>En fazla olay hub'ı alıcıları iş aşıyor
 Event Hubs'ı kullanmaya yönelik en iyi yöntem, işi ölçeklenebilirlik sağlamak için birden fazla tüketici grupları kullanmaktır. Belirli bir giriş için Stream Analytics işinde okuyucu sayısını tek bir tüketici grubundaki okuyucu sayısını etkiler. Alıcılar kesin sayısını iç uygulama ayrıntıları genişleme topolojisi mantığı temel alır ve harici olarak gösterilmez. Bir iş başlatıldığında veya iş yükseltmeleri sırasında okuyucu sayısını değiştirebilirsiniz.
 
-Alıcı sayısı üst sınırı aştığında gösterilen hata oluşur: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+Alıcı sayısı üst sınırı aşıldığında gösterilen hata: `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
 > Okuyucu sayısıyla proje yükseltme sırasında değiştiğinde, geçici uyarıları denetim günlükleri yazılır. Stream Analytics işleri, bu geçici sorunları otomatik olarak kurtarma.
@@ -92,9 +91,9 @@ Akış sorgu sözdiziminizin birden çok kez aynı giriş olay hub'ı kaynağa b
 
 Bölüm başına okuyucu sayısıyla beş Event Hubs sınırını aşıyor senaryolar aşağıdakileri içerir:
 
-* Birden çok SELECT deyimine: Başvuran birden çok SELECT deyimine kullanırsanız **aynı** olay hub'ı giriş, her SELECT deyiminin oluşturulacak yeni bir alıcı neden olur.
-* BİRLEŞİM: Bir birleşim kullandığınızda, başvuruda bulunan birden çok giriş olası **aynı** olay hub'ı ve tüketici grubu.
-* KENDİ KENDİNE BİRLEŞME: Bir kendi KENDİNE JOIN işlemi kullandığınızda başvurmak olası **aynı** olay hub'ı birden çok kez.
+* Birden çok SELECT deyimine: başvuran birden çok SELECT deyimine kullanırsanız **aynı** olay hub'ı giriş, her SELECT deyiminin oluşturulacak yeni bir alıcı neden olur.
+* BİRLEŞİM: bir birleşim kullandığınızda, başvuruda bulunan birden çok giriş mümkündür **aynı** olay hub'ı ve tüketici grubu.
+* Kendi KENDİNE birleşme: bir SELF JOIN işlemi kullandığınızda başvurmak mümkündür **aynı** olay hub'ı birden çok kez.
 
 Aşağıdaki en iyi, bölüm başına okuyucu sayısıyla beş Event Hubs sınırını aşıyor senaryoları azaltılmasına yardımcı olur.
 

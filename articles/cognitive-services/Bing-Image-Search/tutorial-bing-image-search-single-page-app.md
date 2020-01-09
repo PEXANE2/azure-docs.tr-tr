@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448579"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
 
@@ -31,7 +31,7 @@ Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri ar
 
 Bu öğreticinin tam kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search)’da mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/)’in en son sürümü.
 * Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak koda ilişkin yükleme yönergeleri GitHub örnek Benioku dosyasında bulunabilir.
@@ -121,7 +121,7 @@ Bing Resim Arama API’si, arama sonuçlarını daraltmak ve filtrelemek için b
 |              |                                                                                                                                                                                    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü.                                                                                             |
-| `query`      | Arama terimlerinin girileceği metin alanı.                                                                                                                                 |
+| `query`      | Arama terimlerinin girildiği metin alanı.                                                                                                                                 |
 | `aspect`     | Bulunan görüntülerin oranlarını seçmek için kullanılan radyo düğmeleri: kabaca kare, geniş veya uzun.                                                                                     |
 | `color`      |                                                                                                                                                                                    |
 | `when`       | Aramayı isteğe bağlı olarak en son günle, haftayla veya ayla sınırlamak için açılan menü.                                                                                          |
@@ -318,10 +318,10 @@ Bing Resim Arama API’si, kullanıcıların arama deneyimlerine yol göstermesi
 
 | Öneri         | Açıklama                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pivotSuggestions` | Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir. |
+| `pivotSuggestions` | Özgün aramadaki pivot sözcüğü, farklı biriyle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir. |
 | `queryExpansions`  | Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.                                   |
 | `relatedSearches`  | Özgün aramayı giren diğer kullanıcılar tarafından da girilmiş olan sorgular. Örneğin, "Mount Rainier" araması yaparsanız, ilgili arama "Mt. Saint Helens" olabilir.                       |
-| `similarTerms`     | Özgün aramaya yönelik benzer anlamı olan sorgular. Örneğin, "yavru kedi" araması yaparsanız benzer bir terim de "şirin" olabilir.                                                                   |
+| `similarTerms`     | Özgün aramayla benzer anlamı olan sorgular. Örneğin, "yavru kedi" araması yaparsanız benzer bir terim de "şirin" olabilir.                                                                   |
 
 Bu uygulama yalnızca `relatedItems` önerilerini işler ve sonuçta elde edilen bağlantıları sayfanın kenar çubuğuna yerleştirir.
 
@@ -373,7 +373,7 @@ Küçük resim görüntüsünün `height` ve `width` öğesi, hem `<img>` etiket
 
 ## <a name="persisting-client-id"></a>Kalıcı istemci kimliği
 
-Bing arama API’lerinden gelen yanıtlar, başarılı isteklerle birlikte API’ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API’si kullanılıyorsa, mümkün olduğunca bu API’lerin tümünde aynı istemci kimliği kullanılmalıdır.
+Bing arama API’lerinden gelen yanıtlar, başarılı isteklerle birlikte API’ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API'si kullanılıyorsa, mümkün olduğunca bu API'lerin tümünde aynı istemci kimliği kullanılmalıdır.
 
 Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API’leri kullanıcının tüm aramalarını ilişkilendirebilir. Bunun önemli avantajı vardır
 
@@ -384,7 +384,7 @@ Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API’leri kullanıc
 Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScript'in kullanımına sunulmasını engelleyebilir. Bu sınırlama, arama sonucunun kaynağı istekte bulunan sayfadan farklı olduğunda ortaya çıkar. Üretim ortamında, Web sayfasıyla aynı etki alanında API çağrısı yapan bir sunucu tarafı betiği barındırarak bu ilkeye uymalısınız. Betiğin kaynağı Web sayfasıyla aynı olduğundan, `X-MSEdge-ClientID` üst bilgisi JavaScript'in kullanımına sunulur.
 
 > [!NOTE]
-> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API’si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
+> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
 Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir proxy 'den gelen yanıtın, yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir `Access-Control-Expose-Headers` üst bilgisi vardır.
 

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443941"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory veri akışı sorunlarını giderme
 
@@ -92,8 +92,18 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Neden**: katılmakta olan akışlar ortak sütun adlarına sahip
 
-- **Çözüm**: birleşime sonra bir SELECT transüamtion ekleyin ve hem giriş hem de çıkış için "yinelenen sütunları kaldır" seçeneğini belirleyin.
+- **Çözüm**: birleşimi Izleyerek bir seçme dönüşümü ekleyin ve hem giriş hem de çıkış için "yinelenen sütunları kaldır" seçeneğini belirleyin.
 
+### <a name="error-message-possible-cartesian-product"></a>Hata iletisi: olası Kartezyen ürün
+
+- **Belirtiler**: JOIN veya Lookup dönüşümü, veri akışınızı yürütmeye göre olası Kartezyen ürünleri algıladı
+
+- **Neden**: ADF 'yi bir çapraz birleşimi kullanacak şekilde açıkça yönlendirmadıysanız, veri akışı başarısız olabilir
+
+- **Çözüm**: arama veya birleştirmeyi özel çapraz Birleştir kullanarak bir JOIN ile değiştirin ve ifade düzenleyicisine arama veya ekleme koşulunuz girin. Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapay bir anahtar oluşturmak için, birleştirmenin önüne iki bağımsız akışın her birinde türetilmiş sütun dönüşümünü kullanın. Örneğin, ```SyntheticKey``` adlı her akıştaki türetilmiş sütunda yeni bir sütun oluşturun ve ```1```eşit olarak ayarlayın. Daha sonra ```a.SyntheticKey == b.SyntheticKey``` özel bir JOIN ifadesi olarak kullanın.
+
+> [!NOTE]
+> Özel bir çapraz birleşimde sol ve sağ İlişkinizdeki her bir taraftan en az bir sütun eklediğinizden emin olun. Her bir taraftaki sütunlar yerine statik değerlerle çapraz birleştirmeleri yürütmek, veri akışlarınızın düzgün şekilde başlatılmasına neden olacak şekilde tüm veri kümesinin tam taramasına neden olur.
 
 ## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu
 

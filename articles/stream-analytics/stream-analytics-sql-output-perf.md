@@ -1,20 +1,18 @@
 ---
 title: Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 description: Azure Stream Analytics SQL Azure veri çıktısı alma ve daha yüksek yazma işleme ücretleri elde etme hakkında bilgi edinin.
-services: stream-analytics
 author: chetanmsft
 ms.author: chetang
-manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 7845833a0269514c8fdbd093e18d4516ff9567d9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443612"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 
@@ -33,13 +31,13 @@ Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel ya
 
 - **Toplu Iş boyutu** -SQL çıkış yapılandırması, hedef tablonuzun/iş yükünüzün doğasına göre Azure Stream ANALYTICS bir SQL çıkışında en büyük toplu iş boyutunu belirtmenize olanak tanır. Toplu iş boyutu, her toplu ekleme işlemi ile gönderilen en fazla kayıt sayısıdır. Kümelenmiş columnstore dizinlerinde, daha paralelleştirme, en az günlüğe kaydetme ve kilitleme iyileştirmeleri için [100K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) etrafında toplu işlem boyutları. Disk tabanlı tablolarda, en fazla Batch boyutları toplu ekleme sırasında kilit yükseltmeyi tetikleyebilen için 10.000 (varsayılan) veya daha düşük bir çözüm, çözümünüz için en uygun olabilir.
 
-- **Giriş Iletisi ayarlama** – bölümleme ve toplu iş boyutunu devralma kullanarak en iyi duruma getirildikten sonra, bölüm başına ileti başına giriş olaylarının sayısını artırmak, yazma aktarım hızınızı daha da ileri dağıtmaya yardımcı olur. Giriş iletisi ayarlama, Azure Stream Analytics içindeki toplu iş boyutlarının belirtilen toplu iş boyutuna kadar olmasına olanak tanır ve böylece üretilen işi geliştirir. Bu, bu veya EventHub ya [](stream-analytics-define-inputs.md) da blob 'daki giriş iletisi boyutlarının artması veya artırılması aracılığıyla elde edilebilir.
+- **Giriş Iletisi ayarlama** – bölümleme ve toplu iş boyutunu devralma kullanarak en iyi duruma getirildikten sonra, bölüm başına ileti başına giriş olaylarının sayısını artırmak, yazma aktarım hızınızı daha da ileri dağıtmaya yardımcı olur. Giriş iletisi ayarlama, Azure Stream Analytics içindeki toplu iş boyutlarının belirtilen toplu iş boyutuna kadar olmasına olanak tanır ve böylece üretilen işi geliştirir. Bu, bu veya EventHub ya da blob 'daki giriş iletisi boyutlarının [artması veya artırılması aracılığıyla elde](stream-analytics-define-inputs.md) edilebilir.
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Bölümlenmiş tablo ve dizinler** – bölümlemeli [](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) bir SQL tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) ve bir [bölüm düzeni](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
+- **Bölümlenmiş tablo ve dizinler** [– bölümlemeli bir SQL](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tablosu ve bölümlenmiş dizinleri, Bölüm anahtarınızla aynı sütunla (örneğin, PartitionID) kullanarak, yazma işlemleri sırasında bölümler arasındaki çekişmeleri önemli ölçüde azaltabilir. Bölümlenmiş bir tablo için, BIRINCIL dosya grubunda bir [bölüm işlevi](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) ve bir [bölüm düzeni](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) oluşturmanız gerekir. Bu, yeni veriler yüklenirken mevcut verilerin kullanılabilirliğini de artırır. Günlük GÇ sınırı, SKU ile yükseltilerek artırılabilir olan bölüm sayısına bağlı olarak gelebilir.
 
-- **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [\_\_anahtar yok sayma](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) seçeneği ayarlanarak bu kaçınılabilir.
+- **Benzersiz anahtar Ihlallerinden kaçının** – Azure Stream Analytics etkinlik günlüğünde [birden çok anahtar ihlali uyarı iletisi](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) alırsanız, işinizin kurtarma durumları sırasında gerçekleşmesi muhtemel olan benzersiz kısıtlama ihlallerinden etkilenmediğinden emin olun. Dizininizdeki [\_DUP\_anahtarı seçeneğinin yoksayılması](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ayarlanarak bu kaçınılabilir.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory ve bellek Içi tablolar
 

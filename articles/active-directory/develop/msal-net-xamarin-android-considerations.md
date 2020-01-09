@@ -3,7 +3,7 @@ title: Xamarin Android konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424162"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin Android 'e özgü konular
 Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanılırken belirli noktalar ele alınmaktadır.
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 Bunu, PublicClientApplication düzeyinde (MSAL 4.2 + içinde) bir geri çağırma yoluyla da ayarlayabilirsiniz.
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 Bunun bir önerisi [burada](https://github.com/jamesmontemagno/CurrentActivityPlugin)CurrentActivityPlugin kullanmaktır.  Ardından, PublicClientApplication Oluşturucu kodunuz şöyle görünür:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -82,6 +82,23 @@ Bu satır, kimlik doğrulama akışının etkileşimli kısmı sona erdikten son
          </intent-filter>
 </activity>
 ```
+
+Ya da [etkinliği kodda oluşturabilir](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) ve `AndroidManifest.xml`el ile düzenleyemezsiniz. Bunun için, `Activity` ve `IntentFilter` özniteliğine sahip bir sınıf oluşturmanız gerekir. Yukarıdaki XML 'in aynı değerlerini temsil eden bir sınıf şöyle olacaktır:
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X bildirimi
+
+XamarinForms 4.3. x tarafından oluşturulan kod, `AndroidManifest.xml``com.companyname.{appName}` `package` özniteliğini ayarlar. `DataScheme` `msal{client_id}`olarak kullanırsanız, değeri `MainActivity.cs` ad alanıyla aynı olacak şekilde değiştirmek isteyebilirsiniz.
 
 ## <a name="use-the-embedded-web-view-optional"></a>Katıştırılmış Web görünümünü kullanın (isteğe bağlı)
 

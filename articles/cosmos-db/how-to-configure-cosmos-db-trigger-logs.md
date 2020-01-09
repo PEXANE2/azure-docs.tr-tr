@@ -1,17 +1,17 @@
 ---
-title: Cosmos DB için Azure Işlevleri tetikleyicisi kullanırken günlükleri yapılandırma ve okuma
+title: Cosmos DB için Azure Işlevleri tetikleyicisiyle günlükleri yapılandırma ve okuma
 description: Cosmos DB için Azure Işlevleri 'ni kullanırken günlüklerin Azure Işlevleri günlüğe kaydetme işlem hattında nasıl açığa alınacağını öğrenin
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 17b2d4854e3222e5bdb607c6c80b0ec5ed6177d3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441838"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi kullanırken günlükleri yapılandırma ve okuma
 
@@ -25,7 +25,7 @@ Sistem durumu günlükleri, Yük Dengeleme senaryoları veya başlatma sırasın
 
 ## <a name="enabling-logging"></a>Günlüğe kaydetmeyi etkinleştirme
 
-Cosmos DB için Azure işlevleri tetikleyicisi 'ni kullanırken günlüğe kaydetmeyi etkinleştirmek için Azure işlevleri `host.json` projenizde veya Azure işlevleri uygulamanızda dosyayı bulun ve [gerekli günlük kaydı düzeyini yapılandırın](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Aşağıdaki örnekte gösterildiği `Host.Triggers.CosmosDB` gibi izlemeleri etkinleştirmeniz gerekir:
+Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken günlüğe kaydetmeyi etkinleştirmek için Azure Işlevleri projenizde veya Azure Işlevleri uygulamanızda `host.json` dosyasını bulun ve [gerekli günlük kaydı düzeyini yapılandırın](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Aşağıdaki örnekte gösterildiği gibi, `Host.Triggers.CosmosDB` izlemelerini etkinleştirmeniz gerekir:
 
 ```js
 {
@@ -39,7 +39,7 @@ Cosmos DB için Azure işlevleri tetikleyicisi 'ni kullanırken günlüğe kayde
 }
 ```
 
-Azure Işlevi güncelleştirilmiş yapılandırmayla dağıtıldıktan sonra, izlemelerinizin bir parçası olarak Cosmos DB Günlükler için Azure Işlevleri tetiklemeyi görürsünüz. Kayıtları, yapılandırılan günlük sağlayıcınızdaki *Kategori* `Host.Triggers.CosmosDB`altında görüntüleyebilirsiniz.
+Azure Işlevi güncelleştirilmiş yapılandırmayla dağıtıldıktan sonra, izlemelerinizin bir parçası olarak Cosmos DB Günlükler için Azure Işlevleri tetiklemeyi görürsünüz. Günlükleri, `Host.Triggers.CosmosDB`*Kategori* altındaki yapılandırılmış günlük sağlayıcınızda görüntüleyebilirsiniz.
 
 ## <a name="query-the-logs"></a>Günlükleri sorgulama
 

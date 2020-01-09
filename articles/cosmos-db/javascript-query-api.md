@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 'de JavaScript dil ile tümleşik sorgu API 'SI ile çalışma
+title: Azure Cosmos DB 'de JavaScript tümleşik sorgu API 'SI ile çalışma
 description: Bu makalede, Azure Cosmos DB ' de saklı yordamlar ve Tetikleyiciler oluşturmak için JavaScript dil ile tümleşik sorgu API 'SI kavramları tanıtılmaktadır.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445325"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
 
@@ -20,7 +20,7 @@ Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB s
 
 ## <a name="supported-javascript-functions"></a>Desteklenen JavaScript işlevleri
 
-| **Çalışmayacaktır** | **Açıklama** |
+| **İşlev** | **Açıklama** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Value()) ile bitirilmelidir zincirleme bir arama başlatır.|
 |`filter(predicateFunction [, options] [, callback])`|Sonuç kümesine girdi belgelerini içeri/dışarı filtrelemek için true/false döndüren bir koşul işlevini kullanarak giriş filtreler. Bu işlev bir WHERE yan tümcesinde SQL benzer şekilde davranır.|
@@ -33,7 +33,7 @@ Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB s
 
 Koşul ve/veya Seçici işlevlerinin içine dahil edilirse, aşağıdaki JavaScript yapıları otomatik olarak doğrudan Azure Cosmos DB dizinlerini çalıştırılmak üzere iyileştirilen:
 
-- Basit işleçler: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- Basit işleçler: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
 - Nesne sabit değeri de dahil olmak üzere hazır: {}
 - dönüş var
 
@@ -49,15 +49,15 @@ Daha fazla bilgi için bkz. [sunucu tarafı JavaScript belgeleri Cosmos DB](http
 Aşağıdaki tabloda, çeşitli SQL sorguları ve karşılık gelen JavaScript sorguları sunulmaktadır. SQL sorgularında olduğu gibi Özellikler (örneğin, item.id) büyük/küçük harfe duyarlıdır.
 
 > [!NOTE]
-> `__`(çift alt çizgi), JavaScript sorgu API `getContext().getCollection()` 'si kullanılırken bir diğer addır.
+> `__` (çift alt çizgi), JavaScript sorgu API 'SI kullanılırken `getContext().getCollection()` bir diğer addır.
 
 |**SQL**|**JavaScript sorgu API 'SI**|**Açıklama**|
 |---|---|---|
 |SEÇİN *<br>Belgelerinden| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;Belge döndürür;<br>});|Sonuç tüm belgelerde (devamlılık belirteci ile sayfalandırılmış) olur.|
-|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;Msg olarak docs. Message,<br>&nbsp;&nbsp;&nbsp;docs. Actions <br>Belgelerinden|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;{döndürür<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Kimliği, ileti (diğer adlı msg için) ve tüm belgeleri eylemden projeleri.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message AS MSG,<br>belgeleri &nbsp;&nbsp;&nbsp;. eylemler <br>Belgelerinden|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;{döndürür<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Kimliği, ileti (diğer adlı msg için) ve tüm belgeleri eylemden projeleri.|
 |SEÇİN *<br>Belgelerinden<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;doc.id dönüş === "X998_Y998";<br>});|Sorgular için koşul belgelerle: kimlik = "X998_Y998".|
 |SEÇİN *<br>Belgelerinden<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Etiketler, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;x.Tags dönüş & & x.Tags.indexOf(123) > -1;<br>});|Etiketler özelliği ve etiketlere sahip olan belgeler için sorgulardır 123 değerini içeren bir dizi.|
-|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;Msg olarak docs. Message<br>Belgelerinden<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc.id dönüş === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{döndürür<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Bir koşul ile belgeler için sorgu kimliği = "X998_Y998" ve ardından kodu ve iletinin (ileti için diğer adlı) projeleri.|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message AS msg<br>Belgelerinden<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc.id dönüş === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{döndürür<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Bir koşul ile belgeler için sorgu kimliği = "X998_Y998" ve ardından kodu ve iletinin (ileti için diğer adlı) projeleri.|
 |DEĞER etiketi<br>Belgelerinden<br>Etiket IN docs katılın. Etiketleri<br>ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belge döndürür. Etiketler & & Array.isArray (doc. Etiketler);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc._ts döndürür;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Value()|Etiketler, bir dizi özelliği ve elde edilen belgeler _ts zaman damgası sistem özelliği sıralar ve ardından projeleri + etiketler dizisi düzleştirir belgeler için filtreler.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

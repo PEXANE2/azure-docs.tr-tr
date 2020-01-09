@@ -1,14 +1,14 @@
 ---
 title: Bulut Çözüm Sağlayıcısı programı hakkında önemli noktalar
 description: CSP iş ortakları için, Azure tarafından atanan kaynak yönetimi, ayrıntılı izinleri etkinleştirerek güvenliğin ve denetimin artırılmasına yardımcı olur.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456919"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure açık Thouse ve bulut çözümü sağlayıcısı programı
 
@@ -34,9 +34,9 @@ CSP programı aracılığıyla oluşturduğunuz bir aboneliği [eklemek, Azure '
 ![AOI ve Azure tarafından atanan kaynak yönetimini kullanan Kiracı Yönetimi](../media/csp-2.jpg)
 
 > [!NOTE]
-> Azure portal [ **müşterilerimiz** sayfasında](../how-to/view-manage-customers.md) , [MICROSOFT Müşteri Sözleşmesi 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve Azure planı kapsamında olan CSP müşterilerinin fatura bilgilerini ve kaynaklarını görüntüleyen bir **bulut çözümü sağlayıcısı (Önizleme)** bölümü vardır. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](https://docs.microsoft.com/azure/billing/mpa-overview).
+> Azure portal [ **müşterilerimiz** sayfasında](../how-to/view-manage-customers.md) , [MICROSOFT Müşteri Sözleşmesi 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](https://docs.microsoft.com/partner-center/azure-plan-get-started)olan CSP müşterilerinin fatura bilgilerini ve kaynaklarını görüntüleyen bir **bulut çözümü sağlayıcısı (Önizleme)** bölümü vardır. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](../../billing/mpa-overview.md).
 >
-> CSP müşterileri, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olup olmadığı konusunda bu bölümde görünebilir. Sahip olmaları durumunda **müşteriler bölümünde,** [müşterileri görüntüleme ve yönetme](../how-to/view-manage-customers.md)bölümünde açıklandığı gibi da görünür.
+> CSP müşterileri, Azure tarafından yetkilendirilen kaynak yönetimi için de eklendi olup olmadığı konusunda bu bölümde görünebilir. Varsa [müşterileri ve temsilcileri yönetme](../how-to/view-manage-customers.md)bölümünde açıklandığı gibi **müşteriler** bölümünde da görünürler. Benzer şekilde, bir CSP müşterisi, Azure tarafından atanan kaynak yönetimine yönelik olarak bunları eklemek için **müşterilerimin** **bulut çözümü sağlayıcısı (Önizleme)** bölümünde görünmesini gerektirmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

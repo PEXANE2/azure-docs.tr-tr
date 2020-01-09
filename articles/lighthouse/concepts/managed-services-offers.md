@@ -1,14 +1,14 @@
 ---
 title: Azure Market’teki yönetilen hizmetler teklifleri
 description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
-ms.date: 09/19/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7dcaa34b1fb471823acd74a7d9b05e42dd44161
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463992"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453579"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Market’teki yönetilen hizmetler teklifleri
 
@@ -22,19 +22,20 @@ Bundan sonra kuruluşunuzdaki kullanıcılar, [bulut iş ortağı portalı](http
 
 ## <a name="public-and-private-offers"></a>Ortak ve özel teklifler
 
-Her yönetilen hizmet teklifi bir veya daha fazla plan içerir. Bu planlar özel veya genel olabilir.
+Her yönetilen hizmet teklifi bir veya daha fazla plan içerir. Planlar özel veya genel olabilir. 
 
-Teklifinizi belirli müşterilerle sınırlandırmak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli abonelik kimlikleri için satın alınabilir. Daha fazla bilgi için bkz. [özel teklifler](https://docs.microsoft.com/azure/marketplace/private-offers).
+Teklifinizi belirli müşterilerle sınırlandırmak istiyorsanız, özel bir plan yayımlayabilirsiniz. Bunu yaptığınızda, plan yalnızca sağladığınız belirli abonelik kimlikleri için satın alınabilir. Daha fazla bilgi için bkz. [özel teklifler](../../marketplace/private-offers.md).
 
 Genel planlar, hizmetlerinizi yeni müşterilere yükseltemenizi sağlar. Bunlar genellikle müşterinin kiracısına sınırlı erişim istediğinizde daha uygundur. Bir müşteriyle ilişki kurduktan sonra, kuruluşunuza ek erişim vermeye karar verirse, bu, yalnızca söz konusu müşteri için yeni bir özel plan yayımlayarak veya [Azure Resource Manager şablonları kullanarak daha fazla erişim sağlamak için bunları](../how-to/onboard-customer.md)ekleyebilirsiniz.
 
-Bir plana ortak olarak yayımlandıktan sonra özel olarak değiştiremeyeceğini aklınızda bulundurun. Ayrıca, bir genel planın belirli müşterilere veya hatta belirli sayıda müşteriye yönelik kullanılabilirliğini kısıtlayamazsınız, ancak bunu yapmak isterseniz planı tamamen satmaya de durdurabilirsiniz.
-
 Uygunsa, hem genel hem de özel planları aynı teklifine dahil edebilirsiniz.
+
+> [!IMPORTANT]
+> Bir plan ortak olarak yayımlandıktan sonra, özel olarak değiştiremezsiniz. Hangi müşterilerin teklif ve temsilci kaynaklarınızı kabul edeceğini denetlemek için özel bir plan kullanın. Ortak bir plan sayesinde, kullanılabilirliği belirli müşterilerle veya hatta belirli sayıda müşteriye kısıtlayamazsınız (ancak bunu yapmak isterseniz planı tamamen satmaya devam edebilirsiniz). Bir müşteri teklifi kabul ettiğinde, her zaman bir müşteriye erişebilseniz ve [erişiminizi kaldırmasını](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)istemek için şu anda temsilcileri reddetme veya kaldırma mekanizması yoktur.
 
 ## <a name="publish-managed-service-offers"></a>Yönetilen hizmet tekliflerini yayımlama
 
-Yönetilen bir hizmet teklifini yayımlamayı öğrenmek için bkz. [Azure Market 'Te yönetilen hizmetler teklifi yayımlama](../how-to/publish-managed-services-offers.md). Bulut İş Ortağı Portalı kullanarak Azure Marketi 'Nde yayımlama hakkında genel bilgi için bkz. [Azure Market ve Appsource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) ve [Azure ve appsource Market tekliflerini yönetme](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers).
+Yönetilen bir hizmet teklifini yayımlamayı öğrenmek için bkz. [Azure Market 'Te yönetilen hizmetler teklifi yayımlama](../how-to/publish-managed-services-offers.md). Bulut İş Ortağı Portalı kullanarak Azure Marketi 'Nde yayımlama hakkında genel bilgi için bkz. [Azure Market ve Appsource Yayımlama Kılavuzu](../../marketplace/marketplace-publishers-guide.md) ve [Azure ve appsource Market tekliflerini yönetme](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

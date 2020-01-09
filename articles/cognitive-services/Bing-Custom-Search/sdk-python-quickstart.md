@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Python SDK 'sını kullanarak Bing Özel Arama uç noktanızı çağırma | Microsoft Docs"
+title: "Hızlı başlangıç: Python SDK 'sını kullanarak Bing Özel Arama uç noktanızı çağırma"
 titleSuffix: Azure Cognitive Services
 description: Python SDK 'sını kullanarak Bing Özel Arama örneğinizi arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ca0c1174abb80452f78766c3c4f49af73c790d3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448690"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Hızlı başlangıç: Python SDK 'sını kullanarak Bing Özel Arama uç noktanızı çağırma 
 
 Python SDK 'sını kullanarak Bing Özel Arama örneğinizden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bing Özel Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da Bing Özel Arama SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) 'da ek hata işleme ve ek açıklamalarla bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 - Python [2. x veya 3. x](https://www.python.org/) 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB sorgu dilinde tavan
-description: Azure Cosmos DB tavan SQL sistem işlevinin, radyan cinsinden ifade edilen y/x yay tanjantı 'nin asıl değerini nasıl döndürdüğünü öğrenin
+description: Azure Cosmos DB ' deki tavan SQL sistem işlevinin, belirtilen sayısal ifadeye eşit veya ondan büyük en küçük tamsayı değerini nasıl döndürdüğünü öğrenin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2da7820a6c9f1f90585b4deb605bb99c7580b0e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444814"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>TAVAN (Azure Cosmos DB)
  Büyüktür veya eşittir, belirtilen sayısal ifadenin en küçük tamsayı değerini döndürür.  
@@ -40,7 +40,7 @@ CEILING (<numeric_expr>)
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{c1: 124, c2: -123, c3: 0}]  

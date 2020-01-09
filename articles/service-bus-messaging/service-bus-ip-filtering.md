@@ -9,16 +9,16 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 59afdb0e273511f3d8255a9c859b86f93e0b7269
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280933"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462415"
 ---
-# <a name="use-firewall-rules"></a>Güvenlik duvarı kurallarını kullanma
+# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus-güvenlik duvarı kurallarını kullanma
 
 Azure Service Bus yalnızca belirli bir bilinen sitelerden erişilebilen senaryolarda güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, bu adresler kurumsal bir NAT ağ geçidinin bu olabilir.
 
@@ -52,7 +52,7 @@ IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kura
 > - Azure IoT Device Explorer
 >
 > Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure uygulama hizmeti
+> - Azure App Service
 > - Azure İşlevleri
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla bir sanal ağ ve güvenlik duvarı kuralı oluşturma
@@ -64,13 +64,13 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
 
 Şablon parametreleri:
 
-- **IPMask** , CIDR gösteriminde tek bir IPv4 ADRESIDIR veya IP adresi bloğudur. Örneğin, CIDR gösterimi 70.37.104.0/24 256 IPv4 adresi 70.37.104.0 70.37.104.255, aralığı için önemli bir önek bit sayısını gösteren 24 ile temsil eder.
+- **ipMask** tek bir IPv4 adresi veya IP adresleri CIDR gösteriminde bir bloğu. Örneğin, CIDR gösterimi 70.37.104.0/24 256 IPv4 adresi 70.37.104.0 70.37.104.255, aralığı için önemli bir önek bit sayısını gösteren 24 ile temsil eder.
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
 > Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
 > 
-> from
+> başlangıç
 > ```json
 > "defaultAction": "Allow"
 > ```

@@ -1,7 +1,7 @@
 ---
-title: Azure AD sertifika kimlik bilgileri
+title: Microsoft Identity platform sertifikası kimlik bilgileri
 titleSuffix: Microsoft identity platform
-description: Bu makalede, uygulama kimlik doğrulaması için sertifika kimlik bilgilerinin kaydı ve kullanılması anlatılmaktadır
+description: Bu makalede, uygulama kimlik doğrulaması için sertifika kimlik bilgilerinin kaydı ve kullanımı ele alınmaktadır.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424713"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD uygulama kimlik doğrulama sertifikası kimlik bilgileri
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
-Azure Active Directory (Azure AD), bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0 Istemci kimlik bilgileri verme akışı ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) ve şirket adına akış ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
+Microsoft Identity platform, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasına olanak tanır; örneğin, [OAuth 2,0 Istemci kimlik bilgileri, flowv 2.0](v2-oauth2-client-creds-grant-flow.md) ve [Şirket adına akış](v2-oauth2-on-behalf-of-flow.md)verir.
 
 Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir JSON Web Token (JWT) onaysıdır.
 
 ## <a name="assertion-format"></a>Onaylama biçimi
-
-Onaylama işlemlerini hesaplamak için, birçok [JSON Web Token](https://jwt.ms/) kütüphanesinden birini dilediğiniz dilde kullanabilirsiniz. Belirteç tarafından taşınan bilgiler aşağıdaki gibidir:
+Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON Web Token](https://jwt.ms/) kitaplığı tercih ettiğiniz dilde kullanabilirsiniz. Belirteç tarafından taşınan bilgiler aşağıdaki gibidir:
 
 ### <a name="header"></a>Üst bilgi
 
@@ -89,9 +88,9 @@ Aşağıdaki dize, kodlanmış onaylama işlemi örneğidir. Dikkatlice bakarsan
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>Azure AD 'ye sertifikanızı kaydetme
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Microsoft Identity platformu ile sertifikanızı kaydedin
 
-Aşağıdaki yöntemlerden herhangi birini kullanarak sertifika kimlik bilgilerini Azure AD 'deki istemci uygulamasıyla Azure portal ilişkilendirebilirsiniz:
+Aşağıdaki yöntemlerden herhangi birini kullanarak sertifika kimlik bilgisini Microsoft Identity platformunda istemci uygulamasıyla Azure portal ilişkilendirebilirsiniz:
 
 ### <a name="uploading-the-certificate-file"></a>Sertifika dosyası karşıya yükleniyor
 
@@ -125,7 +124,7 @@ Ayrıca uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız 
        }
    ]
    ```
-3. Düzenlemeleri uygulama bildiriminde kaydedin ve sonra bildirimi Azure AD 'ye yükleyin. 
+3. Düzenlemeleri uygulama bildiriminde kaydedin ve sonra bildirimi Microsoft Identity platform 'a yükleyin. 
 
    `keyCredentials` özelliği çok değerli olduğundan, daha zengin anahtar yönetimi için birden fazla sertifika yükleyebilirsiniz.
    
@@ -134,4 +133,4 @@ Ayrıca uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız 
 > [!NOTE]
 > X5T üst bilgisini sertifikanın karmasını kullanarak hesaplamanız ve bunu bir Base64 dizesine dönüştürmeniz gerekir. İçinde C# şuna benzer bir şey şöyle görünür: `System.Convert.ToBase64String(cert.GetCertHash());`
 
-[Sertifikalarla birlikte Daemon uygulamalarında Azure AD 'de](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) kimlik doğrulaması yapmak için kod örneği, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca, `New-SelfSignedCertificate` PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) de gösterilmektedir. Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) da kullanabilirsiniz.
+[Sertifikalarla birlikte Daemon uygulamalarında Microsoft Identity platformunda kimlik](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) doğrulamaya yönelik kod örneği, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca, `New-SelfSignedCertificate` PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) de gösterilmektedir. Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) da kullanabilirsiniz.

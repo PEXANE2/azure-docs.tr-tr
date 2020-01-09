@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925561"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439258"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory’de Hive etkinliğini kullanarak Azure Sanal Ağ’daki verileri dönüştürme
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure portalını kullanarak Azure Sanal Ağ’daki bir HDInsig
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -79,7 +79,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
       
      ![Yeni veri fabrikası sayfası](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
-   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızMyAzureSsisDataFactory) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızMyAzureSsisDataFactory) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
@@ -88,11 +88,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
    - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
    - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
-     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Listede yalnızca veri fabrikası oluşturma için desteklenen konumlar gösterilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**’a tıklayın.
+7. **Oluştur**'a tıklayın.
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
      ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -160,13 +160,13 @@ Bu bölümde iki Bağlı Hizmet oluşturup dağıtacaksınız:
 2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure Blob Depolama**’yı seçip **Devam**’a tıklayın. 
 
    ![Azure Blob Depolama Alanı’nı seçin](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
-3. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin:
+3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureStorageLinkedService** adını girin.
     2. **Tümleştirme çalışma zamanı aracılığıyla bağlan** için **MySelfHostedIR** seçeneğini belirleyin.
     3. **Depolama hesabı adı** için Azure depolama hesabınızı seçin. 
     4. Depolama hesabı bağlantısını test etmek için **Bağlantıyı sına**’ya tıklayın.
-    5. **Kaydet** düğmesine tıklayın.
+    5. **Save (Kaydet)** düğmesine tıklayın.
    
         ![Azure Blob Depolama hesabını belirtme](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -178,7 +178,7 @@ Bu bölümde iki Bağlı Hizmet oluşturup dağıtacaksınız:
 2. **İşlem** sekmesine geçin, **Azure HDInsight**’ı seçin ve **Devam**’a tıklayın.
 
     ![Azure HDInsight’ı seçin](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
-3. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin:
+3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureHDInsightLinkedService** adını girin.
     2. **Kendi HDInsight’ınızı getirin**’i seçin. 
@@ -233,7 +233,7 @@ Aşağıdaki noktalara dikkat edin:
 
     ![Yayımlama](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
-## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
+## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırması tetikleme
 
 1. İlk olarak araç çubuğundaki **Doğrula** düğmesine tıklayarak işlem hattını doğrulayın. **Sağ ok (>>)** seçeneğine tıklayarak **İşlem Hattı Doğrulama Çıktı** penceresini kapatın. 
 

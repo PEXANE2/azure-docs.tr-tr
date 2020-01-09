@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443409"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -53,9 +53,9 @@ Hayır, bu senaryo desteklenmiyor. Varsayılan ayarlar şunlardır:
 
 Hayır, bu senaryo desteklenmiyor. Yalnızca bağlayıcı ve güncelleştirme hizmetleri, Azure 'a giden trafik için bir iletme proxy 'si kullanacak şekilde yapılandırılabilir. Bkz. [mevcut şirket içi proxy sunucularıyla çalışma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Bağlayıcı sunuculardan Azure 'a giden trafik üzerinde SSL sonlandırması (SSL/HHTPS denetimi veya hızlandırma) mi kullanıyorsunuz?
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Bağlayıcı sunuculardan Azure 'a giden trafik üzerinde SSL sonlandırması (SSL/HTTPS denetimi veya hızlandırma) mi kullanıyorsunuz?
 
-Uygulama proxy Bağlayıcısı, Azure 'da sertifika tabanlı kimlik doğrulaması gerçekleştirir. SSL sonlandırma (SSL/HHTPS incelemesi veya hızlandırma) bu kimlik doğrulama yöntemini keser ve desteklenmez. Bağlayıcıdan Azure 'a giden trafik, SSL sonlandırma gerçekleştiren tüm cihazları atmalıdır.  
+Uygulama proxy Bağlayıcısı, Azure 'da sertifika tabanlı kimlik doğrulaması gerçekleştirir. SSL sonlandırma (SSL/HTTPS denetimi veya hızlandırma) bu kimlik doğrulama yöntemini keser ve desteklenmez. Bağlayıcıdan Azure 'a giden trafik, SSL sonlandırma gerçekleştiren tüm cihazları atmalıdır.  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Bağlayıcıyı Azure AD Uygulama Ara Sunucusu kaydetmek için adanmış bir hesap oluşturmalı mıyım?
 
@@ -87,7 +87,7 @@ Uygulama kayıtları sayfasında, giriş sayfasının istenen dış URL 'si içi
 
 Hayır, yayımlanan uygulamalar için IIS gereksinimi yoktur. Windows Server dışındaki sunucularda çalışan Web uygulamalarını yayımlayabilirsiniz. Ancak, Web sunucusunun anlaşmayı (Kerberos kimlik doğrulaması) destekleyip desteklemediğine bağlı olarak, Windows dışı bir sunucu ile ön kimlik doğrulaması kullanmeyebilirsiniz. Bağlayıcının yüklü olduğu sunucuda IIS gerekli değildir.
 
-## <a name="integrated-windows-authentication"></a>Tümleşik Windows kimlik doğrulaması
+## <a name="integrated-windows-authentication"></a>Tümleşik Windows Kimlik Doğrulaması
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>Kerberos kısıtlı temsilci (KCD) ayarlarken Principalsallodilimtodelegatetoaccount metodunu ne zaman kullanmalıyım?
 

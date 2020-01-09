@@ -1,17 +1,17 @@
 ---
-title: Azure Logic Apps Azure işlevleri ekleme ve çağırma
-description: Logic Apps 'ten Azure işlevleri ekleme ve çalıştırma
+title: Azure Logic Apps Azure Işlevleri ekleme ve çağırma
+description: Azure Logic Apps içindeki otomatik görevler ve iş akışlarından Azure Işlevlerinizde özel kod çağırma ve çalıştırma
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453465"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps Azure işlevleri 'ni çağırma
 
@@ -26,7 +26,7 @@ Kod parçacıklarını Azure işlevleri oluşturmadan çalıştırmak için [sat
 > [!NOTE]
 > Logic Apps ve Azure Işlevleri arasındaki tümleştirme Şu anda etkin yuvalarla çalışmıyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -125,7 +125,7 @@ Mantıksal uygulama Tasarımcısı 'nı kullanarak mantıksal uygulamanızın i�
 
    1. **Kod** kutusunda, işleviniz çalıştıktan sonra mantıksal uygulamanıza döndürülmesini istediğiniz yanıt ve yük dahil olmak üzere, kodunuzu işlev şablonuna ekleyin. İşiniz bittiğinde **Oluştur**’u seçin.
 
-   Örnek:
+   Örneğin:
 
    ![İşlevinizi tanımlayın](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

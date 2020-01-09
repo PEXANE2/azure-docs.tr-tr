@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: REST API bir şema oluşturma'
 description: Bu hızlı başlangıçta, REST API kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436607"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Hızlı başlangıç: REST API Azure Blueprint tanımlama ve atama
 
 Şema oluşturma ve atama süreçlerini anlamak, ortak tutarlılık desenlerini tanımlamanızı ve Resource Manager şablonlarını, ilkelerini, güvenlik düzeyini ve daha fazlasını temel alan yeniden kullanılabilir ve hızla dağıtılabilir yapılandırmalar geliştirmenizi sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -47,7 +47,7 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-Aboneliğiniz hakkında bilgi almak için yukarıdaki `{subscriptionId}`$restUri**değişkeni içinde yer alan** öğesini değiştirin. $response değişkeni `Invoke-RestMethod` cmdlet'inin sonucunu tutar ve [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) gibi cmdlet'ler ile ayrıştırılabilir. REST API hizmet uç noktası bir **İstek Gövdesi** bekliyorsa `-Body` öğesinin `Invoke-RestMethod` parametresine JSON biçiminde bir değişken sağlayın.
+Aboneliğiniz hakkında bilgi almak için yukarıdaki **$restUri** değişkeni içinde yer alan `{subscriptionId}` öğesini değiştirin. $response değişkeni `Invoke-RestMethod` cmdlet'inin sonucunu tutar ve [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) gibi cmdlet'ler ile ayrıştırılabilir. REST API hizmet uç noktası bir **İstek Gövdesi** bekliyorsa `Invoke-RestMethod` öğesinin `-Body` parametresine JSON biçiminde bir değişken sağlayın.
 
 ## <a name="create-a-blueprint"></a>Şema oluşturma
 
@@ -407,7 +407,9 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      > [!IMPORTANT]
      > Planlar Kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rol ve izin atamaktan sorumludur ya da şema ataması başarısız olur.
 
-## <a name="unassign-a-blueprint"></a>Şema atamasını kaldırma
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+### <a name="unassign-a-blueprint"></a>Şemanın atamasını kaldırma
 
 Bir şemayı abonelikten kaldırabilirsiniz. Kaldırma işlemi genellikle yapıt kaynaklarına ihtiyaç duyulmadığında gerçekleştirilir. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Bir şemanın atamasını kaldırmak için aşağıdaki REST API işlemini kullanın:
 
@@ -417,7 +419,7 @@ Bir şemayı abonelikten kaldırabilirsiniz. Kaldırma işlemi genellikle yapıt
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>Şema silme
+### <a name="delete-a-blueprint"></a>Şemayı silme
 
 Bir şemanın kendisini kaldırmak için aşağıdaki REST API işlemini kullanın:
 

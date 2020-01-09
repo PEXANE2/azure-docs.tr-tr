@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
+title: Azure Cosmos DB öykünücü derleme göreviyle CI/CD işlem hattı ayarlama
 description: Azure DevOps'ta Cosmos DB öykünücüsü derleme görevini kullanarak derleme ve yayın iş yükü ayarlama öğreticisi
 author: deborahc
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 514c9655a1d303c444cc8c183ed6b73fd3422cf8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441047"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps'ta Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
 

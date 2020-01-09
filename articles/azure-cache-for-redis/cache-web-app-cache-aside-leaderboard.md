@@ -1,18 +1,18 @@
 ---
-title: Reda için Azure önbelleği ile bir Web uygulaması oluşturmaya yönelik öğretici, önbellek oluşturma deseninin kullanımı
-description: Önbelleğe alma modelini kullanan Reda için Azure önbelleği ile bir Web uygulaması oluşturmayı öğrenin
+title: 'Öğretici: Web uygulaması oluşturma (önbelleğe alma)-Redsıs için Azure önbelleği'
+description: Ön uç modelini kullanan Reda için Azure önbelleği ile bir Web uygulaması oluşturmayı öğrenin.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411949"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Öğretici: ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma
 
@@ -28,9 +28,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gerekir:
+Bu öğreticiyi tamamlamak için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * Bu öğretici [, redin Için Azure önbelleği için ASP.net hızlı](cache-web-app-howto.md)başlangıcı ' nda kaldığınız yerden devam eder. Henüz yapmadıysanız önce hızlı başlangıcı izleyin.
 * Aşağıdaki iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra:
@@ -62,7 +62,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
     ![Model sınıfı ekleme](./media/cache-web-app-cache-aside-leaderboard/cache-model-add-class-dialog.png)
 
-1. `using`Team.cs*dosyasının üst kısmındaki* deyimlerini aşağıdaki `using` deyimleriyle değiştirin:
+1. *Team.cs* dosyasının üst kısmındaki `using` deyimlerini aşağıdaki `using` deyimleriyle değiştirin:
 
     ```csharp
     using System;
@@ -156,7 +156,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
     </connectionStrings>
     ```
 
-    Aşağıdaki örnek, `connectionStrings` bölümündeki `configSections` bölümünü izleyen yeni `configuration` bölümünü gösterir:
+    Aşağıdaki örnek, `configuration` bölümündeki `configSections` bölümünü izleyen yeni `connectionStrings` bölümünü gösterir:
 
     ```xml
     <configuration>
@@ -179,7 +179,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
     ![Denetleyici sınıfı ekleme](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. **Model sınıfı** açılır listesinden **Ekip (ContosoTeamStats.Models)** öğesini seçin. **Veri bağlamı** açılır listesinden **TeamContext (ContosoTeamStats.Models)** öğesini seçin. `TeamsController`Denetleyici**adı metin kutusuna** yazın (otomatik olarak doldurulmamışsa). Denetleyici sınıfını oluşturmak ve varsayılan görünümleri eklemek için **Ekle**’ye tıklayın.
+1. **Model sınıfı** açılır listesinden **Ekip (ContosoTeamStats.Models)** öğesini seçin. **Veri bağlamı** açılır listesinden **TeamContext (ContosoTeamStats.Models)** öğesini seçin. **Denetleyici** adı metin kutusuna `TeamsController` yazın (otomatik olarak doldurulmamışsa). Denetleyici sınıfını oluşturmak ve varsayılan görünümleri eklemek için **Ekle**’ye tıklayın.
 
     ![Denetleyici yapılandırma](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
@@ -204,7 +204,7 @@ Bu paket hakkında daha fazla bilgi için [EntityFramework](https://www.nuget.or
 
     ![RouteConfig.cs](./media/cache-web-app-cache-aside-leaderboard/cache-RouteConfig-cs.png)
 
-1. `RegisterRoutes` yönteminde, `controller = "Home"` rotasındaki `Default` öğesini, aşağıdaki örnekte gösterildiği gibi `controller = "Teams"` ile değiştirin:
+1. `RegisterRoutes` yönteminde, `Default` rotasındaki `controller = "Home"` öğesini, aşağıdaki örnekte gösterildiği gibi `controller = "Teams"` ile değiştirin:
 
     ```csharp
     routes.MapRoute(
@@ -250,7 +250,7 @@ Hızlı başlangıçta *StackExchange.Redis* istemci kitaplığı paketini zaten
 
     ![Ekip denetleyicisi](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. `using`TeamsController.cs**deyimlerini kullanarak aşağıdaki iki** deyimini ekleyin:
+1. **TeamsController.cs** deyimlerini kullanarak aşağıdaki iki `using` deyimini ekleyin:
 
     ```csharp
     using System.Configuration;
@@ -345,7 +345,7 @@ Redsıs için Azure önbelleğini kullanmak amacıyla, takım istatistiklerini �
     }
     ```
 
-1. Önceki kod parçacığında eklenen switch deyiminden `TeamsController`, `playGames` ve `clearCache` eylem türlerini uygulamak için aşağıdaki üç yöntemi `rebuildDB` sınıfına ekleyin.
+1. Önceki kod parçacığında eklenen switch deyiminden `playGames`, `clearCache` ve `rebuildDB` eylem türlerini uygulamak için aşağıdaki üç yöntemi `TeamsController` sınıfına ekleyin.
 
     `PlayGames` yöntemi, oyun sezonunu taklit ederek ekip istatistiklerini güncelleştirir, sonuçları veritabanına kaydeder ve artık güncel olmayan verileri veritabanından temizler.
 
@@ -507,7 +507,7 @@ Redsıs için Azure önbelleğini kullanmak amacıyla, takım istatistiklerini �
 
 Bu örneğin bir parçası olarak oluşturulan iskele kurma kodu ekip ekleme, düzenleme ve silme yöntemlerini içerir. Bir ekip her eklendiğinde, düzenlendiğinde veya kaldırıldığında önbellekteki veriler güncel olmayan hale gelir. Bu bölümde, önbelleğin yenilenmesi için önbelleğe alınan takımları temizlemek üzere bu üç yöntemi değiştireceksiniz.
 
-1. `Create(Team team)` sınıfındaki `TeamsController` yöntemine göz atın. Aşağıdaki örnekte gösterildiği gibi `ClearCachedTeams` yöntemine bir çağrı ekleyin:
+1. `TeamsController` sınıfındaki `Create(Team team)` yöntemine göz atın. Aşağıdaki örnekte gösterildiği gibi `ClearCachedTeams` yöntemine bir çağrı ekleyin:
 
     ```csharp
     // POST: Teams/Create
@@ -531,7 +531,7 @@ Bu örneğin bir parçası olarak oluşturulan iskele kurma kodu ekip ekleme, d�
     }
     ```
 
-2. `Edit(Team team)` sınıfındaki `TeamsController` yöntemine göz atın. Aşağıdaki örnekte gösterildiği gibi `ClearCachedTeams` yöntemine bir çağrı ekleyin:
+2. `TeamsController` sınıfındaki `Edit(Team team)` yöntemine göz atın. Aşağıdaki örnekte gösterildiği gibi `ClearCachedTeams` yöntemine bir çağrı ekleyin:
 
     ```csharp
     // POST: Teams/Edit/5
@@ -554,7 +554,7 @@ Bu örneğin bir parçası olarak oluşturulan iskele kurma kodu ekip ekleme, d�
     }
     ```
 
-3. `DeleteConfirmed(int id)` sınıfındaki `TeamsController` yöntemine göz atın. Aşağıdaki örnekte gösterildiği gibi `ClearCachedTeams` yöntemine bir çağrı ekleyin:
+3. `TeamsController` sınıfındaki `DeleteConfirmed(int id)` yöntemine göz atın. Aşağıdaki örnekte gösterildiği gibi `ClearCachedTeams` yöntemine bir çağrı ekleyin:
 
     ```csharp
     // POST: Teams/Delete/5

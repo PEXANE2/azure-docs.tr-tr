@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: uç nokta utterlerini gözden geçirme-LUSıS'
 titleSuffix: Azure Cognitive Services
-description: LUIS HTTP uç noktası üzerinden alınan ifadeleri doğrulayarak veya düzelterek LUIS'in emin olmadığı uygulama tahminlerini geliştirin. Bazı konuşmaların amacının, diğerlerinin ise varlığının doğrulanması gerekebilir.
+description: Bu öğreticide, LUSıS 'nin emin olduğu LUSıS HTTP uç noktası aracılığıyla alınan utslarını doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Bazı konuşmaların amacının, diğerlerinin ise varlığının doğrulanması gerekebilir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895650"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447812"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: uç nokta dıklarını inceleyerek, hariç tahminleri çözme
 Bu öğreticide, LUSıS HTTPS uç noktası aracılığıyla alınan ve bu LUSıS 'in eksik olduğu noktaları doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Zamanlanan LUSıS bakımın düzenli bir parçası olarak uç nokta utslerini incelemeniz gerekir.
@@ -29,14 +29,12 @@ Bu gözden geçirme işlemi, LUSıS 'in uygulama etki alanınızı öğrenmeye o
 
 Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğrular veya düzeltirsiniz.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
-> * Uç nokta ifadelerini gözden geçirme
+> * Uç nokta konuşmasını gözden geçirme
 > * Uygulamayı eğitme ve yayımlama
 > * LUIS JSON yanıtını görmek için uygulamanın uç noktasını sorgulama
 
@@ -46,7 +44,7 @@ Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğr
 
 Bir uygulamayı içeri aktarmak için aşağıdaki adımları kullanın.
 
-1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) indirip kaydedin.
+1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) indirip kaydedin.
 
 1. [ÖNIZLEME Luu portalında](https://preview.luis-ai),. json dosyasını yeni bir uygulamaya aktarın.
 
@@ -84,7 +82,7 @@ Bu uygulamada, hedefleri ve varlıkları vardır ancak uç nokta kullanımınız
 
     Hangi sürümü etkin olarak düzenlemekte olduğunuzdan veya uç noktada uygulamanın hangi sürümünün yayımlandığından bağımsız olarak gözden geçirilecek tek bir konuşma havuzu vardır.
 
-## <a name="review-endpoint-utterances"></a>Uç nokta ifadelerini gözden geçirme
+## <a name="review-endpoint-utterances"></a>Uç nokta konuşmasını gözden geçirme
 
 Doğru hizalanmış amaç için uç nokta utslerini gözden geçirin. Tüm sürümlerde gözden geçirilecek tek bir havuz havuzu olsa da, amacı doğru şekilde hizalamak, örneği yalnızca geçerli _etkin modele_ ekler.
 

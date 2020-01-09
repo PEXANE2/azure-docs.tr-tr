@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 74375fdb5bf8d571cbdbc778c3c6e7b7b93f59ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368020"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API kullanma
 
@@ -30,10 +30,7 @@ B2C kiracılarında, Graph API ile iletişim kuran iki birincil mod vardır:
 
 Bu makalede, otomatik kullanım durumunun nasıl gerçekleştirileceğini öğreneceksiniz. Kullanıcı oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemlerini gerçekleştiren bir .NET 4,5 `B2CGraphClient` oluşturacaksınız. İstemcinin çeşitli yöntemleri çağırabilmeniz için bir Windows komut satırı arabirimi (CLı) olacaktır. Ancak, kod etkileşimli olmayan, otomatik olarak davranacak şekilde yazılmıştır.
 
->[!IMPORTANT]
-> Bir Azure AD B2C dizinindeki kullanıcıları yönetmek için [Azure AD Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) kullanmanız **gerekir** . Azure AD Graph API Microsoft Graph API 'sinden farklıdır. Bu MSDN blog gönderisindeki daha fazla bilgi edinin: [Microsoft Graph veya Azure AD grafiği](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uygulama veya Kullanıcı oluşturabilmeniz için önce bir Azure AD B2C kiracının olması gerekir. Henüz bir tane yoksa [Azure Active Directory B2C kiracı oluşturun](tutorial-create-tenant.md).
 
@@ -63,8 +60,9 @@ Daha önce verdiğiniz *okuma ve yazma dizini verileri* **izni, kullanıcıları
 
 Uygulamanıza kullanıcıları silme veya parolaları güncelleştirme yeteneği vermek istiyorsanız, *kullanıcıya Kullanıcı Yöneticisi* rolü vermeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınızı içeren dizine geçin.
-1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçip **Azure AD B2C**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. **Yönet**altında **Roller ve yöneticiler**' i seçin.
 1. **Kullanıcı Yöneticisi** rolünü seçin.
 1. **Atama Ekle**' yi seçin.
@@ -290,7 +288,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Örnek:
+Örneğin:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -332,7 +330,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Çıktı her özel özniteliğin ayrıntılarını ortaya koyar. Örnek:
+Çıktı her özel özniteliğin ayrıntılarını ortaya koyar. Örneğin:
 
 ```json
 {

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: d9d0ef37c247107a902b1083e77541711f18e7b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438796"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory saklı yordam etkinliğini kullanarak bir SSIS paketini çağırma
 Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işlem hattından bir SSIS paketinin nasıl çağırılacağını açıklanmaktadır. 
@@ -26,7 +26,7 @@ Bu makalede, bir saklı yordam etkinliği kullanarak bir Azure Data Factory işl
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [içindeki saklı yordam kullanarak SSIS paketlerini çağırma](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-sql-database"></a>Azure SQL Veritabanı 
 Bu makaledeki izlenecek yol, SSIS kataloğunu barındıran bir Azure SQL veritabanı kullanır. Azure SQL veritabanı yönetilen örneği de kullanabilirsiniz.
@@ -44,7 +44,7 @@ Bu bölümde, bir SSIS paketini çağıran saklı yordam etkinliği ile Data Fac
 ### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Aşağıdaki yordam bir veri fabrikası oluşturmak için adımlar sağlar. Bu veri fabrikasında saklı yordam etkinliği ile bir işlem hattı oluşturursunuz. Saklı yordam etkinliği, SSIS paketinizi çalıştırmak için SSSıSDB veritabanında bir saklı yordam yürütür.
 
-1. Daha sonra PowerShell komutlarında kullanacağınız kaynak grubu adı için bir değişken tanımlayın. Aşağıdaki komut metnini PowerShell'e kopyalayın [Azure kaynak grubu](../../azure-resource-manager/resource-group-overview.md) için çift tırnak içinde bir ad belirtin ve ardından komutu çalıştırın. Örneğin: `"adfrg"`. 
+1. Daha sonra PowerShell komutlarında kullanacağınız kaynak grubu adı için bir değişken tanımlayın. Aşağıdaki komut metnini PowerShell'e kopyalayın [Azure kaynak grubu](../../azure-resource-manager/management/overview.md) için çift tırnak içinde bir ad belirtin ve ardından komutu çalıştırın. Örneğin: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";

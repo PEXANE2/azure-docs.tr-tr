@@ -1,6 +1,5 @@
 ---
-title: Node.Js, MongoB API (Bölüm 1) kullanarak Angular uygulaması
-titleSuffix: Azure Cosmos DB
+title: MongoB için Azure Cosmos DB API 'SI kullanan Node. js, angular uygulaması (part1)
 description: Video temelli bu öğretici serisiyle Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturmayı öğrenirsiniz.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: ec88b8e78c2d73ffa4badbc8ceaa468b4e5169e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444694"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Angular uygulama API'si ile Azure Cosmos DB'nin MongoDB için oluşturun.
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma
 
-Bu çok bölümlü öğretici, Express ve Angular ile Node.js kullanılarak yazılmış yeni bir uygulama oluşturun ve buna bağlanmak gösterilmektedir, [MongoDB için Cosmos DB API'si ile yapılandırılan Cosmos hesabı](mongodb-introduction.md).
+Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Hızla oluşturun ve belge, anahtar/değer ve genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz Cosmos DB'nin grafik veritabanlarını sorgulama olanak tanır. 
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Cosmos DB çekirdekli genel dağıtım ve yatay ölçek özelliğinden yararlanan belge, anahtar/değer ve grafik veritabanlarını hızlıca oluşturmanızı ve sorgulamanızı sağlar. 
 
 Bu çok bölümlü öğretici aşağıdaki görevleri içerir:
 

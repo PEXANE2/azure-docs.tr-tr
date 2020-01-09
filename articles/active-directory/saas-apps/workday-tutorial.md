@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443324"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Öğretici: Workday ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, Workday 'i Azure Active Directory (Azure AD) ile tümleştirmey
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Yanıt URL 'niz için bir alt etki alanı olmalıdır; örneğin: www, WD2, WD3, WD3-Impl, wd5, wd5-Impl).
-    > @No__t_0 gibi bir şey kullanılması, ancak `http://myworkday.com` değildir. Bu değerleri almak için [Workday istemci destek ekibine](https://www.workday.com/en-us/partners-services/services/support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > `http://www.myworkday.com` gibi bir şey kullanılması, ancak `http://myworkday.com` değildir. Bu değerleri almak için [Workday istemci destek ekibine](https://www.workday.com/en-us/partners-services/services/support.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 6. Workday uygulamanız belirli bir biçimde SAML onayları bekler, bu da SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Workday uygulaması, **NameIdentifier** 'ın **User. Mail**, **UPN**vb. ile eşlenmesini bekliyor, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
@@ -115,19 +115,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
 Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -135,7 +135,7 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 1. Uygulamalar listesinde **Workday**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -167,12 +167,12 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
    > [!NOTE]
    > Ortam özniteliğinin değeri, kiracı URL 'sinin değerine bağlıdır:  
-   > -Workday kiracı URL 'sinin etki alanı adı Impl ile başlıyorsa örneğin: *https: \//impl.workday.com/\<tenant \>/Login-SAML2,Flex*), **ortam** özniteliği uygulama olarak ayarlanmalıdır.  
+   > -Workday kiracı URL 'sinin etki alanı adı Impl ile başlıyorsa örneğin: *https://www.myworkday.com/"Kiracı"/Login-SAML2.htmld*), **ortam** özniteliği uygulama olarak ayarlanmalıdır.  
    > -Etki alanı adı başka bir şeyle başlıyorsa, eşleşen **ortam** değerini almak Için [Workday istemci destek ekibine](https://www.workday.com/en-us/partners-services/services/support.html) başvurmanız gerekir.
 
 4. **SAML kurulumu** bölümünde aşağıdaki adımları uygulayın:
 
-    ![SAML kurulumu](./media/workday-tutorial/IC782926.png "SAML kurulumu")
+    ![SAML kurulumu](./media/workday-tutorial/IC782926.png "SAML Kurulumu")
 
     a.  **SAML kimlik doğrulamasını etkinleştir**' i seçin.
 
@@ -180,13 +180,13 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
 5. **SAML kimlik sağlayıcıları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![SAML kimlik sağlayıcıları](./media/workday-tutorial/IC7829271.png "SAML kimlik sağlayıcıları")
+    ![SAML kimlik sağlayıcıları](./media/workday-tutorial/IC7829271.png "SAML Kimlik Sağlayıcıları")
 
     a. **Kimlik sağlayıcısı adı** metin kutusuna bir sağlayıcı adı yazın (örneğin: *Spinitilik SSO*).
 
     b. Azure portal, **Workday 'Yi ayarlama** bölümünde, **Azure AD tanımlayıcı** değerini kopyalayın ve ardından **sertifikayı verenin** metin kutusuna yapıştırın.
 
-    ![SAML kimlik sağlayıcıları](./media/workday-tutorial/IC7829272.png "SAML kimlik sağlayıcıları")
+    ![SAML kimlik sağlayıcıları](./media/workday-tutorial/IC7829272.png "SAML Kimlik Sağlayıcıları")
 
     c. Azure portal, **Workday 'Yi ayarlama** bölümünde, **oturum kapatma URL** 'si değerini kopyalayın ve ardından bunu **Logout Response URL** metin kutusuna yapıştırın.
 
@@ -206,7 +206,7 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
     ![X509 ortak anahtarını görüntüle](./media/workday-tutorial/IC782930.png "X509 ortak anahtarını görüntüle")
 
-    a. **Ad** metin kutusuna sertifikanız için bir ad yazın (örneğin: *PPE \_SP*).
+    a. **Ad** metin kutusuna sertifikanız için bir ad yazın (örneğin: *PPE\_SP*).
 
     b. **Geçerli from** metin kutusuna sertifikanızın geçerli öznitelik değerini yazın.
 
@@ -233,7 +233,7 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
     c. **Kimlik doğrulama Isteği Imza yöntemi**olarak **SHA256**' yi seçin.
 
-    ![Kimlik doğrulama Isteği Imza yöntemi](./media/workday-tutorial/WorkdaySSOConfiguration.png "Kimlik doğrulama Isteği Imza yöntemi") 
+    ![Kimlik doğrulama Isteği Imza yöntemi](./media/workday-tutorial/WorkdaySSOConfiguration.png "Kimlik doğrulama Isteği Imza yöntemi")
 
     d. **Tamam**’a tıklayın.
 
@@ -244,7 +244,7 @@ Bu bölümde, Workday 'e erişim izni vererek Azure çoklu oturum açma özelli�
 
 ### <a name="create-workday-test-user"></a>Workday test kullanıcısı oluşturma
 
-Bu bölümde, Workday 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. Workday platformunda kullanıcıları eklemek için [Workday istemci destek ekibi](https://www.workday.com/en-us/partners-services/services/support.html) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Workday 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. Workday platformunda kullanıcıları eklemek için [Workday istemci destek ekibi](https://www.workday.com/en-us/partners-services/services/support.html) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
@@ -252,7 +252,7 @@ Erişim panelinde Workday kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

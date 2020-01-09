@@ -1,6 +1,6 @@
 ---
-title: Büyük Azure Sanal Makine Ölçek Kümeleri ile çalışma | Microsoft Docs
-description: Büyük Azure sanal makine ölçek kümelerini kullanmak için bilmeniz gerekenler
+title: Büyük Azure sanal makine ölçek kümeleriyle çalışma
+description: Uygulamanızda kullanabilmeniz için büyük Azure sanal makine ölçek kümeleri hakkında bilmeniz gerekenler.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459348"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Büyük sanal makine ölçek kümeleri ile çalışma
 Artık, 1000 adede kadar VM kapasiteli Azure [sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/) oluşturabilirsiniz. Bu belgede _büyük bir sanal makine ölçek kümesi_, 100’den fazla VM'yi ölçeklendirme kapasitesine sahip bir ölçek kümesi olarak tanımlanır. Bu özellik bir ölçek kümesi özelliği ile ayarlanır (_singlePlacementGroup=False_). 
@@ -50,7 +50,7 @@ Azure portalda bir ölçek kümesi oluştururken en fazla 1000 olarak şekilde b
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-[Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_ komutunu kullanarak büyük bir sanal makine ölçek kümesi oluşturabilirsiniz. Bu komut, alt ağ boyutu gibi akıllı varsayılan değerleri _instance-count_ bağımsız değişkenine göre ayarlar:
+[Azure CLI](https://github.com/Azure/azure-cli) _az VMSS Create_ komutunu kullanarak büyük bir sanal makine ölçek kümesi oluşturabilirsiniz. Bu komut, alt ağ boyutu gibi akıllı varsayılan değerleri _instance-count_ bağımsız değişkenine göre ayarlar:
 
 ```bash
 az group create -l southcentralus -n biginfra

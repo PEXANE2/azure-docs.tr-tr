@@ -1,5 +1,6 @@
 ---
-title: Azure API yönetimi ilkesi örneği-arka uç hizmetine özellik ekleme | Microsoft Docs
+title: Örnek API yönetimi ilkesi-arka uç hizmetine özellik ekleme
+titleSuffix: Azure API Management
 description: Azure API Management ilkesi örneği-bir arka uç hizmetine nasıl özellik ekleneceğini gösterir. Örneğin, hava durumu tahmini API'sinde enlem ve boylam yerine bir yer adını kabul edin.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 705d7e44f64f8dc3bba669cd80dafdab078fcccc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442481"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>Arka uç hizmetine özellik ekleme
 

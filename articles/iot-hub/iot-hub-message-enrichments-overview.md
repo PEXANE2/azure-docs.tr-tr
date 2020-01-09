@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429116"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin
 
@@ -54,7 +54,7 @@ Bir ileti zenginleştirmesi, üç temel öğeye sahiptir:
 
 IoT Hub yerleşik uç noktasına veya Azure Blob depolama, Service Bus kuyruğu veya Service Bus konu gibi özel uç noktalara yönlendirilmekte olan iletilere zenginleştirme ekleyebilirsiniz.
 
-Event Grid olarak uç noktayı seçerek Event Grid yayımlanmakta olan iletilere zenginleştirme ekleyebilirsiniz. Event Grid aboneliğinize göre cihaz telemetrisine IoT Hub varsayılan bir yol oluşturacağız. Bu tek yol, tüm Event Grid aboneliklerinizi işleyebilir. Olay Kılavuzu ' nu için enzenginleştirme 'yi, cihaz telemetrisine olay Kılavuzu aboneliğini oluşturduktan sonra da yapılandırabilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ve Event Grid](iot-hub-event-grid.md).
+Event Grid olarak uç noktayı seçerek Event Grid yayımlanmakta olan iletilere zenginleştirme ekleyebilirsiniz. Event Grid aboneliğinize göre cihaz telemetrisine IoT Hub varsayılan bir yol oluşturacağız. Bu tek yol, tüm Event Grid aboneliklerinizi işleyebilir. Cihaz telemetrisine olay Kılavuzu aboneliğini oluşturduktan sonra Event Grid uç noktası için enzenginler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ve Event Grid](iot-hub-event-grid.md).
 
 Enzenginler, uç nokta başına uygulanır. Belirli bir uç nokta için damgalı olacak beş zenginleştirme belirtirseniz, bu uç noktaya giden tüm iletiler aynı beş enzenginle damgalı olur.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364127"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -25,7 +25,7 @@ Bu makalede, bir Windows sanal makinesine yönelik Konuk işletim sistemi perfor
 
 Bu konumda depolamak, platform ölçümleri için aynı eylemlere erişmenize olanak tanır. Eylemler, bir REST API ve daha fazlasını içeren neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim içerir. Geçmişte, tanılama uzantısı Azure depolama 'ya yazdı, ancak Azure Izleyici veri deposuna değil.
 
-Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/resource-group-overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
+Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -240,7 +240,7 @@ Her iki dosyayı da kaydedin ve kapatın.
 
 Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
-1. PowerShell 'i başlatın.
+1. PowerShell’i başlatın.
 1. `Login-AzAccount`kullanarak Azure 'da oturum açın.
 1. `Get-AzSubscription`kullanarak abonelik listenizi alın.
 1. ' De sanal makineyi oluşturmak/güncelleştirmek için kullandığınız aboneliği ayarlayın:

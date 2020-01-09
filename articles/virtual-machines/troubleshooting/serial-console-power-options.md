@@ -14,21 +14,21 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
-ms.openlocfilehash: f17b96ad880742cf1232b074e4398f3b1d15e5ba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451193"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Azure seri konsolundan kullanılabilen güç seçenekleri
 
-Azure seri konsolu, VM 'niz veya sanal makine ölçek kümesi üzerinde güç yönetimi için çeşitli güçlü araçlar sağlar. Bu güç yönetimi seçeneklerinin bazıları kafa karıştırıcı olabilir, bu nedenle bu belge her bir araca ve onun amaçlanan kullanım durumuna genel bir bakış sağlar.
+Azure seri konsolu, VM 'niz veya sanal makine ölçek kümesi üzerinde güç yönetimi için çeşitli güçlü araçlar sağlar. Bu güç yönetimi seçeneklerinin bazıları kafa karıştırıcı olabilir, bu nedenle her araca ve onun amaçlanan kullanım durumuna genel bir bakış sağlanır.
 
 Seri konsol özelliği | Açıklama | Kullanım Örneği
 :----------------------|:------------|:---------
-VM'yi Yeniden Başlat | VM veya sanal makine ölçek kümesi örneğinizi düzgün bir şekilde yeniden başlatın. Bu işlem, Genel Bakış sayfasında bulunan yeniden başlatma özelliğini çağırma ile aynıdır. | Çoğu durumda, sanal makineyi yeniden başlatmaya çalışırken bu seçenek ilk aracınız olmalıdır. Seri konsol bağlantınızda kısa bir kesinti yaşanacaktır ve VM yeniden başlatıldıktan hemen sonra otomatik olarak devam eder.
-VM'yi Sıfırla | VM 'nizin veya Azure platformu tarafından ayarlanan sanal makine ölçek kümesinin zorla bir güç döngüsüdür. | Bu seçenek, geçerli durumundan bağımsız olarak işletim sisteminizi hemen yeniden başlatmak için kullanılır. Bu işlem düzgün çalışmadığından veri kaybı veya bozulması riski vardır. Seri konsol bağlantısında, önyükleme zamanında (örneğin, bir Linux VM 'de GRUB 'ye veya bir Windows VM 'de güvenli moda alma) daha önce komut göndermek için yararlı olabilecek bir kesinti yoktur.
+VM yeniden başlatma | VM veya sanal makine ölçek kümesi örneğinizi düzgün bir şekilde yeniden başlatın. Bu işlem, Genel Bakış sayfasında bulunan yeniden başlatma özelliğini çağırma ile aynıdır. | Çoğu durumda, sanal makineyi yeniden başlatmaya çalışırken bu seçenek ilk aracınız olmalıdır. Seri konsol bağlantınızda kısa bir kesinti yaşanacaktır ve VM yeniden başlatıldıktan hemen sonra otomatik olarak devam eder.
+VM 'yi sıfırlama | VM 'nizin veya Azure platformu tarafından ayarlanan sanal makine ölçek kümesinin zorla bir güç döngüsüdür. | Bu seçenek, geçerli durumundan bağımsız olarak işletim sisteminizi hemen yeniden başlatmak için kullanılır. Bu işlem düzgün çalışmadığından veri kaybı veya bozulması riski vardır. Seri konsol bağlantısında, önyükleme zamanında (örneğin, bir Linux VM 'de GRUB 'ye veya bir Windows VM 'de güvenli moda alma) daha önce komut göndermek için yararlı olabilecek bir kesinti yoktur.
 SysRq-Reboot (b) | Konuk yeniden başlatmayı zorlamak için bir sistem isteği. | Bu özellik yalnızca Linux işletim sistemleri için geçerlidir ve işletim sisteminde [SySRq 'ın etkinleştirilmesini](./serial-console-nmi-sysrq.md#system-request-sysrq) gerektirir. İşletim sistemi SysRq için düzgün yapılandırıldıysa, bu komut IŞLETIM sisteminin yeniden başlatılmasına neden olur.
 NMI (maskelenemeyen kesme) | İşletim sistemine teslim edilecek bir kesme komutu | Bu işlem hem [Windows](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) hem de [Linux](./serial-console-nmi-sysrq.md#non-maskable-interrupt-nmi) VM 'leri için kullanılabilir ve NMI 'nin etkinleştirilmesini gerektirir. NMI 'nin gönderilmesi genellikle işletim sisteminizin kilitlenmesine neden olur. İşletim sisteminizi bir döküm dosyası oluşturacak şekilde yapılandırabilir ve ardından, alt düzey hata ayıklama sırasında yararlı olabilecek NMI 'yi almaya sonra yeniden başlatabilirsiniz.
 

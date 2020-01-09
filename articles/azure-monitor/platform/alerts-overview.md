@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396518"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -71,8 +71,8 @@ Daha önce Azure Izleyici ölçümleri, Application Insights, Log Analytics ve h
 
 | **Kaynağı izle** | **Sinyal türü**  | **Açıklama** | 
 |-------------|----------------|-------------|
-| Hizmet durumu | Etkinlik günlüğü  | Desteklenmiyor. Bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Web kullanılabilirlik testleri | Desteklenmiyor. Bkz. [Web test uyarıları](../../azure-monitor/app/monitor-web-app-availability.md). Application Insights veri gönderecek şekilde işaretlenmiş Web siteleri için kullanılabilir. Bir Web sitesinin kullanılabilirliği veya yanıt verme işlemi beklentileri altında olduğunda bir bildirim alın. |
+| Hizmet durumu | Etkinlik günlüğü  | Desteklenmez. Bkz. [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Web kullanılabilirlik testleri | Desteklenmez. Bkz. [Web test uyarıları](../../azure-monitor/app/monitor-web-app-availability.md). Application Insights veri gönderecek şekilde işaretlenmiş Web siteleri için kullanılabilir. Bir Web sitesinin kullanılabilirliği veya yanıt verme işlemi beklentileri altında olduğunda bir bildirim alın. |
 
 ## <a name="manage-alerts"></a>Uyarıları yönetme
 Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ayarlayabilirsiniz. Uyarı kuralında belirtilen ölçütler karşılandığında, bir uyarı oluşturulur veya tetiklenir ve *Yeni*durumuna sahiptir. Bir uyarıyı onayladığınızda ve kapattığınızda durumu değiştirebilirsiniz. Tüm durum değişiklikleri uyarının geçmişine depolanır.
@@ -184,23 +184,23 @@ Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](https:/
 
 Aboneliğinize göre oluşturulan uyarılar için programlı olarak sorgulamak isteyebilirsiniz. Bu, Azure portal dışında özel görünümler oluşturmak veya desenleri ve eğilimleri belirlemek için uyarılarınızı analiz etmek olabilir.
 
-Aboneliklerinize göre oluşturulan uyarıları, [Uyarı Yönetimi REST API](https://aka.ms/alert-management-api) veya [Uyarılar Için REST API Azure Kaynak grafiğini](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)kullanarak sorgulayabilirsiniz.
+Aboneliklerinizde oluşturulan uyarıları, [Uyarı Yönetimi REST API](https://aka.ms/alert-management-api) kullanarak veya [Azure Kaynak grafiğini](../../governance/resource-graph/overview.md) ve [kaynaklar için REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)kullanarak sorgulayabilirsiniz.
 
-[Azure Kaynak Grafiği uyarılar için REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)), uyarı örneklerini ölçekteki sorgulamanızı sağlar. Birçok abonelik üzerinde oluşturulan uyarıları yönetmeniz gerektiğinde bu önerilir. 
+Kaynak grafik REST API, uyarı örneklerini ölçekteki sorgulamanızı sağlar. Birçok abonelik üzerinde oluşturulan uyarıları yönetmeniz gerektiğinde bu önerilir. 
 
-Aşağıdaki örnek API isteği bir abonelik içindeki uyarı sayısını döndürür:
+Kaynak Graph REST API aşağıdaki örnek istek, bir abonelik içindeki uyarı sayısını döndürür:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+Ayrıca, bu kaynak grafiği sorgusunun sonucunu Azure Resource Graph Explorer ile Portalda görebilirsiniz: [Portal.Azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 Uyarıları, [önemli](alerts-common-schema-definitions.md#essentials) alanları için sorgulayabilirsiniz.
 
 [Uyarı bağlamı](alerts-common-schema-definitions.md#alert-context) alanları da dahil olmak üzere belirli uyarılar hakkında daha fazla bilgi almak için [uyarı yönetimi REST API](https://aka.ms/alert-management-api) kullanın.

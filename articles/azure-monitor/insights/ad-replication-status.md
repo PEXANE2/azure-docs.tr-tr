@@ -4,15 +4,15 @@ description: Active Directory Çoğaltma Durumu çözüm paketi, tüm çoğaltma
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 04112042c871f5268c64bda374f040f1bba92969
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406089"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Izleyici ile Active Directory çoğaltma durumunu izleme
 
@@ -20,12 +20,19 @@ ms.locfileid: "72931345"
 
 Active Directory, kurumsal BT ortamının temel bir bileşenidir. Yüksek kullanılabilirlik ve yüksek performans sağlamak için her etki alanı denetleyicisinin kendi Active Directory veritabanının bir kopyası vardır. Etki alanı denetleyicileri, değişiklikleri kuruluş genelinde yaymak için birbirleriyle çoğaltılır. Bu çoğaltma işlemindeki başarısızlıklar, kuruluş genelinde çeşitli sorunlara neden olabilir.
 
-AD Çoğaltma Durumu çözüm paketi, tüm çoğaltma hatalarıyla ilgili Active Directory ortamınızı düzenli olarak izler.
+AD Çoğaltma Durumu çözümü, tüm çoğaltma hatalarıyla ilgili Active Directory ortamınızı düzenli olarak izler.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
-## <a name="installing-and-configuring-the-solution"></a>Çözümü yükleme ve yapılandırma
+## <a name="installing-and-configuring-the-solution"></a>Çözümünü yükleme ve yapılandırma
 Çözümü yüklemek ve yapılandırmak için aşağıdaki bilgileri kullanın.
+
+### <a name="prerequisites"></a>Ön koşullar
+
+* AD Çoğaltma Durumu çözümü, Windows için Log Analytics aracısına sahip olan (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklü .NET Framework 4.6.2 veya üzeri bir sürümü gerektirir.  Aracı System Center 2016-Operations Manager, Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.
+* Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2 ve Windows Server 2016 çalıştıran etki alanı denetleyicilerini destekler.
+* Azure portal Azure Marketi 'nden Active Directory sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı. Ek yapılandırma gerekmez.
+
 
 ### <a name="install-agents-on-domain-controllers"></a>Aracıları etki alanı denetleyicilerine yükler
 , Değerlendirilecek etki alanının üyesi olan etki alanı denetleyicilerine aracılar yüklemelisiniz. Ya da, aracıları üye sunuculara yüklemeli ve aracıları Azure Izleyici 'ye AD Çoğaltma verileri gönderecek şekilde yapılandırmanız gerekir. Windows bilgisayarlarını Azure Izleyici 'ye bağlamayı anlamak için bkz. [Windows bilgisayarlarını Azure izleyici 'ye bağlama](../../azure-monitor/platform/agent-windows.md). Etki alanı denetleyiciniz Azure Izleyici 'ye bağlamak istediğiniz mevcut bir System Center Operations Manager ortamının zaten parçasıysa, bkz. [Azure izleyiciyi Operations Manager bağlama](../../azure-monitor/platform/om-agents.md).
@@ -35,7 +42,7 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 
 1. Bilgisayarın AD Çoğaltma Durumu çözümünü kullanarak izlemek istediğiniz etki alanının bir üyesi olduğunu doğrulayın.
 2. [Windows bilgisayarını Azure izleyici 'ye bağlayın](../../azure-monitor/platform/om-agents.md) veya zaten bağlı değilse [Azure izleyici 'ye mevcut Operations Manager ortamınızı kullanarak bağlayın](../../azure-monitor/platform/om-agents.md).
-3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName > \Solutions\ADReplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
+3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\yönetim grupları\<ManagementGroupName > \Solutions\ADReplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
 
    > [!NOTE]
    > Bu değişiklikler, Microsoft Monitoring Agent hizmeti (HealthService. exe) yeniden başlatılana kadar etkili olmaz.
@@ -46,7 +53,7 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 ## <a name="ad-replication-status-data-collection-details"></a>Veri toplama ayrıntılarını AD Çoğaltma Durumu
 Aşağıdaki tabloda, verilerin AD Çoğaltma Durumu için nasıl toplandığı hakkında veri toplama yöntemleri ve diğer ayrıntılar gösterilmektedir.
 
-| platformunun | Doğrudan aracı | SCOM Aracısı | Azure Depolama | SCOM gerekli mi? | Yönetim grubu aracılığıyla gönderilen SCOM Aracısı verileri | toplama sıklığı |
+| Platform | Doğrudan aracı | SCOM Aracısı | Azure Depolama | SCOM gerekli? | Yönetim grubu gönderilen SCOM Aracısı verileri | Toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |Beş günde bir |
 

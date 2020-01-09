@@ -1,28 +1,19 @@
 ---
-title: Azure’da bir Service Fabric kümesine Java uygulaması dağıtma | Microsoft Docs
+title: Azure 'da bir Service Fabric kümesine Java uygulaması dağıtma
 description: Bu öğreticide, Java Service Fabric uygulamasının bir Azure Service Fabric kümesine nasıl dağıtılacağını öğreneceksiniz.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c836fd122d9dba0cd7eb20fe405e63c3ca3f59eb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465285"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'da bir Service Fabric kümesine Java uygulaması dağıtma
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric kümesine Java uygulamasını dağıtma
 
 Bir serinin üçüncü kısmı olan bu öğreticide bir Service Fabric uygulamasının Azure’da bir kümeye nasıl dağıtılacağı gösterilir.
 
@@ -41,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-java-elk.md)
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -171,7 +162,7 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    EventHubs için SAS URL'niz yapıyı izler: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Örneğin, `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
+    EventHubs için SAS URL 'niz Şu yapıyı izler: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Örneğin, `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
 12. *sfdeploy.parameters.json* dosyasını açın ve önceki adımlarda bulunan aşağıdaki içerikleri değiştirin. [SAS-URL-STORAGE-ACCOUNT] 8. adımda belirtilmiştir. [SAS-URL-EVENT-HUBS] 11. adımda belirtilmiştir.
 

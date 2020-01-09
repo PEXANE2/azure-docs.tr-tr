@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355638"
 ---
-# <a name="alert-confidence-score"></a>Güvenilirlik puanı uyarısı 
+# <a name="alert-confidence-score-preview"></a>Uyarı güven puanı (Önizleme)
 
 Azure Güvenlik Merkezi, Azure 'da çalıştırdığınız kaynaklar üzerinde görünürlük sağlar ve olası sorunları algıladığında sizi uyarır. Uyarı hacmi bir güvenlik işlemleri ekibinin tek tek adreslenebilmesi için zor olabilir ve hangi uyarıların araştırılacağını önceliklendirmek için gerekli hale gelir. Uyarıların araştırması karmaşık ve zaman alıcı olabilir ve sonuç olarak bazı uyarılar yok sayılır.
 
-Güvenlik Merkezi 'ndeki güven puanı, takımınızın uyarıları önceliklendirme ve önceliklendirmesine yardımcı olabilir. Güvenlik Merkezi, bir tehdidin meşru olup olmadığını anlamak için analist tarafından kullanılan sektör en iyi uygulamalarını, akıllı algoritmaları ve işlemleri otomatik olarak uygular ve Güvenirlik puanı biçiminde anlamlı öngörüler sağlar.
+Güvenlik Merkezi 'ndeki güven puanı (Şu anda önizlemede), takımınızın uyarıları önceliklendirme ve önceliklendirmesine yardımcı olabilir. Güvenlik Merkezi, bir tehdidin meşru olup olmadığını anlamak için analist tarafından kullanılan sektör en iyi uygulamalarını, akıllı algoritmaları ve işlemleri otomatik olarak uygular ve Güvenirlik puanı biçiminde anlamlı öngörüler sağlar.
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Güvenirlik puanı nasıl tetiklenir
 

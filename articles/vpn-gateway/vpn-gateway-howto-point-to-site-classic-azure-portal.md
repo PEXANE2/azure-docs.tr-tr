@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450823"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Sertifika kimlik doğrulaması kullanarak noktadan siteye bağlantı yapılandırma (klasik)
 
@@ -43,7 +43,7 @@ Tek bir istemci bilgisayarından sanal ağınıza güvenli bir bağlantı oluşt
 
 ![Noktadan Siteye diyagramı](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Noktadan siteye sertifika kimlik doğrulama bağlantıları aşağıdaki önkoşulları gerektirir:
 
@@ -89,9 +89,9 @@ Başlamadan önce, bir Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure 
 
 Zaten bir sanal ağınız (VNet) yoksa, bir tane oluşturun. Ekran görüntüleri örnek olarak verilmiştir. Değerlerin kendinizinkilerle değiştirildiğinden emin olun. Azure portalını kullanarak sanal ağ oluşturmak için şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. **Yeni** sayfa açılır.
+1. [Azure Portal](https://portal.azure.com) menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. **Yeni** sayfası açılır.
 
-2. Market 'te **Ara** alanına *sanal ağ* girin ve döndürülen listeden **sanal ağ** ' ı seçin. **Sanal ağ** sayfası açılır.
+2. İçinde **markette Ara** alanına *sanal ağ* seçip **sanal ağ** döndürülen listeden. **Sanal ağ** sayfası açılır.
 
 3. **Bir dağıtım modeli seçin** listesinden **Klasik**' i seçin ve ardından **Oluştur**' u seçin. **Sanal ağ oluştur** sayfası açılır.
 
@@ -101,7 +101,7 @@ Zaten bir sanal ağınız (VNet) yoksa, bir tane oluşturun. Ekran görüntüler
 
 5. Açılan listeden kullanmak istediğiniz **aboneliği** seçin.
 
-6. Var olan bir **kaynak grubunu**seçin. Ya da yeni **Oluştur** ' u seçip bir ad girerek yeni bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturuyorsanız, planlanan yapılandırma değerlerinize göre kaynak grubunu adlandırın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Var olan bir **kaynak grubunu**seçin. Ya da yeni **Oluştur** ' u seçip bir ad girerek yeni bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturuyorsanız, planlanan yapılandırma değerlerinize göre kaynak grubunu adlandırın. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a genel bakış](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. VNet 'iniz için bir **konum** seçin. Bu ayar, bu sanal ağa dağıttığınız kaynakların coğrafi konumunu belirler.
 

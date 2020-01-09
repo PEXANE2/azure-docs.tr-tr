@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442773"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -22,15 +22,15 @@ Visual Studio 'da Analysis Services projelerine sahip veri veya tablo Içeri akt
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |Notlar |
 |---------|---------|---------|---------|
-|Azure SQL Veritabanı      |   Yes      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL Veri Ambarı      |   Yes      |   Yes       |<sup>[iki](#azprovider)</sup>|
-|Azure Blob Depolama      |   Yes       |    Hayır      | <sup>[1](#tab1400a)</sup> |
-|Azure Table Storage     |   Yes       |    Hayır      | <sup>[1](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Yes        |  Hayır        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    Hayır      |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Yes       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight.    |     Yes     |   Hayır       |<sup>[1](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   Yes       |   Hayır       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
+|Azure SQL Veritabanı      |   Evet      |    Evet      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SQL Veri Ambarı      |   Evet      |   Evet       |<sup>[iki](#azprovider)</sup>|
+|Azure Blob Depolama      |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Evet        |  Hayır        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight.    |     Evet     |   Hayır       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Evet       |   Hayır       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
 **Notlar:**    
@@ -44,35 +44,35 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 
 |Veri kaynağı | Bellek içi | DirectQuery |Notlar   |
 |  --- | --- | --- | --- |
-|Veritabanına erişin     |  Yes | Hayır |  |
-|Active Directory     |  Yes | Hayır | <sup>[inç](#tab1400b)</sup>  |
-|Analysis Services     |  Yes | Hayır |  |
-|Analytics platform sistemi     |  Yes | Hayır |  |
-|CSV dosyası  |Yes | Hayır |  |
-|Dynamics 365     |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Excel çalışma kitabı     |  Yes | Hayır |  |
-|Değiştirin      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Klasör      |Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|IBM Informix  |Yes | Hayır |  |
-|JSON belgesi      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|İkili dosyadan satırlar      | Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|MySQL Veritabanı     | Yes | Hayır |  |
-|OData akışı      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|ODBC sorgusu     | Yes | Hayır |  |
-|OLE DB     |   Yes | Hayır |  |
-|Oracle  | Yes  |Yes  | <sup>[tuşlarına](#oracle)</sup> |
-|PostgreSQL veritabanı   | Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Salesforce nesneleri|  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Salesforce raporları |Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|SAP HANA     |  Yes | Hayır |  |
-|SAP Business Warehouse    |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
-|SharePoint listesi      |   Yes | Hayır | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
-|SQL Server veri ambarı |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Sybase veritabanı     |  Yes | Hayır |  |
-|Teradata | Yes  | Yes  | <sup>[(](#teradata)</sup> |
-|TXT dosyası  |Yes | Hayır |  |
-|XML tablosu    |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Access Veritabanı     |  Evet | Hayır |  |
+|Active Directory     |  Evet | Hayır | <sup>[inç](#tab1400b)</sup>  |
+|Analysis Services     |  Evet | Hayır |  |
+|Analytics platform sistemi     |  Evet | Hayır |  |
+|CSV dosyası  |Evet | Hayır |  |
+|Dynamics 365     |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Excel çalışma kitabı     |  Evet | Hayır |  |
+|Değiştirin      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Klasör      |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|IBM Informix  |Evet | Hayır |  |
+|JSON belgesi      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|İkili dosyadan satırlar      | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|MySQL Veritabanı     | Evet | Hayır |  |
+|OData Akışı      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|ODBC sorgusu     | Evet | Hayır |  |
+|OLE DB     |   Evet | Hayır |  |
+|Oracle  | Evet  |Evet  | <sup>[tuşlarına](#oracle)</sup> |
+|PostgreSQL Veritabanı   | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Salesforce Nesneleri|  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Salesforce Raporları |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|SAP HANA     |  Evet | Hayır |  |
+|SAP Business Warehouse    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|SharePoint Listesi      |   Evet | Hayır | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|SQL Server |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|SQL Server veri ambarı |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Sybase Veritabanı     |  Evet | Hayır |  |
+|Teradata | Evet  | Evet  | <sup>[(](#teradata)</sup> |
+|TXT dosyası  |Evet | Hayır |  |
+|XML tablosu    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 | | | |
 
 **Notlar:**    
@@ -87,7 +87,7 @@ Bir Azure Analysis Services sunucusundan şirket içi veri kaynaklarına bağlan
 
 ## <a name="understanding-providers"></a>Sağlayıcıları anlama
 
-Visual Studio 'da tablo 1400 ve üzeri model projeleri oluştururken, varsayılan olarak veri **Al**seçeneğini kullanarak bir veri kaynağına bağlanırken bir veri sağlayıcısı belirtmeyin. Tablo 1400 ve üzeri modeller, veri kaynağı ile Analysis Services arasında bağlantıları, veri sorgularını ve karmalar yönetmek için [Power Query](/power-query/power-query-what-is-power-query.md) bağlayıcıları kullanır. Bunlar bazen bu bağlantı özelliği ayarlarındaki *yapılandırılmış* veri kaynağı bağlantıları sizin için ayarlanmış olarak adlandırılır. Ancak, eski veri kaynaklarını etkinleştirebilirsiniz. Etkinleştirildiğinde, tablo 1200 ' de desteklenen belirli veri kaynaklarına bağlanmak için **tablo Içeri aktarma Sihirbazı** ' nı ve *eski*veya *sağlayıcı* veri kaynakları olarak daha düşük modelleri kullanabilirsiniz. Sağlayıcı veri kaynağı olarak belirtildiğinde, belirli bir veri sağlayıcısı ve diğer gelişmiş bağlantı özelliklerini belirtebilirsiniz. Örneğin, şirket içi SQL Server veri ambarına veya hatta Azure SQL veritabanı 'na eski veri kaynağı olarak bağlanabilirsiniz. Daha sonra SQL Server MSOLEDBSQL veri sağlayıcısı OLE DB sürücüsünü seçebilirsiniz. Bu durumda, bir OLE DB veri sağlayıcısı seçildiğinde Power Query Bağlayıcısı üzerinden geliştirilmiş performans sağlayabilirsiniz. 
+Visual Studio 'da tablo 1400 ve üzeri model projeleri oluştururken, varsayılan olarak veri **Al**seçeneğini kullanarak bir veri kaynağına bağlanırken bir veri sağlayıcısı belirtmeyin. Tablo 1400 ve üzeri modeller, veri kaynağı ile Analysis Services arasında bağlantıları, veri sorgularını ve karmalar yönetmek için [Power Query](/power-query/power-query-what-is-power-query) bağlayıcıları kullanır. Bunlar bazen bu bağlantı özelliği ayarlarındaki *yapılandırılmış* veri kaynağı bağlantıları sizin için ayarlanmış olarak adlandırılır. Ancak, eski veri kaynaklarını etkinleştirebilirsiniz. Etkinleştirildiğinde, tablo 1200 ' de desteklenen belirli veri kaynaklarına bağlanmak için **tablo Içeri aktarma Sihirbazı** ' nı ve *eski*veya *sağlayıcı* veri kaynakları olarak daha düşük modelleri kullanabilirsiniz. Sağlayıcı veri kaynağı olarak belirtildiğinde, belirli bir veri sağlayıcısı ve diğer gelişmiş bağlantı özelliklerini belirtebilirsiniz. Örneğin, şirket içi SQL Server veri ambarına veya hatta Azure SQL veritabanı 'na eski veri kaynağı olarak bağlanabilirsiniz. Daha sonra SQL Server MSOLEDBSQL veri sağlayıcısı OLE DB sürücüsünü seçebilirsiniz. Bu durumda, bir OLE DB veri sağlayıcısı seçildiğinde Power Query Bağlayıcısı üzerinden geliştirilmiş performans sağlayabilirsiniz. 
 
 Visual Studio 'da tablo Içeri aktarma Sihirbazı 'nı kullanırken, herhangi bir veri kaynağına yönelik bağlantılar bir veri sağlayıcısı gerektirir. Sizin için varsayılan bir veri sağlayıcısı seçilidir. Gerekirse veri sağlayıcısını değiştirebilirsiniz. Seçtiğiniz sağlayıcının türü, modelin bellek içi depolama alanı veya DirectQuery kullanıp kullanmadığını ve modelinize dağıttığınız Analysis Services platformunu kullanarak, performansa bağlı olabilir.
 
@@ -106,7 +106,7 @@ Tablolu 1200 model projelerinde olduğu gibi, bir veri kaynağına bağlanmak i�
 ![Eski veri kaynakları gelişmiş özellikler](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
 
-## <a name="impersonation"></a>Ation
+## <a name="impersonation"></a>Kimliğe bürünme
 Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio veya SSMS 'de belirtilebilir.
 
 Şirket içi veri kaynakları için:

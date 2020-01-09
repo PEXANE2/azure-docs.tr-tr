@@ -1,5 +1,5 @@
 ---
-title: V 1.0 uygulaması için MSAL kapsamları | Mavisi
+title: V 1.0 uygulamaları için kapsamlar (MSAL) | Mavisi
 description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir v 1.0 uygulaması için kapsamlar hakkında bilgi edinin.
 services: active-directory
 author: TylerMSFT
@@ -13,12 +13,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 75838b655a2f4a10bce6c4cbd8310598a1fd9ed2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424064"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V 1.0 belirteçlerini kabul eden bir Web API 'SI için kapsamlar
 

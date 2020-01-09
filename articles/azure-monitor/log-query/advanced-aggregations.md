@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398305"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularında gelişmiş toplamalar
 
@@ -122,7 +122,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Kategori | TimeGenerated | biriktirme |
+| Kategori | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Doğrudan aracı | 2017-06-06T17:00:00Z | 15 |
 | Doğrudan aracı | 2017-06-06T18:00:00Z | 60 |
@@ -138,12 +138,12 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Kategori | biriktirme | TimeGenerated |
+| Kategori | count_ | TimeGenerated |
 |---|---|---|
 | Doğrudan aracı | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | ... | ... | ... |
 
-*Count_* dizisinin üçüncü öğesi beklenen bir 0 ' dır ve _TimeGenerated_ dizisinde "2017-06-06T19:00:00.0000000 z" ile eşleşen bir zaman damgası vardır. Bu dizi biçimi de okunması zordur. Dizileri genişletmek ve `summarize`tarafından oluşturulan biçim çıkışını oluşturmak için `mvexpand` kullanın:
+*Count_* dizisinin üçüncü öğesi beklendiği gibi 0 ' dır ve _TimeGenerated_ dizisinde "2017-06-06T19:00:00.0000000 z" ile eşleşen bir zaman damgası vardır. Bu dizi biçimi de okunması zordur. Dizileri genişletmek ve `summarize`tarafından oluşturulan biçim çıkışını oluşturmak için `mvexpand` kullanın:
 
 ```Kusto
 Heartbeat
@@ -152,7 +152,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Kategori | TimeGenerated | biriktirme |
+| Kategori | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Doğrudan aracı | 2017-06-06T17:00:00Z | 15 |
 | Doğrudan aracı | 2017-06-06T18:00:00Z | 60 |

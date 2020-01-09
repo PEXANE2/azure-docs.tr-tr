@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 9/17/2019
-ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453048"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Hiper ölçek (Citus) sunucu grubunu ölçeklendirme
 
-PostgreSQL için Azure veritabanı-Hyperscale (Citus), daha fazla yük ile başa çıkmak için self servis Ölçeklendirmesi sağlar. Azure portal yeni çalışan düğümleri eklemeyi ve mevcut düğümlerin kapasitesini artırmayı kolaylaştırır.
+PostgreSQL için Azure veritabanı-Hyperscale (Citus), daha fazla yük ile başa çıkmak için self servis Ölçeklendirmesi sağlar. Azure portal, yeni çalışan düğümleri eklemeyi ve mevcut düğümlerin sanal çekirdeğini artırmayı kolaylaştırır.
 
 ## <a name="add-worker-nodes"></a>Çalışan düğümleri Ekle
 
@@ -38,9 +38,9 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 `rebalance_table_shards` işlevi, bağımsız değişkeninde adlı tablonun birlikte bulundurma [grubundaki tüm](concepts-hyperscale-colocation.md) tabloları yeniden dengeler. Bu nedenle, her dağıtılmış tablo için işlevi çağırmanız gerekmez, bunu her bir birlikte bulundurma grubundan temsili bir tabloda çağırmanız yeterlidir.
 
-## <a name="increase-vcores-or-storage-space"></a>Sanal çekirdekleri veya depolama alanını artırma
+## <a name="increase-vcores"></a>Sanal çekirdekleri artırma
 
-Yeni düğümler eklemenin yanı sıra, mevcut düğümlerin yeteneklerini de artırabilirsiniz. Hiper ölçek (Citus) sunucu grubunuzdaki **Yapılandır** sekmesine gidin ve **sanal çekirdekler** ve **depolama** için kaydırıcıyı sürükleyerek tüm çalışan düğümleri için bu değerleri değiştirin. Değişiklikleri uygulamak için **Kaydet** ' e tıkladığınızdan emin olun.
+Yeni düğümler eklemenin yanı sıra, mevcut düğümlerin yeteneklerini de artırabilirsiniz. Bu özellik şu anda önizleme aşamasındadır. sunucu grubunuzdaki düğümler için daha fazla sanal çekirdek istemek üzere lütfen [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

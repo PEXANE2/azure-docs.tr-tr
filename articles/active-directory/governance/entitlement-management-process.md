@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde işlem ve e-posta bildirimleri isteme-Azure Active Directory
+title: İşlem & bildirimleri isteği-Azure AD Yetkilendirme Yönetimi
 description: Erişim paketi için istek süreci ve Azure Active Directory yetkilendirme yönetimi 'nde e-posta bildirimleri gönderildiğinde öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b86e4019b26eebb8b805a4846e583c68acb53ad6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422602"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde işlem ve e-posta bildirimleri iste
 
@@ -33,12 +33,12 @@ Erişim paketine erişmesi gereken bir Kullanıcı, erişim isteği gönderebili
 
 ![Onay işlemi diyagramı](./media/entitlement-management-process/request-process.png)
 
-| State | Açıklama |
+| Eyalet | Açıklama |
 | --- | --- |
-| Gönderme | Kullanıcı bir istek gönderir. |
+| Gönderildi | Kullanıcı bir istek gönderir. |
 | Onay bekleniyor | Bir erişim paketinin ilkesi onay gerektiriyorsa, bir istek bekleyen onaya gider. |
-| Süresi dolmuş | Onay isteği zaman aşımı içinde bir onaylayan isteği onaylamadıysanız, isteğin süresi dolar. Yeniden denemek için, kullanıcının isteklerini yeniden göndermek zorunda kalır. |
-| Reddedildiğinde | Onaylayan bir isteği reddeder. |
+| Süresi doldu | Onay isteği zaman aşımı içinde bir onaylayan isteği onaylamadıysanız, isteğin süresi dolar. Yeniden denemek için, kullanıcının isteklerini yeniden göndermek zorunda kalır. |
+| Reddedildi | Onaylayan bir isteği reddeder. |
 | Onaylandı | Onaylayan bir isteği onaylar. |
 | Sunma | Kullanıcıya erişim paketindeki tüm kaynaklara **erişim atanmamış.** Bu bir dış Kullanıcı ise, Kullanıcı kaynak dizinine henüz erişmemiş olabilir. Ayrıca onay isteğini kabul etmeyebilir. |
 | Teslim Edildi | Kullanıcıya erişim paketindeki tüm kaynaklara erişim atandı. |
@@ -69,9 +69,9 @@ Aşağıdaki diyagramda, 1. aşama ve 2. aşama ve istek sürecinde aldıkları 
 ### <a name="email-notifications-table"></a>E-posta bildirimleri tablosu
 Aşağıdaki tabloda, bu e-posta bildirimlerinin her biri hakkında daha ayrıntılı bilgi verilmektedir. Bu e-postaları yönetmek için kurallarını kullanabilirsiniz. Örneğin, Outlook 'ta, konu bu tablodan sözcükler içeriyorsa e-postaları bir klasöre taşımak için kurallar oluşturabilirsiniz:
 
-| # | E-posta konusu | Gönderildiğinde | Gönderildiği yer |
+| # | E-posta konusu | Gönderildiğinde | Alıcı |
 | --- | --- | --- | --- |
-| 1\. | Eylem gerekiyor: iletilen isteği *[Date]* tarafından onayla veya Reddet | Bu e-posta, 1. aşama (isteğin ilerletilmiş olduktan sonra) işlem yapması için gönderilir. | Aşama-1 alternatif onaylayanlar |
+| 1 | Eylem gerekiyor: iletilen isteği *[Date]* tarafından onayla veya Reddet | Bu e-posta, 1. aşama (isteğin ilerletilmiş olduktan sonra) işlem yapması için gönderilir. | Aşama-1 alternatif onaylayanlar |
 | 2 | Eylem gerekli: *[Date]* tarafından istekleri onaylama veya reddetme | Bu e-posta, yükseltme devre dışı bırakılmışsa, işlem yapmak için ilk onaylayana gönderilir. | İlk onaylayan |
 | 3 | Anımsatıcı: [ *istek sahibi]* için *[Date]* isteği onaylama veya reddetme | Bu anımsatıcı e-postası, yükseltme devre dışı bırakılmışsa ilk onaylayana gönderilir. E-posta, uygulamadıklarında işlem yapması istenir. | İlk onaylayan |
 | 4 | [ *Date* ] tarihinde *[Time]* isteği onayla veya Reddet | Bu e-posta, ilk onaylayana (yükseltme etkinse) işlem yapması için gönderilir. | İlk onaylayan |
@@ -79,8 +79,8 @@ Aşağıdaki tabloda, bu e-posta bildirimlerinin her biri hakkında daha ayrınt
 | 6 | *[Access_package]* için isteğin süresi doldu | Bu e-posta, isteğin süresi dolduktan sonra ilk onaylayana ve Aşama 1 alternatif onaylayanlara gönderilir. | İlk onaylayan, Aşama 1 alternatif onaylayanlar |
 | 7 | *[İstek sahibi]* için *[access_package]* isteği onaylandı | Bu e-posta ilk onaylayana gönderilir ve istek tamamlandığında 1 alternatif onaylayanlara gönderilir. | İlk onaylayan, Aşama 1 alternatif onaylayanlar |
 | 8 | *[İstek sahibi]* için *[access_package]* isteği onaylandı | Bu e-posta, 1. aşama isteği onaylandığında bir 2 aşamalı isteğin ilk onaylayanlara ve 1. aşamasına gönderilir. | İlk onaylayan, Aşama 1 alternatif onaylayanlar |
-| 9 | *[Access_package]* isteği reddedildi | Bu e-posta, istekleri reddedildiğinde istek sahibine gönderilir | Sahibinin |
-| 10 | İsteğiniz *[access_package]* için sona ermiştir | Bu e-posta, tek veya 2 aşamalı isteğin sonunda istek sahibine gönderilir. E-posta, isteğin zaman aşımına uğradığı istek sahibine bildirir. | Sahibinin |
+| 9 | *[Access_package]* isteği reddedildi | Bu e-posta, istekleri reddedildiğinde istek sahibine gönderilir | Requestor |
+| 10 | İsteğiniz *[access_package]* için sona ermiştir | Bu e-posta, tek veya 2 aşamalı isteğin sonunda istek sahibine gönderilir. E-posta, isteğin zaman aşımına uğradığı istek sahibine bildirir. | Requestor |
 | 11 | Eylem gerekli: *[Date]* tarafından istekleri onaylama veya reddetme | Bu e-posta, yükseltme devre dışıysa, işlem yapmak için ikinci onaylayana gönderilir. | İkinci onaylayan |
 | 12 | Eylem gerekiyor anımsatıcısı: *[Date]* tarafından isteği onaylayın veya reddedin | Yükseltme devre dışıysa, bu anımsatıcı e-postası ikinci onaylayana gönderilir. Bildirim, henüz yoksa işlem yapması istenir. | İkinci onaylayan |
 | 13 | Eylem gerekiyor: *[istek sahibi]* için *[Date]* isteği onayla veya Reddet | Bu e-posta, yükseltme etkinse, işlem yapmak için ikinci onaylayana gönderilir. | İkinci onaylayan |
@@ -88,9 +88,9 @@ Aşağıdaki tabloda, bu e-posta bildirimlerinin her biri hakkında daha ayrınt
 | 15 | Eylem gerekiyor: iletilen isteği *[Date]* tarafından onayla veya Reddet | Bu e-posta, yükseltme etkinse, işlem yapmak için aşama 2 alternatif onaylayanlara gönderilir. | 2\. aşama alternatif onaylayanlar |
 | 16 | *[İstek sahibi]* için *[access_package]* isteği onaylandı | Bu e-posta ikinci onaylayana gönderilir ve istek onaylanınca 2. aşama diğer onaylayanlara gönderilir. | İkinci onaylayan, Aşama 2 alternatif onaylayanlar |
 | 17 | *[Access_package]* için bir isteğin süresi doldu | Bu e-posta, isteğin süresi dolduktan sonra ikinci onaylayana veya alternatif onaylayanlara gönderilir. | İkinci onaylayan, Aşama 2 alternatif onaylayanlar |
-| 18 | Artık *[access_package]* erişimine sahipsiniz | Bu e-posta, son kullanıcılara erişimini kullanmaya başlamak için gönderilir. | Sahibinin |
-| 19 | [ *Date]* tarafından *[access_package]* için erişimi uzat | Bu e-posta, erişiminin süresi dolmadan son kullanıcılara gönderilir. | Sahibinin |
-| 20 | *[Access_package]* için erişim sona erdi | Bu e-posta, erişiminin süresi dolduktan sonra son kullanıcılara gönderilir. | Sahibinin |
+| 18 | Artık *[access_package]* erişimine sahipsiniz | Bu e-posta, son kullanıcılara erişimini kullanmaya başlamak için gönderilir. | Requestor |
+| 19 | [ *Date]* tarafından *[access_package]* için erişimi uzat | Bu e-posta, erişiminin süresi dolmadan son kullanıcılara gönderilir. | Requestor |
+| 20 | *[Access_package]* için erişim sona erdi | Bu e-posta, erişiminin süresi dolduktan sonra son kullanıcılara gönderilir. | Requestor |
 
 ### <a name="access-request-emails"></a>Erişim isteği e-postaları
 

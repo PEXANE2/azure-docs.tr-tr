@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: node. js ile Azure Service Bus konuları ve abonelikleri kullanma'
+title: Node. js ile Azure/Service-Bus konuları ve abonelikleri kullanma
 description: "Hızlı başlangıç: bir Node. js uygulamasından Azure 'da Service Bus konuları ve abonelikleri nasıl kullanacağınızı öğrenin."
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 160f9831a23ed16fc33ddbbb9b4e07a5627a3f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462120"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: node. js ve Azure/Service-Bus paketiyle Service Bus konuları ve abonelikleri kullanma
 > [!div class="op_multi_selector" title1="Programlama dili" title2="Node. js 'a paketi ekleyin"]

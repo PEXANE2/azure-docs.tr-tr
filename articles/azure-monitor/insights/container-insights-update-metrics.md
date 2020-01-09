@@ -1,18 +1,14 @@
 ---
 title: Ölçümler için Azure Izleyicisini güncelleştirme | Microsoft Docs
 description: Bu makalede, toplu ölçümler üzerinde araştırmayı ve uyarı vermeyi destekleyen özel ölçümler özelliğini etkinleştirmek üzere kapsayıcılar için Azure Izleyicisini nasıl güncelleştireceğinizi açıklanmaktadır.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403234"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Ölçümleri etkinleştirmek için kapsayıcılar için Azure Izleyicisini güncelleştirme
 
@@ -33,14 +29,14 @@ Kümeyi bu yeni özellikleri destekleyecek şekilde güncelleştirmek Azure port
 
 Her iki işlem de, aracı tarafından toplanan verilerin kümeler kaynağına yayımlanabilmesi için **Izleme ölçümleri yayımcı** rolünü kümenin hizmet sorumlusuna atar. Ölçümleri izlemek, yalnızca ölçümleri kaynağa iletmek için izne sahiptir, herhangi bir durumu değiştiremez, kaynağı güncelleştiremez veya herhangi bir veriyi okuyabilir. Rol hakkında daha fazla bilgi için bkz. [ölçümleri Izleme yayımcısı rolü](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakileri onaylayın:
 
 * Özel ölçümler yalnızca Azure bölgelerinin bir alt kümesinde kullanılabilir. Desteklenen bölgelerin listesi [burada](../platform/metrics-custom-overview.md#supported-regions)belgelenmiştir.
 * Düğüm koleksiyonunu ve pod özel performans ölçümlerini etkinleştirmek için AKS küme kaynağında **[sahip](../../role-based-access-control/built-in-roles.md#owner)** rolünün bir üyesisiniz. 
 
-Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Azure portal bir kümeyi yükseltme
 
@@ -62,7 +58,7 @@ Azure komut kabuğu 'nda Bash kullanarak aboneliğinizdeki tüm kümeleri günce
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Bu tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonuç şunu içerir:
+    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
@@ -331,7 +327,7 @@ Azure PowerShell kullanarak aboneliğinizdeki tüm kümeleri güncelleştirmek i
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Bu tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonuç şunu içerir:
+    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
@@ -582,7 +578,7 @@ Azure PowerShell kullanarak belirli bir kümeyi güncelleştirmek için aşağı
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Bu tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonuç şunu içerir:
+    Yapılandırma değişikliğinin tamamlanması birkaç saniye sürebilir. Tamamlandığında, aşağıdakine benzer ve sonucu içeren bir ileti görüntülenir:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407825"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak bölge bölge ayarlama
 
@@ -32,11 +32,11 @@ Bu öğreticide şunları öğreneceksiniz:
 > *   Bir oluşturma varlığının yapım sitesi içinde olup olmadığını izlemek için Azure haritalar bölge hizmeti API 'Lerini kullanın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma 
 
-Bu öğreticideki adımları tamamlayabilmeniz için, S1 fiyatlandırma katmanıyla bir Azure Maps hesap aboneliği oluşturmak üzere [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) ' deki yönergeleri izleyin ve hesabınıza ilişkin birincil abonelik anahtarını almak için [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
+Bu öğreticideki adımları tamamlayabilmeniz için, [bir hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri izleyerek S1 fiyatlandırma katmanıyla bir Azure Maps hesap aboneliği oluşturun ve hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 ## <a name="upload-geofences"></a>Bölge dilimleri karşıya yükle
 
@@ -56,7 +56,7 @@ Postman uygulamasını açın ve Azure Maps, veri yükleme API 'sini kullanarak 
     
     URL yolundaki GEOJSON parametresi, karşıya yüklenen verilerin veri biçimini temsil eder.
 
-3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure Maps birincil abonelik anahtarınızla değiştirin.
+3. **Parametreler**' e tıklayın ve post isteği URL 'si için kullanılacak aşağıdaki anahtar/değer çiftlerini girin. Abonelik anahtarı değerini Azure haritalar anahtarınızla değiştirin.
    
     ![Anahtar-değer params Postman](./media/tutorial-geofence/postman-key-vals.png)
 

@@ -1,28 +1,19 @@
 ---
-title: Yerel Service Fabric kümesinde Java uygulamasının hatasını ayıklama | Microsoft Docs
+title: Yerel Service Fabric kümesinde Java uygulamasında hata ayıklama
 description: Bu öğreticide, yerel kümede çalıştırılan bir Service Fabric Java uygulamasından nasıl hata ayıklama yapılacağını ve günlüklerin alınacağını öğreneceksiniz.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61224055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465393"
 ---
-# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Öğretici: Yerel bir Service Fabric kümesinde dağıtılan bir Java uygulamasının hatasını ayıklama
+# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Öğretici: Yerel Service Fabric kümesinde dağıtılan bir Java uygulamasının hatasını ayıklama
 
 Bu öğretici, bir dizinin ikinci bölümüdür. Eclipse for the Service Fabric uygulaması kullanılarak uzak bir hata ayıklayıcının nasıl ekleneceğini öğreneceksiniz. Ayrıca çalıştırılan uygulamalardaki günlüklerin geliştirici için uygun bir konuma nasıl yeniden yönlendirileceğini de öğreneceksiniz.
 
@@ -41,7 +32,7 @@ Serinin ikinci bölümünde şunları öğrenirsiniz:
 > * Günlükleri yapılandırılabilir bir konuma yeniden yönlendirme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -55,7 +46,7 @@ Bu öğreticiye başlamadan önce:
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-[Derleme ve dağıtma](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) uygulamaya yerel geliştirme kümesi.
+Uygulamayı [derleyin ve](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) yerel geliştirme kümesine dağıtın.
 
 ## <a name="debug-java-application-using-eclipse"></a>Eclipse kullanarak Java uygulamasının hatasını ayıklama
 
@@ -65,7 +56,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 3. Projeleri İçeri Aktar penceresinde **Kök dizini seçin** seçeneğini belirleyin ve **Oylama** dizinini seçin. Birinci öğretici serisini izlediyseniz **Oylama** dizini, **Eclipse çalışma alanı** dizinindedir.
 
-4. Hatasını ayıklamak istediğiniz hizmetin entryPoint.sh öğesini güncelleştirin; böylece hizmet, uzaktan hata ayıklama parametreleriyle Java işlemini başlatır. Bu öğretici için durum bilgisi olmayan ön uç kullanılır: *Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*. Bu örnekte, hata ayıklama için 8001 numaralı bağlantı noktası ayarlanmıştır.
+4. Hatasını ayıklamak istediğiniz hizmetin entryPoint.sh öğesini güncelleştirin; böylece hizmet, uzaktan hata ayıklama parametreleriyle Java işlemini başlatır. Bu öğreticide durum bilgisiz ön ucu kullanılır: *Oylama/VotingApplication/VotingWebPkg/Code/EntryPoint. sh*. Bağlantı noktası 8001, bu örnekte hata ayıklama için ayarlanır.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
@@ -91,15 +82,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. Eclipse IDE’de **Çalıştır -> Hata Ayıklama Yapılandırmaları -> Uzak Java Uygulaması** seçeneklerini belirleyin, oluşturduğunuz **Oylama** yapılandırmasına ve sonra **Hata Ayıklama**’ya tıklayın.
 
-11. Web tarayıcısı ve erişim Git **8080**. Bu kesme noktasını otomatik olarak ulaşırsınız ve Eclipse girin **hata ayıklama perspektifi**.
+11. Web tarayıcınıza gidin ve **localhost: 8080**' e erişin. Bu, kesme noktasına otomatik olarak ulaşacaktır ve Çakışan Küreler **hata ayıklama perspektifini**girer.
 
-Artık herhangi bir Service Fabric Eclipse uygulamada hata ayıklamak için aynı adımları uygulayabilirsiniz.
+Artık aynı adımları, çakışan küreler Service Fabric bir uygulamada hata ayıklamak için uygulayabilirsiniz.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Uygulama günlüklerini özel konuma yeniden yönlendirme
 
 Aşağıdaki adımlarda, varsayılan */var/log/syslog* konumundaki uygulama günlüklerinin özel bir konuma nasıl yeniden yönlendirileceği gösterilmektedir.
 
-1. Şu anda yalnızca Service Fabric Linux kümelerinde çalıştırılan uygulamalar tek bir günlük dosyasının seçilmesini destekler. Uygulama günlükleri her zaman Git şekilde ayarlamak için */tmp/mysfapp0.0.log*, voting/votingapplication/votingwebpkg/Code/Logging.Properties konumunda Logging.Properties adlı bir dosya oluşturun *Voting/VotingApplication/VotingWebPkg/Code/logging.properties*  ve aşağıdaki içeriği ekleyin.
+1. Şu anda Service Fabric Linux kümelerinde çalışan uygulamalar yalnızca tek bir günlük dosyası çekmeyi destekler. Günlüklerin her zaman */tmp/mysfapp0.0.log*' e gitmesi için bir uygulama ayarlamak üzere, şu konumdaki *Oylama/votingapplication/VotingWebPkg/Code/logging. Properties* dosyasında logging. Properties adlı bir dosya oluşturun ve aşağıdaki içeriği ekleyin.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -118,7 +109,7 @@ Aşağıdaki adımlarda, varsayılan */var/log/syslog* konumundaki uygulama gün
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    Aşağıdaki örnek, önceki bölümde örnek bir yürütme hata ayıklayıcısı ile bağlanmış, yürütme benzer gösterir.
+    Aşağıdaki örnek, bir önceki bölümdeki yürütmeye benzer şekilde, hata ayıklayıcı eklenmiş bir örnek yürütmeyi gösterir.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

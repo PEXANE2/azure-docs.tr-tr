@@ -1,5 +1,6 @@
 ---
-title: Azure İşlev Uygulamalarını Azure API Management'a API olarak aktarma | Microsoft Docs
+title: Azure İşlev Uygulaması API Management API olarak içeri aktarma
+titleSuffix: Azure API Management
 description: Bu öğreticide, bir Azure İşlev Uygulamasını Azure API Management'a API olarak nasıl aktaracağınız gösterilmektedir.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442576"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure İşlev Uygulamalarını Azure API Management'a API olarak aktarma
 
@@ -34,7 +35,7 @@ Bu makale, Azure İşlev Uygulamalarını Azure API Management'a API olarak akta
 > * Azure portalında API’yi test etme
 > * API'yi geliştirici portalında test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure API Management örneği oluşturma](get-started-create-service-instance.md) hızlı başlangıcını tamamlayın.
 * Aboneliğinizde bir Azure İşlevleri uygulaması bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure İşlev Uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Uygulamanın HTTP tetikleyicili İşlevler içermesi ve yetkilendirme düzeyinin *Anonim* veya *İşlev* olarak ayarlanması gerekir.

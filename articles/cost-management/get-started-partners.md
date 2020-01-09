@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/15/2019
+ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: ecef301d2745cf7c86f61f0ffa9106c7bfd10623
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 958335892b62c17e7e8bc3129796e2906cff2070
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219215"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441041"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
@@ -28,6 +28,7 @@ CSP iş ortakları maliyet yönetimini şu şekilde kullanır:
 - Maliyet analizine uygulanan Iş ortağı kazanılmış kredisi (PEC) olan kaynak maliyetlerini görüntüleyin.
 - Maliyetler bütçeleri aştığında programlı [bütçeleri](tutorial-acm-create-budgets.md) ve uyarıları kullanarak bildirimleri ve Otomasyonu ayarlayın.
 - Maliyet yönetimi verilerine müşteri erişimi sağlayan Azure Resource Manager ilkesini etkinleştirin. Müşteriler daha sonra [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/calculator/)sahip aboneliklerine ait tüketim maliyeti verilerini görüntüleyebilir.
+- Maliyet ve kullanım verilerini, Kullandıkça Öde aboneliğine sahip bir depolama blobuna dışa aktarın.
 
 Tüm müşterilerin maliyetlerini gösteren bir örnek aşağıda verilmiştir.
 tüm müşterilerin maliyetlerini gösteren örnek ![](./media/get-started-partners/customer-costs1.png)
@@ -37,11 +38,17 @@ tek bir müşterinin maliyetlerini gösteren örnek ![](./media/get-started-part
 
 Azure maliyet yönetimi 'nde kullanılabilen tüm işlevler REST API 'Leri ile de kullanılabilir. Maliyet yönetimi görevlerini otomatikleştirmek için API 'Leri kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure maliyet yönetimi, faturalandırma hesabınıza veya aboneliğine yönelik okuma erişimi gerektirir. Verileriniz üzerinde, faturalama hesabından veya bir yönetim grubundan, uygulamalarınızı yönettiğiniz tek tek kaynak gruplarına kadar erişim verilebilir. Bir faturalandırma hesabı için Azure maliyet yönetimine erişimi etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview). **Genel yönetici** ve **yönetici Aracısı** rolleri bir faturalandırma hesabının maliyetlerini yönetebilir.
+Azure maliyet yönetimi, bir iş ortağı olarak yalnızca Azure planındaki abonelikler için yerel olarak kullanılabilir.
 
-Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md).
+Azure portal Azure maliyet yönetimi 'ni etkinleştirmek için, Microsoft Müşteri sözleşmesinin (müşteri adına) müşterinin kabul edildiğini onaylamalısınız ve müşteriyi Azure planına geçirilir. Azure maliyet yönetimi 'nde yalnızca Azure planına geçirilecek abonelikler için maliyetler kullanılabilir.
+
+Azure maliyet yönetimi, faturalandırma hesabınıza veya aboneliğine yönelik okuma erişimi gerektirir.
+
+Bir faturalandırma hesabı için Azure maliyet yönetimine erişimi etkinleştirme ve atama hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview). **Genel yönetici** ve **yönetici Aracısı** rolleri bir faturalandırma hesabının maliyetlerini yönetebilir.
+
+Abonelik kapsamındaki Azure maliyet yönetimine erişmek için, aboneliğe RBAC erişimi olan herhangi bir Kullanıcı, perakende (Kullandıkça öde) fiyatları üzerinden maliyetleri görüntüleyebilir. Ancak müşteri kiracının maliyet görünürlüğü ilkesinin etkinleştirilmesi gerekir. Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md).
 
 
 ## <a name="how-cost-management-uses-scopes"></a>Maliyet yönetimi kapsamları nasıl kullanır
@@ -113,13 +120,13 @@ Maliyet görünürlüğü ilkesi iş ortağı tarafından etkinleştirildiğinde
 
 İş ortakları, bu bilgileri kullanarak müşterilerine yönelik Azure kullanım ücretlerini görüntüleme ilkesini etkinleştirir.
 
-Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' e tıklayın. Bir faturalandırma hesabı seçin ve ardından **müşteriler**' e tıklayın. Müşterilerin listesi faturalandırma hesabıyla ilişkilendirilir.
+Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. Bir faturalandırma hesabı seçin ve ardından **müşteriler**' i seçin. Müşterilerin listesi faturalandırma hesabıyla ilişkilendirilir.
 
 Müşteriler listesinde, maliyetleri görüntülemek için izin vermek istediğiniz müşteriyi seçin.
 
 ![Maliyet yönetimi 'nde müşterileri seçin](./media/get-started-partners/customer-list.png)
 
-**Ayarlar**altında **ilkeler**' e tıklayın.
+**Ayarlar**altında **ilkeler**' i seçin.
 
 Geçerli maliyet görünürlüğü ilkesi, Seçili müşteriyle ilgili aboneliklerle ilişkili **Azure kullanım** ücretleri için gösterilir.
 müşterilerin Kullandıkça Öde ücretlerini görüntülemesine izin vermek için ![](./media/get-started-partners/cost-management-billing-policies.png)
@@ -130,15 +137,15 @@ Maliyet ilkesi **Evet**olarak ayarlandığında, müşteri kiracısıyla ilişki
 
 Maliyet görünürlüğü ilkesi etkinleştirildiğinde, abonelik kullanımı olan tüm hizmetler Kullandıkça Öde tarifelerine göre maliyetleri gösterir. Rezervasyon kullanımı, gerçek ve ortaya çıkan maliyetler için sıfır ücret ile görünür. Satın alımlar ve yetkilendirmeler belirli bir abonelikle ilişkili değildir. Bu nedenle, satın alma işlemleri abonelik kapsamında gösterilmez.
 
-Müşteri kiracının maliyetlerini görüntülemek için maliyet yönetimi + Faturalandırma ' i açın ve faturalama hesapları ' na tıklayın. Faturalandırma hesapları listesinde, bir faturalandırma hesabına tıklayın.
+Müşteri kiracının maliyetlerini görüntülemek için maliyet yönetimi + Faturalandırma ' i açın ve faturalandırma hesapları ' nı seçin. Faturalandırma hesapları listesinde bir faturalandırma hesabı seçin.
 
 ![Bir faturalandırma hesabı seçin](./media/get-started-partners/select-billing-account.png)
 
-**Faturalama**altında **Azure abonelikleri**' ne ve ardından bir müşteriye tıklayın.
+**Faturalama**altında **Azure abonelikleri**' ni seçin ve ardından bir müşteri seçin.
 
 ![Bir Azure aboneliği müşterisi seçin](./media/get-started-partners/subscriptions-select-customer.png)
 
-**Maliyet Analizi** ' ne tıklayın ve maliyetleri gözden geçirmeye başlayın.
+**Maliyet Analizi** ' ni seçin ve maliyetleri gözden geçirmeyi başlatın.
 Maliyet analizi, bütçeler ve uyarılar, Kullandıkça Öde tarifesine göre abonelik ve kaynak grubu RBAC kapsamları için kullanılabilir.
 
 ![Maliyet analizini müşteri olarak görüntüleme ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
@@ -147,7 +154,9 @@ RBAC kapsamlarındaki ayrılmış örnekler için itfası görünümleri ve ger�
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Maliyet analizinde maliyetleri analiz etme
 
-İş ortakları, belirli bir müşteri ya da bir fatura için müşteriler genelinde maliyet analizinde maliyetleri araştırabilir ve analiz edebilir. [Maliyet Analizi](quick-acm-cost-analysis.md) görünümünde, [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyalarına](quick-acm-cost-analysis.md#automation-and-offline-analysis)dışarı aktarabilirsiniz.
+İş ortağı kiracısındaki faturalandırma kapsamlarına erişimi olan iş ortakları, belirli bir müşteri veya bir fatura için müşteriler genelinde maliyet analizinde faturalanan maliyetleri inceleyebilir ve analiz edebilir. [Maliyet Analizi](quick-acm-cost-analysis.md) görünümünde, [görünümleri kaydedebilir](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) ve verileri [CSV ve PNG dosyalarına](quick-acm-cost-analysis.md#automation-and-offline-analysis)dışarı aktarabilirsiniz.
+
+Müşteri kiracısındaki aboneliğe erişimi olan RBAC kullanıcıları, müşteri kiracısındaki abonelikler için perakende maliyetleri analiz edebilir, görünümleri kaydedebilir ve verileri CSV ve PNG dosyalarına aktarabilir.
 
 Maliyetleri birden çok alana göre analiz etmek için, maliyet analizinde filtre ve gruplandırma özelliklerini kullanabilirsiniz. İş ortaklarına özgü alanlar, sonraki bölümde gösterilmiştir.
 
@@ -178,7 +187,7 @@ Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki ve
 | servicePeriodEndDate | Hizmet kullanımının ücretler için derecelendirilme süresinin bitiş tarihi. Azure hizmetleri için fiyatlar, derecelendirme dönemine göre belirlenir. | Yok |
 | date | Azure tüketim verileri için, kullanım tarihini derecelendirildi olarak gösterir. Ayrılmış örnek için, satın alınan tarihi gösterir. Market ve destek gibi yinelenen ücretler ve tek seferlik ücretler için, satın alma tarihini gösterir. | Yok |
 | ProductID | Tüketim veya satın alma ile tahakkuk etmiş ücretler içeren ürün için tanımlayıcı. Bu, Iş ortağı merkezinde gösterildiği gibi ProductID ve SKuID öğesinin birleştirilmiş anahtarıdır. | Ürünün KIMLIĞI. |
-| product | Faturada gösterildiği gibi, tüketim veya satın alma ücreti verilen ürünün adı. | Katalogdaki ürün adı. |
+| ürün | Faturada gösterildiği gibi, tüketim veya satın alma ücreti verilen ürünün adı. | Katalogdaki ürün adı. |
 | serviceFamily | Satın alınan veya ücretlendirilen ürün için hizmet ailesini gösterir. Örneğin, depolama veya hesaplama. | Yok |
 | productOrderID | Aboneliğin ait olduğu varlık veya Azure planı adının tanıtıcısı. Örneğin, Azure planı. | Yok |
 | productOrderName | Aboneliğin ait olduğu Azure planının adı. Örneğin, Azure planı. | Yok|
@@ -190,7 +199,7 @@ Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki ve
 | meterRegion | Veri merkezi konumuna bağlı olarak ücretlendirilen belirli hizmetler için veri merkezinin konumunu belirtir. | Uygulanabilir ve doldurulmuş yerlerde, hizmetler için bir veri merkezinin bölgesel konumu. |
 | abonelik kimliği | Azure aboneliği için Microsoft tarafından oluşturulan benzersiz tanımlayıcı. | Yok |
 | subscriptionName | Azure aboneliğinin adı. | Yok |
-| Terim | Teklifin geçerlilik süresini görüntüler. Örneğin, ayrılmış örnekler, ayrılmış örnek için yıllık bir dönem olan 12 ay gösterir. Tek seferlik satın alımlarda veya yinelenen satın alımlarda, terim SaaS, Azure Marketi ve destek için bir ay görüntüler. Azure tüketimi için geçerli değildir. | Yok |
+| Sözleşme Dönemi | Teklifin geçerlilik süresini görüntüler. Örneğin, ayrılmış örnekler, ayrılmış örnek için yıllık bir dönem olan 12 ay gösterir. Tek seferlik satın alımlarda veya yinelenen satın alımlarda, terim SaaS, Azure Marketi ve destek için bir ay görüntüler. Azure tüketimi için geçerli değildir. | Yok |
 | publisherType (Firstparti, üçüncü taraf satıcı, thirdPartyAgency) | Yayımcıyı birinci taraf, üçüncü taraf satıcı veya üçüncü taraf kurumu olarak tanımlayan Yayımcı türü. | Yok |
 | partNumber | Kullanılmayan ayrılmış örnek ve Azure Market Hizmetleri için parça numarası. | Yok |
 | publisherName | Microsoft veya üçüncü taraf yayımcılar dahil olmak üzere hizmet yayımcısının adı. | Ürünün yayımcısının adı.|
@@ -198,14 +207,14 @@ Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki ve
 | reservationName | Ayrılmış örnek adı. | Yok |
 | Rezervno | Ayrılmış örnek için OrderID. | Yok |
 | frequency | Ayrılmış bir örnek için ödeme sıklığı. | Yok |
-| Kaynak grubu | Yaşam döngüsü kaynak yönetimi için kullanılan Azure Kaynak grubunun adı. | Kaynak grubunun adı. |
+| resourceGroup | Yaşam döngüsü kaynak yönetimi için kullanılan Azure Kaynak grubunun adı. | Kaynak grubunun adı. |
 | InstanceId (veya) RESOURCEID | Kaynak örneğinin tanımlayıcısı. | Kaynak özelliklerinin tamamını içeren bir ResourceURI olarak gösterilir. |
 | resourceLocation | Kaynak konumunun adı. | Kaynağın konumu. |
 | Konum | Kaynağın normalleştirilmiş konumu. | Yok |
 | effectivePrice | Hizmetin fiyatlandırma para birimi cinsinden geçerli birim fiyatı. Ürün, hizmet ailesi, ölçüm ve teklif için benzersiz. Faturalandırma hesabı için fiyat listesi 'nde fiyatlandırma ile kullanılır. Katmanlı fiyatlandırma veya dahil edilen bir miktar olduğunda, tüketim için karıştırılan fiyatı gösterir. | Ayarlamaların ardından birim fiyatı. |
 | Miktar | Satın alınan veya tüketilen ölçülen miktar. Faturalandırma döneminde kullanılan ölçüm miktarı. | Birim sayısı. Mutabakat sırasında faturalandırma sisteminizdeki bilgilerle eşleştiğinden emin olun. |
 | unitOfMeasure | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB ve saat. | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB, saat ve 10, 000s. |
-| pricingCurrency | Birim fiyatını tanımlayan para birimi. | Pricelist içindeki para birimi.|
+| pricingCurrency | Birim fiyatını tanımlayan para birimi. | Fiyat listesindeki para birimi.|
 | billingCurrency | Faturalandırılan maliyeti tanımlayan para birimi. | Müşterinin coğrafi bölgesinin para birimi. |
 | chargeType | Maliyetin, satın alma ve geri ödeme gibi Azure maliyet yönetiminde gösterdiği ücret türünü tanımlar. | Ücret veya ayarlamanın türü. Geçerli etkinlik için kullanılamaz. |
 | Maliyetsiz para birimi | Faturalanan para biriminde vergi öncesi, ExtendedCost veya karıştırılan maliyet. | Yok |
@@ -227,11 +236,11 @@ Kullanım ayrıntı dosyaları ve maliyet yönetimi API 'Lerinde aşağıdaki ve
 
 Azure maliyet yönetimi 'nde iş ortakları, PEC avantajlarının alındığı maliyetleri görüntülemek için maliyet analizini kullanabilir.
 
-Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. **Maliyet yönetimi**altında **Maliyet Analizi**' ne tıklayın.
+Azure portal, iş ortağı kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. **Maliyet yönetimi**altında **Maliyet Analizi**' ni seçin.
 
 Maliyet analizi görünümü iş ortağı için faturalandırma hesabının maliyetlerini gösterir. Faturaları mutabık kılmak için iş ortağı, belirli bir müşteri veya faturalandırma profili için gereken **kapsamı** seçin.
 
-Halka grafiğinde, açılan listeye tıklayın ve sonra da PEC 'in maliyetlerine gitmek için **Partnertatnedalacaktappnda** ' i seçin.
+Halka grafiğinde, açılan listeyi seçin ve ardından, iş ortağı maliyetlerine gitmek için **Partnertatnedalacaktappnda** ' ı seçin.
 
 ![İş ortağının kazanılan krediyi görüntülemeyi gösteren örnek](./media/get-started-partners/cost-analysis-pec1.png)
 
@@ -245,6 +254,26 @@ Hizmet kullanım verilerinin normalde maliyet yönetimi 'nde görüntülenmesi 8
 Ayrıca, **Grup ölçütü** seçeneklerini kullanarak **Partnertatnedalacaklı tapptatmi** özelliğine göre gruplandırabilirsiniz ve filtre uygulayabilirsiniz. PEC 'e sahip olmayan ve desteklemeyen maliyetleri incelemek için seçenekleri kullanın.
 
 ![İş ortağı tarafından grup veya filtreleme-kazanılan kredi](./media/get-started-partners/cost-analysis-pec2.png)
+
+## <a name="export-cost-data-to-azure-storage"></a>Maliyet verilerini Azure depolama 'ya aktarma
+
+Bir iş ortağı kiracısındaki faturalandırma kapsamlarına erişimi olan iş ortakları, maliyet ve kullanım verilerini bir Azure Storage blob 'una aktarabilir. Blob iş ortağı kiracısında paylaşılan bir hizmet aboneliği veya müşterinin aboneliği olmayan bir abonelikte olmalıdır. Maliyet verilerini dışarı aktarmayı etkinleştirmek için, dışarı aktarılmış maliyet verilerini barındırmak üzere iş ortağı kiracısında bağımsız bir Kullandıkça Öde aboneliği ayarlamanızı öneririz. Dışarı aktarma depolama hesabı, Kullandıkça Öde aboneliğinde barındırılan Azure Depolama Blobu üzerinde oluşturulur. İş ortağının dışa aktarma oluşturduğu kapsama bağlı olarak, ilişkili veriler depolama hesabına otomatik olarak yinelenen bir şekilde dışarı aktarılabilir.
+
+Aboneliğe RBAC erişimi olan kullanıcılar ayrıca maliyet verilerini müşteri kiracısındaki herhangi bir abonelikte barındırılan bir Azure depolama blobuna dışarı aktarabilir.
+
+### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>İş ortağı kiracısında veya müşteri kiracısında dışarı aktarma oluşturma
+
+Azure portal, iş ortağı kiracısında veya müşteri kiracısında oturum açın ve **maliyet yönetimi + faturalandırma**' i seçin. Uygun bir kapsam seçin (örneğin, bir faturalandırma hesabı) ve ardından **Maliyet Analizi**' ni seçin. Sayfa yüklendiğinde, **dışarı aktar**' ı seçin. Dışarı aktarma zamanlaması altındaki **tüm dışarı aktarmaları görüntüle** ' yi seçin.
+
+Sonra **Ekle** ' yi seçin ve adı yazın ve bir dışarı aktarma türü seçin. **depolama** sekmesini seçin ve gerekli bilgileri girin.
+
+İş ortağı kiracısında bir dışarı aktarma oluşturduğunuzda, iş ortağı kiracısında Kullandıkça Öde aboneliğini seçin. Bu aboneliği kullanarak bir Azure depolama hesabı oluşturun.
+
+Müşteri kiracısında RBAC kullanıcıları için müşteri kiracısında bir abonelik seçin. Aboneliği kullanarak bir Azure depolama hesabı oluşturun.
+
+İçeriği gözden geçirin ve ardından bir dışarı aktarma zamanlamak için **Oluştur** ' u seçin.
+
+Dışarı aktarma listesindeki verileri doğrulamak için depolama hesabı adını seçin. Depolama hesabı sayfasında **kapsayıcılar** ' ı seçin ve kapsayıcıyı seçin. Karşılık gelen klasöre gidin ve CSV dosyasını seçin. CSV dosyasını almak ve açmak için **İndir** ' i seçin. İçe aktarılmış veriler, Azure portal kullanım ayrıntılarına benzer maliyet verilerine benzer.
 
 ## <a name="cost-management-rest-apis"></a>Maliyet yönetimi REST API 'Leri
 

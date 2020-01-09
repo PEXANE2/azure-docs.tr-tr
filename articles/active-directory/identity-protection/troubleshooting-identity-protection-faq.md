@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443564"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -42,6 +42,14 @@ Risk algılamasında **Çözümle** , durumu **risk tabanlı ILKEYE göre yönet
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
+### <a name="why-is-a-user-is-at-risk"></a>Kullanıcı neden risk altında?
+
+Azure AD Kimlik Koruması müşteriyseniz, [riskli kullanıcılar](howto-identity-protection-investigate-risk.md#risky-users) görünümüne gidin ve risk altındaki kullanıcıya tıklayın. Alttaki çekmecede, ' risk geçmişi ' sekmesi, bir Kullanıcı riski değişikliğine yol açan tüm olayları gösterecektir. Kullanıcının tüm riskli oturum açma işlemlerini görmek için, ' kullanıcının riskli oturum açma işlemleri ' ne tıklayın. Bu kullanıcıya yönelik tüm risk algılamalarını görmek için, ' kullanıcının risk algılamaları ' seçeneğine tıklayın.
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Belirli bir türdeki algılamalardan nasıl rapor alabilirim?
+
+Risk algılamaları görünümüne gidin ve ' algılama türü 'ne göre filtreleme yapın. Daha sonra bu raporu ' de indirebilirsiniz. CSV veya. En üstteki **İndir** DÜĞMESINI kullanarak JSON biçimi. Daha fazla bilgi için bkz. [nasıl yapılır: riski araştırma](howto-identity-protection-investigate-risk.md#risk-detections).
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Her risk algılaması için kendi risk düzeylerimi neden ayarlayamıyorum?
 
 Kimlik koruması 'ndaki risk düzeyleri algılama hassasiyetini temel alır ve denetimli makine öğrenimi tarafından desteklenir. Kullanıcıların hangi deneyimle sunulduğunu özelleştirmek için, Yönetici Kullanıcı risk ve oturum açma risk Ilkelerinden belirli kullanıcıları/grupları dahil edebilir/hariç tutabilir.
@@ -49,6 +57,20 @@ Kimlik koruması 'ndaki risk düzeyleri algılama hassasiyetini temel alır ve d
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Bir oturum açma konumu, kullanıcının gerçekten gerçekten oturum açmasından nasıl eşleşmez?
 
 IP coğrafi coğrafi eşleme, sektör genelinde bir zorluk dır. Oturum açma raporunda listelenen konumun gerçek konumla eşleşmediğinden, Microsoft destek 'e ulaşın. 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Eski Kullanıcı arabiriminde yaptığımız gibi belirli risk algılamalarını nasıl kapatabilirim?
+
+Bağlı oturum açmayı tehlikeye veya güvenli olarak onaylayarak risk algılamaları hakkında geri bildirimde bulunun. Oturum açma sırasında verilen geri bildirimler, bu oturum açma sırasında yapılan tüm algılamaları aşağı doğru ayırır. Bir oturum açma ile bağlantılı olmayan algılamaları kapatmak istiyorsanız, bu geri bildirimi Kullanıcı düzeyinde sağlayabilirsiniz. Daha fazla bilgi için bkz. [nasıl yapılır: risk geri bildirimi verme Azure AD kimlik koruması](howto-identity-protection-risk-feedback.md).
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Kullanıcı ile neler olduğunu anlamak için zaman içinde ne kadar geri gidebilirim?
+
+- [Riskli kullanıcılar](howto-identity-protection-investigate-risk.md#risky-users) görünümü, bir kullanıcının geçmişteki tüm oturum açma işlemlerini temel alarak risk altında olduğunu gösterir. 
+- [Riskli oturum açma](howto-identity-protection-investigate-risk.md#risky-sign-ins) işlemleri görünümü son 30 gün içinde riskli işaretleri gösterir. 
+- [Risk algılamaları](howto-identity-protection-investigate-risk.md#risk-detections) görünümü, son 90 gün içinde yapılan risk algılamalarını gösterir.
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Belirli bir algılama hakkında nasıl daha fazla bilgi edinebilirim?
+
+Tüm risk algılamaları, [risk](concept-identity-protection-risks.md#risk-types-and-detection)altındaki makalede belgelenmiştir. Algılama hakkında daha fazla bilgi edinmek için Azure portal algılamanın yanındaki (i) simgenin üzerine gelin.
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Kimlik koruması 'ndaki geri bildirim mekanizmaları nasıl çalışır?
 

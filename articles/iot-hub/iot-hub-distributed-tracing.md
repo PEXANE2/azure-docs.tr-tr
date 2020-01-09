@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457059"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -30,7 +30,7 @@ IoT Hub için dağıtılmış izlemeyi etkinleştirmek aşağıdakileri yapabilm
 
 Bu makalede, dağıtılmış izleme ile [C Için Azure IoT cihaz SDK 'sını](iot-hub-device-sdk-c-intro.md) kullanırsınız. Diğer SDK 'lar için dağıtılmış izleme desteği hala devam ediyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Dağıtılmış izlemenin önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 
@@ -88,22 +88,23 @@ Bu yönergeler, Windows üzerinde örnek oluşturmak içindir. Diğer ortamlar i
 
 ### <a name="clone-the-source-code-and-initialize"></a>Kaynak kodunu kopyala ve Başlat
 
-1. Visual Studio 2015 ya da 2017 için ["Ile C++masaüstü geliştirme" iş yükünü](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) yükler.
+1. Visual Studio 2019 ["Ile C++masaüstü geliştirme" iş yükünü](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) yükler. Visual Studio 2017 ve 2015 de desteklenir.
 
 1. [CMake](https://cmake.org/)'i yükler. Bir komut isteminden `cmake -version` yazarak `PATH` emin olun.
 
-1. Komut istemini veya Git Bash kabuğunu açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
+1. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın:
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-1. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin.
+1. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. `azure-iot-sdk-c` dizininden aşağıdaki komutları çalıştırın:
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..
@@ -240,10 +241,10 @@ Birden çok cihaz için dağıtılmış izleme örnekleme yapılandırmasını g
 }
 ```
 
-| Öğe adı | Gerekli | Tür | Açıklama |
+| Öğe adı | Gereklidir | Tür | Açıklama |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Yes | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
-| `sampling_rate` | Yes | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
+| `sampling_mode` | Evet | Tamsayı | Örneklemeyi açmak ve kapatmak için şu anda iki mod değeri desteklenir. `1` ve `2` kapalı. |
+| `sampling_rate` | Evet | Tamsayı | Bu değer bir yüzde değeridir. Yalnızca `0` `100` (dahil) değerlerine izin verilir.  |
 
 ## <a name="query-and-visualize"></a>Sorgulama ve görselleştirme
 

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5829ca41aaa4bd61f8878657e5eedbf6351b5df4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423572"
 ---
 # <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API 'Lerini çağıran Web API 'si-API çağrısı
 
@@ -32,7 +32,7 @@ Aşağıda, [korumalı Web API 'si çağrıları Web API 'lerinde](scenario-web-
 
 Belirteci aldıktan sonra, aşağı akış API 'sini çağırmak için bunu bir taşıyıcı belirteç olarak kullanın.
 
-```CSharp
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...

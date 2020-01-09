@@ -1,21 +1,21 @@
 ---
-title: Cosmos DB için birden çok bağımsız Azure Işlevleri tetikleyicisi oluşturma
+title: Cosmos DB için birden çok bağımsız Azure Işlevleri tetikleyicisi oluşturun
 description: Olay odaklı mimariler oluşturmak için Cosmos DB için birden çok bağımsız Azure Işlev tetikleyicisi yapılandırma hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 987136bf8aba1313e1bef21f58691bf9a860ea32
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445346"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Cosmos DB için birden çok Azure Işlevleri tetikleyicisi oluşturun
 
-Bu makalede Cosmos DB için birden çok Azure Işlev tetikleyicisi, paralel olarak çalışacak şekilde nasıl yapılandırabileceğiniz ve değişikliklere bağımsız olarak yanıt verme işlemleri açıklanmaktadır.
+Bu makalede Cosmos DB için birden çok Azure İşlevleri tetikleyicisini paralel çalışacak ve değişikliklere bağımsız olarak tepki verecek şekilde nasıl yapılandırabileceğiniz açıklanır.
 
 ![Cosmos DB için Azure Işlevleri tetikleyicisiyle çalışan sunucusuz olay tabanlı Işlevler ve kiralamalar kapsayıcısı paylaşma](./media/change-feed-functions/multi-trigger.png)
 
@@ -32,19 +32,19 @@ Cosmos DB için Azure Işlevleri tetikleyicisinin *gereksinimleri* verildiğinde
 Burada iki seçeneğiniz vardır:
 
 * **İşlev başına bir kira kapsayıcısı**oluştur: Bu yaklaşım, [paylaşılan bir üretilen iş veritabanı](./set-throughput.md#set-throughput-on-a-database)kullanmadığınız müddetçe ek maliyetlere çevirebilir. Kapsayıcı düzeyindeki en düşük aktarım hızı 400 [Istek birimi](./request-units.md)olduğunu ve kiralamalar kapsayıcısı durumunda yalnızca ilerlemeyi kontrol etmek ve durumu korumak için kullanıldığını unutmayın.
-* **Tek bir kira kapsayıcısına** sahip olmak ve tüm işlevleriniz için paylaşmak için: Bu ikinci seçenek, birden fazla Azure Işlevinin aynı sağlanan aktarım hızını paylaşmasına ve kullanmasına olanak sağladığından, kapsayıcıda sağlanan Istek birimlerinin daha iyi kullanımını sağlar.
+* **Tek bir kira kapsayıcısına** sahip olmak ve tüm işlevleriniz için paylaşmak Için: Bu ikinci seçenek, birden fazla Azure işlevinin aynı sağlanan üretilen işi paylaşmasına ve kullanmasına olanak sağladığından, kapsayıcıda sağlanan istek birimlerinin daha iyi kullanımını sağlar.
 
 Bu makalenin amacı, ikinci seçeneği gerçekleştirmenize yardımcı olmaktır.
 
 ## <a name="configuring-a-shared-leases-container"></a>Paylaşılan kiralamalar kapsayıcısı yapılandırma
 
-Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, JavaScript kullanıyorsanız `LeaseCollectionPrefix` C# veya `leaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) kullanıyorsanız [özniteliği](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) eklemektir. Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
+Paylaşılan kiralamalar kapsayıcısını yapılandırmak için tetikleyicilerinde yapmanız gereken tek ek yapılandırma, JavaScript kullanıyorsanız, C# veya `leaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) kullandığınızda `LeaseCollectionPrefix` [özniteliğini](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) eklemektir. Özniteliğin değeri, belirli bir tetikleyicinin mantıksal tanımlayıcısı olmalıdır.
 
-Örneğin, üç tetikleyici varsa: e-posta gönderen bir, gerçekleştirilmiş bir görünüm oluşturmak için bir toplama yapan diğeri ve değişiklikleri başka bir depolama alanına Gönderen bir, daha sonra analiz edilmek üzere "e-postaların" öğesini ilk birine `LeaseCollectionPrefix` atayabilirsiniz " İkincisine "ve" analiz "ile üçüncü bir arasında gerçekleştirilmiş.
+Örneğin, üç tetikleyicisinin olması halinde, gerçekleştirilmiş bir görünüm oluşturmak için bir toplama yapan biri olan e-posta gönderen biri ve değişiklikleri başka bir depolama alanına Gönderen bir tane, daha sonraki analizler için "e-posta" `LeaseCollectionPrefix`, ikincisine "gerçekleştirilmiş" ve üçüncü birine "analiz" atayabilirsiniz.
 
 Önemli bölüm, üç tetikleyicinin de **aynı kira kapsayıcı yapılandırmasını** (hesap, veritabanı ve kapsayıcı adı) kullanmasına yönelik bir addır.
 
-' Deki `LeaseCollectionPrefix` C#özniteliği kullanarak çok basit kod örnekleri şöyle görünür:
+İçinde C#`LeaseCollectionPrefix` özniteliği kullanılarak çok basit kod örnekleri şöyle görünür:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-Ve JavaScript için, bu yapılandırmayı `function.json` dosyasına, `leaseCollectionPrefix` özniteliğiyle birlikte uygulayabilirsiniz:
+JavaScript için, `function.json` dosyasına yapılandırmayı `leaseCollectionPrefix` özniteliğiyle de uygulayabilirsiniz:
 
 ```json
 {

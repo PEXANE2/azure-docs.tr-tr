@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425394"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -72,7 +72,7 @@ Azure için NPS Uzantısı NPS ile tümleştirildiğinde, başarılı bir kimlik
 7. Bağlantı girişiminden hem kimlik doğrulaması hem de yetkilendirildikten sonra, uzantının yüklendiği NPS, VPN sunucusuna (RADIUS istemcisi) bir RADIUS *erişim-kabul* iletisi gönderir.
 8. Kullanıcıya VPN sunucusundaki sanal bağlantı noktasına erişim verilir ve şifreli bir VPN tüneli oluşturur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu bölümde, MFA 'yı VPN ile tümleştirebilmeniz için tamamlanması gereken önkoşulların ayrıntıları yer almalıdır. Başlamadan önce, aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -326,13 +326,13 @@ NPS uzantısının yapılandırmasının bir parçası olarak, yönetici kimlik 
 
 1. Oturum [Azure portalında](https://portal.azure.com) Azure kiracısının genel Yöneticisi olarak.
 
-2. Sol bölmede **Azure Active Directory** düğmesini seçin.
+2. Azure portal menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 
 3. **Özellikler**’i seçin.
 
 4. Azure AD KIMLIĞINIZI kopyalamak için **Kopyala** düğmesini seçin.
 
-    ![Azure portal Azure AD dizin KIMLIĞI](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![Azure portal Azure AD dizin KIMLIĞI](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS uzantısını yükleme
 

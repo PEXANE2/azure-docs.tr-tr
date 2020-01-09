@@ -4,16 +4,16 @@ description: Bu makalede, Azure 'da depolanan verileri Microsoft Azure Kurtarma 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450019"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak dosyaları Windows 'a geri yükleme
 
-Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır. Verileri geri yüklemek için, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısında verileri kurtar Sihirbazı 'nı kullanın. Şunları yapabilirsiniz:
+Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır. Verileri geri yüklemek için, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısında verileri kurtar Sihirbazı 'nı kullanın. Yapabilecekleriniz:
 
 * Verileri yedeklerin alındığı makineye geri yükleyin.
 * Verileri alternatif bir makineye geri yükleme.
@@ -21,7 +21,7 @@ Bu makalede, verileri bir yedekleme kasasından geri yükleme açıklanmaktadır
 Yazılabilir bir kurtarma noktası anlık görüntüsünü kurtarma birimi olarak bağlamak için anlık geri yükleme özelliğini kullanın. Daha sonra kurtarma birimini araştırabilir ve dosyaları yerel bir bilgisayara kopyalayabilir, böylece dosyaları seçmeli olarak geri yükleyebilirsiniz.
 
 > [!NOTE]
-> Verileri geri yüklemek için anlık geri yükleme kullanmak istiyorsanız [ocak 2017 Azure Backup güncelleştirme](https://support.microsoft.com/help/3216528?preview) gerekir. Ayrıca, yedekleme verileri destek makalesinde listelenen yerel ayarlarda kasaların korunması gerekir. Anında geri yüklemeyi destekleyen en son yerel ayar listesi için [2017 ocak Azure Backup güncelleştirmesine](https://support.microsoft.com/help/3216528?preview) bakın.
+> Verileri geri yüklemek için anlık geri yükleme kullanmak istiyorsanız [ocak 2017 Azure Backup güncelleştirme](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) gerekir. Ayrıca, yedekleme verileri destek makalesinde listelenen yerel ayarlarda kasaların korunması gerekir. Anında geri yüklemeyi destekleyen en son yerel ayar listesi için [2017 ocak Azure Backup güncelleştirmesine](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) bakın.
 >
 
 Azure portal kurtarma hizmetleri kasalarıyla anında geri yükleme kullanın. Yedekleme kasalarında veri depoladıysanız, bunlar kurtarma hizmetleri kasalarına dönüştürülüyordu. Anında geri yükleme kullanmak istiyorsanız, MARS güncelleştirmesini indirin ve anında geri yükleme ile ilgili yordamları izleyin.

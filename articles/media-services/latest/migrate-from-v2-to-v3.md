@@ -15,14 +15,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427124"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
+
+>Bu URL 'YI kopyalayıp yapıştırarak güncelleştirmeler için ne zaman geri alınacağı hakkında bildirim alın: RSS akışı okuyucunuzun `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us`.
 
 Bu makalede, Azure Media Services v3 sürümünde tanıtılan değişiklikler açıklanmakta, iki sürüm arasındaki farklılıklar gösterilmektedir ve geçiş kılavuzu sağlanmıştır.
 

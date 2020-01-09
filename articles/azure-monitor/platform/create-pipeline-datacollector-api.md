@@ -4,15 +4,15 @@ description: REST API çağırabileceğiniz herhangi bir istemciden Log Analytic
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363974"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Veri Toplayıcı API 'SI ile veri işlem hattı oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "72932625"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Örnek sorun
-Bu makalenin geri kalanında, Application Insights sayfa görünümü verilerini inceleyeceğiz. Kuramsal senaryolarımızda, Application Insights SDK tarafından toplanan coğrafi bilgilerin, dünyanın her yerindeki ülke/bölgenin popülasyonu içeren özel verilere ilişkilendirilmesi ve nerede harcamamız gerektiğini belirleme amacını almak istiyoruz en çok pazarlama dolar. 
+Bu makalenin geri kalanında, Application Insights sayfa görünümü verilerini inceleyeceğiz. Kuramsal senaryolarımızda, en çok pazarlama dolar harcamamız gerektiğini belirleme amacını taşıyan, Application Insights SDK 'Sı tarafından varsayılan olarak toplanan coğrafi bilgileri, dünyanın her yerindeki ülkenin/bölgenin popülasyonu içeren özel verilere ilişkilendirmek istiyoruz. 
 
 Bu amaçla [Dünya çapında popülasyon aday adayları](https://esa.un.org/unpd/wpp/) gibi bir genel veri kaynağı kullanıyoruz. Veriler aşağıdaki basit şemaya sahip olacaktır:
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bfff7790fa4984241e1c3dda19a20c8b13591fb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442024"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
 
@@ -21,7 +21,6 @@ Azure Cosmos DB popüler veritabanları için kablolu protokol ile uyumlu API 'L
 SQL API, Gremlin API ve Tablo API'si kullanıldığında, Azure Cosmos hesabında yapılandırılan varsayılan tutarlılık düzeyi kullanılır. 
 
 MongoDB için Cassandra API veya Azure Cosmos DB API 'sini kullanırken, uygulamalar, sırasıyla Apache Cassandra ve MongoDB tarafından sunulan bir tutarlılık düzeyi kümesini, hatta daha güçlü tutarlılık ve dayanıklılık garantisi elde eder. Bu belgede Apache Cassandra ve MongoDB tutarlılık düzeyleri için karşılık gelen Azure Cosmos DB tutarlılığı düzeyleri gösterilmektedir.
-
 
 ## <a id="cassandra-mapping"></a>Apache Cassandra ve Azure Cosmos DB tutarlılık düzeyleri arasında eşleme
 

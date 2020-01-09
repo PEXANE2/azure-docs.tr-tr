@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 762cea6dce3e0c6be3f5e977c5f9de806ca0880e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56103ed89d2e7813fd60bc50ecca7271f5421a4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438681"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure veri paylaşımında desteklenen veri depoları
 
@@ -28,23 +28,23 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Azure Blob depolama |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Veritabanı |Genel Önizleme | |
-| Azure SQL Veri Ambarı |Genel Önizleme | |
+| Azure SQL Veritabanı |Genel önizlemeye sunuldu | |
+| Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |Genel önizlemeye sunuldu | |
 | Azure Veri Gezgini | |[Sınırlı Önizleme](https://aka.ms/azuredatasharepreviewsignup) |
 
 ## <a name="data-store-support-matrix"></a>Veri deposu destek matrisi
 
-Azure veri paylaşımında, ' deki verileri kabul etmek için bir veri deposunda karar verirken veri tüketicileri esnekliği sunulmaktadır. Örneğin, Azure SQL veritabanı 'ndan paylaşılmakta olan veriler Azure Data Lake Store Gen2, Azure SQL veritabanı veya Azure SQL veri ambarı ' na alınabilir. Müşteriler, alınan bir veri paylaşımının yapılandırılmasında hangi biçimin veri alacağını seçebilirler. 
+Azure veri paylaşımında, ' deki verileri kabul etmek için bir veri deposunda karar verirken veri tüketicileri esnekliği sunulmaktadır. Örneğin, Azure SQL veritabanı 'ndan paylaşılmakta olan veriler Azure Data Lake Store Gen2, Azure SQL veritabanı veya Azure SYNAPSE Analytics ' e alınabilir. Müşteriler, alınan bir veri paylaşımının yapılandırılmasında hangi biçimin veri alacağını seçebilirler. 
 
 Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandırırken kullandığı farklı birleşimler ve seçimler ayrıntılı olarak verilmiştir. Veri kümesi eşlemelerini yapılandırma hakkında daha fazla bilgi için bkz. [veri kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md).
 
-|  | Azure Blob Depolama | Azure SQL Data Lake Gen1 | Azure SQL Data Lake Gen2 | Azure SQL Veritabanı | Azure SQL Veri Ambarı 
+|  | Azure Blob Depolama | Azure SQL Data Lake Gen1 | Azure SQL Data Lake Gen2 | Azure SQL Veritabanı | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob depolama |✓ ||✓|
 | Azure Data Lake Storage Gen1 |✓ | |✓|
 | Azure Data Lake Storage Gen2 |✓ | |✓|
 | Azure SQL Veritabanı |✓ | |✓|✓|✓|
-| Azure SQL Veri Ambarı |✓ | |✓|✓|✓|
+| Azure Synapse Analytics |✓ | |✓|✓|✓|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

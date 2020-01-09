@@ -1,25 +1,14 @@
 ---
-title: Uygulama yükseltme öğreticisini Service Fabric | Microsoft Docs
+title: Service Fabric App Upgrade öğreticisi
 description: Bu makalede bir Service Fabric uygulaması dağıtma, kodu değiştirme ve Visual Studio kullanarak bir yükseltmeyi kullanıma alma deneyimi gösterilmektedir.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464832"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio kullanarak uygulama yükseltme öğreticisini Service Fabric
 > [!div class="op_single_selector"]
@@ -43,12 +32,12 @@ Azure Service Fabric, yalnızca değiştirilen hizmetlerin yükseltildiğini ve 
 
 Artık iletişim kutusunda **Yayımla** ' ya tıklayabilirsiniz. [Kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Görsel nesneler uygulamasının, tarayıcınızın adres çubuğuna [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) yazarak gidebilmeniz için bir Web hizmeti vardır.  Ekranda hareket eden 10 kayan görsel nesne görmeniz gerekir.
 
-**Note:** @No__t-1 profiline (Azure Service Fabric) dağıtım yapıyorsanız, uygulamanın **http://{ServiceFabricName} konumunda kullanılabilir olması gerekir. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Load Balancer yapılandırılmış `8081/TCP` olduğundan emin olun (Service Fabric örneğiyle aynı kaynak grubunda Load Balancer bulun).
+**Note:** `Cloud.xml` profile (Azure Service Fabric) dağıtıyorsanız, uygulamanın **http://{ServiceFabricName} konumunda kullanılabilir olması gerekir. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Load Balancer yapılandırılmış `8081/TCP` sahip olduğunuzdan emin olun (Service Fabric örneğiyle aynı kaynak grubunda Load Balancer bulun).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2\. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
 
-VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve **VisualObjectActor.cs** dosyasını açın. Bu dosya içinde `MoveObject` yöntemine gidin, açıklama `visualObject.Move(false)` ' i ve `visualObject.Move(true)` ' yi kaldırın. Bu kod değişikliği, hizmet yükseltildikten sonra nesneleri döndürür.  Artık değiştirilen projeleri oluşturan **çözümü oluşturabilir (yeniden derlenemez)** . *Tümünü yeniden derle*' yi seçerseniz, tüm projelerin sürümlerini güncelleştirmeniz gerekir.
+VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve **VisualObjectActor.cs** dosyasını açın. Bu dosya içinde, yönteme `MoveObject`gidin, `visualObject.Move(false)`yorum yapın ve `visualObject.Move(true)`seçeneğini kaldırın. Bu kod değişikliği, hizmet yükseltildikten sonra nesneleri döndürür.  Artık değiştirilen projeleri oluşturan **çözümü oluşturabilir (yeniden derlenemez)** . *Tümünü yeniden derle*' yi seçerseniz, tüm projelerin sürümlerini güncelleştirmeniz gerekir.
 
 Uygulamamız da bizim için de gereklidir. **Visualobjects** projesine sağ tıkladıktan sonra sürüm değişikliği yapmak Için, Visual Studio **bildirim sürümlerini Düzenle** seçeneğini kullanabilirsiniz. Bu seçeneğin belirlenmesi, sürüm sürümleri için iletişim kutusunu aşağıdaki şekilde getirir:
 

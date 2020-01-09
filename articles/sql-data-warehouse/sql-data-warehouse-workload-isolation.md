@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cd1d57643f9a1eb7c50d0de06d42fbbcec085f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458772"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL veri ambarı Iş yükü grubu yalıtımı (Önizleme)
 
@@ -32,18 +32,18 @@ Aşağıdaki bölümler, iş yükü gruplarının yalıtım, kapsama, istek kayn
 
 İş yükü yalıtımı, kaynakların yalnızca bir iş yükü grubu için ayrılmış olması anlamına gelir.  İş yükü yalıtımı, MIN_PERCENTAGE_RESOURCE parametresi, [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) sözdiziminde sıfırdan büyük olacak şekilde yapılandırılarak elde edilir.  Sıkı SLA 'Lara uyması gereken sürekli yürütme iş yükleri için yalıtım, kaynakların iş yükü grubu için her zaman kullanılabilir olmasını sağlar. 
 
-İş yükü yalıtımını yapılandırma, örtülü olarak garantili bir eşzamanlılık düzeyi tanımlar.  %30 ' a ayarlanmış bir MIN_PERCENTAGE_RESOURCE ve REQUEST_MIN_RESOURCE_GRANT_PERCENT %2 ' ye ayarlandığında, iş yükü grubu için 15 eşzamanlılık düzeyi garanti edilir.  Garantili eşzamanlılık belirlemek için aşağıdaki yöntemi göz önünde bulundurun:
+İş yükü yalıtımını yapılandırma, örtülü olarak garantili bir eşzamanlılık düzeyi tanımlar. %30 ' a ayarlanmış bir MIN_PERCENTAGE_RESOURCE ve REQUEST_MIN_RESOURCE_GRANT_PERCENT %2 ' ye ayarlandığında, iş yükü grubu için 15 eşzamanlılık düzeyi garanti edilir.  Garantili eşzamanlılık belirlemek için aşağıdaki yöntemi göz önünde bulundurun:
 
 [Garantili eşzamanlılık] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Min_percentage_resource için belirli hizmet düzeyi en düşük uygun değerler vardır.  Daha fazla bilgi için bkz. daha fazla ayrıntı için [geçerli değerler](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) .
+> Min_percentage_resource için belirli hizmet düzeyi en düşük uygun değerler vardır.  Daha fazla bilgi için bkz. daha fazla ayrıntı için [geçerli değerler](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) .
 
 İş yükü yalıtımı yokluğunda, istekler [paylaşılan kaynak havuzunda](#shared-pool-resources) çalışır.  Paylaşılan havuzdaki kaynaklara erişim garanti edilmez ve [önemli](sql-data-warehouse-workload-importance.md) temelinde atanır.
 
-İş yükü grubunda etkin bir istek olmasa bile, kaynaklar iş yükü grubuna ayrıldığından, iş yükü yalıtımını yapılandırmak dikkatli yapılmalıdır.  Daha fazla yapılandırma yalıtımı, genel sistem kullanımının azalmasına yol açabilir.
+İş yükü grubunda etkin bir istek olmasa bile, kaynaklar iş yükü grubuna ayrıldığından, iş yükü yalıtımını yapılandırmak dikkatli yapılmalıdır. Daha fazla yapılandırma yalıtımı, genel sistem kullanımının azalmasına yol açabilir.
 
-Kullanıcılar, %100 iş yükü yalıtımı yapılandıran bir iş yükü yönetimi çözümünü önlemelidir: tüm iş yükü grupları genelinde yapılandırılan min_percentage_resource toplamı %100 ' a eşit olduğunda %100 yalıtım elde edilmelidir.  Bu tür bir yapılandırma çok kısıtlayıcıdır ve rigıd, yanlışlıkla yanlış sınıflandırılmış kaynak istekleri için biraz yer bırakır.  Bir isteğin, yalıtım için yapılandırılmamış iş yükü gruplarından yürütülmesine izin vermek için bir sağlama vardır.  Bu istek için ayrılan kaynaklar, sistemlerde bir sıfır olarak görünür ve sistem tarafından ayrılmış kaynaklardan bir smallrc düzeyi kaynak izni sağlar.
+Kullanıcılar, %100 iş yükü yalıtımı yapılandıran bir iş yükü yönetimi çözümünü önlemelidir: tüm iş yükü grupları genelinde yapılandırılan min_percentage_resource toplamı %100 ' a eşit olduğunda %100 yalıtım elde edilmelidir.  Bu tür bir yapılandırma çok kısıtlayıcıdır ve rigıd, yanlışlıkla yanlış sınıflandırılmış kaynak istekleri için biraz yer bırakır. Bir isteğin, yalıtım için yapılandırılmamış iş yükü gruplarından yürütülmesine izin vermek için bir sağlama vardır. Bu istek için ayrılan kaynaklar, sistemlerde bir sıfır olarak görünür ve sistem tarafından ayrılmış kaynaklardan bir smallrc düzeyi kaynak izni sağlar.
 
 > [!NOTE] 
 > En iyi kaynak kullanımını sağlamak için, SLA 'ların karşılandığından ve [iş yükü önem derecesine](sql-data-warehouse-workload-importance.md)göre erişilen paylaşılan kaynaklarla karışmasını sağlamak için bazı yalıtımla yararlanan bir iş yükü yönetimi çözümü düşünün.
@@ -57,7 +57,7 @@ Kullanıcılar, %100 iş yükü yalıtımı yapılandıran bir iş yükü yönet
 [En fazla eşzamanlılık] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Bir iş yükü grubunun geçerli CAP_PERCENTAGE_RESOURCE, sıfırdan büyük MIN_PERCENTAGE_RESOURCE olan iş yükü grupları oluşturulduğunda %100 ' a ulaşmaz.  Etkin çalışma zamanı değerleri için bkz. [sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
+> Bir iş yükü grubunun geçerli CAP_PERCENTAGE_RESOURCE, sıfırdan büyük MIN_PERCENTAGE_RESOURCE olan iş yükü grupları oluşturulduğunda %100 ' a ulaşmaz.  Etkin çalışma zamanı değerleri için bkz. [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="resources-per-request-definition"></a>İstek tanımına göre kaynaklar
 
@@ -71,7 +71,7 @@ Kaynak sınıfı seçme gibi, REQUEST_MIN_RESOURCE_GRANT_PERCENT yapılandırmak
 REQUEST_MAX_RESOURCE_GRANT_PERCENT REQUEST_MIN_RESOURCE_GRANT_PERCENT daha büyük bir değere yapılandırmak sistemin istek başına daha fazla kaynak ayırmasına izin verir.  Bir istek zamanlarken, sistem, isteğe bağlı kaynak ayırmayı, REQUEST_MIN_RESOURCE_GRANT_PERCENT ve REQUEST_MAX_RESOURCE_GRANT_PERCENT arasında, paylaşılan havuzdaki kaynak kullanılabilirliğine ve şu andaki yüküne göre belirler. sistemin.  Sorgu zamanlandığında kaynakların paylaşılan kaynak [havuzunda](#shared-pool-resources) bulunması gerekir.  
 
 > [!NOTE] 
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT ve REQUEST_MAX_RESOURCE_GRANT_PERCENT, etkin MIN_PERCENTAGE_RESOURCE ve CAP_PERCENTAGE_RESOURCE değerlerine bağımlı etkin değerler vardır.  Etkin çalışma zamanı değerleri için bkz. [sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT ve REQUEST_MAX_RESOURCE_GRANT_PERCENT, etkin MIN_PERCENTAGE_RESOURCE ve CAP_PERCENTAGE_RESOURCE değerlerine bağımlı etkin değerler vardır.  Etkin çalışma zamanı değerleri için bkz. [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="execution-rules"></a>Yürütme kuralları
 

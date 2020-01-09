@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458681"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux sanal makinesi yükleme ve oluşturma
 
@@ -35,7 +35,7 @@ En son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olduğundan ve [az 
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. `myResourceGroup`, `mystorageaccount`ve `mydisks`dahil olmak üzere örnek parametre adları.
 
-Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek `myResourceGroup` konumunda `WestUs` adlı bir kaynak grubu oluşturur:
+Öncelikle [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek `WestUs` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -122,9 +122,9 @@ Ayrıca, Linux görüntülerini Azure için hazırlama hakkında daha genel ipu�
 > 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-Kaynak grupları, sanal ağ ve depolama gibi sanal makinelerinizi desteklemek için tüm Azure kaynaklarını mantıksal olarak bir araya getirir. Daha fazla bilgi kaynak grubu için bkz. [kaynak gruplarına genel bakış](../../azure-resource-manager/resource-group-overview.md). Özel diskinizi karşıya yüklemeden ve VM 'Ler oluşturmadan önce, [az Group Create](/cli/azure/group)ile bir kaynak grubu oluşturmanız gerekir.
+Kaynak grupları, sanal ağ ve depolama gibi sanal makinelerinizi desteklemek için tüm Azure kaynaklarını mantıksal olarak bir araya getirir. Daha fazla bilgi kaynak grubu için bkz. [kaynak gruplarına genel bakış](../../azure-resource-manager/management/overview.md). Özel diskinizi karşıya yüklemeden ve VM 'Ler oluşturmadan önce, [az Group Create](/cli/azure/group)ile bir kaynak grubu oluşturmanız gerekir.
 
-Aşağıdaki örnek `myResourceGroup` konumunda `westus` adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek `westus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Depolama hesabı anahtarlarını Listele
-Azure, her depolama hesabı için 2 512 bitlik erişim anahtarları oluşturur. Bu erişim anahtarları, depolama hesabında kimlik doğrulaması yapılırken (örneğin, yazma işlemlerini yürütmek için) kullanılır. [Depolama alanına erişimi yönetme](../../storage/common/storage-account-manage.md#access-keys)hakkında daha fazla bilgi edinmek için buraya tıklayın. Erişim anahtarlarını [az Storage Account Keys List](/cli/azure/storage/account/keys)komutuyla görüntüleyebilirsiniz.
+Azure, her depolama hesabı için 2 512 bitlik erişim anahtarları oluşturur. Bu erişim anahtarları, depolama hesabında kimlik doğrulaması yapılırken (örneğin, yazma işlemlerini yürütmek için) kullanılır. Depolama hesabı erişim anahtarları hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md). Erişim anahtarlarını [az Storage Account Keys List](/cli/azure/storage/account/keys)komutuyla görüntüleyebilirsiniz.
 
 Oluşturduğunuz depolama hesabı için erişim anahtarlarını görüntüleyin:
 
@@ -204,7 +204,7 @@ Kullanıcı adı ve SSH anahtarları gibi **az VM Create** komutu için gerekli 
 
 
 ## <a name="resource-manager-template"></a>Resource Manager şablonu
-Azure Resource Manager şablonlar, derlemek istediğiniz ortamı tanımlayan JavaScript Nesne Gösterimi (JSON) dosyalarıdır. Şablonlar, işlem veya ağ gibi farklı kaynak sağlayıcılarına bölünmüştür. Mevcut şablonları kullanabilir veya kendi kendinize yazabilirsiniz. [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/resource-group-overview.md)hakkında daha fazla bilgi edinin.
+Azure Resource Manager şablonlar, derlemek istediğiniz ortamı tanımlayan JavaScript Nesne Gösterimi (JSON) dosyalarıdır. Şablonlar, işlem veya ağ gibi farklı kaynak sağlayıcılarına bölünmüştür. Mevcut şablonları kullanabilir veya kendi kendinize yazabilirsiniz. [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinin.
 
 Şablonunuzun `Microsoft.Compute/virtualMachines` sağlayıcısı içinde, sanal makinenizin yapılandırma ayrıntılarını içeren bir `storageProfile` düğümünüz vardır. Düzenlenecek iki ana parametre, özel diskinize ve yeni VM 'nin sanal diskine işaret eden `image` ve `vhd` URI 'Lerdir. Aşağıda özel disk kullanımı için JSON örneği gösterilmektedir:
 
@@ -224,7 +224,7 @@ Azure Resource Manager şablonlar, derlemek istediğiniz ortamı tanımlayan Jav
           }
 ```
 
-[Bu mevcut şablonu kullanarak özel görüntüden BIR VM oluşturabilir](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) veya [kendi Azure Resource Manager şablonlarınızı oluşturma](../../azure-resource-manager/resource-group-authoring-templates.md)hakkında bilgi edinebilirsiniz. 
+[Bu mevcut şablonu kullanarak özel görüntüden BIR VM oluşturabilir](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) veya [kendi Azure Resource Manager şablonlarınızı oluşturma](../../azure-resource-manager/templates/template-syntax.md)hakkında bilgi edinebilirsiniz. 
 
 Bir şablonunuz yapılandırıldıktan sonra, VM 'lerinizi oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment) kullanın. `--template-uri` parametresiyle JSON şablonunuzun URI 'sini belirtin:
 
@@ -242,5 +242,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Özel sanal diskinizi hazırladıktan ve karşıya yükledikten sonra, [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/resource-group-overview.md)hakkında daha fazla bilgi edinebilirsiniz. Ayrıca, yeni sanal makinelerinize [bir veri diski eklemek](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) isteyebilirsiniz. Sanal makinelerinize erişmeniz gereken uygulamalarınız varsa, [bağlantı noktalarını ve uç noktaları açmayı](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)unutmayın.
+Özel sanal diskinizi hazırladıktan ve karşıya yükledikten sonra, [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. Ayrıca, yeni sanal makinelerinize [bir veri diski eklemek](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) isteyebilirsiniz. Sanal makinelerinize erişmeniz gereken uygulamalarınız varsa, [bağlantı noktalarını ve uç noktaları açmayı](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)unutmayın.
 

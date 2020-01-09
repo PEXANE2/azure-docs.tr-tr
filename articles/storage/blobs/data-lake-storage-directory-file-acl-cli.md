@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 596f8334b647daf6fe3a15521f7caeecb0c0e303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462593"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage 2. & ACL 'Leri için Azure CLı kullanma (Önizleme)
+# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme (Önizleme)
 
 Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) hiyerarşik bir ad alanına sahip depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için nasıl kullanacağınız gösterilmektedir. 
 
@@ -24,10 +24,10 @@ Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.c
 > Bu makalede tanıtılan `storage-preview` uzantısı Şu anda genel önizleme aşamasındadır.
 
 [Örnek](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [Gen1 to Gen2 Mapping](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2) | [geri bildirimde](https://github.com/Azure/azure-cli-extensions/issues) bulunun
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
-> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+> * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
 > * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
 > * Azure CLı sürüm `2.0.67` veya üzeri.
 
@@ -42,7 +42,7 @@ Bu makalede, [Azure komut satırı arabirimi 'ni (CLI)](https://docs.microsoft.c
    ```
    Azure CLı sürümünüz `2.0.67`daha düşükse, daha sonra bir sürümü yüklersiniz. Bkz. [Azure CLI 'Yi yüklemeyi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. `storage-preview` uzantısını yükler.
+3. `storage-preview` uzantısını yükleyin.
 
    ```azurecli
    az extension add -n storage-preview
@@ -98,7 +98,7 @@ az storage blob directory create -c my-file-system -d my-directory --account-nam
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>Dizini yeniden adlandırma veya taşıma
+## <a name="rename-or-move-a-directory"></a>Bir dizini yeniden adlandırma veya taşıma
 
 `az storage blob directory move` komutunu kullanarak bir dizini yeniden adlandırın veya taşıyın.
 
@@ -198,7 +198,7 @@ Bu örnek `my-file.txt` adlı bir dosyayı siler
 az storage blob delete -c my-file-system -b my-file.txt --account-name mystorageaccount 
 ```
 
-## <a name="manage-permissions"></a>İzinleri Yönet
+## <a name="manage-permissions"></a>İzinleri yönet
 
 Dizinler ve dosyalar için erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz.
 

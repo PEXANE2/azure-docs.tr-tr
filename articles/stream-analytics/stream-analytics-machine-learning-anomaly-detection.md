@@ -1,50 +1,49 @@
 ---
-title: Azure Stream analytics'te anomali algılama
+title: Azure Stream Analytics 'de anomali algılama
 description: Bu makalede, Azure Stream Analytics ve Azure Machine Learning birlikte anomalileri algılamak için nasıl kullanılacağını açıklar.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e2fd226f1c605821f0fd595832b2cbe26d994fb4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459614"
 ---
-# <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream analytics'te anomali algılama
+# <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics 'de anomali algılama
 
-Kullanılabilir hem bulut hem de Azure IOT Edge, Azure Stream Analytics yerleşik makine öğrenimi tabanlı anomali algılama iki en yaygın olarak karşılaşılan anomalileri izlemek için kullanılan bir özellikleri sunar: geçici ve kalıcı. İle **AnomalyDetection_SpikeAndDip** ve **AnomalyDetection_ChangePoint** İşlevler, doğrudan Stream Analytics işinizi anomali algılama gerçekleştirebilirsiniz.
+Hem bulutta hem de Azure IoT Edge kullanılabilir Azure Stream Analytics, en yaygın olarak karşılaşılan iki anormali izlemek için kullanılabilecek yerleşik makine öğrenimi algılama özellikleri sunar: geçici ve kalıcı. **AnomalyDetection_SpikeAndDip** ve **AnomalyDetection_ChangePoint** işlevleriyle, doğrudan Stream Analytics işinizdeki anomali algılama gerçekleştirebilirsiniz.
 
-Makine öğrenimi modelleri birörnek örneklenen zaman serisi varsayılır. Zaman serisi Tekdüzen değilse, anomali algılama çağırmadan önce bir atlayan pencere ile bir toplama adım ekleyebilirsiniz.
+Makine öğrenimi modelleri, tek bir örneklenmiş zaman serisini kabul eder. Zaman serisi Tekdüzen değilse, anomali algılama çağrısı yapmadan önce, atlayan bir pencereyle birlikte toplama adımı ekleyebilirsiniz.
 
-Makine öğrenimi işlemleri mevsimsellik eğilimleri veya çok değişkenli bağıntılar şu anda desteklemez.
+Machine Learning işlemleri, şu anda mevsimsellik eğilimlerini veya çok değişkenli bir bağıntıları desteklemez.
 
 ## <a name="model-behavior"></a>Model davranışı
 
-Genellikle, daha fazla veri kayan pencere modelin doğruluğunu artırır. Belirtilen kayan pencere verileri, o zaman çerçevesi için değerler normal kendi aralığının bir parçası olarak kabul edilir. Model yalnızca geçerli olay anormal olup olmadığını denetlemek için kayan pencere üzerinde olay geçmişi dikkate alır. Kayan pencere taşınırken, eski değerleri modelin eğitimleri çıkarılan.
+Genellikle, modelin doğruluğu, kayan pencerede daha fazla veri ile artar. Belirtilen kayan penceredeki veriler, bu zaman çerçevesi için normal değer aralığının bir parçası olarak değerlendirilir. Model, geçerli olayın anormal olup olmadığını denetlemek için yalnızca kayan pencere üzerinde olay geçmişini dikkate alır. Kayan pencere hareket ederken, eski değerler modelin eğitimine çıkarılmakta.
 
-İşlevler, ne oldukları kadar gördünüz üzerinde dayalı belirli bir normal oluşturarak çalışır. Aykırı değerleri güven düzeyi içinde kurulu normal karşı karşılaştırma tarafından tanımlanır. Pencere boyutu bir anomali ortaya çıktığında, bunu tanımasına olacaktır, böylece normal davranış modeli eğitmek için gereken en düşük olayları bağlı olmalıdır.
+İşlevleri, şimdiye kadar gördüklerine göre belirli bir normal kurarak çalışır. Aykırı değerler, güvenilirlik düzeyi içinde, normal oluşturulan normalin karşılaştırılmasıyla tanımlanır. Pencere boyutu, bir anomali gerçekleştiğinde bunu tanıyabilmesi için modeli normal davranış için eğitme gereken en düşük olayları temel almalıdır.
 
-Geçmiş olaylar daha yüksek bir sayı karşı Karşılaştırılacak gerektiğinden modelin yanıt süresi geçmiş boyutunu artırır. Olayları daha iyi performans için gereken sayıda yalnızca dahil etmek için önerilir.
+Modelin yanıt süresi, daha yüksek bir geçmiş olay ile karşılaştırılabilmesi gerektiğinden geçmiş boyutuyla artar. Daha iyi performans için yalnızca gerekli sayıda olayı içermesi önerilir.
 
-Zaman serisi boşlukları belirli noktalarda olaylar sürede almıyor modelinin bir sonucu olabilir. Bu durum imputation mantığı kullanarak Stream Analytics tarafından işlenir. Aynı kayan pencere için bir süre yanı sıra, geçmiş boyutu, olayları gelmesi beklenen ortalaması hesaplamak için kullanılır.
+Zaman serisinde boşluklar, modelin belirli noktalarda olayları almamaya neden olabilir. Bu durum, imputation Logic kullanılarak Stream Analytics tarafından işlenir. Geçmiş boyutunun ve zaman süresinin yanı sıra, olayların gelmesi beklenen ortalama oranı hesaplamak için de aynı kayan pencere kullanılır.
 
-Kullanılabilir bir anomali Oluşturucu [burada](https://aka.ms/asaanomalygenerator) farklı anomali desenlerine sahip veriler ile IOT hub'ı akış için kullanılabilir. Bu IOT Hub'ından okumak ve anomalileri algılamak için anomali algılama sahip bu işlevlerin bir ASA işini ayarlanabilir.
+[Burada](https://aka.ms/asaanomalygenerator) bulunan bir anomali Oluşturucu, farklı anomali desenlerine sahip verilerle bir IoT Hub 'ının akışını yapmak için kullanılabilir. Bu IoT Hub 'ından okumak ve anormallikleri algılamak için bu anomali algılama işlevleriyle bir ASA işi ayarlanabilir.
 
-## <a name="spike-and-dip"></a>Depo ve DIP
+## <a name="spike-and-dip"></a>Ani ve DIP
 
-Zaman serisi olay akışı geçici anomalileri ani artışlar ve düşüşler olarak bilinir. Ani artışlar ve düşüşler makine öğrenimi tabanlı işlecini kullanarak izlenebilir [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
-).
+Zaman serisi olay akışındaki geçici bozukluklar, ani artışlar ve DIB 'ler olarak bilinir. Ani artışlar ve DIB 'ler, [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+)Machine Learning tabanlı işleç kullanılarak izlenebilir.
 
-![Depo ve DIP anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
+![Ani artış ve DIP anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-İkinci bir depo ilki küçükse, aynı kayan pencere daha küçük depo için hesaplanan puanı yeterli güven düzeyi içinde ilk depo için puana göre belirlenen önemli değildir büyük olasılıkla. Modelin güvenilirlik düzeyi gibi anomalileri algılamak için azalan deneyebilirsiniz. Ancak, çok sayıda uyarı almak başlatırsanız, daha yüksek bir olasılık aralığı kullanabilirsiniz.
+Aynı kayan pencerede ikinci bir ani artış birinciden küçükse, daha küçük bir artış için hesaplanan puan büyük olasılıkla belirtilen güven düzeyindeki ilk ani puanla karşılaştırıldığında yeterince önemli değildir. Bu tür bozukluklar tespit etmek için modelin güven düzeyini azaltmayı deneyebilirsiniz. Ancak, çok fazla uyarı almaya başladıysanız daha yüksek güvenirlik aralığı kullanabilirsiniz.
 
-Aşağıdaki örnek sorgu 2 dakikalık kayan pencere saniyede bir olayda Tekdüzen giriş fiyatı, 120 olayların geçmişini ile varsayar. Son SELECT deyimi ayıklar ve puan ve anomali çıkaran durumu % 95 güven düzeyine sahip.
+Aşağıdaki örnek sorgu, 120 olay geçmişiyle 2 dakikalık bir kayan pencerede saniye başına bir etkinliğin tek bir giriş hızını varsayar. Son SELECT ifadesiyle puan ve anomali durumu, %95 güven düzeyine sahip ve çıktı veriyor.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,21 +66,21 @@ INTO output
 FROM AnomalyDetectionStep
 ```
 
-## <a name="change-point"></a>Noktasını Değiştir
+## <a name="change-point"></a>Değişiklik noktası
 
-Zaman serisi olay akışı kalıcı anomalileri değerlerinin dağıtımındaki değişiklikler olay, düzey değişiklikleri ve eğilimleri gibi akışında ' dir. Stream Analytics'te dayalı Machine Learning'i kullanma gibi anomalileri algılanan [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) işleci.
+Zaman serisi olay akışındaki kalıcı bozukluklar, olay akışındaki değerlerin dağıtımında, düzey değişiklikler ve eğilimler gibi değişiklikler. Stream Analytics, bu tür bozukluklar Machine Learning tabanlı [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) işleci kullanılarak algılanır.
 
-Kalıcı değişiklikler çok süreden daha uzun ani artışlar ve düşüşler en son ve yıkıcı olaylar olduğunu gösteriyor olabilir. Kalıcı değişiklikler çıplak gözle genellikle görünür değildir, ancak ile algılanabilir **AnomalyDetection_ChangePoint** işleci.
+Kalıcı değişiklikler ani ve dallara göre çok daha uzun ve çok zararlı olay (ler) belirtebilir. Kalıcı değişiklikler genellikle çıplak göz için görünür değildir, ancak **AnomalyDetection_ChangePoint** işleci ile algılanabilir.
 
-Aşağıdaki resimde, bir düzey değişikliği örneğidir:
+Aşağıdaki görüntü, bir düzey değişikliği örneğidir:
 
-![Düzeyi değiştirme anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
+![Düzey değişim anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
 
-Aşağıdaki resimde eğilim değişiklik örneğidir:
+Aşağıdaki görüntü, bir eğilim değişikliği örneğidir:
 
-![Eğilim değişiklik anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
+![Eğilim değişikliği anomali örneği](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-Aşağıdaki örnek sorgu Giriş bir olayda 20 dakikalık kayan pencere Saniyedeki oranı Tekdüzen 1200 olayların bir geçmiş boyutu ile varsayar. Son SELECT deyimi ayıklar ve puan ve anomali çıkaran durumu % 80'e güven düzeyine sahip.
+Aşağıdaki örnek sorgu, 1200 olaylarının geçmiş boyutuyla 20 dakikalık bir kayan pencerede saniye başına bir olay için tek bir olayın Tekdüzen giriş hızını varsayar. Son SELECT ifadesiyle puan ve anomali durumu, %80 güven düzeyine sahip ve çıktı veriyor.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -107,51 +106,51 @@ FROM AnomalyDetectionStep
 
 ## <a name="performance-characteristics"></a>Performans özellikleri
 
-Performansı bu modellerin geçmişi boyutu, pencere süresi, olay yükü bağlıdır ve işlev düzeyi bölümleme olup kullanılır. Bu bölümde, bu yapılandırmalar ele alınmaktadır ve 1 K, 5 K ve saniyede 10 bin olay alımı ücretlerine sürdüren öğrenmek için örnekleri sağlar.
+Bu modellerin performansı, geçmiş boyutuna, pencere süresine, olay yüküne ve işlev düzeyi bölümlemenin kullanılıp kullanılmadığını belirtir. Bu bölümde bu yapılandırma açıklanmaktadır ve saniyede 1K, 5K ve 10.000 olay alma hızlarının nasıl ele alınacağını gösteren örnekler sağlanmaktadır.
 
-* **Geçmiş boyutu** -Bu modeller ile doğrusal olarak gerçekleştirmek **geçmiş boyutu**. Artık yeni bir olay puanlamak için modeller geçmiş boyutu, o kadar uzun yararlanın. Yeni olay geçmişi arabellekteki geçmiş olayların her biri ile modeli karşılaştırmak olmasıdır.
-* **Pencere süresi** - **pencere süresi** geçmiş boyutu tarafından belirtilen sayıda olaylarını almak için ne kadar sürer yansıtmalıdır. Penceresinde, birçok olay, Azure Stream Analytics, eksik değerleri impute. Bu nedenle, CPU tüketimi geçmişi boyutunun bir işlevdir.
-* **Olay yükü** - büyük **olay yükü**, daha fazla iş, modelleriyle, CPU tüketimini etkiler gerçekleştirilir. İş utandırıcı derecede paralel olarak daha fazla giriş bölüm kullanmak iş mantığı için anlamlı varsayılarak kolaylaştırarak genişletilebilir.
-* **İşlev düzeyi bölümleme** - **işlev düzeyi bölümleme** kullanılarak yapılır ```PARTITION BY``` anomali algılama işlev çağrısı içinde. Durum birden çok modeli için aynı anda korunmasının gerektiği durumlar gibi bölümleme bu tür bir ek ekler. İşlev düzeyi bölümleme, cihaz düzeyinde bölümleme gibi senaryolarda kullanılır.
+* **Geçmiş boyutu** -bu modeller **Geçmiş boyutuyla**linerken gerçekleştirir. Geçmiş boyutu arttıkça, modeller yeni bir olayı puan etmek için daha uzun sürer. Bunun nedeni, modellerin yeni olayı geçmiş arabelleğindeki geçmiş olayların her biriyle karşılaştırmaktır.
+* **Pencere süresi** - **pencere süresi** , geçmiş boyutuyla belirtilen sayıda olayı almak için geçen süreyi yansıtmalıdır. Pencerede bu çok sayıda olay olmadan, Azure Stream Analytics eksik değerleri bir değere sahip olur. Bu nedenle, CPU tüketimi geçmiş boyutunun bir işlevidir.
+* **Olay yükü** -daha fazla **olay yükü**, model tarafından gerçekleştirilen ve CPU tüketimini etkileyen daha fazla çalışma. İş mantığı daha fazla giriş bölümü kullanmanın mantıklı olduğunu varsayarak, iş bu kadar paralel olarak genişletilebilir hale gelir.
+* **İşlev düzeyinde bölümlendirme - işlev** **düzeyi bölümlendirme** , anomali algılama işlevi çağrısı içinde ```PARTITION BY``` kullanılarak yapılır. Aynı anda birden çok modelde durum tutulması gerektiğinden, bu tür bölümleme bir ek yük ekler. İşlev düzeyi bölümleme, cihaz düzeyi bölümlendirme gibi senaryolarda kullanılır.
 
 ### <a name="relationship"></a>İlişki
-Aşağıdaki şekilde, geçmiş boyutu, pencere süresi ve toplam olay yükü ilgilidir:
+Geçmiş boyutu, pencere süresi ve toplam olay yükü aşağıdaki şekilde ilişkilidir:
 
-windowDuration (ms cinsinden) = 1000 * historySize / (toplam giriş olayları / sn / giriş bölüm sayısı)
+windowDuration (MS) = 1000 * geçmişini/(Toplam giriş olayı/sn/giriş bölümü sayısı)
 
-İşlev tarafından DeviceID bölümlenirken "DeviceID tarafından anomali algılama işlevi çağrısı bölüm" ekleyin.
+İşlev DeviceID ile bölümlenirken, anomali algılama işlev çağrısına "PARTITION BY DeviceID" ekleyin.
 
-### <a name="observations"></a>Gözlemler
-Aşağıdaki tabloda bölümlenmemiş bir örneği için tek bir düğüm (6 SU) için aktarım hızı gözlemleri içerir:
+### <a name="observations"></a>Lemin
+Aşağıdaki tablo, bölümlenmemiş durum için tek bir düğüm (6 SU) için üretilen iş gözlemlerini içerir:
 
-| Geçmiş boyutu (olaylar) | Pencere süresi (ms) | Toplam giriş olayı / sn |
+| Geçmiş boyutu (olaylar) | Pencere süresi (MS) | Saniyede toplam giriş olayı sayısı |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2,200 |
-| 600 | 728 | 1,650 |
-| 6,000 | 10,910 | 1,100 |
+| 60 | 55 | 2\.200 |
+| 600 | 728 | 1\.650 |
+| 6,000 | 10.910 | 1\.100 |
 
-Aşağıdaki tablo, bölümlenmiş çalışması için tek bir düğüm (6 SU) için aktarım hızı gözlemleri içerir:
+Aşağıdaki tablo, bölümlenmiş durum için tek bir düğüm (6 SU) için üretilen iş gözlemlerini içerir:
 
-| Geçmiş boyutu (olaylar) | Pencere süresi (ms) | Toplam giriş olayı / sn | Cihaz sayısı |
+| Geçmiş boyutu (olaylar) | Pencere süresi (MS) | Saniyede toplam giriş olayı sayısı | Cihaz sayımı |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1,091 | 1,100 | 10 |
-| 600 | 10,910 | 1,100 | 10 |
-| 6,000 | 218,182 | <550 | 10 |
-| 60 | 21,819 | 550 | 100 |
-| 600 | 218,182 | 550 | 100 |
-| 6,000 | 2,181,819 | <550 | 100 |
+| 60 | 1\.091 | 1\.100 | 10 |
+| 600 | 10.910 | 1\.100 | 10 |
+| 6,000 | 218.182 | < 550 | 10 |
+| 60 | 21.819 | 550 | 100 |
+| 600 | 218.182 | 550 | 100 |
+| 6,000 | 2\.181.819 | < 550 | 100 |
 
-Bölümlenmemiş yapılandırmaları yukarıdaki çalıştırmak için örnek kod bulunan [ölçek, akış depo](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) Azure örnekleri. Bu kod, girdi ve çıktı olarak olay hub'ı kullanan hiçbir işlev düzeyi bölümleme ile bir stream analytics işi oluşturur. Giriş yük test istemcilerinin kullanılarak oluşturulur. Her giriş olayı, bir 1 KB json belgesidir. Olaylar (en fazla 1 K cihazlar için) JSON veri gönderen bir IOT cihazının simülasyonunu gerçekleştirme. Geçmiş boyutu, pencere süresi ve toplam olay yük 2 giriş bölüm farklılık gösterir.
+Yukarıdaki bölümlenmemiş yapılandırmaların çalıştırıldığı örnek kod, Azure örneklerinin [Ölçek deposunda akışta](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) bulunur. Kod, giriş ve çıkış olarak olay hub 'ını kullanan işlev düzeyi bölümlendirme olmadan bir Stream Analytics işi oluşturur. Giriş yükü test istemcileri kullanılarak oluşturulur. Her giriş olayı bir 1KB JSON belgesidir. Olaylar, JSON verileri gönderen bir IoT cihazının benzetimini yapar (en fazla 1K cihaz için). Geçmiş boyutu, pencere süresi ve toplam olay yükü 2 ' den fazla giriş bölümü üzerinde farklılık gösterir.
 
 > [!Note]
-> Daha doğru bir tahmin için örnekleri kendi senaryonuza uyacak şekilde özelleştirin.
+> Daha doğru bir tahmin için, örnekleri senaryonuza uyacak şekilde özelleştirin.
 
-### <a name="identifying-bottlenecks"></a>Performans sorunlarını tanımlama
-Ölçümleri bölmesinde Azure Stream Analytics işinizi işlem hattınızı performans sorunlarını tanımlamak için kullanın. Gözden geçirme **giriş/çıkış olaylarını** için aktarım hızı ve ["Eşik gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **biriktirme listesine alınan olaylar** iş giriş oranı ile tutmaktan olmadığını görmek için. Olay hub'ı ölçümler için aranacak **istekler daraltıldı** ve eşik birimleri uygun şekilde ayarlayın. Cosmos DB ölçümleri için gözden geçirin **bölüm anahtar aralığı başına tüketilen RU/sn en fazla** , bölüm anahtar aralığı emin olmak için aktarım hızı altında aynı şekilde kullanılır. Azure SQL DB için izleme **günlük GÇ** ve **CPU**.
+### <a name="identifying-bottlenecks"></a>Performans sorunlarını belirleme
+İşlem hattınızdaki performans sorunlarını belirlemek için Azure Stream Analytics işinizin ölçümler bölmesini kullanın. İşin giriş oranına sahip olup olmadığını görmek için üretilen iş ve ["filigran gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **biriktirme listesi olayları** Için **giriş/çıkış olaylarını** gözden geçirin. Olay Hub 'ı ölçümleri için, **Kısıtlanmış istekleri** bulun ve eşik birimlerini uygun şekilde ayarlayın. Cosmos DB ölçümleri için, bölüm anahtarı aralıklarınızın her bir şekilde tüketildiğinden emin olmak için üretilen Iş birimi **anahtar aralığı başına en fazla ru/sn** 'yi gözden geçirin. Azure SQL DB için **günlük GÇ** ve **CPU 'yu**izleyin.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics Machine learning ile anomali algılama
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics makine öğrenimi kullanarak anomali algılama
 
-Aşağıdaki video Azure Stream Analytics machine learning işlevleri kullanarak gerçek zamanlı bir anomali Algılama işlemini gösterir. 
+Aşağıdaki videoda, Azure Stream Analytics ' deki makine öğrenimi işlevlerini kullanarak bir anomali 'in gerçek zamanlı olarak nasıl algılanacağı gösterilmektedir. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 

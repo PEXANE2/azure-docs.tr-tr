@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784672"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456605"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Üst düzey tamamlanmış mantıksal uygulamaya genel bakış](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/) .
 
@@ -59,7 +59,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
    |----------|-------|-------------|
    | **Adı** | LA-MailingList | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnekte "LA-MailingList" kullanılmaktadır. |
    | **Abonelik** | <*your-Azure-subscription-name*> | Azure abonelik adınız |
-   | **Kaynak grubu** | LA-MailingList-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md)adı. Bu örnek, "LA-MailingList-RG" kullanır. |
+   | **Kaynak grubu** | LA-MailingList-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md)adı. Bu örnek, "LA-MailingList-RG" kullanır. |
    | **Konum** | Batı ABD | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
@@ -205,9 +205,9 @@ Ardından, gözden geçiren bir isteği onayladığında mantıksal uygulamanız
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Liste Kimliği** | Yes | `test-members-ML` | MailChimp posta listenizin adı. Bu örnek "test-Members-ML" kullanır. |
-   | **Durum** | Yes | `subscribed` | Yeni üyenin abonelik durumunu seçin. Bu örnek, "abone olunmuş" kullanır. <p>Daha fazla bilgi için bkz. [MailChimp API'siyle aboneleri yönetme](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
-   | **E-posta Adresi** | Yes | <*yeni-üye-eposta-adresi*> | Dinamik içerik listesinden, yeni bir e- **posta geldiğinde**altında, yeni üyenin e-posta adresini geçen ' **ı seçin.** |
+   | **Liste Kimliği** | Evet | `test-members-ML` | MailChimp posta listenizin adı. Bu örnek "test-Members-ML" kullanır. |
+   | **Durum** | Evet | `subscribed` | Yeni üyenin abonelik durumunu seçin. Bu örnek, "abone olunmuş" kullanır. <p>Daha fazla bilgi için bkz. [MailChimp API'siyle aboneleri yönetme](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
+   | **E-posta Adresi** | Evet | <*yeni-üye-eposta-adresi*> | Dinamik içerik listesinden, yeni bir e- **posta geldiğinde**altında, yeni üyenin e-posta adresini geçen ' **ı seçin.** |
    ||||
 
    Bu eylemin özellikleri hakkında daha fazla bilgi için, [MailChimp bağlayıcı başvurusuna](https://docs.microsoft.com/connectors/mailchimp/)bakın.
@@ -260,9 +260,9 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Alıcı** | Yes | <*eposta-adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
-   | **Konu** | Yes | <*başarı-epostası-konusu*> | Başarı e-postasının konusu. Bu öğretici için şu metni girin: <p>`Success! Member added to "test-members-ML": ` <p>Dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
-   | **Gövde** | Yes | <*başarı-e-postası-gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`New member has joined "test-members-ML":` <p>Dinamik içerik listesinden **e-posta adresi** özelliğini seçin. <p>Sonraki satırda şu metni girin: `Member opt-in status: ` <p> Dinamik içerik listesinden **üye Ekle**' nin altında, **durum** özelliğini seçin. |
+   | **Alıcı** | Evet | <*eposta-adresiniz*> | Başarı e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Konu** | Evet | <*başarı-epostası-konusu*> | Başarı e-postasının konusu. Bu öğretici için şu metni girin: <p>`Success! Member added to "test-members-ML": ` <p>Dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
+   | **Gövde** | Evet | <*başarı-e-postası-gövdesi*> | Başarı e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`New member has joined "test-members-ML":` <p>Dinamik içerik listesinden **e-posta adresi** özelliğini seçin. <p>Sonraki satırda şu metni girin: `Member opt-in status: ` <p> Dinamik içerik listesinden **üye Ekle**' nin altında, **durum** özelliğini seçin. |
    |||||
 
 1. Mantıksal uygulamanızı kaydedin.
@@ -285,9 +285,9 @@ Ardından, onaylanan üyenin posta listenize katılımının başarılı veya ba
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Alıcı** | Yes | <*eposta-adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
-   | **Konu** | Yes | <*başarısızlık-epostası-konusu*> | Başarısızlık e-postasının konusu. Bu öğretici için şu metni girin: <p>`Failed, member not added to "test-members-ML": ` <p>Dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
-   | **Gövde** | Yes | <*başarısızlık-epostası-gövdesi*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Alıcı** | Evet | <*eposta-adresiniz*> | Başarısızlık e-postasının gönderileceği e-posta adresi. Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Konu** | Evet | <*başarısızlık-epostası-konusu*> | Başarısızlık e-postasının konusu. Bu öğretici için şu metni girin: <p>`Failed, member not added to "test-members-ML": ` <p>Dinamik içerik listesinden **üye Ekle**' nin altında, **e-posta adresi** özelliğini seçin. |
+   | **Gövde** | Evet | <*başarısızlık-epostası-gövdesi*> | Başarısızlık e-postasının gövde içeriği. Bu öğretici için şu metni girin: <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
 1. Mantıksal uygulamanızı kaydedin. 

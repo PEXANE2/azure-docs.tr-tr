@@ -1,25 +1,17 @@
 ---
-title: İstekleri yönlendirmek için bir ağ geçidi yapılandırma | Microsoft Docs
+title: İstekleri yönlendirmek için bir ağ geçidi yapılandırma
 description: Service Fabric ağ üzerinde çalışan uygulamanız için gelen trafiği işleyen ağ geçidini nasıl yapılandıracağınızı öğrenin.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461959"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>İstekleri yönlendirmek için bir ağ geçidi kaynağı yapılandırma
 
@@ -29,16 +21,16 @@ Ağ Geçidi kaynaklarının, dağıtım şablonunuzun (JSON veya YAML) bir parç
 
 ## <a name="options-for-configuring-your-gateway-resource"></a>Ağ Geçidi kaynağınızı yapılandırma seçenekleri
 
-Ağ Geçidi kaynağı, uygulamanızın ağı ile temeldeki altyapının ağı ( `open` ağ) arasında bir köprü görevi görür. Yalnızca bir tane yapılandırmanız gerekir (ağ önizlemesinde, uygulama başına bir ağ geçidi sınırı vardır). Kaynak bildirimi iki ana bölümden oluşur: kaynak meta verileri ve özellikleri. 
+Ağ Geçidi kaynağı, uygulamanızın ağı ile temeldeki altyapının ağı (`open` ağı) arasında bir köprü görevi görür. Yalnızca bir tane yapılandırmanız gerekir (ağ önizlemesinde, uygulama başına bir ağ geçidi sınırı vardır). Kaynak bildirimi iki ana bölümden oluşur: kaynak meta verileri ve özellikleri. 
 
 ### <a name="gateway-resource-metadata"></a>Ağ Geçidi kaynak meta verileri
 
 Bir ağ geçidi aşağıdaki meta verilerle bildiriliyor:
-* `apiVersion`-"2018-09-01-Preview" (veya sonraki bir sürümü) olarak ayarlanması gerekiyor
-* `name`-Bu ağ geçidi için bir dize adı
+* `apiVersion`-gelecekte "2018-09-01-Preview" (veya sonraki bir sürümü) olarak ayarlanması gerekiyor
+* `name`-bu ağ geçidi için bir dize adı
 * `type`-"Microsoft. Servicefabrickafes/Gateway"
-* `location`-Uygulamanızın/ağınızın konumuna ayarlanmalıdır; genellikle dağıtımınızdaki konum parametresine bir başvuru olur
-* `dependsOn`-Bu ağ geçidinin, için bir giriş noktası olarak kullanılacak ağ
+* `location`-uygulamanızın/ağınızın konumuna ayarlanmalıdır; genellikle dağıtımınızdaki konum parametresine bir başvuru olur
+* `dependsOn`-bu ağ geçidi için bir giriş noktası olarak kullanılacak ağ
 
 Azure Resource Manager (JSON) dağıtım şablonunda şöyle görünür: 
 
@@ -63,7 +55,7 @@ Azure Resource Manager (JSON) dağıtım şablonunda şöyle görünür:
 
 #### <a name="source-and-destination-network"></a>Kaynak ve hedef ağ 
 
-Her ağ geçidi `sourceNetwork` , ve `destinationNetwork`gerektirir. Kaynak ağ, uygulamanızın gelen istekleri alacağı ağ olarak tanımlanır. Name özelliği her zaman "Open" olarak ayarlanmalıdır. Hedef ağ, isteklerin hedeflediği bir ağ. Bunun için ad değeri, uygulamanızın yerel ağının kaynak adı olarak ayarlanmalıdır (kaynağa tam başvuru dahil edilmelidir). "MyNetwork" adlı bir ağda bir dağıtım için bunun nasıl görüneceğine ilişkin örnek bir yapılandırma için aşağıya bakın.
+Her ağ geçidi için bir `sourceNetwork` ve `destinationNetwork`gerekir. Kaynak ağ, uygulamanızın gelen istekleri alacağı ağ olarak tanımlanır. Name özelliği her zaman "Open" olarak ayarlanmalıdır. Hedef ağ, isteklerin hedeflediği bir ağ. Bunun için ad değeri, uygulamanızın yerel ağının kaynak adı olarak ayarlanmalıdır (kaynağa tam başvuru dahil edilmelidir). "MyNetwork" adlı bir ağda bir dağıtım için bunun nasıl görüneceğine ilişkin örnek bir yapılandırma için aşağıya bakın.
 
 ```json 
 "properties": {
@@ -87,9 +79,9 @@ Yönlendirme kuralları her bağlantı noktası temelinde belirtilir. Her giriş
 #### <a name="tcp-routing-rules"></a>TCP yönlendirme kuralları 
 
 TCP yönlendirme kuralı aşağıdaki özelliklerden oluşur: 
-* `name`-seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
+* `name`, istediğiniz herhangi bir dize olabilecek kurala başvuru 
 * `port`-gelen istekler için dinlemek için bağlantı noktası 
-* `destination`-isteklerin yönlendirilmek zorunda `applicationName`olduğu `serviceName`yerde, `endpointName`, ve içeren uç nokta belirtimi
+* isteklerin yönlendirilmek zorunda olduğu konum için `applicationName`, `serviceName`ve `endpointName`içeren `destination` uç nokta belirtimi
 
 Örnek bir TCP yönlendirme kuralı aşağıda verilmiştir:
 
@@ -114,18 +106,18 @@ TCP yönlendirme kuralı aşağıdaki özelliklerden oluşur:
 #### <a name="http-routing-rules"></a>HTTP yönlendirme kuralları 
 
 Bir HTTP yönlendirme kuralı aşağıdaki özelliklerden oluşur: 
-* `name`-seçtiğiniz herhangi bir dize olabilecek kurala başvuru 
+* `name`, istediğiniz herhangi bir dize olabilecek kurala başvuru 
 * `port`-gelen istekler için dinlemek için bağlantı noktası 
-* `hosts`-Yukarıda belirtilen bağlantı noktasında çeşitli "konaklara" gelen isteklere uygulanan bir ilke dizisi. Konaklar, ağda çalışan uygulamalar ve hizmetler kümesidir ve gelen isteklere (örn. bir Web uygulaması) hizmet verebilir. Ana bilgisayar ilkeleri sırayla yorumlanıyor, bu nedenle aşağıdakileri azalan düzeyde ayrıntısıyla olarak oluşturmanız gerekir
-    * `name`-aşağıdaki yönlendirme kurallarının belirtildiği konağın DNS adı. Burada "*" kullanılması, tüm konaklar için yönlendirme kuralları oluşturur.
-    * `routes`-Bu belirli ana bilgisayar için bir ilke dizisi
-        * `match`-Bu kural için, bir öğesine göre uygulanacak gelen istek yapısının belirtimi`path`
-            * `path`-bir `value` (gelen URI), `rewrite` (isteğin iletilmesini istediğiniz) ve a `type` (Şu anda yalnızca "önek" olabilir) içerir
-            * `header`-isteğin, yol belirtimiyle (yukarıda) eşleşiyorsa, isteğin üst bilgisinde eşleşmesi için isteğe bağlı bir üst bilgi dizisi değeri.
-              * her giriş `name` (eşleştirilecek üstbilginin dize adı), `value` (istekteki üstbilginin dize değeri) ve a `type` (Şu anda yalnızca "tam" olabilir)
-        * `destination`-istek eşleşiyorsa,, ve kullanılarak `applicationName` `serviceName`belirtilen bu hedefe yönlendirilir.`endpointName`
+* `hosts`-yukarıda belirtilen bağlantı noktasında çeşitli "konaklara" gelen isteklere uygulanan bir ilke dizisi. Konaklar, ağda çalışan uygulamalar ve hizmetler kümesidir ve gelen isteklere (örn. bir Web uygulaması) hizmet verebilir. Ana bilgisayar ilkeleri sırayla yorumlanıyor, bu nedenle aşağıdakileri azalan düzeyde ayrıntısıyla olarak oluşturmanız gerekir
+    * `name`-aşağıdaki yönlendirme kuralları belirtilen ana bilgisayarın DNS adı. Burada "*" kullanılması, tüm konaklar için yönlendirme kuralları oluşturur.
+    * `routes`-bu konak için bir ilke dizisi
+        * Bu kural için, bir `path` göre uygulanacak gelen istek yapısının belirtimi `match`
+            * `path`-bir `value` (gelen URI), `rewrite` (isteğin iletilmesini istediğiniz) ve bir `type` (Şu anda yalnızca "önek" olabilir) içerir
+            * `header`, isteğin üst bilgisinde, istek yol belirtimiyle (yukarıda) eşleşiyorsa, eşleştirilecek bir üst bilgi değerleri dizisidir.
+              * her giriş `name` (eşleştirilecek üstbilginin dize adı), `value` (istekteki üstbilginin dize değeri) ve bir `type` (Şu anda yalnızca "tam" olabilir) içerir
+        * `destination`-istek eşleşiyorsa, `applicationName`, `serviceName`ve kullanarak belirtilen bu hedefe yönlendirilir `endpointName`
 
-Bu ağdaki uygulamalar tarafından sunulan tüm konaklara 80 numaralı bağlantı noktası üzerinden gelen istekler için uygulanacak örnek bir HTTP yönlendirme kuralı aşağıda verilmiştir. İstek URL 'si yol belirtimiyle eşleşen bir yapıya sahipse, yani `<IPAddress>:80/pickme/<requestContent>`, `myListener` uç noktaya yönlendirilir.  
+Bu ağdaki uygulamalar tarafından sunulan tüm konaklara 80 numaralı bağlantı noktası üzerinden gelen istekler için uygulanacak örnek bir HTTP yönlendirme kuralı aşağıda verilmiştir. İstek URL 'SI yol belirtimiyle eşleşen bir yapıya sahipse, yani, `<IPAddress>:80/pickme/<requestContent>``myListener` uç noktasına yönlendirilir.  
 
 ```json
 "properties": {
@@ -227,8 +219,8 @@ Tam ağ geçidi kaynak yapılandırması şöyle görünür (Bu durum, [kafes ö
 ```
 
 Bu ağ geçidi, 80 bağlantı noktasını dinleyen "Merhaba Dünya hizmeti" ve "counterService" olmak üzere en az iki hizmetten oluşan "Mesetlinux" bir Linux uygulaması için yapılandırılmıştır. Gelen isteğin URL yapısına bağlı olarak, isteği bu hizmetlerden birine yönlendirir. 
-* "\<IPAddress >: 80/HelloWorld/\<Request\>", bir isteğin HelloWorldService 'teki "helloworldlistener" öğesine yönlendirilme oluşmasına neden olur. 
-* "\<IPAddress >: 80/Counter/\<Request\>" bir isteğin, CounterService 'teki "counterlistener" öğesine yönlendirilme oluşmasına neden olur. 
+* "\<IPAddress >: 80/helloWorld/\<isteği\>", bir isteğin helloWorldService 'teki "helloWorldListener" öğesine yönlendirilme oluşmasına neden olur. 
+* "\<IPAddress >: 80/Counter/\<isteği\>" bir isteğin, counterService 'teki "counterListener" öğesine yönlendirilme oluşmasına neden olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Ağ geçitlerini eylemde görmek için giriş [örneğini](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) dağıtın

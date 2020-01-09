@@ -3,12 +3,12 @@ title: Power BI raporlarını yapılandırma
 description: Kurtarma Hizmetleri kasasını kullanarak Azure Backup için Power BI raporlarını yapılandırın.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450117"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -28,7 +28,7 @@ Bu sorundan kaçınmak için lütfen en son uygulamayı (sürüm 1,8) indirin.
 - Kasaların her biri için aynı depolama hesabı yapılandırılmışsa raporları kasaların ve aboneliklerde görüntüleyebilirsiniz. Seçilen depolama hesabı, kurtarma hizmetleri kasasıyla aynı bölgede olmalıdır.
 - Raporlar için zamanlanmış yenileme sıklığı Power BI 24 saattir. Ayrıca Power BI raporların talep üzerine yenilenmesini gerçekleştirebilirsiniz. Bu durumda, raporları işlemek için müşteri depolama hesabındaki en son veriler kullanılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Raporları yapılandırmak için bir [Azure depolama hesabı](../storage/common/storage-quickstart-create-account.md) oluşturun. Bu depolama hesabı, raporla ilgili verileri depolamak için kullanılır.
 - Power BI portalını kullanarak kendi raporlarınızı görüntülemek, özelleştirmek ve oluşturmak için [bir Power BI hesabı oluşturun](https://powerbi.microsoft.com/landing/signin/) .
@@ -88,7 +88,7 @@ Raporu özelleştirmek ve paylaşmak istiyorsanız, bir çalışma alanı oluşt
 4. Önceki 5. adımda yapılandırılan depolama hesabının adını girin ve **İleri**' yi seçin.
 
     ![Depolama hesabı adını girin](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
-5. "Key" kimlik doğrulama yöntemini kullanarak bu depolama hesabı için depolama hesabı anahtarını girin. [Depolama erişim anahtarlarını görüntülemek ve kopyalamak](../storage/common/storage-account-manage.md#access-keys)için Azure Portal depolama hesabınıza gidin.
+5. "Key" kimlik doğrulama yöntemini kullanarak bu depolama hesabı için depolama hesabı anahtarını girin. Depolama hesabı erişim anahtarlarınızı Azure portal bulabilirsiniz. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
 
      ![Depolama hesabı girin](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
 
@@ -114,7 +114,7 @@ Raporu özelleştirmek ve paylaşmak istiyorsanız, bir çalışma alanı oluşt
 
 ## <a name="troubleshooting-errors"></a>Hatalarda sorun giderme
 
-| Hata Ayrıntıları | Çözüm |
+| Hata Ayrıntıları | Çözünürlük |
 | --- | --- |
 | Yedekleme raporlarının depolama hesabını ayarladıktan sonra, **depolama hesabı** hala **Yapılandırılmadı**' ı gösterir. | Bir depolama hesabını başarıyla yapılandırdıysanız, raporlama verileriniz Bu soruna karşın içinde akar. Bu sorunu çözmek için Azure portal gidin ve **tüm hizmetler** > **Tanılama ayarları** > **Kurtarma Hizmetleri Kasası** > **düzenleme ayarı**' nı seçin. Daha önce yapılandırılan ayarı silin ve aynı dikey pencerede yeni bir ayar oluşturun. Bu kez, **ad** kutusunda **hizmet**' i seçin. Artık yapılandırılan depolama hesabı görüntülenir. |
 |Power BI Azure Backup şablon uygulamasını içeri aktardıktan sonra, "404-Container bulunamadı" hata iletisi görüntülenir. | Daha önce belirtildiği gibi, kurtarma hizmetleri kasasındaki raporları yapılandırdıktan sonra Power BI doğru şekilde görmek için 24 saat beklemeniz gerekir. Raporlara 24 saatten önce erişmeye çalışırsanız, geçerli raporları göstermek için tüm veriler henüz mevcut olmadığından bu hata iletisi görüntülenir. |

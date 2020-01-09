@@ -1,19 +1,14 @@
 ---
 title: Kapsayıcılar için Azure Izleyici dağıtımlarını görüntüleme (Önizleme) | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanılmadan Kubernetes dağıtımlarının gerçek zamanlı görünümü açıklanır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404768"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Dağıtımı (Önizleme) gerçek zamanlı görüntüleme
 
@@ -69,6 +64,6 @@ Ayrıca, ad alanı veya küme düzeyindeki olaylara göre filtreleyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Izleyici 'yi kullanmayı ve AKS kümenizin diğer yönlerini izlemeyi öğrenmeye devam etmek için bkz. [Azure Kubernetes hizmet durumunu görüntüleme](container-insights-analyze.md).
+- Azure İzleyici ve diğer yönleri AKS kümenizi izlemek öğrenme devam etmek için bkz: [görünümü Azure Kubernetes hizmeti sistem durumu](container-insights-analyze.md).
 
 - Önceden tanımlanmış sorguları ve uyarı oluşturma, görselleştirmeler oluşturmak veya kümelerinizde daha fazla analiz yapmak için örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.

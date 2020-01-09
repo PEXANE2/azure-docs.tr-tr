@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428814"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin
 
-Mantıksal uygulamanızı oluşturma ve dağıtma işlemini otomatik hale getirmeye hazırsanız, mantıksal uygulamanızın temel alınan iş akışı tanımını bir [Azure Resource Manager şablonuna](../azure-resource-manager/resource-group-overview.md)genişletebilirsiniz. Bu şablon, mantıksal uygulamanızı sağlamak ve dağıtmak için altyapıyı, kaynakları, parametreleri ve diğer bilgileri tanımlar. Aynı zamanda *parametrelendirme*olarak da bilinen dağıtımda farklılık gösteren değerler için parametreler tanımlayarak, farklı dağıtım ihtiyaçlarına göre mantıksal uygulamaları sürekli ve tutarlı bir şekilde dağıtabilirsiniz.
+Mantıksal uygulamanızı oluşturma ve dağıtma işlemini otomatik hale getirmeye hazırsanız, mantıksal uygulamanızın temel alınan iş akışı tanımını bir [Azure Resource Manager şablonuna](../azure-resource-manager/management/overview.md)genişletebilirsiniz. Bu şablon, mantıksal uygulamanızı sağlamak ve dağıtmak için altyapıyı, kaynakları, parametreleri ve diğer bilgileri tanımlar. Aynı zamanda *parametrelendirme*olarak da bilinen dağıtımda farklılık gösteren değerler için parametreler tanımlayarak, farklı dağıtım ihtiyaçlarına göre mantıksal uygulamaları sürekli ve tutarlı bir şekilde dağıtabilirsiniz.
 
-Örneğin, geliştirme, test ve üretim için ortamlara dağıtırsanız, büyük olasılıkla her ortam için farklı bağlantı dizeleri kullanırsınız. Farklı bağlantı dizelerini kabul eden şablon parametreleri bildirebilir ve sonra bu dizeleri ayrı bir [parametre dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)depoaktarabilirsiniz. Bu şekilde, şablonu güncelleştirmek ve yeniden dağıtmak zorunda kalmadan bu değerleri değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken, parola ve gizli dizi gibi parametre değerlerine sahip olduğunuz senaryolarda, bu değerleri [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) saklayabilir ve parametreler dosyanızın bu değerleri almasına sahip olursunuz. Ancak, bu senaryolarda geçerli değerleri almak için yeniden dağıtmanız gerekir.
+Örneğin, geliştirme, test ve üretim için ortamlara dağıtırsanız, büyük olasılıkla her ortam için farklı bağlantı dizeleri kullanırsınız. Farklı bağlantı dizelerini kabul eden şablon parametreleri bildirebilir ve sonra bu dizeleri ayrı bir [parametre dosyasında](../azure-resource-manager/templates/parameter-files.md)depoaktarabilirsiniz. Bu şekilde, şablonu güncelleştirmek ve yeniden dağıtmak zorunda kalmadan bu değerleri değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken, parola ve gizli dizi gibi parametre değerlerine sahip olduğunuz senaryolarda, bu değerleri [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) saklayabilir ve parametreler dosyanızın bu değerleri almasına sahip olursunuz. Ancak, bu senaryolarda geçerli değerleri almak için yeniden dağıtmanız gerekir.
 
 Bu genel bakışta, bir mantıksal uygulama iş akışı tanımını içeren Kaynak Yöneticisi şablonundaki öznitelikler açıklanmaktadır. Hem şablon hem de iş akışı tanımınız JSON sözdizimini kullanır, ancak iş akışı tanımı aynı zamanda iş akışı [tanım dili şemasını](../logic-apps/logic-apps-workflow-definition-language.md)takip ettiğinden bazı farklılıklar vardır. Örneğin, şablon ifadeleri ve iş akışı tanımı ifadeleri, [parametrelere](#parameter-references) ve kabul edebileceği değerlere göre farklılık gösterir.
 
@@ -30,7 +30,7 @@ Bu konudaki örnek mantıksal uygulama, yeni bir e-posta geldiğinde tetiklenen 
 
 Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için şu konulara bakın:
 
-* [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md)
 * [Resource Manager şablonu en iyi yöntemleri](../azure-resource-manager/template-best-practices.md)
 * [Bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](../azure-resource-manager/templates-cloud-consistency.md)
 
@@ -45,7 +45,7 @@ Logic Apps, tümleştirme hesapları ve tümleştirme hesabı yapılarına özg�
 
 ## <a name="template-structure"></a>Şablon yapısı
 
-En üst düzeyde, bir Kaynak Yöneticisi şablonu, [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md) konusunda tam olarak açıklanan bu yapıyı izler:
+En üst düzeyde, bir Kaynak Yöneticisi şablonu, [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md) konusunda tam olarak açıklanan bu yapıyı izler:
 
 ```json
 {
@@ -63,8 +63,8 @@ Mantıksal uygulama şablonu için öncelikle bu şablon nesneleriyle çalışı
 
 | Öznitelik | Açıklama |
 |-----------|-------------|
-| `parameters` | Azure 'da dağıtım için kaynakları oluştururken ve özelleştirirken kullanılacak değerleri kabul etmek için [şablon parametrelerini](../azure-resource-manager/resource-group-authoring-templates.md#parameters) bildirir. Örneğin, bu parametreler mantıksal uygulamanızın adı ve konumu, bağlantıları ve dağıtım için gereken diğer kaynaklarla ilgili değerleri kabul eder. Bu parametre değerlerini, bu konunun ilerleyen kısımlarında açıklanan bir [Parametreler dosyasında](#template-parameter-files)saklayabilirsiniz. Genel Ayrıntılar için bkz. [Parametreler-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md#parameters). |
-| `resources` | Mantıksal uygulamanız, bağlantılarınız, Azure depolama hesaplarınız ve benzeri bir Azure Kaynak grubu oluşturmak veya güncelleştirmek ve dağıtmak için [kaynakları](../azure-resource-manager/resource-group-authoring-templates.md#resources) tanımlar. Genel Ayrıntılar için bkz. [Resources-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md#resources). |
+| `parameters` | Azure 'da dağıtım için kaynakları oluştururken ve özelleştirirken kullanılacak değerleri kabul etmek için [şablon parametrelerini](../azure-resource-manager/templates/template-syntax.md#parameters) bildirir. Örneğin, bu parametreler mantıksal uygulamanızın adı ve konumu, bağlantıları ve dağıtım için gereken diğer kaynaklarla ilgili değerleri kabul eder. Bu parametre değerlerini, bu konunun ilerleyen kısımlarında açıklanan bir [Parametreler dosyasında](#template-parameter-files)saklayabilirsiniz. Genel Ayrıntılar için bkz. [Parametreler-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#parameters). |
+| `resources` | Mantıksal uygulamanız, bağlantılarınız, Azure depolama hesaplarınız ve benzeri bir Azure Kaynak grubu oluşturmak veya güncelleştirmek ve dağıtmak için [kaynakları](../azure-resource-manager/templates/template-syntax.md#resources) tanımlar. Genel Ayrıntılar için bkz. [Resources-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#resources). |
 ||||
 
 Mantıksal uygulama şablonunuz bu dosya adı biçimini kullanır:
@@ -78,7 +78,7 @@ Mantıksal uygulama şablonunuz bu dosya adı biçimini kullanır:
 
 ## <a name="template-parameters"></a>Şablon parametreleri
 
-Mantıksal uygulama şablonunda, farklı düzeylerde bulunan ve farklı işlevler gerçekleştiren birden çok `parameters` nesnesi vardır. Örneğin, en üst düzeyde, Azure 'da kaynak oluştururken ve dağıttığınızda dağıtım sırasında kabul edilecek ve kullanılacak değerler için [şablon parametreleri](../azure-resource-manager/resource-group-authoring-templates.md#parameters) bildirebilirsiniz, örneğin:
+Mantıksal uygulama şablonunda, farklı düzeylerde bulunan ve farklı işlevler gerçekleştiren birden çok `parameters` nesnesi vardır. Örneğin, en üst düzeyde, Azure 'da kaynak oluştururken ve dağıttığınızda dağıtım sırasında kabul edilecek ve kullanılacak değerler için [şablon parametreleri](../azure-resource-manager/templates/template-syntax.md#parameters) bildirebilirsiniz, örneğin:
 
 * Mantıksal uygulamanız
 * Mantığınızın [yönetilen bağlayıcılar](../connectors/apis-list.md) aracılığıyla diğer hizmetlere ve sistemlere erişmek için kullandığı bağlantılar
@@ -86,7 +86,7 @@ Mantıksal uygulama şablonunda, farklı düzeylerde bulunan ve farklı işlevle
 
   Örneğin, mantıksal uygulamanız işletmeden işletmeye (B2B) senaryolar için bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanıyorsa, şablonun en üst düzey `parameters` nesnesi bu tümleştirme HESABıNıN kaynak kimliğini kabul eden parametreyi bildirir.
 
-[Parametreler-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md#parameters)tarafından tam olarak açıklanan bir parametre tanımının genel yapısı ve sözdizimi aşağıda verilmiştir:
+[Parametreler-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#parameters)tarafından tam olarak açıklanan bir parametre tanımının genel yapısı ve sözdizimi aşağıda verilmiştir:
 
 ```json
 "<parameter-name>": {
@@ -147,7 +147,7 @@ Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adlar�
 
 Şablon parametrelerinin güvenliğini sağlamak için şu konulara bakın:
 
-* [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/template-best-practices.md#parameters)
+* [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Güvenli şablon parametreleri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Azure Key Vault ile güvenli parametre değerlerini geçirme](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
@@ -169,7 +169,7 @@ Parametreleri tanımlamaya yönelik bazı en iyi uygulamalar şunlardır:
 
 * Hassas olan veya güvenli hale getirilmesi gereken değerler hariç tüm parametreler için boş değerler belirtebileceğiniz `defaultValue` özniteliğini ekleyin. Kullanıcı adları, parolalar ve gizli diziler için her zaman güvenli parametreleri kullanın. Hassas parametre değerlerini gizlemek veya korumak için bu konulardaki yönergeleri izleyin:
 
-  * [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/template-best-practices.md#parameters)
+  * [Şablon parametreleri için güvenlik önerileri](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
   * [Güvenli şablon parametreleri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -177,13 +177,13 @@ Parametreleri tanımlamaya yönelik bazı en iyi uygulamalar şunlardır:
 
 * Şablon parametre adlarını iş akışı Tanım parametresi adlarından ayırt etmek için, açıklayıcı şablon parametre adlarını kullanabilirsiniz, örneğin: `TemplateFabrikamPassword`
 
-Daha fazla şablon en iyi uygulamaları için bkz. [şablon parametreleri Için en iyi uygulamalar](../azure-resource-manager/template-best-practices.md#parameters).
+Daha fazla şablon en iyi uygulamaları için bkz. [şablon parametreleri Için en iyi uygulamalar](../azure-resource-manager/templates/template-best-practices.md#parameters).
 
 <a name="template-parameter-files"></a>
 
 ## <a name="template-parameters-file"></a>Şablon parametreleri dosyası
 
-Şablon parametrelerinin değerlerini sağlamak için bu değerleri bir [Parametreler dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)depolayın. Bu şekilde, dağıtım gereksinimlerinize göre farklı parametre dosyalarını kullanabilirsiniz. Kullanılacak dosya adı biçimi aşağıda verilmiştir:
+Şablon parametrelerinin değerlerini sağlamak için bu değerleri bir [Parametreler dosyasında](../azure-resource-manager/templates/parameter-files.md)depolayın. Bu şekilde, dağıtım gereksinimlerinize göre farklı parametre dosyalarını kullanabilirsiniz. Kullanılacak dosya adı biçimi aşağıda verilmiştir:
 
 * Mantıksal uygulama şablonu dosya adı: **<*Logic-app-name*>. JSON**
 * Parametreler dosya adı: **<*Logic-App-adı*>. Parameters. JSON**
@@ -267,8 +267,8 @@ Bu örnek parametre dosyası, bu konuda daha önce belirtilen şablon parametrel
 
 Şablon kaynakları ve öznitelikleri hakkında genel bilgi için şu konulara bakın:
 
-* [Kaynaklar-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md#resources)
-* [Şablon kaynakları için en iyi uygulamalar](../azure-resource-manager/template-best-practices.md#resources)
+* [Kaynaklar-Kaynak Yöneticisi Şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Şablon kaynakları için en iyi uygulamalar](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
@@ -321,9 +321,9 @@ Mantıksal uygulama kaynak tanımınıza özel öznitelikler şunlardır:
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| `state` | Yes | Dize | `Enabled`, mantıksal uygulamanızın canlı olduğu ve `Disabled` mantıksal uygulamanızın etkin olmadığı anlamına gelen dağıtımda, mantıksal uygulamanızın durumu. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
+| `state` | Evet | Dize | `Enabled`, mantıksal uygulamanızın canlı olduğu ve `Disabled` mantıksal uygulamanızın etkin olmadığı anlamına gelen dağıtımda, mantıksal uygulamanızın durumu. Örneğin, mantıksal uygulamanızın canlı olmaya devam etmek, ancak taslak sürümü dağıtmak istiyorsanız, `Disabled` seçeneğini kullanabilirsiniz. |
 | `integrationAccount` | Hayır | Nesne | Mantıksal uygulamanız, işletmeden işletmeye (B2B) senaryolar için yapıtları depolayan bir tümleştirme hesabı kullanıyorsa, bu nesne tümleştirme hesabının KIMLIĞINI belirten `id` özniteliğini içerir. |
-| `definition` | Yes | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında `parameters` nesnesi, mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
+| `definition` | Evet | Nesne | Mantıksal uygulamanızın temel alınan iş akışı tanımı, kod görünümünde görüntülenen ve bu nesne, [Iş akışı tanımlama dili Için şema başvurusu](../logic-apps/logic-apps-workflow-definition-language.md) içinde tam olarak açıklanmıştır. Bu iş akışı tanımında `parameters` nesnesi, mantıksal uygulama çalışma zamanında kullanılacak değerler için parametreler bildirir. Daha fazla bilgi için bkz. [Iş akışı tanımı ve parametreleri](#workflow-definition-parameters). <p><p>Mantıksal uygulamanızın iş akışı tanımındaki öznitelikleri görüntülemek için, Azure portal veya Visual Studio 'da "Tasarım görünümü" ne "kod görünümü" ne, yoksa [Azure Kaynak Gezgini](https://resources.azure.com)gibi bir araç kullanarak geçiş yapın. |
 | `parameters` | Hayır | Nesne | Mantıksal uygulama çalışma zamanında kullanılacak [iş akışı tanımı parametre değerleri](#workflow-definition-parameters) . Bu değerler için parametre tanımları, [iş akışı tanımınızın parametreler nesnesinin](#workflow-definition-parameters)içinde görünür. Ayrıca, mantıksal uygulamanız diğer hizmetlere ve sistemlere erişmek için [yönetilen bağlayıcılar](../connectors/apis-list.md) kullanıyorsa, bu nesne, çalışma zamanında kullanılacak bağlantı değerlerini ayarlayan bir `$connections` nesnesi içerir. |
 | `accessControl` | Hayır | Nesne | Mantıksal uygulamanıza yönelik olarak IP erişimini kısıtlama veya çalıştırma geçmişi girişleri ve çıkışları gibi güvenlik özniteliklerini belirtmek için. Daha fazla bilgi için bkz. [Logic Apps 'e güvenli erişim](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||

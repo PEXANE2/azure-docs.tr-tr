@@ -3,17 +3,17 @@ title: Hızlı başlangıç-Azure IoT Central sanal cihaz ekleme
 description: Bu hızlı başlangıçta bir cihaz şablonu oluşturma ve IoT Central uygulamanıza sanal cihaz ekleme işlemleri gösterilmektedir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 669bdcddc7e4bb0c63250d9b571ff7ef4343ef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434838"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Hızlı başlangıç: IoT Central uygulamanıza sanal cihaz ekleme (Önizleme özellikleri)
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta bir **ortam algılayıcı** cihaz şablonu oluşturup 
 * Açma ve kapatma gibi komutlara yanıt verir.
 * Bellenim sürümü ve seri numarası gibi genel cihaz özelliklerini raporlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 **Özel uygulama > önizleme uygulaması** şablonunu kullanarak bir IoT Central uygulaması oluşturmak için [Azure IoT Central uygulaması oluşturma (Önizleme özellikleri)](./quick-deploy-iot-central.md) hızlı başlangıcını doldurun.
 
@@ -70,7 +70,7 @@ Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca
 
 1. **Bulut özellikleri** ' ni seçin ve **+ bulut özelliği Ekle**' ye tıklayın. Cihaz şablonunuza bir bulut özelliği eklemek için aşağıdaki tablodaki bilgileri kullanın.
 
-    | Görünen Ad      | Anlamsal tür | Şema |
+    | Görünen Ad      | Anlam Türü | Şema |
     | ----------------- | ------------- | ------ |
     | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
     | Müşteri adı     | Hiçbiri          | Dize |
@@ -79,7 +79,7 @@ Bir cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikleri yalnızca
 
     ![Bulut özellikleri](media/quick-create-pnp-device/cloudproperties.png)
 
-## <a name="create-views"></a>Görünüm oluşturma
+## <a name="create-views"></a>Görünümleri oluşturma
 
 Bir Oluşturucu olarak, uygulamayı bir işlecine çevresel algılayıcı cihazı hakkındaki ilgili bilgileri görüntüleyecek şekilde özelleştirebilirsiniz. Özelleştirmeleriniz, uygulamaya bağlı çevresel algılayıcı cihazlarını yönetmek için işlecini etkinleştirir. Cihazlarla etkileşim kurmak için kullanılacak bir operatör için iki tür görünüm oluşturabilirsiniz:
 
@@ -162,7 +162,7 @@ Yeni bir sanal cihaz oluşturduktan sonra, Oluşturucu bu cihazı kullanarak cih
 
 1. Düzenlemek istediğiniz görünümlerden birini seçin veya yeni bir görünüm oluşturun. **Önizleme cihazını Yapılandır**' a tıklayın ve ardından **çalışan bir cihazdan seçim**yapın. Burada, test için yapılandırabileceğiniz gerçek bir cihazı kullanarak veya IoT Central eklediğiniz mevcut bir cihazdan bir önizleme cihazı olmadan seçim yapabilirsiniz.
 
-1. Listeden sanal cihazınızı seçin. Ardından **Uygula**' yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
+1. Listeden sanal cihazınızı seçin. Sonra **Uygula**'yı seçin. Artık cihaz şablonu görünümlerini oluşturma deneyiminizdeki aynı sanal cihazı görebilirsiniz. Bu görünüm, grafikler ve diğer görselleştirmeler için kullanışlıdır.
 
     ![Önizleme cihazını Yapılandır](./media/quick-create-pnp-device/configure-preview.png)
 

@@ -1,69 +1,72 @@
 ---
 title: Azure HDInsight 'ta etkileşimli Spark kabuğu kullanma
 description: Etkileşimli bir Spark kabuğu, Spark komutlarının tek seferde çalıştırılması ve sonuçları görmek için bir okuma-yürütme-yazdırma işlemi sağlar.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 7aac2812787a7c14d99377754a4f85e699ef3f09
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.custom: hdinsightactive
+ms.date: 12/12/2019
+ms.openlocfilehash: f088b8210b8170d22e84d131f0a72f5f8caa3b92
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435222"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spark kabuğu 'ndan Apache Spark çalıştırma
 
 Etkileşimli bir [Apache Spark](https://spark.apache.org/) kabuğu Spark komutlarının tek seferde çalıştırılması ve sonuçları görmesi IÇIN bir REPL (okuma-yürütme-yazdırma döngüsü) ortamı sağlar. Bu işlem, geliştirme ve hata ayıklama için kullanışlıdır. Spark, desteklenen dillerin her biri için bir kabuk sağlar: Scala, Python ve R.
 
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>SSH ile Apache Spark Shell 'e edinme
-
-SSH kullanarak kümenin birincil baş düğümüne bağlanarak HDInsight 'ta Apache Spark Shell 'e erişin:
-
-     ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
-
-Azure portal kümeniz için tüm SSH komutunu edinebilirsiniz:
-
-1. [Azure Portal](https://portal.azure.com)’da oturum açın.
-2. HDInsight Spark kümenizin bölmesine gidin.
-3. Secure Shell (SSH) öğesini seçin.
-
-    ![Azure portal HDInsight bölmesi](./media/apache-spark-shell/hdinsight-spark-blade.png)
-
-4. Görüntülenmiş SSH komutunu kopyalayın ve terminalinizde çalıştırın.
-
-    ![Azure portal HDInsight SSH bölmesi](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
-
-HDInsight 'a bağlanmak için SSH kullanma hakkında ayrıntılı bilgi için bkz. [HDInsight Ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
 ## <a name="run-an-apache-spark-shell"></a>Apache Spark kabuğu çalıştırma
 
-Spark, Scala (Spark-Shell), Python (pyspark) ve R (mini r) için kabuklar sağlar. HDInsight kümenizin baş düğümündeki SSH oturumunda aşağıdaki komutlardan birini girin:
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
-    ./bin/spark-shell
-    ./bin/pyspark
-    ./bin/sparkR
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-Artık Spark komutlarını uygun dilde girebilirsiniz.
+1. Spark, Scala (Spark-Shell) ve Python (pyspark) için kabuklar sağlar. SSH oturumunda aşağıdaki komutlardan birini girin:
+
+    ```bash
+    spark-shell
+    pyspark
+    ```
+
+    Artık Spark komutlarını uygun dilde girebilirsiniz.
+
+1. Birkaç temel örnek komut:
+
+    ```scala
+    // Load data
+    var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+
+    // Show data
+    data.show()
+
+    // Select certain columns
+    data.select($"BuildingID", $"Country").show(10)
+
+    // exit shell
+    :q
+    ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>Mini oturum ve mini bağlam örnekleri
 
 Spark kabuğunu çalıştırdığınızda varsayılan olarak, sizin için otomatik olarak Mini oturum ve parlak bağlam örnekleri oluşturulur.
 
-Mini erişimli oturum örneğine erişmek için girin `spark`. Mini bağlam örneğine erişmek için girin `sc`.
+Mini erişimli oturum örneğine erişmek için `spark`girin. Mini bağlam örneğine erişmek için `sc`girin.
 
 ## <a name="important-shell-parameters"></a>Önemli kabuk parametreleri
 
-Spark Shell komutu (`spark-shell`, `pyspark`veya `sparkR`) birçok komut satırı parametresini destekler. Parametrelerin tam listesini görmek için Spark kabuğunu anahtarla `--help`başlatın. Bu parametrelerin bazılarının yalnızca Spark kabuğu 'nun sarmaladığı için `spark-submit`uygulanabilir olabileceğini unutmayın.
+Spark Shell komutu (`spark-shell`veya `pyspark`) birçok komut satırı parametresini destekler. Parametrelerin tam listesini görmek için Spark kabuğunu anahtar `--help`başlatın. Bu parametrelerden bazıları yalnızca Spark kabuğu 'nun sarmaladığı `spark-submit`için uygulanabilir.
 
-| anahtarı | description | Örnek |
+| anahtarı | açıklama | Örnek |
 | --- | --- | --- |
-| --Master MASTER_URL | Ana URL 'YI belirtir. HDInsight 'ta bu değer her zaman `yarn`olur. | `--master yarn`|
+| --Master MASTER_URL | Ana URL 'YI belirtir. HDInsight 'ta bu değer her zaman `yarn`. | `--master yarn`|
 | --jars JAR_LIST | Sürücü ve yürütücü Sınıfyoluna dahil etmek için yerel jar dosyaları dışındaki 'ın virgülle ayrılmış listesi. HDInsight 'ta, bu liste Azure Storage veya Data Lake Storage varsayılan dosya sistemine yönelik yollardan oluşur. | `--jars /path/to/examples.jar` |
-| --Packages MAVEN_COORDS | Sürücü ve yürütücü Sınıfyoluna dahil etmek için jar dosyaları dışındaki 'ın Maven koordinatlarının virgülle ayrılmış listesi. Yerel Maven depolarında, Maven orta, ve ile `--repositories`belirtilen diğer uzak depolarda arama yapar. Koordinatlar için biçim *GroupID*:*ArtifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
+| --paketler MAVEN_COORDS | Sürücü ve yürütücü Sınıfyoluna dahil etmek için jar dosyaları dışındaki 'ın Maven koordinatlarının virgülle ayrılmış listesi. Yerel Maven depolarında, Maven Central, ardından `--repositories`ile belirtilen diğer uzak depolarda arama yapar. Koordinatlar için biçim *GroupID*:*ArtifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --Kopyala-Dosyalar LISTESI | Yalnızca Python için, PYTHONPATH üzerine yerleştirilecek. zip,. yumurg veya. Kopyala dosyalarının virgülle ayrılmış bir listesi. | `--pyfiles "samples.py"` |
 
 ## <a name="next-steps"></a>Sonraki adımlar

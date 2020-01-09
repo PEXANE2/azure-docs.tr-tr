@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453965"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>CSP portalından Azure IoT Central uygulaması oluşturma ve yönetme
 
@@ -33,7 +33,7 @@ Azure IoT Central uygulama Yöneticisi sayfasını kullanabilirsiniz. Azure IoT 
 
 ![CSP 'Ler için yönetici oluşturma](media/howto-create-application-csp/image3.png)
 
-Azure IoT Central uygulaması oluşturmak için soldaki menüden **Oluştur** ' u seçin. Sektör şablonlarından birini seçin veya sıfırdan bir uygulama oluşturmak için **özel uygulama** ' yı seçin. Bu işlem, uygulama oluşturma sayfasını yükler. Bu sayfadaki tüm alanları tamamlayıp **Oluştur**' u seçmeniz gerekir. Aşağıdaki alanların her biri hakkında daha fazla bilgi bulabilirsiniz.
+Azure IoT Central uygulaması oluşturmak için soldaki menüden **Oluştur** ' u seçin. Sektör şablonlarından birini seçin veya sıfırdan bir uygulama oluşturmak için **eski uygulama** ' yı seçin. Bu işlem, uygulama oluşturma sayfasını yükler. Bu sayfadaki tüm alanları tamamlayıp **Oluştur**' u seçmeniz gerekir. Aşağıdaki alanların her biri hakkında daha fazla bilgi bulabilirsiniz.
 
 ![CSP 'Ler için uygulama sayfası oluştur](media/howto-create-application-csp/image4.png)
 
@@ -85,13 +85,12 @@ Azure IoT Central 'ın [bölgeye göre kullanılabilir ürünler](https://azure.
 
 ## <a name="application-template"></a>Uygulama şablonu
 
-Yeni Azure IoT Central uygulamanız için kullanılabilir uygulama şablonlarından birini seçebilirsiniz. Uygulama şablonu, başlamanıza yardımcı olacak cihaz şablonları ve panolar gibi önceden tanımlanmış öğeleri içerebilir.
+Yeni Azure IoT Central uygulamanız için aşağıdaki uygulama şablonunu seçebilirsiniz.
 
 | Uygulama şablonu | Açıklama |
 | -------------------- | ----------- |
-| Özel uygulama   | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
-| Contoso Örneği       | Basit bağlı bir cihaz için cihaz şablonu içeren bir uygulama oluşturur. Azure IoT Central'ı incelemeye başlamak için bu şablonu kullanın. |
-| Devkits Örneği       | MXChip veya Raspberry Pi cihazını bağlamak amacıyla sizin için hazırlanmış cihaz şablonlarıyla bir uygulama oluşturur. Bu cihazlardan birine yönelik bir cihaz geliştiricisi kullanıyorsanız bu şablonu kullanın. |
+| Eski uygulama   | Kendi cihaz şablonlarınız ve cihazlarınızla doldurabileceğiniz boş bir uygulama oluşturur. |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

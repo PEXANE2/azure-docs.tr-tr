@@ -1,6 +1,6 @@
 ---
-title: Azure portal yeni Uygulama kayıtları deneyimine Uygulama kayıtları (eski) geçiş için eğitim kılavuzu
-description: Azure portal yeni uygulama kayıt deneyimine giriş
+title: Yeni Azure portalı uygulama kaydı eğitim kılavuzu
+description: Yeni Azure portal uygulama kaydı deneyimini tanıtır
 services: active-directory
 author: archieag
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3726ebbe0ebc3725a885c847f33760ebd7e2e8b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424670"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama kayıtları’ndan (Eski) Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
+# <a name="new-azure-portal-app-registration-training-guide"></a>Yeni Azure portalı uygulama kaydı eğitim kılavuzu
 
 Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok geliştirme bulabilirsiniz. Azure portal Uygulama kayıtları (eski) deneyim hakkında bilgi sahibiyseniz, yeni deneyimi kullanmaya başlamak için bu eğitim kılavuzunu kullanın.
 
@@ -59,7 +59,7 @@ Eski deneyim bir **Özellikler** sayfasına sahipti. **Özellikler** aşağıdak
 - **Nesne KIMLIĞI**
 - **Uygulama Kimliği**
 - **Uygulama Kimliği URI'si**
-- **Le**
+- **Logo**
 - **Giriş sayfası URL 'SI**
 - **Oturum kapatma URL 'SI**
 - **Hizmet koşulları URL 'SI**

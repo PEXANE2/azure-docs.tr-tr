@@ -1,98 +1,94 @@
 ---
-title: Sizin için önemli olan Azure Danışmanı önerileri görüntüle
-description: Görebilir ve gürültüsünü azaltmak için Azure Danışmanı önerileri filtre uygulayabilirsiniz.
-services: advisor
-author: kasparks
-ms.service: advisor
+title: Size bağımsız olarak Azure Advisor önerilerini görüntüleyin
+description: Paraziti azaltmak için Azure Advisor önerilerini görüntüleyin ve filtreleyin.
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467915"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422364"
 ---
-# <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Sizin için önemli olan Azure Danışmanı önerileri görüntüle
+# <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Size bağımsız olarak Azure Advisor önerilerini görüntüleyin
 
-Azure Danışmanı, Azure dağıtımlarınızın iyileştirilmesine yardımcı olacak öneriler sağlanmıştır. Advisor'ın içinde yalnızca sizin için önemli olan için önerilerin daraltmak için yardımcı olan birkaç özellik erişebilirsiniz.
+Azure Danışmanı, Azure dağıtımlarınızı iyileştirmenize yardımcı olacak öneriler sağlar. Danışman içinde, önerilerinizi yalnızca sizin için daraltmanıza yardımcı olan birkaç özelliğe erişebilirsiniz.
 
-## <a name="configure-subscriptions-and-resource-groups"></a>Abonelikler ve kaynak gruplarını yapılandırma
+## <a name="configure-subscriptions-and-resource-groups"></a>Abonelikleri ve kaynak gruplarını yapılandırma
 
-Advisor abonelikler ve kaynak grupları, siz ve kuruluşunuz için önemli işaretleyin olanağı sağlar. Yalnızca seçtiğiniz kaynak grupları ve abonelikler için önerileri görürsünüz. Varsayılan olarak, tüm seçilir. Bu abonelik veya kaynak grubu erişimi olan herkesin aynı ayarları uygulamak için abonelik veya kaynak grubu için yapılandırma ayarlarını uygulayın. Yapılandırma ayarları, Azure portalından veya programlama yoluyla değiştirilebilir.
+Danışman size ve kuruluşunuza yönelik abonelikler ve kaynak grupları seçme olanağı sağlar. Yalnızca seçtiğiniz abonelikler ve kaynak grupları için öneriler görürsünüz. Varsayılan olarak, tümü seçilidir. Yapılandırma ayarları abonelik veya kaynak grubu için geçerlidir; bu nedenle, bu aboneliğe veya kaynak grubuna erişimi olan herkese aynı ayarlar uygulanır. Yapılandırma ayarları Azure portal veya program aracılığıyla değiştirilebilir.
 
-Azure portalında değişiklik yapmak için:
+Azure portal değişiklik yapmak için:
 
-1. Açık [Azure Danışmanı](https://aka.ms/azureadvisordashboard) Azure portalında.
+1. Azure portal [Azure Advisor](https://aka.ms/azureadvisordashboard) 'ı açın.
 
-1. Seçin **yapılandırma** menüsünde.
+1. Menüden **yapılandırma** ' yı seçin.
 
-   ![Advisor yapılandırma menüsü](./media/view-recommendations/configuration.png)
+   ![Danışman yapılandırma menüsü](./media/view-recommendations/configuration.png)
 
-1. Kutuyu işaretleyin **INCLUDE** sütunu için herhangi bir abonelik veya kaynak grupları, Advisor önerileri almak için. Kutusu devre dışıysa, bir yapılandırma Bu abonelik veya kaynak grubunda değişikliği yapma iznine sahip. Daha fazla bilgi edinin [izinleri Azure Danışmanı'nda](permissions.md).
+1. Danışman önerilerini almak için herhangi bir aboneliğin veya kaynak grubunun **dahil etme** sütunundaki kutuyu işaretleyin. Kutu devre dışıysa, bu abonelikte veya kaynak grubunda bir yapılandırma değişikliği yapma izniniz olmayabilir. [Azure Advisor izinleri](permissions.md)hakkında daha fazla bilgi edinin.
 
-1. Tıklayın **Uygula** altındaki bir değişiklik yaptıktan sonra.
+1. Değişiklik yaptıktan sonra alt kısımdaki **Uygula** ' ya tıklayın.
 
-## <a name="filtering-your-view-in-the-azure-portal"></a>Azure portalında Görünümü Filtresi
+## <a name="filtering-your-view-in-the-azure-portal"></a>Azure portal görünümlerinizin filtrelenmesi
 
-Yapılandırma ayarları değişti kadar etkin kalır. Tek bir görüntülemeye yönelik önerilerin sınırlandırmak istiyorsanız, sağlanan Danışman panelinin en üstünde açılan listeler kullanabilirsiniz. Genel bakış, yüksek kullanılabilirlik, güvenlik, performans, maliyet ve tüm önerilerin panellerinden abonelik, kaynak türleri ve görmek istediğiniz öneri durumu seçebilirsiniz.
+Yapılandırma ayarları değiştirilene kadar etkin kalır. Tek bir görüntüleme için önerilerin görünümünü sınırlandırmak istiyorsanız, danışman panelinin en üstünde yer alarak sunulan açılan listeleri kullanabilirsiniz. Genel bakış, yüksek kullanılabilirlik, güvenlik, performans, maliyet ve tüm öneri panellerinden, görmek istediğiniz abonelikleri, kaynak türlerini ve öneri durumunu seçebilirsiniz.
 
-   ![Advisor filtreleme menüsü](./media/view-recommendations/filtering.png)
+   ![Danışman filtreleme menüsü](./media/view-recommendations/filtering.png)
 
-## <a name="dismissing-and-postponing-recommendations"></a>Kapatma ve öneri erteleniyor
+## <a name="dismissing-and-postponing-recommendations"></a>Kayıp ve öneriler erteleme
 
-Azure Danışmanı'nı kapatın veya erteleme tek bir kaynak hakkında öneriler sağlar. Bir öneri kapatmak, el ile etkinleştirmeniz sürece tekrar görmek değil. Ancak, bir öneri erteleniyor bir süre sonra öneri otomatik olarak yeniden etkinleştirildiğinde belirtmenize olanak tanır. Erteleme Azure portalından veya programlama yoluyla gerçekleştirilebilir.
+Azure Danışmanı, tek bir kaynaktaki önerileri kapatmanıza veya erteetmenize olanak tanır. Bir öneriyi kapatırsanız, el ile etkinleştirmediğiniz takdirde onu bir daha görmezsiniz. Ancak, bir öneriyi erteleme, öneriyi otomatik olarak yeniden etkinleştiren süreyi belirtmenize olanak tanır. Erteleme Azure portal veya program aracılığıyla yapılabilir.
 
-### <a name="postpone-a-single-recommendation-in-the-azure-portal"></a>Azure portalında tek bir öneriyi ertele 
+### <a name="postpone-a-single-recommendation-in-the-azure-portal"></a>Azure portal tek bir öneriyi erteleyin 
 
-1. Açık [Azure Danışmanı](https://aka.ms/azureadvisordashboard) Azure portalında.
-1. Önerileri görmek için bir öneri kategorisi seçin
-1. Öneri listesinden bir öneri seçin
-1. Erteleyebilir veya kapatmak istediğiniz öneri için Ertele'yi veya Kapat'ı seçin
+1. Azure portal [Azure Advisor](https://aka.ms/azureadvisordashboard) 'ı açın.
+1. Önerilerinizi görüntülemek için bir öneri kategorisi seçin
+1. Öneriler listesinden bir öneri seçin
+1. Ertelemek veya kapatmak istediğiniz öneri için ertele veya Kapat ' ı seçin
 
-     ![Advisor filtreleme menüsü](./media/view-recommendations/postpone-dismiss.png)
+     ![Danışman filtreleme menüsü](./media/view-recommendations/postpone-dismiss.png)
 
-### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Erteleyebilir veya Azure portalında bir birden çok önerileri Kapat
+### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Azure portal birden çok öneriyi erteleyin veya kapatın
 
-1. Açık [Azure Danışmanı](https://aka.ms/azureadvisordashboard) Azure portalında.
-1. Önerileri görmek için bir öneri kategorisi seçin.
-1. Bir öneri önerileri listesinden seçin.
-1. Sol tarafındaki satır erteleyebilir veya öneri kapatmak istediğiniz tüm kaynaklar için onay kutusunu seçin.
-1. Seçin **Ertele'yi** veya **atla** en sol üst köşesindeki tablosu.
+1. Azure portal [Azure Advisor](https://aka.ms/azureadvisordashboard) 'ı açın.
+1. Önerilerinizi görüntülemek için bir öneri kategorisi seçin.
+1. Öneriler listesinden bir öneri seçin.
+1. Öneriyi ertelemek veya kapatmak istediğiniz tüm kaynaklar için satırın solundaki onay kutusunu seçin.
+1. Tablonun sol üst kısmında **ertele** veya **Kapat** ' ı seçin.
 
-     ![Advisor filtreleme menüsü](./media/view-recommendations/postpone-dismiss-multiple.png)
-
-> [!NOTE]
-> Kapat veya bir öneriyi ertele katkıda bulunan veya sahip iznine ihtiyacınız var. Azure Danışmanı izinler hakkında daha fazla bilgi edinin.
+     ![Danışman filtreleme menüsü](./media/view-recommendations/postpone-dismiss-multiple.png)
 
 > [!NOTE]
-> Seçim kutularının devre dışıysa, öneriler hala yükleniyor. Erteleyebilir veya kapatmak denemeden önce yüklemek tüm öneriler için lütfen bekleyin.
+> Bir öneriyi kapatmak veya ertelemek için katkıda bulunan veya sahip izninizin olması gerekir. Azure Advisor izinleri hakkında daha fazla bilgi edinin.
 
-### <a name="reactivate-a-postponed-or-dismissed-recommendation"></a>Ertelenen veya kapatılmış bir öneri yeniden etkinleştirme
+> [!NOTE]
+> Seçim kutuları devre dışıysa, öneriler yüklenmeye devam edebilir. Lütfen ertelemeyi veya kapatmak denemeden önce tüm önerilerin yüklenmesini bekleyin.
 
-Ertelenen veya kapatıldı bir öneri etkinleştirebilirsiniz. Bu eylem, Azure portalından veya programlama yoluyla gerçekleştirilebilir. Azure portalında:
+### <a name="reactivate-a-postponed-or-dismissed-recommendation"></a>Ertelenen veya kapatılan öneriyi yeniden etkinleştirin
 
-1. Açık [Azure Danışmanı](https://aka.ms/azureadvisordashboard) Azure portalında.
+Ertelenen veya kapatılan bir öneriyi etkinleştirebilirsiniz. Bu eylem Azure portal veya program aracılığıyla yapılabilir. Azure portalında:
 
-1. Genel Bakış panelde filtreyi değiştirin **ertelendi**. Danışman, ardından Ertelenen veya kapatılmış önerileri görüntüler.
+1. Azure portal [Azure Advisor](https://aka.ms/azureadvisordashboard) 'ı açın.
 
-    ![Advisor filtreleme menüsü](./media/view-recommendations/activate-postponed.png)
+1. Genel Bakış panelinde filtreyi **erteleyecek**şekilde değiştirin. Advisor daha sonra ertelenen veya kapatılan önerileri görüntüler.
 
-1. Görmek için bir kategori seçin **ertelendi** ve **çıkarıldı** öneriler.
+    ![Danışman filtreleme menüsü](./media/view-recommendations/activate-postponed.png)
 
-1. Bir öneri önerileri listesinden seçin. Bu önerilerde açar **Ertelenen & kapatıldı** sekmesi kendisi için bu öneriyi ertelendi veya bırakıldığı kapatıldı kaynakları göstermek için zaten seçili.
+1. **Ertelenmiş** ve **Kapatılan** önerileri görmek için bir kategori seçin.
 
-1. Tıklayarak **etkinleştirme** satırın sonunda. Tıklattıktan sonra bu kaynak için etkin ve bu nedenle bu tablodan kaldırılan kullanılması önerilir. Öneri görünür **etkin** sekmesi.
+1. Öneriler listesinden bir öneri seçin. Bu, bu öneriye ilişkin Ertelenen veya kapatılan kaynakları göstermek için zaten **ertelenen & kapatıldı** sekmesi seçili olan önerileri açar.
+
+1. Satırın sonundaki **Etkinleştir** ' e tıklayın. Tıklandığında öneri bu kaynak için etkin olur ve bu nedenle bu tablodan kaldırılır. Öneri artık **etkin** sekmesinde görünür.
  
-     ![Advisor filtreleme menüsü](./media/view-recommendations/activate-postponed-2.png)
+     ![Danışman filtreleme menüsü](./media/view-recommendations/activate-postponed-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Danışmanı'nda sizin için önemli olan önerileri nasıl görüntüleyebileceğiniz açıklanır. Advisor hakkında daha fazla bilgi için bkz: 
+Bu makalede, Azure Advisor 'da size yönelik önerileri nasıl görüntüleyebileceğiniz açıklanmaktadır. Advisor hakkında daha fazla bilgi edinmek için bkz.: 
 
 - [Azure Advisor nedir?](advisor-overview.md)
-- [Advisor'ı kullanmaya başlama](advisor-get-started.md)
+- [Advisor 'ı kullanmaya başlama](advisor-get-started.md)
 - [Azure Danışmanı izinleri](permissions.md)
 
 

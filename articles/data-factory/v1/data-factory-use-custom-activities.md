@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438819"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -42,7 +42,7 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)’yı indirip yükleyin
 
@@ -366,7 +366,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     ```
 
     Calculate yöntemi giriş dosyalarında Microsoft anahtar sözcük örneklerinin sayısını hesaplar (klasördeki Bloblar). Arama terimi ("Microsoft") kodda sabit kodlanmış.
-10. Projeyi derle. Menüden **Oluştur** ' a tıklayın ve **çözüm oluştur**' a tıklayın.
+10. Projeyi derleyin. Menüden **Oluştur** ' a tıklayın ve **çözüm oluştur**' a tıklayın.
 
     > [!IMPORTANT]
     > .NET Framework 4.5.2 sürümünü projeniz için hedef çerçeve olarak ayarlayın: projeye sağ tıklayın ve **Özellikler** ' e tıklayarak hedef Framework 'ü ayarlayın. Data Factory, 4.5.2 ' den sonraki sürümlere .NET Framework göre derlenen özel etkinlikleri desteklemez.
@@ -440,7 +440,7 @@ Bağlı hizmetler veri depolarını veya işlem hizmetlerini Azure data factory�
 2. Komut çubuğunda **Yeni veri deposu** ' na tıklayın ve **Azure Storage**' ı seçin. Düzenleyicide Azure Storage bağlı hizmeti oluşturmak için JSON betiğini görmeniz gerekir.
 
     ![Yeni veri deposu-Azure depolama](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. `<accountname>` Azure depolama hesabınızın adıyla ve `<accountkey>` Azure Storage hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alacağınız hakkında bilgi için bkz. [Depolama erişim anahtarlarını görüntüleme, kopyalama ve yeniden oluşturma](../../storage/common/storage-account-manage.md#access-keys).
+3. `<accountname>` Azure depolama hesabınızın adıyla ve `<accountkey>` Azure Storage hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
     ![Azure Storage beğenilen hizmeti](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt**’a tıklayın.

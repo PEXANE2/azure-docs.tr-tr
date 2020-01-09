@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: f861303b7f3bc8d37caf6da0eaf2f4cef4b36ee5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425429"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Öğretici: Azure Active Directory Domain Services (Önizleme) içinde şirket içi etki alanına giden bir orman güveni oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -43,6 +43,9 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Kaynak ormanı kullanılarak oluşturulan ve Azure AD kiracınızda yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
     * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance-advanced].
+    
+    > [!IMPORTANT]
+    > *Kaynak* ormanı kullanarak Azure AD DS yönetilen bir etki alanı oluşturduğunuzdan emin olun. Varsayılan seçenek bir *Kullanıcı* ormanı oluşturur. Şirket içi AD DS ortamlarında yalnızca kaynak ormanları için güvenler oluşturulabilir.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -82,6 +85,10 @@ Azure AD DS yönetilen etki alanını şirket içi ortamdan doğru bir şekilde 
 1. Başlat 'ı seçin **| Yönetim Araçları | Active Directory etki alanları ve Güvenleri**
 1. *OnPrem.contoso.com*gibi etki alanını sağ seçin, **Özellikler** ' i seçin
 1. **Güvenler** sekmesini ve ardından **yeni güven** ' i seçin
+
+   > [!NOTE]
+   > **Güvenler** menü seçeneğini görmüyorsanız, *orman türü*için **Özellikler** ' in altına bakın. Yalnızca *kaynak* ormanları güven oluşturabilir. Orman türü *Kullanıcı*ise, güven oluşturamazsınız. Şu anda Azure AD DS yönetilen bir etki alanının orman türünü değiştirme yöntemi yoktur. Yönetilen etki alanını bir kaynak ormanı olarak silip yeniden oluşturmanız gerekir.
+
 1. Azure AD DS etki alanı adı 'nda, *aadds.contoso.com*gibi bir ad girin ve ardından **İleri** ' yi seçin.
 1. Bir **orman güveni**oluşturma, sonra bir **yol oluşturma: gelen** güven seçeneğini belirleyin.
 1. **Yalnızca bu etki alanı**için güven oluşturmayı seçin. Sonraki adımda, Azure AD DS yönetilen etki alanı için Azure portal güveni oluşturursunuz.
@@ -181,7 +188,7 @@ Azure AD DS kaynak ormanına katılmış Windows Server VM 'sini kullanarak, kul
 1. **Gruplar veya Kullanıcı adları** listesinden *fileserveraccess* ' i seçin. **FileServerAccess izinleri** listesinde, **değiştirme** ve **yazma** izinleri için *Izin ver* ' i seçin ve ardından **Tamam**' ı seçin.
 1. **Paylaşım** sekmesini seçin ve **Gelişmiş paylaşım...** seçeneğini belirleyin.
 1. **Bu klasörü paylaşma**' yı seçin, sonra da *çapraz Forestshare*gibi **Share adında** dosya paylaşımının hatırlayabileceğiniz bir adını girin.
-1. **İzinler**' i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
+1. **İzinler**’i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
 1. **Tamam** ' ı iki kez seçin ve ardından **kapatın**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ormanlar arası kimlik doğrulamasını bir kaynağa doğrulama

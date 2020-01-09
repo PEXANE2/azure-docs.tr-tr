@@ -1,7 +1,6 @@
 ---
 title: CI/CD ve Azure DevOps ile Azure Stream Analytics işleri dağıtma
 description: Bu makalede, Azure DevOps Services kullanarak CI/CD ile Stream Analytics işinin nasıl dağıtıldığı açıklanır.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925076"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354428"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Öğretici: Azure Pipelines kullanarak CI/CD ile Azure Stream Analytics işi dağıtma
 Bu öğreticide, Azure Pipelines kullanarak bir Azure Stream Analytics işi için sürekli tümleştirme ve dağıtımın nasıl ayarlanacağı açıklanır. 
@@ -27,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure Pipelines’da yayın işlem hattı oluşturma
 > * Uygulamayı otomatik olarak dağıtma ve yükseltme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.

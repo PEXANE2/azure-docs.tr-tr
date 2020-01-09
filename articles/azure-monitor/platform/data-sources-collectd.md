@@ -4,15 +4,15 @@ description: CollectD, uygulamalardan ve sistem düzeyi bilgilerden düzenli ola
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395882"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
 [Collectd](https://collectd.org/) , uygulamalardan ve sistem düzeyi bilgilerden düzenli olarak performans ölçümlerini toplayan açık kaynaklı bir Linux Daemon. Örnek uygulamalar Java Sanal Makinesi (JVM), MySQL Server ve NGINX ' i içerir. Bu makalede, Azure Izleyici 'de CollectD 'den performans verilerinin toplanması hakkında bilgi sağlanır.
@@ -101,7 +101,7 @@ Azure Izleyici 'de CollectD verilerinin toplanmasını yapılandırmak için tem
 
 3. Aşağıdaki komutlarla, CollectD ve Linux için Log Analytics Aracısı 'nı yeniden başlatın.
 
-    sudo hizmeti toplanan sudo/opt/Microsoft/omsagent/bin/service_control yeniden başlatma
+    sudo hizmeti toplanan sudo/seçenek/Microsoft/omsagent/bin/service_control yeniden başlatma
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD ölçümlerini Azure Izleyici şemasına dönüştürme
 Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçümleri ve CollectD tarafından toplanan yeni ölçümler arasında tanıdık bir modeli korumak için aşağıdaki şema eşlemesi kullanılır:
@@ -110,13 +110,13 @@ Linux için Log Analytics Aracısı tarafından zaten toplanan altyapı ölçüm
 |:--|:--|
 | `host` | Bilgisayar |
 | `plugin` | Hiçbiri |
-| `plugin_instance` | Örnek adı<br>**Plugin_instance** *null* Ise InstanceName = " *_Total*" |
+| `plugin_instance` | Örnek Adı<br>**Plugin_instance** *null* ise InstanceName = " *_Total*" |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>**Type_instance** *null* ise, CounterName =**boş** olur |
+| `type_instance` | CounterName<br>**Type_instance** *null* ise CounterName =**Blank** |
 | `dsnames[]` | CounterName |
 | `dstypes` | Hiçbiri |
 | `values[]` | Onay değeri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
-* Syslog kayıtlarından verileri tek tek alanlara ayrıştırmak için [özel alanları](custom-fields.md) kullanın.
+* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için. 
+* Kullanım [özel alanlar](custom-fields.md) syslog kayıtları verilerinden ayrı ayrı alanlara ayrıştırılamıyor.

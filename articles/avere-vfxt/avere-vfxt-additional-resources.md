@@ -6,23 +6,23 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: rohogue
-ms.openlocfilehash: c8ac08e3d03e8eb525cad7d73bece40c515e31a1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416342"
 ---
-# <a name="additional-documentation"></a>Ek belgeler
+# <a name="additional-documentation"></a>Diğer belgeler
 
-Bu makalede, avere Denetim Masası yönetim arabirimi ve ilgili konular hakkında ek belgelere bağlantılar bulunur. 
+Bu makalede, avere Denetim Masası yönetim arabirimi ve ilgili konular hakkında ek belgelere bağlantılar bulunur.
 
 ## <a name="avere-cluster-documentation"></a>Avere kümesi belgeleri
 
-Ek avere kümesi belgeleri <https://azure.github.io/Avere/> ' da Web sitesinde bulunabilir. Bu belgeler, kümenin yeteneklerini ve ayarlarını nasıl yapılandıracağınızı anlamanıza yardımcı olabilir. 
+Ek avere kümesi belgeleri <https://azure.github.io/Avere/>adresindeki Web sitesinde bulunabilir. Bu belgeler, kümenin yeteneklerini ve ayarlarını nasıl yapılandıracağınızı anlamanıza yardımcı olabilir.
 
 * [FXT kümesi oluşturma kılavuzu](<https://azure.github.io/Avere/#fxt_cluster>) , fiziksel donanım düğümlerinden oluşan kümeler için tasarlanmıştır, ancak belgedeki bazı bilgiler vFXT kümelerine de uygundur. Özellikle, yeni vFXT küme yöneticileri bu bölümleri okumayı yararlı olabilir:
-  * [Destek ve Izleme ayarlarını](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) özelleştirmek, destek yükleme ayarlarını özelleştirmeyi ve uzaktan izlemeyi etkinleştirmeyi açıklar. 
+  * [Destek ve Izleme ayarlarını](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) özelleştirmek, destek yükleme ayarlarını özelleştirmeyi ve uzaktan izlemeyi etkinleştirmeyi açıklar.
   * [VServers ve Global ad alanı yapılandırması](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) , istemciye yönelik bir ad alanı oluşturma hakkında bilgi içerir.
   * [Avere kümesi IÇIN DNS yapılandırması,](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) hepsini bir kez deneme DNS 'nin nasıl yapılandırılacağını açıklar.
   * [Arka uç depolama belgeleri ekleme](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) temel filers ekleme.
@@ -33,4 +33,4 @@ Ek avere kümesi belgeleri <https://azure.github.io/Avere/> ' da Web sitesinde b
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT oluşturma ve yönetimi belgeleri
 
-Bulut kümesi oluşturma ve yönetim yardımcı programı vfxt.py kullanmaya yönelik bir tam kılavuz GitHub: [vfxt.py Ile bulut kümesi Yönetimi](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)için verilmiştir.  
+Bulut kümesi oluşturma ve yönetim yardımcı programı vfxt.py kullanmaya yönelik bir tam kılavuz GitHub: [vfxt.py Ile bulut kümesi Yönetimi](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)için verilmiştir.

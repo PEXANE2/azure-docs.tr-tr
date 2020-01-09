@@ -1,7 +1,7 @@
 ---
 title: SMOTE
-titleSuffix: Azure Machine Learning service
-description: Fazla örnekleme kullanarak bir veri kümesindeki Low-olay örneklerinin sayısını artırmak için Azure Machine Learning hizmetinde SMOTE modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Fazla örnekleme kullanarak bir veri kümesindeki Low-olay örneklerinin sayısını artırmak için Azure Machine Learning SMOTE modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428443"
 ---
 # <a name="smote"></a>SMOTE
 
@@ -40,7 +40,7 @@ Veri kümesini bir işlem hattına ekler ve veri kümesinin çıktısında **Gö
  
 Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **Smote yüzdesi**değerini ayarlayabilirsiniz:
 
-||Sınıf 0|Sınıf 1|Toplamda|  
+||Sınıf 0|Sınıf 1|toplam|  
 |-|-------------|-------------|-----------|  
 |Özgün veri kümesi<br /><br /> ( = **Smolik yüzdesine** eşdeğerdir)|570<br /><br /> %76|178<br /><br /> 24|748|  
 |**Smote yüzdesi** = **100**|570<br /><br /> %62|356<br /><br /> %38|926|  
@@ -99,5 +99,5 @@ Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 

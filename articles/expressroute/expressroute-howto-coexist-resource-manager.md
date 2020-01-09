@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a1dc089e1b64ed8d71db4c09405c8cc9a07d8bea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436974"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell kullanarak ExpressRoute ve siteden siteye arada var olabilen bağlantılar yapılandırma
 > [!div class="op_single_selector"]
@@ -41,6 +41,7 @@ Siteden Siteye VPN ve ExpressRoute eşzamanlı bağlantılarını yapılandırma
 * **Yalnızca rota tabanlı VPN ağ geçidi desteklenir.** Rota tabanlı bir [VPN ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanmanız gerekir. Ayrıca, [birden çok ilke tabanlı VPN cihazına bağlanma](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)bölümünde açıklandığı gibi ' ilke tabanlı trafik seçicileri ' için YAPıLANDıRıLMıŞ bir VPN bağlantısı ile rota tabanlı bir VPN ağ geçidini de kullanabilirsiniz.
 * **VPN ağ geçidiniz için statik rota yapılandırılmalıdır.** Yerel ağınız hem ExpressRoute hem de Siteden Siteye VPN’e bağlıysa Siteden Siteye VPN bağlantısını genel İnternet’e yönlendirebilmeniz için yerel ağınızda statik bir rotanın yapılandırılmış olması gerekir.
 * **Belirtilmemişse, varsayılan olarak ASN 65515 VPN Gateway.** Azure VPN Gateway BGP yönlendirme protokolünü destekler. -ASN anahtarını ekleyerek bir sanal ağ için ASN (AS Number) belirtebilirsiniz. Bu parametreyi belirtmezseniz, varsayılan AS numarası 65515 ' dir. Yapılandırma için herhangi bir ASN kullanabilirsiniz, ancak 65515 dışında bir öğe seçerseniz, ayarın etkili olması için ağ geçidini sıfırlamanız gerekir.
+* **Ağ geçidi alt ağı/27 veya daha kısa bir ön ek olmalıdır**(örneğin/26,/25) veya ExpressRoute sanal ağ geçidini eklediğinizde bir hata iletisi alırsınız.
 
 ## <a name="configuration-designs"></a>Yapılandırma tasarımları
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Siteden siteye VPN’i ExpressRoute için bir yük devretme yolu olarak yapılandırma

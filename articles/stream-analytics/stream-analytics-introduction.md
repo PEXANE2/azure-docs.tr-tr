@@ -3,17 +3,17 @@ title: Azure Stream Analytics’e Genel Bakış
 description: Nesnelerin İnterneti'nden (IoT) sağlanan akış verilerini gerçek zamanlı olarak analiz etmenize yardım eden bir yönetilen hizmet olan Stream Analytics hakkında bilgi edinin.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426180"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics nedir?
 
@@ -61,9 +61,9 @@ Azure Stream Analytics, hareket halindeki verileri çözümlemek için güçlü 
 
 Stream Analytics sorgu dili, akış verilerini analiz etmek ve işlemek için geniş bir işlevler dizisi sunar. Bu sorgu dili basit veri işleme, toplama işlevleri ve karmaşık Jeo uzamsal işlevleri destekler. Portalda sorguları düzenleyebilir ve canlı bir akıştan ayıklanan örnek verileri kullanarak test edebilirsiniz.
 
-Ek işlevler tanımlayıp çağırarak sorgu dilinin yapabileceklerini artırabilirsiniz. Azure Machine Learning çözümlerden faydalanmak için Azure Machine Learning işlev çağrıları tanımlayabilir ve bir akışın parçası olarak karmaşık hesaplamalar gerçekleştirmek için JavaScript veya C# Kullanıcı tanımlı Işlevleri (UDF 'ler) veya Kullanıcı tanımlı toplamaları tümleştirebilirsiniz Analiz sorgusu.
+Ek işlevler tanımlayıp çağırarak sorgu dilinin yapabileceklerini artırabilirsiniz. Azure Machine Learning çözümlerinin avantajlarından yararlanmak için Azure Machine Learning işlev çağrıları tanımlayabilir ve bir Stream Analytics sorgusunun parçası olarak karmaşık hesaplamalar gerçekleştirmek için C# JavaScript veya Kullanıcı tanımlı Işlevleri (UDF 'ler) veya Kullanıcı tanımlı toplamaları tümleştirebilirsiniz.
 
-## <a name="fully-managed"></a>Tam olarak yönetilir
+## <a name="fully-managed"></a>Tam olarak yönetilen
 
 Azure Stream Analytics, Azure üzerinde tam olarak yönetilen bir sunucusuz (PaaS) tekliftir. İşlerinizi çalıştırmak için herhangi bir donanım sağlamanız veya kümeleri yönetmeniz gerekmez. Azure Stream Analytics, bulutta karmaşık işlem kümeleri ayarlayarak ve işi çalıştırmak için gereken performans ayarlamasından yararlanarak işinizi tam olarak yönetir. Azure Event Hubs ve Azure IoT Hub tümleştirmesi, işinizin bir dizi kaynaktan gelen saniye başına milyonlarca olayı almasına, bağlı cihazları, tıklama akışlarını ve günlük dosyalarını dahil etmesine olanak tanır. Event Hubs bölümlendirme özelliğini kullanarak, hesaplamaları mantıksal adımlara göre bölümleyebilir ve bunların her biri, ölçeklenebilirliği artırmak için daha fazla bölümlendirilme olanağı vardır.
 

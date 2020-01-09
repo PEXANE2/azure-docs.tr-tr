@@ -4,15 +4,15 @@ description: Azure sanal makineler, VM Ölçek Kümeleri, Service Fabric ve Clou
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/04/2019
-ms.openlocfilehash: fe07c93ada2e8635d0f64caf8451ccdf530f6a22
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fe1c1018768c81248640521ae278bfb571934601
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395135"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Tanılama uzantısı yapılandırma şema sürümleri ve geçmişi
 Bu sayfa, Microsoft Azure SDK 'nın bir parçası olarak sevk edilen uzantı şeması sürümlerinin Azure Tanılama dizinler.  
@@ -34,17 +34,17 @@ Azure Tanılama uzantısı, Application Insights ve Log Analytics dahil olmak ü
 |Azure SDK sürümü | Tanılama uzantısı sürümü | Model|  
 |------------------|-------------------------------|------|  
 |'in               |1.0                            |eklenti|  
-|2,0-2,4         |1.0                            |eklenti|  
-|2,5               |1.2                            |uzantının|  
-|2,6               |1.3                            |"|  
-|2,7               |1,4                            |"|  
-|2,8               |1,5                            |"|  
-|2,9               |1,6                            |"|
-|2,96              |1,7                            |"|
-|2,96              |1,8                            |"|
-|2,96              |1.8.1                          |"|
-|2,96              |1,9                            |"|
-|2,96              |1,11                           |"|
+|2.0 - 2.4         |1.0                            |eklenti|  
+|2.5               |1.2                            |uzantı|  
+|2,6               |1.3                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|  
+|2.7               |1.4                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|  
+|2.8               |1,5                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|  
+|2.9               |1.6                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|
+|2.96              |1.7                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|
+|2.96              |1.8                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|
+|2.96              |1.8.1                          |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|
+|2.96              |1.9                            |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|
+|2.96              |1,11                           |depolama hesabında ayarlanan Yaşam Döngüsü Yönetimi İlkesinden dolayı otomatik olarak arşiv katmanına geri geçirilecek"|
 
 
  Azure Tanılama sürüm 1,0 ilk olarak bir eklenti modelinde gönderilir--Azure SDK 'yı yüklediğinizde, Azure tanılama 'nın bu sürümü ile birlikte sevk ettiğiniz anlamına gelir.  
@@ -191,9 +191,9 @@ Azure SDK 2,5 ' den Azure SDK 2,6 veya sonraki bir sürüme geçiş yaparken,. w
 * . Cscfg dosyasındaki tanılama bağlantı dizesi. wadcfgx dosyasındaki depolama hesabından önceliklidir. . Cscfg dosyasında bir tanılama bağlantı dizesi belirtilmişse, Visual Studio bunu kullanır ve. wadcfgx içindeki depolama hesabını yoksayar.
 
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>"Geliştirme depolama bağlantı dizelerini güncelleştir..." onay kutusu yapılsın mı?
-**Microsoft Azure yayımlarken Microsoft Azure depolama hesabı kimlik bilgileriyle tanılama ve önbelleğe alma Için güncelleştirme geliştirme depolama bağlantı dizeleri** , herhangi bir geliştirme depolama hesabını güncelleştirmek için uygun bir yol sağlar Yayımlama sırasında Azure Storage hesabıyla belirtilen bağlantı dizeleri.
+**Microsoft Azure yayımlarken Microsoft Azure depolama hesabı kimlik bilgileriyle tanılama ve önbelleğe alma Için güncelleştirme geliştirme depolama bağlantı dizeleri** , yayımlama sırasında belirtilen Azure depolama hesabı ile herhangi bir geliştirme depolama hesabı bağlantı dizesini güncelleştirmek için kullanışlı bir yol sağlar.
 
-Örneğin, bu onay kutusunu seçtiğinizi ve tanılama bağlantı dizesi `UseDevelopmentStorage=true` belirtir. Projeyi Azure 'da yayımladığınızda, Visual Studio tanılama bağlantı dizesini Yayımla sihirbazında belirttiğiniz depolama hesabıyla otomatik olarak güncelleştirir. Ancak, tanılama bağlantı dizesi olarak gerçek bir depolama hesabı belirtilmişse, bunun yerine bu hesap kullanılır.
+Örneğin, bu onay kutusunu seçtiğinizi ve tanılama bağlantı dizesi `UseDevelopmentStorage=true`belirtir. Projeyi Azure 'da yayımladığınızda, Visual Studio tanılama bağlantı dizesini Yayımla sihirbazında belirttiğiniz depolama hesabıyla otomatik olarak güncelleştirir. Ancak, tanılama bağlantı dizesi olarak gerçek bir depolama hesabı belirtilmişse, bunun yerine bu hesap kullanılır.
 
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Azure SDK 2,4 ve öncesi ile Azure SDK 2,5 ve üzeri arasındaki tanılama işlevselliği farkları
 Projenizi Azure SDK 2,5 2,4 veya sonraki bir sürüme yükseltiyorsanız, aşağıdaki tanılama işlevleri farklılıklarını göz önünde bulundurmanız gerekir.
@@ -201,5 +201,5 @@ Projenizi Azure SDK 2,5 2,4 veya sonraki bir sürüme yükseltiyorsanız, aşağ
 * **Yapılandırma API 'leri kullanım dışı** ; azure SDK 2,4 veya önceki sürümlerde tanılama yapılandırması kullanılabilir, ancak azure SDK 2,5 ve sonrasında kullanım dışı bırakılmıştır. Tanılama yapılandırmanız Şu anda kodda tanımlanmışsa, tanılamaların çalışmaya devam etmesini sağlamak için, geçirilen projedeki bu ayarları sıfırdan yeniden yapılandırmanız gerekir. Azure SDK 2,4 için tanılama yapılandırma dosyası, Azure SDK 2,5 ve üzeri için tanılama. wadcfg ve Diagnostics. wadcfgx 'tir.
 * **Bulut hizmeti uygulamalarına yönelik Tanılamalar, örnek düzeyinde değil yalnızca rol düzeyinde yapılandırılabilir.**
 * **Uygulamanızı her dağıttığınızda tanılama yapılandırması güncelleştirilir** . Bu, tanılama yapılandırmanızı Sunucu Gezgini değiştirirseniz ve sonra uygulamanızı yeniden dağıtmanız durumunda eşlik sorunlarına neden olabilir.
-* **Azure SDK 2,5 ve sonraki sürümlerinde, kilitlenme dökümleri tanılama yapılandırma dosyasında, kod içinde değil** , bir kodda yapılandırılmış kilitlenme dökümlerinden sahipseniz, bu durumda kilitlenme Azure SDK 2,6 ' e geçiş sırasında dökümler aktarılmaz.
+* **Azure sdk 2,5 ve sonraki sürümlerinde kilitlenme dökümleri tanılama yapılandırma dosyasında, kodda değil, yapılandırılır** . kodda yapılandırılmış kilitlenme dökümlerinin varsa, azure SDK 2,6 ' e geçiş sırasında kilitlenme dökümleri aktarılmadığı için yapılandırmayı koddan yapılandırma dosyasına el ile aktarmanız gerekir.
 

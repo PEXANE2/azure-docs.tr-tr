@@ -1,5 +1,5 @@
 ---
-title: Kurumsal Anlaşma 'den Microsoft müşteri anlaşması API 'Lerine geçiş-Azure | Microsoft Docs
+title: EA 'yı Microsoft Müşteri Sözleşmesi API 'Lerine geçirme-Azure
 description: Bu makale, Microsoft Kurumsal Anlaşma (EA) ' ın bir Microsoft Müşteri sözleşmesine geçirmesinin sonuçlarını anlamanıza yardımcı olur.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 20d83c48fb4ad60b091dc87b224a053690251a48
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7fef417a7b19d463a98d32b7cf3cce515d1137a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440997"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Kurumsal Anlaşma 'den Microsoft Müşteri Sözleşmesi API 'Lerine geçiş
 
@@ -172,40 +172,40 @@ Kullanım kayıtları dizisinin bulunduğu özellik adı, verilerden _değerlere
 
 | Eski Özellik | Yeni Özellik | Notlar |
 | --- | --- | --- |
-| Accoun | Yok | Abonelik Oluşturucu izlenmiyor. Invoicesectionıd (departmentId ile aynı) kullanın. |
+| AccountId | Yok | Abonelik Oluşturucu izlenmiyor. Invoicesectionıd (departmentId ile aynı) kullanın. |
 | Accountnameaccountownerıd ve AccountOwnerEmail | Yok | Abonelik Oluşturucu izlenmiyor. Invoicesectionname (departmentName ile aynı) kullanın. |
 | AdditionalInfo | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Bu özelliklerin Opposites olduğunu unutmayın. İsAzureCreditEnabled true ise, ChargesBilledSeparately false olur. |
 | ConsumedQuantity | miktar | &nbsp; |
 | ConsumedService | consumedService | Tam dize değerleri farklı şekilde değişebilir. |
-| Tüketimedserviceıd | None | &nbsp; |
+| ConsumedServiceId | Hiçbiri | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date ve usageStartDate | date | &nbsp;  |
-| Gün | None | Günü tarih olarak ayrıştırır. |
+| Gün | Hiçbiri | Günü tarih olarak ayrıştırır. |
 | DepartmentId | invoiceSectionId | Tam değerler farklı. |
 | DepartmentName | invoiceSectionName | Tam dize değerleri farklı şekilde değişebilir. Gerekirse, fatura bölümlerini departmanlara uyacak şekilde yapılandırın. |
 | ExtendedCost ve maliyet | Maliyetsiz para birimi | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| Yinelenen ücret | None | &nbsp;  |
+| Yinelenen ücret | Hiçbiri | &nbsp;  |
 | Konum | location | &nbsp;  |
 | MeterCategory | meterCategory | Tam dize değerleri farklı şekilde değişebilir. |
 | MeterId | meterId | Tam dize değerleri farklı. |
 | MeterName | meterName | Tam dize değerleri farklı şekilde değişebilir. |
 | MeterRegion | meterRegion | Tam dize değerleri farklı şekilde değişebilir. |
 | MeterSubCategory | meterSubCategory | Tam dize değerleri farklı şekilde değişebilir. |
-| Ay | None | Ayı tarih olarak ayrıştırır. |
-| Teklif Adı | None | PublisherName ve productOrderName kullanın. |
-| OfferId | None | &nbsp;  |
-| Sipariş Numarası | None | &nbsp;  |
-| partNumber | None | Fiyatları benzersiz şekilde tanımlamak için ölçüm kimliği ve productOrderName kullanın. |
+| Ay | Hiçbiri | Ayı tarih olarak ayrıştırır. |
+| Teklif Adı | Hiçbiri | PublisherName ve productOrderName kullanın. |
+| OfferId | Hiçbiri | &nbsp;  |
+| Sipariş Numarası | Hiçbiri | &nbsp;  |
+| PartNumber | Hiçbiri | Fiyatları benzersiz şekilde tanımlamak için ölçüm kimliği ve productOrderName kullanın. |
 | Plan Adı | productOrderName | &nbsp;  |
 | Ürün | Ürün |   |
-| ProductID | productId | Tam dize değerleri farklı. |
+| ProductId | productId | Tam dize değerleri farklı. |
 | Yayımcı Adı | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | Tam dize değerleri farklı. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| Resourcelocationıd | None | &nbsp;  |
+| ResourceLocationId | Hiçbiri | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
 | HizmetYöneticisiKimliği | Yok | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
@@ -219,16 +219,16 @@ Kullanım kayıtları dizisinin bulunduğu özellik adı, verilerden _değerlere
 | Etiketler | etiketler | Etiketler özelliği, iç içe geçmiş Özellikler özelliğine değil kök nesne için geçerlidir. |
 | UnitOfMeasure | unitOfMeasure | Tam dize değerleri farklı. |
 | usageEndDate | date | &nbsp;  |
-| Yıl | None | Yılın tarihini ayrıştırır. |
-| Yeni | billingCurrency | Ücret için kullanılan para birimi. |
-| Yeni | billingProfileId | Faturalandırma profili için benzersiz KIMLIK (kayıt ile aynı). |
-| Yeni | billingProfileName | Faturalandırma profilinin adı (kayıt ile aynı). |
-| Yeni | chargeType | Azure hizmeti kullanımını, Market kullanımını ve satın alımlarını ayırt etmek için kullanın. |
-| Yeni | invoiceId | Faturanın benzersiz KIMLIĞI. Geçerli, açık ay için boştur. |
-| Yeni | publisherType | Satın alımlara Yayımcı türü. Kullanım için boş. |
-| Yeni | serviceFamily | Satın alma türü. Kullanım için boş. |
-| Yeni | servicePeriodEndDate | Satın alınan hizmetin bitiş tarihi. |
-| Yeni | servicePeriodStartDate | Satın alınan hizmetin başlangıç tarihi. |
+| Yıl | Hiçbiri | Yılın tarihini ayrıştırır. |
+| (yeni) | billingCurrency | Ücret için kullanılan para birimi. |
+| (yeni) | billingProfileId | Faturalandırma profili için benzersiz KIMLIK (kayıt ile aynı). |
+| (yeni) | billingProfileName | Faturalandırma profilinin adı (kayıt ile aynı). |
+| (yeni) | chargeType | Azure hizmeti kullanımını, Market kullanımını ve satın alımlarını ayırt etmek için kullanın. |
+| (yeni) | invoiceId | Faturanın benzersiz KIMLIĞI. Geçerli, açık ay için boştur. |
+| (yeni) | publisherType | Satın alımlara Yayımcı türü. Kullanım için boş. |
+| (yeni) | serviceFamily | Satın alma türü. Kullanım için boş. |
+| (yeni) | servicePeriodEndDate | Satın alınan hizmetin bitiş tarihi. |
+| (yeni) | servicePeriodStartDate | Satın alınan hizmetin başlangıç tarihi. |
 
 ## <a name="billing-periods-api-replaced-by-invoices-api"></a>Fatura dönemleri API 'si, faturalar API 'siyle değiştirilmiştir
 
@@ -271,7 +271,7 @@ Tüm Azure tüketim Hizmetleri fiyat listesi verilerini JSON biçiminde görünt
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-API 'nin kullanılması, tüm hesabın fiyat listesini döndürür. Ancak, Ayrıca, PDF biçiminde fiyat listesi 'nin sıkıştırılmış bir sürümünü de alabilirsiniz. Özet, belirli bir fatura için faturalandırılan Azure tüketimini ve Market tüketim hizmetlerini içerir. Fatura, Fatura Özeti PDF dosyalarında gösterilen **fatura numarasıyla** aynı olan {InvoiceId} tarafından tanımlanır. İşte bir örnek.
+API 'nin kullanılması, tüm hesabın fiyat listesini döndürür. Ancak, Ayrıca, PDF biçiminde fiyat listesi 'nin sıkıştırılmış bir sürümünü de alabilirsiniz. Özet, belirli bir fatura için faturalandırılan Azure tüketimini ve Market tüketim hizmetlerini içerir. Fatura, Fatura Özeti PDF dosyalarında gösterilen **fatura numarasıyla** aynı olan {InvoiceId} tarafından tanımlanır. Bir örneği aşağıda verilmiştir.
 
 ![InvoiceId 'ye karşılık gelen fatura numarasını gösteren örnek resim](./media/migrate-cost-management-api/invoicesummary.png)
 
@@ -430,20 +430,20 @@ EA 'nın kayıt kapsamında, API yanıtı ve özellikleri aynıdır. Özellikler
 
 | Eski Azure Resource Manager fiyat listesi API özelliği  | Yeni Microsoft müşteri anlaşması fiyat listesi API 'SI özelliği   | Açıklama |
 | --- | --- | --- |
-| Ölçüm Kimliği | _Ölçüm kimliği_ | Ölçümün benzersiz tanımlayıcısı. Ölçüm kimliği ile aynı. |
+| Ölçüm Kimliği | _meterId_ | Ölçümün benzersiz tanımlayıcısı. Ölçüm kimliği ile aynı. |
 | Ölçüm adı | meterName | Ölçümün adı. Ölçüm, Azure hizmeti dağıtılabilir kaynağını temsil eder. |
 | Ölçüm kategorisi  | hizmet | Ölçüm için sınıflandırma kategorisinin adı. Microsoft müşteri anlaşması fiyat listesi ' nde hizmetle aynı. Tam dize değerleri farklı. |
 | Ölçüm alt kategorisi | meterSubCategory | Ölçüm alt sınıflandırma kategorisinin adı. Hizmette bulunan üst düzey özellik kümesi sınıflandırmasına dayalı olarak. Örneğin, temel SQL DB ile standart SQL VERITABANı. |
 | Ölçüm bölgesi | meterRegion | &nbsp;  |
 | Birim | _Uygulanamaz_ | UnitOfMeasure öğesinden ayrıştırılabilir. |
 | Ölçü birimi | unitOfMeasure | &nbsp;  |
-| Parça numarası | _Uygulanamaz_ | PartNumber yerine, bir faturalandırma profilinin fiyatını benzersiz bir şekilde tanımlamak için productOrderName ve ölçüm kimliği kullanın. Alanlar, MCA faturalarında partNumber yerine MCA faturasında listelenir. |
+| Parça numarası | _Uygulanamaz_ | Bölüm numarası yerine productOrderName ve ölçüm kimliği kullanarak bir faturalandırma profilinin fiyatını benzersiz bir şekilde tanımlar. Alanlar, MCA faturalarındaki bölüm numarası yerine MCA faturasında listelenir. |
 | Birim fiyat | unitPrice | Microsoft Müşteri Sözleşmesi birim fiyatı. |
 | Para birimi kodu | pricingCurrency | Microsoft Müşteri anlaşmaları fiyatlandırma para birimi ve faturalandırma para birimi cinsinden fiyatları temsil eder. Para birimi kodu, Microsoft Müşteri sözleşmeleri içindeki pricingCurrency ile aynıdır. |
 | Dahil edilen miktar | includedQuantity | Microsoft Müşteri anlaşmalarındaki hizmetlere uygulanmaz. Sıfır değerleriyle göster. |
-|  Teklif kimliği  | productOrderName | OfferId yerine productOrderName kullanın. OfferId ile aynı değildir, ancak productOrderName ve Meter, Microsoft Müşteri anlaşmalarında fiyatlandırmaya göre belirlenir. Eski kayıtlar 'daki ölçüm kimliği ve OfferId ile ilgilidir. |
+|  Teklif KIMLIĞI  | productOrderName | OfferId yerine productOrderName kullanın. OfferId ile aynı değildir, ancak productOrderName ve Meter, Microsoft Müşteri anlaşmalarında fiyatlandırmaya göre belirlenir. Eski kayıtlar 'daki ölçüm kimliği ve OfferId ile ilgilidir. |
 
-Microsoft Müşteri anlaşmalarının fiyatı, kurumsal anlaşmalardan farklı şekilde tanımlanır. Kurumsal kayıt içindeki hizmetlerin fiyatı ürün, PartNumber, ölçüm ve teklif için benzersizdir. PartNumber, Microsoft Müşteri sözleşmelerde kullanılmaz.
+Microsoft Müşteri anlaşmalarının fiyatı, kurumsal anlaşmalardan farklı şekilde tanımlanır. Kurumsal kayıt kapsamındaki hizmetlerin fiyatı ürün, parça numarası, ölçüm ve teklif için benzersizdir. Bölüm numarası Microsoft Müşteri sözleşmelerde kullanılmaz.
 
 Microsoft Müşteri sözleşmesinin bir parçası olan Azure tüketim hizmeti fiyatı productOrderName ve ölçüm kimliği için benzersizdir. Hizmet ölçümünü ve ürün planını temsil eder.
 
@@ -465,7 +465,7 @@ Aşağıdaki alanlar Microsoft Müşteri Sözleşmesi fiyat listesi API 'Lerinde
 | birim | Geçerli değildir. UnitOfMeasure öğesinden ayrıştırılabilir. |
 | currencyCode | MCA içindeki pricingCurrency ile aynı. |
 | meterLocation | MCA ile meterRegion aynı. |
-| partNumber partNumber | Bölüm numarası MCA faturalarında listelenmediğinden uygulanamaz. PartNumber yerine, fiyatları benzersiz şekilde tanımlamak için ölçüm kimliği ve productOrderName birleşimini kullanın. |
+| partNumber partNumber | Bölüm numarası MCA faturalarında listelenmediğinden uygulanamaz. Bölüm numarası yerine, fiyatları benzersiz şekilde tanımlamak için ölçüm kimliği ve productOrderName birleşimini kullanın. |
 | Totalıncludedquantity | Geçerli değildir. |
 | pretaxStandardRate  | Geçerli değildir. |
 
@@ -523,14 +523,14 @@ RESERVATION özetler API 'SI ile rezervasyon özetlerini almak için:
 
 [Cloudyn](https://cloudyn.com) kullanan kuruluşlar, herhangi bir maliyet yönetimi Ihtiyacı Için [Azure maliyet yönetimi](https://azure.microsoft.com/services/cost-management/) 'ni kullanmaya başlamalıdır. Maliyet yönetimi, hiçbir ekleme ve sekiz saatlik gecikme süresi olmadan Azure portal kullanılabilir. Daha fazla bilgi için bkz. [maliyet yönetimi belgeleri](index.yml).
 
-Azure maliyet yönetimi ile şunları yapabilirsiniz:
+Azure Maliyeti Yönetimi ile şunları yapabilirsiniz:
 
-- Önceden tanımlanmış bir bütçeye göre zaman içinde maliyetleri görüntüleyin. Harcama bozuklularını belirlemek ve durdurmak için günlük maliyet desenlerini çözümleyin. Maliyetleri etiketlere, kaynak grubuna, hizmete ve konuma göre bölün.
-- Kullanım ve maliyetler için sınırlamalar ayarlamak ve önemli eşikler approached olduğunda bildirim almak için bütçeler oluşturun. Özel olayları tetiklemek ve koşullarınızda sabit limitleri zorlamak için eylem gruplarıyla Otomasyon ayarlayın.
+- Önceden tanımlanmış bir bütçeye göre zaman içinde maliyetleri görüntüleyin. Günlük maliyet desenlerini analiz ederek anormal harcamaları tanımlayabilir ve durdurabilirsiniz. Maliyetleri etiketlere, kaynak grubuna, hizmete ve konuma göre bölün.
+- Kullanım ve maliyetler için sınırlamalar ayarlamak ve önemli eşikler approached olduğunda bildirim almak için bütçeler oluşturun. Özel etkinlikleri tetiklemek ve kendi belirleyeceğiniz kalıcı limitleri uygulamak için eylem gruplarıyla otomasyon gerçekleştirebilirsiniz.
 - Azure Advisor önerileriyle maliyeti ve kullanımı iyileştirin. Rezervasyonlar ile satın alma iyileştirmelerini bulun, daha az kullanılan sanal makineleri yeniden boyutlandırın ve kullanılmayan kaynakları silerek bütçeleri dahilinde kalır.
 - Günlük olarak bir CSV dosyası yayımlamak için bir maliyet ve kullanım verilerini dışa aktarma zamanlayın. Faturalama verilerini eşitlenmiş ve güncel tutmak için dış sistemlerle tümleştirmeyi otomatikleştirin.
 
-## <a name="power-bi-integration"></a>Power BI tümleştirme
+## <a name="power-bi-integration"></a>Power BI tümleştirmesi
 
 Maliyet raporlama için Power BI de kullanabilirsiniz. Power BI Desktop için [Azure maliyet yönetimi Bağlayıcısı](/power-bi/desktop-connect-azure-cost-management) , Azure harcamalarınızı daha iyi anlamanıza yardımcı olan güçlü ve özelleştirilmiş raporlar oluşturmak için kullanılabilir. Azure maliyet yönetimi Bağlayıcısı Şu anda müşterileri Microsoft Müşteri Sözleşmesi veya Kurumsal Anlaşma (EA) ile desteklemektedir.
 

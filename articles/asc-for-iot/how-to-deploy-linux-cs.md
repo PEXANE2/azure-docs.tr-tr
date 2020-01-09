@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b675198756ff7bc0791d49fee3649717e3e4da7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367425"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux için IoT C# tabanlı güvenlik Aracısı Için Azure Güvenlik Merkezi 'ni dağıtma
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux için IoT için Azure Güvenlik Merkezi C# tabanlı güvenlik aracısını dağıtma
 
 
 Bu kılavuzda, Linux üzerinde IoT C#tabanlı güvenlik aracısına yönelik Azure Güvenlik Merkezi 'nin nasıl yükleneceği ve dağıtılacağı açıklanmaktadır.
@@ -31,10 +31,10 @@ Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * Yükleme
 > * Dağıtımı doğrulama
-> * Aracıyı Kaldırma
+> * Aracıyı kaldırın
 > * Sorun giderme 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını seçme](how-to-deploy-agent.md).
 
@@ -50,9 +50,9 @@ Güvenlik aracısını dağıtmak için aşağıdaki adımları kullanın:
 
 1. Paketin içeriğini ayıklayın ve _/install_ klasörüne gidin.
 
-1. Çalıştırılarak **ınstallsecurityagent betiğine** çalışan izinleri ekleme`chmod +x InstallSecurityAgent.sh` 
+1. `chmod +x InstallSecurityAgent.sh` çalıştırarak **ınstallsecurityagent betiğine** çalışan izinleri ekleyin 
 
-1. Sonra, şunu çalıştırın: 
+1. Ardından, **kök ayrıcalıklarıyla**aşağıdaki komutu çalıştırın: 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -73,9 +73,9 @@ Bu betik aşağıdaki eylemleri gerçekleştirir:
 - Aracıyı, belirtilen kimlik doğrulama parametreleriyle yapılandırır.
 
 
-Ek Yardım için, – help parametresiyle betiği çalıştırın:`./InstallSecurityAgent.sh --help`
+Ek Yardım için, komut dosyasını – help parametresiyle çalıştırın: `./InstallSecurityAgent.sh --help`
 
-### <a name="uninstall-the-agent"></a>Aracıyı Kaldırma
+### <a name="uninstall-the-agent"></a>Aracıyı kaldırın
 
 Aracıyı kaldırmak için betiği – u parametresiyle çalıştırın: `./InstallSecurityAgent.sh -u`. 
 
@@ -108,7 +108,7 @@ Aracıyı kaldırmak için betiği – u parametresiyle çalıştırın: `./Inst
        **LogFilePath** değeri yapılandırılabilir. 
 
        > [!NOTE]
-       > Sorun giderme işlemi tamamlandıktan sonra oturumu **kapatmayı** öneririz. Günlüğe kaydetmeyi **bırakmak** günlük dosyası boyutunu ve veri kullanımını artırır.
+       > Sorun giderme işlemi tamamlandıktan sonra oturumu **kapatmayı** öneririz. Günlüğe kaydetmeyi **bırakmak günlük dosyası** boyutunu ve veri kullanımını artırır.
 
    1. Şunu çalıştırarak aracıyı yeniden başlatın:
 
@@ -116,7 +116,7 @@ Aracıyı kaldırmak için betiği – u parametresiyle çalıştırın: `./Inst
 
    1. Hata hakkında daha fazla bilgi için günlük dosyasını görüntüleyin.  
 
-       Günlük dosyası konumu:`/var/ASCIoTAgent/IotAgentLog.log`
+       Günlük dosyası konumu: `/var/ASCIoTAgent/IotAgentLog.log`
 
        Dosya konumu yolunu, 2. adımdaki **LogFilePath** için seçtiğiniz ada göre değiştirin. 
 

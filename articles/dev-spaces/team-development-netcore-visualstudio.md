@@ -7,14 +7,14 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Bu öğreticide, Azure Kubernetes hizmetinde .NET Core uygulamasında takım geliştirme yapmak için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438169"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces ile .NET Core ve Visual Studio kullanarak takım geliştirme
 
@@ -92,7 +92,7 @@ Yeni bir alan oluşturmak için aşağıdakileri yapın:
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. **Boşluk Ekle** iletişim kutusunda, üst alanı **dev**olarak ayarlayın ve yeni alanınız için bir ad girin. İş arkadaşlarınızın hangi alanda çalıştığınızı tanımlayabilmesi adına yeni alan için adınızı kullanabilirsiniz (örneğin, "scott"). **OK (Tamam)** düğmesine tıklayın.
+6. **Boşluk Ekle** iletişim kutusunda, üst alanı **dev**olarak ayarlayın ve yeni alanınız için bir ad girin. İş arkadaşlarınızın hangi alanda çalıştığınızı tanımlayabilmesi adına yeni alan için adınızı kullanabilirsiniz (örneğin, "scott"). **Tamam**’a tıklayın.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

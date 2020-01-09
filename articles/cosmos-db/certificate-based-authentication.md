@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB ile sertifika tabanlı kimlik doğrulamayı Azure Active Directory
+title: Azure Cosmos DB ve Active Directory ile sertifika tabanlı kimlik doğrulaması
 description: Azure Cosmos DB 'ten anahtarlara erişmek üzere sertifika tabanlı kimlik doğrulaması için bir Azure AD kimliği yapılandırmayı öğrenin.
 author: voellm
 ms.service: cosmos-db
@@ -7,28 +7,28 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483236"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442111"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Bir Azure AD kimliği için Azure Cosmos DB hesabından anahtarlara erişmek üzere sertifika tabanlı kimlik doğrulaması
 
 Sertifika tabanlı kimlik doğrulaması, istemci uygulamanızın Azure Active Directory (Azure AD) kullanarak istemci sertifikası ile doğrulanmasını sağlar. Sertifika tabanlı kimlik doğrulamasını, Azure 'daki bir şirket içi makine ya da sanal makine gibi bir kimliğiniz olması gereken bir makinede yapabilirsiniz. Uygulamanız daha sonra anahtarları doğrudan uygulamada kullanmadan Azure Cosmos DB anahtarlarını okuyabilir. Bu makalede örnek bir Azure AD uygulaması oluşturma, sertifika tabanlı kimlik doğrulaması için yapılandırma, yeni uygulama kimliğini kullanarak Azure 'da oturum açma ve ardından Azure Cosmos hesabınızdan anahtarları alma açıklanır. Bu makale, kimlikleri ayarlamak için Azure PowerShell kullanır ve Azure Cosmos C# hesabınızdan anahtarların kimliğini doğrulayan ve erişen örnek bir uygulama sağlar.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [En son Azure PowerShell sürümünü](/powershell/azure/install-az-ps) yükler.
 
 * [Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-## <a name="register-an-app-in-azure-ad"></a>Azure AD 'de uygulama kaydetme
+## <a name="register-an-app-in-azure-ad"></a>Bir Uygulamayı Azure AD'ye kaydetme
 
 Bu adımda, Azure AD hesabınızda örnek bir Web uygulaması kaydedeceğinizi caksınız. Bu uygulama daha sonra Azure Cosmos DB hesabınızdan anahtarları okumak için kullanılır. Bir uygulamayı kaydetmek için aşağıdaki adımları kullanın: 
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. Azure **Active Directory** bölmesini açın, **uygulama kayıtları** bölmesine gidin ve **Yeni kayıt**' yi seçin. 
 
@@ -104,7 +104,7 @@ Yukarıdaki komut, aşağıdaki ekran görüntüsüne benzer bir çıktı ile so
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Azure Cosmos hesabınızı yeni kimliği kullanacak şekilde yapılandırın
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. Azure Cosmos hesabınıza gidin, **erişim denetimi (IAM)** dikey penceresini açın.
 
@@ -120,7 +120,7 @@ Sertifika tabanlı kimlik bilgilerini Azure portal Azure AD 'deki istemci uygula
 
 İstemci uygulaması için Azure uygulama kaydı:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. Azure **Active Directory** bölmesini açın, **uygulama kayıtları** bölmesine gidin ve önceki adımda oluşturduğunuz örnek uygulamayı açın. 
 

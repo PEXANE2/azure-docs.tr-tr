@@ -6,103 +6,103 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7241287e0438d6da5efb517a89b984bff72848c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461487"
 ---
-# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma
+# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud ile dağıtılmış izleme kullanma
 
-Yay bulutu 'nın dağıtılmış Izleme Araçları, karmaşık sorunların kolay hata ayıklamasını ve izlenmesini sağlar. Azure yay bulutu, Azure portal tarafından güçlü bir dağıtılmış izleme özelliği sağlamak için Azure 'un [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) [yay bulutunu](https://spring.io/projects/spring-cloud-sleuth) zorbir şekilde tümleştirir.
+Azure Spring Cloud 'daki dağıtılmış izleme araçlarıyla, karmaşık sorunları kolayca ayıklayabilir ve izleyebilirsiniz. Azure Spring Cloud, Azure [yay bulutu](https://spring.io/projects/spring-cloud-sleuth) 'nı Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)ile tümleştirir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
 
-Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure portal dağıtılmış Izlemeyi etkinleştir
-> * Uygulamanıza yay bulutu Uyuth ekleyin
-> * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin
-> * Farklı filtrelerle izleme verilerini ara
+> * Azure portal dağıtılmış izlemeyi etkinleştirin.
+> * Uygulamanıza Azure yay bulutu ön kimlik 'i ekleyin.
+> * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin.
+> * Farklı filtrelerle izleme verilerinde arama yapın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için:
-
-* Zaten sağlanmış ve Azure yay bulut hizmeti çalıştırılıyor.  Azure yay bulut hizmeti sağlamak ve başlatmak için [Bu hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcı doldurun.
+Bu öğreticiyi tamamlayabilmeniz için, zaten sağlanmış ve çalışan bir Azure yay bulut hizmetine ihtiyacınız vardır. Azure yay bulut hizmeti sağlamak ve çalıştırmak için [Azure CLI aracılığıyla uygulama dağıtma hızlı](spring-cloud-quickstart-launch-app-cli.md) başlangıcını doldurun.
     
 ## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-Aşağıdaki satırı Application. Properties dosyasına ekleyerek zipkafersender 'ın Web 'e göndermesini etkinleştirin:
+1. Aşağıdaki satırı Application. Properties dosyasına ekleyin:
 
-```xml
-spring.zipkin.sender.type = web
-```
+   ```xml
+   spring.zipkin.sender.type = web
+   ```
 
-[Bir Azure yay bulutu uygulamasını önceden açmaya yönelik kılavuzumuzu](spring-cloud-tutorial-prepare-app-deployment.md)izlediyseniz bir sonraki adımı atlayabilirsiniz. Aksi takdirde, yerel geliştirme ortamınıza gidin ve `pom.xml` dosyanızı düzenleyerek yay bulutu uykuya geçme bağımlılığını ekleyin:
+   Bu değişiklikten sonra, Zipkabağı gönderici Web 'e gönderebilir.
 
-```xml
-<dependencyManagement>
+1. [Azure yay bulut uygulaması hazırlama kılavuzumuzu](spring-cloud-tutorial-prepare-app-deployment.md)izlediyseniz bu adımı atlayın. Aksi takdirde, yerel geliştirme ortamınıza gidin ve Pom. XML dosyanızı düzenleyerek aşağıdaki Azure yay bulutu uykuya geçme bağımlılığını ekleyin:
+
+    ```xml
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth</artifactId>
+                <version>${spring-cloud-sleuth.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth</artifactId>
-            <version>${spring-cloud-sleuth.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
     </dependencies>
-</dependencyManagement>
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-sleuth</artifactId>
-    </dependency>
-</dependencies>
-```
+    ```
 
-* Bu değişiklikleri yansıtacak şekilde Azure Spring Cloud Service için derleyin ve dağıtın. 
+1. Bu değişiklikleri yansıtacak şekilde Azure Spring Cloud Service için derleyin ve dağıtın.
 
 ## <a name="modify-the-sample-rate"></a>Örnek hızını değiştirme
-Örnek hızını değiştirerek telemetrinizin toplandığı oranı değiştirebilirsiniz. Örneğin, çoğunlukla yarı bir örnek örneklemek istiyorsanız `application.properties` dosyanıza gidin ve aşağıdaki satırı değiştirin:
+
+Örnek hızını değiştirerek telemetrinizin toplandığı oranı değiştirebilirsiniz. Örneğin, çoğunlukla yarı bir örnek örneklemek istiyorsanız, Application. Properties dosyanızı açın ve aşağıdaki satırı değiştirin:
 
 ```xml
 spring.sleuth.sampler.probability=0.5
 ```
 
-Zaten oluşturulmuş ve dağıtılmış bir uygulamanız varsa, yukarıdaki satırı Azure CLı veya portalına bir ortam değişkeni olarak ekleyerek örnek hızını değiştirebilirsiniz. 
+Zaten bir uygulama oluşturup dağıttıysanız, örnek hızı değiştirebilirsiniz. Önceki satırı Azure CLı veya Azure portal bir ortam değişkeni olarak ekleyerek bunu yapın.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
 1. Azure portal Azure Spring Cloud Service sayfanıza gidin.
-1. Izleme bölümünde **Dağıtılmış izleme**' yi seçin.
+1. **İzleme** sayfasında, **Dağıtılmış izleme**' yi seçin.
 1. Düzenlemek veya yeni bir ayar eklemek için **ayarı Düzenle** ' yi seçin.
-1. Yeni bir Application Insight sorgusu oluşturun veya var olan bir uygulamayı seçebilirsiniz.
-1. İzlemek istediğiniz günlüğe kaydetme kategorisini seçin ve bekletme süresini (gün cinsinden) belirtin.
+1. Yeni bir Application Insights sorgusu oluşturun veya var olan bir sorgu seçin.
+1. İzlemek istediğiniz günlüğe kaydetme kategorisini seçin ve bekletme süresini gün olarak belirtin.
 1. Yeni izlemeyi uygulamak için **Uygula** ' yı seçin.
 
-## <a name="view-application-map"></a>Uygulama haritasını görüntüle
+## <a name="view-the-application-map"></a>Uygulama haritasını görüntüleme
 
-Dağıtılmış Izleme sayfasına dönün ve **uygulama haritasını görüntüle**' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını kullanmayı öğrenmek için, [Bu makaleye](https://docs.microsoft.com/azure/azure-monitor/app/app-map)bakın.
+**Dağıtılmış izleme** sayfasına dönün ve **uygulama haritasını görüntüle**' yi seçin. Uygulamanızın ve izleme ayarlarının görsel temsilini gözden geçirin. Uygulama haritasını nasıl kullanacağınızı öğrenmek için bkz. [uygulama Haritası: dağıtılmış uygulamaları önceliklendirme](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Arama
+## <a name="use-search"></a>Aramayı Kullanma
 
-Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara**' yı seçin. Search işlevini kullanma hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)bakın.
+Diğer belirli telemetri öğelerini sorgulamak için Search işlevini kullanın. **Dağıtılmış izleme** sayfasında, **Ara**' yı seçin. Arama işlevini kullanma hakkında daha fazla bilgi için bkz. [Application Insights arama kullanma](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 
-## <a name="application-insights-page"></a>Application Insights sayfası
+## <a name="use-application-insights"></a>Application Insights kullan
 
-Application Insights, uygulama haritasına ve aramasına ek olarak izleme özellikleri sağlar. Azure portal uygulamanızın adı için arama yapın ve daha fazla bilgi edinmek için bir Application Insights sayfası başlatın. Bu araçların nasıl kullanılacağına ilişkin daha fazla bilgi için [belgelere göz](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)atın.
-
+Application Insights, uygulama eşlemesi ve arama işlevine ek olarak izleme özellikleri sağlar. Azure portal uygulamanızın adı için arama yapın ve ardından izleme bilgilerini bulmak için bir Application Insights sayfası açın. Bu araçların nasıl kullanılacağına dair daha fazla bilgi için [Azure izleyici günlük sorgularını](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)inceleyin.
 
 ## <a name="disable-application-insights"></a>Application Insights devre dışı bırak
 
 1. Azure portal Azure Spring Cloud Service sayfanıza gidin.
-1. Izleme bölümünde, **Dağıtılmış izleme**' ye tıklayın.
-1. Application Insights devre dışı bırakmak için **devre dışı bırak** 'ı
+1. **İzleme**sırasında **Dağıtılmış izleme**' yi seçin.
+1. Application Insights devre dışı bırakmak için **Disable** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud 'da dağıtılmış izlemeyi etkinleştirme ve anlama hakkında bilgi edindiniz. Uygulamanızı bir Azure CosmosDB 'ye bağlamayı öğrenmek için bir sonraki öğreticiye geçin.
+Bu öğreticide, Azure Spring Cloud 'da dağıtılmış izlemeyi etkinleştirme ve anlama hakkında bilgi edindiniz. Uygulamanızı bir Azure Cosmos DB veritabanına bağlamayı öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Uygulamanızı bir Azure CosmosDB 'ye bağlamayı öğrenin](spring-cloud-tutorial-bind-cosmos.md).
+> [Azure Cosmos DB veritabanına bağlamayı öğrenin](spring-cloud-tutorial-bind-cosmos.md)

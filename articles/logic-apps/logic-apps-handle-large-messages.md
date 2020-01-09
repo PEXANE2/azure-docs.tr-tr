@@ -1,18 +1,18 @@
 ---
-title: Büyük iletileri işleme
-description: Azure Logic Apps öbek ile büyük ileti boyutlarını nasıl işleyeceğinizi öğrenin
+title: Öbek kullanarak büyük iletileri işleme
+description: Azure Logic Apps ile oluşturduğunuz otomatikleştirilmiş görevler ve iş akışlarında parçalama kullanarak büyük ileti boyutlarını nasıl işleyeceğinizi öğrenin
 services: logic-apps
 ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456560"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
 
@@ -124,7 +124,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gereklidir | Açıklama |
    |--------------------------------|------|----------|-------------|
    | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
-   | **Konum** | Dize | Yes | HTTP PATCH iletilerinin gönderileceği URL konumu |
+   | **Konum** | Dize | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
 3. Mantıksal uygulamanız, bu bilgileri içeren, izleme HTTP PATCH iletileri oluşturur ve gönderir:
@@ -144,7 +144,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gereklidir | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **Aralık** | Dize | Yes | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
+   | **Aralık** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
    | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
    ||||
 

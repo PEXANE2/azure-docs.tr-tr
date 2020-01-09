@@ -1,5 +1,5 @@
 ---
-title: Bağlı hizmetleri kullanarak bir Azure AD ekleyin
+title: Active Directory bağlı hizmetini kullanma (Visual Studio)
 description: Visual Studio bağlı hizmetler Ekle iletişim kutusunu kullanarak Azure Active Directory ekleme
 author: ghogen
 manager: jillfra
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 435ec76a6a7ffe81c1be2752d69b79c1fb8d0bd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423192"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
 
 Azure Active Directory (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için çoklu oturum açma (SSO) veya Web API hizmetlerinde Active Directory kimlik doğrulama desteği sağlayabilirsiniz. Azure AD kimlik doğrulaması ile kullanıcılarınız, Web uygulamalarınıza bağlanmak için Azure Active Directory hesaplarını kullanabilir. Web API'ye sahip Azure AD Authentication'ın avantajları arasında, bir web uygulamasından API sunarken gelişmiş veri güvenliği sağlama olanağı da vardır. Azure AD ile ayrı bir kimlik doğrulama sistemini kendi hesabı ve Kullanıcı yönetimi ile yönetmeniz gerekmez.
 
@@ -27,7 +27,7 @@ Bu makale ve yardımcı makaleler, Active Directory için Visual Studio bağlı 
 
 Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabı: bir Azure hesabınız yoksa, [ücretsiz deneme için kaydolabilir](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) veya [Visual Studio abone avantajlarınızı etkinleştirebilirsiniz](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 - **Visual Studio 2015** veya üzeri. [Visual Studio 'yu şimdi indirin](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).

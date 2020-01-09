@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB için Azure Resource Manager şablonlar Cassandra API
+title: Azure Cosmos DB için Kaynak Yöneticisi şablonlar Cassandra API
 description: Azure Cosmos DB Cassandra API oluşturmak ve yapılandırmak için Azure Resource Manager şablonları kullanın.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: f09ab6958eb768895a2d16f129354074cb6f00c8
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 54d1c27148f20c89e17b343f0ac87295f978c140
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445287"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme
 
@@ -56,7 +56,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı ek kaynaklar aşağıda verilmiştir:
+Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
 - [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
 - [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)

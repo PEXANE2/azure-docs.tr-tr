@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359978"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -301,7 +301,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Yes
+Evet
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -342,7 +342,7 @@ Evet. 9 Haziran 2017 ' den sonra oluşturulan tüm yönetilen anlık görüntül
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Yes
+Evet
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 
@@ -398,7 +398,7 @@ Hayır, her boyuttaki standart SSD yönetilen diskleri, yönetilmeyen disklerle 
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
 
-Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Azure 'un bir işletim sistemi diski için desteklediği en büyük boyut 2 TiB 'dir. Azure, Azure sogeign bulutlarında, 4 TiB küresel Azure 'da yönetilen veri diskleri için en fazla 32 TiB destekler.
+Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Azure 'un bir işletim sistemi diski için desteklediği en büyük boyut 2 TiB 'dir. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilmeyen disk boyutu nedir?**
 
@@ -441,7 +441,7 @@ Azure Backup ve Azure Site Recovery hizmeti tarafından desteklenen en büyük d
 
 **İyileştirilmiş disk ıOPS ve bant genişliğine ulaşmak için Standart SSD ve Standart HDD diskler için daha büyük disk boyutları (> 4 TiB) için önerilen VM boyutları nelerdir?**
 
-Standart SSD disk işleme elde etmek Standart HDD ve büyük disk boyutlarını (> 4 TiB) 500 ıOPS ve 60 MIB/sn 'den daha iyi karşılamak için, performansınızı iyileştirmek üzere aşağıdaki VM boyutlarından birinden yeni bir VM dağıtmanız önerilir: B-serisi, DSv2-serisi, Dsv3-serisi, ESv3-serisi , FS Serisi, Fsv2-serisi, d serisi, GS-Series, NCv2-serisi, NCv3-Series veya LS Serisi VM 'Ler. Mevcut VM 'lere veya yukarıda önerilen boyutları kullanmayan VM 'lere büyük diskler eklemek daha düşük performans yaşayabilir.
+Standart SSD disk işleme elde etmek ve büyük disk boyutları Standart HDD (> 4 TiB) 500 ıOPS ve 60 MIB/sn 'den daha fazla performansını iyileştirmek için aşağıdaki VM boyutlarından birinden yeni bir VM dağıtmanız önerilir: B-serisi, DSv2-serisi, Dsv3-serisi, ESv3-Series, FS-Serisi, Fsv2-serisi, M-serisi, GS-Series, NCv2-serisi, NCv3-serisi veya LS Serisi VM 'Ler. Mevcut VM 'lere veya yukarıda önerilen boyutları kullanmayan VM 'lere büyük diskler eklemek daha düşük performans yaşayabilir.
 
 **En büyük disk boyutları önizlemesi sırasında dağıtılan disklerimi nasıl yükseltebilirim (> 4 TiB) ve daha yüksek ıOPS, GA & bant genişliğine sahip olabilir mi?**
 

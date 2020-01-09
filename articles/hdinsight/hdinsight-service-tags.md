@@ -4,15 +4,15 @@ description: Ağ güvenlik gruplarınızı IP adreslerini açıkça eklemeden, H
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/19/2019
-ms.openlocfilehash: 7e3ce33bdf0773ababe5eb190877a9288c094c5c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.custom: hdinsightactive
+ms.date: 12/05/2019
+ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435407"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri
 
@@ -30,7 +30,17 @@ Ağ güvenlik gruplarında hizmet etiketleri kullanmak için iki seçeneğiniz v
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Tek bir Global HDInsight hizmet etiketi kullanın
 
-HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, `HDInsight` genel etiketi bir ağ güvenlik grubu kuralına eklemektir. Ağ güvenlik grubunuza hizmet etiketleri ekleme hakkında yönergeler için bkz. [güvenlik grupları: hizmet etiketleri](../virtual-network/security-overview.md#service-tags).
+HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, `HDInsight` genel etiketi bir ağ güvenlik grubu kuralına eklemektir.
+
+1. [Azure Portal](https://portal.azure.com/)ağ güvenlik grubunuzu seçin.
+
+1. **Ayarlar**altında **gelen güvenlik kuralları**' nı seçin ve **+ Ekle**' yi seçin.
+
+1. **Kaynak** açılan listesinden **hizmet etiketi**' ni seçin.
+
+1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight**' ı seçin.
+
+    ![Azure portal hizmet etiketi ekle](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
 
 Bu etiket, HDInsight 'ın kullanılabildiği tüm bölgeler için sistem durumu ve yönetim hizmetlerinin IP adreslerini içerir ve kümenizin nerede oluşturulduğuna bakılmaksızın gerekli sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olur.
 
@@ -44,26 +54,26 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 
 İki hizmet etiketi seçeneğini tercih ediyorsanız ve kümeniz bu tabloda listelenen bölgelerden birinde bulunuyorsa, ağ güvenlik grubunuza yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
 
-| Country | Bölge | Hizmet etiketi |
+| Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
-| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
+| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
+| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
 | &nbsp; | Avustralya Orta | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
-| Amerika Birleşik Devletleri | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
+| Birleşik Devletler | Orta Kuzey ABD | HDInsight. Kuzeydoğu ABD |
 | &nbsp; | Batı ABD 2 | HDInsight. WestUS2 |
-| &nbsp; | Batı Orta ABD | HDInsight. WestCentralUS |
-| Kanada | Doğu Kanada | HDInsight. Canadadoğu |
-| Brezilya | Güney Brezilya | HDInsight. BrazilSouth |
+| &nbsp; | Orta Batı ABD | HDInsight. WestCentralUS |
+| Kanada | Kanada Doğu | HDInsight. Canadadoğu |
+| Brezilya | Brezilya Güney | HDInsight. BrazilSouth |
 | Güney Kore | Kore Orta | HDInsight. KoreaCentral |
 | &nbsp; | Kore Güney | HDInsight. Koreagüney |
 | Hindistan | Orta Hindistan | HDInsight. merkezde Hindistan |
 | &nbsp; | Güney Hindistan | HDInsight. Güneydoğu |
-| Japonya | Japonya Batı | HDInsight. JapanWest |
+| Japonya | Batı Japonya | HDInsight. JapanWest |
 | Fransa | Fransa Orta| HDInsight. Francecna al |
-| UK | Birleşik Krallık Güney | HDInsight. UKGüney |
-| Azure Kamu (Fairfax) | USDoD orta   | HDInsight. Usdodorta |
+| UK | Birleşik Krallık, Güney | HDInsight. UKGüney |
+| Azure Devlet Kurumları | USDoD orta   | HDInsight. Usdodorta |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD Doğu | HDInsight. USDoDEast |
 
@@ -73,7 +83,7 @@ Bölgeniz için hangi hizmet etiketlerinin ekleneceğini öğrenmek için, belge
 
 Kalan bölgeler, kullandıkları bölgesel hizmet etiketlerine göre gruplara ayrılır.
 
-#### <a name="group-1"></a>1\. Grup
+#### <a name="group-1"></a>Grup 1
 
 Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen bölge hizmeti etiketinin yanı sıra hizmet etiketlerine `HDInsight.WestUS` ve `HDInsight.EastUS` izin verin. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
 
@@ -83,20 +93,20 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | Bölge | Hizmet etiketi |
+| Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
-| Amerika Birleşik Devletleri | Doğu ABD 2 | HDInsight. EastUS2 |
+| Birleşik Devletler | Doğu ABD 2 | HDInsight. EastUS2 |
 | &nbsp; | Orta ABD | HDInsight. merkezde ABD |
 | &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
-| &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
+| &nbsp; | Güney Orta ABD | HDInsight. Güneydoğu ABD |
 | &nbsp; | Doğu ABD | HDInsight. EastUS |
 | &nbsp; | Batı ABD | HDInsight. WestUS |
-| Japonya | Japonya Doğu | HDInsight. JapanEast |
+| Japonya | Doğu Japonya | HDInsight. JapanEast |
 | Avrupa | Kuzey Avrupa | HDInsight. NorthEurope |
 | &nbsp; | Batı Avrupa| HDInsight. WestEurope |
 | Asya | Doğu Asya | HDInsight. Eastasıya |
 | &nbsp; | Güneydoğu Asya | HDInsight. Güneydoğu |
-| Avustralya | Avustralya Doğu | HDInsight. AustraliaEast |
+| Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
 
 #### <a name="group-2"></a>Grup 2
 
@@ -112,5 +122,5 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, listelenen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ağ güvenlik grupları-hizmet etiketleri](../virtual-network/security-overview.md#security-rules)
-* [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md)
+- [Ağ güvenlik grupları-hizmet etiketleri](../virtual-network/security-overview.md#security-rules)
+- [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md)

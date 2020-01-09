@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Python ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
+title: 'Hızlı başlangıç: Python ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
 titleSuffix: Azure Cognitive Services
 description: Python kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448487"
 ---
-# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Hızlı Başlangıç: Python ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Python ve Bing Haber Arama REST API kullanarak bir haber arama gerçekleştirme
 
 Bing Haber Arama API'si ilk çağrısını yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir arama sorgusu gönderir ve sonuçları işler. Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlama dili ile uyumlu bir Web hizmeti hizmetidir.
 
@@ -28,15 +28,13 @@ Bu kod örneğini, [myciltçi](https://mybinder.org) üzerinde bir Jupyter Not d
 
 Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)' da de mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve istek modülünü içeri aktarın. Abonelik anahtarınız, uç nokta ve arama teriminiz için değişkenler oluşturun. Uç noktanızı Azure panosu 'nda bulabilirsiniz.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve istek modülünü içeri aktarın. Abonelik anahtarınız, uç nokta ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```python
 import requests
@@ -48,7 +46,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 
 ### <a name="create-parameters-for-the-request"></a>İstek için parametreler oluşturma
 
-1. Abonelik anahtarınızı anahtar olarak kullanarak `"Ocp-Apim-Subscription-Key"` yeni bir sözlüğe ekleyin. Arama parametreleriniz için aynısını yapın.
+1. Anahtar olarak `"Ocp-Apim-Subscription-Key"` kullanarak abonelik anahtarınızı yeni bir sözlüğe ekleyin. Arama parametreleriniz için aynısını yapın.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
@@ -65,7 +63,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_results = response.json()
     ```
 
-2. `search_results`API 'den bir JSON nesnesi olarak gelen yanıtı içerir. Yanıtta yer alan makalelerin açıklamalarına erişin.
+2. `search_results`, API 'den bir JSON nesnesi olarak yanıtı içerir. Yanıtta yer alan makalelerin açıklamalarına erişin.
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]

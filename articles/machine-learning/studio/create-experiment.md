@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c6b52585200db07ebc2e15f509b1def55dff5caf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427731"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Hızlı başlangıç: Azure Machine Learning Studio (klasik) ilk veri bilimi denemenizi oluşturma
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıç, bir deneme için varsayılan iş akışını izler:
 ## <a name="get-the-data"></a>Verileri alma
 
 Machine Learning 'de ihtiyaç duyduğunuz ilk şey veri.
-.Net 'in kullanabileceğiniz klasik sürümüne dahil edilen birkaç örnek veri kümesi vardır veya pek çok kaynaktan veri içeri aktarabilirsiniz. Bu örnekte, **Otomobil fiyat verileri (Ham)** adlı çalışma alanınıza dahil edilmiş örnek veri kümesini kullanacağız.
+Studio 'da (klasik) kullanabileceğiniz birkaç örnek veri kümesi bulunur veya birçok kaynaktan veri aktarabilirsiniz. Bu örnekte, **Otomobil fiyat verileri (Ham)** adlı çalışma alanınıza dahil edilmiş örnek veri kümesini kullanacağız.
 Bu veri kümesi; marka, model, teknik belirtimler ve fiyat gibi bilgiler dahil olmak üzere birçok ayrı otomobil için giriş içerir.
 
 > [!TIP]

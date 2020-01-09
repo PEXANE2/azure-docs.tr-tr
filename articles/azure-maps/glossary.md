@@ -1,6 +1,6 @@
 ---
 title: Azure haritalar sözlüğü | Microsoft Docs
-description: Azure haritalar, konum tabanlı hizmetler ve GIS ilişkili yaygın olarak kullanılan terimler sözlüğü.
+description: Azure haritalar, konum tabanlı hizmetler ve GıS ile ilişkili yaygın olarak kullanılan koşulların bir sözlüğü.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,395 +8,405 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408869"
 ---
 # <a name="glossary"></a>Sözlük
 
-Azure Haritalar ile kullanılan ortak kelimeler listesi verilmiştir.
+Azure haritalar ile kullanılan yaygın sözcüklerin listesi aşağıda verilmiştir.
 
 ## <a name="a"></a>A
 
-<a name="address-validation"></a> **Adres doğrulaması**: Bir adresi varlığını doğrulama işlemi.
+<a name="address-validation"></a>**Adres doğrulaması**: bir adresin varlığını doğrulama işlemi.
 
-<a name="advanced-routing"></a> **Gelişmiş yönlendirme**: Öncelikli işlemleri kullanarak erişilebilir aralıkları (izokron), mesafe matrisi ve toplu istekleri hesaplama gibi yönlendirme verileri yol, hizmetleri koleksiyonudur.
+<a name="advanced-routing"></a>**Gelişmiş yönlendirme**: erişilebilir aralıkları (izde), uzaklık matrislerini ve toplu iş rotası isteklerini hesaplama gibi trafik yönlendirme verilerini kullanan bir hizmet koleksiyonu.
 
-<a name="aerial-imagery"></a> **Havadan tanımayı**: Bkz: [uydu tanımayı](#satellite-imagery). 
+<a name="aerial-imagery"></a>**Havadan görüntü**: bkz. [uydu Imagery](#satellite-imagery). 
 
-<a name="along-a-route-search"></a> **Bir rota arama boyunca**: Belirtilen bir sapma saati veya uzaklığı bir rota yolu içinde verileri arar uzamsal sorgu.
+<a name="along-a-route-search"></a>**Bir yol araması boyunca**: belirtilen bir tur süresi içinde veya bir yol yolundan uzaklığın içinde olan verileri gösteren bir uzamsal sorgu.
 
-<a name="altitude"></a> **Yükseklik**: Yükseklik veya bir başvuru yüzeyi üzerinde bir noktasının dikey yükseltme. Yükseklik ölçümler gibi ortalama Deniz düzeyinde bir verilen başvuru verisi temel alır. Ayrıca bkz: yükseltme.
+<a name="altitude"></a>**Yükseklik**: bir başvuru yüzeyi üzerindeki bir noktanın yükseklik veya dikey yükselmesi. Yükseklik ölçümleri, ortalama deniz düzeyi gibi belirli bir başvuru veri tabansına dayanır. Ayrıca bkz. yükseltme.
 
-<a name="ambiguous"></a> **Belirsiz**: Bir nesne iki veya daha fazla değer belirli bir öznitelik için uygun şekilde atanması, var olan veri sınıflandırması belirsizliğin durumu. Örneğin, coğrafi kodlama "CA" iki belirsiz sonuçlar döndürülür; "Kanada" ve "California" "CA" olarak, her bir ülke ve eyalet kodu sırasıyla. 
+<a name="ambiguous"></a>**Belirsiz**: bir nesne belirli bir öznitelik için uygun şekilde iki veya daha fazla değere atanabileceği zaman, veri sınıflandırmasında belirsizliğin bir durumu. Örneğin, coğrafi kodlama "CA" iki belirsiz sonuç döndürüldüğünde; "CA" olarak "Kanada" ve "California", sırasıyla her biri için bir ülke ve eyalet kodudur. 
 
-<a name="annotation"></a> **Ek açıklama**: Metin ya da grafik kullanıcıya bilgi sağlamak için harita üzerinde görüntülenir. Ek açıklama tanımlamak veya belirli bir eşleme varlığı açıklayan, harita üzerinde bir alan hakkındaki genel bilgileri girin veya eşleme hakkında bilgi sağlayın.
+<a name="annotation"></a>**Ek açıklama**: kullanıcıya bilgi sağlamak için haritada görüntülenecek metin veya grafikler. Ek açıklama belirli bir harita varlığını tanımlayabilir veya tanımlayabilir, haritadaki bir alanla ilgili genel bilgiler sağlayabilir veya haritanın kendisi hakkında bilgi sağlayabilir.
 
-<a name="antimeridian"></a> **Antimeridian**: Olarak da bilinen 180<sup>th</sup> Meridyen nerede-180 derece ve boylam 180 derece karşılamak noktasıdır. Dünya üzerindeki asal meridyen ters olduğu.
+<a name="antimeridian"></a>**Antimeriyen**<sup>: 180.</sup> meridyen olarak da bilinen,-180 derece ve 180 derece olan Boylam 'in bulunduğu nokta. Bu, dünyanın her yerindeki ana meridyeninin tersidir.
 
-<a name="application-programming-interface-api"></a> **Uygulama programlama arabiriminin (API)** : Geliştiricilerin uygulamalar oluşturmasına olanak sağlayan belirtim.
+<a name="application-programming-interface-api"></a>**Uygulama programlama arabirimi (API)** : geliştiricilerin uygulama oluşturmalarına olanak tanıyan bir belirtim.
 
-<a name="api-key"></a> **API anahtarı**: Azure haritalar anahtarını bakın.
+<a name="api-key"></a>**API anahtarı**: bkz. [paylaşılan anahtar kimlik doğrulaması](#shared-key-authentication).
 
-<a name="area-of-interest-aoi"></a> **İlgi alanı (AOI)** : Odak alanı eşlemesi veya veritabanı üretim için tanımlamak için kullanılan uzantı.
+<a name="area-of-interest-aoi"></a>**Ilgilendiğiniz alan (AOI)** : bir harita veya veritabanı üretimi için bir odak alanı tanımlamak için kullanılan uzantı.
 
-<a name="asset-tracking"></a> **Varlık İzleme**: Bir kişi, araç veya başka bir nesne gibi bir varlığın konum izleme işlemi.
+<a name="asset-tracking"></a>**Varlık izleme**: kişi, araç veya başka bir nesne gibi bir varlığın konumunu izleme işlemi.
 
-<a name="asynchronous-request"></a> **Zaman uyumsuz istek**: Bir bağlantı açar ve zaman uyumsuz istek için bir tanımlayıcı döndürür ve ardından bağlantıyı kapatır sunucuya istekte bir HTTP isteği. Sunucu isteği işlemeye devam eder ve kullanıcı tanımlayıcısını kullanarak durumu denetleyebilirsiniz. İsteğin işlenmesi Bitti, kullanıcı ardından yükleme yanıt olduğunda. Bu istek türü genellikle uzun süre için kullanılan çalışan işlemleri.
+<a name="asynchronous-request"></a>**Zaman uyumsuz istek**: bağlantıyı açan ve zaman uyumsuz istek için bir tanımlayıcı döndüren sunucuya istek yapan bir http isteği, ardından bağlantıyı kapatır. Sunucu isteği işlemeye devam eder ve Kullanıcı tanımlayıcıyı kullanarak durumu denetleyebilir. İsteğin işlenmesi tamamlandığında, Kullanıcı yanıtı indirebilir. Bu tür bir istek, uzun süre çalışan süreçler için kullanılır.
 
-<a name="autocomplete"></a> **Otomatik Tamamlama**: Bir uygulamada bir özellik, bir kullanıcının bir word'ün rest tahmin eder. 
+<a name="autocomplete"></a>**Otomatik tamamlama**: uygulamadaki bir özellik, kullanıcının yazaldığı bir sözcüğün geri kalanını tahmin eder. 
 
-<a name="autosuggest"></a> **Otomatik öneri**: Bir özellik, bir uygulamanın hangi kullanıcı yazmak için mantıksal olasılıklar tahmin eder.
+<a name="autosuggest"></a>**Otomatik öneri**: bir uygulamadaki bir özellik, kullanıcının yazdıklarınız için mantıksal olanaklar tahmin eder.
 
-<a name="azure-location-based-services-lbs"></a> **Azure konum tabanlı hizmetler (LBS)** : Azure Önizleme aşamasında olduğu zaman haritalar önceki adı.
+<a name="azure-location-based-services-lbs"></a>**Azure konum tabanlı hizmetler (lbs)** : Önizlemedeki Azure Maps 'in eski adı.
 
-<a name="azure-maps-key"></a> **Azure haritalar anahtarını**: Bir Azure haritalar anahtarını, bir kullanıcının Azure haritalar uygulaması veya hizmeti istek kimliğini doğrulamak için kullanılan benzersiz bir dizedir. 
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)** : Azure AD, Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmetidir. Azure haritalar Azure AD tümleştirmesi, tüm Azure Maps API 'Leri için önizleme aşamasında şu anda kullanılabilir. Azure AD, Azure Maps kaynaklarına ayrıntılı erişime izin vermek için rol tabanlı erişim denetimi 'ni (RBAC) destekler. Azure haritalar Azure AD tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. Azure Maps [ve Azure AD](azure-maps-authentication.md) ve [kimlik doğrulamasını Azure haritalar 'da yönetme](how-to-manage-authentication.md).
+
+<a name="azure-maps-key"></a>**Azure haritalar anahtarı**: [paylaşılan anahtar kimlik doğrulamasına](#shared-key-authentication)bakın.
 
 ## <a name="b"></a>B
 
-<a name="base-map"></a> **Temel harita**: Yollar, yer işareti ve siyasi sınırları gibi arka plan başvuru bilgileri görüntüleyen bir harita uygulamanın bir parçası.
+<a name="base-map"></a>**Temel harita**: yollar, yer işaretleri ve politik sınırlar gibi arka plan başvuru bilgilerini görüntüleyen bir harita uygulamasının parçası.
 
-<a name="batch-request"></a> **Toplu istek**: Birden çok isteği tek bir istek birleştirme işlemi.
+<a name="batch-request"></a>**Toplu istek**: birden çok isteği tek bir istek halinde birleştirme işlemi.
 
-<a name="bearing"></a> **Pul**: Yatay yöndeki bir diğer nokta ile ilgili bir noktanın. Bu, Açı 0-360 derece yönünde derece kuzeyden göreli olarak ifade edilir. 
+<a name="bearing"></a>**Pul**: bir noktanın başka bir noktaya göre yatay yönü. Bu, Kuzey 'e göre, 0 dereceden 360 derecenin saat yönünde bir yönde olan açısı olarak ifade edilir. 
 
-<a name="boundary"></a> **Sınır**: Bir satır veya Çokgen ülkeler/bölgeler, bölgeleri ve özellikler gibi bitişik siyasi varlıkları ayrılması. Bir sınırı veya rivers, dağlarında yürüyüş ya da duvar gibi fiziksel özelliklerini uymayabilecek bir satırdır.
+<a name="boundary"></a>**Sınır**: ülkeler/bölgeler, bölgelerler ve özellikler gibi bitişik siyasi varlıkların ayrılması için çizgi veya Çokgen. Sınır, Rivers, mountaıns veya duvarlar gibi fiziksel özellikleri takip edebilir veya izleyemeyebilir.
 
-<a name="bounds"></a> **Sınırları**: Bkz: [Bounding kutusu](#bounding-box).
+<a name="bounds"></a>**Sınırlar**: bkz. [sınırlama kutusu](#bounding-box).
 
-<a name="bounding-box"></a> **Sınırlayıcı kutu**: Harita üzerinde bir dikdörtgen alan temsil etmek için kullanılan koordinatları kümesini. 
+<a name="bounding-box"></a>**Sınırlayıcı kutusu**: haritadaki dikdörtgen bir alanı temsil etmek için kullanılan bir koordinat kümesi. 
 
 ## <a name="c"></a>C
 
-<a name="cadastre"></a> **Cadastre**: Bir kayıt kayıtlı land ve özellikleri. Ayrıca bkz: [paket](#parcel).
+<a name="cadastre"></a>**Cadadstre**: kayıtlı bir Land ve özelliklerin kaydı. Ayrıca bkz. [paket](#parcel).
 
-<a name="camera"></a> **Kamera**: Etkileşimli harita denetimi bağlamında, bir kamera görünüm haritalar alanı tanımlar. Görünüm penceresinin kameranın birkaç harita parametrelerine göre belirlenir; Center, yakınlaştırma düzeyi, aralık, seçtiğiniz. 
+<a name="camera"></a>**Kamera**: Etkileşimli harita denetimi bağlamında bir kamera, görünümün haritalar alanını tanımlar. Kameranın Görünüm penceresi, birkaç eşleme parametresine göre belirlenir; Orta, yakınlaştırma düzeyi, sıklık, yatal. 
 
-<a name="centroid"></a> **Kütle Merkezi**: Bir özelliğin geometrik Merkezi. Kütle merkezi bir alan merkezini bulunurken bir satırın kütle merkezi Orta olacaktır.
+<a name="centroid"></a>**Centroıd**: bir özelliğin geometrik ortası. Bir çizginin centroıd 'si, bir çokgenin centroıd 'si alanın ortası olduğu sürece orta nokta olur.
 
-<a name="choropleth-map"></a> **Choropleth'te harita**: Alanları bir ölçüm haritada görüntülenmesini istatistiksel bir değişkenin derlemekten gölgeli tematik eşlemesi. Örneğin, diğer tüm durumlara göreli yıllarındaki nüfusu göre her ABD devlet sınırları renklendirme.
+<a name="choropleth-map"></a>**Choroptath Haritası**: alanların haritada görüntülenen istatistiksel bir değişken ölçüsünün oranıyla orantılı şekilde gölgelendirilmesiyle ilgili olan tek bir harita. Örneğin, her bir ABD durumunun kenarlığını, göreli popülasyonunu diğer tüm durumlara göre renklendirmesini sağlar.
 
-<a name="concave-hull"></a> **İçbükey Kabuk**: Belirtilen veri kümesindeki tüm şekiller barındırır olası bir İçbükey geometrisini temsil eden bir şekli. Oluşturulan şekil verileri Plastik Sarma ile kaydırma ve ardından ısıtma benzer, bu nedenle büyük neden diğer veri noktası cave noktalarına arasında yayılır.
+<a name="concave-hull"></a>**İçbükey kabuk**: belirtilen veri kümesindeki tüm şekilleri kapsayan olası bir İçve geometriyi temsil eden bir şekil. Oluşturulan Şekil, verileri plastik Sarla sarmalama ve sonra ısıtma sağlar ve bu sayede noktaları arasındaki büyük yayılmaları diğer veri noktalarına doğru bir şekilde gösterir.
 
-<a name="consumption-model"></a> **Kullanım modeli**: Bir araç yakıt veya elektrik kullanan oranı tanımlayan bilgiler. Ayrıca bkz: [tüketim modelini belgeleri](consumption-model.md).
+<a name="consumption-model"></a>**Tüketim modeli**: bir aracın yakıt veya elektrik tükettiği oranı tanımlayan bilgiler. Ayrıca bkz. [tüketim modeli belgeleri](consumption-model.md).
 
-<a name="control"></a> **Denetim**: Arabirimi için davranışları kümesini tanımlayan bir grafik kullanıcı arabirimi oluşan müstakil ya da yeniden kullanılabilir bileşen. Örneğin, bir harita denetimi olan genellikle etkileşimli bir harita yükler kullanıcı arabiriminin bir bölümü.
+<a name="control"></a>**Denetim**: arabirim için bir davranış kümesi tanımlayan bir grafik kullanıcı arabiriminden oluşan, kendi içinde veya yeniden kullanılabilir bir bileşen. Örneğin, bir harita denetimi genellikle kullanıcı arabiriminin etkileşimli bir harita yükleyen bölümüdür.
 
-<a name="convex-hull"></a> **Dışbükey Kabuk**: Dışbükey Kabuk belirtilen veri kümesindeki tüm şekiller kapsayan en düşük dışbükey geometrisini temsil eden şekildir. Oluşturulan veri kümesi etrafında bir esnek bant kaydırma benzer şekildir.
+<a name="convex-hull"></a>**Convex kabuk**: A convex kabuk, belirtilen veri kümesindeki tüm şekilleri kapsayan minimum convex geometrisini temsil eden bir şekildir. Oluşturulan Şekil, veri kümesinin etrafında esnek bir bant kaydırmasına benzer.
 
-<a name="coordinate"></a> **Koordinat**: Bir haritadaki bir konumu temsil etmek için kullanılan boylam ve enlem değerlerini içerir.
+<a name="coordinate"></a>**Koordinat**: bir haritanın konumunu temsil etmek için kullanılan boylam ve enlem değerlerinden oluşur.
 
-<a name="coordinate-system"></a> **Koordinat sistemi**: İki veya üç boyutta alanında noktalarının konumlarını tanımlamak için kullanılan bir başvuru çerçevesi.
+<a name="coordinate-system"></a>**Koordinat sistemi**: iki veya üç boyutta bir boşluk içinde noktaların konumlarını tanımlamak için kullanılan bir başvuru çerçevesi.
 
-<a name="country-code"></a> **Ülke kodu**: ISO standardına göre bir ülke/bölge için benzersiz bir tanımlayıcı. ISO2 ISO3 temsil eden üç karakterli (örneğin, ABD) kod ülke (örneğin, ABD), iki karakterli kodudur.
+<a name="country-code"></a>**Ülke kodu**: ISO standardına dayalı bir ülke/bölge için benzersiz bir tanımlayıcı. ISO2, bir ülkenin (örneğin, US) iki karakterlik bir koddur. Bu, ISO3 üç karakterli bir kodu temsil eder (örneğin, ABD).
 
-<a name="country-subdivision"></a> **Ülke alt**: Bir ülke/genellikle bir eyalet veya il bilinen bölge, birinci düzey bölümlemesini.
+<a name="country-subdivision"></a>**Ülke alt bölümü**: bir ülkenin/bölgenin, genellikle eyalet veya il olarak bilinen ilk düzey alt bölümü.
 
-<a name="country-secondary-subdivision"></a> **Ülke ikincil alt**: Bir ülke/genellikle bir ilçe bilinen bölge, ikinci düzey bölümlemesini.
+<a name="country-secondary-subdivision"></a>**Ülke ikincil alt bölümü**: bir ülkenin/bölgenin, genellikle ilçe olarak bilinen ikinci düzey alt bölümü.
 
-<a name="country-tertiary-subdivision"></a> **Ülke üçüncül alt**: Bir ülke/bölge, genellikle bir adlandırılmış alana bir anlatan gibi üçüncü düzey bölümlemesini.
+<a name="country-tertiary-subdivision"></a>**Country üçüncül alt bölümü**: bir ülkenin/bölgenin üçüncü düzey alt bölümü, genellikle bir Ward gibi adlandırılmış bir alandır.
 
-<a name="cross-street"></a> **Çapraz Sokak**: İki veya daha fazla sokaklar kesiştiği bir nokta.
+<a name="cross-street"></a>**Çapraz cadde**: iki veya daha fazla cadde kesiştiğinde bir nokta.
 
-<a name="cylindrical-projection"></a> **Silindirik izdüşümü**: Spheroid veya sphere tanjantını veya secant silindir üzerine noktalarından dönüştüren bir projeksiyon. Silindir ardından üstten alta dilimlenebilir ve bir düzleme düzleştirilmiş.
+<a name="cylindrical-projection"></a>**Silindirik projeksiyonu**: bir kürede veya Sphere öğesinden bir tanjantı veya Sekant silindiri üzerine noktaları dönüştüren projeksiyon. Silindir daha sonra yukarıdan aşağıya dilimdir ve düzleme düzleştirilir.
 
 ## <a name="d"></a>D
 
-<a name="datum"></a> **Datum**: Ölçüm sisteminin başvuru belirtimleri, bir koordinat sistemini bir yüzeyi (yatay datum) ya da yukarıdaki yüksekliklerini veya bir yüzeyi (dikey datum) altına yerleştirir.
+<a name="datum"></a>**Veri**: bir ölçüm sisteminin başvuru belirtimleri, bir yüzey üzerinde (yatay bir veri) veya bir yüzey üzerindeki veya altındaki (dikey bir veri) bir veya daha yüksek olan yükseklikleri konumlandırır.
 
-<a name="dbf-file"></a> **DBF dosyası**: Şekil dosyaları (SHP) ile birlikte kullanılan bir veritabanı dosyası biçimi.
+<a name="dbf-file"></a>**DBF dosyası**: Shapefiles (shp) ile birlikte kullanılan bir veritabanı dosya biçimi.
 
-<a name="degree-minutes-seconds-dms"></a> **Derece saniye (DMS) dakika**: Enlem ve boylam tanımlamak için ölçü birimidir. 1/360 derecelik bir olduğu<sup>th</sup> bir daire. Bir ölçüde daha fazla 60 dakika içinde ayrılmış ve bir dakika içinde 60 saniye ayrılmıştır.
+<a name="degree-minutes-seconds-dms"></a>**Derece dakika saniye (DMS)** : Enlem ve Boylam açıklamak için ölçü birimi. Bir<sup>derece, dairenin 1/360 '</sup> dir. Bir derece 60 dakikaya bölünür ve bir dakika 60 saniyeye bölünür.
 
-<a name="delaunay-triangulation"></a> **Delaunay Üçlü**: Bitişik, örtüşmeyen üçgenler ağıyla noktalarının kümesinden oluşturmak için kullanılan bir yöntem. Her üçgenin circumscribing daire kendi iç kümesinde hiç noktalarından içerir.
+<a name="delaunay-triangulation"></a>**Delaunay üç taraflı**: bir noktadan oluşan bir veri kümesinden bitişik, çakışmayan üçgenler bir kafes oluşturmaya yönelik bir tekniktir. Her bir üçgenin atlama çemberi, iç öğesinden gelen veri kümesinden işaret yok.
 
-<a name="demographics"></a> **Demografik bilgiler**: İnsan popülasyonun bir istatistik özellikleri (örneğin, yaş, Doğum oranı ve gelir).
+<a name="demographics"></a>**Demografik**: bir insan popülasyonu için istatistiksel Özellikler (yaş, Doğum oranı ve gelir gibi).
 
-<a name="destination"></a> **Hedef**: Bir uç noktası veya, birisi için seyahatindeki konum.
+<a name="destination"></a>**Hedef**: birisinin yolculukta olduğu bir uç nokta veya konum.
 
-<a name="digital-elevation-model-dem"></a> **Dijital yükseltme modeli (DEM)** : Değerleri, ortak bir veri kullanarak düzenli aralıklarla bir alanda üzerinden yakalanan bir yüzeyi için ilgili yükseltme bir veri kümesi. DEMs genellikle Arazi Tahliye temsil etmek için kullanılır.
+<a name="digital-elevation-model-dem"></a>**Dijital yükseltme modeli (DEM)** : ortak bir veri kullanılarak düzenli aralıklarla bir alan üzerinde yakalanan bir yüzey ile ilgili yükseltme değerlerinin veri kümesi. DEMs 'ler genellikle teryağmur rahatını temsil etmek için kullanılır.
 
-<a name="dijkstra's-algorithm"></a> **Dijkstra'nın algoritması**: İki nokta arasındaki en kısa yolu bulmak için bir ağ bağlantısı inceler bir algoritma.
+<a name="dijkstra's-algorithm"></a>**Dijkstra 'ın algoritması**: iki noktası arasındaki en kısa yolu bulmak için bir ağın bağlantısını inceleyen bir algoritma.
 
-<a name="distance-matrix"></a> **Mesafe matrisi**: Matris çıkış noktaları kümesi ve hedefler arasında seyahat süresi ve uzaklık bilgilerini içerir. 
+<a name="distance-matrix"></a>**Uzaklık matrisi**: bir çıkış ve hedef kümesi arasındaki seyahat süresini ve uzaklık bilgilerini içeren bir matris. 
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a> **Yükseltme**: Bir nokta ya da yukarıdaki nesne veya bir başvuru yüzey veya datum (genellikle ortalama Deniz düzeyinde) aşağıda dikey uzaklık. Yükseltme, genelde land dikey yüksekliğine anlamına gelir.
+<a name="elevation"></a>**Yükseltme**: bir nokta veya nesnenin, bir başvuru yüzeyi veya veri yolu üzerinde veya altında dikey uzaklığı (genel olarak, yani ortalama deniz düzeyi). Yükseltme genellikle kara 'nin dikey yüksekliğini ifade eder.
 
-<a name="envelope"></a> **Zarf**: Bkz: [Bounding kutusu](#bounding-box).
+<a name="envelope"></a>**Zarf**: bkz. [sınırlayıcı kutusu](#bounding-box).
 
-<a name="extended-postal-code"></a> **Genişletilmiş posta kodu**: Ek bilgi içerebilecek bir posta kodu. Örneğin, ABD beş basamak posta kodları vardır ancak zip + 4 olarak bilinen bir genişletilmiş posta kodu, dört ek basamaklar içerir. Bu ek basamaklar, beş basamaklı teslim alan bir şehir bloğu, binalarının bir grup veya verimli posta sıralama ve teslim yardımcı bir posta office kutusunu, gibi coğrafi bir Segmentte tanımlamak için kullanılır.
+<a name="extended-postal-code"></a>**Genişletilmiş posta kodu**: ek bilgi içerebilen bir posta kodu. Örneğin, ABD 'de, ZIP kodlarında beş basamak vardır ancak ZIP + 4 olarak bilinen genişletilmiş bir ZIP kodu dört ek basamak içerir. Bu ek basamaklar, bir şehir bloğu, bir grup grubu veya bir posta kutusu gibi beş basamaklı teslim alanı içindeki coğrafi bir parçayı belirlemek için kullanılır; Bu da etkili posta sıralama ve teslimine yardımcı olur.
 
-<a name="extent"></a> **Uzantı**: Bkz: [Bounding kutusu](#bounding-box).
+<a name="extent"></a>**Kapsam**: bkz. [sınırlama kutusu](#bounding-box).
 
 ## <a name="f"></a>F
 
-<a name="federated-authentication"></a> **Federe kimlik doğrulaması**: Birden çok web ve mobil uygulamalarınızda kullanılmak üzere çoklu oturum açma/kimlik doğrulama mekanizması sağlayan bir kimlik doğrulama yöntemi. 
+<a name="federated-authentication"></a>**Federal kimlik doğrulaması**: birden çok Web ve mobil uygulama genelinde tek bir oturum açma/kimlik doğrulama mekanizmasının kullanılmasına izin veren bir kimlik doğrulama yöntemi. 
 
-<a name="feature"></a> **Özellik**: Geometri ek meta veri bilgileri ile bir araya getiren bir nesne. 
+<a name="feature"></a>**Özellik**: bir geometriyi ek meta veri bilgileriyle birleştiren bir nesne. 
 
-<a name="feature-collection"></a> **Koleksiyon özellik**: Özellik nesnelerinin bir koleksiyonu.
+<a name="feature-collection"></a>**Özellik koleksiyonu**: özellik nesnelerinin bir koleksiyonu.
 
-<a name="find-along-route"></a> **Yol**: Belirtilen bir sapma saati veya uzaklığı bir rota yolu içinde verileri arar uzamsal sorgu.
+<a name="find-along-route"></a>**Yol boyunca bul**: belirtilen bir tur süresi içinde veya bir yol yolundan uzaklığın içinde olan verileri gösteren bir uzamsal sorgu.
 
-<a name="find-nearby"></a> **Yakındaki Bul**: (Crow ile uçuyor gibi) sabit, doğrusal bir uzaklık noktası olan bir uzamsal sorgu.
+<a name="find-nearby"></a>**Yakında bul**: bir noktadan sonra sabit bir düz çizgi mesafesini (Crow uçın olarak) arayan uzamsal bir sorgu.
 
-<a name="fleet-management"></a> **Filo Yönetimi**: Araba, kamyon, verilir ve düzlemleri gibi ticari araçları yönetimi. Filo yönetimi, bir dizi araç Finansmanı, bakım, telematik (izleme ve tanılama) yanı sıra sürücü, hız, yakıt ve sistem durumu ve güvenlik yönetimi gibi işlevleri içerebilir. Filo yönetimi, riskleri en aza indirmek ve kamu mevzuatı uyum sağlarken kendi genel nakliye ve personel maliyetlerini azaltmak için kendi iş üzerinde nakliye kullanan şirketler tarafından kullanılan bir işlemdir.
+<a name="fleet-management"></a>**Fleet yönetimi**: araba, structuralks, sevk ve düzler gibi ticari araçlar 'ın yönetimi. Fleet yönetimi, araç finansma, bakım, telematik (izleme ve tanılama) ve sürücü, hız, yakıt ve sistem durumu ve güvenlik yönetimi gibi bir dizi işlev içerebilir. Fleet yönetimi, işletmelerine bağlı olan şirketler tarafından, riskleri en aza indirmek ve genel taşıma ve personel maliyetlerini azaltmak ve kamu mevzuatı ile uyumluluğu güvence altına almak için kullanılan bir işlemdir.
 
-<a name="free-flow-speed"></a> **Boş Akış hızı**: İdeal koşullarda beklenen boş Akış hızı. Genellikle hız sınırı.
+<a name="free-flow-speed"></a>**Ücretsiz akış hızı**: ideal koşullarda beklenen ücretsiz akış hızı. Genellikle hız sınırı.
 
-<a name="free-form-address"></a> **Serbest biçimli adresi**: Tek metin satırı temsil edilen bir tam adresi.
+<a name="free-form-address"></a>**Ücretsiz form adresi**: tek satırlık bir metin olarak temsil edilen tam bir adres.
 
-<a name="fuzzy-search"></a> **Belirsiz arama**: Bir arama metnin bir adresi serbest biçimli dize veya ilgi noktası alır. 
+<a name="fuzzy-search"></a>**Benzer arama**: bir adres veya bir ilgi noktası olabilecek, metnin serbest biçimli dizesini alan bir arama. 
 
 ## <a name="g"></a>G
 
-<a name="geocode"></a> **Geocode**: Bir adres veya bu konumunu bir haritada görüntülemek için kullanılan bir koordinat dönüştürüldükten konum. 
+<a name="geocode"></a>**Geocode**: bir haritada bu konumu göstermek için kullanılabilecek bir koordinat içine dönüştürülmüş bir adres veya konum. 
 
-<a name="geocoding"></a> **Coğrafi kodlama**: Olarak da bilinen ileriye doğru coğrafi kodlama, konum verileri adresini koordinatları haline dönüştürme işlemi olur. 
+<a name="geocoding"></a>**Coğrafi kodlama**: ileri coğrafi kodlama olarak da bilinen, konum verilerinin adresini koordinatlara dönüştürme işlemidir. 
 
-<a name="geodesic-path"></a> **Geodesic yolu**: Eğri yüzeyinde iki nokta arasındaki en kısa yolu. Azure haritalar üzerinde işlendiğinde bu yolu Mercator izdüşümünü nedeniyle bir eğri çizgi görünür.
+<a name="geodesic-path"></a>**Coğrafi yol**: eğri yüzeyde iki punto arasındaki en kısa yol. Azure 'da işlendiğinde bu yol, Mercator projeksiyonu nedeniyle eğri bir çizgi olarak görünür.
 
-<a name="geofence"></a> **Bölge sınırının**: Bir cihaz girdiğinde veya bölgede mevcut olaylarını tetiklemek için kullanılabilecek tanımlı coğrafi bölge.
+<a name="geofence"></a>**Bölge sınırı: bir**cihaz bölge girdiğinde veya varsa olayları tetiklemek için kullanılabilen tanımlı bir coğrafi bölge.
 
-<a name="geojson"></a> **GeoJSON**: Ortak bir JSON tabanlı dosya biçimi, noktaları, satırlar ve çokgenler gibi coğrafi vektör verilerini depolamak için kullanılır. **Not**: Azure haritalar kullanan GeoJSON genişletilmiş bir sürümünü [burada belgelenmektedir](extend-geojson.md).
+<a name="geojson"></a>**Geojson**: noktaları, çizgileri ve çokgenler gibi coğrafi vektör verilerini depolamak için kullanılan, ortak bir JSON tabanlı dosya biçimidir. **Note**: Azure Maps, [burada belgelendiği](extend-geojson.md)gibi, GeoJSON 'ın genişletilmiş bir sürümünü kullanır.
 
-<a name="geometry"></a> **Geometri**: Bir nokta, çizgi veya Çokgen gibi uzamsal bir nesneyi temsil eder.
+<a name="geometry"></a>**Geometri**: nokta, çizgi veya Çokgen gibi bir uzamsal nesneyi temsil eder.
 
-<a name="geometrycollection"></a> **GeometryCollection**: Geometri nesneleri koleksiyonu.
+<a name="geometrycollection"></a>**GeometryCollection**: geometri nesnelerinin bir koleksiyonu.
 
-<a name="geopol"></a> **GeoPol**: Tartışmalı kenarlık ve yer adlarına gibi ekleyemeyebilir hassas verileri ifade eder.
+<a name="geopol"></a>**Geopol**: tartışmalı Kenarlıklar ve yer adları gibi coğrafi olarak hassas verilere başvurur.
 
-<a name="georeference"></a> **Jeo referans**: Coğrafi veriler veya bilinen bir koordinat sistemi için tanımayı hizalama işlemi. Bu işlem, kaydırma, döndürme, ölçeklendirme veya eğriltme verilerini oluşabilir.
+<a name="georeference"></a>**Georeference**: coğrafi verileri veya Imagery 'yi bilinen bir koordinat sistemine hizalama işlemi. Bu işlem, verileri kaydırma, döndürme, ölçekleme veya eğme içerebilir.
 
-<a name="georss"></a> **GeoRSS**: RSS özet akışlarına uzamsal veri eklemek için bir XML uzantısı.
+<a name="georss"></a>**GeoRSS**: RSS akışlarına uzamsal veri eklemek IÇIN bir xml uzantısı.
 
-<a name="gis"></a> **GIS**: "Coğrafi bilgi sistemi" kısaltması. Eşleme sektör açıklamak için kullanılan genel bir terimdir.
+<a name="gis"></a>**GIS**: "coğrafi bilgi sistemi" için bir kısaltma. Eşleme sektörünü anlatmak için kullanılan ortak bir terim.
 
-<a name="gml"></a> **GML**: Coğrafya biçimlendirme dili olarak da bilinir. Uzamsal veri depolamak için bir XML dosya uzantısı.
+<a name="gml"></a>**GML**: Coğrafya biçimlendirme dili olarak da bilinir. Uzamsal verileri depolamak için bir XML dosyası uzantısı.
 
-<a name="gps"></a> **GPS**: Olarak da bilinen genel konumlandırma sistemi Uyduları dünya cihazları konumuna belirlemek için kullanılan bir sistem olan. Gönderen yörüngedeki Uyduları trilateration aracılığıyla kendi konumunu hesaplamak GPS alıcısı herhangi bir yerinden izin sinyalleri iletir.
+<a name="gps"></a>**GPS**: Global konumlandırma sistemi olarak da bilinen, dünya üzerindeki bir cihaz konumunun belirlenmesi için kullanılan bir uydu sistemidir. Büyük bir yerde, dünyanın herhangi bir yerindeki bir GPS alıcıya, kendi konumunu daha da hesaplamak için, dünyanın herhangi bir yerinde olan uydu gönderme sinyalleri iletir.
 
-<a name="gpx"></a> **GPX**: XML dosya biçimi, GPS Takas Biçimi da bilinir, GPS cihazlardan yaygın olarak oluşturulur.  
+<a name="gpx"></a>**GPX**: GPS Exchange biçimi olarak da BILINEN, GPS cihazlarından yaygın olarak oluşturulan bir XML dosyası biçimidir.  
 
-<a name="great-circle-distance"></a> **Büyük daire uzaklık**: Kısa uzaklığı kürenin yüzeyinde iki nokta arasındaki.
+<a name="great-circle-distance"></a>**Harika daire uzaklığı**: bir Sphere yüzeyinin iki noktası arasındaki en kısa uzaklık.
 
-<a name="greenwich-mean-time-gmt"></a> **Greenwich saati (GMT)** : Greenwich, İngiltere'deki Kraliyet Rasathanesi üzerinden çalışan asal meridyen zamanında.
+<a name="greenwich-mean-time-gmt"></a>**Greenwich saati (GMT)** : Greenwich, England 'Da Royal Rasathanesi aracılığıyla çalıştırılan ana meridyendeki zaman.
 
-<a name="guid"></a> **GUID**: Genel olarak benzersiz bir tanımlayıcı. Bir arabirim, sınıf, tür kitaplığı, bileşen kategorisine veya kaydı benzersiz olarak tanımlamak için kullanılan bir dize.
+<a name="guid"></a>**GUID**: genel benzersiz tanımlayıcı. Bir arabirim, sınıf, tür kitaplığı, bileşen kategorisi veya kaydı benzersiz bir şekilde tanımlamak için kullanılan dize.
 
 ## <a name="h"></a>H
 
-<a name="haversine-formula"></a> **Haversine formül**: Bir küre üzerinde iki nokta arasındaki mükemmel daire uzaklığı hesaplamak için kullanılan ortak bir eşitlik.
+<a name="haversine-formula"></a>**Haversinüs formülü**: bir Sphere üzerindeki iki noktaya ait büyük daire mesafesini hesaplamak için kullanılan ortak bir denklem.
 
-<a name="hd-maps"></a> **HD haritalar**: Olarak da bilinen yüksek tanımı haritalar oluşur Kulvar işaretler gibi yüksek uygunluğa sahip yol ağ bilgileri Tabela ve yönü ışık otonom sürüş için gerekli.
+<a name="hd-maps"></a>**HD Maps**: yüksek tanımlı haritalar olarak da bilinen, otonom bir şekilde yönlendirme için gereken Lane işaretleri, imza ve yön ışıkları gibi yüksek uygunlukta trafik ağ bilgilerinden oluşur.
 
-<a name="heading"></a> **Başlık**: Bir şey işaret eden veya karşılıklı yönü. Ayrıca bkz: [pul](#heading).
+<a name="heading"></a>**Başlık**: bir şeyin işaret ettiği veya karşılaştığı yönün yönü. Ayrıca bkz [..](#heading)
 
-<a name="heatmap"></a> **Isı Haritası**: Bir renk aralığı noktalarının belirli bir alandaki yoğunluğu temsil bir veri görselleştirmesi. Ayrıca Tematik Haritası'na bakın.
+<a name="heatmap"></a>**Heatmap**: belirli bir alandaki noktaların yoğunluğunu temsil eden bir renk aralığının bir veri görselleştirmesi. Ayrıca bkz. tek bir eşleme.
 
-<a name="hybrid-imagery"></a> **Karma resimler**: Uydu veya yol verileri ve çıktıklarını yayılan etiketleri olan havadan tanımayı.
+<a name="hybrid-imagery"></a>**Hibrit Hibrit**: yol verileri ve üzerine eklenen Etiketler içeren uydu veya hava imakisi.
 
 ## <a name="i"></a>I
 
-<a name="iana"></a> **IANA**: Internet Atanmış Numaralar Yetkilisi kısaltması. Genel IP adresi ayırma'yı gözetir kar amacı gütmeyen bir grup.
+<a name="iana"></a>**IANA**: Internet atanmış numaralar yetkilisi için bir kısaltma. Genel IP adresi ayırmayı fazla görülen kar olmayan bir grup.
 
-<a name="isochrone"></a> **Isochrone**: Bir isochrone, birisi herhangi bir yönde nakliye türünü belirli bir süre içinde belirtilen bir konumdan ilerleyebilir alanı tanımlar. Ayrıca bkz: [erişilebilir aralığı](#reachable-range).
+<a name="isochrone"></a>**Isovaone**: bir ısovaone, belirli bir konumdan herhangi bir yönde bir ulaşım modu için, birisinin belirli bir süre içinde geçebileceği alanı tanımlar. Ayrıca bkz. [erişilebilir Aralık](#reachable-range).
 
-<a name="isodistance"></a> **Isodistance**: Bir konuma göz önünde bulundurulduğunda, bir isochrone, birisi için herhangi bir yönde nakliye türünü belirli bir uzaklıkta ilerleyebilir alanı tanımlar. Ayrıca bkz: [erişilebilir aralığı](#reachable-range).
+<a name="isodistance"></a>**İzde**: bir konum verildiğinde, bir ısovaone, birinin bir ulaşım modu için herhangi bir yönde belirli bir mesafe dahilinde dolaşabileceğini tanımlayan alanı tanımlar. Ayrıca bkz. [erişilebilir Aralık](#reachable-range).
 
 ## <a name="k"></a>K
 
-<a name="kml"></a> **KML**: Olarak da bilinir anahtar deliği biçimlendirme dilidir noktaları, satırlar ve çokgenler gibi coğrafi vektör verilerini depolamak için ortak bir XML dosyası biçimi. 
+<a name="kml"></a>**KML**: anahtar deliği biçimlendirme dili olarak da bilinen, noktaları, çizgileri ve çokgenler gibi coğrafi vektör verilerini depolamak için ortak bir XML dosyası biçimidir. 
 
 ## <a name="l"></a>L
 
-<a name="landsat"></a> **Landsat**: Multispectral, dünya gönderen yörüngedeki Uyduları NASA tarafından geliştirilen, görüntülerin olan Tarım, Ormancılık ve cartography gibi çok sayıda sektörde kullanılır toplayın.
+<a name="landsat"></a>**Imasat**: agrictral, Ormancılık ve çizgi grafları gibi birçok sektörde kullanılan toprak elde eden, NASA tarafından geliştirilen çok Spectral, dünya içinde ve yerleşik uydu.
 
-<a name="latitude"></a> **Enlem**: Kuzey veya Güney yönü ekvatorun dereceden olan Açısal uzaklık cinsinden.
+<a name="latitude"></a>**Enlem**: bir Kuzey veya Güney yönünde kıtada 'tan derece olarak ölçülen angular uzaklığı.
 
-<a name="level-of-detail"></a> **Ayrıntı düzeyi**: Yakınlaştırma bkz düzeyi.
+<a name="level-of-detail"></a>**Ayrıntı düzeyi**: yakınlaştırma düzeyi ' ne bakın.
 
-<a name="lidar"></a> **Lidar**: Açık olan algılama ve değişen kısaltması. Yansıtıcı yüzeyleri için uzaklıkta ölçmek için Sever kullanan uzaktan algılama yöntemi.
+<a name="lidar"></a>**Lidar**: hafif algılama ve Aralık kısaltması. Yansıtma yüzeylerine uzaklıkları ölçmek için balıklarını kullanan uzaktan algılama tekniği.
 
-<a name="linear-interpolation"></a> **Doğrusal enterpolasyon**: Bilinen değerler arasındaki doğrusal uzaklık kullanarak bilinmeyen bir değere tahmin.
+<a name="linear-interpolation"></a>**Doğrusal ilişkilendirme**: bilinen değerler arasındaki doğrusal mesafeyi kullanarak bilinmeyen bir değerin tahmini.
 
-<a name="linestring"></a> **LineString**: Bir satırı temsil etmek için kullanılan bir geometri. Çoklu çizgi olarak da bilinir. 
+<a name="linestring"></a>**LineString**: bir çizgiyi temsil etmek için kullanılan bir geometri. Çoklu çizgi olarak da bilinir. 
 
-<a name="localization"></a> **Yerelleştirme**: Farklı dillere ve kültürlere desteği.
+<a name="localization"></a>**Yerelleştirme**: farklı diller ve kültürler için destek.
 
-<a name="logistics"></a> **Lojistik**: Kişiler, araçları, kaynakları veya varlıklar koordineli bir şekilde taşıma işlemi.
+<a name="logistics"></a>**Lojistik**: kişileri, gereçleri, malzemeleri veya varlıkları eşgüdümlü bir şekilde taşıma işlemi.
 
-<a name="longitude"></a> **Boylam**: Doğu veya Batı yönde asal meridyen dereceden olan Açısal uzaklık cinsinden.
+<a name="longitude"></a>**Boylam**: bir Doğu veya Batı yönünde asal meridyenlerden derece cinsinden ölçülen angular uzaklığı.
 
 ## <a name="m"></a>M
 
-<a name="map-tile"></a> **Kutucuk harita**: Bir eşlem tuvali bölümünü temsil eder bir dikdörtgen resim. Daha fazla bilgi için [yakınlaştırma düzeyleri ve döşeme Kılavuzu belgeleri](zoom-levels-and-tile-grid.md).
+<a name="map-tile"></a>**Harita kutucuğu**: harita tuvalinin bir bölümünü temsil eden dikdörtgen bir resim. Daha fazla bilgi için [yakınlaştırma düzeyleri ve kutucuk Kılavuzu belgelerine](zoom-levels-and-tile-grid.md)bakın.
 
-<a name="marker"></a> **İşaret**: Olarak da bilinen bir PIN veya Raptiye, bir noktası konumunu bir haritada temsil eden bir simge değil.
+<a name="marker"></a>**İşaretleyici**: PIN veya raptiye olarak da bilinen, bir harita üzerindeki nokta konumunu temsil eden bir simgedir.
 
-<a name="mercator-projection"></a> **Mercator izdüşümünü**: Meridyenleri ile bunları korumak Düz parçaları olarak rhumb satırları olarak bilinen sabit Elbette çizgilerini temsil yeteneğini nedeniyle Denizcilik amaçlar için standart harita izdüşümü dönüştü bir Silindirik harita izdüşümü. Tüm düz harita projeksiyonlar yeryüzünün doğru düzene karşılaştırıldığında harita boyutları ve şekiller çarpıtan. Daha küçük alanları kutupları yaklaştıkça harita üzerinde büyük görünür olacağı şekilde Mercator izdüşümünü ekvatorun gölgeden uzak alanları arttırdığınızda. 
+<a name="mercator-projection"></a>**Mercator projeksiyonu**: Rhumb Lines olarak bilinen ve meridyenlerin açılarından tasarruf eden düz parçalar olarak bilinen sabit kurs satırlarını temsil etme yeteneği nedeniyle, nadeniz amacıyla standart harita projeksiyonu yapan bir silindirik harita projeksiyonu. Tüm düz harita projeksiyonları, Dünya yüzeyinin doğru düzenine kıyasla haritanın şekillerini veya boyutlarını deforme edebilir. Mercator projeksiyonu, diğer yandan da siz de yaklaşımda daha küçük alanların Haritada daha büyük görünmesine benzer şekilde, eşlerden uzakta olan bölgeleri ayırır. 
 
-<a name="multilinestring"></a> **MultiLineString**: Geometri LineString nesnelerinin bir koleksiyonunu temsil eder. 
+<a name="multilinestring"></a>**MultiLineString**: bir LineString nesnelerinin koleksiyonunu temsil eden bir geometri. 
 
-<a name="multipoint"></a> **MultiPoint**: Geometri noktası nesnelerinin bir koleksiyonunu temsil eder.
+<a name="multipoint"></a>**MultiPoint**: nokta nesneleri koleksiyonunu temsil eden bir geometri.
 
-<a name="multipolygon"></a> **MultiPolygon**: Geometri Çokgen nesnelerinin bir koleksiyonunu temsil eder. Örneğin, Hawaii sınırları göstermek için sahip bir çokgenin her Adası özetlenen ve Hawaii sınırları, bu nedenle bir MultiPolygon olacaktır.
+<a name="multipolygon"></a>**MultiPolygon**: Çokgen nesnelerinin bir koleksiyonunu temsil eden bir geometri. Örneğin, Hawaii sınırını göstermek için, her Adası bir çokgen ile Seviyelendirilmiş ve Hawaii 'nin sınırı MultiPolygon olacaktır.
 
-<a name="municipality"></a> **Belediye**: Bir şehir veya şehir. 
+<a name="municipality"></a>**Municipsellik**: bir şehir veya Town. 
 
-<a name="municipality-subdivision"></a> **Belediye alt**: Komşuları veya "Şehir"merkezi gibi yerel adı gibi bir belediye bölümlemesini.
+<a name="municipality-subdivision"></a>**Municipitesi alt bölümü**: bir semtin veya "Downtown" gibi yerel alan adı gibi bir municipitesi alt bölümü.
 
 ## <a name="n"></a>N
 
-<a name="navigation-bar"></a> **Gezinti çubuğu**: Bir harita yakınlaştırma düzeyini, aralık döndürme ayarlama ve temel bir harita katmanını değiştirme denetim kümesi.
+<a name="navigation-bar"></a>**Gezinti çubuğu**: bir haritadaki yakınlaştırma düzeyini ayarlamak için kullanılan denetim kümesi, sıklık, döndürme ve temel harita katmanını değiştirme.
 
-<a name="nearby-search"></a> **Arama yakındaki**: (Crow ile uçuyor gibi) sabit, doğrusal bir uzaklık noktası olan bir uzamsal sorgu.
+<a name="nearby-search"></a>**Yakın arama**: bir noktadan sonra sabit bir düz çizgi mesafesini (Crow uçın olarak) arayan uzamsal bir sorgu.
 
-<a name="neutral-ground-truth"></a> **Nötr çığır Truth**: Etiket resmi dilini temsil ettiği bölge ve yerel betikler varsa işler eşlemesi.
+<a name="neutral-ground-truth"></a>**Nötr taban Truth**: etiketleri, temsil ettiği bölgenin resmi dilinde ve varsa yerel betiklerinde işleyen bir harita.
 
 ## <a name="o"></a>O
 
-<a name="origin"></a> **Kaynak**: Bir başlangıç noktası veya bir kullanıcı olduğu konum.
+<a name="origin"></a>**Kaynak**: kullanıcının bulunduğu bir başlangıç noktası veya konumu.
 
 ## <a name="p"></a>P
 
-<a name="panning"></a> **Kaydırma**: Bir sabit yakınlaştırma düzeyi sürdürürken herhangi bir yönde harita taşıma işlemi.
+<a name="panning"></a>**Yatay kaydırma**: bir sabit yakınlaştırma düzeyi koruyarak Haritayı herhangi bir yöne taşıma işlemi.
 
-<a name="parcel"></a> **Paket**: Bir çizim land veya özellik sınırının.
+<a name="parcel"></a>**Paket**: bir Land veya özellik sınırı çizimi.
 
-<a name="pitch"></a> **Aralık**: Eğim miktarı harita 0 eşlemeyi burada arıyor doğrudan aşağı dikey göre vardır.
+<a name="pitch"></a>**Sıklık**: eşlemenin, haritada 0 ' ın doğru bir şekilde gezineceği dikey görünüme göreli olan eğim miktarı.
 
-<a name="point"></a> **Noktası**: Geometri harita üzerinde tek bir konumu temsil eder. 
+<a name="point"></a>**Point**: haritadaki tek bir konumu temsil eden bir geometri. 
 
-<a name="points-of-interest-poi"></a> **(POI) ilgi noktası**: İş, yer işareti veya ilgi ortak bir yerde.
+<a name="points-of-interest-poi"></a>**Ilgi noktaları (POı)** : bir iş, yer işareti veya genel ilgi çekici bir yer.
 
-<a name="polygon"></a> **Çokgen**: Bir haritadaki bir alanı temsil eden bir düz geometri. 
+<a name="polygon"></a>**Çokgen**: haritadaki bir alanı temsil eden bir düz geometri. 
 
-<a name="polyline"></a> **Çoklu çizgi**: Bir satırı temsil etmek için kullanılan bir geometri. LineString olarak da bilinir. 
+<a name="polyline"></a>**Çoklu çizgi**: bir çizgiyi temsil etmek için kullanılan bir geometri. Ayrıca, LineString olarak da bilinir. 
 
-<a name="position"></a> **Konum**: Boylam, enlem ve bir noktanın yüksekliği (x, y, z koordinatları).
+<a name="position"></a>**Konum**: bir noktanın boylam, enlem ve yüksekliği (x, y, z koordinatları).
 
-<a name="post-code"></a> **Posta kodu**: Bkz: [postalcode](#postal-code).
+<a name="post-code"></a>Posta **kodu**: [posta kodunu](#postal-code)görüntüleyin.
 
-<a name="postal-code"></a> **Posta kodu**: Bir dizi harf veya sayı veya her ikisi de posta teslimini basitleştirmek için coğrafi bölgeler bölgelere ayırmak için bir ülke/bölge posta hizmeti tarafından kullanılan belirli bir biçimde.
+<a name="postal-code"></a>**Posta kodu**: bir ülkenin/bölgenin posta hizmeti tarafından, e-postaların teslimini basitleştirmek amacıyla coğrafi alanları bölgelere bölmek için kullanılan belirli bir biçimde bir dizi harf veya sayı veya her ikisi.
 
-<a name="prime-meridian"></a> **Asal meridyen**: 0 derece boylam temsil eden boylam satırı. Genellikle, boylam değerleri 180 derece kadar westerly yönde dolaşırken azaltmak ve easterly yönde için -180 dolaşırken artırmak-derece. 
+<a name="primary-key"></a>**Birincil anahtar**: Azure Maps paylaşılan anahtar kimlik doğrulaması için belirtilen iki abonelik anahtarından ilki. Bkz. [paylaşılan anahtar kimlik doğrulaması](#shared-key-authentication).
 
-<a name="prj"></a> **PRJ**: Öngörülen koordinat sistemi hakkında bilgi içeren bir şekil dosyası dosyası genellikle eşlik eden bir metin dosyası veri kümesi bulunduğu.
+<a name="prime-meridian"></a>**Ana meridyen**: 0 derece boylam 'yi temsil eden bir Boylam çizgisi. Genellikle, boylam değerleri 180 derece kadar bir yöne doğru hareket ederken ve hareket halindeyken-180 derecelik yönlere kadar artdıkça artar. 
 
-<a name="projection"></a> **Projeksiyon**: Alan ve Robinson çapraz Mercator, Albers eşit olduğu gibi bir harita izdüşümü üzerinde temel bir öngörülen koordinat sistemi. Bunlar, bir iki boyutlu Kartezyen koordinat düzlemi küresel yüzeyine dünya proje haritalarını olanağı sağlar. Öngörülen koordinat sistemi harita izdüşümler adlandırılır.
+<a name="prj"></a>**PRJ**: veri kümesinin içinde olduğu tasarlanan koordinat sistemi hakkında bilgi Içeren bir şekil dosyası dosyasına genellikle eşlik eden bir metin dosyası.
+
+<a name="projection"></a>**Projeksiyon**: enine Mercator, albümler eşittir alanı ve Robinson gibi harita projeksiyonunu temel alan, tasarlanan koordinat sistemi. Bu, dünya küresel yüzeyinin haritalarını iki boyutlu bir Kartezyen koordinat düzlemi üzerine proje yeteneği sağlar. Tasarlanan koordinat sistemleri bazen harita projeksiyonları olarak adlandırılır.
 
 ## <a name="q"></a>Q
 
-<a name="quadkey"></a> **Quadkey**: Önce quadtree döşeme sistemi içindeki bir kutucuk için 4 temel adresi dizini. Daha fazla bilgi için [yakınlaştırma düzeyleri ve döşeme Kılavuzu](zoom-levels-and-tile-grid.md) daha fazla bilgi için belgelere bakın.
+<a name="quadkey"></a>**Quadkey**: bir quadtree döşeme sistemi içindeki bir kutucuk için Base-4 adres dizini. Daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md) belgeleri.
 
-<a name="quadtree"></a> **Önce Quadtree**: Her düğümü tam olarak dört alt öğeleri olan bir veri yapısı. Bir kullanıcı bir düzey yakınlaştırır gibi her bir harita kutucuğunu alt dört kutucuğa sonlarını, Azure haritalar içinde kullanılan döşeme sistemi quadtree yapısı kullanır.  Daha fazla bilgi için [yakınlaştırma düzeyleri ve döşeme Kılavuzu](zoom-levels-and-tile-grid.md) daha fazla bilgi için belgelere bakın.
+<a name="quadtree"></a>**Quadtree**: her bir düğümün tam olarak dört çocuğu olan veri yapısı. Azure haritalar 'da kullanılan döşeme sistemi, bir kullanıcı için bir düzey yakınlaştırıp, her harita kutucuğunun dört alt kutucukta bölünmesinin ardından bir quadtree yapısı kullanır.  Daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md) belgeleri.
 
-<a name="queries-per-second-qps"></a> **Sorgular / saniye (QPS)** : Sorguları veya bir hizmeti veya platformu için bir saniye içinde yapılan isteklerinin sayısı. 
+<a name="queries-per-second-qps"></a>**Saniyedeki sorgu sayısı (QPS)** : bir saniyede bir hizmette veya platformda yapılabilecek sorgu veya istek sayısı. 
 
 ## <a name="r"></a>R
 
-<a name="radial-search"></a> **Radyal arama**: (Crow ile uçuyor gibi) sabit, doğrusal bir uzaklık noktası olan bir uzamsal sorgu. 
+<a name="radial-search"></a>**Radyal arama**: bir noktadan sonra sabit bir düz çizgi mesafesini (Crow uçın olarak) arayan uzamsal bir sorgu. 
 
-<a name="raster-data"></a> **Hücresel veri**: Hücre (veya piksel) matrisin düzenlenmiş satırları ve sütunları (veya bir kılavuz) burada her hücre sıcaklık gibi bilgileri temsil eden bir değer içeriyor. Izgara'nın dijital havadan fotoğraflar, tanımayı Uyduları, resimleri ve taranan eşlemeleri içerir.
+<a name="raster-data"></a>**Raster verileri**: her hücrenin sıcaklık gibi bilgileri temsil eden bir değer içerdiği, satırlar ve sütunlar (veya bir ızgara) halinde düzenlenmiş bir hücre (veya piksel) matrisi. Raster, uydu, dijital resim ve taranmış haritalardan oluşan dijital havadan fotoğraf fotoğraflarını kapsar.
 
-<a name="raster-layer"></a> **Izgara katman**: Izgara görüntülerini oluşan bir döşeme katmanı.
+<a name="raster-layer"></a>**Raster katmanı**: raster görüntülerden oluşan döşeme katmanı.
 
-<a name="reachable-range"></a> **Erişilebilir aralığı**: Erişilebilir bir aralık içinde birisi bir süre veya bir konumdan herhangi bir yönde hareket etmek nakliye türünü için uzaklık içinde ilerleyebilir alanı tanımlar. Ayrıca bkz: [Isochrone](#isochrone) ve [Isodistance](#isodistance).
+<a name="reachable-range"></a>**Erişilebilir Aralık**: erişilebilir bir Aralık, birisinin, bir konuma ulaşım modu için belirli bir süre veya mesafe içinde dolaşabilir alanı tanımlar. Ayrıca bkz. [ısovaone](#isochrone) ve [izdistance](#isodistance).
 
-<a name="remote-sensing"></a> **Uzak Algılama**: Toplama ve bir uzaklıktan algılayıcı verileri yorumlama işlemi.
+<a name="remote-sensing"></a>**Uzaktan algılama**: algılayıcı verilerinin bir uzaklıktan toplanması ve yorumlanması işlemi.
 
-<a name="rest-service"></a> **REST hizmeti**: Kısaltması, temsili durum transferi REST anlamına gelir. Bir REST hizmeti, HTTP GET ve POST istekleri olan en yaygın yöntemleri iletişim kurmak için temel web teknolojisinden yararlanır bir URL tabanlı bir web hizmetidir. Bu tür hizmet, bana çok daha hızlı ve daha küçük geleneksel SOAP tabanlı Hizmetleri eğilimindedir.
+<a name="rest-service"></a>**REST hizmeti**: Rest, temsili durum aktarımı için temsil eder. REST hizmeti, HTTP GET ve POST istekleri olmak üzere en yaygın yöntemlerle iletişim kurmak için temel Web teknolojisine dayanan bir URL tabanlı Web hizmetidir. Bu tür hizmetler, geleneksel SOAP tabanlı hizmetlerden çok daha hızlı ve daha küçük bir şekilde oluşur.
 
-<a name="reverse-geocode"></a> **Geocode ters**: Koordinat alma ve hangi adreste belirleme işlemini harita üzerinde temsil eder.
+<a name="reverse-geocode"></a>**Ters coğrafi kod**: bir koordinatı alma ve ' de bir haritada temsil eden adresi belirleme işlemi.
 
-<a name="reproject"></a> **Reproject**: Bkz: [dönüştürme](#transformation).
+<a name="reproject"></a>**Yeniden proje**: bkz. [dönüştürme](#transformation).
 
-<a name="rest-service"></a> **REST hizmeti**: Temsili durum aktarımı için kullanılan kısaltma. Merkezi olmayan, dağıtılmış bir ortamda eşler arasında bilgi alışverişi için bir mimari. REST programlar bir işletim sistemi veya platformdan bağımsız olarak bir Tekdüzen Kaynak Konum Belirleyicisi (URL) için bir Köprü Metni Aktarım Protokolü (HTTP) istek göndererek iletişim kurmak ve verileri geri almak için farklı bilgisayarlarda sağlar.
+<a name="rest-service"></a>**REST hizmeti**: temsili durum aktarımı için kısaltma. Merkezi olmayan, dağıtılmış bir ortamda eşler arasında bilgi alışverişi için bir mimari. REST, bir Tekdüzen Kaynak Bulucusu 'na (URL) bir Köprü Metni Aktarım Protokolü (HTTP) isteği göndererek ve verileri geri alarak, farklı bilgisayarlardaki programların bir işletim sistemi veya platformundan bağımsız olarak iletişim kurmasına olanak tanır.
 
-<a name="route"></a> **Rota**: Yönergeler için yol boyunca waypoints gibi ek bilgileri de içerebilir, iki veya daha fazla konum arasında bir yolu.
+<a name="route"></a>**Route**: iki veya daha fazla konum arasındaki yol, yol boyunca işaret noktaları için yönergeler gibi ek bilgiler de içerebilir.
 
-<a name="requests-per-second-rps"></a> **(RP'ler) saniye başına istek**: Bkz: [sorgular / saniye (QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a>**Saniye başına istek (RPS)** : bkz. [saniyedeki sorgu sayısı (QPS)](#queries-per-second-qps). 
 
-<a name="rss"></a> **RSS**: Kaynak bağlı olarak kullanılan kısaltma gerçekten basit dağıtım, kaynak açıklaması Framework (RDF) Site özeti veya zengin Site özeti. Farklı Web siteler arasında içerik paylaşımını bir basit, yapılandırılmış XML biçimi. RSS belgelerin yazar, tarih, başlık, kısa bir açıklama ve köprü metnine gibi önemli meta verilerin öğeleri içerir. Bir kullanıcı (veya bir RSS yayımcı hizmeti) karar verin malzemeleri değer, bu bilgiler yardımcı olur, daha fazla araştırma.
+<a name="rss"></a>**RSS**: kaynağa bağlı olarak, gerçekten basit dağıtım, Resource Description Framework (RDF) Site Özeti veya zengin site özeti için kısaltma. Farklı Web siteleri arasında içerik paylaşmak için basit, yapılandırılmış bir XML biçimi. RSS belgeleri yazar, tarih, başlık, kısa bir açıklama ve köprü metni bağlantısı gibi anahtar meta veri öğelerini içerir. Bu bilgiler, bir kullanıcının (veya bir RSS yayımcı hizmeti) hangi malzemelere daha fazla araştırma olduğuna karar vermenize yardımcı olur.
 
 ## <a name="s"></a>S
 
-<a name="satellite-imagery"></a> **Uydu tanımayı**: Düzlemleri ve düz aşağıyı Uyduları tarafından yakalanan görüntüler.
+<a name="satellite-imagery"></a>**Uydu canlandırın**: düzler ve uydular tarafından yakalanan, düz aşağı işaret eden canlandırın.
 
-<a name="software-development-kit-sdk"></a> **Yazılım Geliştirme Seti (SDK)** : Belge, örnek kod ve geliştirici kullanım uygulamalar oluşturmak için bir API yardımcı olmak için örnek uygulamaları koleksiyonu.
+<a name="secondary-key"></a>**İkincil anahtar**: Azure Maps paylaşılan anahtar kimlik doğrulaması için belirtilen iki abonelik anahtarının ikincisi. Bkz. [paylaşılan anahtar kimlik doğrulaması](#shared-key-authentication).
 
-<a name="shapefile-shp"></a> **Şekil dosyası (SHP)** : Olarak da bilinen bir ESRI şekil dosyasının konumu, Şekil ve coğrafi özelliklerinin öznitelikleri depolamak için bir vektör veri depolama biçimi olur. Bir şekil dosyası ilişkili dosyaları kümesi içinde depolanır.
+<a name="shapefile-shp"></a>**Shapefile (shp)** : Esri şekil dosyası olarak da bilinen coğrafi özelliklerin konumunu, şeklini ve özniteliklerini depolamak için bir vektör veri depolama biçimidir. Bir şekil dosyası bir dizi ilgili dosya içinde depolanır.
 
-<a name="spherical-mercator-projection"></a> **Küresel Mercator izdüşümünü**: Bkz: [Mercator Web](#web-mercator). 
+<a name="shared-key-authentication"></a>**Paylaşılan anahtar kimlik doğrulaması**: paylaşılan anahtar kimlik doğrulaması, her Azure Maps Isteğiyle Azure Maps hesabı tarafından oluşturulan anahtarları geçirmeyi kullanır. Bu anahtarlara genellikle abonelik anahtarları denir. Anahtarların güvenlik için düzenli olarak yeniden oluşturulması önerilir. Diğerini yeniden oluştururken bir anahtar kullanarak devam edebilmeniz için iki anahtar sağlanır. Anahtarlarınızı yeniden oluşturduğunuzda, yeni anahtarları kullanmak için bu hesaba erişen tüm uygulamaları güncelleştirmeniz gerekir. Azure haritalar kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz. Azure Maps [ve Azure AD](azure-maps-authentication.md) ve [kimlik doğrulamasını Azure haritalar 'da yönetme](how-to-manage-authentication.md).
 
-<a name="spatial-query"></a> **Uzamsal sorgu**: Uzamsal işlemi gerçekleştiren bir hizmete yapılan bir istek. Böyle bir Radyal arama olarak veya bir rota arama boyunca.
+<a name="software-development-kit-sdk"></a>**Yazılım geliştirme seti (SDK)** : bir geliştiricinin uygulama derlemek IÇIN bir API kullanmasına yardımcı olmak için bir belge, örnek kod ve örnek uygulama koleksiyonu.
 
-<a name="spatial-reference"></a> **Uzamsal başvuru**: Tam olarak coğrafi varlıkları bulmak için kullanılan bir koordinat tabanlı yerel, Bölgesel ve genel sistem. Harita koordinatlarına göre gerçek dünyada konumlara ilişkilendirmek için kullanılan koordinat sistemini tanımlar. Uzamsal başvuruları doğru görüntüleme veya çözümleme için uzamsal veriler farklı katmanlar veya kaynaklarından tümleştirilebilir emin olun. Azure haritalar kullanan [EPSG:3857](https://epsg.io/3857) giriş geometri veri için başvuru sistemi ve WGS 84 koordinatı. 
+<a name="spherical-mercator-projection"></a>**Küresel Mercator projeksiyonu**: bkz. [Web Mercator](#web-mercator). 
 
-<a name="sql-spatial"></a> **SQL uzamsal**: SQL Azure ve SQL Server 2008 ve üzeri yerleşik olan bir uzamsal işlevlerini gösterir. Bu uzamsal İşlevler, bağımsız olarak SQL Server kullanılan bir .NET kitaplığı olarak da kullanılabilir. Daha fazla bilgi için [uzamsal veriler (SQL Server) belgeleri](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) daha fazla bilgi için.
+<a name="spatial-query"></a>**Uzamsal sorgu**: uzamsal bir işlem gerçekleştiren bir hizmete yapılan istek. Bir radyal arama veya bir rota arama hakkında.
 
-<a name="synchronous-request"></a> **Eşzamanlı istek**: Bir HTTP isteği, bir bağlantı açar ve bir yanıt bekler. Tarayıcılar sayfadan yapılan eşzamanlı HTTP istek sayısını sınırlayın. Aynı anda birden çok uzun süren zaman uyumlu istekleri yaptıysanız bu sınıra ulaşıldı ve istekleri diğer istekleri birine tamamlanıncaya kadar ertelendi.
+<a name="spatial-reference"></a>**Uzamsal başvuru**: coğrafi varlıkları tam olarak bulmak için kullanılan koordinat tabanlı yerel, bölgesel veya küresel bir sistem. Harita koordinatlarını gerçek dünyadaki konumlara ilişkilendirmek için kullanılan koordinat sistemini tanımlar. Uzamsal başvurular, farklı katmanlardaki veya kaynaklardaki uzamsal verilerin doğru görüntüleme veya analiz için tümleştirilebilmesini güvence altına alabilir. Azure Maps, giriş geometrisi verileri için [EPSG: 3857](https://epsg.io/3857) koordinat başvuru sistemi ve wgs 84 kullanır. 
+
+<a name="sql-spatial"></a>**SQL uzamsal**: SQL Azure ve SQL Server 2008 ve üzeri sürümlerde yerleşik olan uzamsal işlevselliğe başvurur. Bu uzamsal işlevsellik, SQL Server bağımsız olarak kullanılabilecek bir .NET kitaplığı olarak da kullanılabilir. Daha fazla bilgi için bkz. [uzamsal veriler (SQL Server) belgeleri](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) .
+
+<a name="subscription-key"></a>**Abonelik anahtarı**: bkz. [paylaşılan anahtar kimlik doğrulaması](#shared-key-authentication).
+
+<a name="synchronous-request"></a>**Zaman uyumlu istek**: bir http isteği bir bağlantı açar ve yanıt bekler. Tarayıcılar, bir sayfadan yapılabilecek eşzamanlı HTTP isteklerinin sayısını sınırlar. Aynı anda birden çok uzun süre çalışan eşzamanlı istek yapılırsa, bu sınıra ulaşılırsa, istekler diğer isteklerden biri tamamlanana kadar geciktirilebilir.
 
 ## <a name="t"></a>T
 
-<a name="telematics"></a> **Telematik**: Gönderme, alma ve telekomünikasyon cihazları aracılığıyla bilgileri uzak nesnelerde denetim etkileyen ile birlikte depolama. 
+<a name="telematics"></a>**Telematik**: uzak nesnelerde efekt denetimi ile birlikte iletişim cihazları aracılığıyla bilgi gönderme, alma ve depolama. 
 
-<a name="temporal-data"></a> **Zamana bağlı veriler**: Özellikle süreleri başvuruda bulunan veri veya tarih. Zamana bağlı veriler ışık durumda gibi ayrık olaylarına bakabilirsiniz; Tren gibi nesneleri taşıma; veya trafiği sensörlerden alınan sayımların gibi yinelenen gözlemler.
+<a name="temporal-data"></a>Zamana bağlı **veri**: özellikle saatlere veya tarihlere başvuran veriler. Zamana bağlı veriler, şimşek gibi ayrı olaylara başvurabilir. nesneleri taşıma; Örneğin, traıns; ya da trafik algılayıcılarından sayımlar gibi yinelenen gözlemler.
 
-<a name="terrain"></a> **Arazi**: Land sandy Arazi veya mountainous Arazi gibi belirli bir özelliği olan bir alanı.
+<a name="terrain"></a>**Teryağmur**: kumlu termi veya dağımız terdiği gibi belirli bir özelliğe sahip olan bir alan.
 
-<a name="thematic-maps"></a> **Tematik haritalar**: Bir tema hakkında bir coğrafi bölge yansıtacak şekilde yapılan basit bir harita bir tematik haritasıdır. Bu tür bir eşleme için yaygın bir senaryo, bazı veri ölçüme göre ülkeler/bölgeler gibi yönetim bölgeleri renk sağlamaktır.
+<a name="thematic-maps"></a>**Tek tek haritalar**: bir Özet eşleme, bir coğrafi alanla ilgili bir temayı yansıtmak için yapılan basit bir eşlemedir. Bu tür bir harita için yaygın bir senaryo, bazı veri ölçümlerine bağlı olarak ülkeler/bölgeler gibi yönetim bölgelerini renkledir.
 
-<a name="tile-layer"></a> **Döşeme katmanı**: Sürekli bir katmana harita kutucukları (dikdörtgen bölümlere) birleştirerek görüntülenen bir katman. Her iki tarama döşemeleri resim kutucukları veya kutucukları vektör. Izgara döşeme katmanları genellikle önceden işlenmiş ve sunucudaki bir görüntü olarak depolanır. Bu, depolama alanı çok fazla sürebilir. Vektör döşeme katmanları, istemci uygulamasının içinden hareket halindeyken işlenir, bu nedenle sunucu tarafı depolama gereksinimleri daha küçüktür.
+<a name="tile-layer"></a>**Döşeme katmanı**: harita kutucukları (dikdörtgen bölümler) sürekli bir katmana ekleyerek bir katman gösterilir. Kutucuklar, raster görüntü kutucukları veya vektör kutucukları olabilir. Raster kutucuk katmanları genellikle zamandan önce işlenir ve bir sunucuda görüntü olarak depolanır. Bu, çok sayıda depolama alanı alabilir. Vektör döşeme katmanları, istemci uygulaması içinde anında işlenir, bu nedenle sunucu tarafı depolama gereksinimleri küçüktür.
 
-<a name="time-zone"></a> **Saat dilimi**: Yasal, ticari ve sosyal amaçları için Tekdüzen bir Standart Saati uygulamasını gözlediğini dünya bölgesi. Saat dilimlerini ülkeler/bölgeler ve onların alt bölümleri sınırları izleyin eğilimindedir.
+<a name="time-zone"></a>**Saat dilimi**: yasal, ticari ve sosyal amaçlar için tek bir standart zaman sunan dünya bölgesi. Zaman dilimleri, ülkelerin/bölgelerin ve alt bölümlerinin sınırlarını takip etmek için eğilimlidir.
 
-<a name="transaction"></a> **İşlem**: Azure haritalar kullanan bir işlem tabanlı lisanslama modeli burada;
+<a name="transaction"></a>**İşlem**: Azure Maps; bir işlem lisanslama modeli kullanır;
 
-- Bir işlem istenen her 15 eşlemesi ya da trafiği döşeme için oluşturulur.
-- Bir işlem oluşturulur için her API çağrısı bir Azure haritalar Hizmetleri gibi arama veya yönlendirme.
+- Her 15 eşleme veya istenen trafik kutucukları için bir işlem oluşturulur.
+- Arama veya yönlendirme gibi Azure haritalarının hizmetlerinden birine yönelik her API çağrısı için bir işlem oluşturulur.
 
-<a name="transformation"></a> **Dönüştürme**: Farklı coğrafi koordinat sistemi arasında veri dönüştürme işlemidir. Örneğin, Birleşik Krallık'ta yakalanan ve OSGB 1936 coğrafi koordinat sistemini temel alan bazı veriler olabilir. Azure haritalar kullanan [EPSG:3857](https://epsg.io/3857) WGS84 koordinat başvuru sistemi değişken. Bu nedenle doğru verileri görüntülemek için başka bir sistemden dönüştürülmüş koordinatları sahip gerekecektir.
+<a name="transformation"></a>**Dönüştürme**: farklı coğrafi koordinat sistemleri arasında veri dönüştürme işlemi. Örneğin, Birleşik Krallık 'ta yakalanan ve OSGB 1936 coğrafi koordinat sistemine bağlı bazı verileriniz olabilir. Azure Maps, WGS84 'in [EPSG: 3857](https://epsg.io/3857) koordinat başvuru sistemi türevini kullanır. Verileri doğru şekilde göstermek için, koordinatlarının bir sistemden diğerine dönüştürülmesi gerekir.
 
-<a name="traveling-salesmen-problem-tsp"></a> **Gezici satıcı sorun (TSP)** :  Bir satış temsilcisi durdurur, bir dizi ziyaret etmek için en verimli şekilde bulmalıdır Hamiltonian devre sorun ardından başlangıç konumu döndürür.  
+<a name="traveling-salesmen-problem-tsp"></a>**Seyahat satış sorunu (TSP)** : bir satışçının bir diziyi ziyaret etmek için en verimli yolu bulması ve başlangıç konumuna geri dönmesi gereken bir Hamiltonian devresi sorunu.  
 
-<a name="trilateration"></a> **Trilateration**: Tüm üç nokta arasındaki uzaklıkları ölçerek yeryüzünün diğer iki nokta ile ilgili bir noktasında konumunu belirleme işlemi.
+<a name="trilateration"></a>**Üç nokta: iki**diğer noktaya göre, her üç nokta arasındaki uzaklıkları ölçerek dünya yüzeyine bir noktanın konumunu belirleme işlemi.
 
-<a name="turn-by-turn-navigation"></a> **Bırakma tarafından Aç Gezinti**: Rota yönergeleri her adım için bir rota kullanıcıları olarak sağlayan bir uygulama, sonraki öngören yaklaşıyor.
+<a name="turn-by-turn-navigation"></a>Aç **-Kapat: bir**sonraki maneuver 'e yaklaşırsa, bir yolun her adımı için yol yönergeleri sağlayan bir uygulamadır.
 
 ## <a name="v"></a>V
 
-<a name="vector-data"></a> **Vektör verilerini**: Puan, çizgi veya çokgenler temsil edilen temel alan veri koordine edin.
+<a name="vector-data"></a>**Vektör verileri**: noktaları, çizgileri veya poligonları temsil eden koordinat tabanlı verileri koordine edin.
 
-<a name="vector-tile"></a> **Vektör kutucuk**: Harita denetiminin aynı döşeme sistemini kullanarak Jeo-uzamsal vektör verilerini depolamak için bir açık veri belirtimi. Ayrıca bkz: [döşeme katmanı](#tile-layer).
+<a name="vector-tile"></a>**Vektör kutucuğu**: harita denetimiyle aynı kutucuk sistemini kullanarak Jeo-uzamsal vektör verilerini depolamaya yönelik açık veri belirtimi. Ayrıca bkz. [döşeme katmanı](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Araç yönlendirme sorununu (VRP)** : Bir sınıf kümesi taşıtlardan filosundan için sıralı rota kısıtlamaları kümesini olarak dikkate alma sırasında hesaplandığı sorunları. Bu kısıtlamalar, teslim zaman pencereleri, birden çok yol kapasiteler gibi şeyler dahil ve seyahat süresi kısıtlamaları.
+<a name="vehicle-routing-problem-vrp"></a>**Araç yönlendirme sorunu (VRP)** : bir tek tek araçlar için sıralı yollar kümesinin, kısıtlama kümesi olarak dikkate alınması sırasında hesaplandığı bir sorun sınıfı. Bu kısıtlamalar teslim süresi pencereleri, birden çok rota kapasitesi ve seyahat süresi kısıtlamaları gibi şeyleri içerebilir.
 
-<a name="voronoi-diagram"></a> **Voronoi diyagram**: Alanlar veya hücre alanına ilişkin bir bölüm, geometrik bir nesne (genellikle noktası özellikleri) içine alın. Bu hücre veya çokgenler Delaunay üçgenler ölçütleri karşılaması gerekir. Bir alanı içindeki tüm konumları, kümedeki herhangi bir nesneye daha çevreleyen nesnesine yakındır. Voronoi diyagramları, genellikle coğrafi özellikler etrafında etki alanlarını ayırmak için kullanılır. 
+<a name="voronoi-diagram"></a>**Voronoı diyagramı**: bir geometrik nesneler kümesini (genellikle nokta özellikleri) çevreleyen alanlara veya hücrelere boşluk bölümü. Bu hücreler veya çokgenler, Delaunay üçgenler ölçütlerini karşılamalıdır. Bir alandaki tüm konumlar, küme içindeki diğer herhangi bir nesneyle çevrelediği nesneye daha yakındır. Voronoı diyagramları genellikle coğrafi özellikler etrafında etki alanlarının sayısını belirtmek için kullanılır. 
 
 ## <a name="w"></a>W
 
-<a name="waypoint"></a> **Güzergah noktası**: Bir güzergah noktası enlemini ve boylamını gezinme amacıyla kullanılan tarafından tanımlanan belirli bir coğrafi konumdur. Genellikle birisi bir rota üzerinden gider bir noktayı temsil etmek için kullanılır.
+<a name="waypoint"></a>**Güzergah noktası**: bir güzergah noktası, ' nin, ve ' de gezinme amaçları için kullanılan, boylam ve Enlem tarafından tanımlanan belirli bir coğrafi konumdur. Genellikle, birisinin yol üzerinden gittiği bir noktayı temsil etmek için kullanılır.
 
-<a name="waypoint-optimization"></a> **Güzergah noktası iyileştirme**: Waypoints seyahat saati veya uzaklığı en aza indirmek için bir dizi yeniden sıralama işlemi sağlanan tüm waypoints geçirmek için gereklidir. Genellikle olarak adlandırılan [gezici satıcı sorun](#traveling-salesmen-problem-tsp) veya [Vehicle yönlendirme sorununu](#vehicle-routing-problem-vrp) iyileştirme karmaşıklığına bağlı olarak.
+<a name="waypoint-optimization"></a>**Waypoint iyileştirmesi**: bir dizi geçiş süresini en aza indirmek için, belirtilen tüm geçiş noktalarından geçiş yapmak için gereken uzaklığı veya mesafeyi yeniden sıralama işlemi. Genellikle en iyi duruma getirme karmaşıklığına bağlı olarak [seyahat satış sorunu](#traveling-salesmen-problem-tsp) veya [araç yönlendirme sorunu](#vehicle-routing-problem-vrp) olarak adlandırılır.
 
-<a name="web-map-service-wms"></a> **Web (WMS) Map hizmeti**: WMS, görüntü tabanlı eşleme hizmeti tanımlayan bir açık coğrafi Consortium (OGC) standardıdır. WMS Hizmetleri, isteğe bağlı bir eşlem içindeki belirli alanları için harita görüntüleri sağlar. Görüntüleri, önceden işlenmiş simgesi içerir ve birkaç adlandırılmış stilleri birinde varsa hizmet tarafından tanımlanan çizilebilir.
+<a name="web-map-service-wms"></a>**Web harita hizmeti (WMS)** : WMS, görüntü tabanlı eşleme hizmetlerini tanımlayan bir açık coğrafi konsorsiyum (ogc) standardıdır. WMS Hizmetleri, bir harita içindeki belirli alanlara istek üzerine harita görüntüleri sağlar. Görüntüler, önceden işlenmiş symbology içerir ve hizmet tarafından tanımlanmışsa birkaç adlandırılmış stilden birinde oluşturulabilir.
 
-<a name="web-mercator"></a> **Mercator web**: Olarak da bilinen küresel Mercator izdüşümünü bir hafif Mercator izdüşümünü, öncelikli olarak Web tabanlı eşleme programlarda kullanılan bir çeşididir. Formüller olarak kullanılan standart Mercator izdüşümünü küçük ölçekli haritalar için kullanır. Ancak, küresel formülleri hiç ölçeklendirir büyük ölçekli Mercator normalde eşleştirir ancak Web Mercator kullandığı projeksiyonun ellipsoidal formu kullanın. Tutarsızlık, global bir ölçekte imperceptible ancak aynı ölçekte ellipsoidal Mercator eşler true öğesinden biraz cluster_count_prıor yerel alanları haritaları neden olur.
+<a name="web-mercator"></a>**Web Mercator**: küresel Mercator projeksiyonu olarak da bilinen, birinci olarak Web tabanlı eşleme programlarında kullanılan Mercator projeksiyonunun hafif bir varyantıdır. Küçük ölçekli haritalar için kullanılan standart Mercator projeksiyonu ile aynı formülleri kullanır. Ancak, Web Mercator her ölçekteki küresel formülleri kullanır, ancak büyük ölçekli Mercator haritaları normalde projeksiyonun ellipsoidal formunu kullanır. Tutarsızlık küresel ölçekte eksik olabilir, ancak yerel alanların eşlemelerinin aynı ölçekte gerçek ellipsoidal Mercator haritalarından biraz uzmasına neden olur.
 
-<a name="wgs84"></a> **WGS84**: Harita yüzeyinde konumlara uzamsal koordinatları ilişkilendirmek için kullanılan sabit bir dizi. WGS84 datum en çevrimiçi eşleme sağlayıcılarının ve GPS aygıt tarafından kullanılan standart bir bileşendir. Azure haritalar kullanan [EPSG:3857](https://epsg.io/3857) WGS84 koordinat başvuru sistemi değişken.
+<a name="wgs84"></a>**WGS84**: uzamsal koordinatları eşlemenin yüzeyindeki konumlara ilişkilendirmek için kullanılan sabitler kümesi. WGS84 Datum, çoğu çevrimiçi eşleme sağlayıcısı ve GPS cihazı tarafından kullanılan standart bir standarttır. Azure Maps, WGS84 'in [EPSG: 3857](https://epsg.io/3857) koordinat başvuru sistemi türevini kullanır.
 
 ## <a name="z"></a>Z
 
-<a name="z-coordinate"></a> **Z koordinatı**: Bkz: [yüksekliği](#altitude). 
+<a name="z-coordinate"></a>**Z koordinatı**: bkz. [Yükseklik](#altitude). 
 
-<a name="zip-code"></a> **Posta kodu**: Bkz: [postalcode](#postal-code).
+<a name="zip-code"></a>**Posta kodu**: [posta kodunu](#postal-code)görüntüleyin.
 
-<a name="Zoom level"></a> **Yakınlaştırma düzeyi**: Harita ne kadarının görünür olduğunu ve ayrıntı düzeyini belirtir. Tüm bir düzey 0 uzaklaştırılacağını, tam dünya haritası genellikle görünüm olacaktır, ancak sınırlı ayrıntıları ülke/bölge adları ve kenarlıklar gibi yanı ve Okyanus adları gösterilir. İçinde daha yakın düzeyi 17 uzaklaştırılacağını, harita birkaç Şehir blokları ayrıntılı yol bilgilerini ile bir alanı görüntüler. Daha fazla bilgi için [yakınlaştırma düzeyleri ve döşeme Kılavuzu](zoom-levels-and-tile-grid.md) belgeleri.
+<a name="Zoom level"></a>**Yakınlaştırma düzeyi**: ayrıntı düzeyini ve haritanın ne kadarının görünür olduğunu belirtir. Bir düzey 0 ' ı tüm şekilde yakınlaştırırken, tam dünya haritası genellikle görünümde olur ancak ülke/bölge adları ve kenarlıklar gibi sınırlı ayrıntıları ve okyanus adlarını gösterir. 17. düzeye yaklaşarak haritada, ayrıntılı yol bilgileri olan birkaç şehir blobunun bir alanı görüntülenir. Daha fazla bilgi için [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md) belgelerine bakın.
 

@@ -3,12 +3,12 @@ title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450141"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
 
@@ -42,7 +42,7 @@ Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
 
  Kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolar ve yedeklenen makinelerle ilişkili yedekleme ilkelerini depolar. Aşağıdaki gibi bir kasa oluşturun:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Arama bölümünde, **Kurtarma Hizmetleri**yazın. **Hizmetler**' in altında, **Kurtarma Hizmetleri kasaları**' na tıklayın.
 
      ![Kurtarma Hizmetleri kasalarını ara](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -63,9 +63,8 @@ Kasa oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür.
 
 ![Yedekleme kasalarının listesi](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Azure Backup hizmet, anlık görüntüyü depolamak için (örneğin: AzureBackupRG_northeurope_1) **AzureBackupRG_geography_number** , farklı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin *anlık kurtarma anlık görüntüsünü sakla* bölümünde belirtildiği gibi süre boyunca saklanacaktır.  Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
-Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
+>[!NOTE]
+> Azure Backup artık Azure Backup hizmeti tarafından oluşturulan kaynak grubu adının özelleştirilmesine izin veriyor. Daha fazla bilgi için bkz. [sanal makineler için Azure Backup kaynak grubu](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
 ### <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
 
@@ -167,10 +166,10 @@ Arka uçta çalışan, **yedekleme işi** ayrıntıları dikey penceresinden aş
 
 İş durumu, aşağıdaki senaryolara bağlı olarak değişebilir:
 
-**Görüntüye** | **Verileri kasaya aktar** | **İş durumu**
+**Anlık Görüntü** | **Verileri kasaya aktar** | **İş durumu**
 --- | --- | ---
 Tamamlandı | Devam ediyor | Devam ediyor
-Tamamlandı | Atlanmış | Tamamlandı
+Tamamlandı | Atlandı | Tamamlandı
 Tamamlandı | Tamamlandı | Tamamlandı
 Tamamlandı | Başarısız | Uyarıyla tamamlandı
 Başarısız | Başarısız | Başarısız
@@ -184,7 +183,7 @@ Kasada oluşturulan artımlı kurtarma noktası, kasada oluşturulan son kurtarm
 
 Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM 'lerini yedekler. VM 'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir sanal makine oluşturursanız veya şirket içi bir makineyi geçirirseniz, aracıyı tabloda özetlenen şekilde el ile yüklemeniz gerekebilir.
 
-**'Nın** | **Ayrıntılar**
+**VM** | **Ayrıntılar**
 --- | ---
 **Windows** | 1. aracı MSI dosyasını [indirip yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) .<br/><br/> 2. makinede yönetici izinleriyle Install.<br/><br/> 3. yüklemeyi doğrulayın. VM 'deki *C:\windowsazure\packages* ' de, **Waappagent. exe** > **Özellikler**' e sağ tıklayın. **Ayrıntılar** sekmesinde **ürün sürümü** 2.6.1198.718 veya üzeri olmalıdır.<br/><br/> Aracıyı güncelleştiriyorsanız, hiçbir yedekleme işlemi olmadığından emin olun ve [aracıyı yeniden yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.

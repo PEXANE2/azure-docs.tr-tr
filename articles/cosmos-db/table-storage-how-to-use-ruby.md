@@ -1,6 +1,6 @@
 ---
-title: Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini Ruby ile kullanma
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+title: Ruby ile Azure Cosmos DB Tablo API'si ve Azure Tablo depolama kullanma
+description: Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanarak bulutta yapılandırılmış verileri depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: ruby
@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0a2649db7639338b7b2714181b8caf670306f987
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441152"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini Ruby ile kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -94,10 +94,10 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>Varlığı güncelleştirme
 Mevcut bir varlığı güncelleştirmenin birçok yolu vardır:
 
-* **update_entity():** Bunu değiştirerek var olan bir varlığa güncelleştirin.
-* **merge_entity():** Mevcut varlığa yeni özellik değerlerini birleştirerek var olan bir varlığa güncelleştirir.
-* **insert_or_merge_entity():** Bunu değiştirerek var olan bir varlığa güncelleştirir. Bir varlık yoksa, yenisi eklenir:
-* **insert_or_replace_entity():** Mevcut varlığa yeni özellik değerlerini birleştirerek var olan bir varlığa güncelleştirir. Bir varlık yoksa, yenisi eklenir.
+* **update_entity():** Varlığı başkasıyla değiştirerek güncelleştirme.
+* **merge_entity():** Mevcut bir varlığı yeni özellik değerleriyle birleştirerek güncelleştirir.
+* **insert_or_merge_entity():** Mevcut bir varlığı başkasıyla değiştirerek güncelleştir. Bir varlık yoksa, yenisi eklenir:
+* **insert_or_replace_entity():** Mevcut bir varlığı, yeni özellik değerleriyle birleştirerek güncelleştirir. Bir varlık yoksa, yenisi eklenir.
 
 Aşağıdaki örnekte **update_entity()** kullanılarak bir varlığın güncelleştirilmesi gösterilmektedir:
 
@@ -110,7 +110,7 @@ azure_table_service.update_entity("testtable", entity)
 **update_entity()** ve **merge_entity()** yöntemlerinde, güncelleştirmekte olduğunuz varlık yoksa, güncelleştirme işlemi başarısız olur. Bu nedenle bir varlığı daha önceden mevcut olup olmadığına bakmaksızın depolamak istiyorsanız, **insert_or_replace_entity()** veya **insert_or_merge_entity()** kullanmalısınız.
 
 ## <a name="work-with-groups-of-entities"></a>Varlık gruplarıyla çalışma
-Bazen, sunucu tarafından atomik olarak işlenmelerini sağlamak için birden fazla işlemin toplu bir işte bir arada gönderilmesi mantıklıdır. Bunun için önce bir **Batch** nesnesi oluşturmalı, sonra **TableService** üzerinde **execute_batch()** yöntemini kullanmalısınız. Aşağıdaki örnekte, iki varlığın RowKey 2 ve 3 ile toplu bir işte gönderilmesi gösterilmektedir. Bunun yalnızca aynı PartitionKey değerine sahip varlıklar için sonuç vereceğini unutmayın.
+Bazen sunucu tarafından atomik işleme sağlamak için bir toplu işte birden fazla işlemin bir arada gönderilmesi mantıklıdır. Bunun için önce bir **Batch** nesnesi oluşturmalı, sonra **TableService** üzerinde **execute_batch()** yöntemini kullanmalısınız. Aşağıdaki örnekte, iki varlığın RowKey 2 ve 3 ile toplu bir işte gönderilmesi gösterilmektedir. Bunun yalnızca aynı PartitionKey değerine sahip varlıklar için sonuç vereceğini unutmayın.
 
 ```ruby
 azure_table_service = Azure::TableService.new

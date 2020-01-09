@@ -3,12 +3,12 @@ title: Azure tarafından atanan temsilcinin kaynak yönetimi
 description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453636"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
@@ -33,7 +33,7 @@ Azure 'un sunduğu kaynak yönetimine kolayca müşteri eklemek için [Yeni yön
 
 Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalıştığı aşağıda verilmiştir:
 
-1. Hizmet sağlayıcı olarak, gruplarınızın, hizmet sorumlularının veya kullanıcılarınızın müşterinin Azure kaynaklarını yönetmesi gereken erişimi (rolleri) belirlersiniz. Erişim tanımı, hizmet sağlayıcısının kiracı KIMLIĞINI ve [yerleşik **roledefinition** değerlerine](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (katkıda bulunan, VM) eşlenmiş kiracınızdan **PrincipalId** kimlikleri kullanılarak tanımlanan teklif için gerekli erişimi içerir. Katkıda bulunan, okuyucu vb.).
+1. Hizmet sağlayıcı olarak, gruplarınızın, hizmet sorumlularının veya kullanıcılarınızın müşterinin Azure kaynaklarını yönetmesi gereken erişimi (rolleri) belirlersiniz. Erişim tanımı, [yerleşik **roledefinition** değerleriyle](../../role-based-access-control/built-in-roles.md) (katkıda bulunan, VM katılımcısı, okuyucu vb.) eşlenmiş kiracınızdan **PrincipalId** kimlikleri KULLANıLARAK tanımlanan, hizmet sağlayıcısının Kiracı kimliğini ve bu teklif için gerekli erişimi içerir.
 2. Bu erişimi belirtin ve müşteriyi, Azure tarafından atanan kaynak yönetimine iki şekilde katılın:
    - Müşterinin kabul edeceği [bir Azure Market yönetilen hizmet teklifi](../how-to/publish-managed-services-offers.md) (özel veya ortak) yayımlayın
    - Bir veya daha fazla belirli abonelik veya kaynak grubu için [Azure Resource Manager şablonunu müşterinin kiracısına dağıtma](../how-to/onboard-customer.md)

@@ -1,7 +1,7 @@
 ---
-title: Matematik Işlemini Uygula
-titleSuffix: Azure Machine Learning service
-description: Bir işlem hattındaki sütun değerlerine matematik işlemi uygulamak için Azure Machine Learning hizmetinde Math Işlem modülünü uygulama ' yı nasıl kullanacağınızı öğrenin.
+title: Matematik İşlemi Uygulama
+titleSuffix: Azure Machine Learning
+description: Bir işlem hattındaki sütun değerlerine matematik işlemi uygulamak için Azure Machine Learning Math Işlem modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428600"
 ---
-# <a name="apply-math-operation"></a>Matematik Işlemini Uygula
+# <a name="apply-math-operation"></a>Matematik İşlemi Uygulama
 
 Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
@@ -36,7 +36,7 @@ Aşağıdaki kategorilerde ihtiyacınız olan işlemi arayın:
   
      **Temel** kategorideki işlevler, tek bir değeri veya değer sütununu işlemek için kullanılabilir. Örneğin, bir sütundaki tüm sayıların mutlak değerini alabilir veya bir sütundaki her bir değerin kare kökünü hesaplayabilirsiniz.  
   
--   [Karşılaştır](#comparison-operations)  
+-   [Compare](#comparison-operations)  
   
       **Karşılaştırma kategorisindeki işlevlerin** tamamı karşılaştırma için kullanılır: iki sütundaki değerleri çift yönlü bir şekilde karşılaştırın veya bir sütundaki her değeri belirtilen bir sabitle karşılaştırabilirsiniz. Örneğin, değerlerin iki veri kümelerinde aynı olup olmadığını belirleyecek sütunları karşılaştırabilirsiniz. Ya da, bir sayısal sütunda aykırı değerleri bulmak için izin verilen maksimum değer gibi bir sabit kullanabilirsiniz.  
   
@@ -92,8 +92,8 @@ Bu modülün her örneği aynı anda yalnızca bir işlem türü gerçekleştire
 
 Sonuçları **append** veya **resultonly** seçeneklerini kullanarak oluşturursanız, döndürülen veri kümesinin sütun başlıkları işlemi ve kullanılan sütunları gösterir. Örneğin, **eşittir** işlecini kullanarak iki sütunu karşılaştırırsanız, sonuçlar şöyle görünür:  
   
--   **Eşittir (Col2_Col1)** , col2 ile test edildiğini gösterir.  
--   **Eşittir (Col2_ $10)** , sütun 2 ' yi sabit 10 ' a karşılaştırdığını gösterir.  
+-   **Eşittir (Col2_Col1)** , col2 'e göre test edildiğini belirtir.  
+-   **Eşittir (Col2_ $10)** ve sütun 2 ' yi sabit 10 ' a karşılaştırdığını gösterir.  
 
 **InPlace** seçeneğini kullanıyor olsanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
     
@@ -103,7 +103,7 @@ Sonuçları **append** veya **resultonly** seçeneklerini kullanarak oluştururs
   
  Azure Machine Learning, **temel** kategoride aşağıdaki işlevleri destekler:  
 
-### <a name="abs"></a>Mutlak
+### <a name="abs"></a>Abs
 
 Seçili sütunların mutlak değerini döndürür.  
   
@@ -148,13 +148,13 @@ Y = x * 2<sup>t</sup> için çözüm olan bağımsız değişkenlerin taban 2 ü
 
 Seçili sütundaki değerler için negatif üs döndürür.  
 
-### <a name="factorial"></a>Imı
+### <a name="factorial"></a>Faktöriyel
 Seçilen sütundaki değerlerin faktöriyelini döndürür.  
 
 ### <a name="hypotenuse"></a>Hipotenüsü
 Bir kenarın uzunluğunun bir değer sütunu olarak belirtildiği ve ikinci tarafın uzunluğu sabit ya da iki sütun olarak belirtilen bir üçgen için hipotenüsü hesaplar.  
 
-### <a name="ln"></a>LN
+### <a name="ln"></a>Ln
 
 Seçili sütundaki değerler için doğal logaritmayı döndürür.  
 
@@ -194,7 +194,7 @@ Seçili olan sütundaki her bir değer için X ' in üssünü hesaplar.
 
 İkinci bağımsız değişken bir sütunse, sütundaki her bir değer karşılık gelen satırın üs değeri olarak kullanılır. İkinci bağımsız değişken bir sabit ise **ikinci bağımsız değişken** metin kutusuna üs değerini yazın.  
 
-### <a name="sqrt"></a>K
+### <a name="sqrt"></a>Sqrt
 
 Seçilen sütundaki değerlerin kare kökünü döndürür.  
 
@@ -253,12 +253,12 @@ Bölme ve çıkarma için sütunları seçme sırası, anlaşılır görünebili
 
 İşlem|Num1|Num2|Sonuç sütunu|Sonuç değeri|
 ----|----|----|----|----
-|Ek olarak|1|5|Ekle (Num2_Num1)| 4|
-|Anda|1|5|Birden çok (Num2_Num1)|5|
-|StrA|1|5|Çıkart (Num2_Num1)|4|
-|StrA|0|1|Çıkart (Num2_Num1)|0|
-|Bölmenin|1|5|Böl (Num2_Num1)|5|
-|Bölmenin|0|1|Böl (Num2_Num1)|Infinity|
+|Ekleme|1|5|Ekle (Num2_Num1)| 4|
+|Çarpma|1|5|Birden çok (Num2_Num1)|5|
+|Çıkarma|1|5|Çıkart (Num2_Num1)|4|
+|Çıkarma|0|1|Çıkart (Num2_Num1)|0|
+|Bölüm|1|5|Böl (Num2_Num1)|5|
+|Bölüm|0|1|Böl (Num2_Num1)|Infinity|
 
 ### <a name="add"></a>Ekle
 
@@ -266,7 +266,7 @@ Bölme ve çıkarma için sütunları seçme sırası, anlaşılır görünebili
 
 Değerleri iki sütuna eklemek için, **sütun kümesi**kullanarak bir sütun veya sütun seçin ve ardından **ikinci bağımsız değişkeni**kullanarak ikinci bir sütun seçin.  
 
-### <a name="divide"></a>Sayısına
+### <a name="divide"></a>Böl
 
 **Sütundaki** değerleri bir sabitine veya **ikinci bağımsız değişkende**tanımlanan sütun değerlerine böler.  Diğer bir deyişle, önce böleni ve ardından Bölüneni seçer. Çıkış değeri, bölüm.
 
@@ -274,7 +274,7 @@ Değerleri iki sütuna eklemek için, **sütun kümesi**kullanarak bir sütun ve
 
 Belirtilen sabit veya sütun değerleriyle **ayarlanan sütundaki** değerleri çarpar.  
 
-### <a name="subtract"></a>Çıkarma
+### <a name="subtract"></a>Subtract
 
 **Sütun kümesi** seçeneğini kullanarak, farklı bir sütun seçerek üzerinde çalışılacak değer sütununu belirtin ( *eksilen*). Ardından, **ikinci bağımsız değişken** açılan listesini kullanarak çıkarılacak sayıyı ( *çıkarılan*) belirtin. Bir sabit ya da bir değer sütunu seçebilirsiniz.
 
@@ -286,7 +286,7 @@ Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. 
 
 - Veri kümenizdeki her satır için farklı bir duyarlık değeri kullanmak istiyorsanız **duyarlık türünü** **ColumnSet**olarak ayarlayın ve ardından uygun duyarlık değerlerini içeren sütunu seçin.  
 
-### <a name="ceiling"></a>Tavan
+### <a name="ceiling"></a>Üst sınır
 
 **Sütun kümesindeki**değerler için tavan döndürür.  
 
@@ -294,19 +294,19 @@ Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. 
 
 **Sütun kümesindeki**değerler için kare yukarı tavan döndürür.  
 
-### <a name="floor"></a>Sını
+### <a name="floor"></a>Floor
 
 **Sütun kümesindeki**değerlerin taban değerini belirtilen duyarlığa döndürür.  
 
-### <a name="mod"></a>alma
+### <a name="mod"></a>Mod
 
 **Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
-### <a name="quotient"></a>Bölümü
+### <a name="quotient"></a>Üs
 
 **Sütun kümesindeki**değerlerin kesirli kısmını belirtilen duyarlığa döndürür.  
 
-### <a name="remainder"></a>Geri kalanında
+### <a name="remainder"></a>Kalan
 
 **Sütun kümesindeki**değerler için kalanı döndürür.  
 
@@ -330,7 +330,7 @@ Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. 
 
 **Sütun kümesindeki**değerleri döndürür ve en yakın tamsayıya, tek sayıya yuvarlanır.  
 
-### <a name="truncate"></a>Kesilemedi
+### <a name="truncate"></a>Truncate
 
 Belirtilen duyarlık tarafından izin verilmeyen tüm basamakları kaldırarak **sütun kümesindeki** değerleri keser.  
   
@@ -430,7 +430,7 @@ Sütun değerlerinin ark kosinüsünü derece cinsinden hesaplar.
 
 Sütun değerlerinin hiperbolik ark kosinüsünü hesaplar.  
 
-### <a name="acot"></a>ACOT
+### <a name="acot"></a>Acot
 
 Sütun değerlerinin arckotanjant değerini hesaplar.  
 
@@ -497,7 +497,7 @@ Sütun değerlerinin derece cinsinden kosinüsünü hesaplar.
 
 Sütun değerleri için hiperbolik kosinüsü hesaplar.  
 
-### <a name="cot"></a>COT
+### <a name="cot"></a>Cot
 
 Sütun değerleri için kotanjantı hesaplar.  
 
@@ -524,7 +524,7 @@ Sütun değerleri için hiperbolik kovaryansı hesaplar.
 
 Dereceyi radyana dönüştürür.  
 
-### <a name="sec"></a>Sn
+### <a name="sec"></a>İki
 
 Sütun değerlerinin Sekant değerini hesaplar.  
 
@@ -536,7 +536,7 @@ Sütun değerleri için, derece cinsinden Sekant değerini hesaplar.
 
 Sütun değerlerinin Hiperbolik Sekant değerini hesaplar.  
 
-### <a name="sign"></a>İmzalayabilirsiniz
+### <a name="sign"></a>Oturum aç
 
 Sütun değerlerinin işaretini döndürür.  
 
@@ -556,7 +556,7 @@ Sütun değerleri için, derece cinsinden sinüsü hesaplar.
 
 Sütun değerlerinin hiperbolik sinüsünü hesaplar.  
 
-### <a name="tan"></a>Başlangıçtan
+### <a name="tan"></a>Tan
 
 Sütun değerlerinin tanjantını hesaplar.  
 
@@ -590,4 +590,4 @@ Alternatif olarak, SQL, R veya Python betiği kullanarak tüm hesaplamaları tek
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

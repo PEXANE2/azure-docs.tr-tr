@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438832"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory işlem hatlarından Spark programları çağırma
 
@@ -35,7 +35,7 @@ ms.locfileid: "73666170"
 > [!NOTE]
 > Bu makale, Azure Data Factory’nin genel kullanıma açık olan 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory Apache Spark etkinliğini kullanarak verileri dönüştürme](../transform-data-using-spark.md).
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 Spark etkinliği Data Factory tarafından desteklenen [veri dönüştürme etkinliklerinden](data-factory-data-transformation-activities.md) biridir. Bu etkinlik, Azure HDInsight 'ta Spark kümenizde belirtilen Spark programını çalıştırır. 
 
 > [!IMPORTANT]
@@ -63,7 +63,7 @@ Spark etkinliğiyle Veri Fabrikası işlem hattı oluşturmak için tipik adıml
 ### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 Veri fabrikası oluşturmak için bu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. **Yeni** > **Veri ve Analiz** > **Data Factory**’yi seçin.
 
@@ -78,7 +78,7 @@ Veri fabrikası oluşturmak için bu adımları izleyin:
 
 1. **Panoya sabitle** onay kutusunu seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    > [!IMPORTANT]
    > Data Factory örnekleri oluşturmak için abonelik/kaynak grubu düzeyinde [Data Factory katılımcısı](../../role-based-access-control/built-in-roles.md#data-factory-contributor) rolünün üyesi olmanız gerekir.
@@ -105,7 +105,7 @@ Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu izlenece
 
    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. **Hesap adı** ve **hesap anahtarı** ' nı depolama hesabınızın adı ve erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için [Depolama hesabınızı yönetme](../../storage/common/storage-account-manage.md#access-keys) sayfasındaki depolama erişim anahtarlarını görüntüleme, kopyalama ve yeniden oluşturma yönergelerine bakın.
+1. **Hesap adı** ve **hesap anahtarı** ' nı depolama hesabınızın adı ve erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
 1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ' ı seçin. Bağlı hizmet başarıyla dağıtıldıktan sonra Draft-1 penceresi kaybolur. Soldaki ağaç görünümünde **AzureStorageLinkedService** öğesini görürsünüz.
 
@@ -324,7 +324,7 @@ Aşağıdaki bölümler, Data Factory 'de Spark kümesi ve Spark etkinliğini ku
 
 Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmaktadır.
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 | -------- | ----------- | -------- |
 | ad | İşlem hattındaki etkinliğin adı. | Evet |
 | açıklama | Etkinliğin ne yaptığını açıklayan metin. | Hayır |
@@ -333,10 +333,10 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 | rootPath | Spark dosyasını içeren blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. | Evet |
 | entryFilePath | Spark kodunun/paketinin kök klasörünün göreli yolu. | Evet |
 | className | Uygulamanın Java/Spark ana sınıfı. | Hayır |
-| Değişkenlerinden | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır |
+| arguments | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır |
 | proxyUser | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı. | Hayır |
 | Mini yapılandırma | [Spark yapılandırması: uygulama özellikleri](https://spark.apache.org/docs/latest/configuration.html#available-properties)' nde listelenen Spark yapılandırma özellikleri için değerleri belirtin. | Hayır |
-| GetDebugInfo | Spark günlük dosyalarının, mini iş Linkedservice tarafından belirtilen HDInsight kümesi (veya) tarafından kullanılan depolamaya ne zaman kopyalanacağını belirtir. İzin verilen değerler None, Always veya Failure 'Tur. Varsayılan değer None ' dır. | Hayır |
+| GetDebugInfo | Spark günlük dosyalarının, mini iş Linkedservice tarafından belirtilen HDInsight kümesi (veya) tarafından kullanılan depolamaya ne zaman kopyalanacağını belirtir. İzin verilen değerler None, Always veya Failure 'Tur. Varsayılan değer, Yok'tur. | Hayır |
 | Mini iş Linkedservice | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan depolama bağlı hizmeti. Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. | Hayır |
 
 ## <a name="folder-structure"></a>Klasör yapısı
@@ -344,14 +344,14 @@ Spark etkinliği, Pig olarak bir satır içi betiği desteklemez ve Hive etkinli
 
 HDInsight bağlı hizmeti tarafından başvurulan blob depolamada aşağıdaki klasör yapısını oluşturun. Ardından, bağımlı dosyaları **Entryfilepath**tarafından temsil edilen kök klasördeki uygun alt klasörlere yükleyin. Örneğin, Python dosyalarını pyfiles alt klasörüne ve jar dosyalarını kök klasörün jar dosyaları dışındaki alt klasörüne yükleyin. Çalışma zamanında, Data Factory hizmeti blob depolamada aşağıdaki klasör yapısını bekler: 
 
-| Yol | Açıklama | Gerekli | Tür |
+| Yol | Açıklama | Gereklidir | Tür |
 | ---- | ----------- | -------- | ---- |
 | . | Depolama bağlı hizmetindeki Spark işinin kök yolu. | Evet | Klasör |
 | &lt;Kullanıcı tanımlı &gt; | Spark işinin giriş dosyasına işaret eden yol. | Evet | Dosya |
 | ./jars | Bu klasördeki tüm dosyalar, kümenin Java Sınıfyoluna yüklenir ve yerleştirilir. | Hayır | Klasör |
 | ./pyFiles | Bu klasördeki tüm dosyalar, kümenin PYTHONPATH yüklenir ve bu klasöre yerleştirilir. | Hayır | Klasör |
-| ./Files | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir. | Hayır | Klasör |
-| ./Arşivler | Bu klasördeki tüm dosyalar sıkıştırılmamış. | Hayır | Klasör |
+| ./files | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir. | Hayır | Klasör |
+| ./archives | Bu klasördeki tüm dosyalar sıkıştırılmamış. | Hayır | Klasör |
 | ./logs | Spark kümesindeki günlüklerin depolandığı klasör.| Hayır | Klasör |
 
 HDInsight bağlı hizmeti tarafından başvurulan blob depolamada iki Spark iş dosyası içeren depolama için bir örnek aşağıda verilmiştir:

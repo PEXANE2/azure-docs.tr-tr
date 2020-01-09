@@ -1,17 +1,17 @@
 ---
-title: Iş akışı tanım dili için şema
-description: Azure Logic Apps Iş akışı tanım dili için şema başvurusu
+title: İş akışı tanımı dil Şeması Başvurusu
+description: Azure Logic Apps içindeki iş akışlarını açıklayan Iş akışı tanımlama dili için JSON şemasına yönelik başvuru kılavuzu ve sözdizimi
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428656"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps Iş akışı tanım dili için şema başvurusu Kılavuzu
 
@@ -37,7 +37,7 @@ Bir iş akışı tanımı her zaman mantıksal uygulamanızı başlatmak için b
 
 | Öznitelik | Gereklidir | Açıklama |
 |-----------|----------|-------------|
-| `definition` | Yes | İş akışı tanımınızın başlangıç öğesi |
+| `definition` | Evet | İş akışı tanımınızın başlangıç öğesi |
 | `$schema` | Yalnızca bir iş akışı tanımına dışarıdan başvurulduklarında | Burada bulabileceğiniz Iş akışı tanımı dil sürümünü açıklayan JSON Şema dosyasının konumu: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | `actions` | Hayır | İş akışı çalışma zamanı 'nda yürütülecek bir veya daha fazla eylemin tanımları. Daha fazla bilgi için bkz. [Tetikleyiciler ve eylemler](#triggers-actions). <p><p>En fazla eylem: 250 |
 | `contentVersion` | Hayır | Varsayılan olarak "1.0.0.0" olan iş akışı tanımınızın sürüm numarası. Bir iş akışını dağıtmada doğru tanımlamayı belirlemek ve doğrulamak için kullanılacak bir değer belirtin. |
@@ -76,14 +76,14 @@ Bir parametre tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*parametresi-adı*> | Yes | Dize | Tanımlamak istediğiniz parametrenin adı |
-| <*parametre türü*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizlilikler için, `GET` işlemi bu türleri döndürmediğinden `securestring` veya `secureobject` türlerini kullanın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
-| <*varsayılan parametre-değer*> | Yes | `type` ile aynı | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. Logic App Designer 'ın parametreyi doğru bir şekilde gösterebilmesi için `defaultValue` özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
-| <*dizi ile izin verilen-parametre değerleri*> | Hayır | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
-| <*parametresi-açıklama*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
+| <*parametre-name*> | Evet | Dize | Tanımlamak istediğiniz parametrenin adı |
+| <*parameter-type*> | Evet | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Note**: tüm parolalar, anahtarlar ve gizlilikler için, `GET` işlemi bu türleri döndürmediğinden `securestring` veya `secureobject` türlerini kullanın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
+| <*default-parameter-value*> | Evet | `type` ile aynı | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. Logic App Designer 'ın parametreyi doğru bir şekilde gösterebilmesi için `defaultValue` özniteliği gereklidir, ancak boş bir değer belirtebilirsiniz. |
+| <*array-with-permitted-parameter-values*> | Hayır | Dizi | Parametrenin kabul edebileceği değerleri içeren bir dizi |
+| <*parameter-description*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
 ||||
 
-Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturun, dağıtım sırasında istediğiniz değerleri kabul eden şablon parametrelerini tanımlayın, sabit kodlanmış değerleri şablon veya iş akışı Tanım parametrelerine başvurularla değiştirin ve ayrı bir [parametre dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)dağıtımda kullanılacak değerleri depolayın. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan parametre dosyası aracılığıyla bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizli bilgiler), bu değerleri Azure Key Vault saklayabilir ve parametre dosyanızın anahtar kasasından bu değerleri almasına sahip olursunuz. Şablon ve iş akışı Tanım düzeylerinde parametreleri tanımlama hakkında daha fazla bilgi ve örnekler için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/templates/overview.md) oluşturun, dağıtım sırasında istediğiniz değerleri kabul eden şablon parametrelerini tanımlayın, sabit kodlanmış değerleri şablon veya iş akışı Tanım parametrelerine başvurularla değiştirin ve ayrı bir [parametre dosyasında](../azure-resource-manager/templates/parameter-files.md)dağıtımda kullanılacak değerleri depolayın. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan parametre dosyası aracılığıyla bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizli bilgiler), bu değerleri Azure Key Vault saklayabilir ve parametre dosyanızın anahtar kasasından bu değerleri almasına sahip olursunuz. Şablon ve iş akışı Tanım düzeylerinde parametreleri tanımlama hakkında daha fazla bilgi ve örnekler için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
@@ -114,11 +114,11 @@ Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu]
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*statik-sonuç tanımı-adı*> | Yes | Dize | Bir eylem tanımının bir `runtimeConfiguration.staticResult` nesnesi aracılığıyla başvurabileceğinden, statik sonuç tanımının adı. Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
-| <*çıkışı-ve-değerleri-döndürülen*> | Yes | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, `status` `Succeeded`olduğunda `outputs` özniteliği, eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. `status` `Failed`, `outputs` özniteliği hata bilgilerine sahip bir veya daha fazla hata `message` bir dizi olan `errors` özniteliğini içerir. |
-| <*üst bilgi-değerleri*> | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
-| <*durumu-kodu döndürülen*> | Yes | Dize | Eylem tarafından döndürülen durum kodu |
-| <*eylem-durum*> | Yes | Dize | Eylemin durumu, örneğin `Succeeded` veya `Failed` |
+| <*static-result-definition-name*> | Evet | Dize | Bir eylem tanımının bir `runtimeConfiguration.staticResult` nesnesi aracılığıyla başvurabileceğinden, statik sonuç tanımının adı. Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
+| <*output-attributes-and-values-returned*> | Evet | Değişir | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin, `status` `Succeeded`olduğunda `outputs` özniteliği, eylem tarafından sahte çıktılar olarak döndürülen öznitelikleri ve değerleri içerir. `status` `Failed`, `outputs` özniteliği hata bilgilerine sahip bir veya daha fazla hata `message` bir dizi olan `errors` özniteliğini içerir. |
+| <*header-values*> | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
+| <*status-code-returned*> | Evet | Dize | Eylem tarafından döndürülen durum kodu |
+| <*action-status*> | Evet | Dize | Eylemin durumu, örneğin `Succeeded` veya `Failed` |
 |||||
 
 Örneğin, bu HTTP eylem tanımında `runtimeConfiguration.staticResult.name` özniteliği, eylem için olan sahte çıktıların tanımlandığı `staticResults` özniteliği içinde `HTTP0` başvurur. `runtimeConfiguration.staticResult.staticResultOptions` özniteliği, statik sonuç ayarının HTTP eyleminde `Enabled` belirtir.
@@ -277,9 +277,9 @@ Bir çıkış tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gereklidir | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*anahtar adı*> | Yes | Dize | Çıkış dönüş değeri için anahtar adı |
-| <*anahtar türü*> | Yes | int, float, String, SecureString, bool, Array, JSON nesnesi | Çıkış dönüş değeri için tür |
-| *anahtar-değer*> < | Yes | *Anahtar türüyle* aynı> | Çıkış dönüş değeri |
+| <*key-name*> | Evet | Dize | Çıkış dönüş değeri için anahtar adı |
+| <*key-type*> | Evet | int, float, string, securestring, bool, array, JSON nesnesi | Çıkış dönüş değeri için tür |
+| *anahtar-değer*> < | Evet | *Anahtar türüyle* aynı> | Çıkış dönüş değeri |
 |||||
 
 Bir iş akışı çalıştırmasının çıkışını almak için Azure portal mantıksal uygulamanızın çalıştırma geçmişini ve ayrıntılarını gözden geçirin veya [Iş akışı REST API](https://docs.microsoft.com/rest/api/logic/workflows)kullanın. Ayrıca, panoları oluşturabilmeniz için çıktıyı dış sistemlere geçirebilirsiniz (örneğin, Power BI).
@@ -292,7 +292,7 @@ Bir iş akışı çalıştırmasının çıkışını almak için Azure portal m
 
 | İşleç | Görev |
 |----------|------|
-| ' | Dize sabit değerini girdi olarak veya ifadeler ve işlevler içinde kullanmak için, dizeyi yalnızca tek tırnak işaretleriyle sarın, örneğin `'<myString>'`. Bir ifadenin tamamında JSON biçimlendirmesiyle çakışan çift tırnak işaretleri ("") kullanmayın. Örnek: <p>**Evet**: Uzunluk (' Merhaba ') </br>**Hayır**: length ("Hello") <p>Dizileri veya sayıları geçirdiğinizde, kaydırma noktalaması gerekmez. Örnek: <p>**Evet**: Uzunluk ([1, 2, 3]) </br>**Hayır**: length ("[1, 2, 3]") |
+| ' | Dize sabit değerini girdi olarak veya ifadeler ve işlevler içinde kullanmak için, dizeyi yalnızca tek tırnak işaretleriyle sarın, örneğin `'<myString>'`. Bir ifadenin tamamında JSON biçimlendirmesiyle çakışan çift tırnak işaretleri ("") kullanmayın. Örneğin: <p>**Evet**: Uzunluk (' Merhaba ') </br>**Hayır**: length ("Hello") <p>Dizileri veya sayıları geçirdiğinizde, kaydırma noktalaması gerekmez. Örneğin: <p>**Evet**: Uzunluk ([1, 2, 3]) </br>**Hayır**: length ("[1, 2, 3]") |
 | [] | Bir dizideki belirli bir konumdaki (Dizin) bir değere başvurmak için köşeli ayraçları kullanın. Örneğin, bir dizide ikinci öğeyi almak için: <p>`myArray[1]` |
 | . | Bir nesnedeki bir özelliğe başvurmak için, nokta işlecini kullanın. Örneğin, bir `customer` JSON nesnesinin `name` özelliğini almak için: <p>`"@parameters('customer').name"` |
 | ? | Çalışma zamanı hatası olmadan bir nesnedeki null özelliklere başvurmak için soru işareti işlecini kullanın. Örneğin, bir tetikleyiciden gelen null çıkışları işlemek için şu ifadeyi kullanabilirsiniz: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |

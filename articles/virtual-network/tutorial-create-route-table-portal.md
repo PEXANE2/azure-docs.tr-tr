@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164009"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350286"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
@@ -54,13 +54,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *Myroutetablepublic*girin. |
+    | Ad | *Myroutetablepublic*girin. |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*girin ve *Tamam*' ı seçin. |
     | Konum | Varsayılan **Doğu ABD**bırakın.
-    | BGP yol yayma | Varsayılanı **etkin**bırakın. |
+    | Sanal ağ geçidi yol yayma | Varsayılanı **etkin**bırakın. |
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
@@ -95,7 +95,7 @@ Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal 
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *MyVirtualNetwork*girin. |
+    | Ad | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.0.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | ***Mevcut*** > **myresourcegroup**Seç öğesini seçin. |
@@ -119,7 +119,7 @@ Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal 
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *Özel*girin. |
+    | Ad | *Özel*girin. |
     | Adres alanı | *10.0.1.0/24*girin. |
 
 1. Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin.
@@ -128,7 +128,7 @@ Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal 
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *DMZ*girin. |
+    | Ad | *DMZ*girin. |
     | Adres alanı | *10.0.2.0/24*girin. |
 
 1. Son zamanı beğendiniz, geri kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
@@ -137,7 +137,7 @@ Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal 
 
 ### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>MyRouteTablePublic 'i genel alt ağınızla ilişkilendirin
 
-1. **Ortak**seçeneğini belirleyin.
+1. **Genel**’i seçin.
 
 1. **Ortak**bölümünde, **yol tablosu** > **Myroutetablepublic** > **Kaydet**' i seçin.
 
@@ -160,14 +160,14 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
     | Sanal makine adı | *Myvmnva*girin. |
     | Bölge | **Doğu ABD**’yi seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
-    | Görüntü | Varsayılan **Windows Server 2016 veri merkezini**bırakın. |
+    | Resim | Varsayılan **Windows Server 2016 veri merkezini**bırakın. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETICI HESABı** |  |
     | Kullanıcı adı | Seçtiğiniz bir kullanıcı adını girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın.
+    | Genel gelen bağlantı noktası | Varsayılanı **yok**olarak bırakın.
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
 
@@ -183,7 +183,7 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
     | ------- | ----- |
     | Sanal ağ | Varsayılan **myVirtualNetwork**bırakın. |
     | Alt ağ | **DMZ (10.0.2.0/24)** öğesini seçin. |
-    | Genel IP | **Hiçbiri**' ni seçin. Genel bir IP adresine ihtiyacınız yoktur. VM, internet üzerinden bağlanmaz.|
+    | Genel IP | **Hiçbiri** seçeneğini belirtin. Genel bir IP adresine ihtiyacınız yoktur. VM, internet üzerinden bağlanmaz.|
 
 1. Varsayılan değerleri bırakın ve **İleri: yönetim**' i seçin.
 
@@ -193,7 +193,7 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *Mynvastorageaccount*girin. |
+    | Ad | *Mynvastorageaccount*girin. |
     | Hesap türü | Varsayılan **depolama alanını (genel amaçlı v1)** bırakın. |
     | Performans | Varsayılan **Standart**bırakın. |
     | Çoğaltma | Varsayılan **yerel olarak yedekli depolamayı (LRS)** bırakın.
@@ -224,7 +224,7 @@ NVA 'lar, Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyl
 
     ![IP iletmeyi etkinleştirme](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
-## <a name="create-public-and-private-virtual-machines"></a>Ortak ve özel sanal makineler oluşturma
+## <a name="create-public-and-private-virtual-machines"></a>Genel ve özel sanal makineleri oluşturma
 
 Sanal ağda ortak bir VM ve özel bir VM oluşturun. Daha sonra, Azure 'un *genel* alt ağ trafiğini NVA aracılığıyla *özel* alt ağa yönlendirdiğini görmek için bu uygulamaları kullanacaksınız.
 
@@ -233,24 +233,24 @@ Sanal ağda ortak bir VM ve özel bir VM oluşturun. Daha sonra, Azure 'un *gene
 | Ayar | Değer |
 | ------- | ----- |
 | **ORTAK VM** | |
-| TEMEL BILGILERI |  |
+| TEMEL BİLGİLER |  |
 | Sanal makine adı | *MyVmPublic*girin. |
-| IŞLEMLERI | |
+| AĞ İLETİŞİMİ | |
 | Alt ağ | **Public (10.0.0.0/24)** seçeneğini belirleyin. |
 | Genel IP adresi | Varsayılanı kabul edin. |
-| Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+| Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
 | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin. |
-| YÖNETME | |
+| YÖNETİM | |
 | Tanılama depolama hesabı | Varsayılan **mynvastorageaccount**değerini bırakın. |
 | **ÖZEL VM** | |
-| TEMEL BILGILERI |  |
+| TEMEL BİLGİLER |  |
 | Sanal makine adı | *MyVmPrivate*girin. |
-| IŞLEMLERI | |
+| AĞ İLETİŞİMİ | |
 | Alt ağ | **Özel (10.0.1.0/24)** seçeneğini belirleyin. |
 | Genel IP adresi | Varsayılanı kabul edin. |
-| Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+| Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
 | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin. |
-| YÖNETME | |
+| YÖNETİM | |
 | Tanılama depolama hesabı | Varsayılan **mynvastorageaccount**değerini bırakın. |
 
 Azure *myVmPublic* VM’yi oluştururken *myVmPrivate* VM’yi oluşturabilirsiniz. Azure her iki VM oluşturmayı tamamlayana kadar adımların geri kalanına devam etmeyin.

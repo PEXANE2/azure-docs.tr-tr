@@ -1,30 +1,21 @@
 ---
-title: Öğretici - Azure Service Fabric Mesh’te çalışan bir uygulamayı yükseltme | Microsoft Docs
+title: Öğretici-Azure Service Fabric ağı 'nda çalışan bir uygulamayı yükseltme
 description: Bu öğreticide, Service Fabric Mesh’te çalışan Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351741"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh içinde çalışan bir Service Fabric uygulaması yükseltme
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh’te çalışan Service Fabric uygulamasını yükseltme
 
-Bu öğretici, bir serinin üçüncü bölümüdür. Ayrılan CPU kaynaklarını artırarak, [daha önce Service Fabric Mesh'te dağıtılmış](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.  İşiniz bittiğinde, daha yüksek CPU kaynaklarla çalışan bir web ön uç hizmeti sahip olacaksınız.
+Bu öğretici, bir serinin üçüncü bölümüdür. Ayrılan CPU kaynaklarını artırarak, [daha önce Service Fabric Mesh'te dağıtılmış](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.  İşiniz bittiğinde, daha yüksek CPU kaynaklarıyla çalışan bir Web ön uç hizmetiniz olur.
 
 Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
@@ -41,25 +32,25 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz.
 
-* [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md)’i açın veya [Azure CLI ve Service Fabric Mesh CLI’sını yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
+* [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md)’i açın veya [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="upgrade-application-configurations"></a>Uygulama yapılandırmalarını yükseltme
 
 Service Fabric Mesh’e uygulamaları dağıtmanın ana avantajlarından biri, uygulama yapılandırmanızı kolayca yükseltebilmenizdir.  Örneğin, hizmetleriniz için CPU veya bellek kaynakları yükseltilebilir.
 
-Bu öğreticide, örnek olarak, [önceden dağıtılmış olan](service-fabric-mesh-tutorial-template-deploy-app.md) ve şimdi çalışıyor olması gereken Yapılacaklar Listesi örneği kullanılmaktadır. Uygulama, iki hizmet vardır: WebFrontEnd ve ToDoService. Her hizmet başlangıçta 0.5 CPU kaynağıyla dağıtılmıştır.  WebFrontEnd hizmetinin CPU kaynaklarını görüntülemek için aşağıdakileri çalıştırın:
+Bu öğreticide, örnek olarak, [önceden dağıtılmış olan](service-fabric-mesh-tutorial-template-deploy-app.md) ve şimdi çalışıyor olması gereken Yapılacaklar Listesi örneği kullanılmaktadır. Uygulamada iki hizmet vardır: WebFrontEnd ve ToDoService. Her hizmet başlangıçta 0.5 CPU kaynağıyla dağıtılmıştır.  WebFrontEnd hizmetinin CPU kaynaklarını görüntülemek için aşağıdakileri çalıştırın:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-Uygulama kaynağının dağıtım şablonunda, her hizmetin istenen CPU kaynaklarını ayarlamak için kullanılabilen bir *cpu* özelliği vardır. Uygulama, birden çok hizmetten oluşabilir; her hizmet, birlikte dağıtılan ve yönetilen benzersiz bir *cpu* ayarına sahiptir. Web ön uç hizmetinin CPU kaynaklarının rıd'ye çıkarmak için değiştirme *cpue* dağıtım şablonu veya Parametreler dosyasında değeri.  Ardından uygulamayı yükseltin.
+Uygulama kaynağının dağıtım şablonunda, her hizmetin istenen CPU kaynaklarını ayarlamak için kullanılabilen bir *cpu* özelliği vardır. Uygulama, birden çok hizmetten oluşabilir; her hizmet, birlikte dağıtılan ve yönetilen benzersiz bir *cpu* ayarına sahiptir. Web ön uç hizmetinin CPU kaynaklarını artırmak için dağıtım şablonu veya parametreler dosyasındaki *cpue* değerini değiştirin.  Ardından uygulamayı yükseltin.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Dağıtım şablonu parametrelerini değiştirme
 
@@ -77,7 +68,7 @@ Uygulama kaynağının dağıtım şablonunda, her hizmetin istenen CPU kaynakla
 
 Parametreler dosyasına değişikliklerinizi kaydedin.  
 
-*frontEndCpu* parametresi, [mesh_rp.windows.json dağıtım şablonunun](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) *parametreler* bölümünde bildirilir:
+*frontEndCpu* parametresi, [mesh_rp.windows.json dağıtım şablonunun](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)*parametreler* bölümünde bildirilir:
 
 ```json
 "frontEndCpu": {

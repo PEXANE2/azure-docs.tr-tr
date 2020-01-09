@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric kafes uygulamasında yüksek düzeyde kullanılabilir Service Fabric güvenilir disk birimi kullanma | Microsoft Docs
+title: Service Fabric ağ ile güvenilir disk birimi Service Fabric
 description: Azure CLı kullanarak kapsayıcının içinde güvenilir disk tabanlı birim Service Fabric bağlayarak durumu bir Azure Service Fabric kafes uygulamasında depolamayı öğrenin.
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036153"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497959"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Yüksek oranda kullanılabilir Service Fabric Service Fabric bir kafes uygulamasında güvenilir disk tabanlı birim bağlama 
 Kapsayıcı uygulamalarla kalıcı durumun yaygın bir yöntemi olan Azure dosya depolama gibi uzak depolamayı veya Azure Cosmos DB gibi veritabanını kullanmaktır. Bu, uzak mağazaya önemli okuma ve yazma gecikme süresi doğurur.
@@ -29,13 +21,13 @@ Service Fabric güvenilir disk, yüksek kullanılabilirlik için Service Fabric 
 
 Bu örnekte, sayaç uygulamasının bir tarayıcıda sayaç değerini gösteren bir ASP.NET Core hizmeti vardır.
 
-`counterService` Düzenli aralıklarla bir dosyadaki sayaç değerini okur, artırır ve dosyaya geri yazar. Dosya, Service Fabric güvenilir disk tarafından desteklenen birimde takılı bir klasörde depolanır.
+`counterService` bir dosyadaki sayaç değerini düzenli aralıklarla okur, artırır ve dosyaya geri yazar. Dosya, Service Fabric güvenilir disk tarafından desteklenen birimde takılı bir klasörde depolanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu görevi gerçekleştirmek için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Azure CLI 'yi bu makaleyle birlikte kullanmak için, en azından `az --version` `azure-cli (2.0.43)`döndürdüğünden emin olun.  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
+Bu görevi gerçekleştirmek için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Azure CLı 'yi bu makaleyle birlikte kullanmak için `az --version` en az `azure-cli (2.0.43)`döndürdüğünden emin olun.  Bu [yönergeleri](service-fabric-mesh-howto-setup-cli.md)izleyerek Azure SERVICE fabrıc kafes CLI uzantısı modülünü yükler (veya güncelleştirir).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 Azure'da oturum açın ve aboneliğinizi ayarlayın.
 
@@ -46,7 +38,7 @@ az account set --subscription "<subscriptionID>"
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Uygulamanın dağıtılacağı kaynak grubunu oluşturun. Aşağıdaki komut, Doğu Birleşik Devletler bir konumda adlı `myResourceGroup` bir kaynak grubu oluşturur. Aşağıdaki komutta kaynak grubu adını değiştirirseniz, bunu izleyen tüm komutlarda değiştirmeyi unutmayın.
+Uygulamanın dağıtılacağı kaynak grubunu oluşturun. Aşağıdaki komut, Doğu Birleşik Devletler bir konumda `myResourceGroup` adlı bir kaynak grubu oluşturur. Aşağıdaki komutta kaynak grubu adını değiştirirseniz, bunu izleyen tüm komutlarda değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +58,7 @@ Ayrıca, komutuyla dağıtım durumunu da görebilirsiniz
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Kaynak türü olarak `Microsoft.ServiceFabricMesh/gateways`bulunan ağ geçidi kaynağının adına dikkat edin. Bu, uygulamanın genel IP adresini almak için kullanılır.
+Kaynak türü `Microsoft.ServiceFabricMesh/gateways`olan ağ geçidi kaynağının adına dikkat edin. Bu, uygulamanın genel IP adresini almak için kullanılır.
 
 ## <a name="open-the-application"></a>Uygulamayı açma
 
@@ -75,11 +67,11 @@ Uygulama başarıyla dağıtıldıktan sonra, uygulamanın ağ geçidi kaynağı
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-Çıkışın, hizmet uç noktası için `ipAddress` genel IP adresi olan bir özelliği olmalıdır. Bir tarayıcıdan açın. Her saniyede güncelleştirilmekte olan sayaç değerinin bulunduğu bir Web sayfası görüntülenir.
+Çıktı, hizmet uç noktası için genel IP adresi olan `ipAddress` bir özelliğe sahip olmalıdır. Bir tarayıcıdan açın. Her saniyede güncelleştirilmekte olan sayaç değerinin bulunduğu bir Web sayfası görüntülenir.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Uygulamanın birimi kullanbildiğini doğrulama
 
-Uygulama, klasörünün içindeki `counter.txt` `counter/counterService` birimde adlı bir dosya oluşturur. Bu dosyanın içeriği, Web sayfasında görüntülenmekte olan sayaç değeridir.
+Uygulama, `counter/counterService` klasörünün içindeki birimde `counter.txt` adlı bir dosya oluşturur. Bu dosyanın içeriği, Web sayfasında görüntülenmekte olan sayaç değeridir.
 
 ## <a name="delete-the-resources"></a>Kaynakları Sil
 

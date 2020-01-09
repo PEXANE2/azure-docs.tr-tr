@@ -1,5 +1,5 @@
 ---
-title: Ayrılmış kapasiteye sahip Azure Cosmos DB kaynaklarının maliyetini iyileştirin
+title: Maliyeti Iyileştirmek için Azure Cosmos DB ayrılmış kapasite
 description: İşlem maliyetlerinizi kaydetmek için Azure Cosmos DB ayrılmış kapasiteyi satın almayı öğrenin.
 author: bandersmsft
 ms.service: cosmos-db
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0ee43fe0996c05f4e59f6107ba52fac19b83cdef
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441941"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB ' de ayrılmış kapasiteyle maliyeti iyileştirin
 
 Azure Cosmos DB ayrılmış kapasite, bir yıl veya üç yıl boyunca Azure Cosmos DB kaynakları için bir ayırmaya ayırarak paradan tasarruf etmenize yardımcı olur. Azure Cosmos DB ayrılmış kapasiteyle, Cosmos DB kaynaklar için sağlanan aktarım hızına ilişkin bir indirim elde edebilirsiniz. Kaynak örnekleri veritabanları ve kapsayıcılardır (tablolar, koleksiyonlar ve grafikler).
 
-Azure Cosmos DB ayrılmış kapasite, bir yıllık veya üç yıllık ön taahhüt ile normal fiyatlarla 65 &mdash;up Cosmos DB maliyetlerinizi önemli ölçüde azaltabilir. Ayrılmış kapasite bir faturalandırma indirimi sağlar ve Azure Cosmos DB kaynaklarınızın çalışma zamanı durumunu etkilemez.
+Azure Cosmos DB ayrılmış kapasite, tek yıllık veya üç yıllık ön taahhüt ile normal fiyatlarla yüzde 65 ' a kadar Cosmos DB&mdash;maliyetlerinizi önemli ölçüde azaltabilir. Ayrılmış kapasite bir faturalandırma indirimi sağlar ve Azure Cosmos DB kaynaklarınızın çalışma zamanı durumunu etkilemez.
 
 Azure Cosmos DB ayrılmış kapasite, kaynaklarınız için sağlanan aktarım hızını içerir. Depolama ve ağ ücretlerini kapsamaz. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen aktarım hızı ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Ayırmalar hakkında daha fazla bilgi için bkz. [Azure ayırmaları](../billing/billing-save-compute-costs-reservations.md) makalesi.
 
@@ -32,7 +32,7 @@ Azure Cosmos DB ayrılmış kapasite, kaynaklarınız için sağlanan aktarım h
 
 Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Cosmos DB kaynakların kullanacağı toplam aktarım hızı miktarına bağlı olmalıdır. Gerekli aktarım hızını aşağıdaki yollarla belirleyebilirsiniz:
 
-* Tüm bölgelerde Azure Cosmos DB hesaplarınız, veritabanları ve Koleksiyonlarınızda sağlanan toplam verimlilik için geçmiş verileri alın. Örneğin, günlük kullanım deyiminizi `https://account.azure.com` 'ten indirerek günlük ortalama sağlanan aktarım hızını değerlendirebilirsiniz.
+* Tüm bölgelerde Azure Cosmos DB hesaplarınız, veritabanları ve Koleksiyonlarınızda sağlanan toplam verimlilik için geçmiş verileri alın. Örneğin, günlük kullanım deyiminizi `https://account.azure.com`'ten indirerek günlük ortalama sağlanan aktarım hızını değerlendirebilirsiniz.
 
 * Bir Kurumsal Anlaşma (EA) müşterisiyseniz, Azure Cosmos DB üretilen iş ayrıntılarını almak için kullanım dosyanızı indirebilirsiniz. Kullanım dosyasının **ek bilgi** bölümündeki **hizmet türü** değerine bakın.
 
@@ -42,7 +42,7 @@ Ayırma boyutu, mevcut veya hemen dağıtılmış Azure Cosmos DB kaynakların k
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.  
 
-2. **Ekle** >  **tüm hizmetler**  > **ayırmalar** ' ı seçin.  
+2. **Ekle** > **tüm hizmetler** > **ayırmalar** ' ı seçin.  
 
 3. **Satın alma rezervasyonları** bölmesinden yeni bir ayırma satın almak için **Azure Cosmos DB** seçin.  
 

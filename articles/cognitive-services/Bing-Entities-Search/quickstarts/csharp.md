@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: efb2c646d364a93910d2105edb6527ad1116ccb2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c343c160f67eda2dd390ffc39f3b4f1ff49cacb6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448663"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Hızlı başlangıç: Bing Varlık Arama REST API kullanarak bir arama isteği gönderinC#
 
@@ -24,7 +24,7 @@ Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görünt
 Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 
@@ -50,7 +50,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
     using System.Text;
     ```
 
-2. Yeni bir sınıf oluşturun ve API uç noktası, abonelik anahtarınız ve aramak istediğiniz sorgunuz için değişkenler ekleyin.
+2. Yeni bir sınıf oluşturun ve API uç noktası, abonelik anahtarınız ve aramak istediğiniz sorgunuz için değişkenler ekleyin. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     namespace EntitySearchSample

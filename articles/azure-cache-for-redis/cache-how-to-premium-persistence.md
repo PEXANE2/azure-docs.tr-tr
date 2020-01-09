@@ -1,17 +1,17 @@
 ---
-title: Redsıs için Premium Azure önbelleği için veri kalıcılığını yapılandırma
+title: Veri kalıcılığını yapılandırma-Redsıs için Premium Azure önbelleği
 description: Premium katman Azure önbelleğinizi Redsıs örnekleri için yapılandırma ve yönetme hakkında bilgi edinin
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: yegu
-ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412839"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium Azure önbelleği için veri kalıcılığını yapılandırma
 Redsıs için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium bir Azure önbelleğinde kalıcılığı yapılandırma açıklanmaktadır.

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric destek seçenekleri hakkında bilgi edinin | Microsoft Docs
+title: Azure Service Fabric destek seçenekleri hakkında bilgi edinin
 description: Desteklenen Azure Service Fabric küme sürümleri ve dosya desteği biletleri bağlantıları
-services: service-fabric
-documentationcenter: .net
 author: pkcsf
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465625"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric destek seçenekleri
 
@@ -29,7 +20,7 @@ Uygulama iş yüklerinizi çalıştırdığınız Service Fabric kümeleriniz i�
 
 Azure üzerinde dağıtılan Service Fabric kümenizdeki sorunları raporlamak için, Azure portal veya [Microsoft Destek Portalı](https://support.microsoft.com/oas/default.aspx?prid=16146) ['nda](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) destek için bir bilet açın.
 
-Daha fazla bilgi:
+Aşağıdakiler hakkında daha fazla bilgi edinin:
  
 - [Azure Için Microsoft desteği](https://azure.microsoft.com/support/plans/?b=16.44).
 - [Microsoft Premier desteği](https://support.microsoft.com/en-us/premier).
@@ -45,7 +36,7 @@ Daha fazla bilgi:
 
 Şirket içinde veya diğer bulutlarda dağıtılan Service Fabric kümenizdeki sorunları raporlamak için, [Microsoft Destek Portalı](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)'nda profesyonel destek için bir bilet açın.
 
-Daha fazla bilgi:
+Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - Şirket [içi Için Microsoft 'Tan profesyonel destek](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 - [Microsoft Premier desteği](https://support.microsoft.com/en-us/premier).

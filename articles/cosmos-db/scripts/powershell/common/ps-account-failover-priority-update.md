@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell betiği-yük devretme önceliğini değiştirme veya bir Azure Cosmos hesabı için yük devretmeyi tetikleme
+title: Azure Cosmos hesabının yük devretme önceliğini değiştirmek için PowerShell betiği
 description: Azure PowerShell betik örneği-Azure Cosmos hesabı için yük devretme önceliğini değiştirme veya yük devretmeyi tetikleme
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6a742486918e5134a73256ef6c7490a823f14335
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155397"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441517"
 ---
 # <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>PowerShell kullanarak bir Azure Cosmos hesabı için yük devretme önceliğini değiştirme veya yük devretmeyi tetikleme
 
@@ -22,7 +22,7 @@ ms.locfileid: "71155397"
 ## <a name="sample-script"></a>Örnek betik
 
 > [!NOTE]
-> Bir bölgedeki `failoverPriority=0` herhangi bir değişiklik, el ile yük devretme tetikler ve yalnızca el ile yük devretme için yapılandırılmış bir hesaba yapılabilir. Diğer tüm bölgelerde yapılan değişiklikler yalnızca Cosmos hesabının yük devretme önceliğini değiştirir.
+> `failoverPriority=0` bir bölgede yapılan herhangi bir değişiklik, el ile yük devretmeyi tetikler ve yalnızca el ile yük devretme için yapılandırılmış bir hesaba yapılabilir. Diğer tüm bölgelerde yapılan değişiklikler yalnızca Cosmos hesabının yük devretme önceliğini değiştirir.
 > [!NOTE]
 > Bu örnekte bir SQL (Core) API hesabı kullanılması gösterilmektedir. Bu örneği diğer API 'Ler için kullanmak üzere ilgili özellikleri kopyalayın ve API 'ye özel betiğe uygulayın
 

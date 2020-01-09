@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Önizleme tanıtım ortamını araştırma-Azure Time Series Insights | Microsoft Docs'
-description: Örnek hızlı başlangıç aracılığıyla Azure Time Series Insights önizleme tanıtım ortamları hakkında bilgi edinin.
+description: Azure Time Series Insights Preview demo ortamının temel özelliklerini gezin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/24/2019
-ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/20/2019
+ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014765"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497314"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Hızlı başlangıç: Azure Time Series Insights Preview demo ortamını keşfet
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, contoso verilerinde eyleme dönüştürülebilir Öng
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Tanıtım ortamında Time Series Insights Gezginini keşfet
 
-Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini gösterir. Başlamak için:
+Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini gösterir. Kullanmaya başlamak için:
 
 1.  [Contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.  
 
@@ -43,33 +43,33 @@ Time Series Insights önizleme Gezgini geçmiş verileri ve kök neden analizini
    1. Görünüm aralığını **1/1/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
    1. Bir algılayıcı seçmek için **contoso bitki 1** > **W7** > **Generator sistem** > **generatorspeed**' i seçin. Ardından, gösterilen değerleri gözden geçirin.
 
-      [Contoso tesis 1 ' de ![W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [Contoso tesis 1 ' de ![W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
 1. Contoso, Rüzgar Turbin **W7**içinde bir yangın buldu. Opın ons, yangın ne olduğuna ilişkin farklılık gösterir. Time Series Insights, yangın uyarı algılayıcısının yangın sırasında etkinleştirildiğini görebiliriz.
 
    1. Görünüm aralığını **3/9/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
    1. **Güvenlik sistemi** > **firealert**' i seçin.
 
-      [![contoso, Rüzgar Turbin W7 'de bir yangın buldu](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![contoso, Rüzgar Turbin W7 'de bir yangın buldu](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Ne olduğunu anlamak için yangın süresi etrafında diğer olayları gözden geçirin. Yağ baskısı ve etkin uyarılar, yalnızca yangın 'tan önce.
 
    1. **Aralıklı sistem** > **Hidrolik Licoilbasınç**' ı seçin.
    1. **Aralıklı sistem** > **activewarning**öğesini seçin.
 
-      [aynı anda diğer olayları gözden ![](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [aynı anda diğer olayları gözden ![](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
 1. Yağ basıncı ve etkin uyarı sensörleri, yangın 'tan önce. Daha önce harekete geçmiş olan diğer işaretleri görmek için görüntülenen zaman serisini genişletin. Her iki algılayıcı zaman içinde sürekli olarak dalgalanılır. Dalgalanmalar kalıcı ve worrisme deseninin olduğunu gösterir.
 
     * Görünüm aralığını **2/24/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
 
-      [Yağ basıncı ve etkin uyarı algılayıcıları ![de spıked](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [Yağ basıncı ve etkin uyarı algılayıcıları ![de spıked](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
 1. İki yıllık geçmiş verileri incelemek, aynı algılayıcı dalgalanmalarına sahip başka bir yangın olayını ortaya çıkarır.
 
     * Görünüm aralığını **1/1/16, 12/31/17** (tüm veriler) olarak değiştirin.
 
-      [geçmiş desenleri aramak ![](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [geçmiş desenleri aramak ![](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
 Time Series Insights ve algılayıcı telemetrisi kullanarak, geçmiş verilerde uzun süreli bir eğilim gizliyoruz. Bu yeni Öngörüler sayesinde şunları yapabilirsiniz:
 
@@ -84,7 +84,7 @@ Time Series Insights ve algılayıcı telemetrisi kullanarak, geçmiş verilerde
     1. Görünüm aralığını **6/1/17 20:00:00.00 olarak 7/1/17 20:00:00.00 (UTC)** olarak değiştirin.
     1. **Contoso bitki 1** > **W6** > **güvenlik sistemi** > **VoltageActuatorSwitchWarning**' nı seçin.
 
-       [![görünüm aralığını değiştirin ve W6 seçin](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![görünüm aralığını değiştirin ve W6 seçin](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. Uyarı, oluşturucunun gerilimiyle ilgili bir sorun olduğunu gösterir. Oluşturucunun genel güç çıkışı, geçerli aralıktaki normal parametreler içindedir. Zaman sıklığımızı artırarak, başka bir model ortaya çıktı görürsünüz. Bir bırakma kapalı olur.
 
@@ -92,20 +92,20 @@ Time Series Insights ve algılayıcı telemetrisi kullanarak, geçmiş verilerde
     1. **Generator sistem** > **activepower**öğesini seçin.
     1. Aralığı **3B**olarak değiştirin.
 
-       [![aralığı 3B olarak değiştirme](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![aralığı 3B olarak değiştirme](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
 1. Zaman aralığını genişleterek, sorunun durdurulup durdurulmadığını veya devam edip etmediğini belirleyebiliriz.
 
     * Zaman aralığını 60 güne genişletin.
 
-      [![zaman aralığını 60 güne uzat](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![zaman aralığını 60 güne uzat](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
 1. Diğer algılayıcı veri noktaları, daha fazla bağlam sağlamak için eklenebilir. Daha fazla algılayıcı, sorunun anlaşılmasından daha fazla bilgi sahibi. Şimdi gerçek değerleri görmek için bir işaret bırakın. 
 
     1. **Oluşturucu sistemi**' ni seçin ve ardından üç algılayıcı seçin **: GridVoltagePhase1**, **GridVoltagePhase2**ve **GridVoltagePhase3**.
     1. Görünür alandaki son veri noktasında bir işaretleyici bırakın.
 
-       [işaretleyici ![bırakma](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [işaretleyici ![bırakma](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
     Voltaj sensörlerinden ikisi, çalışan comparably ve normal parametreler içinde. **GridVoltagePhase3** sensöri olduğu anlaşılıyor.
 
@@ -113,7 +113,7 @@ Time Series Insights ve algılayıcı telemetrisi kullanarak, geçmiş verilerde
 
     * Görüntüyü aynı grafik ölçeğinde tüm **Oluşturucu sistem** algılayıcılarının kaplaması için değiştirin.
 
-      [![her şeyi içerecek şekilde değiştirin](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![her şeyi içerecek şekilde değiştirin](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

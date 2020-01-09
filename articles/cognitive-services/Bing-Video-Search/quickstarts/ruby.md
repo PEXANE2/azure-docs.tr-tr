@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 1f1cde38aa49488a73ce98cc1a9210ed22ebee73
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448375"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Video Arama REST API ve Ruby kullanarak video arama
 
@@ -37,7 +37,7 @@ Bing Video Arama API'si ilk çağrısını yapmak ve JSON yanıtından bir arama
     require 'json'
     ```
 
-2. API uç noktası, video API 'SI arama yolu, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun.
+2. API uç noktası, video API 'SI arama yolu, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun. `uri`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"

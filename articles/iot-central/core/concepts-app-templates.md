@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 85d882cff968c9b68ece104e850a7f16c33947b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435099"
 ---
 # <a name="what-are-application-templates"></a>Uygulama şablonları nedir?
 
@@ -30,11 +30,10 @@ Uygulama şablonları şunlardan oluşur:
 
 Uygulama şablonu seçiminiz, uygulamanızın cihazlar için Tak ve Kullan gibi Önizleme özelliklerini IoT Central kullanıp kullanmadığını belirler.
 
-Şu anda, _genel olarak kullanılabilen_ özellikleri kullanan uygulama şablonları şunlardır:
+Şu anda, _genel olarak kullanılabilen_ özellikleri kullanan uygulama şablonu:
 
-- Özel uygulama > özel uygulama
-- Özel uygulama > örnek contoso
-- Özel uygulama > örnek Devkits
+- Özel uygulama > eski uygulama
+
 
 Şu anda _genel önizleme_ özelliklerini kullanan uygulama şablonları şunlardır:
 
@@ -52,20 +51,20 @@ Uygulama şablonu seçiminiz, uygulamanızın cihazlar için Tak ve Kullan gibi 
 - Sağlık > sürekli hasta izleme
 
 > [!NOTE]
-> **Özel uygulama, örnek contoso, örnek Devkits** şablonları şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında mevcuttur, ancak diğer şablonlar şu anda yalnızca **Avrupa** ve **ABD** konumlarında kullanılabilir.
+> **Eski uygulama** şablonları şu anda **Birleşik Devletler**, **Avustralya**, **Asya Pasifik**veya **Avrupa** konumlarında mevcuttur, ancak diğer şablonlar şu anda yalnızca **Avrupa** ve **ABD** konumlarında kullanılabilir.
 
 ## <a name="industry-focused-templates"></a>Sektör odaklı Şablonlar
 
 Azure IoT Central, sektörde bağımsız bir uygulama platformudur. Uygulama şablonları, bu sektörlerde daha fazla sunulacak sektörde bulunan sektör odaklı örneklerdir:
 
-- [Maliyeti](../retail/overview-iot-central-retail-pnp.md)
+- [Perakende](../retail/overview-iot-central-retail-pnp.md)
   - Bağlı lojistik
   - Dijital dağıtım merkezi
   - Mağaza içi analiz-koşul izleme
   - Mağaza içi analiz-kullanıma alma
   - Akıllı envanter yönetimi
 - [Enerji](../energy/overview-iot-central-energy.md)
-  - Akıllı ölçüm izleme
+  - Akıllı sayaç izleme
   - Güneş paneli izleme
 - [Devlet](../government/overview-iot-central-government.md)
   - Bağlı atık yönetimi

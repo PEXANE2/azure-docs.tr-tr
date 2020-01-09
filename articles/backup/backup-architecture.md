@@ -1,14 +1,14 @@
 ---
-title: Mimariye genel bakış
+title: Mimariye Genel Bakış
 description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere ve işlemlere genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173516"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450192"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -92,12 +92,12 @@ Depolama alanı tüketimi, kurtarma süresi hedefi (RTO) ve ağ tüketimi her bi
 
 Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler özetlenmektedir:
 
-**Özelliği** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
+**Özellik** | **Dosya ve klasörlerin doğrudan yedeklemesi (MARS Aracısı 'nı kullanarak)** | **Azure VM yedeklemesi** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
-Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
-Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
+Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green]
+Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green]
 Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
@@ -174,7 +174,7 @@ Disk depolama ve VM 'Ler için kullanılabilir disk türleri hakkında daha fazl
 Azure Backup ile Premium depolamayı kullanarak Azure VM 'Leri yedekleyebilirsiniz:
 
 - VM 'Leri Premium Depolama ile yedekleme işlemi sırasında, yedekleme hizmeti depolama hesabında *AzureBackup*adlı geçici bir hazırlama konumu oluşturur. Hazırlama konumunun boyutu, kurtarma noktası anlık görüntüsünün boyutuna eşittir.
-- Premium depolama hesabının geçici hazırlama konumuna uyum sağlamak için yeterli boş alana sahip olduğundan emin olun. [Daha fazla bilgi edinin](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Hazırlama konumunu değiştirmeyin.
+- Premium depolama hesabının geçici hazırlama konumuna uyum sağlamak için yeterli boş alana sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Premium sayfa BLOB depolama hesapları Için ölçeklenebilirlik hedefleri](../storage/blobs/scalability-targets-premium-page-blobs.md). Hazırlama konumunu değiştirmeyin.
 - Yedekleme işi tamamlandıktan sonra, hazırlama konumu silinir.
 - Hazırlama konumu için kullanılan depolama fiyatı, [Premium Depolama fiyatlandırmasıyla](../virtual-machines/windows/disks-types.md#billing)tutarlıdır.
 

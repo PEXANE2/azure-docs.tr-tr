@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makine Ölçek Kümeleri Bağlı Veri Diskleri | Microsoft Belgeleri
-description: Sanal makine ölçek kümelerinde bağlı veri disklerinin nasıl kullanılacağını öğrenin
+title: Azure sanal makine ölçek kümeleri eklenen veri diskleri
+description: Sanal makine ölçek kümeleriyle eklenen veri disklerini, belirli kullanım durumlarının anahatları aracılığıyla nasıl kullanacağınızı öğrenin.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: manayar
-ms.openlocfilehash: 5482e082e3e37d279c4374a8642f2cb6db588dd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6b6c752c1b86061f43af912405e610d466f17e37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465015"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure sanal makine ölçek kümeleri ve bağlı veri diskleri
 Kullanılabilir depolama alanınızı genişletmek için Azure [sanal makine ölçek kümeleri](/azure/virtual-machine-scale-sets/), bağlı veri diskleri içeren sanal makine örneklerini destekler. Ölçek kümesi oluşturulduğunda veya mevcut bir ölçek kümesine veri diskleri ekleyebilirsiniz.
 
 > [!NOTE]
-> Bağlı veri diskleri içeren bir ölçek kümesi oluşturduğunuzda tek başına Azure sanal makinelerinde olduğu gibi, diskleri kullanabilmek için bir sanal makine içinde takmanız ve biçimlendirmeniz gerekir. Bu işlemi tamamlamanın uygun bir yolu, bir sanal makine üzerindeki tüm verileri bölümlemek ve biçimlendirmek için bir betik çağıran Özel Betik Uzantısı kullanılmasıdır. Bununla ilgili örnekler için bkz. [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
+> Bağlı veri diskleri içeren bir ölçek kümesi oluşturduğunuzda tek başına Azure sanal makinelerinde olduğu gibi, diskleri kullanabilmek için bir sanal makine içinde takmanız ve biçimlendirmeniz gerekir. Bu işlemi tamamlamanın uygun bir yolu, bir sanal makine üzerindeki tüm verileri bölümlemek ve biçimlendirmek için bir betik çağıran Özel Betik Uzantısı kullanılmasıdır. Bunun örnekleri için bkz. [Azure clı](tutorial-use-disks-cli.md#prepare-the-data-disks) [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>Ölçek kümesinde diskler oluşturma ve yönetme
@@ -93,7 +93,7 @@ Bir Linux kümesinde veri disklerini otomatik olarak hazırlamak için şunları
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Önceden doldurulmuş veri disklerini mevcut bir ölçek kümesine ekleme
-Ölçek kümesi modelinde belirtilen veri diskleri her zaman boştur. Ancak bir ölçek kümesindeki belirli bir VM’ye var olan bir veri diski ekleyebilirsiniz. Bu özellik Önizleme aşamasında örnekleriyle açıktır [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk). Verileri ölçek kümesindeki tüm VM’lere yaymak istiyorsanız, veri diskinizi çoğaltarak ölçek kümesindeki her bir VM’ye ekleyebilirsiniz, verileri içeren özel bir görüntü oluşturup ölçek kümesini bu özel görüntüden sağlayabilirsiniz veya Azure Dosyalar ya da benzer bir veri depolama teklifi kullanabilirsiniz.
+Ölçek kümesi modelinde belirtilen veri diskleri her zaman boştur. Ancak bir ölçek kümesindeki belirli bir VM’ye var olan bir veri diski ekleyebilirsiniz. Bu özellik, [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)'daki örneklerle birlikte önizlemededir. Verileri ölçek kümesindeki tüm VM’lere yaymak istiyorsanız, veri diskinizi çoğaltarak ölçek kümesindeki her bir VM’ye ekleyebilirsiniz, verileri içeren özel bir görüntü oluşturup ölçek kümesini bu özel görüntüden sağlayabilirsiniz veya Azure Dosyalar ya da benzer bir veri depolama teklifi kullanabilirsiniz.
 
 
 ## <a name="additional-notes"></a>Ek notlar

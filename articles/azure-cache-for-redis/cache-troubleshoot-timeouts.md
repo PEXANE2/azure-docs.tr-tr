@@ -1,17 +1,17 @@
 ---
 title: Redsıs zaman aşımları için Azure önbelleğinde sorun giderme
-description: Redsıs için Azure önbelleğiyle ilgili genel zaman aşımı sorunlarını çözmeyi öğrenin
+description: Redsıs Server düzeltme eki uygulama ve StackExchange. Redsıs zaman aşımı özel durumları gibi, Redsıs için Azure önbelleğiyle ilgili genel zaman aşımı sorunlarını çözmeyi öğrenin.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412084"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redsıs zaman aşımları için Azure önbelleğinde sorun giderme
 
@@ -45,7 +45,7 @@ Bu hata iletisi, sorunun nedenine ve olası çözümüne işaret etmenize yardı
 | QS |devam eden işlemlerin 67 sunucuya gönderilmesi ancak bir yanıt henüz kullanılamıyor. Yanıt `Not yet sent by the server` veya `sent by the server but not yet processed by the client.` olabilir |
 | QC |sürmekte olan işlemlerin 0 ' a yanıt gördük ancak tamamlanma döngüsünde beklediği için henüz tamamlandı olarak işaretlenmedi |
 | WR |Etkin bir yazıcı (yani, 6 gönderilmemiş isteğin yoksayılmaması anlamına gelir) bayt/activeyazarlar |
-| 'Ndaki |Etkin okuyucu yok ve NIC baytları/activereaders üzerinde okunabilecek sıfır bayt var |
+| ortamında |Etkin okuyucu yok ve NIC baytları/activereaders üzerinde okunabilecek sıfır bayt var |
 
 Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsiniz.
 
@@ -111,9 +111,9 @@ Olası temel nedenleri araştırmak için aşağıdaki adımları kullanabilirsi
 
    Daha fazla bilgi için bkz. [redsıs sunucusu 'Nda bellek baskısı](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
-- [Redsıs istemci tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-client.md)
-- [Redsıs sunucu tarafı sorunları için Azure Cache sorunlarını giderme](cache-troubleshoot-server.md)
+- [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
+- [Redis için Azure Cache sunucu tarafı sorunlarını giderme](cache-troubleshoot-server.md)
 - [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)

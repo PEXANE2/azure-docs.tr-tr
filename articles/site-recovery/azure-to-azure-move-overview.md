@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091948"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498054"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM 'lerini başka bir Azure bölgesine taşıma
 
@@ -81,7 +81,7 @@ Daha önce bahsedilen [mimarilere](#typical-architectures-for-a-multi-tier-deplo
 
      ![Katmanlar arasında tek örnekli VM dağıtımı](media/move-vm-overview/single-zone.png)
 
-* **Her katmandaki VM 'ler kullanılabilirlik kümeleri arasında dağıtılır**: bir kullanılabilirlik kümesindeki VM 'lerinizi, Azure SITE Recovery kullanarak VM 'niz için çoğaltmayı etkinleştirdiğinizde ayrı kullanılabilirlik alanları olarak yapılandırabilirsiniz. Taşıma işlemi tamamlandıktan sonra kullanılabilirlik SLA 'Sı% 99,9 olur.
+* **Her katmandaki VM 'ler kullanılabilirlik kümeleri arasında dağıtılır**: bir kullanılabilirlik kümesindeki VM 'lerinizi, Azure SITE Recovery kullanarak VM 'niz için çoğaltmayı etkinleştirdiğinizde ayrı kullanılabilirlik alanları olarak yapılandırabilirsiniz. Taşıma işlemi tamamlandıktan sonra kullanılabilirlik SLA 'Sı% 99,99 olur.
 
      ![Kullanılabilirlik kümeleri ve Kullanılabilirlik Alanları arasında VM dağıtımı](media/move-vm-overview/aset-azone.png)
 

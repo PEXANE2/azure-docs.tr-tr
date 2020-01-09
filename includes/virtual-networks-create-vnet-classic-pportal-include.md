@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: ac5599a38c3fcbc4a6c331d2b14c6b6c55c31d82
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8d13d5d93dba66fa0dce08ffbf569164fb03398d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467836"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Azure portal klasik VNet oluşturma
 Önceki senaryoya bağlı olarak klasik bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
@@ -25,7 +25,7 @@ ms.locfileid: "73850521"
 4. **Sanal ağ** bölmesine VNET 'in **adını** yazın ve **Adres alanı**' na tıklayın. VNet ve ilk alt ağı için adres alanı ayarlarınızı yapılandırın ve ardından **Tamam**' a tıklayın. Aşağıdaki şekilde, senaryonuza yönelik CıDR blok ayarları gösterilmektedir.
    
     ![Adres alanı bölmesi](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-5. **Kaynak grubu** ' na tıklayın ve sanal ağı eklemek için bir kaynak grubu seçin veya yeni kaynak grubu **Oluştur** ' a tıklayarak VNET 'i yeni bir kaynak grubuna ekleyin. Aşağıdaki şekilde, **Testrg**adlı yeni bir kaynak grubu için kaynak grubu ayarları gösterilmektedir. Kaynak grupları hakkında daha fazla bilgi için [Azure Resource Manager’a Genel Bakış](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) sayfasını ziyaret edin.
+5. **Kaynak grubu** ' na tıklayın ve sanal ağı eklemek için bir kaynak grubu seçin veya yeni kaynak grubu **Oluştur** ' a tıklayarak VNET 'i yeni bir kaynak grubuna ekleyin. Aşağıdaki şekilde, **Testrg**adlı yeni bir kaynak grubu için kaynak grubu ayarları gösterilmektedir. Kaynak grupları hakkında daha fazla bilgi için [Azure Resource Manager’a Genel Bakış](../articles/azure-resource-manager/management/overview.md#resource-groups) sayfasını ziyaret edin.
    
     ![Kaynak Grup bölmesi oluştur](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 6. Gerekiyorsa, VNet’inizle ilgili **Abonelik** ve **Konum** ayarlarını değiştirin. 

@@ -1,5 +1,5 @@
 ---
-title: Azure hızlı başlangıç-Azure portal kullanarak Event Hubs adanmış küme oluşturma
+title: Azure portal kullanarak Event Hubs adanmış küme oluşturma
 description: Bu hızlı başlangıçta, Azure portal kullanarak Azure Event Hubs kümesi oluşturmayı öğreneceksiniz.
 services: event-hubs
 documentationcenter: ''
@@ -8,14 +8,14 @@ manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: xurui
-ms.openlocfilehash: bde6844962561232e4af51f2b4e803d49bf5398e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437219"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış Event Hubs kümesi oluşturma 
 Event Hubs kümeler en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. Bu teklif,% 99,99 SLA garanti etti ve yalnızca adanmış fiyatlandırma katmanımızda kullanılabilir. Bir [Event Hubs kümesi](event-hubs-dedicated-overview.md) , garantili kapasiteye ve alt saniyelik gecikmeye göre saniyede milyonlarca olayı alabilir. Bir küme içinde oluşturulan ad alanları ve Olay Hub 'ları, tüm giriş limitleri olmadan standart teklifin tüm özelliklerini ve daha fazlasını içerir. Adanmış teklif, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak [Azure Blob depolama alanına](../storage/blobs/storage-blobs-introduction.md) veya [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)' e otomatik olarak günlüğe kaydedebilirsiniz.

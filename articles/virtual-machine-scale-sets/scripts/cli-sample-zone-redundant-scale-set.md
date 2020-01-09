@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Örnekleri - Alanlar arası yedekli ölçek kümesi | Microsoft Docs
-description: Azure CLI Örnekleri
+title: Azure CLı örnekleri-bölgesel olarak yedekli ölçek kümesi
+description: Bu betik, birden çok Kullanılabilirlik Alanları üzerinde Ubuntu çalıştıran bir Azure sanal makine ölçek kümesi oluşturur.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 903a4d1a9864a9ab19df7c453adc002a8bd0f576
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 433c49208cdd115c1efdd53258f6e3c6e5721164
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883926"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350972"
 ---
-# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Bölgesel olarak yedekli sanal makine ölçek kümesi Azure CLI ile oluşturma
+# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Azure CLı ile bölge yedekli sanal makine ölçek kümesi oluşturma
 Bu betik, birden çok Kullanılabilirlik Alanı’nda Ubuntu çalıştıran bir sanal makine ölçek kümesi oluşturur. Betiği çalıştırdıktan sonra sanal makineye RDP üzerinden erişebilirsiniz.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

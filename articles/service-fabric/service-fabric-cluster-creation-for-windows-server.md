@@ -1,33 +1,24 @@
 ---
-title: Tek başına Azure Service Fabric kümesi oluşturma | Microsoft Docs
+title: Tek başına Azure Service Fabric kümesi oluşturma
 description: Şirket içinde veya herhangi bir bulutta olsun, Windows Server çalıştıran herhangi bir makinede (fiziksel veya sanal) bir Azure Service Fabric kümesi oluşturun.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463239"
 ---
-# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server 'da çalışan tek başına küme oluşturma
+# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
 Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeler oluşturmak için kullanabilirsiniz. Bu, birbirine bağlı bir Windows Server bilgisayarları kümesi içeren herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Bu durumda, şirket içinde veya herhangi bir bulut sağlayıcısıyla olabilirsiniz. Service Fabric, tek başına Windows Server paketi olarak adlandırılan Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure 'daki geleneksel Service Fabric kümeleri yönetilen bir hizmet olarak kullanılabilir, tek başına Service Fabric kümeler self servis.
 
 Bu makale, Service Fabric tek başına kümesi oluşturma adımlarında size yol gösterir.
 
 > [!NOTE]
-> Bu tek başına Windows Server paketi, ticari olarak ücretsiz olarak kullanılabilir ve üretim dağıtımlarında kullanılabilir. Bu paket, "Önizleme" içinde yeni Service Fabric özellikler içerebilir. Aşağı kaydırarak "[Bu pakette bulunan Önizleme özellikleri](#previewfeatures_anchor)" ne gidin. Önizleme özelliklerinin listesi. [EULA 'nın bir kopyasını şimdi indirebilirsiniz](https://go.microsoft.com/fwlink/?LinkID=733084) .
+> Bu tek başına Windows Server paketi, ticari olarak ücretsiz olarak kullanılabilir ve üretim dağıtımlarında kullanılabilir. Bu paket, "Önizleme" içinde yeni Service Fabric özellikler içerebilir. Aşağı kaydırarak "[Bu pakette bulunan Önizleme özellikleri](#previewfeatures_anchor)" ne gidin. Önizleme özelliklerinin listesi. Yapabilecekleriniz [EULA'yı bir kopyasını indirin](https://go.microsoft.com/fwlink/?LinkID=733084) şimdi.
 > 
 > 
 
@@ -135,7 +126,7 @@ Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu �
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Örnek:
+Örneğin:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -163,10 +154,10 @@ Küme panosu, kümenize uygulama ve düğüm durumunun özetini de içeren bir g
 İş gereksinimleriniz değiştikçe tek başına Service Fabric kümenize düğüm ekleyebilir veya kaldırabilirsiniz. Ayrıntılı adımlar için bkz. [Service Fabric tek başına kümesine düğüm ekleme veya kaldırma](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
 <a id="removecluster" name="removecluster_anchor"></a>
-## <a name="remove-a-cluster"></a>Bir kümeyi kaldırma
+## <a name="remove-a-cluster"></a>Küme kaldırma
 Bir kümeyi kaldırmak için paket klasöründen *RemoveServiceFabricCluster.ps1* PowerShell betiğini çalıştırın ve yolu JSON yapılandırma dosyasına geçirin. İsteğe bağlı olarak silme işleminin günlüğü için bir konum belirtebilirsiniz.
 
-Bu betik, küme yapılandırma dosyasında düğüm olarak listelenen tüm makinelere yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makinenin kümenin bir parçası olması gerekmez.
+Bu betik, küme yapılandırma dosyasında düğümleri olarak listelenen tüm makineler için yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makine kümesinin parçası olacak gerekmez.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration

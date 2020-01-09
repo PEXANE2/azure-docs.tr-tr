@@ -1,23 +1,18 @@
 ---
 title: Birden çok Azure Izleyici Application Insights kaynağını bütünleştirme | Microsoft Docs
 description: Bu makalede, Azure Izleyici günlüklerinde bir işlevi kullanarak birden çok Application Insights kaynağını sorgulama ve bu verileri görselleştirme hakkında ayrıntılar verilmektedir.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: azure-monitor
+author: bwren
+ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: magoedte
-ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650130"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364977"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Birden çok Azure Izleyici Application Insights kaynağını bütünleştirme 
 Bu makalede, Application Insights Bağlayıcısı kullanım dışı bırakma işleminin yerine, farklı Azure aboneliklerinde olsalar bile, tüm Application Insights günlük verilerinizi tek bir yerde sorgulama ve görüntüleme açıklanmaktadır. Tek bir sorguya dahil edebilirsiniz Application Insights kaynak sayısı 100 ile sınırlıdır.
@@ -39,7 +34,7 @@ Uygulama listesiyle birlikte UNION işlecini kullanarak bir işlev oluşturun, s
 >[!NOTE]
 >Çalışma alanları ve uygulamalar dahil olmak üzere uyarı kuralı kaynaklarının erişim doğrulaması uyarı oluşturma sırasında gerçekleştirildiğinden, bu yöntem günlük uyarıları ile kullanılamaz. Uyarı oluşturulduktan sonra işleve yeni kaynaklar eklemek desteklenmez. Günlük uyarılarında kaynak kapsamı için işlev kullanmayı tercih ederseniz, kapsamdaki kaynakları güncelleştirmek için portalda veya bir Kaynak Yöneticisi şablonuyla uyarı kuralını düzenlemeniz gerekir. Alternatif olarak, günlük uyarısı sorgusuna kaynak listesini de ekleyebilirsiniz.
 
-`withsource= SourceApp` Komut, günlüğü gönderen uygulamayı atayan sonuçlara bir sütun ekler. Parse işleci Bu örnekte isteğe bağlıdır ve SourceApp özelliğinden uygulama adını ayıklamak için kullanır. 
+`withsource= SourceApp` komutu, günlüğü gönderen uygulamayı atayan sonuçlara bir sütun ekler. Parse işleci Bu örnekte isteğe bağlıdır ve SourceApp özelliğinden uygulama adını ayıklamak için kullanır. 
 
 ```
 union withsource=SourceApp 
@@ -67,7 +62,7 @@ Sorgu Application Insights şeması kullanır, ancak applicationsScoping işlevi
 ![Çapraz sorgu sonuçları örneği](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Application Insights kaynaklar ve çalışma alanı verileri genelinde sorgulama 
-Bağlayıcıyı durdurduğunuzda ve Application Insights veri saklama (90 gün) tarafından kırpılan bir zaman aralığı üzerinde sorgular gerçekleştirmeniz gerektiğinde, çalışma alanında [çapraz kaynak sorgular](../../azure-monitor/log-query/cross-workspace-query.md) gerçekleştirmeniz ve bir ara için kaynakları Application Insights gerekir dönemini. Bu, yukarıda bahsedilen yeni Application Insights veri bekletme için uygulama verilerinize göre biriktirene kadar olur. Application Insights ve çalışma alanındaki şemalar farklı olduğundan sorgu bazı düzenlemeler gerektiriyor. Bu bölümün ilerleyen kısımlarında şema farklarını vurgulayan tabloya bakın. 
+Bağlayıcıyı durdurduğunuzda ve Application Insights veri saklama (90 gün) tarafından kırpılan bir zaman aralığı üzerinde sorgular gerçekleştirmeniz gerektiğinde, çalışma alanında [çapraz kaynak sorgular](../../azure-monitor/log-query/cross-workspace-query.md) yapmanız ve bir ara döneme yönelik kaynakları Application Insights gerekir. Bu, yukarıda bahsedilen yeni Application Insights veri bekletme için uygulama verilerinize göre biriktirene kadar olur. Application Insights ve çalışma alanındaki şemalar farklı olduğundan sorgu bazı düzenlemeler gerektiriyor. Bu bölümün ilerleyen kısımlarında şema farklarını vurgulayan tabloya bakın. 
 
 >[!NOTE]
 >Log uyarılarındaki [çapraz kaynak sorgusu](../log-query/cross-workspace-query.md) , yeni [SCHEDULEDQUERYRULES API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)'sinde desteklenir. Azure Izleyici, [eski günlük uyarıları API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)'sinden geçiş yapmadığınız takdirde, varsayılan olarak, Azure Portal ' dan yeni günlük uyarı kuralları oluşturmak için [eskı Log Analytics uyarı API](../platform/api-alerts.md) 'sini kullanır. Anahtar sonrasında, yeni API Azure portal yeni uyarı kuralları için varsayılan olur ve çapraz kaynak sorgu günlüğü uyarı kuralları oluşturmanıza olanak sağlar. [Scheduledqueryrules API 'si Için ARM şablonunu](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) kullanarak anahtarı yapmadan [çapraz kaynak sorgu](../log-query/cross-workspace-query.md) günlüğü uyarı kuralları oluşturabilirsiniz, ancak bu uyarı kuralı Azure Portal değil, [scheduledqueryrules API 'si](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) ile yönetilebilir.
@@ -107,38 +102,38 @@ Aşağıdaki tabloda Log Analytics ve Application Insights arasındaki şema far
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
+| AvailabilityTestName | ad |
 | AvailabilityTimestamp | timestamp |
-| Browser | client_browser |
-| City | client_city |
-| ClientIP | client_IP |
-| Computer | cloud_RoleInstance | 
-| Country | client_CountryOrRegion | 
+| Tarayıcı | client_browser |
+| Şehir | client_city |
+| Clientıp | client_IP |
+| Bilgisayar | cloud_RoleInstance | 
+| Ülke | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | ad | 
 | DeviceModel | client_Model | 
-| DeviceType | client_Type | 
+| deviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
 | ExceptionType | type |
-| OperationID | operation_id |
-| OperationName | operation_Name | 
-| OS | client_OS | 
+| Operationıd | operation_id |
+| ThrottledRequests | operation_Name | 
+| İşletim Sistemi | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | name | 
+| PageViewName | ad | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
-| RequestID | id | 
-| RequestName | name | 
-| RequestSuccess | success | 
+| RequestId | id | 
+| RequestName | ad | 
+| RequestSuccess | başarılı | 
 | ResponseCode | resultCode | 
-| Role | cloud_RoleName |
-| RoleInstance | cloud_RoleInstance |
-| SessionId | session_Id | 
+| Rol | cloud_RoleName |
+| Roleınstance | cloud_RoleInstance |
+| oturum kimliği | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
 | URL | url |

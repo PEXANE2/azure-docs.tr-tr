@@ -4,12 +4,12 @@ description: Azure dinamik envanterlerinizi yönetmek için nasıl kullanılaca�
 keywords: anerişilebilir, Azure, DevOps, Bash, cloudshell, Dynamic Inventory
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442780"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Öğretici: Azure kaynaklarınızın dinamik envanterini, anormal kullanarak yapılandırma
 
@@ -24,7 +24,7 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 > * Etiketli sanal makinelere NGINX 'i yükler
 > * Yapılandırılmış Azure kaynaklarını içeren bir dinamik envanter yapılandırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -32,7 +32,7 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 
 ## <a name="create-the-test-vms"></a>Test VM 'Leri oluşturma
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
 1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'i açın.
 
@@ -228,7 +228,7 @@ Etiketlerin amacı, sanal makinelerinizin alt grupları ile hızlı ve kolay bir
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     

@@ -1,24 +1,24 @@
 ---
-title: Windows VM 'Leri için yönetilen diske genel bakış Azure Disk Depolama
+title: Windows VM 'Leri için Azure Disk Depolama genel bakış
 description: Azure Windows VM 'Leri kullanılırken depolama hesaplarını işleyen Azure yönetilen disklere genel bakış
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 12/02/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c23cfbc418cca82393a0a66b0ceace622b2833f5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7b2c2c1289a40d63b2f396ee59000c3aedb14c3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460034"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklere giriş
 
-Azure yönetilen disk, bir sanal sabit disktir (VHD). Bunu, şirket içi sunucuda bir fiziksel disk gibi düşünebilirsiniz, ancak sanallaştırılabilir. Azure yönetilen diskler, Azure 'daki bir rastgele GÇ depolama nesnesi olan sayfa Blobları olarak depolanır. Sayfa Blobları, blob kapsayıcıları ve Azure depolama hesapları üzerinde bir soyutlama olduğundan, yönetilen bir disk ' Managed ' çağrısı yaptık. Yönetilen disklerle, tüm yapmanız gereken diski temin etmek ve Azure 'un geri kalanını yapması gerekir.
+Azure yönetilen diskler, Azure tarafından yönetilen ve Azure sanal makinelerle kullanılan blok düzeyinde depolama birimleridir. Yönetilen diskler, şirket içi sunucudaki bir fiziksel disk gibidir, ancak sanallaştırılır. Yönetilen diskler ile, tüm yapmanız gerekir disk boyutunu, disk türünü ve diski temin etmek için gereklidir. Diski sağladığınızda Azure, kalanı işler.
 
-Azure yönetilen diskleri iş yükleriniz ile kullanmayı seçtiğinizde, Azure bu diski sizin için oluşturur ve yönetir. Kullanılabilir disk türleri arasında Ultra disk, Premium katı hal sürücüsü (SSD), Standart SSD ve standart sabit disk sürücüsü (HDD) bulunur. Her bir disk türü hakkında daha fazla bilgi için bkz. [IaaS VM 'leri için disk türü seçme](disks-types.md).
+Kullanılabilir disk türleri Ultra disklerdir, Premium katı hal sürücüleri (SSD), standart SSD 'Ler ve standart sabit disk sürücüleri (HDD). Her bir disk türü hakkında daha fazla bilgi için bkz. [IaaS VM 'leri için disk türü seçme](disks-types.md).
 
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
 

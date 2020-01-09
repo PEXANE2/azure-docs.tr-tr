@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451332"
 ---
 # <a name="scale-session-hosts-dynamically"></a>Oturum konaklarını dinamik olarak ölçeklendirme
 
@@ -50,7 +50,7 @@ Aşağıdaki yordamlarda, ölçeklendirme betiğinin nasıl dağıtılacağı a�
 
 1. Bir etki alanı yönetici hesabı ile zamanlanmış görevi çalıştıracak VM 'de (Scaler VM) oturum açın.
 2. Scaler VM üzerinde ölçeklendirme betiğini ve yapılandırmasını tutacak bir klasör oluşturun (örneğin, **C:\\ölçeklendirme-HostPool1**).
-3. **Basicscale. ps1**, **config. xml**ve **Functions-PSStoredCredentials. ps1** dosyalarını ve **powershellmodules** klasörünü, [ölçeklendirme betiği deposundan](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) indirin ve adım 2 ' de oluşturduğunuz klasöre kopyalayın. Dosyaları Scaler VM 'sine kopyalamadan önce almanın iki birincil yolu vardır:
+3. **Basicscale. ps1**, **config. JSON**ve **Functions-PSStoredCredentials. ps1** dosyalarını ve **powershellmodules** klasörünü, [ölçeklendirme betiği deposundan](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) indirin ve adım 2 ' de oluşturduğunuz klasöre kopyalayın. Dosyaları Scaler VM 'sine kopyalamadan önce almanın iki birincil yolu vardır:
     - Git deposunu yerel makinenize kopyalayın.
     - Her bir dosyanın **Ham** sürümünü görüntüleyin, her dosyanın içeriğini kopyalayıp bir metin düzenleyicisine yapıştırın, ardından dosyaları karşılık gelen dosya adı ve dosya türü ile kaydedin. 
 
@@ -73,17 +73,17 @@ Daha sonra, güvenli şekilde depolanan kimlik bilgilerini oluşturmanız gereki
     ```
     
     Örneğin, **set-değişken-adı KeyPath-Scope genel-değer "c:\\ölçeklendirme-HostPool1"**
-5. **New-StoredCredential-keypath \$keyPath** cmdlet 'ini çalıştırın. İstendiğinde, ana bilgisayar havuzunu sorgulama izinleri ile Windows sanal masaüstü kimlik bilgilerinizi girin (konak havuzu **config. xml**dosyasında belirtilir).
+5. **New-StoredCredential-keypath \$keyPath** cmdlet 'ini çalıştırın. İstendiğinde, ana bilgisayar havuzunu sorgulama izinleri ile Windows sanal masaüstü kimlik bilgilerinizi girin (konak havuzu **config. JSON**içinde belirtilir).
     - Farklı hizmet sorumlularını veya standart hesabı kullanırsanız, her hesap için **Yeni-StoredCredential-keypath \$keyPath** cmdlet 'ini çalıştırarak yerel depolanan kimlik bilgilerini oluşturun.
 6. Kimlik bilgilerinin başarıyla oluşturulduğunu onaylamak için **Get-StoredCredential-List** ' i çalıştırın.
 
-### <a name="configure-the-configxml-file"></a>Config. xml dosyasını yapılandırma
+### <a name="configure-the-configjson-file"></a>Config. json dosyasını yapılandırma
 
-Config. xml dosyasındaki ölçeklendirme betiği ayarlarını güncelleştirmek için aşağıdaki alanlara ilgili değerleri girin:
+Config. JSON dosyasındaki ölçeklendirme betiği ayarlarını güncelleştirmek için aşağıdaki alanlara ilgili değerleri girin:
 
 | Alan                     | Açıklama                    |
 |-------------------------------|------------------------------------|
-| Aadtenantıd                   | Oturum Ana bilgisayar VM 'lerinin çalıştırıldığı aboneliği ilişkilendiren Azure AD kiracı KIMLIĞI     |
+| AADTenantId                   | Oturum Ana bilgisayar VM 'lerinin çalıştırıldığı aboneliği ilişkilendiren Azure AD kiracı KIMLIĞI     |
 | Aadapplicationıd              | Hizmet sorumlusu uygulama KIMLIĞI                                                       |
 | Aadservicesprincipalsecret     | Bu, test aşamasında girilebilir, ancak **Functions-PSStoredCredentials. ps1** ile kimlik bilgileri oluşturduğunuzda boş tutulur    |
 | currentAzureSubscriptionId    | Oturum Ana bilgisayar VM 'lerinin çalıştırıldığı Azure aboneliğinin KIMLIĞI                        |
@@ -103,7 +103,7 @@ Config. xml dosyasındaki ölçeklendirme betiği ayarlarını güncelleştirmek
 
 ### <a name="configure-the-task-scheduler"></a>Görev Zamanlayıcı yapılandırma
 
-Configuration. xml dosyasını yapılandırdıktan sonra, Görev Zamanlayıcı normal bir aralıkta basicScaler. ps1 dosyasını çalıştıracak şekilde yapılandırmanız gerekir.
+Yapılandırma JSON dosyasını yapılandırdıktan sonra, Görev Zamanlayıcı normal bir aralıkta basicScaler. ps1 dosyasını çalıştıracak şekilde yapılandırmanız gerekir.
 
 1. **Görev Zamanlayıcı**başlatın.
 2. **Görev Zamanlayıcı** penceresinde, **görev oluştur...** seçeneğini belirleyin.
@@ -117,13 +117,13 @@ Configuration. xml dosyasını yapılandırdıktan sonra, Görev Zamanlayıcı n
 
 ## <a name="how-the-scaling-script-works"></a>Ölçeklendirme betiği nasıl kullanılır?
 
-Bu ölçeklendirme betiği, gün içinde en yoğun kullanım süresinin başlangıcı ve sonu dahil olmak üzere bir config. xml dosyasından ayarları okur.
+Bu ölçeklendirme betiği, gün içinde en yoğun kullanım süresinin başlangıcı ve sonu dahil olmak üzere bir config. JSON dosyasındaki ayarları okur.
 
-En yüksek kullanım süresi boyunca, komut dosyası her bir konak havuzu için geçerli oturum sayısını ve geçerli çalışan RDSH kapasitesini denetler. Çalışan oturum ana bilgisayar VM 'lerinin, config. xml dosyasında tanımlanan SessionThresholdPerCPU parametresine göre var olan oturumları desteklemek için yeterli kapasiteye sahip olup olmadığını hesaplar. Aksi takdirde, betik konak havuzunda ek oturum ana bilgisayarı VM 'Leri başlatır.
+En yüksek kullanım süresi boyunca, komut dosyası her bir konak havuzu için geçerli oturum sayısını ve geçerli çalışan RDSH kapasitesini denetler. Çalışan oturum ana bilgisayar VM 'lerinin, config. json dosyasında tanımlanan SessionThresholdPerCPU parametresine göre mevcut oturumları desteklemek için yeterli kapasiteye sahip olup olmadığını hesaplar. Aksi takdirde, betik konak havuzunda ek oturum ana bilgisayarı VM 'Leri başlatır.
 
-En yoğun kullanım süresi boyunca, betik, config. xml dosyasındaki MinimumNumberOfRDSH parametresine bağlı olarak hangi oturum ana bilgisayar VM 'lerinin kapanması gerektiğini belirler. Komut dosyası, konaklara bağlanan yeni oturumları engellemek için oturum Konağı VM 'lerini boşaltma moduna ayarlayacaktır. Config. xml dosyasında **Limitsecondstoforcelogoffuser** parametresini sıfır olmayan pozitif bir değere ayarlarsanız betik, şu anda oturum açmış olan tüm kullanıcılara, işi kaydetmesi, yapılandırılan süreyi beklemesi ve ardından kullanıcıları oturumu kapatmaya zorlayacaktır. Tüm Kullanıcı oturumları bir oturum ana bilgisayar VM 'sinde kapatıldıktan sonra, komut dosyası sunucuyu kapatır.
+En yoğun kullanım süresi boyunca, betik, config. JSON dosyasındaki MinimumNumberOfRDSH parametresine bağlı olarak hangi oturum ana bilgisayar VM 'lerinin kapanması gerektiğini belirler. Komut dosyası, konaklara bağlanan yeni oturumları engellemek için oturum Konağı VM 'lerini boşaltma moduna ayarlayacaktır. Config. json dosyasında **Limitsecondstoforcelogoffuser** parametresini sıfır olmayan pozitif bir değere ayarlarsanız, betik, şu anda oturum açmış olan tüm kullanıcılara iş kaydetmek, yapılandırılan süreyi beklemek ve ardından kullanıcıların oturumu açmasını zorlayacaktır. Tüm Kullanıcı oturumları bir oturum ana bilgisayar VM 'sinde kapatıldıktan sonra, komut dosyası sunucuyu kapatır.
 
-Config. xml dosyasında **Limitsecondstoforcelogoffuser** parametresini sıfır olarak ayarlarsanız betik, ana bilgisayar havuzu özelliklerindeki oturum yapılandırma ayarının kullanıcı oturumlarını kapatmayı işlemesine izin verir. Bir oturum ana bilgisayar VM 'sinde herhangi bir oturum varsa, oturum ana bilgisayarı VM çalışır durumda kalır. Herhangi bir oturum yoksa, betik oturum ana bilgisayarı sanal makinesini kapatır.
+Config. JSON dosyasındaki **Limitsecondstoforcelogoffuser** parametresini sıfır olarak ayarlarsanız betik, ana bilgisayar havuzu özelliklerindeki oturum yapılandırma ayarının kullanıcı oturumlarını kapatmayı işlemesine izin verir. Bir oturum ana bilgisayar VM 'sinde herhangi bir oturum varsa, oturum ana bilgisayarı VM çalışır durumda kalır. Herhangi bir oturum yoksa, betik oturum ana bilgisayarı sanal makinesini kapatır.
 
 Betik, Görev Zamanlayıcı kullanarak Scaler VM sunucusunda düzenli olarak çalışacak şekilde tasarlanmıştır. Uzak Masaüstü Hizmetleri ortamınızın boyutuna bağlı olarak uygun zaman aralığını seçin ve sanal makinelerin başlatılmasının ve kapanmasının biraz zaman alabilir olduğunu unutmayın. Ölçek betiğini 15 dakikada bir çalıştırmayı öneririz.
 

@@ -1,5 +1,5 @@
 ---
-title: Python için ADAL MSAL geçiş kılavuzu | Mavisi
+title: Python ADAL MSAL geçiş kılavuzu | Mavisi
 description: Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) Python uygulamanızı Python için Microsoft kimlik doğrulama kitaplığı 'na (MSAL) geçirmeyi öğrenin.
 services: active-directory
 titleSuffix: Microsoft identity platform
@@ -15,12 +15,12 @@ ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72a4af690a1433f6a185ab17f06748d67927edea
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 110c719eaf68e8be618e5c865f1ac7a2cf917719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424412"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python için ADAL MSAL geçiş kılavuzu
 

@@ -2,19 +2,15 @@
 title: Azure Otomasyonu 'nda bağlantı varlıkları
 description: Azure Otomasyonu 'ndaki bağlantı varlıkları, bir runbook veya DSC yapılandırmasından bir dış hizmete veya uygulamaya bağlanmak için gereken bilgileri içerir. Bu makalede, bağlantıların ayrıntıları ve hem metin hem de grafik yazarken bunlarla nasıl çalışılacağı açıklanmaktadır.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366799"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Otomasyonu 'nda bağlantı varlıkları
 

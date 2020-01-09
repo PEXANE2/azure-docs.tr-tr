@@ -1,68 +1,68 @@
 ---
 title: Visual Studio App Center ve Azure hizmetleriyle uygulamalarınızın yaşam döngüsünü otomatikleştirin
-description: Mobil uygulamalarınız için sürekli derleme ve tümleştirme ayarlamaya yardımcı olan App Center gibi hizmetler hakkında bilgi edinin.
+description: Mobil uygulamalarınız için sürekli derlemeyi ve tümleştirmeyi ayarlamaya yardımcı olan App Center gibi hizmetler hakkında bilgi edinin.
 author: elamalani
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 07e8e0edc4638c6c0bf9acc205175aa731c0f8bc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9b0a9e10a88836ce83e636db20180c3692ab4429
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453186"
 ---
 # <a name="automate-the-lifecycle-of-your-apps-with-continuous-build-and-integration"></a>Sürekli derleme ve tümleştirme sayesinde uygulamalarınızın yaşam döngüsünü otomatikleştirin
 
-Geliştiriciler olarak kod yazar ve kod deposuna iade edersiniz, ancak depoya iade edilen işlemeler her zaman tutarlı olmayabilir. Aynı projede çalışan birden fazla geliştirici sayesinde, sorunlar tümleştirmeyle birlikte gelir ve takım işlerin çalışmaması durumunda, hatalar devam etmez ve proje geliştirme gecikir. Geliştiricilerin, hata olup olmadığını denetlemek için tüm yazılım kodunun oluşturulup test edildiğini beklemeniz gerekir ve bu işlem, işlemi yavaşlatır ve daha az yinelemeli hale getirir. 
+Geliştiriciler olarak kod yazar ve kod deposuna iade edersiniz, ancak depoya iade edilen işlemeler her zaman tutarlı olmayabilir. Birden çok geliştirici aynı proje üzerinde çalışırken, sorunlar tümleştirme ile birlikte gelebilir. Ekipler, işlerin işe madığı, hata oluşturan ve proje geliştirmenin gecikdüğü durumlarda çalışabilir. Geliştiricilerin, hataları denetlemek için tüm yazılım kodunun oluşturulup Test edilene kadar beklemesi gerekir. Bu işlem, işlemi yavaşlatır ve daha az yinelemeli hale getirir. 
 
-**Sürekli derleme ve tümleştirmeyle**, geliştiriciler yalnızca kaynak kodu deposuna yaptığı değişiklikleri yerine getirme ve test etme işlemlerini basitleştirecek ancak her zaman çalışması için test ve doğrulamaları derleme ortamına yerleştirmelerine olanak sağlar kendi kodlarına karşı testler. Kaynak kodda yapılan tüm değişiklikler, depoya yapılan her bir kayıt olduğunda sürekli olarak oluşturulur. Her iadede, CI sunucusu geliştiricinin oluşturduğu testi doğrular ve yürütür. Testler geçmezse, daha fazla değişiklik için kod geri gönderilir. Bu, geliştiricinin oluşturulan derlemeleri bozmamaları ve ayrıca geliştirici üretkenliğini artıran tüm testleri bilgisayarlarında yerel olarak çalıştırmamaları için izin verir. 
+Sürekli derleme ve tümleştirmeyle, geliştiriciler, değişiklikleri kaynak kodu deposuna kaydederek ve test ve doğrulamaları derleme ortamına yerleştirerek, derlemeleri basitleştirebilir ve kodlarını test edebilir. Bu şekilde, her zaman kendi kodlarına göre testler çalıştırırlar. Kaynak kodda yapılan tüm değişiklikler, depoya yapılan bir kayıt olduğunda sürekli olarak oluşturulur. Her iadede sürekli tümleştirme (CI) sunucusu, geliştiricinin oluşturduğu tüm testleri doğrular ve yürütür. Testler geçmezse, daha fazla değişiklik için kod geri gönderilir. Bu şekilde, geliştiriciler oluşturulan yapıları bozmayın. Ayrıca, geliştirici üretkenliğini artıran tüm testleri bilgisayarlarında yerel olarak çalıştırmak zorunda kalmaz. 
 
 ## <a name="key-benefits"></a>Önemli avantajlar
-- **Otomatik** derleme, test ve dağıtım işlem hattı.
-- Daha hızlı yayın ücretleri sağlamak için **hataları tespit edin ve sorunları erken giderin** .
-- **Kodu** daha sık işleyin ve uygulamaları hızla oluşturun.
-- Herhangi bir sorunla karşılaşmadan kodu hızla değiştirme **esnekliği** .
-- **Pazara daha hızlı** bir şekilde vakit, yalnızca iyi kalite kodunun tüm şekilde kullanmasını sağlar.
-- Küçük kod, küçük kod parçalarını tek seferde tümleştirmesine izin verdiğinden **değişir** .
-- **Ekip saydamlığının ve sorumluluklığın artması** , yalnızca müşterilerinizden ancak takımınızdan değil, **sürekli geri bildirimler** almanızı sağlar.
+- İşlem hatları için derlemelerinizi, testlerinizi ve dağıtımlarınızı otomatikleştirin.
+- Daha hızlı yayın ücretleri sağlamak için hataları tespit edin ve sorunları erken giderin.
+- Kodu daha sık işleyin ve uygulamaları hızla oluşturun.
+- Herhangi bir sorunla karşılaşmadan kodu hızla değiştirme esnekliği elde edin.
+- Yalnızca iyi kalitede kodun tüm şekilde kullanmasını sağlamak için pazara daha hızlı vakit kazanın.
+- Küçük kod değişikliklerini daha verimli hale getirin çünkü küçük kod parçaları tek seferde tümleşiktir.
+- Müşterilerinizin ve takımınızdan sürekli geri bildirim alabilmeniz için ekip saydamlığını ve sorumlulutürei artırın.
 
-Mobil uygulamalarınızda sürekli tümleştirme işlem hattını etkinleştirmek için aşağıdaki hizmetleri kullanın.
+Mobil uygulamalarınızda sürekli bir tümleştirme işlem hattını etkinleştirmek için aşağıdaki hizmetleri kullanın.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center yapı](/appcenter/build/) hizmeti, takımınızın üzerinde çalıştığı, güvenli bir bulut altyapısı kullanarak yerel ve platformlar arası uygulamalar oluşturmanıza yardımcı olur. App Center, deponuzu kolayca bağlayabilir ve derleme sunucularını yerel olarak yapılandırma hakkında endişelenmenize gerek kalmadan ve iş arkadaşınızın makinesinde, karmaşık yapılandırmalarda ve bir iş arkadaşınızın makinesinde bulunan ancak sizinkiyle olmayan koddan Uygulamanızı buluta oluşturmaya başlayabilirsiniz.
+[App Center derlemesi](/appcenter/build/) , takımınızın güvenli bir bulut altyapısı kullanarak üzerinde çalıştığı yerel ve platformlar arası uygulamalar oluşturmanıza yardımcı olur. Deponuzu kolayca bağlanarak Visual Studio App Center, her yürütmede uygulamanızı bulutta oluşturmaya başlayabilirsiniz. Yapı sunucularını yerel olarak yapılandırma konusunda endişelenmenize gerek yoktur, karmaşık yapılandırmalar ve bir iş arkadaşınızın makinesinde bulunan ancak sizinkiyle ilgili bir kod oluşturur.
 
-App Center hizmetlerinin gücü sayesinde iş akışınızı daha da otomatik hale getirebilirsiniz. App Center dağıtmak üzere otomatik olarak, test ediciler ve genel uygulama depolarında yapıları serbest bırakın ya da bulutta bulunan binlerce gerçek cihazda ve işletim sistemi yapılandırmasında otomatik UI testleri çalıştırın App Center Test.
+Visual Studio App Center hizmetlerinin gücü sayesinde iş akışınızı daha da otomatik hale getirebilirsiniz. App Center dağıtımı ile otomatik olarak, test ediciler ve genel uygulama mağazalarına otomatik olarak yayın yapabilirsiniz. Ayrıca, App Center Test ile buluttaki binlerce gerçek cihaz ve işletim sistemi yapılandırmasında otomatik UI testleri de çalıştırabilirsiniz.
 
-**Temel Özellikler**
-- Dakikalar içinde **sürekli tümleştirme ayarlayın** ve uygulamaları daha sık ve hızlı bir şekilde oluşturun.
-- **GitHub, BitBucket, Azure DevOps ve GitLab**ile tümleştirin.
-- Yönetilen, bulutta barındırılan makinelerde **hızlı ve güvenli derlemeler** .
-- **Derlemelerinizi "test Başlat" olarak etkinleştirin** ve uygulamanın gerçek dünyada IOS ve Android cihazlarda oluşturulup oluşturulmayacağını doğrulayın.
-- **Yerel ve platformlar arası destek** -IOS, Android, MacOS, Windows, Xamarin, yerel olarak tepki verme.
-- Kopyalama sonrası, derleme öncesi ve derleme sonrası betikleri ekleyerek **derlemelerinizi özelleştirin** .
+**Önemli özellikler**
+- Dakikalar içinde sürekli tümleştirme ayarlayın ve uygulamalar daha sık ve daha hızlı bir şekilde derleyin.
+- GitHub, BitBucket, Azure DevOps ve GitLab ile tümleştirin.
+- Yönetilen, bulutta barındırılan makinelerde hızlı ve güvenli derlemeler oluşturun.
+- Yapılarınızı test başlatmak için etkinleştirin ve uygulamanın gerçek dünyada iOS ve Android cihazlarda oluşturulup oluşturulmayacağını doğrulayın.
+- İOS, Android, macOS, Windows, Xamarin ve yerel olarak tepki verme için yerel ve platformlar arası destek elde edin.
+- Kopyalama sonrası, derleme öncesi ve derleme sonrası betikleri ekleyerek derlemelerinizi özelleştirin.
 
-**Başvur**
-- [App Center kaydolun](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+**Başvurular**
+- [Visual Studio App Center kaydolun](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
 - [App Center derleme ile çalışmaya başlama](/appcenter/build/)
 
 ## <a name="azure-pipelines"></a>Azure Pipelines
- Azure DevOps 'daki bir hizmet olan [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/), tercih ettiğiniz git sağlayıcınızla birlikte çalışan ve Azure dahil olmak üzere çok sayıda ana bulut hizmetine dağıtabileceğiniz, tam özellikli bir sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) hizmetidir. GitHub, GitHub Enterprise Server, GitLab, Bitbucket bulutu veya Azure Repos için kodunuzla başlayabilirsiniz. Daha sonra Microsoft Azure, Google Cloud Platform veya Amazon Web Services için kodunuzun derleme, test etme ve dağıtımını otomatik hale getirebilirsiniz.
+ Azure DevOps 'daki bir hizmet olan [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/), tercih ettiğiniz git sağlayıcınızla birlikte çalışan tam özellikli bir sürekli tümleştirme ve sürekli teslım (CD) hizmetidir. Azure 'un dahil olduğu en büyük bulut hizmetlerine dağıtabilir. GitHub, GitHub Enterprise Server, GitLab, Bitbucket bulutu veya Azure Repos için kodunuzla başlayabilirsiniz. Daha sonra Microsoft Azure, Google Cloud Platform veya Amazon Web Services (AWS) için kodunuzun oluşturma, test etme ve dağıtımını otomatik hale getirebilirsiniz.
 
-**Temel Özellikler**
-- Microsoft ve Microsoft olmayan (node. js, Java) tabanlı sunucu 'ya ek olarak hem yerel (Android, iOS, hem de Windows) ve platformlar arası (Xamarin, Cordova ve tepki verme) mobil uygulamaları için bir CI sunucusu ayarlamaya yönelik Basitleştirilmiş görev tabanlı deneyim teknolojilerinin.
-- **Herhangi bir dil, platform ve bulut** oluşturma, test etme ve Node. js, Python, Java, php, Ruby, Go, C/C++, C#, Android ve iOS uygulamaları dağıtma. Linux, macOS ve Windows'da paralel çalıştırın. Azure, AWS ve GCP gibi bulut sağlayıcılarına dağıtın. Mobil uygulamaları Beta kanalları ve uygulama depoları aracılığıyla dağıtın.
-- **Yerel kapsayıcı desteği** -kolay bir şekilde yeni kapsayıcılar oluşturun ve bunları herhangi bir kayıt defterine gönderin. Kapsayıcıları bağımsız konaklara veya Kubernetes 'e dağıtın.
-- **Gelişmiş iş akışları** -kolay yapı zinciri ve çoklu aşamalı derlemeler. YAML, test tümleştirmesi, yayın kapıları, raporlama ve daha fazlası için destek.
-- **Genişletilebilir** -topluluk tarafından oluşturulan bir dizi derleme, test ve Dağıtım görevi (bolluk 'Ten SonarCloud 'a yüzlerce uzantı) kullanın. Jenkins gibi diğer CI sistemlerinden de dağıtım yapabilir ve tümleştirmenize yardımcı olması için Web kancaları ve REST API 'Leri kullanabilirsiniz
-- Ortak ve özel depolar için **bulutta barındırılan ücretsiz derlemeler** .
-- Amazon Web Services, Google Cloud Platform vb. gibi **diğer bulut satıcılarına dağıtımı destekler** .
+**Önemli özellikler**
+- **CI sunucusunu ayarlamaya yönelik Basitleştirilmiş görev tabanlı deneyim:** Microsoft ve Microsoft olmayan (node. js, Java) tabanlı sunucu teknolojilerine ek olarak hem yerel (Android, iOS, hem de Windows) ve platformlar arası (Xamarin, Cordova ve tepki verme) mobil uygulamaları için bir CI sunucusu ayarlayın.
+- **Herhangi bir dil, platform ve bulut:** Node. js, Python, Java, php, Ruby, Go, C/C++, C#, Android ve iOS uygulamaları oluşturun, test edin ve dağıtın. Linux, macOS ve Windows'da paralel çalıştırın. Azure, AWS ve Google Cloud Platform gibi bulut sağlayıcılarına dağıtın. Mobil uygulamaları Beta kanalları ve uygulama depoları aracılığıyla dağıtın.
+- **Yerel kapsayıcı desteği:** Kolayca yeni kapsayıcılar oluşturun ve bunları herhangi bir kayıt defterine gönderin. Kapsayıcıları bağımsız konaklara veya Kubernetes 'e dağıtın.
+- **Gelişmiş iş akışları:** Kolayca derleme zincirlerini ve çoğullanan derlemeleri oluşturun. YAML, test tümleştirmesi, yayın kapıları, raporlama ve daha fazlası için destek alın.
+- **Genişletilebilir:** Bolluk 'ten SonarCloud 'a yüzlerce uzantı içeren, topluluk tarafından oluşturulan derleme, test ve dağıtım görevleri aralığını kullanın. Jenkins gibi diğer CI sistemlerinden de dağıtım yapabilirsiniz. Web kancaları ve REST API 'Leri tümleştirmenize yardımcı olabilir.
+- **Bulutta barındırılan ücretsiz derlemeler:** Bu derlemeler ortak ve özel depolar için kullanılabilir.
+- **Diğer bulut satıcılarına dağıtım desteği:** Satıcıların AWS ve Google Cloud Platform vardır.
 
-**Başvur**
+**Başvurular**
 - [Azure Pipelines Kılavuzu ile çalışmaya başlama](/azure/devops/pipelines/get-started/pipelines-get-started?view=azure-devops)
 - [Azure DevOps ile çalışmaya başlama](https://app.vsaex.visualstudio.com/signup/) 
 - [Hızlı başlangıçlar](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)
 
-Uygulama derlemelerinizi için doğru hizmeti seçin, [App Center derleme ile Azure Pipelines](/appcenter/build/choose-between-services)karşılaştıran makaleyi izleyin.
+Uygulama derlemelerinizin doğru hizmetini seçmenize yardımcı olmak için [App Center derlemeyi ve Azure Pipelines](/appcenter/build/choose-between-services)karşılaştıran makaleye bakın.

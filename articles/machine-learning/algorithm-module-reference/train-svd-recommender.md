@@ -1,7 +1,7 @@
 ---
 title: 'Eğitim SVD öneren: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetinde tren SVD öneren modülünü kullanarak, SVD algoritmasını kullanarak bir Bayeme öneren eğeceğinizi öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning, SVD algoritmasını kullanarak bir Bayeme öneren eğitme için, öneren ' deki eğitme SVD modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428416"
 ---
-# <a name="train-svd-recommender"></a>SVD öneren eğitme
+# <a name="train-svd-recommender"></a>SVD Önerenini Eğitme
 
 Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme) bulunan SVD öneren modülünün nasıl kullanılacağı açıklanır. Tek değer ayrıştırma (SVD) algoritmasına dayalı bir öneri modeli geliştirmek için bu modülü kullanın.  
 
@@ -50,7 +50,7 @@ Modülünü kullanmadan önce, giriş verileriniz öneri modelinin beklediği bi
 
 Azure Machine Learning tasarımcısında **Restoran derecelendirme** veri kümesi ( **kaydedilmiş veri kümelerini** seçin ve ardından **örnekler**) beklenen biçimi gösterir:
 
-|UserID|Placeıd|rating|
+|userID|Placeıd|rating|
 |------------|-------------|------------|
 |U1077|135085|2|
 |U1077|135038|2|
@@ -65,7 +65,7 @@ Bu örnekten, tek bir kullanıcının iki ayrı Restoranları derecelendirdiğin
     
     Her faktörün, kullanıcının öğeyle ne kadar ilgili olduğunu ölçer. Faktörlerin sayısı Ayrıca, görünmeyen faktör alanının boyutaldır. Artan Kullanıcı ve öğe sayısı sayesinde daha fazla sayıda etmen ayarlamanız daha iyidir. Ancak sayı çok büyükse performans kaybolabilir.
     
-3.  **Öneri algoritması yinelemesi sayısı** , algoritmanın giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı arttıkça, tahmine göre daha kesin olur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30 ' dur.
+3.  **Öneri algoritması yinelemesi sayısı** , algoritmanın giriş verilerini kaç kez işlemesi gerektiğini gösterir. Bu sayı arttıkça, tahmine göre daha kesin olur. Ancak, daha yüksek bir sayı daha yavaş eğitim anlamına gelir. Varsayılan değer 30’dur.
 
 4.  **Öğrenme oranı**için, öğrenme için adım boyutunu tanımlayan 0,0 ile 2,0 arasında bir sayı girin.
 
@@ -76,4 +76,4 @@ Bu örnekten, tek bir kullanıcının iki ayrı Restoranları derecelendirdiğin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

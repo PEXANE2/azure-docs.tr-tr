@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435676"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -20,7 +20,7 @@ Apache Hive Batch işleri, etkileşimli Hive sorguları ve Apache Spark için Py
 
 Spark & Hive araçları, Windows, Linux ve macOS içeren Visual Studio Code tarafından desteklenen platformlar için yüklenebilir. Farklı platformlar için aşağıdaki önkoşullara göz önünde edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -284,7 +284,7 @@ Yöntem 2 bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klas�
 
     | ad | açıklama | type |
     | :- | :- | :- |
-    | file | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
+    | dosyası | Yürütülecek uygulamayı içeren dosya | Yol (gerekli) |
     | proxyUser | İşi çalıştırırken taklit edilecek Kullanıcı | Dize |
     | className | Uygulama Java/Spark ana sınıfı | Dize |
     | args | Uygulama için komut satırı bağımsız değişkenleri | Dizelerin listesi |
@@ -309,7 +309,7 @@ Yöntem 2 bir dosya gönderir ve. vscode klasörünün otomatik olarak iş klas�
     | appId | Bu oturumun uygulama kimliği | Dize |
     | appInfo | Ayrıntılı uygulama bilgileri | Anahtar = Val eşlemesi |
     | log | Günlük satırları | Dizelerin listesi |
-    | state |Toplu iş durumu | Dize |
+    | durum |Toplu iş durumu | Dize |
 
     > [!NOTE]
     > Atanan Livy yapılandırması, betiği gönderdiğinizde çıkış bölmesinde görüntülenir.
@@ -403,7 +403,7 @@ Data Lake Storage 2. kullanarak bir HDInsight kümesine iş gönderdiğinizde, A
 
 > [!NOTE]
 >
-> Depolama hesabı için erişim anahtarını Azure portal alabilirsiniz. Daha fazla bilgi için bkz. [erişim anahtarlarını görüntüleme ve kopyalama](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
+> Depolama hesabı için erişim anahtarını Azure portal alabilirsiniz. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
 
 ## <a name="unlink-cluster"></a>Kümenin bağlantısını kaldır
 

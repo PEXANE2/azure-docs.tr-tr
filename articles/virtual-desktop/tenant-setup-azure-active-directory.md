@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459512"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
@@ -25,7 +25,9 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Azure Active Directory kiracınızdaki bir kullanıcıya TenantCreator uygulama rolünü atayın.
 > * Windows sanal masaüstü kiracısı oluşturun.
 
-Windows sanal masaüstü kiracınızı kurmak için gerekenler şunlardır:
+## <a name="what-you-need-to-set-up-a-tenant"></a>Kiracı kurmak için gerekenler
+
+Windows sanal masaüstü kiracınızı ayarlamaya başlamadan önce şunları yaptığınızdan emin olun:
 
 * Windows sanal masaüstü kullanıcıları için [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) Kiracı kimliği.
 * Azure Active Directory kiracının içindeki genel yönetici hesabı.
@@ -33,6 +35,8 @@ Windows sanal masaüstü kiracınızı kurmak için gerekenler şunlardır:
    * Yönetici hesabı, Windows sanal masaüstü kiracısı oluşturmaya çalıştığınız Azure Active Directory kiracısından kaynaklıdır. Bu işlem Azure Active Directory B2B (konuk) hesaplarını desteklemez.
    * Yönetici hesabının bir iş veya okul hesabı olması gerekir.
 * Azure aboneliği.
+
+Bu öğreticide açıklanan işlemin düzgün şekilde çalışabilmesi için kiracı KIMLIĞI, genel yönetici hesabı ve Azure aboneliğine sahip olmanız gerekir.
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Windows sanal masaüstüne izin verme
 
@@ -135,6 +139,12 @@ Parantez içine alınmış değerleri, kuruluşunuzla ve kiracınızla ilgili de
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
+```
+
+Hesabınızı bilgisayarınızdan kilitlediyseniz veya bir kişinin sizin devamsızınızda kiracı yöneticisi olarak hareket etmesini gerektiren ikinci bir kullanıcıya yönetici erişimi atamanız iyi bir fikirdir. İkinci bir kullanıcıya yönetici erişimi atamak için, `<TenantName>` ile aşağıdaki cmdlet 'i çalıştırın ve `<Upn>` kiracı adınızla ve ikinci kullanıcının UPN 'si ile değiştirilmiştir.
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

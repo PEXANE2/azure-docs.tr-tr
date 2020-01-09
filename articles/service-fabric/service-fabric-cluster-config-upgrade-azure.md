@@ -1,44 +1,35 @@
 ---
-title: Bir Azure Service Fabric kümesi yapılandırmasını yükseltme | Microsoft Docs
-description: Resource Manager şablonu kullanarak Azure'da bir Service Fabric kümesi çalıştıran yapılandırma yükseltmeyi öğrenin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric kümesinin yapılandırmasını yükseltme
+description: Kaynak Yöneticisi şablonu kullanarak Azure 'da Service Fabric kümesi çalıştıran yapılandırmayı nasıl yükselteceğinizi öğrenin.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476a2d910b916ea29132b108478d06f756454813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096275"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463296"
 ---
-# <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure'daki bir kümeye yapılandırmasını Yükselt 
+# <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure 'da bir kümenin yapılandırmasını yükseltme 
 
-Bu makalede, Service Fabric kümeniz için çeşitli yapı ayarları özelleştirmeyi açıklar. Azure'da barındırılan kümeler için ayarları aracılığıyla özelleştirebilirsiniz [Azure portalında](https://portal.azure.com) veya bir Azure Resource Manager şablonu kullanarak.
+Bu makalede Service Fabric kümeniz için çeşitli doku ayarlarının nasıl özelleştirileceği açıklanır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz.
 
 > [!NOTE]
-> Tüm ayarlar, portalda kullanılabilir değildir ve bu bir [açısından en iyisi, bir Azure Resource Manager şablonu kullanarak özelleştirmek için](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Service Fabric Dev\Test senaryo için yalnızca portalıdır.
+> Portalda tüm ayarlar kullanılamaz ve [bir Azure Resource Manager şablonu kullanarak özelleştirmek en iyi uygulamadır](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Portal yalnızca Service Fabric Dev\Test senaryosu için geçerlidir.
 > 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager şablonlarını kullanarak küme ayarlarını özelleştirme
-Azure kümeleri JSON Resource Manager şablonu aracılığıyla yapılandırılabilir. Farklı ayarlar hakkında daha fazla bilgi için bkz: [kümeleri için yapılandırma ayarlarını](service-fabric-cluster-fabric-settings.md). Örneğin, aşağıdaki adımları yeni bir ayar ekleme Göster *MaxDiskQuotaInMB* için *tanılama* Azure kaynak Gezgini'ni kullanarak bölümü.
+## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarını kullanarak küme ayarlarını özelleştirme
+Azure kümeleri, JSON Kaynak Yöneticisi şablonu aracılığıyla yapılandırılabilir. Farklı ayarlar hakkında daha fazla bilgi edinmek için bkz. [kümeler Için yapılandırma ayarları](service-fabric-cluster-fabric-settings.md). Örnek olarak, aşağıdaki adımlarda Azure Kaynak Gezgini kullanarak *Tanılama* bölümüne *Maxdiskquocontainer MB adlı* yeni bir ayarın nasıl ekleneceği gösterilmektedir.
 
 1. Şuraya gidin: https://resources.azure.com
-2. Aboneliğinize genişleterek gidin **abonelikleri** ->  **\<aboneliğiniz >**  -> **resourceGroups**  ->   **\<Uygulamanızın kaynak grubu >**  -> **sağlayıcıları** -> **Microsoft.ServiceFabric**  ->  **kümeleri** ->  **\<küme adınız >**
-3. Sağ alt köşesinde üst **okuma/yazma.**
-4. Seçin **Düzenle** ve güncelleştirme `fabricSettings` JSON öğesi ve yeni bir öğe ekleyin:
+2. **Abonelik -> ** **\<** , **kaynak grubunuz** -> **ResourceGroups** -> **Microsoft. servicefabric**\<**kümeleri** > **Küme adınızın** ->  ->  -> 
+3. Sağ üst köşede **oku/yaz** ' ı seçin.
+4. `fabricSettings` JSON öğesini **Düzenle** ve Güncelleştir ' i seçin ve yeni bir öğe ekleyin:
 
 ```json
       {
@@ -52,14 +43,14 @@ Azure kümeleri JSON Resource Manager şablonu aracılığıyla yapılandırıla
       }
 ```
 
-Ayrıca, Azure Resource Manager ile aşağıdaki yollardan biriyle küme ayarları özelleştirebilirsiniz:
+Ayrıca, Azure Resource Manager aşağıdaki yollarla küme ayarlarını özelleştirebilirsiniz:
 
-- Kullanım [Azure portalında](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) dışarı aktarma ve Kaynak Yöneticisi şablonu güncelleştirmek için.
-- Kullanım [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) dışarı aktarma ve Resource Manager şablonu güncelleştirmek için.
-- Kullanım [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) dışarı aktarma ve Resource Manager şablonu güncelleştirmek için.
-- Azure PowerShell'i [kümesi AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) ve [Remove-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) ayarı değiştirmek için komutları doğrudan.
-- Azure clı'yi [az sf küme ayarı](https://docs.microsoft.com/cli/azure/sf/cluster/setting) ayarı değiştirmek için komutları doğrudan.
+- Kaynak Yöneticisi şablonunu dışarı aktarmak ve güncelleştirmek için [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) kullanın.
+- Kaynak Yöneticisi şablonunu dışarı aktarmak ve güncelleştirmek için [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) 'i kullanın.
+- Kaynak Yöneticisi şablonunu dışarı aktarmak ve güncelleştirmek için [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) 'yi kullanın.
+- Ayarı doğrudan değiştirmek için Azure PowerShell [set-azservicefabricsetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) ve [Remove-azservicefabricsetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) komutlarını kullanın.
+- Ayarı doğrudan değiştirmek için Azure CLı [az SF Cluster Setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) komutlarını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Hakkında bilgi edinin [Service Fabric küme ayarlarını](service-fabric-cluster-fabric-settings.md).
-* Bilgi edinmek için nasıl [kümenizin ölçeğini daraltma ve genişletme](service-fabric-cluster-scale-up-down.md).
+* [Service Fabric kümesi ayarları](service-fabric-cluster-fabric-settings.md)hakkında bilgi edinin.
+* [Kümenizin ölçeğini ve ölçeğini nasıl ölçeklendireceğinizi](service-fabric-cluster-scale-up-down.md)öğrenin.

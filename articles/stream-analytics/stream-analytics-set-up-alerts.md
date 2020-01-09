@@ -1,73 +1,72 @@
 ---
-title: Azure Stream Analytics işleri için uyarıları izleme işlevini ayarlama
-description: Bu makalede, izleme ve Azure Stream Analytics işleri için uyarılar ayarlamak için Azure portalını kullanmayı açıklar.
-services: stream-analytics
+title: Azure Stream Analytics işleri için izleme uyarılarını ayarlama
+description: Bu makalede, Azure Stream Analytics işleri için izleme ve uyarıları ayarlamak üzere Azure portal nasıl kullanılacağı açıklanır.
 author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 836b7a489e3c73d745b128cbbc0c3566220ac409
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458726"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyarıları ayarlama
 
-İş sürekli olarak sorunsuz çalıştığından emin olmak için Azure Stream Analytics işinizi izlemek önemlidir. Bu makalede, izlenmesi gereken genel senaryolar için uyarıları ayarlama açıklar. 
+İş sorunsuz çalıştığından emin olmak için Azure Stream Analytics işinizi izlemeniz önemlidir. Bu makalede izlenmesi gereken yaygın senaryolar için uyarıların nasıl ayarlanacağı açıklanır. 
 
-Portal üzerinden işlem günlükleri verilerden ölçümlere ilişkin kurallar tanımlayabilirsiniz yanı [program aracılığıyla](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
+Işlem günlüğü verilerinden, Portal üzerinden ve [programlama](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)yoluyla ölçümler hakkında kurallar tanımlayabilirsiniz.
 
-## <a name="set-up-alerts-in-the-azure-portal"></a>Azure portalında uyarıları ayarlama
-### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>Bir işi beklenmedik bir şekilde durduruluyor olduğunda uyarı alın
+## <a name="set-up-alerts-in-the-azure-portal"></a>Azure portal uyarıları ayarlama
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>Bir iş beklenmedik bir şekilde durdurulduğunda uyarı alın
 
-Aşağıdaki örnek, işinizi başarısız durumda girdiğinde için uyarıları ayarlama gösterilmektedir. Bu uyarı, tüm işler için önerilir.
+Aşağıdaki örnekte, işiniz başarısız durumuna girdiğinde için uyarıların nasıl ayarlanacağı gösterilmektedir. Bu uyarı tüm işler için önerilir.
 
-1. Stream Analytics işi için bir uyarı oluşturmak istediğiniz Azure portalında açın.
+1. Azure portal, bir uyarı oluşturmak istediğiniz Stream Analytics işi açın.
 
-2. Üzerinde **iş** sayfasında, gitmek **izleme** bölümü.  
+2. **İş** sayfasında **izleme** bölümüne gidin.  
 
-3. Seçin **ölçümleri**, ardından **yeni uyarı kuralı**.
+3. **Ölçümler**' i ve sonra **Yeni uyarı kuralı**' nı seçin.
 
-   ![Azure portalında Stream Analytics uyarıları Kurulumu](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
+   ![Azure portal Stream Analytics Uyarıları kurulumu](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Stream Analytics işinizin adı altında otomatik olarak görünmelidir **kaynak**. Tıklayın **koşul Ekle**seçip **tüm yönetim işlemlerini** altında **sinyal mantığını yapılandırma**.
+4. Stream Analytics iş adınız **kaynak**altında otomatik olarak görünmelidir. **Koşul Ekle**' ye tıklayın ve **sinyal mantığını Yapılandır**altında **tüm yönetim işlemlerini** seçin.
 
-   ![Stream Analytics uyarı için sinyal adı seçin](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
+   ![Stream Analytics uyarının sinyal adını seçin](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. Altında **sinyal mantığını yapılandırma**, değiştirme **olay düzeyi** için **tüm** değiştirip **durumu** için **başarısız** . Bırakın **olayı başlatan tarafından** seçin ve boş **Bitti**.
+5. **Sinyal mantığını Yapılandır**altında **olay düzeyini** **Tümü** olarak değiştirin ve **durumu** **başarısız**olarak değiştirin. **Olayı boş olarak başlattığını** bırakın ve **bitti**' yi seçin.
 
-   ![Stream Analytics uyarı için sinyal mantığını yapılandırma](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
+   ![Stream Analytics uyarısı için sinyal mantığını yapılandırma](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
-6. Var olan bir eylem grubu seçin veya yeni bir grup oluşturun. Bu örnekte, yeni bir eylem grubu adı verilen **TIDashboardGroupActions** ile oluşturulmuş bir **e-postaları** sahip kullanıcılar bir e-posta gönderen eylemi **sahibi** Azure kaynak Yönetici rolü.
+6. Mevcut bir eylem grubu seçin veya yeni bir grup oluşturun. Bu örnekte, **sahip** Azure Resource Manager rolüne sahip kullanıcılara bir e-posta gönderen bir **e** -posta eylemiyle **TIDashboardGroupActions** adlı yeni bir eylem grubu oluşturulmuştur.
 
-   ![Azure akış analizi işi için uyarı ayarlama](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
+   ![Azure Akış Analizi işi için uyarı ayarlama](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **Kaynak**, **koşul**, ve **Eylem grupları** her bir giriş olmalıdır. Uyarıların tetikleneceği sırada tanımlanan koşullar karşılanması gerektiğini unutmayın. Örneğin, son 15 dakika için ölçümün ortalama değerini her 5 dakikada bir ölçebilirsiniz.
+7. **Kaynak**, **koşul**ve **eylem gruplarının** her birinin bir girişi olmalıdır. Uyarıların tetiklenmesi için, tanımlanan koşulların karşılanması gerektiğini unutmayın. Örneğin, son 15 dakika için ölçümün ortalama değerini her 5 dakikada bir ölçebilirsiniz.
 
-   ![Stream Analytics uyarı kuralı oluşturma](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![Stream Analytics uyarı kuralı oluştur](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Ekleme bir **uyarı kuralı adı**, **açıklama**ve **kaynak grubu** için **uyarı ayrıntıları** tıklatıp **uyarı oluştur Kural** Stream Analytics işiniz için kural oluşturma.
+   **Uyarı ayrıntılarına** bir **Uyarı kuralı adı**, **açıklaması**ve **kaynak grubunuz** ekleyin ve Stream Analytics işiniz için kural oluşturmak üzere **Uyarı kuralı oluştur** ' a tıklayın.
 
-   ![Stream Analytics uyarı kuralı oluşturma](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![Stream Analytics uyarı kuralı oluştur](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
-## <a name="scenarios-to-monitor"></a>İzleme senaryoları
+## <a name="scenarios-to-monitor"></a>İzlenecek senaryolar
 
-Stream Analytics işinizin performansını izlemek için aşağıdaki uyarıları önerilir. Bu ölçümler son 5 dakika boyunca dakika başı değerlendirilmelidir.
+Stream Analytics işinizin performansını izlemek için aşağıdaki uyarılar önerilir. Bu ölçümler, son 5 dakikalık dönemde dakikada bir değerlendirilmelidir.
 
-|Ölçüm|Koşul|Zaman toplama|Eşik|Düzeltme eylemleri|
+|Ölçüm|Koşul|Zaman toplama|Eşik|Düzeltici eylemler|
 |-|-|-|-|-|
-|SU kullanım yüzdesi|Büyüktür|Maksimum|80|SU kullanım yüzdesi artıran çok etken vardır. Sorgu paralelleştirmesiyle ölçeklendirme veya akış birimi sayısını artırabilirsiniz. Daha fazla bilgi için bkz. [Azure Stream Analytics'te sorgu paralelleştirmesinden yararlanma](stream-analytics-parallelization.md).|
-|Çalışma zamanı hataları|Büyüktür|Toplam|0|Etkinlik veya tanılama günlüklerini inceleyin ve giriş, sorgu veya çıkış için uygun değişiklikleri yapın.|
-|Eşik gecikmesi|Büyüktür|Maksimum|Son 15 dakika boyunca Bu ölçümün ortalama değerini (saniye cinsinden) geç varış toleransı büyük olduğunda. Geç varış toleransı değiştirmediyseniz varsayılan 5 saniye olarak ayarlanır.|Deneyin SUs sayısının artırılması veya sorguyu paralelleştirmek. SUs hakkında daha fazla bilgi için bkz. [anlayın ve akış birimi Ayarla](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Sorguyu paralelleştirmek daha fazla bilgi için bkz: [Azure Stream analytics'te sorgu paralelleştirmesinden](stream-analytics-parallelization.md).|
-|Giriş serileştirme kaldırma hataları|Büyüktür|Toplam|0|Etkinlik veya tanılama günlüklerine inceleyin ve uygun değişiklikleri giriş yapın. Tanılama günlükleri hakkında daha fazla bilgi için bkz. [Azure Stream tanılama günlüklerini kullanarak Analiz sorunlarını giderme](stream-analytics-job-diagnostic-logs.md)|
+|SU kullanımı yüzdesi|Şu değerden fazla:|Maksimum|80|% SU kullanımını artıran birden fazla faktör vardır. Sorgu paralelleştirme ile ölçeklendirebilir veya akış birimi sayısını artırabilirsiniz. Daha fazla bilgi için bkz. [Azure Stream Analytics'te sorgu paralelleştirmesinden yararlanma](stream-analytics-parallelization.md).|
+|Çalışma zamanı hataları|Şu değerden fazla:|Toplam|0|Etkinlik veya tanılama günlüklerini inceleyin ve giriş, sorgu veya çıkışlara uygun değişiklikler yapın.|
+|Filigran gecikmesi|Şu değerden fazla:|Maksimum|Bu ölçümün son 15 dakika boyunca ortalama değeri, geç varış toleransına (saniye cinsinden) fazla olduğunda. Geç varış toleransını değiştirmediyse, varsayılan değer 5 saniyeye ayarlanır.|SUs sayısını artırmayı deneyin veya sorgunuzu paralelleştirme. SUs hakkında daha fazla bilgi için bkz. [akış birimlerini anlama ve ayarlama](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Sorgunuzu paralel hale getirme hakkında daha fazla bilgi için bkz. [Azure Stream Analytics sorgu paralelleştirme özelliğinden yararlanma](stream-analytics-parallelization.md).|
+|Giriş seri kaldırma hataları|Şu değerden fazla:|Toplam|0|Etkinliği veya tanılama günlüklerini inceleyin ve girişte uygun değişiklikleri yapın. Tanılama günlükleri hakkında daha fazla bilgi için bkz. [tanılama günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme](stream-analytics-job-diagnostic-logs.md)|
 
 ## <a name="get-help"></a>Yardım alın
 
-Azure portalında uyarıları yapılandırma hakkında daha fazla ayrıntı için [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+Azure portal uyarılarını yapılandırma hakkında daha fazla ayrıntı için bkz. [uyarı bildirimleri alma](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
 Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

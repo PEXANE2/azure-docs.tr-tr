@@ -1,7 +1,7 @@
 ---
 title: 'Çapraz doğrulama modeli: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Verileri bölümleyerek sınıflandırma veya regresyon modelleriyle ilgili parametre tahminlerini çapraz doğrulamak için Azure Machine Learning hizmetinde çapraz doğrulama modeli modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Verileri bölümleyerek sınıflandırma veya regresyon modelleriyle ilgili parametre tahminlerini çapraz doğrulamak için Azure Machine Learning çapraz doğrulama modeli modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428555"
 ---
-# <a name="cross-validate-model"></a>Çapraz doğrulama modeli
+# <a name="cross-validate-model"></a>Modeli Çapraz Doğrulama
 
 Bu makalede, Azure Machine Learning Tasarımcısı 'nda (Önizleme) çapraz doğrulama modeli modülünün nasıl kullanılacağı açıklanır. *Çapraz doğrulama* , genellikle bir veri kümesinin çeşitliliğini ve bu verilerden eğitilen herhangi bir modelin güvenilirliğini değerlendirmek için makine öğreniminde kullanılan bir tekniktir.  
 
@@ -127,5 +127,5 @@ Modül, değerlendirdiğiniz modelin türüne bağlı olarak her katlama için a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 

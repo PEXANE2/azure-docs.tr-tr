@@ -1,6 +1,6 @@
 ---
-title: Azure Batch havuzu yeniden boyutlandırma başlangıç olayı | Microsoft Docs
-description: Batch havuzu yeniden boyutlandırma başlangıç olayı başvurusu.
+title: Azure Batch havuzu yeniden boyutlandırma başlangıç olayı
+description: Batch havuzu yeniden boyutlandırma başlangıç olayı başvurusu. Örnek, el ile yeniden boyutlandırmayla 0 ' dan 2 ' ye kadar düğüm yeniden boyutlandırılması için havuz yeniden boyutlandırma başlangıç olayının gövdesini gösterir.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 965c1181399b76523b624d53dc47e59de0208ecb
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 89f4b04f4ef86ffa3978cadb997d6bfb8dae31c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449759"
 ---
 # <a name="pool-resize-start-event"></a>Havuz yeniden boyutlandırma başlangıç olayı
 
@@ -37,7 +37,7 @@ ms.locfileid: "70258276"
 }
 ```
 
-|Öğe|Type|Notlar|
+|Öğe|Tür|Notlar|
 |-------------|----------|-----------|
 |`id`|Dize|Havuzun KIMLIĞI.|
 |`nodeDeallocationOption`|Dize|Havuz boyutu azaltılmışsa, havuzdan düğümlerin ne zaman kaldırılabileceği belirtir.<br /><br /> Olası değerler şunlardır:<br /><br /> **yeniden kuyruğa alma** – çalışan görevleri sonlandırır ve yeniden kuyruğa alma onları sonlandırın. Görevler, iş etkinleştirildiğinde yeniden çalışacaktır. Görevler sonlandırıldıktan hemen sonra düğümleri kaldırın.<br /><br /> **Sonlandır** – çalışan görevleri sonlandırın. Görevler yeniden çalıştırılmaz. Görevler sonlandırıldıktan hemen sonra düğümleri kaldırın.<br /><br /> **taskcompletion** : Şu anda çalışan görevlerin tamamlanmasına izin verin. Beklerken yeni görev zamanlayın. Tüm görevler tamamlandığında düğümleri kaldırın.<br /><br /> **Retaineddata** -çalışmakta olan görevlerin tamamlanmasına izin verin, ardından tüm görev verilerini bekletme dönemlerinin süre sonu için bekleyin. Beklerken yeni görev zamanlayın. Tüm görev bekletme dönemlerinin süresi dolduğunda düğümleri kaldırın.<br /><br /> Varsayılan değer yeniden kuyruğa alma ' dir.<br /><br /> Havuz boyutu artarak değer **geçersiz**olarak ayarlanır.|

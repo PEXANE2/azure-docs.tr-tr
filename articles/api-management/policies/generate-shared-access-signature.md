@@ -1,5 +1,6 @@
 ---
-title: Azure API yönetim ilkesi örneği-paylaşılan erişim Imzası oluştur | Microsoft Docs
+title: Örnek API yönetimi ilkesi-paylaşılan erişim Imzası oluştur
+titleSuffix: Azure API Management
 description: Azure API Management ilkesi örneği-ifadeleri kullanarak paylaşılan erişim Imzasının nasıl oluşturulacağını ve isteği yeniden yazma-URI ilkesiyle Azure depolama 'ya iletmeyi gösterir.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 45e29673e264f64c976cce664eaf749636400c7f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0f003bc268af6b7f8bd6b046ae84734dbefeac28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442455"
 ---
 # <a name="generate-shared-access-signature"></a>Paylaşılan erişim Imzası oluştur
 

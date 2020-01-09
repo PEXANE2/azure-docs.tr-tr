@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429467"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Oturum açma Etkinliği raporu hata kodları 
 
@@ -36,9 +36,13 @@ Bir oturum açma başarısız olduğunda, hataya karşılık gelen bir hata kodu
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Başarısız oturum açma girişimlerini nasıl görüntüleyebilirim? 
 
-[Azure Portal](https://portal.azure.com) [oturum açma raporuna](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) gidin.
+[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 
-![Oturum açma etkinliği](./media/reference-sign-ins-error-codes/61.png "Oturum açma etkinliği")
+![Azure Active Directory seçin](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+**İzleme**bölümünde oturum **açma** işlemlerini seçerek [oturum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)açma işlemlerini açın.
+
+![Oturum açma etkinliği](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "Oturum açma etkinliği")
 
 **Oturum açma durumu** açılan kutusunda **hata** ' u seçerek, tüm başarısız oturum açma işlemlerini göstermek için raporu filtreleyin.
 
@@ -179,7 +183,7 @@ Ayrıca, [Raporlama API](concept-reporting-api.md)'sini kullanarak oturum açma 
 |90010|İstek çeşitli nedenlerle desteklenmez. Örneğin, istek desteklenmeyen bir istek yöntemi kullanılarak yapılır (yalnızca POST yöntemi desteklenir) veya istenen belirteç imzalama algoritması desteklenmez. Uygulama geliştiricisine başvurun.|
 |90014| Protokol iletisi için gerekli bir alan eksikti, uygulama sahibine başvurun. Uygulama sahibiyseniz, oturum açma isteği için gerekli tüm parametrelere sahip olduğunuzdan emin olun. |
 |90051| Geçersiz temsili belirteci. Geçersiz National Cloud ID ({Cloudıd}) belirtildi.|
-|90072| Hesabın, önce kiracıya bir dış Kullanıcı olarak eklenmesi gerekir. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
+|90072| Hesabın önce kiracıda bir dış kullanıcı olarak eklenmesi gerekiyor. Oturumu kapatın ve farklı bir Azure AD hesabıyla tekrar oturum açın.|
 |90094| Verme yönetici izinleri gerektirir. Kiracı yöneticinizden bu uygulama için onay sağlamasını isteyin.|
 |500011| <site address> adlı kaynak sorumlusu <tenant ID>adlı kiracıda bulunamadı. Bu durum, uygulama kiracının Yöneticisi tarafından yüklenmediyse veya kiracının kiracısındaki herhangi bir kullanıcı tarafından ' a onaylı olması durumunda gerçekleşebilir. Kimlik doğrulaması isteğinizi yanlış kiracıya göndermiş olabilirsiniz.|
 |500021| Kiracı, şirket proxy 'si ile kısıtlıdır. Kaynak erişimini reddetme.|

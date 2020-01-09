@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457423"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
@@ -168,4 +168,3 @@ Blob depolama hesaplarında coğrafi çoğaltma veri aktarımı maliyeti de bir 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Depolama hesabı oluşturma](storage-quickstart-create-account.md)
-* [Azure depolama hesaplarını yönetme](storage-account-manage.md)

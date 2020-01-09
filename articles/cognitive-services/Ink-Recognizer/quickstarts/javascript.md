@@ -1,21 +1,21 @@
 ---
 title: 'Hızlı başlangıç: mürekkep tanıyıcı REST API ve Node. js ile dijital mürekkep tanıma'
 titleSuffix: Azure Cognitive Services
-description: Dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
+description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 19626bd68ad82108b2ebaa823d196d0f22008e29
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448138"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve JavaScript ile dijital mürekkep tanıma
 
@@ -29,7 +29,7 @@ Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağ
 
 Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905)' da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Web tarayıcısı
 - Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
@@ -57,7 +57,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
     </html>
     ```
 
-2. @No__t-0 etiketi içinde aşağıdaki HTML 'yi ekleyin:
+2. `<body>` etiketi içinde aşağıdaki HTML 'yi ekleyin:
     1. JSON isteğini ve yanıtını görüntülemek için iki metin alanı.
     2. Daha sonra oluşturulacak `recognizeInk()` işlevini çağırmak için bir düğme.
     
@@ -75,9 +75,9 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="load-the-example-json-data"></a>Örnek JSON verilerini yükleme
 
-1. @No__t-0 etiketi içinde sampleJson için bir değişken oluşturun. Ardından JSON dosyanızı seçebilmeniz için dosya Gezgini 'ni açan `openFile()` adlı bir JavaScript işlevi oluşturun. @No__t-0 düğmesine tıklandığında, bu işlevi çağırır ve dosyayı okumaya başlar.
-2. Dosyayı zaman uyumsuz olarak işlemek için `FileReader` nesnesinin `onload()` işlevini kullanın. 
-    1. Dosyadaki `\n` veya `\r` karakterlerini boş bir dize ile değiştirin. 
+1. `<script>` etiketi içinde sampleJson için bir değişken oluşturun. Ardından JSON dosyanızı seçebilmeniz için dosya Gezgini 'ni açan `openFile()` adlı bir JavaScript işlevi oluşturun. `Recognize ink` düğmesine tıklandığında, bu işlevi çağırır ve dosyayı okumaya başlar.
+2. Dosyayı zaman uyumsuz olarak işlemek için `FileReader` nesnenin `onload()` işlevini kullanın. 
+    1. Dosyadaki tüm `\n` veya `\r` karakterleri boş bir dize ile değiştirin. 
     2. Metni geçerli JSON 'a dönüştürmek için `JSON.parse()` kullanın
     3. Uygulamadaki `request` metin kutusunu güncelleştirin. JSON dizesini biçimlendirmek için `JSON.stringify()` kullanın. 
     
@@ -98,7 +98,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>Mürekkep tanıyıcı API 'sine istek gönderme
 
-1. @No__t-0 etiketi içinde, `recognizeInk()` adlı bir işlev oluşturun. Bu işlev daha sonra API 'YI çağıracak ve sayfayı Yanıtla güncelleştirecek. Bu işlev içindeki aşağıdaki adımlardan kodu ekleyin. 
+1. `<script>` etiketi içinde `recognizeInk()`adlı bir işlev oluşturun. Bu işlev daha sonra API 'YI çağıracak ve sayfayı Yanıtla güncelleştirecek. Bu işlev içindeki aşağıdaki adımlardan kodu ekleyin. 
         
     ```javascript
     function recognizeInk() {
@@ -106,7 +106,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
     }
     ```
 
-    1. Endpoint URL 'niz, abonelik anahtarınız ve örnek JSON için değişkenler oluşturun. Sonra, API isteğini göndermek için `XMLHttpRequest` nesnesi oluşturun. 
+    1. Endpoint URL 'niz, abonelik anahtarınız ve örnek JSON için değişkenler oluşturun. Ardından API isteğini göndermek için bir `XMLHttpRequest` nesnesi oluşturun. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
@@ -116,7 +116,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
         var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. @No__t-0 nesnesi için return işlevini oluşturun. Bu işlev başarılı bir istekten API yanıtını ayrıştırır ve uygulamayı uygulamada görüntüler. 
+    2. `XMLHttpRequest` nesnesi için return işlevini oluşturun. Bu işlev başarılı bir istekten API yanıtını ayrıştırır ve uygulamayı uygulamada görüntüler. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -147,7 +147,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
         };
         ```
     
-    5. API isteği gönderin. @No__t-0 üstbilgisine abonelik anahtarınızı ekleyin ve `content-type` ' i `application/json` ' e ayarlayın
+    5. API isteği gönderin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin ve `content-type` `application/json` olarak ayarlayın
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2fd5867d910d29533eb17a4660039cc7b9610290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449831"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Active Directory ile Batch yönetimi çözümlerini kimlik doğrulama
 
@@ -35,7 +35,7 @@ Batch yönetimi .NET kitaplığı ve AccountManagement örneğini kullanma hakk�
 
 Azure [Active Directory Authentication Library][aad_adal] (ADAL), Azure AD 'ye uygulamalarınız dahilinde kullanılmak üzere programlı bir arabirim sağlar. Uygulamanızdan ADAL 'yi çağırmak için uygulamanızı bir Azure AD kiracısına kaydetmeniz gerekir. Uygulamanızı kaydettiğinizde, Azure AD kiracısında bir ad dahil olmak üzere uygulamanız hakkındaki bilgilerle Azure AD sağlarsınız. Daha sonra Azure AD, uygulamanızı çalışma zamanında Azure AD ile ilişkilendirmek için kullandığınız bir uygulama KIMLIĞI sağlar. Uygulama KIMLIĞI hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)bölümüne bakın.
 
-AccountManagement örnek uygulamasını kaydetmek için [uygulamaları Azure Active Directory Ile tümleştirme][aad_integrate]bölümünde [uygulama ekleme](../active-directory/develop/quickstart-register-app.md) bölümündeki adımları izleyin. Uygulama türü için **Yerel Istemci uygulamasını** belirtin. **Yeniden yönlendirme URI 'si** `urn:ietf:wg:oauth:2.0:oob`için sektör standardı OAuth 2,0 URI 'si. Ancak, gerçek bir uç nokta olması gerekmeyen için `http://myaccountmanagementsample` **yeniden yönlendirme URI 'si**için geçerli herhangi bir URI (gibi) belirtebilirsiniz:
+AccountManagement örnek uygulamasını kaydetmek için [uygulamaları Azure Active Directory Ile tümleştirme][aad_integrate]bölümünde [uygulama ekleme](../active-directory/develop/quickstart-register-app.md) bölümündeki adımları izleyin. Uygulama türü için **Yerel Istemci uygulamasını** belirtin. **Yeniden yönlendirme URI 'si** için sektör standardı OAuth 2,0 urı 'si `urn:ietf:wg:oauth:2.0:oob`. Ancak, gerçek bir uç nokta olması gerekmeyen için **yeniden yönlendirme URI 'si**için geçerli HERHANGI bir urı (`http://myaccountmanagementsample`gibi) belirtebilirsiniz:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -47,7 +47,7 @@ Kayıt işlemini tamamladıktan sonra uygulamanız için listelenen uygulama KIM
 
 Daha sonra, Azure Resource Manager API 'sine uygulamanıza erişim yetkisi almanız gerekir. Kaynak Yöneticisi API 'SI için Azure AD tanımlayıcısı, **Microsoft azure hizmet yönetim API'si**.
 
-Azure portal şu adımları uygulayın:
+Azure portalında şu adımları izleyin:
 
 1. Azure portal sol taraftaki Gezinti bölmesinde **tüm hizmetler**' i seçin, **uygulama kayıtları**' nı ve **Ekle**' yi tıklatın.
 2. Uygulama kayıtları listesinde uygulamanızın adını arayın:
@@ -137,4 +137,4 @@ Azure AD 'yi kullanarak Batch hizmeti uygulamalarının kimliğini doğrulamak i
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Uygulamaları Azure Active Directory tümleştirme"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md

@@ -4,15 +4,15 @@ description: Performans sayaçları, Windows ve Linux aracılarındaki performan
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363838"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
@@ -52,10 +52,10 @@ Toplanacak yeni bir Windows performans sayacı eklemek için bu yordamı izleyin
 
 Toplanacak yeni bir Linux performans sayacı eklemek için bu yordamı izleyin.
 
-1. Varsayılan olarak, tüm yapılandırma değişiklikleri otomatik olarak tüm aracılara gönderilir.  Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.  Bu dosyayı her bir Linux aracısında el ile değiştirmek istiyorsanız, *Linux makinelerime aşağıdaki yapılandırmayı Uygula* onay kutusunun işaretini kaldırın ve aşağıdaki yönergeleri izleyin.
+1. Varsayılan olarak, tüm yapılandırma değişiklikleri tüm aracılara otomatik olarak gönderilir.  Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.  Bu dosyayı her bir Linux aracısında el ile değiştirmek istiyorsanız, *Linux makinelerime aşağıdaki yapılandırmayı Uygula* onay kutusunun işaretini kaldırın ve aşağıdaki yönergeleri izleyin.
 2. *Nesne (örnek) \Sayaç*biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  
 3. Sayacı nesnenin diğer sayaç listesine eklemek için **+** ' ya tıklayın veya **ENTER** tuşuna basın.
-4. Bir nesne için tüm sayaçlar aynı **örnek aralığı**kullanır.  Varsayılan değer 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
+4. Bir nesne için tüm sayaçlar aynı **örnek aralığı**kullanır.  Varsayılan olarak 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
 5. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Yapılandırma dosyasında Linux performans sayaçlarını yapılandırma
@@ -84,19 +84,19 @@ Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 
 Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve sayaçlar listelenmektedir.  [Azure izleyici 'de Linux uygulamaları için performans sayaçlarını toplama](data-sources-linux-applications.md)bölümünde açıklandığı gibi belirli uygulamalar için kullanılabilir ek sayaçlar vardır.
 
-| Nesne adı | Sayaç adı |
+| Nesne Adı | Sayaç adı |
 |:--|:--|
-| Mantıksal disk | % Boş ınomdes |
-| Mantıksal disk | % Boş alan |
-| Mantıksal disk | % Kullanılan ınomdes |
-| Mantıksal disk | % Kullanılan alan |
-| Mantıksal disk | Disk okuma bayt/sn |
-| Mantıksal disk | Disk Okuma/sn |
-| Mantıksal disk | Disk aktarımı/sn |
-| Mantıksal disk | Disk yazma bayt/sn |
-| Mantıksal disk | Disk yazma/sn |
-| Mantıksal disk | Boş megabayt |
-| Mantıksal disk | Mantıksal disk bayt/sn |
+| Mantıksal Disk | % Boş ınomdes |
+| Mantıksal Disk | % Boş alan |
+| Mantıksal Disk | % Kullanılan ınomdes |
+| Mantıksal Disk | % Kullanılan alan |
+| Mantıksal Disk | Disk Okuma Bayt/sn |
+| Mantıksal Disk | Disk Okuma/sn |
+| Mantıksal Disk | Disk aktarımı/sn |
+| Mantıksal Disk | Disk Yazma Bayt/sn |
+| Mantıksal Disk | Disk Yazma/sn |
+| Mantıksal Disk | Boş megabayt |
+| Mantıksal Disk | Mantıksal Disk Bayt/sn |
 | Hafıza | % Kullanılabilir bellek |
 | Hafıza | % Kullanılabilir takas alanı |
 | Hafıza | % Kullanılan bellek |
@@ -104,28 +104,28 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Hafıza | Kullanılabilir MBayt belleği |
 | Hafıza | Kullanılabilir MBayt takas |
 | Hafıza | Sayfa Okuma/sn |
-| Hafıza | Sayfa yazma/sn |
+| Hafıza | Sayfa Yazma/sn |
 | Hafıza | Sayfa/sn |
 | Hafıza | Kullanılan MBayt değiştirme alanı |
 | Hafıza | Kullanılan bellek MBayt |
-| Ağ | Aktarılan toplam bayt sayısı |
-| Ağ | Alınan toplam bayt |
+| Ağ | Aktarılan toplam bayt |
+| Ağ | Alınan toplam bayt sayısı |
 | Ağ | Toplam bayt sayısı |
 | Ağ | Aktarılan toplam paket sayısı |
 | Ağ | Alınan toplam paket sayısı |
 | Ağ | Toplam RX hatası sayısı |
 | Ağ | Toplam TX hatası sayısı |
 | Ağ | Toplam çakışma sayısı |
-| Fiziksel disk | Ortalama Disk sn/okuma |
-| Fiziksel disk | Ortalama Disk sn/Aktarım |
-| Fiziksel disk | Ortalama Disk sn/yazma |
-| Fiziksel disk | Fiziksel disk bayt/sn |
+| Fiziksel Disk | Ortalama Disk sn/okuma |
+| Fiziksel Disk | Ortalama Disk sn/Aktarım |
+| Fiziksel Disk | Ortalama Disk sn/yazma |
+| Fiziksel Disk | Fiziksel disk bayt/sn |
 | Süreç | Ayrıcalıklı zaman yüzdesi |
 | Süreç | Kullanım süresi yüzdesi |
 | Süreç | Kullanılan bellek Kbayt |
 | Süreç | Sanal paylaşılan bellek |
 | İşlemci | % DPC Zamanı |
-| İşlemci | % Boşta kalma süresi |
+| İşlemci | % Boş zaman |
 | İşlemci | Kesme zamanı yüzdesi |
 | İşlemci | % GÇ bekleme süresi |
 | İşlemci | % İyi zaman |
@@ -137,7 +137,7 @@ Aşağıdaki tabloda, yapılandırma dosyasında belirtebileceğiniz nesneler ve
 | Sistem | Boş sanal bellek |
 | Sistem | İşlemler |
 | Sistem | Disk belleği dosyalarında depolanan boyut |
-| Sistem | Hizmet |
+| Sistem | Çalışma Süresi |
 | Sistem | Kullanıcılar |
 
 
@@ -183,7 +183,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Bilgisayar |Olayın toplandığı bilgisayar. |
+| Bilgisayar |Olay toplandığı bilgisayar. |
 | CounterName |Performans sayacının adı |
 | Onay yolu |\\\\\<bilgisayar >\\nesne (örnek)\\sayacı sayacın tam yolu. |
 | Onay değeri |Sayacın sayısal değeri. |
@@ -202,7 +202,7 @@ Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının far
 
 | Sorgu | Açıklama |
 |:--- |:--- |
-| Erişen |Tüm performans verileri |
+| Perf |Tüm performans verileri |
 | Perf &#124; , Computer = = "Bilgisayarım" |Belirli bir bilgisayardaki tüm performans verileri |
 | Perf &#124; , CounterName = = "geçerli disk sırası uzunluğu" |Belirli bir sayaç için tüm performans verileri |
 | &#124; NesneAdı, ObjectName = = "Processor" ve CounterName = = "% işlemci zamanı" ve InstanceName = = "_Total" &#124; bilgisayar tarafından avgcpu = Ort (CounterValue) özetleme |Tüm bilgisayarlar genelinde ortalama CPU kullanımı |
@@ -210,8 +210,8 @@ Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının far
 | { &#124; 1 & gt; NesneAdı & lt; 1} ve CounterName = = "geçerli disk kuyruğu uzunluğu" ve bilgisayar = = " &#124; MyComputerName", InstanceName 'e göre aggregbir değer = AVG (CounterValue) özetleme |Belirli bir bilgisayarın tüm örnekleri genelinde ortalama geçerli disk sırası uzunluğu |
 | Performans &#124; ve CounterName = = "disk aktarımı/sn" &#124; , bilgisayar tarafından aggregve değer = yüzdebirlik (CounterValue, 95) özetleme |tüm bilgisayarlarda yüzde 95 disk aktarımı/sn |
 | &#124; {1 & gt; CounterName = = "% işlemci zamanı" ve InstanceName = = &#124; "_Total" özetleme değeri, bin (TimeGenerated, 1h), bilgisayar |Tüm bilgisayarlarda saatlik ortalama CPU kullanımı |
-| &#124; Bilgisayar = = "Bilgisayarım" ve CounterName startswith_cs "%" ve InstanceName = = "_Total" &#124; Ile birlikte Aggreg, value = yüzdebirlik (CounterValue, 70) for bin (TimeGenerated, 1h), CounterName | Belirli bir bilgisayar için saatlik 70 yüzdebirlik her% yüzde sayacı |
-| &#124; CounterName, CounterName = = "% işlemci zamanı" ve InstanceName = = "_Total" ve Computer = = "bir kez &#124; " özetleme ["min (CounterValue)"] = MIN (CounterValue), ["Ort (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = yüzdebirlik (CounterValue, 75), ["Max (CounterValue)"] = maksimum (CounterValue) for bin (TimeGenerated, 1h), bilgisayar |Belirli bir bilgisayar için saatlik ortalama, en düşük, en yüksek ve 75-yüzdebirlik CPU kullanımı |
+| &#124; Bilgisayar = = "Bilgisayarım" ve CounterName startswith_cs "%" ve InstanceName = = "_Total" &#124; Için aggregelde eden değer = yüzdebirlik (CounterValue, 70) for bin (TimeGenerated, 1h), CounterName | Belirli bir bilgisayar için saatlik 70 yüzdebirlik her% yüzde sayacı |
+| &#124; CounterName, CounterName = = "% işlemci zamanı" ve InstanceName = = "_Total" ve Computer = = "Bilgisayarım" &#124; özetleme ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = yüzdebirlik (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) for bin (TimeGenerated, 1h), bilgisayar |Belirli bir bilgisayar için saatlik ortalama, en düşük, en yüksek ve 75-yüzdebirlik CPU kullanımı |
 | Perf &#124; , ObjectName = = "MSSQL $ INST2: Databases" ve InstanceName = = "Master" | Ana veritabanı için veritabanı performans nesnesinden tüm performans verileri, INST2 adlı SQL Server örneğinden.  
 
 
@@ -219,5 +219,5 @@ Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının far
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * MySQL ve Apache HTTP sunucusu dahil [Linux uygulamalarından performans sayaçlarını toplayın](data-sources-linux-applications.md) .
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.  
+* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.  
 * Toplanan verileri, ek görselleştirmeler ve analizler için [Power BI](powerbi.md) dışa aktarın.

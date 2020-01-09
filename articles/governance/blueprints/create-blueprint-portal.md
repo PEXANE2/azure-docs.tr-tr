@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: portalda bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436610"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
-Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonları, ilkesi, güvenliği ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler şunları içerir:
+Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonları, ilkesi, güvenliği ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler aşağıdakileri içerir:
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -22,7 +22,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Bu örnekte, abonelik için rol ve ilke atamalarını yapılandırmak üzere **myblueprint** adlı yeni bir şema oluşturun. Ardından yeni bir kaynak grubu ekleyin ve yeni kaynak grubunda bir Kaynak Yöneticisi şablonu ve rol ataması oluşturun.
 
-1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Şemaları**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
 
 1. Sol taraftaki sayfadan şema **tanımlarını** seçin ve sayfanın üst kısmındaki **+ şema oluştur** düğmesini seçin.
 
@@ -268,7 +268,9 @@ Bir şema bir veya daha fazla aboneliğe atandığında iki şey gerçekleşir:
 
 1. **Blueprint atama** sayfasında, tüm yapıtların başarıyla dağıtıldığını ve dağıtım sırasında hata olmadığını doğrulayın. Hata oluştuysa, nelerin yanlış olduğunu belirlemek için bkz. [sorun giderme şemaları](./troubleshoot/general.md) .
 
-## <a name="unassign-a-blueprint"></a>Şema atamasını kaldırma
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+### <a name="unassign-a-blueprint"></a>Şemanın atamasını kaldırma
 
 Artık bir şema ataması gerekmiyorsa, aboneliği bir abonelikten kaldırın. Şema, güncelleştirilmiş desenler, ilkeler ve tasarımlarla daha yeni bir şema ile değiştirilmiş olabilir. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Şema atamasını kaldırmak için aşağıdaki adımları izleyin:
 
@@ -278,7 +280,7 @@ Artık bir şema ataması gerekmiyorsa, aboneliği bir abonelikten kaldırın. �
 
 1. Onay iletisini okuyun ve **Tamam**' ı seçin.
 
-## <a name="delete-a-blueprint"></a>Şema silme
+### <a name="delete-a-blueprint"></a>Şemayı silme
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 

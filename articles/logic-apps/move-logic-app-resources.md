@@ -6,24 +6,24 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: de646c790fc21ef17bf78789e0531503f2f32052
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456547"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Mantıksal uygulama kaynaklarını diğer Azure aboneliklerine, kaynak gruplarına veya bölgelere taşıyın
 
 Mantıksal uygulamanızı veya ilgili kaynaklarınızı başka bir Azure aboneliğine, kaynak grubuna veya bölgeye taşımak için Azure portal, Azure PowerShell, Azure CLı ve REST API gibi bu görevleri tamamlamaya yönelik çeşitli yöntemlere sahip olursunuz. Kaynakları taşımadan önce şu hususları gözden geçirin: 
 
-* Yalnızca [belirli mantıksal uygulama kaynak türlerini](../azure-resource-manager/move-support-resources.md#microsoftlogic) Azure Kaynak grupları veya abonelikleri arasında taşıyabilirsiniz.
+* Yalnızca [belirli mantıksal uygulama kaynak türlerini](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) Azure Kaynak grupları veya abonelikleri arasında taşıyabilirsiniz.
 
 * Azure aboneliğinizde ve her bir Azure bölgesinde sahip olduğunuz mantıksal uygulama kaynakları sayısı [sınırlarını](../logic-apps/logic-apps-limits-and-config.md) denetleyin. Bu sınırlar, bölge abonelikler veya kaynak grupları arasında aynı kaldığında belirli kaynak türlerini taşıyıp taşıyamayacağını etkiler. Örneğin, her bir Azure aboneliğinde her bir Azure bölgesi için yalnızca bir ücretsiz katman tümleştirme hesabına sahip olabilirsiniz.
 
 * Azure, kaynakları taşıdığınızda yeni kaynak kimlikleri oluşturur. Bu nedenle, bunun yerine yeni kimlikleri kullandığınızdan emin olun ve taşınan kaynaklarla ilişkili tüm betikleri veya araçları güncelleştirin. Mantıksal uygulamaları abonelikler, kaynak grupları veya bölgeler arasında taşıdıktan sonra, OAuth tabanlı tüm bağlantıları yeniden oluşturmanız veya yeniden yetkilendirmeli.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Taşımak istediğiniz mantıksal uygulamayı veya tümleştirme hesabını oluşturmak için kullanılan aynı Azure aboneliği
 
@@ -53,7 +53,7 @@ Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azu
 
 Mantıksal uygulama veya tümleştirme hesabı gibi bir kaynağı başka bir Azure Kaynak grubuna taşımak için Azure portal, Azure PowerShell, Azure CLı veya REST API kullanabilirsiniz. Bu adımlar, kaynak bölgesi aynı kaldığında kullanabileceğiniz Azure portal kapsar. Diğer adımlar ve genel hazırlık için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/resource-group-move-resources.md).
 
-Kaynakları gruplar arasında gerçekten taşımadan önce, kaynağı başka bir gruba başarıyla taşıyıp taşıyamayacağını test edebilirsiniz. Daha fazla bilgi için bkz. [taşımanızı doğrulama](../azure-resource-manager/resource-group-move-resources.md#validate-move).
+Kaynakları gruplar arasında gerçekten taşımadan önce, kaynağı başka bir gruba başarıyla taşıyıp taşıyamayacağını test edebilirsiniz. Daha fazla bilgi için bkz. [taşımanızı doğrulama](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move).
 
 1. [Azure Portal](https://portal.azure.com), taşımak istediğiniz mantıksal uygulama kaynağını bulup seçin.
 

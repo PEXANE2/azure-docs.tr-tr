@@ -1,20 +1,14 @@
 ---
-title: Azure Service Fabric ağı uygulama gizli dizilerini yönetme | Microsoft Docs
+title: Azure Service Fabric ağı uygulama gizli dizilerini yönetme
 description: Service Fabric bir kafes uygulamasını güvenli bir şekilde oluşturup dağıtabilmeniz için uygulama gizli dizilerini yönetin.
-services: service-fabric-mesh
-keywords: gizli dizi
-author: athinanthny
-ms.author: atsenthi
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chackdan
-ms.openlocfilehash: ef3f04437aca7b6ad9aab8806d54e65d00159d87
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036165"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461924"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric kafes uygulama gizli dizilerini yönetme
 Service Fabric ağ, Azure kaynakları olarak gizli dizileri destekler. Service Fabric bir ağ parolası, depolama bağlantı dizeleri, parolalar veya güvenli bir şekilde depolanması ve aktarılması gereken diğer değerler gibi herhangi bir hassas metin bilgisi olabilir. Bu makalede, gizli dizileri dağıtmak ve korumak için Service Fabric Güvenli Depolama Hizmeti nasıl kullanılacağı gösterilmektedir.
@@ -101,7 +95,7 @@ Aşağıda, bir YAML dosyasında ağ parolaları kaynaklarının nasıl bildiril
 ## <a name="declare-mesh-secretsvalues-resources"></a>Ağ gizli dizileri/değerleri kaynaklarını bildirin
 Ağ parolaları/değerler kaynakları, önceki adımda tanımlanan ağ parolaları kaynaklarına bağımlıdır.
 
-"Resources" bölümü "Value:" ve "Name:" alanları arasındaki ilişki ile ilgili olarak: "Name:" dizesinin bir iki nokta ile ayrılmış ikinci bölümü, bir gizli anahtar için kullanılan sürüm numarasıdır ve iki nokta üst üste ait olan ara gizlilik değeriyle eşleşmelidir bağımlılık. Örneğin, öğesi ```name: mysecret:1.0```için sürüm numarası 1,0, ad ```mysecret``` ise daha önce tanımlanan ```"value": "mysecret"```ile aynı olmalıdır.
+"Resources" bölümü "Value:" ve "Name:" alanları arasındaki ilişki ile ilgili olarak: "Name:" dizesinin bir iki nokta ile ayrılmış ikinci bölümü, bir gizli anahtar için kullanılan sürüm numarasıdır ve iki nokta üst üste ait olan ara gizlilik değeriyle eşleşmelidir bağımlılık. Örneğin, öğe ```name: mysecret:1.0```için sürüm numarası 1,0 ve ad ```mysecret``` daha önce tanımlanan ```"value": "mysecret"```ile aynı olmalıdır.
 
 >
 Aşağıda, bir JSON dosyasında ağ gizli dizileri/değerleri kaynaklarının nasıl bildirilelelebir örnektir:

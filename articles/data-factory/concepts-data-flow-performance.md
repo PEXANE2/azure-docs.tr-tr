@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444519"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -81,7 +81,7 @@ Verileriniz hedef Tablolarınızda bölümlenmemiş olsanız bile, verilerinizin
 
 ### <a name="disable-indexes-on-write"></a>Yazma sırasında dizinleri devre dışı bırak
 
-İşlem hattınızda, Havuzınızdan yazılmış hedef tablolarınızdaki dizinleri devre dışı bırakan veri akışı etkinlikinizden önce bir [saklı yordam etkinliği](transform-data-using-stored-procedure.md) ekleyin. Veri akışı etkinliğinizi tamamladıktan sonra, bu dizinleri sağlayan başka bir saklı yordam etkinliği ekleyin.
+İşlem hattınızda, Havuzınızdan yazılmış hedef tablolarınızdaki dizinleri devre dışı bırakan veri akışı etkinlikinizden önce bir [saklı yordam etkinliği](transform-data-using-stored-procedure.md) ekleyin. Veri akışı etkinliğinizi tamamladıktan sonra, bu dizinleri sağlayan başka bir saklı yordam etkinliği ekleyin. Ya da bir veritabanı havuzunda ön işleme ve işlem sonrası betikleri kullanın.
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Azure SQL DB ve DW 'nizin boyutunu artırın
 
@@ -114,7 +114,7 @@ Ortak bölümlendirme şeması, tüm çıkış bölüm dosyalarını havuzinizde
 
 ### <a name="looping-through-file-lists"></a>Dosya listeleri aracılığıyla döngü
 
-Kaynak dönüştürme her etkinlik Için kullanarak döngü yerine birden çok dosya üzerinde yineleme yaparken, bir eşleme veri akışı daha iyi yürütülür. Kaynak dönüşümünüze joker karakter veya dosya listesi kullanmanızı öneririz. Veri akışı işlemi, bu döngünün Spark kümesi içinde oluşmasına izin vererek daha hızlı yürütülür. Daha fazla bilgi için bkz. [kaynak dönüşümünde joker karakter](data-flow-source.md#file-based-source-options)kullanımı.
+Kaynak dönüştürme her etkinlik Için kullanarak döngü yerine birden çok dosya üzerinde yineleme yaparken, bir eşleme veri akışı daha iyi yürütülür. Kaynak dönüşümünüze joker karakter veya dosya listesi kullanmanızı öneririz. Veri akışı işlemi, bu döngünün Spark kümesi içinde oluşmasına izin vererek daha hızlı yürütülür. Daha fazla bilgi için bkz. [kaynak dönüşümünde joker karakter](connector-azure-data-lake-storage.md#mapping-data-flow-properties)kullanımı.
 
 Örneğin, 2019 Temmuz 'dan BLOB depolama alanındaki bir klasörde işlemek istediğiniz veri dosyaları listeniz varsa, aşağıdaki kaynak dönüşümünüze kullanabileceğiniz bir joker karakterdir.
 
@@ -127,8 +127,8 @@ Joker karakter kullanımı ' nı kullanarak, işlem hattınız yalnızca bir ver
 CosmosDB havuzları üzerinde üretilen iş ve Batch özelliklerinin ayarlanması yalnızca bu veri akışının işlem hattı veri akışı etkinliğinden yürütülmesi sırasında etkili olur. Özgün koleksiyon ayarları, veri akışı yürütmeden sonra CosmosDB tarafından kabul edilir.
 
 * Toplu iş boyutu: verilerinizin kaba satır boyutunu hesaplayın ve rowSize * toplu iş boyutunun 2.000.000 ' den küçük olduğundan emin olun. Varsa, daha iyi aktarım hızı sağlamak için toplu iş boyutunu artırın
-* Througput: belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir üretilen iş ayarı ayarlayın. Lütfen yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
-*   Yazma aktarım hızı bütçesi: dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark partitiongs içeren bir veri akışınız varsa, bir bütçe verimlilik ayarı bu bölümlerde daha fazla dengelemek için izin verir.
+* Aktarım hızı: belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir verimlilik ayarı ayarlayın. Lütfen yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
+*   Yazma aktarım hızı bütçesi: dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işi ayarlandığında, bu bölümlerde daha fazla dengelemek olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

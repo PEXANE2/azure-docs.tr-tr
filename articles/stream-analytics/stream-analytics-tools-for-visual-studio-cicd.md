@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics CI/CD NuGet paketini kullanın
 description: Bu makalede bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için Azure Stream Analytics CI/CD NuGet paketinin nasıl kullanılacağı açıklanır.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 6f5ba06841af580cd80b3b46bec972f717ded044
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354452"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Tümleştirme ve geliştirme için Azure Stream Analytics CI/CD NuGet paketini kullanın 
 Bu makalede, Azure Stream Analytics CI/CD NuGet paketinin bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için nasıl kullanılacağı açıklanır.
@@ -26,7 +25,7 @@ Bir NuGet paketi kullanılabilir: [Microsoft. Azure. Stream Analytics. CICD](htt
 
 Daha fazla bilgi için bkz. [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
-## <a name="msbuild"></a>MSBUILD
+## <a name="msbuild"></a>MSBuild
 Standart Visual Studio MSBuild deneyimi gibi bir proje oluşturmak için iki seçeneğiniz vardır. Projeye sağ tıklayıp ardından **Oluştur**' u seçin. Ayrıca, komut satırından NuGet paketindeki **MSBuild** 'i de kullanabilirsiniz.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
@@ -94,5 +93,5 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hızlı başlangıç: Visual Studio 'da Azure Stream Analytics bulut işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Visual Studio ile yerel olarak Stream Analytics sorguları test etme](stream-analytics-vs-tools-local-run.md)
+* [Stream Analytics sorguları Visual Studio ile yerel olarak test etme](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio ile Azure Stream Analytics işleri keşfet](stream-analytics-vs-tools.md)

@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e551159ad2d41af37b1f400e91680c49117498d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423605"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Web uygulaması-kod yapılandırması
 
@@ -38,8 +38,8 @@ Web uygulamaları için yetkilendirme kodu akışını destekleyen kitaplıklar 
 | MSAL kitaplığı | Açıklama |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Desteklenen platformlar .NET Framework ve .NET Core platformları (UWP, Xamarin. iOS ve Xamarin. Android değil, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır) |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Geliştirme devam ediyor-genel önizlemede |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Geliştirme devam ediyor-genel önizlemede |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python web uygulamaları için destek |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java Web uygulamaları için destek |
 
 İlgilendiğiniz platforma karşılık gelen sekmeyi seçin:
 
@@ -92,7 +92,7 @@ Uygulama [ASP.NET Core Web uygulaması öğreticisi](https://github.com/Azure-Sa
 
 İşte, Web uygulamasına kimlik doğrulaması ekleyen `AddMicrosoftIdentityPlatformAuthentication` yöntemine yapılan çağrıyı sunan ve Web API 'Lerini çağırma özelliğini ekleyen `AddMsal`, [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) kodudur. `AddInMemoryTokenCaches` çağrısı, olası olanlar arasında bir belirteç önbelleği uygulamasını seçme ile ilgilidir:
 
-```CSharp
+```csharp
 public class Startup
 {
   // Code not show here
@@ -112,7 +112,7 @@ public class Startup
 
 `Constants.ScopeUserRead` sabitler olarak tanımlanır [. cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
-```CSharp
+```csharp
 public static class Constants
 {
     public const string ScopeUserRead = "User.Read";
@@ -125,7 +125,7 @@ Web uygulamasındaki `AddMicrosoftIdentityPlatformAuthentication` içeriğini, [
 
 `AddMsal` kodu, [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)içinde bulunur.
 
-```CSharp
+```csharp
 
 /// <summary>
 /// Extensions for IServiceCollection for startup initialization.
@@ -253,7 +253,7 @@ ASP.NET Core, gizli istemci uygulaması oluşturmak HttpContext 'teki bilgileri 
 
 `GetOrBuildConfidentialClientApplication()` yöntemi için kod [Microsoft. Identity. Web/Tokenalımı. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333)' dir. Bağımlılık ekleme tarafından eklenen üyeleri kullanır ( [Microsoft. Identity. Web/tokenalımı. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59))
 
-```CSharp
+```csharp
 public class TokenAcquisition : ITokenAcquisition
 {
   // Code omitted here for clarity
@@ -322,7 +322,7 @@ Toplama için, ASP.NET tarafından istenen yetkilendirme kodunu gerçekten `Acqu
 
 ASP.NET yöntemi, Openıdconnect yapılandırmasının ve `OnAuthorizationCodeReceived` olayına olan aboneliğin [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) dosyasında olması dışında ASP.NET Core benzer şekilde işler. ASP.NET ' de olduğu ASP.NET Core gibi benzer kavramları, [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)Içinde RedirectUri belirtmeniz gerekir. Bu yapılandırma, uygulamanızı dağıtırken değiştirmeniz gereken ASP.NET Core, bu yapılandırmanın çok daha az bir sağlamdır.
 
-```CSharp
+```csharp
 public partial class Startup
 {
   public void ConfigureAuth(IAppBuilder app)

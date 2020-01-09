@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444145"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory koşul etkinliği
 If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul `true` sonucunu verdiğinde bir dizi etkinliği, `false` sonucu verdiğinde ise başka bir dizi etkinliği değerlendirmeye alır. 
@@ -63,11 +63,11 @@ If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gerekli
+Özellik | Açıklama | İzin verilen değerler | Gereklidir
 -------- | ----------- | -------------- | --------
 ad | If-Condition etkinliğinin adı. | Dize | Evet
 type | **Ifcondition** olarak ayarlanmalıdır | Dize | Evet
-ifadesini | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
+expression | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
 ifTrueActivities | İfade `true`olarak değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Evet
 Ifyanlışa etkinlikleri | İfade `false`olarak değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Evet
 
@@ -196,10 +196,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

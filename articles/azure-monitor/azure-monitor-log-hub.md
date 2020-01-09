@@ -6,15 +6,15 @@ description: Azure Izleyici, farklı kaynakları günlük verileri olarak toplay
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: hub-page
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/29/2019
-ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 903644b9e2f23e7bab4af2dbda0a07039ca3399a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406177"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -45,7 +45,7 @@ ms.locfileid: "72597317"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Temelleri öğrenin</h3> 
+                                                                    <h3>Temel özellikleri öğrenin</h3> 
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Azure Izleyici nedir?</a><br/>
                                                                         <a href="/azure/azure-monitor/azure-monitor-rebrand">Marka değişiklikleri</a><br/>
@@ -104,7 +104,7 @@ ms.locfileid: "72597317"
                                                         <br>
                                                         <h3>Veri kaynakları</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/data-sources">Overview<br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources">genel bakış<br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-windows-events">Windows olayları</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Windows ve Linux performans sayaçları</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-linux-applications">Linux uygulama performansı</a><br/>

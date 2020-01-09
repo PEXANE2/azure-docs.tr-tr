@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Leapsome | Microsoft Docs'
-description: Azure Active Directory ve Leapsome arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Leapsome ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
+description: Azure Active Directory ve Leapsome arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,249 +13,181 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dab6f6b9215ead8cdcf513e226fd2fb8e59d8fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef28b95e779e2b814b0ae91059c3edd12644d7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430935"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Öğretici: Leapsome ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>Öğretici: Leapsome ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Leapsome tümleştirme konusunda bilgi edinin.
-Azure AD ile Leapsome tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, Leapsome 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Leapsome 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Leapsome erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Leapsome için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD 'de Leapsome erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla birlikte otomatik olarak oturum açmalarına olanak sağlar.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile Leapsome yapılandırmak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik Leapsome çoklu oturum açma etkin
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Leapsome çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Leapsome destekler **SP ve IDP** tarafından başlatılan
+* Leapsome **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
 ## <a name="adding-leapsome-from-the-gallery"></a>Galeriden Leapsome ekleme
 
-Azure AD'de Leapsome tümleştirmesini yapılandırmak için Leapsome Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Leapsome 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Leapsome eklemeniz gerekir.
 
-**Galeriden Leapsome eklemek için aşağıdaki adımları gerçekleştirin:**
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **leapsome** yazın.
+1. Sonuçlar panelinden **Leapsome** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-leapsome"></a>Leapsome için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon**adlı bir test kullanıcısı kullanarak, Leapsome Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Leapsome ile ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+Azure AD SSO 'yu Leapsome ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Leapsome SSO 'Yu yapılandırma](#configure-leapsome-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * Kullanıcının Azure AD gösterimine bağlı olan Leapsome 'da B. Simon 'ın bir karşılığı olacak şekilde, **[leapsome test kullanıcısı oluşturun](#create-leapsome-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-4. Arama kutusuna **Leapsome**seçin **Leapsome** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+1. [Azure Portal](https://portal.azure.com/), **leapsome** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-    ![Sonuç listesinde Leapsome](common/search-new-app.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Leapsome adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Leapsome ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+    a. **Tanımlayıcı** metin kutusuna bir URL yazın: `https://www.leapsome.com`
 
-Yapılandırma ve Azure AD çoklu oturum açma Leapsome ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Leapsome çoklu oturum açmayı yapılandırma](#configure-leapsome-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Leapsome test kullanıcısı oluşturma](#create-leapsome-test-user)**  - kullanıcı Azure AD gösterimini bağlı Leapsome Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
-
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
-
-Azure AD çoklu oturum açma ile Leapsome yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), **Leapsome** uygulama tümleştirme sayfasında **çoklu oturum açma**.
-
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
-
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
-
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu, aşağıdaki adımları gerçekleştirin:
-
-    ![[Uygulama adı] Etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
-
-    a. İçinde **tanımlayıcı** metin kutusuna bir URL yazın: `https://www.leapsome.com`
-
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
-
-5. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
-
-    ![[Uygulama adı] Etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
-
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
 
     > [!NOTE]
-    > Önceki yanıt URL'si ve oturum açma URL değeri, gerçek değeri değil. Bunlar gerçek değerlerle öğreticinin ilerleyen bölümlerinde açıklanan güncelleştirir.
+    > Önceki yanıt URL 'SI ve oturum açma URL 'SI değeri gerçek bir değer değil. Bunları, Öğreticinin ilerleyen kısımlarında açıklanan gerçek değerlerle güncelleşceksiniz.
 
-6. Leapsome uygulamanız SAML onaylamalarını özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde bekliyor. Aşağıdaki ekran görüntüsünde, varsayılan öznitelikler listesinde gösterilmiştir. Tıklayın **Düzenle** açmak için simgeyi **kullanıcı öznitelikleri** iletişim.
+1. Leapsome uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-7. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda kullanarak talep Düzenle **düzenleme simgesi** veya talep kullanarak **Ekle yeni talep**SAML belirteci özniteliği yukarıdaki görüntüde gösterildiği gibi yapılandırın ve aşağıdaki adımları gerçekleştirin: 
+1. Yukarıdakine ek olarak, Leapsome uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
     | Ad | Kaynak özniteliği | Ad Alanı |
     | ---------------| --------------- | --------- |  
-    | firstName | User.givenName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Soyadı | User.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | ad | Kullanıcı. | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | soyadı | User. soyadı | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | title | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | resmi | Çalışanın resim URL'si | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | resim | Çalışan resminin URL 'SI | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     > [!Note]
-    > Resim özniteliğinin değerini gerçek değil. Bu değer, gerçek resim URL'si ile güncelleştirin. Bu değer kişi almak için [Leapsome istemci Destek ekibine](mailto:support@leapsome.com).
+    > Resim özniteliğinin değeri gerçek değil. Bu değeri gerçek resim URL 'siyle güncelleştirin. Bu değere ulaşmak için, [Leapsome istemci desteği ekibine](mailto:support@leapsome.com)başvurun.
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
-
-    c. İçinde **Namespace** metin ilgili satır için ad alanı URI'si girin.
-
-    d. Kaynağı olarak **özniteliği**.
-
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
-
-    f. Tıklayın **Tamam**
-
-    g. **Kaydet**’e tıklayın.
-
-8. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-9. Üzerinde **Leapsome kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. **Set up Leapsome** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
-
-    a. Oturum Açma URL'si:
-
-    b. Azure AD Tanımlayıcısı
-
-    c. Oturum Kapatma URL'si
-
-### <a name="configure-leapsome-single-sign-on"></a>Leapsome tek oturum açmayı yapılandırın
-
-1. Farklı bir web tarayıcı penceresinde Leapsome için bir güvenlik yöneticisi olarak oturum açın.
-
-1. Sağ üstte ayarları logolardan birine tıklayın ve ardından **yönetici ayarları**.
-
-    ![Leapsome Ayarla](./media/leapsome-tutorial/tutorial_leapsome_admin.png)
-
-1. Sol menü çubuğunda tıklatın **çoklu oturum açma (SSO)** ve **SAML tabanlı çoklu oturum açma (SSO)** sayfasında aşağıdaki adımları gerçekleştirin:
-
-    ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
-
-    a. Seçin **etkinleştirme SAML tabanlı çoklu oturum açma**.
-
-    b. Kopyalama **oturum açma URL'si (oturum açma başlatmak için kullanıcılarınızın burada işaret)** yapıştırın ve değer **oturum açma URL'si** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı.
-
-    c. Kopyalama **yanıt URL'si (yanıtı alır, kimlik sağlayıcınızdan)** yapıştırın ve değer **yanıt URL'si** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı .
-
-    d. İçinde **SSO oturum açma URL'si (Kimlik sağlayıcısı tarafından sağlanan)** metin değerini yapıştırın **oturum açma URL'si**, Azure Portalı'ndan kopyaladığınız.
-
-    e. Azure portalından indirilen sertifikayı kopyalamanız `--BEGIN CERTIFICATE and END CERTIFICATE--` yorumları ve yapıştırın **(Kimlik sağlayıcısı tarafından sağlanan) sertifikası** metin.
-
-    f. Tıklayın **güncelleştirme SSO ayarlarını**.
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üstünde.
-
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. İçinde **adı** alana **BrittaSimon**.
-  
-    b. İçinde **kullanıcı adı** alan türü `brittasimon@yourcompanydomain.extension`  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Leapsome erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Leapsome 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Leapsome**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Leapsome**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **Leapsome**.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesinde Leapsome bağlantı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-leapsome-sso"></a>Leapsome SSO 'yu yapılandırma
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. Farklı bir Web tarayıcısı penceresinde, bir güvenlik yöneticisi olarak Leapsome 'da oturum açın.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+1. Sağ üst köşedeki ayarlar logosu ' na ve ardından **yönetici ayarları**' na tıklayın.
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+    ![Leapsome kümesi](./media/leapsome-tutorial/tutorial_leapsome_admin.png)
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+1. Sol menü çubuğunda **Çoklu oturum açma (SSO)** seçeneğine tıklayın ve **SAML tabanlı çoklu oturum açma (SSO)** sayfasında aşağıdaki adımları uygulayın:
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+    ![Leapsome SAML](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
-### <a name="create-leapsome-test-user"></a>Leapsome test kullanıcısı oluşturma
+    a. **SAML tabanlı çoklu oturum açmayı etkinleştir '** i seçin.
 
-Bu bölümde, Britta Simon Leapsome içinde adlı bir kullanıcı oluşturun. Çalışmak [Leapsome istemci Destek ekibine](mailto:support@leapsome.com) kullanıcı veya Leapsome platformu için bir izin verilenler listesi eklenmeli etki alanı eklemek için. Etki alanı ekibi tarafından eklenirse, kullanıcıların otomatik olarak Leapsome platforma sağlanan. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+    b. Oturum açma **URL 'sini kopyalayın (oturum açmaya başlamak için kullanıcılarınıza buraya gelin)** değerini kopyalayın ve Azure Portal ÜZERINDEKI **temel SAML yapılandırması** bölümünde **oturum açma URL 'si** metin kutusuna yapıştırın.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+    c. **Yanıt URL 'sini kopyalayın (kimlik sağlayıcınızdan yanıtı alır)** ve Azure Portal ÜZERINDEKI **temel SAML YAPıLANDıRMASı** bölümündeki **yanıt URL** metin kutusuna yapıştırın.
+
+    d. **SSO oturum açma URL 'si (kimlik sağlayıcısı tarafından sağlanmış)** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+
+    e. İndirmiş olduğunuz sertifikayı `--BEGIN CERTIFICATE and END CERTIFICATE--` açıklamaları olmadan Azure portal kopyalayın ve **sertifikayı sertifikaya (kimlik sağlayıcısı tarafından sunulur)** metin kutusuna yapıştırın.
+
+    f. **SSO ayarlarını Güncelleştir**' e tıklayın.
+
+### <a name="create-leapsome-test-user"></a>Leapsome test kullanıcısı oluştur
+
+Bu bölümde, Leapsome 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Leapsome [istemci destek](mailto:support@leapsome.com) ekibiyle birlikte çalışarak, leapan platformunun izin verilenler listesine eklenmesi gereken kullanıcıları veya etki alanını ekleyin. Etki alanı takım tarafından eklenirse, kullanıcılar otomatik olarak Leapa platformu sağlanacak. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+
+## <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim paneli Leapsome kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama Leapsome için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Leapsome kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Leapsome 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Leapsome 'ı deneyin](https://aad.portal.azure.com/)

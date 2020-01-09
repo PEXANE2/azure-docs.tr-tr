@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457007"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
 
@@ -22,11 +22,11 @@ Bu öğreticide, ASP.NET Core veya herhangi bir tür ASP.NET projesi kullanıp k
 
 Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikliklerle ilgili ayrıntılar için, bkz. [Key Vault bağlı hizmet-ASP.NET 4.7.1 projem 'A ne oldu](#how-your-aspnet-framework-project-is-modified) veya [Key Vault bağlı Service-ASP.NET Core projem Için ne oldu?](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
+- **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Visual studio 2019 sürüm 16,3** veya üzeri ya da **Web geliştirme** Iş yükünün yüklü olduğu **Visual Studio 2017 sürümü 15,7** . [Şimdi indir](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- Visual Studio 2017 ile ASP.NET (Core değil) için, varsayılan olarak yüklenmeyen .NET Framework 4.7.1 veya sonraki bir geliştirme araçlarına sahip olmanız gerekir. Bunları yüklemek için Visual Studio Yükleyicisi başlatın, **Değiştir**' i seçin ve ardından **tek tek bileşenler**' i seçin, ardından sağ tarafta **ASP.net ve Web geliştirme**' yi genişletin ve **.NET Framework 4.7.1 geliştirme araçları ' nı seçin.** .
+- Visual Studio 2017 ile ASP.NET (Core değil) için, varsayılan olarak yüklenmeyen .NET Framework 4.7.1 veya sonraki bir geliştirme araçlarına sahip olmanız gerekir. Bunları yüklemek için Visual Studio Yükleyicisi başlatın, **Değiştir**' i seçin ve ardından **tek tek bileşenler**' i seçin, ardından sağ tarafta **ASP.net ve Web geliştirme**' yı genişletin ve **.NET Framework 4.7.1 geliştirme araçları**' nı seçin.
 - Bir ASP.NET 4.7.1 veya üzeri ya da ASP.NET Core 2,0 veya üzeri bir Web projesi açık.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Projenize Key Vault desteği ekleyin
@@ -112,7 +112,7 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. Daha sonra *Index.cshtml.cs* gibi sayfa dosyalarından birini açın ve aşağıdaki kodu yazın:
@@ -184,7 +184,7 @@ Artık gerekli değilse kaynak grubunu silin. Bu, Key Vault ve ilgili kaynaklar�
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Key Vault, Visual Studio 'da oturum açtığınızdan farklı bir Microsoft hesabı çalışıyorsa (örneğin, Key Vault iş hesabınızda çalışıyor, ancak Visual Studio özel hesabınızı kullanıyorsa) Program.cs dosyanızda bir hata alırsınız , Visual Studio Key Vault erişim alamıyor. Bu sorunu gidermek için:
+Key Vault, Visual Studio 'da oturum açtığınızdan farklı bir Microsoft hesabı çalışıyorsa (örneğin, Key Vault iş hesabınızda çalışıyor, ancak Visual Studio özel hesabınızı kullanıyorsa) Program.cs dosyanızda bir hata alırsınız , Visual Studio Key Vault erişim alamıyor. Bu sorunu düzeltmek için:
 
 1. [Azure Portal](https://portal.azure.com) gidin ve Key Vault açın.
 
@@ -205,7 +205,7 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 , .NET başvuruları ve NuGet paket başvurularını proje dosyası etkiler.
 
-| Type | Başvuru |
+| Tür | Başvuru |
 | --- | --- |
 | NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
@@ -241,7 +241,7 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 , Proje dosyası .NET başvurularını ve `packages.config` (NuGet başvuruları) etkiler.
 
-| Type | Başvuru |
+| Tür | Başvuru |
 | --- | --- |
 | NET NuGet | Microsoft. Azure. Keykasası |
 | NET NuGet | Microsoft. Azure. Keykasası. WebKey |

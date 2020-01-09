@@ -2,18 +2,18 @@
 title: Azure REST API kullanarak Apache Hadoop kümeleri oluşturma-Azure
 description: Azure REST API Azure Resource Manager şablonları göndererek HDInsight kümeleri oluşturmayı öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435523"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API kullanarak Apache Hadoop kümeleri oluşturma
 
@@ -306,7 +306,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 Bu istek başarılı olursa, bir 200 serisi yanıtı alırsınız ve yanıt gövdesi, Grup hakkında bilgi içeren bir JSON belgesi içerir. `"provisioningState"` öğesi `"Succeeded"`değerini içerir.
 
-## <a name="create-a-deployment"></a>Dağıtım oluşturma
+## <a name="create-a-deployment"></a>Bir dağıtım oluşturun
 
 Şablonu kaynak grubuna dağıtmak için aşağıdaki komutu kullanın.
 
@@ -343,7 +343,7 @@ Bu komut, dağıtım işlemi hakkında bilgi içeren bir JSON belgesi döndürü
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gereksinimleri](hdinsight-hadoop-create-linux-clusters-portal.md).
+HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gereksinimleri](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -352,7 +352,6 @@ Artık bir HDInsight kümesini başarıyla oluşturduğunuza göre, kümenizle n
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop kümeleri
 
 * [HDInsight ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
-* [HDInsight ile Apache Pig kullanma](hadoop/hdinsight-use-pig.md)
 * [HDInsight ile MapReduce kullanma](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase kümeleri

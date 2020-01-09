@@ -1,5 +1,5 @@
 ---
-title: Azure AD uygulama markalama yönergeleri
+title: Uygulama markalama yönergeleri | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory'nin geliştirici yönelimli kaynakları için kapsamlı bir kılavuz
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ad786429eb23b51cc2da5da5d8af11d19985c9a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d130bfb055b41ea3d2726c83c06430a0ea58fe98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424564"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
@@ -69,7 +69,7 @@ Yöneticiler uygulamanıza izin verdikten sonra uygulamanızı kullanıcıların
 
 ![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
 
 > *Zaten Microsoft 'tan Office 365 veya diğer iş Hizmetleri kullanıyorsanız, kuruluşunuzun verilerine > your_app_name < verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla > < your_app_name erişmesine izin verir.*
 

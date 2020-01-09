@@ -3,19 +3,19 @@ title: Mürekkep tanıyıcı nedir? -Ink tanıyıcı API 'SI
 titleSuffix: Azure Cognitive Services
 description: Mürekkep vuruşu verilerinin giriş olarak tanımlanmasını ve kullanılmasını sağlamak için mürekkep tanıyıcıyı uygulamalarınızın, Web siteleriniz, araçlarınızla ve diğer çözümlerle tümleştirin.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448162"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mürekkep Tanıma API’si nedir?
 
@@ -35,7 +35,7 @@ Mürekkep tanıyıcı API 'SI sayesinde, uygulamalarınızda el yazısı içeri�
 | Şekil tanıma | Not alırken en yaygın olarak kullanılan [geometrik şekilleri](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) tanır. |
 | Birleşik şekiller ve metin tanıma | Şekillere veya el yazısı içeriğine ait olan mürekkep vuruşlarını ve bunları ayrı olarak sınıflandırın.|
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Mürekkep tanıyıcı API 'SI, bir Web hizmeti olduğundan, HTTP istekleri yapan ve JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır.
 
@@ -52,7 +52,7 @@ Kaydolduktan sonra:
 Mürekkep tanıyıcı API 'sine çağrı yapmaya başlamak için aşağıdaki dillerde bir hızlı başlangıç yapın.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalıştığını görmek için GitHub 'da aşağıdaki örnek uygulamalara göz atın:
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

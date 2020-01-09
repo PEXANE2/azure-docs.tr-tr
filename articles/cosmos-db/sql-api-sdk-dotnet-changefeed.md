@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB: .NET değişiklik akışı Işlemcisi API 'SI, SDK & kaynakları"
+title: Azure Cosmos DB .NET değişiklik akışı Işlemcisi API 'SI, SDK sürüm notları
 description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve .NET değişiklik akışı Işlemci SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere değişiklik akışı Işlemcisi API 'SI ve SDK 'Sı hakkında bilgi edinin.
 author: ealsur
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444851"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
 
@@ -34,10 +34,10 @@ ms.locfileid: "74306760"
 
 |   |   |
 |---|---|
-|**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**SDK'sını indirme**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API belgeleri**|[Akış Işlemcisi kitaplık API 'SI başvuru belgelerini değiştirme](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Kullanmaya başlayın**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
-|**Desteklenen geçerli çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
+|**Kullanmaya Başlama**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
+|**Geçerli desteklenen çerçevesi**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
 > Değişiklik akışı işlemcisini kullanıyorsanız, lütfen SDK 'da yerleşik olarak bulunan değişiklik akışını içeren [.NET SDK 'sının](change-feed-processor.md)en son sürümü olan 3. x sürümünü inceleyin. 
@@ -172,7 +172,7 @@ ms.locfileid: "74306760"
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
 
-Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
+Sağlar; Microsoft bildirim en az **12 ay** yeni/desteklenen bir sürüme geçiş hafifletmek için bir SDK'yı devre dışı bırakmadan önce.
 
 Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
 
@@ -204,4 +204,4 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.
+Cosmos DB hakkında daha fazla bilgi için bkz: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfası.

@@ -1,46 +1,37 @@
 ---
-title: Azure Service Fabric uygulama düzeyinde izleme | Microsoft Docs
-description: Uygulama ve hizmet düzeyi olayları ve günlükleri izleme ve tanılama Azure Service Fabric kümeleri için kullanılan hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric uygulama düzeyinde Izleme
+description: Azure Service Fabric kümelerini izlemek ve tanılamak için kullanılan uygulama ve hizmet düzeyi olayları ve günlükleri hakkında bilgi edinin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 613faf5bbc9498b82bc04460d30b2e94c30340db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393104"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464729"
 ---
 # <a name="application-logging"></a>Uygulama günlüğüne kaydetme
 
-Kodunuzu düzenleme yalnızca kullanıcılarınızla ilgili Öngörüler elde etmek için bir yol, ancak aynı zamanda bir şey yanlış uygulamanızda ve düzeltilmesi için gerekenler tanılamak için olup olmadığını bilmek tek yolu değildir. Teknik olarak, bir hata ayıklayıcı bir üretim hizmetine bağlanmak mümkün olsa da, ortak bir uygulama değildir. Bu nedenle, ölçümlü izleme verilerini ayrıntılı önemlidir.
+Kodunuzun seçilmesi yalnızca kullanıcılarınız hakkında öngörüler elde etmenin bir yoludur, ancak uygulamanızda bir şeyin yanlış olup olmadığını ve ne kadar düzeltilmesi gerektiğini bilmenin tek yolu değildir. Teknik olarak bir hata ayıklayıcıyı bir üretim hizmetine bağlamak mümkün olsa da, yaygın bir uygulama değildir. Bu nedenle, ayrıntılı izleme verilerinin olması önemlidir.
 
-Bazı ürünler, kodunuzu otomatik olarak izleyin. Bu çözümler iyi çalışabilir ancak el ile izleme neredeyse her zaman iş mantığınızı belirli olması gerekir. Sonunda forensically uygulamada hata ayıklamak için yeterli bilgiye sahip olmalıdır. Service Fabric uygulamaları herhangi bir günlük framework ile izleme eklenmiş. Bu belgede, kodunuzu ve diğerlerine göre bir yaklaşım tercih ne zaman düzenleme için birkaç farklı yaklaşım açıklanmaktadır. 
+Bazı ürünler kodunuzu otomatik olarak işaretleyebilir. Bu çözümler iyi çalışabilse de, el ile izleme neredeyse her zaman iş mantığınızla özgü olmalıdır. Sonunda, uygulamada hata ayıklama yapmak için yeterli bilgiye sahip olmanız gerekir. Service Fabric uygulamalar herhangi bir günlük çerçevesiyle birlikte ayarlanabilir. Bu belgede, kodunuzu denetlemek için birkaç farklı yaklaşım açıklanmakta ve diğeri üzerinde bir yaklaşım seçmektir. 
 
-Bu öneriler kullanma hakkında daha fazla örnek için bkz: [Service Fabric uygulamanızı günlük ekleme](service-fabric-how-to-diagnostics-log.md).
+Bu önerilerin nasıl kullanılacağına ilişkin örnekler için, bkz. [Service Fabric uygulamanıza günlük ekleme](service-fabric-how-to-diagnostics-log.md).
 
-## <a name="application-insights-sdk"></a>Application Insights SDK'sı
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Application Insights hazır Service Fabric ile zengin bir tümleştirmesi vardır. Kullanıcıları, yapay ZEKA Service Fabric nuget paketleri eklemek ve verileri ve günlükleri oluşturulan alırlar ve Azure portalında görüntülenebilir toplanır. Ayrıca, kullanıcıların kendi telemetri, tanılama ve uygulamalarını ve Hizmetleri ve bölümlerini olan izleme hata ayıklama için en çok kullanılan eklemek için önerilir. [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) sınıfı SDK telemetri uygulamalarınızda izlemek için birçok yol sağlar. İzleme ve müşterilerimize öğreticide için uygulamanıza application ınsights ekleme örneği kullanıma [izleme ve tanılama bir .NET uygulaması](service-fabric-tutorial-monitoring-aspnet.md)
+Application Insights, Service Fabric kutudan çıkan zengin bir tümleştirmeye sahiptir. Kullanıcılar, Service Fabric NuGet paketlerini ekleyebilir ve Azure portal, oluşturulup toplanan ve toplanan verileri alabilir. Ayrıca, kullanıcıların uygulamalarını tanılamak ve hatalarını ayıklamak ve uygulamalarının en çok hangi hizmetleri ve bölümlerinin kullanıldığını izlemek için kendi telemetrilerini eklemesi önerilir. SDK 'daki [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) sınıfı, uygulamalarınızda telemetri izlemek için birçok yol sunar. [Bir .NET uygulamasını izlemek ve tanılamak](service-fabric-tutorial-monitoring-aspnet.md) için öğreticimizde Application Insights 'ı nasıl işaretleyip ekleyeceğiniz hakkında bir örneğe göz atın
 
 ## <a name="eventsource"></a>EventSource
 
-Visual Studio'da bir şablondan bir Service Fabric çözümü oluşturduğunuzda bir **EventSource**-türetilmiş sınıf (**ServiceEventSource** veya **ActorEventSource**) oluşturulur . Şablon oluşturulması, uygulamanız veya hizmetiniz için olaylar ekleyin. **EventSource** adı **gerekir** benzersiz olmalı ve varsayılan şablon dizeden Şirketim - adlandırılmamalıdır&lt;çözüm&gt;-&lt;proje &gt;. Birden çok sahip **EventSource** adının aynısını kullanın tanımları çalışma zamanında soruna neden olur. Tanımlanan her olay, benzersiz bir tanımlayıcı olmalıdır. Tanımlayıcı benzersiz değilse, bir çalışma zamanı hatası oluşur. Bazı kuruluşlar ayrı geliştirme takımları arasındaki çakışmaları önleme tanımlayıcıları için değerleri aralığı preassign. Daha fazla bilgi için [Vance'nın blog](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) veya [MSDN belgelerine](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Visual Studio 'daki bir şablondan bir Service Fabric çözümü oluşturduğunuzda, **EventSource**ile türetilmiş bir sınıf (**Serviceeventsource** veya **ActorEventSource**) oluşturulur. Uygulamanız veya hizmetiniz için olaylar ekleyebileceğiniz bir şablon oluşturulur. **EventSource** adı benzersiz **olmalıdır** ve MyCompany-&lt;çözüm&gt;-&lt;proje&gt;olan varsayılan şablon dizesinden yeniden adlandırılması gerekir. Aynı adı kullanan birden çok **EventSource** tanımının olması çalışma zamanında soruna neden olur. Her bir tanımlı olay benzersiz bir tanımlayıcıya sahip olmalıdır. Bir tanımlayıcı benzersiz değilse, bir çalışma zamanı hatası oluşur. Bazı kuruluşlar, ayrı geliştirme takımları arasında çakışmaları önlemek için tanımlayıcıların değer aralıklarını yeniden atayabilir. Daha fazla bilgi için bkz. [Vance 'in blogu](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) veya [MSDN belgeleri](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
 
-## <a name="aspnet-core-logging"></a>ASP.NET Core günlüğe kaydetme
+## <a name="aspnet-core-logging"></a>Günlüğe kaydetme ASP.NET Core
 
-Kodunuzu nasıl izleme dikkatli bir şekilde planlamanız önemlidir. Doğru izleme planı büyük olasılıkla kod tabanınızın destabilizing ve kod reinstrument gerek önlemenize yardımcı olabilir. Riski azaltmak için bir araç kitaplığı gibi seçebilirsiniz [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), Microsoft ASP.NET Core bir parçası değildir. ASP.NET Core sahip bir [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) mevcut kod üzerindeki etkisini en aza indirerek tercih ettiğiniz sağlayıcı ile kullanabileceğiniz arabirimi. Windows ve Linux'ta ASP.NET Core, kod kullanabilirsiniz ve tam .NET Framework, bu nedenle, izleme kodu standartlaştırılmıştır.
+Kodunuzu nasıl işaretlemelerinizi dikkatle planlamanız önemlidir. Doğru izleme planı, kod tabanınızı kararsız hale getirmenize ve sonra kodu yeniden açmaya gerek kalmadan kaçınmanıza yardımcı olabilir. Riski azaltmak için, Microsoft ASP.NET Core 'un bir parçası olan [Microsoft. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)gibi bir izleme kitaplığı seçebilirsiniz. ASP.NET Core, tercih ettiğiniz sağlayıcıyla kullanabileceğiniz bir [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) arabirimine sahiptir, ancak var olan koddaki etkiyi en aza indirirken. Kodu Windows ve Linux üzerinde ASP.NET Core ve tam .NET Framework ' de kullanarak, izleme kodunuzun standartlaştırılmış olması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamalarınızı ve hizmetlerinizi izleme günlüğü sağlayıcınızdan seçtikten sonra herhangi bir analiz platform gönderilmeden önce toplanacak olayları ve günlükleri gerekir. Hakkında bilgi edinin [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) ve [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) önerilen seçeneklere Azure İzleyici bazıları daha iyi anlamak için.
+Uygulamalarınızı ve hizmetlerinizi işaretlemek için günlüğe kaydetme sağlayıcınızı seçtikten sonra, günlüklerinizin ve olaylarınızın herhangi bir analiz platformuna gönderilebilmeleri için toplanıp toplanmaları gerekir. Azure Izleyici önerilen seçeneklerinin bazılarını daha iyi anlamak için [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) ve [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) hakkında bilgi edinin.

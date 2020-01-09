@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427000"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama trafiği analizini uygulama
 
@@ -167,9 +167,7 @@ Bir kullanıcının bir belgeyi tıkladığı her seferinde, arama analizi amac�
 
 ## <a name="3---analyze-in-power-bi"></a>3-Power BI 'de çözümle
 
-Uygulamanızı doldurduktan ve uygulamanızın Application Insights doğru şekilde bağlandığını doğruladıktan sonra, Power BI Masaüstü için Azure Bilişsel Arama tarafından oluşturulan önceden tanımlanmış bir şablon kullanabilirsiniz. 
-
-Azure bilişsel arama, günlük verilerini çözümleyebilmeniz için bir izleme [Power BI Içerik paketi](https://app.powerbi.com/getdata/services/azure-search) sağlar. İçerik paketi, arama trafiği analizi için yakalanan ek verileri analiz etmek için kullanışlı, önceden tanımlanmış grafikler ve tablolar ekler. Daha fazla bilgi için [içerik paketi yardım sayfasına](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Uygulamanızı doldurduktan ve uygulamanızın Application Insights doğru şekilde bağlandığını doğruladıktan sonra, Power BI masaüstündeki verileri çözümlemek için önceden tanımlanmış bir rapor şablonu indirirler. Rapor, arama trafiği analizi için yakalanan ek verileri çözümlemek için yararlı olan grafikleri ve tabloları içerir. 
 
 1. Azure Bilişsel Arama panosu sol gezinti bölmesinde, **Ayarlar**' ın altında, **Trafik Analizi ara**' ya tıklayın.
 
@@ -179,7 +177,7 @@ Azure bilişsel arama, günlük verilerini çözümleyebilmeniz için bir izleme
 
 2. Aynı sayfada **Power BI raporu indir**' e tıklayın.
 
-3. Rapor Power BI Desktop açılır ve Application Insights bağlanmanız istenir. Bu bilgileri, Application Insights kaynağınızın Azure portal sayfalarında bulabilirsiniz.
+3. Rapor Power BI Desktop açılır ve Application Insights bağlanmanız ve kimlik bilgilerini sağlamanız istenir. Application Insights kaynağınızın Azure portal sayfalarında bağlantı bilgilerini bulabilirsiniz. Kimlik bilgileri için, Portal oturum açma için kullandığınız kullanıcı adını ve parolayı belirtin.
 
    ![Application Insights Bağlan](./media/search-traffic-analytics/connect-to-app-insights.png "Application Insights'a Bağlan")
 
@@ -189,11 +187,8 @@ Rapor, arama performansınızı ve ilginizi geliştirmek için daha bilinçli ka
 
 Ölçümler aşağıdaki öğeleri içerir:
 
-* Tıklama oranı (Mrk): belirli bir belgeye tıklatıran kullanıcıların toplam arama sayısına oranı.
+* Ara birim ve en popüler terim-belge çiftleri: tıklamalar tarafından sıralanan, aynı belge ile sonuçlanan terimler.
 * Tıklama olmadan arar: tıklamadan kaydeden en iyi sorgular için terimler
-* En tıklanan belgeler: son 24 saat, 7 gün ve 30 gün içindeki KIMLIĞE göre en fazla tıklanan belgeler.
-* Popüler terim-belge çiftleri: tıklamalar tarafından sıralanan, aynı belge ile sonuçlanan terimler.
-* Tıklama süresi: Arama sorgusundan itibaren zamana göre bulantıklanan tıklama
 
 Aşağıdaki ekran görüntüsünde, arama trafiği analizlerini çözümlemek için yerleşik raporlar ve grafikler gösterilmektedir.
 

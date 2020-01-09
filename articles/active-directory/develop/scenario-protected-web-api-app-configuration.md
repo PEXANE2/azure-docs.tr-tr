@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76d5aabc30d0375185130b9781caeaf4d5457455
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423732"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -43,7 +43,7 @@ Uygulamanın kimliği ve Kullanıcı hakkında bilgiler (Web uygulaması, bir Da
 
 Aşağıda, .NET C# Için Microsoft kimlik doğrulama kitaplığı ile belirteç aldıktan sonra API 'yi çağıran bir istemciyi gösteren bir kod örneği (msal.net):
 
-```CSharp
+```csharp
 var scopes = new[] {$"api://.../access_as_user}";
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
@@ -96,19 +96,19 @@ Bir uygulama bir `[Authorize]` özniteliği tutan bir denetleyici eyleminde ça�
 
 ASP.NET Core, bu ara yazılım Startup.cs dosyasında başlatılır:
 
-```CSharp
+```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
 Bu yönerge, ara yazılım Web API 'sine eklenir:
 
-```CSharp
+```csharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  Şu anda ASP.NET Core şablonları, kuruluşunuzda veya kişisel hesaplarla değil, kuruluşunuzdaki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Ancak, bu kodu Startup.cs dosyasına ekleyerek, bunları Microsoft Identity platform uç noktasını kullanacak şekilde kolayca değiştirebilirsiniz:
 
-```CSharp
+```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
     // This is a Microsoft identity platform web API.

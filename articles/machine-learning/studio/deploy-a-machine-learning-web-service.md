@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454799"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmeti dağıtma
 
@@ -23,7 +23,7 @@ Azure Machine Learning Studio (klasik), tahmine dayalı analitik çözüm oluşt
 
 Machine Learning Studio (klasik) Web Hizmetleri, bir uygulama ile Machine Learning Studio (klasik) iş akışı Puanlama modeli arasında bir arabirim sağlar. Dış uygulama, Machine Learning Studio (klasik) iş akışı Puanlama modeliyle gerçek zamanlı olarak iletişim kurabilir. Machine Learning Studio (klasik) Web hizmetine yapılan bir çağrı, bir dış uygulamaya tahmin sonuçları döndürür. Bir web hizmetine çağrı yapmak için web hizmeti dağıtılırken oluşturulan bir API anahtarını geçirirsiniz. Machine Learning Studio (klasik) Web hizmeti, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
-Azure Machine Learning Studio klasik sürümü iki tür Web hizmetine sahiptir:
+Azure Machine Learning Studio (klasik) iki tür Web hizmetine sahiptir:
 
 * İstek-yanıt hizmeti (RR): tek bir veri kaydına puan veren düşük gecikmeli, yüksek düzeyde ölçeklenebilir bir hizmet.
 * Toplu yürütme hizmeti (BES): veri kayıtlarını toplu olarak alan bir zaman uyumsuz hizmettir.
@@ -32,13 +32,13 @@ BES girişi, RRS’nin kullandığı veri girişi gibidir. Aralarındaki temel f
 
 Üst düzey bir görünümden, modelinizi üç adımda dağıtırsınız:
 
-* **[Eğitim denemesi oluşturma]** -klasik Studio sürümünde, büyük bir yerleşik makine öğrenimi algoritması kümesi kullanarak, sağladığınız eğitim verilerini kullanarak tahmine dayalı analiz modelini eğitebilirsiniz ve test edebilirsiniz.
+* **[Eğitim denemesi oluşturma]** (klasik), büyük bir yerleşik makine öğrenimi algoritması kümesi kullanarak, sağladığınız eğitim verilerini kullanarak tahmine dayalı analiz modelini eğitebilirsiniz ve test edebilirsiniz.
 * **[Tahmine dayalı bir deneyiye Dönüştür]** . modelinizin mevcut verilerle eğitilirken ve yeni veri puanlaması için kullanmaya hazırsanız, tahminlere yönelik denemenizi hazırlayın ve kolaylaştırın.
 * **[Yeni web hizmeti]** veya **[Klasik Web hizmeti]** olarak **dağıtma** -tahmine dayalı denemenizi bir Azure Web hizmeti olarak dağıttığınızda, kullanıcılar modelinize veri gönderebilir ve modelinizin tahminlerinizi alabilir.
 
 ## <a name="create-a-training-experiment"></a>Eğitim denemenizi oluşturma
 
-Tahmine dayalı analiz modelini eğmek için Azure Machine Learning Studio klasik sürümünü kullanarak eğitim verilerini yükleme, verileri gereken şekilde hazırlama, makine öğrenimi algoritmaları uygulama ve Sonuçları değerlendirin. Bir deneme üzerinde yineleyebilir ve sonuçları karşılaştırmak ve değerlendirmek için farklı makine öğrenimi algoritmaları deneyebilirsiniz.
+Tahmine dayalı analiz modelini eğmek için Azure Machine Learning Studio (klasik) kullanarak eğitim verilerini yükleme, verileri gereken şekilde hazırlama, makine öğrenimi algoritmaları uygulama ve bunları değerlendirme sonucunun. Bir deneme üzerinde yineleyebilir ve sonuçları karşılaştırmak ve değerlendirmek için farklı makine öğrenimi algoritmaları deneyebilirsiniz.
 
 Eğitim denemeleri oluşturma ve yönetme işlemi daha kapsamlı bir yerde ele alınmıştır. Daha fazla bilgi için şu makalelere bakın:
 
@@ -95,9 +95,9 @@ RR 'leri kullanarak test etmek için liste görünümü modundan, girişler içi
 
 ![Web hizmetinizi test etmek için uygun değerleri girin](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-BES 'yı test etmek için **Batch**' e tıklayın. Toplu Işlem testi sayfasında, girişte bulunan Araştır ' a tıklayın ve uygun örnek değerleri içeren bir CSV dosyası seçin. Bir CSV dosyanız yoksa ve Machine Learning Studio klasik sürümünü kullanarak tahmine dayalı denemeniz oluşturduysanız, tahmine dayalı denemenize yönelik veri kümesini indirebilir ve kullanabilirsiniz.
+BES 'yı test etmek için **Batch**' e tıklayın. Toplu Işlem testi sayfasında, girişte bulunan Araştır ' a tıklayın ve uygun örnek değerleri içeren bir CSV dosyası seçin. Bir CSV dosyanız yoksa ve Machine Learning Studio (klasik) kullanarak tahmine dayalı denemeniz oluşturduysanız, tahmine dayalı denemenize yönelik veri kümesini indirebilir ve kullanabilirsiniz.
 
-Veri kümesini indirmek için Machine Learning Studio klasik sürümünü açın. Tahmine dayalı denemenizi açın ve denemenizin girişine sağ tıklayın. Bağlam menüsünden **veri kümesi** ' ni seçin ve ardından **İndir**' i seçin.
+Veri kümesini indirmek için Machine Learning Studio (klasik) öğesini açın. Tahmine dayalı denemenizi açın ve denemenizin girişine sağ tıklayın. Bağlam menüsünden **veri kümesi** ' ni seçin ve ardından **İndir**' i seçin.
 
 ![Veri kümesini Studio (klasik) tuvalinden indirin](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
@@ -113,7 +113,7 @@ Veri kümesini indirmek için Machine Learning Studio klasik sürümünü açın
 
 ### <a name="access-your-new-web-service"></a>Yeni Web hizmetinize erişin
 
-Web hizmetinizi klasik Machine Learning Studio sürümünden dağıttıktan sonra, hizmete veri gönderebilir ve yanıtları programlı bir şekilde alabilirsiniz.
+Web hizmetinizi Machine Learning Studio (klasik) dağıttıktan sonra, hizmete veri gönderebilir ve yanıtları programlı bir şekilde alabilirsiniz.
 
 Kullanım **sayfası,** Web hizmetinize erişmek için gereken tüm bilgileri sağlar. Örneğin, hizmet için yetkilendirilmiş erişime izin vermek üzere API anahtarı sağlanır.
 
@@ -136,10 +136,10 @@ Fiyatlandırma bölgeye özeldir, bu nedenle Web hizmetini dağıtacağınız he
 3. Görünüm sayfası üzerinden planlarında tıklayın **yeni**.
 4. Gelen **abonelik** açılır listesinde, yeni plan bulunacağı aboneliği seçin.
 5. Gelen **bölge** açılır listesinde, yeni plan için bölge seçin. Seçilen bölge için Plan seçenekleri görüntüler **planlama seçenekleri** sayfasının bölümünde.
-6. Gelen **kaynak grubu** bir kaynak grubu için plan açılır penceresinde seçin. Kaynak grupları hakkında daha fazla bilgi [Azure Resource Manager'a genel bakış](../../azure-resource-manager/resource-group-overview.md).
+6. Gelen **kaynak grubu** bir kaynak grubu için plan açılır penceresinde seçin. Kaynak grupları hakkında daha fazla bilgi [Azure Resource Manager'a genel bakış](../../azure-resource-manager/management/overview.md).
 7. İçinde **planı adı** planın adını yazın.
 8. Altında **planı seçenekleri**, fatura yeni plan için tıklayın.
-9. **Oluştur**’a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Web hizmetini başka bir bölgeye dağıtma
 
@@ -149,7 +149,7 @@ Fiyatlandırma bölgeye özeldir, bu nedenle Web hizmetini dağıtacağınız he
 4. İçinde **Web hizmeti adı**, web hizmeti için yeni bir ad yazın.
 5. İçinde **Web hizmeti açıklaması**, web hizmeti için bir açıklama yazın.
 6. Gelen **abonelik** açılır listesinde, yeni bir web hizmeti bulunacağı aboneliği seçin.
-7. Gelen **kaynak grubu** bir kaynak grubu web hizmeti için açılır penceresinde seçin. Kaynak grupları hakkında daha fazla bilgi [Azure Resource Manager'a genel bakış](../../azure-resource-manager/resource-group-overview.md).
+7. Gelen **kaynak grubu** bir kaynak grubu web hizmeti için açılır penceresinde seçin. Kaynak grupları hakkında daha fazla bilgi [Azure Resource Manager'a genel bakış](../../azure-resource-manager/management/overview.md).
 8. Gelen **bölge** açılır listesinde, web hizmeti dağıtacağınız bölgeyi seçin.
 9. Gelen **depolama hesabı** açılır listesinde, bir depolama hesabı web hizmeti depolamak için.
 10. Gelen **fiyat planı** açılır listesinde, 8. adımda seçtiğiniz bölgede planı seçin.
@@ -169,9 +169,9 @@ Web hizmetini Machine Learning Studio (klasik) Web Hizmetleri portalında veya M
 
 Istek yanıtı Web hizmetini test etmek için Web hizmeti panosundaki **Test** düğmesine tıklayın. Bir iletişim kutusu açılır ve hizmet için giriş verilerini ister. Bunlar, Puanlama denemesine göre beklenen sütunlardır. Bir veri kümesini girin ve ardından **Tamam**. Web hizmeti tarafından oluşturulan sonuçlar panonun en altında görüntülenir.
 
-Daha önce yeni Web hizmeti bölümünde gösterildiği gibi, Azure Machine Learning Studio Web Hizmetleri portalının klasik sürümünde hizmetinizi test etmek için **Test** önizleme bağlantısına tıklayabilirsiniz.
+Daha önce yeni Web hizmeti bölümünde gösterildiği gibi Azure Machine Learning Studio (klasik) Web Hizmetleri portalında hizmetinizi test etmek için **Test** önizleme bağlantısına tıklayabilirsiniz.
 
-Toplu yürütme hizmetini test etmek için **Test** önizleme bağlantısı ' na tıklayın. Toplu Işlem testi sayfasında, girişte bulunan Araştır ' a tıklayın ve uygun örnek değerleri içeren bir CSV dosyası seçin. Bir CSV dosyanız yoksa ve Machine Learning Studio klasik sürümünü kullanarak tahmine dayalı denemeniz oluşturduysanız, tahmine dayalı denemenize yönelik veri kümesini indirebilir ve kullanabilirsiniz.
+Toplu yürütme hizmetini test etmek için **Test** önizleme bağlantısı ' na tıklayın. Toplu Işlem testi sayfasında, girişte bulunan Araştır ' a tıklayın ve uygun örnek değerleri içeren bir CSV dosyası seçin. Bir CSV dosyanız yoksa ve Machine Learning Studio (klasik) kullanarak tahmine dayalı denemeniz oluşturduysanız, tahmine dayalı denemenize yönelik veri kümesini indirebilir ve kullanabilirsiniz.
 
 ![Web hizmetini test edin](./media/publish-a-machine-learning-web-service/figure-3.png)
 
@@ -187,7 +187,7 @@ Web hizmeti için uç noktalarını, daha önce yeni Web hizmeti bölümünde g�
 
 ### <a name="access-your-classic-web-service"></a>Klasik Web hizmetinize erişin
 
-Web hizmetinizi klasik Machine Learning Studio sürümünden dağıttıktan sonra, hizmete veri gönderebilir ve yanıtları programlı bir şekilde alabilirsiniz.
+Web hizmetinizi Azure Machine Learning Studio (klasik) dağıttıktan sonra, hizmete veri gönderebilir ve yanıtları programlı bir şekilde alabilirsiniz.
 
 Pano, Web hizmetinize erişmek için gereken tüm bilgileri sağlar. Örneğin, API anahtarı hizmete yetkisiz erişime izin vermek için sağlanır ve kodunuzu yazmaya başlamanıza yardımcı olmak için API Yardım sayfaları sağlanır.
 

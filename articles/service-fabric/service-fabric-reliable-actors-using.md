@@ -1,37 +1,28 @@
 ---
-title: Uygulama özellikleri Azure Service Fabric aktör | Microsoft Docs
-description: StatefulService devraldığı durumlarda, aynı şekilde hizmet düzeyi özellikleri uygulayan kendi actor hizmetinin yazılacağını açıklar.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric aktörlerin özelliklerini uygulama
+description: StatefulService ' i kalýtýmla aynı şekilde hizmet düzeyi özellikleri uygulayan kendi aktör hizmetinizin nasıl yazılacağını açıklar.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 57894770ad9d27430d5803c9a93ce6973355878a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426729"
 ---
-# <a name="implement-service-level-features-in-your-actor-service"></a>Aktör hizmetinizin hizmet düzeyi özelliklerini uygulama
+# <a name="implement-service-level-features-in-your-actor-service"></a>Aktör hizmetinizde hizmet düzeyi özellikleri uygulama
 
-Bölümünde anlatıldığı gibi [hizmet katmanlarını](service-fabric-reliable-actors-platform.md#service-layering), actor hizmetinin güvenilir bir hizmettir. Öğesinden türetilen kendi hizmet yazabilirsiniz `ActorService`. Durum bilgisi olan bir hizmet gibi devraldığı durumlarda aynı şekilde hizmet düzeyi özellikleri de uygulayabilirsiniz:
+[Hizmet katmanlama](service-fabric-reliable-actors-platform.md#service-layering)bölümünde açıklandığı gibi, aktör hizmeti güvenilir bir hizmettir. `ActorService`türetilen kendi hizmetinizi yazabilirsiniz. Ayrıca, hizmet düzeyi özellikleri durum bilgisi olan bir hizmeti kalýtýmla aynı şekilde uygulayabilirsiniz; örneğin:
 
 - Hizmet yedekleme ve geri yükleme.
-- İşlevi, tüm aktör, örneğin, devre kesici paylaşılan.
-- Uzak yordam çağrıları tek tek her aktör ve aktör hizmeti üzerinde.
+- Tüm aktörler için paylaşılan işlevsellik; Örneğin, devre kesici.
+- Aktör hizmetinin kendisinde ve her bir aktör üzerinde uzak yordam çağrıları.
 
-## <a name="use-the-actor-service"></a>Actor hizmetinin kullanın
+## <a name="use-the-actor-service"></a>Aktör hizmetini kullanma
 
-Aktör örnekleri ama çalışıyorlar actor hizmetinin erişebilir. Aktör hizmeti aracılığıyla aktör örneklerinizi programlı olarak hizmet bağlamı elde edebilirsiniz. Hizmet bağlamı, bölüm kimliği, hizmet adı, uygulama adı ve diğer Azure Service Fabric platforma özgü bilgileri sahiptir.
+Aktör örneklerinin çalıştıkları aktör hizmetine erişimi vardır. Aktör hizmeti sayesinde aktör örnekleri program aracılığıyla hizmet bağlamını elde edebilir. Hizmet bağlamının bölüm KIMLIĞI, hizmet adı, uygulama adı ve diğer Azure Service Fabric platforma özgü bilgileri vardır.
 
 ```csharp
 Task MyActorMethod()
@@ -52,7 +43,7 @@ CompletableFuture<?> MyActorMethod()
 }
 ```
 
-Tüm Reliable Services gibi actor hizmetinin ile bir Service Fabric çalışma zamanı hizmet türüne kaydedilmesi gerekir. Aktör hizmetinin aktör örneklerinizi çalıştırması için aktör türünüzün de aktör hizmetine kaydedilmesi gerekir. `ActorRuntime` kayıt yöntemi bu işi aktörlerin yerine gerçekleştirir. En basit durumda, aktör türünüzün kaydedebilirsiniz ve actor hizmetinin sonra varsayılan ayarları kullanır.
+Tüm Reliable Services gibi, aktör hizmeti, Service Fabric çalışma zamanında bir hizmet türü ile kaydedilmelidir. Aktör hizmetinin aktör örneklerinizi çalıştırması için aktör türünün de aktör hizmetine kayıtlı olması gerekir. `ActorRuntime` kayıt yöntemi bu işi aktörlerin yerine gerçekleştirir. En basit durumda, aktör türünü kaydedebilir ve aktör hizmeti varsayılan ayarları kullanır.
 
 ```csharp
 static class Program
@@ -66,7 +57,7 @@ static class Program
 }
 ```
 
-Alternatif olarak, kayıt yöntemi tarafından sağlanan bir lambda actor hizmetinin kendiniz oluşturmak için kullanabilirsiniz. Ardından actor hizmetinin yapılandırabilir ve açıkça aktör örneklerinizi oluşturun. Oluşturucusu aracılığıyla aktörünüz için bağımlılıklar ekleyebilir.
+Alternatif olarak, aktör hizmetini kendiniz oluşturmak için kayıt yöntemiyle sunulan bir lambda kullanabilirsiniz. Ardından aktör hizmetini yapılandırabilir ve aktör örneklerinizi açıkça oluşturabilirsiniz. Aktörünüz için Oluşturucu aracılığıyla bağımlılıklar ekleyebilirsiniz.
 
 ```csharp
 static class Program
@@ -98,12 +89,12 @@ static class Program
 
 ## <a name="actor-service-methods"></a>Aktör hizmeti yöntemleri
 
-Aktör hizmeti uygulayan `IActorService` (C#) veya `ActorService` sırayla (Java) uygulayan `IService` (C#) veya `Service` (Java). Bu arabirim, uzaktan yordam çağrısı hizmeti yöntemleri sağlayan, Reliable Services uzaktan iletişim tarafından kullanılır. Bu hizmet uzaktan iletişimini uzaktan çağrılabilir hizmet düzeyi yöntemleri içerir. Bunu kullanabilirsiniz [listeleme](service-fabric-reliable-actors-enumerate.md) ve [Sil](service-fabric-reliable-actors-delete-actors.md) aktörler.
+Aktör hizmeti, `IService` (C#C#) veya `Service` (Java) uygulayan `IActorService` () veya `ActorService` (Java) uygular. Bu arabirim, hizmet yöntemlerinde uzak yordam çağrılarına izin veren Reliable Services uzaktan iletişim tarafından kullanılır. Hizmet uzaktan iletişim üzerinden çağrılabilen hizmet düzeyi yöntemleri içerir. Aktörleri [listelemek](service-fabric-reliable-actors-enumerate.md) ve [silmek](service-fabric-reliable-actors-delete-actors.md) için kullanabilirsiniz.
 
 
 ## <a name="custom-actor-service"></a>Özel aktör hizmeti
 
-Aktör kaydı lambda kullanarak, türetilen kendi özel actor hizmetinin kaydedebilirsiniz `ActorService` (C#) ve `FabricActorService` (Java). Devralınan bir hizmet sınıfı yazarak, kendi hizmet düzeyi işlevselliği ardından uygulayabileceğiniz `ActorService` (C#) veya `FabricActorService` (Java). Özel actor hizmetinin tüm aktör çalışma zamanı işlevinden devralan `ActorService` (C#) veya `FabricActorService` (Java). Kendi hizmet yöntemleri uygulamak için kullanılabilir.
+Aktör kaydı lambdası kullanarak, `ActorService` (C#) ve `FabricActorService` (Java) ' dan türetilen kendi özel aktör hizmetinizi kaydedebilirsiniz. Daha sonra, `ActorService` (C#) veya `FabricActorService` (Java) devralan bir hizmet sınıfı yazarak kendi hizmet düzeyi işlevselliklerinizi uygulayabilirsiniz. Özel aktör hizmeti, tüm aktör çalışma zamanı işlevlerini `ActorService` (C#) veya `FabricActorService` (Java) öğesinden devralır. Kendi hizmet yöntemlerinizi uygulamak için kullanılabilir.
 
 ```csharp
 class MyActorService : ActorService
@@ -150,71 +141,71 @@ public class Program
 }
 ```
 
-## <a name="implement-actor-backup-and-restore"></a>Uygulama aktör yedekleme ve geri yükleme
+## <a name="implement-actor-backup-and-restore"></a>Aktör yedekleme ve geri yükleme uygulama
 
-Bir özel aktör hizmeti uzaktan iletişim dinleyicisi zaten var. avantajlarından yararlanarak aktör verileri yedeklemek için bir yöntem getirebilir `ActorService`. Bir örnek için bkz. [aktörleri yedekleme ve geri yükleme](service-fabric-reliable-actors-backup-and-restore.md).
+Özel bir aktör hizmeti, `ActorService`' de zaten mevcut olan uzaktan iletişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunabilir. Bir örnek için bkz. [aktörleri yedekleme ve geri yükleme](service-fabric-reliable-actors-backup-and-restore.md).
 
-## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Uzaktan iletişim V2 (Arabirimi uyumlu) yığını kullanan aktör
+## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Remoting v2 (arabirim uyumlu) yığınını kullanan aktör
 
-Uzaktan iletişim V2 (V2_1 bilinen uyumlu arabirimi) yığını V2 remoting yığınının tüm özelliklere sahiptir. Arayüz remoting V1 yığın ile uyumludur, ancak V2 ve V1 ile geriye dönük olarak uyumlu değil. V1'den V2_1 için hizmet kullanılabilirliği hakkında herhangi bir etkisi ile yükseltmek için sonraki bölümde yer alan adımları izleyin.
+Remoting v2 (arabirim uyumlu, V2_1 olarak bilinir) yığını, V2 Uzaktan iletişim yığınının tüm özelliklerine sahiptir. Arabirimi, uzaktan iletişim v1 Stack ile uyumludur, ancak v2 ve v1 ile geriye dönük olarak uyumlu değildir. Hizmet kullanılabilirliği üzerinde hiçbir etkisi olmadan v1 'den V2_1 'e yükseltmek için sonraki bölümde yer alan adımları izleyin.
 
-Aşağıdaki değişiklikleri uzak V2_1 yığın kullanmak için gereklidir:
+Uzaktan iletişim V2_1 yığınını kullanmak için aşağıdaki değişiklikler gereklidir:
 
-1. Aktör arabirimlerinde aşağıdaki derleme özniteliğini ekleyin.
+1. Aktör arabirimlerine aşağıdaki derleme özniteliğini ekleyin.
   
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
-2. Derleme ve aktör hizmeti ve V2 stack kullanmaya başlamak için aktör istemci projeleri yükseltebilirsiniz.
+2. V2 yığınını kullanmaya başlamak için aktör hizmeti ve aktör istemci projelerini derleyin ve yükseltin.
 
-### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>Hizmet kullanılabilirliği etkilemeden uzaktan iletişim V2 (Arabirimi uyumlu) yığına aktör hizmeti yükseltmesi
+### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>Aktör hizmeti hizmeti kullanılabilirliğini etkilemeden uzaktan iletişim v2 (arabirim uyumlu) yığınına yükseltme
 
-İki aşamalı yükseltme değişikliktir. Bu sıradaki adımları izleyin.
+Bu değişiklik, iki adımlı bir yükseltmeye sahiptir. Bu dizideki adımları izleyin.
 
-1. Aktör arabirimlerinde aşağıdaki derleme özniteliğini ekleyin. Bu öznitelik iki dinleyiciden actor hizmetinin, V1 başlar (mevcut) ve V2_1 dinleyicisi. Bu değişiklik actor hizmetiyle yükseltin.
+1. Aktör arabirimlerine aşağıdaki derleme özniteliğini ekleyin. Bu öznitelik aktör hizmeti, v1 (mevcut) ve V2_1 dinleyicisi için iki dinleyici başlatır. Aktör hizmetini bu değişiklik ile yükseltin.
 
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
-2. Önceki yükseltme tamamlandıktan sonra aktör istemcileri yükseltin.
-   Bu adım, aktör proxy remoting V2_1 yığın kullandığından emin sağlar.
+2. Önceki yükseltmeyi tamamladıktan sonra aktör istemcilerini yükseltin.
+   Bu adım, aktör proxy 'sinin uzaktan iletişim V2_1 yığınını kullandığından emin olur.
 
-3. Bu adım isteğe bağlıdır. V1 dinleyiciyi kaldırmak için önceki özniteliğini değiştirin.
+3. Bu adım isteğe bağlıdır. V1 dinleyicisini kaldırmak için önceki özniteliği değiştirin.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
     ```
 
-## <a name="actor-that-uses-the-remoting-v2-stack"></a>Uzaktan iletişim V2 yığınını kullanır aktör
+## <a name="actor-that-uses-the-remoting-v2-stack"></a>Remoting v2 yığınını kullanan aktör
 
-Sürüm 2.8 NuGet paketi ile kullanıcılar artık daha iyi gerçekleştirir ve özel seri hale getirme gibi özellikler sağlayan uzaktan iletişim V2 yığın kullanabilir. Uzaktan iletişim V2 (artık V1 uzaktan iletişim yığını olarak da bilinir) mevcut uzaktan iletişim yığını geriye dönük uyumlu değil.
+Sürüm 2,8 NuGet paketiyle, kullanıcılar artık daha iyi performans sağlayan ve özel serileştirme gibi özellikler sağlayan Remoting v2 yığınını kullanabilir. Remoting v2, mevcut uzaktan iletişim yığını ile geriye dönük olarak uyumlu değil (şimdi v1 uzaktan iletişim yığını olarak adlandırılır).
 
-Aşağıdaki değişiklikler, uzaktan iletişim V2 yığını kullanması gerekmez.
+Remoting v2 yığınını kullanmak için aşağıdaki değişiklikler gereklidir.
 
-1. Aktör arabirimlerinde aşağıdaki derleme özniteliğini ekleyin.
+1. Aktör arabirimlerine aşağıdaki derleme özniteliğini ekleyin.
 
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
-2. Derleme ve aktör hizmeti ve V2 stack kullanmaya başlamak için aktör istemci projeleri yükseltebilirsiniz.
+2. V2 yığınını kullanmaya başlamak için aktör hizmeti ve aktör istemci projelerini derleyin ve yükseltin.
 
-### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>Hizmet kullanılabilirliği etkilemeden actor hizmetinin uzaktan iletişim V2 yığınına yükseltin
+### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>Aktör hizmetini, hizmet kullanılabilirliğini etkilemeden Remoting v2 yığınına yükseltin
 
-İki aşamalı yükseltme değişikliktir. Bu sıradaki adımları izleyin.
+Bu değişiklik, iki adımlı bir yükseltmeye sahiptir. Bu dizideki adımları izleyin.
 
-1. Aktör arabirimlerinde aşağıdaki derleme özniteliğini ekleyin. Bu öznitelik iki dinleyiciden actor hizmetinin, V1 başlar (mevcut) ve V2 dinleyicisi. Bu değişiklik actor hizmetiyle yükseltin.
+1. Aktör arabirimlerine aşağıdaki derleme özniteliğini ekleyin. Bu öznitelik aktör hizmeti, v1 (mevcut) ve v2 dinleyicisi için iki dinleyici başlatır. Aktör hizmetini bu değişiklik ile yükseltin.
 
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
-2. Önceki yükseltme tamamlandıktan sonra aktör istemcileri yükseltin.
-   Bu adım, aktör proxy uzaktan iletişim V2 yığın kullandığından emin sağlar.
+2. Önceki yükseltmeyi tamamladıktan sonra aktör istemcilerini yükseltin.
+   Bu adım, aktör proxy 'sinin Remoting v2 yığınını kullandığından emin olur.
 
-3. Bu adım isteğe bağlıdır. V1 dinleyiciyi kaldırmak için önceki özniteliğini değiştirin.
+3. Bu adım isteğe bağlıdır. V1 dinleyicisini kaldırmak için önceki özniteliği değiştirin.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
@@ -223,8 +214,8 @@ Aşağıdaki değişiklikler, uzaktan iletişim V2 yığını kullanması gerekm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
-* [Aktör yaşam döngüsü ve atık toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktörler API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
+* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

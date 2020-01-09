@@ -1,6 +1,5 @@
 ---
-title: Angular uygulama API'si ile Azure Cosmos DB'nin MongoDB için oluşturma - Node.js Express uygulaması oluşturma
-titleSuffix: Azure Cosmos DB
+title: MongoDB için Azure Cosmos DB API 'SI ile Node. js Express uygulaması oluşturma (part2)
 description: Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturma öğreticisi dizisinin 2. bölümü.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441142"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Angular uygulama API'si ile Azure Cosmos DB'nin MongoDB için oluşturma - Node.js Express uygulaması oluşturma
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Node. js Express uygulaması oluşturma
 
-Bu çok bölümlü öğretici, Express ve Angular ile Node.js kullanılarak yazılmış yeni bir uygulama oluşturun ve buna bağlanmak gösterilmektedir, [MongoDB için Cosmos DB API'si ile yapılandırılan Cosmos hesabı](mongodb-introduction.md).
+Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Öğreticinin 2. bölümünde [giriş bölümündeki](tutorial-develop-mongodb-nodejs.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
@@ -34,7 +33,7 @@ Bu çok bölümlü öğretici, Express ve Angular ile Node.js kullanılarak yaz�
 
 > [!VIDEO https://www.youtube.com/embed/lIwJIYcGSUg]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticinin bu bölümüne başlatmadan önce [giriş videosunu](tutorial-develop-mongodb-nodejs.md) izlediğinizden emin olun.
 
@@ -103,7 +102,7 @@ Bu öğretici için aşağıdakiler de gereklidir:
     * dist klasöründeki her şeyi sunar, bu klasördekiler statik içerik olacaktır
     * Uygulamayı oluşturur ve sunucuda bulunamayan tüm GET istekleri için index.html dosyasını sunar (ayrıntılı bağlantılar için)
     * app.listen ile sunucuyu başlatır
-    * Bağlantı noktası olduğunu için bir ok işlevinde kullanır
+    * Bağlantı noktasının etkin olduğunu günlüğe kaydetmek için bir ok işlevi kullanır
     
    ```node
    const express = require('express');

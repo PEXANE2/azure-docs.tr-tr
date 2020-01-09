@@ -1,21 +1,21 @@
 ---
-title: 'Öğretici: Tek sayfalı Web uygulaması Bing Varlık Arama'
+title: 'Öğretici: Bing Varlık Arama tek sayfalı web uygulaması'
 titleSuffix: Azure Cognitive Services
-description: Bing Varlık Arama API'sinin tek sayfalı bir Web uygulamasında kullanılmasını gösterir.
+description: Bu öğreticide, Bing Varlık Arama API'si tek sayfalı bir Web uygulamasında nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448602"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
@@ -39,7 +39,7 @@ Uygulamamız, kullanıcı tarafından girilen bir konumdan enlem ve boylamı alm
 > [!NOTE]
 > Sayfanın en altındaki JSON ve HTTP başlıklarına tıklandığında, JSON yanıt ve HTTP istek bilgileri gösterilir. Bu ayrıntılar hizmeti keşfederken yararlıdır.
 
-Öğretici uygulamasında aşağıdakilerin nasıl yapılacağı gösterilmektedir:
+Öğretici uygulaması şunları gösterir:
 
 > [!div class="checklist"]
 > * JavaScript'te Bing Varlık Arama API'sine çağrı yapma
@@ -86,7 +86,7 @@ HTML, arama sonuçlarının gösterildiği bölümleri de (HTML `<div>` etiketle
 
 Bing Arama ve Bing Haritalar API'si abonelik anahtarlarını koda eklemek zorunda kalmamak için, bunları tarayıcının kalıcı depolamasını kullanarak depolarız. Anahtarların biri depolanmazsa bunu isteriz ve daha sonra kullanmak üzere depolarız. Anahtar daha sonra API tarafından reddedilirse, depolanan anahtarı geçersiz kılarız ve böylelikle kullanıcıdan sonraki aramasında anahtar istenir.
 
-`localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevimiz, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır.
+`localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevimiz, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```javascript
 // cookie names for data we store
@@ -380,7 +380,7 @@ function handleBingResponse() {
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
-|Aşama|Olası hatalar|İşleyen|
+|Stage|Olası hatalar|İşleyen|
 |-|-|-|
 |JavaScript istek nesnesi oluşturma|Geçersiz URL|`try`/`catch` bloğu|
 |İstekte bulunma|Ağ hataları, durdurulan bağlantılar|`error` ve `abort` olay işleyicileri|
@@ -514,7 +514,7 @@ Varlık işleyici işlevimiz:
 
 ## <a name="persisting-client-id"></a>Kalıcı istemci kimliği
 
-Bing arama API’lerinden gelen yanıtlar, başarılı isteklerle birlikte API’ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API’si kullanılıyorsa, mümkün olduğunca bu API’lerin tümünde aynı istemci kimliği kullanılmalıdır.
+Bing arama API’lerinden gelen yanıtlar, başarılı isteklerle birlikte API’ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API'si kullanılıyorsa, mümkün olduğunca bu API'lerin tümünde aynı istemci kimliği kullanılmalıdır.
 
 Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcının tüm aramalarını ilişkilendirebilir. Bunun iki önemli avantajı vardır.
 
@@ -525,7 +525,7 @@ Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcı
 Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScript'in kullanımına sunulmasını engelleyebilir. Bu sınırlama, arama sonucunun kaynağı istekte bulunan sayfadan farklı olduğunda ortaya çıkar. Üretim ortamında, Web sayfasıyla aynı etki alanında API çağrısı yapan bir sunucu tarafı betiği barındırarak bu ilkeye uymalısınız. Betiğin kaynağı Web sayfasıyla aynı olduğundan, `X-MSEdge-ClientID` üst bilgisi JavaScript'in kullanımına sunulur.
 
 > [!NOTE]
-> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API’si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
+> Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
 Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir ara sunucudan gelen yanıtta, yanıt üst bilgilerini beyaz listeye alan ve JavaScript’in kullanımına sunan `Access-Control-Expose-Headers` üst bilgisi bulunur.
 

@@ -1,17 +1,17 @@
 ---
-title: Paralel dallar oluşturun veya ekleyin
-description: Azure Logic Apps iş akışları için paralel dallar oluşturma veya katma
+title: İş akışlarında eylemler için paralel dallar oluşturun veya ekleyin
+description: Azure Logic Apps içinde bağımsız iş akışı eylemleri için paralel çalışan dallar oluşturmayı veya birleştirmeyi öğrenin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: bb1c615852fb2bf810abec97e3faeb5775c4a57a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453425"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps iş akışı eylemleri için paralel dallar oluşturun veya ekleyin
 
@@ -20,7 +20,7 @@ Varsayılan olarak, mantıksal uygulama iş akışlarındaki eylemleriniz sıray
 > [!TIP] 
 > Bir diziyi alan ve her dizi öğesi için bir iş akışı çalıştırmak istediğiniz bir Tetikleyiciniz varsa, bu diziyi [ **spton** tetikleyici özelliğiyle](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *toplu* olarak silebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 

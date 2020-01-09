@@ -3,18 +3,18 @@ title: Azure IoT Central Kullanıcı Arabirimi turuna katılın | Microsoft Docs
 description: IoT çözümünüzü oluşturmak, yönetmek ve kullanmak için kullandığınız Azure IoT Central Kullanıcı arabiriminin temel alanlarıyla ilgili bilgi sahibi olun.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: f8aa467f95bb97c42e726d1392deca53e15df624
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 23deb77b6fda0b3801057d2ae97a740301449e28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434892"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Azure IoT Central kullanıcı arabirimine yönelik tura katılın (Önizleme özellikleri)
 
@@ -98,7 +98,7 @@ IoT uygulamanızın içindeyken, farklı alanlara erişmek için sol bölmeyi ku
 Üstteki menü her sayfada görünür:
 
 > [!div class="mx-imgBorder"]
-> ![araç çubuğu](media/overview-iot-central-tour/toolbar-pnp.png)
+> ![Araç Çubuğu](media/overview-iot-central-tour/toolbar-pnp.png)
 
 * Cihaz şablonlarını ve cihazlarını aramak için bir **arama** değeri girin.
 * Kullanıcı arabirimi dilini veya temasını değiştirmek için **Ayarlar** simgesini seçin. [Uygulama tercihlerinizi yönetme](../core/howto-manage-preferences.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json) hakkında daha fazla bilgi edinin
@@ -153,7 +153,7 @@ Kurallar sayfası, cihazların telemetri, durum veya olaylarını temel alan kur
 
 Analiz, uygulamanızdan Öngörüler elde etmek için cihaz verilerinin üzerine özel görünümler oluşturmanızı sağlar. Daha fazla bilgi için bkz. [Azure IoT Central için analiz oluşturma uygulamanız](howto-create-analytics.md) makalesi.
 
-### <a name="jobs"></a>İşler
+### <a name="jobs"></a>İş
 
 > [!div class="mx-imgBorder"]
 > ![Işleri sayfası](media/overview-iot-central-tour/jobs-pnp.png)
@@ -176,7 +176,7 @@ Cihaz şablonları sayfası, bir oluşturucunun uygulamadaki cihaz şablonların
 
 Daha fazla bilgi almak için [Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama](howto-set-up-template.md) öğreticisine bakın. 
 
-### <a name="data-export"></a>Veri dışarı aktarma
+### <a name="data-export"></a>Verileri dışarı aktar
 > [!div class="mx-imgBorder"]
 > ![veri dışa aktarma sayfası](media/overview-iot-central-tour/export-pnp.png)
 

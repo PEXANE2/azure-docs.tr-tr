@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444496"
 ---
 # <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
@@ -60,6 +60,8 @@ Azure IR veri akışı özelliklerinde bir TTL ayarlayarak, ADF 'yi bir küme ka
 Bir işlem hattındaki veri akışlarını paralel olarak çalıştırırsanız, ADF her bir etkinliğe bağlı Azure Integration Runtime ayarlara bağlı olarak her etkinlik yürütmesi için ayrı Azure Databricks kümelerini alır. ADF işlem hatlarında paralel yürütmeler tasarlamak için, veri akışı etkinliklerinizi Kullanıcı arabiriminde öncelik kısıtlamaları olmadan ekleyin.
 
 Bu üç seçenekten Bu seçenek büyük olasılıkla en kısa sürede yürütülecektir. Ancak, her paralel veri akışı ayrı kümeler üzerinde aynı anda yürütülür, bu nedenle olayların sıralaması belirleyici değildir.
+
+Veri akışı etkinliklerinizi işlem hatlarınız içinde paralel olarak yürütüyorsunuz, TTL 'nin kullanılması önerilir. Bunun nedeni, aynı Azure Integration Runtime kullanılarak aynı anda paralel yürütmelerin, Data Factory 'niz için birden çok ısınma havuzu örneği oluşmasına neden olur.
 
 ##### <a name="overload-single-data-flow"></a>Tek veri akışını aşırı yükleme
 

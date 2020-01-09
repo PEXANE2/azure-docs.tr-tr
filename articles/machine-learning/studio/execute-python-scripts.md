@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837637"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427664"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) üzerinde Python Machine Learning betikleri yürütme
 
@@ -53,7 +53,7 @@ Giriş bağlantı noktalarının `azureml_main` işlevinin parametreleriyle nas�
 
 ## <a name="translation-of-input-and-output-data-types"></a>Giriş ve çıkış veri türlerinin çevirisi
 
-Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, klasik Studio sürümündeki giriş veri kümeleri Pandas DataFrame 'e dönüştürülür ve çıkış veri çerçeveleri, Studio (klasik) veri kümelerine geri dönüştürülür. Bu dönüştürme işlemi sırasında aşağıdaki Çeviriler de gerçekleştirilir:
+Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, Studio 'da (klasik) giriş veri kümeleri Pandas DataFrame 'e dönüştürülür ve çıkış veri çerçeveleri, Studio (klasik) veri kümelerine geri dönüştürülür. Bu dönüştürme işlemi sırasında aşağıdaki Çeviriler de gerçekleştirilir:
 
  **Python veri türü** | **Studio çeviri yordamı** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, klasi
 
 ## <a id="import-modules"></a>Mevcut Python betik modüllerini içeri aktarma
 
-Python 'u yürütmek için kullanılan arka uç, yaygın [olarak kullanılan](https://www.anaconda.com/distribution/)bir bilimsel Python dağıtımına dayanır. Bu, veri merkezli iş yüklerinde kullanılan en yaygın Python paketlerinin 200 ' e yakın bir sürümüne sahiptir. Studio 'nun klasik sürümü şu anda dış kitaplıkları yüklemek ve yönetmek için PIP veya Conda gibi paket yönetim sistemlerinin kullanılmasını desteklememektedir.  Ek kitaplıklar ekleme gereksinimini fark ederseniz, kılavuz olarak aşağıdaki senaryoyu kullanın.
+Python 'u yürütmek için kullanılan arka uç, yaygın [olarak kullanılan](https://www.anaconda.com/distribution/)bir bilimsel Python dağıtımına dayanır. Bu, veri merkezli iş yüklerinde kullanılan en yaygın Python paketlerinin 200 ' e yakın bir sürümüne sahiptir. Studio (klasik) Şu anda dış kitaplıkları yüklemek ve yönetmek için PIP veya Conda gibi paket yönetim sistemlerinin kullanılmasını desteklememektedir.  Ek kitaplıklar ekleme gereksinimini fark ederseniz, kılavuz olarak aşağıdaki senaryoyu kullanın.
 
-Yaygın kullanım örneği, mevcut Python betikleri, Studio denemeleri 'ın klasik sürümüne dahil değildir. [Execute Python betik][execute-python-script] modülü, üçüncü giriş bağlantı noktasında Python modüllerini içeren bir ZIP dosyasını kabul eder. Dosya, çalışma zamanında yürütme çerçevesi tarafından sıkıştırıldı ve içerik Python yorumlayıcı kitaplık yoluna eklenir. `azureml_main` giriş noktası işlevi daha sonra bu modülleri doğrudan içeri aktarabilir. 
+Yaygın kullanım örneği, mevcut Python betikleri Studio (klasik) denemeleri içine dahil değildir. [Execute Python betik][execute-python-script] modülü, üçüncü giriş bağlantı noktasında Python modüllerini içeren bir ZIP dosyasını kabul eder. Dosya, çalışma zamanında yürütme çerçevesi tarafından sıkıştırıldı ve içerik Python yorumlayıcı kitaplık yoluna eklenir. `azureml_main` giriş noktası işlevi daha sonra bu modülleri doğrudan içeri aktarabilir. 
 
 Örnek olarak, basit bir "Hello, World" işlevi içeren Hello.py dosyasını göz önünde bulundurun.
 
@@ -79,7 +79,7 @@ Daha sonra, Hello.py içeren bir Hello. zip dosyası oluşturacağız:
 
 ![Kullanıcı tanımlı Python kodunu içeren zip dosyası](./media/execute-python-scripts/figure5.png)
 
-Zip dosyasını bir veri kümesi olarak klasik Studio sürümüne yükleyin. Ardından, aşağıdaki görüntüde gösterildiği gibi, bu dosyayı **yürütme komut dosyası** modülünün üçüncü giriş bağlantı noktasına ekleyerek Hello. zip dosyasında Python kodunu kullanan bir deneme oluşturun ve çalıştırın.
+Zip dosyasını bir veri kümesi olarak Studio 'ya (klasik) yükleyin. Ardından, aşağıdaki görüntüde gösterildiği gibi, bu dosyayı **yürütme komut dosyası** modülünün üçüncü giriş bağlantı noktasına ekleyerek Hello. zip dosyasında Python kodunu kullanan bir deneme oluşturun ve çalıştırın.
 
 ![Yürütme Python betik modülüne giriş olarak Hello. zip ile örnek deneme](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ Bu işlem, Pandas 'teki scatter_matrix işlevi kullanılarak dağılım çizim m
 
 ![Python kodu kullanarak örnek bir deneme için çizimleri görselleştirme](./media/execute-python-scripts/figure-v2-9b.png)
 
-Farklı görüntülere kaydederek birden çok şekil döndürmek mümkündür. Studio çalışma zamanının klasik sürümü tüm görüntüleri alır ve bunları görselleştirme için birleştirir.
+Farklı görüntülere kaydederek birden çok şekil döndürmek mümkündür. Studio (klasik) çalışma zamanı tüm görüntüleri seçer ve görselleştirmeleri için birleştirir.
 
 ## <a name="advanced-examples"></a>Gelişmiş örnekler
 
-Studio 'nun klasik sürümünde yüklü Anaconda ortamı, sayısal tuş y, SciPy ve Scikits-öğren gibi ortak paketleri içerir. Bu paketler, makine öğrenimi ardışık düzeninde veri işleme için etkili bir şekilde kullanılabilir.
+Studio 'da yüklü Anaconda ortamı (klasik), sayısal tuş y, SciPy ve Scikits-öğren gibi ortak paketleri içerir. Bu paketler, makine öğrenimi ardışık düzeninde veri işleme için etkili bir şekilde kullanılabilir.
 
 Örneğin, aşağıdaki deneme ve komut dosyası, bir veri kümesi için özellik önem puanlarını hesaplama hakkında bilgi edinin. Puanlar, denetimli özellik seçimini başka bir modele gönderilmeden önce gerçekleştirmek için kullanılabilir.
 
@@ -153,7 +153,7 @@ Studio 'nun klasik sürümünde yüklü Anaconda ortamı, sayısal tuş y, SciPy
 
 ![Özellikleri puanlara göre derecelendirmek için işlev](./media/execute-python-scripts/figure8.png)
 
-Aşağıdaki deneme daha sonra, klasik Azure Machine Learning Studio "Pima Hint diabetes" veri kümesindeki özelliklerin önem puanlarını hesaplar ve döndürür:
+Aşağıdaki deneme daha sonra, Azure Machine Learning Studio (klasik) içindeki "Pima Hint diabetes" veri kümesindeki özelliklerin önem puanlarını hesaplar ve döndürür:
 
 ![Python kullanarak Pima Hint diabetes veri kümesindeki özellikleri derecelendirmek için denemeler yapın](./media/execute-python-scripts/figure9a.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB kullanırken sorgu sorunlarını tanılama ve giderme
+title: Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı ve sorun gidermeyi öğrenin.
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444718"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB sorgu performansının sorunlarını giderme
 Bu makalede, SQL sorgu sorunlarını Azure Cosmos DB belirleme, tanılama ve sorunlarını giderme konuları ele alınmaktadır. Azure Cosmos DB sorgularda en iyi performansı elde etmek için aşağıdaki sorun giderme adımlarını izleyin. 
@@ -26,7 +26,7 @@ Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosm
 
 ## <a name="log-the-executed-sql-query"></a>Yürütülen SQL sorgusunu günlüğe kaydet 
 
-Yürütülen SQL sorgusunu bir depolama hesabında veya tanılama günlüğü tablosunda günlüğe kaydedebilirsiniz. [Tanılama günlükleri aracılığıyla SQL sorgu günlükleri](monitor-cosmos-db.md#diagnostic-settings) , karıştırılmış sorguyu seçtiğiniz bir depolama hesabında günlüğe kaydetmenize olanak tanır. Bu, daha yüksek RUs 'yi kullanan günlüklere baklamanızı ve sorgu bulmayı sağlar. Daha sonra, QueryRuntimeStatistics içindeki gerçek sorguyla eşleştirmek için etkinlik KIMLIĞINI kullanabilirsiniz. Sorgu güvenlik amacı ve sorgu parametresi adları ve WHERE yan tümcelerinde değerleri gerçek adlardan ve değerlerden farklı olacak şekilde belirlenir. Yürütülen sorguların uzun süreli olarak bekletilmesini sağlamak için depolama hesabını günlüğe kaydet ' i kullanabilirsiniz.  
+Yürütülen SQL sorgusunu bir depolama hesabında veya tanılama günlüğü tablosunda günlüğe kaydedebilirsiniz. [Tanılama günlükleri aracılığıyla SQL sorgu günlükleri](cosmosdb-monitor-resource-logs.md) , karıştırılmış sorguyu seçtiğiniz bir depolama hesabında günlüğe kaydetmenize olanak tanır. Bu, daha yüksek RUs 'yi kullanan günlüklere baklamanızı ve sorgu bulmayı sağlar. Daha sonra, QueryRuntimeStatistics içindeki gerçek sorguyla eşleştirmek için etkinlik KIMLIĞINI kullanabilirsiniz. Sorgu güvenlik amacı ve sorgu parametresi adları ve WHERE yan tümcelerinde değerleri gerçek adlardan ve değerlerden farklı olacak şekilde belirlenir. Yürütülen sorguların uzun süreli olarak bekletilmesini sağlamak için depolama hesabını günlüğe kaydet ' i kullanabilirsiniz.  
 
 ## <a name="log-query-metrics"></a>Günlük sorgusu ölçümleri
 

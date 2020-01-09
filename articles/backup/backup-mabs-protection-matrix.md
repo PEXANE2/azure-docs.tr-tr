@@ -3,12 +3,12 @@ title: Ne Azure Backup Sunucusu yedekleyebileceğiniz
 description: Bu makalede, Azure Backup Sunucusu koruduğu tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir destek matrisi sunulmaktadır.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449882"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Sunucusu koruma matrisi
 
@@ -82,9 +82,23 @@ Bu makalede, Azure Backup Sunucusu ile koruyabileceğiniz çeşitli sunucular ve
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute desteği
 
-Azure ExpressRoute özel veya Microsoft eşlemesiyle yapılandırılmışsa, verileri Azure 'a yedeklemek için kullanılamaz.
+Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.
 
-Azure ExpressRoute, genel eşleme ile yapılandırıldıysa, verileri Azure 'a yedeklemek için kullanılabilir.
+Ortak eşleme ile: aşağıdaki etki alanlarına/adreslere erişim sağlayın:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Microsoft eşlemesiyle, lütfen aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)
+* Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)
+
+Daha fazla ayrıntı için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Ortak eşleme, yeni devreler için kullanım dışıdır.
@@ -93,17 +107,17 @@ Azure ExpressRoute, genel eşleme ile yapılandırıldıysa, verileri Azure 'a y
 
 Azure Backup Sunucusu, aşağıdaki kümelenmiş uygulamalardaki verileri koruyabilir:
 
-- Dosya sunucuları
+* Dosya sunucuları
 
-- SQL Server
+* SQL Server
 
-- Hyper-V-ölçekli MABS koruma Aracısı kullanarak bir Hyper-V kümesini koruyorduysanız, korunan Hyper-V iş yükleri için ikincil koruma ekleyemezsiniz.
+* Hyper-V-ölçekli MABS koruma Aracısı kullanarak bir Hyper-V kümesini koruyorduysanız, korunan Hyper-V iş yükleri için ikincil koruma ekleyemezsiniz.
 
     Windows Server 2008 R2 üzerinde Hyper-V çalıştırırsanız, BB [975354](https://support.microsoft.com/kb/975354)' de açıklanan güncelleştirmeyi yüklediğinizden emin olun.
     Windows Server 2008 R2 'de Hyper-V ' y i bir küme yapılandırmasında çalıştırırsanız, SP2 ve KB [971394](https://support.microsoft.com/kb/971394)' yi yüklediğinizden emin olun.
 
-- Exchange Server-Azure Backup Sunucusu, desteklenen Exchange Server sürümleri (küme sürekli çoğaltma) için paylaşılmayan disk kümelerini koruyabilir ve ayrıca yerel sürekli çoğaltma için yapılandırılmış Exchange Server 'ı da koruyabilir.
+* Exchange Server-Azure Backup Sunucusu, desteklenen Exchange Server sürümleri (küme sürekli çoğaltma) için paylaşılmayan disk kümelerini koruyabilir ve ayrıca yerel sürekli çoğaltma için yapılandırılmış Exchange Server 'ı da koruyabilir.
 
-- SQL Server-Azure Backup Sunucusu, Küme Paylaşılan birimlerinde (CSV) barındırılan SQL Server veritabanlarının yedeklenmesini desteklemez.
+* SQL Server-Azure Backup Sunucusu, Küme Paylaşılan birimlerinde (CSV) barındırılan SQL Server veritabanlarının yedeklenmesini desteklemez.
 
 Azure Backup Sunucusu, MABS sunucusuyla aynı etki alanında ve alt veya güvenilen bir etki alanında bulunan küme iş yüklerini koruyabilir. Güvenilmeyen etki alanları veya çalışma gruplarındaki veri kaynaklarını korumak istiyorsanız, tek bir sunucu için NTLM veya sertifika kimlik doğrulaması ya da yalnızca bir küme için sertifika kimlik doğrulaması kullanın.

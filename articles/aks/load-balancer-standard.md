@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430816"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -54,6 +54,10 @@ Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önü
 * Yük dengeleyici SKU 'SU tanımlama yalnızca bir AKS kümesi oluşturduğunuzda yapılabilir. Bir AKS kümesi oluşturulduktan sonra yük dengeleyici SKU 'sunu değiştiremezsiniz.
 * Tek bir kümede yalnızca bir tür yük dengeleyici SKU 'SU (temel veya standart) kullanabilirsiniz.
 * *Standart* SKU yük dengeleyiciler yalnızca *Standart* SKU IP adreslerini destekler.
+
+## <a name="use-the-standard-sku-load-balancer"></a>*Standart* SKU yük dengeleyiciyi kullanma
+
+Bir AKS kümesi oluşturduğunuzda, varsayılan olarak, bu kümede Hizmetleri çalıştırdığınızda *Standart* SKU yük dengeleyici kullanılır. Örneğin, [Azure CLI kullanan hızlı başlangıç][aks-quickstart-cli] *Standart* SKU yük dengeleyiciyi kullanan bir örnek uygulama dağıtır. 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Yük dengeleyiciyi iç olarak yapılandırma
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 Örnek çıktıda *AllocatedOutboundPorts* 0 ' dır. *AllocatedOutboundPorts* DEĞERI, SNAT bağlantı noktası ayırmanın arka uç havuz boyutuna göre otomatik atamaya geri dönmesi anlamına gelir. Daha fazla bilgi için bkz. Azure 'da [giden kuralları][azure-lb-outbound-rules] ve [giden bağlantıları][azure-lb-outbound-connections] Load Balancer.
 
+## <a name="restrict-access-to-specific-ip-ranges"></a>Belirli IP aralıklarına erişimi kısıtla
+
+Yük Dengeleyici için sanal ağla ilişkili ağ güvenlik grubu (NSG), varsayılan olarak tüm gelen dış trafiğe izin veren bir kural içerir. Bu kuralı, gelen trafik için yalnızca belirli IP aralıklarına izin verecek şekilde güncelleştirebilirsiniz. Aşağıdaki bildirim, gelen dış trafik için yeni bir IP aralığı belirtmek üzere *Loadbalancersourceranges* kullanır:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+Yukarıdaki örnek, kuralı yalnızca *MY_EXTERNAL_IP_RANGE* aralığından gelen dış trafiğe izin verecek şekilde güncelleştirir. Yük dengeleyici hizmetine erişimi kısıtlamak için bu yöntemi kullanma hakkında daha fazla bilgi, [Kubernetes belgelerinde][kubernetes-cloud-provider-firewall]bulunabilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kubernetes Services [belgelerindeki][kubernetes-services]Kubernetes hizmetleri hakkında daha fazla bilgi edinin.
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

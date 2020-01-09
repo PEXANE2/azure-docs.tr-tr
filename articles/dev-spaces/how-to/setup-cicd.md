@@ -6,14 +6,14 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Azure Dev Spaces ile Azure DevOps kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar
-ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438456"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
 
@@ -93,7 +93,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Henüz bir yayın tanımı içermeyen yepyeni bir DevOps projesinde çalışıyorsanız, önce devam etmeden önce boş bir yayın tanımı oluşturmanız gerekir. Içeri aktarma seçeneği, var olan bir yayın tanımına sahip olana kadar Kullanıcı arabiriminde görüntülenmez.
 1. Sol tarafta **+ Yeni** düğmesine tıklayın ve ardından Işlem hattını **İçeri Aktar ' a**tıklayın.
 1. **Görüntüle** ' ye tıklayın ve projenizden `samples/release.json` seçin.
-1. **OK (Tamam)** düğmesine tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
+1. **Tamam**’a tıklayın. İşlem hattı bölmesinin yayın tanımı düzenleme sayfasıyla yüklendiğini unutmayın. Ayrıca, hala yapılandırılması gereken kümeye özgü ayrıntıları belirten bazı kırmızı uyarı simgeleri olduğunu unutmayın.
 1. Ardışık düzen bölmesinin sol tarafında, **yapıt balonu Ekle** ' ye tıklayın.
 1. **Kaynak** açılan listesinde, daha önce oluşturduğunuz derleme işlem hattını seçin.
 1. **Varsayılan sürüm**Için, **en son yapı ardışık düzen varsayılan dalından etiketlerle**' ı seçin.
@@ -119,7 +119,7 @@ Artık GitHub çatalınızın _azds_updates_ dalına gönderilen herhangi bir g�
 1. Sağ üst köşedeki **Kaydet** ' e tıklayıp **Tamam**' a tıklayın.
 1. **+ Release** (Kaydet düğmesinin yanında) seçeneğine tıklayın ve **bir yayın oluşturun**.
 1. **Yapıtlar**bölümünde, derleme işlem hattınızdan en son derlemeyi doğrulayın.
-1. **Oluştur**’ tıklayın.
+1. **Oluştur**'a tıklayın.
 
 Otomatik bir yayın işlemi başlar, şimdi _geliştirme_ üst düzey alanında *mywebapi* ve *Webön uç* grafiklerini Kubernetes kümenize dağıtacaksınız. Azure DevOps web portalında, yayınınızın ilerlemesini izleyebilirsiniz:
 
@@ -146,7 +146,7 @@ Uri                                           Status
 http://dev.webfrontend.fedcba098.eus.azds.io  Available
 ```
 
-## <a name="deploying-to-production"></a>Üretime dağıtma
+## <a name="deploying-to-production"></a>Üretime Dağıtma
 
 Bu öğreticide oluşturulan CI/CD sistemini kullanarak belirli bir yayını _Üretim_ için el ile yükseltmek için:
 1. İşlem **hatları**altında **yayınlar** bölümüne gidin.

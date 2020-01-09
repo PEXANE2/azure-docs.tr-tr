@@ -1,7 +1,7 @@
 ---
-title: SQL dönüşümünü Uygula
-titleSuffix: Azure Machine Learning service
-description: Verileri dönüştürmek üzere giriş veri kümelerinde bir SQLite sorgusu çalıştırmak için Azure Machine Learning hizmetinde SQL dönüştürme modülünü uygulama ' yı nasıl kullanacağınızı öğrenin.
+title: SQL Dönüşümü Uygulama
+titleSuffix: Azure Machine Learning
+description: Verileri dönüştürmek üzere giriş veri kümelerinde bir SQLite sorgusu çalıştırmak için Azure Machine Learning SQL dönüştürme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456520"
 ---
-# <a name="apply-sql-transformation"></a>SQL dönüşümünü Uygula
+# <a name="apply-sql-transformation"></a>SQL Dönüşümü Uygulama
 
 Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
@@ -64,4 +64,4 @@ Resmi SQLite sitesinde sağlanan desteklenmeyen işlevlerin listesine ek olarak,
     
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

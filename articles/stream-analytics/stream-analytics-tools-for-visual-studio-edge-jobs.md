@@ -1,26 +1,25 @@
 ---
 title: Visual Studio 'da Azure Stream Analytics Edge işleri
 description: Bu makalede, Visual Studio Stream Analytics araçlarını kullanarak IoT Edge işlerinde Stream Analytics yazma, hata ayıklama ve oluşturma işlemleri açıklanmaktadır.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354562"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio araçlarını kullanarak Stream Analytics Edge işleri geliştirme
 
 Bu öğreticide, Visual Studio için Stream Analytics araçlarını kullanmayı öğreneceksiniz. Stream Analytics Edge işlerinizi yazma, hata ayıklama ve oluşturma hakkında bilgi edineceksiniz. İşi oluşturup test ettikten sonra, cihazlarınıza dağıtmak için Azure portal gidebilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
@@ -68,7 +67,7 @@ Stream Analytics IoT Edge ortamlarında dağıtılan Stream Analytics işleri [S
 
 |**Kategori**  | **Komut**  |
 |---------|---------|
-|Diğer işleçler | <ul><li>BÖLÜM ÖLÇÜTÜ</li><li>ÜZERINDEN ZAMAN DAMGASı</li><li>JavaScript UDF</li><li>Kullanıcı tanımlı toplamalar (UDA)</li><li>GetMetadataPropertyValue</li><li>Tek adımda 14 ' ten fazla toplamalar kullanma</li></ul>   |
+|Diğer işleçler | <ul><li>BÖLÜMÜ</li><li>ÜZERINDEN ZAMAN DAMGASı</li><li>JavaScript UDF</li><li>Kullanıcı tanımlı toplamalar (UDA)</li><li>GetMetadataPropertyValue</li><li>Tek adımda 14 ' ten fazla toplamalar kullanma</li></ul>   |
 
 Portalda bir Stream Analytics Edge işi oluşturduğunuzda, desteklenen bir işleç kullanmıyorsanız derleyici sizi otomatik olarak uyarır.
 
@@ -88,7 +87,7 @@ Sorguyu yerel olarak test etmek için örnek verileri karşıya yüklemeniz gere
 2. Açılır pencerede > yerel yolunuzda örnek verilere **gözatıp** > **Kaydet**' i seçin.
    Visual Studio 'da yerel giriş yapılandırması ![](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
-3. **Local_EdgeInput. JSON** adlı bir dosya, giriş klasörünüze otomatik olarak eklenir.  
+3. Giriş klasörünüze **local_EdgeInput. JSON** adlı bir dosya otomatik olarak eklenir.  
 4. Yerel olarak çalıştırabilir veya Azure 'a gönderebilirsiniz. Sorguyu test etmek için **yerel olarak çalıştır**' ı seçin.  
    ![Visual Studio 'da Stream Analytics iş çalıştırma seçenekleri](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
@@ -123,5 +122,5 @@ Sorguyu yerel olarak test etmek için örnek verileri karşıya yüklemeniz gere
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure IoT Edge hakkında daha fazla bilgi](../iot-edge/about-iot-edge.md)
-* [IoT Edge öğreticide ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
-* [Bu anketi kullanarak ekibe geri bildirim gönderin](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Öğretici IOT Edge üzerinde ASA](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [Bu anketi kullanarak ekibine geri bildirim gönderin](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

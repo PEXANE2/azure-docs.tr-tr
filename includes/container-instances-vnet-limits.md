@@ -2,21 +2,19 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 10/17/2019
 ms.author: danlep
-ms.openlocfilehash: 26fe98f5c34e7a3cf7c6336792d7d3341529a5f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aebfedd23ba206ea2ce24f952809121b9d08fd1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442240"
 ---
 ### <a name="regions-and-resource-availability"></a>Bölgeler ve kaynak kullanılabilirliği
 
-| Location | OS | CPU | Bellek (GB) |
+| Bölgeler | İşletim Sistemi | En fazla CPU | Maksimum bellek (GB) |
 | -------- | :---: | :---: | :-----------: |
-| Kuzey Avrupa, Güneydoğu Asya, Orta ABD, Doğu ABD, Doğu ABD 2, Orta Güney ABD, Batı ABD 2 | Linux | 4 | 16 |
-| Batı Avrupa | Linux | 4 | 14 |
-| Japonya Doğu | Linux | 2 | 8 |
-| Batı ABD | Linux | 2 | 3,5 |
-| Avustralya Doğu, Orta Batı ABD | Linux | 1\. | 1.5 |
+| Avustralya Doğu, Kanada Orta, Orta ABD, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, Batı Avrupa, Batı ABD 2 | Linux | 4 | 16 |
+| Doğu Japonya | Linux | 2 | 8 |
+| Orta Kuzey ABD, Güney Hindistan, Batı ABD | Linux | 2 | 3,5 |

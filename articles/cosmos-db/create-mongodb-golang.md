@@ -1,5 +1,5 @@
 ---
-title: MongoDB ve Golang SDK için Azure Cosmos DB API 'sini kullanarak bir konsol uygulaması oluşturma
+title: MongoDB ve Golang SDK için Azure Cosmos DB API 'sini kullanan konsol uygulaması
 description: ", MongoDB için Azure Cosmos DB API 'sini kullanarak bağlanmak ve sorgulamak için kullanabileceğiniz bir Golang kod örneği sunar."
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441959"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB ve Golang SDK için API 'sini kullanarak bir konsol uygulaması oluşturma
 
@@ -31,14 +31,14 @@ Bu hızlı başlangıçta, [Golang](https://golang.org/) 'de yazılmış mevcut 
 
 Diğer bir deyişle, Golang uygulamanız yalnızca bir MongoDB istemcisi kullanarak bağlantı olduğunu bilir. Verilerin Cosmos veritabanında depolandığı uygulama için saydamdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 - [Go](https://golang.org/dl/) ve [Go](https://golang.org/) dilinde temel bilgi düzeyi.
-- JetBrains tarafından, Microsoft veya [atom](https://atom.io/)tarafından [Visual Studio Code](https://code.visualstudio.com/) bir IDE ( [Goland](https://www.jetbrains.com/go/) ). Bu öğreticide GoLand kullanıyorum.
+- Bir IDE: [GoLand](https://www.jetbrains.com/go/) jetbrains [Visual Studio Code'u](https://code.visualstudio.com/) Microsoft tarafından veya [Atom](https://atom.io/). Bu öğreticide, GoLand kullanıyorum.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
@@ -61,7 +61,7 @@ Diğer bir deyişle, Golang uygulamanız yalnızca bir MongoDB istemcisi kullana
     go get gopkg.in/mgo.v2
     ```
 
-[MgO](https://labix.org/mgo) sürücüsü, standart go SOMS 'yi izleyen çok basıt bir API altında zengin ve iyi sınanmış özellikler uygulayan [Go dili](https://golang.org/) için [MongoDB](https://www.mongodb.com/) sürücüsüdür.
+[Mgo](https://labix.org/mgo) sürücüsü olan bir [MongoDB](https://www.mongodb.com/) sürücüsü [Go diline](https://golang.org/) özellikleri standart Go izleyen çok basit bir API altında zengin ve seçimi uygular deyimleri.
 
 <a id="connection-string"></a>
 
@@ -87,7 +87,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
 
 Aşağıdaki kod parçacıklarının tamamı, main.go dosyasından alınmıştır.
 

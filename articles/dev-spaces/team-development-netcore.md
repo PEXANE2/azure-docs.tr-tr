@@ -3,14 +3,14 @@ title: .NET Core ve Visual Studio Code kullanarak takım geliştirme
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Bu öğreticide, Azure Kubernetes hizmetindeki bir .NET Core uygulamasında takım geliştirmesi yapmak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 30d132b78279e9ae1ca190c0037c962a7cbd8e6f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e864d67e0126edf9138ff0d811331829bc758030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325502"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438138"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>.NET Core kullanarak takım geliştirme ve Azure Dev Spaces ile Visual Studio Code
 

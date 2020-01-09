@@ -1,5 +1,5 @@
 ---
-title: Tablo API'si için Azure PowerShell betiği Azure Cosmos DB güncelleştirme RU/sn
+title: Azure Cosmos DB Tablo API'si için RU/s 'yi güncelleştirmek üzere PowerShell betiği
 description: Azure Cosmos DB Tablo API'si hesabındaki bir veritabanının veya kapsayıcının verimini güncelleştirmek için bir PowerShell betiği kullanmayı öğrenin
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8188089f216fa33ba958cf670bb321816387f5c9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444916"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için bir tablo için RU/sn güncelleştirme
 

@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974981"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434749"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Çoklu kiracı için sağlama 
 
@@ -36,7 +36,7 @@ Bu makalede, bölgeler arasında çok kiracılı bir senaryoda cihazların nası
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
@@ -146,7 +146,7 @@ Temizlemeyi kolaylaştırmak için, bu VM 'Ler oluşturulan IoT Hub 'larını i�
     --authentication-type password
     ```
 
-    Bu komutun tamamlanması birkaç dakika sürecektir. Komut tamamlandıktan sonra, Doğu ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
+    Bu komutun tamamlanması birkaç dakika sürer. Komut tamamlandıktan sonra, Doğu ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
 
 1. Azure Cloud Shell komutta aşağıdaki parametre değişikliklerini yaptıktan sonra bir **Batı ABD** Bölgesi sanal makinesi oluşturmak için komutunu yürütün:
 
@@ -167,7 +167,7 @@ Temizlemeyi kolaylaştırmak için, bu VM 'Ler oluşturulan IoT Hub 'larını i�
     --authentication-type password
     ```
 
-    Bu komutun tamamlanması birkaç dakika sürecektir. Komut tamamlandıktan sonra, Batı ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
+    Bu komutun tamamlanması birkaç dakika sürer. Komut tamamlandıktan sonra, Batı ABD bölgesi sanal makinenizin **Publicıpaddress** değerini unutmayın.
 
 1. İki komut satırı kabuklarını açın. SSH kullanarak her kabukta bölgesel VM 'lerden birine bağlanın. 
 
@@ -191,7 +191,6 @@ Temizlemeyi kolaylaştırmak için, bu VM 'Ler oluşturulan IoT Hub 'larını i�
 
 Bu bölümde, her VM 'de Azure IoT C SDK 'sını kopyalayacaksınız. SDK, her bölgeden kiracının cihaz sağlama benzetimi yapılacak bir örnek içerir.
 
-
 1. Her VM için aşağıdaki komutları kullanarak **CMake**, **g + +** , **GCC**ve [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ' i yüklemelisiniz:
 
     ```bash
@@ -199,12 +198,14 @@ Bu bölümde, her VM 'de Azure IoT C SDK 'sını kopyalayacaksınız. SDK, her b
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. SDK 'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-1. [Azure IoT C SDK 'sını](https://github.com/Azure/azure-iot-sdk-c) her iki VM 'de klonlayın.
+1. [Azure IoT C SDK 'sını](https://github.com/Azure/azure-iot-sdk-c) her iki VM 'de klonlayın.  Önceki adımda bulduğunuz etiketi `-b` parametresinin değeri olarak kullanın:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.

@@ -1,5 +1,5 @@
 ---
-title: Toplu yürütücü kitaplığı kullanarak Azure Cosmos DB verileri toplu içe aktarma ve güncelleştirme
+title: Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
 description: Toplu yürütücü kitaplığı tarafından sunulan toplu içeri aktarma ve toplu güncelleştirme API 'Leri aracılığıyla Azure Cosmos DB toplu işlemler gerçekleştirin.
 author: tknandu
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615700"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442147"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
  

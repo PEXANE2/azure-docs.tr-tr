@@ -1,7 +1,7 @@
 ---
 title: 'Skor SVD öneren: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Bir veri kümesi için öneri tahminleri için Azure Machine Learning hizmetinde, SVD öneren modülünün Puanını nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Bir veri kümesinin öneri tahminlerini öğrenmek için Azure Machine Learning 'de SVD öneren modülünün Puanını nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717228"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456331"
 ---
-# <a name="score-svd-recommender"></a>Skor SVD öneren
+# <a name="score-svd-recommender"></a>SVD Önerenini Puanlama
 
 Bu makalede Azure Machine Learning tasarımcısında (Önizleme), SVD öneren modülünün Puanını kullanma açıklanmaktadır. Tek değer ayrıştırma (SVD) algoritmasını temel alan eğitilen bir öneri modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
 
@@ -123,4 +123,4 @@ Modeli çalıştırdığınızda, en iyi öngörülere ulaşmak için genellikle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

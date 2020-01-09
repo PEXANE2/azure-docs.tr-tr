@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448438"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing Haber Arama API’si nedir?
 
@@ -36,7 +36,7 @@ Bing Haber Arama API'si öncelikle ilgili haber makalelerini bulup döndürse de
 |[Kategoriye göre Haberler](concepts/search-for-news.md)     | Belirli kategorilerdeki haberleri arayın.        | 
 |[Başlık haberleri](concepts/search-for-news.md)     | Tüm Kategoriler genelinde en popüler başlıkları arayın.         |
 
-## <a name="workflow"></a>İş akışı
+## <a name="workflow"></a>İş Akışı
 
 Bing Haber Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. REST API veya SDK kullanarak hizmeti kullanabilirsiniz.
 
@@ -55,5 +55,5 @@ Bing Haber Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSO
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Bing haber arama API'si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) Reference bölümü, görüntü tabanlı arama sonuçları istemek için kullanabileceğiniz uç noktalar, üst BILGILER, API yanıtları ve sorgu parametreleriyle ilgili tanımları ve bilgileri içerir.
-
 * Bing Arama API'leri ile edinilen içeriğin ve bilgilerin kabul edilebilir kullanımları [Bing Kullanımı ve Görüntü Gereksinimleri](./useanddisplayrequirements.md) konusunda belirtilmektedir.
+* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.

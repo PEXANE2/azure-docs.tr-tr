@@ -1,72 +1,72 @@
 ---
-title: Azure Cosmos DB'nin MongoDB kullanarak, geçiş sonrası iyileştirme adımları
-description: Bu belge Mongo DB için Azure Cosmos DB'nin API'sine adresinden geçiş sonrası iyileştirme teknikleri sağlar.
+title: MongoDB için Azure Cosmos DB API 'SI ile geçiş sonrası en iyi duruma getirme adımları
+description: Bu belge MongoDB 'den Mongo DB için Azure Cosmos DB API 'sine yönelik geçiş sonrası iyileştirme teknikleri sağlar.
 author: roaror
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: roaror
-ms.openlocfilehash: c0c761fef481a1fdaa027f1329e9a4e72d62985a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c521546bedf1ebfd42bce4c50aa79b199553fd5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61331216"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441558"
 ---
-# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB'nin MongoDB kullanarak, geçiş sonrası iyileştirme adımları 
+# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI kullanılırken geçiş sonrası en iyi duruma getirme adımları 
 
-MongoDB için API Azure Cosmos DB'nin MongoDB veritabanına depolanan veriler geçiş yaptıktan sonra Azure Cosmos DB'ye bağlanmak ve verileri yönetin. Bu kılavuz, geçişten sonra dikkate almanız gereken adımları sağlar. Bkz: [MongoDB öğretici için Azure Cosmos DB API MongoDB geçişi](../dms/tutorial-mongodb-cosmos-db.md) geçiş adımları için.
+MongoDB veritabanında depolanan verileri MongoDB için Azure Cosmos DB API 'sine geçirdikten sonra, Azure Cosmos DB bağlanabilir ve verileri yönetebilirsiniz. Bu kılavuz, geçişten sonra dikkate almanız gereken adımları sağlar. Geçiş adımları için [MongoDB 'yi Azure Cosmos DB MongoDB IÇIN API 'Sine geçirme öğreticisine](../dms/tutorial-mongodb-cosmos-db.md) bakın.
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
-- [Uygulamanızı bağlayın](#connect-account)
-- [Dizin oluşturma ilkesini en iyi duruma getirme](#indexing)
-- [MongoDB için Azure Cosmos DB API için genel dağıtımı yapılandırma](#distribute-data)
-- [Kümesi tutarlılık düzeyi](#consistency)
+- [Uygulamanızı bağlama](#connect-account)
+- [Dizin oluşturma ilkesini iyileştirme](#indexing)
+- [MongoDB için Azure Cosmos DB API 'SI için genel dağıtımı yapılandırma](#distribute-data)
+- [Tutarlılık düzeyini ayarla](#consistency)
 
 > [!NOTE]
-> Yalnızca zorunlu geçiş sonrası adımı, uygulama düzeyinde yeni Azure Cosmos DB hesabınıza işaret edecek şekilde uygulamanızın bağlantı dizesinde ile değişiyor. Diğer tüm geçiş adımları, en iyi duruma getirmeleri önerilir.
+> Uygulama düzeyinizdeki tek zorunlu geçiş sonrası adımı, uygulamanızdaki bağlantı dizesini yeni Azure Cosmos DB hesabınıza işaret etmek üzere değiştiriyor. Diğer tüm geçiş adımları önerilen iyileştirmelerdir.
 >
 
-## <a id="connect-account"></a>Uygulamanızı bağlayın 
+## <a id="connect-account"></a>Uygulamanızı bağlama 
 
-1. Yeni bir pencere oturum içinde [Azure portalı](https://www.portal.azure.com/)
-2. Gelen [Azure portalında](https://www.portal.azure.com/), açık sol bölmede **tüm kaynakları** menü ve verilerinizi geçirilmiş Azure Cosmos DB hesabı bulunamadı.
-3. Açık **bağlantı dizesi** dikey penceresi. Sağ bölme, hesabınıza başarıyla bağlanmak için gereken tüm bilgileri içerir.
-4. Uygulamanızı, MongoDB bağlantı için bağlantı bilgilerini Azure Cosmos DB API yansıtmak için uygulamanızın yapılandırma (veya ilgili diğer yerler) kullanın. 
-![Bağlantı dizesi](./media/mongodb-post-migration/connection-string.png)
+1. Yeni bir pencerede [Azure Portal](https://www.portal.azure.com/) oturum açın
+2. [Azure Portal](https://www.portal.azure.com/)sol bölmede **tüm kaynaklar** menüsünü açın ve verilerinizi geçirdiğiniz Azure Cosmos DB hesabı bulun.
+3. **Bağlantı dizesi** dikey penceresini açın. Sağ bölme, hesabınıza başarıyla bağlanmak için gereken tüm bilgileri içerir.
+4. Uygulamanızda MongoDB bağlantısı için Azure Cosmos DB API 'sini yansıtmak için uygulamanızın yapılandırmasındaki (veya diğer ilgili yerlerdeki) bağlantı bilgilerini kullanın. 
+![Connection-String](./media/mongodb-post-migration/connection-string.png)
 
-Daha fazla ayrıntı için lütfen bkz [bir MongoDB uygulamasını Azure Cosmos DB'ye bağlanmak](connect-mongodb-account.md) sayfası.
+Daha fazla ayrıntı için lütfen [MongoDB uygulamasını Azure Cosmos DB sayfasına bağlama](connect-mongodb-account.md) sayfasına bakın.
 
-## <a id="indexing"></a>Dizin oluşturma ilkesini en iyi duruma getirme
+## <a id="indexing"></a>Dizin oluşturma ilkesini iyileştirme
 
-Tüm veri alanları otomatik olarak, varsayılan olarak, Azure Cosmos DB'ye veri geçişi sırasında dizine eklenir. Çoğu durumda, bu varsayılan dizin oluşturma ilkesi kabul edilebilir. Genel olarak, dizinler kaldırılıyor yazma isteklerine en iyi duruma getirir ve varsayılan dizinleme ilkesinin (yani, otomatik dizin oluşturma) sahip okuma isteklerinin en iyi duruma getirir.
+Verilerin Azure Cosmos DB geçişi sırasında varsayılan olarak tüm veri alanları otomatik olarak dizinlenir. Çoğu durumda, bu varsayılan dizin oluşturma ilkesi kabul edilebilir. Genel olarak, dizinleri kaldırmak yazma isteklerini iyileştirir ve varsayılan dizin oluşturma ilkesinin (yani, Otomatik Dizin oluşturma) okuma isteklerini iyileştirir.
 
-Dizin oluşturma ile ilgili daha fazla bilgi için bkz: [veri MongoDB için Azure Cosmos DB'nin API'SİNDE dizinleme](mongodb-indexing.md) yanı sıra [Azure Cosmos DB'de dizinleme](index-overview.md) makaleler.
+Dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB](index-overview.md) makalelerinde [mongodb IÇIN Azure Cosmos DB API 'sindeki veri dizini oluşturma](mongodb-indexing.md) .
 
-## <a id="distribute-data"></a>Verilerinizi genel olarak dağıtma
+## <a id="distribute-data"></a>Verilerinizi Global olarak dağıtın
 
-Azure Cosmos DB, tüm kullanılabilir [Azure bölgeleri](https://azure.microsoft.com/regions/#services) dünya çapında. Azure Cosmos DB hesabınız için varsayılan tutarlılık düzeyini seçtikten sonra bir veya daha fazla Azure bölgeleri (genel dağıtım, gereksinimlerinize bağlı olarak) ilişkilendirebilirsiniz. Yüksek kullanılabilirlik ve iş sürekliliği için en az 2 bölgelerinde çalıştırılan her zaman önerilir. İpuçları için gözden geçirebilirsiniz [çok bölgeli dağıtımlar Azure Cosmos DB'de maliyetini en iyi duruma getirme](optimize-cost-regions.md).
+Azure Cosmos DB tüm dünyada [Azure bölgelerinde](https://azure.microsoft.com/regions/#services) kullanılabilir. Azure Cosmos DB hesabınız için varsayılan tutarlılık düzeyini seçtikten sonra, bir veya daha fazla Azure bölgesini ilişkilendirebilirsiniz (küresel dağıtım gereksinimlerinize bağlı olarak). Yüksek kullanılabilirlik ve iş sürekliliği için, her zaman en az 2 bölgede çalışmayı öneririz. [Azure Cosmos db içinde çok bölgeli dağıtımların maliyetini en iyi duruma getirme](optimize-cost-regions.md)ipuçlarını inceleyebilirsiniz.
 
-Verilerinizi genel olarak dağıtmak için bkz. [için MongoDB verilerini küresel olarak Azure Cosmos DB'nin API'sini dağıtmak](tutorial-global-distribution-mongodb.md). 
+Verilerinizi Global olarak dağıtmak için lütfen [MongoDB için Azure Cosmos DB API 'sindeki verileri küresel olarak dağıtma](tutorial-global-distribution-mongodb.md)bölümüne bakın. 
 
-## <a id="consistency"></a>Kümesi tutarlılık düzeyi
-Azure Cosmos DB, iyi tanımlanmış 5 sunar [tutarlılık düzeyleri](consistency-levels.md). MongoDB ve Azure Cosmos DB tutarlılık düzeyleri arasındaki eşleme hakkında bilgi edinmek için okumaya devam [tutarlılık düzeyleri ve Azure Cosmos DB API'leri](consistency-levels-across-apis.md). Varsayılan tutarlılık düzeyini oturum tutarlılık düzeyidir. Tutarlılık düzeyi değiştirme isteğe bağlıdır ve uygulamanız için iyileştirin. Azure portalını kullanarak tutarlılık düzeyini değiştirmek için:
+## <a id="consistency"></a>Tutarlılık düzeyini ayarla
+Azure Cosmos DB, 5 iyi tanımlanmış [tutarlılık düzeyi](consistency-levels.md)sunmaktadır. MongoDB ve Azure Cosmos DB tutarlılık düzeyleri arasındaki eşleme hakkında bilgi edinmek için, [tutarlılık düzeylerini ve Azure Cosmos DB API 'leri](consistency-levels-across-apis.md)okuyun. Varsayılan tutarlılık düzeyi, oturum tutarlılığı düzeyidir. Tutarlılık düzeyinin değiştirilmesi isteğe bağlıdır ve bunu uygulamanız için iyileştirebilirsiniz. Azure portal kullanarak tutarlılık düzeyini değiştirmek için:
 
-1. Git **varsayılan tutarlılık** ayarları dikey penceresi.
-2. Seçin, [tutarlılık düzeyi](consistency-levels.md)
+1. Ayarlar altında **varsayılan tutarlılık** dikey penceresine gidin.
+2. [Tutarlılık düzeyinizi](consistency-levels.md) seçin
 
-Çoğu kullanıcı oturumu varsayılan tutarlılık ayarını, tutarlılık düzeyinde bırakın. Ancak, [çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans ödün](consistency-levels-tradeoffs.md). 
+Çoğu Kullanıcı, varsayılan oturum tutarlılığı ayarında tutarlılık düzeyini bırakır. Ancak, [çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)vardır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB’ye MongoDB uygulaması bağlama](connect-mongodb-account.md)
-* [Studio 3t'yi kullanarak Azure Cosmos DB hesabına bağlanma](mongodb-mongochef.md)
-* [Azure Cosmos DB'nin MongoDB kullanarak genel olarak nasıl dağıtacağınızı okur](mongodb-readpreference.md)
-* [MongoDB için Azure Cosmos DB'nin API'si ile verileri süresi dolacak](mongodb-time-to-live.md)
-* [Azure cosmos DB tutarlılık düzeyleri](consistency-levels.md)
-* [Azure Cosmos DB'yi dizine ekleme](index-overview.md)
-* [İstek birimleri Azure cosmos DB](request-units.md)
+* [Studio 3T kullanarak Azure Cosmos DB hesabına bağlanma](mongodb-mongochef.md)
+* [Azure Cosmos DB MongoDB için API 'sini kullanarak genel olarak okuma dağıtımı](mongodb-readpreference.md)
+* [MongoDB için Azure Cosmos DB API'siyle verilerde süre sonu](mongodb-time-to-live.md)
+* [Azure Cosmos DB 'deki tutarlılık düzeyleri](consistency-levels.md)
+* [Azure Cosmos DB 'de dizin oluşturma](index-overview.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)
 
 
 

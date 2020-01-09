@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435056"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -25,12 +25,12 @@ Bu makalede bir cihaz geliştiricisi olarak, bir Mxyonga IoT DevKit (DevKit) cih
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-1. **Örnek Devkits** uygulama şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+1. **Eski uygulama** uygulaması şablonundan oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
 1. Bir DevKit cihazı. Bir DevKit cihazı satın almak için, [Mxyongaıot DevKit](https://microsoft.github.io/azure-iot-developer-kit/)' i ziyaret edin.
 
-## <a name="sample-devkits-application"></a>Örnek Devkits uygulaması
+## <a name="add-a-device-template"></a>Cihaz şablonu ekleme
 
-**Örnek Devkits** uygulama şablonundan oluşturulan bir uygulama, aşağıdaki cihaz özelliklerini tanımlayan bir **mxyonga** cihaz şablonu içerir:
+Azure IoT Central uygulamanızda, aşağıdaki cihaz özelliklerini tanımlayan yeni bir **Mxyonga** cihaz şablonu ekleyin:
 
 - **Nem**, **sıcaklık**, **basınç**, **manyetik tometre** (x, y, z ekseni ve x, y, z ekseni) ve **cayroscope** **(x** , y, z ekseni ile ölçülür) için telemetri ölçümleri.
 - **Cihaz durumu**için durum ölçümü.
@@ -40,6 +40,11 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyac
 - **Içinde üretilen**bulut özelliği.
 - Komut **echo** ve **geri sayım**. Gerçek bir cihaz bir **echo** komutu aldığında, cihazın görüntüsüne gönderilen değeri gösterir. Gerçek bir cihaz bir **geri sayım** komutu aldığında, geçişli bir düzende döngü yapar ve cihaz geri sayım değerlerini IoT Central geri gönderir.
 
+1. Cihaz şablonu ![cihaz şablonlarından **+ Yeni** ' yi seçin](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. Bir cihaz şablonu eklemek ![**mxyongaseçin** ve mxyonga cihaz şablonunu oluşturun](media/howto-connect-devkit/newtemplate.png)
+
 Yapılandırma hakkında tam Ayrıntılar için bkz. [Mxyonga cihaz şablonu ayrıntıları](#mxchip-device-template-details)
 
 ## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
@@ -48,7 +53,7 @@ Yapılandırma hakkında tam Ayrıntılar için bkz. [Mxyonga cihaz şablonu ayr
 
 Azure IoT Central uygulamanızda, **Mxyonga** cihaz şablonundan gerçek bir cihaz ekleyin ve cihaz bağlantısı ayrıntılarını şu şekilde bir yere unutmayın: **Kapsam KIMLIĞI, cihaz kimliği ve birincil anahtar**:
 
-1. Device Explorer 'den **gerçek bir cihaz** ekleyin, gerçek bir cihaz eklemek Için **+ Yeni > Real** ' ı seçin.
+1. Cihazlardan **gerçek bir cihaz** ekleyin, gerçek bir cihaz eklemek Için **+ Yeni > Real** ' i seçin.
 
     * Küçük bir **CIHAZ kimliği**girin veya ÖNERILEN **cihaz kimliğini**kullanın.
     * Bir **Cihaz adı**girin veya önerilen adı kullanın
@@ -210,11 +215,11 @@ Cihazın IoT Central uygulamasından çağrılan komutlara nasıl yanıt verdiğ
 | Jroscopez     | MDPS   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Durumlar 
-| Ad          | Görünen ad   | OLAĞAN | DIKKATLI | OLMA TEHLIKESI | 
+| Ad          | Görünen ad   | NORMAL | DIKKATLI | OLMA TEHLIKESI | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Cihaz Durumu   | Yeşil  | Orange  | Kırmızı    | 
 
-#### <a name="events"></a>Olaylar 
+#### <a name="events"></a>Etkinlikler 
 | Ad             | Görünen ad      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Düğme B tuşuna basıldı  | 
@@ -223,7 +228,7 @@ Cihazın IoT Central uygulamasından çağrılan komutlara nasıl yanıt verdiğ
 
 Sayısal ayarlar
 
-| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlatma |
+| Görünen ad | Alan adı | Birimler | Ondalık basamak sayısı | Minimum | Maksimum | Başlangıç |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Geril      | Setvoltaj | Çalışmıyorken | 0              | 0       | 240     | 0       |
 | Geçerli      | setCurrent | AMPS  | 0              | 0       | 100     | 0       |
@@ -231,7 +236,7 @@ Sayısal ayarlar
 
 Ayarları aç
 
-| Görünen ad | Alan adı | Metinde | Kapalı metin | Başlatma |
+| Görünen ad | Alan adı | Metinde | Kapalı metin | Başlangıç |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | Activateır | AÇIK      | KAPALI      | Kapalı     |
 
@@ -240,7 +245,7 @@ Ayarları aç
 | Tür            | Görünen ad | Alan adı | Veri türü |
 | --------------- | ------------ | ---------- | --------- |
 | Cihaz özelliği | Zar numarası   | dieNumber  | number    |
-| Cihaz özelliği | Cihaz konumu   | location  | location    |
+| Cihaz özelliği | Aygıt Konumu   | location  | location    |
 | Metin            | Üretilmiş     | Üreten Turedın   | Yok       |
 
 ### <a name="commands"></a>Komutlar
@@ -248,7 +253,7 @@ Ayarları aç
 | Görünen ad | Alan adı | Dönüş türü | Giriş alanı görünen adı | Giriş alanı adı | Giriş alanı türü |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | Girdilerinizi         | echo       | metin        | görüntülenecek değer         | displayedValue   | metin             |
-| Sayıma    | Sayıma  | number      | Sayım               | Sayaçdan        | number           |
+| Sayıma    | sayıma  | number      | Sayım               | Sayaçdan        | number           |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

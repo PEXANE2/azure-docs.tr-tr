@@ -1,25 +1,14 @@
 ---
-title: Uygulama senaryoları ve tasarımı | Microsoft Docs
+title: Uygulama senaryoları ve tasarımı
 description: Service Fabric içindeki bulut uygulamalarının kategorilerine genel bakış. Durum bilgisiz ve durum bilgisi olmayan hizmetler kullanan uygulama tasarımını açıklar.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 4/24/2019
-ms.author: atsenthi
-ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464917"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
 Azure Service Fabric, birçok iş uygulaması ve hizmeti türünü yazıp çalıştırabileceğiniz güvenilir ve esnek bir platform sunar. Bu uygulamalar ve mikro hizmetler durum bilgisiz veya durum bilgisi olabilir ve verimliliği en üst düzeye çıkarmak için sanal makineler arasında kaynak dengelenebilir. 

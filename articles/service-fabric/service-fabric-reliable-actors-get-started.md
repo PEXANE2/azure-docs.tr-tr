@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric aktör tabanlı bir hizmet oluşturun | Microsoft Docs
+title: Azure Service Fabric aktör tabanlı hizmet oluşturma
 description: Service Fabric Reliable Actors C# kullanarak ilk aktör tabanlı hizmetinizi oluşturma, hata ayıklama ve dağıtma hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466260"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors kullanmaya başlama
 > [!div class="op_single_selector"]
@@ -28,7 +19,7 @@ ms.locfileid: "68225151"
 
 Bu makalede, Visual Studio 'da basit bir güvenilir aktör uygulamasının oluşturulması ve hata ayıklaması adım adım anlatılmaktadır. Reliable Actors hakkında daha fazla bilgi için bkz. [Service Fabric Reliable Actors giriş](service-fabric-reliable-actors-introduction.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, makinenizde ayarlanmış olan Visual Studio dahil Service Fabric geliştirme ortamına sahip olduğunuzdan emin olun. Ayrıntılar için bkz. [geliştirme ortamını ayarlama](service-fabric-get-started.md).
 
@@ -54,13 +45,13 @@ Oluşturulan proje aşağıdaki yapıyı gösterir:
 
 * **Arabirim projesi (HelloWorld. Interfaces)** . Bu proje aktör için arabirim tanımını içerir. Aktör arabirimleri, herhangi bir ada sahip herhangi bir projede tanımlanabilir.  Arabirim, aktör uygulamasıyla paylaşılan aktör sözleşmesini ve aktör çağıran istemcileri tanımlar.  İstemci projeleri kendisine bağlı olabileceğinden, genellikle onu aktör uygulamasından ayrı bir derlemede tanımlamak mantıklı olur.
 
-* **Aktör hizmeti projesi (HelloWorld)** . Bu proje, aktöri barındıracak Service Fabric hizmetini tanımlar. Aktör, *HelloWorld.cs*uygulamasını içerir. Aktör uygulama, temel türden `Actor` türetilen ve *myactor. Interfaces* projesinde tanımlanan arabirimleri uygulayan bir sınıftır. Aktör sınıfı ayrıca bir `ActorService` örneği kabul eden bir Oluşturucu ve bir `ActorId` de uygular ve bunları temel `Actor` sınıfa geçirir.
+* **Aktör hizmeti projesi (HelloWorld)** . Bu proje, aktöri barındıracak Service Fabric hizmetini tanımlar. Aktör, *HelloWorld.cs*uygulamasını içerir. Aktör uygulama `Actor` temel türden türetilen ve *Myactor. Interfaces* projesinde tanımlanan arabirimleri uygulayan bir sınıftır. Aktör sınıfı ayrıca, bir `ActorService` örneği ve `ActorId` kabul eden ve bunları temel `Actor` sınıfına ileten bir Oluşturucu uygulamalıdır.
     
-    Bu proje Ayrıca, kullanarak `ActorRuntime.RegisterActorAsync<T>()`aktör sınıflarını Service Fabric çalışma zamanına kaydeden program.cs de içerir. `HelloWorld` Sınıf zaten kayıtlı. Projeye eklenen diğer aktör uygulamalarının de `Main()` yönteminde kayıtlı olması gerekir.
+    Bu proje Ayrıca, `ActorRuntime.RegisterActorAsync<T>()`kullanarak aktör sınıflarını Service Fabric çalışma zamanına kaydeden *program.cs*içerir. `HelloWorld` sınıfı zaten kayıtlı. Projeye eklenen diğer aktör uygulamalarının de `Main()` yönteminde kayıtlı olması gerekir.
 
 ## <a name="customize-the-helloworld-actor"></a>HelloWorld aktör 'i özelleştirme
 
-Proje şablonu, `IHelloWorld` arabirimdeki bazı yöntemleri tanımlar ve bunları `HelloWorld` aktör uygulamasında uygular.  Aktör hizmetinin basit bir "Merhaba Dünya" dizesi döndürmesi için bu yöntemleri değiştirin.
+Proje şablonu, `IHelloWorld` arabirimindeki bazı yöntemleri tanımlar ve bunları `HelloWorld` aktör uygulamasında uygular.  Aktör hizmetinin basit bir "Merhaba Dünya" dizesi döndürmesi için bu yöntemleri değiştirin.
 
 *HelloWorld. Interfaces* projesinde, *IHelloWorld.cs* dosyasında, arabirim tanımını aşağıdaki gibi değiştirin:
 
@@ -95,7 +86,7 @@ Projeyi derlemek için **Ctrl-Shift-B** tuşlarına basın ve her şeyin derlend
 
 Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
 
-1. Çözüm Gezgini > Yeni proje **Ekle** >  **...** öğesine sağ tıklayın.
+1. Çözüm Gezgini > > **Yeni Proje Ekle...** öğesine sağ tıklayın.
 
 2. **.NET Core** proje türleri altında **konsol uygulaması (.NET Core)** öğesini seçin.  Projeyi *Actorclient*olarak adlandırın.
     
@@ -116,7 +107,7 @@ Aktör hizmetini çağırmak için basit bir konsol uygulaması oluşturun.
 
     NuGet paketi ve tüm bağımlılıkları ActorClient projesine yüklenir.
 
-5. İstemci projesi Ayrıca, arabirimler projesine bir başvuru gerektirir.  ActorClient projesinde **Bağımlılıklar** ' a sağ tıklayın ve ardından **Başvuru Ekle...** öğesine tıklayın.  **Projeler > çözüm** ' ü seçin (zaten seçili değilse) ve ardından **HelloWorld. Interfaces**' in yanındaki onay kutusunu işaretleyin.  **Tamam**'ı tıklatın.
+5. İstemci projesi Ayrıca, arabirimler projesine bir başvuru gerektirir.  ActorClient projesinde **Bağımlılıklar** ' a sağ tıklayın ve ardından **Başvuru Ekle...** öğesine tıklayın.  **Projeler > çözüm** ' ü seçin (zaten seçili değilse) ve ardından **HelloWorld. Interfaces**' in yanındaki onay kutusunu işaretleyin.  **Tamam**’a tıklayın.
     
     ![Başvuru Ekle iletişim kutusu][7]
 
@@ -150,7 +141,7 @@ Uygulamayı Service Fabric geliştirme kümesinde yerel olarak derlemek, dağıt
 
 ![Hata ayıklama çıkışı penceresi Service Fabric][3]
 
-Çıktı metin içerdiğinde, *uygulama hazırsa*, ActorClient uygulamasını kullanarak hizmeti test etmek mümkündür.  Çözüm Gezgini, **actorclient** projesine sağ tıklayın ve ardından **Hata Ayıkla** > **Yeni örnek Başlat**' a tıklayın.  Komut satırı uygulaması, aktör hizmetindeki çıktıyı görüntülemelidir.
+Çıktı metin içerdiğinde, *uygulama hazırsa*, ActorClient uygulamasını kullanarak hizmeti test etmek mümkündür.  Çözüm Gezgini, **Actorclient** projesine sağ tıklayın ve ardından **yeni örnek Başlat** > **Hata Ayıkla** ' ya tıklayın.  Komut satırı uygulaması, aktör hizmetindeki çıktıyı görüntülemelidir.
 
 ![Uygulama çıkışı][9]
 

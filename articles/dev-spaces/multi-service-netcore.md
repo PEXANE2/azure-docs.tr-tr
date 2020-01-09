@@ -3,14 +3,14 @@ title: 'Birden çok bağımlı hizmet çalıştırma: .NET Core & Visual Studio 
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Bu öğreticide Azure Dev Spaces ve Visual Studio Code Azure Kubernetes hizmetinde birden çok hizmet .NET Core uygulamasında hata ayıklama için nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 453cf1fdf2d37817d12ec32f2cba00b3671b1d11
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 0bbb1aefe517c45207160b83b89f7207e8909666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438309"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: .NET Core ve Azure Dev Spaces ile Visual Studio Code
 
@@ -26,11 +26,11 @@ Bu bölümde, `mywebapi`ikinci bir hizmet oluşturacaksınız ve `webfrontend` b
 Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://github.com/Azure/dev-spaces adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/dotnetcore/getting-started/mywebapi` konumundadır.
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
-1. `mywebapi`Ayrı bir VS Code penceresinde klasörünü açın.
+1. *Ayrı bir VS Code penceresinde*`mywebapi` klasörünü açın.
 1. **Komut Paleti**'ni açın (**Görünüm | Komut Paleti** menüsünü kullanarak) ve otomatik tamamlama özelliğini kullanarak komutu yazın ve seçin: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Bu komut, projeyi dağıtım için yapılandıran `azds prep` komutuyla karıştırılmamalıdır.
 1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. Uygulama başlatıldığında bu dosyanın size ait olduğunu bilirsiniz *. Kapatmak için CTRL + C tuşlarına basın.* ileti, hata ayıklama konsolunda görünür.
 1. Uç nokta URL'si `http://localhost:<portnumber>` benzeri bir URL olacaktır. **İpucu: VS Code durum çubuğu turuncu olarak açılır ve tıklatılabilir bir URL görüntüler.** Kapsayıcı yerel olarak çalışıyor gibi görünebilir, ancak gerçekte Azure’daki geliştirme ortamımızda çalışıyordur. Bunun localhost adresi olmasının nedeni `mywebapi` hizmetinin hiçbir genel uç nokta tanımlamamış olması ve buna yalnızca Kubernetes örneğinin içinden erişilebilmesidir. Size rahatlık sağlamak ve yerel makinenizden özel hizmetle etkileşimi kolaylaştırmak için, Azure Dev Spaces Azure'da çalıştırılan kapsayıcıya geçici bir SSH tüneli oluşturur.
-1. `mywebapi` hazır olduğunda, tarayıcınızda localhost adresini açın. Varsayılan `/api/values` GET API’sini çağırmak için URL’ye `ValuesController` ekleyin.
+1. `mywebapi` hazır olduğunda, tarayıcınızda localhost adresini açın. Varsayılan `ValuesController` GET API’sini çağırmak için URL’ye `/api/values` ekleyin.
 1. Tüm adımları başarılı olduysa, `mywebapi` hizmetinden bir yanıt alındığını görebilmelisiniz.
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend*’den *mywebapi*’ye istek gönderme

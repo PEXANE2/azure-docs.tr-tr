@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408035"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
@@ -33,22 +33,20 @@ Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıc
 
 [Canlı mağaza Bulucu örneğine](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) veya [kaynak koduna](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)atlayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticideki adımları tamamlayabilmeniz için öncelikle [Azure haritalar hesabınızı oluşturmanız](./tutorial-search-location.md#createaccount) ve hesabınızın birincil abonelik anahtarını almak için [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izlemeniz gerekir.
+Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
-## <a name="design"></a>Tasarım
+## <a name="design"></a>Tasarlayın
 
 Koda geçmeden önce tasarım ile başlamak iyi bir fikirdir. Mağaza konumlarınız, olmasını istediğiniz kadar basit veya karmaşık olabilir. Bu öğreticide, basit bir mağaza Bulucu oluşturacağız. Tercih ediyorsanız bazı işlevleri genişletmenize yardımcı olmak için bazı ipuçları ekledik. Contoso kahve adlı kurgusal bir şirket için mağaza Bulucu oluşturacağız. Aşağıdaki şekilde, bu öğreticide oluşturduğumuz mağaza bulucunun genel düzeninin bir tel kafes 'i gösterilmektedir:
 
-<br/>
 <center>
 
 Contoso Coffee kahve dükkanı için mağaza bulucunun ![tel kafes](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Bu mağaza bulucunun kullanışlılığını en üst düzeye çıkarmak için, bir kullanıcının ekran genişliği 700 pikselden daha küçük olduğunda ayarlayan bir yanıt veren düzen ekledik. Hızlı yanıt veren bir düzen, mağaza bulucunun bir mobil cihazda olduğu gibi küçük bir ekranda kullanılmasını kolaylaştırır. Küçük ekran düzeninin tel kafesi aşağıda verilmiştir:  
 
-<br/>
 <center>
 
 bir mobil cihazda contoso kahve Mağazası bulucunun ![tel kafes](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
@@ -73,7 +71,6 @@ Wireframes oldukça basittir bir uygulama gösterir. Uygulamanın bir arama kutu
 
 Bir mağaza Bulucu uygulaması geliştirmeden önce, haritada göstermek istediğimiz mağazaların bir veri kümesi oluşturuyoruz. Bu öğreticide, contoso kahve adlı kurgusal bir kafeterde bir veri kümesi kullanacağız. Bu basit mağaza bulucunun veri kümesi bir Excel çalışma kitabında yönetilir. Veri kümesi, dokuz ülkede/bölgede 10.213 contoso kahve kahve dükkanı yayma konumları içerir: Birleşik Devletler, Kanada, Birleşik Krallık, Fransa, Almanya, Italya, Hollanda, Danimarka ve Ispanya. Verilerin nasıl göründüğünü aşağıda görebilirsiniz:
 
-<br/>
 <center>
 
 bir Excel çalışma kitabındaki mağaza Konumlandırıcı verilerinin ekran görüntüsünü ![](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -95,14 +92,12 @@ Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabile
 
 Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet**' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee. txt*olarak adlandırın. 
 
-<br/>
 <center>
 
 Farklı Kaydet tür iletişim kutusunun ekran görüntüsünü ![](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Metin dosyasını Not defteri 'nde açarsanız, aşağıdaki şekle benzer şekilde görünür:
 
-<br/>
 <center>
 
 sekmeyle ayrılmış bir veri kümesi gösteren bir not defteri dosyasının ekran görüntüsünü ![](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ sekmeyle ayrılmış bir veri kümesi gösteren bir not defteri dosyasının ekr
 
 Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index. html*, *index. css*ve *index. js*. Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Data* adlı bir klasör oluşturun ve klasöre *ContosoCoffee. txt* ekleyin. *Görüntüler*adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada on görüntü kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
 
-<br/>
 <center>
 
 Basit depo Konumlandırıcı proje klasörünün ekran görüntüsünü ![](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -930,21 +924,18 @@ Artık tam işlevli bir depolama Konumlayıcı vardır. Bir Web tarayıcısında
 
 Kullanıcı konumumu ilk kez seçtiğinde tarayıcı, kullanıcının konumuna erişmek için izin isteyen bir güvenlik uyarısı görüntüler. Kullanıcı konumunu paylaşmayı kabul ederse, harita kullanıcının konumuna yakınlaşarak yakın kafeterler gösterilir. 
 
-<br/>
 <center>
 
 tarayıcının kullanıcının konumuna erişim isteğinin ekran görüntüsünü ![](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Kahve dükterleri bulunan bir alanda yeterince yakından yakınlaştırdığınızda, kümeler tek tek konumlara ayrılır. Haritadaki simgelerden birini seçin veya yan bölmede bir öğe seçerek söz konusu konumun bilgilerini gösteren bir açılır pencere görüntüleyin.
 
-<br/>
 <center>
 
 tamamlanmış mağaza bulucunun ekran görüntüsünü ![](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Tarayıcı penceresini 700 piksel genişliğinde veya uygulamayı bir mobil cihazda açmak için yeniden boyutlandırırsanız, düzen daha küçük ekranlarda daha uygun olacak şekilde değişir. 
 
-<br/>
 <center>
 
 Mağaza Konumlandırıcı 'nın küçük ekran sürümünün ekran görüntüsünü ![](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>

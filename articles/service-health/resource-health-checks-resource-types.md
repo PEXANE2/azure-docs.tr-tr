@@ -1,17 +1,14 @@
 ---
 title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Microsoft Docs
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 1692e8acda88a51173eb0eabcd90c377b431a3c3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465260"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.

@@ -1,5 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware çözümünü yönetmeye yönelik temel kavramlar
+title: CloudSimple tarafından VMware çözümünü yönetmeye yönelik temel kavramlar
+titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple ile Azure VMware çözümünü yönetmeye yönelik temel kavramları açıklar
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d4de25f281f9164d5cfe3de64d2ca644593a8dd3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450776"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümünün yönetimine yönelik temel kavramlar
 
@@ -57,7 +58,7 @@ CloudSimple hizmeti, CloudSimple hizmetinizin dağıtıldığı bölge başına 
 
 CloudSimple hizmeti ile VMware sanal makinelerini Azure portal yönetebilirsiniz. VSphere ortamınızdan bir veya daha fazla küme veya kaynak havuzu, hizmetin oluşturulduğu abonelikle eşleştirilebilir.
 
-Daha fazla bilgi:
+Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 * [CloudSimple sanal makineleri](cloudsimple-virtual-machines.md)
 * [Azure abonelik eşleme](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)

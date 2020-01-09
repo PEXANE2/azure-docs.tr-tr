@@ -1,22 +1,22 @@
 ---
-title: Excel Online 'a bağlanma
-description: Excel Online REST API 'Leri ve Azure Logic Apps verileri yönetme
+title: Excel Online 'da verileri, çalışma sayfalarını ve tabloları yönetme
+description: Excel Online 'daki çalışma sayfalarındaki ve tablolardaki verileri, Azure Logic Apps kullanarak OneDrive için Iş veya Excel Online 'da yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445876"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online verilerini Azure Logic Apps yönetme
 
-Azure Logic Apps ve Excel Online Bağlayıcısı sayesinde, Iş veya OneDrive için Excel Online 'daki verilerinize göre otomatik görevler ve iş akışları oluşturabilirsiniz. Bu bağlayıcı, verilerle çalışmanıza ve elektronik tabloları yönetmenize yardımcı olan eylemler sağlar; örneğin:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Iş için Excel Online](/connectors/excelonlinebusiness/) Bağlayıcısı veya OneDrive Bağlayıcısı [Için Excel Online](/connectors/excelonline/) Ile, iş veya OneDrive için Excel Online 'daki verilerinize göre otomatik görevler ve iş akışları oluşturabilirsiniz. Bu bağlayıcı, verilerle çalışmanıza ve elektronik tabloları yönetmenize yardımcı olan eylemler sağlar; örneğin:
 
 * Yeni çalışma sayfaları ve tablolar oluşturun.
 * Çalışma sayfaları, tablolar ve satırlar alın ve yönetin.
@@ -29,7 +29,7 @@ Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-ap
 > [!NOTE]
 > [İş Için Excel Online](/connectors/excelonlinebusiness/) ve [OneDrive bağlayıcıları için excel online](/connectors/excelonline/) , Azure Logic Apps çalışır ve [PowerApps için Excel Bağlayıcısı](/connectors/excel/)'ndan farklıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

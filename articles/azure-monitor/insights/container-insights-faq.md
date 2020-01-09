@@ -1,26 +1,63 @@
 ---
 title: Kapsayıcılar için Azure Izleyici sık sorulan sorular | Microsoft Docs
 description: Kapsayıcılar için Azure Izleyici, AKS kümelerinizin ve Azure 'daki Container Instances sistem durumunu izleyen bir çözümdür. Bu makalede yaygın soruların yanıtları vardır.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405076"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Kapsayıcılar için Azure Izleyici sık sorulan sorular
 
-Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Sık sorulan bir soru, böylece hızla ve kolayca bulunabilir, bu makaleye ekleriz.
+
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>ContainerLog tablosunu sorgulıyorum, resim ve ad özelliği değerlerini doldurdum.
+
+Aracı sürümü ciprod12042019 ve üzeri için, varsayılan olarak bu iki özellik her günlük satırı için doldurulmaz ve toplanan günlük verilerinde maliyeti en aza indirir. Bu özellikleri içeren tabloyu, değerlerini sorgulamak için iki seçenek vardır:
+
+### <a name="option-1"></a>Seçenek 1 
+
+Sonuçlara bu özellik değerlerini dahil etmek için diğer tabloları birleştirin.
+
+Containerıd özelliğine katılarak ```ContainerInventory``` tablosundan Image ve ImageTag özelliklerini içerecek şekilde sorgularınızı değiştirin. Name özelliğini (daha önce ```ContainerLog``` tablosunda göründüğü gibi) KubepodInventory tablosunun ContaineName alanındaki Containerıd özelliğine katılarak dahil edebilirsiniz. Önerilen seçenek budur.
+
+Aşağıdaki örnek, bu alan değerlerinin birleşimlerle nasıl alınacağını anlatan örnek bir ayrıntılı sorgudur.
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>Seçenek 2
+
+Her kapsayıcı günlük satırı için bu özellikler için koleksiyonu yeniden etkinleştirin.
+
+İlk seçenek, söz konusu sorgu değişiklikleri nedeniyle uygun değilse, [veri toplama yapılandırma ayarlarında](./container-insights-agent-config.md)açıklandığı gibi aracı yapılandırma eşlemesindeki ```log_collection_settings.enrich_container_logs``` ayarını etkinleştirerek bu alanları toplamayı yeniden etkinleştirebilirsiniz.
+
+> [!NOTE]
+> İkinci seçenek, bu zenginleştirme işlemini gerçekleştirmek için kümedeki > Her düğümden API sunucusu çağrıları oluştururken 50 ' den fazla düğümü olan büyük kümeler için önerilmez. Bu seçenek ayrıca, toplanan her günlük satırı için veri boyutunu artırır.
 
 ## <a name="can-i-view-metrics-collected-in-grafana"></a>Grafana ' de toplanan ölçümleri görüntüleyebilir miyim?
 
-Kapsayıcılar için Azure Izleyici, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık. bu şekilde, izlenen kümelerinizdeki ek verileri nasıl sorgulacağınızı ve özel Grafana kesik baords 'de görselleştirmeyi öğreneceksiniz. 
+Kapsayıcılar için Azure Izleyici, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık ve özel Grafana panolarında görselleştirmek üzere izlenen kümelerinizdeki ek verileri sorgulama hakkında bilgi edinmenize yardımcı olur. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>AKS-Engine kümenizi kapsayıcılar için Azure Izleyici ile izleyebilir miyim?
 
@@ -88,4 +125,4 @@ Azure, Azure ABD kamu ve Azure Çin bulutları ile Kapsayıcılı aracı için g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AKS kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcılar Için Azure izleyicisini](container-insights-onboard.md) ekleme konusunu gözden geçirin. 
+AKS kümenizi izlemeye başlamak için gözden [nasıl eklenirim Azure izlemek için kapsayıcılar](container-insights-onboard.md) izlemeyi etkinleştirmek için gereksinimleri ve kullanılabilir yöntemlerin anlaşılması. 

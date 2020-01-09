@@ -1,7 +1,7 @@
 ---
 title: 'Sütunları seçin dönüştürme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Verilen veri kümesinde aynı sütun alt kümesini seçen bir dönüşüm oluşturmak için Azure Machine Learning hizmetinde sütunları seçme dönüştürme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Verilen veri kümesinde aynı sütun alt kümesini seçen bir dönüşüm oluşturmak için Azure Machine Learning sütunları seç dönüştürme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717038"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428466"
 ---
-# <a name="select-columns-transform"></a>Sütun dönüştürmeyi Seç
+# <a name="select-columns-transform"></a>Sütun Dönüştürmeyi Seçme
 
 Bu makalede, Azure Machine Learning tasarımcısında (Önizleme) sütun seçme dönüştürme modülünün nasıl kullanılacağı açıklanır. Sütunları seçin dönüştürme modülünün amacı, aşağı akış makine öğrenimi işlemlerinde öngörülebilir, tutarlı bir sütun kümesinin kullanılmasını sağlamaktır.
 
@@ -55,4 +55,4 @@ Bu işlem kaydetme ve sonra bir sütun seçimini uygulama, aynı veri şemasın�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 221a3118808a044ef1b1b822b9c95772bf792f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441720"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>JavaScript sorgu API 'sini kullanarak Azure Cosmos DB saklı yordamları ve Tetikleyicileri yazma
 
@@ -19,10 +19,10 @@ Azure Cosmos DB, saklı yordamları veya Tetikleyicileri yazmak için kullanıla
 
 ## <a id="stored-procedures"></a>JavaScript sorgu API 'SI kullanılarak saklı yordam
 
-Aşağıdaki kod örneği, JavaScript sorgu API 'sinin saklı yordam bağlamında nasıl kullanıldığına ilişkin bir örnektir. Saklı yordam, bir giriş parametresi tarafından belirtilen bir Azure Cosmos öğesi ekler ve `__.filter()` yöntemi kullanılarak bir meta veri belgesini MinSize, MaxSize ve totalSize giriş öğesinin size özelliğine göre güncelleştirir.
+Aşağıdaki kod örneği, JavaScript sorgu API 'sinin saklı yordam bağlamında nasıl kullanıldığına ilişkin bir örnektir. Saklı yordam, bir giriş parametresi tarafından belirtilen bir Azure Cosmos öğesi ekler ve bir meta veri belgesini, giriş öğesinin boyut özelliğine göre minSize, maxSize ve totalSize ile `__.filter()` yöntemini kullanarak güncelleştirir.
 
 > [!NOTE]
-> `__`(çift alt çizgi), JavaScript sorgu API `getContext().getCollection()` 'si kullanılırken bir diğer addır.
+> `__` (çift alt çizgi), JavaScript sorgu API 'SI kullanılırken `getContext().getCollection()` bir diğer addır.
 
 ```javascript
 /**

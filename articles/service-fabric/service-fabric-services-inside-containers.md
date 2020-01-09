@@ -1,25 +1,15 @@
 ---
 title: Windows 'da Azure Service Fabric hizmetlerinizi kapsayıkatın
 description: Windows 'da Service Fabric Reliable Services ve Reliable Actors hizmetlerinizi nasıl kapsayıleyeceğinizi öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466176"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows üzerinde Service Fabric Reliable Services ve Reliable Actors kapsayıcı
 
@@ -73,9 +63,9 @@ Bu belge, hizmetinizi bir Windows kapsayıcısı içinde çalıştırmaya yönel
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Betik, $dockerPackageOutputDirectoryPath 'da Docker yapıtlarına sahip bir klasör oluşturur. Oluşturulan dockerfile 'ı herhangi bir `expose` bağlantı noktası olarak değiştirin, kurulum betiklerini çalıştırın ve bu şekilde devam edin. gereksinimlerinize göre.
+      Betik, $dockerPackageOutputDirectoryPath 'da Docker yapıtlarına sahip bir klasör oluşturur. Oluşturulan Dockerfile 'ı herhangi bir bağlantı noktası `expose` için değiştirin, kurulum betiklerini çalıştırın ve bu şekilde devam edin. gereksinimlerinize göre.
 
-6. Sonraki adımda, Docker kapsayıcı [](service-fabric-get-started-containers.md#Push-Containers) paketinizi [derleyip](service-fabric-get-started-containers.md#Build-Containers) deponuza göndermeniz gerekir.
+6. Sonraki adımda, Docker kapsayıcı paketinizi [derleyip](service-fabric-get-started-containers.md#Build-Containers) [deponuza göndermeniz](service-fabric-get-started-containers.md#Push-Containers) gerekir.
 
 7. Container Image, depo bilgileriniz, kayıt defteri kimlik doğrulaması ve bağlantı noktası arasında eşleme eklemek için ApplicationManifest. xml ve ServiceManifest. xml dosyasını değiştirin. Bildirimleri değiştirmek için bkz. [Azure Service Fabric kapsayıcı uygulaması oluşturma](service-fabric-get-started-containers.md). Hizmet bildirimindeki kod paketi tanımının karşılık gelen kapsayıcı görüntüsüyle değiştirilmeleri gerekir. Giriş noktasını ContainerHost türüne değiştirdiğinizden emin olun.
 

@@ -1,6 +1,7 @@
 ---
-title: Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında makale | Microsoft Docs
-description: Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
+title: "Bilinen sorunlar: SQL veritabanı 'na çevrimiçi geçişler"
+titleSuffix: Azure Database Migration Service
+description: Azure veritabanı geçiş hizmeti kullanılarak Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,22 +9,22 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 07/27/2019
-ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437835"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
 Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıda açıklanmaktadır.
 
 > [!IMPORTANT]
-> Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerde, SQL_variant veri türlerinin geçirilmesi desteklenmez.
+> Azure SQL veritabanı 'na SQL Server çevrimiçi geçişlerde SQL_variant veri türlerinin geçirilmesi desteklenmez.
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Zamana bağlı tabloların geçirilmesi desteklenmez
 
@@ -51,7 +52,7 @@ Aşağıdaki adımları kullanın.
 
 3. Geçiş etkinliğini yeniden çalıştırın.
 
-**Kaynakları**
+**Kaynaklar**
 
 Daha fazla bilgi için bkz. [geçici tablolar](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)makalesi.
 

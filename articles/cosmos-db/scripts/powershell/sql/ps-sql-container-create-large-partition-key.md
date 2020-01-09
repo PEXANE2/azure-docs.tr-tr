@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği-Azure Cosmos hesabında büyük bölüm anahtarı olan bir kapsayıcı oluşturma
+title: Büyük bölüm anahtarı ile bir Azure Cosmos kapsayıcısı oluşturmak için PowerShell betiği
 description: Azure PowerShell betik örneği-Azure Cosmos hesabında büyük bölüm anahtarı ile bir kapsayıcı oluşturma
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8c4d117a77afe140ba2bc803f0ac146d4c6a8182
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ecc5e7c13d898f89bbd6b542faf69834de26e0e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444977"
 ---
 # <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>PowerShell kullanarak Azure Cosmos hesabında büyük bölüm anahtarı ile bir kapsayıcı oluşturma
 

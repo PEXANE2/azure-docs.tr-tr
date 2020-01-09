@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics’te JavaScript kullanıcı tanımlı toplamları
 description: Bu makalede, Azure Stream Analytics içinde JavaScript Kullanıcı tanımlı toplamalarda Gelişmiş sorgu mekanizması gerçekleştirme işlemi açıklanır.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426086"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript Kullanıcı tanımlı toplamaları Azure Stream Analytics
  
@@ -80,7 +78,7 @@ Her JavaScript UDA bir Işlev nesnesi bildirimi tarafından tanımlanır. Aşağ
 
 ### <a name="function-alias"></a>İşlev diğer adı
 
-İşlev diğer adı UDA tanımlayıcısıdır. Stream Analytics sorgusunda çağrıldığında, her zaman "uda" ile birlikte UDA diğer adını kullanın. koy.
+İşlev diğer adı UDA tanımlayıcısıdır. Stream Analytics sorgusunda çağrıldığında, her zaman "uda" ile birlikte UDA diğer adını kullanın. ekleyin.
 
 ### <a name="function-type"></a>İşlev türü
 

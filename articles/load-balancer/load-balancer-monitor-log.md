@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428840"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Genel temel Load Balancer Azure Izleyici günlükleri
 
@@ -34,11 +34,11 @@ Temel yük dengeleyiciler yönetmek ve sorunlarını gidermek için Azure 'da fa
 > [!IMPORTANT]
 > Azure Izleyici günlükleri Şu anda yalnızca genel temel yük dengeleyiciler için geçerlidir. Günlükler yalnızca Kaynak Yöneticisi dağıtım modelinde dağıtılan kaynaklar için kullanılabilir. Klasik dağıtım modelinde kaynaklar için günlük kullanamazsınız. Dağıtım modelleri hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi dağıtımı ve klasik dağıtımı anlama](../azure-resource-manager/resource-manager-deployment-model.md).
 
-## <a name="enable-logging"></a>Günlü kaydını etkinleştir
+## <a name="enable-logging"></a>Günlüğü etkinleştirme
 
 Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak etkinleştirilir. Bu Günlükler aracılığıyla kullanılabilir verileri toplamaya başlamak için olay ve durum araştırma günlüğünü etkinleştirin. Günlüğe kaydetmeyi etkinleştirmek için aşağıdaki adımları kullanın.
 
-[Azure portalında](https://portal.azure.com) oturum açın. Zaten bir yük dengeleyiciniz yoksa devam etmeden önce [yük dengeleyici oluşturun](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+[Azure Portal](https://portal.azure.com)’ında oturum açın. Zaten bir yük dengeleyiciniz yoksa devam etmeden önce [yük dengeleyici oluşturun](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. Portalda **kaynak grupları**' na tıklayın.
 2. Yük dengeleyicinizin olduğu **\<kaynak grubu-adı >** ' nı seçin.
@@ -51,16 +51,16 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
    * **Bir olay hub 'ına akış**
    * **Log Analytics gönder**
 
-    ### <a name="archive-to-a-storage-account"></a>Bir depolama hesabına Arşivle
+    ### <a name="archive-to-a-storage-account"></a>Bir depolama hesabına arşivle
     Bu işlem için zaten oluşturulmuş bir depolama hesabınız olması gerekir.  Depolama hesabı oluşturmak için bkz. [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
 
     1. **Depolama hesabında Arşivle**seçeneğinin yanındaki onay kutusunu işaretleyin.
     2. **Depolama hesabı seç** bölmesini açmak için **Yapılandır** ' ı seçin.
     3. Aşağı açılan kutuda depolama hesabınızın oluşturulduğu **aboneliği** seçin.
     4. Açılır kutuda depolama **hesabı** altında depolama hesabınızın adını seçin. 
-    5. Tamam ' ı seçin.
+    5. Tamam'ı seçin.
 
-    ### <a name="stream-to-an-event-hub"></a>Bir olay hub 'ına akış
+    ### <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
     Bu işlem için önceden oluşturulmuş bir olay hub 'ı gerekir.  Bir olay hub 'ı oluşturmak için bkz [. hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturma](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
     1. **Olay Hub 'ına akış** ' nın yanındaki onay kutusunu seçin
@@ -68,7 +68,7 @@ Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak e
     3. Aşağı açılan kutuda Olay Hub 'ınızın oluşturulduğu **aboneliği** seçin.
     4. Açılır kutuda **Olay Hub 'ı ad alanını seçin** .
     5. Açılır kutuda **Olay Hub 'ı ilke adı** ' nı seçin.
-    6. Tamam ' ı seçin.
+    6. Tamam'ı seçin.
 
     ### <a name="send-to-log-analytics"></a>Log Analytics’e gönderme
     Bu işlem için oluşturulmuş ve yapılandırılmış bir Log Analytics çalışma alanınız olması gerekir.  Log Analytics çalışma alanı oluşturmak için, bkz [. Azure portal Log Analytics çalışma alanı oluşturma](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
@@ -170,8 +170,8 @@ Depolama hesabınıza bağlanın ve olay ve durum araştırma günlükleri için
 > [!TIP]
 > Visual Studio ve C# ile sabit ve değişken değerlerini değiştirme konusunda temel kavramlara hakimseniz GitHub'daki [günlük dönüştürücü araçlarını](https://github.com/Azure-Samples/networking-dotnet-log-converter) kullanabilirsiniz.
 
-## <a name="stream-to-an-event-hub"></a>Bir olay hub 'ına akış
-Tanılama bilgileri bir olay hub 'ına akış yapıldığında, Azure Izleyici tümleştirmesiyle üçüncü taraf SıEM aracında Merkezi günlük analizi için kullanılabilir. Daha fazla bilgi için bkz. [Azure izleme verilerini bir olay hub 'ına akış](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
+## <a name="stream-to-an-event-hub"></a>Bir olay hub'ına akış yap
+Tanılama bilgileri bir olay hub 'ına akış yapıldığında, Azure Izleyici tümleştirmesiyle üçüncü taraf SıEM aracında Merkezi günlük analizi için kullanılabilir. Daha fazla bilgi için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>Log Analytics’e gönderme
 Azure 'daki kaynakların, tanılama bilgileri, sorun giderme ve analizine yönelik bilgilere karşı, karmaşık sorguların çalıştırılabileceği bir Log Analytics çalışma alanına doğrudan gönderilmesini sağlayabilir.  Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
