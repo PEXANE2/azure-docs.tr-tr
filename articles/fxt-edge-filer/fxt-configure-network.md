@@ -1,25 +1,25 @@
 ---
-title: Microsoft Azure FXT Edge Filer kümesi için ağ ayarlarını ayarla
+title: 'Öğretici: Azure FXT Edge Filer kümesinde ağı yapılandırma'
 description: Azure FXT Edge Filer kümesi oluşturduktan sonra ağ ayarlarını özelleştirme
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254901"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551072"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>Öğretici: kümenin Ağ ayarlarını yapılandırma 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>Öğretici: kümenin Ağ ayarlarını yapılandırma
 
 Yeni oluşturulan bir Azure FXT Edge filigran kümesini kullanmadan önce, iş akışınız için çeşitli ağ ayarlarını denetlemeniz ve özelleştirmeniz gerekir. 
 
 Bu öğreticide, yeni bir küme için ayarlamanız gerekebilecek ağ ayarları açıklanmaktadır. 
 
-Şunları öğreneceksiniz: 
+Öğrenecekleriniz: 
 
 > [!div class="checklist"]
 > * Küme oluşturulduktan sonra hangi ağ ayarlarının güncellenmesi gerekebilir

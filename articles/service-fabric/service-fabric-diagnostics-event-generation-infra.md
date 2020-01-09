@@ -1,102 +1,93 @@
 ---
-title: Azure Service Fabric Platform düzeyi izleme | Microsoft Docs
-description: Platform düzeyinde etkinlikler ve izleme ve tanılama Azure Service Fabric kümeleri için kullanılan günlükleri hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric platform düzeyinde Izleme
+description: Azure Service Fabric kümelerini izlemek ve tanılamak için kullanılan platform düzeyi olayları ve günlükleri hakkında bilgi edinin.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393070"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376945"
 ---
-# <a name="monitoring-the-cluster"></a>Küme izleme
+# <a name="monitoring-the-cluster"></a>Kümeyi izleme
 
-Donanım ve küme beklendiği gibi davrandığından olup olmadığını belirlemek için küme düzeyinde izlemek önemlidir. Service Fabric, bir donanım hatası sırasında çalışan uygulamalar tutabilirsiniz, ancak bir hata olup olmadığını tanılamak yine de uygulamanın veya altyapının yapılıyor. Kümelerinize daha iyi, kapasiteyi planlamak için ekleme veya kaldırma donanım hakkında kararlarında yardımcı ayrıca izlemeniz gerekir.
+Donanımınızın ve kümenizin beklendiği gibi davranıp davranmadığını öğrenmek için küme düzeyinde izlemeniz önemlidir. Service Fabric, bir donanım hatası sırasında uygulamaları çalışır durumda tutabilir, ancak yine de bir uygulamada veya temeldeki altyapıda hata oluşup oluşmadığını tanılamanıza gerek kalmaz. Ayrıca, daha fazla kapasite planlamak için kümelerinizi izlemeniz ve donanım ekleme veya kaldırma kararlarına yardımcı olmanız gerekir.
 
-Service Fabric olarak birkaç yapılandırılmış platform olaylarını sunan [Service Fabric olayları](service-fabric-diagnostics-events.md), Eventstore'a ve çeşitli günlük kanalları,-hazır. 
+Service Fabric, çeşitli yapılandırılmış platform olaylarını EventStore ve çeşitli günlük kanalları aracılığıyla [Service Fabric olaylar](service-fabric-diagnostics-events.md)olarak kullanıma sunar. 
 
-Windows Service Fabric olayları ile ilgili bir dizi tek bir ETW sağlayıcısından kullanılabilir `logLevelKeywordFilters` arasında işletimsel ve veri ve ileti kanalı - seçmek için kullanılan bu filtre uygulanacak giden Service Fabric olay ayırabiliriz yoludur gerektiği şekilde açık.
+Windows 'da Service Fabric olayları, Işletimsel ve veri & mesajlaşma kanalları arasında seçim yapmak için kullanılan bir dizi ilgili `logLevelKeywordFilters` olan tek bir ETW sağlayıcısından kullanılabilir. Bu, giden Service Fabric olaylarını gerektiği şekilde filtreleyebiliriz.
 
-* **İşletimsel** Service Fabric ve olaylar, yaklaşan bir düğüm, dağıtılmakta olan yeni bir uygulama veya yükseltme bir geri alma dahil olmak üzere, küme tarafından gerçekleştirilen üst düzey işlemleri vs. Olayların tam listesi görmek [burada](service-fabric-diagnostics-event-generation-operational.md).  
+* **İşletimsel** Service Fabric ve kümesi tarafından gerçekleştirilen bir düğümün olayları, dağıtılan yeni bir uygulama veya yükseltme geri alma vb. tarafından gerçekleştirilen üst düzey işlemler. Olayların tam listesini [buradan](service-fabric-diagnostics-event-generation-operational.md)görebilirsiniz.  
 
-* **Ayrıntılı işlemsel-**  
-Sistem durumu raporlarının ve Yük Dengeleme kararları.
+* **İşletimsel-ayrıntılı**  
+Durum raporları ve yük dengeleme kararları.
 
-İşlemi kanalı, çeşitli yollarla ETW/Windows olay günlükleri erişilebilen [Eventstore'a](service-fabric-diagnostics-eventstore.md) (kullanılabilir Windows sürümlerinde 6.2 ve sonraki Windows kümeleri için). Eventstore'a kümenizin olayları (varlıklar, küme, düğümler, uygulamaları, hizmetleri, bölümler, çoğaltmalar ve kapsayıcılar dahil) başına varlık olarak erişmenizi sağlar ve REST API'leri ve Service Fabric istemci kitaplığı kullanıma sunar. Eventstore'a geliştirme/test kümelerinizi izlemek için kullanın ve üretim kümeleri durumu zaman içinde nokta anlayış alma.
+İşlem kanalına ETW/Windows olay [günlükleri (Windows](service-fabric-diagnostics-eventstore.md) kümeleri için 6,2 ve üzeri sürümlerde Windows 'da bulunur) dahil olmak üzere çeşitli yollarla erişilebilir. EventStore, kümenizin olaylarına bir varlık temelinde (küme, düğümler, uygulamalar, hizmetler, bölümler, çoğaltmalar ve kapsayıcılar dahil olmak üzere) erişim sağlar ve bunları REST API 'Leri ve Service Fabric istemci kitaplığı aracılığıyla kullanıma sunar. Geliştirme ve test kümelerinizi izlemek için EventStore 'u kullanın ve üretim kümelerinizin durumunu bir noktadan anlayabilirsiniz.
 
-* **Veri & Mesajlaşma**  
-Kritik günlükleri ve ileti gönderme (şu anda yalnızca ReverseProxy) oluşturulan olayları ve veri yolu (reliable services modellerine).
+* **Veri & mesajlaşma**  
+Mesajlaşma 'da oluşturulan kritik Günlükler ve Olaylar (Şu anda yalnızca Smarproxy) ve veri yolu (güvenilir hizmet modelleri).
 
-* **Veri ve ayrıntılı bir ileti sistemi-**  
-Veri ve mesajlaşma (Bu kanal olayların çok yüksek hacimli sahiptir) kümedeki tüm kritik olmayan günlükleri içeren ayrıntılı kanal.
+* **Veri & mesajlaşma-ayrıntılı**  
+Kümedeki tüm kritik olmayan günlüklerin (Bu kanalın çok yüksek sayıda olay hacmi vardır) bulunduğu ayrıntılı kanal.
 
-Bunlara ek olarak, var. iki sağlanan yapılandırılmış EventSource kanalları yanı sıra destek amacıyla topladığımız günlükleri
+Bunlara ek olarak, sunulan iki adet yapılandırılmış EventSource kanalı ve destek amaçlarıyla topladığımız günlükleri de vardır.
 
 * [Reliable Services olayları](service-fabric-reliable-services-diagnostics.md)  
-Programlama modeli belirli olayları.
+Model özel olayları programlama.
 
 * [Reliable Actors olayları](service-fabric-reliable-actors-diagnostics.md)  
-Programlama modeli belirli olayları ve performans sayaçları.
+Model özel olayları ve performans sayaçlarını programlama.
 
 * Destek günlükleri  
-Sistem günlükleri yalnızca bizim tarafımızdan desteği sağlamak amacıyla Service Fabric tarafından oluşturulur.
+Service Fabric tarafından oluşturulan sistem günlükleri yalnızca destek sağlarken ABD tarafından kullanılır.
 
-Bu çeşitli kanallar önerilir platform düzeyinde günlüğe kaydetme çoğunu kapsar. Platform düzeyinde günlüğe kaydetme iyileştirmek için daha iyi sistem durumu modeli anlama ve özel durum raporları ekleme ve ekleme yatırım özel göz önünde bulundurun **performans sayaçları** etkisini gerçek zamanlı bir anlayış oluşturmak için Hizmetler ve uygulamalar küme üzerinde.
+Bu çeşitli kanallar, önerilen platform düzeyinde günlüğe kaydetme işleminin çoğunu kapsar. Platform düzeyinde günlüğe kaydetmeyi geliştirmek için, sistem durumu modelini daha iyi anlamak ve özel durum raporları eklemek ve özel **performans sayaçlarını** ekleyerek, hizmet ve uygulamanızın kümedeki etkisini gerçek zamanlı olarak anlamak için kullanmayı düşünün.
 
-Bu günlükler yararlanmak için "tanılama Azure Portal'da küme oluşturma sırasında etkin" olarak bırakmak için önerilir. Küme dağıtıldığında tanılamayı etkinleştirerek Windows Azure Diagnostics de daha fazla anlatıldığı gibi veri depolamak ve işlemsel, Reliable Services ve Reliable actors kanalları onaylamak bulabildiği [Azure ile olayları toplama Tanılama](service-fabric-diagnostics-event-aggregation-wad.md).
+Bu günlüklerin avantajlarından yararlanabilmek için, Azure portalında küme oluşturma sırasında "Tanılama" özelliğinin etkin bırakılması kesinlikle önerilir. Tanılama 'yı etkinleştirerek, küme dağıtıldığında Windows Azure Tanılama, Işletimsel, Reliable Services ve güvenilir aktör kanallarını kabul edebilir ve verileri [Azure tanılama toplama olaylarında](service-fabric-diagnostics-event-aggregation-wad.md)daha da ayrıntılı olarak depolar.
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric sistem durumunu ve yük raporlama
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric sistem durumu ve yük raporlama
 
-Service Fabric, bu makalelerinde ayrıntılı açıklanan kendi sistem durumu modeli vardır:
+Service Fabric, bu makalelerde ayrıntılı olarak açıklanan kendi sistem durumu modeline sahiptir:
 
 - [Service Fabric sistem durumu izlemeye giriş](service-fabric-health-introduction.md)
 - [Hizmet durumunu raporlama ve denetleme](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [Özel Service Fabric durum raporları ekleme](service-fabric-report-health.md)
+- [Özel Service Fabric sistem durumu raporları ekleme](service-fabric-report-health.md)
 - [Service Fabric sistem durumu raporlarını görüntüleme](service-fabric-view-entities-aggregated-health.md)
 
-Sistem durumu izleme özellikle uygulama yükseltme sırasında bir hizmet çalışan birden çok yönden kritik önem taşır. Her bir yükseltme etki alanı hizmet yükseltildikten sonra yükseltme etki alanı dağıtımı için bir sonraki yükseltme etki alanına taşınmadan önce sistem durumu denetimleri geçmesi gerekir. Tamam durumu karşılanamıyorsa, uygulamanın bilinen bir OK durumunda kalır. böylece dağıtım geri alınır. Çoğu müşteri, bazı müşteriler Hizmetleri geri alınacak önce etkilenebilecek olsa da, bir sorunla karşılaşırsınız olmaz. Ayrıca, bir çözüm oldukça hızlı bir şekilde İnsan eylemden için beklemek zorunda kalmadan gerçekleşir. Dağıtım sorunları için hizmetinizin olduğundan kodunuz daha dayanıklı dahil daha fazla sistem durumu denetimleri.
+Sistem durumu izleme, özellikle bir uygulama yükseltmesi sırasında bir hizmetin birden çok yönü için kritik öneme sahiptir. Hizmetin her bir yükseltme etki alanı yükseltildikten sonra, dağıtım bir sonraki yükseltme etki alanına geçmeden önce yükseltme etki alanı, sistem durumu denetimleri iletmelidir. Tamam sistem durumu ulaşılıp, uygulamanın bilinen bir Tamam durumunda kalması için dağıtım geri alınır. Hizmetler geri alınmadan önce bazı müşteriler etkilenebilir, ancak müşterilerin çoğu bir sorunla karşılaşmaz. Ayrıca, bir çözüm bir insan işlecinden eylemi beklemek zorunda kalmadan nispeten daha hızlı gerçekleşir. Kodunuza eklenen durum denetimleri ne kadar fazla olduğunda, hizmetiniz dağıtım sorunlarına karşı daha dayanıklı olur.
 
-Bir diğer unsuru hizmet sistem durumu hizmetinden alınan ölçümleri bildiriyor. Kaynak kullanımı dengelemek için kullanıldığından ölçümleri Service Fabric'te önemlidir. Ölçümleri de sistem durumu göstergesi olabilir. Örneğin, birçok hizmet olan bir uygulama olabilir ve her örneği bir istek ikinci (RP'ler) ölçüm raporlar. Bir hizmetin başka bir hizmete daha fazla kaynak kullanıyorsa, Service Fabric küme bile kaynak kullanımını sağlamak için geçici hizmet örnekleri taşır. Kaynak kullanımını nasıl çalıştığına ilişkin daha ayrıntılı açıklaması için bkz. [kaynak tüketimini yönetmek ve ölçümler ile Service Fabric'de yük](service-fabric-cluster-resource-manager-metrics.md).
+Hizmet sistem durumunun başka bir yönü, hizmetten rapor ölçümleridir. Ölçümler, kaynak kullanımını dengelemek için kullanıldıkları için Service Fabric önemlidir. Ölçümler Ayrıca sistem durumunun bir göstergesi olabilir. Örneğin, çok sayıda hizmeti olan bir uygulamanız olabilir ve her örnek, saniye başına istek (RPS) ölçümü rapor edebilir. Bir hizmet başka bir hizmetten daha fazla kaynak kullanıyorsa, kaynak kullanımını bile sürdürmek için Service Fabric hizmet örneklerini küme etrafında hareket ettirir. Kaynak kullanımının nasıl çalıştığı hakkında daha ayrıntılı bir açıklama için bkz. [ölçüm ile Service Fabric kaynak tüketimini yönetme ve yükleme](service-fabric-cluster-resource-manager-metrics.md).
 
-Ölçümler, ayrıca hizmet uygulamanızın performansı hakkında bilgiler size yardımcı olabilir. Zamanla, hizmet içinde beklenen parametrelerin çalıştığını denetlemek için ölçümleri kullanabilirsiniz. Eğilimleri Pazartesi sabahı 9'da RPS ortalama 1000 olduğunu gösterirse, örneğin, ardından RPS 500'altına veya üstüne 1.500 ise sizi uyaran bir sistem durumu raporu ayarlayabilirsiniz. Her şey mükemmel bir şekilde hassas olabilir, ancak müşterilerinize harika bir deneyim yaşadığınız emin olmak için bir görünüm olabilir. Hizmetiniz bir dizi sistem durumu denetimi amacıyla bildirilebilir, ancak kaynak Dengeleme kümesinin etkilemeyen ölçümleri tanımlayabilirsiniz. Bunu yapmak için ölçüm ağırlık sıfır olarak ayarlayın. Tüm ölçümleri sıfır ağırlığı ile başlayın ve kümeniz için Dengeleme kaynak ölçüm ağırlığı nasıl etkilediğini anladığınızdan emin olana kadar ağırlığı artırmak değil öneririz.
+Ölçümler Ayrıca hizmetinizin nasıl çalıştığını kavramak için size yardımcı olabilir. Zaman içinde, hizmetin beklenen parametrelerde çalışıyor olduğunu denetlemek için ölçümleri kullanabilirsiniz. Örneğin, eğilimler Pazartesi sabah Pazartesi sabah 00 ' da, ortalama RPS 1.000 ise, RPS 500 ' in altında veya 1.500 ' in altındaysa sizi uyaran bir sistem durumu raporu ayarlayabilirsiniz. Her şey kusursuz olabilir, ancak müşterilerinizin harika bir deneyim yaşadığından emin olmak için bu bir görünüme sahip olabilirsiniz. Hizmetiniz, sistem durumu denetimi amacıyla bildirilemeyen, ancak kümenin kaynak dengelemesini etkilemeyen bir dizi ölçüm tanımlayabilir. Bunu yapmak için, ölçüm kalınlığını sıfır olarak ayarlayın. Tüm ölçümleri sıfır ağırlığıyla başlatmanız önerilir ve ölçümlerin, kümenizin kaynak dengeleyiciyi nasıl etkilediğini anladığınızdan emin oluncaya kadar ağırlığı artırmaz.
 
 > [!TIP]
-> Çok fazla ağırlıklı ölçümleri kullanmayın. Neden hizmet örnekleri Dengeleme için Taşınmakta anlamak zor olabilir. Bazı ölçümler uzun yol kat etmiştir!
+> Çok fazla ağırlıklı ölçüm kullanmayın. Hizmet örneklerinin dengeleme için neden taşınmakta olduğunu anlamak zor olabilir. Birkaç ölçüm uzun bir zaman alabilir!
 
-Uygulamanızın performansını ve sistem durumu belirtebilir herhangi bir bilgi, ölçümleri ve sistem durumu raporlarını bir adaydır. **Bir CPU performans sayacı düğümünüzü nasıl kullanılır söyleyebilirsiniz, ancak bu, birden çok hizmet tek bir düğümde çalışmıyor olabilir çünkü belirli bir hizmet olup iyi ve sunmayacaktır.** Ancak, RPS, işlenen, öğeler ölçümleri ister ve tüm istek gecikme süresi, belirli bir hizmet durumunu gösterebilir.
+Uygulamanızın sistem durumunu ve performansını gösterebilen herhangi bir bilgi, ölçümler ve sistem durumu raporları için aday bir adaydır. **Bir CPU performans sayacı, düğümünüz nasıl kullanıldığını söyleyebilir, ancak belirli bir hizmetin sağlıklı olup olmadığını söylemez, çünkü birden çok hizmet tek bir düğümde çalışıyor olabilir.** Ancak, RPS gibi ölçümler, işlenen öğeler ve istek gecikmesi tümü, belirli bir hizmetin sistem durumunu gösterebilir.
 
 ## <a name="service-fabric-support-logs"></a>Service Fabric destek günlükleri
 
-Destek günlükleri, Azure Service Fabric kümenizi ile ilgili Yardım için Microsoft desteğine başvurun. Gerekirse, neredeyse her zaman gereklidir. Kümenizi Azure'da barındırılıyorsa destek günlükleri otomatik olarak yapılandırılır ve küme oluşturulmasının bir parçası toplanır. Günlükler, kümenin kaynak grubundaki bir adanmış depolama hesabında depolanır. Depolama hesabı, sabit bir adı yok, ancak hesabında blob kapsayıcıları ve tabloları ile başlayan adlarla görürsünüz *fabric*. Günlük koleksiyonlar için tek başına küme ayarlama hakkında daha fazla bilgi için bkz: [oluştur ve tek başına Azure Service Fabric kümesini yönetme](service-fabric-cluster-creation-for-windows-server.md) ve [KümeyapılandırmaayarlarıtekbaşınaWindows](service-fabric-cluster-manifest.md). Tek başına Service Fabric örnekleri için bir yerel dosya paylaşımına günlükleri gönderilmelidir. İşiniz **gerekli** için bu günlükleri için destek, ancak bunlar amaçlanmayan kullanılabilir olması için Microsoft müşteri destek ekibinin dışındaki hiç kimse tarafından.
+Azure Service Fabric kümeniz hakkında yardım almak için Microsoft desteği 'ne başvurmanız gerekirse, destek günlükleri neredeyse her zaman gereklidir. Kümeniz Azure 'da barındırılıyorsa, destek günlükleri otomatik olarak yapılandırılır ve küme oluşturmanın bir parçası olarak toplanır. Günlükler, kümenizin kaynak grubundaki ayrılmış bir depolama hesabında depolanır. Depolama hesabının sabit bir adı yoktur, ancak hesapta, *yapıyla*başlayan adlara sahip blob kapsayıcıları ve tabloları görürsünüz. Tek başına küme için günlük koleksiyonları ayarlama hakkında daha fazla bilgi için, tek başına bir [Windows kümesi için](service-fabric-cluster-manifest.md) [tek başına Azure Service Fabric kümesi ve yapılandırma ayarlarını oluşturma ve yönetme](service-fabric-cluster-creation-for-windows-server.md) konusuna bakın. Tek başına Service Fabric örnekleri için, günlüklerin yerel bir dosya paylaşımında gönderilmesi gerekir. Bu günlüklere destek için sahip olmanız **gerekir** , ancak Microsoft müşteri destek ekibinin dışındaki herkes tarafından kullanılmaya yönelik değildir.
 
 ## <a name="measuring-performance"></a>Performansı ölçme
 
-Kümenizin performansını anlamanıza yardımcı olur nasıl kümenizi ölçeklendirme etrafında yükleme ve sürücü kararları işleyebilir (bir küme ölçeklendirme hakkında daha fazla bilgi bkz [azure'da](service-fabric-cluster-scale-up-down.md), veya [şirket içi](service-fabric-cluster-windows-server-add-remove-nodes.md)). Performans verilerini de siz veya uygulama ve hizmetlerinizin, gelecekte günlüklerini analiz ederken sürmüş olabileceğini eylemleri karşılaştırıldığında yararlıdır. 
+Kümenizin performans ölçümü, kümenizin ölçeklendirilmesine ilişkin yükleme ve sürücü kararlarını nasıl işleyebileceğinizi anlamanıza yardımcı olur (bkz. [Azure 'da](service-fabric-cluster-scale-up-down.md)küme ölçekleme veya [Şirket içi](service-fabric-cluster-windows-server-add-remove-nodes.md)). Performans verileri, gelecekte Günlükler analiz edilirken sizin veya uygulama ve hizmetleriniz ile karşılaştırıldığında da yararlıdır. 
 
-Service Fabric kullanırken toplamak için performans sayaçları listesi için bkz. [Service fabric'te performans sayaçları](service-fabric-diagnostics-event-generation-perf.md)
+Service Fabric kullanırken toplanacak performans sayaçlarının listesi için, bkz. [Service Fabric performans sayaçları](service-fabric-diagnostics-event-generation-perf.md)
 
-Kümeniz için performans verilerini toplama yukarı ayarlayabilirsiniz iki genel yolu vardır:
+Kümeniz için performans verilerini toplamayı ayarlayabileceğiniz iki ortak yol aşağıda verilmiştir:
 
-* **Bir aracı kullanarak**  
-Bu, bir makineden performans toplama aracıları genellikle toplanabilir olası performans ölçümlerinin listesi olduğundan, tercih edilen yoludur ve ölçümleri toplamak veya değiştirmek istediğiniz seçmek için görece kolay bir işlemdir. Service Fabric'in Azure İzleyici sunan Azure İzleyici hakkında okuma günlükleri [Azure İzleyici tümleştirmesi günlükleri](service-fabric-diagnostics-event-analysis-oms.md) ve [Log Analytics aracısını ayarlama ayarlama](../log-analytics/log-analytics-windows-agent.md) Log Analytics aracısını hakkında daha fazla bilgi için Küme Vm'leri için performans verileri seçebilir ve kapsayıcıları dağıttığınız bir tür izleme aracısıdır.
+* **Aracı kullanma**  
+Bu, aracıların genellikle toplanabilecek olası performans ölçümlerinin bir listesi olduğundan ve toplamak veya değiştirmek istediğiniz ölçümleri belirlemek görece daha kolay bir işlemdir ve bir makineden performansı toplamanın tercih edilen yoludur. Azure izleyici hakkında bilgi edinin Azure izleyici günlüklerini Service Fabric Azure izleyici günlükleri ile [tümleştirerek](service-fabric-diagnostics-event-analysis-oms.md) , küme VM 'leri ve dağıtılan kapsayıcılar için performans verilerini seçebilen bir izleme aracısı olan Log Analytics Aracısı hakkında daha fazla bilgi edinmek için [Log Analytics aracısını ayarlama](../log-analytics/log-analytics-windows-agent.md) .
 
-* **Azure tablo depolaması için performans sayaçları**  
-Tablo depolama birimine olayları performans ölçümlerini gönderebilir. Bu, kümenizdeki VM'lerin uygun performans sayaçlarını alacak şekilde Azure Tanılama yapılandırmasını değiştirme ve tüm kapsayıcı dağıtımı, docker istatistiği ' çekme için etkinleştirme gerektirir. Yapılandırma hakkında okuyun [WAD performans sayaçları](service-fabric-diagnostics-event-aggregation-wad.md) performans sayacı toplama ayarlamanız, Service fabric'te.
+* **Azure Tablo depolama için performans sayaçları**  
+Ayrıca, performans ölçümlerini aynı tablo depolama alanına olaylarla gönderebilirsiniz. Bunun yapılması, Azure Tanılama yapılandırmasının kümenizdeki VM 'lerden uygun performans sayaçlarını seçmesini ve herhangi bir kapsayıcı dağıtabilmeniz durumunda Docker istatistiklerini seçmesini sağlar. Performans sayacı toplamayı ayarlamak için Service Fabric 'da [WAD 'de performans sayaçlarını](service-fabric-diagnostics-event-aggregation-wad.md) yapılandırma hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Service Fabric'in hakkında okuyun [Azure İzleyici tümleştirmesi günlükleri](service-fabric-diagnostics-event-analysis-oms.md) küme tanılama toplamak ve özel sorgular ve Uyarılar oluşturmak için
-* Yerleşik tanılama deneyimi, Service Fabric'in hakkında bilgi edinin [Eventstore'a](service-fabric-diagnostics-eventstore.md)
-* Bazı yol [tanılama senaryoları](service-fabric-diagnostics-common-scenarios.md) Service fabric'te
+* Küme tanılamayı toplamak ve özel sorgular ve uyarılar oluşturmak için Service Fabric [Azure izleyici günlüklerini tümleştirme](service-fabric-diagnostics-event-analysis-oms.md) hakkında bilgi edinin
+* Oluşturulan tanılama deneyimi, [Eventstore](service-fabric-diagnostics-eventstore.md) hakkında bilgi edinin Service Fabric
+* Service Fabric içindeki bazı [yaygın tanılama senaryolarına](service-fabric-diagnostics-common-scenarios.md) yol gösterir

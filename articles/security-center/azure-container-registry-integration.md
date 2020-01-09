@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229311"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552687"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Güvenlik Merkezi ile tümleştirme Azure Container Registry (Önizleme)
 
 Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
 
-Kayıt defteriniz ve görüntülerinizin güvenlik açıklarına daha derin görünürlük sağlamak için Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirebilir. Daha fazla bilgi için bkz. [Fiyatlandırma](security-center-pricing.md). Paket etkin olduğunda, kayıt defterine bir görüntü gönderildiğinde Güvenlik Merkezi, kayıt defterinizde bulunan görüntüleri otomatik olarak tarar.
+Kayıt defteriniz ve görüntülerinizin güvenlik açıklarına daha derin görünürlük sağlamak için Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirebilir. Bu özelliği kullanma maliyeti, tarama başına değil, görüntü başına ücretlendirilir. Daha fazla bilgi için bkz. [Fiyatlandırma](security-center-pricing.md). Paket etkin olduğunda, kayıt defterine bir görüntü gönderildiğinde Güvenlik Merkezi, kayıt defterinizde bulunan görüntüleri otomatik olarak tarar.
 
 > [!NOTE]
 > Güvenlik Merkezi 'nin bir kayıt defterinin ilk taraması, yalnızca kapsayıcı kayıt defterleri paketi etkinleştirildikten ve bir görüntü kayıt defterine gönderildikten sonra gerçekleşir.

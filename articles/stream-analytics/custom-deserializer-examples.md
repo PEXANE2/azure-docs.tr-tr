@@ -1,25 +1,24 @@
 ---
-title: Azure Stream Analytics işleri için .NET deserileştiricileri kullanma
+title: Azure Stream Analytics içindeki .NET özel deserileştiricileri kullanarak herhangi bir biçimdeki girişi okuyun
 description: Bu makalede serileştirme biçimi ve Azure Stream Analytics bulut ve kenar işleri için özel .NET seri hale Getiricileri tanımlayan arabirimler açıklanmaktadır.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024932"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553027"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için .NET deserileştiricileri kullanma
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
-Özel .NET seri hale getiriciler, Azure Stream Analytics işinizin üç [yerleşik veri biçimi](stream-analytics-parsing-json.md)dışındaki biçimlerden verileri okumasına izin verir. Bu makalede serileştirme biçimi ve Azure Stream Analytics bulut ve kenar işleri için özel .NET seri hale Getiricileri tanımlayan arabirimler açıklanmaktadır. Ayrıca protokol arabelleği ve CSV biçimi için örnek serileştiriciler vardır.
+.NET özel seri hale getiriciler, Azure Stream Analytics işinizin üç [yerleşik veri biçimi](stream-analytics-parsing-json.md)dışındaki biçimlerden verileri okumasına izin verir. Bu makalede, bulut ve kenar işleri Azure Stream Analytics yönelik .NET özel seri hale Getiricileri tanımlayan serileştirme biçimi ve arabirimler açıklanmaktadır. Ayrıca protokol arabelleği ve CSV biçimi için örnek serileştiriciler vardır.
 
-## <a name="custom-net-deserializer"></a>Özel .NET seri hale getirici
+## <a name="net-custom-deserializer"></a>.NET özel seri hale getirici
 
 Aşağıdaki kod örnekleri, özel seri hale getirici 'yi tanımlayan ve `StreamDeserializer<T>`uygulayan arabirimlerdir.
 
@@ -226,12 +225,12 @@ Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici s
 
 Bu özellik aşağıdaki bölgelerde kullanılabilir:
 
-* Orta Batı ABD (kullanılabilir)
-* Kuzey Avrupa (kullanılabilir)
-* Doğu ABD (kullanılabilir)
-* Batı ABD (yakında kullanıma alınıyor)
-* Doğu ABD 2 (yakında kullanıma alınıyor)
-* Batı Avrupa (yakında kullanıma alınıyor)
+* Orta Batı ABD
+* Kuzey Avrupa
+* Doğu ABD
+* Batı ABD
+* Doğu ABD 2
+* Batı Avrupa
 
 Ek bölgeler için [destek isteyebilirsiniz](https://aka.ms/ccodereqregion) .
 
@@ -239,7 +238,7 @@ Ek bölgeler için [destek isteyebilirsiniz](https://aka.ms/ccodereqregion) .
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Bu özellik tüm Azure bölgelerinde kullanılabilir olacaktır?
 
-Bu özellik 6 bölgede (#region destek) kullanılabilir. Bu işlevi başka bir bölgede kullanmak istiyorsanız [bir istek gönderebilirsiniz](https://aka.ms/ccodereqregion). Tüm Azure bölgeleri için destek yol haritasında bulunur.
+Bu özellik [6 bölgede](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)kullanılabilir. Bu işlevi başka bir bölgede kullanmak istiyorsanız [bir istek gönderebilirsiniz](https://aka.ms/ccodereqregion). Tüm Azure bölgeleri için destek yol haritasında bulunur.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue işlevine benzer girişlerimin MetadataPropertyValue öğesine erişebilir miyim?
 
@@ -251,4 +250,4 @@ Seri hale getirinizi uyguladıktan sonra, diğer kişilere topluluk ile paylaşa
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Azure Stream Analytics bulut işleri için özel .NET seri hale getiriciler](custom-deserializer.md)
+* [Azure Stream Analytics bulut işleri için .NET özel seri hale getiriciler](custom-deserializer.md)

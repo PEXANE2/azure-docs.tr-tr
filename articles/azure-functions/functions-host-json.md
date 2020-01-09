@@ -3,12 +3,12 @@ title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433185"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
@@ -95,11 +95,15 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
-[Application Insights 'de örnekleme özelliğini](./functions-monitoring.md#configure-sampling)denetler.
+[Örnekleme seçenekleri](./functions-monitoring.md#configure-sampling)de dahil olmak üzere Application Insights seçeneklerini denetler.
 
 ```json
 {
-    "applicationInsights": {
+    "applicationInsights": {        
+        "enableDependencyTracking": true,
+        "enablePerformanceCountersCollection": true,
+        "samplingExcludedTypes": "Trace;Exception",
+        "samplingIncludedTypes": "Request;Dependency",
         "samplingSettings": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 20
@@ -113,11 +117,12 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|isEnabled|doğru|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
-|maxTelemetryItemsPerSecond|20|Örneklemenin başladığı eşik.| 
-|Enableliveölçümleri |doğru|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
-|EnableDependencyTracking|doğru|Bağımlılık izlemeyi etkinleştirilir.|
-|EnablePerformanceCountersCollection|doğru|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
+|enableDependencyTracking|doğru|Bağımlılık izlemeyi etkinleştirilir.|
+|enablePerformanceCountersCollection|doğru|Performans sayaçları toplamayı etkinleştirilir.|
+|samplingExcludedTypes|null|Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: bağımlılık, olay, özel durum, PageView, Istek, Izleme. Belirtilen türlerin tüm örnekleri iletilir; Belirtilmemiş Türler örneklenir.| 
+|Samplingıncludedtypes|null|Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: bağımlılık, olay, özel durum, PageView, Istek, Izleme. Belirtilen türler örneklenir; diğer türlerin tüm örnekleri her zaman iletilir.|
+|samplingSettings. IsEnabled|doğru|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
+|samplingSettings. maxTelemetryItemsPerSecond|20|Örneklemenin başladığı eşik.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -193,7 +198,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md#hostjson-settings)içinde bulunabilir.
 
-## <a name="logging"></a>günlüğe kaydetme
+## <a name="logging"></a>günlük kaydı
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 

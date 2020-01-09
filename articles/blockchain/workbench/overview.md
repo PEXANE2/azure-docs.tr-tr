@@ -4,12 +4,12 @@ description: Azure blok zinciri çalışma ekranı önizlemesine ve özellikleri
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 9c40f95aa1490362b9232ec8d87a199d7a41c731
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387080"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench nedir?
 
@@ -44,6 +44,20 @@ Mevcut blok zinciri protokolleri ile blok zinciri kimlikleri, ağ üzerindeki bi
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Zincir üzerindeki verileri, zincir dışı depolama ile eşitleme
 
 Azure Blockchain Workbench, blok zinciri üzerindeki verileri otomatik olarak zincir dışı depolama ile eşitleyerek blok zinciri olaylarının ve verilerinin analiz edilmesini kolaylaştırır. Doğrudan blok zincirinden verileri ayıklamak yerine, SQL Server gibi zincir dışı veritabanı sistemlerini sorgulayabilirsiniz. Blok zinciri uzmanlığı, veri analizi görevleri gerçekleştiren son kullanıcılar için gerekli değildir.
+
+## <a name="support-and-feedback"></a>Destek ve geri bildirim
+
+Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.microsoft.com/blog/topics/blockchain/) ' nı ziyaret ederek, blok zinciri hizmeti tekliflerini ve Azure blok zinciri Mühendisliği ekibinin bilgilerini güncel tutun.
+
+Ürün geri bildirimi sağlamak veya yeni özellikler istemek için, [blok zinciri Için Azure geri bildirim Forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir oylayın.
+
+### <a name="community-support"></a>Topluluk desteği
+
+Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
+
+* [Azure blok zinciri MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

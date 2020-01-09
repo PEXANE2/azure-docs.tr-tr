@@ -1,21 +1,21 @@
 ---
 title: 'Öğretici: Tek sayfalı Bing Video Arama uygulaması oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bing Video Arama API'sinin tek sayfalı bir Web uygulamasında kullanılmasını açıklar.
+description: Bu öğreticide, Bing Video Arama API'si tek sayfalı bir Web uygulamasında nasıl kullanılacağı açıklanmaktadır.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382472"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Öğretici: Tek sayfalı Video Arama uygulaması
 Bing Video Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan video sonuçları almanızı sağlar. Bu öğreticide, Bing arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor.
@@ -141,7 +141,7 @@ function bingSearchOptions(form) {
 Örneğin, gerçek API çağrısındaki `SafeSearch` parametresi `strict`, `moderate` veya `off` olabilir; varsayılan değer `moderate` ayarıdır. Öte yandan, formumuzda yalnızca iki durumu olan bir onay kutusu kullanılıyor. JavaScript kodu bu ayarı `strict` veya `off` ayarına dönüştürür (`moderate` kullanılmaz).
 
 ## <a name="performing-the-request"></a>İsteği gerçekleştirme
-Sorgu, seçenekler dizesi ve API anahtarı verili durumdayken, `BingWebSearch` işlevi Bing Arama uç noktasına isteği yöneltmek için bir `XMLHttpRequest` nesnesi kullanır.
+Sorgu, seçenekler dizesi ve API anahtarı verili durumdayken, `BingWebSearch` işlevi Bing Arama uç noktasına isteği yöneltmek için bir `XMLHttpRequest` nesnesi kullanır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -261,7 +261,7 @@ Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 
-|Aşama|Olası hatalar|İşleyen|
+|Stage|Olası hatalar|İşleyen|
 |-|-|-|
 |JavaScript istek nesnesi oluşturma|Geçersiz URL|`try`/`catch` bloğu|
 |İstekte bulunma|Ağ hataları, durdurulan bağlantılar|`error` ve `abort` olay işleyicileri|
@@ -369,9 +369,9 @@ Aşağıdaki JavaScript alıntısında `video` işleyicisi gösterilir. Videos u
 > [!div class="checklist"]
 > * Paragraf etiketi oluşturur, bu etiketi `images` sınıfına atar ve html dizisine gönderir.
 > * Resmin küçük resim boyutunu hesaplar (genişlik 60 piksele sabitlenir, yükseklik buna orantılı olarak hesaplanır).
-> * Resmin küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur. 
+> * Görüntünün küçük resmini görüntülemek için HTML `<img>` etiketini oluşturur. 
 > * Görüntüye ve bu görüntüyü içeren sayfaya bağlanan HTML `<a>` etiketlerini oluşturur.
-> * Resim ve bu resmin bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
+> * Görüntü ve bu görüntünün bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
 
 Küçük resim boyutu hem `<img>` etiketinde hem de küçük resmin URL'sindeki `h` ve `w` alanlarında kullanılır. Bing, tam olarak bu boyutun [küçük bir resmini](../bing-web-search/resize-and-crop-thumbnails.md) döndürür.
 
@@ -389,7 +389,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir ara sunucudan alınan yanıtın, `Access-Control-Expose-Headers` yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir proxy 'den gelen yanıtın, yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir `Access-Control-Expose-Headers` üst bilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

@@ -1,17 +1,17 @@
 ---
-title: Donanım Microsoft Azure FXT Edge Filer 'ı başlatma
+title: 'Öğretici: donanımı başlatma-Azure FXT Edge Filer'
 description: Azure FXT Edge Filer düğümlerinde başlangıç parolası ayarlama
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256023"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550900"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Öğretici: donanım parolalarını ayarlama
 
@@ -23,7 +23,7 @@ Düğümü yükledikten ve kabloladıktan sonra, ancak Kümeyi oluşturmaya çal
 
 Bu öğretici, donanım düğümüne bağlanmayı ve parolayı ayarlamayı açıklamaktadır. 
 
-Bu öğreticide, aşağıdakileri nasıl yapacağınızı öğreneceksiniz: 
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz: 
 
 > [!div class="checklist"]
 > * Bir klavye ve izleyiciyi düğüme bağlayın ve üzerinde güç yapın
@@ -34,7 +34,7 @@ Bu adımları, kümenizde kullanacağınız her düğüm için tekrarlayın.
 
 Bu öğreticinin tamamlanabilmesi yaklaşık 15 dakika sürer. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce şu adımları uygulayın: 
 
@@ -80,7 +80,7 @@ Girdiğiniz parola iki şey için kullanılır:
 
 * Bu Azure FXT Edge Filer düğümü için geçici kök paroladır. 
 
-  Bu parola, bu düğümü kullanarak bir küme oluşturduğunuzda veya bu düğümü kümeye eklediğinizde değişecektir. Küme yönetimi parolası (kullanıcıyla ilişkili ``admin``), bir kümedeki tüm düğümler için de kök paroladır.
+  Bu parola, bu düğümü kullanarak bir küme oluşturduğunuzda veya bu düğümü kümeye eklediğinizde değişecektir. Küme yönetim parolası (kullanıcıyla ``admin``ilişkili), bir kümedeki tüm düğümlerin kök parolasıdır.
 
 * Bu, Idrac/ıPMı donanım yönetimi bağlantı noktası için uzun süreli paroladır.
 
@@ -94,7 +94,7 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-Parolayı girdikten sonra, sistem önyüklemeye devam eder. Tamamlandığında, ``login:`` istemi verir. 
+Parolayı girdikten sonra, sistem önyüklemeye devam eder. Tamamlandığında, bir ``login:`` istemi verir. 
 
 ## <a name="sign-in-as-root"></a>Kök olarak oturum aç
 

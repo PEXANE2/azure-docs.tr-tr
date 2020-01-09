@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect bulut sağlama yeni aracı yapılandırması
-description: Bu konuda, bulut sağlama 'nın nasıl yükleneceği açıklanır.
+description: Bu makalede, bulut sağlama 'nın nasıl yükleneceği açıklanır.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,74 +11,83 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997131"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549440"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect bulut sağlama yeni yapılandırma
+# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Azure AD Connect bulut sağlama yeni aracı yapılandırması
 
-Aracıyı yükledikten sonra, Azure portal oturum açmanız ve sağlamayı yapılandırmanız gerekir.  Aracıyı etkinleştirmek için aşağıdaki adımları kullanın.
+Aracıyı yükledikten sonra, Azure portal oturum açmanız ve Azure Active Directory (Azure AD) ile bağlantı bulut sağlamasını yapılandırmanız gerekir. Aracıyı etkinleştirmek için bu adımları izleyin.
 
 ## <a name="configure-provisioning"></a>Sağlamayı Yapılandır
-Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
+Sağlamayı yapılandırmak için aşağıdaki adımları izleyin.
 
-1.  Azure AD portalında **Azure Active Directory** ' ye tıklayın.
-2.  **Azure AD Connect** tıklayın
-3.  **Sağlamayı Yönet (Önizleme)** 
-![](media/how-to-configure/manage1.png) seçin
+1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  **Azure AD Connect**seçin.
+1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 
-4.  **Yeni yapılandırma**' ya tıklayın.
-5.  Yapılandırma ekranında şirket içi etki alanı önceden doldurulur
-6. Bir **bildirim e-postası**girin. Sağlama sağlıklı değilse, bu e-postaya bildirim gönderilir.  
-8. Seçicisi **etkinleştirmek** ve **Kaydet**' e gitmek için seçiciyi taşıyın.
-![](media/tutorial-single-forest/configure2.png)
+    ![Sağlamayı yönetme (Önizleme)](media/how-to-configure/manage1.png)
 
-## <a name="scoping-provisioning-to-specific-users-and-groups"></a>Belirli kullanıcılara ve gruplara sağlama kapsamını belirleme
-Aracının yalnızca belirli kullanıcıları ve grupları eşitleyecek şekilde kapsamını atamak istiyorsanız bunu yapabilirsiniz. Şirket içi AD gruplarını veya kuruluş birimlerini kullanarak kapsam yapabilirsiniz. Bir yapılandırma içinde grupları ve kuruluş birimlerini yapılandıramazsınız. 
+1.  **Yeni yapılandırma**' yı seçin.
+1.  Yapılandırma ekranında şirket içi etki alanı önceden doldurulur.
+1.  Bir **bildirim e-postası**girin. Bu e-postaya sağlama sağlıklı olmadığında bildirim alınacaktır.
+1.  Seçimi **etkinleştirmek**için seçiciyi taşıyın ve **Kaydet**' i seçin.
 
-1.  Azure AD portalında **Azure Active Directory** ' ye tıklayın.
-2.  **Azure AD Connect** tıklayın
-3.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
-4.  **Yapılandırma** altında yapılandırmanıza tıklayın.  
-![](media/how-to-configure/scope1.png)
+    ![Azure AD sağlama (Önizleme)](media/tutorial-single-forest/configure2.png)
 
-5.  **Yapılandır**' ın altında, yapılandırma kuralının kapsamını değiştirmek için **tüm kullanıcılar** ' ı seçin.
-![](media/how-to-configure/scope2.png)
+## <a name="scope-provisioning-to-specific-users-and-groups"></a>Belirli kullanıcılara ve gruplara kapsam sağlama
+Şirket içi Active Directory grupları veya kuruluş birimleri kullanarak belirli kullanıcıları ve grupları eşitlenmek için aracının kapsamını belirleyebilirsiniz. Bir yapılandırma içinde grupları ve kuruluş birimlerini yapılandıramazsınız. 
 
-6. Sağ tarafta, grubun ayırt edici adını girip **Ekle**' ye tıklayarak kapsamı yalnızca güvenlik gruplarını içerecek şekilde değiştirebilirsiniz.
-![](media/how-to-configure/scope3.png)
+1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  **Azure AD Connect**seçin.
+1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
+1.  **Yapılandırma**altında yapılandırmanızı seçin.
 
-7. Ya da yalnızca belirli OU 'Ları içerecek şekilde değiştirin. **Bitti** ve **Kaydet**' e tıklayın.
-![](media/how-to-configure/scope4.png)
+    ![Yapılandırma bölümü](media/how-to-configure/scope1.png)
+
+1.  **Yapılandır**' ın altında, yapılandırma kuralının kapsamını değiştirmek için **tüm kullanıcılar** ' ı seçin.
+
+    ![Tüm kullanıcılar seçeneği](media/how-to-configure/scope2.png)
+
+1. Sağ tarafta, kapsamı yalnızca güvenlik gruplarını içerecek şekilde değiştirebilirsiniz. Grubun ayırt edici adını girin ve **Ekle**' yi seçin.
+
+    ![Seçili güvenlik grupları seçeneği](media/how-to-configure/scope3.png)
+
+1.  Ya da kapsamı yalnızca belirli kuruluş birimlerini içerecek şekilde değiştirebilirsiniz. **Bitti** ve **Kaydet**' i seçin.
+
+    ![Seçili kuruluş birimleri seçeneği](media/how-to-configure/scope4.png)
 
 
 ## <a name="restart-provisioning"></a>Sağlamayı yeniden Başlat 
-Zamanlanan bir sonraki çalıştırmaya beklemek istemiyorsanız, sağlama çalıştırmasını yeniden başlatma sağlama düğmesini kullanarak tetikleyebilirsiniz. 
-1.  Azure AD portalında **Azure Active Directory** ' ye tıklayın.
-2.  **Azure AD Connect** tıklayın
-3.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
-4.  **Yapılandırma** altında yapılandırmanıza tıklayın.  
-![](media/how-to-configure/scope1.png)
+Zamanlanan bir sonraki çalıştırmaya beklemek istemiyorsanız, sağlama çalıştırmasını **yeniden başlatma sağlama** düğmesini kullanarak tetikleyin. 
+1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  **Azure AD Connect**seçin.
+1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
+1.  **Yapılandırma**altında yapılandırmanızı seçin.
 
-5.  En üstte, **sağlamayı yeniden Başlat**' a tıklayın.
+    ![Sağlamayı yeniden başlatmak için yapılandırma seçimi](media/how-to-configure/scope1.png)
 
-## <a name="removing-a-configuration"></a>Yapılandırma kaldırılıyor
-Bir yapılandırmayı silmek isterseniz, aşağıdaki adımları kullanarak bunu yapabilirsiniz.
+1.  En üstte **sağlamayı yeniden Başlat**' ı seçin.
 
-1.  Azure AD portalında **Azure Active Directory** ' ye tıklayın.
-2.  **Azure AD Connect** tıklayın
-3.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
-4.  **Yapılandırma** altında yapılandırmanıza tıklayın.  
-![](media/how-to-configure/scope1.png)
+## <a name="remove-a-configuration"></a>Yapılandırmayı kaldırma
+Bir yapılandırmayı silmek için aşağıdaki adımları izleyin.
 
-5.  Üst kısımdaki **Sil**' e tıklayın.
-![](media/how-to-configure/remove1.png)
+1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  **Azure AD Connect**seçin.
+1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
+1.  **Yapılandırma**altında yapılandırmanızı seçin.
+
+    ![Yapılandırmayı kaldırmak için yapılandırma seçimi](media/how-to-configure/scope1.png)
+
+1.  Yapılandırma ekranının üst kısmında **Sil**' i seçin.
+
+    ![Sil düğmesi](media/how-to-configure/remove1.png)
 
 >[!IMPORTANT]
->Bir yapılandırma silinmeden önce hiçbir onay yoktur, bu nedenle **Sil**' e tıklamadan önce bunun gerçekleştirmek istediğiniz eylem olduğundan emin olun.
+>Bir yapılandırma silinmeden önce hiçbir onay yok. **Sil**' i seçmeden önce bunun gerçekleştirmek istediğiniz eylem olduğundan emin olun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
