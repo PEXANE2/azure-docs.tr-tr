@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics çözüm desenleri
 description: Parçalama, olay mesajlaşma, veri depoları, başvuru verileri zenginleştirme ve izleme gibi Azure Stream Analytics yönelik yaygın çözüm desenleri hakkında bilgi edinin.
-author: zhongc
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2a449c55a0998f1a114f6aa9d2c067e48cc0cdce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901684"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443674"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics çözüm desenleri
 
@@ -174,7 +174,7 @@ Geri doldurma için, sabit durum işleme gereksinimlerinden daha yüksek aktarı
 |**Kesik taslak**   |Boşluk oluşturur    |Kısa süreli kesinti için Tamam    |Uzun süreli kullanım için kullanın |
 |**Uyarı**   |Kabul edilebilir |Kısa süreli kesinti için Tamam    |Gerekli değil |
 |**Olay kaynağını belirleme uygulaması** |Kabul edilebilir |Kısa süreli kesinti için Tamam    |Uzun süreli kullanım için kullanın |
-|**Veri depolama**   |Veri kaybı  |Kabul edilebilir |Gerekli değil |
+|**Veri ambarı**   |Veri kaybı  |Kabul edilebilir |Gerekli değil |
 |**Çevrimdışı analiz**  |Veri kaybı  |Kabul edilebilir |Gerekli değil|
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme

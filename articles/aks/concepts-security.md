@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422280"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar ve kümeler için güvenlik kavramları
 
@@ -79,7 +79,7 @@ Gizli dizi kullanımı, Pod veya hizmet YAML bildiriminde tanımlanan hassas bil
 
 AKS kümelerinizi korumaya başlamak için bkz. [aks kümesini yükseltme][aks-upgrade-cluster].
 
-İlişkili en iyi uygulamalar için bkz. [AKS 'de küme güvenliği ve yükseltmeleri Için en iyi uygulamalar][operator-best-practices-cluster-security].
+İlişkili en iyi uygulamalar için bkz. [AKS 'de küme güvenliği ve yükseltmeleri Için en iyi uygulamalar][operator-best-practices-cluster-security] ve [aks 'de Pod güvenliği için en iyi uygulamalar][developer-best-practices-pod-security].
 
 Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -105,4 +105,5 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

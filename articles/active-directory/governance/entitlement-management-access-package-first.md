@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma-Azure Active Directory
+title: Öğretici-erişim paketi oluşturma-Azure AD Yetkilendirme Yönetimi
 description: Azure Active Directory yetkilendirme yönetimi 'nde ilk erişim paketinizi oluşturma konusunda adım adım öğretici.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422665"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Öğretici: Azure AD Yetkilendirme Yönetimi 'nde ilk erişim paketinizi oluşturma
 
@@ -42,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD Yetkilendirme Yönetimi 'ni kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
@@ -65,7 +65,7 @@ Kaynak dizininde paylaşılacak bir veya daha fazla kaynak bulunur. Bu adımda, 
 
 1. Aşağıdaki iki kullanıcıyı oluşturun veya yapılandırın. Bu adları veya farklı adları kullanabilirsiniz. **Admin1** Şu anda oturum açmış olduğunuz Kullanıcı olabilir.
 
-    | Adı | Dizin rolü |
+    | Ad | Dizin rolü |
     | --- | --- |
     | **Admin1** | Genel yönetici<br/>-veya-<br/>Kullanıcı Yöneticisi |
     | **Requestor1** | Kullanıcı |
@@ -190,7 +190,7 @@ Bu adımda, adımları **iç istek sahibi** olarak gerçekleştirirsiniz ve eri�
 
     ![Erişim Portalı-erişim ISTEME](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. **Gönder**' e tıklayın.
+1. **Gönder**'e tıklayın.
 
 1. İsteğinizin gönderildiğini doğrulamak için sol taraftaki menüden **istek geçmişi** ' ne tıklayın.
 

@@ -1,5 +1,6 @@
 ---
-title: API Management-Azure API Management istemci sertifikası kimlik doğrulaması kullanarak API 'Leri güvenli hale getirme | Microsoft Docs
+title: API Management 'de istemci sertifikası kimlik doğrulaması kullanarak API 'Leri güvenli hale getirme
+titleSuffix: Azure API Management
 description: İstemci sertifikalarını kullanarak API 'lere erişimi güvenli hale getirme hakkında bilgi edinin
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: apimpm
-ms.openlocfilehash: 263f8495b9dbb0a1c5b3c54301b4b4deab425e31
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430643"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management 'de istemci sertifikası kimlik doğrulaması kullanarak API 'Leri güvenli hale getirme
 
@@ -28,7 +29,7 @@ API Management, istemci sertifikaları kullanarak API 'lere (yani API Management
 > [!IMPORTANT]
 > Tüketim katmanında istemci sertifikalarını almak ve doğrulamak için, önce aşağıda gösterildiği gibi "özel etki alanları" dikey penceresinde "istemci sertifikası ıste" ayarını açmanız gerekir.
 
-![İstemci sertifikası iste](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![İstemci sertifikası isteme](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>Veren ve Subject denetleniyor
 
@@ -45,8 +46,8 @@ Aşağıdaki ilkeler bir istemci sertifikasının vereni ve konusunu denetlemek 
 ```
 
 > [!NOTE]
-> Yerine sertifika iptal listesi kullanımını `context.Request.Certificate.VerifyNoRevocation()` denetlemeyi devre dışı bırakmak için. `context.Request.Certificate.Verify()`
-> İstemci sertifikası kendinden imzalanmışsa, `context.Request.Certificate.Verify()` ve ' `context.Request.Certificate.VerifyNoRevocation()` nin çalışması için API Management, kök (veya ara) CA sertifikalarının [yüklenmiş](api-management-howto-ca-certificates.md) olması gerekir.
+> Sertifika iptal listesinin denetlenmesini devre dışı bırakmak için `context.Request.Certificate.Verify()`yerine `context.Request.Certificate.VerifyNoRevocation()` kullanın.
+> İstemci sertifikası kendinden imzalanmışsa, `context.Request.Certificate.Verify()` ve `context.Request.Certificate.VerifyNoRevocation()` çalışması için kök (veya ara) CA sertifikalarının API Management için [yüklenmiş](api-management-howto-ca-certificates.md) olması gerekir.
 
 ## <a name="checking-the-thumbprint"></a>Parmak izi denetleniyor
 
@@ -63,8 +64,8 @@ Aşağıdaki ilkeler bir istemci sertifikasının parmak izini denetlemek için 
 ```
 
 > [!NOTE]
-> Yerine sertifika iptal listesi kullanımını `context.Request.Certificate.VerifyNoRevocation()` denetlemeyi devre dışı bırakmak için. `context.Request.Certificate.Verify()`
-> İstemci sertifikası kendinden imzalanmışsa, `context.Request.Certificate.Verify()` ve ' `context.Request.Certificate.VerifyNoRevocation()` nin çalışması için API Management, kök (veya ara) CA sertifikalarının [yüklenmiş](api-management-howto-ca-certificates.md) olması gerekir.
+> Sertifika iptal listesinin denetlenmesini devre dışı bırakmak için `context.Request.Certificate.Verify()`yerine `context.Request.Certificate.VerifyNoRevocation()` kullanın.
+> İstemci sertifikası kendinden imzalanmışsa, `context.Request.Certificate.Verify()` ve `context.Request.Certificate.VerifyNoRevocation()` çalışması için kök (veya ara) CA sertifikalarının API Management için [yüklenmiş](api-management-howto-ca-certificates.md) olması gerekir.
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>API Management yüklenen sertifikalara yönelik parmak izi denetleniyor
 
@@ -82,14 +83,14 @@ Aşağıdaki örnek, API Management yüklenen sertifikalara karşı bir istemci 
 ```
 
 > [!NOTE]
-> Yerine sertifika iptal listesi kullanımını `context.Request.Certificate.VerifyNoRevocation()` denetlemeyi devre dışı bırakmak için. `context.Request.Certificate.Verify()`
-> İstemci sertifikası kendinden imzalanmışsa, `context.Request.Certificate.Verify()` ve ' `context.Request.Certificate.VerifyNoRevocation()` nin çalışması için API Management, kök (veya ara) CA sertifikalarının [yüklenmiş](api-management-howto-ca-certificates.md) olması gerekir.
+> Sertifika iptal listesinin denetlenmesini devre dışı bırakmak için `context.Request.Certificate.Verify()`yerine `context.Request.Certificate.VerifyNoRevocation()` kullanın.
+> İstemci sertifikası kendinden imzalanmışsa, `context.Request.Certificate.Verify()` ve `context.Request.Certificate.VerifyNoRevocation()` çalışması için kök (veya ara) CA sertifikalarının API Management için [yüklenmiş](api-management-howto-ca-certificates.md) olması gerekir.
 
 > [!TIP]
-> Bu [makalede](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) açıklanan istemci sertifikası kilitlenmesi sorunu, tek bir şekilde kendi kendine bildirimde bulunabilir. Örneğin, istekler `403 Forbidden` `context.Request.Certificate` dondurduktan sonra istek zaman aşımından sonra durum koduna neden olur `null`. Bu sorun genellikle yaklaşık `POST` 60 `PUT` KB veya daha büyük içerik uzunluğuna sahip olan istekleri etkiler.
+> Bu [makalede](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) açıklanan istemci sertifikası kilitlenmesi sorunu, tek bir şekilde kendi kendine bildirimde bulunabilir. Örneğin, istekler dondurduktan sonra istekler, zaman aşımından sonra `403 Forbidden` durum koduna neden olur `context.Request.Certificate` `null`. Bu sorun genellikle, yaklaşık 60 KB veya daha büyük içerik uzunluğuna sahip `POST` ve `PUT` isteklerini etkiler.
 > Bu sorunun oluşmasını engellemek için, "özel etki alanları" dikey penceresindeki istenen ana bilgisayar adları için "istemci sertifikası anlaş" ayarını aşağıda gösterildiği gibi etkinleştirin. Bu özellik, tüketim katmanında kullanılamaz.
 
-![İstemci sertifikası için anlaş](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+![İstemci sertifikası ile anlaş](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

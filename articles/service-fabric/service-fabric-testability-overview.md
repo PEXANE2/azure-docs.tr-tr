@@ -1,105 +1,96 @@
 ---
-title: Hata analizi hizmeti genel bakış | Microsoft Docs
-description: Bu makalede, Service fabric'te hata analizi hizmeti inducing hataların ve test senaryoları hizmetlerinizi karşı çalıştırmak için açıklanır.
-services: service-fabric
-documentationcenter: .net
+title: Hata analiz hizmetine genel bakış
+description: Bu makalede, hizmetlerinize karşı hataları ve test senaryolarını çalıştırmak için Service Fabric 'daki hata analizi hizmeti açıklanmaktadır.
 author: anmolah
-manager: chackdan
-editor: vturecek
-ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465577"
 ---
-# <a name="introduction-to-the-fault-analysis-service"></a>Hata analizi hizmeti giriş
-Hata analizi hizmeti, Microsoft Azure Service Fabric'te yerleşik hizmetlere test etmek için tasarlanmıştır. Hata analizi hizmeti ile anlamlı hataları anlamına ve uygulamalarınızı karşı tam test senaryoları çalıştırın. Bu hataları ve senaryoları çalışma ve çeşitli durumları ve hizmet ömrü boyunca, tüm denetimli, güvenli ve tutarlı bir şekilde yaşar geçişleri doğrulayın.
+# <a name="introduction-to-the-fault-analysis-service"></a>Hata analiz hizmetine giriş
+Hata analiz hizmeti, Microsoft Azure Service Fabric oluşturulan Hizmetleri test etmek için tasarlanmıştır. Hata analiz hizmeti sayesinde, anlamlı hatalara ve tüm test senaryolarını uygulamalarınıza göre çalıştırabilirsiniz. Bu hatalar ve senaryolar, bir hizmetin yaşam süresi boyunca, denetimli, güvenli ve tutarlı bir şekilde deneyilecek çok sayıda durum ve geçiş yapar ve doğrular.
 
-Eylemler, bunu test etmek için bir hizmet hedefleyen tek hatalarıdır. Bir hizmet Geliştirici karmaşık senaryoları yazmak için bu yapı taşları olarak kullanabilirsiniz. Örneğin:
+Eylemler, test için bir hizmeti hedefleyen bireysel hatalardır. Bir hizmet geliştiricisi, bunları karmaşık senaryolar yazmak için yapı taşları olarak kullanabilir. Örneğin:
 
-* Burada bir makine veya sanal makine yeniden durumlar herhangi bir sayıda benzetimini yapmak için bir düğümü yeniden başlatın.
-* Yük Dengeleme, yük devretme veya uygulama yükseltmesi benzetimini yapmak için durum bilgisi olan hizmet çoğaltmasını taşıyın.
-* Çekirdek kayıp yeni verileri kabul etmek için yeterli "yedekleme" veya "ikincil" çoğaltma olmadığından burada yazma işlemleri devam edemiyor bir durum oluşturmak için bir durum bilgisi olan hizmet olarak çağırır.
-* Burada tüm bellek içi durumu tamamen silindikten bir durum oluşturmak için bir durum bilgisi olan hizmet veri kaybı çağırma.
+* Bir makinenin veya VM 'nin yeniden başlatıldığı sayıda durum benzetimi yapmak için bir düğümü yeniden başlatın.
+* Yük Dengeleme, yük devretme veya uygulama yükseltme benzetimi yapmak için durum bilgisi olan hizmetinizin bir çoğaltmasını taşıyın.
+* Yeni verileri kabul etmek için yeterli "yedekleme" veya "ikincil" çoğaltma olmadığından yazma işlemlerinin devam edemeyeceği bir durum oluşturmak için durum bilgisi olan bir hizmette çekirdek kaybı 'nı çağırın.
+* Tüm bellek içi durumun tamamen temizlendiğinden oluşan bir durum oluşturmak için durum bilgisi olan bir hizmette veri kaybını çağırma.
 
-Bir veya daha fazla eylem oluşan karmaşık işlemleri senaryolardır. Hata analizi hizmeti, iki yerleşik tam senaryoları sağlar:
+Senaryolar, bir veya daha fazla eylemden oluşan karmaşık işlemlerdir. Hata Analizi hizmeti, iki yerleşik tam senaryo sağlar:
 
-* Kaos senaryosu
+* Chaos senaryosu
 * Yük devretme senaryosu
 
 ## <a name="testing-as-a-service"></a>Hizmet olarak test etme
-Hata analizi hizmeti ile bir Service Fabric kümesini otomatik olarak başlatılan bir Service Fabric sistemi hizmetidir. Bu hizmet, hata ekleme testi senaryosu yürütme ve sistem durumu çözümleme için ana bilgisayarı olarak görev yapar. 
+Hata analiz hizmeti, Service Fabric kümesiyle otomatik olarak başlatılan bir Service Fabric sistem hizmetidir. Bu hizmet hata ekleme, test senaryosu yürütme ve sistem durumu analizi için konak görevi görür. 
 
-![Hata analizi hizmeti][0]
+![Hata analiz hizmeti][0]
 
-Hata eylemi veya test senaryosu başlatıldığında hata eylemi veya test senaryosu çalıştırmak için bir komut hata analizi hizmeti için gönderilir. Hata analizi hizmeti durum bilgisi olan, böylelikle, güvenilir bir şekilde hataları ve senaryoları çalıştırabilir ve sonuçları doğrulayın. Örneğin, uzun süre çalışan test senaryosu güvenilir bir şekilde hata analizi hizmeti tarafından gerçekleştirilebilir. Ve hizmet kümesi içinde testleri yürütülmekte olduğundan, küme ve hataları hakkında daha ayrıntılı bilgi sağlamak için hizmetlerinizin durumunu inceleyebilirsiniz.
+Bir hata eylemi veya test senaryosu başlatıldığında, hata eylemi veya test senaryosunu çalıştırmak için hata analiz hizmetine bir komut gönderilir. Hata Analizi hizmeti, hata ve senaryoları güvenilir bir şekilde çalıştırıp sonuçları doğrulayabilecek şekilde durum bilgisine sahiptir. Örneğin, uzun süre çalışan bir test senaryosu hata analizi hizmeti tarafından güvenilir bir şekilde çalıştırılabilir. Testler küme içinde yürütüldüğü için, hizmet, sorunlar hakkında daha ayrıntılı bilgi sağlamak üzere kümenin ve hizmetlerinizin durumunu inceleyebilir.
 
-## <a name="testing-distributed-systems"></a>Dağıtılmış sistemler test etme
-Service Fabric, ölçeklenebilir dağıtılmış uygulamaları önemli ölçüde daha kolay yönetme ve yazma iş sağlar. Hata analizi hizmeti, benzer şekilde daha kolay bir dağıtılmış uygulama testi kolaylaştırır. Test ederken çözülmesi gereken üç ana sorunları vardır:
+## <a name="testing-distributed-systems"></a>Dağıtılmış sistemleri test etme
+Service Fabric, dağıtılmış ölçeklenebilir uygulamaları yazma ve yönetme işini önemli ölçüde daha kolay hale getirir. Hata Analizi hizmeti, dağıtılmış bir uygulamayı test etmeyi benzer şekilde kolaylaştırır. Sınama sırasında çözülmesi gereken üç ana sorun vardır:
 
-1. Gerçek senaryolar ortaya çıkabilecek benzetimi/oluşturma hataları: Service Fabric önemli yönlerini çeşitli arızalardan kurtarmak dağıtılmış uygulamalar sağlayan biridir. Ancak, uygulamanın Bu hatalardan kurtarma mümkün olduğunu test etmek için bu denetimli bir test ortamında gerçek hata benzetimi/oluşturmak için bir mekanizma ihtiyacımız var.
-1. Bağlantılı hataları oluşturabilme özelliği: Sisteminde, ağ hataları ve makine hataları gibi temel hataları ayrı ayrı oluşturmak kolaydır. Çok sayıda gerçek dünyada etkileşim bu tek hata sonucunda oluşabilir senaryoları oluşturma önemsiz değil.
-1. Birleşik deneyim çeşitli düzeyde geliştirme ve dağıtım: Çeşitli hataları yapmak için çok sayıda hata ekleme sistemler mevcuttur. Ancak, tüm bu testleri üretim için bunları kullanarak büyük test ortamlarında, aynı testleri çalıştırmak için hazır bir geliştirici senaryolarından taşırken kötü deneyimidir.
+1. Gerçek dünyada senaryolarda oluşabilecek hataların benzetimi/üretilmesi: Service Fabric önemli yönlerinden biri, Dağıtılmış uygulamaların çeşitli hatalardan kurtarılmasına olanak tanımaktır. Bununla birlikte, uygulamanın bu hatalardan kurtulabilmesini test etmek için, denetlenen bir test ortamında bu gerçek dünyada oluşan sorunları benzetim/oluşturma mekanizmasına ihtiyacımız var.
+1. Bağıntılı arızalar oluşturma özelliği: sistemdeki, ağ hatalarının ve makine hatalarının gibi temel hataların ayrı olarak üretilmesi kolaydır. Bu bireysel hataların etkileşimlerin bir sonucu olarak gerçek dünyada gerçekleşebilecek önemli sayıda senaryo oluşturma, önemsiz olmayan bir sayıdır.
+1. Çeşitli geliştirme ve dağıtım seviyeleri arasında Birleşik deneyim: farklı hata türleri gerçekleştiren çok sayıda hata ekleme sistemi vardır. Ancak, bu Deneyimlerdeki deneyim, tek kutudan oluşan geliştirici senaryolarından geçiş yaparken büyük test ortamlarında aynı testleri çalıştırmak için, bunları üretimde testler için kullanmak üzere yetersiz.
 
-Gerekli garanti ile--aynı ortamından üretim kümeleri--test etmek için tamamen hazır bir geliştirici, yapan bir sistem bu sorunları çözmek için birçok mekanizma varken eksik. Hata analizi hizmeti, uygulama geliştiricilerin kendi iş mantığının test edilmesi hakkında yoğunlaşabilirsiniz yardımcı olur. Hata analizi hizmeti temel Dağıtılmış Sistem etkileşimlerine hizmeti test etmek için gerekli tüm yetenekleri sağlar.
+Bu sorunları çözmek için çok sayıda mekanizma olsa da, bir tek Box geliştirici ortamından üretim kümelerinde test etmek için gereken tüm yollar--yok. Hata Analizi hizmeti, uygulama geliştiricilerinin iş mantığını test etmeye odaklanmasını sağlar. Hata analiz hizmeti, hizmet etkileşimini temel alınan dağıtılmış sistemle test etmek için gereken tüm özellikleri sağlar.
 
-### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Gerçek hata benzetimi/oluşturma
-Dağıtılmış bir sistemin arızalarına karşı sağlamlık test etmek için hataları oluşturmak için bir mekanizma ihtiyacımız var. Teoride karşın, bir düğüm kapalı kolay görünüyor gibi bir hata oluşturma Service Fabric çözmeye çalışırken tutarlılık sorunları aynı dizi ulaşmaktan başlar. Örneğin, bir düğüm kapatmak istiyorsanız gerekli iş akışı aşağıda verilmiştir:
+### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Gerçek dünyada hata senaryolarına benzetim/oluşturma
+Dağıtılmış bir sistemin hatalara karşı sağlamlığını test etmek için, başarısızlık oluşturmak için bir mekanizmaya ihtiyacımız var. Teorik olarak, düğüm azaltma gibi bir hata oluşturulması kolay görünse de, Service Fabric çözmeye çalıştığı aynı tutarlılık sorunları kümesine vurmaya başlar. Örnek olarak, bir düğümü kapatmak istiyoruz, gerekli iş akışı aşağıdaki gibidir:
 
-1. İstemciden bir kapatma düğüm isteği göndermektir.
-1. İstek için doğru düğümü gönderin.
+1. İstemciden bir kapalı düğüm isteği yayınlayın.
+1. İsteği sağ düğüme gönderin.
    
-    a. Düğüm bulunamadı, başarısız olması.
+    a. Düğüm bulunamazsa, başarısız olmalıdır.
    
-    b. Düğüm bulunursa, yalnızca düğümün kapatma durumunda döndürmelidir.
+    b. Düğüm bulunursa, yalnızca düğüm kapalıysa döndürmelidir.
 
-Test perspektifini hatayı doğrulamak için test korunamaması kopyaladığınızda, hatanın gerçekten gerçekleştiğinden bilmesi gerekir. Ya da olan Service Fabric sağlayan garanti düğümü geçer veya zaten çöktü komut düğümü erişildiğinde. Her iki durumda da test doğru durumunu neden ve başarılı veya doğru şekilde kendi doğrulama başarısız olması gerekir. Hata aynı yapmak için Service Fabric dışında uygulanan bir sistem, birçok ağ, donanım ve yazılım konuları, önceki garanti vermesini engeller oluşabilir. Önce belirtilen sorunları varlığında Service Fabric küme durumu sorunları çözmenin yeniden yapılandırır ve bu nedenle hata analizi hizmeti hala garanti doğru ortaklık kümesi vermek mümkün olacaktır.
+Test perspektifinden hatayı doğrulamak için, testin bu hata ortaya çıkar durumunda hatanın gerçekten meydana gelebildiğini bilmeleri gerekir. Service Fabric garantisi, düğüm bir alt düğüme ulaştığında veya zaten kapatılmış olmalıdır. Her iki durumda da test durum hakkında doğru bir neden olabilir ve başarılı veya doğrulamasında doğru bir şekilde başarısız olur. Aynı başarısızlık kümesini yapmak için Service Fabric dışında uygulanan bir sistem birçok ağ, donanım ve yazılım sorununa ulaşarak önceki garantiyi sağlamamasını önler. Daha önce belirtilen sorunların mevcut olması durumunda, Service Fabric sorunları geçici olarak çözmek için küme durumunu yeniden yapılandırır ve bu nedenle hata analiz hizmeti, doğru garanti kümesine yine de izin verebilecektir.
 
-### <a name="generating-required-events-and-scenarios"></a>Gerekli olayları ve senaryolar oluşturma
-Tutarlı bir şekilde gerçek hata benzetimi başlamak zor olsa da, ilişkili hataları oluşturmak için bile tougher yeteneğidir. Örneğin, aşağıdakiler meydana geldiğinde kalıcı bir durum bilgisi olan hizmet olarak veri kaybı olur:
+### <a name="generating-required-events-and-scenarios"></a>Gerekli olayları ve senaryoları oluşturma
+Gerçek dünyanın bir başarısızlığının sürekli olarak benzetilirken, ilişkili hatalar oluşturma özelliği bile daha da yüksek bir değer sağlar. Örneğin, aşağıdaki şeyler gerçekleştiğinde durum bilgisi olan kalıcı bir hizmette veri kaybı oluşur:
 
-1. Yalnızca bir yazma çekirdek çoğaltmaların yakalanır çoğaltma. Tüm İkincil çoğaltma birincil lag.
-1. Yazma çekirdek (nedeniyle, bir kod paketi veya gitme düğümü) giderek çoğaltmaları nedeniyle düşer.
-1. Çoğaltma verileri (disk bozulması veya makine görüntüsü yeniden oluşturuluyor nedeniyle) kayıp olduğundan yazma çekirdek geri gelmesi olamaz.
+1. Çoğaltmalarda yalnızca bir yazma çekirdeği yakalanır. Tüm ikincil çoğaltmalar, birincil arka planda gecikti.
+1. Yazma çekirdeği, kopyaların kapanması nedeniyle aşağı gider (bir kod paketi veya düğüm nedeniyle).
+1. Çoğaltma verileri kaybolduğundan (disk bozulması veya makine yeniden görüntüsü nedeniyle) yazma çekirdeği geri alınamıyor.
 
-Bu bağlantılı hataları gerçek dünyada, ancak sık olarak tek tek hatalar olarak değil, ortaya çıkar. Üretimde gerçekleşmeden bu senaryolar için test etmek için kritik önem taşır. Denetlenen durumlarda (ortasında Destesi tüm mühendisleri gün) üretim iş yükleri ile bu senaryolarının benzetimini yapın özelliği daha da önemlidir. Bu üretim saat 2: 00'da ilk kez ortaya olması çok iyidir
+Bu bağıntılı arızalar gerçek dünyada gerçekleşir, ancak tek tek hatalarda genellikle bu değildir. Bu senaryoları üretimde gerçekleşmeden önce test etme özelliği kritiktir. Daha da önemli olan bu senaryolara, denetimli koşullarda (destedeki tüm mühendislerle günün ortasında) üretim iş yükleriyle ilgili olarak benzetim yapabilme olanağıdır. Bu, 2:00 saat ' de üretim sırasında ilk kez gerçekleşenden çok daha iyidir
 
-### <a name="unified-experience-across-different-environments"></a>Farklı ortamlar genelinde birleşik bir deneyim
-Uygulama deneyimleri, bir geliştirme ortamı için testler için diğeri üretim için üç farklı kümesi oluşturmak için geleneksel olarak olmuştur. Model şöyleydi:
+### <a name="unified-experience-across-different-environments"></a>Farklı ortamlarda birleştirilmiş deneyim
+Bu yöntem, geliştirme ortamı, biri testler ve bir üretim için bir tane olmak üzere üç farklı deneyim kümesi oluşturmaktır. Model:
 
-1. Geliştirme ortamında her bir yöntem, birim testleri izin durumu geçişleri üretir.
-1. Test ortamında çeşitli hata senaryolarını alıştırma uçtan uca testleri izin hatası üretir.
-1. Üretim ortamına doğal olmayan hataları önlemek ve İnsan son derece hızlı yanıt hatası olduğundan emin olmak için pristine tutun.
+1. Geliştirme ortamında, tek tek yöntemlerin birim testlerine izin veren durum geçişleri üretin.
+1. Test ortamında, çeşitli hata senaryoları sunan uçtan uca testlere izin veren hatalar üretir.
+1. Doğal olmayan hataları önlemek ve hataya son derece hızlı insan yanıtı olduğundan emin olmak için üretim ortamını Pristine tutun.
 
-Hata analizi hizmeti aracılığıyla Service fabric'teki Biz bu geri dönüş ve geliştirici ortamından üretim için aynı yöntemi kullanmak önerdiği. Bunu yapmanın iki yolu vardır:
+Service Fabric, hata analizi hizmeti aracılığıyla bunu açıp geliştirici ortamından üretim için aynı metodolojiyi kullanmayı öneriyor. Bunu başarmanın iki yolu vardır:
 
-1. Anlamına denetimli hataları için hata analizi hizmeti API'lerinden one-box ortamı tüm üretim kümeleri için kullanın.
-1. Küme hata otomatik endüksiyon neden olan bir humması vermek için hata analizi hizmeti otomatik hataları oluşturmak için kullanın. Yapılandırma yoluyla hata oranı denetlenmesi, aynı hizmetin farklı ortamlarda farklı bir şekilde test edilmesini sağlar.
+1. Denetlenen hatalara yönelik olarak, bir tek Box ortamından, üretim kümelerine kadar olan hata analiz hizmeti API 'Lerini kullanın.
+1. Kümeye otomatik olarak sızmaya neden olan bir humması sağlamak için hata analiz hizmetini kullanarak otomatik hata oluşturun. Yapılandırma üzerinden başarısızlık oranını denetlemek, aynı hizmetin farklı ortamlarda farklı şekilde sınanmasını sağlar.
 
-Service Fabric ile hataları ölçeğini farklı ortamlarda farklı olacaktır ancak gerçek mekanizmaları aynı olacaktır. Bu çok kod dağıtım daha hızlı işlem hattı ve gerçek dünyadaki yüklerin hizmetler test etme olanağı sağlar.
+Service Fabric ile, hataların ölçeği farklı ortamlarda farklı olabilir, ancak gerçek mekanizmalar aynı olur. Bu, çok daha hızlı bir dağıtım işlem hattının ve gerçek hayatta yükleme altında hizmetleri test etmenize olanak tanır.
 
-## <a name="using-the-fault-analysis-service"></a>Hata analizi hizmeti kullanma
+## <a name="using-the-fault-analysis-service"></a>Hata analiz hizmetini kullanma
 **C#**
 
-Hata analizi hizmeti özellikler System.Fabric ad alanında Microsoft.ServiceFabric NuGet paketini alır. Hata analizi hizmeti özellikleri kullanmak için projenize bir başvuru olarak nuget paketini ekleyin.
+Hata çözümleme hizmeti özellikleri, Microsoft. ServiceFabric NuGet paketindeki System. Fabric ad alanıdır. Hata analiz hizmeti özelliklerini kullanmak için, NuGet paketini projenize bir başvuru olarak ekleyin.
 
 **PowerShell**
 
-PowerShell kullanmak için Service Fabric SDK'sını yüklemelisiniz. ServiceFabric PowerShell modülü, SDK'yı yükledikten sonra kullanabilmeniz için yüklenen otomatik olarak.
+PowerShell 'i kullanmak için Service Fabric SDK 'sını yüklemelisiniz. SDK yüklendikten sonra, kullanabilmeniz için ServiceFabric PowerShell modülü otomatik olarak yüklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Gerçek anlamda bulut ölçekli hizmetler oluşturmak için önce ve dağıtımdan sonra hizmetleri gerçek dünya hataları dayanabilir sağlamak önemlidir. Hizmetleri dünyanın hemen, hızlı bir şekilde yenilik yapın ve kod üretim için hızlı bir şekilde taşıma olanağı çok önemlidir. Hata analizi hizmeti hizmet geliştiricileri, tam olarak bunu yapmak için yardımcı olur.
+Gerçekten bulut ölçeğinde hizmetler oluşturmak için, dağıtımdan önce ve sonra, bu hizmetlerin gerçek Uluslararası hatalardan bağımsız olarak olmasını sağlamak önemlidir. Günümüzde hizmetler dünyasında hızlı bir şekilde yenilik yapın ve kodu üretime hızlı bir şekilde taşıyabilirsiniz. Hata Analizi hizmeti, Service Developers 'ın tam olarak bu işlemleri belirlemesine yardımcı olur.
 
-Uygulamalarınızı ve hizmetlerinizi yerleşik kullanarak test etmeye [test senaryolarında](service-fabric-testability-scenarios.md), ya da kendi test senaryoları kullanarak Yazar [hata eylemleri](service-fabric-testability-actions.md) hata analizi hizmeti tarafından sağlanan.
+Yerleşik [test senaryolarını](service-fabric-testability-scenarios.md)kullanarak uygulamalarınızı ve hizmetlerinizi test etmeye başlayın veya hata analizi hizmeti tarafından sunulan [hata eylemlerini](service-fabric-testability-actions.md) kullanarak kendi test senaryolarınızı yazın.
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

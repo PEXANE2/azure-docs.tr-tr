@@ -1,44 +1,44 @@
 ---
 title: Eşleme veri akışı 'nda ifade Oluşturucu
-description: Azure Data Factory veri akışlarını eşleme bölümünde ifade oluşturucuyu kullanarak ifadeler oluşturun
+description: Azure Data Factory veri akışlarını eşleme bölümünde Ifade Oluşturucu kullanarak ifadeler oluşturun
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/9/2019
-ms.openlocfilehash: 01aa2574ac6edd1ce5e1b209eac3e43bbed82fce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1dd782092ce91f7b71a3a2a6f2ed1646ee39a7e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444529"
 ---
-# <a name="building-expressions-in-mapping-data-flow"></a>Eşleme veri akışında ifadeler oluşturma
+# <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
 Eşleme veri akışı ' nda birçok dönüştürme özelliği ifadeler olarak girilir. Bu ifadeler, çalışma zamanında Spark veri türü sonucunu değerlendiren sütun değerleri, parametreler, işlevler, işleçler ve değişmez değerlerdir.
 
-## <a name="opening-the-expression-builder"></a>İfade oluşturucuyu açma
+## <a name="open-expression-builder"></a>Ifade Oluşturucuyu Aç
 
-Data Factory UX içindeki ifade düzenlemesi arabirimi **Ifade Oluşturucusu**olarak bilinir. İfade mantığınızı girerken, Data Factory, vurgulama, sözdizimi denetimi ve otomatik tamamlama için [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) kod tamamlamayı kullanır.
+Azure Data Factory kullanıcı deneyiminde ifade düzenlemesi arabirimi Ifade Oluşturucusu olarak bilinir. İfade mantığınızı girerken, Data Factory vurgulama, sözdizimi denetimi ve otomatik tamamlama için [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) kod tamamlamayı kullanır.
 
 ![İfade Oluşturucusu](media/data-flow/xpb1.png "İfade Oluşturucusu")
 
-Türetilmiş sütun ve filtre gibi dönüşümlerde, ifadelerin zorunlu olduğu durumlarda, mavi ifade kutusuna tıklayarak ifade oluşturucuyu açın.
+Türetilmiş sütun ve filtre gibi dönüşümlerde, ifadelerin zorunlu olduğu, mavi ifade kutusunu seçerek Ifade oluşturucuyu açın.
 
-![İfade Oluşturucusu](media/data-flow/expressionbox.png "İfade Oluşturucusu")
+![Mavi ifade kutusu](media/data-flow/expressionbox.png "İfade Oluşturucusu")
 
-Koşula göre eşleşen veya gruptaki sütunlara başvurulduğunda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için ' hesaplanan sütun ' seçeneğini belirleyin.
+Bir eşleşen veya gruplandırma koşulunda sütunlara başvuru yaptığınızda bir ifade, sütunlardaki değerleri ayıklayabilir. Bir ifade oluşturmak için, **hesaplanan sütun**' u seçin.
 
-![İfade Oluşturucusu](media/data-flow/computedcolumn.png "İfade Oluşturucusu")
+![Hesaplanan sütun seçeneği](media/data-flow/computedcolumn.png "İfade Oluşturucusu")
 
-Bir ifadenin veya değişmez değerin geçerli girişler olduğu durumlarda, ' dinamik içerik Ekle ' değeri, bir hazır değer değerlendiren bir ifade oluşturmanıza izin verir.
+Bir ifadenin veya değişmez değerin geçerli girişler olduğu durumlarda, değişmez değer olarak değerlendirilen bir ifade oluşturmak için **dinamik Içerik Ekle** ' yi seçin.
 
-![İfade Oluşturucusu](media/data-flow/add-dynamic-content.png "İfade Oluşturucusu")
+![Dinamik içerik Ekle seçeneği](media/data-flow/add-dynamic-content.png "İfade Oluşturucusu")
 
 ## <a name="expression-language-reference"></a>İfade dili başvurusu
 
-Veri akışları eşleme, ifadelerde kullanılabilecek yerleşik işlevlere ve işleçlere sahiptir. Kullanılabilir işlevlerin listesi, [veri akışı ifade dili başvurusunu eşleme](data-flow-expression-functions.md) sayfasında bulunur.
+Veri akışları eşleme, ifadelerde kullanılabilecek yerleşik işlevlere ve işleçlere sahiptir. Kullanılabilir işlevlerin listesi için, bkz. [eşleme veri akışındaki ifade işlevleri](data-flow-expression-functions.md).
 
 ## <a name="column-names-with-special-characters"></a>Özel karakterlerle sütun adları
 
@@ -46,19 +46,19 @@ Veri akışları eşleme, ifadelerde kullanılabilecek yerleşik işlevlere ve i
 
 ```{[dbo].this_is my complex name$$$}```
 
-## <a name="previewing-expression-results"></a>İfade sonuçlarının önizlemesi
+## <a name="preview-expression-results"></a>Önizleme ifadesi sonuçları
 
-[Hata ayıklama modu](concepts-data-flow-debug-mode.md) açık ise, ifadenizde ne kadar değerlendirdiği hakkında devam eden bir önizleme görmek için Live Spark kümesini kullanabilirsiniz. Mantığınızı oluştururken, ifadenizde gerçek zamanlı olarak hata ayıklaması yapabilirsiniz. 
+[Hata ayıklama modu](concepts-data-flow-debug-mode.md) açık ise, ifadenizde ne kadar değerlendirdiği hakkında devam eden bir önizleme görmek Için Live Spark kümesini kullanabilirsiniz. Mantığınızı oluştururken, ifadenizde gerçek zamanlı olarak hata ayıklaması yapabilirsiniz. 
 
-![İfade Oluşturucusu](media/data-flow/exp4b.png "İfade verileri önizlemesi")
+![Devam eden Önizleme](media/data-flow/exp4b.png "İfade verileri önizlemesi")
 
-Deyimizin sonuçlarını kaynağınızın canlı bir örneğine göre güncelleştirmek için Yenile düğmesine tıklayın.
+Deyimizin sonuçlarını kaynağınızın canlı bir örneğine göre güncelleştirmek için **Yenile** ' yi seçin.
 
-![İfade Oluşturucusu](media/data-flow/exp5.png "İfade verileri önizlemesi")
+![Yenile düğmesi](media/data-flow/exp5.png "İfade verileri önizlemesi")
 
 ## <a name="string-interpolation"></a>Dize ilişkilendirme
 
-Değişmez dize metnini ifadelerle birlikte tırnak içine almak için çift tırnak işareti kullanın. İfade işlevleri, sütunlar ve parametreler ekleyebilirsiniz. Dize ilişkilendirme, sorgu dizelerine parametreler dahil edildiğinde dize bitişinin kapsamlı kullanımını önlemek için yararlıdır. İfade sözdizimini kullanmak için, küme ayraçları içine alın
+Değişmez dize metnini ifadelerle birlikte kapsamak için tırnak işaretleri kullanın. İfade işlevleri, sütunlar ve parametreler ekleyebilirsiniz. Dize ilişkilendirme, parametreler sorgu dizelerine dahil edildiğinde dize bitişinin kapsamlı kullanımını önlemek için yararlıdır. İfade sözdizimini kullanmak için, küme ayraçları içine alın
 
 Dize ilişkilendirme için bazı örnekler:
 
@@ -68,13 +68,13 @@ Dize ilişkilendirme için bazı örnekler:
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
-## <a name="commenting-expressions"></a>Açıklama ifadeleri
+## <a name="comment-expressions"></a>Açıklama ifadeleri
 
-Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak ifadelerinizi açıklama ekleyin:
+Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak deyimlerinizi açıklama ekleyin.
 
-![Açıklamalar](media/data-flow/comments.png "Yorumlar")
+![Tek satırlı ve çok satırlı açıklama sözdizimi](media/data-flow/comments.png "Yorumlar")
 
-Aşağıda geçerli açıklamaların örnekleri verilmiştir:
+Aşağıdaki örnekler geçerli açıklamalardır:
 
 * ```/* This is my comment */```
 
@@ -83,52 +83,52 @@ Aşağıda geçerli açıklamaların örnekleri verilmiştir:
    
 * ```// This is a single line comment```
 
-İfadeniz üzerine bir yorum koyarsanız, dönüştürme ifadelerinizi belgelemek için dönüşüm metin kutusunda görünür:
+İfadeniz üzerine bir yorum koyarsanız, dönüştürme ifadelerinizi belgelemek için dönüşüm metin kutusunda görünür.
 
-![Açıklamalar](media/data-flow/comments2.png "Yorumlar")
+![Dönüştürme metin kutusunda açıklama](media/data-flow/comments2.png "Yorumlar")
 
 ## <a name="regular-expressions"></a>Normal ifadeler
 
-Birçok ifade dili işlevi normal ifade söz dizimini kullanır. Normal ifade işlevleri kullanılırken, Ifade Oluşturucusu ters eğik çizgiyi (\\) bir kaçış karakter sırası olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex ' ı (\`) içine alın ya da çift ters eğik çizgi kullanın.
+Birçok ifade dili işlevi normal ifade söz dizimini kullanır. Normal ifade işlevleri kullandığınızda, Ifade Oluşturucusu bir ters eğik çizgi (\\) bir kaçış karakter sırası olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex geri işaretleri (\`) içine alın veya çift ters eğik çizgi kullanın.
 
-Tick kullanarak örnek
+Geri işaretleri kullanan bir örnek:
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-veya çift eğik çizgi kullanma
+Çift eğik çizgi kullanan bir örnek:
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>Dizi dizinlerini adresleme
+## <a name="address-array-indexes"></a>Adres dizisi dizinleri
 
-Dizi döndüren ifade işlevleri ile, dönüş dizisi nesnesinin içindeki belirli dizinleri adresleyen köşeli parantezleri [] kullanın. Dizi, tabanlıdır.
+Dizileri döndüren ifade işlevleri ile, döndürülen dizi nesneleri içindeki belirli dizinleri adresleyen köşeli ayraç ([]) kullanın. Dizi, bunları temel alır.
 
 ![İfade Oluşturucu dizisi](media/data-flow/expb2.png "İfade verileri önizlemesi")
 
 ## <a name="keyboard-shortcuts"></a>Klavye kısayolları
 
-* ```Ctrl-K Ctrl-C```: tüm satır açıklamaları
-* ```Ctrl-K Ctrl-U```: Açıklama
-* ```F1```: Düzenleyici Yardım komutlarını sağlama
-* ```Alt-Down Arrow```: geçerli satırı aşağı taşı
-* ```Alt-Up Arrow```: geçerli satırı yukarı taşı
-* ```Cntrl-Space```: bağlam yardımını göster
+* CTRL + K CTRL + C: tüm satırı açıklama.
+* CTRL + K Ctrl + U: Açıklama kaldır.
+* F1: Düzenleyici Yardım komutları sağlar.
+* Alt + aşağı ok tuşu: geçerli satırı aşağı taşı.
+* Alt + yukarı ok tuşu: geçerli satırı yukarı taşı.
+* CTRL + Ara çubuğu: bağlam yardımını göster.
 
 ## <a name="convert-to-dates-or-timestamps"></a>Tarihlere veya zaman damgalarına Dönüştür
 
-Zaman damgası çıkışındaki dize sabit değerlerini dahil etmek için, ```toString()```dönüştürme kodunuzu sarmalıdır.
+Zaman damgası çıkışındaki dize sabit değerlerini dahil etmek için, ```toString()```dönüştürmeyi sarın.
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Süreyi dönem 'den bir tarih veya zaman damgasına dönüştürmek için `toTimestamp(<number of milliseconds>)`kullanın. Süre saniyeler içinde geliyorsa 1000 ile çarpın.
+Süreyi dönem 'den bir tarih veya zaman damgasına dönüştürmek için `toTimestamp(<number of milliseconds>)`kullanın. Süre saniyeler içinde geliyorsa 1.000 ile çarpın.
 
 ```toTimestamp(1574127407*1000l)```
 
-Yukarıdaki ifadenin sonundaki "l" sonunda, satır içi sözdizimi olarak uzun bir türe dönüştürme anlamına gelir.
+Önceki ifadenin sonundaki "l" ifadesi, uzun bir tür için satır içi sözdizimi olarak dönüştürmeyi belirtir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

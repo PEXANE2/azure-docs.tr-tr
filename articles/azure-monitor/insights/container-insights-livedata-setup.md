@@ -1,24 +1,14 @@
 ---
 title: Kapsayıcılar için Azure Izleyicisini ayarlama Canlı veriler (Önizleme) | Microsoft Docs
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümünü ayarlama açıklanmaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514374"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404712"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Canlı veri (Önizleme) özelliğini ayarlama
 
@@ -26,8 +16,8 @@ Azure Kubernetes Service (AKS) kümelerinden kapsayıcılar için Azure Izleyici
 
 Bu özellik günlüklere, olaylara ve ölçümlere erişimi denetlemek için üç farklı yöntemi destekler:
 
-- Kubernetes RBAC yetkilendirmesi etkin olmayan AKS
-- Kubernetes RBAC yetkilendirmesi ile AKS etkin
+- AKS etkin Kubernetes RBAC yetkilendirme olmadan
+- AKS ile Kubernetes RBAC yetkilendirme etkin
 - Azure Active Directory (AD) SAML tabanlı çoklu oturum açma ile AKS etkin
 
 Bu yönergeler, Kubernetes kümenize yönetim erişiminin yanı sıra Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanmak üzere yapılandırılıyorsa, Azure AD 'ye yönetici erişimi gerektirir.  
@@ -43,7 +33,7 @@ Bu makalede, kümeden canlı veriler (Önizleme) özelliğinin erişimini denetl
 >[!NOTE]
 >Bu özellik, Azure Çin dahil olmak üzere tüm Azure bölgelerinde kullanılabilir. Azure ABD kamu 'da Şu anda kullanılamıyor.
 
-## <a name="authentication-model"></a>Kimlik doğrulama modeli
+## <a name="authentication-model"></a>Kimlik doğrulaması modeli
 
 Canlı veriler (Önizleme) özellikleri, `kubectl` komut satırı aracıyla aynı şekilde Kubernetes API 'sini kullanır. Kubernetes API uç noktaları, tarayıcınızın doğrulayamayacak olan otomatik olarak imzalanan bir sertifika kullanır. Bu özellik, trafiğin güvenilir olduğundan emin olmak için, AKS hizmetiyle sertifikayı doğrulamak üzere bir iç proxy kullanır.
 
@@ -55,17 +45,17 @@ Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgi
 >[!IMPORTANT]
 >Bu özelliklerin kullanıcıları, `kubeconfig` indirmek ve bu özelliği kullanmak için [Azure Kubernetes küme kullanıcı rolünü](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) kümeye gerektirir. Kullanıcılar bu özelliği kullanmak için kümeye katılımcı **erişimi gerektirmez.** 
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>RBAC etkin olmayan Kubernetes kümesi
+## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes kümesi olmadan etkin RBAC
 
-Kubernetes RBAC yetkilendirmesi ile yapılandırılmayan veya Azure AD çoklu oturum açma ile tümleştirilmiş bir Kubernetes kümeniz varsa, bu adımları izlemeniz gerekmez. Bunun nedeni, RBAC olmayan bir yapılandırmada varsayılan olarak yönetici izinlerinizin olması olabilir.
+Kubernetes RBAC yetkilendirme ile yapılandırılmamışsa veya Azure AD çoklu oturum açma ile tümleşik bir Kubernetes kümesi varsa, bu adımları izlemeniz gerekmez. Bunun nedeni, RBAC olmayan bir yapılandırmada varsayılan olarak yönetici izinlerinizin olması olabilir.
 
 ## <a name="configure-kubernetes-rbac-authentication"></a>Kubernetes RBAC kimlik doğrulamasını yapılandırma
 
 Kubernetes RBAC yetkilendirmesini etkinleştirdiğinizde, iki kullanıcı kullanılır: Kubernetes API 'sine erişmek için **Clusteruser** ve **clusteradmin** . Bu, yönetici seçeneği olmadan `az aks get-credentials -n {cluster_name} -g {rg_name}` çalıştırmaya benzerdir. Bu, **Clusteruser** 'ın Kubernetes API 'sindeki bitiş noktalarına erişim verilmesi gerektiği anlamına gelir.
 
-Aşağıdaki örnek adımlarda, bu YAML yapılandırma şablonundan küme rolü bağlamasının nasıl yapılandırılacağı gösterilmektedir.
+Aşağıdaki örnek adımlarda bu yaml yapılandırma şablondan küme rolünü yapılandırmak nasıl ekleyebileceğiniz gösterilmektedir.
 
-1. YAML dosyasını kopyalayıp yapıştırın ve Logreaderrtza. YAML olarak kaydedin.  
+1. Kopyalayın ve yapıştırın yaml dosyası ve LogReaderRBAC.yaml kaydedin.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -127,7 +117,7 @@ Kubernetes 'te gelişmiş güvenlik kurulumu hakkında daha fazla bilgi için [K
 4. Yeniden yönlendirme URL 'Lerini kaydettikten sonra, **Gelişmiş ayarlar**' ın altında, Seçenekler **erişim belirteçleri** ve **Kimlik belirteçleri** ' ni seçin ve ardından değişikliklerinizi kaydedin.
 
 >[!NOTE]
->Tek oturum açma için Azure Active Directory kimlik doğrulamasını yapılandırma, yalnızca yeni bir AKS kümesinin ilk dağıtımı sırasında gerçekleştirilebilir. Zaten dağıtılmış bir AKS kümesi için çoklu oturum açma yapılandıramazsınız.
+>Tek oturum açma için Azure Active Directory kimlik doğrulamasını yapılandırma, yalnızca yeni bir AKS kümesinin ilk dağıtımı sırasında gerçekleştirilebilir. Çoklu oturum zaten dağıtılmış bir AKS kümesi için üzerinde yapılandıramazsınız.
   
 >[!IMPORTANT]
 >Güncelleştirilmiş URI 'yi kullanarak Kullanıcı kimlik doğrulaması için Azure AD 'yi yeniden yapılandırdıysanız, güncelleştirilmiş kimlik doğrulama belirtecinin indirilip uygulandığından emin olmak için tarayıcınızın önbelleğini temizleyin.

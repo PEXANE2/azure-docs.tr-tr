@@ -1,24 +1,19 @@
 ---
-title: Azure Service Fabric ağı için sık sorulan sorular | Microsoft Docs
+title: Azure Service Fabric ağı için sık sorulan sorular
 description: Azure Service Fabric ağı hakkında sık sorulan sorular ve yanıtlar hakkında bilgi edinin.
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461985"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Sık sorulan Service Fabric kafes soruları
 
-Azure Service Fabric ağı, geliştiricilerin sanal makineleri, depolamayı veya ağı yönetmeksizin mikro hizmet uygulamalarını dağıtmasını sağlayan, tam olarak yönetilen bir hizmettir. Bu makalede, sık sorulan soruların yanıtları bulunur.
+Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Bu makalede, sık sorulan soruların yanıtları bulunur.
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Nasıl yaparım? bir sorun bildirin veya soru sorun musunuz?
 
@@ -47,7 +42,7 @@ Evet. Her abonelik için kotalar şunlardır:
 
 Şu anda bir uygulamanın yaşam süresini iki güne sınırlandırdık. Bu, önizlemeye ayrılan ücretsiz çekirdekler kullanımını en üst düzeye çıkarmak için kullanılır. Sonuç olarak, belirli bir dağıtımı yalnızca 48 saat boyunca sürekli olarak çalıştırmaya izin verilir ve bu süre sonra kapatılacak.
 
-Bu durumla karşılaşırsanız, Azure CLı 'de `az mesh app show` komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. @No__t döndürdüğünden emin olun-0 
+Bu durumla karşılaşırsanız, Azure CLı 'de `az mesh app show` komutunu çalıştırarak sistemin bunu kapatmasını doğrulayabilirsiniz. `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` döndürdüğünden emin olun 
 
 Örneğin: 
 
@@ -86,7 +81,6 @@ Windows Fall Creators Update (sürüm 1709) makinesi üzerinde geliştiriyorsan�
 Windows 10 Nisan 2018 Güncelleştirmesi (sürüm 1803) makinesinde geliştiriyorsanız, Windows sürüm 1709 veya Windows sürümü 1803 Docker görüntülerini kullanabilirsiniz.
 
 Aşağıdaki kapsayıcı işletim sistemi görüntüleri hizmetleri dağıtmak için kullanılabilir:
-
 - Windows-windowsservercore ve nanoserver
     - Windows Server 1709
     - Windows Server 1803
@@ -110,7 +104,7 @@ Bir kapsayıcıdan Service Fabric DNS hizmetine giden DNS sorguları bazı koşu
 
 - Temel kapsayıcı görüntünüz olarak Windows Fall Creators Update (sürüm 1709) veya üstünü kullanın.
 - Hizmet adı tek başına işe yaramazsa, tam adı şu şekilde deneyin: ServiceName. ApplicationName.
-- Hizmetiniz için Docker dosyasında, bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu `EXPOSE <port>` ' ı ekleyin. Örneğin:
+- Hizmetiniz için Docker dosyasında, bağlantı noktasının hizmetinizi kullanıma sunuyoruz bağlantı noktası olduğu `EXPOSE <port>` ekleyin. Örneğin:
 
 ```Dockerfile
 EXPOSE 80
@@ -120,17 +114,17 @@ EXPOSE 80
 
 Hizmetleri yerel geliştirme kümenizde Azure ağı 'ndan farklı şekilde başvuru yapmanız gerekebilir.
 
-Yerel geliştirme kümenizde `{serviceName}.{applicationName}` kullanın. Azure Service Fabric ağı 'nda `{servicename}` ' ı kullanın. 
+Yerel geliştirme kümenizde `{serviceName}.{applicationName}`kullanın. Azure Service Fabric ağı 'nda `{servicename}`kullanın. 
 
 Azure ağı, şu anda uygulamalar genelinde DNS çözümlemesini desteklemez.
 
 Windows 10 ' da Service Fabric geliştirme kümesi çalıştırmaya yönelik diğer bilinen DNS sorunları için bkz. [Windows kapsayıcılarında hata ayıklama](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) ve [bilinen DNS sorunları](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Ağ oluşturma
+### <a name="networking"></a>Networking (Ağ İletişimi)
 
 Service Fabric ağ NAT, uygulamanızı yerel makinenizde çalıştırmak kullanılırken kaybolabilir. Bunun yapılıp yapılmayacağını tanılamak için komut isteminden aşağıdaki komutu çalıştırın:
 
-`docker network ls` ve `servicefabric_nat` listelenip listelenmediğini aklınızda bulunur.  Aksi takdirde, şu komutu çalıştırın: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls` ve `servicefabric_nat` listelenmiş olup olmadığını aklınızda edin.  Aksi takdirde, şu komutu çalıştırın: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
 Bu, uygulama zaten yerel olarak dağıtılmış ve sağlıksız bir durumda olsa bile sorunu ele alacak.
 
@@ -138,7 +132,7 @@ Bu, uygulama zaten yerel olarak dağıtılmış ve sağlıksız bir durumda olsa
 
 CPU kullanılabilirliği ve limitlerin tüm uygulamalarda düzeltilmesi ile karşılaşabilirsiniz. Azaltmak için:
 - Beş düğümlü bir küme oluşturun.
-- Dağıtılan uygulama genelinde hizmetlerde CPU kullanımını azaltın. Örneğin, hizmetinizin Service. YAML dosyasında `cpu: 1.0` ' ı `cpu: 0.5` olarak değiştirin
+- Dağıtılan uygulama genelinde hizmetlerde CPU kullanımını azaltın. Örneğin, hizmetinizin Service. YAML dosyasında `cpu: 1.0` değiştirin `cpu: 0.5`
 
 Birden çok uygulama tek düğümlü bir kümeye dağıtılamaz. Azaltmak için:
 - Birden çok uygulamayı yerel bir kümeye dağıttığınızda beş düğümlü bir küme kullanın.

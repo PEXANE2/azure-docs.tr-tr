@@ -2,26 +2,21 @@
 title: Sayfadaki bağlantılar uygulama proxy 'Si uygulaması için çalışmıyor
 description: Azure AD ile tümleştirmiş olduğunuz uygulama proxy 'Si uygulamalarındaki kopuk bağlantılarla ilgili sorunları giderme
 services: active-directory
-documentationcenter: ''
 author: msmimart
-manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268775d125e783b0c640e565c5f63e416cb197fd
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430237"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Sayfadaki bağlantılar uygulama proxy 'Si uygulaması için çalışmıyor
 
@@ -41,7 +36,7 @@ Bu sorunu çözmek için üç yol vardır. Aşağıdaki seçimler artan karmaş�
     İç URL 'YI değiştirir ancak kullanıcıların giriş sayfasını değiştirmek istemiyorsanız, giriş sayfası URL 'sini önceden yayımlanmış iç URL ile değiştirin. Bu işlem, "Azure Active Directory"&gt; uygulama kayıtlarına gidip&gt; uygulama&gt; markalamasını seçmek üzere yapılabilir. Marka bölümünde, istenen giriş sayfası olarak ayarlayabileceğiniz "giriş sayfası URL 'SI" alanını görürsünüz. Eski Uygulama kayıtları deneyimini kullanmaya devam ediyorsanız Özellikler sekmesinde "giriş sayfası URL 'SI" ayrıntıları gösterilir. 
     
     > [!IMPORTANT]
-    > Yukarıdaki değişiklikleri yapmak için Azure AD 'de uygulama nesnelerini değiştirme haklarınızın olması gerekir. Kullanıcıya Azure AD 'de uygulama modificaion hakları veren "[Uygulama Yöneticisi](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/roles-delegate-app-roles#assign-built-in-application-admin-roles)" rolü atanması gerekir. 
+    > Yukarıdaki değişiklikleri yapmak için Azure AD 'de uygulama nesnelerini değiştirme haklarınızın olması gerekir. Kullanıcıya, Kullanıcı için Azure AD 'de uygulama modificaion hakları veren [Uygulama Yöneticisi](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) rolü atanması gerekir.
     >
 
 2.  Uygulamalarınız tam etki alanı adları (FQDN) kullanıyorsa, uygulamalarınızı yayımlamak için [özel etki alanlarını](application-proxy-configure-custom-domain.md) kullanın. Bu özellik hem dahili hem de harici olarak aynı URL 'nin kullanılmasına izin verir.

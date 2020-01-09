@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457114"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
@@ -31,7 +31,7 @@ Azure IoT Hub, işlevselliğini çeşitli aktörliklere sunan çok kiracılı bi
 
 Aşağıdaki listede uç noktalar açıklanmaktadır:
 
-* **Kaynak sağlayıcısı**. IoT Hub kaynak sağlayıcısı [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) arabirimini kullanıma sunar. Bu arabirim, Azure aboneliği sahiplerinin IoT Hub 'ları oluşturmasına ve silmesine ve IoT Hub özelliklerini güncelleştirmesine olanak sağlar. IoT Hub özellikler, cihaz düzeyi erişim denetimi ve buluttan cihaza ve cihazdan buluta mesajlaşma için işlevsel seçeneklere karşılık olarak [hub düzeyi güvenlik ilkelerini](iot-hub-devguide-security.md#access-control-and-permissions)yönetir. IoT Hub kaynak sağlayıcısı, [cihaz kimliklerini dışarı aktarmaya](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)de olanak sağlar.
+* **Kaynak sağlayıcısı**. IoT Hub kaynak sağlayıcısı [Azure Resource Manager](../azure-resource-manager/management/overview.md) arabirimini kullanıma sunar. Bu arabirim, Azure aboneliği sahiplerinin IoT Hub 'ları oluşturmasına ve silmesine ve IoT Hub özelliklerini güncelleştirmesine olanak sağlar. IoT Hub özellikler, cihaz düzeyi erişim denetimi ve buluttan cihaza ve cihazdan buluta mesajlaşma için işlevsel seçeneklere karşılık olarak [hub düzeyi güvenlik ilkelerini](iot-hub-devguide-security.md#access-control-and-permissions)yönetir. IoT Hub kaynak sağlayıcısı, [cihaz kimliklerini dışarı aktarmaya](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)de olanak sağlar.
 
 * **Cihaz kimliği yönetimi**. Her IoT Hub 'ı, cihaz kimliklerini yönetmek için bir HTTPS REST uç noktası kümesi sunar (oluşturma, alma, güncelleştirme ve silme). Cihaz [kimlikleri](iot-hub-devguide-identity-registry.md) , cihaz kimlik doğrulaması ve erişim denetimi için kullanılır.
 
@@ -39,7 +39,7 @@ Aşağıdaki listede uç noktalar açıklanmaktadır:
 
 * **İş yönetimi**. Her IoT Hub 'ı, [işleri](iot-hub-devguide-jobs.md)sorgulamak ve yönetmek için hizmete YÖNELIK BIR https REST uç noktası kümesi sunar.
 
-* **Cihaz uç noktaları**. Kimlik kayıt defterindeki her bir cihaz için IoT Hub bir uç nokta kümesi kullanıma sunar:
+* **Cihaz uç noktaları**. IoT Hub, kimlik kayıt defterindeki her bir cihaz için belirli uç noktaları kullanıma sunar:
 
   * *Cihazdan buluta Iletiler gönderme*. Cihaz, [cihazdan buluta iletileri göndermek](iot-hub-devguide-messages-d2c.md)için bu uç noktayı kullanır.
 
@@ -75,16 +75,16 @@ Tüm IoT Hub uç noktaları [TLS](https://tools.ietf.org/html/rfc5246) protokol�
 
 IoT Hub Şu anda ek uç noktalar olarak aşağıdaki Azure hizmetlerini desteklemektedir:
 
-* Azure Depolama kapsayıcıları
+* Azure depolama kapsayıcıları
 * Event Hubs
-* Service Bus Kuyrukları
-* Service Bus Konuları
+* Hizmet Veri Yolu Sıraları
+* Hizmet Veri Yolu Konuları
 
 Ekleyebileceğiniz uç nokta sayısıyla ilgili sınırlar için bkz. [Kotalar ve azaltma](iot-hub-devguide-quotas-throttling.md).
 
 Uç noktaların sistem durumunu almak için [uç nokta durumu al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanabilirsiniz. Uç nokta bu durumlardan birinde olduğunda gecikme süresinin daha yüksek olması Beklendiğimiz için, uç nokta durumu ölü veya sağlıksız olduğunda hataları tanımlamak ve hatalarını ayıklamak için ileti gecikmesini yönlendirme ile ilgili [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanmanızı öneririz.
 
-|Sağlık Durumu|Açıklama|
+|Sistem Durumu|Açıklama|
 |---|---|
 |healthy|Uç nokta iletileri beklendiği gibi kabul ediyor.|
 |sağlıksız|Uç nokta iletileri beklendiği gibi kabul etmiyor ve IoT Hub bu uç noktaya veri gönderilmeye yeniden deniyor. Sağlıklı olmayan bir uç noktanın durumu, IoT Hub sonunda tutarlı bir sistem durumu oluşturulduğunda sağlıklı olarak güncelleştirilecektir.|

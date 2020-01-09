@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435658"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama
 
@@ -38,7 +38,7 @@ Tek bir sanal ağ için HBase çoğaltma kullanım durumları aşağıda verilmi
 
 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication)'dan [betik eylemi](../hdinsight-hadoop-customize-cluster-linux.md) betikleri kullanarak kümeleri çoğaltabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaleye başlamadan önce bir Azure aboneliğinizin olması gerekir. Bkz. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="set-up-the-environments"></a>Ortamları ayarlama
@@ -51,7 +51,7 @@ Bu makaleye başlamadan önce bir Azure aboneliğinizin olması gerekir. Bkz. [A
 
 Bu makale, coğrafi çoğaltma senaryosunu ele alır.
 
-Ortamları ayarlamanıza yardımcı olması için bazı [Azure Resource Manager şablonları](../../azure-resource-manager/resource-group-overview.md)oluşturduk. Ortamları diğer yöntemleri kullanarak ayarlamayı tercih ediyorsanız, bkz:
+Ortamları ayarlamanıza yardımcı olması için bazı [Azure Resource Manager şablonları](../../azure-resource-manager/management/overview.md)oluşturduk. Ortamları diğer yöntemleri kullanarak ayarlamayı tercih ediyorsanız, bkz:
 
 - [HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Azure sanal ağı 'nda Apache HBase kümeleri oluşturma](apache-hbase-provision-vnet.md)
@@ -303,11 +303,11 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
       >
       > Bu izlenecek yol, hn1 etkin bir yayın düğümü olarak kabul edilir. Etkin baş düğümünü belirlemek için lütfen kümenizi denetleyin.
 
-6. **Oluştur**'u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
+6. **Oluştur**’u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
 
 Gerekli bağımsız değişkenler:
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |----|-----------|
 |-s,--src-Cluster | Kaynak HBase kümesinin DNS adını belirtir. Örneğin:-s hbsrccluster,--src-Cluster = hbsrccluster |
 |-d,--DST-Cluster | Hedef (çoğaltma) HBase kümesinin DNS adını belirtir. Örneğin:-s dsthbcluster,--src-Cluster = dsthbcluster |
@@ -316,7 +316,7 @@ Gerekli bağımsız değişkenler:
 
 İsteğe bağlı bağımsız değişkenler:
 
-|Adı|Açıklama|
+|Ad|Açıklama|
 |----|-----------|
 |-su,--src-ambarı-Kullanıcı | Kaynak HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
 |-du,--DST-ambarı-Kullanıcı | Hedef HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
@@ -392,7 +392,7 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 - **Tüm tablolardaki çoğaltmayı devre dışı bırak**:
 
         -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
-  or
+  veya
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 

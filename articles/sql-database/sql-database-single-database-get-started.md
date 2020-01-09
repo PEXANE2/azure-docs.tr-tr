@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443848"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Hızlı başlangıç: Azure portal, PowerShell ve Azure CLı kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
 
@@ -33,7 +33,7 @@ Sağlanan veya sunucusuz işlem katmanında tek bir veritabanı oluşturulabilir
 - Sağlanan işlem katmanındaki tek bir veritabanı, iki [satın alma modelinden](sql-database-purchase-models.md)bırını kullanarak CPU ve bellek dahil olmak üzere sabit bir işlem kaynakları miktarı önceden ayrıldı.
 - Sunucusuz işlem katmanındaki tek bir veritabanı, otomatik olarak ölçeklenen ve yalnızca [sanal çekirdek tabanlı satın alma modellerinde](sql-database-service-tiers-vcore.md)bulunan CPU ve bellek dahil olmak üzere bir dizi işlem kaynağına sahiptir.
 
-Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [SQL veritabanı sunucusu](sql-database-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubuna](../azure-resource-manager/resource-group-overview.md) yerleştirebilirsiniz.
+Tek bir veritabanı oluşturduğunuzda, bunu yönetmek için bir [SQL veritabanı sunucusu](sql-database-servers.md) tanımlar ve belirli bir bölgedeki [Azure Kaynak grubuna](../azure-resource-manager/management/overview.md) yerleştirebilirsiniz.
 
 > [!NOTE]
 > Bu hızlı başlangıç, [sanal çekirdek tabanlı satın alma modelini](sql-database-service-tiers-vcore.md)kullanır, ancak [DTU tabanlı satın alma modeli](sql-database-service-tiers-DTU.md) de kullanılabilir.

@@ -1,5 +1,5 @@
 ---
-title: Python için Microsoft kimlik doğrulama kitaplığı 'nda Azure AD FS desteği
+title: Azure AD FS desteği (MSAL Python)
 titleSuffix: Microsoft identity platform
 description: Python için Microsoft kimlik doğrulama kitaplığı 'nda Active Directory Federasyon Hizmetleri (AD FS) (AD FS) desteği hakkında bilgi edinin
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d83148f6bfff038f7310ff6fa1f3e1f5a4f8f066
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9a5cbc64883dca66809cfa06dc28a312ce9fedd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424142"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Python için MSAL Active Directory Federasyon Hizmetleri (AD FS) desteği
 

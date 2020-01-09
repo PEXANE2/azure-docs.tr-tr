@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425737"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway için OpenVPN istemcileri yapılandırma
 
@@ -63,7 +63,7 @@ VPN ağ geçidiniz için OpenVPN yapılandırma adımlarını tamamladığınız
 
 1. [Tunnelblick](https://tunnelblick.net/downloads.html)gibi bir OpenVPN istemcisini indirip yükleyin. 
 2. Ağ geçidinin VPN profilini indirin. Bu, Azure portal Noktadan siteye Yapılandırma sekmesinden veya PowerShell 'de ' New-AzVpnClientConfiguration ' kullanılarak yapılabilir.
-3. Profilin sıkıştırmasını açın. Vpnconfig. ovpn yapılandırma dosyasını Not defteri 'nde OpenVPN klasöründen açın.
+3. Profilin sıkıştırmasını açın. Bir metin düzenleyicisinde OpenVPN klasöründen vpnconfig. ovpn yapılandırma dosyasını açın.
 4. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEM biçimli bir sertifikada .cer dosyasını açıp base64 anahtarını sertifika üst bilgileri arasına kopyalamanız yeterlidir. Kodlanmış ortak anahtarı almak için bir sertifikanın nasıl dışarı aktarılacağı hakkında bilgi için bkz. [ortak anahtarı dışarı aktarma](vpn-gateway-certificates-point-to-site.md#cer) .
 5. Özel anahtar bölümünü, base64’teki P2S istemci sertifikası özel anahtarı ile doldurun. Özel bir anahtarı ayıklama hakkında bilgi için bkz. [özel anahtarınızı dışarı aktarma](https://openvpn.net/community-resources/how-to/#pki) .
 6. Başka bir alanı değiştirmeyin. VPN’e bağlanmak için istemci girişinde doldurulmuş yapılandırmayı kullanın.
@@ -74,6 +74,39 @@ VPN ağ geçidiniz için OpenVPN yapılandırma adımlarını tamamladığınız
 > [!IMPORTANT]
 >OpenVPN protokolünde yalnızca iOS 11,0 ve üzeri ve MacOS 10,13 ve üzeri desteklenir.
 >
+## <a name="iOS"></a>iOS istemcileri
+
+1. App Store 'dan OpenVPN istemcisini (sürüm 2,4 veya üzeri) yükler.
+2. Ağ geçidinin VPN profilini indirin. Bu, Azure portal Noktadan siteye Yapılandırma sekmesinden veya PowerShell 'de ' New-AzVpnClientConfiguration ' kullanılarak yapılabilir.
+3. Profilin sıkıştırmasını açın. Bir metin düzenleyicisinde OpenVPN klasöründen vpnconfig. ovpn yapılandırma dosyasını açın.
+4. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEM biçimli bir sertifikada .cer dosyasını açıp base64 anahtarını sertifika üst bilgileri arasına kopyalamanız yeterlidir. Kodlanmış ortak anahtarı almak için bir sertifikanın nasıl dışarı aktarılacağı hakkında bilgi için bkz. [ortak anahtarı dışarı aktarma](vpn-gateway-certificates-point-to-site.md#cer) .
+5. Özel anahtar bölümünü, base64’teki P2S istemci sertifikası özel anahtarı ile doldurun. Özel bir anahtarı ayıklama hakkında bilgi için bkz. [özel anahtarınızı dışarı aktarma](https://openvpn.net/community-resources/how-to/#pki) .
+6. Başka bir alanı değiştirmeyin.
+7. İPhone 'inizdeki posta uygulamasında yapılandırılmış olan e-posta hesabınıza profil dosyasını (. ovpn) e-posta ile gönderin. 
+8. İPhone 'daki posta uygulamasında e-postayı açın ve ekli dosyaya dokunun
+
+    ![E-postayı aç](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. **OpenVPN 'e Kopyala** seçeneğini görmüyorsanız, **daha fazla** öğesine dokunun
+
+    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. **OpenVPN 'e Kopyala** seçeneğine dokunun 
+
+    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. **Profili Içeri aktar** sayfasında **Ekle** ' ye dokunun
+
+    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. **Içeri aktarılan profil** sayfasında **Ekle** ' ye dokunun
+
+    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. OpenVPN uygulamasını başlatın ve anahtarı bağlamak için **profil** sayfasına sağ kaydırın
+
+    ![Bağlayın](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Linux istemcileri
 

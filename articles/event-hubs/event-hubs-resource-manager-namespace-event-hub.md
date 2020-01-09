@@ -14,20 +14,20 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: b262f5f4122256a55c005002c4323205a5b564f0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: faff7800ea4436d58ed72e8179c7845a6d8f65a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437125"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak bir olay hub 'ı oluşturma
 
-Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
+Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
 
-Bu hızlı başlangıçta, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir olay hub 'ı oluşturursunuz. Bir Azure Resource Manager şablonunu, bir olay hub 'ı ile [Event Hubs](event-hubs-what-is-event-hubs.md)türünde bir ad alanı oluşturmak üzere dağıtırsınız. Makalede hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağı gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma][Authoring Azure Resource Manager templates]. Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. EventHub kaynak türleri](/azure/templates/microsoft.eventhub/allversions).
+Bu hızlı başlangıçta, bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md)kullanarak bir olay hub 'ı oluşturursunuz. Bir Azure Resource Manager şablonunu, bir olay hub 'ı ile [Event Hubs](event-hubs-what-is-event-hubs.md)türünde bir ad alanı oluşturmak üzere dağıtırsınız. Makalede nasıl tanımlamak için hangi kaynaklara dağıtılır ve parametrelerin nasıl dağıtıldığının ve dağıtım yürütülürken belirtilen gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma][Authoring Azure Resource Manager templates]. Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. EventHub kaynak türleri](/azure/templates/microsoft.eventhub/allversions).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
@@ -55,7 +55,7 @@ Daha fazla şablon örneği bulmak için bkz. [Azure hızlı başlangıç şablo
 
    Bir olay hub 'ı oluşturmak birkaç dakika sürer.
 
-1. PowerShell betiğini kopyalamak için **Kopyala** ' yı seçin.
+1. Seçin **kopyalama** PowerShell betiğini kopyalanacak.
 1. Kabuk konsoluna sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
@@ -103,7 +103,7 @@ Bu makalede bir Event Hubs ad alanı ve ad alanında bir olay hub 'ı oluşturdu
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png
 [5]: ./media/event-hubs-quickstart-powershell/metrics.png
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md

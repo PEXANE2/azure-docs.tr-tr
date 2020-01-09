@@ -1,18 +1,18 @@
 ---
-title: Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar) | Microsoft Docs
-description: Application Insights ile .NET Core/. NET Framework olmayan HTTP uygulamalarını izleme.
+title: Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
+description: Azure Izleyici Application Insights .NET Core/. NET Framework HTTP olmayan uygulamaları izleme.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/15/2019
-ms.openlocfilehash: 386c171e4785fac2c7fa6da39f249e211f4c660c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/16/2019
+ms.openlocfilehash: bea30ade6d9f6eb77d18c671b824b138ba94fddb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406182"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
@@ -24,7 +24,7 @@ Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependen
 
 [Çalışan hizmeti için APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , her ne kadar veya nasıl çalıştırıldıklarından BAĞıMSıZ olarak http olmayan uygulamalar için idealdir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Bu paket, yeni sunulan [.NET Core 3,0 Worker hizmetinde](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [ASP.NET Core 2.1/2.2 'de arka plan görevlerinde](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), konsol uygulamalarında (.NET Core/.NET Framework) vb. kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
 
@@ -35,7 +35,7 @@ Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insi
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.2" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.12.0" />
     </ItemGroup>
 ```
 
@@ -251,7 +251,8 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
                 IServiceCollection services = new ServiceCollection();
 
                 // Being a regular console app, there is no appsettings.json or configuration providers enabled by default.
-                // Hence instrumentation key must be specified here.
+                // Hence instrumentation key and any changes to default logging level must be specified here.
+                services.AddLogging(loggingBuilder => loggingBuilder.AddFilter<Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider>("Category", LogLevel.Information));
                 services.AddApplicationInsightsTelemetryWorkerService("instrumentationkeyhere");
 
                 // Build ServiceProvider.

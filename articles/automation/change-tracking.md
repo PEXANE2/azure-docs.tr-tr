@@ -2,20 +2,16 @@
 title: Azure Otomasyonu ile değişiklikleri izleme
 description: Değişiklik İzleme çözümü, ortamınızda gerçekleşen yazılım ve Windows hizmeti değişikliklerini belirlemenize yardımcı olur.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418741"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin
 
@@ -100,7 +96,7 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 |Etkin     | Ayarın uygulandığını belirler.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu Gir     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
+|Yolu girin     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
 |Yol Türü     | İzlenecek öğenin türü, olası değerler dosya ve dizindir.        |
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
@@ -123,7 +119,7 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
 |Etkin     | Ayarın uygulandığını belirler.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu Gir     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
+|Yolu girin     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **False**.|
 

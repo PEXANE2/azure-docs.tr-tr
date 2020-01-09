@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367901"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "74664072"
 
 [Özel ilkeler](active-directory-b2c-overview-custom.md) , Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. Bu makalede, bir e-posta adresi ve parola kullanarak yerel hesap kaydolma veya oturum açma 'yı destekleyen özel bir ilke oluşturacaksınız. Ayrıca, ortamınızı kimlik sağlayıcıları eklemek için hazırlarsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Henüz bir tane yoksa, Azure aboneliğinize bağlı [bir Azure AD B2C kiracı oluşturun](tutorial-create-tenant.md) .
 - [Uygulamanızı](tutorial-register-applications.md) , Azure AD B2C ile iletişim kurabilmesi için oluşturduğunuz kiracıya kaydedin.
@@ -31,10 +31,10 @@ ms.locfileid: "74664072"
 
 ## <a name="add-signing-and-encryption-keys"></a>İmzalama ve şifreleme anahtarları Ekle
 
-1. [Azure portalda](https://portal.azure.com) oturum açma
-1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. Genel Bakış sayfasında, **ilkeler** bölmesinden **kimlik deneyimi çerçevesi** ' ni seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. Genel Bakış sayfasında, **ilkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
 
 ### <a name="create-the-signing-key"></a>İmzalama anahtarını oluşturma
 
@@ -43,7 +43,7 @@ ms.locfileid: "74664072"
 1. **Ad**alanına `TokenSigningKeyContainer`girin. Ön ek `B2C_1A_` otomatik olarak eklenebilir.
 1. **Anahtar türü**için **RSA**' yı seçin.
 1. **Anahtar kullanımı**için **imza**' yı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="create-the-encryption-key"></a>Şifreleme anahtarı oluşturma
 
@@ -52,7 +52,7 @@ ms.locfileid: "74664072"
 1. **Ad**alanına `TokenEncryptionKeyContainer`girin. `B2C_1A`_ ön eki otomatik olarak eklenebilir.
 1. **Anahtar türü**için **RSA**' yı seçin.
 1. **Anahtar kullanımı**için **şifreleme**' yi seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="create-the-facebook-key"></a>Facebook anahtarını oluşturma
 
@@ -63,7 +63,7 @@ Facebook uygulamanızın [uygulama gizli](active-directory-b2c-setup-fb-app.md) 
 1. **Ad**için `FacebookSecret`girin. Ön ek `B2C_1A_` otomatik olarak eklenebilir.
 1. **Gizli**dizi bölümünde Facebook uygulamanızın *uygulama gizli* anahtarını Developers.facebook.com adresinden girin. Bu değer, uygulama KIMLIĞI değil gizli dizi.
 1. **Anahtar kullanımı**için **imza**' yı seçin.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="register-identity-experience-framework-applications"></a>Kimlik deneyimi çerçevesi uygulamalarını kaydetme
 
@@ -77,15 +77,14 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için, geçerli **uygulamala
 
 #### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
 
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin.
-1. Arama kutusuna `Azure Active Directory` yazın.
-1. Arama sonuçlarında **Azure Active Directory** ' yi seçin.
-1. Sol taraftaki menüde **Yönet** ' in altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
+1. **Azure Active Directory** genel bakış menüsünde, **Yönet**altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
 1. **Yeni uygulama kaydı**’nı seçin.
 1. **Ad**için `IdentityExperienceFramework`girin.
 1. **Uygulama türü**için **Web uygulaması/API**' yi seçin.
 1. **Oturum açma URL 'si**için `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`girin; burada `your-tenant-name` Azure AD B2C kiracı etki alanı adıdır. Tüm URL 'Ler artık [b2clogin.com](b2clogin.md)kullanıyor olmalıdır.
-1. **Oluştur**'u seçin. Oluşturulduktan sonra uygulama KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere kaydedin.
+1. **Oluştur**’u seçin. Oluşturulduktan sonra uygulama KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere kaydedin.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
@@ -117,7 +116,7 @@ Ardından, bir kapsam ekleyerek API 'YI kullanıma sunun:
 1. **Ad**için `ProxyIdentityExperienceFramework`girin.
 1. **Uygulama türü**için **Yerel**' i seçin.
 1. **Yeniden yönlendirme URI 'si**için, `your-tenant-name` Azure AD B2C kiracınız `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`girin.
-1. **Oluştur**'u seçin. Oluşturulduktan sonra uygulama KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere kaydedin.
+1. **Oluştur**’u seçin. Oluşturulduktan sonra uygulama KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere kaydedin.
 1. **Ayarlar**' ı ve ardından **gerekli izinler**' i seçin ve ardından **Ekle**' yi seçin.
 1. **BIR API seçin**' i seçin, **IdentityExperienceFramework**' yi arayıp seçin ve ardından **Seç**' e tıklayın.
 1. **Erişim IdentityExperienceFramework**' nın yanındaki onay kutusunu Işaretleyin, **Seç**' e ve ardından **bitti**' ye tıklayın.

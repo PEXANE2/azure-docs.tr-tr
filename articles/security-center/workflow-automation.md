@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462449"
 ---
 # <a name="workflow-automation-preview"></a>Workflow Otomasyonu (Önizleme)
 
@@ -87,6 +87,9 @@ Mantıksal uygulamayı el ile çalıştırmak için bir öneri açın ve mantık
 
 [Mantıksal uygulama ![El Ile tetikleyin](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>Veri türleri şemaları
+
+Mantıksal uygulama örneğine geçirilen güvenlik uyarıları veya öneriler olaylarının Ham olay şemalarını görüntülemek için, [Iş akışı Otomasyonu veri türleri şemalarını](https://aka.ms/ASCAutomationSchemas)ziyaret edin. Bu, yukarıda bahsedilen güvenlik merkezi 'nin yerleşik Logic Apps bağlayıcılarını kullanmadığınız, ancak mantıksal uygulamanın genel HTTP bağlayıcısını kullanan durumlarda yararlı olabilir-olay JSON şemasını, uygun gördüğünüz şekilde el ile ayrıştırmanız için kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -98,3 +101,4 @@ Diğer ilgili malzemeler için aşağıdaki makalelere bakın:
 - [Azure Güvenlik Merkezi'ndeki güvenlik uyarıları](security-center-alerts-overview.md)
 - [Azure Logic Apps hakkında](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logic Apps bağlayıcıları](https://docs.microsoft.com/connectors/)
+- [İş akışı Otomasyonu veri türleri şemaları](https://aka.ms/ASCAutomationSchemas)

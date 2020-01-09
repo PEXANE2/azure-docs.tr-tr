@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 36bd05940644b62bc3e58b642bfe6c00238383fa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7113fd7f17fd7695e25489931d7a6cbf35e334ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442812"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes hizmeti (AKS) kümesini yükseltme
 
@@ -26,6 +26,7 @@ Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız
 
 > [!WARNING]
 > AKS kümesi yükseltmesi, düğümlerinizin bir eş ve drenajı tetikler. Kullanılabilir düşük bir işlem kotası varsa, yükseltme başarısız olabilir.  Daha fazla bilgi için bkz. [kotaları artırma](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) .
+> Kendi küme otomatik dağıtımınızı çalıştırıyorsanız, yükseltme sırasında yükseltme işlemini kesintiye uğratabileceği için, yükseltme sırasında bunu devre dışı bırakın (sıfır çoğaltmalara ölçeklendirebilirsiniz). Managed otomatik Scaler bunu otomatik olarak işler. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Kullanılabilir AKS kümesi yükseltmelerini denetle
 

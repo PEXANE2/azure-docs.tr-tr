@@ -1,25 +1,18 @@
 ---
-title: Service Fabric Azure Resource Manager dağıtım guardrayları | Microsoft Docs
+title: Service Fabric Azure Resource Manager dağıtım guardrayları
 description: Bu makalede, Azure Resource Manager aracılığıyla Service Fabric kümesi dağıtımında yapılan yaygın hatalara ve bunların nasıl önleneceğini gösteren bir genel bakış sunulmaktadır.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426730"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrayları 
 Bir Service Fabric kümesi dağıtımında, guardrayları yerinde konur, bu da geçersiz bir küme yapılandırması durumunda Azure Resource Manager dağıtımı başarısız olur. Aşağıdaki bölümler, yaygın küme yapılandırma sorunlarına ve bu sorunları azaltmak için gereken adımlara genel bir bakış sağlar. 

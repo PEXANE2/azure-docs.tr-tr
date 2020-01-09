@@ -14,16 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b97d9563f0bddcc2b3bf82807f41af68f3abbff1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 819aeb225c4f55f803a5fad19eff33bd1748bf46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368938"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terrayform ile Azure 'da tamamen bir Linux sanal makine altyapısı oluşturma
 
 Terrayform, Azure 'da tüm altyapı dağıtımlarını tanımlamanızı ve oluşturmanızı sağlar. Azure kaynaklarını tutarlı, tekrarlanabilir bir şekilde oluşturup yapılandıran, Kullanıcı tarafından okunabilen bir biçimde Terrayform şablonları oluşturursunuz. Bu makalede, tüm Linux ortamının nasıl oluşturulduğu ve Terrayform ile destekleyici kaynakların nasıl oluşturulduğu gösterilir. Ayrıca, [Terrayform 'U yüklemeyi ve yapılandırmayı](terraform-install-configure.md)da öğrenebilirsiniz.
+
+> [!NOTE]
+> Terkform 'a özgü destek için lütfen Topluluk kanallarından birini kullanarak doğrudan Terkform 'a ulaşın:
+>
+>   • Topluluk portalının [Terkform bölümü](https://discuss.hashicorp.com/c/terraform-core) , sorular, kullanım örnekleri ve yararlı desenler içerir.
+>
+>   • Sağlayıcıyla ilgili sorular için lütfen Topluluk portalının [Terkform sağlayıcıları](https://discuss.hashicorp.com/c/terraform-providers) bölümünü ziyaret edin.
 
 
 ## <a name="create-azure-connection-and-resource-group"></a>Azure bağlantısı ve kaynak grubu oluşturma

@@ -2,30 +2,23 @@
 title: Azure Işlevleri ile Azure Uygulama yapılandırması için hızlı başlangıç | Microsoft Docs
 description: Azure Işlevleri ile Azure Uygulama yapılandırması 'nı kullanmaya yönelik hızlı başlangıç.
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 12/17/2019
 ms.author: yegu
-ms.openlocfilehash: 6329cf0e74bbcf57164afeab5b04e2af4ee43943
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413774"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevleri uygulamasına, tüm uygulama ayarlarınızı kodınızdan ayrı olarak depolamayı ve yönetimini merkezileştirmek için kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -37,7 +30,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma gezgini** >  **+ Oluştur** ' u seçin:
 
-    | Anahtar | Value |
+    | Anahtar | Değer |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından veriler |
 
@@ -61,7 +54,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
-3. `IConfiguration`tek bir örneğini oluşturmak için `Configuration` `static` özelliği ekleyin. Sonra, `AddAzureAppConfiguration()`çağırarak uygulama yapılandırmasına bağlanmak için bir `static` Oluşturucu ekleyin. Bu, uygulama başlangıcında yapılandırmayı bir kez yükler. Aynı yapılandırma örneği, daha sonra yapılan çağrılar için de kullanılır.
+3. `IConfiguration`tek bir örneğini oluşturmak için `Configuration` adında bir `static` özelliği ekleyin. Sonra, `AddAzureAppConfiguration()`çağırarak uygulama yapılandırmasına bağlanmak için bir `static` Oluşturucu ekleyin. Bu, uygulama başlangıcında yapılandırmayı bir kez yükler. Aynı yapılandırma örneği, daha sonra yapılan çağrılar için de kullanılır.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -94,17 +87,19 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
+    ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
-
+    ```
     Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
+    ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-
+    ```
     MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. İşlevinizi test etmek için F5’e basın. İstenirse, **Azure Functions Core (CLI)** araçlarını indirmek ve yüklemek Için Visual Studio 'daki isteği kabul edin. Ayrıca, araçların HTTP isteklerini işleyebilmesi için bir güvenlik duvarı özel durumu etkinleştirmeniz gerekebilir.
+2. İşlevinizi test etmek için F5 tuşuna basın. İstenirse, **Azure Functions Core (CLI)** araçlarını indirmek ve yüklemek Için Visual Studio 'daki isteği kabul edin. Ayrıca, araçların HTTP isteklerini işleyebilmesi için bir güvenlik duvarı özel durumu etkinleştirmeniz gerekebilir.
 
 3. Azure İşlevleri çalışma zamanı çıktısından işlevinizin URL'sini kopyalayın.
 

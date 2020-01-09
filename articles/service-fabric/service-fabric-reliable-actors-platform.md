@@ -1,76 +1,67 @@
 ---
-title: Service Fabric üzerinde Reliable Actors | Microsoft Docs
-description: Reliable Actors Reliable Services üzerinde katmanlanmış ve Service Fabric platform özellikleriyle nasıl açıklanmaktadır.
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric üzerinde Reliable Actors hizmeti
+description: Reliable Actors Reliable Services nasıl katmanlanmakta olduğunu ve Service Fabric platformunun özelliklerinin nasıl kullanıldığını açıklar.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: bc7569c9f230abb7677a8df9fc0cc0268e57296f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349239"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors hizmeti tarafından Service Fabric platformunun kullanımı
-Bu makalede, Reliable Actors Azure Service Fabric platformunda nasıl çalıştığı açıklanmaktadır. Reliable Actors hizmetini durum bilgisi olan güvenilir hizmet uygulaması içinde barındırılan bir çerçeve çalıştırmak adlı *actor hizmetinin*. Actor hizmetinin yaşam döngüsü ve ileti gönderme, aktörler için yönetmek gerekli tüm bileşenleri içerir:
+Bu makalede Reliable Actors Azure Service Fabric platformunda nasıl çalıştığı açıklanmaktadır. Reliable Actors, *aktör hizmeti*olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin uygulamasında barındırılan bir çerçevede çalışır. Aktör hizmeti, Aktörlerinizin yaşam döngüsünü ve ileti dağıtımını yönetmek için gerekli tüm bileşenleri içerir:
 
-* Actor çalışma zamanına yaşam döngüsü, çöp toplama, yönetir ve tek iş parçacıklı erişimini zorunlu kılar.
-* Bir aktör hizmeti uzaktan iletişim dinleyicisi aktörler için uzaktan erişim çağrılarını kabul eder ve bunları uygun aktör örneğine yönlendirmek için bir dağıtıcı gönderir.
-* Aktör durumu sağlayıcısı (örneğin, güvenilir koleksiyonlar durumu sağlayıcısı) durum sağlayıcılarının sarmalar ve aktör durumu yönetimi için bir bağdaştırıcı sağlar.
+* Aktör çalışma zamanı yaşam döngüsünü ve çöp toplamayı yönetir ve tek iş parçacıklı erişim uygular.
+* Aktör hizmeti uzaktan iletişim dinleyicisi, aktöre yönelik uzaktan erişim çağrılarını kabul eder ve uygun aktör örneğine yönlendirmek üzere bunları bir dağıtıcıya gönderir.
+* Aktör durumu sağlayıcısı durum sağlayıcılarını (güvenilir koleksiyonlar durum sağlayıcısı gibi) sarmalayan ve aktör durumu yönetimi için bir bağdaştırıcı sağlar.
 
-Bu bileşenler birlikte güvenilir aktör çerçevesinde oluşturur.
+Bu bileşenler birlikte güvenilir aktör çerçevesini oluşturur.
 
-## <a name="service-layering"></a>Hizmet katmanlarını
-Aktör hizmeti, güvenilir bir hizmet olduğundan tüm [uygulama modeli](service-fabric-application-model.md), yaşam döngüsü, [paketleme](service-fabric-package-apps.md), [dağıtım](service-fabric-deploy-remove-applications.md), yükseltme ve güvenilir kavramlarını ölçeklendirme Hizmetleri aktör Hizmetleri aynı şekilde geçerlidir.
+## <a name="service-layering"></a>Hizmet katmanlama
+Aktör hizmeti güvenilir bir hizmet olduğundan, Reliable Services tüm [uygulama modeli](service-fabric-application-model.md), yaşam döngüsü, [paketleme](service-fabric-package-apps.md), [dağıtım](service-fabric-deploy-remove-applications.md), yükseltme ve ölçekleme kavramları, aktör Hizmetleri için aynı şekilde geçerlidir.
 
 ![Aktör hizmeti katmanlama][1]
 
-Önceki şemada Service Fabric uygulama çerçeveleri ve kullanıcı kodu arasındaki ilişkiyi gösterir. Reliable Services uygulaması çerçevesi mavi öğeleri temsil, turuncu güvenilir aktör çerçevesinde temsil eder ve yeşil kullanıcı kodunu temsil eder.
+Yukarıdaki diyagramda Service Fabric uygulama çerçeveleri ve Kullanıcı kodu arasındaki ilişki gösterilmektedir. Mavi öğeler Reliable Services uygulama çerçevesini temsil eder, turuncu güvenilir aktör çerçevesini temsil eder ve yeşil Kullanıcı kodunu temsil eder.
 
-Reliable Services içinde hizmetinizi devralır `StatefulService` sınıfı. Bu sınıf kendi türetilmiş, `StatefulServiceBase` (veya `StatelessService` durum bilgisi olmayan hizmetler için). Reliable Actors actor hizmetinin kullanın. Actor hizmetinin farklı bir uygulamasıdır `StatefulServiceBase` , aktör çalıştırdığı gerçekleştiren deseni uygulayan sınıf. Aktör hizmeti yalnızca uygulaması olduğundan `StatefulServiceBase`, türetilen kendi hizmet yazabilirsiniz `ActorService` ve hizmet düzeyi özellikleri devralınırken olduğu gibi uygulamak `StatefulService`, gibi:
+Reliable Services, hizmetiniz `StatefulService` sınıfını devralır. Bu sınıf, `StatefulServiceBase` (veya durum bilgisi olmayan hizmetler için `StatelessService`) öğesinden türetilir. Reliable Actors, aktör hizmetini kullanırsınız. Aktör hizmeti, Aktörlerinizin çalıştırıldığı aktör modelini uygulayan `StatefulServiceBase` sınıfının farklı bir uygulamasıdır. Aktör hizmeti yalnızca bir `StatefulServiceBase`uygulaması olduğu için, `ActorService` türeten ve hizmet düzeyi özellikleri `StatefulService`devralırken kullandığınız şekilde, örneğin:
 
 * Hizmet yedekleme ve geri yükleme.
-* İşlevi, tüm aktör, örneğin, devre kesici paylaşılan.
-* Uzak yordam çağrıları tek tek her aktör ve aktör hizmeti üzerinde.
+* Tüm aktörler için paylaşılan işlevsellik; Örneğin, devre kesici.
+* Aktör hizmetinin kendisinde ve her bir aktör üzerinde uzak yordam çağrıları.
 
-Daha fazla bilgi için [aktör hizmetinizin hizmet düzeyi özelliklerini uygulama](service-fabric-reliable-actors-using.md).
+Daha fazla bilgi için bkz. [aktör hizmetinizde hizmet düzeyi özellikleri uygulama](service-fabric-reliable-actors-using.md).
 
 ## <a name="application-model"></a>Uygulama modeli
-Aynı uygulama modelini, bu nedenle aktör Reliable Services hizmetleridir. Ancak, aktör framework derleme araçları bazı uygulama modeli dosyaları sizin için oluşturur.
+Aktör Hizmetleri Reliable Services, bu nedenle uygulama modeli aynı. Ancak aktör Framework derleme araçları sizin için bazı uygulama modeli dosyalarını oluşturur.
 
 ### <a name="service-manifest"></a>Hizmet bildirimi
-Aktör framework derleme araçları, aktör hizmetinizin ServiceManifest.xml dosyasının içeriğini otomatik olarak oluşturur. Bu dosya şunları içerir:
+Aktör Framework derleme araçları, aktör hizmetinizin ServiceManifest. xml dosyasının içeriğini otomatik olarak oluşturur. Bu dosya şunları içerir:
 
-* Aktör hizmeti türü. Tür adı'nın aktörünüz proje adına göre oluşturulur. Aktörünüz Kalıcılık özniteliğini bağlı olarak, HasPersistedState'bayrağı da buna uygun olarak ayarlanır.
+* Aktör hizmeti türü. Tür adı, aktörin proje adına göre oluşturulur. Aktör içindeki Kalıcılık özniteliğine bağlı olarak, HasPersistedState bayrağı da buna göre ayarlanır.
 * Kod paketi.
 * Yapılandırma paketi.
-* Kaynaklar ve uç noktaları.
+* Kaynaklar ve uç noktalar.
 
 ### <a name="application-manifest"></a>Uygulama bildirimi
-Aktör framework derleme araçları, varsayılan hizmet tanımı aktör hizmeti için otomatik olarak oluşturun. Derleme araçları, varsayılan hizmet özellikleri doldurun:
+Aktör altyapısı derleme araçları, aktör hizmetiniz için otomatik olarak varsayılan bir hizmet tanımı oluşturur. Yapı araçları varsayılan hizmet özelliklerini doldurur:
 
-* Çoğaltma kümesi sayısı aktörünüz Kalıcılık özniteliği tarafından belirlenir. Aktörünüz Kalıcılık özniteliğini her değiştirildiğinde varsayılan hizmet tanımındaki çoğaltma kümesi sayısı buna uygun olarak sıfırlanır.
-* Bölüm düzeni ve aralığı için Tekdüzen Int64 tam Int64 anahtar aralığı ile ayarlanır.
+* Çoğaltma kümesi sayısı aktördeki Kalıcılık özniteliğiyle belirlenir. Aktör içindeki Kalıcılık özniteliği her değiştiğinde, varsayılan hizmet tanımındaki çoğaltma kümesi sayısı buna göre sıfırlanır.
+* Bölüm şeması ve aralığı, tam Int64 anahtar aralığı ile Tekdüzen Int64 olarak ayarlanır.
 
-## <a name="service-fabric-partition-concepts-for-actors"></a>Service Fabric aktörleri için bölüm kavramları
-Aktör, bölümlenmiş durum bilgisi olan hizmetler hizmetleridir. Her bölüm bir aktör hizmetinin aktör kümesini içerir. Hizmeti bölümleri, Service fabric'te birden çok düğüm üzerinden otomatik olarak dağıtılır. Aktör örnekleri sonuç olarak dağıtılır.
+## <a name="service-fabric-partition-concepts-for-actors"></a>Aktör için Service Fabric bölümü kavramları
+Aktör Hizmetleri bölümlenmiş durum bilgisi olan hizmetlerdir. Aktör hizmetinin her bölümü bir aktör kümesi içerir. Hizmet bölümleri Service Fabric içindeki birden çok düğüme otomatik olarak dağıtılır. Aktör örnekleri sonuç olarak dağıtılır.
 
-![Aktör bölümleme ve dağıtım][5]
+![Aktör bölümlendirme ve dağıtım][5]
 
-Reliable Services, farklı bir bölüm düzeni ve bölüm anahtar aralığı ile oluşturulabilir. Actor hizmetinin aktör bölümlere eşlemek için tam Int64 anahtar aralığı ile Int64 bölümleme şeması kullanır.
+Reliable Services, farklı bölüm şemaları ve bölüm anahtarı aralıklarıyla oluşturulabilir. Aktör hizmeti, aktörlerin bölümlerle eşleşmesini sağlamak için tam Int64 anahtar aralığıyla Int64 bölümlendirme şemasını kullanır.
 
-### <a name="actor-id"></a>Aktör kimliği
-Hizmette oluşturulan her aktör, tarafından temsil edilen ilişkili benzersiz bir kimlik vardır `ActorId` sınıfı. `ActorId` rastgele kimlikleri oluşturarak hizmeti bölümler arasında Tekdüzen aktörler dağıtım için kullanılabilecek bir donuk kimliği değerdir:
+### <a name="actor-id"></a>Aktör KIMLIĞI
+Hizmette oluşturulan her aktörle ilişkili benzersiz bir KIMLIĞI vardır ve `ActorId` sınıfı tarafından temsil edilir. `ActorId` rastgele kimlikler oluşturarak hizmet bölümlerinin genelinde aktörlerin Tekdüzen dağıtımı için kullanılabilen donuk bir KIMLIK değeridir:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -80,7 +71,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Her `ActorId` bir Int64 için karma uygulanır. Actor hizmetinin tam Int64 anahtar aralığı ile bir Int64 bölümleme düzenini kullanmalıdır nedeni budur. Ancak, özel kod değerleri için kullanılabilecek bir `ActorID`GUID/UUID, dizeleri ve Int64s dahil.
+Her `ActorId` bir Int64 için karma hale getirilir. Bu, aktör hizmetinin tam Int64 anahtar aralığıyla bir Int64 bölümlendirme şeması kullanması nedenidir. Ancak, GUID/UUID 'ler, dizeler ve Int64s dahil olmak üzere, özel KIMLIK değerleri `ActorID`için kullanılabilir.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -93,13 +84,13 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-GUID/UUID ve dizeleri kullanırken, değerlerin bir Int64 için karma hale getirilir. Ancak, ne zaman, açıkça sağlamak için bir Int64 bir `ActorId`, Int64 daha fazla karma olmadan doğrudan bir bölüme eşler. Aktörleri yerleştirilir hangi bölümünün denetlemek için bu tekniği kullanabilirsiniz.
+GUID/UUID 'ler ve dizeler kullanırken, değerler bir Int64 için karma hale getirilir. Ancak, bir `ActorId`açıkça bir Int64 belirttiğinizde, Int64 daha fazla karma olmadan doğrudan bir bölüme eşlenir. Aktörlerin hangi bölüme yerleştirileceğini denetlemek için bu tekniği kullanabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
-* [Aktör yaşam döngüsü ve atık toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktörler API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
+* [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
+* [Aktör API 'SI başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

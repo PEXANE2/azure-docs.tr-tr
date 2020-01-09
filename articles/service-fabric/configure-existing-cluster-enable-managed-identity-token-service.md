@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric-yönetilen kimlik desteğini etkinleştirmek için mevcut bir Azure Service Fabric kümesini yapılandırın | Microsoft Docs
+title: Azure Service Fabric-yönetilen kimlik desteğini etkinleştirmek için mevcut bir Azure Service Fabric kümesini yapılandırın
 description: Bu makalede, Yönetilen kimlikler için desteği etkinleştirmek üzere mevcut bir Azure Service Fabric kümesini nasıl yapılandırabileceğiniz gösterilmektedir
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640741"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351601"
 ---
 # <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Yönetilen kimlik desteğini etkinleştirmek için mevcut bir Azure Service Fabric kümesi yapılandırma (Önizleme)
 Azure Service Fabric uygulamaları için yönetilen kimlik özelliğine erişebilmek için öncelikle kümede **yönetilen kimlik belirteci hizmetini** etkinleştirmeniz gerekir. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, **doku:/System/Managedıdentitytokenservice**adı altında çalışan Service Fabric Explorer görebilirsiniz.
@@ -42,7 +38,7 @@ Mevcut bir kümede yönetilen kimlik belirteci hizmetini etkinleştirmek için i
 ]
 ```
 
-Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, `forceRestart` temel ayardır; ayarların geri kalanı için mevcut değerlerinizi kullanın.  
+Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kümede ilerledikçe her düğümde Service Fabric çalışma zamanının zorla yeniden başlatılmasını belirtmek için de değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilmiş sistem hizmetinin her düğüm üzerinde başlatılmış ve çalışır olmasını sağlar. Aşağıdaki kod parçacığında, temel ayar `forceRestart`. ayarların geri kalanı için mevcut değerlerinizi kullanın.  
 
 ```json
 "upgradeDescription": {
@@ -57,7 +53,7 @@ Değişikliklerin etkili olabilmesi için yükseltme ilkesini, yükseltmenin kü
 ```
 
 > [!NOTE]
-> Yükseltmenin başarıyla tamamlanmasından sonra, sonraki yükseltmelerin etkilerini en aza indirmek için `forceRestart` ayarı geri almayı unutmayın. 
+> Yükseltmenin başarıyla tamamlanmasından sonra, sonraki yükseltmelerin etkilerini en aza indirmek için `forceRestart` ayarını geri almayı unutmayın. 
 
 ## <a name="errors-and-troubleshooting"></a>Hatalar ve sorun giderme
 

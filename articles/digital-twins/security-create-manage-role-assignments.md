@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013989"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438055"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme
 
@@ -36,12 +36,12 @@ Her rol ataması aşağıdaki tanıma uyar:
 
 Aşağıdaki tabloda her bir öznitelik açıklanmaktadır:
 
-| Öznitelik | Ad | Gerekli | Tür | Açıklama |
+| Öznitelik | Ad | Gereklidir | Tür | Açıklama |
 | --- | --- | --- | --- | --- |
-| RoleID | Rol tanımı tanımlayıcısı | Yes | Dize | İstenen rol atamasının benzersiz KIMLIĞI. Aşağıdaki sistem API 'sini veya İnceleme tablosunu sorgulayarak rol tanımlarını ve bunların tanımlayıcılarını bulun. |
-| objectId | Nesne tanımlayıcısı | Yes | Dize | Azure Active Directory KIMLIĞI, hizmet sorumlusu nesne KIMLIĞI veya etki alanı adı. Rol atamasının atandığı durum. Rol ataması, ilişkili türüne göre biçimlendirilmelidir. `DomainName` Objectıdtype için ObjectID `“@”` karakteriyle başlamalıdır. |
-| Objectıdtype | Nesne tanımlayıcı türü | Yes | Dize | Kullanılan nesne tanımlayıcısı türü. Aşağıdaki **desteklenen Objectıdtypes** bölümüne bakın. |
-| yol | Boşluk yolu | Yes | Dize | `Space` nesnesine yönelik tam erişim yolu. `/{Guid}/{Guid}` bunun bir örneğidir. Bir tanımlayıcının tüm grafik için rol ataması gerekiyorsa, `"/"`belirtin. Bu karakter kökü belirler, ancak kullanımı önerilmez. Her zaman en az ayrıcalık Ilkesini izleyin. |
+| RoleID | Rol tanımı tanımlayıcısı | Evet | Dize | İstenen rol atamasının benzersiz KIMLIĞI. Aşağıdaki sistem API 'sini veya İnceleme tablosunu sorgulayarak rol tanımlarını ve bunların tanımlayıcılarını bulun. |
+| objectId | Nesne tanımlayıcısı | Evet | Dize | Azure Active Directory KIMLIĞI, hizmet sorumlusu nesne KIMLIĞI veya etki alanı adı. Rol atamasının atandığı durum. Rol ataması, ilişkili türüne göre biçimlendirilmelidir. `DomainName` Objectıdtype için ObjectID `“@”` karakteriyle başlamalıdır. |
+| Objectıdtype | Nesne tanımlayıcı türü | Evet | Dize | Kullanılan nesne tanımlayıcısı türü. Aşağıdaki **desteklenen Objectıdtypes** bölümüne bakın. |
+| yol | Boşluk yolu | Evet | Dize | `Space` nesnesine yönelik tam erişim yolu. `/{Guid}/{Guid}` bunun bir örneğidir. Bir tanımlayıcının tüm grafik için rol ataması gerekiyorsa, `"/"`belirtin. Bu karakter kökü belirler, ancak kullanımı önerilmez. Her zaman en az ayrıcalık Ilkesini izleyin. |
 | tenantId | Kiracı tanımlayıcısı | Değişir | Dize | Çoğu durumda, bir Azure Active Directory kiracı KIMLIĞI. `DeviceId` ve `TenantId` Objectıdtypes için izin verilmedi. `UserId` ve `ServicePrincipalId` Objectıdtypes için gereklidir. DomainName Objectıdtype için isteğe bağlı. |
 
 ### <a name="supported-role-definition-identifiers"></a>Desteklenen rol tanımı tanımlayıcıları
@@ -163,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parametre değeri** | **Gerekli** |  **Tür** |  **Açıklama** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Dize |   UserID Objectıdtype için ObjectID. |
-| YOUR_PATH | True | Dize |   Erişimi denetlemek için seçilen yol. |
-| YOUR_ACCESS_TYPE |  True | Dize |   *Okuma*, *oluşturma*, *güncelleştirme*veya *silme* |
-| YOUR_RESOURCE_TYPE | True | Dize |  *Cihaz*, *deviceblobmetadata*, *deviceextendedproperty*, *extendedpropertykey*, *ExtendedType*, *uç nokta*, *keystore*, *Matcher*, *ontology*, *Report*, *roledefinition*, *algılayıcı*, *sensorextendedproperty*, *Space*, *spaceblobmetadata*, *spaceextendedproperty*, *SpaceResource*, *spaceroleatama*, *sistem*,  *UerDefinedFunction*, *User*, *Userblobmetadata*veya *userextendedproperty* |
+| YOUR_USER_ID |  Doğru | Dize |   UserID Objectıdtype için ObjectID. |
+| YOUR_PATH | Doğru | Dize |   Erişimi denetlemek için seçilen yol. |
+| YOUR_ACCESS_TYPE |  Doğru | Dize |   *Okuma*, *oluşturma*, *güncelleştirme*veya *silme* |
+| YOUR_RESOURCE_TYPE | Doğru | Dize |  *Cihaz*, *deviceblobmetadata*, *deviceextendedproperty*, *extendedpropertykey*, *ExtendedType*, *uç nokta*, *keystore*, *Matcher*, *ontology*, *Report*, *roledefinition*, *algılayıcı*, *sensorextendedproperty*, *Space*, *spaceblobmetadata*, *spaceextendedproperty*, *SpaceResource*, *spaceroleatama*, *sistem*,  *UerDefinedFunction*, *User*, *Userblobmetadata*veya *userextendedproperty* |
 
 Başarılı bir istek, belirtilen yol ve kaynak için erişim türünün kullanıcıya atanıp atanmadığını belirten bir Boole `true` veya `false` döndürür.
 

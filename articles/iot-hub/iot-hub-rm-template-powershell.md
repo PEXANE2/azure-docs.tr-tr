@@ -1,6 +1,6 @@
 ---
-title: Şablon (PowerShell) kullanarak Azure IOT Hub oluşturma | Microsoft Docs
-description: Azure PowerShell ile bir IOT hub'ı oluşturmak için bir Azure Resource Manager şablonu kullanma
+title: Şablon kullanarak Azure IoT Hub oluşturma (PowerShell) | Microsoft Docs
+description: Azure PowerShell ile IoT Hub oluşturmak için Azure Resource Manager şablonu kullanma.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,32 +8,32 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: eefa17b699a0599d2d3323409cafddd1d0984c61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45908557ed40eb249bbac08cfca83bca7ff06ad1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429133"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager şablonu (PowerShell) kullanarak IOT hub oluşturma
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager şablonu kullanarak IoT Hub oluşturma (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Bir Azure Resource Manager şablonu kullanarak IOT Hub ile bir tüketici grubu oluşturmak için kullanmayı öğrenin. Resource Manager şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Resource Manager şablonları geliştirme hakkında daha fazla bilgi için bkz. [Azure Resource Manager belgelerini](https://docs.microsoft.com/azure/azure-resource-manager/).
+Bir Azure Resource Manager şablonu kullanarak bir IoT Hub ve bir tüketici grubu oluşturma hakkında bilgi edinin. Resource Manager şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Kaynak Yöneticisi şablonları geliştirme hakkında daha fazla bilgi için bkz. [Azure Resource Manager belgeleri](https://docs.microsoft.com/azure/azure-resource-manager/).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
-Bu hızlı başlangıçta kullanılan Resource Manager şablonu dandır [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/). Şablonun bir kopyasını şu şekildedir:
+Bu hızlı başlangıçta kullanılan Kaynak Yöneticisi şablonu [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/). Şablonun bir kopyası aşağıda verilmiştir:
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-Şablon, bir Azure IOT hub üç uç noktaları (eventhub, bulut-cihaz ve mesajlaşma) ve bir tüketici grubu oluşturur. Daha fazla şablon örnekleri için bkz [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). IOT hub'ı şablon şeması bulunabilir [burada](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
+Şablon, üç uç nokta (eventhub, buluttan cihaza ve mesajlaşma) ve bir tüketici grubu içeren bir Azure IoT Hub 'ı oluşturur. Daha fazla şablon örneği için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). IoT Hub şablonu şeması [burada](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)bulunabilir.
 
-Bir şablonu dağıtmak için çeşitli yöntemler vardır.  Bu öğreticide Azure PowerShell kullanırsınız.
+Şablon dağıtmak için çeşitli yöntemler vardır.  Bu öğreticide Azure PowerShell kullanırsınız.
 
-PowerShell betiğini çalıştırmak için seçin **deneyin** Azure Cloud Shell'i açmak için. Betik yapıştırmak için kabuk sağ tıklayın ve ardından Yapıştır seçin:
+PowerShell betiğini çalıştırmak için, Azure Cloud Shell 'i açmak üzere **deneyin** ' i seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından Yapıştır ' ı seçin:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -47,24 +47,24 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-PowerShell betiğini görebileceğiniz gibi Azure hızlı başlangıç şablonlarından kullanılan şablon budur. Kendi kullanmak için ilk şablon dosyasını Cloud shell'e yüklemeniz ve sonra kullanmak gereken `-TemplateFile` geçme dosya adını belirtin.  Bir örnek için bkz. [şablonu dağıtmak](../azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template).
+PowerShell betiğinizden görebileceğiniz gibi, kullanılan şablon Azure hızlı başlangıç şablonlarından de yapılır. Kendinizinkini kullanmak için önce şablon dosyasını Cloud Shell 'e yüklemeniz, sonra da dosya adını belirtmek için `-TemplateFile` anahtarını kullanmanız gerekir.  Bir örnek için bkz. [şablonu dağıtma](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir Azure Resource Manager şablonu kullanarak bir IOT hub'ı dağıttıktan sonra daha iyi keşfedilebilmesi isteyebilirsiniz:
+Artık bir Azure Resource Manager şablonu kullanarak bir IoT Hub 'ı dağıttıysanız, daha fazla incelemek isteyebilirsiniz:
 
-* Özellikleri hakkında okuyun [IOT hub'ı kaynak sağlayıcısı REST API'si][lnk-rest-api].
-* Okuma [Azure Resource Manager'a genel bakış] [ lnk-azure-rm-overview] Azure Resource Manager'ın özellikleri hakkında daha fazla bilgi edinmek için.
-* JSON söz dizimi ve özelliklerini şablonlarında kullanmak üzere bkz [Microsoft.Devices kaynak türleri](/azure/templates/microsoft.devices/iothub-allversions).
+* [IoT Hub kaynak sağlayıcısı REST API][lnk-rest-api]özellikleri hakkında bilgi edinin.
+* Azure Resource Manager özellikleri hakkında daha fazla bilgi edinmek için [Azure Resource Manager genel bakış][lnk-azure-rm-overview] konusunu okuyun.
+* Şablonlarda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. Devices kaynak türleri](/azure/templates/microsoft.devices/iothub-allversions).
 
-İçin IOT Hub ile geliştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+IoT Hub için geliştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [C SDK'ya giriş][lnk-c-sdk]
-* [Azure IOT SDK'ları][lnk-sdks]
+* [C SDK 'ya giriş][lnk-c-sdk]
+* [Azure IoT SDK’ları][lnk-sdks]
 
-Daha fazla IOT Hub'ın özelliklerini keşfetmek için bkz:
+IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma][lnk-iotedge]
+* [Azure IoT Edge ile uç cihazlara AI dağıtma][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -72,7 +72,7 @@ Daha fazla IOT Hub'ın özelliklerini keşfetmek için bkz:
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bcc4af837cc28a18345e49cd39ddf88d24e44dd8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450857"
 ---
 1. **Siteleri BAĞLAN** sayfasını açmak Için **VPN sitelerini bağla** ' yı seçin.
 
@@ -22,13 +22,13 @@ ms.locfileid: "73488963"
    Aşağıdaki alanları doldurun:
 
    * Önceden paylaşılan bir anahtar girin. Anahtar girmezseniz, Azure oto sizin için bir tane oluşturur.
-   * Protokol ve IPSec ayarlarını seçin. Varsayılan/özel IPSec ayrıntılarına bakın (sayfanın bağlantısını yerleştir)
+   * Protokol ve IPSec ayarlarını seçin. [Varsayılan/özel IPSec Ayrıntıları] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec) bölümüne bakın.
    * **Varsayılan yolu yayma**için uygun seçeneği belirleyin. **Etkinleştir** seçeneği, sanal hub 'ın bu bağlantıya öğrenilen bir varsayılan yol yaymasını sağlar. Bu bayrak, yalnızca varsayılan yol sanal WAN hub 'ı hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak zaten öğrenildiği ya da başka bir bağlı sitede zorlamalı tünelyi etkin olan bir bağlantıya varsayılan yol yaymayı sağlar. Varsayılan yol, sanal WAN hub 'ında değil.
 
 2. **Bağlan**’ı seçin.
 3. Birkaç dakika içinde, site bağlantının ve bağlantı durumunun gösterilmesi gerekir.
 
-   ![durumlarına](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **Bağlantı durumu:** Bu, VPN sitesini Azure hub 'ının VPN Gateway 'e bağlayan bağlantı için Azure kaynağının durumudur. Bu denetim düzlemi işlemi başarılı olduktan sonra, Azure VPN ağ geçidi ve şirket içi VPN cihazı bağlantı kurmaya devam eder.
 

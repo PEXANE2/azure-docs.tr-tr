@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 00d8546cb20d12c5f1a94bdcababa04a77c73133
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422307"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sertifikaları döndürme
 
@@ -22,20 +22,7 @@ Bu makalede, AKS kümenizdeki sertifikaların nasıl döndürübir gösterilmekt
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, Azure CLı sürüm 2.0.76 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
-
-
-### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
-
-Bu özelliği kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.21 veya üzeri olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Bu makalede, Azure CLı sürüm 2.0.77 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS sertifikaları, sertifika yetkilileri ve hizmet hesapları
 
@@ -51,7 +38,13 @@ AKS aşağıdaki sertifikaları, sertifika yetkililerini ve hizmet hesaplarını
 * `kubectl` istemcisinde AKS kümesiyle iletişim kurmak için bir sertifika vardır.
 
 > [!NOTE]
-> Mart 2019 ' den önce oluşturulan AKS kümelerinde iki yıl sonra süre sonu olan sertifikalar vardır. Mart 2019 ' den sonra oluşturulan herhangi bir küme veya sertifikalarının döndürüldüğü herhangi bir küme 30 yıl sonra süresi dolacak olan sertifikalardır.
+> Mart 2019 ' den önce oluşturulan AKS kümelerinde iki yıl sonra süre sonu olan sertifikalar vardır. Mart 2019 ' den sonra oluşturulan herhangi bir küme veya sertifikalarının döndürüldüğü herhangi bir küme 30 yıl sonra süresi dolacak olan sertifikalardır. Kümenizin oluşturulduğunu doğrulamak için, düğüm havuzlarınızın *yaşını* görmek üzere `kubectl get nodes` kullanın.
+> 
+> Ayrıca, kümenizin sertifikasının sona erme tarihini kontrol edebilirsiniz. Örneğin, aşağıdaki komut, *Myakscluster* kümesi için sertifika ayrıntılarını görüntüler.
+> ```console
+> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> openssl x509 -in my-cert.crt -text
+> ```
 
 ## <a name="rotate-your-cluster-certificates"></a>Küme sertifikalarınızı döndürme
 

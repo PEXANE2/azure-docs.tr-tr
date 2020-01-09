@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API'sine karşı Spark'tan silme
-description: Bu makalede, Azure Cosmos DB Cassandra API'SİNİN tablolarda bulunan verileri Spark'tan silme işlemi açıklanmaktadır
+title: Spark 'dan Azure Cosmos DB Cassandra API silme işlemleri
+description: Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolardaki verileri silme ayrıntıları anlatılmaktadır
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fc9e0dabd226952bea3bd14da0747c5b6292c2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60893975"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442082"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Azure Cosmos DB Cassandra API'SİNİN tablolardaki verileri Spark'tan Sil
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark 'tan Azure Cosmos DB Cassandra API tablolarındaki verileri silme
 
-Bu makalede, Azure Cosmos DB Cassandra API'SİNİN tablolardaki verileri Spark'tan silmek açıklar.
+Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolarında verilerin nasıl silineceği açıklanır.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API configuration
 
@@ -46,8 +46,8 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Örnek veri Oluşturucusu
-Örnek verileri oluşturmak için bu kod parçasını kullanacağız:
+## <a name="sample-data-generator"></a>Örnek veri Oluşturucu
+Örnek veri oluşturmak için bu kod parçasını kullanacağız:
 
 ```scala
 //Create dataframe
@@ -69,7 +69,7 @@ booksDF.write
 
 ## <a name="dataframe-api"></a>API veri çerçevesi
 
-### <a name="delete-rows-that-match-a-condition"></a>Bir koşulla eşleşen satırları sil
+### <a name="delete-rows-that-match-a-condition"></a>Bir koşulla eşleşen satırları silme
 
 ```scala
 //1) Create dataframe
@@ -358,7 +358,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Toplama ve veri kopyalama işlemleri gerçekleştirmek için bakın-
+Toplama ve veri kopyalama işlemlerini gerçekleştirmek için bkz.
  
 * [Toplama işlemleri](cassandra-spark-aggregation-ops.md)
 * [Tablo kopyalama işlemleri](cassandra-spark-table-copy-ops.md)

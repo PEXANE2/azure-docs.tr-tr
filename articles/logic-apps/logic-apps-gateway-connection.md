@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815100"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456581"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
@@ -50,7 +50,7 @@ Azure Logic Apps, şirket içi veri ağ geçidi, bu veri kaynakları için şirk
 
 Azure Logic Apps, veri ağ geçidi aracılığıyla okuma ve yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır. Ağ geçidinin kendisi ek maliyet gerçekleştirmese de, [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md) bu bağlayıcılar ve Azure Logic Apps diğer işlemler için geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Şirket [içi veri ağ geçidini zaten yerel bir bilgisayara yüklediniz](../logic-apps/logic-apps-gateway-install.md).
 
@@ -82,7 +82,7 @@ Ağ geçidini yerel bir bilgisayara yükledikten sonra, ağ geçidiniz için Azu
    |----------|-------------|
    | **Kaynak Adı** | Ağ Geçidi kaynağınız için yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) veya nokta (`.`) içeren bir ad sağlayın. |
    | **Abonelik** | Ağ geçidi yüklemesi için kullanılan Azure hesabı için Azure aboneliğini seçin. Varsayılan abonelik, oturum açmak için kullandığınız Azure hesabını temel alır. |
-   | **Kaynak grubu** | Kullanmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) |
+   | **Kaynak grubu** | Kullanmak istediğiniz [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) |
    | **Konum** | Ağ [geçidi yüklemesi](../logic-apps/logic-apps-gateway-install.md)sırasında ağ geçidi bulutu hizmeti için seçilen bölge veya konum. Aksi takdirde, ağ geçidi yüklemeniz **yükleme adı** listesinde görünmez. Mantıksal uygulama konumunuz, ağ geçidi kaynak konumunuzda farklılık gösterebilir. |
    | **Yükleme adı** | Listede yalnızca bu koşullar karşılandığında görüntülenen bir ağ geçidi yüklemesi seçin: <p><p>-Ağ geçidi yüklemesi, oluşturmak istediğiniz ağ geçidi kaynağıyla aynı bölgeyi kullanır. <br>-Ağ geçidi yüklemesi başka bir Azure ağ geçidi kaynağıyla bağlantılı değildir. <br>-Ağ geçidi yüklemesi, ağ geçidi kaynağını oluşturmak için kullandığınız Azure hesabıyla bağlantılıdır. <br>-Azure hesabınız tek bir [Azure Active Directory (Azure AD) kiracısına veya dizine](../active-directory/fundamentals/active-directory-whatis.md#terminology) aittir ve ağ geçidi yüklemesi için kullanılan hesaptır. <p><p>Daha fazla bilgi için [sık sorulan sorular](#faq) bölümüne bakın. |
    |||
@@ -150,7 +150,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 
 1. Henüz seçili değilse, ağ geçidi kaynak menüsünde Şirket **Içi veri ağ geçidi**' ni seçin. Ağ Geçidi kaynağı araç çubuğunda **Sil**' i seçin.
 
-   Örnek:
+   Örneğin:
 
    ![Azure 'da ağ geçidi kaynağını silme](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

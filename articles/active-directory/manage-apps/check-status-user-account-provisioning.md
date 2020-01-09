@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430218"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Öğretici: otomatik Kullanıcı hesabı sağlama üzerinde raporlama
 
@@ -55,8 +55,8 @@ Buradan, sağlama ilerleme çubuğuna ve sağlama günlüklerine, aşağıda aç
 [Sağlama ilerleme çubuğu](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) , verilen uygulamanın **sağlama** sekmesinde görünür. **Ayarlar**altındaki **geçerli durum** bölümünde bulunur ve geçerli başlangıç veya artımlı döngüsünün durumunu gösterir. Bu bölümde ayrıca şunları da gösterilmektedir:
 
 * Eşitlenmiş ve kaynak sistem ile hedef sistem arasında sağlama için kapsamda bulunan ve şu anda kapsamdaki Toplam Kullanıcı ve/grup sayısı.
-* Eşitlemenin son çalıştırıldığı zaman. Eşitlemeler genellikle [ilk bir döngüden](user-provisioning.md#what-happens-during-provisioning) sonra her 20-40 dakikada bir gerçekleşir.
-* Bir [Başlangıç döngüsünün](user-provisioning.md#what-happens-during-provisioning) tamamlanıp tamamlanmadığını belirtir.
+* Eşitlemenin son çalıştırıldığı zaman. Eşitlemeler genellikle [ilk bir döngüden](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) sonra her 20-40 dakikada bir gerçekleşir.
+* Bir [Başlangıç döngüsünün](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) tamamlanıp tamamlanmadığını belirtir.
 * Sağlama işleminin karantinaya alınmış olup olmadığı ve karantina durumunun nedenleri (örneğin, geçersiz yönetici kimlik bilgileri nedeniyle hedef sistemle iletişim kurma hatası).
 
 **Geçerli durum** , yöneticinin sağlama işinin işletimsel sistem durumunu kontrol etmek için arayacağı ilk alan olmalıdır.

@@ -1,5 +1,5 @@
 ---
-title: Bir grubu başka bir gruptan - Azure Active Directory ekleyip | Microsoft Docs
+title: Başka bir gruptan grup ekleme veya kaldırma-Azure AD
 description: Ekleme veya bir grup Azure Active Directory'yi kullanarak başka bir gruptan kaldırma hakkında yönergeler.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896a8b2c96dc10afbc3f179aed5a8497a8948ca9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 830bf7134b3a8b0425c53673a1347dd77897a5bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423082"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Ekleme veya bir grup Azure Active Directory'yi kullanarak başka bir gruptan kaldırma
 Bu makalede, bir grup Azure Active Directory'yi kullanarak başka bir gruptan ekleyip yardımcı olur.
@@ -30,7 +30,7 @@ Bu makalede, bir grup Azure Active Directory'yi kullanarak başka bir gruptan ek
 Mevcut güvenlik grubuna üye grubu (alt) ve bir üst grubu oluşturma var olan başka bir güvenlik grubu (olarak da bilinen iç içe geçmiş gruplar) ekleyebilirsiniz. Grubu üyeleri, öznitelikleri ve yapılandırma zamandan tasarruf üst grubunun özelliklerini devralır.
 
 >[!Important]
->Şu anda desteklemiyoruz:<ul><li>Grupları Şirket içi Active Directory eşitlenmiş bir gruba ekleme.</li><li>Office 365 gruplarına güvenlik grupları ekleme.</li><li>Office 365 gruplarını güvenlik gruplarına veya diğer Office 365 gruplarına ekleme.</li><li>İç içe gruplar için uygulama atama.</li><li>Lisanslar, iç içe geçmiş gruplara uygulanıyor.</li></ul>
+>Şu anda desteklemiyoruz:<ul><li>Grupları Şirket içi Active Directory eşitlenmiş bir gruba ekleme.</li><li>Office 365 gruplarına güvenlik grupları ekleme.</li><li>Office 365 gruplarını güvenlik gruplarına veya diğer Office 365 gruplarına ekleme.</li><li>İç içe gruplar için uygulama atama.</li><li>Lisanslar, iç içe geçmiş gruplara uygulanıyor.</li><li>İç içe geçmiş senaryolarda dağıtım grupları ekleme.</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>Bir grubu başka bir grubun üyesi olarak eklemek için
 
@@ -49,15 +49,11 @@ Mevcut güvenlik grubuna üye grubu (alt) ve bir üst grubu oluşturma var olan 
 
     **MDM İlkesi - Batı** grup, artık üye **MDM İlkesi - tüm kuruluş** grubu, tüm özellikleri ve MDM İlkesi - tüm kuruluş grubu yapılandırmasını devralıyor.
 
-    ![Başka bir gruba grubu ekleyerek bir grup üyeliği oluştur](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+    ![Başka bir gruba grubu ekleyerek bir grup üyeliği oluştur](media/active-directory-groups-membership-azure-portal/group-add-group-membership.png)
 
 5. Gözden geçirme **MDM İlkesi - Batı - grup üyeliklerini** grup ve üye ilişkiyi görmek için sayfayı.
 
-    ![Üst grubun gösteren MDM İlkesi - Batı - grup üyeliklerini sayfası](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-
 6. Grup ve üye ilişkinin daha ayrıntılı bir görünüm için Grup adını seçin (**MDM İlkesi - tüm kuruluş**) ve göz atın **MDM İlkesi - Batı** Ayrıntıları sayfası.
-
-    ![Grup üyeliği sayfası hem üye ve Grup ayrıntılarını gösterme](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
 ## <a name="remove-a-group-from-another-group"></a>Bir grubu başka bir gruptan Kaldır
 Mevcut bir güvenlik grubuna başka bir güvenlik grubundan kaldırabilirsiniz. Ancak, grup kaldırma de tüm devralınan öznitelikleri ve özellikleri üyeleri için kaldırır.
@@ -67,14 +63,11 @@ Mevcut bir güvenlik grubuna başka bir güvenlik grubundan kaldırabilirsiniz. 
 
 2. Üzerinde **MDM İlkesi - Batı genel bakış** sayfasında **grup üyeliklerini**.
 
-    ![MDM İlkesi - Batı genel bakış sayfası](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
-
 3. Seçin **MDM İlkesi - tüm kuruluş** gelen grup **MDM İlkesi - Batı - grup üyeliklerini** sayfasında ve ardından **Kaldır** gelen **MDM İlkesi - Batı** Ayrıntıları sayfası.
 
     ![Grup üyeliği sayfası hem üye ve Grup ayrıntılarını gösterme](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 
-
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 
 - [Grupları ve üyeleri görüntüleme](active-directory-groups-view-azure-portal.md)

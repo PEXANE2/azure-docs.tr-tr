@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bb0962991701dc780e50fec60982083b20d4ab0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358386"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetmeC# #
 
@@ -111,7 +111,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
 ### <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
-Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/resource-group-overview.md)bulunmalıdır.
+Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/overview.md)bulunmalıdır.
 
 Uygulamanın değerlerini belirtmek ve kaynak grubunu oluşturmak için, bu kodu Main yöntemine ekleyin:
 
@@ -362,7 +362,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>VM 'ye veri diski ekleme
+### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
 Sanal makineye bir veri diski eklemek için bu kodu Main yöntemine ekleyin. Bu örnek, boyutu 2 GB olan bir veri diski ekler.
 

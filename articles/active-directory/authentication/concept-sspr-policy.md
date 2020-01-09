@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848553"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425335"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory’deki parola ilkeleri ve kısıtlamaları
 
@@ -54,15 +54,15 @@ Bu makalede, Azure Active Directory (Azure AD) kiracınızdaki Kullanıcı hesap
   * Ayrıcalıklı kimlik doğrulama Yöneticisi
 
 * Deneme aboneliğinde 30 gün geçtikten sonra veya
-* Contoso.com gibi bir gösterim etki alanı vardır. veya
+* Azure AD kiracınız için *contoso.com*gibi özel bir etki alanı yapılandırılmıştır. veya
 * Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Tek bir geçit ilkesi, bir e-posta adresi *veya* telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
 
 * Deneme aboneliğinin ilk 30 günü içinde olur; veya
-* Bir gösterim etki alanı yok (*. onmicrosoft.com); '
+* Azure AD kiracınız için özel bir etki alanı yapılandırılmamış, bu nedenle varsayılan * *. onmicrosoft.com*kullanılıyor. Varsayılan * *. onmicrosoft.com* etki alanının üretim kullanımı için önerilmediğini unutmayın; '
 * Azure AD Connect kimlikleri eşitlemiyor
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Tüm Kullanıcı hesaplarına uygulanan UserPrincipalName ilkeleri

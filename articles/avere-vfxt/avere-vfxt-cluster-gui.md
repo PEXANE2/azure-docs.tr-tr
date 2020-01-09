@@ -4,34 +4,36 @@ description: Avere vFXT 'yi yapılandırmak için vFXT kümesine ve tarayıcı t
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416142"
 ---
 # <a name="access-the-vfxt-cluster"></a>VFXT kümesine erişme
 
-Ayarları değiştirmek ve avere vFXT kümesini izlemek için avere Denetim Masası ' nı kullanın. Avere denetim masası, kümeye yönelik tarayıcı tabanlı bir grafik arabirimidir.
+Küme ayarlarını ayarlamak ve kümeyi izlemek için avere denetim masasını kullanın. Avere denetim masası, kümeye yönelik tarayıcı tabanlı bir grafik arabirimidir.
 
-VFXT kümesi özel bir sanal ağ içinde bulunduğundan, kümenin yönetim IP adresine ulaşmak için bir SSH tüneli oluşturmanız veya başka bir yöntem kullanmanız gerekir. İki temel adım vardır: 
+VFXT kümesi özel bir sanal ağın içinde bulunduğundan, kümenin yönetim IP adresine ulaşmak için bir SSH tüneli oluşturmanız veya başka bir yöntem kullanmanız gerekir.
 
-1. İş istasyonunuz ve özel VNET arasında bağlantı oluşturma 
-1. Kümenin denetim masasını bir Web tarayıcısına yükleme 
+İki temel adım vardır:
 
-> [!NOTE] 
-> Bu makalede, küme denetleyicisinde veya kümenizin sanal ağı içindeki başka bir VM 'de genel bir IP adresi ayarlamış olduğunuz varsayılmaktadır. Bu makalede, kümeye erişmek için bu VM 'nin bir konak olarak nasıl kullanılacağı açıklanır. VNET erişimi için bir VPN veya ExpressRoute kullanıyorsanız, [avere Denetim Masası 'Na bağlanma](#connect-to-the-avere-control-panel-in-a-browser)bölümüne atlayın.
+1. İş istasyonunuz ve özel sanal ağ arasında bağlantı oluşturma
+1. Kümenin denetim masasını bir Web tarayıcısına yükleme
 
-Bağlanmadan önce, küme denetleyicisini oluştururken kullandığınız SSH ortak/özel anahtar çiftinin yerel makinenizde yüklü olduğundan emin olun. Yardıma ihtiyacınız varsa [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) için SSH anahtarları belgelerini okuyun. (Ortak anahtar yerine bir parola kullandıysanız, bağlandığınızda girmeniz istenir.) 
+> [!NOTE]
+> Bu makalede, küme denetleyicisinde veya kümenizin sanal ağı içindeki başka bir VM 'de genel bir IP adresi ayarlamış olduğunuz varsayılmaktadır. Bu makalede, kümeye erişmek için bu VM 'nin bir konak olarak nasıl kullanılacağı açıklanır. Sanal ağ erişimi için bir VPN veya ExpressRoute kullanıyorsanız, [avere Denetim Masası 'Na bağlanma](#connect-to-the-avere-control-panel-in-a-browser)bölümüne atlayın.
 
-## <a name="create-an-ssh-tunnel"></a>SSH tüneli oluşturma 
+Bağlanmadan önce, küme denetleyicisini oluştururken kullandığınız SSH ortak/özel anahtar çiftinin yerel makinenizde yüklü olduğundan emin olun. Yardıma ihtiyacınız varsa [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) için SSH anahtarları belgelerini okuyun. Ortak anahtar yerine bir parola kullandıysanız, bu parolayı bağlandığınızda girmeniz istenir.
 
-Linux tabanlı veya Windows 10 istemci sisteminin komut satırından bir SSH tüneli oluşturabilirsiniz. 
+## <a name="create-an-ssh-tunnel"></a>SSH tüneli oluşturma
 
-Bu formla bir SSH tünel oluşturma komutu kullanın: 
+Linux tabanlı veya Windows 10 istemci sisteminin komut satırından bir SSH tüneli oluşturabilirsiniz.
+
+Bu formla bir SSH tünel oluşturma komutu kullanın:
 
 SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
 
@@ -47,9 +49,9 @@ Küme oluşturmak için SSH ortak anahtarınızı kullandıysanız ve eşleşen 
 
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Tarayıcıda avere Denetim Masası 'na bağlanma
 
-Bu adım, vFXT kümesinde çalışan yapılandırma yardımcı programına bağlanmak için bir Web tarayıcısı kullanır.
+Bu adım, vFXT kümesindeki yapılandırma yardımcı programına bağlanmak için bir Web tarayıcısı kullanır.
 
-* SSH tüneli bağlantısı için Web tarayıcınızı açın ve `https://127.0.0.1:8443` ' a gidin. 
+* SSH tüneli bağlantısı için Web tarayıcınızı açın ve `https://127.0.0.1:8443`gidin.
 
   Tüneli oluştururken küme IP adresine bağlanırsınız, bu nedenle yalnızca, tarayıcıda localhost IP adresini kullanmanız gerekir. 8443 dışında bir yerel bağlantı noktası kullandıysanız, bunun yerine bağlantı noktası numaranızı kullanın.
 
@@ -57,7 +59,7 @@ Bu adım, vFXT kümesinde çalışan yapılandırma yardımcı programına bağl
 
 Tarayıcınıza bağlı olarak **Gelişmiş** ' e tıklamanız ve sayfaya devam etmek için güvenli olduğunu doğrulamanız gerekebilir.
 
-@No__t-0 Kullanıcı adını ve kümeyi oluştururken verdiğiniz yönetici parolasını girin.
+Kullanıcı adı `admin` ve kümeyi oluştururken verdiğiniz yönetici parolasını girin.
 
 ![Avere oturum açma sayfasının Kullanıcı adı ' admin' ve parola ile doldurulmuş ekran görüntüsü](media/avere-vfxt-gui-login.png)
 
@@ -65,4 +67,4 @@ Tarayıcınıza bağlı olarak **Gelişmiş** ' e tıklamanız ve sayfaya devam 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık kümeye erişebilmenizle, [desteği](avere-vfxt-enable-support.md)etkinleştirin.
+Kümenin denetim masasında oturum açtıktan sonra [desteğini](avere-vfxt-enable-support.md)etkinleştirin.

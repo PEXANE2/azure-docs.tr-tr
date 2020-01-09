@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric ağı terminolojisi | Microsoft Docs
+title: Azure Service Fabric ağı terminolojisi
 description: Bu makalede, belgelerde kullanılan koşulları daha iyi anlamanıza yardımcı olmak üzere Azure Service Fabric ağı tarafından kullanılan terminoloji ayrıntılı olarak açıklanır.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351969"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric kafes terminolojisi
 
@@ -72,15 +68,15 @@ Farklı ortamların çerçeveler ve dağıtım modelleri için farklı destek d�
 
 | Uygulama türü | Açıklanan | Azure Service Fabric ağı | Azure Service Fabric kümeleri (herhangi bir işletim sistemi)| Yerel küme | Tek başına küme |
 |---|---|---|---|---|---|
-| Service Fabric kafes uygulamaları | Kaynak modeli (YAML & JSON) | Destekleniyor |Desteklenmiyor | Windows-desteklenen, Linux ve Mac-desteklenmez | Windows-desteklenmiyor |
-|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | Desteklenmiyor| Destekleniyor|Destekleniyor|Windows-destekleniyor|
+| Service Fabric kafes uygulamaları | Kaynak modeli (YAML & JSON) | Desteklenen |Desteklenmiyor | Windows-desteklenen, Linux ve Mac-desteklenmez | Windows-desteklenmiyor |
+|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | Desteklenmiyor| Desteklenen|Desteklenen|Windows-destekleniyor|
 
 Aşağıdaki tabloda, Service Fabric karşı farklı uygulama modelleri ve araçları açıklanmaktadır.
 
-| Uygulama türü | Açıklanan | Visual Studio | Eclipse | SFCTL | AZ CLı | PowerShell|
+| Uygulama türü | Açıklanan | Visual Studio | Eclipse | SFCTL | AZ CLı | Powershell|
 |---|---|---|---|---|---|---|
 | Service Fabric kafes uygulamaları | Kaynak modeli (YAML & JSON) | VS 2017 |Desteklenmiyor |Desteklenmiyor | Yalnızca desteklenen ağ ortamı | Desteklenmiyor|
-|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | VS 2017 ve VS 2015| Destekleniyor|Destekleniyor|Destekleniyor|Destekleniyor|
+|Yerel uygulamalar Service Fabric | Yerel uygulama modeli (XML) | VS 2017 ve VS 2015| Desteklenen|Desteklenen|Desteklenen|Desteklenen|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

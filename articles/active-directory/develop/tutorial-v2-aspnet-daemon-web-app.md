@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997029"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423389"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft Identity platform uç noktasını kullanan çok kiracılı bir Daemon oluşturma
 
 Bu öğreticide Microsoft Identity platformunu kullanarak, uzun süreli ve etkileşimli olmayan bir işlemle Microsoft iş müşterilerinin verilerine nasıl erişebileceğinizi öğreneceksiniz. Örnek Daemon, bir erişim belirteci almak için [OAuth2 istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) kullanır. Arka plan programı daha sonra [Microsoft Graph](https://graph.microsoft.io) çağırmak ve kurumsal verilere erişmek için belirtecini kullanır.
+
+> [!div class="checklist"]
+> * Bir Daemon uygulamasını Microsoft Identity platformu ile tümleştirme
+> * Uygulamaya yönetici tarafından doğrudan uygulama izinleri verme
+> * Microsoft Graph API 'sini çağırmak için bir erişim belirteci alın
+> * Microsoft Graph API 'sini çağırın.
+
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 Uygulama, bir ASP.NET MVC uygulaması olarak oluşturulmuştur. Kullanıcıların oturum açması için OWIN OpenID Connect ara yazılımını kullanır.  
 
@@ -42,7 +50,7 @@ Uygulama, Microsoft iş müşterilerine yönelik çok kiracılı bir uygulama ol
 
 Bu örnekte kullanılan kavramlar hakkında daha fazla bilgi için [kimlik platformu uç noktası için istemci kimlik bilgileri Protokolü belgelerini](v2-oauth2-client-creds-grant-flow.md)okuyun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıçta örnek çalıştırmak için şunlar gerekir:
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Ya da [örneği bir zip dosyasına indirin](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>Örnek uygulamayı Azure AD kiracınızla kaydetme
+## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-Bu örnekte bir proje vardır. Kaydolmak için şunlardan birini yapabilirsiniz:
+Bu örnekte bir proje vardır. Uygulamayı Azure AD kiracınızla kaydetmek için şunlardan birini yapabilirsiniz:
 
-- [Örneği Azure Active Directory kiracınızla kaydetme](#register-the-sample-application-with-your-azure-ad-tenant) bölümündeki adımları izleyin ve [örneği Azure AD kiracınızı kullanacak şekilde yapılandırın](#choose-the-azure-ad-tenant).
+- [Örneği Azure Active Directory kiracınızla kaydetme](#register-your-application) bölümündeki adımları izleyin ve [örneği Azure AD kiracınızı kullanacak şekilde yapılandırın](#choose-the-azure-ad-tenant).
 - PowerShell betiklerini şu şekilde kullanın:
   - Azure AD uygulamalarını ve ilgili nesneleri (parolalar, izinler, bağımlılıklar) sizin için *otomatik olarak* oluşturun.
   - Visual Studio projelerinin yapılandırma dosyalarını değiştirin.
@@ -147,7 +155,7 @@ Kurulum betiklerini kullandıysanız, sizin için aşağıdaki değişiklikler u
 
 Oturum açtığınızda, uygulama öncelikle oturumunuzu açmak ve Kullanıcı profilinizi okumak için sizden izin ister. Bu izin, uygulamanın bir iş kullanıcısı olduğunuzdan emin olmanızı sağlar.
 
-![Kullanıcı onayı](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
+![Kullanıcı izni](./media/tutorial-v2-aspnet-daemon-webapp/firstconsent.png)
 
 Uygulama daha sonra Microsoft Graph aracılığıyla Azure AD kiracınızdan bir kullanıcı listesini eşitlemeye çalışır. Bu, kiracınızı uygulamaya bağlamak için sizi (kiracı yöneticisi) ister.
 
@@ -237,7 +245,10 @@ Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir ta
 1. Yapılandırmayı kaydedin.
 1. **Kimlik doğrulama** > **yeniden yönlendirme URI 'leri** için değer listesinde aynı URL 'yi ekleyin. Birden çok yeniden yönlendirme URL 'SI varsa, her yönlendirme URL 'si için App Service 'in URI 'sini kullanan yeni bir giriş olduğundan emin olun.
 
-## <a name="community-help-and-support"></a>Topluluk yardım ve destek
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+Artık gerekli değilse, [Uygulamanızı kaydetme](#register-your-application) adımındaki oluşturduğunuz uygulama nesnesini silin.  Uygulamayı kaldırmak için [siz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)bölümündeki yönergeleri izleyin.
+
+## <a name="get-help"></a>Yardım alın
 
 Topluluktan destek almak için [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) kullanın.
 İlk olarak Stack Overflow sorularınızı sorun ve bir kişinin sorunuzu isteyip istemediğini öğrenmek için mevcut sorunlara gözatın.

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme-Azure Active Directory
+title: Yetkilendirme yönetiminde kaynakları oluşturma & yönetme-Azure AD
 description: Azure Active Directory yetkilendirme yönetiminde yeni bir kaynak kapsayıcısı oluşturmayı ve paketlerin nasıl erişebileceğini öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174431"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422636"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -129,7 +129,7 @@ Bir kataloğun adını ve açıklamasını düzenleyebilirsiniz. Kullanıcılar 
 
     ![Katalog ayarlarını Düzenle](./media/entitlement-management-shared/catalog-edit.png)
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="delete-a-catalog"></a>Katalog silme
 

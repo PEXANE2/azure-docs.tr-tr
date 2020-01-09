@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b94dbb81b2ab5b7e4421357ee81d6c3ea8e8d3c0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 816009bb7481d93fd53011d067ab56cecbe8e3ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440416"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri ve ODBC veri depolarından veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -36,7 +36,7 @@ ODBC kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayabi
 
 Özellikle, bu ODBC Bağlayıcısı **temel** veya **anonim** kimlik doğrulaması kullanarak **ODBC ile uyumlu tüm veri depolarından** veri kopyalamayı destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu ODBC bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
@@ -55,13 +55,13 @@ ODBC bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **ODBC** olarak ayarlanmalıdır | Yes |
-| connectionString | Kimlik bilgisi bölümünü dışlayarak bağlantı dizesi. Bağlantı dizesini `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`gibi bir düzende belirtebilir veya `"DSN=<name of the DSN on IR machine>;"` ile Integration Runtime makinede ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü buna göre belirtmeniz gerekir).<br>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md).| Yes |
-| authenticationType | ODBC veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Yes |
+| type | Type özelliği: **ODBC** olarak ayarlanmalıdır | Evet |
+| connectionString | Kimlik bilgisi bölümünü dışlayarak bağlantı dizesi. Bağlantı dizesini `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`gibi bir düzende belirtebilir veya `"DSN=<name of the DSN on IR machine>;"` ile Integration Runtime makinede ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü buna göre belirtmeniz gerekir).<br>Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault depolama kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin.| Evet |
+| authenticationType | ODBC veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Evet |
 | userName adı | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
+| parola | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
 | kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Örnek: `"RefreshToken=<secret refresh token>;"`. Bu alanı SecureString olarak işaretleyin. | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
 **Örnek 1: temel kimlik doğrulaması kullanma**
 
@@ -71,10 +71,7 @@ ODBC bağlı hizmeti için aşağıdaki özellikler desteklenir:
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -98,10 +95,7 @@ ODBC bağlı hizmeti için aşağıdaki özellikler desteklenir:
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Anonymous",
             "credential": {
                 "type": "SecureString",
@@ -124,7 +118,7 @@ ODBC ile uyumlu veri deposundan veri kopyalamak için aşağıdaki özellikler d
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Odbctable** olarak ayarlanmalıdır | Yes |
+| type | DataSet 'in Type özelliği: **Odbctable** olarak ayarlanmalıdır | Evet |
 | tableName | ODBC veri deposundaki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
 **Örnek**
@@ -158,7 +152,7 @@ ODBC uyumlu veri deposundan verileri kopyalamak için, etkinlik **kaynağını**
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Odbcsource** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Odbcsource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**
@@ -201,7 +195,7 @@ ODBC uyumlu veri deposuna veri kopyalamak için kopyalama etkinliğindeki havuz 
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun Type özelliği: **Odbcsink** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği havuzunun Type özelliği: **Odbcsink** olarak ayarlanmalıdır | Evet |
 | writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/>İzin verilen değerler: TimeSpan. Örnek: "00: 30:00" (30 dakika). |Hayır |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler.<br/>İzin verilen değerler: Integer (satır sayısı). |Hayır (varsayılan 0-otomatik olarak algılanır) |
 | preCopyScript |Her çalıştırmada veri deposuna veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. |Hayır |
@@ -261,10 +255,7 @@ Aşağıdaki örnekte gösterildiği gibi SAP HANA veri deposunu bir Azure Data 
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015"
-            },
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {

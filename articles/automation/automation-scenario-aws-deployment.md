@@ -2,24 +2,20 @@
 title: Amazon Web Services sanal makinenin dağıtımını otomatikleştirme
 description: Bu makalede, Azure Otomasyonu kullanarak bir Amazon Web hizmeti VM 'sinin oluşturulmasını otomatik hale getirme gösterilmektedir
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b149a21ef60b22c2e549c91007265ce99babdbe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849641"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420918"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Otomasyonu senaryosu-AWS sanal makinesi sağlama
 Bu makalede, Amazon Web Service (AWS) aboneliğinizde bir sanal makine sağlamak için Azure Otomasyonu 'Nu nasıl kullanabileceğinizi öğrenirsiniz ve bu VM 'ye özel bir ad verebilirsiniz: AWS 'nin VM 'yi "etiketleme" olarak ifade eder.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalenin amaçları doğrultusunda, bir Azure Otomasyonu hesabına ve AWS aboneliğine sahip olmanız gerekir. Azure Otomasyonu hesabı ayarlama ve AWS aboneliği kimlik bilgilerinizle yapılandırma hakkında daha fazla bilgi için, [Amazon Web Services kimlik doğrulamasını yapılandırma](automation-config-aws-account.md)konusunu gözden geçirin. Bu hesaba aşağıdaki adımlarda başvuru yaptığınız için, bu hesap, devam etmeden önce kendi AWS abonelik kimlik bilgilerinizle oluşturulmalıdır veya güncelleştirilir.
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Amazon Web Services PowerShell modülünü dağıtma

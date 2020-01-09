@@ -5,15 +5,15 @@ author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Bu öğreticide, Azure Kubernetes hizmetindeki bir Java uygulamasında takım geliştirmesi yapmak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 400aec21d028011523fc5b441ed8ba77a1a46074
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: d81b0227a627593b16bd07f4cfcf4c1b6d61f84b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438164"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Java kullanarak ve Azure Dev Spaces ile Visual Studio Code takım geliştirme
 

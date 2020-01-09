@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3477bac051346e4b334ff3437085c402090b2c98
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356347"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
 
-Kaba yeniden yerelleştirme, soruya bir başlangıç yanıtı sağlayan bir özelliktir: *cihazım Şu anda nerede, ne kadar hangi içerikleri gözlemliyim?* Yanıt kesin değil, ancak bunun yerine şu biçimdedir: *Bu Tutturucuların yakınına yakınız, bunlardan birini konumlandırmayı deneyin*.
+Kaba yeniden yerelleştirme, soruya bir başlangıç yanıtı sağlayan bir özelliktir: *cihazım Şu anda nerede, ne kadar hangi içerikleri gözlemliyim?* Yanıt kesin değil, ancak bunun yerine şu biçimdedir: *Bu Tutturucuların yakınına yakınız; bunlardan birini konumlandırmayı deneyin*.
 
-Farklı cihaz algılayıcı okumaları, hem oluşturma hem de Tutturucuların sorgulanması ile ilişkilendirerek etkili bir şekilde yeniden yerelleştirme çalışmaktadır. Açık Hava senaryolarında, algılayıcı verileri genellikle cihazın GPS (Global Konumlandırma Sistemi) konumudur. GPS kullanılabilir olmadığında veya güvenilir olmadığında (ınkapılar gibi), algılayıcı verileri WiFi erişim noktaları ve zaman içindeki Bluetooth işaretleriyle oluşur. Tüm toplanan algılayıcı verileri, bir uzamsal dizinin sürdürülmesi için katkıda bulunur. Uzamsal dizin, cihazınızın yaklaşık 100 ölçümlerinde bulunan bağlantıları hızlıca belirleyebilmek için tutturucu hizmeti tarafından yararlanılabilir.
+Farklı cihaz algılayıcı okumaları, hem oluşturma hem de Tutturucuların sorgulanması ile ilişkilendirerek etkili bir şekilde yeniden yerelleştirme çalışmaktadır. Açık Hava senaryolarında, algılayıcı verileri genellikle cihazın GPS (Global Konumlandırma Sistemi) konumudur. GPS kullanılabilir olmadığında veya güvenilir olmadığında (ınkapılar gibi), algılayıcı verileri WiFi erişim noktalarından ve aralıktaki Bluetooth işaretleriyle oluşur. Tüm toplanan algılayıcı verileri, bir uzamsal dizinin sürdürülmesi için katkıda bulunur bu, cihazınızın yaklaşık 100 ölçümlerinde bulunan bağlantıları hızlı bir şekilde tespit etmek için Azure uzamsal bağlantıları tarafından kullanılır.
 
-Kaba reyerelleştirme tarafından etkinleştirilen bağlayıcıların hızlı bakış özelliği, dünya ölçeğinde (milyonlarca coğrafi olarak dağıtılmış) çıpası tarafından desteklenen uygulamaların geliştirilmesini basitleştirir. Bağlantı yönetiminin karmaşıklığı tamamen gizlenir ve bu da başar uygulama mantığınıza daha fazla odaklanmanızı sağlar. Tüm bağlantı ağır kaldırma işlemi, hizmet tarafından arka planda sizin için yapılır!
+Kaba reyerelleştirme tarafından etkinleştirilen bağlantıları hızlı bir şekilde aramak, dünya ölçeğinde (yani milyonlarca coğrafi olarak dağıtılmış) Tutturucuların desteklenen uygulamalarının geliştirilmesini basitleştirir. Bağlantı yönetiminin karmaşıklığı tamamen gizlenir ve bu da başar uygulama mantığınıza daha fazla odaklanmanızı sağlar. Tüm çapa noktası ağır kaldırma işlemi, arka planda Azure uzamsal bağlantılarına göre yapılır.
 
 ## <a name="collected-sensor-data"></a>Toplanan algılayıcı verileri
 
@@ -118,7 +118,7 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-Daha sonra, ne kadar kaba yeniden yerelleştirme için kullanmak istediğiniz sensöre karar vermeniz gerekir. Bu karar, genel olarak, geliştirmekte olduğunuz uygulamaya özeldir, ancak aşağıdaki tablodaki önerilerin size iyi bir başlangıç noktası vermesi gerekir:
+Daha sonra, ne kadar kaba yeniden yerelleştirme için kullanmak istediğiniz sensöre karar vermeniz gerekir. Bu karar, geliştirmekte olduğunuz uygulamaya özeldir, ancak aşağıdaki tablodaki önerilerin size iyi bir başlangıç noktası vermesi gerekir:
 
 
 |             | Inkapıların | Dış kapılar |
@@ -182,8 +182,9 @@ Uygulamanızda GPS kullanırken, donanım tarafından sunulan okumalar tipik ola
 
 Genel olarak, hem cihaz işletim sistemi hem de Azure uzamsal bağlantıları, bu sorunları azaltmak için ham GPS sinyalinde bazı filtreleme ve tahmin işlemi yapar. Bu ek işleme yakınsama için ek zaman gerektirir, bu nedenle en iyi sonuçlar için şunu deneyin:
 
-* bir algılayıcı parmak izi sağlayıcısını uygulamanızda olabildiğince erken oluşturun
-* algılayıcı parmak izi sağlayıcısını canlı tutun ve birden çok oturum arasında paylaşma
+* uygulamanızda olabildiğince erken bir algılayıcı parmak izi sağlayıcısı oluşturun
+* algılayıcı parmak izi sağlayıcısını birden çok oturum arasında canlı tutun
+* algılayıcı parmak izi sağlayıcısını birden çok oturum arasında paylaşma
 
 Algılayıcı parmak izi sağlayıcısını bir bağlantı oturumu dışında kullanmayı planlıyorsanız, algılayıcı tahminleri yapmadan önce bu hizmeti başlattığınızdan emin olun. Örneğin, aşağıdaki kod, cihazınızın haritadaki konumunu gerçek zamanlı olarak güncelleştirmekte olacaktır:
 
@@ -418,7 +419,7 @@ sensors.BluetoothEnabled(true);
 
 ---
 
-İşaretlerin genellikle, UUID 'ler ve MAC adresleri gibi her şeyin yapılandırılabileceği çok yönlü cihazlardır. Bu esneklik, işaretleri UUID 'ler tarafından benzersiz şekilde tanımlanabilecek Azure uzamsal çıpası için sorunlu olabilir. Bu benzersizlik 'in büyük olasılıkla uzamsal solucan delikleri içine çevirdiğinden emin olunması başarısız. En iyi sonuçlar için şunları yapmanız gerekir:
+İşaretlerin genellikle, UUID 'ler ve MAC adresleri gibi her şeyin yapılandırılabileceği çok yönlü cihazlardır. Bu esneklik, UUID 'ler tarafından benzersiz şekilde tanımlanması için işaretleri dikkate alarak Azure uzamsal bağlayıcılarına yönelik sorunlu olabilir. Bu benzersizlik, büyük olasılıkla uzamsal solucan delikleri oluşmasına neden olabilir. En iyi sonuçlar için şunları yapmanız gerekir:
 
 * işaretlerine benzersiz UUID 'ler atayın.
 * Bunları, genellikle kılavuz gibi normal bir düzende dağıtın.
@@ -490,13 +491,13 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Azure uzamsal bağlantıları yalnızca listedeki Bluetooth işaretlerini izler. Allow-listelenmiş UUID 'ler olarak programlanmış kötü amaçlı işaretleri hizmetin kalitesini de olumsuz yönde etkileyebilir. Bu nedenle, işaretlerini yalnızca, dağıtımını denetleyebileceğiniz, yalnızca seçkin alanlarda kullanmanız gerekir.
+Azure uzamsal bağlantıları yalnızca bilinen işaret yakınlık UUID 'ler listesindeki Bluetooth işaretlerini izler. Allow-listelenmiş UUID 'ler olarak programlanmış kötü amaçlı işaretleri hizmetin kalitesini de olumsuz yönde etkileyebilir. Bu nedenle, işaretlerini yalnızca, dağıtımını denetleyebileceğiniz, yalnızca seçkin alanlarda kullanmanız gerekir.
 
 ## <a name="querying-with-sensor-data"></a>Algılayıcı verileriyle sorgulama
 
-İlişkili algılayıcı verileriyle bağlayıcı oluşturduktan sonra, cihazınızın bildirdiği algılayıcı ayarlarını kullanarak bunları almaya başlayabilirsiniz. Artık, bulmayı beklediğiniz bilinen Tutturucuların bir listesini sağlamanız gerekmez. bunun yerine, yalnızca hizmetin, kendi ekleme algılayıcılarının bildirdiği şekilde cihazınızın konumunu bilmesini sağlayabilirsiniz. Daha sonra uzamsal bağlayıcı hizmeti, cihazınıza yakın olan bağlayıcı kümesini şekillendirilecektir ve bunları görsel olarak eşleştirmeye çalışır.
+İlişkili algılayıcı verileriyle bağlayıcı oluşturduktan sonra, cihazınızın bildirdiği algılayıcı ayarlarını kullanarak bunları almaya başlayabilirsiniz. Artık, bulmayı beklediğiniz bilinen Tutturucuların bir listesini sağlamanız gerekmez. bunun yerine, yalnızca hizmetin, kendi ekleme algılayıcılarının bildirdiği şekilde cihazınızın konumunu bilmesini sağlayabilirsiniz. Daha sonra Azure uzamsal bağlantıları, cihazınıza yakın olan bağlayıcı kümesini anlayabilir ve bunlarla görsel olarak eşleştirmeye çalışır.
 
-Sorguların algılayıcı verilerini kullanması için, bulma ölçütü oluşturarak başlayın:
+Sorguların algılayıcı verilerini kullanması için, "neredeyse cihaz" ölçütlerini oluşturarak başlayın:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -593,7 +594,7 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 `DistanceInMeters` parametresi, içerik almak için tutturucu grafiği ne kadar keşfedeceğiz denetler. Her ölçünün 2. sabitinde yer alan bağlayıcılarla bir boşluk doldurmuş olduğunuz örneği varsayalım. Ayrıca, cihazınızdaki kamera tek bir tutturucu gözlemleyerek hizmet tarafından başarıyla bulunur. En büyük olasılıkla, şu anda gözlemlediğiniz tek yer yerine, yerleştirdiğiniz tüm Tutturucuların alınması çok büyük olabilir. Yerleştirdiğiniz Tutturucuların bir grafiğe bağlı olduğu varsayıldığında, hizmet grafikteki kenarları izleyerek sizin için tüm yakın bağlantıları alabilir. Gerçekleştirilen grafik geçişi miktarı `DistanceInMeters`tarafından denetlenir; bulduğunuz birine bağlı olan tüm Tutturucuların `DistanceInMeters`daha yakınına vermiş olursunuz.
 
-`MaxResultCount` için büyük değerlerin performansı olumsuz yönde etkileyebileceğini aklınızda bulundurun. Uygulamanızı anlamlı hale getiren bir değere ayarlamayı deneyin.
+`MaxResultCount` için büyük değerlerin performansı olumsuz yönde etkileyebileceğini aklınızda bulundurun. Uygulamanız için bir senable değere ayarlayın.
 
 Son olarak, oturuma algılayıcı tabanlı arama 'yı kullanmayı söylemeniz gerekir:
 
@@ -669,7 +670,7 @@ Aşağıdaki tabloda, desteklenen her platformda toplanan algılayıcı verileri
 Bir uygulamada kaba yeniden yerelleştirme kullanın.
 
 > [!div class="nextstepaction"]
-> ['Yi](../how-tos/set-up-coarse-reloc-unity.md)
+> [Unity](../how-tos/set-up-coarse-reloc-unity.md)
 
 > [!div class="nextstepaction"]
 > [Objective-C](../how-tos/set-up-coarse-reloc-objc.md)

@@ -2,13 +2,14 @@
 title: Kapsayıcı grubunu Azure sanal ağı 'na dağıtma
 description: Yeni veya mevcut bir Azure sanal ağına kapsayıcı grupları dağıtmayı öğrenin.
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442241"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Azure sanal ağına kapsayıcı örnekleri dağıtma
 
@@ -45,8 +46,8 @@ Kapsayıcı kaynak sınırları, bu bölgelerdeki ağa bağlı olmayan kapsayıc
 ### <a name="unsupported-networking-scenarios"></a>Desteklenmeyen ağ senaryoları 
 
 * **Azure Load Balancer** -ağa bağlı bir kapsayıcı grubundaki kapsayıcı örneklerinin önüne bir Azure Load Balancer yerleştirme desteklenmez
-* **Sanal ağ eşlemesi** -başka bir sanal ağa Azure Container Instances için temsilci atanmış bir alt ağ içeren bir sanal ağı eşleyemiyoruz
-* **Rota tabloları** -Kullanıcı tanımlı yollar, Azure Container Instances için temsilci atanmış bir alt ağda ayarlanamaz
+* **Sanal ağ eşlemesi** -VNET EŞLEMESI, acı VNET 'in eşlenmekte olduğu ağın ortak bir IP alanı kullanması durumunda aci için çalışmaz. Eşleme çalışması için eşlenen ağın RFC1918 özel bir IP alanı olması gerekir. Ayrıca, şu anda yalnızca sanal ağı başka bir sanal ağa eşleyebilme
+* **Sanal ağ trafiği yönlendirme** -müşteri rotaları genel IP 'ler etrafında ayarlanamaz. Yollar, acı kaynaklarının dağıtıldığı, temsilcili alt ağın özel IP alanı içinde ayarlanabilir 
 * **Ağ güvenlik grupları** -Azure Container Instances atanmış bir alt ağa uygulanan NSG 'lerdeki giden güvenlik kuralları şu anda zorlanmıyor 
 * **Genel IP veya DNS etiketi** -bir sanal ağa dağıtılan kapsayıcı grupları, şu anda KAPSAYıCıLARı genel IP adresi veya tam etki alanı adı ile doğrudan internet 'te kullanıma sunma desteği vermez
 * İç **ad çözümleme** -sanal ağdaki Azure kaynakları için dahili Azure DNS ad çözümlemesi desteklenmez
@@ -63,7 +64,7 @@ Bir sanal ağ, bir veya daha fazla alt ağ oluşturduğunuz adres alanını tan�
 
 ### <a name="subnet-delegated"></a>Alt ağ (temsilci)
 
-Alt ağlar sanal ağı, yerleştirdiğiniz Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler. Bir sanal ağ içinde bir veya birden çok alt ağ oluşturursunuz.
+Alt ağlar, sanal ağ yerleştirebilirsiniz, Azure kaynaklarını kullanılabilir ayrı adres alanları ölçütü. Bir sanal ağ içinde bir veya birden çok alt ağ oluşturursunuz.
 
 Kapsayıcı grupları için kullandığınız alt ağ yalnızca kapsayıcı grupları içerebilir. Bir alt ağa ilk kez bir kapsayıcı grubu dağıttığınızda, Azure bu alt ağı Azure Container Instances için devreder. Temsilci seçildikten sonra alt ağ yalnızca kapsayıcı grupları için kullanılabilir. Bir temsilci alt ağına kapsayıcı grupları dışında kaynak dağıtmaya çalışırsanız, işlem başarısız olur.
 
@@ -85,7 +86,7 @@ Kapsayıcı gruplarını yeni bir sanal ağa dağıtmak ve Azure 'un sizin için
 
 Yeni bir sanal ağa dağıtmak ve Azure 'un ağ kaynaklarını sizin için otomatik olarak oluşturmasını sağlamak için [az Container Create][az-container-create]çalıştırdığınızda şunları belirtin:
 
-* Sanal ağ adı
+* Sanal ağın adı
 * CıDR biçimindeki sanal ağ adresi ön eki
 * Alt ağ adı
 * CıDR biçimindeki alt ağ adresi öneki

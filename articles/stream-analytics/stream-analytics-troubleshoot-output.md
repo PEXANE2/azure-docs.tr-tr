@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics çıkışları sorunlarını giderme
-description: Bu makalede, çıkış bağlantılarınızı Azure Stream Analytics işlerinde sorun giderme teknikleri açıklar.
-services: stream-analytics
+description: Bu makalede Azure Stream Analytics işlerinde çıkış bağlantılarınızın sorunlarını gidermeye yönelik teknikler açıklanmaktadır.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,45 +8,45 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620786"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354102"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
-Bu sayfa, çıkış bağlantılarını ve sorun giderme ve onları adreslemek ile ilgili yaygın sorunları açıklar.
+Bu sayfada çıkış bağlantılarıyla ilgili yaygın sorunlar ve bunların nasıl giderileceği ve ele alınacağını açıklanmaktadır.
 
-## <a name="output-not-produced-by-job"></a>Çıktı iş tarafından üretilen değil 
-1.  Kullanarak çıkış bağlantısını doğrulayın **Test Bağlantısı** her çıkış düğmesi.
+## <a name="output-not-produced-by-job"></a>İş tarafından üretilmeyen çıkış 
+1.  Her çıkış için **Bağlantıyı Sına** düğmesini kullanarak çıkışlara bağlantıyı doğrulayın.
 
-2.  Bakmak [ **izleme ölçümleri** ](stream-analytics-monitoring.md) üzerinde **İzleyici** sekmesi. Değerler toplanır çünkü ölçümleri birkaç dakika gecikir.
-    - Giriş olayları > 0 ise, iş giriş verilerini okuyabilir. Giriş olayları > 0 ise, ardından değilse:
-      - Veri kaynağı geçerli veriler olup olmadığını görmek için onu kullanarak kontrol [hizmet veri yolu Gezgini](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Bu denetim, iş girdisi olarak olay hub'ı kullanıyorsanız geçerlidir.
-      - Veri seri hale getirme biçiminin ve kodlama verileri beklendiği gibi olup olmadığını denetleyin.
-      - İleti gövdesi olup olmadığını görmek için işin bir olay hub'ı kullanıyorsanız, denetleyin *Null*.
+2.  **İzleyici** sekmesinde [**izleme ölçümleri**](stream-analytics-monitoring.md) ' ne bakın. Değerler toplanmış olduğundan ölçümler birkaç dakika gecikiyor.
+    - Giriş olayları 0 >, iş giriş verilerini okuyabilir. Giriş olayları > 0 değilse:
+      - Veri kaynağının geçerli verilere sahip olup olmadığını görmek için [Service Bus Gezginini](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)kullanarak denetleyin. Bu denetim, iş Olay Hub 'ını giriş olarak kullanıyorsa geçerlidir.
+      - Veri serileştirme biçiminin ve veri kodlamasının beklenip beklenmediğini denetleyin.
+      - İş bir olay hub 'ı kullanıyorsa, ileti gövdesinin *null*olup olmadığını kontrol edin.
       
-    - Veri dönüştürme hataları > 0 ve tırmanma, aşağıdaki olabilir true:
-      - Çıkış olayı bir hedef havuz şemaya uymuyor. 
-      - Olay şeması sorguda olayların tanımlı veya beklenen şema eşleşmeyebilir.
-      - Bazı alanların veri türlerini beklentileri olay eşleşmeyebilir.
+    - Veri dönüştürme hataları 0 > ve clienmbing ise, aşağıdakiler doğru olabilir:
+      - Çıkış olayı, hedef havuzun şemasına uymuyor. 
+      - Olay şeması, sorgudaki olayların tanımlı veya beklenen şemasıyla eşleşmeyebilir.
+      - Olaydaki bazı alanların veri türleri beklentileri eşleşmeyebilir.
       
-    - Çalışma zamanı hataları > 0 ise, geldiğini iş verileri alabilir ancak sorguyu işlerken hata oluşturuyor.
-      - Hataları bulmak için Git [denetim günlüklerini](../azure-resource-manager/resource-group-audit.md) ve filtre *başarısız* durumu.
+    - Çalışma zamanı hataları 0 >, işin verileri alabileceği ancak sorguyu işlerken hata üretebileceği anlamına gelir.
+      - Hataları bulmak için [Denetim günlüklerine](../azure-resource-manager/resource-group-audit.md) gidin ve *başarısız* durumu filtreleyin.
       
-    - Varsa Inputevents > 0 ve OutputEvents = 0, aşağıdakilerden birini true olduğu anlamına gelir:
+    - Inputevents > 0 ve OutputEvents = 0 ise, aşağıdakilerden birinin doğru olduğu anlamına gelir:
       - Sorgu işleme sıfır çıkış olayıyla sonuçlandı.
-      - Olaylar veya bunların alanları sonra sorgu işleme sıfır çıkış kaynaklanan hatalı olabilir.
-      - İş çıkış havuzuna bağlantı veya kimlik doğrulama nedenleriyle veri gönderme oluşturamadı.
+      - Olaylar veya alanları hatalı biçimlendirilmiş olabilir ve sorgu işlemeden sonra sıfır çıkış elde edilir.
+      - İş, bağlantı veya kimlik doğrulama nedenleriyle verileri çıkış havuzuna gönderemedi.
       
-    - Tüm daha önce bahsedilen hata durumlarda, işlem günlüğü iletilerine (olanlar dahil) ek ayrıntılar açıklayan dışındaki sorgu mantığının tüm olayları da burada filtre uygulanmış durumda. Birden çok olayın işlenmesi hataların oluşturursa, işlem günlükleri 10 dakika içerisinde aynı türdeki ilk üç hata iletileri Stream Analytics günlüğe kaydeder. Ardından aynı hataların diğer örneklerini "Hatalar çok hızlı gerçekleşiyor, bunlar gizlenen olay meydana gelir." yazan iletisiyle bastırır
+    - Daha önce bahsedilen tüm hata durumlarında, işlem günlüğü iletilerinde sorgu mantığının tüm olayları süzdüğü durumlar dışında ek ayrıntılar (ne olur dahil) açıklanmaktadır. Birden çok olayın işlenmesi hata oluşturursa, Stream Analytics aynı türdeki ilk üç hata iletisini Işlem günlüklerine 10 dakika içinde günlüğe kaydeder. Daha sonra, "hataların çok hızlı bir şekilde çalıştığını, bunların gizlenmekte olduğunu" belirten bir iletiyle aynı hata hatalarını bastırır.
     
-## <a name="job-output-is-delayed"></a>İş çıktısı ertelendi
+## <a name="job-output-is-delayed"></a>İş çıkışı gecikti
 
 ### <a name="first-output-is-delayed"></a>İlk çıkış ertelendi
-Bir Stream Analytics işi başladığında, giriş olayları okumak, ancak bazı durumlarda üretilen çıktıda bir gecikme olabilir.
+Stream Analytics işi başlatıldığında, giriş olayları okunur ama bazı durumlarda çıkışın oluşturulmasında bir gecikme olabilir.
 
 Zamana bağlı sorgu öğeleri büyük saat değerleri için çıkış gecikmesi katkıda bulunabilir. Büyük zaman pencereleri doğru çıktı oluşturmak için iş akışında zaman penceresi doldurmak için en son zaman mümkün (en fazla yedi gün önce) verilerini okuyarak başlatılır. Bekleyen giriş olaylarını yakalama okuma işlemi tamamlanana kadar bu süre boyunca hiçbir çıktı üretilmiştir. Sistem, böylece iş yeniden başlatma akış işi, yükseltildiğinde bu sorun ortaya çıkabilir. Bu tür yükseltmeler, genellikle bir kez her birkaç ay oluşur. 
 
@@ -77,7 +76,7 @@ Bu etkenler oluşturulan ilk çıkışın dakikliğini etkiler:
 
 Azure portalında ayrıntılarını görmek için iş akışında seçip **iş diyagramı**. Her bir giriş var olan bir bölüm biriktirme listesi olay ölçüm. Biriktirme listesi olay ölçümü artmaya devam ederse, sistem kaynaklarının sınırlı olduğu bir göstergesidir. Potansiyel olarak verilecek çıkış havuzu kısıtlama veya yüksek CPU olmasıdır. İş diyagramı kullanma hakkında daha fazla bilgi için bkz. [veri odaklı iş diyagramı kullanarak hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
 
-## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışı ile anahtar ihlali uyarısı
+## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışıyla anahtar ihlali uyarısı
 
 Azure SQL veritabanı için bir Stream Analytics işi çıktı olarak yapılandırdığınızda, yığın kayıtları hedef tabloya ekler. Genel olarak, Azure stream analytics garanti eder [en az bir kere teslim](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) bir çıkış havuzuna yine de [tam olarak elde-kez teslim]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) SQL tablosu, tanımlı bir kısıtlama olduğunda SQL çıktı. 
 
@@ -91,8 +90,8 @@ IGNORE_DUP_KEY dizin çeşitli türleri için yapılandırırken aşağıdaki g�
 * BİRİNCİL anahtar benzersiz kısıtlamasından farklıdır ve CREATE INDEX veya dizin tanımı kullanılarak oluşturulan benzersiz bir dizin için ALTER INDEX kullanarak IGNORE_DUP_KEY seçeneği ayarlayabilirsiniz.  
 * Bu dizinlerin benzersizlik olamaz çünkü IGNORE_DUP_KEY sütun deposu dizinleri için geçerli değildir.  
 
-## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Azure Stream Analytics tarafından küçük harfleri sütun adları
-Özgün uyumluluk düzeyini (1.0) kullanırken, Azure Stream Analytics küçük harflere sütun adlarını değiştirmek için kullanılır. Bu davranış, sonraki Uyumluluk Düzeyleri düzeltildi. Durum korumak için biz 1.1 ve üzeri uyumluluk düzeyine geçmeye müşterilerimize. Daha fazla bilgi bulabilirsiniz [Azure Stream Analytics işleri için uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Sütun adları Azure Stream Analytics tarafından düşük
+Özgün uyumluluk düzeyini (1,0) kullanırken, Azure Stream Analytics sütun adlarını küçük harfe değiştirmek için kullanılır. Bu davranış sonraki uyumluluk düzeylerinde düzeltildi. Büyük/küçük harf durumunu korumak için müşterilerin 1,1 ve üzeri uyumluluk düzeyine taşınmasını tavsiye ederiz. [Azure Stream Analytics Işlerin uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)hakkında daha fazla bilgi edinebilirsiniz.
 
 
 ## <a name="get-help"></a>Yardım alın

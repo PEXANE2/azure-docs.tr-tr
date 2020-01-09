@@ -1,7 +1,7 @@
 ---
 title: 'Öneren değerlendir: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Öneren model tahminlerinin doğruluğunu değerlendirmek için Azure Machine Learning hizmetindeki değerlendir öneren modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Öneren model tahminlerinin doğruluğunu değerlendirmek için Azure Machine Learning 'de değerlendir öneren modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9a80fce04aa939895d1dc9572714046d9203bad7
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428547"
 ---
-# <a name="evaluate-recommender"></a>Öneren değerlendir
+# <a name="evaluate-recommender"></a>Önereni Değerlendirme
 
 Bu makalede Azure Machine Learning tasarımcısında değerlendir öneren modülünün nasıl kullanılacağı açıklanmaktadır (Önizleme). Amaç, bir öneri modelinin yaptığı tahminlerin doğruluğunu ölçmektir. Bu modülü kullanarak, farklı öneri türlerini değerlendirebilirsiniz:  
   
@@ -90,4 +90,4 @@ Bu veri kümesini bağlanmadan önce, en ilgili öğelerin ilk olması için ver
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

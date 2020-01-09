@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355275"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Güvenliği geliştirmek için Azure Güvenlik Merkezi önerilerini kullanın
 Bir güvenlik ilkesi yapılandırarak ve ardından Azure Güvenlik Merkezi tarafından sunulan önerileri uygulayarak önemli bir güvenlik olayı olasılığını azaltabilirsiniz. Bu makalede bir güvenlik saldırısını azaltmaya yardımcı olmak için Güvenlik Merkezi 'nde güvenlik ilkelerinin ve önerilerin nasıl kullanılacağı gösterilmektedir. 
@@ -63,7 +63,7 @@ Günlük izleme etkinliklerinin bir parçası olarak, Jeff Azure 'da oturum aça
 
 5. Jeff, **işlem ve uygulamaları**tıklattığında, önerilerin bir listesini görür ve bunları güvenli Puanlama etkisine göre işler.
 
-6. Jeff, Internet 'e yönelik çok sayıda sanal makineye sahiptir ve bağlantı noktaları kullanıma sunulduğundan, bir saldırganın sunucular üzerinde denetim kazanmasını sağlayacağından endişelenirler. Bu nedenle Jeff (**tam ZAMANıNDA VM erişimi**) [Security-Center-Just-in-time.MD] kullanmayı seçer.
+6. Jeff, Internet 'e yönelik çok sayıda sanal makineye sahiptir ve bağlantı noktaları kullanıma sunulduğundan, bir saldırganın sunucular üzerinde denetim kazanmasını sağlayacağından endişelenirler. Bu nedenle Jeff [ **, tam ZAMANıNDA VM erişimi**](security-center-just-in-time.md)kullanmayı seçer.
 
 Jeff, yüksek öncelikli ve orta öncelikli önerilere ilerlemeye devam eder ve uygulama üzerinde kararlar verir. Her öneri için, Jeff, Güvenlik Merkezi tarafından hangi kaynakların etkilendiğini, ne kadar güvenli puanı etkilediğini, her bir önerinin ne anlama geldiğini, her bir sorunun nasıl azaltılacağını gösteren düzeltme adımlarını anlamak için sunulan ayrıntılı bilgilere bakar.
 

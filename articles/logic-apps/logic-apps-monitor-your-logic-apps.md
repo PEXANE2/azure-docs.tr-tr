@@ -1,6 +1,6 @@
 ---
 title: Durumu denetleme, günlüğü ayarlama ve uyarı alma
-description: Durumu izleyin, tanılama verilerini günlüğe kaydedin ve Azure Logic Apps uyarılarını ayarlayın
+description: Durumu izleyin, günlüğü ayarlayın ve Azure Logic Apps hataları ve sorunları tanılamak için uyarıları açın
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ce29d6eb7bfefea6d9030d4cbb162936ff60c83d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791923"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428792"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Durumu izleyin, tanılama günlüğünü ayarlayın ve Azure Logic Apps uyarılarını açın
 
@@ -33,7 +33,7 @@ Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarılar�
 
 2. Mantıksal uygulamanızı seçip **genel bakış**' ı seçin.
 
-   Azure portal, mantıksal uygulamanız için çalıştırma geçmişi ve tetikleme geçmişini gösterir. Örnek:
+   Azure portal, mantıksal uygulamanız için çalıştırma geçmişi ve tetikleme geçmişini gösterir. Örneğin:
 
    ![Mantıksal uygulama geçmişi ve tetikleme geçmişini çalıştırır](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -47,7 +47,7 @@ Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarılar�
 
 3. Belirli bir çalışmadan ilgili adımları görüntülemek için, çalışma **geçmişi**altında o çalıştırmayı seçin. 
 
-   İzleyici görünümü, çalıştırılan her adımı gösterir. Örnek:
+   İzleyici görünümü, çalıştırılan her adımı gösterir. Örneğin:
 
    ![Belirli bir çalıştırma için Eylemler](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -57,7 +57,7 @@ Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarılar�
 
    Örneğin, [Logic Apps için REST API](https://docs.microsoft.com/rest/api/logic)kullandığınızda ihtiyacınız olabilecek ÇALıŞTıRMANıN **bağıntı kimliğini**alabilirsiniz.
 
-5. Belirli bir adımla ilgili ayrıntıları almak için bu adımı seçin. Artık girişler, çıktılar ve bu adımla ilgili tüm hatalar gibi ayrıntıları gözden geçirebilirsiniz. Örnek:
+5. Belirli bir adımla ilgili ayrıntıları almak için bu adımı seçin. Artık girişler, çıktılar ve bu adımla ilgili tüm hatalar gibi ayrıntıları gözden geçirebilirsiniz. Örneğin:
 
    ![Adım ayrıntıları](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -84,7 +84,7 @@ Başlamadan önce bir Log Analytics çalışma alanına sahip olmanız gerekir. 
 
 3. **Tanılama ayarları**altında **Açık**' ı seçin.
 
-   ![Tanılama günlüklerini aç](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![Tanılama günlüklerini açın](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Şimdi Log Analytics çalışma alanını ve günlüğe kaydetme için olay kategorisini gösterildiği gibi seçin:
 
@@ -158,7 +158,7 @@ Azure Izleyici günlükleriyle birlikte, mantıksal uygulamanızın tanılama ve
 * [Azure depolama 'da Azure Tanılama günlüklerini arşivleme](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Azure Event Hubs akış Azure Tanılama günlükleri](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örnek:
+Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örneğin:
 
 * [Event Hubs veri akışı Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Stream Analytics ile akış verilerini çözümleme ve Power BI bir gerçek zamanlı analiz panosu oluşturma](../stream-analytics/stream-analytics-power-bi-dashboard.md)

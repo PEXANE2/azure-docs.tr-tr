@@ -4,15 +4,15 @@ description: Bu makalede, bir makineye dağıtılan Log Analytics Windows veya L
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364790"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve sürdürme
 
@@ -22,7 +22,7 @@ Azure Izleyici 'de Log Analytics Windows veya Linux aracısının ilk dağıtım
 
 Windows ve Linux için Log Analytics Aracısı en son sürüme el ile veya VM 'nin çalıştığı dağıtım senaryosuna ve ortamına bağlı olarak otomatik olarak yükseltilebilir. Aşağıdaki yöntemler aracıyı yükseltmek için kullanılabilir.
 
-| Ortam | Yükleme yöntemi | Upgrade Yöntemi |
+| Ortam | Yükleme Yöntemi | Upgrade Yöntemi |
 |--------|----------|-------------|
 | Azure VM | Windows/Linux için Log Analytics Aracısı VM Uzantısı | *Otomatik* olarak, Azure Resource Manager şablonunuzu otomatik olarak varsayılan olarak yükseltilir. bu özelliği otomatik yükseltme özelliğini **yanlış**olarak ayarlayarak geri çevirebilirsiniz. |
 | Özel Azure VM görüntüleri | Windows/Linux için Log Analytics aracısının el ile yüklenmesi | VM 'Lerin aracının en yeni sürümüne güncelleştirilmesi için Windows Installer paketi veya Linux kendiliğinden ayıklanan ve yüklenebilir kabuk betik paketi çalıştıran komut satırından gerçekleştirilmesi gerekir.|
@@ -58,7 +58,7 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 4. **Microsoft Monitoring Agent kurulum** iletişim kutusunda lisans sözleşmesini kabul etmek için **kabul ediyorum ' a tıklayın.**
 
-5. **Microsoft Monitoring Agent kurulum** Iletişim kutusunda **Yükselt**' e tıklayın. Durum sayfası yükseltmenin ilerlemesini görüntüler.
+5. **Microsoft Monitoring Agent Kurulumu** iletişim kutusunda **Yükselt**'e tıklayın. Durum sayfası yükseltmenin ilerleyişini görüntüler.
 
 6. **Microsoft Monitoring Agent yapılandırması başarıyla tamamlandığında.** sayfası göründüğünde **son**' a tıklayın.
 
@@ -66,9 +66,9 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden `MMASetup-<platform>.exe /c` ' ı çalıştırın ve dosyaları ayıklama yolunu sorar. Alternatif olarak, `MMASetup-<platform>.exe /c /t:<Full Path>` bağımsız değişkenlerini geçirerek yolu belirtebilirsiniz.
+2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden `MMASetup-<platform>.exe /c` çalıştırın ve dosyaları ayıklama yolunu sorar. Alternatif olarak, `MMASetup-<platform>.exe /c /t:<Full Path>`bağımsız değişkenleri geçirerek de yolu belirtebilirsiniz.
 
-3. Şu komutu çalıştırın, burada D:\ , yükseltme günlük dosyasının konumudur.
+3. Aşağıdaki komutu çalıştırın. Burada D:\ yükseltme günlük dosyasının konumudur.
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -84,7 +84,7 @@ Aracıyı yükseltmek için aşağıdaki komutu çalıştırın.
 
 ## <a name="adding-or-removing-a-workspace"></a>Çalışma alanı ekleme veya kaldırma
 
-### <a name="windows-agent"></a>Windows Aracısı
+### <a name="windows-agent"></a>Windows aracısı
 Bu bölümdeki adımlar, yalnızca Windows aracısını farklı bir çalışma alanına rapor verecek şekilde yeniden yapılandırmak ya da bir çalışma alanını yapılandırmadan kaldırmak istediğinizde gereklidir, ancak aracıyı birden fazla çalışma alanına raporlama için yapılandırmak istediğinizde (genellikle Çoklu barındırma olarak adlandırılır). Windows aracısının birden çok çalışma alanına rapor verecek şekilde yapılandırılması, yalnızca aracının ilk kurulumundan sonra ve aşağıda açıklanan yöntemler kullanılarak gerçekleştirilebilir.    
 
 #### <a name="update-settings-from-control-panel"></a>Ayarları denetim masası 'ndan Güncelleştir
@@ -168,7 +168,7 @@ Değişikliklerin etkili olabilmesi için Aracı hizmetinin yeniden başlatılma
 ## <a name="update-proxy-settings"></a>Ara sunucu ayarlarını Güncelleştir
 Aracıyı, dağıtımdan sonra bir ara sunucu veya [ağ geçidi Log Analytics](gateway.md) aracılığıyla hizmetle iletişim kuracak şekilde yapılandırmak için, bu görevi gerçekleştirmek için aşağıdaki yöntemlerden birini kullanın.
 
-### <a name="windows-agent"></a>Windows Aracısı
+### <a name="windows-agent"></a>Windows aracısı
 
 #### <a name="update-settings-using-control-panel"></a>Denetim Masası 'nı kullanarak ayarları güncelleştirme
 
@@ -228,7 +228,7 @@ Linux bilgisayarlarınızın bir ara sunucu veya Log Analytics ağ geçidi üzer
 ## <a name="uninstall-agent"></a>Aracıyı kaldır
 Komut satırı veya Kurulum Sihirbazı 'nı kullanarak Windows veya Linux Aracısı 'nı kaldırmak için aşağıdaki yordamlardan birini kullanın.
 
-### <a name="windows-agent"></a>Windows Aracısı
+### <a name="windows-agent"></a>Windows aracısı
 
 #### <a name="uninstall-from-control-panel"></a>Denetim masasından kaldır
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
@@ -256,7 +256,7 @@ Aracıyı kaldırmak için Linux bilgisayarında aşağıdaki komutu çalıştı
 
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Aracıyı bir Operations Manager yönetim grubuna bildirilecek şekilde yapılandırma
 
-### <a name="windows-agent"></a>Windows Aracısı
+### <a name="windows-agent"></a>Windows aracısı
 Windows için Log Analytics aracısını bir System Center Operations Manager yönetim grubuna bildirilecek şekilde yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

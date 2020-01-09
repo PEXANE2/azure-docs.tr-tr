@@ -1,26 +1,15 @@
 ---
-title: Azure'da Service Fabric'i API Management ile tümleştirme | Microsoft Docs
+title: Azure 'da Service Fabric API Management tümleştirme
 description: Azure API Management ile hızlı bir şekilde çalışmaya başlama ve trafiği Service Fabric bir arka uç hizmetine yönlendirme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465347"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure 'da Service Fabric API Management tümleştirme
 
@@ -31,12 +20,12 @@ Bu makalede, trafiği Service Fabric bir arka uç hizmetine yönlendirmek için 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
 > [!IMPORTANT]
 > Bu özellik, gerekli sanal ağ desteği nedeniyle API Management **Premium** ve **Geliştirici** katmanlarında kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
@@ -47,7 +36,7 @@ Başlamadan önce:
 
 ## <a name="network-topology"></a>Ağ topolojisi
 
-Azure 'da güvenli bir [Windows kümeniz](service-fabric-tutorial-create-vnet-and-windows-cluster.md) olduğuna göre, API Management için belirtilen alt ağda ve NSG 'de sanal ağa (VNET) API Management dağıtın. Bu makalede, API Management Kaynak Yöneticisi şablonu, [Windows küme öğreticisinde](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ayarladığınız VNet, alt ağ ve NSG adlarını kullanacak şekilde önceden yapılandırılmıştır. Bu makalede, aşağıdaki API Management ve Service Fabric, aynı sanal ağın alt ağlardır:
+Azure 'da güvenli bir [Windows kümeniz](service-fabric-tutorial-create-vnet-and-windows-cluster.md) olduğuna göre, API Management için belirtilen alt ağda ve NSG 'de sanal ağa (VNET) API Management dağıtın. Bu makalede, API Management Kaynak Yöneticisi şablonu, [Windows küme öğreticisinde](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ayarladığınız VNet, alt ağ ve NSG adlarını kullanacak şekilde önceden yapılandırılmıştır. Bu makalede, API Management ve Service Fabric aynı sanal ağın alt ağlarında bulunan Azure 'a aşağıdaki topoloji dağıtılır:
 
  ![Resim yazısı][sf-apim-topology-overview]
 
@@ -158,7 +147,7 @@ Service Fabric arka uçları için, belirli bir Service Fabric hizmeti yerine Se
 
 * **displayName** ve **description** işlemi açıklar. Bu makalede "Values" kullanın.
 * **method**, HTTP fiilini belirtir.  Bu makale için **Al**' ı belirtin.
-* **urlTemplate**, API'nin temel URL'sinin sonuna eklenir ve tek bir HTTP işlemini tanımlar.  Bu makalede, .net arka `/api/values` uç hizmetini eklediyseniz veya `getMessage` Java arka uç hizmetini eklediyseniz kullanın.  Varsayılan olarak, burada belirtilen URL yolu arka uç Service Fabric hizmetine gönderilen URL yoludur. Burada hizmetinizin kullandığı URL yolunun aynısını kullanırsanız, ("/api/values" gibi), işlem başka bir değişikliğe gerek kalmadan çalışır. Burada, arka uç Service Fabric hizmetinizin kullandığı URL yolundan farklı bir URL yolu da belirtebilirsiniz. Bu durumda, daha sonra işlem ilkenizde yol yeniden yazma belirtmeniz gerekir.
+* **urlTemplate**, API'nin temel URL'sinin sonuna eklenir ve tek bir HTTP işlemini tanımlar.  Bu makalede, .NET arka uç hizmetini veya `getMessage` Java arka uç hizmetini eklediyseniz `/api/values` kullanın.  Varsayılan olarak, burada belirtilen URL yolu arka uç Service Fabric hizmetine gönderilen URL yoludur. Burada hizmetinizin kullandığı URL yolunun aynısını kullanırsanız, ("/api/values" gibi), işlem başka bir değişikliğe gerek kalmadan çalışır. Burada, arka uç Service Fabric hizmetinizin kullandığı URL yolundan farklı bir URL yolu da belirtebilirsiniz. Bu durumda, daha sonra işlem ilkenizde yol yeniden yazma belirtmeniz gerekir.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 

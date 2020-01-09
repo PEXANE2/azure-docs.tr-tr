@@ -1,5 +1,5 @@
 ---
-title: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
+title: Klasik 'dan Azure Resource Manager 'e geçiş planlaması
 description: IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460059"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının klasik 'dan Azure Resource Manager geçişini planlama
 Azure Resource Manager çok sayıda harika özellik sunurken, işlerin sorunsuz şekilde çalıştığından emin olmak için geçiş yolculuğunun planlanmaları önemlidir. Planlamada harcama süresi, geçiş etkinliklerini yürütürken sorunlarla karşılaşmamanız gerekir.
@@ -31,7 +31,7 @@ Geçiş yolculuğunun dört genel aşaması vardır:<br>
 
 ![Geçiş aşamaları](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Planlama
+## <a name="plan"></a>Plan
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Teknik hususlar ve avantajları
 
@@ -113,7 +113,7 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
 
 - **Kullanılabilirlik kümeleri** -Azure Resource Manager geçirilecek bir sanal ağ (vNet) Için, klasik dağıtımın (örneğin, bulut hizmeti) tümünün tek bir kullanılabilirlik kümesinde olması gerekir, aksi durumda VM 'lerin herhangi bir kullanılabilirlik kümesinde olmaması gerekir. Bulut hizmetinde birden fazla kullanılabilirlik kümesi Azure Resource Manager uyumlu değil ve geçiş işlemi durdurur.  Ayrıca, bir kullanılabilirlik kümesinde bazı VM 'Ler olamaz ve bazı VM 'Ler bir kullanılabilirlik kümesinde değildir. Bu sorunu çözmek için bulut hizmetinizi düzeltmeniz veya reshuffle gerekir.  Bu zaman alıcı olabilir.
 
-- **Web/çalışan rolü dağıtımları** -Web ve çalışan rollerini içeren Cloud Services Azure Resource Manager geçirilemez. Web ve çalışan rollerinizin içeriğini geçirmek için, kodun kendisini daha yeni PaaS uygulama hizmetlerine geçirmeniz gerekir (Bu, bu belgenin kapsamının ötesinde). Web/çalışan rollerini olduğu gibi bırakmak, ancak klasik VM 'Leri Kaynak Yöneticisi dağıtım modeline geçirmek istiyorsanız, geçiş başlamadan önce web/çalışan rollerinin önce sanal ağdan kaldırılması gerekir.  Tipik bir çözüm, web/çalışan rolü örneklerini bir ExpressRoute devresine de bağlanmış ayrı bir klasik sanal ağa taşıyamaktır. Eski yeniden dağıtma durumunda, yeni bir klasik sanal ağ oluşturun, web/çalışan rollerini bu yeni sanal ağa taşıyın/yeniden dağıtın ve ardından taşınan sanal ağdan dağıtımları silin. Kod değişikliği gerekmiyor. Yeni [sanal ağ eşleme](../../virtual-network/virtual-network-peering-overview.md) özelliği, geçirilmekte olan sanal ağ (**sanal ağ 'dan sonra) gibi aynı Azure bölgesindeki web/çalışan rollerini ve diğer sanal ağları içeren klasik sanal ağı birbirine bağlamak için kullanılabilir. geçiş, eşlenmiş sanal ağlar geçirilemeyeceği şekilde tamamlanır**), bu nedenle performans kaybı olmadan aynı özellikleri ve gecikme/bant genişliği yaptırımlarını sağlar. [Sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md)eklenmesi, web/çalışan rolü dağıtımları artık kolayca azaltılabilir ve Azure Resource Manager geçişe engel olmaz.
+- **Web/çalışan rolü dağıtımları** -Web ve çalışan rollerini içeren Cloud Services Azure Resource Manager geçirilemez. Web ve çalışan rollerinizin içeriğini geçirmek için, kodun kendisini daha yeni PaaS uygulama hizmetlerine geçirmeniz gerekir (Bu, bu belgenin kapsamının ötesinde). Web/çalışan rollerini olduğu gibi bırakmak, ancak klasik VM 'Leri Kaynak Yöneticisi dağıtım modeline geçirmek istiyorsanız, geçiş başlamadan önce web/çalışan rollerinin önce sanal ağdan kaldırılması gerekir.  Tipik bir çözüm, web/çalışan rolü örneklerini bir ExpressRoute devresine de bağlanmış ayrı bir klasik sanal ağa taşıyamaktır. Eski yeniden dağıtma durumunda, yeni bir klasik sanal ağ oluşturun, web/çalışan rollerini bu yeni sanal ağa taşıyın/yeniden dağıtın ve ardından taşınan sanal ağdan dağıtımları silin. Kod değişikliği gerekmiyor. Yeni [sanal ağ eşleme](../../virtual-network/virtual-network-peering-overview.md) özelliği, geçirilmekte olan sanal ağ gibi aynı Azure bölgesindeki web/çalışan rolleri ve diğer sanal ağları içeren klasik sanal ağın yanı sıra sanal ağ geçişi (eşlenen**sanal ağlar geçirilemez**) ile aynı şekilde, performans kaybı olmadan aynı özellikleri ve gecikme süresi/bant genişliği yaptırımlarını sağlamak için kullanılabilir. [Sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md)eklenmesi, web/çalışan rolü dağıtımları artık kolayca azaltılabilir ve Azure Resource Manager geçişe engel olmaz.
 
 - **Azure Resource Manager kotaları** -Azure bölgelerinin hem klasik hem de Azure Resource Manager ayrı kotaları/limitleri vardır. Geçiş senaryosunda yeni donanım tüketilmese de *(mevcut VM 'Leri klasik bilgisayardan Azure Resource Manager olarak değiştirdik)* , geçişin başlayabilmesi için Azure Resource Manager kotaların hala yeterli kapasiteye sahip olması gerekir. Aşağıda listelenen önemli limitler aşağıda verilmiştir.  Sınırları yükseltmek için bir kota destek bileti açın.
 
@@ -190,7 +190,7 @@ Tam test değil, geçiş sırasında sorunlara ve gecikmeye neden olabilir.
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Teknik hususlar ve avantajları
 
-Artık Azure Resource Manager olduğunuza göre, platformu en üst düzeye çıkarın.  Ek avantajlar hakkında bilgi edinmek için [Azure Resource Manager genel bakış](../../azure-resource-manager/resource-group-overview.md) makalesini okuyun.
+Artık Azure Resource Manager olduğunuza göre, platformu en üst düzeye çıkarın.  Ek avantajlar hakkında bilgi edinmek için [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md) makalesini okuyun.
 
 Göz önüne almanız gerekenler:
 

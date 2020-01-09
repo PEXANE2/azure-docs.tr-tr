@@ -1,95 +1,91 @@
 ---
-title: Azure kaynak durumu hakkında SSS | Microsoft Docs
-description: Azure kaynak durumu genel bakış
-author: stephbaron
-ms.author: stbaron
+title: Azure Kaynak Durumu SSS
+description: Azure Kaynak Durumu genel bakış
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.workload: Supportability
-ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426517"
 ---
-# <a name="azure-resource-health-faq"></a>Azure kaynak durumu hakkında SSS
-Azure kaynak durumu hakkında genel soruların yanıtlarını öğrenin.
+# <a name="azure-resource-health-faq"></a>Azure Kaynak Durumu SSS
+Azure Kaynak Durumu hakkında sık sorulan soruların yanıtlarını öğrenin.
 
-## <a name="what-is-azure-resource-health"></a>Azure kaynak durumu nedir?
-Kaynak Durumu, bir Azure sorunu kaynaklarınızı etkilediğinde bunu tanılamanıza ve destek almanıza yardımcı olur. Kaynaklarınızın güncel ve geçmiş durumu hakkında bilgiler sağlar ve sorunları azaltmaya yardımcı olur. Kaynak Durumu, Azure hizmet sorunları ile ilgili yardıma ihtiyacınız olduğunda teknik destek sağlar.  
+## <a name="what-is-azure-resource-health"></a>Azure Kaynak Durumu nedir?
+Kaynak Durumu, bir Azure sorunu kaynaklarınızı etkilediğinde bunu tanılamanıza ve destek almanıza yardımcı olur. Kaynaklarınızın hem geçerli durumu hem de geçmişteki durumları hakkında bilgi verir ve sorunların etkisini azaltmanıza katkıda bulunur. Kaynak durumu, Azure hizmetleriyle ilgili sorunlarda yardıma ihtiyacınız olduğunda teknik destek sağlar.  
 
-## <a name="what-is-the-resource-health-intended-for"></a>Hangi kaynak durumu yöneliktir?
-Bir kaynak ile ilgili bir sorun algıladığında kaynak durumu, kökenini tanılamaya yardımcı olabilir. Bu, daha fazla Azure hizmetleriyle ilgili sorunlarda yardıma ihtiyacınız olduğunda teknik destek ve sorun gidermek için Yardım sağlar.
+## <a name="what-is-the-resource-health-intended-for"></a>Kaynak Durumu amacı nedir?
+Bir kaynakla ilgili bir sorun algılandığında Kaynak Durumu, kök nedeni tanılamanıza yardımcı olabilir. Azure hizmet sorunları hakkında daha fazla yardıma ihtiyacınız olduğunda sorunu ve teknik desteği azaltmaya yönelik yardım sağlar.
 
-## <a name="what-health-checks-are-performed-by-resource-health"></a>Hangi sistem durumu denetimleri gerçekleştirilir tarafından kaynak durumu?
-Kaynak durumu göre çeşitli denetimleri gerçekleştirir [kaynak türü](resource-health-checks-resource-types.md). Bu denetimler, sorunları üç tür uygulamak için tasarlanmıştır: 
-- Planlanmamış olaylar, örneğin bir beklenmeyen ana bilgisayar yeniden başlatma
-- Planlanan olayları ister zamanlanmış konak işletim sistemi güncelleştirmeleri
-- Kullanıcı eylemleri tarafından örneğin bir sanal makine yeniden başlatma kullanıcı tetiklenen olayları
+## <a name="what-health-checks-are-performed-by-resource-health"></a>Kaynak Durumu hangi sistem durumu denetimleri gerçekleştirilir?
+Kaynak sistem durumu, [kaynak türünü](resource-health-checks-resource-types.md)temel alan çeşitli denetimler gerçekleştirir. Bu denetimler, üç tür sorunu uygulamak için tasarlanmıştır: 
+- Planlanmamış olaylar, örneğin beklenmeyen bir ana bilgisayar yeniden başlatması
+- Zamanlanan ana bilgisayar işletim sistemi güncelleştirmeleri gibi planlı olaylar
+- Kullanıcı eylemleri tarafından tetiklenen olaylar (örneğin, bir sanal makineyi yeniden başlatma)
 
-## <a name="what-does-each-of-the-health-status-mean"></a>Her sistem durumu ne demektir?
-Üç farklı sistem durumlarını vardır:
-- Kullanılabilir: Bu kaynak etkileyen Azure platformunda herhangi bir bilinen sorun yok
-- Kullanılabilir: Kaynak durumu, kaynak etkileyen sorunları algıladı.
-- Bilinmiyor: Kaynak durumu, hakkında bilgi alma durdurduğundan kaynak durumu belirlenemiyor. 
+## <a name="what-does-each-of-the-health-status-mean"></a>Sistem durumunun her biri ne anlama geliyor?
+Üç farklı durum durumu vardır:
+- Kullanılabilir: Azure platformunda bu kaynağı etkileyebilecek bilinen bir sorun yok
+- Kullanılamıyor: kaynak durumu, kaynağı etkileyen sorunlar algıladı
+- Bilinmiyor: kaynak sistem durumu, kendisiyle ilgili bilgi almayı durdurduğundan kaynağın sistem durumunu belirleyemiyor. 
 
-## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Bilinmeyen Durum ne anlama geliyor? Kaynağım ile yanlış bir şey mi?
-Kaynak durumu, belirli bir kaynak hakkında bilgi alma durduğunda sistem durumunu bilinmeyen olarak ayarlanır. Bu durum, kesin bir yere sorunlarla karşılaştığı durumlarda kaynak durumu göstergesi olmamasına karşın Azure bir sorun olduğunu gösteriyor olabilir.
+## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Bilinmeyen durum ne anlama geliyor? Kaynaktaki bir sorun mu var?
+Kaynak Durumu belirli bir kaynakla ilgili bilgi almayı kestiğinde sistem durumu bilinmiyor olarak ayarlanır. Bu durum kaynağın durumunun kesin bir göstergesi olmasa da, sorun yaşadığınızda bir Azure sorunu olduğunu gösterebilir.
 
-## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Kullanılabilir olmayan bir kaynak için nasıl Yardım alabilirim?
-Kaynak durumu dikey penceresinden bir destek isteği gönderebilirsiniz. Kaynak kullanılamadığında bir isteği açmak için Microsoft ile bir destek sözleşmesi gerekmez çünkü platform olayları.
+## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Kullanılamayan bir kaynak için nasıl yardım alabilirim?
+Kaynak Durumu dikey penceresinden bir destek isteği gönderebilirsiniz. Platform olayları nedeniyle kaynak kullanılamadığında bir isteği açmak için Microsoft ile destek sözleşmenize gerek yoktur.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Kaynak durumu platform sorunları sorun yaptım ve büyük/küçük harfleri kullanılamazlık birbirinden mu?
-Evet, kaynak kullanılamadığında, kök nedeni bu kategorilerden birini içinde kaynak durumu tanımlar: 
--   Kullanıcı tarafından başlatılan eylemi
--   Olay 
--   Planlanmamış bir olay
+## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Kaynak Durumu platform sorunlarına göre kullanım dışı, ne kadar çok şey olduğunu ayırt etmez?
+Evet, bir kaynak kullanılamadığında Kaynak Durumu, bu kategorilerden birindeki kök nedeni tanımlar: 
+-   Kullanıcı tarafından başlatılan eylem
+-   Planlanmış olay 
+-   Planlanmamış olay
 
-Portalda, planlı ve plansız olayları kırmızı bir uyarı simgesi kullanarak gösterilmekte iken bir mavi bildirim simgesini kullanarak kullanıcı tarafından başlatılan Eylemler gösterilir. Daha fazla ayrıntı sağlanır [kaynak durumu genel bakış](Resource-health-overview.md).  
+Portalda, Kullanıcı tarafından başlatılan eylemler mavi bir bildirim simgesiyle gösterilir, planlı ve plansız olaylar da kırmızı bir uyarı simgesi kullanılarak gösterilir. [Kaynak durumu genel bakışta](Resource-health-overview.md)daha fazla ayrıntı sağlanır.  
 
-## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kaynak durumu my izleme araçları ile tümleştirebilir miyim?
-Kaynak durumu sahip [Önizleme desteği](resource-health-alert-arm-template-guide.md) etkinlik günlüğü uyarıları tabanlı için. Etkinlik günlüğü uyarıları, kullanım [Eylem grupları](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) uyarı tetiklendi kullanıcılara bildirmek için. Eylem grupları, bildirim kanalları e-posta, SMS, Web kancası ve ITSM eylemleri gibi çeşitli destekler.
+## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kaynak Durumu İzleme Araçlarıma tümleştirebilir miyim?
+Kaynak durumu, etkinlik günlüğü tabanlı uyarılar için [Önizleme desteğine](resource-health-alert-arm-template-guide.md) sahiptir. Etkinlik günlüğü uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için [eylem gruplarını](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) kullanır. Eylem grupları, e-posta, SMS, Web kancası ve ıTSM eylemleri gibi çeşitli bildirim kanallarını destekler.
 
-## <a name="where-do-i-find-resource-health"></a>Kaynak durumu nerede bulabilirim?
-Azure portalında oturum açtıktan sonra kaynak durumu erişebileceğiniz birden çok yolu vardır:
-- Kaynağınıza gidin. Sol gezinti bölmesinde **kaynak durumu**
-- Azure hizmet durumu dikey penceresine gidin.  Sol gezinti bölmesinde **kaynak durumu**.
-- Açık **Yardım + Destek** portalın sağ üst köşesinde soru işaretini seçerek ve ardından dikey **Yardım + Destek**. Dikey penceresi açıldıktan sonra seçin **kaynak durumu**
+## <a name="where-do-i-find-resource-health"></a>Kaynak Durumu nerede bulabilirim?
+Azure portal oturum açtıktan sonra, Kaynak Durumu erişmek için kullanabileceğiniz birden çok yol vardır:
+- Kaynağına gidin. Sol taraftaki gezinmede **kaynak durumu** ' nu seçin.
+- Azure hizmet durumu dikey penceresine gidin.  Sol taraftaki gezinmede **kaynak durumu**' nu seçin.
+- Portalın sağ üst köşesinde bulunan soru işaretini seçip **Yardım + Destek**' i seçerek **Yardım + Destek** dikey penceresini açın. Dikey pencere açıldıktan sonra **kaynak sistem durumu** ' nu seçin.
 
-Kaynaklarınızın sistem durumu hakkında bilgi edinmek için kaynak durumu API'si de kullanabilirsiniz.
+Kaynaklarınızın sağlık durumu hakkında bilgi almak için Kaynak Durumu API 'sini de kullanabilirsiniz.
 
-## <a name="is-resource-health-available-for-all-resource-types"></a>Kaynak durumu, tüm kaynak türleri için kullanılabilir mi?
-Sistem durumu denetimleri ve kaynak durumu desteklenen kaynak türleri listesi bulunabilir [burada](resource-health-checks-resource-types.md).
+## <a name="is-resource-health-available-for-all-resource-types"></a>Tüm kaynak türleri için Kaynak Durumu kullanılabilir mi?
+Kaynak Durumu ile desteklenen durum denetimleri ve kaynak türleri listesi [burada](resource-health-checks-resource-types.md)bulunabilir.
 
-## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Ne kaynağım kullanılabilir gösteriyor, ancak ben değil düşünüyorsanız yapmam?"
-Kaynak durumunu denetleme, sistem durumunu altında sağ tıklayabilirsiniz **yanlış sistem durumu raporu**. Raporu göndermeden önce neden geçerli durumu yanlış olduğunu düşündüğünüz hakkında ek ayrıntılar sağlayan seçeneğiniz vardır.
+## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Kaynaklarım kullanılabilir olarak gösterildiğimde ne yapmam gerekir? "
+Bir kaynağın sistem durumunu denetlerken, sistem durumu ' nun altında **yanlış sistem durumunu raporla**' ya tıklayabilirsiniz. Raporu göndermeden önce, geçerli sağlık durumunun yanlış olduğunu düşünmenize ilişkin ek ayrıntılar sağlama seçeneğiniz vardır.
 
-## <a name="is-resource-health-available-for-all-azure-regions"></a>Kaynak durumu için tüm Azure bölgelerinde kullanılabilir mi? 
-Kaynak durumu, tüm Azure coğrafi bölgesinde kullanılabilir.
+## <a name="is-resource-health-available-for-all-azure-regions"></a>Tüm Azure bölgeleri için Kaynak Durumu kullanılabilir mi? 
+Kaynak sistem durumu tüm Azure geos 'ta kullanılabilir.
 
-## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Kaynak durumu Azure durumu ya da hizmet durumu Panosu farklı mı?
-Kaynak durumu tarafından sağlanan bilgileri ne Azure durumu veya hizmet durumu Panosu tarafından sağlanan daha özel hale geldi.
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Azure durumu veya hizmet durumu panosundan Kaynak Durumu nasıl farklıdır?
+Kaynak Durumu tarafından belirtilen bilgiler, Azure durumu veya hizmet durumu panosu tarafından sağlandıklardan daha özgüdür.
 
-Oysa [Azure durumu](https://status.azure.com) ve hizmet durumu Panosu (örneğin bir Azure bölgesi) müşteriler çok geniş bir yelpazedeki etkileyen hizmeti sorunları hakkında bilgilendirmek, kaynak durumu, yalnızca ilgili daha ayrıntılı olayları gösterir belirli kaynak. Örneğin, bir ana bilgisayar beklenmedik şekilde yeniden başlatılırsa, kaynak durumu, yalnızca o ana bilgisayarda çalışan sanal makineleri müşteriler uyarır.
+[Azure durumu](https://status.azure.com) ve hizmet durumu panosu, çok sayıda müşteriyi (örneğin bir Azure bölgesini) etkileyen hizmet sorunları hakkında bilgi veren kaynak durumu, yalnızca belirli kaynakla ilgili daha ayrıntılı olaylar sunar. Örneğin, bir ana bilgisayar beklenmedik şekilde yeniden başlatıldığında Kaynak Durumu yalnızca sanal makineleri bu konakta çalışan müşterileri uyarır.
 
-Kaynaklarınızı etkileyen olayların tam görünürlük sağlamak için dikkat edin önemlidir, kaynak durumu, hizmet durumu Panosu yayımlanan olaylar ayrıca ortaya çıkarır.
+Kaynaklarınızı etkileyen olayların görünürlüğünü, Kaynak Durumu Ayrıca hizmet durumu panosunda yayınlanan olayları da doldurduğuna dikkat etmeniz önemlidir.
 
-## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Kaynak durumu, her kaynak için etkinleştirme gerekiyor mu?
-Hayır, sistem durumu bilgisi, kaynak durumu kullanılabilir olan tüm kaynak türleri kullanılabilir. 
+## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Her kaynak için Kaynak Durumu etkinleştirmem gerekir mi?
+Hayır, Kaynak Durumu aracılığıyla kullanılabilen tüm kaynak türleri için sistem durumu bilgileri kullanılabilir. 
 
-## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Kaynak durumu Kuruluşum için etkinleştirme gerekiyor mu?
-Hayır.  Azure kaynak durumu, Azure portalında herhangi bir kurulum gereksinimi olmadan erişilebilir.
+## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Kuruluşum için Kaynak Durumu etkinleştirmemiz gerekiyor mu?
+Hayır.  Azure Kaynak Durumu, kurulum gereksinimleri olmadan Azure portal içinde erişilebilir.
 
-## <a name="is-resource-health-available-free-of-charge"></a>Kaynak durumu kullanılabilir ücretsiz mi?
-Evet.  Azure kaynak durumu ücretsizdir.
+## <a name="is-resource-health-available-free-of-charge"></a>Kaynak Durumu ücretsiz olarak kullanılabilir mi?
+Evet.  Azure Kaynak Durumu ücretsizdir.
 
-## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Kaynak durumu sağlayan önerileri nelerdir?
-Sistem durumuna bağlı olarak, kaynak durumu, sorun giderme için harcanan süreyi azaltmak amacıyla ile öneriler sağlar. Kullanılabilir kaynaklar için önerileri odaklanan nasıl çözeceğinizi en yaygın sorunları müşteriler karşılaşırsınız. Kaynak Azure planlanmamış bir olay nedeniyle kullanılamıyor, odağı, sırasında ve sonrasında kurtarma işlemi Yardım üzerinde olacaktır. 
+## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Kaynak Durumu sağladığı öneriler nelerdir?
+Kaynak Durumu sistem durumu temelinde, sorun gidermeye harcadığınız süreyi azaltma amacını içeren öneriler sağlar. Kullanılabilir kaynaklar için, müşterilerin karşılaştığı en yaygın sorunların nasıl çözüğiyle ilgili öneriler vardır. Kaynak, Azure plansız bir olay nedeniyle kullanılamıyorsa, odak kurtarma işleminden sonra ve sonrasında size yardımcı olur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak durumu hakkında daha fazla bilgi edinin:
--  [Azure kaynak durumu genel bakış](Resource-health-overview.md)
+Kaynak Durumu hakkında daha fazla bilgi edinin:
+-  [Azure Kaynak Durumu genel bakış](Resource-health-overview.md)
 -  [Azure Kaynak Durumu aracılığıyla kullanılabilen kaynak türleri ve durum denetimleri](resource-health-checks-resource-types.md)

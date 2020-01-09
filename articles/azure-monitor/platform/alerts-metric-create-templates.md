@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397351"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-monitor/platform/alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
+Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-monitor/platform/alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/templates/template-syntax.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
 
 > [!IMPORTANT]
 > Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces`, ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
@@ -3552,6 +3552,11 @@ Bu izlenecek yolun amacına uygun olarak JSON öğesini availabilityalert. JSON 
 ```
 
 Parametrelerin değerlerini, komut satırında veya bir parametre dosyası aracılığıyla ayarlayabilirsiniz. Örnek bir parametre dosyası aşağıda verilmiştir.
+
+
+> [!NOTE]
+>
+> `&amp`; & için HTML varlık başvurusudur. URL parametreleri hala tek bir & ayrılmıştır, ancak URL 'nin HTML 'de bahsetmeniz halinde bunu kodlamanız gerekir. Bu nedenle, pingURL parametre değerindeki "&" varsa, "`&amp`;" ile kaçış yapmanız gerekir
 
 Aşağıdaki JSON öğesini availabilityalert. Parameters. JSON olarak kaydedin ve gereken şekilde değiştirin.
 

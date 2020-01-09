@@ -2,19 +2,15 @@
 title: Güncelleştirme ve değişiklik izleme çözümlerini Azure Otomasyonu’na ekleme
 description: Güncelleştirme ve değişiklik izleme çözümlerini Azure Otomasyonu’na nasıl ekleyeceğinizi öğrenin.
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421839"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Güncelleştirme ve değişiklik izleme çözümlerini Azure Otomasyonu’na ekleme
 
@@ -27,7 +23,7 @@ Bu öğreticide VM’lere yönelik Güncelleştirme, Değişiklik İzleme ve Say
 > * Ekleme runbook’unu içeri aktarma
 > * Runbook’u başlatma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -37,7 +33,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 ## <a name="onboard-an-azure-vm"></a>Bir Azure VM ekleme
 
-Makine eklemenin birden fazla yolu vardır. Çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [birden çok makineye gözatmadan](automation-onboard-solutions-from-browse.md), [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md) veya runbook ile ekleyebilirsiniz. Bu öğretici bir runbook üzerinden Güncelleştirme Yönetimi’ni etkinleştirme konusunda size yol gösterir. Uygun ölçekte Azure Sanal Makinelerin eklenmesi için mevcut bir VM’ye Değişiklik izleme veya Güncelleştirme yönetimi çözümünün eklenmesi gerekir. Bu adımda, bir sanal makineye Güncelleştirme yönetimi ve Değişiklik izleme özelliğini eklersiniz.
+Makine eklemek için birden çok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md) [birden çok makineye göz atmaya](automation-onboard-solutions-from-browse.md) veya Runbook 'a ekleyebilirsiniz. Bu öğretici bir runbook üzerinden Güncelleştirme Yönetimi’ni etkinleştirme konusunda size yol gösterir. Uygun ölçekte Azure Sanal Makinelerin eklenmesi için mevcut bir VM’ye Değişiklik izleme veya Güncelleştirme yönetimi çözümünün eklenmesi gerekir. Bu adımda, bir sanal makineye Güncelleştirme yönetimi ve Değişiklik izleme özelliğini eklersiniz.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
 
@@ -135,7 +131,7 @@ Bu runbook’u başlatmak için değişiklik izleme çözümünü veya güncelle
 
 Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
 
-* Log Analytics çalışma alanınızda, kapsam yapılandırması için kayıtlı aramadan VM 'yi kaldırın `MicrosoftDefaultScopeConfig-Updates`. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
+* Log Analytics çalışma alanınızda, kapsam yapılandırma `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM 'yi kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
 * Linux için [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 'ı veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

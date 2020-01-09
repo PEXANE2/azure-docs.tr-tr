@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights ile Hızlı Başlangıç | Microsoft Docs
-description: Bir ASP.NET Core Web uygulamasını izleme için hızlı bir şekilde ayarlamak için yönergeler sağlar Application Insights
+title: Hızlı başlangıç ASP.NET Core-Azure Izleyici Application Insights
+description: Azure Izleyici ile izleme için ASP.NET Core bir Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399027"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
@@ -21,7 +21,7 @@ Azure Application Insights ile web uygulamanızı kullanılabilirlik, performans
 
 Bu hızlı başlangıç, var olan bir ASP.NET Core Web uygulamasına Application Insights SDK ekleme konusunda size rehberlik eder. Visual Studio 'Yu Application Insights yapılandırma hakkında bilgi edinmek için bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)göz atın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -53,10 +53,12 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
    | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-   | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıran yeni kaynak grubunun adı |
+   | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur**’a tıklayın.
+2. **Oluştur**'a tıklayın.
+
+
 
 ## <a name="configure-app-insights-sdk"></a>App Insights SDK’sını Yapılandırma
 
@@ -106,6 +108,9 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin.
+
+> [!NOTE]
+> Var olan bir kaynak grubunu kullandıysanız aşağıdaki yönergeler çalışmaz ve yalnızca tek bir Application Insights kaynağını silmeniz gerekir. Bir kaynak grubunu her sildiğinizde, bu grubun üyesi olan tüm kaynaklar silinir.
 
 1. Azure portalında sol taraftaki menüden, **Kaynak grupları**’na tıklayın ve ardından **myResourceGroup**’a tıklayın.
 2. Kaynak grubu sayfanızda, **Sil**’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil**’e tıklayın.

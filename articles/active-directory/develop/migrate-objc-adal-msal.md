@@ -1,5 +1,5 @@
 ---
-title: Uygulamaları MSAL 'ye geçirme (iOS/macOS) | Mavisi
+title: ADAL to MSAL geçiş kılavuzu (MSAL iOS/macOS) | Mavisi
 titleSuffix: Microsoft identity platform
 description: İOS/macOS için MSAL ve ObjectiveC için Azure AD kimlik doğrulama kitaplığı (ADAL) arasındaki farkları öğrenin. ObjC) ve iOS/macOS için MSAL 'e geçiş yapma.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f35243e29755c42dbe8e3a696f2718ee3d10178c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424426"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
 
@@ -66,7 +66,7 @@ MSAL ' de, tek bir kaynak tanımlayıcısı yerine, uygulamalar istek başına b
 
 MSAL içinde kapsam sağlamanın iki yolu vardır:
 
-* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örnek: 
+* Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örneğin: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -147,7 +147,7 @@ Uygulamanız için aracıyı etkinleştirmek üzere:
 
 1. Uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. `<app.bundle.id>`, uygulamanızın paket KIMLIĞIYLE değiştirin. ADAL 'dan geçiş yapıyorsanız ve uygulamanız zaten Broker özellikli ise, yapmanız gereken ek bir şey yoktur. Önceki yeniden yönlendirme URI 'SI MSAL ile tamamen uyumludur, bu sayede adım 3 ' e atlayabilirsiniz.
 
-2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için, biçim `msauth.<app.bundle.id>`. Örnek:
+2. Uygulamanızın yeniden yönlendirme URI düzenini Info. plist dosyanıza ekleyin. Varsayılan MSAL yeniden yönlendirme URI 'SI için, biçim `msauth.<app.bundle.id>`. Örneğin:
 
     ```xml
     <key>CFBundleURLSchemes</key>

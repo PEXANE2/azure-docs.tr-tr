@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
+title: Azure Cosmos DB Gremlin API ile Graf toplu yürütücü .NET kitaplığını kullanma
 description: Grafik verilerini büyük ölçüde Azure Cosmos DB Gremlin API kapsayıcısına aktarmak için toplu yürütücü kitaplığı 'nı nasıl kullanacağınızı öğrenin.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442179"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 
@@ -113,7 +113,7 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>Örnek uygulama
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 * Azure geliştirme iş yüküyle Visual Studio 2019. [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) 'ı ücretsiz kullanmaya başlamanızı sağlayabilirsiniz.
 * Azure aboneliği. [Buradan ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db) oluşturabilirsiniz. Alternatif olarak, [deneme Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) Azure aboneliği olmadan ücretsiz olarak bir Cosmos veritabanı hesabı oluşturabilirsiniz.
 * **Sınırsız koleksiyona** sahip Azure Cosmos DB Gremlin API veritabanı. Bu kılavuz, [.NET ile Azure Cosmos DB Gremlin API'yi](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet) kullanmaya başlamayı göstermektedir.
@@ -131,7 +131,7 @@ Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 Dosya|Açıklama
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
-`Program.cs`| Bu dosya `DocumentClient` toplamayı oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme 'nin arkasındaki mantığı içerir.
+`Program.cs`| Bu dosya, `DocumentClient` koleksiyonunu oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme 'nin arkasındaki mantığı içerir.
 `Util.cs`| Bu dosya, test verileri oluşturmaya ek olarak veritabanı ve koleksiyonların var olup olmadığını kontrol eden mantığı içeren yardımcı sınıfı içerir.
 
 `App.config` dosyasında aşağıdaki yapılandırma değerleri sağlanabilir:

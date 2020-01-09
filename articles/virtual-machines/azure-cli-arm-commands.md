@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174056"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355923"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Kaynak Yöneticisi modunda Azure CLı komutları
-Bu makalede, Azure komut satırı arabirimi (CLı) komutları için, Azure Resource Manager dağıtım modelinde Azure kaynakları oluşturmak ve yönetmek için kullanılan söz dizimi ve seçenekler sağlanmaktadır. CLı Kaynak Yöneticisi (ARM) modunda çalıştırarak bu komutlara erişirsiniz. Bu, tüm bir başvuru değildir ve CLı sürümünüz biraz farklı komutlar veya parametreler gösterebilir. Azure kaynaklarına ve kaynak gruplarına genel bir bakış için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/resource-group-overview.md).  
+Bu makalede, Azure komut satırı arabirimi (CLı) komutları için, Azure Resource Manager dağıtım modelinde Azure kaynakları oluşturmak ve yönetmek için kullanılan söz dizimi ve seçenekler sağlanmaktadır. CLı Kaynak Yöneticisi (ARM) modunda çalıştırarak bu komutlara erişirsiniz. Bu, tüm bir başvuru değildir ve CLı sürümünüz biraz farklı komutlar veya parametreler gösterebilir. Azure kaynaklarına ve kaynak gruplarına genel bir bakış için bkz. [Azure Resource Manager genel bakış](../azure-resource-manager/management/overview.md).  
 
 > [!NOTE]
 > Bu makalede Azure CLı 'de bazen Azure klasik CLı olarak adlandırılan Kaynak Yöneticisi mod komutları gösterilmektedir. Kaynak Yöneticisi modelinde çalışmak için yeni nesil çok platformlu CLı olan [Azure CLI](/cli/azure/install-az-cli2)'yi de deneyebilirsiniz.
@@ -32,11 +32,11 @@ Bu makalede, Azure komut satırı arabirimi (CLı) komutları için, Azure Resou
 
 Başlamak için önce [Azure CLI 'yı yükleyip](../cli-install-nodejs.md) [Azure aboneliğinize bağlanın](/cli/azure/authenticate-azure-cli).
 
-Kaynak Yöneticisi modundaki komut satırındaki geçerli komut sözdizimi ve seçenekleri için, belirli bir `azure help` `azure help [command]`komut için Yardımı göstermek üzere veya yazın. Ayrıca, belirli Azure hizmetlerini oluşturmak ve yönetmek için belgelerde CLı örnekleri de bulabilirsiniz.
+Kaynak Yöneticisi modundaki komut satırındaki geçerli komut sözdizimi ve seçenekleri için, `azure help [command]`belirli bir komut için Yardımı göstermek üzere `azure help` veya yazın. Ayrıca, belirli Azure hizmetlerini oluşturmak ve yönetmek için belgelerde CLı örnekleri de bulabilirsiniz.
 
 İsteğe bağlı parametreler köşeli ayraç içinde gösterilir (örneğin, `[parameter]`). Diğer tüm parametreler gereklidir.
 
-Burada belgelenen komuta özgü isteğe bağlı parametrelerin yanı sıra, istek seçenekleri ve durum kodları gibi ayrıntılı çıktıyı göstermek için kullanılabilecek üç isteğe bağlı parametre vardır. Parametresi ayrıntılı çıkış sağlar `-vv` ve parametresi daha ayrıntılı ayrıntılı çıkış sağlar. `-v` `--json` Seçeneği sonucunda ham JSON biçiminde çıkış yapılır.
+Burada belgelenen komuta özgü isteğe bağlı parametrelerin yanı sıra, istek seçenekleri ve durum kodları gibi ayrıntılı çıktıyı göstermek için kullanılabilecek üç isteğe bağlı parametre vardır. `-v` parametresi ayrıntılı çıkış sağlar ve `-vv` parametresi daha ayrıntılı ayrıntılı çıkış sağlar. `--json` seçeneği sonucu ham JSON biçiminde verir.
 
 ## <a name="setting-the-resource-manager-mode"></a>Kaynak Yöneticisi modunu ayarlama
 Azure CLı Kaynak Yöneticisi modu komutlarını etkinleştirmek için aşağıdaki komutu kullanın.
@@ -48,7 +48,7 @@ Azure CLı Kaynak Yöneticisi modu komutlarını etkinleştirmek için aşağıd
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>Azure hesabı: Hesap bilgilerinizi yönetme
+## <a name="azure-account-manage-your-account-information"></a>Azure hesabı: hesap bilgilerinizi yönetin
 Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kullanılır.
 
 **İçeri aktarılan abonelikleri listeleyin**
@@ -132,7 +132,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
 
     config set <name> <value>
 
-**Azure CLI çalışma modunu ya da `arm` olarak ayarlar`asm`**
+**Azure CLı çalışma modunu `arm` ya da `asm` olarak ayarlar**
 
     config mode [options] <modename>
 
@@ -196,7 +196,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
-Örnek: Bir küme oluştururken çalıştırılacak betik eylemi içeren bir yapılandırma dosyası oluşturun.
+Örnek: bir küme oluştururken çalıştırılacak betik eylemi içeren bir yapılandırma dosyası oluşturun.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -213,7 +213,7 @@ Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kul
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Örnek: Betik eylemi ile küme oluşturma
+Örnek: betik eylemi ile küme oluşturma
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
@@ -307,17 +307,17 @@ Parametre seçenekleri:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure öngörüleri: İzleme öngörüleriyle ilgili komutlar (olaylar, uyarı kuralları, otomatik ölçeklendirme ayarları, ölçümler)
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: izleme öngörüleriyle ilgili komutlar (olaylar, uyarı kuralları, otomatik ölçeklendirme ayarları, ölçümler)
 **Abonelik, bir CorrelationId, bir kaynak grubu, kaynak veya kaynak sağlayıcısı için işlem günlüklerini alma**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure konumu: Tüm kaynak türleri için kullanılabilir konumları almak için komutlar
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure konumu: tüm kaynak türleri için kullanılabilir konumları almak için komutlar
 **Kullanılabilir konumları listeleyin**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Azure ağı: Ağ kaynaklarını yönetmeye yönelik komutlar
+## <a name="azure-network-commands-to-manage-network-resources"></a>Azure ağı: ağ kaynaklarını yönetmeye yönelik komutlar
 **Sanal ağları yönetmeye yönelik komutlar**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1509,7 @@ Parametre seçenekleri:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure sağlayıcısı: Kaynak sağlayıcısı kayıtlarını yönetmeye yönelik komutlar
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure sağlayıcısı: kaynak sağlayıcısı kayıtlarını yönetmeye yönelik komutlar
 **Kaynak Yöneticisi kayıtlı olan sağlayıcıları listeleyin**
 
     provider list [options]
@@ -1526,7 +1526,7 @@ Parametre seçenekleri:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure kaynağı: Kaynaklarınızı yönetmek için komutlar
+## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure kaynağı: kaynaklarınızı yönetme komutları
 **Kaynak grubunda bir kaynak oluşturur**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1562,7 +1562,7 @@ Parametre seçenekleri:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure depolama: Depolama nesnelerinizi yönetmek için komutlar
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure depolama: depolama nesnelerinizi yönetme komutları
 **Depolama hesaplarınızı yönetmek için komutlar**
 
     storage account list [options]
@@ -1702,7 +1702,7 @@ Parametre seçenekleri:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: Azure sanal makinelerinizi yönetmek için komutlar
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: Azure sanal makinelerinizi yönetme komutları
 **VM oluşturma**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1712,7 +1712,7 @@ Parametre seçenekleri:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> CLI sürüm 0,10 ' den başlayarak, bazı popüler Market görüntüleri `image-urn` için "ubuntults" veya "Win2012R2Datacenter" gibi bir kısa ad sağlayabilirsiniz. Seçenekler `azure help vm quick-create` için çalıştırın. Ayrıca, sürüm 0,10 ' den itibaren `azure vm quick-create` , seçili bölgede varsa, varsayılan olarak Premium depolama kullanır.
+> CLı sürüm 0,10 ' den başlayarak, bazı popüler Market görüntüleri için `image-urn` olarak "UbuntuLTS" veya "Win2012R2Datacenter" gibi bir kısa ad sağlayabilirsiniz. Seçenekler için `azure help vm quick-create` çalıştırın. Ayrıca, sürüm 0,10 ' den itibaren, `azure vm quick-create`, seçili bölgede varsa, varsayılan olarak Premium depolama kullanır.
 > 
 > 
 

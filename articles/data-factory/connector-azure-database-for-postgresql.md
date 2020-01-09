@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 3729d43716a0f4e133fb175da2546aac560b0525
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 67d59e3f733efe5a248e6763f46402302496d437
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444384"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'na veri kopyalama
 
@@ -47,8 +47,8 @@ PostgreSQL için Azure veritabanı bağlı hizmeti için aşağıdaki özellikle
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AzurePostgreSql**olarak ayarlanmalıdır. | Yes |
-| connectionString | PostgreSQL için Azure veritabanı'na bağlanmak için bir ODBC bağlantı dizesi.<br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha fazla ayrıntı için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
+| type | Type özelliği: **AzurePostgreSql**olarak ayarlanmalıdır. | Evet |
+| connectionString | PostgreSQL için Azure veritabanı'na bağlanmak için bir ODBC bağlantı dizesi.<br/>Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha fazla ayrıntı için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | Bu özellik, veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanını](concepts-integration-runtime.md) temsil eder. (Veri deponuz özel ağında bulunuyorsa), Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 Bir bağlantı dizesi olan `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Servis talebi başına ayarlayabileceğiniz daha fazla özellik aşağıda verilmiştir:
@@ -66,10 +66,7 @@ Bir bağlantı dizesi olan `Server=<server>.postgres.database.azure.com;Database
     "properties": {
         "type": "AzurePostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
-            }
+            "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
         }
     }
 }
@@ -85,10 +82,7 @@ Bir bağlantı dizesi olan `Server=<server>.postgres.database.azure.com;Database
     "properties": {
         "type": "AzurePostgreSql",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -110,7 +104,7 @@ PostgreSQL için Azure veritabanı'ndan veri kopyalamak için dataset öğesinin
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği **AzurePostgreSqlTable** olarak ayarlanmalıdır | Yes |
+| type | Veri kümesinin Type özelliği **AzurePostgreSqlTable** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**:
@@ -139,7 +133,7 @@ PostgreSQL için Azure veritabanı'ndan veri kopyalamak için kopyalama etkinli�
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği **AzurePostgreSqlSource** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği **AzurePostgreSqlSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin, `"SELECT * FROM MyTable"` | Hayır (veri kümesindeki tableName özelliği belirtilmişse) |
 
 **Örnek**:
@@ -180,7 +174,7 @@ PostgreSQL için Azure veritabanı 'na veri kopyalamak için, etkinlik **havuzun
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun Type özelliği **AzurePostgreSQLSink**olarak ayarlanmalıdır. | Yes |
+| type | Kopyalama etkinliği havuzunun Type özelliği **AzurePostgreSQLSink**olarak ayarlanmalıdır. | Evet |
 | preCopyScript | Her çalıştırmada PostgreSQL için Azure veritabanı 'na veri yazmadan önce, kopyalama etkinliğinin yürütülmesi için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |
 | writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında, PostgreSQL için Azure veritabanı tablosuna veri ekler.<br>İzin verilen değer, satır sayısını temsil eden bir tamsayıdır. | Hayır (varsayılan değer 10.000) |
 | writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br>İzin verilen değerler TimeSpan dizeleridir. Örnek olarak 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30) |

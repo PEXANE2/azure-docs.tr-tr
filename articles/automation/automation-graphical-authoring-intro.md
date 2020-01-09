@@ -2,19 +2,15 @@
 title: Azure Otomasyonu 'nda grafik yazma
 description: Grafik yazma, kodla çalışmaya gerek kalmadan Azure Otomasyonu için Runbook 'lar oluşturmanızı sağlar. Bu makalede grafik yazma konusuna ve grafik runbook 'u oluşturmaya başlamak için gereken tüm ayrıntılara giriş sağlanmaktadır.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450742"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Otomasyonu 'nda grafik yazma
 
@@ -46,7 +42,7 @@ Kitaplık denetimi, runbook 'unuzu eklemek için [etkinlikleri](#activities) se�
 
 | Section | Açıklama |
 |:--- |:--- |
-| Cmdlet'ler |Runbook 'da kullanılabilen tüm cmdlet 'leri içerir. Cmdlet 'ler modüle göre düzenlenir. Otomasyon hesabınızda yüklediğiniz tüm modüller kullanılabilir. |
+| Cmdlet’ler |Runbook 'da kullanılabilen tüm cmdlet 'leri içerir. Cmdlet 'ler modüle göre düzenlenir. Otomasyon hesabınızda yüklediğiniz tüm modüller kullanılabilir. |
 | Runbook'lar |Otomasyon hesabınızdaki runbook 'ları içerir. Bu runbook 'lar alt runbook 'lar olarak kullanılacak tuvale eklenebilir. Yalnızca düzenlenmekte olan runbook ile aynı çekirdek türündeki runbook 'lar gösterilir; Grafik runbook 'lar için yalnızca PowerShell tabanlı runbook 'lar gösterilir, ancak grafik PowerShell Iş akışı runbook 'ları yalnızca PowerShell-Iş akışı tabanlı runbook 'lar gösterilir. |
 | Varlıklar |Otomasyon hesabınızda runbook 'larınızda kullanılabilecek [Otomasyon varlıklarını](/previous-versions/azure/dn939988(v=azure.100)) içerir. Bir runbook 'a varlık eklediğinizde, seçili varlığı alan bir iş akışı etkinliği ekler. Değişken varlıklar söz konusu olduğunda, değişkeni almak için bir etkinlik eklenip eklenmeyeceğini veya değişkeni ayarlamayı seçebilirsiniz. |
 | Runbook denetimi |, Geçerli runbook 'lerinizde kullanılabilecek runbook denetim etkinliklerini içerir. Bir *birleşim* birden çok giriş alır ve iş akışına devam etmeden önce tüm tamamlanana kadar bekler. Bir *kod* etkinliği, grafik runbook türüne bağlı olarak bir veya daha fazla PowerShell veya PowerShell iş akışı kodu çalıştırır. Bu etkinliği, özel kod veya diğer etkinliklerle elde edilmesi zor olan işlevler için kullanabilirsiniz. |
@@ -105,7 +101,7 @@ Aşağıdaki örnekte, Get-AzureRmVM cmdlet 'inin üç parametre kümesi vardır
 
 ![Parametre kümesi](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
-#### <a name="parameter-values"></a>Parametre değeri
+#### <a name="parameter-values"></a>Parametre değerleri
 
 Bir parametre için bir değer belirttiğinizde, değerin nasıl belirtilceğini belirlemek için bir veri kaynağı seçersiniz. Belirli bir parametre için kullanılabilen veri kaynakları, bu parametre için geçerli değerlere bağlıdır. Örneğin, null değerlere izin verilmeyen bir parametre için null kullanılabilir bir seçenek değildir.
 
@@ -324,7 +320,7 @@ Her giriş parametresi aşağıdaki tablodaki Özellikler tarafından tanımlan�
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Adı |Parametrenin benzersiz adı. Bu yalnızca alfa sayısal karakterler içerebilir ve bir boşluk içeremez. |
+| Ad |Parametrenin benzersiz adı. Bu yalnızca alfa sayısal karakterler içerebilir ve bir boşluk içeremez. |
 | Açıklama |Giriş parametresi için isteğe bağlı bir açıklama. |
 | Tür |Parametre değeri için beklenen veri türü. Azure portal, giriş isterken her bir parametre için veri türü için uygun bir denetim sağlar. |
 | Zorunlu |Parametresi için bir değer sağlanması gerekip gerekmediğini belirtir. Varsayılan değeri tanımlanmış olmayan her zorunlu parametre için bir değer sağlamazsanız runbook başlatılamaz. |

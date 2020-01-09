@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f90933dea5421d68116d29df6b9429d298bb0d88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ab8df188027ada2119334e058ffc5a10cca23914
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439163"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory’de Hive etkinliğini kullanarak Azure Sanal Ağ’daki verileri dönüştürme
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure PowerShell kullanarak Azure Sanal Ağ’daki bir HDInsigh
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -174,10 +174,7 @@ Tercih ettiğiniz düzenleyiciyi kullanarak bir JSON dosyası oluşturun, Azure 
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       },
       "connectVia": {
         "referenceName": "MySelfhostedIR",
@@ -221,7 +218,7 @@ Tercih ettiğiniz düzenleyiciyi kullanarak bir JSON dosyası oluşturun, Azure 
 Bağlı hizmet tanımında aşağıdaki özelliklerin değerlerini güncelleştirin:
 
 - **userName**. Kümeyi oluştururken belirttiğiniz küme oturum açma kullanıcı adı. 
-- **password**. Kullanıcının parolası.
+- **password**. Kullanıcıya ilişkin parola.
 - **clusterUri**. HDInsight kümenizin URL 'sini şu biçimde belirtin: `https://<clustername>.azurehdinsight.net`.  Bu makalede, kümeye internet üzerinden erişebildiğiniz varsayılır. Örneğin, `https://clustername.azurehdinsight.net` konumundaki kümeye bağlanabilirsiniz. Bu adres, İnternet'ten erişimi kısıtlamak için ağ güvenlik grupları (NSG) veya kullanıcı tanımlı yollar (UDR) kullandıysanız kullanılabilir olmayan ortak ağ geçidi kullanır. Data Factory’nin işleri Azure Sanal Ağdaki HDInsight kümelerine gönderebilmesi için Azure Sanal Ağınızı URL’nin HDInsight tarafından kullanılan ağ geçidine ait özel IP adresine çözümlenebileceği şekilde yapılandırmanız gerekir.
 
   1. Azure portalından, HDInsight’ın içinde bulunduğu Sanal Ağı açın. Adı `nic-gateway-0` ile başlayan ağ arabirimini açın. Özel IP adresini not edin. Örneğin, 10.6.0.15. 

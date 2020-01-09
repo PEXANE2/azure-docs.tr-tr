@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422032"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -38,9 +38,9 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
 3. **Kimlik**seçin.
 
-4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet** düğmesine tıklayın.
+4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Save (Kaydet)** düğmesine tıklayın.
 
-    ![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![App Service yönetilen kimliği](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
@@ -169,7 +169,7 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'ye tıklayın.
 
-    ![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![App Service yönetilen kimliği](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 
@@ -251,10 +251,10 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **MSI_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> |Parametre adı|'Ndaki|Açıklama|
+> |Parametre adı|İçinde|Açıklama|
 > |-----|-----|-----|
-> |Kaynak|Sorgu|Belirtecin alınması gereken kaynağın AAD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.|
-> |api sürümü|Sorgu|Kullanılacak belirteç API 'sinin sürümü. "2017-09-01" Şu anda desteklenen tek sürümdür.|
+> |resource|Sorgu|Belirtecin alınması gereken kaynağın AAD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.|
+> |api-version|Sorgu|Kullanılacak belirteç API 'sinin sürümü. "2017-09-01" Şu anda desteklenen tek sürümdür.|
 > |gizli dizi|Üst bilgi|MSI_SECRET ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.|
 > |ClientID|Sorgu|(Kullanıcı atanmadığı için isteğe bağlı) Kullanılacak kullanıcı tarafından atanan kimliğin KIMLIĞI. Atlanırsa, sistem tarafından atanan kimlik kullanılır.|
 
@@ -267,7 +267,7 @@ Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gö
 > |-------------|----------|
 > |access_token|İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.|
 > |expires_on|Erişim belirtecinin süre sonu. Tarih, 1970-01-01T0:0: 0Z UTC 'den sona erme zamanına kadar saniye sayısı olarak gösterilir. Bu değer, önbelleğe alınmış belirteçlerin ömrünü belirlemede kullanılır.|
-> |Kaynak|Alıcı Web hizmetinin uygulama KIMLIĞI URI 'SI.|
+> |resource|Alıcı Web hizmetinin uygulama KIMLIĞI URI 'SI.|
 > |token_type|Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Bu yanıt, [AAD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.

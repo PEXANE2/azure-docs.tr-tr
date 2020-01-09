@@ -1,7 +1,7 @@
 ---
-title: Klip değerleri
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetindeki Clip Values modülünü kullanarak aykırı değerleri ve klipleri algılamalarını ve bu değerlerin değiştirilmesini öğrenin.
+title: Değerleri Kırpma
+titleSuffix: Azure Machine Learning
+description: Aykırı değerleri ve klibi algılamak veya değerlerini değiştirmek için Azure Machine Learning Clip Values modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428599"
 ---
-# <a name="clip-values"></a>Klip değerleri
+# <a name="clip-values"></a>Değerleri Kırpma
 
 Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
@@ -116,8 +116,8 @@ Yüzdebirlik değeri tarafından nasıl kırpılmasının çalıştığını anl
   
 |Özgün veriler|Eksik ile Değiştir|Eşikle Değiştir|  
 |-------------------|--------------------------|----------------------------|  
-|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|DEĞERI<br /><br /> DEĞERI<br /><br /> 3, YANLıŞ<br /><br /> 4, YANLıŞ<br /><br /> 5, YANLıŞ<br /><br /> 6, YANLıŞ<br /><br /> 7, YANLıŞ<br /><br /> 8, YANLıŞ<br /><br /> 9, YANLıŞ<br /><br /> DEĞERI|4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 5, YANLıŞ<br /><br /> 6, YANLıŞ<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU| 
+|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, YANLıŞ<br /><br /> 4, YANLıŞ<br /><br /> 5, YANLıŞ<br /><br /> 6, YANLıŞ<br /><br /> 7, YANLıŞ<br /><br /> 8, YANLıŞ<br /><br /> 9, YANLıŞ<br /><br /> TRUE|4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 4, DOĞRU<br /><br /> 5, YANLıŞ<br /><br /> 6, YANLıŞ<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU<br /><br /> 7, DOĞRU| 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

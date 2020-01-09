@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: e0e6ffc45d55dc76abdbdf839958479b2ac5d40b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c44f1b39ae700fbd11b7c0866e7150d1edec8c4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439512"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -47,7 +47,7 @@ Bu senaryoda, Azure SQL Veritabanında SQL Veri Ambarı’na kopyalamak istediğ
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure Depolama hesabı**. Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
 * **Azure SQL Veritabanı**. Bu veritabanı, kaynak verileri içerir. 
 * **Azure SQL Veri Ambarı**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
@@ -76,7 +76,7 @@ Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > Security > Gü
 
 1. **Yeni Veri Fabrikası** sayfasında **ad**için **ADFTutorialBulkCopyDF** girin. 
  
-   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Ad alanı için aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, adınızADFTutorialBulkCopyDF). Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Ad alanı için aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, adınızADFTutorialBulkCopyDF). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
        `Data factory name “ADFTutorialBulkCopyDF” is not available`
 1. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
@@ -85,10 +85,10 @@ Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > Security > Gü
    - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
    - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
-     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 1. **Sürüm** için **V2**'yi seçin.
 1. Data factory için **konum** seçin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Oluşturma işlemi tamamlandıktan sonra, **Data Factory** sayfasını görürsünüz.
    
 1. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede açmak için **Author & Monitor** (Oluştur ve İzle) kutucuğuna tıklayın.
@@ -99,7 +99,7 @@ Bu ayarı doğrulamak ve etkinleştirmek için Azure SQL Server > Security > Gü
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 Veri depolarınızı ve işlemlerinizi veri fabrikasına bağlamak için bağlı hizmetler oluşturursunuz. Bağlı hizmetler, Data Factory hizmetinin çalışma zamanında veri deposuna bağlanmak için kullandığı bağlantı bilgilerini içerir. 
 
-Bu öğreticide, Azure SQL Veritabanı, Azure SQL Veri Ambarı ve Azure Blob Depolama veri depolarınızı veri fabrikanıza bağlarsınız. Azure SQL Veritabanı, kaynak veri deposudur. Azure SQL Veri Ambarı, havuz/hedef veri deposudur. Azure Blob Depolama, PolyBase kullanılarak veriler SQL Veri Ambarı'na yüklenmeden önce verilerin hazırlanması için kullanılır. 
+Bu öğreticide, Azure SQL Veritabanı, Azure SQL Veri Ambarı ve Azure Blob Depolama veri depolarınızı veri fabrikanıza bağlarsınız. Azure SQL Veritabanı, kaynak veri deposudur. Azure SQL Veri Ambarı, havuz/hedef veri deposudur. Azure Blob Depolama Alanı, PolyBase kullanılarak veriler SQL Veri Ambarı'na yüklenmeden önce verilerin hazırlanmasıdır. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Kaynak Azure SQL Veritabanı bağlı hizmetini oluşturma
 Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. 
@@ -128,7 +128,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağl�
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>Havuz Azure SQL Veri Ambarı bağlı hizmetini oluşturma
 
 1. **Bağlantılar** sekmesinde, araç çubuğundaki **+ Yeni** düğmesine tekrar tıklayın. 
-1. **Yeni Bağlı Hizmet** penceresinde **Azure SQL Veri Ambarı**’nı seçip **Devam**’a tıklayın. 
+1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veri Ambarı**’nı seçip **Devam**’a tıklayın. 
 1. **Yeni bağlı hizmet (Azure SQL veri ambarı)** penceresinde aşağıdaki adımları uygulayın: 
    
     a. **Ad** için **AzureSqlDWLinkedService** adını girin.
@@ -189,7 +189,7 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
 
     a. **Tablo** için **Düzenle** seçeneğini belirtin, tablo adı giriş kutusuna tıklayın ve altındaki **Dinamik içerik ekle** bağlantısına tıklayın. 
 
-    b. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki **dwtablename** öğesine tıklayarak üstteki ifade metin kutusunu `@dataset().DWTableName`otomatik olarak doldurur ve ardından **son**' a tıklayın. Veri kümesinin **tableName** özelliği, **DWTableName** parametresine bağımsız değişken olarak geçirilen değere ayarlanır. ForEach etkinliği bir tablo listesi boyunca yinelenir ve tabloları birer birer Kopyalama etkinliğine geçirir. 
+    b. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki **dwtablename** öğesine tıklayarak üstteki ifade metin kutusunu `@dataset().DWTableName`otomatik olarak doldurur ve ardından **son**' a tıklayın. Veri kümesinin **tableName** özelliği, **DWTableName** parametresine bağımsız değişken olarak geçirilen değere ayarlanır. ForEach etkinliği bir tablo listesi boyunca yinelenir ve birer birer Kopyalama etkinliğine geçirilir. 
 
     ![Veri kümesi parametresi derleyici](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
@@ -310,7 +310,7 @@ Bu işlem hattı iki eylem yapar:
 
 1. Varlıkları (veri kümeleri, işlem hatları, vb.) Data Factory hizmetine yayımlamak için pencerenin üst tarafındaki **Tümünü Yayımla**’ya tıklayın. Yayımlama başarılı olana kadar bekleyin. 
 
-## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
+## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırması tetikleme
 
 **Gettablelistandtriggercopydata**işlem hattına gidin, **tetikleyici Ekle**' ye ve sonra **Şimdi Tetikle**' ye tıklayın. 
 

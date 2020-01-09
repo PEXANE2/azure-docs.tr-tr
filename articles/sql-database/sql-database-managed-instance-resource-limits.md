@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443822"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -87,7 +87,7 @@ Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-s
 > - Kullanıcı ve sistem veritabanlarındaki veri ve günlük dosyası boyutu, en büyük depolama boyutu sınırı ile karşılaştırılan örnek depolama boyutuna dahildir. Veritabanlarına göre kullanılan toplam alanı öğrenmek için <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> sistem görünümünü kullanın. Hata günlükleri kalıcı değil ve boyutuna dahil edilmez. Yedeklemeler depolama boyutuna dahil değildir.
 > - Genel Amaçlı katmanındaki aktarım hızı ve ıOPS, yönetilen örnekle açıkça sınırlı olmayan [dosya boyutuna](#file-io-characteristics-in-general-purpose-tier) da bağlıdır.
 > - Farklı Azure bölgesinde, otomatik yük devretme grupları kullanarak başka bir okunabilir çoğaltma oluşturabilirsiniz.
-> - En büyük örnek ıOPS, iş yükünün dosya düzenine ve dağıtımına bağlıdır. Örnek olarak, her biri 500 ıOPS ile en fazla 5 k ıOPS ve 7 küçük dosya (128 GB 'tan küçük) ile 7 x 1GB dosyalar oluşturursanız, iş yükünüz tüm dosyaları kullanıyorsa örnek başına 38500 ıOPS (7x500 0 + 7x500) alabilirsiniz. Bazı ıOPS miktarının otomatik yedeklemeler için de kullanıldığını unutmayın.
+> - En büyük örnek ıOPS, iş yükünün dosya düzenine ve dağıtımına bağlıdır. Örnek olarak, her biri 500 ıOPS ile en fazla 5 k ıOPS ve 7 küçük dosya (128 GB 'tan küçük) ile 7 x 1TB dosya oluşturursanız, iş yükünüz tüm dosyaları kullanıyorsa örnek başına 38500 ıOPS (7x5000 + 7x500) alabilirsiniz. Bazı ıOPS miktarının otomatik yedeklemeler için de kullanıldığını unutmayın.
 
 > [!NOTE]
 > [Bu makaledeki yönetilen örnek havuzlardaki kaynak limitleri](sql-database-instance-pools.md#instance-pools-resource-limitations)hakkında daha fazla bilgi bulabilirsiniz.
@@ -99,7 +99,7 @@ Genel Amaçlı hizmet katmanında her veritabanı dosyası, dosya boyutuna bağl
 | Dosya boyutu           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Dosya başına ıOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
-| Dosya başına aktarım hızı | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MIB/sn | 250 MIB/sn | 480 MIB/sn | 
+| Dosya başına aktarım hızı | 100 MIB/sn | 125 MIB/sn | 150 MIB/sn | 200 MIB/sn | 250 MiB/sn | 250 MiB/sn | 480 MIB/sn | 
 
 Bazı veritabanı dosyasında yüksek GÇ gecikme süresi fark ederseniz veya ıOPS/aktarım hızının sınıra ulaşdığına görürseniz, [dosya boyutunu artırarak](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)performansı artırabilirsiniz.
 
@@ -153,7 +153,7 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
 
 1. **Yardım ve destek**' i açın ve **Yeni destek isteği**' ne tıklayın.
 
-   ![Yardım ve destek](media/sql-database-managed-instance-resource-limits/help-and-support.png)
+   ![Yardım ve Destek](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Yeni destek isteği için temel bilgiler sekmesinde:
    - **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
    - **Abonelik** bölümünde aboneliğinizi seçin.
@@ -178,7 +178,7 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
 
 5. **İleri**’ye tıklayın.
 6. Yeni destek isteği için kişi bilgileri sekmesinde, tercih edilen iletişim yöntemini (e-posta veya telefon) ve iletişim ayrıntılarını girin.
-7. **Oluştur**’a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

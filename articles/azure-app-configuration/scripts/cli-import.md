@@ -1,5 +1,6 @@
 ---
-title: Azure CLı betik örneği-Azure uygulama yapılandırma deposuna aktarma | Microsoft Docs
+title: Azure CLı betik örneği-uygulama yapılandırma deposuna aktarma
+titleSuffix: Azure App Configuration
 description: Azure uygulama yapılandırma deposuna içeri aktarmak için bilgi ve örnek betikler sağlar
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6399039a68279a5b734fb3d7cb5bfad60e2c35e1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 28c04859f23b3a560166aa62ac903e1204fc5d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413297"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposuna aktarma
 

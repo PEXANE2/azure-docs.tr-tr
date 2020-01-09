@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği-Azure Cosmos DB oluştur SQL (çekirdek) API veritabanı ve kapsayıcısı
+title: Azure Cosmos DB SQL (çekirdek) API veritabanı ve kapsayıcısı oluşturmak için PowerShell betiği
 description: Azure PowerShell betiği-Azure Cosmos DB oluştur SQL (çekirdek) API veritabanı ve kapsayıcısı
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: eee1e31808412dc5e4308dee92f3685507e771f3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5a57b8cb3e4e7076d3be73a9010d9a29a8b004a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441353"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB-SQL (çekirdek) API 'SI için veritabanı ve kapsayıcı oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "71178798"
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu betik, oturum düzeyi tutarlılığı, paylaşılan aktarım hızı olan bir veritabanını ve bölüm anahtarı, özel dizin oluşturma ilkesi, benzersiz anahtar ilkesi, TTL, adanmış aktarım hızı ve son yazıcı WINS ile bir kapsayıcı olmak üzere iki bölgede SQL (Core) API 'SI için Cosmos hesabı oluşturur. çakışma çözümleme ilkesi, ne zaman `multipleWriteLocations=true`kullanılacak özel bir çakışma çözümü yoluyla yapılır.
+Bu betik, oturum düzeyi tutarlılığı, paylaşılan aktarım hızı olan bir veritabanını ve bölüm anahtarı, özel dizin oluşturma ilkesi, benzersiz anahtar ilkesi, TTL, adanmış aktarım hızı ve son yazıcı WINS çakışma çözümleme ilkesini, `multipleWriteLocations=true`zaman kullanılacak özel bir çakışma çözümü ile bir kapsayıcı halinde SQL (Core) API 'SI için bir Cosmos hesabı oluşturur.
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 

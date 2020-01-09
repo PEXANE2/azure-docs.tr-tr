@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459681"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI (Önizleme)
 
@@ -170,6 +170,29 @@ Stream Analytics işi oluşturuldığına göre, bir Power BI çalışma alanın
 
    ![Power BI çalışma alanına Stream Analytics işi ekleme](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>Power BI PowerShell cmdlet 'lerini kullanma
+
+1. Power BI `MicrosoftPowerBIMgmt` PowerShell cmdlet 'lerini yükler.
+
+   > [!Important]
+   > Lütfen cmdlet 'lerinin 1.0.821 veya sonraki bir sürümünü kullandığınızdan emin olun.
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Power BI oturum açın.
+
+```powershell
+Login-PowerBI
+```
+
+3. Stream Analytics işinizi çalışma alanına katkıda bulunan olarak ekleyin.
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>Power BI kullanın REST API
 
 Stream Analytics işi, doğrudan "Grup kullanıcısı ekle" REST API kullanılarak çalışma alanına katkıda bulunan olarak da eklenebilir. Bu API için tam belge buradan bulunabilir: [Gruplar-Grup kullanıcısı ekle](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
@@ -201,4 +224,4 @@ Bu özelliğin sınırlamaları aşağıda verilmiştir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stream Analytics ile pano tümleştirmesi Power BI](./stream-analytics-power-bi-dashboard.md)
-* [Azure Stream Analytics çıkışlarını anlayın](./stream-analytics-define-outputs.md)
+* [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md)

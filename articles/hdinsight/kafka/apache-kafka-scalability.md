@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 5ce8414376862b66314f754252aba3ab6afdaf25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435306"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için depolamayı ve ölçeklenebilirliği yapılandırma
 
@@ -25,16 +25,16 @@ Aşağıdaki diyagramda, yönetilen diskli HDInsight üzerinde Kafka ile yöneti
 
 ![yönetilen diskler mimarisiyle Kafka](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## <a name="configure-managed-disks-azure-portal"></a>Yönetilen diskleri yapılandırma: Azure portal
+## <a name="configure-managed-disks-azure-portal"></a>Yönetilen diskleri yapılandırma: Azure portalı
 
-1. Portalı kullanarak küme oluşturmaya yönelik genel adımları öğrenmek için [HDInsight kümesi oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümündeki adımları uygulayın. Portal oluşturma işlemini tamamlamayın.
+1. Portalı kullanarak küme oluşturmaya yönelik genel adımları öğrenmek için [HDInsight kümesi oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) bölümündeki adımları uygulayın. Portal oluşturma işlemini tamammayın.
 
-2. __Küme boyutu__ bölümünde, disk sayısını yapılandırmak için __çalışan düğümü başına disk sayısı__ alanını kullanın.
+2. **Yapılandırma & fiyatlandırma** bölümünde, disk sayısını yapılandırmak Için __düğüm sayısı__ alanını kullanın.
 
     > [!NOTE]  
     > Yönetilen diskin türü __Standart__ (HDD) veya __Premium__ (SSD) olabilir. Premium diskler, DS ve GS serisi VM'lerle kullanılır. Diğer tüm VM türleri standart disk kullanır.
 
-    ![çalışan düğümü başına disk sayısı vurgulanmış şekilde küme boyutu bölümü](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![çalışan düğümü başına disk sayısı vurgulanmış şekilde küme boyutu bölümü](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>Yönetilen diskleri yapılandırma: Resource Manager şablonu
 
@@ -48,7 +48,7 @@ Kafka kümesindeki çalışan düğümleri tarafından kullanılan disk sayısı
     ],
 ```
 
-Yönetilen disklerin nasıl yapılandırılacağını gösteren bir şablon daha [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json)bulabilirsiniz.
+[https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json)yönetilen disklerin nasıl yapılandırılacağını gösteren, tamamlanmış bir şablon bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

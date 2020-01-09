@@ -1,5 +1,5 @@
 ---
-title: Azure AD ASP.NET Web uygulamasına oturum açma ekleme
+title: Microsoft Identity platform ASP.NET Web uygulamasına oturum açma ekleme
 titleSuffix: Microsoft identity platform
 description: Geleneksel bir Web tarayıcısı tabanlı uygulama ve OpenID Connect Standard kullanarak ASP.NET çözümünde Microsoft oturum açma uygulama
 services: active-directory
@@ -17,18 +17,18 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964744"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423482"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
 Bu kılavuzda, geleneksel bir Web tarayıcısı tabanlı uygulama ve OpenID Connect kullanılarak ASP.NET MVC çözümü aracılığıyla Microsoft 'a oturum açma işlemlerinin nasıl uygulanacağı gösterilmektedir.
 
-Bu kılavuzu tamamladığınızda, uygulamanız kişisel hesapların oturum açma işlemlerini outlook.com ve live.com beğeni kabul edebilir. Ayrıca, Azure Active Directory (Azure AD) ile tümleştirilmiş herhangi bir şirketten veya kuruluştan iş ve okul hesapları uygulamanızda oturum açabiliyor.
+Bu kılavuzu tamamladığınızda, uygulamanız kişisel hesapların oturum açma işlemlerini outlook.com ve live.com beğeni kabul edebilir. Ayrıca, Microsoft Identity platformu ile tümleştirilen herhangi bir şirketten veya kuruluştan iş ve okul hesapları, uygulamanızda oturum açabiliyor.
 
 > Bu kılavuz Microsoft Visual Studio 2019 gerektirir.  Sizde yok mu?  [Visual Studio 2019 ' ü ücretsiz indirin](https://www.visualstudio.com/downloads/).
 
@@ -106,7 +106,7 @@ Aşağıdaki adımlar, OpenID Connect kimlik doğrulamasını yapılandırmak i�
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -115,7 +115,7 @@ Aşağıdaki adımlar, OpenID Connect kimlik doğrulamasını yapılandırmak i�
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -175,7 +175,7 @@ Aşağıdaki adımlar, OpenID Connect kimlik doğrulamasını yapılandırmak i�
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Daha fazla bilgi
-> *OpenIDConnectAuthenticationOptions* içinde sağladığınız parametreler uygulamanın Azure AD ile iletişim kurmak için kullanacağı koordinatlara benzer. OpenID Connect ara yazılımı arka planda tanımlama bilgileri kullandığından, önceki kodun gösterdiği gibi tanımlama bilgisi kimlik doğrulamasını da ayarlamanız gerekir. *Validateıssuer* değeri, Openıdconnect 'in belirli bir kuruluşa erişimi kısıtlayamayacağını söyler.
+> *Openıdconnectauthenticationoptions* içinde sağladığınız parametreler, uygulamanın Microsoft Identity platformu ile iletişim kurması için koordinatlar olarak görev yapar. OpenID Connect ara yazılımı arka planda tanımlama bilgileri kullandığından, önceki kodun gösterdiği gibi tanımlama bilgisi kimlik doğrulamasını da ayarlamanız gerekir. *Validateıssuer* değeri, Openıdconnect 'in belirli bir kuruluşa erişimi kısıtlayamayacağını söyler.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Oturum açma ve oturum kapatma isteklerini işlemek için bir denetleyici ekleme
@@ -270,7 +270,7 @@ Visual Studio 'da, oturum açma düğmesini eklemek ve kimlik doğrulamasından 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Daha fazla bilgi
-> Bu sayfa, SVG formatında siyah bir arka plana sahip bir oturum açma düğmesi ekler:<br/>![Microsoft hesabıyla oturum açın](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Daha fazla oturum açma düğmesi için [marka yönergelerine](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding yönergeleri ")gidin.
+> Bu sayfa, SVG formatında siyah bir arka plana sahip bir oturum açma düğmesi ekler:<br/>![Microsoft hesabıyla oturum açın](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Daha fazla oturum açma düğmesi için [marka yönergelerine](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Marka yönergeleri")gidin.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Kullanıcının taleplerini göstermek için bir denetleyici ekleme
@@ -395,7 +395,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
 1. `ClientId` yeni kaydettiğiniz uygulama KIMLIĞIYLE değiştirin.
 1. `redirectUri`, projenizin SSL URL 'siyle değiştirin.
 
-## <a name="test-your-code"></a>Kodunuzu test edin
+## <a name="test-your-code"></a>Kodunuzu test etme
 
 Visual Studio 'da uygulamanızı test etmek için F5 'e basarak projenizi çalıştırın. Tarayıcı, http://<span></span>localhost: {Port} konumunda açılır ve **Microsoft hesabıyla oturum açın** düğmesini görürsünüz. Oturum açma işlemini başlatmak için düğmeyi seçin.
 
@@ -407,7 +407,7 @@ Testinizi çalıştırmaya hazırsanız bir Azure AD hesabı (iş veya okul hesa
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft Identity platform uç noktasındaki izinler ve onay
->  Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Bu uygulamaya erişmek için Kullanıcı Azure AD ile kimlik doğrulamasından geçtikten sonra, uygulama tarafından istenen izinleri ("temel profilinizi görüntüleme" ve "erişim vermiş olduğunuz verilere erişimi koruma") onaylaması istenir. Bu izinleri kabul ettikten sonra, Kullanıcı uygulama sonuçlarına devam edecektir. Bununla birlikte, aşağıdakilerden biri gerçekleştiğinde kullanıcıya **Yönetici onay sayfası gereksinimi** istenebilir:
+>  Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Bir Kullanıcı bu uygulamaya erişmek için Microsoft Identity platform ile kimlik doğrulamasından geçtikten sonra, uygulama tarafından istenen izinleri onaylaması istenir ("temel profilinizi görüntüleyin" ve "erişim vermiş olduğunuz verilere erişimi korur"). Bu izinleri kabul ettikten sonra, Kullanıcı uygulama sonuçlarına devam edecektir. Bununla birlikte, aşağıdakilerden biri gerçekleştiğinde kullanıcıya **Yönetici onay sayfası gereksinimi** istenebilir:
 >  > - Uygulama geliştiricisi, **yönetici onayı**gerektiren herhangi bir ek izin ekler.
 >  > - Ya da kiracı, kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin veremediği ( **Kurumsal uygulamalarda > Kullanıcı ayarları**) yapılandırılır.
 >
@@ -430,10 +430,10 @@ Denetleyici görünümüne gözatdıktan sonra, kullanıcının temel özellikle
 |---|---|---|
 |**Adı** |Kullanıcının tam adı | Kullanıcının adı ve soyadı
 |**Kullanıcı Adı** |Kullanıcı<span>@domain.com</span> | Kullanıcıyı tanımlamak için kullanılan Kullanıcı adı|
-|**Konu** |Özne |Kullanıcıyı web genelinde benzersiz şekilde tanımlayan bir dize|
+|**Konu** |Konu |Kullanıcıyı web genelinde benzersiz şekilde tanımlayan bir dize|
 |**Kiracı KIMLIĞI** |Guid | Kullanıcının Azure AD organizasyonunu benzersiz bir şekilde temsil eden bir **GUID**|
 
-Ayrıca, kimlik doğrulama isteğinde olan tüm taleplerin bir tablosunu görmeniz gerekir. Daha fazla bilgi için bkz. [Azure AD kimlik belirtecinde olan taleplerin listesi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Ayrıca, kimlik doğrulama isteğinde olan tüm taleplerin bir tablosunu görmeniz gerekir. Daha fazla bilgi için, [BIR kimlik belirtecinde olan taleplerin listesine](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)bakın.
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Yetkilendir özniteliğine sahip bir yönteme erişimi test etme (isteğe bağlı)
 
@@ -459,7 +459,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Uygulamanızda oturum açabilen kişileri kısıtla
 
-Varsayılan olarak, bu kılavuz tarafından oluşturulan uygulamayı yapılandırdığınızda, uygulamanız kişisel hesapların (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerini kabul eder ve bunlarla tümleştirilmiş olan herhangi bir şirketten veya kuruluştan iş ve okul hesapları kabul eder. Azure AD. Bu, SaaS uygulamaları için önerilen bir seçenektir.
+Varsayılan olarak, bu kılavuz tarafından oluşturulan uygulamayı yapılandırdığınızda, uygulamanız kişisel hesapların (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerini kabul eder ve bunlarla tümleştirilmiş olan herhangi bir şirketten veya kuruluştan iş ve okul hesapları kabul eder. Microsoft Identity platformu. Bu, SaaS uygulamaları için önerilen bir seçenektir.
 
 Uygulamanıza yönelik kullanıcı oturum açma erişimini kısıtlamak için birden çok seçenek mevcuttur.
 

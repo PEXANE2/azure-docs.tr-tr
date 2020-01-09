@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453066"
 ---
 # <a name="microsoft-global-network"></a>Microsoft küresel ağı
 
@@ -40,14 +40,14 @@ Londra 'dan Tokyo 'ya veya Washington DC 'den Los Angeles 'a bağlanıp, ağ per
   
 Bu nedenle, Microsoft hizmetlerini kullanırken herhangi bir ve tüm trafik anlamına gelir. Evet, Microsoft Azure veya sanal makineler, Office 365, XBox, SQL DB, depolama ve sanal ağlar gibi Microsoft Hizmetleri arasındaki veri merkezleri arasındaki tüm trafik, en iyi şekilde emin olmak için küresel ağımızda ve hiçbir şekilde genel Internet üzerinden yönlendirilir performans ve bütünlük.  
  
-Fiber kapasitesinde çok büyük yatırım ve metro, berkik ve denizsel yolların üzerinde çeşitliliğe sahip olmak, bulut ve çevrimiçi hizmetler üstün büyümesinin yanı sıra tutarlı ve yüksek hizmet düzeyini korumamız için çok önemlidir. Küresel ağımızda en son eklemeler, sektördeki ilk açık satır sistemi (as 'ler) ve biliş, Ispanya ve Virginia plaj, Virginia, USA ve New York, ABD ve Dublin, Irlanda arasındaki [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) ile birlikte [](https://www.submarinecablemap.com/#/submarine-cable/marea) ve Tokyo, Japonya ve Portland, MARI ve ABD arasında [yeni çapraz Pasifik (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) . 
+Fiber kapasitesinde çok büyük yatırım ve metro, berkik ve denizsel yolların üzerinde çeşitliliğe sahip olmak, bulut ve çevrimiçi hizmetler üstün büyümesinin yanı sıra tutarlı ve yüksek hizmet düzeyini korumamız için çok önemlidir. Küresel ağımızda son eklemeler, [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) alt deniz kablonuz, sektörün, Kbao, Ispanya ve Virginia plaj, Virginia, USA ve New York, ABD ve Dublin, Irlanda ve [yeni çapraz Pasifik (NCP](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) ) arasında, Tokyo, Japonya ve Portland, Oregon ve ABD arasında [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) olan ilk açık satır sistemi (as). 
  
 
 ## <a name="our-network-is-your-network"></a>Ağınız ağınız
 
 Her zaman en iyi performansı elde etmek için, ağa büyük yatırımlarla birlikte iki adet deneyim sunuyoruz. İşletmeler, ağ varlıklarımızın tam avantajlarından yararlanabilir ve en üstte gelişmiş kaplama mimarileri oluşturabilir. 
  
-Microsoft Azure, müşterilerin ağ gereksinimlerini her yerde hızla ve kolayca oluşturmasına, genişletmelerine ve karşılamasına olanak tanıyan, en zengin hizmet portföyünü ve yeteneklerini sunmaktadır. Bağlantı Hizmetleri ailemiz bölgeler, karma ve bulut içi Noktadan siteye ve siteden siteye mimarilerin yanı sıra genel IP aktarma senaryolarında sanal ağ eşlemesi de yaymaktadır.  Kendi veri merkezlerinden veya ağı Azure 'a bağlamak isteyen kuruluşlar veya büyük veri alımı ya da transit gereksinimlerine sahip müşteriler, [ExpressRoute](../expressroute/expressroute-introduction.md)ve [expressroute Direct](../expressroute/expressroute-erdirect-about.md) , 100 Gbps bant genişliğine sahip olan ve doğrudan Microsoft 'un Dünya genelindeki eşleme konumlarında küresel ağı.  
+Microsoft Azure, müşterilerin ağ gereksinimlerini her yerde hızla ve kolayca oluşturmasına, genişletmelerine ve karşılamasına olanak tanıyan, en zengin hizmet portföyünü ve yeteneklerini sunmaktadır. Bağlantı Hizmetleri ailemiz bölgeler, karma ve bulut içi Noktadan siteye ve siteden siteye mimarilerin yanı sıra genel IP aktarma senaryolarında sanal ağ eşlemesi de yaymaktadır.  Kendi veri merkezini veya ağını Azure 'a bağlamak isteyen kuruluşlar ya da büyük veri alımı veya transit gereksinimlerine sahip müşteriler, [ExpressRoute](../expressroute/expressroute-introduction.md)ve [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md) , dünyanın dört bir yanındaki eşleme konumlarında doğrudan Microsoft 'un küresel ağı 'Nda 100 GB/sn 'ye kadar bant genişliği sağlar.  
  
 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) , HIZMET sağlayıcınızın WAN uygulamasını tamamlamak ve şirket içi sitelerinizi dünya çapında bağlamak üzere tasarlanmıştır. Genel bir işlem çalıştırırsanız, Microsoft Global Network kullanarak tüm genel siteleriniz bağlamak için, tercih ettiğiniz ve yerel hizmet sağlayıcılarınız ile birlikte ExpressRoute Global Reach kullanabilirsiniz. Yeni ağınızı bulutta (WAN) çok sayıda dalı kapsayacak şekilde genişletmek, Azure sanal WAN aracılığıyla, Dallarınızı SDWAN & VPN cihazlarıyla Microsoft küresel ağına sorunsuzca bağlama olanağını (yani, Yerleşik kullanım kolaylığı ve otomatik bağlantı ve yapılandırma yönetimi ile müşteri Içi ekipman veya CPE). 
  
@@ -56,7 +56,7 @@ Microsoft Azure, müşterilerin ağ gereksinimlerini her yerde hızla ve kolayca
 
 ## <a name="well-managed-using-software-defined-innovation"></a>Yazılım tanımlı yeniliği kullanarak iyi yönetiliyor
 
-Dünyada önde gelen bulutlardan birini çalıştırırken Microsoft, yüksek performanslı küresel altyapı [oluşturma ve yönetme](https://myignite.techcommunity.microsoft.com/sessions/66668) konusunda çok sayıda öngörü ve deneyim kazanmıştır.  
+Dünyada önde gelen bulutlardan birini çalıştırırken Microsoft, yüksek performanslı küresel altyapı oluşturma ve yönetme konusunda çok sayıda öngörü ve deneyim kazanmıştır.  
  
 Sağlam bir işlemsel ilkeler kümesine uyduk: 
  

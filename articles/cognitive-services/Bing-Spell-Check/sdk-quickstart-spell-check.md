@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: İçin Bing Yazım Denetimi SDK ile yazım denetimi yapınC#'
+title: 'Hızlı başlangıç: için Bing Yazım Denetimi SDK ile yazım denetimiC#'
 titleSuffix: Azure Cognitive Services
 description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 74697d69fbeb9072f839f0b6d49c010c5a7a7a05
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: b314944f1ae8847470f218ca23a11beed7731f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448407"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Hızlı Başlangıç: İçin Bing Yazım Denetimi SDK ile yazım denetimi yapınC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Hızlı başlangıç: için Bing Yazım Denetimi SDK ile yazım denetimiC#
 
 İçin C#Bing yazım denetimi SDK ile yazım denetimi başlatmak için bu hızlı başlangıcı kullanın. Bing Yazım Denetimi birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)' da bulunabilir.
 
@@ -36,7 +36,7 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Visual Studio 'da C# yeni bir konsol çözümü oluşturun. Ardından aşağıdaki `using` ifadeyi ekleyin.
+1. Visual Studio 'da C# yeni bir konsol çözümü oluşturun. Sonra aşağıdaki `using` ifadesini ekleyin.
     
     ```csharp
     using System;
@@ -46,9 +46,9 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Yeni bir sınıf oluşturun. Ardından, bir abonelik anahtarı alan `SpellCheckCorrection()` ve yazım denetimi isteğini gönderen adlı bir zaman uyumsuz işlev oluşturun.
+2. Yeni bir sınıf oluşturun. Ardından, abonelik anahtarı alan `SpellCheckCorrection()` adlı bir zaman uyumsuz işlev oluşturun ve yazım denetimi isteği gönderir.
 
-3. Yeni `ApiKeyServiceClientCredentials` bir nesne oluşturarak istemciyi örneğini oluşturun. 
+3. Yeni bir `ApiKeyServiceClientCredentials` nesnesi oluşturarak istemciyi örneğini oluşturun. 
 
     ```csharp
     public static class SpellCheckSample{
@@ -61,7 +61,7 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
 
 ## <a name="send-the-request-and-read-the-response"></a>İsteği gönder ve yanıtı oku
 
-1. Yukarıda oluşturulan işlevde aşağıdaki adımları gerçekleştirin. Yazım denetimi isteğini istemcisiyle gönderin. `text` Parametreye denetlenecek metni ekleyin ve modunu olarak `proof`ayarlayın.  
+1. Yukarıda oluşturulan işlevde aşağıdaki adımları gerçekleştirin. Yazım denetimi isteğini istemcisiyle gönderin. `text` parametresine denetlenecek metni ekleyin ve modu `proof`olarak ayarlayın.  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
@@ -83,20 +83,24 @@ Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gez
 3. Bir varsa, önerilen ilk düzeltmeyi alın. Öneri Puanını ve önerilen sözcüğü yazdırın. 
 
     ```csharp
-            var suggestions = firstspellCheckResult.Suggestions;
+    var suggestions = firstspellCheckResult.Suggestions;
 
-            if (suggestions?.Count > 0)
-            {
-                var firstSuggestion = suggestions.FirstOrDefault();
-                Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-                Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-            }
-   }
+    if (suggestions?.Count > 0)
+    {
+        var firstSuggestion = suggestions.FirstOrDefault();
+        Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
+        Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
+    }
+    ```
 
-## Next steps
+## <a name="run-the-application"></a>Uygulamayı çalıştırma
+
+Projenizi derleyin ve çalıştırın. Visual Studio kullanıyorsanız, dosyada hata ayıklamak için **F5** ' e basın.
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Create a single page web-app](tutorials/spellcheck.md)
+> [Tek sayfalı Web uygulaması oluşturma](tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](overview.md)
-- [Bing Spell Check C# SDK reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Yazım Denetimi API'si nedir?](overview.md)
+- [Bing Yazım Denetimi C# SDK başvuru kılavuzu](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425661"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN cihazı tüneli yapılandırma
 
@@ -37,7 +37,7 @@ VPN ağ geçidini, bu [Noktadan siteye bu makaleyi](vpn-gateway-howto-point-to-s
 
 Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karşılanması gerekir:
 
-* Cihaz, Windows 10 Enterprise veya eğitim sürüm 1709 veya üstünü çalıştıran etki alanına katılmış bir bilgisayar olmalıdır.
+* Cihaz, Windows 10 Enterprise veya eğitim sürüm 1809 veya üstünü çalıştıran etki alanına katılmış bir bilgisayar olmalıdır.
 * Tünel yalnızca Windows yerleşik VPN çözümü için yapılandırılabilir ve bilgisayar sertifikası kimlik doğrulamasıyla Ikev2 kullanılarak oluşturulmuştur. 
 * Her cihaz için yalnızca bir cihaz tüneli yapılandırılabilir.
 
@@ -139,15 +139,15 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
 1. Yönetici CMD isteminde şunu çalıştırarak PowerShell 'i başlatın:
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![PowerShell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+   ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. PowerShell 'de, **devicecert. ps1** ve **vpnprofile. xml** ' nin bulunduğu klasöre geçin ve aşağıdaki komutu çalıştırın:
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![Machineccerttest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
@@ -156,7 +156,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ![belirlen](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. **Machineccerttest** girişini bulun ve **Bağlan**' a tıklayın.
 
-   ![Bağlan](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Bağlayın](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Bağlantı başarılı olursa, bilgisayarı yeniden başlatın. Tünel otomatik olarak bağlanır.
 
 ## <a name="cleanup"></a>Temizleme

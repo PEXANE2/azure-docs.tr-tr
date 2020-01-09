@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465207"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure Site Recovery ile Azure ExpressRoute
 
@@ -21,7 +21,7 @@ Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştır�
 
 Bu makalede, olağanüstü durum kurtarma ve geçiş için Azure Site Recovery Azure ExpressRoute ile nasıl kullanabileceğiniz açıklanır.
 
-## <a name="expressroute-circuits"></a>ExpressRoute devreleri
+## <a name="expressroute-circuits"></a>ExpressRoute bağlantı hatları
 
 Bir ExpressRoute bağlantı hattı, şirket içi altyapınızı ve bağlantı sağlayıcı üzerinden Microsoft bulut hizmetleri arasında mantıksal bağlantıyı temsil eder. Birden çok ExpressRoute bağlantı hattına sipariş edebilirsiniz. Her bağlantı hattı aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla şirket içinde bağlanabilir. ExpressRoute devreleri hakkında [buradan](../expressroute/expressroute-circuit-peerings.md)daha fazla bilgi edinin.
 
@@ -31,7 +31,7 @@ ExpressRoute bağlantı hattının ilişkili birden çok yönlendirme etki alan�
 
 Azure Site Recovery, şirket içi [Hyper-V sanal makineleri](hyper-v-azure-architecture.md), [VMware sanal makineleri](vmware-azure-architecture.md)ve [fiziksel sunucular](physical-azure-architecture.md)için olağanüstü durum kurtarma ve Azure 'a geçiş sağlar. Tüm şirket içi Azure senaryolarında çoğaltma verileri bir Azure depolama hesabına gönderilir ve depolanır. Çoğaltma sırasında, herhangi bir sanal makine ücreti ödemezsiniz. Azure 'a yük devretme işlemi çalıştırdığınızda, Site Recovery otomatik olarak Azure IaaS sanal makineleri oluşturur.
 
-Site Recovery, verileri bir Azure depolama hesabına veya hedef Azure bölgesindeki çoğaltma yönetilen diskine ortak bir uç nokta üzerinden çoğaltır. Site Recovery çoğaltma trafiği için ExpressRoute 'u kullanmak üzere [Microsoft eşlemesini](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) veya var olan bir [genel eşlemeyi](../expressroute/expressroute-circuit-peerings.md#publicpeering) (yeni oluşturma işlemleri için kullanım dışı) kullanabilirsiniz. Microsoft eşleme, çoğaltma için önerilen yönlendirme etki alanıdır. Çoğaltmanın özel eşleme üzerinden desteklenmediğini unutmayın.
+Site Recovery, verileri bir Azure depolama hesabına veya hedef Azure bölgesindeki çoğaltma yönetilen diskine ortak bir uç nokta üzerinden çoğaltır. Site Recovery çoğaltma trafiği için ExpressRoute 'u kullanmak üzere [Microsoft eşlemesini](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) veya var olan bir [genel eşlemeyi](../expressroute/about-public-peering.md) (yeni oluşturma işlemleri için kullanım dışı) kullanabilirsiniz. Microsoft eşleme, çoğaltma için önerilen yönlendirme etki alanıdır. Çoğaltmanın özel eşleme üzerinden desteklenmediğini unutmayın.
 
 Yapılandırma sunucusu için [ağ gereksinimlerinin](vmware-azure-configuration-server-requirements.md#network-requirements) de karşılandığından emin olun. Site Recovery çoğaltmanın düzenlenmesi için yapılandırma sunucusu için belirli URL 'lere bağlantı gerekir. ExpressRoute Bu bağlantı için kullanılamaz. 
 

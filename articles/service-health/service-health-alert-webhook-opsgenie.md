@@ -1,78 +1,76 @@
 ---
-title: Azure hizmet durumu uyarıları göndermek OpsGenie ile Web kancalarını kullanma
-description: OpsGenie Örneğiniz için hizmet durumu olayları hakkında Kişiselleştirilmiş bildirimler alın.
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
+title: Web kancalarını kullanarak OpsGenie ile Azure hizmet durumu uyarıları gönderme
+description: OpsGenie örneğiniz için hizmet sistem durumu olayları hakkında kişiselleştirilmiş bildirimler alın.
 ms.service: service-health
+ms.topic: article
 ms.date: 06/10/2019
-ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465240"
 ---
-# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure hizmet durumu uyarıları göndermek OpsGenie ile Web kancalarını kullanma
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Web kancalarını kullanarak OpsGenie ile Azure hizmet durumu uyarıları gönderme
 
-Bu makalede bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarıları ayarlamak nasıl gösterir. Kullanarak [OpsGenie](https://www.opsgenie.com/)ait Azure hizmet durumu tümleştirmesi, ilettiğinizde Azure hizmet durumu uyarıları için OpsGenie. OpsGenie bildirmek için doğru kişilere nöbet zamanlamalarını temel alan e-posta, kısa mesaj (SMS), telefon görüşmeleri, iOS ve Android anında iletme bildirimleri kullanarak ve uyarı onaylanır veya kadar uyarılar Etkinleºmesini belirleyebilirsiniz.
+Bu makalede, bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarılarını ayarlama işlemi gösterilmektedir. [OpsGenie](https://www.opsgenie.com/)'Nin Azure hizmet durumu tümleştirmesini kullanarak, Azure hizmet durumu uyarılarını OpsGenie 'e iletebilirsiniz. OpsGenie, arama zamanlamalarını, e-posta, kısa mesaj (SMS), telefon çağrılarını, iOS & Android anında iletme bildirimlerini kullanarak bildirimde bulunan ve uyarı onaylanana veya kapalı olana kadar uyarıları yürüyen doğru kişileri belirleyebilir.
 
-## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>Hizmet durumu tümleştirme URL'si OpsGenie içinde oluşturma
-1.  Kaydolup ve oturum açmış emin olun, [OpsGenie](https://www.opsgenie.com/) hesabı.
+## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>OpsGenie 'de hizmet durumu tümleştirme URL 'SI oluşturma
+1.  Kaydolduğunuzdan ve [OpsGenie](https://www.opsgenie.com/) hesabınızda oturum açtığınızdan emin olun.
 
-1.  Gidin **tümleştirmeler** OpsGenie bölümünde.
+1.  OpsGenie içindeki **tümleştirmeler** bölümüne gidin.
 
-    ![OpsGenie "Tümleştirmeler" bölümünde](./media/webhook-alerts/opsgenie-integrations-section.png)
+    ![OpsGenie 'teki "tümleştirmeler" bölümü](./media/webhook-alerts/opsgenie-integrations-section.png)
 
-1.  Seçin **Azure hizmet durumu** tümleştirme düğmesi.
+1.  **Azure hizmet durumu** tümleştirme düğmesini seçin.
 
-    ![OpsGenie içinde "Azure hizmet durumu button"](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
+    ![OpsGenie içindeki "Azure hizmet durumu düğmesi"](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-1.  **Adı** , uyarı ve belirtin **takıma atanmış** alan.
+1.  Uyarınızı **adlandırın** ve **atanan takım** alanını belirtin.
 
-1.  Diğer alanlar gibi doldurun **alıcılar**, **etkin**, ve **bildirimleri bastır**.
+1.  **Alıcılar**, **etkin**ve **bildirimleri gösterme**gibi diğer alanları doldurun.
 
-1.  Kopyalayıp kaydedin **tümleştirme URL'sini**, hangi zaten içermelidir, `apiKey` sonuna.
+1.  `apiKey` zaten sonuna eklenmiş olan **tümleştirme URL 'sini**kopyalayıp kaydedin.
 
-    ![OpsGenie "tümleştirme URL'yi"](./media/webhook-alerts/opsgenie-integration-url.png)
+    ![OpsGenie içindeki "tümleştirme URL 'SI"](./media/webhook-alerts/opsgenie-integration-url.png)
 
-1.  Seçin **tümleştirme Kaydet**
+1.  **Tümleştirmeyi kaydet** ' i seçin
 
-## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Azure portalında OpsGenie kullanarak bir uyarı oluştur
+## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Azure portal OpsGenie kullanarak uyarı oluşturma
 ### <a name="for-a-new-action-group"></a>Yeni bir eylem grubu için:
-1. 1 ile 8 arasındaki adımları [Azure portalını kullanarak yeni bir eylem grubu için bir hizmet durumu bildirimi üzerinde uyarı oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. [Azure Portal kullanarak yeni bir eylem grubu için hizmet durumu bildiriminde uyarı oluşturma](../azure-monitor/platform/alerts-activity-log-service-notifications.md)bölümünde 1 ile 8 arasındaki adımları izleyin.
 
-1. Listesinde tanımlamak **Eylemler**:
-
-    a. **Eylem türü:** *Web kancası*
-
-    b. **Ayrıntılar:** OpsGenie **tümleştirme URL'sini** , daha önce kaydedildi.
-
-    c. **Adı:** Web kancası'nın adı, diğer adı veya tanımlayıcısı.
-
-1. Seçin **Kaydet** uyarı oluşturma işlemi tamamlandığında.
-
-### <a name="for-an-existing-action-group"></a>Var olan bir eylem grubu için:
-1. İçinde [Azure portalında](https://portal.azure.com/)seçin **İzleyici**.
-
-1. İçinde **ayarları** bölümünden **Eylem grupları**.
-
-1. Bulmak ve düzenlemek istediğiniz eylem grubu seçin.
-
-1. Listesine ekleme **Eylemler**:
+1. **Eylem**listesinde tanımlayın:
 
     a. **Eylem türü:** *Web kancası*
 
-    b. **Ayrıntılar:** OpsGenie **tümleştirme URL'sini** , daha önce kaydedildi.
+    b. **Ayrıntılar:** Daha önce kaydettiğiniz OpsGenie **tümleştirme URL 'si** .
 
-    c. **Adı:** Web kancası'nın adı, diğer adı veya tanımlayıcısı.
+    c. **Ad:** Web kancası adı, diğer ad veya tanımlayıcı.
 
-1. Seçin **Kaydet** eylem grubunu güncelleştirmeye işiniz bittiğinde.
+1. Uyarıyı oluşturmak için işiniz bittiğinde **Kaydet** ' i seçin.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Bir HTTP POST isteği üzerinden, Web kancası tümleştirme testi
-1. Göndermek istediğiniz hizmet sistem durumu yükü oluşturun. Bir örnek hizmet sistem durumu Web kancası yükü konumunda bulabilirsiniz [günlük uyarıları Azure etkinlik için Web kancaları](../azure-monitor/platform/activity-log-alerts-webhook.md).
+### <a name="for-an-existing-action-group"></a>Mevcut bir eylem grubu için:
+1. [Azure Portal](https://portal.azure.com/), **İzle**' yi seçin.
 
-1. Bir HTTP POST isteği şu şekilde oluşturun:
+1. **Ayarlar** bölümünde **eylem grupları**' nı seçin.
+
+1. Düzenlemek istediğiniz eylem grubunu bulun ve seçin.
+
+1. **Eylem**listesine ekle:
+
+    a. **Eylem türü:** *Web kancası*
+
+    b. **Ayrıntılar:** Daha önce kaydettiğiniz OpsGenie **tümleştirme URL 'si** .
+
+    c. **Ad:** Web kancası adı, diğer ad veya tanımlayıcı.
+
+1. Eylem grubunu güncelleştirmek için işiniz bittiğinde **Kaydet** ' i seçin.
+
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Web kancası tümleştirmenizi bir HTTP POST isteği aracılığıyla test etme
+1. Göndermek istediğiniz hizmet durumu yükünü oluşturun. [Azure etkinlik günlüğü uyarıları Için Web kancalarında](../azure-monitor/platform/activity-log-alerts-webhook.md)örnek bir hizmet durumu Web kancası yükü bulabilirsiniz.
+
+1. Aşağıdaki gibi bir HTTP POST isteği oluşturun:
 
     ```
     POST        https://api.opsgenie.com/v1/json/azureservicehealth?apiKey=<APIKEY>
@@ -81,12 +79,12 @@ Bu makalede bir Web kancası kullanarak OpsGenie ile Azure hizmet durumu uyarıl
 
     BODY        <service health payload>
     ```
-1. Alması gereken bir `200 OK` durumu "başarılı" iletisi ile yanıt
+1. "Başarılı" durumuna sahip bir `200 OK` yanıtı almalısınız.
 
-1. Git [OpsGenie](https://www.opsgenie.com/) tümleştirmenizi başarılı bir şekilde ayarlandığını doğrulamak için.
+1. Tümleştirmenin başarıyla ayarlandığını doğrulamak için [OpsGenie](https://www.opsgenie.com/) 'ye gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Bilgi edinmek için nasıl [mevcut sorun yönetim sistemleri için Web kancası bildirimleri yapılandırma](service-health-alert-webhook-guide.md).
-- Gözden geçirme [etkinlik günlüğü uyarısı Web kancası şeması](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Hakkında bilgi edinin [hizmet durumu bildirimlerini](../azure-monitor/platform/service-notifications.md).
-- Daha fazla bilgi edinin [Eylem grupları](../azure-monitor/platform/action-groups.md).
+- [Mevcut sorun yönetimi sistemleri için Web kancası bildirimlerinin nasıl yapılandırılacağını](service-health-alert-webhook-guide.md)öğrenin.
+- [Etkinlik günlüğü uyarısı Web kancası şemasını](../azure-monitor/platform/activity-log-alerts-webhook.md)gözden geçirin. 
+- [Hizmet durumu bildirimleri](../azure-monitor/platform/service-notifications.md)hakkında bilgi edinin.
+- [Eylem grupları](../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.

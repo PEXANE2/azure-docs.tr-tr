@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358284"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Birden çok NIC içeren bir Windows sanal makinesi oluşturma ve yönetme
 Azure 'daki sanal makinelere (VM 'Ler), birden çok sanal ağ arabirim kartı (NIC) eklenmiş olabilir. Yaygın bir senaryo, ön uç ve arka uç bağlantısı için farklı alt ağlara sahip olur. Bir VM 'de birden çok NIC 'yi birden çok alt ağa ilişkilendirebilirsiniz, ancak bu alt ağların hepsi aynı sanal ağda (vNet) bulunmalıdır. Bu makalede, birden fazla NIC 'ye eklenmiş bir VM oluşturma işlemi açıklanır. Ayrıca, mevcut bir VM 'ye NIC ekleme veya kaldırma hakkında bilgi edinebilirsiniz. Farklı [VM boyutları](sizes.md) değişen sayıda NIC destekler, bu nedenle VM 'nizi uygun şekilde boyutlandırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *Myvnet*ve *myvm*' i içerir.
 
@@ -218,7 +218,7 @@ Bir sanal NIC 'yi var olan bir VM 'den kaldırmak için VM 'yi serbest bırakın
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Şablonlarla birden çok NIC oluşturma
-Azure Resource Manager şablonlar, dağıtım sırasında birden çok NIC oluşturma gibi bir kaynağın birden çok örneğini oluşturmak için bir yol sağlar. Kaynak Yöneticisi şablonlar, ortamınızı tanımlamak için bildirim temelli JSON dosyalarını kullanır. Daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/resource-group-overview.md). Oluşturulacak örnek sayısını belirtmek için *Kopyala* ' yı kullanabilirsiniz:
+Azure Resource Manager şablonlar, dağıtım sırasında birden çok NIC oluşturma gibi bir kaynağın birden çok örneğini oluşturmak için bir yol sağlar. Kaynak Yöneticisi şablonlar, ortamınızı tanımlamak için bildirim temelli JSON dosyalarını kullanır. Daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md). Oluşturulacak örnek sayısını belirtmek için *Kopyala* ' yı kullanabilirsiniz:
 
 ```json
 "copy": {

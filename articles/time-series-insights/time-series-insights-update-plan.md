@@ -1,6 +1,6 @@
 ---
 title: Önizleme ortamınızı planlayın-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights önizleme ortamınızı nasıl planlayacağınızı öğrenin.
+description: Azure Time Series Insights önizleme ortamınızı yapılandırmak, yönetmek, planlamak ve dağıtmak için en iyi uygulamalar.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452445"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights Preview ortamınızı planlayın
 
@@ -48,7 +48,7 @@ Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek 
 Isınma mağazasındaki sorgular ücretsizdir, ancak soğuk depodaki sorgular maliyetlendirilir. Sorgu desenlerinizi anlamanız ve ısınma Mağazası yapılandırmanızı buna göre planlamanız önemlidir. En son veriler üzerinde etkileşimli analizler 'in, ısınma mağazalarınızın yanı sıra, uzun süreli eğilimler soğuk bir şekilde bulunmasını öneririz.
 
 > [!NOTE]
-> Şu anda, yarı depolama ile en fazla 1.000 Özellik destekliyoruz.
+> Isınma verilerinizi sorgulama hakkında daha fazla bilgi edinmek için [buraya bakın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Başlamak için üç ek öğe gereklidir:
 

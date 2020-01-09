@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: e5a3df82fae9d81a870d3dba929bc7e4cd4123d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438756"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -26,13 +26,13 @@ ms.locfileid: "73904688"
 
 Bir Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme, hesabınızı silme gibi temel işlemleri gerçekleştirmek için Azure portal nasıl kullanacağınızı öğrenin. Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabı oluşturma
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
 
 1. Yeni [Azure Portal](https://portal.azure.com)'da oturum açın.
 2. **Kaynak oluştur > depolama > Data Lake Storage 1.** ' ya tıklayın.
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
    * **Ad**. Data Lake Storage 1. hesabı için benzersiz bir ad girin.
    * **Abonelik**. Yeni Data Lake Storage 1. hesabını oluşturmak istediğiniz aboneliği seçin.
-   * **Kaynak Grubu**. Mevcut bir kaynak grubunu seçin veya yeni grup oluşturmak için **Yeni oluştur** seçeneğini belirleyin. Kaynak grubu, bir uygulama için ilgili kaynakları bir arada tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure'da Kaynak Grupları](../azure-resource-manager/resource-group-overview.md#resource-groups).
+   * **Kaynak Grubu**. Mevcut bir kaynak grubunu seçin veya yeni grup oluşturmak için **Yeni oluştur** seçeneğini belirleyin. Kaynak grubu, bir uygulama için ilgili kaynakları bir arada tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure'da Kaynak Grupları](../azure-resource-manager/management/overview.md#resource-groups).
    * **Konum**: Data Lake Storage 1. hesabını oluşturmak istediğiniz konumu seçin.
    * **Şifreleme Ayarları**. Üç seçenek vardır:
 
@@ -103,9 +103,9 @@ Verilerinizi bir Data Lake Storage 1. hesabına doğrudan kök düzeyinde veya h
 1. **Veri Gezgini** dikey penceresinde **Yükle**'ye tıklayın.
 2. **Dosyaları karşıya yükleme** dikey penceresinde yüklemek istediğiniz dosyaları bulun ve **Seçili dosyaları ekle**'ye tıklayın. Yüklemek için birden fazla dosya da seçebilirsiniz.
 
-    ![Karşıya veri yükleme](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Karşıya veri yükleme")
+    ![Karşıya veri yükleme](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Verileri karşıya yükleme")
 
-Karşıya yüklenecek örnek veri arıyorsanız **Azure Data Lake Git Deposu**'ndan [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) klasörünü alabilirsiniz.
+Karşıya yüklenecek örnek veri arıyorsanız [Azure Data Lake Git Deposu](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)'ndan **Ambulance Data** klasörünü alabilirsiniz.
 
 ## <a name="properties"></a>Depolanan verilerde kullanılabilen eylemler
 
@@ -113,11 +113,11 @@ Dosyanın yanındaki üç nokta simgesine tıklayın ve açılan menüden verile
 
 ![Verilerdeki Özellikler](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Verilere yönelik özellikler")
 
-## <a name="secure-your-data"></a>Verilerinizin güvenliğini sağlama
+## <a name="secure-your-data"></a>Verilerinizi güvenli hale getirin
 
 Azure Active Directory ve erişim denetimi (ACL 'Ler) kullanarak Data Lake Storage 1. hesabınızda depolanan verileri güvenli hale getirebilirsiniz. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Azure Data Lake Storage 1. verileri güvenli hale getirme](data-lake-store-secure-data.md).
 
-## <a name="delete-your-account"></a>Hesabınızı silme
+## <a name="delete-your-account"></a>Hesabınızı silin
 
 Bir Data Lake Storage 1. hesabını silmek için Data Lake Storage 1. dikey penceresinden **Sil**' e tıklayın. Eylemi onaylamak için silmek istediğiniz hesabın adını girmeniz istenir. Hesabın adını girin ve ardından **Sil**'e tıklayın.
 

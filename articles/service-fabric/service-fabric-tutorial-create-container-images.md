@@ -1,31 +1,21 @@
 ---
-title: Azure'da Service Fabric üzerinde kapsayıcı görüntüleri oluşturma | Microsoft Docs
+title: Azure 'da Service Fabric kapsayıcı görüntüleri oluşturma
 description: Bu öğreticide, çok kapsayıcılı bir Service Fabric uygulaması için kapsayıcı görüntülerini nasıl oluşturabileceğinizi öğrenirsiniz.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Kapsayıcılar, Mikro Hizmetler, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465444"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesinde kapsayıcı görüntüleri oluşturma
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesi üzerinde kapsayıcı görüntüleri oluşturma
 
-Bu öğretici, Linux Service Fabric kümesinde kapsayıcıları kullanmayı gösteren öğretici serisinin ilk parçasıdır. Bu öğreticide, bir çoklu konteyner uygulaması Service Fabric ile kullanılmak üzere hazırlanmaktadır. Sonraki öğreticilerde, bu görüntüler Service Fabric uygulamasının bir parçası olarak kullanılır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Linux Service Fabric kümesinde kapsayıcıları kullanmayı gösteren öğretici serisinin ilk parçasıdır. Bu öğreticide, bir çoklu konteyner uygulaması Service Fabric ile kullanılmak üzere hazırlanmaktadır. Sonraki öğreticilerde, bu görüntüler Service Fabric uygulamasının bir parçası olarak kullanılır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uygulama kaynağını GitHub’dan kopyalama
@@ -41,10 +31,10 @@ Bu öğretici serisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Kapsayıcılara Sahip bir Service Fabric Uygulaması Derleme ve Çalıştırma](service-fabric-tutorial-package-containers.md)
 > * [Service Fabric’de yük devretme ve ölçeklendirme nasıl işlenir?](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Service Fabric için ayarlanan Linux geliştirme ortamı. Linux ortamınızı ayarlamak için [buradaki](service-fabric-get-started-linux.md) yönergeleri izleyin.
-* Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+* Bu öğretici için Azure CLI 2.0.4 veya sonraki bir sürümü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli).
 * Ayrıca, Azure aboneliğine sahip olmalısınız. Ücretsiz deneme sürümü hakkında daha fazla bilgi için [buraya](https://azure.microsoft.com/free/) göz atın.
 
 ## <a name="get-application-code"></a>Uygulama kodunu alma

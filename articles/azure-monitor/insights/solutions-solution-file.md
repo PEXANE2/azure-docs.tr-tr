@@ -8,18 +8,18 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553851"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401593"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure 'da bir yönetim çözümü dosyası oluşturma (Önizleme)
 > [!NOTE]
 > Bu, şu anda önizleme aşamasında olan Azure 'da yönetim çözümleri oluşturmaya yönelik bir belgedir. Aşağıda açıklanan tüm şemalarla değişiklik yapılır.  
 
-Azure 'daki yönetim çözümleri [Kaynak Yöneticisi şablonlar](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)olarak uygulanır.  Yönetim çözümlerinin nasıl yazıldığını öğrenirken ana görev, [bir şablonu](../../azure-resource-manager/resource-group-authoring-templates.md)nasıl yazacağınızı öğreniyor.  Bu makalede, çözümler için kullanılan şablonların ve tipik çözüm kaynaklarının nasıl yapılandırılacağı hakkında benzersiz ayrıntılar verilmektedir.
+Azure 'daki yönetim çözümleri [Kaynak Yöneticisi şablonlar](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)olarak uygulanır.  Yönetim çözümlerinin nasıl yazıldığını öğrenirken ana görev, [bir şablonu](../../azure-resource-manager/templates/template-syntax.md)nasıl yazacağınızı öğreniyor.  Bu makalede, çözümler için kullanılan şablonların ve tipik çözüm kaynaklarının nasıl yapılandırılacağı hakkında benzersiz ayrıntılar verilmektedir.
 
 
 ## <a name="tools"></a>Araçlar
@@ -32,8 +32,8 @@ Azure 'daki yönetim çözümleri [Kaynak Yöneticisi şablonlar](../../azure-re
 
 
 
-## <a name="structure"></a>yapısı
-Bir yönetim çözümü dosyasının temel yapısı, aşağıdaki gibi [Kaynak Yöneticisi şablonuyla](../../azure-resource-manager/resource-group-authoring-templates.md#template-format)aynıdır.  Aşağıdaki bölümlerin her biri, en üst düzey öğeleri ve bunların içeriğini bir çözümde açıklamaktadır.  
+## <a name="structure"></a>Yapı
+Bir yönetim çözümü dosyasının temel yapısı, aşağıdaki gibi [Kaynak Yöneticisi şablonuyla](../../azure-resource-manager/templates/template-syntax.md#template-format)aynıdır.  Aşağıdaki bölümlerin her biri, en üst düzey öğeleri ve bunların içeriğini bir çözümde açıklamaktadır.  
 
     {
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -45,7 +45,7 @@ Bir yönetim çözümü dosyasının temel yapısı, aşağıdaki gibi [Kaynak Y
     }
 
 ## <a name="parameters"></a>Parametreler
-[Parametreler](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) , yönetim çözümünü yüklediklerinde kullanıcıdan ihtiyacınız olan değerlerdir.  Tüm çözümlerin sahip olacağı standart parametreler vardır ve belirli çözümünüz için gereken ek parametreleri de ekleyebilirsiniz.  Kullanıcılarınızın çözümünüzü yüklediklerinde parametre değerlerini nasıl sağlayabilecekleri, belirli parametreye ve çözümün yüklenme biçimine bağlıdır.
+[Parametreler](../../azure-resource-manager/templates/template-syntax.md#parameters) , yönetim çözümünü yüklediklerinde kullanıcıdan ihtiyacınız olan değerlerdir.  Tüm çözümlerin sahip olacağı standart parametreler vardır ve belirli çözümünüz için gereken ek parametreleri de ekleyebilirsiniz.  Kullanıcılarınızın çözümünüzü yüklediklerinde parametre değerlerini nasıl sağlayabilecekleri, belirli parametreye ve çözümün yüklenme biçimine bağlıdır.
 
 Bir Kullanıcı Azure Marketi veya Azure hızlı başlangıç şablonları aracılığıyla [Yönetim çözümünüzü yüklediğinde](solutions.md#install-a-monitoring-solution) , bir [Log Analytics çalışma alanı ve Otomasyon hesabı](solutions.md#log-analytics-workspace-and-automation-account)seçmeleri istenir.  Bunlar her standart parametrenin değerlerini doldurmak için kullanılır.  Kullanıcıdan standart parametrelerin değerlerini doğrudan sağlaması istenmez, ancak ek parametreler için değer sağlamaları istenir.
 
@@ -66,7 +66,7 @@ Aşağıdaki tabloda bir parametresinin öznitelikleri açıklanmaktadır.
 |:--- |:--- |
 | type |Parametre için veri türü. Kullanıcı için görünen giriş denetimi, veri türüne bağlıdır.<br><br>bool-açılan kutusu<br>dize-metin kutusu<br>int-metin kutusu<br>SecureString-Password alanı<br> |
 | category |Parametre için isteğe bağlı kategori.  Aynı kategorideki parametreler birlikte gruplandırılır. |
-| Denetimle |Dize parametreleri için ek işlevsellik.<br><br>DateTime-DateTime denetimi görüntülenir.<br>GUID-GUID değeri otomatik olarak oluşturulur ve parametresi gösterilmez. |
+| control |Dize parametreleri için ek işlevsellik.<br><br>DateTime-DateTime denetimi görüntülenir.<br>GUID-GUID değeri otomatik olarak oluşturulur ve parametresi gösterilmez. |
 | açıklama |Parametre için isteğe bağlı açıklama.  Parametrenin yanındaki bir bilgi balonunda görüntülenir. |
 
 ### <a name="standard-parameters"></a>Standart parametreler
@@ -79,11 +79,11 @@ Aşağıdaki tabloda tüm yönetim çözümleri için standart parametreler list
 
 | Parametre | Tür | Açıklama |
 |:--- |:--- |:--- |
-| Adı |string |Azure Otomasyonu hesap adı. |
+| accountName |string |Azure Otomasyonu hesap adı. |
 | pricingTier |string |Log Analytics çalışma alanının ve Azure Otomasyonu hesabının fiyatlandırma katmanı. |
-| RegionID |string |Azure Otomasyonu hesabının bölgesi. |
+| regionId |string |Azure Otomasyonu hesabının bölgesi. |
 | solutionName |string |Çözümün adı.  Çözümünüzü hızlı başlangıç şablonları aracılığıyla dağıtıyorsanız, kullanıcının bir tane belirtmesini gerektirmek yerine bir dize tanımlayabilmeniz için solutionName parametresini parametre olarak tanımlamanız gerekir. |
-| workspaceName |string |Log Analytics çalışma alanı adı. |
+| WorkspaceName |string |Log Analytics çalışma alanı adı. |
 | workspaceRegionId |string |Log Analytics çalışma alanının bölgesi. |
 
 
@@ -126,7 +126,7 @@ Aşağıda, kopyalayıp çözüm dosyanıza yapıştırabileceğiniz standart pa
 Sözdizimi **parametreleri (' parametre adı ')** ile çözümün diğer öğelerinde parametre değerlerine başvurursunuz.  Örneğin, çalışma alanı adına erişmek için **parametreleri (' Çalışmaalanıadı ')** kullanacaksınız
 
 ## <a name="variables"></a>Değişkenler
-[Değişkenler](../../azure-resource-manager/resource-group-authoring-templates.md#variables) , yönetim çözümünün geri kalanında kullanacağınız değerlerdir.  Bu değerler, çözümü yükleyen kullanıcıya gösterilmez.  Bu kişiler, çözüm boyunca birden çok kez kullanılabilecek değerleri yönetebilecekleri tek bir konum ile yazar sağlamaya yöneliktir. Çözümünüzde çözümünüze özgü tüm değerleri, **kaynaklar** öğesinde sabit kodlamadan farklı şekilde kodlamak gerekir.  Bu, kodu daha okunaklı hale getirir ve sonraki sürümlerde bu değerleri kolayca değiştirmenize olanak sağlar.
+[Değişkenler](../../azure-resource-manager/templates/template-syntax.md#variables) , yönetim çözümünün geri kalanında kullanacağınız değerlerdir.  Bu değerler, çözümü yükleyen kullanıcıya gösterilmez.  Bu kişiler, çözüm boyunca birden çok kez kullanılabilecek değerleri yönetebilecekleri tek bir konum ile yazar sağlamaya yöneliktir. Çözümünüzde çözümünüze özgü tüm değerleri, **kaynaklar** öğesinde sabit kodlamadan farklı şekilde kodlamak gerekir.  Bu, kodu daha okunaklı hale getirir ve sonraki sürümlerde bu değerleri kolayca değiştirmenize olanak sağlar.
 
 Aşağıda, çözümlerinde tipik parametrelerle kullanılan bir **değişkenler** öğesi örneği verilmiştir.
 
@@ -155,7 +155,7 @@ Ayrıca, birden çok değer kümesine yönelik karmaşık değişkenler de tanı
 Bu durumda, sözdizimi **değişkenleri (' değişken adı '). özelliği**ile çözüm aracılığıyla değişken değerlerine başvurursunuz.  Örneğin, çözüm adı değişkenine erişmek için **değişkenleri (' çözüm ') kullanacaksınız. Ad**.
 
 ## <a name="resources"></a>Kaynaklar
-[Kaynaklar](../../azure-resource-manager/resource-group-authoring-templates.md#resources) , yönetim çözümünüzün yükleneceği ve yapılandıracağına farklı kaynakları tanımlar.  Bu, şablonun en büyük ve en karmaşık bölümü olacaktır.  [Azure Resource Manager şablonlarda](../../azure-resource-manager/resource-group-authoring-templates.md#resources), kaynak öğelerinin yapısını ve tüm açıklamalarını alabilirsiniz.  Genellikle tanımlayabileceğiniz farklı kaynaklar, bu belgelerindeki diğer makalelerde ayrıntılıdır. 
+[Kaynaklar](../../azure-resource-manager/templates/template-syntax.md#resources) , yönetim çözümünüzün yükleneceği ve yapılandıracağına farklı kaynakları tanımlar.  Bu, şablonun en büyük ve en karmaşık bölümü olacaktır.  [Azure Resource Manager şablonlarda](../../azure-resource-manager/templates/template-syntax.md#resources), kaynak öğelerinin yapısını ve tüm açıklamalarını alabilirsiniz.  Genellikle tanımlayabileceğiniz farklı kaynaklar, bu belgelerindeki diğer makalelerde ayrıntılıdır. 
 
 
 ### <a name="dependencies"></a>Bağımlılıklar
@@ -207,7 +207,7 @@ Her çözüm, çözümün kendisini tanımlayan **Resources** öğesinde bir kay
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| workspaceResourceId |Form *\<Resource grup kimliği >/providers/Microsoft.OperationalInsights/workspaces/\<Workspace adı \>* Log Analytics çalışma alanının kimliği. |
+| workspaceResourceId |Form *\<kaynak grubu kimliği >/providers/Microsoft.OperationalInsights/workspaces/\<çalışma alanı adı\>* Log Analytics çalışma alanının kimliği. |
 | referencedResources |Çözümde, çözüm kaldırıldığında kaldırılmamalıdır. |
 | containedResources |Çözümde, çözüm kaldırıldığında kaldırılması gereken kaynakların listesi. |
 
@@ -221,7 +221,7 @@ Yukarıdaki örnek, runbook 'un, zamanlamanın ve görünümün bulunduğu bir �
 | ad |Çözümün adı. |
 | version |Yazar tarafından belirlendiği şekilde çözümün sürümü. |
 | ürün |Çözümü tanımlayacak benzersiz dize. |
-| 'ın |Çözümün yayımcısı. |
+| publisher |Çözümün yayımcısı. |
 
 
 
@@ -229,5 +229,5 @@ Yukarıdaki örnek, runbook 'un, zamanlamanın ve görünümün bulunduğu bir �
 * [Kayıtlı aramaları ve uyarıları](solutions-resources-searches-alerts.md) yönetim çözümünüze ekleyin.
 * Yönetim çözümünüze [Görünümler ekleyin](solutions-resources-views.md) .
 * Yönetim çözümünüze [runbook 'ları ve diğer otomasyon kaynaklarını ekleyin](solutions-resources-automation.md) .
-* [Yazma Azure Resource Manager şablonlarının](../../azure-resource-manager/resource-group-authoring-templates.md)ayrıntılarını öğrenin.
+* [Yazma Azure Resource Manager şablonlarının](../../azure-resource-manager/templates/template-syntax.md)ayrıntılarını öğrenin.
 * Farklı Kaynak Yöneticisi şablonlarının örnekleri için [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/documentation/templates) arama yapın.

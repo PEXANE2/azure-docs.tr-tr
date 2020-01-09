@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430189"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
-Bu makalede, tarafından desteklenen uygulamalar için otomatik Kullanıcı hesabı sağlamayı ve sağlamayı kaldırmayı yönetmek üzere [Azure Portal](https://portal.azure.com) nasıl kullanılacağı açıklanır. Otomatik Kullanıcı hesabı sağlama ve nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md).
+Bu makalede, destekleyen uygulamalar için otomatik Kullanıcı hesabı sağlamayı ve sağlamayı kaldırmayı yönetmeye yönelik genel adımlar açıklanmaktadır. *Kullanıcı hesabı sağlama* , bir uygulamanın yerel kullanıcı profili deposundaki kullanıcı hesabı kayıtlarını oluşturma, güncelleştirme ve/veya devre dışı bırakma işlemidir. Çoğu bulut ve SaaS uygulaması kullanıcı rolünü ve izinlerini kullanıcının kendi yerel kullanıcı profili deposunda depolar ve bu tür bir Kullanıcı kaydının, çoklu oturum açma ve çalışma için Kullanıcı yerel deposunda bulunması *gerekir* . Otomatik Kullanıcı hesabı sağlama hakkında daha fazla bilgi için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](user-provisioning.md).
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD), Azure AD ile otomatik sağlama için etkinleştirilen binlerce önceden tümleştirilmiş uygulamayı içeren bir galersahiptir. [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesinde](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)uygulamanıza özgü sağlama kurulum öğreticisini bularak başlatmanız gerekir. Büyük olasılıkla, sağlama bağlantısı oluşturmak için hem uygulamayı hem de Azure AD 'yi yapılandırmaya yönelik adım adım yönergeler bulacaksınız.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Portaldaki uygulamalarınızı bulma
 

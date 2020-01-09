@@ -1,6 +1,6 @@
 ---
-title: Olaylar farklı protokollere - Azure Event Hubs kullanan uygulamalar arasındaki değişimi | Microsoft Docs
-description: Bu makalede, Azure Event Hubs kullanarak olay tüketicileri ve farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan üreticileri nasıl değiştirebilir gösterilmektedir.
+title: Azure Event Hubs-farklı protokoller kullanarak Exchange olayları
+description: Bu makalede, Azure Event Hubs kullanılırken farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketiciler ve üreticileri olayları nasıl değiş tokuş edebilir gösterilmektedir.
 services: event-hubs
 documentationcenter: ''
 author: basilhariri
@@ -11,34 +11,34 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: bahariri
-ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aecde0c36fc48f75e5174ca3e1ab9e2b3476d08a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437180"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Tüketiciler ve farklı protokoller kullanan üreticileri arasındaki Exchange olayları: AMQP, Kafka ve HTTPS
-Azure Event Hubs Tüketicileri ve üreticileri için üç protokolden destekler: AMQP, Kafka ve HTTPS. Her biri bu protokolleri, bir ileti, bu nedenle doğal olarak aşağıdaki soruyu ortaya temsil eden kendi yolu vardır: bir uygulama bir protokol olan olay Hub'ına olayları gönderir ve bunları farklı bir protokol kullanır, çeşitli bölümlerini ve değerlerini ne yapması Olay aramak gibi tüketici ulaştığında? Bu makalede, üretici ve tüketici olaya içindeki değerleri kullanan uygulama tarafından doğru şekilde yorumlandığından emin olmak için en iyi uygulamalar açıklanmaktadır.
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Farklı protokoller kullanan tüketiciler ve üreticileri arasında Exchange olayları: AMQP, Kafka ve HTTPS
+Azure Event Hubs, tüketiciler ve üreticileri için üç protokolü destekler: AMQP, Kafka ve HTTPS. Bu protokollerin her birinin bir iletiyi temsil eden kendi yolu vardır. bu nedenle, bir uygulama bir olay hub 'ına bir protokol ile olayları gönderirse ve farklı bir protokolle birlikte kullanır ve bu, olay tüketiciye ulaştığında şöyle görünüyor? Bu makalede, bir olay içindeki değerlerin, tüketen uygulama tarafından doğru şekilde yorumlandığından emin olmak için hem üretici hem de tüketici için en iyi yöntemler açıklanmaktadır.
 
-Bu makalede öneriler bu istemciler, kod parçacıkları geliştirmede kullanılan listelenen sürümler ile özellikle kapsar:
+Bu makaledeki öneri, kod parçacıklarını geliştirmekte kullanılan sürümleriyle birlikte bu istemcileri özellikle ele almaktadır:
 
-* Kafka Java istemci (sürümünden 1.1.1 https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
-* Microsoft Azure olay hub'ları istemci için Java (sürümünden 1.1.0 https://github.com/Azure/azure-event-hubs-java)
-* .NET (sürümü 2.1.0 için Microsoft Azure Event Hubs istemcisi https://github.com/Azure/azure-event-hubs-dotnet)
-* Microsoft Azure Service Bus (sürümünden 5.0.0 https://www.nuget.org/packages/WindowsAzure.ServiceBus)
+* Kafka Java istemcisi (sürüm 1.1.1 https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+* Java için Event Hubs Client Microsoft Azure (https://github.com/Azure/azure-event-hubs-java) sürüm 1.1.0
+* .NET için Microsoft Azure Event Hubs Client (https://github.com/Azure/azure-event-hubs-dotnet) sürüm 2.1.0
+* Microsoft Azure Service Bus (https://www.nuget.org/packages/WindowsAzure.ServiceBus) sürümü 5.0.0
 * HTTPS (yalnızca üreticileri destekler)
 
-Diğer AMQP istemciler biraz daha farklı davranabilir. AMQP iyi tanımlanmış tür sistemi vardır, ancak dile özel türleri serileştirmek için ve bu tür sisteminden ayrıntılarını, istemci bir AMQP iletisi bölümlerine erişimi nasıl sağladığını gibi istemcide bağlıdır.
+Diğer AMQP istemcileri biraz farklı davranabilir. AMQP 'nin iyi tanımlanmış bir tür sistemi vardır, ancak bu tür sisteminden ve bu türden dile özgü türlerin serileştirilmesi, istemcinin bir AMQP iletisinin bölümlerine erişim sağladığı şekilde istemciye bağlıdır.
 
 ## <a name="event-body"></a>Olay gövdesi
-Tüm Microsoft AMQP istemciler olay gövdesinde bayt Yorumlanmamış bir paketi temsil eder. Bir üretim uygulaması bayt dizisi istemciye geçirir ve kullanıcı bir uygulama, istemciden o aynı dizi alır. Bayt dizisi yorumunu uygulama kodu içinde gerçekleşir.
+Tüm Microsoft AMQP istemcileri, olay gövdesini yorumlanan bayt olmayan bir paket olarak temsil eder. Üreten bir uygulama istemciye bir bayt dizisi geçirir ve tüketen bir uygulama istemciden aynı sırayı alır. Bayt sırasının yorumu uygulama kodu içinde gerçekleşir.
 
-HTTPS üzerinden bir olayı gönderirken, olay aynı zamanda Yorumlanmamış bayt olarak kabul edilir deftere nakledilen içeriği gövdesidir. Kafka üretici veya tüketici aynı durumda sağlanan ByteArraySerializer ve aşağıdaki kodda gösterildiği gibi ByteArrayDeserializer kullanarak elde etmek daha kolaydır:
+HTTPS üzerinden bir olay gönderilirken, olay gövdesi, aynı zamanda yorumlanamayan baytlar olarak kabul edilen içeriktir. Aşağıdaki kodda gösterildiği gibi, belirtilen ByteArraySerializer ve Bytearrayserializer kullanarak bir Kafka üreticisi veya TÜKETİCİSİNDE aynı duruma ulaşmak kolaydır:
 
-### <a name="kafka-byte-producer"></a>Kafka bayt [] üretici
+### <a name="kafka-byte-producer"></a>Kafka Byte [] üreticisi
 
 ```java
 final Properties properties = new Properties();
@@ -52,7 +52,7 @@ ProducerRecord<Long, byte[]> pr =
     new ProducerRecord<Long, byte[]>(myTopic, myPartitionId, myTimeStamp, eventBody);
 ```
 
-### <a name="kafka-byte-consumer"></a>Kafka bayt [] tüketici
+### <a name="kafka-byte-consumer"></a>Kafka Byte [] tüketicisi
 ```java
 final Properties properties = new Properties();
 // add other properties
@@ -64,11 +64,11 @@ ConsumerRecord<Long, byte[]> cr = /* receive event */
 // cr.value() is a byte[] with values { 0x01, 0x02, 0x03, 0x04 }
 ```
 
-Bu kod uygulamanın iki yarısı arasında saydam bayt işlem hattı oluşturur ve el ile seri hale getrime ve seri durumundan çıkarma kararların çalışma zamanında dahil olmak üzere istenen, herhangi bir şekilde uygulama geliştiricinin sağlar örneğin türüne göre veya olay Gönderen bilgisi kullanıcı kümesi özellikleri.
+Bu kod, uygulamanın iki yarısı arasında bir saydam bayt işlem hattı oluşturur ve uygulama geliştiricisinin, çalışma zamanında, örneğin türüne dayalı olarak seri durumdan çıkarma kararları almak dahil olmak üzere el ile serileştirmesi ve serileştirmesi sağlar. ya da gönderen bilgileri Kullanıcı-olay üzerinde özellikleri ayarlar.
 
-Tek bir uygulama, sabit olay gövde türü şeffaf bir şekilde verileri dönüştürmek için diğer Kafka seri hale getiricileri genişletme ve deserializers kullanmanız mümkün olabilir. Örneğin, JSON kullanan bir uygulama düşünün. Yapım ve JSON dizesi yorumu, uygulama düzeyinde gerçekleşir. Event hubs'ı düzeyinde olay gövdesi her zaman bir UTF-8 kodlaması karakterleri temsil eden bir bayt dizisi dizesidir. Bu durumda, Kafka üretici ve tüketici sağlanan StringSerializer veya StringDeserializer aşağıdaki kodda gösterildiği gibi yararlanabilirsiniz:
+Tek, sabit bir olay gövdesi türüne sahip uygulamalar, verileri saydam bir şekilde dönüştürmek için diğer Kafka serileştiricileri ve deserileştiriciler kullanabilir. Örneğin, JSON kullanan bir uygulamayı düşünün. JSON dizesinin oluşturulması ve yorumu uygulama düzeyinde gerçekleşir. Event Hubs düzeyinde, olay gövdesi her zaman bir dizedir, UTF-8 kodlamasında karakterleri temsil eden bir bayt dizisidir. Bu durumda, Kafka üreticisi veya tüketicisi, aşağıdaki kodda gösterildiği gibi, belirtilen StringSerializer veya StringDeserializer 'dan faydalanabilir:
 
-### <a name="kafka-utf-8-string-producer"></a>Kafka UTF-8 dize üretici
+### <a name="kafka-utf-8-string-producer"></a>Kafka UTF-8 dize üreticisi
 ```java
 final Properties properties = new Properties();
 // add other properties
@@ -81,7 +81,7 @@ ProducerRecord<Long, String> pr =
     new ProducerRecord<Long, String>(myTopic, myPartitionId, myTimeStamp, exampleJson);
 ```
 
-### <a name="kafka-utf-8-string-consumer"></a>Kafka UTF-8 dize tüketici
+### <a name="kafka-utf-8-string-consumer"></a>Kafka UTF-8 dize tüketicisi
 ```java
 final Properties properties = new Properties();
 // add other properties
@@ -93,27 +93,27 @@ ConsumerRecord<Long, Bytes> cr = /* receive event */
 final String receivedJson = cr.value();
 ```
 
-AMQP tarafı için hem Java hem de .NET gelen UTF-8 bayt dizileri ve dizeleri dönüştürmek için yerleşik yollar sağlar. Microsoft AMQP istemcileri olayları EventData adlı bir sınıf olarak temsil eder. Aşağıdaki örnekler bir UTF-8 dize bir AMQP üretici EventData olay gövdesine seri hale getirmek nasıl ve bir AMQP tüketici UTF-8 dizeye bir EventData olay gövdesi seri durumdan çıkarılacak nasıl gösterir.
+AMQP tarafında hem Java hem de .NET, UTF-8 bayt dizilerinden ve dışı dizeleri dönüştürmek için yerleşik yollar sağlar. Microsoft AMQP istemcileri olayları EventData adlı bir sınıf olarak temsil eder. Aşağıdaki örneklerde bir AMQP üreticisi içindeki bir EventData olay gövdesine bir UTF-8 dizesinin serileştirilmesinin yanı sıra EventData olay gövdesinin bir AMQP TÜKETİCİSİNDE bir UTF-8 dizesine nasıl seri hale kullanılacağı gösterilmektedir.
 
-### <a name="java-amqp-utf-8-string-producer"></a>Java AMQP UTF-8 dize üretici
+### <a name="java-amqp-utf-8-string-producer"></a>Java AMQP UTF-8 dize üreticisi
 ```java
 final String exampleJson = "{\"name\":\"John\", \"number\":9001}";
 final EventData ed = EventData.create(exampleJson.getBytes(StandardCharsets.UTF_8));
 ```
 
-### <a name="java-amqp-utf-8-string-consumer"></a>Java AMQP UTF-8 dize tüketici
+### <a name="java-amqp-utf-8-string-consumer"></a>Java AMQP UTF-8 dize tüketicisi
 ```java
 EventData ed = /* receive event */
 String receivedJson = new String(ed.getBytes(), StandardCharsets.UTF_8);
 ```
 
-### <a name="c-net-utf-8-string-producer"></a>C#.NET UTF-8 dize üretici
+### <a name="c-net-utf-8-string-producer"></a>C#.NET UTF-8 dize üreticisi
 ```csharp
 string exampleJson = "{\"name\":\"John\", \"number\":9001}";
 EventData working = new EventData(Encoding.UTF8.GetBytes(exampleJson));
 ```
 
-### <a name="c-net-utf-8-string-consumer"></a>C#.NET UTF-8 dize tüketici
+### <a name="c-net-utf-8-string-consumer"></a>C#.NET UTF-8 dize tüketicisi
 ```csharp
 EventData ed = /* receive event */
 
@@ -124,21 +124,21 @@ byte[] bodyBytes = ed.Body.Array;  // Microsoft Azure Event Hubs Client for .NET
 string receivedJson = Encoding.UTF8.GetString(bodyBytes);
 ```
 
-Kafka, açık kaynaklı olduğundan, uygulama geliştiricisi herhangi bir serileştirici uygulamasını inceleyin veya deserializer ve oluşturur veya uyumlu bir AMQP tarafında bayt dizisini tüketir, kodu.
+Kafka açık kaynak olduğundan, uygulama geliştiricisi herhangi bir serileştirici veya seri hale getirici uygulamasını inceleyebilir ve kodu uygulayabilir; bu da AMQP tarafında uyumlu bir bayt dizisi üretir veya tüketir.
 
-## <a name="event-user-properties"></a>Olay kullanıcı özellikleri
+## <a name="event-user-properties"></a>Olay Kullanıcı Özellikleri
 
-Kullanıcı tarafından ayarlanmış özellikleri ayarlayın ve her iki AMQP istemcilerden alınan (Microsoft AMQP istemcileri oldukları özellik olarak adlandırılır) ve Kafka (nerede bunlar çağrılır üst bilgiler). HTTPS göndericiler, olaya HTTP üstbilgileri POST işlemi olarak sağlayarak kullanıcı özellikleri ayarlayabilirsiniz. Ancak, Kafka olay gövdeleri hem olay üstbilgi değerlerini bayt dizileri değerlendirir. AMQP istemcileri iletildiği AMQP tür sistemine göre özellik değerlerini kodlayarak türleri, özellik değerlerine sahip ise.
+Kullanıcı kümesi özellikleri hem AMQP istemcilerinden ayarlanabilir hem de alınabilir (Microsoft AMQP istemcilerinde özellikler olarak adlandırılır) ve Kafka (üstbilgiler olarak adlandırılır). HTTPS göndericiler, bir olayda Kullanıcı özelliklerini, POST işleminde HTTP üstbilgileri olarak sağlayarak ayarlayabilir. Ancak Kafka, hem olay gövdelerini hem de olay üstbilgisi değerlerini bayt dizileri olarak değerlendirir. AMQP istemcilerinde, özellik değerleri, AMQP tür sistemine göre özellik değerlerini kodlayarak iletilen türlerdir.
 
-HTTPS özel bir durumdur. Tüm özellik değerlerini gönderme noktasında UTF-8 metin olan. Event Hubs hizmeti yorumu AMQP kodlu 32-bit ve 64-bit imzalı tamsayı, 64-bit kayan noktalı sayılar ve Boole değerlerini için uygun özellik değerlerini dönüştürmek için sınırlı sayıda yapar. Bu türlerinden birini uymayan bir özellik değeri bir dize olarak kabul edilir.
+HTTPS özel bir durumdur. Gönderme noktasındaki tüm özellik değerleri UTF-8 metinlerdir. Event Hubs hizmeti, uygun özellik değerlerini AMQP kodlu 32 bit ve 64 bit işaretli tamsayılara, 64 bit kayan nokta numaralarına ve Boole değerlerine dönüştürmek için sınırlı bir yorum miktarı sağlar. Bu türlerden birine uymayan herhangi bir özellik değeri dize olarak kabul edilir.
 
-Özellik yazmak için bu yaklaşımları karıştırma Kafka tüketicisi'nin AMQP tür bilgileri de dahil olmak üzere ham AMQP kodlamalı bayt dizisi dilediği zaman isteyebilmesi anlamına gelir. AMQP tüketici uygulama yorumlama gerekir Kafka üretici tarafından gönderilen yazılmamış bayt dizisini görür ancak.
+Özellik yazmak için bu yaklaşımların karıştırılması, bir Kafka tüketicinin AMQP türü bilgileri dahil olmak üzere ham AMQP kodlu bayt sırasını gördüğü anlamına gelir. Bir AMQP tüketicisi, uygulamanın yorumlanması gereken Kafka üreticisi tarafından gönderilen türsüz bir bayt dizisini görür.
 
-AMQP veya HTTPS üreticilerden özellikleri alma Kafka tüketicileri için Kafka ekosistemindeki diğer deserializers modellenmiştir AmqpDeserializer sınıfı kullanın. Bu tür bilgiler, veri baytı bir Java türü seri durumdan çıkarılacak AMQP kodlamalı bayt dizileri yorumlar.
+AMQP veya HTTPS üreticileri 'tan Özellikler alan Kafka tüketicileri için, Kafka ekosistemindeki diğer serileştiricilerden sonra Modellenen AmqpDeserializer sınıfını kullanın. Veri baytlarının bir Java türünde serisini kaldırmak için AMQP kodlu bayt dizilerinden tür bilgilerini yorumlar.
 
-En iyi uygulama, AMQP veya HTTPS üzerinden gönderilen iletileri bir özelliği dahil öneririz. Kafka tüketicisi üstbilgi değerlerini AMQP seri durumundan çıkarma gerekip gerekmediğini belirlemek için bunu kullanabilirsiniz. Özelliğinin değeri önemli değildir. Yalnızca, bilinen bir ad Kafka tüketicisi üstbilgileri listesinde bulun ve uygulamanın davranışını uygun şekilde ayarlamanız gerekir.
+En iyi uygulama olarak, AMQP veya HTTPS aracılığıyla gönderilen iletilere bir özellik eklemeniz önerilir. Kafka tüketicisi, başlık değerlerinin AMQP serisini kaldırma ihtiyacı olup olmadığını anlamak için bunu kullanabilir. Özelliğin değeri önemli değildir. Yalnızca Kafka tüketicinin başlık listesinde bulabileceği ve davranışını uygun şekilde ayarlayabileceği iyi bilinen bir ada ihtiyacı vardır.
 
-### <a name="amqp-to-kafka-part-1-create-and-send-an-event-in-c-net-with-properties"></a>AMQP Kafka bölümü 1: oluşturma ve bir olay gönderebilir C# (.NET) özelliklere sahip
+### <a name="amqp-to-kafka-part-1-create-and-send-an-event-in-c-net-with-properties"></a>AMQP to Kafka Part 1: (.net) uygulamasında C# özellikler ile bir olay oluşturun ve gönderin
 ```csharp
 // Create an event with properties "MyStringProperty" and "MyIntegerProperty"
 EventData working = new EventData(Encoding.UTF8.GetBytes("an event body"));
@@ -149,7 +149,7 @@ working.Properties.Add("MyIntegerProperty", 1234);
 working.Properties.Add("AMQPheaders", 0);
 ```
 
-### <a name="amqp-to-kafka-part-2-use-amqpdeserializer-to-deserialize-those-properties-in-a-kafka-consumer"></a>AMQP Kafka bölümü 2: Bu bir Kafka tüketicisi özelliklerinde seri durumdan çıkarılacak AmqpDeserializer kullanın
+### <a name="amqp-to-kafka-part-2-use-amqpdeserializer-to-deserialize-those-properties-in-a-kafka-consumer"></a>AMQP to Kafka Part 2: bir Kafka tüketicisindeki bu özellikleri seri durumdan çıkarmak için AmqpDeserializer kullanın
 ```java
 final AmqpDeserializer amqpDeser = new AmqpDeserializer();
 
@@ -179,9 +179,9 @@ if (headerNamedAMQPheaders != null) {
 }
 ```
 
-Uygulama özelliği için beklenen tür bilir, daha sonra bir tür dönüştürme gerektirmeyen seri halden çıkarma yöntemleri vardır, ancak özelliği beklenen türde değilse bir hata oluştururlar.
+Uygulama bir özellik için beklenen türü biliyorsa, daha sonra atama gerektirmeyen seri kaldırma yöntemleri vardır, ancak özellik beklenen türden değilse bir hata oluşturur.
 
-### <a name="amqp-to-kafka-part-3-a-different-way-of-using-amqpdeserializer-in-a-kafka-consumer"></a>AMQP için Kafka bölüm 3: bir Kafka tüketicisi AmqpDeserializer kullanarak farklı bir yol
+### <a name="amqp-to-kafka-part-3-a-different-way-of-using-amqpdeserializer-in-a-kafka-consumer"></a>AMQP to Kafka Part 3: bir Kafka TÜKETİCİSİNDE AmqpDeserializer kullanmanın farklı bir yolu
 ```java
 // BEST PRACTICE: detect whether AMQP deserialization is needed
 if (headerNamedAMQPheaders != null) {
@@ -208,11 +208,11 @@ if (headerNamedAMQPheaders != null) {
 }
 ```
 
-Ve diğer yöndeki giderek daha eklendiyse, üst bilgilerini ayarla bir Kafka üretici tarafından her zaman bir AMQP tüketici tarafından ham bayt olarak gördükleri (Java için Microsoft Azure Event Hubs istemcisi için org.apache.qpid.proton.amqp.Binary yazın veya `System.Byte[]` Microsoft'un için .NET AMQP istemciler). Kolay Kafka tarafından sağlanan serileştiricileri birini Kafka üretici tarafında üstbilgi değerleri için bayt oluşturun ve ardından AMQP tüketici tarafında uyumlu seri durumundan çıkarma kod yazmak için kullanılacak yoludur.
+Diğer yönden daha dahil olmak üzere, bir Kafka üreticisi tarafından ayarlanan üstbilgiler her zaman bir AMQP tüketicisi tarafından ham bayt olarak görüldü (Java için Microsoft Azure Event Hubs Istemcisi veya Microsoft 'un .NET AMQP istemcileri için `System.Byte[]`). En kolay yol, Kafka Producer tarafında üst bilgi değerleri için bayt oluşturmak üzere Kafka tarafından sağlanan serileştiriciden birini kullanmak ve ardından AMQP tüketicisi tarafında uyumlu bir seri hale getiriciler kodu yazmaktır.
 
-AMQP-için-Kafka ile gibi Kafka ile gönderilen iletileri bir özellik eklemek için önerdiğimiz en iyi yöntem olacaktır. AMQP tüketici özelliği üstbilgi değerlerini seri durumundan çıkarma gerekip gerekmediğini belirlemek için kullanabilirsiniz. Özelliğinin değeri önemli değildir. Yalnızca, bilinen bir ad AMQP tüketici üstbilgileri listesinde bulun ve uygulamanın davranışını uygun şekilde ayarlamanız gerekir. Kafka üretici değiştirilemez, ayrıca seri durumundan çıkarma türüne göre özellik değeri ikili veya bayt türü olup olmadığını denetleyin ve kullanıcı uygulamanın mümkündür.
+AMQP ile Kafka gibi, önerdiğimiz en iyi yöntem, Kafka aracılığıyla gönderilen iletilere bir özellik dahil etmektir. AMQP tüketicisi, başlık değerlerinin serisini kaldırma ihtiyacı olup olmadığını anlamak için özelliğini kullanabilir. Özelliğin değeri önemli değildir. Yalnızca AMQP tüketicisinin üst bilgi listesinde bulabileceği ve davranışını uygun şekilde ayarlayabileceği iyi bilinen bir ada ihtiyacı vardır. Kafka üreticisi değiştirilemediğinde, tüketen uygulamanın özellik değerinin bir ikili veya bayt türünde olup olmadığını denetlemesi ve türe göre serisini kaldırma girişimi de mümkündür.
 
-### <a name="kafka-to-amqp-part-1-create-and-send-an-event-from-kafka-with-properties"></a>Kafka için AMQP 1. Bölüm: oluşturma ve bir olay Kafka'dan özellikleri ile gönderme
+### <a name="kafka-to-amqp-part-1-create-and-send-an-event-from-kafka-with-properties"></a>Kafka to AMQP Bölüm 1: özellikler ile Kafka 'dan bir olay oluşturun ve gönderin
 ```java
 final String topicName = /* topic name */
 final ProducerRecord<Long, String> pr = new ProducerRecord<Long, String>(topicName, /* other arguments */);
@@ -241,7 +241,7 @@ h.add("MyStringProperty", stringSer.serialize(topicName, "hello world"));
 h.add("RawHeaders", intSer.serialize(0));
 ```
 
-### <a name="kafka-to-amqp-part-2-manually-deserialize-those-properties-in-c-net"></a>Kafka için AMQP bölüm 2: el ile bu özellikleri seri durumdan C# (.NET)
+### <a name="kafka-to-amqp-part-2-manually-deserialize-those-properties-in-c-net"></a>Kafka to AMQP Bölüm 2: Bu özelliklerin (.net) C# içinde el ile serisini kaldırma
 ```csharp
 EventData ed = /* receive event */
 
@@ -291,7 +291,7 @@ string myStringProperty = Encoding.UTF8.GetString(rawbytes);
 }
 ```
 
-### <a name="kafka-to-amqp-part-3-manually-deserialize-those-properties-in-java"></a>Kafka için AMQP bölüm 3: el ile Java'da özelliklere seri durumdan
+### <a name="kafka-to-amqp-part-3-manually-deserialize-those-properties-in-java"></a>Kafka to AMQP Bölüm 3: Java 'da bu özellikleri manuel olarak serisini kaldırma
 ```java
 final EventData ed = /* receive event */
 
@@ -339,10 +339,10 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede protokol istemcilerinizi değiştirmenize veya kendi kümelerinizi çalıştırmanıza gerek kalmadan Kafka etkin Event Hubs’a nasıl akış oluşturacağınızı öğrendiniz. Kafka için Event Hubs ile Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
+Bu makalede protokol istemcilerinizi değiştirmenize veya kendi kümelerinizi çalıştırmanıza gerek kalmadan Kafka etkin Event Hubs’a nasıl akış oluşturacağınızı öğrendiniz. Kafka için Event Hubs ve Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
 
 * [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
 * [Kafka için Event Hubs hakkında bilgi edinin](event-hubs-for-kafka-ecosystem-overview.md)
 * [Kafka için Event Hubs GitHub'ındaki diğer örnekleri keşfedin](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Kullanım [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) için [kafka'ya şirket içi kafka'dan akış olayları Event Hubs bulut üzerinde etkin.](event-hubs-kafka-mirror-maker-tutorial.md)
-* Kafka akışı yapmayı öğrenin etkin Event Hubs kullanarak [yerel Kafka uygulamalar](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), veya [Akka akışları](event-hubs-kafka-akka-streams-tutorial.md)
+* [Kafka 'ten Şirket içindeki olayları, bulutta Kafka etkin Event Hubs akışa](event-hubs-kafka-mirror-maker-tutorial.md) almak Için [mirrormaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 'ı kullanın.
+* [Yerel Kafka uygulamaları](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache flink](event-hubs-kafka-flink-tutorial.md)veya [Akka akışlarını](event-hubs-kafka-akka-streams-tutorial.md) kullanarak Kafka etkin Event Hubs nasıl akışı yapabileceğinizi öğrenin

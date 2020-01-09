@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici 'de özel alanlar | Microsoft Docs
+title: Azure Izleyici 'de özel alanlar (Önizleme) | Microsoft Docs
 description: Azure Izleyici 'nin özel alanlar özelliği, toplanan bir kaydın özelliklerine eklenen bir Log Analytics çalışma alanındaki kayıtlardan kendi aranabilir alanlarını oluşturmanızı sağlar.  Bu makalede özel bir alan oluşturma ve örnek olayla ayrıntılı bir anlatım sağlayan işlem açıklanır.
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396875"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında özel alanlar oluşturma
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Izleyici 'de Log Analytics çalışma alanında özel alanlar oluşturma (Önizleme)
 
 > [!NOTE]
 > Bu makalede, Log Analytics çalışma alanındaki metin verilerinin toplanarak nasıl ayrıştırılacağını açıklanmaktadır. Bir sorgu filtresinde, [Azure izleyici 'de metin verileri ayrıştırma](../log-query/parse-text.md)bölümünde açıklanan yönergelerin toplanmasından sonra metin verilerini ayrıştırmayı öneririz. Özel alanları kullanarak çeşitli avantajlar sağlar.
@@ -113,7 +113,7 @@ Vurgu sözcüğünü, **WMI** 'yi içerecek şekilde artırdık ve sonra ayıkla
 
 ![Arama sonuçları](media/custom-fields/search-results-02.png)
 
-Artık **Service_CF** oluşturulduğunu doğrulayan ancak henüz hiçbir kayda eklenmemiş bir sorgu çalıştırabiliriz. Bunun nedeni, özel alanın mevcut kayıtlara karşı çalışmamaları, bu nedenle yeni kayıtların toplanmasını beklemek istiyoruz.
+Artık **Service_CF** oluşturulduğunu doğrulayan, ancak henüz hiçbir kayda eklenmemiş bir sorgu çalıştırabiliriz. Bunun nedeni, özel alanın mevcut kayıtlara karşı çalışmamaları, bu nedenle yeni kayıtların toplanmasını beklemek istiyoruz.
 
 ![Başlangıç sayısı](media/custom-fields/initial-count.png)
 
@@ -121,7 +121,7 @@ Bir süre geçtikten sonra yeni olaylar toplandıktan sonra, **Service_CF** alan
 
 ![Nihai sonuçlar](media/custom-fields/final-results.png)
 
-Artık özel alanı başka bir kayıt özelliği gibi kullanabiliriz.  Bunu göstermek için, en etkin Hizmetleri denetlemek üzere yeni **Service_CF** alanına göre gruplandıran bir sorgu oluşturacağız.
+Artık özel alanı başka bir kayıt özelliği gibi kullanabiliriz.  Bunu göstermek için, en etkin hizmetleri incelemek üzere yeni **Service_CF** alanına göre gruplandıran bir sorgu oluşturacağız.
 
 ![Sorguya göre Gruplandır](media/custom-fields/query-group.png)
 

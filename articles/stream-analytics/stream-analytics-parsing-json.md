@@ -1,28 +1,27 @@
 ---
-title: JSON ayrıştırma ve Azure Stream analytics'te AVRO
-description: Bu makalede, diziler, JSON, CSV biçimlendirilmiş veri gibi karmaşık veri türleri üzerinde çalışılacak açıklar.
-services: stream-analytics
+title: Azure Stream Analytics 'de JSON ve AVRO ayrıştırma
+description: Bu makalede, diziler, JSON, CSV biçimli veriler gibi karmaşık veri türlerinde nasıl işlem yapılacağı açıklanır.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431601"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream analytics'te JSON ve Avro verileri ayrıştırılamadı
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics JSON ve avro verilerini ayrıştırın
 
-Azure Stream Analytics, Avro CSV ve JSON veri biçimleri olayları işlemeyi destekler. Hem JSON hem de Avro verileri yapılandırılmış olması ve iç içe nesneler (kayıtlar) ve diziler gibi bazı karmaşık türler bulunur. 
-
-
+CSV, JSON ve avro veri biçimlerinde olayları işlemeyi destekler Azure Stream Analytics. Hem JSON hem de avro verileri yapılandırılabilir ve iç içe geçmiş nesneler (kayıtlar) ve diziler gibi bazı karmaşık türleri içerebilir. 
 
 
-## <a name="record-data-types"></a>Kayıt veri türleri
-Kayıt veri türleri karşılık gelen biçimleri giriş veri akışlarını kullanıldığında, JSON ve Avro diziler temsil etmek için kullanılır. Bu örnekler, giriş olaylarında JSON biçimine okunurken bir örnek sensör gösterir. Tek bir olay'nın örneği aşağıda verilmiştir:
+
+
+## <a name="record-data-types"></a>Veri türlerini Kaydet
+Kayıt veri türleri, giriş veri akışlarında karşılık gelen biçimler kullanıldığında JSON ve avro dizilerini temsil etmek için kullanılır. Bu örneklerde, giriş olaylarını JSON biçiminde okuyan örnek bir algılayıcı gösterilmektedir. Tek bir olay örneği aşağıda verilmiştir:
 
 ```json
 {
@@ -48,8 +47,8 @@ Kayıt veri türleri karşılık gelen biçimleri giriş veri akışlarını kul
 ```
 
 
-### <a name="access-nested-fields-in-known-schema"></a>Bilinen şema erişim iç içe geçmiş alanları
-İç içe alanlar doğrudan sorgunuzdan kolayca erişmek için nokta gösterimi (.) kullanın. Örneğin, bu sorgu, yukarıdaki JSON verilerinde Location özelliği altında enlem ve boylam koordinatları seçer. Nokta gösterimi, aşağıda gösterildiği gibi birden çok düzeyi gitmek için kullanılabilir.
+### <a name="access-nested-fields-in-known-schema"></a>Bilinen şemada iç içe geçmiş alanlara erişin
+Doğrudan Sorgunuzla iç içe geçmiş alanlara kolayca erişmek için nokta gösterimini (.) kullanın. Örneğin, bu sorgu önceki JSON verilerinde Location özelliği altındaki Enlem ve boylam koordinatlarını seçer. Nokta gösterimi aşağıda gösterildiği gibi birden çok düzeyde gezinmek için kullanılabilir.
 
 ```SQL
 SELECT
@@ -60,15 +59,15 @@ SELECT
 FROM input
 ```
 
-### <a name="select-all-properties"></a>Tüm Özellikler'i seçin
-Tüm özellikleri kullanarak bir iç içe geçmiş kaydı seçebilirsiniz ' *' joker karakter. Aşağıdaki örnek göz önünde bulundurun:
+### <a name="select-all-properties"></a>Tüm Özellikleri Seç
+' * ' Joker karakterini kullanarak iç içe geçmiş bir kaydın tüm özelliklerini seçebilirsiniz. Aşağıdaki örnek göz önünde bulundurun:
 
 ```SQL
 SELECT input.Location.*
 FROM input
 ```
 
-Sonuç olur:
+Sonuç:
 
 ```json
 {
@@ -78,10 +77,10 @@ Sonuç olur:
 ```
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Özellik adı bir değişken olduğunda erişim iç içe geçmiş alanları
-Kullanım [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) özellik adı bir değişken ise işlev. 
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Özellik adı bir değişken olduğunda iç içe alanlara erişin
+Özellik adı bir değişken ise [Getrecordpropertyvalue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) işlevini kullanın. 
 
-Örneğin, bir örnek veri akışı her cihaz algılayıcı için başvuru veri içeren eşiklerini katılabileceği gerekiyor düşünün. Tür başvuru verilerin bir parçacığı aşağıda gösterilmiştir.
+Örneğin, bir örnek veri akışının her bir cihaz algılayıcısı için eşikler içeren başvuru verileriyle katılması gerektiğini düşünün. Bu tür başvuru verilerinin bir parçacığı aşağıda gösterilmiştir.
 
 ```json
 {
@@ -104,8 +103,8 @@ WHERE
     -- the where statement selects the property value coming from the reference data
 ```
 
-### <a name="convert-record-fields-into-separate-events"></a>Kayıt alanları ayrı olayları Dönüştür
-Kayıt alanları ayrı olayları dönüştürmek için [UYGULA](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci ile birlikte [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) işlevi. Örneğin, önceki örnekte SensorReading için birkaç kayıt varsa, bunları farklı olaylarını ayıklamak için aşağıdaki sorguyu kullanılabilir:
+### <a name="convert-record-fields-into-separate-events"></a>Kayıt alanlarını ayrı olaylara Dönüştür
+Kayıt alanlarını ayrı olaylara dönüştürmek için, [Getrecordproperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) Işleviyle birlikte [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işlecini kullanın. Örneğin, önceki örnekte Sensorokumak için birkaç kayıt varsa, aşağıdaki sorgu farklı olaylara ayıklamak için kullanılabilir:
 
 ```SQL
 SELECT
@@ -120,12 +119,12 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 ## <a name="array-data-types"></a>Dizi veri türleri
 
-Sıralı bir koleksiyonu değerler dizisi veri türleridir. Dizi değerlerini üzerindeki tipik bazı işlemler aşağıda ayrıntılı şekilde verilmiştir. Bu örneklerde, giriş olayları, "arrayField" adında bir özelliğe sahip varsayılmaktadır. diğer bir deyişle bir dizi veri türü.
+Dizi veri türleri sıralı değerler koleksiyonudur. Dizi değerlerinde bazı tipik işlemler aşağıda ayrıntılı olarak verilmiştir. Bu örneklerde, giriş olaylarının, dizi veri türü olan "arrayField" adlı bir özelliği olduğunu varsaymaktadır.
 
-Bu örneklerde işlevleri [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)ve [UYGULA](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci.
+Bu örnekler, [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)ve [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci işlevlerini kullanır.
 
-### <a name="working-with-a-specific-array-element"></a>Belirli bir dizi öğesi ile çalışma
-Dizi öğesinin belirtilen dizinindeki (ilk dizi öğesinin seçerek) seçin:
+### <a name="working-with-a-specific-array-element"></a>Belirli bir dizi öğesiyle çalışma
+Belirtilen dizinde dizi öğesi seçin (ilk dizi öğesini seçerek):
 
 ```SQL
 SELECT
@@ -133,7 +132,7 @@ SELECT
 FROM input
 ```
 
-### <a name="select-array-length"></a>Dizi uzunluğu seçin
+### <a name="select-array-length"></a>Dizi uzunluğunu seçin
 
 ```SQL
 SELECT
@@ -141,8 +140,8 @@ SELECT
 FROM input
 ```
 
-### <a name="convert-array-elements-into-separate-events"></a>Dizi öğelerini ayrı olayları Dönüştür
-Tüm dizi öğesi tek tek olayları seçin. [UYGULA](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci ile birlikte [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) yerleşik işlev tüm dizi öğeleri tek tek olayları olarak ayıklar:
+### <a name="convert-array-elements-into-separate-events"></a>Dizi öğelerini ayrı olaylara Dönüştür
+Tek tek olaylar olarak tüm dizi öğelerini seçin. [Getarrayelements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) yerleşik işlevi Ile birlikte [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) işleci, tüm dizi öğelerini ayrı olaylar olarak ayıklar:
 
 ```SQL
 SELECT
@@ -154,4 +153,4 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Azure Stream analytics'te veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Azure Stream Analytics veri türleri](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

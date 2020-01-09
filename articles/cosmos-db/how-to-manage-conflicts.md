@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB bölgeleri arasındaki çakışmaları yönetme
+title: Azure Cosmos DB bölgeler arasındaki çakışmaları yönetme
 description: Son yazıcı-WINS veya özel bir çakışma çözümleme ilkesi oluşturarak Azure Cosmos DB çakışmaların nasıl yönetileceğini öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9aab8f9bd202728f8882377f8249f6ebb99f3362
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441806"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
 

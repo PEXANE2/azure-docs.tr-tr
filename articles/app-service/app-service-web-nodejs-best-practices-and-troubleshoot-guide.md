@@ -1,19 +1,19 @@
 ---
 title: Node. js en iyi uygulamaları ve sorun giderme
 description: Azure App Service ' de çalışan Node. js uygulamaları için en iyi uygulamaları ve sorun giderme adımlarını öğrenin.
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672038"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430557"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -29,7 +29,7 @@ Bu [şema dosyası](https://github.com/Azure/iisnode/blob/master/src/config/iisn
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Bu ayar, IIS uygulaması başına başlatılan düğüm işlemlerinin sayısını denetler. Varsayılan değer 1 ' dir. Değeri 0 olarak değiştirerek VM vCPU sayısı olarak çok sayıda Node. exe ' de başlatabilirsiniz. Makinenizde tüm vCPU 'Ları kullanabilmeniz için önerilen değer çoğu uygulama için 0 ' dır. Node. exe tek iş parçacıklı olduğundan, tek bir Node. exe en fazla 1 vCPU tüketir. Düğüm uygulamanızdan en yüksek performansı almak için tüm vCPU 'Ları kullanmak istersiniz.
+Bu ayar, IIS uygulaması başına başlatılan düğüm işlemlerinin sayısını denetler. Varsayılan değer 1’dir. Değeri 0 olarak değiştirerek VM vCPU sayısı olarak çok sayıda Node. exe ' de başlatabilirsiniz. Makinenizde tüm vCPU 'Ları kullanabilmeniz için önerilen değer çoğu uygulama için 0 ' dır. Node. exe tek iş parçacıklı olduğundan, tek bir Node. exe en fazla 1 vCPU tüketir. Düğüm uygulamanızdan en yüksek performansı almak için tüm vCPU 'Ları kullanmak istersiniz.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -83,11 +83,11 @@ Buna ek olarak, akış uygulamaları için, ıısnode işleyicinizin responseBuf
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Değişiklikler için izlenen dosyaların noktalı virgülle ayrılmış listesi. Bir dosyada yapılan herhangi bir değişiklik uygulamanın geri dönüşüm yapmasına neden olur. Her giriş, bir isteğe bağlı dizin adından ve gerekli bir dosya adından oluşur ve bu, ana uygulama giriş noktasının bulunduğu dizine göre belirlenir. Yalnızca dosya adı bölümünde joker karakterler kullanılabilir. Varsayılan değer `*.js;iisnode.yml`
+Değişiklikler için izlenen dosyaların noktalı virgülle ayrılmış listesi. Bir dosyada yapılan herhangi bir değişiklik uygulamanın geri dönüşüm yapmasına neden olur. Her giriş, bir isteğe bağlı dizin adından ve gerekli bir dosya adından oluşur ve bu, ana uygulama giriş noktasının bulunduğu dizine göre belirlenir. Yalnızca dosya adı bölümünde joker karakterler kullanılabilir. Varsayılan değer: `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Varsayılan değer false 'dur. Etkinleştirilirse, düğüm uygulamanız adlandırılmış bir kanala bağlanarak (ııSNODE\_DENETIM\_kanal) ve "geri dönüşüm" iletisi gönderebilir. Bu, W3wp 'in düzgün şekilde geri dönüştürülmesine neden olur.
+Varsayılan değer false'tur. Etkinleştirilirse, düğüm uygulamanız adlandırılmış bir kanala bağlanarak (ııSNODE\_DENETIM\_kanal) ve "geri dönüşüm" iletisi gönderebilir. Bu, W3wp 'in düzgün şekilde geri dönüştürülmesine neden olur.
 
 ### <a name="idlepageouttimeperiod"></a>ıdlepageouttimeperiod
 
@@ -99,7 +99,7 @@ Varsayılan değer 0 ' dır, bu özelliğin devre dışı bırakıldığı anlam
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Varsayılan değer false 'dur. True olarak ayarlanırsa, ıısnode, `iisnode-debug` üst bilgi değeri bir URL olduğu her HTTP yanıtına bir HTTP yanıt üst bilgisi `iisnode-debug` ekler. Tek tek tanılama bilgileri parçaları URL parçasına bakarak elde edilebilir, ancak URL bir tarayıcıda açılarak görselleştirme kullanılabilir.
+Varsayılan değer false'tur. True olarak ayarlanırsa, ıısnode, `iisnode-debug` üst bilgi değeri bir URL olduğu her HTTP yanıtına bir HTTP yanıt üst bilgisi `iisnode-debug` ekler. Tek tek tanılama bilgileri parçaları URL parçasına bakarak elde edilebilir, ancak URL bir tarayıcıda açılarak görselleştirme kullanılabilir.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -107,7 +107,7 @@ Bu ayar, ıisnode tarafından stdout ve stderr 'in günlüğe kaydedilmesini den
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Varsayılan değer false 'dur. True olarak ayarlandığında, ıısnode, tarayıcınızda HTTP durum kodunu ve Win32 hata kodunu görüntüler. Win32 kodu, bazı sorun türlerinde hata ayıklamaya yardımcı olur.
+Varsayılan değer false'tur. True olarak ayarlandığında, ıısnode, tarayıcınızda HTTP durum kodunu ve Win32 hata kodunu görüntüler. Win32 kodu, bazı sorun türlerinde hata ayıklamaya yardımcı olur.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>hata ayıklama Ggingenabled (canlı üretim sitesinde etkinleştirmeyin)
 
@@ -172,7 +172,7 @@ Sitenize/Wwwroot dizinine gidin. Aşağıdaki örnekte gösterildiği gibi bir k
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-`npm install v8-profiler`komutunu çalıştırın.
+Komutunu çalıştırın `npm install v8-profiler`.
 
 Bu komut, düğüm\_modüller dizini ve tüm bağımlılıklarını V8-Profiler ' ın altına yüklenir.
 Şimdi, uygulamanızı profilinize yönelik Server. js ' yi düzenleyin.

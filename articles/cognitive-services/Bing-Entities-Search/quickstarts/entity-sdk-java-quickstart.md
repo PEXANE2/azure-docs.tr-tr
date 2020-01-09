@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448655"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Hızlı başlangıç: Java için Bing Varlık Arama SDK ile bir arama isteği gönderme
 
@@ -67,7 +67,7 @@ Bing Varlık Arama SDK'sı bağımlılık dosyalarını Maven, Gradle veya başk
 
 ## <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
-1. API uç noktanızı gerektiren `dominantEntityLookup` istemcisini ve `ServiceClientCredentials` sınıfının bir örneğini uygulayın.
+1. API uç noktanızı gerektiren `dominantEntityLookup` istemcisini ve `ServiceClientCredentials` sınıfının bir örneğini uygulayın. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {

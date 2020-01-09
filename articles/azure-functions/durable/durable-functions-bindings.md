@@ -2,14 +2,14 @@
 title: Dayanıklı İşlevler için bağlamalar-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısı için Tetikleyiciler ve bağlamaları kullanma.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410211"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
@@ -36,7 +36,7 @@ Komut dosyası dillerinde Orchestrator işlevlerini yazdığınızda (örneğin,
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
 
-### <a name="trigger-behavior"></a>Tetikleme davranışı
+### <a name="trigger-behavior"></a>Tetikleyici davranışı
 
 Düzenleme tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
@@ -143,7 +143,7 @@ Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikley
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir kuyruğu yoklar. Bu kuyruk, uzantının iç uygulama ayrıntısı olduğundan, bağlama özelliklerinde açıkça yapılandırılmamış olabilir.
 
-### <a name="trigger-behavior"></a>Tetikleme davranışı
+### <a name="trigger-behavior"></a>Tetikleyici davranışı
 
 Etkinlik tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
@@ -372,7 +372,7 @@ Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda, varlı
 
 Dahili olarak bu tetikleyici bağlama, işlev uygulaması için varsayılan depolama hesabındaki bir dizi kuyruğu yoklar. Bu kuyruklar, uzantının iç uygulama ayrıntılardır ve bu nedenle bağlama özelliklerinde açıkça yapılandırılmazlar.
 
-### <a name="trigger-behavior"></a>Tetikleme davranışı
+### <a name="trigger-behavior"></a>Tetikleyici davranışı
 
 Varlık tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
@@ -398,7 +398,7 @@ Her varlık işlevinin, aşağıdaki üyelere sahip `IDurableEntityContext`param
 * **DeleteState ()** : varlığın durumunu siler. 
 * **Getınput\<tınput > ()** : geçerli işlem için girişi alır. `TInput` Type parametresi, ilkel veya JSON seri hale getirilen bir tür olmalıdır.
 * **Return (arg)** : işlemi çağıran düzenleme için bir değer döndürür. `arg` parametresi, ilkel veya JSON seri hale getirilen bir nesne olmalıdır.
-* **İmza (EntityId, işlem, giriş)** : bir varlığa tek yönlü bir ileti gönderir. `operation` parametresi null olmayan bir dize olmalı ve `input` parametresi bir ilkel veya JSON-serializlenebilir nesne olmalıdır.
+* **İmza (EntityId, scheduledTimeUtc, işlem, giriş)** : bir varlığa tek yönlü bir ileti gönderir. `operation` parametresi null olmayan bir dize olmalıdır; isteğe bağlı `scheduledTimeUtc` işlemin çağıralınacağı UTC Tarih/saat olması gerekir ve `input` parametresi bir basit ya da JSON-serializlenebilir nesne olmalıdır.
 * **CreateNewOrchestration (Orchestratorfonksiyonadı, giriş)** : yeni bir düzenleme başlatır. `input` parametresi, ilkel veya JSON seri hale getirilen bir nesne olmalıdır.
 
 Varlık işlevine geçirilen `IDurableEntityContext` nesnesine `Entity.Current` Async-Local özelliği kullanılarak erişilebilir. Bu yaklaşım, sınıf tabanlı programlama modeli kullanılırken kullanışlıdır.
@@ -519,7 +519,7 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 
 * **Readentitystateasync\<t >** : bir varlığın durumunu okur. Hedef varlığın mevcut olup olmadığını ve Öyleyse durumunun ne olduğunu belirten bir yanıt döndürür.
 * **Tiflentityasync**: bir varlığa tek yönlü bir ileti gönderir ve kuyruğa alınıp alınmasını bekler.
+* **Listentitiesasync**: birden çok varlığın durumu için sorgular. Varlıklar, *ad* ve *son işlem zamanına*göre sorgulanabilir.
 
 Bir sinyal göndermeden önce hedef varlık oluşturmanız gerekmez; varlık durumu, sinyali işleyen varlık işlevinin içinden oluşturulabilir.
 

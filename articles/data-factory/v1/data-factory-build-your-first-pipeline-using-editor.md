@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439006"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ilk veri fabrikanızı oluşturma
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hatt�
 
 Veri fabrikası oluşturmak için bu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. **Yeni** > **Veri ve Analiz** > **Data Factory**’yi seçin.
 
@@ -76,13 +76,13 @@ Veri fabrikası oluşturmak için bu adımları izleyin:
 
 1. **Panoya sabitle** onay kutusunu seçin.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
    > [!IMPORTANT]
    > Data Factory örnekleri oluşturmak için abonelik/kaynak grubu düzeyinde [Data Factory katılımcısı](../../role-based-access-control/built-in-roles.md#data-factory-contributor) rolünün üyesi olmanız gerekir.
    >
    >
-1. Panoda, **Data Factory Dağıtılıyor** durumuna sahip aşağıdaki kutucuğu görürsünüz:    
+1. Panoda, şu duruma sahip aşağıdaki kutucuğu görürsünüz: **Veri Fabrikası Dağıtılıyor**:    
 
    ![Veri Fabrikası Dağıtılıyor durumu](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 
@@ -110,7 +110,7 @@ Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu öğreti
 
    ![Depolama bağlı hizmeti](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. **Hesap adı** değerini depolama hesabınızın adıyla değiştirin. **Hesap anahtarı** değerini depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için [Depolama hesabınızı yönetme](../../storage/common/storage-account-manage.md#access-keys) sayfasındaki depolama erişim anahtarlarını görüntüleme, kopyalama ve yeniden oluşturma yönergelerine bakın.
+1. **Hesap adı** değerini depolama hesabınızın adıyla değiştirin. **Hesap anahtarı** değerini depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
 1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt**’ı seçin.
 
@@ -211,11 +211,11 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
    | Özellik | İç içe geçmiş | Açıklama |
    |:--- |:--- |:--- |
    | type | properties |Veriler blob depolamada yer aldığından, type özelliği **AzureBlob** olarak ayarlanır. |
-   | linkedServiceName | formatını |Daha önce oluşturduğunuz AzureStorageLinkedService hizmetine başvurur. |
+   | linkedServiceName | biçim |Daha önce oluşturduğunuz AzureStorageLinkedService hizmetine başvurur. |
    | folderPath | typeProperties | Blob kapsayıcısını ve giriş bloblarını içeren klasörü belirtir. | 
    | fileName | typeProperties |Bu özellik isteğe bağlıdır. Bu özelliği atarsanız, tüm folderPath dosyaları seçilir. Bu öğreticide yalnızca input.log dosyası işlenir. |
-   | type | formatını |Günlük dosyaları metin biçiminde olduğundan **TextFormat** seçeneğini kullanın. |
-   | columnDelimiter | formatını |Günlük dosyalarındaki sütunlar virgül karakteri (`,`) ile ayrılır. |
+   | type | biçim |Günlük dosyaları metin biçiminde olduğundan **TextFormat** seçeneğini kullanın. |
+   | columnDelimiter | biçim |Günlük dosyalarındaki sütunlar virgül karakteri (`,`) ile ayrılır. |
    | frequency/interval | availability |Sıklığın **Month**, aralığın **1** olarak ayarlanmış olması, girdi dilimlerinin aylık olarak kullanılabileceği anlamına gelir. |
    | external | properties | Bu özellik, giriş verileri bu işlem hattı tarafından oluşturulmadıysa **true** olarak ayarlanır. Bu öğreticide, input.log dosyası bu işlem hattı tarafından oluşturulmadığından, özelliği **true** olarak ayarlayacağız. |
 

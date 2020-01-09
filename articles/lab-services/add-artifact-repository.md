@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs Laboratuvarınızı yapıt deposu ekleme | Microsoft Docs
-description: Azure DevTest Labs Laboratuvarınızı yapıt deposu ekleme hakkında bilgi edinin.
+title: Azure DevTest Labs | laboratuvarınızda bir yapıt deposu ekleyin | Microsoft Docs
+description: Azure DevTest Labs 'de laboratuvarınızda yapıt deposu eklemeyi öğrenin.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -13,90 +13,90 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c391aa157e35bdc389bd30efe48fa380d06c193e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ff410d3767e90f92a946b72354b39f87e4f37b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429024"
 ---
-# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs Laboratuvarınızı yapıt deposu ekleme
-DevTest Labs, VM oluşturma veya VM oluşturulduktan sonra sırada bir sanal makineye eklenecek bir yapıt belirtmenizi sağlar. Bu yapıt, bir aracı veya VM üzerinde yüklemek istediğiniz bir uygulama olabilir. Yapıtlar, GitHub veya Azure DevOps Git deposundan yüklenen bir JSON dosyasında tanımlanır. 
+# <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs 'de laboratuvarınızda yapıt deposu ekleme
+DevTest Labs, VM oluşturma sırasında veya VM oluşturulduktan sonra VM 'ye eklenecek bir yapıt belirtmenize olanak tanır. Bu yapıt, VM 'ye yüklemek istediğiniz bir araç veya uygulama olabilir. Yapıtlar, GitHub veya Azure DevOps git deposundan yüklenen bir JSON dosyasında tanımlanır. 
 
-[Genel yapıt deposuna](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)DevTest Labs tarafından korunan, hem Windows hem de Linux için birçok yaygın araçları sunar. Bu depo için bir bağlantı, laboratuvarınız için otomatik olarak eklenir. Genel yapıt deposunda kullanılamayan belirli araçlarla kendi yapıt deposu oluşturabilirsiniz. Özel yapıtlar oluşturma hakkında bilgi edinmek için [özel yapıtlar oluşturma](devtest-lab-artifact-author.md).
+DevTest Labs tarafından tutulan [ortak yapıt deposu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), hem Windows hem de Linux için birçok ortak araç sağlar. Bu depoya yönelik bir bağlantı, laboratuvarınızda otomatik olarak eklenir. Ortak yapıt deposunda kullanılamayan belirli araçlarla kendi yapıt deponuzu oluşturabilirsiniz. Özel yapıtlar oluşturma hakkında bilgi edinmek için bkz. [özel yapılar oluşturma](devtest-lab-artifact-author.md).
 
-Bu makalede, Azure portalı, Azure Resource Manager şablonlarını ve Azure PowerShell kullanarak, özel yapıt deposu ekleme hakkında bilgi sağlar. PowerShell veya CLI komutları yazarak bir laboratuvara yapıt deposu ekleme otomatik hale getirebilirsiniz. 
+Bu makalede, Azure portal, Azure Kaynak Yönetimi şablonlarını ve Azure PowerShell kullanarak özel yapıt deponuzu ekleme hakkında bilgi sağlanır. PowerShell veya CLı betikleri yazarak bir laboratuvara yapıt deposu eklemeyi otomatik hale getirebilirsiniz. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Laboratuvarınız için bir depo eklemek için ilk olarak, deponuzdan anahtarı bilgilerini alın. Aşağıdaki bölümlerde üzerinde barındırılan depolar için gerekli bilgileri almak nasıl **GitHub** veya **Azure DevOps**.
+## <a name="prerequisites"></a>Ön koşullar
+Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri alın. Aşağıdaki bölümlerde **GitHub** veya **Azure DevOps**üzerinde barındırılan depolarda gerekli bilgilerin nasıl alınacağı açıklanır.
 
-### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub depo kopya URL'si ve kişisel erişim belirteci alma
+### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub deposu kopya URL 'sini ve kişisel erişim belirtecini al
 
-1. Yapıt ya da Resource Manager şablonu tanımlarını içeren GitHub deposunun giriş sayfasına gidin.
+1. Yapıt veya Kaynak Yöneticisi Şablon tanımlarını içeren GitHub deposunun ana sayfasına gidin.
 2. **Clone or download**'u (Kopyala veya indir) seçin.
-3. URL'yi panoya kopyalamak için seçin **HTTPS kopyası URL'si** düğmesi. Daha sonra kullanmak için URL'yi kaydedin.
-4. GitHub sağ üst köşesindeki profil resmini seçin ve ardından **ayarları**.
-5. İçinde **kişisel ayarlarını** seçin sol taraftaki menüsünden **Geliştirici ayarları**.
-6. Seçin **kişisel erişim belirteçleri** sol menüsünde.
-7. Seçin **yeni belirteç Oluştur**.
-8. Üzerinde **yeni bir kişisel erişim belirteci** sayfasındaki **belirteç açıklaması**, bir açıklama girin. Altında varsayılan öğeleri kabul **kapsamları seçin**ve ardından **belirteç Oluştur**.
-9. Oluşturulan belirtecin kaydedin. Belirteci daha sonra kullanın.
-10. GitHub'ı kapatın.   
+3. URL 'YI panoya kopyalamak için **https kopya URL 'si** düğmesini seçin. URL 'YI daha sonra kullanmak üzere kaydedin.
+4. GitHub ' ın sağ üst köşesinde profil görüntüsünü seçin ve ardından **Ayarlar**' ı seçin.
+5. Soldaki **kişisel ayarlar** menüsünde, **Geliştirici ayarları**' nı seçin.
+6. Sol taraftaki menüden **kişisel erişim belirteçleri** ' ni seçin.
+7. **Yeni belirteç oluştur**' u seçin.
+8. **Yeni kişisel erişim belirteci** sayfasında, **belirteç açıklaması**altında bir açıklama girin. **Kapsamları Seç**altında varsayılan öğeleri kabul edin ve ardından **belirteç oluştur**' u seçin.
+9. Oluşturulan belirteci kaydedin. Belirteci daha sonra kullanırsınız.
+10. GitHub 'ı kapatın.   
 
-### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Azure depolarda kopya URL'si ve kişisel erişim belirteci alma
-1. Takım koleksiyonunuzun giriş sayfasına gidin (örneğin, https://contoso-web-team.visualstudio.com) ve ardından projenizi seçin.
-2. Proje giriş sayfasında **kod**.
-3. Kopya URL'si projede görüntülemek için **kod** sayfasında **kopya**.
-4. URL'yi kaydedin. Daha sonra URL'yi kullanın.
-5. Kullanıcı hesabı aşağı açılan menüden bir kişisel erişim belirteci oluşturmak için seçin **Profilimi**.
-6. Profil bilgileri sayfasında seçin **güvenlik**.
-7. Üzerinde **güvenlik** sekmesinde **Ekle**.
-8. Üzerinde **bir kişisel erişim belirteci oluşturma** sayfası:
-   1. Girin bir **açıklama** belirteç için.
-   2. İçinde **süresi içinde** listesinden **180 gün**.
-   3. İçinde **hesapları** listesinden **tüm erişilebilir hesaplar**.
-   4. Seçin **tüm kapsamlar** seçeneği.
-   5. Seçin **belirteci oluşturma**.
-9. Yeni belirteç görünür **kişisel erişim belirteçleri** listesi. Seçin **kopyalama belirteci**ve daha sonra kullanmak için belirteç değeri kaydedin.
-10. Bağlan Laboratuvarınızı depo bölümüne geçin.
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Azure Repos kopya URL 'sini ve kişisel erişim belirtecini alın
+1. Ekip koleksiyonunuzun ana sayfasına gidin (örneğin, https://contoso-web-team.visualstudio.com) ve ardından projenizi seçin.
+2. Proje giriş sayfasında **kod**' u seçin.
+3. Kopya URL 'sini görüntülemek için, proje **kodu** sayfasında, **Kopyala**' yı seçin.
+4. URL 'YI kaydedin. URL 'YI daha sonra kullanırsınız.
+5. Kişisel erişim belirteci oluşturmak için, Kullanıcı hesabı açılan menüsünde **profilimi**seçin.
+6. Profil bilgileri sayfasında **güvenlik**' i seçin.
+7. **Güvenlik** sekmesinde, **Ekle**' yi seçin.
+8. **Kişisel erişim belirteci oluştur** sayfasında:
+   1. Belirteç için bir **Açıklama** girin.
+   2. **Süre sonu** listesinde **180 gün**' yı seçin.
+   3. **Hesaplar** listesinde, **tüm erişilebilir hesaplar**' ı seçin.
+   4. **Tüm kapsamlar** seçeneğini belirleyin.
+   5. **Belirteç oluştur**' u seçin.
+9. Yeni belirteç, **kişisel erişim belirteçleri** listesinde görünür. **Belirteci Kopyala**' yı seçin ve ardından daha sonra kullanmak üzere belirteç değerini kaydedin.
+10. Laboratuvarınızı depoya bağlama bölümüne devam edin.
 
-## <a name="use-azure-portal"></a>Azure portalı kullanma
-Bu bölümde, Azure portalında bir laboratuvar yapıt deposuna eklemek için adımları sağlar. 
+## <a name="use-azure-portal"></a>Azure portalını kullanma
+Bu bölümde, Azure portal bir laboratuvara yapıt deposu ekleme adımları sağlanmaktadır. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Seçin **diğer hizmetler**ve ardından **DevTest Labs** hizmetler listesinden.
-3. Laboratuvarınızı labs listesinden seçin. 
-4. Seçin **yapılandırması ve ilkelerini** sol menüsünde.
-5. Seçin **depoları** altında **dış kaynaklara** sol menüde bölümü.
-6. Seçin **+ Ekle** araç.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. **Diğer hizmetler**' i seçin ve ardından hizmetler listesinden **DevTest Labs** ' i seçin.
+3. Laboratuvarlar listesinden laboratuvarınızı seçin. 
+4. Sol taraftaki menüden **yapılandırma ve ilkeler** ' i seçin.
+5. Sol taraftaki menüde **dış kaynaklar** bölümünde bulunan **depolar** ' ı seçin.
+6. Araç çubuğunda **+ Ekle** ' yi seçin.
 
     ![Depo Ekle düğmesi](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
-5. Üzerinde **depoları** sayfasında, aşağıdaki bilgileri belirtin:
+5. **Depolar** sayfasında, aşağıdaki bilgileri belirtin:
    1. **Ad**. Depo için bir ad girin.
-   2. **Git kopya URL'si**. Daha önce kopyaladığınız Azure DevOps Services veya GitHub Git HTTPS kopya URL girin.
-   3. **Dal**. Tanımlarınızı almak için dal girin.
-   4. **Kişisel erişim belirteci**. Azure DevOps Services veya GitHub daha önce aldığınız kişisel erişim belirteci girin.
-   5. **Klasör yolları**. Yapı ya da Resource Manager şablonu tanımlarını içeren kopya URL göreli en az bir klasör yolu girin. Bir alt belirttiğinizde, klasör yoluna eğik çizgi dahil emin olun.
+   2. **Url git clone**. Daha önce GitHub veya Azure DevOps Services kopyaladığınız git HTTPS kopya URL 'sini girin.
+   3. **Dalı**. Tanımlarınızı almak için dalı girin.
+   4. **Kişisel erişim belirteci**. Daha önce GitHub veya Azure DevOps Services aldığınız kişisel erişim belirtecini girin.
+   5. **Klasör yolları**. Yapıtı veya Kaynak Yöneticisi şablonu tanımlarınızı içeren kopya URL 'sine göre en az bir klasör yolu girin. Bir alt dizin belirttiğinizde, klasör yolunda eğik çizgi eklediğinizden emin olun.
 
-        ![Depoları alanı](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+        ![Depolar alanı](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. **Kaydet**’i seçin.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
-Azure kaynak yönetimi (Azure Resource Manager) şablonları oluşturmak istediğiniz Azure kaynakları tanımlayan JSON dosyalarıdır. Bu şablonlar hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/resource-group-authoring-templates.md).
+Azure Kaynak Yönetimi (Azure Resource Manager) şablonları, Azure 'da oluşturmak istediğiniz kaynakları tanımlayan JSON dosyalarıdır. Bu şablonlar hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md).
 
-Bu bölümde Azure Resource Manager şablonu kullanarak bir laboratuvara yapıt deposu ekleme adımları sağlar.  Zaten mevcut değilse laboratuvar şablonu oluşturur. 
+Bu bölümde, bir Azure Resource Manager şablonu kullanarak bir laboratuvara yapıt deposu ekleme adımları sağlanmaktadır.  Şablon zaten yoksa Laboratuvarı oluşturur. 
 
 ### <a name="template"></a>Şablon
-Bu makalede kullanılan örnek şablon parametreleri aracılığıyla aşağıdaki bilgileri toplar. Parametrelerin çoğu akıllı varsayılanlar olduğu, ancak belirtilmesi gereken birkaç değer vardır. Yapıt deposu URI'sini ve depo için güvenlik belirteci, Laboratuvar adı belirtmeniz gerekir. 
+Bu makalede kullanılan örnek şablon, parametreler aracılığıyla aşağıdaki bilgileri toplar. Parametrelerin çoğunda akıllı varsayılanlar vardır, ancak belirtilmesi gereken birkaç değer vardır. Laboratuvar adını, yapıt deposunun URI 'sini ve Deponun güvenlik belirtecini belirtmeniz gerekir. 
 
 - Laboratuvar adı.
-- DevTest Labs kullanıcı arabirimi (UI) yapıt deposunda görünen adı. Varsayılan değer: `Team Repository`.
-- Depo URI'si (örnek: `https://github.com/<myteam>/<nameofrepo>.git` veya `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.
-- Dal depodaki yapıtları içerir. Varsayılan değer: `master`.
-- Yapıtlar içeren klasörün adı. Varsayılan değer: `/Artifacts`.
-- Depo türü. İzin verilen değerler `VsoGit` veya `GitHub`.
+- Yapı deposunun DevTest Labs Kullanıcı arabiriminde (UI) görünen adı. Varsayılan değer: `Team Repository`.
+- Depoya URI (örnek: `https://github.com/<myteam>/<nameofrepo>.git` veya `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.
+- Yapıtları içeren depodaki dal. Varsayılan değer: `master`.
+- Yapıtları içeren klasörün adı. Varsayılan değer: `/Artifacts`.
+- Deponun türü. İzin verilen değerler `VsoGit` veya `GitHub`.
 - Depo için erişim belirteci. 
 
     ```json
@@ -165,22 +165,22 @@ Bu makalede kullanılan örnek şablon parametreleri aracılığıyla aşağıda
 
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
-Şablonu Azure'a dağıtma ve mevcut değilse mevcut olmaması halinde, oluşturulduğunda veya güncelleştirildiğinde, kaynak sağlamak için birkaç yolu vardır. Ayrıntılar için aşağıdaki makalelere bakın:
+Şablonu Azure 'a dağıtmanın birkaç yolu vardır ve kaynak yoksa, varsa, bu kaynağı oluşturmuş veya güncelleştirilemez. Ayrıntılar için aşağıdaki makalelere bakın:
 
 - [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/resource-group-template-deploy.md)
 - [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../azure-resource-manager/resource-group-template-deploy-cli.md)
 - [Kaynakları Resource Manager şablonları ve Azure portalı ile dağıtma](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Kaynakları Resource Manager şablonları ve Resource Manager REST API’si ile dağıtma](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Yeni bir ubuntu ve PowerShell'de şablonu dağıtmak bkz. Şablonu dağıtmak için kullanılan cmdlet'ler bağlam özgü olduğundan geçerli Kiracı ve geçerli aboneliğin kullanılır. Kullanım [kümesi AzContext](/powershell/module/az.accounts/set-azcontext) gerekirse bağlamı değiştirmek için şablonu dağıtmadan önce.
+Şimdi de bir şablonu PowerShell 'de dağıtmayı görelim. Şablonu dağıtmak için kullanılan cmdlet 'ler içeriğe özgüdür, bu nedenle geçerli kiracı ve geçerli abonelik kullanılır. Gerekirse, bağlamı değiştirmek için şablonu dağıtılmadan önce [set-AzContext](/powershell/module/az.accounts/set-azcontext) komutunu kullanın.
 
-İlk olarak kullanarak bir kaynak grubu oluşturun. [yeni AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Zaten kullanmak istediğiniz kaynak grubu varsa, bu adımı atlayın.
+İlk olarak, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir kaynak grubu oluşturun. Kullanmak istediğiniz kaynak grubu zaten varsa, bu adımı atlayın.
 
 ```powershell
 New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Ardından, kaynak grubu kullanarak bir dağıtım oluşturun [yeni AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Bu cmdlet, Azure'a kaynak değişiklikleri uygular. Çeşitli kaynak dağıtımlar, herhangi belirli bir kaynak grubuna yapılabilir. Birkaç kez aynı kaynak grubuna dağıtıyorsanız, her dağıtım adının benzersiz olduğundan emin olun.
+Ardından, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanarak kaynak grubuna bir dağıtım oluşturun. Bu cmdlet, kaynak değişikliklerini Azure 'a uygular. Belirli bir kaynak grubuna birkaç kaynak dağıtımı yapılabilir. Aynı kaynak grubuna birkaç kez dağıtıyorsanız, her dağıtımın adının benzersiz olduğundan emin olun.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,15 +190,15 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-New-AzResourceGroupDeployment çalıştırdıktan sonra başarıyla komutu (başarılı olması) sağlama durumu ve şablon için herhangi bir çıkış gibi önemli bilgiler çıkarır.
+New-AzResourceGroupDeployment başarıyla çalıştıktan sonra, komut sağlama durumu (başarılı olmalıdır) ve şablon için tüm çıktılar gibi önemli bilgileri çıktı olarak verir.
  
-## <a name="use-azure-powershell"></a>Azure PowerShell kullanma 
-Bu bölümde bir laboratuvara yapıt deposu ekleme için kullanılan bir örnek PowerShell Betiği sağlanır. Azure PowerShell yoksa bkz [Azure PowerShell'i yükleme ve yapılandırma işlemini](/powershell/azure/overview?view=azps-1.2.0) yüklemek ayrıntılı yönergeler için.
+## <a name="use-azure-powershell"></a>Azure PowerShell’i kullanma 
+Bu bölüm, bir laboratuvara yapıt deposu eklemek için kullanılabilecek bir örnek PowerShell betiği sağlar. Azure PowerShell yoksa, yüklemek için ayrıntılı yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview?view=azps-1.2.0) .
 
 ### <a name="full-script"></a>Tam betik
-Aşağıda, bazı ayrıntılı ileti çıkışı yapar ve yorumlarla birlikte tam komut verilmiştir:
+Bazı ayrıntılı iletiler ve açıklamalar dahil olmak üzere tam komut dosyası aşağıda verilmiştir:
 
-**Yeni DevTestLabArtifactRepository.ps1**:
+**New-DevTestLabArtifactRepository. ps1**:
 
 ```powershell
 
@@ -336,7 +336,7 @@ return $result
 ```
 
 ### <a name="run-the-powershell-script"></a>PowerShell betiğini çalıştırma
-Aşağıdaki örnek komut dosyasının nasıl çalıştırılacağı gösterilmektedir: 
+Aşağıdaki örnek, komut dosyasının nasıl çalıştırılacağını göstermektedir: 
 
 ```powershell
 Set-AzContext -SubscriptionId <Your Azure subscription ID>
@@ -346,20 +346,20 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 
 
 ### <a name="parameters"></a>Parametreler
-Bu makaledeki örnek PowerShell Betiği aşağıdaki parametreleri alır:
+Bu makaledeki örnek PowerShell betiği aşağıdaki parametreleri alır:
 
 | Parametre | Açıklama | 
 | --------- | ----------- | 
-| LabName | Laboratuvar adı. |
-| ArtifactRepositoryName | Yeni yapıt deposu adı. Belirtilmezse betik deposu için rastgele bir ad oluşturur. |
-| ArtifactRepositoryDisplayName | Yapıt deposu için görünen ad. Bu, Azure portalında gösterilir addır (https://portal.azure.com) bir laboratuvara yönelik tüm yapıt depolar görüntülerken. |
-| RepositoryUri | Depo URI'si. Örnekler: `https://github.com/<myteam>/<nameofrepo>.git` veya `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.| 
-| RepositoryBranch | Dal dosyalarını hangi yapıt içinde bulunabilir. Varsayılan olarak 'master'. | 
-| folderPath | Klasör yapıtları altında bulunabilir. Varsayılan olarak ' / Yapıtları |
-| personalAccessToken | GitHub veya VSOGit depoya erişmek için güvenlik belirteci. Kişisel erişim belirteci almak yönergeler için Önkoşullar bölümüne bakın |
-| KaynakTürü | Yapıt VSOGit veya GitHub deposunda olup olmadığı. |
+| LabName | Laboratuvarın adı. |
+| ArtifactRepositoryName | Yeni yapıt deposunun adı. Komut dosyası belirtilmemişse, depo için bir rastgele ad oluşturulur. |
+| ArtifactRepositoryDisplayName | Yapıt deposunun görünen adı. Bu, Azure portal gösteren addır (bir laboratuvardaki tüm yapıt depoları görüntülenirken https://portal.azure.com). |
+| Depotoruri | Depoya URI. Örnekler: `https://github.com/<myteam>/<nameofrepo>.git` veya `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`.| 
+| Depodalı | Yapıt dosyalarının bulunduğu dal. Varsayılan olarak ' Master ' olur. | 
+| FolderPath | Yapıtların bulunduğu klasör. Varsayılan değer '/yapıtlar ' |
+| PersonalAccessToken | GitHub veya VSOGit deposuna erişmek için güvenlik belirteci. Kişisel erişim belirteci almak için yönergeler için Önkoşullar bölümüne bakın |
+| KaynakTürü | Yapıtın VSOGit veya GitHub deposu olup olmadığı. |
 
-Depo bir iç gereken farklı kimlik doğrulaması için Azure portalında görünen görünen adı. Azure portalını kullanarak iç adı görmüyorsanız, ancak Azure REST API'lerini veya Azure PowerShell kullanırken görmeyi. Bir betiğimizi kullanıcı tarafından belirtilmezse, betik, bir ad sağlar.
+Deponun, kimlik için bir iç ada ihtiyacı vardır ve bu, Azure portal görülen görünen ada göre farklılık gösterir. Azure portal kullanarak dahili adı görmezsiniz, ancak Azure REST API 'Lerini veya Azure PowerShell kullanırken bunu görürsünüz. Betik, betiğimizin kullanıcısı tarafından belirtilmemişse, bir ad sağlar.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -372,18 +372,18 @@ if ($ArtifactRepositoryName -eq $null){
 
 | PowerShell komutu | Notlar |
 | ------------------ | ----- |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Bu komut, konumu gibi Laboratuvar hakkında bilgi almak için kullanılır. |
-| [Yeni AzResource](/powershell/module/az.resources/new-azresource) | Yapıt deposu ekleme için belirli bir komut yoktur. Genel [yeni AzResource](/powershell/module/az.resources/new-azresource) cmdlet işi yapar. Bu cmdlet ya da gereken **ResourceId** veya **ResourceName** ve **ResourceType** oluşturmak için kaynak türünü bilmeniz çifti. Bu örnek betik, kaynak adı ve kaynak türü çifti kullanır. <br/><br/>Yapıt deposu kaynağı ile aynı konumda ve Laboratuvar aynı kaynak grubunda oluşturduğunuzu dikkat edin.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Bu komut, kendi konumu gibi laboratuvarın ayrıntılarını almak için kullanılır. |
+| [New-AzResource](/powershell/module/az.resources/new-azresource) | Yapıt depoları eklemek için belirli bir komut yoktur. Genel [New-AzResource](/powershell/module/az.resources/new-azresource) cmdlet 'i işi yapar. Bu cmdlet 'in oluşturulacak kaynak türünü bilmemiz için **RESOURCEID** veya **resourceName** ve **ResourceType** çiftine ihtiyacı vardır. Bu örnek betik, kaynak adı ve kaynak türü çiftini kullanır. <br/><br/>Yapıt depo kaynağını aynı konumda ve laboratuvarla aynı kaynak grubunda oluştururuz olun.|
 
-Betik yeni bir kaynak mevcut aboneliğe ekler. Kullanım [Get-AzContext](/powershell/module/az.accounts/get-azcontext) bu bilgileri görmek için. Kullanım [kümesi AzContext](/powershell/module/az.accounts/set-azcontext) geçerli Kiracı ve abonelik ayarlamak için.
+Betik geçerli aboneliğe yeni bir kaynak ekler. Bu bilgileri görmek için [Get-AzContext](/powershell/module/az.accounts/get-azcontext) kullanın. Geçerli kiracıyı ve aboneliği ayarlamak için [set-AzContext](/powershell/module/az.accounts/set-azcontext) komutunu kullanın.
 
-Kaynak adı ve kaynak türü bilgilerini bulmak için en iyi yolu kullanmaktır [Test sürücü Azure REST API'leri](https://azure.github.io/projects/apis/) Web sitesi. Kullanıma [DevTest Labs: 2016-05-15](https://aka.ms/dtlrestapis) REST API'leri için DevTest Labs sağlayıcısı görmek için sağlayıcı. Betik kullanıcılar aşağıdaki kaynak kimliği. 
+Kaynak adı ve kaynak türü bilgilerini öğrenmenin en iyi yolu, [Azure REST API 'leri Için test sürücüsü](https://azure.github.io/projects/apis/) Web sitesini kullanmaktır. DevTest Labs sağlayıcısı için kullanılabilir REST API 'Leri görmek için [DevTest Labs – 2016-05-15](https://aka.ms/dtlrestapis) sağlayıcısına göz atın. Komut dosyası, aşağıdaki kaynak KIMLIĞINI kullanıcılarına göre yapılır. 
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
 ```
  
-Her şeyi kaşlı ayraçlar içinde listelenen öğeleri hariç URI 'providers' sonra listelenen kaynak türüdür. Kaynak adı kaşlı ayraçlar içinde görülen her şey değildir. Kaynak adı için birden fazla öğe bekleniyorsa, her öğe biz yaptığınız gibi bir eğik çizgi ile ayırın. 
+Kaynak türü, küme ayraçları içinde listelenen öğeler hariç, URI 'de ' Providers ' öğesinden sonra listelenen her şeydir. Kaynak adı, küme ayraçları içinde görülen her şeydir. Kaynak adı için birden fazla öğe bekleniyorsa, yaptığımız gibi her bir öğeyi eğik çizgiyle ayırın. 
 
 ```powershell
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -392,7 +392,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure DevTest Labs'de laboratuvarınız için zorunlu yapıtları belirtin](devtest-lab-mandatory-artifacts.md)
-- [DevTest Labs sanal makineniz için özel yapıtlar oluşturma](devtest-lab-artifact-author.md)
-- [Laboratuvardaki yapıt hatalarını tanılama](devtest-lab-troubleshoot-artifact-failure.md)
+- [Azure DevTest Labs ' de laboratuvarınız için zorunlu yapıtlar belirtin](devtest-lab-mandatory-artifacts.md)
+- [DevTest Labs sanal makineniz için özel yapılar oluşturma](devtest-lab-artifact-author.md)
+- [Laboratuvardaki yapıt başarısızlıklarını tanılama](devtest-lab-troubleshoot-artifact-failure.md)
 

@@ -4,15 +4,15 @@ description: Bu makalede, Azure Log Analytics 'de depolanan kişisel verilerin v
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7f8b40094b30a01e4189bcf04d4c194e5b0b4285
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394747"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights depolanan kişisel verilere yönelik kılavuz
 
@@ -60,7 +60,7 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Kullanıcı kimlikleri*: Application Insights, varsayılan olarak, Kullanıcı ve oturum izleme için rastgele oluşturulan kimlikleri kullanır. Bununla birlikte, bir KIMLIĞI uygulamayla ilgili daha uygun bir şekilde depolamak için bu alanların geçersiz kılındığından, yaygın bir şekilde görüntülenir. Örneğin: Kullanıcı adları, AAD GUID 'Leri, vb. Bu kimlikler genellikle kişisel veri olarak kapsam içi olarak değerlendirilir ve bu nedenle uygun şekilde işlenmelidir. Önerimiz, bu kimlikleri gizleme veya Anonimleştir her zaman denenmektir. Bu değerlerin yaygın olarak bulunduğu alanlar session_Id, user_Id, user_AuthenticatedId, user_AccountId ve customDimensions içerir.
+* *Kullanıcı kimlikleri*: Application Insights, varsayılan olarak, Kullanıcı ve oturum izleme için rastgele oluşturulan kimlikleri kullanır. Bununla birlikte, bir KIMLIĞI uygulamayla ilgili daha uygun bir şekilde depolamak için bu alanların geçersiz kılındığından, yaygın bir şekilde görüntülenir. Örneğin: Kullanıcı adları, AAD GUID 'Leri, vb. Bu kimlikler genellikle kişisel veri olarak kapsam içi olarak değerlendirilir ve bu nedenle uygun şekilde işlenmelidir. Önerimiz, bu kimlikleri gizleme veya Anonimleştir her zaman denenmektir. Bu değerlerin genellikle bulunduğu alanlar session_Id, user_Id, user_AuthenticatedId, user_AccountId ve customDimensions içerir.
 * *Özel veriler*: Application Insights tüm veri türlerine bir dizi özel boyut eklemenizi sağlar. Bu boyutlar *herhangi bir* veri olabilir. Son 24 saat içinde toplanan özel boyutları belirlemek için aşağıdaki sorguyu kullanın:
     ```
     search * 
@@ -73,7 +73,7 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
 
 ## <a name="how-to-export-and-delete-private-data"></a>Özel verileri dışarı aktarma ve silme
 
-[Kişisel veri işleme stratejisinde](#strategy-for-personal-data-handling) daha önce bahsedildiği gibi, özel veri toplamayı devre dışı bırakmak, verileri belirsizleştirmeyi veya anonimleştirmeyi sağlamak üzere veri toplama ilkenizi yeniden yapılandırmak için __kullanılması önemle__ önerilir veya Aksi takdirde, bunu "özel" olarak kabul edilmeden kaldırmak için değiştirme. Verilerin işlenmesi, sizin ve ekibinizin bir strateji tanımlayıp otomatikleştirilmesi için size maliyetleri, müşterilerinizin verileriyle etkileşim kurması için bir arabirim oluşturmak ve devam eden bakım maliyetlerine neden olur. Ayrıca, Log Analytics ve Application Insights açısından hesaplama maliyetlidir ve çok sayıda eşzamanlı sorgu veya temizleme API çağrısı, diğer tüm etkileşimi Log Analytics işlevselliğiyle olumsuz yönde etkilemenize olanak sağlar. Yani, özel verilerin toplanması gereken bazı geçerli senaryolar vardır. Bu gibi durumlarda, verilerin bu bölümde açıklandığı gibi işlenmesi gerekir.
+[Kişisel veri işleme stratejisinde](#strategy-for-personal-data-handling) daha önce bahsedildiği gibi, veri toplama ilkenizi özel verilerin toplanmasını devre dışı bırakmak, verileri belirsizleştirmeniz veya anonimleştirmeye ya da başka bir şekilde değiştirmek için "özel" olarak __kabul edilir.__ Verilerin işlenmesi, sizin ve ekibinizin bir strateji tanımlayıp otomatikleştirilmesi için size maliyetleri, müşterilerinizin verileriyle etkileşim kurması için bir arabirim oluşturmak ve devam eden bakım maliyetlerine neden olur. Ayrıca, Log Analytics ve Application Insights açısından hesaplama maliyetlidir ve çok sayıda eşzamanlı sorgu veya temizleme API çağrısı, diğer tüm etkileşimi Log Analytics işlevselliğiyle olumsuz yönde etkilemenize olanak sağlar. Yani, özel verilerin toplanması gereken bazı geçerli senaryolar vardır. Bu gibi durumlarda, verilerin bu bölümde açıklandığı gibi işlenmesi gerekir.
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
@@ -103,7 +103,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="log-data"></a>Günlük verileri
 
 * [Temizleme sonrası](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -115,7 +115,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="application-data"></a>Uygulama verileri
 
 * [Temizleme sonrası](https://docs.microsoft.com/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

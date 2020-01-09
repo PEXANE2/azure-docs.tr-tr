@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367612"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 * **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
@@ -92,9 +92,9 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
 1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
-    1. `ida:Tenant` ve `ida:AadInstance` değerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, `fabrikamb2c` değerini `contoso` ile değiştirin.
+    1. `ida:Tenant` ve `ida:AadInstance` değerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin `fabrikamb2c` `contoso`ile değiştirin.
     1. `ida:ClientId` değerini, kaydettiğiniz uygulama KIMLIĞIYLE değiştirin.
-    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. Web. config dosyasına eklemeden önce, istemci gizliliğini XML olarak kodlamanız gerekir.
+    1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. İstemci gizli dizisi, örneğin (`<`), büyüktür (`>`), ampersan (`&`) veya çift tırnak (`"`) gibi önceden tanımlanmış XML varlıkları içeriyorsa, Web. config 'nize eklemeden önce bu karakterleri XML kodlayarak, istemci gizli anahtarını kodlayarak kaçış yapmanız gerekir.
     1. `ida:SignUpSignInPolicyId` değerini `b2c_1_signupsignin1`ile değiştirin.
     1. `ida:EditProfilePolicyId` değerini `b2c_1_profileediting1`ile değiştirin.
     1. `ida:ResetPasswordPolicyId` değerini `b2c_1_passwordreset1`ile değiştirin.

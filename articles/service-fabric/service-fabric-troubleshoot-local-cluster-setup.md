@@ -1,33 +1,24 @@
 ---
-title: Yerel, Azure Service Fabric Küme kurulumu sorunlarını giderme | Microsoft Docs
-description: Bu makalede, yerel geliştirme kümenizin sorun giderme önerileri kümesi sağlanmıştır.
-services: service-fabric
-documentationcenter: .net
+title: Yerel Azure Service Fabric kümesi kurulumlarınızın sorunlarını giderme
+description: Bu makalede, yerel geliştirme kümenizin sorunlarını gidermeye yönelik bir dizi öneri ele alınmaktadır
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864448"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465512"
 ---
-# <a name="troubleshoot-your-local-development-cluster-setup"></a>Yerel geliştirme kümesi Kurulumu sorunlarını giderme
-Yerel, Azure Service Fabric geliştirme kümesi ile etkileşim sırasında bir sorunla çalıştırırsanız, olası çözümler için aşağıdaki önerileri gözden geçirin.
+# <a name="troubleshoot-your-local-development-cluster-setup"></a>Yerel geliştirme kümesi kurulumlarınızın sorunlarını giderme
+Yerel Azure Service Fabric geliştirme kümeniz ile etkileşim kurarken bir sorunla karşılaşırsanız, olası çözümler için aşağıdaki önerileri gözden geçirin.
 
-## <a name="cluster-setup-failures"></a>Küme ayarlama hatalarıyla
-### <a name="cannot-clean-up-service-fabric-logs"></a>Service Fabric günlüklerini temizleme olamaz
+## <a name="cluster-setup-failures"></a>Küme kurulum sorunları
+### <a name="cannot-clean-up-service-fabric-logs"></a>Service Fabric günlükleri temizlenemiyor
 #### <a name="problem"></a>Sorun
-DevClusterSetup betiği çalıştırırken, aşağıdaki hatayı görürsünüz:
+DevClusterSetup betiğini çalıştırırken şu hatayı görürsünüz:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -37,20 +28,20 @@ DevClusterSetup betiği çalıştırırken, aşağıdaki hatayı görürsünüz:
 
 
 #### <a name="solution"></a>Çözüm
-Geçerli PowerShell penceresini kapatmak ve yönetici olarak yeni bir PowerShell penceresi açın. Artık betik başarılı bir şekilde çalıştırabilirsiniz.
+Geçerli PowerShell penceresini kapatın ve yönetici olarak yeni bir PowerShell penceresi açın. Artık betiği başarıyla çalıştırabilirsiniz.
 
-## <a name="cluster-connection-failures"></a>Küme bağlantı hataları
+## <a name="cluster-connection-failures"></a>Küme bağlantısı sorunları
 
-### <a name="type-initialization-exception"></a>Türü başlatma özel durumu
+### <a name="type-initialization-exception"></a>Tür başlatma özel durumu
 #### <a name="problem"></a>Sorun
-PowerShell kümeye bağlanırken, hata Typeınitializationexception System.Fabric.Common.AppTrace için bkz.
+PowerShell 'de kümeye bağlanırken, System. Fabric. Common. AppTrace için hata TypeInitializationException görürsünüz.
 
 #### <a name="solution"></a>Çözüm
-Yol değişkeninize yükleme sırasında düzgün ayarlanmadı. Windows dışı oturum açın ve yeniden oturum açın. Bu, path yeniler.
+Yol değişkeniniz yükleme sırasında doğru şekilde ayarlanmadı. Windows oturumunu kapatın ve yeniden oturum açın. Bu, yolunuza yenilenir.
 
-### <a name="cluster-connection-fails-with-object-is-closed"></a>Küme bağlantısı "Nesnesi kapalı ile" başarısız olur.
+### <a name="cluster-connection-fails-with-object-is-closed"></a>Küme bağlantısı "nesne kapalı" ile başarısız oluyor
 #### <a name="problem"></a>Sorun
-Connect-ServiceFabricCluster yapılan bu gibi bir hata ile başarısız olur:
+Connect-ServiceFabricCluster çağrısı aşağıdakine benzer bir hata ile başarısız olur:
 
     Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
@@ -60,23 +51,23 @@ Connect-ServiceFabricCluster yapılan bu gibi bir hata ile başarısız olur:
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Çözüm
-Geçerli PowerShell penceresini kapatmak ve yönetici olarak yeni bir PowerShell penceresi açın.
+Geçerli PowerShell penceresini kapatın ve yönetici olarak yeni bir PowerShell penceresi açın.
 
 ### <a name="fabric-connection-denied-exception"></a>Fabric bağlantısı reddedildi özel durumu
 #### <a name="problem"></a>Sorun
-Visual Studio'dan hata ayıklama için FabricConnectionDeniedException hata alıyorum.
+Visual Studio 'da hata ayıklarken, bir FabricConnectionDeniedException hatası alırsınız.
 
 #### <a name="solution"></a>Çözüm
-Bu hata genellikle bir hizmet ana bilgisayarı işlemi el ile başlatmayı denerseniz oluşur.
+Bu hata genellikle bir hizmet ana bilgisayarı işlemini el ile başlatmaya çalıştığınızda oluşur.
 
-Herhangi hizmet projelerini çözümünüzdeki başlangıç projesi olarak ayarla olmadığından emin olun. Yalnızca Service Fabric uygulaması projeleri, başlangıç projesi ayarlamanız gerekir.
+Çözümünüzde başlangıç projeleri olarak ayarlanmış bir hizmet projesi olmadığından emin olun. Yalnızca Service Fabric uygulama projelerinin başlangıç projeleri olarak ayarlanması gerekir.
 
 > [!TIP]
-> Aşağıdaki Kurulum, anormal bir şekilde davranmasına yerel kümenize başlar, yerel Küme Yöneticisi sistem tepsisine kullanarak sıfırlayabilirsiniz. Bu, yeni bir tane ayarlama ve mevcut küme kaldırır. Dağıtılan tüm uygulamalar ve ilişkili verilerin kaldırıldığını unutmayın.
+> Kurulum sonrasında, yerel kümeniz anormal davranmaya başlarsa, Yerel Küme Yöneticisi sistem tepsisi uygulamasını kullanarak sıfırlayabilirsiniz. Bu, var olan kümeyi kaldırır ve yenisini ayarlar. Dağıtılan tüm uygulamaların ve ilişkili verilerin kaldırıldığını unutmayın.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Anlama ve sistem durumu raporlarını kümenizle sorun giderme](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+* [Sistem durumu raporları ile kümenizi anlayın ve sorun giderin](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [Service Fabric Explorer ile kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md)
 

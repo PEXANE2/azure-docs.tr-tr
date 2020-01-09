@@ -1,20 +1,14 @@
 ---
-title: Azure Service Fabric ağı örneklerini bulun | Microsoft Docs
+title: Azure Service Fabric kafes örneklerini bulma
 description: Kullanılabilir Service Fabric kafes örnek uygulamalarının bir dizini aşağıda verilmiştir. Bu örneklerdeki kaynak kodu, Service Fabric kaynak modeli kullanılarak belirli bir senaryonun nasıl elde alınacağını gösterir.
-services: service-fabric-mesh
-keywords: ''
-author: athinanthny
-ms.author: atsenthi
 ms.date: 12/03/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chackdan
-ms.openlocfilehash: a300c06a6a18bf2e986b3736b78957daf3d7efd6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c944ddc26f2e2d099cf9552acb8287c363d0c768
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461915"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Service Fabric ağ örneklerini bulma
 
@@ -22,7 +16,7 @@ Bu tabloda, kullanılabilir Service Fabric kafes örnek uygulamaları özetlenme
 
 Şablonları doğrudan Azure 'a dağıtma hakkında daha fazla bilgi için bkz [. örnek şablon GitHub sayfası.](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)
 
-|Örnek şablon|Senaryo açıklaması|Kaynak kodu|Geliştirici Araçları|
+|Örnek şablon|Senaryo Açıklaması|Kaynak Kodu|Geliştirici Araçları|
 |------------|--------------------|----------|----------------------|
 | [Merhaba Dünya uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/helloworld) | Kapsayıcıda barındırılan statik Web sayfası. Linux için Windows IIS için NGINX kullanır | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld) | Gereksinim yok |
 | [Azure dosya birimleri için sayaç uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.md) | Kapsayıcının içindeki Azure dosya tabanlı birimi bağlayarak durumu saklayın. <br><br> **Note:** Bu şablon, zaten sağlanmış [yönergeler](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) Için bir Azure dosyaları dosya paylaşımında gereklidir | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio kafes araçları |

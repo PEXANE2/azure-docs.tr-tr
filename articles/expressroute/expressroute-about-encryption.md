@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8e9748360b22cd1c693b2c601024c0824ffb483
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083616"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437056"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute şifreleme
  
@@ -40,7 +40,7 @@ Evet. MACsec, siz ve Microsoft arasındaki fiziksel bağlantıları korur. IPSec
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Azure VPN ağ geçidini, şirket içi ağım ve Azure sanal ağım arasında IPSec tüneli kurmak için kullanabilir miyim?
 Evet. ExpressRoute devreniz için Microsoft eşlemesi üzerinden Bu IPSec tüneli ayarlayabilirsiniz. [Yapılandırma kılavuzumuzu](site-to-site-vpn-over-microsoft-peering.md)izleyin.
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Azure özel eşleme üzerinden IPSec tüneli ayarlamak için Azure VPN ağ geçidini kullanabilir miyim?
-Hayır. Azure sanal ağınıza bir üçüncü taraf VPN Gateway dağıtmanız ve şirket içi VPN ağ geçidiniz arasında bir IPSec tüneli oluşturmanız gerekir.
+Azure sanal WAN 'ı benimsediğinizde, uçtan uca bağlantıyı şifrelemek için [aşağıdaki adımları](../virtual-wan/vpn-over-expressroute.md) izleyebilirsiniz. Normal Azure VNET 'iniz varsa, sanal ağınıza bir üçüncü taraf VPN ağ geçidi dağıtabilir ve şirket içi VPN ağ geçidiniz arasında bir IPSec tüneli oluşturabilirsiniz.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>ExpressRoute bağlantınızda IPSec 'i etkinleştirdikten sonra alacağınız aktarım hızı nedir?
 Azure VPN Gateway kullanılıyorsa, [burada performans numaralarını](../vpn-gateway/vpn-gateway-about-vpngateways.md)kontrol edin. Üçüncü taraf bir VPN ağ geçidi kullanılıyorsa, performans numaraları için satıcıya başvurun.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967311"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425146"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -26,9 +26,12 @@ Bu SSS, Azure Multi-Factor Authentication ve Multi-Factor Authentication hizmeti
 
 > [!IMPORTANT]
 > 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
+> 
+> Tüketim tabanlı lisanslama, 1 Eylül 2018 ' de geçerli olan yeni müşteriler için artık kullanılamaz.
+> 1 Eylül 2018 ' den itibaren yeni kimlik doğrulama sağlayıcıları artık oluşturulmayabilir. Mevcut kimlik doğrulama sağlayıcıları çalışmaya ve güncelleştirilmesine devam edebilir. Multi-Factor Authentication, Azure AD Premium lisanlarında kullanılabilir bir özellik olmaya devam edecektir.
+
 > [!NOTE]
 > Azure Multi-Factor Authentication Sunucusu ile ilgili olarak aşağıda paylaşılan bilgiler yalnızca MFA sunucusuna zaten çalışan kullanıcılar için geçerlidir.
-
 
 **S: Azure Multi-Factor Authentication Sunucusu Kullanıcı verilerini nasıl işler?**
 

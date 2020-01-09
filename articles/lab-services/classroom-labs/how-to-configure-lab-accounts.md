@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428979"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Azure Lab Services laboratuvar hesaplarını yapılandırma 
 Azure Lab Services, laboratuvar hesabı, sınıf laboratuvarları gibi yönetilen laboratuvar türleri için bir kapsayıcıdır. Yönetici Azure Lab Services bir laboratuvar hesabı ayarlar ve hesapta laboratuvarları oluşturabileceğiniz laboratuvar sahiplerine erişim sağlar. Bu makalede laboratuvar hesabı oluşturma, tüm laboratuar hesaplarını görüntüleme veya laboratuvar hesabını silme işlemlerinin nasıl yapılacağı açıklanır.
@@ -30,7 +30,7 @@ Sanal bir ağı, laboratuvarın sanal ağına eş ağ olarak bağlamak için şu
 
     ![Labs yapılandırma sayfası](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. **Eş sanal ağ**için **etkin** veya **devre dışı**seçeneğini belirleyin. Varsayılan değer **devre dışıdır**. Eş sanal ağını etkinleştirmek için aşağıdaki adımları uygulayın: 
-    1. **Etkin**' i seçin.
+    1. **Etkin**'i seçin.
     2. Açılan listeden **VNET** ' i seçin. 
 3. Araç çubuğunda **Kaydet**’i seçin. 
 
@@ -133,6 +133,14 @@ Eğitmenler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için mevcut
 
 Son olarak, bunlara GitHub hesaplarına bağlı bir Microsoft hesabı oluşturması istenir. Eğitmen **İleri**seçerken otomatik olarak gerçekleşir.  Daha sonra eğitmen hemen oturum açtı ve derslik laboratuvarına bağlanır.
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Bağlantı kesildiğinde VM 'lerin otomatik olarak kapatması
+Uzak Masaüstü bağlantısı kesildikten sonra Windows laboratuvar VM 'lerinin (şablon veya öğrenci) otomatik olarak kapatılmasını etkinleştirebilir veya devre dışı bırakabilirsiniz. Ayrıca, sanal makinelerin otomatik olarak kapanmadan önce kullanıcının yeniden bağlanmasına ne kadar süre beklemesi gerektiğini de belirtebilirsiniz.
+
+![Laboratuvar hesabındaki otomatik kapatılma ayarı](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+Bu ayar, laboratuvar hesabında oluşturulan tüm laboratuvarlara uygulanır. Laboratuvar sahibi bu ayarı laboratuvar düzeyinde geçersiz kılabilir. Laboratuvar hesabındaki bu ayarda yapılan değişiklik yalnızca değişiklik yapıldıktan sonra oluşturulan laboratuvarları etkiler.
+
+Laboratuvar sahibi bu ayarı laboratuvar düzeyinde nasıl yapılandırabileceğinizi öğrenmek için, [Bu makaleye](how-to-enable-shutdown-disconnect.md) bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

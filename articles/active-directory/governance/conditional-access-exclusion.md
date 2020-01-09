@@ -1,5 +1,5 @@
 ---
-title: Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için erişim incelemelerini kullanın-Azure Active Directory | Microsoft Docs
+title: Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetme-Azure AD
 description: Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure Active Directory (Azure AD) erişim incelemelerini nasıl kullanacağınızı öğrenin
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422706"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın
 
@@ -118,7 +118,7 @@ Belirli ülkelerden/bölgelerden erişimi engelleyen bir koşullu erişim ilkeni
 
     ![Bir erişim gözden geçirme bölmesi oluşturun örneğin 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Örnek 2: Eski kimlik doğrulamasıyla erişen kullanıcılar için erişim gözden geçirmesi
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Örnek 2: eski kimlik doğrulamasıyla erişen kullanıcılar için erişim gözden geçirmesi
 
 Eski kimlik doğrulaması ve eski istemci sürümlerini kullanan kullanıcılar için erişimi engelleyen bir koşullu erişim ilkenizin olduğunu varsayalım. Bu, ilkeden dışlanan bir grubu içerir. Grubun üyelerinin gözden geçirilmesi durumunda önerilen bir erişim incelemesi aşağıda verilmiştir.
 
@@ -136,7 +136,7 @@ Eski kimlik doğrulaması ve eski istemci sürümlerini kullanan kullanıcılar 
 
     ![Bir erişim gözden geçirme bölmesi oluşturun örneğin 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Pro ipucu**: Çok sayıda dışlama grubunuz varsa ve bu nedenle birden çok erişim incelemesi oluşturmanız gerekiyorsa, Microsoft Graph Beta uç noktasında onları programlı bir şekilde oluşturmanıza ve yönetmenize olanak tanıyan bir API sunuyoruz. Başlamak için bkz. [Azure AD erişim gözden GEÇIRMELERI API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) ve [MICROSOFT Graph aracılığıyla Azure AD erişim gözden geçirmeleri alma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+**Pro ipucu**: çok sayıda dışlama grubunuz varsa ve bu nedenle birden çok erişim incelemesi oluşturmanız gerekiyorsa, Microsoft Graph Beta uç noktasında onları programlı bir şekilde oluşturmanıza ve yönetmenize olanak tanıyan bir API sunuyoruz. Başlamak için bkz. [Azure AD erişim gözden GEÇIRMELERI API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) ve [MICROSOFT Graph aracılığıyla Azure AD erişim gözden geçirmeleri alma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Erişim gözden geçirmesi sonuçları ve denetim günlükleri
 

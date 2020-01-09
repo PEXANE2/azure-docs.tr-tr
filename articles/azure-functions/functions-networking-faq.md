@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409539"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Işlevlerinde ağ hakkında sık sorulan sorular
 
@@ -51,9 +51,7 @@ Sanal ağ tümleştirmesini kullanarak, çalışan bir işlevden hizmet uç nokt
 
 [Hizmet uç noktaları](./functions-networking-options.md#private-site-access)kullanılarak sanal BIR ağdan http tetikleyicilerinin çağrılmasına izin verebilirsiniz. 
 
-Ayrıca, işlev uygulamanızı bir App Service Ortamı dağıtarak bir sanal ağdaki kaynaktan bir işlev tetikleyebilirsiniz. App Service Ortamı kullanma hakkında ayrıntılı bilgi için bkz. [App Service ortamı ile iç yük dengeleyici oluşturma ve kullanma](../app-service/environment/create-ilb-ase.md).
-
-Premium ve App Service planı bir sanal ağdan gelen HTTP tetikleyicilerini destekler, ancak yalnızca bir App Service ortamı, bir sanal ağ üzerinden diğer tüm işlev tetikleyici türlerini destekler.
+Ayrıca, işlev uygulamanızı bir Premium plana, App Service plana veya App Service Ortamı dağıtarak bir sanal ağdaki diğer tüm kaynaklardaki bir işlevi tetikleyebilirsiniz. Daha fazla bilgi için bkz. [http olmayan sanal ağ Tetikleyicileri](./functions-networking-options.md#virtual-network-triggers-non-http)
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>İşlev uygulamamı sanal bir ağda nasıl dağıtabilirim?
 

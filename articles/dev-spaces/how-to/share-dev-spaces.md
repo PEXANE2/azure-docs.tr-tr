@@ -3,14 +3,14 @@ title: Azure Dev Spaces paylaşma
 services: azure-dev-spaces
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Azure Kubernetes hizmetindeki bir geliştirme alanını takımınızda başkalarıyla paylaşmak için Azure Dev Spaces kullanmayı öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 2c85625a4f61b701bc1e8b0a4a06f71dc0989ce0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e3a18ea205eda5617eab094046ec6536e82d113
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279987"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438428"
 ---
 # <a name="share-azure-dev-spaces"></a>Azure Dev Spaces'i paylaşma
 

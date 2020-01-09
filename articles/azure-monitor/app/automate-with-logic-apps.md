@@ -1,5 +1,5 @@
 ---
-title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikleştirin.
+title: Logic Apps kullanarak Azure Application Insights süreçlerini otomatikleştirin
 description: Mantıksal uygulamanıza Application Insights bağlayıcısını ekleyerek tekrarlanabilir işlemleri nasıl hızlı bir şekilde otomatikleştirebileceğinizi öğrenin.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407529"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps kullanarak Application Insights süreçlerini otomatikleştirin
 
@@ -63,7 +63,7 @@ Bağlantınız, uygulama KIMLIĞI ve API anahtarı için bir ad girin.
 ![Logic App Designer akış bağlantısı penceresi](./media/automate-with-logic-apps/7connection.png)
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. Adım: analiz sorgusunu ve grafik türünü belirtme
-Aşağıdaki örnekte sorgu, son gün içindeki başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlarla ilişkilendirir. Analytics, başarısız istekleri operation_Id tanımlayıcısına göre karşılıklı olarak ilişkilendirir. Sorgu daha sonra sonuçları, oto küme algoritmasını kullanarak kesimler. 
+Aşağıdaki örnekte sorgu, son gün içindeki başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlarla ilişkilendirir. Analytics, başarısız istekleri operation_Id tanımlayıcısına göre ilişkilendirir. Sorgu daha sonra sonuçları, oto küme algoritmasını kullanarak kesimler. 
 
 Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce analizler üzerinde düzgün çalıştığını doğrulayın.
 
@@ -119,7 +119,7 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
       ![Office 365 e-posta Yapılandırması ekranı](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>7\. Adım: mantıksal Uygulamanızı kaydetme ve test etme
-* Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+* Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
 
 Tetikleyicinin mantıksal uygulamayı çalıştırmasını bekleyebilir veya **Çalıştır**' ı seçerek mantıksal uygulamayı hemen çalıştırabilirsiniz.
 

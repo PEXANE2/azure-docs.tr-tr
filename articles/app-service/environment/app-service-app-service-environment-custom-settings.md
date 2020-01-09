@@ -4,15 +4,15 @@ description: Tüm Azure App Service ortamı için uygulanan ayarları yapıland�
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 36208b4662242b37c135eaffc745a819c11fa015
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430496"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service ortamları için özel yapılandırma ayarları
 ## <a name="overview"></a>Genel Bakış
@@ -56,6 +56,19 @@ Alternatif olarak, [Azure Kaynak Gezgini](https://resources.azure.com)kullanarak
 
 Ancak değişikliği gönderdiğinizde, değişikliğin etkili olması için App Service Ortamı ön uçların sayısına göre yaklaşık 30 dakika çarpılır.
 Örneğin, bir App Service Ortamı ön uçları varsa, yapılandırma güncelleştirmesinin tamamlanması yaklaşık olarak iki saat sürer. Yapılandırma değişikliği kullanıma alındığı sırada, App Service Ortamı başka ölçeklendirme işlemleri veya yapılandırma değişikliği işlemleri gerçekleşmiyor.
+
+## <a name="enable-internal-encryption"></a>Iç şifrelemeyi etkinleştir
+
+App Service Ortamı, iç bileşenleri veya sistem içindeki iletişimi görgeçirebileceğiniz bir siyah kutu sistemi olarak çalışır. Daha yüksek işleme sağlamak için, şifreleme, iç bileşenler arasında varsayılan olarak etkinleştirilmemiştir. Trafiğin izlenmesi veya erişilmesi için tamamen erişilemez olduğu için sistem güvenlidir. Veri yolunun uçtan uca tamamen şifrelenmesini gerektiren bir uyumluluk gereksinimseniz, bunu bir clusterSetting ile etkinleştirmenin bir yolu vardır.  
+
+        "clusterSettings": [
+            {
+                "name": "InternalEncryption",
+                "value": "1"
+            }
+        ],
+ 
+InternalEncryption clusterSetting etkinleştirildikten sonra, sistem Performanslarınızın bir etkisi olabilir. InternalEncryption 'i etkinleştirmek için değişiklik yaptığınızda, Ao 'niz değişiklik tamamen yayılana kadar kararsız bir durumda olacaktır. Ao 'da kaç örneğe sahip olduğunuza bağlı olarak, değişikliğin tamamının yayılması birkaç saat sürebilir. Bu işlemi kullanırken bir AO 'da etkinleştirememeniz önemle tavsiye ederiz. Bunu etkin bir şekilde kullanılan bir AO 'da etkinleştirmeniz gerekiyorsa, işlem tamamlanana kadar trafiği bir yedekleme ortamına eklemeniz önemle tavsiye ederiz. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1,0 ve TLS 1,1 'yi devre dışı bırakın
 

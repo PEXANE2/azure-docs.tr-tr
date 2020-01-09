@@ -3,26 +3,22 @@ title: Azure Otomasyonu ile makinelerinizde yüklü olan yazılımları keşfetm
 description: Ortamınızdaki makinelerde yüklü olan yazılımları keşfetmek için Stok özelliğinden faydalanın.
 services: automation
 keywords: stok, otomasyon, değişiklik, izleme
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
-ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 47313781756e460a8c30638661489874481b88a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420570"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure ve Azure harici makinelerinizde yüklü olan yazılımları keşfetme
 
 Bu öğreticide ortamınızda yüklü olan yazılımları keşfetmeyi öğreneceksiniz. Yazılımlar, dosyalar, Linux daemon'ları, Windows hizmetleri ve Windows kayıt defteri anahtarlarıyla ilgili stok durumunu sorgulayabilir ve görüntüleyebilirsiniz. Makinelerinizin yapılandırmasını izlemek ortamınızdaki işletimsel sorunları bulmanıza ve makinelerinizin durumunu daha iyi anlamanıza yardımcı olabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Çözümü etkinleştirme
@@ -31,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Yüklü olan yazılımları görüntüleme
 > * Yüklü olan yazılımların stok günlüklerinde arama yapma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -41,7 +37,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok özelliklerini etkinleştirme
 
@@ -61,7 +57,7 @@ Otomasyon Hesabınıza gidin ve **YAPILANDIRMA YÖNETİMİ** altında **Stok**�
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Çözümün etkinleştirilmesi 15 dakika sürebilir. Bu süre boyunca tarayıcı penceresini kapatmamanız gerekir.
-Çözüm etkinleştirildikten sonra VM'de yüklü yazılımlar ve yapılan değişiklikler hakkında bilgi için Azure İzleyici günlüklerine akar.
+Çözüm etkinleştirildikten sonra VM 'deki yüklü yazılım ve değişiklikler hakkında bilgiler Azure Izleyici günlüklerine akar.
 Verilerin çözümlemeye hazır hale gelmesi 30 dakika ile 6 saat arasında sürebilir.
 
 ## <a name="onboard-a-vm"></a>VM ekleme
@@ -103,7 +99,7 @@ Filtre yazılım adı, sürümü veya yayımcı ile arama yapmanızı sağlar.
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Yüklü olan yazılımların stok günlüklerinde arama yapma
 
-Envanter, Azure İzleyici günlüklerine gönderilen günlük verileri oluşturur. Sorgu çalıştırarak günlüklerde arama yapmak için **Stok** penceresinin en üstünde bulunan **Log Analytics**'i seçin.
+Envanter, Azure Izleyici günlüklerine gönderilen günlük verileri oluşturur. Sorgu çalıştırarak günlüklerde arama yapmak için **Stok** penceresinin en üstünde bulunan **Log Analytics**'i seçin.
 
 Stok verileri **ConfigurationData** türü altında depolanır.
 Aşağıdaki örnek Log Analytics sorgusu Yayıncının "Microsoft Corporation" değerine eşit olduğu envanter sonuçlarını döndürür.
@@ -115,11 +111,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Çalıştıran ve Azure İzleyici günlüklerine günlük dosyalarında arama yapma hakkında daha fazla bilgi için bkz: [Azure İzleyicisi](../azure-monitor/log-query/log-query-overview.md).
+Azure Izleyici günlüklerinde günlük dosyalarını çalıştırma ve arama hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlükleri](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Tek makine stoku
 
-Tek bir makinenin yazılım stokunu görmek için Azure VM kaynak sayfasından stok erişmek veya Azure İzleyici günlüklerine karşılık gelen bir makine aşağı filtrelemek için kullanın.
+Tek bir makinenin yazılım envanterini görmek için, Azure VM kaynak sayfasından envantere erişebilir veya Azure Izleyici günlüklerini kullanarak ilgili makineye filtre uygulayabilirsiniz.
 Aşağıdaki örnek Log Analytics sorgusu, ContosoVM adlı bir makinedeki yazılımların listesini döndürür.
 
 ```loganalytics

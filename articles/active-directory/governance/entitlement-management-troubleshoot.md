@@ -1,5 +1,5 @@
 ---
-title: Azure AD yetkilendirme yönetimi sorunlarını giderme-Azure Active Directory
+title: Yetkilendirme yönetimi sorunlarını giderme-Azure AD
 description: Azure Active Directory yetkilendirme yönetimi sorunlarını gidermenize yardımcı olması için denetlemeniz gereken bazı öğeler hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f7e5e6168e8b365a04040f595f30e68e4e82f0a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422485"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 

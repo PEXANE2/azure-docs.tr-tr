@@ -1,5 +1,5 @@
 ---
-title: Akıllı algılama-Azure Application Insights tarafından algılanan olası bellek sızıntısı | Microsoft Docs
+title: Bellek sızıntısı algılama-Azure Application Insights akıllı algılama
 description: Olası bellek sızıntıları için Azure Application Insights uygulamaları izleyin.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cc6074732a86be02a8d8c596c46e154db4e8ad7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818798"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406456"
 ---
 # <a name="memory-leak-detection-preview"></a>Bellek sızıntısı algılama (Önizleme)
 
@@ -26,7 +26,7 @@ Tipik bir bildirim, bir veya daha fazla işlem ve/veya bir ya da daha fazla maki
 ## <a name="does-my-app-really-have-a-problem"></a>Uygulamamın gerçekten bir sorunu var mı?
 Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelmez. Bellek sızıntısı desenleri genellikle bir uygulama sorununa işaret etse de, bu desenler belirli bir işlem için tipik olabilir veya doğal bir iş gerekçesini alabilir ve yoksayılabilir.
 
-## <a name="how-do-i-fix-it"></a>Nasıl yaparım? düzeltilsin mi?
+## <a name="how-do-i-fix-it"></a>Bunu nasıl düzeltirim?
 Bildirimler tanılama Analizi işleminde desteklanacak tanılama bilgilerini içerir:
 1. **Değerlendirme.** Bildirim, bellek artışını (GB cinsinden) ve belleğin arttığı zaman aralığını gösterir. Bu, soruna bir öncelik atamanıza yardımcı olabilir.
 2. **Kapsam.** Kaç makine bellek sızıntısı düzenine neden oluyor? Olası bellek sızıntısı sırasında kaç özel durum tetikleniyor? Bu bilgiler bildirimden elde edilebilir.

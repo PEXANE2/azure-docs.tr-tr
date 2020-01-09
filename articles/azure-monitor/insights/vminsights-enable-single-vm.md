@@ -4,15 +4,15 @@ description: Tek bir Azure sanal makinesinde veya bir sanal makine ölçek küme
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 3ab3164db7702566e62b2eedf2a9a03e9f7fb55c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400590"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Değerlendirme için VM'ler için Azure İzleyici (Önizleme) etkinleştir
 
@@ -23,7 +23,7 @@ Başlamadan önce [önkoşulları](vminsights-enable-overview.md) gözden geçir
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>Tek bir Azure VM için izlemeyi etkinleştirme
 Azure VM 'nizi izlemeyi etkinleştirmek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Seçin **sanal makineler**.
 
@@ -50,7 +50,7 @@ Azure VM 'nizi izlemeyi etkinleştirmek için:
 
 Azure sanal makine ölçek kümesini izlemeyi etkinleştirmek için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Sanal makine ölçek kümelerini**seçin.
 

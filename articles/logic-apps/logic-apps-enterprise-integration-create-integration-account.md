@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453408"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps 'de B2B kurumsal Tümleştirmeler için tümleştirme hesapları oluşturun ve yönetin
 
@@ -33,7 +33,7 @@ Bu konu başlığı altında, bu görevlerin nasıl gerçekleştirileceği göst
 * Tümleştirme hesabınızı başka bir Azure Kaynak grubuna veya aboneliğine taşıyın.
 * Tümleştirme hesabınızı silin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -57,11 +57,11 @@ Bu görev için, bu bölümdeki Azure portal, [Azure PowerShell](/powershell/mod
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Adı** | Yes | <*tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı; yalnızca harfler, rakamlar, tireler (`-`), alt çizgiler (`_`), parantezler (`(`, `)`) ve noktalar (`.`) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
-   | **Abonelik** | Yes | <*Azure-subscription-name*> | Azure aboneliğinizin adı |
-   | **Kaynak grubu** | Yes | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
-   | **Fiyatlandırma Katmanı** | Yes | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>[Logic Apps sınırlarını ve yapılandırmayı](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) -  <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Konum** | Yes | *Azure-region*> < | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Adı** | Evet | <*tümleştirme-hesap-adı*> | Tümleştirme hesabınızın adı; yalnızca harfler, rakamlar, tireler (`-`), alt çizgiler (`_`), parantezler (`(`, `)`) ve noktalar (`.`) içerebilir. Bu örnek "Fabrikam-Integration" kullanır. |
+   | **Abonelik** | Evet | <*Azure-subscription-name*> | Azure aboneliğinizin adı |
+   | **Kaynak grubu** | Evet | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılacak [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnekte, "FabrikamIntegration-RG" adlı yeni bir kaynak grubu oluşturun. |
+   | **Fiyatlandırma Katmanı** | Evet | <*fiyatlandırma düzeyi*> | Tümleştirme hesabının daha sonra değiştirebileceğiniz fiyatlandırma katmanı. Bu örnekte, **ücretsiz**' ı seçin. Daha fazla bilgi için şu konulara bakın: <p>- [Logic Apps fiyatlandırma modeli](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>[Logic Apps sınırlarını ve yapılandırmayı](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) -  <p>- [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Konum** | Evet | *Azure-region*> < | Tümleştirme hesabı meta verilerinizin depolanacağı bölge. Mantıksal uygulamanızla aynı konumu seçin ya da mantıksal uygulamalarınızı tümleştirme hesabınızla aynı konumda oluşturun. Bu örnekte, "Batı ABD" kullanın. <p>**Note**: bir [tümleştirme hizmeti ortamı (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)içinde bir tümleştirme hesabı oluşturmak için, konum olarak o Ise 'yi seçin. Daha fazla bilgi için bkz. [BIR ıSE tümleştirme hesapları oluşturma](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Hayır | Kapalı, açık | Bu örnek için **kapalı** ayarını değiştirmeyin. |
    |||||
 
@@ -112,7 +112,7 @@ Bir tümleştirme hesabının [sınırlarını](../logic-apps/logic-apps-limits-
 
 Bu değişikliği yapmak için, bu bölümdeki veya [Azure CLI](#upgrade-tier-azure-cli)'deki adımları izleyerek Azure Portal kullanabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azure.com) oturum açın.
 
@@ -206,7 +206,7 @@ Mantıksal uygulamanızı başka bir tümleştirme hesabına bağlamak veya art�
    },
    ```
 
-   Örnek:
+   Örneğin:
 
    !["Integrationaccount" nesnesini bul](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

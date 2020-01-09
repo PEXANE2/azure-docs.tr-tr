@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425469"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ İlkesi Sunucusu (NPS) uzantısı ve Azure AD kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
@@ -59,7 +59,7 @@ Azure için NPS uzantısı NPS ve Uzak Masaüstü Ağ geçidi ile tümleştirild
 1. Uzantının yüklü, NPS sunucusunun bir RADIUS Erişim Kabul iletisi RD CAP ilkesi için Uzak Masaüstü Ağ Geçidi sunucusuna gönderir.
 1. Kullanıcı, RD Ağ Geçidi aracılığıyla istenen ağ kaynağına erişim izni verilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu bölümde, Uzak Masaüstü Ağ geçidi ile Azure mfa'yı tümleştirme önce gerekli önkoşulları açıklanmaktadır. Başlamadan önce aşağıdaki önkoşulların yerinde olması gerekir.  
 
@@ -120,11 +120,11 @@ Bu bölümde, Uzak Masaüstü Ağ Geçidi istemci kimlik doğrulaması için Azu
 NPS uzantısı yapılandırma işleminin bir parçası olarak, Azure AD kiracınız için yönetici kimlik bilgileri ve Azure AD Kimliğini sağlamanız gerekir. Aşağıdaki adımlar Kiracı kimliğini almak nasıl gösterir
 
 1. Oturum [Azure portalında](https://portal.azure.com) Azure kiracısının genel Yöneticisi olarak.
-1. Sol gezinti bölmesinde **Azure Active Directory** simgesi.
+1. Azure portal menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 1. **Özellikler**’i seçin.
 1. Özellikler dikey penceresinde, dizin Kimliği'nin yanındaki tıklayın **kopyalama** kimliği panoya kopyalamak için aşağıda gösterildiği gibi simgesi.
 
-   ![Azure portal dizin KIMLIĞI alınıyor](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Azure portal dizin KIMLIĞI alınıyor](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS uzantısını yükleme
 

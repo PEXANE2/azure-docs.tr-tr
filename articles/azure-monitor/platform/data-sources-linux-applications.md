@@ -4,15 +4,15 @@ description: Bu makalede, MySQL ve Apache HTTP sunucusu için performans sayaçl
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932462"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395844"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Izleyici 'de Linux uygulamaları için performans sayaçlarını toplama 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -77,8 +77,8 @@ Aşağıdaki tabloda, mycimprovauth kullanımı için sözdizimi hakkında ayrı
 | Varsayılan *bağlama adresi Kullanıcı adı parolası* | mycimprovauth varsayılan 127.0.0.1 kök PWD | MySQL OMı kimlik doğrulama dosyasındaki varsayılan örneği ayarlar.<br>Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 olarak kodlanır. |
 | *varsayılan veya port_num* Sil | mycimprovauth 3308 | Belirtilen örneği varsayılan ya da bağlantı noktası numarasıyla siler. |
 | Yardım | mycimprov yardımı | Kullanılacak komutların listesini yazdırır. |
-| yazdırdığımda | mycimprov Yazdır | Okunması kolay bir MySQL OMı kimlik doğrulama dosyası yazdırır. |
-| port_num *BIND-adres Kullanıcı adı parolasını* Güncelleştir | mycimprov güncelleştirmesi 3307 127.0.0.1 kök PWD | Belirtilen örneği güncelleştirir veya yoksa örneği ekler. |
+| Yazdırma | mycimprov Yazdır | Okunması kolay bir MySQL OMı kimlik doğrulama dosyası yazdırır. |
+| port_num *bağlama adresi Kullanıcı adı parolasını* Güncelleştir | mycimprov güncelleştirmesi 3307 127.0.0.1 kök PWD | Belirtilen örneği güncelleştirir veya yoksa örneği ekler. |
 
 Aşağıdaki örnek komutlar, localhost üzerinde MySQL sunucusu için varsayılan bir kullanıcı hesabı tanımlar.  Parola alanı düz metin olarak girilmelidir-MySQL OMı kimlik doğrulama dosyasındaki parola temel 64 kodlanacak
 
@@ -110,7 +110,7 @@ Aşağıdaki verme komutları çalıştırılarak bu ayrıcalıklar verilebilir.
 
 Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şekilde yapılandırdıktan sonra, toplanacak performans sayaçlarını yapılandırmanız gerekir.  Aşağıdaki tablodaki sayaçlarla birlikte [Azure izleyici 'de Windows ve Linux performans verileri kaynakları](data-sources-performance-counters.md) yordamını kullanın.
 
-| Nesne adı | Sayaç adı |
+| Nesne Adı | Sayaç adı |
 |:--|:--|
 | MySQL Veritabanı | Bayt cinsinden disk alanı |
 | MySQL Veritabanı | Tablolar |
@@ -146,7 +146,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şekilde yapılandırdıktan sonra, toplanacak performans sayaçlarını yapılandırmanız gerekir.  Aşağıdaki tablodaki sayaçlarla birlikte [Azure izleyici 'de Windows ve Linux performans verileri kaynakları](data-sources-performance-counters.md) yordamını kullanın.
 
-| Nesne adı | Sayaç adı |
+| Nesne Adı | Sayaç adı |
 |:--|:--|
 | Apache HTTP sunucusu | Meşgul çalışanlar |
 | Apache HTTP sunucusu | Boştaki çalışanlar |
@@ -162,4 +162,4 @@ Linux için Log Analytics Aracısı 'nı Azure Izleyici 'ye veri gönderecek şe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Linux aracılarından [performans sayaçlarını toplayın](data-sources-performance-counters.md) .
-* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin. 
+* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için. 

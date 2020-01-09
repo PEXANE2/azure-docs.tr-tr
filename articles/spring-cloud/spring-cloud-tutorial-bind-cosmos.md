@@ -6,97 +6,106 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7e796c6f8b2ae17ba267a19da1d909087163d99c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8eeb67419d2da90ff1e2d2beb8cb59a85c3bbacb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461625"
 ---
-# <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>Öğretici: Azure Spring Cloud uygulamanıza bir Azure Cosmos DB bağlama
+# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB veritabanını Azure Spring Cloud uygulamanıza bağlama
 
-Azure yay bulutu, Spring Boot uygulamanızı el ile yapılandırmak yerine, Azure hizmetlerini uygulamalarınıza otomatik olarak bağlamanıza olanak tanır. Bu makalede, uygulamanızı bir Azure Cosmos DB bağlama gösterilmektedir.
+Spring Boot uygulamalarınızı el ile yapılandırmak yerine Azure Spring Cloud kullanarak Azure hizmetlerini otomatik olarak uygulamalarınıza bağlayabilirsiniz. Bu makalede, uygulamanızı bir Azure Cosmos DB veritabanına nasıl bağlayacağınız gösterilmektedir.
 
 Ön koşullar:
-* Dağıtılmış bir Azure yay bulutu örneği.  Başlamak için [hızlı](spring-cloud-quickstart-launch-app-cli.md) başlarımızı izleyin.
-* En düşük izin düzeyi katkıda bulunan Azure Cosmos DB hesap.
+
+* Dağıtılmış bir Azure yay bulutu örneği. Kullanmaya başlamak için [Azure CLI aracılığıyla dağıtmaya yönelik hızlı başlangıç](spring-cloud-quickstart-launch-app-cli.md) Öğreticimizi izleyin.
+* En düşük izin düzeyi katkıda bulunan Azure Cosmos DB hesabı.
 
 ## <a name="bind-azure-cosmos-db"></a>Bağlama Azure Cosmos DB
 
-Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir:
+Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir. Aşağıdaki yordamda bunların nasıl kullanılacağı gösterilmektedir:
 
-1. Azure Cosmos DB veritabanı oluşturun. Veritabanı oluşturma konusunda yardım için [Bu makaleye başvurun](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) . Veritabanınızın adını kaydedin. Bizde `testdb`olarak adlandırılmıştır.
+1. Azure Cosmos DB veritabanı oluşturun. Yardım için [veritabanı oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) hızlı başlangıç kılavuzuna bakın. 
 
-1. Aşağıdaki bağımlılıklardan birini, API türüne göre Spring Cloud uygulamanızın `pom.xml` ekleyin.
-    
-    #### <a name="api-type-core-sql"></a>API türü: çekirdek (SQL)
+1. Veritabanınızın adını kaydedin. Bu yordam için veritabanı adı **TestDB**' dir.
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-cosmosdb-spring-boot-starter</artifactId>
-        <version>2.1.6</version>
-    </dependency>
-    ```
-    
-    #### <a name="api-type-mongodb"></a>API türü: MongoDB
+1. Azure Spring Cloud uygulamanızın Pod. xml dosyasına aşağıdaki bağımlılıklardan birini ekleyin. API türü için uygun olan bağımlılığı seçin.
 
-    ```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    ```
+    * API türü: çekirdek (SQL)
 
-    #### <a name="api-type-cassandra"></a>API türü: Cassandra
+      ```xml
+      <dependency>
+          <groupId>com.microsoft.azure</groupId>
+          <artifactId>azure-cosmosdb-spring-boot-starter</artifactId>
+          <version>2.1.6</version>
+      </dependency>
+      ```
 
-    ```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-cassandra</artifactId>
-    </dependency>
-    ```
+    * API türü: MongoDB
 
-    #### <a name="api-type-gremlin-graph"></a>API türü: Gremlin (grafik)
+      ```xml
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-mongodb</artifactId>
+      </dependency>
+      ```
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.spring.data.gremlin</groupId>
-        <artifactId>spring-data-gremlin</artifactId>
-        <version>2.1.7</version>
-    </dependency>
-    ```
+    * API türü: Cassandra
 
-    #### <a name="api-type-azure-table"></a>API türü: Azure tablosu
+      ```xml
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-cassandra</artifactId>
+      </dependency>
+      ```
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-storage-spring-boot-starter</artifactId>
-        <version>2.0.5</version>
-    </dependency>
-    ```
+    * API türü: Gremlin (grafik)
 
-1. `az spring-cloud app update` kullanarak geçerli dağıtımı güncelleştirin veya bu değişiklik için `az spring-cloud app deployment create`kullanarak yeni bir dağıtım oluşturun.  Bu komutlar uygulamayı yeni bağımlılık ile güncelleştirir veya oluşturur.
+      ```xml
+      <dependency>
+          <groupId>com.microsoft.spring.data.gremlin</groupId>
+          <artifactId>spring-data-gremlin</artifactId>
+          <version>2.1.7</version>
+      </dependency>
+      ```
 
-1. Azure portal Azure Spring Cloud Service sayfanıza gidin. Bu, önceki adımda güncelleştirdiğiniz veya dağıttığınız bir uygulamadır. **Uygulama panosunu** bulun ve Cosmos DB bağlanacak uygulamayı seçin. Sonra `Service binding` ' yi seçin ve `Create service binding` düğmesini seçin. Formu doldurun, **bağlama türü** `Azure Cosmos DB`, API türü, veritabanınızın adı ve Azure Cosmos DB hesabı ' nı seçin.
+    * API türü: Azure tablosu
+
+      ```xml
+      <dependency>
+          <groupId>com.microsoft.azure</groupId>
+          <artifactId>azure-storage-spring-boot-starter</artifactId>
+          <version>2.0.5</version>
+      </dependency>
+      ```
+
+1. Geçerli dağıtımı güncelleştirmek için `az spring-cloud app update` kullanın veya yeni bir dağıtım oluşturmak için `az spring-cloud app deployment create` kullanın. Bu komutlar uygulamayı yeni bağımlılık ile güncelleştirir veya oluşturur.
+
+1. Azure portal Azure Spring Cloud Service sayfanıza gidin. **Uygulama panosu** ' na gidin ve Azure Cosmos DB bağlanacak uygulamayı seçin. Bu uygulama, önceki adımda güncelleştirdiğiniz veya dağıttığınız aynı bir uygulamadır.
+
+1. **Hizmet bağlaması**' nı seçin ve **hizmet bağlamayı oluştur**' u seçin. Formu doldururken şunları seçin:
+   * **Bağlama türü** değeri **Azure Cosmos DB**.
+   * API türü.
+   * Veritabanı adınız.
+   * Azure Cosmos DB hesabı.
 
     > [!NOTE]
     > Cassandra kullanıyorsanız, veritabanı adı için bir anahtar alanı kullanın.
 
-1. Uygulama sayfasındaki **Yeniden Başlat** düğmesini seçerek uygulamayı yeniden başlatın.
+1. Uygulama sayfasında **Yeniden Başlat** ' i seçerek uygulamayı yeniden başlatın.
 
-1. Hizmetin doğru şekilde bağlandığından emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property` alanı şuna benzer olmalıdır:
+1. Hizmetin doğru şekilde bağlandığından emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property` alan bu örneğe benzer olmalıdır:
 
     ```
-    azure.cosmosdb.uri=https:/<some account>.documents.azure.com:443
+    azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
     azure.cosmosdb.key=abc******
     azure.cosmosdb.database=testdb
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Spring Cloud uygulamanızı CosmosDB 'ye bağlamayı öğrendiniz.  Uygulamanızı bir Azure Redis Cache nasıl bağlayacağınızı öğrenmek için bir sonraki öğreticiye geçin.
+Bu öğreticide, Azure Spring Cloud uygulamanızı bir Azure Cosmos DB veritabanına bağlamayı öğrendiniz. Uygulamanızı Redsıs önbelleği için bir Azure önbelleğine bağlamayı öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Spring Cloud uygulamasını bir Azure Redis Cache bağlayın](spring-cloud-tutorial-bind-redis.md).
+> [Redsıs önbelleği için bir Azure önbelleğine bağlamayı öğrenin](spring-cloud-tutorial-bind-redis.md)

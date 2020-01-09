@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430284"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM 'de MongoDB 'yi yüklemek ve yapılandırmak
 
@@ -215,7 +215,7 @@ Bu örneklerde, sanal makinede bulunan MongoDB örneğine yerel olarak bağlanı
 
 Bu örnekler, geliştirme amacıyla çekirdek MongoDB ortamını dağıtır. Ortamınız için gerekli güvenlik yapılandırması seçeneklerini uygulayın. Daha fazla bilgi için bkz. [MongoDB güvenlik belgeleri](https://docs.mongodb.com/manual/security/).
 
-Şablonları kullanarak oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/resource-group-overview.md).
+Şablonları kullanarak oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 
 Azure Resource Manager şablonlar, VM 'lerinizde betikleri indirmek ve yürütmek için özel betik uzantısını kullanır. Daha fazla bilgi için bkz. [Azure Özel Betik uzantısı 'nı Linux sanal makineleri Ile kullanma](extensions-customscript.md).
 

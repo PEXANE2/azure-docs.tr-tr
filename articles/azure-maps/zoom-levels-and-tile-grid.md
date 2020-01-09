@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976038"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407579"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 
-Azure haritalar Küresel Mercator projeksiyon koordinat sistemini kullanır (EPSG: 3857). Projeksiyon, küresel dünyayı düz bir haritaya dönüştürmek için kullanılan matematik modelidir. Küresel Mercator projeksiyonu, bir kare eşleme oluşturmak için haritanın sonunda Haritayı uzatır. Bu, eşlemenin ölçeğini ve alanını önemli ölçüde bozar, ancak bu deformasyonu izleyen iki önemli özelliğe sahiptir:
+Azure haritalar Küresel Mercator projeksiyon koordinat sistemi (EPSG: 3857) kullanır. Projeksiyon, küresel dünyayı düz bir haritaya dönüştürmek için kullanılan matematik modelidir. Küresel Mercator projeksiyonu, bir kare eşleme oluşturmak için haritanın sonunda Haritayı uzatır. Bu, eşlemenin ölçeğini ve alanını önemli ölçüde bozar, ancak bu deformasyonu izleyen iki önemli özelliğe sahiptir:
 
 - Bu, görece küçük nesnelerin şeklini koruyan anlamına gelen bir konresmi projeksiyonu. Bu özellikle, binaları bir şekilde bozmaktan kaçınmak istiyoruz Kare binaları dikdörtgen değil kare görünmelidir.
 - Bu, Kuzey ve Güney 'in her zaman düz ve aşağı olduğu ve Batı ve Doğu 'nın her zaman düz ve sağ olduğu anlamına gelen bir silindir projeksiydir. 
@@ -26,7 +26,7 @@ Harita alımı ve görüntüleme performansını iyileştirmek için harita kare
 
 <center>
 
-![Dünya kutucuğu](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![dünya kutucuğu](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Yakınlaştırma düzeyi 1, dünyayı işlemek için dört kutucuk kullanır: 2 x 2 kare
 
@@ -34,7 +34,7 @@ Yakınlaştırma düzeyi 1, dünyayı işlemek için dört kutucuk kullanır: 2 
 
 ![2x2 harita kutucuk düzeni](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
-Her ek yakınlaştırma düzeyi, bir önceki birinin kutucuklarını dörtlü böler ve 2<sup>Yakınlaştırma</sup> x 2 yakınlaştırmasına ilişkin bir kılavuz<sup></sup>oluşturur. Yakınlaştırma düzeyi 22, kılavuz 2<sup>22</sup> x 2<sup>22</sup>veya 4.194.304 x 4.194.304 kutucukları (toplamda 17.592.186.044.416).
+Her ek yakınlaştırma düzeyi, bir önceki birinin kutucuklarını dörtlü böler ve 2<sup>Yakınlaştırma</sup> x 2<sup>yakınlaştırmasına</sup>ilişkin bir kılavuz oluşturur. Yakınlaştırma düzeyi 22, kılavuz 2<sup>22</sup> x 2<sup>22</sup>veya 4.194.304 x 4.194.304 kutucukları (toplamda 17.592.186.044.416).
 
 Azure Haritalar Web ve Android desteği için etkileşimli harita denetimleri, 0 ile 24 arasında bir sayı olan 25 yakınlaştırma düzeyi oranında yakınlaştırılır. Yol verileri yalnızca kutucuklar kullanılabilir olduğunda yakınlaştırma düzeylerinde kullanılabilir olacaktır.
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, kutucuk boyutunun 512 piksel kare olduğu yakınlaştırma
 |Yakınlaştırma düzeyi|Ölçü/piksel|Ölçümler/döşeme tarafı|
 |--- |--- |--- |
 |0|156543|40075008|
-|1\.|78271,5|20037504|
+|1|78271,5|20037504|
 |2|39135,8|10018764,8|
 |3|19567,9|5009382,4|
 |4|9783,9|2504678,4|
@@ -82,7 +82,7 @@ Harita genişliği ve yüksekliği her yakınlaştırma düzeyinde farklı oldu�
 
 <center>
 
-![Harita piksel boyutlarını gösteriyor](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+piksel boyutlarını gösteren harita ![](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
 
 Derece cinsinden Enlem ve boylam ve ayrıntı düzeyi olarak XY koordinatları aşağıdaki gibi hesaplanabilir:
 
@@ -110,7 +110,7 @@ Her kutucuğa, sol üst köşedeki (0, 0), sağ alt köşedeki ( *2<sup>zoom</su
 
 <center>
 
-![Döşeme koordinatları Haritası](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+döşeme koordinatlarının haritasını ![](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
 Piksel XY koordinatları çifti verildiğinde, bu pikselin bulunduğu kutucuğun XY koordinatlarını kolayca belirleyebilirsiniz:
 
@@ -122,11 +122,11 @@ var tileY = Math.floor(pixelY / tileSize);
 
 Kutucuklar, yakınlaştırma düzeyi ve bu yakınlaştırma düzeyi için kılavuzun üzerindeki konumuna karşılık gelen x ve y koordinatları tarafından çağrılır.
 
-Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun kutucuğunda sabit bir konumda olduğunu unutmayın. Bu, belirli bir expanl bölgesini göstermek için gereken kutucuk sayısının dünyadaki yakınlaştırma kılavuzunun belirli bir yerleşimine bağlı olduğunu gösterir. Örneğin, 900 ölçüm olarak iki işaret varsa, bu, yalnızca üç kutucuk alabilir ve bunlar arasında bir yol görüntüleyebilirsiniz. Ancak, Batı noktası kutucuğunun sağ tarafında ve kutucuğunun sol tarafında yer alıyorsa, bu dört kutucuğa sahip olabilir:
+Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun kutucuğunda sabit bir konumda olduğunu unutmayın. Bu, belirli bir expanl bölgesini göstermek için gereken kutucuk sayısının dünyadaki yakınlaştırma kılavuzunun belirli bir yerleşimine bağlı olduğunu gösterir. Örneğin, 900 ölçüm olarak iki işaret varsa, bu, yalnızca üç *kutucuk alabilir ve* bunlar arasında bir yol görüntüleyebilirsiniz. Ancak, Batı noktası kutucuğunun sağ tarafında ve kutucuğunun sol tarafında yer alıyorsa, bu dört kutucuğa sahip olabilir:
 
 <center>
 
-![Yakınlaştırma gösterisi ölçeği](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+![yakınlaştırma tanıtım ölçeği](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
 Yakınlaştırma düzeyi belirlendikten sonra x ve y değerleri hesaplanabilir. Her yakınlaştırma kılavuzundaki sol üst kutucuk x = 0, y = 0; sağ alt kutucuk x = 2<sup>zoom-1</sup>, y = 2<sup>zoom-1</sup>' dir.
 
@@ -134,16 +134,16 @@ Yakınlaştırma düzeyi 1 ' in yakınlaştırma Kılavuzu aşağıda verilmişt
 
 <center>
 
-![Yakınlaştırma düzeyi 1 için yakınlaştırma Kılavuzu](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+yakınlaştırma düzeyi 1 için yakınlaştırma kılavuzunu ![](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
 
 ## <a name="quadkey-indices"></a>Çeyrek anahtar dizinleri
 
-Bazı eşleme platformları, kutucuğu ZY koordinatlarını quadtree anahtarları veya "quadkeys" adlı bir Dimension dizesinde birleştiren bir quadkey dizin oluşturma adlandırma kuralı kullanır. Her bir quadkey, belirli bir ayrıntı düzeyinde tek bir kutucuğu benzersiz şekilde tanımlar ve ortak veritabanı B-ağaç dizinlerinde anahtar olarak kullanılabilir. Azure Haritalar SDK 'Ları, [kutucuk katmanı Ekle](map-add-tile-layer.md) belgesinde belgelendiği gibi diğer adlandırma kurallarına ek olarak, quadkey adlandırma kuralını kullanan döşeme katmanlarının fazla düzenini destekler.
+Bazı eşleme platformları `quadkey` bir dizin oluşturma adlandırma kuralı kullanır ve bu kutucuk, `quadtree` anahtarları veya `quadkeys` kısa olarak adlandırılan tek boyutlu bir dize olarak birleştirir. Her `quadkey`, tek bir kutucuğu belirli bir ayrıntı düzeyinde benzersiz şekilde tanımlar ve ortak veritabanı B-ağaç dizinlerinde anahtar olarak kullanılabilir. Azure Haritalar SDK 'Ları, [kutucuk katmanı Ekle](map-add-tile-layer.md) belgesinde belgelendiği gibi, diğer adlandırma kurallarına ek olarak `quadkey` adlandırma kuralı kullanan döşeme katmanlarının fazla düzenini destekler.
 
 > [!NOTE]
-> Quadkeys adlandırma kuralı yalnızca bir veya daha fazla yakınlaştırma düzeyi için geçerlidir. Azure Haritalar SDK 'Sı, tüm dünyadaki tek bir harita kutucuğu olan 0 yakınlaştırma düzeyini destekler. 
+> `quadkeys` adlandırma kuralı yalnızca bir veya daha fazla yakınlaştırma düzeyi için geçerlidir. Azure Haritalar SDK 'Sı, tüm dünyadaki tek bir harita kutucuğu olan 0 yakınlaştırma düzeyini destekler. 
 
-Döşeme koordinatlarını bir quadkey 'e dönüştürmek için Y ve X koordinatlarının bitleri araya eklemeli ve sonuç bir Base-4 numarası olarak yorumlanır (önde sıfır korunur) ve bir dizeye dönüştürülür. Örneğin, XY koordinatları (3, 5) düzey 3 ' te belirtildiğinde, quadkey şu şekilde belirlenir:
+Döşeme koordinatlarını bir `quadkey`dönüştürmek için Y ve X koordinatlarının bitleri araya eklemeli ve sonuç bir Base-4 numarası olarak yorumlanır (önde sıfır korunur) ve bir dizeye dönüştürülür. Örneğin, XY koordinatlarının (3, 5) düzey 3 ' te gösterildiği gibi, `quadkey` aşağıdaki gibi belirlenir:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -153,13 +153,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-Quadkeys 'in bazı ilginç özellikleri vardır. İlk olarak, bir çeyrek anahtarın uzunluğu (basamak sayısı) karşılık gelen kutucuğun yakınlaştırma düzeyine eşittir. İkinci olarak, herhangi bir kutucuğun quadkey öğesi üst kutucuğunun (önceki düzeyde kapsayan kutucuk) en fazla çeyrek anahtarıyla başlar. Aşağıdaki örnekte gösterildiği gibi, 2. kutucuk, 20 ile 23 arasındaki kutucukların üst öğesidir:
+`Qquadkeys` ilginç birçok özelliğe sahiptir. İlk olarak, bir `quadkey` uzunluğu (basamak sayısı) karşılık gelen kutucuğun yakınlaştırma düzeyine eşittir. İkincisi, herhangi bir kutucuğun `quadkey`, üst kutucuğunun `quadkey` (önceki düzeyde kapsayan kutucuk) ile başlar. Aşağıdaki örnekte gösterildiği gibi, 2. kutucuk, 20 ile 23 arasındaki kutucukların üst öğesidir:
 
 <center>
 
 ![Quadkey kutucuğu piramit](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Son olarak, quadkeys genellikle XY alanında kutucukların yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlar. Diğer bir deyişle, yakın XY koordinatlarına sahip olan iki kutucuğa genellikle görece birlikte yakın olan dörtlü anahtarlar vardır. Bu, veritabanı performansını iyileştirmek için önemlidir, çünkü komşu kutucuklar genellikle gruplar halinde istenir ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk blokları üzerinde tutmanız istenebilir.
+Son olarak, `quadkeys` genellikle XY alanındaki kutucukların yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlar. Diğer bir deyişle, yakın XY koordinatlarından oluşan iki kutucuğa genellikle görece birlikte yakın `quadkeys` sahip olur. Bu, veritabanı performansını iyileştirmek için önemlidir, çünkü komşu kutucuklar genellikle gruplar halinde istenir ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk blokları üzerinde tutmanız istenebilir.
 
 ## <a name="tile-math-source-code"></a>Kutucuk matematik kaynak kodu
 
@@ -422,6 +422,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -802,6 +803,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {
@@ -945,7 +947,7 @@ module AzureMaps {
 
 > [!NOTE]
 > Azure Haritalar SDK 'sında etkileşimli harita denetimleri, Jeo-uzamsal konumlar ve Görünüm penceresi pikselleri arasında dönüştürme için yardımcı işlevlere sahiptir. 
-> - [Web SDK 'Sı: Harita piksel ve konum hesaplamaları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK: harita piksel ve konum hesaplamaları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

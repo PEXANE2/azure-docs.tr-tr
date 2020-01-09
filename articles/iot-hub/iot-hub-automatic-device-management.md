@@ -1,45 +1,47 @@
 ---
-title: Uygun ölçekte Azure IOT Hub ile otomatik cihaz Yönetimi | Microsoft Docs
-description: Bir yapılandırma birden çok IOT cihazlarına atamak için Azure IOT Hub otomatik cihaz Yönetimi'ni kullanın
+title: Azure IoT Hub ölçek sırasında otomatik cihaz yönetimi | Microsoft Docs
+description: Birden çok IoT aygıtını ve modülünü yönetmek için Azure IoT Hub otomatik yapılandırma kullanın
 author: ChrisGMsft
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429327"
 ---
-# <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Azure portalını kullanarak ölçekte otomatik IOT cihaz Yönetimi
+# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portal kullanarak otomatik IoT cihazı ve modül yönetimi
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IOT hub otomatik cihaz Yönetimi büyük cihaz filolarına yönetme yinelenen ve karmaşık görevlerinin birçoğunu otomatik hale getirir. İle otomatik cihaz yönetimi, bir dizi cihazda özelliklerine göre hedef, istenen yapılandırmasını tanımlamak ve ardından IOT Hub'ın kapsama geldikleri cihazları güncelleştirmesine olanak sağlar. Bu güncelleştirme bitti kullanarak bir _otomatik cihaz yapılandırma_, tamamlama ve uyumluluk, tanıtıcı birleştirme ve çakışmaları özetlemek ve aşamalı bir yaklaşımla yapılandırmaları Dışarı Aktar seçmenizi sağlar.
+Azure IoT Hub otomatik cihaz yönetimi, büyük cihaz filklerin yönetilmesi için yinelenen ve karmaşık görevlerin birçoğunu otomatikleştirir. Otomatik cihaz yönetimi sayesinde, özelliklerini temel alarak bir cihaz kümesini hedefleyebilir, istenen yapılandırmayı tanımlayabilir ve ardından IoT Hub cihazları kapsama geldiğinde güncelleştirebilir. Bu güncelleştirme, bir _otomatik cihaz yapılandırması_ veya _otomatik modül yapılandırması_kullanılarak yapılır; bu işlem tamamlama ve uyumluluğu özetler, birleştirme ve çakışmaları idare etmenize ve yapılandırmaları aşamalı bir yaklaşımda kullanıma almanızı sağlar.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Otomatik cihaz Yönetimi works istediğiniz özelliklere sahip bir dizi cihaz ikizlerini güncelleştiriliyor ve üzerinde cihaz ikizini tabanlı bir Özet raporlama tarafından bildirilen özellikler.  Yeni bir sınıf ve adlı bir JSON belge tanıtır bir *yapılandırma* , üç bölümden oluşur:
+Otomatik cihaz yönetimi, istenen özelliklerle bir dizi cihaz WINS veya modül TWINS 'i güncelleştirerek ve ikizi bildirilen özellikleri temel alan bir Özet raporlayarak işe yarar.  Üç bölümden oluşan *yapılandırma* adlı yeni bir sınıf ve JSON belgesi tanıtır:
 
-* **Hedef koşulu** güncelleştirilmesi için cihaz ikizlerini kapsamını tanımlar. Hedef koşul cihaz ikizi etiketler üzerinde bir sorgu olarak belirtildiğinden ve/veya bildirilen özellikler.
+* **Hedef koşul** , görüntülenecek cihaz TWINS veya modül TWINS kapsamını tanımlar. Hedef koşul, ikizi etiketlerinde ve/veya bildirilen özelliklerde bir sorgu olarak belirtilir.
 
-* **Hedef içerik** veya hedeflenen cihaz ikizlerini güncelleştirilemiyor için istenen özellikleri tanımlar. İçerik değiştirilmesi için istenen özellikler kısmında bir yolu içerir.
+* **Hedef içerik** , hedeflenen cihaz TWINS veya modül TWINS 'de eklenecek veya güncelleştirilebilen istenen özellikleri tanımlar. İçerik, istenen özelliklerin değiştirilmesi için bir yol içerir.
 
-* **Ölçümleri** gibi çeşitli yapılandırma durumlarının Özet sayıları tanımlamak **başarı**, **sürüyor**, ve **hata**. Özel ölçümler olarak cihaz sorguları belirtilen çiftinin bildirilen özelliklerini.  Sistem, hedeflenen cihaz ikizlerini sayısı ve başarıyla güncelleştirildi ikizlerini sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçümler ölçümleridir.
+* **Ölçümler** , **başarı**, **devam**ediyor ve **hata**gibi çeşitli yapılandırma durumlarının Özet sayılarını tanımlar. Özel ölçümler, ikizi tarafından bildirilen özelliklerde sorgu olarak belirtilir.  Sistem ölçümleri, hedeflenen TWINS sayısı ve başarıyla güncelleştirilmiş TWINS sayısı gibi ikizi güncelleştirme durumunu ölçen varsayılan ölçülerdir.
 
-Otomatik cihaz yapılandırmaları, kısa süre içinde yapılandırma oluşturulduktan sonra ilk kez ve ardından beş dakikalık aralıklarla çalıştırın. Ölçüm sorguları, otomatik cihaz yapılandırması her çalıştığında çalıştırın.
+Yapılandırma oluşturulduktan ve sonra beş dakikalık aralıklarla otomatik yapılandırmalar ilk kez çalışır. Ölçüm sorguları otomatik yapılandırmanın her çalıştırılışında çalışır.
 
-## <a name="implement-device-twins-to-configure-devices"></a>Cihazları yapılandırmak için cihaz ikizlerini uygulayın
+## <a name="implement-twins"></a>TWINS 'i Uygula
 
-Otomatik cihaz yapılandırmaları, cihazlar ve bulut arasında durumunu eşitlemek için cihaz ikizlerini kullanılmasını gerektirir.  Başvurmak [IOT hub'daki cihaz ikizlerini kavrama ve kullanma](iot-hub-devguide-device-twins.md) için cihaz ikizlerini kullanma yönergeleri.
+Otomatik cihaz yapılandırmalarının, bulut ve cihazlar arasında durum eşitlemesini sağlamak için cihaz ikikesi kullanılması gerekir.  Daha fazla bilgi için bkz. [IoT Hub'ındaki cihaz ikizlerini kavrama ve kullanma](iot-hub-devguide-device-twins.md).
 
-## <a name="identify-devices-using-tags"></a>Etiketleri kullanarak cihazları belirleyin
+Otomatik modül yapılandırmalarının, bulut ve modüller arasında durumu eşitlemesini sağlamak için modül TWINS 'in kullanılmasını gerektirir. Daha fazla bilgi için bkz. [IoT Hub modül TWINS 'ı anlama ve kullanma](iot-hub-devguide-module-twins.md).
 
-Bir yapılandırma oluşturmadan önce değiştirmek istediğiniz hangi cihazların belirtmeniz gerekir. Azure IOT Hub cihaz ikizinde etiketleri kullanarak cihazları tanımlar. Her cihazı birden fazla etikete sahip olabilir ve çözümünüz için mantıklı olan herhangi bir şekilde tanımlayabilirsiniz. Örneğin, farklı konumlardaki cihazlarını yönetiyorsanız, aşağıdaki etiketleri için cihaz ikizi ekleyin:
+## <a name="use-tags-to-target-twins"></a>TWINS 'i hedeflemek için etiketleri kullanma
+
+Bir yapılandırma oluşturmadan önce, hangi cihazları veya modülleri etkilenmesini istediğinizi belirtmeniz gerekir. Azure IoT Hub cihazları tanımlar ve cihaz ikizi Etiketler kullanarak modülleri tanımlar ve ikizi Module içindeki etiketleri belirler. Her bir cihaz veya modülde birden çok etiket olabilir ve bunları çözümünüz için anlamlı hale getiren herhangi bir şekilde tanımlayabilirsiniz. Örneğin, farklı konumlardaki cihazları yönetiyorsanız, bir cihaz ikizi aşağıdaki etiketleri ekleyin:
 
 ```json
 "tags": {
@@ -50,45 +52,59 @@ Bir yapılandırma oluşturmadan önce değiştirmek istediğiniz hangi cihazlar
 },
 ```
 
-## <a name="create-a-configuration"></a>Bir yapılandırma oluşturun
+## <a name="create-a-configuration"></a>Yapılandırma oluşturma
 
 1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
 
-2. Seçin **IOT cihaz Yapılandırması**.
+2. **IoT cihaz yapılandırması**' nı seçin.
 
-3. Seçin **Yapılandırması Ekle**.
+3. **Cihaz Yapılandırması Ekle** veya **Modül Yapılandırması Ekle**' yi seçin.
+
+   ![Cihaz yapılandırması veya modül Yapılandırması Ekle](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
 Bir yapılandırma oluşturmak için beş adım vardır. Aşağıdaki bölümlerde, her birini yol. 
 
 ### <a name="name-and-label"></a>Ad ve etiket
 
-1. Yapılandırmanızı 128 küçük harf olan benzersiz bir ad verin. Boşluk ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+1. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluk ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
 
-2. Yapılandırmalarınızı izlenmesine yardımcı olması için etiketler ekleyin. Etiketler **adı**, **değer** yapılandırmanızı açıklayan çiftleri. Örneğin, `HostPlatform, Linux` veya `Version, 3.0.1`.
+2. Yapılandırmalarınızı izlemeye yardımcı olmak için Etiketler ekleyin. Etiketler, yapılandırmanızı tanımlayan **ad**ve **değer** çiftleridir. Örneğin, `HostPlatform, Linux` veya `Version, 3.0.1`.
 
-3. Seçin **sonraki** sonraki adıma geçmek için. 
+3. Sonraki adıma geçmek için **İleri ' yi** seçin. 
 
-### <a name="specify-settings"></a>Ayarlarını belirtin
+### <a name="specify-settings"></a>Ayarları belirtin
 
-Bu bölümde, hedeflenen cihaz ikizlerini ayarlamak için hedef içeriği belirtir. Her dizi ayarları için iki giriş vardır. İlk ayarlanacak çiftinin istenen özelliklerini JSON bölümündeki yolu cihaz ikizi yoludur.  Bu bölümde eklenecek JSON içeriği saniyedir. Örneğin, cihaz İkizi yolunu ve içerik şunu ayarlayın:
+Bu bölüm, hedeflenen cihazda veya modül TWINS 'de ayarlanacak içeriği tanımlar. Her ayar kümesi için iki giriş vardır. Birincisi, ayarlanacak ikizi özellikleri içindeki JSON bölümünün yolu olan ikizi yoludur.  İkincisi, bu bölüme eklenecek JSON içeridir. 
 
-![İçerik ve cihaz İkizi yolunu ayarlayın.](./media/iot-hub-auto-device-config/create-configuration-full-browser.png)
+Örneğin, ikizi yolunu `properties.desired.chiller-water` ayarlayabilir ve ardından aşağıdaki JSON içeriğini sağlayabilirsiniz: 
 
-Tek tek ayarlar yolun tamamını cihaz İkizi yolunu ve hiçbir köşeli ayraçlar içerikle değer belirterek de ayarlayabilirsiniz. Örneğin, cihaz İkizi yolunu ayarlamak `properties.desired.chiller-water.temperature` ve içerik kümesine `66`.
+```json
+{
+  "temperature": 66,
+  "pressure": 28
+}
+```
 
-İki veya daha fazla yapılandırması aynı cihaz İkizi yolunu hedefliyorsanız, en yüksek öncelikli bir yapılandırma içerikten uygulanır (öncelik adım 4'te tanımlanır).
+![İkizi yolunu ve içeriğini ayarlama](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
-Bir özelliği kaldırmak istiyorsanız, özellik değerini belirtin `null`.
 
-Ek ayarlar seçerek ekleyebilirsiniz **cihaz İkizi ayar Ekle**.
+Ayrıca, tüm ikizi yolunu belirterek ve değer parantez olmadan değeri sağlayarak tek tek ayarları ayarlayabilirsiniz. Örneğin, ikizi Path `properties.desired.chiller-water.temperature`, içeriği `66`olarak ayarlayın. Daha sonra basınç özelliği için yeni bir ikizi ayarı oluşturun. 
 
-### <a name="specify-metrics-optional"></a>Ölçümler (isteğe bağlı) belirtin
+İki veya daha fazla yapılandırma aynı ikizi yolunu hedefliyorsanız, en yüksek öncelikli yapılandırmadan içerik uygulanır (adım 4 ' te öncelik tanımlanmıştır).
 
-Ölçümleri yapılandırma içeriği uyguladıktan sonra bir cihazı geri bildirebilir çeşitli durumları özeti sayısını sağlar. Örneğin, ayarları değişiklikleri, hatalar için bir ölçüm ve bir ölçüm başarılı ayarları değişiklikleri için bekleyen bir ölçüm için oluşturabilir.
+Varolan bir özelliği kaldırmak istiyorsanız, `null`için özellik değerini belirtin.
 
-1. İçin bir ad girin **ölçüm adı**.
+**Cihaz Ekle Ikizi ayarlama** veya **Modül Ekle ikizi ayarını**seçerek ek ayarlar ekleyebilirsiniz.
 
-2. İçin bir sorgu girin **ölçüm ölçütleri**.  Sorguyu cihazda alan çiftinin bildirilen özelliklerini.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
+### <a name="specify-metrics-optional"></a>Ölçümleri belirtin (isteğe bağlı)
+
+Ölçümler, bir cihaz ya da modülün yapılandırma içeriği uygulandıktan sonra yeniden rapor edebileceği çeşitli durumların Özet sayısını sağlar. Örneğin, bekleyen ayarlar değişiklikleri, hatalara yönelik bir ölçüm ve başarılı ayarlar değişiklikleri için bir ölçüm oluşturabilirsiniz.
+
+Her yapılandırmanın en fazla beş özel ölçümü olabilir. 
+
+1. **Ölçüm adı**için bir ad girin.
+
+2. **Ölçüm ölçütü**için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
 Örneğin:
 
@@ -97,7 +113,7 @@ SELECT deviceId FROM devices
   WHERE properties.reported.chillerWaterSettings.status='pending'
 ```
 
-Yapılandırma, örneğin uygulanmış olduğunu bir yan tümce ekleyebilirsiniz: 
+Yapılandırmanın uygulandığı bir yan tümce ekleyebilirsiniz, örneğin: 
 
 ```sql
 /* Include the double brackets. */
@@ -105,73 +121,86 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
+Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız `devices.modules``moduleId` seçin. Örneğin:
+
+```sql
+SELECT deviceId, moduleId FROM devices.modules
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
 ### <a name="target-devices"></a>Hedef cihazlar
 
-Bu yapılandırmayı alması gereken belirli cihazları hedeflemek için etiketler özelliği, cihaz ikizlerini kullanın.  Ayrıca cihaz cihazları hedefleyebilirsiniz çiftinin bildirilen özelliklerini.
+Bu yapılandırmayı alması gereken belirli cihazları veya modülleri hedeflemek için ikizlerini 'nizden Tags özelliğini kullanın. Ayrıca, ikizi tarafından bildirilen özellikleri de hedefleyebilirsiniz.
 
-Aynı cihazda birden fazla yapılandırması hedefleyebilir olduğundan, her yapılandırma bir öncelik numarası vermesi gerekir. Şimdiye kadar bir çakışma varsa, yapılandırmanın en yüksek öncelikli kazanır. 
+Otomatik cihaz yapılandırması yalnızca Device ikizi etiketlerini hedefleyebilir ve otomatik modül yapılandırmalarının yalnızca Module ikizi etiketlerini hedefleyebilir. 
 
-1. Yapılandırma için pozitif bir tamsayı girin **öncelik**. En yüksek sayısal değeri en yüksek öncelikli olarak kabul edilir. İki yapılandırma aynı öncelik numarasına sahip, çoğu oluşturulmuş bir son kazanır. 
+Birden çok yapılandırma aynı cihazı veya modülü hedefleyebilir, çünkü her yapılandırmanın bir öncelik numarası vardır. Herhangi bir çakışma varsa, en yüksek önceliğe sahip yapılandırma kazanır. 
 
-2. Girin bir **hedef koşulu** hangi cihazların bu yapılandırma ile hedeflenecek belirlemek için. Koşul, cihaz ikizi etiketlere göre veya cihaz çiftinin bildirilen özellikler ve ifade biçim ile eşleşmesi. Örneğin, `tags.environment='test'` veya `properties.reported.chillerProperties.model='4000x'`. Belirtebileceğiniz `*` tüm cihazları hedeflemek için.
+1. Yapılandırma **önceliği**için pozitif bir tamsayı girin. En yüksek sayısal değer en yüksek öncelik olarak değerlendirilir. İki yapılandırmanın aynı öncelik numarası varsa, en son WINS 'nin oluşturulduğu bir değer vardır. 
+
+2. Hangi cihazların veya modüllerin bu yapılandırmaya hedefleneceğini belirleyen bir **hedef koşul** girin. Koşul, ikizi Tags veya ikizi tarafından bildirilen özellikleri temel alır ve ifade biçimiyle eşleşmelidir. 
+
+   Otomatik cihaz yapılandırması için, hedef olarak yalnızca etiketi veya bildirilen özelliği belirtebilirsiniz. Örneğin, `tags.environment='test'` veya `properties.reported.chillerProperties.model='4000x'`. Tüm cihazları hedeflemek için `*` belirtebilirsiniz. 
+   
+   Otomatik modül yapılandırması için, IoT Hub 'ına kayıtlı modüllerdeki etiketleri veya bildirilen özellikleri belirtmek için bir sorgu kullanın. Örneğin, `from devices.modules where tags.environment='test'` veya `from devices.modules where properties.reported.chillerProperties.model='4000x'`. Joker karakter tüm modülleri hedeflemek için kullanılamaz. 
 
 3. Seçin **sonraki** son adıma geçmek için.
 
-### <a name="review-configuration"></a>Yapılandırmayı Gözden Geçir
+### <a name="review-configuration"></a>Yapılandırmayı gözden geçir
 
-Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder**.
+Yapılandırma bilgilerinizi gözden geçirin ve ardından **Gönder**' i seçin.
 
-## <a name="monitor-a-configuration"></a>İzleyici yapılandırma
+## <a name="monitor-a-configuration"></a>Bir yapılandırmayı izleme
 
-Bir yapılandırma ayrıntılarını görüntülemek ve onu çalıştıran cihazları izlemek için aşağıdaki adımları kullanın:
+Bir yapılandırmanın ayrıntılarını görüntülemek ve çalıştıran cihazları izlemek için aşağıdaki adımları kullanın:
 
 1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
 
-2. Seçin **IOT cihaz Yapılandırması**.
+2. **IoT cihaz yapılandırması**' nı seçin.
 
-3. Yapılandırma listesini inceleyin. Her yapılandırma için aşağıdaki ayrıntıları görüntüleyebilirsiniz:
+3. Yapılandırma listesini inceleyin. Her yapılandırma için aşağıdaki ayrıntıları görebilirsiniz:
 
-   * **Kimliği** -yapılandırmasının adı.
+   * **ID** -yapılandırmanın adı.
 
-   * **Hedef koşul** -hedeflenen cihazları tanımlamak için kullanılan sorgu.
+   * **Hedef koşul** -hedeflenen cihazları veya modülleri tanımlamak için kullanılan sorgu.
 
    * **Öncelik** -yapılandırmaya atanan öncelik numarası.
 
-   * **Oluşturma zamanı** -yapılandırma oluşturulduğu zaman damgası. Bu zaman damgasından iki yapılandırması aynı önceliğe sahip olduğunuzda TIES ayırmak için kullanılır. 
+   * **Oluşturma zamanı** -yapılandırmanın oluşturulduğu zaman damgası. Bu zaman damgası, iki yapılandırmanın aynı önceliğe sahip olduğu durumlarda, özellikleri bölmek için kullanılır. 
 
-   * **Sistem ölçümlerini** -IOT Hub tarafından hesaplanır ve geliştiriciler tarafından özelleştirilemez ölçümleri. Hedeflenen hedef koşulu sağlayan cihaz ikizlerini sayısını belirtir. Geçerli belirlenen ayrı, daha yüksek öncelikli bir yapılandırma değişiklikleri de yaptığınız olay, kısmi değişiklikler içerebilen yapılandırması tarafından değiştirilmiş olan cihaz ikizlerini sayısı. 
+   * **Sistem ölçümleri** -IoT Hub tarafından hesaplanan ve geliştiriciler tarafından özelleştirilemez ölçümler. Hedeflenen, hedef koşulla eşleşen cihaz TWINS sayısını belirtir. Uygulama, yapılandırma tarafından değiştirilen cihaz TWINS sayısını, ayrı, daha yüksek öncelikli bir yapılandırmanın de değişiklik yaptığı olayda kısmi değişiklikler içerebilen bir şekilde değiştirdi. 
 
-   * **Özel ölçümler** -cihaz çifti sorguları olarak geliştirici tarafından belirtilen ölçüm bildirilen özellikler.  Yapılandırma en fazla beş özel ölçümler tanımlanabilir. 
+   * **Özel ölçümler** -geliştirici tarafından ikizi bildirilen özelliklerle ilgili sorgular olarak belirtilmiş ölçümler.  En fazla beş özel ölçüm, yapılandırma başına tanımlanabilir. 
    
 4. İzlemek istediğiniz yapılandırmayı seçin.  
 
-5. Yapılandırma ayrıntılarını inceleyin. Alınan yapılandırmayı ayrıştıramadığını cihazlar hakkındaki belirli ayrıntılarını görüntülemek için sekmeleri kullanabilirsiniz.
+5. Yapılandırma ayrıntılarını inceleyin. Yapılandırmayı alan cihazlarla ilgili belirli ayrıntıları görüntülemek için sekmeleri kullanabilirsiniz.
 
-   * **Hedef koşul** -hedef koşulu cihazlar. 
+   * **Hedef koşul** -hedef koşulla eşleşen cihazlar veya modüller. 
 
-   * **Ölçümleri** -sistem ölçümlerini ve özel ölçümler listesi.  Açılan menü ölçüm ve ardından seçerek sayılan her ölçüm için cihazların listesini görüntüleyebilirsiniz **cihazlarını görüntülemek**.
+   * **Ölçümler** -sistem ölçümlerinin ve özel ölçümlerin bir listesi.  Açılan listede ölçümü seçerek ve ardından **cihazları görüntüle** veya **modülleri görüntüle**' yi seçerek her bir ölçüm için sayılan cihazların veya modüllerin listesini görüntüleyebilirsiniz.
 
-   * **Cihaz İkizi ayarları** -yapılandırma tarafından ayarlanan cihaz ikizi ayarları. 
+   * **Device Ikizi Settings** veya **module ikizi Settings** -yapılandırma tarafından ayarlanan ikizi ayarları. 
 
-   * **Yapılandırma etiketleri** -yapılandırma açıklamak için kullanılan anahtar-değer çiftleri.  Etiketleri işlevselliğini etkisi yok. 
+   * **Yapılandırma etiketleri** -bir yapılandırmayı anlatmak için kullanılan anahtar-değer çiftleri.  Etiketlerin işlevleri üzerinde etkisi yoktur. 
 
-## <a name="modify-a-configuration"></a>Bir yapılandırmasını Değiştir
+## <a name="modify-a-configuration"></a>Yapılandırma değiştirme
 
-Yapılandırma değiştirdiğinizde değişiklikler hemen hedeflenen tüm cihazlara çoğaltın. 
+Bir yapılandırmayı değiştirdiğinizde, değişiklikler hedeflenen tüm cihazlara veya modüllerle hemen çoğaltılır. 
 
 Hedef koşul güncelleştirme aşağıdaki güncelleştirmeleri oluşur:
 
-* Cihaz ikizi eski hedef koşul karşılanmadıysa, ancak yeni hedef koşulunu ve bu yapılandırma, cihaz ikizi için en yüksek öncelikli ise, bu yapılandırma için cihaz ikizi'e uygulanır. 
+* Bir ikizi eski hedef koşulunu karşılamıyorsa, ancak yeni hedef koşulunu karşılıyorsa ve bu yapılandırma bu ikizi için en yüksek önceliktir, bu yapılandırma uygulanır. 
 
-* Cihaz ikizi artık hedef koşulu karşılıyorsa, yapılandırma ayarları kaldırılır ve cihaz ikizinde sonraki en yüksek öncelikli bir yapılandırma ile değiştirilecek. 
+* Şu anda bu yapılandırmayı çalıştıran bir ikizi artık hedef koşulu karşılamıyorsa, yapılandırmanın ayarları kaldırılır ve ikizi bir sonraki en yüksek öncelik yapılandırması tarafından değiştirilir. 
 
-* Artık bu yapılandırma şu anda çalışan bir cihaz ikizi hedef koşulu karşılayan ve diğer tüm yapılandırmaları hedef koşulu karşılamıyor ise yapılandırma ayarlarından kaldırılacak ve ikizinin diğer herhangi bir değişiklik yapılmaz. 
+* Şu anda bu yapılandırmayı çalıştıran bir ikizi, hedef koşulunu artık karşılamıyor ve diğer yapılandırmaların hedef koşulunu karşılamıyorsa, yapılandırmadan gelen ayarlar kaldırılır ve ikizi üzerinde başka bir değişiklik yapılmaz. 
 
-Bir yapılandırmasını değiştirmek için aşağıdaki adımları kullanın: 
+Bir yapılandırmayı değiştirmek için aşağıdaki adımları kullanın: 
 
 1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
 
-2. Seçin **IOT cihaz Yapılandırması**. 
+2. **IoT cihaz yapılandırması**' nı seçin. 
 
 3. Değiştirmek istediğiniz yapılandırmayı seçin. 
 
@@ -184,35 +213,35 @@ Bir yapılandırmasını değiştirmek için aşağıdaki adımları kullanın:
 
 4. **Kaydet**’i seçin.
 
-5. Bağlantısındaki [yapılandırma izleme](#monitor-a-configuration) dağıtmadan değişiklikleri izlemek için. 
+5. Değişiklikleri izlemek için [Yapılandırmayı İzleme](#monitor-a-configuration) bölümündeki adımları izleyin. 
 
-## <a name="delete-a-configuration"></a>Bir yapılandırmayı silmek
+## <a name="delete-a-configuration"></a>Yapılandırma silme
 
-Bir yapılandırmayı silmek, tüm cihaz ikizlerini kendi sonraki en yüksek öncelikli yapılandırmasına yararlanın. Cihaz ikizlerini herhangi bir yapılandırma hedef koşulu karşılamıyorsanız, sonra başka bir ayarları uygulanır. 
+Bir yapılandırmayı sildiğinizde, her türlü cihaz WINS 'in bir sonraki en yüksek öncelikli yapılandırmasını alır. Cihaz WINS, başka bir yapılandırmanın hedef koşulunu karşılamıyorsa, başka hiçbir ayar uygulanmaz. 
 
 1. İçinde [Azure portalında](https://portal.azure.com), IOT hub'ınıza gidin. 
 
-2. Seçin **IOT cihaz Yapılandırması**. 
+2. **IoT cihaz yapılandırması**' nı seçin. 
 
 3. Silmek istediğiniz yapılandırmayı seçmek için onay kutusunu kullanın. 
 
 4. **Sil**’i seçin.
 
-5. Bir komut istemi onaylamanızı ister.
+5. Bir istem, doğrulamanızı ister.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, yapılandırma ve izleme IOT cihazlarını uygun ölçekte öğrendiniz. Azure IOT hub'ı yönetme hakkında daha fazla bilgi için bu bağlantıları izleyin:
+Bu makalede IoT cihazlarını ölçeklendirerek nasıl yapılandıracağınızı ve izleyeceğinizi öğrendiniz. Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
 
 * [IoT Hub cihaz kimliklerinizi toplu olarak yönetme](iot-hub-bulk-identity-mgmt.md)
-* [IOT hub'ı ölçümleri](iot-hub-metrics.md)
+* [IoT Hub ölçümleri](iot-hub-metrics.md)
 * [İşlemleri izleme](iot-hub-operations-monitoring.md)
 
-Daha fazla IOT Hub'ın özelliklerini keşfetmek için bkz:
+IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [IOT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
-* [Yapay ZEKA, Azure IOT Edge ile uç cihazlarına dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
+* [Azure IoT Edge ile uç cihazlara AI dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
 
-IOT Hub cihazı sağlama hizmeti kullanarak müdahalesi gerektirmeyen, tam zamanında sağlama etkinleştireceğinizi öğrenmek için keşfetmek için: 
+Tam zamanında sağlama işlemini etkinleştirmek üzere IoT Hub cihaz sağlama hizmetini kullanarak araştırmak için, bkz.: 
 
 * [Azure IoT Hub Cihazı Sağlama Hizmeti](/azure/iot-dps)

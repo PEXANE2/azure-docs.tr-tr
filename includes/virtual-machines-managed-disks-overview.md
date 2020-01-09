@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355903"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -37,7 +37,7 @@ Yönetilen diskler [kullanılabilirlik alanları](../articles/availability-zones
 
 ### <a name="azure-backup-support"></a>Azure Backup desteği
 
-Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-overview.md) , zaman tabanlı yedeklemeler ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturmak için kullanılabilir. Bu, ' de kolay VM geri 'leri gerçekleştirmenize olanak tanır. Azure Backup yönetilen disklerin yedeklenmesini ve geri yüklenmesini destekler. Azure VM yedekleme desteği hakkında [daha fazla bilgi edinin](../articles/backup/backup-support-matrix-iaas.md) .
+Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-overview.md) , zaman tabanlı yedeklemeler ve yedekleme bekletme ilkeleriyle bir yedekleme işi oluşturmak için kullanılabilir. Bu, ' de kolay VM geri 'leri gerçekleştirmenize olanak tanır. Şu anda Azure Backup en fazla dört tebibyte (TiB) disk boyutunu destekler.  Azure Backup yönetilen disklerin yedeklenmesini ve geri yüklenmesini destekler. Azure VM yedekleme desteği hakkında [daha fazla bilgi edinin](../articles/backup/backup-support-matrix-iaas.md) .
 
 ### <a name="granular-access-control"></a>Ayrıntılı erişim denetimi
 
@@ -126,5 +126,7 @@ Azure, ağ trafiğinin diğer düşük önceliğine göre önceliği alan, disk 
 İstediğiniz performansı elde edebilmeniz için VM + disk yapılandırmalarının iyileştirmesini sağlayan en iyi yöntemleri öğrenmek için [yüksek performanslı](../articles/virtual-machines/windows/premium-storage-performance.md) makalemize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Bir videonun yönetilen diskler üzerinde daha ayrıntılı bir şekilde gitmesini istiyorsanız, bkz. [yönetilen disklerle daha Iyi Azure VM esnekliği](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 
 Azure 'un sunduğu ayrı disk türleri hakkında daha fazla bilgi edinin. bu tür, gereksinimlerinize uygun bir uyum ve disk türlerindeki makalemizdeki performans hedefleri hakkında bilgi edinin.

@@ -1,26 +1,17 @@
 ---
-title: Öğretici - Azure Service Fabric Mesh’te çalışan bir uygulamayı ölçeklendirme | Microsoft Docs
+title: Öğretici-Azure Service Fabric ağı 'nda çalışan bir uygulamayı ölçeklendirme
 description: Bu öğreticide, Service Fabric Mesh’te çalışan bir uygulamadaki hizmetleri ölçeklendirme işlemini öğreneceksiniz.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351816"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh’te çalışan bir uygulamayı ölçeklendirme
 
@@ -41,19 +32,19 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz.
 
-* [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
+* [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleme](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Hizmetlerinizin ölçeğini artırmanız veya azaltmanız
 
-Service Fabric Mesh’e uygulamaları dağıtmanın ana avantajlarından biri, hizmetlerinizin ölçeğini kolayca artırabilmeniz veya azaltabilmenizdir. Hizmetlerinizdeki değişen yük miktarlarını işlemek ve kullanılabilirliği artırmak için bu kullanılmalıdır.
+Service Fabric kafese uygulama dağıtmanın başlıca avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme olanağı sağlar. Bu, hizmetinizdeki farklı yük miktarını işlemek veya kullanılabilirliği iyileştirmek için kullanılmalıdır.
 
-Bu öğreticide, örnek olarak, [önceden dağıtılmış olan](service-fabric-mesh-tutorial-template-deploy-app.md) ve şimdi çalışıyor olması gereken Yapılacaklar Listesi örneği kullanılmaktadır. Uygulama, iki hizmet vardır: WebFrontEnd ve ToDoService. Her hizmet başlangıçta 1 çoğaltma sayısı ile dağıtılmıştır.  WebFrontEnd hizmeti için çalıştırılan çoğaltma sayısını görüntülemek için aşağıdakileri çalıştırın:
+Bu öğreticide, örnek olarak, [önceden dağıtılmış olan](service-fabric-mesh-tutorial-template-deploy-app.md) ve şimdi çalışıyor olması gereken Yapılacaklar Listesi örneği kullanılmaktadır. Uygulamada iki hizmet vardır: WebFrontEnd ve ToDoService. Her hizmet başlangıçta 1 çoğaltma sayısı ile dağıtılmıştır.  WebFrontEnd hizmeti için çalıştırılan çoğaltma sayısını görüntülemek için aşağıdakileri çalıştırın:
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp --query "replicaCount"
@@ -84,7 +75,7 @@ Uygulama kaynağı için dağıtım şablonunda her hizmet, hizmetin dağıtılm
       }
 ```
 
-Parametreler dosyasına değişikliklerinizi kaydedin.  *frontEndReplicaCount* ve *serviceReplicaCount* parametreleri, [mesh_rp.windows.json dağıtım şablonunun](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) *parametreler* bölümünde bildirilir:
+Parametreler dosyasına değişikliklerinizi kaydedin.  *frontEndReplicaCount* ve *serviceReplicaCount* parametreleri, [mesh_rp.windows.json dağıtım şablonunun](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)*parametreler* bölümünde bildirilir:
 
 ```json
 "frontEndReplicaCount":{

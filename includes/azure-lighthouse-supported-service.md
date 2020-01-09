@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: lighthouse
-author: DCtheGeek
+author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 06/26/2019
-ms.author: dacoulte
+ms.date: 12/19/2019
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: a1f3c83919dadfd0f35caaf588cc541917a5e536
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c8e1af7142dcafb6574b7d71b55dd85b3fbc18d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467445"
 ---
 > [!NOTE]
-> Bu hizmet destekler [Azure kaynak yönetimi temsilcisi](../articles/lighthouse/concepts/azure-delegated-resource-management.md) olanak sağlayan kaynaklar ve müşteriler gelen hizmet sağlayıcısının Kiracı temsilci abonelikler hizmet sağlayıcılarını yönetme. Daha fazla bilgi için bkz. [Azure Deniz](../articles/lighthouse/overview.md).
+> Bu hizmet, hizmet sağlayıcılarının, müşterilerin temsilci olarak hizmet sağlayıcının kiracısından aldığı kaynakları ve abonelikleri yönetmesine olanak sağlayan, [Azure tarafından yetkilendirilen kaynak yönetimini](../articles/lighthouse/concepts/azure-delegated-resource-management.md) destekler. Daha fazla bilgi için bkz. [Azure açık Thouse](../articles/lighthouse/overview.md).

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459636"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Öğretici: SSMS kullanarak Azure SQL veritabanı 'nda tek bir veritabanında ilişkisel veritabanı tasarlama
 
@@ -33,9 +33,9 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
 > [!NOTE]
-> Bu öğreticinin amacı doğrultusunda tek bir veritabanı kullanıyoruz. Ayrıca, bir elastik havuzda veya yönetilen bir örnekteki örnek veritabanında havuza alınmış bir veritabanı da kullanabilirsiniz. Yönetilen bir örneğe bağlantı için bkz. bu yönetilen örneğe hızlı başlangıçlara bakın: [hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](sql-database-managed-instance-configure-vm.md) ve [hızlı başlangıç: Azure SQL veritabanı 'na Noktadan siteye bağlantı yapılandırma Şirket içinden yönetilen örnek](sql-database-managed-instance-configure-p2s.md).
+> Bu öğreticinin amacı doğrultusunda tek bir veritabanı kullanıyoruz. Ayrıca, bir elastik havuzda veya yönetilen bir örnekteki örnek veritabanında havuza alınmış bir veritabanı da kullanabilirsiniz. Yönetilen bir örneğe bağlantı için bkz. bu yönetilen örneğe hızlı başlangıçlara bakın: [hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](sql-database-managed-instance-configure-vm.md) ve [hızlı başlangıç: ŞIRKET Içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için yüklediğinizden emin olun:
 
@@ -44,15 +44,15 @@ Bu öğreticiyi tamamlayabilmeniz için yüklediğinizden emin olun:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-blank-single-database"></a>Boş bir tek veritabanı oluşturma
 
-Azure SQL veritabanı 'nda tek bir veritabanı, tanımlı bir dizi işlem ve depolama kaynağı ile oluşturulur. Veritabanı bir [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) içinde oluşturulur ve [veritabanı sunucusu](sql-database-servers.md)kullanılarak yönetilir.
+Azure SQL veritabanı 'nda tek bir veritabanı, tanımlı bir dizi işlem ve depolama kaynağı ile oluşturulur. Veritabanı bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur ve [veritabanı sunucusu](sql-database-servers.md)kullanılarak yönetilir.
 
 Boş tek veritabanı oluşturmak için bu adımları izleyin.
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin.
 2. **Yeni** sayfasında, Azure Market bölümünde **Veritabanları**’nı seçin ve ardından **Öne Çıkan** bölümünde **SQL Veritabanı**’na tıklayın.
 
    ![create empty-database](./media/sql-database-design-first-database/create-empty-database.png)
@@ -111,7 +111,7 @@ SQL veritabanı hizmeti, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. 
 
 1. Geçerli IP adresinizi yeni bir IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' ye tıklayın. Bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-1. **Kaydet** düğmesine tıklayın. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+1. **Save (Kaydet)** düğmesine tıklayın. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 1. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -131,7 +131,7 @@ Tek veritabanınıza bağlantı kurmak için [SQL Server Management Studio](/sql
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Sunucu türü** | Veritabanı altyapısı | Bu değer gereklidir. |
    | **Sunucu adı** | Tam sunucu adı | Örneğin, *yourserver.Database.Windows.net*. |
-   | **Kimlik Doğrulaması** | SQL Server Kimlik Doğrulaması | SQL kimlik doğrulaması, bu öğreticide yapılandırdığımız tek kimlik doğrulama türüdür. |
+   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | SQL kimlik doğrulaması, bu öğreticide yapılandırdığımız tek kimlik doğrulama türüdür. |
    | **Oturum açma** | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
    | **Parola** | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluştururken belirttiğiniz parola. |
 
@@ -154,7 +154,7 @@ Tek veritabanınıza bağlantı kurmak için [SQL Server Management Studio](/sql
 - Kişi
 - Ders
 - Öğrenci
-- Kredisi
+- Kredi
 
 Aşağıdaki diyagramda bu tabloların birbirleriyle nasıl ilişkili olduğu gösterilmektedir. Bu tablolardan bazıları başka tablolardaki sütunlara başvurur. Örneğin, *öğrenci* tablosu *kişi* tablosunun *PersonID* sütununa başvurur. Bu öğreticideki tabloların birbirleriyle ilişkisini anlamak için diyagram üzerinde çalışın. Etkili veritabanı tabloları oluşturmaya ilişkin ayrıntılı bir bakış için bkz. [Etkili veritabanı tabloları oluşturma](https://msdn.microsoft.com/library/cc505842.aspx). Veri türleri seçme hakkında bilgi için bkz. [Veri türleri](/sql/t-sql/data-types/data-types-transact-sql).
 

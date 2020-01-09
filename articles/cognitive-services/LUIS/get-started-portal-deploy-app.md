@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278536"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448063"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin, bir sohbet bot) döndürmeye hazırsanız uygulamayı tahmin uç noktasına dağıtmanız gerekir.
 
@@ -61,7 +59,7 @@ Tahmin uç noktası kaynağını Azure portal oluşturursunuz. Bu kaynak yalnız
 
 LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız takdirde bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha yüksek sayıda tahmin sorgusu desteklemek için yeni bir kaynak oluşturabilirsiniz.
 
-1. [Luo portalında](https://preview.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
+1. [ÖNIZLEME Luo portalında](https://preview.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
 
 1. Sağ üst menüdeki **Yönet** ' i seçin ve ardından **Azure kaynakları**' nı seçin.
 
@@ -69,7 +67,7 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
     ![LUSıS tahmin kaynağını eklemek için tahmin kaynağı Ekle ' yi seçin.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. **Kaynak ata**' yı seçin.
+1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
 
    ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 

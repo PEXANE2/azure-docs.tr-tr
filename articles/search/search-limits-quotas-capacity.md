@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/17/2019
+ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462501"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama hizmet limitleri
 
-Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınırlar, [Azure bilişsel arama](search-create-service-portal.md) **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır .
+Depolama, iş yükleri ve dizin ve diğer nesneler için maksimum sınırlar, [Azure bilişsel arama](search-create-service-portal.md) **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır.
 
 + **Ücretsiz** , Azure aboneliğinizle birlikte gelen çok kiracılı bir paylaşılan hizmettir. Dizin oluşturma ve sorgu istekleri, diğer kiracılar tarafından kullanılan çoğaltmalar ve bölümler üzerinde yürütülür.
 
@@ -65,23 +65,22 @@ Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınır
 
 ## <a name="document-limits"></a>Belge limitleri 
 
-2018 Ekim itibariyle, herhangi bir bölgede faturalandırılabilir katmanda (temel, S1, S2, S3, S3 HD) oluşturulan tüm yeni hizmetler için artık herhangi bir belge sınırı<sup>1</sup> yoktur. Çoğu bölgede, Kasım/Aralık 2017 ' den beri sınırsız sayıda belge sayısı vardı, belge sınırlarını sağlamaya devam eden beş bölge vardır. Bir arama hizmeti oluşturduğunuz zaman ve yere bağlı olarak, hala belge sınırlarına tabi olan bir hizmet çalıştırıyor olabilirsiniz.
+2018 Ekim itibariyle, herhangi bir bölgede faturalandırılabilir katmanda (temel, S1, S2, S3, S3 HD) oluşturulan hiçbir yeni hizmet için artık hiçbir belge sınırı yoktur. Çoğu bölgede, Kasım/Aralık 2017 ' den beri sınırsız sayıda belge sayısı vardı, bu tarihten sonra belge limitleri sağlamaya devam eden birkaç bölge vardı. Bir arama hizmeti oluşturduğunuz zaman ve yere bağlı olarak, hala belge sınırlarına tabi olan bir hizmet çalıştırıyor olabilirsiniz.
 
-Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için hizmetinizin Genel Bakış sayfasında kullanım kutucuğunu kontrol edin. Belge sayıları sınırsız veya katmana dayalı bir sınıra tabidir.
+Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için [REST API hizmeti Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)' ı kullanın. Belge limitleri, yanıt olarak, `null` hiçbir sınır olmadığını gösterecek şekilde yansıtılır.
 
-  ![Kullanım kutucuğu](media/search-limits-quotas-capacity/portal-usage-tile.png)
-
-<sup>1</sup> herhangi bir SKU 'ya özgü belge sınırı olmasa bile, hizmetin kararlılığını sağlamak için her dizin hala en yüksek bir güvenli sınıra tabi olur. Bu sınır Lucene 'den gelir. Her Azure Bilişsel Arama belgesi bir veya daha fazla Lucene belgesi olarak dahili olarak dizinlenir. Arama belgesi başına Lucene belgelerinin sayısı, karmaşık koleksiyon alanlarındaki toplam öğe sayısına bağlıdır. Her öğe ayrı bir Lucene belgesi olarak dizinlenir. Örneğin, karmaşık bir koleksiyon alanında 3 öğe içeren bir belge, belgenin kendisi için 4 Lucene belge-1 ve öğeler için 3 olarak Dizinlenecek. En fazla Lucene belge sayısı, dizin başına yaklaşık 25.000.000.000 ' dir.
+> [!NOTE]
+> Herhangi bir SKU 'ya özgü belge sınırı olmasa bile, hizmetin kararlılığını sağlamak için her dizin hala en yüksek güvenli sınıra tabi olur. Bu sınır Lucene 'den gelir. Her Azure Bilişsel Arama belgesi bir veya daha fazla Lucene belgesi olarak dahili olarak dizinlenir. Arama belgesi başına Lucene belgelerinin sayısı, karmaşık koleksiyon alanlarındaki toplam öğe sayısına bağlıdır. Her öğe ayrı bir Lucene belgesi olarak dizinlenir. Örneğin, karmaşık bir koleksiyon alanında 3 öğe içeren bir belge, belgenin kendisi için 4 Lucene belge-1 ve öğeler için 3 olarak Dizinlenecek. En fazla Lucene belge sayısı, dizin başına yaklaşık 25.000.000.000 ' dir.
 
 ### <a name="regions-previously-having-document-limits"></a>Daha önce belge sınırlarına sahip bölgeler
 
 Portal bir belge sınırını gösteriyorsa, hizmetiniz geç 2017 ' den önce oluşturulmuştur ya da Azure Bilişsel Arama Hizmetleri 'ni barındırmak için düşük kapasite kümeleri kullanılarak bir veri merkezinde oluşturulmuştur:
 
-+ Avustralya Doğu
++ Doğu Avustralya
 + Doğu Asya
 + Orta Hindistan
-+ Japonya Batı
-+ Batı Orta ABD
++ Batı Japonya
++ Orta Batı ABD
 
 Belge sınırlarına tabi olan hizmetler için aşağıdaki en fazla sınır geçerlidir:
 
@@ -118,7 +117,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 | Maksimum çalışma süresi <sup>5</sup> | 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
 | Bilişsel arama becerileri için maksimum çalışma süresi veya görüntü analizi ile blob dizin oluşturma <sup>5</sup> | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
 | Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4&nbsp;milyon |4&nbsp;milyon |4&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32,000 |64,000 |4&nbsp;milyon |4&nbsp;milyon |4&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -135,7 +134,7 @@ Beceri <sup>başına en fazla</sup> 30 yetenek.
 
 ## <a name="synonym-limits"></a>Eş anlamlı sınırları
 
-İzin verilen en fazla eş anlamlı eşleme sayısı fiyatlandırma katmanına göre değişir. Her kural, bir genişlemenin eş bir terim olduğu en fazla 20 genişlemeye sahip olabilir. Örneğin, "Cat", "Kitty", "Feline" ve "Felis" (kediler için Genus) ilişkisi, 3 genişletmeleri olarak sayılır.
+İzin verilen en fazla eş anlamlı eşleme sayısı fiyatlandırma katmanına göre değişir. Her kural, bir genişletmenin eşdeğer bir terim olduğu en fazla 20 genişlemeye sahip olabilir. Örneğin, "Cat", "Kitty", "Feline" ve "Felis" (kediler için Genus) ilişkisi, 3 genişletmeleri olarak sayılır.
 
 | Kaynak | Ücretsiz | Temel | S1 | S2 | S3 | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
@@ -173,7 +172,7 @@ Bir dizinle ilgili işlemler için statik hız isteği sınırları:
 * $orderby yan tümcesindeki maksimum 32 alan
 * En fazla arama terimi boyutu, UTF-8 ile kodlanmış metnin 32.766 bayttır (32 KB eksi 2 bayt)
 
-<sup>1</sup> Azure bilişsel arama 'de, bir isteğin GÖVDESI 16 MB üst sınırına tabidir, bu nedenle bağımsız alanların veya koleksiyonların, teorik olmayan sınırlara göre Kısıtlanmamış olan koleksiyonlar için pratik bir sınır sağlar (bkz. [desteklenen veri türleri ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)alan oluşturma ve kısıtlamalar hakkında daha fazla bilgi için.
+<sup>1</sup> Azure bilişsel arama 'de, bir isteğin GÖVDESI 16 MB üst sınırına tabidir. Bu, başka bir şekilde (alan oluşturma ve kısıtlamalar hakkında daha fazla bilgi için bkz. [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) )
 
 ## <a name="api-response-limits"></a>API yanıt limitleri
 * Arama sonuçları sayfası başına döndürülen en fazla 1000 belge

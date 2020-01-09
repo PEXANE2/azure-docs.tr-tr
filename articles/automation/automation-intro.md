@@ -2,24 +2,21 @@
 title: Azure Otomasyonu’na Genel Bakış
 description: Azure Otomasyonu'nu altyapı ve uygulamaların yaşam döngüsünü otomatikleştirmek için kullanmayı öğrenin.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 keywords: azure otomasyonu, DSC, powershell, istenen durum yapılandırması, güncelleştirme yönetimi, değişiklik izleme, stok, runbook'lar, python, grafik
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738851"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421940"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
 
-Azure Otomasyonu, Azure ve Azure harici ortamlarınızda tutarlı yönetim özellikleri sunan bulut tabanlı bir otomasyon ve yapılandırma hizmeti sunar. Bu hizmet süreç otomasyonu, güncelleştirme yönetimi ve yapılandırma özelliklerine sahiptir. Azure Otomasyonu iş yüklerinin ve kaynaklarının dağıtılması, işleme alınması ve yetkilerinin alınması sırasında eksiksiz denetim sağlar.
+Azure Otomasyonu, Azure ve Azure olmayan ortamlarınızda tutarlı bir yönetim sağlayan, bulut tabanlı otomasyon ve yapılandırma hizmeti sunar. Bu hizmet süreç otomasyonu, güncelleştirme yönetimi ve yapılandırma özelliklerine sahiptir. Azure Otomasyonu iş yüklerinin ve kaynaklarının dağıtılması, işleme alınması ve yetkilerinin alınması sırasında eksiksiz denetim sağlar.
 Bu makale, Azure Otomasyonu'na ilişkin kısa bir genel bakış sağlar ve bazı sık sorulan soruları yanıtlar. Özellikler hakkında daha fazla bilgi almak için bu genel bakış içindeki bağlantıları ziyaret edin.
 
 ## <a name="azure-automation-capabilities"></a>Azure Otomasyon özellikleri
@@ -44,22 +41,22 @@ Azure Otomasyonu ile karma ortamlardaki Windows ve Linux sistemlerini güncelle�
 
 Azure Otomasyonu, büyük ölçekli ortamlarınızda otomasyon ve yapılandırma kolaylığı sunmak için bir dizi paylaşılan kaynak sunar.
 
-* **[Zamanlamalar](automation-schedules.md)**: Otomasyonu önceden tanımlanmış zamanlarda tetikleme amacıyla hizmette kullanılır.
-* **[Modüller](automation-integration-modules.md)**  -modülleri, Azure ve diğer sistemleri yönetmek için kullanılır. Otomasyon hesabına Microsoft, üçüncü taraf, topluluk veya özel tanımlı cmdlet'ler ve DSC kaynaklarını içeri aktarın.
-* **[Modüller Galerisi](automation-runbook-gallery.md)**  -yerel tümleştirme PowerShell Galerisi, runbook'ları görüntülemek ve bunları Otomasyon hesabına aktarın.
-* **[Python 2 paketleri](python-packages.md)**  -Python runbook'larınızı kullanmak için Otomasyon hesabı Ekle Python 2 paketler.
-* **[Kimlik bilgileri](automation-credentials.md)**: Çalışma zamanında runbook'lar ve yapılandırmalar tarafından kullanılabilecek hassas bilgileri güvenle depolayın.
-* **[Bağlantılar](automation-connections.md)**: Bağlantı kaynaklarındaki sistemlere bağlanırken kullanılacak bilgileri içeren ad/değer çiftlerini depolayın. Bağlantılar, çalışma zamanında kullanılmak üzere runbook ve yapılandırmalarda modül yazarı tarafından tanımlanır.
-* **[Sertifikalar](automation-certificates.md)**: Kimlik doğrulaması ve dağıtılan kaynakların güvenliğini sağlama amacıyla kullanmak üzere depolayın ve çalışma zamanında kullanılabilir duruma getirin.
-* **[Değişkenler](automation-variables.md)**: Farklı runbook'larda ve yapılandırmalarda kullanılabilecek içeriği tutmak için bir yöntem sağlar. Runbook'larda ve onlara başvuran yapılandırmalarda değişiklik yapmadan değerleri değiştirebilirsiniz.
+* **[Zamanlamalar](automation-schedules.md)** : Otomasyonu önceden tanımlanmış zamanlarda tetikleme amacıyla hizmette kullanılır.
+* **[Modüller](automation-integration-modules.md)** -modüller, Azure ve diğer sistemleri yönetmek için kullanılır. Microsoft, üçüncü taraf, topluluk veya özel tanımlı cmdlet 'ler ve DSC kaynakları için Otomasyon hesabına aktarın.
+* **[Modüller Galerisi](automation-runbook-gallery.md)** -runbook 'ları görüntülemek ve bunları Otomasyon hesabına aktarmak için PowerShell Galerisi yerel tümleştirme.
+* **[Python 2 paketleri](python-packages.md)** -Python runbook 'larınızda kullanmak üzere otomasyon hesabınıza Python 2 paketleri ekleyin.
+* **[Kimlik bilgileri](automation-credentials.md)** : Çalışma zamanında runbook'lar ve yapılandırmalar tarafından kullanılabilecek hassas bilgileri güvenle depolayın.
+* **[Bağlantılar](automation-connections.md)** : Bağlantı kaynaklarındaki sistemlere bağlanırken kullanılacak bilgileri içeren ad/değer çiftlerini depolayın. Bağlantılar, çalışma zamanında kullanılmak üzere runbook ve yapılandırmalarda modül yazarı tarafından tanımlanır.
+* **[Sertifikalar](automation-certificates.md)** : Kimlik doğrulaması ve dağıtılan kaynakların güvenliğini sağlama amacıyla kullanmak üzere depolayın ve çalışma zamanında kullanılabilir duruma getirin.
+* **[Değişkenler](automation-variables.md)** : Farklı runbook'larda ve yapılandırmalarda kullanılabilecek içeriği tutmak için bir yöntem sağlar. Runbook'larda ve onlara başvuran yapılandırmalarda değişiklik yapmadan değerleri değiştirebilirsiniz.
 
 ### <a name="source-control-integration"></a>Kaynak denetimi tümleştirmesi
 
-Azure Otomasyonu yeteneği olan [kaynak denetimi ile Birleşen](source-control-integration.md) hangi yükseltir yapılandırma burada runbook'ları veya yapılandırmaları işaretli bir kaynak denetim sistemine kod olarak.
+Azure Otomasyonu, yapılandırmayı runbook 'ların veya yapılandırmaların bir kaynak denetim sistemine denetlenebildiği kod olarak destekleyen [kaynak denetimiyle tümleştirme](source-control-integration.md) özelliğine sahiptir.
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Azure Otomasyonu tabanlı erişim denetimi Otomasyon hesabına erişimi denetlemek için rol destekler ve kaynaklarını yapılandırma, Otomasyon hesabı, runbook'ları ve işleri, RBAC hakkında daha fazla bilgi için bkz: [Azure için rol tabanlı erişim denetimi Otomasyon](automation-role-based-access-control.md).
+Azure Otomasyonu, Otomasyon hesabına ve kaynaklarına erişimi denetlemek için rol tabanlı Access Control destekler. Otomasyon hesabınızda, runbook 'larda ve işleriniz üzerinde yapılandırma RBAC hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu Için rol tabanlı erişim denetimi](automation-role-based-access-control.md).
 
 ### <a name="windows-and-linux"></a>Windows ve Linux
 

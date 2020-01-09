@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456635"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps 'te likit şablonlar ile gelişmiş JSON dönüştürmeleri gerçekleştirin
 
@@ -21,7 +21,7 @@ Mantıksal uygulamalarınızda, JSON **oluşturma** veya **ayrıştırma**gibi y
 
 Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için önce JSON ile JSON eşlemeyi bir sıvı şablonuyla tanımlamanız ve bu eşlemeyi tümleştirme hesabınızda depolamanız gerekir. Bu makalede, bu likit şablon veya haritanın nasıl oluşturulduğu ve kullanılacağı gösterilir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Bir aboneliğiniz yoksa [ücretsiz bir Azure hesabı ile başlayabilirsiniz](https://azure.microsoft.com/free/). Ya da [bir Kullandıkça Öde aboneliğine kaydolun](https://azure.microsoft.com/pricing/purchase-options/).
 
@@ -29,14 +29,14 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
 
 * Temel bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* [Sıvı şablonu dili](https://shopify.github.io/liquid/) hakkında temel bilgi.
+* [Sıvı şablonu dili](https://shopify.github.io/liquid/) hakkında temel bilgi
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tümleştirme hesabınız için likit şablon veya eşleme oluşturma
 
 1. Bu örnekte, bu adımda açıklanan örnek likit şablonunu oluşturun. Sıvı şablonunuzda, [dotlikit](https://dotliquidmarkup.org/) ve C# adlandırma kurallarını kullanan [sıvı filtrelerini](https://shopify.github.io/liquid/basics/introduction/#filters)kullanabilirsiniz. 
 
    > [!NOTE]
-   > Filtre adlarının şablonunuzda *tümce* kullanmasına dikkat edin. Aksi takdirde, filtreler çalışmaz.
+   > Filtre adlarının şablonunuzda *tümce* kullanmasına dikkat edin. Aksi takdirde, filtreler çalışmaz. Ayrıca, haritalar [Dosya boyutu sınırlarına](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)sahiptir.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -71,7 +71,7 @@ Mantıksal uygulamanızda bir likit dönüştürme gerçekleştirebilmek için �
    |----------|-------|-------------|
    | **Adı** | JsonToJsonTemplate | Bu örnekteki "JsonToJsonTemplate" olan haritaınızın adı | 
    | **Eşleme türü** | **sıvı** | Haritalarınızın türü. JSON-JSON dönüştürmesi için **likit**' i seçmeniz gerekir. | 
-   | **Harita** | "SimpleJsonToJsonTemplate. sıvı" | Bu örnekte "SimpleJsonToJsonTemplate. sıvı" olan dönüştürme için kullanılacak mevcut bir likit şablon veya eşleme dosyası. Bu dosyayı bulmak için dosya seçiciyi kullanabilirsiniz. |
+   | **Harita** | "SimpleJsonToJsonTemplate. sıvı" | Bu örnekte "SimpleJsonToJsonTemplate. sıvı" olan dönüştürme için kullanılacak mevcut bir likit şablon veya eşleme dosyası. Bu dosyayı bulmak için dosya seçiciyi kullanabilirsiniz. Harita boyutu sınırları için bkz. [sınırlara ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
 
    ![Likit Şablon Ekle](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

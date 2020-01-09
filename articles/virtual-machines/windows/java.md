@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 618d9a8d941202db05981566203bf96c02f415a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358318"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -188,7 +188,7 @@ Bu adıma başlamadan önce, bir [Active Directory Hizmet sorumlusuna](../../act
 
 ### <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
-Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/resource-group-overview.md)bulunmalıdır.
+Tüm kaynaklar bir [kaynak grubunda](../../azure-resource-manager/management/overview.md)bulunmalıdır.
 
 Uygulamanın değerlerini belirtmek ve kaynak grubunu oluşturmak için, bu kodu Main yöntemindeki try bloğuna ekleyin:
 
@@ -431,7 +431,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>VM 'ye veri diski ekleme
+### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
 2 GB boyutundaki sanal makineye bir veri diski eklemek için, 0 LUN 'unu ve bir tür okumayı önbelleğe alma türünü, bu kodu Main yöntemindeki try bloğuna ekleyin:
 

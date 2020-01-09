@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics içindeki ölçek Machine Learning işlevleri
 description: Bu makalede bölümlendirme ve akış birimleri yapılandırarak Machine Learning işlevleri kullanan Stream Analytics işlerin nasıl ölçeklendiriyapılacağı açıklanır.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dedffab0b17515cedc54569d5debf6d29b273644
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458738"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
 
@@ -90,7 +89,7 @@ Giriş olayı hızı, 100x tarafından artıyorsa, Stream Analytics işin saniye
 
 Her toplu iş boyutu için aşağıdaki gecikme ölçümlerini kullanarak ölçeklendirmeyi inceleyelim:
 
-| Gecikme süresi | Toplu iş boyutu |
+| Gecikme süresi | Toplu işlem boyutu |
 | --- | --- |
 | 200 MS | 1000-olay toplu işleri veya altı |
 | 250 MS | 5\.000-olay toplu işleri |
@@ -104,14 +103,14 @@ Aşağıda, farklı SUs ve Batch boyutları (saniye başına olay sayısı) içi
 
 | toplu iş boyutu (ML gecikmesi) | 500 (200 ms) | 1\.000 (200 ms) | 5\.000 (250 MS) | 10.000 (300 ms) | 25.000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2\.500 |5\.000 |20.000 |30.000 |50.000 |
-| **3 SUs** |2\.500 |5\.000 |20.000 |30.000 |50.000 |
-| **6 SUs** |2\.500 |5\.000 |20.000 |30.000 |50.000 |
-| **12 SUs** |5\.000 |10,000 |40.000 |60.000 |100.000 |
-| **18 SUs** |7\.500 |15.000 |60.000 |90.000 |150.000 |
-| **24 SUs** |10,000 |20.000 |80.000 |120.000 |200,000 |
-| **...** |... |... |... |... |... |
-| **60 SUs** |25.000 |50.000 |200,000 |300.000 |500.000 |
+| **1 SU** |2,500 |5\.000 |20.000 |30,000 |50.000 |
+| **3 SUs** |2,500 |5\.000 |20.000 |30,000 |50.000 |
+| **6 SUs** |2,500 |5\.000 |20.000 |30,000 |50.000 |
+| **12 SUs** |5\.000 |10,000 |40,000 |60,000 |100.000 |
+| **18 SUs** |7\.500 |15.000 |60,000 |90,000 |150,000 |
+| **24 SUs** |10,000 |20.000 |80,000 |120,000 |200,000 |
+| **…** |… |… |… |… |… |
+| **60 SUs** |25,000 |50.000 |200,000 |300,000 |500,000 |
 
 Şimdi, Stream Analytics çalışma Machine Learning işlevlerinin nasıl çalıştığını daha iyi anlayabilirsiniz. Ayrıca, veri kaynaklarından alınan Stream Analytics işlerin "çekme" verilerini ve her "çekme" Stream Analytics işinin işlemesi için bir olay toplu işi döndürdüğünü de anlamış olabilirsiniz. Bu çekme modeli Machine Learning Web hizmeti isteklerini nasıl etkiler?
 

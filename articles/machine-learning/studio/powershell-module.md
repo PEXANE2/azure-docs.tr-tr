@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837994"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427539"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için PowerShell modülleri (klasik)
 
 PowerShell modüllerini kullanarak, çalışma alanları, veri kümeleri ve Web Hizmetleri gibi Studio (klasik) kaynaklarınızı ve varlıklarınızı programlama yoluyla yönetebilirsiniz.
 
-Üç PowerShell modülünü kullanarak Studio kaynaklarının klasik sürümüyle etkileşim kurabilirsiniz:
+Üç PowerShell modülünü kullanarak Studio (klasik) kaynaklarıyla etkileşime geçebilirsiniz:
 
 * 2018 ' de yayınlanan [Azure PowerShell az](#az-rm) , farklı cmdlet adlarıyla birlikte Azurerd 'nin tüm işlevlerini içerir
 * [Azurerd](#az-rm) 2016 içinde yayınlandı, PowerShell Ile değiştirilmiştir az

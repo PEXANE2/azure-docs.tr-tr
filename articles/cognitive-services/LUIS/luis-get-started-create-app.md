@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: uygulama oluşturma-LUSıS'
 titleSuffix: Azure Cognitive Services
-description: Işıkları ve cihazları açıp kapatmak için önceden oluşturulmuş `HomeAutomation` etki alanını kullanan bir LUIS uygulaması oluşturun. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
+description: Bu hızlı başlangıçta, ışıkları ve gereçleri açmak ve kapatmak için önceden oluşturulmuş etki alanı `HomeAutomation` kullanan bir LUO uygulamasının nasıl oluşturulacağı gösterilmektedir. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,42 +9,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73613675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448111"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma
 
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
-
 Bu hızlı başlangıçta ışıkları ve cihazları açıp kapatmak için önceden oluşturulmuş `HomeAutomation` etki alanını kullanan bir LUIS uygulaması oluşturacaksınız. Önceden oluşturulmuş olan bu etki alanı amaçlara, varlıklara ve örnek konuşmalara sahiptir. İşlemi tamamladığınızda bulut üzerinde çalışan bir LUIS uç noktasına sahip olacaksınız.
-
-## <a name="prerequisites"></a>Ön koşullar
-
-Bu makale için [https://www.luis.ai](https://www.luis.ai) adresindeki LUIS portalından oluşturulan ücretsiz bir LUIS hesabına ihtiyacınız olacak. 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 [!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
-**Uygulamalarım** sayfasından uygulama oluşturabilir ve yönetebilirsiniz. 
+**Uygulamalarım** sayfasından uygulama oluşturabilir ve yönetebilirsiniz.
 
 1. LUU portalında, Uygulamalarım listesinden **+ Oluştur**' u seçin.
 
     ![LUU portalında, Uygulamalarım listesinde ' + oluştur ' u seçin.](./media/create-app-in-portal.png)
 
-1. İletişim kutusunda `Home Automation` uygulamanızı adlandırın, sonra **bitti**' yi seçin. LUO uygulamayı oluşturur. Açıklama isteğe bağlıdır ve yazma veya tahmin için kullanılmaz. Bir LUSıS uygulaması oluştururken tahmin kaynağı da isteğe bağlıdır. Uygulamanızı üretime yayımladığınızda, uygulamanızın birçok isteği işleyebilmesi için bir tahmin kaynağı atamanız gerekir.  
+1. İletişim kutusunda `Home Automation` uygulamanızı adlandırın, sonra **bitti**' yi seçin. LUO uygulamayı oluşturur. Açıklama isteğe bağlıdır ve yazma veya tahmin için kullanılmaz. Bir LUSıS uygulaması oluştururken tahmin kaynağı da isteğe bağlıdır. Uygulamanızı üretime yayımladığınızda, uygulamanızın birçok isteği işleyebilmesi için bir tahmin kaynağı atamanız gerekir.
 
     ![İletişim kutusunda, uygulamanızın giriş Otomasyonu ' nu adlandırın](./media/create-new-app-details.png)
 
     >[!NOTE]
-    >Uygulama oluşturduktan sonra kültür değiştirilemez. 
+    >Uygulama oluşturduktan sonra kültür değiştirilemez.
 
 ## <a name="add-prebuilt-domain"></a>Önceden oluşturulmuş etki alanını ekleme
 
@@ -61,7 +55,7 @@ HomeAutomation etki alanı amaçlarını gözden geçirmek için **amaçlar** ' 
 ![HomeAutomation amaçları listesinin ekran görüntüsü](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation amaçları listesinin ekran görüntüsü")
 
 > [!NOTE]
-> **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz. 
+> **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz.
 
 **HomeAutomation.TurnOff** amacını seçin. Amaçta varlıklarla etiketlenmiş olan konuşmaların bir listesini görebilirsiniz.
 
@@ -72,7 +66,7 @@ HomeAutomation etki alanı amaçlarını gözden geçirmek için **amaçlar** ' 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Uygulamanızı test etme
-Uygulamanızı eğittikten sonra test edebilirsiniz. **Test**' i seçin. Etkileşimli test bölmesine `Turn off the lights` benzer bir test yazın ve ENTER tuşuna basın. 
+Uygulamanızı eğittikten sonra test edebilirsiniz. **Test**' i seçin. Etkileşimli test bölmesine `Turn off the lights` benzer bir test yazın ve ENTER tuşuna basın.
 
 ```
 Turn off the lights
@@ -88,7 +82,7 @@ Tahmin hakkında daha fazla **bilgi için İnceleme** ' yi seçin.
 
 ![İnceleme bilgileriyle test bölmesinin ekran görüntüsü](media/luis-quickstart-new-app/test.png)
 
-Test bölmesini daraltmak için yeniden **Test**'i seçin. 
+Test bölmesini daraltmak için yeniden **Test**'i seçin.
 
 <a name="publish-your-app"></a>
 
@@ -100,7 +94,7 @@ Test bölmesini daraltmak için yeniden **Test**'i seçin.
 
 ## <a name="query-the-v3-api-prediction-endpoint"></a>V3 API tahmini uç noktasını sorgulama
 
-[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
 1. Tarayıcı adres çubuğunda, sorgu dizesi için aşağıdaki ad ve değer çubuklarının URL 'de olduğundan emin olun. Sorgu dizesinde yoksa, bunları ekleyin:
 
@@ -201,7 +195,7 @@ Test bölmesini daraltmak için yeniden **Test**'i seçin.
     ```
 
     [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
-    
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

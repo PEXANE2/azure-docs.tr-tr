@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3b176a6027b0f03c3802867df7be1e339286df2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365334"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını kullanmaya başlama
 
@@ -40,7 +40,7 @@ Aşağıdaki öğreticinin video sürümüyle birlikte izleyin:
 Sorgular, bir tablo adı veya *Search* komutuyla başlayabilir. Sorgu için açık bir kapsam tanımladığından ve hem sorgu performansını hem de sonuçların uygunluğunu geliştirdiğinden, bir tablo adıyla başlamanız gerekir.
 
 > [!NOTE]
-> Azure Izleyici tarafından kullanılan kusto sorgu dili, büyük/küçük harfe duyarlıdır. Dil anahtar sözcükleri genellikle küçük harf olarak yazılmıştır. Bir sorgudaki tablo veya sütun adlarını kullanırken, şema bölmesinde gösterildiği gibi doğru durumu kullandığınızdan emin olun.
+> Azure İzleyici tarafından kullanılan Kusto sorgu dili, büyük/küçük harfe duyarlıdır. Dil anahtar sözcükleri genellikle küçük harfle yazılır. Bir sorgudaki tablo veya sütun adlarını kullanırken, şema bölmesinde gösterildiği gibi doğru durumu kullandığınızdan emin olun.
 
 ### <a name="table-based-queries"></a>Tablo tabanlı sorgular
 Azure Izleyici, tablolardaki günlük verilerini, her biri birden çok sütundan oluşan şekilde düzenler. Tüm tablolar ve sütunlar, analiz portalında Log Analytics şema bölmesinde gösterilir. İlgilendiğiniz bir tabloyu tanımlayabilir ve ardından bir veri bölümüne göz atın:
@@ -105,7 +105,7 @@ SecurityEvent
 
 Filtre koşullarını yazarken aşağıdaki ifadeleri kullanabilirsiniz:
 
-| İfadeler | Açıklama | Örnek |
+| Expression | Açıklama | Örnek |
 |:---|:---|:---|
 | == | Eşitliği denetle<br>(büyük/küçük harfe duyarlı) | `Level == 8` |
 | =~ | Eşitliği denetle<br>(büyük/küçük harf duyarsız) | `EventSourceName =~ "microsoft-windows-security-auditing"` |

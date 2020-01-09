@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory erişim denetimi hizmetinden alınan paylaşılan erişim imzası yetkisi geçirme | Microsoft Docs
-description: Uygulamaları, erişim denetimi hizmetinden SAS'ye geçiş
+title: Azure Relay-paylaşılan erişim Imzası yetkilendirmesi 'ne geçiş
+description: Access Control Service uygulamaları SAS 'ye geçirme
 services: service-bus-relay
 documentationcenter: ''
 author: clemensv
@@ -11,60 +11,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7f71b6884413309e6806658f25313c22e074a71b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8aec2483f39f698a62be60f6da6018f8981df423
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686388"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355042"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory erişim denetimi hizmetinden alınan paylaşılan erişim imzası yetkisi geçirme
+# <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
 
-Azure geçişi uygulamaları geçmişe yönelik olarak iki farklı yetkilendirme modeli kullanarak bir seçim vardı: [paylaşılan erişim imzası (SAS)](../service-bus-messaging/service-bus-sas.md) doğrudan geçiş hizmeti tarafından sağlanan belirteç modelini ve Federasyon modeli nerede Yönetimi Yetkilendirme kuralları yönetilir içinde [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) ve ACS'den alınan belirteçlerin geçirilir geçişi istenen özelliklere erişim yetkisi vermek için.
+Azure Relay uygulamalarda iki farklı yetkilendirme modeli kullanma seçeneği vardı: doğrudan geçiş hizmeti tarafından sunulan [paylaşılan erişim imzası (SAS)](../service-bus-messaging/service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetiminin [Azure ACTIVE DIRECTORY](/azure/active-directory/) Access Control Service (ACS) tarafından yönetildiği BIR Federasyon modeli ve ACS 'den alınan belirteçler, istenen özelliklere erişim yetkisi veren geçişe geçirilir.
 
-ACS yetkilendirme modelini uzun yerini almıştır [SAS yetkilendirme](../service-bus-messaging/service-bus-authentication-and-authorization.md) tercih edilen modeli ve tüm belgeler yönergelerinin ve SAS bugün özel kullanımda. Üstelik, artık, ACS ile eşleştirilmiş durumda yeni bir geçiş ad alanı oluşturabileceğiniz mümkündür.
+ACS yetkilendirme modelinin süresi, tercih edilen model olarak [SAS yetkilendirmesi](../service-bus-messaging/service-bus-authentication-and-authorization.md) ile değiştirilmiştir ve tüm belgeler, kılavuzluk ve örnekler günümüzde SAS kullanır. Üstelik, artık ACS ile eşleştirilmiş yeni geçiş ad alanları oluşturmak mümkün değildir.
 
-Hemen başka bir hizmete bağımlı değil ancak bir istemci tüm aracılar olmadan doğrudan SAS kural adı ve kural anahtarı istemci erişim vererek kullanılabilir SAS avantajına sahiptir. SAS, bir istemci bir yetkilendirme denetimi başka bir hizmet ile ilk geçirilecek olan ve ardından bir belirteç verilir bir yaklaşım ile aynı zamanda bir kolayca tümleştirilebilir. İkinci yaklaşımda ACS kullanım desenine benzer, ancak ACS'de express zor olan uygulama özel koşullara bağlı veren erişim belirteçleri sağlar.
+SAS kural adı ve kural anahtarına istemci erişimi vererek, SAS, başka bir hizmete hemen bağımlı olmasa da, hiçbir aracı olmadan doğrudan bir istemciden doğrudan kullanılabilir. SAS ayrıca, bir istemcinin ilk olarak başka bir hizmetle bir yetkilendirme denetimi geçirmesi gereken bir yaklaşım ile kolayca tümleştirilebilir ve ardından bir belirteç verilir. İkinci yaklaşım ACS kullanım düzenine benzerdir, ancak ACS 'de hızlı bir şekilde ifade edilen uygulamaya özgü koşullara göre erişim belirteçleri verilmesine olanak sağlar.
 
-Üzerinde ACS bağımlı olan tüm mevcut uygulamalar için biz bunun yerine SAS yararlanmayı uygulamalarını konusunda müşterileri bağlantısını okumanızı tavsiye.
+ACS 'ye bağlı olan tüm mevcut uygulamalar için, müşterileri uygulamalarını SAS 'ye göre geçirmeye geçiririz.
 
 ## <a name="migration-scenarios"></a>Geçiş senaryoları
 
-ACS ve geçiş paylaşılan bilgisi tümleşik bir *imzalama anahtarı*. İmzalama anahtarı yetkilendirme Belirteçleri imzalamak için bir ACS ad alanı tarafından kullanılır ve belirteç eşleştirilmiş ACS ad alanı tarafından verildiğini doğrulamak için Azure geçişi tarafından kullanılır. ACS ad alanı, hizmet kimlikleri ve yetkilendirme kuralları içerir. Yetkilendirme kuralları, hangi hizmet kimliği veya bir dış tarafından verilen bir belirteç hangi kimlik sağlayıcısı hangi tür bir erişimin bir parçası bir geçiş ad alanı grafik, en uzun ön ek eşleştirmesi biçiminde alır tanımlayın.
+ACS ve geçiş, bir *İmzalama anahtarının*paylaşılan bilgisi aracılığıyla tümleşiktir. İmzalama anahtarı, bir ACS ad alanı tarafından, yetkilendirme belirteçlerini imzalamak için kullanılır ve belirtecin eşleştirilmiş ACS ad alanı tarafından verildiğini doğrulamak için Azure Relay tarafından kullanılır. ACS ad alanı hizmet kimliklerini ve yetkilendirme kurallarını barındırır. Yetkilendirme kuralları, hangi hizmet kimliğinin veya bir dış kimlik sağlayıcısı tarafından verilen belirtecin, en uzun ön ek eşleşme biçiminde geçiş ad alanı grafiğinin bir bölümüne hangi tür erişimi olduğunu tanımlar.
 
-Örneğin, bir ACS kuralı vermek **Gönder** yol ön ek talep `/` için hizmet kimliği, yani bu kurala dayalı ACS tarafından verilmiş bir belirteç istemci ad alanındaki tüm varlıklara Gönder hakkı verir. Yol ön eki ise `/abc`, kimlik adlı varlıklara göndermeyi sınırlıdır `abc` veya bu ön eki altında düzenlenir. Bu Geçiş Kılavuzu okuyucular zaten bu kavramlarla ilgili bilgi sahibi olduğunuz varsayılır.
+Örneğin, bir ACS kuralı, bir hizmet kimliğine `/` yol ön ekine **gönderilen** isteği verebilir, bu da bu KURALA göre ACS tarafından verilen belirtecin, istemci haklarının ad alanındaki tüm varlıklara gönderilmesini sağlar. Yol ön eki `/abc`ise, kimlik, bu ön ek altında `abc` olarak adlandırılan varlıklara gönderilmeye kısıtlıdır. Bu geçiş kılavuzunun okuyucularının bu kavramlarla zaten tanıdık olduğu varsayılır.
 
-Geçiş senaryoları üç ana kategoriye ayrılır:
+Geçiş senaryoları üç geniş kategoriye ayrılır:
 
-1.  **Varsayılan değerleri değiştirmeden**. Bazı müşteriler bir [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) nesnesi, otomatik olarak oluşturulan geçirme **sahibi** kimliği ve gizli anahtarını geçiş ad alanı ile eşleştirilmiş ACS ad alanı için hizmet ve yapın Yeni Kural Ekle değil.
+1.  **Değiştirilmemiş varsayılanlar**. Bazı müşteriler bir [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) nesnesi kullanarak, otomatik olarak oluşturulan **sahip** hizmet kimliğini ve ACS ad alanı için gizli anahtarını geçirerek, geçiş ad alanıyla eşleştirilmiş ve yeni kurallar eklemez.
 
-2.  **Özel hizmet kimlikleri basit kurallarla**. Bazı müşteriler yeni hizmet kimlikleri ekleyin ve her yeni bir hizmet kimliği vermek **Gönder**, **dinleme**, ve **Yönet** belirli bir varlık için izinleri.
+2.  **Basit kurallara sahip özel hizmet kimlikleri**. Bazı müşteriler yeni hizmet kimlikleri ekler ve her yeni hizmet kimliğini belirli bir varlık için **gönderme**, **dinleme**ve **yönetme** izinleri verir.
 
-3.  **Özel hizmet kimlikleri karmaşık kurallar ile**. Çok az sayıda müşterilerin karmaşık kural kümeleri hangi harici olarak verilen belirteçler geçiş hakları eşlendiğine ya da burada tek hizmet kimliği atanır birden çok kural birden fazla ad alanı yollarını hakları Ayrıştırılan var.
+3.  **Karmaşık kurallara sahip özel hizmet kimlikleri**. Çok az sayıda müşteri, dışarıdan verilen belirteçlerin geçiş üzerindeki haklara eşlendiği veya tek bir hizmet kimliğinin birden çok kural aracılığıyla çeşitli ad alanı yollarında farklılaştırılan haklar atandığı karmaşık kural kümelerine sahiptir.
 
-Karmaşık kural kümeleri geçişi ile ilgili Yardım almak için sizinle [Azure Destek](https://azure.microsoft.com/support/options/). Diğer iki senaryoda basit geçişi etkinleştirin.
+Karmaşık kural kümelerinin geçişine ilişkin yardım için [Azure desteğine](https://azure.microsoft.com/support/options/)başvurabilirsiniz. Diğer iki senaryo doğrudan geçişe olanak tanır.
 
-### <a name="unchanged-defaults"></a>Değiştirilmemiş Varsayılanları
+### <a name="unchanged-defaults"></a>Değiştirilmemiş varsayılanlar
 
-Uygulamanızı ACS Varsayılanları değişmemişse tüm değiştirebilirsiniz [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) kullanımı ile bir [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) nesne ve önceden yapılandırılmış ad alanı kullanın **RootManageSharedAccessKey** ACS yerine **sahibi** hesabı. ACS ile bile unutmayın **sahibi** hesabının, bu yapılandırma (ve hala) bu hesabı/kural silmek için izni de dahil olmak üzere ad alanı üzerinde tam yönetim yetkilisi sağladığından değil genel olarak, önerilen varlıklar.
+Uygulamanız ACS varsayılanlarını değiştirmediyse, tüm [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) kullanımını bir [Sharedaccesssignaturetokenprovider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) nesnesiyle değiştirebilir ve ACS **Owner** hesabı yerine önceden yapılandırılmış **RootManageSharedAccessKey** ad alanını kullanabilirsiniz. Bu hesap/kural ad alanı üzerinde tüm varlıkları silme izni de dahil olmak üzere tam yönetim yetkilisi sağladığından, ACS **sahip** hesabıyla bile bu yapılandırmanın (ve yine de) önerildiğine unutmayın.
 
-### <a name="simple-rules"></a>Basit kural
+### <a name="simple-rules"></a>Basit kurallar
 
-Uygulama basit kurallarıyla özel hizmet kimlikleri kullanıyorsa, geçiş, belirli bir geçiş üzerinde erişim denetimi sağlamak için bir ACS hizmet kimliği oluşturulduğu durumda basittir. Bu senaryo genellikle SaaS stili çözümlerde, belirli bir site için bir kiracı sitesi veya şube ile hizmet kimliği için bir köprü oluşturulduğundan her geçişi kullanıldığı durumdur. Bu durumda, ilgili hizmet kimliği geçişi üzerinde doğrudan bir paylaşılan erişim imzası kural geçirilebilir. Hizmet kimliği adı, SAS kural adı haline gelir ve hizmet kimlik anahtarı SAS kural anahtarı haline gelir. Varlık için yapılandırılmış eşdeğer sırasıyla geçerli ACS kural ardından SAS kuralın haklarıdır.
+Uygulama basit kurallarla özel hizmet kimlikleri kullanıyorsa, geçiş işlemi, belirli bir geçişte erişim denetimi sağlamak üzere bir ACS hizmet kimliğinin oluşturulduğu durumda basittir. Bu senaryo genellikle her bir geçişinin kiracı sitesi veya şube ofisi için bir köprü olarak kullanıldığı ve bu belirli site için hizmet kimliğinin oluşturulduğu SaaS stili çözümlerde bir durumdur. Bu durumda, ilgili hizmet kimliği, doğrudan geçiş üzerinde bir paylaşılan erişim Imza kuralına geçirilebilir. Hizmet kimliği adı SAS kuralı adı olabilir ve hizmet kimliği anahtarı SAS kural anahtarı olabilir. SAS kuralının hakları daha sonra varlık için sırasıyla geçerli ACS kuralına eşit olarak yapılandırılır.
 
-ACS ile Federasyon tüm var olan bir ad alanında yerinde SAS'ın bu yeni ve ek yapılandırma yapabilir ve ACS uzağa geçiş kullanarak daha sonra gerçekleştirilen [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) yerine [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Ad alanı ACS'den bağlantısı olması gerekmez.
+ACS ile federe olan mevcut bir ad alanı üzerinde bu yeni ve ek SAS yapılandırmalarını yerinde yapabilir ve ACS 'den uzağa geçiş daha sonra [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)yerine [Sharedaccesssignaturetokenprovider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) kullanılarak gerçekleştirilir. Ad alanının ACS 'den bağlantısının kesilme gereksinimi yoktur.
 
 ### <a name="complex-rules"></a>Karmaşık kurallar
 
-SAS kuralları hesapları olması beklenmez, ancak haklarıyla ilişkili İmzalama anahtarları olarak adlandırılır. Bu nedenle, uygulama birçok hizmet kimlikleri oluşturur ve bunları veren senaryoları erişim haklarını çeşitli varlıklar için veya tüm ad alanı yine de bir belirteci verilirken aracı gerektirir. Yönergeler için bu tür bir aracı tarafından edinebilirsiniz [destekle iletişim kurarak](https://azure.microsoft.com/support/options/).
+SAS kurallarının hesap olmaması gerekmez, ancak haklarıyla ilişkili İmzalama anahtarları adlandırılmaktadır. Bu nedenle, uygulamanın birçok hizmet kimliği oluşturduğu ve bunlara çeşitli varlıklar için erişim hakları veren senaryolar veya tüm ad alanı hala belirteç veren bir aracı gerektirir. [Destek ile iletişime geçerek](https://azure.microsoft.com/support/options/)böyle bir aracı için rehberlik elde edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure geçişi kimlik doğrulaması hakkında daha fazla bilgi için aşağıdaki konulara bakın:
+Azure Relay kimlik doğrulaması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
-* [Azure geçişi kimlik doğrulaması ve yetkilendirme](relay-authentication-and-authorization.md)
-* [Paylaşılan erişim imzaları ile Service Bus kimlik doğrulaması](../service-bus-messaging/service-bus-sas.md)
+* [Azure Relay kimlik doğrulaması ve yetkilendirme](relay-authentication-and-authorization.md)
+* [Paylaşılan erişim Imzaları ile kimlik doğrulamasını Service Bus](../service-bus-messaging/service-bus-sas.md)
 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: 927e5baa3abfef8aabce1a7c3031eb38f790d268
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9a5783bfd035c5db06c4e1b0e36a17ca14cc0632
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440592"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ve Microsoft Access veri depolarından veri kopyalama
 
@@ -31,7 +31,7 @@ Bu Microsoft Access Connector, aşağıdaki etkinlikler için desteklenir:
 
 Microsoft Access kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu Microsoft Access bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
@@ -53,13 +53,13 @@ Microsoft Access bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Yes |
-| connectionString | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br>Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md).| Yes |
-| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Yes |
+| type | Type özelliği: **MicrosoftAccess** olarak ayarlanmalıdır | Evet |
+| connectionString | Kimlik bilgisi bölümünü dışlayarak ODBC bağlantı dizesi. Bağlantı dizesini belirtebilir veya Integration Runtime makinesinde ayarladığınız Sistem DSN 'sini (veri kaynağı adı) kullanabilirsiniz (yine de bağlı hizmette kimlik bilgisi bölümünü de belirtmeniz gerekir).<br> Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault depolama kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin.| Evet |
+| authenticationType | Microsoft Access veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü.<br/>İzin verilen değerler: **temel** ve **anonim**. | Evet |
 | userName adı | Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. | Hayır |
-| password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
+| parola | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
 | kimlik bilgisi | Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Bu alanı SecureString olarak işaretleyin. | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Evet |
 
 **Örnek:**
 
@@ -69,10 +69,7 @@ Microsoft Access bağlı hizmeti için aşağıdaki özellikler desteklenir:
     "properties": {
         "type": "Microsoft Access",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
+            "connectionString": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -96,7 +93,7 @@ Verileri Microsoft Access 'ten kopyalamak için aşağıdaki özellikler destekl
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Yes |
+| type | Veri kümesinin Type özelliği: **Microsoftaccesstable** olarak ayarlanmalıdır | Evet |
 | tableName | Microsoft Access 'teki tablonun adı. | Kaynak için Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse);<br/>Havuz için Evet |
 
 **Örnek**
@@ -127,7 +124,7 @@ Microsoft Access uyumlu veri deposundan veri kopyalamak için, etkinlik **kayna�
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Microsoftaccesssource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel sorguyu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**

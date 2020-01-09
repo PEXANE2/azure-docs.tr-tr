@@ -1,30 +1,30 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak yönetimine yönelik bir yönetilen hizmet teklifini yayımlamayı öğrenin.
-ms.date: 11/15/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d1eb06794551be498e05e2b9c3b893013b718ce9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453530"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
-Bu makalede, Azure Market 'e kaynak eklemek için teklifi satın alan bir müşteriyi etkinleştirmek üzere [bulut iş ortağı portalı](https://cloudpartner.azure.com/)kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'ne genel veya özel yönetilen bir hizmet teklifini yayımlamayı öğreneceksiniz. yönetme.
+Bu makalede, Azure Market kaynak yönetimine yönelik kaynakları kullanıma sunma teklifini satın alan bir müşteriyi etkinleştirerek [bulut iş ortağı portalı](https://cloudpartner.azure.com/)kullanarak [Azure Marketi](https://azuremarketplace.microsoft.com) 'ne genel veya özel yönetilen bir hizmet teklifini yayımlamayı öğreneceksiniz.
 
 > [!NOTE]
-> Bu teklifleri oluşturmak ve yayımlamak için [Iş Ortağı Merkezi 'nde](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) geçerli bir hesabınız olması gerekir. Zaten bir hesabınız yoksa [kaydolma işlemi](https://aka.ms/joinmarketplace) , Iş Ortağı Merkezi 'nde hesap oluşturma ve ticari Market programına kaydolma adımlarında size yol açacaktır. Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) .
+> Bu teklifleri oluşturmak ve yayımlamak için [Iş Ortağı Merkezi 'nde](../../marketplace/partner-center-portal/create-account.md) geçerli bir hesabınız olması gerekir. Zaten bir hesabınız yoksa [kaydolma işlemi](https://aka.ms/joinmarketplace) , Iş Ortağı Merkezi 'nde hesap oluşturma ve ticari Market programına kaydolma adımlarında size yol açacaktır. Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](../../billing/billing-partner-admin-link-started.md) .
 >
 > Bir teklifi Azure Marketi 'ne yayımlamak istemiyorsanız, Azure Resource Manager şablonları kullanarak müşterileri el ile ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure tarafından atanan kaynak yönetimine müşteri ekleme](onboard-customer.md).
 
-Yönetilen bir hizmet teklifini yayımlamak, Azure Marketi 'ne başka bir teklif türü yayımlamaya benzer. Bu işlem hakkında bilgi edinmek için bkz. [Azure Marketi ve Appsource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) ve [Azure ve appsource Market tekliflerini yönetme](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Ayrıca, özellikle [yönetilen hizmetler](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
+Yönetilen bir hizmet teklifini yayımlamak, Azure Marketi 'ne başka bir teklif türü yayımlamaya benzer. Bu işlem hakkında bilgi edinmek için bkz. [Azure Marketi ve Appsource Yayımlama Kılavuzu](../../marketplace/marketplace-publishers-guide.md) ve [Azure ve appsource Market tekliflerini yönetme](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md). Ayrıca, özellikle [yönetilen hizmetler](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
 
 Müşteri teklifinizi eklediğinde bir veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini alacak ve daha sonra [Azure tarafından yetkilendirilen kaynak yönetimi için eklendi](#the-customer-onboarding-process)olacaktır. Aboneliğin (veya abonelik içindeki kaynak gruplarının) eklendi olabileceğini, **Microsoft. ManagedServices** kaynak sağlayıcısı 'nı el ile kaydederek aboneliğin ekleme için yetkilendirilmiş olması gerektiğini unutmayın.
 
 > [!IMPORTANT]
-> Yönetilen bir hizmet teklifinin her bir planı, kiracınızdaki Azure Active Directory (Azure AD) varlıklarını tanımladığınız bir **bildirim ayrıntıları** bölümü içerir. bu noktada, kiralarınızda atanan kaynak gruplarına ve/veya aboneliklerine erişen müşteriler için Bu planı satın alın. Buraya eklediğiniz herhangi bir grup (veya Kullanıcı veya hizmet sorumlusu), planı satın alan her müşteri için aynı izinlere sahip olacağını unutmamak önemlidir. Her müşteriyle çalışacak farklı gruplar atamak için, her müşteri için özel olarak özel bir plan yayımlamanız gerekir.
+> Yönetilen bir hizmet teklifinin her bir planı, kiracınızda bu planı satın alan müşteriler için atanan kaynak gruplarına ve/veya aboneliklerine erişimi olacak Azure Active Directory (Azure AD) varlıklarını tanımladığınız bir **bildirim ayrıntıları** bölümü içerir. Buraya eklediğiniz herhangi bir grup (veya Kullanıcı veya hizmet sorumlusu), planı satın alan her müşteri için aynı izinlere sahip olacağını unutmamak önemlidir. Her müşteriyle çalışacak farklı gruplar atamak için, her müşteri için özel olarak özel bir plan yayımlamanız gerekir.
 
 ## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı teklifinizi oluşturun
 
@@ -59,8 +59,11 @@ Planlar bölümünde **Yeni plan**' ı seçin. Sonra bir **plan kimliği**girin.
 |**Başlık**     | Görüntüleme planının kolay adı. En fazla 50 karakter uzunluğunda.        |
 |**Özet**     | Başlık altında görüntülenecek planın kısa açıklaması. En fazla 100 karakter uzunluğunda.        |
 |**Açıklama**     | Planın daha ayrıntılı bir açıklamasını sağlayan açıklama metni.         |
-|**Faturalandırma modeli**     | Burada gösterilen 2 faturalandırma modeli vardır, ancak yönetilen hizmet teklifleri için **kendi lisansınızı getir** ' i seçmeniz gerekir. Bu, müşterilerinize bu teklifle ilgili maliyetleri doğrudan faturalayeceğiniz ve Microsoft 'un size herhangi bir ücret ödemeyeceği anlamına gelir.   |
-|**Bu özel bir plan mi?**     | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan **değer (genel) değildir.** Bu seçimi bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır; ortak bir plan yayımladıktan sonra, daha sonra özel olarak değiştiremezsiniz. Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası (20.000 ' e kadar abonelik için) karşıya yüklenebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun. Daha fazla bilgi için bkz. [özel SKU 'lar ve planlar](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+|**Faturalama modeli**     | Burada gösterilen 2 faturalandırma modeli vardır, ancak yönetilen hizmet teklifleri için **kendi lisansınızı getir** ' i seçmeniz gerekir. Bu, müşterilerinize bu teklifle ilgili maliyetleri doğrudan faturalayeceğiniz ve Microsoft 'un size herhangi bir ücret ödemeyeceği anlamına gelir.   |
+|**Bu özel bir plan mi?**     | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan **değer (genel) değildir.** Bu seçimi bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır; ortak bir plan yayımladıktan sonra, daha sonra özel olarak değiştiremezsiniz. Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası (20.000 ' e kadar abonelik için) karşıya yüklenebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun. Daha fazla bilgi için bkz. [özel SKU 'lar ve planlar](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  |
+
+> [!IMPORTANT]
+> Bir plan ortak olarak yayımlandıktan sonra, özel olarak değiştiremezsiniz. Hangi müşterilerin teklif ve temsilci kaynaklarınızı kabul edeceğini denetlemek için özel bir plan kullanın. Ortak bir plan sayesinde, kullanılabilirliği belirli müşterilerle veya hatta belirli sayıda müşteriye kısıtlayamazsınız (ancak bunu yapmak isterseniz planı tamamen satmaya devam edebilirsiniz). Bir müşteri teklifi kabul ettiğinde, her zaman bir müşteriye erişebilseniz ve [erişiminizi kaldırmasını](view-manage-service-providers.md#add-or-remove-service-provider-offers)istemek için şu anda temsilcileri reddetme veya kaldırma mekanizması yoktur.
 
 ### <a name="manifest-details"></a>Bildirim ayrıntıları
 
@@ -79,8 +82,8 @@ Her **Yetkilendirme**için aşağıdakileri sağlamanız gerekir. Daha sonra, da
 
 - **Azure AD nesne kimliği**: bir kullanıcının, Kullanıcı grubunun veya UYGULAMANıN Azure AD tanımlayıcısı (rol tanımında açıklandığı gibi) müşterilerinizin kaynaklarına verilecektir.
 - **Azure AD nesne görünen adı**: müşterinin bu yetkilendirmenin amacını anlamasına yardımcı olacak kolay bir ad. Müşteri, kaynakları yetkilendirirken bu adı görür.
-- **Rol tanımı**: listeden mevcut Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD nesne kimliği** alanındaki kullanıcının kaynaklarınızın kaynaklarına sahip olacağı izinleri tespit eder. Bu rollerin açıklamaları için bkz. [Azure için yetkilendirilmiş kaynak yönetimi Için](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) [yerleşik roller](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) ve rol desteği
-- **Atanabilir roller**: Bu, yalnızca bu yetkilendirme Için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz gereklidir. Bu durumda, buraya bir veya daha fazla atanabilir rol eklemeniz gerekir. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu **atanabilir rolleri** , [düzeltilebilir ilkeleri dağıtmak](deploy-policy-remediation.md)için gereken [yönetilen kimliklere](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın. Burada bir veya daha fazla rol seçmezseniz gönderiminiz sertifikayı geçirmez. (Bu kullanıcının rol tanımı için Kullanıcı erişimi Yöneticisi ' ni seçmediyseniz, bu alanın bir etkisi yoktur.)
+- **Rol tanımı**: listeden mevcut Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD nesne kimliği** alanındaki kullanıcının kaynaklarınızın kaynaklarına sahip olacağı izinleri tespit eder. Bu rollerin açıklamaları için bkz. [Azure tarafından yetkilendirilen kaynak yönetimi Için](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) [yerleşik roller](../../role-based-access-control/built-in-roles.md) ve rol desteği.
+- **Atanabilir roller**: Bu, yalnızca bu yetkilendirme Için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz gereklidir. Bu durumda, buraya bir veya daha fazla atanabilir rol eklemeniz gerekir. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu **atanabilir rolleri** , [düzeltilebilir ilkeleri dağıtmak](deploy-policy-remediation.md)için gereken [yönetilen kimliklere](../../active-directory/managed-identities-azure-resources/overview.md)atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın. Burada bir veya daha fazla rol seçmezseniz gönderiminiz sertifikayı geçirmez. (Bu kullanıcının rol tanımı için Kullanıcı erişimi Yöneticisi ' ni seçmediyseniz, bu alanın bir etkisi yoktur.)
 
 > [!TIP]
 > Çoğu durumda, tek bir kullanıcı hesabı serisi yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar. Ek öneriler için bkz. [Azure 'Da kiracılar, roller ve kullanıcılar ile Ilgili kullanım senaryoları](../concepts/tenants-users-roles.md).
@@ -123,7 +126,7 @@ Dört logo boyutu gereklidir: **küçük (40x40)** , **Orta (90x90)** , **büyü
 
 **Müşteri adayı yönetimi** bölümünde, müşteri ADAYLARıNıZıN depolanacağı CRM sistemini seçebilirsiniz. [Yönetilen hizmetler sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)göre, bir **müşteri adayı hedefinin** gerekli olduğunu unutmayın.
 
-Son olarak, **Gizlilik ILKESI URL** 'Nizi ve **yasal** bölümde **kullanım koşulları** sağlayın. Ayrıca, bu teklif için [Standart sözleşmenin](https://docs.microsoft.com/azure/marketplace/standard-contract) kullanılıp kullanılmayacağını da belirtebilirsiniz.
+Son olarak, **Gizlilik ILKESI URL** 'Nizi ve **yasal** bölümde **kullanım koşulları** sağlayın. Ayrıca, bu teklif için [Standart sözleşmenin](../../marketplace/standard-contract.md) kullanılıp kullanılmayacağını da belirtebilirsiniz.
 
 **Destek** bölümüne geçmeden önce değişikliklerinizi kaydettiğinizden emin olun.
 
@@ -135,16 +138,16 @@ Bu bilgileri ekledikten sonra Kaydet ' i seçin **.**
 
 ## <a name="publish-your-offer"></a>Teklifinizi yayımlayın
 
-Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu süreç hakkında daha fazla bilgi için bkz. [Azure Marketi ve AppSource tekliflerini yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu süreç hakkında daha fazla bilgi için bkz. [Azure Marketi ve AppSource tekliflerini yayımlama](../../marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer.md).
 
-[Teklifinizin güncelleştirilmiş bir sürümünü](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) dilediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklifine yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler, bir güncelleştirmenin kullanılabildiğini bilmesini sağlayan Azure portal [**hizmet sağlayıcıları**](view-manage-service-providers.md) sayfasında bir simge görür. Her müşteri [, değişiklikleri gözden](view-manage-service-providers.md#update-service-provider-offers) geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğinize karar verecek. 
+[Teklifinizin güncelleştirilmiş bir sürümünü](../../marketplace/cloud-partner-portal/manage-offers/cpp-update-offer.md) dilediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklifine yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler, bir güncelleştirmenin kullanılabildiğini bilmesini sağlayan Azure portal [**hizmet sağlayıcıları**](view-manage-service-providers.md) sayfasında bir simge görür. Her müşteri [, değişiklikleri gözden](view-manage-service-providers.md#update-service-provider-offers) geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğinize karar verecek. 
 
 ## <a name="the-customer-onboarding-process"></a>Müşteri ekleme işlemi
 
 Müşteri teklifinizi ekledikten sonra, [bir veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini](view-manage-service-providers.md#delegate-resources)sağlar ve bu, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olacaktır. Bir müşteri bir teklifi kabul etmiş, ancak henüz hiç kaynak temsilcisi yoksa, Azure portal [**hizmet sağlayıcılar**](view-manage-service-providers.md) sayfasının en üstünde **sağlayıcı teklifleri** bölümünün üst kısmında bir not görür.
 
 > [!IMPORTANT]
-> Temsilciyi, müşterinin kiracısında, eklendi olan abonelik (veya eklendi olan kaynak gruplarını içeren) için [sahip yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip konuk olmayan bir hesap tarafından yapılmalıdır. Aboneliği temsil edebilen tüm kullanıcıları görmek için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+> Temsilciyi, müşterinin kiracısında, eklendi olan abonelik (veya eklendi olan kaynak gruplarını içeren) için [sahip yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip konuk olmayan bir hesap tarafından yapılmalıdır. Aboneliği temsilci seçen tüm kullanıcıları görmek için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimi 'ni (IAM)** açabilir, [tüm rolleri listeleyebilir](../../role-based-access-control/role-definitions-list.md#list-all-roles)ve bu role sahip tüm kullanıcıları görmek için **sahip** ' i seçebilirsiniz.
 
 Müşteri bir aboneliği (veya bir abonelik içinde bir veya daha fazla kaynak grubu) temsilcduktan sonra, bu abonelik için **Microsoft. ManagedServices** kaynak sağlayıcısı kaydedilir ve kiracınızdaki kullanıcılar, teklifinizdeki Yetkilendirmelere göre Temsilcili kaynaklara erişebilir.
 

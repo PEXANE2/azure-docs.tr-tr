@@ -3,12 +3,12 @@ title: Görüntüleri kilitleme
 description: Bir Azure Container Registry 'de silinememesi veya üzerine yazılmaması için bir kapsayıcı görüntüsü veya deposunun özniteliklerini ayarlayın.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442229"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme
 
@@ -23,7 +23,11 @@ Bu makale, Azure CLı 'yı Azure Cloud Shell veya yerel olarak çalıştırmanı
 
 Varsayılan olarak, Azure Container Registry etiketli bir görüntü *değiştirilebilir*, bu nedenle uygun izinlerle bir görüntüyü bir kayıt defterine yeniden güncelleştirebilir ve aynı etiketle birlikte görüntüleyebilirsiniz. Kapsayıcı görüntüleri de gerektiğinde [silinebilir](container-registry-delete.md) . Bu davranış, görüntü geliştirirken ve kayıt defteriniz için bir boyut korumanız gerektiğinde faydalıdır.
 
-Ancak, üretime bir kapsayıcı görüntüsü dağıttığınızda, *sabit* bir kapsayıcı görüntüsü gerekebilir. Sabit görüntü, yanlışlıkla silememe veya üzerine yazılmayacağı bir görüntüdür. Depo özniteliklerini ayarlamak için [az ACR Repository Update][az-acr-repository-update] komutunu kullanın, böylece şunları yapabilirsiniz:
+Ancak, üretime bir kapsayıcı görüntüsü dağıttığınızda, *sabit* bir kapsayıcı görüntüsü gerekebilir. Sabit görüntü, yanlışlıkla silememe veya üzerine yazılmayacağı bir görüntüdür.
+
+Kayıt defterinizde bulunan görüntüleri ve sürüm görüntülerini etiketlemek için [kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerilerine](container-registry-image-tag-version.md) bakın.
+
+Depo özniteliklerini ayarlamak için [az ACR Repository Update][az-acr-repository-update] komutunu kullanın, böylece şunları yapabilirsiniz:
 
 * Bir görüntü sürümünü veya tüm depoyu kilitleme
 
@@ -31,7 +35,7 @@ Ancak, üretime bir kapsayıcı görüntüsü dağıttığınızda, *sabit* bir 
 
 * Görüntü sürümünde veya tüm depoda okuma (çekme) işlemlerini engelle
 
-Örnekler için aşağıdaki bölümlere bakın.
+Örnekler için aşağıdaki bölümlere bakın. 
 
 ## <a name="lock-an-image-or-repository"></a>Bir görüntüyü veya depoyu kilitleme 
 

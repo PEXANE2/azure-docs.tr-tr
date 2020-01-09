@@ -2,19 +2,15 @@
 title: Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 description: Bir Azure uyarısı başlatıldığında runbook 'un çalışmasını nasıl tetikleyeceğinizi öğrenin.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850389"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366709"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Bir Azure Otomasyonu runbook 'unu tetiklemek için uyarı kullanma
 
@@ -175,7 +171,7 @@ Runbook, VM 'ye karşı yönetim eylemini gerçekleştirmek üzere Azure ile kim
 Uyarılar, uyarı tarafından tetiklenen eylemlerin koleksiyonları olan eylem gruplarını kullanır. Runbook 'lar yalnızca eylem gruplarıyla kullanabileceğiniz birçok eylemden biridir.
 
 1. Otomasyon hesabınızda, **izleme**altında **Uyarılar** ' ı seçin.
-1. **+ Yeni uyarı kuralı**’nı seçin.
+1. **+ Yeni uyarı kuralı**'nı seçin.
 1. **Kaynak**altında **Seç** ' e tıklayın. **Kaynak seçin** sayfasında, uyarı vermek için sanal makineyi seçin ve **bitti**' ye tıklayın.
 1. **Koşul**bölümünde **Koşul Ekle** ' ye tıklayın. Kullanmak istediğiniz sinyali seçin (örneğin **CPU yüzdesi** ) ve **bitti**' ye tıklayın.
 1. **Sinyal mantığını Yapılandır** sayfasında, **Uyarı mantığı**altında **eşik değerini** girin ve **bitti**' ye tıklayın.

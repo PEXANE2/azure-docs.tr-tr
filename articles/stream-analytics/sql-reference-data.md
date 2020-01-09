@@ -1,31 +1,30 @@
 ---
 title: Azure Stream Analytics işinde SQL veritabanı başvuru verilerini kullanma
 description: Bu makalede, bir SQL veritabanının Azure portal ve Visual Studio 'da bir Azure Stream Analytics işi için başvuru verileri girişi olarak nasıl kullanılacağı açıklanır.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426495"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
 Azure Stream Analytics, Azure SQL veritabanını başvuru verileri için giriş kaynağı olarak destekler. SQL veritabanını, Azure portal ve Visual Studio 'da Stream Analytics araçlarla Stream Analytics işiniz için başvuru verileri olarak kullanabilirsiniz. Bu makalede her iki yöntemin de nasıl yapılacağı gösterilmektedir.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure Portal
 
 Azure portal kullanarak Azure SQL veritabanını başvuru giriş kaynağı olarak eklemek için aşağıdaki adımları kullanın:
 
 ### <a name="portal-prerequisites"></a>Portal önkoşulları
 
-1. Stream Analytics işi oluşturun.
+1. Stream Analytics işi oluşturma.
 
 2. Stream Analytics işi tarafından kullanılacak bir depolama hesabı oluşturun.
 

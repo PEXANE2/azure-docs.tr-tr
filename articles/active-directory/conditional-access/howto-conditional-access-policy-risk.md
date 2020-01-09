@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdd89ba7741257443cf5e7567c59a6986e43c20
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803589"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424841"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Koşullu erişim: risk tabanlı koşullu erişim
 
@@ -38,7 +38,7 @@ Bu ilkeyi etkinleştirmek, tüm kullanıcıların Azure Multi-Factor Authenticat
    1. **Dışla**altında hariç **tutulan kullanıcıları seç**' i seçin, kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin ve **Seç**' i seçin. 
    1. **Done** (Bitti) öğesini seçin.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="require-a-password-change-high-risk-users"></a>Parola değiştirme yüksek riskli kullanıcılar
 
@@ -56,7 +56,7 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
 1.  >  **erişim**' ın altında, erişime **izin ver**' i seçin ve **parola değişikliği gerektir**' i seçin.
    1. **Seç**'e tıklayın.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="require-mfa-medium-or-high-sign-in-risk-users"></a>MFA orta veya yüksek oturum açma risk kullanıcıları gerektir
 
@@ -74,11 +74,13 @@ Microsoft, kullanıcı adı ve parola çiftlerini bulma amacıyla araştırmacı
 1.  >  **erişim**' ın altında, erişime **izin ver**' i seçin ve **çok faktörlü kimlik doğrulaması gerektir**' i seçin.
    1. **Seç**'e tıklayın.
 1. **Ilke uygulanmasını** **Açık**olarak ayarlayın.
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+
+[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)
 

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449817"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -94,7 +94,7 @@ Batch hizmeti, uygulama paketlerinizi depolamak için ilişkili depolama hesabı
 > Şu anda uygulama paketlerini [güvenlik duvarı kurallarıyla](../storage/common/storage-network-security.md)yapılandırılmış bir Azure depolama hesabıyla kullanamazsınız.
 > 
 
-Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Azure Storage 'ı kullanır. Blok Blobu verileri için [normal olarak ücretlendirilirsiniz][storage_pricing] ve her bir paketin boyutu, [Blok Blobu boyutunun üst sınırını](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)aşamaz. Uygulama paketlerinizin boyutunu ve sayısını göz önünde bulundurmanız ve maliyetleri en aza indirmek için kullanım dışı bırakılan paketleri düzenli olarak kaldırmayı unutmayın.
+Batch hizmeti, uygulama paketlerinizi blok blob 'ları olarak depolamak için Azure Storage 'ı kullanır. Blok Blobu verileri için [normal olarak ücretlendirilirsiniz][storage_pricing] ve her bir paketin boyutu, Blok Blobu boyutunun üst sınırını aşamaz. Daha fazla bilgi için bkz. [depolama hesapları Için Azure Storage ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md). Uygulama paketlerinizin boyutunu ve sayısını göz önünde bulundurmanız ve maliyetleri en aza indirmek için kullanım dışı bırakılan paketleri düzenli olarak kaldırmayı unutmayın.
 > 
 > 
 
@@ -141,7 +141,7 @@ Yeni bir uygulama oluşturmak için bir uygulama paketi ekleyin ve yeni, benzers
 
 Yeni **uygulama** penceresi, yeni uygulamanızın ve uygulama paketinizin ayarlarını belirtmek için aşağıdaki alanları sağlar.
 
-**Uygulama KIMLIĞI**
+**Uygulama Kimliği**
 
 Bu alan, standart Azure Batch KIMLIĞI doğrulama kurallarına tabi olan yeni uygulamanızın KIMLIĞINI belirtir. Uygulama KIMLIĞI sağlama kuralları aşağıdaki gibidir:
 
@@ -171,7 +171,7 @@ Bir dosya seçtikten sonra **Tamam** ' a tıklayarak Azure Storage 'a yükleme i
 > 
 
 ### <a name="add-a-new-application-package"></a>Yeni bir uygulama paketi Ekle
-Mevcut bir uygulama için bir uygulama paketi sürümü eklemek için, **uygulamalar** penceresinde bir uygulama seçin ve ardından**Ekle** >  **paketler** ' e tıklayın.
+Mevcut bir uygulama için bir uygulama paketi sürümü eklemek için, **uygulamalar** penceresinde bir uygulama seçin ve ardından **Ekle** > **paketler** ' e tıklayın.
 
 ![Azure portal 'de uygulama paketi dikey penceresi ekleme][8]
 
@@ -260,7 +260,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
 
 ```
 Linux:

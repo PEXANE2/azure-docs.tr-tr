@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 88934d469ddcca50d7dfc3f35b18ab332d4bd172
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7dc8001d74ea026625d7496fb84053b4e9109dce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406148"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -29,7 +29,7 @@ Tüm ortamınız genelinde Observability kazanmak için tüm Web uygulamaların�
 - [Azure DevOps Projeleri](../devops-project/overview.md) , mevcut kodunuz ve git deponuzla ilgili Basitleştirilmiş bir deneyim sağlar veya Azure 'A sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) işlem hattı oluşturmak için örnek uygulamalardan birini tercih edebilirsiniz.
 - [DevOps yayın işlem hattınızda sürekli izleme](../azure-monitor/app/continuous-monitoring.md) , izleme verilerine bağlı olarak dağıtımınızı geçit veya geri alma olanağı sağlar.
 - [Durum İzleyicisi](../azure-monitor/app/monitor-performance-live-website-now.md) , kodunuzu değiştirmeye veya yeniden dağıtmaya gerek kalmadan Windows 'da canlı bir .NET uygulamasını Azure Application Insights ile denetlemenizi sağlar.
-- Uygulamanıza yönelik koda erişiminiz varsa, [.net](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node. js](../azure-monitor/learn/nodejs-quick-start.md)veya başka bir programlama için Azure izleyici Application Insights SDK 'sını yükleyerek [Application Insights](../azure-monitor/app/app-insights-overview.md) ile tam izlemeyi etkinleştirin [ Diller](../azure-monitor/app/platforms.md). Bu, uygulamanız ve işletmeniz için uygun olan özel olayları, ölçümleri veya sayfa görünümlerini belirtmenize olanak tanır.
+- Uygulamanıza yönelik koda erişiminiz varsa, [.net](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node. js](../azure-monitor/learn/nodejs-quick-start.md)veya [diğer programlama dilleri](../azure-monitor/app/platforms.md)için Azure izleyici Application Insights SDK 'sını yükleyerek [Application Insights](../azure-monitor/app/app-insights-overview.md) ile tam izlemeyi etkinleştirin. Bu, uygulamanız ve işletmeniz için uygun olan özel olayları, ölçümleri veya sayfa görünümlerini belirtmenize olanak tanır.
 
 
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429148"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT Hub 'ı başka bir bölgeye kopyalama
 
@@ -29,7 +29,7 @@ Bu makalede, bir IoT Hub kopyalamanın yolları incelenir ve başlamadan önce y
 Bir hub 'ı kopyalamak için özgün hub 'a yönetici erişimi olan bir abonelik gerekir. Yeni hub 'ı yeni bir kaynak grubuna ve bölgesine, özgün hub ile aynı abonelikte veya hatta yeni bir abonelikte koyabilirsiniz. Hub adının genel olarak benzersiz olması gerektiğinden, yalnızca aynı adı kullanamazsınız.
 
 > [!NOTE]
-> Şu anda, bir IoT Hub 'ını kopyalamaya yönelik birinci sınıf bir özellik yoktur. Bu aslında el ile gerçekleştirilen bir işlemdir ve bu nedenle oldukça hataya açıktır. Hub 'ın klonlanması karmaşıklığı, hub 'ın karmaşıklığı ile doğrudan orantılıdır. Örneğin, bir IoT Hub 'ını ileti yönlendirme olmadan kopyalamak oldukça basittir. İleti yönlendirmeyi yalnızca bir karmaşıklık olarak eklerseniz, hub 'ın kopyalanması en az bir büyüklük daha karmaşık hale gelir. Yönlendirme uç noktaları için kullanılan kaynakları da taşırsanız, daha karmaşık bir büyütece sırası daha karmaşıktır. 
+> Şu anda IoT Hub 'ını otomatik olarak kopyalamak için kullanılabilecek bir özellik yoktur. Bu aslında el ile gerçekleştirilen bir işlemdir ve bu nedenle oldukça hataya açıktır. Hub 'ın klonlanması karmaşıklığı, hub 'ın karmaşıklığı ile doğrudan orantılıdır. Örneğin, bir IoT Hub 'ını ileti yönlendirme olmadan kopyalamak oldukça basittir. İleti yönlendirmeyi yalnızca bir karmaşıklık olarak eklerseniz, hub 'ın kopyalanması en az bir büyüklük daha karmaşık hale gelir. Yönlendirme uç noktaları için kullanılan kaynakları da taşırsanız, daha karmaşık bir büyütece sırası daha karmaşıktır. 
 
 ## <a name="things-to-consider"></a>Dikkate alınması gereken noktalar
 
@@ -353,7 +353,7 @@ Yeni bir yerde şablonu kullanarak yeni hub 'ı oluşturun. Taşıyacağınız y
 
 1. Arama kutusuna "şablon dağıtımı" koyun ve ENTER ' u seçin.
 
-1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın)** . Bu, sizi Şablon dağıtımı bir ekrana götürür. **Oluştur**'u seçin. Şu ekranı görürsünüz:
+1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın)** . Bu, sizi Şablon dağıtımı bir ekrana götürür. **Oluştur**’u seçin. Şu ekranı görürsünüz:
 
    ![Kendi şablonunuzu oluşturma komutunu gösteren ekran görüntüsü](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 

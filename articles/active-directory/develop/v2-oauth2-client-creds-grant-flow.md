@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423293"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı
 
@@ -65,7 +65,7 @@ Bu tür bir yetkilendirme, kişisel Microsoft hesapları olan tüketici kullanı
 
 ### <a name="application-permissions"></a>Uygulama izinleri
 
-ACL 'Leri kullanmak yerine, uygulama izinleri kümesini kullanıma sunmak için API 'Leri kullanabilirsiniz. Uygulama izni bir kuruluşun yöneticisi tarafından uygulamaya verilir ve yalnızca söz konusu kuruluşa ve çalışanlarına ait olan verilere erişmek için kullanılabilir. Örneğin, Microsoft Graph aşağıdakileri yapmak için çeşitli uygulama izinleri sunar:
+ACL 'Leri kullanmak yerine, **Uygulama izinleri**kümesini kullanıma sunmak Için API 'leri kullanabilirsiniz. Uygulama izni bir kuruluşun yöneticisi tarafından uygulamaya verilir ve yalnızca söz konusu kuruluşa ve çalışanlarına ait olan verilere erişmek için kullanılabilir. Örneğin, Microsoft Graph aşağıdakileri yapmak için çeşitli uygulama izinleri sunar:
 
 * Tüm posta kutularındaki postaları oku
 * Tüm posta kutularındaki postaları Okuma ve yazma
@@ -75,6 +75,11 @@ ACL 'Leri kullanmak yerine, uygulama izinleri kümesini kullanıma sunmak için 
 Uygulama izinleri hakkında daha fazla bilgi için [Microsoft Graph](https://developer.microsoft.com/graph)adresine gidin.
 
 Uygulamanızda uygulama izinlerini kullanmak için, sonraki bölümlerde ele alınan adımları izleyin.
+
+
+> [!NOTE]
+> Bir uygulama olarak kimlik doğrulaması yaparken, bir kullanıcı ile aksine, "temsilci izinleri" (bir kullanıcı tarafından verilen kapsamlar) kullanamazsınız.  Uygulama için bir yönetici (veya Web API 'SI tarafından önceden Yetkilendirme aracılığıyla) verilen "Roller" olarak da bilinen "uygulama izinleri" kullanmanız gerekir.    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Uygulama kayıt portalında izinleri isteyin
 

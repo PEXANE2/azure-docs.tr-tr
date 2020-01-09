@@ -2,19 +2,15 @@
 title: Azure Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
 description: Bu makalede, güncelleştirme dağıtımları için güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d27df57e9371f16a15d3a18b7722598062377d88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419895"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
 

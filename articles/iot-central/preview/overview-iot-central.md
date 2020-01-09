@@ -3,18 +3,18 @@ title: Azure IoT Central nedir? | Microsoft Docs
 description: Azure IoT Central, IoT çözümlerinin oluşturulmasını kolaylaştıran ve IoT yönetim işlemlerinin ve geliştirmenin yükünü ve maliyetini azaltmaya yardımcı olan bir IoT uygulama platformudur. Bu makalede Azure IoT Central’ın özelliklerine genel bir bakış sunulmaktadır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434843"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (Önizleme özellikleri) nedir?
 
@@ -41,15 +41,11 @@ Bu makalede IoT Central için özetlenmektedir:
 > [!Note]
 > Bu bilinen sorunlar yalnızca IoT Central önizleme uygulamaları için geçerlidir.
 
-- Kurallar tüm eylemleri desteklemez (yalnızca e-posta).
-- Karmaşık türler için-kurallar, analiz ve cihaz grupları desteklenmez.
 - Sürekli veri dışa aktarma avro biçimini (uyumsuzluk) desteklemez.
-- Sanal cihazlar tüm karmaşık türleri desteklemez.
 - GeoJSON Şu anda desteklenmiyor.
 - Harita kutucuğu Şu anda desteklenmiyor.
 - İşler karmaşık türleri desteklemez.
 - Dizi şeması türleri desteklenmez.
-- Uygulama şablonu dışarı aktarma ve uygulama kopyalama desteklenmez.
 - Yalnızca C cihaz SDK 'Sı ve Node. js cihaz ve hizmet SDK 'Ları desteklenir.
 - Yalnızca Birleşik Devletler ve Avrupa konumlarında kullanılabilir.
 - Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
@@ -149,7 +145,7 @@ Her Azure aboneliğinin, IoT çözümünüzün kapsamını etkileyebilecek varsa
 
 Artık IoT Central bir genel bakışın olduğuna göre, aşağıdaki adımlar önerilir:
 
-- [IoT Central Ile Azure IoT Çözüm Hızlandırıcıları](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)arasındaki farkları anlayın.
+- [IoT çözümleri oluşturmak için kullanılabilir Azure teknolojilerini ve hizmetlerini](../../iot-fundamentals/iot-services-and-technologies.md)anlayın.
 - [Azure IoT Central Kullanıcı Arabirimi](overview-iot-central-tour.md)’ni tanıma.
 - [Azure IoT Central uygulaması oluşturmaya](quick-deploy-iot-central.md) bağlama.
 - [Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) hakkında daha fazla bilgi edinin

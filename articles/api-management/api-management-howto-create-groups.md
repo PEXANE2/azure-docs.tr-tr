@@ -1,5 +1,6 @@
 ---
-title: Azure API Management 'de grupları kullanarak Geliştirici hesaplarını yönetme | Microsoft Docs
+title: Azure API Management grupları kullanarak Geliştirici hesaplarını yönetme
+titleSuffix: Azure API Management
 description: Azure API Management grupları kullanarak Geliştirici hesaplarını yönetmeyi öğrenin
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430719"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management geliştirici hesaplarını yönetmek için grupları oluşturma ve kullanma
 
@@ -37,9 +38,9 @@ Yayımcı portalındaki grupları oluşturma ve yönetmeye ek olarak, API Manage
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki görevleri tamamlayabilirsiniz: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
+Bu makaledeki görevleri tamamlar: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -52,7 +53,7 @@ Bu bölümde, API Management hesabınıza yeni bir grup ekleme gösterilmektedir
 3. Grup için benzersiz bir ad ve isteğe bağlı bir açıklama girin.
 4. **Oluştur**’a basın.
 
-    ![Yeni bir grup ekleyin](./media/api-management-howto-create-groups/groups001.png)
+    ![Yeni bir grup ekleme](./media/api-management-howto-create-groups/groups001.png)
 
 Grup oluşturulduktan sonra **gruplar** listesine eklenir. <br/>Grubun **adını** veya **açıklamasını** düzenlemek için Grup ve **ayarların**adına tıklayın.<br/>Grubu silmek için grubun adına tıklayın ve **Sil**' e basın.
 
@@ -84,12 +85,12 @@ Bir ürün bir grupla ilişkilendirildikten sonra bu gruptaki geliştiriciler ü
 Bu bölümde, grupların üyelerle ilişkilendirilmesi gösterilmektedir.
 
 1. Ekranın solundaki **gruplar** sekmesini seçin.
-2. **Üyeler**' i seçin.
+2. **Üyeler**’i seçin.
 
-    ![Üye ekle](./media/api-management-howto-create-groups/groups005.png)
+    ![Üye ekleme](./media/api-management-howto-create-groups/groups005.png)
 3. **+ Ekle** ' ye basın ve üye seçin.
 
-    ![Üye ekle](./media/api-management-howto-create-groups/groups006.png)
+    ![Üye ekleme](./media/api-management-howto-create-groups/groups006.png)
 4. **Seç**' e basın.
 
 Geliştirici ve grup arasında ilişkilendirme eklendikten sonra **Kullanıcılar** sekmesinden görüntüleyebilirsiniz.

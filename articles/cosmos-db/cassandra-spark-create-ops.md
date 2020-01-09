@@ -1,6 +1,6 @@
 ---
-title: Oluştur/Veri Azure Cosmos DB Cassandra API'SİNİN spark'tan içine Ekle
-description: Bu makalede Azure Cosmos DB Cassandra API'SİNİN tablolara örnek veriler ekleme işlemi açıklanmaktadır
+title: Spark 'dan Azure Cosmos DB Cassandra API oluşturun veya buraya veri ekleyin
+description: Bu makalede, Azure Cosmos DB Cassandra API tablolarına örnek veri ekleme ayrıntıları yer aldığı anlatılmaktadır
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3eb23a3d8b1098110bd8b75faa22cc483637d183
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60894054"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442115"
 ---
-# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Oluştur/Veri Azure Cosmos DB Cassandra API'SİNİN spark'tan içine Ekle
+# <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 'dan Azure Cosmos DB Cassandra API veri oluşturma/ekleme
  
-Bu makalede, Azure Cosmos DB Cassandra API'SİNİN spark'tan bir tabloya örnek veri eklemek açıklar.
+Bu makalede, Spark 'dan Azure Cosmos DB Cassandra API bir tabloya örnek veri ekleme açıklanır.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API configuration
 
@@ -47,7 +47,7 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 ## <a name="dataframe-api"></a>API veri çerçevesi
 
-### <a name="create-a-dataframe-with-sample-data"></a>Örnek verilerle bir Dataframe oluşturun
+### <a name="create-a-dataframe-with-sample-data"></a>Örnek verilerle bir veri çerçevesi oluşturma
 
 ```scala
 // Generate a dataframe containing five records
@@ -67,11 +67,11 @@ booksDF.show
 ```
 
 > [!NOTE]
-> Satır düzeyinde "Yoksa oluştur" işlevler henüz desteklenmiyor.
+> "Varsa oluştur" işlevselliği, bir satır düzeyinde henüz desteklenmemiştir.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'sine Sürdür
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API devam edin
 
-Veriler kaydedilirken de yaşam süresi ayarlayabilirsiniz ve aşağıdaki örnekte gösterildiği gibi tutarlılık ilke ayarları:
+Verileri kaydederken, aşağıdaki örnekte gösterildiği gibi yaşam süresi ve tutarlılık ilkesi ayarlarını da ayarlayabilirsiniz:
 
 ```scala
 //Persist
@@ -83,18 +83,18 @@ booksDF.write
 ```
 
 > [!NOTE]
-> Sütun düzeyinde TTL henüz desteklenmiyor.
+> Sütun düzeyi TTL henüz desteklenmiyor.
 
-#### <a name="validate-in-cqlsh"></a>İçinde cqlsh doğrula
+#### <a name="validate-in-cqlsh"></a>Csqlsh 'te doğrulama
 
 ```sql
 use books_ks;
 select * from books;
 ```
 
-## <a name="resilient-distributed-database-rdd-api"></a>Dayanıklı dağıtılmış veritabanı (RDD) API'si
+## <a name="resilient-distributed-database-rdd-api"></a>Dayanıklı Dağıtılmış veritabanı (RDD) API 'SI
 
-### <a name="create-a-rdd-with-sample-data"></a>Örnek verilerle bir RDD oluşturma
+### <a name="create-a-rdd-with-sample-data"></a>Örnek verilerle RDD oluşturma
 ```scala
 //Delete records created in the previous section 
 val cdbConnector = CassandraConnector(sc)
@@ -114,11 +114,11 @@ booksRDD.take(2).foreach(println)
 ```
 
 > [!NOTE]
-> Yoksa oluştur işlevi henüz desteklenmiyor.
+> Mevcut değilse, oluşturma özelliği henüz desteklenmiyor.
 
-### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'sine Sürdür
+### <a name="persist-to-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API devam edin
 
-Veriler Cassandra API'sine kaydedilirken de yaşam süresi ayarlayabilirsiniz ve aşağıdaki örnekte gösterildiği gibi tutarlılık ilke ayarları:
+Cassandra API verileri kaydederken, aşağıdaki örnekte gösterildiği gibi yaşam süresi ve tutarlılık ilkesi ayarlarını da ayarlayabilirsiniz:
 
 ```scala
 import com.datastax.spark.connector.writer._
@@ -127,7 +127,7 @@ import com.datastax.spark.connector.writer._
 booksRDD.saveToCassandra("books_ks", "books", SomeColumns("book_id", "book_author", "book_name", "book_pub_year"),writeConf = WriteConf(ttl = TTLOption.constant(900000),consistencyLevel = ConsistencyLevel.ALL))
 ```
 
-#### <a name="validate-in-cqlsh"></a>İçinde cqlsh doğrula
+#### <a name="validate-in-cqlsh"></a>Csqlsh 'te doğrulama
 
 ```sql
 use books_ks;
@@ -136,9 +136,9 @@ select * from books;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cosmos DB Cassandra API'si, depolanan veriler üzerinde başka işlemler gerçekleştirmek için aşağıdaki makaleleri, Azure Cosmos DB Cassandra API'SİNİN tablosuna veri ekleme sonra devam edin:
+Azure Cosmos DB Cassandra API tablosuna veri ekledikten sonra, Cosmos DB Cassandra API depolanan verilerde diğer işlemleri gerçekleştirmek için aşağıdaki makalelere ilerleyin:
  
-* [okuma işlemleri](cassandra-spark-read-ops.md)
+* [Okuma işlemleri](cassandra-spark-read-ops.md)
 * [Upsert işlem](cassandra-spark-upsert-ops.md)
 * [Silme işlemleri](cassandra-spark-delete-ops.md)
 * [Toplama işlemleri](cassandra-spark-aggregation-ops.md)

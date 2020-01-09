@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics kullanarak gerçek zamanlı olay işleme
 description: Bu makalede, Azure Stream Analytics kullanarak gerçek zamanlı olay işleme ve analizine ulaşmak için başvuru mimarisi açıklanmaktadır.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 21a0e4e468b606ec7bb7e33bf1a616e68cd6cf50
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431475"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Başvuru Mimarisi: Microsoft Azure Stream Analytics ile gerçek zamanlı olay işleme
 Azure Stream Analytics ile gerçek zamanlı olay işleme için başvuru mimarisi, Microsoft Azure ile gerçek zamanlı bir hizmet olarak platform (PaaS) akış işleme çözümü dağıtmaya yönelik bir genel şema sağlamaktır.
@@ -24,7 +23,7 @@ Geleneksel olarak, analiz çözümleri ETL (Ayıkla, Dönüştür, yük) ve veri
 Microsoft Azure, farklı çözüm senaryoları ve gereksinimlerinin bir dizisini destekleyebilen bir dizi analiz teknolojisinden oluşan kapsamlı bir katalog sağlar. Uçtan uca bir çözüm için hangi Azure hizmetlerinin dağıtılacağını seçmek, tekliflerin kapsamını belirlemek için bir zorluk olabilir. Bu sayfa, bir olay akışı çözümünü destekleyen çeşitli Azure hizmetlerinin yeteneklerini ve birlikte çalışmasını tanımlamaya yönelik olarak tasarlanmıştır. Ayrıca, müşterilerin bu tür bir yaklaşımdan faydalanabilir bazı senaryolar da açıklanmaktadır.
 
 ## <a name="contents"></a>İçindekiler
-* Executive Özeti
+* Yönetici Özeti
 * Gerçek zamanlı Analize Giriş
 * Azure 'daki gerçek zamanlı verilerin değer teklifi
 * Gerçek zamanlı analiz için yaygın senaryolar
@@ -48,7 +47,7 @@ Microsoft Azure, farklı çözüm senaryoları ve gereksinimlerinin bir dizisini
 Daha fazla yardım için [Azure Stream Analytics forumunu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) deneyin
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
+* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

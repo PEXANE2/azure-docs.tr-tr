@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure 'da Windows için bir sanal makine ölçek kümesi oluşturma
-description: Bu öğreticide, bir sanal makine ölçek kümesini kullanarak Windows VM'leri üzerinde yüksek oranda kullanılabilir bir uygulama oluşturmak ve dağıtmak için Azure PowerShell kullanmayı öğreneceksiniz
+title: 'Öğretici: Windows sanal makine ölçek kümesi oluşturma'
+description: Bir sanal makine ölçek kümesi kullanarak Windows VM 'lerinde yüksek oranda kullanılabilir bir uygulama oluşturmak ve dağıtmak için Azure PowerShell kullanmayı öğrenin
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6fcf0c14d58e70659ee5e21b03245b705294b445
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bf53b2777c5d1e4d774a9f5ee9df119a0deac9d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464983"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve Windows üzerinde yüksek oranda kullanılabilir bir uygulama dağıtma
 Bir sanal makine ölçek kümesi, bir özdeş, otomatik ölçeklendirme sanal makineleri kümesini dağıtmanıza ve yönetmenize olanak tanır. Ölçek kümesindeki VM 'lerin sayısını el ile ölçeklendirebilirsiniz. Ayrıca, CPU, bellek talebi veya ağ trafiği gibi kaynak kullanımına göre otomatik ölçeklendirme kuralları tanımlayabilirsiniz. Bu öğreticide, Azure 'da bir sanal makine ölçek kümesi dağıtırsınız ve aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
@@ -175,7 +175,7 @@ Get-AzVmssVM `
   -VMScaleSetName "myScaleSet"
 ```
 
-Aşağıdaki örnek çıktı, ölçek kümesindeki iki sanal makine örneğini göstermektedir:
+Aşağıdaki örnek çıkış, ölçek kümesindeki iki sanal makine örneğini gösterir:
 
 ```powershell
 ResourceGroupName                 Name Location             Sku InstanceID ProvisioningState
@@ -184,7 +184,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)' ye `-InstanceId` parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenmektedir:
+Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)' ye `-InstanceId` parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenir:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `

@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB SQL API hesabı, Jeo-uzamsal verilerle çalışma
+title: Azure Cosmos DB SQL API hesabında Jeo-uzamsal verileri kullanma
 description: Dizin oluşturma ve Azure Cosmos DB ve SQL API'si ile uzamsal nesnelerini sorgula öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e48f6c52aa2d633ea20fd0dae70c7aa1380bb50d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441878"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API hesabı ile Jeo-uzamsal ve GeoJSON konum verileri kullanın
 
@@ -94,7 +94,7 @@ GeoJSON Point, LineString ve Çokgen yanı sıra, ayrıca isteğe bağlı özell
 ### <a name="coordinate-reference-systems"></a>Başvuru koordinat sistemi
 Dünya şeklini düzensiz olduğundan, Jeo-uzamsal veriler koordinatlarını birçok koordinat başvuru sistemi (CRS), her biri kendi çerçeveler başvuru ve ölçü temsil edilir. Örneğin, "ulusal kılavuz, Britanya" başvuru sistemi doğru ise, Birleşik Krallık ancak dışında bu. 
 
-Kullanılan en popüler CRS bugün dünya Geodetic sistemidir [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). GPS cihazların ve Google Haritalar ve Bing haritaları API'si dahil olmak üzere birçok eşleme hizmetlerin WGS 84 kullanın. Azure Cosmos DB dizinleme ve Jeo-uzamsal verileri yalnızca WGS 84 CRS kullanarak sorgulama destekler. 
+Kullanılan en popüler CRS bugün dünya Geodetic sistemidir [WGS 84](https://earth-info.nga.mil/GandG/update/index.php). GPS cihazların ve Google Haritalar ve Bing haritaları API'si dahil olmak üzere birçok eşleme hizmetlerin WGS 84 kullanın. Azure Cosmos DB dizinleme ve Jeo-uzamsal verileri yalnızca WGS 84 CRS kullanarak sorgulama destekler. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Uzamsal veri ile belge oluşturma
 GeoJSON değerleri içeren belgeleri oluşturduğunuzda, bunlar olan bir uzamsal dizin kapsayıcısının dizin oluşturma ilkesini anlaşmalara uygun şekilde otomatik olarak dizine eklenir. Bir Azure Cosmos DB SDK, Python veya Node.js gibi dinamik olarak yazılan bir dilde ile çalışıyorsanız, geçerli GeoJSON oluşturmanız gerekir.

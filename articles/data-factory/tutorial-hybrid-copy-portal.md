@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 5b9bed971ff239c0c4b0d1cb923e845bd76957da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 099ff9b8d8a55456908748bee5779e4471d4bec6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922926"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439336"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Verileri şirket içi SQL Server veritabanından Azure Blob depolamaya kopyalama
 Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak verileri şirket içi bir SQL Server veritabanından Azure Blob depolama alanına kopyalayan bir veri fabrikası işlem hattı oluşturursunuz. Verileri şirket içi ile bulut veri depoları arasında taşıyan, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturup kullanabilirsiniz.
@@ -35,7 +35,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı çalıştırmasını izleme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 ### <a name="azure-subscription"></a>Azure aboneliği
 Başlamadan önce, mevcut bir Azure aboneliğiniz yoksa [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -124,10 +124,10 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
    - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.
         
-     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).
+     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları (örneğin, Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi bittikten sonra, resimde gösterildiği gibi **Veri Fabrikası** sayfası görüntülenir:
    
@@ -222,7 +222,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 1. **Yayımlama başarılı** yazan açılan pencereyi görene kadar bekleyin. Yayımlamanın durumunu denetlemek için pencerenin üst kısmındaki **bildirimleri göster** bağlantısını seçin. Bildirim penceresini kapatmak için **Kapat**’ı seçin. 
 
 
-## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
+## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırması tetikleme
 İşlem hattının araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin.
 
 ## <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme

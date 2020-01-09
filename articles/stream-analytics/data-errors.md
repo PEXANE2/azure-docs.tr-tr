@@ -1,28 +1,27 @@
 ---
-title: Azure Stream Analytics tanılama günlüğü veri hataları
-description: Bu makalede, farklı giriş ve çıkış veri Azure Stream Analytics kullanırken oluşabilecek bir hataları açıklanır.
-services: stream-analytics
+title: Tanılama günlüğü veri hatalarını Azure Stream Analytics
+description: Bu makalede Azure Stream Analytics kullanılırken oluşabilecek farklı giriş ve çıkış verileri hataları açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0546464b4d1bcc9eaa4fbffe265486985d9c58f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465035"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics veri hataları
 
-Verileri, verilerin işlenmesi sırasında oluşan hataları hatalardır.  Bu hatalar çoğunlukla veri serinin sırasında seri hale getirme, oluşur ve yazma işlemleri.  Veri hatalar oluştuğunda, Stream Analytics için tanılama günlükleri ayrıntılı bilgi ve örnek olayları yazar.  Bazı durumlarda, bu bilgilerin özeti de portal bildirimleri sağlanır.
+Veri hataları, verileri işlerken oluşan hatalardır.  Bu hatalar genellikle veri serileştirme, serileştirme ve yazma işlemleri sırasında oluşur.  Veri hataları oluştuğunda, Stream Analytics ayrıntılı bilgileri ve örnek olayları tanılama günlüklerine yazar.  Bazı durumlarda, bu bilgilerin Özeti Portal bildirimleri aracılığıyla da sağlanır.
 
-Bu makalede, farklı hata türleri, nedenleri ve girdi ve çıktı verilerini hataları Tanılama Günlüğü ayrıntılarını özetlenmektedir.
+Bu makalede, giriş ve çıkış verileri hataları için farklı hata türleri, nedenler ve tanılama günlüğü ayrıntıları özetlenmektedir.
 
 ## <a name="diagnostic-log-schema"></a>Tanılama günlüğü şeması
 
-Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını giderme](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema) tanılama günlükleri için bir şema görmek için. Aşağıdaki JSON için bir örnek değer **özellikleri** veri hatası için bir tanılama günlüğü alanı.
+Tanılama günlüklerinin şemasını görmek için [tanılama günlüklerini kullanarak Azure Stream Analytics sorun giderme](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema) bölümüne bakın. Aşağıdaki JSON bir veri hatası için tanılama günlüğünün **Özellikler** alanı için örnek bir değerdir.
 
 ```json
 {
@@ -38,49 +37,49 @@ Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını 
 }
 ```
 
-## <a name="input-data-errors"></a>Giriş veri hataları
+## <a name="input-data-errors"></a>Giriş verileri hataları
 
-### <a name="inputdeserializererrorinvalidcompressiontype"></a>InputDeserializerError.InvalidCompressionType
+### <a name="inputdeserializererrorinvalidcompressiontype"></a>Inputdeserializererror. ınvalidcompressiontype
 
-* Neden: Seçili giriş sıkıştırma veri türüyle eşleşmiyor.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Geçersiz sıkıştırma türü de dahil olmak üzere herhangi bir seri durumundan çıkarma hata iletileriyle girdiden bırakılır.
-* Günlük Ayrıntıları
-   * İleti tanımlayıcısı girin. Olay hub'ı PartitionID uzaklığı ve sıra numarası tanımlayıcısıdır.
+* Neden: seçilen giriş sıkıştırma türü verilerle eşleşmiyor.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: Geçersiz sıkıştırma türü de dahil olmak üzere herhangi bir seri kaldırma hatası içeren Iletiler girişten bırakılır.
+* Günlük ayrıntıları
+   * Giriş iletisi tanımlayıcısı. Olay Hub 'ı için, tanımlayıcı PartitionID, konum ve sıra numarasıdır.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Unable to decompress events from resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt'. Please ensure compression setting fits the data being processed."
 ```
 
-### <a name="inputdeserializererrorinvalidheader"></a>InputDeserializerError.InvalidHeader
+### <a name="inputdeserializererrorinvalidheader"></a>Inputdeserializererror. ınvalidheader
 
-* Neden: Giriş veri üst bilgisi geçersiz. Örneğin, bir CSV yinelenen adları olan sütun içeriyor.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Geçersiz üst bilgisi dahil olmak üzere herhangi bir seri durumundan çıkarma hata iletileriyle girdiden bırakılır.
-* Günlük Ayrıntıları
-   * İleti tanımlayıcısı girin. 
-   * Gerçek yükü kaç kilobayt kadar.
+* Neden: giriş verilerinin üstbilgisi geçersiz. Örneğin, bir CSV yinelenen adlara sahip sütunlara sahiptir.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: geçersiz üst bilgi dahil olmak üzere herhangi bir seri kaldırma hatası içeren Iletiler girişten bırakılır.
+* Günlük ayrıntıları
+   * Giriş iletisi tanımlayıcısı. 
+   * En fazla kilobayt olan gerçek yük.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Invalid CSV Header for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt'. Please make sure there are no duplicate field names."
 ```
 
-### <a name="inputdeserializererrormissingcolumns"></a>InputDeserializerError.MissingColumns
+### <a name="inputdeserializererrormissingcolumns"></a>Inputdeserializererror. MissingColumns
 
-* Neden: CREATE TABLE veya TIMESTAMP BY ile tanımlanan giriş sütunları yok.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Eksik sütunlar ile olayları girdiden bırakılır.
-* Günlük Ayrıntıları
-   * İleti tanımlayıcısı girin. 
+* Neden: CREATE TABLE veya ile zaman DAMGASı aracılığıyla tanımlanan giriş sütunları yok.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: eksik sütunları olan olaylar girişten bırakılır.
+* Günlük ayrıntıları
+   * Giriş iletisi tanımlayıcısı. 
    * Eksik olan sütunların adları. 
-   * Gerçek yükü birkaç kilobayt kadar.
+   * En fazla bir kilobayt kadar gerçek yük.
 
 **Hata iletileri**
 
@@ -92,15 +91,15 @@ Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını 
 "Message": "Missing fields specified in query or in create table. Fields expected:ColumnA Fields found:ColumnB"
 ```
 
-### <a name="inputdeserializererrortypeconversionerror"></a>InputDeserializerError.TypeConversionError
+### <a name="inputdeserializererrortypeconversionerror"></a>Inputdeserializererror. TypeConversionError
 
-* Neden: Giriş CREATE TABLE deyiminde belirtilen türe dönüştürülemedi.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Tür dönüştürme hatası olaylarla girdiden bırakılır.
-* Günlük Ayrıntıları
-   * İleti tanımlayıcısı girin. 
-   * Sütun ve beklenen tür adı.
+* Neden: giriş, CREATE TABLE ifadesinde belirtilen türe dönüştürülemedi.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: tür dönüştürme hatası olan olaylar girişten bırakılır.
+* Günlük ayrıntıları
+   * Giriş iletisi tanımlayıcısı. 
+   * Sütunun adı ve beklenen tür.
 
 **Hata iletileri**
 
@@ -112,15 +111,15 @@ Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını 
 "Message": "Unable to convert column: dateColumn to expected type."
 ```
 
-### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
+### <a name="inputdeserializererrorinvaliddata"></a>Inputdeserializererror. ınvaliddata
 
-* Neden: Giriş verileri doğru biçimde değil. Örneğin, giriş geçerli bir JSON değil.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Geçersiz veri hatayla karşılaştı sonra iletinin tüm olayları girdiden bırakılır.
-* Günlük Ayrıntıları
-   * İleti tanımlayıcısı girin. 
-   * Gerçek yükü kaç kilobayt kadar.
+* Neden: giriş verileri doğru biçimde değil. Örneğin, giriş geçerli bir JSON değil.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: geçersiz bir veri hatası ile karşılaşıldıktan sonra iletideki tüm olaylara giriş işleminden bırakılır.
+* Günlük ayrıntıları
+   * Giriş iletisi tanımlayıcısı. 
+   * En fazla kilobayt olan gerçek yük.
 
 **Hata iletileri**
 
@@ -132,65 +131,65 @@ Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını 
 "Message": "Json input stream should either be an array of objects or line separated objects. Found token type: String"
 ```
 
-### <a name="invalidinputtimestamp"></a>InvalidInputTimeStamp
+### <a name="invalidinputtimestamp"></a>Invalidınputtimestamp
 
-* Neden: TIMESTAMP BY ifadesinin değerini datetime türüne dönüştürülemez.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Geçersiz giriş zaman damgasına sahip olayları girdiden bırakılır.
-* Günlük Ayrıntıları
-   * İleti tanımlayıcısı girin. 
+* Neden: ifadeye göre zaman DAMGASı değeri DateTime değerine dönüştürülemez.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: geçersiz giriş zaman damgasına sahip olaylar girişten bırakılır.
+* Günlük ayrıntıları
+   * Giriş iletisi tanımlayıcısı. 
    * Hata iletisi. 
-   * Gerçek yükü kaç kilobayt kadar.
+   * En fazla kilobayt olan gerçek yük.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Unable to get timestamp for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt ' due to error 'Cannot convert string to datetime'"
 ```
 
-### <a name="invalidinputtimestampkey"></a>InvalidInputTimeStampKey
+### <a name="invalidinputtimestampkey"></a>Invalidınputtimestamp anahtarı
 
-* Neden: TIMESTAMP BY OVER timestampColumn değeri null.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi: Giriş geçersiz zaman damgası anahtarı ile olayları girdiden bırakılır.
-* Günlük Ayrıntıları
-   * Kaç kilobayt kadar gerçek yükü.
+* Neden: TIMESTAMP sütununun ÜZERINDE zaman damgası değeri NULL.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: geçersiz giriş zaman damgası anahtarına sahip olaylar girişten bırakılır.
+* Günlük ayrıntıları
+   * En fazla kilobayt olan gerçek yük.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Unable to get value of TIMESTAMP BY OVER COLUMN"
 ```
 
-### <a name="lateinputevent"></a>LateInputEvent
+### <a name="lateinputevent"></a>Lateınputevent
 
-* Neden: Uygulama zamanı geliş saati arasındaki farkı geç varış toleransı penceresi büyüktür.
-* Sağlanan portal bildirimi: Hayır
-* Tanılama günlüğü düzeyi: Bilgi
-* Etkisi:  Geç giriş olayları, "göre diğer olayları işleme" işlenir olay iş Yapılandırması bölümünü sıralama ayarlama. Daha fazla bilgi için [zaman işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
-* Günlük Ayrıntıları
-   * Uygulama süresi ve geliş saati. 
-   * Gerçek yükü kaç kilobayt kadar.
+* Neden: uygulama süresi ve varış süresi arasındaki fark geç varış toleransı penceresinden daha büyüktür.
+* Portal bildirimi belirtildi: Hayır
+* Tanılama günlük düzeyi: bilgi
+* Etki: geç giriş olayları, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Günlük ayrıntıları
+   * Uygulama süresi ve varış süresi. 
+   * En fazla kilobayt olan gerçek yük.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Input event with application timestamp '2019-01-01' and arrival time '2019-01-02' was sent later than configured tolerance."
 ```
 
-### <a name="earlyinputevent"></a>EarlyInputEvent
+### <a name="earlyinputevent"></a>Earlyınputevent
 
-* Neden: 5 dakikadan fazla uygulama süresi ve geliş saati arasındaki farktır.
-* Sağlanan portal bildirimi: Hayır
-* Tanılama günlüğü düzeyi: Bilgi
-* Etkisi:  Erken giriş olayları, "göre diğer olayları işleme" işlenir olay iş Yapılandırması bölümünü sıralama ayarlama. Daha fazla bilgi için [zaman işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
-* Günlük Ayrıntıları
-   * Uygulama süresi ve geliş saati. 
-   * Gerçek yükü kaç kilobayt kadar.
+* Neden: uygulama süresi ve varış süresi arasındaki fark 5 dakikadan fazla.
+* Portal bildirimi belirtildi: Hayır
+* Tanılama günlük düzeyi: bilgi
+* Etki: erken giriş olayları, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Günlük ayrıntıları
+   * Uygulama süresi ve varış süresi. 
+   * En fazla kilobayt olan gerçek yük.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Input event arrival time '2019-01-01' is earlier than input event application timestamp '2019-01-02' by more than 5 minutes."
@@ -198,91 +197,91 @@ Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını 
 
 ### <a name="outoforderevent"></a>OutOfOrderEvent
 
-* Neden: Olay sıralama dışı tolerans penceresi göre tanımlanan sıralamaya kabul edilir.
-* Sağlanan portal bildirimi: Hayır
-* Tanılama günlüğü düzeyi: Bilgi
-* Etkisi:  Olay sıralama iş Yapılandırması bölümünü olayların işlenmesini "göre diğer olayları işleme" sıra dışında ayarlama. Daha fazla bilgi için [zaman işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
-* Günlük Ayrıntıları
-   * Gerçek yükü kaç kilobayt kadar.
+* Neden: olay, sıralama dışı tolerans penceresi tanımlı olarak kabul edilir.
+* Portal bildirimi belirtildi: Hayır
+* Tanılama günlük düzeyi: bilgi
+* Etki: sıra dışı olaylar, iş yapılandırmasının olay sıralaması bölümünde "diğer olayları Işleme" ayarına göre işlenir. Daha fazla bilgi için bkz. [zaman Işleme ilkeleri](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Günlük ayrıntıları
+   * En fazla kilobayt olan gerçek yük.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "Message": "Out of order event(s) received."
 ```
 
-## <a name="output-data-errors"></a>Çıkış veri hataları
+## <a name="output-data-errors"></a>Çıkış verileri hataları
 
-### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
+### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError. RequiredColumnMissing yok
 
-* Neden: Çıkış için gerekli sütun yok. Örneğin, Azure tablo PartitionKey olan tanımlanmış bir sütunu yok.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi:  Gerekli sütun eksik dahil olmak üzere tüm çıkış veri dönüştürme hataları şunlara göre işleneceğini [çıkış veri İlkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarı.
-* Günlük Ayrıntıları
-   * Sütun ve kayıt tanımlayıcısı veya kaydının bir parçası adı.
+* Neden: çıktı için gereken sütun yok. Örneğin, Azure Table PartitionKey olarak tanımlanan bir sütun yok.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: eksik gerekli sütununu da içeren tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Günlük ayrıntıları
+   * Sütunun adı ve kayıt tanımlayıcısı ya da kaydın bir parçası.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "Message": "The output record does not contain primary key property: [deviceId] Ensure the query output contains the column [deviceId] with a unique non-empty string less than '255' characters."
 ```
 
-### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataConversionError.ColumnNameInvalid
+### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataConversionError. Columnnamegeçersiz
 
-* Neden: Sütun değeri ile çıktı uygun değil. Örneğin, sütun adı, geçerli Azure tablo sütunu değil.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi:  Geçersiz sütun adı dahil olmak üzere tüm çıkış veri dönüştürme hataları şunlara göre işleneceğini [çıkış veri İlkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarı.
-* Günlük Ayrıntıları
-   * Sütun ve kayıt tanımlayıcısı veya kaydının bir parçası adı.
+* Neden: sütun değeri çıkışa uymuyor. Örneğin, sütun adı geçerli bir Azure Tablo sütunu değil.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: geçersiz sütun adı da dahil olmak üzere tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Günlük ayrıntıları
+   * Sütunun adı ve kayıt tanımlayıcı ya da kaydın bir parçası.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "Message": "Invalid property name #deviceIdValue. Please refer MSDN for Azure table property naming convention."
 ```
 
-### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
+### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError. TypeConversionError
 
-* Neden: Bir sütun, geçerli bir çıkış türüne dönüştürülemez. Örneğin, sütunun değeri kısıtlamaları veya SQL tablosunda tanımlı türü ile uyumlu değil.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi:  Tür dönüştürme hatası dahil olmak üzere tüm çıkış veri dönüştürme hataları şunlara göre işleneceğini [çıkış veri İlkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarı.
-* Günlük Ayrıntıları
+* Neden: bir sütun çıktıda geçerli bir türe dönüştürülemez. Örneğin, sütununun değeri SQL tablosunda tanımlı kısıtlamalar veya türle uyumlu değil.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: tür dönüştürme hatası da dahil olmak üzere tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Günlük ayrıntıları
    * Sütunun adı.
-   * Kayıt tanımlayıcısı veya kaydının bir parçası.
+   * Kayıt tanımlayıcı ya da kaydın bir parçası.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "Message": "The column [id] value null or its type is invalid. Ensure to provide a unique non-empty string less than '255' characters."
 ```
 
-### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
+### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError. RecordExceededSizeLimit
 
-* Neden: İletinin değeri desteklenen çıkış boyutundan büyük. Örneğin, bir kaydı bir olay hub'ı çıkışı için 1 MB'tan büyük.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi:  Kayıt aşıldı boyut sınırını da dahil olmak üzere tüm çıkış veri dönüştürme hataları şunlara göre işleneceğini [çıkış veri İlkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarı.
-* Günlük Ayrıntıları
-   * Kayıt tanımlayıcısı veya kaydının bir parçası.
+* Neden: iletinin değeri desteklenen çıkış boyutundan daha büyük. Örneğin, bir kayıt bir olay hub 'ı çıkışı için 1 MB 'den büyük.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: kayıt boyutu sınırı da dahil olmak üzere tüm çıkış verileri dönüştürme hataları, [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Günlük ayrıntıları
+   * Kayıt tanımlayıcı ya da kaydın bir parçası.
 
-**hata iletisi**
+**Hata iletisi**
 
 ```json
 "BriefMessage": "Single output event exceeds the maximum message size limit allowed (262144 bytes) by Event Hub."
 ```
 
-### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError.DuplicateKey
+### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError. DuplicateKey
 
-* Neden: Bir kayıt sistemi sütun aynı ada sahip bir sütun zaten var. Örneğin, farklı bir sütuna kimlik sütunu olduğunda CosmosDB çıkışı sütunu kimliği adı.
-* Sağlanan portal bildirimi: Evet
-* Tanılama günlüğü düzeyi: Uyarı
-* Etkisi:  Yinelenen anahtar dahil olmak üzere tüm çıkış veri dönüştürme hataları şunlara göre işleneceğini [çıkış veri İlkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarı.
-* Günlük Ayrıntıları
+* Neden: bir kayıt zaten sistem sütunuyla aynı ada sahip bir sütun içeriyor. Örneğin, ID sütunu farklı bir sütuna ayarlandığında ID adlı bir sütunla CosmosDB çıkışı.
+* Portal bildirimi belirtildi: Evet
+* Tanılama günlük düzeyi: uyarı
+* Etki: yinelenen anahtar dahil tüm çıkış verileri dönüştürme hataları [çıkış verileri ilkesi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) ayarına göre işlenir.
+* Günlük ayrıntıları
    * Sütunun adı.
-   * Kayıt tanımlayıcısı veya kaydının bir parçası.
+   * Kayıt tanımlayıcı ya da kaydın bir parçası.
 
 ```json
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
@@ -290,6 +289,6 @@ Bkz: [tanılama günlükleri'ni kullanarak Azure Stream Analytics sorunlarını 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream Analytics, tanılama günlükleri kullanarak sorun giderme](stream-analytics-job-diagnostic-logs.md)
+* [Tanılama günlüklerini kullanarak Azure Stream Analytics sorunlarını giderme](stream-analytics-job-diagnostic-logs.md)
 
-* [Stream Analytics işi izleme ve sorguları izleme anlama](stream-analytics-monitoring.md)
+* [Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın](stream-analytics-monitoring.md)

@@ -1,5 +1,5 @@
 ---
-title: Oturum açmak için Azure AD AngularJS tek sayfalı uygulama oluşturun & oturumu kapatın | Microsoft Docs
+title: Oturum açma/kapatma için bir Azure AD AngularJS tek sayfalı uygulama oluşturun | Microsoft Docs
 description: Azure AD 'yi & oturum açma için tümleştiren & tek sayfalı bir uygulamanın nasıl oluşturulacağını öğrenin ve OAuth kullanarak Azure AD korumalı API 'Leri çağırır.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aa82985fcde59c4cfd8d4bec75ae77643f7da448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424104"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory ile oturum açmak ve oturum kapatmak için AngularJS tek sayfalı uygulaması oluşturma
 
@@ -48,12 +48,12 @@ Eksiksiz, çalışan bir uygulama oluşturmak için şunları yapmalısınız:
 2. ADAL'ı yükleme ve tek sayfalı uygulamayı yapılandırma.
 3. Tek sayfalı uygulamada sayfaların güvenliğini sağlamaya yardımcı olmak için ADAL'ı kullanma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şu önkoşulları tamamlayın:
 
 * [Uygulama çatısını indirin](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) veya [tamamlanmış örneği indirin](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
-* Altında kullanıcıları oluşturabileceğiniz ve uygulamayı kaydedebileceğiniz bir Azure AD kiracınız olsun. Henüz bir kiracınız yoksa [nasıl alabileceğinizi öğrenin](quickstart-create-new-tenant.md).
+* Altında kullanıcıları oluşturabileceğiniz ve uygulamayı kaydedebileceğiniz bir Azure AD kiracınız olsun. Henüz bir kiracınız yoksa [nasıl kiracı alınabileceğini öğrenin](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-the-directorysearcher-application"></a>1\. Adım: DirectorySearcher uygulamasını kaydetme
 

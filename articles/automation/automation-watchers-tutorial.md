@@ -2,18 +2,15 @@
 title: Azure Otomasyonu hesabında izleyici görevi oluşturma
 description: Bir klasörde oluşturulan yeni dosyaları izlemek için Azure Otomasyonu hesabında izleyici görevi oluşturmayı öğrenin.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419751"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Yerel bir makinedeki dosya değişikliklerini izlemek için bir Azure Otomasyonu izleyici görevi oluşturma
 
@@ -29,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * İzleyici tetikleyin
 > * Çıktıyı inceleyin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -54,7 +51,7 @@ Ayrıca, aşağıdaki adımları kullanarak bu runbook 'u portaldan Otomasyon he
 1. Otomasyon hesabınızı açın ve **runbook 'lar** sayfasına tıklayın.
 2. **Galeriye gözatamıyorum** düğmesine tıklayın.
 3. "Izleyici runbook" ifadesini arayın, **bir dizinde yeni dosyalar için görünen izleyici runbook 'unu** seçin ve **içeri aktar**' ı seçin.
-  ![Otomasyon Runbook 'unu kullanıcı arabiriminden içeri aktar](media/automation-watchers-tutorial/importsourcewatcher.png)
+  Otomasyon Runbook 'u kullanıcı arabiriminden Içeri ![](media/automation-watchers-tutorial/importsourcewatcher.png)
 1. Runbook 'a bir ad ve açıklama verin ve Runbook 'u Otomasyon hesabınıza aktarmak için **Tamam** ' ı seçin.
 1. **Düzenle** ' yi seçin ve ardından **Yayımla**' ya tıklayın. İstendiğinde, runbook 'u yayımlamak için **Evet** ' i seçin.
 
@@ -81,7 +78,7 @@ Ayrıca, aşağıdaki adımları kullanarak bu runbook 'u portaldan Otomasyon he
 1. Otomasyon hesabınıza gidin ve **Işlem Otomasyonu** kategorisi altında **runbook 'lar** ' ı seçin.
 1. **Galeriye gözatamıyorum** düğmesine tıklayın.
 1. "Izleyici eylemi" araması yapın ve **bir izleyici runbook 'u tarafından tetiklenen olayları Işleyen izleyici eylemini** seçin ve **içeri aktar**' ı seçin.
-  ![Eylem runbook 'unu kullanıcı arabiriminden içeri aktar](media/automation-watchers-tutorial/importsourceaction.png)
+  ![işlem runbook 'u kullanıcı arabiriminden Içeri aktarma](media/automation-watchers-tutorial/importsourceaction.png)
 1. Runbook 'a bir ad ve açıklama verin ve Runbook 'u Otomasyon hesabınıza aktarmak için **Tamam** ' ı seçin.
 1. **Düzenle** ' yi seçin ve ardından **Yayımla**' ya tıklayın. İstendiğinde, runbook 'u yayımlamak için **Evet** ' i seçin.
 

@@ -1,32 +1,28 @@
 ---
-title: Azure İzleyici otomatik ölçeklendirme ayarlarını anlama
-description: Otomatik ölçeklendirme ayarları ve nasıl çalıştıkları ayrıntılı bir dökümü. Sanal makineler, bulut Hizmetleri, Web uygulamaları için geçerlidir
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Azure Izleyici 'de otomatik ölçeklendirme ayarlarını anlama
+description: Otomatik ölçeklendirme ayarlarının ve nasıl çalıştıkları hakkında ayrıntılı bir döküm. Sanal makineler için geçerlidir, Cloud Services Web Apps
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364314"
 ---
 # <a name="understand-autoscale-settings"></a>Otomatik Ölçeklendirme ayarlarını anlama
-Otomatik ölçeklendirme ayarları, uygulamanızın dalgalı yükü işlemek için çalışan kaynakları doğru miktarda sahip olduğunuzdan emin olun yardımcı olur. Yük veya performans ölçümleri temelinde veya Tetiklenmiş bir zamanlanan tarih ve saatte tetiklenmesi için otomatik ölçeklendirme ayarlarını yapılandırabilirsiniz. Bu makalede, bir otomatik ölçeklendirme ayarı anatomisi ayrıntılı bilgi alır. Makale bir ayarın özelliklerini ve şema ile başlar ve yapılandırılabilir farklı profil türleri aracılığıyla size yol gösterir. Son olarak, bu makalede, azure'da otomatik ölçeklendirme özelliği belirli bir zamanda yürütmek için hangi profilin nasıl değerlendirir ele alınmaktadır.
+Otomatik ölçeklendirme ayarları, uygulamanızın dalgalanma yükünü işlemek için çalışan doğru kaynak miktarına sahip olmanızı sağlar. Otomatik ölçeklendirme ayarlarını, yük veya performansı belirten veya zamanlanan bir tarih ve saatte tetiklenen ölçümlere göre tetiklenecek şekilde yapılandırabilirsiniz. Bu makalede, bir otomatik ölçeklendirme ayarının anatomtoize ayrıntılı bir bakış ele alır. Makale, bir ayarın şeması ve özellikleriyle başlar ve yapılandırılabilecek farklı profil türlerini gösterir. Son olarak, makalede, Azure 'daki otomatik ölçeklendirme özelliğinin, belirli bir zamanda hangi profilin yürütüleceğini nasıl değerlendirdiği açıklanmaktadır.
 
 ## <a name="autoscale-setting-schema"></a>Otomatik ölçeklendirme ayarı şeması
-Otomatik ölçeklendirme ayarı şema göstermek için aşağıdaki otomatik ölçeklendirme ayarı kullanılır. Bu otomatik ölçeklendirme ayarı olduğuna dikkat edin önemlidir:
-- Bir profili. 
-- Bu profildeki iki ölçüm kuralları: biri ölçek genişletme için ve biri ölçeğini daraltma.
-  - Sanal makine ölçek kümesinin ortalama yüzdesi CPU ölçüm son 10 dakika için yüzde 85'den büyük olduğunda ölçek genişletme kuralı tetiklenir.
-  - Ölçek daraltma kuralı, sanal makine ölçek kümesinin ortalama yüzde 60'den az olduğunda tetiklenir son dakika.
+Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomatik ölçeklendirme ayarı kullanılır. Bu otomatik ölçeklendirme ayarının şunları olduğunu unutmayın:
+- Bir profil. 
+- Bu profilde iki ölçüm kuralı vardır: biri ölçeği genişletme için, diğeri de ölçekleme için.
+  - Ölçek genişletme kuralı, sanal makine ölçek kümesinin ortalama yüzde 85 ' unun, son 10 dakika boyunca yüzde ' den büyük olduğunda tetiklenir.
+  - Sanal makine ölçek kümesinin ortalaması, son dakika boyunca yüzde 60 ' den az olduğunda, ölçek-ın kuralı tetiklenir.
 
 > [!NOTE]
-> Bir ayarı birden çok profil var. Daha fazla bilgi için bkz. [profilleri](#autoscale-profiles) bölümü. Bir profil, birden çok ölçek genişletme kuralları ve ölçeğini tanımlanan kuralları da olabilir. Nasıl değerlendirilir görmek için bkz: [değerlendirme](#autoscale-evaluation) bölümü.
+> Bir ayarın birden çok profili olabilir. Daha fazla bilgi edinmek için [profiller](#autoscale-profiles) bölümüne bakın. Bir profilde aynı zamanda birden fazla genişleme kuralı ve ölçek kuralları tanımlanmış olabilir. Nasıl değerlendirildiğini görmek için [değerlendirme](#autoscale-evaluation) bölümüne bakın.
 
 ```JSON
 {
@@ -89,39 +85,39 @@ Otomatik ölçeklendirme ayarı şema göstermek için aşağıdaki otomatik öl
 }
 ```
 
-| `Section` | Öğe adı | Açıklama |
+| Section | Öğe adı | Açıklama |
 | --- | --- | --- |
-| Ayar | id | Otomatik ölçeklendirme ayarının kaynak kimliği Otomatik ölçeklendirme, bir Azure Resource Manager kaynağı ayarlarıdır. |
-| Ayar | name | Otomatik ölçeklendirme ayarı adı. |
-| Ayar | location | Otomatik ölçeklendirme ayarının konumu. Bu konum ölçeği genişletilmiş kaynak konumundan farklı olabilir. |
-| properties | targetResourceUri | Ölçeği genişletilmiş kaynak kaynak kimliği. Yalnızca bir otomatik ölçeklendirme ayarı, her bir kaynak olabilir. |
-| properties | profiles | Bir otomatik ölçeklendirme ayarı, bir veya daha fazla profillerini oluşur. Otomatik ölçeklendirme altyapısı, her çalıştığında bir profil yürütür. |
-| profile | name | Profil adı. Bu profili tanımlamanıza yardımcı olan herhangi bir ad seçebilirsiniz. |
-| profile | Capacity.Maximum | İzin verilen kapasite üst sınırı. Bu profili yürütülürken otomatik ölçeklendirme, kaynağınızı bu sayı yukarıda ölçeklenmez sağlar. |
-| profile | Capacity.minimum | İzin verilen kapasite alt sınırı. Bu profili yürütülürken otomatik ölçeklendirme, kaynağınızı bu sayının altına ölçeklenmez sağlar. |
-| profile | Capacity.default | Kaynak ölçüm (Bu durumda, "vmss1" CPU) okunurken bir sorun yoktur ve geçerli kapasite varsayılandır, otomatik ölçeklendirme kullanıma varsayılan değere ölçeklendirir. Bu kaynak kullanılabilirliğini sağlamaktır. Geçerli kapasite, varsayılan kapasiteden zaten yüksektir, otomatik ölçeklendirme, ölçeklenmez. |
-| profile | rules | Otomatik ölçeklendirme kuralları profilinde kullanarak maksimum ve minimum kapasiteler arasında otomatik olarak ölçeklendirir. Bir profili birden çok kural bulunabilir. Genellikle iki kural vardır: ne zaman ölçeğini belirlemek için diğeri ne zaman ölçeklendirme belirlemek için. |
-| rule | metricTrigger | Ölçüm koşuluyla bir kural tanımlar. |
-| metricTrigger | metricName | Ölçüm adı. |
-| metricTrigger |  metricResourceUri | Ölçüm yayan kaynağının kaynak kimliği. Çoğu durumda, ölçeği genişletilmiş kaynak ile aynı olur. Bazı durumlarda, farklı olabilir. Örneğin, bir depolama kuyruğuna ileti sayısına dayalı olarak bir sanal makine ölçek kümesi ölçeklendirebilirsiniz. |
-| metricTrigger | timeGrain | Ölçüm örnekleme süresi. Örneğin, **TimeGrain = "PT1M"** istatistiği öğesinde belirtilen toplama yöntemi kullanarak ölçümleri her 1 dakikada toplanması anlamına gelir. |
-| metricTrigger | statistic | TimeGrain dönemi içindeki toplama yöntemidir. Örneğin, **istatistik = "Ortalama"** ve **timeGrain = "PT1M"** ortalamasını alarak ölçümleri her 1 dakikada toplanması anlamına gelir. Bu özellik, ölçüm nasıl örneklenir belirler. |
-| metricTrigger | timeWindow | Geri ölçümlerini aramak için süre miktarı. Örneğin, **timeWindow "PT10M" =** otomatik ölçeklendirme her çalıştırıldığında, son 10 dakika ölçümlerini sorgular anlamına gelir. Ölçümlerinizin normalleştirilmiş, zaman penceresi sağlar ve geçici artışlara tepki verilmesini önler. |
-| metricTrigger | timeAggregation | Örneklenen ölçümleri toplamak için kullanılan toplama yöntemidir. Örneğin, **TimeAggregation = "Ortalama"** örneklenen ölçümlerin ortalamasını alarak toplamak. Önceki örnekte, on 1 dakikalık örnekleri almak ve bunları ortalama. |
-| rule | scaleAction | Kuralın metricTrigger tetiklendiğinde gerçekleştirilecek eylem. |
-| scaleAction | direction | "Ölçeği ya da"Azaltmak"için ölçek artırma".|
-| scaleAction | value | Artırmak veya kaynak kapasitesinin azaltmak için ne kadar. |
-| scaleAction | cooldown | Sonra bir ölçeklendirme işlemi yeniden ölçeklendirmeden önce beklenecek süre miktarı. Örneğin, varsa **dakikaysa "PT10M" =** , başka bir 10 dakika için yeniden ölçeklendirmek otomatik ölçeklendirme denemez. Dakikaysa eklenmesi veya kaldırılmasını örnekleri sonra ölçümlerin sağlamaktır. |
+| Ayar | Kimlik | Otomatik ölçeklendirme ayarının kaynak KIMLIĞI. Otomatik ölçeklendirme ayarları bir Azure Resource Manager kaynağıdır. |
+| Ayar | ad | Otomatik ölçeklendirme ayarı adı. |
+| Ayar | location | Otomatik ölçeklendirme ayarının konumu. Bu konum, ölçeklendirilen kaynağın konumundan farklı olabilir. |
+| properties | targetResourceUri | Ölçeklendirilen kaynağın kaynak KIMLIĞI. Kaynak başına yalnızca bir otomatik ölçeklendirme ayarınız olabilir. |
+| properties | profiles | Otomatik ölçeklendirme ayarı bir veya daha fazla profilden oluşur. Otomatik ölçeklendirme altyapısının her çalıştırılışında, bir profili yürütür. |
+| profile | ad | Profilin adı. Profili tanımanıza yardımcı olacak herhangi bir ad seçebilirsiniz. |
+| profile | Kapasite. maksimum | İzin verilen maksimum kapasite. Otomatik ölçeklendirme, bu profili yürütürken kaynağı bu sayının üzerinde ölçeklendirmez olmasını sağlar. |
+| profile | Kapasite. en az | İzin verilen en düşük kapasite. Otomatik ölçeklendirme, bu profili yürütürken kaynağı bu sayının altında ölçeklendirmez olmasını sağlar. |
+| profile | Kapasite. varsayılan | Kaynak ölçüsünü (Bu durumda, "vmss1" CPU 'SU) okurken bir sorun varsa ve geçerli kapasite varsayılan değer altında olursa otomatik ölçeklendirme varsayılan olarak ölçeği ölçeklendirir. Bu, kaynağın kullanılabilirliğini sağlamaktır. Geçerli kapasite varsayılan kapasiteden daha yüksekse, otomatik ölçeklendirme ölçeklendirme yapmaz. |
+| profile | rules | Otomatik ölçeklendirme, profildeki kuralları kullanarak maksimum ve en düşük kapasite arasında otomatik olarak ölçeklendirilir. Bir profilde birden çok kurala sahip olabilirsiniz. Genellikle iki kural vardır: bir tanesi ne zaman ölçeklendirileceğini ve diğeri ne zaman ölçeklendirileceğini belirlemektir. |
+| rule | metricTrigger | Kuralın ölçüm koşulunu tanımlar. |
+| metricTrigger | MetricName | Ölçümün adı. |
+| metricTrigger |  metricResourceUri | Ölçüyü veren kaynağın kaynak KIMLIĞI. Çoğu durumda, ölçeklendirmekte olan kaynakla aynı olur. Bazı durumlarda, farklı olabilir. Örneğin, bir sanal makine ölçek kümesini bir depolama kuyruğundaki ileti sayısına göre ölçeklendirebilirsiniz. |
+| metricTrigger | zamandilimi | Ölçüm örnekleme süresi. Örneğin, **Timegrex "PT1M"** , ölçümlerin, istatistik öğesinde belirtilen toplama yöntemi kullanılarak 1 dakikada bir toplanması gerektiği anlamına gelir. |
+| metricTrigger | statistic | Zaman çizgisi dönemi içindeki toplama yöntemi. Örneğin, **istatistik = "Average"** ve **TIMEGREN = "PT1M"** , ölçümlerin ortalama alınarak her 1 dakikada toplanmasının gerektiği anlamına gelir. Bu özellik, ölçümün nasıl örnekleneceğini belirler. |
+| metricTrigger | timeWindow | Ölçümler için geri aranacak zaman miktarı. Örneğin, **timeWindow = "PT10M"** , otomatik ölçeklendirme her çalıştığında, son 10 dakika için ölçümleri sorgular. Zaman penceresi, ölçümlerinizin normalleştirilmesine izin verir ve geçici ani artışlar için yeniden hareket etmenizi önler. |
+| metricTrigger | Timetoplamasını | Örneklenmiş ölçümleri toplamak için kullanılan toplama yöntemi. Örneğin, **timeaggregate = "Average"** , ortalama değeri alarak örneklenmiş ölçümleri toplamalıdır. Önceki durumda, 1 dakikalık örnekleri alın ve bunları ortalama yapın. |
+| rule | scaleAction | Kuralın metricTrigger değeri tetiklendiğinde gerçekleştirilecek eylem. |
+| scaleAction | yön | Ölçeği genişletmek için "Artır" veya "azalt".|
+| scaleAction | değer | Kaynağın kapasitesini ne kadar artırabilir veya azaltamazsınız. |
+| scaleAction | cooldown | Ölçeklendirmeden önce bir ölçek işleminden sonra beklenecek süre. Örneğin, **coolI = "PT10M"** ise otomatik ölçeklendirme, başka 10 dakika boyunca yeniden ölçeklendirmeye çalışmaz. Coolaşağı, örneklerin ekleme veya kaldırma işleminden sonra ölçümlerin sabitlerine izin vermektedir. |
 
 ## <a name="autoscale-profiles"></a>Otomatik ölçeklendirme profilleri
 
-Otomatik ölçeklendirme profilleri üç tür vardır:
+Üç tür otomatik ölçeklendirme profili vardır:
 
-- **Normal profili:** En sık kullanılan profil. Kaynağınızı belirli bir gün veya haftanın gününe göre ölçeklendirmek gerekmiyorsa, normal bir profili kullanabilirsiniz. Bu profil, ardından ölçeğini genişletmek zaman ve ne zaman ölçeklendirme dikte ölçüm kuralları ile yapılandırılabilir. Yalnızca tanımlı bir normal profili olmalıdır.
+- **Normal profil:** En yaygın profil. Kaynağı haftanın gününe veya belirli bir güne göre ölçeklendirmeniz gerekmiyorsa, normal bir profil kullanabilirsiniz. Bu profil daha sonra, ne zaman ölçeklenmesi ve ne zaman Ölçeklendirilecek hakkında bilgi veren ölçüm kurallarıyla yapılandırılabilir. Yalnızca bir normal profiliniz tanımlanmış olmalıdır.
 
-    Bu makalenin önceki bölümlerinde kullanılan örnek profili, normal bir profili örneğidir. Kaynağınız için bir statik örnek sayısını ölçeklendirmek için bir profil ayarlamak mümkündür unutmayın.
+    Bu makalede daha önce kullanılan örnek profil, normal bir profile örnektir. Bir profili, kaynağınız için statik örnek sayısına ölçeklendirecek şekilde ayarlamak da mümkün olduğunu unutmayın.
 
-- **Sabit tarih profili:** Özel durumlar için profilidir. Örneğin, 26 aralık 2017'de (Pasifik Saati) önce geldiğini önemli olaya sahip varsayalım. Bu günlük, ancak yine de ölçümleri aynı ölçekte farklı olacak şekilde minimum ve maksimum kapasite kaynağınızın kullanmanız gerekir. Bu durumda, bir sabit tarih profili, ayarın profiller listesine eklemeniz gerekir. Profil, yalnızca olay gününde çalıştırmak için yapılandırılır. Diğer herhangi bir gün için otomatik ölçeklendirme normal profilini kullanır.
+- **Sabit tarih profili:** Bu profil özel durumlar içindir. Örneğin, 26 Aralık 2017 (PST) tarihinde önemli bir olayınızın olduğunu varsayalım. Kaynağınızın en düşük ve en büyük kapasitelerinin o gün için farklı olmasını istiyorsunuz, ancak yine de aynı ölçümleri ölçeklendirin. Bu durumda, ayarınızın profil listesine sabit bir tarih profili eklemeniz gerekir. Profil, yalnızca olayın gününde çalışacak şekilde yapılandırılmıştır. Herhangi bir gün için otomatik ölçeklendirme normal profili kullanır.
 
     ``` JSON
     "profiles": [{
@@ -154,12 +150,12 @@ Otomatik ölçeklendirme profilleri üç tür vardır:
     ]
     ```
     
-- **Yinelenme profili:** Bu profil türü, bu profili haftanın belirli bir günde her zaman kullanıldığından emin olmak sağlar. Yinelenme profilleri, yalnızca bir başlangıç saati gerekir. Sabit tarih profili başlamaya ayarlandıysa veya bunlar sonraki yinelenme profili kadar çalıştırın. Aynı ayarda tanımlanan normal bir profili olsa bile bu profili bir otomatik ölçeklendirme ayarı yalnızca bir yinelenme profili ile çalışır. Aşağıdaki iki örnek, bu profili nasıl kullanıldığını göstermektedir:
+- **Yinelenme profili:** Bu profil türü, bu profilin her zaman haftanın belirli bir gününde kullanılmasını sağlamanıza olanak sağlar. Yineleme profillerinin yalnızca bir başlangıç saati vardır. Sonraki yinelenme profili veya sabit tarih profili başlangıç olarak ayarlanana kadar çalışır. Aynı ayarda tanımlanmış bir normal profil olsa bile, yalnızca bir yinelenme profiline sahip bir otomatik ölçeklendirme ayarı bu profili çalıştırır. Aşağıdaki iki örnek, bu profilin nasıl kullanıldığını göstermektedir:
 
-    **Örnek 1: Haftanın günü ve hafta sonları karşılaştırması**
+    **Örnek 1: hafta Içi ve hafta sonları**
     
-    Sonralı, 4 için maksimum kapasite istediğinizi düşünelim. Daha fazla yük beklediğiniz çünkü günlerinde, 10 olması için en yüksek kapasite istersiniz. Bu durumda, ayarınızı iki yinelenme profili, bir hafta sonları ve diğer günlerinde çalıştırılacak içerecektir.
-    Ayarı şöyle görünür:
+    Hafta sonları için maksimum kapasitenin 4 olmasını istediğinizi varsayalım. Hafta içi, daha fazla yük beklemeniz için maksimum kapasitenizin 10 olmasını istiyorsunuz. Bu durumda, ayarınız hafta içinde ve diğeri de hafta içinde çalışmak üzere iki yinelenme profili içerir.
+    Bu ayar şöyle görünür:
 
     ``` JSON
     "profiles": [
@@ -213,13 +209,13 @@ Otomatik ölçeklendirme profilleri üç tür vardır:
     }]
     ```
 
-    Önceki ayarı, her bir yinelenme profili bir zamanlamaya sahip olduğunu gösterir. Profil başladığında bu zamanlamanın belirler çalışıyor. Başka bir profile çalıştırma süresi olduğunda profili durdurur.
+    Yukarıdaki ayar, her bir yinelenme profilinin bir zamanlamaya sahip olduğunu gösterir. Bu zamanlama, profilin ne zaman çalışmaya başlayacağını belirler. Profil, başka bir profil çalıştırmak istediğinizde durduruluyor.
 
-    Örneğin, önceki ayarında, 12: 00'da Pazartesi günü başlatmak için "weekdayProfile" ayarlanır. Bu profil, Pazartesi günü 12: 00'da çalışan başlar anlamına gelir. 12:00 "weekendProfile" çalıştırmaya başlamak için ne zaman zamanlanmış'da, Cumartesi kadar devam eder.
+    Örneğin, yukarıdaki ayarda, "weekdayProfile" Pazartesi günü 12:00 ' de başlayacak şekilde ayarlanır. Bu, bu profilin 12:00 ' de Pazartesi günü çalışmaya başladığı anlamına gelir. "WeekendProfile" çalışmaya başlamak üzere zamanlandığında, Cumartesi 12:00 ' ye kadar devam eder.
 
-    **Örnek 2: iş saatleri**
+    **Örnek 2: Iş saatleri**
     
-    Bir ölçüm eşiği çalışma saatleri (09:00:00 ila 5:00) ve diğer tüm saatler için farklı bir sahip olmasını istediğiniz varsayalım. Ayarı şöyle görünür:
+    İş saatleri (9:00-5:00 PM) sırasında tek bir ölçüm eşiğine sahip olmak istediğinizi ve diğer tüm zamanlarda farklı bir ölçü olduğunu varsayalım. Bu ayar şöyle görünür:
     
     ``` JSON
     "profiles": [
@@ -273,41 +269,41 @@ Otomatik ölçeklendirme profilleri üç tür vardır:
     }]
     ```
     
-    Önceki ayar "businessHoursProfile" Pazartesi günü 9: 00'da çalışan başlar ve 17:00:00 için Devam'ı gösterir. Bu durumda "nonBusinessHoursProfile" çalıştıran başlatır. "nonBusinessHoursProfile" Salı günü 09:00:00 kadar çalışır ve ardından "businessHoursProfile" yeniden devreye girer. Bu, 17: 00'dan Cuma kadar yinelenir. Bu noktada, "nonBusinessHoursProfile" Pazartesi tüm 9: 00'da çalışır.
+    Yukarıdaki ayarda, "businessHoursProfile" ın Pazartesi günü 9:00 ' de çalışmaya başladığı ve 5:00 PM ile devam ettiği gösterilmektedir. Bu, "nonBusinessHoursProfile" çalışmaya başladığında yapılır. "NonBusinessHoursProfile", 9:00 Salı kadar çalışır ve "businessHoursProfile" yeniden sürer. Bu, 5:00 saat ' ye kadar yinelenir. Bu noktada, "nonBusinessHoursProfile", Pazartesi günü 9:00 ile aynı şekilde çalışır.
     
 > [!Note]
-> Azure portalında otomatik ölçeklendirme kullanıcı arabiriminde yinelenme profilleri için bitiş saatlerini uygular ve otomatik ölçeklendirme ayarının yineleme profilleri arasında varsayılan profili çalıştırır.
+> Azure portal otomatik ölçeklendirme Kullanıcı arabirimi, yineleme profillerinin bitiş zamanlarını zorlar ve yineleme profilleri arasında otomatik ölçeklendirme ayarının varsayılan profilini çalıştırmaya başlar.
     
-## <a name="autoscale-evaluation"></a>Otomatik ölçek değerlendirme
-Otomatik ölçeklendirme ayarları birden çok profil olabilir ve her bir profil birden çok ölçüm kuralları olabilir düşünüldüğünde, bir otomatik ölçeklendirme ayarı nasıl değerlendirilir anlamak önemlidir. Otomatik ölçeklendirme işlemi her çalıştırıldığında, geçerli profili seçerek başlar. Daha sonra otomatik ölçeklendirme, en düşük ve en yüksek değerleri ve profilinde herhangi bir ölçüm kuralları değerlendirir ve bir ölçeklendirme eylemi gerekli olup olmadığını belirler.
+## <a name="autoscale-evaluation"></a>Otomatik ölçeklendirme değerlendirmesi
+Otomatik ölçeklendirme ayarlarının birden çok profili olabilir ve her profilde birden çok ölçüm kuralı bulunabilir ve bu, bir otomatik ölçeklendirme ayarının nasıl değerlendirildiğini anlamak önemlidir. Otomatik ölçeklendirme işi her çalıştığında, uygulanabilir profili seçerek başlar. Sonra otomatik ölçeklendirme, en düşük ve en yüksek değerleri ve profildeki ölçüm kurallarını değerlendirir ve bir ölçeklendirme eylemi gerekli olup olmadığını belirler.
 
-### <a name="which-profile-will-autoscale-pick"></a>Otomatik ölçeklendirme profili hangi seçer?
+### <a name="which-profile-will-autoscale-pick"></a>Hangi profil otomatik ölçeklendirme seçer?
 
-Otomatik ölçeklendirme profilini seçmek için aşağıdaki sırayı kullanır:
-1. Önce şimdi çalıştırmak üzere yapılandırılmış herhangi bir sabit tarih profil için arar. Varsa, otomatik ölçeklendirme, çalıştırır. Çalıştırmak için gereken birden çok sabit tarih profili varsa, otomatik ölçeklendirme İlkini seçer.
-2. Hiçbir sabit tarih profili varsa, otomatik ölçeklendirme yinelenme profilleri arar. Yinelenme profili bulunursa, onu çalıştırır.
-3. Otomatik ölçeklendirme, sabit tarih veya yineleme profilleri yoksa, normal profili çalıştırır.
+Otomatik ölçeklendirme, profili seçmek için aşağıdaki sırayı kullanır:
+1. İlk olarak, şimdi çalışacak şekilde yapılandırılmış herhangi bir sabit tarih profilini arar. Varsa, otomatik ölçeklendirme onu çalıştırır. Çalışması beklenen birden çok sabit tarih profili varsa, otomatik ölçeklendirme ilk olanı seçer.
+2. Sabit bir tarih profili yoksa, otomatik ölçeklendirme yineleme profillerine bakar. Bir yinelenme profili bulunursa, onu çalıştırır.
+3. Sabit bir tarih veya yinelenme profilleri yoksa otomatik ölçeklendirme normal profili çalıştırır.
 
-### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Otomatik ölçeklendirme, birden çok kural nasıl değerlendirmek?
+### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Otomatik ölçeklendirme birden çok kuralı nasıl değerlendirir?
 
-Otomatik ölçeklendirme çalıştırmak için hangi profilin belirledikten sonra bu profildeki tüm genişleme kuralları değerlendirir (kurallarıyla bunlar **yönü "Artır" =** ).
+Otomatik ölçeklendirme hangi profilin çalıştırılacağını belirledikten sonra, profildeki tüm genişleme kurallarını değerlendirir (Bu kurallar **Direction = "Artır"** ).
 
-Bir veya daha fazla ölçek genişletme kuralı tetiklendi, otomatik ölçeklendirme tarafından belirlenen yeni kapasite hesaplar **scaleAction** bu kuralların her biri. Ardından, out hizmet kullanılabilirliğini sağlamak için bu kapasitelerin en ölçeklendirir.
+Bir veya daha fazla genişleme kuralı tetikleniyorsa, otomatik ölçeklendirme, bu kuralların her birinin **ScaleAction** tarafından belirlenen yeni kapasiteyi hesaplar. Daha sonra hizmet kullanılabilirliğine olanak sağlamak için bu kapasitelerin en üst sınırına göre ölçeklendirin.
 
-Örneğin, burada 10 'un geçerli kapasite ile ayarlanmış bir sanal makine ölçek varsayalım. İki genişleme kuralları: 10 oranında kapasitesini artırır ve 3 sayılar kapasitesini artırır. İlk kural 11'in yeni bir kapasitede neden olur ve ikinci kural 13 bir kapasitede neden olur. Hizmetin kullanılabilir olmasını sağlamak için otomatik ölçeklendirme, bu kapasite üst sınırı, bu nedenle ikinci kuralı sonucunda oluşan eylemi seçilen seçer.
+Örneğin, geçerli 10 kapasiteye sahip bir sanal makine ölçek kümesi olduğunu varsayalım. İki genişleme kuralı vardır: kapasiteyi yüzde 10 ' luk bir artırır ve kapasiteyi 3 saya artırır. İlk kural yeni bir 11 kapasiteye neden olur ve ikinci kural 13 kapasiteye neden olur. Hizmet kullanılabilirliğini sağlamak için, otomatik ölçeklendirme, en yüksek kapasiteye neden olan eylemi seçer, bu nedenle ikinci kural seçilir.
 
-Ölçek genişletme kuralı yok tetiklenen, otomatik ölçeklendirme tüm ölçeğini kurallarını değerlendirir. (ile kurallar **yönü "Azaltmak" =** ). Tetiklenen tüm ölçeğini kuralları, otomatik ölçeklendirme, yalnızca bir ölçek daraltma eylemi alır.
+Ölçek Genişletme kuralları tetiklenmez, otomatik ölçeklendirme tüm ölçek genişletme kurallarını değerlendirir ( **Direction = "azalt"** ile kurallar). Otomatik ölçeklendirme yalnızca tüm ölçek genişletme kuralları tetikleniyorsa bir ölçeklendirme eylemi alır.
 
-Otomatik ölçeklendirme hesaplar tarafından belirlenen yeni kapasite **scaleAction** bu kuralların her biri. Ardından bu hizmetin kullanılabilir olmasını sağlamak için bu kapasiteler en fazla sonucunda oluşan ölçek eylemi seçer.
+Otomatik ölçeklendirme, bu kuralların her birinin **ScaleAction** tarafından belirlenen yeni kapasiteyi hesaplar. Ardından, hizmet kullanılabilirliğini sağlamak için bu kapasitelerin maksimum sayısına neden olan ölçekleme eylemini seçer.
 
-Örneğin, burada 10 'un geçerli kapasite ile ayarlanmış bir sanal makine ölçek varsayalım. İki ölçek kuralı vardır: yüzde 50 kapasite azalır ve kapasite tarafından 3 sayısını azaltır. İlk kural 5 yeni bir kapasite neden olur ve ikinci kural 7'in bir kapasitede neden olur. Hizmetin kullanılabilir olmasını sağlamak için otomatik ölçeklendirme, bu kapasite üst sınırı, bu nedenle ikinci kuralı sonucunda oluşan eylemi seçilen seçer.
+Örneğin, geçerli 10 kapasiteye sahip bir sanal makine ölçek kümesi olduğunu varsayalım. İki ölçeklendirme kuralı vardır: kapasiteyi yüzde 50 oranında düşürür ve kapasiteyi 3 sayan azaltır. İlk kural yeni 5 kapasiteye neden olur ve ikinci kural 7 kapasiteye neden olur. Hizmet kullanılabilirliğini sağlamak için, otomatik ölçeklendirme, en yüksek kapasiteye neden olan eylemi seçer, bu nedenle ikinci kural seçilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki başvurarak otomatik ölçeklendirme hakkında daha fazla bilgi edinin:
+Aşağıdaki öğesine başvurarak otomatik ölçeklendirme hakkında daha fazla bilgi edinin:
 
 * [Otomatik Ölçeklendirmeye Genel Bakış](../../azure-monitor/platform/autoscale-overview.md)
-* [Azure İzleyici otomatik ölçeklendirme ortak ölçümleri](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Azure İzleyici otomatik ölçeklendirme için en iyi yöntemler](../../azure-monitor/platform/autoscale-best-practices.md)
-* [E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemleri kullanın](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [Azure Izleyici otomatik ölçeklendirme ortak ölçümleri](../../azure-monitor/platform/autoscale-common-metrics.md)
+* [Azure Izleyici otomatik ölçeklendirme için en iyi uygulamalar](../../azure-monitor/platform/autoscale-best-practices.md)
+* [E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Otomatik ölçeklendirme REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 

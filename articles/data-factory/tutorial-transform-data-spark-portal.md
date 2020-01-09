@@ -10,12 +10,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ddc5032da415ebee9920556d3168d30bdae4a158
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439222"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory'de bir Spark etkinliği kullanarak verileri bulutta dönüştürme
 Bu öğreticide, Azure portalını kullanarak bir Azure Data Factory işlem hattı oluşturursunuz. Bu işlem hattı bir Spark etkinliği ve isteğe bağlı bir Azure HDInsight bağlı hizmetini kullanarak verileri dönüştürür. 
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -99,13 +99,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
    - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
-   Bu hızlı başlangıçtaki adımlardan bazıları kaynak grubu için **ADFTutorialResourceGroup** adını kullandığınızı varsayar. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+   Bu hızlı başlangıçtaki adımlardan bazıları kaynak grubu için **ADFTutorialResourceGroup** adını kullandığınızı varsayar. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** için, veri fabrikasının konumunu seçin. 
 
    Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure Depolama ve Azure SQL Veritabanı) ve işlemler (HDInsight gibi) başka bölgelerde olabilir.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra, **Veri fabrikası** sayfasını görürsünüz. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
 
@@ -204,7 +204,7 @@ Bu bölümde iki bağlı hizmet oluşturacaksınız:
    !["Tümünü Yayımla" düğmesi](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
 
-## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırmasını tetikleme
+## <a name="trigger-a-pipeline-run"></a>İşlem hattı çalıştırması tetikleme
 Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. 
 
 !["Tetikleyici" ve "Şimdi Tetikle" düğmeleri](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
@@ -215,7 +215,7 @@ Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' 
    
 1. Düzenli aralıklarla **Yenile**’yi seçerek işlem hattı çalıştırmasının durumunu denetleyin. 
 
-   ![“Yenile” düğmesini içeren, işlem hattı çalıştırmalarını izleme sekmesi](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
+   ![“Yenile” düğmeli işlem hattı çalıştırmalarını izleme sekmesi](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
 1. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görmek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Göster**’i seçin.
 
@@ -230,7 +230,7 @@ adftutorial kapsayıcısının spark/otuputfiles/wordcount klasöründe çıktı
 
 ![Çıkış dosyasının konumu](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örnek: 
+Dosya, girdi metin dosyasındaki her bir sözcüğü ve sözcüğün dosyada görünme sayısını içermelidir. Örneğin: 
 
 ```
 (u'This', 1)

@@ -1,19 +1,18 @@
 ---
 title: Öğretici-Azure Stream Analytics bulut işleri için özel .NET seri hale getiriciler
 description: Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
-ms.openlocfilehash: f5fa0a4398c904113dbce5d80844b42b6e775df0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702429"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443688"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Öğretici: Azure Stream Analytics için özel .NET seri hale Getiricileri
 
@@ -29,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Stream Analytics işinizi özel seri hale getirici 'yi kullanacak şekilde yapılandırın.
 > * Özel seri hale getirici 'yi test etmek için Stream Analytics işinizi yerel olarak çalıştırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -87,7 +86,7 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
    |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
    |Kaynak|ASA projesi başvurusundan veya CodeBehind 'ten yükleme|
    |CSharp derleme adı|Prototipbufdeserializer. dll|
-   |Sınıf adı|MessageBodyProto. MessageBodyDeserializer|
+   |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
    |Olay sıkıştırma türü|Hiçbiri|
 
 3. Aşağıdaki sorguyu **Script. aşama QL** dosyasına ekleyin.
@@ -104,7 +103,7 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
    |Kaynak Türü|Veri Akışı|
    |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
    |CSharp derleme adı|Prototipbufdeserializer. dll|
-   |Sınıf adı|MessageBodyProto. MessageBodyDeserializer|
+   |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
    |Yerel giriş dosyası yolu|indirilen örnek prototipme giriş dosyasının dosya yolunu < >|
 
 ## <a name="execute-the-stream-analytics-job"></a>Stream Analytics işini yürütün

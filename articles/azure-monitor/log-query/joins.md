@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397820"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki birleşimler
 
@@ -40,7 +40,7 @@ SecurityEvent
 
 Bu örnekte, ilk veri kümesi tüm oturum açma olaylarına filtre uygular. Bu, tüm oturum kapatma olaylarını filtreleyen ikinci bir veri kümesiyle birleştirilir. Tasarlanan sütunlar _bilgisayar_, _Hesap_, _Targetlogonıd_ve _TimeGenerated_' dir. Veri kümeleri, bir paylaşılan sütunla bağıntılı, _Targetlogonıd_. Çıktı, bağıntı başına, oturum açma ve oturum kapatma zamanına sahip tek bir kayıttır.
 
-Her iki DataSet 'in de aynı ada sahip sütunları varsa, sağ taraftaki veri kümesinin sütunlarına bir dizin numarası verilir, bu nedenle bu örnekte sonuçlar, sol taraftaki tablodaki değerlerle _Targetlogonıd_ ve _TargetLogonId1_ değerleriyle gösterilir sağ taraftaki tablodan. Bu durumda, ikinci _TargetLogonId1_ sütunu `project-away` işleci kullanılarak kaldırılmıştır.
+Her iki DataSet 'in de aynı ada sahip sütunları varsa, sağ taraftaki veri kümesinin sütunlarına bir dizin numarası verilir. bu nedenle, sonuçlar, sol taraftaki tablodaki değerlerle _Targetlogonıd_ ve sağ taraftaki tablodaki değerlerle _TargetLogonId1_ gösterir. Bu durumda, ikinci _TargetLogonId1_ sütunu `project-away` işleci kullanılarak kaldırılmıştır.
 
 > [!NOTE]
 > Performansı artırmak için, `project` işlecini kullanarak yalnızca birleştirilmiş veri kümelerinin ilgili sütunlarını saklayın.
@@ -80,10 +80,10 @@ SecurityEvent
 ## <a name="join-kinds"></a>Ekleme türleri
 _Tür_ bağımsız değişkeniyle birlikte JOIN türünü belirtin. Her tür, aşağıdaki tabloda açıklandığı gibi, belirtilen tabloların kayıtları arasında farklı bir eşleşme gerçekleştirir.
 
-| JOIN türü | Açıklama |
+| Birleştirme türü | Açıklama |
 |:---|:---|
 | ınnerunique | Bu, varsayılan JOIN modudur. İlk olarak, sol tablodaki eşleşen sütunun değerleri bulunur ve yinelenen değerler kaldırılır.  Sonra benzersiz değerler kümesi, doğru tabloyla eşleştirilir. |
-| Dahili | Sonuçlara yalnızca her iki tablodaki eşleşen kayıtlar dahil edilir. |
+| iç | Sonuçlara yalnızca her iki tablodaki eşleşen kayıtlar dahil edilir. |
 | soltouter | Sol tablodaki tüm kayıtlar ve sağ tablodaki eşleşen kayıtlar, sonuçlara dahildir. Eşleşmeyen çıkış özellikleri null değerleri içeriyor.  |
 | soltantı | Sol taraftaki kayıtlar, sağdan eşleşme içermeyen sonuçlara dahildir. Sonuçlar tablosunda yalnızca sol tablodaki sütunlar bulunur. |
 | leftyarı | Sağ taraftaki eşleşmeler ile eşleşen kayıtlar sonuçlara dahildir. Sonuçlar tablosunda yalnızca sol tablodaki sütunlar bulunur. |

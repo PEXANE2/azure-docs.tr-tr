@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9ba68e90b5ac64c7bdb08af2b567f00c1a076808
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453931"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama (Önizleme özellikleri)
 
@@ -25,7 +25,7 @@ Bu nasıl yapılır makalesinde şunları yapabilirsiniz:
 - Cihazı hazırlayın ve IoT Central uygulamanıza bağlayın.
 - IoT Central cihaz telemetri ve özelliklerini görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -52,7 +52,7 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyac
 
 ## <a name="prepare-the-device"></a>Cihazı hazırlama
 
-1. DevKit cihazı için [önceden oluşturulmuş en son Azure IoT Central Tak ve kullan bellenimini](https://github.com/MXCHIP/IoTDevKit/raw/master/pnp/iotc_devkit/bin/iotc_devkit.bin) GitHub 'dan indirin.
+1. DevKit cihazı için [önceden oluşturulmuş en son Azure IoT Central Tak ve kullan bellenimini](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) GitHub 'dan indirin.
 
 1. DevKit cihazını bir USB kablosu kullanarak geliştirme makinenize bağlayın. Windows 'da, DevKit cihazında depolama ile eşleştirilmiş bir sürücüde dosya Gezgini penceresi açılır. Örneğin, sürücü **AZ3166 (D:)** olarak adlandırılabilir.
 

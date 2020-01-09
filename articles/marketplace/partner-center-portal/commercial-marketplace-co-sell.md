@@ -1,52 +1,71 @@
 ---
 title: Iş Ortağı Merkezi 'nde ortak satış seçeneği | Azure Marketi
 description: Teklifinizin ortak satış sekmesinde sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken çözümünüz hakkında daha fazla bilgi edinmek için kullanılacaktır.
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/06/2019
+ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431966"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Iş Ortağı Merkezi 'nde ortak satış seçeneği
 
 Ortak satış sekmesi hakkında bilgi sağlanması tamamen isteğe bağlıdır. Ortak satış için hazırlık ve IP ortak satışı için hazırlık durumu elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken çözümünüz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft üzerinden satış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
 
-## <a name="applicable-products"></a>Geçerli Ürünler
+Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri için şu anda kullanılabilir. Ek teklif türleri için destek, zaman içinde kullanılabilir hale getirilir.
 
-Teklifinizin üzerine inşa edilen veya ile çalışmak üzere tasarlanan Microsoft ürünlerinden herhangi birini seçin.
+| **Teklif türü** | **Ortak satış sayfası Iş Ortağı Merkezi 'nde kullanılabilir** |
+|    -----------------------    |    -----------------------------  |
+| Hizmet olarak yazılım (SaaS) |     Şubat 'ta genel kullanıma hazır. 2020      |
+| PowerApps & müşteri katılımı için Dynamics 365      |     Kullanıma sunuldu      |
+| Dynamics 365 for Operations     |     Kullanıma sunuldu       |
+| Dynamics 365 Business Central      |  Şubat 'ta genel kullanıma hazır. 2020     |
+| Azure Uygulaması     |     Şubat 'ta genel kullanıma hazır. 2020     |
+| Azure Sanal Makinesi      |     Duyurulacak       |
+| Azure kapsayıcısı     |     Duyurulacak       |
+| Danışmanlık Hizmetleri      |     Duyurulacak       |
+| IoT Edge modülü      |     Duyurulacak       |
+| Power BI hizmet uygulaması     |     Duyurulacak       |
+|  |
 
-## <a name="customer-segments"></a>Müşteri segmentleri
+## <a name="listing"></a>Döküm
 
-Teklifinizin hedeflediği iş boyutunu seçin.
+Ortak satış listeleri, Microsoft satış ekiplerinin çözümünüzü daha geniş bir hedef kitleye pazarlamasını sağlar.
 
-## <a name="offer-type"></a>Teklif türü
+- Teklifinizin oluşturulduğu, genişlettiği veya tümleştirildiği Microsoft platformlarını seçin.
+- Teklifinizin hedeflediği piyasa segmentlerini seçin.
+- Teklifiniz için bir [çözüm türü](#solution-type) seçin.
+- En fazla üç [çözüm alanı](#solution-areas) ve alt alan seçin.
 
-Teklif türünü seçin:
+### <a name="solution-type"></a>Çözüm türü
 
-| **Teklif türü**    | **Açıklama**  |
+Çözüm türleri, teklifinizin ele almak için tasarlandığı senaryoları tanımlamaya yardımcı olur.
+
+| **Çözüm türü**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| Cihaz | Bir cihaz üreticisinden donanım oluşturmayı veya satmasını kapsayan bir teklif. |
-| IP | Müşterinin kullanımı için lisanslı uygulamalar veya diğer copyrightable malzemeleri. Örneğin: lisanslanabilir ve şirket içinde yüklenebilen bir CRM programı. |
+| Cihaz (donanım) | Bir cihaz üreticisinden donanım oluşturmayı veya satmasını kapsayan bir teklif. |
+| IP (uygulama) | Müşterinin kullanımı için lisanslı uygulamalar veya diğer copyrightable malzemeleri. Örneğin: lisanslanabilir ve şirket içinde yüklenebilen bir CRM programı. |
 | Hizmet | Genellikle danışmanlar aracılığıyla sunulan belirli bir kerelik proje için uygulamalı uzman. Örneğin: istemci için bir müşteri veritabanı ayarlama (istemcisiyle, teslimatı sonrasında veritabanını çalıştırma sorumluluğunu kabul ediyor). |
 | Yönetilen hizmet | Genellikle sürekli olarak bulut tabanlı bir proje için uygulamalı uzman. Örneğin: bir çevrimiçi veritabanını çalıştırmaya yönelik bir platform ve araçlar sağlamak için, yönetilen hizmet sağlayıcısı tarafından sağlanan devam eden yönetim. |
 
-## <a name="solution-areas"></a>Çözüm bölgeleri
+### <a name="solution-areas"></a>Çözüm bölgeleri
 
-Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz.  Her çözüm alanı için en fazla iki çözüm alt alanı seçebilirsiniz. Birden çok alt kategori seçmek için `Ctrl` anahtarı (Windows üzerinde) veya komut anahtarını (Mac OS üzerinde) kullanın.
+Çözüm bölgeleri, çözümünüzü daha da tanımlamaya yardımcı olur.
 
-Çözüm bölgeleri, teklifinizin ele almak için tasarlandığı senaryoları tanımlamaya yardımcı olur.
+Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz. Her çözüm alanı için en fazla iki çözüm alt alanı seçebilirsiniz. Birden çok alt kategori seçmek için `Ctrl` anahtarı (Windows üzerinde) veya komut anahtarını (Mac OS üzerinde) kullanın.
 
 ## <a name="documents"></a>Belgeler
 
-| **Belgelerini**    | **Açıklama**  |
+Microsoft 'un müşteri ihtiyaçlarını değerlendirmek için kullanması için yardımcı malzemeler sağlayabilirsiniz.
+
+| **Belgeler**    | **Açıklama**  |
 | :------------------- | :-------------------|
 | *Müşteri tek çağrı cihazı* | Tekliflerinizin müşteri için Ready açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemenize ve müşterinin hazır olmasını sağlamaya yardımcı olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> Iş Ortağı Merkezi 'nde kullanılabilen ilgili şablonlardan birini kullanın: <br> <ul> <li> Tek sayfalayıcı şablonu Microsoft Azure </li> <li> Microsoft Dynamics 365 1-sayfalayıcı şablonu </li> <li> Office 365 1-sayfalayıcı şablonu </li> <li> Windows 10 1-sayfalayıcı şablonu </li> </ul>
  |
@@ -60,7 +79,7 @@ Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz.  Her çözüm a
 
 ## <a name="contacts"></a>Kişiler
 
-İletişim bilgileriniz, Microsoft satış ekiplerinin ve kanal satıcılarının kuruluşunuzdaki uygun kaynaktan ek bilgi istemesine olanak tanır. İletişim bilgileri tüm Microsoft satış ekiplerinde kullanılabilir. Teklifinizi CSP programında kullanılabilir hale getirmek isterseniz, bu iletişim bilgileri de Kanal satıcıları tarafından kullanılabilir. 
+İletişim bilgileriniz, Microsoft satış ekiplerinin ve kanal satıcılarının kuruluşunuzdaki uygun kaynaktan ek bilgi istemesine olanak tanır. İletişim bilgileri tüm Microsoft satış ekiplerinde kullanılabilir. Teklifinizi CSP programında kullanılabilir hale getirmek isterseniz, bu iletişim bilgileri de Kanal satıcıları tarafından kullanılabilir.
 
 Bu belgede iş ortakları için farklı roller ve aralarında nasıl seçim yapılacağı hakkında rehberlik sunulmaktadır. Iş Ortağı Merkezi 'nden CSV şablonunu indirerek, her satırı ilgili bilgilerle doldurarak ve bu CSV dosyasını içeri aktararak kişilerinizi sağlayabilirsiniz. Bir CSV dosyasının içe aktarılması, mevcut kişilerin üzerine yazacak.
 

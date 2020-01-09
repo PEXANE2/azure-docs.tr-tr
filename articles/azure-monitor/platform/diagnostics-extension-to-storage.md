@@ -2,18 +2,18 @@
 title: Azure Depolama’da Tanılama Verilerini Depolama ve Görüntüleme
 description: Azure tanılama verilerini bir Azure depolama hesabında nasıl toplayacağınızı öğrenmek için, mevcut araçlardan birini kullanarak görüntüleyebilirsiniz.
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395006"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Depolama’daki tanılama verilerini depolama ve görüntüleme
 Tanılama verileri, Microsoft Azure depolama öykünücüsüyle veya Azure depolama 'ya aktarmadığınız takdirde kalıcı olarak depolanmaz. Depolama alanındaki bir kez, kullanılabilir araçlardan biri ile görüntülenebilir.

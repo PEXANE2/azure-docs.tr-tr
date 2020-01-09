@@ -1,5 +1,5 @@
 ---
-title: Kapsamları ve uygulama rollerini doğrulama | Mavisi
+title: Uygulama rolleri korumalı Web API 'SI & kapsamları doğrulama | Mavisi
 titleSuffix: Microsoft identity platform
 description: Korumalı bir Web API 'SI oluşturmayı ve uygulamanızın kodunu yapılandırmayı öğrenin.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a7a5a0df87910d2093bfee47e46c9c1a06530
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2eb9cdf68bf5103776d50db28e9e6facc89c9278
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965390"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423702"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Korumalı Web API 'SI: kapsamları ve uygulama rollerini doğrulama
 
@@ -42,7 +42,7 @@ Bir ASP.NET/ASP.NET Core Web API 'sini korumak için, bunlardan birine `[Authori
 - Denetleyicinin kendisi, denetleyicinin tüm eylemlerinin korunmasını istiyorsanız
 - API 'niz için bireysel denetleyici eylemi
 
-```CSharp
+```csharp
     [Authorize]
     public class TodoListController : Controller
     {
@@ -59,7 +59,7 @@ Ancak bu koruma yeterli değildir. Yalnızca ASP.NET/ASP.NET Core 'un belirteci 
 
 API 'niz bir kullanıcı adına bir istemci uygulaması tarafından çağrılırsa, API için belirli kapsamları olan bir taşıyıcı belirteci istemesi gerekir. (Bkz. [kod yapılandırması | Taşıyıcı belirteci](scenario-protected-web-api-app-configuration.md#bearer-token).)
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : Controller
 {
@@ -86,7 +86,7 @@ public class TodoListController : Controller
 - `http://schemas.microsoft.com/identity/claims/scope` veya `scp`adlı bir talep olduğunu doğrulayın.
 - Talebin API tarafından beklenen kapsamı içeren bir değere sahip olduğunu doğrulayın.
 
-```CSharp
+```csharp
     /// <summary>
     /// When applied to a <see cref="HttpContext"/>, verifies that the user authenticated in the 
     /// web API has any of the accepted scopes.
@@ -121,7 +121,7 @@ Bu [örnek kod](https://github.com/Azure-Samples/active-directory-dotnet-native-
 Web API 'niz bir [Daemon uygulaması](scenario-daemon-overview.md)tarafından çağrılırsa, bu UYGULAMANıN Web API 'niz için uygulama izni olması gerekir. API 'nizin bu izinleri (örneğin, `access_as_application` uygulama rolü) kullanıma sunduğu [uygulama izinlerini (uygulama rolleri) açığa çıkardık](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) .
 Artık API 'lerinizin, aldığı belirtecin `roles` talebi içerdiğini ve bu talebin beklediği değere sahip olduğunu doğrulaması gerekir. Bu doğrulamayı yapan kod, temsilci izinleri doğrulayan koda benzerdir, çünkü `scopes`için test yapmak yerine, denetleyici eyleminiz `roles`test eder:
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -134,7 +134,7 @@ public class TodoListController : ApiController
 
 `ValidateAppRole()` yöntemi şuna benzer olabilir:
 
-```CSharp
+```csharp
 private void ValidateAppRole(string appRole)
 {
     //
@@ -161,7 +161,7 @@ Bu kez, kod parçacığı ASP.NET içindir. ASP.NET Core için `ClaimsPrincipal.
 
 Yalnızca Daemon uygulamalarının Web API 'nizi çağırmasını sağlamak istiyorsanız, bir koşul ekleyin, uygulama rolünü doğruladığınızda, belirteç yalnızca uygulama belirteci olur:
 
-```CSharp
+```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
 string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;

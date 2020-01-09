@@ -2,19 +2,15 @@
 title: Windows Update ayarlarını Azure Güncelleştirme Yönetimi ile çalışacak şekilde yapılandırma
 description: Bu makalede, Azure Güncelleştirme Yönetimi ile çalışmak üzere yapılandırdığınız Windows Update ayarları açıklanmaktadır.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f6377012a2afd0fb36486edf0af0ac3591b5d1f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366864"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Güncelleştirme Yönetimi için Windows Update ayarlarını yapılandırma
 
@@ -47,7 +43,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Diğer Microsoft ürünleri için güncelleştirmeleri etkinleştir
 
-Varsayılan olarak Windows Update yalnızca Windows için güncelleştirmeleri sağlar. **Windows 'u güncelleştirdiğimde diğer Microsoft ürünlerine yönelik güncelleştirmeleri ver** ' i etkinleştirirseniz, Microsoft SQL Server ve diğer Microsoft yazılımları için güvenlik düzeltme ekleri de dahil olmak üzere diğer ürünler için de güncelleştirmeler alırsınız. Bu seçenek grup ilkesi tarafından yapılandırılamaz. Diğer Microsoft güncelleştirmelerini etkinleştirmek istediğiniz sistemlerde aşağıdaki PowerShell komutunu çalıştırın. Güncelleştirme Yönetimi Bu ayarla uyumlu olacak.
+Varsayılan olarak, Windows Update yalnızca Windows’a yönelik güncelleştirmeleri sağlar. **Windows 'u güncelleştirdiğimde diğer Microsoft ürünlerine yönelik güncelleştirmeleri ver** ' i etkinleştirirseniz, Microsoft SQL Server ve diğer Microsoft yazılımları için güvenlik düzeltme ekleri de dahil olmak üzere diğer ürünler için de güncelleştirmeler alırsınız. Bu seçenek grup ilkesi tarafından yapılandırılamaz. Diğer Microsoft güncelleştirmelerini etkinleştirmek istediğiniz sistemlerde aşağıdaki PowerShell komutunu çalıştırın. Güncelleştirme Yönetimi Bu ayarla uyumlu olacak.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")

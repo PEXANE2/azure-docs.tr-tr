@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform kimlik doğrulama senaryoları | Mavisi
+title: Uygulama senaryolarına & Microsoft Identity platform kimlik doğrulama akışları | Mavisi
 description: Microsoft Identity platformu için kimlik doğrulama akışları ve uygulama senaryoları hakkında bilgi edinin. Kimliklerin kimliğini doğrulayabilecek, belirteçleri elde eden ve korunan API 'Leri çağıran farklı türde uygulamalar hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969c7b6c86e09ec73ccf1ffa5cc4dc9703a3d25c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be561595c90d73e3e1e7b88291aa92883e8b8dfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424638"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 

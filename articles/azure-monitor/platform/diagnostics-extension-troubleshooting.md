@@ -4,15 +4,15 @@ description: Azure sanal makinelerinde, Service Fabric veya Cloud Services Azure
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450568"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
 Bu makalede Azure Tanılama kullanımı ile ilgili sorun giderme bilgileri açıklanmaktadır. Azure Tanılama hakkında daha fazla bilgi için bkz. [Azure tanılama genel bakış](diagnostics-extension-overview.md).
@@ -27,28 +27,28 @@ Bu makalede Azure Tanılama kullanımı ile ilgili sorun giderme bilgileri açı
 ## <a name="logartifact-paths"></a>Günlük/yapıt yolları
 Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Belgenin geri kalanı boyunca bu bilgilere değintik.
 
-### <a name="azure-cloud-services"></a>Azure Cloud Services
+### <a name="azure-cloud-services"></a>Azure Bulut Hizmetleri
 | Yapıt | Yol |
 | --- | --- |
-| **Azure Tanılama yapılandırma dosyası** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü > \Config.txt |
-| **Günlük dosyaları** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü > \ |
+| **Azure Tanılama yapılandırma dosyası** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Günlük dosyaları** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
 | **Tanılama verileri için yerel depo** | C:\Resources\Directory\<Cloudservicedeploymentıd >.\<RoleName >. DiagnosticStore\WAD0107\Tables |
 | **İzleme Aracısı yapılandırma dosyası** | C:\Resources\Directory\<Cloudservicedeploymentıd >.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Tanılama uzantısı paketi** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü > |
+| **Azure Tanılama uzantısı paketi** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Günlük toplama yardımcı programı yolu** | %SystemDrive%\Packages\GuestAgent\ |
 | **Monme Thost günlük dosyası** | C:\Resources\Directory\<Cloudservicedeploymentıd >.\<RoleName >. Diagnosticstore\wad0107\configuration\monbir Thost. < seq_num >. log |
 
 ### <a name="virtual-machines"></a>Sanal makineler
 | Yapıt | Yol |
 | --- | --- |
-| **Azure Tanılama yapılandırma dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<sürümü > \RuntimeSettings |
-| **Günlük dosyaları** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
-| **Tanılama verileri için yerel depo** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
-| **İzleme Aracısı yapılandırma dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Durum dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<sürümü > \ durum |
-| **Azure Tanılama uzantısı paketi** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
+| **Azure Tanılama yapılandırma dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Günlük dosyaları** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Tanılama verileri için yerel depo** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
+| **İzleme Aracısı yapılandırma dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Durum dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
+| **Azure Tanılama uzantısı paketi** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Günlük toplama yardımcı programı yolu** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \Wad0107\configuration\monk\thost. < seq_num >. log |
+| **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Ölçüm verileri Azure portal görünmüyor
 Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, ilgili ölçüm kayıtlarının orada olup olmadığını görmek için Azure Tanılama depolama hesabındaki Wadölçümlerini\* tablosunu kontrol edin.
@@ -109,7 +109,7 @@ Depolama hesabı doğru şekilde yapılandırıldıysa, makineye uzaktan erişin
 
 Bu sorunu çözmezse, şunu deneyin:
 
-1. Aracıyı Kaldırma
+1. Aracıyı kaldırın
 2. Dizin C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics kaldır
 3. Aracıyı yeniden yükler
 

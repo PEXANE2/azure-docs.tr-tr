@@ -1,6 +1,6 @@
 ---
-title: Hızlı Başlangıç - Azure Service Bus kuyruğuna oluşturmak için PowerShell kullanma | Microsoft Docs
-description: Bu hızlı başlangıçta, Service Bus kuyruğu oluşturma için Azure PowerShell kullanmayı öğrenin. Ardından, kuyruktan ileti alma ve ileti göndermek için örnek bir uygulama kullanın.
+title: Service Bus kuyruğu oluşturmak için Azure PowerShell kullanma
+description: Bu hızlı başlangıçta, Service Bus kuyruğu için Azure PowerShell kullanmayı öğreneceksiniz. Daha sonra, kuyruğa ileti göndermek ve kuyruktan ileti almak için örnek bir uygulama kullanırsınız.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 80cef3efd65a3f68dba1856a892a9a120f7d95cd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426946"
 ---
-# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Hızlı Başlangıç: Azure PowerShell kullanarak bir Service Bus kuyruğu oluşturma
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Service Bus kuyruğu oluşturmak için Azure PowerShell kullanma
 Bu hızlı başlangıçta, mesajlaşma ad alanı ve o ad alanı içinde bir kuyruk oluşturmak ve söz konusu ad alanında yetkilendirme kimlik bilgilerini almak için PowerShell kullanarak bir Service Bus kuyruğuna nasıl ileti gönderileceği ve Service Bus kuyruğundan nasıl ileti alınacağı açıklanmaktadır. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -25,17 +25,17 @@ Bu hızlı başlangıçta, mesajlaşma ad alanı ve o ad alanı içinde bir kuyr
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturun. 
-- [Visual Studio 2017 Güncelleştirme 3 (sürüm 15.3, 26730.01)](https://www.visualstudio.com/vs) veya sonraki sürümler. İletileri gönderir ve bir kuyruktan ileti alan bir örneği oluşturmak için Visual Studio'yu kullanın. Portalda oluşturduğunuz sıranın test etmek için örnek verilmiştir. 
+- [Visual Studio 2017 Güncelleştirme 3 (sürüm 15.3, 26730.01)](https://www.visualstudio.com/vs) veya sonraki sürümler. Bir kuyruktan ileti gönderen ve iletiyi alan bir örnek oluşturmak için Visual Studio 'Yu kullanırsınız. Örnek, portalda oluşturduğunuz kuyruğu test etmek için kullanılır. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
 
-Bu hızlı başlangıç için Azure PowerShell'in en yeni sürümünü kullanmanız gerekir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell'i Yükleme ve Yapılandırma][]. Azure Cloud Shell ile bilginiz varsa, Azure PowerShell makinenizde yüklemeniz gerekmeden kullanabilirsiniz. Azure Cloud Shell hakkında daha fazla ayrıntı için bkz: [Azure Cloud shell'e genel bakış](../cloud-shell/overview.md)
+Bu hızlı başlangıç için Azure PowerShell'in en yeni sürümünü kullanmanız gerekir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell'i Yükleme ve Yapılandırma][]. Azure Cloud Shell hakkında bilgi sahibiyseniz, makinenizde Azure PowerShell yüklemeden bu uygulamayı kullanabilirsiniz. Azure Cloud Shell hakkındaki ayrıntılar için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md)
 
-## <a name="sign-in-to-azure"></a>Oturum açın: Azure
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 1. İlk olarak, henüz yapmadıysanız Service Bus PowerShell modülünü yükleyin:
 
@@ -74,11 +74,11 @@ New-AzServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName namespa
 Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
 ```
 
-`Get-AzServiceBusKey` cmdlet’i çalıştırıldıktan sonra, bağlantı dizesini ve seçtiğiniz kuyruk adını kopyalayıp Not Defteri gibi geçici bir yere yapıştırın. Bu sonraki adımda gerekecektir.
+`Get-AzServiceBusKey` cmdlet’i çalıştırıldıktan sonra, bağlantı dizesini ve seçtiğiniz kuyruk adını kopyalayıp Not Defteri gibi geçici bir yere yapıştırın. Bunlar sonraki adımda gerekecektir.
 
 ## <a name="send-and-receive-messages"></a>İleti alma ve gönderme
 
-Ad alanı ve kuyruğun oluşturulmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu GitHub örnek klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) kodu inceleyebilirsiniz.
+Ad alanı ve kuyruğun oluşturulmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu örnek GitHub klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) kodu inceleyebilirsiniz.
 
 Kodu çalıştırmak için aşağıdakileri yapın:
 
@@ -88,7 +88,7 @@ Kodu çalıştırmak için aşağıdakileri yapın:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-3. Örnek `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` klasörüne gidin.
+3. Örnek klasörü `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` gidin.
 
 4. Henüz yapmadıysanız, aşağıdaki PowerShell cmdlet’ini kullanarak bağlantı dizesini alın. `my-resourcegroup`  ve  `namespace-name` değerini kendi değerlerinizle değiştirdiğinizden emin olun: 
 
@@ -112,7 +112,7 @@ Kodu çalıştırmak için aşağıdakileri yapın:
 
 8. Kuyruğa 10 ileti gönderildiğini ve ardından bunların kuyruktan alındığını gözlemleyin:
 
-   ![program çıktısı](./media/service-bus-quickstart-powershell/dotnet.png)
+   ![program çıkışı](./media/service-bus-quickstart-powershell/dotnet.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -128,7 +128,7 @@ Bu bölümde örnek kodun işlevleri hakkında daha fazla ayrıntı bulunmaktad�
 
 ### <a name="get-connection-string-and-queue"></a>Bağlantı dizesini ve kuyruğu alma
 
-Bağlantı dizesi ve kuyruk adı geçirilir `Main()` yöntemi olarak komut satırı bağımsız değişkenleri. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
+Bağlantı dizesi ve sıra adı, `Main()` yöntemine komut satırı bağımsız değişkenleri olarak geçirilir. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
 
 ```csharp
 static void Main(string[] args)
@@ -165,7 +165,7 @@ static void Main(string[] args)
 
 ### <a name="message-loop"></a>İleti döngüsü
 
-MainAsync() yöntemi kuyruğu istemcisi ile komut satırı bağımsız değişkenlerini oluşturur, adlandırılmış alan bir ileti işleyicisini çağırır `RegisterOnMessageHandlerAndReceiveMessages()`ve bir dizi ileti gönderir:
+MainAsync () yöntemi, komut satırı bağımsız değişkenleriyle bir kuyruk istemcisi oluşturur, `RegisterOnMessageHandlerAndReceiveMessages()`adlı bir alma iletisi işleyicisini çağırır ve ileti kümesini gönderir:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -256,11 +256,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> Service Bus kaynakları ile yönetebileceğiniz [hizmet veri yolu Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer/). Hizmet veri yolu Gezgini, bir Service Bus ad alanınıza bağlanın ve mesajlaşma varlıkları kolay bir şekilde yönetmek kullanıcıların sağlar. Araç, içeri/dışarı aktarma işlevleri veya konu, kuyruklar, abonelikler, geçiş hizmetleri, bildirim hub'ları ve olay hub'ları test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. Öğreticiler, ileti göndermek ve almak için kod yazma hakkında daha fazla bilgi için devam **iletileri gönderip** bölümü. 
+Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. İleti göndermek ve almak için kod yazma hakkında daha fazla bilgi edinmek için **Ileti gönderme ve alma** bölümündeki öğreticilere devam edin. 
 
 > [!div class="nextstepaction"]
 > [İleti alma ve gönderme](service-bus-dotnet-get-started-with-queues.md)

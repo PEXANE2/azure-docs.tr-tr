@@ -2,17 +2,17 @@
 title: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturma
 description: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturmayı öğrenin
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 3cc171ddabbe8241622d4e599b4b3cd281558976
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350235"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -28,7 +28,7 @@ Bir sanal ağ oluşturabilmeniz için önce sanal ağı barındırmak üzere bir
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
@@ -62,7 +62,7 @@ Durum araştırması tüm sanal makine örneklerini denetleyerek ağ trafiği al
 
 ### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
-Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEnd* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak [myBackEndPool](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için *az network lb rule create* ile *myHTTPRule* yük dengeleyici kuralı oluşturun. 
+Yük dengeleyici kuralı, gerekli kaynak ve hedef bağlantı noktalarının yanı sıra gelen trafik için ön uç IP yapılandırmasını ve trafiği almak için arka uç IP havuzunu tanımlar. *myFrontEnd* ön uç havuzunda 80 numaralı bağlantı noktasını dinlemek ve yine 80 numaralı bağlantı noktasını kullanarak *myBackEndPool* arka uç adres havuzuna yük dengelemesi yapılmış ağ trafiğini göndermek için [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) ile *myHTTPRule* yük dengeleyici kuralı oluşturun. 
 
 ```azurecli-interactive
   az network lb rule create \

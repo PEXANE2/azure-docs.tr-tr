@@ -1,23 +1,14 @@
 ---
 title: Kapsayıcılar için Azure Izleyici durum izleyici yapılandırması | Microsoft Docs
 description: Bu makale, kapsayıcılar için Azure Izleyici 'de sistem durumu izleyicilerinin ayrıntılı yapılandırmasını açıklayan içerik sağlar.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405035"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Kapsayıcılar için Azure Izleyici durum izleyici yapılandırma kılavuzu
 
@@ -29,9 +20,9 @@ ms.locfileid: "74664956"
 
 ## <a name="monitors"></a>İzleyiciler
 
-Bir izleyici, yönetilen bir nesnenin bazı yönlerinin sağlığını ölçer. İzleyicilerin her biri iki veya üç sistem durumuna sahiptir. Bir izleyici belirli bir zamanda potansiyel durumlarından birinde ve yalnızca birinde olacaktır. Kapsayıcılı aracı tarafından yüklenen bir izleyici, sağlıklı bir duruma başlatılır. Durum yalnızca, başka bir durum için belirtilen koşullar algılandığında değişir.
+İzleyici, yönetilen bir nesnenin bazı yönlerinin sağlığını ölçer. İzleyicilerin her biri iki veya üç sistem durumuna sahiptir. Bir izleyici belirli bir zamanda potansiyel durumlarının sadece birinde olabilir. Kapsayıcılı aracı tarafından yüklenen bir izleyici, sağlıklı bir duruma başlatılır. Durum yalnızca, başka bir durum için belirtilen koşullar algılandığında değişir.
 
-Belirli bir nesnenin genel sistem durumu, izleyicilerinin her birinin sistem durumundan belirlenir. Bu hiyerarşi, kapsayıcılar için Azure Izleyici 'de sistem durumu hiyerarşisi bölmesinde gösterilmiştir. Sistem durumunun alındığı ilke toplam izleyici yapılandırmasının bir parçasıdır.
+Belirli bir nesnenin genel sistem durumu sahip olduğu izleyicilerinin her birinin sistem durumundan yararlanılarak belirlenir. Bu hiyerarşi, kapsayıcılar için Azure Izleyici 'de sistem durumu hiyerarşisi bölmesinde gösterilmiştir. Sistem durumunun alındığı ilke toplam izleyici yapılandırmasının bir parçasıdır.
 
 ## <a name="types-of-monitors"></a>İzleyici türleri
 
@@ -63,7 +54,7 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki gibi yapılandırılmış bir 
 
 ### <a name="unit-monitors"></a>Birim izleyicileri
 
-|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametresinin** | **Değer** |
+|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametre** | **Değer** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Düğüm bellek kullanımı |Birim izleyicisi |Bu izleyici, cadvizörü raporlanan verileri kullanarak bir düğümün bellek kullanımını dakikada bir değerlendirir. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Düğüm CPU kullanımı |Birim Izleyicisi |Bu izleyici, cadvizörü tarafından bildirilen verileri kullanarak her dakikada düğümün CPU kullanımını denetler. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

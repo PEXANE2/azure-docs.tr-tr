@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438731"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Öğretici: Azure veri paylaşma kullanarak veri paylaşma  
 
@@ -20,12 +20,12 @@ Bu öğreticide, yeni bir Azure veri paylaşımı ayarlamayı ve verilerinizi Az
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Veri paylaşma oluşturun.
-> * Veri paylaşımınıza veri kümeleri ekleyin.
-> * Veri paylaşımınız için bir eşitleme zamanlaması etkinleştirin. 
-> * Veri paylaşımınıza alıcı ekleyin. 
+> * Veri Paylaşımı oluşturun.
+> * Veri Paylaşımınıza veri kümelerini ekleyin.
+> * Veri Paylaşımınız için eşitleme zamanlamasını etkinleştirin. 
+> * Veri Paylaşımınıza alıcıları ekleyin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Alıcının Azure oturum açma e-posta adresi (e-posta diğer adlarını kullanarak çalışmaz).
@@ -47,13 +47,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     create user <share_acct_name> from external provider;     
     exec sp_addrolemember db_owner, <share_acct_name>; 
 ```                   
-*< Share_acc_name >* , veri paylaşma hesabınızın adı olduğunu unutmayın. Henüz bir veri paylaşma hesabı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.  
+*< Share_acc_name >* veri paylaşma hesabınızın adı olduğunu unutmayın. Henüz bir veri paylaşma hesabı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.  
+
+* [`db_owner` erişimi olan bir Azure SQL veritabanı kullanıcısı](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) , paylaşmak istediğiniz tabloları ve/veya görünümleri gezinmek ve seçmek için. 
 
 * İstemci IP SQL Server güvenlik duvarı erişimi: Bu, şu adımlarla yapılabilir: 1. *Güvenlik duvarları ve sanal ağlar 1 '* e gidin. Azure hizmetlerine erişime izin vermek **için Aç düğmesine** tıklayın. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-a-data-share-account"></a>Veri paylaşma hesabı oluşturma
 
@@ -87,7 +89,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. **Verilerinizi paylaşmayı Başlat**' ı seçin.
 
-1. **Oluştur**'u seçin.   
+1. **Oluştur**’u seçin.   
 
 1. Veri paylaşımınızın ayrıntılarını doldurun. Bir ad, içerik paylaşma açıklaması ve kullanım koşulları (isteğe bağlı) belirtin. 
 
@@ -99,7 +101,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
     ![Veri kümeleri](./media/datasets.png "Veri kümeleri")
 
-1. Eklemek istediğiniz veri kümesi türünü seçin. 
+1. Eklemek istediğiniz veri kümesi türünü seçin. Bir Azure SQL veritabanı veya Azure SQL veri ambarı 'ndan paylaşıyorsanız bazı SQL kimlik bilgileri istenir. Önkoşulların bir parçası olarak oluşturduğunuz kullanıcıyı kullanarak kimlik doğrulaması yapın.
 
     ![Adddataset 'ler](./media/add-datasets.png "Veri kümesi Ekle")    
 

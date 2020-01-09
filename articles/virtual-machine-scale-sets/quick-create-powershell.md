@@ -1,6 +1,6 @@
 ---
-title: Hızlı Başlangıç - Azure PowerShell ile sanal makine ölçek kümesi oluşturma | Microsoft Docs
-description: Azure PowerShell ile hızlıca sanal makine ölçek kümesi oluşturmayı öğrenin
+title: Hızlı başlangıç-Azure PowerShell bir sanal makine ölçek kümesi oluşturma
+description: Azure PowerShell ile sanal makine ölçeğini hızlıca oluşturmayı öğrenerek dağıtımlarınızla çalışmaya başlayın.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 3f2fc70457a6d36bbbb7d8c37c87a8aa4167ab4a
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 52111559ac784e112c4cb3ddbf5ba9e6967385e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351116"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile sanal makine ölçek kümesi oluşturma
 

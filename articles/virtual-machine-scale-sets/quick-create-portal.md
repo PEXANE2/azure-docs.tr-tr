@@ -1,7 +1,7 @@
 ---
-title: Hızlı Başlangıç - Azure portalında sanal makine ölçek kümesi oluşturma | Microsoft Docs
-description: Azure portalında hızlıca sanal makine ölçek kümesi oluşturmayı öğrenin
-services: virtual-machine-scale-sets
+title: Hızlı başlangıç-Azure portal sanal makine ölçek kümesi oluşturma
+description: Hızlı bir şekilde sanal makine oluşturmayı öğrenerek dağıtımlarınızla çalışmaya başlayın Azure portal.
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351135"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında sanal makine ölçek kümesi oluşturma
 
@@ -33,7 +33,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen trafiği sağlıklı sanal makine örnekleri arasında dağıtır. 
 
-İlk olarak, portalı kullanarak genel temel Load Balancer oluşturun. Oluşturduğunuz ad ve genel IP adresi, yük dengeleyicinin ön ucu olarak otomatik olarak yapılandırılır.
+İlk olarak, portalı kullanarak genel temel Load Balancer oluşturun. Oluşturduğunuz genel IP adresi ve adını, load balancer'ın ön ucu olarak otomatik olarak yapılandırılır.
 
 1. Arama kutusuna **yük dengeleyici**yazın. Arama sonuçlarında **Market** ' ın altında **yük dengeleyici**' yi seçin.
 1. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:
@@ -44,11 +44,11 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
     | Kaynak grubu | **Yeni oluştur** ' u seçin ve metin kutusuna *Myvmssresourcegroup* yazın.|
     | Ad           | *myLoadBalancer*         |
     | Bölge         | **Doğu ABD**’yi seçin.       |
-    | Tür          | **Ortak**seçeneğini belirleyin.       |
+    | Tür          | **Genel**’i seçin.       |
     | SKU           | **Standart**' ı seçin.       |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
     | Genel IP adresi adı  | *Mypıp*   |
-    | atanmış| Statik |
+    | Atama| Statik |
 
 1. İşiniz bittiğinde **gözden geçir + oluştur** ' u seçin. 
 1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin. 

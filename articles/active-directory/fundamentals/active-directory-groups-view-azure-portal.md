@@ -1,5 +1,5 @@
 ---
-title: Grupları ve üyeleri görüntülemek için hızlı başlangıç-Azure Active Directory | Microsoft Docs
+title: Hızlı Başlangıç-grupları & üyelerini görüntüleme-Azure AD
 description: Arama ve kuruluşunuzun gruplar ve atanan üyelerini görüntüleme hakkında yönergeler.
 services: active-directory
 author: msaburnley
@@ -13,23 +13,23 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423008"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory içinde kuruluşunuzun gruplarını ve üyelerini görüntüleme
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Hızlı Başlangıç: Azure Active Directory’de kuruluşunuzun grupları ve üyelerini görüntüleme
 Azure portalı kullanarak kuruluşunuzun mevcut gruplarını ve grup üyelerini görüntüleyebilirsiniz. Gruplar, büyük olasılıkla kısıtlı uygulama ve hizmetler için aynı erişim ve izinlere ihtiyacı olan kullanıcıları (üyeleri) yönetmek için kullanılır.
 
 Bu hızlı başlangıçta, kuruluşunuzun tüm mevcut gruplarını ve atanmış üyelerini görüntüleyeceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları gerçekleştirmeniz gerekir:
 
 - Bir Azure Active Directory kiracısı oluşturun. Daha fazla bilgi için, bkz. [Azure Active Directory portalına erişme ve yeni bir kiracı oluşturma](active-directory-access-create-new-tenant.md).
@@ -44,11 +44,11 @@ _MDM ilkesi - Batı_ adlı yeni bir grup oluşturun. Grup oluşturma hakkında d
 
 2. **Grup** sayfasını tamamlayın:
     
-    - **Grup türü:** **Güvenlik** seçin
+    - **Grup türü:** **Güvenlik** öğesini seçin
     
-    - **Grup adı:** _MDM ilkesi türü-Batı_
+    - **Grup adı:** _MDM ilkesi - Batı_ yazın
     
-    - **Üyelik türü:** **Atandı**' ı seçin.
+    - **Üyelik türü:** **Atanan** seçeneğini belirleyin.
 
 3. **Oluştur**’u seçin.
 
@@ -59,14 +59,14 @@ _Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi
 
 2. **Kullanıcı** sayfasını tamamlayın:
 
-    - **Ada** _Charon_ yazın.
+    - **Ad:** _Alain Charon_ yazın.
 
-    - **Kullanıcı adı:** Contoso.com yazın. *\@*
+    - **Kullanıcı adı:** *\@contoso.com*yazın.
 
 3. **Parola** kutusunda sağlanan otomatik olarak oluşturulmuş parolayı kopyalayın ve ardından **Oluştur** seçeneğini belirleyin.
 
 ## <a name="add-a-group-member"></a>Grup üyesi ekleme
-Şimdi bir grubunuz ve kullanıcınız olduğuna göre, _Alain Charon_ ’u _MDM ilkesi - Batı_ grubuna üye olarak ekleyebilirsiniz. Grup üyelerini ekleme hakkında daha fazla bilgi için, bkz. [Grup üyelerini ekleme veya kaldırma](active-directory-groups-members-azure-portal.md).
+Şimdi bir grubunuz ve kullanıcınız olduğuna göre, _Alain Charon_’u _MDM ilkesi - Batı_ grubuna üye olarak ekleyebilirsiniz. Grup üyelerini ekleme hakkında daha fazla bilgi için, bkz. [Grup üyelerini ekleme veya kaldırma](active-directory-groups-members-azure-portal.md).
 
 1. **Azure Active Directory** > **Gruplar**'ı seçin.
 

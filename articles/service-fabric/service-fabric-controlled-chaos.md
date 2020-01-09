@@ -1,81 +1,72 @@
 ---
-title: Service Fabric kümelerinde Chaos anlamına | Microsoft Docs
-description: Kümede Chaos yönetmek için hata ekleme ve küme Analysis Service API'leri kullanarak.
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric kümelerinde endüce Chaos
+description: Kümedeki Chaos 'yi yönetmek için hata ekleme ve küme analizi hizmeti API 'Lerini kullanma.
 author: motanv
-manager: anmola
-editor: motanv
-ms.assetid: 2bd13443-3478-4382-9a5a-1f6c6b32bfc9
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 7a22b17d45218c2f78220f980605b3c211495606
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463178"
 ---
-# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Denetimli Chaos Service Fabric kümelerinde anlamına
-Doğası gereği güvenilir bulut altyapıları gibi büyük ölçekli dağıtılmış sistemler. Azure Service Fabric, geliştiricilerin güvenilir olmayan bir altyapının en üstünde güvenilir dağıtılmış hizmetlerinizi yazmanızı sağlar. Sağlam dağıtılmış hizmetleri güvenilir bir altyapı üzerine yazmak için güvenilir olmayan altyapının hataları nedeniyle karmaşık durumu geçişleri üzerinden geçiyor sırada hizmetlerinin kararlılığını test edebilmek geliştiricilerin gerekir.
+# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric kümelerinde ı, kontrollü Chaos
+Bulut altyapıları gibi büyük ölçekli dağıtılmış sistemler, doğal olarak güvenilir değildir. Azure Service Fabric, geliştiricilerin güvenilir olmayan bir altyapının üzerine güvenilir dağıtılmış hizmetler yazmasını sağlar. Güvenilir olmayan bir altyapının üzerine sağlam dağıtılmış hizmetler yazmak için, geliştiricilerin hizmetin kararlılığını test edebilmeleri gerekir, çünkü temeldeki güvenilir olmayan altyapı hatalar nedeniyle karmaşık durum geçişleri ile devam edebilir.
 
-[Hata ekleme ve küme analiz hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (hata analizi hizmeti olarak da bilinir) geliştiriciler hizmetlerini test etmek için hataları anlamına sağlar. Hedeflenen bu gibi hataları, benzetimli [bir bölümü yeniden](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), en yaygın durum geçişlerini alıştırma yardımcı olabilir. Ancak hedeflenen sanal hataları tanımına göre ağırlıklı ve bu nedenle kaçırabilir gösteren yedekleme yalnızca sabit tahmin, uzun ve karmaşık dizisi durumu geçişleri hataları. Bir popülasyon test etmek için Chaos kullanabilirsiniz.
+[Hata ekleme ve küme analizi hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (hata analizi hizmeti olarak da bilinir), geliştiricilere hizmetlerini test etmek için hata alma olanağı sağlar. [Bir bölümü yeniden başlatma](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)gibi hedeflenmiş bu sanal hatalar, en yaygın durum geçişlerini çalıştırmaya yardımcı olabilir. Ancak hedeflenen benzetimli hatalar tanımına göre gezinilmiştir ve bu nedenle yalnızca donanımdan tahmin edilen, uzun ve karmaşık durum geçişleri sırasını gösteren hataları kaçırmayabilir. Taraflı olmayan bir test için Chaos kullanabilirsiniz.
 
-Kaos küme boyunca düzenli, aralıklı hatalar (normal ve yaşanmamasını) uzun süreler boyunca benzetimini yapar. Service Fabric API çağrılarının bir dizi normal bir hata oluşur, çünkü bu bir çoğaltma üzerinde açık tarafından izlenen bir kapatma, yeniden çoğaltma hatası normal hata. Çoğaltmayı kaldırmak için birincil çoğaltma ve ikincil çoğaltma taşıma Chaos tarafından gerçekleştirilen diğer normal hatalarıdır taşıyın. Düğümü yeniden başlatın ve yeniden kod paketi gibi işlem sonlandırılır yaşanmamasını hatalarıdır. 
+Chaos, küme boyunca uzun süre boyunca düzenli ve araya eklemeli hataların (hem düzgün kapanma hem de düzgün şekilde değil) benzetimini yapar. Hatalı bir hata, bir Service Fabric API çağrısı kümesinden oluşur; Örneğin, yeniden başlatma çoğaltma hatası, bu bir yakın ve bir çoğaltma üzerinde açık olan bir kapatma olduğundan, kapanma hatası. Çoğaltmayı kaldırın, birincil çoğaltmayı taşıyın ve ikincil çoğaltmayı taşıyın, Chaos tarafından uygulanan diğer düzgün çalışan hatalardır. Yeniden başlatma düğümü ve kod paketini yeniden Başlat gibi düzgün olmayan hatalar işlemden çıkılıyor. 
 
-Kaos türü arızaları oranı ile yapılandırdıktan sonra C#, Powershell veya REST API hatalarını kümesindeki ve hizmetlerinizdeki oluşturmaya başlamak için Chaos başlayabilirsiniz. Sonra hangi Chaos durdurur (örneğin, bir saat), belirtilen süre boyunca çalıştırmak için Chaos otomatik olarak yapılandırabilir veya StopChaos API (C#, Powershell veya REST) dilediğiniz zaman durdurmak için çağırabilirsiniz.
+Chaos 'ı hız ve hata türüyle yapılandırdıktan sonra, kümede ve hizmetinizdeki hataları oluşturmaya başlamak için Chaos aracılığıyla C#, PowerShell 'e veya REST API başlatabilirsiniz. Chaos 'i belirli bir süre için (örneğin, bir saat) çalışacak şekilde yapılandırabilir, sonra da her bir Chaos otomatik olarak durur veya StopChaos API 'yi (C#, POWERSHELL veya REST) dilediğiniz zaman durdurabilirsiniz.
 
 > [!NOTE]
-> Mevcut haliyle, dış hataların olmaması durumunda çekirdek kayıp veya veri kaybı hiçbir zaman oluştuğunu anlamına gelir, yalnızca güvenli hataları Chaos sevk.
+> Şu anki biçimde, Chaos yalnızca güvenli hatalara sahiptir; bu, dış hataların bir çekirdek kaybına karşı yokluğunda olduğunu veya veri kaybını hiçbir şekilde gerçekleşmemesi anlamına gelir.
 >
 
-Kaos çalışırken, şu anda çalışma durumunu yakalayan farklı olayları üretir. Örneğin, bir ExecutingFaultsEvent Chaos bu yinelemede yürütmek için karar verdiği tüm hataları içerir. Bir ValidationFailedEvent küme doğrulama sırasında bulundu bir doğrulama hatası (sistem durumu veya sağlamlık sorunları) ayrıntılarını içerir. GetChaosReport Chaos çalıştırılan rapor almak için API (C#, Powershell veya REST) çağırabilirsiniz. Bu olaylar, kalıcı bir [güvenilir bir sözlük](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), iki yapılandırmaları tarafından dikte bir kesme ilkesi vardır: **MaxStoredChaosEventCount** (varsayılan değer: 25000) ve **StoredActionCleanupIntervalInSeconds** (varsayılan değer: 3600). Her *StoredActionCleanupIntervalInSeconds* Chaos denetler ve tüm ancak en son *MaxStoredChaosEventCount* olayları, güvenilir sözlükten temizlendi.
+Chaos çalışırken, çalışma durumunu şu anda yakalayan farklı olaylar oluşturur. Örneğin, bir ExecutingFaultsEvent, Chaos 'in bu yinelemede yürütmeye karar verdiği tüm hataları içerir. Bir ValidationFailedEvent, kümenin doğrulanması sırasında bulunan doğrulama hatasının (sistem durumu veya kararlılık sorunları) ayrıntılarını içerir. Chaos çalıştırmaları raporunu almak için GetChaosReportC#API 'yi (, POWERSHELL veya REST) çağırabilirsiniz. Bu olaylar, iki yapılandırma tarafından dikte edilen bir kesme ilkesine sahip [güvenilir bir sözlükte](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)kalıcı hale gelir: **MaxStoredChaosEventCount** (varsayılan değer 25000) ve **Storedadctioncleanupıntervalınseconds** (varsayılan değer 3600 ' dir). Her *Storedadctioncleanupıntervalınseconds* Chaos denetimleri ve hepsi ancak en son *MaxStoredChaosEventCount* olayları, güvenilir sözlükten temizlenir.
 
-## <a name="faults-induced-in-chaos"></a>İçinde Chaos kaynaklanan hatalar
-Kaos hatalar arasında tüm Service Fabric kümesi oluşturur ve ay veya yıl birkaç saat içinde görülmeyen hataları sıkıştırır. Yüksek hata oranı aralıklı hatalar birleşimi, aksi takdirde atlanabilir köşe durumları bulur. Bu alıştırmada Chaos hizmet kod kalitesi önemli bir iyileştirme neden olur.
+## <a name="faults-induced-in-chaos"></a>Chaos 'de bulunan hatalar
+Chaos, tüm Service Fabric kümesi genelinde hata oluşturur ve ayda veya yılda görülen hataları birkaç saat içinde sıkıştırır. Yüksek hata oranı ile araya eklemeli hataların birleşimi, aksi takdirde Kaçırılabilecek köşe durumlarını bulur. Bu Chaos, hizmetin kod kalitesindeki önemli bir Gelişe yol açar.
 
-Aşağıdaki kategorilerden hataları Chaos sevk:
+Aşağıdaki kategorilerden oluşan Chaos hatası:
 
-* Bir düğümü yeniden başlatın
-* Dağıtılan bir kod paketi yeniden başlatın
-* Bir çoğaltma kaldırma
-* Bir çoğaltmayı yeniden başlatın
-* Bir birincil çoğaltmaya (yapılandırılabilir) taşıma
-* İkincil bir çoğaltmaya (yapılandırılabilir) taşıma
+* Bir düğümü yeniden başlatma
+* Dağıtılan bir kod paketini yeniden başlatma
+* Bir çoğaltmayı kaldırma
+* Çoğaltmayı yeniden başlatma
+* Birincil çoğaltmayı taşıma (yapılandırılabilir)
+* İkincil çoğaltmayı taşıma (yapılandırılabilir)
 
-Kaos birden çok yinelemelerde çalıştırır. Her yineleme hataları ve belirli bir süre için küme doğrulama oluşur. Kümenin kararlı ve doğrulamanın başarılı olması için harcanan süre yapılandırabilirsiniz. Küme doğrulama bir hata bulunursa, Chaos oluşturur ve bir ValidationFailedEvent UTC zaman damgası ve hatası ayrıntıları ile devam ettirir. Örneğin, bir saat için en fazla üç eş zamanlı hataları ile çalışacak şekilde ayarlanmış bir Chaos örneği göz önünde bulundurun. Chaos üç hataları sevk ve ardından küme durumu doğrular. Önceki yinelenir, açıkça StopChaosAsync API aracılığıyla durmuş veya bir saatlik oluncaya kadar adım geçirir. Kümenin her yinelemede bozulursa (diğer bir deyişle, değil Sabitle veya içinde geçirilen MaxClusterStabilizationTimeout sağlıklı olmaz), Chaos bir ValidationFailedEvent oluşturur. Bu olay, bir sorun oluştu ve daha fazla araştırma gerekebileceğini gösterir.
+Chaos birden çok yinelemede çalışır. Her yineleme, belirtilen dönem için hata ve küme doğrulamasından oluşur. Kümenin sabitlenemez ve doğrulamanın başarılı olması için harcanan süreyi yapılandırabilirsiniz. Küme doğrulamasında bir hata bulunursa, Chaos UTC zaman damgasına ve hata ayrıntılarına sahip bir ValidationFailedEvent üretir ve devam ettirir. Örneğin, en fazla üç eş zamanlı hata içeren bir saat için çalışacak şekilde ayarlanmış bir Chaos örneğini düşünün. Chaos üç hata ile aynıdır ve sonra küme durumunu doğrular. Bu, StopChaosAsync API 'SI veya bir saatlik geçişlerinde açıkça durduruluncaya kadar önceki adımda yinelenir. Küme herhangi bir yinelemede sağlıksız hale gelirse (yani, sabitlemez veya geçilen Maxclusterilemintimeout süresi içinde sağlıklı olmaz), Chaos bir ValidationFailedEvent üretir. Bu olay bir şeyin yanlış geçmiş olduğunu ve daha fazla araştırma gerektirebileceğini gösterir.
 
-Kaos başlattığı hangi hataların almak için GetChaosReport API (powershell, C# veya REST) kullanabilirsiniz. API sonraki segmentini Chaos raporun geçilen devamlılık belirteci veya geçirilen zaman aralığı temel alır. Kaos raporun sonraki segmentini almak için ContinuationToken ya da belirtebilirsiniz veya StartTimeUtc ve EndTimeUtc aracılığıyla zaman aralığını belirtebilirsiniz, ancak aynı çağrıda ContinuationToken hem zaman aralığı belirtemezsiniz. 100'den fazla Chaos olaylar olduğunda, Chaos rapor burada bir segment en fazla 100 Chaos olayları içeren segmentler döndürülür.
+Chais 'nin hangi hataları olduğunu almak için GetChaosReport API 'yi (PowerShell, C#veya REST) kullanabilirsiniz. API, geçirilen devamlılık belirtecine veya geçirilen zaman aralığına göre Chaos raporunun sonraki segmentini alır. Chaos raporunun bir sonraki segmentini almak için ContinuationToken ' ı belirtebilir veya StartTimeUtc ve EndTimeUtc aracılığıyla zaman aralığını belirtebilirsiniz ancak aynı çağrıda hem ContinuationToken hem de zaman aralığını belirtemezsiniz. 100 ' den fazla Chaos olayı olduğunda, bir segmentin en fazla 100 Chaos olayı içerdiği kesimlerde Chaos raporu döndürülür.
 
 ## <a name="important-configuration-options"></a>Önemli yapılandırma seçenekleri
-* **Timetorun değeri**: Kaos çalışmadan başarılı bir şekilde biten toplam süresi. StopChaos API aracılığıyla timetorun değeri boyunca çalıştıktan önce Chaos durdurabilirsiniz.
+* **Timetorun**: başarılı ile tamamlanmadan önce Chaos 'nin çalıştığı toplam süre. StopChaos API 'si aracılığıyla TimeToRun dönemi için çalıştırılmadan önce Chaos 'yi durdurabilirsiniz.
 
-* **MaxClusterStabilizationTimeout**: Maksimum kümenin sağlıklı duruma bir ValidationFailedEvent üretme önce beklenecek süre miktarı. Kurtarılmakta olduğu sırada küme üzerindeki yükü azaltmak için bu bekleyin. Gerçekleştirilen denetimler şunlardır:
-  * Küme durumu Tamam ise
-  * Hizmet durumu Tamam ise
-  * Hizmet bölüm hedef çoğaltma kümesi boyutu varsa sağlanır
-  * Hiçbir Inbuild çoğaltmaların bulunduğunu
-* **MaxConcurrentFaults**: Her yinelemede başlattığı eşzamanlı hataların sayısı. Daha yüksek bir sayı, daha agresif kaos ve yük devretme ve küme geçtiği durum geçişi birleşimleri ayrıca daha karmaşık olmasıdır. 
+* **Maxclusterileizationtimeout**: bir ValidationFailedEvent oluşturmadan önce kümenin sağlıklı olması için beklenecek en uzun süre. Bu bekleme, kurtarma sırasında kümedeki yükü azaltmaktır. Gerçekleştirilen denetimler şunlardır:
+  * Küme durumu tamam ise
+  * Hizmet durumu tamam ise
+  * Hizmet bölümü için hedef çoğaltma kümesi boyutu elde edilir
+  * Hiç bir InBuild çoğaltması yok
+* **Maxconcurrentfaults**: her yinelemede alınmış en fazla eşzamanlı hata sayısı. Sayı arttıkça, daha Agresif Chaos ve yük devretme işlemleri ve kümenin gittiği durum geçiş birleşimleri de daha karmaşıktır. 
 
 > [!NOTE]
-> Bakılmaksızın nasıl yüksek bir değer *MaxConcurrentFaults* varsa, Chaos garanti - dış hataları - olmaması durumunda çekirdek kayıp veya veri kaybı yoktur.
+> Bir değer *Maxconcurrenthatalarının* ne kadar yüksek olduğuna bakılmaksızın, Chaos garantisi-dış hataların yokluğunda, çekirdek kaybı veya veri kaybı yoktur.
 >
 
-* **EnableMoveReplicaFaults**: Etkinleştirir veya taşımak birincil veya ikincil çoğaltmaları neden hataları devre dışı bırakır. Bu hatalar, varsayılan olarak etkindir.
-* **WaitTimeBetweenIterations**: Yinelemeleri arasında beklenecek süre miktarı. Diğer bir deyişle, hataları ve küme durumunu karşılık gelen doğrulama tamamlandı bir gidiş yürütüldükten sonra süreyi Chaos duraklatılır. Yüksek değer, alt ortalama hata ekleme hızıdır.
-* **WaitTimeBetweenFaults**: Tek bir yineleme iki ardışık hataları arasında beklenecek süre miktarı. Daha yüksek değeri, daha düşük eşzamanlılığı (veya arasında çakışma) hataları.
-* **ClusterHealthPolicy**: Küme sistem durumu ilkesi Chaos yinelemeleri arasında küme durumunu doğrulamak için kullanılır. Küme durumu hatası varsa veya hatasına yürütme sırasında beklenmeyen bir özel durum meydana gelirse, Chaos önce sonraki durumu-küme biraz zaman recuperate sağlamak için onay - 30 dakika bekler.
-* **Bağlam**: (String, string) koleksiyonunu anahtar-değer çiftleri girin. Harita Chaos çalıştırma hakkında bilgi kaydetmek için kullanılabilir. 100'den fazla çiftleri olamaz ve (anahtar veya değer) her bir dizenin en fazla 4095 karakter uzunluğunda olabilir. Bu harita, isteğe bağlı olarak belirli bir işlemle ilgili bağlam depolamak için çalıştırması Chaos başlatıcı tarafından ayarlanır.
-* **Birden**: Bu filtre, hedef Chaos hataları yalnızca belirli düğüm türleri veya yalnızca belirli uygulama örnekleri için kullanılabilir. Birden kullanılmıyorsa, tüm küme varlıklar Chaos hataları. Birden kullanılıyorsa Chaos birden belirtimi karşılayan varlıklar hataları. Chaostargetfilter'daki Nodetypeınclusionlist ve Applicationınclusionlist'in yalnızca birleşim semantiği sağlar. Diğer bir deyişle, kesişim chaostargetfilter'daki Nodetypeınclusionlist ve Applicationınclusionlist'in belirtmek mümkün değildir. Örneğin, "Bu uygulama yalnızca söz konusu düğüm türünde olduğunda hata." belirlemek mümkün değil Bir varlık chaostargetfilter'daki Nodetypeınclusionlist veya Applicationınclusionlist'in dahil sonra bu varlık birden kullanarak tutulamaz. ApplicationX Applicationınclusionlist'in görünmez olsa bile, bunu chaostargetfilter'daki Nodetypeınclusionlist içinde bulunan nodeTypeY düğümünde olması gerektiğinden bazı Chaos yinelemede applicationX hatalı. ArgumentException hem chaostargetfilter'daki Nodetypeınclusionlist ve Applicationınclusionlist'in null veya boş ise oluşturulur.
-    * **Chaostargetfilter'daki Nodetypeınclusionlist**: Kaos hataları dahil etmek için düğüm türleri listesi. Tüm tür hataları (düğümü yeniden başlatın, codepackage yeniden, çoğaltmayı kaldırmak, çoğaltmayı yeniden başlatın, birincil taşıma ve ikincil Taşı) bu düğüm türü için düğümleri etkinleştirilir. Bir nodetype (NodeTypeX diyelim) chaostargetfilter'daki Nodetypeınclusionlist görünmüyor sonra düğüm düzeyi hataları (gibi NodeRestart) hiçbir zaman NodeTypeX düğümleri için etkinleştirilecek ancak kod paketi ve çoğaltma hataları hala etkinleştirilebilir NodeTypeX için de bir uygulama bildirimi Applicationınclusionlist'in NodeTypeX düğümde olur. Bu sayıyı artırmak için bu listede, en fazla 100 düğüm tipi adları eklenebilir, yapılandırma yükseltme MaxNumberOfNodeTypesInChaosTargetFilter yapılandırma için gereklidir.
-    * **Applicationınclusionlist'in**: Kaos hataları dahil etmek için URI uygulama listesi. Bu uygulamaların hizmetlerine ait tüm çoğaltmaları tfs'deki Chaos ile çoğaltma hataları (yeniden başlatma çoğaltma, çoğaltma Kaldır, taşıma birincil ve taşıma ikincil). Kod paketi çoğaltmaları bu uygulamaların yalnızca barındırıyorsa chaos bir kod paketi yeniden başlatılabilir. Bir uygulama bu listede görünmüyorsa, chaostargetfilter'daki Nodetypeınclusionlist içinde bulunan bir düğüm türü, bir düğüm üzerinde uygulama sona ererse, yine de bazı Chaos yinelemede hatalı. Yerleştirme kısıtlamaları ve applicationX aracılığıyla nodeTypeY applicationX bağlıdır, ancak eksik Applicationınclusionlist'in ve nodeTypeY eksik chaostargetfilter'daki Nodetypeınclusionlist sonra applicationX hiçbir zaman hatayla kapatılacak. En fazla 1000 uygulama adları bu sayıyı artırmak için bu listede, eklenebilir, yapılandırma yükseltme MaxNumberOfApplicationsInChaosTargetFilter yapılandırma için gereklidir.
+* **Enablemovereperepfaults**: birincil veya ikincil çoğaltmaların taşınmasına neden olan hataları sağlar veya devre dışı bırakır. Bu hatalar varsayılan olarak etkindir.
+* **Waittimebetweenyinelemelerde**: yinelemeler arasında beklenecek süre. Diğer bir deyişle, bir hata yuvarlama gerçekleştirdikten ve kümenin sistem durumunun ilgili doğrulanmasını tamamladıktan sonra Chaos 'in duraklayabileceği zaman miktarı. Değer arttıkça, daha düşük ortalama hata ekleme hızıdır.
+* **Waittimebetweenfaults**: tek bir yinelemede art arda iki hata arasında beklenecek süre. Değer arttıkça, (veya arasındaki örtüşme) arızalarını azaltır.
+* **Clusterhealthpolicy**: küme durumu Ilkesi, Chaos yinelemeleri arasındaki kümenin sistem durumunu doğrulamak için kullanılır. Küme sistem durumu hata durumunda veya hata yürütmesi sırasında beklenmeyen bir özel durum oluşursa, Chaos bir sonraki sistem durumu denetiminin kümeye bir süre sonra sağlanması için önce 30 dakika bekler.
+* **Bağlam**: (dize, dize) türünde anahtar-değer çiftleri koleksiyonu. Eşleme, Chaos çalıştırması hakkında bilgi kaydetmek için kullanılabilir. Bu tür çiftler üzerinde 100 daha fazla olamaz ve her dize (anahtar veya değer) en fazla 4095 karakter uzunluğunda olabilir. Bu harita, yönetim paketi tarafından, isteğe bağlı olarak belirli bir çalıştırma hakkındaki bağlamı depolamak için bir başlangıç tarafından ayarlanır.
+* **Chaostargetfilter**: Bu filtre, yalnızca belirli düğüm türlerine veya yalnızca belirli uygulama örneklerine olan Chaos hatalarını hedeflemek için kullanılabilir. ChaosTargetFilter kullanılmazsa, Chaos tüm küme varlıklarını hatalara neden olur. ChaosTargetFilter kullanılırsa, Chaos yalnızca ChaosTargetFilter belirtimini karşılayan varlıkları hatalara neden olur. Nodetypeınary ıonlist ve Applicationınary ıonlist yalnızca birleşim semantiğine izin veriyor. Diğer bir deyişle, NodeType, ıonlist ve Applicationınary ıonlist 'in bir kesişimini belirtmek mümkün değildir. Örneğin, "Bu uygulama yalnızca bu düğüm türünde olduğunda hata." belirtmek mümkün değildir. Bir varlık Nodetypeary ıonlist veya Applicationary ıonlist öğesine eklendikten sonra, bu varlık ChaosTargetFilter kullanılarak dışlanamaz. ApplicationX, Applicationlarionlist içinde görünmese de, bazı Chaos yineleme applicationX içinde, Nodetypelarionlist içinde yer alan nodeTypeY düğümünde yer aldığı için hata oluşabilir. Hem Nodetypeary ıonlist hem de Applicationary ıonlist null ya da boşsa, bir ArgumentException atılır.
+    * **Nodetypeınary ıonlist**: Chaos hatalarına dahil edilecek düğüm türlerinin bir listesi. Tüm hata türleri (düğümü yeniden Başlat, CodePackage 'i yeniden Başlat, çoğaltmayı kaldır, çoğaltmayı yeniden Başlat, birincil taşı ve ikincil taşı) bu düğüm türlerinin düğümleri için etkinleştirilir. Bir NodeType (deyin NodeTypeX) Nodetypeary ıonlist içinde görünmezse, düğüm düzeyi hataları (NodeRestart gibi) NodeTypeX düğümleri için hiçbir şekilde etkinleştirilmez, ancak bu uygulamadaki bir uygulama için kod paketi ve çoğaltma hataları yine de NodeTypeX için etkinleştirilebilir. Applicationlarionlist, NodeTypeX düğümü üzerinde yer alır. En çok 100 düğüm türü adı bu listeye dahil edilebilir, bu sayıyı artırmak için Maxnumberofnodetypesınchaostargetfilter yapılandırması için bir yapılandırma yükseltmesi gerekir.
+    * **Applicationınary ıonlist**: Chaos hatalarına dahil edilecek uygulama URI 'lerinin listesi. Bu uygulamaların hizmetlerine ait olan tüm çoğaltmalar, Chaos tarafından çoğaltma hatalarını (çoğaltmayı yeniden Başlat, çoğaltmayı kaldırma, birincil taşıma ve ikincil taşıma) düzeltiyor. Chaos yalnızca kod paketi yalnızca bu uygulamaların çoğaltmalarını barındırıyorsa bir kod paketini yeniden başlatabilir. Bir uygulama bu listede görünmezse, uygulama Nodetypeary ıonlist içine dahil edilen düğüm türünün bir düğümünde sonlanıyorsa, bazı Chaos yinelemeyle yine de hatalı olabilir. Ancak, applicationX, yerleştirme kısıtlamaları aracılığıyla nodeTypeY 'e bağlıysa ve applicationX 'in Applicationary ıonlist öğesinden ve nodeTypeY 'in Nodetypeary ıonlist öğesinden Ikisi de yoksa, applicationX hiçbir şekilde hata olmayacaktır. En fazla 1000 uygulama adı bu listeye eklenebilir, bu sayıyı artırmak için MaxNumberOfApplicationsInChaosTargetFilter yapılandırması için bir yapılandırma yükseltmesi gerekir.
 
-## <a name="how-to-run-chaos"></a>Kaos çalıştırmayı öğrenin
+## <a name="how-to-run-chaos"></a>Chaos nasıl çalıştırılır?
 
 ```csharp
 using System;

@@ -1,18 +1,17 @@
 ---
 title: Hızlı Başlangıç-Visual Studio kullanarak Azure Stream Analytics işi oluşturma
 description: Bu hızlı başlangıçta Visual Studio ile bir Stream Analytics işi oluşturma, girdileri ve çıktıları yapılandırma ve bir sorgu tanımlama yoluyla çalışmaya nasıl başlayacağınız gösterilmektedir.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: ec3318201fd3fe8f7daf78d05bf316fb88914daf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431537"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma
 
@@ -43,7 +42,7 @@ Stream Analytics işini tanımlamadan önce, daha sonra iş girişi olarak yapı
    |Abonelik  | \<Aboneliğiniz\> |  Kullanmak istediğiniz Azure aboneliğini seçin. |
    |Kaynak grubu   |   asaquickstart-resourcegroup  |   **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin. |
    |Bölge  |  \<Kullanıcılarınıza en yakın bölgeyi seçin\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
-   |IoT Hub adı  | MyASAIoTHub  |   IoT Hub için bir ad seçin.   |
+   |IoT Hub Adı  | MyASAIoTHub  |   IoT Hub için bir ad seçin.   |
 
    ![IoT Hub'ı oluşturma](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
@@ -170,7 +169,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
 3. **Çalıştır**’a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
-   ![Raspberry PI Azure IoT Çevrimiçi simülatör](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
+   ![Raspberry Pi Azure IoT Çevrimiçi Simülatörü](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Stream Analytics işini başlatıp çıktıyı denetleyin
 
@@ -205,4 +204,4 @@ Bu hızlı başlangıçta Visual Studio kullanarak basit bir Stream Analytics i�
 Visual Studio Azure Stream Analytics araçları hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics işleri görüntülemek için Visual Studio 'Yu kullanma](stream-analytics-vs-tools.md)
+> [Azure Stream Analytics işleri görüntülemek için Visual Studio](stream-analytics-vs-tools.md)

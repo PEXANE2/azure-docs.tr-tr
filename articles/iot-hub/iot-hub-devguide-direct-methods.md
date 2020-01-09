@@ -1,56 +1,56 @@
 ---
-title: Azure IOT hub'ı doğrudan yöntemleri anlama | Microsoft Docs
-description: Geliştirici Kılavuzu - kod cihazlarınızda bir hizmet uygulamasından çağırmak için doğrudan yöntemleri kullanın.
+title: Azure IoT Hub doğrudan yöntemlerini anlama | Microsoft Docs
+description: Geliştirici Kılavuzu-cihazlarınızdaki kodu bir hizmet uygulamasından çağırmak için doğrudan yöntemler kullanın.
 author: nberdy
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rezas
+ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61327763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429279"
 ---
-# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Anlama ve IOT Hub'ından doğrudan metotları çağırma
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub doğrudan yöntemleri anlayın ve çağırın
 
-IOT Hub buluttan cihazlar üzerinde doğrudan metotları çağırma yeteneği sağlar. Başarılı veya başarısız hemen (kullanıcı tarafından belirtilen zaman aşımından sonra) doğrudan yöntemler için HTTP çağrısı benzer bir cihazla bir istek-yanıt etkileşimi temsil eder. Bu yaklaşım, hemen işlem boyunca cihaz yanıt verebilmesi olmasına bağlı olarak farklı olduğu senaryolar için kullanışlıdır.
+IoT Hub, buluttan cihazlarda doğrudan Yöntemler çağırma olanağı sağlar. Doğrudan Yöntemler, başarılı veya başarısız olmaları durumunda (Kullanıcı tarafından belirtilen zaman aşımından sonra) bir HTTP çağrısına benzer bir cihazla bir istek-yanıt etkileşimini temsil eder. Bu yaklaşım, cihazın yanıt verip vermediği bağımsız olarak, anlık eylem kursunun farklı olduğu senaryolar için yararlıdır.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Her cihaz yöntemi tek bir cihaz hedefler. [İşleri birden fazla cihazda zamanlama](iot-hub-devguide-jobs.md) birden fazla cihazda doğrudan metotları çağırma ve yöntem çağırma bağlantısı kesilmiş cihazlar için zamanlamak için bir yolunu nasıl sağlayacağınızı gösterir.
+Her bir cihaz yöntemi tek bir cihazı hedefler. [Birden çok cihazda Işlerin zamanlaması](iot-hub-devguide-jobs.md) , birden çok cihazda doğrudan yöntemleri çağırma ve bağlantısı kesilen cihazlar için yöntem çağırma için bir yol sağlamayı gösterir.
 
-Hiç kimseyle **hizmetini bağlama** IOT hub'ı izinlerini cihazda yöntem çağırma.
+IoT Hub **hizmet bağlantısı** izinleri olan herkes, bir cihazdaki bir yöntemi çağırabilir.
 
-Doğrudan yöntemler istek-yanıt deseni izler ve bunların sonucunun anında onay gerektiren iletişimleri için tasarlanmıştır. Örneğin, etkileşimli denetim üzerinde fan kapatma gibi cihaz.
+Doğrudan Yöntemler bir istek-yanıt modelini izler ve sonuçlarının hemen onayını gerektiren iletişimler için tasarlanmıştır. Örneğin, cihaz için bir fanı açma gibi etkileşimli denetim.
 
-Başvurmak [bulut buluttan cihaza iletişim Kılavuzu](iot-hub-devguide-c2d-guidance.md) arasında istenen özellikleri kullanarak bu konuda şüpheleriniz varsa, yöntemler veya Bulut-cihaz iletilerini doğrudan.
+İstenen özellikler, doğrudan Yöntemler veya buluttan cihaza iletileri kullanma arasında şüpheliyse, [buluttan cihaza iletişim kılavuzuna](iot-hub-devguide-c2d-guidance.md) bakın.
 
 ## <a name="method-lifecycle"></a>Yöntem yaşam döngüsü
 
-Doğrudan yöntemler cihazda uygulandı ve sıfır veya daha fazla giriş doğru örnekleyin için yöntemi yükünde gerektirebilir. Hizmet kullanıma yönelik bir URI aracılığıyla bir doğrudan yöntem çağırma (`{iot hub}/twins/{device id}/methods/`). Bir cihaz doğrudan bir cihaza özgü MQTT konu yöntemleri alır (`$iothub/methods/POST/{method name}/`) veya AMQP bağlantıları aracılığıyla ( `IoThub-methodname` ve `IoThub-status` uygulama özellikleri). 
+Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yöntem yükünde sıfır veya daha fazla giriş gerektirebilir. Bir hizmete yönelik URI (`{iot hub}/twins/{device id}/methods/`) aracılığıyla doğrudan bir yöntem çağırılır. Bir cihaz, cihaza özgü bir MQTT konusu (`$iothub/methods/POST/{method name}/`) veya AMQP bağlantıları aracılığıyla doğrudan Yöntemler alır (`IoThub-methodname` ve `IoThub-status` uygulama özellikleri). 
 
 > [!NOTE]
-> Bir cihazda doğrudan yöntem çağırdığınızda, özellik adları ve değerleri yalnızca US-ASCII yazdırılabilir içerebilir alfasayısal karakterler, aşağıdaki, tüm hariç: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
+> Bir cihazda doğrudan yöntem çağırdığınızda, özellik adları ve değerleri yalnızca ABD-ASCII yazdırılabilir alfasayısal, aşağıdaki küme dışında bir değer içerebilir: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-Doğrudan yöntemleri zaman uyumludur ve ya da başarılı veya başarısız zaman aşımı süresinden sonra (varsayılan: 30 saniye, 300 saniye olarak ayarlanabilir yukarı). Doğrudan yöntemler, cihaz çevrimiçi ve alıcı komutları adıdır ve yalnızca, yapacak bir cihaz istediğiniz etkileşimli senaryolarda yararlıdır. Örneğin, bir ışık telefonda açmak. Bu senaryolarda, bulut hizmeti sonucuna olabildiğince çabuk davranabilir bir anında başarı veya başarısızlık görmek istiyorsunuz. Cihaz yöntemi sonucunda bazı ileti gövdesini döndürebilir, ancak bu yöntem Bunu yapmak gerekli değildir. Üzerinde sıralama garantisi veya yöntem çağrılarının tüm eşzamanlılık semantiği yoktur.
+Doğrudan Yöntemler zaman uyumludur ve zaman aşımı süresi dolduktan sonra başarılı ya da başarısız olur (varsayılan: 30 saniye, 300 saniyeye kadar ayarlanabilir). Doğrudan Yöntemler, cihazın ve yalnızca cihaz çevrimiçi olduğunda ve komutları alacağından, bir cihazın çalışır durumda olmasını istediğiniz Etkileşimli senaryolarda faydalıdır. Örneğin, bir telefonda bir ışığı açmak. Bu senaryolarda, bulut hizmetinin sonuca en kısa sürede işlem yapabilmesi için anında başarı veya başarısızlık olduğunu görmek istersiniz. Cihaz, metodun bir sonucu olarak bazı ileti gövdesini döndürebilir, ancak bunu yapmak için gerekli değildir. Yöntem çağrılarında sıralamada veya herhangi bir eşzamanlılık semantiğinin garantisi yoktur.
 
-Doğrudan yöntemler yalnızca HTTPS bulut yan ve MQTT veya AMQP cihaz tarafındaki.
+Doğrudan Yöntemler, yalnızca HTTPS 'den bulut tarafında, MQTT veya AMQP 'den cihaz tarafında bulunur.
 
-Yöntem istekleri ve yanıtları için bir JSON belgesi en fazla 128 KB yüktür.
+Yöntem istekleri ve yanıtları için yük, 128 KB 'ye kadar bir JSON belgesidir.
 
-## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Bir arka uç uygulamasından bir doğrudan yöntem çağırma
+## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Bir arka uç uygulamasından doğrudan yöntem çağırma
 
-Artık, bir arka uç uygulamasından bir doğrudan yöntem çağırma.
+Şimdi, bir arka uç uygulamasından doğrudan bir yöntemi çağırın.
 
 ### <a name="method-invocation"></a>Yöntem çağırma
 
-Bir cihazda doğrudan yöntem çağrılarını şu öğelerden oluşur HTTPS çağrıları vardır:
+Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden oluşan HTTPS çağrılardır:
 
-* *İstek URI'si* cihaz ile birlikte özel [API sürümü](/rest/api/iothub/service/invokedevicemethod):
+* [API sürümüyle](/rest/api/iothub/service/invokedevicemethod)birlikte cihaza özgü *istek URI 'si* :
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -58,9 +58,9 @@ Bir cihazda doğrudan yöntem çağrılarını şu öğelerden oluşur HTTPS ça
 
 * POST *yöntemi*
 
-* *Üstbilgileri* yetkilendirme içerir, istek kimliği, içerik türü ve içerik kodlaması.
+* Yetkilendirme, istek KIMLIĞI, içerik türü ve içerik kodlamasını içeren *üst bilgiler* .
 
-* Saydam bir JSON *gövdesi* şu biçimde:
+* Aşağıdaki biçimde saydam bir JSON *gövdesi* :
 
     ```json
     {
@@ -73,11 +73,11 @@ Bir cihazda doğrudan yöntem çağrılarını şu öğelerden oluşur HTTPS ça
     }
     ```
 
-Zaman aşımı saniye cinsindendir. Zaman aşımı ayarlanmazsa, 30 saniye olarak varsayılan olarak.
+Zaman aşımı saniye cinsinden. Zaman aşımı ayarlanmamışsa, varsayılan değer 30 saniyedir.
 
 #### <a name="example"></a>Örnek
 
-Barebone kullanma örneği için aşağıya bakın `curl`. 
+`curl`kullanarak bir barekemiörneği için aşağıya bakın. 
 
 ```bash
 curl -X POST \
@@ -98,11 +98,11 @@ curl -X POST \
 
 Arka uç uygulaması, aşağıdaki öğelerden oluşan bir yanıt alır:
 
-* *HTTP durum kodu*, şu anda bir 404 hatası cihazlar dahil olmak üzere bağlı olan IOT Hub'ından gelen hatalar için kullanılır.
+* Şu anda bağlı olmayan cihazlarda 404 hatası da dahil olmak üzere IoT Hub gelen hatalar için kullanılan *http durum kodu*.
 
-* *Üstbilgileri* içeren ETag, istek kimliği, içerik türü ve içerik kodlaması.
+* ETag, istek KIMLIĞI, içerik türü ve içerik kodlamasını içeren *üst bilgiler* .
 
-* Bir JSON *gövdesi* şu biçimde:
+* Aşağıdaki biçimde bir JSON *gövdesi* :
 
     ```json
     {
@@ -111,27 +111,27 @@ Arka uç uygulaması, aşağıdaki öğelerden oluşan bir yanıt alır:
     }
     ```
 
-    Her ikisi de `status` ve `body` cihaz tarafından sağlanan ve cihazın kendi durum kodu ve/veya açıklamanın ile yanıt vermek için kullanılır.
+    Hem `status` hem de `body` cihaz tarafından sağlanır ve cihazın kendi durum kodu ve/veya açıklamasıyla yanıt vermek için kullanılır.
 
-### <a name="method-invocation-for-iot-edge-modules"></a>Yöntem çağırma için IOT Edge modülleri
+### <a name="method-invocation-for-iot-edge-modules"></a>IoT Edge modülleri için yöntem çağırma
 
-Bir modül kimliği içerisinde desteklendiği kullanarak doğrudan metotları çağırma [IOT hizmeti istemci C# SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
+Bir modül KIMLIĞI kullanarak doğrudan yöntemleri çağırmak, [IoT hizmeti istemci C# SDK 'sında](https://www.nuget.org/packages/Microsoft.Azure.Devices/)desteklenir.
 
-Bu amaçla kullanabileceğiniz `ServiceClient.InvokeDeviceMethodAsync()` yöntemi ve geçişinde `deviceId` ve `moduleId` parametre olarak.
+Bu amaçla, `ServiceClient.InvokeDeviceMethodAsync()` yöntemini kullanın ve `deviceId` ve `moduleId` parametre olarak geçirin.
 
-## <a name="handle-a-direct-method-on-a-device"></a>Tanıtıcı bir cihazda doğrudan yöntem
+## <a name="handle-a-direct-method-on-a-device"></a>Bir cihazda doğrudan yöntem işleme
 
-IOT cihaz üzerinde doğrudan bir yöntemi nasıl ele alınacağını göz atalım.
+IoT cihazında doğrudan bir yöntemi nasıl işleyeceğinizi inceleyelim.
 
 ### <a name="mqtt"></a>MQTT
 
-Aşağıdaki bölümde için MQTT protokolüdür.
+Aşağıdaki bölüm MQTT protokolüne yöneliktir.
 
 #### <a name="method-invocation"></a>Yöntem çağırma
 
-Cihaz, MQTT konusunda doğrudan yöntem isteklerini alır: `$iothub/methods/POST/{method name}/?$rid={request id}`. 5\. abonelik başına cihaz sayısı sınırlıdır. Bu nedenle, doğrudan her yöntem için tek tek abone değil önerilir. Bunun yerine abone düşünün `$iothub/methods/POST/#` ve ardından teslim edilen iletiler, istenen yöntem adlarına göre filtreleyin.
+Cihazlar MQTT konusunda doğrudan yöntem istekleri alıyor: `$iothub/methods/POST/{method name}/?$rid={request id}`. Cihaz başına abonelik sayısı 5 ile sınırlıdır. Bu nedenle, her bir doğrudan yönteme ayrı ayrı abone olmaması önerilir. Bunun yerine `$iothub/methods/POST/#` abone olmayı düşünün ve ardından teslim edilen iletileri istediğiniz yöntem adlarına göre filtreleyerek filtreleyin.
 
-Cihaz aldıktan gövdesi aşağıdaki biçimdedir:
+Cihazın aldığı gövde aşağıdaki biçimdedir:
 
 ```json
 {
@@ -140,67 +140,67 @@ Cihaz aldıktan gövdesi aşağıdaki biçimdedir:
 }
 ```
 
-Yöntemi, QoS 0 isteklerdir.
+Yöntem istekleri QoS 0 ' dır.
 
 #### <a name="response"></a>Yanıt
 
-Cihaz yanıt gönderir `$iothub/methods/res/{status}/?$rid={request id}`burada:
+Cihaz yanıtları `$iothub/methods/res/{status}/?$rid={request id}`gönderir; burada:
 
-* `status` Cihaz tarafından sağlanan yöntem yürütme durumunu bir özelliktir.
+* `status` özelliği, yöntem yürütmenin cihaz tarafından sağlanan durumudur.
 
-* `$rid` İstek kimliği: IOT Hub'ından alınan yöntemi çağrısının bir özelliktir.
+* `$rid` özelliği, IoT Hub alınan yöntem çağrısından gelen istek KIMLIĞIDIR.
 
 Gövde, cihaz tarafından ayarlanır ve herhangi bir durum olabilir.
 
 ### <a name="amqp"></a>AMQP
 
-İçin AMQP protokolünü bölümüdür.
+Aşağıdaki bölüm AMQP protokolüne yöneliktir.
 
 #### <a name="method-invocation"></a>Yöntem çağırma
 
-Adresinde alma bağlantı oluşturarak cihaz doğrudan yöntem istekleri alan `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Cihaz, `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`adreste bir alma bağlantısı oluşturarak doğrudan yöntem istekleri alır.
 
-AMQP ileti yöntemi isteğinin temsil eden alma bağlantıyı ulaşır. Bunu, aşağıdaki bölümleri içerir:
+AMQP iletisi, yöntem isteğini temsil eden alma bağlantısına ulaşır. Aşağıdaki bölümleri içerir:
 
-* Karşılık gelen yöntemi yanıtı ile başarılı bir istek kimliği içeriyor. bağıntı kimliği özelliği.
+* Karşılık gelen Yöntem yanıtıyla geri geçirilmesi gereken bir istek KIMLIĞI içeren bağıntı KIMLIĞI özelliği.
 
-* Adlı bir uygulama özelliği `IoThub-methodname`, çağrılan yöntemin adını içerir.
+* Çağrılan yöntemin adını içeren `IoThub-methodname`adlı bir uygulama özelliği.
 
-* JSON olarak yöntemi yükü içeren AMQP ileti gövdesi.
+* JSON olarak Yöntem yükünü içeren AMQP ileti gövdesi.
 
 #### <a name="response"></a>Yanıt
 
-Cihaz yöntemi yanıt adresi döndürülecek gönderen bir bağlantı oluşturur `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+Cihaz, `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`adresine yönelik Yöntem yanıtını döndürmek için bir gönderme bağlantısı oluşturur.
 
-Yöntemin yanıtına gönderen bağlantıyı döndürülür ve şu şekilde yapılandırılmıştır:
+Yöntemin yanıtı gönderme bağlantısında döndürülür ve aşağıdaki şekilde yapılandırılır:
 
-* İstek Kimliği içeriyor. bağıntı kimliği özelliği yöntemin istek iletisinde geçirildi.
+* Metodun istek iletisinde geçirilen istek KIMLIĞINI içeren bağıntı KIMLIĞI özelliği.
 
-* Adlı bir uygulama özelliği `IoThub-status`, sağlanan yöntem durumu kullanıcı içerir.
+* Kullanıcı tarafından sağlanan yöntem durumunu içeren `IoThub-status`adlı bir uygulama özelliği.
 
-* JSON olarak yöntemi yanıtı içeren AMQP ileti gövdesi.
+* JSON olarak Yöntem yanıtını içeren AMQP ileti gövdesi.
 
-## <a name="additional-reference-material"></a>Ek başvuru malzemesi
+## <a name="additional-reference-material"></a>Ek başvuru malzemeleri
 
-IOT Hub Geliştirici Kılavuzu'nda olan diğer başvuru konularını içerir:
+IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
 
-* [IOT Hub uç noktaları](iot-hub-devguide-endpoints.md) her IOT hub'ı ortaya koyan çalışma zamanı ve yönetim işlemleri için çeşitli uç noktaları açıklar.
+* [IoT Hub uç noktaları](iot-hub-devguide-endpoints.md) , her bir IoT Hub 'ının çalışma zamanı ve yönetim işlemleri için sunduğu çeşitli uç noktaları açıklar.
 
-* [Azaltma ve kotalar](iot-hub-devguide-quotas-throttling.md) uygulanan kotalar ve azaltma davranışı, IOT hub'ı kullandığınızda beklediğiniz açıklar.
+* [Daraltma ve Kotalar](iot-hub-devguide-quotas-throttling.md) , IoT Hub kullandığınızda beklenen kotaları ve azaltma davranışını tanımlar.
 
-* [Azure IOT cihaz ve hizmet SDK'ları](iot-hub-devguide-sdks.md) çeşitli dil IOT hub'ı ile etkileşim kuran hem cihaz hem de hizmet uygulamaları geliştirirken kullanabileceğiniz SDK'ları listeler.
+* [Azure IoT cihaz ve hizmet SDK 'ları](iot-hub-devguide-sdks.md) , IoT Hub etkileşimde bulunan cihaz ve hizmet uygulamaları geliştirirken kullanabileceğiniz çeşitli dil SDK 'larını listeler.
 
-* [Cihaz ikizleri, işler ve ileti yönlendirme için IOT Hub sorgu dili](iot-hub-devguide-query-language.md) IOT Hub'ından, cihaz ikizleri ve işler hakkında bilgi almak için kullanabileceğiniz IOT Hub sorgu dili açıklar.
+* [Cihaz TWINS, işler ve ileti yönlendirme için IoT Hub sorgu dili,](iot-hub-devguide-query-language.md) cihaz ikişlerinizle ve işleriniz hakkında IoT Hub bilgi almak için kullanabileceğiniz IoT Hub sorgu dilini açıklar.
 
-* [IOT hub'ı MQTT desteği](iot-hub-mqtt-support.md) ve MQTT protokolünü için IOT hub'ı desteği hakkında daha fazla bilgi sağlar.
+* [MQTT desteği IoT Hub](iot-hub-mqtt-support.md) MQTT protokolü için IoT Hub desteği hakkında daha fazla bilgi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Doğrudan yöntemler kullanmayı öğrendiniz. artık aşağıdaki IOT Hub Geliştirici Kılavuzu makaleye de ilginizi çekebilir:
+Artık doğrudan yöntemlerin nasıl kullanılacağını öğrendiniz, aşağıdaki IoT Hub Geliştirici Kılavuzu makalesi ile ilgileniyor olabilirsiniz:
 
 * [Birden fazla cihazda işleri zamanlama](iot-hub-devguide-jobs.md)
 
-Bu makalede açıklanan kavramları bazıları denemek istiyorsanız, aşağıdaki IOT hub'ı öğreticide ilginizi çekebilir:
+Bu makalede açıklanan kavramların bazılarını denemek istiyorsanız aşağıdaki IoT Hub öğreticisiyle karşılaşabilirsiniz:
 
-* [Doğrudan yöntemler kullanma](quickstart-control-device-node.md)
-* [VS Code için Azure IOT araçları ile cihaz Yönetimi](iot-hub-device-management-iot-toolkit.md)
+* [Doğrudan Yöntemler kullanma](quickstart-control-device-node.md)
+* [VS Code için Azure IoT araçları ile cihaz yönetimi](iot-hub-device-management-iot-toolkit.md)

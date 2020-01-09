@@ -3,7 +3,7 @@ title: Xamarin iOS konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin iOS kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f74c1f515df23a89af7cf50a208a9965865f6edf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424121"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin iOS 'a özgü hususlar
 Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç önemli noktalar vardır.
@@ -30,18 +30,11 @@ Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç ön
 - [Belirteç önbelleği paylaşımını etkinleştir](#enable-token-cache-sharing-across-ios-applications)
 - [Anahtarlık erişimini etkinleştir](#enable-keychain-access)
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>İOS 12 ve kimlik doğrulama ile ilgili bilinen sorunlar
-Microsoft, iOS12 ve bazı kimlik doğrulama türleri arasında uyumsuzluk hakkında bilgi sağlamak için bir [güvenlik önerisi](https://github.com/aspnet/AspNetCore/issues/4647) yayımlamıştır. Uyumsuzluk sosyal, Wsbeslenir ve OıDC oturumlarını keser. Bu Danışma Ayrıca, geliştiricilerin iOS12 ile uyumlu hale gelmesi için ASP.NET tarafından eklenen geçerli güvenlik kısıtlamalarını kaldırmak için neler yapabileceğini yönergeler sağlar.  
-
-Xamarin iOS üzerinde MSAL.NET uygulamaları geliştirirken, iOS 12 ' den web sitelerinde oturum açmaya çalışırken sonsuz bir döngü görebilirsiniz (Bu [adal sorununa](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)benzer. 
-
-Ayrıca, bu [WebKit sorunu](https://bugs.webkit.org/show_bug.cgi?id=188165)bölümünde açıklandığı gibi IOS 12 Safari ile ASP.NET Core OIDC kimlik doğrulamasında bir kesme de görebilirsiniz.
-
 ## <a name="implement-openurl"></a>OpenUrl 'Yi Uygula
 
 İlk olarak, `FormsApplicationDelegate` türetilmiş sınıfın `OpenUrl` yöntemini geçersiz kılmanız ve `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`çağırmanız gerekir.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
     AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
@@ -56,40 +49,28 @@ Ayrıca, bir URL şeması tanımlamanız, uygulamanızın başka bir uygulamayı
 Anahtarlık erişimini etkinleştirmek için uygulamanızın bir Anahtarlık erişim grubu olması gerekir.
 Aşağıda gösterildiği gibi, uygulamanızı oluştururken `WithIosKeychainSecurityGroup()` API 'sini kullanarak Anahtarlık erişim grubunuzu ayarlayabilirsiniz:
 
-Çoklu oturum açmayı etkinleştirmek için, `PublicClientApplication.iOSKeychainSecurityGroup` özelliğini tüm uygulamalarda aynı değere ayarlamanız gerekir.
+Önbellek ve çoklu oturum açma avantajlarından yararlanmak için, Anahtarlık erişim grubunu tüm uygulamalarınızda aynı değere ayarlamanız gerekir.
 
-MSAL v3. x kullanılarak buna bir örnek şöyle olabilir:
+MSAL v4. x kullanılarak buna bir örnek şöyle olabilir:
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
-     .WithIosKeychainSecurityGroup("com.microsoft.msalrocks")
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
      .Build();
 ```
-
-Yetkilendirmeler. plist aşağıdaki XML parçası gibi görünecek şekilde güncellenmelidir:
 
 Bu değişiklik, `Entitlements.plist` dosyasında anahtar zinciri erişiminin *etkinleştirilmesinin yanı sıra* aşağıdaki erişim grubunu ya da kendinizinkini kullanmaktır:
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
 <dict>
   <key>keychain-access-groups</key>
   <array>
-    <string>$(AppIdentifierPrefix)com.microsoft.msalrocks</string>
+    <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
   </array>
 </dict>
-</plist>
 ```
 
-MSAL v4. x kullanılarak buna bir örnek şöyle olabilir:
-
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-`WithIosKeychainSecurityGroup()` API 'si kullanılırken, uygulamanızı Xcode kullanarak oluşturduğunuzda, MSAL otomatik olarak uygulamanın "ekip KIMLIĞI" (Appıdentifierprefix) sonuna güvenlik grubunuzu ekler. [Daha fazla bilgi Için bkz. iOS yetkilendirmeleri belgeleri](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). Bu nedenle, yetkilendirmeler. plist dosyasındaki Anahtarlık erişim grubundan önce $ (Appıdentifierprefix) dahil etmek için yetkilendirmeleri güncelleştirmeniz gerekir.
+`WithIosKeychainSecurityGroup()` API 'sini kullandığınızda, uygulamanızı Xcode kullanarak oluşturduğunuzda, MSAL otomatik olarak uygulamanın *Takım Kimliği* (appıdentifierprefix) sonuna güvenlik grubunuzu ekler. Daha fazla bilgi için bkz. [iOS yetkilendirmeleri belgeleri](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). Bu nedenle, yetkilendirmelerin, `Entitlements.plist`Anahtarlık erişim grubundan önce `$(AppIdentifierPrefix)` içermesi gerekir.
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>İOS uygulamaları arasında belirteç önbelleği paylaşımını etkinleştir
 
@@ -128,3 +109,10 @@ Aşağıdaki örnek readme.md dosyasının IOS 'a [özgü önemli noktalar](http
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Azure AD V 2.0 uç noktası aracılığıyla MSA ve Azure AD kimlik doğrulaması için MSAL kullanmayı ve elde edilen belirteçle Microsoft Graph erişmeyi gösteren basit bir Xamarin Forms uygulaması.
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->
+
+## <a name="known-issues-with-ios-12-and-authentication"></a>İOS 12 ve kimlik doğrulama ile ilgili bilinen sorunlar
+Microsoft, iOS12 ve bazı kimlik doğrulama türleri arasında uyumsuzluk hakkında bilgi sağlamak için bir [güvenlik önerisi](https://github.com/aspnet/AspNetCore/issues/4647) yayımlamıştır. Uyumsuzluk sosyal, Wsbeslenir ve OıDC oturumlarını keser. Bu Danışma Ayrıca, geliştiricilerin iOS12 ile uyumlu hale gelmesi için ASP.NET tarafından eklenen geçerli güvenlik kısıtlamalarını kaldırmak için neler yapabileceğini yönergeler sağlar.  
+
+Xamarin iOS üzerinde MSAL.NET uygulamaları geliştirirken, iOS 12 ' den (Bu [adal sorununa](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)benzer) Web sitelerinde oturum açmaya çalışırken sonsuz bir döngü görebilirsiniz. 
+
+Ayrıca, bu [WebKit sorunu](https://bugs.webkit.org/show_bug.cgi?id=188165)bölümünde açıklandığı gibi IOS 12 Safari ile ASP.NET Core OIDC kimlik doğrulamasında bir kesme de görebilirsiniz.

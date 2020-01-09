@@ -1,6 +1,6 @@
 ---
-title: İOS & macOS ile çalışmaya başlama-Microsoft Identity platform | Mavisi
-description: İOS ve macOS (Swift) uygulamaları, Microsoft Identity platform kullanarak erişim belirteçleri gerektiren bir API 'YI nasıl çağırabilir
+title: İOS için MSAL & macOS öğreticisi-Microsoft Identity platform | Mavisi
+description: İOS ve macOS (Swift) uygulamalarının Microsoft Identity platformunu kullanarak erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423412"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Kullanıcıları oturum açın ve iOS veya macOS uygulamasından Microsoft Graph çağırın
 
@@ -45,7 +45,7 @@ Bu örnek, kimlik doğrulamasını uygulamak için Microsoft kimlik doğrulama k
 
 Bu öğretici hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımların bu iki platform arasında farklı olduğunu unutmayın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bu kılavuzda uygulamayı derlemek için XCode sürüm 10. x veya üzeri gereklidir. , [İTunes web sitesinden](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode Indirme URL 'SI")Xcode indirebilirsiniz.
 - Microsoft kimlik doğrulama kitaplığı ([msal. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Bir bağımlılık Yöneticisi kullanabilir veya kitaplığı el ile ekleyebilirsiniz. Aşağıdaki yönergelerde nasıl yapılacağı gösterilmektedir.

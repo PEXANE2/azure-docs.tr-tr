@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425182"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydını etkinleştir (Önizleme)
 
@@ -39,10 +39,10 @@ Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkile
 Birleşik kaydı etkinleştirmek için şu adımları uygulayın:
 
 1. Azure portal bir Kullanıcı Yöneticisi veya genel yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Kullanıcı ayarları** ' na gidin > **erişim paneli Önizleme özellikleri ayarlarını yönetin**.
-3. Kullanıcılar ' ın altında, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir-Yenile**, **Seçili** bir Kullanıcı grubu için veya **Tüm** kullanıcılar için Etkinleştir ' i seçin.
+2. Kullanıcı **özelliği Önizleme ayarlarını yönetmek** > **Azure Active Directory** > **Kullanıcı ayarları** ' na gidin.
+3. Kullanıcılar ' ın altında, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, **Seçili** bir Kullanıcı grubu için veya **Tüm** kullanıcılar için etkinleştirmeyi seçebilirsiniz.
 
-   ![Tüm kullanıcılar için Birleşik güvenlik bilgileri önizleme deneyimini etkinleştir](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Tüm kullanıcılar için Birleşik güvenlik bilgileri önizleme deneyimini etkinleştir](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > 2019 Mart 'tan itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında Multi-Factor Authentication ve SSPR kullanıcıları için kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması seçenekleri, ücretli Azure AD kiracılarındaki kullanıcılar tarafından kullanılabilir olmaya devam edecektir.
@@ -64,9 +64,9 @@ Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfı
 
 Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı deneyen ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engelleyen tüm seçili kullanıcılar için geçerlidir.
 
-![Güvenlik bilgileri kaydını denetlemek için bir CA ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Güvenlik bilgileri kaydını denetlemek için bir CA ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. **Azure Portal**, **koşullu erişim** > **Azure Active Directory** gidin
+1. **Azure portal** **Azure Active Directory** > **güvenlik** > **koşullu erişim** ' e gidin
 1. **Yeni ilke**'yi seçin
 1. Ad alanına bu ilke için bir ad girin. Örneğin, **güvenilir ağlarda Birleşik güvenlik bilgileri kaydı**
 1. **Atamalar**' ın altında, **Kullanıcılar ve gruplar**' a tıklayın ve bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin

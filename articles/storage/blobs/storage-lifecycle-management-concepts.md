@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351331"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -32,7 +32,7 @@ Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman
 
 ## <a name="storage-account-support"></a>Depolama hesabı desteği
 
-Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).  
+Yaşam döngüsü yönetimi ilkesi Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları ve Premium Blok Blob depolama hesapları ile kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesabına genel bakış](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -46,10 +46,10 @@ Yaşam döngüsü yönetimi özelliği tüm Azure bölgelerinde kullanılabilir.
 
 Aşağıdaki yöntemlerden birini kullanarak bir ilkeyi ekleyebilir, düzenleyebilir veya kaldırabilirsiniz:
 
-* [Azure portalda](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API'leri](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [REST API'ler](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 Bir ilke, tam olarak okunabilir veya yazılabilir. Kısmi güncelleştirmeler desteklenmiyor. 
 
@@ -69,7 +69,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
+2. Azure portal, depolama hesabınızı arayıp seçin. 
 
 3. **BLOB hizmeti**altında, kurallarınızı görüntülemek veya değiştirmek Için **yaşam döngüsü yönetimi** ' ni seçin.
 
@@ -90,7 +90,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 #### <a name="azure-portal-code-view"></a>Azure portal kod görünümü
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
+2. Azure portal, depolama hesabınızı arayıp seçin.
 
 3. **BLOB hizmeti**altında, ilkenizi görüntülemek veya değiştirmek Için **yaşam döngüsü yönetimi** ' ni seçin.
 
@@ -288,7 +288,7 @@ Filtreler aşağıdakileri içerir:
 
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın `blockBlob`destekler. | Yes |
+| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın `blockBlob`destekler. | Evet |
 | prefixMatch | Öneklerin eşleşmesi için bir dize dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için `https://myaccount.blob.core.windows.net/container1/foo/...` altındaki tüm Blobları eşleştirmek istiyorsanız, prefixMatch `container1/foo`. | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | Hayır |
 
 ### <a name="rule-actions"></a>Kural eylemleri

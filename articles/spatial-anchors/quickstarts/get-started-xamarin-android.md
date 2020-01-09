@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2976104c72179fede3b39816663ac8196d7539ec
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465185"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
 
@@ -28,16 +28,18 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kull
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 - Bir Windows veya macOS bilgisayarı:
   - Windows kullanıyorsanız:
     - <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 16.2 +</a>' un güncel bir sürümü.
-    - <a href="https://git-scm.com/download/win" target="_blank">Windows için Git</a>
+    - <a href="https://git-scm.com/download/win" target="_blank">Windows için Git</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - MacOS kullanılıyorsa:
     - <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Mac için Visual Studio 8.1 +</a>' nin güncel sürümü.
-    - <a href="https://git-scm.com/download/mac" target="_blank">MacOS için git</a>
+    - <a href="https://git-scm.com/download/mac" target="_blank">MacOS Için git</a>.
+    - <a href="https://git-lfs.github.com/">Git LFS</a>.
 - Xamarin. Android ' in en son sürümü, tercih ettiğiniz platformda yüklü ve çalışır. Xamarin. Android Yükleme Kılavuzu için [Xamarin. Android yükleme](https://docs.microsoft.com/xamarin/android/get-started/installation/index) kılavuzlarını inceleyin.
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
   - Bilgisayarınızın Android cihazından iletişim kurması için ek cihaz sürücüleri gerekebilir. Daha fazla bilgi için [buraya](https://developer.android.com/studio/run/device.html)bakın.
@@ -55,7 +57,7 @@ Visual Studio 'da `Xamarin/SampleXamarin.sln` açın.
 
 Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
 
-`Xamarin/SampleXamarin.Common/AccountDetails.cs`açın.
+Açık `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
 `SpatialAnchorsAccountKey` alanını bulun ve `Set me` hesap anahtarıyla değiştirin.
 

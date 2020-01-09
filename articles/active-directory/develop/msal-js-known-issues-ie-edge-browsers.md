@@ -1,5 +1,5 @@
 ---
-title: Microsoft Edge & Internet Explorer 'da MSAL. js sorunları | Mavisi
+title: Internet Explorer & Microsoft Edge 'deki sorunlar (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Internet Explorer ve Microsoft Edge tarayıcılarıyla JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı 'nı kullanırken oluşan sorunları öğrenin.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424321"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>MSAL. js ile Internet Explorer ve Microsoft Edge tarayıcılarındaki bilinen sorunlar
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
 
 ## <a name="issues-due-to-security-zones"></a>Güvenlik bölgeleri nedeniyle oluşan sorunlar
 IE ve Microsoft Edge 'de kimlik doğrulamasıyla ilgili birçok sorun raporu sunuyoruz ( *Microsoft Edge tarayıcı sürümü 40.15063.0.0 ' e*güncelliyoruz). Bunları izliyor ve Microsoft Edge ekibinin bilgilendirilmesi yaptık. Microsoft Edge bir çözünürlükte çalışırken, sık karşılaşılan sorunların ve uygulanabilecek olası geçici çözümlerin açıklaması aşağıda verilmiştir.

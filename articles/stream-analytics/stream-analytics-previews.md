@@ -1,27 +1,26 @@
 ---
 title: Azure Stream Analytics Önizleme özellikleri
-description: Bu makalede, şu anda önizleme aşamasında olan Azure Stream Analytics özellikleri listelenmektedir.
-services: stream-analytics
+description: Bu makalede, şu anda Önizleme aşamasında olan Azure Stream Analytics özellikleri listeler.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: df3e8c1cd91c676c64d15c46c5acdc3d5bcfaa8e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 59bb866d7a339608555f0bb802e1716eba5d3255
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431585"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics Önizleme özellikleri
 
-Bu makale, şu anda Azure Stream Analytics için Önizlemedeki tüm özellikleri özetler. Bir üretim ortamında Önizleme özelliklerinin kullanılması önerilmez.
+Bu makalede, Azure Stream Analytics için şu anda önizlemede tüm özellikler özetlenmektedir. Önizleme özellikleri, bir üretim ortamında kullanmadan önerilmez.
 
-## <a name="public-previews"></a>Genel önizlemeler
+## <a name="public-previews"></a>Genel Önizleme
 
-Aşağıdaki özellikler genel önizlemede. Günümüzde bu özelliklerden faydalanabilirsiniz, ancak bunları üretim ortamınızda kullanmayın.
+Aşağıdaki özellikler, genel Önizleme aşamasındadır. Bu özelliklerin bugün yararlanabilirsiniz, ancak bunları üretim ortamında kullanmayın.
 
 ### <a name="online-scaling"></a>Çevrimiçi ölçeklendirme
 
@@ -57,22 +56,22 @@ Azure Stream Analytics işleri Visual Studio Code olarak yazılabilir. [Vs Code 
 
 ### <a name="anomaly-detection"></a>Anomali Algılama
 
-Azure Stream Analytics, çift yönlü, yavaş pozitif ve yavaş negatif eğilimler algılamasına ek olarak *ani artış* ve *DIB 'ler* algılama desteğiyle yeni makine öğrenimi modelleri sunmaktadır. Daha fazla bilgi için [Azure Stream Analytics 'de anomali algılamayı](stream-analytics-machine-learning-anomaly-detection.md)ziyaret edin.
+Azure Stream Analytics yeni makine öğrenimi modelleri için destek tanıtır *depo* ve *Düşüşler* yönlü, yavaş yavaş olumlu ve olumsuz eğilimleri saptama yanı sıra algılama. Daha fazla bilgi için [Azure Stream Analytics 'de anomali algılamayı](stream-analytics-machine-learning-anomaly-detection.md)ziyaret edin.
 
 
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning ile tümleştirme
 
-Stream Analytics işlerini Machine Learning (ML) işlevleriyle ölçeklendirebilirsiniz. Stream Analytics işte ML işlevlerini nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için [Stream Analytics işinizi Azure Machine Learning Işlevlerle ölçeklendirin](stream-analytics-scale-with-machine-learning-functions.md). [Azure Stream Analytics ve Azure Machine Learning kullanarak yaklaşım analizi gerçekleştirerek](stream-analytics-machine-learning-integration-tutorial.md)gerçek dünyada bir senaryoya göz atın.
+Machine Learning (ML) işlevleri olan Stream Analytics işlerini ölçeklendirme yapabilir. ML işlevleri, Stream Analytics işinde nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için [Stream Analytics işinizi Azure Machine Learning işlevleriyle ölçeklendirme](stream-analytics-scale-with-machine-learning-functions.md). Gerçek dünya senaryosuyla kullanıma [Azure Stream Analytics ve Azure Machine Learning kullanarak yaklaşım analizi gerçekleştirme](stream-analytics-machine-learning-integration-tutorial.md).
 
 
-### <a name="live-data-testing-in-visual-studio"></a>Visual Studio 'da canlı veri testi
+### <a name="live-data-testing-in-visual-studio"></a>Canlı veri Visual Studio'da testi
 
-Azure Stream Analytics için Visual Studio Araçları, Olay Hub 'ı veya IoT Hub gibi bulut kaynaklarından canlı etkinlik akışlarına karşı sorguları test etmenizi sağlayan yerel test özelliğini geliştirir. [Visual Studio için Azure Stream Analytics araçları 'nı kullanarak canlı verileri yerel olarak test](stream-analytics-live-data-local-testing.md)etme hakkında bilgi edinin.
+Azure Stream Analytics için Visual Studio Araçları, olay hub'ı veya IOT hub gibi bulut kaynakları Canlı Etkinlik Akışlarını sorguları test etmenize olanak tanıyan yerel test özelliği geliştirin. Bilgi edinmek için nasıl [Test canlı verileri yerel olarak Visual Studio için Azure Stream Analytics araçları kullanarak](stream-analytics-live-data-local-testing.md).
 
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>IoT Edge üzerinde .NET Kullanıcı tanımlı işlevler
+### <a name="net-user-defined-functions-on-iot-edge"></a>IOT Edge üzerinde .NET kullanıcı tanımlı işlevler
 
-.NET standardı Kullanıcı tanımlı işlevlerle, akış işlem hattının bir parçası olarak .NET Standard kodu çalıştırabilirsiniz. Basit C# sınıflar oluşturabilir veya tam proje ve kitaplıkları içeri aktarabilirsiniz. Visual Studio 'da tam yazma ve hata ayıklama deneyimi desteklenir. Daha fazla bilgi için [Azure Stream Analytics Edge işleri için Kullanıcı tanımlı .NET Standard geliştirme](stream-analytics-edge-csharp-udf-methods.md)makalesini ziyaret edin.
+.NET standart kullanıcı tanımlı işlevleri ile akış işlem hattınızın parçası olarak .NET Standard kod çalıştırabilir. Basit C# sınıfları oluşturmak veya tam proje ve kitaplıkları Al. Visual Studio'da tam yazma ve hata ayıklama deneyimini desteklenir. Daha fazla bilgi için ziyaret [.NET Standard geliştirme kullanıcı tanımlı işlevleri için Azure Stream Analytics Edge işleri](stream-analytics-edge-csharp-udf-methods.md).
 
 ## <a name="other-previews"></a>Diğer önizlemeler
 

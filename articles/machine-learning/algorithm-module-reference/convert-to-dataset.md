@@ -1,7 +1,7 @@
 ---
 title: "DataSet 'e Dönüştür: modül başvurusu"
-titleSuffix: Azure Machine Learning service
-description: Veri girişini Microsoft Azure Machine Learning tarafından kullanılan iç veri kümesi biçimine dönüştürmek için Azure Machine Learning hizmetindeki veri kümesine dönüştürme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Veri girişini Microsoft Azure Machine Learning tarafından kullanılan iç veri kümesi biçimine dönüştürmek için Azure Machine Learning ' deki veri kümesine dönüştürme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428568"
 ---
-# <a name="convert-to-dataset"></a>Veri kümesine Dönüştür
+# <a name="convert-to-dataset"></a>Veri kümesine dönüştürme
 
 Bu makalede, bir işlem hattının herhangi bir verisini tasarımcı iç biçimine dönüştürmek için Azure Machine Learning tasarımcısında (Önizleme) veri kümesi dönüştürme modülünün nasıl kullanılacağı açıklanır.
   
@@ -70,4 +70,4 @@ Veri kümesine Dönüştür kullanmadan önce veri kümesini hazırlamak için [
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

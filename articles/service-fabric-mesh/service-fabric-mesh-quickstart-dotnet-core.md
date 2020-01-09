@@ -1,26 +1,17 @@
 ---
-title: Hızlı Başlangıç - Azure Service Fabric Mesh için bir web uygulaması dağıtma | Microsoft Docs
-description: Bu hızlı başlangıçta Visual Studio kullanarak bir ASP.NET Core Web sitesi oluşturma ve Azure Service Fabric Mesh için yayımlama gösterir.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Hızlı başlangıç-bir Web uygulamasını Azure Service Fabric ağı 'na dağıtma
+description: Bu hızlı başlangıçta, ASP.NET Core bir Web sitesi oluşturma ve Visual Studio kullanarak Azure Service Fabric ağı 'nda yayımlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459076"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Hızlı Başlangıç: Web uygulaması oluşturup Azure Service Fabric Mesh’e dağıtma
 
@@ -44,7 +35,7 @@ Visual Studio'yu açın ve **Dosya** > **Yeni** > **Proje...** seçeneğini beli
 
 ![Visual Studio yeni Service Fabric Mesh projesi iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
-### <a name="create-a-service"></a>Hizmet oluşturma
+### <a name="create-a-service"></a>Hizmet oluşturun
 
 **Tamam**’a tıklamanızın ardından **Yeni Service Fabric Hizmeti** iletişim kutusu görüntülenir. **ASP.NET Core** proje türünü seçin, **Kapsayıcı işletim sistemi**’nin **Windows** olarak ayarlandığından emin olun ve **Tamam**’a tıklayarak ASP.NET Core projesini oluşturun. 
 

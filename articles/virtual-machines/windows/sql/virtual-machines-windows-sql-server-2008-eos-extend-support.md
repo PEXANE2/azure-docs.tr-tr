@@ -14,20 +14,22 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357858"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
 
-SQL Server 2008 ve SQL Server 2008 R2, [Destek (EOS) yaşam döngüsünün sonuna](https://www.microsoft.com/sql-server/sql-server-2008)yaklaşılıyor. Birçok müşteri hala her iki sürümü de kullandığından, destek almaya devam etmek için çeşitli seçenekler sunuyoruz. Şirket içi SQL Server örneklerinizi Azure sanal makinelerine (VM) geçirebilir, Azure SQL veritabanına geçirebilir veya şirket içinde kalabilir ve genişletilmiş güvenlik güncelleştirmeleri satın alabilirsiniz.
+SQL Server 2008 ve SQL Server 2008 R2, [Destek (EOS) yaşam döngüsünün sonuna](https://www.microsoft.com/sql-server/sql-server-2008)ulaşmıştır. Birçok müşteri hala her iki sürümü de kullandığından, destek almaya devam etmek için çeşitli seçenekler sunuyoruz. Şirket içi SQL Server örneklerinizi Azure sanal makinelerine (VM) geçirebilir, Azure SQL veritabanına geçirebilir veya şirket içinde kalabilir ve genişletilmiş güvenlik güncelleştirmeleri satın alabilirsiniz.
 
 Yönetilen bir örnekten farklı olarak, bir Azure VM 'ye geçiş yapmak, uygulamalarınızı yeniden ayarlamayı gerektirmez. Şirket içinde kalmaktan farklı olarak, bir Azure VM 'ye geçiş yaparak ücretsiz genişletilmiş güvenlik düzeltme ekleri alacaksınız.
 
 Bu makalenin geri kalanında SQL Server örneğinizi bir Azure VM 'sine geçirmeye yönelik konular sunulmaktadır.
+
+Destek seçenekleri sonu hakkında daha fazla bilgi için bkz. [destek sonu](/sql/sql-server/end-of-support/sql-server-end-of-life-overview).
 
 ## <a name="provisioning"></a>Sağlama
 
@@ -87,3 +89,7 @@ Azure sanal makineler 'de SQL Server kullanmaya başlayın:
 SQL Server VM 'Ler hakkında sık sorulan soruların yanıtlarını alın:
 
 * [Azure sanal makinelerinde SQL Server hakkında SSS](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Destek seçenekleri sonu ve genişletilmiş güvenlik güncelleştirmeleri hakkında daha fazla bilgi edinin:
+
+* [Genişletilmiş güvenlik güncelleştirmeleri](/sql/sql-server/end-of-support/sql-server-extended-security-updates) & [destek sonu](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)

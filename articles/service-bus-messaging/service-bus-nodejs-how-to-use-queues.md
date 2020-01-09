@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: node. js ' de Azure Service Bus kuyrukları kullanma"
+title: Azure-SB paketini kullanarak Node. js ' de Azure Service Bus kuyruklarını kullanma
 description: "Hızlı başlangıç: bir Node. js uygulamasından Azure 'da Service Bus kuyruklarını nasıl kullanacağınızı öğrenin."
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462177"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: node. js ve Azure-SB paketi ile Azure 'da Service Bus kuyruklarını kullanma
 
@@ -135,7 +135,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
-Service Bus kuyruğuna ileti göndermek için, uygulamanız **Servicebusservice** nesnesinde `sendQueueMessage` yöntemini çağırır. Service Bus sıralara gönderilen iletiler (ve öğesinden alınan), **Brokeredmessage** nesneleridir ve standart özellikler kümesi ( **etiket** ve **TimeToLive**gibi), uygulamaya özgü özel özellikleri tutmak için kullanılan bir sözlük ve Rastgele uygulama verilerinin gövdesi. Bir uygulama ileti olarak bir dize geçirerek ileti gövdesini ayarlayabilir. Gerekli standart özellikler varsayılan değerlerle doldurulur.
+Service Bus kuyruğuna ileti göndermek için, uygulamanız **Servicebusservice** nesnesinde `sendQueueMessage` yöntemini çağırır. Service Bus sıralara gönderilen iletiler (ve öğesinden alınan), **Brokeredmessage** nesneleridir ve standart bir özellikler kümesi ( **etiket** ve **TimeToLive**gibi), uygulamaya özgü özel özellikleri tutmak için kullanılan bir sözlük ve rastgele uygulama verileri gövdesi vardır. Bir uygulama ileti olarak bir dize geçirerek ileti gövdesini ayarlayabilir. Gerekli standart özellikler varsayılan değerlerle doldurulur.
 
 Aşağıdaki örnek, `sendQueueMessage`kullanarak `myqueue` adlı kuyruğa test iletisinin nasıl gönderileceğini gösterir:
 

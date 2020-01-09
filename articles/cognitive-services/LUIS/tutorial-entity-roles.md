@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447841"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: bağlamsal olarak ilgili verileri bir söylenişi 'ten ayıklayın
 
@@ -24,9 +24,7 @@ Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örne�
 
 Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir.
 
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
-
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
@@ -51,7 +49,11 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. [https://preview.luis.ai](https://preview.luis.ai)URL 'si Ile Önizleme Luo portalında oturum açın.
+
+1. **Yeni uygulama oluştur**' u seçin, `HumanResources` adı girin ve varsayılan kültür olan **İngilizce**'yi koruyun. Açıklamayı boş bırakın.
+
+1. **Done** (Bitti) öğesini seçin.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Çalışanları şehir arasında taşımak için bir amaç oluşturun
 
@@ -61,7 +63,8 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 1. Açılan iletişim kutusuna `MoveEmployeeToCity` girip **Done** (Bitti) öğesini seçin.
 
-    ![Create new intent (Yeni amaç oluştur) iletişim kutusunun ekran görüntüsü](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png) yeni amaç oluştur iletişim kutusunun ekran görüntüsünü ![
 
 1. Amaca örnek konuşmalar ekleyin.
 
@@ -77,7 +80,8 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
     |San Diego 'dan Bellevue 'e doğru Steve Stançe aktarma |
     |SSAS şehrinde Tanner Thompson 'yı kaldırın ve Chicago 'ye SHIFT 'e gidin|
 
-    [MOVEIN 'ın, MoveEmployee amacına yönelik yeni dıklarla birlikte ![ekran görüntüsü](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![, MoveEmployee amacına yönelik yeni dıklarla BASıS ekran görüntüsü](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Önceden oluşturulmuş varlık geographyV2 Ekle
 
@@ -87,16 +91,30 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 1. **Önceden oluşturulmuş varlık Ekle**' yi seçin ve ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğunda `geo` ' ı seçin.
 
-    ![Uygulamaya geographyV2 önceden oluşturulmuş varlık ekleme](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > Uygulama](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png) geographyV2 önceden oluşturulmuş varlık eklemek ![
+
 1. Onay kutusunu seçin ve **bitti**' yi seçin.
 1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2** seçin.
 1. İki rol ekleyin, `Origin`ve `Destination`.
 
-    ![Önceden oluşturulmuş varlığa roller ekleme](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Sol taraftaki gezinmede **amaçları** seçin, sonra **Moveemployeetocity** hedefini seçin. Şehir adlarının **geographyV2**önceden oluşturulmuş varlıkla etiketlendirildiğine dikkat edin.
-1. Listenin ilk bölümünde, kaynak konumunu seçin. Açılan menü görüntülenir. Listeden **geographyV2** öğesini seçin ve ardından **kaynak**Seç ' in yanındaki menüyü izleyin.
-1. Tüm yerlerdeki konumların tüm rollerini işaretlemek için önceki adımdaki yöntemi kullanın.
+    > [!div class="mx-imgBorder"]
+    > ![önceden oluşturulmuş varlığa roller eklemek](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. Sol taraftaki gezinmede **amaçları** seçin, sonra **Moveemployeetocity** hedefini seçin. Şehir adlarının **geographyV2**önceden oluşturulmuş varlıkla etiketlendirildiğine dikkat edin.
+1. Bağlam araç çubuğunda **varlık paleti**' ni seçin.
+
+    > [!div class="mx-imgBorder"]
+    > içerik araç çubuğundan varlık paleti ![seçin](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Önceden oluşturulmuş varlığı seçin, **geographyV2**ve ardından **varlık denetçisi**' ni seçin.
+1. **Varlık denetçisinde**bir rol, **hedef**' i seçin. Bu, fare imlecini değiştirir. Hedef konum olan tüm söyleylerdeki metni etiketlemek için imleci kullanın.
+
+    > [!div class="mx-imgBorder"]
+    > ![varlık paletinde rol seçin](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. **Varlık denetçisi**' ne dönün, role **kaynak**olarak geçin. Kaynak konumu olan tüm söyleylerdeki metni etiketlemek için imleci kullanın.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Depolama Gezgini kullanarak Azure dosya paylaşımlarını yönetme için hızlı başlangıç
+title: Azure Depolama Gezgini kullanarak Azure dosya paylaşımlarını yönetme
 description: Bu hızlı başlangıcı Azure dosyalarını yönetmek için Azure Depolama Gezgini kullanma hakkında bilgi edinmek için kullanın.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431816"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Hızlı Başlangıç: Azure Depolama Gezgini ile Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure Depolama Gezgini'ni kullanarak [Azure dosya paylaşımlarında](storage-files-introduction.md) çalışmanın temelleri gösterilir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
@@ -21,7 +21,7 @@ Azure Depolama Gezgini Windows, macOS ve Linux için kullanılabilen popüler bi
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıç için Depolama Gezgini'nin yüklü olması gerekir. İndirip yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)’ne gidin.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
@@ -32,9 +32,9 @@ Depolama Gezgini’ni yeni kaynaklar oluşturmak için kullanamazsınız. Bu tan
 ## <a name="connect-storage-explorer-to-azure-resources"></a>Depolama Gezgini'ni Azure kaynaklarına bağlama
 Depolama Gezgini’ni ilk kez başlattığınızda **Microsoft Azure Depolama Gezgini - Bağlan** penceresi görüntülenir. Depolama Gezgini depolama hesaplarına bağlamak için birçok yol sağlar: 
 
-- **Azure hesabınızı kullanarak oturum açın**: Kuruluşunuz veya Microsoft hesabı kullanıcı kimlik bilgilerini kullanarak oturum açabilirsiniz. 
-- **Bir bağlantı dizesi veya SAS belirteci kullanarak belirli bir depolama hesabına bağlanın**: Bağlantı dizesi, depolama hesabı adını ve depolama hesabı anahtarını/SAS belirtecini içeren özel bir dizedir. Depolama Gezgini, belirteci kullanarak doğrudan depolama hesabına erişir (bir Azure hesabındaki tüm depolama hesaplarını görmek yerine). Bağlantı dizeleri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama bağlantı dizelerini yapılandırma](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Depolama hesabı adı ve anahtarı kullanarak belirli bir depolama hesabına bağlanın**: Azure depolamaya bağlanmak için depolama hesabınızın adını ve depolama hesabınızın anahtarını kullanın.
+- **Azure hesabınızı kullanarak oturum açma**: Kuruluşunuzun kimlik bilgilerini veya Microsoft hesabınızı kullanarak oturum açabilirsiniz. 
+- **Bir bağlantı dizesi veya SAS belirteci kullanarak belirli bir depolama hesabına bağlanma**: Bağlantı dizesi, depolama hesabı adını ve depolama hesabı anahtarını/SAS belirtecini içeren özel bir dizedir. Depolama Gezgini, belirteci kullanarak doğrudan depolama hesabına erişir (bir Azure hesabındaki tüm depolama hesaplarını görmek yerine). Bağlantı dizeleri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama bağlantı dizelerini yapılandırma](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Depolama hesabı adı ve anahtarı kullanarak belirli bir depolama hesabına bağlanma**: Azure depolamaya bağlanmak için depolama hesabınızın depolama hesabı adını ve anahtarını kullanın.
 
 Bu hızlı başlangıç için, Azure hesabınızı kullanarak oturum açın. **Azure Hesabı Ekle**’yi ve sonra **Oturum Aç**’ı seçin. Azure hesabınızda oturum açmak için yönergeleri izleyin.
 
@@ -66,7 +66,7 @@ Dizin eklemek, dosya paylaşımınızın yönetimi için hiyerarşik bir yapı s
 
 *myDirectory* dizini, *myshare* dosya paylaşımının sekmesinde listelenir.
 
-### <a name="upload-a-file"></a>Karşıya dosya yükle 
+### <a name="upload-a-file"></a>Dosyayı karşıya yükleme 
 Yerel makinenizden bir dosyayı dosya paylaşımınızdaki yeni dizine yükleyebilirsiniz. Klasörün tamamını veya tek bir dosyayı karşıya yükleyebilirsiniz.
 
 1. Üst menüden **Karşıya Yükle**’yi seçin. Bu işlemi kullanarak klasör veya dosyayı karşıya yükleyebilirsiniz.
@@ -75,7 +75,7 @@ Yerel makinenizden bir dosyayı dosya paylaşımınızdaki yeni dizine yükleyeb
 
 İşiniz bittiğinde, dosya *myDirectory* bölmesindeki listede görünür.
 
-### <a name="download-a-file"></a>Dosya indir
+### <a name="download-a-file"></a>Dosya indirme
 Dosya paylaşımınızdan bir dosyanın kopyasını indirmek için dosyaya sağ tıklayın ve ardından **İndir**’i seçin. Dosyanın yerel makinenizde nereye konmasını istediğinizi seçin ve ardından **Kaydet**'i seçin.
 
 Pencerenin en altındaki **Etkinlikler** bölmesinde indirme işleminin ilerleme durumu görünür.

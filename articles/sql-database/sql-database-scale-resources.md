@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462619"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Veritabanı kaynaklarını en az kapalı kalma süresiyle dinamik olarak ölçeklendirin
 
@@ -62,9 +62,9 @@ Herhangi bir türde ölçek artırma veya ölçek azaltma eylemini başlatmak, v
 
 ## <a name="alternative-scale-methods"></a>Alternatif ölçek yöntemleri
 
-Kaynak Ölçekleme, veritabanı veya uygulama kodunu değiştirmeden veritabanınızın performansını artırmanın en kolay ve en etkili yoludur. Bazı durumlarda, en yüksek hizmet katmanları, işlem boyutları ve performans iyileştirmeleri bile başarılı ve ekonomik bir şekilde iş yükünüzü işleyemeyebilir. Bu durumda, veritabanınızı ölçeklendirmek için aşağıdaki ek seçeneklere sahip olursunuz:
+Kaynak Ölçekleme, veritabanı veya uygulama kodunu değiştirmeden veritabanınızın performansını artırmanın en kolay ve en etkili yoludur. Bazı durumlarda, en yüksek hizmet katmanları, işlem boyutları ve performans iyileştirmeleri bile iş yükünüzü başarılı ve ekonomik bir şekilde işleyemeyebilir. Bu durumda, veritabanınızı ölçeklendirmek için aşağıdaki ek seçeneklere sahip olursunuz:
 
-- [Okuma ölçeği](sql-database-read-scale-out.md) genişletme, verilerinizin yalnızca salt okunurdur bir çoğaltmasını aldığınız, raporlar gibi yalnızca yoğun salt okuma sorgularını yürütebileceğiniz bir özelliktir. Salt okuma çoğaltması, birincil Veritabanınızdaki kaynak kullanımını etkilemeden salt okunurdur.
+- [Okuma ölçeği](sql-database-read-scale-out.md) genişletme, verilerinizin yalnızca salt okunurdur bir çoğaltmasını aldığınız, raporlar gibi yalnızca salt okuma sorgularını yürütebileceğiniz kullanılabilir bir özelliktir. Salt okuma çoğaltması, birincil Veritabanınızdaki kaynak kullanımını etkilemeden salt okunurdur.
 - [Veritabanı](sql-database-elastic-scale-introduction.md) parçaları, verilerinizi çeşitli veritabanlarına bölmenizi ve bunları bağımsız olarak ölçeklendirmenizi sağlayan bir teknikler kümesidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

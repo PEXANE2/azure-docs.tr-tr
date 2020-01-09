@@ -4,15 +4,15 @@ description: VM'ler için Azure İzleyici dağıtmayı ve yapılandırmayı öğ
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400612"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>VM'ler için Azure İzleyici etkinleştir (Önizleme) genel bakış
 
@@ -25,7 +25,7 @@ VM'ler için Azure İzleyici ayarlamak için:
 * İki etkinleştirmek veya PowerShell kullanarak belirtilen abonelik veya kaynak grubu üzerinde daha fazla Azure sanal makineleri veya sanal makine ölçek kümeleri.
 * Şirket ağınızda veya diğer bulut ortamınızda barındırılan VM 'Leri veya fiziksel bilgisayarları izlemek için VM'ler için Azure İzleyici etkinleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki bölümlerde yer alan bilgiler anladığınızdan emin olun. 
 
@@ -36,24 +36,24 @@ Başlamadan önce aşağıdaki bölümlerde yer alan bilgiler anladığınızdan
 
 VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalışma alanını destekler:
 
-- Batı Orta ABD
+- Orta Batı ABD
 - Batı ABD
 - Batı ABD 2
-- Orta Güney ABD
+- Güney Orta ABD
 - Doğu ABD
 - Doğu ABD 2
 - Orta ABD
 - Orta Kuzey ABD
-- Orta Kanada
-- Birleşik Krallık Güney
+- Kanada Orta
+- Birleşik Krallık, Güney
 - Kuzey Avrupa
 - Batı Avrupa
 - Doğu Asya
 - Güneydoğu Asya
 - Orta Hindistan
-- Japonya Doğu
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Doğu Japonya
+- Doğu Avustralya
+- Güneydoğu Avustralya
 
 >[!NOTE]
 >Azure VM 'Leri herhangi bir bölgeden dağıtabilirsiniz. Bu VM 'Ler Log Analytics çalışma alanı tarafından desteklenen bölgelerle sınırlı değildir.
@@ -166,10 +166,10 @@ Karma bir ortamda, bağımlılık aracısını el ile indirip yükleyebilir veya
 
 Aşağıdaki tabloda, karma bir ortamda, eşleme özelliğini destekleyen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı kaynak | Destekleniyor | Açıklama |
+| Bağlı kaynak | Desteklenen | Açıklama |
 |:--|:--|:--|
-| Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Windows aracıları | Evet | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
+| Linux aracıları | Evet | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
 | System Center Operations Manager yönetim grubu | Hayır | |
 
 Bağımlılık aracısını şu konumlardan indirebilirsiniz:
@@ -218,7 +218,7 @@ VM'ler için Azure İzleyici, kullandığı performans sayaçlarını toplamak i
 |MantıksalDisk |Disk Yazma Bayt/sn |
 |MantıksalDisk |Disk Yazma/sn |
 |MantıksalDisk |Boş megabayt |
-|Bellek |Kullanılabilir MBayt |
+|Hafıza |Kullanılabilir MBayt |
 |Ağ bağdaştırıcısı |Alınan Bayt/sn |
 |Ağ bağdaştırıcısı |Gönderilen bayt/sn |
 |İşlemci |% İşlemci zamanı |
@@ -235,7 +235,7 @@ VM'ler için Azure İzleyici, kullandığı performans sayaçlarını toplamak i
 |Mantıksal Disk |Disk Yazma/sn |
 |Mantıksal Disk |Boş megabayt |
 |Mantıksal Disk |Mantıksal Disk Bayt/sn |
-|Bellek |Kullanılabilir MBayt belleği |
+|Hafıza |Kullanılabilir MBayt belleği |
 |Ağ |Alınan toplam bayt sayısı |
 |Ağ |Aktarılan toplam bayt |
 |İşlemci |% İşlemci zamanı |

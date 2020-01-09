@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 62a010480dc83561a11c6ee99c76f35b29e808c1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394698"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Izleyici günlük verilerini Power BI içine aktarın
 
@@ -51,7 +51,7 @@ Power BI Desktop, Power BI yayımlanmakta olabilecek veri kümeleri ve raporlar 
 
 
 
-## <a name="publish-to-power-bi"></a>Power BI yayımlama
+## <a name="publish-to-power-bi"></a>Power BI’da yayımla
 Power BI yayımladığınızda bir veri kümesi ve rapor oluşturulur.  Power BI Desktop bir rapor oluşturursanız, bu, verileriniz ile yayımlanacak.  Aksi takdirde, boş bir rapor oluşturulur.  Power BI raporu değiştirebilir veya veri kümesine göre yeni bir tane oluşturabilirsiniz.
 
 1. Verilerinizi temel alan bir rapor oluşturun.  Bilgi sahibi değilseniz [Power BI Desktop belgeleri](https://docs.microsoft.com/power-bi/desktop-report-view) kullanın.  
@@ -63,7 +63,7 @@ Power BI yayımladığınızda bir veri kümesi ve rapor oluşturulur.  Power BI
 1. Yayımlama tamamlandığında, yeni veri kümeniz ile Power BI açmak için **Power BI aç** ' a tıklayın.
 
 
-### <a name="configure-scheduled-refresh"></a>Zamanlanmış yenilemeyi yapılandırma
+### <a name="configure-scheduled-refresh"></a>Zamanlanmış yenileme yapılandırma
 Power BI oluşturulan veri kümesi, daha önce Power BI Desktop gördüğünüz verileri aynı olacak.  Sorguyu yeniden çalıştırmak ve Azure Izleyici 'den en güncel verilerle doldurmak için veri kümesini düzenli aralıklarla yenilemeniz gerekir.  
 
 1. Raporunuzu karşıya yüklediğiniz çalışma alanına tıklayın ve **veri kümeleri** menüsünü seçin. 

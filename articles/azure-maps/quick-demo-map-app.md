@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408407"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Hızlı başlangıç: Azure haritalar kullanarak etkileşimli arama haritası oluşturma
 
@@ -26,24 +26,38 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-## <a name="create-an-account-and-get-your-key"></a>Hesap oluşturma ve anahtarınızı alma
+<a id="createaccount"></a>
 
-1. [Azure Portal](https://portal.azure.com) **kaynak oluştur**' u seçin.
-2. Market 'te **Ara** kutusuna **haritalar**girin.
-3. **Sonuçlar** içinden **Haritalar**’ı seçin. Haritanın altında görüntülenen **Oluştur** düğmesini seçin.
-4. **Azure haritalar hesabı oluştur** sayfasında, aşağıdaki değerleri girin:
-   - Yeni hesabınıza verilen **Ad**.
-   - Bu hesap için kullanmak istediğiniz **Abonelik**.
-   - Bu hesap için **Kaynak grubu**. Yeni bir kaynak grubu **oluşturmayı** veya **var olan** kaynak grubunu kullanmayı tercih edebilirsiniz.
-   - Tercih ettiğiniz **fiyatlandırma katmanını** seçin.
-   - **Lisans** ve **Gizlilik bildirimini**okuyun. Koşulları kabul etmek için onay kutusunu işaretleyin.
-   - Son olarak **Oluştur** düğmesini seçin.
+## <a name="create-an-account-with-azure-maps"></a>Azure Maps hesabı oluşturma
 
-     ![Portalda Azure Maps hesabı oluşturma](./media/quick-demo-map-app/create-account.png)
+Aşağıdaki adımları uygulayarak yeni bir Haritalar hesabı oluşturun:
 
-5. Hesabınız başarıyla oluşturulduktan sonra, hesabı açın ve hesap menüsünün Ayarlar bölümünü bulun. Azure haritalar hesabınız için birincil ve ikincil anahtarları görüntülemek üzere **kimlik doğrulaması** ' nı seçin. **Birincil Anahtar** değerini sonraki bölümde kullanmak üzere yerel panonuza kopyalayın.
+1. [Azure portalının](https://portal.azure.com) sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
+2. *Market’te Ara* kutusuna **Haritalar** yazın.
+3. *Sonuçlar* içinden **Haritalar**’ı seçin. Haritanın altında görüntülenen **Oluştur** düğmesine tıklayın.
+4. **Haritalar Hesabı Oluştur** sayfasında aşağıdaki değerleri girin:
+    * Bu hesap için kullanmak istediğiniz *Abonelik*.
+    * Bu hesap için *Kaynak grubu* adı. Kaynak grubu için *Yeni oluştur* veya *Mevcut olanı kullan* seçeneğini belirleyebilirsiniz.
+    * Yeni hesabınıza verilen *Ad*.
+    * Bu hesabın *fiyatlandırma katmanı* .
+    * *Lisans*’ı ve *Gizlilik Bildirimi*’ni okuyun ve onay kutusunu işaretleyerek koşulları kabul edin.
+    * **Oluştur** düğmesine tıklayın.
+
+![Portalda Haritalar hesabı oluşturma](./media/quick-demo-map-app/create-account.png)
+
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>Hesabınızın birincil anahtarını alma
+
+Haritalar hesabınız başarıyla oluşturulduktan sonra, Haritalar API’lerini sorgulamanıza olanak sağlayan anahtarı alın. Azure haritalar hizmetlerini çağırırken hesabınızın birincil anahtarını abonelik anahtarı olarak kullanmanızı öneririz.
+
+1. Portalda Haritalar hesabınızı açın.
+2. Ayarlar bölümünde **kimlik doğrulaması**' nı seçin.
+3. **Birincil Anahtar**’ı panonuza kopyalayın. Bu öğreticinin ilerleyen kısmında kullanmak üzere bunu yerel olarak kaydedin.
+
+![Portalda Birincil Anahtar’ı alma](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Uygulamayı indirme
 

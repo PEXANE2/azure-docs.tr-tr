@@ -1,5 +1,5 @@
 ---
-title: Web API 'Lerini çağıran masaüstü uygulamaları için belirteç al | Mavisi
+title: Web API 'sini çağırmak için belirteç alma (masaüstü uygulaması) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin (uygulama için bir belirteç alınıyor |)
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423883"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması-belirteç alma
 
@@ -38,7 +38,7 @@ Web API 'SI `scopes`tarafından tanımlanır. Uygulamanızda sağladığınız d
 
 ### <a name="in-msalnet"></a>MSAL.NET içinde
 
-```CSharp
+```csharp
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
@@ -155,7 +155,7 @@ Aşağıdaki örnek, Microsoft Graph ile kullanıcının profilini okumak üzere
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>MSAL.NET içinde
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -184,7 +184,7 @@ Android 'de, belirtecin etkileşimi sonrasında bu üst etkinliğe geri dönmesi
 
 Etkileşimli çalışıyor, UI önemlidir. `AcquireTokenInteractive`, kendisini destekleyen platformlar, üst Kullanıcı arabirimini destekleyen, isteğe bağlı bir isteğe bağlı parametre içerir. Bir masaüstü uygulamasında kullanıldığında, `.WithParentActivityOrWindow` platforma bağlı olarak farklı bir tür vardır:
 
-```CSharp
+```csharp
 // net45
 WithParentActivityOrWindow(IntPtr windowPtr)
 WithParentActivityOrWindow(IWin32Window window)
@@ -202,7 +202,7 @@ Açıklamalarının
 - Windows 'da, katıştırılmış tarayıcının uygun UI Eşitleme bağlamını alması için Kullanıcı arabirimi iş parçacığından `AcquireTokenInteractive` çağırmanız gerekir.  UI iş parçacığından çağrılmayan iletiler, kullanıcı arabiriminden doğru şekilde ve/veya kilitlenme senaryolarında karşılıklı olarak alınmamasına neden olabilir. UI iş parçacığında MSAL çağırmanın bir yolu, zaten WPF üzerinde `Dispatcher` kullanmaktır.
 - WPF kullanıyorsanız, WPF denetiminden bir pencere almak için `WindowInteropHelper.Handle` sınıfını kullanabilirsiniz. Daha sonra, bir WPF denetiminden (`this`) çağrı yapılır:
 
-  ```CSharp
+  ```csharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
                     .ExecuteAsync();
@@ -226,7 +226,7 @@ Sınıfı aşağıdaki sabitleri tanımlar:
 
 Bu değiştirici, kullanıcının birden fazla kaynağa ön onay vermesini istediğiniz (ve normalde MSAL.NET/Microsoft Identity platformu ile kullanılan artımlı onayı kullanmak istemediğiniz) gelişmiş bir senaryoda kullanılır. Ayrıntılar için bkz. [nasıl yapılır: Kullanıcı onayını birkaç kaynağın önüne](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)alma.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();
@@ -253,7 +253,7 @@ Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için 
 
 `WithCustomWebUi`, genel istemci uygulamalarında kendi Kullanıcı arabiriminizi sağlamanıza ve kullanıcının kimlik sağlayıcısının/Yetkilendir uç noktasında dolaşmasına izin vermek ve oturum açmasını ve izin vermesini sağlamak için bir genişletilebilirlik noktasıdır. MSAL.NET, ardından kimlik doğrulama kodunu kullanabilir ve bir belirteç alabilir. Bu, Visual Studio 'da, elektriler uygulamalarının (örneğin, geri bildirim için) Web etkileşimi sağlaması için kullanıldığı, ancak işin büyük bir kısmını MSAL.NET için bırakın. UI Otomasyonu sağlamak isterseniz de kullanabilirsiniz. Ortak istemci uygulamalarında, MSAL.NET, güvenliğin sağlandığından emin olmak için PCE standardını ([OAuth ortak istemciler tarafından kod değişimi Için RFC 7636-kanıt anahtarı](https://tools.ietf.org/html/rfc7636)) kullanır: kodu yalnızca msal.net kullanabilir.
 
-  ```CSharp
+  ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
@@ -264,7 +264,7 @@ Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için 
   1. `ICustomWebUi` arabirimini uygulayın ( [buraya](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)bakın. Genellikle yetkilendirme kodu URL 'sini kabul `AcquireAuthorizationCodeAsync` (MSAL.NET tarafından hesaplanan) bir yöntemi uygulamanız gerekir, bu da kullanıcının kimlik sağlayıcısıyla etkileşime geçmesine izin verir ve ardından kimlik sağlayıcısının uygulamanızı geri çağırarak (yetkilendirme kodu dahil) URL 'YI geri döndürmesidir. Sorunlarınız varsa, uygulamanızın MSAL ile sorunsuz bir şekilde çalışması için `MsalExtensionException` özel durumu oluşturması gerekir.
   2. `AcquireTokenInteractive` çağrın, özel Web UI 'nizin örneğini geçirerek `.WithCustomUI()` değiştiricisini kullanabilirsiniz
 
-     ```CSharp
+     ```csharp
      result = await app.AcquireTokenInteractive(scopes)
                        .WithCustomWebUi(yourCustomWebUI)
                        .ExecuteAsync();
@@ -284,7 +284,7 @@ MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/micr
 
 Bu yapıyı kullanmak için aşağıdakine benzer bir ad yazabilirsiniz:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 ...
 
@@ -443,7 +443,7 @@ Normalde yalnızca bir parametreye ihtiyacınız vardır (`scopes`). Ancak, Wind
 
 Aşağıdaki örnek, alacağınız özel durumların türüyle ilgili açıklamalar ve bunların azaltmaları ile en güncel durumu gösterir
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -590,7 +590,7 @@ Aşağıdaki kısıtlamalar da geçerlidir:
 
 Aşağıdaki örnek, Basitleştirilmiş bir durum gösterir
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -631,7 +631,7 @@ static async Task GetATokenForGraph()
 
 Aşağıdaki örnek, alacağınız özel durumların türüyle ilgili açıklamalar ve bunların azaltmaları ile en güncel durumu gösterir
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -894,7 +894,7 @@ Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerek
 
 `IPublicClientApplication`, `AcquireTokenWithDeviceCode` adlı bir yöntemi içerir
 
-```CSharp
+```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
                             Func<DeviceCodeResult, Task> deviceCodeResultCallback)
 ```
@@ -908,7 +908,7 @@ Bu yöntem parametre olarak alır:
 
 Aşağıdaki örnek kod, alacağınız özel durumların türüyle ilgili açıklamaları ve bunların hafifliklerini içeren en güncel durumu gösterir.
 
-```CSharp
+```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
 private readonly string[] Scopes = new string[] { "user.read" };
@@ -1119,7 +1119,7 @@ Masaüstü uygulamaları için bir belirteç önbelleğinin özel serileştirilm
 
 Uygulamayı oluşturduktan sonra, uygulamayı geçirerek ``TokenCacheHelper.EnableSerialization()`` vererek serileştirme etkinleştirilir `UserTokenCache`
 
-```CSharp
+```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
     .Build();
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
@@ -1127,7 +1127,7 @@ TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 
 Bu yardımcı sınıf aşağıdaki kod parçacığı gibi görünür:
 
-```CSharp
+```csharp
 static class TokenCacheHelper
  {
   public static void EnableSerialization(ITokenCache tokenCache)
@@ -1184,7 +1184,7 @@ Ortak istemci uygulamaları için bir ürün kalitesi belirteç önbelleği dosy
 
 Her ikisi de birleştirilmiş önbellek biçimiyle (ADAL.NET 4. x ve MSAL.NET 2. x için ortak olan ve aynı kuşya da daha eski olan diğer Msallara, aynı platformda) belirteç önbelleği serileştirme uygulamak istiyorsanız, aşağıdaki kod ile ilham alabilirsiniz :
 
-```CSharp
+```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
 string cacheFolder = Path.GetFullPath(appLocation) + @"..\..\..\..");
 string adalV3cacheFileName = Path.Combine(cacheFolder, "cacheAdalV3.bin");
@@ -1201,7 +1201,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 Bu kez yardımcı sınıfı aşağıdaki kod gibi görünür:
 
-```CSharp
+```csharp
 using System;
 using System.IO;
 using System.Security.Cryptography;

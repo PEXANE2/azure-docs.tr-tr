@@ -1,25 +1,16 @@
 ---
-title: Service Fabric kullanarak yaygın kod paketi hatalarını tanılama Microsoft Docs
+title: Service Fabric kullanarak ortak kod paketi hatalarını tanılayın
 description: Azure Service Fabric ortak kod paketi hatalarını nasıl giderebileceğinizi öğrenin
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463105"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Service Fabric kullanarak ortak kod paketi hatalarını tanılayın
 

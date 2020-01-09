@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406914"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
@@ -55,7 +55,7 @@ Application Insights, yeni yayınlanan NuGet paketi [Microsoft. ApplicationInsig
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Microsoft. AspNetCore. Hosting kategorisi sayaçları yalnızca Asp.Net Core uygulamalarında eklenir.
+> Microsoft. AspNetCore. Hosting kategorisi sayaçları yalnızca ASP.NET Core uygulamalarında eklenir.
 
 ## <a name="customizing-counters-to-be-collected"></a>Toplanacak sayaçları özelleştirme
 
@@ -95,19 +95,19 @@ Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gös
 
 ## <a name="event-counters-in-metric-explorer"></a>Ölçüm Gezgini 'nde olay sayaçları
 
-[Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)'Nde EventCounter ölçümlerini görüntülemek için Application Insights kaynak ' ı seçin ve ölçüm ad alanı olarak günlük tabanlı ölçümler ' i seçin. Daha sonra EventCounter ölçümleri PerformanceCounter kategorisi altında gösterilir.
+[Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)'Nde EventCounter ölçümlerini görüntülemek için Application Insights kaynak ' ı seçin ve ölçüm ad alanı olarak günlük tabanlı ölçümler ' i seçin. Daha sonra EventCounter ölçümleri özel kategori altında gösterilir.
 
 > [!div class="mx-imgBorder"]
 > Application Insights](./media/event-counters/metrics-explorer-counter-list.png) bildirilen olay sayaçlarını ![
 
 ## <a name="event-counters-in-analytics"></a>Analiz içindeki olay sayaçları
 
-Ayrıca, **PerformanceCounters** tablosunda [analiz](../../azure-monitor/app/analytics.md)' de olay sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
+Ayrıca, **Customölçümler** tablosunda [analiz](../../azure-monitor/app/analytics.md)' de olay sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
 
 Örneğin, hangi sayaçların toplandığını ve sorgu için kullanılabilir olduğunu görmek için aşağıdaki sorguyu çalıştırın:
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 Son dönemdeki belirli bir sayacın (örneğin: `ThreadPool Completed Work Item Count`) bir grafiğini almak için aşağıdaki sorguyu çalıştırın.
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > Application Insights](./media/event-counters/analytics-completeditems-counters.png) tek bir sayaca sohbet ![
 
-Diğer telemetri gibi, **PerformanceCounters** da uygulamanızın üzerinde çalıştığı ana bilgisayar sunucusu örneğinin kimliğini belirten `cloud_RoleInstance` bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
+Diğer telemetri gibi, **Customölçümleri** de uygulamanızın üzerinde çalıştığı ana bilgisayar sunucusu örneğinin kimliğini belirten `cloud_RoleInstance` bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
 
 ## <a name="alerts"></a>Uyarılar
 Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../../azure-monitor/app/alerts.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.

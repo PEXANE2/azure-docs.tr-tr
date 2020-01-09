@@ -1,25 +1,16 @@
 ---
 title: Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu izleme | Microsoft Docs
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile AKS ve AKS olmayan kümelerinizin sistem durumunu nasıl görüntüleyebileceğiniz ve çözümleyebileceğinizi anlatmaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405094"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme durumunu anlayın
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile Kubernetes kümesi sistem durumunu anlama
 
 Kapsayıcılar için Azure Izleyici ile, yönetilen altyapı bileşenlerinin ve kapsayıcı için Azure Izleyici tarafından desteklenen herhangi bir Kubernetes kümesinde çalışan tüm düğümlerin sistem durumunu izler ve raporlar. Bu deneyim, [birden çok küme görünümünde](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)hesaplanan ve bildirilen küme durumu durumunun ötesine uzanır, burada kümede bir veya daha fazla düğüm kısıtlanmış olup olmadığını anlayabilir veya bir düğüm ya da Pod, seçilen ölçümleri temel alarak kümedeki çalışan bir uygulamayı etkileyebilecek bir düğüm veya Pod kullanılamaz.
 
@@ -57,13 +48,13 @@ Tüm izleyiciler sistem durumu hiyerarşisi bölmesindeki hiyerarşik düzende g
 * Düğüm ve kapsayıcıdan bellek kullanımını değerlendirin.
 * Kubernetes tarafından bildirilen hazır durumunun hesaplanmasına göre pods ve düğümlerin durumu.
 
-Durumu göstermek için kullanılan simgeler aşağıdaki gibidir:
+Durumu göstermek için kullanılan simgeler şunlardır:
 
 |Simge|Anlamı|  
 |--------|-----------|  
-|![Yeşil onay simgesi sağlıklı olduğunu belirtir](./media/container-insights-health/healthyicon.png)|Başarılı, sistem durumu Tamam (yeşil)|  
-|![Sarı üçgen ve ünlem işareti uyarı](./media/container-insights-health/warningicon.png)|Uyarı (sarı)|  
-|![Beyaz X bulunan kırmızı düğme kritik durumu gösterir](./media/container-insights-health/criticalicon.png)|Kritik (kırmızı)|  
+|![Yeşil onay simgesi sağlam durumunu gösterir](./media/container-insights-health/healthyicon.png)|Başarılı, sistem durumu hazır (yeşil)|  
+|![Sarı üçgen ve ünlem işareti uyarı simgesidir](./media/container-insights-health/warningicon.png)|Uyarı (sarı)|  
+|![Üzerinde beyaz X bulunan kırmızı düğme kritik durumu gösterir](./media/container-insights-health/criticalicon.png)|Kritik (kırmızı)|  
 |![Gri simgesi](./media/container-insights-health/grayicon.png)|Bilinmiyor (gri)|  
 
 ## <a name="monitor-configuration"></a>İzleyici yapılandırması
@@ -72,13 +63,13 @@ Kapsayıcılar için Azure Izleyici sistem durumu özelliğini destekleyen her m
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın. 
+[Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS veya AKS olmayan kümenin durumunu görüntüleme
 
-Kapsayıcılar için Azure Izleyici sistem durumu (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin. 
+Kapsayıcılar için Azure Izleyici sistem durumu (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir. Altında **Insights** bölümünden **kapsayıcıları**. 
 
-Şirket içinde veya Azure Stack barındırılan bir AKS altyapısı kümesi olan AKS olmayan bir kümeden sistem durumunu görüntülemek için, Azure portal sol bölmeden **Azure izleyici** ' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin.  Çoklu küme sayfasında, listeden AKS olmayan kümeyi seçin.
+Şirket içinde veya Azure Stack barındırılan bir AKS altyapısı kümesi olan AKS olmayan bir kümeden sistem durumunu görüntülemek için, Azure portal sol bölmeden **Azure izleyici** ' yi seçin. Altında **Insights** bölümünden **kapsayıcıları**.  Çoklu küme sayfasında, listeden AKS olmayan kümeyi seçin.
 
 Kapsayıcılar için Azure Izleyici 'de, **küme** sayfasından **sistem durumu**' nu seçin.
 

@@ -3,14 +3,14 @@ title: 'Birden çok bağımlı hizmet çalıştırma: Java & Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Azure’da kapsayıcılar ve mikro hizmetlerle hızlı Kubernetes geliştirme
+description: Bu öğreticide, Azure Kubernetes hizmeti 'nde çok sunuculu bir Java uygulamasında hata ayıklamak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 3fe19997ab54f02b6a5f029abbdb69d5ea6532f7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325707"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438323"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Birden çok bağımlı hizmet çalıştırma: Java ve Azure Dev Spaces ile Visual Studio Code
 
@@ -26,7 +26,7 @@ Bu bölümde `mywebapi` adlı ikinci bir hizmet oluşturacak ve bu hizmetin `web
 Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://github.com/Azure/dev-spaces adresine gidip **Kopyala veya İndir**’i seçerek GitHub deposunu indirin. Bu bölümün kodu `samples/java/getting-started/mywebapi` konumundadır.
 
 ### <a name="run-mywebapi"></a>*mywebapi* hizmetini çalıştırın
-1. `mywebapi`Ayrı bir VS Code penceresinde klasörünü açın.
+1. *Ayrı bir VS Code penceresinde*`mywebapi` klasörünü açın.
 1. **Komut Paleti**'ni açın (**Görünüm | Komut Paleti** menüsünü kullanarak) ve otomatik tamamlama özelliğini kullanarak komutu yazın ve seçin: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 1. F5'e bastıktan sonra hizmetin oluşturulup dağıtılmasını bekleyin. Hata ayıklama konsolunda aşağıdakine benzer bir ileti göründüğünde bu dosyanın size daha fazla olduğunu bilirsiniz:
 
@@ -41,7 +41,7 @@ Zamandan kazanmak adına örnek kodu bir GitHub deposundan indirelim. https://gi
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend*’den *mywebapi*’ye istek gönderme
 Şimdi `webfrontend` uygulamasında `mywebapi` hizmetine istek gönderen bir kod yazalım.
 1. `webfrontend` için VS Code penceresine geçin.
-1. Aşağıdaki *deyimlerini* deyimi altına `import`ekleyin`package`:
+1. Aşağıdaki `import` deyimlerini `package` deyimi altına *ekleyin*:
 
    ```java
    import java.io.*;

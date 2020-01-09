@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği-Azure Cosmos DB Get üretilen Iş (RU/s) Cassandra API
+title: Azure Cosmos DB Cassandra API kaynakları için üretilen Iş (RU/s) almak için PowerShell betiği
 description: Azure PowerShell betiği-Azure Cosmos DB Get üretilen Iş (RU/s) Cassandra API
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: b2544a3c704318839f0c2b956db4d39e83d08d3f
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9386b95bbc2a3bfd3e3ea362488fcfcdd0a98299
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178998"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441581"
 ---
 # <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB Cassandra API için anahtar uzayı veya tablo için üretilen Iş (RU/s) Al
 

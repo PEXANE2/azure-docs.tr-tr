@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457013"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama
 
@@ -97,9 +97,9 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 C# cihazının benzetimin
 
     Bu adım, Azure IoT cihaz SDK 'Sı NuGet paketi ve bağımlılıklarını indirir, yükler ve buna bir başvuru ekler.
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
 
-    ```CSharp
+    ```csharp
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using System.Security.Cryptography.X509Certificates;
@@ -107,7 +107,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 C# cihazının benzetimin
 
 1. **Program** sınıfına aşağıdaki alanları ekleyin:
 
-    ```CSharp
+    ```csharp
         private static int MESSAGE_COUNT = 5;
         private const int TEMPERATURE_THRESHOLD = 30;
         private static String deviceId = "<your-device-id>";
@@ -120,7 +120,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 C# cihazının benzetimin
 
 1. Sıcaklık ve nem için rastgele sayılar oluşturmak ve bu değerleri hub 'a göndermek için aşağıdaki işlevi ekleyin:
 
-    ```CSharp
+    ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
     {
         string dataBuffer;
@@ -142,7 +142,7 @@ Ardından, IoT Hub 'ınız için kaydedilen X. 509.440 C# cihazının benzetimin
 
 1. Son olarak, aşağıdaki kod satırlarını **ana** işleve ekleyerek, kurulum için gereken _cihaz-kimliği_, _IoT-Hub-adı_ve mutlak ve-------------,-,- _Dosya_ ve--------dosyanızın yer tutucuları
 
-    ```CSharp
+    ```csharp
     try
     {
         var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");

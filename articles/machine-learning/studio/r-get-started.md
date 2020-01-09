@@ -1,5 +1,5 @@
 ---
-title: R ile çalışmaya başlama
+title: R kullanmaya başlama
 titleSuffix: ML Studio (classic) - Azure
 description: Tahmin çözümü oluşturmak için Azure Machine Learning Studio (klasik) ile R dilini kullanmaya başlamak için bu R programlama öğreticisini kullanın.
 services: machine-learning
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: f55b6e743ff82d4192cbdd91ba54c92efef432bc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427569"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) R programlama diliyle çalışmaya başlama
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
-Bu öğretici, R programlama dilini kullanarak Azure Machine Learning Studio (klasik) genişletmeye başlamanıza yardımcı olur. Studio (klasik) içinde R kodu oluşturmak, test etmek ve yürütmek için bu R programlama öğreticisini izleyin. Öğretici aracılığıyla çalışırken, Studio 'nun klasik sürümünde R dilini kullanarak komple bir tahmin çözümü oluşturacaksınız.  
+Bu öğretici, R programlama dilini kullanarak Azure Machine Learning Studio (klasik) genişletmeye başlamanıza yardımcı olur. Studio (klasik) içinde R kodu oluşturmak, test etmek ve yürütmek için bu R programlama öğreticisini izleyin. Öğreticide çalışırken, Studio (klasik) dilinde R dilini kullanarak bir tahmin çözümü oluşturacaksınız.  
 
-Azure Machine Learning Studio klasik sürümü birçok güçlü makine öğrenimi ve veri işleme modülü içerir. Güçlü R dili, analiz Lingua frani CA 'sı olarak açıklanmaktadır. .Net Studio 'nun klasik sürümündeki analiz ve veri işleme, R kullanılarak genişletilebilir. Bu birleşim, R 'nin esneklik ve derin analizine sahip olan, klasik .NET sürümünün ölçeklenebilirliğini ve kolayca dağıtılmasını sağlar.
+Azure Machine Learning Studio (klasik) birçok güçlü makine öğrenimi ve veri işleme modülü içerir. Güçlü R dili, analiz Lingua frani CA 'sı olarak açıklanmaktadır. Bu, Intune 'da (klasik) analiz ve veri işleme, R kullanılarak genişletilebilir. Bu birleşim, R 'nin esneklik ve derin analizine sahip Studio 'nun (klasik) ölçeklenebilirlik ve dağıtımı kolaylığı sağlar.
 
 ### <a name="forecasting-and-the-dataset"></a>Tahmin ve veri kümesi
 
@@ -39,23 +39,23 @@ R betikleriyle birlikte bu makalede kullanılan veriler, [Machinelearningsamples
 
 ### <a name="organization"></a>Kuruluş
 
-Azure Machine Learning Studio ortamının klasik sürümünde analiz ve veri işleme R kodu oluşturma, test etme ve yürütme hakkında bilgi edinmek için çeşitli adımlarda ilerliyoruz.  
+Azure Machine Learning Studio (klasik) ortamında analiz ve veri işleme R kodu oluşturma, test etme ve yürütme hakkında bilgi edinmek için çeşitli adımlarda ilerlebiliriz.  
 
-* İlk olarak, Azure Machine Learning Studio ortamının klasik sürümünde R dilinin kullanımıyla ilgili temel bilgileri keşfedeceğiz.
-* Daha sonra, Azure Machine Learning Studio ortamının klasik sürümündeki veriler, R kodu ve grafikler için g/ç 'nin çeşitli yönlerini tartışmak için ilerliyoruz.
+* İlk olarak, Azure Machine Learning Studio (klasik) ortamında R dilinin kullanımıyla ilgili temel bilgileri keşfedeceğiz.
+* Daha sonra, Azure Machine Learning Studio (klasik) ortamında veri, R kodu ve grafik için g/ç 'nin çeşitli yönlerini tartışmak için ilerliyoruz.
 * Daha sonra, veri temizleme ve dönüştürme için kod oluşturarak tahmin çözümümüzün ilk bölümünü oluşturacağız.
 * Verilerimizin hazırlandığı veri kümenizdeki değişkenlerin bazıları arasında bağıntılar analizini gerçekleştiririz.
 * Son olarak, MILI üretimi için mevsimsel bir zaman serisi tahmin modeli oluşturacağız.
 
 ## <a id="mlstudio"></a>Machine Learning Studio 'de R diliyle etkileşim kurma (klasik)
 
-Bu bölümde, Machine Learning Studio (klasik) ortamındaki R programlama diliyle etkileşim kurma hakkında bazı temel bilgiler yer alır. R dili, Azure Machine Learning Studio ortamının klasik sürümü içinde özelleştirilmiş analiz ve veri işleme modülleri oluşturmak için güçlü bir araç sağlar.
+Bu bölümde, Machine Learning Studio (klasik) ortamındaki R programlama diliyle etkileşim kurma hakkında bazı temel bilgiler yer alır. R dili, Azure Machine Learning Studio (klasik) ortamda özelleştirilmiş analiz ve veri işleme modülleri oluşturmak için güçlü bir araç sağlar.
 
-R kodunu küçük bir ölçekte geliştirmek, test etmek ve hatalarını ayıklamak için RStudio 'yu kullanacaksınız. Bu kod daha sonra kesip Machine Learning Studio klasik sürümünde çalıştırılmaya HAZIRAN bir [Execute R betik][execute-r-script] modülüne yapıştırın.  
+R kodunu küçük bir ölçekte geliştirmek, test etmek ve hatalarını ayıklamak için RStudio 'yu kullanacaksınız. Bu kod daha sonra kesip Azure Machine Learning Studio (klasik) ' de çalıştırılmaya hazırlanmak üzere bir [Execute R betik][execute-r-script] modülüne yapıştırın.  
 
 ### <a name="the-execute-r-script-module"></a>R betiği Yürüt modülü
 
-Machine Learning Studio klasik sürümü içinde, R betikleri [Execute r betiği][execute-r-script] modülü içinde çalıştırılır. Şekil 1 ' de klasik Machine Learning Studio [R betiği yürütme][execute-r-script] modülüne bir örnek gösterilmiştir.
+Machine Learning Studio (klasik) içinde R betikleri [Execute r betiği][execute-r-script] modülü içinde çalıştırılır. Şekil 1 ' de Machine Learning Studio (klasik) [R betiği yürütme][execute-r-script] modülüne bir örnek gösterilmiştir.
 
  ![R programlama dili: Machine Learning Studio (klasik) ' de seçili R Betiği Çalıştır modülü](./media/r-quickstart/fig1.png)
 
@@ -69,7 +69,7 @@ Machine Learning Studio klasik sürümü içinde, R betikleri [Execute r betiği
 
 Tabii ki, bu makalenin geri kalanında [R betiğini Yürüt][execute-r-script] bölümünde daha ayrıntılı bir şekilde ele alınacaktır.
 
-Karmaşık R işlevleriyle çalışırken, RStudio 'da düzenlemenizi, test etmenizi ve hata ayıklamanızı öneririz. Tüm yazılım geliştirmede olduğu gibi, kodunuzu artımlı olarak genişletin ve küçük basit test durumlarında test edin. Sonra işlevlerinizi kes ve [Çalıştır r betik][execute-r-script] modülünün r betiği penceresine yapıştırın. Bu yaklaşım, hem RStudio tümleşik geliştirme ortamını (IDE) hem de klasik Azure Machine Learning Studio 'ın gücünü kullanmanıza olanak sağlar.  
+Karmaşık R işlevleriyle çalışırken, RStudio 'da düzenlemenizi, test etmenizi ve hata ayıklamanızı öneririz. Tüm yazılım geliştirmede olduğu gibi, kodunuzu artımlı olarak genişletin ve küçük basit test durumlarında test edin. Sonra işlevlerinizi kes ve [Çalıştır r betik][execute-r-script] modülünün r betiği penceresine yapıştırın. Bu yaklaşım, hem RStudio tümleşik geliştirme ortamını (IDE) hem de Azure Machine Learning Studio (klasik) gücünü kullanmanıza olanak sağlar.  
 
 #### <a name="execute-r-code"></a>R kodu yürütme
 
@@ -77,17 +77,17 @@ Karmaşık R işlevleriyle çalışırken, RStudio 'da düzenlemenizi, test etme
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Azure Machine Learning için savunma kodu kodlama
 
-Azure Machine Learning Studio klasik sürümünü kullanarak bir Web hizmeti için R kodu geliştiriyorsanız, kodunuzun beklenmedik bir veri girişi ve özel durumları ile nasıl ele alınacağını kesinlikle planlamanız gerekir. Netme sağlamak için, gösterilen kod örneklerinin çoğunda çok fazla denetim veya özel durum işleme yöntemi dahil değildir. Bununla birlikte, devam ettiğimiz için R 'nin özel durum işleme özelliğini kullanarak işlevlere birkaç örnek vereceğiz.  
+Azure Machine Learning Studio (klasik) kullanarak bir Web hizmeti için R kodu geliştiriyorsanız, kodunuzun beklenmedik bir veri girişi ve özel durumlarla nasıl uğratacağını kesin olarak planlamanız gerekir. Netme sağlamak için, gösterilen kod örneklerinin çoğunda çok fazla denetim veya özel durum işleme yöntemi dahil değildir. Bununla birlikte, devam ettiğimiz için R 'nin özel durum işleme özelliğini kullanarak işlevlere birkaç örnek vereceğiz.  
 
 R özel durum işlemesi için daha fazla işlem yapmanız gerekiyorsa, kitabın ilgili bölümlerini [daha fazla okuma](#appendixb)bölümünde listelenen Wickheham ile okumanızı öneririz.
 
 #### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>Machine Learning Studio hata ayıklama ve test R (klasik)
 
-Yeniden yinelemek için, R kodunuzu RStudio 'daki küçük bir ölçekte test etmenizi ve hata ayıklamanızı öneririz. Bununla birlikte, r [betiği yürütme][execute-r-script] bölümünde r kod sorunlarını izlemeniz gereken durumlar vardır. Ayrıca, Machine Learning Studio klasik sürümünde sonuçlarınızı denetlemek iyi bir uygulamadır.
+Yeniden yinelemek için, R kodunuzu RStudio 'daki küçük bir ölçekte test etmenizi ve hata ayıklamanızı öneririz. Bununla birlikte, r [betiği yürütme][execute-r-script] bölümünde r kod sorunlarını izlemeniz gereken durumlar vardır. Ayrıca, sonuçlarınızı Machine Learning Studio (klasik) olarak denetlemek iyi bir uygulamadır.
 
-R kodunuzun yürütmeden ve Azure Machine Learning Studio platformunun klasik sürümünde oluşan çıkış, birincil olarak output. log ' da bulunur. Bazı ek bilgiler hata. log dosyasında görünür.  
+R kodunuzun ve Azure Machine Learning Studio (klasik) platformun yürütülmesi birincil olarak çıktı. log içinde bulunur. Bazı ek bilgiler hata. log dosyasında görünür.  
 
-R kodunuzu çalıştırırken Machine Learning Studio klasik sürümünde bir hata oluşursa, ilk işlem kurağınız hata. log dosyasına bakmak için olmalıdır. Bu dosya, hatayı anlamanıza ve düzeltmenize yardımcı olacak yararlı hata iletileri içerebilir. Hata. log dosyasını görüntülemek için, hata içeren bir [R betiği yürütme][execute-r-script] için **Özellikler bölmesinde** **hata günlüğünü görüntüle** ' yi seçin.
+R kodunuzu çalıştırırken Machine Learning Studio (klasik) içinde bir hata oluşursa, ilk işlem kurağınız hata. log dosyasına bakmak için olmalıdır. Bu dosya, hatayı anlamanıza ve düzeltmenize yardımcı olacak yararlı hata iletileri içerebilir. Hata. log dosyasını görüntülemek için, hata içeren bir [R betiği yürütme][execute-r-script] için **Özellikler bölmesinde** **hata günlüğünü görüntüle** ' yi seçin.
 
 Örneğin, bir [yürütme r betik][execute-r-script] modülünde bir tanımsız değişken Ile aşağıdaki r kodunu çalıştırdım:
 
@@ -133,7 +133,7 @@ RStudio, R için yaygın olarak kullanılan bir IDE 'dir. RStudio 'Yu, bu kılav
 
 Masaüstü makinenizde R programlama dili yüklü değilse, bunu şimdi yapmanızı öneririz. Açık kaynaklı R dilinin ücretsiz indirmeleri [https://www.r-project.org/](https://www.r-project.org/)adresindeki kapsamlı r arşiv ağı 'NDA (Cran) kullanılabilir. Windows, Mac OS ve Linux/UNIX için indirilebilir dosyalar var. Yakındaki bir yansıtma seçin ve indirme yönergelerini izleyin. Ayrıca, CRAN, çok sayıda kullanışlı analiz ve veri işleme paketi içerir.
 
-RStudio 'yu yeni kullanıyorsanız Masaüstü sürümünü indirip yüklemelisiniz. Windows, Mac OS ve Linux/UNIX için RStudio İndirmeleri http://www.rstudio.com/products/RStudio/adresinde bulabilirsiniz. Masaüstü makinenize RStudio 'Yu yüklemek için belirtilen yönergeleri izleyin.  
+RStudio 'yu yeni kullanıyorsanız Masaüstü sürümünü indirip yüklemelisiniz. Windows, Mac OS ve Linux/UNIX için RStudio İndirmeleri http://www.rstudio.com/products/RStudio/ adresinde bulabilirsiniz. Masaüstü makinenize RStudio 'Yu yüklemek için belirtilen yönergeleri izleyin.  
 
 Rstudio [IDE 'Yi kullanarak](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)rstudio 'ya bir öğreticiye giriş sunulmaktadır.
 
@@ -149,9 +149,9 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 
 #### <a id="loading"></a>Veri kümesini yükleme
 
-**Csdairydata. csv** dosyasını Azure Machine Learning Studio klasik sürümüne yükleyerek başlayacağız.
+**Csdairydata. csv** dosyasını Azure Machine Learning Studio (klasik) dosyasına yükleyerek başlayacağız.
 
-1. Azure Machine Learning Studio ortamı klasik sürümünüzü başlatın.
+1. Azure Machine Learning Studio (klasik) ortamınızı başlatın.
 1. Ekranınızın sol alt kısmındaki **+ Yeni** ' yi seçin ve **veri kümesi**' ni seçin.
 1. **Yerel dosya ' dan**seçim yapın ve ardından dosyayı seçmek için ' a **gidin** .
 1. Veri kümesinin türü olarak **üst bilgi (. csv) Ile genel CSV dosyası** seçtiğinizden emin olun.
@@ -160,7 +160,7 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 
 #### <a name="create-an-experiment"></a>Deneme oluşturma
 
-Machine Learning Studio klasik sürümünde bazı verileriniz olduğuna göre, analiz yapmak için bir deneme oluşturmanız gerekir.  
+Artık Machine Learning Studio (klasik) ' de bazı verileriniz olduğuna göre, analiz yapmak için bir deneme oluşturuyoruz.  
 
 1. Sol alt köşedeki **+ Yeni** ' yi seçin ve **denemeler**' i ve **boş deneme**' yı seçin.
 1. Sayfanın üst kısmındaki... başlığı altında **oluşturulan** denemeyi seçerek ve değiştirerek denemenizin adını verebilirsiniz. Örneğin, bunu **CA süt analizine**değiştirme.
@@ -185,11 +185,11 @@ Deneyimize yüklediğimiz verilere göz atalım. Denemenin içinde **cadairydata
 
 *Şekil 4. Cadairydata. csv veri kümesinin Özeti.*
 
-Bu görünümde çok sayıda faydalı bilgi görüyoruz. Bu veri kümesinin ilk birkaç satırını görebiliriz. Bir sütun seçmemiz halinde, Istatistik bölümünde sütun hakkında daha fazla bilgi gösterilir. Örneğin, özellik türü satırı, hangi veri türlerinin Azure Machine Learning Studio hangi klasik sürümünün sütuna atandığını gösterir. Önemli bir iş yapmadan önce bu, iyi bir göz atalım.
+Bu görünümde çok sayıda faydalı bilgi görüyoruz. Bu veri kümesinin ilk birkaç satırını görebiliriz. Bir sütun seçmemiz halinde, Istatistik bölümünde sütun hakkında daha fazla bilgi gösterilir. Örneğin, özellik türü satırı, hangi veri türleri Azure Machine Learning Studio (klasik) sütuna atandığını gösterir. Önemli bir iş yapmadan önce bu, iyi bir göz atalım.
 
 ### <a name="first-r-script"></a>İlk R betiği
 
-Azure Machine Learning Studio klasik sürümünde denemek için basit bir ilk R betiği oluşturalım. RStudio 'da aşağıdaki betiği oluşturup test ediyorum.  
+Azure Machine Learning Studio (klasik) içinde denemek için basit bir ilk R betiği oluşturalım. RStudio 'da aşağıdaki betiği oluşturup test ediyorum.  
 
 ```R
 ## Only one of the following two lines should be used
@@ -204,7 +204,7 @@ pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = c
 maml.mapOutputPort('cadairydata')
 ```
 
-Şimdi bu betiği Azure Machine Learning Studio klasik sürümüne aktarmalıyım. Yalnızca kesip yapıştırabilir. Ancak, bu durumda R betiğimi bir ZIP dosyası aracılığıyla aktaracağım.
+Şimdi bu betiği Azure Machine Learning Studio (klasik) uygulamasına aktarmalıyım. Yalnızca kesip yapıştırabilir. Ancak, bu durumda R betiğimi bir ZIP dosyası aracılığıyla aktaracağım.
 
 ### <a name="data-input-to-the-execute-r-script-module"></a>R betiği yürütme modülüne veri girişi
 
@@ -224,7 +224,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio klasik sürümü, zip içindeki dosyaları src/dizinde gibi davranır, bu nedenle dosya adlarınızı bu dizin adı ile önekle uygulamanız gerekir. Örneğin, ZIP dosyaları içeriyorsa `yourfile.R` ve ZIP köküne `yourData.rdata`, `source` ve `load`kullanırken bunları `src/yourfile.R` ve `src/yourData.rdata` olarak ele almanız gerekir.
+> Azure Machine Learning Studio (klasik), zip içindeki dosyaları src/dizinde olduklarından olduğu gibi değerlendirir, bu nedenle dosya adlarınızı bu dizin adı ile önekle uygulamanız gerekir. Örneğin, ZIP dosyaları içeriyorsa `yourfile.R` ve ZIP köküne `yourData.rdata`, `source` ve `load`kullanırken bunları `src/yourfile.R` ve `src/yourData.rdata` olarak ele almanız gerekir.
 
 [Veri kümesini](#loading)yüklerken veri kümelerini yükleme konusunda zaten tartışıldık. Önceki bölümde gösterilen R betiğini oluşturup sınadıktan sonra şunları yapın:
 
@@ -245,7 +245,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. Bir ZIP dosyası oluşturun ve komut dosyanızı bu zip dosyasına kopyalayın. Windows 'da dosyaya sağ tıklayıp **Gönder**' i ve sonra **Sıkıştırılmış klasör**' i seçin. Bu, "simpleçiz" öğesini içeren yeni bir ZIP dosyası oluşturur. R "dosyası.
 
-1. Dosyanızı **zip**olarak belirterek Machine Learning Studio klasik sürümündeki **veri kümelerine** ekleyin. Artık veri kümelerinizde ZIP dosyasını görmeniz gerekir.
+1. Dosyanızı **ZIP**olarak belirterek Azure Machine Learning Studio (klasik) **veri kümelerine** ekleyin. Artık veri kümelerinizde ZIP dosyasını görmeniz gerekir.
 
 1. ZIP dosyasını **veri** kümelerinden **ml Studio (klasik) tuvaline**sürükleyin ve bırakın.
 
@@ -374,7 +374,7 @@ Bu dönüşümlerden herhangi biri için sözdizimi basittir: `as.datatype()`. B
 
 Önceki bölümde girdiğimiz sütunların veri türlerine bakıyor: tüm sütunlar, karakter türünde olan ' month ' etiketli sütun dışında, sayısal türündedir. Şimdi bunu bir etmene dönüştürüp sonuçları test edin.  
 
-Dağınık terçiz matrisini oluşturan satırı sildim ve ' month ' sütununu bir faktöre dönüştüren bir satır ekledi. Denemem sırasında r kodunu [Execute r betik][execute-r-script] modülünün Code penceresine kesip yapıştırırım. ZIP dosyasını da güncelleştirebilir ve Azure Machine Learning Studio klasik sürümüne yükleyebilirsiniz, ancak bu birkaç adım sürer.  
+Dağınık terçiz matrisini oluşturan satırı sildim ve ' month ' sütununu bir faktöre dönüştüren bir satır ekledi. Denemem sırasında r kodunu [Execute r betik][execute-r-script] modülünün Code penceresine kesip yapıştırırım. ZIP dosyasını da güncelleştirebilir ve Azure Machine Learning Studio (klasik) dosyasına yükleyebilirsiniz, ancak bu birkaç adım sürer.  
 
 ```R
 ## Only one of the following two lines should be used
@@ -468,7 +468,7 @@ R veri çerçeveleri güçlü filtreleme özelliklerini destekler. Veri kümeler
 Veri kümeniz üzerinde yaptığımız bir filtre vardır. Cadairydata dataframe içindeki sütunlara baktığınızda, iki gereksiz sütun görürsünüz. İlk sütun, çok faydalı olmayan bir satır numarasını tutar. İkinci sütun, Year. month, gereksiz bilgiler içerir. Aşağıdaki R kodunu kullanarak bu sütunları kolayca dışarıda bırakabiliriz.
 
 > [!NOTE]
-> Bu bölümde, şimdi [R betiği Yürüt][execute-r-script] modülüne eklemem gereken ek kodu göstereceğiz. `str()` işlevinden **önce** her yeni satırı ekleyebilirim. Azure Machine Learning Studio klasik sürümünde sonuçlarımı doğrulamak için bu işlevi kullanıyorum.
+> Bu bölümde, şimdi [R betiği Yürüt][execute-r-script] modülüne eklemem gereken ek kodu göstereceğiz. `str()` işlevinden **önce** her yeni satırı ekleyebilirim. Azure Machine Learning Studio (klasik) ile sonuçlarımı doğrulamak için bu işlevi kullanıyorum.
 
 [R komut dosyasını yürüt][execute-r-script] modülünde r kodum 'a aşağıdaki satırı ekle.
 
@@ -756,7 +756,7 @@ Bu kodu çalıştırın ve neler olduğunu görün. R cihaz bağlantı noktasın
 
 Bu değişkenler arasındaki ilişkilerde bazı tek görünümlü yapı mevcuttur. Belki de bu, verilerdeki eğilimler ve değişkenleri standart olmayan olgudan ortaya çıkar.
 
-### <a name="correlation-analysis"></a>Bağıntı Analizi
+### <a name="correlation-analysis"></a>Bağıntı analizi
 
 Bağıntı analizini gerçekleştirmek için, değişkenleri aynı şekilde ve standartlaştırmanız gerekir. Yalnızca değişkenleri ortalar ve ölçeklendirilen R `scale()` işlevini kullanabiliriz. Bu işlev iyi şekilde daha hızlı çalıştırılabilir. Bununla birlikte, R 'de savunma programı 'nın bir örneğini göstermek istiyorum.
 
@@ -1030,7 +1030,7 @@ Kodu çalıştırmak, Şekil 22 ' de gösterilen R cihaz çıktısından zaman s
 
 Bir zaman serisi nesnesi oluşturdunuz ve verilere baktığımızda, California mılm üretim verileri için bir eğilim modeli oluşturmaya başalım. Bunu bir zaman serisi gerileme ile yapabiliriz. Ancak, eğitim verilerinde gözlemlenen eğilimi doğru şekilde modellemek için bir eğim ve kesme noktası olması gereken çizim çizitide bir araya gelir.
 
-Verilerin küçük ölçekli verileri verildiğinde, RStudio 'da eğilim için model oluşturacak ve sonra elde edilen modeli kesip Azure Machine Learning Studio klasik sürümüne yapıştıracağım. RStudio Bu etkileşimli analiz türü için etkileşimli bir ortam sağlar.
+Verilerin küçük ölçekli verileri verildiğinde, RStudio 'da eğilim için model oluşturacak ve sonra elde edilen modeli kesip Azure Machine Learning Studio (klasik) olarak yapıştıracağım. RStudio Bu etkileşimli analiz türü için etkileşimli bir ortam sağlar.
 
 İlk denemede 3 ' e kadar üslerle bir polinom gerileme deneyeceğim. Bu tür modelleri aşırı sığdırma konusunda gerçek bir tehlike vardır. Bu nedenle, yüksek sıra terimlerinin önüne geçmek en iyisidir. `I()` işlevi, içeriğin (' olduğu gibi ') içeriğini (') olarak yorumlar ve bir gerileme denkleminde bir tam olarak yorumlanan bir işlev yazmanızı sağlar.
 
@@ -1094,7 +1094,7 @@ Bu, aşağıdakileri oluşturur.
 
 Bu daha iyi bir şekilde görünür. Tüm koşullar önemlidir. Ancak, 2E-16 değeri varsayılan bir değerdir ve çok önemli bir şekilde alınmamalıdır.  
 
-Sağlamlık bir test olarak, California süt üretim verilerinin bir zaman serisi çizimi olarak gösterilen eğilim eğrisini oluşturalım. Aşağıdaki kodu, modeli oluşturmak ve bir çizim yapmak için Azure Machine Learning Studio [Execute R betik][execute-r-script] modelinin (rstudio değil) klasik sürümüne ekledik. Sonuç Şekil 23 ' te gösterilir.
+Sağlamlık bir test olarak, California süt üretim verilerinin bir zaman serisi çizimi olarak gösterilen eğilim eğrisini oluşturalım. Modeli oluşturmak ve bir çizim yapmak için Azure Machine Learning Studio (klasik) [Execute R betik][execute-r-script] modelinde (rstudio değil) aşağıdaki kodu ekledik. Sonuç Şekil 23 ' te gösterilir.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1156,7 +1156,7 @@ Bu, aşağıdakileri oluşturur.
 
 Modelin artık bir kesme dönemi olmadığını ve 12 önemli ay faktörü olduğunu görüyoruz. Bu, tam olarak neyi görmek istiyorduk.
 
-Ayrıca, mevsimlik modelinin ne kadar iyi çalıştığını görmek için California süt üretim verilerinin başka bir zaman serisi çizimi oluşturalım. Modeli oluşturmak ve bir çizim yapmak için, Azure Machine Learning Studio [Execute R betiğini][execute-r-script] klasik sürümünde aşağıdaki kodu ekledik.
+Ayrıca, mevsimlik modelinin ne kadar iyi çalıştığını görmek için California süt üretim verilerinin başka bir zaman serisi çizimi oluşturalım. Modeli oluşturmak ve bir çizim yapmak için Azure Machine Learning Studio (klasik) [Execute R betiğine][execute-r-script] aşağıdaki kodu ekledim.
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,7 +1165,7 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-Bu kodun klasik Azure Machine Learning Studio sürümünde çalıştırılması Şekil 24 ' te gösterilen çizimi üretir.
+Bu kodun Azure Machine Learning Studio (klasik) çalıştırılması Şekil 24 ' te gösterilen çizimi oluşturur.
 
 ![Mevsim etkileri dahil olmak üzere modelmılk üretimi](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1310,7 +1310,7 @@ RStudio oldukça iyi belgelenmiştir. İşte, başlamanızı sağlamak için RSt
 
 ## <a id="appendixb"></a>Daha fazla okuma
 
-Bu R programlama öğreticisi, Azure Machine Learning Studio klasik sürümü ile R dilini kullanmak için gerekenler hakkında temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki tanıtım mevcuttur:
+Bu R programlama öğreticisi, Azure Machine Learning Studio (klasik) ile R dilini kullanmak için ihtiyaç duyduğunuz temel bilgileri içerir. R hakkında bilginiz yoksa, CRAN üzerinde iki tanıtım mevcuttur:
 
 * [Yeni başlayanlar Için R](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Ile Emmanuel paradne, başlamak için iyi bir yerdir.  
 * W ile [R 'ye giriş](https://cran.r-project.org/doc/manuals/R-intro.html) . N. Venables et. Eşkenar. Biraz daha derinliğe gider.

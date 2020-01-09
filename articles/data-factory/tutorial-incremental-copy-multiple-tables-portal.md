@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: e3ccc5a48251af181983624f0c8d0eed68c241da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439307"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
 
@@ -65,7 +65,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını kaynak veri deposu olarak kullanırsınız. 
 * **Azure SQL Veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md). 
 
@@ -237,7 +237,7 @@ END
 
 3. **Yeni veri fabrikası** sayfasında **ad** için **ADFMultiIncCopyTutorialDF** adını girin. 
  
-   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayla birlikte kırmızı bir ünlem işareti görürseniz veri fabrikasının adını değiştirin (örneğin adınızADFIncCopyTutorialDF) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayla birlikte kırmızı bir ünlem işareti görürseniz veri fabrikasının adını değiştirin (örneğin adınızADFIncCopyTutorialDF) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
@@ -246,10 +246,10 @@ END
      
     - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
     - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
-    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 6. **Sürüm** için **V2**'yi seçin.
 7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-8. **Oluştur**’a tıklayın.      
+8. **Oluştur**'a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, görüntüde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
    
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -288,7 +288,7 @@ Bu adımda, şirket içi SQL Server veritabanınızı veri fabrikasına bağlars
 
 1. **Yeni Bağlı Hizmet** penceresinde **SQL Server**’ı seçip **Devam**’a tıklayın. 
 
-1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin:
+1. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **SqlServerLinkedService** adını girin. 
     1. **Tümleştirme çalışma zamanı aracılığıyla bağlan** için **MySelfHostedIR** seçeneğini belirleyin. Bu **önemli** bir adımdır. Varsayılan tümleştirme çalışma zamanı bir şirket içi veri deposuna bağlanamaz. Daha önce oluşturduğunuz şirket içinde barındırılan tümleştirme çalışma zamanını kullanın. 
@@ -305,7 +305,7 @@ Son adımda, kaynak SQL Server veritabanınızı veri fabrikasına bağlamak iç
 
 1. **Bağlantılar** penceresinde **Tümleştirme Çalışma Zamanları** sekmesinden **Bağlı Hizmetler** sekmesine geçip **+ Yeni**’ye tıklayın.
 1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın. 
-1. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin:
+1. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureSqlDatabaseLinkedService** adını girin. 
     1. **Sunucu adı** alanına açılan listeden Azure SQL Server’ınızın adını seçin. 
@@ -467,7 +467,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
     1. **Parametreyi içeri aktar**’ı seçin. 
     1. Parametreler için aşağıdaki değerleri belirtin: 
 
-        | Adı | Tür | Değer | 
+        | Ad | Tür | Değer | 
         | ---- | ---- | ----- |
         | LastModifiedtime | Tarih Saat | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

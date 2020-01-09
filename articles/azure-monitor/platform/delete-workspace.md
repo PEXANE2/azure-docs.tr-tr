@@ -4,15 +4,15 @@ description: Kişisel abonelikte bir tane oluşturduysanız veya çalışma alan
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/28/2019
-ms.openlocfilehash: b8fdefb5e8555e90b5c9065672f4593e5bf98e06
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2b54dd5161312a081d439b3e10d2cb4bf9014d52
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326504"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496533"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve geri yükleme
 
@@ -20,7 +20,10 @@ Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve sil
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Çalışma alanı silinirken dikkat edilecek noktalar
 
-Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı ve verileri kurtarılamaz olur – veriler 30 gün içinde kalıcı silinmek üzere sıraya alınır ve yeni bir çalışma alanı oluşturmak için kullanılabilir.
+Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı kaynağı ve verileri kurtarılamaz – verileri kalıcı olarak silinmek üzere kuyruğa alınır ve 30 gün içinde tamamen temizlenir. Çalışma alanı adı ' yayımlandı ' ve bunu yeni bir çalışma alanı oluşturmak için kullanabilirsiniz.
+
+> [!NOTE]
+> Geçici silme davranışı kapatılamaz. Silme işleminde bir ' zorla ' etiketi kullanılırken geçici silme işlemini geçersiz kılmak için kısa bir seçenek ekleyeceğiz.
 
 Hizmet işleminizi olumsuz yönde etkileyebilecek önemli veriler ve yapılandırma olabileceğinden, bir çalışma alanını sildiğinizde dikkatli olmak istersiniz. Şu gibi Log Analytics verilerini depolayan aracıları, çözümleri ve diğer Azure hizmetlerini ve kaynakları inceleyin:
 
@@ -41,7 +44,7 @@ Geçici silme işlemi çalışma alanı kaynağını siler ve ilişkili kullanı
 
 Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)veya [Azure Portal](https://portal.azure.com)kullanarak silebilirsiniz.
 
-### <a name="delete-workspace-in-azure-portal"></a>Azure portal çalışma alanını sil
+### <a name="azure-portal"></a>Azure Portal
 
 1. Oturum açmak için [Azure Portal](https://portal.azure.com)gidin. 
 2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
@@ -49,6 +52,11 @@ Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/modu
    ![seçim alanı Özellikler bölmesinden](media/delete-workspace/log-analytics-delete-workspace.png)
 4. Çalışma alanını silme işlemini onaylamanızı isteyen onay iletisi penceresi göründüğünde **Evet**' e tıklayın.
    ![çalışma alanının silinmesini onaylayın](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+```
 
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
 

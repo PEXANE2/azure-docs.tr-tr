@@ -8,127 +8,163 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006467"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497732"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri modelleme
 
 Bu makalede, Azure Time Series Insights önizlemede zaman serisi modeliyle nasıl çalışılacağı açıklanır. Yaygın olarak karşılaşılan çeşitli veri senaryolarına ilişkin ayrıntılar.
 
-Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)' ni okuyun.
-
-## <a name="types"></a>Türler
-
-### <a name="create-a-single-type"></a>Tek bir tür oluşturma
-
-1. Zaman serisi model Seçicisi paneline gidin ve menüden **türler** ' i seçin. Zaman serisi model türlerine odaklanmak için paneli daraltın.
-
-    [!["türler" bölmesi](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
-
-1. **+ Ekle** öğesini seçin.
-1. Türlerle ilgili tüm ayrıntıları girin ve **Oluştur**' u seçin. Bu eylem, ortamda türler oluşturur.
-
-    [tür eklemek için ![seçimleri](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
-
-### <a name="bulk-upload-one-or-more-types"></a>Bir veya daha fazla türü toplu karşıya yükleme
-
-1. **JSON karşıya yükle**' yi seçin.
-1. Tür yükünü içeren dosyayı seçin.
-1. **Karşıya Yükle**’yi seçin.
-
-    [![seçimleri bir veya daha fazla türden toplu karşıya yükleme](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
-
-### <a name="edit-a-single-type"></a>Tek bir türü düzenleme
-
-1. Türü seçin ve **Düzenle**' yi seçin. 
-1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
-
-    [bir tür düzenlemede ![seçimleri](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
-
-### <a name="delete-a-type"></a>Bir tür silme
-
-1. Türü seçin ve **Sil**' i seçin.
-1. Türlerle ilişkili bir örnek yoksa, silinir.
-
-    ["Sil" düğmesini ![](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
-
-## <a name="hierarchies"></a>Hiyerarşiler
-
-### <a name="create-a-single-hierarchy"></a>Tek bir hiyerarşi oluşturma
-
-1. Zaman serisi model Seçicisi paneline gidin ve menüden **hiyerarşiler** ' ı seçin. Zaman serisi model hiyerarşilerine odaklanmak için paneli daraltın.
-
-    [!["hiyerarşiler" bölmesi](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
-
-1. **+ Ekle** öğesini seçin.
-
-    ["Ekle" düğmesini ![](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
-
-1. Sağ bölmede **+ Ekle düzeyi** ' ni seçin.
-
-    ["düzey Ekle" düğmesi ![](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
-
-1. Hiyerarşi ayrıntılarını girip **Oluştur**' u seçin.
-
-    [![hiyerarşi ayrıntıları ve "Oluştur" düğmesi](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
-
-### <a name="bulk-upload-one-or-more-hierarchies"></a>Bir veya daha fazla hiyerarşiyi toplu karşıya yükleme
-
-1. **JSON karşıya yükle**' yi seçin.
-1. Hiyerarşi yükünü içeren dosyayı seçin.
-1. **Karşıya Yükle**’yi seçin.
-
-    [hiyerarşileri toplu karşıya yükleme için ![seçimleri](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
-
-### <a name="edit-a-single-hierarchy"></a>Tek bir hiyerarşiyi düzenleme
-
-1. Hiyerarşiyi seçin ve **Düzenle**' yi seçin.
-1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
-
-    [tek bir hiyerarşiyi düzenlemeyle ilgili ![seçimleri](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
-
-### <a name="delete-a-hierarchy"></a>Hiyerarşiyi silme
-
-1. Hiyerarşiyi seçin ve **Sil**' i seçin. 
-1. Hiyerarşiyle ilişkili örnek yoksa, silinir.
-
-    ["Sil" düğmesini ![](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
+> [!TIP]
+> * Önizleme [zamanı serisi modeli](time-series-insights-update-tsm.md)hakkında bilgi edinin.
+> * [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)'da önizleme Kullanıcı arabirimine gitme hakkında daha fazla bilgi edinin.
 
 ## <a name="instances"></a>Örnekler
 
+Azure Time Series Insights Gezgini tarayıcıdaki örnek **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler. 
+
+Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden **model** görünümünü seçin.
+
 ### <a name="create-a-single-instance"></a>Tek bir örnek oluşturma
 
-1. Zaman serisi model Seçicisi paneline gidin ve menüden **örnekler** ' i seçin. Zaman serisi model örneklerine odaklanmak için paneli daraltın.
+1. Zaman serisi model Seçicisi paneline gidin ve menüden **örnekler** ' i seçin. Seçtiğiniz Time Series Insights ortamınız ile ilişkili tüm örnekler görüntülenir.
 
-    ["örnekler" bölmesi ![](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
+    [![önce örnekleri seçerek tek bir örnek oluşturun.](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-instances-panel.png#lightbox)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **+ Ekle** öğesini seçin.
 
-    [örnek eklemek için ![seçimleri](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
+    [![+ Ekle düğmesini seçerek bir örnek ekleyin.](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-add-instance.png#lightbox)
 
 1. Örnek ayrıntılarını girin, tür ve hiyerarşi ilişkilendirmesini seçin ve **Oluştur**' u seçin.
 
 ### <a name="bulk-upload-one-or-more-instances"></a>Bir veya daha fazla örneği toplu karşıya yükleme
 
+> [!TIP]
+> Örneklerinizi JSON 'daki masaüstünüze kaydedebilirsiniz. İndirilen JSON dosyası daha sonra aşağıdaki adımlarla karşıya yüklenebilir.
+
 1. **JSON karşıya yükle**' yi seçin.
 1. Örnekler yükünü içeren dosyayı seçin.
 
-    [bir veya daha fazla örnek toplu karşıya yükleme için ![seçimleri](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
+    [örnekleri JSON aracılığıyla toplu karşıya yükleme ![.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
 
 1. **Karşıya Yükle**’yi seçin.
 
 ### <a name="edit-a-single-instance"></a>Tek bir örneği düzenleme
 
-1. Örneği seçin ve **Düzenle**' yi seçin. 
+1. Örneği seçin ve **Düzenle** veya **kurşun kalem simgesini**seçin. 
 1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
 
-    [tek bir örneği düzenlemeyle ilgili ![seçimleri](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
+    [tek bir örneği düzenlemek ![.](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
+
+### <a name="delete-an-instance"></a>Örnek silme
+
+1. Türü seçin ve **Sil** veya **çöp kutusu simgesini**seçin.
+
+   [![Sil ' i seçerek bir türü silin.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+
+1. **Sil**' i seçerek silmeyi onaylayın.
+
+> [!NOTE]
+> Bir örnek, bir alan doğrulama denetiminin silinmesine başarılı bir şekilde geçmesi gerekir.
+
+## <a name="hierarchies"></a>Hiyerarşiler
+
+Azure Time Series Insights gezgin, tarayıcı içinde hiyerarşi **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler. 
+
+Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden **model** görünümünü seçin.
+
+### <a name="create-a-single-hierarchy"></a>Tek bir hiyerarşi oluşturma
+
+1. Zaman serisi model Seçicisi paneline gidin ve menüden **hiyerarşiler** ' ı seçin. Seçtiğiniz Time Series Insights ortamınız ile ilişkili tüm hiyerarşiler görüntülenir.
+
+    [bölme aracılığıyla bir hiyerarşi oluşturmak ![.](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-hierarchy-panel.png#lightbox)
+
+1. **+ Ekle** öğesini seçin.
+
+    [![hiyerarşi + Ekle düğmesi.](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-hierarchy.png#lightbox)
+
+1. Sağ bölmede **+ Ekle düzeyi** ' ni seçin.
+
+    [hiyerarşiye bir düzey eklemek ![.](media/v2-update-how-to-tsm/how-to-tsm-save-hierarchy-levels.png)](media/v2-update-how-to-tsm/how-to-tsm-save-hierarchy-levels.png#lightbox)
+
+1. Hiyerarşi ayrıntılarını girip **Kaydet**' i seçin.
+
+    [hiyerarşi ayrıntılarını belirtmek ![.](media/v2-update-how-to-tsm/how-to-tsm-add-hierarchy-level.png)](media/v2-update-how-to-tsm/how-to-tsm-add-hierarchy-level.png#lightbox)
+
+### <a name="bulk-upload-one-or-more-hierarchies"></a>Bir veya daha fazla hiyerarşiyi toplu karşıya yükleme
+
+> [!TIP]
+> Hiyerarşilerinizi, JSON 'daki masaüstünüze kaydedebilirsiniz. İndirilen JSON dosyası daha sonra aşağıdaki adımlarla karşıya yüklenebilir.
+
+1. **JSON karşıya yükle**' yi seçin.
+1. Hiyerarşi yükünü içeren dosyayı seçin.
+1. **Karşıya Yükle**’yi seçin.
+
+    [hiyerarşileri toplu olarak karşıya yüklemek için ![seçimleri.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png#lightbox)
+
+### <a name="edit-a-single-hierarchy"></a>Tek bir hiyerarşiyi düzenleme
+
+1. Hiyerarşiyi seçin ve **Düzenle** veya **kurşun kalem simgesini**seçin.
+1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
+
+    [tek bir hiyerarşiyi düzenlemeyle ilgili seçimleri ![.](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-hierarchy.png#lightbox)
+
+### <a name="delete-a-hierarchy"></a>Hiyerarşiyi silme
+
+1. Hiyerarşiyi seçin ve **Sil** veya **çöp kutusu simgesini**seçin. 
+
+    [Sil düğmesini seçerek hiyerarşiyi silmek ![.](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
+
+1. **Sil**' i seçerek silmeyi onaylayın.
+
+## <a name="types"></a>Türler
+
+Azure Time Series Insights Gezgini tarayıcı içinde **oluşturma**, **okuma**, **güncelleştirme**ve **silme** işlemlerini destekler. 
+
+Başlamak için, Time Series Insights Explorer **Çözümle** görünümünden **model** görünümünü seçin.
+
+### <a name="create-a-single-type"></a>Tek bir tür oluşturma
+
+1. Zaman serisi model Seçicisi paneline gidin ve menüden **türler** ' i seçin. Seçtiğiniz Time Series Insights ortamınız ile ilişkili tüm türler görüntülenir.
+
+    [![zaman serisi model türleri bölmesi.](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
+
+1. **+ Ekle** ' yi seçerek **Yeni bir tür Ekle** açılan penceresini görüntüleyin.
+1. Türü için özellikler ve değişkenler girin. Girdikten sonra **Kaydet**' i seçin. 
+
+    [tür eklemek için yapılandırma ayarları ![.](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
+
+### <a name="bulk-upload-one-or-more-types"></a>Bir veya daha fazla türü toplu karşıya yükleme
+
+> [!TIP]
+> Türlerinizi, JSON 'daki masaüstünüze kaydedebilirsiniz. İndirilen JSON dosyası daha sonra aşağıdaki adımlarla karşıya yüklenebilir.
+
+1. **JSON karşıya yükle**' yi seçin.
+1. Tür yükünü içeren dosyayı seçin.
+1. **Karşıya Yükle**’yi seçin.
+
+    [![toplu türleri karşıya yükleme seçenekleri.](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png#lightbox)
+
+### <a name="edit-a-single-type"></a>Tek bir türü düzenleme
+
+1. Türü seçin ve **Düzenle** veya **kurşun kalem simgesini**seçin.
+1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
+
+    [bölmedeki bir türü düzenlemek ![.](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-type.png#lightbox)
+
+### <a name="delete-a-type"></a>Bir tür silme
+
+1. Türü seçin ve **Sil** veya **çöp kutusu simgesini**seçin. .
+
+   [![Sil ' i seçerek bir türü silin.](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png#lightbox)
+
+1. **Sil**' i seçerek silmeyi onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

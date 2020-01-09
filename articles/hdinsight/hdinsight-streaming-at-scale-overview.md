@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435388"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight’ta ölçeğe göre akış
 
@@ -37,7 +37,7 @@ Daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Storm nedir?](storm/apac
 
 ## <a name="spark-streaming"></a>Spark akışı
 
-Spark akışı, toplu işleme için kullandığınız kodu yeniden kullanmanıza olanak tanıyan Spark uzantısıdır. Aynı uygulamadaki hem Batch hem de etkileşimli sorguları birleştirebilirsiniz. Bir fırtınası aksine Spark akışı, durum bilgisi olan tam bir kez işleme semantiğini sağlar. [Kafka DIRECT API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)'siyle birlikte kullanıldığında, tüm Kafka verilerinin tek bir kez Spark akışı tarafından alındığından emin olmanızı sağlayan, uçtan uca tam bir kez garanti elde etmek mümkündür. Spark akışının güçlerinden biri hataya dayanıklı yeteneklerdir ve küme içinde birden çok düğüm kullanılırken, hatalı düğümleri hızlı bir şekilde kurtarıyor.
+Spark akışı, toplu işleme için kullandığınız kodu yeniden kullanmanıza olanak tanıyan Spark uzantısıdır. Aynı uygulamadaki hem Batch hem de etkileşimli sorguları birleştirebilirsiniz. Bu durumda, Spark akışı, durum bilgisi olarak bir kez işleme semantiğini sağlar. [Kafka DIRECT API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)'siyle birlikte kullanıldığında, tüm Kafka verilerinin tek bir kez Spark akışı tarafından alındığından emin olmanızı sağlayan, uçtan uca tam olarak bir kez garanti elde etmek mümkündür. Spark akışının güçlerinden biri hataya dayanıklı yeteneklerdir ve küme içinde birden çok düğüm kullanılırken, hatalı düğümleri hızlı bir şekilde kurtarıyor.
 
 Daha fazla bilgi için bkz. [Apache Spark akışı nedir?](hdinsight-spark-streaming-overview.md).
 
@@ -49,7 +49,7 @@ Teknoloji kullanmanın avantajları vardır. Örneğin, Kafka bir olay arabelle�
 
 ### <a name="scale-the-stream-buffering-layer"></a>Akış arabelleğe alma katmanını ölçeklendirme
 
-Akış arabelleğe alma teknolojileri Event Hubs ve Kafka her ikisi de bu bölümlerden okunan bölümleri ve müşterileri kullanır. Giriş aktarım hızını ölçeklendirmek için bölüm sayısının ölçeğini ölçekleme gerekir ve bölüm eklemek de artan paralellik sağlar. Event Hubs, bölüm sayısı dağıtımdan sonra değiştirilemez, böylece hedef ölçeklendirmeye göz önünde bulundurularak başlamak önemlidir. Kafka ile, Kafka verileri işlerken bile [bölüm eklemek](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)mümkündür. Kafka, `kafka-reassign-partitions.sh`bölümleri yeniden atamak için bir araç sağlar. HDInsight, `rebalance_rackaware.py` [bölüm çoğaltma yeniden dengeleme aracı](https://github.com/hdinsight/hdinsight-kafka-tools)sağlar. Bu yeniden dengeleme Aracı, `kafka-reassign-partitions.sh` her çoğaltmanın ayrı bir hata etki alanında ve güncelleştirme etki alanında olması, Kafka rafa göz önünde bulundurulması ve hata toleransı artırdığından bu şekilde aracı çağırır.
+Akış arabelleğe alma teknolojileri Event Hubs ve Kafka her ikisi de bu bölümlerden okunan bölümleri ve müşterileri kullanır. Giriş aktarım hızını ölçeklendirmek için bölüm sayısının ölçeğini ölçekleme gerekir ve bölüm eklemek de artan paralellik sağlar. Event Hubs, bölüm sayısı dağıtımdan sonra değiştirilemez, bu nedenle hedef ölçeklendirmeye göz önünde bulundurularak başlamak önemlidir. Kafka ile, Kafka verileri işlerken bile [bölüm eklemek](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)mümkündür. Kafka, `kafka-reassign-partitions.sh`bölümleri yeniden atamak için bir araç sağlar. HDInsight, `rebalance_rackaware.py`bir [bölüm çoğaltma yeniden dengeleme aracı](https://github.com/hdinsight/hdinsight-kafka-tools)sağlar. Bu yeniden dengeleme Aracı, her çoğaltmanın ayrı bir hata etki alanında ve güncelleştirme etki alanında olması, Kafka raf bilincinde ve hata toleransı artırdığından bu şekilde `kafka-reassign-partitions.sh` aracını çağırır.
 
 ### <a name="scale-the-stream-processing-layer"></a>Akış işleme katmanını ölçeklendirme
 
@@ -57,7 +57,7 @@ Hem Apache Storm hem de Spark akışı, veriler işlenirken bile, kümelerine ç
 
 Ölçeklendirme fırtınası aracılığıyla eklenen yeni düğümlerden yararlanmak için küme boyutu artırılmadan önce başlatılan tüm fırtınası topolojilerini yeniden dengelemeniz gerekir. Bu yeniden dengeleme, fırtınası Web Kullanıcı arabirimi veya CLı 'sı kullanılarak yapılabilir. Daha fazla bilgi için [Apache Storm belgelerine](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)bakın.
 
-Apache Spark, uygulama gereksinimlerine bağlı olarak, ortamını yapılandırmak için üç temel parametre kullanır: `spark.executor.instances`, `spark.executor.cores`ve `spark.executor.memory`. *Yürütücü* , Spark uygulaması için başlatılan bir işlemdir. Bir yürütücü çalışan düğümünde çalışır ve uygulamanın görevlerinin çalıştırılmasından sorumludur. Her küme için varsayılan yürütme sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bu numaralar, `spark-defaults.conf`her bir küme başlığı üzerindeki dosyada depolanır.
+Apache Spark, uygulama gereksinimlerine bağlı olarak, ortamını yapılandırmak için üç temel parametre kullanır: `spark.executor.instances`, `spark.executor.cores`ve `spark.executor.memory`. *Yürütücü* , Spark uygulaması için başlatılan bir işlemdir. Bir yürütücü çalışan düğümünde çalışır ve uygulamanın görevlerinin çalıştırılmasından sorumludur. Her küme için varsayılan yürütme sayısı ve yürütücü boyutları, çalışan düğümlerinin sayısı ve çalışan düğüm boyutu temel alınarak hesaplanır. Bu numaralar, her küme baş düğümündeki `spark-defaults.conf`dosyasında depolanır.
 
 Bu üç parametre küme düzeyinde yapılandırılabilir, küme üzerinde çalışan tüm uygulamalar için de belirlenebilir ve her bir uygulama için de belirtilebilir. Daha fazla bilgi için bkz. [Apache Spark kümeleri için kaynakları yönetme](spark/apache-spark-resource-manager.md).
 

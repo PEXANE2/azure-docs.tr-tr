@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440364"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik tarihine kadar
 Until etkinliği, programlama dillerinde bir do-Until döngü yapısının sağladığı işlevleri sağlar. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz. 
@@ -51,13 +51,13 @@ Until etkinliği, programlama dillerinde bir do-Until döngü yapısının sağl
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gerekli
+Özellik | Açıklama | İzin verilen değerler | Gereklidir
 -------- | ----------- | -------------- | --------
 ad | `Until` etkinliğin adı. | Dize | Evet
 type | To **until**olarak ayarlanmalıdır. | Dize | Evet
-ifadesini | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Evet
-timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | dizisinde. `d.hh:mm:ss` (veya) `hh:mm:ss`. Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
-Etkinlikler | İfade `true`olarak değerlendirilene kadar yürütülen etkinlik kümesi. | Etkinlik dizisi. |  Evet
+expression | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Evet
+timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss` (veya) `hh:mm:ss`. Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
+Olaylar | İfade `true`olarak değerlendirilene kadar yürütülen etkinlik kümesi. | Etkinlik dizisi. |  Evet
 
 ## <a name="example-1"></a>Örnek 1
 
@@ -199,10 +199,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde ç�
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453676"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Hızlı Başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
 
 [Azure Key Vault](./key-vault-overview.md) , anahtarlar, parolalar, sertifikalar ve diğer gizli diziler gibi gizli dizileri için güvenli bir depo sağlayan bir bulut hizmetidir. Bu hızlı başlangıç, bir anahtar kasası ve gizli dizi oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır.
 
@@ -25,7 +25,7 @@ ms.locfileid: "71161468"
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -83,7 +83,7 @@ Daha fazla Azure Key Vault şablon örneği [burada](https://azure.microsoft.com
     * **Ad Kullanıcı kimliği**: [ön koşullardan](#prerequisites)aldığınız Azure AD Kullanıcı nesne kimliğinizi girin.
     * **Gizli dizi adı**: anahtar kasasında depoladığınız gizli dizi için bir ad girin.  Örneğin, **AdminPassword**.
     * **Gizli dizi değeri**: gizli değeri girin.  Bir parola depolukarşılaşırsanız, Önkoşullarda oluşturduğunuz oluşturulan parolanın kullanılması önerilir.
-    * **Yukarıdaki hüküm ve koşullar durumunu kabul ediyorum**: Seçin.
+    * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Seçin.
 3. **Satın al**'ı seçin. Anahtar Kasası başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
     ![Kaynak Yöneticisi şablonu, Key Vault tümleştirme, Portal dağıtma bildirimi](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -153,6 +153,6 @@ Write-Host "Press [ENTER] to continue..."
 Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir anahtar kasası ve gizli dizi oluşturdunuz ve dağıtımı doğruladı. Key Vault ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
 - [Azure Key Vault genel bakışını](key-vault-overview.md) okuyun
-- [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin
+- [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
 - [Anahtarlar, gizlilikler ve sertifikalar](about-keys-secrets-and-certificates.md) hakkında daha fazla bilgi alın
 - [En iyi uygulamaları](key-vault-best-practices.md) gözden geçirin Azure Key Vault

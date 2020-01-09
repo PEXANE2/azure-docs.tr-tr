@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177757"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361680"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanı üzerinde HTTPS yapılandırma
 
@@ -44,13 +44,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Etki alanını doğrulama
 > - Özel etki alanınızda HTTPS protokolünü devre dışı bırakma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir CDN profili ve en az bir CDN uç noktası oluşturmanız gerekir. Daha fazla bilgi için bkz. [Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
 
-Ayrıca CDN uç noktanızda bir Azure CDN özel etki alanını ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Öğretici: Azure CDN uç noktanıza özel etki alanı ekleme](cdn-map-content-to-custom-domain.md) 
+Ayrıca CDN uç noktanızda bir Azure CDN özel etki alanını ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [öğretici: Azure CDN uç noktanıza özel etki alanı ekleme](cdn-map-content-to-custom-domain.md).
 
 > [!IMPORTANT]
 > CDN ile yönetilen sertifikalar, kök veya tepesinde etki alanları için kullanılamaz. Azure CDN özel etki alanınız bir kök veya tepesinde etki alanı ise kendi sertifikanızı getir özelliğini kullanmanız gerekir. 
@@ -68,27 +68,29 @@ CDN tarafından yönetilen bir sertifika kullandığınızda HTTPS özelliği sa
 
 Özel bir etki alanı üzerinde HTTPS'yi etkinleştirmek için aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com), **Microsoft 'un Azure CDN Standart** **Azure CDN**, Verizon profilinden Verizon veya **Azure CDN Premium** 'dan standart olan **Azure CDN** standart bir şekilde inceleyin.
+1. Azure CDN tarafından yönetilen bir sertifikayı bulmak için [Azure Portal](https://portal.azure.com) gidin. **CDN profillerini**arayın ve seçin. 
 
-2. CDN uç noktaları listesinde özel etki alanınızı içeren uç noktayı seçin.
+2. **Microsoft 'tan Azure CDN standardını** **Azure CDN, Akamai**'ten standart, **Verizon 'Den standart**ve **Verizon profilinden Premium Azure CDN** Azure CDN seçin.
+
+3. CDN uç noktaları listesinde özel etki alanınızı içeren uç noktayı seçin.
 
     ![Uç noktalar listesi](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
     **Uç Nokta** sayfası görünür.
 
-3. Özel etki alanları listesinde, HTTPS'yi etkinleştirmek istediğiniz özel etki alanını seçin.
+4. Özel etki alanları listesinde, HTTPS'yi etkinleştirmek istediğiniz özel etki alanını seçin.
 
     ![Özel etki alanları listesi](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     **Özel etki alanı** sayfası görünür.
 
-4. Sertifika yönetimi türü bölümünde **Yönetilen CDN**’yi seçin.
+5. Sertifika yönetimi türü bölümünde **Yönetilen CDN**’yi seçin.
 
-5. HTTPS’yi etkinleştirmek için **Açık** seçeneğini belirleyin.
+6. HTTPS’yi etkinleştirmek için **Açık** seçeneğini belirleyin.
 
     ![Özel etki alanı HTTPS durumu](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. [Etki alanını doğrulama](#validate-the-domain) adımına ilerleyin.
+7. [Etki alanını doğrulama](#validate-the-domain) adımına ilerleyin.
 
 
 # <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[2. Seçenek: Kendi sertifikanızla HTTPS’yi etkinleştirme](#tab/option-2-enable-https-with-your-own-certificate)
@@ -178,7 +180,7 @@ CNAME kaydınız, *Ad*’ın özel etki alanınız, *Değer*’in ise CDN uç no
 
 | Ad            | Tür  | Değer                 |
 |-----------------|-------|-----------------------|
-| < www. contoso. com > | CNAME | contoso.azureedge.net |
+| <www.contoso.com> | CNAME | contoso.azureedge.net |
 
 CNAME kayıtları hakkında daha fazla bilgi için bkz. [CNAME DNS kaydı oluşturma](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
@@ -204,7 +206,7 @@ webmaster@&lt;etki-alanı-adınız.com&gt;
 hostmaster@&lt;etki-alanı-adınız.com&gt;  
 postmaster@&lt;.com&gt;  
 
-Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. İstenmeyen posta filtresi kullanıyorsanız verification@digicert.com adresini bu filtrenin beyaz listesine ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
+Birkaç dakika içinde sizden isteği onaylamanızı isteyen, aşağıdaki örneğe benzer bir e-posta alırsınız. Bir istenmeyen posta filtresi kullanıyorsanız, izin verilenler listesine verification@digicert.com ekleyin. E-postayı 24 saat içinde almazsanız Microsoft destek ekibine başvurun.
     
 ![Etki alanı doğrulama e-postası](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -260,15 +262,17 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>HTTPS özelliğini devre dışı bırakma 
 
-1. [Azure portalında](https://portal.azure.com), **Microsoft’tan Azure CDN Standart**, **Verizon’dan Azure CDN Standart** veya **Verizon’dan Azure CDN Premium** profilinize gidin.
+1. [Azure Portal](https://portal.azure.com), **CDN profilleri**' ni arayıp seçin. 
 
-2. Uç noktalar listesinde, özel etki alanınızı içeren uç noktaya tıklayın.
+2. **Microsoft 'tan Azure CDN standardını**, **Verizon 'Ten standart**ve **Verizon profilinden Premium Azure CDN** Azure CDN seçin.
 
-3. HTTPS’yi devre dışı bırakmak istediğiniz özel etki alanına tıklayın.
+3. Uç noktalar listesinde, özel etki alanınızı içeren uç noktayı seçin.
+
+4. HTTPS 'yi devre dışı bırakmak istediğiniz özel etki alanını seçin.
 
     ![Özel etki alanları listesi](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. HTTPS’yi devre dışı bırakmak için **Kapalı**’ya ve sonra **Uygula**’ya tıklayın.
+5. HTTPS 'yi devre dışı bırakmak için **kapalı** seçeneğini belirleyip **Uygula**' yı seçin.
 
     ![Özel HTTPS iletişim kutusu](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -316,7 +320,7 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 
 7. *Sertifika yenilemesi kendi sertifikanızı getir ile nasıl çalışır?*
 
-    Yeni bir sertifikanın PoP altyapısına dağıtılmasını sağlamak için yeni sertifikanızı Azure Anahtar Kasası 'na yüklemeniz, ardından Azure CDN SSL ayarlarınızda en yeni sertifika sürümünü seçip Kaydet ' e tıklayın. Azure CDN, yeni güncelleştirilmiş CERT propogate. 
+    Yeni bir sertifikanın PoP altyapısına dağıtılmasını sağlamak için yeni sertifikanızı Azure Anahtar Kasası 'na yüklemeniz, ardından Azure CDN SSL ayarlarınızda en yeni sertifika sürümünü seçip Kaydet ' e tıklayın. Azure CDN daha sonra yeni güncelleştirilmiş sertifikayı yayacaktır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

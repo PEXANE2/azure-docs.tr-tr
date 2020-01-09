@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434655"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Hızlı başlangıç: C# kullanarak X.509 cihazlarını Cihaz Sağlama Hizmeti'ne kaydetme
 
@@ -28,7 +28,7 @@ Bu makaledeki adımlar hem Windows hem de Linux bilgisayarlarda çalışır, anc
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2019](https://www.visualstudio.com/vs/)’u yükleyin.
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
@@ -49,17 +49,21 @@ Bu hızlı başlangıç için ara veya kök CA X.509 sertifikasının ortak böl
 
 Sertifika oluşturmak için bu test araçlarını kullanmak üzere aşağıdaki adımları uygulayın:
 
-1. Bir komut Istemi penceresi veya git bash kabuğu açın ve bilgisayarınızdaki çalışan bir klasöre değiştirin. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalamak için aşağıdaki komutu çalıştırın:
+1. Azure IoT C SDK 'sının [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+2. Komut istemi veya Git Bash kabuğu açın ve makinenizdeki çalışma klasörüne geçin. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulduğunuz etiketi `-b` parametresinin değeri olarak kullanın:
 
-   Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
    Test araçları kopyaladığınız deponun *azure-iot-sdk-c/tools/CACertificates* dizininde bulunur.
 
-1. [Örnekler ve öğreticiler için test amaçlı CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) adımlarını izleyin.
+3. [Örnekler ve öğreticiler için test amaçlı CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) adımlarını izleyin.
 
 C SDK 'sindeki araca ek olarak, *.NET için Microsoft Azure ıOT SDK* 'daki C# [Grup sertifikası doğrulama örneği](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) , var olan bir X. 509.952 ara veya kök CA sertifikası ile birlikte sahip olma konusunda nasıl bir kanıt yapılacağını gösterir.
 
@@ -119,7 +123,7 @@ Bu bölümde, sağlama hizmetinize bir kayıt grubu ekleyen bir .NET Core konsol
    > * Sağlama hizmeti yöneticisi için bağlantı dizesinin sabit kodlanması en iyi güvenlik yöntemlerine uygun değildir. Bunun yerine, bağlantı dizesi güvenli bir şekilde, örneğin güvenli yapılandırma dosyasının içinde veya kayıt defterinin içinde tutulmalıdır.
    > * İmzalama sertifikasının yalnızca ortak bölümünü karşıya yüklediğinizden emin olun. Özel anahtarları içeren .pfx (PKCS12) veya .pem dosyalarını asla sağlama hizmetine yüklemeyin.
 
-1. `Program` sınıfına aşağıdaki yöntemi ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateEnrollmentGroupAsync` yöntemini çağırır.
+1. Aşağıdaki yöntemi `Program` sınıfına ekleyin. Bu kod bir kayıt grubu girişi oluşturur ve ardından kayıt grubunu sağlama hizmetine eklemek için `ProvisioningServiceClient` `CreateOrUpdateEnrollmentGroupAsync` yöntemini çağırır.
 
    ```csharp
    public static async Task RunSample()

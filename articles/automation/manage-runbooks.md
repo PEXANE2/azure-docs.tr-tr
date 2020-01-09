@@ -2,19 +2,15 @@
 title: Azure Otomasyonu 'nda runbook 'ları yönetme
 description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların nasıl yönetileceği açıklanır.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 42fbb224981123a7cb0f39f07c144b5d2ffbc587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417875"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -108,7 +104,7 @@ Her [runbook türünü](automation-runbook-types.md) test etme yordamı aynıdı
 
 Yeni bir runbook oluşturduğunuzda veya içeri aktardığınızda, çalıştırmadan önce onu yayımlamanız gerekir.  Otomasyon 'daki her runbook 'ta taslak ve yayımlanmış bir sürüm bulunur. Yalnızca Yayımlanan sürüm çalıştırılabilir ve yalnızca Taslak sürüm düzenlenebilir. Yayımlanan sürüm Taslak sürümdeki herhangi bir değişiklikten etkilenmez. Taslak sürümü kullanılabilir hale getirilmeli hale geldiğinde, yayımlanan sürümün taslağını taslak sürümle üzerine yazan onu yayımlayın.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 1. Runbook 'u Azure portal açın.
 2. **Düzenle** düğmesine tıklayın.

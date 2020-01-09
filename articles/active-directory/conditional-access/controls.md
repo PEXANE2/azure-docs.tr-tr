@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424965"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory erişim denetimleri nelerdir?
 
@@ -51,7 +51,7 @@ Bu konu başlığı altında, Azure AD koşullu erişim 'de kullanılabilen çe�
 
 ![Denetim](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama
 
 Bu denetimi, çok faktörlü kimlik doğrulamasının belirtilen bulut uygulamasına erişmesini gerektirmek için kullanabilirsiniz. Bu denetim aşağıdaki Multi-Factor sağlayıcılarını destekler:
 
@@ -76,7 +76,7 @@ Daha fazla bilgi için bkz. [koşullu erişim ile bulut uygulama erişimi için 
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Karma Azure AD 'ye katılmış cihaz
 
-Karma bir Azure AD 'ye katılmış cihaz istemek, cihaz tabanlı koşullu erişim ilkelerini yapılandırmak için başka bir seçenektir. Bu gereksinim, şirket içi Active Directory katılmış Windows masaüstleri, dizüstü bilgisayarlar ve kurumsal tabletlere başvurur. Bu seçenek işaretliyse, koşullu erişim ilkeniz şirket içi Active Directory ve Azure Active Directory katılmış cihazlarla yapılan erişim girişimlerini erişim izni verir.  
+Karma bir Azure AD 'ye katılmış cihaz istemek, cihaz tabanlı koşullu erişim ilkelerini yapılandırmak için başka bir seçenektir. Bu gereksinim, şirket içi Active Directory katılmış Windows masaüstleri, dizüstü bilgisayarlar ve kurumsal tabletlere başvurur. Bu seçenek işaretliyse, koşullu erişim ilkeniz şirket içi Active Directory ve Azure Active Directory katılmış cihazlarla yapılan erişim girişimlerini erişim izni verir. Mac cihazları karma Azure AD JOIN 'i desteklemez.
 
 Daha fazla bilgi için bkz. [Azure Active Directory cihaz tabanlı koşullu erişim ilkeleri ayarlama](require-managed-devices.md).
 
@@ -114,7 +114,7 @@ Bu denetimler, belirli dış veya özel hizmetlerin koşullu erişim denetimleri
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ping kimliği](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)

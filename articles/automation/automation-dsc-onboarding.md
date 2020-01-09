@@ -7,20 +7,20 @@ ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366388"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
 ## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması olan makineleri neden yönetmeliyim?
 
-Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde DSC düğümleri için bir yapılandırma yönetim hizmetidir.
+Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde Istenen durum yapılandırması (DSC) düğümleri için bir yapılandırma yönetim hizmetidir.
 Merkezi bir güvenli konumdan binlerce makine genelinde hızla ve kolayca ölçeklenebilirlik sunar.
 Makineleri kolayca ekleyebilir, bunlara bildirime dayalı yapılandırmalara atayabilir ve her makinenin, belirttiğiniz istenen duruma göre uyumluluğunu gösteren raporları görüntüleyebilirsiniz.
 Azure Otomasyonu durum yapılandırma hizmeti, Azure Otomasyonu runbook 'larının PowerShell komut dosyasına ne kadar olduğunu DSC 'ye göre yapılır.
@@ -39,16 +39,22 @@ Ayrıca, makine yapılandırmasını buluttan yönetmeye hazırsanız, Azure Oto
 Bu, konfigürasyonları DSC aracılığıyla ayarlamanıza ve Azure Otomasyonu 'nda raporlama ayrıntılarını görüntülemenize olanak sağlar.
 
 > [!NOTE]
-> Yüklü sanal makine DSC Uzantısı 2,70 ' den büyükse Azure VM 'lerinin durum yapılandırması ile yönetilmesi ek ücret alınmaz. Daha fazla ayrıntı için [**Otomasyon fiyatlandırması sayfasına**](https://azure.microsoft.com/pricing/details/automation/) bakın.
+> Yüklü sanal makine DSC Uzantısı 2,70 ' den büyükse Azure VM 'lerinin durum yapılandırması ile yönetilmesi ek ücret alınmaz. Daha fazla bilgi için bkz. [**Automation fiyatlandırma sayfası**](https://azure.microsoft.com/pricing/details/automation/).
 
 Aşağıdaki bölümlerde, her makine türünü Azure Otomasyonu durum yapılandırmasına nasıl kullanabileceğiniz gösterilmektedir.
+
+> [!NOTE]
+>DSC 'yi bir Linux düğümüne dağıtmak, `/tmp` klasörünü kullanır ve **Nxautomation** gibi modüller, uygun konumlarına yüklenmeden önce geçici olarak doğrulama için indirilir. Modüllerin doğru şekilde yüklendiğinden emin olmak için, Linux Log Analytics aracısına `/tmp` klasöründe okuma/yazma izni gerekir. Linux için Log Analytics Aracısı `omsagent` Kullanıcı olarak çalışır. 
+>
+>`omsagent` kullanıcıya yazma izni vermek için şu komutları çalıştırın: `setfacl -m u:omsagent:rwx /tmp`
+>
 
 ## <a name="azure-virtual-machines"></a>Azure sanal makineleri
 
 Azure Otomasyonu durum yapılandırması, Azure portal, Azure Resource Manager şablonlarını veya PowerShell 'i kullanarak Azure sanal makinelerini yapılandırma yönetimi için kolayca eklemenize olanak tanır. Yönetim altında ve bir yönetici sanal makineye uzak olarak gerek duymadan, Azure VM Istenen durum yapılandırma uzantısı VM 'yi Azure Otomasyonu durum yapılandırması 'na kaydeder.
 Azure VM Istenen durum yapılandırma uzantısı zaman uyumsuz olarak çalıştığından, ilerleme durumunu izlemek veya sorunu gidermek için gereken adımlar [**Azure sanal makinesi ekleme**](#troubleshooting-azure-virtual-machine-onboarding) bölümünde verilmiştir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 [Azure Portal](https://portal.azure.com/), sanal makineleri eklemek Istediğiniz Azure Otomasyonu hesabına gidin. Durum Yapılandırması sayfasında ve **düğümler** sekmesinde **+ Ekle**' ye tıklayın.
 
@@ -63,7 +69,7 @@ Makinede PowerShell istenen durum uzantısı yüklü değilse ve güç durumu ç
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
 Azure sanal makineleri, Azure Resource Manager şablonları aracılığıyla Azure Otomasyonu durum yapılandırmasına dağıtılabilir ve eklendi. Var olan bir VM 'yi Azure Otomasyonu durum yapılandırması 'nda izleyen örnek bir şablon için bkz. [Istenen durum yapılandırma hizmeti tarafından yönetilen sunucu](https://azure.microsoft.com/resources/templates/101-automation-configuration/) .
-Bir sanal makine ölçek kümesini yönetiyorsanız, [Azure Otomasyonu tarafından yönetilen örnek şablon VM Ölçek kümesi yapılandırması](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)' na bakın.
+Bir sanal makine ölçek kümesini yönetiyorsanız, [Azure Otomasyonu tarafından yönetilen örnek şablon sanal makine ölçek kümesi yapılandırması](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)' na bakın.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -93,14 +99,14 @@ AWS DSC araç setini kullanarak Azure Otomasyonu durum yapılandırması ile yap
    ```
 
 1. PowerShell DSC metaconfigurations 'ı uzaktan uygulayamadıysanız, meta veri Yapılandırması klasörünü 2. adımdaki her bir makineye kopyalayın. Ardından, eklemek üzere her makinede yerel olarak **set-DscLocalConfigurationManager** çağırın.
-1. Azure portal veya cmdlet 'lerini kullanarak, artık eklenecek makinelerin Azure Automation hesabınızda kayıtlı durum yapılandırması düğümleri olduğunu kontrol edin.
+1. Azure portal veya cmdlet 'lerini kullanarak, eklenecek makinelerin Azure Otomasyonu hesabınızda kayıtlı durum yapılandırma düğümleri olarak göründüğünden emin olun.
 
 ## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>Şirket içinde veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Linux makineleri
 
 Şirket içinde veya diğer bulut ortamlarında çalışan Linux sunucuları, [Azure 'a giden erişimi](automation-dsc-overview.md#network-planning)olduğu sürece Azure Automation durum yapılandırması eklendi de olabilir:
 
 1. Azure Otomasyonu durum yapılandırması 'na eklemek istediğiniz makinelere [Linux Için Istenen PowerShell Istenen durum yapılandırmasının](https://github.com/Microsoft/PowerShell-DSC-for-Linux) en son sürümünün yüklü olduğundan emin olun.
-1. [POWERSHELL DSC yerel Configuration Manager varsayılan](/powershell/scripting/dsc/managing-nodes/metaConfig4) olarak kullanım durumumızdan eşleşiyorsa ve makineleri hem çekme hem **de** Azure Otomasyonu durum yapılandırmasına raporla birlikte eklemek istiyorsanız:
+2. [POWERSHELL DSC yerel Configuration Manager varsayılan](/powershell/scripting/dsc/managing-nodes/metaConfig4) olarak kullanım durumumızdan eşleşiyorsa ve makineleri hem çekme hem **de** Azure Otomasyonu durum yapılandırmasına raporla birlikte eklemek istiyorsanız:
 
    - Azure Otomasyonu durum yapılandırmasına eklenecek her bir Linux makinesinde, PowerShell DSC yerel Configuration Manager varsayılan değerlerini kullanarak eklemek için `Register.py` kullanın:
 
@@ -110,8 +116,8 @@ AWS DSC araç setini kullanarak Azure Otomasyonu durum yapılandırması ile yap
 
      PowerShell DSC yerel **Configuration Manager Varsayılanları kullanım** durumumuzla eşleşmezse veya yalnızca Azure Otomasyonu durum yapılandırmasına rapor veren makineler eklemek istiyorsanız, 3-6 adımlarını izleyin. Aksi takdirde, doğrudan 6. adıma geçin.
 
-1. Gerekli DSC metayapılandırmalarının bulunduğu bir klasör oluşturmak için aşağıdaki [**DSC Metaconfigurations oluşturma**](#generating-dsc-metaconfigurations) bölümündeki yönergeleri izleyin.
-1. PowerShell DSC metaconfiguration 'ı eklemek istediğiniz makinelere uzaktan uygulayın:
+3. Gerekli DSC metayapılandırmalarının bulunduğu bir klasör oluşturmak için aşağıdaki [**DSC Metaconfigurations oluşturma**](#generating-dsc-metaconfigurations) bölümündeki yönergeleri izleyin.
+4. PowerShell DSC metaconfiguration 'ı eklemek istediğiniz makinelere uzaktan uygulayın:
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String '<root password>' -AsPlainText -Force
@@ -130,7 +136,7 @@ Bu komutun çalıştırıldığı makinenin en son [WMF 5](https://aka.ms/wmf5la
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
-1. Azure portal veya cmdlet 'lerini kullanarak, artık eklenecek makinelerin Azure Automation hesabınızda kayıtlı DSC düğümü olarak gösterilmesini kontrol edin.
+2. Azure portal veya cmdlet 'lerini kullanarak, artık eklenecek makinelerin Azure Automation hesabınızda kayıtlı DSC düğümü olarak gösterilmesini kontrol edin.
 
 ## <a name="generating-dsc-metaconfigurations"></a>DSC metaconfigurations oluşturma
 
@@ -312,7 +318,7 @@ Bir makineyi Azure Otomasyonu durum yapılandırması 'nda DSC düğümü olarak
 - Windows Server 2019 ' den önceki Windows Server sürümleri için her düğüm, bir yıldan sonra süresi dolan kimlik doğrulaması için otomatik olarak benzersiz bir sertifika sağlar. Şu anda PowerShell DSC kayıt Protokolü, süresi dolmak üzere olan sertifikaları otomatik olarak yenileyemez. bu nedenle, bir yılın zamanından sonra düğümleri yeniden kaydetmeniz gerekir. Yeniden kaydolmadan önce, her bir düğümün Windows Management Framework 5,0 RTM çalıştırdığından emin olun. Bir düğümün kimlik doğrulama sertifikasının süresi dolarsa ve düğüm yeniden kaydedilmemişse, düğüm Azure Otomasyonu ile iletişim kuramaz ve ' yanıt vermez ' olarak işaretlenir. yeniden kayıt, sertifika sona erme zamanından 90 gün veya daha az bir süre önce veya sertifika sona erme zamanından sonra herhangi bir noktada, oluşturulup kullanılmakta olan yeni bir sertifika oluşmasına neden olur.  Windows Server 2019 ve üzeri sürümlerde bu soruna yönelik bir çözüm bulunur.
 - Bir [POWERSHELL DSC yerel Configuration Manager değerini](/powershell/scripting/dsc/managing-nodes/metaConfig4) , düğümün ilk kaydı sırasında ayarlanan configurationmode gibi değiştirmek için. Şu anda, bu DSC Aracısı değerleri yalnızca yeniden kayıt yoluyla değiştirilebilir. Tek istisna, düğüme atanan düğüm yapılandırmadır; bu, Azure Automation DSC doğrudan değiştirilebilir.
 
-yeniden kayıt, bu belgede açıklanan ekleme yöntemlerinden herhangi birini kullanarak ilk olarak düğümü kaydettiğiniz şekilde gerçekleştirilebilir. Yeniden kaydetmeden önce Azure Otomasyonu durum yapılandırmasından bir düğüm kaydetmeniz gerekmez.
+yeniden kayıt, bu belgede açıklanan ekleme yöntemlerinden herhangi birini kullanarak ilk olarak düğümü kaydettiğiniz şekilde gerçekleştirilebilir. Bir düğümün yeniden kaydolmadan önce Azure Otomasyonu durum yapılandırması 'ndan kaydını kaldırmanız gerekmez.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure sanal makinesi ekleme sorunlarını giderme
 

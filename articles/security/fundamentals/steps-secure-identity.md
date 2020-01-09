@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353226"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -112,9 +112,14 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 İhlal durumunu varsay ' ı kullanarak, riskli Kullanıcı kimlik bilgilerinin ne zaman ortaya çıktığını azaltmanız gerekir. Ortamınızdaki her uygulama için geçerli kullanım durumları göz önünde bulundurun: hangi gruplar, hangi ağlar, hangi cihazlar ve diğer öğeler yetkilendirilir, sonra Rest 'i engeller. [Azure AD koşullu erişimi](../../active-directory/conditional-access/overview.md)sayesinde, yetkili kullanıcıların, sizin tanımladığınız belirli koşullara göre uygulamalarına ve kaynaklarına nasıl erişdiğini denetleyebilirsiniz.
 
-### <a name="block-end-user-consent"></a>Son Kullanıcı onayını engelle
+### <a name="restrict-user-consent-operations"></a>Kullanıcı onay işlemlerini kısıtlama
 
-Varsayılan olarak, Azure AD 'deki tüm kullanıcılara, OAuth 2,0 'den yararlanan uygulamalar ve şirket verilerine erişmek için Microsoft Identity Grant [Framework](../../active-directory/develop/consent-framework.md) izinleri verilebilir. Tebrikler, kullanıcıların Microsoft 365 ve Azure ile tümleştirilen faydalı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir. [Tüm gelecek Kullanıcı onay Işlemlerini devre dışı bırakmak](../../active-directory/manage-apps/methods-for-removing-user-access.md) , yüzey alanınızı azaltmanıza ve bu riski azaltmanıza yardımcı olabilir. Son Kullanıcı onayı devre dışı bırakılmışsa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Bu işlevi devre dışı bırakmadan önce, kullanıcıların yeni uygulamalar için yönetici onayını nasıl isteyeceğini anlayabilmesi önerilir; Bunun yapılması, Kullanıcı uyumsuzlukmasını azaltmaya, destek birimini en aza indirmenize ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmayın olmasını sağlamalıdır.
+Çeşitli [Azure AD uygulama onayı deneyimlerini](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [izin ve onay türlerini](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)ve kuruluşunuzun güvenlik duruşunuzun etkilerini anlamak önemlidir. Varsayılan olarak, Azure AD 'deki tüm kullanıcılar kuruluşunuzun verilerine erişmek için Microsoft Identity platformundan yararlanan uygulamalara izin verebilir. Kullanıcıların kendilerine izin vermesini sağlarken, kullanıcıların Microsoft 365, Azure ve diğer hizmetlerle tümleştirilen yararlı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir.
+
+Microsoft, Surface alanınızı azaltmaya ve bu riski azaltmaya yardımcı olmak için [gelecekteki Kullanıcı onay işlemlerinin devre dışı bırakılmasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) öneriyor. Son Kullanıcı onayı devre dışıysa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Yönetici onayı, kullanıcılar tarafından tümleşik [Yönetici onay isteği iş akışı](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) aracılığıyla veya kendi destek süreçleriniz aracılığıyla istenebilir. Bu işlevi devre dışı bırakmadan önce, kullanıcıların hangi uygulamalara yönelik olduğunu anlamak ve değişikliği buna göre planlamak için denetim günlüğüyü gözden geçirmeniz önerilir. Tüm kullanıcıların erişimine izin vermek istediğiniz uygulamalar için, [tüm kullanıcılar adına izin vermeyi](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)göz önünde bulundurun. Bu, henüz tek tek kabul etmemiş olan kullanıcıların uygulamaya erişebilmesini sağlar. Bu uygulamaların tüm senaryolarda tüm kullanıcılar tarafından kullanılabilmesini istemiyorsanız, [uygulama atamasını](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 'i kullanarak uygulamalara Kullanıcı erişimini kısıtlayın.
+
+Kullanıcıların, Kullanıcı uyumsuzluklıkları azaltmak, destek birimini en aza indirmek ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmasını engellemek için yeni uygulamalar için yönetici onayı isteğinde bulunduğundan emin olun. Onay işlemlerinizi belirledikten sonra Yöneticiler, uygulamayı ve onaylı izinleri düzenli aralıklarla denetlemelidir.
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management Uygula
 
@@ -173,7 +178,9 @@ Azure AD Kimlik Koruması, günlük izlemeniz gereken iki önemli rapor sağlar:
 
 ### <a name="audit-apps-and-consented-permissions"></a>Uygulamaları denetleme ve onaylanan izinler
 
-Kullanıcılar, e-postaları gibi profil bilgilerine ve kullanıcı verilerine erişim kazanabilmek için güvenliği aşılmış bir Web sitesine veya uygulamalarına gidiliyor olabilir. Kötü amaçlı bir aktör, posta kutusu içeriğini şifrelemek için aldığı onaylı izinleri kullanabilir ve posta kutusu verilerinizi yeniden kazanmak için bir ransoh talep edebilir. Yöneticiler, kullanıcılar tarafından verilen izinleri [gözden geçirmeli ve denetlemelidir](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) .
+Kullanıcılar, e-postaları gibi profil bilgilerine ve kullanıcı verilerine erişim kazanabilmek için güvenliği aşılmış bir Web sitesine veya uygulamalarına gidiliyor olabilir. Kötü amaçlı bir aktör, posta kutusu içeriğini şifrelemek için aldığı onaylı izinleri kullanabilir ve posta kutusu verilerinizi yeniden kazanmak için bir ransoh talep edebilir. Yöneticiler, kullanıcılar tarafından verilen izinleri [gözden geçirmeli ve denetlemelidir](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) ya da kullanıcıların varsayılan olarak onay verme yeteneğini devre dışı bırakır. 
+
+Kullanıcılar tarafından verilen izinleri denetlemeye ek olarak, Premium ortamlarda kullanılabilen bir işlevsellik olan [riskli veya Istenmeyen OAuth uygulamalarını](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)denemeye ve özellikle bulmaya yardımcı olabilir.
 
 ## <a name="step-5---enable-end-user-self-service"></a>5\. adım-Son Kullanıcı self servis hizmetini etkinleştirme
 

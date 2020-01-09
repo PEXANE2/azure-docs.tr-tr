@@ -3,17 +3,17 @@ title: Bulut hizmetini yapılandırma (portal) | Microsoft Docs
 description: Azure 'da bulut hizmetlerini yapılandırmayı öğrenin. Bulut hizmeti yapılandırmasını güncelleştirmeyi ve rol örneklerine uzaktan erişimi yapılandırmayı öğrenin. Bu örnekler Azure portal kullanır.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: gwallace
-ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359660"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361016"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services nasıl yapılandırılır
 
@@ -29,7 +29,7 @@ Azure, her rol için en az iki rol örneliğine sahipseniz, yapılandırma günc
 
 ![Ayarlar sayfası](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-**Ayarlar** veya **Tüm ayarlar** bağlantıları, **özellikleri**değiştirmek, **yapılandırmayı**değiştirmek, **sertifikaları**yönetmek, **Uyarı kuralları**ayarlamak ve kullanıcıları yönetmek için **ayarları** açar. bu bulut hizmetine kimlerin erişimi vardır.
+**Ayarlar** veya **Tüm ayarlar** bağlantıları, **özellikleri**değiştirmek, **yapılandırmayı**değiştirmek, **sertifikaları**yönetmek, **Uyarı kuralları**ayarlamak ve bu bulut hizmetine erişimi olan **kullanıcıları** yönetmek için **ayarları** açar.
 
 ![Azure bulut hizmeti ayarları](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -46,7 +46,7 @@ Belirli bir işletim sistemi sürümünü hedefliyorsanız, bu sürümü **yapı
 
 ## <a name="monitoring"></a>İzleme
 
-Bulut hizmetinize uyarı ekleyebilirsiniz. **Ayarlar** > **Uyarı**kurallarıUyarı > **Ekle**' ye tıklayın.
+Bulut hizmetinize uyarı ekleyebilirsiniz. Uyarı **ekle** > uyarı **kuralları** > **Ayarlar** ' a tıklayın.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +62,7 @@ Buradan bir uyarı ayarlayabilirsiniz. **Ölçüm** açılan kutusuyla, aşağı
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Ölçüm kutucuğundan izlemeyi yapılandırma
 
-**Ayarlar** > **Uyarı kurallarını**kullanmak yerine, bulut hizmetinin **izleme** bölümündeki ölçüm kutucuklarından birine tıklayabilirsiniz.
+**Ayarları** > **Uyarı kuralları**kullanmak yerine, bulut hizmetinin **izleme** bölümündeki ölçüm kutucuklarından birine tıklayabilirsiniz.
 
 ![Bulut hizmeti Izleme](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -92,10 +92,10 @@ Daha sonra, bir Uzak Masaüstü bağlantısı başlatabilir, örneği uzaktan ye
     ![Yapılandırma dikey penceresi](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. **İndir** düğmesine tıklayın.
 
-    ![İndirme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![İndirin](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Hizmet yapılandırma dosyasını güncelleştirdikten sonra yapılandırma güncelleştirmelerini yükleyin ve uygulayın:
 
-    ![Karşıya Yükle](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+    ![Karşıya Yükleme](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. . Cscfg dosyasını seçin ve **Tamam**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -104,3 +104,6 @@ Daha sonra, bir Uzak Masaüstü bağlantısı başlatabilir, örneği uzaktan ye
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [Bulut hizmetinizi yönetin](cloud-services-how-to-manage-portal.md).
 * [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma.
+
+
+

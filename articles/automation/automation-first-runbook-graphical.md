@@ -3,19 +3,15 @@ title: Azure Automation 'da ilk grafik runbook 'im
 description: Basit bir grafik runbook uygulaması oluşturma, test etme ve yayımlama adımlarını anlatan öğretici.
 keywords: runbook, runbook şablonu, runbook otomasyonu, azure runbook
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/13/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1cdd015d9f29c3fb672d626f32a485271e2757c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a93263cf968fc4804d7bbc59e15121d6061dd40a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366541"
 ---
 # <a name="my-first-graphical-runbook"></a>İlk grafik runbook uygulamam
 
@@ -28,7 +24,7 @@ ms.locfileid: "74850321"
 
 Bu öğretici, Azure Automation’da bir [grafik runbook uygulaması](automation-runbook-types.md#graphical-runbooks) oluşturulmasını adım adım göstermektedir. Runbook işi durumunun nasıl izleneceğini öğrenirken test edip yayımlayan basit bir runbook ile başlarsınız. Ardından, bir Azure sanal makinesini başlatmayı içeren bir örnekle, bu runbook’u gerçekten Azure kaynaklarını yönetmek üzere değiştirin. Daha sonra, runbook parametreleri ve koşullu bağlantılar ekleme yoluyla runbook’u daha sağlam hale getirerek öğreticiyi tamamlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -108,7 +104,7 @@ Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar fayd
 
 1. Otomasyon hesapları sayfasında, **PAYLAŞıLAN kaynaklar**altında **değişkenler** ' i seçin.
 1. **Değişken Ekle**' yi seçin.
-1. Yeni değişken sayfasında, **ad** kutusuna **Azuyeniden adlandırma scriptionıd** girin ve **değer** kutusuna abonelik kimliğinizi girin. **Tür** için *dizeyi* **Şifreleme** için değeri koruyun.
+1. Yeni değişken sayfasında, **ad** kutusuna **Azuyeniden adlandırma scriptionıd** girin ve **değer** kutusuna abonelik kimliğinizi girin. **Tür** için *dizeyi***Şifreleme** için değeri koruyun.
 1. Değişkeni oluşturmak için **Oluştur**’a tıklayın.
 
 ## <a name="add-authentication"></a>Kimlik doğrulaması ekleme
@@ -165,7 +161,7 @@ Runbook’umuz şu anda **Start-AzureRmVM** cmdlet’inde belirttiğiniz kaynak 
 
 1. **Myfirstrunbook-grafik** bölmesinde **Düzenle** ' ye tıklayarak grafik düzenleyiciyi açın.
 1. **Giriş ve çıkış** ' ı seçin ve ardından giriş ' e **ekleyerek** runbook giriş parametresi bölmesini açın.
-1. **Ad** için *VMName* belirtin. **Tür** *dizesini* koruyun ancak, **Zorunlu**’yu *Evet* olarak değiştirin. **Tamam**’a tıklayın.
+1. **Ad** için *VMName* belirtin. **Tür***dizesini* koruyun ancak, **Zorunlu**’yu *Evet* olarak değiştirin. **Tamam**’a tıklayın.
 1. *ResourceGroupName* adlı ikinci bir zorunlu giriş parametresi oluşturun ve ardından **Giriş ve Çıkış** bölmesini kapatmak için **Tamam**’a tıklayın.<br> ![Runbook Giriş Parametreleri](media/automation-first-runbook-graphical/start-azurermvm-params-outputs.png)
 1. **Start-AzureRmVM** etkinliğini seçin ve ardından **Parametreler**’e tıklayın.
 1. **Ad** için **Veri kaynağı**’nı, **Runbook girişi** olarak değiştirin ve ardından **VMName**’i seçin.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af1b531ac1b38921a99284aad2108e4027d97f4c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351471"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -75,7 +75,7 @@ Azure sanal makinelerinin bir ikincil bölgeye veya şirket içi VMware VM 'leri
 
 - Mobility hizmeti uzantısının (Azure VM 'Ler için) ve Mobility hizmeti aracısının (VMware/fiziksel makineler için) sürümü 9.30.5407.1 'dan, bazı makine işletim sistemleri bakım yığını güncelleştirmesi ve SHA-2 ' yi çalıştırıyor olmalıdır. Ayrıntılar aşağıdaki tabloda gösterilmiştir.
 - Güncelleştirmeyi ve SHA-2 ' i bağlı KB 'ye uygun olarak yükler. SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez.
-- [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB) hakkında daha fazla bilgi edinin.
+- [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
 
 **İşletim sistemi** | **Azure VM** | **VMware VM/fiziksel makine**
 --- | --- | ---
@@ -348,7 +348,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
  
 **Özellik** | **Ayrıntılar**
 --- | ---
-**Linux desteği** | RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6.10/7.6 ve Ubuntu, de, ve SUSE için yeni çekirdek sürümleri için destek eklenmiştir.
+**Linux desteği** | RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 ve Oracle Linux 7,6 ve Ubuntu, de, ve SUSE için yeni çekirdek sürümleri için destek eklendi.
 
 
 ### <a name="update-rollup-31"></a>Güncelleştirme paketi 31 
@@ -364,7 +364,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 Bu ay eklenen özellikler tabloda özetlenmiştir.
 **Özellik** | **Ayrıntılar**
 --- | ---
-**Linux desteği** | Oracle Linux 6,8 ve 6.9/7.0 ve UEK5 çekirdeği için destek eklenmiştir.
+**Linux desteği** |  Oracle Linux 6,8, Oracle Linux 6,9 ve Oracle Linux 7,0 için Red Hat uyumlu çekirdek ile ve Ayırıcılanılabilir kurumsal çekirdek (UEK) sürüm 5 için destek eklenmiştir.
 **LVM** | LVM ve LVM2 birimlerine yönelik destek eklendi.<br/><br/> Bir disk bölümünde ve LVM birimlerinde/boot dizini artık desteklenmektedir.
 **Dizinler** | Bu dizinler için, ayrı bölümler olarak ayarlanan veya aynı sistem diskinde olmayan dosya sistemleri için destek eklendi:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
 **Windows Server 2008** | Dinamik disklere yönelik destek eklendi.
@@ -376,7 +376,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 
 **Özellik** | **Ayrıntılar**
 --- | ---
-**Linux desteği** | Oracle Linux 6,8 ve 6.9/7.0 için desteklenen eklendi; ve UEK5 çekirdeği için.
+**Linux desteği** | Oracle Linux 6,8, Oracle Linux 6,9 ve Oracle Linux 7,0 için Red Hat uyumlu çekirdek ile ve Ayırıcılanılabilir kurumsal çekirdek (UEK) sürüm 5 için destek eklenmiştir.
 **Linux BRTFS dosya sistemi** | Azure VM 'Leri için desteklenir.
 **Kullanılabilirlik bölgelerinde Azure VM 'Leri** | Kullanılabilirlik bölgelerinde dağıtılan Azure VM 'Leri için başka bir bölgeye çoğaltma etkinleştirebilirsiniz. Artık bir Azure VM için çoğaltmayı etkinleştirebilir ve yük devretme hedefini tek bir VM örneğine, bir kullanılabilirlik kümesindeki bir VM 'ye veya bir kullanılabilirlik bölgesindeki VM 'ye ayarlayabilirsiniz. Ayar çoğaltmayı etkilemez. Duyuruyu [okuyun](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/) .
 **Güvenlik Duvarı özellikli depolama (portal/PowerShell)** | [Güvenlik duvarı özellikli depolama hesapları](https://docs.microsoft.com/azure/storage/common/storage-network-security)için destek eklendi.<br/><br/> Azure VM 'lerini, güvenlik duvarı özellikli depolama hesaplarındaki yönetilmeyen disklerle, olağanüstü durum kurtarma için başka bir Azure bölgesine çoğaltabilirsiniz.<br/><br/> Yönetilmeyen diskler için hedef depolama hesapları olarak güvenlik duvarı özellikli depolama hesapları kullanabilirsiniz.<br/><br/> Portalda ve PowerShell kullanılarak desteklenir.

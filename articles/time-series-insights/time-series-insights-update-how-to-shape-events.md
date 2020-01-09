@@ -1,6 +1,6 @@
 ---
 title: Şekil olayları-Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights Preview ile olayları nasıl şekillendirileyeceğinizi öğrenin.
+description: En iyi uygulamalar hakkında bilgi edinin ve Azure saat öngörüleri önizlemesinde sorgulama için olayların nasıl şekillendireceğinizi öğrenin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452605"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure zaman serisi öngörüleri önizlemesi ile şekli olayları
 

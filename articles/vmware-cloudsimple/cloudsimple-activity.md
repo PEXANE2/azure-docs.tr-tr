@@ -1,5 +1,6 @@
 ---
-title: CloudSimple-CloudSimple etkinlik yönetimine göre Azure VMware çözümü
+title: CloudSimple etkinlik yönetimi
+titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple tarafından VMware çözümünde etkinlik kavramlarını açıklar
 author: sharaths-cs
 ms.author: dikamath
@@ -8,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430252"
 ---
 # <a name="activity-management-overview"></a>Etkinlik yönetimine genel bakış
 
 CloudSimple, özel bulut ortamınızın çalışmasını etkileyebilecek tüm etkinlikleri izler. Etkinlikleri, uyarıları, olayları, görevleri ve denetim etkinliğini içerir. [Etkinlik sayfaları](monitor-activity.md) , tüm geçerli etkinlikleri özetler ve ek ayrıntılar için ayrıntıya gitmenizi sağlar.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Etkinlikler
 
 Olayları, CloudSimple portalındaki Kullanıcı ve sistem etkinliğini izler. Olaylar, belirli bir kaynakla ilişkili etkinliği ve etkinin önem derecesini gösterir.  Olayları CloudSimple portalından görüntüleyebilirsiniz.
 

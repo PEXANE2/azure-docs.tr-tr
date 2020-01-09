@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri | Microsoft Docs
-description: Bu belge, Azure Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimlerini kullanarak Azure VM'lerinde çalışan uygulamaları beyaz listeye eklemenize yardımcı olur.
+title: Azure Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri
+description: Bu belge, Azure makinelerinde çalışan uygulamaları beyaz listelemek için Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi kullanmanıza yardımcı olur.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2019
+ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 46ab2fc5c796d960de8b1c5e3391a6356563b50a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353433"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri
+# <a name="adaptive-application-controls"></a>Uyarlamalı uygulama denetimleri
 Bu kılavuzu kullanarak Azure Güvenlik Merkezi'ndeki uygulama denetimi özelliklerini yapılandırmayı öğrenebilirsiniz.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Güvenlik Merkezi'ndeki uyarlamalı uygulama denetimleri nelerdir?
-Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure olmayan VM 'lerde (Windows ve Linux) hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan akıllı, otomatik, uçtan uca bir çözümdür. Diğer avantajların yanı sıra bu, VM 'lerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, VM 'leriniz üzerinde çalışan uygulamaları çözümlemek için makine öğrenimini kullanır ve bu zeka izin verilenler listesi oluşturur. Bu özellik, uygulama izin verilenler listesi ilkelerini yapılandırma ve sürdürme sürecini önemli ölçüde basitleştirir ve şunları yapmanıza olanak sağlar:
+Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dışı makinelerde (Windows ve Linux) hangi uygulamaların çalıştırılacağını denetlemenize yardımcı olan akıllı, otomatik, uçtan uca bir çözümdür. Bu, diğer avantajların yanı sıra makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur. Güvenlik Merkezi, makinelerinizde çalışan uygulamaları çözümlemek için makine öğrenimini kullanır ve bu zeka izin verilenler listesi oluşturur. Bu özellik, uygulama izin verilenler listesi ilkelerini yapılandırma ve sürdürme sürecini önemli ölçüde basitleştirir ve şunları yapmanıza olanak sağlar:
 
 - Kötü amaçlı yazılımdan koruma çözümlerinin kaçırılanlanlar da dahil olmak üzere kötü amaçlı uygulamalar çalıştırma girişimlerini engelleyin veya uyarır.
 - Kuruluşunuzun yalnızca lisanslı yazılım kullanımını gerektiren kuruluş güvenlik ilkelerine uygun hareket etme.
@@ -34,19 +34,21 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure olm
 - BT ekibinin uygulama üzerinden gizli verilere erişimi denetlemesini mümkün kılma.
 
 > [!NOTE]
-> Azure dışı ve Linux VM 'Leri için, uyarlamalı uygulama denetimleri yalnızca denetim modunda desteklenir.
+> Azure olmayan ve Linux makineler için, uyarlamalı uygulama denetimleri yalnızca denetim modunda desteklenir.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Uyarlamalı uygulama denetimleri nasıl etkinleştirilir?
-Uyarlamalı uygulama denetimleri, yapılandırılmış VM grupları üzerinde çalışmasına izin verilen bir uygulamalar kümesi tanımlamanıza yardımcı olur. Bu özellik hem Azure hem de Azure dışı Windows (tüm sürümler, klasik veya Azure Resource Manager) ve Linux VM 'Leri ve sunucuları için kullanılabilir. Uygulamanızı izin verilenler listesine yapılandırmak için aşağıdaki adımları kullanın:
+
+Uyarlamalı uygulama denetimleri, yapılandırılmış makine gruplarında çalışmasına izin verilen bir uygulamalar kümesi tanımlamanıza yardımcı olur. Bu özellik hem Azure hem de Azure olmayan Windows (tüm sürümler, klasik veya Azure Resource Manager) ve Linux makineler için kullanılabilir. Uygulamanızı izin verilenler listesine yapılandırmak için aşağıdaki adımları kullanın:
 
 1. **Güvenlik Merkezi** panosunu açın.
-2. Sol bölmeden **Gelişmiş bulut savunması** altında bulunan **Uyarlamalı uygulama denetimlerini** seçin.
 
-    ![Savunma](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+1. Sol bölmeden **Gelişmiş bulut savunması** altında bulunan **Uyarlamalı uygulama denetimlerini** seçin.
+
+    [![savunma](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
 
 **Uyarlamalı uygulama denetimleri** sayfası açılır.
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![denetimler](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
 **VM grupları** bölümünde üç sekme bulunur:
 
@@ -60,20 +62,21 @@ Uyarlamalı uygulama denetimleri, yapılandırılmış VM grupları üzerinde ç
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>Yeni bir uygulama denetim ilkesi yapılandırma
-1. Uygulama denetimi önerileri bulunan grupların listesi için **Önerilen** sekmesine tıklayın:
+
+1. Uygulama denetimi önerilerini içeren grupların listesi için **Önerilen** sekmeyi seçin:
 
    ![Önerilen](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    Liste aşağıdakileri içerir:
 
-   - **Grup adı**: Aboneliğin ve grubun adı
-   - **VM 'ler ve bilgisayarlar**: Gruptaki sanal makine sayısı
+   - **Grup adı**: aboneliğin ve grubun adı
+   - **VM 'ler ve bilgisayarlar**: gruptaki sanal makinelerin sayısı
    - **Durum**: önerilerin durumu
    - **Önem derecesi**: önerilerin önem düzeyi
 
 2. **Uygulama denetim kuralları oluştur** seçeneğini açmak için bir gruba tıklayın.
 
-   ![Uygulama denetimi kuralları](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   [![uygulama denetim kuralları](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
 
 3. **VM 'Leri Seç**bölümünde, önerilen VM 'lerin listesini gözden geçirin ve uygulama için beyaz listeye ekleme ilkesi uygulamak istemediğiniz herhangi bir onay işaretini kaldırın. Daha sonra iki liste görürsünüz:
 
@@ -131,9 +134,9 @@ Uyarlamalı uygulama denetimleri, yapılandırılmış VM grupları üzerinde ç
 
 6. **Yayımcı beyaz listeleme kuralları**, **yol beyaz listeleme kuralları**ve **karma beyaz listeleme kuralları** altında, kural koleksiyonu türüne göre, bir grup içindeki VM 'lerde hangi uygulama beyaz liste kurallarının yapılandırıldığını görebilirsiniz. Her kural için şunları görebilirsiniz:
 
-   - **Kural**: Bir uygulamanın çalışmasına izin verilip verilmeyeceğini tespit etmek için bir uygulamanın AppLocker tarafından İncelenme yaptığı özel parametreler.
-   - **Dosya türü**: Belirli bir kural kapsamındaki dosya türleri. Bu, aşağıdakilerden herhangi biri olabilir: EXE, komut dosyası, MSI veya bu dosya türlerinin herhangi bir permütasyon.
-   - **Kullanıcılar**: Uygulama beyaz listeye ekleme kuralı kapsamındaki bir uygulamayı çalıştırmasına izin verilen Kullanıcı adı veya sayısı.
+   - **Kural**: bir uygulamanın çalışmasına izin verilip verilmeyeceğini tespit etmek için bir uygulamanın AppLocker tarafından İncelenme göre belirli parametreleri.
+   - **Dosya türü**: belirli bir kural tarafından kapsanan dosya türleri. Bu, aşağıdakilerden herhangi biri olabilir: EXE, komut dosyası, MSI veya bu dosya türlerinin herhangi bir permütasyonu.
+   - **Kullanıcılar**: bir uygulama beyaz listeye ekleme kuralı kapsamında olan bir uygulamayı çalıştırmasına izin verilen Kullanıcı adı veya sayısı.
 
    ![Beyaz listeye ekleme kuralları](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 

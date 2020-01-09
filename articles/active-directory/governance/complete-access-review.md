@@ -1,5 +1,5 @@
 ---
-title: Gruplar veya uygulamalar için bir erişim incelemesi yapın-Azure Active Directory | Microsoft Docs
+title: Gruplar & uygulamalar için erişim gözden geçirmesini tamamlar-Azure AD
 description: Azure Active Directory erişim gözden geçirmeleriyle grup üyelerinin veya uygulama erişiminin erişim incelemesini tamamlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -16,20 +16,20 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422732"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle grupların veya uygulamaların erişim incelemesini tamamlar
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri içindeki gruplar ve uygulamalar için bir erişim incelemesi tamamlamayı doldurun
 
 Yönetici olarak, [gruplar veya uygulamalar için erişim gözden geçirmesi oluşturursunuz](create-access-review.md) ve gözden geçirenler [erişim incelemesini gerçekleştirir](perform-access-review.md). Bu makalede, erişim incelemesi sonuçlarının nasıl görüntüleneceği ve sonuçların nasıl uygulanacağı açıklanır.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD Premium P2
 - Genel yönetici, Kullanıcı Yöneticisi, güvenlik yöneticisi veya güvenlik okuyucusu

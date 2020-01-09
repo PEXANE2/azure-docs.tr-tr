@@ -1,7 +1,7 @@
 ---
 title: Bir model için birden fazla uç nokta oluşturma
 titleSuffix: ML Studio (classic) - Azure
-description: Aynı algoritmaya ancak farklı eğitim veri kümelerine sahip birden çok Machine Learning modeli ve Web hizmeti uç noktaları oluşturmak için PowerShell 'i kullanın.
+description: Birden çok makine öğrenimi modelleri ve web hizmeti uç noktaları aynı algoritmayı ancak farklı bir eğitim veri kümeleri oluşturmak için PowerShell kullanın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,67 +10,67 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: d7999488302098980ff9306836ec9d54aceac3be
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ae9550e797ad13f78f222cb6120f040721914964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454774"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>Bir deneyden Studio (klasik) modeller ve Web hizmeti uç noktaları oluşturmak için PowerShell 'i kullanma
 
-Ortak bir makine öğrenimi sorunu: aynı eğitim iş akışına sahip birçok model oluşturmak ve aynı algoritmayı kullanmak istiyorsunuz. Ancak, giriş olarak farklı eğitim veri kümelerine sahip olmalarını istiyorsunuz. Bu makalede, yalnızca tek bir deneme kullanılarak bu Azure Machine Learning Studio (klasik) ölçekte nasıl yapılacağı gösterilmektedir.
+Bir ortak makine öğrenimi sorunu şu şekildedir: aynı eğitim iş akışı, sahip ve aynı algoritmayı kullanan çok sayıda model oluşturmak istiyorsunuz. Ancak giriş olarak farklı bir eğitim veri kümesi olmasını istersiniz. Bu makalede, yalnızca tek bir deneme kullanılarak bu Azure Machine Learning Studio (klasik) ölçekte nasıl yapılacağı gösterilmektedir.
 
-Örneğin, küresel bir bisiklet Kiralık frankii işletmenizin olduğunu varsayalım. Geçmiş verilere göre Kiralama talebini tahmin etmek için bir regresyon modeli oluşturmak istiyorsunuz. Dünyanın dört bir yanındaki 1.000 Kiralama konumunuz var ve her konum için bir veri kümesi topladık. Bunlar, her konuma özgü tarih, saat, hava durumu ve trafik gibi önemli özellikleri içerir.
+Örneğin, bir genel bisiklet kiralama franchise işletme sahibi varsayalım. Geçmiş verileri temel alan kiralama talep tahmin etmek için regresyon modeli oluşturmak istiyorsunuz. Dünya genelinde 1.000 kiralama konumları vardır ve her konum için bir veri kümesi derledik. Bunlar, tarih, saat, hava durumu ve trafiği gibi her bir konuma özgü önemli özellikleri içerir.
 
-Tüm konumlarda tüm veri kümelerinin birleştirilmiş bir sürümünü kullanarak modelinizi bir kez eğitebilirsiniz. Ancak, konumlarınızın her biri benzersiz bir ortama sahiptir. Bu nedenle, her konum için veri kümesini kullanarak gerileme modelinizi ayrı olarak eğitebilmek daha iyi bir yaklaşım olabilir. Bu şekilde, eğitilen her bir model farklı mağaza boyutları, hacim, coğrafya, popülasyon, Bisiklet kullanımı kolay trafik ortamı ve daha fazlasını hesaba götürebileceği.
+Bir kez tüm konumlar arasında tüm veri kümelerini birleştirilmiş bir sürümünü kullanarak modelinizi eğitmek. Ancak, konumların her biri benzersiz bir ortamı sahip. Bu nedenle ayrı ayrı her konum için veri kümesini kullanarak, regresyon modeli eğitmek için daha iyi bir yaklaşım olacaktır. Bu şekilde, her eğitilen model dikkate farklı depolama boyutları, birim, Coğrafya, nüfus, bisiklet dostu trafiği ortam ve daha fazla sürebilir.
 
-Bu en iyi yaklaşım olabilir ancak her biri benzersiz bir konum temsil eden Azure Machine Learning Studio klasik sürümünde 1.000 eğitim denemeleri oluşturmak istemezsiniz. Sürekli olarak bir görev olmasının yanı sıra, her bir deneyin eğitim veri kümesi dışında aynı bileşenlere sahip olması gerektiğinden de verimsiz bir şekilde görünür.
+Bu en iyi yaklaşım olabilir, ancak Azure Machine Learning Studio (klasik) içinde her biri benzersiz bir konum temsil eden 1.000 eğitim denemeleri oluşturmak istemezsiniz. Her deneme aynı bileşenleri eğitim veri kümesi dışında olacağından zor bir görev olmasının yanı sıra, ayrıca verimsiz hatırlıyorum.
 
 Neyse ki, [Azure Machine Learning Studio (klasik) yeniden eğitim API 'sini](/azure/machine-learning/studio/retrain-machine-learning-model) kullanarak ve görevi [Azure Machine Learning Studio (klasik) PowerShell](powershell-module.md)ile otomatikleştirerek bunu yapabilirsiniz.
 
 > [!NOTE]
-> Örneğin, örneğinizi daha hızlı bir şekilde çalıştırmak için 1.000 arasındaki konum sayısını 10 ' a küçültün. Ancak aynı ilkeler ve yordamlar 1.000 konumları için de geçerlidir. Ancak, 1.000 veri kümesinden eğitme yapmak istiyorsanız, aşağıdaki PowerShell betiklerini paralel olarak çalıştırmak isteyebilirsiniz. Bunun nasıl yapılacağı, bu makalenin kapsamı dışındadır, ancak Internet 'te PowerShell çoklu iş parçacığı örneklerini bulabilirsiniz.  
+> Örneğinizi daha hızlı çalışır hale getirmek için 1000 konumlardan 10 sayısını azaltın. Ancak aynı ilke ve yordamlar 1.000 konumları için geçerlidir. Ancak, 1.000 veri kümelerinden eğitmek istiyorsanız, paralel olarak aşağıdaki PowerShell komut dosyalarını çalıştırmak isteyebilirsiniz. Bunu nasıl yapacağınız bu makalenin kapsamı dışındadır, ancak PowerShell örneklerini çoklu iş parçacığı Internet'te bulabilirsiniz.  
 > 
 > 
 
-## <a name="set-up-the-training-experiment"></a>Eğitim denemesini ayarlama
-[Cortana Intelligence Gallery](https://gallery.azure.ai)olan örnek [eğitim denemenizi](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) kullanın. Bu denemeyi [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) çalışma alanınızda açın.
+## <a name="set-up-the-training-experiment"></a>Eğitim deneme ayarlama
+Örnek [eğitim denemesini](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) alanında [Cortana Intelligence Galerisi](https://gallery.azure.ai). Bu denemeyi [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) çalışma alanınızda açın.
 
 > [!NOTE]
-> Bu örnekle birlikte takip edebilmek için, ücretsiz bir çalışma alanı yerine standart bir çalışma alanı kullanmak isteyebilirsiniz. Her müşteri için bir uç nokta oluşturursunuz-toplam 10 uç nokta için ve ücretsiz çalışma alanı 3 uç noktayla sınırlı olduğundan standart bir çalışma alanı gerektirir.
+> Bu örnek ile birlikte izlemek için ücretsiz bir çalışma alanı yerine standart çalışma kullanmak isteyebilirsiniz. Toplam 10 uç noktalar - için - her müşteri için bir uç nokta oluşturun ve ücretsiz bir çalışma alanı 3 uç noktalar ile sınırlı olduğundan, standart bir çalışma alanı gerektirir.
 > 
 > 
 
-Deneme, bir Azure Storage hesabından *customer001. csv* veri kümesini içeri aktarmak Için **veri alma** modülünü kullanır. Eğitim veri kümelerini tüm Bisiklet Kiralama konumlarından topladığınızı ve *rentalloc001. csv* ' den *rentalloc10. csv*' ye kadar dosya adlarıyla aynı BLOB depolama konumunda depoladığınız varsayıyoruz.
+Denemeyi kullanan bir **Veri Al** eğitim veri kümesi içeri aktarmak için modül *customer001.csv* bir Azure depolama hesabından. Tüm bisiklet kiralama konumlardan toplanan eğitim veri kümeleri ve bunların arasında değişen dosya adlarına sahip aynı blob depolama konumunda depolanan varsayalım *rentalloc001.csv* için *rentalloc10.csv*.
 
 ![Okuyucu modülü verileri bir Azure blobundan içeri aktarır](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
-**Eğitim modeli** modülüne bir **Web hizmeti çıkış** modülü eklendiğini unutmayın.
-Bu deneme bir Web hizmeti olarak dağıtıldığında, bu çıktı ile ilişkili uç nokta, eğitilen modeli bir. ilearner dosyası biçiminde döndürür.
+Unutmayın bir **Web hizmeti çıkış** modülü eklendi **modeli eğitme** modülü.
+Bu deneyde, bir web hizmeti olarak dağıtıldığında, uç nokta çıkış eğitilen model .ilearner dosya biçiminde döndürür ilişkili.
 
-Ayrıca, **veri alma** modülünün kullandığı URL 'yi tanımlayan bir Web hizmeti parametresi ayarlamayacağınızı unutmayın. Bu, her konum için modeli eğitmek üzere bireysel eğitim veri kümelerini belirtmek için parametresini kullanmanıza olanak sağlar.
-Bunu yaptığınız başka yollar vardır. Bir SQL Azure veritabanından veri almak için bir Web hizmeti parametresiyle birlikte bir SQL sorgusu kullanabilirsiniz. Ya da Web hizmetine bir veri kümesi geçirmek için **Web hizmeti giriş** modülünü kullanabilirsiniz.
+Ayrıca URL tanımlayan bir web hizmeti parametresini ayarlamak unutmayın, **verileri içeri aktarma** modülü kullanır. Bu, her konum için modeli eğitmek için tek bir eğitim veri kümesi belirtmek için parametreyi kullanmanıza olanak sağlar.
+Bu tamamlayabilirdik farklı yöntemleri vardır. Bir SQL Azure veritabanı'ndan veri almak için bir web hizmeti parametresi ile bir SQL sorgusu kullanabilirsiniz. Ya da bir **Web hizmeti girişini** modülü bir veri kümesinde web hizmetine geçirilecek.
 
 ![Eğitilen model modülü bir Web hizmeti çıkış modülüne çıkış verir](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Şimdi, eğitim veri kümesi olarak *rental001. csv* varsayılan değerini kullanarak bu eğitim denemesini çalıştıralım. **Değerlendirme** modülünün çıkışını (çıktıyı tıklatın ve **Görselleştir**' i seçin) görürseniz, *AUC* = 0,91 performans performansınızı görebilirsiniz. Bu noktada, bu eğitim denemenizin dışına bir Web hizmeti dağıtmaya hazırsınız demektir.
+Şimdi, şimdi varsayılan değerini kullanarak bu eğitim denemesini çalıştırma *rental001.csv* eğitim veri kümesi olarak. Çıkışı görüntülerseniz **değerlendir** Modülü (çıkış ve Seç'e tıklayın **Görselleştir**), iyi bir performans elde etmenize gördüğünüz *AUC* 0.91 =. Bu noktada, bu eğitim denemesini dışında bir web hizmeti dağıtmaya hazır olursunuz.
 
-## <a name="deploy-the-training-and-scoring-web-services"></a>Eğitim ve Puanlama Web hizmetlerini dağıtma
-Eğitim Web hizmetini dağıtmak için deneme tuvalinin altındaki **Web hizmeti ayarla** düğmesine tıklayın ve **Web Hizmeti Dağıt**' ı seçin. Bu Web hizmetini "Bisiklet Kiralama eğitimi" olarak çağırın.
+## <a name="deploy-the-training-and-scoring-web-services"></a>Eğitim ve puanlama web hizmetlerini dağıtma
+Eğitim web hizmeti dağıtmak için **Web hizmetinin ayarı** deneme tuvalinin ' düğmesine tıklayın ve belirleyin **Web hizmeti Dağıt**. Bu web hizmeti "Bisiklet kiralama Eğitim" çağırın.
 
-Artık Puanlama Web hizmetini dağıtmanız gerekir.
-Bunu yapmak için, tuvalin altında **Web hizmeti ayarla** ' ya tıklayın ve tahmine **dayalı Web hizmeti**' ni seçin. Bu, bir Puanlama denemesi oluşturur.
-Web hizmeti olarak çalışmasını sağlamak için birkaç küçük ayar yapmanız gerekir. Giriş verilerinden "sayisi" etiket sütununu kaldırın ve çıktıyı yalnızca örnek kimliği ve buna karşılık gelen tahmin edilen değerle sınırlayın.
+Şimdi Puanlama web hizmeti dağıtmak gerekir.
+Bunu yapmak için tıklatın **Web hizmetinin ayarı** seçin ve tuval aşağıda **Tahmine dayalı Web hizmeti**. Bu, bir Puanlama deneme oluşturur.
+Bir web hizmeti olarak çalışması için birkaç küçük ayarlamalar yapmanız gerekir. "Cnt" etiket sütunu giriş verileri kaldırın ve çıkış yalnızca örnek kimliği ve karşılık gelen tahmin edilen değer sınırlayabilirsiniz.
 
-Bu işi kaydetmek için, önceden hazırlanmış olan galeride tahmine [dayalı](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) denemeyi açabilirsiniz.
+Bu iş kendiniz kaydetmek için açabilirsiniz [Tahmine dayalı denemeye](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) galerisinde zaten hazırlandı.
 
-Web hizmetini dağıtmak için, tahmine dayalı denemeyi çalıştırın, sonra tuvalin altındaki **Web Hizmeti Dağıt** düğmesine tıklayın. Puanlama Web hizmeti "Bisiklet Kiralama Puanlama" olarak adlandırın.
+Web hizmetini dağıtmak için Tahmine dayalı denemeye çalıştırın, ardından **Web hizmeti Dağıt** tuvalin altındaki düğme. Puanlama web hizmeti "Bisiklet kiralama Puanlama" olarak adlandırın.
 
-## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>PowerShell ile 10 özdeş Web hizmeti uç noktası oluşturma
-Bu Web hizmeti varsayılan bir uç nokta ile birlikte gelir. Ancak güncelleştirilemediğinden, varsayılan uç nokta ile ilgilenmiş olursunuz. Yapmanız gerekenler her konum için bir tane olmak üzere 10 ek uç nokta oluşturmaktır. Bunu PowerShell ile yapabilirsiniz.
+## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>PowerShell ile 10 aynı web hizmeti uç noktası oluşturma
+Bu web hizmeti bir varsayılan uç nokta ile birlikte gelir. Ancak bu yana güncelleştirilemiyor varsayılan uç nokta olarak değil. Yapmanız gerekenler 10 ek uç noktalar, her konum için bir tane oluşturmaktır. PowerShell ile bunu yapabilirsiniz.
 
-İlk olarak, PowerShell ortamını ayarlarsınız:
+İlk olarak, PowerShell ortamı ayarlayın:
 
     Import-Module .\AzureMLPS.dll
     # Assume the default configuration file exists and is properly set to point to the valid Workspace.
@@ -87,14 +87,14 @@ Ardından, aşağıdaki PowerShell komutunu çalıştırın:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Artık 10 uç noktası oluşturdunuz ve hepsi, *customer001. csv*üzerinde eğitilen eğitilen modeli içeriyor. Bunları Azure portal görüntüleyebilirsiniz.
+Artık 10 uç noktası oluşturuldu ve bunların tümü aynı eğitilmiş içeren üzerinde modeli eğitilir *customer001.csv*. Bunları Azure portalında görüntüleyebilirsiniz.
 
 ![Portalda eğitilen modellerin listesini görüntüleyin](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
-## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Uç noktaları PowerShell kullanarak ayrı eğitim veri kümeleri kullanacak şekilde güncelleştirme
-Sonraki adım, her bir müşterinin bireysel verilerinde benzersiz olarak eğitilen modellerle uç noktaları güncelleştirmedir. Ancak öncelikle bu modelleri **Bisiklet Kiralama eğitimi** Web hizmetinden üretmeniz gerekir. **Bisiklet Kiralama eğitimi** Web hizmetine geri dönelim. 10 farklı model üretmek için BES bitiş noktası 10 kez 10 farklı eğitim veri kümesi ile çağırmanız gerekir. Bunu yapmak için **ınovkeamlwebservicebesendpoint** PowerShell cmdlet 'ini kullanın.
+## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>PowerShell kullanarak bir eğitim veri kümeleri kullanılacak uç noktalarını güncelleştir
+Sonraki adım her müşterinin tek tek veri benzersiz olarak eğitilen modelleri ile uç noktaları güncelleştirmektir. Ancak bu modellerinden üretmek gereken ilk **bisiklet kiralama eğitim** web hizmeti. Geri dönelim **bisiklet kiralama eğitim** web hizmeti. BES bitim 10 kez 10 farklı bir eğitim veri kümeleri ile 10 farklı modelleri oluşturmak için çağırmanız gerekir. Kullanım **InovkeAmlWebServiceBESEndpoint** Bunu yapmak için PowerShell cmdlet'i.
 
-Ayrıca, `$configContent`' ye blob Storage hesabınızın kimlik bilgilerini sağlamanız gerekir. Yani, alanlar `AccountName`, `AccountKey`ve `RelativeLocation`. `AccountName`, **Azure Portal** (*depolama* sekmesi) görüldüğü gibi hesap adlarınızın biri olabilir. Bir depolama hesabına tıkladığınızda, en alttaki **erişim tuşlarını Yönet** düğmesine basılarak ve *birincil erişim anahtarı*kopyalanırken `AccountKey` bulunabilir. `RelativeLocation`, depolama alanı ile ilgili yeni bir modelin depolanacağı yoldur. Örneğin, aşağıdaki betikteki yol `hai/retrain/bike_rental/` `hai`adlı bir kapsayıcıya işaret eder ve `/retrain/bike_rental/` alt klasörlerdir. Şu anda, Portal Kullanıcı arabirimi aracılığıyla alt klasör oluşturamazsınız, ancak bunu yapmanıza izin veren [birkaç Azure depolama araştırması](../../storage/common/storage-explorers.md) vardır. Yeni eğitilen modelleri (. iLearner dosyaları) şu şekilde depolamak için depolama ortamınızda yeni bir kapsayıcı oluşturmanız önerilir: depolama sayfanızda, alttaki **Ekle** düğmesine tıklayın ve `retrain`adlandırın. Özet olarak, aşağıdaki betikte gerekli değişiklikler `AccountName`, `AccountKey`ve `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) ile ilgilidir.
+Blob depolama hesabınız için kimlik bilgilerini sağlamanız gerekecektir `$configContent`. Yani, alanları, `AccountName`, `AccountKey`, ve `RelativeLocation`. `AccountName` Hesap adlarınızla biri görüldüğü olabilir **Azure portalında** (*depolama* sekmesi). Bir depolama hesabı,'a tıkladığınızda, `AccountKey` tuşlarına basarak bulunabilir **erişim anahtarlarını Yönet** düğmesinin altındaki ve kopyalama *birincil erişim anahtarı*. `RelativeLocation` Yeni bir modeli depolanacağı depolama alanınızı göreli bir yol olduğu. Örneğin, yol `hai/retrain/bike_rental/` adlı bir kapsayıcı için aşağıdaki betiği nokta `hai`, ve `/retrain/bike_rental/` alt. Şu anda, alt klasör portal kullanıcı Arabirimi üzerinden oluşturamazsınız ancak vardır [çeşitli Azure depolama gezginleri](../../storage/common/storage-explorers.md) bunu izin verir. Depolamanızda gibi yeni eğitilen modeller (.iLearner dosyaları) depolamak için yeni bir kapsayıcı oluşturmak önerilir: depolama sayfanızdan tıklayın **Ekle** düğmesinin altındaki ve adlandırın `retrain`. Özet olarak, aşağıdaki komut dosyası için gerekli değişiklikleri ilgilidir `AccountName`, `AccountKey`, ve `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service
@@ -110,13 +110,13 @@ Ayrıca, `$configContent`' ye blob Storage hesabınızın kimlik bilgilerini sa�
     }
 
 > [!NOTE]
-> BES uç noktası bu işlem için desteklenen tek moddur. RR 'ler, eğitilen modeller üretmek için kullanılamaz.
+> BES uç nokta bu işlem için desteklenen tek moddur. RRS eğitilen modelleri üretmek için kullanılamaz.
 > 
 > 
 
-Yukarıda gördüğünüz gibi, 10 farklı BES iş yapılandırması JSON dosyası oluşturmak yerine, bunun yerine yapılandırma dizesini dinamik olarak oluşturursunuz. Ardından, **ınvokeamlwebservcebesendpoint** cmdlet 'Inin *jobconfigstring* parametresine akışı yapın. Gerçekten diskte kopya tutmaya gerek yoktur.
+10 farklı BES iş yapılandırma json dosyalarını oluşturmak yerine, yukarıdaki görebileceğiniz gibi dinamik olarak yapılandırma dizesi yerine oluşturun. Kendisine akış *jobConfigString* parametresinin **InvokeAmlWebServceBESEndpoint** cmdlet'i. Gerçekten diskte bir kopyasını tutmaya gerek yoktur.
 
-Her şey iyi olursa bir süre sonra, Azure depolama hesabınızda *model001. ilearner* 'den *model010. ilearner*'e kadar 10. ilearner dosyası görmeniz gerekir. Artık **Patch-AmlWebServiceEndpoint** PowerShell cmdlet 'ini kullanarak bu modellerle 10 Puanlama Web hizmeti uç noktasını güncelleştirmeye hazırsınız. Yalnızca programlı olarak daha önce oluşturduğunuz varsayılan olmayan uç noktalara yayacağınızdan emin olabilirsiniz.
+Her şey yolunda giderse, bir süre sonra 10 .iLearner dosya gelen görmelisiniz *model001.ilearner* için *model010.ilearner*, Azure depolama hesabınızdaki. Web hizmeti uç noktalarını kullanarak bu modelleri ile Puanlama 10 güncelleştirmeye hazır artık **Patch-AmlWebServiceEndpoint** PowerShell cmdlet'i. Program aracılığıyla daha önce oluşturduğunuz varsayılan olmayan uç noktaları yalnızca düzeltme yeniden unutmayın.
 
     # Patch the 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
@@ -129,10 +129,10 @@ Her şey iyi olursa bir süre sonra, Azure depolama hesabınızda *model001. ile
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
 
-Bu, oldukça hızlı çalışmalıdır. Yürütme tamamlandığında, 10 tahmine dayalı Web hizmeti uç noktası başarıyla oluşturdunuz. Her biri, tek bir eğitim denemesindeki bir kiralık konuma özgü veri kümesi üzerinde benzersiz şekilde eğitilen bir model içerir. Bunu doğrulamak için, **ınvokeamlwebservicerrsendpoint** cmdlet 'ini kullanarak bu uç noktaları çağırmayı deneyebilirsiniz ve bunları aynı giriş verileriyle birlikte sağlayabilirsiniz. Modeller farklı eğitim kümeleriyle eğitildiğinden, farklı tahmin sonuçları görmeyi beklemelisiniz.
+Bu oldukça hızlı bir şekilde çalışması gerekir. Yürütme sona erdiğinde, başarıyla oluşturuldu 10 Tahmine dayalı web hizmeti uç noktası. Her biri benzersiz bir tek eğitim denemesini tümünden kiralama konuma belirli veri kümesi eğitilmiş eğitilen bir modelin içerir. Bunu doğrulamak için kullanarak bu uç noktalarına çağrı yapma deneyebilirsiniz **InvokeAmlWebServiceRRSEndpoint** cmdlet'i, bunları aynı girdi verileriyle sağlama. Modelleri farklı eğitim kümeleriyle eğitilir olduğundan farklı tahmin sonuçlarını görmek beklemeniz gerekir.
 
-## <a name="full-powershell-script"></a>Tam PowerShell betiği
-Tam kaynak kodu listesi aşağıdadır:
+## <a name="full-powershell-script"></a>Tam PowerShell Betiği
+Tam kaynak kodu listesi aşağıda verilmiştir:
 
     Import-Module .\AzureMLPS.dll
     # Assume the default configuration file exists and properly set to point to the valid workspace.

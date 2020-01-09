@@ -1,5 +1,5 @@
 ---
-title: Azure CLı örneği-bir anlık görüntüyü başka bir bölgedeki depolama hesabına kopyalama
+title: Bir anlık görüntüyü başka bir bölgedeki bir depolama hesabına kopyalama-CLı örneği
 description: Azure CLI betik örneği - aynı veya farklı bölgedeki bir depolama hesabına VHD olarak anlık görüntü dışarı aktarma/kopyalama.
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: e9390d6854ecfa43542d1713bae7d7e8fd8439ee
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01d3b17ab2623570e086b0edea17ff97c8fe8ae8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458530"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>CLI ile farklı bölgedeki bir depolama hesabına bir anlık görüntü dışarı aktarma/kopyalama
 

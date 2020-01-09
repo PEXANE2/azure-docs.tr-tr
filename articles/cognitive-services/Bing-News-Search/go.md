@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e08fe23f99cbf2fac7fc0528b04360f36d22b875
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222130"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448537"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Hızlı başlangıç: Bing Haber Arama REST API kullanarak haber sonuçları alın ve git
 
@@ -26,13 +26,13 @@ Bu hızlı başlangıçta Bing Haber Arama API'si çağırmak için go dili kull
 * Sonuçları göstermek için BT 'nin yazıcı için go-Spew kitaplığını yükler
     * Bu kitaplığı yükler: `$ go get -u https://github.com/davecgh/go-spew`
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Proje oluşturma ve kitaplıkları içeri aktarma
 
 IDE veya Düzenleyicinizde yeni bir go projesi oluşturun. Ardından istekler için `net/http` içeri aktarın, yanıtı okumak için `ioutil` ve sonuçların JSON metnini işlemek için `encoding/json`. JSON ayrıştırmak için go-Spew kitaplığı gereklidir. 
 
-```
+```go
 package main
 
 import (
@@ -49,7 +49,7 @@ import (
 
 `NewsAnswer` yapısı, yanıtta sağlanan verileri biçimlendirir. JSON yanıtı çok düzeyli ve oldukça karmaşıktır.  Aşağıdaki uygulama temel bilgileri içerir.
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -87,9 +87,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Ana işlevi ve değişkenleri tanımlama  
 
-Aşağıdaki kod Main işlevini bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin.
+Aşağıdaki kod Main işlevini bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -110,7 +110,7 @@ func main() {
 
 Sorgu dizesini ve erişim anahtarı üst bilgisini ekleyin
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -125,7 +125,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 İstemcisini oluşturun ve get isteğini gönderin. 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -141,7 +141,7 @@ if err != nil {
 
 `ioutil`kullanarak isteği gönderin ve sonuçları okuyun.
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -162,7 +162,7 @@ if err != nil {
 
 `Unmarshall` işlevi, Haber Arama API tarafından döndürülen JSON metnindeki bilgileri ayıklar.  Ardından, `go-spew` oldukça yazıcısını kullanarak sonuçlardan düğümleri görüntüleyebilirsiniz.
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)

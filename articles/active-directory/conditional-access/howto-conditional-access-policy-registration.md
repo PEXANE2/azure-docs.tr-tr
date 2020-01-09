@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 866b682c9e1ebcb1b3458d26c638237905d06b05
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424844"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Koşullu erişim: MFA kaydı için güvenilen konum gerektir
 
@@ -50,5 +50,7 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmayı den
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+
+[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)

@@ -1,5 +1,5 @@
 ---
-title: Java için ADAL MSAL geçiş kılavuzu | Mavisi
+title: ADAL to MSAL geçiş kılavuzu (MSAL4j) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) Java uygulamanızı Microsoft kimlik doğrulama kitaplığı 'na (MSAL) geçirmeyi öğrenin.
 services: active-directory
@@ -16,12 +16,12 @@ ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e99cee3f21a4e0088fa97dcbec8fdcfdf982d80
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c228e708988d9d1ec9f58fce4f1289fd61f817b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424435"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL MSAL geçiş kılavuzu
 

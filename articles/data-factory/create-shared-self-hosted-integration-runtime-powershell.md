@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: 2b83c61d05cbc9d84c74d03004839a21505519fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2f24d8203ac5fb9724370cbdf4309bdc43c166a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444093"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
@@ -51,11 +51,11 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
 1. Bağlı bir tümleştirme çalışma zamanı oluşturun.
 1. Paylaşımı iptal edin.
 
-### <a name="prerequisites"></a>Önkoşullar 
+### <a name="prerequisites"></a>Ön koşullar 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
+- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). 
 
 - **Azure PowerShell**. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](https://docs.microsoft.com/powershell/azure/install-az-ps)içindeki yönergeleri izleyin. Diğer veri fabrikaları ile paylaşılabilen şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için bir betiği çalıştırmak üzere PowerShell 'i kullanırsınız. 
 
@@ -99,7 +99,7 @@ Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR
     > [!NOTE]  
     > Bu adım isteğe bağlıdır. Zaten bir veri fabrikanızı varsa, bu adımı atlayın. 
 
-    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek, WestEurope konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur: 
+    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek, WestEurope konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

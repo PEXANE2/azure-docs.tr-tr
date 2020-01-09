@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Bileşik varlık öğreticisi-LUSıS'
 titleSuffix: Azure Cognitive Services
-description: Çeşitli türlerde ayıklanan verileri içeren tek bir varlığa paket için bileşik bir varlık ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
+description: Bu öğreticide, bileşik bir varlık içeren tek bir varlığa çeşitli türlerde ayıklanan veri paketi ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447958"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Öğretici: ilgili verileri gruplandırın ve ayıklayın
 Bu öğreticide, bileşik bir varlık içeren tek bir varlığa çeşitli türlerde ayıklanan veri paketi ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
@@ -29,9 +29,7 @@ Bileşik varlık olduğundan bu veri türü için uygun olan veri:
 * Varlık türleri çeşitli kullanın.
 * İstemci uygulama tarafından bir bilgi birimi olarak gruplanmaları ve işlenmeleri gerekir.
 
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
-
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -40,17 +38,18 @@ Bileşik varlık olduğundan bu veri türü için uygun olan veri:
 > * Bileşik varlık ekleme
 > * Eğitin
 > * Yayımlama
-> * Uç noktasındaki amaçları ve varlıkları alma
+> * Uç noktadan amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 
-1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) liste varlık öğreticiden indirip kaydedin.
+1.  [Uygulama json dosyasını](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) liste varlık öğreticiden indirip kaydedin.
 
-2. JSON'ı yeni bir uygulamaya içeri aktarın.
+2. Yeni bir uygulamaya, [halsıs portalını](https://www.luis.ai)kullanarak JSON alın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `composite` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `composite` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 ## <a name="composite-entity"></a>Bileşik varlık
 

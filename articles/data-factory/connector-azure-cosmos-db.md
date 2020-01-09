@@ -10,13 +10,13 @@ ms.service: multiple
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/13/2019
-ms.openlocfilehash: bf24c12e8f1e5b7ee5c529ebffa6c15dd8acbcfc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 2a712b7b9ce1982f40465e95754f0bae9cce5c58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444439"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) Azure Data Factory kullanarak verileri kopyalama ve dönüştürme
 
@@ -41,7 +41,7 @@ Kopyalama etkinliği için, bu Azure Cosmos DB (SQL API) Bağlayıcısı şunlar
 
 - Gelen ve Azure Cosmos DB veri kopyalama [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
 - Azure Cosmos DB yazma **Ekle** veya **upsert**.
-- İçeri aktarma ve JSON belgeleri olarak dışarı aktarma- ya da ya da tablolu bir veri kümesine veri kopyalayın. SQL veritabanı ve bir CSV dosyası verilebilir. Belgeleri JSON dosyalarından ya da başka bir Azure Cosmos DB koleksiyonuna veya farklı bir koleksiyon olarak kopyalamak için bkz. JSON belgelerini Içeri veya dışarı aktarma.
+- İçeri aktarma ve JSON belgeleri olarak dışarı aktarma- ya da ya da tablolu bir veri kümesine veri kopyalayın. SQL veritabanı ve bir CSV dosyası verilebilir. Belgeleri JSON dosyalarından veya ya da başka bir Azure Cosmos DB koleksiyonuna olduğu gibi kopyalamak için bkz. [JSON belgelerini içeri ve dışarı aktarma](#import-and-export-json-documents).
 
 Veri Fabrikası ile tümleştirilir [Azure Cosmos DB toplu Yürütücü Kitaplığı](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) Azure Cosmos DB'ye yazdığınızda, en iyi performansı sağlamak için.
 
@@ -60,8 +60,8 @@ Azure Cosmos DB (SQL API) bağlı hizmeti için aşağıdaki özellikler destekl
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | **Türü** özelliği ayarlanmalıdır **CosmosDb**. | Yes |
-| connectionString |Azure Cosmos DB veritabanına bağlanmak için gereken bilgileri belirtin.<br />**Not**: veritabanı bilgisi bağlantı dizesinde aşağıdaki örneklerde gösterildiği gibi belirtmeniz gerekir. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
+| type | **Türü** özelliği ayarlanmalıdır **CosmosDb**. | Evet |
+| connectionString |Azure Cosmos DB veritabanına bağlanmak için gereken bilgileri belirtin.<br />**Not**: veritabanı bilgisi bağlantı dizesinde aşağıdaki örneklerde gösterildiği gibi belirtmeniz gerekir. <br/> Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel bir ağda yer alıyorsa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Bu özellik belirtilmezse, varsayılan Azure tümleştirme çalışma zamanı kullanılır. |Hayır |
 
 **Örnek**
@@ -72,10 +72,7 @@ Azure Cosmos DB (SQL API) bağlı hizmeti için aşağıdaki özellikler destekl
     "properties": {
         "type": "CosmosDb",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
-            }
+            "connectionString": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -93,10 +90,7 @@ Azure Cosmos DB (SQL API) bağlı hizmeti için aşağıdaki özellikler destekl
     "properties": {
         "type": "CosmosDb",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "AccountEndpoint=<EndpointUrl>;Database=<Database>"
-            },
+            "connectionString": "AccountEndpoint=<EndpointUrl>;Database=<Database>",
             "accountKey": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -122,8 +116,8 @@ Azure Cosmos DB (SQL API) veri kümesi için aşağıdaki özellikler destekleni
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin **Type** özelliği **CosmosDbSqlApiCollection**olarak ayarlanmalıdır. |Yes |
-| collectionName |Azure Cosmos DB belge koleksiyonu adı. |Yes |
+| type | Veri kümesinin **Type** özelliği **CosmosDbSqlApiCollection**olarak ayarlanmalıdır. |Evet |
+| collectionName |Azure Cosmos DB belge koleksiyonu adı. |Evet |
 
 "DocumentDbCollection" tür veri kümesini kullanıyorsanız, kopyalama ve arama etkinliği için geriye dönük uyumluluk için olduğu gibi hala desteklenir, veri akışı için desteklenmez. İleri doğru olan yeni modeli kullanmanız önerilir.
 
@@ -146,19 +140,9 @@ Azure Cosmos DB (SQL API) veri kümesi için aşağıdaki özellikler destekleni
 }
 ```
 
-### <a name="schema-by-data-factory"></a>Veri fabrikası tarafından şeması
-
-Azure Cosmos DB gibi şemasız veri depoları için kopyalama etkinliği aşağıdaki listede açıklandığı şekilde şemayı algılar. İstediğiniz sürece [içeri veya dışarı aktarma JSON belgeleri olarak-olan](#import-or-export-json-documents), veri yapısını belirlemek için en iyi uygulamadır **yapısı** bölümü.
-
-Data Factory, etkinlikte belirttiğiniz eşlemeyi de alır. Bir satır bir sütun için bir değer içermiyorsa, bir null değer sütun değeri için sağlanır.
-
-Bir eşleme belirtmezseniz, Data Factory hizmeti verilerin ilk satırını kullanarak şemayı algılar. İlk satır tam şemayı içermiyorsa, etkinlik işleminin sonucunda bazı sütunlar eksik olur.
-
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bu bölüm Azure Cosmos DB (SQL API) kaynak ve havuz desteğinin özelliklerinin bir listesini sağlar.
-
-Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md).
+Bu bölüm Azure Cosmos DB (SQL API) kaynak ve havuz desteğinin özelliklerinin bir listesini sağlar. Bölümleri ve etkinlikleri tanımlamak için kullanılabilir olan özellikleri tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md).
 
 ### <a name="azure-cosmos-db-sql-api-as-source"></a>Kaynak olarak Azure Cosmos DB (SQL API)
 
@@ -168,9 +152,9 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbsqlapısource**olarak ayarlanmalıdır. |Yes |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **Cosmosdbsqlapısource**olarak ayarlanmalıdır. |Evet |
 | sorgu |Verileri okumak için Azure Cosmos DB sorgusu belirtin.<br/><br/>Örnek:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Hayır <br/><br/>Belirtilmemişse, bu SQL deyimi yürütülür: `select <columns defined in structure> from mycollection` |
-| Preferredregion | Cosmos DB verileri alırken Bağlanılacak bölgelerin tercih edilen listesi. | Hayır |
+| Preferredregion | Cosmos DB veri alınırken Bağlanılacak bölgelerin tercih edilen listesi. | Hayır |
 | pageSize | Sorgu sonucunun sayfa başına belge sayısı. Varsayılan değer olan "-1", hizmet tarafı dinamik sayfa boyutunu 1000 'e kadar kullanır. | Hayır |
 
 "DocumentDbCollectionSource" tür kaynağını kullanırsanız, geriye dönük uyumluluk için olduğu gibi hala desteklenir. Cosmos DB verileri kopyalamak için daha zengin yetenekler sağlayan yeni modeli ileri kullanmanız önerilir.
@@ -210,6 +194,8 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 ]
 ```
 
+Cosmos DB verileri kopyalama sırasında [JSON belgelerini olduğu gibi dışarı aktarmak](#import-and-export-json-documents)istemiyorsanız en iyi yöntem kopyalama etkinliğinde eşlemeyi belirtmektir. Data Factory, etkinlik üzerinde belirttiğiniz eşlemeyi alır. bir satır bir sütun için değer içermiyorsa, sütun değeri için null değer sağlanır. Eşleme belirtmezseniz, verileri verilerdeki ilk satırı kullanarak şemayı Data Factory. İlk satır tam şemayı içermiyorsa, etkinlik işleminin sonucunda bazı sütunlar eksik olur.
+
 ### <a name="azure-cosmos-db-sql-api-as-sink"></a>Havuz olarak Azure Cosmos DB (SQL API)
 
 Azure Cosmos DB (SQL API) ' e veri kopyalamak için kopyalama etkinliğindeki **Havuz** türünü **Documentdbcollectionsink**olarak ayarlayın. 
@@ -218,10 +204,13 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun **Type** özelliği **Cosmosdbsqlapisink**olarak ayarlanmalıdır. |Yes |
+| type | Kopyalama etkinliği havuzunun **Type** özelliği **Cosmosdbsqlapisink**olarak ayarlanmalıdır. |Evet |
 | writeBehavior |Azure Cosmos DB'ye veri yazmak açıklar. İzin verilen değerler: **Ekle** ve **upsert**.<br/><br/>Davranışını **upsert** aynı Kimliğe sahip bir belge zaten varsa belge değiştirmek üzere; Aksi takdirde, belge ekleyin.<br /><br />**Not**: Data Factory bir kimliği, özgün belgenin veya sütun eşlemesi tarafından belirtilmezse bir belge için bir kimliği otomatik olarak oluşturur. İçin emin olmanız gerekir, yani **upsert** beklendiği şekilde çalışması için belgeyi bir kimliği vardır. |Hayır<br />(varsayılan değer **Ekle**) |
 | writeBatchSize | Veri fabrikasının kullandığı [Azure Cosmos DB toplu Yürütücü Kitaplığı](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) Azure Cosmos DB'ye veri yazmak için. **Writebatchsize** ÖZELLIĞI, ADF 'nin kitaplığa sağladığı belge boyutunu denetler. Değerini artırmayı deneyin **writeBatchSize** performansı ve değeri, azalan artırmak için belgenizin durdurulmasını büyük boyut - ipuçlarına bakın. |Hayır<br />(varsayılan değer **10.000**) |
 | disableMetricsCollection | Data Factory, performansı iyileştirmek ve önerileri kopyalamak için Cosmos DB ru gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, kapatmak için `true` belirtin. | Hayır (varsayılan `false`) |
+
+>[!TIP]
+>JSON belgelerini olduğu gibi içeri aktarmak için [JSON belgelerini içeri veya dışarı aktarma](#import-and-export-json-documents) bölümüne bakın; tablosal şekillendirilmiş verilerden kopyalamak için, [ilişkisel veritabanından Cosmos DB geçirme](#migrate-from-relational-database-to-cosmos-db)bölümüne bakın.
 
 >[!TIP]
 >Cosmos DB tek isteğin boyutunu 2 MB ile sınırlar. İstek boyutu formüldür tek belge boyutu = * yazma toplu iş boyutu. Hata bildiren ulaşırsanız **"istek boyutu çok büyük."** , **azaltmak `writeBatchSize` değer** kopyalama havuz yapılandırması.
@@ -260,26 +249,64 @@ Kopyalama etkinliği aşağıdaki özellikler desteklenir **kaynak** bölümü:
 ]
 ```
 
+### <a name="schema-mapping"></a>Şema eşleme
+
+Verileri Azure Cosmos DB tablo havuzuna veya ters çevrilme göre kopyalamak için [Şema eşlemesi](copy-activity-schema-and-type-mapping.md#schema-mapping)' ne bakın.
+
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
-Eşleme veri akışındaki [kaynak dönüşümden](data-flow-source.md) ve [Havuz dönüşümünde](data-flow-sink.md) ayrıntıları öğrenin.
+Eşleme veri akışındaki verileri dönüştürürken Cosmos DB koleksiyonları okuyabilir ve yazabilirsiniz. Daha fazla bilgi için bkz. veri akışlarını eşleme içindeki [kaynak dönüştürme](data-flow-source.md) ve [Havuz dönüşümü](data-flow-sink.md) .
+
+### <a name="source-transformation"></a>Kaynak dönüştürme
+
+Azure Cosmos DB özgü ayarlar, kaynak dönüşümünün **kaynak seçenekleri** sekmesinde bulunabilir. 
+
+**Sistem sütunlarını dahil et:** True ise, ```id```, ```_ts```ve diğer sistem sütunları CosmosDB 'den veri akışı meta verilerinize dahil edilir. Koleksiyonları güncelleştirirken, mevcut satır kimliğini elde edebilmeniz için bunu dahil etmek önemlidir.
+
+**Sayfa boyutu:** Sorgu sonucunun sayfa başına belge sayısı. Varsayılan değer, hizmet dinamik sayfasını 1000 ' e kadar kullanan "-1" ' dir.
+
+**Aktarım hızı:** Bu veri akışının her yürütmesi için, okuma işlemi sırasında CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
+
+**Tercih edilen bölgeler:** Bu işlem için tercih edilen okuma bölgelerini seçin.
+
+### <a name="sink-transformation"></a>Havuz dönüştürme
+
+Azure Cosmos DB özgü ayarlar, havuz dönüşümünün **Ayarlar** sekmesinde bulunabilir.
+
+**Güncelleştirme yöntemi:** Veritabanı Hedefinizdeki hangi işlemlere izin verileceğini belirler. Varsayılan değer yalnızca eklemeleri izin verir. Satırları güncelleştirmek, kaldırmak veya silmek için, bu eylemler için satırları etiketlemek üzere alter-Row dönüşümü gereklidir. Güncelleştirmeler, yukarı ve silme için bir anahtar sütunu veya sütunları ayarlanacak satırı belirleyecek şekilde ayarlanmalıdır.
+
+**Koleksiyon eylemi:** Yazmadan önce hedef koleksiyonun yeniden oluşturulup oluşturulmayacağını belirler.
+* Hiçbiri: koleksiyona hiçbir eylem yapılmaz.
+* Yeniden oluştur: koleksiyon bırakılır ve yeniden oluşturulur
+
+**Toplu iş boyutu**: her bir sepete kaç satır yazıldığını denetler. Daha büyük toplu işlem boyutları sıkıştırma ve bellek iyileştirmeyi iyileştirir, ancak verileri önbelleğe alırken bellek dışında özel durumlar riskini ortadan kaldıracak.
+
+**Bölüm anahtarı:** Koleksiyonunuz için bölüm anahtarını temsil eden bir dize girin. Örnek: ```/movies/title```
+
+**Aktarım hızı:** Bu veri akışının her yürütmesi için CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
+
+**Yazma aktarım hızı bütçesi:** Toplu alma Spark işine ayırmak istediğiniz RUs sayısını temsil eden bir tamsayı. Bu sayı, koleksiyona ayrılan toplam üretilen iş üretiminin dışındadır.
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
 Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
-## <a name="import-or-export-json-documents"></a>JSON belgelerini içeri veya dışarı aktarma
+## <a name="import-and-export-json-documents"></a>JSON belgelerini içeri ve dışarı aktarma
 
 Bu Azure Cosmos DB (SQL API) bağlayıcısını kolayca kullanabilirsiniz:
 
+* Belgeler iki Azure Cosmos DB koleksiyonları arasında kopyalama-olduğu.
 * JSON belgeleri için Azure Cosmos DB, Azure Blob Depolama, Azure Data Lake Store ve Azure Data Factory destekleyen diğer dosya tabanlı depoları da dahil olmak üzere çeşitli kaynaklardan içeri aktarın.
 * JSON belgeleri bir Azure Cosmos DB koleksiyonundan çeşitli dosya tabanlı depoları dışarı aktarın.
-* Belgeler iki Azure Cosmos DB koleksiyonları arasında kopyalama-olduğu.
 
 Şemadan kopyalama elde etmek için:
 
 * Veri kopyalama aracını kullandığınızda, seçin **Dışarı Aktar-JSON dosyaları veya Cosmos DB koleksiyonu** seçeneği.
 * Etkinlik yazma kullandığınızda, kaynak veya havuz için karşılık gelen dosya deposuyla JSON biçimi ' ni seçin.
+
+## <a name="migrate-from-relational-database-to-cosmos-db"></a>İlişkisel veritabanından Cosmos DB geçirin
+
+İlişkisel bir veritabanından geçiş yaparken (örneğin, Azure Cosmos DB SQL Server, kopyalama etkinliği kaynaktaki tablo verilerini, Cosmos DB JSON belgelerini düzleştirmek üzere kolayca bağlanabilir. Bazı durumlarda, verileri bir JSON belgesinde ilgili tüm alt öğeleri katıştırarak verileri yeniden kullanmak gibi [Azure Cosmos DB veri modellemeye](../cosmos-db/modeling-data.md)göre NoSQL kullanım örnekleri için en uygun şekilde, veri modelini yeniden tasarlamanız gerekebilir. Böyle bir durumda, [Bu blog gönderisine](https://medium.com/@ArsenVlad/denormalizing-via-embedding-when-copying-data-from-sql-to-cosmos-db-649a649ae0fb) , Azure Data Factory kopyalama etkinliğini kullanarak nasıl elde leyeceğinizi gösteren bir yönergeye başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

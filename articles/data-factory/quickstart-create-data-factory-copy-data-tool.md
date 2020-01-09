@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.openlocfilehash: 4ead3472e1706742781cb64a12103f3dec1fd27a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922466"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440140"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
 
@@ -27,14 +27,14 @@ ms.locfileid: "74922466"
 Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Sonra, Veri Kopyalama aracını kullanarak Azure Blob depolama alanındaki bir klasörde bulunan verileri başka bir klasöre kopyalarsınız. 
 
 > [!NOTE]
-> Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
+> Azure Data Factory kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. [Azure Portal](https://portal.azure.com) gidin. 
+1. [Azure portalına](https://portal.azure.com) gidin. 
 1. Azure portal menüsünde **kaynak oluştur**' u seçin.
 
     ![Azure portal menüsünden kaynak oluşturma](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
@@ -54,13 +54,13 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
    - **Var olanı kullan**’ı ve ardından listeden var olan bir kaynak grubunu seçin. 
    - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
-   Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+   Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** için, veri fabrikasının konumunu seçin.
 
    Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra, **Data Factory** sayfasını görürsünüz. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    

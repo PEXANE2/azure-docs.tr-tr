@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359162"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -38,7 +38,7 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 
  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -281,7 +281,7 @@ Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. 
 
 Örnek Kaynak Yöneticisi şablonu [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) ve [201-DSC-Linux-genel-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu)olur.
 
-Azure Resource Manager şablonu hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../../azure-resource-manager/resource-group-authoring-templates.md).
+Azure Resource Manager şablonu hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../../azure-resource-manager/templates/template-syntax.md).
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
@@ -306,7 +306,7 @@ Kullanılabilir en son uzantı sürümünü öğrenmek için şunu çalıştır�
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Kaynak Yöneticisi
 Şunu çalıştırarak Azure Resource Manager moduna geçebilirsiniz:
 ```
 $ azure config mode arm
@@ -363,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>Kaynak Yöneticisi
 
 Aşağıdakileri çalıştırarak Azure hesabınızda Azure Resource Manager modunda oturum açabilirsiniz:
 

@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: e8c0e67567bd5ddbfdd45762edd52112c1fd4c70
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428942"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services bir Windows şablon makinesi ayarlamaya yönelik kılavuz
 
@@ -142,7 +142,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Microsoft Office 365 güncelleştirme kanalını değiştirme
 
-Office yapılandırma aracını kullanarak, Office 'in güncelleştirmeleri ne sıklıkta alacağını ayarlayabilirsiniz.  Ancak, yüklemeden sonra Office 'in güncelleştirmeleri hangi sıklıkta alacağını değiştirmeniz gerekiyorsa, güncelleştirme kanalı URL 'sini değiştirebilirsiniz.  Güncelleştirme kanalı URL adresleri [, Office 365 istemcilerinin Configuration Manager güncelleştirmeleri almasını etkinleştirdikten sonra güncelleştirme kanalını değiştirme](https://docs.microsoft.com/sccm/sum/deploy-use/manage-office-365-proplus-updates#change-the-update-channel-after-you-enable-office-365-clients-to-receive-updates-from-configuration-manager)yolunda bulunabilir. Aşağıdaki örnekte, Office 365 ' ın aylık güncelleştirme kanalını kullanmak için nasıl ayarlanacağı gösterilmektedir.
+Office yapılandırma aracını kullanarak, Office 'in güncelleştirmeleri ne sıklıkta alacağını ayarlayabilirsiniz.  Ancak, yüklemeden sonra Office 'in güncelleştirmeleri hangi sıklıkta alacağını değiştirmeniz gerekiyorsa, güncelleştirme kanalı URL 'sini değiştirebilirsiniz.  Kanal URL adreslerini güncelleştirme, şu adreste bulunabilir: [Office 365 istemcilerinin Configuration Manager güncelleştirme almasını etkinleştirdikten sonra güncelleştirme kanalını değiştirin]/ConfigMgr/Sum/Deploy-Use/Manage-Office-365-ProPlus-Updates # bkmk_channel). Aşağıdaki örnekte, Office 365 ' ın aylık güncelleştirme kanalını kullanmak için nasıl ayarlanacağı gösterilmektedir.
 
 ```powershell
 # Update to the Office 365 Monthly Channel

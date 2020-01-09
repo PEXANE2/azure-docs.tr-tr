@@ -2,19 +2,15 @@
 title: Orchestrator 'dan Azure Otomasyonu 'na geçiş
 description: Runbook 'ları ve Tümleştirme paketlerini System Center Orchestrator 'dan Azure Otomasyonu 'na nasıl geçirebileceğinizi açıklar.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: b34554798130d9741318e0f518c32a41f82a17e3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 528b961ca07ec86ad502ee1b589772e354564a3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421692"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator 'dan Azure Otomasyonu 'na geçiş (Beta)
 [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) 'daki runbook 'Lar, Azure Otomasyonu 'ndaki runbook 'Lar Windows PowerShell 'i temel alırken Orchestrator için özel olarak yazılmış tümleştirme paketlerindeki etkinliklere dayanır.  Azure Automation 'daki [grafik runbook](automation-runbook-types.md#graphical-runbooks) 'Larında, Orchestrator Runbook 'Larına, PowerShell cmdlet 'lerini, alt runbook 'ları ve varlıkları temsil eden etkinlikleri içeren benzer bir görünüm vardır.

@@ -1,5 +1,5 @@
 ---
-title: Erişim gözden geçirmeleriyle konuk erişimini yönetme-Azure Active Directory | Microsoft Docs
+title: Erişim gözden geçirmeleri ile konuk erişimini yönetme-Azure AD
 description: Konuk kullanıcıları bir grubun üyesi olarak yönetme veya Azure Active Directory erişim İncelemeleri olan bir uygulamaya atama
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422466"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme
 
@@ -33,7 +33,7 @@ Ayrıca, konuk kullanıcıların uygun erişime sahip olmasını da kolayca sağ
 > [!NOTE]
 > Bu belge, konuk kullanıcıların erişimini gözden geçirmeye odaklanır. Yalnızca konukları değil tüm kullanıcıların erişimini gözden geçirmek istiyorsanız bkz. [erişim gözden geçirmeleri ile Kullanıcı erişimini yönetme](manage-user-access-with-access-reviews.md). Genel yönetici gibi yönetici rollerindeki kullanıcıların üyeliğini gözden geçirmek istiyorsanız, bkz. [Azure AD Privileged Identity Management bir erişim Incelemesi başlatma](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure AD Premium P2
 

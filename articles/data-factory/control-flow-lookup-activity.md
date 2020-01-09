@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 04285de6fa7ef678e36767b7336f732ed9b45329
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440467"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
@@ -25,7 +25,7 @@ Arama etkinliği, Azure Data Factory tarafından desteklenen herhangi bir veri k
 
 Arama etkinliği, bir yapılandırma dosyasının veya tablosunun içeriğini okur ve döndürür. Ayrıca, bir sorgu veya saklı yordam yürütmenin sonucunu döndürür. Arama etkinliğinin çıktısı, tek bir değer ise sonraki bir kopya veya dönüştürme etkinliğinde kullanılabilir. Çıktı bir öznitelik dizisi ise, ForEach etkinliğinde kullanılabilir.
 
-## <a name="supported-capabilities"></a>Desteklenen yetenekler
+## <a name="supported-capabilities"></a>Desteklenen özellikler
 
 Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinliği tarafından döndürülebilecek en büyük satır sayısı, en fazla 2 MB boyutunda 5.000. Şu anda, zaman aşımından önce arama etkinliğinin en uzun süresi bir saattir.
 
@@ -55,9 +55,9 @@ Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinli�
 
 Ad | Açıklama | Tür | Gerekli mi?
 ---- | ----------- | ---- | --------
-Veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
+veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
 source | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Evet
-yalnızca FirstRow | Yalnızca ilk satırın mi yoksa tüm satırların mi döndürülüp döndürülmeyeceğini gösterir. | Boole | Hayır. Varsayılan değer: `true`.
+firstRowOnly | Yalnızca ilk satırın mi yoksa tüm satırların mi döndürülüp döndürülmeyeceğini gösterir. | Boole | Hayır. Varsayılan: `true`.
 
 > [!NOTE]
 > 
@@ -238,10 +238,7 @@ Bu depolama hesabı, SQL tablolarının adlarıyla birlikte JSON dosyasını iç
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
         }
     },
         "name": "AzureStorageLinkedService"
@@ -258,10 +255,7 @@ Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir
         "type": "AzureSqlDatabase",
         "description": "",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
         }
     }
 }
@@ -282,7 +276,7 @@ Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir
 }
 ```
 
-#### <a name="array-of-objects"></a>nesne dizisi
+#### <a name="array-of-objects"></a>Nesne dizisi
 
 ```json
 [ 

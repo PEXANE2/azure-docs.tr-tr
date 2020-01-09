@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423113"
 ---
 # <a name="what-is-a-device-identity"></a>Cihaz kimliği nedir?
 
@@ -58,19 +58,22 @@ Azure AD 'deki cihazlar Microsoft Intune, System Center Configuration Manager, g
 
 ## <a name="resource-access"></a>Kaynak erişimi
 
-Kaydolmak ve katılmak, kullanıcılarınıza bulut kaynaklarına ve yöneticilerine koşullu erişim ilkelerini uygulama olanağı sunan sorunsuz oturum açma (SSO) sağlar. 
+Cihazları Azure AD 'ye kaydetme ve birleştirme, kullanıcılarınıza bulut kaynaklarına sorunsuz oturum açma (SSO) sağlar. Bu işlem, yöneticilerin eriştiği cihaza bağlı olarak kaynaklara koşullu erişim ilkeleri uygulama olanağı da sağlar. 
+
+> [!NOTE]
+> Cihaz tabanlı koşullu erişim ilkeleri, karma Azure AD 'ye katılmış cihazlar veya uyumlu Azure AD 'ye katılmış ya da Azure AD kayıtlı cihazları gerektirir.
 
 Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış cihazlar, SSO 'dan kuruluşunuzun şirket içi kaynaklarına ve bulut kaynaklarına kadar faydalanır. Makalede daha fazla bilgi bulunabilir, [Şirket içi kaynaklara YÖNELIK SSO 'Nun Azure AD 'ye katılmış cihazlarda nasıl çalıştığı](azuread-join-sso.md).
 
 ## <a name="device-security"></a>Cihaz güvenliği
 
 - **Azure AD kayıtlı cihazlar** Son Kullanıcı tarafından yönetilen bir hesabı kullanır, bu hesap bir veya bir veya daha fazla ile korunan bir Microsoft hesabı ya da yerel olarak yönetilen bir kimlik bilgisi olur.
-   - istemcisiyle yönetilen bir cihaz için)
-   - IĞNES
+   - Parola
+   - SABİTLE
    - Desen
    - Windows Hello
 - **Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış cihazlar** , aşağıdakilerden biri veya birkaçı ile güvenli bir şekılde Azure AD 'de kurumsal hesap kullanır.
-   - istemcisiyle yönetilen bir cihaz için)
+   - Parola
    - İş İçin Windows Hello
 
 ## <a name="provisioning"></a>Sağlama

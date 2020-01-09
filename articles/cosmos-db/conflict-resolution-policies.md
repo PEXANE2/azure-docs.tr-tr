@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB birden çok yazma bölgesi olan çakışma çözümleme türleri ve çözümleme ilkeleri
+title: Azure Cosmos DB çakışma çözümü türleri ve çözüm ilkeleri
 description: Bu makalede, Azure Cosmos DB çakışma kategorileri ve çakışma çözümleme ilkeleri açıklanmaktadır.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: f69a70ef3bfc8830ed12173fddee41095937a1c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a8ee72f46e1789088e779c10a0824262469ffde8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815100"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441981"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Çakışma türleri ve çözme ilkeleri
 
@@ -20,11 +20,11 @@ Azure Cosmos DB hesabınız birden çok yazma bölgesi ile yapılandırılmışs
 
 Birden fazla yazma bölgesi ile yapılandırılmış Azure Cosmos hesapları için, yazarlar aynı öğeyi birden çok bölgede aynı anda güncelleştirdiğinizde güncelleştirme çakışmaları ortaya çıkabilir. Güncelleştirme çakışmaları aşağıdaki üç türden olabilir:
 
-* **Çakışma Ekle**: Bir uygulama aynı anda iki veya daha fazla bölgede aynı benzersiz dizine sahip iki veya daha fazla öğe eklediğinde bu çakışmalar meydana gelebilir. Örneğin, bu çakışma bir KIMLIK özelliği ile meydana gelebilir.
+* **Çakışma Ekle**: bir uygulama aynı anda iki veya daha fazla bölgede aynı benzersiz dizine sahip iki veya daha fazla öğe eklediğinde bu çakışmalar meydana gelebilir. Örneğin, bu çakışma bir KIMLIK özelliği ile meydana gelebilir.
 
-* **Çakışmaları Değiştir**: Bu çakışmalar, bir uygulama aynı öğeyi iki veya daha fazla bölgede eşzamanlı olarak güncelleştirdiğinde meydana gelebilir.
+* **Çakışmaları Değiştir**: bir uygulama aynı öğeyi iki veya daha fazla bölgede aynı anda güncelleştirirken bu çakışmalar meydana gelebilir.
 
-* **Çakışmaları Sil**: Bu çakışmalar, bir uygulama aynı anda bir öğeyi bir bölgede siler ve onu başka bir bölgede güncelleştirdiğinde ortaya çıkabilir.
+* **Çakışmaları Sil**: Bu çakışmalar, bir uygulama aynı anda bir bölgedeki öğeyi silerse ve onu başka bir bölgede güncelleştirdiğinde meydana gelebilir.
 
 ## <a name="conflict-resolution-policies"></a>Çakışma çözümleme ilkeleri
 
@@ -35,7 +35,7 @@ Azure Cosmos DB, yazma çakışmalarını çözmek için esnek ilke odaklı bir 
   Ekleme veya değiştirme işlemlerinde iki veya daha fazla öğe çakışırsa, çakışma çözümleme yolu için en yüksek değere sahip öğe kazanan olur. Birden çok öğe, çakışma çözümleme yolu için aynı sayısal değere sahip ise, sistem kazanan kişiyi belirler. Tüm bölgeler tek bir kazanan ile yakınsama ve taahhüt edilen öğenin aynı sürümüyle son olarak garanti edilir. Silme çakışmaları dahil edildiğinde, silinen sürüm her zaman ekleme veya değiştirme çakışmaları üzerinde kazanır. Çakışma çözümleme yolunun değeri ne olursa olsun bu sonuç oluşur.
 
   > [!NOTE]
-  > Son yazma WINS varsayılan çakışma çözümleme ilkesidir ve aşağıdaki API 'ler `_ts` için zaman damgasını kullanır: SQL, MongoDB, Cassandra, Gremlin ve Table. Özel sayısal özellik yalnızca SQL API 'SI için kullanılabilir.
+  > Son yazma WINS varsayılan çakışma çözümleme ilkesidir ve şu API 'Ler için zaman damgası kullanır `_ts`: SQL, MongoDB, Cassandra, Gremlin ve Table. Özel sayısal özellik yalnızca SQL API 'SI için kullanılabilir.
 
   Daha fazla bilgi için bkz. [LWW çakışma çözümü ilkelerini kullanan örnekler](how-to-manage-conflicts.md).
 

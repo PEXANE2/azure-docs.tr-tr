@@ -1,18 +1,14 @@
 ---
 title: Azure Red Hat OpenShift kümenizi izlemeyi durdurma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: f769749532a05260bf3c2c9f99483c5607d985a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e726d2d8254598869f1c6305421c674c870e3d31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404285"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi durdurma
 
@@ -24,9 +20,9 @@ Sağlanan olan iki çözüm kaynakları tutarlı ve sürekli kaynak grubunuzda k
 
 Bir şablon kullanarak kaynakları dağıtma kavramıyla bilmiyorsanız, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanmayı gerekir. Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için çalıştırma `az --version`. Gerekirse yükleyin veya Azure CLI'yı yükseltmek için bkz: [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-template"></a>Şablon oluşturma
 
@@ -69,7 +65,7 @@ Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanm
     }
     ```
 
-2. Bu dosyayı bir yerel klasöre **Optouttemplate. JSON** olarak kaydedin.
+2. Bu dosyayı farklı Kaydet **OptOutTemplate.json** yerel bir klasöre.
 
 3. Aşağıdaki JSON söz dizimi dosyanıza yapıştırın:
 
@@ -92,7 +88,7 @@ Azure CLI'yı kullanmayı seçerseniz, ilk CLI'yi yerel olarak yükleyip kullanm
 
     ![Kapsayıcı Özellikleri Sayfası](media/container-insights-optout-openshift/cluster-properties-page.png)
 
-5. Bu dosyayı bir yerel klasöre **Optoutparam. JSON** olarak kaydedin.
+5. Bu dosyayı farklı Kaydet **OptOutParam.json** yerel bir klasöre.
 
 6. Bu şablonu dağıtmaya hazırsınız. 
 

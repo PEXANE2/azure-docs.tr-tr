@@ -1,36 +1,27 @@
 ---
-title: Reliable Actors Framework çok biçimlilik | Microsoft Docs
-description: .NET arabirimleri ve işlevsellik ve API tanımlarını yeniden kullanmak için Reliable Actors Framework türleri hiyerarşiler
-services: service-fabric
-documentationcenter: .net
+title: Reliable Actors çerçevesinde çok biçimlilik
+description: İşlevselliği ve API tanımlarını yeniden kullanmak için Reliable Actors Framework 'te .NET arabirimlerinin ve türlerinin hiyerarşileri oluşturun.
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348932"
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors Framework çok biçimlilik
-Reliable Actors framework birçok nesne yönelimli tasarım kullanacağınız aynı teknikleri kullanarak aktörler oluşturmanıza olanak tanır. Bu teknikler biri türlerine izin verir ve daha birçok devralmak için arabirimleri çok biçimlilik üst genelleştirilmiş. Reliable Actors Framework'te devralma genellikle birkaç ek kısıtlamalar ile .NET modelini izler. Java/Linux olması durumunda, Java modelini izler.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors çerçevesinde çok biçimlilik
+Reliable Actors Framework, nesne odaklı tasarımda kullandığınız tekniklerin birçoğunu kullanarak aktör oluşturmanıza olanak sağlar. Bu tekniklerin biri çok biçimlerdir, bu da türlerin ve arabirimlerin daha Genelleştirilmiş üst öğeden devralınmasını sağlar. Reliable Actors Framework 'te devralma, genellikle birkaç ek kısıtlama içeren .NET modelini izler. Java/Linux durumunda Java modelini izler.
 
-## <a name="interfaces"></a>Arabirimleri
-Reliable Actors framework tarafından aktör türünüzün uygulanacak en az bir arabirim tanımlamanızı gerektirir. Bu arabirim, aktör ile iletişim kurmak için istemciler tarafından kullanılan bir proxy sınıfı oluşturmak için kullanılır. Arabirimleri IActor sonuçta bir aktör türü tarafından uygulanan her arabirim ve tüm üst öğelerinden türetilen sürece diğer arabirimlerinden devralır (C#) veya Actor(Java). IActor (C#) ve Actor(Java) .NET ve Java'dan çerçeveleri düzenindeki aktörler için platform tanımlı temel arabirimleri sırasıyla. Bu nedenle, Şekil kullanarak Klasik çok biçimlilik örnek şuna benzeyebilir:
+## <a name="interfaces"></a>Arabirimler
+Reliable Actors Framework, aktör türü tarafından uygulanması için en az bir arabirim tanımlamanızı gerektirir. Bu arabirim, istemciler tarafından aktörlerle iletişim kurmak için kullanılabilecek bir ara sunucu sınıfı oluşturmak için kullanılır. Bir aktör türü tarafından uygulanan her arabirim ve tüm üst öğeleri ıaktör (C#) veya aktör (Java) öğesinden türetiği sürece, arabirimler diğer arabirimlerden devralınabilir. Iaktör (C#) ve aktör (Java), sırasıyla .net ve Java 'daki aktörler için platform tarafından tanımlanan temel arabirimlerdir. Bu nedenle, şekiller kullanılarak klasik çok biçimlilik örneği şuna benzer görünebilir:
 
-![Şekil aktörler için hiyerarşi arabirimi][shapes-interface-hierarchy]
+![Şekil aktörleri için arabirim hiyerarşisi][shapes-interface-hierarchy]
 
-## <a name="types"></a>Türleri
-Ayrıca platform tarafından sağlanan temel aktör sınıftan türetilen aktör türlerin hiyerarşisi oluşturabilirsiniz. Şekiller söz konusu olduğunda, bir taban sahip olabileceğiniz `Shape`(C#) veya `ShapeImpl`(Java) türü:
+## <a name="types"></a>Türler
+Ayrıca, platform tarafından sunulan temel aktör sınıfından türetilmiş bir aktör türleri hiyerarşisi oluşturabilirsiniz. Şekiller söz konusu olduğunda, bir temel `Shape`(C#) veya `ShapeImpl`(Java) türü olabilir:
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -49,7 +40,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-' In subtypes `Shape`(C#) veya `ShapeImpl`(Java) taban yöntemleri geçersiz kılın.
+`Shape`(C#) veya `ShapeImpl`(Java) alt türleri tabandan metotları geçersiz kılabilir.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -92,11 +83,11 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Not `ActorService` aktör türü özniteliği. Bu öznitelik güvenilir aktör çerçevesinde, bu tür aktörler barındırmak için bir hizmet otomatik olarak oluşturmasını söyler. Bazı durumlarda yalnızca işlevi alt türleri ile paylaşmak için tasarlanmıştır ve hiçbir zaman somut aktörler örneklemek için kullanılacak bir taban türü oluşturmak isteyebilirsiniz. Bu gibi durumlarda, kullanmanız gereken `abstract` hiçbir zaman söz konusu türüne göre bir aktör oluşturacağını göstermek için anahtar sözcüğü.
+Aktör türündeki `ActorService` özniteliğine göz önünde yazın. Bu öznitelik, güvenilir aktör çerçevesine, bu türden aktörlerin barındırılmasına yönelik otomatik olarak bir hizmet oluşturmasını söyler. Bazı durumlarda, yalnızca alt türlerine sahip işlevselliği paylaşmaya yönelik bir temel tür oluşturmak isteyebilirsiniz ve somut aktörlerin örneklendirilecek şekilde hiçbir zaman kullanılmaz. Bu durumlarda, bu türe göre hiçbir oyuncu oluşturmayacağını belirtmek için `abstract` anahtar sözcüğünü kullanmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bkz: [nasıl Reliable Actors framework Service Fabric platform yararlanır](service-fabric-reliable-actors-platform.md) güvenilirlik, ölçeklenebilirlik ve tutarlı bir duruma sağlamak için.
-* Hakkında bilgi edinin [aktör yaşam döngüsü](service-fabric-reliable-actors-lifecycle.md).
+* Reliable Actors çerçevesinin güvenilirlik, ölçeklenebilirlik ve tutarlı durum sağlamak için [Service Fabric platformunu nasıl](service-fabric-reliable-actors-platform.md) kullandığını görün.
+* [Aktör yaşam döngüsü](service-fabric-reliable-actors-lifecycle.md)hakkında bilgi edinin.
 
 <!-- Image references -->
 

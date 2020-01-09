@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 9c79a6ba1a6b7b5582c6430c6de7a4a309bf4920
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437297"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
@@ -57,7 +57,7 @@ Kaynağın özellikleriyle ilgili tüm ayrıntılar ve ilgili makaleler için bk
 * [Güç otomatikleştirme (eskiden Microsoft Flow olarak bilinirdi)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Kuyruk depolama](event-handlers.md#queue-storage)
 * [Service Bus](event-handlers.md#service-bus)
-* [Web kancaları](event-handlers.md#webhooks)
+* [Web Kancaları](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Kavramlar
 
@@ -71,7 +71,7 @@ Azure Event Grid’de başlangıç yapmanızı sağlayan beş kavram vardır:
 
 Bu kavramlar hakkında daha fazla bilgi için bkz. [Azure Event Grid’de Kavramlar](concepts.md).
 
-## <a name="capabilities"></a>Özellikler
+## <a name="capabilities"></a>Yetenekler
 
 Azure Event Grid’in önemli özelliklerinden bazıları şunlardır:
 
@@ -82,7 +82,7 @@ Azure Event Grid’in önemli özelliklerinden bazıları şunlardır:
 * **Olay başına ödeme** - Yalnızca Event Grid’i kullandığınız miktar için ödeme yapın.
 * **Yüksek aktarım hızı** - Saniyede milyonlarca olay desteği ile Event Grid’de yüksek hacimli iş yükleri oluşturun.
 * **Yerleşik Olaylar** - Kaynak tarafından tanımlanan yerleşik olaylarla hızlıca çalışmaya başlayın.
-* **Özel Olaylar** - Event Grid’i kullanarak uygulamanızda özel olayları yönlendirin, filtreleyin ve güvenilir bir şekilde teslim edin.
+* **Özel olaylar** -uygulamanızdaki özel olayları yönlendirmek, filtrelemek ve güvenilir bir şekilde teslim etmek için Event Grid kullanın.
 
 Event Grid, Event Hubs ve Service Bus hizmetlerinin bir karşılaştırması için bkz. [İleti teslim eden Azure hizmetleri arasında seçim yapma](compare-messaging-services.md).
 
@@ -102,11 +102,11 @@ Event Grid, veri kaynaklarını ve olay işleyicilerini bağlar. Örneğin, bir 
 
 Event Grid, otomasyonu hızlandırmanızı ve ilke uygulamayı basitleştirmenizi sağlar. Örneğin, bir sanal makine veya SQL veritabanı oluşturulduğunda Azure Otomasyonu bildirmek için Event grid'i kullanın. Meta veri, operasyon araçlarına, sanal makineleri etiketlemek ve iş öğelerini yerleştirin otomatik olarak hizmet yapılandırmalarının uyumlu olup olmadığını denetlemek için olayları kullanın.
 
-### <a name="application-integration"></a>Uygulama tümleştirme
+### <a name="application-integration"></a>Uygulama entegrasyonu
 
 ![Azure ile uygulama tümleştirme](./media/overview/app_integration.png)
 
-Event Grid, uygulamanızı diğer hizmetlere bağlar. Örneğin, uygulamanızın olay verilerini Event Grid’e göndermek için özel bir konu başlığı oluşturup Azure ile doğrudan tümleştirme, güvenilir teslim ve gelişmiş yönlendirme özelliklerinden yararlanabilirsiniz. Ya da kod yazmadan her yerden, işlem veri Event grid'i Logic Apps ile kullanabilirsiniz. 
+Event Grid, uygulamanızı diğer hizmetlerle bağlar. Örneğin, uygulamanızın olay verilerini Event Grid’e göndermek için özel bir konu başlığı oluşturup Azure ile doğrudan tümleştirme, güvenilir teslim ve gelişmiş yönlendirme özelliklerinden yararlanabilirsiniz. Ya da kod yazmadan her yerden, işlem veri Event grid'i Logic Apps ile kullanabilirsiniz. 
 
 ## <a name="how-much-does-event-grid-cost"></a>Event Grid’in maliyeti ne kadardır?
 

@@ -3,18 +3,18 @@ title: Hızlı başlangıç-Azure IoT Central kuralları ve eylemleri yapıland�
 description: Bu hızlı başlangıçta, Azure IoT Central uygulamanızda telemetri tabanlı kuralların ve eylemlerin nasıl yapılandırılacağı hakkında bir Oluşturucu olarak gösterilir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434811"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Hızlı başlangıç: Azure IoT Central cihazınız için kuralları ve eylemleri yapılandırma (Önizleme özellikleri)
 
@@ -24,7 +24,7 @@ ms.locfileid: "74706716"
 
 Bu hızlı başlangıçta, bir ortam algılayıcısı cihazındaki sıcaklık 90&deg; F 'yi aştığında bir e-posta gönderen bir kural oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, bir önceki hızlı başlangıç [oluşturma Azure IoT Central uygulaması oluşturmanız](./quick-deploy-iot-central.md) ve birlikte çalışmak üzere **ortam algılayıcısı** cihaz şablonu oluşturmak için [IoT Central uygulamanıza sanal bir cihaz eklemeniz](./quick-create-pnp-device.md) gerekir.
 
@@ -43,7 +43,7 @@ Başlamadan önce, bir önceki hızlı başlangıç [oluşturma Azure IoT Centra
     | Alan                                        | Değer                             |
     | -------------------------------------------- | ------------------------------    |
     | Ölçüm                                  | Sıcaklık                       |
-    | İşleç                                     | Şundan büyüktür                   |
+    | İşleç                                     | şundan büyüktür                   |
     | Değer                                        | 90                                |
 
     Daha fazla koşul eklemek için **+ koşul**' ı seçin.
@@ -65,7 +65,7 @@ Başlamadan önce, bir önceki hızlı başlangıç [oluşturma Azure IoT Centra
 
     ![Kural oluşturma eylemi](./media/quick-configure-rules/action.png)
 
-1. **Kaydet**’i seçin. Kuralınız **kurallar** sayfasında listelenir.
+1. **Kaydet**’i seçin. Kuralınız **Kurallar** sayfasında listelenir.
 
 ## <a name="test-the-rule"></a>Kuralı test etme
 

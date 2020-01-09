@@ -3,17 +3,17 @@ title: Ortak bulut hizmeti yönetim görevleri | Microsoft Docs
 description: Azure portal Cloud Services yönetmeyi öğrenin. Bu örnekler Azure portal kullanır.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359603"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360914"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure portal Cloud Services yönetme
 Azure portal **Cloud Services** alanında şunları yapabilirsiniz:
@@ -124,3 +124,6 @@ Bir dağıtımı veya bulut hizmetinizi silmek için aşağıdaki yordamı kulla
 * [Bulut hizmetini dağıtmayı](cloud-services-how-to-create-deploy-portal.md)öğrenin.
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma.
+
+
+

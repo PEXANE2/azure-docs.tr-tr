@@ -1,5 +1,5 @@
 ---
-title: MSAL. js ile Internet Explorer 'ı kullanma | Mavisi
+title: Internet Explorer sorunları (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) Internet Explorer tarayıcısı ile birlikte kullanın.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e92a10ca0b4cbe38119931bc66d36c3b9259a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4de918d87abca521f3b573f831f8bfd6a7e17728
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424284"
 ---
-# <a name="use-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>MSAL. js ile Internet Explorer ve Microsoft Edge tarayıcılarını kullanma
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
 
 JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), Internet Explorer 'da çalışabilecek şekilde [JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) için oluşturulur. Ancak bilmemiz gereken birkaç nokta vardır.
 

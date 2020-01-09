@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Örnekleri - Ana bilgisayar tabanlı otomatik ölçeklendirmeyi etkinleştirme | Microsoft Docs
-description: Azure CLI Örnekleri
+title: Azure CLı örnekleri-ana bilgisayar tabanlı otomatik ölçeklendirmeyi etkinleştir
+description: Bu betik, CPU yükü değiştikçe otomatik olarak ölçeklendirmek için Ubuntu çalıştıran ve ana bilgisayar tabanlı ölçümler kullanan bir sanal makine ölçek kümesi oluşturur.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c843bed96ebd69f0fe96f8dab292d50ef025e750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42dd70a355d63d0fa3062a8e3439be857124a6c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61388665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351030"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Bu betik, CPU yükü değiştikçe otomatik olarak ölçeklendirmek için Ubuntu çalıştıran ve ana bilgisayar tabanlı ölçümler kullanan bir sanal makine ölçek kümesi oluşturur.
@@ -46,7 +46,7 @@ Bu betik, bir kaynak grubu, sanal makine ölçek kümesi ve tüm ilgili kaynakla
 | Komut | Notlar |
 |---|---|
 | [az group create](/cli/azure/ad/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az vmss create](/cli/azure/vmss) | Sanal makine ölçek kümesi oluşturur ve bunu sanal ağa, alt ağa ve ağ güvenlik grubuna bağlar. Birden çok sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
+| [az vmss create](/cli/azure/vmss) | Sanal makine ölçek kümesi oluşturur ve bunu sanal ağa, alt ağa ve ağ güvenlik grubuna bağlar. Birden çok sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini de belirtir.  |
 | [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings) | Sanal makine ölçek kümesine otomatik ölçeklendirme kuralları oluşturup uygular. |
 | [az group delete](/cli/azure/ad/group) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 

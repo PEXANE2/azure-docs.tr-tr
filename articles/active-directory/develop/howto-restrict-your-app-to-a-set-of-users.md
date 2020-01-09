@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory kayıtlı uygulama kullanıcılarını kısıtla | Mavisi
+title: Azure AD uygulamasını bir Kullanıcı kümesiyle kısıtlama | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure AD 'de kayıtlı uygulamalarınıza erişimi seçili bir kullanıcı kümesine kısıtlamayı öğrenin.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917633"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424457"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Nasıl yapılır: Azure AD uygulamanızı bir Kullanıcı kümesiyle kısıtlama
 
@@ -46,7 +46,7 @@ Bir uygulamayı bir Kiracıdaki belirli bir kullanıcı veya güvenlik grubu kü
 
 Etkin Kullanıcı atamasına sahip bir uygulama oluşturmanın iki yolu vardır. Biri **genel yönetici** rolü gerektirir, ikincisi değildir.
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Kurumsal uygulamalar (genel yönetici rolü gerektirir)
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Kurumsal uygulamalar (genel yönetici rolü gerektirir)
 
 1. [**Azure Portal**](https://portal.azure.com/) gidin ve **genel yönetici**olarak oturum açın.
 1. Üstteki çubukta, oturum açma hesabı ' nı seçin. 

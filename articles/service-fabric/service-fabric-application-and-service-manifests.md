@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric uygulamalarını ve hizmetlerini açıklama | Microsoft Docs
+title: Azure Service Fabric uygulamalarını ve hizmetlerini açıklama
 description: Service Fabric uygulamaları ve hizmetleri anlatmak için bildirimlerin nasıl kullanıldığını açıklar.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/12/2019
-ms.author: atsenthi
-ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349974"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Uygulama ve hizmet bildirimlerini Service Fabric
 Bu makalede, Service Fabric uygulamalarının ve hizmetlerin ApplicationManifest. xml ve ServiceManifest. xml dosyaları kullanılarak nasıl tanımlandığı ve sürümü oluşturulduğu açıklanmaktadır.  Daha ayrıntılı örnekler için bkz. [uygulama ve hizmet bildirimi örnekleri](service-fabric-manifest-examples.md).  Bu bildirim dosyaları için XML şeması [Servicefabricservicemodel. xsd şema belgelerinde](service-fabric-service-model-schema.md)belgelenmiştir.
@@ -81,9 +70,9 @@ Hizmet bildirimi, hizmet türünü ve sürümü bildirimli olarak tanımlar. Hiz
 
 SetupEntryPoint yapılandırma hakkında daha fazla bilgi için bkz [. bir hizmet kurulumu giriş noktası için Ilkeyi yapılandırma](service-fabric-application-runas-security.md)
 
-**EnvironmentVariables** (önceki örnekte ayarlı değil), bu kod paketi için ayarlanan ortam değişkenlerinin bir listesini sağlar. Farklı hizmet örnekleri için farklı değerler sağlamak `ApplicationManifest.xml` üzere öğesinde ortam değişkenleri geçersiz kılınabilir. 
+**EnvironmentVariables** (önceki örnekte ayarlı değil), bu kod paketi için ayarlanan ortam değişkenlerinin bir listesini sağlar. Farklı hizmet örnekleri için farklı değerler sağlamak üzere `ApplicationManifest.xml` ortam değişkenleri geçersiz kılınabilir. 
 
-**Veri paketi** (önceki örnekte ayarlanmamış), çalışma zamanında işlem tarafından tüketilen rastgele statik verileri içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir.
+**DataPackage** (önceki örnekte ayarlı değil), çalışma zamanında işlem tarafından tüketilen rastgele statik verileri içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir.
 
 **Configpackage** , bir *Settings. xml* dosyası içeren **Name** özniteliğiyle adlandırılan bir klasörü bildirir. Ayarlar dosyası, Kullanıcı tanımlı, anahtar-değer çifti ayarlarının, işlemin çalışma zamanında geri okuduğu bölümler içerir. Yükseltme sırasında, yalnızca **Configpackage** **sürümü** değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Örnek bir *Settings. xml* dosyası aşağıda verilmiştir:
 
@@ -162,7 +151,7 @@ Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dize
 
 **Parametreler** , uygulama bildirimi boyunca kullanılan parametreleri tanımlar. Uygulama örneği oluşturulduğunda ve uygulama veya hizmet yapılandırma ayarlarını geçersiz kılabildiğinden, bu parametrelerin değerleri sağlanabilir.  Varsayılan parametre değeri, uygulama örneği oluşturma sırasında değer değiştirilmez kullanılır. Ayrı ortamlar için farklı uygulama ve hizmet parametrelerinin nasıl korunmasını öğrenmek için bkz. [birden çok ortam için uygulama parametrelerini yönetme](service-fabric-manage-multiple-environment-app-configuration.md).
 
-**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, ServiceManifest. XML dosyalarındaki Settings. xml ve ortam değişkenlerinin yapılandırma değerlerini geçersiz kılarsınız. **İlkeler** (önceki örnekte ayarlanmamış) son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
+**Servicemanifestımport** bu uygulama türünü oluşturan hizmet bildirimlerine başvurular içeriyor. Bir uygulama bildirimi birden fazla hizmet bildirimi içeri aktarmaları içerebilir, her biri bağımsız olarak sürümlenebilir. İçeri aktarılan hizmet bildirimleri bu uygulama türü içinde geçerli olan hizmet türlerini belirlenir. Servicemanifestımport içinde, ServiceManifest. XML dosyalarındaki Settings. xml ve ortam değişkenlerinin yapılandırma değerlerini geçersiz kılarsınız. Son nokta bağlama, güvenlik ve erişim ve paket paylaşımı, içeri aktarılan hizmet bildirimlerinde ayarlanabilir.  Daha fazla bilgi için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](service-fabric-application-runas-security.md).
 
 **DefaultServices** , bu uygulama türüne karşı her uygulama oluşturulduğunda otomatik olarak oluşturulan hizmet örneklerini bildirir. Varsayılan hizmetler, yalnızca bir kolaydır ve oluşturulduktan sonra her bakımdan normal hizmetler gibi davranır. Bunlar, uygulama örneğindeki diğer hizmetlerle birlikte yükseltilecektir ve de kaldırılabilir. Bir uygulama bildiriminde birden çok varsayılan hizmet bulunabilir.
 
@@ -170,13 +159,13 @@ Hizmet bildirimleri gibi, **Sürüm** öznitelikleri yapılandırılmamış dize
 
 **Yerleştirme kısıtlamaları** , hizmetlerin nerede çalışacağını tanımlayan deyimlerdir. Bu deyimler bir veya daha fazla düğüm özelliği için seçtiğiniz ayrı hizmetlere iliştirilir. Daha fazla bilgi için bkz. [yerleştirme kısıtlamaları ve Node özelliği sözdizimi](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
 
-**İlkeler** (önceki örnekte ayarlanmamış), hizmetin Service Fabric çalışma zamanına erişip erişemeyeceğini de içeren, uygulama düzeyinde ayarlanacak günlük toplama, [varsayılan farklı çalıştır](service-fabric-application-runas-security.md), [sağlık](service-fabric-health-introduction.md#health-policies)ve [güvenlik erişim](service-fabric-application-runas-security.md) ilkelerini açıklar.
+**İlkeler** (önceki örnekte ayarlı değil), uygulamaların Service Fabric çalışma zamanına erişimi olup olmadığı dahil olmak üzere, uygulama düzeyinde ayarlanacak günlük toplama, [varsayılan farklı çalıştır](service-fabric-application-runas-security.md), [sağlık](service-fabric-health-introduction.md#health-policies)ve [güvenlik erişim](service-fabric-application-runas-security.md) ilkelerini açıklar.
 
 > [!NOTE] 
 > Varsayılan olarak, Service Fabric uygulamalar, uygulamaya özgü istekleri kabul eden bir uç nokta biçiminde Service Fabric çalışma zamanına ve yapı ve uygulamaya özgü dosyaları içeren konaktaki dosya yollarına işaret eden ortam değişkenlerine erişebilir . Uygulama güvenilmeyen kod barındırınca bu erişimi devre dışı bırakmayı düşünün (örneğin, provenance bilinmiyor veya uygulama sahibinin yürütülmesi güvenli olmadığı bilen kod). Daha fazla bilgi için lütfen [Service Fabric en iyi güvenlik uygulamaları](service-fabric-best-practices-security.md#platform-isolation)bölümüne bakın. 
 >
 
-**Sorumlular** (önceki örnekte ayarlanmamış) [Hizmetleri ve güvenli hizmet kaynaklarını çalıştırmak](service-fabric-application-runas-security.md)için gereken güvenlik sorumlularını (kullanıcılar veya gruplar) anlatmaktadır.  Sorumlular **ilkeler** bölümlerinde başvurulur.
+**Sorumlular** (önceki örnekte ayarlı değil) [Hizmetleri ve hizmet kaynaklarını güvenli hale](service-fabric-application-runas-security.md)getirmek için gereken güvenlik sorumlularını (Kullanıcı veya gruplar) anlatmaktadır.  Sorumlular **ilkeler** bölümlerinde başvurulur.
 
 
 

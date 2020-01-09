@@ -16,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219724186e3fa69fec35e89435af495b662c871d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2082265b96388b4fbf860118efc3eefd4c5c67af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423585"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Web API 'SI-kod yapılandırması
 
@@ -33,7 +33,7 @@ Web API 'nizi, Web API 'SINI korumak için kullanılan kodun üstüne, akış We
 
 Korunan Web API 'Leri için kod yapılandırmasının üstünde, API 'niz çağrıldığında alınan taşıyıcı belirtecinin doğrulanmasına abone olmanız gerekir:
 
-```CSharp
+```csharp
 /// <summary>
 /// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
@@ -79,7 +79,7 @@ Bu akış yalnızca gizli istemci akışında kullanılabilir, böylece korunan 
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
-```CSharp
+```csharp
 IConfidentialClientApplication app;
 
 #if !VariationWithCertificateCredentials
@@ -108,7 +108,7 @@ Adına (OBO) çağrısı, `IConfidentialClientApplication` arabiriminde [Acquire
 
 Pratikte OBO akışı, genellikle bir aşağı akış API 'SI için belirteç almak ve MSAL.NET Kullanıcı belirteci önbelleğinde depolamak için kullanılır. böylece Web API 'sinin diğer bölümleri daha sonra aşağı akış API 'Lerini çağırmak için ``AcquireTokenOnSilent`` [Geçersiz Kılmalara](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) çağrı yapabilir. Bu çağrının, gerekirse belirteçleri yenileme etkisi vardır.
 
-```CSharp
+```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
 {
     try

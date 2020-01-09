@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics zaman işlemeyi anlama
 description: En iyi başlangıç zamanını seçme, geç ve erken olayların nasıl işleneceği ve zaman işleme ölçümlerinin nasıl yapılacağı gibi Azure Stream Analytics işlemenin nasıl çalıştığını öğrenin.
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901415"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354641"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics zaman işlemeyi anlama
 
@@ -86,7 +86,7 @@ Ayarlamanın bir parçası olarak, olayın **System. Timestamp** değeri yeni de
 
 Burada açıklanan buluşsal filigran oluşturma mekanizması, zamanın çoğu zaman çeşitli olay gönderenler arasında eşitlenmiş olduğu durumlarda iyi bir şekilde çalışmaktadır. Ancak, özellikle birçok IoT senaryosunda, sistem, olay göndericlarındaki saat üzerinde çok az denetime sahiptir. Olay gönderenlerin her türlü cihaz, farklı donanım ve yazılım sürümlerinde olabilir.
 
-Bir giriş bölümündeki tüm olaylara küresel bir filigran kullanmak yerine, Stream Analytics yardımcı olması için alt akışlar adlı başka bir mekanizmaya sahiptir. [**Zaman DAMGASı by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini ve **üzerine**anahtar sözcüğünü kullanan bir iş sorgusu yazarak, işinizdeki alt akışlardan yararlanabilirsiniz. Alt akışı belirlemek için, `deviceid` gibi, **Over** anahtar sözcüğünden sonra bir anahtar sütun adı sağlayın. böylece sistem bu sütuna zaman ilkeleri uygular. Her alt akış kendi bağımsız filigranını alır. Bu mekanizma, büyük saat ve Olay Gönderenler arasındaki ağ gecikmeleriyle ilgilenirken zamanında çıkış oluşturulmasına izin vermek için yararlıdır.
+Bir giriş bölümündeki tüm olaylara küresel bir filigran kullanmak yerine, Stream Analytics yardımcı olması için alt akışlar adlı başka bir mekanizmaya sahiptir. [**Zaman DAMGASı by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini ve **üzerine**anahtar sözcüğünü kullanan bir iş sorgusu yazarak, işinizdeki alt akışlardan yararlanabilirsiniz. Alt akışı belirlemek için, `deviceid`gibi, **Over** anahtar sözcüğünden sonra bir anahtar sütun adı sağlayın. böylece sistem bu sütuna zaman ilkeleri uygular. Her alt akış kendi bağımsız filigranını alır. Bu mekanizma, büyük saat ve Olay Gönderenler arasındaki ağ gecikmeleriyle ilgilenirken zamanında çıkış oluşturulmasına izin vermek için yararlıdır.
 
 Alt akışlar Azure Stream Analytics tarafından sağlanan benzersiz bir çözümdür ve diğer akış veri işleme sistemleri tarafından sunulmaz. Stream Analytics, alt akışlar kullanıldığında, gelen olaylara geç varış toleransı penceresini uygular. Varsayılan ayar (5 saniye), daha fazla zaman damgalarına sahip cihazlar için büyük olasılıkla çok küçüktür. 5 dakikada bir başlangıç yapmanızı ve bunların cihaz saati eğriltme düzenine göre ayarlamalar yapmanızı öneririz.
 
@@ -171,7 +171,7 @@ Aşağıdaki resimlerde, filigranların farklı koşullarda nasıl ilerlemesinin
 
 Bu tabloda aşağıdaki örnek veriler gösterilmektedir. Olay saatinin ve varış zamanının, bazen eşleşen ve bazen de değişebileceğini fark edebilirsiniz.
 
-| Olay saati | Varış saati | DeviceID |
+| Etkinlik saati | Varış saati | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | cihaz1
 | 12:08 | 12:08 | cihaz2
@@ -182,8 +182,8 @@ Bu tabloda aşağıdaki örnek veriler gösterilmektedir. Olay saatinin ve varı
 | 12:17 | 12:18 | cihaz2
 | 12:20 | 12:19 | cihaz2
 | 12:16 | 12:21 | device3
-| 12:23 | 12:22 | cihaz2
-| 12:22 | 12:24 | cihaz2
+| 12:23 | 12.22 | cihaz2
+| 12.22 | 12:24 | cihaz2
 | 12:21 | 12:27 | device3
 
 Bu çizimde, aşağıdaki toleranslar kullanılır:

@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350903"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure portal bir Windows SQL Server sanal makinesi sağlama
 
@@ -53,7 +53,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
    > Bu seçeneklerle ilgili daha fazla bilgi için bkz. [SQL Server Azure VM’leri için fiyatlandırma kılavuzu](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 
-1. **Oluştur**'u seçin.
+1. **Oluştur**’u seçin.
 
 
 ## <a name="1-configure-basic-settings"></a>1. temel ayarları Yapılandır
@@ -67,7 +67,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
     ![Abonelik](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Yalnızca Azure’daki SQL Server dağıtımlarını test ediyor veya öğreniyorsanız, yeni bir kaynak grubu kullanmak faydalıdır. Test işleminizi tamamladıktan sonra, sanal makineyi ve bu kaynak grubu ile ilişkili tüm kaynakları otomatik olarak silmek için kaynak grubunu silin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a Genel Bakış](../../../azure-resource-manager/resource-group-overview.md).
+  > Yalnızca Azure’daki SQL Server dağıtımlarını test ediyor veya öğreniyorsanız, yeni bir kaynak grubu kullanmak faydalıdır. Test işleminizi tamamladıktan sonra, sanal makineyi ve bu kaynak grubu ile ilişkili tüm kaynakları otomatik olarak silmek için kaynak grubunu silin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager’a Genel Bakış](../../../azure-resource-manager/management/overview.md).
 
 
 * **Örnek ayrıntıları**:
@@ -106,7 +106,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 ![SQL VM disk ayarları](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Ağ İletişimi
+### <a name="networking"></a>Networking (Ağ İletişimi)
 
 **Ağ** sekmesinde, ağ seçeneklerinizi yapılandırın. 
 
@@ -135,7 +135,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 | Ayar |
 | --- |
 | [Bağlantı](#connectivity) |
-| [Kimlik Doğrulaması](#authentication) |
+| [Kimlik doğrulaması](#authentication) |
 | [Azure Anahtar Kasası Tümleştirmesi](#azure-key-vault-integration) |
 | [Depolama yapılandırması](#storage-configuration) |
 | [Otomatik Düzeltme Eki Uygulama](#automated-patching) |

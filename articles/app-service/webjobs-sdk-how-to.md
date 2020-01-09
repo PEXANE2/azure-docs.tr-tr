@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421957"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay odaklı arka plan işleme için Azure Web Işleri SDK 'sını kullanma
 
@@ -84,7 +84,7 @@ Geliştirme modunu etkinleştirme işlemi SDK sürümüne bağlıdır.
 Sürüm 3. *x* standart ASP.NET Core API 'lerini kullanır. [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) örneğinde [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) yöntemini çağırın. Aşağıdaki örnekte olduğu gibi `development`adlı bir dize geçirin:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -95,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -236,7 +236,7 @@ Bağlama türlerini yükleme ve yönetme işlemi, sürüm 3 ' ü kullanıp kulla
 Sürüm 3 ' te. *x*, depolama bağlamaları `Microsoft.Azure.WebJobs.Extensions.Storage` paketine dahil edilir. `ConfigureWebJobs` yönteminde `AddAzureStorage` Extension yöntemini burada gösterildiği gibi çağırın:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -247,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -255,7 +255,7 @@ static void Main()
 Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren NuGet paketini yükledikten sonra uzantıya uygulanan `Add<binding>` Extension metodunu çağırın. Örneğin, bir Azure Cosmos DB bağlama kullanmak istiyorsanız, aşağıdaki gibi `Microsoft.Azure.WebJobs.Extensions.CosmosDB` yükleyip `AddCosmosDB`çağırın:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -266,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -295,7 +295,7 @@ static void Main()
 
 Dosya bağlamayı kullanmak için `Microsoft.Azure.WebJobs.Extensions` yükleyip `UseFiles`çağırın.
 
-### <a name="executioncontext"></a>ExecutionContext
+### <a name="executioncontext"></a>executionContext
 
 Web Işleri bir [`ExecutionContext`]bağlamanıza olanak tanır. Bu bağlama ile, [`ExecutionContext`] işlev İmzadaki bir parametre olarak erişebilirsiniz. Örneğin, aşağıdaki kod, belirli bir işlev çağrısı tarafından üretilen tüm günlükleri ilişkilendirmek için kullanabileceğiniz, çağırma KIMLIĞINE erişmek için bağlam nesnesini kullanır.  
 
@@ -318,7 +318,7 @@ public class Functions
 `ConfigureWebJobs` yönteminde `AddExecutionContextBinding` Extension yöntemini burada gösterildiği gibi çağırın:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -329,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -373,7 +373,7 @@ Aşağıdaki bağlamaları yapılandırabilirsiniz:
 Bu örnek, Azure Cosmos DB tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -390,8 +390,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -403,7 +402,7 @@ Daha ayrıntılı bilgi için bkz. [Azure CosmosDB bağlama](../azure-functions/
 Bu örnek, Event Hubs tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -419,8 +418,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -434,7 +432,7 @@ Bu örneklerde, kuyruk depolama tetikleyicisinin nasıl yapılandırılacağı g
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -450,8 +448,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -480,7 +477,7 @@ Daha fazla ayrıntı için bkz. [Host. JSON v1. x başvurusu](../azure-functions
 Bu örnek, SendGrid çıkış bağlamasının nasıl yapılandırılacağını gösterir:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -495,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -508,7 +504,7 @@ Daha fazla ayrıntı için bkz. [SendGrid bağlama](../azure-functions/functions
 Bu örnek, Service Bus tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -523,8 +519,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -538,7 +533,7 @@ Bazı tetikleyici ve bağlama türleri kendi özel yapılandırma türlerini tan
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -549,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -827,7 +821,7 @@ ASP.NET için geliştirilen günlük çerçevesini öneririz. [Başlarken](webjo
 
 Bir `ILogger` örneği tarafından oluşturulan her günlüğün ilişkili bir `Category` ve `Level`vardır. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) bir numaralandırmadır ve tamsayı kodu göreli önemi gösterir:
 
-|LogLevel    |Kodlayın|
+|GünlükDüzeyi    |Kodlayın|
 |------------|---|
 |İzleme       | 0 |
 |Hata ayıklama       | 1 |
@@ -924,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 Özel [`ITelemetryInitializer`] işlem hattına eklemek için oluşturucuda [`ConfigureServices`] çağırın.
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -951,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```

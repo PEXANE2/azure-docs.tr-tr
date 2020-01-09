@@ -1,5 +1,5 @@
 ---
-title: Azure AD Access Control Service 'ten SAS 'ye geçiş
+title: Azure Service Bus-paylaşılan erişim Imzası yetkilendirmesi 'ne geçiş
 description: Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesini geçirme hakkında bilgi edinin.
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: ae0dd3827e17cc63b4b698eb8d88a08799c7278f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fe0acedeb65f010f9af2ea55cd37e6fe3046d989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462170"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
 
-Service Bus uygulamalar, daha önce iki farklı yetkilendirme modeli kullanma seçeneği içeriyordu: doğrudan Service Bus tarafından sunulan [paylaşılan erişim imzası (SAS)](service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetilebileceği bir Federasyon modeli [Azure Active Directory](/azure/active-directory/) Access Control SERVICE (ACS) tarafından YÖNETILEN ve ACS 'den edinilen belirteçler, istenen özelliklere erişimi yetkilendirmek için Service Bus geçirilir.
+Service Bus uygulamalar, daha önce iki farklı yetkilendirme modeli kullanma seçeneği içeriyordu: doğrudan Service Bus tarafından sunulan [paylaşılan erişim imzası (SAS)](service-bus-sas.md) belirteç modeli ve yetkilendirme kurallarının yönetiminin [Azure ACTIVE DIRECTORY](/azure/active-directory/) Access Control Service (ACS) tarafından yönetildiği BIR Federasyon modeli ve ACS 'den alınan belirteçler, istenen özelliklere erişimi yetkilendirmek için Service Bus 'ye geçirilir.
 
 ACS yetkilendirme modelinin süresi, tercih edilen model olarak [SAS yetkilendirmesi](service-bus-authentication-and-authorization.md) ile değiştirilmiştir ve tüm belgeler, kılavuzluk ve örnekler günümüzde SAS kullanır. Üstelik, artık ACS ile eşleştirilmiş yeni Service Bus ad alanları oluşturmak mümkün değildir.
 
@@ -47,13 +47,13 @@ Karmaşık kural kümelerinin geçişine ilişkin yardım için [Azure desteğin
 
 ### <a name="unchanged-defaults"></a>Değiştirilmemiş varsayılanlar
 
-Uygulamanız ACS varsayılanlarını değiştirmediyse, tüm [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) kullanımını [Sharedaccesssignaturetokenprovider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) nesnesiyle değiştirebilir ve bunun yerine önceden yapılandırılmış **RootManageSharedAccessKey** ad alanını kullanabilirsiniz , ACS **sahip** hesabı. Bu hesap/kural ad alanı üzerinde tüm varlıkları silme izni de dahil olmak üzere tam yönetim yetkilisi sağladığından, ACS **sahip** hesabıyla bile bu yapılandırmanın (ve yine de) önerildiğine unutmayın.
+Uygulamanız ACS varsayılanlarını değiştirmediyse, tüm [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) kullanımını bir [Sharedaccesssignaturetokenprovider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) nesnesiyle değiştirebilir ve ACS **Owner** hesabı yerine önceden yapılandırılmış **RootManageSharedAccessKey** ad alanını kullanabilirsiniz. Bu hesap/kural ad alanı üzerinde tüm varlıkları silme izni de dahil olmak üzere tam yönetim yetkilisi sağladığından, ACS **sahip** hesabıyla bile bu yapılandırmanın (ve yine de) önerildiğine unutmayın.
 
 ### <a name="simple-rules"></a>Basit kurallar
 
 Uygulama basit kurallarla özel hizmet kimlikleri kullanıyorsa, belirli bir kuyrukta erişim denetimi sağlamak için bir ACS hizmet kimliğinin oluşturulduğu durumda doğrudan geçiş yapılır. Bu senaryo genellikle her kuyruğun bir kiracı sitesi veya şube ofisi için bir köprü olarak kullanıldığı ve bu belirli site için hizmet kimliğinin oluşturulduğu SaaS stili çözümlerde bir durumdur. Bu durumda, ilgili hizmet kimliği, doğrudan kuyruktaki bir paylaşılan erişim Imza kuralına geçirilebilir. Hizmet kimliği adı SAS kuralı adı olabilir ve hizmet kimliği anahtarı SAS kural anahtarı olabilir. SAS kuralının hakları daha sonra varlık için sırasıyla geçerli ACS kuralına eşit olarak yapılandırılır.
 
-ACS ile federe olan mevcut bir ad alanı üzerinde bu yeni ve ek SAS yapılandırmalarını yerinde yapabilir ve ACS 'den uzağa geçiş daha sonra, [](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) [yerine Sharedaccesssignaturetokenprovider kullanılarak gerçekleştirilir SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Ad alanının ACS 'den bağlantısının kesilme gereksinimi yoktur.
+ACS ile federe olan mevcut bir ad alanı üzerinde bu yeni ve ek SAS yapılandırmalarını yerinde yapabilir ve ACS 'den uzağa geçiş daha sonra [Sharedsecrettokenprovider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider)yerine [Sharedaccesssignaturetokenprovider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) kullanılarak gerçekleştirilir. Ad alanının ACS 'den bağlantısının kesilme gereksinimi yoktur.
 
 ### <a name="complex-rules"></a>Karmaşık kurallar
 

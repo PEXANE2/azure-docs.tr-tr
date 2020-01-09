@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2f3d8c88e7949265f12405760acbccebb89d1df5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b84b5ee8682007191953bef34579973c7c24ca45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448506"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Hızlı başlangıç: Python için Bing Haber Arama SDK ile bir haber araması gerçekleştirme
 
 Python için Bing Haber Arama SDK ile haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)' da bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Python](https://www.python.org/) 2. x veya 3. x
 
@@ -65,7 +65,7 @@ python -m pip install azure-cognitiveservices-search-newssearch
     news_result = client.news.search(query=search_term, market="en-us", count=10)
     ```
 
-## <a name="parse-the-response"></a>Yanıtı Ayrıştır
+## <a name="parse-the-response"></a>Yanıtı ayrıştırma
 
 Herhangi bir arama sonucu bulunursa, ilk Web sayfası sonucunu Yazdır:
 

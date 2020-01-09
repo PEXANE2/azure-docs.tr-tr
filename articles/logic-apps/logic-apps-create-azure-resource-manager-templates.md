@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428721"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun
 
-Mantıksal uygulamanızı oluşturma ve dağıtma işlemlerini otomatik hale getirmenize yardımcı olmak için, bu makalede mantıksal uygulamanız için [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturabileceğiniz yollar açıklanmaktadır. İş akışı tanımınızı ve dağıtım için gereken diğer kaynakları içeren bir şablonun yapısı ve sözdizimi hakkında genel bakış için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md).
+Mantıksal uygulamanızı oluşturma ve dağıtma işlemlerini otomatik hale getirmenize yardımcı olmak için, bu makalede mantıksal uygulamanız için [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md) oluşturabileceğiniz yollar açıklanmaktadır. İş akışı tanımınızı ve dağıtım için gereken diğer kaynakları içeren bir şablonun yapısı ve sözdizimi hakkında genel bakış için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps, yalnızca mantıksal uygulamalar oluşturmak için değil, yeniden kullanabileceğiniz [önceden oluşturulmuş bir mantıksal uygulama Azure Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) sağlar, ancak dağıtım için kullanılacak kaynakları ve parametreleri de tanımlayabilir. Bu şablonu kendi iş senaryolarınız için kullanabilir veya şablonu gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
@@ -24,8 +24,8 @@ Azure Logic Apps, yalnızca mantıksal uygulamalar oluşturmak için değil, yen
 
 Azure Resource Manager şablonları hakkında daha fazla bilgi için şu konulara bakın:
 
-* [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure Resource Manager şablonları yaz](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager şablon yapısı ve sözdizimi](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager şablonları yaz](../azure-resource-manager/templates/template-syntax.md)
 * [Bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
@@ -106,8 +106,8 @@ PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $f
 
 | Parametreler | Gereklidir | Açıklama |
 |------------|----------|-------------|
-| TemplateFile | Yes | Şablon dosyanızın dosya yolu |
-| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
+| TemplateFile | Evet | Şablon dosyanızın dosya yolu |
+| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan: `None`. |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

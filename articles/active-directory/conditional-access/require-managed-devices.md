@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452405"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424811"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Cloud App erişimi için yönetilen cihazlar gerektirme
 
@@ -24,7 +24,7 @@ Mobil ve bulut öncelikli bir dünyada Azure Active Directory (Azure AD), uygula
 
 Bu makalede, yönetilen cihazların ortamınızdaki belirli bulut uygulamalarına erişmesi için gereken koşullu erişim ilkelerini nasıl yapılandırabileceğiniz açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bulut uygulama erişimi için yönetilen cihazların gerekli olması, **Azure AD koşullu erişimi** Ile **Azure AD cihaz yönetimini** birbirine bağlalardır. Henüz bu alanlardan birini bilmiyorsanız, önce aşağıdaki konuları okumanız gerekir:
 
@@ -91,8 +91,9 @@ Uyumlu olarak işaretlenen bir cihaz için şunları varsayabilirsiniz:
 - Şirket bilgileriniz, iş gücünüzün eriştiği ve paylaştığı bir şekilde denetim sağlanmasına yardımcı olur.
 - Cihaz ve uygulamaları, şirket güvenlik gereksinimleriyle uyumludur
 
-> [!NOTE]
-> Uyumlu cihazlar gerektirecek bir ilke yapılandırırsanız, kullanıcılar, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmek için Mac, iOS ve Android 'de istenebilir. Bu bilinen bir davranıştır.
+### <a name="known-behavior"></a>Bilinen davranış
+
+Windows 7, iOS, Android, macOS ve bazı üçüncü taraf web tarayıcılarında, Azure AD, cihaz Azure AD 'ye kaydedildiğinde sağlanan bir istemci sertifikası kullanarak cihazı tanımlar. Kullanıcı tarayıcıda ilk kez oturum açtığında, kullanıcıdan sertifikayı seçmesi istenir. Son Kullanıcı, tarayıcıyı kullanmaya devam edebilmek için bu sertifikayı seçmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,6 @@
 ---
-title: Veritabanı geçişi senaryo durumu | Microsoft Docs
+title: Veritabanı geçiş senaryosunun durumu
+titleSuffix: Azure Database Migration Service
 description: Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu hakkında bilgi edinin.
 services: database-migration
 author: HJToland3
@@ -11,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376402"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437685"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
@@ -44,17 +45,17 @@ Aşağıdaki tablolarda, Azure veritabanı geçiş hizmeti kullanılırken hangi
 
 Aşağıdaki tabloda çevrimdışı geçişler için Azure veritabanı geçiş hizmeti desteği gösterilmektedir.
 
-| Hedef  | Source | Destek | Durum |
+| Hedefleyin  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
+| **Azure SQL DB** | SQL Server | ✔ | Genel Kullanım |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL Server | ✔ | GA |
+| **Azure SQL DB MI** | SQL Server | ✔ | Genel Kullanım |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL VM** | SQL Server | ✔ | GA |
+| **Azure SQL VM** | SQL Server | ✔ | Genel Kullanım |
 |   | Oracle |   |   |
-| **Azure Cosmos DB** | MongoDB | ✔ | GA |
+| **Azure Cosmos DB** | MongoDB | ✔ | Genel Kullanım |
 | **MySQL için Azure DB** | MySQL |   |   |
 |   | RDS MySQL |   |   |
 | **PostgreSQL için Azure DB** | PostgreSQL |  |
@@ -64,21 +65,21 @@ Aşağıdaki tabloda çevrimdışı geçişler için Azure veritabanı geçiş h
 
 Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hizmeti desteği gösterilmektedir.
 
-| Hedef  | Source | Destek | Durum |
+| Hedefleyin  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+| **Azure SQL DB** | SQL Server | ✔ | Genel Kullanım |
+|   | RDS SQL | ✔ | Genel Kullanım |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+| **Azure SQL DB MI** | SQL Server | ✔ | Genel Kullanım |
+|   | RDS SQL | ✔ | Genel Kullanım |
 |   | Oracle | ✔ | Özel Önizleme |
 | **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **MySQL için Azure DB** | MySQL | ✔ | GA |
-|   | RDS MySQL | ✔ | GA |
-| **PostgreSQL için Azure DB** | PostgreSQL | ✔ | GA |
-|   | RDS PostgreSQL | ✔ | GA |
+| **Azure Cosmos DB** | MongoDB | ✔ | Genel Kullanım |
+| **MySQL için Azure DB** | MySQL | ✔ | Genel Kullanım |
+|   | RDS MySQL | ✔ | Genel Kullanım |
+| **PostgreSQL için Azure DB** | PostgreSQL | ✔ | Genel Kullanım |
+|   | RDS PostgreSQL | ✔ | Genel Kullanım |
 |   | Oracle | ✔ | Genel önizleme |
 
 ## <a name="next-steps"></a>Sonraki adımlar

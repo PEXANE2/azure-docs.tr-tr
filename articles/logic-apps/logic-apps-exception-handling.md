@@ -1,6 +1,6 @@
 ---
-title: Hata ve özel durum işleme
-description: Azure Logic Apps hata ve özel durum işleme desenleri hakkında bilgi edinin
+title: Hataları ve özel durumları işleme
+description: Azure Logic Apps kullanılarak oluşturulan otomatikleştirilmiş görevler ve iş akışlarında oluşan hataları ve özel durumları nasıl işleyeceğinizi öğrenin
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453404"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps hataları ve özel durumları işleme
 
@@ -32,7 +32,7 @@ Yeniden deneme ilkesi türleri şunlardır:
 | **Varsayılan** | Bu ilke, 7,5 saniye ölçeklendirilen ancak 5 ila 45 saniye arasında ölçeklenebilen, en fazla dört yeniden deneme aralığını üstel olarak *artırır* . | 
 | **Üstel Aralık**  | Bu ilke, sonraki isteği göndermeden önce üstel olarak büyüyen bir aralıktan seçilen rastgele aralığı bekler. | 
 | **Sabit Aralık**  | Bu ilke, sonraki isteği göndermeden önce belirtilen aralığı bekler. | 
-| **Seçim**  | İsteği yeniden gönderin. | 
+| **Yok**  | İsteği yeniden gönderin. | 
 ||| 
 
 Yeniden deneme ilkesi limitleri hakkında bilgi için bkz. [Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -71,17 +71,17 @@ Ya da yeniden deneme ilkelerini destekleyen bir eylem veya tetikleyici için `in
 
 | Değer | Tür | Açıklama |
 |-------|------|-------------|
-| <*retry-ilke-tür*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default`, `none`, `fixed`veya `exponential` | 
-| <*yeniden deneme-aralık*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D`. Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. | 
-| <*yeniden deneme-deneme*> | Tamsayı | 1 ile 90 arasında olması gereken yeniden deneme girişimi sayısı | 
+| <*retry-policy-type*> | Dize | Kullanmak istediğiniz yeniden deneme ilkesi türü: `default`, `none`, `fixed`veya `exponential` | 
+| <*retry-interval*> | Dize | Değerin [ıso 8601 biçimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kullanması gereken yeniden deneme aralığı. Varsayılan en düşük Aralık `PT5S` ve en yüksek Aralık `PT1D`. Üstel Aralık ilkesini kullandığınızda, farklı en düşük ve en yüksek değerleri belirtebilirsiniz. | 
+| <*retry-attempts*> | Tamsayı | 1 ile 90 arasında olması gereken yeniden deneme girişimi sayısı | 
 ||||
 
-*Seçim*
+*İsteğe bağlı*
 
 | Değer | Tür | Açıklama |
 |-------|------|-------------|
-| <*Minimum aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık | 
-| *maksimum <aralık*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık | 
+| <*minimum-interval*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en küçük Aralık | 
+| <*maximum-interval*> | Dize | Üstel Aralık ilkesi için [ıso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) rastgele seçilen Aralık için en büyük Aralık | 
 |||| 
 
 Farklı ilke türleri hakkında daha fazla bilgi aşağıda verilmiştir.

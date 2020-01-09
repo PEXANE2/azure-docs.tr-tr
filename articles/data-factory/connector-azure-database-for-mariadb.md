@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 00fdeb71cec5995a229c5408429a0369d4317b66
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20e84b584fa4d654500efc47786fa8db0cd9c238
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440797"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory kullanarak MariaDB için Azure veritabanı 'ndan veri kopyalama 
 
@@ -45,8 +45,8 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AzureMariaDB** olarak ayarlanmalıdır | Yes |
-| connectionString | MariaDB için Azure veritabanı 'na bağlanmak için bir bağlantı dizesi. Bu dosyayı Azure portal > MariaDB-> bağlantı dizeleri için Azure veritabanınız-> ADO.NET One adresinden bulabilirsiniz. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, Azure Key Vault parola yerleştirebilir ve `pwd` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| type | Type özelliği: **AzureMariaDB** olarak ayarlanmalıdır | Evet |
+| connectionString | MariaDB için Azure veritabanı 'na bağlanmak için bir bağlantı dizesi. Bu dosyayı Azure portal > MariaDB-> bağlantı dizeleri için Azure veritabanınız-> ADO.NET One adresinden bulabilirsiniz. <br/> Ayrıca, Azure Key Vault parola yerleştirebilir ve `pwd` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 **Örnek:**
@@ -57,10 +57,7 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
     "properties": {
         "type": "AzureMariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
-            }
+            "connectionString": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,10 +75,7 @@ MariaDB bağlı hizmeti için Azure veritabanı 'nda aşağıdaki özellikler de
     "properties": {
         "type": "AzureMariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;"
-            },
+            "connectionString": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -107,7 +101,7 @@ MariaDB için Azure veritabanı 'ndan veri kopyalamak için aşağıdaki özelli
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **AzureMariaDBTable** olarak ayarlanmalıdır | Yes |
+| type | DataSet 'in Type özelliği: **AzureMariaDBTable** olarak ayarlanmalıdır | Evet |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
@@ -137,7 +131,7 @@ MariaDB için Azure veritabanı 'ndan veri kopyalamak için, etkinlik **kaynağ�
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureMariaDBSource** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureMariaDBSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 
 **Örnek:**

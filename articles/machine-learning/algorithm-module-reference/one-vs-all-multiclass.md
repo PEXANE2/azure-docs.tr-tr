@@ -1,7 +1,7 @@
 ---
 title: Bire Karşı Hepsi Çoklu Sınıf
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetinde Bire Karşı Hepsi Çoklu Sınıf modülünü kullanarak ikili sınıflandırma modellerinin bir şekilde bir çok Lass sınıflandırma modeli oluşturma hakkında bilgi edinin.
+titleSuffix: Azure Machine Learning
+description: İkili sınıflandırma modellerinin bir enseshonu kullanarak birden çok Lass sınıflandırma modeli oluşturmak için Azure Machine Learning Bire Karşı Hepsi Çoklu Sınıf modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428509"
 ---
 # <a name="one-vs-all-multiclass"></a>Bire Karşı Hepsi Çoklu Sınıf
 
@@ -61,4 +61,4 @@ Alternatif olarak, etiketli bir doğrulama veri kümesine karşı çapraz doğru
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

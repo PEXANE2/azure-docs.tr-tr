@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 2350586501fae84726aa2aa2438ea676b90c1dbb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a988fbb089bd94456e0b91b377574ab27a67617f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437202"
 ---
-# <a name="use-firewall-rules"></a>Güvenlik duvarı kurallarını kullanma
+# <a name="azure-event-hubs---use-firewall-rules"></a>Azure Event Hubs-güvenlik duvarı kurallarını kullanma
 
 Azure Event Hubs yalnızca belirli bir bilinen sitelerden erişilebilir olması gereken senaryolarda güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, bu adresler kurumsal bir NAT ağ geçidinin bu olabilir.
 
@@ -34,7 +34,7 @@ Event Hubs ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adr
 
 ## <a name="default-setting"></a>Varsayılan ayar
 
-Varsayılan olarak, Event Hubs Portal 'daki **IP filtresi** Kılavuzu boştur. Bu varsayılan ayar, olay hub'ınıza herhangi bir IP adresinden gelen bağlantıları kabul etmesini anlamına gelir. Bu varsayılan ayarı 0.0.0.0/0 IP adresi aralığı kabul eden bir kural eşdeğerdir.
+Varsayılan olarak, **IP Filtresi** portalında Event Hubs için kılavuz boştur. Bu varsayılan ayar, olay hub'ınıza herhangi bir IP adresinden gelen bağlantıları kabul etmesini anlamına gelir. Bu varsayılan ayarı 0.0.0.0/0 IP adresi aralığı kabul eden bir kural eşdeğerdir.
 
 ## <a name="ip-filter-rule-evaluation"></a>IP filtresi kuralı değerlendirme
 
@@ -64,13 +64,13 @@ Aşağıdaki Resource Manager şablonu var olan bir Event Hubs ad alanı için b
 
 Şablon parametreleri:
 
-- **IPMask** , CIDR gösteriminde tek bir IPv4 ADRESIDIR veya IP adresi bloğudur. Örneğin, CIDR gösterimi 70.37.104.0/24 256 IPv4 adresi 70.37.104.0 70.37.104.255, aralığı için önemli bir önek bit sayısını gösteren 24 ile temsil eder.
+- **ipMask** tek bir IPv4 adresi veya IP adresleri CIDR gösteriminde bir bloğu. Örneğin, CIDR gösterimi 70.37.104.0/24 256 IPv4 adresi 70.37.104.0 70.37.104.255, aralığı için önemli bir önek bit sayısını gösteren 24 ile temsil eder.
 
 > [!NOTE]
 > Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
 > Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
 > 
-> from
+> başlangıç
 > ```json
 > "defaultAction": "Allow"
 > ```

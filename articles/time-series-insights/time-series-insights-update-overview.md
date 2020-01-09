@@ -1,6 +1,6 @@
 ---
 title: 'Genel Bakış: Azure Time Series Insights önizlemesi nedir? -Azure Time Series Insights | Microsoft Docs'
-description: Azure Time Series Insights önizlemede önemli iyileştirmeler hakkında bilgi edinin.
+description: Azure Time Series Insights önizlemede değişiklikler, iyileştirmeler ve özellikler hakkında bilgi edinin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/29/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f6f6039be1d8837b4b1fe4eb225289f4cd1642cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452466"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights Önizleme nedir?
 
@@ -82,7 +82,7 @@ Bu temel Endüstriyel IoT özelliklerine giriş ile Time Series Insights, aşağ
 | Ham telemetri eklemek ve varlık tabanlı Öngörüler türetmeye yönelik zaman serisi modeli | Tarih serisi modelini, zaman serisi verileriniz için örnekler, hiyerarşiler, türler ve değişkenler oluşturmak için kullanabilirsiniz. Zaman serisi modeli hakkında daha fazla bilgi edinmek için bkz. [zaman serisi modeli](./time-series-insights-update-tsm.md).  |
 | Diğer veri çözümleriyle sorunsuz ve sürekli tümleştirme | Time Series Insights soğuk depodaki veriler, açık kaynaklı Apache Parquet dosyalarında [depolanır](./time-series-insights-update-storage-ingress.md) . Bu, iş zekası, gelişmiş makine öğrenimi ve tahmine dayalı analiz gibi senaryolar için diğer veri çözümleri, 1 veya 3. taraf ile veri tümleştirmeyi sağlar. |
 | Neredeyse gerçek zamanlı veri araştırması | [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) Kullanıcı deneyimi, alma işlem hattı aracılığıyla tüm veri akışı için görselleştirme sağlar. Bir olay kaynağını bağlandıktan sonra olay verilerini görüntüleyebilir, keşfedebilir ve sorgulayabilirsiniz. Bu şekilde, bir cihazın verileri beklendiği gibi yayıp yaymadığını doğrulayabilirsiniz. Ayrıca, bir IoT varlığını sistem durumu, üretkenlik ve genel verimlilik için izleyebilirsiniz. | 
-| Genişletilebilirlik ve Tümleştirme | Azure Time Series Insights Power BI bağlayıcı tümleştirmesi, **dışa aktarma** seçeneği aracılığıyla doğrudan zaman serisi Gezgini kullanıcı deneyiminde kullanılabilir ve müşterilerin Kullanıcı deneyimimizde oluşturdukları zaman serisi sorgularını doğrudan dışarı aktarmalarına izin verir. Power BI masaüstüne ekleyin ve zaman serisi grafiklerini diğer bı analizlerinin yanı sıra görüntüleyin. Bu, IoT zaman serisi dahil çeşitli veri kaynaklarından analizler üzerinde tek bir cam bölmesi sunarak Power BI yatırım yapan endüstriyel IoT kuruluşları için bir yeni senaryolar sınıfına açar. | 
+| Genişletilebilirlik ve Tümleştirme | Azure Time Series Insights Power BI Bağlayıcısı tümleştirmesi, **dışa aktarma** seçeneği aracılığıyla doğrudan zaman serisi Gezgin Kullanıcı deneyiminde kullanılabilir ve müşterilerin kendi Kullanıcı deneyimimizde oluşturdukları zaman serisi sorgularını, diğer bı analizlerine göre doğrudan Power BI masaüstüne dışarı aktarmalarına izin verir. Bu, IoT zaman serisi dahil çeşitli veri kaynaklarından analizler üzerinde tek bir cam bölmesi sunarak Power BI yatırım yapan endüstriyel IoT kuruluşları için bir yeni senaryolar sınıfına açar. | 
 | Time Series Insights platformunda oluşturulan özel uygulamalar | Time Series Insights [JavaScript SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)destekler. SDK, zengin denetimleri ve sorguları yönelik Basitleştirilmiş erişim sağlar. İş gereksinimlerinize uyacak şekilde Time Series Insights en üstünde özel IoT uygulamaları oluşturmak için SDK 'Yı kullanın. Ayrıca, verileri özel IoT uygulamalarına yönlendirmek için doğrudan Time Series Insights [sorgu API 'lerini](./time-series-insights-update-tsq.md) de kullanabilirsiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

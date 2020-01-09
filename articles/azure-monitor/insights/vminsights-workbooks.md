@@ -4,15 +4,15 @@ description: VM'ler için Azure İzleyici için önceden tanımlı ve özel para
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365929"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Çalışma kitaplarında etkileşimli raporlar VM'ler için Azure İzleyici oluşturma
 
@@ -27,7 +27,7 @@ ms.locfileid: "73200537"
 
 VM'ler için Azure İzleyici, başlamanızı sağlamak için birkaç çalışma kitabı içerir ve aşağıdaki tablo bunları özetler.
 
-| Kitabının | Açıklama | Kapsam |
+| Çalışma kitabı | Açıklama | Kapsam |
 |----------|-------------|-------|
 | Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Ölçekte |
 | Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Ölçekte |
@@ -47,11 +47,11 @@ VM'ler için Azure İzleyici, başlamanızı sağlamak için birkaç çalışma 
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. **Sanal makineleri**seçin.
+2. Seçin **sanal makineler**.
 
 3. Listeden bir VM seçin.
 
-4. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
+4. VM sayfasında içinde **izleme** bölümünden **Insights (Önizleme)** .
 
 5. VM öngörüleri sayfasında **performans** veya **haritalar** sekmesini seçin ve sayfadaki bağlantıdan **çalışma kitaplarını görüntüle** ' yi seçin. 
 
@@ -152,7 +152,7 @@ Aşağıda, bir çalışma kitabına eklenen ve CPU performansının kılavuz bi
 
 Çalışma kitabı parametreleri, sorgu veya metin bölümlerini el ile düzenlemeniz gerekmeden çalışma kitabındaki değerleri değiştirmenize izin verir. Bu, temel analiz sorgu dilini anlamaya gerek gereksinimini ortadan kaldırır ve çalışma kitabı tabanlı raporlamanın potansiyel kitlelerini büyük ölçüde genişletir.
 
-Parametre değerleri, ``{parameterName}`` gibi küme ayraçları içine yerleştirerek sorgu, metin veya diğer parametre bölümlerinde yer alır. Parametre adları, JavaScript tanımlayıcıları, alfabetik karakterler veya alt çizgiler, ardından alfasayısal karakterler veya alt çizgiler ile benzer kurallarla sınırlıdır. Örneğin, **a1** 'ye izin verilir, ancak **1a** buna izin verilmez.
+Parametre değerleri, ``{parameterName}``gibi küme ayraçları içine yerleştirerek sorgu, metin veya diğer parametre bölümlerinde yer alır. Parametre adları, JavaScript tanımlayıcıları, alfabetik karakterler veya alt çizgiler, ardından alfasayısal karakterler veya alt çizgiler ile benzer kurallarla sınırlıdır. Örneğin, **a1** 'ye izin verilir, ancak **1a** buna izin verilmez.
 
 Parametreler doğrusal, bir çalışma kitabının üstünden başlayıp daha sonraki adımlara akar.  Daha sonra bir çalışma kitabında bildirildiği parametreler, daha önce belirtilen parametreleri geçersiz kılabilir. Bu Ayrıca, daha önce tanımlanan parametrelerden değerlere erişmek için sorgular kullanan parametrelere izin verir. Bir parametrenin adımının kendisi içinde, parametreler aynı adımda daha önce belirtilen bir parametreye bağlı olabileceği gibi, parametreler de doğrusal, soldan sağa doğru yapılır.
  

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440524"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory 'de sürekli tümleştirme ve teslim (CI/CD)
 
@@ -56,11 +56,11 @@ Aşağıda, Azure Repos git ile yapılandırılmış bir Azure Data Factory 'de 
 
 Test ve üretim verileri fabrikalarınız içinde **ARM şablonunu Içeri aktar**' ı seçin. Bu eylem, dışarı aktarılan şablonu içeri aktarabileceğiniz Azure portal sizi yönlendirir. Kaynak Yöneticisi Şablon düzenleyicisini açmak için **düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![Kendi şablonunuzu özel dağıtım derleme](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 **Dosya Yükle** ' ye tıklayın ve oluşturulan kaynak yöneticisi şablonunu seçin.
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![Özel dağıtım şablonu düzenleme](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 Ayarlar bölmesinde, bağlı hizmet kimlik bilgileri gibi yapılandırma değerlerini girin. İşiniz bittiğinde Kaynak Yöneticisi şablonunu dağıtmak için **satın al** ' a tıklayın.
 

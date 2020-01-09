@@ -1,6 +1,6 @@
 ---
-title: Azure tablo depolama ve Azure Cosmos DB tablo API'si ile C++ kullanma
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+title: Azure Tablo Depolamayı kullanma ve Azure Cosmos DB Tablo API'siC++
+description: Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanarak bulutta yapılandırılmış verileri depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: b8fa0a3cebd87f4da1a47c605ba21b0cb10a2517
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5df344b3f9f3d2fc2ff6fa65667039c545b70841
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441194"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini C++ ile kullanma
 
@@ -35,7 +35,7 @@ Bu kılavuzda, Azure Tablo Depolama hizmetini veya Azure Cosmos DB Tablo API'si 
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Bir Azure depolama hesabı oluşturma
+### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 

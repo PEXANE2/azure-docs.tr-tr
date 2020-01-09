@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425527"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
-Azure Active Directory Domain Services (AD DS), diğer uygulamalara ve iş yüklerine kimlik doğrulama ve yönetim hizmetleri sağladığından, ağ bağlantısı önemli bir bileşendir. Uygun şekilde yapılandırılmış sanal ağ kaynakları, uygulamalar ve iş yükleri ile iletişim kuramaz ve Azure AD DS tarafından sağlanan özellikleri kullanabilir. Sanal ağınızı doğru planlamanız durumunda Azure AD DS 'nin uygulamalarınıza ve iş yüklerinize gerektiği gibi hizmeti verebildiğinizden emin olun.
+Azure Active Directory Domain Services (AD DS), diğer uygulamalara ve iş yüklerine kimlik doğrulama ve yönetim hizmetleri sağladığından, ağ bağlantısı önemli bir bileşendir. Uygun şekilde yapılandırılmış sanal ağ kaynakları, uygulamalar ve iş yükleri ile iletişim kuramaz ve Azure AD DS tarafından sunulan özelliklerle birlikte kullanamaz. Sanal ağınızı doğru planlamanız durumunda Azure AD DS 'nin uygulamalarınıza ve iş yüklerinize gerektiği gibi hizmeti verebildiğinizden emin olun.
 
 Bu makalede, Azure AD DS 'yi destekleyen bir Azure sanal ağı için tasarım konuları ve gereksinimleri özetlenmektedir.
 
@@ -107,9 +107,9 @@ Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağı
 
 | Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gereklidir | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | Allow  | Yes      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | Allow  | Yes      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | Allow  | Yes      | Etki alanınızı yönetme. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | Allow  | Evet      | Azure AD kiracınızla eşitleme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | Allow  | Evet      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | Allow  | Evet      | Etki alanınızı yönetme. |
 | 636         | TCP      | Herhangi biri                                | Herhangi biri         | Allow  | Hayır       | Yalnızca Güvenli LDAP (LDAPS) yapılandırdığınızda etkinleştirilir. |
 
 > [!WARNING]
@@ -142,7 +142,7 @@ Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağı
 * Azure AD DS yönetilen etki alanında PowerShell uzaktan iletişimini kullanarak yönetim görevlerini gerçekleştirmek için kullanılır.
 * Bu bağlantı noktasına erişim olmadan Azure AD DS yönetilen etki alanınız güncelleştirilemiyor, yapılandırılamaz, yedeklenmez veya izlenemez.
 * Kaynak Yöneticisi tabanlı bir sanal ağ kullanan Azure AD DS yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi *AzureActiveDirectoryDomainServices* Service etiketiyle kısıtlayabilirsiniz.
-    * Klasik tabanlı bir sanal ağ kullanan eski Azure AD DS yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*ve *104.40.87.209*.
+    * Klasik tabanlı bir sanal ağ kullanan eski Azure AD DS yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*ve *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 

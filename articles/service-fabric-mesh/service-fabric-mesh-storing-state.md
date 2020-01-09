@@ -1,43 +1,39 @@
 ---
-title: Azure Service Fabric Mesh depolama seçeneklerini belirtin. | Microsoft Docs
-description: Güvenilir bir şekilde durumunu Service Fabric Mesh uygulamalarda çalışan Azure Service Fabric Mesh depolama hakkında bilgi edinin.
-services: service-fabric-mesh
-keywords: ''
+title: Azure Service Fabric ağı 'nda durum depolama seçenekleri
+description: Azure Service Fabric ağı üzerinde çalışan Service Fabric kafes uygulamalarında durumu güvenilir bir şekilde depolama hakkında bilgi edinin.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352340"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric ile durum yönetimi
 
-Service Fabric, birçok farklı seçenek için durumu depolama alanını destekler. Kavramsal genel bakış durum yönetimi düzenleri ve Service Fabric için bkz: [Service Fabric Kavramları: Durum](/azure/service-fabric/service-fabric-concepts-state). Hizmetlerinizi içinde veya Service Fabric Mesh dışında çalışan tüm aynı kavramlar geçerlidir. 
+Service Fabric, durum depolama için birçok farklı seçeneği destekler. Durum yönetimi desenleri ve Service Fabric kavramsal bir genel bakış için bkz. [Service Fabric kavramlar: State](/azure/service-fabric/service-fabric-concepts-state). Bu tüm kavramlar, hizmetlerinizin Service Fabric kafesin içinde veya dışında çalışmasına bakılmaksızın geçerlidir. 
 
-Service Fabric Mesh ile kolayca yeni bir uygulama dağıtın ve Azure'da barındırılan mevcut bir veri deposuna bağlanın. Herhangi bir uzak veritabanı kullanmanın yanı sıra, hizmet yerel veya uzak depolama olup istediği bağlı olarak verileri depolamak için birkaç seçenek vardır. 
+Service Fabric ağ ile, kolayca yeni bir uygulamayı dağıtabilir ve Azure 'da barındırılan mevcut bir veri deposuna bağlayabilirsiniz. Herhangi bir uzak veritabanını kullanmanın yanı sıra, hizmetin yerel veya uzak depolama alanını desimi etmediğine bağlı olarak verilerin depolanması için çeşitli seçenekler vardır. 
 
 ## <a name="volumes"></a>Birimler
 
-Kapsayıcılar genellikle olun geçici diskler kullanır. Yeni, geçici bir diskle almak ve bir kapsayıcı kilitlendiğinde bilgileri kaybedersiniz geçici diskler ancak kısa ömürlü, değildir. Ayrıca, diğer kapsayıcılarla geçici diskler hakkında bilgi paylaşmak zor olabilir. Birimler durumu kalıcı hale getirmek için kullanabileceğiniz kapsayıcı örneklerinizin içinde oluşturulmuş dizinleri listelenmiştir. Birimleri, genel amaçlı dosya depolama sağlar ve normal bir disk g/ç dosya API'lerini kullanarak dosya okuma/yazma olanak sağlar. Birim kaynağına nasıl bağlandığını bir dizin ve kullanmak için hangi yedekleme depolama açıklar. Azure dosya depolama veya Service Fabric birim disk verilerini saklamak için seçebilirsiniz.
+Kapsayıcılar genellikle geçici diskleri kullanır. Ancak geçici diskler kısa ömürlü olduğundan, yeni bir geçici disk alır ve bir kapsayıcı kilitlenirse bilgileri kaybedersiniz. Ayrıca, diğer kapsayıcılarla geçici disklerde bilgi paylaşmak da zordur. Birimler, durumu kalıcı hale getirmek için kullanabileceğiniz kapsayıcı örneklerinizin içine bağlanmış olan dizinlerdir. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar. Birim kaynağı, bir dizinin nasıl bağlanacağını ve hangi depolamanın kullanılacağını açıklar. Verileri depolamak için Azure dosya depolama veya Service Fabric birim diski seçebilirsiniz.
 
 ![Birimler][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric güvenilir birim
 
-Service Fabric güvenilir birim kapsayıcısına yerel bir birimi bağlamak için kullanılan bir Docker birim sürücüsüdür. Okuma ve yazma işlemleri yerel işlemler ve hızlı olan. Veriler varsayılan olarak, yüksek oranda kullanılabilir hale getirme ikincil düğüm için çıkış çoğaltılır. Yük devretme hızlı çalışır. Bir kapsayıcı kilitlendiğinde verilerinizin bir kopyasının zaten bir düğüme devreder. Bir örnek için bkz. [Service Fabric güvenilir toplu bir uygulamayla dağıtma](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
+Service Fabric güvenilir birim, yerel bir birimi bir kapsayıcıya bağlamak için kullanılan bir Docker birimi sürücüsüdür. Okuma ve yazma işlemleri yerel işlemlerdir ve hızlıdır. Veriler ikincil düğümlere çoğaltılır ve yüksek oranda kullanılabilir hale gelir. Yük devretme da hızlıdır. Bir kapsayıcı kilitlenirse, verilerin bir kopyasına zaten sahip olan bir düğüme yük devreder. Bir örnek için bkz. [Service Fabric güvenilir bir birimle uygulama dağıtma](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
 
-### <a name="azure-files-volume"></a>Azure dosya birimi
+### <a name="azure-files-volume"></a>Azure dosyaları hacmi
 
-Azure dosyaları birim kapsayıcısına bir Azure dosya paylaşımını bağlayabilmeniz için kullanılan bir Docker birim sürücüsü değil. Depolama ağ depolama kullanan yeniden, bu nedenle okuyan ve yazan azure dosyaları ağ üzerinden gerçekleşir. Service Fabric güvenilir birimine göre Azure dosya depolama daha az yüksek performanslı bağlıdır, ancak daha ucuz ve tam olarak güvenilir veri seçeneğini sağlar. Bir örnek için bkz. [Azure dosya birimi bir uygulamayla dağıtma](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
+Azure dosyaları birimi, bir Azure dosya paylaşımının bir kapsayıcıya bağlanması için kullanılan bir Docker birimi sürücüsüdür. Azure dosyaları depolaması ağ depolama alanını kullanır, bu nedenle ağ üzerinden okuma ve yazma işlemleri gerçekleşir. Azure dosya depolaması, Service Fabric güvenilir birimle karşılaştırıldığında daha az performans sağlar, ancak bir ucuz ve tam olarak güvenilir bir veri seçeneği sağlar. Bir örnek için bkz. [Azure dosyaları hacminde uygulama dağıtma](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama modeli hakkında daha fazla bilgi için bkz: [Service Fabric kaynakları](service-fabric-mesh-service-fabric-resources.md)
+Uygulama modeli hakkında daha fazla bilgi için bkz. [Service Fabric Resources](service-fabric-mesh-service-fabric-resources.md)
 
 [image3]: ./media/service-fabric-mesh-storing-state/volumes.png

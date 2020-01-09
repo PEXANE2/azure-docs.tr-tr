@@ -1,20 +1,21 @@
 ---
 title: Azure Cloud Services bir Node. js Express uygulaması oluşturma ve dağıtma
+titleSuffix: Azure Cloud Services
 description: Node. js ' de Azure Cloud Services Express. js uygulaması oluşturma ve dağıtma
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360761"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Azure Cloud Services Express kullanarak Node. js web uygulaması oluşturma ve dağıtma
 
@@ -44,7 +45,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
     > 
     > 
 
-## <a name="install-express"></a>Express 'ı yükler
+## <a name="install-express"></a>Express yükleme
 1. Aşağıdaki komutu yayımlayarak hızlı oluşturucuyu yükler:
    
         PS C:\node\expressapp> npm install express-generator -g
@@ -93,10 +94,10 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
    
    ![İndex. Jade dosyasının içeriği.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade, Express uygulamaları tarafından kullanılan varsayılan görünüm altyapısıdır. Jade Görünüm altyapısı hakkında daha fazla bilgi için bkz [http://jade-lang.com][http://jade-lang.com].
+   Jade, Express uygulamaları tarafından kullanılan varsayılan görünüm altyapısıdır. Jade Görünüm altyapısı hakkında daha fazla bilgi için bkz. [http://jade-lang.com][http://jade-lang.com].
 2. Metnin son satırını **Azure**'a ekleyerek değiştirin.
    
-   ![İndex. Jade dosyası, son satır okur: p Azure 'da {title \#} uygulamasına hoş geldiniz](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
+   ![İndex. Jade dosyası, son satır okur: p Azure 'da \#{title} öğesine hoş geldiniz](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. Dosyayı kaydedin ve Not defteri 'nden çıkın.
 4. Tarayıcınızı yenileyin, değişikliklerinizi görürsünüz.
    
@@ -119,5 +120,8 @@ Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](https://docs.microsof
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

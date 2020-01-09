@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 03a4b8df24a0ab1dbe3cfabd3ccf207005b0e186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397629"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics akıllı analiz örnekleri
 Bu makale, Kullanıcı etkinliğinin analizini gerçekleştirmek üzere Log Analytics içindeki akıllı analiz işlevlerini kullanan örnekleri içerir. Bu örnekleri, Application Insights tarafından izlenen kendi uygulamalarınızı çözümlemek ya da diğer verilerde benzer analizler için bu sorguların kavramlarını kullanmak üzere kullanabilirsiniz. 
@@ -89,7 +89,7 @@ Bu örnek, aşağıdaki çıkışa neden olur.
 ![Kohortu analiz çıkışı](media/smart-analytics/cohorts.png)
 
 ## <a name="rolling-monthly-active-users-and-user-stickiness"></a>Aylık etkin kullanıcılar ve Kullanıcı sürekliliği
-Aşağıdaki örneklerde, kayan pencere hesaplamaları gerçekleştirmenize olanak tanıyan [series_fir](/azure/kusto/query/series-firfunction) işleviyle birlikte zaman serisi analizi kullanılmaktadır. İzlenmekte olan örnek uygulama, kullanıcıların etkinliğini özel olaylar aracılığıyla izleyen bir çevrimiçi depodır. Sorgu iki tür Kullanıcı etkinliklerini izler, _AddToCart_ ve _checkout_ve belirli bir günde en az bir kez kullanıma açan _etkin kullanıcıları_ tanımlar.
+Aşağıdaki örnekler, [series_fir](/azure/kusto/query/series-firfunction) işlevi ile zaman serisi analizini kullanır ve bu da kayan pencere hesaplamaları gerçekleştirmenize olanak tanır. İzlenmekte olan örnek uygulama, kullanıcıların etkinliğini özel olaylar aracılığıyla izleyen bir çevrimiçi depodır. Sorgu iki tür Kullanıcı etkinliklerini izler, _AddToCart_ ve _checkout_ve belirli bir günde en az bir kez kullanıma açan _etkin kullanıcıları_ tanımlar.
 
 
 
@@ -184,7 +184,7 @@ Bu örnek, bir uygulamanın izleme günlüklerine özel olarak hizmet kesintiler
 İzleme günlüğü verilerine göre hizmet durumunu değerlendirmek için iki teknik kullanılır:
 
 - Yarı yapılandırılmış metin izleme günlüklerini pozitif ve negatif izleme çizgileri arasındaki oranı temsil eden bir ölçüme dönüştürmek için [Oluştur-serisini](/azure/kusto/query/make-seriesoperator) kullanın.
-- 2 satırlık doğrusal regresyon ile zaman serisi analizini kullanarak gelişmiş adım atması algılama işlemini gerçekleştirmek için [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) ve [series_fit_line](/azure/kusto/query/series-fit-linefunction) kullanın.
+- 2 satırlık doğrusal regresyon ile zaman serisi analizini kullanarak gelişmiş adım sıçrama algılaması gerçekleştirmek için [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) ve [series_fit_line](/azure/kusto/query/series-fit-linefunction) kullanın.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));

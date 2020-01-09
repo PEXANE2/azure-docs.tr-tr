@@ -1,6 +1,6 @@
 ---
-title: StorSimple sanal dizisi depolama hesabı kimlik bilgilerini yönetme | Microsoft Docs
-description: Eklemek, düzenlemek, silmek veya StorSimple sanal dizisi ile ilişkili depolama hesabı kimlik bilgileri için güvenlik anahtarlarını döndürmek için StorSimple cihaz Yöneticisi'ni yapılandırma sayfasında nasıl kullanabileceğinizi açıklar.
+title: StorSimple Sanal dizi depolama hesabı kimlik bilgilerini yönetme | Microsoft Docs
+description: StorSimple Sanal dizisi ile ilişkili depolama hesabı kimlik bilgileri için güvenlik anahtarlarını eklemek, düzenlemek, silmek veya döndürmek üzere StorSimple Aygıt Yöneticisi Yapılandır sayfasını nasıl kullanabileceğinizi açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,142 +14,142 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac539b44f09663e6eac5651646d3c9cd02e45b3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360013"
 ---
-# <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple sanal dizisi için depolama hesabı kimlik bilgilerini yönetmek için StorSimple cihaz Yöneticisi'ni kullanın
+# <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple Sanal dizisi için depolama hesabı kimlik bilgilerini yönetmek üzere StorSimple Aygıt Yöneticisi kullanma
 
 ## <a name="overview"></a>Genel Bakış
-**Yapılandırma** StorSimple Virtual Array, StorSimple cihaz Yöneticisi hizmet dikey bölümünü StorSimple Yöneticisi hizmeti için oluşturulan genel hizmet parametreleri gösterir. Bu parametreler hizmete bağlı tüm cihazlara uygulanabilir ve şunları içerir:
+StorSimple Sanal dizininizdeki StorSimple Aygıt Yöneticisi hizmet dikey penceresinin **yapılandırma** bölümü, StorSimple Yöneticisi hizmetinde oluşturulabilen genel hizmet parametrelerini gösterir. Bu parametreler hizmete bağlı tüm cihazlara uygulanabilir ve şunları içerir:
 
 * Depolama hesabı kimlik bilgileri
 * Erişim denetimi kayıtları
   
-  ![Cihaz Yöneticisi hizmet Panosu](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccts-dashboard.png)  
+  ![Aygıt Yöneticisi hizmet panosu](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccts-dashboard.png)  
 
-Bu öğreticide nasıl ekleyebilir, düzenleme veya StorSimple Virtual Array'iniz için depolama hesabı kimlik bilgilerini silme açıklar. Bu öğreticide bilgileri yalnızca StorSimple Virtual Array için geçerlidir. 8000 serisi depolama hesaplarında yönetme hakkında daha fazla bilgi için bkz: [depolama hesabınızı yönetmek için StorSimple Yöneticisi hizmetini kullanma](storsimple-manage-storage-accounts.md).
+Bu öğreticide, StorSimple Sanal diziniz için depolama hesabı kimlik bilgilerini nasıl ekleyebileceğiniz, düzenleyebileceğiniz veya silebileceğiniz açıklanır. Bu öğreticideki bilgiler yalnızca StorSimple Sanal dizisi için geçerlidir. 8000 serisinde depolama hesaplarını yönetme hakkında daha fazla bilgi için bkz. [depolama hesabınızı yönetmek Için StorSimple Yöneticisi hizmetini kullanma](storsimple-manage-storage-accounts.md).
 
-Depolama hesabı kimlik bilgileri, cihaz, bulut hizmet sağlayıcınız ile depolama hesabınıza erişmek için kullandığı kimlik bilgilerini içerir. Microsoft Azure depolama hesapları için bu hesap adına ve birincil erişim anahtarı gibi kimlik bilgileridir.
+Depolama hesabı kimlik bilgileri, cihazın bulut hizmeti sağlayıcınızda depolama hesabınıza erişmek için kullandığı kimlik bilgilerini içerir. Microsoft Azure depolama hesapları için, bunlar hesap adı ve birincil erişim anahtarı gibi kimlik bilgileridir.
 
-Üzerinde **depolama hesabı kimlik bilgileri** dikey penceresinde aşağıdaki bilgileri içeren bir tablo biçiminde faturalama aboneliği görüntülenir için oluşturduğunuz tüm depolama hesabı kimlik bilgileri:
+**Depolama hesabı kimlik bilgileri** dikey penceresinde, faturalandırma aboneliği için oluşturulan tüm depolama hesabı kimlik bilgileri, aşağıdaki bilgileri içeren bir tablo biçiminde görüntülenir:
 
-* **Adı** – oluşturulduğunda hesabına atanmış bir benzersiz adı.
-* **SSL etkin** – olmadığını SSL etkin ve CİHAZDAN buluta iletişimidir güvenli kanal üzerinden.
+* **Name** : hesap oluşturulduğunda hesaba atanan benzersiz ad.
+* **SSL etkin** – SSL 'nin etkin olup olmadığı ve cihazdan buluta iletişim, güvenli kanal üzerinden yapılır.
   
   ![Yapılandırma bölümü](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccountcredentials-blade.png)
 
-En yaygın görevleri gerçekleştirilebilir depolama hesabı kimlik bilgileri ile ilgili **depolama hesabı kimlik bilgileri** dikey şunlardır:
+Depolama **hesabı kimlik bilgileri** dikey penceresinde gerçekleştirilebilecek depolama hesabı kimlik bilgileri ile ilgili en yaygın görevler şunlardır:
 
 * Depolama hesabı kimlik bilgisi ekleyin
-* Bir depolama hesabı kimlik bilgilerini Düzenle
-* Bir depolama hesabı kimlik bilgilerini silme
+* Depolama hesabı kimlik bilgilerini düzenleme
+* Depolama hesabı kimlik bilgilerini silme
 
-## <a name="types-of-storage-account-credentials"></a>Depolama hesabı kimlik bilgileri türü
-StorSimple Cihazınızı kullanılabilir depolama hesabı kimlik bilgilerinin üç türü vardır.
+## <a name="types-of-storage-account-credentials"></a>Depolama hesabı kimlik bilgileri türleri
+StorSimple aygıtınızla kullanılabilecek üç tür depolama hesabı kimlik bilgisi vardır.
 
-* **Otomatik olarak oluşturulan depolama hesabı kimlik bilgileri** – adından da anlaşılacağı gibi bu tür bir depolama hesabı kimlik bilgisi hizmet ilk oluşturulduğunda otomatik olarak oluşturulur. Bu depolama hesabı kimlik bilgilerini nasıl oluşturulduğunu hakkında daha fazla bilgi için bkz: [yeni bir hizmet oluşturma](storsimple-virtual-array-manage-service.md#create-a-service).
-* **Depolama hesabı kimlik bilgileri hizmet aboneliği** – bunlar aynı abonelikte, hizmet ile ilişkili Azure depolama hesabı kimlik bilgileri. Hakkında nasıl bu depolama hesabı kimlik bilgileri oluşturulur daha fazla bilgi için bkz: [Azure Storage hesapları hakkında](../storage/common/storage-create-storage-account.md).
-* **Depolama hesabı kimlik bilgileri hizmet aboneliği dışında** – bunlar hizmet oluşturulmadan önce büyük olasılıkla var olmayan hizmetiniz ile ilişkili ve Azure depolama hesabı kimlik bilgileri.
+* **Otomatik olarak oluşturulan depolama hesabı kimlik bilgileri** – ad ' ın gösterildiği gibi, bu tür bir depolama hesabı kimlik bilgisi, hizmet ilk oluşturulduğunda otomatik olarak oluşturulur. Bu depolama hesabı kimlik bilgisinin nasıl oluşturulduğu hakkında daha fazla bilgi edinmek için bkz. [yeni hizmet oluşturma](storsimple-virtual-array-manage-service.md#create-a-service).
+* **hizmet aboneliğindeki depolama hesabı kimlik bilgileri** : Bunlar, hizmet ile aynı abonelikle ilişkili Azure depolama hesabı kimlik bilgileridir. Bu depolama hesabı kimlik bilgilerinin nasıl oluşturulduğu hakkında daha fazla bilgi edinmek için bkz. [Azure depolama hesapları hakkında](../storage/common/storage-create-storage-account.md).
+* **depolama hesabı kimlik bilgileri hizmet aboneliği dışında** : Bunlar, hizmetiniz ile ilişkilendirilmemiş ve hizmet oluşturulmadan önce büyük olasılıkla var olan Azure depolama hesabı kimlik bilgileridir.
 
 ## <a name="add-a-storage-account-credential"></a>Depolama hesabı kimlik bilgisi ekleyin
-Depolama hesabı kimlik bilgisi benzersiz bir kolay ad ve depolama hesabına bağlı erişim kimlik bilgilerini sağlayarak, StorSimple cihaz Yöneticisi hizmet yapılandırmanıza ekleyebilirsiniz. Ayrıca, cihazınız ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak için Güvenli Yuva Katmanı (SSL) modunu etkinleştirme seçeneğiniz de vardır.
+Depolama hesabına bağlı benzersiz bir kolay ad ve erişim kimlik bilgileri sağlayarak StorSimple Aygıt Yöneticisi hizmet yapılandırmanıza depolama hesabı kimlik bilgileri ekleyebilirsiniz. Ayrıca, cihazınız ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak üzere Güvenli Yuva Katmanı (SSL) modunu etkinleştirme seçeneğiniz de vardır.
 
-Belirli bir bulut hizmeti sağlayıcısı için birden çok hesap oluşturabilirsiniz. Depolama hesabı kimlik bilgileri kaydedilirken, hizmet, bulut hizmet sağlayıcınız ile iletişim kurmak çalışır. Şu anda kimliği doğrulanmış kimlik bilgileri ve size sağlanan erişim malzemeleri. Yalnızca kimlik doğrulaması başarılı olursa, bir depolama hesabı kimlik bilgisi oluşturulur. Kimlik doğrulaması başarısız olursa, ardından uygun bir hata iletisi görüntülenir.
+Belirli bir bulut hizmeti sağlayıcısı için birden çok hesap oluşturabilirsiniz. Depolama hesabı kimlik bilgileri kaydedilirken hizmet, bulut hizmeti sağlayıcınızla iletişim kurmayı dener. Sağladığınız kimlik bilgileri ve erişim malzemesinin kimliği şu anda doğrulanır. Depolama hesabı kimlik bilgileri yalnızca kimlik doğrulaması başarılı olursa oluşturulur. Kimlik doğrulaması başarısız olursa, uygun bir hata iletisi görüntülenir.
 
 Azure depolama hesabı kimlik bilgilerini eklemek için aşağıdaki yordamları kullanın:
 
-* Cihaz Yöneticisi hizmetiyle aynı Azure aboneliği olan bir depolama hesabı kimlik bilgisi eklemek için
-* Cihaz Yöneticisi hizmeti abonelik dışında bir Azure depolama hesabı kimlik bilgisi eklemek için
+* Aygıt Yöneticisi hizmeti ile aynı Azure aboneliğine sahip bir depolama hesabı kimlik bilgisi eklemek için
+* Aygıt Yöneticisi hizmeti aboneliğinin dışında bir Azure depolama hesabı kimlik bilgisi eklemek için
 
-#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Cihaz Yöneticisi hizmetiyle aynı Azure aboneliği olan bir depolama hesabı kimlik bilgisi eklemek için
+#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Aygıt Yöneticisi hizmeti ile aynı Azure aboneliğine sahip bir depolama hesabı kimlik bilgisi eklemek için
 
-1. Cihaz Yöneticisi hizmetinize select gidin ve çift tıklayın. Bu açılır **genel bakış** dikey penceresi.
-2. Seçin **depolama hesabı kimlik bilgileri** içinde **yapılandırma** bölümü.
-3. **Ekle**'yi tıklatın.
-4. İçinde **bir depolama hesabı ekleme** dikey penceresinde aşağıdakileri yapın:
+1. Aygıt Yöneticisi hizmetinize gidin, seçin ve çift tıklayın. Bu, **genel bakış** dikey penceresini açar.
+2. **Yapılandırma** bölümünde **depolama hesabı kimlik bilgilerini** seçin.
+3. **Ekle**'ye tıklayın.
+4. **Depolama hesabı ekle** dikey penceresinde aşağıdakileri yapın:
    
-    1. İçin **abonelik**seçin **geçerli**.
-    2. Azure depolama hesabınızın adını sağlayın.
-    3. Seçin **etkinleştirme** StorSimple cihazınız ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak için. Seçin **devre dışı** yalnızca, bir özel bulutta işlem yapıyorsanız temizleyin.
-    4. **Ekle**'yi tıklatın. Depolama hesabı başarıyla oluşturulduktan sonra size bildirilir.<br></br>
+    1. **Abonelik**için **geçerli**' i seçin.
+    2. Azure depolama hesabınızın adını belirtin.
+    3. StorSimple cihazınız ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak üzere **Etkinleştir** ' i seçin. Yalnızca özel bir bulutta çalışıyorsanız **devre dışı bırak** ' ı seçin.
+    4. **Ekle**'ye tıklayın. Depolama hesabı başarıyla oluşturulduktan sonra bilgilendirilirsiniz.<br></br>
    
-        ![Mevcut bir depolama hesabı kimlik bilgisi Ekle](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+        ![Mevcut bir depolama hesabı kimlik bilgisi ekleyin](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
-#### <a name="to-add-an-azure-storage-account-credential-that-is-outside-of-the-device-manager-service-subscription"></a>Cihaz Yöneticisi hizmeti abonelik dışında bir Azure depolama hesabı kimlik bilgisi eklemek için
+#### <a name="to-add-an-azure-storage-account-credential-that-is-outside-of-the-device-manager-service-subscription"></a>Aygıt Yöneticisi hizmeti aboneliğinin dışında bir Azure depolama hesabı kimlik bilgisi eklemek için
 
-1. Cihaz Yöneticisi hizmetinize select gidin ve çift tıklayın. Bu açılır **genel bakış** dikey penceresi.
-2. Seçin **depolama hesabı kimlik bilgileri** içinde **yapılandırma** bölümü. Bu StorSimple cihaz Yöneticisi hizmeti ile ilişkili herhangi bir mevcut depolama hesabı kimlik listeler.
-3. **Ekle**'yi tıklatın.
-4. İçinde **bir depolama hesabı ekleme** dikey penceresinde aşağıdakileri yapın:
+1. Aygıt Yöneticisi hizmetinize gidin, seçin ve çift tıklayın. Bu, **genel bakış** dikey penceresini açar.
+2. **Yapılandırma** bölümünde **depolama hesabı kimlik bilgilerini** seçin. Bu, StorSimple Aygıt Yöneticisi hizmetiyle ilişkili mevcut depolama hesabı kimlik bilgilerini listeler.
+3. **Ekle**'ye tıklayın.
+4. **Depolama hesabı ekle** dikey penceresinde aşağıdakileri yapın:
    
-    1. İçin **abonelik**seçin **diğer**.
+    1. **Abonelik**için **diğer**' i seçin.
    
-    2. Azure depolama hesabı kimlik bilgilerinizi adını sağlayın.
+    2. Azure depolama hesabı kimlik bilgilerinizin adını belirtin.
    
-    3. İçinde **depolama hesabı erişim anahtarı** metin kutusunda, birincil erişim anahtarı için Azure depolama hesabı kimlik bilgilerinizi sağlayın. Bu anahtarı almak için Azure depolama hizmetine, depolama hesabı kimlik bilgilerini seçin ve tıklayın Git **hesabı anahtarlarını yönetme**. Birincil erişim anahtarını artık kopyalayabilirsiniz.
+    3. **Depolama hesabı erişim anahtarı** metin kutusunda, Azure depolama hesabı kimlik bilgilerinizin birincil erişim anahtarını sağlayın. Bu anahtarı almak için Azure depolama hizmeti ' ne gidin, depolama hesabı kimlik bilgilerinizi seçin ve **Hesap anahtarlarını Yönet**' e tıklayın. Artık birincil erişim anahtarını kopyalayabilirsiniz.
    
-    4. SSL etkinleştirmek için tıklayın **etkinleştirme** StorSimple cihaz Yöneticisi hizmetiniz ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak için. Tıklayın **devre dışı** yalnızca, bir özel bulutta işlem yapıyorsanız düğmesi.
+    4. SSL 'yi etkinleştirmek için, StorSimple Aygıt Yöneticisi hizmetiniz ve bulut arasında ağ iletişimi için güvenli bir kanal oluşturmak üzere **Etkinleştir** düğmesine tıklayın. Yalnızca özel bir bulutta çalışıyorsanız **devre dışı bırak** düğmesine tıklayın.
    
-    5. **Ekle**'yi tıklatın. Depolama hesabı kimlik bilgisi başarıyla oluşturulduktan sonra size bildirilir.
+    5. **Ekle**'ye tıklayın. Depolama hesabı kimlik bilgisi başarıyla oluşturulduktan sonra bilgilendirilirsiniz.
 
-5. Yeni oluşturulan depolama hesabı kimlik bilgisi altında yapılandırma StorSimple cihaz Yöneticisi hizmet dikey penceresinde görüntülenen **depolama hesabı kimlik bilgileri**.
+5. Yeni oluşturulan depolama hesabı kimlik bilgileri, **depolama hesabı kimlik bilgileri**altındaki StorSimple yapılandırma Aygıt Yöneticisi hizmeti dikey penceresinde görüntülenir.
    
-    ![Cihaz Yöneticisi hizmeti abonelik dışında depolama hesabı kimlik bilgisi Ekle](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
+    ![Aygıt Yöneticisi hizmeti aboneliğinin dışında bir depolama hesabı kimlik bilgisi ekleyin](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
 
-## <a name="edit-a-storage-account-credential"></a>Bir depolama hesabı kimlik bilgilerini Düzenle
-Cihazınız tarafından kullanılan depolama hesabı kimlik bilgisi düzenleyebilirsiniz. Şu anda kullanılmakta olan bir depolama hesabı kimlik bilgilerini Düzenle, erişim anahtarı ve depolama hesabı kimlik bilgisi için SSL modu değiştirmek kullanılabilir alanları demektir. Yeni depolama erişim anahtarı sağlamanız ya da değiştirme **SSL'yi etkinleştir modu** seçimi ve güncelleştirilmiş ayarları kaydedin.
+## <a name="edit-a-storage-account-credential"></a>Depolama hesabı kimlik bilgilerini düzenleme
+Cihazınız tarafından kullanılan bir depolama hesabı kimlik bilgilerini düzenleyebilirsiniz. Şu anda kullanılmakta olan bir depolama hesabı kimlik bilgisini düzenlerseniz, değişiklik için kullanılabilen alanlar, erişim anahtarı ve depolama hesabı kimlik bilgileri için SSL modudur. Yeni depolama erişim anahtarını belirtebilir veya **SSL modunu etkinleştir** seçimini değiştirebilir ve güncelleştirilmiş ayarları kaydedebilirsiniz.
 
-#### <a name="to-edit-a-storage-account-credential"></a>Bir depolama hesabı kimlik bilgilerini düzenlemek için
-1. Cihaz Yöneticisi hizmetinize select gidin ve çift tıklayın. Bu açılır **genel bakış** dikey penceresi.
-2. Seçin **depolama hesabı kimlik bilgileri** içinde **yapılandırma** bölümü. Bu StorSimple cihaz Yöneticisi hizmeti ile ilişkili herhangi bir mevcut depolama hesabı kimlik listeler.
-3. Depolama hesabı kimlik bilgilerinin tablosal listesinde seçin ve değiştirmek istediğiniz hesaba çift tıklayın.
-4. Depolama hesabı kimlik **özellikleri** dikey penceresinde aşağıdakileri yapın:
+#### <a name="to-edit-a-storage-account-credential"></a>Depolama hesabı kimlik bilgilerini düzenlemek için
+1. Aygıt Yöneticisi hizmetinize gidin, seçin ve çift tıklayın. Bu, **genel bakış** dikey penceresini açar.
+2. **Yapılandırma** bölümünde **depolama hesabı kimlik bilgilerini** seçin. Bu, StorSimple Aygıt Yöneticisi hizmetiyle ilişkili mevcut depolama hesabı kimlik bilgilerini listeler.
+3. Depolama hesabı kimlik bilgilerinin tablosal listesinde, değiştirmek istediğiniz hesabı seçin ve çift tıklatın.
+4. Depolama hesabı kimlik bilgisi **özellikleri** dikey penceresinde aşağıdakileri yapın:
    
-   1. Gerekirse, değiştirebileceğiniz, **SSL'yi etkinleştir** kipinde seçim.
-   2. Depolama hesabı kimlik bilgisi erişim anahtarlarınızı yeniden seçebilirsiniz. Daha fazla bilgi için [depolama hesabı anahtarlarını yeniden](../storage/common/storage-account-manage.md#access-keys). Yeni depolama hesabı kimlik bilgileri anahtarını sağlayın. Azure depolama hesabınız için birincil erişim anahtarını budur.
-   3. Tıklayın **Kaydet** en üstündeki **özellikleri** ayarları kaydetmek için dikey pencere. Şirket ayarları güncellendi **depolama hesabı kimlik bilgileri** dikey penceresi.
+   1. Gerekirse **SSL modunu etkinleştir** seçimini değiştirebilirsiniz.
+   2. Depolama hesabı kimlik bilgileri erişim anahtarlarınızı yeniden oluşturmayı tercih edebilirsiniz. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md). Yeni depolama hesabı kimlik bilgileri anahtarını sağlayın. Azure depolama hesabı için bu birincil erişim anahtarıdır.
+   3. Ayarları kaydetmek için **Özellikler** dikey penceresinin en üstündeki **Kaydet** ' e tıklayın. Ayarlar **depolama hesabı kimlik bilgileri** dikey penceresinde güncelleştirilir.
       
-      ![Bir depolama hesabı kimlik bilgilerini Düzenle](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)
+      ![Depolama hesabı kimlik bilgilerini düzenleme](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)
 
-## <a name="delete-a-storage-account-credential"></a>Bir depolama hesabı kimlik bilgilerini silme
+## <a name="delete-a-storage-account-credential"></a>Depolama hesabı kimlik bilgilerini silme
 > [!IMPORTANT]
-> Yalnızca kullanımda olmayan bir depolama hesabı kimlik bilgilerini silebilirsiniz. Depolama hesabı kimlik bilgisi kullanılıyorsa, size bildirilir.
+> Bir depolama hesabı kimlik bilgisini, yalnızca kullanımda değilse silebilirsiniz. Bir depolama hesabı kimlik bilgileri kullanımda ise size bildirilir.
 > 
 > 
 
-#### <a name="to-delete-a-storage-account-credential"></a>Bir depolama hesabı kimlik bilgisini silmek için
-1. Cihaz Yöneticisi hizmetinize select gidin ve çift tıklayın. Bu açılır **genel bakış** dikey penceresi.
-2. Seçin **depolama hesabı kimlik bilgileri** içinde **yapılandırma** bölümü. Bu StorSimple cihaz Yöneticisi hizmeti ile ilişkili herhangi bir mevcut depolama hesabı kimlik listeler.
-3. Depolama hesabı kimlik bilgilerinin tablosal listesinde seçin ve silmek istediğiniz hesaba çift tıklayın.
-4. Depolama hesabı kimlik **özellikleri** dikey penceresinde aşağıdakileri yapın:
+#### <a name="to-delete-a-storage-account-credential"></a>Depolama hesabı kimlik bilgilerini silmek için
+1. Aygıt Yöneticisi hizmetinize gidin, seçin ve çift tıklayın. Bu, **genel bakış** dikey penceresini açar.
+2. **Yapılandırma** bölümünde **depolama hesabı kimlik bilgilerini** seçin. Bu, StorSimple Aygıt Yöneticisi hizmetiyle ilişkili mevcut depolama hesabı kimlik bilgilerini listeler.
+3. Depolama hesabı kimlik bilgilerinin tablosal listesinde, silmek istediğiniz hesabı seçin ve çift tıklatın.
+4. Depolama hesabı kimlik bilgisi **özellikleri** dikey penceresinde aşağıdakileri yapın:
    
-   1. Tıklayın **Sil** kimlik bilgileri silinemedi.
-   2. Onayınız istendiğinde tıklayın **Evet** silme işlemine devam etmek için. Tablosal değişiklikleri yansıtacak şekilde güncelleştirilir.
+   1. Kimlik bilgilerini silmek için **Sil** ' e tıklayın.
+   2. Onay istendiğinde, silme işlemine devam etmek için **Evet** ' e tıklayın. Tablo listesi, değişiklikleri yansıtacak şekilde güncelleştirilir.
       
-      ![Bir depolama hesabı kimlik bilgilerini silme](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
+      ![Depolama hesabı kimlik bilgilerini silme](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
 
-## <a name="synchronizing-storage-account-credential-keys"></a>Depolama hesabı kimlik bilgisi anahtarları eşitleniyor
-Güvenlik nedenleriyle, anahtar döndürme genellikle bir veri merkezlerinde gereksinimdir. Microsoft Azure yönetici, yeniden oluşturulmuş veya depolama hesabı kimlik bilgisi (Microsoft Azure depolama hizmeti) aracılığıyla doğrudan erişerek birincil veya ikincil anahtarını değiştirin. StorSimple cihaz Yöneticisi hizmeti bu değişikliği otomatik olarak görmez.
+## <a name="synchronizing-storage-account-credential-keys"></a>Depolama hesabı kimlik bilgisi anahtarlarını eşitleme
+Güvenlik nedenleriyle, anahtar döndürme genellikle veri merkezlerinde gereksinimdir. Microsoft Azure Yöneticisi, depolama hesabı kimlik bilgisine (Microsoft Azure Depolama hizmeti aracılığıyla) doğrudan erişerek birincil veya ikincil anahtarı yeniden oluşturabilir veya değiştirebilir. StorSimple Aygıt Yöneticisi hizmeti bu değişikliği otomatik olarak görmez.
 
-StorSimple cihaz Yöneticisi hizmeti değişikliği bildirmek için StorSimple cihaz Yöneticisi hizmetine erişim depolama hesabı kimlik ve sonra (hangisi bağlı olarak değiştirildi) birincil veya ikincil anahtarı Eşitle gerekir. Hizmet daha sonra en son anahtarı alır, anahtarları şifreler ve şifrelenmiş anahtarı cihaza gönderir.
+Bu değişikliği StorSimple Aygıt Yöneticisi hizmetine bildirmek için, StorSimple Aygıt Yöneticisi hizmetine erişmeniz, depolama hesabı kimlik bilgisine erişmeniz ve ardından birincil veya ikincil anahtarı (hangisinin değiştirildiği seçeneğe bağlı olarak) eşitlemeniz gerekir. Daha sonra hizmet en son anahtarı alır, anahtarları şifreler ve şifreli anahtarı cihaza gönderir.
 
-#### <a name="to-synchronize-keys-for-storage-account-credentials-in-the-same-subscription-as-the-service-azure-only"></a>Anahtarlar (yalnızca Azure) hizmet ile aynı abonelikte depolama hesabı kimlik için eşitleme
-1. Hizmeti giriş dikey penceresinde, hizmetinizi seçin, hizmet adına çift tıklayın ve ardından **yapılandırma** bölümünde **depolama hesabı kimlik bilgileri**.
-2. Üzerinde **depolama hesabı kimlik bilgileri** dikey penceresinde depolama hesabı kimlik bilgisi, eşitlemek istediğiniz anahtarları depolama hesabı kimlik bilgileri, select listesinde.
-3. İçinde **özellikleri** dikey penceresinde seçilen depolama hesabı kimlik bilgileri için şunları yapın:
+#### <a name="to-synchronize-keys-for-storage-account-credentials-in-the-same-subscription-as-the-service-azure-only"></a>Hizmet ile aynı abonelikte bulunan depolama hesabı kimlik bilgileri anahtarlarını eşzamanlı hale getirmek için (yalnızca Azure)
+1. Hizmet giriş dikey penceresinde hizmetinizi seçin, hizmet adına çift tıklayın ve ardından **yapılandırma** bölümünde **depolama hesabı kimlik bilgileri**' ne tıklayın.
+2. **Depolama hesabı kimlik bilgileri** dikey penceresinde, depolama hesabı kimlik bilgileri listesinde, anahtarlarını eşitlenmesi istediğiniz depolama hesabı kimlik bilgisini seçin.
+3. Seçilen depolama hesabı kimlik bilgisinin **Özellikler** dikey penceresinde aşağıdakileri yapın:
    
-    1. Tıklayın **daha fazla**ve ardından **erişim anahtarını Eşitle**.
+    1. **Daha fazla**' ya tıklayın ve ardından **erişim anahtarını Eşitle**' ye tıklayın.
    
-    2. Onayınız istendiğinde tıklayın **eşitleme anahtarı** eşitlemenin tamamlanması.
+    2. Onaylamanız istendiğinde eşitleme **anahtarı** ' na tıklayarak eşitlemeyi doldurun.
     
-4. StorSimple cihaz Yöneticisi hizmeti, Microsoft Azure depolama hizmetinde önceden değiştirildiği anahtarı güncelleştirmeniz gerekir. İçinde **Eşitle depolama hesabı anahtarı** birincil erişim anahtarını (yeniden oluşturuldu) değiştirildiyse dikey penceresinde, birincil tıklayın ve ardından **eşitleme anahtarı**. İkincil anahtar değiştirildiyse tıklayın **ikincil**ve ardından **eşitleme anahtarı**.
+4. StorSimple Aygıt Yöneticisi hizmetinde, daha önce Microsoft Azure Depolama hizmetinde değiştirilen anahtarı güncelleştirmeniz gerekir. **Depolama hesabı anahtarını Eşitle** dikey penceresinde, birincil erişim anahtarı değiştirildiyse (yeniden oluşturulursa), birincil ' a ve ardından **eşitleme anahtarı**' na tıklayın. İkincil anahtar değiştirildiyse, **İkincil**' a ve ardından **anahtarı Eşitle**' ye tıklayın.
    
     ![Erişim anahtarını Eşitle](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bilgi edinmek için nasıl [StorSimple Virtual Array'iniz yönetmek](storsimple-ova-web-ui-admin.md).
+* [StorSimple Sanal dizinizi yönetmeyi](storsimple-ova-web-ui-admin.md)öğrenin.
 

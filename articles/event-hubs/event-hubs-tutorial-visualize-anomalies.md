@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: gerçek zamanlı olaylarda veri anormalilerini görselleştirme-Azure Event Hubs'
+title: Azure Event Hubs-gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin
 description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.date: 12/20/2019
+ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437156"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
@@ -30,9 +30,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bu verileri işlemek için bir Stream Analytics işi yapılandırma
 > * Sonuçları göstermek için bir Power BI görselleştirmesi yapılandırma
 
-Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturun.
+Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun][].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Bu öğretici için bir Event Hubs ad alanına ve bir olay hub’ına ihtiyacın
 
 Aşağıdaki bölümlerde bu gerekli adımların nasıl uygulanacağı açıklanır. CLI *veya* the PowerShell yönergelerini uygulayarak aşağıdaki adımları gerçekleştirin:
 
-1. Bir [kaynak grubu](../azure-resource-manager/resource-group-overview.md) oluşturun. 
+1. Bir [kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. 
 
 2. Bir Event Hubs ad alanı oluşturun. 
 
@@ -386,4 +386,4 @@ Azure Event Hubs hakkında daha fazla bilgi edinmek için bir sonraki makaleye g
 > [!div class="nextstepaction"]
 > [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](event-hubs-dotnet-standard-getstarted-send.md)
 
-[ücretsiz bir hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ücretsiz bir hesap oluşturun]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c699f9b392be5f2e2bc16b5729d6567ace7f17
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 9e80bc3e176f831f8609dd7f2a2ee22a2495e89b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428930"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla çoklu VM ortamları ve PaaS kaynakları oluşturma
 
-Azure DevTest Labs ortamlar, kullanıcıların karmaşık altyapıları laboratuvarın bir yolu dahilinde tutarlı bir şekilde dağıtmasını sağlar. DevTest Labs içindeki kaynak kümelerine sahip ortamlar oluşturmak için [Azure Resource Manager şablonlarını](../azure-resource-manager/resource-group-authoring-templates.md) kullanabilirsiniz. Bu ortamlar, Kaynak Yöneticisi şablonlarının oluşturabileceğiniz tüm Azure kaynaklarını içerebilir. 
+Azure DevTest Labs ortamlar, kullanıcıların karmaşık altyapıları laboratuvarın bir yolu dahilinde tutarlı bir şekilde dağıtmasını sağlar. DevTest Labs içindeki kaynak kümelerine sahip ortamlar oluşturmak için [Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu ortamlar, Kaynak Yöneticisi şablonlarının oluşturabileceğiniz tüm Azure kaynaklarını içerebilir. 
 
 [Azure Portal](https://portal.azure.com)kullanarak bir laboratuvara tek seferde bir [sanal makineyi (VM) kolayca ekleyebilirsiniz](devtest-lab-add-vm.md) . Ancak, çok katmanlı Web uygulamalarına veya SharePoint grubuna benzer senaryolar tek bir adımda birden çok VM oluşturmak için bir mekanizmaya ihtiyaç duyar. Azure Resource Manager şablonları kullanarak Azure çözümünüzün altyapısını ve yapılandırmasını tanımlayabilir ve tutarlı bir durumda birden çok VM 'yi sürekli olarak dağıtabilirsiniz. 
 
@@ -34,7 +34,7 @@ Azure Resource Manager şablonlar aşağıdaki avantajları da sağlar:
 - Azure Resource Manager şablondan bir ortamda Azure PaaS kaynaklarını ve IaaS VM 'lerini sağlayabilirsiniz.
 - Diğer temel türler tarafından oluşturulan ayrı VM 'lere ek olarak laboratuvardaki ortamların maliyetini izleyebilirsiniz. PaaS kaynakları oluşturulur ve maliyet izlemede görüntülenir. Ancak, sanal makine otomatik kapatması PaaS kaynakları için de geçerlidir.
 
-Tek bir işlemde birçok laboratuvar kaynağını dağıtmak, güncelleştirmek veya silmek için Kaynak Yöneticisi şablonlarını kullanmanın avantajları hakkında daha fazla bilgi edinmek için, bkz. [Kaynak Yöneticisi şablonlarını kullanmanın avantajları](../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager).
+Tek bir işlemde birçok laboratuvar kaynağını dağıtmak, güncelleştirmek veya silmek için Kaynak Yöneticisi şablonlarını kullanmanın avantajları hakkında daha fazla bilgi edinmek için, bkz. [Kaynak Yöneticisi şablonlarını kullanmanın avantajları](../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager).
 
 > [!NOTE]
 > Laboratuvar VM 'Leri oluşturmak için temel olarak bir Kaynak Yöneticisi şablonu kullandığınızda, birden çok VM veya tek bir VM oluşturma arasında bazı farklılıklar vardır. Daha fazla bilgi için bkz. [sanal makinenin Azure Resource Manager şablonunu kullanma](devtest-lab-use-resource-manager-template.md).
@@ -56,7 +56,7 @@ Azure Resource Manager şablonlarınızı bir depoda düzenlemek için izlenecek
   
 - Parametre dosyasında tanımlanan parametre değerlerini kullanmak istiyorsanız, parametre dosyası *azuredeploy. Parameters. JSON*olarak adlandırılmalıdır.
   
-  Parametreleri `_artifactsLocation` ve`_artifactsLocationSasToken` parameterslink URI değerini oluşturmak için, DevTest Labs 'in iç içe şablonları otomatik olarak yönetmesine izin vermek için kullanabilirsiniz. Daha fazla bilgi için bkz. [test ortamları için iç içe Azure Resource Manager şablonlarını dağıtma](deploy-nested-template-environments.md).
+  ParametersLink URI değerini oluşturmak için `_artifactsLocation` ve `_artifactsLocationSasToken` parametrelerini kullanarak, DevTest Labs 'in iç içe şablonları otomatik olarak yönetmesine izin verebilirsiniz. Daha fazla bilgi için bkz. [test ortamları için iç içe Azure Resource Manager şablonlarını dağıtma](deploy-nested-template-environments.md).
   
 - Şablon görünen adını ve açıklamasını, *Metadata. JSON*adlı bir dosyada belirtmek için aşağıdaki gibi meta verileri tanımlayabilirsiniz:
   
@@ -73,7 +73,7 @@ Azure Resource Manager şablonlarınızı bir depoda düzenlemek için izlenecek
 
 Deponuzu oluşturup yapılandırdıktan sonra, Azure portal kullanarak laboratuvarınızı ekleyebilirsiniz: 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin. 
 1. Laboratuvarın **genel bakış** bölmesinde **yapılandırma ve ilkeler**' i seçin.
@@ -88,13 +88,13 @@ Deponuzu oluşturup yapılandırdıktan sonra, Azure portal kullanarak laboratuv
    
 1. **Depolar** bölmesinde aşağıdaki bilgileri girin:
    
-   - **Ad**: Laboratuvarda kullanmak için bir depo adı girin.
-   - **Git kopyası URL 'si**: GitHub 'dan veya Azure Repos git HTTPS kopya URL 'sini girin. 
+   - **Ad**: laboratuvarda kullanmak için bir depo adı girin.
+   - **Git kopyası URL 'si**: GitHub 'dan veya Azure Repos git https kopya URL 'sini girin. 
    - **Dal** (isteğe bağlı): Azure Resource Manager şablonu tanımlarınıza erişmek için dal adını girin.
-   - **Kişisel erişim belirteci**: Deponuza güvenli bir şekilde erişmek için kullanılan kişisel erişim belirtecini girin.
+   - **Kişisel erişim belirteci**: deponuza güvenli bir şekilde erişmek için kullanılan kişisel erişim belirtecini girin.
      - Azure Repos belirtecinizi almak için, profiliniz altında **Kullanıcı ayarları** > **güvenlik** > **kişisel erişim belirteçleri**' ni seçin.
-     - GitHub 'dan belirtecinizi almak için, profiliniz altında **Ayarlar** > **Geliştirici ayarları** > **kişisel erişim belirteçleri**' ni seçin.
-   - **Klasör yolları**: Yapıt tanımlarınız veya Azure Resource Manager şablon tanımlarınız için git kopya URI 'siyle ilişkili klasör yolunu girin. 
+     - GitHub 'dan belirtecinizi almak için, profiliniz altında **ayarlar** > **Geliştirici ayarları** > **kişisel erişim belirteçleri**' ni seçin.
+   - **Klasör yolları**: yapıt tanımlarınız veya Azure Resource Manager şablon tanımlarınız için git kopya URI 'siyle ilişkili klasör yolunu girin. 
    
 1. **Kaydet**’i seçin.
    
@@ -120,7 +120,7 @@ Sonraki bölümde, bir Azure Resource Manager şablonundan ortam oluşturma adı
 
 Laboratuvara bir Azure Resource Manager şablonu ekledikten sonra, laboratuar kullanıcılarınız aşağıdaki adımları izleyerek Azure portal ortamlar oluşturabilir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
    
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
    

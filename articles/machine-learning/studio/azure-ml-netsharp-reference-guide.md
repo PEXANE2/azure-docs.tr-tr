@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427680"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
 
@@ -56,7 +56,7 @@ Ayrıca, net # aşağıdaki dört gelişmiş bağlantı paketi türünü destekl
 
 ## <a name="supported-customizations"></a>Desteklenen özelleştirmeler
 
-Azure Machine Learning Studio klasik sürümünde oluşturduğunuz sinir ağ modellerinin mimarisi NET # kullanılarak kapsamlı bir şekilde özelleştirilebilir. Şunları yapabilirsiniz:
+Azure Machine Learning Studio (klasik) içinde oluşturduğunuz sinir ağ modellerinin mimarisi, NET # kullanılarak kapsamlı bir şekilde özelleştirilebilir. Yapabilecekleriniz:
 
 + Gizli katmanlar oluşturun ve her katmandaki düğümlerin sayısını denetleyin.
 + Katmanların birbirlerine nasıl bağlandığını belirtin.
@@ -129,14 +129,14 @@ Gizli olmayan bir katmana yönelik katman bildirimi (gizli veya çıkış katman
 Aşağıdaki çıkış işlevleri desteklenir:
 
 + sigmoıd
-+ Doğrusal
++ doğrusal
 + Yazılım en fazla
 + rdoğrusal
 + kare
-+ K
++ sqrt
 + srdoğrusal
-+ Mutlak
-+ Tanh
++ abs
++ tanh
 + brdoğrusal
 
 Örneğin, aşağıdaki bildirim **SOFTMAX** işlevini kullanır:
@@ -169,7 +169,7 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ `ByRow`koşulunda, `s`, bir dizini giriş katmanının dikdörtgen dizisine temsil eden bir parametredir, `Pixels`ve `d` ise, gizli katmanın düğümlerin dizisine bir dizin temsil eden bir parametredir , `ByRow`. Hem `s` hem de `d` türü, iki uzunluktaki tamsayıların bir tanımlama dizisidir. Kavramsal olarak, `0 <= s[0] < 10` ve `0 <= s[1] < 20`ile tüm tamsayı çiftleri üzerinde aralıklar `s`, `0 <= d[0] < 10` ve `0 <= d[1] < 12`ile tüm tamsayı çiftleri üzerinde aralıklar `d`.
++ `ByRow`için, `s`, bir dizini, giriş katmanının (`Pixels`ve `d`) dikdörtgen dizisine temsil eden bir parametredir, bu parametre, bir dizini gizli katmanın düğüm dizisine (`ByRow`) temsil eder. Hem `s` hem de `d` türü, iki uzunluktaki tamsayıların bir tanımlama dizisidir. Kavramsal olarak, `0 <= s[0] < 10` ve `0 <= s[1] < 20`ile tüm tamsayı çiftleri üzerinde aralıklar `s`, `0 <= d[0] < 10` ve `0 <= d[1] < 12`ile tüm tamsayı çiftleri üzerinde aralıklar `d`.
 
 + Koşul ifadesinin sağ tarafında bir koşul vardır. Bu örnekte, her `s` değeri ve koşulun true olması gibi `d` için, kaynak katmanı düğümünden hedef katman düğümüne bir kenar vardır. Bu nedenle, bu filtre ifadesi, paketin, s [0] ' ın d [0] ' a eşit olduğu her durumda `d` tarafından tanımlanan düğüme `s` tarafından tanımlanan düğümden bir bağlantı içerdiğini belirtir.
 
@@ -259,7 +259,7 @@ Havuz oluşturma katmanları hakkında daha fazla bilgi için şu makalelere bak
 
 **Yanıt normalleştirme** , [derin evsel sinir ağlarla kağıt Imagenet sınıflandırmasında](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)Ilk olarak Geoffey Hinton, et al tarafından tanıtılan yerel bir normalleştirme düzenidir.
 
-Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak için kullanılır. Bir neuron çok yüksek etkinleştirme düzeyinde başlatıldığında, yerel bir yanıt normalleştirme katmanı, çevreleyen eklentilerin etkinleştirme düzeyini bastırır. Bu, üç parametre (`α`, `β`ve `k`) ve bir evsel yapı (veya komşu şekli) kullanılarak yapılır. Hedef katman **y** içindeki her neuron kaynak katmandaki bir neuron **x** 'e karşılık gelir. **Y** etkinleştirme düzeyi aşağıdaki formül tarafından verilir; burada `f`, bir neuron etkinleştirme düzeyidir ve `Nx` çekirdek (ya da **x**'in komşuları içindeki neurons 'yi içeren küme), aşağıdaki evdekiler tarafından tanımlandığı şekilde belirtilir yapısı
+Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak için kullanılır. Bir neuron çok yüksek etkinleştirme düzeyinde başlatıldığında, yerel bir yanıt normalleştirme katmanı, çevreleyen eklentilerin etkinleştirme düzeyini bastırır. Bu, üç parametre (`α`, `β`ve `k`) ve bir evsel yapı (veya komşu şekli) kullanılarak yapılır. Hedef katman **y** içindeki her neuron kaynak katmandaki bir neuron **x** 'e karşılık gelir. **Y** etkinleştirme düzeyi aşağıdaki formül tarafından verilir; burada `f`, bir neuron etkinleştirme düzeyidir ve `Nx` çekirdek (ya da **x**'in komşuları içindeki neurons 'yi içeren küme) aşağıdaki alt yapıda tanımlandığı şekilde belirlenir:
 
 ![Evsel yapı için formül](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + Toplam düğüm sayısı, [50, 5, 5] katmanının belirtilen boyutlılık kullanılarak hesaplanabilecek ve şu şekilde hesaplanabilir: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + `Sharing[d]` yalnızca `d == 0`için yanlış olduğundan, çekirdekler 'lerin sayısı `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Onayları
+## <a name="acknowledgements"></a>Bildirimler
 
 Sinir Networks mimarisini özelleştirmeye yönelik net # dili, Microsoft 'ta Shon Katzenberger (mimar, Machine Learning) ve Alexey Kamenev (yazılım mühendisi, Microsoft Research) tarafından geliştirilmiştir. Görüntü algılamada metin analizinden değişen makine öğrenimi projeleri ve uygulamaları için dahili olarak kullanılır. Daha fazla bilgi için bkz. [Azure Machine Learning Studio 'Da sinir ağları-net # 'A giriş](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

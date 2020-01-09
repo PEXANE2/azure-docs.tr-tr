@@ -2,18 +2,14 @@
 title: Azure Otomasyonu runbook 'larını ölçüm uyarıları ile izleme
 description: Bu makalede, ölçümleri temel alarak Azure Otomasyonu runbook 'larını izleme işlemi adım adım açıklanmaktadır
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367102"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Ölçüm uyarıları ile runbook 'ları izleme
 

@@ -1,23 +1,25 @@
 ---
-title: Birden çok sesleri için erişimi ayarlama
-description: Birden çok tümleştirme hizmeti ortamında (sesleri), Azure Logic Apps 'ten dış sistemlere erişmek için tek bir genel giden IP adresi ayarlayabilirsiniz
+title: Açık bir giden IP adresini, sesleri için ayarlama
+description: Azure Logic Apps 'de tümleştirme hizmeti ortamları (sesleri) için tek bir genel giden IP adresi ayarlamayı öğrenin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792693"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453474"
 ---
-# <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps çoklu tümleştirme hizmeti ortamları için erişim ayarlayın
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
 
-Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-network/virtual-networks-overview.md)kaynaklara erişmesi gereken mantıksal uygulamaları barındırmak için bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ayarlayabilirsiniz. IP kısıtlamalarına sahip diğer uç noktalara erişmesi gereken birden çok ıSE örneğiniz varsa, sanal ağınıza bir [Azure Güvenlik Duvarı](../firewall/overview.md) veya [ağ sanal](../virtual-network/virtual-networks-overview.md#filter-network-traffic) gereci dağıtın ve giden trafiği bu güvenlik duvarı veya ağ sanal gereci üzerinden yönlendirin. Daha sonra sanal ağınızdaki tüm ıSE örneklerinin hedef sistemlerle iletişim kurmak için tek, öngörülebilir ve genel bir IP adresi kullanmasını sağlayabilirsiniz. Bu şekilde, her bir ıSE için hedef sistemlerde ek güvenlik duvarı yer larını ayarlamanız gerekmez. Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzerinden nasıl yönlendirileceği gösterilmektedir, ancak Azure Marketi 'nden üçüncü taraf güvenlik duvarı gibi bir sanal ağ sanal gerecine de benzer kavramlar uygulayabilirsiniz.
+Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-network/virtual-networks-overview.md)kaynaklara erişmesi gereken mantıksal uygulamaları barındırmak için bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ayarlayabilirsiniz. IP kısıtlamalarına sahip diğer uç noktalara erişmesi gereken birden çok ıSE örneğiniz varsa, sanal ağınıza bir [Azure Güvenlik Duvarı](../firewall/overview.md) veya [ağ sanal](../virtual-network/virtual-networks-overview.md#filter-network-traffic) gereci dağıtın ve giden trafiği bu güvenlik duvarı veya ağ sanal gereci üzerinden yönlendirin. Daha sonra sanal ağınızdaki tüm ıSE örneklerinin hedef sistemlerle iletişim kurmak için tek, genel, statik ve öngörülebilir bir IP adresi kullanmasını sağlayabilirsiniz. Bu şekilde, her bir ıSE için bu hedef sistemlerde ek güvenlik duvarı açılışlarını ayarlamanız gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzerinden nasıl yönlendirileceği gösterilmektedir, ancak Azure Marketi 'nden üçüncü taraf güvenlik duvarı gibi bir ağ sanal gerecine benzer kavramlar uygulayabilirsiniz. Bu konu, birden çok ıSE örneğine yönelik kuruluma odaklanırken, senaryonuza erişmesi gereken IP adresi sayısını sınırlamayı gerektirdiğinde tek bir ıSE için de bu yaklaşımı kullanabilirsiniz. Güvenlik duvarının veya sanal ağ gerecinin ek maliyetlerinin senaryonuz için anlamlı olup olmadığını göz önünde bulundurun. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-firewall/)hakkında daha fazla bilgi edinin.
+
+## <a name="prerequisites"></a>Ön koşullar
 
 * ISE ile aynı sanal ağda çalışan bir Azure Güvenlik Duvarı. Güvenlik duvarınız yoksa, önce sanal ağınıza `AzureFirewallSubnet` adlı [bir alt ağ ekleyin](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) . Daha sonra, sanal ağınızda [bir güvenlik duvarı oluşturabilir ve dağıtabilirsiniz](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) .
 

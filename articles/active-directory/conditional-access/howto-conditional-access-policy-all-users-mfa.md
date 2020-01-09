@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 52faa2b6167606a46bf189d514a1eb314b443783
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424933"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Koşullu erişim: tüm kullanıcılar için MFA gerektir
 
@@ -57,8 +57,24 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
+### <a name="named-locations"></a>Adlandırılmış konumlar
+
+Kuruluşlar, **adlandırılmış konumlar** olarak bilinen bilinen ağ konumlarını, koşullu erişim ilkelerine dahil etmek için seçim gösterebilir. Bu adlandırılmış konumlar, ana ofis konumu gibi güvenilir IPv4 ağları içerebilir. Adlandırılmış konumları yapılandırma hakkında daha fazla bilgi için, [koşullu erişim Azure Active Directory konum koşulunun ne olduğuna](location-condition.md) ilişkin makaleye bakın.
+
+Yukarıdaki örnek ilkede, bir kuruluş, kurumsal ağından bir bulut uygulamasına erişiyorsanız çok faktörlü kimlik doğrulaması gerektirmeyebilir. Bu durumda, şu yapılandırmayı ilkeye ekleyebilirler:
+
+1. **Atamalar**' ın altında, **koşullar** > **konumlar**' ı seçin.
+   1. **Evet 'i**yapılandırın.
+   1. **Herhangi bir konum**ekleyin.
+   1. **Tüm güvenilen konumları**hariç tutun.
+   1. **Done** (Bitti) öğesini seçin.
+1. **Done** (Bitti) öğesini seçin.
+1. İlke değişikliklerinizi **kaydedin** .
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+
+[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
 [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)

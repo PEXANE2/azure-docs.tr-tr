@@ -1,25 +1,16 @@
 ---
-title: Application Insights ile Azure Service Fabric olay Analizi | Microsoft Docs
+title: Application Insights ile Azure Service Fabric olay Analizi
 description: Azure Service Fabric kümelerini izleme ve tanılamaya yönelik Application Insights kullanarak olayları görselleştirme ve çözümleme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 8e682a5c768ed4b3f35382c87528c1b0d11a3c3d
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464762"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights ile olay Analizi ve görselleştirme
 
@@ -70,7 +61,7 @@ Tanılama ve izlemeye yönelik daha modüler bir yaklaşıma izin verdiklerinden
 
 [Mikro hizmetler ve kapsayıcılar için Application Insights desteği](https://azure.microsoft.com/blog/app-insights-microservices/) , üzerinde çalışılan yeni özelliklerden bazılarını gösterir (Şu anda hala beta sürümünde) ve Application Insights daha zengin kullanıma hazır izleme seçeneklerine sahip olabilirsiniz. Bunlar, bağımlılık izlemeyi (bir kümedeki tüm hizmetlerinizin ve uygulamalarınızın bir AppMap 'i ve aralarındaki iletişimi oluşturma) ve hizmetinizden gelen izlemelerin daha iyi bağıntısını oluşturma (iş akışında bir sorunu daha iyi gösterme konusunda yardımcı olur) bir uygulama veya hizmet).
 
-.NET ' te geliştiriyorsanız ve büyük olasılıkla bazı Service Fabric programlama modellerini kullanıyor ve olay ve günlük verilerini görselleştirmeyi ve analiz etmek için platformunuz olarak Application Insights kullanmak istiyorsanız, Application Insights aracılığıyla gitmeniz önerilir İzleme ve tanılama iş akışınız olarak SDK rotası. Günlüklerinizi toplamak [](../azure-monitor/app/asp-net-trace-logs.md) ve göstermek üzere Application Insights kullanmaya başlamak için bunu okuyun. [](../azure-monitor/app/asp-net-more.md)
+.NET ' te geliştiriyorsanız ve büyük olasılıkla bazı Service Fabric programlama modellerini kullanıyor ve olay ve günlük verilerini görselleştirmeyi ve analiz etmek için platformunuz olarak Application Insights kullanmak istiyorsanız, Application Insights aracılığıyla gitmeniz önerilir İzleme ve tanılama iş akışınız olarak SDK rotası. Günlüklerinizi toplamak ve göstermek [üzere Application Insights kullanmaya başlamak için](../azure-monitor/app/asp-net-trace-logs.md) [bunu okuyun.](../azure-monitor/app/asp-net-more.md)
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Azure portal Application Insights kaynakta gezinme
 

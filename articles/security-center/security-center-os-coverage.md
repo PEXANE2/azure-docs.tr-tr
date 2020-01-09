@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307310"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353316"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -56,7 +56,7 @@ Yukarıda listelenen Windows işletim sistemlerine yönelik desteklenen özellik
 
 * CentOS 6 ve 7
 * Amazon Linux 2017,09
-* Oracle Linux 6 ve 7
+* Oracle Linux 6 ve Oracle Linux 7
 * Red Hat Enterprise Linux Server 6 ve 7
 * Borçlu GNU/Linux 8 ve 9
 * Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
@@ -95,14 +95,14 @@ Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından destekl
 * İşlev
 * Bulut Hizmeti
 * Sanal ağ
-* Subnet
+* Alt ağ
 * NIC
 * NSG
 * Batch hesabı
 * Service Fabric hesabı
 * Otomasyon hesabı
 * Yük dengeleyici
-* Search
+* Arama
 * Service bus ad alanı
 * Stream Analytics
 * Olay hub’ı ad alanı

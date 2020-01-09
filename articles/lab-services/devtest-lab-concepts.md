@@ -1,6 +1,6 @@
 ---
 title: DevTest Labs kavramları | Microsoft Docs
-description: DevTest Labs ve nasıl, oluşturmak, yönetmek ve Azure sanal makinelerini izlemek kolaylaştırmak temel kavramlarını öğrenin
+description: DevTest Labs 'in temel kavramlarını ve Azure sanal makinelerini oluşturmayı, yönetmeyi ve izlemeyi nasıl kolaylaştırabileceğinizi öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,80 +14,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65508375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428910"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs kavramları
 ## <a name="overview"></a>Genel Bakış
-Aşağıdaki liste, temel DevTest Labs kavramları ve tanımları içerir:
+Aşağıdaki liste, anahtar DevTest Labs kavramlarını ve tanımlarını içerir:
 
-## <a name="labs"></a>Labs
-Limitler ve kotalar belirterek daha iyi sayesinde sanal makineler (VM'ler), bu kaynakları yönetmelerini gibi bir laboratuvar kaynaklarını bir grup kapsayan altyapısıdır.
+## <a name="labs"></a>Laboratuvarlar
+Laboratuvar, sınırları ve kotaları belirterek bu kaynakları daha iyi yönetmenize olanak tanıyan sanal makineler (VM 'Ler) gibi bir kaynak grubunu kapsayan altyapısıdır.
 
 ## <a name="virtual-machine"></a>Sanal makine
-Bir Azure VM türlerinden biri [isteğe bağlı ve ölçeklenebilir işlem kaynağı](/azure/architecture/guide/technology-choices/compute-decision-tree) Azure'un sunduğu. Azure sanal makineleri size sanallaştırma esnekliği satın alma ve rağmen yine de yapılandırma, düzeltme eki uygulama ve üzerinde çalıştığı yazılım yükleme gibi belirli görevleri gerçekleştirerek VM'nin bakımını yapmanız gereken, onu çalıştıran fiziksel donanımı korumak zorunda kalmadan sunar .
+Azure VM, Azure 'un sunduğu [isteğe bağlı, ölçeklenebilir bilgi işlem kaynakları](/azure/architecture/guide/technology-choices/compute-decision-tree) türlerinden biridir. Azure VM 'Leri, kendisini çalıştıran fiziksel donanımı satın alıp sürdürmenize gerek kalmadan sanallaştırma esnekliği sağlar, ancak üzerinde çalışan yazılımı yapılandırma, düzeltme eki uygulama ve yükleme gibi belirli görevleri gerçekleştirerek yine de VM 'yi korumanız gerekir. içerdiği.
 
-[Azure'da Windows sanal makineleri genel bakış](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) önce dikkat etmeniz gereken hakkında bilgi verir oluşturma bir VM, oluşturma ve yönetme biçiminizi.
+[Azure 'Daki Windows sanal makinelerine genel bakış](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) , bir VM oluşturmadan önce göz önünde bulundurmanız gerekenler, nasıl oluşturacağınız ve nasıl yöneteceğiniz hakkında bilgi verir.
 
-## <a name="claimable-vm"></a>Talep edilebilir VM
-Azure talep edilebilir VM izinlerine sahip herhangi bir laboratuvar kullanıcı tarafından kullanılabilir bir sanal makinedir. Bir Laboratuvar Yöneticisi, belirli temel görüntüleri ve yapıtları ile Vm'leri hazırlama ve paylaşılan bir havuz için kaydedebilirsiniz. Belirli bir yapılandırma ile gerektiğinde bir laboratuvar kullanıcı çalışan bir VM havuzundan talep edebilir.
+## <a name="claimable-vm"></a>Çakışan VM
+Azure çakışan bir VM, izinleri olan herhangi bir laboratuvar kullanıcısı tarafından kullanılabilecek bir sanal makinedir. Laboratuvar Yöneticisi, belirli temel görüntüler ve yapıtlar ile VM 'Ler hazırlayıp paylaşılan bir havuza kaydedebilir. Daha sonra bir laboratuvar kullanıcısı, belirli bir yapılandırmaya sahip olmaları gerektiğinde havuzdan çalışan bir VM 'yi talep edebilir.
 
-Talep edilebilir VM başlangıçta belirli bir kullanıcıya atanmadı, ancak her kullanıcının listesinde "Talep edilebilir sanal makineler" altında gösterilir. Bir VM, bir kullanıcı tarafından talep edildikten sonra en fazla taşınması bunların "Sanal makinelerim" alanı ve artık herhangi bir kullanıcı tarafından talep edilebilir.
+İlk olarak belirli bir kullanıcıya atanmayan bir VM, ancak "çakışan sanal makineler" altındaki her kullanıcının listesinde görünür. Bir VM bir kullanıcı tarafından talep edildikten sonra, "sanal makinelerim" alanına taşınır ve başka hiçbir Kullanıcı tarafından artık çakışmaz.
 
 ## <a name="environment"></a>Ortam
-DevTest Labs'de bir ortam bir Azure kaynak koleksiyonunu belirtir. [Bu blog gönderisini](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) , Azure Resource Manager şablonlarından çoklu VM ortamları oluşturma anlatılmaktadır.
+DevTest Labs 'de bir ortam, bir laboratuvardaki Azure kaynakları koleksiyonuna başvurur. [Bu blog gönderisi](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) , Azure Resource Manager şablonlarınızdaki çoklu VM ortamları oluşturmayı açıklar.
 
 ## <a name="base-images"></a>Temel görüntüler
-Temel görüntüler, tüm araçları ve hızlı bir şekilde bir VM oluşturmak için önceden yüklenmiş ve yapılandırılmış ayarları ile VM görüntüleridir. Var olan bir taban çekme ve test aracısını yüklemek için bir yapıt ekleyerek, bir sanal makine sağlayabilirsiniz. Böylece her sanal Makinenin sağlanması için test aracısı yeniden yüklemek zorunda kalmadan temel kullanılabilir sağlanan VM ardından temel olarak kaydedebilirsiniz.
+Temel görüntüler, tüm araçları ve ayarları önceden yüklenmiş ve hızlı bir şekilde VM oluşturmak için yapılandırılmış olan VM görüntüleridir. Mevcut bir temeli seçerek ve Test Aracınızı yüklemek için yapıt ekleyerek bir VM sağlayabilirsiniz. Daha sonra, sağlanan VM 'yi bir temel olarak kaydedebilirsiniz, böylece taban, her VM sağlama için test aracısını yeniden yüklemek zorunda kalmadan kullanılabilir.
 
-## <a name="artifacts"></a>Yapıtlar
-Yapıtlar, VM sağlandıktan sonra Uygulamanızı yapılandırmak ve dağıtmak için kullanılır. Yapıtlar şunlar olabilir:
+## <a name="artifacts"></a>Artifacts
+Yapıtlar, bir VM sağlandıktan sonra uygulamanızı dağıtmak ve yapılandırmak için kullanılır. Yapıtlar şunlar olabilir:
 
-* Aracılar, fiddler'ı ve Visual Studio gibi - VM üzerinde yüklemek istediğiniz araçlar.
-* Bir depoyu kopyalama gibi VM üzerinde-çalıştırmak istediğiniz eylemler.
+* SANAL makineye yüklemek istediğiniz aracılar, Fiddler ve Visual Studio gibi araçlar.
+* VM 'de çalıştırmak istediğiniz eylemler (örneğin, bir depoyu kopyalama).
 * Test etmek istediğiniz uygulamalar.
 
-Yapıt [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dağıtımını gerçekleştirme ve yapılandırmayı uygulamak için yönergeleri içeren bir JSON dosyaları.
+Yapıtlar, dağıtım gerçekleştirme ve yapılandırma uygulama yönergelerini içeren JSON dosyalarıdır [Azure Resource Manager](../azure-resource-manager/management/overview.md) .
 
-## <a name="artifact-repositories"></a>Yapıt deposu
-Yapıt deposu burada yapıtları iade edildiği git depolarıdır ' dir. Yapıt deposu, yeniden etkinleştirmek ve paylaşımı kuruluşunuzdaki birden çok laboratuvarlara eklenebilir.
+## <a name="artifact-repositories"></a>Yapıt depoları
+Yapıt depoları, yapıtların iade edildiği git depolarıdır. Yapıt depoları, kuruluşunuzdaki birden çok laboratuvarda eklenebilir ve yeniden kullanılabilir ve paylaşımı etkinleştirir.
 
 ## <a name="formulas"></a>Formüller
-Temel görüntüler, yanı sıra formüller hızlı VM sağlama için bir mekanizma sağlar. Bir formül DevTest Labs'de Laboratuvar sanal makinesi oluşturmak için kullanılan varsayılan özellik değerlerini listesidir.
-Formüllerle özellikleri - temel görüntü, VM boyutunu, sanal ağ ve yapıtları - gibi aynı küme Vm'leriyle her zaman bu özellikler belirtmek gerek kalmadan oluşturulabilir. Bir formülle bir VM oluştururken, varsayılan değerleri olarak kullanılamaz-olduğu veya değiştirilemez.
+Formüller, temel görüntülere ek olarak hızlı VM sağlaması için bir mekanizma sağlar. DevTest Labs içindeki bir formül, bir laboratuar sanal makinesi oluşturmak için kullanılan varsayılan özellik değerlerinin bir listesidir.
+Formüller sayesinde, temel görüntü, VM boyutu, sanal ağ ve yapıtlar gibi aynı özellik kümesine sahip VM 'Ler her seferinde bu özellikleri belirtmeye gerek kalmadan oluşturulabilir. Bir formülden bir VM oluştururken, varsayılan değerler olduğu gibi kullanılabilir veya değiştirilmiş olabilir.
 
 ## <a name="policies"></a>İlkeler
-Laboratuvarınızda maliyet denetleme ilkeleri Yardım. Örneğin, Vm'leri tanımlanmış bir zamanlamaya göre otomatik olarak kapatmak için bir ilke oluşturabilirsiniz.
+İlkeler, laboratuvarınızda maliyeti denetlemeye yardımcı olur. Örneğin, VM 'Leri tanımlı bir zamanlamaya göre otomatik olarak kapatmak için bir ilke oluşturabilirsiniz.
 
-## <a name="caps"></a>CAPS
-Büyük harf olan laboratuvarınızda israfı en aza indirmek için bir mekanizma. Örneğin, kullanıcı başına veya bir laboratuvarda oluşturulan VM'lerin sayısını sınırlamak için bir sınır ayarlayabilirsiniz.
+## <a name="caps"></a>Şapkalar
+CAPS, laboratuvarınızda çöp durumunu en aza indirecek bir mekanizmadır. Örneğin, Kullanıcı başına veya bir laboratuvarda oluşturulabilecek VM sayısını kısıtlamak için bir sınır belirleyebilirsiniz.
 
 ## <a name="security-levels"></a>Güvenlik düzeyleri
-Güvenlik erişimi, Azure rol tabanlı Access Control (RBAC) göre belirlenir. Erişimi nasıl çalıştığını anlamak için bu izin, bir rolü olan ve RBAC tarafından tanımlandığı şekilde bir kapsam farklarını anlamak için yardımcı olur.
+Güvenlik erişimi, Azure rol tabanlı Access Control (RBAC) tarafından belirlenir. Erişimin nasıl çalıştığını anlamak için, bir izin, rol ve RBAC tarafından tanımlanan bir kapsam arasındaki farkları anlamanıza yardımcı olur.
 
-* İzni - izin, belirli bir eylem (örneğin okuma tüm sanal makinelere erişimi) için tanımlanmış bir erişimdir.
-* Rol - rol gruplandırılmış ve bir kullanıcıya atanmış izinler kümesidir. Örneğin, *abonelik sahibi* rolü bir Abonelikteki tüm kaynaklara erişebilir.
-* Kapsam - kapsam, bir kaynak grubu, tek bir laboratuvar veya tüm abonelik gibi bir Azure kaynak hiyerarşi içinde düzeyidir.
+* İzin-bir izin, belirli bir eyleme (örneğin, tüm sanal makinelere yönelik okuma erişimi) tanımlı bir erişimdir.
+* Rol-rol, gruplandırılabilen ve bir kullanıcıya atanabilecek bir izinler kümesidir. Örneğin, *abonelik sahibi* rolü bir abonelik içindeki tüm kaynaklara erişebilir.
+* Kapsam-bir kapsam, bir kaynak grubu, tek bir laboratuar veya tüm abonelik gibi bir Azure kaynağı hiyerarşisinde yer alan bir düzeydir.
 
-DevTest Labs kapsamında, kullanıcı izinlerini tanımlamak için rolleri iki tür vardır: Laboratuvar sahibi ve Laboratuvar kullanıcı.
+DevTest Labs kapsamındaki Kullanıcı izinlerini tanımlamak için iki tür rol vardır: Laboratuvar sahibi ve laboratuvar kullanıcısı.
 
-* Laboratuvar sahibi - Laboratuvar sahibi bir laboratuvar içindeki herhangi bir kaynağa erişebilir. Bu nedenle, Laboratuvar sahibi ilkeleri değiştirebilir, okuma ve yazma herhangi bir VM, sanal ağı değiştirin ve benzeri.
-* Laboratuvar kullanıcı - Laboratuvar kullanıcı Vm'leri, ilkeleri ve sanal ağlar gibi tüm Laboratuvar kaynaklarını görüntüleyebilir ancak ilkeleri değiştirilemiyor veya herhangi bir VM, diğer kullanıcılar tarafından oluşturulmuş.
+* Laboratuvar sahibi-laboratuvar sahibi, laboratuvardaki kaynaklara erişebilir. Bu nedenle, bir laboratuvar sahibi ilkeleri değiştirebilir, tüm VM 'Leri okuyup yazabilir, sanal ağı değiştirebilir ve benzeri devam edebilir.
+* Laboratuvar kullanıcısı-laboratuvar kullanıcısı VM 'Ler, ilkeler ve sanal ağlar gibi tüm laboratuvar kaynaklarını görüntüleyebilir, ancak ilkeleri veya diğer kullanıcılar tarafından oluşturulan VM 'Leri değiştiremez.
 
-DevTest Labs'de özel roller oluşturmanızı da hakkında bilgi için makaleye bakın [belirli Laboratuvar ilkeleri için kullanıcı izinleri verin](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+DevTest Labs 'de özel roller oluşturmayı öğrenmek için, [belirli laboratuvar ilkelerine Kullanıcı Izinleri verme](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)makalesine bakın.
 
-Kapsamları hiyerarşik olduğundan, bir kullanıcı belirli bir kapsamda izinlere sahip olduğunda bunlar otomatik olarak dahil her alt düzey kapsamda bu izinleri verilir. Abonelik sahibi rolüne atanmış bir kullanıcı, örneğin, ardından tüm sanal makineler, tüm sanal ağları ve tüm laboratuvarlar içeren bir Abonelikteki tüm kaynaklara erişim izni sahiptirler. Bu nedenle, abonelik sahibi, Laboratuvar sahibi rolünü otomatik olarak devralır. Ancak, bunun tersi doğru değildir. Laboratuvar sahibi abonelik düzeyinden daha düşük bir kapsam bir laboratuvar erişebilir. Bu nedenle, bir laboratuvar sahip sanal makineler veya sanal ağ veya Laboratuvar dışında olan kaynakları görmek mümkün olmayacaktır.
+Kapsamlar hiyerarşik olduğundan, bir kullanıcının belirli bir kapsamda izinleri olduğunda, bu izinler otomatik olarak bu izinlere dahil edilen her alt düzey kapsamda atanır. Örneğin, bir kullanıcı abonelik sahibi rolüne atanırsa, tüm sanal makineleri, tüm sanal ağları ve tüm laboratuvarları içeren bir abonelikteki tüm kaynaklara erişebilirler. Bu nedenle, bir abonelik sahibi laboratuvar sahibinin rolünü otomatik olarak devralır. Ancak, tersi doğru değildir. Laboratuvar sahibinin, abonelik düzeyinden daha düşük bir kapsam olan bir laboratuvara erişimi vardır. Bu nedenle, bir laboratuar sahibi sanal makineleri veya sanal ağları ya da laboratuvarın dışındaki kaynakları göremez.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
-Tüm bu makalede ele alınan kavramları kullanarak Azure çözümünüzün altyapısını/yapılandırmasını tanımlamak ve tutarlı bir durumda sürekli dağıtıma olanak veren Azure Resource Manager şablonlarını kullanarak yapılandırılabilir.
+Bu makalede ele alınan kavramların tümü, Azure çözümünüzün altyapısını/yapılandırmasını tanımlamanızı ve tutarlı bir durumda tekrar tekrar dağıtılmasını sağlayan Azure Resource Manager şablonları kullanılarak yapılandırılabilir.
 
-[Azure Resource Manager şablonları, söz dizimi ve yapısı anlamak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) bir Azure Resource Manager şablonu ve bir şablonu farklı bölümlerde kullanılabilir olan özellikleri yapısını açıklar.
+[Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) bir Azure Resource Manager şablonunun yapısını ve bir şablonun farklı bölümlerinde kullanılabilen özellikleri açıklar.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[DevTest Labs'de Laboratuvar oluşturma](devtest-lab-create-lab.md)
+[DevTest Labs 'de Laboratuvar oluşturma](devtest-lab-create-lab.md)

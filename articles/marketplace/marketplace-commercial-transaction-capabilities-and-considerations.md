@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427171"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Ticari Market işlem özellikleri ve konuları
 
@@ -223,7 +223,7 @@ Farklı teklif türleri için Transact gereksinimleri bu bölümde ele alınmı�
 - Teklifin fiyatlandırma modelinden bağımsız olarak, Transact yayımlama seçeneği için Microsoft hesabı ve finansal bilgiler gereklidir.
 - Zorunlu mali bilgiler, ödeme hesabı ve vergi profilini içerir.
 
-Bu hesapları ayarlama hakkında daha fazla bilgi için bkz. [Partner Center hesabınızı yönetme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
+Bu hesapları ayarlama hakkında daha fazla bilgi için bkz. [Partner Center hesabınızı yönetme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)).
 
 
 ### <a name="requirements-for-specific-offer-types"></a>Belirli teklif türleri için gereksinimler
@@ -240,5 +240,5 @@ Bir veya daha fazla sanal makine sağlanmalıdır ve sanal makine fiyatlandırma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Teklifinizin seçimini ve yapılandırmasını tamamlamak için teklif türüne göre yayımlama seçeneklerinde uygunluk gereksinimlerini gözden geçirin.
-* Çözümünüzün bir teklif türü ve yapılandırmaya nasıl eşlendiğini gösteren örnekler için storefront göre yayımlama düzenlerini gözden geçirin.
+* Seçme ve yapılandırma teklifinizin sonlandırmak için Teklif türü bölümünde yayımlama seçeneklerini uygunluk gereksinimlerini gözden geçirin.
+* Yayımlama modelleri, çözümünüzü bir teklif türüne ve yapılandırmayı eşlemelerini nasıl ilişkin örnekler için mağaza tarafından gözden geçirin.

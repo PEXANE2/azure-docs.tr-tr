@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398154"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics günlük aramadan Azure Izleyici günlüklerine geçiş
 Log Analytics günlük araması kısa süre önce Azure Izleyici günlüklerini çözümlemek için yeni bir deneyimle değiştirilmiştir. Günlük arama sayfasına şu anda Azure portal **Log Analytics çalışma alanları** sayfasındaki **Günlükler (klasik)** menü öğesi aracılığıyla erişilebilir ancak 15 Şubat 2019 ' de kaldırılacaktır. Bu makalede, günlük aramadan geçiş yapmanıza yardımcı olmak için iki deneyim arasındaki farklar açıklanmaktadır. 
@@ -47,7 +47,7 @@ Geçerli sorguyu Azure Izleyici günlüklerine kaydetmek için **Kaydet**' i se�
 ## <a name="saved-queries"></a>Kaydedilen sorgular
 Günlük aramasında, kaydedilmiş sorgularınızı, Eylem çubuğu öğesi **kaydedilmiş aramaları**aracılığıyla kullanılabilir. Azure Izleyici günlükleri ' nde, kaydedilmiş sorgulara [sorgu Gezgini](../log-query/get-started-portal.md#save-queries)'nden erişin.
 
-![Sorgu Gezgini](media/log-search-transition/query-explorer.png)
+![Sorgu gezgini](media/log-search-transition/query-explorer.png)
 
 ## <a name="drill-down-on-summarized-rows"></a>Özetlenen satırlarda detaya gitme
 Günlük arama ' da, Özet sorgudaki bir satıra tıklayarak bu satırdaki ayrıntılı kayıtları listeleyen başka bir sorgu başlatabilirsiniz.

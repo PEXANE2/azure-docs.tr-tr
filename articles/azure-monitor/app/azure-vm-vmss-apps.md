@@ -1,5 +1,5 @@
 ---
-title: Azure VM ve Azure sanal makine ölçek kümelerinde barındırılan uygulama performansını izleme | Microsoft Docs
+title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 248dfb83c26d3f49fb492272ee3bd87d1e34fefa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407346"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
@@ -50,7 +50,7 @@ Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan u
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell kullanarak Azure sanal makinelerinde .NET uygulamaları için Application Insights aracısını yönetme
 
 > [!NOTE]
-> Application Insights aracısını yüklemeden önce bir izleme anahtarına ihtiyacınız olacaktır. [Yeni bir Application Insights kaynağı oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) veya mevcut bir Application Insights kaynağından izleme anahtarını kopyalayın.
+> Application Insights aracısını yüklemeden önce bir bağlantı dizesine ihtiyacınız vardır. [Yeni bir Application Insights kaynağı oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) veya var olan bir Application Insights kaynağından bağlantı dizesini kopyalayın.
 
 > [!NOTE]
 > PowerShell 'de yeni misiniz? [Başlarken kılavuzuna](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)göz atın.
@@ -65,8 +65,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -105,7 +106,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 Ayrıca, portaldaki [Azure sanal makine dikey](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) penceresinde yüklü uzantıları da görüntüleyebilirsiniz.
 
 > [!NOTE]
-> Application Insights Aracısı uzantısını dağıtmak için kullandığınız izleme anahtarıyla ilişkili Application Insights kaynak içindeki Canlı Ölçüm Akışı tıklayarak yüklemeyi doğrulayın. Birden çok sanal makineden veri gönderiyorsanız, sunucu adı altında hedef Azure sanal makinelerini seçin. Verilerin akışa başlaması bir dakika kadar sürebilir.
+> Application Insights Aracısı uzantısını dağıtmak için kullandığınız bağlantı dizesiyle ilişkili Application Insights kaynak içindeki Canlı Ölçüm Akışı tıklayarak yüklemeyi doğrulayın. Birden çok sanal makineden veri gönderiyorsanız, sunucu adı altında hedef Azure sanal makinelerini seçin. Verilerin akışa başlaması bir dakika kadar sürebilir.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>PowerShell kullanarak Azure sanal makine ölçek kümelerinde .NET uygulamaları için Application Insights aracısını yönetme
 
@@ -119,8 +120,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )

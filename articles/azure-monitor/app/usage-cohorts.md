@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d6762ac9253c838f715588451441aa9aa467f673
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406314"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortaları
 
@@ -106,7 +106,7 @@ Ayrıca, olayların birlikte da kullanılabilmesini sağlayabilirsiniz. Bu böl�
 
    * Bir analiz sorgusu kullanarak kohortu tanımladığınız bir sorgu bölümü.
 
-     Sorgu bölümünde, [bir analiz sorgusu yazarsınız](/azure/kusto/query). Sorgu, tanımlamak istediğiniz kohortu tanımlayan belirli satır kümesini seçer. Cohorts aracı bundan sonra örtülü olarak bir "| sorguya göre user_Id "yan tümcesini özetleme. Bu veriler, bir tablodaki sorgunun altında önizlenmekte olduğundan, sorgunuzun sonuçları döndürdüğünü sağlayabilirsiniz.
+     Sorgu bölümünde, [bir analiz sorgusu yazarsınız](/azure/kusto/query). Sorgu, tanımlamak istediğiniz kohortu tanımlayan belirli satır kümesini seçer. Cohorts aracı bundan sonra örtülü olarak bir "| sorguya user_Id "yan tümcesini özetleme. Bu veriler, bir tablodaki sorgunun altında önizlenmekte olduğundan, sorgunuzun sonuçları döndürdüğünü sağlayabilirsiniz.
 
      > [!NOTE]
      > Sorguyu görmüyorsanız, bölümü daha uzun hale getirmek ve sorguyu göstermek için yeniden boyutlandırmayı deneyin. Bu bölümün başındaki hareketli. gif, yeniden boyutlandırma davranışını gösterir.
@@ -118,7 +118,7 @@ Ayrıca, olayların birlikte da kullanılabilmesini sağlayabilirsiniz. Bu böl�
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. **Sorguyu Çalıştır**' ı seçin. Tabloda Kullanıcı kimlikleri görünmüyorsa, uygulamanızın kullanıcılara sahip olduğu bir ülkeye/bölgeye geçin.
+3. **Sorgu Çalıştır**'ı seçin. Tabloda Kullanıcı kimlikleri görünmüyorsa, uygulamanızın kullanıcılara sahip olduğu bir ülkeye/bölgeye geçin.
 
 4. Kohortu öğesini kaydedin ve adlandırın.
 

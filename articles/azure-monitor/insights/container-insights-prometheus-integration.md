@@ -1,22 +1,18 @@
 ---
 title: Kapsayıcılar için Azure Izleyicisini yapılandırma Prometheus tümleştirmesi | Microsoft Docs
 description: Bu makalede, Azure Kubernetes hizmet kümeniz ile Prometheus için Azure Monitor for Container Agent ' ı atık kullanım ölçümlerine nasıl yapılandırabileceğiniz açıklanmaktadır.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 51bdf0cfedb30fbd95f9a44e8f4a0efe4e857104
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403511"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Prometheus ölçümlerinin korumasını yapılandırın
 
-[Prometheus](https://prometheus.io/), popüler bir açık kaynak ölçüm izleme çözümüdür ve [Bulut Yerel İşlem Altyapısı](https://www.cncf.io/)’nın bir parçasıdır. Kapsayıcılar için Azure Izleyici, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu oluşturmanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra Azure Izleyici kapsayıcıları için Kapsayıcılı aracı sizin yerinize ıskartaya çıkarabilirsiniz. 
+[Prometheus](https://prometheus.io/) , popüler bir açık kaynaklı ölçüm izleme çözümüdür ve [bulut Yerel işlem altyapısı](https://www.cncf.io/)'nın bir parçasıdır. Kapsayıcılar için Azure Izleyici, Prometheus ölçümlerini toplamak için sorunsuz bir ekleme deneyimi sağlar. Genellikle, Prometheus 'yi kullanmak için bir depolama ile bir Prometheus sunucusu oluşturmanız ve yönetmeniz gerekir. Azure Izleyici ile tümleştirerek bir Prometheus sunucusu gerekli değildir. Tek yapmanız gereken, dışarı aktardığınız veya yığınlarınızın (uygulamanızın) yanı sıra Azure Izleyici kapsayıcıları için Kapsayıcılı aracı sizin yerinize ıskartaya çıkarabilirsiniz. 
 
 ![Prometheus için kapsayıcı izleme mimarisi](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -30,7 +26,7 @@ Prometheus ölçülerinin etkin bir şekilde kullanılması, iki perspektiften b
 * Küme genelinde HTTP URL 'SI ve bir hizmetin listelenen bitiş noktalarından hedefleri bulur. Örneğin, kuas-DNS ve KUIN-eyalet-ölçümleri gibi k8s Hizmetleri ve bir uygulamaya özgü Pod ek açıklamaları. Bu bağlamda toplanan ölçümler ConfigMap bölümünde *[Prometheus data_collection_settings. Cluster]* tanımlanacaktır.
 * Düğüm genelinde HTTP URL 'SI ve bir hizmetin listelenen bitiş noktalarından hedefleri bulur. Bu bağlamda toplanan ölçümler ConfigMap bölümünde *[Prometheus_data_collection_settings. Node]* tanımlanacaktır.
 
-| Uç Nokta | Kapsam | Örnek |
+| Uç nokta | Kapsam | Örnek |
 |----------|-------|---------|
 | Pod ek açıklaması | Küme genelinde | açıklamaları <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Kubernetes hizmeti | Küme genelinde | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -123,7 +119,7 @@ ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak iç
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Ek açıklamaları olan Pod 'lerin belirli ad alanlarına izlemeyi kısıtlamak istiyorsanız, örneğin yalnızca üretim iş yükleri için ayrılmış Pod dahil, `monitor_kubernetes_pod` configmap içinde `true` olarak ayarlayın ve bu ad alanı filtresini `monitor_kubernetes_pods_namespaces` atık olarak ad alanları. Örneğin, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          Ek açıklamaları olan Pod 'ler için izlemeyi kısıtlamak istiyorsanız, örneğin yalnızca üretim iş yükleri için ayrılmış Pod dahil olmak üzere, `monitor_kubernetes_pod` configmap içinde `true` olarak ayarlayın ve `monitor_kubernetes_pods_namespaces` ad alanı filtresini ekleyerek atık olan ad alanlarını belirtin. Örneğin, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 3. Aşağıdaki kubectl komutunu çalıştırarak ConfigMap oluşturun: `kubectl apply -f <configmap_yaml_file.yaml>`.
     

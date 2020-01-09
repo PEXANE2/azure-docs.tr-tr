@@ -1,28 +1,19 @@
 ---
-title: Öğretici - Azure Service Fabric Mesh’te çalışan bir uygulamayı kaldırma | Microsoft Docs
+title: Öğretici-Azure Service Fabric ağı 'nda çalışan bir uygulamayı kaldırma
 description: Bu öğreticide, Service Fabric Mesh’te çalışan bir uygulamayı kaldırma ve kaynakları silme hakkında bilgi edineceksiniz.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351808"
 ---
-# <a name="tutorial-remove-an-application-and-resources"></a>Öğretici: Bir uygulama ve kaynakları Kaldır
+# <a name="tutorial-remove-an-application-and-resources"></a>Öğretici: Bir uygulamayı ve kaynakları kaldırma
 
 Bu öğretici, bir serinin dördüncü bölümüdür. [Daha önce Service Fabric Mesh’e dağıtılmış](service-fabric-mesh-tutorial-template-deploy-app.md) bir çalışan uygulamayı kaldırmayı öğreneceksiniz. 
 
@@ -41,13 +32,13 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturabilirsiniz.
 
-* [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md)’i açın veya [Azure CLI ve Service Fabric Mesh CLI’sını yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
+* [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md)’i açın veya [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="delete-the-resource-group-and-all-the-resources"></a>Kaynak grubunu ve tüm kaynakları silme
 

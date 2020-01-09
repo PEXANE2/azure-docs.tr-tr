@@ -1,7 +1,7 @@
 ---
 title: 'Filtre tabanlı özellik seçimi: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: En büyük tahmine dayalı bir veri kümesindeki özellikleri belirlemek için Azure Machine Learning hizmetinde filtre tabanlı özellik seçimi modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: En büyük tahmine dayalı bir veri kümesindeki özellikleri belirlemek için Azure Machine Learning ' deki filtre tabanlı özellik seçimi modülünü kullanmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428520"
 ---
-# <a name="filter-based-feature-selection"></a>Filtre tabanlı özellik seçimi
+# <a name="filter-based-feature-selection"></a>Filtre Tabanlı Özellik Seçimi
 
 Bu makalede, Azure Machine Learning tasarımcısında filtre tabanlı özellik seçimi modülünün nasıl kullanılacağı açıklanmaktadır (Önizleme). Bu modül, giriş veri kümenizdeki en büyük tahmine dayalı güce sahip sütunları belirlemenize yardımcı olur. 
 
@@ -135,5 +135,5 @@ Bir sayısal özellikte ve kategorik bir etikette Pearson bağıntı kullanırsa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 

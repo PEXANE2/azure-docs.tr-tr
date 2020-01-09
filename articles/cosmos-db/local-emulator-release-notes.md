@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: eb73551c4226df8bc20428558720c0ebbfff96d9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445302"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos öykünücüsü-sürüm notları ve indirme bilgileri
 
@@ -22,9 +22,13 @@ Bu makalede, Azure Cosmos öykünücü sürüm notları her sürümde yapılan �
 | | |
 |---------|---------|
 |**MSI indirme**|[Microsoft İndirme Merkezi](https://aka.ms/cosmosdb-emulator)|
-|**Başlarken**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
+|**Kullanmaya Başlama**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="272"></a>2.7.2
+
+- Bu sürüm, Cosmos öykünücüsüne MongoDB sürüm 3,6 sunucu desteği ekler. Hizmetin 3,6 sürümünü hedef alan bir MongoDB uç noktasını başlatmak için, "/EnableMongoDBEndpoint = 3.6" seçeneğiyle yönetici komut satırından öykünücü 'yı başlatın.
 
 ### <a name="270"></a>2.7.0
 

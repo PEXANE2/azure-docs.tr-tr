@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Betik Örneği - Batch işi çalıştırma | Microsoft Docs
-description: Azure CLI Betik Örneği - Batch ile bir iş çalıştırma
+title: Azure CLı betik örneği-Batch işi çalıştırma
+description: Bu betik, bir Batch işi oluşturur ve bu işe bir dizi görev ekler. Ayrıca bir işi ve görevlerini izlemeyi gösterir.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -12,16 +12,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 12/12/2019
 ms.author: lahugh
-ms.openlocfilehash: a5e81393014dd70ae83f66e2a1d41f4de3c14205
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3fff556f91558f30389ac3548d699e3788719d59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390038"
 ---
-# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLı örneği: Azure Batch bir işi ve görevleri çalıştırma
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI örneği: Azure Batch ile bir işi ve görevleri çalıştırma
 
 Bu betik, bir Batch işi oluşturur ve bu işe bir dizi görev ekler. Ayrıca bir işi ve görevlerini izlemeyi gösterir. 
 

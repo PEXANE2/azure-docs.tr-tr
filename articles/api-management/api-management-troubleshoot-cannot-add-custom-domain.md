@@ -1,5 +1,6 @@
 ---
-title: Azure API Management Key Vault sertifikası kullanılarak özel etki alanı eklenemiyor | Microsoft Docs
+title: Key Vault sertifikası kullanılarak özel etki alanı eklenemiyor
+titleSuffix: Azure API Management
 description: Anahtar Kasası sertifikası kullanarak Azure API Management 'de özel etki alanı ekleyemiyoruz sorunu nasıl giderebileceğinizi öğrenin.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 5d31ec21e341c46c2f2d0ab49fdb2d4302c29dc6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121530"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430588"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>API Management hizmeti ana bilgisayar adları güncelleştirilemedi
 
@@ -27,7 +28,7 @@ Bu makalede, Azure API Management hizmeti için özel bir etki alanı eklediğin
 
 Azure Key Vault bir sertifika kullanarak API Management hizmetiniz için özel bir etki alanı eklemeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-- API Management hizmeti ana bilgisayar adları güncelleştirilemedi. 'https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 ' Kaynağına yapılan istek StatusCode ile başarısız oldu: RequestId için yasak:. Özel durum iletisi: İşlem geçersiz bir durum kodu döndürdü ' yasak '.
+- API Management hizmeti ana bilgisayar adları güncelleştirilemedi. 'https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 ' kaynağı isteği şu hata kodu ile başarısız oldu: RequestId:. Özel durum iletisi: Işlem geçersiz bir ' yasak ' durum kodu döndürdü.
 
 ## <a name="cause"></a>Nedeni
 
@@ -38,16 +39,16 @@ API Management hizmetin, özel etki alanı için kullanmaya çalıştığınız 
 Bu sorunu çözmek için şu adımları izleyin:
 
 1. [Azure Portal](Https://portal.azure.com)gidin, API Management örneğinizi seçin ve ardından **Yönetilen kimlikler**' i seçin. **Azure Active Directory Ile kaydet** seçeneğinin **Evet**olarak ayarlandığından emin olun. 
-    ![Azure Active Director ile kaydetme](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
+    Azure Active Director](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png) kaydolma ![
 1. Azure portal, **anahtar** Kasası hizmetini açın ve özel etki alanı için kullanmaya çalıştığınız anahtar kasasını seçin.
 1. **Erişim ilkeleri**' ni seçin ve API Management hizmet örneğinin adıyla eşleşen bir hizmet sorumlusu olup olmadığını kontrol edin. Varsa, hizmet sorumlusu ' nı seçin ve **gizli izinler**altında, izin **Al** ' ın altında bulunan izinleri doğrulayın.  
-    ![Hizmet sorumlusu için erişim ilkesi ekleme](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
+    hizmet sorumlusu için erişim ilkesi eklemek ![](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
 1. API Management hizmet listede yoksa, **erişim Ilkesi Ekle**' yi seçin ve ardından aşağıdaki erişim ilkesini oluşturun:
-    - **Şablondan Yapılandır**: Yok.
-    - **Asıl seçin**: API Management hizmetinin adını arayın ve listeden seçin
-    - **Anahtar izinleri**: Yok.
-    - **Gizli dizi izinleri**: Al
-    - **Sertifika izinleri**: Yok.
+    - **Şablondan Yapılandır**: yok
+    - **Sorumlu seçin**: API Management hizmetin adını arayın ve listeden seçin
+    - **Anahtar izinleri**: yok
+    - **Gizli dizi izinleri**: Get
+    - **Sertifika izinleri**: yok
 1. Erişim ilkesini oluşturmak için **Tamam ' ı** seçin.
 1. Seçin **Kaydet** değişiklikleri kaydedin.
 

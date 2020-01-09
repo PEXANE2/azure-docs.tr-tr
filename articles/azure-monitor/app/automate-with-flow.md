@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407538"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow için bağlayıcı ile Azure Application Insights süreçlerini otomatikleştirin
 
@@ -41,7 +41,7 @@ Bu öğreticide, bir Web uygulamasının verilerinde öznitelikleri gruplandırm
 
     ![Sıklık ve aralığa girerek zamanlama tekrarını ayarlama](./media/automate-with-flow/2-schedule.png)
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 ### <a name="step-3-add-an-application-insights-action"></a>3\. Adım: Application Insights eylem ekleme
 
@@ -66,10 +66,10 @@ Uygulama KIMLIĞI ve API anahtarı ile birlikte bağlantınız için bir ad sağ
 
 Bağlantı kutusu doğru görünmüyorsa ve bunun yerine sorguyu girmeye devam ederseniz, kutunun sağ üst köşesindeki üç noktaya tıklayın. Ardından bağlantılarımı seçin veya mevcut bir tane kullanın.
 
-**Oluştur**’a tıklayın.
+**Oluştur**'a tıklayın.
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. Adım: analiz sorgusunu ve grafik türünü belirtme
-Bu örnek sorgu son gün içindeki başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlarla ilişkilendirir. Analytics bunları operation_Id tanımlayıcısına göre ilişkilendirir. Sorgu daha sonra sonuçları, oto küme algoritmasını kullanarak kesimler.
+Bu örnek sorgu son gün içindeki başarısız istekleri seçer ve bunları işlemin bir parçası olarak oluşan özel durumlarla ilişkilendirir. Analiz, operation_Id tanımlayıcısına göre bunları ilişkilendirir. Sorgu daha sonra sonuçları, oto küme algoritmasını kullanarak kesimler.
 
 Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce analizler üzerinde düzgün çalıştığını doğrulayın.
 
@@ -117,9 +117,9 @@ Kendi sorgularınızı oluştururken, bunları akışınıza eklemeden önce ana
 
 ### <a name="step-7-save-and-test-your-flow"></a>7\. Adım: akışınızı kaydetme ve test etme
 
-**Kaydet** düğmesine tıklayın.
+**Save (Kaydet)** düğmesine tıklayın.
 
-Tetikleyicinin bu eylemi çalıştırmasını bekleyebilir veya üst kısımdaki **![beaker test simgesine ](./media/automate-with-flow/testicon.png) tıklayabilirsiniz** .
+Tetikleyicinin bu eylemi çalıştırmasını bekleyebilir veya üst kısımdaki ![Beaker **test](./media/automate-with-flow/testicon.png) simgesine** tıklayabilirler.
 
 **Test**seçildikten sonra:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422940"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory genel işlemler Kılavuzu başvurusu
 
@@ -90,9 +90,9 @@ Bazı kimlik ve erişim yönetimi hizmetleri, karma senaryoları etkinleştirmek
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Şirket içi aracılar günlüklerinin okunması önerilir
 
-- [Uygulama ara sunucusu sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+- [Uygulama Ara sunucusu sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
 - [Self servis parola sıfırlama sorunlarını giderme-Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
+- [Azure AD uygulama ara sunucusu bağlayıcıları anlama](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
 - [Azure AD Connect: geçişli kimlik doğrulaması sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
 - [Azure MFA NPS uzantısı için hata kodları sorunlarını giderme](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
 
@@ -106,8 +106,8 @@ En iyi uygulamaları benimseme, şirket içi aracıların en iyi operasyonunun s
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Şirket içi aracılar yönetiminin kullanılması önerilir
 
-- [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Azure AD geçişli kimlik doğrulaması-hızlı başlangıç](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Azure AD uygulama ara sunucusu bağlayıcıları anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Azure AD geçişli kimlik doğrulaması-hızlı başlangıç](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Ölçekte yönetim
 
@@ -131,10 +131,10 @@ Azure AD tarafından kullanılan iki "Kimden" adresi vardır: <o365mc@email2.mic
 
 - [Azure AD erişim Incelemeleri](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Kimlik Koruması](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Kimlik Koruması](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Kurumsal uygulamanın süresi dolan sertifika bildirimleri](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Kurumsal uygulama sağlama hizmeti bildirimleri
+- Kurumsal uygulama sağlama hizmet bildirimleri
 
 Gönderilen bildirimlerin türünü ve bunların nerede kontrol edildiği hakkında bilgi edinmek için aşağıdaki tabloya bakın:
 
@@ -166,9 +166,9 @@ Active Directory Yönetim Katmanı modeli, ortamın tam denetimi (Katman 0) ve s
 
 [Katman modeli](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) üç düzeyden oluşur ve standart Kullanıcı hesapları yerine yalnızca yönetim hesapları içerir.
 
-- **Katman 0** -ortamdaki kurumsal kimliklerin doğrudan denetim. Katman 0, Active Directory orman, etki alanı veya etki alanı denetleyicileri ve içindeki tüm varlıklar için doğrudan veya dolaylı yönetim denetimine sahip hesapları, grupları ve diğer varlıkları içerir. Tüm katman 0 varlıklarının güvenlik duyarlılığı, her birinin denetiminde etkin oldukları için eşdeğerdir.
-- **Katman 1** -kurumsal sunucuların ve uygulamaların denetimi. Katman 1 varlıkları sunucu işletim sistemlerini, bulut hizmetlerini ve kurumsal uygulamaları içerir. Katman 1 Yönetici hesapları, bu varlıklarda barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Ortak bir örnek rol, tüm kurumsal hizmetleri etkileyebilecek bu işletim sistemlerini yöneten sunucu yöneticileridir.
-- **Katman 2** -Kullanıcı iş istasyonları ve cihazların denetimi. Katman 2 yönetici hesapları, Kullanıcı iş istasyonlarında ve cihazlarda barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Bu örneklerde, neredeyse tüm Kullanıcı verilerinin bütünlüğünü etkileyebilecek yardım masası ve bilgisayar desteği yöneticileri bulunur.
+- **Katman 0** -ortamdaki kurumsal kimliklerin doğrudan denetim. Katman 0 Active Directory ormanının, etki alanlarının veya etki alanı denetleyicilerinin ve içindeki tüm varlıkların doğrudan ya da dolaylı yönetimsel denetimine sahip hesapları, grupları ve diğer varlıkları içerir. Tüm Katman 0 varlıkları birbirlerini etkin bir şekilde denetlediği için güvenlik açısından hassasiyetleri denktir.
+- **Katman 1** -kurumsal sunucuların ve uygulamaların denetimi. Katman 1 varlıklarına sunucu işletim sistemleri, bulut hizmetleri ve kuruluş uygulamaları dahildir. Katman 1 yönetim hesapları, bu varlıklar üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Yaygın olarak kullanılan bir rol örneği, bu işletim sistemlerinin bakımını yapan ve tüm kuruluş hizmetlerini etkileme imkanına sahip olan sunucu yöneticileridir.
+- **Katman 2** -Kullanıcı iş istasyonları ve cihazların denetimi. Katman 2 yönetim hesapları, kullanıcı iş istasyonları ve cihazları üzerinde barındırılan önemli miktarda iş değeri üzerinde yönetimsel denetime sahiptir. Örnek olarak neredeyse tüm kullanıcı verilerinin bütünlüğünü etkileyebilecek Yardım Masası ve bilgisayar destek yöneticileri verilebilir.
 
 Azure AD Connect, AD FS ve SQL Hizmetleri gibi şirket içi kimlik bileşenlerine erişimi, etki alanı denetleyicilerle aynı şekilde kilitleyin.
 

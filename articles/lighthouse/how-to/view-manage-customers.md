@@ -1,14 +1,14 @@
 ---
 title: Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
 description: Azure tarafından atanan kaynak yönetimini kullanan bir hizmet sağlayıcı olarak, tüm Temsilcili müşteri kaynaklarınızı ve aboneliklerinizi Azure portal müşterilerime giderek görüntüleyebilirsiniz.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456823"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
 
@@ -16,7 +16,9 @@ ms.locfileid: "74463832"
 
 Azure portal **müşterilerimiz** sayfasına erişmek Için, **tüm hizmetler**' i seçin, ardından **müşterilerimi** arayın ve seçin. Ayrıca, Azure portal üst kısmındaki arama kutusuna "My Customers" girerek de bulabilirsiniz.
 
-**Müşterilerimin** en üst bölümünde yalnızca abonelik veya kaynak grubu atanmış olan müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle çalışıyorsanız (örneğin, [bulut çözüm sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview)aracılığıyla), kaynakları Temsilcili kaynak yönetimine yerleştirmediğiniz sürece burada bu müşterilerle ilgili bilgileri görmezsiniz. Sayfada daha düşük olan **bulut çözümü sağlayıcısı (Önizleme)** bölümü, [Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve eklendi olup olmadıkları bağımsız olarak Azure planına ait olan CSP müşterileriniz için fatura bilgilerini ve kaynakları gösterir. Azure tarafından atanan kaynak yönetimi için. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](https://docs.microsoft.com/azure/billing/mpa-overview).
+**Müşteriler** sayfasının en popüler **müşterileri** bölümünün yalnızca abonelik veya kaynak grupları için temsilci atanmış müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle (örneğin, [bulut çözüm sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview)aracılığıyla) çalışıyorsanız, Azure tarafından atanan kaynak yönetimi için kaynaklarına eklendi sahip olmadığınız sürece **müşteriler** bölümünde bu müşterilerle ilgili bilgileri görmezsiniz.
+
+Sayfada daha düşük olan **bulut çözümü sağlayıcısı (Önizleme)** adlı ayrı bir bölüm, [Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve [Azure planı kapsamında](https://docs.microsoft.com/partner-center/azure-plan-get-started)olan CSP müşterileriniz için faturalandırma bilgilerini ve kaynakları gösterir. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](../../billing/mpa-overview.md). Bu tür CSP müşterilerinin, Azure tarafından atanan kaynak yönetimi için de eklendi sahip olup olmadığına bakılmaksızın bu bölümde göründüğünü unutmayın. Benzer şekilde, bir CSP müşterisi, Azure tarafından atanan kaynak yönetimine yönelik olarak bunları eklemek için **müşterilerimin** **bulut çözümü sağlayıcısı (Önizleme)** bölümünde görünmesini gerektirmez.
 
 > [!NOTE]
 > Müşterileriniz, Azure portal hizmet **sağlayıcılarına** giderek hizmet sağlayıcılarıyla ilgili bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [hizmet sağlayıcılarını görüntüleme ve yönetme](view-manage-service-providers.md).
@@ -28,7 +30,7 @@ Müşteri ayrıntılarını görüntülemek için **müşterilerimin** sol taraf
 Her müşteri için müşterinin adını, müşteri KIMLIĞINI (kiracı KIMLIĞI) ve görevlendirmede ilişkili teklifi görürsünüz. **Temsilciler** sütununda, temsilci olan aboneliklerin sayısını ve/veya atanan kaynak grubu sayısını görürsünüz.
 
 > [!IMPORTANT]
-> Bir temsilciyi görmek için kullanıcılara, ekleme sürecinde [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir.
+> Bir temsilciyi görmek için kullanıcılara, ekleme sürecinde [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü (veya okuyucu erişimi içeren başka bir yerleşik rol) verilmiş olması gerekir.
 
 Sayfanın üst kısmındaki filtreler, müşteri bilgilerinizi, tekliflerini veya anahtar sözcüklere göre filtrelemenizi ve gruplamanıza olanak tanır.
 

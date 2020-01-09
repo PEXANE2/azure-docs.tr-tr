@@ -6,24 +6,24 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256271"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416052"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere kümesi DNS yapılandırması
 
-Bu bölümde, avere vFXT kümenizin yük dengelemesi için bir DNS sisteminin yapılandırılmasına ilişkin temel bilgiler açıklanmaktadır. 
+Bu bölümde, avere vFXT kümenizin yük dengelemesi için bir DNS sisteminin yapılandırılmasına ilişkin temel bilgiler açıklanmaktadır.
 
-Bu belge, Azure ortamında bir DNS sunucusu ayarlamaya ve yönetmeye yönelik yönergeler *içermez* . 
+Bu belge, Azure ortamında bir DNS sunucusu ayarlamaya ve yönetmeye yönelik yönergeler *içermez* .
 
-Azure 'da bir vFXT kümesini yük dengelemek için hepsini bir kez deneme DNS kullanmak yerine, bağlandıkları zaman istemciler arasında IP adreslerini eşit bir şekilde atamak için el ile gerçekleştirilen yöntemleri kullanmayı düşünün. Çeşitli yöntemler [avere kümesini bağlama](avere-vfxt-mount-clients.md)bölümünde açıklanmaktadır. 
+Azure 'da bir vFXT kümesini yük dengelemek için hepsini bir kez deneme DNS kullanmak yerine, bağlandıkları zaman istemciler arasında IP adreslerini eşit bir şekilde atamak için el ile gerçekleştirilen yöntemleri kullanmayı düşünün. Çeşitli yöntemler [avere kümesini bağlama](avere-vfxt-mount-clients.md)bölümünde açıklanmaktadır.
 
-Bir DNS sunucusunun kullanılıp kullanılmayacağını saptarken şunları göz önünde bulundurun: 
+Bir DNS sunucusunun kullanılıp kullanılmayacağını saptarken şunları göz önünde bulundurun:
 
-* Sisteminiz yalnızca NFS istemcileri tarafından erişiliyorsa DNS kullanımı gerekli değildir-sayısal IP adresleri kullanarak tüm ağ adreslerini belirtmek mümkündür. 
+* Sisteminiz yalnızca NFS istemcileri tarafından erişiliyorsa DNS kullanımı gerekli değildir-sayısal IP adresleri kullanarak tüm ağ adreslerini belirtmek mümkündür.
 
 * Sisteminiz SMB (CIFS) erişimini destekliyorsa, DNS gerekir, çünkü Active Directory sunucusu için bir DNS etki alanı belirtmeniz gerekir.
 
@@ -41,12 +41,12 @@ En iyi performans için, DNS sunucunuzu aşağıdaki diyagramda gösterildiği g
 
 Sol tarafta bir küme vServer gösterilir ve IP adresleri ortadaki ve sağ tarafta görüntülenir. Her bir istemci erişim noktasını, gösterildiği gibi bir kayıt ve işaretçilerle yapılandırın.
 
-![avere kümesi hepsini bir kez deneme DNS diyagramı](media/avere-vfxt-rrdns-diagram.png) 
+![avere kümesi hepsini bir kez deneme DNS diyagramı](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Her bir istemciye yönelik IP adresinin, küme tarafından iç kullanım için benzersiz bir adı olmalıdır. (Bu diyagramda istemci IP 'Leri, açıklık için VS1-Client-IP-* olarak adlandırılır, ancak üretimde, istemci * gibi daha kısa bir ad kullanmanız gerekir.)
 
-İstemciler, sanal sunucu adını sunucu bağımsız değişkeni olarak kullanarak kümeyi bağlayabilir. 
+İstemciler, sanal sunucu adını sunucu bağımsız değişkeni olarak kullanarak kümeyi bağlayabilir.
 
 Sanal sunucunuza sorgular için döngüsel sıra ayarlamak üzere DNS sunucunuzun ``named.conf`` dosyasını değiştirin. Bu seçenek, tüm kullanılabilir değerlerin üzerinden kaydırılmasını sağlar. Aşağıdakine benzer bir ifade ekleyin:
 
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-Aşağıdaki nsupdate komutları DNS yapılandırmasına doğru bir örnek sağlar:
+Aşağıdaki ``nsupdate`` komutları, DNS yapılandırmasına doğru bir örnek sağlar:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -81,5 +81,3 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 * DNS arama etki alanları
 
 Bu sayfayı kullanma hakkında daha fazla bilgi için avere kümesi yapılandırma kılavuzundaki [DNS ayarlarını](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) okuyun.
-
-

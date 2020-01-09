@@ -4,15 +4,15 @@ description: Azure Izleyici ile, düzenli aralıklarla ortamlarınızın riskini
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401028"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
 
@@ -32,9 +32,9 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 ![SQL sistem durumu denetimi panosunun görüntüsü](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* SQL durum denetimi çözümü, Microsoft Monitoring Agent (MMA) yüklü olan her bilgisayarda .NET Framework 4 ' ün desteklenen bir sürümünü gerektirir.  MMA Aracısı System Center 2016-Operations Manager ve Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.  
+* SQL sistem durumu denetimi çözümü, Microsoft Monitoring Agent (MMA) yüklü her bilgisayarda desteklenen bir .NET Framework 4.6.2 sürümü gerektirir.  MMA Aracısı System Center 2016-Operations Manager ve Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.  
 * Çözüm 2012, 2014 ve 2016 SQL Server sürümünü destekler.
 * Azure portal Azure Marketi 'nden SQL sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı.  Çözümü yüklemek için Azure aboneliğinde bir yönetici veya katkıda bulunan olması gerekir.
 
@@ -47,7 +47,7 @@ SQL Server sunucularınızda sistem durumu denetimini gerçekleştirmek için, a
 
 1. Sunucu zaten System Center 2016-Operations Manager veya Operations Manager 2012 R2 tarafından izlenmediği takdirde, [Microsoft Monitoring Agent (MMA) ' i (MMA)](../../azure-monitor/platform/agent-windows.md) ' i (
 2. System Center 2016-Operations Manager veya Operations Manager 2012 R2 ile izleniyorsa ve yönetim grubu Azure Izleyici ile tümleştirilmediğinde, sunucu, veri toplamak ve hizmete iletmek ve yine de devam etmek için Log Analytics ile birden çok bilgisayarlı olabilir. Operations Manager tarafından izleniyor.  
-3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çözümü etkinleştirmek üzere [Aracı tarafından yönetilen bilgisayarlar ekleme](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) altındaki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir. alanında.  
+3. Aksi takdirde, Operations Manager yönetim grubunuz hizmetle tümleşikse, çalışma alanınızda çözümü etkinleştirdikten sonra [aracıyla yönetilen bilgisayarlar ekleme](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) bölümündeki adımları izleyerek, hizmet tarafından veri toplamaya yönelik etki alanı denetleyicilerini eklemeniz gerekir.  
 
 SQL Server, Operations Manager bir yönetim grubuna rapor veren, verileri toplayan, atanan yönetim sunucusuna ileten ve daha sonra doğrudan bir yönetim sunucusundan Azure Izleyici 'ye gönderilen aracı.  Veriler Operations Manager veritabanlarına yazılmaz.  
 
@@ -79,14 +79,14 @@ SQL sistem durumu denetimi için Operations Manager farklı çalıştır hesabı
 
 1. Operations Manager, Işletim konsolunu açın ve ardından **Yönetim**' e tıklayın.
 2. **Farklı Çalıştır Yapılandırması**altında, **profiller**' e tıklayın ve **Farklı Çalıştır profili SQL değerlendirmesi**açın.
-3. **Farklı Çalıştır hesapları** sayfasında **Ekle**' ye tıklayın.
+3. **Farklı Çalıştır Hesapları** sayfasında **Ekle**’ye tıklayın.
 4. SQL Server için gereken kimlik bilgilerini içeren bir Windows farklı çalıştır hesabı seçin veya bir tane oluşturmak için **Yeni** ' ye tıklayın.
 
    > [!NOTE]
    > Farklı Çalıştır hesabı türü Windows olmalıdır. Farklı Çalıştır hesabı, SQL Server örnekleri barındıran tüm Windows sunucularında yerel Yöneticiler grubunun da parçası olmalıdır.
    >
    >
-5. **Kaydet** düğmesine tıklayın.
+5. **Save (Kaydet)** düğmesine tıklayın.
 6. Farklı çalıştır hesabının sistem durumu denetimini gerçekleştirmesi için gereken en düşük izinleri vermek üzere her bir SQL Server örneğinde aşağıdaki T-SQL örneğini değiştirin ve yürütün. Ancak, bir farklı çalıştır hesabı zaten SQL Server örneklerine sysadmin sunucu rolünün bir parçasıysa bunu yapmanız gerekmez.
 
 ```
@@ -143,7 +143,7 @@ Her öneri ağırlığı, her bir odak alanı için kullanılabilen toplam puanl
 
 **İşlemler ve izleme** -bu odak alanı, BT işlemlerinizi kolaylaştırmaya, önleyici bakım uygulamanıza ve performansı en üst düzeye çıkarmaya yardımcı olmaya yönelik öneriler gösterir.
 
-**Değişiklik ve yapılandırma yönetimi** -bu odak alanı, günlük işlemleri korumaya yardımcı olma önerilerini gösterir, değişikliklerin altyapınızı olumsuz şekilde etkilememesini, değişiklik denetimi yordamlarını oluşturmayı ve sistemi izleyip denetlemesini sağlayın konfigürasyonları.
+**Değişiklik ve yapılandırma yönetimi** -bu odak alanı, günlük işlemleri korumaya yardımcı olma önerilerini gösterir, değişikliklerin altyapınızı olumsuz şekilde etkilememesini, değişiklik denetimi yordamlarını oluşturduğunuzdan ve sistem yapılandırmalarını izleyip denetlemelerini sağlar.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Her odak alanında %100 puan elde etmeniz gerekir mi?
 Olmayabilir. Öneriler, binlerce müşteri ziyaretinde Microsoft mühendisleri tarafından kazanılan bilgi ve deneyimlere dayalıdır. Ancak, iki sunucu altyapısı aynı değildir ve belirli öneriler sizinle daha fazla veya daha az olabilir. Örneğin, sanal makineleriniz Internet 'e açık değilse bazı güvenlik önerileri daha az ilgili olabilir. Bazı kullanılabilirlik önerileri düşük öncelikli geçici veri toplama ve raporlama sağlayan hizmetlerle daha az ilgili olabilir. Yetişkin iş açısından önemli olan sorunlar, başlangıç için daha az önemli olabilir. Önceliklerinizin hangi odak alanlarından olduğunu belirlemek ve sonra puanlarınızın zaman içinde nasıl değişdiklerini görmek isteyebilirsiniz.
@@ -223,7 +223,7 @@ Yok saymak istediğiniz önerileriniz varsa, Azure Izleyici 'nin değerlendirme 
 *Ne tür veriler toplanır?*
 
 * Aşağıdaki veri türleri toplanır:
-  * 'Ya
+  * WMI
   * Kayıt Defteri
   * Performans sayaçları
   * SQL dinamik yönetim görünümleri (DMV).

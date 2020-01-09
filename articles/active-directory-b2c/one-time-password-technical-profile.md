@@ -1,0 +1,169 @@
+---
+title: Bir kerelik parola (OTP) doğrulamasını etkinleştir
+titleSuffix: Azure AD B2C
+description: Azure AD B2C özel ilke kullanarak bir kerelik parola (OTP) senaryosu ayarlamayı öğrenin.
+services: active-directory-b2c
+author: mmacy
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: reference
+ms.date: 12/10/2019
+ms.author: marsma
+ms.subservice: B2C
+ms.openlocfilehash: c50edb03fe849c70596c0bfb3cdc2dafa15f136f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75480209"
+---
+# <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
+Azure Active Directory B2C (Azure AD B2C), tek seferlik bir parolanın oluşturulmasını ve doğrulanmasını yönetmek için destek sağlar. Bir kod oluşturmak için teknik profil kullanın ve ardından kodu daha sonra doğrulayın.
+
+Bir kerelik parola teknik profili, kod doğrulama sırasında de bir hata mesajı döndürebilir. Bir **doğrulama teknik profili**kullanarak bir kerelik parolayla tümleştirmeyi tasarlayın. Bir doğrulama teknik profili, bir kodu doğrulamak için bir kerelik parola teknik profilini çağırır. Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan sayfada bir hata iletisi görüntülenir.
+
+## <a name="protocol"></a>Protokol
+
+**Protokol** öğesinin **Name** özniteliğinin `Proprietary`olarak ayarlanması gerekir. **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
+
+```XML
+Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+```
+
+Aşağıdaki örnekte bir kerelik parola teknik profili gösterilmektedir:
+
+```XML
+<TechnicalProfile Id="VerifyCode">
+  <DisplayName>Validate user input verification code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  ...
+```
+
+## <a name="generate-code"></a>Kod oluşturma
+
+Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir.
+
+### <a name="input-claims"></a>Giriş talepleri
+
+**Inputclaim** öğesi, bir kerelik parola Protokolü sağlayıcısına göndermek için gereken taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
+
+| Claimreferenceıd | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| tanımlayıcı | Evet | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+
+**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
+
+### <a name="output-claims"></a>Çıkış talepleri
+
+**Outputclaim** öğesi, tek seferlik parola Protokolü sağlayıcısı tarafından oluşturulan taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
+
+| Claimreferenceıd | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| otpGenerated | Evet | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
+
+**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
+
+### <a name="metadata"></a>Meta Veriler
+
+Kod oluşturmayı ve bakımını yapılandırmak için aşağıdaki ayarlar kullanılabilir:
+
+| Öznitelik | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60`; Maksimum: `1200`; Varsayılan: `600`. |
+| Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
+| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
+| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
+| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
+
+### <a name="returning-error-message"></a>Hata iletisi döndürülüyor
+
+Kod oluşturma modu için bir hata iletisi döndürülmedi.
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek `TechnicalProfile` bir kod oluşturmak için kullanılır:
+
+```XML
+<TechnicalProfile Id="GenerateCode">
+    <DisplayName>Generate Code</DisplayName>
+    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Metadata>
+        <Item Key="Operation">GenerateCode</Item>
+        <Item Key="CodeExpirationInSeconds">600</Item>
+        <Item Key="CodeLength">6</Item>
+        <Item Key="CharacterSet">0-9</Item>
+        <Item Key="NumRetryAttempts">5</Item>
+        <Item Key="ReuseSameCode">false</Item>
+    </Metadata>
+    <InputClaims>
+        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    </InputClaims>
+    <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+    </OutputClaims>
+</TechnicalProfile>
+```
+
+## <a name="verify-code"></a>Kodu doğrulayın
+
+Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir.
+
+### <a name="input-claims"></a>Giriş talepleri
+
+**Inputclaim** öğesi, bir kerelik parola Protokolü sağlayıcısına göndermek için gereken taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
+
+| Claimreferenceıd | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| tanımlayıcı | Evet | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| otpToVerify | Evet | Kullanıcı tarafından belirtilen doğrulama kodu. |
+
+**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
+
+### <a name="output-claims"></a>Çıkış talepleri
+
+Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkış talebi yok.
+
+**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
+
+### <a name="metadata"></a>Meta Veriler
+
+Aşağıdaki ayarlar, kod doğrulama hatası üzerine görüntülenecek hata iletisini yapılandırmak için kullanılabilir:
+
+| Öznitelik | Gereklidir | Açıklama |
+| --------- | -------- | ----------- |
+| Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
+| UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
+| Usermessageifınvalidcode | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
+
+### <a name="returning-error-message"></a>Hata iletisi döndürülüyor
+
+[Meta verilerde](#metadata)açıklandığı gibi, farklı hata durumları için kullanıcıya gösterilen hata iletisini özelleştirebilirsiniz. Yerel ayara önek olarak bu iletileri daha da yerelleştirebilirsiniz, örneğin:
+
+```XML
+<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
+```
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek `TechnicalProfile` bir kodu doğrulamak için kullanılır:
+
+```XML
+<TechnicalProfile Id="VerifyCode">
+    <DisplayName>Verify Code</DisplayName>
+    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Metadata>
+        <Item Key="Operation">VerifyCode</Item>
+        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
+        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
+    </Metadata>
+    <InputClaims>
+        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+    </InputClaims>
+</TechnicalProfile>
+```

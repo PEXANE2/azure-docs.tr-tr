@@ -11,16 +11,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4d3c74db9a0c4e13ee7c17eb78552d8c11cd7afb
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5669b606d7dc06483641c2bdd6ef27c82e75bf4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431871"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Veritabanı sunucuları için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 
-*Sanal ağ kuralları* , tek veritabanlarınıza yönelik veritabanı sunucusunun ve Azure [SQL veritabanı](sql-database-technical-overview.md) 'ndaki elastik havuzunuzun ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanlarınızın iletişim kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir Bu, sanal ağlardaki belirli alt ağlardan gönderilir. Bu makalede, Azure SQL veritabanınıza ve SQL veri ambarınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
+*Sanal ağ kuralları* , Azure [SQL veritabanı](sql-database-technical-overview.md) veya [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanları için veritabanı sunucusunun, sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen tek bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanınıza ve SQL veri ambarınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
 
 > [!IMPORTANT]
 > Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
@@ -110,7 +110,7 @@ Azure depolama, Azure depolama hesabınızla olan bağlantıyı sınırlandırma
 
 PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlandırırsanız, PolyBase 'den hesaba bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SQL veri ambarı ile hem PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 - Bu [Kılavuzu](https://docs.microsoft.com/powershell/azure/install-az-ps)kullanarak Azure PowerShell 'i yükler.
 - Genel amaçlı v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)kullanarak genel amaçlı v2 'ye yükseltmeniz gerekir.
@@ -158,15 +158,15 @@ PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yükleme
        > - Bu mekanizma, kapsamakta olan [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kullandığından Azure depolama erişim anahtarı ile gizli dizi belirtilmesi gerekmez.
        > - PolyBase bağlantısının VNet ile güvenli hale getirilmiş Azure Storage hesabıyla çalışması için KIMLIK adı **' yönetilen hizmet kimliği '** olmalıdır.
 
-   1. PolyBase kullanarak genel amaçlı v2 depolama hesabınıza bağlanmak için abfss://düzeniyle dış veri kaynağı oluşturun:
+   1. PolyBase kullanarak genel amaçlı v2 depolama hesabınıza bağlanmak için `abfss://` düzeniyle dış veri kaynağı oluşturun:
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
        ```
 
        > [!NOTE]
-       > - Genel amaçlı v1 veya blob depolama hesabıyla ilişkili dış tablolar zaten varsa, önce bu dış tabloları bırakmalısınız, ardından karşılık gelen dış veri kaynağını bırakmalısınız. Ardından, yukarıdaki gibi genel amaçlı v2 depolama hesabına bağlanan abfss://düzenine sahip dış veri kaynağı oluşturun ve bu yeni dış veri kaynağını kullanarak tüm dış tabloları yeniden oluşturun. Her türlü dış tablo için oluşturma komut dosyaları oluşturmak için [komut dosyaları oluşturma ve Yayımlama Sihirbazı 'nı](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) kullanabilirsiniz.
-       > - Abfss://şeması hakkında daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)bakın.
+       > - Genel amaçlı v1 veya blob depolama hesabıyla ilişkili dış tablolar zaten varsa, önce bu dış tabloları bırakmalısınız, ardından karşılık gelen dış veri kaynağını bırakmalısınız. Ardından, yukarıdaki gibi genel amaçlı v2 depolama hesabına bağlanan `abfss://` düzeniyle dış veri kaynağı oluşturun ve bu yeni dış veri kaynağını kullanarak tüm dış tabloları yeniden oluşturun. Her türlü dış tablo için oluşturma komut dosyaları oluşturmak için [komut dosyaları oluşturma ve Yayımlama Sihirbazı 'nı](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) kullanabilirsiniz.
+       > - `abfss://` şeması hakkında daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)bakın.
        > - Dış VERI kaynağı oluşturma hakkında daha fazla bilgi için bu [kılavuza](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)bakın.
 
    1. [Dış tablolar](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)kullanarak normal şekilde sorgulama.
@@ -224,7 +224,7 @@ Dahili olarak, SQL VNet eylemleri için PowerShell cmdlet 'leri REST API 'Leri �
 
 - [Sanal ağ kuralları: Işlemler][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *türü adıyla* etiketlenmiş bir alt ağa sahip olmanız gerekir.
 
@@ -235,9 +235,9 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure Portal][http-azure-portal-link-ref-477t]’ında oturum açın.
 
-2. Ardından portalda **SQL server** &gt; **güvenlik duvarı/sanal ağlar**'a gidin.
+2. **SQL Server 'lar**için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 
 3. **Azure hizmetleri denetimine erişime Izin ver** denetimini kapalı olarak ayarlayın.
 

@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9a91f81c9d28f1b3c8d553a2a8a26d53ff1b2b3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444484"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -24,11 +24,11 @@ ms.locfileid: "74869723"
 > * [Python](create-cluster-database-python.md)
 > * [Azure Resource Manager şablonu](create-cluster-database-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. 
 
-Bu makalede, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturacaksınız. Makalede nasıl tanımlamak için hangi kaynaklara dağıtılır ve parametrelerin nasıl dağıtıldığının ve dağıtım yürütülürken belirtilen gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](/azure/azure-resource-manager/resource-group-authoring-templates). Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. kusto kaynak türleri](/azure/templates/microsoft.kusto/allversions).
+Bu makalede, bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md)kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturacaksınız. Makalede nasıl tanımlamak için hangi kaynaklara dağıtılır ve parametrelerin nasıl dağıtıldığının ve dağıtım yürütülürken belirtilen gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](/azure/azure-resource-manager/resource-group-authoring-templates). Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. kusto kaynak türleri](/azure/templates/microsoft.kusto/allversions).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Küme ve veritabanı oluşturma için Azure Resource Manager şablonu
 

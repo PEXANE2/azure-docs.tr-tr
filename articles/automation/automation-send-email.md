@@ -2,19 +2,15 @@
 title: Azure Otomasyonu runbook 'tan e-posta gönderme
 description: Bir runbook içinden e-posta göndermek için SendGrid 'i nasıl kullanacağınızı öğrenin.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420701"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Öğretici: Azure Otomasyonu runbook 'tan e-posta gönderme
 
@@ -28,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * SendGrid API anahtarınızı Anahtar Kasası 'nda depolayın
 > * API anahtarınızı alıp bir e-posta gönderen bir runbook oluşturun
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 

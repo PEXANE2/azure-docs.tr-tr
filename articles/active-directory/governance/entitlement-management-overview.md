@@ -1,5 +1,5 @@
 ---
-title: Azure AD yetkilendirme yönetimi nedir? -Azure Active Directory
+title: Yetkilendirme yönetimi nedir? -Azure AD
 description: Azure Active Directory yetkilendirme yönetimine genel bakış ve bu bilgileri, iç ve dış kullanıcılar için gruplara, uygulamalara ve SharePoint Online sitelerine erişimi yönetmek üzere nasıl kullanabileceğinizi öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927310"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422568"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -118,12 +118,12 @@ Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için, aşağıdaki te
 | --- | --- |
 | erişim paketi | Bir ekibin veya projenin ihtiyaç duyacağı ve ilkelerle ilişkilendirilen kaynak demeti. Bir erişim paketi her zaman bir katalogda bulunur. Kullanıcıların erişim istemesi gereken bir senaryo için yeni bir erişim paketi oluşturacaksınız.  |
 | erişim isteği | Erişim paketindeki kaynaklara erişim isteği. İstek genellikle bir onay iş akışından geçer.  Onaylanırsa, isteyen Kullanıcı bir erişim paketi ataması alır. |
-| atanmış | Bir erişim paketinin bir kullanıcıya atanması, kullanıcının bu erişim paketinin tüm kaynak rollerine sahip olmasını sağlar.  Erişim paketi atamalarının genellikle süresi dolmadan önce bir zaman sınırı vardır. |
-| kataloglarını | İlgili kaynakların ve erişim paketlerinin kapsayıcısı.  Kataloglar, yönetici olmayan kullanıcılar kendi erişim paketlerini oluşturabilmesi için, yetkilendirme için kullanılır. Katalog sahipleri, kendilerine ait oldukları kaynakları bir kataloğa ekleyebilir. |
+| atama | Bir erişim paketinin bir kullanıcıya atanması, kullanıcının bu erişim paketinin tüm kaynak rollerine sahip olmasını sağlar.  Erişim paketi atamalarının genellikle süresi dolmadan önce bir zaman sınırı vardır. |
+| catalog | İlgili kaynakların ve erişim paketlerinin kapsayıcısı.  Kataloglar, yönetici olmayan kullanıcılar kendi erişim paketlerini oluşturabilmesi için, yetkilendirme için kullanılır. Katalog sahipleri, kendilerine ait oldukları kaynakları bir kataloğa ekleyebilir. |
 | Katalog Oluşturucu | Yeni kataloglar oluşturma yetkisine sahip kullanıcılar koleksiyonu.  Bir katalog Oluşturucu olarak yetkilendirilmiş yönetici olmayan bir Kullanıcı yeni bir katalog oluşturduğunda, otomatik olarak o kataloğun sahibi olur. |
 | bağlı kuruluş | İle ilişkiniz olan bir dış Azure AD dizini veya etki alanı. Bağlı bir kuruluştaki kullanıcılar, erişim istemesine izin verilen bir ilkede belirtilebilir. |
 | ilke | Kullanıcıların erişim alma, ne kadar süreceğine ve kullanıcıların bir atamaya göre ne kadar süreceğine ilişkin erişim yaşam döngüsünü tanımlayan bir kurallar kümesi. Bir ilke bir erişim paketine bağlıdır. Örneğin, bir erişim paketinde iki ilke olabilir. çalışanların erişim istemesi ve dış kullanıcıların erişim istemesi için ikinci bir saniye. |
-| Kaynak | Bir kullanıcının izin verilebir rolü olan Office grubu, güvenlik grubu, uygulama veya SharePoint Online sitesi gibi bir varlık. |
+| resource | Bir kullanıcının izin verilebir rolü olan Office grubu, güvenlik grubu, uygulama veya SharePoint Online sitesi gibi bir varlık. |
 | Kaynak dizini | Paylaşılacak bir veya daha fazla kaynağı olan bir dizin. |
 | Kaynak rolü | İle ilişkili ve bir kaynak tarafından tanımlanan izinler koleksiyonu. Grubun iki rolü vardır-üye ve sahip. SharePoint sitelerinde genellikle 3 rol vardır ancak ek özel roller olabilir. Uygulamalar özel rollere sahip olabilir. |
 
@@ -149,4 +149,4 @@ Kullanıcılarınıza lisansları atama hakkında daha fazla bilgi için, bkz. [
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
-- [Yaygın senaryolar](entitlement-management-scenarios.md)
+- [Genel senaryolar](entitlement-management-scenarios.md)

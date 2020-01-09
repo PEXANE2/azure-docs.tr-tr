@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401812"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Otomasyonu kaynaklarını bir yönetim çözümüne ekleme (Önizleme)
 > [!NOTE]
@@ -26,12 +26,12 @@ ms.locfileid: "72555249"
 > Bu makaledeki örneklerde, yönetim çözümlerinde gerekli veya ortak olan ve [Azure 'da bir yönetim çözümü tasarlama ve derleme]( solutions-creating.md) konularında açıklanan parametreleri ve değişkenleri kullanır 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makalede, aşağıdaki bilgiler hakkında bilgi sahibi olduğunuz varsayılır.
 
 - [Yönetim çözümü oluşturma]( solutions-creating.md).
 - Bir [çözüm dosyasının]( solutions-solution-file.md)yapısı.
-- [Kaynak Yöneticisi şablonlarını yazma](../../azure-resource-manager/resource-group-authoring-templates.md)
+- [Kaynak Yöneticisi şablonlarını yazma](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Otomasyon hesabı
 Azure Otomasyonu 'ndaki tüm kaynaklar bir [Otomasyon hesabında](../../automation/automation-security-overview.md#automation-account-overview)yer alır.  [Log Analytics çalışma alanı ve Otomasyon hesabı]( solutions.md#log-analytics-workspace-and-automation-account) ' nda açıklandığı gibi, Otomasyon hesabı yönetim çözümüne dahil değildir ancak çözüm yüklenmeden önce var olmalıdır.  Kullanılabilir değilse, çözüm yüklemesi başarısız olur.
@@ -107,7 +107,7 @@ Otomasyon işlerinin özellikleri aşağıdaki tabloda açıklanmıştır.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| 'unu |Başlatılacak runbook 'un adına sahip tek bir ad varlığı. |
+| runbook |Başlatılacak runbook 'un adına sahip tek bir ad varlığı. |
 | parametreler |Runbook 'un gerektirdiği her parametre değeri için varlık. |
 
 İş Runbook adı ve Runbook 'a gönderilecek parametre değerlerini içerir.  İş, runbook 'un işten önce oluşturulması gerektiğinden runbook 'un başladığı runbook ['a bağlı]( solutions-solution-file.md#resources) olmalıdır.  Başlatılması gereken birden çok runbook 'unuz varsa, bir işi, önce çalıştırılması gereken diğer işlere bağımlı olacak şekilde tanımlayabilirsiniz.
@@ -138,8 +138,8 @@ Sertifika kaynaklarının özellikleri aşağıdaki tabloda açıklanmıştır.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Base64value değeri |Sertifika için temel 64 değeri. |
-| #c0 |Sertifika için parmak izi. |
+| base64Value |Sertifika için temel 64 değeri. |
+| thumbprint |Sertifika için parmak izi. |
 
 
 
@@ -165,8 +165,8 @@ Kimlik bilgileri kaynaklarının özellikleri aşağıdaki tabloda açıklanmı�
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Nitelen |Kimlik bilgisinin Kullanıcı adı. |
-| password |Kimlik bilgileri için parola. |
+| userName adı |Kimlik bilgisinin Kullanıcı adı. |
+| parola |Kimlik bilgileri için parola. |
 
 
 ## <a name="schedules"></a>Zamanlamalar
@@ -195,8 +195,8 @@ Zamanlama kaynaklarının özellikleri aşağıdaki tabloda açıklanmıştır.
 |:--- |:--- |
 | açıklama |Zamanlama için isteğe bağlı açıklama. |
 | startTime |Bir zamanlamanın başlangıç saatini DateTime nesnesi olarak belirtir. Geçerli bir tarih saat değerine dönüştürülebiliyorsanız bir dize belirtilebilir. |
-| IsEnabled |Zamanlamanın etkinleştirilip etkinleştirilmeyeceğini belirtir. |
-| interval |Zamanlama için Aralık türü.<br><br>günündeki<br>saat |
+| isEnabled |Zamanlamanın etkinleştirilip etkinleştirilmeyeceğini belirtir. |
+| interval |Zamanlama için Aralık türü.<br><br>gün<br>saat |
 | frequency |Zamanlamanın gün veya saat sayısında tetiklenmesi gereken sıklık. |
 
 Zamanlamalar, geçerli zamandan daha büyük bir değere sahip bir başlangıç saatine sahip olmalıdır.  Ne zaman yükleneceğini bilmenin bir yolu olmadığından, bu değeri bir değişkenle birlikte belirtemezsiniz.
@@ -236,8 +236,8 @@ Bir çözümde kaynakları zamanlamayı kullanırken aşağıdaki iki stratejide
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Zamanlama adı |Zamanlamanın adına sahip tek bir **ad** varlığı. |
-| Runbook adı  |Runbook 'un adına sahip tek bir **ad** varlığı.  |
+| schedule name |Tek **name** planının adı olan varlık. |
+| runbook name  |Tek **name** runbook'un adı olan varlık.  |
 
 
 
@@ -264,7 +264,7 @@ Değişken kaynakların özellikleri aşağıdaki tabloda açıklanmıştır.
 | Özellik | Açıklama |
 |:--- |:--- |
 | açıklama | Değişken için isteğe bağlı açıklama. |
-| IsEncrypted | Değişkenin şifrelenmesi gerekip gerekmediğini belirtir. |
+| isEncrypted | Değişkenin şifrelenmesi gerekip gerekmediğini belirtir. |
 | type | Bu özelliğin şu anda hiçbir etkisi yoktur.  Değişkenin veri türü başlangıçtaki değere göre belirlenir. |
 | değer | Değişkenin değeri. |
 
@@ -275,10 +275,10 @@ Değişken için ilk değeri ayarlarsanız, doğru veri türü olarak yapıland�
 
 | Veri türü | Açıklama | Örnek | Çözümler |
 |:--|:--|:--|:--|
-| string   | Değeri çift tırnak içine alın.  | "\"Hello dünya \"" | "Merhaba Dünya" |
-| rakamlardan  | Tek tırnak ile sayısal değer.| "64" | 64 |
-| boole  | tırnak içinde **true** veya **false** .  Bu değerin küçük harf olması gerektiğini unutmayın. | değeri | doğru |
-| datetime | Serileştirilmiş tarih değeri.<br>Bu değeri belirli bir tarih için oluşturmak üzere PowerShell 'de ConvertTo-JSON cmdlet 'ini kullanabilirsiniz.<br>Örnek: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378) \\/" | 2017-05-24 13:14:57 |
+| string   | Değeri çift tırnak içine alın.  | "Merhaba Dünya\"\"" | "Merhaba Dünya" |
+| numeric  | Tek tırnak ile sayısal değer.| "64" | 64 |
+| boole  | **true** veya **false** tırnak içinde.  Bu değerin küçük harf olması gerektiğini unutmayın. | "true" | doğru |
+| datetime | Serileştirilmiş tarih değeri.<br>Bu değeri belirli bir tarih için oluşturmak üzere PowerShell 'de ConvertTo-JSON cmdlet 'ini kullanabilirsiniz.<br>Örnek: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modüller
 Yönetim çözümünüzün, her zaman Otomasyon hesabınızda kullanılabilir olacağı için Runbook 'larınız tarafından kullanılan [genel modülleri](../../automation/automation-integration-modules.md) tanımlamasına gerek yoktur.  Runbook 'larınız tarafından kullanılan başka bir modül için bir kaynak eklemeniz gerekir.

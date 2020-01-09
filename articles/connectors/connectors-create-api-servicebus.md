@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus ile Exchange iletileri
-description: Azure Logic Apps Azure Service Bus kullanarak ileti gönderme ve alma
+description: Azure Logic Apps Azure Service Bus kullanarak ileti gönderen ve alan otomatik görevler ve iş akışları oluşturun
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789418"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445889"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -41,7 +41,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions"></a>İzinleri denetle
+## <a name="check-permissions"></a>İzinleri denetleme
 
 Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu doğrulayın.
 

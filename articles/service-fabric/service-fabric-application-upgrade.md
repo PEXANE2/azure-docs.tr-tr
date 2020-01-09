@@ -1,25 +1,14 @@
 ---
-title: Uygulama yükseltmesini Service Fabric | Microsoft Docs
+title: Service Fabric uygulaması yükseltme
 description: Bu makalede, yükseltme modlarını seçme ve sistem durumu denetimleri gerçekleştirme dahil olmak üzere Service Fabric uygulamasını yükseltmeye yönelik bir giriş sunulmaktadır.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426766"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric uygulaması yükseltme
 Azure Service Fabric uygulaması, bir hizmet koleksiyonudur. Yükseltme sırasında, Service Fabric yeni [uygulama bildirimini](service-fabric-application-and-service-manifests.md) önceki sürümle karşılaştırır ve uygulamadaki hangi hizmetlerin güncelleştirme gerektirdiğini belirler. Service Fabric, hizmet bildirimlerinde sürüm numaralarını önceki sürümdeki sürüm numaralarıyla karşılaştırır. Bir hizmet değiştirilmemiştir, bu hizmet yükseltilmemiştir.
@@ -67,7 +56,7 @@ Bu nedenle Service Fabric, farklı uygulama örneklerinde **aynı bağlantı nok
 Https ile bir yükseltme başarısız görürseniz, "Windows HTTP sunucu API 'SI bir bağlantı noktasını paylaşan uygulamalar için birden çok sertifikayı desteklemez" hatası bildiren bir hata uyarısı.
 
 ## <a name="application-upgrade-flowchart"></a>Uygulama yükseltme akış çizelgesi
-Bu paragrafı izleyen akış çizelgesi, bir Service Fabric uygulamasının yükseltme işlemini anlamanıza yardımcı olabilir. Özellikle, akışta *Healthcheckstableduration*, *healthcheckretrytimeout*ve *upgradehealthcheckınterval*dahil olmak üzere, bir güncelleştirme etki alanında yükseltmenin başarılı olduğu kabul edildiğinde yardım denetiminin nasıl yapılacağı açıklanır. bir hata.
+Bu paragrafı izleyen akış çizelgesi, bir Service Fabric uygulamasının yükseltme işlemini anlamanıza yardımcı olabilir. Özellikle, akış, bir güncelleştirme etki alanında yükseltmenin başarılı veya başarısız olduğu kabul edildiğinde *Healthcheckstableduration*, *healthcheckretrytimeout*ve *upgradehealthcheckınterval*dahil olmak üzere zaman aşımlarını açıklar.
 
 ![Service Fabric bir uygulama için yükseltme işlemi][image]
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: e23bf7b3e111d9945ac3eaab942fa77ddba9d9ed
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b64b0f32b7e8d94115facf43646a5a030697d80f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444424"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Tablo depolamadan veri kopyalama
 
@@ -53,8 +53,8 @@ Hesap anahtarını kullanarak bir Azure depolama bağlı hizmeti oluşturabilirs
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Yes |
-| connectionString | ConnectionString özelliği için depolama alanına bağlanmak için gereken bilgileri belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
+| type | Type özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Evet |
+| connectionString | ConnectionString özelliği için depolama alanına bağlanmak için gereken bilgileri belirtin. <br/>Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Evet |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
@@ -68,10 +68,7 @@ Hesap anahtarını kullanarak bir Azure depolama bağlı hizmeti oluşturabilirs
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -89,10 +86,7 @@ Hesap anahtarını kullanarak bir Azure depolama bağlı hizmeti oluşturabilirs
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;"
-            },
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
             "accountKey": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -128,8 +122,8 @@ Paylaşılan erişim imzası kimlik doğrulamasını kullanmak için aşağıdak
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Yes |
-| sasUri | Tabloya paylaşılan erişim imzası URI 'sinin SAS URI 'sini belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, otomatik dönüşten yararlanmak ve belirteç bölümünü kaldırmak için Azure Key Vault SAS belirtecini de koyabilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| type | Type özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Evet |
+| sasUri | Tabloya paylaşılan erişim imzası URI 'sinin SAS URI 'sini belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, otomatik dönüşten yararlanmak ve belirteç bölümünü kaldırmak için Azure Key Vault SAS belirtecini de koyabilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel bir ağda yer alıyorsa) Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanının kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
@@ -199,8 +193,8 @@ Verileri Azure tablosuna kopyalamak için, veri kümesinin Type özelliğini **A
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği **AzureTable**olarak ayarlanmalıdır. |Yes |
-| tableName |Bağlı hizmetin başvurduğu tablo depolama veritabanı örneğindeki tablonun adı. |Yes |
+| type | Veri kümesinin Type özelliği **AzureTable**olarak ayarlanmalıdır. |Evet |
+| tableName |Bağlı hizmetin başvurduğu tablo depolama veritabanı örneğindeki tablonun adı. |Evet |
 
 **Örnek:**
 
@@ -239,7 +233,7 @@ Azure tablosundan veri kopyalamak için kopyalama etkinliğindeki kaynak türün
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği **AzureTableSource**olarak ayarlanmalıdır. |Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği **AzureTableSource**olarak ayarlanmalıdır. |Evet |
 | azureTableSourceQuery |Verileri okumak için özel tablo depolama sorgusunu kullanın. Aşağıdaki bölümdeki örneklere bakın. |Hayır |
 | azureTableSourceIgnoreTableNotFound |Tablonun özel durumunun mevcut olup olmayacağını gösterir.<br/>İzin verilen değerler **True** ve **False** (varsayılan). |Hayır |
 
@@ -265,7 +259,7 @@ Verileri Azure tablosuna kopyalamak için kopyalama etkinliğindeki havuz türü
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun Type özelliği **AzureTableSink**olarak ayarlanmalıdır. |Yes |
+| type | Kopyalama etkinliği havuzunun Type özelliği **AzureTableSink**olarak ayarlanmalıdır. |Evet |
 | azureTableDefaultPartitionKeyValue |Havuz tarafından kullanılabilen varsayılan bölüm anahtarı değeri. |Hayır |
 | azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, bölüm anahtarı olarak "AzureTableDefaultPartitionKeyValue" kullanılır. |Hayır |
 | azureTableRowKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmezse, her satır için bir GUID kullanın. |Hayır |
@@ -337,7 +331,7 @@ Verileri Azure tablosuna taşıdığınızda, Azure tablosu [tarafından tanıml
 | Azure Tablo veri türü | Veri Fabrikası geçici veri türü | Ayrıntılar |
 |:--- |:--- |:--- |
 | EDM.Binary |byte[] |64 KB 'a kadar olan bir bayt dizisi. |
-| Edm.Boolean |bool |Boolean değeri. |
+| Edm.Boolean |bool |Boole değeri. |
 | Edm.DateTime |Tarih Saat |Eşgüdümlü Evrensel Saat (UTC) olarak ifade edilen 64 bitlik bir değer. Desteklenen tarih saat aralığı gece yarısı başlar, 1 Ocak 1601 M.S. (C.E.), UTC. Aralık 31 Aralık 9999 ' de sona erer. |
 | Edm.Double |double |64 bitlik kayan nokta değeri. |
 | EDM.Guid |Guid |128 bitlik bir genel benzersiz tanımlayıcı. |

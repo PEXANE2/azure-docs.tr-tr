@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05696ae2fed31c267aa37013fac32db0916e24bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923135"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439312"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
 
@@ -35,7 +35,7 @@ Bu öğreticide, aşağıdaki görevleri yerine getirmeniz gerekir:
 > * Veri Kopyalama aracını kullanarak bir işlem hattı oluşturun.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**: BLOB depolama alanını _kaynak_ ve _Havuz_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) bölümündeki yönergelere bakın.
@@ -68,12 +68,12 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
     * **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin. 
          
-    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).
+    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).
 
 5. **Sürüm**altında **v2**' yi seçin.
 6. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanızın kullandığı veri depoları (örneğin, Azure depolama ve SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
 7. **Panoya sabitle**’yi seçin. 
-8. **Oluştur**'u seçin.
+8. **Oluştur**’u seçin.
 9. Panoda, işlem durumunu görmek için **dağıtma Data Factory** kutucuğuna bakın.
 
     ![Data Factory kutucuğu dağıtılıyor](media/tutorial-copy-data-tool/deploying-data-factory.png)

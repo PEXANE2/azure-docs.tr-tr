@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402039"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure 'da bir yönetim çözümü tasarlama ve oluşturma (Önizleme)
 > [!NOTE]
@@ -60,7 +60,7 @@ Daha sonra çözüm dosyanıza eklenmek üzere dışarı aktarabilebilmeniz içi
 
 
 ## <a name="create-solution-file"></a>Çözüm dosyası oluştur
-Çözümünüzün bir parçası olacak bileşenleri yapılandırdıktan ve test edildikten sonra [çözüm dosyanızı oluşturabilirsiniz]( solutions-solution-file.md).  Çözüm bileşenlerini, dosyadaki diğer kaynaklarla ilişkiler içeren bir [çözüm kaynağı]( solutions-solution-file.md#solution-resource) içeren bir [Kaynak Yöneticisi şablonunda](../../azure-resource-manager/resource-group-authoring-templates.md) uygulayacaksınız.  
+Çözümünüzün bir parçası olacak bileşenleri yapılandırdıktan ve test edildikten sonra [çözüm dosyanızı oluşturabilirsiniz]( solutions-solution-file.md).  Çözüm bileşenlerini, dosyadaki diğer kaynaklarla ilişkiler içeren bir [çözüm kaynağı]( solutions-solution-file.md#solution-resource) içeren bir [Kaynak Yöneticisi şablonunda](../../azure-resource-manager/templates/template-syntax.md) uygulayacaksınız.  
 
 
 ## <a name="test-your-solution"></a>Çözümünüzü test etme
@@ -76,5 +76,5 @@ Daha sonra çözüm dosyanıza eklenmek üzere dışarı aktarabilebilmeniz içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Yönetim çözümünüz için [bir çözüm dosyası oluşturmayı]( solutions-solution-file.md) öğrenin.
-* [Yazma Azure Resource Manager şablonlarının](../../azure-resource-manager/resource-group-authoring-templates.md)ayrıntılarını öğrenin.
+* [Yazma Azure Resource Manager şablonlarının](../../azure-resource-manager/templates/template-syntax.md)ayrıntılarını öğrenin.
 * Farklı Kaynak Yöneticisi şablonlarının örnekleri için [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/documentation/templates) arama yapın.

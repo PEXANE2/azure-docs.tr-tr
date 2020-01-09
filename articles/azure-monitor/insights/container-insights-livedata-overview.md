@@ -1,24 +1,14 @@
 ---
 title: Kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) görüntüleme | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404748"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
@@ -64,10 +54,10 @@ Gerçek zamanlı günlük verilerini **düğümler**, **denetleyiciler**ve **kap
 
 3. **Düğümler**, **denetleyiciler**veya **kapsayıcılar** sekmesinden birini seçin.
 
-4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.  
+4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı ve Azure ile kimlik doğrulamasını tamamlamak seçin.  
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları muhtemelen **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **işleri**ve  **Artık mevcut olmayan cron Işleri**, **pods**ve **kapsayıcılar** . `kubectl` ' de kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. `kubectl` ' de kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi, günlük verilerini sürekli bir akışta görüntüleyebileceğiniz performans verileri kılavuzunun altında görüntülenir. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir.  
 
@@ -77,7 +67,7 @@ Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını göst
 
 ## <a name="view-events"></a>Etkinlikleri görüntüleme
 
-Bir kapsayıcı, Pod, düğüm, ReplicaSet, DaemonSet, iş, CronJob ya da olduğunda, kapsayıcı motoru tarafından **düğümler**, **denetleyiciler**, **kapsayıcılar**ve **dağıtımlar (Önizleme)** görünümünden oluşturulan gerçek zamanlı olay verilerini görüntüleyebilirsiniz. Dağıtım seçildi. Olayları görüntülemek için aşağıdaki adımları gerçekleştirin.
+Bir kapsayıcı, Pod, Node, ReplicaSet, DaemonSet, Job, CronJob veya Deployment seçildiğinde, kapsayıcı motoru tarafından **düğümler**, **denetleyiciler**, **kapsayıcılar**ve **dağıtımlar (Önizleme)** görünümünden oluşturulan gerçek zamanlı olay verilerini görüntüleyebilirsiniz. Olayları görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 1. Azure portal, AKS kümesi kaynak grubuna gidin ve AKS kaynağınızı seçin.
 
@@ -85,10 +75,10 @@ Bir kapsayıcı, Pod, düğüm, ReplicaSet, DaemonSet, iş, CronJob ya da olduğ
 
 3. **Düğümler**, **denetleyiciler**, **kapsayıcılar**ya da **dağıtımlar (Önizleme)** sekmesini seçin.
 
-4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.  
+4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı ve Azure ile kimlik doğrulamasını tamamlamak seçin.  
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları muhtemelen **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **işleri**ve  **Artık mevcut olmayan cron Işleri**, **pods**ve **kapsayıcılar** . `kubectl` ' de kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. `kubectl` ' de kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi performans verileri kılavuzunun altında görüntülenir. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir. 
     
@@ -112,10 +102,10 @@ Gerçek zamanlı ölçüm verilerini, **düğüm** veya **denetleyiciler** gör�
 
 3. **Düğümler** ya da **denetleyiciler** sekmesini seçin.
 
-4. Performans kılavuzundan bir **Pod** nesnesi seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.  
+4. Performans kılavuzundan bir **Pod** nesnesi seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı ve Azure ile kimlik doğrulamasını tamamlamak seçin.  
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları muhtemelen **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **işleri**ve  **Artık mevcut olmayan cron Işleri**, **pods**ve **kapsayıcılar** . `kubectl` ' de kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. `kubectl` ' de kullanılamayan bir kapsayıcı için günlüklere arama girişimi de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.  
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi performans verileri kılavuzunun altında görüntülenir. Ölçüm verileri alınır ve iki grafikte sunum için konsolunuza akışa başlar. Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını gösterir.
 
@@ -123,6 +113,6 @@ Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Izleyici 'yi kullanmayı ve AKS kümenizin diğer yönlerini izlemeyi öğrenmeye devam etmek için bkz. [Azure Kubernetes hizmet durumunu görüntüleme](container-insights-analyze.md).
+- Azure İzleyici ve diğer yönleri AKS kümenizi izlemek öğrenme devam etmek için bkz: [görünümü Azure Kubernetes hizmeti sistem durumu](container-insights-analyze.md).
 
 - Önceden tanımlanmış sorguları ve uyarı oluşturma, görselleştirmeler oluşturmak veya kümelerinizde daha fazla analiz yapmak için örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.

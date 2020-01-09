@@ -1,87 +1,85 @@
 ---
-title: Veri odaklı Azure Stream Analytics'te hata ayıklama
-description: Bu makalede, Azure Stream Analytics işinizi Azure portalında iş diyagramı ve ölçümleri kullanarak sorun giderme açıklar.
-services: stream-analytics
+title: Azure Stream Analytics veri odaklı hata ayıklama
+description: Bu makalede, Azure portal iş diyagramını ve ölçümleri kullanarak Azure Stream Analytics işinizin nasıl giderileceği açıklanmaktadır.
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426067"
 ---
-# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Veri odaklı iş diyagramı kullanarak hata ayıklama
+# <a name="data-driven-debugging-by-using-the-job-diagram"></a>İş diyagramını kullanarak veri odaklı hata ayıklama
 
-İş diyagramı üzerinde **izleme** Azure portalındaki dikey penceresinde, işlem hattınızı görselleştirmenize yardımcı olabilir. Girişleri, çıkışları ve sorgu adımlarını gösterir. İş diyagramını kullanarak her adımda ölçümleri inceleyebilir, sorunları giderirken sorunun kaynağını daha hızlı yalıtabilirsiniz.
+Azure portal **izleme** dikey penceresindeki iş diyagramı, iş işlem hattınızı görselleştirmenize yardımcı olabilir. Girişleri, çıkışları ve sorgu adımlarını gösterir. İş diyagramını kullanarak her adımda ölçümleri inceleyebilir, sorunları giderirken sorunun kaynağını daha hızlı yalıtabilirsiniz.
 
-## <a name="using-the-job-diagram"></a>İş diyagramı kullanma
+## <a name="using-the-job-diagram"></a>İş diyagramını kullanma
 
-Azure portalında bir Stream Analytics işinde altında çalışırken **destek + sorun giderme**seçin **iş diyagramı**:
+Azure portal, bir Stream Analytics işinde, **destek + sorun giderme**altında **iş diyagramı**' nı seçin:
 
-![İş diyagramı ölçümlerle - konum](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
+![Ölçüm-konum ile iş diyagramı](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
-İlgili bölüm düzenleme bölmesi bir sorgu görmek için her bir sorgu adımına seçin. Bu adım için bir ölçüm grafiği, bir alt bölmede sayfasında görüntülenir.
+Sorgu düzenlemesi bölmesinde ilgili bölümü görmek için her bir sorgu adımını seçin. Adım için bir ölçüm grafiği, sayfada alt bölmede görüntülenir.
 
-![İş diyagramı ölçümlerle - temel iş](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
+![Ölçümler ile iş diyagramı-temel iş](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Azure Event Hubs'a giriş bölümünü görmek için seçin **...** Bir bağlam menüsü görüntülenir. Giriş birleşme de görebilirsiniz.
+Azure Event Hubs girişi bölümlerini görmek için... seçeneğini belirleyin **.** Bağlam menüsü görüntülenir. Ayrıca, giriş merkli öğesini de görebilirsiniz.
 
-![İş diyagramı - ölçümlerle bölümü genişletin](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
+![Ölçümler ile iş diyagramı-bölümü Genişlet](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
-Yalnızca tek bir bölüm için ölçüm grafiğini görmek için ve bölüm düğümünü seçin. Ölçümler, sayfanın en altında gösterilir.
+Ölçüm grafiğini yalnızca tek bir bölüm için görmek üzere bölüm düğümünü seçin. Ölçümler sayfanın alt kısmında gösterilir.
 
-![İş diyagramı ölçümlerle - ölçüm daha](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
+![Ölçümler ile iş diyagramı-daha fazla ölçüm](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
 
-Ölçüm grafiği birleşmesi için görmek için birleşme düğümü seçin. Aşağıdaki grafik, olay bırakılan veya ayarlanmış olduğunu gösterir.
+Birleşme için ölçüm grafiğini görmek için birleşme düğümünü seçin. Aşağıdaki grafikte hiçbir olayın bırakılmadığı veya ayarlandığı gösterilmektedir.
 
-![İş diyagramı - ölçümlerle kılavuz](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
+![Ölçümler ile iş diyagramı-kılavuz](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
 
-Ölçüm değeri ve saati ayrıntıları görmek için grafiğe gelin.
+Ölçüm değeri ve saatinin ayrıntılarını görmek için grafiğin üzerine gelin.
 
-![Diyagram ölçümlerle proje - getirin](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
+![Ölçümler ile iş diyagramı-üzerine gelme](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
 
 ## <a name="troubleshoot-by-using-metrics"></a>Ölçümleri kullanarak sorun giderme
 
-**QueryLastProcessedTime** ölçüm, belirli bir adıma veri alındığında gösterir. Topoloji bakarak hangi adımın veri almadığını görmek için çıkış işlemciden geriye doğru çalışabilir. Bir adım veri almıyorsa hemen önce bir sorgu adımına gidin. Önceki bir sorgu adımına bir zaman penceresi olup olmadığı ve yeterli süre için çıktı verilerini geçti, denetleyin. (Windows saate tutturulduğunu unutmayın bundan.)
+**Querylastprocessedtime** ölçümü, belirli bir adımın veri aldığını gösterir. Topolojiyi inceleyerek, hangi adımın veri almadığını görmek için çıkış işlemcisinden geriye gidebilirsiniz. Bir adım veri almıyorsanız, hemen önceki sorgu adımına gidin. Yukarıdaki sorgu adımında bir zaman penceresi olup olmadığını ve veri çıkışı için yeterince zaman geçtiğini denetleyin. (Zaman pencerelerinin saate götürüldiğini unutmayın.)
  
-Önceki bir sorgu adımına bir giriş işleyicisiyse, giriş ölçümlerini yanıtlanmasına yardımcı olması için aşağıdaki hedeflenen soruların kullanın. Bunlar, bir işi giriş kaynaklarından veri alma olup olmadığını belirlemenize yardımcı olabilir. Sorgu bölümlendirilmişse her bir bölümü inceleyin.
+Yukarıdaki sorgu adımı bir giriş işlemcisidir, aşağıdaki hedeflenen soruların yanıtlanmasına yardımcı olması için giriş ölçümlerini kullanın. Bu kişiler, bir işin giriş kaynaklarından veri alma olup olmadığını belirlemenize yardımcı olabilirler. Sorgu bölümlendirilmişse her bir bölümü inceleyin.
  
-### <a name="how-much-data-is-being-read"></a>Ne kadar veri okunuyor?
+### <a name="how-much-data-is-being-read"></a>Ne kadar veri okunmakta?
 
-*   **Inputeventssourcestotal** okuma veri birimlerinin sayısı. Örneğin, BLOB sayısı.
-*   **Inputeventstotal** okunan olay sayısıdır. Bu ölçüm her bölüm için kullanılabilir.
-*   **Inputeventsınbytestotal** okunan bayt sayısı.
-*   **Inputeventslastarrivaltime** alınan her olayın sıraya zamanıyla güncelleştirilir.
+*   **Inputeventssourcestotal** , okunan veri birimlerinin sayısıdır. Örneğin, Blobların sayısı.
+*   **Inputeventstotal** , okunan olay sayısıdır. Bu ölçüm her bölüm için kullanılabilir.
+*   **Inputeventsinbytestotal** , okunan bayt sayısıdır.
+*   **Inputeventslastarrivaltime** , alınan her olayın sıraya alınma zamanına göre güncelleştirilir.
  
-### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Zaman İlerliyor? Gerçek olaylar okunuyorsa noktalama işaretleri verilmeyebilir.
+### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Zaman ileri taşınıyor mı? Gerçek olaylar okunmışsa, noktalama yayımlanmayabilir.
 
-*   **InputEventsLastPunctuationTime**, zamanın ilerlemesini sağlamak için bir noktalama işaretinin ne zaman verildiğini gösterir. Noktalama işaretleri yazılmazsa veri akışı engellenebilir.
+*   **InputEventsLastPunctuationTime**, zamanın ilerlemesini sağlamak için bir noktalama işaretinin ne zaman verildiğini gösterir. Noktalama işareti verilmemişse, veri akışı engellenebilir.
  
-### <a name="are-there-any-errors-in-the-input"></a>Giriş hataları vardır?
+### <a name="are-there-any-errors-in-the-input"></a>Girişte herhangi bir hata var mı?
 
-*   **Inputeventseventdatanulltotal** null veriler içeren olayların sayısı.
-*   **Inputeventsserializererrorstotal** doğru serisi kaldırılamadı olayların sayısı.
-*   **Inputeventsdegradedtotal** seri durumdan çıkarma dışında bir sorun içeren olayların sayısı.
+*   **Inputeventseventdadtanulltotal** , null veri içeren bir olay sayısıdır.
+*   **Inputeventsserializererrorstotal** , doğru bir şekilde seri durumdan çıkarılamıyor bir olay sayısıdır.
+*   **Inputeventsdüşürüldedtotal** , seri durumdan çıkarma dışında bir sorunu olan olay sayısıdır.
  
-### <a name="are-events-being-dropped-or-adjusted"></a>Olayları bırakılmış veya ayarlanmış misiniz?
+### <a name="are-events-being-dropped-or-adjusted"></a>Olaylar bırakılıyor veya düzeltildi mi?
 
-*   **Inputeventsearlytotal** bir uygulama zaman üst eşik olan olay sayısıdır.
-*   **Inputeventslatetotal** sonra üst eşik olan bir uygulama zaman olay sayısıdır.
-*   **Inputeventsdroppedbeforeapplicationstarttimetotal** işi başlatmadan önce zaman bırakılan olay sayısını olduğu.
+*   **Inputeventsearlytotal** , yüksek filigrandan önce bir uygulama zaman damgasına sahip olan olay sayısıdır.
+*   **Inputeventslatetotal** , yüksek filigrandan sonra uygulama zaman damgasına sahip olan olay sayısıdır.
+*   **Inputeventsdroppedbeforeapplicationstarttimetotal** , iş başlangıç zamanından önce bırakılan olay sayısıdır.
  
-### <a name="are-we-falling-behind-in-reading-data"></a>Biz verilerin okunmasını geride kalan?
+### <a name="are-we-falling-behind-in-reading-data"></a>Verileri okurken geride düşeceğiz mı?
 
-*   **Giriş olayları (toplam) biriktirme listesindeki** kaç tane daha fazla ileti için Event Hubs ve Azure IOT hub'ı girişler okunması gerektiğini bildirir. Bu sayı 0'dan büyük olduğunda, iş verilerini ulaştığı andan işleyemez anlamına gelir. Bu durumda akış birimi sayısını artırın ve/veya iş paralel hale emin gerekebilir. Bunun hakkında daha fazla bilgi görebilirsiniz [sorgu paralelleştirme sayfası](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
+*   **Biriktirme listesindeki giriş olayları (Toplam)** Event Hubs ve Azure IoT Hub girişleri için kaç tane daha fazla ileti okunması gerektiğini söyler. Bu sayı 0 ' dan büyükse, işinizin verileri geldiği kadar hızlı işleyemediği anlamına gelir. Bu durumda, akış birimlerinin sayısını artırmanız ve/veya işinizin paralelleştirilmesine emin olmanız gerekebilir. [Sorgu paralelleştirme sayfasında](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)bu konuda daha fazla bilgi görebilirsiniz. 
 
 
 ## <a name="get-help"></a>Yardım alın
-Ek Yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+Ek Yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Stream analytics'e giriş](stream-analytics-introduction.md)

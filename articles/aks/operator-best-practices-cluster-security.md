@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019303"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442914"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Küme güvenliği ve yükseltmeler Azure Kubernetes Service (AKS) için en iyi uygulamalar
 
@@ -27,6 +27,8 @@ Bu makalede, AKS kümenizin güvenliğini sağlama konusunda odaklanır. Aşağ�
 > * Düğümleri güncelleştirme güncel tutulmasını ve güvenlik düzeltme eklerini otomatik olarak Uygula
 
 Ayrıca, [kapsayıcı görüntüsü yönetimi][best-practices-container-image-management] ve [Pod güvenliği][best-practices-pod-security]için en iyi yöntemleri okuyabilirsiniz.
+
+Tehditleri algılamaya ve AKS kümelerinizi korumaya yönelik önerileri görüntülemenize yardımcı olması için [Güvenlik Merkezi Ile Azure Kubernetes Hizmetleri tümleştirmesini][security-center-aks] da kullanabilirsiniz.
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>API sunucu ile küme düğümleri erişimin güvenliğini sağlama
 
@@ -235,3 +237,4 @@ Bu makalede, AKS kümenizin güvenliğini sağlama konusunda odaklanır. Bu alan
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
+[security-center-aks]: /azure/security-center/azure-kubernetes-service-integration

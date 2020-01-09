@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/25/2019
-ms.openlocfilehash: cd3a069eb24b6390629cfaf9a4f19f47e8978d8a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f5203de43a3d12c40e6cb5bbb33547769f5824c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440771"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL için Azure veritabanı 'na veri kopyalama
 
@@ -47,8 +47,8 @@ MySQL için Azure veritabanı bağlantılı hizmeti için aşağıdaki özellikl
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AzureMySql** olarak ayarlanmalıdır | Yes |
-| connectionString | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, Azure Key Vault parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| type | Type özelliği: **AzureMySql** olarak ayarlanmalıdır | Evet |
+| connectionString | MySQL için Azure veritabanı örneğine bağlanmak için gereken bilgileri belirtin. <br/> Ayrıca, Azure Key Vault parola yerleştirebilir ve `password` yapılandırmasını bağlantı dizesinden dışarı çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel ağında bulunuyorsa), Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 Bir bağlantı dizesi olan `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Daha fazla özellik durumunuz ayarlayabilirsiniz:
@@ -66,10 +66,7 @@ Bir bağlantı dizesi olan `Server=<server>.mysql.database.azure.com;Port=<port>
     "properties": {
         "type": "AzureMySql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
-            }
+            "connectionString": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -87,10 +84,7 @@ Bir bağlantı dizesi olan `Server=<server>.mysql.database.azure.com;Port=<port>
     "properties": {
         "type": "AzureMySql",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -116,7 +110,7 @@ MySQL için Azure veritabanı 'ndan veri kopyalamak için veri kümesinin Type �
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **AzureMySqlTable** olarak ayarlanmalıdır | Yes |
+| type | DataSet 'in Type özelliği: **AzureMySqlTable** olarak ayarlanmalıdır | Evet |
 | tableName | MySQL veritabanındaki tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
 
 **Örnek**
@@ -147,7 +141,7 @@ MySQL için Azure veritabanı 'ndan veri kopyalamak için, etkinlik **kaynağın
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureMySqlSource** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureMySqlSource** olarak ayarlanmalıdır | Evet |
 | sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
 | queryCommandTimeout | Sorgu isteğinin zaman aşımına uğramadan önce beklenecek bekleme süresi. Varsayılan değer 120 dakikadır (02:00:00) | Hayır |
 
@@ -189,7 +183,7 @@ MySQL için Azure veritabanı 'na veri kopyalamak için aşağıdaki özellikler
 
 | Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun Type özelliği: **AzureMySqlSink** olarak ayarlanmalıdır | Yes |
+| type | Kopyalama etkinliği havuzunun Type özelliği: **AzureMySqlSink** olarak ayarlanmalıdır | Evet |
 | preCopyScript | Her çalıştırmada MySQL için Azure veritabanı 'na veri yazmadan önce yürütülecek kopyalama etkinliği için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |
 | writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında, MySQL için Azure veritabanı tablosuna veri ekler.<br>İzin verilen değer, satır sayısını temsil eden bir tamsayıdır. | Hayır (varsayılan değer 10.000) |
 | writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br>İzin verilen değerler TimeSpan. Örnek olarak 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30) |

@@ -1,25 +1,25 @@
 ---
-title: .NET Core uygulamalarıyla redin için Azure önbelleğini nasıl kullanacağınızı öğrenmek için hızlı başlangıç
+title: 'Hızlı başlangıç: .NET Core uygulamalarıyla Redsıs için Azure önbelleğini kullanma'
 description: Bu hızlı başlangıçta, .NET Core uygulamalarınızda Redsıs için Azure önbelleğine nasıl erişebileceğinizi öğrenin
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.devlang: dotnet
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: ce50ecac9a7b676386ce893a19391a63ffeed108
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413048"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Hızlı başlangıç: .NET Core uygulaması ile Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Core uygulamasına dahil edersiniz. Özel olarak, .NET Core konsol uygulamasındaki C# kodla [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -50,7 +50,7 @@ Komut pencerenizde yeni *Redistest* proje dizinine geçin.
 
 Bu bölümde, projenize [Gizli Dizi Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje ağacınızın dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur.
 
-*Redistest.csproj* dosyanızı açın. `DotNetCliToolReference`Microsoft.Extensions.SecretManager.Tools*öğesini dahil etmek için bir* öğesi ekleyin. Ayrıca, aşağıda gösterildiği gibi bir `UserSecretsId` öğesi ekleyin ve dosyayı kaydedin.
+*Redistest.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca, aşağıda gösterildiği gibi bir `UserSecretsId` öğesi ekleyin ve dosyayı kaydedin.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -90,7 +90,7 @@ Aşağıdaki `using` deyimini *Program.cs* dosyasına ekleyin:
 using Microsoft.Extensions.Configuration;
 ```
 
-Aşağıdaki üyeleri, `Program`Program.cs*dosyasında* sınıfına ekleyin. Bu kod, Redsıs bağlantı dizesinin Azure önbelleği için kullanıcı gizliliğine erişmek üzere bir yapılandırmayı başlatır.
+Aşağıdaki üyeleri, *Program.cs* dosyasında `Program` sınıfına ekleyin. Bu kod, Redsıs bağlantı dizesinin Azure önbelleği için kullanıcı gizliliğine erişmek üzere bir yapılandırmayı başlatır.
 
 ```csharp
         private static IConfigurationRoot Configuration { get; set; }
@@ -152,7 +152,7 @@ Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu ya
 
 ## <a name="executing-cache-commands"></a>Önbellek komutlarını yürütme
 
-*Program.cs* dosyasında, konsol uygulamanıza yönelik `Main` sınıfının `Program` yordamı için aşağıdaki kodu ekleyin:
+*Program.cs* dosyasında, konsol uygulamanıza yönelik `Program` sınıfının `Main` yordamı için aşağıdaki kodu ekleyin:
 
 ```csharp
         static void Main(string[] args)
@@ -222,7 +222,7 @@ Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu ku
 
 Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önbelleğe alabilir, ancak bir .NET nesnesi önbelleğe alınmadan önce serileştirilmelidir. Bu .NET nesne serileştirmesi uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye seri hale getirici tercihinde esneklik sağlar.
 
-Nesneleri seri hale getirmenin basit bir yolu, `JsonConvert`Newtonsoft.Json[’da ](https://www.nuget.org/packages/Newtonsoft.Json/) seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
+Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
 *Newtonsoft.json* paketini uygulamaya eklemek için aşağıdaki komutu yürütün:
 
@@ -254,7 +254,7 @@ Aşağıdaki `Employee` sınıf tanımını *Program.cs* dosyasına ekleyin:
         }
 ```
 
-`Main()`Program.cs*dosyasındaki* yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
+*Program.cs* dosyasındaki `Main()` yordamının alt kısmına ve `Dispose()` için çağrı yapılmadan önce aşağıdaki kod satırlarını önbelleğe ekleyin ve seri hale getirilmiş bir .NET nesnesi alın:
 
 ```csharp
             // Store .NET object to cache

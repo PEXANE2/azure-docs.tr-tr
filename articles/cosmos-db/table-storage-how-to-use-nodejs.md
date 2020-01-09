@@ -1,6 +1,6 @@
 ---
-title: Azure tablo depolama veya Azure Cosmos DB tablo API'si node.js kullanma
-description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
+title: Node. js ' den Azure Tablo depolama veya Azure Cosmos DB Tablo API'si kullanma
+description: Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanarak bulutta yapılandırılmış verileri depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441199"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created`, yeni bir tablo oluşturulursa `true`, tablo zaten mevcutsa `false` olur. `response`, istekle ilgili bilgileri içerir.
 
 ### <a name="filters"></a>Filtreler
-**TableService** kullanarak gerçekleştirilen işlemlere isteğe bağlı filtreleme uygulayabilirsiniz. Filtreleme işlemleri, günlük kaydı, otomatik yeniden deneme vb. içerebilir. Filtreler, imza ile bir yöntem uygulayan nesnelerdir:
+**TableService** kullanarak gerçekleştirilen işlemlere isteğe bağlı filtreleme uygulayabilirsiniz. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden denemeler vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript
 function handle (requestOptions, next)
@@ -264,7 +264,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 
 Bu işlem tamamlandıktan sonra `result`, varlığı içerir.
 
-## <a name="query-a-set-of-entities"></a>Varlık kümesini sorgulama
+## <a name="query-a-set-of-entities"></a>Varlık kümesi sorgulama
 Bir tabloyu sorgulamak için, **TableQuery** nesnesini kullanarak aşağıdaki yan tümceleri kullanıp bir sorgu ifadesi oluşturun:
 
 * **select**: Sorgudan döndürülecek alanlar.
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 `continuationToken` nesnesini incelerseniz, tüm sonuçlar arasında yineleme yapmak için kullanılabilecek `nextPartitionKey`, `nextRowKey` ve `targetLocation` gibi özellikleri bulursunuz.
 
-Ayrıca, sayfa boyutunu `top` ayarlamak için `continuationToken` ile birlikte kullanabilirsiniz. 
+Sayfa boyutunu ayarlamak için `continuationToken` ile birlikte `top` de kullanabilirsiniz. 
 
 ## <a name="work-with-shared-access-signatures"></a>Paylaşılan erişim imzaları ile çalışma
 Paylaşılan erişim imzaları (SAS), Depolama hesabı adınızı veya anahtarlarınızı sağlamadan tablolara ayrıntılı erişim sağlamanın güvenli bir yoludur. SAS çoğu zaman verilerinize sınırlı erişim sağlamak (örneğin, bir mobil uygulamanın kayıtları sorgulamasına izin verme) için kullanılır.

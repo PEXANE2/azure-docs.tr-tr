@@ -1,22 +1,22 @@
 ---
 title: Kullanım Azure Cosmos DB değişiklik akışı, gerçek zamanlı veri analizi görselleştirmek için
-description: Değişiklik akışı bir perakende şirketi tarafından nasıl kullanılabileceğini kullanıcı desenlerini öğrenir, gerçek zamanlı veri analizi ve görselleştirme gerçekleştirmek için bu makalede açıklanır.
+description: Bu makalede, Kullanıcı düzenlerini anlamak, gerçek zamanlı veri analizi ve görselleştirme gerçekleştirmek için bir perakende şirketi tarafından değişiklik akışını nasıl kullanabileceğiniz açıklanır
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442063"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Kullanım Azure Cosmos DB değişiklik akışı, gerçek zamanlı veri analizi görselleştirmek için
 
-Azure Cosmos DB değişiklik akışı, bu kayıtlar oluşturulduğu veya değiştirildiği için Azure Cosmos kapsayıcısından sürekli ve artımlı bir kayıt akışı almanın bir mekanizmadır. Değişiklik, herhangi bir değişiklik kapsayıcıya dinleyerek destek works akış. Ardından, değiştirilmiş olan sırayla değiştirilen belgelerin sıralanmış listesini çıkarır. Değişiklik akışı hakkında daha fazla bilgi için bkz: [değişiklik akışı ile çalışma](change-feed.md) makalesi. 
+Azure Cosmos DB değişiklik akışı, bu kayıtlar oluşturulduğu veya değiştirildiği için Azure Cosmos kapsayıcısından sürekli ve artımlı bir kayıt akışı almanın bir mekanizmadır. Değişiklik, herhangi bir değişiklik kapsayıcıya dinleyerek destek works akış. Ardından çıkış olarak, değiştirilen belgelerin değiştirilme zamanına göre sıralandığı bir belge listesi oluşturur. Değişiklik akışı hakkında daha fazla bilgi için bkz: [değişiklik akışı ile çalışma](change-feed.md) makalesi. 
 
 Değişiklik akışı bir e-ticaret şirket tarafından nasıl kullanılabileceğini kullanıcı desenlerini öğrenir, gerçek zamanlı veri analizi ve görselleştirme gerçekleştirmek için bu makalede açıklanır. Bir kullanıcı bir öğeyi görüntüleme, kendi sepetine öğe ekleme veya bir öğe satın alma gibi olayları analiz eder. Bu olaylardan biri oluştuğunda, yeni bir kayıt oluşturulur ve kayıt günlükleri değişiklik akışı. Değişiklik, ardından bir dizi adım etkinlik ve şirket performansı analiz ölçümleri görselleştirmede kaynaklanan Tetikleyicileri akış. Gelir, benzersiz bir site ziyaretçilerinin, en popüler öğeleri görselleştirebilir miyim örnek ölçümler içerir ve karşı bir sepet karşı eklenen görüntülenen öğelerin ortalama fiyat satın. Bu örnek ölçümler, site popüler değerlendirmek, reklam ve fiyatlandırma stratejilerini geliştirin ve yatırım yapmaya hangi envanteri ile ilgili kararlar bir e-ticaret şirket yardımcı olabilir.
 
@@ -30,7 +30,7 @@ Aşağıdaki diyagramda, veri akışı ve çözümde ilgili bileşenleri temsil 
 
 ![Proje visual](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Veri oluşturma:** Veri simülatörü, bir kullanıcının bir öğeyi görüntüleme, sepetine bir öğe ekleme ve bir öğe satın alma gibi olayları temsil eden perakende verileri oluşturmak için kullanılır. Veri oluşturucuyu kullanarak büyük örnek veri kümesi oluşturabilirsiniz. Oluşturulan örnek veriler, aşağıdaki biçimde belgeleri içerir:
+1. **Veri oluşturma:** veri simülatörü, bir kullanıcı bir öğeyi görüntüleme, kendi sepetine öğe ekleme ve bir öğe satın alma gibi olayları temsil eden perakende verilerini oluşturmak için kullanılır. Veri oluşturucuyu kullanarak büyük örnek veri kümesi oluşturabilirsiniz. Oluşturulan örnek veriler, aşağıdaki biçimde belgeleri içerir:
    
    ```json
    {      
@@ -45,15 +45,15 @@ Aşağıdaki diyagramda, veri akışı ve çözümde ilgili bileşenleri temsil 
 
 3. **Değişiklik akışı:** Değişiklik akışı, Azure Cosmos kapsayıcısındaki değişiklikleri dinler. Her seferinde yeni bir belge (yani gibi bir öğe görüntüleyen bir kullanıcı bir olay meydana geldiğinde bunların sepetine öğe ekleme veya bir öğe satın alma) koleksiyona eklendiğinde, değişiklik akışı tetikleyen bir [Azure işlevi](../azure-functions/functions-overview.md).  
 
-4. **Azure Işlevi:** Azure Işlevi, yeni verileri işler ve bunu bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-about.md)gönderir.  
+4. **Azure işlevi:** Azure işlevi yeni verileri işler ve bu kümeye gönderen bir [Azure olay hub'ı](../event-hubs/event-hubs-about.md).  
 
-5. **Olay Hub 'ı:** Azure Olay Hub 'ı bu olayları depolar ve daha fazla analiz yapmak için bunları [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) gönderir.  
+5. **Olay hub'ı:** Azure olay hub'ı bu olayları depolar ve onlara gönderir [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) başka analizler yapmak için.  
 
 6. **Azure Stream Analytics:** Azure Stream Analytics olayları işlemek ve gerçek zamanlı veri analizi gerçekleştirmek için sorguları tanımlar. Bu veriler daha sonra gönderilir [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Power BI:** Power BI, Azure Stream Analytics tarafından gönderilen verileri görselleştirmek için kullanılır. Ölçümleri gerçek zamanlı olarak nasıl değiştiğini görmek için bir Pano oluşturabilirsiniz.  
+7. **Power BI:** Azure Stream Analytics tarafından gönderilen verileri görselleştirmek için Power BI kullanılır. Ölçümleri gerçek zamanlı olarak nasıl değiştiğini görmek için bir Pano oluşturabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Microsoft .NET Framework 4.7.1 veya üzeri
 
@@ -165,7 +165,7 @@ Görmek için nasıl değişiklik akışı bir e-ticaret sitesinde yeni eylemler
 
 1. Dosya Gezgini'nde depoyu geri gidin ve sağ tıklayarak **ChangeFeedFunction.sln** tekrar yeni bir Visual Studio penceresi açın.  
 
-2. **App. config** dosyasına gidin. Bloğu içinde, daha önce aldığınız Azure Cosmos DB hesabınızın uç noktasını ve benzersiz **birincil anahtarını** ekleyin. `<appSettings>`  
+2. **App. config** dosyasına gidin. `<appSettings>` bloğu içinde, daha önce aldığınız Azure Cosmos DB hesabınızın uç noktasını ve benzersiz **BIRINCIL anahtarını** ekleyin.  
 
 3. Ekleme **koleksiyon** ve **veritabanı** adları. (Bu adlar olmalıdır **changefeedlabcollection** ve **changefeedlabdatabase** sizinki farklı ad seçmediğiniz sürece.)
 
@@ -236,7 +236,7 @@ Azure Stream Analytics, akış verilerini gerçek zamanlı işleme için bir tam
 
 11. Şimdi geri dönüp **streamjob1** seçip **Başlat** sayfanın üstünde düğme. Azure Stream Analytics başlatılması birkaç dakika sürebilir, ancak bunu "Başlangıç" öğesinden "Çalışıyor" değiştirmek sonunda görürsünüz.
 
-## <a name="connect-to-power-bi"></a>Power BI'a Bağlan
+## <a name="connect-to-power-bi"></a>Power BI'a bağlanma
 
 Power BI, verileri analiz edip öngörü paylaşmaya yönelik İş analizi araçları paketidir. Analiz edilen verileri ne stratejik görselleştirebilirsiniz, harika bir örnektir.
 
@@ -250,7 +250,7 @@ Power BI, verileri analiz edip öngörü paylaşmaya yönelik İş analizi araç
  
 5. Seçin **averagePrice** gelen **bilgisayarınızı veri KÜMELERİ**, ardından **sonraki**.  
 
-6. İçinde **görselleştirme türünü** alan öğesini **kümelenmiş çubuk grafik** aşağı açılan menüden. Altında **eksen**, eylem ekleme. Skip **gösterge** eklemeden herhangi bir şey. Ardından, sonraki bölümde hükme adlı **değer**, ekleme **ortalama**. Seçin **sonraki**, grafik başlık ve seçin **Uygula**. Panonuza yeni bir grafik görmeniz gerekir!  
+6. İçinde **görselleştirme türünü** alan öğesini **kümelenmiş çubuk grafik** aşağı açılan menüden. Altında **eksen**, eylem ekleme. Skip **gösterge** eklemeden herhangi bir şey. Ardından, bir sonraki bölüm altında, **değer**olarak, **Ort**ekleyin. **İleri**' yi seçin, sonra grafiğinizi unvanın ve **Uygula**' yı seçin. Panonuza yeni bir grafik görmeniz gerekir!  
 
 7. Daha fazla ölçümlerini görselleştirmek isterseniz şimdi geri gidebilirsiniz **streamjob1** ve üç daha fazla çıkış şu alanlar oluşturun.
 
@@ -316,7 +316,7 @@ Power BI, verileri analiz edip öngörü paylaşmaya yönelik İş analizi araç
 
    ![görselleştirmeler](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>İsteğe bağlı: Bir E-ticaret sitesiyle görselleştirin
+## <a name="optional-visualize-with-an-e-commerce-site"></a>İsteğe bağlı: bir E-ticaret sitesi ile görselleştirin
 
 Artık, bir gerçek e-ticaret sitesi ile bağlanmak için yeni veri analizi aracı nasıl kullanabileceğinizi gözlemleyeceksiniz. E-ticaret sitesini derlemek için bir Azure Cosmos veritabanını kullanarak ürün kategorilerinin listesini (kadınlar, Erkek, Unisex), ürün kataloğunu ve en popüler öğelerin bir listesini depolayın.
 

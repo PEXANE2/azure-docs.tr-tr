@@ -1,6 +1,7 @@
 ---
-title: PostgreSQL 'e yönelik çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları, PostgreSQL için Azure veritabanı-tek sunucu | Microsoft Docs
-description: PostgreSQL ' den PostgreSQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
+title: "Bilinen sorunlar: PostgreSQL 'ten PostgreSQL için Azure veritabanı 'na çevrimiçi geçişler"
+titleSuffix: Azure Database Migration Service
+description: PostgreSQL 'ten çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinmek için Azure veritabanı geçiş hizmeti 'ni kullanarak PostgreSQL için Azure veritabanı-tek sunucu.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 10/27/2019
-ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437866"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>PostgreSQL ' den PostgreSQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları-tek sunucu
 
@@ -33,7 +36,7 @@ PostgreSQL 'e yönelik çevrimiçi geçişlerle ilgili bilinen sorunlar ve sın�
 - **Kaynak PostgreSQL PostgreSQL. conf** dosyasında mantıksal çoğaltmayı etkinleştirmek için aşağıdaki parametreleri ayarlayın:
   - **wal_level** = mantıksal
   - **max_replication_slots** = [geçiş için en fazla veritabanı sayısı]; dört veritabanını geçirmek istiyorsanız, değeri 4 olarak ayarlayın
-  - **max_wal_senders** = [aynı anda çalışan veritabanlarının sayısı]; Önerilen değer 10 ' dur
+  - **max_wal_senders** = [eşzamanlı olarak çalışan veritabanlarının sayısı]; Önerilen değer 10 ' dur
 - Kaynak PostgreSQL pg_hba. conf dosyasına DMS Aracısı IP 'si ekleyin
   1. DMS 'in bir örneğini sağlamayı tamamladıktan sonra DMS IP adresini bir yere unutmayın.
   2. IP adresini pg_hba. conf dosyasına aşağıda gösterildiği gibi ekleyin:
@@ -154,7 +157,7 @@ COMMIT;
 ```
 
   > [!NOTE]
-  > Yukarıdaki komut dosyasında, "PG_User", geçiş kaynağına bağlanmak için kullanılan Kullanıcı adını ifade eder.
+  > Yukarıdaki komut dosyasında, "PG_User" geçiş kaynağına bağlanmak için kullanılan Kullanıcı adını ifade eder.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>AWS RDS PostgreSQL 'ten çevrimiçi geçiş yaparken sınırlamalar
 

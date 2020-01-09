@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439447"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -42,7 +42,7 @@ Bu öğreticide .NET SDK kullanılır. Azure Data Factory etkileşimde bulunmak 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
@@ -133,7 +133,7 @@ C# .NET konsol uygulaması oluşturma:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. `Main` yöntemine aşağıdaki kodu ekleyin. Bu kod, `DataFactoryManagementClient` sınıfının bir örneğini oluşturur. Daha sonra Veri Fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi Ayrıca işlem hattı çalıştırma ayrıntılarını izlemek için de kullanabilirsiniz.
+1. Aşağıdaki kodu `Main` yöntemine ekleyin. Bu kod, `DataFactoryManagementClient` sınıfının bir örneğini oluşturur. Daha sonra Veri Fabrikası, bağlı hizmet, veri kümeleri ve işlem hattı oluşturmak için bu nesneyi kullanırsınız. Bu nesneyi Ayrıca işlem hattı çalıştırma ayrıntılarını izlemek için de kullanabilirsiniz.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -608,10 +608,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...

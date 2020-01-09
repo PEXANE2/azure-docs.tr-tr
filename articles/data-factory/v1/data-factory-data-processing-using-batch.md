@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438896"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory ve Batch kullanarak büyük ölçekli veri kümelerini işleme
 > [!NOTE]
@@ -44,7 +44,7 @@ Batch hizmetiyle, uygulamalarınızı paralel olarak ve ölçekte yürütmek iç
 İsteğe bağlı olarak, toplu Iş hakkında daha fazla bilgi edinmek için [Batch belgelerine](https://docs.microsoft.com/azure/batch/)bakın.
 
 ## <a name="why-azure-data-factory"></a>Neden Azure Data Factory?
-Data Factory, verilerin taşınmasını ve dönüştürülmesini düzenleyen ve otomatikleştiren bulut tabanlı bir veri tümleştirme hizmetidir. Şirket içi ve bulut veri depolarından verileri merkezi bir veri deposuna taşımak için yönetilen veri işlem hatları oluşturmak üzere Data Factory kullanabilirsiniz. Azure Blob depolama örneği bir örnektir. Azure HDInsight ve Azure Machine Learning gibi hizmetleri kullanarak verileri işlemek/dönüştürmek için Data Factory kullanabilirsiniz. Ayrıca, veri işlem hatlarını zamanlanan bir şekilde (örneğin, saatlik, günlük ve haftalık) çalışacak şekilde zamanlayabilirsiniz. Sorunları belirlemek ve işlem yapmak için bir bakışta işlem hatlarını izleyebilir ve yönetebilirsiniz.
+Veri Fabrikası, veri taşımayı ve dönüştürmeyi düzenleyen ve otomatikleştiren bulut tabanlı bir veri tümleştirme hizmetidir. Şirket içi ve bulut veri depolarından verileri merkezi bir veri deposuna taşımak için yönetilen veri işlem hatları oluşturmak üzere Data Factory kullanabilirsiniz. Azure Blob depolama örneği bir örnektir. Azure HDInsight ve Azure Machine Learning gibi hizmetleri kullanarak verileri işlemek/dönüştürmek için Data Factory kullanabilirsiniz. Ayrıca, veri işlem hatlarını zamanlanan bir şekilde (örneğin, saatlik, günlük ve haftalık) çalışacak şekilde zamanlayabilirsiniz. Sorunları belirlemek ve işlem yapmak için bir bakışta işlem hatlarını izleyebilir ve yönetebilirsiniz.
 
   Data Factory konusunda bilgi sahibi değilseniz aşağıdaki makaleler, bu makalede açıklanan çözümün mimarisini/uygulanmasını anlamanıza yardımcı olur:  
 
@@ -192,7 +192,7 @@ Yöntemi anlamanız gereken birkaç anahtar bileşene sahiptir:
 
    g. Projeyi oluşturmak için **Tamam**'ı seçin.
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi Konsolu**'nu seçin.
 
 1. Paket Yöneticisi konsolunda, Microsoft. Azure. Management. DataFactory 'yi içeri aktarmak için aşağıdaki komutu yürütün:
 
@@ -556,11 +556,11 @@ Bağlı hizmetler veri depolarını veya işlem hizmetlerini bir veri fabrikası
 
    ![Yeni veri deposu](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. **Hesap adı** değerini depolama hesabınızın adıyla değiştirin. **Hesap anahtarı** değerini depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama erişim anahtarlarını görüntüleme, kopyalama ve yeniden](../../storage/common/storage-account-manage.md#access-keys)oluşturma.
+1. **Hesap adı** değerini depolama hesabınızın adıyla değiştirin. **Hesap anahtarı** değerini depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
 1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt**’ı seçin.
 
-   ![Dağıtma](./media/data-factory-data-processing-using-batch/image8.png)
+   ![Kurulum](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Azure Batch bağlı hizmeti oluşturma
 Bu adımda, Batch hesabınız için, Data Factory özel etkinliğini çalıştırmak için kullanılan bir bağlı hizmet oluşturursunuz.
@@ -667,21 +667,21 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
 
     | **'In** | **Başlangıç saati**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**: 00:00 |
-    | 2         | 2015-11-16T**01**: 00:00 |
-    | 3         | 2015-11-16T**02**: 00:00 |
-    | 4         | 2015-11-16T**03**: 00:00 |
-    | 5         | 2015-11-16T**04**: 00:00 |
+    | 1         | 2015-11-16T**00**:00:00 |
+    | 2         | 2015-11-16T**01**:00:00 |
+    | 3         | 2015-11-16T**02**:00:00 |
+    | 4         | 2015-11-16T**03**:00:00 |
+    | 5         | 2015-11-16T**04**:00:00 |
 
     **FolderPath** , dilim başlangıç saatinin yıl, ay, gün ve saat bölümü (**dilimestart**) kullanılarak hesaplanır. Bir giriş klasörünün bir dilimle nasıl eşlenildiği aşağıda verilmiştir.
 
     | **'In** | **Başlangıç saati**          | **Giriş klasörü**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16-**02** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16-**03** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16-**04** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
 1. **Inputdataset** tablosunu oluşturmak ve dağıtmak için araç çubuğunda **Dağıt** ' ı seçin.
 
@@ -724,11 +724,11 @@ Bu adımda, çıkış verilerini göstermek için AzureBlob türünde başka bir
 
     | **'In** | **Başlangıç saati**          | **Çıkış dosyası**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00. txt** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01. txt** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16-**02. txt** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16-**03. txt** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16-**04. txt** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00. txt** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01. txt** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02. txt** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03. txt** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04. txt** |
 
     Bir giriş klasöründeki tüm dosyaların (örneğin, 2015-11-16-00) başlangıç saati 2015-11-16-00 olan bir dilimin parçası olduğunu unutmayın. Bu dilim işlendiğinde, özel etkinlik her bir dosyayı tarar ve çıkış dosyasında "Microsoft" arama teriminin oluşum sayısını içeren bir satır üretir. 2015-11-16-00 klasöründe üç dosya varsa, 2015-11-16 -00. txt çıkış dosyasında üç satır vardır.
 
@@ -913,7 +913,7 @@ Hata ayıklama birkaç temel teknikten oluşur.
 
    ![Özel etkinlik ZIP dosyası listesi](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. **AssemblyName** (MyDotNetActivity. dll), **entryPoint** (MyDotNetActivityNS. MyDotNetActivity), **PackageFile** (customactivitycontainer/MyDotNetActivity. zip) ve **packageLinkedService** (öğesinin işaret etmelidir) olduğundan emin olun. ZIP dosyasını içeren BLOB depolama) doğru değerlere ayarlanır.
+1. **AssemblyName** (MyDotNetActivity. dll), **entryPoint** (MyDotNetActivityNS. MyDotNetActivity), **PackageFile** (customactivitycontainer/MyDotNetActivity. zip) ve **packageLinkedService** (ZIP dosyasını içeren BLOB depolama alanına işaret etmelidir) değerlerinin doğru değerlere ayarlandığından emin olun.
 
 1. Bir hatayı düzeltmeniz ve dilimi yeniden işlemek istiyorsanız **Outputdataset** dikey penceresinde dilimi sağ tıklatın ve **Çalıştır**' ı seçin.
 
@@ -960,7 +960,7 @@ Data Factory ve Batch özellikleri hakkında daha fazla bilgi edinmek için bu �
 Verileri tamamladıktan sonra, Power BI gibi çevrimiçi araçlarla kullanabilirsiniz. Power BI ve Azure 'da nasıl kullanacağınızı anlamanıza yardımcı olacak bağlantılar aşağıda verilmiştir:
 
 * [Power BI bir veri kümesini keşfet](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Power BI Desktop kullanmaya başlayın](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Power BI Desktop ile çalışmaya başlama](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Power BI verileri yenileme](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure ve Power BI: temel genel bakış](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 

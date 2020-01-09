@@ -2,17 +2,17 @@
 title: Bulut hizmeti modeli ve paketi nedir? | Microsoft Docs
 description: Azure 'da bulut hizmeti modelini (. csdef,. cscfg) ve paketi (. cspkg) açıklar
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360710"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Bulut hizmeti modeli nedir ve nasıl paketlarım?
 Üç bileşenden bir bulut hizmeti, hizmet tanımı *(. csdef)* , hizmet yapılandırma *(. cscfg)* ve bir hizmet paketi *(. cspkg)* oluşturulur. Hem **ServiceDefinition. csdef** hem de **ServiceConfig. cscfg** dosyaları XML tabanlıdır ve bulut hizmetinin yapısını ve nasıl yapılandırıldığını açıklamaktadır; toplu olarak model olarak adlandırılır. **Servicepackage. cspkg** , **ServiceDefinition. csdef** öğesinden ve diğer şeyler arasında oluşturulan ve tüm gerekli ikili tabanlı bağımlılıkları içeren bir zip dosyasıdır. Azure, hem **Servicepackage. cspkg** hem de **ServiceConfig. cscfg**öğesinden bir bulut hizmeti oluşturur.
@@ -106,7 +106,7 @@ Yerel depolama kaynakları için tanımları içerir. Yerel depolama kaynağı, 
 **İşlemlerinin**  
 İçeri aktarılan modüller için tanımları içerir. Önceki kod örneğinde, Uzak Masaüstü Bağlantısı ve Azure Connect için modüller gösterilmektedir.
 
-**Başlangıç**  
+**Startup**  
 Rol başlatıldığında çalıştırılan görevleri içerir. Görevler bir. cmd veya yürütülebilir dosya içinde tanımlanır.
 
 <a name="cscfg"></a>
@@ -137,10 +137,10 @@ Hizmet yapılandırma dosyası uygulamayla paketlenemez, ancak Azure 'a ayrı bi
 Burada kullanılan XML şemasını daha iyi anlamak için [hizmet yapılandırma şemasına](/previous-versions/azure/reference/ee758710(v=azure.100)) başvurabilirsiniz, ancak aşağıdaki öğelerin hızlı bir açıklaması aşağıda verilmiştir:
 
 **Örnekler**  
-Rol için çalışan örneklerin sayısını yapılandırır. Bulut hizmetinizin yükseltmeler sırasında kullanılamaz duruma gelmesine engel olmak için, Web 'e yönelik rollerinizin birden fazla örneğini dağıtmanız önerilir. Birden fazla örnek dağıtarak, bir hizmet için iki veya daha fazla rol örneği dağıtıldığında, Internet 'e yönelik rollere yönelik% 99,95 dış bağlantıyı garanti eden [Azure işlem hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/)yönergelerine bağlı olursunuz. .
+Rol için çalışan örneklerin sayısını yapılandırır. Bulut hizmetinizin yükseltmeler sırasında kullanılamaz duruma gelmesine engel olmak için, Web 'e yönelik rollerinizin birden fazla örneğini dağıtmanız önerilir. Birden fazla örnek dağıtarak, bir hizmet için iki veya daha fazla rol örneği dağıtıldığında, Internet 'e yönelik rollere yönelik% 99,95 dış bağlantıyı garanti eden [Azure işlem hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/)yönergelerine bağlı olursunuz.
 
 **ConfigurationSettings**  
-Bir rol için çalışan örneklerin ayarlarını yapılandırır. `<Setting>` Öğelerin adı, hizmet tanımı dosyasındaki ayar tanımlarına uymalıdır.
+Bir rol için çalışan örneklerin ayarlarını yapılandırır. `<Setting>` öğelerinin adı, hizmet tanımı dosyasındaki ayar tanımlarına uymalıdır.
 
 **Sertifikalar**  
 Hizmeti tarafından kullanılan sertifikaları yapılandırır. Önceki kod örneğinde, RemoteAccess modülünün sertifikasının nasıl tanımlanacağı gösterilmektedir. *Parmak izi* özniteliğinin değeri, kullanılacak sertifikanın parmak izine ayarlanmalıdır.
@@ -218,7 +218,7 @@ Hizmeti çevrimdışı yapmadan, Azure 'da çalışırken bulut hizmetinizin yap
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
 Azure 'da bir uygulamayı bulut hizmeti olarak dağıtmak için, önce uygulamayı uygun biçimde paketetmeniz gerekir. Paket dosyasını Visual Studio 'ya alternatif olarak oluşturmak için **CSPack** komut satırı aracını ( [Azure SDK](https://azure.microsoft.com/downloads/)ile birlikte yüklenir) kullanabilirsiniz.
 
-**CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket adlandırılır `[ServiceDefinitionFileName].cspkg`, ancak **CSPack** `/out` seçeneğini kullanarak farklı bir ad belirtebilirsiniz.
+**CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket `[ServiceDefinitionFileName].cspkg`olarak adlandırılır, ancak **CSPack**seçeneğini `/out` kullanarak farklı bir ad belirtebilirsiniz.
 
 **CSPack** şurada bulunur:  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -263,7 +263,7 @@ Değişkenlerin şu şekilde tanımlandığı yer:
 | --- | --- |
 | \[DirectoryName\] |Azure projesinin. csdef dosyasını içeren kök proje dizini altındaki alt dizin. |
 | \[ServiceDefinition\] |Hizmet tanım dosyasının adı. Varsayılan olarak, bu dosya ServiceDefinition. csdef olarak adlandırılır. |
-| \[OutputFilename & lt\] |Oluşturulan paket dosyasının adı. Genellikle bu, uygulamanın adına ayarlanır. Dosya adı belirtilmemişse, uygulama paketi ApplicationName \[\]. cspkg olarak oluşturulur. |
+| \[OutputFileName\] |Oluşturulan paket dosyasının adı. Genellikle bu, uygulamanın adına ayarlanır. Dosya adı belirtilmemişse, uygulama paketi \[ApplicationName\]. cspkg olarak oluşturulur. |
 | \[RoleName\] |Rolün hizmet tanım dosyasında tanımlanan adı. |
 | \[RoleBinariesDirectory] |Rolün ikili dosyalarının konumu. |
 | \[VirtualPath\] |Hizmet tanımının siteler bölümünde tanımlanan her bir sanal yol için fiziksel dizinler. |
@@ -289,3 +289,6 @@ Visual Studio kullanıyorum ve şunu yapmak istiyorum...
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
+
+
+

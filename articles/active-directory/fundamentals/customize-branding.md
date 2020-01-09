@@ -1,5 +1,5 @@
 ---
-title: Kuruluşunuzun oturum açma sayfasına - Azure Active Directory markalama Ekle | Microsoft Docs
+title: Kuruluşunuzun oturum açma sayfasına marka ekleme-Azure AD
 description: Azure Active Directory oturum açma sayfasına kuruluşunuzun markası ekleme hakkında yönergeler.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422830"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Oturum açma, kuruluşunuzun Azure Active Directory sayfasına markalama Ekle
 Kuruluşunuzun logosu ve özel renk düzenleriyle bir tutarlı görünüm ve hisse oturum açma, Azure Active Directory (Azure AD) sayfalarında sağlamak için kullanın. Oturum açma sayfaları kuruluşunuzun web tabanlı uygulamalara, Azure AD kimlik sağlayıcınız olarak kullanan Office 365 gibi kullanıcılar oturum açtığında görünür.
@@ -29,7 +29,7 @@ Kuruluşunuzun logosu ve özel renk düzenleriyle bir tutarlı görünüm ve his
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD oturum açma sayfanızı özelleştirme
 Kullanıcılar, kuruluşunuzun kiracıya özel uygulamalar için aşağıdaki gibi oturum açtığında görüntülenir, Azure AD oturum açma sayfaları özelleştirebilirsiniz [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), veya gibibiretkialanıdeğişkeninigeçirme[ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel markası hemen görünmez. Bunun yerine, kullanıcının özelleştirilmiş markalama görünmeden önce oturum açmanız gerekir. Kullanıcı oturum açtıktan sonra, marka 15 dakika veya daha uzun sürebilir. 
+Kullanıcılarınızın www\.office.com gibi sitelere gitmesi durumunda özel marka hemen görünmez. Bunun yerine, kullanıcının özelleştirilmiş markalama görünmeden önce oturum açmanız gerekir. Kullanıcı oturum açtıktan sonra, marka 15 dakika veya daha uzun sürebilir. 
 
 > [!NOTE]
 > Tüm marka öğeleri isteğe bağlıdır. Örneğin, hiçbir arka plan görüntüsü ile bir başlık logosu belirtirseniz oturum açma sayfası varsayılan arka plan görüntüsü (örneğin, Office 365) hedef siteden Logonuzla gösterir.<br><br>Ayrıca, oturum açma sayfasında bulunan marka kişisel Microsoft hesapları için aktarılmaz. Kullanıcılarınıza veya şirket konuklarınız kişisel bir Microsoft hesabı kullanarak oturum açın, oturum açma sayfasında, kuruluşunuzun markasını yansıtmaz.
@@ -76,7 +76,7 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
     
         - **Kare logo görüntüsü, koyu tema.** Yukarıdaki kare logo görüntüsü ile aynıdır. Bu logo görüntüsü, koyu renkli arka plan ile gibi Windows 10 Azure AD'ye katılmış ekranlar kullanıma hazır deneyimi (OOBE) sırasında kullanıldığında kare logo görüntüsü yerini alır.  Logonuz beyaz, koyu mavi ve siyah arka plan üzerinde iyi görünüyorsa, bu görüntüyü eklemenize gerek yoktur. 
         
-        - **Oturumu açık bırak seçeneğini göster.** Kullanıcılarınızın açıkça oturumunuzu kadar Azure AD'ye oturumunun açık kalmasına izin vermeyi seçebilirsiniz. Seçerseniz **Hayır**, bu seçenek gizlenir ve kullanıcılar tarayıcı kapatıldı ve yeniden her zaman içinde oturum gerekir.
+        - **Oturumu açık bırak seçeneğini göster.** Kullanıcılarınızın açık olarak oturumu açana kadar Azure AD 'de oturum açmış kalmasına izin verebilirsiniz. **Hayır**' ı seçerseniz, bu seçenek gizlidir ve kullanıcıların tarayıcının her kapatılışında ve yeniden açıldığı her seferinde oturum açması gerekir.
         
             >[!Note]
             >SharePoint Online ve Office 2010’un bazı özellikleri kullanıcıların oturumun açık kalmasını seçebilmesine bağlıdır. Bu ayarı **Hayır** olarak ayarlarsanız kullanıcılarınız oturum açmaya yönelik ek ve beklenmeyen istemler görebilir.

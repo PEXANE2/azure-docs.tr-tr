@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439400"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL Veritabanından Azure Blob Depolama alanına verileri artımlı olarak yükleme 
 
@@ -67,7 +67,7 @@ Bu öğreticide, aşağıdaki iki işlemi gerçekleştiren iki işlem hattı olu
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure SQL Veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) makalesine bakın.
 * **Azure Depolama hesabı**. Blob depolamayı **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) makalesine bakın. **adftutorial** adlı bir kapsayıcı oluşturun. 
 
@@ -160,7 +160,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
       
      ![Yeni veri fabrikası sayfası](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
  
-   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
@@ -169,11 +169,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
       - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
       - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
-        Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+        Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 4. **Sürüm** için **V2 (Önizleme)** öğesini seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**’a tıklayın.      
+7. **Oluştur**'a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -188,7 +188,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, Azure Depolama ve Azure SQL veritabanı hesabınızla bağlı hizmetler oluşturacaksınız. 
 
-### <a name="create-azure-storage-linked-service"></a>Azure Depolama bağlı hizmeti oluşturma.
+### <a name="create-azure-storage-linked-service"></a>Azure Depolama bağlı hizmeti oluşturun.
 Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
 
 1. **Bağlantılar**’a ve sonra **+ Yeni**’ye tıklayın.
@@ -197,11 +197,11 @@ Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
 2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure Blob Depolama**’yı seçip **Devam**’a tıklayın. 
 
    ![Azure Blob Depolama Alanı’nı seçin](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
-3. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin: 
+3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin: 
 
     1. **Ad** için **AzureStorageLinkedService** adını girin. 
     2. **Depolama hesabı adı** için Azure Depolama hesabınızı seçin. 
-    3. **Kaydet** düğmesine tıklayın. 
+    3. **Save (Kaydet)** düğmesine tıklayın. 
     
    ![Azure Depolama Hesabı ayarları](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -211,7 +211,7 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlarsınız.
 
 1. **Bağlantılar**’a ve sonra **+ Yeni**’ye tıklayın.
 2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın. 
-3. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin: 
+3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin: 
 
     1. **Ad** alanına **AzureSqlDatabaseLinkedService** adını girin. 
     2. **Sunucu adı** alanı için Azure SQL sunucunuzu seçin.
@@ -414,7 +414,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
     2. **Parametreyi içeri aktar**’ı seçin. 
     3. **Saklı yordam parametreleri** bölümünde, parametreler için aşağıdaki değerleri belirtin: 
 
-        | Adı | Tür | Değer | 
+        | Ad | Tür | Değer | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | Dize | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 

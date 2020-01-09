@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c5c7883295a30aa217e722abd905f54b982761d3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351390"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
@@ -95,9 +95,9 @@ Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir deste
 ### <a name="compute-and-memory-specifications"></a>İşlem ve bellek belirtimleri
 
 
-|Donanım oluşturma  |İşlem  |Hafıza  |
+|Donanım oluşturma  |Bilgi İşlem  |Hafıza  |
 |:---------|:---------|:---------|
-|4\. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
+|Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
 |Gen5     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel SP-8160 (ufuk Gölü) işlemcileri<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
 |Fsv2-serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
 |M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
@@ -126,11 +126,57 @@ Ayrıntılı bilgi için bkz. [SQL veritabanı oluşturma](sql-database-single-d
 
 Bir veritabanı için genel bakış sayfasında, **fiyatlandırma katmanı** bağlantısını seçin:
 
-  ![donanımı değiştirme](media/sql-database-service-tiers-vcore/change-hardware.png)
+  ![donanımı değiştir](media/sql-database-service-tiers-vcore/change-hardware.png)
 
 Bir havuz için genel bakış sayfasında **Yapılandır**' ı seçin.
 
 Yapılandırmayı değiştirmek için adımları izleyin ve önceki adımlarda açıklandığı gibi donanım üretimini seçin.
+
+**Yönetilen örnek oluştururken bir donanım oluşturma seçin**
+
+Ayrıntılı bilgi için bkz. [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md).
+
+**Temel bilgiler** sekmesinde, **işlem + depolama** bölümünde **Veritabanını yapılandır** bağlantısını seçin ve ardından istenen donanım oluşturma ' yı seçin:
+
+  ![yönetilen örneği yapılandırma](media/sql-database-service-tiers-vcore/configure-managed-instance.png)
+  
+**Mevcut bir yönetilen örneğin donanım üretimini değiştirmek için**
+
+Aşağıdaki PowerShell komut dosyasını kullanın:
+
+```powershell-interactive
+$subscriptionId = "**************"
+Select-AzSubscription -Subscription $subscriptionId
+
+$instanceName = "********"
+$resourceGroup = "****"
+
+# THIS IS IMPORTANT PARAMETER:
+$sku = @{name = "GP_Gen5" }
+
+# NOTE: These properties are not necessary, but it would be good to set them to the current values:
+# You might want to change vCores or storage with hardware generation
+# $admin_login = "******"
+# $admin_pass = "******"
+# $location = "***** # for example: ""northeurope"
+# $vCores = 8
+# $maxStorage = 1024
+# $license = "BasePrice"
+# $subnetId = "/subscriptions/****/subnets/*******"
+
+## NOTE: Uncomment some of the properties below if you have set them.
+$properties = New-Object System.Object
+# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
+# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
+# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
+# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
+# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
+# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
+
+Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+```
+
+Yönetilen örneğin abonelik kimliğinizi, adınızı ve kaynak grubunuzu girdiğinizden emin olun.
 
 ### <a name="hardware-availability"></a>Donanım kullanılabilirliği
 

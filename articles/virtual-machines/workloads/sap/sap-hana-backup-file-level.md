@@ -12,16 +12,16 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 8860c943dafdb9d166510519d0fb058f523537b3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426014"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Dosya düzeyinde Azure Backup SAP HANA
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Bu, SAP HANA yedeğine ilişkin üç bölümlü ilgili makalelerin bir parçasıdır. [Azure sanal makineler 'de SAP HANA Için Yedekleme Kılavuzu](./sap-hana-backup-guide.md) , kullanmaya başlama hakkında bir genel bakış ve bilgi sağlar ve [depolama anlık görüntülerine göre SAP HANA yedekleme](./sap-hana-backup-storage-snapshots.md) , depolama anlık görüntü tabanlı yedekleme seçeneğini içerir.
 
@@ -31,11 +31,11 @@ Azure Backup hizmeti ile Şu anda kullanılabilir SAP HANA yedekleme tümleştir
 
 ![Bu şekilde SAP HANA Studio 'daki yedekleme menü öğesinin iletişim kutusu gösterilmektedir](media/sap-hana-backup-file-level/image022.png)
 
-Bu şekilde SAP HANA Studio 'daki yedekleme menü öğesinin iletişim kutusu gösterilmektedir. Tür &quot;dosyası seçerken, dosyanın&quot; yedekleme dosyalarını SAP HANA yazdığı dosya sisteminde bir yol belirtmesi gerekir. Geri yükleme aynı şekilde çalışmaktadır.
+Bu şekilde SAP HANA Studio 'daki yedekleme menü öğesinin iletişim kutusu gösterilmektedir. &quot;dosya türünü seçerken, dosya sisteminde SAP HANA yedekleme dosyalarını yazdığı&quot; bir yol belirtmektir. Geri yükleme aynı şekilde çalışmaktadır.
 
 Bu seçim basit ve düz ileri bir deyişle, bazı önemli noktalar vardır. Daha önce bahsedildiği gibi, bir Azure VM 'nin iliştirilebilecek veri diski sayısı sınırlaması vardır. Veritabanının boyutuna ve birden çok veri diskinde yazılım şeritleme gerektirebilecek disk işleme gereksinimlerine bağlı olarak, SAP HANA yedekleme dosyalarını VM 'nin dosya sistemlerinde depolama kapasitesi olmayabilir. Bu yedekleme dosyalarını taşımaya yönelik çeşitli seçenekler ve terabayt veri işlerken dosya boyutu kısıtlamalarını ve performansı yönetme Bu makalede daha sonra verilmiştir.
 
-Toplam kapasiteye ilişkin daha fazla özgürlük sunan başka bir seçenek de Azure Blob Depolama ' dır. Tek bir blob da 1 TB ile sınırlandırıldığı sürece, tek bir blob kapsayıcısının toplam kapasitesi Şu anda 500 TB 'tır. Buna ek olarak, müşterilere maliyet avantajı olan seyrek erişimli &quot;&quot; BLOB depolama alanı olarak adlandırılan bir seçenek sunar. Bkz [. Azure Blob depolama: Seyrek Erişimli BLOB depolama hakkındaki](../../../storage/blobs/storage-blob-storage-tiers.md) Ayrıntılar için sık ve seyrek erişimli depolama katmanları.
+Toplam kapasiteye ilişkin daha fazla özgürlük sunan başka bir seçenek de Azure Blob Depolama ' dır. Tek bir blob da 1 TB ile sınırlandırıldığı sürece, tek bir blob kapsayıcısının toplam kapasitesi Şu anda 500 TB 'tır. Buna ek olarak, müşterilerin maliyet avantajı olan &quot;seyrek erişimli&quot; BLOB depolama alanını seçmesini sağlayan bir seçenek sunar. Seyrek Erişimli BLOB depolama hakkındaki ayrıntılar için bkz. [Azure Blob depolama: sık ve seyrek erişimli depolama katmanları](../../../storage/blobs/storage-blob-storage-tiers.md) .
 
 Ek güvenlik için, SAP HANA yedeklemeleri depolamak için coğrafi olarak çoğaltılan bir depolama hesabı kullanın. Depolama hesabı çoğaltma hakkındaki ayrıntılar için bkz. [Azure Storage çoğaltma](../../../storage/common/storage-redundancy.md) .
 
@@ -53,7 +53,7 @@ Dizinleri ve dosyaları Azure depolama üzerinde depolamak için, bir tane CLı 
 
 Bu nedenle, SAP HANA yedekleme dosyalarını kopyalamak için blobxfer kullanıldı. Bu, üretim ortamlarında birçok müşteri tarafından kullanılan ve [GitHub](https://github.com/Azure/blobxfer)'da kullanılabilen açık kaynaktır. Bu araç, bir birinin verileri doğrudan Azure Blob depolama veya Azure dosya paylaşımında kopyalamasına olanak sağlar. Ayrıca, birden çok dosya içeren bir dizin kopyalanırken MD5 karması veya otomatik paralellik gibi yararlı bir özellik yelpazesi sunar.
 
-## <a name="sap-hana-backup-performance"></a>Yedekleme performansını SAP HANA
+## <a name="sap-hana-backup-performance"></a>SAP HANA yedekleme performansı
 
 ![Bu ekran görüntüsü, SAP HANA Studio 'daki SAP HANA yedekleme konsoludur](media/sap-hana-backup-file-level/image023.png)
 
@@ -69,7 +69,7 @@ Beş bağlantılı Azure Standart depolama veri diski üzerinde şeritle aynı y
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>SAP HANA yedekleme dosyalarını Azure Blob depolamaya kopyalama
 
-SAP HANA yedekleme dosyalarını hızlı bir şekilde depolamak için başka bir seçenek Azure Blob Depolama ' dır. Bir tek blob kapsayıcısının 500 TB 'lik bir sınırı vardır. Bu, M32ts, M32ls, M64ls ve GS5 VM Types for Azure kullanarak yeterli sayıda SAP HANA yedeklemesi SAP HANA. &quot;Müşteriler, sık&quot; ve &quot; [soğukBLOBdepolama(bkz.AzureBlobdepolama)arasındaseçimyapmışolabilir.&quot; Sık erişimli ve seyrek erişimli](../../../storage/blobs/storage-blob-storage-tiers.md)depolama katmanları).
+SAP HANA yedekleme dosyalarını hızlı bir şekilde depolamak için başka bir seçenek Azure Blob Depolama ' dır. Bir tek blob kapsayıcısının 500 TB 'lik bir sınırı vardır. Bu, M32ts, M32ls, M64ls ve GS5 VM Types for Azure kullanarak yeterli sayıda SAP HANA yedeklemesi SAP HANA. Müşteriler &quot;sık erişimli&quot; ve &quot;soğuk&quot; blob Storage arasında seçim yapmış olabilir (bkz. [Azure Blob depolama: sık ve seyrek erişimli depolama katmanları](../../../storage/blobs/storage-blob-storage-tiers.md)).
 
 Blobxfer aracı ile SAP HANA yedekleme dosyalarını doğrudan Azure Blob depolamaya kopyalamak kolaydır.
 
@@ -83,7 +83,7 @@ Başlangıç testinde MD5 karma 'i kullanmayan, 230 GB 'yi bir Azure Standart de
 
 ![Bu ekran görüntüsünde, biri Azure portal nasıl göründüğünü görebilir](media/sap-hana-backup-file-level/image028.png)
 
-Bu ekran görüntüsünde, biri Azure portal nasıl göründüğünü görebilir. SAP-HANA- &quot;yedeklemeleri&quot; adlı bir blob kapsayıcısı oluşturulmuştur ve bu SAP HANA yedekleme dosyalarını temsil eden dört blob 'u içerir. Bunlardan biri kabaca 230 GB boyutunda.
+Bu ekran görüntüsünde, biri Azure portal nasıl göründüğünü görebilir. &quot;SAP-HANA-yedeklemeleri&quot; adlı bir blob kapsayıcısı oluşturulmuştur ve bu SAP HANA yedekleme dosyalarını temsil eden dört blob içerir. Bunlardan biri kabaca 230 GB boyutunda.
 
 HANA Studio yedekleme konsolu, bir birinin HANA yedekleme dosyalarının en büyük dosya boyutunu kısıtlayasağlar. Örnek ortamda, büyük bir 230 GB dosya yerine birden çok daha küçük yedekleme dosyası olmasını mümkün kılarak performansı artırmış olur.
 
@@ -99,15 +99,15 @@ Bu nedenle, Azure Blob yazma için 60 MB/sn sınırının sınırı vardır. Bir
 
 ## <a name="blob-copy-of-dedicated-azure-data-disks-in-backup-software-raid"></a>Yedekleme yazılım RAID 'de adanmış Azure veri disklerinin blob kopyası
 
-El ile VM veri diski yedeklemesinden farklı olarak, bu yaklaşımda, HANA verileri, HANA günlük dosyaları ve yapılandırma dosyaları dahil olmak üzere tüm SAP yüklemesini kaydetmek için bir VM 'deki tüm veri disklerini yedeklemez. Bunun yerine, tam bir SAP HANA dosya yedeklemesi depolamak için birden çok Azure veri VHD 'de şeritle adanmış yazılım RAID 'in olması önerilir. Yalnızca, SAP HANA yedeğine sahip olan bu disklerin bir kopyası. Bunlar, kolayca ayrılmış bir hana yedekleme depolama hesabında tutulabilir veya daha fazla işlenmek üzere adanmış &quot;bir yedekleme Yönetim sanal&quot; makinesine eklenebilir.
+El ile VM veri diski yedeklemesinden farklı olarak, bu yaklaşımda, HANA verileri, HANA günlük dosyaları ve yapılandırma dosyaları dahil olmak üzere tüm SAP yüklemesini kaydetmek için bir VM 'deki tüm veri disklerini yedeklemez. Bunun yerine, tam bir SAP HANA dosya yedeklemesi depolamak için birden çok Azure veri VHD 'de şeritle adanmış yazılım RAID 'in olması önerilir. Yalnızca, SAP HANA yedeğine sahip olan bu disklerin bir kopyası. Bunlar, özel bir HANA yedekleme depolama hesabında kolayca tutulabilir veya daha fazla işleme için adanmış bir &quot;yedekleme yönetimi sanal makinesine iliştirilebilir&quot;.
 
 ![Dahil edilen tüm VHD 'ler * * start-azurestoraygeblobcopy * * PowerShell komutu kullanılarak kopyalandı](media/sap-hana-backup-file-level/image031.png)
 
-Yerel yazılım RAID yedeklemesi tamamlandıktan sonra, dahil edilen tüm VHD 'ler **Start-azurestokgeblobcopy** PowerShell komutu kullanılarak kopyalandı (bkz. [Start-azurestokgeblobcopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Yalnızca yedekleme dosyalarını tutmak için ayrılmış dosya sistemini etkilediği için, diskte SAP HANA veri veya günlük dosyası tutarlılığı hakkında bir sorun yoktur. Bu komutun bir avantajı, sanal makine çevrimiçi kaldığında çalışmasının çalışmadır. Hiçbir işlemin yedek Stripe kümesine yazmadığından emin olmak için, blob kopyalaması öncesinde onu çıkarmanız ve daha sonra yeniden bağlamanız gerekir. Ya da bir tane, dosya sistemini dondurmak &quot;&quot; için uygun bir yol kullanabilir. Örneğin, XFS dosya sistemi\_için XFS donması üzerinden.
+Yerel yazılım RAID yedeklemesi tamamlandıktan sonra, dahil edilen tüm VHD 'ler **Start-azurestokgeblobcopy** PowerShell komutu kullanılarak kopyalandı (bkz. [Start-azurestokgeblobcopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Yalnızca yedekleme dosyalarını tutmak için ayrılmış dosya sistemini etkilediği için, diskte SAP HANA veri veya günlük dosyası tutarlılığı hakkında bir sorun yoktur. Bu komutun bir avantajı, sanal makine çevrimiçi kaldığında çalışmasının çalışmadır. Hiçbir işlemin yedek Stripe kümesine yazmadığından emin olmak için, blob kopyalaması öncesinde onu çıkarmanız ve daha sonra yeniden bağlamanız gerekir. Ya da bir tane, dosya sistemine&quot; dondurmak &quot;için uygun bir yol kullanabilir. Örneğin, XFS dosya sistemi için XFS\_donabilir.
 
 ![Bu ekran görüntüsünde, Azure portal VHD kapsayıcısında Blobların listesi gösterilmektedir](media/sap-hana-backup-file-level/image032.png)
 
-Bu ekran görüntüsünde, Azure Portal &quot;VHD&quot; kapsayıcısında Blobların listesi gösterilmektedir. Ekran görüntüsünde, SAP HANA yedekleme dosyalarının tutulması için yazılım RAID hizmeti olarak kullanılacak SAP HANA sunucusu VM 'sine eklenmiş beş VHD gösterilir. Ayrıca blob kopyalama komutu aracılığıyla alınan beş kopyayı da gösterir.
+Bu ekran görüntüsünde, Azure portal kapsayıcı&quot; kapsayıcıda &quot;Blobların listesi gösterilmektedir. Ekran görüntüsünde, SAP HANA yedekleme dosyalarının tutulması için yazılım RAID hizmeti olarak kullanılacak SAP HANA sunucusu VM 'sine eklenmiş beş VHD gösterilir. Ayrıca blob kopyalama komutu aracılığıyla alınan beş kopyayı da gösterir.
 
 ![Sınama amacıyla, SAP HANA yedekleme yazılım RAID disklerinin kopyaları App Server VM 'sine iliştirildi](media/sap-hana-backup-file-level/image033.png)
 
@@ -119,7 +119,7 @@ App Server VM 'si, disk kopyalarını eklemek için kapatıldı. VM 'yi başlatt
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>SAP HANA yedekleme dosyalarını NFS paylaşımıyla Kopyala
 
-SAP HANA sisteminde performans veya disk alanı açısından olası etkileri azaltmak için, birisi SAP HANA yedekleme dosyalarını bir NFS paylaşımında depolamayı düşünebilirler. Teknik olarak işe yarar, ancak NFS paylaşımının ana bilgisayarı olarak ikinci bir Azure VM kullanılması anlamına gelir. VM ağı bant genişliği nedeniyle küçük bir VM boyutu olmamalıdır. Bu &quot;yedek sanal makineyi&quot; kapatıp yalnızca SAP HANA yedeklemeyi yürütmek için getirir. NFS paylaşımında yazma, ağ üzerinde yük koyar ve SAP HANA sistemi etkiler, ancak yedekleme dosyalarının bundan sonra yalnızca &quot;yedekleme sanal&quot; makinesinde yönetilmesi SAP HANA sistemi etkilemez.
+SAP HANA sisteminde performans veya disk alanı açısından olası etkileri azaltmak için, birisi SAP HANA yedekleme dosyalarını bir NFS paylaşımında depolamayı düşünebilirler. Teknik olarak işe yarar, ancak NFS paylaşımının ana bilgisayarı olarak ikinci bir Azure VM kullanılması anlamına gelir. VM ağı bant genişliği nedeniyle küçük bir VM boyutu olmamalıdır. Daha sonra bu &quot;yedekleme VM&quot; kapatmakta ve yalnızca SAP HANA yedeklemesini yürütmek üzere sunacak. NFS paylaşımında yazma, ağ üzerinde yük koyar ve SAP HANA sistemi etkiler, ancak yedekleme dosyalarını yalnızca &quot;yedekleme VM 'sinde daha sonra yönetmez&quot; SAP HANA sistemi hiç etkilemez.
 
 ![Başka bir Azure VM 'den bir NFS paylaşımının SAP HANA sunucusu VM 'sine takıldı](media/sap-hana-backup-file-level/image035.png)
 
@@ -137,7 +137,7 @@ Bu nedenle, ancak 230 GB yedekleme testi için performans iyi değildi. Çok ter
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>SAP HANA yedekleme dosyalarını Azure dosyalarına kopyalama
 
-Bir Azure Linux sanal makinesinde Azure dosya paylaşımının bağlanması mümkündür. [Azure dosya depolaması 'Nı Linux ile kullanma](../../../storage/files/storage-how-to-use-files-linux.md) makalesi, nasıl yapılacağı hakkında ayrıntılı bilgi sağlar. Şu anda bir Azure dosya paylaşımının 5 TB 'lik kota sınırının ve dosya başına 1 TB dosya boyutu sınırının bulunduğunu aklınızda bulundurun. Depolama sınırları hakkında bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](../../../storage/common/storage-scalability-targets.md) .
+Bir Azure Linux sanal makinesinde Azure dosya paylaşımının bağlanması mümkündür. [Azure dosya depolaması 'Nı Linux ile kullanma](../../../storage/files/storage-how-to-use-files-linux.md) makalesi, nasıl yapılacağı hakkında ayrıntılı bilgi sağlar. Şu anda bir Azure dosya paylaşımının 5 TB 'lik kota sınırının ve dosya başına 1 TB dosya boyutu sınırının bulunduğunu aklınızda bulundurun. Daha fazla bilgi için bkz. [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](../../../storage/files/storage-files-scale-targets.md).
 
 Ancak, SAP HANA yedekleme&#39;Şu anda bu tür CIFS bağlamalarla doğrudan çalışmamakta olduğunu göstermiştir. Ayrıca, bu CIFS 'nin önerilmediğini [SAP Note 1820529](https://launchpad.support.sap.com/#/notes/1820529) ' de de belirtilmiştir.
 
@@ -151,7 +151,7 @@ Bu şekilde, toplam kabaca 230 GB boyutlu SAP HANA yedekleme dosyalarını Azure
 
 ![SAP HANA VM 'deki kaynak dizin yapısı Azure dosya paylaşımında kopyalanmış](media/sap-hana-backup-file-level/image040.png)
 
-Bu ekran görüntüsünde, biri SAP HANA VM 'deki kaynak dizin yapısının Azure dosya paylaşımında (Hana\_yedekleme\_FSL\_15gb) ve 19 bireysel yedekleme dosyasında kopyalandığından emin olabilir.
+Bu ekran görüntüsünde, biri SAP HANA VM 'deki kaynak dizin yapısının Azure dosya paylaşımında kopyalandığını görebilir: bir dizin (Hana\_yedekleme\_FSL\_15gb) ve 19 ayrı yedekleme dosyası.
 
 Azure dosyalarında SAP HANA yedekleme dosyalarını depolamak, SAP HANA dosya yedeklemeleri doğrudan destekledikleri zaman ileride ilginç bir seçenek olabilir. Ya da Azure dosyalarını NFS aracılığıyla bağlamak mümkün olduğunda en yüksek kota sınırı 5 TB 'den büyük ölçüde yüksektir.
 

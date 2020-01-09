@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073160"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359371"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın
 
@@ -23,7 +23,7 @@ Bu belgede Linux Tanılama uzantısının sürüm 3,0 ve daha yeni bir sürümü
 > [!IMPORTANT]
 > Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](../linux/classic/diagnostic-extension-v2.md)bakın.
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Linux Tanılama uzantısı, bir kullanıcının Microsoft Azure üzerinde çalışan bir Linux sanal makinesinin sistem durumunu izlemesine yardımcı olur. Aşağıdaki özellikleri içerir:
 
@@ -49,7 +49,7 @@ Bu yükleme yönergeleri ve [indirilebilir bir örnek yapılandırma](https://ra
 
 İndirilebilir yapılandırma yalnızca bir örnektir; kendi gereksinimlerinize uyacak şekilde değiştirin.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. VM 'de yüklü sürümü onaylamak için `/usr/sbin/waagent -version` çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) izleyin.
 * **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](https://docs.microsoft.com/cli/azure/install-azure-cli) .
@@ -135,7 +135,7 @@ storageAccountSasToken | Ekleme, oluşturma, listeleme, güncelleştirme ve yazm
 mdsdHttpProxy | seçim Uzantının belirtilen depolama hesabına ve uç noktaya bağlanmasını sağlamak için HTTP proxy bilgileri gerekir.
 sinksConfig | seçim Ölçüm ve olayların sunulabilecek alternatif hedeflerin ayrıntıları. Uzantı tarafından desteklenen her bir veri havuzunun belirli ayrıntıları, izleyen bölümlerde ele alınmıştır.
 
-Bir Kaynak Yöneticisi şablonu içinde SAS belirteci almak için **Listaccountsas** işlevini kullanın. Örnek bir şablon için bkz. [list işlev örneği](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
+Bir Kaynak Yöneticisi şablonu içinde SAS belirteci almak için **Listaccountsas** işlevini kullanın. Örnek bir şablon için bkz. [list işlev örneği](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 Gerekli SAS belirtecini Azure portal aracılığıyla kolayca oluşturabilirsiniz.
 
@@ -309,7 +309,7 @@ Bu isteğe bağlı bölüm, ölçüm koleksiyonunu denetler. Ham örnekler her b
 
 Öğe | Değer
 ------- | -----
-Yapma | seçim LAD 'nin toplanmış ölçüm sonuçları gönderdiği havuz adlarının virgülle ayrılmış bir listesi. Tüm toplanan ölçümler listelenen her havuza yayımlanır. Bkz. [Sinksconfig](#sinksconfig). Örnek: `"EHsink1, myjsonsink"`.
+iç havuzlar | seçim LAD 'nin toplanmış ölçüm sonuçları gönderdiği havuz adlarının virgülle ayrılmış bir listesi. Tüm toplanan ölçümler listelenen her havuza yayımlanır. Bkz. [Sinksconfig](#sinksconfig). Örnek: `"EHsink1, myjsonsink"`.
 type | Ölçümün gerçek sağlayıcısını tanımlar.
 sınıf | "Counter" ile birlikte, sağlayıcının ad alanı içinde belirli ölçümü tanımlar.
 counter | "Class" ile birlikte, sağlayıcının ad alanı içinde belirli bir ölçümü tanımlar.
@@ -355,7 +355,7 @@ SyslogEventConfiguration koleksiyonunda, ilgilendiğiniz her Syslog özelliği i
 
 Öğe | Değer
 ------- | -----
-Yapma | Ayrı günlük olaylarının yayımlandığı havuz adlarının virgülle ayrılmış listesi. SyslogEventConfiguration ' deki kısıtlamalarla eşleşen tüm günlük olayları listelenen her havuza yayımlanır. Örnek: "EHforsyslog"
+iç havuzlar | Ayrı günlük olaylarının yayımlandığı havuz adlarının virgülle ayrılmış listesi. SyslogEventConfiguration ' deki kısıtlamalarla eşleşen tüm günlük olayları listelenen her havuza yayımlanır. Örnek: "EHforsyslog"
 facilityName | Syslog tesis adı (örneğin, "LOG\_USER" veya "LOG\_LOCAL0"). Tam liste için [Syslog Man sayfasının](http://man7.org/linux/man-pages/man3/syslog.3.html) "tesis" bölümüne bakın.
 Minönem derecesi | Syslog önem derecesi düzeyi ("LOG\_ERR" veya "LOG\_ıNFO" gibi). Tam liste için [Syslog Man sayfasının](http://man7.org/linux/man-pages/man3/syslog.3.html) "düzey" bölümüne bakın. Uzantı, belirtilen düzeyin üzerinde veya üzerinde tesise gönderilen olayları yakalar.
 
@@ -388,7 +388,7 @@ ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemi�
 sorgu | Yürütülecek OMı sorgusu.
 table | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
 frequency | seçim Sorgunun yürütülmesi arasındaki saniye sayısı. Varsayılan değer 300 ' dir (5 dakika); minimum değer 15 saniyedir.
-Yapma | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
+iç havuzlar | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
 
 "Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.
 
@@ -408,9 +408,9 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 
 Öğe | Değer
 ------- | -----
-file | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
+dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
 table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
-Yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
+iç havuzlar | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 
 "Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.
 
@@ -419,7 +419,7 @@ Yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virg
 Yerleşik ölçüm sağlayıcısı, geniş bir Kullanıcı kümesiyle en ilginç ölçüm kaynağıdır. Bu ölçümler beş geniş sınıfa ayrılır:
 
 * İşlemci
-* Bellek
+* Hafıza
 * Ağ
 * dosya sistemi
 * Disk
@@ -431,7 +431,7 @@ Yerleşik ölçüm sağlayıcısı, geniş bir Kullanıcı kümesiyle en ilginç
 counter | Anlamı
 ------- | -------
 PercentIdleTime | Toplama penceresinde işlemcilerin çekirdek boşta döngüsünü yürüttüğünden geçen sürenin yüzdesi
-percentProcessorTime | Boşta olmayan iş parçacığı yürütme zaman yüzdesi
+PercentProcessorTime | Boşta olmayan iş parçacığı yürütme zaman yüzdesi
 PercentIOWaitTime | GÇ işlemlerinin tamamlanması için bekleyen sürenin yüzdesi
 PercentInterruptTime | Donanım/yazılım kesintileri ve DPC 'leri yürütme zaman yüzdesi (ertelenmiş yordam çağrıları)
 PercentUserTime | Toplama penceresi sırasında boşta olmayan süre, Kullanıcı için normal öncelikte harcanan sürenin yüzdesi
@@ -539,7 +539,7 @@ Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu (ARM) kullandığınız
 
 Bu özel ayarlar yapılandırılır:
 
-* depolama hesabı
+* Depolama hesabı
 * eşleşen bir hesap SAS belirteci
 * birkaç havuz (SAS belirteçlerine sahip JsonBlob veya EventHubs)
 
@@ -682,7 +682,7 @@ Yapılandırmadaki `resourceId` VM veya sanal makine ölçek kümesi ile aynı o
 * Azure otomatik ölçeklendirme kullanırsanız, otomatik ölçeklendirme yapılandırmasındaki RESOURCEID, LAD tarafından kullanılan RESOURCEID ile aynı olmalıdır.
 * RESOURCEID, LAD tarafından yazılan Jsonblob 'ların adlarına yerleşiktir.
 
-## <a name="view-your-data"></a>Verilerinizi görüntüleyin
+## <a name="view-your-data"></a>Verilerinizi görüntüleme
 
 Performans verilerini görüntülemek veya uyarıları ayarlamak için Azure portal kullanın:
 
@@ -695,7 +695,7 @@ JsonBlob havuzları 'na gönderilen veriler, [korunan ayarlarda](#protected-sett
 Ayrıca, bu kullanıcı arabirimi araçlarını kullanarak Azure Storage 'daki verilere erişebilirsiniz:
 
 * Visual Studio Sunucu Gezgini.
-* [Microsoft Azure Depolama Gezgini](https://azurestorageexplorer.codeplex.com/ "Azure Storage Gezgini").
+* [Microsoft Azure Depolama Gezgini](https://azurestorageexplorer.codeplex.com/ "Azure Depolama Gezgini").
 
 Microsoft Azure Depolama Gezgini oturumunun bu anlık görüntüsü, test sanal makinesinde doğru yapılandırılmış bir LAD 3,0 uzantısının oluşturulan Azure depolama tablolarını ve kapsayıcılarını gösterir. Görüntü, [örnek LAD 3,0 yapılandırmasıyla](#an-example-lad-30-configuration)tam olarak eşleşmez.
 

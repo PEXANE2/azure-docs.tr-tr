@@ -1,5 +1,5 @@
 ---
-title: Uygulama Kaydı Portalı’ndan Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
+title: Yeni Azure portalı uygulama kaydı deneyimi
 titleSuffix: Microsoft identity platform
 description: Azure portal yeni uygulama kayıt deneyimine giriş
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424649"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Uygulama Kaydı Portalı’ndan Azure portaldaki yeni Uygulama kayıtları deneyimine geçiş yapma
+# <a name="the-new-azure-portal-app-registration-experience"></a>Yeni Azure portal uygulama kayıt deneyimi
 
 Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok iyileştirme vardır. Eski deneyim olarak adlandırılan yakınsama uygulamalarını kaydetme veya yönetme ile ilgili uygulama kayıt portalı (apps.dev.microsoft.com) deneyimiyle daha fazla bilginiz varsa, bu eğitim kılavuzu yeni deneyimi kullanmaya başlamanızı sağlar.
 
 ## <a name="whats-not-changing"></a>Ne değiştirmiyor?
 
--   Uygulamalarınız ve ilgili yapılandırmalar yeni deneyimde olduğu gibi bulunabilir. Uygulamaları yeniden kaydetmeniz gerekmez ve uygulamalarınızın kullanıcılarının yeniden oturum açması gerekmez.
+- Uygulamalarınız ve ilgili yapılandırmalar yeni deneyimde olduğu gibi bulunabilir. Uygulamaları yeniden kaydetmeniz gerekmez ve uygulamalarınızın kullanıcılarının yeniden oturum açması gerekmez.
 
     > [!NOTE]
     > Azure portal bulmak için, uygulamaları kaydetmek üzere kullandığınız hesapla oturum açmanız gerekir. Azure portal oturum açmış kullanıcının, e-posta adresini profilinizden karşılaştırarak, uygulama kayıt portalı 'nda oturum açan kullanıcıyla aynı olduğunu kontrol etmenizi öneririz.
     > 
     > Bazı durumlarda, özellikle de bir Azure AD e-posta adresi ile kişisel Microsoft hesapları (örn. Outlook, canlı, Xbox vb.) kullanarak oturum açtığınızda, eski deneyimden Azure portal giderek, size aynı olan farklı bir hesaba kaydolduğumuzdan Azure AD kiracınızda e-posta. Uygulamalarınızın eksik olduğunu düşünüyorsanız, oturumunuzu kapatıp doğru hesapla oturum açın.
 
--   Kişisel Microsoft hesapları kullanılarak oluşturulan canlı SDK uygulamaları Azure portal henüz desteklenmemektedir ve yakın gelecekte eski deneyimde olmaya devam edecektir.
+- Kişisel Microsoft hesapları kullanılarak oluşturulan canlı SDK uygulamaları Azure portal henüz desteklenmemektedir ve yakın gelecekte eski deneyimde olmaya devam edecektir.
 
 ## <a name="key-changes"></a>Anahtar değişiklikleri
 

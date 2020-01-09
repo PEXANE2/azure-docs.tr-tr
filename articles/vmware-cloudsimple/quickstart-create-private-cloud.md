@@ -1,5 +1,6 @@
 ---
-title: CloudSimple hızlı başlangıç ile Azure VMware çözümü-özel bir bulut oluşturma
+title: 'Hızlı başlangıç: özel bir bulut oluşturma'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple ile Azure VMware çözümü ile özel bir bulut oluşturma ve yapılandırma hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452387"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
@@ -57,7 +58,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 11. Ileri ' ye tıklayın. **İnceleme ve oluşturma**.
 12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
-13. **Oluştur**’a tıklayın.
+13. **Oluştur**'a tıklayın.
 
 Özel bulut sağlama işlemi başlar.  Özel bulutun sağlanması iki saate kadar sürebilir.
 
@@ -113,7 +114,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
 2. **VPN Gateway**seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
-4. **Kullanıcıları**seçin.
+4. **Kullanıcılar**’ı seçin.
 5. **VPN yapılandırmadan indir**' e tıklayın.
 
     ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)
@@ -139,7 +140,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 5. Listeden bir VLAN KIMLIĞI seçin.  
 6. Alt ağı tanımlamak için bir alt ağ adı girin.
 7. CıDR aralığını ve maskesini belirtin.  Bu Aralık varolan alt ağlarla çakışmamalıdır.
-8. **Gönder**' e tıklayın.
+8. **Gönder**'e tıklayın.
 
     ![VLAN/subnet ayrıntıları oluştur](media/create-new-vlan-subnet-details.png)
 

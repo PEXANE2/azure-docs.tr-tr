@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB kullanan uygulamanız için doğru tutarlılık düzeyini seçme
+title: Azure Cosmos DB uygulamanız için doğru tutarlılık düzeyini seçin
 description: Azure Cosmos DB içinde uygulamanız için doğru tutarlılık düzeyini seçme.
 author: markjbrown
 ms.author: mjbrown
@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 89c81e978c5f3dbbb8fac1ea5e75fc506612308f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: cea157e272a2bf464141e592b8e742f314a83233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441914"
 ---
 # <a name="choose-the-right-consistency-level"></a>Doğru tutarlılık düzeyini seçme 
 
@@ -50,9 +50,9 @@ Uygulamada genellikle daha güçlü tutarlılık garantisi alabilirsiniz. Bir ok
 
 * Tutarlılık düzeyi **güçlü**olarak ayarlandığında, stalet penceresi sıfıra eşdeğerdir ve istemciler, yazma işleminin en son taahhüt edilen değerini okumak için garanti edilir.
 
-* Kalan üç tutarlılık düzeyi için, stalet penceresi büyük ölçüde iş yükünüze bağımlıdır. Örneğin, veritabanında yazma işlemi yoksa, **son,** **oturum**veya **tutarlı ön ek** tutarlılık düzeylerine sahip bir okuma işlemi, güçlü tutarlılık düzeyiyle bir okuma işlemiyle aynı sonuçları elde etmek olasıdır.
+* Kalan üç tutarlılık düzeyi için, stalet penceresi büyük ölçüde iş yükünüze bağımlıdır. Örneğin, veritabanında yazma işlemi yoksa, son, **oturum**veya **tutarlı ön ek** tutarlılık düzeylerine sahip bir okuma **işlemi, güçlü**tutarlılık düzeyiyle bir okuma işlemiyle aynı sonuçları elde etmek olasıdır.
 
-Azure Cosmos hesabınız, güçlü tutarlılık dışında bir tutarlılık düzeyiyle yapılandırıldıysa, olasılık açısından olasılığa bağlı olarak, istemcileriniz için iş yükleriniz için güçlü ve tutarlı okumalar alabilir.  *Leklik* (PBS) ölçümü. Bu ölçüm Azure portal kullanıma sunulur, daha fazla bilgi edinmek için bkz. [Izleme olasılığa yönelik sınırlı Stalet (PBS) ölçümü](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+Azure Cosmos hesabınız, güçlü tutarlılık dışında bir tutarlılık düzeyiyle yapılandırıldıysa, olasılık açısından *olasılığa sınırlı bir Stalet* (PBS) ölçüsüne bakarak istemcilerinizin iş yükleriniz için güçlü ve tutarlı okumalar alabilir olasılığını fark edebilirsiniz. Bu ölçüm Azure portal kullanıma sunulur, daha fazla bilgi edinmek için bkz. [Izleme olasılığa yönelik sınırlı Stalet (PBS) ölçümü](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 Dayalı sınırlanmış stalet, nihai tutarlılığın ne kadar olduğunu gösterir. Bu ölçüm, Azure Cosmos hesabınızda halen yapılandırdığınız tutarlılık düzeyinden daha güçlü bir tutarlılık elde etme konusunda bir fikir sağlar. Diğer bir deyişle, yazma ve okuma bölgelerinin bir birleşimi için kesin olarak tutarlı okuma elde etme olasılığını (milisaniye olarak ölçülür) görebilirsiniz.
 

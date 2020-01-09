@@ -1,17 +1,17 @@
 ---
-title: Azure portal ve çeşitli SDK 'Ları kullanarak büyük bölüm anahtarı ile Azure Cosmos kapsayıcıları oluşturun.
+title: Büyük bölüm anahtarı ile Azure Cosmos kapsayıcıları oluşturma
 description: Azure portal ve farklı SDK 'Ları kullanarak büyük bölüm anahtarı ile Azure Cosmos DB bir kapsayıcı oluşturmayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 42e92fa2b088fc04d4aa670e6586fcfe26ff3a70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441696"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Büyük bölüm anahtarı ile kapsayıcılar oluşturma
 
@@ -80,5 +80,5 @@ Büyük bölüm anahtarları, SDK 'ların aşağıdaki en düşük sürümleriyl
 
 * [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
 * [Azure Cosmos DB'de İstek birimleri](request-units.md)
-* [Kapsayıcılar ve veritabanları üzerinde üretilen iş sağlama](set-throughput.md)
+* [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)

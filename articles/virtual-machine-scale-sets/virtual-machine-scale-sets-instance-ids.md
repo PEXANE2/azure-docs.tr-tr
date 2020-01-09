@@ -1,6 +1,6 @@
 ---
-title: Azure VM ölçek kümesi Vm'lerine örnek kimlikleri anlama | Microsoft Docs
-description: Örnek kimlikleri için Azure VM ölçek kümesi Vm'leri anlama
+title: Azure VM Ölçek kümesi VM 'lerinin örnek kimliklerini anlayın
+description: Azure VM Ölçek Kümeleri sanal makinelerinin örnek kimliklerini ve bunların yüzeysel çeşitli yollarını anlayın.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 6aeba722a0661979664f8d61efdb9b2bf47ad801
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1eb0cf1de3b0ebffac8810e19d69515224147bc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355997"
 ---
-# <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Örnek kimlikleri için Azure VM ölçek kümesi Vm'leri anlama
-Bu makalede örnek kimlikleri ölçek kümeleri ve bunlar yüzey çeşitli yolları açıklar.
+# <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM Ölçek kümesi VM 'lerinin örnek kimliklerini anlayın
+Bu makalede ölçek kümeleri için örnek kimlikleri ve bunların yüzeylerinde yer alan çeşitli yollar açıklanmaktadır.
 
 ## <a name="scale-set-instance-ids"></a>Ölçek kümesi örnek kimlikleri
 
-Her bir VM ölçek kümesindeki benzersiz olarak tanımlayan bir örnek kimliği alır. VM ölçek kümesi kimliği API'leri ölçek kümesindeki belirli bir üzerinde işlem yapmak için kullanılan bu örneği. Örneğin, yeniden görüntü oluşturma API'si kullanılırken bir belirli bir örnek kimliği için yeniden görüntü oluşturma belirtebilirsiniz:
+Bir ölçek kümesindeki her VM, kendisini benzersiz bir şekilde tanımlayan bir örnek KIMLIĞI alır. Bu örnek KIMLIĞI ölçek kümesindeki belirli bir VM üzerinde işlemler yapmak için ölçek kümesi API 'Lerinde kullanılır. Örneğin, ReImage API 'sini kullanırken yeniden görüntüye yönelik belirli bir örnek KIMLIĞI belirtebilirsiniz:
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (daha fazla bilgi için [REST API belgelerini](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage))
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (daha fazla bilgi için [REST API belgelerine](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)bakın)
 
-PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (daha fazla bilgi için [Powershell belgeleri](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
+PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (daha fazla bilgi için [CLI belgeleri](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLı: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (daha fazla bilgi için bkz. [CLI belgeleri](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
-Bir ölçek kümesindeki tüm örnekleri listeleyerek örnek kimlikleri listesini alabilirsiniz:
+Bir ölçek kümesindeki tüm örnekleri listeleyerek örnek kimliklerinin listesini alabilirsiniz:
 
-REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (daha fazla bilgi için [REST API belgelerini](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list))
+REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (daha fazla bilgi için [REST API belgelerine](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)bakın)
 
-PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (daha fazla bilgi için [Powershell belgeleri](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm))
+PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm))
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (daha fazla bilgi için [CLI belgeleri](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLı: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (daha fazla bilgi için bkz. [CLI belgeleri](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
-Ayrıca [resources.azure.com](https://resources.azure.com) veya [Azure SDK'ları](https://azure.microsoft.com/downloads/) bir ölçek kümesindeki Vm'leri listelemek için.
+Bir ölçek kümesindeki VM 'Leri listelemek için [Resources.Azure.com](https://resources.azure.com) veya [Azure SDK](https://azure.microsoft.com/downloads/) 'larını de kullanabilirsiniz.
 
-Çıkış tam sunumu için sağladığınız seçenekleri bağlıdır, ancak clı'dan bazı örnek çıktı aşağıdaki gibidir:
+Çıktının tam sunumu, komuta verdiğiniz seçeneklere bağlıdır, ancak burada CLı 'dan örnek çıktı verilmiştir:
 
 ```
 $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
@@ -60,22 +60,22 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     .
 ```
 
-Gördüğünüz gibi "InstanceId" özelliği yalnızca ondalık bir sayı olabilir. Eski örnekleri silindikten sonra örnek kimlikleri yeni örnekleri için yeniden kullanılabilir.
+Gördüğünüz gibi, "InstanceId" özelliği yalnızca ondalık bir sayıdır. Eski örnekler silindikten sonra örnek kimlikleri yeni örnekler için yeniden kullanılabilir.
 
 >[!NOTE]
-> Var. **garanti** şekilde örneğinde ölçek kümesindeki vm'lere kimlikleri atanır. Bunlar bazen sıralı olarak artan görünebilir, ancak bu her zaman böyle değildir. Bir bağımlılık örnek kimlikleri Vm'lere atanmış olan belirli şekilde almaz.
+> Ölçek kümesindeki VM 'lere örnek kimliklerinin atanması için **garanti yoktur** . Ardışık olarak sürekli artan görünebilir, ancak bu her zaman durum değildir. VM 'lere atanan örnek kimliklerinin belirli bir bağımlılığı yoktur.
 
-## <a name="scale-set-vm-names"></a>Ölçek kümesi sanal makine adı
+## <a name="scale-set-vm-names"></a>Ölçek kümesi VM adları
 
-Yukarıdaki örnek çıktıda da VM için bir "name" yoktur. Bu adı "{ölçek-kümesi-adı} _ {örnek-kimliği}" biçimini alır. Bir ölçek kümesindeki örneklerin listelediğinizde Azure portalında gördüğünüz bir addır:
+Yukarıdaki örnek çıktıda, sanal makine için de bir "ad" vardır. Bu ad "{Scale-set-name} _ {Instance-id}" biçimini alır. Bu ad, bir ölçek kümesindeki örnekleri listelerseniz Azure portal gördüğünüz bir addır:
 
 ![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
-{Örnek-kimliği} adının bir parçası olarak daha önce açıklanan "InstanceId" özelliği aynı ondalık sayıdır.
+Adın {instance-id} bölümü, daha önce ele alınan "InstanceId" özelliği ile aynı ondalık sayıdır.
 
 ## <a name="instance-metadata-vm-name"></a>Örnek meta veri VM adı
 
-Sorgu, [örnek meta veri](../virtual-machines/windows/instance-metadata-service.md) gelen bir VM ölçek kümesi içinde çıktıda bir "name" görürsünüz:
+[Örnek meta verilerini](../virtual-machines/windows/instance-metadata-service.md) bir ölçek kümesi sanal makinesinin içinden sorgulerseniz çıktıda bir "ad" görürsünüz:
 
 ```
 {
@@ -87,13 +87,13 @@ Sorgu, [örnek meta veri](../virtual-machines/windows/instance-metadata-service.
     .
 ```
 
-Bu adı daha önce açıklanan adı ile aynıdır.
+Bu ad, daha önce tartışılan adla aynıdır.
 
 ## <a name="scale-set-vm-computer-name"></a>Ölçek kümesi VM bilgisayar adı
 
-Bir ölçek kümesi aynı zamanda her bir sanal Makineye atanmış bir bilgisayar adı alır. Bu bilgisayar adı VM'nin adıdır [Azure tarafından sağlanan DNS ad çözümlemesi sanal ağ içindeki](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Bu bilgisayar adı "{computer-name-prefix}{base-36-instance-id}" biçimidir.
+Bir ölçek kümesindeki her VM kendisine atanan bir bilgisayar adı da alır. Bu bilgisayar adı, [sanal ağ Içindeki Azure tarafından BELIRTILEN DNS adı çözünürlüğünde](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)VM 'nin ana bilgisayar adıdır. Bu bilgisayar adı "{bilgisayar-adı-önek} {Base-36-Instance-id}" biçimindedir.
 
-{Base-36-örnek-kimliği} yer [36 temel](https://en.wikipedia.org/wiki/Base36) ve her zaman altı basamak uzunluğunda. Altıdan az basamak sayısı 36 gösterimini temel aldığı durumlarda {base-36-örnek-kimliği} uzunluğu altı basamaklı yapmak için önüne sıfır eklenir. Örneğin, bilgisayar adı "nsgvmss00002D" {bilgisayar adı öneki} "nsgvmss" ile bir örnek ve örnek kimliği 85 olacaktır.
+{Base-36-Instance-id}, [base 36](https://en.wikipedia.org/wiki/Base36) ' dir ve her zaman altı basamaktan oluşmalıdır. Sayının Base 36 temsili altıdan az basamak alırsa, {Base-36-Instance-id}, altı basamaklı bir değer olacak şekilde sıfırlar ile doldurulur. Örneğin, {bilgisayar-adı-prefix} "nsgvmss" ve örnek KIMLIĞI 85 olan bir örnek bilgisayar adı "nsgvmss00002D" olacaktır.
 
 >[!NOTE]
-> Bilgisayar adı ön eki ayarlayabilirsiniz, Ölçek kümesi modelinde bir özelliği olduğundan ölçek kümesi adı kendisini farklı olabilir.
+> Bilgisayar adı ön eki, ayarlayabileceğiniz ölçek kümesi modelinin bir özelliğidir, bu sayede ölçek kümesi adından farklı olabilir.

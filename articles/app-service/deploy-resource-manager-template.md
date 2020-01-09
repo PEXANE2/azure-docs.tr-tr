@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 082ef9753f84aef3f867a9dee4b4e9fbf73dd379
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422103"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Web uygulamalarını dağıtma Kılavuzu
 
@@ -89,12 +89,12 @@ Yukarıdaki kodu kullanan, çalıştırmaya hazırlanma bir örnek için bkz. [T
 Kaynak Yöneticisi şablonunuz MSDeploy kullanıyorsa, dağıtım hata iletilerinin anlaşılması zor olabilir. Başarısız bir dağıtımdan sonra daha fazla bilgi edinmek için aşağıdaki adımları deneyin:
 
 1. Sitenin [kudu konsoluna](https://github.com/projectkudu/kudu/wiki/Kudu-console)gidin.
-2. D:\home\logfiles\siteextensions\msdeploykonumundaki klasöre göz atın.
+2. Browse to the folder at D:\home\LogFiles\SiteExtensions\MSDeploy.
 3. AppManagerStatus. xml ve appManagerLog. xml dosyalarını arayın. İlk dosya durumu günlüğe kaydeder. İkinci dosya hatayla ilgili bilgileri günlüğe kaydeder. Hata sizin için açık değilse, forumda yardım isteyip istemediğiniz zaman ekleyebilirsiniz.
 
 ## <a name="choose-a-unique-web-app-name"></a>Benzersiz bir Web uygulaması adı seçin
 
-Web uygulamanızın adı genel olarak benzersiz olmalıdır. Benzersiz olabilecek bir adlandırma kuralı kullanabilirsiniz veya benzersiz bir ad oluşturmaya yardımcı olması için [Uniquestring işlevini](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) kullanabilirsiniz.
+Web uygulamanızın adı genel olarak benzersiz olmalıdır. Benzersiz olabilecek bir adlandırma kuralı kullanabilirsiniz veya benzersiz bir ad oluşturmaya yardımcı olması için [Uniquestring işlevini](../azure-resource-manager/templates/template-functions-string.md#uniquestring) kullanabilirsiniz.
 
 ```json
 {
@@ -125,7 +125,7 @@ Azure Kamu 'da App Service hizmet sorumlusu, **6a02c803-dadfd-4136-b4c3-5a6f318b
 
 Key Vault **Sertifikalar** ' ı seçin ve sertifikayı karşıya yüklemek için **Oluştur/içeri aktar** ' a tıklayın.
 
-![Sertifikayı içeri aktar](media/web-sites-rm-template-guidance/import-certificate.png)
+![Sertifikayı al](media/web-sites-rm-template-guidance/import-certificate.png)
 
 Şablonunuzda `keyVaultSecretName`sertifikanın adını sağlayın.
 

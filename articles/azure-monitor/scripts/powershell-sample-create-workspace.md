@@ -1,22 +1,22 @@
 ---
-title: Betik örneğini Azure PowerShell-Log Analytics bir çalışma alanı oluşturun | Microsoft Docs
-description: Betik örneği Azure PowerShell-için Log Analytics çalışma alanı oluşturun
+title: Azure PowerShell betik örneği - bir Log Analytics çalışma alanı oluşturma | Microsoft Docs
+description: Azure PowerShell betik örneği - bir Log Analytics çalışma alanına oluşturma
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: sample
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: 6aad6c6f0656bd317a808de13e340d5774cea49b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 242ba4d8487e25ae0d6c5fd7dc1525942deb2a64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363107"
 ---
-# <a name="create-a-log-analytics-workspace-with-powershell"></a>PowerShell ile Log Analytics çalışma alanı oluşturma
+# <a name="create-a-log-analytics-workspace-with-powershell"></a>PowerShell ile bir Log Analytics çalışma alanı oluşturma
 
-Bu betik, verileri toplamaya, çözümlemeye ve eyleme başlamak istediğinizde gerekli olan bir Azure Log Analytics çalışma alanıyla hızlıca çalışmaya başlamanızı sağlar.  
+Bu betik, çalışmaya hızlıca üzerinde veri toplama, çözümleme ve alma eylemi başlatmak istiyorsanız, gerekli olan Azure Log Analytics çalışma alanıyla alır.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -35,7 +35,7 @@ Bu betik, aboneliğinizde yeni bir Log Analytics çalışma alanı oluşturmak i
 | Komut | Notlar |
 |---|---|
 | [Get-Azoperationalınsightsworkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Mevcut bir çalışma alanı hakkında bilgi alır. |
-| [New-Azoperationalınsightsworkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Belirtilen kaynak grubunda ve konumda bir çalışma alanı oluşturur. |
+| [New-Azoperationalınsightsworkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Belirtilen kaynak grubu ve konumda bir çalışma alanı oluşturur. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

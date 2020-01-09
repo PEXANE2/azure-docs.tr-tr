@@ -1,6 +1,7 @@
 ---
-title: MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında makale | Microsoft Docs
-description: MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları hakkında bilgi edinin.
+title: "Bilinen sorunlar: MySQL için Azure veritabanı 'na çevrimiçi geçişler"
+titleSuffix: Azure Database Migration Service
+description: Azure veritabanı geçiş hizmeti kullanılırken MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilgili bilinen sorunlar ve geçiş sınırlamaları hakkında bilgi edinin.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437853"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>MySQL için Azure DB 'ye çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
 
 MySQL 'in MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilişkili bilinen sorunlar ve sınırlamalar aşağıdaki bölümlerde açıklanmıştır.
 
 ## <a name="online-migration-configuration"></a>Çevrimiçi geçiş yapılandırması
+
 
 - Kaynak MySQL Server sürümü Version 5.6.35, 5.7.18 veya üzeri olmalıdır
 - MySQL için Azure veritabanı şunları destekler:

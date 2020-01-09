@@ -3,19 +3,15 @@ title: Amazon Web Services ile kimlik doğrulamasını yapılandırma
 description: Bu makale, AWS kaynaklarını yöneten Azure Automation'daki runbook'lar için bir AWS kimlik bilgisinin nasıl oluşturulup doğrulandığı açıklanmaktadır.
 keywords: aws kimlik doğrulaması, aws yapılandırma
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/17/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 9bca59efc374fedf04600ae165f04215016dd4af
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366949"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Amazon Web Hizmetleri ile Kimlik Doğrulaması Runbook'ları
 

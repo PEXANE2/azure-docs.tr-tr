@@ -1,6 +1,6 @@
 ---
-title: VPN ağ geçidi Klasikten Resource Manager'a geçiş | Microsoft Docs
-description: Bu sayfa, VPN ağ geçidi Klasik Resource Manager'a geçiş için bir genel bakış sağlar.
+title: Kaynak Yöneticisi geçişe klasik VPN Gateway | Microsoft Docs
+description: Bu sayfa, Kaynak Yöneticisi geçişe VPN Gateway bir genel bakış sağlar.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425815"
 ---
-# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Klasik VPN Gateway'inizi Resource Manager'a geçiş
-VPN ağ geçitleri artık Klasik moddan Resource Manager dağıtım modeline geçirilebilir. Daha fazla Azure Resource Manager hakkındaki [özelliklerine ve avantajlarına](../azure-resource-manager/resource-group-overview.md). Bu makalede, biz Klasik dağıtımlardan yeni Resource Manager tabanlı modele geçiş ilişkin ayrıntılı bilgi vermektedir. 
+# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway klasik Kaynak Yöneticisi geçişe
+VPN ağ geçitleri artık klasik 'dan Kaynak Yöneticisi dağıtım modeline geçirilebilir. Azure Resource Manager [özellikleri ve avantajları](../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, klasik dağıtımlardan daha yeni Kaynak Yöneticisi tabanlı modele nasıl geçirileceğiyle ayrıntılıyoruz. 
 
-VPN ağ geçitleri, sanal ağ geçiş Klasik modelden Kaynak Yöneticisi'nin bir parçası olarak geçirilir. Bu geçiş bir kerede bir sanal ağın gerçekleştirilir. Araçlar veya geçiş için Önkoşullar açısından ek gereksinimi yoktur. Geçiş adımları, var olan sanal ağı geçiş için aynıdır ve adresinde belgelenen [Iaas kaynakları geçiş sayfası](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Geçiş sırasında hiçbir veri yolu kapalı kalma süresi yoktur ve bu nedenle mevcut iş yüklerinin geçiş sırasında şirket içi bağlantı kaybı yaşanmadan çalışmaya devam eder. VPN ağ geçidi ile ilişkili genel IP adresini, geçiş işlemi sırasında değiştirmez. Bu, geçiş tamamlandıktan sonra şirket içi yönlendiricinizi yeniden yapılandırmanız gerekmez anlamına gelir.  
+VPN ağ geçitleri, klasik bilgisayardan Kaynak Yöneticisi arasında VNet geçişinin parçası olarak geçirilir. Bu geçiş tek seferde bir sanal ağ yapılır. Geçiş için araçlar veya Önkoşullar bakımından ek gereksinim yoktur. Geçiş adımları var olan VNet [geçişiyle aynıdır ve IaaS kaynakları geçiş sayfasında](../virtual-machines/windows/migration-classic-resource-manager-ps.md)belgelenmiştir. Geçiş sırasında veri yolu kapalı kalma süresi yoktur ve bu nedenle mevcut iş yükleri geçiş sırasında şirket içi bağlantı kaybı olmadan çalışmaya devam eder. VPN Gateway ile ilişkili genel IP adresi, geçiş işlemi sırasında değişmez. Bu, geçiş işlemi tamamlandıktan sonra şirket içi yönlendiricinizi yeniden yapılandırmanız gerekeceği anlamına gelir.  
 
-Kaynak Yöneticisi'nde modeli Klasik modelden farklıdır ve sanal ağ geçitleri, yerel ağ geçitleri ve bağlantı kaynaklarını oluşur. Bunlar, VPN ağ geçidinin kendisi, şirket içi adres alanı ve ikisi arasındaki bağlantı sırasıyla temsil eden yerel site temsil eder. Geçiş tamamlandıktan sonra ağ geçitlerinizi Klasik modelde kullanılamaz ve Resource Manager modelini kullanarak sanal ağ geçitleri, yerel ağ geçitleri ve bağlantı nesneler üzerinde tüm yönetim işlemlerini gerçekleştirilmesi gerekir.
+Kaynak Yöneticisi modeli, klasik modelden farklıdır ve sanal ağ geçitleri, yerel ağ geçitleri ve bağlantı kaynaklarından oluşur. Bunlar, şirket içi adres alanını temsil eden yerel-site ve sırasıyla iki arasındaki bağlantıyı temsil eden VPN ağ geçidinin kendisini temsil eder. Geçiş işlemi tamamlandıktan sonra, ağ geçitleriniz Klasik modelde kullanılamaz ve sanal ağ geçitleri, yerel ağ geçitleri ve bağlantı nesnelerinde tüm yönetim işlemleri Kaynak Yöneticisi modeli kullanılarak gerçekleştirilmelidir.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
-VPN bağlantısı için en sık karşılaşılan senaryolardan Klasikten Resource Manager'a geçiş tarafından ele alınmaktadır. Desteklenen senaryolar şunlardır-
+En yaygın VPN bağlantı senaryoları klasik Kaynak Yöneticisi geçişe göre ele alınmıştır. Desteklenen senaryolar şunlardır-
 
-* Site bağlantı noktası
-* Siteden siteye bağlantı VPN ağ geçidi ile şirket içi konuma bağlı
-* VPN gateways kullanan iki sanal ağ arasında VNet bağlantı
-* Birden çok sanal ağlar aynı şirket içi konuma bağlı
+* Site bağlantısı noktası
+* Şirket içi konuma bağlı VPN Gateway siteden siteye bağlantı
+* VPN ağ geçitleri kullanan iki sanal ağ arasında VNET 'ten VNet 'e bağlantı
+* Aynı şirket içi konuma bağlı birden çok VNET
 * Çok siteli bağlantı
 * Zorlamalı tünel etkin sanal ağlar
 
 Desteklenmeyen senaryolar şunlardır-  
 
-* Sanal ağ ile ExpressRoute ağ geçidi hem de VPN ağ geçidi şu anda desteklenmiyor.
-* VM uzantıları burada şirket içi sunucular için bağlı olan geçiş senaryoları. Geçiş VPN bağlantı sınırlamaları aşağıda ayrıntılı şekilde verilmiştir.
+* Hem ExpressRoute ağ geçidi hem de VPN Gateway sanal ağı şu anda desteklenmemektedir.
+* VM uzantılarının şirket içi sunuculara bağlandığı geçiş senaryoları. İletim VPN bağlantısı sınırlamaları aşağıda ayrıntılı olarak verilmiştir.
 
 > [!NOTE]
-> Resource Manager modelinde CIDR doğrulama daha katı bir Klasik model. Geçiş yapmadan önce geçiş işlemine başlamadan önce verilen Klasik adres aralıkları için geçerli bir CIDR biçiminde uyumlu olmasını sağlamak. Tüm ortak CIDR doğrulayıcıları kullanarak CIDR doğrulanabilir. VNet veya geçirilen geçersiz CIDR aralıkları yerel siteleriyle başarısız durumda neden olur.
+> Kaynak Yöneticisi modelinde CıDR doğrulaması, klasik modelden daha sıkı bir şekilde. Geçirmeden önce, klasik adres aralıklarının Geçişe başlamadan önce geçerli CıDR biçimine uyduğundan emin olun. CıDR, tüm ortak CıDR Doğrulayıcıları kullanılarak doğrulanabilir. Geçiş sırasında geçersiz CıDR aralıklarına sahip VNet veya yerel siteler başarısız durumuna neden olur.
 > 
 > 
 
-## <a name="vnet-to-vnet-connectivity-migration"></a>VNet-VNet bağlantısı geçişi
-Sanal ağa bağlantı, Klasik VNet, bağlı sanal ağ yerel sitesi temsilini oluşturarak ulaşılmıştı. Müşteriler, iki sanal ağ birbirine bağlanması için gereken temsil iki yerel site oluşturma geçme zorunluluğundaydı. Bu, daha sonra iki sanal ağ arasında bağlantı kurmak için IPSec tüneli kullanarak karşılık gelen sanal ağlar için bağlanmış. Bir sanal ağın adres aralığı değişiklikler, karşılık gelen yerel site gösteriminde korunmalıdır olduğundan bu modeli yönetilebilirlik zorlukları vardır. Resource Manager modelinde bu geçici çözüm artık gerekli değildir. İki sanal ağ arasındaki bağlantıyı doğrudan bağlantı kaynağında 'Vnet2Vnet' bağlantı türü kullanılarak gerçekleştirilebilir. 
+## <a name="vnet-to-vnet-connectivity-migration"></a>VNet 'ten VNet 'e bağlantı geçişi
+Klasik VNET 'ten VNet 'e bağlantı, bağlı VNet 'in yerel bir site temsili oluşturularak elde edildi. Müşterilerin birbirine bağlanması gereken iki sanal ağı temsil eden iki yerel site oluşturması gerekiyordu. Bunlar daha sonra, iki sanal ağ arasında bağlantı kurmak için IPSec tüneli kullanılarak ilgili sanal ağlara bağlanmıştı. Bir VNet 'teki herhangi bir adres aralığı değişikliği de karşılık gelen yerel site gösteriminde tutulması gerektiğinden, bu modelde yönetilebilirlik sorunları vardır. Kaynak Yöneticisi modelinde bu geçici çözüm artık gerekli değildir. İki sanal ağ arasındaki bağlantı, bağlantı kaynağındaki ' Vnet2Vnet ' bağlantı türü kullanılarak doğrudan elde edilebilir. 
 
-![Ekran görüntüsü, VNet-VNet geçişi.](./media/vpn-gateway-migration/migration1.png)
+![VNet 'ten VNet 'e geçiş ekran görüntüsü.](./media/vpn-gateway-migration/migration1.png)
 
-Sanal ağ geçiş sırasında geçerli sanal ağın VPN gateway'e bağlı varlık başka bir vnet ve her iki vnet'in geçiş tamamlandıktan sonra başka bir sanal ağ ' ı temsil eden iki yerel siteler artık görür olun algılayın. Klasik modeli iki VPN ağ geçitleri, iki yerel site ve aralarında iki bağlantı iki VPN ağ geçidi ve iki tür Vnet2Vnet bağlantısı ile Resource Manager modeline dönüştürülür.
+VNet geçişi sırasında, geçerli VNet 'in VPN Gateway 'e bağlı varlığın başka bir VNet olduğunu tespit ettik ve her iki sanal ağın geçişinin tamamlandığından emin olun, artık diğer VNet 'i temsil eden iki yerel site görmezsiniz. İki VPN ağ geçidinin klasik modeli, iki adet yerel site ve aralarında iki bağlantı, iki VPN Gateway ve Vnet2Vnet türünde iki bağlantı olan Kaynak Yöneticisi modele dönüştürülür.
 
-## <a name="transit-vpn-connectivity"></a>Geçiş VPN bağlantısı
-Bir sanal ağın şirket içi bağlantıyı doğrudan şirket içine bağlı başka bir sanal ağa bağlanarak elde edilir, VPN ağ geçitleri bir topolojide yapılandırabilirsiniz. İlk VNet durumlarda şirket içi kaynaklara doğrudan şirket içine bağlı bağlı VNet VPN gateway'e geçiş aracılığıyla burada bağlı geçiş VPN bağlantısı budur. Bu yapılandırmayı Klasik dağıtım modelinde elde etmek için hem bağlı VNet temsil eden ön ekleri toplanmış bir yerel site oluşturmak için ihtiyacınız ve şirket içi adres alanı. Bu temsili yerel site ardından aktarım bağlantısı elde etmek için sanal ağa bağlı. Şirket içi adres aralığındaki herhangi bir değişiklik, VNet ve şirket içi bir toplamasını temsil eden yerel sitede bulundurulması olduğundan bu Klasik modeli de benzer yönetilebilirlik zorlukları vardır. Bağlı ağ geçidi yollarını şirket içi öneklerini el ile değişiklik yapılmaksızın edinebilirsiniz beri Resource Manager'ın desteklenen ağ geçidi BGP desteği sunulmasıyla yönetilebilirlik basitleştirir.
+## <a name="transit-vpn-connectivity"></a>İletim VPN bağlantısı
+VPN ağ geçitlerini, bir sanal ağa yönelik şirket içi bağlantının, şirket içi olarak doğrudan bağlı olan başka bir sanal ağa bağlanarak elde edilebildiğini bir topolojide yapılandırabilirsiniz. Bu, ilk VNet 'teki örneklerin şirket içi kaynaklara doğrudan şirket içine bağlı olan VNet 'teki VPN ağ geçidine geçiş yoluyla bağlandığı iletim VPN bağlantısı ' dır. Bu yapılandırmayı klasik dağıtım modelinde elde etmek için, hem bağlı VNet 'i hem de şirket içi adres alanını temsil eden toplanmış ön ekleri olan bir yerel site oluşturmanız gerekir. Bu temsili yerel sitesi daha sonra aktarım bağlantısı sağlamak için VNet 'e bağlanır. Bu klasik modelde aynı yönetilebilirlik zorlukları de vardır çünkü şirket içi adres aralığındaki herhangi bir değişiklik aynı zamanda VNet 'in ve şirket içi toplamanın toplamasını temsil eden yerel sitede saklanması gerekir. Desteklenen Kaynak Yöneticisi ağ geçitlerinde BGP desteğinin sunulması, bağlı ağ geçitleri, öneklerde el ile değişiklik yapmadan Şirket içindeki yolları öğrenebileceği için yönetilebilirliği basitleştirir.
 
-![Transit yönlendirme senaryosu ekran görüntüsü.](./media/vpn-gateway-migration/migration2.png)
+![Transit yönlendirme senaryosunun ekran görüntüsü.](./media/vpn-gateway-migration/migration2.png)
 
-Biz VNet yerel siteleri gerektirmeden sanal ağa bağlantı dönüştürme olduğundan, geçiş senaryosu dolaylı olarak şirket içine bağlı VNet için şirket içi bağlantıyı kaybeder. Geçiş tamamlandıktan sonra bağlantı kaybı aşağıdaki iki yolla azaltılabilir- 
+Sanal ağı yerel siteler gerekmeden VNet bağlantısına dönüştürtiğimiz için, aktarım senaryosu şirket içinde dolaylı olarak bağlı olan VNet için şirket içi bağlantıyı kaybeder. Bağlantı kaybı, geçiş tamamlandıktan sonra aşağıdaki iki şekilde azaltılabilir. 
 
-* Bağlı olduğu birlikte ve şirket içi VPN ağ geçitleri üzerinde BGP etkinleştirin. BGP etkinleştiriliyor yollar hakkında bilgi edindiniz ve tanıtılan sanal ağ geçitleri arasında bağlantı herhangi bir yapılandırma değişikliği olmadan geri yükler. BGP seçeneği yalnızca standart ve daha yüksek SKU'larında kullanılabilir olduğunu unutmayın.
-* Bir açık etkilenen vnet'ten şirket içi konumu temsil eden yerel ağ geçidi bağlantısı. Bu da oluşturun ve IPSec tüneli yapılandırmak için şirket içi yönlendiricisindeki yapılandırmasının değiştirilmesi gerekir.
+* Birlikte ve şirket içine bağlanan VPN ağ geçitlerinde BGP 'yi etkinleştirin. BGP 'nin VNet ağ geçitleri arasında öğrenilmesi ve tanıtılmasından bu yana başka herhangi bir yapılandırma değişikliği yapmadan BGP 'nin yeniden yükleme BGP seçeneğinin yalnızca standart ve daha yüksek SKU 'Larda kullanılabilir olduğunu unutmayın.
+* Etkilenen VNet 'ten şirket içi konumu temsil eden yerel ağ geçidine açık bir bağlantı kurun. Ayrıca, IPSec tüneli oluşturmak ve yapılandırmak için şirket içi yönlendiricide yapılandırma değiştirilmesini de gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-VPN ağ geçidi geçişi desteği hakkında daha fazla edindikten sonra Git [Iaas kaynaklarının Klasik'ten Resource Manager'a platform destekli geçişe](../virtual-machines/windows/migration-classic-resource-manager-ps.md) kullanmaya başlamak için.
+VPN Gateway geçiş desteğini öğrendikten sonra, kullanmaya başlamak için [Klasik 'Ten IaaS kaynaklarının, klasik 'ten Kaynak Yöneticisi geçişine](../virtual-machines/windows/migration-classic-resource-manager-ps.md) gidin.
 

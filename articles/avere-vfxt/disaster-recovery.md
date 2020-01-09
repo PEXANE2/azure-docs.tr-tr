@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414233"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Azure için avere vFXT için olağanüstü durum kurtarma Kılavuzu
 
@@ -104,7 +104,7 @@ Azure kümesi için bir avere vFXT 'den yedekleme kapsayıcısına erişmek içi
 1. Gerekirse, etkilenmeyen bir bölgede Azure kümesi için yeni bir avere vFXT oluşturun.
 
    > [!TIP]
-   > Azure kümesi için bir avere vFXT oluşturduğunuzda, oluşturma şablonu ve parametrelerinin bir kopyasını kaydedebilirsiniz. Birincil kümenizi oluştururken bu bilgileri kaydederseniz, aynı özelliklere sahip bir değiştirme kümesi oluşturmak için kullanabilirsiniz. [Doğrulama ve Özet](avere-vfxt-deploy.md#validation-and-purchase) sayfasında, **şablon ve parametreleri indir** bağlantısına tıklayın. Kümeyi oluşturmak için **Tamam** düğmesine tıklamadan önce bu bilgileri bir dosyaya kaydedin.
+   > Azure kümesi için bir avere vFXT oluşturduğunuzda, oluşturma şablonu ve parametrelerinin bir kopyasını kaydedebilirsiniz. Birincil kümenizi oluştururken bu bilgileri kaydederseniz, aynı özelliklere sahip bir değiştirme kümesi oluşturmak için kullanabilirsiniz. [Özet](avere-vfxt-deploy.md#validation-and-purchase) sayfasında, **şablon ve parametreleri indir** bağlantısına tıklayın. Kümeyi oluşturmadan önce bilgileri bir dosyaya kaydedin.
 
 1. Yinelenen blob kapsayıcısına işaret eden yeni bir bulut çekirdeği ekleyin.
 

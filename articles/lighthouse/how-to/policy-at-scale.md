@@ -3,22 +3,22 @@ title: Azure Ilkesini, uygun ölçekte ücretsiz aboneliklere dağıtın
 description: Azure Temsilcili Kaynak yönetiminin, birden fazla kiracıda ilke tanımı ve ilke atamasını dağıtmanıza nasıl olanak sağladığını öğrenin.
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456851"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Ilkesini, uygun ölçekte ücretsiz aboneliklere dağıtın
 
 Hizmet sağlayıcı olarak, Azure tarafından atanan kaynak yönetimi için birden fazla müşteri kiracısından eklendi olabilirsiniz. [Azure Mathouse](../overview.md) , hizmet sağlayıcılarının aynı anda birkaç kiracıda bir ölçekte işlem gerçekleştirmesine olanak sağlayarak yönetim görevlerini daha verimli hale getirir.
 
-Bu konu başlığı altında, PowerShell komutlarını kullanarak birden çok kiracıya bir ilke tanımı ve ilke ataması dağıtmak için [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/) 'nin nasıl kullanılacağı gösterilmektedir. Bu örnekte, ilke tanımı, yalnızca HTTPS trafiğine izin vererek depolama hesaplarının güvenli olmasını sağlar.
+Bu konu başlığı altında, PowerShell komutlarını kullanarak birden çok kiracıya bir ilke tanımı ve ilke ataması dağıtmak için [Azure ilkesi](../../governance/policy/index.yml) 'nin nasıl kullanılacağı gösterilmektedir. Bu örnekte, ilke tanımı, yalnızca HTTPS trafiğine izin vererek depolama hesaplarının güvenli olmasını sağlar.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Müşteri kiracılarının tamamında sorgulama yapmak için Azure Kaynak grafiğini kullanma
 
-Yönettiğiniz müşteri kiracılarındaki tüm aboneliklerde sorgulama yapmak için [Azure Kaynak grafiğini](https://docs.microsoft.com/azure/governance/resource-graph/) kullanabilirsiniz. Bu örnekte, bu aboneliklerde Şu anda HTTPS trafiği gerektirmeyen tüm depolama hesaplarını tanımlayacağız.  
+Yönettiğiniz müşteri kiracılarındaki tüm aboneliklerde sorgulama yapmak için [Azure Kaynak grafiğini](../../governance/resource-graph/index.yml) kullanabilirsiniz. Bu örnekte, bu aboneliklerde Şu anda HTTPS trafiği gerektirmeyen tüm depolama hesaplarını tanımlayacağız.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/)hakkında bilgi edinin.
+- [Azure ilkesi](../../governance/policy/index.yml)hakkında bilgi edinin.
 - [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.

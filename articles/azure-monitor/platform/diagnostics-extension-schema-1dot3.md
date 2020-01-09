@@ -4,15 +4,15 @@ description: Şema sürümü 1,3 ve üzeri Azure tanılama, Microsoft Azure SDK 
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2018
-ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a3ee9731ebeb3b002f4dd9f5b856e720bf719d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834741"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395085"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Tanılama 1,3 ve üzeri yapılandırma şeması
 > [!NOTE]
@@ -20,7 +20,7 @@ ms.locfileid: "73834741"
 > - Azure Sanal Makineler
 > - Sanal Makine Ölçek Kümeleri
 > - Service Fabric
-> - Cloud Services
+> - Bulut Hizmetleri
 > - Ağ Güvenlik Grupları
 >
 > Bu sayfa yalnızca bu hizmetlerden birini kullanıyorsanız ilgilidir.
@@ -414,7 +414,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**PublicConfig**|Gereklidir. Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**PrivateConfig**|İsteğe bağlı. Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
@@ -425,7 +425,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  Genel Tanılama yapılandırmasını açıklar.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**WadCfg**|Gereklidir. Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**StorageAccount**|Verilerin depolandığı Azure depolama hesabının adı. , Set-Azurezervicediagnokıkıtik cmdlet 'ini yürütürken de parametre olarak belirtilebilir.|  
@@ -441,18 +441,18 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration öğesi
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Gerekli
+ Gereklidir
 
 |Öznitelikler|Açıklama|  
 |----------------|-----------------|  
-| **Overallquocontainer MB** | Azure Tanılama tarafından toplanan çeşitli tanılama verileri türleri tarafından tüketilen en fazla yerel disk alanı miktarı. Varsayılan ayar 4096 MB 'dir.<br />
+| **overallQuotaInMB** | Azure Tanılama tarafından toplanan çeşitli tanılama verileri türleri tarafından tüketilen en fazla yerel disk alanı miktarı. Varsayılan ayar 4096 MB 'dir.<br />
 |**useProxyServer** | Proxy sunucusu ayarlarını IE ayarlarında ayarlandığı şekilde kullanmak için Azure Tanılama yapılandırın.|
 |**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Havuzları destekleyen tüm alt öğeler için tanılama verilerini de göndermek üzere bir havuz konumunu işaret eder. Havuz örneği Application Insights veya Event Hubs.|  
 
 
 <br /> <br />
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**Formattaki**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 |**DiagnosticInfrastructureLogs**|Azure Tanılama tarafından oluşturulan günlüklerin toplanmasını etkinleştirin. Tanılama altyapısı günlükleri, tanılama sisteminin kendisi için sorun gidermeye yarar. İsteğe bağlı öznitelikler şunlardır:<br /><br /> **Scheduledtransferloglevelfilter** - -toplanan günlüklerin en düşük önem derecesi düzeyini yapılandırır.<br /><br /> **Scheduledtransferperiod** - -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -476,7 +476,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |**crashDumpType**|İsteğe bağlı.  Mini veya tam kilitlenme dökümleri toplamak için Azure Tanılama yapılandırır.|  
 |**directoryQuotaPercentage**|İsteğe bağlı.  VM 'deki kilitlenme dökümlerinin ayrılması için **Overallquocontainer MB** yüzdesini yapılandırır.|  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Gereklidir. Her işlem için yapılandırma değerlerini tanımlar.<br /><br /> Aşağıdaki öznitelik de gereklidir:<br /><br /> **ProcessName** -Azure tanılama kilitlenme dökümü toplamasını istediğiniz işlemin adı.|  
 
@@ -487,7 +487,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  İsteğe bağlı **Scheduledtransferperiod** özniteliği. Daha önce Açıklama bölümüne bakın.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**Iıslogs**|Bu öğenin yapılandırmasına dahil edilmesi, IIS günlüklerinin toplanmasını sunar:<br /><br /> **ContainerName** -IIS günlüklerini depolamak Için kullanılacak Azure Depolama hesabınızdaki blob kapsayıcısının adı.|   
 |**FailedRequestLogs**|Bu öğenin yapılandırmasına dahil edilmesi, bir IIS sitesine veya uygulamasına başarısız istekler hakkında günlüklerin toplanmasını sağlar. Ayrıca sistem altında izleme seçeneklerini etkinleştirmeniz gerekir **.**  **Web. config 'de Web**sunucusu.|  
@@ -501,7 +501,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  İzlenecek dizinlerin listesi.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|Gereklidir. Gerekli öznitelik:<br /><br /> **ContainerName** -Azure Depolama hesabınızdaki günlük dosyalarını depolamak için kullanılacak blob kapsayıcısının adı.|  
 
@@ -514,7 +514,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  **Mutlak** ya da **localresource** öğesi içerebilir, ancak ikisini birden içeremez.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**Salt**|İzlenecek dizinin mutlak yolu. Aşağıdaki öznitelikler gereklidir:<br /><br /> - **Path** -izlenecek dizinin mutlak yolu.<br /><br /> - **Expandenvironment** -yoldaki ortam değişkenlerinin genişletilip genişletilmediğini yapılandırır.|  
 |**LocalResource**|İzlenecek yerel bir kaynağa göreli yol. Gerekli öznitelikler şunlardır:<br /><br /> - **adı** -izlenecek dizini içeren yerel kaynak<br /><br /> - **relativePath** -izlenecek dizini içeren ada göre yol|  
@@ -526,7 +526,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  EventSource ve/veya ETW bildirim tabanlı sağlayıcılardan ETW olaylarının toplanmasını yapılandırır.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|[EventSource sınıfından](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)oluşturulan olayların koleksiyonunu yapılandırır. Gerekli öznitelik:<br /><br /> **provider** -EventSource olayının sınıf adı.<br /><br /> İsteğe bağlı öznitelikler şunlardır:<br /><br /> **Scheduledtransferloglevelfilter** - -depolama hesabınıza aktarılacak en düşük önem düzeyi.<br /><br /> **Scheduledtransferperiod** - -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Gerekli öznitelik:<br /><br /> **sağlayıcı** -olay sağlayıcısının GUID 'si<br /><br /> İsteğe bağlı öznitelikler şunlardır:<br /><br /> **Scheduledtransferloglevelfilter** - -depolama hesabınıza aktarılacak en düşük önem düzeyi.<br /><br /> **Scheduledtransferperiod** - -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -538,7 +538,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  [EventSource sınıfından](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)oluşturulan olayların koleksiyonunu yapılandırır.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**DefaultEvents**|İsteğe bağlı öznitelik:<br/><br/> **Eventdestination** -olayların depolandığı tablonun adı|  
 |**Olay**|Gerekli öznitelik:<br /><br /> **ID** -olayın kimliği.<br /><br /> İsteğe bağlı öznitelik:<br /><br /> **Eventdestination** -olayların depolandığı tablonun adı|  
@@ -548,7 +548,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration öğesi  
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**DefaultEvents**|İsteğe bağlı öznitelik:<br /><br /> **Eventdestination** -olayların depolandığı tablonun adı|  
 |**Olay**|Gerekli öznitelik:<br /><br /> **ID** -olayın kimliği.<br /><br /> İsteğe bağlı öznitelik:<br /><br /> **Eventdestination** -olayların depolandığı tablonun adı|  
@@ -562,7 +562,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  **RESOURCEID** özniteliği gereklidir.  Azure Tanılama dağıttığınız sanal makinenin veya sanal makine ölçek kümesinin kaynak KIMLIĞI. [Azure Portal](https://portal.azure.com) **RESOURCEID** 'yi alın. **< ad\>**  ->  -> **kaynak gruplarını** **Araştır** ' ı seçin. **Özellikler** kutucuğuna tıklayın ve değeri **kimlik** alanından kopyalayın.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**Metrictoplamasını**|Gerekli öznitelik:<br /><br /> **Scheduledtransferperiod** -depolamaya en yakın dakikaya yuvarlayarak zamanlanan aktarımlar arasındaki Aralık. Değer bir [XML "Duration veri türüdür."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
@@ -577,7 +577,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  İsteğe bağlı **Scheduledtransferperiod** özniteliği. Daha önce Açıklama bölümüne bakın.
 
-|Alt öğe|Açıklama|  
+|Alt Öğe|Açıklama|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Aşağıdaki öznitelikler gereklidir:<br /><br /> - **Counterbelirleyicisi** -performans sayacının adı. Örneğin, `\Processor(_Total)\% Processor Time`. Ana bilgisayarınızdaki performans sayaçlarının listesini almak için `typeperf`komutunu çalıştırın.<br /><br /> - **örnekler,** sayacın ne sıklıkta örnekleneceği.<br /><br /> İsteğe bağlı öznitelik:<br /><br /> **Unit** -sayacın ölçü birimi.|
 |**yapma** | 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Azure Izleyici veya Event Hubs.|    
@@ -592,7 +592,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  İsteğe bağlı **Scheduledtransferperiod** özniteliği. Daha önce Açıklama bölümüne bakın.  
 
-|Alt öğe|Açıklama|  
+|Alt Öğe|Açıklama|  
 |-------------------|-----------------|  
 |**DataSource**|Toplanacak Windows olay günlükleri. Gerekli öznitelik:<br /><br /> **ad** -toplanacak Windows olaylarını açıklayan XPath sorgusu. Örneğin:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Tüm olayları toplamak için "*" belirtin|  
 
@@ -608,9 +608,9 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öznitelik|Tür|Açıklama|  
 |---------------|----------|-----------------|  
-|**Bufferquocontainer MB**|**unsignedInt**|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer 0 ' dır.|  
+|**bufferQuotaInMB**|**unsignedInt**|İsteğe bağlı. Belirtilen veriler için kullanılabilen en fazla dosya sistemi depolama miktarını belirtir.<br /><br /> Varsayılan değer, 0'dur.|  
 |**scheduledTransferLogLevelFilter**|**string**|İsteğe bağlı. Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**ve tüm günlükleri aktarır. Diğer olası değerler (en fazla bilgi sırasıyla) **verbose**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
-|**scheduledTransferPeriod**|**sürenin**|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
+|**scheduledTransferPeriod**|**Süresi**|İsteğe bağlı. Zamanlanan veri aktarımları arasındaki aralığı, en yakın dakikaya yuvarlayarak belirtir.<br /><br /> Varsayılan değer PT0S ' dir.|  
 |**yapma** |**string**| 1,5 'ye eklendi. İsteğe bağlı. Bir havuz konumunu işaret eder ve tanılama verilerini de gönderir. Örneğin, Application Insights veya Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
@@ -618,7 +618,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  1,9 'ye eklendi.
 
-|Öğe adı|Açıklama|  
+|Öğe Adı|Açıklama|  
 |------------------|-----------------|  
 |**STA**|Sisteme Docker kapsayıcıları için istatistikler toplamasını söyler|  
 
@@ -627,9 +627,9 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  Tanılama verilerinin gönderileceği konumların listesi ve bu konumların ilişkili yapılandırması.  
 
-|Öğe adı|Açıklama|  
+|Öğe Adı|Açıklama|  
 |------------------|-----------------|  
-|**Ev**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
+|**Havuz**|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 
 ## <a name="sink-element"></a>Havuz öğesi
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink*
@@ -640,12 +640,12 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öznitelik|Tür|Açıklama|  
 |---------------|----------|-----------------|  
-|**ada**|string|Sinkname tanımlayan bir dize.|  
+|**Adı**|string|Sinkname tanımlayan bir dize.|  
 
 |Öğe|Tür|Açıklama|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|Yalnızca Application Insights veri gönderilirken kullanılır. Erişiminiz olan bir etkin Application Insights hesabının Izleme anahtarını içerir.|  
-|**Lardan**|string|Size akış yapan her bir ek filtre|  
+|**Kanallar**|string|Size akış yapan her bir ek filtre|  
 
 ## <a name="channels-element"></a>Channels öğesi  
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-Channels*
@@ -656,7 +656,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
 |Öğe|Tür|Açıklama|  
 |-------------|----------|-----------------|  
-|**Kanalla**|string|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
+|**Kanal**|string|Bu sayfanın başka bir yerindeki açıklamaya bakın.|  
 
 ## <a name="channel-element"></a>Channel öğesi
  *Ağaç: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-Channels-Channel*
@@ -668,7 +668,7 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 |Öznitelikler|Tür|Açıklama|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|Aktarılan günlük girişlerinin en düşük önem derecesini belirtir. Varsayılan değer **tanımsızdır**ve tüm günlükleri aktarır. Diğer olası değerler (en fazla bilgi sırasıyla) **verbose**, **bilgi**, **Uyarı**, **hata**ve **kritik öneme**sahiptir.|  
-|**ada**|**string**|İfade edilecek kanalın benzersiz adı|  
+|**Adı**|**string**|İfade edilecek kanalın benzersiz adı|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig öğesi
@@ -676,11 +676,11 @@ Tanılama yapılandırma dosyasının en üst düzey öğesi.
 
  Sürüm 1,3 ' ye eklenmiştir.  
 
- İsteğe bağlı  
+ İsteğe Bağlı  
 
  Depolama hesabının özel ayrıntılarını (ad, anahtar ve uç nokta) depolar. Bu bilgiler sanal makineye gönderilir, ancak bundan alınamaz.  
 
-|Alt öğeler|Açıklama|  
+|Alt Öğeler|Açıklama|  
 |--------------------|-----------------|  
 |**StorageAccount**|Kullanılacak depolama hesabı. Aşağıdaki öznitelikler gereklidir<br /><br /> - **adı** -depolama hesabının adı.<br /><br /> - **anahtar** -depolama hesabına yönelik anahtar.<br /><br /> - **uç noktası** -depolama hesabına erişmek için uç nokta. <br /><br /> -**Sastoken** (eklenen 1.8.1)-özel yapılandırmada bir depolama hesabı anahtarı yerıne bir SAS belirteci belirtebilirsiniz. Sağlanmışsa, depolama hesabı anahtarı yok sayılır. <br />SAS belirteci için gereksinimler: <br />-Yalnızca hesap SAS belirtecini destekler <br />- *b*, *t* hizmeti türleri gereklidir. <br /> - *a*, *c*, *u*, *w* izinleri gereklidir. <br /> - *c*, *o* kaynak türleri gereklidir. <br /> -Yalnızca HTTPS protokolünü destekler <br /> -Başlangıç ve bitiş tarihi geçerli olmalıdır.|  
 

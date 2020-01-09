@@ -1,30 +1,19 @@
 ---
-title: Azure'da Service Fabric üzerinde bir .NET uygulaması oluşturma | Microsoft Docs
+title: Azure 'da Service Fabric bir .NET uygulaması oluşturma
 description: Bu öğreticide, ASP.NET Core ön ucuyla ve durum bilgisi olan bir güvenilir hizmet arka ucuyla uygulama oluşturmayı ve uygulamayı kümeye dağıtmayı öğrenirsiniz.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465465"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Öğretici: ASP.NET Core Web API'si ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma ve dağıtma
 
-Bu öğretici, bir dizinin birinci bölümüdür.  Verileri depolamak için ASP.NET Core Web API'si ön ucu ve durum bilgisi olan bir arka uç hizmetiyle Azure Service Fabric uygulaması oluşturmayı öğreneceksiniz. Bitirdiğinizde, oylama sonuçlarını kümedeki durum bilgisi içeren arka uç hizmetine kaydeden bir ASP.NET Core web ön ucuna sahip oylama uygulaması sağlanır. Oylama uygulamasını el ile oluşturmak istemiyorsanız, tamamlanmış uygulamanın [kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ve [Oylama örnek uygulamasında izlenecek yol](#walkthrough_anchor) bölümüne atlayabilirsiniz.  İsterseniz, bu öğreticiye ait bir [video kılavuzu](https://channel9.msdn.com/Events/Connect/2017/E100) da izleyebilirsiniz.
+Bu öğretici, bir serinin birinci bölümüdür.  Verileri depolamak için ASP.NET Core Web API'si ön ucu ve durum bilgisi olan bir arka uç hizmetiyle Azure Service Fabric uygulaması oluşturmayı öğreneceksiniz. Bitirdiğinizde, oylama sonuçlarını kümedeki durum bilgisi içeren arka uç hizmetine kaydeden bir ASP.NET Core web ön ucuna sahip oylama uygulaması sağlanır. Oylama uygulamasını el ile oluşturmak istemiyorsanız, tamamlanmış uygulamanın [kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ve [Oylama örnek uygulamasında izlenecek yol](#walkthrough_anchor) bölümüne atlayabilirsiniz.  İsterseniz, bu öğreticiye ait bir [video kılavuzu](https://channel9.msdn.com/Events/Connect/2017/E100) da izleyebilirsiniz.
 
 ![AngularJS + ASP. NET API ön ucu, Service Fabric üzerinde durum bilgisi olan bir arka uç hizmetine bağlanma](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
@@ -43,7 +32,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
@@ -180,7 +169,7 @@ Giriş denetleyicisine özgü görünüm olan **Views/Home/Index.cshtml** dosyas
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>_Layout.cshtml dosyasını güncelleştirme
+### <a name="update-the-_layoutcshtml-file"></a>_Layout.cshtml dosyasını güncelleştirme
 
 ASP.NET uygulaması için varsayılan düzen olan **Views/Shared/_Layout.cshtml** dosyasını açın.  Dosyanın içeriğini aşağıdakilerle değiştirin ve sonra da değişikliklerinizi kaydedin.
 
@@ -466,7 +455,7 @@ Bu öğreticide, VotingWeb ön uç web hizmetinin arka uç VotingData hizmetiyle
         ],
 ```
 Yerel geliştirme Kümenizde kullanılan ters proxy bağlantı noktasını bulmak için yerel Service Fabric kümesi bildiriminde **HttpApplicationGatewayEndpoint** öğesini görüntüleyin:
-1. Bir tarayıcı penceresi açın ve Service Fabric Explorer aracını açmak için\/http:/localhost: 19080 adresine gidin.
+1. Bir tarayıcı penceresi açın ve Service Fabric Explorer aracını açmak için http:\//localhost: 19080 adresine gidin.
 2. **Cluster-> bildirimi**' ni seçin.
 3. HttpApplicationGatewayEndpoint öğesinin bağlantı noktasını not edin. Varsayılan olarak 19081 olmalıdır. 19081 değilse VotesController.cs dosyasındaki kodun aşağıdaki bölümünde GetProxyAddress metodunun bağlantı noktasını değiştirmeniz gerekir.
 

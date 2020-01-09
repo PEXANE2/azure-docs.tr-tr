@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350132"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme
 
@@ -35,13 +35,13 @@ Tercih ederseniz, bu öğreticiyi [Azure CLI](tutorial-filter-network-traffic-cl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. 
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. 
 2. **Ağ**’ı ve sonra **Sanal ağ**’ı seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin:
 
@@ -59,7 +59,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucuları birlikte gruplandırmanızı sağlar.
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. 
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. 
 2. **Market içinde ara** kutusuna *Uygulama güvenlik grubu* girin. Arama sonuçlarında **Uygulama güvenlik grubu** gösterildiğinde bunu seçin, **Her şey**'in altında yeniden **Uygulama güvenlik grubu**'nu seçin ve sonra da **Oluştur**'u seçin.
 3. Aşağıdaki bilgileri girin veya seçin ve sonra **Oluştur**’u seçin:
 
@@ -81,7 +81,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. 
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. 
 2. **Ağ**'ı ve sonra **Ağ güvenlik grubu**’nu seçin.
 3. Aşağıdaki bilgileri girin veya seçin ve sonra **Oluştur**’u seçin:
 
@@ -138,7 +138,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun.
 
 ### <a name="create-the-first-vm"></a>Birinci sanal makineyi oluşturma
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. 
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. 
 2. **İşlem**'i seçin ve sonra da **Windows Server 2016 Datacenter**'ı seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin:
 
@@ -159,8 +159,8 @@ Sanal ağ üzerinde iki sanal makine oluşturun.
     |Ayar|Değer|
     |---|---|
     |Sanal ağ |**MyVirtualNetwork**öğesini seçin.|
-    |NIC ağ güvenlik grubu |**Gelişmiş**'i seçin.|
-    |Ortak gelen bağlantı noktaları|**Hiçbiri**' ni seçin. |
+    |NIC ağ güvenlik grubu |**Hiçbiri** seçeneğini belirtin.|
+  
 
 6. Sol köşedeki **gözden geçir + oluştur** seçeneğini BELIRLEYIN, VM dağıtımını başlatmak için **Oluştur** ' u seçin.
 
@@ -215,9 +215,9 @@ Portal VM'leri oluştururken, her VM için bir ağ arabirimi oluşturur ve ağ a
 
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki *Ara* kutusuna **myResourceGroup** değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
+1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
 2. **Kaynak grubunu sil**'i seçin.
-3. *KAYNAK GRUBU ADINI YAZIN:* için **myResourceGroup** girin ve **Sil**’i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

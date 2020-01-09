@@ -4,183 +4,178 @@ description: Azure Izleyici günlükleri Analizi hizmeti hakkında sık sorulan 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 77159e0fa73a1f56688c867c55ae46f28016992c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394794"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics SSS
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu Microsoft SSS, Azure Izleyici Log Analytics çalışma alanı hakkında sık sorulan sorulardan oluşan bir listesidir. Log Analytics hakkında başka sorularınız varsa, [tartışma forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+Bu Microsoft SSS, Azure Izleyici Log Analytics çalışma alanı hakkında sık sorulan sorulardan oluşan bir listesidir. Log Analytics hakkında ek sorularınız varsa, Git [tartışma forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) ve sorularınızı gönderin. Sık sorulan bir soru, böylece hızla ve kolayca bulunabilir, bu makaleye ekleriz.
 
 
-## <a name="new-logs-experience"></a>Yeni günlük deneyimi
+## <a name="new-logs-experience"></a>Yeni günlükleri deneyimi
 
-### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>S: yeni günlük deneyimi ve Log Analytics arasındaki fark nedir?
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>S: yeni günlükleri deneyimi ve Log Analytics arasındaki fark nedir?
 
-Y: aynı şeydir. [Log Analytics, Azure izleyici 'de](../../azure-monitor/azure-monitor-rebrand.md) daha birleştirilmiş bir izleme deneyimi sağlamak için bir özellik olarak tümleştirilir. Azure Izleyici 'deki yeni günlük deneyimi, birçok müşterinin zaten kullandığı Log Analytics sorgularıyla tam olarak aynıdır.
+Y: Bunlar aynı şeydir. [Log Analytics'e tümleşik Azure İzleyici'de bir özellik olarak](../../azure-monitor/azure-monitor-rebrand.md) daha birleşik izleme deneyimi sağlamak. Azure İzleyici'de yeni günlükleri deneyimini tam olarak birçok müşteri zaten kullanmakta olduğunuz Log Analytics sorguları ile aynıdır.
 
-### <a name="q-can-i-still-use-log-search"></a>S: günlük aramasını kullanmaya devam edebilir miyim? 
+### <a name="q-can-i-still-use-log-search"></a>Günlük araması kullanabilir miyim? 
 
-A: günlük araması şu anda OMS portalında ve ad **günlükleri (klasik)** altındaki Azure Portal hala kullanılabilir. OMS portalı 15 Ocak 2019 tarihinde resmi olarak kullanımdan kaldırılacaktır. Azure portal içindeki klasik Günlükler deneyimi aşamalı olarak kullanımdan kalkar ve yeni günlük deneyiminin değiştirilmeyecektir. 
+Y: günlük araması hala kullanılabilir OMS portalında ve adla Azure portalında şu anda **günlükleri (Klasik)** . OMS portalında resmi olarak 15 Ocak 2019 üzerinde kullanımdan kaldırılacaktır. Azure portalında Klasik günlükleri deneyimi yavaş yavaş kullanımdan kaldırılacak ve yerini yeni günlükleri deneyimi. 
 
-### <a name="q-can-i-still-use-advanced-analytics-portal"></a>S. Gelişmiş analiz portalını kullanmaya devam edebilir miyim? 
-Azure portal yeni Günlükler deneyimi, gelişmiş analiz portalına dayalıdır, ancak yine de Azure portal dışında erişilebilir. Bu dış portalın kullanımdan kaldırılması için yol haritası yakında duyurulacaktır.
+### <a name="q-can-i-still-use-advanced-analytics-portal"></a>S. Gelişmiş analiz portalını kullanabilir miyim? 
+Azure portalında yeni günlükleri deneyimi Gelişmiş analiz portalında bağlıdır, ancak yine de Azure portal dışında erişilebilir. Bu dış portal devre dışı bırakma için yol haritası yakında duyurulacaktır.
 
-### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>S. Sorgu Gezginini neden göremiyorum ve yeni Günlükler deneyiminde düğmeleri kaydedemiyorum?
+### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>S. Neden olamaz miyim sorgu Gezgini görebilir ve yeni günlükleri deneyiminde düğmeleri kaydetmek mi?
 
-**Sorgu Gezgini**, **Kaydet** ve **Ayarla uyarı** düğmeleri, belirli bir kaynak bağlamında Günlükler araştırılırken kullanılamaz. Uyarı oluşturmak, bir sorguyu kaydetmek veya yüklemek için günlüklerin bir çalışma alanı kapsamına alınmış olması gerekir. Günlükleri çalışma alanı bağlamında açmak için **tüm hizmetler** >  > günlüklerini **İzle** 'yi seçin. Son kullanılan çalışma alanı seçilir, ancak başka bir çalışma alanını seçebilirsiniz. Daha fazla bilgi için bkz. [Log Analytics verileri görüntüleme ve çözümleme](../log-query/portals.md) .
+**Sorgu Gezgini**, **Kaydet** ve **ayarlamak uyarı** düğmeleri kullanılamıyor günlükleri belirli bir kaynağa bağlamında keşfederken. Kaydetme uyarıları oluşturmak veya bir sorgu yüklemek için bir çalışma alanına günlükleri kapsamlandırılmalıdır. Günlükleri çalışma bağlamında açmak için seçmeniz **tüm hizmetleri** > **İzleyici** > **günlükleri**. Son kullanılan çalışma alanına seçtiğiniz, ancak diğer çalışma alanı seçebilirsiniz. Bkz: [görüntüleme ve Log analytics'te verileri analiz etme](../log-query/portals.md) daha fazla bilgi için.
 
-### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>S. Nasıl yaparım? yeni Günlükler deneyiminde özel alanlar Ayıklansın mı? 
+### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>S. Özel alanları yeni günlükleri deneyiminde nasıl çıkarabilirim? 
 
-Y: özel alanlar ayıklama, şu anda klasik Günlükler deneyiminde destekleniyor. 
+Y: özel alanlar ayıklama günlükleri deneyimi Klasik şu anda desteklenmiyor. 
 
-### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>S. Liste görünümünü yeni günlüklerde nerede bulabilirim? 
+### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>S. Liste Görünümü'ndeki yeni günlükleri nerede bulabilirim? 
 
-A: liste görünümü yeni günlüklerde kullanılamaz. Sonuçlar tablosundaki her kaydın solunda bir ok vardır. Belirli bir kaydın ayrıntılarını açmak için bu oka tıklayın. 
+Y: Liste Görünümü'ndeki yeni günlükleri kullanılamaz. Sonuçları tablodaki her bir kaydın sol ok yoktur. Belirli bir kaydın ayrıntılarını açmak için bu oka tıklayın. 
 
 ### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>S. Bir sorgu çalıştırdıktan sonra önerilen filtrelerin bir listesi kullanılabilir. Filtreleri nasıl görebilirim? 
 
-Y: yeni filtreler uygulamasının önizlemesini görmek için sol bölmedeki ' Filtreler ' seçeneğine tıklayın. Bu artık, Kullanıcı arabiriminin 10.000 kayıt sınırı ile sınırlı olmak yerine, tam sonuç kümesini temel alır. Bu, şu anda en popüler filtrelerin ve her bir filtrenin en yaygın 10 değerinin bir listesidir. 
+Y: yeni filtreler uygulamasının önizlemesini görmek için sol bölmedeki ' Filtreler ' seçeneğine tıklayın. Bu artık UI 10.000 kaydı sınırına göre sınırlı kalmak yerine tam Sonuç kümenizi temel alır. Şu anda en popüler filtreleri ve her filtre için en yaygın 10 değerleri listesi budur. 
 
-### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>S. Neden "Bu sorguyu, VM 'den detaya gitme sonrasında günlüklerde" Bu sorguyu etkinleştirmek için bu aboneliğin "Microsoft. Insights" kaynak sağlayıcısını Kaydet 
+### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>S. Neden iletisi alıyorum hata: "Kayıt kaynak Sağlayıcısı 'Bu sorgu etkinleştirmek için Microsoft.Insights' Bu abonelik için" günlüklere sonrası ayrıntılara VM'den? 
 
-A: varsayılan olarak, birçok kaynak sağlayıcısı otomatik olarak kaydedilir, ancak bazı kaynak sağlayıcılarını el ile kaydetmeniz gerekebilir. Bu, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Kayıt kapsamı her zaman abonelik olur. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+Y: varsayılan olarak, birçok kaynak sağlayıcısı otomatik olarak kaydedilir, ancak, bazı kaynak sağlayıcıları elle kaydetmeniz gerekebilir. Bu, aboneliğinizin kaynak sağlayıcısı ile çalışacak şekilde yapılandırır. Kayıt için kapsam her zaman aboneliktir. Daha fazla bilgi için bkz. [Kaynak sağlayıcıları ve türleri](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>S. Bir VM sayfasından günlüklere erişirken neden erişim hatası mesajı alıyorum? 
+### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>S. Ben neden günlükleri bir VM sayfasından erişirken erişim hata iletisi alıyorum? 
 
-Y: VM günlüklerini görüntülemek Için, VM günlüklerini depolayan çalışma alanları için okuma izniyle verilmesi gerekir. Bu durumlarda yöneticinizin Azure 'daki izinleri size vermesi gerekir.
+Y: VM günlüklerini görüntülemek için VM günlüklerine depolayan okuma izni çalışma alanları verilmesi gerekir. Bu gibi durumlarda yöneticinize ile azure'da izinlerini sağlamanız gerekir.
 
-### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>S. Çalışma alanım 'ı OMS portalında neden erişebiliyorum, ancak Azure portal "erişiminiz yok" hatasını alıyorum?  
+### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>S. OMS portalında çalışma Alanım erişebilirim, ancak hata alıyorum neden "Azure portalında erişiminiz yok"?  
 
-Y: Azure 'daki bir çalışma alanına erişmek Için Azure izinlerinin atanmış olması gerekir. Uygun erişim izinlerine sahip olmayabilirsiniz bazı durumlar vardır. Bu durumlarda yöneticinizin Azure 'daki izinleri vermesi gerekir. daha fazla bilgi için bkz. [OMS portalı Azure 'a geçme](oms-portal-transition.md) .
+Y: azure'da bir çalışma alanına erişmek için atanan Azure izinleri olmalıdır. Burada uygun erişim izni olmayabilir bazı durumlar vardır. Bu gibi durumlarda yöneticinize Azure.See de izinlerle sağlamanız gerekir [Azure'a taşıyarak OMS portalında](oms-portal-transition.md) daha fazla bilgi için.
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>S. Günlüklerde neden görünüm tasarımcı girişi göremiyorum?
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>S. Neden Görünüm Tasarımcısı giriş günlüklerinde göremiyorum olamaz?
 
-Y: Görünüm Tasarımcısı, yalnızca katkıda bulunan izinlerle veya üzeri olarak atanan kullanıcılara yönelik günlüklerde kullanılabilir.
+Y: Görünüm Tasarımcısı yalnızca katkıda bulunan izinlerine sahip ya da daha yüksek atanan kullanıcılar için günlüklerde kullanılabilir.
 
-### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>S. Analiz portalını Azure dışında kullanmaya devam edebilir miyim?
+### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>S. Azure dışındaki Analytics portalını kullanabilir miyim?
 
-A. Evet, Azure 'daki Günlükler sayfası ve gelişmiş analiz portalı aynı koda göre yapılır. Log Analytics, Azure Izleyici 'de daha birleştirilmiş bir izleme deneyimi sağlamak için bir özellik olarak tümleştirilir. Şu URL 'YI kullanarak analiz portalına erişmeye devam edebilirsiniz: https:\/\/Portal. loganalytics. IO/abonelikler/{SubscriptionID}/ResourceGroups/{resourceGroupName}/çalışma alanları/{Çalışmaadı}.
+A. Evet, Azure ve Gelişmiş analiz portalını günlükleri sayfasında aynı koda bağlıdır. Log Analytics, Azure İzleyici'nın daha birleşik bir izleme deneyimi sağlamak için bir özellik olarak tümleştiriliyor. Şu URL 'YI kullanarak analiz portalına erişmeye devam edebilirsiniz: https:\/\/Portal. loganalytics. IO/abonelikler/{SubscriptionID}/ResourceGroups/{resourceGroupName}/çalışma alanları/{Çalışmaadı}.
 
 
 
 ## <a name="general"></a>Genel
 
-### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>S. Görünümlerimi ve çözümlerinizi Azure portal nasıl görebilirim? 
+### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>S. My görünümler ve çözümler Azure portalında nasıl görebilirim? 
 
-Y: görünümler ve yüklü çözümlerin listesi Azure portal ' de mevcuttur. **Tüm hizmetler**’e tıklayın. Kaynak listesinde **izleyici**' yi seçin ve ardından... öğesine tıklayın **. Daha fazla**. Son kullanılan çalışma alanı seçilir, ancak başka bir çalışma alanını seçebilirsiniz. 
+A: Azure portalında görünümleri ve yüklü çözümleri bir listesi bulunur. **Tüm hizmetler**’e tıklayın. Kaynak listesinde seçin **İzleyici**, ardından **... Daha fazla**. Son kullanılan çalışma alanına seçtiğiniz, ancak diğer çalışma alanı seçebilirsiniz. 
 
-### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>S. Orta Batı ABD bölgede çalışma alanlarını neden oluşturamıyoruz? 
+### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>S. Log Analytics aracı aynı zamanda Azure Güvenlik Merkezi olarak kullanıyor mu?
 
-Y: Bu bölge geçici kapasite sınırındedir. Bu sınır, Eylül 2019 ' nin sonuna kadar planlanarak yapılır.
+Y: erken Haziran 2017'de, veri toplamak ve depolamak için Microsoft Monitoring Agent'ı kullanarak Azure Güvenlik Merkezi başladı. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Platform geçişi ile ilgili SSS](../../security-center/security-center-enable-data-collection.md).
 
+### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>S. Hangi denetimleri AD tarafından gerçekleştirilir ve SQL değerlendirmesi çözümleri?
 
-### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>S. Log Analytics Azure Güvenlik Merkezi ile aynı aracıyı kullanıyor mu?
-
-Y: erken Haziran 2017 ' de Azure Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft Monitoring Agent kullanmaya başlamıştır. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi platformu GEÇIŞ SSS](../../security-center/security-center-enable-data-collection.md).
-
-### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>S. AD ve SQL Değerlendirmesi çözümleri hangi denetimleri gerçekleştirir?
-
-A: aşağıdaki sorgu, şu anda gerçekleştirilen tüm denetimlerin açıklamasını gösterir:
+Y: aşağıdaki sorgu, şu anda gerçekleştirilen tüm denetimleri açıklamasını gösterir:
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
 ```
 
-Daha sonra sonuçlar daha fazla gözden geçirilmek üzere Excel 'e aktarılabilir.
+Sonuçlar daha sonra daha fazla inceleme için Excel'e aktarılabilir.
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>S. Neden System Center Operations Manager konsolundaki OMS 'den farklı bir şey görüyorum?
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>S. System Center Operations Manager konsolunda OMS farklı bir şey neden görüyorum?
 
-Y: hangi Operations Manager güncelleştirme toplamasına bağlı olarak, *System Center Advisor*, *operasyonel*içgörüler veya *Log Analytics*için bir düğüm görebilirsiniz.
+Y: hangi güncelleştirme paketi Operations bulunduğunuz Manager'ın yapılandırmanıza bağlı olarak, bir düğüm görebilirsiniz *System Center Advisor*, *operasyonel İçgörüler*, veya *Log Analytics*.
 
-*OMS* 'deki metin dizesi güncelleştirmesi, el ile içeri aktarılması gereken bir yönetim paketine dahildir. Geçerli metin ve işlevselliği görmek için en son System Center Operations Manager güncelleştirme paketi BB makalesindeki yönergeleri izleyin ve konsolu yenileyin.
+Metin dizesi güncelleştirmeye *OMS* el ile içeri aktarılması gereken bir yönetim paketinde bulunur. Geçerli metin ve işlevleri görmek için en son System Center Operations Manager güncelleştirme paketi KB makale yönergeleri izleyin ve konsolu yenileyin.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>S: Log Analytics 'ın şirket içi sürümü var mı?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>S: bir Log Analytics şirket içi sürümü var mı?
 
-Y: Hayır. Log Analytics, büyük miktarlarda veriyi işleyen ve depolayan ölçeklenebilir bir bulut hizmetidir. 
+C: Hayır. Log Analytics'e işleyen ve büyük miktarlarda veri depolayan bir ölçeklenebilir bir bulut hizmetidir. 
 
-### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>S. Veri toplama durdurulduğunda nasıl bildirim gönderebilirim?
+### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>S. Veri toplama durduğunda nasıl uyarılabilirim?
 
-A: veri toplama durdurulduğunda bildirim almak için [Yeni bir günlük uyarısı oluşturma](../../azure-monitor/platform/alerts-metric.md) bölümünde açıklanan adımları kullanın.
+Y: açıklanan adımları kullanın [yeni günlük uyarısı oluşturma](../../azure-monitor/platform/alerts-metric.md) veri toplamayı durdurur bildirilmesini sağlamak için.
 
-Veri toplama durdurulduğunda uyarı oluştururken şunu ayarlayın:
+Veri toplama durduğunda için uyarı oluştururken şu ayarları yapın:
 
 - **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
 - **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
-   - **Sinyal adı** **özel günlük araması**' nı seçin.
+   - **Sinyal adı** seçin **özel günlük araması**.
    - **Arama sorgusu**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - *30* dakikalık **zaman aralığı** ve *10* dakikada bir **Uyarı sıklığı**
+   - **Süre** , *30* dakika ve **uyarı sıklığı** her *10* dakika
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
-   - *Veri toplamanın* **adı** durduruldu
+   - **Adı** için *veri toplama durduruldu*
    - **Önem derecesi**: *Uyarı*
 
-Var olan veya yeni bir [eylem grubu](../../azure-monitor/platform/action-groups.md) oluşturun, böylece günlük uyarısı ölçütle eşleştiğinde, 15 dakikadan uzun bir sinyalle kayıp varsa size bildirilir.
+Mevcut bir belirtin veya yeni bir [eylem grubu](../../azure-monitor/platform/action-groups.md) zaman günlüğü uyarısı ölçütleri ile eşleşen böylece 15 dakikadan fazla bir süre için eksik sinyal varsa size bildirilir.
 
 ## <a name="configuration"></a>Yapılandırma
 
-### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>S. Azure Tanılama (WAD) öğesinden okumak için kullanılan tablo/blob kapsayıcısının adını değiştirebilir miyim?
+### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>S. Azure tanılama (WAD) okumak için kullanılan tablo/blob kapsayıcının adını değiştirebilirim?
 
-A. Hayır, şu anda Azure Storage 'daki rastgele tablolardan veya kapsayıcılardan okumak mümkün değildir.
+A. Hayır, rastgele bir tablo veya Azure depolamadaki kapsayıcılar okumak şu anda mümkün değildir.
 
-### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>S. Log Analytics hizmeti hangi IP adreslerini kullanır? Nasıl yaparım? Güvenlik duvarımın yalnızca Log Analytics hizmetine giden trafiğe izin verdiğinden emin misiniz?
+### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>S. Hangi IP adresleri Log Analytics hizmeti tarafından kullanılır? Güvenlik duvarımı yalnızca Log Analytics hizmetine trafiğine izin verir nasıl emin olabilirim?
 
-A. Log Analytics hizmeti Azure üzerinde oluşturulmuştur. Log Analytics IP adresleri [Microsoft Azure veri MERKEZI IP aralıklarıyla](https://www.microsoft.com/download/details.aspx?id=41653)bulunur.
+A. Log Analytics hizmeti, Azure üzerinde oluşturulmuştur. Log Analytics IP adresleridir içinde [Microsoft Azure veri merkezi IP aralıkları](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Hizmet dağıtımları yapıldığından, Log Analytics hizmetinin gerçek IP adresleri değişir. Güvenlik duvarınız aracılığıyla izin verilecek DNS adları [ağ gereksinimleri](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements)bölümünde belgelenmiştir.
+Hizmet dağıtımları yaptığınız gibi Log Analytics hizmetine gerçek IP adreslerini değiştirin. DNS adları, güvenlik duvarından geçmesine izin bölümünde belgelendirilen [ağ gereksinimleri](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
 
-### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>S. Azure 'a bağlanmak için ExpressRoute kullanıyorum. Log Analytics Trafiğim ExpressRoute bağlantısını kullanıyor mu?
+### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>S. Azure'a bağlamak için ExpressRoute kullanıyorum. My Log Analytics trafik, ExpressRoute bağlantım kullanıyor mu?
 
-A. Farklı ExpressRoute trafiği türleri [ExpressRoute belgelerinde](../../expressroute/expressroute-faqs.md#supported-services)açıklanmıştır.
+A. ExpressRoute trafik farklı türde açıklanan [ExpressRoute belgeleri](../../expressroute/expressroute-faqs.md#supported-services).
 
-Log Analytics trafik genel eşleme ExpressRoute devresini kullanır.
+Log analytics'e trafiği, genel eşleme ExpressRoute bağlantı hattı kullanır.
 
-### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>S. Mevcut bir Log Analytics çalışma alanını başka bir Log Analytics çalışma alanına/Azure aboneliğine taşımanın basit ve kolay bir yolu var mı?
+### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>S. Mevcut bir Log Analytics çalışma alanını başka bir Log Analytics çalışma alanı/Azure aboneliğine taşımak için basit ve kolay bir yolu var mı?
 
-A. `Move-AzResource` cmdlet 'i, bir Log Analytics çalışma alanını ve aynı zamanda bir Azure aboneliğindeki bir Otomasyon hesabını diğerine taşımanıza olanak tanır. Daha fazla bilgi için bkz. [Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx).
+A. `Move-AzResource` Cmdlet'i bir Log Analytics çalışma alanı ve Otomasyon hesabı bir Azure aboneliğine ait taşıma olanak tanır. Daha fazla bilgi için bkz. [Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx).
 
-Bu değişiklik Azure portal de yapılabilir.
+Bu değişiklik, ayrıca Azure portalında yapılabilir.
 
-Verileri bir Log Analytics çalışma alanından diğerine taşıyamaz veya Log Analytics verilerin depolandığı bölgeyi değiştiremiyoruz.
+Verileri bir Log Analytics çalışma alanından diğerine taşıma veya Log Analytics verilerini depolanan bölgeyi değiştirin.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>S: System Center Operations Manager Nasıl yaparım? Log Analytics eklensin mi?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>S: System Center Operations Manager için Log Analytics nasıl ekleyebilirim?
 
-Y: en son güncelleştirme toplamasına ve içeri aktarma yönetim paketlerini güncelleştirme, Log Analytics Operations Manager bağlanmanızı sağlar.
+A: en son güncelleştirme paketi için güncelleştiriliyor ve yönetim paketlerini içeri aktarma, Operations Manager'ı Log Analytics'e bağlamak sağlar.
 
 >[!NOTE]
->Log Analytics Operations Manager bağlantısı yalnızca System Center Operations Manager 2012 SP1 ve üzeri sürümlerde kullanılabilir.
+>Log Analytics için Operations Manager bağlantısı, yalnızca System Center Operations Manager 2012 SP1 ve sonraki sürümlerinde kullanılabilir.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>S: bir aracının Log Analytics ile iletişim kurabildiğini nasıl doğrulayabilirim?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>S: bir aracının Log Analytics ile iletişim kuramıyor, nasıl doğrulayabilirim?
 
 Y: aracının Log Analytics çalışma alanıyla iletişim kurabildiğinden emin olmak Için şuraya gidin: Denetim Masası, güvenlik & ayarları **Microsoft Monitoring Agent**.
 
-**Azure Log Analytics (OMS)** sekmesinde, yeşil bir onay işareti bulun. Yeşil onay işareti simgesi, aracının Azure hizmeti ile iletişim kurabildiğini onaylar.
+Altında **Azure Log Analytics (OMS)** sekmesinde, yeşil bir onay işareti için bakın. Yeşil onay işareti simgesine, aracıyı Azure hizmeti ile iletişim kurabildiğini olduğunu doğrular.
 
-Sarı bir uyarı simgesi, aracının Log Analytics iletişim sorunu olduğu anlamına gelir. Microsoft Monitoring Agent hizmetin durdurulduğu bir yaygın neden olur. Hizmeti yeniden başlatmak için hizmet denetimi Yöneticisi 'ni kullanın.
+Sarı bir uyarı simgesi, aracının Log Analytics ile iletişimi sorunları yaşıyor anlamına gelir. Yaygın nedenlerinden biri, Microsoft Monitoring Agent hizmeti durduruldu ' dir. Hizmeti yeniden başlatmak için Hizmet Denetimi Yöneticisi'ni kullanın.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>S: Nasıl yaparım? bir aracının Log Analytics iletişim kurmasını mi durdurdunuz?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>S: nasıl Log Analytics ile iletişim kurmasını aracıyı durdurulsun mu?
 
-Y: System Center Operations Manager, bilgisayarı Log Analytics yönetilen bilgisayarlar listesinden kaldırın. Operations Manager, aracının yapılandırmasını artık Log Analytics raporlanmayacak şekilde güncelleştirir. Doğrudan Log Analytics bağlı aracılar için, iletişim kurmasını engellemek için: Denetim Masası, güvenlik & ayarları **Microsoft Monitoring Agent**.
-**Azure Log Analytics (OMS)** altında, listelenen tüm çalışma alanlarını kaldırın.
+Y: System Center Operations Manager, bilgisayarı Log Analytics yönetilen bilgisayarlar listesinden kaldırın. Operations Manager artık rapor Log analytics'e aracının yapılandırmasını güncelleştirir. Doğrudan log Analytics'e bağlı aracılar için bunları aracılığıyla iletişim kurmasını durdurabilirsiniz: Denetim Masası, güvenlik ve ayarları **Microsoft Monitoring Agent**.
+Altında **Azure Log Analytics (OMS)** , listelenen tüm çalışma alanlarını kaldırın.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>S: çalışma alanım 'ı bir Azure aboneliğinden diğerine taşımaya çalıştığımda neden bir hata alıyorum?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>S: neden çalışma Alanım'ı bir Azure aboneliğine ait diğerine taşımak çalıştığınızda bir hata alıyorum?
 
-Y: bir çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşımak Için, önce çalışma alanındaki Otomasyon hesabının bağlantısını kaldırmanız gerekir. Bir Otomasyon hesabının bağlantısını kesmek, çalışma alanına yüklendiklerinde bu çözümlerin kaldırılmasını gerektirir: Güncelleştirme Yönetimi, Değişiklik İzleme veya VM'leri çalışma saatleri dışında başlat/durdur kaldırılır. Bu çözümler kaldırıldıktan sonra, Otomasyon hesabı kaynağında sol bölmedeki **bağlı çalışma alanları** ' nı seçerek Otomasyon hesabının bağlantısını kaldırın ve Şeritteki **çalışma alanının bağlantısını kaldır** ' a tıklayın.
- > Kaldırılan çözümlerin çalışma alanına yeniden yüklenmesi gerekir ve çalışma alanının Otomasyon bağlantısının taşımadan sonra yeniden oluşturulması gerekir.
+A: bir çalışma alanı farklı bir abonelik veya kaynak grubuna taşımak için önce çalışma alanındaki Otomasyon hesabının bağlantısını kaldırmanız gerekir. Bir Otomasyon hesabının bağlantısını gerektiriyorsa Bu çözümleri kaldırılmasını çalışma alanınızda yüklü: güncelleştirme yönetimi, değişiklik izleme veya Vm'leri çalışma saatleri dışında başlatma/durdurma kaldırılır. Bu çözümleri kaldırdıktan sonra seçerek Otomasyon hesabının bağlantısını kaldırmanız **bağlı çalışma alanları** tıklayın ve sol bölmede Otomasyon hesabı kaynak **çalışma alanının bağlantısını Kaldır** Şerit üzerindeki.
+ > Çözümler çalışma alanında yüklenmesi gerek kaldırıldı ve çalışma alanı Otomasyon bağlantısını taşımadan sonra açıklandı gerekir.
 
-Azure aboneliklerinde izniniz olduğundan emin olun.
+Hem Azure aboneliklerinde izninizin olduğundan emin olun.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>S: bir SavedSearch güncelleştirmeyi denediğimde neden hata alıyorum?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>S: neden bir SavedSearch güncelleştirmeye çalıştığınızda bir hata alıyorum?
 
-Y: API 'nin gövdesine ' ETag ' eklemeniz veya Azure Resource Manager şablonu özelliklerinin olması gerekir:
+A: 'etag' API'si veya Azure Resource Manager şablonu özellikleri gövdesinde eklemeniz gerekir:
 ```
 "properties": {
    "etag": "*",
@@ -191,28 +186,28 @@ Y: API 'nin gövdesine ' ETag ' eklemeniz veya Azure Resource Manager şablonu �
 ```
 
 ## <a name="agent-data"></a>Aracı verileri
-### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>S. Log Analytics için aracıdan ne kadar veri gönderebilirim? Müşteri başına maksimum miktarda veri var mı?
+### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>S. Ne kadar veri Log Analytics'e Aracısı üzerinden gönderebilirim? En fazla bir müşteri başına veri miktarını var mı?
 A. Karşıya yüklenen veri miktarı için bir sınır yoktur, bu, seçtiğiniz kapasite rezervasyonu veya kullandıkça öde fiyatlandırma seçeneğine dayanır. Bir Log Analytics çalışma alanı, bir müşteriden gelen hacmi işlemek üzere otomatik olarak ölçeklendirilecek şekilde tasarlanmıştır. Bu, gün başına terabayt olsa bile. Daha fazla bilgi için bkz. [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/monitor/).
 
-Log Analytics Aracısı, küçük bir parmak izine sahip olduğundan emin olmak için tasarlandı. Veri hacmi, etkinleştirdiğiniz çözümlere göre farklılık gösterir. Veri hacminin ayrıntılı bilgilerini bulabilir ve [kullanım](../../azure-monitor/platform/data-usage.md) sayfasında çözüme göre döküm bölümüne bakabilirsiniz.
+Log Analytics aracısını, küçük ayak izine sahip olmak için tasarlanmıştır. Veri hacmi sağlayan çözümlere göre değişir. Veri hacmi hakkındaki ayrıntılı bilgileri bulmak ve çözümde tarafından dökümünü görmek [kullanım](../../azure-monitor/platform/data-usage.md) sayfası.
 
 Daha fazla bilgi için, Log Analytics aracısının kaynak kullanımını (parmak izi) değerlendirdikten sonra sonuçlarını gösteren bir [Müşteri blogunu](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) okuyabilirsiniz.
 
-### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>S. Log Analytics veri gönderilirken Microsoft Yönetim Aracısı (MMA) tarafından ne kadar ağ bant genişliği kullanılıyor?
+### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>S. Ne kadar ağ bant genişliği, verilerini Log Analytics'e gönderirken Microsoft Yönetim Aracısı (MMA) tarafından kullanılır?
 
-A. Bant genişliği, gönderilen veri miktarı üzerinde bir işlevdir. Veriler, ağ üzerinden gönderildiği için sıkıştırılır.
+A. Bant genişliği, gönderilen veri miktarı için kullanılan bir işlevdir. Ağ üzerinden gönderilen verilerin sıkıştırılır.
 
-### <a name="q-how-much-data-is-sent-per-agent"></a>S. Aracı başına ne kadar veri gönderildi?
+### <a name="q-how-much-data-is-sent-per-agent"></a>S. Aracı ne kadar veri gönderiliyor?
 
-A. Aracı başına gönderilen veri miktarı şunlara bağlıdır:
+A. Her aracı gönderilen veri miktarını bağlıdır:
 
-* Etkinleştirdiğiniz çözümler
-* Toplanmakta olan günlük ve performans sayacı sayısı
-* Günlüklerdeki verilerin hacmi
+* Etkinleştirdiğiniz çözümleri
+* Toplanmakta olan günlükleri ve performans sayaçları
+* Günlüklerde veri hacmi
 
-Genel kullanım, [kullanım](../../azure-monitor/platform/data-usage.md) sayfasında gösterilir.
+Genel kullanım gösterilir [kullanım](../../azure-monitor/platform/data-usage.md) sayfası.
 
-Kablolu veri aracısını çalıştırabilecek bilgisayarlar için, ne kadar veri gönderildiğini görmek üzere aşağıdaki sorguyu kullanın:
+İletilen veriler aracı çalışacak şekilde bilgisayarlar için ne kadar veri gönderildiğini görmek için aşağıdaki sorguyu kullanın:
 
 ```
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer

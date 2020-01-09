@@ -4,20 +4,20 @@ description: Bu makale, doğrudan Log Analytics veya System Center Operations Ma
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2017
-ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402440"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Izleyici 'de Aracı Durumu çözümü
 Azure 'daki Aracı Durumu çözümü, doğrudan Azure Izleyici 'de Log Analytics çalışma alanına veya Azure Izleyici 'ye bağlı bir System Center Operations Manager yönetim grubuna veya yanıt vermeyen ve işletimsel veriler gönderiliyor.  Ayrıca, kaç aracının dağıtıldığını, bunların coğrafi olarak nerelere dağıtıldığını da izleyebilir ve Azure’da, diğer bulut ortamlarında ya da şirket içinde dağıtılmış aracıların dağılımından her zaman haberdar olmaya yönelik diğer sorguları gerçekleştirebilirsiniz.    
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu çözümü dağıtmadan önce, Log Analytics çalışma alanına rapor veren veya çalışma alanınız ile tümleştirilmiş bir [Operations Manager yönetim grubuna](../../azure-monitor/platform/om-agents.md) raporlama için şu anda desteklenen [Windows aracılarını](../../log-analytics/log-analytics-windows-agent.md) doğrulayın.
 
 ## <a name="solution-components"></a>Çözüm bileşenleri
@@ -41,8 +41,8 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 | Bağlı Kaynak | Desteklenen | Açıklama |
 | --- | --- | --- |
-| Windows aracıları | Yes | Sinyal olayları doğrudan Windows aracılarından toplanır.|
-| System Center Operations Manager yönetim grubu | Yes | Sinyal olayları, her 60 saniyede bir yönetim grubuna rapor veren aracılardan toplanır ve sonra Azure Izleyici 'ye iletilir. Operations Manager aracılarından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Sinyal olayı verileri yönetim grubundan Log Analytics çalışma alanına iletilir.|
+| Windows aracıları | Evet | Sinyal olayları doğrudan Windows aracılarından toplanır.|
+| System Center Operations Manager yönetim grubu | Evet | Sinyal olayları, her 60 saniyede bir yönetim grubuna rapor veren aracılardan toplanır ve sonra Azure Izleyici 'ye iletilir. Operations Manager aracılarından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Sinyal olayı verileri yönetim grubundan Log Analytics çalışma alanına iletilir.|
 
 ## <a name="using-the-solution"></a>Çözümü kullanma
 Çözümü Log Analytics çalışma alanınıza eklediğinizde **Aracı durumu** kutucuk panonuza eklenir. Bu kutucuk, son 24 saat içindeki toplam aracı sayısını ve yanıt vermeyen aracı sayısını gösterir.<br><br> ![Panodaki Aracı Durumu Çözüm kutucuğu](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -86,7 +86,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | `RemoteIPLongitude` | Bilgisayarın coğrafi konumunun boylamı.|
 | `RemoteIPLatitude` | Bilgisayarın coğrafi konumunun enlemi.|
 
-Bir Operations Manager yönetim sunucusuna raporlama yapılan her aracı iki sinyal gönderir ve sahip olduğunuz veri kaynaklarına ve izleme çözümlerine bağlı olarak, SCAgentChannel özelliğinin değeri hem **doğrudan** hem de **scmanagementserver** 'ı içerir aboneliğinizde etkinleştirildi. Geri çağırma yaparsanız, çözümlerdeki veriler doğrudan bir Operations Manager yönetim sunucusundan Azure Izleyicisine gönderilir ya da aracıda toplanan verilerin hacmi nedeniyle doğrudan aracıdan Azure Izleyici 'ye gönderilir. **SCManagementServer** değerine sahip sinyal olayları için ComputerIP değeri, verileri aslında karşıya yükleyen yönetim sunucusunun IP adresidir.  SCAgentChannel’ın **Doğrudan** olarak ayarlandığı sinyaller için bu adres, aracının genel IP adresidir.  
+Bir Operations Manager Management sunucusuna rapor veren her bir aracı iki sinyal gönderir ve aboneliklerinizde etkinleştirdiğiniz veri kaynaklarına ve izleme çözümlerine göre hem **doğrudan** hem de **scmanagementserver** 'ın değeri bulunur. Geri çağırma yaparsanız, çözümlerdeki veriler doğrudan bir Operations Manager yönetim sunucusundan Azure Izleyicisine gönderilir ya da aracıda toplanan verilerin hacmi nedeniyle doğrudan aracıdan Azure Izleyici 'ye gönderilir. **SCManagementServer** değerine sahip sinyal olayları için ComputerIP değeri, verileri aslında karşıya yükleyen yönetim sunucusunun IP adresidir.  SCAgentChannel’ın **Doğrudan** olarak ayarlandığı sinyaller için bu adres, aracının genel IP adresidir.  
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 Aşağıdaki tabloda, bu çözüm tarafından toplanan kayıtlara ilişkin örnek günlük aramaları sunulmaktadır.

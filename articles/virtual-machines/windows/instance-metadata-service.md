@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f62406a341c7e1467cdf17b21662bb5c0993881c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358369"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -103,9 +103,9 @@ Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir
 
 eklentisi | Varsayılan veri biçimi | Diğer biçimler
 --------|---------------------|--------------
-/Instance | nesnesinde | metin
-/scheduledevents | nesnesinde | yok
-/attested | nesnesinde | yok
+/Instance | json | metin
+/scheduledevents | json | yok
+/attested | json | yok
 
 Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
 
@@ -125,9 +125,9 @@ Ayrıca, gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmam
 
 Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
 
-HTTP durum kodu | Neden
+HTTP Durum Kodu | Neden
 ----------------|-------
-200 TAMAM |
+200 OK |
 400 Hatalı Istek | `Metadata: true` üstbilgisi eksik veya bir yaprak düğüm sorgulanırken biçim eksik
 404 Bulunamadı | İstenen öğe yok
 405 yöntemine Izin verilmiyor | Yalnızca `GET` ve `POST` istekleri destekleniyor
@@ -366,12 +366,12 @@ placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../vi
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
 platformUpdateDomain |  VM 'nin çalıştığı [etki alanını güncelleştirme](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM 'nin çalıştığı [hata etki alanı](manage-availability.md) | 2017-04-02
-sağlayıcısını | VM sağlayıcısı | 2018-10-01
+sağlayıcısı | VM sağlayıcısı | 2018-10-01
 publicKeys | VM ve yollara atanan [ortak anahtarların koleksiyonu](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM görüntüsünün yayımcısı | 2017-04-02
-resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
+resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
-isteyin | VM görüntüsü için belirli SKU | 2017-04-02
+sku | VM görüntüsü için belirli SKU | 2017-04-02
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
 etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
@@ -786,7 +786,7 @@ Puppet | https://github.com/keirans/azuremetadata
 5. Hata `500 Internal Server Error`neden alıyorum?
    * İsteğinizi üstel geri dönüş sistemine göre yeniden deneyin. Sorun devam ederse Azure desteği ile iletişime geçin.
 6. Ek soruları/açıklamaları nerede paylaşabilirim?
-   * https://feedback.azure.comyorumlarınızı gönderin.
+   * https://feedback.azure.com yorumlarınızı gönderin.
 7. Bu, sanal makine ölçek kümesi örneği için mi çalışıyor?
    * Evet meta veri hizmeti ölçek kümesi örnekleri için kullanılabilir.
 8. Nasıl yaparım? hizmet için destek almak mı istiyorsunuz?

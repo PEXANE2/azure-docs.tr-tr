@@ -1,19 +1,15 @@
 ---
 title: Ortak ölçümleri otomatik ölçeklendirme
 description: Cloud Services, sanal makinelerinizi ve Web Apps otomatik ölçeklendirme için hangi ölçümlerin yaygın olarak kullanıldığını öğrenin.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129741"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364603"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Izleyici ortak ölçümleri otomatik ölçeklendirme
 
@@ -26,7 +22,7 @@ Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeler
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Kaynak Yöneticisi tabanlı VM 'Ler için işlem ölçümleri
 Varsayılan olarak, Kaynak Yöneticisi tabanlı sanal makineler ve sanal makine ölçek kümeleri temel (konak düzeyi) ölçümlerini yayar. Ayrıca, bir Azure VM ve VMSS için tanılama veri toplamayı yapılandırdığınızda, Azure tanılama uzantısı da konuk işletim sistemi performans sayaçlarını (genellikle "Konuk-işletim sistemi ölçümleri" olarak bilinir) yayar.  Tüm bu ölçümleri otomatik ölçeklendirme kurallarında kullanırsınız.
 
-VMSS kaynağınız için `Get MetricDefinitions` kullanılabilen ölçümleri görüntülemek için API/Posh/CLI kullanabilirsiniz.
+`Get MetricDefinitions` API/PoSH/CLı ' yı kullanarak VMSS kaynağınız için kullanılabilen ölçümleri görüntüleyebilirsiniz.
 
 VM Ölçek Kümeleri kullanıyorsanız ve belirli bir ölçümü listede görmüyorsanız, bu durumda tanılama uzantıda *devre dışı bırakılır* .
 
@@ -53,33 +49,33 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 
 | Ölçüm Adı | Birim |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \ İşlemci (_Toplam\% ) ayrıcalıklı zaman |Percent |
-| \Processor (_Total)\% Kullanıcı saati |Percent |
-| \İşlemci bilgileri (_Toplam) \ işlemci sıklığı |Count |
-| \System\Processes |Count |
-| \Process (_Toplam) \ iş parçacığı sayısı |Count |
-| \Process (_Total) \Tanıtıcı sayısı |Count |
-| \ Kullanılan\% bellek kaydedilmiş bayt sayısı |Percent |
+| \Processor(_Total)\% Processor Time |Yüzde |
+| \Processor (_Total)\% ayrıcalıklı süre |Yüzde |
+| \Processor (_Total)\% Kullanıcı saati |Yüzde |
+| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Sayı |
+| \System\Processes |Sayı |
+| \Process (_Total) \ iş parçacığı sayısı |Sayı |
+| \Process (_Total) \Tanıtıcı sayısı |Sayı |
+| \Bellek\% kaydedilmiş bayt kullanımda |Yüzde |
 | \Memory\Available Bytes |Bayt |
 | \ Bellek \ kaydedilmiş baytlar |Bayt |
 | \Memory\commıt limiti |Bayt |
 | \Bellek\havuz disk belleğine alınan baytlar |Bayt |
 | \Bellek\havuz disk belleksiz baytlar |Bayt |
-| \Fizikseldisk (\% _Total) disk saati |Percent |
-| \Fiziksel disk (_Total\% ) disk okuma zamanı |Percent |
-| \Fiziksel disk (_Total\% ) disk yazma zamanı |Percent |
-| \Fiziksel disk (_Total) \Disk aktarımı/sn |CountPerSecond |
-| \Fiziksel disk (_Total) \Disk Okuma/sn |CountPerSecond |
-| \Fiziksel disk (_Total) \Disk yazma/sn |CountPerSecond |
+| \Fiziksel disk (_Total)\% disk saati |Yüzde |
+| \Fiziksel disk (_Total)\% disk okuma zamanı |Yüzde |
+| \Fiziksel disk (_Total)\% disk yazma süresi |Yüzde |
+| \Fiziksel disk (_Total) \Disk aktarımı/sn |Sayaçpersaniye |
+| \Fiziksel disk (_Total) \Disk Okuma/sn |Sayaçpersaniye |
+| \Fiziksel disk (_Total) \Disk yazma/sn |Sayaçpersaniye |
 | \Fiziksel disk (_Total) \Disk bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk okuma bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk yazma bayt/sn |BytesPerSecond |
-| \Fiziksel disk (_Total) \Avg. Disk Kuyruğu Uzunluğu |Count |
-| \Fiziksel disk (_Total) \Avg. Disk okuma sırası uzunluğu |Count |
-| \Fiziksel disk (_Total) \Avg. Disk yazma sırası uzunluğu |Count |
-| \MantıksalDisk (_Total\% ) boş alanı |Percent |
-| \Mantıksaldisk (_Total) \ boş megabayt |Count |
+| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Sayı |
+| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Sayı |
+| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Sayı |
+| \Mantıksaldisk (_Total) boş alan\% |Yüzde |
+| \LogicalDisk (_Total) \ boş megabayt |Sayı |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Konuk işletim sistemi ölçümleri Linux VM 'Leri
 Azure 'da bir VM oluşturduğunuzda, Tanılamalar, tanılama uzantısı kullanılarak varsayılan olarak etkinleştirilir.
@@ -95,43 +91,43 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Ölçüm Adı | Birim |
 | --- | --- |
 | \Bellek\kullanılabilirlik blememory |Bayt |
-| \Memory\yüztavailablememory |Percent |
+| \Memory\yüztavailablememory |Yüzde |
 | \Bellek\usedmemory |Bayt |
-| \Memory\yüztusedmemory |Percent |
-| \Memory\yüztusedbycache |Percent |
-| \Bellek\pagespersec |CountPerSecond |
-| \Bellek\pagesreadpersec |CountPerSecond |
-| \Memory\PagesWrittenPerSec |CountPerSecond |
+| \Memory\yüztusedmemory |Yüzde |
+| \Memory\yüztusedbycache |Yüzde |
+| \Bellek\pagespersec |Sayaçpersaniye |
+| \Bellek\pagesreadpersec |Sayaçpersaniye |
+| \Memory\PagesWrittenPerSec |Sayaçpersaniye |
 | \Memory\AvailableSwap |Bayt |
-| \Memory\yüztavailableswap |Percent |
+| \Memory\yüztavailableswap |Yüzde |
 | \Bellek\usedswap |Bayt |
-| \Memory\yüztusedswap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\yüztusedswap |Yüzde |
+| \Processor\PercentIdleTime |Yüzde |
+| \Processor\PercentUserTime |Yüzde |
+| \Processor\PercentNiceTime |Yüzde |
+| \Processor\PercentPrivilegedTime |Yüzde |
+| \Processor\PercentInterruptTime |Yüzde |
+| \Processor\PercentDPCTime |Yüzde |
+| \Processor\PercentProcessorTime |Yüzde |
+| \Processor\PercentIOWaitTime |Yüzde |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\TransfersPerSecond |CountPerSecond |
-| \PhysicalDisk\ReadsPerSecond |CountPerSecond |
-| \PhysicalDisk\WritesPerSecond |CountPerSecond |
+| \PhysicalDisk\TransfersPerSecond |Sayaçpersaniye |
+| \PhysicalDisk\ReadsPerSecond |Sayaçpersaniye |
+| \PhysicalDisk\WritesPerSecond |Sayaçpersaniye |
 | \PhysicalDisk\AverageReadTime |Saniye |
 | \ Physicaldisk\averagewritetime |Saniye |
 | \PhysicalDisk\AverageTransferTime |Saniye |
-| \ Physicaldisk\averagediskqueuelength |Count |
+| \ Physicaldisk\averagediskqueuelength |Sayı |
 | \Networkınterface\bytestransmderlenen |Bayt |
 | \NetworkInterface\BytesReceived |Bayt |
-| \Networkınterface\packetstransmderlenen |Count |
-| \Networkınterface\packetsalındı |Count |
+| \Networkınterface\packetstransmderlenen |Sayı |
+| \Networkınterface\packetsalındı |Sayı |
 | \Networkınterface\bytestotal |Bayt |
-| \Networkınterface\totalrxerrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \Networkınterface\totalçarpışmalar |Count |
+| \Networkınterface\totalrxerrors |Sayı |
+| \NetworkInterface\TotalTxErrors |Sayı |
+| \Networkınterface\totalçarpışmalar |Sayı |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Yaygın olarak kullanılan Web (sunucu grubu) ölçümleri
 Ayrıca, http kuyruğu uzunluğu gibi genel Web sunucusu ölçümlerine göre otomatik ölçeklendirme yapabilirsiniz. Ölçüm adı **Httpqueuelength**olur.  Aşağıdaki bölümde, kullanılabilir sunucu grubu (Web Apps) ölçümleri listelenmektedir.
@@ -147,10 +143,10 @@ Bu ölçümler ile uyarı verebilir veya ölçeklendirebilirsiniz.
 
 | Ölçüm Adı | Birim |
 | --- | --- |
-| Cpuyüzdesi |Percent |
-| MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| Cpuyüzdesi |Yüzde |
+| MemoryPercentage |Yüzde |
+| DiskQueueLength |Sayı |
+| HttpQueueLength |Sayı |
 | BytesReceived |Bayt |
 | BytesSent |Bayt |
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382966"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430847"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
@@ -36,7 +36,7 @@ Cmdlet 'ler Azure Active Directory PowerShell V2 modülünün bir parçasıdır.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell cmdlet'lerini yükleme
 
-PowerShell komutlarını çalıştırmadan önce Windows PowerShell Graph için Azure Active Directory PowerShell Modülünün eski sürümlerini kaldırın ve [Graph için Azure Active Directory PowerShell - Genel Önizleme Sürümünü 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) yükleyin.
+PowerShell komutlarını çalıştırmadan önce, Windows PowerShell için grafik modülü için Azure Active Directory PowerShell 'in daha eski bir sürümünü kaldırıp [grafik-genel önizleme sürümü için Azure Active Directory PowerShell 'i (2.0.0.137 ' den sonra)](https://www.powershellgallery.com/packages/AzureADPreview) yüklemeyi unutmayın.
 
 1. Windows PowerShell uygulamasını yönetici olarak açın.
 2. Eski AzureADPreview sürümlerini kaldırın.
@@ -53,7 +53,7 @@ PowerShell komutlarını çalıştırmadan önce Windows PowerShell Graph için 
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Dizin düzeyinde ayarlar oluşturma
-Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulanan ayarları oluşturur. Get-AzureADDirectorySettingTemplate cmdlet 'i yalnızca [Graph Için Azure AD PowerShell önizleme modülünde](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)kullanılabilir.
+Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulanan ayarları oluşturur. Get-AzureADDirectorySettingTemplate cmdlet 'i yalnızca [Graph Için Azure AD PowerShell önizleme modülünde](https://www.powershellgallery.com/packages/AzureADPreview)kullanılabilir.
 
 1. DirectorySettings cmdlet 'lerinde, kullanmak istediğiniz SettingsTemplate KIMLIĞINI belirtmeniz gerekir. Bu KIMLIĞI görmüyorsanız, bu cmdlet tüm ayarlar şablonlarının listesini döndürür:
   
@@ -76,12 +76,13 @@ Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulana
 2. Kullanım Kılavuzu URL 'SI eklemek için, önce kullanım kılavuzu URL 'SI değerini tanımlayan SettingsTemplate nesnesini almanız gerekir; Yani, Group. Unified şablonu:
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. Ardından, bu şablonu temel alan yeni bir ayar nesnesi oluşturun:
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. Ardından Kullanım Kılavuzu değerini güncelleştirin:
   
@@ -91,22 +92,57 @@ Bu adımlar dizin düzeyinde, dizindeki tüm Office 365 grupları için uygulana
 5. Daha sonra ayarı uygulayın:
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. Şunu kullanarak değerleri okuyabilirsiniz:
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>Ayarları dizin düzeyinde Güncelleştir
-Ayar şablonunda Usageusagelinesurl değerini güncelleştirmek için yukarıdaki 4. adımda URL 'YI düzenleyin, ardından yeni değeri ayarlamak için 5. adımı gerçekleştirin.
+Ayar şablonunda Usagekılavuz Linesurl değerini güncelleştirmek için, Azure AD 'deki geçerli ayarları okuyun, aksi takdirde, Usagekılavuz Linesurl dışında mevcut ayarların üzerine yazılmasını de sağlarız.
 
-Usagekılavuz Linesurl değerini kaldırmak için, URL 'YI yukarıdaki 4. adım kullanarak boş bir dize olacak şekilde düzenleyin:
-
+1. Gruptan geçerli ayarları al. Unified SettingsTemplate:
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. Geçerli ayarları kontrol edin:
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   Çıktı:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. Usagekılavuz Linesurl değerini kaldırmak için URL 'YI boş bir dize olacak şekilde düzenleyin:
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Ardından yeni değeri ayarlamak için 5. adımı gerçekleştirin.
+4. Güncelleştirmeyi dizine Kaydet:
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>Şablon ayarları
 Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir. Aksi belirtilmedikçe, bu özellikler Azure Active Directory Premium P1 lisansı gerektirir. 

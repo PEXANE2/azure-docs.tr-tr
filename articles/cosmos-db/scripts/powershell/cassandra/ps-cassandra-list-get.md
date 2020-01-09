@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği Azure Cosmos DB listesi ve Cassandra API için işlemleri al
+title: Azure Cosmos DB Cassandra API kaynakları listelemek ve almak için PowerShell betiği
 description: Azure PowerShell betiği Azure Cosmos DB listesi ve Cassandra API için işlemleri al
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 185ad9d01e6f4909c0adad7f2b587a17e652dfd4
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: beff4e5732ddb22a29a2dd74c5c7393c8d932740
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445039"
 ---
 # <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB Cassandra API için anahtar alanları ve tabloları listeleyin ve alın
 

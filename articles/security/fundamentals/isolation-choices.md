@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459147"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 Azure, paylaşılan fiziksel altyapıda uygulama ve sanal makine (VM) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
@@ -73,7 +73,7 @@ Azure RBAC, tüm kaynak türleri için uygulanan üç temel role sahiptir:
 
 - **Okuyucu** , mevcut Azure kaynaklarını görüntüleyebilir.
 
-![Azure rol tabanlı Access Control](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure Rol Tabanlı Erişim Denetimi](./media/isolation-choices/azure-isolation-fig3.png)
 
 Azure 'daki RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin, sanal makine katılımcısı rolü, kullanıcının sanal makineler oluşturmasına ve yönetmesine izin verir. Azure sanal ağına veya sanal makinenin bağlandığı alt ağa erişim vermez.
 
@@ -149,7 +149,7 @@ Yapı denetleyicisinden aracıya iletişim tek yönlü olur. Aracı yalnızca de
 Yalıtım, Konuk VM 'lerden ve konuk sanal makinelerden diğerine genişletilir. İşlem düğümleri, daha fazla koruma için depolama düğümlerinden de yalıtılmıştır.
 
 
-Hiper yönetici ve konak işletim sistemi, güvenilmeyen sanal makinelerin sahte trafik oluşturmamasını veya bunlara değinilmemiş trafiği alamamasını sağlamaya yardımcı olmak için ağ paketi filtreleri sağlar, korumalı altyapı uç noktalarına doğrudan trafik veya gönderme/alma uygunsuz yayın trafiği.
+Hiper yönetici ve konak işletim sistemi, güvenilmeyen sanal makinelerin sahte trafik oluşturmamasını veya bunlara değinilmemiş trafiği alamamasını, korumalı altyapı uç noktalarına doğrudan trafik veya uyumsuz yayın trafiği göndermesini veya alamamasını sağlamaya yardımcı olmak için ağ paketi filtreleri sağlar.
 
 
 ### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>VM 'yi yalıtmak için doku denetleyicisi Aracısı tarafından yapılandırılan ek kurallar
@@ -161,10 +161,10 @@ Programlanmış iki kural kategorisi vardır:
 
 -   **Rol yapılandırma dosyası:** Bu, kiracının hizmet modeline göre gelen Access Control listelerini (ACL 'Ler) tanımlar.
 
-### <a name="vlan-isolation"></a>VLAN yalıtımı
+### <a name="vlan-isolation"></a>VLAN Yalıtımı
 Her kümede üç VLAN vardır:
 
-![VLAN yalıtımı](./media/isolation-choices/azure-isolation-fig8.jpg)
+![VLAN Yalıtımı](./media/isolation-choices/azure-isolation-fig8.jpg)
 
 
 -   Ana VLAN – güvenilmeyen Müşteri düğümlerini birbirine bağlar
@@ -205,7 +205,7 @@ Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmas
 
 -   Azure depolama içine veya dışına veri aktarırken HTTPS gibi [Aktarım düzeyi şifreleme](../../storage/common/storage-security-guide.md).
 
--   Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares).
+-   Azure dosya paylaşımları için SMB 3,0 Şifrelemesi gibi bir [hat şifreleme](../../storage/common/storage-security-guide.md).
 
 -   Depolama alanına aktarılmadan önce verileri şifrelemek ve depolama alanı dışına aktarıldıktan sonra verilerin şifresini çözmek için [istemci tarafı şifreleme](../../storage/common/storage-security-guide.md).
 

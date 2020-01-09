@@ -1,7 +1,6 @@
 ---
 title: Öğretici-Visual C# Studio 'da Azure Stream Analytics işleri için Kullanıcı tanımlı işlevleri yazma (Önizleme)
 description: Bu öğreticide, Visual Studio 'da Stream Analytics işleri için c# Kullanıcı tanımlı işlevlerinin nasıl yazılacağı gösterilmektedir.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426290"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Öğretici: Azure Stream Analytics işi C# için Kullanıcı tanımlı bir işlev yazma (Önizleme)
 
@@ -27,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Stream Analytics işinizi yerel olarak test edin.
 > * İşinizi Azure 'da yayımlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
@@ -114,11 +113,11 @@ CodeBehind dosyası, tek bir C# asa sorgu betiği ile ilişkili bir dosyadır. G
 
 2. **Çözüm Gezgini**'nde **Girişler**'i genişletin, **Input.json** dosyasına sağ tıklayın ve **Yerel Giriş Ekle**'yi seçin.
 
-   ![Visual Studio 'da Stream Analytics işe yerel giriş ekleme](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
+   ![Visual Studio için Stream Analytics işi yerel giriş Ekle](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
 3. İndirdiğiniz örnek verilerin yerel giriş dosyası yolunu belirtin ve **Kaydet**'i seçin.
 
-    ![Visual Studio 'da Stream Analytics işi için yerel giriş yapılandırması](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
+    ![Visual Studio için Stream Analytics işinde için yerel giriş yapılandırma](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
 4. Betik düzenleyicisinde **Yerel Olarak Çalıştır**'a tıklayın. Yerel çalıştırma çıkış sonuçlarını başarıyla kaydettikten sonra sonuçları tablo biçiminde görmek için herhangi bir tuşa basın. 
 
@@ -133,11 +132,11 @@ C# UDF hatalarını yerel ortamda standart C# kodunda olduğu gibi ayıklayabili
 
 1. C# işlevinize kesme noktaları ekleyin.
 
-    ![Visual Studio 'da Kullanıcı tanımlı Stream Analytics işleve kesme noktaları ekleme](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
+    ![Stream Analytics kullanıcı tanımlı işlev Visual Studio'daki kesme noktaları ekleme](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
 2. Hata ayıklamaya başlamak için **F5**'e basın. Program beklendiği gibi kesme noktalarında durur.
 
-    ![Kullanıcı tanımlı Stream Analytics hata ayıklama sonuçlarını görüntüle](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
+    ![Stream Analytics kullanıcı tanımlı işlev sonuçları hata ayıklama görüntüleyin](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
 ## <a name="publish-your-job-to-azure"></a>İşinizi Azure'da yayımlama
 Sorgunuzu yerel ortamda test ettikten sonra işi Azure'da yayımlamak için betik düzenleyicisinde **Azure'a Gönder**'i seçin.
@@ -154,4 +153,4 @@ Bu öğreticide, CodeBehind kullanarak basit C# bir Kullanıcı tanımlı işlev
 Stream Analytics işleri için Kullanıcı tanımlı işlevleri kullanmanın C# farklı yolları hakkında daha fazla bilgi edinmek için bu makaleye geçin:
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics C# için yazma işlevleri](stream-analytics-edge-csharp-udf-methods.md)
+> [Yazma C# işlevleri için Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)

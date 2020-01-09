@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423792"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran mobil uygulama-kod yapılandırması
 
@@ -77,7 +77,7 @@ Aşağıdaki paragraf, Xamarin. iOS, Xamarin. Android ve UWP uygulamaları için
 
 Xamarin veya UWP 'de, uygulamayı örneketmenin en kolay yolu aşağıdaki gibidir; burada `ClientId` kayıtlı uygulamanızın GUID 'Sidir.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ UI üst öğesini, varsayılan yetkiyi geçersiz kılmayı, bir istemci adı ve 
 
 Android 'de, etkileşimli kimlik doğrulaması yapmadan önce üst etkinliği geçirmeniz gerekir. İOS 'ta, bir aracı kullanırken, ViewController 'a geçiş yapmanız gerekir. UWP 'de aynı şekilde, üst pencereyi geçirmek isteyebilirsiniz. Bu, belirteci aldığınızda mümkündür, ancak uygulama oluşturma zamanında Uıparent döndüren bir temsilci de bir geri çağırma belirtmek mümkündür.
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 Android 'de, [burada](https://github.com/jamesmontemagno/CurrentActivityPlugin)`CurrentActivityPlugin` kullanmanızı öneririz.  `PublicClientApplication` Builder kodunuz şöyle görünür:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ Xamarin. iOS uygulamanızın [Microsoft Authenticator](https://itunes.apple.com/
 
 Aracı desteği`PublicClientApplication` göre etkinleştirilmiştir. Varsayılan olarak devre dışıdır. `PublicClientApplicationBuilder`aracılığıyla `PublicClientApplication` oluştururken `WithBroker()` parametresini (varsayılan olarak true olarak ayarlanır) kullanmanız gerekir.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 MSAL.NET aracı çağırdığında, aracı `AppDelegate.OpenUrl` yöntemi aracılığıyla uygulamanıza geri çağrı yapılır. MSAL, aracıdan gelen yanıtı bekleyecek için, uygulamanızın MSAL.NET geri çağırmak için birlikte çalışması gerekir. Bunu, aşağıdaki yöntemi geçersiz kılmak için `AppDelegate.cs` dosyasını güncelleştirerek yapabilirsiniz.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ Nesne penceresini ayarlamak için aşağıdakileri yapın:
 **Örneğin:**
 
 `App.cs` içinde:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 `AppDelegate.cs` içinde:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 Belirteç al çağrısında:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();

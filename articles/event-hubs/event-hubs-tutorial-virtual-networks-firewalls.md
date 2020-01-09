@@ -1,45 +1,45 @@
 ---
-title: Öğretici - etkin sanal ağları tümleştirme ve olay hub'ları güvenlik duvarlarında | Microsoft Docs
-description: Bu öğreticide, Event Hubs güvenli erişim sağlamak amacıyla sanal ağları ve güvenlik duvarları ile tümleştirmeyi öğrenin.
+title: Azure Event Hubs-sanal ağlar tümleştirmesini ve güvenlik duvarlarını etkinleştirin
+description: Bu öğreticide, güvenli erişimi etkinleştirmek için Event Hubs sanal ağlarla ve güvenlik duvarlarıyla tümleştirmeyi öğreneceksiniz.
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437116"
 ---
-# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Öğretici: Sanal ağ tümleştirme ve güvenlik duvarları, Event Hubs ad alanınızdaki etkinleştir
+# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Öğretici: Event Hubs ad alanı üzerinde sanal ağlar tümleştirmesini ve güvenlik duvarlarını etkinleştirin
 
-[Sanal ağ (VNet) hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) sanal ağ özel adres alanınızı ve Azure Hizmetleri, sanal ağınızın kimliğini doğrudan bağlantı genişletir. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır.
+[Sanal ağ (VNet) hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) , sanal ağ özel adres alanınızı ve VNET 'iniz kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletir. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır.
 
-Güvenlik duvarları, belirli IP adresleri (veya IP adresi aralıkları), Event Hubs ad alanına erişimi sınırlamak izin ver
+Güvenlik duvarları belirli IP adreslerinden (veya IP adres aralıklarından) Event Hubs ad alanına erişimi sınırlamanıza olanak tanır
 
-Bu öğreticide, sanal ağ hizmet uç noktaları tümleştirin ve Portalı'nı kullanarak var olan Azure Event Hubs ad alanınız ile güvenlik duvarları (IP Filtreleme) ayarlamak gösterilir.
+Bu öğreticide, sanal ağlar hizmet uç noktalarının nasıl tümleştirileceği ve Portal kullanılarak mevcut Azure Event Hubs ad alanınızla güvenlik duvarları (IP filtrelemesi) nasıl ayarlanacağı gösterilmektedir.
 
-Bu öğreticide, şunların nasıl yapılır:
+Bu öğreticide, aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > [!div class="checklist"]
-> * Sanal ağ hizmet uç noktaları ile Event Hubs ad alanınız tümleştirmeyi öğreneceksiniz.
-> * Güvenlik Duvarı (IP Filtreleme) ile Event Hubs ad alanınız ayarlama.
+> * Sanal ağlar hizmet uç noktalarını Event Hubs ad alanınızla tümleştirme.
+> * Event Hubs ad alanınız ile güvenlik duvarı (IP filtrelemesi) kurulumu.
 
 >[!WARNING]
-> Sanal ağlar tümleştirme uygulama diğer Azure Hizmetleri, Event Hubs ile etkileşim engelleyebilirsiniz.
+> Sanal ağlar tümleştirmesini uygulamak, diğer Azure hizmetlerinin Event Hubs etkileşimde olmasını engelleyebilir.
 >
-> Sanal ağların etkin olduğunda, birinci taraf entegrasyonlara desteklenmez.
-> Sanal ağlar ile çalışmayan Azure senaryoları-
-> * Azure tanılama ve günlüğe kaydetme
+> Sanal ağlar etkinleştirildiğinde birinci taraf tümleştirmeler desteklenmez.
+> Sanal ağlarla çalışmayan yaygın Azure senaryoları-
+> * Azure Tanılama ve günlüğe kaydetme
 > * Azure Stream Analytics
-> * Event Grid tümleştirmesi
-> * Web Apps ve İşlevler bir sanal ağda olması gerekir.
-> * IOT hub'ı yönlendirir
-> * IOT Device Explorer
+> * Event Grid tümleştirme
+> * Web Apps & Işlevlerinin sanal bir ağda olması gerekir.
+> * IoT Hub yolları
+> * IoT Device Explorer
 
 
 > [!IMPORTANT]
@@ -47,70 +47,70 @@ Bu öğreticide, şunların nasıl yapılır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz hesap] [] oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Mevcut bir Event Hubs ad alanı bir nedenle yararlanılacaktır bir Event Hubs ad alanı kullanılabilir olduğundan emin olun. Lütfen yoksa başvurursanız [Bu öğretici](./event-hubs-create.md)
+Mevcut bir Event Hubs ad alanını kullanacağız, bu nedenle lütfen kullanılabilir bir Event Hubs ad alanı olduğundan emin olun. Bunu yapmazsanız lütfen [Bu öğreticiye](./event-hubs-create.md) başvurun
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-İlk olarak, Git [Azure portalında][Azure portal] kullanarak Azure aboneliğinizde oturum açın.
+İlk olarak, [Azure Portal][Azure portal] gidin ve Azure aboneliğinizi kullanarak oturum açın.
 
 ## <a name="select-event-hubs-namespace"></a>Event Hubs ad alanını seçin
 
-Bu öğreticinin amacı doğrultusunda bir Event Hubs ad alanı oluşturan ve olarak gider.
+Bu öğreticinin amacı için Event Hubs bir ad alanı oluşturduk ve buna gidecektir.
 
-## <a name="navigate-to-firewalls-and-virtual-networks-experience"></a>Güvenlik duvarları ve sanal ağlar deneyimine gitmek
+## <a name="navigate-to-firewalls-and-virtual-networks-experience"></a>Güvenlik duvarları ve sanal ağlar deneyimine gidin
 
-Gezinti Menüsü çekme Portal'daki sol bölmede kullanın **'Güvenlik duvarları ve sanal ağlar'** seçeneği.
+**' Güvenlik duvarları ve sanal ağlar '** seçeneğini seçmek için portaldaki sol bölmedeki gezinti menüsünü kullanın.
 
-  ![Menüsüne gidin](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-landing-page.png)
+  ![Menüye git](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-landing-page.png)
 
-  Bu sayfa, ziyaret ettiğiniz ilk kez **tüm ağlar** radyo düğmesini seçili olmalıdır. Bu, Event Hubs ad alanı, tüm gelen bağlantıları izin verdiğini gösterir.
+  Bu sayfayı ilk kez ziyaret ettiğinizde **tüm ağlar** radyo düğmesi seçilmelidir. Bu, Event Hubs ad alanının tüm gelen bağlantılara izin verdiğini gösterir.
 
-## <a name="add-virtual-network-service-endpoint"></a>Sanal ağ hizmet uç noktası ekleme
+## <a name="add-virtual-network-service-endpoint"></a>Sanal ağ hizmeti uç noktası ekle
 
-Erişimi sınırlamak için bu Event Hubs ad alanı için sanal ağ hizmet uç noktası tümleştirmek gerekir.
+Erişimi sınırlandırmak için, bu Event Hubs ad alanı için sanal ağ hizmet uç noktasını tümleştirmeniz gerekir.
 
-1. Tıklayın **seçili ağlar** menü seçenekleri ile sayfanın geri kalanını etkinleştirmek için sayfanın üst kısmındaki radyo düğmesi.
-  ![Seçili ağlar](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
-2. Sayfa sanal ağ alt kısmında seçeneğini ***+ var olan sanal ağı Ekle***. Bu, önceden oluşturulan bir sanal ağ seçmek için izin bölmesinde slayt.
-  ![Var olan sanal ağı Ekle](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane.png)
-3. Listeden sanal ağı seçin ve alt ağ seçin.
-   ![alt ağ seçin](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-with-subnet-query.png)
-4. Sanal ağ listeye eklemeden önce hizmet uç noktasını gerekir. Hizmet uç noktası etkin değilse, portal etkinleştirmek isteyip istemediğinizi sorar.
-  ![alt ağ seçin ve uç noktayı etkinleştirme](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-enabling.png)
+1. Sayfanın en üstündeki **Seçili ağlar** radyo düğmesine tıklayarak sayfanın geri kalanını menü seçenekleriyle etkinleştirin.
+  Seçili ağları ![](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
+2. Sayfanın sanal ağ bölümünde, ***var olan sanal ağı ekle***seçeneğini belirleyin. Bu, önceden oluşturulmuş bir sanal ağ seçmenizi sağlayacak olan bölmeye eklenecektir.
+  ![var olan sanal ağ](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane.png) Ekle
+3. Listeden sanal ağı seçin ve alt ağı seçin.
+   alt ağ](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-with-subnet-query.png) ![seçin
+4. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.
+  ![alt ağ seçin ve uç noktayı etkinleştirin](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-enabling.png)
     > [!NOTE]
-    > Hizmet uç noktasını bulamıyorsanız, ARM şablonunu kullanarak eksik sanal ağ hizmet uç noktası göz ardı edebilirsiniz. Bu işlev, portalda kullanılamıyor.
+    > Hizmet uç noktasını etkinleştiremeyebilirsiniz, ARM şablonunu kullanarak eksik sanal ağ hizmeti uç noktasını yoksayabilirsiniz. Portalda bu işlev kullanılamaz.
 
-5. Seçilen alt ağdaki hizmet uç noktası etkinleştirildikten sonra izin verilen sanal ağlar listesine eklemek için devam edebilirsiniz.
-  ![uç noktası etkinleştirildikten sonra alt ağ ekleme](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-adding.png)
+5. Seçili alt ağ üzerinde hizmet uç noktasını etkinleştirdikten sonra, izin verilen sanal ağlar listesine ekleme işlemine devam edebilirsiniz.
+  uç nokta etkinleştirildikten sonra alt ağ ekleme ![](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-adding.png)
 
-6. İsabet devam **Kaydet** hizmette sanal ağ yapılandırmasını kaydetmek için üst Şeritteki düğme. Lütfen onay portal bildirimlerinde gösterilecek birkaç dakika bekleyin.
+6. Sanal ağ yapılandırmasını hizmete kaydetmek için üst şeritte **Kaydet** düğmesine basın. Onayın Portal bildirimlerinde gösterilmesi için lütfen birkaç dakika bekleyin.
 
-## <a name="add-firewall-for-specified-ip"></a>Belirtilen IP Güvenlik Duvarı ekleme
+## <a name="add-firewall-for-specified-ip"></a>Belirtilen IP için güvenlik duvarı Ekle
 
-Güvenlik duvarı kurallarını kullanarak biz sınırlı IP adresleri ya da belirli bir IP adresi Event Hubs ad alanı için erişimi sınırlayabilirsiniz.
+Güvenlik duvarı kurallarını kullanarak, sınırlı bir IP adresi aralığı veya belirli bir IP adresi için Event Hubs ad alanına erişimi sınırlayabiliriz.
 
-1. Tıklayın **seçili ağlar** menü seçenekleri ile sayfanın geri kalanını etkinleştirmek için sayfanın üst kısmındaki radyo düğmesi.
-  ![Seçili ağlar](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
-2. İçinde **Güvenlik Duvarı** bölümündeki ***adres aralığı*** kılavuz, bir veya birçok belirli IP adresi veya IP adresleri aralığı ekleyebilirsiniz.
-  ![IP adreslerini ekleyin](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall.png)
-3. Birden çok IP adresi (veya IP adresi aralıkları) ekledikten sonra isabet **Kaydet** üst Şeritteki yapılandırma sunucusu tarafında kaydedildiğinden emin olun. Lütfen onay portal bildirimlerinde gösterilecek birkaç dakika bekleyin.
-  ![IP adreslerini ekleyin ve Kaydet'e tıklayın](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall-hitting-save.png)
+1. Sayfanın en üstündeki **Seçili ağlar** radyo düğmesine tıklayarak sayfanın geri kalanını menü seçenekleriyle etkinleştirin.
+  Seçili ağları ![](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
+2. **Güvenlik duvarı** bölümünde, ***adres aralığı*** Kılavuzu ' nun altında, bir veya daha fazla belırlı IP adresi veya IP adresi aralığı ekleyebilirsiniz.
+  IP adresi eklemek ![](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall.png)
+3. Birden çok IP adresini (veya IP adresi aralıklarını) ekledikten sonra, yapılandırmanın hizmet tarafında kaydedildiğinden emin olmak için üst şeritte **Kaydet** ' e basın. Onayın Portal bildirimlerinde gösterilmesi için lütfen birkaç dakika bekleyin.
+  ![IP adresleri Ekle ve Kaydet](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall-hitting-save.png)
 
-## <a name="adding-your-current-ip-address-to-the-firewall-rules"></a>Geçerli IP adresiniz için güvenlik duvarı kuralları ekleme
+## <a name="adding-your-current-ip-address-to-the-firewall-rules"></a>Geçerli IP adresinizi güvenlik duvarı kurallarına ekleme
 
-1. Ayrıca geçerli IP adresinizi hızlı bir şekilde kontrol ederek ekleyebilirsiniz ***istemci IP adresiniz (Bilgisayarınızı geçerli IP adresi) ekleme*** onay kutusunu hemen üzerinde ***adres aralığı*** kılavuz.
-  ![geçerli IP adresi ekleme](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save.png)
-2. Geçerli IP adresiniz için güvenlik duvarı kuralları ekledikten sonra isabet **Kaydet** üst Şeritteki yapılandırma sunucusu tarafında kaydedildiğinden emin olun. Lütfen onay portal bildirimlerinde gösterilecek birkaç dakika bekleyin.
-  ![geçerli IP adresini ekleyin ve Kaydet'e tıklayın](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save-after-saving.png)
+1. ***Adres aralığı*** kılavuzunun hemen ÜSTÜNDEKI ***istemci IP ADRESINI (geçerli IP adresiniz)*** onay kutusunu işaretleyerek geçerli IP adresinizi hızlıca de ekleyebilirsiniz.
+  geçerli IP adresi ekleme ![](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save.png)
+2. Geçerli IP adresinizi güvenlik duvarı kurallarına ekledikten sonra, yapılandırmanın hizmet tarafında kaydedildiğinden emin olmak için üst şeritte **Kaydet** ' e basın. Onayın Portal bildirimlerinde gösterilmesi için lütfen birkaç dakika bekleyin.
+  ![geçerli IP adresi ekle ve Kaydet](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save-after-saving.png)
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu öğreticide, var olan bir Event Hubs ad alanı ile sanal ağ uç noktaları ve güvenlik duvarı kuralları tümleşiktir. Size nasıl modellerin için:
+Bu öğreticide, sanal ağ uç noktalarını ve güvenlik duvarı kurallarını mevcut bir Event Hubs ad alanıyla tümleştirmiş olursunuz. Şunları öğrenirsiniz:
 > [!div class="checklist"]
-> * Sanal ağ hizmet uç noktaları ile Event Hubs ad alanınız tümleştirmeyi öğreneceksiniz.
-> * Güvenlik Duvarı (IP Filtreleme) ile Event Hubs ad alanınız ayarlama.
+> * Sanal ağlar hizmet uç noktalarını Event Hubs ad alanınızla tümleştirme.
+> * Event Hubs ad alanınız ile güvenlik duvarı (IP filtrelemesi) kurulumu.
 
 
 [Azure portal]: https://portal.azure.com/

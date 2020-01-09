@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 972b9360fa95b528bd955a07451e7347f3e1791d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456651"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps ile yinelenen otomatikleştirilmiş görevler, süreçler ve iş akışları zamanlayın ve çalıştırın
 
@@ -79,11 +79,21 @@ Mantıksal uygulama iş akışınızın herhangi bir eyleminden sonra, bir sonra
 | Bugünkü veya gelecekteki başlangıç zamanı | Belirtilen başlangıç zamanında ilk iş yükünü çalıştırır. <p>Son çalışma zamanından hesaplamalar temelinde gelecekteki iş yüklerini çalıştırır. | Başlangıç zamanından hesaplanan zamanlamaya göre başlangıç zamanından daha önce *olmayan* ilk iş yükünü çalıştırır. <p>Gelecekteki iş yüklerini belirtilen zamanlamaya göre çalıştırır. <p>**Note:** Zamanlama ile bir yinelenme belirtirseniz, ancak zamanlama için saat veya dakika belirtmezseniz, gelecekteki çalışma süreleri sırasıyla, ilk çalışma zamanından itibaren saatler veya dakikalar kullanılarak hesaplanır. |
 ||||
 
+> [!IMPORTANT]
+> Yinelenmeler Gelişmiş zamanlama seçenekleri belirtmezseniz, gelecekteki Yinelenmeler son çalışma zamanına göre yapılır.
+> Bu Yinelenmeler için başlangıç zamanları, depolama aramaları sırasında gecikme süresi gibi faktörlerden dolayı yetersiz kalabilir. Mantıksal uygulamanızın bir yinelemeyi kaçırmayın, özellikle sıklık gün veya daha uzun bir süre içinde olduğundan emin olmak için şu seçeneklerden birini kullanın:
+> 
+> * Yinelenme için bir başlangıç saati belirtin.
+> 
+> * **Bu saatlerde** ve **Bu dakika** özelliklerinde kullanarak yinelenme ne zaman çalıştırılacağı saat ve dakika sayısını belirtin.
+> 
+> * Yineleme tetikleyicisi yerine [kayan pencere tetikleyicisini](../connectors/connectors-native-sliding-window.md)kullanın.
+
 *Son başlangıç zamanı ve yinelenme örneği, ancak zamanlama yok*
 
 Geçerli tarih ve saatin 8 Eylül 2017 ile 1:00 PM arasında olduğunu varsayalım. Başlangıç tarihini ve saatini 7 Eylül 2017 itibariyle, geçmişte olan 2:00 PM ve her iki günde bir çalışan bir yinelenme olarak belirtirsiniz.
 
-| Başlangıç saati | Geçerli saat | Yineleme | Zamanlama |
+| Başlangıç saati | Geçerli zaman | Yineleme | Zamanlama |
 |------------|--------------|------------|----------|
 | 2017-09-**07**T14:00:00Z <br>(2017-09-**07** saat 2:00 PM) | 2017-09-**08**T13:00:00Z <br>(2017-09-**08** , 1:00 PM) | İki günde bir | seçim |
 |||||
@@ -116,7 +126,7 @@ Bu nedenle, başlangıç saatini ne kadar belirttiğinize bakılmaksızın, örn
 
 Seçenekleri destekleyen Tetikleyiciler için ayarlayabileceğiniz çeşitli örnek tekrarları aşağıda verilmiştir:
 
-| Tetikleyici | Yineleme | Interval | Frequency | Başlangıç saati | Şu günlerde | Şu saatlerde | Şu dakikalar içinde | Not |
+| Tetikleyici | Yineleme | Interval | Frequency | Başlangıç saati | Şu günlerde | Şu saatlerde | Şu dakikalarda | Not |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Yinelemeyi <br>Kayan Pencere | Her 15 dakikada bir Çalıştır (başlangıç tarihi ve saati olmadan) | 15 | Dakika | seçim | mıyor | seçim | seçim | Bu zamanlama hemen başlatılır, ardından son çalışma zamanına göre gelecekteki tekrarları hesaplar. |
 | Yinelemeyi <br>Kayan Pencere | Her 15 dakikada bir Çalıştır (başlangıç tarihi ve saati ile) | 15 | Dakika | *StartDate* T*StartTime*Z | mıyor | seçim | seçim | Bu zamanlama, belirtilen başlangıç tarihi ve saatinden daha *önce* başlamaz, son çalışma zamanına göre gelecekteki tekrarları hesaplar. |
@@ -127,12 +137,12 @@ Seçenekleri destekleyen Tetikleyiciler için ayarlayabileceğiniz çeşitli ör
 | Yineleme | Saatte bir saat sonra her 15 dakikada bir Çalıştır (başlangıç tarihi ve saati olmadan) | 1 | Gün | seçim | mıyor | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Bu zamanlama 00:15, 1:15, 2:15, vb. olarak çalışır. Ayrıca, bu zamanlama "saat" sıklığıyla "15" dakikalık bir başlangıç zamanına eşittir. |
 | Yineleme | Belirtilen dakika işaretlerinde 15 dakikada bir Çalıştır (başlangıç tarihi ve saati yok). | 1 | Gün | seçim | mıyor | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Bu zamanlama sonraki belirtilen 15 dakikalık işaretine kadar başlamaz. |
 | Yineleme | Mantıksal uygulamanızı kaydettiğinizde her gün 8 *saat ve dakika* olarak çalıştır | 1 | Gün | seçim | mıyor | 8 | seçim | Başlangıç tarihi ve saati olmadan, bu zamanlama mantıksal uygulamayı kaydettiğinizde (PUT işlemi) zamana göre çalışır. |
-| Yineleme | Günlük Çalıştır: 8:00 (başlangıç tarihi ve saati ile) | 1 | Gün | *StartDate* T08:00:00Z | mıyor | seçim | seçim | Bu zamanlama, belirtilen başlangıç tarihi ve saatinden daha *önce* başlamıyor. Gelecek oluşumların saati 8:00 ' de günde bir kez çalıştırılır. | 
+| Yineleme | Günlük Çalıştır: 8:00 (başlangıç tarihi ve saati ile) | 1 | Gün | *startDate*T08:00:00Z | mıyor | seçim | seçim | Bu zamanlama, belirtilen başlangıç tarihi ve saatinden daha *önce* başlamıyor. Gelecek oluşumların saati 8:00 ' de günde bir kez çalıştırılır. | 
 | Yineleme | Günlük Çalıştır: 8:30 (başlangıç tarihi ve saati yok) | 1 | Gün | seçim | mıyor | 8 | 30 | Bu zamanlama her gün 8:30 ' de çalışır. |
 | Yineleme | Günlük Çalıştır: 8:30 ve 4:30 PM | 1 | Gün | seçim | mıyor | 8, 16 | 30 | |
 | Yineleme | Günde 8:30, 8:45, 4:30 ve 4:45 saat olarak çalıştır | 1 | Gün | seçim | mıyor | 8, 16 | 30, 45 | |
-| Yineleme | Her Cumartesi 5 saat (başlangıç tarihi ve saati olmadan) Çalıştır | 1 | Hafta | seçim | Günü | 17 | oluşturun | Bu zamanlama, her Cumartesi 5:00: ' de çalışır. |
-| Yineleme | Her Cumartesi 5 saat (başlangıç tarihi ve saati) olarak çalıştır | 1 | Hafta | *StartDate* T17:00:00Z | Günü | seçim | seçim | Bu zamanlama, belirtilen başlangıç tarihi ve saatinden daha *önce* başlatılmaz, bu durumda 9 Eylül 2017, 5:00 PM. Gelecekteki Yinelenmeler, her Cumartesi 5:00 PM 'de çalışır. |
+| Yineleme | Her Cumartesi 5 saat (başlangıç tarihi ve saati olmadan) Çalıştır | 1 | Hafta | seçim | Günü | 17 | 00 | Bu zamanlama, her Cumartesi 5:00: ' de çalışır. |
+| Yineleme | Her Cumartesi 5 saat (başlangıç tarihi ve saati) olarak çalıştır | 1 | Hafta | *startDate*T17:00:00Z | Günü | seçim | seçim | Bu zamanlama, belirtilen başlangıç tarihi ve saatinden daha *önce* başlatılmaz, bu durumda 9 Eylül 2017, 5:00 PM. Gelecekteki Yinelenmeler, her Cumartesi 5:00 PM 'de çalışır. |
 | Yineleme | Her Salı günü çalıştırın, mantıksal uygulamanızı kaydettiğinizde 5 ve *sonra da dakika* olarak Perşembe| 1 | Hafta | seçim | "Salı", "Perşembe" | 17 | seçim | |
 | Yineleme | Çalışma saatleri boyunca her saat Çalıştır | 1 | Hafta | seçim | Cumartesi ve Pazar hariç tüm günleri seçin. | İstediğiniz günün saatini seçin. | İstediğiniz saatin dakikasını seçin. | Örneğin, çalışma saatleriniz 8:00 ila 5:00 PM ise günün saatleri olarak "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" öğesini seçin. <p>Çalışma saatleriniz 8:30 ila 5:30 PM ise, günün önceki saatlerini ve saatin dakika olarak "30" değerini seçin. |
 | Yineleme | Her gün hafta sonları üzerinde Çalıştır | 1 | Hafta | seçim | "Cumartesi", "Pazar" | İstediğiniz günün saatini seçin. | Uygun şekilde saatin dakikasını seçin. | Bu zamanlama, belirtilen zamanlamaya göre her Cumartesi ve Pazar günü çalışır. |

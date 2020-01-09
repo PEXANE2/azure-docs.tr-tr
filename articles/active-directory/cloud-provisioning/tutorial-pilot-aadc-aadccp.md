@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425091"
 ---
-# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut eşitlenmiş bir AD Ormanı için pilot bulut sağlama 
+# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
 Bu öğreticide, zaten Azure Active Directory (Azure AD) Connect Sync kullanılarak eşitlenmiş bir test Active Directory ormanı için bulut sağlamasının nasıl ele aldığı anlatılmaktadır.
 
@@ -35,7 +35,7 @@ Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
 
 4. Bu gelişmiş bir senaryodur. Bu öğreticide açıklanan adımları tam olarak izlediğinizden emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - Azure AD Connect Sync sürüm 1.4.32.0 veya üzeri bir test ortamı
 - Eşitleme kapsamındaki bir OU veya grup ve pilot kullanılabilir. Küçük bir nesne kümesiyle başlamasını öneririz.
@@ -133,21 +133,6 @@ Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup
 
 7. Bu işlem tamamlandıktan sonra, **başarıyla doğrulandığına** ilişkin bir uyarı görmeniz gerekir.  **Çıkış**' a tıklayabilirsiniz.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
-8. İlk giriş ekranını görmeye devam ederseniz, **Kapat**' a tıklayın. 1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.
-2. Azure AD Connect bulut sağlama aracısını [buradan](https://go.microsoft.com/fwlink/?linkid=2109037)indirin.
-3. Azure AD Connect bulut sağlamasını çalıştırın (AADConnectProvisioningAgent. Installer)
-3. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install1.png)</br>
-
-4. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.
-5. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve Active Directory Yönetici hesabınızla oturum açın.  Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install3.png)</br>
-
-6. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install4.png)</br>
-
-7. Bu işlem tamamlandıktan sonra, **başarıyla doğrulandığına** ilişkin bir uyarı görmeniz gerekir.  **Çıkış**' a tıklayabilirsiniz.</br>
-![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
 8. İlk giriş ekranını hala görüyorsanız **Kapat**' a tıklayın.
 
 ## <a name="verify-agent-installation"></a>Aracı yüklemesini doğrulama
@@ -158,7 +143,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları 
 
 1. Azure Portal’da oturum açın.
 2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
-![Azure portalda](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install6.png)</br>
 
 3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
 Azure AD sağlama](media/how-to-install/install7.png) ![</br>

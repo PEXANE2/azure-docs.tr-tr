@@ -1,39 +1,35 @@
 ---
-title: E-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirmeyi kullanma
-description: "Otomatik ölçeklendirme eylemlerinin web URL'leri çağırma veya Azure İzleyici'de e-posta bildirimleri göndermek için nasıl kullanılacağı konusuna bakın. "
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: E-posta ve Web kancası uyarı bildirimlerini göndermek için otomatik ölçeklendirmeyi kullanın
+description: Otomatik ölçeklendirme eylemlerini kullanarak Web URL 'Lerini çağırma veya Azure Izleyici 'de e-posta bildirimleri gönderme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364212"
 ---
-# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>E-posta ve Web kancası, Azure İzleyici'de uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemleri kullanın
-Bu makalede, böylece belirli web URL'lerini çağırma veya Azure otomatik ölçeklendirme eylemleri göre e-posta Gönder Tetikleyiciler nasıl kümesi gösterilmektedir.  
+# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Izleyici 'de e-posta ve Web kancası uyarı bildirimleri göndermek için otomatik ölçeklendirme eylemlerini kullanma
+Bu makalede, belirli Web URL 'Lerini çağırabilmeniz veya Azure 'daki otomatik ölçeklendirme eylemlerine göre e-posta gönderebilmek için Tetikleyicileri ayarlama yöntemi gösterilmektedir.  
 
 ## <a name="webhooks"></a>Web Kancaları
-Web kancaları, işlem sonrası veya özel bildirimleri için diğer sistemlere Azure uyarı bildirimleri yönlendirmek olanak sağlar. Örneğin, uyarı vb. sohbet kullanarak veya Mesajlaşma bir team services ile SMS, günlük hataları, bildirim göndermek için bir gelen web isteklerini işleyebilir Hizmetleri için yönlendirme. Web kancası URI geçerli bir HTTP veya HTTPS uç noktası olmalıdır.
+Web kancaları, Azure uyarı bildirimlerini, işleme sonrası veya özel bildirimler için diğer sistemlere yönlendirmenize olanak tanır. Örneğin, uyarıyı SMS göndermek, hataları günlüğe kaydetmek, sohbet veya mesajlaşma hizmetleri kullanarak bir takıma bildirimde bulunmak için gelen bir web isteğini işleyebilen hizmetlere yönlendirme. Web kancası URI 'SI geçerli bir HTTP veya HTTPS uç noktası olmalıdır.
 
-## <a name="email"></a>Email
-E-posta, herhangi bir geçerli e-posta adresine gönderilebilir. Kural çalıştığı aboneliğin Yöneticiler ve ortak de bildirim alırsınız.
+## <a name="email"></a>E-posta
+E-posta, geçerli herhangi bir e-posta adresine gönderilebilir. Kuralın çalıştığı aboneliğin yöneticileri ve ortak yöneticileri de bilgilendirilir.
 
-## <a name="cloud-services-and-web-apps"></a>Bulut Hizmetleri ve Web uygulamaları
-Azure portalından bulut Hizmetleri ve sunucu grupları (Web uygulamaları) için katılımı.
+## <a name="cloud-services-and-web-apps"></a>Cloud Services ve Web Apps
+Cloud Services ve sunucu grupları (Web Apps) için Azure portal tercih edebilirsiniz.
 
-* Seçin **ölçeklendirilmesine** ölçümü.
+* Ölçüyü ölçmeye **göre** seçin.
 
-![göre ölçeklendirin](./media/autoscale-webhook-email/insights-autoscale-notify.png)
+![ölçek ölçütü](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Sanal Makine ölçek kümeleri
-Daha yeni Resource Manager (sanal makine ölçek kümeleri) ile oluşturulan sanal makineler için bunu REST API, Resource Manager şablonları, PowerShell ve CLI kullanarak yapılandırabilirsiniz. Bir portal arabirimi henüz kullanılamıyor.
-REST API veya Resource Manager şablonu kullanarak, aşağıdaki seçeneklerle bildirimler öğesi ekleyin.
+Kaynak Yöneticisi (sanal makine ölçek kümeleri) ile oluşturulan daha yeni sanal makineler için, bunu REST API, Kaynak Yöneticisi şablonları, PowerShell ve CLı kullanarak yapılandırabilirsiniz. Portal arabirimi henüz kullanılabilir değil.
+REST API veya Kaynak Yöneticisi şablonunu kullanırken, aşağıdaki seçeneklerle birlikte, bir sonraki [Ölçek ayarlarınıza](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) bildirim öğesi ekleyin.
 
 ```
 "notifications": [
@@ -60,21 +56,21 @@ REST API veya Resource Manager şablonu kullanarak, aşağıdaki seçeneklerle b
     ]
 ```
 
-| Alan | Zorunlu? | Açıklama |
+| Alan | Girilmesi? | Açıklama |
 | --- | --- | --- |
-| operation |evet |"Ölçek" değeri olmalıdır |
-| sendToSubscriptionAdministrator |evet |değer "true" veya "false" olmalıdır. |
-| sendToSubscriptionCoAdministrators |evet |değer "true" veya "false" olmalıdır. |
-| customEmails |evet |değer null [] veya e-postaları dize dizisi olabilir |
+| operation |evet |değer "Scale" olmalıdır |
+| sendToSubscriptionAdministrator |evet |değer "true" veya "false" olmalıdır |
+| sendToSubscriptionCoAdministrators |evet |değer "true" veya "false" olmalıdır |
+| Customepostaları |evet |değer null [] veya e-postaların dize dizisi olabilir |
 | webhooks |evet |değer null veya geçerli bir URI olabilir |
-| serviceUri |evet |Geçerli bir https URI |
-| properties |evet |Değer boş olmalıdır {} veya anahtar-değer çiftleri içerebilir |
+| serviceUri |evet |geçerli bir HTTPS URI 'Si |
+| properties |evet |değer boş {} olmalı veya anahtar-değer çiftleri içerebilir |
 
-## <a name="authentication-in-webhooks"></a>Web kancaları kimlik doğrulaması
-Web kancası belirteci kimliği ile bir sorgu parametresi olarak Web kancası URI kaydetmek belirteç tabanlı kimlik doğrulamasını kullanarak kimlik doğrulaması yapabilir. Örneğin, https: \/ /mysamplealert/webcallback? tokenıd = sometokenid & someparameter in değeri birdeğer =
+## <a name="authentication-in-webhooks"></a>Web kancalarında kimlik doğrulama
+Web kancası, belirteç kimliği URI 'sini bir sorgu parametresi olarak bir belirteç kimliğiyle kaydettiğiniz belirteç tabanlı kimlik doğrulaması kullanarak kimlik doğrulaması yapabilir. Örneğin, https:\//mysamplealert/webcallback? tokenId = sometokenıd & someparameter = someValue
 
-## <a name="autoscale-notification-webhook-payload-schema"></a>Otomatik ölçeklendirme bildirim Web kancası yükü şeması
-Otomatik ölçeklendirme bildirim oluşturulduğunda, aşağıdaki meta verileri Web kancası yükteki dahildir:
+## <a name="autoscale-notification-webhook-payload-schema"></a>Otomatik ölçeklendirme bildirimi Web kancası yük şeması
+Otomatik ölçeklendirme bildirimi oluşturulduğunda aşağıdaki meta veriler Web kancası yüküne dahil edilir:
 
 ```
 {
@@ -103,22 +99,22 @@ Otomatik ölçeklendirme bildirim oluşturulduğunda, aşağıdaki meta verileri
 ```
 
 
-| Alan | Zorunlu? | Açıklama |
+| Alan | Girilmesi? | Açıklama |
 | --- | --- | --- |
-| status |evet |Otomatik ölçeklendirme eylemi oluşturulduğunu gösteren durum |
-| operation |evet |Bir artış örnekleri için "Ölçeği genişletme" olacaktır ve durumlarda bir azaltmak için "ölçek" olacaktır |
-| context |evet |Otomatik ölçeklendirme eylem bağlamı |
-| timestamp |evet |Otomatik ölçeklendirme eylemi tetiklendiğinde zaman damgası |
-| id |Evet |Resource Manager Kimliğini otomatik ölçeklendirme ayarı |
-| name |Evet |Otomatik ölçeklendirme ayarının adı |
-| details |Evet |Otomatik ölçeklendirme hizmeti sürdü eylem ve örnek sayısını değişiklik açıklaması |
-| subscriptionId |Evet |Abonelik kimliği ölçeklendirilir hedef kaynak |
+| status |evet |Bir otomatik ölçeklendirme eyleminin oluşturulduğunu gösteren durum |
+| operation |evet |Örneklerin artması için, "ölçeği genişletme" ve örneklerde bir azalma için "ölçeklendirilmesi" olacaktır. |
+| context |evet |Otomatik ölçeklendirme eylemi bağlamı |
+| timestamp |evet |Otomatik ölçeklendirme eyleminin tetiklendiği zaman damgası |
+| id |Evet |Otomatik ölçeklendirme ayarının Kaynak Yöneticisi KIMLIĞI |
+| ad |Evet |Otomatik ölçeklendirme ayarının adı |
+| details |Evet |Otomatik ölçeklendirme hizmetinin aldığı eylemin açıklaması ve örnek sayısında değişiklik |
+| subscriptionId |Evet |Ölçeklendirilen hedef kaynağın abonelik KIMLIĞI |
 | resourceGroupName |Evet |Ölçeklendirilen hedef kaynağın kaynak grubu adı |
 | resourceName |Evet |Ölçeklendirilen hedef kaynağın adı |
-| resourceType |Evet |Üç desteklenen değerler: "microsoft.classiccompute/domainnames/slots/roles" - bulut hizmeti rolleri, "microsoft.compute/virtualmachinescalesets" - sanal makine ölçek kümeleri ve "Microsoft.Web/serverfarms" - Web uygulaması |
-| resourceId |Evet |Resource Manager Kimliğini ölçeklendirilir hedef kaynak |
-| portalLink |Evet |Özet sayfasında, hedef kaynağı için Azure portal bağlantısı |
-| oldCapacity |Evet |Bir ölçek eylemi otomatik ölçeklendirme geçen zaman geçerli (eski) örnek sayısı |
-| newCapacity |Evet |Otomatik ölçeklendirme kaynağa ölçeği yeni bir örnek sayısı |
-| properties |Hayır |İsteğe bağlı. < Anahtar değer > dizi çiftlerini (örneğin, sözlük < String, String >). Özellikler alanı isteğe bağlıdır. Özel kullanıcı arabirimi veya mantıksal uygulama temel iş akışı, anahtarları ve yükü kullanılarak geçirilebilir değerleri girebilirsiniz. Özel özellikler giden Web kancası çağrısı geçirmek için alternatif bir yolu Web kancası kendisi (olarak URI sorgu parametreleri) kullanmaktır. |
+| resourceType |Evet |Desteklenen üç değer: "Microsoft. classiccompute/DomainNames/yuvalar/roller"-bulut hizmeti rolleri, "Microsoft. COMPUTE/virtualmachinescalesets"-sanal makine ölçek kümeleri ve "Microsoft. Web/sunucugrupları"-Web uygulaması |
+| resourceId |Evet |Ölçeklendirilen hedef kaynağın Kaynak Yöneticisi KIMLIĞI |
+| Portal bağlantısı |Evet |Hedef kaynağın özet sayfasına Azure portal bağlantı |
+| oldCapacity |Evet |Otomatik ölçeklendirme bir ölçeklendirme eylemi gerçekleştirirse geçerli (eski) örnek sayısı |
+| newCapacity |Evet |Otomatik olarak kaynağı ölçeklendirilen yeni örnek sayısı |
+| properties |Hayır |İsteğe bağlı. < Anahtar, değer > çiftleri (örneğin, sözlük < dizesi, dize >) kümesi. Özellikler alanı isteğe bağlıdır. Özel bir kullanıcı arabiriminde veya mantıksal uygulama tabanlı iş akışında, yük kullanılarak geçirilebilecek anahtar ve değerleri girebilirsiniz. Özel özellikleri giden Web kancası çağrısına geri geçirmenin alternatif bir yolu, Web kancası URI 'sinin kendisini kullanmaktır (sorgu parametreleri olarak) |
 

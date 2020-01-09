@@ -2,17 +2,17 @@
 title: Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 description: Azure özel bağlantısı hakkında bilgi edinin.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349932"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -28,6 +28,7 @@ Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 't
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Hizmet uç noktaları ve özel uç noktalar arasındaki fark nedir?
 - Özel uç noktalar kullanılırken, belirli bir hizmetin arkasındaki belirli kaynaklara ağ erişimi verilir ve bu da trafik, genel uç noktaları kullanmadan şirket içi hizmet kaynağına erişebilir.
+- Hizmet uç noktası, genel olarak yönlendirilebilir bir IP adresi kalır.  Özel uç nokta, Özel uç noktanın yapılandırıldığı sanal ağın adres alanındaki özel bir IP 'dir.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Özel bağlantı hizmeti ve özel uç nokta arasındaki ilişki nedir?
 Özel uç nokta, Azure PaaS hizmetleri ve kendi özel bağlantı hizmetiniz dahil olmak üzere birden çok özel bağlantı kaynak türüne erişim sağlar. Bire çok ilişkisi vardır. Bir özel bağlantı hizmeti birden çok özel uç noktasından bağlantı alabilir. Öte yandan, bir özel uç nokta yalnızca bir özel bağlantı hizmetine bağlanabilir.    

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443876"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -38,7 +38,7 @@ BT operasyon ekibi, bu sistemlerin kararlılığı ve güvenliği de dahil olmak
 
 Verileri çeşitli kaynaklardan birleştirebilir ve mevcut şirket içi ortamınızdan Azure hizmetinizdeki verileri birleştirebilirsiniz. Azure Izleyici günlükleri Ayrıca, tüm eylemlerin tüm veri türlerinde kullanılabilmesi için, verilerin toplanmasını bu verilerde gerçekleştirilen eylemden açıkça ayırır.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Otomasyon
 
 [Azure Otomasyonu](/azure/automation/automation-intro) , bir bulut ve kurumsal ortamda yaygın olarak gerçekleştirilen el ile, uzun süreli, hataya açık ve sık sık tekrarlanan görevleri otomatikleştirmenizi sağlayan bir yol sağlar. Zaman kazandırır ve yönetim görevlerinin güvenilirliğini artırır. Bu görevleri düzenli aralıklarla otomatik olarak gerçekleştirilmesini de zamanlar. İşlem runbook 'ları kullanarak işlemleri otomatikleştirebilir veya Istenen durum yapılandırmasını kullanarak yapılandırma yönetimini otomatik hale getirebilirsiniz.
 
@@ -48,9 +48,9 @@ Verileri çeşitli kaynaklardan birleştirebilir ve mevcut şirket içi ortamın
 
 Azure Backup, karşıdan yüklediğiniz ve uygun bilgisayar ya da sunucuda ya da bulutta dağıttığınız bileşenleri sunar. Dağıtacağınız bileşen veya aracı, korumak istediğiniz nesnelere göre değişiklik gösterir. Tüm Azure Backup bileşenleri (Şirket içi veya bulutta verileri koruduğunuz), verileri Azure 'daki bir Azure kurtarma hizmetleri kasasına yedeklemek için kullanılabilir.
 
-Daha fazla bilgi için [Azure Backup bileşenleri tablosuna](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)bakın.
+Daha fazla bilgi için [Azure Backup bileşenleri tablosuna](/azure/backup/backup-overview#what-can-i-back-up)bakın.
 
-### <a name="site-recovery"></a>Site Recovery
+### <a name="site-recovery"></a>Site Kurtarma
 
 [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) , şirket içi sanal ve fiziksel makinelerin Azure 'a veya ikincil bir siteye çoğaltılmasını düzenleyerek iş sürekliliği sağlar. Birincil siteniz kullanılamıyorsa, kullanıcıların çalışmaya devam edebilmesi için ikincil konuma yük devreder. Sistemler çalışma sırasına geri dönzaman geri döneolursunuz. Daha akıllı ve etkili tehdit algılama işlemleri gerçekleştirmek için Azure Güvenlik Merkezi 'ni kullanın.
 
@@ -89,7 +89,7 @@ Sanal makinenizin güvenlik ayarlarını ve tehditleri izlemeye yönelik görün
 
 Güvenlik Merkezi, [rol tabanlı Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal)kullanır. RBAC, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilecek [yerleşik roller](../../role-based-access-control/built-in-roles.md) sağlar.
 
-Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını belirlemek için kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi 'nde, bir kaynakla ilgili bilgileri, yalnızca bir kaynağın ait olduğu abonelik veya kaynak grubu için sahip, katkıda bulunan veya okuyucu rolüne atadığınız zaman görürsünüz.
+Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını tanımlamak amacıyla kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi 'nde, bir kaynakla ilgili bilgileri, yalnızca bir kaynağın ait olduğu abonelik veya kaynak grubu için sahip, katkıda bulunan veya okuyucu rolüne atadığınız zaman görürsünüz.
 
 >[!Note]
 >Güvenlik Merkezi 'nde roller ve izin verilen eylemler hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Nde izinler](/azure/security-center/security-center-permissions).
@@ -106,7 +106,7 @@ Uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de 
 
 Azure Izleyici aşağıdaki bileşenleri içerir.
 
-### <a name="azure-activity-log"></a>Azure etkinlik günlüğü
+### <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
 
 [Azure etkinlik günlüğü](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) , aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Abonelikleriniz için denetim düzlemi olaylarını bildirdiğinden, daha önce "denetim günlüğü" veya "Işletimsel günlük" olarak bilinirdi.
 
@@ -126,7 +126,7 @@ Azure Izleyici, Azure 'da iş yüklerinizin performansına ve sistem durumuna il
 
 Azure Tanılama dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını mümkün. Tanılama uzantısını çeşitli kaynaklardan kullanabilirsiniz. Şu anda desteklenen [Azure bulut hizmeti rolleri](/azure/vs-azure-tools-configure-roles-for-cloud-service), Microsoft Windows çalıştıran [Azure sanal makineleri](/azure/vs-azure-tools-configure-roles-for-cloud-service) ve [Azure Service Fabric](/azure/monitoring-and-diagnostics/azure-diagnostics).
 
-## <a name="azure-network-watcher"></a>Azure ağ Izleyicisi
+## <a name="azure-network-watcher"></a>Azure Ağ İzleyicisi
 
 Müşteriler, sanal ağlar, Azure ExpressRoute, Azure Application Gateway ve yük dengeleyiciler gibi bireysel ağ kaynaklarını düzenleyerek ve oluşturarak Azure 'da uçtan uca bir ağ oluşturur. İzleme, ağ kaynaklarının her birinde kullanılabilir.
 
@@ -173,11 +173,11 @@ Planlar çeşitli kaynak şablonlarının ve diğer yapıtların dağıtımını
 
 [Geliştirici işlemleri (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) uygulaması geliştirmeden önce, takımlar bir yazılım programı için iş gereksinimlerini toplamaya ve kod yazmaya ücretsizdir. Ardından, ayrı bir QA ekibi, programı yalıtılmış bir geliştirme ortamında test ediyor. Gereksinimler karşılanıyorsa, QA ekibi dağıtılacak işlemler için kodu serbest bıraktı. Dağıtım takımları ağ ve veritabanı gibi gruplara daha fazla parçalanmıştı. Bir yazılım programının bir bağımsız ekibe "her ne kadar her" bir şekilde oluşturulduğu "her seferinde performans sorunları oluşur.
 
-DevOps, ekiplerin daha hızlı ve daha fazla sayıda daha güvenli, daha fazla kaliteli çözüm sunmalarını sağlar. Müşteriler, yazılım ve Hizmetleri kullanırken dinamik ve güvenilir bir deneyim bekler. Ekipler, yazılım güncelleştirmelerinde hızla yineleyebilir ve güncelleştirmelerin etkisini ölçmelidir. Sorunları gidermek veya daha fazla değer sağlamak için yeni geliştirme yinelemeleriyle hızla yanıt vermelidir.  
+DevOps, ekiplerin daha hızlı ve daha fazla sayıda daha güvenli, daha fazla kaliteli çözüm sunmalarını sağlar. Müşteriler yazılım ve hizmetleri tüketirken daha dinamik ve güvenilir bir deneyim bekler. Ekipler, yazılım güncelleştirmelerinde hızla yineleyebilir ve güncelleştirmelerin etkisini ölçmelidir. Sorunları gidermek veya daha fazla değer sağlamak için yeni geliştirme yinelemeleriyle hızla yanıt vermelidir.  
 
-Microsoft Azure gibi bulut platformları, geleneksel performans sorunlarını kaldırmış ve metalaşmasına altyapısına yardımcı olmuştur. Her işletmeden yazılım, anahtar farklılama ve iş sonuçları faktörü olarak yeniden yapılır. Kuruluş, geliştirici veya BT çalışanı DevOps hareketini önyükleyebilir veya kaçınmamalıdır.
+Microsoft Azure gibi bulut platformları, geleneksel performans sorunlarını ortadan kaldırdı ve altyapının metalaşmasına yardımcı oldu. Yazılım, tüm işletmelerde ticari sonuçlar açısından temel ayırt edici ve etkileyici faktör olmaya devam ediyor. Kuruluş, geliştirici veya BT çalışanı DevOps hareketini önyükleyebilir veya kaçınmamalıdır.
 
-Yetişkinlere yönelik DevOps uygulayıcıları aşağıdaki uygulamalardan birkaçını benimseyin. Bu uygulamalar, iş senaryolarına göre stratejileri oluşturacak [kişileri içerir](https://www.visualstudio.com/learn/what-is-devops-culture/) . Araç araçları çeşitli uygulamaların otomatikleştirilmesine yardımcı olabilir.
+Deneyimli DevOps uygulayıcıları aşağıdaki uygulamalardan birkaçını benimsiyor. Bu uygulamalar, [kişiler](https://www.visualstudio.com/learn/what-is-devops-culture/) tarafından iş senaryolarını temel alan stratejiler oluşturulmasını gerektirir. Araçlar çeşitli uygulamaların otomatikleştirilmesine yardımcı olabilir.
 
 - [Çevik planlama ve proje yönetimi](https://www.visualstudio.com/learn/what-is-agile/) teknikleri, işleri planlamak ve Sprint 'ler halinde yalıtmak, takım kapasitesini yönetmek ve takımların değişen iş ihtiyaçlarına hızla uyum sağlamasına yardımcı olmak için kullanılır.
 - [Genellikle git Ile sürüm denetimi](https://www.visualstudio.com/learn/what-is-git/), dünyanın herhangi bir yerinden bulunan ekiplerin kaynak paylaşmasını ve yazılım geliştirme araçlarıyla tümleşmesini sağlar ve yayın işlem hattını otomatik hale getirir.

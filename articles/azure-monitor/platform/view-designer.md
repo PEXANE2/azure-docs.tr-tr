@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: a1a4dbffed37480178d1b94a77587ca251396db6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363209"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
 Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.
@@ -32,9 +32,9 @@ Görünümler, Azure portal Azure Izleyici **genel bakış** sayfasında görün
 
 Görünüm Tasarımcısı ile oluşturduğunuz görünümler aşağıdaki tabloda açıklanan öğeleri içerir:
 
-| Bölümüyle | Açıklama |
+| Bölüm | Açıklama |
 |:--- |:--- |
-| Parça | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
+| Tiles | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
 | Özel görünüm | Bir kutucuk seçtiğinizde gösterilir. Her görünüm bir veya daha fazla görselleştirme bölümü içerir. |
 | Görselleştirme parçaları | Bir veya daha fazla [günlük sorgusuna](../log-query/log-query-overview.md)göre Log Analytics çalışma alanında bir veri görselleştirmesi sunun. Çoğu bölüm, üst düzey bir görselleştirme sağlayan bir üst bilgi ve en üstteki sonuçları görüntüleyen bir liste içerir. Her bölüm türü, Log Analytics çalışma alanındaki kayıtların farklı bir görselleştirmesini sağlar. Ayrıntılı kayıtlar sağlayan bir günlük sorgusu gerçekleştirmek için bölümünde öğeleri seçersiniz. |
 
@@ -59,7 +59,7 @@ Seçenekler aşağıdaki tabloda açıklanmıştır:
 | +          | Görünüm için tanımlanan özel bir filtre tanımlayın. |
 
 
-## <a name="create-a-new-view"></a>Yeni görünüm oluştur
+## <a name="create-a-new-view"></a>Yeni bir görünüm oluşturma
 Log Analytics çalışma alanınızın menüsündeki **Görünüm Tasarımcısı** ' nı seçerek görünüm Tasarımcısı ' nda yeni bir görünüm oluşturabilirsiniz.
 
 ![Tasarımcı kutucuğunu görüntüle](media/view-designer/view-designer-tile.png)
@@ -100,7 +100,7 @@ Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda 
 | Kaydet        | Değişikliklerinizi kaydeder ve görünümü kapatır. |
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
-| Dışarı Aktar      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/resource-group-authoring-templates.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
+| Dışarı Aktar      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
 | İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
 | Kopyala       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
 

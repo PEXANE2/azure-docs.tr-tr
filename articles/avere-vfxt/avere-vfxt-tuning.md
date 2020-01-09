@@ -6,17 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 274a20f84b978b38a284d1feb315d6621b7d3ccd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414328"
 ---
 # <a name="cluster-tuning"></a>Küme ayarlama
 
-
-Birçok vFXT kümesi, özelleştirilmiş performans ayarlarından yararlanabilir. Bu ayarlar, kümenin belirli iş akışınız, veri kümeniz ve araçlarınızla en iyi şekilde çalışmasına yardımcı olur. 
+Birçok vFXT kümesi, özelleştirilmiş performans ayarlarından yararlanabilir. Bu ayarlar, kümenin belirli iş akışınız, veri kümeniz ve araçlarınızla en iyi şekilde çalışmasına yardımcı olur.
 
 Bu özelleştirme, genellikle avere Denetim Masası 'Nda kullanılamayan özellikleri yapılandırmayı içerdiğinden, bir destek temsilcisiyle birlikte yapılmalıdır.
 
@@ -34,9 +33,9 @@ Bu bölümde, yapılabilecek özel ayarlamadan bazıları açıklanmaktadır.
 
 Bu değişiklikler, veri kümesi kalitelerini veya iş akışı stilini temel alan önerilen olabilir.
 
-* İş yükü yazma ağır ise, yazma önbelleğinin boyutunu varsayılan% 20 ' den artırın. 
-* Veri kümesi çok sayıda küçük dosya içeriyorsa, küme önbelleğinin dosya sayısı sınırını artırın. 
-* İş, iki depo arasında veri kopyalamayı veya taşımayı içeriyorsa, verileri taşımak için kullanılan iş parçacıklarının sayısını ayarlayın: 
+* İş yükü yazma ağır ise, yazma önbelleğinin boyutunu varsayılan %20 ' den artırın.
+* Veri kümesi çok sayıda küçük dosya içeriyorsa, küme önbelleğinin dosya sayısı sınırını artırın.
+* İş, iki depo arasında veri kopyalamayı veya taşımayı içeriyorsa, verileri taşımak için kullanılan iş parçacıklarının sayısını ayarlayın:
   * Hızı artırmak için, kullanılan paralel iş parçacığı sayısını artırabilirsiniz.
   * Arka uç depolama birimi aşırı yüklenmişse, kullanılan paralel iş parçacığı sayısını azaltmanıza gerek duyabilirsiniz.
 * Küme, NFSv4 ACL 'Leri kullanan bir çekirdek filme için verileri önbelleğe alıyorsa, belirli istemciler için dosya yetkilendirmesini kolaylaştırmak üzere erişim modu önbelleğe almayı etkinleştirin.
@@ -58,4 +57,4 @@ Bulut patlaması senaryosunda veya karma depolama WAN iyileştirmesi senaryosund
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Azure için avere vFXT 'nizi iyileştirmeye yardımcı olma
 
-Bu iyileştirmeler hakkında destek personeline başvurmak için [sisteminizle ilgili yardım alın](avere-vfxt-open-ticket.md) bölümünde açıklanan yordamı kullanın. 
+Bu iyileştirmeler hakkında destek personeline başvurmak için [sisteminizle ilgili yardım alın](avere-vfxt-open-ticket.md) bölümünde açıklanan yordamı kullanın.

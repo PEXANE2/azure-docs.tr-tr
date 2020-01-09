@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435740"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive ile Apache Beeline istemcisini kullanma
 
 HDInsight 'ta Apache Hive sorguları çalıştırmak için [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) nasıl kullanacağınızı öğrenin.
 
-Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır:
+Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. Beeline yerel olarak yüklemek için aşağıdaki [Beeline Istemcisini Install](#install-beeline-client)bölümüne bakın. Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır:
 
 ## <a name="types-of-connections"></a>Bağlantı türleri
 
@@ -46,7 +46,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos kullanarak HDInsight Kurumsal Güvenlik Paketi (ESP) kümesine
 
-Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir Kurumsal Güvenlik Paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve izinleri olan bir etki alanı kullanıcı hesabının adını da belirtmeniz gerekir. kümeye `<username>`erişin:
+Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir Kurumsal Güvenlik Paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve `<username>`kümeye erişim izinleri olan bir etki alanı kullanıcı hesabının adını da belirtmeniz gerekir:
 
 ```bash
 kinit <username>
@@ -59,19 +59,19 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>Herkese açık veya özel uç noktalar
 
-Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı, bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
+Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `clustername.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı, bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 veya özel uç nokta için:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. `<username>`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. `admin`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN kullanın (örneğin, user@domain.com). `password` küme oturum açma hesabı parolasıyla değiştirin.
 
 Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler üzerindeki kısıtlamalar](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce, genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
@@ -86,16 +86,16 @@ Apache Spark, bazı durumlarda Spark Thrift sunucusu olarak da adlandırılan ke
 Kullanılan bağlantı dizesi biraz farklı. `httpPath=/hive2` yerine `httpPath/sparkhive2`:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 veya özel uç nokta için:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. `<username>`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. `admin`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
 
 Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler üzerindeki kısıtlamalar](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce, genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
@@ -238,7 +238,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
 
 6. Beeline çıkmak için `!exit`kullanın.
 
-## <a id="file"></a>HiveQL dosyası çalıştırma
+## <a name="run-a-hiveql-file"></a>HiveQL dosyası çalıştırma
 
 Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki adımları kullanın, ardından Beeline kullanarak çalıştırın.
 
@@ -292,7 +292,64 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>Sonraki adımlar
+## <a name="install-beeline-client"></a>Beeline istemcisini yükler
+
+, HDInsight kümenizin baş düğümlerine Beeline dahil edilse de, yerel bir makineye yüklemek isteyebilirsiniz.  Yerel bir makineye Beeline yüklemek için aşağıdaki adımlar, [Linux için bir Windows alt sistemini](https://docs.microsoft.com/windows/wsl/install-win10)temel alır.
+
+1. Paket listelerini güncelleştirme. Bash kabuğunuzun aşağıdaki komutunu girin:
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Yüklü değilse Java 'Yı yükler. `which java` komutuyla kontrol edebilirsiniz.
+
+    1. Java paketi yüklü değilse, aşağıdaki komutu girin:
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. Bashrc dosyasını düzeltme (genellikle ~/,bashrc içinde bulunur). Dosyayı `nano ~/.bashrc` açın ve sonra dosyanın sonuna aşağıdaki satırı ekleyin:
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        Sonra **CTRL + X**ve **Y**tuşlarına basın ve ardından girin.
+
+1. Hadoop ve Beeline arşivlerini indirin, aşağıdaki komutları girin:
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Arşivlerin paketini açın, aşağıdaki komutları girin:
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Bashrc dosyasını daha fazla düzeltme. Arşivlerin açıldığı yolu belirlemeniz gerekir. [Linux Için Windows alt sistemi](https://docs.microsoft.com/windows/wsl/install-win10)kullanıyorsanız ve adımları tam olarak takip ediyorsanız, yolunuz `/mnt/c/Users/user/`olur; burada `user` kullanıcı adıdır.
+
+    1. Dosyayı açın: `nano ~/.bashrc`
+    1. Aşağıdaki komutları uygun yol ile değiştirin ve ardından bashrc dosyasının sonuna girin:
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. Sonra **CTRL + X**ve **Y**tuşlarına basın ve ardından girin.
+
+1. Bash oturumunuzu kapatıp yeniden açın.
+
+1. Bağlantınızı test edin. Yukarıdaki [ortak veya özel uç noktalardan](#over-public-or-private-endpoints)bağlantı biçimini kullanın.
+
+## <a name="next-steps"></a>Sonraki adımlar
 
 * HDInsight 'ta Hive hakkında daha fazla genel bilgi için bkz. [HDInsight 'ta Apache Hadoop ile Apache Hive kullanma](hdinsight-use-hive.md)
 

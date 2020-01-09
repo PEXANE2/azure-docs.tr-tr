@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429797"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki oturum açma etkinlik raporları
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu makale, oturum açma raporuna genel bir bakış sunar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 
@@ -57,9 +57,15 @@ Kullanıcı oturum açma işlemleri raporu, aşağıdaki soruların yanıtların
 * Bir hafta içerisinde kaç kullanıcı oturum açtı?
 * Bu açılan oturumların durumu nedir?
 
-[Azure Portal](https://portal.azure.com)başlatın. Oturum açma raporuna erişmek için oturum **açma**işlemlerini seçin, izlemeye devam edin **.** Bazı oturum açma kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
+[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory**' i seçin veya herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
 
-![Oturum açma etkinliği](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Oturum açma etkinliği")
+![Azure Active Directory seçin](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+**İzleme**bölümünde oturum **açma** işlemlerini seçerek [oturum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)açma işlemlerini açın.
+
+![Oturum açma etkinliği](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Oturum açma etkinliği")
+
+Bazı oturum açma kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
 
 > [!IMPORTANT]
 > Oturum açma raporu yalnızca **etkileşimli** oturum açma işlemlerini, diğer bir deyişle kullanıcının Kullanıcı adı ve parolasını kullanarak el ile oturum açtığı oturum açma işlemlerini görüntüler. Hizmetten hizmete kimlik doğrulaması gibi etkileşimli olmayan oturum açma işlemleri raporda gösterilmez. 
@@ -79,7 +85,7 @@ Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleşt
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/19.png "Oturum açma etkinliği")
 
-**Sütunlar** iletişim kutusu seçilebilir özniteliklere erişmenizi sağlar. Bir oturum açma raporunda, yalnızca sütun olarak diğer özniteliklerle bire çok ilişkisine sahip olmayan özniteliklere sahip olabilirsiniz.
+**Sütunlar** iletişim kutusu seçilebilir özniteliklere erişmenizi sağlar. Bir oturum açma raporunda, belirli bir oturum açma isteği için sütun olarak birden fazla değere sahip olan alanlar olamaz. Bu, örneğin, kimlik doğrulama ayrıntıları, koşullu erişim verileri ve ağ konumu için geçerlidir.   
 
 ![Oturum açma etkinliği](./media/concept-sign-ins/columns.png "Oturum açma etkinliği")
 

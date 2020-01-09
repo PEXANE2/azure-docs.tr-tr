@@ -8,18 +8,18 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 11/20/2019
+ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 042e969b4a0dfea0910a0ef81fae264792cfd85f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452826"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights nedir?
 
-Azure Time Series Insights, IoT cihazları tarafından oluşturulan gibi büyük miktarlarda zaman serisi verilerini depolamak, görselleştirmek ve sorgulamak için oluşturulmuştur. Bulutta zaman serisi verilerini depolamak, yönetmek, sorgulamak veya görselleştirmek istiyorsanız Time Series Insights aradığınız çözüm olabilir. 
+Azure Time Series Insights, IoT cihazları tarafından oluşturulan gibi büyük miktarlarda zaman serisi verilerini depolamak, görselleştirmek ve sorgulamak için oluşturulmuştur. Bulutta zaman serisi verilerini depolamak, yönetmek, sorgulamak veya görselleştirmek istiyorsanız Time Series Insights aradığınız çözüm olabilir.
 
 [![Time Series Insights akış çizelgesi](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
 
@@ -27,7 +27,7 @@ Time Series Insights dört temel işe sahiptir:
 
 - Azure IoT Hub ve Azure Event Hubs gibi bulut ağ geçitleriyle tamamen tümleşiktir. Bu olay kaynaklarına kolayca bağlanır ve JSON kodu içindeki veri içeren iletilerle yapıları ayrıştırarak temiz satırlara ve sütunlara uygular. Meta verileri telemetri verileriyle birleştirerek verilerinizi sütunlu bir depoda dizinler.
 - Time Series Insights verilerinizin depolanmasını yönetir. Verilerin her zaman kolayca erişilebilir olduğundan emin olmak için verilerinizi 400 güne kadar belleğe ve SSD 'Ler halinde depolar. İsteğe bağlı olarak milyarlarca olayı Saniyeler içinde sorgulayabilirsiniz.
-- Time Series Insights, Time Series Insights Gezgini aracılığıyla kullanıma hazır görselleştirme sağlar. 
+- Time Series Insights, Time Series Insights Gezgini aracılığıyla kullanıma hazır görselleştirme sağlar.
 - Time Series Insights, hem Time Series Insights Gezgininde hem de zaman serisi verilerinizi özel uygulamalara eklemek için kolayca tümleştirilebilen API 'Leri kullanarak bir sorgu hizmeti sağlar.
 
 Dahili tüketim veya harici müşterilerin kullanması için bir uygulama oluşturuyorsanız, arka uç olarak Time Series Insights kullanabilirsiniz. Zaman serisi verilerini indekslemek, depolamak ve toplamak için kullanabilirsiniz. En üstte özel bir görselleştirme ve Kullanıcı deneyimi oluşturmak için [istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)kullanın. Time Series Insights ayrıca, bu özelleştirilmiş senaryoları etkinleştirmek için birkaç [sorgu API](how-to-shape-query-json.md) 'si ile donatılmıştır.
@@ -45,23 +45,23 @@ Azure Time Series Insights her yeni olayı bir satır olarak yakalar ve depolar 
 
 ## <a name="primary-scenarios"></a>Birincil senaryolar
 
-- Zaman serisi verilerini ölçeklenebilir bir şekilde depolayın. 
+- Zaman serisi verilerini ölçeklenebilir bir şekilde depolayın.
 
    Time Series Insights'ın temelinde zaman serisi verilerine göre tasarlanmış bir veritabanı bulunur. Ölçeklenebilir ve tam olarak yönetildiğinden Time Series Insights olayları depolama ve yönetme işini işler.
 
-- Verilerin neredeyse gerçek zamanlı olarak araştırıp. 
+- Verilerin neredeyse gerçek zamanlı olarak araştırıp.
 
-   Time Series Insights, bir ortamda akış yapan tüm verileri görselleştirtiren bir gezgin sağlar. Bir olay kaynağına bağlandıktan kısa süre sonra Time Series Insights içindeki olay verilerini görüntüleyebilir, inceleyebilir ve sorgulayabilirsiniz. Veriler, bir cihazın beklenen şekilde veri yayıp yaymadığını ve sistem durumu, üretkenlik ve genel verimlilik için bir IoT varlığını izlemesini doğrulamanıza yardımcı olur. 
+   Time Series Insights, bir ortamda akış yapan tüm verileri görselleştirtiren bir gezgin sağlar. Bir olay kaynağına bağlandıktan kısa süre sonra Time Series Insights içindeki olay verilerini görüntüleyebilir, inceleyebilir ve sorgulayabilirsiniz. Veriler, bir cihazın beklenen şekilde veri yayıp yaymadığını ve sistem durumu, üretkenlik ve genel verimlilik için bir IoT varlığını izlemesini doğrulamanıza yardımcı olur.
 
 - Kök neden analizi gerçekleştirin ve anormallikleri tespit edin.
 
-   Time Series Insights, mimari ve perspektif görünümleri gibi araçlara sahiptir ve çok adımlı kök neden analizini kaydeder. Time Series Insights ayrıca, Time Series Insights Explorer 'da uyarıları görüntüleyebilmeniz ve gerçek zamanlı olarak algılanabilmeleri için Azure Stream Analytics gibi uyarı hizmetleri ile de kullanılabilir. 
+   Time Series Insights, mimari ve perspektif görünümleri gibi araçlara sahiptir ve çok adımlı kök neden analizini kaydeder. Time Series Insights ayrıca, Time Series Insights Explorer 'da uyarıları görüntüleyebilmeniz ve gerçek zamanlı olarak algılanabilmeleri için Azure Stream Analytics gibi uyarı hizmetleri ile de kullanılabilir.
 
 - Birden çok varlık veya site karşılaştırması için farklı konumlardan akış yapan zaman serisi verilerinin genel bir görünümünü elde edin.
 
    Bir Time Series Insights ortamına birden fazla olay kaynağı bağlayabilirsiniz. Bu şekilde, birden çok, farklı konumdan, neredeyse gerçek zamanlı olarak akış yapan verileri görüntüleyebilirsiniz. Kullanıcılar, iş liderleriyle veri paylaşmak için bu görünürlüğden yararlanabilir. Sorunları çözmeye, en iyi uygulamaları uygulamanıza ve dersleri paylaşmanıza yardımcı olmak üzere uzmanlığı uygulayabilen etki alanı uzmanlarıyla daha iyi işbirliği yapabilirler.
 
-- Time Series Insights en üstünde bir müşteri uygulaması oluşturun. 
+- Time Series Insights en üstünde bir müşteri uygulaması oluşturun.
 
    Time Series Insights, zaman serisi verilerini kullanan uygulamalar oluşturmak için kullanabileceğiniz REST sorgu API 'Lerini kullanıma sunar.
 
@@ -75,16 +75,16 @@ Azure Time Series Insights her yeni olayı bir satır olarak yakalar ve depolar 
 
 - **Ölçeklenebilirlik**: Zaman Serisi Görüşleri, ölçekli olarak IoT'yi destekleyecek şekilde tasarlanmıştır. Günde 1 milyon ile 100 milyon arası olay alabilir ve varsayılan saklama süresi 31 gündür. Canlı veri akışlarını, geçmiş verilerin yanı sıra neredeyse gerçek zamanlı olarak görselleştirebilir ve çözümleyebilirsiniz.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 Başlamak için aşağıdaki adımları izleyin.
 
 1. Azure portal bir Time Series Insights ortamı sağlayın.
-1. IoT Hub 'ı veya Olay Hub 'ı gibi bir olay kaynağına bağlanın. 
+1. IoT Hub 'ı veya Olay Hub 'ı gibi bir olay kaynağına bağlanın.
 1. Başvuru verilerini karşıya yükleyin. Bu ek bir hizmet değildir.
 1. Time Series Insights gezgininde verilerinizi dakikalar halinde görün.
 
-## <a name="explorer"></a>Gezgini
+## <a name="explorer"></a>Gezgin
 
 Azure Time Series Insights gezginini kullanarak verilerinizdeki eğilimleri görüntüleyin, çözümleyin ve bulun.
 

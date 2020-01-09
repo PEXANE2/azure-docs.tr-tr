@@ -3,7 +3,7 @@ title: Azure Izleyici ile karma Windows bilgisayarından veri toplama
 description: Bu hızlı başlangıçta, Azure dışında çalışan Windows bilgisayarları için Log Analytics aracısını dağıtmayı ve Azure Izleyici günlükleri ile veri toplamayı etkinleştirmenizi öğreneceksiniz.
 services: azure-monitor
 documentationcenter: azure-monitor
-author: mgoedtel
+author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
-ms.author: magoedte
+ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199035"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398956"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -149,7 +149,7 @@ Aracıyı bilgisayarınızdan kaldırabilir ve artık ihtiyacınız yoksa Log An
 
 Aracıyı kaldırmak için şu adımları izleyin:
 
-1. Denetim Masası 'Nı açın.
+1. Denetim Masası'nı açın.
 
 2. **Programlar ve Özellikler**'i açın.
 

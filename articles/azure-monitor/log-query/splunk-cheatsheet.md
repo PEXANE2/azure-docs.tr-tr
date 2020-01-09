@@ -1,18 +1,17 @@
 ---
 title: Azure Izleyici günlük sorgusuna splunk Microsoft Docs
 description: Azure Izleme günlük sorgularını öğrenirken splunk hakkında bilgili olan kullanıcılar için yardım.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397755"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Azure Izleyici günlük sorgusuna splunk
 
@@ -24,15 +23,15 @@ Aşağıdaki tabloda, splunk ile Azure Izleyici günlükleri arasındaki kavraml
 
  | Kavram  | Splunk | Azure İzleyici |  Açıklama
  | --- | --- | --- | ---
- | Dağıtım birimi  | içi |  içi |  Azure Izleyici, rastgele çapraz küme sorgularına izin verir. Splunk değildir. |
+ | Dağıtım birimi  | cluster |  cluster |  Azure Izleyici, rastgele çapraz küme sorgularına izin verir. Splunk değildir. |
  | Veri önbellekleri |  demet  |  Önbelleğe alma ve bekletme ilkeleri |  Verilerin süresini ve önbelleğe alma düzeyini denetler. Bu ayar, sorguların ve dağıtım maliyetinin performansını doğrudan etkiler. |
- | Verilerin mantıksal bölümü  |  indeks  |  veritabanı  |  Verilerin mantıksal olarak ayrılmasını sağlar. Her iki uygulama da birleşimlere ve bu bölümlerde birleştirme yapmasına izin verir. |
- | Yapılandırılmış olay meta verileri | Yok | Tablosundan |  Splunk, olay meta verisinin arama diline açık bir kavram içermez. Azure Izleyici günlüklerinde sütunları olan bir tablo kavramı vardır. Her olay örneği bir satıra eşlenir. |
+ | Verilerin mantıksal bölümü  |  index  |  veritabanı  |  Verilerin mantıksal olarak ayrılmasını sağlar. Her iki uygulama da birleşimlere ve bu bölümlerde birleştirme yapmasına izin verir. |
+ | Yapılandırılmış olay meta verileri | Yok | table |  Splunk, olay meta verisinin arama diline açık bir kavram içermez. Azure Izleyici günlüklerinde sütunları olan bir tablo kavramı vardır. Her olay örneği bir satıra eşlenir. |
  | Veri kaydı | olay | sırada |  Yalnızca terminoloji değişikliği. |
- | Veri kaydı özniteliği | alanla |  Sütunuyla |  Azure Izleyici 'de, bu tablo yapısının bir parçası olarak önceden tanımlanmıştır. Splunk 'de, her olayın kendi alan kümesi vardır. |
- | Türü | x |  x |  Azure Izleyici veri türleri sütunlarda ayarlandığı şekilde daha açıktır. Her ikisinin de, JSON desteği dahil olmak üzere veri türleri ve kabaca eşdeğer veri türleri kümesiyle dinamik olarak çalışma yeteneği vardır. |
- | Sorgu ve arama  | aramanız | sorgu |  Kavramlar temelde Azure Izleyici ve splunk arasında aynıdır. |
- | Olay alımı süresi | Sistem saati | ingestion_time() |  Splunk 'de, her olay, olayın dizine alındığı zamanın sistem zaman damgasını alır. Azure Izleyici 'de, ingestion_time () işlevi aracılığıyla başvurulabilen bir sistem sütununu kullanıma sunan ingestion_time adlı bir ilke tanımlayabilirsiniz. |
+ | Veri kaydı özniteliği | alan |  Sütun |  Azure Izleyici 'de, bu tablo yapısının bir parçası olarak önceden tanımlanmıştır. Splunk 'de, her olayın kendi alan kümesi vardır. |
+ | Türler | x |  x |  Azure Izleyici veri türleri sütunlarda ayarlandığı şekilde daha açıktır. Her ikisinin de, JSON desteği dahil olmak üzere veri türleri ve kabaca eşdeğer veri türleri kümesiyle dinamik olarak çalışma yeteneği vardır. |
+ | Sorgu ve arama  | search | sorgu |  Kavramlar temelde Azure Izleyici ve splunk arasında aynıdır. |
+ | Olay alımı süresi | Sistem saati | ingestion_time () |  Splunk 'de, her olay, olayın dizine alındığı zamanın sistem zaman damgasını alır. Azure Izleyici 'de, ingestion_time () işlevi aracılığıyla başvurulabilen bir sistem sütununu açığa çıkaran ingestion_time adlı bir ilke tanımlayabilirsiniz. |
 
 ## <a name="functions"></a>İşlevler
 
@@ -40,23 +39,23 @@ Aşağıdaki tabloda, Azure Izleyici 'deki splunk işlevlerine denk gelen işlev
 
 |Splunk | Azure İzleyici |Açıklama
 |---|---|---
-|strcat | strcat ()| (1 |
-|split  | Böl () | (1 |
-|kullandıysanız     | FF ()   | (1 |
-|ToNumber | ToDouble ()<br>tolong ()<br>ToInt () | (1 |
-|üst<br>düşürül |ToUpper ()<br>ToLower ()|(1 |
-| değiştirin | Replace () | (1<br> Ayrıca, `replace()` iki üründe de üç parametre alırken parametrelerin farklı olduğunu unutmayın. |
-| substr | substring () | (1<br>Ayrıca, splunk 'nin tek tabanlı dizinler kullandığını unutmayın. Azure Izleyici, sıfır tabanlı dizinleri not edin. |
-| ToLower |  ToLower () | (1 |
-| ToUpper | ToUpper () | (1 |
-| eşleşebilir | Regex ile eşleşir |  (  |
+|strcat | strcat ()| (1) |
+|split  | Böl () | (1) |
+|if     | FF ()   | (1) |
+|ToNumber | ToDouble ()<br>tolong ()<br>ToInt () | (1) |
+|üst<br>düşürül |ToUpper ()<br>ToLower ()|(1) |
+| replace | Replace () | (1)<br> Ayrıca, `replace()` her iki üründe de üç parametre alacağından, parametrelerin farklı olduğunu unutmayın. |
+| substr | substring () | (1)<br>Ayrıca, splunk 'nin tek tabanlı dizinler kullandığını unutmayın. Azure Izleyici, sıfır tabanlı dizinleri not edin. |
+| tolower |  ToLower () | (1) |
+| toupper | ToUpper () | (1) |
+| {1&gt;eşleşme&lt;1} | Regex ile eşleşir |  (2)  |
 | Regex | Regex ile eşleşir | Splunk 'de `regex` bir işleçtir. Azure Izleyici 'de ilişkisel bir işleçtir. |
-| searchmatch | == | Splunk 'de `searchmatch`, tam dize aramasına izin verir.
-| Fi | S_SAYI_ÜRET ()<br>S_SAYI_ÜRET (n) | Splunk işlevi, sıfırdan 2<sup>31</sup>-1 arasında bir sayı döndürür. Azure Izleyici ', 0,0 ile 1,0 arasında bir sayı veya bir parametre sağlanmışsa 0 ile n-1 arasında bir sayı döndürür.
-| şimdi | now() | (1
-| relative_time | ToTimeSpan () | (1<br>Azure Izleyici 'de, splunk 'ın relative_time (datetimeVal, offsetVal) 'ın eşdeğeri datetimeVal + ToTimeSpan (offsetVal) şeklindedir.<br>Örneğin, <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> <code>...  &#124; extend myTime = now() - totimespan("1d")</code>olur.
+| searchmatch | == | Splunk 'de, `searchmatch` tam dize aramasına izin verir.
+| rastgele | S_SAYI_ÜRET ()<br>S_SAYI_ÜRET (n) | Splunk işlevi, sıfırdan 2<sup>31</sup>-1 arasında bir sayı döndürür. Azure Izleyici ', 0,0 ile 1,0 arasında bir sayı veya bir parametre sağlanmışsa 0 ile n-1 arasında bir sayı döndürür.
+| şimdi | now() | (1)
+| relative_time | ToTimeSpan () | (1)<br>Azure Izleyici 'de, splunk 'ın relative_time (datetimeVal, offsetVal) ' nin eşdeğeri datetimeVal + ToTimeSpan (offsetVal) şeklindedir.<br>Örneğin, <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> <code>...  &#124; extend myTime = now() - totimespan("1d")</code>olur.
 
-(1) splunk içinde, işlev `eval` işleciyle çağrılır. Azure Izleyici 'de, `extend` veya `project` ' in bir parçası olarak kullanılır.<br>(2) splunk içinde, işlev `eval` işleciyle çağrılır. Azure Izleyici 'de `where` işleci ile kullanılabilir.
+(1) splunk 'de işlev, `eval` işleciyle çağrılır. Azure Izleyici 'de `extend` veya `project`bir parçası olarak kullanılır.<br>(2) splunk 'de işlev, `eval` işleciyle çağrılır. Azure Izleyici 'de `where` işleçle birlikte kullanılabilir.
 
 
 ## <a name="operators"></a>İşleçler
@@ -64,10 +63,10 @@ Aşağıdaki tabloda, Azure Izleyici 'deki splunk işlevlerine denk gelen işlev
 Aşağıdaki bölümlerde, splunk ve Azure Izleyici arasında farklı işleçler kullanma örnekleri verilmektedir.
 
 > [!NOTE]
-> Aşağıdaki örnekte, splunk alan _kuralı_ , Azure izleyici 'deki bir tabloyla eşlenir ve splunk 'nin varsayılan zaman damgası, Logs Analytics _ingestion_time ()_ sütunuyla eşlenir.
+> Aşağıdaki örnekte, splunk alan _kuralı_ , Azure izleyici 'deki bir tabloyla eşlenir ve splunk 'ın varsayılan zaman damgası, günlük Analizi _ingestion_time ()_ sütunuyla eşlenir.
 
 ### <a name="search"></a>Arama
-Splunk 'de `search` anahtar sözcüğünü atlayabilir ve tırnak işareti olmayan bir dize belirtebilirsiniz. Azure Izleyici 'de her bir sorguyu `find` ile başlatmanız gerekir, tırnak işareti olmayan bir dize bir sütun adıdır ve arama değeri tırnak içine alınmış bir dize olmalıdır. 
+Splunk 'de `search` anahtar sözcüğünü atlayabilir ve tırnak işareti olmayan bir dize belirtebilirsiniz. Azure Izleyici 'de her bir sorguyu `find`ile başlatmanız gerekir, tırnak işareti olmayan bir dize bir sütun adıdır ve arama değeri tırnak içine alınmış bir dize olmalıdır. 
 
 | |  | |
 |:---|:---|:---|
@@ -76,7 +75,7 @@ Splunk 'de `search` anahtar sözcüğünü atlayabilir ve tırnak işareti olmay
 | | |
 
 ### <a name="filter"></a>Filtrele
-Azure Izleyici günlük sorguları, filtrenin bulunduğu tablolu bir sonuç kümesinden başlar. Splunk 'de, filtreleme geçerli dizindeki varsayılan işlemdir. Splunk içinde `where` işlecini de kullanabilirsiniz, ancak önerilmez.
+Azure Izleyici günlük sorguları, filtrenin bulunduğu tablolu bir sonuç kümesinden başlar. Splunk 'de, filtreleme geçerli dizindeki varsayılan işlemdir. Ayrıca, splunk içinde `where` işleci de kullanabilirsiniz, ancak önerilmez.
 
 | |  | |
 |:---|:---|:---|
@@ -86,7 +85,7 @@ Azure Izleyici günlük sorguları, filtrenin bulunduğu tablolu bir sonuç küm
 
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>İnceleme için n olay/satır alma 
-Azure Izleyici günlük sorguları, `limit` ' e diğer ad olarak `take` ' yı da destekler. Splunk 'da sonuçlar Sıralansa, `head` ilk n sonucu döndürür. Azure Izleyici 'de sınır sıralı değildir ancak bulunan ilk n satırı döndürür.
+Azure Izleyici günlüğü sorguları, `limit`bir diğer ad olarak `take` da destekler. Splunk 'de, sonuçlar Sıralansa, `head` ilk n sonucunu döndürür. Azure Izleyici 'de sınır sıralı değildir ancak bulunan ilk n satırı döndürür.
 
 | |  | |
 |:---|:---|:---|
@@ -97,7 +96,7 @@ Azure Izleyici günlük sorguları, `limit` ' e diğer ad olarak `take` ' yı da
 
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Alan/sütun tarafından sıralanan ilk n olay/satırı alma
-Son sonuçlar için, splunk 'da `tail` ' ı kullanın. Azure Izleyici 'de `asc` ile sıralama yönünü belirtebilirsiniz.
+En alt sonuçlar için, splunk 'da `tail`kullanırsınız. Azure Izleyici 'de `asc`ile sıralama yönünü belirtebilirsiniz.
 
 | |  | |
 |:---|:---|:---|
@@ -109,7 +108,7 @@ Son sonuçlar için, splunk 'da `tail` ' ı kullanın. Azure Izleyici 'de `asc` 
 
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>Sonuç kümesini yeni alanlarla/sütunlarla genişletme
-Splunk Ayrıca, `eval` işleciyle karşılaştırılamayan `eval` işlevine sahiptir. Hem splunk içindeki `eval` işleci hem de Azure Izleyici 'de `extend` işleci yalnızca skaler işlevleri ve aritmetik işleçleri destekler.
+Splunk Ayrıca, `eval` işleciyle karşılaştırılabilir olmayan bir `eval` işleve sahiptir. Hem splunk içinde `eval` işleci hem de Azure Izleyici 'de `extend` işleci yalnızca skaler işlevleri ve aritmetik işleçleri destekler.
 
 | |  | |
 |:---|:---|:---|
@@ -119,7 +118,7 @@ Splunk Ayrıca, `eval` işleciyle karşılaştırılamayan `eval` işlevine sahi
 
 
 ### <a name="rename"></a>Yeniden adlandır 
-Azure Izleyici, bir alanı yeniden adlandırmak için `project-rename` işlecini kullanır. `project-rename`, sorgunun bir alan için önceden derlenmiş dizinlerden faydalanmasını sağlar. Splunk 'in aynı olması için `rename` işleci vardır.
+Azure Izleyici, bir alanı yeniden adlandırmak için `project-rename` işlecini kullanır. `project-rename`, sorgunun bir alan için önceden derlenmiş dizinlerden faydalanmasını sağlar. Splunk 'ın aynı olması için bir `rename` işleci vardır.
 
 | |  | |
 |:---|:---|:---|
@@ -131,7 +130,7 @@ Azure Izleyici, bir alanı yeniden adlandırmak için `project-rename` işlecini
 
 
 ### <a name="format-resultsprojection"></a>Biçimlendirme sonuçları/projeksiyonu
-Splunk `project-away` ' a benzer bir işlece sahip görünmüyor. Alan alanlarını filtrelemek için Kullanıcı arabirimini kullanabilirsiniz.
+Splunk, `project-away`benzer bir işlece sahip görünmüyor. Alan alanlarını filtrelemek için Kullanıcı arabirimini kullanabilirsiniz.
 
 | |  | |
 |:---|:---|:---|
@@ -164,7 +163,7 @@ Splunk 'da JOIN önemli sınırlamalara sahiptir. Alt sorgu 10000 sonuçlý bir 
 
 
 ### <a name="sort"></a>Sırala
-Splunk 'da artan düzende sıralamak için `reverse` işlecini kullanmanız gerekir. Azure Izleyici Ayrıca, ne zaman null, sonunda veya sonda yerleştirileceğini tanımlamayı destekler.
+Splunk 'da, artan düzende sıralamak için `reverse` işlecini kullanmanız gerekir. Azure Izleyici Ayrıca, ne zaman null, sonunda veya sonda yerleştirileceğini tanımlamayı destekler.
 
 | |  | |
 |:---|:---|:---|

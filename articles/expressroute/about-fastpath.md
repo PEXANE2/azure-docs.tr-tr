@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ff1dac312bcb4df1e1afc9679df09fc8a2b28ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437092"
 ---
 # <a name="about-expressroute-fastpath"></a>ExpressRoute FastPath hakkında
 
@@ -26,12 +26,22 @@ FastPath tüm ExpressRoute devrelerinin üzerinde kullanılabilir.
 
 ### <a name="gateways"></a>Ağ geçitleri
 
-FastPath, sanal ağ ile şirket içi ağ arasındaki yolların değişimi için bir sanal ağ geçidinin oluşturulmasını gerektirir. Sanal ağ geçitleri ve ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute sanal ağ geçitleri](expressroute-about-virtual-network-gateways.md).
+FastPath, sanal ağ ile şirket içi ağ arasındaki yolların değişimi için bir sanal ağ geçidinin oluşturulmasını gerektirir. Performans bilgileri ve ağ geçidi SKU 'Ları dahil sanal ağ geçitleri ve ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute sanal ağ geçitleri](expressroute-about-virtual-network-gateways.md).
 
-Sanal ağ geçidi şunlardan biri olmalıdır:
+FastPath 'i yapılandırmak için sanal ağ geçidi şunlardan biri olmalıdır:
 
 * Ultra Yüksek Performans
 * ErGw3AZ
+
+#### <a name="aggthroughput"></a>Ağ geçidi SKU'suna göre tahmini performans
+Aşağıdaki tabloda, ağ geçidi türleri ve tahmini performanslarını gösterir. Bu tablo hem Resource Manager hem de klasik dağıtım modellerine uygulanır.
+
+[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
+
+> [!IMPORTANT]
+> Uygulama performansını uçtan uca gecikme süresi ve trafik akışları uygulama açılır sayısı gibi birden çok etkene bağlıdır. Tablo sayılar uygulama teorik olarak ideal bir ortam elde edebilirsiniz üst sınırını ifade eder.
+>
+>
 
 ## <a name="supported-features"></a>Desteklenen özellikler
 

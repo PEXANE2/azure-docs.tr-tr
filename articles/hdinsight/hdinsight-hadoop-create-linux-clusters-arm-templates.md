@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c840cf452f047177c1244caedf09d976f0514961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435547"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak HDInsight 'ta Apache Hadoop kümeleri oluşturma
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Resource Manager şablonları kullanarak Azure HDInsight küm
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure PowerShell ve/veya Azure CLı.
@@ -40,18 +40,18 @@ HDInsight şablon örnekleri için [Azure hızlı başlangıç şablonları](htt
 
 Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için aşağıdaki makalelere ve örneklere bakın:
 
-* [Azure Resource Manager şablonları yaz](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager şablonları yaz](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager şablonlarıyla uygulama dağıtma](../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft. HDInsight/kümeler](/azure/templates/microsoft.hdinsight/allversions) şablon başvurusu
 * [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Şablon oluşturma
 
-Kaynak Yöneticisi, farklı araçları kullanarak aboneliğinizdeki mevcut kaynaklardan bir Kaynak Yöneticisi şablonu dışarı aktarmanız sağlar. Bu oluşturulan şablonu şablon söz dizimi hakkında bilgi edinmek veya çözümünüzün yeniden dağıtımını gerektiği gibi otomatikleştirmek için kullanabilirsiniz. Daha fazla bilgi için bkz. [şablonları dışarı aktarma](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Kaynak Yöneticisi, farklı araçları kullanarak aboneliğinizdeki mevcut kaynaklardan bir Kaynak Yöneticisi şablonu dışarı aktarmanız sağlar. Bu oluşturulan şablonu şablon söz dizimi hakkında bilgi edinmek veya çözümünüzün yeniden dağıtımını gerektiği gibi otomatikleştirmek için kullanabilirsiniz. Daha fazla bilgi için bkz. [şablonları dışarı aktarma](../azure-resource-manager/templates/export-template-portal.md).
 
 ## <a name="deploy-using-the-portal"></a>Portalı kullanarak dağıtma
 
-Azure portal kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Azure portal kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz. Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="deploy-using-powershell"></a>PowerShell kullanarak dağıtma
 
@@ -83,5 +83,5 @@ Bu makalede, bir HDInsight kümesi oluşturmanın çeşitli yollarını öğrend
 * .NET istemci kitaplığı aracılığıyla kaynak dağıtmaya ilişkin bir örnek için bkz. [.NET kitaplıkları ve şablon kullanarak kaynakları dağıtma](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Uygulama dağıtmaya yönelik ayrıntılı bir örnek için bkz. [Azure 'da mikro hizmetler sağlama ve dağıtma](../app-service/deploy-complex-application-predictably.md).
 * Çözümünüzü farklı ortamlarda dağıtmaya yönelik kılavuz için bkz. [Microsoft Azure’da geliştirme ve test ortamları](../solution-dev-test-environments.md).
-* Azure Resource Manager şablonun bölümleri hakkında bilgi edinmek için bkz. [yazma şablonları](../azure-resource-manager/resource-group-authoring-templates.md).
+* Azure Resource Manager şablonun bölümleri hakkında bilgi edinmek için bkz. [yazma şablonları](../azure-resource-manager/templates/template-syntax.md).
 * Azure Resource Manager şablonunda kullanabileceğiniz işlevlerin listesi için bkz. [Şablon işlevleri](../azure-resource-manager/resource-group-template-functions.md).

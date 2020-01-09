@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: coğrafi çoğaltma'
-description: Azure portal kullanarak Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanı için Coğrafi çoğaltmayı yapılandırma ve yük devretmeyi başlatma
+title: 'Öğretici: portalda coğrafi çoğaltma & yük devretme'
+description: Azure portal kullanarak Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanı için Coğrafi çoğaltmayı yapılandırın ve yük devretmeyi başlatın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808117"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348873"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure portal Azure SQL veritabanı için etkin Coğrafi çoğaltmayı yapılandırma ve yük devretmeyi başlatma
 
@@ -69,7 +69,7 @@ Aşağıdaki adımlar, coğrafi çoğaltma ortaklığında yeni bir ikincil veri
 2. SQL veritabanı dikey penceresinde, **coğrafi çoğaltma** > **Tüm ayarlar** ' ı seçin.
 3. **İkincil** öğeler listesinde, yeni birincil olmasını istediğiniz veritabanını seçin ve **Yük devretme**' ye tıklayın.
 
-    ![Yükünü](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![yükünü](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Yük devretmeyi başlatmak için **Evet** ' e tıklayın.
 
 Komut, ikincil veritabanını hemen birincil role geçirir. Bu işlem normalde 30 saniye veya daha az bir sürede tamamlanır.

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354866"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL veritabanı ve veri ambarı için saydam veri şifrelemesi
 
@@ -79,7 +79,7 @@ Saydam veri şifrelemesini Azure portal aracılığıyla yapılandırmak için A
 
 Saydam veri şifrelemesini veritabanı düzeyinde açıp kapatabilirsiniz. Bir veritabanında saydam veri şifrelemeyi etkinleştirmek için [Azure Portal](https://portal.azure.com) gidin ve Azure yöneticinize veya katkıda bulunan hesabınızla oturum açın. Kullanıcı veritabanınız altında saydam veri şifreleme ayarlarını bulun. Varsayılan olarak, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılır. Bir saydam veri şifreleme sertifikası, veritabanını içeren sunucu için otomatik olarak oluşturulur. Azure SQL yönetilen örneği için T-SQL kullanarak bir veritabanında saydam veri şifrelemeyi açın ve kapatın.
 
-![Hizmet tarafından yönetilen saydam veri şifrelemesi](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
+![Hizmet tarafından yönetilen saydam veri şifrelemesi](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
 
 Saydam veri şifreleme koruyucusu olarak da bilinen saydam veri şifrelemesi ana anahtarını sunucu düzeyinde ayarlarsınız. Kendi Anahtarını Getir desteği ile saydam veri şifrelemeyi kullanmak ve veritabanlarınızı Key Vault bir anahtarla korumak için, sunucunuzun altındaki saydam veri şifreleme ayarlarını açın.
 

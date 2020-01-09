@@ -1,5 +1,5 @@
 ---
-title: Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası | Mavisi
+title: Android MSAL yapılandırma dosyası | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory bir uygulamanın yapılandırmasını temsil eden Android Microsoft kimlik doğrulama kitaplığı (MSAL) yapılandırma dosyasına genel bakış.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916835"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424399"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
 
@@ -33,8 +33,8 @@ Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tab
 
 | Özellik | Veri Türü | Gereklidir | Notlar |
 |-----------|------------|-------------|-------|
-| `client_id` | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
-| `redirect_uri`   | Dize | Yes | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
+| `client_id` | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
+| `redirect_uri`   | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
 | `authorities` | \<yetkilisi > listeleyin | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
 | `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT`, `BROWSER`, `WEBVIEW` |
 | `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` ve `read_timeout` yapılandırın |
@@ -104,17 +104,17 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 
 | Özellik | Veri türü  | Gereklidir | Notlar |
 |-----------|-------------|-----------|--------|
-| `type` | Dize | Yes | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD`, `B2C` |
+| `type` | Dize | Evet | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD`, `B2C` |
 | `audience` | Nesne | Hayır | Yalnızca Type =`AAD`olduğunda geçerlidir. Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
-| `authority_url` | Dize | Yes | Yalnızca Type =`B2C`olduğunda gereklidir. Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
-| `default` | boole | Yes | Bir veya daha fazla sertifika belirtildiğinde tek bir `"default":true` gereklidir. |
+| `authority_url` | Dize | Evet | Yalnızca Type =`B2C`olduğunda gereklidir. Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
+| `default` | boole | Evet | Bir veya daha fazla sertifika belirtildiğinde tek bir `"default":true` gereklidir. |
 
 #### <a name="audience-properties"></a>Hedef kitle özellikleri
 
 | Özellik | Veri Türü  | Gereklidir | Notlar |
 |-----------|-------------|------------|-------|
-| `type` | Dize | Yes | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`, `AzureADMyOrg` |
-| `tenant_id` | Dize | Yes | Yalnızca `"type":"AzureADMyOrg"`olduğunda gereklidir. Diğer `type` değerleri için isteğe bağlıdır. Bu, `contoso.com`gibi bir kiracı etki alanı ya da `72f988bf-86f1-41af-91ab-2d7cd011db46`gibi bir kiracı KIMLIĞI olabilir |
+| `type` | Dize | Evet | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`, `AzureADMyOrg` |
+| `tenant_id` | Dize | Evet | Yalnızca `"type":"AzureADMyOrg"`olduğunda gereklidir. Diğer `type` değerleri için isteğe bağlıdır. Bu, `contoso.com`gibi bir kiracı etki alanı ya da `72f988bf-86f1-41af-91ab-2d7cd011db46`gibi bir kiracı KIMLIĞI olabilir |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -144,7 +144,7 @@ HTTP zaman aşımları için genel ayarları yapılandırın, örneğin:
 | `connect_timeout` | int | Hayır | Milisaniye cinsinden süre |
 | `read_timeout` | int | Hayır | Milisaniye cinsinden süre |
 
-### <a name="logging"></a>günlüğe kaydetme
+### <a name="logging"></a>günlük kaydı
 
 Günlüğe kaydetme için aşağıdaki genel ayarlar verilmiştir:
 
@@ -342,7 +342,7 @@ Aşağıdaki örnek, istemci KIMLIĞINI, yeniden yönlendirme URI 'sini, bir ara
 ## <a name="how-to-use-a-configuration-file"></a>Yapılandırma dosyası kullanma
 
 1. Bir yapılandırma dosyası oluşturun. Özel yapılandırma dosyanızı `res/raw/auth_config.json`oluşturmanız önerilir. Ancak istediğiniz yere koyabilirsiniz.
-2. `PublicClientApplication`oluştururken MSAL yapılandırmanıza nereden bakacağınızı söyleyin. Örnek:
+2. `PublicClientApplication`oluştururken MSAL yapılandırmanıza nereden bakacağınızı söyleyin. Örneğin:
 
    ```java
    //On Worker Thread

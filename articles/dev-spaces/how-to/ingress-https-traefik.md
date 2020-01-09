@@ -1,28 +1,28 @@
 ---
 title: Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 services: azure-dev-spaces
-ms.date: 08/13/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 8ddaa7b3e982cb85428a7faef20b59525a175778
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: db9afc3a5e33d1a12246c2af80428137043aa242
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438481"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
 Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. Bu makalede ayrıca, bu özel giriş denetleyicisinin HTTPS kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap][azure-account-create] oluşturabilirsiniz.
 * [Yüklü Azure CLI][az-cli].
 * [Azure dev Spaces etkinleştirilmiş Azure Kubernetes hizmeti (AKS) kümesi][qs-cli].
 * [kubectl][kubectl] yüklendi.
-* [Held 2,13-2,16 yüklendi][helm-installed].
+* [Held 3 yüklendi][helm-installed].
 * AKS kümeniz ile aynı kaynak grubunda [DNS bölgesi][dns-zone] olan [özel bir etki alanı][custom-domain] .
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Özel bir traefik giriş denetleyicisi yapılandırma
@@ -41,12 +41,17 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
+Traefik giriş denetleyicisi HELI grafiğini içeren [resmi kararlı Held deposunu][helm-stable-repo]ekleyin.
+
+```console
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
 Traefik giriş denetleyicisi için bir Kubernetes ad alanı oluşturun ve `helm`kullanarak yüklemeyi yapın.
 
 ```console
 kubectl create ns traefik
-helm init --wait
-helm install stable/traefik --name traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 [Kubectl Get][kubectl-get]kullanarak traefik giriş denetleyici hizmetinin IP adresini alın.
@@ -106,18 +111,23 @@ gateway:
 
 Değişikliklerinizi kaydedin ve dosyayı kapatın.
 
+`azds space select`kullanarak örnek uygulamanızla *dev* alanını oluşturun.
+
+```console
+azds space select -n dev -y
+```
+
 Örnek uygulamayı `helm install`kullanarak dağıtın.
 
 ```console
-helm install -n bikesharing . --dep-up --namespace dev --atomic
+helm install bikesharing . --dependency-update --namespace dev --atomic
 ```
 
 Yukarıdaki örnek, örnek uygulamayı *dev* ad alanına dağıtır.
 
-`azds space select` kullanarak örnek uygulamanıza *geliştirme* alanını seçin ve `azds list-uris`kullanarak örnek uygulamaya erişmek Için URL 'leri görüntüleyin.
+`azds list-uris`kullanarak örnek uygulamaya erişmek için URL 'Leri görüntüleyin.
 
 ```console
-azds space select -n dev
 azds list-uris
 ```
 
@@ -152,62 +162,86 @@ http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Traefik giriş denetleyicisini HTTPS kullanacak şekilde yapılandırma
 
-Aşağıdaki örneğe benzer bir `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` dosyası oluşturun. *E* -posta değerini, kendi e-postanız ile güncelleştirin ve bu, sertifikayı oluşturmak için kullanılır.
-
-```yaml
-fullnameOverride: traefik
-replicas: 1
-cpuLimit: 400m
-memoryRequest: 200Mi
-memoryLimit: 500Mi
-externalTrafficPolicy: Local
-kubernetes:
-  ingressClass: traefik
-  ingressEndpoint:
-    useDefaultPublishedService: true
-dashboard:
-  enabled: false
-debug:
-  enabled: false
-accessLogs:
-  enabled: true
-  fields:
-    defaultMode: keep
-    headers:
-      defaultMode: keep
-      names:
-        Authorization: redact
-acme:
-  enabled: true
-  email: "someone@example.com"
-  staging: false
-  challengeType: tls-alpn-01
-ssl:
-  enabled: true
-  enforced: true
-  permanentRedirect: true
-  tlsMinVersion: VersionTLS12
-  cipherSuites:
-    - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-    - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-    - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-    - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-    - TLS_RSA_WITH_AES_128_GCM_SHA256
-    - TLS_RSA_WITH_AES_256_GCM_SHA384
-    - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-```
-
-`helm repo update` kullanarak *traefik* hizmetinizi güncelleştirin ve oluşturduğunuz *traefik-values. YAML* dosyasını dahil edin.
+Traefik ınress denetleyicinizi HTTPS kullanacak şekilde yapılandırırken TLS sertifikasının yönetimini otomatikleştirmek için [CERT-Manager][cert-manager] kullanın. *Certmanager* grafiğini yüklemek için `helm` kullanın.
 
 ```console
-cd ..
-helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.yaml
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
+kubectl label namespace traefik certmanager.k8s.io/disable-validation=true
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Yukarıdaki komut, *traefik-values. YAML* değerlerini kullanarak traefik hizmetinin yeni bir sürümünü çalıştırır ve önceki hizmeti kaldırır. Ayrıca, traefik hizmeti şifrelemeyi kullanarak bir TLS sertifikası oluşturur ve HTTPS kullanmak için Web trafiğini yeniden yönlendirmeye başlar.
+`letsencrypt-clusterissuer.yaml` bir dosya oluşturun ve e-posta alanını e-posta adresiniz ile güncelleştirin.
+
+```yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: MY_EMAIL_ADDRESS
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+```
 
 > [!NOTE]
-> Traefik hizmetinin yeni sürümünün başlatılması birkaç dakika sürebilir. İlerlemeyi `kubectl get pods --namespace traefik --watch`kullanarak kontrol edebilirsiniz.
+> Test için, *Kümevereninizi*için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
+
+`letsencrypt-clusterissuer.yaml`uygulamak için `kubectl` kullanın.
+
+```console
+kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
+```
+
+`helm`kullanarak HTTPS kullanmak için traefik yükseltin.
+
+```console
+helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0 --set ssl.enabled=true --set ssl.enforced=true --set ssl.permanentRedirect=true
+```
+
+, *CERT-Manager* ve https kullanımına ilişkin ayrıntıları dahil etmek için [values. YAML][values-yaml] 'yi güncelleştirin. Güncelleştirilmiş `values.yaml` dosyasına bir örnek aşağıda verilmiştir:
+
+```yaml
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+bikesharingweb:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: traefik  # Custom Ingress
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
+    tls:
+    - hosts:
+      - dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN
+      secretName: dev-bikesharingweb-secret
+
+gateway:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: traefik  # Custom Ingress
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - dev.gateway.traefik.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
+    tls:
+    - hosts:
+      - dev.gateway.traefik.MY_CUSTOM_DOMAIN
+      secretName: dev-gateway-secret
+```
+
+`helm`kullanarak örnek uygulamayı yükseltin:
+
+```console
+helm upgrade bikesharing . --namespace dev --atomic
+```
 
 *Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
 
@@ -260,7 +294,7 @@ Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernete
 `BikeSharingWeb` dizinine gidin ve güncelleştirilmiş BikeSharingWeb hizmetinizi çalıştırmak için `azds up` kullanın.
 
 ```console
-cd BikeSharingWeb/
+cd ../BikeSharingWeb/
 azds up
 ```
 
@@ -284,9 +318,12 @@ Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar g
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[cert-manager]: https://cert-manager.io/
+[helm-installed]: https://helm.sh/docs/intro/install/
+[helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer
 [package-json]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/package.json
 [values-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml

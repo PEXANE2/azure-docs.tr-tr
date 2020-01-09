@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell Betik Örneği - Windows üzerinde AzCopy kullanarak blobları depolama hesapları arasında geçirme | Microsoft Docs
-description: AzCopy kullanarak, bir Azure Depolama Hesabının Blob içeriklerini diğerine kopyalar.
+title: Windows üzerinde AzCopy kullanarak Blobları depolama hesapları arasında geçirme
+description: Azure PowerShell betik örneği-AzCopy kullanarak bir Azure depolama hesabının blob içeriğini diğerine kopyalar.
 services: storage
 documentationcenter: na
 author: normesta
@@ -12,12 +12,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: normesta
-ms.openlocfilehash: 0af945177289760ca0d2a97133a300d9978ce702
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 559b8b2875b789034ae07901f668f241505073b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465070"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Windows üzerinde AzCopy kullanarak blobları depolama hesapları arasında geçirme
 

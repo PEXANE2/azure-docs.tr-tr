@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354955"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Öğretici: Azure SQL veritabanı C&#x23; ve ADO.NET içinde tek bir veritabanında Ilişkisel veritabanı tasarlama
 
@@ -34,13 +34,13 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, basit bir veritabanının oluşturulması dahil olmak üzere [Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Visual Studio 2019](https://www.visualstudio.com/downloads/) veya sonraki bir sürümünü yükleme.
 
 ## <a name="create-a-blank-single-database"></a>Boş bir tek veritabanı oluşturma
 
-Azure SQL veritabanı 'nda tek bir veritabanı, tanımlı bir dizi işlem ve depolama kaynağı ile oluşturulur. Veritabanı bir [Azure Kaynak grubu](../azure-resource-manager/resource-group-overview.md) içinde oluşturulur ve [veritabanı sunucusu](sql-database-servers.md)kullanılarak yönetilir.
+Azure SQL veritabanı 'nda tek bir veritabanı, tanımlı bir dizi işlem ve depolama kaynağı ile oluşturulur. Veritabanı bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) içinde oluşturulur ve [veritabanı sunucusu](sql-database-servers.md)kullanılarak yönetilir.
 
 Boş tek veritabanı oluşturmak için bu adımları izleyin.
 
@@ -101,7 +101,7 @@ SQL veritabanı hizmeti, sunucu düzeyinde bir IP güvenlik duvarı oluşturur. 
 
 4. Geçerli IP adresinizi yeni bir IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' ye tıklayın. Bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet** düğmesine tıklayın. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Save (Kaydet)** düğmesine tıklayın. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Tamam**’a tıklayın ve sonra **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -117,7 +117,7 @@ IP adresiniz artık IP güvenlik duvarından geçebilirler. Artık SQL Server Ma
 Bu öğreticide, veritabanı ve tablo oluşturma, veritabanına bağlanma, verileri yükleme ve sorguları çalıştırma gibi temel veritabanı görevlerini öğrendiniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Veritabanı oluşturma
+> * Veritabanı oluşturun
 > * Güvenlik duvarı kuralı ayarlama
 > * [Visual Studio ve C#](sql-database-connect-query-dotnet-visual-studio.md) ile veritabanına bağlanma
 > * Tablo oluşturma

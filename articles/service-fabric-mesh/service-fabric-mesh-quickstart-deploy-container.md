@@ -1,22 +1,18 @@
 ---
-title: Hızlı Başlangıç - Merhaba Dünya’yı Azure Service Fabric Mesh’e Dağıtma | Microsoft Docs
+title: Hızlı başlangıç-Merhaba Dünya Azure Service Fabric ağı 'na dağıtma
 description: Bu hızlı başlangıçta, bir Service Fabric Mesh uygulamasının Azure Service Fabric Mesh’e nasıl dağıtıldığı gösterilir.
-services: service-fabric-mesh
-keywords: SEO uzmanınıza danışmadan anahtar sözcük eklemeyin veya anahtar sözcükleri düzenlemeyin.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458965"
 ---
-# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Hızlı Başlangıç: Merhaba Dünya uygulamasını Service Fabric Mesh’e dağıtma
+# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Hızlı başlangıç: Merhaba Dünya uygulamasını Service Fabric Mesh’e dağıtma
 
 [Service Fabric Mesh](service-fabric-mesh-overview.md), sanal makine sağlamaya gerek kalmadan Azure’da mikro hizmet uygulamalarının oluşturulmasını ve yönetilmesini kolaylaştırır. Bu hızlı başlangıçta, Azure’da Merhaba Dünya uygulamasını oluşturacak ve bunu İnternette kullanıma sunacaksınız. Bu işlem tek bir komutla tamamlanır. Yalnızca birkaç dakika içinde tarayıcınızda bu görünümü görürsünüz:
 
@@ -29,7 +25,7 @@ Henüz bir Azure hesabınız yoksa, başlamadan önce [ücretsiz hesap oluşturu
 ## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama 
 Bu hızlı başlangıcı tamamlamak için Azure Cloud Shell veya yerel bir Azure CLI yüklemesi kullanabilirsiniz. Şu [yönergeleri](service-fabric-mesh-howto-setup-cli.md) izleyerek Azure Service Fabric Mesh CLI uzantısı modülünü yükleyin.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 Azure'da oturum açın ve aboneliğinizi ayarlayın.
 
 ```azurecli-interactive
@@ -97,7 +93,7 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Uygulamayı silmeye hazır olduğunuzda, kaynak grubunu, uygulamayı ve uygulamanın içerdiği ağ kaynaklarını kaldırmak için [az group delete][az-group-delete] komutunu çalıştırın.
+Uygulamayı silmeye hazırsanız, kaynak grubunu ve içerdiği uygulama ve ağ kaynaklarını kaldırmak için [az Group Delete][az-group-delete] komutunu çalıştırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423928"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -34,8 +34,8 @@ Daemon uygulamalarını destekleyen Microsoft kitaplıkları şunlardır:
   MSAL kitaplığı | Açıklama
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Bir Daemon uygulaması derlemek için desteklenen platformlar .NET Framework ve .NET Core platformları (UWP, Xamarin. iOS ve Xamarin. Android değil, ortak istemci uygulamaları oluşturmak için kullanılır)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Geliştirme devam ediyor-genel önizlemede
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Geliştirme devam ediyor-genel önizlemede
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 'da Daemon uygulamaları için destek
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 'da Daemon uygulamaları için destek
 
 ## <a name="configuration-of-the-authority"></a>Yetkilisinin yapılandırması
 
@@ -136,7 +136,7 @@ Uygulamanıza [Microsoft. ıdentityclient](https://www.nuget.org/packages/Micros
 MSAL.NET ' de, gizli istemci uygulaması `IConfidentialClientApplication` arabirimi tarafından temsil edilir.
 Kaynak kodunda MSAL.NET ad alanını kullan
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -164,7 +164,7 @@ Gizli istemci uygulamasını bir istemci gizli anahtarı ile örneklendirilecek 
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -204,7 +204,7 @@ Sertifika ile bir uygulama oluşturmak için kod aşağıda verilmiştir:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -243,7 +243,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         .build();
 ```
 
-or
+veya
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -271,7 +271,7 @@ MSAL.NET, gizli istemci uygulamasına imzalı onaylar sağlamak için iki yönte
 
 `WithClientAssertion`kullandığınızda, imzalı bir JWT sağlamanız gerekir. Bu gelişmiş senaryo [istemci onaylamaları](msal-net-client-assertions.md) hakkında ayrıntılı
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -281,7 +281,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 `WithClientClaims`kullandığınızda, MSAL.NET, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi için işlem görür.
 Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir:
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);

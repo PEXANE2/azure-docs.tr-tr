@@ -5,17 +5,17 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422128"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure 'da mikro hizmetleri öngörülebilir bir şekilde sağlayın ve dağıtın
 Bu öğreticide, tek bir birim olarak [Azure App Service](https://azure.microsoft.com/services/app-service/) [mikro hizmetlerden](https://en.wikipedia.org/wiki/Microservices) oluşan bir uygulamanın nasıl SAĞLANACAĞı ve dağıtılacağı ve JSON kaynak grubu şablonlarının ve PowerShell betiği kullanılarak öngörülebilir bir şekilde dağıtılması gösterilmektedir. 
 
-Yüksek düzeyde ayrılmış mikro hizmetlerden oluşan, yinelenebilirlik ve tahmine dayalı uygulamalar sağlarken ve bu uygulamaların dağıtılmasının başarılı olması çok önemlidir. [Azure App Service](https://azure.microsoft.com/services/app-service/) , Web uygulamaları, mobil arka uçlar ve API uygulamaları içeren mikro hizmetler oluşturmanıza olanak sağlar. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) , tüm mikro hizmetleri, veritabanı ve kaynak denetimi ayarları gibi kaynak bağımlılıklarıyla birlikte bir birim olarak yönetmenizi sağlar. Artık, bu tür bir uygulamayı JSON şablonları ve basit PowerShell betiği kullanarak da dağıtabilirsiniz. 
+Yüksek düzeyde ayrılmış mikro hizmetlerden oluşan, yinelenebilirlik ve tahmine dayalı uygulamalar sağlarken ve bu uygulamaların dağıtılmasının başarılı olması çok önemlidir. [Azure App Service](https://azure.microsoft.com/services/app-service/) , Web uygulamaları, mobil arka uçlar ve API uygulamaları içeren mikro hizmetler oluşturmanıza olanak sağlar. [Azure Resource Manager](../azure-resource-manager/management/overview.md) , tüm mikro hizmetleri, veritabanı ve kaynak denetimi ayarları gibi kaynak bağımlılıklarıyla birlikte bir birim olarak yönetmenizi sağlar. Artık, bu tür bir uygulamayı JSON şablonları ve basit PowerShell betiği kullanarak da dağıtabilirsiniz. 
 
 ## <a name="what-you-will-do"></a>Yapabilecekleriniz
 Öğreticide şunları içeren bir uygulama dağıtacaksınız:
@@ -29,7 +29,7 @@ Yüksek düzeyde ayrılmış mikro hizmetlerden oluşan, yinelenebilirlik ve tah
 Bu öğreticide, aşağıdaki araçları kullanacaksınız. Araçlarla ilgili kapsamlı bir tartışma olmadığından, uçtan uca senaryoya giriş yapacağım ve yalnızca her birine kısa bir giriş ve bu konuda daha fazla bilgi bulabilirsiniz. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager şablonları (JSON)
-Azure App Service bir uygulama oluşturduğunuzda, örneğin, Azure Resource Manager kaynak grubunun tamamını bileşen kaynaklarıyla oluşturmak için bir JSON şablonu kullanır. [Azure Marketi](/azure/marketplace) 'ndeki karmaşık bir şablon, veritabanı, depolama hesapları, App Service planı, uygulamanın kendisi, uyarı kuralları, uygulama ayarları, otomatik ölçeklendirme ayarları ve daha fazlasını içerebilir ve tüm bu şablonlar PowerShell üzerinden kullanılabilir. Azure Resource Manager şablonları hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../azure-resource-manager/resource-group-authoring-templates.md)
+Azure App Service bir uygulama oluşturduğunuzda, örneğin, Azure Resource Manager kaynak grubunun tamamını bileşen kaynaklarıyla oluşturmak için bir JSON şablonu kullanır. [Azure Marketi](/azure/marketplace) 'ndeki karmaşık bir şablon, veritabanı, depolama hesapları, App Service planı, uygulamanın kendisi, uyarı kuralları, uygulama ayarları, otomatik ölçeklendirme ayarları ve daha fazlasını içerebilir ve tüm bu şablonlar PowerShell üzerinden kullanılabilir. Azure Resource Manager şablonları hakkında daha fazla bilgi için bkz. [yazma Azure Resource Manager şablonları](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Visual Studio için Azure SDK 2,6
 En yeni SDK, JSON düzenleyicisinde Kaynak Yöneticisi şablonu desteğiyle iyileştirmeler içerir. Bunu, sıfırdan hızlı bir şekilde bir kaynak grubu şablonu oluşturmak veya var olan bir JSON şablonunu (indirilen Galeri şablonu gibi) açmak, parametreler dosyasını doldurmak ve hatta kaynak grubunu doğrudan bir Azure kaynağından dağıtmak için kullanabilirsiniz. Grup çözümü.
@@ -117,7 +117,7 @@ Vurgulanan JSON kodu hakkında aşağıdakilere dikkat edin:
 * Veritabanı ve Güvenlik Duvarı kurallarının tanımlandığı `“resources”: […]`içinde iç içe geçmiş kaynaklar, kök düzeyindeki SQLServer kaynağının kaynak KIMLIĞINI belirten bir `dependsOn` öğesi vardır. Bu, "Bu kaynağı oluşturmadan önce diğer kaynağın zaten mevcut olması gerektiğini Azure Resource Manager söyler. daha sonra bu diğer kaynak şablonda tanımlanmazsa, önce bunu oluşturun.
   
   > [!NOTE]
-  > `resourceId()` işlevini kullanma hakkında ayrıntılı bilgi için bkz. [Azure Resource Manager şablon işlevleri](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
+  > `resourceId()` işlevini kullanma hakkında ayrıntılı bilgi için bkz. [Azure Resource Manager şablon işlevleri](../azure-resource-manager/templates/template-functions-resource.md#resourceid).
   > 
   > 
 * `dependsOn` öğesinin etkisi, Azure Resource Manager hangi kaynakların paralel olarak oluşturulabileceklerini ve hangi kaynakların ardışık olarak oluşturulması gerektiğini bilmesini sağlayabilir. 
@@ -220,7 +220,7 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
     Artık, şablon dosyasında tanımlanan tüm parametreleri iyi bir tabloda düzenleyebileceksiniz. Varsayılanları tanımlayan parametreler varsayılan değerlerine sahip olur ve izin verilen değerlerin bir listesini tanımlayan parametreler açılan olarak gösterilir.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. Tüm boş parametreleri doldurup, **Repourl**'de [ToDoApp için GitHub depo adresini](https://github.com/azure-appservice-samples/ToDoApp.git) kullanın. Ardından **Kaydet**' e tıklayın.
+15. Tüm boş parametreleri doldurup, **Repourl**'de [ToDoApp için GitHub depo adresini](https://github.com/azure-appservice-samples/ToDoApp.git) kullanın. Daha sonra **Kaydet**'e tıklayın.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
@@ -228,7 +228,7 @@ Ayrıca, iç içe geçmiş kaynaklar JSON şablon dosyanızda bunlara benzer bir
     > Otomatik ölçeklendirme, **Standart** katmanda veya daha yüksek bir özelliktir ve plan düzeyi uyarılar **temel** katmanda veya daha yüksek sürümlerde sunulan özelliklerdir, tüm yeni App Insights kaynaklarınızın açık olduğunu görmek için **SKU** parametresini **Standart** veya **Premium** olarak ayarlamanız gerekir.
     > 
     > 
-16. **Dağıt**' a tıklayın. **Parolaları kaydet**' i seçtiyseniz, parola parametre dosyasına **düz metin olarak**kaydedilir. Aksi takdirde, dağıtım işlemi sırasında veritabanı parolasını girmek isteyip istemediğiniz sorulur.
+16. Tıklayın **dağıtma**. **Parolaları kaydet**' i seçtiyseniz, parola parametre dosyasına **düz metin olarak**kaydedilir. Aksi takdirde, dağıtım işlemi sırasında veritabanı parolasını girmek isteyip istemediğiniz sorulur.
 
 Bu kadar! Şimdi, JSON dağıtılan uygulamanıza eklenen yeni uyarıları ve otomatik ölçeklendirme ayarlarını görmek için [Azure portalına](https://portal.azure.com/) ve [Azure Kaynak Gezgini](https://resources.azure.com) aracına gitmeniz yeterlidir.
 
@@ -250,8 +250,8 @@ DevOps 'da, yinelenebilirlik ve öngörülebilirlik, mikro hizmetlerden oluşan 
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>Daha fazla kaynak
-* [Azure Resource Manager şablonu dili](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure Resource Manager şablonları yazma](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager şablonu dili](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager şablon Işlevleri](../azure-resource-manager/resource-group-template-functions.md)
 * [Azure Resource Manager şablonuyla uygulama dağıtma](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure PowerShell’i Azure Resource Manager ile kullanma](../azure-resource-manager/powershell-azure-resource-manager.md)

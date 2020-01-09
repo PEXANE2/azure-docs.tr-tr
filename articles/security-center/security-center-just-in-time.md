@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355575"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Tam zamanında sanal makine erişimini yönetme
 
@@ -108,7 +108,7 @@ Güvenlik Merkezi 'nden bir JıT ilkesi yapılandırabilir ve bir sanal makineye
 
      3. **Tamam**’a tıklayın.
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Save (Kaydet)** düğmesine tıklayın.
 
 > [!NOTE]
 >Azure Güvenlik Merkezi, bir VM için JıT VM erişimi etkinleştirildiğinde, ilişkili ağ güvenlik gruplarında ve Azure Güvenlik Duvarı 'nda bulunan seçili bağlantı noktaları için "tüm gelen trafiği reddet" kurallarını oluşturur. Seçilen bağlantı noktaları için başka kurallar oluşturulduysa, mevcut kurallar yeni "tüm gelen trafiği reddetme" kuralları üzerinden önceliklidir. Seçilen bağlantı noktalarında mevcut kurallar yoksa, yeni "tüm gelen trafiği reddetme" kuralları, ağ güvenlik gruplarında ve Azure Güvenlik duvarında en üst önceliğe sahip olacaktır.

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428877"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
@@ -22,7 +22,7 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 >
 > Power otomatikleştirmede dışarıya aktarılmış OpenAPI tabanlı akışlar, mantıksal uygulama şablonları olarak dağıtım için şu anda desteklenmiyor. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -32,7 +32,7 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 
 1. [Power otomatikleştirmek](https://flow.microsoft.com)için oturum açın ve **Akışlarım**' ı seçin. Akışınızı bulun ve seçin. Araç çubuğunda üç nokta ( **...** ) düğmesini seçin.  >  **Logic Apps şablonu (. JSON) öğesini**seçin.
 
-   ![Akışı dışarı aktar](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![Akışı dışarı aktarma](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
 1. Şablonunuzu istediğiniz konuma kaydedin.
 
@@ -81,7 +81,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
 
       Yetkilendirme gerektiren her bağlantı bir uyarı simgesi gösterir:
 
-      ![uyarı simgesi](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
+      ![Uyarı simgesi](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
    1. Yetkili bağlantı gerektiren her adım için bu adımı genişletin ve **Yeni Ekle**' yi seçin.
 
@@ -133,7 +133,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
 1. Çözüm Gezgini, proje kısayol menüsünü açın ve **yeni** > **Dağıt** ' ı seçin. Sorulursa Azure hesabınızla oturum açın.
 
-1. İstendiğinde, Azure aboneliğini, Azure kaynak grubunu ve dağıtım için kullanmak istediğiniz diğer ayarları (şablon parametre değerlerini iletmek için kullanılacak [Parametreler dosyası](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) gibi) onaylayın ve **Dağıt**' ı seçin.
+1. İstendiğinde, Azure aboneliğini, Azure kaynak grubunu ve dağıtım için kullanmak istediğiniz diğer ayarları (şablon parametre değerlerini iletmek için kullanılacak [Parametreler dosyası](../azure-resource-manager/templates/parameter-files.md) gibi) onaylayın ve **Dağıt**' ı seçin.
 
    ![Dağıtım ayarlarını Onayla](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 
@@ -141,7 +141,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    ![Dağıtım parametrelerini Düzenle](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örnek:
+   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örneğin:
 
    ![Çıktı penceresi](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

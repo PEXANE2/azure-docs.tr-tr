@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443732"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -34,14 +34,7 @@ AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceği
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-Bu dosyalar bir ZIP dosyası (Windows ve Mac) veya bir tar dosyası (Linux) olarak sıkıştırılır.
-
-Bu komutları, Linux üzerinde tar dosyasını indirmek ve açmak için kullanabilirsiniz.
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-tar -xf azcopy.tar.gz
-```
+Bu dosyalar bir ZIP dosyası (Windows ve Mac) veya bir tar dosyası (Linux) olarak sıkıştırılır. IK dosyasını Linux üzerinde indirip sıkıştırmasını açmak için Linux dağıtımına yönelik belgelere bakın.
 
 > [!NOTE]
 > [Azure Tablo depolama](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) hizmetinize veri kopyalamak Istiyorsanız, [azcopy sürüm 7,3](https://aka.ms/downloadazcopynet)' yi de yükleyebilirsiniz.

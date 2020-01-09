@@ -1,77 +1,66 @@
 ---
-title: Service Fabric projesi oluşturma işleminde sonraki adımlar | Microsoft Docs
-description: Visual Studio'da oluşturduğunuz uygulama projesi hakkında bilgi edinin.  Öğreticiler kullanan hizmetler oluşturmayı öğrenin ve Hizmetleri için Service Fabric geliştirme hakkında bilgi edinin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Service Fabric’te proje oluşturma işleminde sonraki adımlar
+description: Visual Studio 'da yeni oluşturduğunuz uygulama projesi hakkında bilgi edinin.  Öğreticileri kullanarak hizmetler oluşturmayı ve Service Fabric için hizmet geliştirme hakkında daha fazla bilgi edinin.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
-ms.author: atsenthi
-ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349408"
 ---
-# <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric uygulaması ve sonraki adımlar
-Azure Service Fabric uygulamanızı oluşturuldu. Bu makalede, bazı öğreticiler denemek için projenizi, bazı ek bilgiler de ilginizi çekebilir ve olası sonraki adımlar düzenini açıklar.
+# <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric uygulamanız ve sonraki adımlar
+Azure Service Fabric uygulamanız oluşturuldu. Bu makalede, deneyebileceğiniz bazı öğreticiler, projenizin makeof, ilgilendiğiniz daha fazla bilgi ve olası sonraki adımlar açıklanmaktadır.
 
-## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Öğreticiler, Kılavuzlar ve örnekler ile çalışmaya başlama
+## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Öğreticiler, yürüme-kılavuzlarına ve örnekler ile çalışmaya başlama
 Başlamaya hazır mısınız?  
 
-.NET uygulaması Öğreticisi ile çalışır. Bilgi nasıl [uygulama oluşturma](service-fabric-tutorial-create-dotnet-app.md) ASP.NET Core ön ucuyla ve bir durum bilgisi olan arka uç, [uygulamayı dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md) bir kümeye [CI/CD'yi yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md), ve [ayarlayın İzleme ve tanılama](service-fabric-tutorial-monitoring-aspnet.md).
+.NET uygulama öğreticisi aracılığıyla çalışın. Bir ASP.NET Core ön uç ve durum bilgisi içeren arka uç ile uygulama [oluşturmayı](service-fabric-tutorial-create-dotnet-app.md) , [uygulamayı](service-fabric-tutorial-deploy-app-to-party-cluster.md) BIR kümeye DAĞıTMAYı, [CI/CD 'yi yapılandırmayı](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)ve [izleme ve tanılamayı ayarlamayı](service-fabric-tutorial-monitoring-aspnet.md)öğrenin.
 
-Veya, bir aşağıdaki incelemelerde deneyin ve ilk kez oluşturma...
+Ya da aşağıdaki ilerm-kılavuzlarına birini deneyin ve ilk kez oluşturun...
 - [C#Windows üzerinde Reliable Services hizmeti](service-fabric-reliable-services-quick-start.md) 
 - [C#Windows üzerinde Reliable Actors hizmeti](service-fabric-reliable-actors-get-started.md) 
-- [Windows üzerinde Konuk yürütülebilir hizmet](quickstart-guest-app.md) 
+- [Windows üzerinde Konuk yürütülebilir hizmeti](quickstart-guest-app.md) 
 - [Windows kapsayıcı uygulaması](service-fabric-get-started-containers.md) 
 
-Ayrıca aşımına ilginizi çekebilir bizim [örnek uygulamalar](https://aka.ms/servicefabricsamples).
+Ayrıca, [örnek uygulamalarımızı](https://aka.ms/servicefabricsamples)de denemeyebilirsiniz.
 
-## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Sorularınız veya Geri bildiriminiz var mı?  Bir sorun bildirmek mı ihtiyacınız var?
-Okumak [sık sorulan sorular](service-fabric-common-questions.md) ve Service Fabric neler yapabileceğinizi ve nasıl kullanılmalıdır sorulara yanıtlar bulun.
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Sorularınız veya geri bildiriminiz mi var?  Bir sorun bildirmek mı gerekiyor?
+[Yaygın soruları](service-fabric-common-questions.md) okuyun ve Service Fabric neler yapabileceğini ve nasıl kullanılacağını öğrenin.
 
-[Destek Seçenekleri](service-fabric-support.md) raporlama sorunları, destek almak ve ürün geri bildirim gönderiliyor seçenekleri yanı sıra soru sormaya yönelik StackOverflow ve MSDN Forumlarında listeler.
+[Destek seçenekleri](service-fabric-support.md) , sorularınızı bildirmek, destek almak ve ürün geri bildirimleri göndermek için STACKOVERFLOW ve MSDN 'deki forumları listeler.
 
-## <a name="the-application-project"></a>Uygulama projesi
-Her yeni uygulama, bir uygulama projesi içerir. Bir veya iki ek projeleri, seçilen hizmet türüne bağlı olarak olabilir.
+## <a name="the-application-project"></a>Uygulama Projesi
+Her yeni uygulama bir uygulama projesi içerir. Seçilen hizmet türüne bağlı olarak bir veya iki ek proje olabilir.
 
-Uygulama projesini oluşur:
+Uygulama Projesi şunlardan oluşur:
 
-* Uygulamanızı oluşturan Hizmetleri başvurular kümesi.
-* Üç yayımlama--varsayılan olarak bir küme uç noktası ve yükseltme dağıtımlarını gerçekleştirilip ilgili tercihleri gibi farklı ortamlarda çalışan tercihlerini korumak için kullanabileceğiniz profilleri (1 düğümlü yerel 5 düğümlü yerel ve bulut).
-* (Bir hizmet için oluşturulacak bölüm sayısı gibi bir ortama özgü uygulama yapılandırmaları sağlamak için kullanabileceğiniz aynı yukarıda) üç uygulama parametresi dosyaları. Bilgi edinmek için nasıl [birden çok ortam için uygulamanızı yapılandırma](service-fabric-manage-multiple-environment-app-configuration.md).
-* Komut satırından veya otomatikleştirilmiş bir sürekli tümleştirme ve dağıtım ardışık bir parçası olarak uygulamanızı dağıtmak için kullanabileceğiniz bir dağıtım betiği. Daha fazla bilgi edinin [PowerShell kullanarak dağıtmaya](service-fabric-deploy-remove-applications.md).
-* Uygulama bildirimi uygulamayı açıklar. Bildirim ApplicationPackageRoot klasörü altında bulabilirsiniz. Daha fazla bilgi edinin [uygulaması ve hizmet bildirimleri](service-fabric-application-model.md).
+* Uygulamanızı oluşturan hizmetlere yönelik bir dizi başvuru.
+* Bir küme uç noktasıyla ilgili Tercihler ve varsayılan olarak yükseltme dağıtımları yapıp gerçekleştirmeyeceğinizi gibi farklı ortamlarla çalışma tercihlerini sürdürmek için kullanabileceğiniz üç yayımlama profili (1 düğümlü yerel, 5 düğümlü yerel ve bulut).
+* Bir hizmet için oluşturulacak bölüm sayısı gibi, ortama özgü uygulama yapılandırmalarının bakımını yapmak için kullanabileceğiniz üç uygulama parametresi dosyası (yukarıdaki ile aynı). [Uygulamanızı birden çok ortam için nasıl yapılandıracağınızı](service-fabric-manage-multiple-environment-app-configuration.md)öğrenin.
+* Uygulamanızı komut satırından veya otomatik bir sürekli tümleştirme ve dağıtım işlem hattının parçası olarak dağıtmak için kullanabileceğiniz bir dağıtım betiği. [PowerShell kullanarak uygulama dağıtma](service-fabric-deploy-remove-applications.md)hakkında daha fazla bilgi edinin.
+* Uygulamayı açıklayan uygulama bildirimi. Bildirimi ApplicationPackageRoot klasörü altında bulabilirsiniz. [Uygulama ve hizmet bildirimleri](service-fabric-application-model.md)hakkında daha fazla bilgi edinin.
 
 
 
 ## <a name="learn-more-about-the-programming-models"></a>Programlama modelleri hakkında daha fazla bilgi edinin
-Service Fabric, yazma ve hizmetlerinizi yönetmek için birden çok yol sunar.  İşte genel bakış ve kavramsal bilgileri [durum bilgisiz ve durum bilgisi olan Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kapsayıcıları](service-fabric-containers-overview.md), [konuk tarafından yürütülebilir uygulama ](service-fabric-guest-executables-introduction.md), ve [durum bilgisiz ve durum bilgisi olan ASP.NET Core Hizmetleri](service-fabric-reliable-services-communication-aspnetcore.md).
+Service Fabric hizmetlerinizi yazmak ve yönetmek için birçok yol sunar.  Burada [durum bilgisiz ve durum bilgisi olmayan Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kapsayıcılar](service-fabric-containers-overview.md), [Konuk yürütülebilir dosyalar](service-fabric-guest-executables-introduction.md)ve durum [bilgisiz ve durum bilgisi olan ASP.NET Core hizmetleriyle](service-fabric-reliable-services-communication-aspnetcore.md)ilgili genel bilgiler ve
 
-## <a name="learn-about-service-communication"></a>Hizmet iletişim hakkında bilgi edinin
-Service Fabric uygulaması farklı Hizmetleri, burada her hizmeti özel bir görev gerçekleştirir oluşur. Bu hizmetlerin birbirleriyle iletişim kurabilir ve bağlanın ve hizmetlerle iletişim kuran istemci uygulamaları küme dışında olabilir. Bilgi nasıl [ile ve hizmetleriniz arasında iletişim ayarlama](service-fabric-connect-and-communicate-with-services.md) Service fabric'te. 
+## <a name="learn-about-service-communication"></a>Hizmet iletişimi hakkında bilgi edinin
+Service Fabric bir uygulama, her hizmetin özelleşmiş bir görev yaptığı farklı hizmetlerden oluşur. Bu hizmetler birbirleriyle iletişim kurabilir ve hizmetlerle bağlantı kuran ve hizmetlere iletişim kuran küme dışında istemci uygulamaları olabilir. Service Fabric [Hizmetleri ile ve arasında iletişim](service-fabric-connect-and-communicate-with-services.md) kurma hakkında bilgi edinin. 
 
-## <a name="learn-about-configuring-application-security"></a>Uygulama güvenliği yapılandırma hakkında bilgi edinin
-Kümedeki farklı bir kullanıcı hesabı altında çalışan uygulamaların güvenliğini sağlayabilirsiniz. Service Fabric uygulamaları tarafından kullanıcı hesaplarını altında--dağıtım zamanında örneğin kullanılan kaynaklar, dosyaları, dizinleri ve sertifikaları güvenli yardımcı olur. Bu çalışan uygulamalar da paylaşılan bir barındırılan ortamda, diğerinden daha güvenli hale getirir.  Bilgi edinmek için nasıl [uygulamanıza yönelik güvenlik ilkeleri yapılandırma](service-fabric-application-runas-security.md).
+## <a name="learn-about-configuring-application-security"></a>Uygulama güvenliğini yapılandırma hakkında bilgi edinin
+Kümede çalışan uygulamaların farklı Kullanıcı hesapları altında güvenli hale getirebilirsiniz. Service Fabric Ayrıca, uygulamalar tarafından Kullanıcı hesapları (örneğin, dosyalar, dizinler ve sertifikalar) altında dağıtım sırasında kullanılan kaynakların korunmasına yardımcı olur. Bu, paylaşılan barındırılan bir ortamda bile çalışan uygulamaları diğerinden daha güvenli hale getirir.  [Uygulamanız için güvenlik ilkelerini yapılandırma](service-fabric-application-runas-security.md)hakkında bilgi edinin.
 
-Uygulamanızı depolama bağlantı dizeleri, parolalar veya düz metin olarak işleneceğini değil diğer değerleri gibi hassas bilgiler içerebilir. Bilgi edinmek için nasıl [uygulamanızdaki gizli dizileri Yönet](service-fabric-application-secret-management.md).
+Uygulamanız, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi hassas bilgiler içerebilir. [Uygulamanızdaki gizli dizileri yönetmeyi](service-fabric-application-secret-management.md)öğrenin.
 
 ## <a name="learn-about-the-application-lifecycle"></a>Uygulama yaşam döngüsü hakkında bilgi edinin
-Diğer platformlar ile Service Fabric uygulaması genellikle aşağıdaki aşamaları geçtikçe: tasarım, geliştirme, test, dağıtım, yükseltme, Bakım ve kaldırma. [Bu makalede](service-fabric-application-lifecycle.md) API'leri ve Service Fabric uygulama yaşam döngüsünün aşamaları boyunca farklı rolleri tarafından nasıl kullanıldıkları hakkında genel bir bakış sağlar.
+Diğer platformlarda olduğu gibi, bir Service Fabric uygulama genellikle şu aşamalardan geçer: tasarım, geliştirme, test, dağıtım, yükseltme, bakım ve kaldırma. [Bu makalede](service-fabric-application-lifecycle.md) , API 'lerin yanı sıra Service Fabric uygulama yaşam döngüsünün aşamaları boyunca farklı roller tarafından nasıl kullanıldıkları hakkında genel bakış sunulmaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure'da bir Windows kümesi oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-- Dağıtılmış uygulamalar ve fiziksel düzenini dahil olmak üzere kümenizi görselleştirme [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-- [Sürüm ve hizmetlerinizi yükseltme](service-fabric-application-upgrade-tutorial.md)
+- [Azure 'da bir Windows kümesi oluşturun](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+- [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)ile dağıtılmış uygulamalar ve fiziksel düzen dahil olmak üzere kümenizi görselleştirin.
+- [Hizmetlerinizi sürüm ve yükseltme](service-fabric-application-upgrade-tutorial.md)
 
 

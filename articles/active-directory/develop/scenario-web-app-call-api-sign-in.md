@@ -1,6 +1,6 @@
 ---
-title: Oturum kapatma sırasında hesapları önbellekten kaldırma-Microsoft Identity platform | Mavisi
-description: Oturum kapatma sırasında belirteç önbelleğinden hesap kaldırmayı öğrenin
+title: Oturum açma sırasında belirteç önbelleğinden hesapları kaldırma-Microsoft Identity platform | Mavisi
+description: Oturum kapatma sırasında bir hesabı belirteç önbelleğinden kaldırma hakkında bilgi edinin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423501"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Genel oturum açma sırasında önbellekten hesapları kaldır
 
@@ -38,7 +38,7 @@ Bu mekanizma, [WebAppServiceCollectionExtensions. cs # L151-L157](https://github
 
 Uygulamanız için kaydettiğiniz **oturum kapatma URL 'si** , çoklu oturum kapatma uygulamanıza olanak sağlar. Microsoft Identity platform `logout` uç noktası, uygulamanıza kayıtlı **oturum kapatma URL** 'sini çağıracaktır. Bu çağrı, oturum kapatma Web uygulamanızdan veya başka bir Web uygulamasından ya da tarayıcıdan başlatılmışsa oluşur. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](v2-protocols-oidc.md#single-sign-out).
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

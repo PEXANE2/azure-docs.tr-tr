@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436805"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft eşlemesi üzerinde siteden siteye VPN yapılandırma
 
@@ -130,7 +130,7 @@ IPSec tünel çifti özel ağ yollarını gönderip almak bir eBGP oturumu kurul
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Azure Resource Manager şablonu örnekleri hakkında
 
-Örneklerde, VPN ağ geçidi ve IPSec tüneli sonlandırmalar bir Azure Resource Manager şablonu kullanarak yapılandırılır. Resource Manager şablonlarını kullanarak yeni ya da Resource Manager şablonu temel anlamak için bkz: [yapısını ve Azure Resource Manager şablonları söz dizimini anlamak](../azure-resource-manager/resource-group-authoring-templates.md). Bu bölümde şablonda bir sıfırdan oluşturur Azure ortamı (VNet). Bununla birlikte, mevcut bir sanal ağ varsa, bu şablonda başvurabilirsiniz. VPN ağ geçidi IPSec/IKE siteden siteye yapılandırmalarla ilgili bilgi sahibi değilseniz bkz [bir siteden siteye bağlantı oluşturma](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+Örneklerde, VPN ağ geçidi ve IPSec tüneli sonlandırmalar bir Azure Resource Manager şablonu kullanarak yapılandırılır. Resource Manager şablonlarını kullanarak yeni ya da Resource Manager şablonu temel anlamak için bkz: [yapısını ve Azure Resource Manager şablonları söz dizimini anlamak](../azure-resource-manager/templates/template-syntax.md). Bu bölümde şablonda bir sıfırdan oluşturur Azure ortamı (VNet). Bununla birlikte, mevcut bir sanal ağ varsa, bu şablonda başvurabilirsiniz. VPN ağ geçidi IPSec/IKE siteden siteye yapılandırmalarla ilgili bilgi sahibi değilseniz bkz [bir siteden siteye bağlantı oluşturma](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
 >Bu yapılandırmayı oluşturmak için Azure Resource Manager şablonlarını kullanma gerekmez. Azure portalı veya PowerShell kullanarak bu yapılandırmayı oluşturabilirsiniz.

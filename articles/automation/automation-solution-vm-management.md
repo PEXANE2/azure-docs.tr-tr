@@ -2,19 +2,15 @@
 title: VM'leri çalışma saatleri dışında başlat/durdur çözümü
 description: Bu VM yönetimi çözümü, Azure Izleyici günlüklerinden Azure Resource Manager sanal makinelerinizi bir zamanlamaya göre ve proaktif bir izleyiciden başlatır ve sonlandırır.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420802"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında başlat/durdur çözümü
 
@@ -41,7 +37,7 @@ Geçerli çözümle ilgili sınırlamalar aşağıda verilmiştir:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu çözüme yönelik runbook 'lar bir [Azure farklı çalıştır hesabıyla](automation-create-runas-account.md)çalışır. Bu, kullanım dışı veya sıklıkla değişebilir bir parola yerine sertifika kimlik doğrulaması kullandığından, farklı çalıştır hesabı tercih edilen kimlik doğrulama yöntemidir.
 
@@ -109,7 +105,7 @@ VM'leri çalışma saatleri dışında başlat/durdur çözümünü Otomasyon he
 
 2. Seçili çözümün **VM'leri çalışma saatleri dışında Başlat/Durdur** sayfasında, Özet bilgilerini gözden geçirin ve ardından **Oluştur**' a tıklayın.
 
-   ![Azure portalı](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. **Çözüm Ekle** sayfası görüntülenir. Çözümü Otomasyon aboneliğinize aktarmadan önce yapılandırmanız istenir.
 
@@ -309,7 +305,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |JobId | Runbook işinin KIMLIĞI olan GUID.|
 |operationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur.|
 |resourceId | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
-|adlı yönetilen örnek, | Runbook işine ait kaynak grubunun adını belirtir.|
+|ResourceGroup | Runbook işine ait kaynak grubunun adını belirtir.|
 |ResourceProvider | Dağıtıp yönetebileceğiniz kaynakları sağlayan Azure hizmetini belirtir. Otomasyon için değer, Azure Otomasyonu olacaktır.|
 |ResourceType | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
 |resultType | Runbook işinin durumudur. Olası değerler şunlardır:<br>- Başlatıldı<br>- Durduruldu<br>- Askıya alındı<br>- Başarısız oldu<br>- Başarılı oldu|
@@ -317,7 +313,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |RunbookName | Runbook’un adını belirtir.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır|
 |StreamType | Olay türünü belirtir. Olası değerler şunlardır:<br>- Ayrıntılı<br>- Çıktı<br>- Hata<br>- Uyarı|
-|kaynak grubundaki | İşin abonelik kimliğini belirtir.
+|SubscriptionId | İşin abonelik kimliğini belirtir.
 |Zaman | Runbook işinin yürütüldüğü tarih ve saat.|
 
 ### <a name="job-streams"></a>İş akışları
@@ -328,7 +324,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |Kategori | Veri türü sınıflandırması. Otomasyon için değer JobStreams olacaktır.|
 |JobId | Runbook işinin KIMLIĞI olan GUID.|
 |operationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur.|
-|adlı yönetilen örnek, | Runbook işine ait kaynak grubunun adını belirtir.|
+|ResourceGroup | Runbook işine ait kaynak grubunun adını belirtir.|
 |resourceId | Azure 'da kaynak KIMLIĞINI belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
 |ResourceProvider | Dağıtıp yönetebileceğiniz kaynakları sağlayan Azure hizmetini belirtir. Otomasyon için değer, Azure Otomasyonu olacaktır.|
 |ResourceType | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|

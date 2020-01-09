@@ -5,25 +5,22 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a46be5dea8286194ccd2558b2e6e301e2624a5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460200"
 ---
 # <a name="connect-with-the-macos-client"></a>macOS istemcisiyle bağlanma
 
 > Uygulama hedefi: macOS 10,12 veya üzeri
 
->[!NOTE]
-> MacOS istemcisinden Windows sanal masaüstü kaynaklarına erişme özelliği şu anda önizlemede kullanılabilir.
-
 Windows sanal masaüstü kaynaklarına, macOS cihazlarınızdan indirilebilir istemcimizi kullanarak erişebilirsiniz. Bu kılavuz, istemcisini nasıl ayarlayacağınızı bildirir.
 
-## <a name="install-the-client"></a>İstemciyi yükler
+## <a name="install-the-client"></a>İstemciyi yükleme
 
 Başlamak için [indirin](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) ve Istemciyi MacOS cihazınıza yükleyin.
 

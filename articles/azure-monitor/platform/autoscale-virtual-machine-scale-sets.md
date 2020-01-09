@@ -1,68 +1,64 @@
 ---
-title: Azure sanal Makineler'i kullanarak gelişmiş otomatik ölçeklendirme
-description: Resource Manager ve VM ölçek kümeleri ile birden çok kural ve e-posta gönderin ve ölçek eylemleri ile Web kancası URL'leri çağrı profilleri kullanır.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Azure sanal makinelerini kullanarak gelişmiş otomatik ölçeklendirme
+description: ", E-posta gönderen ve ölçek eylemleriyle Web kancası URL 'Lerini çağıran birden çok kural ve profille Kaynak Yöneticisi ve VM Ölçek Kümeleri kullanır."
 ms.topic: conceptual
 ms.date: 02/22/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364229"
 ---
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM ölçek kümeleri için Resource Manager şablonlarını kullanarak gelişmiş otomatik ölçeklendirme yapılandırması
-Ölçek daraltma ve sanal makine ölçek kümelerinde yinelenen bir zamanlamaya göre veya belirli bir tarihe göre performans ölçüm eşiklere dayanarak genişleme kullanabilirsiniz. Ölçek eylemleri için e-posta ve Web kancası bildirimleri de yapılandırabilirsiniz. Bu kılavuzda, bir VM ölçek kümesi'nde bir Resource Manager şablonu kullanarak bu nesneleri yapılandırma örneği gösterilir.
+# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Ölçek Kümeleri için Kaynak Yöneticisi şablonları kullanarak gelişmiş otomatik ölçeklendirme yapılandırması
+Performans ölçümü eşiklerine, yinelenen bir zamanlamaya göre veya belirli bir tarihe göre sanal makine ölçek kümelerinde ölçeklendirebilir ve genişleme yapabilirsiniz. Ayrıca, ölçek eylemleri için e-posta ve Web kancası bildirimleri de yapılandırabilirsiniz. Bu izlenecek yol, bir VM Ölçek kümesindeki bir Kaynak Yöneticisi şablonu kullanarak tüm bu nesneleri yapılandırmaya ilişkin bir örnek gösterir.
 
 > [!NOTE]
-> Bu izlenecek yol, sanal makine ölçek kümeleri için adımlar açıklanmaktadır, ancak aynı bilgiyi otomatik ölçeklendirme için geçerlidir. [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/), ve [APIManagementHizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Bir basit performans ölçümü CPU gibi basit bir ölçek daraltma veya genişletme ayarını bir VM ölçek kümesi bağlı için başvurmak [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) ve [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) belgeleri
+> Bu kılavuzda VM Ölçek Kümeleri için adımlar açıklanmakta ancak aynı bilgiler, CPU gibi basit bir performans ölçüsüne bağlı olarak bir VM Ölçek kümesindeki basit bir ölçek genişletme/genişletme ayarı için otomatik ölçeklendirme [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Için de geçerlidir. [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) ve [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) belgelerine bakın
 >
 >
 
 ## <a name="walkthrough"></a>Kılavuz
-Bu kılavuzda kullandığımız [Azure kaynak Gezgini](https://resources.azure.com/) yapılandırmak ve bir ölçek kümesini otomatik ölçeklendirme ayarını güncelleştirmek için. Azure kaynak Gezgini, Resource Manager şablonları aracılığıyla Azure kaynaklarını yönetmek için kolay bir yoludur. Azure kaynak Gezgini aracı yeniyseniz okuma [bu giriş](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
+Bu kılavuzda, bir ölçek kümesi için otomatik ölçeklendirme ayarını yapılandırmak ve güncellemek üzere [Azure Kaynak Gezgini](https://resources.azure.com/) kullanırız. Azure Kaynak Gezgini, Azure kaynaklarını Kaynak Yöneticisi şablonları aracılığıyla yönetmenin kolay bir yoludur. Azure Kaynak Gezgini araç ' i yeni kullanıyorsanız, [Bu tanıtımı](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)okuyun.
 
-1. Yeni bir ölçek kümesi bir temel otomatik ölçeklendirme ayarı ile dağıtın. Bu makalede bir sahip bir Windows Azure hızlı başlangıç Galerisi kullanan bir temel otomatik ölçeklendirme şablonla ölçek kümesi. Linux ölçek kümeleri aynı şekilde çalışır.
-2. Ölçek kümesi oluşturulduktan sonra Azure kaynak Gezgini'nde ölçek kümesi kaynağına gidin. Aşağıdaki Microsoft.Insights düğümü altında görürsünüz.
+1. Temel bir otomatik ölçeklendirme ayarıyla yeni bir ölçek kümesi dağıtın. Bu makalede, temel bir otomatik ölçeklendirme şablonuyla Windows ölçek kümesine sahip olan Azure hızlı başlangıç galerisindeki bir tane kullanılmaktadır. Linux ölçek kümeleri aynı şekilde çalışır.
+2. Ölçek kümesi oluşturulduktan sonra, Azure Kaynak Gezgini ölçek kümesi kaynağına gidin. Microsoft. Insights düğümü altında aşağıdakileri görürsünüz.
 
     ![Azure Gezgini](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
-    Şablon yürütme varsayılan otomatik ölçeklendirme ayarı adı ile oluşturduğu **'autoscalewad'** . Sağ tarafta, bu otomatik ölçeklendirme ayarı tam tanımı görüntüleyebilirsiniz. Bu durumda, varsayılan otomatik ölçeklendirme ayarında bir CPU tabanlı % genişletmek ve ölçeğini kuralı ile birlikte gelir.  
+    Şablon yürütme, **' otomatik ölçeklendirme '** adlı varsayılan bir otomatik ölçek ayarı oluşturdu. Sağ tarafta, bu otomatik ölçeklendirme ayarının tam tanımını görebilirsiniz. Bu durumda, varsayılan otomatik ölçeklendirme ayarı CPU% tabanlı genişleme ve ölçek genişletme kuralıyla birlikte gelir.  
 
-3. Artık daha fazla profilleri ve zamanlama veya özel gereksinimlerinize dayalı kurallar da ekleyebilirsiniz. Üç profil ile bir otomatik ölçeklendirme ayarı oluştururuz. Profiller ve otomatik ölçeklendirme kuralları anlamak için gözden [otomatik ölçeklendirme en iyi](autoscale-best-practices.md).  
+3. Artık zamanlamaya veya belirli gereksinimlere göre daha fazla profil ve kural ekleyebilirsiniz. Üç profille bir otomatik ölçeklendirme ayarı oluşturacağız. Otomatik ölçeklendirme profilleri ve kurallarını anlamak için [Otomatik ölçek En Iyi yöntemlerini](autoscale-best-practices.md)gözden geçirin.  
 
-    | Profiller ve kurallar | Açıklama |
+    | Profiller & kuralları | Açıklama |
     |--- | --- |
     | **Profil** |**Performans/ölçüm tabanlı** |
-    | Kural |Service Bus kuyruk ileti sayısı > x |
-    | Kural |Service Bus kuyruk ileti sayısı < y |
-    | Kural |CPU % > n |
-    | Kural |CPU % < p |
-    | **Profil** |**Haftanın günü sabah saat (kuralları yok)** |
-    | **Profil** |**Ürün Lansman günü (kuralları yok)** |
+    | Kural |Service Bus kuyruk Iletisi sayısı > x |
+    | Kural |Service Bus kuyruğu Ileti sayısı < y |
+    | Kural |CPU% > n |
+    | Kural |CPU% < p |
+    | **Profil** |**Hafta içi sabah saatleri (kural yok)** |
+    | **Profil** |**Ürün başlatma günü (kural yok)** |
 
-4. Bu kılavuz için kullandığımız kuramsal bir ölçeklendirme senaryo aşağıda verilmiştir.
+4. Bu izlenecek yol için kullandığımız kuramsal bir ölçeklendirme senaryosu aşağıda verilmiştir.
 
-   * **Temel yük** - veya ölçeklendirme my ölçek set.* üzerinde barındırılan Uygulamam yükü göre istiyorum
-   * **İleti sırası boyutu** -Service Bus kuyruğuna gelen iletiler için uygulamama kullanabilirim. Ben sıranın ileti sayısı ve CPU % kullanın ve ileti sayısı ya da CPU değerse eşiği bir ölçeklendirme eylemi tetiklemek için bir varsayılan profili yapılandırın.\*
-   * **Haftanın günü ve günün saati** -'Haftanın günü sabah saat' adlı bir haftalık yineleme 'zaman günün' temel profil istiyorum. Geçmiş verilerini temel alarak belirli sayıda sanal makine örneğini bu süre boyunca my uygulamanın yükü işlemek daha iyi biliyorum.\*
-   * **Özel tarih** -'Başlat ürün Day' profili ekledim. Uygulamamın son pazarlama duyuruları ve sizi yeni ürün uygulamada yerleştirdiğinizde yükü işlemek hazır olması için miyim belirli tarihleri için önceden planlayın.\*
-   * *Son iki profilleri diğer performans ölçümü tabanlı kuralların bunları da olabilir. Bu durumda, bir yok karar ve bunun yerine varsayılan performans ölçümü üzerinde yararlanmayı kurallarına göre. Kurallar yinelenen ve tarih temelli profilleri için isteğe bağlıdır.*
+   * **Yük temelinde** , ölçek kümesinde barındırılan uygulamamdaki yüküne göre veya genişletmek istiyorum. *
+   * **Ileti kuyruğu boyutu** -uygulamama gelen iletiler Için Service Bus kuyruğu kullanıyorum. Kuyruğun ileti sayısını ve% CPU 'sunu kullanıyorum ve ileti sayısı veya CPU herhangi biri eşiğin üzerinde olursa bir ölçeklendirme eylemi tetiklemek için varsayılan bir profil yapılandırın.\*
+   * **Haftanın saati ve günü** -gün içinde ' günü sabah saat ' olarak adlandırılan bir haftalık yinelenen ' saat ' ı istiyorum. Geçmiş verilere bağlı olarak, bu süre boyunca uygulamamın yükünü işlemek için belirli sayıda sanal makine örneği sağlamak daha iyi olduğunu biliyorum.\*
+   * **Özel tarihler** -' ürün başlatma günü ' profili ekledim. Uygulamamın yük son pazarlama bildirilerini işlemeye ve uygulamaya yeni bir ürün yerleştirdiğimiz zaman belirli tarihlere göre planlıyorum.\*
+   * *Son iki profil, bunlar içinde diğer performans ölçümü tabanlı kurallara da sahip olabilir. Bu durumda, varsayılan performans ölçümü tabanlı kurallara göre değil, bir tane olmamaya karar verdim. Kurallar, yinelenen ve Tarih tabanlı profiller için isteğe bağlıdır.*
 
-     Otomatik ölçeklendirme altyapısı önceliklendirilmesi profilleri ve kuralları yakalanan ayrıca [otomatik ölçeklendirme en iyi](autoscale-best-practices.md) makalesi.
-     Otomatik ölçeklendirme için genel ölçümler bir listesi için bakın [otomatik ölçeklendirme için genel ölçümler](autoscale-common-metrics.md)
+     Otomatik ölçeklendirme motorunun profillerin ve kuralların öncelik belirlemesi, [Otomatik ölçeklendirme en iyi uygulamalar](autoscale-best-practices.md) makalesinde de yakalanır.
+     Otomatik ölçeklendirme için ortak ölçümlerin bir listesi için, [Otomatik ölçeklendirme Için ortak ölçümleri](autoscale-common-metrics.md) inceleyin
 
-5. Emin olun, bulunduğunuz **okuma/yazma** modunda kaynak Gezgini
+5. Kaynak Gezgini **okuma/yazma** modunda olduğunuzdan emin olun
 
-    ![Autoscalewad, varsayılan otomatik ölçeklendirme ayarı](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
+    ![Otomatik ölçek wad, varsayılan otomatik ölçeklendirme ayarı](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
-6. Düzenle'ye tıklayın. **Değiştirin** aşağıdaki yapılandırma ile otomatik ölçeklendirme ayarını 'profillerini' öğesinde:
+6. Düzenle‘ye tıklayın. Otomatik ölçeklendirme ayarında bulunan ' profiles ' öğesini aşağıdaki yapılandırmayla **değiştirin** :
 
-    ![Profilleri](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![profiles](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {
@@ -194,14 +190,14 @@ Bu kılavuzda kullandığımız [Azure kaynak Gezgini](https://resources.azure.c
             }
           }
     ```
-    Desteklenen alanlar ve bunların değerleri için bkz. [otomatik ölçeklendirmeyi REST API belgelerini](https://msdn.microsoft.com/library/azure/dn931928.aspx). Artık, otomatik ölçeklendirme ayarı, daha önce açıklanan üç profil içerir.
+    Desteklenen alanlar ve değerleri için bkz. [Otomatik ölçeklendirme REST API belgeleri](https://msdn.microsoft.com/library/azure/dn931928.aspx). Artık otomatik ölçeklendirme ayarınız, daha önce açıklanan üç profili içerir.
 
-7. Son olarak, otomatik ölçeklendirme sırasında Ara **bildirim** bölümü. Otomatik ölçeklendirme bildirimleri ölçek genişletme sırasında üç şey yapmanıza olanak sağlar veya eylem başarıyla tetiklendi.
-   - Bildirim Yöneticisi ve ortak Yöneticiler aboneliğinizin
-   - Kullanıcı e-posta
-   - Bir Web kancası çağrısı tetikleyin. Tetiklendiğinde, bu Web kancasını otomatik ölçeklendirme durumu hakkındaki meta verileri gönderir ve ölçek kümesi kaynak. Otomatik ölçeklendirme Web kancası yükü hakkında daha fazla bilgi için bkz: [Web kancası yapılandırma & e-posta bildirimleri için otomatik ölçeklendirme](autoscale-webhook-email.md).
+7. Son olarak, otomatik ölçeklendirme **bildirimi** bölümüne bakın. Otomatik ölçeklendirme bildirimleri, bir genişleme veya bir işlem sırasında başarıyla tetiklendiğinde üç şey yapmanızı sağlar.
+   - Aboneliğinizin yöneticisine ve ortak yöneticilerine bildirim gönderin
+   - Bir kullanıcı kümesini e-postayla gönderin
+   - Web kancası çağrısını tetikleyin. Bu Web kancası tetiklendiğinde, otomatik ölçeklendirme koşulunun ve ölçek kümesi kaynağıyla ilgili meta verileri gönderir. Otomatik ölçeklendirme Web kancasının yükü hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme Için Web kancası & e-posta bildirimleri](autoscale-webhook-email.md)
 
-   Otomatik ölçeklendirme ayarı değiştirmek için aşağıdakileri ekleyin, **bildirim** değeri null olan bir öğe
+   Değer null olan **bildirim** öğesini değiştiren otomatik ölçeklendirme ayarına aşağıdakini ekleyin
 
    ```
    "notifications": [
@@ -229,23 +225,23 @@ Bu kılavuzda kullandığımız [Azure kaynak Gezgini](https://resources.azure.c
 
    ```
 
-   İsabet **Put** otomatik ölçeklendirme ayarını güncelleştirmek için kaynak Gezgini'nde düğmesi.
+   Otomatik ölçeklendirme ayarını güncelleştirmek için Kaynak Gezgini ' de **PUT** düğmesine basın.
 
-Bir VM ölçek birden çok ölçek profilini içerir ve bildirimleri ölçeklendirme kümesi bir otomatik ölçeklendirme ayarında güncelleştirdik.
+Bir VM Ölçek kümesinde birden çok ölçek profili ve ölçek bildirimleri içerecek şekilde bir otomatik ölçeklendirme ayarını güncelleştirmiş olursunuz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Otomatik ölçeklendirme hakkında daha fazla bilgi için şu bağlantıları kullanın.
+Otomatik ölçeklendirme hakkında daha fazla bilgi edinmek için bu bağlantıları kullanın.
 
-[Sanal makine ölçek kümeleri ile otomatik ölçeklendirme sorunlarını giderme](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+[Sanal makine ölçek kümeleriyle otomatik ölçeklendirme sorunlarını giderme](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
 [Otomatik ölçeklendirme için genel ölçümler](autoscale-common-metrics.md)
 
 [Azure otomatik ölçeklendirme için en iyi uygulamalar](autoscale-best-practices.md)
 
-[Otomatik ölçeklendirmeyi PowerShell kullanarak yönetme](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[PowerShell kullanarak otomatik ölçeklendirmeyi yönetme](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 
-[Otomatik ölçeklendirme CLI kullanarak yönetme](cli-samples.md#autoscale)
+[CLı kullanarak otomatik ölçeklendirmeyi yönetme](cli-samples.md#autoscale)
 
-[Web kancası ve otomatik ölçeklendirme için e-posta bildirimlerini yapılandırma](autoscale-webhook-email.md)
+[Otomatik ölçeklendirme için Web kancası & e-posta bildirimlerini yapılandırma](autoscale-webhook-email.md)
 
-[Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings) şablon başvurusu
+[Microsoft. Insights/oto scalesettings](/azure/templates/microsoft.insights/autoscalesettings) şablon başvurusu

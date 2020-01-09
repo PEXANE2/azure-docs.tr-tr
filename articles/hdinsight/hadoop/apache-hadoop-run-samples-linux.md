@@ -1,81 +1,80 @@
 ---
-title: -Azure HDInsight üzerinde Apache Hadoop MapReduce örneklerini çalıştırma
-description: Jar dosyalarını dahil HDInsight MapReduce örneklerini kullanarak başlayın. Kümeye bağlanmak için SSH kullanın ve ardından örnek işlerini çalıştırmak için Hadoop komutunu kullanın.
-keywords: Örnek jar hadoop, hadoop örnekler jar, hadoop mapreduce örneklerini, mapreduce örnekleri
+title: HDInsight 'ta Apache Hadoop MapReduce örnekleri çalıştırma-Azure
+description: HDInsight 'ta bulunan jar dosyalarında MapReduce örneklerini kullanmaya başlayın. Kümeye bağlanmak için SSH kullanın ve ardından örnek işleri çalıştırmak için Hadoop komutunu kullanın.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/12/2019
+ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706672"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435744"
 ---
-# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Dahil HDInsight MapReduce örneklerini çalıştırma
+# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight 'ta bulunan MapReduce örneklerini çalıştırma
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-HDInsight üzerinde Apache Hadoop ile sunulan MapReduce örneklerini çalıştırma hakkında bilgi edinin.
+HDInsight üzerinde Apache Hadoop eklenen MapReduce örneklerini çalıştırmayı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight üzerinde Apache Hadoop kümesi. Bkz: [Linux'ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
+* HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>MapReduce örnekleri
 
-**Konum**: Örnekleri HDInsight kümesinde bulunan `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+Örnekler `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`HDInsight kümesinde bulunur. Bu örnekler için kaynak kodu `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`adresindeki HDInsight kümesinde bulunur.
 
-**İçeriği**: Aşağıdaki örnekler, bu Arşiv'de yer almaktadır:
+Aşağıdaki örnekler bu arşivde yer alır:
 
-* `aggregatewordcount`: Toplam giriş dosyaları sözcükleri sayar mapreduce programını temel.
-* `aggregatewordhist`: Toplam giriş dosyaları bir kelimelerin histogram hesaplayan bir mapreduce programını temel.
-* `bbp`: Pi sayısının tam basamak sayısını hesaplamak için Bailey Borwein Plouffe kullanan bir mapreduce programını.
-* `dbcount`: Bir veritabanında depolanan sayfa görüntülemesi günlükleri sayan bir örnek iş.
-* `distbbp`: Pi tam bitlerini işlem BBP türü formülü kullanan bir mapreduce programını.
-* `grep`: Girişteki bir regex eşleşmeleri sayan bir mapreduce programını.
-* `join`: Bir işi sıralanmış, eşit olarak bölünmüş veri kümeleri üzerinde birleştirme gerçekleştirir.
-* `multifilewc`: Bir iş birden fazla dosyalardan sözcükleri sayar.
-* `pentomino`: Bir mapreduce pentomino sorunlara çözümler bulmak için program yerleştirme Döşe.
-* `pi`: Pi benzeri bir Monte kullanarak tahminleri bir mapreduce programını Carlo yöntemi.
-* `randomtextwriter`: Rastgele metin verileri düğüm başına 10 GB Yazar mapreduce programını.
-* `randomwriter`: Düğüm başına rastgele veri 10 GB Yazar mapreduce programını.
-* `secondarysort`: Bir örnek azaltma aşamasına ikincil sıralama tanımlama.
-* `sort`: Rastgele yazıcı tarafından yazılan veri sıralayan bir mapreduce programını.
-* `sudoku`: Bir sudoku Çözücü.
-* `teragen`: Terasort için veriler oluşturur.
-* `terasort`: Terasort çalıştırın.
-* `teravalidate`: Terasort sonuçlarını denetleniyor.
-* `wordcount`: Giriş dosyaları sözcükleri sayar mapreduce programını.
-* `wordmean`: Giriş dosyaları bir kelimelerin ortalama süresi sayan bir mapreduce programını.
-* `wordmedian`: Giriş dosyaları bir kelimelerin ORTANCA uzunluğu sayan bir mapreduce programını.
-* `wordstandarddeviation`: Giriş dosyaları bir kelimelerin uzunluğu standart sapmasını hesaplar mapreduce programını.
+|Örnek |Açıklama |
+|---|---|
+|aggregatewordcount|Giriş dosyalarındaki sözcükleri sayar.|
+|aggregatewordhist|Giriş dosyalarındaki sözcüklerin histogramını hesaplar.|
+|barp|Pi 'nin tam rakamlarını hesaplamak için Bailey-Borwein-Plouffe kullanır.|
+|dbcount|Veritabanında depolanan sayfa görüntülemesi günlüklerini sayar.|
+|distbbp|Tam Pi bitlerini hesaplamak için BBP türünde bir formül kullanır.|
+|grep|Girişte bir Regex ile eşleşen eşleşmeleri sayar.|
+|join|Sıralanmış, eşit olarak bölümlenmiş veri kümeleri üzerinde bir JOIN gerçekleştirir.|
+|mulalliwc|Birkaç dosyadan sözcükleri sayar.|
+|pentomino dili|Pentomino sorunlarına çözüm bulmak için kutucuk yerleştirme programı.|
+|PI|Bir dörde-Monte Carlo yöntemi kullanarak Pi tahminleri yapın.|
+|rasgeletextwriter|Düğüm başına 10 GB 'lık rastgele metin verisi yazar.|
+|Rastgele yazıcı|Düğüm başına 10 GB rastgele veri yazar.|
+|ikincil sıralama|Azaltma aşamasında ikinci sıralamayı tanımlar.|
+|sırala|Rastgele yazıcı tarafından yazılan verileri sıralar.|
+|sudoku|Bir sudoku çözücü.|
+|teragen|Terasort için veri oluşturma.|
+|terasort|Terasort çalıştırın.|
+|teravalidate|Terasort sonuçları denetleniyor.|
+|WORDCOUNT|Giriş dosyalarındaki sözcükleri sayar.|
+|wordortalama|Giriş dosyalarındaki sözcüklerin ortalama uzunluğunu sayar.|
+|wordortanca|Giriş dosyalarındaki sözcüklerin ortanca uzunluğunu sayar.|
+|wordstandardsapması|Giriş dosyalarındaki sözcüklerin uzunluğunun standart sapmasını sayar.|
 
-**Kaynak kodu**: Bu örnekler için kaynak kodu dahil HDInsight kümesinde `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+## <a name="run-the-wordcount-example"></a>WORDCOUNT örneğini çalıştırma
 
-## <a name="run-the-wordcount-example"></a>Wordcount örneği çalıştırma
-
-1. SSH kullanarak HDInsight için bağlanın. Değiştirin `CLUSTER` kümenizin adını ve ardından aşağıdaki komutu girin:
+1. SSH kullanarak HDInsight 'a bağlanın. `CLUSTER`, kümenizin adıyla değiştirin ve aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Gelen `username@#######:~$` isteminde, örneklerini listelemek için aşağıdaki komutu kullanın:
+2. SSH oturumunda, örnekleri listelemek için aşağıdaki komutu kullanın:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    Bu komut, bu belgenin önceki bölümdeki örnek listesi oluşturur.
+    Bu komut, bu belgenin önceki bölümündeki örnek listesini oluşturur.
 
-3. Belirli bir örneği temel Yardım almak için aşağıdaki komutu kullanın. Bu durumda, **wordcount** örnek:
+3. Belirli bir örnek hakkında yardım almak için aşağıdaki komutu kullanın. Bu durumda, **WORDCOUNT** örneği:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
@@ -83,45 +82,47 @@ HDInsight üzerinde Apache Hadoop ile sunulan MapReduce örneklerini çalıştı
 
     Şu iletiyi alırsınız:
 
-        Usage: wordcount <in> [<in>...] <out>
+    ```output
+    Usage: wordcount <in> [<in>...] <out>
+    ```
 
-    Bu ileti, çeşitli giriş yollarından kaynak belgeler sağlayabilirsiniz gösterir. ' % S'çıkış (sayısı kaynak belgelerde bir kelimelerin) depolandığı son yoludur.
+    Bu ileti, kaynak belgeler için birkaç giriş yolu sağlayabileceğini belirtir. Son yol, çıktının (kaynak belgelerindeki sözcüklerin sayısı) depolandığı yerdir.
 
-4. Not defterleri, Leonardo da kümenizle örnek veri olarak sağlanan Vinci, tüm sözcükleri saymak için aşağıdakileri kullanın:
+4. Kümenizle örnek veriler olarak sunulan Leonardo da Vinci Not defterlerindeki tüm sözcükleri saymak için aşağıdakileri kullanın:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Bu iş öğesinden okumak için giriş `/example/data/gutenberg/davinci.txt`. Bu örnekte depolanan çıktısı `/example/data/davinciwordcount`. Yerel dosya sistemine değil küme için varsayılan depolama alanı her iki yol bulunur.
+    Bu işin girişi `/example/data/gutenberg/davinci.txt`okundu. Bu örneğin çıktısı `/example/data/davinciwordcount`depolanır. Her iki yol da yerel dosya sistemi değil, küme için varsayılan depolamada bulunur.
 
    > [!NOTE]  
-   > Wordcount örneği için Yardım'a belirtildiği gibi birden fazla giriş dosyası da belirtebilirsiniz. Örneğin, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` davinci.txt hem ulysses.txt sözcükleri sayar.
+   > WORDCOUNT örneği için yardım 'da belirtildiği gibi, birden çok giriş dosyası da belirtebilirsiniz. Örneğin, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` hem DaVinci. txt hem de Ulysses. txt içindeki kelimeleri sayırdı.
 
-5. İş tamamlandığında, çıkışı görüntülemek için aşağıdaki komutu kullanın:
+5. İş tamamlandıktan sonra çıktıyı görüntülemek için aşağıdaki komutu kullanın:
 
     ```bash
     hdfs dfs -cat /example/data/davinciwordcount/*
     ```
 
-    Bu komut iş tarafından üretilen tüm çıktı dosyaları art arda ekler. Bu, konsola çıkışı görüntüler. Çıktı aşağıdaki metne benzer:
+    Bu komut, iş tarafından üretilen tüm çıktı dosyalarını birleştirir. Çıktıyı konsola görüntüler. Çıktı aşağıdaki metne benzer:
 
         zum     1
         zur     1
         zwanzig 1
         zweite  1
 
-    Satır sonundaki bir sözcük ve isteğe bağlı olarak kaç kez giriş verilerini oluştu temsil eder.
+    Her satır bir kelimeyi ve girdi verilerinde kaç kez gerçekleştiğini temsil eder.
 
 ## <a name="the-sudoku-example"></a>Sudoku örneği
 
-[Sudoku](https://en.wikipedia.org/wiki/Sudoku) dokuz 3 x 3 ızgaralar oluşan bir Bulmaca olduğu. Başkalarının boştur ve çözmek için boş hücreler olmaktır kılavuzdaki bazı hücreler sayı bulunur. Önceki bağlantı Bulmacanın hakkında daha fazla bilgi var, ancak bu örnek amacı boş hücreler için çözmek için. Bu nedenle bizim giriş şu biçimde bir dosya olmalıdır:
+[Sudoku](https://en.wikipedia.org/wiki/Sudoku) , dokuz 3x3 ızgaradan oluşan bir Logic bulmaca. Kılavuzdaki bazı hücrelerde sayı bulunur, diğerleri boş kalır ve hedef hücre için çözülmektedir. Önceki bağlantı, bulmaca hakkında daha fazla bilgi içerir, ancak bu örneğin amacı boş hücreleri çözmelidir. Bu nedenle, girimiz aşağıdaki biçimde bir dosya olmalıdır:
 
-* Dokuz sütunların dokuz satırları
-* Her sütun bir sayı içerebilir veya `?` (boş bir hücreye gösterir)
-* Hücre bir boşluk ile ayrılır.
+* Dokuz sütundan oluşan dokuz satır
+* Her sütunda bir sayı veya `?` (boş bir hücreyi gösterir) bulunabilir
+* Hücreler boşlukla ayrılır
 
-Sudoku yapbozlar CAN oluşturmak için belirli bir yolu yoktur; bir satır veya sütun bir sayı yinelenemez. Doğru şekilde oluşturulmuş olan HDInsight kümesinde bir örnek verilmiştir. Şu konumdadır: `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` ve aşağıdaki metni içerir:
+Sudoku bulmaca vs oluşturmak için belirli bir yol vardır. bir sütun veya satırdaki bir sayıyı yineleyemiyorum. HDInsight kümesinde düzgün şekilde oluşturulan bir örnek vardır. `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` konumunda bulunur ve aşağıdaki metni içerir:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -133,7 +134,7 @@ Sudoku yapbozlar CAN oluşturmak için belirli bir yolu yoktur; bir satır veya 
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-Bu örnekte sorun Sudoku örneği çalıştırmak için aşağıdaki komutu kullanın:
+Bu örnek sorunu Sudoku örneği aracılığıyla çalıştırmak için aşağıdaki komutu kullanın:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
@@ -151,45 +152,45 @@ Sonuçlar aşağıdaki metne benzer şekilde görünür:
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi--example"></a>Pi (π) örneği
+## <a name="pi--example"></a>PI (π) örneği
 
-Pi örnek bir istatistik kullanır (yarı-Monte Carlo) pi değerini tahmin etmek için yöntemi. Noktaları rastgele bir birim karede yerleştirilir. Kare bir daire de içerir. Noktaları daire içinde kalan olasılık daire alanına eşit PI/4. Pi değerini 4R değerinden tahmin edilebilir. R kare içinde noktalarını toplam sayısına daire içinde noktalarını sayısını oranıdır. Daha büyük kullanılan noktaları, daha iyi tahmin örneğidir.
+PI örneği, Pi değerini tahmin etmek için istatistiksel (quası-Monte Carlo) yöntemini kullanır. Noktaları, bir birim karede rastgele yerleştirilir. Kare de bir daire içerir. Noktaların daire içinde düşme olasılığı, Pi/4 çemberin alanına eşittir. PI değeri 4R değerinden tahmin edilebilir. R, daire içinde olan noktaların sayısının kare içinde olan toplam punto sayısına oranıdır. Kullanım noktalarının daha büyük olması, tahminin ne kadar iyi olduğunu gösterir.
 
-Bu örneği çalıştırmak için aşağıdaki komutu kullanın. Bu komut, pi değerini tahmin etmek için 10.000.000 örnekleri ile her 16 haritalar kullanır:
+Bu örneği çalıştırmak için aşağıdaki komutu kullanın. Bu komut, Pi değerini tahmin etmek için her biri 10.000.000 örnek ile 16 Haritalar kullanır:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-Bu komut tarafından döndürülen değer benzer **3.14159155000000000000**. Başvurular için ilk 10 ondalık pi'nin 3.1415926535 yerlerdir.
+Bu komut tarafından döndürülen değer **3.14159155000000000000**benzerdir. Başvurular için, Pi 'nin ilk 10 ondalık basamak 3,1415926535 ' dir.
 
-## <a name="10-gb-graysort-example"></a>10 GB GraySort örneği
+## <a name="10-gb-graysort-example"></a>10 GB gri sıralama örneği
 
-GraySort Kıyaslama sıralama ' dir. Ölçüm, büyük miktarlarda veri, genellikle en az bir 100 TB sıralama sırasında elde sıralama (TB/dakika) hızıdır.
+Gri tonlamalı bir kıyaslama sıralaması. Ölçüm, büyük miktarlarda verileri sıralarken elde edilen sıralama oranıdır (TB/dakika), genellikle en az 100 TB 'tır.
 
-Bu örnek, oldukça hızlı bir şekilde çalıştırılabilir böylece büyüklükteki bir 10 GB veri kullanmaktadır. Arun Murthy Owen O'Malley ile geliştirilen MapReduce uygulamalar kullanır. Bu uygulamaların yıllık genel amaçlı ("Daytona") terabayt sıralama Kıyaslama 0.578 TB/dak (100 TB 173 dakika cinsinden) fiyatı, 2009 kazandı. Bu ve diğer sıralama değerlendirmeleri hakkında daha fazla bilgi için bkz. [sıralama Kıyaslama](https://sortbenchmark.org/) site.
+Bu örnek, görece hızlı bir şekilde çalıştırılabilmesi için bir ila büyüklükteki 10 GB veri kullanır. Owen 'Malley tarafından geliştirilen MapReduce uygulamalarını ve Arun Muralmi kullanır. Bu uygulamalar yıllık genel amaçlı ("Daytona") terabaytlık 2009 ' de 0,578, TB/dak oranında sıralama kıyaslaması (100 TB, 173 dakika) kazandı. Bu ve diğer sıralama kıyaslamaları hakkında daha fazla bilgi için bkz. [kıyaslama sitesini sıralama](https://sortbenchmark.org/) .
 
-Bu örnek, üç adet MapReduce programlarını kullanır:
+Bu örnek üç MapReduce programı kümesini kullanır:
 
-* **TeraGen**: Sıralanacak veri satırlarını oluşturan bir MapReduce programını
+* **Teragen**: sıralanacak veri satırları üreten MapReduce programı
 
-* **TeraSort**: Giriş verileri örnekler ve MapReduce toplam sıralamaya verileri sıralamak için kullanılır
+* **TeraSort**: giriş verilerini örnekler ve verileri toplam bir sıraya göre sıralamak Için MapReduce kullanır
 
-    Özel bir bölümleyici dışında standart MapReduce sıralama TeraSort olur. Her azaltma için anahtar aralığını tanımlamak örneklenen N-1 anahtarların sıralanmış bir bölümleyici kullanır. Özellikle, örneği [i-1] tüm anahtarlar gibi < key = < örnek [i] i azaltmak için gönderilir. Bu bölümleyici çıktısını azaltmak i + 1 değerinden çıkışlarına i azaltmak garanti tüm.
+    TeraSort, özel bir bölümleyici hariç standart bir MapReduce sırsıdır. Bölümleyici, her bir küçültme için anahtar aralığını tanımlayan N-1 örneklenmiş anahtarların sıralanmış bir listesini kullanır. Özellikle, örnek [i-1] < = anahtar < örneği [i] gibi tüm anahtarlar ı azaltmak için gönderilir. Bu bölümleyici, ı azaltma çıktılarının t + 1 ' i düşürenden daha az olduğunu garanti eder.
 
-* **TeraValidate**: Çıkış genel olarak sıralanmış doğrulayan bir MapReduce programını
+* **TeraValidate**: çıktının genel olarak sıralanacağını doğrulayan bir MapReduce programı
 
-    Çıktı dizininde dosya başına bir harita oluşturur ve her eşleme her anahtar Öncekine küçük veya eşit olmasını sağlar. Harita işlevi, her bir dosyanın ilk ve son anahtarların kayıtları oluşturur. Reduce işlevi dosya ilk anahtarını dosyası i-1 son anahtardan daha büyük olmasını sağlar. Herhangi bir sorunu sıralamaya anahtarları ile azaltma aşaması çıkış olarak raporlanır.
+    Çıktı dizininde dosya başına bir harita oluşturur ve her bir eşleme, her bir anahtarın öncekine eşit veya ondan küçük olmasını sağlar. Map işlevi her bir dosyanın ilk ve son anahtarlarının kayıtlarını oluşturur. Küçültme işlevi, dosya ı-1 ' in son anahtarından daha büyük olduğumu ilk anahtarının daha büyük olmasını sağlar. Tüm sorunlar, azalmış olan anahtarlarla birlikte, azaltma aşamasının bir çıkışı olarak bildirilir.
 
-Aşağıdaki adımlar, verileri oluşturmak için sıralama ve ardından çıktısını doğrulamak:
+Veri oluşturmak, sıralamak ve sonra çıktıyı doğrulamak için aşağıdaki adımları kullanın:
 
-1. HDInsight kümenin varsayılan depolama alanı için depolanan veriler, 10 GB oluşturmak `/example/data/10GB-sort-input`:
+1. HDInsight kümesinin varsayılan depolama alanı `/example/data/10GB-sort-input`' de depolanan 10 GB veri oluşturun:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    `-Dmapred.map.tasks` Hadoop kullanmak için bu iş için kaç harita görevleri bildirir. İş 10 GB veri oluşturmak ve adresinden depolamak için son iki parametre isteyin `/example/data/10GB-sort-input`.
+    `-Dmapred.map.tasks`, bu iş için kaç tane eşleme görevinin kullanılacağını Hadoop 'a söyler. Son iki parametre, işe 10 GB veri oluşturulmasını ve `/example/data/10GB-sort-input`.
 
 2. Verileri sıralamak için aşağıdaki komutu kullanın:
 
@@ -197,7 +198,7 @@ Aşağıdaki adımlar, verileri oluşturmak için sıralama ve ardından çıkt�
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    `-Dmapred.reduce.tasks` Hadoop işi için kullanılacak görevler kaç azaltır söyler. Son iki parametre yalnızca giriş ve çıkış veri konumlardır.
+    `-Dmapred.reduce.tasks`, Hadoop 'a iş için kaç tane küçültme görevi kullanacağınızı söyler. Son iki parametre yalnızca veri için giriş ve çıkış konumlarıdır.
 
 3. Sıralama tarafından oluşturulan verileri doğrulamak için aşağıdakileri kullanın:
 
@@ -207,8 +208,7 @@ Aşağıdaki adımlar, verileri oluşturmak için sıralama ve ardından çıkt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Linux tabanlı HDInsight kümeleriyle dahil örneklerini çalıştırma öğrendiniz. HDInsight ile Pig, Hive ve MapReduce kullanma hakkında daha fazla öğreticiler için aşağıdaki konulara bakın:
+Bu makalede, Linux tabanlı HDInsight kümelerine dahil edilen örneklerin nasıl çalıştırılacağını öğrendiniz. HDInsight ile Pig, Hive ve MapReduce kullanma hakkında öğreticiler için aşağıdaki konulara bakın:
 
-* [HDInsight üzerinde Apache Hadoop ile Apache Pig kullanma](hdinsight-use-pig.md)
-* [HDInsight üzerinde Apache Hadoop ile Apache Hive'ı kullanma](hdinsight-use-hive.md)
-* [HDInsight üzerinde Apache Hadoop ile MapReduce kullanma](hdinsight-use-mapreduce.md)
+* [HDInsight üzerinde Apache Hadoop ile Apache Hive kullanma](hdinsight-use-hive.md)
+* [HDInsight üzerinde Apache Hadoop MapReduce kullanma](hdinsight-use-mapreduce.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408661"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure haritalar Hizmetleri modülünü kullanma
 
@@ -29,17 +29,17 @@ Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Alternatif olarak, Azure Maps web SDK kaynak kodunu [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
+    - Alternatif olarak, Azure Maps web SDK kaynak kodu için hizmetler modülünü [Azure-Maps-Rest](https://www.npmjs.com/package/azure-maps-rest) NPM paketini kullanarak yerel olarak yükleyin ve ardından uygulamanızla birlikte barındırın. Bu paket TypeScript tanımlarını da içerir. Şu komutu kullanın:
     
-        > **NPM Install Azure-Maps-Rest**
+        > **npm install azure-maps-rest**
     
         Ardından, dosyanın `<head>` öğesine bir betik başvurusu ekleyin:
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. Kimlik doğrulama işlem hattı oluşturun. Hizmet URL 'SI istemci uç noktasını başlatmak için işlem hattını oluşturmanız gerekir. Azure haritalar arama hizmeti istemcisinin kimliğini doğrulamak için kendi Azure haritalar hesap anahtarınızı veya Azure Active Directory (Azure AD) kimlik bilgilerinizi kullanın. Bu örnekte, arama hizmeti URL 'SI istemcisi oluşturulacaktır. 
+1. Kimlik doğrulama işlem hattı oluşturun. Hizmet URL 'SI istemci uç noktasını başlatmak için işlem hattının oluşturulması gerekir. Azure haritalar arama hizmeti istemcisinin kimliğini doğrulamak için kendi Azure haritalar hesap anahtarınızı veya Azure Active Directory (Azure AD) kimlik bilgilerinizi kullanın. Bu örnekte, arama hizmeti URL 'SI istemcisi oluşturulacaktır. 
 
     Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız:
 
@@ -162,6 +162,28 @@ Azure Haritalar Web SDK 'Sı bir *hizmet modülü*sağlar. Bu modül, JavaScript
 <iframe height="500" style="width: 100%;" scrolling="no" title="Hizmetler modülünü kullanma" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>Hizmetler modülünü kullanarak</a> kaleme bakın.
 </iframe>
+
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Azure Kamu bulut desteği
+
+Azure Haritalar Web SDK 'Sı, Azure Kamu Bulutu 'nı destekler. Azure Maps web SDK 'sına erişmek için kullanılan tüm JavaScript ve CSS URL 'Leri aynı kalır, ancak Azure haritalar platformunun Azure Kamu bulut sürümüne bağlanmak için aşağıdaki görevlerin yapılması gerekir.
+
+Etkileşimli harita denetimini kullanırken, `Map` sınıfının bir örneğini oluşturmadan önce aşağıdaki kod satırını ekleyin. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Harita ve hizmetlerin kimliğini doğrularken Azure Kamu bulutu platformundan Azure Maps kimlik doğrulama ayrıntılarını kullandığınızdan emin olun.
+
+Hizmetler modülünü kullanırken, bir API URL uç noktası örneği oluşturulurken hizmetler için etki alanının ayarlanması gerekir. Örneğin, aşağıdaki kod `SearchURL` sınıfının bir örneğini oluşturur ve etki alanını Azure Kamu bulutuna yönlendirir.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+Azure haritalar REST hizmetlerine doğrudan erişiyorsanız, URL etki alanını `atlas.azure.us`değiştirin. Örneğin, arama API 'si hizmetini kullanıyorsanız, `https://atlas.microsoft.com/search/` URL etki alanını `https://atlas.azure.us/search/`olarak değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

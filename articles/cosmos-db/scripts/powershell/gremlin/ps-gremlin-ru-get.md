@@ -1,5 +1,5 @@
 ---
-title: Gremlin API 'SI için Azure PowerShell betiği Azure Cosmos DB Get üretilen Iş (RU/s)
+title: Azure Cosmos DB Gremlin API 'SI için üretilen iş (RU/s) almak için PowerShell betiği
 description: Gremlin API 'SI için Azure PowerShell betiği Azure Cosmos DB Get üretilen Iş (RU/s)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1da7559d67be94013ea829a533a09db6c8abcad4
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: de02a524e163c1843e5117e8a4471e686a2f5764
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441450"
 ---
 # <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB-Gremlin API 'SI için bir veritabanı veya grafik için üretilen Iş (RU/sn) alın
 

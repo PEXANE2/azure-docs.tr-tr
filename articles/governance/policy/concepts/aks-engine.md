@@ -3,16 +3,16 @@ title: AKS altyapısı için Azure Ilkesi öğrenin
 description: Azure Policy 'ın, AKS altyapısıyla kümeleri yönetmek için CustomResourceDefinitions 'ı ve ağ geçidi denetleyicisi 'nden açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267261"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436436"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>AKS altyapısı için Azure Ilkesini anlama
 
-Azure Ilkesi, Azure 'da otomatik olarak yönetilen bir Kubernetes kümesini hızlı bir şekilde önyüklemek için kullanışlı araç sağlayan bir sistem olan [aks altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/README.md)ile tümleşir. Bu tümleştirme, AKS motoru kendi kendine yönetilen kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma sunar. Kubernetes için bir _giriş denetleyicisi Web kancası_ olan [Açık ilke aracısı](https://www.openpolicyagent.org/) (Opa) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (Beta) kullanımını genişleterek Azure ilkesi, Azure kaynaklarınızın ve aks altyapısının uyumluluk durumunu yönetme ve raporlama olanağı sağlar tek bir yerden kendi kendine yönetilen kümeler.
+Azure Ilkesi, Azure 'da otomatik olarak yönetilen bir Kubernetes kümesini hızlı bir şekilde önyüklemek için kullanışlı araç sağlayan bir sistem olan [aks altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/README.md)ile tümleşir. Bu tümleştirme, AKS motoru kendi kendine yönetilen kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma sunar. Kubernetes için bir _giriş denetleyicisi Web kancası_ olan [Açık ilke aracısı](https://www.openpolicyagent.org/) (Opa) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (Beta) kullanımını genişleterek Azure ilkesi, Azure kaynaklarınızın ve aks altyapısının kendi kendine yönetilen kümelerinin uyumluluk durumlarını tek bir yerden yönetmeyi ve rapor yapmayı olanaklı kılar.
 
 > [!NOTE]
 > AKS altyapısı için Azure Ilkesi genel önizlemede ve SLA 'sı yoktur. Gatekeeper v3 beta aşamasındadır ve açık kaynaklı topluluk tarafından desteklenir. Hizmet yalnızca yerleşik ilke tanımlarını ve hizmet sorumlusu ile yapılandırılmış her kaynak grubu için tek bir AKS motoru kümesini destekler.
@@ -29,11 +29,11 @@ Azure 'da kendi kendine yönetilen Kubernetes kümeniz ile AKS altyapısı için
 - [AKS altyapısı için ilke tanımı atama](#built-in-policies)
 - [Doğrulamayı bekle](#validation-and-reporting-frequency)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğinizin **Microsoft. policınghts** kaynak sağlayıcısını etkinleştirmesi ve küme hizmeti sorumlusu için bir rol ataması oluşturması gerekir. 
 
-1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
+1. Kaynak sağlayıcısını etkinleştirmek için [kaynak sağlayıcıları ve türlerindeki](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) adımları izleyin ya da Azure clı veya Azure PowerShell komutunu çalıştırın:
 
    - Azure CLI
 
@@ -233,7 +233,7 @@ Azure Ilke eklentisini ve ağ geçidi denetleyicisini AKS altyapısı kümenize 
 
   1. Eski kısıtlamaları kaldır
 
-     Şu anda kaldırma mekanizması yalnızca Gatekeeper sistemini kaldırır, Kullanıcı tarafından oluşturulan _ConstraintTemplate_, _kısıtlama_veya _yapılandırma_ kaynaklarını kaldırmaz, ya da bunlara karşılık gelen _crds 'yi kaldırır_ .
+     Şu anda kaldırma mekanizması yalnızca Gatekeeper sistemini kaldırır, Kullanıcı tarafından oluşturulan _ConstraintTemplate_, _kısıtlama_veya _yapılandırma_ kaynaklarını kaldırmaz, ya da ilgili _crds_'yi kaldırır.
 
      Ağ geçidi denetleyicisi çalışırken, istenmeyen kısıtlamaları şu şekilde kaldırmak mümkündür:
 

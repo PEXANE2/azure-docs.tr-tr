@@ -2,19 +2,15 @@
 title: Azure VM 'den Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
 description: Azure Otomasyonu 'nun bir parçası olan Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümleriyle Azure sanal makinesini nasıl ekleyeceğinizi öğrenin.
 services: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.service: automation
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421832"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure sanal makinesinden Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
 
@@ -59,9 +55,9 @@ Güncelleştirme Yönetimi, Değişiklik İzleme veya envanter çözümlerine bi
 
 Çalışma alanınıza gidin. **Genel**altında **kaydedilmiş aramalar**' ı seçin. Bu çözümler tarafından kullanılan iki kayıtlı arama aşağıdaki tabloda gösterilmiştir:
 
-|Adı     |Kategori  |Diğer ad  |
+|Ad     |Kategori  |Diğer ad  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Güncellemeler        | Updates__MicrosoftDefaultComputerGroup         |
 
 Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı aramalardan birini seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:

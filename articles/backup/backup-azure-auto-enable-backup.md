@@ -1,16 +1,16 @@
 ---
-title: Azure Ilkesini kullanarak VM oluştururken yedeklemeyi otomatik olarak etkinleştir
+title: Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 description: Belirli bir kapsamda oluşturulan tüm VM 'Lerde yedeklemeyi otomatik olarak etkinleştirmek için Azure Ilkesi 'ni nasıl kullanacağınızı açıklayan bir makale
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450130"
 ---
-# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure Ilkesini kullanarak VM oluştururken yedeklemeyi otomatik olarak etkinleştir
+# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure İlkesi’ni Kullanarak VM Oluştururken Yedeklemeyi Otomatik Olarak Etkinleştirme
 
 Bir kuruluştaki bir yedeklemenin veya uyumluluk yöneticisinin temel sorumluluklarıyla biri, iş açısından kritik tüm makinelerin uygun saklama ile yedeklenmesini sağlamaktır.
 
@@ -25,6 +25,8 @@ Bugün Azure Backup, **bir abonelik veya kaynak grubu içindeki belirli bir konu
 * Belirtilen kasa ve yedekleme için yapılandırılmış VM 'Ler farklı kaynak grupları altında olabilir.
 
 * Yönetim grubu kapsamı şu anda desteklenmiyor.
+
+* Yerleşik ilke şu anda ulusal bulutlarda kullanılamaz.
 
 ## <a name="using-the-built-in-policy"></a>Yerleşik ilkeyi kullanma
 

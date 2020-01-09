@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 340c9192b43cbcf2daacfb791d85135518dd970c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425882"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alt ağ temsili ekleme veya kaldırma
 
@@ -25,7 +25,7 @@ Alt ağ temsili, hizmeti dağıtma sırasında benzersiz bir tanımlayıcı kull
 
 ## <a name="portal"></a>Portal
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -89,8 +89,8 @@ Aşağıdaki örnek **eastus** konumunda **myResourceGroup** adlı bir kaynak gr
 
 ```
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-**az network vnet create** komutunu kullanarak **myResourceGroup** içinde **mySubnet** adlı bir alt ağ ile [myVnet](https://docs.microsoft.com/cli/azure/network/vnet) adlı bir sanal ağ oluşturun.
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) komutunu kullanarak **myResourceGroup** içinde **mySubnet** adlı bir alt ağ ile **myVnet** adlı bir sanal ağ oluşturun.
 
 ```azurecli-interactive
   az network vnet create \
@@ -124,7 +124,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine d
 Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin, **HizmetAdı**özelliği altındaki alt ağa atanmış olduğunu doğrulayın:
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet

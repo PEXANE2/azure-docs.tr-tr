@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB Gremlin API 'SI için Azure Resource Manager Şablonlar
+title: Azure Cosmos DB Gremlin API 'SI için Kaynak Yöneticisi Şablonlar
 description: Azure Cosmos DB Gremlin API 'SI oluşturmak ve yapılandırmak için Azure Resource Manager şablonlarını kullanın.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: c5ddea40c384496f2790ae4ab7c88888f1e9120a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 857af7ecd9ff3d7b3c771d048a802c6d3c1e5e4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441639"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Gremlin API kaynaklarını yönetme
 
@@ -55,7 +55,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bazı ek kaynaklar aşağıda verilmiştir:
+Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
 - [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
 - [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)

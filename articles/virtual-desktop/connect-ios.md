@@ -5,31 +5,24 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 472b8800a09cb12bc3e703ef53d0aab2b578e0d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460229"
 ---
 # <a name="connect-with-the-ios-client"></a>iOS istemcisiyle bağlanma
 
-> Uygulama hedefi: iOS 8,0 veya üzeri. İPhone, iPad ve iPod Touch ile uyumludur.
-
->[!NOTE]
-> İOS istemcisi şu anda hala önizlemededir.
+> Uygulama hedefi: iOS 13,0 veya üzeri. İPhone, iPad ve iPod Touch ile uyumludur.
 
 Windows sanal masaüstü kaynaklarına, indirilebilir istemcimiz ile iOS cihazınızdan erişebilirsiniz. Bu kılavuz, iOS istemcisini nasıl ayarlayacağınızı bildirir.
 
-## <a name="install-the-ios-beta-client"></a>İOS Beta istemcisini yükler
-İOS Beta istemcisini yüklemek için:
+## <a name="install-the-ios-client"></a>İOS istemcisini yükler
 
-1. [Apple Testuçuş](https://apps.apple.com/us/app/testflight/id899247664) uygulamasını iOS cihazınıza yükler.
-2. İOS cihazınızda bir tarayıcı açın ve [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta)adresine gidin.
-3. **2. Adım: Beta 'A katılarak**, **Testi Başlat**' ı seçin.
-4. Testuçuş uygulamasına yeniden yönlendirildiğinde **kabul et**' i seçin ve ardından **Install**' ı seçin.
+Başlamak için, istemcisini iOS cihazınıza [indirin](https://aka.ms/rdios) ve yükleyin.
 
 ## <a name="subscribe-to-a-feed"></a>Bir akışa abone olma
 
@@ -41,12 +34,12 @@ Bir akışa abone olmak için:
 2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
    - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Genellikle, URL <https://rdweb.wvd.microsoft.com>.
    - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
-3. **İleri**' ye dokunun.
+3. **İleri**’ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.
    - **Kullanıcı adı**için, Kullanıcı adına kaynaklara erişim izni verin.
    - **Parola**için Kullanıcı adıyla ilişkili parolayı verin.
    - Ayrıca, yöneticinizin kimlik doğrulamasını bu şekilde yapılandırdıysa ek etmenler sağlamanız istenebilir.
-5. **Kaydet**' e dokunun.
+5. **Kaydet**'e dokunun.
 
 Bundan sonra bağlantı merkezi, uzak kaynakları görüntülemelidir.
 

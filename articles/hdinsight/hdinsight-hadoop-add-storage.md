@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435585"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight 'a ek depolama hesapları ekleme
 
@@ -24,13 +24,13 @@ HDInsight 'a ek Azure depolama *hesapları* eklemek için betik eylemlerinin nas
 ## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Depolama hesabı adı ve anahtarı. Bkz. [Azure Portal depolama hesabı ayarlarını yönetme](../storage/common/storage-account-manage.md).
+* Depolama hesabı adı ve anahtarı. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
 * [Küme adı doğru](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)değil.
 * PowerShell kullanıyorsanız AZ Module gerekecektir.  Bkz. [Azure PowerShell genel bakış](https://docs.microsoft.com/powershell/azure/overview).
 * Azure CLı 'yı yüklemediyseniz bkz. [Azure komut satırı arabirimi (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 * Bash veya bir Windows komut istemi kullanıyorsanız, bir komut satırı JSON işlemcisi olan **JQ**da gerekir.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). Windows 10 ' da Ubuntu 'da bash için bkz. [Windows 10 Linux Için Windows alt sistemi yükleme kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10).
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Bu betik aşağıdaki parametreleri alır:
 
@@ -100,7 +100,7 @@ az hdinsight script-action execute ^
     --script-parameters "ACCOUNTNAME ACCOUNTKEY"
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure Portal
 
 Bkz. [çalışan bir kümeye betik eylemi uygulama](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
@@ -108,7 +108,7 @@ Bkz. [çalışan bir kümeye betik eylemi uygulama](hdinsight-hadoop-customize-c
 
 ### <a name="storage-firewall"></a>Depolama güvenlik duvarı
 
-Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek isterseniz, HDInsight 'ın depolama verilerinize erişebilmesi Için **güvenilir Microsoft hizmetlerine izin ver...** özel durumunu etkinleştirdiğinizden emin olun. hesabı.
+Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal ağlar** kısıtlamalarına göre güvenli hale getirmek isterseniz, HDInsight 'ın depolama hesabınıza erişebilmesi Için **güvenilir Microsoft hizmetlerine izin ver...** özel durumunu etkinleştirdiğinizden emin olun.
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Azure portal veya araçlarda görüntülenmeyen depolama hesapları
 
@@ -142,7 +142,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
 ```
 
-### <a name="bash"></a>Bash
+### <a name="bash"></a>bash
 
 `CLUSTERNAME`, doğru şekilde kullanılan küme adıyla değiştirin. `PASSWORD`, Küme Yöneticisi parolasıyla değiştirin. `STORAGEACCOUNT` değerini gerçek depolama hesabı adıyla değiştirin.
 

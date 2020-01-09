@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449977"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifrelenmiş Azure VM 'yi yedekleme ve geri yükleme
 
@@ -27,8 +27,8 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 
 **VM disk türü** | **ADE (BEK/dm-crypt)** | **ADE ve KEK**
 --- | --- | ---
-**Yönetilmeyen** | Yes | Yes
-**Lebilmesi**  | Yes | Yes
+**Yönetilmeyen** | Evet | Evet
+**Yönetilen**  | Evet | Evet
 
 - [Ade](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)ve [Keks](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi [hakkında SSS](../security/azure-security-disk-encryption-faq.md) makalesini okuyun.
@@ -125,7 +125,7 @@ Azure VM, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek iç
 
     ![Azure Backup seçimi](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-7. **OK (Tamam)** düğmesine tıklayın. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
+7. **Tamam**’a tıklayın. **Yedekleme yönetimi hizmeti** **erişim ilkelerine**eklenir.
 
     ![Erişim ilkeleri](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -136,10 +136,10 @@ Azure VM, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek iç
 Şifrelenmiş VM 'Leri aşağıdaki şekilde geri yükleyebilirsiniz:
 
 1. [VM diskini geri yükleyin](backup-azure-arm-restore-vms.md#restore-disks).
-2. Ardından aşağıdakilerden birini yapın:
-    - VM ayarlarını özelleştirmek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın ve VM dağıtımını tetikleyin. [Daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    - PowerShell kullanarak geri yüklenen disklerden yeni bir VM oluşturun. [Daha fazla bilgi edinin](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
-    - Linux VM 'Ler için, veri disklerinin açık ve bağlanmış olması için ADE uzantısını sıfırlayın.
+2. Aşağıdakilerden birini yaparak sanal makine örneğini yeniden oluşturun:
+    1. VM ayarlarını özelleştirmek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın ve VM dağıtımını tetikleyin. [Daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. PowerShell kullanarak geri yüklenen disklerden yeni bir VM oluşturun. [Daha fazla bilgi edinin](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+3. Linux sanal makineleri için, veri disklerinin açık ve bağlanmış olması için ADE uzantısını yeniden yükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

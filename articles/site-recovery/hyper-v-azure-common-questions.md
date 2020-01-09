@@ -1,18 +1,14 @@
 ---
 title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık sorulan sorular
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954055"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498200"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular-Hyper-V-Azure olağanüstü durum kurtarma
 
@@ -50,7 +46,7 @@ Hayır, VM'lerin desteklenen bir Windows sunucusu makinesinde çalışan Hyper-V
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Hyper-V 2.nesil sanal makinelerini Azure'a çoğaltabilir miyim?
-Evet. Site Recovery yük devretme sırasında 2. nesil 2. nesil 1 ' e dönüştürür. Yeniden çalışma sırasında makine 2. nesil 'e geri dönüştürüldü. [Daha fazlasını okuyun](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+Evet. Site Recovery yük devretme sırasında 2. nesil 2. nesil 1 ' e dönüştürür. Yeniden çalışma sırasında makine 2. nesil 'e geri dönüştürüldü. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
 
 
 ### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>Tek bir VMM sunucusuna sahip olsam da Site Recovery'yi VMM ile dağıtabilir miyim?
@@ -78,7 +74,7 @@ Evet. Bir bölgede kasa oluşturduğunuzda, Site Recovery tarafından kullanıla
 Evet, hem [Azure 'da](https://docs.microsoft.com/azure/storage/storage-service-encryption) hem de aktarım sırasında şifreleme desteklenir.
 
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Azure çoğaltma ile Hyper-V arasında ne yapabilirim?
 
@@ -98,7 +94,7 @@ Bir veya daha fazla tek başına veya kümelenmiş Hyper-V konağında çalışa
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Hyper-V kümesinde bulunan VM 'Leri çoğaltabilir miyim?
 
-Evet, Site Recovery kümelenmiş Hyper-V konaklarının kullanılmasını destekler. Aşağıdakilere dikkat edin:
+Evet, Site Recovery kümelenmiş Hyper-V konaklarının kullanılmasını destekler. Şunlara dikkat edin:
 
 - Kümenin tüm düğümleri aynı kasaya kaydedilmelidir.
 - VMM kullanmıyorsanız, kümedeki tüm Hyper-V konakları aynı Hyper-V sitesine eklenmelidir.
@@ -202,14 +198,17 @@ Site Recovery, çoğaltma için etkin Hyper-V VM 'lerine açık bir şekilde hi�
 ### <a name="how-do-i-fail-over-to-azure"></a>Nasıl yaparım? Azure 'a yük devredesin mi?
 
 Şirket içi Hyper-V VM 'lerinden Azure 'a planlı veya planlanmamış bir yük devretme işlemi çalıştırabilirsiniz.
-    - Planlı bir yük devretme çalıştırırsanız, veri kaybı olmaması için kaynak VM’ler kapatılır.
-    - Birincil siteniz erişilebilir değilse, planlanmamış bir yük devretme gerçekleştirebilirsiniz.
-    - Birden fazla makinenin yükünü yönetmek için tek bir makinenin yükünü devreder veya kurtarma planları oluşturabilirsiniz.
-    - Yük devretme çalıştırırsınız. Yük devretme işlemi tamamlandıktan sonra, oluşturulan çoğaltma sanal makinelerini Azure 'da görmeniz gerekir. Gerekli olursa VM’ye genel bir IP adresi atayabilirsiniz. Daha sonra yük devretmeyi, çoğaltma Azure VM 'sinden iş yüküne erişmeye başlamak için yürütün.
+
+- Planlı bir yük devretme çalıştırırsanız, veri kaybı olmaması için kaynak VM’ler kapatılır.
+- Birincil siteniz erişilebilir değilse, planlanmamış bir yük devretme gerçekleştirebilirsiniz.
+- Birden fazla makinenin yükünü yönetmek için tek bir makinenin yükünü devreder veya kurtarma planları oluşturabilirsiniz.
+- Yük devretme iki bölümden oluşur:
+    - Yük devretme işlemi tamamlandıktan sonra, oluşturulan çoğaltma sanal makinelerini Azure 'da görmeniz gerekir. Gerekli olursa VM’ye genel bir IP adresi atayabilirsiniz.
+    - Daha sonra yük devretmeyi, çoğaltma Azure VM 'sinden iş yüküne erişmeye başlamak için yürütün.
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Yük devretmeden sonra Azure VM 'lerine mi erişin Nasıl yaparım??
-Yük devretmeden sonra, bir siteden siteye VPN veya Azure ExpressRoute üzerinden Azure VM 'lerine güvenli bir Internet bağlantısı üzerinden erişebilirsiniz. Bağlanmak için bir dizi şey hazırlamanız gerekir. [Daha fazla bilgi](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Yük devretmeden sonra, bir siteden siteye VPN veya Azure ExpressRoute üzerinden Azure VM 'lerine güvenli bir Internet bağlantısı üzerinden erişebilirsiniz. Bağlanmak için bir dizi şey hazırlamanız gerekir. [Daha fazla bilgi edinin](failover-failback-overview.md#connect-to-azure-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>Veri devredildi.
 Azure esneklik için tasarlanmıştır. Site Recovery, Azure SLA 'sına uygun olarak ikincil bir Azure veri merkezine yük devretme için tasarlanmıştır. Yük devretme gerçekleştiğinde, meta veri ve kasalarınızın kasanız için seçtiğiniz coğrafi bölge içinde kalmasını sağlarız.
@@ -232,4 +231,4 @@ Azure esneklik için tasarlanmıştır. Site Recovery, Azure SLA 'sına uygun ol
 5. İş yükleri yeniden başlatıldıktan sonra, şirket içi VM 'Lerin tekrar Azure 'a çoğaltılması için çoğaltmayı tersine çevirmeyi etkinleştirmeniz gerekir.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Farklı bir konuma yeniden hata verebilir miyim?
-Evet, Azure 'a yük devretmek için, özgün bir konum yoksa, farklı bir konuma geri dönebilirsiniz. [Daha fazla bilgi edinin](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
+Evet, Azure 'a yük devretmek için, özgün bir konum yoksa, farklı bir konuma geri dönebilirsiniz. [Daha fazla bilgi edinin](hyper-v-azure-failback.md#fail-back-to-an-alternate-location).

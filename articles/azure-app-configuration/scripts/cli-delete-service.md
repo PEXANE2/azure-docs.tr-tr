@@ -1,5 +1,6 @@
 ---
-title: Azure CLı betik örneği-Azure uygulama yapılandırma deposunu silme | Microsoft Docs
+title: Azure CLı betik örneği-Azure uygulama yapılandırma deposunu silme
+titleSuffix: Azure App Configuration
 description: Azure CLı betik örneği-Azure uygulama yapılandırma deposunu silme
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d5a80288fcd5b0216a9bf3ca322203f672f381d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413370"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposunu silme
 
@@ -29,7 +30,7 @@ Bu örnek betik bir Azure Uygulama yapılandırması örneğini siler.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 Aşağıdaki komutu yürüterek önce Azure uygulama yapılandırma CLı uzantısını yüklemeniz gerekir:
 

@@ -1,6 +1,6 @@
 ---
-title: Kaynak dosyaları oluşturma ve kullanma-Azure Batch | Microsoft Docs
-description: Çeşitli giriş kaynaklarından Azure Batch kaynak dosyaları oluşturmayı öğrenin.
+title: Kaynak dosyaları oluşturma ve kullanma-Azure Batch
+description: Çeşitli giriş kaynaklarından Batch kaynak dosyaları oluşturmayı öğrenin. Bu makalede, bunları bir VM 'ye oluşturma ve bunlara yerleştirme hakkında bazı yaygın yöntemler ele alınmaktadır.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390048"
 ---
 # <a name="creating-and-using-resource-files"></a>Kaynak dosyalarını oluşturma ve kullanma
 
@@ -33,8 +33,8 @@ Kaynak dosyaları oluşturmak için kullanabileceğiniz birkaç farklı seçenek
 Kaynak dosyası oluşturma seçenekleri:
 
 - [Depolama kapsayıcısı URL 'si](#storage-container-url): Azure 'daki herhangi bir depolama kapsayıcısından bir kaynak dosyası oluşturur
-- [Depolama kapsayıcısı adı](#storage-container-name): Toplu Iş ile bağlantılı bir Azure depolama hesabındaki kapsayıcının adından bir kaynak dosyası oluşturur
-- [Web uç noktası](#web-endpoint): Geçerli HTTP URL 'sinden bir kaynak dosyası oluşturur
+- [Depolama kapsayıcısı adı](#storage-container-name): toplu iş ile bağlantılı bir Azure depolama hesabındaki kapsayıcının adından bir kaynak dosyası oluşturur
+- [Web uç noktası](#web-endpoint): herhangi BIR GEÇERLI http url 'sinden kaynak dosyası oluşturur
 
 ### <a name="storage-container-url"></a>Depolama kapsayıcısı URL 'SI
 
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Kapsayıcı erişimi için hem hem de `Read` `List` izinlerinizin olması gerekir, ancak bu, blob `Read` erişimi ile yalnızca izninizin olması gerekir.
+> Kapsayıcı erişimi için hem `Read` hem de `List` izinleriniz olmalıdır, ancak blob erişimi de yalnızca `Read` iznine sahip olmanız gerekir.
 
-İzinler yapılandırıldıktan sonra, SAS belirtecini oluşturun ve depolama kapsayıcısına erişim için SAS URL 'sini biçimlendirin. Depolama kapsayıcısı için biçimlendirilen SAS URL 'sini kullanarak ile [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)bir kaynak dosyası oluşturun.
+İzinler yapılandırıldıktan sonra, SAS belirtecini oluşturun ve depolama kapsayıcısına erişim için SAS URL 'sini biçimlendirin. Depolama kapsayıcısı için biçimlendirilen SAS URL 'sini kullanarak [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)bir kaynak dosyası oluşturun.
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);

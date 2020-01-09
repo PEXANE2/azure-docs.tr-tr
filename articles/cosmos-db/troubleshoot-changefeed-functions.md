@@ -1,5 +1,5 @@
 ---
-title: Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
+title: Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken karşılaşılan sorunları giderme
 description: Cosmos DB için Azure Işlevleri tetikleyicisi kullanılırken yaygın sorunlar, geçici çözümler ve Tanılama adımları
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064099"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441112"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 
@@ -66,7 +66,7 @@ Bu senaryoda birden çok neden olabilir ve bunların tümü denetlenmelidir:
 
 1. Azure İşleviniz Azure Cosmos hesabınızla aynı bölgeye mi dağıtıldı? En iyi ağ gecikme süresi için hem Azure İşlevinin hem de Azure Cosmos hesabınızın aynı Azure bölgesinde birlikte bulunması gerekir.
 2. Azure Cosmos kapsayıcınızda gerçekleşen değişiklikler sürekli mi yoksa aralıklı mı?
-Aralıklıysa, değişikliklerin depolanması ile Azure İşlevinin bunları alması arasında biraz gecikme olabilir. Bunun nedeni dahili olarak tetikleyici Azure Cosmos kapsayıcınızda değişiklikleri denetleyip hiç okunmayı bekleyen değişiklik olmadığını bulduğunda, yeni değişiklikler için denetleme yapmadan önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uykuya geçer (yüksek RU tüketimini önlemek için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+Aralıklıysa, değişikliklerin depolanması ile Azure İşlevinin bunları alması arasında biraz gecikme olabilir. Bunun nedeni dahili olarak tetikleyici Azure Cosmos kapsayıcınızda değişiklikleri denetleyip hiç okunmayı bekleyen değişiklik olmadığını bulduğunda, yeni değişiklikler için denetleme yapmadan önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) uykuya geçer (yüksek RU tüketimini önlemek için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)`FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 3. Azure Cosmos Kapsayıcınız [hız sınırlı](./request-units.md)olabilir.
 4. Özel bir tercih edilen bağlantı sırası tanımlamak üzere Azure bölgelerinin virgülle ayrılmış bir listesini belirtmek için tetikleyicinizdeki `PreferredLocations` özniteliğini kullanabilirsiniz.
 
@@ -78,12 +78,12 @@ Azure Işleviniz değişiklikleri aldığında, genellikle bunları işler ve is
 
 Hedefte bazı değişiklikler eksikse, bu, değişiklikler alındıktan sonra Azure Işlev yürütmesi sırasında bazı hatalar meydana geliyor olabilir.
 
-Bu senaryoda, en iyi işlem, kodunuzda `try/catch` blokları eklemek, belirli bir öğe alt kümesi için herhangi bir hatayı tespit etmek ve bunları buna göre işlemek (daha fazla için başka bir depolamaya göndermek için). analiz veya yeniden deneme). 
+Bu senaryoda, en iyi işlem, kodunuzda `try/catch` blokları eklemek, belirli bir öğe alt kümesi için herhangi bir hatayı tespit etmek ve bunları buna göre işlemek (daha fazla analiz veya yeniden denemek için başka bir depolamaya göndermek için). 
 
 > [!NOTE]
 > Azure Işlevleri Cosmos DB için tetikleyerek, kod yürütmeyle ilgili işlenmeyen bir özel durum oluşursa, varsayılan olarak bir grup değişikliği yeniden denenmez. Bu, değişikliklerin hedefe ulaşamamasının nedeni, bunları İşleyemeyeceğiniz anlamına gelir.
 
-Tetikleyicinizin tümünde bazı değişikliklerin alınmadığını fark ederseniz, en yaygın senaryo, **çalışan başka bir Azure işlevi**olduğunu fark edersiniz. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde **tam olarak aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure işlevi, yaptığınız değişikliklerin bir alt kümesini çalmaya çalışıyor Azure Işlevinizin işlemesini bekler.
+Tetikleyicinizin tümünde bazı değişikliklerin alınmadığını fark ederseniz, en yaygın senaryo, **çalışan başka bir Azure işlevi**olduğunu fark edersiniz. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde yerel olarak **aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure Işlevi, Azure işlevinizin işlemesini beklediğiniz değişikliklerin bir alt kümesini çalmaya çalışır.
 
 Ayrıca, kaç Azure İşlev Uygulaması örneğinin çalıştığını biliyorsanız senaryo doğrulanabilir. Kira kapsayıcınızı inceleyebilir ve içindeki kira öğelerinin sayısını saydıysanız, içindeki `Owner` özelliğinin farklı değerleri, İşlev Uygulaması örneklerinin sayısına eşit olmalıdır. Bilinen Azure İşlev Uygulaması örneklerinden daha fazla sayıda Sahip varsa, bu fazladan sahiplerin değişiklikleri "çaldığı" anlaşılır.
 
@@ -106,7 +106,7 @@ Bu durumun geçici çözümü için, eklenen el ile NuGet başvurusunu kaldırı
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Değişikliklerin algılanması için Azure Işlevinin yoklama aralığı değiştiriliyor
 
-Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)`FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

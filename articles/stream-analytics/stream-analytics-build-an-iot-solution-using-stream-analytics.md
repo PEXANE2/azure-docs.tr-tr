@@ -1,24 +1,23 @@
 ---
 title: Azure Stream Analytics'i kullanarak IOT çözümü oluşturma
 description: Stream Analytics IOT çözümünün gişe senaryosu için başlangıç Öğreticisi
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426452"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak bir IOT çözümü oluşturma
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 Bu çözümde, Azure Stream Analytics verilerinizden gerçek zamanlı öngörüleri almak için kullanmayı öğrenin. Geçmiş kayıtlarını veya iş bilgileri türetebilir için başvuru verileri ile geliştiriciler tıklatın akışları, günlükler ve olaylar, cihaz tarafından üretilen gibi bir veri akışları kolayca birleştirebilirsiniz. Microsoft Azure'da barındırılan bir tam olarak yönetilen, gerçek zamanlı akış hesaplama hizmeti olan Azure Stream Analytics yerleşik dayanıklılık, düşük gecikme süresi ve dakikalar içinde çalışmaya almak için ölçeklenebilirlik sağlar.
 
 Bu çözüm tamamlandıktan sonra yapabilirsiniz:
@@ -29,14 +28,14 @@ Bu çözüm tamamlandıktan sonra yapabilirsiniz:
 * Güvenle Stream Analytics kullanarak müşterileriniz için akış çözümleri geliştirin.
 * Sorunları gidermek için izleme ve günlüğe kaydetme deneyimini kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu çözüm tamamlamak için aşağıdaki önkoşulları ihtiyacınız vardır:
 * [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="scenario-introduction-hello-toll"></a>Senaryo giriş: "Hello, ücretli!"
+## <a name="scenario-introduction-hello-toll"></a>Senaryo giriş: "Hello, ücretli"
 Ücretli istasyonu ortak olguya ' dir. Bunların çoğu expressways, köprüler ve tüneller dünya genelindeki karşılaştığınız. Her bir Ücretli istasyonu birden fazla Ücretli booths sahiptir. El ile booths Ücretli bir Katılımcısı için ödeme durdurun. Otomatik booths Ücretli standına geçirirken, araç, ön için yapıştırılmış bir RFID kartını her standına üzerinde algılayıcı tarar. Bu Ücretli istasyonları aracılığıyla taşıtlardan geçişini üzerinden ilgi çekici işlemleri gerçekleştirilebilir bir olay akışı görselleştirmek kolay bir işlemdir.
 
-![Ücretli booths adresindeki otomobiller resmi](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
+![Ücretsiz otomobillerin resmi](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>Gelen veri
 Bu çözüm, iki veri akışları ile çalışır. Giriş ve çıkış Ücretli istasyonları yüklü sensörlerden ilk akışı üretir. İkinci akış vehicle kayıt veriler içeren bir statik arama veri kümesidir.
@@ -44,7 +43,7 @@ Bu çözüm, iki veri akışları ile çalışır. Giriş ve çıkış Ücretli 
 ### <a name="entry-data-stream"></a>Giriş veri akışı
 Ücretli istasyonları girmeleri gibi giriş veri akışını otomobiller hakkında bilgi içerir. Çıkış veri örnek uygulamasındaki bir Web uygulamasından bir Event Hub kuyruğuna akış Canlı olaylardır.
 
-| TollID | EntryTime | LicensePlate | Durum | Yapın | Model | VehicleType | VehicleWeight | Ücretli | Etiket |
+| TollID | EntryTime | LicensePlate | Eyalet | Yapın | Model | VehicleType | VehicleWeight | Ücretli | Etiket |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |7001 JNB |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +59,7 @@ Aşağıda, sütunları kısa bir açıklaması verilmiştir:
 | TollID |Ücretli standına benzersiz olarak tanımlayan Ücretli standına kimliği |
 | EntryTime |Tarihi ve saati UTC Ücretli standına için araç girişi |
 | LicensePlate |Araç lisans blondan sayısı |
-| Durum |Amerika Birleşik Devletleri bir durumda |
+| Eyalet |Amerika Birleşik Devletleri bir durumda |
 | Yapın |Otomobil üreticisi |
 | Model |Otomobil model numarası |
 | VehicleType |Yolcular araçları veya ticari araçlar için 2 ya da 1 |
@@ -73,12 +72,12 @@ Aşağıda, sütunları kısa bir açıklaması verilmiştir:
 
 | **TollId** | **ExitTime** | **LicensePlate** |
 | --- | --- | --- |
-| 1 |2014-09-10T12:03:00.0000000Z |7001 JNB |
-| 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
-| 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
-| 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
-| 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
-| 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
+| 1 |2014-09-10T12:03:00.0000000 Z |7001 JNB |
+| 1 |2014-09-10T12:03:00.0000000 Z |YXZ 1001 |
+| 3 |2014-09-10T12:04:00.0000000 Z |ABC 1004 |
+| 2 |2014-09-10T12:07:00.0000000 Z |XYZ 1003 |
+| 1 |2014-09-10T12:08:00.0000000 Z |BNJ 1007 |
+| 2 |2014-09-10T12:07:00.0000000 Z |CDE 1007 |
 
 Aşağıda, sütunları kısa bir açıklaması verilmiştir:
 
@@ -91,7 +90,7 @@ Aşağıda, sütunları kısa bir açıklaması verilmiştir:
 ### <a name="commercial-vehicle-registration-data"></a>Ticari vehicle kayıt verisi
 Çözüm, statik bir anlık görüntü kayıt ticari araç veritabanının kullanır. Bu verileri Azure blob depolama, örnekte bulunan bir JSON dosyası olarak kaydedilir.
 
-| LicensePlate | RegistrationId | Süresi dolmuş |
+| LicensePlate | RegistrationId | Süresi doldu |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
@@ -106,7 +105,7 @@ Aşağıda, sütunları kısa bir açıklaması verilmiştir:
 | --- | --- |
 | LicensePlate |Araç lisans blondan sayısı |
 | RegistrationId |Araç'ın kayıt kimliği |
-| Süresi dolmuş |Araç kayıt durumu: 0 vehicle kayıt etkinse, kayıt süresi 1 |
+| Süresi doldu |Araç kayıt durumu: 0 vehicle kayıt etkinse, kayıt süresi 1 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Azure Stream Analytics için ortamı ayarlama
 Bu çözüm tamamlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Azure hesabınız yoksa, şunları yapabilirsiniz [ücretsiz deneme sürümü iste](https://azure.microsoft.com/pricing/free-trial/).
@@ -114,7 +113,7 @@ Bu çözüm tamamlamak için bir Microsoft Azure aboneliğinizin olması gerekir
 Azure kredinizi en iyi kullanımı yapabilmeleri için bu makalenin sonunda yer alan "Azure hesabınızı temizlemek" bölümündeki adımları takip ettiğinizden emin olun.
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
-Bir kaynak grubunda birlikte birkaç tıklamayla kolayca dağıtılabilir çeşitli kaynaklar vardır. Çözüm tanımı GitHub deposundaki barındırılan [ https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
+Bir kaynak grubunda birlikte birkaç tıklamayla kolayca dağıtılabilir çeşitli kaynaklar vardır. Çözüm tanımı [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)konumundaki GitHub deposunda barındırılır.
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Azure portalında TollApp şablonu dağıtma
 1. Azure'a TollApp ortamı dağıtmak için bu bağlantıyı kullanmak [TollApp Azure şablonu Dağıt](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -172,7 +171,7 @@ Bir kaynak grubunda birlikte birkaç tıklamayla kolayca dağıtılabilir çeşi
    - **Kayıt** giriştir gerektiğinde aramalar için kullanılan bir statik registration.json dosyasına işaret eden bir Azure Blob Depolama bağlantısı. Bu başvuru veri girişi, daha sonra farklılığı sorgu söz dizimi kullanılır.
 
 4. TollApp örnek iş çıktıları inceleyin.
-   - **Cosmos DB** çıktı, çıkış havuzu olaylarını alır bir Cosmos veritabanı kapsayıcıdır. Bu çıkış akış sorgu yan TÜMCESİNE kullanıldığını unutmayın.
+   - **Cosmos DB** çıktısı, çıkış havuzu olaylarını alan bir Cosmos veritabanı kapsayıcısıdır. Bu çıkış akış sorgu yan TÜMCESİNE kullanıldığını unutmayın.
 
 ## <a name="start-the-tollapp-streaming-job"></a>İş akışında TollApp Başlat
 Akış işi başlatmak için aşağıdaki adımları izleyin:
@@ -186,7 +185,7 @@ Akış işi başlatmak için aşağıdaki adımları izleyin:
 ## <a name="review-the-cosmosdb-output-data"></a>CosmosDB çıkış verileri gözden geçirin
 1. TollApp kaynakları içeren kaynak grubunu bulun.
 
-2. Ad deseni ile Azure Cosmos DB hesabı seçin **tollapp\<rastgele\>-cosmos**.
+2. **Tollapp\<random\>-Cosmos**ad düzenine sahip Azure Cosmos DB hesabını seçin.
 
 3. Seçin **Veri Gezgini** Veri Gezgini sayfası açmak için.
 
@@ -284,7 +283,7 @@ WHERE Registration.Expired = '1'
 ```
 
 ## <a name="scale-out-the-job"></a>Projeyi ölçeklendirin
-Azure Stream Analytics, büyük hacimli verileri işleyebilmeniz esnek Ölçekle tasarlanmıştır. Azure Stream Analytics sorgu kullanabileceğiniz bir **PARTITION BY** sistem Ölçeklendirmesi eşitlenene bu adımı bildirmek için yan tümcesi. **PartitionID** sistem, bölüm kimliği ' % s'giriş (event hub) eşleşen ekleyen özel bir sütundur.
+Azure Stream Analytics, büyük hacimli verileri işleyebilmeniz esnek Ölçekle tasarlanmıştır. Azure Stream Analytics sorgusu, sisteme bu adımın ölçeklendirmiş olduğunu bildirmek için bir **PARTITION by** yan tümcesini kullanabilir. **PartitionID** , sistemin, GIRIŞIN bölüm kimliğini (Event hub) eşleştirmek için eklediği özel bir sütundur.
 
 Bölümleri sorgu ölçeğini genişletmek için sorgu söz dizimi aşağıdaki koda düzenleyin:
 ```sql

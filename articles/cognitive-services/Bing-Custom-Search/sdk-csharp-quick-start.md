@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: C# SDK 'yı kullanarak Bing özel arama uç noktanızı çağırma | Microsoft Docs"
+title: 'Hızlı başlangıç: C# SDK kullanarak Bing özel arama uç noktanızı çağırma'
 titleSuffix: Azure Cognitive Services
 description: C# SDK kullanarak Bing özel arama örneğinizi arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: scottwhi
-ms.openlocfilehash: 21b192d29f30d66e3d5f0ce6e04317d3ca7c860e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5e932b1ff597fc0170a6bb83841bc6ca7306693a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448709"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Hızlı başlangıç: C# SDK kullanarak Bing özel arama uç noktanızı çağırma 
 
 C# SDK 'yı kullanarak Bing özel arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bing Özel Arama birçok programlama dili ile uyumlu bir REST API sahip olsa da Bing Özel Arama SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch)' da bulunabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)

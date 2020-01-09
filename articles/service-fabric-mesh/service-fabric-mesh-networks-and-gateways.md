@@ -1,50 +1,41 @@
 ---
-title: Azure Service Fabric ağ giriş | Microsoft Docs
-description: Ağların, ağ geçitleri ve Service Fabric Mesh içinde akıllı trafik yönlendirme hakkında bilgi edinin.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Azure Service Fabric ağı 'na giriş
+description: Service Fabric ağı 'nda ağlar, ağ geçitleri ve akıllı trafik yönlendirmesi hakkında bilgi edinin.
 author: dkkapur
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459142"
 ---
-# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh uygulamalarda ağ giriş
-Bu makalede, yük Dengeleyiciler farklı türleri, ağ ağ geçitleri ile uygulamalarınızı diğer ağlara nasıl bağlanacağını ve uygulamalarınızda Hizmetleri arasındaki trafik nasıl yönlendirileceğini açıklar.
+# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric kafes uygulamalarında ağa giriş
+Bu makalede, farklı türlerde yük dengeleyiciler, ağ geçitlerinin ağ uygulamalarınızı diğer ağlara nasıl bağlanacağı ve uygulamalardaki hizmetler arasında trafiğin nasıl yönlendirildiği açıklanmaktadır.
 
-## <a name="layer-4-vs-layer-7-load-balancers"></a>Katman 4 vs katman 7 yük Dengeleyiciler
-Farklı katmanlarda, Yük Dengeleme yapılabilir [OSI modeli](https://en.wikipedia.org/wiki/OSI_model) ağ genellikle, 4 (L4) ve katman 7 (L7) katman.  Genellikle, yük Dengeleyiciler iki tür vardır:
+## <a name="layer-4-vs-layer-7-load-balancers"></a>Katman 4 vs katman 7 yük dengeleyiciler
+Yük Dengeleme, genellikle katman 4 ' te (L4) ve katman 7 ' de (L7) ağ için [OSI modelinde](https://en.wikipedia.org/wiki/OSI_model) farklı katmanlarda gerçekleştirilebilir.  Genellikle, iki tür yük dengeleyici vardır:
 
-- L4 bir yük dengeleyici ile hiçbir şekilde içerik paketlerinin paketlerin teslim ile ilgilidir ağ aktarım katmanında çalışır. Dengeleme ölçütü için IP adresleri ve bağlantı noktaları sınırlı yalnızca paket üst bilgilerini yük dengeleyici tarafından incelenir. Örneğin, bir istemci, yük dengeleyici için TCP bağlantısı sağlar. Yük Dengeleyici (doğrudan SYN için yanıt vererek) bağlantıyı sonlandırır, bir arka uç seçer ve (yeni SYN gönderir) arka uç için yeni bir TCP bağlantı kurar. L4 bir yük dengeleyici genellikle yalnızca L4 TCP/UDP bağlantı veya oturumun düzeyinde çalışır. Böylece Yük Dengeleme bayt geçici olarak yeniden yönlendirir ve bayt aynı oturumundan aynı arka uç Rüzgar emin olmanızı sağlar. L4 yük dengeleyici, taşıma bayt tüm uygulama ayrıntılarını farkında değil. Herhangi bir uygulama protokolü bayt olabilir.
+- Bir L4 yük dengeleyici, paketlerin içeriğiyle ilgili olmayan paketlerin tesliminde ilgilenen ağ aktarım katmanında çalışmaktadır. Yük dengeleyici tarafından yalnızca paket üstbilgileri inceleniyor, bu nedenle dengeleme ölçütleri IP adresleriyle ve bağlantı noktalarıyla sınırlandırılır. Örneğin, bir istemci yük dengeleyiciye TCP bağlantısı yapar. Yük dengeleyici bağlantıyı sonlandırır (doğrudan SYN 'a yanıt vererek), bir arka uç seçer ve arka uca yeni bir TCP bağlantısı yapar (yeni bir SYN gönderir). Bir L4 yük dengeleyici tipik olarak yalnızca L4 TCP/UDP bağlantısı veya oturumu düzeyinde çalışır. Bu nedenle, Yük Dengeleme baytları etrafında yeniden yönlendirir ve aynı oturumdaki baytların aynı arka uçta de gezinmesini sağlar. L4 yük dengeleyici, taşınmakta olduğu baytların uygulama ayrıntılarının farkında değildir. Baytlar herhangi bir uygulama protokolü olabilir.
 
-- Bir L7 yük dengeleyici, her paket içerik oluşturulmasıyla uygulama katmanında çalışır. HTTP, HTTPS ve WebSockets gibi protokoller anlayan çünkü paket içeriği olup olmadığını denetler. Bu yük dengeleyici Gelişmiş yönlendirme gerçekleştirmenize olanak sağlar. Örneğin, bir istemci, yük dengeleyici tek bir HTTP/2 TCP bağlantı sağlar. Yük Dengeleyici, ardından iki arka uç bağlantı devam eder. İstemci, yük dengeleyiciye iki HTTP/2 akışları gönderdiğinde, bir akış bir arka uca gönderilen ve akış iki arka uç iki gönderilir. Bu nedenle, hatta çok farklı istek yükü olan istemciler çoğullama verimli bir şekilde arka uçlar arasında dengelenir. 
+- Bir L7 yük dengeleyici, her bir paketin içeriğiyle ilgilenen uygulama katmanında çalışmaktadır. HTTP, HTTPS veya WebSockets gibi protokolleri anladığından paket içeriğini inceler. Bu, yük dengeleyiciye gelişmiş yönlendirme gerçekleştirme olanağı sunar. Örneğin, bir istemci yük dengeleyiciye tek bir HTTP/2 TCP bağlantısı yapar. Yük dengeleyici daha sonra iki arka uç bağlantısı yapmaya devam eder. İstemci yük dengeleyiciye iki HTTP/2 akışı gönderdiğinde, bir akış arka uca bir gönderilir ve iki akış ikiye uca gönderilir. Bu nedenle, büyük ölçüde farklı istek yükleri olan çoğullama istemcileri bile arka uçlarda verimli bir şekilde dengelenir. 
 
 ## <a name="networks-and-gateways"></a>Ağlar ve ağ geçitleri
-İçinde [Service Fabric kaynak modeli](service-fabric-mesh-service-fabric-resources.md), bir ağ kaynak, bağımsız olarak, bağımlılık olarak başvurduğu bir uygulama veya hizmet kaynak ayrı ayrı dağıtılabilen bir kaynak değildir. İnternet'e açık olan ağ uygulamaları için oluşturmak üzere kullanılır. Birden çok farklı uygulamalar hizmetlerinden aynı ağın bir parçası olabilir. Bu özel ağ oluşturulur ve Service Fabric tarafından yönetilen ve bir Azure sanal ağı (VNET) değil. Uygulamaları dinamik olarak eklenebilir ve etkinleştirmek ve sanal AĞA bağlantı devre dışı bırakmak için ağ kaynağı kaldırıldı. 
+[Service Fabric kaynak modelinde](service-fabric-mesh-service-fabric-resources.md), bir ağ kaynağı, bağımlılığı olarak başvurabilen bir uygulama veya hizmet kaynağıyla bağımsız olarak tek tek dağıtılabilir bir kaynaktır. İnternet 'e açık uygulamalarınız için bir ağ oluşturmak üzere kullanılır. Farklı uygulamalardan gelen birden çok hizmet aynı ağın parçası olabilir. Bu özel ağ Service Fabric tarafından oluşturulup yönetilir ve bir Azure sanal ağı (VNET) değildir. VNET bağlantısını etkinleştirmek ve devre dışı bırakmak için uygulamalar, ağ kaynağından dinamik olarak eklenebilir ve kaldırılabilir. 
 
-Bir ağ geçidi, iki ağ arasında köprü kuracak şekilde kullanılır. Ağ geçidi kaynağı dağıtan bir [Envoy proxy](https://www.envoyproxy.io/) L4 yönlendirme için herhangi bir iletişim kuralı ve L7 Gelişmiş HTTP (S) uygulama yönlendirme için yönlendirme sağlar. Ağ geçidi, ağınızda bir dış ağ trafiği yönlendirir ve trafiği yönlendirmek için hizmet belirler.  Dış ağ, (temelde, genel internet) açık bir ağ veya, diğer Azure uygulamalarınızın ve kaynaklarınızın ile bağlanmanıza olanak tanıyan bir Azure sanal ağı olabilir. 
+Ağ Geçidi, iki ağı köprülemek için kullanılır. Ağ Geçidi kaynağı, gelişmiş HTTP (ler) uygulama yönlendirmesi için herhangi bir protokol ve L7 yönlendirmesi için L4 yönlendirmesi sağlayan bir [Envoy proxy](https://www.envoyproxy.io/) dağıtır. Ağ Geçidi, trafiği bir dış ağdan ağınıza yönlendirir ve trafiğin hangi hizmete yönlendirileceğini belirler.  Dış ağ, diğer Azure uygulamalarınıza ve kaynaklarınıza bağlanmanızı sağlayan açık bir ağ (temelde, genel İnternet) veya bir Azure sanal ağı olabilir. 
 
 ![Ağ ve ağ geçidi][Image1]
 
-İle ağ kaynak oluşturulduğunda `ingressConfig`, genel bir IP ağ kaynağına atanır. Genel IP için ağ kaynağı ömrünü bağlanır.
+Ağ kaynağı `ingressConfig`ile oluşturulduğunda, ağ kaynağına genel IP atanır. Genel IP, ağ kaynağının kullanım ömrüne bağlı olacaktır.
 
-Mesh uygulaması oluştururken, mevcut bir ağ kaynağına başvurmalıdır. Yeni genel bağlantı noktaları eklenebilir veya var olan bağlantı noktaları giriş yapılandırmasından kaldırılabilir. Uygulama kaynağı kendisine başvuran bir ağ kaynağı için bir silme başarısız olur. Uygulama silindiğinde, ağ kaynağı kaldırıldı.
+Bir kafes uygulaması oluşturulduğunda, var olan bir ağ kaynağına başvurmalıdır. Yeni genel bağlantı noktaları eklenebilir veya mevcut bağlantı noktaları giriş yapılandırmasından kaldırılabilir. Bir uygulama kaynağına başvuruyorsa bir ağ kaynağına yönelik silme işlemi başarısız olur. Uygulama silindiğinde, ağ kaynağı kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-Service Fabric Mesh hakkında daha fazla bilgi için genel bakış okuyun:
-- [Service Fabric Mesh genel bakış](service-fabric-mesh-overview.md)
+Service Fabric ağ hakkında daha fazla bilgi edinmek için genel bakışı okuyun:
+- [Service Fabric kafese bakış](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-networks-and-gateways/NetworkAndGateway.png

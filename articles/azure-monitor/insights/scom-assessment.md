@@ -4,15 +4,15 @@ description: Düzenli aralıklarla ortamlarınızın riskini ve durumunu değerl
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402861"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Sistem Durumu Denetimi (Önizleme) çözümü ile ortamınızı iyileştirin
 
@@ -32,9 +32,9 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 ![System Center Operations Manager Sistem Durumu Denetimi panosu](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
-## <a name="installing-and-configuring-the-solution"></a>Çözümü yükleme ve yapılandırma
+## <a name="installing-and-configuring-the-solution"></a>Çözümünü yükleme ve yapılandırma
 
-Çözüm, Microsoft System Center 2012 Operations Manager hizmet paketi 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager ve Microsoft System ile birlikte kullanılabilir Merkez Operations Manager 1807
+Çözüm, Microsoft System Center 2012 Operations Manager hizmet paketi 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager ve Microsoft System ile birlikte kullanılabilir Merkez Operations Manager 1807. Her yönetim sunucusunda .NET Framework 4.6.2 desteklenen bir sürümü yüklü olmalıdır.
 
 Çözümü yüklemek ve yapılandırmak için aşağıdaki bilgileri kullanın.
 
@@ -83,7 +83,7 @@ Devam etmeden önce farklı çalıştır hesabının aşağıdaki gereksinimleri
 4. **Genel Özellikler** sayfasında, **Farklı Çalıştır hesap türü:** listesinde **Windows** ' u seçin.
 5. **Görünen ad** metin kutusuna bir görünen ad yazın ve isteğe bağlı olarak **Açıklama** kutusuna bir açıklama yazın ve ardından **İleri**' ye tıklayın.
 6. **Dağıtım güvenliği** sayfasında **daha güvenli**' i seçin.
-7. **Oluştur**’a tıklayın.  
+7. **Oluştur**'a tıklayın.  
 
 Farklı Çalıştır hesabı oluşturuldığına göre, yönetim grubundaki yönetim sunucularını hedeflemek ve iş akışlarının kimlik bilgileri kullanılarak çalışması için önceden tanımlanmış bir Farklı Çalıştır profiliyle ilişkilendirilmesi gerekir.  
 

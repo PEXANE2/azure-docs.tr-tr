@@ -8,26 +8,27 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 156999c6b6d8451516ac1c0f095e1a864420d0b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354826"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Azure Data Lake Storage 2. Power BI kullanarak verileri çözümleme
 
 Bu makalede, hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan bir depolama hesabında depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
 > * Hiyerarşik bir ad alanına sahip bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
-> Bu makalede adlı `myadlsg2`bir hesap oluşturduğunuz varsayılır.
-> * Depolama hesabınızda bulunan adlı `Drivers.txt` örnek bir veri dosyası.
+> Bu makalede, `myadlsg2`adlı bir hesap oluşturduğunuzu varsaymış olursunuz.
+> * Depolama hesabı için aşağıdaki rollerden biri verildi: **BLOB veri okuyucu**, **BLOB veri katılımcısı**veya **BLOB veri sahibi**.
+> * Depolama hesabınızda bulunan `Drivers.txt` adlı örnek bir veri dosyası.
 > Bu örneği [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirebilir ve ardından bu dosyayı depolama hesabınıza yükleyebilirsiniz.
 > * **Power BI Desktop**. Bunu [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz. 
 
@@ -39,13 +40,13 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     ![Veri Al sayfası](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. **Azure Data Lake Storage 2.** iletişim kutusunda, kapsayıcı uç nokta biçimini kullanarak Azure Data Lake Storage 2. hesabınıza, dosya sistemine veya alt klasörüne URL sağlayabilirsiniz. Data Lake Storage 2. URL 'leri aşağıdaki düzene `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` sahiptir ve ardından **Tamam**' a tıklayın.
+4. **Azure Data Lake Storage 2.** iletişim kutusunda, kapsayıcı uç nokta biçimini kullanarak Azure Data Lake Storage 2. hesabınıza, dosya sistemine veya alt klasörüne URL sağlayabilirsiniz. Data Lake Storage 2. URL 'Leri aşağıdaki `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` düzenine sahiptir ve ardından **Tamam**' a tıklayın.
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 
 5. Sonraki iletişim kutusunda, depolama hesabınızda oturum açmak için **oturum aç** ' a tıklayın. Kuruluşunuzun oturum açma sayfasına yönlendirilirsiniz. Hesapta oturum açmak için istemleri izleyin.
 
-    ![Sayfada oturum aç](media/data-lake-storage-use-power-bi/sign-in.png)
+    ![Oturum açma sayfası](media/data-lake-storage-use-power-bi/sign-in.png)
 
 6. Başarıyla oturum açtıktan sonra **Bağlan**' a tıklayın.
 
@@ -71,7 +72,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 10. **Sorgu Düzenleyicisi**'Nde, **içerik** sütununun altında, **ikili**' a tıklayın. Dosya otomatik olarak CSV olarak algılanır ve aşağıda gösterildiği gibi bir çıktı görmeniz gerekir. Verileriniz artık görselleştirmeler oluşturmak için kullanabileceğiniz bir biçimde sunulmaktadır.
 
-    ![Output](media/data-lake-storage-use-power-bi/binary.png)
+    ![Çıktı](media/data-lake-storage-use-power-bi/binary.png)
 
 11. Şeritteki **giriş** sekmesinde, **Kapat** ve **Uygula**' yı tıklatın ve ardından **Kapat** ve **Uygula**' yı tıklatın.
 

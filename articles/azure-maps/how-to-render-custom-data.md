@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559990"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408908"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
@@ -22,12 +22,14 @@ Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak içi
 
 Özel pushpın 'leri, etiketleri ve geometri yer paylaşımlarını işlemek için Postman uygulamasını kullanabilirsiniz. Yer paylaşımlarını depolamak ve işlemek için Azure Maps [veri hizmeti API 'lerini](https://docs.microsoft.com/rest/api/maps/data) kullanabilirsiniz.
 
+> [!Tip]
+> Azure Haritalar Web SDK 'sını kullanarak, bir Web sayfasında statik görüntü hizmetini kullanmaktan daha basit bir harita göstermek için çok daha uygun maliyetli hale gelir. Web SDK 'Sı harita kutucukları kullanır ve Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, genellikle harita yükü başına bir işlemin yalnızca bir bölümünü oluşturur. Azure Maps web SDK 'sının yatay kaydırmayı ve yakınlaştırmasını devre dışı bırakma seçenekleri olduğunu unutmayın. Ayrıca, Azure Maps web SDK 'Sı statik bir harita Web hizmetinden daha zengin bir veri görselleştirme seçenekleri kümesi sağlar.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
-Bu makaledeki yordamları tamamlayabilmeniz için öncelikle [Hesabı Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri Izleyerek bir Azure Maps hesabı oluşturmanız ve hesabınıza yönelik birincil bir abonelik anahtarı almak için [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izlemeniz gerekir.
+Bu makaledeki yordamları tamamlayabilmeniz için ilk olarak bir Azure haritalar hesabı oluşturmanız ve hesap anahtarını haritalara almanız gerekir. Hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesap aboneliği oluşturun ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Pushpın 'leri etiketlerle ve özel bir görüntüyle işleme

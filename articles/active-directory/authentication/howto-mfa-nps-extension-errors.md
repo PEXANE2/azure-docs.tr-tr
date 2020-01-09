@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425312"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından hata iletilerini çözümleyin
 
@@ -95,6 +95,10 @@ Bu hatalardan biriyle karşılaşırsanız, tanılama yardımı için [desteğe 
 ### <a name="troubleshoot-user-accounts"></a>Kullanıcı hesaplarında sorun giderme
 
 Kullanıcılarınız [iki adımlı doğrulamayla ilgili sorun](../user-help/multi-factor-authentication-end-user-troubleshoot.md)yaşıyorsanız, sorunları kendi kendine tanılamaya yardımcı olur.
+
+### <a name="health-check-script"></a>Sistem durumu denetimi betiği
+
+[Azure MFA NPS uzantısı sistem durumu denetim betiği](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) , NPS uzantısında sorun giderirken temel bir sistem durumu denetimi gerçekleştirmek Için TechNet galerisinde bulunabilir. Betiği çalıştırın ve seçenek 3 ' ü seçin.
 
 ### <a name="contact-microsoft-support"></a>Microsoft Destek'e başvurun
 

@@ -1,70 +1,67 @@
 ---
-title: Azure hızlı başlangıç-Azure Otomasyonu hesabı oluşturma | Microsoft Docs
-description: Azure Otomasyonu hesabı oluşturmayı ve Runbook çalıştırmayı öğrenin
+title: Azure Hızlı Başlangıcı - Azure Otomasyonu hesabı oluşturma | Microsoft Docs
+description: Azure Otomasyonu hesabı oluşturmayı ve runbook çalıştırmayı öğrenin
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 04/04/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 80a175aad3c692a5dfd04c7399211c58134c5164
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: a2d15dd520db16012f530d2ac6188a4642c89795
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421652"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
 
-Azure Otomasyonu hesapları Azure aracılığıyla oluşturulabilir. Bu yöntem, Otomasyon hesaplarını ve ilgili kaynakları oluşturmak ve yapılandırmak için tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Bu hızlı başlangıçta bir Otomasyon hesabı oluşturma ve hesapta bir runbook çalıştırma adımları sağlanır.
+Azure Otomasyonu hesaplarını Azure üzerinden oluşturabilirsiniz. Bu yöntem, Otomasyon hesaplarını ve ilgili kaynakları oluşturup yapılandırmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Bu hızlı başlangıçta Otomasyon hesabı oluşturma ve hesapta runbook çalıştırma adımları ele alınmaktadır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure 'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-@No__t-0 ' da Azure 'da oturum açın
+https://portal.azure.com adresinden Azure'da oturum açın
 
-## <a name="create-automation-account"></a>Otomasyon hesabı oluştur
+## <a name="create-automation-account"></a>Otomasyon hesabı oluşturma
 
-1. Azure 'un sol üst köşesinde bulunan **kaynak oluştur** düğmesine tıklayın.
+1. Azure’ın sol üst köşesinde bulunan **Kaynak oluştur** düğmesine tıklayın.
 
 1. **Yönetim araçları &** seçin ve ardından **Otomasyon**' u seçin.
 
-1. Hesap bilgilerini girin. **Azure farklı çalıştır hesabı oluştur**için **Evet** ' i seçerek Azure 'da kimlik doğrulamasını basitleştirecek yapıtlar otomatik olarak etkinleştirilir. Bir Otomasyon hesabı oluştururken ad, seçildikten sonra değiştirilemez olarak dikkat edilmesi önemlidir. *Otomasyon hesabı adları, bölge ve kaynak grubu başına benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.* Tek bir Otomasyon hesabı, belirli bir kiracının tüm bölgeleri ve abonelikleri genelinde kaynakları yönetebilir. Tamamlandığında, Otomasyon hesabı dağıtımını başlatmak için **Oluştur**' a tıklayın.
+1. Hesap bilgilerini girin. **Azure Farklı Çalıştır hesabı oluştur** alanında **Evet**'i seçerek Azure kimlik doğrulamasını kolaylaştıran yapıtların otomatik olarak etkinleştirilmesini sağlayın. Otomasyon Hesabını oluştururken adın daha sonra değiştirilemeyeceğini unutmayın. *Otomasyon hesabı adları, bölge ve kaynak grubu başına benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.* Bir Otomasyon Hesabı belirli bir kiracı için kaynakları tüm bölgelerde ve aboneliklerde yönetebilir. İşlemi tamamladığınızda Otomasyon hesabı dağıtımını başlatmak için **Oluştur**'a tıklayın.
 
-    ![Otomasyon hesabınızla ilgili bilgileri sayfaya girin](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
+    ![Otomasyon hesabınız hakkındaki bilgileri sayfaya girin](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
-    > Bir Otomasyon hesabı dağıtabilmeniz için bir Otomasyon hesabı dağıtabileceğiniz konumların güncelleştirilmiş bir listesi için, [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
+    > Otomasyon Hesabı dağıtabileceğiniz konumların güncel listesi için bkz. [Bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
 
 1. Dağıtım tamamlandığında, **tüm hizmetler**' e tıklayın, **Otomasyon hesapları** ' nı seçin ve oluşturduğunuz Otomasyon hesabını seçin.
 
     ![Otomasyon hesabına genel bakış](./media/automation-quickstart-create-account/automation-account-overview.png)
 
-## <a name="run-a-runbook"></a>Runbook 'u çalıştırma
+## <a name="run-a-runbook"></a>Bir runbook'u çalıştırma
 
-Öğretici runbook 'lardan birini çalıştırın.
+Öğretici runbook'larından birini çalıştırın.
 
-1. **Işlem Otomasyonu**altında **runbook 'lar** ' a tıklayın. Runbook 'ların listesi görüntülenir. Varsayılan olarak, hesapta çeşitli öğretici runbook 'lar etkindir.
+1. **SÜREÇ OTOMASYONU**'nın altındaki **Runbook'lar** öğesine tıklayın. Runbook'ların listesi görüntülenir. Varsayılan olarak hesapta etkin halde birden fazla öğretici amaçlı runbook bulunur.
 
-    ![Otomasyon hesabı runbook 'ları listesi](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
+    ![Otomasyon hesabı runbook'larının listesi](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 
-1. **AzureAutomationTutorialScript** runbook 'unu seçin. Bu eylem runbook genel bakış sayfasını açar.
+1. **AzureAutomationTutorialScript** runbook'unu seçin. Runbook'a genel bakış sayfası açılır.
 
-    ![Runbook 'a genel bakış](./media/automation-quickstart-create-account/automation-tutorial-script-runbook-overview.png)
+    ![Runbook'a genel bakış](./media/automation-quickstart-create-account/automation-tutorial-script-runbook-overview.png)
 
-1. **Başlat**' a tıklayın ve **runbook 'U Başlat** sayfasında **Tamam** ' a tıklayarak runbook 'u başlatın.
+1. **Başlat**'a tıklayın ve **Runbook'u Başlat** sayfasında **Tamam**'ı seçerek runbook'u başlatın.
 
-    ![Runbook iş sayfası](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
+    ![Runbook işi sayfası](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. **İş durumu** **çalışmaya**başladıktan sonra, runbook Iş çıkışını görüntülemek için **Çıkış** ' a veya **Tüm Günlükler** ' e tıklayın. Bu öğretici runbook 'u için çıkış, Azure kaynaklarınızın bir listesidir.
+1. **İş durumu**, **Çalışıyor** olarak değiştikten sonra runbook işi çıktısını görüntülemek için **Çıktı** veya **Tüm Günlükler**'e tıklayın. Bu öğretici runbook'u için çıktıda Azure kaynaklarınızın listesi yer alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Otomasyon hesabı dağıtıldı, bir runbook işi başlattı ve iş sonuçları görüntülendi. Azure Otomasyonu hakkında daha fazla bilgi edinmek için ilk Runbook 'unuzu oluşturmaya yönelik hızlı başlangıç ile devam edin.
+Bu hızlı başlangıçta bir Otomasyon hesabı dağıttınız, runbook işi başlattınız ve iş sonuçlarını görüntülediniz. Azure Otomasyonu hakkında daha fazla bilgi edinmek için ilk runbook'unuzu oluşturmanızı sağlayacak hızlı başlangıç sayfasına gidin.
 
 > [!div class="nextstepaction"]
-> [Otomasyon hızlı başlangıcı-runbook oluşturma](./automation-quickstart-create-runbook.md)
+> [Otomasyon Hızlı Başlangıcı - Runbook Oluşturma](./automation-quickstart-create-runbook.md)
 

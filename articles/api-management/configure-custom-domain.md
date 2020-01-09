@@ -1,5 +1,6 @@
 ---
-title: Azure API Management örneğiniz için özel bir etki alanı adı yapılandırma | Microsoft Docs
+title: Azure API Management örneği için özel etki alanı adı yapılandırma
+titleSuffix: Azure API Management
 description: Bu konu başlığı altında, Azure API Management örneğiniz için özel bir etki alanı adının nasıl yapılandırılacağı açıklanmaktadır.
 services: api-management
 documentationcenter: ''
@@ -11,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442540"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -25,7 +26,7 @@ Azure API Management hizmet örneği oluşturduğunuzda Azure, azure-api.net 'in
 > [!WARNING]
 > Uygulamalarının güvenliğini geliştirmek için sertifika sabitleme kullanmak isteyen müşterilerin, varsayılan sertifikayı değil, yönettikleri bir özel etki alanı > adı ve sertifika kullanması gerekir. Bunun yerine varsayılan sertifikayı sabitletirecek müşteriler, denetimi olmadıkları sertifikanın özelliklerine > ve bu önerilen bir uygulama değildir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
@@ -73,7 +74,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     >
     > Sertifika, otomatik döndürme olarak ayarlandıysa, API Management hizmetin herhangi bir kesinti süresi olmadan en son sürümü otomatik olarak seçer (API Management katmanınızda, geliştirici katmanı hariç tüm katmanlarda SLA-i. e.).
 
-1. Uygula ' ya tıklayın.
+1. Uygula'ya tıklayın.
 
     > [!NOTE]
     > Sertifikayı atama işlemi, dağıtımın boyutuna bağlı olarak 15 dakika veya daha fazla sürebilir. Geliştirici SKU 'SU kapalı, temel ve daha yüksek SKU 'Ların kapalı kalma süresi yoktur.

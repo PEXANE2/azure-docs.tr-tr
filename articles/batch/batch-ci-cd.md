@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449810"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC çözümleri derlemek ve dağıtmak için Azure Pipelines kullanma
 
@@ -52,7 +52,7 @@ Bu örnekte kullanılan CODEBASE yapısı aşağıdakine benzer;
 Bu bölüm, sürüm denetimi ve Kaynak Yöneticisi şablonlarını tasarlama hakkında bilgi sahibi olduğunuzu varsayar. Bu kavramları bilmiyorsanız, daha fazla bilgi için aşağıdaki sayfalara bakın.
 
 * [Kaynak denetimi nedir?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Azure Resource Manager şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
@@ -393,12 +393,12 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
     * **Applicationstorageaccountname**: HPC uygulama ikililerini barındıracak depolama hesabının adı
     * **Batchaccountapplicationname**: Azure Batch hesabındaki uygulamanın adı
     * **Batchaccountname**: Azure Batch hesabının adı
-    * **Batchaccountpoolname**: İşlem yapan VM havuzunun adı
-    * **Batchapplicationıd**: Azure Batch uygulamasının benzersiz KIMLIĞI
+    * **Batchaccountpoolname**: Işlemeyi yapan VM havuzunun adı
+    * **Batchapplicationıd**: Azure Batch uygulama IÇIN benzersiz kimlik
     * **Batchapplicationversion**: Batch uygulamanızın anlamsal sürümü (yani, FFmpeg ikilileri)
-    * **konum**: Dağıtılacak Azure kaynakları için konum
-    * **Resourcegroupname**: Oluşturulacak kaynak grubunun adı ve kaynaklarınızın dağıtılacağı yer
-    * **storageAccountName**: Bağlı Kaynak Yöneticisi şablonlarını barındıracak depolama hesabının adı
+    * **konum**: dağıtılacak Azure kaynakları için konum
+    * **Resourcegroupname**: oluşturulacak kaynak grubunun adı ve kaynaklarınızın dağıtılacağı konum
+    * **storageAccountName**: bağlı kaynak yöneticisi şablonlarını barındıracak depolama hesabının adı
 
     ![Azure Pipelines yayını için ayarlanan değişkenler örneği](media/batch-ci-cd/Release-4.jpg)
 
@@ -416,7 +416,7 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
     **Azure Kaynak grubu dağıtım** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Kaynak Yöneticisi şablonları için depolama hesabı dağıtma
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Eylem**: Kaynak grubu oluşturma veya güncelleştirme
+    * **Eylem**: kaynak grubu oluştur veya güncelleştir
     * **Kaynak grubu**: $ (resourcegroupname)
     * **Konum**: $ (konum)
     * **Şablon**: $ (System. ArtifactsDirectory)/ **{Yourazurerepoartifactsourcealias}** /ARM-Templates/storageaccount.exe
@@ -428,7 +428,7 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
     * **Kaynak:** $ (System. ArtifactsDirectory)/ **{Yourazurerepoartifactsourcealias}** /ARM-Templates/
     * **Azure bağlantı türü**: Azure Resource Manager
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Hedef türü**: Azure Blob
+    * **Hedef türü**: Azure blobu
     * **RM depolama hesabı**: $ (storageAccountName)
     * **Kapsayıcı adı**: Şablonlar
     * **Depolama kapsayıcısı URI 'si**: templatecontaineruri
@@ -439,11 +439,11 @@ Altyapıyı dağıtmaya yönelik birkaç adım vardır. [Bağlantılı şablonla
     **Azure Kaynak grubu dağıtım** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Azure Batch dağıt
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Eylem**: Kaynak grubu oluşturma veya güncelleştirme
+    * **Eylem**: kaynak grubu oluştur veya güncelleştir
     * **Kaynak grubu**: $ (resourcegroupname)
     * **Konum**: $ (konum)
     * **Şablon**: $ (System. ArtifactsDirectory)/ **{Yourazurerepoartifactsourcealias}** /ARM-Templates/Deployment.exe
-    * **Şablon parametrelerini geçersiz kıl**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Şablon parametrelerini geçersiz kıl**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Azure Key Vault görevleri kullanmak yaygın bir uygulamadır. Hizmet sorumlusu (Azure aboneliğinize bağlantı) uygun bir erişim ilkeleri ayarlandıysa, bir Azure Key Vault parolaları indirebilir ve işlem hattınızda değişken olarak kullanılabilir. Gizli anahtar adı, ilişkili değerle ayarlanır. Örneğin, sürüm tanımında sshPassword 'ın gizli anahtarı $ (sshPassword) ile birlikte başvurulmalıdır.
 
@@ -452,16 +452,16 @@ Azure Key Vault görevleri kullanmak yaygın bir uygulamadır. Hizmet sorumlusu 
     **Azure CLI** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Azure Batch hesapta uygulama oluştur
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Betik konumu**: Satır içi betik
-    * **Satır Içi betik**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Betik konumu**: satır içi betik
+    * **Satır Içi betik**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. İkinci adım, ilişkili paketleri uygulamaya yüklemek için kullanılır. Bu durumda, FFmpeg dosyaları.
 
     **Azure CLI** görevini ekleyin ve aşağıdaki özellikleri ayarlayın:
     * **Görünen ad:** Paketi Azure Batch hesaba yükle
     * **Azure aboneliği:** Uygun Azure aboneliğini seçin
-    * **Betik konumu**: Satır içi betik
-    * **Satır Içi betik**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Betik konumu**: satır içi betik
+    * **Satır Içi betik**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Uygulama paketinin sürüm numarası bir değişkene ayarlı. Bu, paketin önceki sürümlerinin üzerine yazılması sizin için işe yarar ve Azure Batch gönderilen paketin sürüm numarasını el ile denetlemek istiyorsanız kullanışlıdır.
@@ -478,8 +478,8 @@ Ortam kurulduktan sonra, aşağıdaki testlerin başarıyla tamamlandıklarını
 
 PowerShell komut isteminden Azure CLı kullanarak yeni Azure Batch hesabına bağlanın.
 
-* Azure hesabınızda ile `az login` oturum açın ve kimlik doğrulaması için yönergeleri izleyin.
-* Şu anda Batch hesabının kimliğini doğrulayın:`az batch account login -g <resourceGroup> -n <batchAccount>`
+* Azure hesabınızda `az login` oturum açın ve kimlik doğrulaması için yönergeleri izleyin.
+* Şu anda Batch hesabının kimliğini doğrulayın: `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Kullanılabilir uygulamaları listeleyin
 
@@ -493,7 +493,7 @@ az batch application list -g <resourcegroup> -n <batchaccountname>
 az batch pool list
 ```
 
-Bu komutun çıktısından değerini `currentDedicatedNodes` aklınızda edin. Bu değer bir sonraki testte ayarlanır.
+Bu komutun çıktısından `currentDedicatedNodes` değerini aklınızda edin. Bu değer bir sonraki testte ayarlanır.
 
 #### <a name="resize-the-pool"></a>Havuzu yeniden boyutlandır
 

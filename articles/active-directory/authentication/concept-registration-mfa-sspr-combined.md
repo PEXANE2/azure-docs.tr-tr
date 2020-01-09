@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425336"
 ---
 # <a name="combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydı (Önizleme)
 
@@ -49,15 +49,15 @@ Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri deste
 
 |   | Kaydol | Değiştir | Sil |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Yes |
-| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Yes |
-| Donanım belirteci | Hayır | Hayır | Yes |
-| Telefon | Yes | Yes | Yes |
-| Alternatif telefon | Yes | Yes | Yes |
+| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
+| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
+| Donanım belirteci | Hayır | Hayır | Evet |
+| Telefon | Evet | Evet | Evet |
+| Alternatif telefon | Evet | Evet | Evet |
 | Ofis telefonu | Hayır | Hayır | Hayır |
-| E-posta | Yes | Yes | Yes |
-| Güvenlik soruları | Yes | Hayır | Yes |
-| Uygulama parolaları | Yes | Hayır | Yes |
+| E-posta | Evet | Evet | Evet |
+| Güvenlik soruları | Evet | Hayır | Evet |
+| Uygulama parolaları | Evet | Hayır | Evet |
 
 > [!NOTE]
 > Uygulama parolaları yalnızca Multi-Factor Authentication için zorlanan kullanıcılar tarafından kullanılabilir. Uygulama parolaları, koşullu erişim ilkesi aracılığıyla Multi-Factor Authentication için etkinleştirilen kullanıcılar tarafından kullanılamaz.
@@ -95,7 +95,7 @@ Kullanıcılara güvenlik bilgilerini kaydetmek veya yenilemek için istenen çe
 
 Kayıt zorlandığında, kullanıcılara en az Multi-Factor Authentication ve SSPR ilkeleriyle uyumlu olması için gereken en az sayıda yöntem gösterilir.
 
-Örnek:
+Örneğin:
 
 - Bir Kullanıcı SSPR için etkinleştirilmiştir. SSPR ilkesi, mobil uygulama kodu, e-posta ve telefon 'i sıfırlamak ve etkinleştirmek için iki yöntem gerektirir.
    - Bu kullanıcının iki yöntemi kaydetmesi gerekir.
@@ -108,7 +108,7 @@ Bu akış çizelgesi, oturum açma sırasında kaydolmak üzere kesintiye uğrad
 
 Hem Multi-Factor Authentication hem de SSPR etkinse, Multi-Factor Authentication kayıt uygulanmasını öneririz.
 
-SSPR ilkesi, kullanıcıların güvenlik bilgilerini düzenli aralıklarla incelemesini gerektiriyorsa, oturum açma işlemi sırasında kullanıcılar kesintiye uğrar ve tüm kayıtlı yöntemleri gösterilir. Güncel bilgileri güncellerse, güncel bilgileri doğrulayabilirler veya gerekirse değişiklik yapabilirler.
+SSPR ilkesi, kullanıcıların güvenlik bilgilerini düzenli aralıklarla incelemesini gerektiriyorsa, oturum açma işlemi sırasında kullanıcılar kesintiye uğrar ve tüm kayıtlı yöntemleri gösterilir. Güncel bilgileri güncellerse, güncel bilgileri doğrulayabilirler veya gerekirse değişiklik yapabilirler. Bu sayfaya erişirken kullanıcıların Multi-Factor Authentication gerçekleştirmesi gerekir.
 
 ### <a name="manage-mode"></a>Yönetim modu
 

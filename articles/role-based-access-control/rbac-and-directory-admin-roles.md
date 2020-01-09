@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803155"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357540"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klasik abonelik yönetici rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri
 
@@ -50,7 +50,7 @@ Hesap Yöneticisi, Hizmet Yöneticisi ve Ortak Yönetici, Azure'daki üç klasik
 
 Azure portal, ortak yöneticileri yönetebilir veya **Klasik Yöneticiler** sekmesini kullanarak hizmet yöneticisini görüntüleyebilirsiniz.
 
-![Azure portal Azure klasik abonelik yöneticileri](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![Azure portal Azure klasik abonelik yöneticileri](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
 Azure portal, hizmet yöneticisini görüntüleyebilir veya değiştirebilir veya hesap yöneticisini aboneliğinizin Özellikler dikey penceresinde görüntüleyebilirsiniz.
 
@@ -70,7 +70,7 @@ Hesaplar ve abonelikler [Azure Hesap Merkezi](https://account.azure.com/Subscrip
 
 ## <a name="azure-rbac-roles"></a>Azure RBAC rolleri
 
-Azure RBAC, [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)'ı temel alan, işlem ve depolama gibi Azure kaynakları için ayrıntılı erişim yönetimi sağlayan bir yetkilendirme sistemidir. Azure RBAC'de 70'in üzerinde yerleşik rol bulunur. Dört temel RBAC rolü vardır. İlk üçü tüm kaynak türleri için geçerlidir:
+Azure RBAC, [Azure Resource Manager](../azure-resource-manager/management/overview.md)'ı temel alan, işlem ve depolama gibi Azure kaynakları için ayrıntılı erişim yönetimi sağlayan bir yetkilendirme sistemidir. Azure RBAC'de 70'in üzerinde yerleşik rol bulunur. Dört temel RBAC rolü vardır. İlk üçü tüm kaynak türleri için geçerlidir:
 
 | Azure RBAC rolü | İzinler | Notlar |
 | --- | --- | --- |

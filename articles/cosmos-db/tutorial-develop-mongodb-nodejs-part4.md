@@ -1,6 +1,5 @@
 ---
-title: Angular bir uygulamayı Azure Cosmos DB API'si ile MongoDB için oluşturma - Cosmos hesabı oluşturma
-titleSuffix: Azure Cosmos DB
+title: MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma (part1)
 description: Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturma öğreticisi dizisinin 4. bölümü
 author: johnpapa
 ms.service: cosmos-db
@@ -11,28 +10,28 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8320204f75e583dae0449f83e7c38f6638371c2a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441163"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Angular bir uygulamayı Azure Cosmos DB API'si ile MongoDB için oluşturma - Cosmos hesabı oluşturma
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Cosmos hesabı oluşturma
 
-Bu çok bölümlü öğretici, Express ve Angular ile Node.js kullanılarak yazılmış yeni bir uygulama oluşturun ve buna bağlanmak gösterilmektedir, [MongoDB için Cosmos DB API'si ile yapılandırılan Cosmos hesabı](mongodb-introduction.md).
+Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Öğreticinin 4. bölümünde [3. bölümdeki](tutorial-develop-mongodb-nodejs-part3.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
 > [!div class="checklist"]
 > * Azure CLI kullanarak bir Azure kaynak grubu oluşturma
-> * Azure CLI kullanarak Cosmos hesabı oluşturma
+> * Azure CLı kullanarak Cosmos hesabı oluşturma
 
 ## <a name="video-walkthrough"></a>Görüntülü kılavuz
 
 > [!VIDEO https://www.youtube.com/embed/hfUM-AbOh94]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticinin bu bölümüne başlamadan önce öğreticinin [3. bölümündeki](tutorial-develop-mongodb-nodejs-part3.md) adımları tamamladığınızdan emin olun. 
 

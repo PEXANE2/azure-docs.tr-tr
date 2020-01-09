@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975100"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353590"
 ---
 # <a name="about-point-to-site-vpn"></a>Noktadan siteye VPN hakkında
 
@@ -51,11 +51,11 @@ Yerel Azure AD kimlik doğrulamasıyla, VPN için Multi-Factor Authentication (M
 
 Yüksek düzeyde, Azure AD kimlik doğrulamasını yapılandırmak için aşağıdaki adımları gerçekleştirmeniz gerekir:
 
-[1. bir Azure AD kiracısı yapılandırma](openvpn-azure-ad-tenant.md)
+1. [Azure AD kiracısı yapılandırma](openvpn-azure-ad-tenant.md)
 
-[2. ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirin](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirme](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. Azure VPN Istemcisini indirme ve yapılandırma (Önizleme)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN Istemcisini indirme ve yapılandırma (Önizleme)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) etki alanı sunucusu kullanarak kimlik doğrulama
@@ -67,10 +67,6 @@ RADIUS sunucusu şirket içinde veya Azure VNET 'te dağıtılabilir. Kimlik do�
 RADIUS sunucusu, AD Sertifika Hizmetleri ile de tümleştirilebilir. Bu, Azure sertifika kimlik doğrulamasına alternatif olarak, RADIUS sunucusunu ve P2S sertifika kimlik doğrulaması için kuruluş sertifika dağıtımınızı kullanmanıza olanak sağlar. Bunun avantajı, kök sertifikaları ve iptal edilen sertifikaları Azure 'a yüklemeniz gerekmez.
 
 Bir RADIUS sunucusu diğer dış kimlik sistemleriyle de tümleştirilebilir. Bu, Multi-Factor seçenekleri de dahil olmak üzere P2S VPN için birçok kimlik doğrulama seçeneği açar.
-
->[!NOTE]
->**OpenVPN® Protokolü** RADIUS kimlik doğrulamasıyla desteklenmez.
->
 
 ![Noktadan siteye](./media/point-to-site-about/p2s.png "Uçtan Siteye")
 

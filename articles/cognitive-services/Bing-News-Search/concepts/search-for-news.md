@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 06/19/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448558"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Bing Haber Arama API'si haberleri arayın
 
@@ -107,7 +107,7 @@ Bing haber makalesinin kategorisini belirleyebiliyorsa, makale `category` alanı
 
 ## <a name="get-todays-top-news"></a>Bugünün en iyi haberlerini alın
 
-Günümüzün en popüler haber makalelerini almak için, aynı genel haber isteğini daha önce olduğu gibi gönderebilirsiniz ve `q` parametreyi yok edin.
+Günümüzün en popüler haber makalelerini almak için, aynı genel haber isteğini daha önce olduğu gibi gönderebilirsiniz, `q` parametresi ayarı ayarını bırakır.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-En iyi haberleri alma yanıtı, genel haberleri alma ile neredeyse aynıdır. Ancak, belirli sayıda sonuç olduğu için `news` yanıtı `totalEstimatedMatches` alanını içermez. En önemli haber makalelerinin sayısı, haber döngüsüne bağlı olarak farklılık gösterebilir. Makaleyi kullanmak `provider` için alanı kullandığınızdan emin olun.
+En iyi haberleri alma yanıtı, genel haberleri alma ile neredeyse aynıdır. Ancak, belirli sayıda sonuç olduğu için `news` yanıtı `totalEstimatedMatches` alanını içermez. En önemli haber makalelerinin sayısı, haber döngüsüne bağlı olarak farklılık gösterebilir. Makaleyi özniteliğe eklemek için `provider` alanını kullandığınızdan emin olun.
 
 ## <a name="get-news-by-category"></a>Kategoriye göre haberleri al
 

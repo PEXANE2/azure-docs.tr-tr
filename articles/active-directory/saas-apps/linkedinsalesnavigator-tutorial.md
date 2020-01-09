@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: LinkedIn Sales Navigator ile Azure Active Directory Tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve LinkedIn Sales Navigator arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici Azure Active Directory: LinkedIn Sales Navigator ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve LinkedIn Sales Navigator arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,249 +13,179 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ce83df4d4de6d7816ee969a4fee153ad5457d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d8293b23559860e70191576db13c3cd14f520e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098007"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430894"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Öğretici: LinkedIn Sales Navigator ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Öğretici: LinkedIn Sales Navigator ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu öğreticide, LinkedIn Sales Navigator Azure Active Directory (Azure AD) ile tümleştirmeyi öğrenin.
-LinkedIn Sales Navigator Azure AD ile tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, LinkedIn Sales Navigator 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. LinkedIn Sales Navigator 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* LinkedIn Sales Navigator erişimi, Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) için LinkedIn Sales Navigator oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Azure AD 'de LinkedIn Sales Navigator 'a erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla LinkedIn Sales Navigator 'da otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile LinkedIn Sales Navigator yapılandırmak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* LinkedIn Sales Navigator çoklu oturum açma abonelik etkin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* LinkedIn Sales Navigator çoklu oturum açma (SSO) aboneliği etkin.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* LinkedIn Sales Navigator destekler **SP ve IDP** tarafından başlatılan
+* LinkedIn Sales Navigator **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* LinkedIn Sales Navigator **, tam zamanında** Kullanıcı sağlamayı destekler
+* LinkedIn Sales Navigator [ **Otomatik** Kullanıcı sağlamayı destekler](linkedinsalesnavigator-provisioning-tutorial.md)
 
-* LinkedIn Sales Navigator destekler **zamanında** kullanıcı sağlama
+## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>Galeriden LinkedIn Sales Navigator ekleme
 
-* LinkedIn Sales Navigator destekler [ **otomatik** kullanıcı sağlama](linkedinsalesnavigator-provisioning-tutorial.md)
+LinkedIn Sales Navigator 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize LinkedIn Sales Navigator eklemeniz gerekir.
 
-## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>LinkedIn Sales Navigator galeri ekleme
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **LinkedIn Sales Navigator** yazın.
+1. Sonuçlar panelinden **LinkedIn Sales Navigator** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-Azure AD'de LinkedIn Sales Navigator tümleştirmesini yapılandırmak için LinkedIn Sales Navigator Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>LinkedIn Sales Navigator için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**Galeriden LinkedIn Sales Navigator eklemek için aşağıdaki adımları gerçekleştirin:**
+**B. Simon**adlı bir test kullanıcısı kullanarak LinkedIn Sales Navigator Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, LinkedIn Sales Navigator 'daki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+Azure AD SSO 'yu LinkedIn Sales Navigator ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[LinkedIn Sales NAVIGATOR SSO 'Yu yapılandırma](#configure-linkedin-sales-navigator-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * LinkedIn Sales Navigator **[test kullanıcısı oluşturun](#create-linkedin-sales-navigator-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan LinkedIn Sales Navigator 'da B. Simon 'a karşılık gelen bir.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+1. [Azure Portal](https://portal.azure.com/), **LinkedIn Sales Navigator** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Arama kutusuna **LinkedIn Sales Navigator**seçin **LinkedIn Sales Navigator** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    ![Sonuç listesinde LinkedIn Sales Navigator](common/search-new-app.png)
+    a. **Tanımlayıcı** metin kutusuna **varlık kimliği** değerini girin, bu öğreticide daha sonra AÇıKLANAN LinkedIn portalından varlık kimliği değerini kopyalayacaksınız.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+    b. **Yanıt URL** 'si metin kutusuna, **onaylama TÜKETICI erişimi (ACS) URL 'si** değerini girin, bu öğreticide daha sonra açıklanan LinkedIn portalından, onaylama tüketici erişimi (ACS) URL 'si değerini kopyalayacaksınız.
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma LinkedIn Sales Navigator adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve LinkedIn Sales Navigator ilgili kullanıcı arasında bir bağlantı ilişki kurulması gerekir.
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-Yapılandırma ve Azure AD çoklu oturum açma LinkedIn Sales Navigator ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[LinkedIn Sales Navigator çoklu oturum açmayı yapılandırma](#configure-linkedin-sales-navigator-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[LinkedIn Sales Navigator test kullanıcısı oluşturma](#create-linkedin-sales-navigator-test-user)**  - kullanıcı Azure AD gösterimini bağlı LinkedIn Sales Navigator Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. LinkedIn Sales Navigator uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+    ![image](common/default-attributes.png)
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
-
-Azure AD çoklu oturum açma LinkedIn Sales Navigator ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. İçinde [Azure portalında](https://portal.azure.com/), **LinkedIn Sales Navigator** uygulama tümleştirme sayfasında **çoklu oturum açma**.
-
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
-
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
-
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
-
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu, aşağıdaki adımları gerçekleştirin:
-
-    ![LinkedIn Sales Navigator etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
-
-    a. İçinde **tanımlayıcı** metin kutusuna **varlık kimliği** değeri kopyaladığınız varlık kimliği değeri LinkedIn portalından Bu öğreticinin ilerleyen bölümlerinde açıklanmıştır.
-
-    b. İçinde **yanıt URL'si** metin kutusuna **onaylama tüketici erişim (ACS) URL'si** değeri, LinkedIn portaldan değerini bu öğreticinin ilerleyen bölümlerinde açıklanan onaylama tüketici erişim (ACS) URL'sini kopyalayın.
-
-5. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
-
-    ![LinkedIn Sales Navigator etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
-
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
-
-6. LinkedIn Sales Navigator uygulama, özel öznitelik eşlemelerini SAML belirteci öznitelikleri yapılandırmanıza ekleyin gerektiren belirli bir biçimde SAML onaylamalarını bekler. Varsayılan öznitelikler listesinde aşağıdaki ekran görüntüsünde gösterilmektedir oysa **NameIdentifier** ile eşlenmiş **user.userprincipalname**. LinkedIn Sales Navigator uygulama NameIdentifier ile eşlenmesini bekliyor **user.mail**, öznitelik eşlemesi düzenleme simgesine tıklayarak düzenleme ve öznitelik eşlemesini değiştirmek gerekmez.
-
-    ![image](common/edit-attribute.png)
-
-7. Yukarıdaki için Ayrıca, LinkedIn Sales Navigator uygulama SAML yanıtta geçirilecek birkaç daha fazla öznitelik bekliyor. Kullanıcı taleplerini bölümünde **kullanıcı öznitelikleri** iletişim kutusunda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin tablonun altındaki:
+1. LinkedIn Sales Navigator uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
     | Ad | Kaynak özniteliği|
     | --- | --- |
-    | email| User.Mail |
-    | Bölüm| User.Department |
-    | firstName| User.givenName |
-    | Soyadı| User.surname |
+    | e-posta| Kullanıcı. Mail |
+    | Bölüm| User. Departmanı |
+    | ad| Kullanıcı. |
+    | soyadı| User. soyadı |
+    | Benzersiz kullanıcı tanımlayıcısı | Kullanıcı. Mail |
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
-
-    c. Bırakın **Namespace** boş.
-
-    d. Kaynağı olarak **özniteliği**.
-
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
-
-    f. Tıklayın **Tamam**
-
-    g. **Kaydet**’e tıklayın.
-
-8. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-9. Üzerinde **LinkedIn Sales Navigator kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. **LinkedIn Sales Navigator 'ı ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD Tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum Kapatma URL'si
-
-### <a name="configure-linkedin-sales-navigator-single-sign-on"></a>LinkedIn Sales Navigator çoklu oturum açmayı yapılandırın
-
-1. Farklı bir web tarayıcı penceresinde için oturum açma, **LinkedIn Sales Navigator** yönetici olarak Web sitesi.
-
-1. İçinde **hesap Merkezi**, tıklayın **genel ayarları** altında **ayarları**. Ayrıca, seçin **Sales Navigator** aşağı açılan listeden.
-
-    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
-
-1. Tıklayarak **veya yüklemek ve tek tek alanları formdan kopyalamak için burayı tıklatın** ve aşağıdaki adımları gerçekleştirin:
-
-    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
-
-    a. Kopyalama **varlık kimliği** yapıştırın **tanımlayıcı** metin kutusu **temel SAML yapılandırma** Azure portalında.
-
-    b. Kopyalama **onaylama tüketici erişim (ACS) URL'si** yapıştırın **yanıt URL'si** metin kutusu **temel SAML yapılandırma** Azure portalında.
-
-1. Git **LinkedIn yönetici ayarları** bölümü. Azure portalından tıklayarak yüklediğiniz XML dosyasını karşıya **karşıya yükleme XML dosyası** seçeneği.
-
-    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
-
-1. Tıklayın **üzerinde** SSO'yu etkinleştirmek üzere. SSO durumu değişir **bağlı** için **bağlandı**
-
-    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
-
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
-
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Seçin **yeni kullanıcı** ekranın üstünde.
-
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. İçinde **adı** alana **BrittaSimon**.
-  
-    b. İçinde **kullanıcı adı** alan türü `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
-
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
-Bu bölümde, Azure çoklu oturum açmayı kullanmak için LinkedIn Sales Navigator erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, LinkedIn Sales Navigator 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **LinkedIn Sales Navigator**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **LinkedIn Sales Navigator**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **LinkedIn Sales Navigator**.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesini LinkedIn Sales Navigator bağlantıdaki](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-linkedin-sales-navigator-sso"></a>LinkedIn Sales Navigator SSO 'yu yapılandırma
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. Farklı bir Web tarayıcısı penceresinde, **LinkedIn Sales Navigator** Web sitenizde yönetici olarak oturum açın.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+1. **Hesap Merkezi**'nde **Ayarlar**' ın altında **Genel ayarlar** ' a tıklayın. Ayrıca, açılan listeden **Sales Navigator** ' ı seçin.
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+1. **Formdan tek tek alanları yüklemek ve kopyalamak için tıklayın veya buraya tıklayın** ve aşağıdaki adımları uygulayın:
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+
+    a. **Varlık kimliğini** kopyalayın ve Azure Portal **temel SAML yapılandırmasındaki** **tanımlayıcı** metin kutusuna yapıştırın.
+
+    b. **Onaylama tüketici erişimi (ACS) URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırmasındaki** **yanıt URL 'si** metin kutusuna yapıştırın.
+
+1. **LinkedIn yönetici ayarları** bölümüne gidin. **XML dosyasını karşıya yükle** seçeneğine tıklayarak Azure Portal indirdiğiniz XML dosyasını karşıya yükleyin.
+
+    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+
+1. SSO 'yu **etkinleştirmek için tıklayın** . SSO durum, bağlı **değil** olarak değişir
+
+    ![Çoklu oturum açmayı yapılandırın](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-sales-navigator-test-user"></a>LinkedIn Sales Navigator test kullanıcısı oluşturma
 
-Bağlantılı Sales Navigator uygulama tam zamanında (JIT) kullanıcı sağlama ve kimlik doğrulama kullanıcıları otomatik olarak uygulama oluşturulduktan sonra destekler. Etkinleştirme **otomatik olarak lisans atamasını** kullanıcıya lisans atamak için.
+Bağlantılı satış Gezgini uygulaması, tam zamanında (JıT) Kullanıcı sağlamayı ve kimlik doğrulama kullanıcılarının uygulamada otomatik olarak oluşturulmasını destekler. Kullanıcı için lisans atamak üzere **otomatik olarak lisans ata** ' yı etkinleştirin.
 
    ![Bir Azure AD test kullanıcısı oluşturma](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+## <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
 
-Erişim paneli LinkedIn Sales Navigator kutucuğa tıkladığınızda, size otomatik olarak LinkedIn Sales Navigator SSO'yu ayarlamak için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde LinkedIn Sales Navigator kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız LinkedIn Sales Navigator 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD ile LinkedIn Sales Navigator 'ı deneyin](https://aad.portal.azure.com/)

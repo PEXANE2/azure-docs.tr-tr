@@ -1,95 +1,86 @@
 ---
-title: Azure Service Fabric kaynak modeli giriş | Microsoft Docs
-description: Service Fabric Örgü uygulamalar tanımlamak için basitleştirilmiş bir yaklaşım Service Fabric kaynak modeli hakkında bilgi edinin.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Azure Service Fabric kaynak modeline giriş
+description: Service Fabric kafes uygulamalarını tanımlamaya yönelik basitleştirilmiş bir yaklaşım olan Service Fabric kaynak modeli hakkında bilgi edinin.
 author: vturecek
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cee0ada75c4ea265c7e9c598408eb6b01477d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810749"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352451"
 ---
-# <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric kaynak modeli giriş
+# <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric kaynak modeline giriş
 
-Service Fabric kaynak modeli, bir Service Fabric Mesh uygulaması oluşturan kaynakları tanımlamak için kolay bir yaklaşım açıklanmaktadır. Kaynakların herhangi bir Service Fabric ortama dağıtılabilir.  Service Fabric kaynak modeli, Azure Resource Manager modeli ile de uyumludur. Aşağıdaki türdeki kaynakları şu anda bu modelde desteklenir:
+Service Fabric kaynak modeli, bir Service Fabric kafes uygulamasını oluşturan kaynakları tanımlamaya yönelik basit bir yaklaşım açıklar. Tek tek kaynaklar herhangi bir Service Fabric ortamına dağıtılabilir.  Service Fabric kaynak modeli ayrıca Azure Resource Manager modeliyle uyumludur. Aşağıdaki kaynak türleri şu anda bu modelde destekleniyor:
 
 - Uygulamalar ve hizmetler
 - Ağlar
 - Ağ geçitleri
-- Gizli anahtarları ve gizli anahtarları/değerleri
+- Gizlilikler ve gizlilikler/değerler
 - Birimler
 
-Her kaynak bildirimli olarak basit bir YAML kaynak dosyasını, veya Mesh uygulaması açıklar ve Service Fabric platform tarafından sağlanan JSON belgesinde açıklanmıştır.
+Her kaynak, bir kaynak dosyasında bildirimli olarak tanımlanır. Bu, kafes uygulamasını açıklayan basit bir YAML veya JSON belgesi, ve Service Fabric platformu tarafından sağlanır.
 
 ## <a name="applications-and-services"></a>Uygulamalar ve hizmetler
 
-Uygulama kaynağı dağıtım, sürüm ve Mesh uygulaması ömrünü birimidir. Bu, bir mikro hizmet temsil eden bir veya daha fazla hizmet kaynaklarını oluşur. Her hizmet kaynağı, sırasıyla bir veya daha fazla kod paket ile ilişkili kapsayıcı görüntüsünü çalıştırmak için gereken her şeyi açıklayan kod paketleri oluşur.
+Uygulama kaynağı, bir kafes uygulamasının dağıtım, sürüm oluşturma ve yaşam süresi birimidir. Mikro hizmeti temsil eden bir veya daha fazla hizmet kaynaklarından oluşur. Her hizmet kaynağı, sırasıyla kod paketiyle ilişkili kapsayıcı görüntüsünü çalıştırmak için gereken her şeyi tanımlayan bir veya daha fazla kod paketinden oluşur.
 
 ![Uygulamalar ve hizmetler][Image1]
 
-Bir hizmet kaynağı aşağıdaki bildirir:
+Bir hizmet kaynağı aşağıdakileri bildirir:
 
 - Kapsayıcı adı, sürümü ve kayıt defteri
-- Her kapsayıcı için gerekli CPU ve bellek kaynakları
+- Her kapsayıcı için gereken CPU ve bellek kaynakları
 - Ağ uç noktaları
-- Ağları, birimleri ve gizli anahtarları gibi diğer kaynaklara başvurular 
+- Ağlar, birimler ve parolalar gibi diğer kaynaklara başvurular 
 
-Bir hizmet kaynağı bir parçası olarak tanımlanan tüm kod paketlerinin dağıtıldığı ve bir grup olarak birlikte etkinleştirildi. Hizmet kaynağı ayrıca kaç örneği çalıştırmak için hizmeti açıklar ve ayrıca, bağımlı diğer kaynaklar (örneğin, ağ kaynağı) başvuruyor.
+Hizmet kaynağının bir parçası olarak tanımlanan tüm kod paketleri, bir grup olarak birlikte dağıtılır ve etkinleştirilir. Hizmet kaynağı ayrıca hizmetin kaç örneğinin çalıştırılacağını ve ayrıca diğer kaynaklara (örneğin, ağ kaynağı) bağlı olduğunu da açıklar.
 
-Bir Mesh uygulaması birden fazla hizmet oluşuyorsa, bunlar birlikte aynı düğümde çalışan garanti edilmez. Ayrıca, uygulama bir yükseltme sırasında tek bir hizmet yükseltme hatası, önceki sürüme geri alınan tüm hizmetleri neden olur.
+Bir kafes uygulaması birden fazla hizmetten oluşuyorsa, bunların aynı düğümde birlikte çalıştırılması garanti edilmez. Ayrıca, uygulamanın yükseltilmesi sırasında tek bir hizmeti yükseltmenin başarısız olması, tüm hizmetlerin önceki sürümlerine geri alınmasına neden olur.
 
-Daha önce alluded gibi her uygulama örneği yaşam döngüsü bağımsız olarak yönetilebilir. Örneğin, bir uygulama örneği bağımsız olarak diğer uygulama örneğinin yükseltilebilir. Yönetmek için bu duruma bir uygulamaya, daha zor yerleştirdiğiniz diğer hizmetler bağımsız olarak her servis genellikle, hizmet sayısı bir uygulamada oldukça küçük tutun.
+Daha önce olduğu gibi, her bir uygulama örneğinin yaşam döngüsü bağımsız olarak yönetilebilir. Örneğin, bir uygulama örneği diğer uygulama örneklerinden bağımsız olarak yükseltilebilir. Genellikle, bir uygulamadaki hizmet sayısını, bir uygulamaya yerleştirdiğiniz daha fazla hizmet olarak, her hizmeti bağımsız olarak yönetmek için daha zor hale gelir.
 
 ## <a name="networks"></a>Ağlar
 
-Ağ kaynak ayrı ayrı dağıtılabilen bağımsız olarak, bağımlılık olarak başvurduğu bir uygulama veya hizmet kaynağı kaynaktır. Uygulamalarınız için bir ağ oluşturmak için kullanılır. Birden çok farklı uygulamalar hizmetlerinden aynı ağın parçası olabilir.  Hakkında daha fazla bilgi için okuma [Service Fabric Mesh uygulamalarında ağ iletişimi](service-fabric-mesh-networks-and-gateways.md).
+Ağ kaynağı, bağımlılığı olarak başvurabilen bir uygulama veya hizmet kaynağıyla bağımsız olarak tek tek dağıtılabilir kaynaktır. Uygulamalarınız için bir ağ oluşturmak üzere kullanılır. Farklı uygulamalardan gelen birden çok hizmet aynı ağın parçası olabilir.  Daha fazla bilgi için [Service Fabric kafes uygulamalarında ağ iletişimi](service-fabric-mesh-networks-and-gateways.md)konusunu okuyun.
 
 > [!NOTE]
-> Geçerli Önizleme yalnızca uygulamaları ve ağlar arasında bire bir eşleme destekler
+> Geçerli Önizleme yalnızca, uygulamalar ve ağlar arasındaki tek eşlemeyi destekler
 
 ![Ağ ve ağ geçidi][Image2]
 
 ## <a name="gateways"></a>Ağ geçitleri
-Bir ağ geçidi kaynağı, iki ağı bağlayan ve trafiği yönlendirir.  Bir ağ geçidi dış istemcilerle iletişim kurmak hizmetlerinizi ve hizmetlerinize bir giriş sağlar.  Bir ağ geçidi, kendi mevcut bir sanal ağ ile kafes uygulamanızı bağlamak için de kullanılabilir. Hakkında daha fazla bilgi için okuma [Service Fabric Mesh uygulamalarında ağ iletişimi](service-fabric-mesh-networks-and-gateways.md).
+Ağ Geçidi kaynağı iki ağı birbirine bağlar ve trafiği yönlendirir.  Ağ Geçidi, hizmetlerinizin dış istemcilerle iletişim kurmasını sağlar ve hizmetlerinize giriş sağlar.  Ağ Geçidi, aynı zamanda, var olan sanal ağınızla ağ uygulamanızı bağlamak için de kullanılabilir. Daha fazla bilgi için [Service Fabric kafes uygulamalarında ağ iletişimi](service-fabric-mesh-networks-and-gateways.md)konusunu okuyun.
 
 ![Ağ ve ağ geçidi][Image2]
 
 ## <a name="secrets"></a>Gizli Diziler
 
-Gizli dizileri, dağıtılabilir bağımsız olarak bir uygulama ya da ona, bağımlılık olarak yönlendirebiliriz Hizmet kaynağı kaynaklardır. Gizli dizileri, uygulamalarınız için güvenli bir şekilde sunmak için kullanılır. Birden çok farklı uygulamalar hizmetlerinden aynı gizli değerlere başvurabilirsiniz.
+Gizli dizi kaynakları, bağımlılığı olarak başvurabilecek bir uygulama veya hizmet kaynağıyla bağımsızdır. Uygulamalarınıza gizli dizileri güvenli bir şekilde sunmak için kullanılır. Farklı uygulamalardan birden çok hizmet aynı gizli dizi değerlerine başvurabilir.
 
 ## <a name="volumes"></a>Birimler
 
-Kapsayıcılar genellikle geçici diskler kullanılabilir duruma getirin. Yeni, geçici bir diskle almak ve bir kapsayıcı kilitlendiğinde bilgileri kaybedersiniz geçici diskler ancak kısa ömürlü, değildir. Ayrıca, diğer kapsayıcılarla geçici diskler hakkında bilgi paylaşmak zor olabilir. Birimler durumu kalıcı hale getirmek için kullanabileceğiniz kapsayıcı örneklerinizin içinde oluşturulmuş dizinleri listelenmiştir. Birimleri, genel amaçlı dosya depolama sağlar ve normal bir disk g/ç dosya API'lerini kullanarak dosya okuma/yazma olanak sağlar. Birim kaynağına bir dizin nasıl bağlandığını açıklamak için bildirim temelli bir yöntemini ve yedekleme depolama alanı (Azure dosya birimi veya Service Fabric güvenilir birim) için ' dir.  Daha fazla bilgi için okuma [durumu depolamak üzere](service-fabric-mesh-storing-state.md#volumes).
+Kapsayıcılar genellikle geçici diskleri kullanılabilir hale getirir. Ancak geçici diskler kısa ömürlü olduğundan, yeni bir geçici disk alır ve bir kapsayıcı kilitlenirse bilgileri kaybedersiniz. Ayrıca, diğer kapsayıcılarla geçici disklerde bilgi paylaşmak da zordur. Birimler, durumu kalıcı hale getirmek için kullanabileceğiniz kapsayıcı örneklerinizin içine bağlanmış olan dizinlerdir. Birimler, genel amaçlı dosya depolaması sağlar ve normal disk g/ç dosya API 'Lerini kullanarak dosyaları okumanızı/yazmanızı sağlar. Birim kaynağı, bir dizinin nasıl takıldığını ve BT için depolama (Azure dosyaları birimi veya Service Fabric güvenilir birim) ile ilgili bir dizin oluşturmayı tanımlamaya yönelik bildirime dayalı bir yoldur.  Daha fazla bilgi için [depolama durumunu](service-fabric-mesh-storing-state.md#volumes)okuyun.
 
 ![Birimler][Image3]
 
 ## <a name="programming-models"></a>Programlama modelleri
-Hizmet kaynağını yalnızca bu kaynakla ilgili kod paketleri içinde başvurulan çalıştırmak için kapsayıcı görüntüsü gerektirir. Bilmek gerek kalmadan kapsayıcı içinde herhangi bir çerçeveyi kullanarak herhangi bir dilde yazılmış herhangi bir kod çalıştırın ya da, Service Fabric Mesh özel API'leri kullanmak. 
+Hizmet kaynağı yalnızca kaynak ile ilişkili kod paketleri içinde başvurulan bir kapsayıcı görüntüsünün çalıştırılmasını gerektirir. Herhangi bir dilde yazılmış herhangi bir kodu, ağ için belirli API 'Leri bilmeniz veya Service Fabric kullanmak zorunda kalmadan, kapsayıcının içindeki herhangi bir çerçeveyi kullanarak çalıştırabilirsiniz. 
 
-Uygulama kodunuza Service Fabric bile Mesh dışında taşınabilir kalır ve uygulama dağıtımlarınızı dil veya çerçeveye hizmetlerinizi uygulamak için kullanılan bağımsız olarak tutarlı kalır. Uygulamanızı, ASP.NET Core, Git veya yalnızca işlemler ve betikler bir dizi olup Service Fabric Mesh kaynak dağıtım modeli aynı kalır. 
+Uygulama kodunuz Service Fabric Ağ dışından bile taşınabilir kalır ve uygulama dağıtımlarınız, hizmetlerinizi uygulamak için kullanılan dil veya çerçeveden bağımsız olarak tutarlı kalır. Uygulamanızın ASP.NET Core, git veya yalnızca bir dizi işlem ve komut dosyası olup olmadığı, Service Fabric kafes kaynak dağıtım modeli aynı kalır. 
 
 ## <a name="packaging-and-deployment"></a>Paketleme ve dağıtım
 
-Service Fabric Örgü uygulamalar kaynak modelini temel alan, Docker kapsayıcıları olarak paketlenir.  Service Fabric Mesh bir paylaşılan, çok kiracılı bir ortamdır ve kapsayıcılar yüksek bir yalıtım düzeyi verin.  Bu uygulamalar, JSON biçiminde veya (daha sonra JSON'a dönüştürülür) YAML biçimi kullanarak açıklanmıştır. Azure Service Fabric Mesh bir Mesh uygulamasını dağıtırken, uygulamayı tanımlamak için kullanılan JSON'u bir Azure Resource Manager şablonudur. Kaynakları Azure kaynaklarına eşlenir.  Bir Service Fabric kümesine Mesh uygulaması dağıtırken (tek başına veya Azure'da barındırılan), uygulamayı tanımlamak için kullanılan JSON için bir Azure Resource Manager şablonu benzer bir biçimidir.  Mesh uygulama dağıtıldıktan sonra HTTP arabirimleri veya Azure CLI yönetilebilir. 
+Kaynak modeli temel alan Service Fabric kafes uygulamaları Docker Kapsayıcıları olarak paketlenir.  Service Fabric ağ, paylaşılan, çok kiracılı bir ortam ve kapsayıcılar size yüksek düzeyde yalıtım sağlar.  Bu uygulamalar JSON biçimi veya YAML biçimi (daha sonra JSON 'a dönüştürülür) kullanılarak açıklanır. Azure Service Fabric ağı 'na bir kafes uygulaması dağıtıldığında, uygulamayı anlatmak için kullanılan JSON bir Azure Resource Manager şablonudur. Kaynaklar Azure kaynaklarıyla eşlenir.  Bir Service Fabric kümesine (tek başına veya Azure 'da barındırılan) bir kafes uygulaması dağıtıldığında, uygulamayı anlatmak için kullanılan JSON, Azure Resource Manager şablonuna benzer bir biçimdir.  Dağıtıldıktan sonra, ağ uygulamaları HTTP arabirimleri veya Azure CLı aracılığıyla yönetilebilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-Service Fabric Mesh hakkında daha fazla bilgi için genel bakış okuyun:
-- [Service Fabric Mesh genel bakış](service-fabric-mesh-overview.md)
+Service Fabric ağ hakkında daha fazla bilgi edinmek için genel bakışı okuyun:
+- [Service Fabric kafese bakış](service-fabric-mesh-overview.md)
 
 [Image1]: media/service-fabric-mesh-service-fabric-resources/AppsAndServices.png
 [Image2]: media/service-fabric-mesh-service-fabric-resources/NetworkAndGateway.png

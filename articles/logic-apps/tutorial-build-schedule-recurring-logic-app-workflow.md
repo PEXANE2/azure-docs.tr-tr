@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456623"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı ve yinelenen iş akışları oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Üst düzey mantıksal uygulama iş akışına genel bakış](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/) .
 
@@ -58,7 +58,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
    |----------|-------|-------------|
    | **Adı** | LA-TravelTime | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnekte "LA-Seyahatsaati" kullanılmaktadır. |
    | **Abonelik** | <*your-Azure-subscription-name*> | Azure abonelik adınız |
-   | **Kaynak grubu** | LA-TravelTime-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md)adı. Bu örnek "LA-Seyahattime-RG" kullanır. |
+   | **Kaynak grubu** | LA-TravelTime-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md)adı. Bu örnek "LA-Seyahattime-RG" kullanır. |
    | **Konum** | Batı ABD | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
@@ -91,8 +91,8 @@ Ardından, belirtilen bir zamanlamaya göre tetiklenen yinelenme [tetikleyicisin
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Aralık** | Yes | 1 | Denetimler arasında beklenecek aralık sayısı |
-   | **Sıklık** | Yes | Hafta | Yinelenme için kullanılacak zaman birimi |
+   | **Aralık** | Evet | 1 | Denetimler arasında beklenecek aralık sayısı |
+   | **Sıklık** | Evet | Hafta | Yinelenme için kullanılacak zaman birimi |
    |||||
 
 1. **Aralık** ve **Sıklık**altında **yeni parametre Ekle** listesini açın ve tetikleyiciye eklemek için bu özellikleri seçin.
@@ -140,8 +140,8 @@ Ardından, belirtilen bir zamanlamaya göre tetiklenen yinelenme [tetikleyicisin
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Bağlantı Adı** | Yes | BingMapsConnection | Bağlantınıza bir ad verin. Bu örnek "BingMapsConnection" kullanır. |
-   | **API Anahtarı** | Yes | <*your-Bing-Maps-key*> | Daha önce aldığınız Bing Haritalar anahtarını girin. Bing Haritalar anahtarınız yoksa [nasıl anahtar alacağınızı](https://msdn.microsoft.com/library/ff428642.aspx) öğrenin. |
+   | **Bağlantı Adı** | Evet | BingMapsConnection | Bağlantınıza bir ad verin. Bu örnek "BingMapsConnection" kullanır. |
+   | **API Anahtarı** | Evet | <*your-Bing-Maps-key*> | Daha önce aldığınız Bing Haritalar anahtarını girin. Bing Haritalar anahtarınız yoksa [nasıl anahtar alacağınızı](https://msdn.microsoft.com/library/ff428642.aspx) öğrenin. |
    |||||
 
 1. Eylemi şu açıklama ile yeniden adlandırın: `Get route and travel time with traffic`
@@ -160,8 +160,8 @@ Ardından, belirtilen bir zamanlamaya göre tetiklenen yinelenme [tetikleyicisin
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Güzergah noktası 1** | Yes | <*start-location*> | Rotanızın başlangıç noktası |
-   | **Güzergah noktası 2** | Yes | <*end-location*> | Rotanızın hedefi |
+   | **Güzergah noktası 1** | Evet | <*start-location*> | Rotanızın başlangıç noktası |
+   | **Güzergah noktası 2** | Evet | <*end-location*> | Rotanızın hedefi |
    | **İyileştir** | Hayır | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. "TimeWithTraffic" parametresini seçin. |
    | **Mesafe birimi** | Hayır | <*your-preference*> | Rotanız için mesafe birimi. Bu örnek birim olarak "mil" kullanır. |
    | **Seyahat modu** | Hayır | Sürüş | Rotanız için seyahat modu. "Itici" modunu seçin. |
@@ -191,8 +191,8 @@ Varsayılan olarak, önceki **yol al** eylemi, **seyahat süresi trafik** özell
 
    | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Adı** | Yes | travelTime | Değişkeninizin adı. Bu örnek "Seyahattime" kullanır. |
-   | **Tür** | Yes | Tamsayı | Değişkeninizin veri türü |
+   | **Adı** | Evet | travelTime | Değişkeninizin adı. Bu örnek "Seyahattime" kullanır. |
+   | **Tür** | Evet | Tamsayı | Değişkeninizin veri türü |
    | **Değer** | Hayır| Geçerli seyahat süresini saniyelerden dakikalara dönüştüren bir ifade (bu tablonun altındaki adımlara bakın). | Değişkeninizin ilk değeri |
    ||||
 

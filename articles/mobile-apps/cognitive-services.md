@@ -7,18 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 90aec113661405f9a68d70a43d90523c1fb2376b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad4babc68f39851beeb3a5c46d295a3342c63026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453198"
 ---
-# <a name="azure-cognitive-services-to-solve-business-problems-using-artificial-intelligence"></a>Yapay zeka kullanarak iş sorunlarını gidermek için Azure bilişsel hizmetler
-[Azure](https://azure.microsoft.com/services/cognitive-services/) bilişsel hizmetler, uygulamalarınızı, işletmenizin AI ile dönüştürmesi için ihtiyaç duyduklarınızı görmek, dinlemek, konuşmak, anlamak ve yorumlamak amacıyla akıllı algoritmalarla birlikte kullanmak için güçlü hizmetler sunar. Mobil uygulamalarınızı kullanıcılarınız için akıllı, ilgi çekici ve bağlamsal olarak uygun hale getirebilirsiniz. API 'Ler, SDK 'Lar ve hizmetler, geliştiricilerin kendi tekliflerine AI eklemesine ve doğrudan AI veya veri bilimi becerileri olmadan akıllı uygulamalar oluşturmasına yardımcı olur.
+# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Bilişsel hizmetler, AI kullanarak iş sorunlarını çözmeye yardımcı olur
+[Azure](https://azure.microsoft.com/services/cognitive-services/) bilişsel hizmetler, verilerinizi yapay zeka (AI) ile dönüştürmek üzere kullanıcılarınızın ihtiyaçlarını görmek, dinlemek, konuşmak, anlamak ve yorumlamak için akıllı algoritmalarla birlikte kullanmak üzere güçlü hizmetler sunar. Mobil uygulamalarınızı kullanıcılarınız için akıllı, ilgi çekici ve bağlamsal olarak uygun hale getirebilirsiniz. Geliştiriciler, kendi tekliflerine AI eklemek ve doğrudan AI veya veri bilimi becerileri olmadan akıllı uygulamalar oluşturmaya yardımcı olmak için API 'Leri, SDK 'Ları ve hizmetleri kullanabilir.
 
 ## <a name="cognitive-services-capabilities"></a>Bilişsel hizmetler özellikleri
-- **Minin**
+- **Vision**
     - Resim etiketleme, küçük resimler
     - OCR (el yazısı tanıma)
     - Yüz algılama
@@ -35,7 +35,7 @@ ms.locfileid: "72795620"
     - Gerçek zamanlı konuşma çevirisi
 
 - **Dil**
-    - Bağlamsal dil anlama-özelleştirilmiş amaç analizi
+    - Bağlamsal dil anlama, özelleştirilmiş amaç analizi
     - Yaklaşım analizi, anahtar tümceciği algılama
     - 60 dile kadar olan metin çevirisi
     - Metin denetimi
@@ -52,11 +52,11 @@ ms.locfileid: "72795620"
     - Kapsamlı Haberler, görüntü, video, Web ve yerel iş tüzel kişiliği arama
     - Uyarlanmış ve özelleştirilmiş arama deneyimleri
 
-- Bilişsel hizmetler için **kapsayıcılar** desteği
+- Bilişsel hizmetler için kapsayıcılar desteği
 
  ## <a name="references"></a>Başvurular
-   - [Azure portalda](https://portal.azure.com) 
-   - [Belgelerle](/azure/cognitive-services/welcome)
+   - [Azure Portal](https://portal.azure.com) 
+   - [Bilişsel Hizmetler Belgeleri](/azure/cognitive-services/welcome)
    - [Hızlı başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account)
    - [Kapsayıcı desteği](/azure/cognitive-services/cognitive-services-container-support)
    - [Hızlı başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)

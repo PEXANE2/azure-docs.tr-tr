@@ -1,6 +1,6 @@
 ---
-title: Azure Işlevleri ve diğer hizmetlerle sunucusuz mobil uygulama arka ucu oluşturun
-description: Katı, sunucusuz mobil uygulama arka ucu oluşturmak için Işlem hizmetleri hakkında bilgi edinin.
+title: Azure Işlevleri ve diğer hizmetlerle sunucusuz bir mobil uygulama arka ucu oluşturun
+description: Sağlam, sunucusuz bir mobil uygulama arka ucu oluşturmak için kullanılan işlem hizmetleri hakkında bilgi edinin.
 author: elamalani
 manager: elamalani
 ms.service: vs-appcenter
@@ -8,96 +8,98 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: b8378be675b86ada10b8442c40a54b635ee115a9
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453098"
 ---
-# <a name="build-mobile-backend-components-with-compute-services"></a>Işlem Hizmetleri ile mobil arka uç bileşenleri oluşturun
-Her mobil uygulamanın, veri depolama, iş mantığı ve güvenlik açısından sorumlu bir arka uca ihtiyacı vardır. Arka uç kodunu barındırmak ve yürütmek için altyapıyı yönetmek, bir dizi sunucuyu yazmanızı, sağlamanızı ve ölçeklendirmenizi, işletim sistemi güncelleştirmelerini ve donanımı yönetmenizi, güvenlik düzeltme eklerini uygulamayı ve ardından bu altyapı bileşenlerinin tümünü performans için izlemenizi gerektirir. kullanılabilirlik ve hataya dayanıklılık. Bu, sunucusuz mimarinin yönetilecek bir sunucu olmadığı, işletim sistemi veya yönetilecek yazılım/donanım güncelleştirmeleri olmadığı için kullanışlı bir şekilde sunulur. Uygulama oluşturmaya yönelik daha hızlı ve enerji tasarrufu sağlayan çok sayıda geliştirici süresi ve maliyeti kaydeder.
+# <a name="build-mobile-back-end-components-with-compute-services"></a>İşlem hizmetleri ile mobil arka uç bileşenleri oluşturun
+Her mobil uygulamanın, veri depolama, iş mantığı ve güvenlik açısından sorumlu bir arka ucu olması gerekir. Altyapıyı ana bilgisayar ve yürütmeye yönelik olarak yönetmek, birden çok sunucuyu yazmanızı, sağlamanızı ve ölçeklendirmenizi gerektirir. Ayrıca, işletim sistemi güncelleştirmelerini ve ilgili donanımı yönetmeniz ve güvenlik düzeltme eklerini uygulamanız gerekir. Bu durumda, performans, kullanılabilirlik ve hataya dayanıklılık için bu altyapı bileşenlerinin tümünü izlemeniz gerekir. 
 
-## <a name="benefits-of-compute"></a>Işlem avantajları
-- Sunucu soyutlama: barındırma, düzeltme eki uygulama ve güvenlik konusunda endişelenmenize gerek yoktur ve geliştiricilerin koda odaklanmasını sağlar.
-- Anında ve verimli ölçekleme, kaynakların otomatik olarak veya ihtiyacınız olan herhangi bir ölçeğe göre isteğe bağlı olarak sağlanmasını sağlar.
+Yönetmek istediğiniz bir sunucunuz olmadığından ve yönetilecek bir işletim sistemi ya da donanım güncelleştirmesi olmadığından, sunucusuz mimari bu tür bir senaryo için yararlı olarak sunulur. Sunucusuz mimari, geliştirici süresini ve maliyetini kaydeder; bu da, uygulama oluşturmaya yönelik pazara ve odaklanmış enerji süresini daha hızlı sağlar.
+
+## <a name="benefits-of-compute"></a>İşlem avantajları
+- Sunucu soyutlama, barındırma, düzeltme eki uygulama ve güvenlik konusunda endişelenmenize gerek olmadığı anlamına gelir. Bu, yalnızca koda odaklanabilmenizi sağlar.
+- Anında ve verimli ölçekleme, kaynakların otomatik olarak veya ihtiyacınız olan herhangi bir ölçeğe göre sağlanmış olmasını sağlar.
 - Yüksek kullanılabilirlik ve hataya dayanıklılık.
 - Mikro faturalandırma yalnızca kodunuzun gerçekten çalıştığı zaman için faturalandırılabilmenizi sağlar.
-- Bulutta çalışan ve seçtiğiniz dilde kod yazın.
+- Kod, seçtiğiniz dilde yazılmış bulutta çalışır.
 
 Mobil uygulamalarınızda sunucusuz işlem yeteneklerini etkinleştirmek için aşağıdaki hizmetleri kullanın.
 
 ## <a name="azure-functions"></a>Azure İşlevleri
-[Azure işlevleri](https://azure.microsoft.com/services/functions/) , sunucu hakkında endişelenmenize gerek kalmadan kendi seçtiğiniz programlama dilinde yazılmış kodunuzu yürütmenize olanak tanıyan olay odaklı bir işlem deneyimidir. Geliştiricilerin uygulamayı veya üzerinde çalışacağı altyapıyı yönetmesi gerekmez. İşlevler isteğe bağlı olarak ölçeklendirilir ve yalnızca kodunuzun çalıştırıldığı süre için ödeme yaparsınız. Azure Işlevleri, bir mobil uygulama için API uygulamanın harika bir yoludur, çünkü uygulama ve bakım yapmak ve HTTP üzerinden erişilebilir olmaları çok kolaydır.
+[Azure işlevleri](https://azure.microsoft.com/services/functions/) , kodunuzu yürütmek için kullanabileceğiniz ve sunucu hakkında endişelenmeden, seçtiğiniz programlama dilinde yazılmış olay odaklı bir işlem deneyimidir. Uygulamayı ya da çalıştırmak için altyapıyı yönetmeniz gerekmez. İşlevler isteğe bağlı olarak ölçeklendirilir ve yalnızca kodunuzun çalıştığı süre için ödeme yaparsınız. Azure işlevleri, bir mobil uygulama için API uygulamanın harika bir yoludur. Kolayca uygulamanız ve bakımını yapmak ve HTTP üzerinden erişilebilir olmaları kolaydır.
 
-**Temel Özellikler**
-- Geliştiricilerin, bir işlevin ne zaman çağrıldığı ve bağlandığı verileri tanımlamak için **Tetikleyicileri ve bağlamaları** kullanabileceği **olay odaklı ve ölçeklenebilir** .
-- **Kendi bağımlılıklarınızı getirin** - İşlevler NuGet ve NPM'yi desteklediğinden, sık kullandığınız kitaplıklarınızı kullanabilirsiniz.
-- **Tümleşik güvenlik** , http ile tetiklenen işlevleri Azure Active Directory, Facebook, Google, Twitter ve Microsoft hesabı gibi OAuth sağlayıcılarıyla korumanıza olanak sağlar.
-- Farklı [Azure hizmetleri](/azure/azure-functions/functions-overview#integrations) ve hizmet olarak yazılım (SaaS) teklifleriyle **Basitleştirilmiş tümleştirme** .
-- **Esnek geliştirme** , işlevlerinizi portalda doğrudan kodlamanızı veya sürekli tümleştirmeyi ayarlamanıza ve kodunuzu GitHub, Azure DevOps Services ve diğer desteklenen geliştirme araçları aracılığıyla dağıtmanıza imkan tanır.
-- Işlevler çalışma zamanı, [GitHub](https://github.com/azure/azure-webjobs-sdk-script)'da **açık kaynak** ve kullanılabilir.
--  Geliştiricilerin tercih ettiği düzenleyiciyi kullanarak yerel olarak kod, test ve hata ayıklama yapabildikleri ve tümleşik araçlarla ve yerleşik DevOps yeteneklerini izlemeye yönelik kullanımı kolay Web arabirimimiz, **Gelişmiş geliştirme deneyimi** .
-- **Çeşitli programlama dilleri ve barındırma seçenekleri** -kullanarak, Node C#. js, Java, JavaScript veya Python ile geliştirin.
-- **Kullandıkça ödeme fiyatlandırma modeli** - Yalnızca kodunuzu çalıştırmaya harcanan zaman için ödeme yapın.
+**Önemli özellikler**
+- Bir işlevin ne zaman çağrılabileceğini ve hangi verilerin bağlandığını tanımlamak için Tetikleyicileri ve bağlamaları kullanabileceğiniz olay odaklı ve ölçeklenebilir.
+- Işlevler NuGet ve NPM 'yi desteklediğinden, en sevdiğiniz kitaplıkları kullanabilmeniz için kendi bağımlılıklarınızı getirin.
+- Azure Active Directory, Facebook, Google, Twitter ve Microsoft hesabı gibi OAuth sağlayıcılarıyla HTTP ile tetiklenen işlevleri koruyabilmeniz için tümleşik güvenlik.
+- Farklı [Azure hizmetleri](/azure/azure-functions/functions-overview#integrations) ve hizmet olarak yazılım (SaaS) teklifleri ile basitleştirilmiş tümleştirme.
+- Esnek geliştirme, işlevlerinizi hemen Azure portal veya sürekli tümleştirme ayarlayıp kodunuzu GitHub, Azure DevOps Services ve diğer desteklenen geliştirme araçları aracılığıyla dağıtmanıza olanak sağlayabilir.
+- İşlevler çalışma zamanı açık kaynaktır ve [GitHub](https://github.com/azure/azure-webjobs-sdk-script)'da kullanılabilir.
+- Tümleşik araçlar ve yerleşik DevOps özellikleri ile izleme sayesinde tercih edilen düzenleyiciyi veya kullanımı kolay Web arabirimini kullanarak yerel olarak kod ve test etme ve hata ayıklama işlemlerini kullanabileceğiniz gelişmiş geliştirme deneyimi.
+- C#, Node. js, Java, JavaScript veya Python gibi geliştirme için çeşitli programlama dilleri ve barındırma seçenekleri.
+- Kullanım başına ödeme modeli, yalnızca kodunuzu çalıştırırken harcanan süre için ödeme yaptığınız anlamına gelir.
 
-**Başvur**
-- [Azure portalda](https://portal.azure.com)
-- [Belgelerle](/azure/azure-functions/)
+**Başvurular**
+- [Azure Portal](https://portal.azure.com)
+- [Azure İşlevleri belgeleri](/azure/azure-functions/)
 - [Azure Işlevleri Geliştirici Kılavuzu](/azure/azure-functions/functions-reference)
 - [Hızlı başlangıçlar](/azure/azure-functions/functions-create-first-function-vs-code)
 - [Örnekler](/samples/browse/?products=azure-functions&languages=csharp)
 
-## <a name="app-service"></a>App Service
-[Azure App Service](https://azure.microsoft.com/services/app-service/) Azure App Service, Web uygulamaları oluşturmanıza ve barındırmanıza ve altyapıyı yönetmeksizin tercih ettiğiniz programlama dilinde API 'Leri yeniden dağıtmanıza olanak sağlar. Otomatik ölçeklendirme ve yüksek kullanılabilirlik sunar, hem Windows hem de Linux’ı destekler ve GitHub, Azure DevOps veya herhangi bir Git deposundan otomatik dağıtımlar sağlar.
+## <a name="azure-app-service"></a>Azure App Service
+[Azure App Service](https://azure.microsoft.com/services/app-service/)sayesinde, altyapıyı yönetmeksizin Web uygulamaları ve tercih ettiğiniz programlama dilinde API 'ler oluşturabilir ve bunları barındırabilirsiniz. Otomatik ölçeklendirme ve yüksek kullanılabilirlik sunar, hem Windows hem de Linux destekler ve GitHub, Azure DevOps veya herhangi bir git deposundan otomatik dağıtımları sağlar.
 
-**Temel Özellikler**
-- ASP.NET, ASP.NET Core, Java, Ruby, Node. js, PHP veya Python için **birden çok dil ve çerçeve** desteği. Ayrıca, PowerShell ve diğer betikleri veya yürütülebilir dosyaları arka plan hizmetleri olarak da çalıştırabilirsiniz.
-- **DevOps iyileştirmesi** -Azure DevOps, GitHub, Bitbucket, Docker Hub veya Azure Container Registry ile sürekli tümleştirme ve dağıtım ayarlayın. Azure PowerShell veya platformlar arası komut satırı arabirimini (CLı) kullanarak App Service uygulamalarınızı yönetin.
-- Ölçeği el ile veya otomatik olarak genişletmek için **yüksek kullanılabilirliğe sahip küresel ölçek** .
-- **SaaS platformları ve şirket içi verilere** , kurumsal SISTEMLER (SAP gibi), SaaS Hizmetleri (Salesforce gibi) ve İnternet Hizmetleri (Facebook gibi) için 50 ' den fazla bağlayıcıdan seçim yapmak için bağlantı. Karma Bağlantılar ve Azure sanal ağlarını kullanarak şirket içi verilere erişin.
-- **Güvenlik ve uyumluluk** -Azure App Service ISO, SOC ve PCI uyumludur. Azure Active Directory veya sosyal oturum açma (Google, Facebook, Twitter ve Microsoft) ile kullanıcıların kimliğini doğrulayın. IP adresi kısıtlamaları oluşturun ve hizmet kimliklerini yönetin.
-- Azure Marketi 'nde WordPress, Joomla ve Drupal gibi kapsamlı uygulama şablonları listesinden seçim yapabileceğiniz **uygulama şablonları** .
-- Visual Studio 'da adanmış araçlarla **Visual Studio tümleştirmesi** oluşturma, dağıtma ve hata ayıklama işini kolaylaştırır.
+**Önemli özellikler**
+- ASP.NET, ASP.NET Core, Java, Ruby, Node. js, PHP veya Python için birden çok dil ve çerçeve desteği. Ayrıca, PowerShell ve diğer betikleri veya yürütülebilir dosyaları arka plan hizmetleri olarak da çalıştırabilirsiniz.
+- Azure DevOps, GitHub, BitBucket, Docker Hub veya Azure Container Registry ile sürekli tümleştirme ve dağıtım aracılığıyla DevOps iyileştirmesi. Azure PowerShell veya platformlar arası komut satırı arabirimini (CLı) kullanarak App Service uygulamalarınızı yönetin.
+- Ölçeği el ile veya otomatik olarak genişletmek için yüksek kullanılabilirliğe sahip küresel ölçek.
+- SAP, Salesforce gibi SaaS Hizmetleri ve Facebook gibi İnternet Hizmetleri için 50 ' den fazla bağlayıcıdan seçim yapmak amacıyla SaaS platformları ve şirket içi verilere bağlantılar. Karma bağlantıları ve Azure sanal ağlarını kullanarak şirket içi verilere erişin.
+- Azure App Service ISO, SOC ve PCI uyumludur. Google, Facebook, Twitter ve Microsoft gibi sosyal medya için Azure Active Directory veya oturum açma ile kullanıcıların kimliğini doğrulayın. IP adresi kısıtlamaları oluşturun ve hizmet kimliklerini yönetin.
+- Azure Marketi 'nde WordPress, Joomla ve Drupal gibi kapsamlı uygulama şablonları listesinden seçim yapabileceğiniz uygulama şablonları.
+- Visual Studio 'da adanmış araçlarla Visual Studio tümleştirmesi oluşturma, dağıtma ve hata ayıklama işini kolaylaştırır.
 
-**Başvur**
-- [Azure portalda](https://portal.azure.com/)
-- [Belgelerle](/azure/app-service/)
+**Başvurular**
+- [Azure Portal](https://portal.azure.com/)
+- [Azure App Service belgeleri](/azure/app-service/)
 - [Hızlı başlangıçlar](/azure/app-service/app-service-web-get-started-dotnet)
 - [Örnekler](/azure/app-service/samples-cli)
 - [Öğreticiler](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 
-## <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
-[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/), barındırılan Kubernetes ortamınızı yöneterek kapsayıcılı uygulamaları, kapsayıcı yönetimi uzmanlığı gerekmeden hızla ve kolayca dağıtma olanağı sunar. Ayrıca, kaynakları isteğe bağlı olarak sağlama, yükseltme ve ölçeklendirme işlemlerini uygulamalarınızı çevrimdışı duruma geçirmeden yaparak sürekliliği olan işlemlerin ve bakımların yükünü ortadan kaldırır. 
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+[Azure Kubernetes hizmeti (AKS)](https://azure.microsoft.com/services/kubernetes-service/) , barındırılan Kubernetes ortamınızı yönetir. AKS, kapsayıcı düzenleme uzmanlığı olmadan Kapsayıcılı uygulamaları dağıtmayı ve yönetmeyi hızlı ve kolay hale getirir. Ayrıca, devam eden işlemlerin ve bakımın yükünü ortadan kaldırır. AKS, uygulamalarınızı çevrimdışı duruma getirmeden, kaynakları isteğe bağlı olarak sağlar, yükseltir ve ölçeklendirir.
 
-**Temel Özellikler**
-- **Mevcut uygulamaları kapsayıcılara kolayca geçirin** ve aks içinde çalıştırın.
-- Mikro hizmet tabanlı uygulamaların **dağıtımını ve yönetimini kolaylaştırın** .
-- Hız ve güvenlik arasındaki dengeyi elde etmek ve ölçeği daha hızlı bir şekilde sunmak için **AKS Için güvenli DevOps** .
-- **Aks ve aci 'yi kullanarak** , saniyeler içinde başlayan aci 'nin içinde Pod sağlamak için kolayca ölçeklendirin.
-- **IoT cihaz dağıtımı ve** isteğe bağlı yönetim.
-- TensorFlow ve KubeFlow gibi araçların kullanımıyla **makine öğrenimi modeli eğitimi** .
+**Önemli özellikler**
+- Mevcut uygulamaları kapsayıcılara kolayca geçirin ve AKS içinde çalıştırın.
+- Mikro hizmet tabanlı uygulamaların dağıtımını ve yönetimini kolaylaştırın.
+- Hız ve güvenlik arasındaki dengeyi elde etmek ve ölçeği daha hızlı bir şekilde sunmak için AKS için güvenli DevOps.
+- Saniyeler içinde başlayan Container Instances içinde Pod sağlamak için aks ve Azure Container Instances kullanarak kolayca ölçeklendirin.
+- IoT cihazlarını isteğe bağlı olarak dağıtın ve yönetin.
+- TensorFlow ve KubeFlow gibi araçların kullanımıyla makine öğrenimi modellerini eğitme.
 
-**Başvur**
-- [Azure portalda](https://portal.azure.com/)
-- [Belgelerle](/azure/aks/)
+**Başvurular**
+- [Azure Portal](https://portal.azure.com/)
+- [Azure Kubernetes hizmeti belgeleri](/azure/aks/)
 - [Hızlı başlangıçlar](/azure/aks/kubernetes-walkthrough-portal)
 - [Öğreticiler](/azure/aks/tutorial-kubernetes-prepare-app)
 
 ## <a name="azure-container-instances"></a>Azure Container Instances
-[Azure Container Instances (acı)](https://azure.microsoft.com/services/container-instances/) basit uygulamalar, görev otomasyonu ve derleme işleri dahil yalıtılmış kapsayıcılarda çalışabilen her senaryo için harika bir çözümdür. VM 'Leri yönetmeden uygulamaları hızlı bir şekilde geliştirin.
+[Azure Container Instances](https://azure.microsoft.com/services/container-instances/) basit uygulamalar, görev otomasyonu ve derleme işleri gibi yalıtılmış kapsayıcılarda çalışabilen her senaryo için harika bir çözümdür. VM 'Leri yönetmeden uygulamaları hızlı bir şekilde geliştirin.
 
-**Temel Özellikler**
-- VM 'leri sağlamaya ve yönetmeye gerek kalmadan, Azure 'da kapsayıcıları saniyeler IÇINDE başlatabilirim.
-- **Genel IP bağlantısı ve özel DNS adı**.
-- Uygulamanızı güvence altına alan **hiper yönetici düzeyinde güvenlik** , bir VM 'de olduğu gibi bir kapsayıcıda yalıtılmıştır.
-- CPU çekirdeklerinin ve belleğin tam özelliklerine izin vererek en iyi kullanım için **Özel boyutlar** . İhtiyaçlarınıza göre ödeme yapar ve saniye başına faturalandırılırsınız. Böylece harcamalarınızı ihtiyaçlarınıza uyacak şekilde ayarlayabilirsiniz.
-- **Kalıcı depolama** ve durumu alma ve kalıcı hale getirme, Azure dosya paylaşımlarının doğrudan bağlanmasını sağlar.
-- **Linux ve Windows kapsayıcıları** aynı API ile zamanlandı.
+**Önemli özellikler**
+- Container Instances hızlı başlangıç süreleri, sanal makineleri sağlamaya ve yönetmeye gerek kalmadan Azure 'daki kapsayıcıları Saniyeler içinde başlatabilir.
+- Genel IP bağlantısı ve özel DNS adı.
+- Uygulamanızı güvence altına alan hiper yönetici düzeyinde güvenlik, bir VM 'de olduğu gibi bir kapsayıcıda yalıtılmıştır.
+- CPU çekirdeklerinin ve belleğin tam özelliklerine izin vererek en iyi kullanım için özel boyutlar. İhtiyaçlarınıza göre ödeme yapar ve saniye başına faturalandırılırsınız. Böylece harcamalarınızı ihtiyaçlarınıza uyacak şekilde ayarlayabilirsiniz.
+- Durumu almak ve sürdürmek için kalıcı depolama. Container Instances Azure dosya paylaşımlarının doğrudan bağlanmasını sağlar.
+- Linux ve Windows kapsayıcıları aynı API ile zamanlandı.
 
-**Başvur**
-- [Azure portalda](https://portal.azure.com/)
-- [Belgelerle](/azure/container-instances/)
+**Başvurular**
+- [Azure Portal](https://portal.azure.com/)
+- [Azure Container Instances belgeleri](/azure/container-instances/)
 - [Hızlı başlangıçlar](/azure/container-instances/container-instances-quickstart-portal)
 - [Örnekler](https://azure.microsoft.com/resources/samples/?sort=0&term=aci)
 - [Öğreticiler](/azure/container-instances/container-instances-tutorial-prepare-app)

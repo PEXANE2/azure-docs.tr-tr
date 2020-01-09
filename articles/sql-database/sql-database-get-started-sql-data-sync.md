@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461575"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Öğretici: Azure SQL veritabanı ve şirket içi SQL Server arasında SQL Data Sync ayarlama
 
@@ -33,14 +33,20 @@ SQL Data Sync nasıl yapılandırılacağı hakkında PowerShell örnekleri içi
 
 ## <a name="create-sync-group"></a>Eşitleme grubu oluştur
 
-1. Tarayıcıda Azure portal gidin. Panodan SQL veritabanınızı bulun veya araç çubuğunda **SQL veritabanları** simgesini seçin ve **SQL veritabanları** sayfasında veri eşitleme için merkez veritabanı olarak kullanmak istediğiniz veritabanını seçin.
+1. SQL veritabanınızı bulmak için [Azure Portal](https://portal.azure.com) gidin. **SQL veritabanlarını**arayın ve seçin.
+
+    ![SQL veritabanlarını arayın Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+
+1. Veri eşitleme için merkez veritabanı olarak kullanmak istediğiniz veritabanını seçin.
+
+    ![SQL veritabanı listesinden seç, Microsoft Azure portal](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
     > Merkez veritabanı, bir eşitleme grubunun birden çok veritabanı uç noktasına sahip olduğu bir eşitleme topolojisinin merkezi uç noktasıdır. Eşitleme grubundaki uç noktalara sahip diğer tüm üye veritabanları, hub veritabanıyla eşitlenir.
 
-1. Seçili veritabanı için **SQL veritabanı** sayfasında **diğer veritabanlarına Eşitle**' yi seçin.
+1. Seçili veritabanı için **SQL veritabanı** menüsünde **diğer veritabanlarına Eşitle**' yi seçin.
 
-    ![Diğer veritabanlarıyla Eşitle seçeneği](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![Diğer veritabanlarıyla, SQL veritabanı, Microsoft Azure portal eşitleme](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
 1. **Diğer veritabanlarına Eşitle** sayfasında, **Yeni eşitleme grubu**' nu seçin. **Yeni eşitleme grubu** sayfası, **eşitleme grubu oluştur (1. adım)** vurgulanmış olarak açılır.
 

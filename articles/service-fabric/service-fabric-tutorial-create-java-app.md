@@ -1,30 +1,21 @@
 ---
 title: 'Öğretici: Azure Service Fabric bir Java uygulaması oluşturma'
 description: Bu öğreticide, bir ön uçla güvenilir hizmet Java uygulamasının nasıl oluşturulacağını, durum bilgisi olan güvenilir hizmet arka ucunun nasıl oluşturulacağını ve uygulamanın kümeye nasıl dağıtılacağını öğreneceksiniz.
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5e9b94f0c67b4b4630d554f4dde22502c90e777c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 019e50057497c9f98d303a93dfa3f905226fa246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465459"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Öğretici: Azure Service Fabric bir Java API ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma
 
-Bu öğretici, bir dizinin birinci bölümüdür. İşiniz bittiğinde, bir Java Web ön ucuna sahip bir oylama uygulamanız olur ve bu, oylama sonuçlarını Azure Service Fabric 'te durum bilgisi olan bir arka uç hizmetine kaydeder. Bu öğretici serisi, çalışır durumda bir Mac OSX veya Linux geliştirici makineniz olmasını gerektirir. Oylama uygulamasını el ile oluşturmak istemiyorsanız, [tamamlanmış uygulamanın kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-java-quickstart) ve [Oylama örnek uygulamasında izlenecek yol](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) bölümüne atlayabilirsiniz. Ayrıca, [Java güvenilir Hizmetleri Için hızlı](service-fabric-quickstart-java-reliable-services.md)başlangıcı takip etmeyi de göz önünde bulundurun.
+Bu öğretici, bir serinin birinci bölümüdür. İşiniz bittiğinde, bir Java Web ön ucuna sahip bir oylama uygulamanız olur ve bu, oylama sonuçlarını Azure Service Fabric 'te durum bilgisi olan bir arka uç hizmetine kaydeder. Bu öğretici serisi, çalışır durumda bir Mac OSX veya Linux geliştirici makineniz olmasını gerektirir. Oylama uygulamasını el ile oluşturmak istemiyorsanız, [tamamlanmış uygulamanın kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-java-quickstart) ve [Oylama örnek uygulamasında izlenecek yol](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) bölümüne atlayabilirsiniz. Ayrıca, [Java güvenilir Hizmetleri Için hızlı](service-fabric-quickstart-java-reliable-services.md)başlangıcı takip etmeyi de göz önünde bulundurun.
 
 ![Service Fabric Voting örneği](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
@@ -45,7 +36,7 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Durum bilgisi olan hizmetle iletişim kurmak için hizmet uzaktan iletişimini kullanma
 > * Yerel bir Service Fabric kümesinde uygulamayı dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -228,7 +219,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>HTTPCommunicationListener.java dosyası ekleme
 
-HTTP iletişim dinleyicisi, HTTP sunucusunu ayarlayan bir denetleyici olarak hareket eder ve oylama eylemlerini tanımlayan API’leri gösterir. *Votingweb/src/statelessservice* klasöründeki *statelessservice* paketine sağ tıklayın ve ardından **Yeni** > **Dosya**' yı seçin.  *Httpcommunicationlistener. Java* dosyasını adlandırın ve **son**' u seçin.
+HTTP iletişim dinleyicisi, HTTP sunucusunu ayarlayan bir denetleyici olarak hareket eder ve oylama eylemlerini tanımlayan API’leri gösterir. *Votingweb/src/statelessservice* klasöründeki *statelessservice* paketine sağ tıklayın ve ardından **Yeni** > **dosyası**' nı seçin.  *Httpcommunicationlistener. Java* dosyasını adlandırın ve **son**' u seçin.
 
 Dosyanın içeriğini aşağıdakilerle değiştirin, sonra değişikliklerinizi kaydedin.  Daha sonra, HttpCommunicationListener. Java dosyasını güncelleştirme bölümünde bu dosya, arka uç hizmetinden oylama verilerini işlemek, okumak ve yazmak için değiştirilir.  Şimdilik dinleyici yalnızca Oylama uygulaması için statik HTML'i döndürür.
 
@@ -909,9 +900,9 @@ Bu noktada uygulama, yerel Service Fabric kümesinde dağıtılmaya hazırdır.
     ```
     Daha ayrıntılı bilgi için bkz [. Linux kurulum kılavuzu.](service-fabric-get-started-linux.md)
 
-4. Çakışan Küreler için paket Gezgini ' nde, **Oylama** projesine sağ tıklayın ve **Service Fabric** > **uygulama Yayımla** ' yı seçin. 
+4. Çakışan Küreler için paket Gezgini ' nde, **Oylama** projesine sağ tıklayın ve **Service Fabric** > **uygulamayı Yayımla** ' yı seçin. 
 5. **Uygulamayı Yayımla** penceresinde, açılan listeden **Local. JSON** ' ı seçin ve **Yayımla**' yı seçin.
-6. Yerel Service Fabric kümesinde çalışan uygulamanızı görüntülemek için Web tarayıcınıza gidin ve http: \//localhost: 8080 adresine erişin. 
+6. Yerel Service Fabric kümesinde çalışan uygulamanızı görüntülemek için Web tarayıcınıza gidin ve http:\//localhost: 8080 adresine erişin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

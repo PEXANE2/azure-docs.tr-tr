@@ -2,17 +2,17 @@
 title: Hızlı başlangıç-Azure 'da özel uç noktaları yönetme
 description: Bu hızlı başlangıçta Azure portal kullanarak özel uç nokta oluşturmayı öğrenin
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459941"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma
 
@@ -21,10 +21,7 @@ ms.locfileid: "74419772"
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
-> [!NOTE]
-> Aynı alt ağdaki hizmet uç noktaları ile birlikte özel uç noktalara izin verilmez!
-
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -39,9 +36,9 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
 1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
-    | Name | *MyVirtualNetwork*girin. |
+    | Ad | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.1.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
@@ -58,7 +55,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     | **PROJE AYRıNTıLARı** | |
     | Abonelik | Aboneliğinizi seçin. |
@@ -67,14 +64,14 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Sanal makine adı | *Myvm*' i girin. |
     | Bölge | **WestCentralUS**öğesini seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
-    | Görüntü | **Windows Server 2019 Datacenter**öğesini seçin. |
+    | Resim | **Windows Server 2019 Datacenter**öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETICI HESABı** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
-    | istemcisiyle yönetilen bir cihaz için) | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     | Parolayı Onayla | Parolayı yeniden girin. |
     | **GELEN BAĞLANTı NOKTASı KURALLARı** |  |
-    | Ortak gelen bağlantı noktaları | Varsayılanı **yok**olarak bırakın. |
+    | Genel gelen bağlantı noktası | Varsayılanı **yok**olarak bırakın. |
     | **TASARRUF EDIN** |  |
     | Zaten bir Windows lisansınız var mı? | Varsayılan **Hayır**olarak bırakın. |
     |||
@@ -85,13 +82,13 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
 
 1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     | Sanal ağ | Varsayılan **MyVirtualNetwork**bırakın.  |
     | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
-    | Subnet | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
+    | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
     | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
-    | Ortak gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Genel gelen bağlantı noktası | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
     | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     |||
 
@@ -107,7 +104,7 @@ Bu bölümde, Azure 'da bir SQL veritabanı sunucusu oluşturacaksınız.
 
 1. **SQL veritabanı oluşturma-temel**bilgiler bölümünde, bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     | **Veritabanı ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
@@ -118,11 +115,11 @@ Bu bölümde, Azure 'da bir SQL veritabanı sunucusu oluşturacaksınız.
 5. **Sunucu**' da, **Yeni oluştur**' u seçin. 
 6. **Yeni sunucu**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     |Sunucu adı  | *Sunucum*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
     | Sunucu yöneticisi oturum açma| Tercih etmek için bir yönetici adı girin. |
-    | istemcisiyle yönetilen bir cihaz için) | Seçtiğiniz bir parolayı girin. Parola en az 8 karakter uzunluğunda olmalı ve tanımlanan gereksinimleri karşılamalıdır. |
+    | Parola | Seçtiğiniz bir parolayı girin. Parola en az 8 karakter uzunluğunda olmalı ve tanımlanan gereksinimleri karşılamalıdır. |
     | Konum | SQL Server bulunmasını istediğiniz bir Azure bölgesi seçin. |
     
 7. **Tamam**’ı seçin. 
@@ -138,19 +135,19 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
 1. **Özel uç nokta oluştur (Önizleme)-temel**bilgiler için, bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     | **Proje ayrıntıları** | |
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **Myresourcegroup**öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Name | * myPrivateEndpoint*yazın. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
+    | Ad | *Myprivateendpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**WestCentralUS**öğesini seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
 6. **Özel uç nokta oluştur-kaynak**bölümünde bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     |Bağlantı yöntemi  | Dizinimde bir Azure kaynağına bağlan ' ı seçin.|
     | Abonelik| Aboneliğinizi seçin. |
@@ -161,11 +158,11 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 7. Ileri 'yi seçin **: yapılandırma**.
 8. **Özel uç nokta (Önizleme) oluştur-yapılandırma**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     |**IŞLEMLERI**| |
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
-    | Subnet |  *Mysubnet*öğesini seçin. |
+    | Alt ağ |  *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
     |Özel DNS bölgesiyle tümleştirin |**Evet**’i seçin. |
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. Database. Windows. net* |
@@ -177,15 +174,15 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Uzak Masaüstü (RDP) kullanarak bir VM 'ye bağlanma
 
 
-**Myvm*oluşturduktan sonra, internet 'ten aşağıdaki gibi bağlanın: 
+**Myvm**'yi oluşturduktan sonra Internet 'ten şu şekilde bağlanın: 
 
 1. Portalın arama çubuğunda *Myvm*' i girin.
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. İndirilen. rdp * dosyasını açın.
+1. *İndirilen. rdp* dosyasını açın.
 
     1. İstendiğinde **Bağlan**’ı seçin.
 
@@ -219,12 +216,12 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 
 4. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
 
-    | Ayar | Value |
+    | Ayar | Değer |
     | ------- | ----- |
     | Sunucu türü| **Veritabanı Altyapısı**’nı seçin.|
     | Sunucu adı| *Myserver.Database.Windows.net* seçin |
     | Kullanıcı adı | SQL Server oluşturma sırasında belirtilen username@servername Kullanıcı adı girin. |
-    |istemcisiyle yönetilen bir cihaz için) |SQL Server oluşturma sırasında girilen bir parolayı girin. |
+    |Parola |SQL Server oluşturma sırasında girilen bir parolayı girin. |
     |Parolayı anımsa|**Evet**’i seçin.|
     |||
 1. **Bağlan**’ı seçin.

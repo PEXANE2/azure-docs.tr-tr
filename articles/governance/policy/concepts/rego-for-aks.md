@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure Kubernetes hizmetindeki kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436402"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için Azure Ilkesini anlama
 
@@ -29,11 +29,11 @@ AKS kümenizdeki AKS için Azure Ilkesini etkinleştirmek ve kullanmak için aş
 
 ## <a name="opt-in-for-preview"></a>Önizleme için kabul etme
 
-Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğiniz **Microsoft. ContainerService** kaynak sağlayıcısını ve **Microsoft. policınghts** kaynak sağlayıcısını etkinleştirip, sonra da onaylanmalıdır önizlemeye katın. Önizlemeye katmak için Azure portal veya Azure CLı ile bu adımları izleyin:
+Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğiniz **Microsoft. ContainerService** kaynak sağlayıcısı 'Nı ve **Microsoft. policınghts** kaynak sağlayıcısı 'nı etkinleştirip önizlemeye katılması için onaylanmalıdır. Önizlemeye katmak için Azure portal veya Azure CLı ile bu adımları izleyin:
 
 - Azure portal:
 
-  1. **Microsoft. ContainerService** ve **Microsoft. policınghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. **Microsoft. ContainerService** ve **Microsoft. policınghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
   1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
@@ -47,7 +47,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
   1. Abonelikler listesinin en üstündeki **kabul** et düğmesini seçin.
 
-- Azure CLı:
+- Azure CLI:
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -89,11 +89,11 @@ Kubernetes için _Azure Ilke eklentisi_ , Azure Ilke hizmetini ağ geçidi denet
 
 ### <a name="installing-the-add-on"></a>Eklentiyi yükleme
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi gerekir. Bu adım Azure CLı ile yapılır:
 
-1. Azure CLı sürüm 2.0.62 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+1. Azure CLı sürüm 2.0.62 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 1. AKS kümesi sürüm _1,10_ veya üzeri olmalıdır. AKS küme sürümünüzü doğrulamak için aşağıdaki betiği kullanın:
 
@@ -123,7 +123,7 @@ Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi 
 
 Önkoşullar tamamlandıktan sonra, yönetmek istediğiniz AKS kümesinde Azure Ilke eklentisini yükleyebilirsiniz.
 
-- Azure portal
+- Azure Portal
 
   1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
@@ -206,7 +206,7 @@ Ağ geçidi denetleyicisi kapsayıcılarından günlükleri görüntülemek içi
 
 Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure CLı kullanın:
 
-- Azure portal
+- Azure Portal
 
   1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 

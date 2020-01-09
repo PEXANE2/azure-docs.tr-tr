@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme-Azure Active Directory
+title: Yetkilendirme yönetiminde raporları & günlükleri görüntüleme-Azure AD
 description: Azure Active Directory yetkilendirme yönetiminde Kullanıcı atamaları raporu ve denetim günlüklerini görüntülemeyi öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3302fc3b2513794cd66d1ebf6db2cbcdb0f713dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422563"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme
 
@@ -85,7 +85,7 @@ Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında 
 
 1. En üstte, aradığınız denetim kaydına bağlı olarak **kategoriyi** `EntitlementManagement` ya da `UserManagement`olarak değiştirin.  
 
-1. **Apply (Uygula)** düğmesine tıklayın.
+1. **Uygula**'ya tıklayın.
 
 1. Günlükleri indirmek için **İndir**' e tıklayın.
 

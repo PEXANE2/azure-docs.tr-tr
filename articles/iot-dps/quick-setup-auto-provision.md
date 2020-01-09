@@ -8,16 +8,23 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e2b2f13c3570683b575d13b5aadb3e03ec549cab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434589"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmetini Azure portal ile ayarlama
 
-Bu adımlar, cihazlarınızı sağlamak için Azure bulut kaynaklarını ayarlamayı gösterir. Bu makalede şunlarla ilgili adımlar yer alır: IoT hub'ınızı oluşturma, yeni IoT Hub Cihazı Sağlama Hizmetini oluşturma ve iki hizmeti birbirine bağlama. 
+IoT Hub cihaz sağlama hizmeti, istenen IoT Hub 'ına insan müdahalesine gerek kalmadan tam zamanında sağlamayı etkinleştirmek için IoT Hub ile birlikte kullanılabilir ve müşterilerin Milyonlarca IoT cihazını güvenli ve ölçeklenebilir bir şekilde sağlamasını sağlar. Azure IoT Hub cihaz sağlama hizmeti, TPM, simetrik anahtar ve X. 509.440 sertifika kimlik doğrulamaları ile IoT cihazlarını destekler. Daha fazla bilgi için lütfen [IoT Hub cihaz sağlama hizmetine genel bakış](./about-iot-dps.md) bölümüne bakın
+
+Bu hızlı başlangıçta, aşağıdaki adımlarla cihazlarınızı sağlamak için Azure portalında IoT Hub cihaz sağlama hizmetini ayarlamayı öğreneceksiniz:
+> [!div class="checklist"]
+> * IoT Hub oluşturmak için Azure portal kullanın
+> * IoT Hub Cihazı Sağlama Hizmeti oluşturmak ve kimlik kapsamını almak için Azure portalını kullanma
+> * IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
+
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -27,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 
-## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>IoT Hub’ı cihaz sağlama hizmeti için yeni bir örnek oluşturun
+## <a name="create-a-new-iot-hub-device-provisioning-service"></a>Yeni bir IoT Hub cihaz sağlama hizmeti oluşturun
 
 1. **+ Kaynak oluştur** düğmesini yeniden seçin.
 
@@ -77,4 +84,4 @@ Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıcı temel
 Bu hızlı başlangıçta, bir IoT Hub 'ı ve bir cihaz sağlama hizmeti örneği dağıttık ve iki kaynağı bağladınız. Sanal bir cihaz sağlamak üzere bu kurulumu nasıl kullanacağınızı öğrenmek için, sanal cihaz oluşturma hızlı başlangıç ile devam edin.
 
 > [!div class="nextstepaction"]
-> [Sanal cihaz oluşturmak için hızlı başlangıç](./quick-create-simulated-device.md)
+> [Sanal cihaz oluşturmak için hızlı başlangıç](./quick-create-simulated-device-symm-key.md)

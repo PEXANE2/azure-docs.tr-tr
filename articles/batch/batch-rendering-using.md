@@ -1,70 +1,70 @@
 ---
-title: Özellikler - Azure Batch işleme
-description: Azure Batch işleme özellikleri kullanma
+title: İşleme yeteneklerini kullanma-Azure Batch
+description: Azure Batch işleme özelliklerini kullanma. Doğrudan veya bir istemci uygulama eklentisinden çağrılan Batch Explorer uygulamasını kullanmayı deneyin.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337616"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449675"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch işleme kullanma
 
-Azure Batch işleme kullanmak için birkaç yol vardır:
+Azure Batch işleme kullanmanın birkaç yolu vardır:
 
 * API'ler:
-  * Batch API'lerini kullanarak kod yazın.  Geliştiriciler tümleştirilebilir Azure Batch özelliklerine kendi mevcut uygulamalarınız veya iş akışı, ister bulutta veya şirket tabanlı.
+  * Batch API 'Lerinden herhangi birini kullanarak kod yazın.  Geliştiriciler Azure Batch yeteneklerini bulut ya da şirket içinde bulunan mevcut uygulamalarına veya iş akışına tümleştirebilir.
 * Komut satırı araçları:
-  * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya [PowerShell](https://docs.microsoft.com/powershell/azure/overview) betik Batch kullanmak için kullanılabilir.
-  * Özellikle, [Batch CLI şablon Destek](https://docs.microsoft.com/azure/batch/batch-cli-templates) havuzları oluşturmak ve göndermek çok daha kolay hale getirir.
-* Batch Gezgini kullanıcı Arabirimi:
-  * [Batch Explorer](https://github.com/Azure/BatchLabs) de Batch hesapları, izlenen ve yönetilecek sağlayan bir platformlar arası istemci aracıdır.
-  * Kolayca havuzları oluşturmak ve göndermek için kullanılabilir her işleme uygulamaları için bir havuzu ve işini şablon sayısı sağlanır.  Bir dizi şablon Github'dan erişilen şablon dosyaları ile kullanıcı Arabirimi, uygulama içinde listelenir.
-  * Özel şablonlar sıfırdan yazılabilir veya sağlanan şablonlar github'dan kopyaladığınız ve değiştirdi.
-* İstemci uygulama eklentiler:
-  * Eklentileri kullanılabilir doğrudan istemci tasarım içinde kullanılmak üzere Batch işleme ve modelleme uygulamalarının verin.  Eklentileri, çoğunlukla geçerli 3B modeli hakkında bağlamsal bilgiler Batch Gezgini uygulamasıyla çağırın ve varlıklarını yönetmenize yardımcı olmak için özellikler içerir.
+  * [Azure komut satırı](https://docs.microsoft.com/cli/azure/) veya [PowerShell](https://docs.microsoft.com/powershell/azure/overview) , toplu kullanım betiği için kullanılabilir.
+  * Özellikle, [Batch CLI şablonu desteği](https://docs.microsoft.com/azure/batch/batch-cli-templates) havuzları oluşturmayı ve işleri göndermeyi çok daha kolay hale getirir.
+* Batch Explorer kullanıcı arabirimi:
+  * [Batch Explorer](https://github.com/Azure/BatchLabs) , Batch hesaplarının yönetilmesini ve izlenmesini sağlayan platformlar arası bir istemci aracıdır.
+  * İşleme uygulamalarının her biri için, kolayca havuzlar oluşturmak ve işleri göndermek üzere kullanılabilecek bir dizi havuz ve iş şablonu sağlanır.  Şablonlar kümesi, şablon dosyaları GitHub 'dan erişildiği şekilde uygulama kullanıcı arabiriminde listelenir.
+  * Özel şablonlar sıfırdan yazılabilir veya GitHub 'dan sağlanan şablonlar kopyalanabilir ve değiştirilebilir.
+* İstemci uygulaması eklentileri:
+  * Toplu işlemenin doğrudan istemci tasarımı ve modelleme uygulamaları içinden kullanılmasına izin veren eklentiler vardır.  Eklentiler genellikle geçerli 3B modeliyle ilgili bağlamsal bilgilerle Batch Explorer uygulamayı çağırır ve varlıkları yönetmeye yardımcı olacak özellikler içerir.
 
-En iyi yolu Azure Batch işleme deneyin ve geliştiriciler ve Azure uzmanlarından olmayan, son kullanıcılar için en basit yolu Batch Gezgini uygulama ya da doğrudan kullanmak veya bir istemci uygulamasından eklenti çağrılır.
+Geliştirici olmayan ve Azure uzmanlarından sorumlu olmayan son kullanıcılar için Azure Batch işleme ve en basit yolu yapmanın en iyi yolu, doğrudan veya bir istemci uygulaması eklentisiyle çağrılan Batch Explorer uygulamasını kullanmaktır.
 
 ## <a name="using-batch-explorer"></a>Batch Gezgini'ni kullanma
 
-Batch Explorer'ı kullanarak işleme bakın gerçekleştirmeyi için adım adım bir öğretici için [Blender öğretici](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+İşleme gerçekleştirmek için Batch Explorer kullanmaya yönelik adım adım bir öğretici için, bkz. [blender öğreticisi](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
 
-### <a name="download-and-install"></a>İndirme ve yükleme
+### <a name="download-and-install"></a>İndir ve yükle
 
-Batch Explorer [indirmeler kullanılabilir](https://azure.github.io/BatchExplorer/) Windows, OSX ve Linux için.
+Batch Explorer [Indirmeleri](https://azure.github.io/BatchExplorer/) Windows, OSX ve Linux 'ta kullanılabilir.
 
-### <a name="using-templates-to-create-pools-and-run-jobs"></a>Şablonları kullanarak havuzları oluşturma ve işleri çalıştırma
+### <a name="using-templates-to-create-pools-and-run-jobs"></a>Havuzlar oluşturmak ve işleri çalıştırmak için şablonları kullanma
 
-Kapsamlı bir dizi havuzlar oluşturma ve havuzları oluşturmak için gereken tüm özellikleri belirtmek zorunda kalmadan çeşitli işleme uygulamaları için iş, işler ve görevler ile doğrudan göndermek kolaylaştıran bir Batch Gezgini ile kullanılabilir Batch.  Batch Explorer şablanların depolanan ve görünür [bir GitHub deposuna](https://github.com/Azure/BatchExplorer-data/tree/master/ncj).
+Kapsamlı bir şablon kümesi, havuzları, işleri ve görevleri doğrudan ile oluşturmak için gereken tüm özellikleri belirtmek zorunda kalmadan havuzlar oluşturmayı ve çeşitli işleme uygulamaları için iş göndermeyi kolaylaştıran Batch Explorer ile kullanılabilir. İşlemini.  Batch Explorer bulunan şablonlar [bir GitHub deposunda](https://github.com/Azure/BatchExplorer-data/tree/master/ncj)depolanır ve görünür.
 
 ![Batch Explorer Galerisi](./media/batch-rendering-using/batch-explorer-gallery.png)
 
-Şablonlar, tüm Market işleme VM görüntüleri uygulamalar sunmak için değiştirebileceğiniz sağlanır.  Her uygulama için birden fazla şablon, CPU ve GPU havuzları, Windows ve Linux için havuzları gereksinimini karşılamak için havuzu şablonları dahil olmak üzere mevcut; Proje şablonları, tam çerçeve dahil etmek veya Blender'ı oluşturma ve V-Ray dağıtılan işleme döşeli. Sağlanan şablonları kümesini havuzu otomatik ölçeklendirme gibi diğer Batch özellikleri için gereksinimini karşılamak için zaman içinde genişletilir.
+Şablonlar, Market işleme VM görüntülerinde bulunan tüm uygulamalar için karşılamak tarafından sağlanır.  Her uygulama için, CPU ve GPU havuzları, Windows ve Linux havuzları için havuz şablonları dahil olmak üzere birden çok şablon mevcuttur; iş şablonları tam çerçeve veya döşeli blender işleme ve V-Ray dağıtılmış işleme içerir. Sağlanan şablonlar kümesi, havuz otomatik ölçeklendirme gibi diğer toplu Iş özellikleri için zaman içinde genişletilir.
 
-Sıfırdan veya sağlanan şablonları değiştirerek üretilmesi özel şablonlar için da mümkündür. Batch Explorer'ın 'Galeri' bölümünde 'Yerel Şablonları' öğesi'i seçerek özel şablonlar kullanılabilir.
+Özel şablonların, sıfırdan veya sağlanan şablonları değiştirerek üretilmesi de mümkündür. Özel şablonlar, Batch Explorer ' Galeri ' bölümündeki ' Yerel Şablonlar ' öğesi seçilerek kullanılabilir.
 
 ### <a name="file-system-and-data-movement"></a>Dosya sistemi ve veri taşıma
 
-Batch Gezgini 'Data' bölümünde, bir yerel dosya sistemi ve Azure depolama hesapları arasında kopyalanacak dosyaları sağlar.
+Batch Explorer 'daki ' Data ' bölümü, dosyaların yerel bir dosya sistemi ve Azure depolama hesapları arasında kopyalanmasını sağlar.
 
-## <a name="client-application-plug-ins"></a>İstemci uygulama eklentileri
+## <a name="client-application-plug-ins"></a>İstemci uygulaması eklentileri
 
-Eklentiler bazı istemci uygulamaları için kullanılabilir.  Eklentilere izin ver havuzlar ve işler doğrudan uygulamadan oluşturulması veya Batch Gezgini çağırmak için.
+Eklentiler, bazı istemci uygulamaları için kullanılabilir.  Eklentiler, havuzların ve işlerin doğrudan uygulamadan oluşturulmasını sağlar veya Batch Explorer çağırır.
 
-* [Blender'ı](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Toplu işleme deneme iki öğreticiler, örnekler için:
+Toplu işleme örnekleri için iki öğreticiyi deneyin:
 
-* [Azure CLI kullanarak oluşturma](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Batch Explorer'ı kullanarak oluşturma](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Azure CLı kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Batch Explorer kullanarak işleme](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

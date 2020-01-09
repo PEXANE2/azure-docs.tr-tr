@@ -1,5 +1,5 @@
 ---
-title: Xamarin 'de aracılı kimlik doğrulaması, iOS & Android | Mavisi
+title: Xamarin, iOS, & Android ile aracıları kullanma | Mavisi
 titleSuffix: Microsoft identity platform
 description: .NET için Azure AD kimlik doğrulama kitaplığı 'nı (ADAL.NET) .NET için Microsoft kimlik doğrulama kitaplığı 'na (MSAL.NET) kadar Microsoft Authenticator kullanılabilecek Xamarin iOS uygulamalarını nasıl geçirebileceğinizi öğrenin
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 49198909da103debd77fcf0d630e0fa16c1e4448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424217"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Microsoft Intune Şirket Portalı kullanma
 
@@ -37,7 +37,7 @@ Xamarin. iOS uygulamanızın [Microsoft Authenticator](https://itunes.apple.com/
 ### <a name="step-1-enable-broker-support"></a>1\. Adım: aracı desteğini etkinleştirme
 Aracı desteği, PublicClientApplication temelinde etkinleştirilir. Varsayılan olarak devre dışıdır. PublicClientApplicationBuilder aracılığıyla PublicClientApplication oluşturduğunuzda `WithBroker()` parametresini kullanın (varsayılan olarak true olarak ayarlanır).
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -45,10 +45,24 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 
-### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>2\. Adım: geri aramayı işlemek için AppDelegate 'i güncelleştirme
+### <a name="step-2-enable-keychain-access"></a>2\. Adım: Anahtarlık erişimini etkinleştirme
+
+Anahtarlık erişimini etkinleştirmek için uygulamanızın bir Anahtarlık erişim grubu olması gerekir. Uygulamanızı oluştururken Anahtarlık erişim grubunuzu ayarlamak için `WithIosKeychainSecurityGroup()` API 'sini kullanabilirsiniz:
+
+```csharp
+var builder = PublicClientApplicationBuilder
+     .Create(ClientId)
+      
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
+     .Build();
+```
+
+Daha fazla bilgi için bkz. [Anahtarlık erişimini etkinleştirme](msal-net-xamarin-ios-considerations.md#enable-keychain-access).
+
+### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3\. Adım: geri aramayı işlemek için AppDelegate 'i güncelleştirme
 .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) aracıyı çağırdığında, içindeki aracı, `AppDelegate` sınıfının `OpenUrl` yöntemi aracılığıyla uygulamanıza geri çağırır. MSAL, aracıdan gelen yanıtı beklediği için uygulamanızın MSAL.NET geri çağırmak için birlikte çalışması gerekir. Bu ortak işlemi etkinleştirmek için `AppDelegate.cs` dosyasını aşağıdaki yöntemi geçersiz kılmak üzere güncelleştirin.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
                              string sourceApplication,
                              NSObject annotation)
@@ -70,7 +84,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 Bu yöntem, uygulama her başlatıldığında çağrılır. Aracıdan gelen yanıtı işlemek ve MSAL.NET tarafından başlatılan kimlik doğrulama işlemini tamamlamaya yönelik bir fırsat olarak kullanılır.
 
-### <a name="step-3-set-a-uiviewcontroller"></a>3\. Adım: UIViewController () ayarlama
+### <a name="step-4-set-a-uiviewcontroller"></a>4\. Adım: UIViewController () ayarlama
 Hala `AppDelegate.cs`bir nesne penceresi ayarlamanız gerekir. Normalde, Xamarin iOS ile nesne penceresini ayarlamanız gerekmez. Aracıdan yanıt göndermek ve almak için bir nesne penceresi gerekir. 
 
 Bunu yapmak için iki şey yapmanız gerekir. 
@@ -80,22 +94,22 @@ Bunu yapmak için iki şey yapmanız gerekir.
 **Örneğin:**
 
 `App.cs` içinde:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 `AppDelegate.cs` içinde:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 Belirteç al çağrısında:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
 ```
 
-### <a name="step-4-register-a-url-scheme"></a>4\. Adım: URL düzenini kaydetme
+### <a name="step-5-register-a-url-scheme"></a>5\. Adım: bir URL düzenini kaydetme
 MSAL.NET, aracıyı çağırmak için URL 'Ler kullanır ve ardından aracı yanıtını uygulamanıza geri döndürür. Gidiş dönüş işleminin tamamlanabilmesi için, `Info.plist` dosyasına uygulamanız için bir URL düzeni kaydedin.
 
 `CFBundleURLSchemes` adı, ön ek olarak `msauth.` ve ardından `CFBundleURLName`içermelidir.
@@ -125,7 +139,7 @@ MSAL.NET, aracıyı çağırmak için URL 'Ler kullanır ve ardından aracı yan
     </array>
 ```
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>5\. Adım: aracı tanımlayıcısını Lsapplicationqueriesdüzenlerinin bölümüne ekleme
+### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>6\. Adım: aracı tanımlayıcısını Lsapplicationqueriesdüzenlerinin bölümüne ekleme
 MSAL, aracının cihaza yüklenip yüklenmediğini denetlemek için `–canOpenURL:` kullanır. İOS 9 ' da, Apple bir uygulamanın sorgulayabilecekleri düzenleri kilitlemiş. 
 
 `Info.plist` dosyasının `LSApplicationQueriesSchemes` bölümüne `msauthv2` ekleyin.
@@ -134,21 +148,22 @@ MSAL, aracının cihaza yüklenip yüklenmediğini denetlemek için `–canOpenU
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
+      <string>msauthv3</string>
     </array>
 ```
 
-### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>6\. Adım: yeniden yönlendirme URI 'nizi uygulama portalına kaydetme
+### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>7\. Adım: yeniden yönlendirme URI 'nizi uygulama portalına kaydetme
 Aracının kullanılması, yeniden yönlendirme URI 'nize ek bir gereksinim ekler. Yeniden yönlendirme URI 'SI aşağıdaki biçime sahip _olmalıdır_ :
-```CSharp
+```csharp
 $"msauth.{BundleId}://auth"
 ```
 **Örneğin:**
-```CSharp
+```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
 Yeniden yönlendirme URI 'sinin, `Info.plist` dosyasına dahil ettiğiniz `CFBundleURLSchemes` adıyla eşleştiğini unutmayın.
 
-### <a name="step-7-make-sure-the-redirect-uri-is-registered-with-your-app"></a>7\. Adım: yeniden yönlendirme URI 'sinin uygulamanıza kayıtlı olduğundan emin olun
+### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>8\. Adım: yeniden yönlendirme URI 'sinin uygulamanıza kayıtlı olduğundan emin olun
 
 Bu yeniden yönlendirme URI 'sinin, uygulamanız için geçerli bir yeniden yönlendirme URI 'SI olarak uygulama kayıt portalı 'nda (https://portal.azure.com) kayıtlı olması gerekir. 
 

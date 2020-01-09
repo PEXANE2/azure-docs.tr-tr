@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440989"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -45,7 +45,7 @@ Azure, kaynak yönetimi için üç kapsamı destekler. Her kapsam, maliyet yöne
 
     Kaynak türü: [Microsoft. resources/abonelikler](/rest/api/resources/subscriptions)
 
-- [**Kaynak grupları**](../azure-resource-manager/resource-group-overview.md#resource-groups) -aynı yaşam döngüsünü paylaşan bir Azure çözümü için ilgili kaynakların mantıksal gruplandırmaları. Örneğin, birlikte dağıtılan ve silinen kaynaklar.
+- [**Kaynak grupları**](../azure-resource-manager/management/overview.md#resource-groups) -aynı yaşam döngüsünü paylaşan bir Azure çözümü için ilgili kaynakların mantıksal gruplandırmaları. Örneğin, birlikte dağıtılan ve silinen kaynaklar.
 
     Kaynak türü: [Microsoft. resources/abonelikler/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -252,4 +252,4 @@ Maliyet yönetimi şu anda [Azure genel](https://management.azure.com) ve [Azure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Maliyet yönetimi için ilk hızlı başlangıcı Henüz tamamlamadıysanız, [maliyetleri çözümlemeye başlamak](quick-acm-cost-analysis.md)için bunu okuyun.
+- Maliyet yönetimi için zaten ilk hızlı tamamlamadıysanız, hem okuma [maliyetleri başlamanızı](quick-acm-cost-analysis.md).

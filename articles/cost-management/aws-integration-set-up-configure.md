@@ -1,21 +1,21 @@
 ---
-title: Azure maliyet yönetimi ile AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma
+title: AWS tümleştirmesini Azure maliyet yönetimi ile ayarlama
 description: Bu makalede, Azure maliyet yönetimi ile AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma işlemleri adım adım anlatılmaktadır.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/15/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 77bc7772e1d9b8144199c865a8d82f818d5e1963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444604"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma
 
@@ -68,7 +68,7 @@ Yeni rol oluşturma Sihirbazı 'nı kullanın:
 4. Sonraki sayfada **başka BIR AWS hesabı**seçin.
 5. **Hesap kimliği**alanına **432263259397**girin.
 6. **Seçenekler**' de, **dış kimlik gerektir ' i seçin (üçüncü taraf bu rolü varsayacak en iyi yöntem)** .
-7. **Dış kimlik**ALANıNA dış kimliği girin. Dış KIMLIK, AWS rolü ile Azure maliyet yönetimi arasındaki paylaşılan bir geçiş kodu. Aynı dış KIMLIK aynı zamanda maliyet yönetimi 'ndeki **yeni bağlayıcı** sayfasında da kullanılır. Örneğin, bir dış KIMLIK _Companyname1234567890123_benzerdir.
+7. **Dış kimlik**' de, AWS rolü Ile Azure maliyet yönetimi arasında paylaşılan bir geçiş kodu olan dış kimliği girin. Aynı dış KIMLIK aynı zamanda maliyet yönetimi 'ndeki **yeni bağlayıcı** sayfasında da kullanılır. Microsoft, dış KIMLIĞI girerken güçlü bir geçiş kodu ilkesi kullanmanızı önerir.
 
     > [!NOTE]
     > **MFA gerektir**seçimini değiştirmeyin. Temizlenmiş kalmalıdır.
@@ -150,7 +150,7 @@ JSON ilkesi aşağıdaki örneğe benzemelidir. _Bucketname_ değerini S3 demet 
 
 AWS bağlayıcısını oluşturmak ve AWS maliyetlerinizi izlemeye başlamak için aşağıdaki bilgileri kullanın:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. **Maliyet yönetimi + faturalandırma** > **maliyet yönetimi**' ne gidin.
 3. **Ayarlar**altında **bulut bağlayıcıları ' nı (Önizleme)** seçin.  
     ](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)bulut bağlayıcıları (Önizleme) ayarını gösteren örnek ![).

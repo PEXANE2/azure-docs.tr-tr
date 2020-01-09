@@ -2,17 +2,17 @@
 title: Azure 'da özel bir uç nokta bağlantısını yönetme
 description: Azure 'da özel uç nokta bağlantılarını yönetmeyi öğrenin
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452975"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
 Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüketmesi için hizmet sağlayıcısına bir bağlantı isteyebildiğini bir onay çağrı akışı modelinde çalışmaktadır. Hizmet sağlayıcı, tüketicinin bağlanmasına izin verip vermeyeceğine karar verebilir. Azure özel bağlantısı, hizmet sağlayıcılarının kaynakları üzerinde özel uç nokta bağlantısını yönetmesine olanak sağlar. Bu makale, Özel uç nokta bağlantılarının nasıl yönetileceği hakkında yönergeler sağlar.
@@ -28,9 +28,9 @@ Aşağıdaki tabloda, çeşitli hizmet sağlayıcısı eylemleri ve özel uç no
 
 |Hizmet sağlayıcı eylemi   |Hizmet tüketicisi özel uç nokta durumu   |Açıklama   |
 |---------|---------|---------|
-|Yok.    |    Bekleniyor     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
+|Hiçbiri    |    Beklemede     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
 |Onaylama    |  Onaylandı       |  Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.     |
-|Reddet     | Reddedilecek        | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.        |
+|Reddet     | Reddedilen        | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.        |
 |Kaldır    |  Bağlantısı kesildi       | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizleme için silinmelidir.        |
 |   |         |         |
    

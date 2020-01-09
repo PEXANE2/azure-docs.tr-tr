@@ -1,7 +1,7 @@
 ---
 title: Application Insights ile Kullanıcı davranışını izleme
 titleSuffix: Azure AD B2C
-description: Özel ilkeler (Önizleme) kullanarak Azure AD B2C Kullanıcı ilerlemesinden Application Insights olay günlüklerini nasıl etkinleştirebileceğinizi öğrenin.
+description: Özel ilkeler kullanarak Azure AD B2C Kullanıcı ilerinizden Application Insights olay günlüklerini nasıl etkinleştirebileceğinizi öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367969"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
 
@@ -33,11 +33,11 @@ Azure Application Insights ile birlikte Azure Active Directory B2C (Azure AD B2C
 
 Azure AD B2C ' deki kimlik deneyimi çerçevesi, sağlayıcı `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`içerir. Azure AD B2C için sunulan izleme anahtarını kullanarak doğrudan Application Insights olay verileri gönderir.
 
-Teknik bir profil, Azure AD B2C bir olay tanımlamak için bu sağlayıcıyı kullanır. Profil, olayın adını, kaydedilen talepleri ve izleme anahtarını belirtir. Bir olayı postalamak için, teknik profil daha sonra bir `orchestration step`olarak veya özel bir Kullanıcı yolculuğunda bir `validation technical profile` olarak eklenir.
+Teknik bir profil, Azure AD B2C bir olay tanımlamak için bu sağlayıcıyı kullanır. Profil, olayın adını, kaydedilen talepleri ve izleme anahtarını belirtir. Bir olayı göndermek için teknik profil, özel bir Kullanıcı yolculuğunda `orchestration step` olarak eklenir.
 
 Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIMLIĞI kullanarak olayları birleştirebilirsiniz. Application Insights, olay ve oturumu Saniyeler içinde kullanılabilir hale getirir ve birçok görselleştirme, dışarı aktarma ve analitik araç sunar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Özel ilkelerle çalışmaya başlama](active-directory-b2c-get-started-custom.md)bölümündeki adımları uygulayın. Bu makalede özel ilke başlangıç paketini kullandığınız varsayılır. Ancak, başlangıç paketi gerekli değildir.
 
@@ -48,11 +48,11 @@ Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak
 1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**’a tıklayın.
+4. **Oluştur**'a tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**’a tıklayın.
+8. **Oluştur**'a tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398630"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
 
@@ -26,7 +26,7 @@ Azure Application Insights, uygulamanızdan çalışma ve performans analizine y
 > * Sorgu dilini kullanarak sayfa görüntülemelerinin ayrıntılarını analiz etme
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -72,7 +72,7 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 
     ![Performans ipucu](media/tutorial-performance/6-perf-tip.png)
 
-8.  Daha fazla analiz için izlemeyi **İndir** ' e tıklayarak Izlemeyi Visual Studio 'ya indirebilirsiniz.
+8.   Daha fazla analiz için, izlemeyi indirmek üzere **Izlemeyi indir** ' e tıklayabilirsiniz. [PerfView](https://github.com/Microsoft/perfview#perfview-overview)kullanarak bu verileri görüntüleyebilirsiniz.
 
 ## <a name="use-logs-data-for-server"></a>Sunucu için günlük verilerini kullan
  Günlükler, Application Insights tarafından toplanan tüm verileri analiz etmenizi sağlayan zengin bir sorgu dili sağlar. Bunu kullanarak istek ve performans verileri üzerinde ayrıntılı analiz gerçekleştirebilirsiniz.
@@ -87,7 +87,7 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 ## <a name="identify-slow-client-operations"></a>Yavaş istemci işlemlerini belirleme
 Application Insights, iyileştirilecek sunucu işlemlerini belirlemeye ek olarak istemci tarayıcılarının bakış açısını da analiz edebilir.  Bu, istemci bileşenlerine yönelik olası geliştirme fırsatlarını, hatta farklı tarayıcı veya konumlarla ilgili sorunları belirlemenize yardımcı olabilir.
 
-1. **Araştır** altında **tarayıcı** ' yı seçin, **tarayıcı performansı** ' na tıklayın veya **Araştır** altında **performans** ' ı seçin ve sağ üst köşedeki sunucu/tarayıcı geçişi düğmesine tıklayarak **tarayıcı** sekmesine geçin. tarayıcı performansı özetini açın. Burada, tarayıcının bakış açısından uygulamanızın çeşitli telemetri verilerinin görsel bir özetini sağlar.
+1. **Araştır** **' ın altında** **tarayıcı** ' yı **seçin ve** **tarayıcı performansı özetini** açmak için sağ üst köşedeki sunucu/tarayıcı geçişi düğmesine tıklayarak **tarayıcı sekmesine geçin** . Burada, tarayıcının bakış açısından uygulamanızın çeşitli telemetri verilerinin görsel bir özetini sağlar.
 
     ![Tarayıcı özeti](media/tutorial-performance/8-browser.png)
 
@@ -102,7 +102,7 @@ Sunucu performansı için toplanan veriler gibi Application Insights, tüm istem
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
 
-    ![günlük sorgusu](media/tutorial-performance/10-page-view-logs.png)
+    ![Günlük sorgusu](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Akıllı tanılama, verilerdeki benzersiz desenleri tanımlayan bir Günlükler özelliğidir. Çizgi grafikte Akıllı Tanılama noktasına tıkladığınızda, aynı sorgu anomaliye yol açan kayıtlar olmadan çalıştırılır. Sürenin aşırı uzun olmasına yol açan sayfa görüntülemelerini tanımlayabilmeniz için sorgunun açıklama bölümünde bu kayıtların ayrıntıları gösterilir.
 

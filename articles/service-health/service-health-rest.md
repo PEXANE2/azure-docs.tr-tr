@@ -1,28 +1,25 @@
 ---
-title: Azure kaynak durumu olayları REST API kullanarak alın | Microsoft Docs
-description: Azure kaynaklarınız için sistem durumu olaylarını almak için Azure REST API'lerini kullanın.
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
+title: REST API kullanarak Azure Kaynak durumu olaylarını alın | Microsoft Docs
+description: Azure kaynaklarınızın sistem durumu olaylarını almak için Azure REST API 'Lerini kullanın.
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451386"
 ---
-# <a name="get-resource-health-using-the-rest-api"></a>REST API kullanarak kaynak durumu alma 
+# <a name="get-resource-health-using-the-rest-api"></a>REST API kullanarak Kaynak Durumu alın 
 
-Bu örnek makale sistem durumu olaylarını kullanarak Azure kaynakları için bir listesini almak nasıl [Azure REST API'si](/rest/api/azure/).
+Bu örnek makalede, [azure REST API](/rest/api/azure/)kullanarak aboneliğinizdeki Azure kaynakları için bir sistem durumu olaylarının listesinin nasıl alınacağını gösterilmektedir.
 
-Eksiksiz başvuru belgeleri ve REST API için ek örneklerini bulunan [Azure İzleyici REST başvurusu](/rest/api/monitor). 
+Tüm başvuru belgelerini ve REST API için ek örnekleri [Azure IZLEYICI Rest başvurusunda](/rest/api/monitor)bulabilirsiniz. 
 
-## <a name="build-the-request"></a>Derleme isteği
+## <a name="build-the-request"></a>İsteği oluşturma
 
-Aşağıdaki `GET` arasındaki zaman aralığı için aboneliğiniz için sistem durumu olaylarını listelemek için HTTP isteği `2018-05-16` ve `2018-06-20`.
+`2018-05-16` ve `2018-06-20`arasındaki zaman aralığı için aboneliğinizin sistem durumu olaylarını listelemek üzere aşağıdaki `GET` HTTP isteğini kullanın.
 
 ```http
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
@@ -30,29 +27,29 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 ### <a name="request-headers"></a>İstek üst bilgileri
 
-Aşağıdaki üst bilgiler gereklidir: 
+Aşağıdaki üstbilgiler gereklidir: 
 
-|İstek üstbilgisi|Açıklama|  
+|İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
-|*Content-Type:*|Gereklidir. Kümesine `application/json`.|  
-|*Authorization:*|Gereklidir. Geçerli bir kümesi `Bearer` [erişim belirteci](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](/rest/api/azure/#authorization-code-grant-interactive-clients)ayarlayın. |  
 
 ### <a name="uri-parameters"></a>URI parametreleri
 
 | Ad | Açıklama |
 | :--- | :---------- |
-| subscriptionId | Bir Azure aboneliği tanımlayan abonelik kimliği. Birden fazla aboneliğiniz varsa, bkz. [birden çok abonelik ile çalışma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| API sürümü | İstek için kullanılacak API sürümü.<br /><br /> Api sürümü bu belgede ele alınmaktadır `2015-04-01`, yukarıdaki URL'deki yer.  |
-| $filter | Döndürülen sonuç kümesini azaltmak için filtre seçeneği. Bu parametre için izin verilen desenler kullanılabilir [başvurusu için etkinlik günlüklerini işlemi](/rest/api/monitor/activitylogs/list#uri-parameters). Gösterilen örnek 2018-05-16 ve 2018-06-20 arasında bir zaman aralığındaki tüm olayları yakalar. |
+| subscriptionId | Bir Azure aboneliğini tanımlayan abonelik KIMLIĞI. Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| api-version | İstek için kullanılacak API sürümü.<br /><br /> Bu belgede, yukarıdaki URL 'ye dahil edilen api-Version `2015-04-01`yer almaktadır.  |
+| $filter | Döndürülen sonuç kümesini azaltmak için filtreleme seçeneği. Bu parametre için izin verilen desenler, [etkinlik günlükleri işleminin başvurusunda](/rest/api/monitor/activitylogs/list#uri-parameters)bulunabilir. Gösterilen örnek, 2018-05-16 ile 2018-06-20 arasında bir zaman aralığındaki tüm olayları yakalar |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>İstek gövdesi
 
-Hiçbir istek gövdesi, bu işlem için gereklidir.
+Bu işlem için istek gövdesi gerekli değil.
 
 ## <a name="handle-the-response"></a>Yanıtı işleme
 
-200 durum kodu ile birlikte filtre parametresi için karşılık gelen sistem durumu olayı değer listesi ile döndürülen bir `nextlink` sonraki sonuç sayfasını alacak için URI.
+Durum kodu 200, filtre parametresine karşılık gelen bir sistem durumu olay değerleri listesi ile birlikte döndürülür ve bir sonraki sonuç sayfasını almak için bir `nextlink` URI 'SI.
 
 ## <a name="example-response"></a>Örnek yanıt 
 

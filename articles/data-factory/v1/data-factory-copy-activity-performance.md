@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438933"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Etkinlik performansı ve ayarlama Kılavuzu kopyalayın
 
@@ -416,7 +416,8 @@ Bu durumda, bzıp2 veri sıkıştırma tüm işlem hattını yavaşlatmasını. 
 ## <a name="reference"></a>Başvuru
 Desteklenen bazı veri depoları için performans izleme ve ayarlama başvuruları aşağıda verilmiştir:
 
-* Azure Storage (Blob Depolama ve tablo depolama gibi): [Azure depolama ölçeklenebilirlik hedefleri](../../storage/common/storage-scalability-targets.md) ve [Azure depolama performansı ve ölçeklenebilirlik denetim listesi](../../storage/common/storage-performance-checklist.md)
+* Azure Blob depolama: BLOB depolama için [ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md) , [BLOB depolaması için performans ve ölçeklenebilirlik denetim listesi](../../storage/blobs/storage-performance-checklist.md).
+* Azure Tablo Depolama: tablo depolaması için tablo depolama ve performans [ve ölçeklenebilirlik denetim listesi](../../storage/tables/storage-performance-checklist.md) [için ölçeklenebilirlik ve performans hedefleri](../../storage/tables/scalability-targets.md) .
 * Azure SQL veritabanı: Yapabilecekleriniz [performansını izleme](../../sql-database/sql-database-single-database-monitor.md) ve veritabanı işlem birimi (DTU) yüzde denetleyin
 * Azure SQL veri ambarı: Kendi yeteneği veri ambarı birimi (Dwu) ölçülür bkz: [Yönet işlem gücünü Azure SQL veri ambarı (Genel)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [Azure Cosmos DB'de performans düzeyleri](../../cosmos-db/performance-levels.md)

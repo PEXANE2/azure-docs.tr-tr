@@ -1,22 +1,21 @@
 ---
 title: Azure Stream Analytics kullanarak gerçek zamanlı sahtekarlık algılama
 description: Stream Analytics ile gerçek zamanlı bir sahtekarlık algılama çözümü oluşturmayı öğrenin. Gerçek zamanlı olay işleme için bir olay hub 'ı kullanın.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947054"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458799"
 ---
-# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics kullanmaya başlayın: Gerçek zamanlı sahtekarlık algılama
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics kullanmaya başlayın: gerçek zamanlı sahtekarlık algılama
 
 Bu öğreticide Azure Stream Analytics kullanımı için uçtan uca bir çizim sunulmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz: 
 
@@ -28,11 +27,11 @@ Bu öğreticide Azure Stream Analytics kullanımı için uçtan uca bir çizim s
 
 Bu öğretici, telefon araması verilerine göre gerçek zamanlı sahtekarlık algılama örneğini kullanır. Gösterilen teknik, kredi kartı sahtekarlığı veya kimlik hırsızlığı gibi diğer sahtekarlık algılama türleri için de uygundur. 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Senaryo: Gerçek zamanlı telekomünikasyon ve SIM sahtekarlık algılaması
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Senaryo: gerçek zamanlı telekomünikasyon ve SIM sahtekarlık algılaması
 
 Bir telekomünikasyon şirketi gelen çağrılar için büyük hacimde veri içerir. Şirket, müşterileri bilgilendirmek veya belirli bir numara için hizmeti kapatmak üzere sahte aramaları gerçek zamanlı olarak algılamak istiyor. Bir tür SIM dolandırıcılığı aynı kimliğin çevresindeki aynı kimliğe sahip birden fazla çağrı içerir, ancak coğrafi olarak farklı konumlarda. Bu tür dolandırıcılığın algılanması için şirketin gelen telefon kayıtlarını incelemesi ve belirli desenleri (Bu durumda, farklı ülkelerde/bölgelerde aynı zamanda yapılan çağrılar için) araması gerekir. Bu kategoriye giren tüm telefon kayıtları, sonraki analize yönelik depolama alanına yazılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide, örnek telefon araması meta verileri üreten bir istemci uygulaması kullanarak telefon araması verilerinin benzetimini yapacaksınız. Uygulamanın ürettiği bazı kayıtlar, sahte çağrılar gibi görünüyor. 
 
@@ -48,7 +47,7 @@ Akış Analizi işinin sonuçlarını incelemek istiyorsanız, bir Azure Blob de
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Olayları almak için Azure Event Hubs oluşturma
 
-Bir veri akışını analiz etmek için bunu Azure 'a alırsınız. Verileri almanın tipik bir yolu [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)kullanmaktır, bu da saniyede milyonlarca olayı almanızı ve olay bilgilerini işlemenize ve depolamanıza olanak tanır. Bu öğreticide, bir olay hub 'ı oluşturacak ve ardından çağrı olayı Oluşturucu uygulamasının bu olay hub 'ına çağrı verileri göndermesini sağlayabilirsiniz. Olay Hub 'ları hakkında daha fazla bilgi için [Azure Service Bus belgelerine](https://docs.microsoft.com/azure/service-bus/)bakın.
+Bir veri akışını analiz etmek için bunu Azure *'a alırsınız.* Verileri almanın tipik bir yolu [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)kullanmaktır, bu da saniyede milyonlarca olayı almanızı ve olay bilgilerini işlemenize ve depolamanıza olanak tanır. Bu öğreticide, bir olay hub 'ı oluşturacak ve ardından çağrı olayı Oluşturucu uygulamasının bu olay hub 'ına çağrı verileri göndermesini sağlayabilirsiniz. Olay Hub 'ları hakkında daha fazla bilgi için [Azure Service Bus belgelerine](https://docs.microsoft.com/azure/service-bus/)bakın.
 
 >[!NOTE]
 >Bu yordamın daha ayrıntılı bir sürümü için, [Azure Portal kullanarak Event Hubs ad alanı ve Olay Hub 'ı oluşturma](../event-hubs/event-hubs-create.md)konusuna bakın. 
@@ -56,9 +55,9 @@ Bir veri akışını analiz etmek için bunu Azure 'a alırsınız. Verileri alm
 ### <a name="create-a-namespace-and-event-hub"></a>Ad alanı ve olay hub'ı oluşturma
 Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alanına bir olay hub 'ı eklersiniz. Olay Hub 'ı ad alanları, ilgili olay veri yolu örneklerini mantıksal olarak gruplamak için kullanılır. 
 
-1. Azure Portal oturum açın ve**Olay Hub** **nesnelerin interneti** >  **kaynak** > oluştur ' a tıklayın. 
+1. Azure portal oturum açın ve **Olay Hub**'ı **nesnelerin interneti** > **kaynak oluştur** > ' a tıklayın. 
 
-2. **Ad alanı oluştur** bölmesinde, gibi bir ad alanı adı `<yourname>-eh-ns-demo`girin. Ad alanı için herhangi bir ad kullanabilirsiniz, ancak ad bir URL için geçerli olmalıdır ve Azure genelinde benzersiz olmalıdır. 
+2. **Ad alanı oluştur** bölmesinde `<yourname>-eh-ns-demo`gibi bir ad alanı adı girin. Ad alanı için herhangi bir ad kullanabilirsiniz, ancak ad bir URL için geçerli olmalıdır ve Azure genelinde benzersiz olmalıdır. 
     
 3. Bir abonelik seçin ve bir kaynak grubu oluşturun veya seçin, ardından **Oluştur**' a tıklayın.
 
@@ -70,7 +69,7 @@ Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alan
 
    ![Yeni bir olay hub 'ı oluşturmak için Olay Hub 'ı Ekle düğmesi](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Yeni Olay Hub 'ını `asa-eh-frauddetection-demo`adlandırın. Farklı bir ad kullanabilirsiniz. Bunu yaparsanız, bu adı daha sonra gerekli olduğunuzdan emin olun. Şu anda Olay Hub 'ı için başka herhangi bir seçenek ayarlamanıza gerek yoktur.
+6. Yeni Olay Hub 'ını adlandırın `asa-eh-frauddetection-demo`. Farklı bir ad kullanabilirsiniz. Bunu yaparsanız, bu adı daha sonra gerekli olduğunuzdan emin olun. Şu anda Olay Hub 'ı için başka herhangi bir seçenek ayarlamanıza gerek yoktur.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
@@ -88,7 +87,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
     >[!NOTE]
     >Olay Hub 'ı ad alanı değil, Olay Hub 'ı ile çalıştığınızdan emin olun.
 
-3.  Ve talep için adlı `sa-policy-manage-demo` bir ilkeekleyin, **Yönet**' i seçin.
+3.  `sa-policy-manage-demo` adlı bir ilke ekleyin ve **talep**için **Yönet**' i seçin.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
@@ -106,7 +105,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
         Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo
 
-    Bağlantı dizesinin, noktalı virgülle ayrılmış birden çok anahtar-değer çifti içerdiğini `Endpoint`unutmayın: `SharedAccessKey`, `SharedAccessKeyName`, ve `EntityPath`.  
+    Bağlantı dizesinin noktalı virgülle ayrılmış birden çok anahtar-değer çifti içerdiğine dikkat edin: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`ve `EntityPath`.  
 
 ## <a name="configure-and-start-the-event-generator-application"></a>Olay Oluşturucu uygulamasını yapılandırma ve başlatma
 
@@ -114,16 +113,16 @@ TelcoGenerator uygulamasını başlamadan önce, oluşturduğunuz Olay Hub 'ına
 
 ### <a name="configure-the-telcogenerator-app"></a>TelcoGenerator uygulamasını yapılandırma
 
-1. Bağlantı dizesini kopyaladığınız düzenleyicide, `EntityPath` değeri bir yere göz önüne alın ve sonra `EntityPath` çifti kaldırın (bundan sonra gelen noktalı virgülü kaldırmayı unutmayın). 
+1. Bağlantı dizesini kopyaladığınız düzenleyicide, `EntityPath` değerini bir yere getirin ve sonra `EntityPath` çiftini kaldırın (bundan önce gelen noktalı virgülü kaldırmayı unutmayın). 
 
 2. TelcoGenerator. zip dosyasını sıkıştırmadan indirdiğiniz klasörde, bir düzenleyicide telcodatagen. exe. config dosyasını açın. (Birden fazla. config dosyası var, bu nedenle, doğru olanı seçtiğinizden emin olun.)
 
-3. `<appSettings>` Öğesinde:
+3. `<appSettings>` öğesinde:
 
-   * `EventHubName` Anahtar değerini Olay Hub 'ı adı (yani, varlık yolunun değerine) olarak ayarlayın.
-   * `Microsoft.ServiceBus.ConnectionString` Anahtarın değerini bağlantı dizesine ayarlayın. 
+   * `EventHubName` anahtarının değerini Olay Hub 'ı adı (yani, varlık yolunun değerine) olarak ayarlayın.
+   * `Microsoft.ServiceBus.ConnectionString` anahtarının değerini bağlantı dizesine ayarlayın. 
 
-   `<appSettings>` Bölüm aşağıdaki örneğe benzer şekilde görünür. (Açıklık açısından, satırlar sarmalanır ve bazı karakterler yetkilendirme belirtecinden kaldırılmıştır.)
+   `<appSettings>` bölümü aşağıdaki örneğe benzer şekilde görünür. (Açıklık açısından, satırlar sarmalanır ve bazı karakterler yetkilendirme belirtecinden kaldırılmıştır.)
 
    ![TelcoGenerator yapılandırma dosyası, Olay Hub 'ı adını ve bağlantı dizesini gösterir](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
@@ -132,7 +131,7 @@ TelcoGenerator uygulamasını başlamadan önce, oluşturduğunuz Olay Hub 'ına
 ### <a name="start-the-app"></a>Uygulamayı başlatma
 1.  Bir komut penceresi açın ve TelcoGenerator uygulamasının sıkıştırunı olan klasöre geçin.
 
-2.  Aşağıdaki komutu girin:
+2.  Aşağıdaki komutu kullanın:
 
    ```cmd
    telcodatagen.exe 1000 0.2 2
@@ -141,7 +140,7 @@ TelcoGenerator uygulamasını başlamadan önce, oluşturduğunuz Olay Hub 'ına
    Parametreler şunlardır: 
 
    * Saat başına CDRs sayısı. 
-   * SIM kart sahtekarlık olasılığı: Her ne kadar sıklıkla, tüm çağrıların yüzdesi olarak uygulamanın sahte bir çağrının benzetimini yapmanız gerekir. 0\.2 değeri arama kayıtlarının %20'sinin sahte görüneceğini anlamına gelir.
+   * SIM kart sahtekarlık olasılığı: ne sıklıkta, tüm çağrıların yüzdesi olarak uygulamanın sahte bir çağrının benzetimini yapmanız gerekir. 0\.2 değeri arama kayıtlarının %20'sinin sahte görüneceğini anlamına gelir.
    * Saat cinsinden süre. Uygulamanın çalışması gereken saat sayısı. Komut satırında CTRL + C tuşlarına basarak da uygulamayı dilediğiniz zaman durdurabilirsiniz.
 
    Birkaç saniye sonra uygulama, telefon araması kayıtlarını olay hub'ına gönderirken ekranda bu kayıtları görüntülemeye başlar.
@@ -164,7 +163,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
 
 ### <a name="create-the-job"></a>İşi oluşturma 
 
-1. Azure Portal,**Stream Analytics iş** **nesnelerin interneti** >  **kaynak** > oluştur ' a tıklayın.
+1. Azure portal, > **Nesnelerin İnterneti** **Stream Analytics** > **kaynak oluştur ' a** tıklayın.
 
 2. İşi `asa_frauddetection_job_demo`adlandırın, bir abonelik, kaynak grubu ve konum belirtin.
 
@@ -187,8 +186,8 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
-   |Girdi diğer adı  |  CallStream   |  İşin girdisini tanımlamak için bir ad girin.   |
-   |Subscription   |  \<Aboneliğiniz\> |  Oluşturduğunuz Olay Hub 'ına sahip Azure aboneliğini seçin.   |
+   |Giriş diğer adı  |  CallStream   |  İşin girdisini tanımlamak için bir ad girin.   |
+   |Abonelik   |  \<Aboneliğiniz\> |  Oluşturduğunuz Olay Hub 'ına sahip Azure aboneliğini seçin.   |
    |Olay hub'ı ad alanı  |  asa-Eh-NS-demo |  Olay Hub 'ı ad alanının adını girin.   |
    |Olay Hub'ı adı  | asa-Eh-frauddetection-demo | Olay Hub 'ınızın adını seçin.   |
    |Olay Hub'ı ilke adı  | asa-ilke-Yönet-demo | Daha önce oluşturduğunuz erişim ilkesini seçin.   |
@@ -214,9 +213,9 @@ Dil hakkında daha fazla bilgi edinmek için bkz. [Azure Stream Analytics sorgu 
 TelcoGenerator uygulaması, Olay Hub 'ına çağrı kayıtları gönderiyor ve Stream Analytics işiniz Olay Hub 'ından okumak üzere yapılandırılmış. İşi test etmek için bir sorgu kullanarak doğru okunduğunuzdan emin olun. Azure konsolunda bir sorguyu test etmek için örnek verilere ihtiyacınız vardır. Bu izlenecek yol için, Olay Hub 'ına gelen akıştan örnek verileri ayıklayacaksınız.
 
 1. TelcoGenerator uygulamasının çalıştığından ve çağrı kayıtları üretgeldiğinden emin olun.
-2. Portalda Akış Analizi işi bölmesine dönün. (Bölmeyi kapattıysanız `asa_frauddetection_job_demo` **tüm kaynaklar** bölmesinde arama yapın.)
+2. Portalda Akış Analizi işi bölmesine dönün. (Bölmeyi kapattıysanız **tüm kaynaklar** bölmesinde `asa_frauddetection_job_demo` aratın.)
 3. **Sorgu** kutusuna tıklayın. Azure, iş için yapılandırılmış girişleri ve çıkışları listeler ve giriş akışını çıkışa gönderilirken dönüştürmenizi sağlayan bir sorgu oluşturmanızı sağlar.
-4. **Sorgu** bölmesinde, `CallStream` girişin yanındaki noktalara tıklayın ve sonra **girişten örnek veriler**' i seçin.
+4. **Sorgu** bölmesinde `CallStream` girişin yanındaki noktalara tıklayın ve sonra **girişten örnek veriler**' i seçin.
 
    ![Akış Analizi işi girişi için örnek verileri kullanmak üzere menü seçenekleri "girişten gelen örnek veriler" seçilir](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
@@ -229,7 +228,7 @@ TelcoGenerator uygulaması, Olay Hub 'ına çağrı kayıtları gönderiyor ve S
 
 Örnek veriler geçici olarak depolanır ve sorgu penceresi açıkken kullanılabilir. Sorgu penceresini kapatırsanız örnek veriler atılır ve yeni bir örnek veri kümesi oluşturmanız gerekir. 
 
-Alternatif olarak, [GitHub 'dan](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json)örnek veriler içeren bir. JSON dosyası alabilir ve ardından bu. json dosyasını `CallStream` giriş için örnek veri olarak kullanmak üzere karşıya yükleyebilirsiniz. 
+Alternatif olarak, [GitHub 'dan](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json)örnek veriler içeren bir. JSON dosyası alabilir ve ardından bu. json dosyasını `CallStream` girişi için örnek veri olarak kullanmak üzere karşıya yükleyebilirsiniz. 
 
 ### <a name="test-using-a-pass-through-query"></a>Doğrudan sorgu kullanarak test etme
 
@@ -247,7 +246,7 @@ Her olayı arşivlemek istiyorsanız, olay yükünde tüm alanları okumak için
     >[!NOTE]
     >SQL 'de olduğu gibi, anahtar sözcükler büyük/küçük harfe duyarlı değildir ve boşluklar önemli değildir.
 
-    Bu sorguda, `CallStream` girişi oluşturduğunuzda belirttiğiniz diğer addır. Farklı bir diğer ad kullandıysanız bunun yerine bu adı kullanın.
+    Bu sorguda, `CallStream` girişi oluştururken belirttiğiniz diğer addır. Farklı bir diğer ad kullandıysanız bunun yerine bu adı kullanın.
 
 2. **Test**' e tıklayın.
 
@@ -273,11 +272,11 @@ Her olayı arşivlemek istiyorsanız, olay yükünde tüm alanları okumak için
 
    ![Yansıtma için Stream Analytics iş çıktısı 25 kayıt gösterir](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
  
-### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>Bölgeye göre gelen çağrıları say: Toplama ile atlayan pencere
+### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>Bölgeye göre gelen çağrıları say: toplama ile atlayan pencere
 
 Bölge başına gelen çağrı sayısını saymak istediğinizi varsayalım. Akış verileri ' nde, sayma gibi toplam işlevleri gerçekleştirmek istediğinizde, akışı zamana bağlı birimlere (veri akışının kendisi etkin bir şekilde sonsuz olduğundan) segmentetmeniz gerekir. Bunu bir akış analizi [pencere işlevi](stream-analytics-window-functions.md)kullanarak yapabilirsiniz. Daha sonra bu pencere içindeki verilerle birim olarak çalışabilirsiniz.
 
-Bu dönüşüm için, her bir pencere, gruplandırmanız ve toplayabilmeniz gereken ayrı bir veri kümesine sahip olmak için, çakışmayacak bir dizi zamana bağlı pencere istiyorsunuz. Bu pencere türü, atlayan *pencere*olarak adlandırılır. Atlayan penceresinde, aramanın kaynaklandığı ülkeyi/bölgeyi temsil eden, tarafından `SwitchNum`gruplanmış gelen çağrıların sayısını alabilirsiniz. 
+Bu dönüşüm için, her bir pencere, gruplandırmanız ve toplayabilmeniz gereken ayrı bir veri kümesine sahip olmak için, çakışmayacak bir dizi zamana bağlı pencere istiyorsunuz. Bu pencere türü, atlayan *pencere*olarak adlandırılır. Atlayan penceresinde, aramanın kaynaklandığı ülkeyi/bölgeyi temsil eden `SwitchNum`göre gruplandırılan gelen çağrıların sayısını alabilirsiniz. 
 
 1. Kod düzenleyicisinde sorguyu aşağıdaki gibi değiştirin:
 
@@ -289,11 +288,11 @@ Bu dönüşüm için, her bir pencere, gruplandırmanız ve toplayabilmeniz gere
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    Bu sorgu, iç `Timestamp By` içe geçmiş pencereyi `FROM` tanımlamak için kullanılacak giriş akışındaki zaman damgası alanını belirtmek için yan tümcesindeki anahtar sözcüğünü kullanır. Bu durumda pencere, verileri her kayıttaki `CallRecTime` alana göre segmentlere ayırır. (Alan belirtilmemişse, Pencereleme işlemi her bir olayın olay hub 'ına ulaştığı saati kullanır. [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)' nda "varış saati vs uygulama süresi" başlığına bakın. 
+    Bu sorgu, çıkış penceresini tanımlamak için kullanılacak giriş akışındaki zaman damgası alanını belirtmek için `FROM` yan tümcesindeki `Timestamp By` anahtar sözcüğünü kullanır. Bu durumda pencere, verileri her bir kayıttaki `CallRecTime` alanına göre segmentlere ayırır. (Alan belirtilmemişse, Pencereleme işlemi her bir olayın olay hub 'ına ulaştığı saati kullanır. [Stream Analytics sorgu dili başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)' nda "varış saati vs uygulama süresi" başlığına bakın. 
 
-    Projeksiyon eklemeleri `System.Timestamp`, her pencerenin sonuna yönelik bir zaman damgası döndürür. 
+    Projeksiyon, her pencerenin sonuna yönelik bir zaman damgası döndüren `System.Timestamp`içerir. 
 
-    Atlayan bir pencere kullanmak istediğinizi belirtmek için, `GROUP BY` yan tümcesindeki [tumblingwindow](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) işlevini kullanın. İşlevinde, bir zaman birimi (bir mikro saniyenin bir güne kadar bir süre) ve pencere boyutu (kaç birim) belirtirsiniz. Bu örnekte, atlayan pencere 5 saniyelik aralıklardan oluşur; bu nedenle, her 5 saniyelik çağrı için ülkeye/bölgeye göre bir sayı alacaksınız.
+    Atlayan bir pencere kullanmak istediğinizi belirtmek için `GROUP BY` yan tümcesindeki [Tumblingwindow](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) işlevini kullanın. İşlevinde, bir zaman birimi (bir mikro saniyenin bir güne kadar bir süre) ve pencere boyutu (kaç birim) belirtirsiniz. Bu örnekte, atlayan pencere 5 saniyelik aralıklardan oluşur; bu nedenle, her 5 saniyelik çağrı için ülkeye/bölgeye göre bir sayı alacaksınız.
 
 2. **Test** ' e tıklayın. Sonuçlarda, **Windowend** altındaki zaman damgalarının 5 saniyelik artışlarla olduğunu unutmayın.
 
@@ -303,9 +302,9 @@ Bu dönüşüm için, her bir pencere, gruplandırmanız ve toplayabilmeniz gere
 
 Bu örnekte, aynı kullanıcıdan kaynaklanan, ancak bir diğeri 5 saniyelik farklı konumlarda olan çağrılar için sahte kullanım yapmayı düşünün. Örneğin, bir kullanıcı mantıksal olarak aynı anda hem ABD’den hem de Avustralya’dan arama yapamaz. 
 
-Bu durumları denetlemek için akış verilerinin kendine katılımını, `CallRecTime` değere göre akışa eklemek için kullanabilirsiniz. Daha sonra `CallingIMSI` değerin (kaynak numarası) aynı olduğu, `SwitchNum` ancak değer (ülke/kaynak bölge) aynı olmadığı durumlarda çağrı kayıtları arayabilirsiniz.
+Bu durumları denetlemek için akış verilerinin kendinden katılımını, `CallRecTime` değerine göre akışa katmak için kullanabilirsiniz. Daha sonra, `CallingIMSI` değerinin (kaynak numarası) aynı olduğu, ancak `SwitchNum` değeri (kaynak ülke/bölge) aynı olmadığı çağrı kayıtlarını arayabilirsiniz.
 
-Akış verileriyle birleştirme kullandığınızda, birleştirme, eşleşen satırların zaman içinde ne kadar ayrılabileceği hakkında bazı sınırlar sağlamalıdır. (Daha önce belirtildiği gibi, akış verileri etkili bir şekilde sonsuz olur.) İlişki için zaman sınırları, `ON` `DATEDIFF` işlevi kullanılarak birleştirmenin yan tümcesi içinde belirtilir. Bu durumda, birleşimi 5 saniyelik çağrı verileri aralığını temel alır.
+Akış verileriyle birleştirme kullandığınızda, birleştirme, eşleşen satırların zaman içinde ne kadar ayrılabileceği hakkında bazı sınırlar sağlamalıdır. (Daha önce belirtildiği gibi, akış verileri etkili bir şekilde sonsuz olur.) İlişki için zaman sınırları, `DATEDIFF` işlevi kullanılarak birleştirmenin `ON` yan tümcesi içinde belirtilir. Bu durumda, birleşimi 5 saniyelik çağrı verileri aralığını temel alır.
 
 1. Kod düzenleyicisinde sorguyu aşağıdaki gibi değiştirin: 
 
@@ -323,9 +322,9 @@ Akış verileriyle birleştirme kullandığınızda, birleştirme, eşleşen sat
         WHERE CS1.SwitchNum != CS2.SwitchNum
         ```
 
-    Bu sorgu, birleşimdeki `DATEDIFF` işlev haricinde herhangi bir SQL JOIN gibi olur. Bu sürümü `DATEDIFF` , Stream Analytics 'e özeldir ve `ON...BETWEEN` yan tümcesinde görünmelidir. Parametreler bir zaman birimidir (Bu örnekteki saniyeler) ve JOIN için iki kaynağın diğer adları. Bu, standart SQL `DATEDIFF` işlevinden farklıdır.
+    Bu sorgu, birleşimdeki `DATEDIFF` işlevi dışında herhangi bir SQL JOIN gibi olur. `DATEDIFF` bu sürümü, Stream Analytics 'e özgüdür ve `ON...BETWEEN` yan tümcesinde görünmelidir. Parametreler bir zaman birimidir (Bu örnekteki saniyeler) ve JOIN için iki kaynağın diğer adları. Bu, standart SQL `DATEDIFF` işlevinden farklıdır.
 
-    `WHERE` Yan tümcesi, sahte çağrıyı işaret eden koşulu içerir: kaynak Anahtarlar aynı değildir. 
+    `WHERE` yan tümcesi, sahte çağrıyı işaret eden koşulu içerir: kaynak Anahtarlar aynı değildir. 
 
 2. **Test** ' e tıklayın. 
 
@@ -345,11 +344,11 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure Blob depolama hesabı oluşturma
 
-1. Azure portalının sol üst köşesinden **Kaynak oluştur** > **Depolama** > **Depolama hesabı**’nı seçin. **Ad** "asaehstorage" olarak ayarlanmış olan depolama hesabı işi sayfasını doldurun, **konum** "Doğu ABD" olarak ayarlanır, **kaynak grubu** "asa-Eh-NS-RG" olarak ayarlanır (daha yüksek performans için depolama hesabını akış işiyle aynı kaynak grubunda barındırın) . Diğer ayarlar varsayılan değerlerinde bırakılabilir.  
+1. Azure portalının sol üst köşesinden **Kaynak oluştur** > **Depolama** > **Depolama hesabı**’nı seçin. **Ad** "asaehstorage", **konum** "Doğu ABD" olarak ayarlanmış olan depolama hesabı Işi sayfasını doldurun, **kaynak grubu** "asa-Eh-NS-RG" olarak ayarlanır (daha yüksek performans için depolama hesabını akış işiyle aynı kaynak grubunda barındırın). Diğer ayarlar varsayılan değerlerinde bırakılabilir.  
 
    ![Azure portal depolama hesabı oluşturma](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
-2. Azure portal, Akış Analizi işi bölmesine dönün. (Bölmeyi kapattıysanız `asa_frauddetection_job_demo` **tüm kaynaklar** bölmesinde arama yapın.)
+2. Azure portal, Akış Analizi işi bölmesine dönün. (Bölmeyi kapattıysanız **tüm kaynaklar** bölmesinde `asa_frauddetection_job_demo` aratın.)
 
 3. **Iş topolojisi** bölümünde **Çıkış** kutusuna tıklayın.
 
@@ -357,15 +356,15 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
-   |Çıktı diğer adı  |  CallStream-FraudulentCalls   |  İşin çıktısını tanımlamak için bir ad girin.   |
-   |Subscription   |  \<Aboneliğiniz\> |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
+   |Çıkış diğer adı  |  CallStream-FraudulentCalls   |  İşin çıktısını tanımlamak için bir ad girin.   |
+   |Abonelik   |  \<Aboneliğiniz\> |  Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır. |
    |Depolama hesabı  |  aşama ehstorage |  Oluşturduğunuz depolama hesabının adını girin. |
    |Kapsayıcı  | asa-fraudulentcalls-demo | Yeni Oluştur ' a tıklayın ve bir kapsayıcı adı girin. |
 
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. **Kaydet**’e tıklayın. 
+5. **Save (Kaydet)** düğmesine tıklayın. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>Akış Analizi işini başlatma
@@ -412,7 +411,7 @@ Daha fazla yardım için deneyin [Azure Stream Analytics forumumuzu](https://soc
 
 Bu öğreticiye aşağıdaki makaleyle devam edebilirsiniz:
 
-* [Stream Analytics ve Power BI: Veri](stream-analytics-power-bi-dashboard.md)akışı için gerçek zamanlı analiz panosu. Bu makalede, Stream Analytics işin TelCo çıkışını gerçek zamanlı görselleştirme ve analizler için Power BI nasıl göndereceğiniz gösterilmektedir.
+* [Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu](stream-analytics-power-bi-dashboard.md). Bu makalede, Stream Analytics işin TelCo çıkışını gerçek zamanlı görselleştirme ve analizler için Power BI nasıl göndereceğiniz gösterilmektedir.
 
 Genel olarak Stream Analytics hakkında daha fazla bilgi için şu makalelere bakın:
 

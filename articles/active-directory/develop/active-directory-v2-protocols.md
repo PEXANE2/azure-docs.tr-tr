@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform tarafından desteklenen yetkilendirme protokolleri | Mavisi
+title: OAuth 2,0 ve OpenID Connect protokolleri-Microsoft Identity platform | Mavisi
 description: Microsoft Identity platform uç noktası tarafından desteklenen OAuth 2,0 ve OpenID Connect protokollerine yönelik bir kılavuz.
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7b25f1753e6dcb415927ee6278c36b3b179dd353
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424726"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity platform protokolleri
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
 
 Endüstri standardı protokoller, OpenID Connect ve OAuth 2,0 ile hizmet olarak kimlik için Microsoft Identity platform uç noktası. Hizmet standartlarla uyumlu olsa da, bu protokollerin iki uygulaması arasında hafif farklar olabilir. Buradaki bilgiler, HTTP isteklerini doğrudan gönderip işleyerek veya [Açık kaynaklı kitaplıklarımızın](reference-v2-libraries.md)birini kullanmak yerine bir üçüncü taraf açık kaynak kitaplığı kullanarak kodunuzu yazmayı tercih ediyorsanız yararlı olacaktır.
 

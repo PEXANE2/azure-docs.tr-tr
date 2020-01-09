@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a78a44f9e4dd1b64ae989dffa04892a490b986d4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436931"
 ---
-Azure Cloud Shell, Azure PowerShell yerel olarak yüklemek yerine çoğu PowerShell cmdlet 'ini çalıştırmak için kullanabilirsiniz. Azure Cloud Shell, ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış, ücretsiz bir etkileşimli kabuktur.
-Bu makalede yer alan herhangi bir kodu Azure Cloud Shell çalıştırmak için, bir Cloud Shell oturumu açın, kodu kopyalamak için bir kod bloğundaki **Kopyala** düğmesini kullanın ve Windows ve Linux 'ta __CTRL + SHIFT + v__ ile Cloud Shell oturumuna yapıştırın veya __cmd + SHIFT + v__ macOS 'ta. Yapıştırılan metin otomatik olarak yürütülmez, kodu çalıştırmak için **ENTER** tuşuna basın.
+Azure PowerShell veya CLı 'yi yerel olarak yüklemek yerine birçok PowerShell cmdlet 'ini ve CLı komutunu çalıştırmak için Azure Cloud Shell kullanabilirsiniz. Azure Cloud Shell, ortak Azure Araçları önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış, ücretsiz bir etkileşimli kabuktur.
+Bu makalede yer alan herhangi bir kodu Azure Cloud Shell çalıştırmak için, bir Cloud Shell oturumu açın, kodu kopyalamak için bir kod bloğundaki **Kopyala** düğmesini kullanın ve Windows ve Linux 'ta __CTRL + SHIFT + v__ veya MacOS 'ta __cmd + SHIFT + v__ ile Cloud Shell oturumuna yapıştırın. Yapıştırılan metin otomatik olarak yürütülmez, kodu çalıştırmak için **ENTER** tuşuna basın.
 
 Cloud Shell’i başlatmanın birkaç yolu vardır:
 

@@ -4,15 +4,15 @@ description: Bu makalede, Azure Ilkesi kullanarak birden çok Azure sanal makine
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365827"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Ilkesini kullanarak VM'ler için Azure İzleyici (Önizleme) etkinleştirme
 
@@ -113,7 +113,7 @@ Tek başına ilke (girişimle yer almaz) aşağıda açıklanmıştır:
 
 İlkeyi veya girişimi atadığınızda, atamadaki seçili kapsam burada listelenen kapsam veya bunun bir alt kümesi olabilir. Örneğin, yönetim grubu (kapsam kapsamı) değil, abonelik (ilke kapsamı) için bir atama oluşturmuş olabilirsiniz. Bu durumda, kapsam yüzdesi, ilke veya girişim kapsamındaki VM 'Leri kapsam kapsamındaki VM 'Ler tarafından ayrılmış olarak gösterir. Başka bir durumda, bazı VM 'Leri veya kaynak gruplarını veya ilke kapsamından bir aboneliği dışınınız olabilir. Boşsa, ilke veya girişim yok ya da izniniz yok anlamına gelir. Bilgi, **atama durumu**altında sağlanır.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portalında **İzleyici**. 
 
@@ -145,10 +145,10 @@ Aşağıdaki matris, girişim için olası her uyumluluk durumunu eşler.
 
 | Uyumluluk durumu | Açıklama | 
 |------------------|-------------|
-| **Uyumluluk** | Kapsamdaki tüm sanal makinelerin kendisine dağıtılan Log Analytics ve bağımlılık aracıları vardır.|
+| **Uyumlu** | Kapsamdaki tüm sanal makinelerin kendisine dağıtılan Log Analytics ve bağımlılık aracıları vardır.|
 | **Uyumlu değil** | Kapsamdaki tüm VM 'Lerin bunlara dağıtılan Log Analytics ve bağımlılık aracıları yoktur ve düzeltme gerekebilir.|
 | **Başlatılmadı** | Yeni bir atama eklendi. |
-| **İne** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
+| **Kilitle** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
 | **Boş** | Hiçbir ilke atanmadı. | 
 
 <sup>1</sup> yönetim grubuna erişiminiz yoksa, bir sahibe erişim sağlamasını isteyin. Ya da, uyumluluğu görüntüleyin ve atamaları alt yönetim grupları ya da abonelikler aracılığıyla yönetin. 
@@ -160,7 +160,7 @@ Aşağıdaki tablo girişim için olası her atama durumunu eşler.
 | **Başarılı** | Kapsamdaki tüm sanal makinelerin kendisine dağıtılan Log Analytics ve bağımlılık aracıları vardır.|
 | **Uyarı** | Abonelik bir yönetim grubu altında değil.|
 | **Başlatılmadı** | Yeni bir atama eklendi. |
-| **İne** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
+| **Kilitle** | Yönetim grubu için yeterli ayrıcalıklara sahip değilsiniz. <sup>1</sup> | 
 | **Boş** | VM yok veya bir ilke atanmamış. | 
 | **Eylem** | Bir ilke atayın veya bir atamayı düzenleyin. | 
 

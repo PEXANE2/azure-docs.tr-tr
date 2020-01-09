@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927218"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406740"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Canlı Ölçüm Akışı: Izleme & Tanıla, 1 saniyelik gecikme
 
@@ -35,7 +35,7 @@ Canlı ölçümler Şu anda ASP.NET, ASP.NET Core, Azure Işlevleri, Java ve Nod
 
 ## <a name="get-started"></a>Kullanmaya Başlayın
 
-1. Henüz [Application Insights](../../azure-monitor/azure-monitor-app-hub.md) Web uygulamanıza yüklemediyseniz, bunu şimdi yapın.
+1. Henüz [Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) Web uygulamanıza yüklemediyseniz, bunu şimdi yapın.
 2. Standart Application Insights paketlerine ek olarak, canlı ölçüm akışını etkinleştirmek için [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) gereklidir.
 3. Application Insights paketinin **en son sürümüne güncelleştirin** . Visual Studio 'da projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Güncelleştirmeler** sekmesini açın ve tüm Microsoft. ApplicationInsights. * paketlerini seçin.
 
@@ -157,7 +157,7 @@ Azure Işlev uygulamaları (v2) için bir API anahtarı ile kanalın güvenliği
 
 Application Insights kaynağınız içinden bir API anahtarı oluşturun ve İşlev Uygulaması **uygulama ayarları** ' na gidin. **Yeni ayar Ekle** ' yi seçin ve bir `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` adı ve API anahtarınıza karşılık gelen bir değer girin.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0-Beta veya daha üstü) gerektirir
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0 veya üzerini gerektirir)
 
 Startup.cs dosyanızı aşağıdaki şekilde değiştirin:
 

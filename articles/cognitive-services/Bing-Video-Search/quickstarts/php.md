@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 481bc700f86dfd8a28c074134fd5dcc85bb748c4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448356"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Hızlı başlangıç: Bing Video Arama REST API ve PHP kullanarak video arama
 
@@ -37,7 +37,7 @@ API'lerle ilgili teknik ayrıntılar için [API başvurusu](https://docs.microso
 1. Kod açıklamasında belirtildiği gibi `php.ini` dosyanızda güvenli HTTP desteğinin etkinleştirildiğinden emin olun.
 2. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
-4. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
+4. `$accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin. `$endpoint`, aşağıdaki genel uç nokta veya [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası, kaynağınız için Azure Portal görüntülenir.
 5. Programı çalıştırın.
 
 ```php

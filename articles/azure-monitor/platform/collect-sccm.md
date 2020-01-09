@@ -4,31 +4,31 @@ description: Bu makalede, Azure Izleyici 'de çalışma alanına Configuration M
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364059"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager Azure Izleyici 'ye bağlama
 Cihaz koleksiyonu verilerini eşitlemek ve Azure Izleyici ve Azure Otomasyonu 'nda bu koleksiyonlara başvurmak için System Center Configuration Manager ortamınızı Azure Izleyici 'ye bağlayabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Izleyici System Center Configuration Manager geçerli dalı, sürüm 1606 ve üstünü destekler.
 
 >[!NOTE]
->Log Analytics bir çalışma alanıyla Configuration Manager bağlama özelliği isteğe bağlıdır ve varsayılan olarak etkinleştirilmez. Bu özelliği kullanmadan önce etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [güncelleştirmelerden isteğe bağlı özellikleri etkinleştirme](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>Log Analytics bir çalışma alanıyla Configuration Manager bağlama özelliği isteğe bağlıdır ve varsayılan olarak etkinleştirilmez. Bu özelliği kullanmadan önce etkinleştirmeniz gerekir. Daha fazla bilgi için, bkz. [Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Yapılandırmaya genel bakış
 
 Aşağıdaki adımlarda, Azure Izleyici ile Configuration Manager Tümleştirmesini Yapılandırma adımları özetlenmektedir.  
 
-1. Azure Active Directory ' de bir Web uygulaması ve/veya Web API uygulaması olarak Configuration Manager kaydedin ve Azure Active Directory kaydından istemci KIMLIĞI ve istemci gizli anahtarı anahtarına sahip olduğunuzdan emin olun. Bu adımın nasıl yapılacağı hakkında ayrıntılı bilgi için [kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md) konusuna bakın.
+1. Azure Active Directory ' de bir Web uygulaması ve/veya Web API uygulaması olarak Configuration Manager kaydedin ve Azure Active Directory kaydından istemci KIMLIĞI ve istemci gizli anahtarı anahtarına sahip olduğunuzdan emin olun. Bkz: [Active Directory kaynaklarına erişmek uygulama ve hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md) bu adımı tamamlamak hakkında ayrıntılı bilgi için.
 
 2. Azure Active Directory ' de, [Azure izleyici 'ye erişim izni olan Configuration Manager (kayıtlı Web uygulaması) verin](#grant-configuration-manager-with-permissions-to-log-analytics).
 
@@ -40,27 +40,27 @@ Aşağıdaki adımlarda, Azure Izleyici ile Configuration Manager Tümleştirmes
 
 6. Azure Izleyici 'de Configuration Manager verileri [bilgisayar grupları](computer-groups.md)olarak görüntüleyin.
 
-## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Log Analytics izinlere sahip Configuration Manager verme
+## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>GRANT Configuration Manager'ı Log analytics'e izinlerle
 
-Aşağıdaki yordamda, Log Analytics çalışma alanınızdaki *katkıda* bulunan rolünü Configuration Manager daha önce oluşturduğunuz ad uygulaması ve hizmet sorumlusuna verirsiniz. Henüz bir çalışma alanınız yoksa devam etmeden önce [Azure izleyici 'de çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md) bölümüne bakın. Bu, Configuration Manager kimliğinin doğrulanmasını ve Log Analytics çalışma alanınıza bağlanmasını sağlar.  
+Aşağıdaki yordamda vermesi *katkıda bulunan* Log Analytics çalışma alanınızda AD uygulaması ve hizmet sorumlusu, daha önce oluşturduğunuz Configuration Manager için rol. Henüz bir çalışma alanınız yoksa devam etmeden önce [Azure izleyici 'de çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md) bölümüne bakın. Bu, Configuration Manager'ın kimlik doğrulaması ve Log Analytics çalışma alanınıza bağlanmak için sağlar.  
 
 > [!NOTE]
-> Configuration Manager için Log Analytics çalışma alanında izinleri belirtmeniz gerekir. Aksi takdirde, Configuration Manager 'de Yapılandırma Sihirbazı 'nı kullandığınızda bir hata iletisi alırsınız.
+> Configuration Manager için Log Analytics çalışma alanında izinleri belirtmeniz gerekir. Aksi takdirde, Configuration Manager'da Yapılandırma Sihirbazı'nı kullandığınızda, bir hata iletisi alırsınız.
 >
 
 1. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
 
-2. Log Analytics çalışma alanları listenizde, değiştirilecek çalışma alanını seçin.
+2. Log Analytics çalışma alanlarınızın listesinde değiştirmek için çalışma alanı seçin.
 
-3. Sol bölmeden **erişim denetimi (IAM)** seçeneğini belirleyin.
+3. Sol bölmeden **erişim denetimi (IAM)** .
 
-4. Erişim denetimi (ıAM) sayfasında, **rol ataması Ekle** ' ye tıklayın ve **rol ataması Ekle** bölmesi görüntülenir.
+4. Erişim denetimi (IAM) sayfası, tıklayın **rol ataması Ekle** ve **rol ataması Ekle** bölmesi görünür.
 
-5. **Rol ataması Ekle** bölmesinde, **rol** açılan listesi altında **katkıda** bulunan rolünü seçin.  
+5. İçinde **rol ataması Ekle** bölmesi altında **rol** açılan listesini seçin **katkıda bulunan** rol.  
 
-6. **Erişim Izni ata** listesinde, daha önce ad ' de oluşturulan Configuration Manager uygulamasını seçin ve ardından **Tamam**' a tıklayın.  
+6. Altında **erişim Ata** aşağı açılan listesinde, AD'de daha önce oluşturduğunuz Configuration Manager uygulaması'nı seçin ve ardından **Tamam**.  
 
-## <a name="download-and-install-the-agent"></a>Aracıyı indirme ve yükleme
+## <a name="download-and-install-the-agent"></a>Aracısını indirme ve yükleme
 
 Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındıran bilgisayarda Windows Log Analytics Aracısı 'nı yüklemeye yönelik yöntemleri anlamak için [Windows bilgisayarları Azure 'da Azure izleyici 'ye bağlama](agent-windows.md) makalesini gözden geçirin.  
 
@@ -76,7 +76,7 @@ Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındı
 
 2. **Azure hizmetleri** ' ne sağ tıklayın ve ardından **Azure hizmetlerini yapılandır**' ı seçin. **Azure hizmetlerini yapılandır** sayfası görünür. 
    
-3. **Genel** ekranda, aşağıdaki eylemleri yaptık ve her öğe için ayrıntılarınızı doğrulayın, ardından **İleri**' yi seçin.
+3. Üzerinde **genel** aşağıdaki eylemleri yaptığınız her öğenin ayrıntılarını sahip ve ardından seçin ve onaylayın **sonraki**.
 
 4. Azure Hizmetleri Sihirbazı 'nın Azure Hizmetleri sayfasında:
 
@@ -109,11 +109,11 @@ Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındı
 
     8. **Doğrula** ' yı seçin ve sağ tarafta, sonuçların **başarıyla doğrulanması**gerektiğini gösterir!.
 
-8. **Yapılandırma** sayfasında Azure **aboneliklerini**, **Azure Kaynak grubu**ve **Operations Management Suite çalışma alanı** ALANLARıNı doğrulamak için bilgileri gözden geçirin. Azure AD uygulaması, kaynak grubunda yeterli izin yok. Alanlar boşsa, uygulamanızın gerekli haklara sahip olmadığını gösterir. Toplanacak ve çalışma alanına iletecek cihaz koleksiyonlarını seçin ve ardından **Ekle**' yi seçin.
+8. **Yapılandırma** sayfasında, Azure **abonelikleri**, **Azure Kaynak grubu**ve **Operations Management Suite çalışma alanı** alanlarının, Azure AD uygulamasının kaynak grubunda yeterli izinlere sahip olduğunu belirten önceden doldurulduğu bilgileri gözden geçirin. Alanlar boşsa, uygulamanızın gerekli haklara sahip olmadığını gösterir. Toplanacak ve çalışma alanına iletecek cihaz koleksiyonlarını seçin ve ardından **Ekle**' yi seçin.
 
 9. **Ayarları onaylayın** sayfasında seçenekleri gözden geçirin ve bağlantıyı oluşturmaya ve yapılandırmaya başlamak için **İleri** ' yi seçin.
 
-10. Yapılandırma tamamlandığında **tamamlama** sayfası görüntülenir. **Kapat**' ı seçin. 
+10. Yapılandırma tamamlandığında **tamamlama** sayfası görüntülenir. **Kapat**’ı seçin. 
 
 Configuration Manager Azure Izleyici 'ye bağladıktan sonra, koleksiyonları ekleyebilir veya kaldırabilir ve bağlantının özelliklerini görüntüleyebilirsiniz.
 
@@ -122,32 +122,32 @@ Configuration Manager Azure Izleyici 'ye bağladıktan sonra, koleksiyonları ek
 Parola veya gizli anahtar süresinin dolması veya kaybolması durumunda Log Analytics bağlantısı özelliklerini el ile güncelleştirmeniz gerekir.
 
 1. Configuration Manager **Yönetim** çalışma alanında **Cloud Services** ' i seçin ve OMS **bağlantısı Özellikler** sayfasını açmak için **OMS Bağlayıcısı** ' nı seçin.
-2. Bu sayfada, **kiracınızı**, **istemci kimliğinizi**, **istemci gizli anahtarı süre sonunu**görüntülemek için **Azure Active Directory** sekmesine tıklayın. Süresi dolmuşsa, **istemci gizli anahtarınızı** **doğrulayın** .
+2. Bu sayfada tıklayın **Azure Active Directory** görüntülemek için sekmesinde, **Kiracı**, **istemci kimliği**, **istemci gizli anahtarı süre sonu**. **Doğrulama** , **istemci gizli anahtarının** süresi dolmuşsa.
 
-## <a name="import-collections"></a>Koleksiyonları içeri aktar
+## <a name="import-collections"></a>Koleksiyonları İçeri Aktar
 
 Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Configuration Manager hizmet bağlantı noktası site sistemi rolünü çalıştıran bilgisayara yükledikten sonra, bir sonraki adım, koleksiyonları Azure 'daki Configuration Manager içeri aktarmasıdır. Bilgisayar grupları olarak izleyin.
 
-Hiyerarşinizden cihaz koleksiyonlarını içeri aktarmaya yönelik ilk yapılandırmayı tamamladıktan sonra, Üyelik güncel tutulması için koleksiyon bilgileri her 3 saatte bir alınır. Bu seçeneği dilediğiniz zaman devre dışı bırakabilirsiniz.
+Hiyerarşinizden cihaz koleksiyonlarını içeri aktarmaya yönelik ilk yapılandırmayı tamamladıktan sonra, Üyelik güncel tutulması için koleksiyon bilgileri her 3 saatte bir alınır. Bu, istediğiniz zaman devre dışı seçebilirsiniz.
 
 1. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
-2. Log Analytics çalışma alanları listenizde, Configuration Manager kayıtlı çalışma alanını seçin.  
+2. Log Analytics çalışma alanlarınızın listesinde, Configuration Manager ile kayıtlı bir çalışma alanı seçin.  
 3. **Gelişmiş ayarlar**’ı seçin.
-4. **Bilgisayar grupları** ' nı seçin ve ardından **SCCM**' yi seçin.  
-5. **Configuration Manager koleksiyonu üyeliklerini Içeri aktar** ' ı seçin ve **Kaydet**' e tıklayın.  
+4. Seçin **bilgisayar grupları** seçip **SCCM**.  
+5. Seçin **alma Configuration Manager koleksiyon üyelikleri** ve ardından **Kaydet**.  
    
-    ![Bilgisayar grupları-SCCM sekmesi](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Bilgisayar grupları - SCCM sekmesi](./media/collect-sccm/sccm-computer-groups01.png)
 
-## <a name="view-data-from-configuration-manager"></a>Configuration Manager verileri görüntüleme
+## <a name="view-data-from-configuration-manager"></a>Verileri Configuration Manager'dan görüntüle
 
-Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Configuration Manager hizmet bağlantı noktası site sistemi rolünü çalıştıran bilgisayara yükledikten sonra, aracıdaki veriler Azure Izleyici 'de Log Analytics çalışma alanına gönderilir. Azure Izleyici 'de, Configuration Manager koleksiyonlarınız [bilgisayar grupları](../../azure-monitor/platform/computer-groups.md)olarak görünür. Grupları, **Ayarları \ bilgisayar grupları**' nın altında **Configuration Manager** sayfasından görüntüleyebilirsiniz.
+Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Configuration Manager hizmet bağlantı noktası site sistemi rolünü çalıştıran bilgisayara yükledikten sonra, aracıdaki veriler Azure Izleyici 'de Log Analytics çalışma alanına gönderilir. Azure Izleyici 'de, Configuration Manager koleksiyonlarınız [bilgisayar grupları](../../azure-monitor/platform/computer-groups.md)olarak görünür. Gruplardan görüntüleyebileceğiniz **Configuration Manager** altındaki **Settings\Computer grupları**.
 
-Koleksiyonlar alındıktan sonra, koleksiyon üyeliğine sahip kaç bilgisayar algılandığını görebilirsiniz. Ayrıca, içeri aktarılmış koleksiyonların sayısını da görebilirsiniz.
+Koleksiyonları içeri aktarıldıktan sonra kaç koleksiyon üyelikleri bilgisayarlarla algılanan görebilirsiniz. Aktarılan koleksiyonları sayısını da görebilirsiniz.
 
-![Bilgisayar grupları-SCCM sekmesi](./media/collect-sccm/sccm-computer-groups02.png)
+![Bilgisayar grupları - SCCM sekmesi](./media/collect-sccm/sccm-computer-groups02.png)
 
 Birine tıkladığınızda, herhangi bir gruba ait tüm içeri aktarılan grupları veya tüm bilgisayarları görüntüleyen günlük sorgu Düzenleyicisi açılır. [Günlük aramasını](../../azure-monitor/log-query/log-query-overview.md)kullanarak, koleksiyon üyeliği verilerini ayrıntılı olarak analiz gerçekleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Configuration Manager verileriniz hakkında ayrıntılı bilgileri görüntülemek için [günlük aramasını](../../azure-monitor/log-query/log-query-overview.md) kullanın.
+Kullanım [günlük araması](../../azure-monitor/log-query/log-query-overview.md) Configuration Manager verileriniz hakkında ayrıntılı bilgi görüntülemek için.

@@ -1,5 +1,5 @@
 ---
-title: Azure AD bağlı hizmeti ile hataları tanılama
+title: Azure AD bağlı hizmeti ile hataları tanılama (Visual Studio)
 description: Active Directory bağlı hizmeti uyumsuz bir kimlik doğrulama türü algıladı
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a7528bafd9183ae917370a6de35d1d94c3783e5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 379acbe8493f57fca97497b1b1483036ace905b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423163"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory bağlı hizmeti ile hataları tanılama
 

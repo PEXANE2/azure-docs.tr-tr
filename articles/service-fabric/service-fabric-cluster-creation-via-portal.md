@@ -1,30 +1,19 @@
 ---
-title: Azure portal bir Service Fabric kümesi oluşturun | Microsoft Docs
+title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Service Fabric kümesi ayarlamayı öğrenin.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452311"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portalda](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -41,7 +30,7 @@ Bu, Azure portal kullanarak Azure 'da Service Fabric kümesi (Linux veya Windows
 ## <a name="cluster-security"></a>Küme güvenliği 
 Sertifikalar, Service Fabric’te bir küme ile uygulamalarının çeşitli yönlerini güvenli hale getirmek üzere kimlik doğrulaması ve şifreleme sağlamak için kullanılır. Sertifikaların Service Fabric’te kullanılmasıyla ilgili daha fazla bilgi için bkz. [Service Fabric kümesi güvenlik senaryoları][service-fabric-cluster-security].
 
-İlk kez bir Service Fabric kümesi oluşturuyorsanız veya test iş yükleri için bir küme dağıtıyorsanız, sonraki bölüme atlayabilirsiniz (**Azure portalında küme oluştur**) ve sistemin çalıştıran kümeleriniz için gereken sertifikaları oluşturmasını sağlayabilirsiniz. test iş yükleri. Üretim iş yükleri için bir küme ayarlıyorsanız okumaya devam edin.
+İlk kez bir Service Fabric kümesi oluşturuyorsanız veya test iş yükleri için bir küme dağıtıyorsanız, sonraki bölüme atlayabilirsiniz (**Azure portalında küme oluşturun**) ve sistemin test iş yüklerini çalıştıran kümeleriniz için gereken sertifikaları oluşturmasını sağlayabilirsiniz. Üretim iş yükleri için bir küme ayarlıyorsanız okumaya devam edin.
 
 #### <a name="cluster-and-server-certificate-required"></a>Küme ve sunucu sertifikası (gerekli)
 Bu sertifika, bir kümenin güvenliğini sağlamak ve bu sertifikaya yetkisiz erişimi engellemek için gereklidir. Küme güvenliğini birkaç yolla sağlar:
@@ -111,7 +100,7 @@ Temel bilgiler dikey penceresinde, kümenizin temel ayrıntılarını sağlaman�
 Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM sayısını ve bunların özelliklerini tanımlar. Kümeniz birden fazla düğüm türüne sahip olabilir, ancak Service Fabric sistem hizmetlerinin yerleştirildiği düğüm türü olduğundan, birincil düğüm türü (portalda tanımladığınız ilk bir tane) en az beş sanal makineye sahip olmalıdır. "NodeTypeName" öğesinin varsayılan yerleştirme özelliği otomatik olarak eklendiğinden **yerleştirme özelliklerini** yapılandırmayın.
 
 > [!NOTE]
-> Birden çok düğüm türü için yaygın bir senaryo, ön uç hizmeti ve arka uç hizmeti içeren bir uygulamadır. Ön uç hizmetini Internet 'e açık olan bağlantı noktalarıyla daha küçük VM 'Lere (D2_V2 gibi VM boyutları) yerleştirmek ve arka uç hizmetini Internet 'e yönelik bağlantı noktaları açık olan büyük VM 'Lere (D3_V2, D6_V2, D15_V2, vb. gibi VM boyutları ile) koymak istiyorsunuz.
+> Birden çok düğüm türü için yaygın bir senaryo, ön uç hizmeti ve arka uç hizmeti içeren bir uygulamadır. Ön uç hizmetini Internet 'e açık olan bağlantı noktalarıyla daha küçük VM 'Lere (D2_V2 gibi VM boyutları) ve arka uç hizmetini Internet 'e yönelik bağlantı noktaları açık olmayan daha büyük VM 'Lere (D3_V2, D6_V2, D15_V2 vb. gibi VM boyutlarına) yerleştirmek isteyebilirsiniz.
 > 
 
 1. Düğüm türü için bir ad seçin (yalnızca harf ve sayı içeren 1 ile 12 karakter).
@@ -232,7 +221,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 [CreateRG]: ./media/service-fabric-cluster-creation-via-portal/CreateRG.png
 [CreateNodeType]: ./media/service-fabric-cluster-creation-via-portal/NodeType.png
 [BasicSecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/BasicSecurityConfigs.PNG
-[Createkeykasası]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
+[CreateKeyVault]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
 [CreateKeyVault2]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault2.PNG
 [CreateKeyVault3]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault3.PNG
 [CreateKeyVault4]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault4.PNG

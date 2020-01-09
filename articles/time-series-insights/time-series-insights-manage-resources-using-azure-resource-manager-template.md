@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452855"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
 
@@ -119,7 +119,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
      }
      ```
   
-    * Daha fazla bilgi için bkz. [Parametreler](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) makalesi.
+    * Daha fazla bilgi için bkz. [Parametreler](../azure-resource-manager/templates/parameter-files.md) makalesi.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell kullanarak hızlı başlangıç şablonunu yerel olarak dağıtma
 
@@ -148,7 +148,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. Mevcut değilse yeni bir kaynak grubu oluşturun.
 
-   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örnek:
+   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örneğin:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"

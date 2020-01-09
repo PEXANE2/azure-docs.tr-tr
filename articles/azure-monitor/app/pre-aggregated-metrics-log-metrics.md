@@ -8,14 +8,14 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: e0a0784c6331bdf4575f5c044c67cf9b4df3152f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820664"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406586"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights’daki günlük tabanlı ve önceden toplanmış ölçümler
 
 Bu makalede, günlükleri temel alan "geleneksel" Application Insights ölçümler ve şu anda genel önizleme aşamasında olan önceden toplanmış ölçümler arasındaki fark açıklanmaktadır. Her iki ölçüm türü de Application Insights kullanıcıları için kullanılabilir ve her biri, uygulama durumunu, tanılamayı ve analizlerini izlemek için benzersiz bir değer getirir. Uygulamaları seçen geliştiriciler, uygulamanın boyutuna, beklenen telemetri hacmine ve ölçüm duyarlılığı ve uyarı için iş gereksinimlerine bağlı olarak belirli bir senaryoya en uygun ölçüm türü olarak karar verebilir.
 
@@ -41,13 +41,13 @@ Daha yeni SDK 'lar (.NET için[Application Insights 2,7](https://www.nuget.org/p
 
 Ön toplamayı uygulamayan SDK 'lar için (yani Application Insights SDK 'ların daha eski sürümleri veya tarayıcı araçları için) Application Insights arka ucu, uygulamanın aldığı olayları toplayarak yeni ölçümleri hala doldurur Öngörüler olay toplama uç noktası. Bu, kablo üzerinden iletilen azaltılan veri hacminin avantajına sahip olmadığınız sürece, önceden toplanmış ölçümleri kullanmaya devam edebilir ve şu olmayan SDK 'lar ile neredeyse gerçek zamanlı boyut uyarısı hakkında daha iyi performans ve destek alabilirsiniz. toplama sırasında ölçümleri ön toplayın.
 
-Koleksiyon uç noktasının, alma örneklemeye başlamadan önce olayları ön topladığından önce, giriş [örneklemenin](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) , kullandığınız SDK sürümünden bağımsız olarak önceden toplanmış ölçümlerin doğruluğunu hiçbir şekilde etkilemeyeceği anlamına gelir. Uygulamanızı.  
+Koleksiyon uç noktasının, uygulama ile birlikte kullandığınız SDK sürümünden bağımsız olarak önceden toplanmış ölçümlerin doğruluğunu hiçbir şekilde [etkilemeyeceği anlamına](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) gelen, giriş bitiş noktası 'nın olayları önceden topladığından emin olmak önemlidir.  
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Application Insights özel ölçümlerle ön toplamayı kullanma
 
 Özel ölçümlerle ön toplamayı kullanabilirsiniz. İki ana avantaj, özel bir ölçümün boyutunu yapılandırma ve uyarma ve SDK 'dan Application Insights koleksiyon uç noktasına gönderilen veri hacmini azaltmaktır.
 
-[APPLICATION INSIGHTS SDK 'dan özel ölçümler göndermenin birkaç yolu](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)vardır. SDK sürümünüz [GetMetric ve TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) yöntemlerini sunuyorsa, bu durumda yalnızca Azure 'da depolanan veri hacminin azaltılmasından DEĞIL, SDK 'nın içinde olduğu için özel ölçümlerin gönderilmesi için tercih edilen yöntem budur. SDK 'dan aktarılan verilerin Application Insights. Aksi takdirde, veri alımı sırasında ölçüm olaylarını ön toplayan [trackmetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) yöntemini kullanın.
+[APPLICATION INSIGHTS SDK 'dan özel ölçümler göndermenin birkaç yolu](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)vardır. SDK sürümünüz [GetMetric ve TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) yöntemlerini sunuyorsa, bu durumda yalnızca Azure 'da depolanan veri hacminin azaltılmasından ve ayrıca sdk 'dan Application Insights ' ye aktarılan veri hacminin değil, özel ölçümler göndermek için tercih edilen yöntem budur. Aksi takdirde, veri alımı sırasında ölçüm olaylarını ön toplayan [trackmetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) yöntemini kullanın.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Özel Ölçüm boyutları ve ön toplama
 

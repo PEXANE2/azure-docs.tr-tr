@@ -1,6 +1,7 @@
 ---
-title: SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel roller | Microsoft Docs
-description: SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel rolleri kullanmayı öğrenin.
+title: 'Özel roller: SQL yönetilen örnek geçişlere çevrimiçi SQL Server'
+titleSuffix: Azure Database Migration Service
+description: Azure SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel rolleri kullanmayı öğrenin.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 8148e029bf343613a230b20d0397fa7851c96712
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 85c70968eb0f8a5752bbfa338918a8bba2fe7794
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952361"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437690"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel roller
 
@@ -31,7 +32,7 @@ Rol tanımı JSON dizesinin Astifblescopes bölümü, portalda **rol ataması ek
 > [!NOTE]
 > Yeni SQL veritabanı yönetilen örnek kodu Azure 'a dağıtıldığı için son özel rol gereksinimi sonunda kaldırılabilir.
 
-**Uygulama kimliği Için özel rol**. Bu rol, *kaynak* veya *kaynak grubu* düzeyinde Azure veritabanı geçiş hizmeti GEÇIŞI IÇIN gereklidir (uygulama kimliği hakkında daha fazla bılgı için, [Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma makalesine bakın. kaynaklara erişebilir](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Uygulama kimliği Için özel rol**. Bu rol, *kaynak* veya *kaynak grubu* düzeyinde Azure veritabanı geçiş hizmeti GEÇIŞI IÇIN gereklidir (uygulama kimliği hakkında daha fazla bilgi Için, bkz. [Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)makalesine bakın).
 
 ```json
 {

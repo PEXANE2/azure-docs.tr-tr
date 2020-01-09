@@ -1,5 +1,6 @@
 ---
-title: CloudSimple-PRIVATE Cloud VMware bileşenleri tarafından Azure VMware çözümü
+title: Özel bulut VMware bileşenleri
+titleSuffix: Azure VMware Solution by CloudSimple
 description: VMware bileşenlerinin özel buluta nasıl yüklendiğini açıklar
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452327"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
 
@@ -28,11 +29,11 @@ ms.locfileid: "70814577"
 
 Özel bir bulut VMware yığını aşağıdaki yazılım sürümü ile dağıtılır.
 
-| Bileşen | Version | Lisanslı sürüm |
+| Bileşen | Sürüm | Lisanslı sürüm |
 |-----------|---------|------------------|
 | ESXi | 6.7 U2 | Kurumsal Plus |
 | vCenter | 6.7 U2 | vCenter Standard |
-| vSAN | 6.7 | Enterprise |
+| vSAN | 6.7 | Kurumsal |
 | NSX veri merkezi | 2.4.1 | Gelişmiş |
 
 ## <a name="esxi"></a>ESXi
@@ -47,13 +48,13 @@ vCenter Server gereci (VCSA), CloudSimple tarafından VMware çözümü için ki
 
 ### <a name="vcenter-single-sign-on"></a>vCenter çoklu oturum açma
 
-VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz **CloudOwner@cloudsimple.com** için varsayılan bir Kullanıcı oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
+VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz için varsayılan kullanıcı **CloudOwner@cloudsimple.com** oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
 
 ## <a name="vsan-storage"></a>vSAN depolaması
 
 Özel bulutlar tümüyle yapılandırılan tümü-Flash vSAN depolama, küme yereliyle oluşturulur.  VSAN veri deposu ile vSphere kümesi oluşturmak için aynı SKU 'nun en az üç düğümü gereklidir.  Devre dışı bırakma ve sıkıştırma, varsayılan olarak vSAN veri deposunda etkindir.  VSphere kümesinin her bir düğümünde iki disk grubu oluşturulur. Her disk grubu, bir önbellek diski ve üç kapasite diski içerir.
 
-VSphere kümesinde varsayılan bir vSAN depolama ilkesi oluşturulur ve vSAN veri deposuna uygulanır.  Bu ilke, gerekli hizmet düzeyini güvence altına almak için VM depolama nesnelerinin veri deposu içinde nasıl sağlandığını ve ayrılacağını belirler.  Depolama ilkesi, **tolerans (FTT)** ve **hata toleransı yöntemi**hatalarını tanımlar.  Yeni depolama ilkeleri oluşturabilir ve bunları sanal makinelere uygulayabilirsiniz. SLA 'yı sürdürmek için, vSAN veri deposunda% 25 yedek kapasitesinin korunması gerekir.  
+VSphere kümesinde varsayılan bir vSAN depolama ilkesi oluşturulur ve vSAN veri deposuna uygulanır.  Bu ilke, gerekli hizmet düzeyini güvence altına almak için VM depolama nesnelerinin veri deposu içinde nasıl sağlandığını ve ayrılacağını belirler.  Depolama ilkesi, **tolerans (FTT)** ve **hata toleransı yöntemi**hatalarını tanımlar.  Yeni depolama ilkeleri oluşturabilir ve bunları sanal makinelere uygulayabilirsiniz. SLA 'yı sürdürmek için, vSAN veri deposunda %25 yedek kapasitesinin korunması gerekir.  
 
 ### <a name="default-vsan-storage-policy"></a>Varsayılan vSAN depolama ilkesi
 
@@ -61,7 +62,7 @@ Aşağıdaki tabloda varsayılan vSAN depolama ilkesi parametreleri gösterilmek
 
 | VSphere kümesindeki düğüm sayısı | FTT | Hata toleransı yöntemi |
 |------------------------------------|-----|--------------------------|
-| 3 ve 4 düğümleri | 1\. | RAID 1 (yansıtma)-2 kopya oluşturur |
+| 3 ve 4 düğümleri | 1 | RAID 1 (yansıtma)-2 kopya oluşturur |
 | 5-16 düğümleri | 2 | RAID 1 (yansıtma)-3 kopya oluşturur |
 
 ## <a name="nsx-data-center"></a>NSX veri merkezi
@@ -81,11 +82,11 @@ NSX veri merkezi, özel bulutunuzda ağ sanallaştırma, mikro segmentleme ve a�
 
 ## <a name="vsphere-cluster"></a>vSphere kümesi
 
-ESXi Konakları, özel bulutun yüksek oranda kullanılabilirliğini sağlamak için bir küme olarak yapılandırılır.  Özel bir bulut oluşturduğunuzda, vSphere Yönetim bileşenleri ilk kümede dağıtılır.  Yönetim bileşenleri için bir kaynak havuzu oluşturulur ve tüm yönetim VM 'Leri bu kaynak havuzunda dağıtılır. İlk küme, özel bulutu daraltmak için silinemez.  vSphere kümesi, **VSPHERE ha**kullanan VM 'ler için yüksek kullanılabilirlik sağlar.  Tolerans sorunları, kümedeki kullanılabilir düğümlerin sayısını temel alır.  Kabul edilecek başarısızlık sayısı ```Number of nodes = 2N+1``` ```N``` olan formülünü kullanabilirsiniz.
+ESXi Konakları, özel bulutun yüksek oranda kullanılabilirliğini sağlamak için bir küme olarak yapılandırılır.  Özel bir bulut oluşturduğunuzda, vSphere Yönetim bileşenleri ilk kümede dağıtılır.  Yönetim bileşenleri için bir kaynak havuzu oluşturulur ve tüm yönetim VM 'Leri bu kaynak havuzunda dağıtılır. İlk küme, özel bulutu daraltmak için silinemez.  vSphere kümesi, **VSPHERE ha**kullanan VM 'ler için yüksek kullanılabilirlik sağlar.  Tolerans sorunları, kümedeki kullanılabilir düğümlerin sayısını temel alır.  ```N```, kabul edilecek başarısızlık sayısıdır ```Number of nodes = 2N+1``` formülünü kullanabilirsiniz.
 
 ### <a name="vsphere-cluster-limits"></a>vSphere kümesi sınırları
 
-| Resource | Sınır |
+| Kaynak | Sınır |
 |----------|-------|
 | Özel bir bulut oluşturmak için en az düğüm sayısı (ilk vSphere kümesi) | 3 |
 | Özel buluttaki bir vSphere kümesindeki en fazla düğüm sayısı | 16 |

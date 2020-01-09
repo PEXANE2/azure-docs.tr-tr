@@ -2,19 +2,15 @@
 title: Azure Otomasyonu Windows Karma Runbook Çalışanı
 description: Bu makale, yerel veri merkezinizdeki veya bulut ortamınızdaki Windows tabanlı bilgisayarlarda runbook 'ları çalıştırmak için kullanabileceğiniz bir Azure Otomasyonu karma Runbook Worker yükleme hakkında bilgi sağlar.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 11/25/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: cd599fcfe403d64483e6b4db869b93b26f5db754
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 696885fa3e082ae7096954fb55b17da5b77788bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418906"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -22,7 +18,13 @@ Runbook 'u doğrudan rolü barındıran bilgisayarda ve bu yerel kaynakları yö
 
 ## <a name="installing-the-windows-hybrid-runbook-worker"></a>Windows karma Runbook Worker yükleniyor
 
-Bir Windows karma runbook çalışanı yüklemek ve yapılandırmak için iki yöntem kullanabilirsiniz. Önerilen yöntem, bir Windows bilgisayarı yapılandırma işlemini tamamen otomatik hale getirmek için bir Otomasyon Runbook 'u kullanmaktır. İkinci yöntem, rolü el ile yüklemek ve yapılandırmak için adım adım prosedürü takip eden bir yöntemdir.
+Bir Windows karma runbook çalışanı yüklemek ve yapılandırmak için aşağıdaki üç yöntemden birini kullanabilirsiniz:
+
+* Azure VM 'Leri için Windows için [sanal makine uzantısı](../virtual-machines/extensions/oms-windows.md)' nı kullanarak windows için Log Analytics aracısını yüklersiniz. Uzantı Log Analytics aracısını Azure sanal makinelerine yükledikten sonra bir Azure Resource Manager şablonunu veya PowerShell 'i kullanarak sanal makineleri mevcut bir Log Analytics çalışma alanına kaydeder. Aracı yüklendikten sonra, aşağıdaki [el ile dağıtım](#manual-deployment) bölümünde **4. adımda** Otomasyon hesabınızdaki karma Runbook Worker grubuna sanal makine eklenebilir.
+
+* Bir Windows bilgisayarı yapılandırma işlemini tamamen otomatik hale getirmek için bir Otomasyon Runbook 'u kullanın. Bu, veri merkezinizdeki veya diğer bulut ortamınızdaki makineler için önerilen yöntemdir.
+
+* Azure dışı sanal makinenize karma Runbook Worker rolünü el ile yüklemek ve yapılandırmak için adım adım prosedürü izleyin.
 
 > [!NOTE]
 > Istenen durum yapılandırması (DSC) ile karma runbook çalışanı rolünü destekleyen sunucularınızın yapılandırmalarını yönetmek için, bunları DSC düğümleri olarak eklemeniz gerekir.
@@ -39,7 +41,7 @@ Bir Windows karma Runbook Worker için en düşük gereksinimler şunlardır:
 Karma Runbook Worker için daha fazla ağ gereksinimi almak üzere [ağınızı yapılandırma](automation-hybrid-runbook-worker.md#network-planning)konusuna bakın.
 
 DSC ile yönetim için sunucu ekleme hakkında daha fazla bilgi için bkz. [Azure Automation DSC yönetim için makineleri ekleme](automation-dsc-onboarding.md).
-[Güncelleştirme yönetimi çözümünü](../operations-management-suite/oms-solution-update-management.md)etkinleştirirseniz, Azure Log Analytics çalışma alanınıza bağlı tüm Windows bilgisayarları, bu çözüme dahil olan runbook 'ları destekleyecek şekilde otomatik olarak bir karma runbook çalışanı olarak yapılandırılır. Ancak, Otomasyon hesabınızda önceden tanımlanmış olan karma çalışan gruplarıyla kayıtlı değildir. 
+[Güncelleştirme yönetimi çözümünü](../operations-management-suite/oms-solution-update-management.md)etkinleştirirseniz, Log Analytics çalışma alanınıza bağlı tüm Windows bilgisayarları, bu çözüme dahil olan runbook 'ları destekleyecek şekilde otomatik olarak bir karma runbook çalışanı olarak yapılandırılır. Ancak, Otomasyon hesabınızda önceden tanımlanmış olan karma çalışan gruplarıyla kayıtlı değildir. 
 
 Bilgisayar, hem çözüm hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon Runbook 'larını desteklemek üzere otomasyon hesabınızdaki karma Runbook Worker grubuna eklenebilir. Bu işlev Karma Runbook Çalışanının 7.2.12024.0 sürümüne eklenmiştir.
 
@@ -89,29 +91,37 @@ Otomasyon ortamınız için ilk iki adımı gerçekleştirin ve ardından her ç
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1. Log Analytics çalışma alanı oluşturma
 
-Zaten bir Log Analytics çalışma alanınız yoksa, [çalışma alanınızı yönetme](../azure-monitor/platform/manage-access.md)bölümündeki yönergeleri kullanarak bir tane oluşturun. Zaten varsa, var olan bir çalışma alanını kullanabilirsiniz.
+Zaten bir Log Analytics çalışma alanınız yoksa, önce bir çalışma alanı oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin. 
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Log Analytics çalışma alanına otomasyon çözümünü ekleyin
 
-Automation Azure Izleyici günlükleri çözümü, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Çözümü çalışma alanınıza eklediğinizde, çalışan bileşenleri otomatik olarak bir sonraki adımda yükleyeceğiniz Aracı bilgisayara iter.
+Otomasyon çözümü, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Çözümü Log Analytics çalışma alanınıza eklediğinizde, çalışan bileşenleri otomatik olarak bir sonraki adımda yükleyeceğiniz Aracı bilgisayara iter.
 
-**Automation** Azure izleyici günlükleri çözümünü çalışma alanınıza eklemek Için aşağıdaki PowerShell 'i çalıştırın.
+**Otomasyon** çözümünü çalışma alanınıza eklemek Için aşağıdaki PowerShell 'i çalıştırın.
 
 ```powershell-interactive
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
 ```
 
-#### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Microsoft Monitoring Agent yüklemesi
+#### <a name="3-install-the-log-analytics-agent-for-windows"></a>3. Windows için Log Analytics aracısını yükler
 
-Microsoft Monitoring Agent, bilgisayarları Azure Izleyici günlüklerine bağlar. Aracıyı şirket içi bilgisayarınıza yükleyip çalışma alanınıza bağladığınızda, karma Runbook Worker için gereken bileşenleri otomatik olarak indirir.
+Windows için Log Analytics Aracısı Bilgisayarları bir Azure Izleyici Log Analytics çalışma alanına bağlar. Aracıyı bilgisayarınıza yükleyip çalışma alanınıza bağladığınızda, karma Runbook Worker için gereken bileşenleri otomatik olarak indirir.
 
-Aracıyı şirket içi bilgisayara yüklemek için [Windows bilgisayarları Azure izleyici günlüklerine bağlama](../log-analytics/log-analytics-windows-agent.md)bölümündeki yönergeleri izleyin. Bu işlemi, ortamınıza birden çok çalışan eklemek için birden çok bilgisayar için yineleyebilirsiniz.
+Aracıyı bilgisayara yüklemek için [Windows bilgisayarları Azure izleyici günlüklerine bağlama](../log-analytics/log-analytics-windows-agent.md)bölümündeki yönergeleri izleyin. Bu işlemi, ortamınıza birden çok çalışan eklemek için birden çok bilgisayar için yineleyebilirsiniz.
 
-Aracı Azure Izleyici günlüklerine başarıyla bağlandığında, Log Analytics **ayarları** sayfasının **bağlı kaynaklar** sekmesinde listelenir. Aracının, C:\Program Files\Microsoft Monitoring Sservice içinde **Azureautomationfiles** adlı bir klasör olduğunda, otomasyon çözümünü doğru bir şekilde indirdiğini doğrulayabilirsiniz. Karma Runbook Worker sürümünü onaylamak için, C:\Program Files\Microsoft Monitoring Ise T\azureautomation\ konumuna göz atabilir ve \\*Sürüm* alt klasörünü aklınızda bulabilirsiniz.
+Aracı Log Analytics çalışma alanınıza başarıyla bağlandığında, birkaç dakika sonra, çalışma alanına sinyal verisi gönderdiğini doğrulamak için aşağıdaki sorguyu çalıştırabilirsiniz:
+
+```kusto
+Heartbeat 
+| where Category == "Direct Agent" 
+| where TimeGenerated > ago(30m)
+```
+
+Döndürülen arama sonuçlarında, bağlı olduğunu ve hizmete raporlanmasını belirten bilgisayar için sinyal kayıtlarını görmeniz gerekir. Sinyal kaydı, her aracıdan varsayılan olarak atanan çalışma alanına iletilir. Aracının, C:\Program Files\Microsoft Monitoring Sservice içinde **Azureautomationfiles** adlı bir klasör olduğunda, otomasyon çözümünü doğru bir şekilde indirdiğini doğrulayabilirsiniz. Karma Runbook Worker sürümünü onaylamak için, C:\Program Files\Microsoft Monitoring Ise T\azureautomation\ konumuna göz atabilir ve \\*Sürüm* alt klasörünü aklınızda bulabilirsiniz.
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. runbook ortamını yükleyip Azure Otomasyonu 'na bağlanın
 
-Azure Izleyici günlüklerine bir aracı eklediğinizde otomasyon çözümü, **Add-HybridRunbookWorker** cmdlet 'Ini Içeren **hybridregistration** PowerShell modülünü izler. Bu cmdlet 'i, runbook ortamını bilgisayara yüklemek ve Azure Otomasyonu ile kaydettirmek için kullanırsınız.
+Bir aracıyı Log Analytics çalışma alanına rapor verecek şekilde yapılandırdığınızda, otomasyon çözümü **Add-HybridRunbookWorker** cmdlet 'Ini Içeren **hybridregistration** PowerShell modülünü gönderir. Bu cmdlet 'i, runbook ortamını bilgisayara yüklemek ve Azure Otomasyonu ile kaydettirmek için kullanırsınız.
 
 Yönetici modunda bir PowerShell oturumu açın ve aşağıdaki komutları çalıştırarak modülü içeri aktarın:
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442350"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -25,13 +25,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. **Yeni** pencere görüntülenir.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 
 2. **Ağ** ' ı seçin ve ardından **öne çıkan** listede **Application Gateway** ' yi seçin.
 
@@ -66,7 +66,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Ön **uçlar** sekmesinde, **ön uç IP adresi türünün** **genel**olarak ayarlandığını doğrulayın. <br>Ön uç IP 'sini kullanım çalışmanıza göre genel veya özel olacak şekilde yapılandırabilirsiniz. Bu örnekte, genel ön uç IP 'si seçersiniz.
    > [!NOTE]
-   > Application Gateway v2 SKU 'SU için yalnızca **genel** ön uç IP yapılandırması ' nı seçebilirsiniz. Şu anda bu v2 SKU 'SU için yalnızca özel ön uç IP yapılandırması etkin değil. Hem genel hem de özel ön uç IP yapılandırmasına sahip olabilirsiniz.
+   > Application Gateway v2 SKU 'SU için yalnızca **genel** ön uç IP yapılandırması ' nı seçebilirsiniz. Şu anda bu v2 SKU 'SU için yalnızca özel ön uç IP yapılandırması (yalnızca ıLB modu) etkin değil. Hem genel hem de özel ön uç IP yapılandırmasına sahip olabilirsiniz.
 
 2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
 
@@ -134,9 +134,9 @@ Bunu yapmak için şunları yapmanız gerekir:
 2. Uygulama ağ geçidinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere IIS 'yi yükler.
 3. Arka uç sunucularını arka uç havuzuna ekleyin.
 
-### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
-1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. **Yeni** pencere görüntülenir.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 2. **İşlem** ' i seçin ve ardından **popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
 3. Aşağıdaki sanal makine ayarları için **temel bilgiler** sekmesine bu değerleri girin:
 

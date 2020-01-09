@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900228"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365215"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
 [Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
@@ -40,7 +40,7 @@ Kapsam, Log Analytics başlamak için kullandığınız yönteme göre belirleni
 Sorgu kapsamı bir Log Analytics çalışma alanı veya Application Insights uygulaması olduğunda, portaldaki tüm seçenekler ve tüm sorgu komutları kullanılabilir. Aynı halde bir kaynak kapsamında, portalda aşağıdaki seçenekler tek bir çalışma alanı veya uygulamayla ilişkilendirildiğinden kullanılamaz:
 
 - Kaydet
-- Sorgu Gezgini
+- Sorgu gezgini
 - Yeni uyarı kuralı
 
 Sorgu kapsamı, kaynak veya kaynak kümesi için veri içeren herhangi bir çalışma alanı içerdiğinden, bir kaynağa kapsam yaparken aşağıdaki komutları kullanamazsınız:

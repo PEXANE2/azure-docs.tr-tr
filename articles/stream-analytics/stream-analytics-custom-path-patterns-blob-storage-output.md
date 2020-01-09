@@ -1,7 +1,6 @@
 ---
-title: Azure Stream Analytics özel çıkış bölümleme blob
-description: Bu makalede, özel bir tarih/saat yol desenleri ve blob depolama çıktısını Azure Stream Analytics işleri için özel alan veya öznitelikleri özellikleri açıklar.
-services: stream-analytics
+title: Özel blob çıkış bölümlendirme Azure Stream Analytics
+description: Bu makalede, Azure Stream Analytics işlerden BLOB depolama çıktısı için özel tarih/saat yol desenleri ve özel alan veya öznitelikler özellikleri açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,60 +8,60 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426376"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics özel çıkış bölümleme blob
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Özel blob çıkış bölümlendirme Azure Stream Analytics
 
-Azure Stream Analytics, özel alanlar veya öznitelikler ve özel bir tarih/saat yol desenleri bölümleme özel blob çıktı destekler. 
+Azure Stream Analytics özel alanlar veya öznitelikler ve özel tarih saat yolu desenleriyle özel blob çıkış bölümlendirme destekler. 
 
-## <a name="custom-field-or-attributes"></a>Özel alan veya öznitelikleri
+## <a name="custom-field-or-attributes"></a>Özel alan veya öznitelikler
 
-Özel alan veya giriş öznitelikleri aşağı yönde veri işleme ve iş akışları hakkında daha fazla denetime çıkış sağlayarak raporlama geliştirin.
+Özel alan veya giriş öznitelikleri, çıkış üzerinde daha fazla denetime izin vererek aşağı akış veri işleme ve raporlama iş akışlarını geliştirir.
 
 ### <a name="partition-key-options"></a>Bölüm anahtarı seçenekleri
 
-Bölüm anahtarı veya giriş verileri bölümlemek için kullanılan sütun adı, alfasayısal karakterler ile tire, alt çizgi ve boşluk içerebilir. Diğer adları ile birlikte kullanılmadığı sürece bir bölüm anahtarı olarak iç içe geçmiş alanları kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR(MAX) olması gerekir.
+Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, kısa çizgi, alt çizgi ve boşluk içeren alfasayısal karakterler içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR (MAX) olmalıdır.
 
 ### <a name="example"></a>Örnek
 
-Bir işin burada alınan verileri bir sütun içeren bir dış video oyun hizmetine bağlı Canlı kullanıcı oturumlarını gelen giriş verilerinin sürüyor varsayalım **client_id** oturumları tanımlamak için. Verileri bölümlemek için **client_id**, bölüm belirteci eklemek için Blob yol deseni alanını ayarlayın **{client_id}** bir proje oluştururken blob çıkış özellikleri. Verileri farklı olarak **client_id** değerlerini flow Stream Analytics işi, çıktı verilerini tek bir ayrı klasörlere kaydedilir **client_id** klasörü başına değer.
+Bir işin, oturumları belirlemek için bir sütun **client_id** içeren bir dış video oyun hizmetine bağlı canlı kullanıcı oturumlarından giriş verileri aldığını varsayalım. Verileri **client_id**göre bölümlemek Için blob yol deseninin alanını, bir iş oluştururken blob çıkış özelliklerine bir **{client_id}** bölüm belirteci içerecek şekilde ayarlayın. Çeşitli **client_id** değerleri olan veriler Stream Analytics iş aracılığıyla akar, çıkış verileri her klasör için tek bir **client_id** değerine göre ayrı klasörlere kaydedilir.
 
-![İstemci kimliği ile yol deseni](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+![İstemci kimlikli yol deseninin](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-Benzer şekilde, burada her algılayıcı b sensör verilerini'algılayıcıları milyonlarca olan iş girişi varsa bir **sensor_id**, yol deseni olacaktır **{sensor_id}** her sensör verilerini farklı klasörlere bölümlemek için.  
+Benzer şekilde, iş girişi her bir sensör **sensor_id**sahip milyonlarca sensörden veri algılayıcısı ise, her algılayıcı verisini farklı klasörlere bölümlemek Için yol deseninin **{sensor_id}** olması gerekir.  
 
 
-REST API, bir JSON çıkışı bölümünü kullanarak bu istek için kullanılan dosya aşağıdaki gibi görünebilir:  
+REST API kullanarak, bu istek için kullanılan JSON dosyasının çıkış bölümü aşağıdaki gibi görünebilir:  
 
-![REST API çıkış](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+![REST API çıkışı](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
-Çalışan, iş başlatıldıktan sonra *istemcileri* kapsayıcı Ara aşağıdaki gibi:  
+İş çalışmaya başladıktan sonra, *istemciler* kapsayıcısı aşağıdaki gibi görünebilir:  
 
-![İstemciler kapsayıcı](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+![İstemci kapsayıcısı](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Her bir klasör, burada her blob bir veya daha fazla kayıt içeren birden çok BLOB içerebilir. Yukarıdaki örnekte, bir klasörde aşağıdaki içeriğe sahip "06000000" etiketli bir blobun vardır:
+Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob içerebilir. Yukarıdaki örnekte, "06000000" adlı klasörde bulunan ve aşağıdaki içeriklerle tek bir blob vardır:
 
-![BLOB içeriği](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+![Blob içeriği](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-Her kayıtta blob sahip olduğuna dikkat edin. bir **client_id** klasörü eşleşen sütun adı çıkış yolunu çıktısında bölümlemek için kullanılan sütun olduğundan **client_id**.
+Çıkış yolundaki çıktıyı bölümlemek için kullanılan sütun **client_id**olduğundan, blobdaki her kaydın klasör adıyla eşleşen bir **client_id** sütunu olduğunu unutmayın.
 
 ### <a name="limitations"></a>Sınırlamalar
 
-1. Yol deseni blob çıkış özelliğinde yalnızca bir özel bölüm anahtarı izin verilir. Aşağıdaki yol desenleri tümü geçerlidir:
+1. Yol deseninin blob output özelliğinde yalnızca bir özel bölüm anahtarına izin verilir. Aşağıdaki yol desenlerinin tümü geçerlidir:
 
-   * cluster1 / {tarih} / {aFieldInMyData}  
-   * cluster1 / {time} / {aFieldInMyData}  
-   * cluster1 / {aFieldInMyData}  
-   * cluster1 / {tarih} / {time} / {aFieldInMyData} 
+   * Cluster1/{Date}/{Afielınvomydata}  
+   * Cluster1/{Time}/{Afielınvomydata}  
+   * Cluster1/{Afielınvomydata}  
+   * Cluster1/{Date}/{Time}/{Afielınvomydata} 
    
-2. Bölüm anahtarları büyük/küçük harfe duyarlı olduğundan bölüm anahtarları "John" ve "john" gibi eşdeğerdir. Ayrıca, ifadeleri, bölüm anahtarı olarak kullanılamaz. Örneğin, **{columnA + columnB}** çalışmıyor.  
+2. Bölüm anahtarları büyük/küçük harfe duyarlıdır, bu nedenle "John" ve "John" gibi bölüm anahtarları eşdeğerdir. Ayrıca, ifadeler bölüm anahtarı olarak kullanılamaz. Örneğin, **{columnA + columnB}** çalışmıyor.  
 
-3. Bir giriş akışı, kayıtları bir bölüm anahtarı kardinaliteyle altında 8000 içeriyorsa, kayıtları için mevcut blobları eklenir ve yalnızca gerekli olduğunda, yeni BLOB'lar oluşturun. Kardinalite üzerinden ise BLOB mevcut bir garanti yoktur 8000 yazılacağı ve tercihe bağlı sayıda kayıtlar için aynı bölüm anahtarı ile yeni BLOB'ları oluşturulmaz.
+3. Bir giriş akışı 8000 altında bölüm anahtarı kardinalitesi olan kayıtlardan oluşuyorsa, kayıtlar mevcut bloblara eklenir ve gerektiğinde yalnızca yeni blob 'lar oluşturulur. Kardinalite 8000 üzerinde ise, var olan Blobların yazılacağı garantisi yoktur ve aynı bölüm anahtarına sahip rastgele sayıda kayıt için yeni Bloblar oluşturulmaz.
 
 ## <a name="custom-datetime-path-patterns"></a>Özel DateTime yol desenleri
 

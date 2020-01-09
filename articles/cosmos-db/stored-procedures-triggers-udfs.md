@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB içindeki saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevlerle çalışma
+title: Azure Cosmos DB içindeki saklı yordamlar, Tetikleyiciler ve UDF 'ler ile çalışma
 description: Bu makalede, Azure Cosmos DB saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler gibi kavramlar tanıtılmaktadır.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441233"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
 
-Azure Cosmos DB, JavaScript 'in dil ile tümleşik, işlemsel olarak yürütülmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde **saklı yordamlar**, **Tetikleyiciler**ve **Kullanıcı tanımlı işlevler (UDF 'ler)** yazabilirsiniz. Mantığınızı veritabanı altyapısının içinde yürütülen JavaScript 'e yazabilirsiniz. Azure Cosmos DB veya [Cosmos db SQL API Istemci SDK](how-to-use-stored-procedures-triggers-udfs.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz.
+Azure Cosmos DB JavaScript'in dil ile tümleşik, işlem tabanlı yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde **saklı yordamlar**, **Tetikleyiciler**ve **Kullanıcı tanımlı işlevler (UDF 'ler)** yazabilirsiniz. Veritabanı altyapısı içinde yürütülen mantığınızı JavaScript'te yazabilirsiniz. Azure Cosmos DB veya [Cosmos db SQL API Istemci SDK](how-to-use-stored-procedures-triggers-udfs.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz.
 
 ## <a name="benefits-of-using-server-side-programming"></a>Sunucu tarafı programlama kullanmanın avantajları
 
@@ -26,22 +26,22 @@ JavaScript 'te saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevl
 
 * **Atomik işlemler:** Azure Cosmos DB, tek bir saklı yordamda veya bir tetikleyicide gerçekleştirilen veritabanı işlemlerinin atomik olmasını güvence altına alır. Bu atomik işlevsellik, bir uygulamanın tüm işlemlerin başarılı veya hiç olmaması için ilgili işlemleri tek bir toplu işte birleştirmesine olanak tanır.
 
-* **Mının** JSON verileri, JavaScript dil türü sistemine doğası gereği eşlenir. Bu eşleme, arabellek havuzundaki JSON belgelerinin geç şekilde kullanıma hazır hale getirilmesi ve bunları yürütülen koda talep üzerine getirmek gibi çeşitli iyileştirmeler sağlar. İş mantığını veritabanına aktarma ile ilgili başka performans avantajları vardır; buna şunlar dahildir:
+* **Performans:** JSON verileri, JavaScript dil türü sistemine doğası gereği eşlenir. Bu eşleme, arabellek havuzundaki JSON belgelerinin geç şekilde kullanıma hazır hale getirilmesi ve bunları yürütülen koda talep üzerine getirmek gibi çeşitli iyileştirmeler sağlar. İş mantığını veritabanına aktarma ile ilgili başka performans avantajları vardır; buna şunlar dahildir:
 
-   * *İşlem* Ekleme gibi işlemleri toplu olarak gruplandırabilir ve toplu olarak gönderebilirsiniz. Ağ trafiği gecikme maliyetleri ve ayrı işlemler oluşturmaya yönelik mağaza ek yükü önemli ölçüde azaltılır.
+   * *Toplu işleme:* Ekleme gibi işlemleri toplu olarak gruplandırabilir ve toplu olarak gönderebilirsiniz. Ağ trafiği gecikme maliyetleri ve ayrı işlemler oluşturmaya yönelik mağaza ek yükü önemli ölçüde azaltılır.
 
    * *Ön derleme:* Saklı yordamlar, Tetikleyiciler ve UDF 'ler, her bir betik çağırma sırasında derleme maliyetinden kaçınmak için, bayt kodu biçiminde örtük olarak önceden derlenir. Ön derleme nedeniyle, saklı yordamların çağrılması hızlıdır ve düşük bir ayak izi vardır.
 
-   * *Değerlerinde* Bazen işlemlere bir veya daha fazla güncelleştirme gerçekleştirebilen tetikleyen bir mekanizmaya ihtiyacı vardır. Atomicity 'in yanı sıra sunucu tarafında yürütme sırasında da performans avantajları da vardır.
+   * *Sıralama:* Bazen işlemlere bir veya daha fazla güncelleştirme gerçekleştirebilen tetikleyen bir mekanizmaya ihtiyacı vardır. Atomicity 'in yanı sıra sunucu tarafında yürütme sırasında da performans avantajları da vardır.
 
-* **Kapsül** Saklı yordamlar, mantığı tek bir yerde gruplamak için kullanılabilir. Kapsülleme, verilerin üzerine bir soyutlama katmanı ekler ve bu sayede uygulamalarınızı verilerden bağımsız olarak geliştirebilirsiniz. Bu soyutlama katmanı, veriler şemaya göre daha az olduğunda ve doğrudan uygulamanıza ek mantık eklemeyi yönetmeniz gerekmiyorsa yararlı olur. Soyutlama, betiklerin erişimini kolaylaştırarak verilerin güvenliğini korumanıza olanak sağlar.
+* **Kapsülleme:** Saklı yordamlar, mantığı tek bir yerde gruplamak için kullanılabilir. Kapsülleme, verilerin üzerine bir soyutlama katmanı ekler ve bu sayede uygulamalarınızı verilerden bağımsız olarak geliştirebilirsiniz. Bu soyutlama katmanı, veriler şemaya göre daha az olduğunda ve doğrudan uygulamanıza ek mantık eklemeyi yönetmeniz gerekmiyorsa yararlı olur. Soyutlama, betiklerin erişimini kolaylaştırarak verilerin güvenliğini korumanıza olanak sağlar.
 
 > [!TIP]
 > Saklı yordamlar, yazma açısından ağır ve bölüm anahtarı değerinde bir işlem gerektiren işlemler için idealdir. Saklı yordamların kullanılıp kullanılmayacağını saptarken, mümkün olan en fazla yazma miktarını kapsülleyerek iyileştirin. Genel anlamda, saklı yordamlar çok sayıda okuma veya sorgu işlemi yapmak için en etkili yol değildir, bu nedenle istemciye geri dönmek için çok sayıda okuma işlemi uygulamak için saklı yordamları kullanmak istenen avantaja sahip olmayacaktır. En iyi performansı elde etmek için, bu okuma ağır işlemleri Cosmos SDK kullanılarak istemci tarafında yapılmalıdır. 
 
 ## <a name="transactions"></a>İşlemler
 
-Tipik bir veritabanındaki işlem, tek bir mantıksal birim iş olarak gerçekleştirilen işlemleri öğesinin bir dizisi olarak tanımlanabilir. Her işlem, **ACID Özellik garantisi**sağlar. ACID, şunu temsil eden iyi bilinen bir kısaltmadır: **Bir**tomicity, **C**onsistency, **i**solation ve **D**urme. 
+Tipik bir veritabanındaki işlem, tek bir mantıksal birim iş olarak gerçekleştirilen işlemleri öğesinin bir dizisi olarak tanımlanabilir. Her işlem, **ACID Özellik garantisi**sağlar. ACID, şunu temsil eden iyi bilinen bir kısaltmadır: **a**-micity, **C**onsistency, **i**solation ve **D**uryeteneğinin. 
 
 * Atomicity, bir işlem içinde gerçekleştirilen tüm işlemlerin tek bir birim olarak değerlendirildiğinden ve tümünün yürütüldüğünden ya da hiçbirinin olmadığından emin garanti eder. 
 
@@ -59,7 +59,7 @@ Saklı yordam bir Azure Cosmos kapsayıcısı ile ilişkiliyse, saklı yordam bi
 
 ### <a name="commit-and-rollback"></a>Kaydetme ve geri alma
 
-İşlemler Azure Cosmos DB JavaScript programlama modeliyle yerel olarak tümleşiktir. Bir JavaScript işlevi içinde, tüm işlemler otomatik olarak tek bir işlem altında sarmalanır. Saklı yordamdaki JavaScript mantığı herhangi bir özel durum olmadan tamamlanırsa, işlem içindeki tüm işlemler veritabanına işlenir. `BEGIN TRANSACTION` Ve`COMMIT TRANSACTION` (ilişkisel veritabanlarına tanıdık) gibi deyimler örtük Azure Cosmos DB. Betikten özel durum varsa Azure Cosmos DB JavaScript çalışma zamanı işlemin tamamını geri alacak. Bu nedenle, bir özel durum oluşturmak Azure Cosmos DB bir içinde etkin `ROLLBACK TRANSACTION` bir şekilde eşdeğerdir.
+İşlemler Azure Cosmos DB JavaScript programlama modeliyle yerel olarak tümleşiktir. Bir JavaScript işlevi içinde, tüm işlemler otomatik olarak tek bir işlem altında sarmalanır. Saklı yordamdaki JavaScript mantığı herhangi bir özel durum olmadan tamamlanırsa, işlem içindeki tüm işlemler veritabanına işlenir. `BEGIN TRANSACTION` ve `COMMIT TRANSACTION` (ilişkisel veritabanlarına tanıdık) gibi deyimler Azure Cosmos DB örtülü olarak bulunur. Betikten özel durum varsa Azure Cosmos DB JavaScript çalışma zamanı işlemin tamamını geri alacak. Bu nedenle, bir özel durum oluşturmak Azure Cosmos DB bir `ROLLBACK TRANSACTION` etkili bir şekilde eşdeğerdir.
 
 ### <a name="data-consistency"></a>Veri tutarlılığı
 
@@ -75,18 +75,18 @@ JavaScript işlevleri, [sağlanan verimlilik kapasitesine](request-units.md)de t
 
 ## <a name="triggers"></a>Tetikleyiciler
 
-Azure Cosmos DB iki tür tetikleyici destekler:
+Azure Cosmos DB iki tür tetikleyiciyi destekler:
 
 ### <a name="pre-triggers"></a>Ön Tetikleyiciler
 
-Azure Cosmos DB, bir Azure Cosmos öğesinde bir işlem gerçekleştirerek çağrılabilecek Tetikleyiciler sağlar. Örneğin, bir öğe oluştururken bir ön tetikleyici belirtebilirsiniz. Bu durumda, ön tetikleyici, öğe oluşturulmadan önce çalıştırılır. Öncesi tetikleyici, giriş parametreleri bulunamaz. Gerekirse, istek nesnesi özgün istekten belge gövdesini güncelleştirmek için kullanılabilir. Tetikleyiciler kaydettiğinizde, kullanıcılar ile çalışabilmesi için işlemleri belirtebilir. Bir tetikleyici ile `TriggerOperation.Create`oluşturulduysa, bu tetikleyicinin değiştirme işleminde kullanılmasına izin verilmez. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
+Azure Cosmos DB, bir Azure Cosmos öğesinde işlem gerçekleştirerek çağrılabilen tetikleyiciler sağlar. Örneğin, öğe oluştururken bir ön tetikleyici belirtebilirsiniz. Bu durumda öğe oluşturulmadan önce ön tetikleyici çalıştırılır. Ön tetikleyicilerin hiçbir giriş parametresi olamaz. Gerekirse özgün istekten belge gövdesini güncelleştirmek için istek nesnesi kullanılabilir. Tetikleyiciler kaydedilirken kullanıcılar birlikte çalıştırılabileceği işlemleri belirtebilir. `TriggerOperation.Create`bir tetikleyici oluşturulduysa, bu tetikleyicinin değiştirme işleminde kullanılmasına izin verilmez. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
 
 ### <a name="post-triggers"></a>Tetikleyiciler sonrası
 
 Ön Tetikleyiciler, tetikleyicilere benzer şekilde Azure Cosmos öğesindeki bir işlemle da ilişkilendirilir ve herhangi bir giriş parametresi gerekmez. İşlem tamamlandıktan *sonra* çalışır ve istemciye gönderilen yanıt iletisine erişim sağlar. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
 
 > [!NOTE]
-> Kayıtlı Tetikleyiciler, ilgili işlemler (oluşturma/silme/değiştirme/güncelleştirme) gerçekleştiğinde otomatik olarak çalıştırılmaz. Bu işlemler yürütürken açıkça çağrılmalıdır. Daha fazla bilgi için bkz. [Tetikleyicileri çalıştırma](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) makalesi.
+> Kayıtlı Tetikleyiciler, ilgili işlemler (oluşturma/silme/değiştirme/güncelleştirme) gerçekleştiğinde otomatik olarak çalıştırılmaz. Bu işlemler yürütürken tetikleyicilerin açıkça çağrılması gerekir. Daha fazla bilgi için bkz. [Tetikleyicileri çalıştırma](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) makalesi.
 
 ## <a id="udfs"></a>Kullanıcı tanımlı işlevler
 

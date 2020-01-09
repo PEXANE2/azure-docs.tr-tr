@@ -3,12 +3,12 @@ title: Önerilen güvenlik uygulamaları
 description: Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456874"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
@@ -28,9 +28,9 @@ Yönetimi kolaylaştırmak için, müşterilerinizin kaynaklarını yönetmek i�
 
 Örneğin, aşağıdaki gibi bir yapı kullanmak isteyebilirsiniz:
 
-|Grup adı  |Type  |PrincipalId  |Rol tanımı  |Rol tanımı KIMLIĞI  |
+|Grup adı  |Tür  |PrincipalId  |Rol tanımı  |Rol tanımı KIMLIĞI  |
 |---------|---------|---------|---------|---------|
-|Ları     |Kullanıcı grubu         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Mimarlar     |Kullanıcı grubu         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Değerlendirme     |Kullanıcı grubu         |\<PrincipalId\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM uzmanları     |Kullanıcı grubu         |\<PrincipalId\>         |VM Katılımcısı         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
 |Otomasyon     |Hizmet asıl adı (SPN)         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |

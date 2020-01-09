@@ -3,17 +3,17 @@ title: Bir bulut hizmeti için SSL 'yi yapılandırma | Microsoft Docs
 description: Bir Web rolü için HTTPS uç noktası belirtme ve uygulamanızın güvenliğini sağlamak için SSL sertifikası yükleme hakkında bilgi edinin. Bu örnekler Azure portal kullanır.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
-ms.author: gwallace
-ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: tagore
+ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386774"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure 'da bir uygulama için SSL 'yi yapılandırma
 
@@ -176,3 +176,6 @@ Artık dağıtımınız Azure 'da çalışır durumda olduğundan, HTTPS kullana
 * [Bulut hizmetini dağıtmayı](cloud-services-how-to-create-deploy-portal.md)öğrenin.
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [Bulut hizmetinizi yönetin](cloud-services-how-to-manage-portal.md).
+
+
+

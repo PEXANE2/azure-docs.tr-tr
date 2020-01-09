@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353513"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ağ geçitleri için paket yakalamaları yapılandırma
 
@@ -24,11 +24,13 @@ Paket yakalama için bazı yaygın olarak kullanılabilecek araçlar vardır. Bu
 
 VPN Gateway paket yakalamaları, ağ geçidinde veya müşteri gereksinimlerine bağlı olarak belirli bir bağlantıda çalıştırılabilir. Aynı anda birden çok tünelde paket yakalamalarını çalıştırabilirsiniz. Bir VPN ağ geçidi üzerinde filtreleme ile birlikte tek veya çift yönlü trafiği, ıKE ve ESP trafiğini ve iç paketleri yakalayabilirsiniz.
 
-5 tanımlama grubu filtreleri (kaynak alt ağ, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST), yüksek hacimli bir trafikte sorunları yalıtmak için yararlıdır.
+Yüksek hacimli bir trafikte sorunları yalıtmak için 5 tanımlama grubu filtresi (kaynak alt ağ, hedef alt ağ, kaynak bağlantı noktası, hedef bağlantı noktası, protokol) ve TCP bayrakları (SYN, ACK, FIN, URG, PSH, RST) kullanılması yararlı olur.
+
+Paket yakalamayı çalıştırırken, özellik başına yalnızca bir seçenek kullanabilirsiniz.
 
 ## <a name="setup-packet-capture-using-powershell"></a>PowerShell kullanarak paket yakalamayı ayarlama
 
-Paket yakalamalarını başlatmak ve durdurmak için PowerShell komutları için aşağıdaki örneklere bakın. Parametre seçenekleri hakkında daha fazla bilgi için (örneğin, Filtreler oluşturma), bu PowerShell [belgesine](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)bakın.
+Paket yakalamalarını başlatmak ve durdurmak için PowerShell komutları için aşağıdaki örneklere bakın. Parametre seçenekleri hakkında daha fazla bilgi için (örneğin, filtre oluşturma), bu PowerShell [belgesine](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)bakın.
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı Başlat
 
@@ -36,7 +38,7 @@ Paket yakalamalarını başlatmak ve durdurmak için PowerShell komutları için
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-İsteğe bağlı parametre **filtreverileri** filtre uygulamak için kullanılabilir.
+İsteğe bağlı parametre **-FilterData** parametresi filtre uygulamak için kullanılabilir.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>VPN ağ geçidi için paket yakalamayı durdur
 
@@ -50,7 +52,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-İsteğe bağlı parametre **filtreverileri** filtre uygulamak için kullanılabilir.
+İsteğe bağlı parametre **-FilterData** parametresi filtre uygulamak için kullanılabilir.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>VPN ağ geçidi bağlantısında paket yakalamayı durdur
 
@@ -62,7 +64,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - Paket yakalamalarını çalıştırmak performansı etkileyebilir. Gerekli olmadığında paket yakalamayı durdurmayı unutmayın.
 - Önerilen minimum paket yakalama süresi 600 saniyedir. Yol üzerindeki birden çok bileşen arasındaki eşitleme sorunları nedeniyle, daha kısa bir paket yakalama süresi, verilerin tamamını sağlamayabilir.
-- Paket yakalama veri dosyaları PCAP veya ETL biçimlerinde oluşturulur. Verileri anlamak için Netmon Parser gerekebilir.
+- Paket yakalama veri dosyaları PCAP biçiminde oluşturulur. PCAP dosyalarını açmak için Wireshark veya diğer yaygın olarak kullanılabilir uygulamaları kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

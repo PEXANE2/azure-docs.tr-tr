@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 370d86ae28e49bba9681c6bdc81cc05b4e12a97b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e45e6fb38296c5f3337f9edfb50cd9548ca5e210
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398439"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights ile uygulama durumunu izleme ve uyarma
 
@@ -25,7 +25,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * Uygulamanın yanıtını sürekli denetlemek için kullanılabilirlik testi oluşturma
 > * Sorun oluştuğunda yöneticilere e-posta gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -51,7 +51,7 @@ Application Insights ' deki kullanılabilirlik testleri, uygulamanızı dünyan�
 
     Uyarı ölçütleri karşılandığında gönderilecek bir e-posta adresi yazın.  İsteğe bağlı olarak, uyarı ölçütleri karşılandığında çağrılacak bir Web kancası adresini yazabilirsiniz.
 
-    ![Test oluştur](media/tutorial-alert/create-test-001.png)
+    ![Test oluşturma](media/tutorial-alert/create-test-001.png)
 
 5. Test paneline dönün, üç nokta simgesini seçin ve uyarıyı Düzenle ' yi seçerek en gerçek zamanlı uyarınızın yapılandırmasını girin.
 

@@ -3,17 +3,17 @@ title: Cloud Services ve yönetim sertifikaları | Microsoft Docs
 description: Microsoft Azure ile sertifika oluşturma ve kullanma hakkında bilgi edinin
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361356"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services sertifikalara genel bakış
 Sertifikalar, Azure 'da bulut Hizmetleri ([hizmet sertifikaları](#what-are-service-certificates)) ve yönetim API 'siyle ([yönetim sertifikaları](#what-are-management-certificates)) kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türü için genel bir bakış sağlar ve bunları Azure 'a [oluşturma](#create) ve dağıtma.
@@ -26,17 +26,17 @@ Azure tarafından kullanılan sertifikalar özel veya ortak bir anahtar içerebi
 >Azure Cloud Services, AES256-SHA256 şifreli sertifikasını kabul etmez.
 
 ## <a name="what-are-service-certificates"></a>Hizmet sertifikaları nelerdir?
-Hizmet sertifikaları, bulut hizmetlerine iliştirilir ve hizmetten ve hizmet üzerinden güvenli iletişimi etkinleştirir. Örneğin, bir Web rolü dağıttıysanız, sunulan bir HTTPS uç noktasının kimliğini doğrulayabilecek bir sertifika sağlamak istersiniz. Hizmet tanımınızda tanımlanan hizmet sertifikaları, rolünüzün bir örneğini çalıştıran sanal makineye otomatik olarak dağıtılır. 
+Hizmet sertifikaları, bulut hizmetlerine iliştirilir ve hizmete ve hizmetten güvenli iletişimi etkinleştirir. Örneğin, bir Web rolü dağıttıysanız, sunulan bir HTTPS uç noktasının kimliğini doğrulayabilecek bir sertifika sağlamak istersiniz. Hizmet tanımınızda tanımlanan hizmet sertifikaları, rolünüzün bir örneğini çalıştıran sanal makineye otomatik olarak dağıtılır. 
 
-Hizmet sertifikalarını, Azure portal veya klasik dağıtım modelini kullanarak Azure 'a yükleyebilirsiniz. Hizmet sertifikaları belirli bir bulut hizmeti ile ilişkilendirilir. Bunlar, hizmet tanımı dosyasındaki bir dağıtıma atanır.
+Hizmet sertifikalarını Azure portalı veya klasik dağıtım modelini kullanarak Azure'a yükleyebilirsiniz. Hizmet sertifikaları belirli bir bulut hizmeti ile ilişkilendirilir. Bunlar, hizmet tanımı dosyasındaki bir dağıtıma atanır.
 
-Hizmet sertifikaları hizmetinizden ayrı olarak yönetilebilir ve farklı bireyler tarafından yönetilebilir. Örneğin, bir geliştirici, bir BT yöneticisinin daha önce Azure 'a yüklediği bir sertifikaya başvuran bir hizmet paketini karşıya yükleyebilir. Bir BT Yöneticisi, yeni bir hizmet paketini karşıya yüklemeye gerek kalmadan bu sertifikayı yönetebilir ve yenileyebilir (hizmetin yapılandırmasını değiştirerek). Yeni bir hizmet paketi olmadan güncelleştirme, sertifikanın mantıksal adı, mağaza adı ve konumu hizmet tanım dosyasında olduğundan ve sertifika parmak izi hizmet yapılandırma dosyasında belirtildiği için mümkün değildir. Sertifikayı güncelleştirmek için, yalnızca yeni bir sertifika yüklemeniz ve hizmet yapılandırma dosyasındaki parmak izi değerini değiştirmeniz gerekir.
+Hizmet sertifikaları hizmetinizden ayrı olarak yönetilebilir ve farklı bireyler tarafından yönetilebilir. Örneğin, bir geliştirici, bir BT yöneticisinin daha önce Azure 'a yüklediği bir sertifikaya başvuran bir hizmet paketini karşıya yükleyebilir. BT yöneticisi, yeni bir hizmet paketini karşıya yüklemeye gerek kalmadan bu sertifikayı yönetebilir ve yenileyebilir (hizmetin yapılandırmasını değiştirerek). Yeni bir hizmet paketi olmadan güncelleştirme, sertifikanın mantıksal adı, mağaza adı ve konumu hizmet tanım dosyasında olduğundan ve sertifika parmak izi hizmet yapılandırma dosyasında belirtildiği için mümkün değildir. Sertifikayı güncelleştirmek için yalnızca yeni bir sertifika yüklemeniz ve hizmet yapılandırma dosyasındaki parmak izi değerini değiştirmeniz gerekir.
 
 >[!Note]
 >[Cloud SERVICES SSS-yapılandırma ve yönetim](cloud-services-configuration-and-management-faq.md) makalesinde sertifikalar hakkında bazı yararlı bilgiler bulunur.
 
 ## <a name="what-are-management-certificates"></a>Yönetim sertifikaları nelerdir?
-Yönetim sertifikaları, klasik dağıtım modeliyle kimlik doğrulaması yapmanıza izin verir. Birçok program ve araç (Visual Studio veya Azure SDK gibi), çeşitli Azure hizmetlerinin yapılandırmasını ve dağıtımını otomatik hale getirmek için bu sertifikaları kullanır. Bunlar gerçekten bulut hizmetleriyle ilgili değildir. 
+Yönetim sertifikaları, klasik dağıtım modeliyle kimlik doğrulaması yapmanıza izin verir. Birçok program ve araç (Visual Studio veya Azure SDK gibi), çeşitli Azure hizmetlerinin yapılandırılmasını ve dağıtımını otomatik hale getirmek için bu sertifikaları kullanır. Bunlar gerçekten bulut hizmetleriyle ilgili değildir. 
 
 > [!WARNING]
 > Dikkat et! Bu tür sertifikalar, bunlarla ilişkili oldukları aboneliği yönetmek için kimliğini doğrulayan herkese izin verir. 
@@ -58,9 +58,9 @@ Bu ayarlara bağlı oldukları sürece kendinden imzalı bir sertifika oluşturm
     > Cloudapp.net (veya Azure ile ilgili herhangi bir) etki alanı için SSL sertifikası edinemezsiniz; Sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, **contoso.cloudapp.net**değil, **contoso.net**.
 
 * En az 2048 bit şifreleme.
-* **Yalnızca hizmet sertifikası**: İstemci tarafı sertifika, *Kişisel* sertifika deposunda bulunmalıdır.
+* **Yalnızca hizmet sertifikası**: istemci tarafı sertifika, *Kişisel* sertifika deposunda bulunmalıdır.
 
-Windows 'da, `makecert.exe` yardımcı programıyla veya IIS 'de sertifika oluşturmanın iki kolay yolu vardır.
+Windows 'da `makecert.exe` yardımcı programıyla veya IIS 'de sertifika oluşturmanın iki kolay yolu vardır.
 
 ### <a name="makecertexe"></a>Makecert.exe
 Bu yardımcı program kullanımdan kaldırılmıştır ve artık burada açıklanmamıştır. Daha fazla bilgi için [Bu MSDN makalesine](/windows/desktop/SecCrypto/makecert)bakın.
@@ -92,4 +92,7 @@ Internet 'te bunun IIS ile nasıl yapılacağını kapsayan çok sayıda sayfa v
 [Hizmet sertifikanızı Azure Portal yükleyin](cloud-services-configure-ssl-certificate-portal.md).
 
 Azure portal bir [Yönetim API 'si sertifikasını](../azure-api-management-certs.md) karşıya yükleyin.
+
+
+
 

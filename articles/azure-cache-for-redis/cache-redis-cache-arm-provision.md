@@ -1,18 +1,17 @@
 ---
-title: Azure Resource Manager kullanarak Reda için Azure Önbelleği sağlama
-description: Redsıs için bir Azure önbelleği dağıtmak üzere Azure Resource Manager şablonu kullanın.
-services: app-service
+title: Redsıs için Azure önbelleğini Azure Resource Manager ile dağıtma
+description: Redsıs kaynağı için bir Azure önbelleği dağıtmak üzere Azure Resource Manager şablonu kullanmayı öğrenin. Şablonlar, yaygın senaryolar için sağlanır.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
-ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121788"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412401"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Şablon kullanarak Redsıs için Azure önbelleği oluşturma
 
@@ -22,7 +21,7 @@ Bu konu başlığında, Reda için Azure önbelleği dağıtan bir Azure Resourc
 
 Şu anda, Tanılama ayarları bir abonelik için aynı bölgedeki tüm önbellekler için paylaşılır. Bölgedeki bir önbelleğin güncelleştirilmesi bölgedeki diğer tüm önbellekleri etkiler.
 
-Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/resource-group-authoring-templates.md). Önbellek kaynak türleri için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Cache kaynak türleri](/azure/templates/microsoft.cache/allversions).
+Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../azure-resource-manager/templates/template-syntax.md). Önbellek kaynak türleri için JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Cache kaynak türleri](/azure/templates/microsoft.cache/allversions).
 
 Tüm şablon için bkz. [redsıs şablonu Için Azure önbelleği](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
@@ -64,7 +63,7 @@ Tanılama için kullanılacak mevcut depolama hesabının adı.
       "type": "string"
     }
 
-### <a name="enablenonsslport"></a>EnableNonSslPort
+### <a name="enablenonsslport"></a>enableNonSslPort
 SSL olmayan bağlantı noktaları üzerinden erişime izin verilip verilmeyeceğini gösteren bir Boolean değer.
 
     "enableNonSslPort": {
@@ -84,7 +83,7 @@ Tanılamanın etkinleştirilip etkinleştirilmediğini gösteren bir değer. Aç
     }
 
 ## <a name="resources-to-deploy"></a>Dağıtılacak kaynaklar
-### <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+### <a name="azure-cache-for-redis"></a>Redis için Azure Cache
 Redsıs için Azure önbelleği oluşturur.
 
     {
@@ -117,8 +116,6 @@ Redsıs için Azure önbelleği oluşturur.
       ]
     }
 
-
-
 ## <a name="commands-to-run-deployment"></a>Dağıtımı çalıştırma komutları
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -128,5 +125,3 @@ Redsıs için Azure önbelleği oluşturur.
 
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-

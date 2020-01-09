@@ -4,15 +4,15 @@ description: Azure tanılama 'yı kullanarak hata ayıklama, performans, izleme,
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395366"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure Tanılama uzantısı nedir?
 Azure Tanılama uzantısı, dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını sağlayan Azure 'daki bir aracıdır. Tanılama uzantısını bir dizi farklı kaynaktan kullanabilirsiniz. Şu anda desteklenen Azure bulut hizmeti (klasik) Web ve çalışan rolleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric. Diğer Azure hizmetlerinde farklı tanılama yöntemleri vardır. Bkz. [Azure 'da Izlemeye genel bakış](../../azure-monitor/overview.md).
@@ -20,14 +20,14 @@ Azure Tanılama uzantısı, dağıtılan bir uygulamadaki tanılama verilerinin 
 ## <a name="linux-agent"></a>Linux Aracısı
 Linux çalıştıran sanal makinelerde [uzantının Linux sürümü](../../virtual-machines/extensions/diagnostics-linux.md) kullanılabilir. Toplanan istatistikler ve davranış Windows sürümünden farklıdır.
 
-## <a name="data-you-can-collect"></a>Toplayacağınız veriler
+## <a name="data-you-can-collect"></a>Toplayabileceğiniz veriler
 Azure Tanılama uzantısı aşağıdaki veri türlerini toplayabilirler:
 
-| Veri kaynağı | Açıklama |
+| Veri Kaynağı | Açıklama |
 | --- | --- |
 | Performans sayacı ölçümleri |İşletim sistemi ve özel performans sayaçları |
 | Uygulama günlükleri |Uygulamanız tarafından yazılan izleme iletileri |
-| Windows olay günlükleri |Windows olay günlüğü sistemine gönderilen bilgiler |
+| Windows Olay günlükleri |Windows olay günlüğü sistemine gönderilen bilgiler |
 | .NET EventSource günlükleri |.NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) sınıfını kullanarak kod yazma olayları |
 | IIS Günlükleri |IIS Web siteleri hakkında bilgi |
 | [Bildirim tabanlı ETW günlükleri](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Herhangi bir işlem tarafından oluşturulan Windows olayları için olay Izleme. (1 |

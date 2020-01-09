@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: sorunları bulmak için Batch testi-LUSıS'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, uygulamanızda söylenişi tahmin sorunlarını bulmak ve bunları çözmek için toplu testlerin nasıl kullanılacağı gösterilmektedir.
+description: Bu öğreticide, batch test utterance tahmin sorunları uygulamanızı bulun ve bunları düzeltmek için nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,223 +9,225 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/19/2019
 ms.author: diberry
-ms.openlocfilehash: 68a0016e034f4642c4e4ff166a1456f7ecf1ee3c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 54beb26554fd823c46f961b4cc7057f347ad343c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447961"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
 
-Bu öğreticide, uygulamanızda söylenişi tahmin sorunlarını bulmak ve bunları çözmek için toplu testlerin nasıl kullanılacağı gösterilmektedir.  
+Bu öğreticide, batch test utterance tahmin sorunları uygulamanızı bulun ve bunları düzeltmek için nasıl kullanılacağı gösterilmektedir.
 
-Batch testi, etkin, eğitilen modelin durumunu bilinen bir etiketli utters ve varlık kümesiyle doğrulamanızı sağlar. JSON biçimli toplu iş dosyasında, utlaslar ' ı ekleyin ve ihtiyacınız olan varlık etiketlerini utterance içinde tahmin edin. 
+Toplu test etkin doğrulamanıza olanak tanır, modelin bilinen durumuyla etiketli konuşma ve varlıkların eğitim. JSON biçimli bir toplu iş dosyası Konuşma ekleme ve gereksinim duyduğunuz varlık etiketleri içinde utterance tahmin ayarlayın.
 
-Batch test gereksinimleri:
+Toplu test etmek için gereksinimler:
 
-* Test başına maksimum 1000 utterya. 
-* Yinelenen yok. 
-* İzin verilen varlık türleri: yalnızca, basit ve kompozit 'ın öğrenildiği varlıkları. Toplu işlem testi yalnızca, öğrenilen amaçlar ve varlıklar için yararlıdır.
+* En fazla test başına 1000 konuşma.
+* Yinelenen değer yok.
+* İzin verilen varlık türleri: yalnızca, basit ve kompozit 'ın öğrenildiği varlıkları. Toplu test yalnızca öğrenilen Eve amaç ve varlıkları için yararlı olur.
 
-Bu öğreticiden başka bir uygulama kullanırken, bir amaca zaten eklenmiş olan örnek utbotları *kullanmayın.* 
+Bu öğreticinin dışında bir uygulama kullanırken, yapmak *değil* zaten bir amaç için eklenen örnek konuşma kullanın.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 
 **Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
-> * Batch test dosyası oluşturma 
-> * Batch testi çalıştırma
+> * Toplu test dosyası oluşturma
+> * Toplu test çalıştırma
 > * Test sonuçlarını gözden geçirme
-> * Hataları giderme 
-> * Toplu işi yeniden test etme
+> * Hataları düzelt
+> * Batch yeniden test et
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 
-Son öğreticide oluşturulan **HumanResources** adlı uygulamayla devam edin. 
+Son öğreticide oluşturulan **HumanResources** adlı uygulamayla devam edin.
 
 Aşağıdaki adımları kullanın:
 
-1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) indirip kaydedin.
+1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json?raw=true) indirip kaydedin.
+
 
 2. JSON'ı yeni bir uygulamaya içeri aktarın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `batchtest` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez. 
+3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `batchtest` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 4. Uygulamayı eğitin.
 
 ## <a name="batch-file"></a>Toplu iş dosyası
 
-1. Bir metin düzenleyicisinde `HumanResources-jobs-batch.json` oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) . 
+1. Oluşturma `HumanResources-jobs-batch.json` bir metin düzenleyicisinde veya [indirme](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json?raw=true) bu.
 
-2. JSON biçimli toplu iş dosyasında, testte tahmin etmek istediğiniz **amacı** ile utterslar ekleyin. 
+2. Konuşma ile JSON biçimli toplu iş dosyasında, ekleme **hedefi** testinde tahmin edilen istiyor.
 
    [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
-## <a name="run-the-batch"></a>Batch 'i çalıştırma
+## <a name="run-the-batch"></a>Toplu işlem çalıştırın
 
-1. Üst gezinti çubuğunda **Test** ' i seçin. 
+1. Seçin **Test** üst gezinti çubuğunda.
 
-2. Sağ taraftaki panelde **Batch test paneli** ' ni seçin. 
+2. Seçin **test paneli toplu** Sağdaki panelde.
 
-    [Batch test paneli vurgulanmış HALSıS uygulamasının ekran görüntüsünü ![](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
+    [![Toplu test paneliyle vurgulanmış ekran görüntüsü, LUIS uygulama](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
-3. **Veri kümesini Içeri aktar**seçeneğini belirleyin.
+3. Seçin **alma dataset**.
 
-    [Içeri aktarma veri kümesi vurgulanmış LUO uygulamasının ekran görüntüsünü ![](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > Içeri aktarma veri kümesi vurgulanmış LUO uygulamasının ekran görüntüsünü ![](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)
 
-4. `HumanResources-jobs-batch.json` dosyanın dosya konumunu seçin.
+4. Dosya konumunu seçin `HumanResources-jobs-batch.json` dosya.
 
-5. Veri kümesini `intents only` adlandırın ve **bitti**' yi seçin.
+5. Veri kümesi adı `intents only` seçip **Bitti**.
 
-    ![Dosya Seç](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
+    ![Dosya seç](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. **Çalıştır** düğmesini seçin. 
+6. **Çalıştır** düğmesini seçin.
 
-7. **Sonuçları göster**' i seçin.
+7. Seçin **bkz sonuçları**.
 
-8. Grafik ve göstergedeki sonuçları gözden geçirin.
+8. Gösterge ve grafik sonuçlarını gözden geçirin.
 
-    [Batch test sonuçlarıyla HALSıS uygulamasının ekran görüntüsünü ![](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+    [![Toplu test sonuçları ile ekran görüntüsü, LUIS uygulaması](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
-## <a name="review-batch-results"></a>Toplu sonuçları İncele
+## <a name="review-batch-results"></a>Toplu iş sonuçlarını gözden geçirin
 
-Batch grafiğinde dört çeyrek daire görüntülenir. Grafiğin sağında bir filtre vardır. Filtre, amaçları ve varlıkları içerir. Grafiğin bir [bölümünü](luis-concept-batch-test.md#batch-test-results) veya grafik içindeki bir noktayı seçtiğinizde, ilişkili söyleyler grafiğin altında görüntülenir. 
+Batch grafik dört quadrants sonuçlarını görüntüler. Grafiğin sağına bir filtredir. Filtre, amaçları ve varlıkları içerir. Seçtiğinizde, bir [grafik bölümünü](luis-concept-batch-test.md#batch-test-results) veya bir nokta grafik içinde ilişkili utterance(s) grafiğin altına görüntüleyebilirsiniz.
 
-Grafiğin üzerine gelindiğinde fare tekerleği grafikteki görüntüyü büyütebilir veya azaltabilir. Bu, grafikte sıkı bir şekilde kümelenmiş çok sayıda noktaya sahip olduğunda faydalıdır. 
+Grafik üzerine gelindiğinde, fare tekerleğini büyütebilir veya grafikte görüntülenecek azaltın. Bu, sıkı bir şekilde birlikte kümelenmiş grafik üzerinde çok sayıda noktası olduğunda yararlıdır.
 
-Grafik, kırmızı renkte iki bölümden oluşan dört Quadrants içinde yer alır. **Bunlar, odaklanabilecek bölümlerdir**. 
+Grafik dört Çeyrek dairelerle iki kırmızı renkte gösterilir bölümlerin birlikte kullanılıyor. **Temel odak noktası bölümlere bunlar**.
 
-### <a name="getjobinformation-test-results"></a>Getjobınformation test sonuçları
+### <a name="getjobinformation-test-results"></a>GetJobInformation test sonuçları
 
-Filtrede görüntülenen **Getjobınformation** test sonuçları, dört tahmine göre 2 ' nin başarılı olduğunu gösterir. Grafiğin altındaki diğer adımları görmek için sol alt çeyrek altında **yanlış negatif** adını seçin. 
+**GetJobInformation** filtrede görüntülenen test sonuçları göster 2 dört tahminlerin başarılı. Grafiğin altındaki diğer adımları görmek için sol alt çeyrek altında **yanlış negatif** adını seçin.
 
-Kullanıcı utisin tam metnini görmek için CTRL + E klavye tuşlarını kullanarak etiket görünümüne geçin. 
+Kullanıcı utisin tam metnini görmek için CTRL + E klavye tuşlarını kullanarak etiket görünümüne geçin.
 
-Söylenişi `Is there a database position open in Los Colinas?`, _getjobınformation_ olarak etiketlidir ancak geçerli model, bir _applyforjob_olarak gösterilen şekilde tahmin edilir. 
+Söylenişi `Is there a database position open in Los Colinas?`, _getjobınformation_ olarak etiketlidir ancak geçerli model, bir _applyforjob_olarak gösterilen şekilde tahmin edilir.
 
-**Getjobınformation**'Ten **applyforjob** için pek çok örnek vardır. Bu örnek, **Applyforjob** hedefinin kullanım açısından, yanlış tahmine neden olacak şekilde tartılanmalar. 
+**Getjobınformation**'Ten **applyforjob** için pek çok örnek vardır. Bu örnek, **Applyforjob** hedefinin kullanım açısından, yanlış tahmine neden olacak şekilde tartılanmalar.
 
-Her iki amaç da aynı hata sayısına sahip olduğuna dikkat edin. Tek bir amaç için yanlış tahmin, diğer amacı da etkiler. Her ikisi de hatalar vardır çünkü bu, bir amaç için yanlış tahmin edildiğinden ve aynı zamanda başka bir amaç için tahmin edilmez. 
+Her iki amacı aynı hataların sayısını olduğunu fark edeceksiniz. Tek amacı, yanlış bir tahmin diğer hedefi de etkiler. Konuşma yanlış bir amaç için tahmin edilen ve başka bir amaç için Ayrıca yanlış tahmin değil çünkü her ikisi de hatalarla karşılaştınız.
 
 <a name="fix-the-app"></a>
 
 ## <a name="how-to-fix-the-app"></a>Uygulamayı çözme
 
-Bu bölümün amacı, uygulamayı düzelterek **Getjobınformation** için tüm utallerin doğru şekilde tahmin edilebileceği bir uygulamadır. 
+Bu bölümde tüm sesleri doğru şekilde tahmin için hedefidir **GetJobInformation** uygulama düzeltme tarafından.
 
-Bu toplu iş dosyası araslarını doğru amaca eklemek, görünüşte hızlı bir düzeltme olacaktır. Bu, yapmak istediğiniz şeydir. LU, bu utbotları örnek olarak eklemeden doğru şekilde tahmin etmek istiyorsunuz. 
+Bu toplu dosya konuşma doğru ıntent'e ekleme görünüşte hızlı düzeltme olacaktır. Bu, yapmak istediğiniz şeydir. LUIS, örnek olarak eklemeden Bu konuşma doğru şekilde tahmin etmek istediğiniz.
 
-Ayrıca, utterlik miktarı **Getjobınformation**ile aynı olana kadar **applyforjob** 'tan gelen dıklarından kaldırma işlemini de merak edebilirsiniz. Bu, test sonuçlarını çözebilecek, ancak bu amacı daha doğru bir şekilde tahmin ediyordu. 
+Konuşma alanından kaldırma hakkında da merak edebilirsiniz **ApplyForJob** utterance miktarı aynı olana kadar **GetJobInformation**. Test sonuçlarını giderebilir ancak bu hedefi doğru sonraki tahmin gelen LUIS azaltabilir.
 
 Bu çözüm, **Getjobınformation**için daha fazla bildirim eklemektir. İş için uygulanamamakta olan iş bilgilerini bulma amacını hala hedeflerken, söylenişi uzunluğunu, sözcük seçimini ve sözcük düzenlemesini değiştirmeyi unutmayın.
 
-### <a name="add-more-utterances"></a>Daha fazla söylenme ekleyin
+### <a name="add-more-utterances"></a>Daha fazla Konuşma ekleme
 
-1. Üst gezinti panelindeki **Test** düğmesini seçerek Batch test paneli ' ni kapatın. 
+1. Toplu test paneli seçerek kapatmak **Test** üst gezinti panelinde düğmesini.
 
-2. Amaçlar listesinden **Getjobınformation** öğesini seçin. 
+2. Seçin **GetJobInformation** hedefleri listesinde.
 
-3. `resume`, `c.v.`ve `apply`terimleri dahil ettiğinizden emin olmak için uzunluk, kelime seçimi ve Word düzenlemesi için farklılaştırmaya uygun olan diğer basamaklar ekleyin:
+3. Uzunluğu, word seçeneği ve word düzenleme, koşulları eklediğinizden emin olmak için değiştirilen daha fazla Konuşma ekleme `resume`, `c.v.`, ve `apply`:
 
-    |**Getjobınformation** hedefi için örnek bildirimler|
+    |İçin örnek konuşma **GetJobInformation** hedefi|
     |--|
-    |Bir Stoker için ambardaki yeni iş, bir özgeçmişle uygulamam gerekir mi?|
-    |Bugün Roofing işleri nerede?|
-    |Bir özgeçmişi gerektiren bir sağlık kodlama işi olduğunu duydum.|
-    |Okul çocuklarınızın c.v.s. yazmasına yardımcı olmaya yönelik bir iş istiyorum |
-    |İşte, bu, topluluk üniversite bilgisayarları kullanarak yeni bir gönderi arıyor.|
-    |Alt ve evde hangi pozisyonlar mevcuttur?|
-    |Gazete üzerinde bir Intern masası var mı?|
-    |My C.v. tedarik, bütçe ve kayıp parayı çözümlemede iyi olduğunu gösterir. Bu tür bir iş için herhangi bir şey var mı?|
-    |Dünya işleri şu anda nerede ayrıntıya?|
-    |EMS sürücüsü olarak 8 yıl çalıştım. Tüm yeni işler mi?|
-    |Yeni yiyecek işleme işleri uygulama gerektiriyor mu?|
-    |Kaç tane yeni bahçe işi işi var?|
-    |İşgücü ilişkileri ve anlaşmaları için yeni bir ık post var mı?|
-    |Kitaplıkta ve arşiv yönetiminde ana yöneticim var. Tüm yeni pozisyonlar?|
-    |Şehrde Bugün 13 yıllık Old için bir iş işi var mı?|
+    |Yeni bir stocker ambarı işinde bir özgeçmiş uygulayabilirim gerektiriyor mu?|
+    |Bugün çatı işleri nerede?|
+    |Ben bir özgeçmiş gerektiren Tıbbi bir kodlama işi oluştu olduğunu.|
+    |Üniversite Çocuklar kendi c.v.s. yazma yardımcı olan bir işi istiyorum |
+    |Bilgisayarları kullanarak yüksekokul, yeni bir gönderi mi arıyorsunuz my sürdürme aşağıda verilmiştir.|
+    |Hangi konumları alt ve giriş dikkatli kullanılabilir mi?|
+    |Stajyeri Masası gazete sırasında mı?|
+    |My C.v. satın alma, bütçe ve kayıp para çözümleme en iyi ben gösterir. Bu türdeki bir iş için bir şey var mı?|
+    |Burada dünya işleri şu anda ayrıntılara misiniz?|
+    |Ben 8 yıl EMS sürücü olarak çalıştım. Tüm yeni işler?|
+    |Yeni Gıda işleme işleri uygulama gerektiriyor?|
+    |Kaç yeni yard iş işleri kullanılabilir mi?|
+    |Yeni bir SA gönderi işçilik ilişkileri ve anlaşmaları var mı?|
+    |Kitaplık ve Arşiv Yönetimi'nde bir asıl var. Tüm yeni konumlarına?|
+    |Babysitting tüm işler için 13 yıl grubundakiler şehirde bugün var mı?|
 
-    **Işle iş** varlığını etiketlemeyin. Öğreticinin bu bölümü yalnızca amaç tahminini odaklanmıştır.
+    Etiket yok **iş** konuşma varlık. Öğreticinin bu bölümünde, yalnızca hedefi tahmin odaklanmıştır.
 
-4. Sağ üst gezinti bölmesinde **eğitme** ' i seçerek uygulamayı eğitme.
+4. Seçerek uygulama eğitme **eğitme** üst sağ gezinti.
 
-## <a name="verify-the-new-model"></a>Yeni modeli doğrula
+## <a name="verify-the-new-model"></a>Yeni model doğrulama
 
-Toplu iş testinde yer alan çıkışların doğru şekilde tahmin olduğunu doğrulamak için Batch testini yeniden çalıştırın.
+Toplu test konuşma doğru şekilde tahmin doğrulamak için batch testi yeniden çalıştırın.
 
-1. Üst gezinti çubuğunda **Test** ' i seçin. Toplu iş sonuçları hala açıksa **listeye geri dön**seçeneğini belirleyin.  
+1. Seçin **Test** üst gezinti çubuğunda. Toplu sonuçları hala açıksa seçin **listesine geri**.
 
-1. Toplu işlem adının sağ tarafındaki üç nokta (***...***) düğmesini seçin ve **Çalıştır**' ı seçin. Batch testi tamamlanana kadar bekleyin. **Sonuçları göster** düğmesinin artık yeşil olduğuna dikkat edin. Bu, tüm toplu işin başarıyla çalıştırıldığı anlamına gelir.
+1. Toplu işlem adının sağ tarafındaki üç nokta (***...***) düğmesini seçin ve **Çalıştır**' ı seçin. Toplu test işlemi tamamlanana kadar bekleyin. Dikkat **bkz sonuçları** düğme yeşildir şimdi. Başka bir deyişle, toplu işin tamamını başarıyla çalıştırıldı.
 
-1. **Sonuçları göster**' i seçin. Amaçlar, amaç adlarının solunda yeşil simgelere sahip olmalıdır. 
+1. Seçin **bkz sonuçları**. Intents tüm hedefi adları solundaki yeşil simgeler olması gerekir.
 
-## <a name="create-batch-file-with-entities"></a>Varlıklarla Batch dosyası oluşturma 
+## <a name="create-batch-file-with-entities"></a>Toplu iş dosyası ile varlıkları oluşturun
 
-Bir toplu iş testinde varlıkları doğrulamak için, varlıkların Batch JSON dosyasında etiketlenmesi gerekir. 
+Toplu test varlıklarda doğrulamak için varlıkları batch JSON dosyasında etiketlenmesi gerekir.
 
-Toplam sözcük ([belirteç](luis-glossary.md#token)) sayısı için varlıkların çeşitlemesi tahmin kalitesini etkileyebilir. Etiketli olarak etiketlenen eğitim verilerinin çok sayıda varlık uzunluğu içerdiğinden emin olun. 
+Varlıklar için toplam word çeşitlemesi ([belirteci](luis-glossary.md#token)) sayısı, tahmin kalite etkileyebilir. Varlık uzunluklarının çeşitli amaca etiketli Konuşma ile sağlanan eğitim verilerini içerdiğinden emin olun.
 
-Toplu iş dosyalarını ilk kez yazarken ve test ederken, çalışmayı bildiğiniz birkaç göz önünde ve varlıkla başlamak en iyisidir ve yanlış tahmin edilebilir. Bu, sorunlu alanlara hızlıca odaklanmanıza yardımcı olur. Tahmin edilen birkaç farklı Iş adı kullanarak **Getjobınformation** ve **applyforjob** amaçlarını test ettikten sonra, bu toplu Işlem test dosyası, **iş** varlığı için belirli değerlerle ilgili bir tahmin sorunu olup olmadığını görmek üzere geliştirilmiştir. 
+İlk yazma ve toplu iş dosyaları test, birkaç Konuşma ile başlatmak en iyi ve bildiğiniz varlıkları çalışma yanı sıra, birkaç, düşünme yanlış tahmin. Bu, içinde sorun alanlara hızlıca odaklanmak yardımcı olur. Test sonra **GetJobInformation** ve **ApplyForJob** amacı, tahmin değil, birkaç farklı iş adları kullanarak tahmin ile ilgili bir sorun olup olmadığını görmek için bu toplu test dosyası geliştirildi için belirli değerlerle **iş** varlık.
 
-Test utsları 'nda belirtilen bir **iş** varlığının değeri genellikle bir veya iki sözcükten oluşur ve birkaç örnek daha fazla kelime olur. _Kendi_ insan kaynakları uygulamanızda genellikle birçok sözcükten oluşan iş adları varsa, bu uygulamadaki **iş** varlığı ile etiketlenmiş örnekler iyi çalışmaz.
+Değerini bir **iş** test konuşma içinde sağlanan varlıktır genellikle daha fazla sözcük olan birkaç örnekleri içeren bir veya iki sözcük. Varsa _kendi_ İnsan Kaynakları uygulamasında genellikle birçok bir kelimelerin iş adları varsa, örnek Konuşma ile etiketlenmiş **iş** bu uygulamada varlık iyi çalışmamasına.
 
-1. [Vscode](https://code.visualstudio.com/) gibi bir metin düzenleyicisinde `HumanResources-entities-batch.json` oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) .
+1. Oluşturma `HumanResources-entities-batch.json` gibi bir metin düzenleyicisinde [VSCode](https://code.visualstudio.com/) veya [indirme](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json?raw=true) bu.
 
-2. JSON biçimli toplu iş dosyasında, test sırasında tahmin etmek istediğiniz **Amaç** ile, her türlü varlıkların konumunu içeren bir nesne dizisi ekleyin. Bir varlık belirteç tabanlı olduğundan, bir karakter üzerinde her bir varlığı başlatıp durdurduğunuzdan emin olun. Bir boşluk üzerinde başlayamaz veya bitmeyin. Bu, toplu işlem dosyası içeri aktarma sırasında hataya neden olur.  
+2. JSON biçimli bir toplu iş dosyasında bir konuşma ile içeren bir nesne dizisi Ekle **hedefi** utterance herhangi bir varlık konumlarını yanı sıra test tahmin edilen istiyor. Bir varlık belirteç tabanlı olduğundan, her varlık, bir karakter durdurmak ve başlatmak emin olun. Başlayamaz veya bitemez utterance bir alan üzerinde. Bu, toplu iş dosyasını içeri aktarma sırasında bir hataya neden olur.
 
    [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
-## <a name="run-the-batch-with-entities"></a>Toplu işi varlıklarla çalıştırın
+## <a name="run-the-batch-with-entities"></a>Batch ile varlıkları çalıştırma
 
-1. Üst gezinti çubuğunda **Test** ' i seçin. 
+1. Seçin **Test** üst gezinti çubuğunda.
 
-2. Sağ taraftaki panelde **Batch test paneli** ' ni seçin. 
+2. Seçin **test paneli toplu** Sağdaki panelde.
 
-3. **Veri kümesini Içeri aktar**seçeneğini belirleyin.
+3. Seçin **alma dataset**.
 
-4. `HumanResources-entities-batch.json` dosyanın dosya sistemi konumunu seçin.
+4. Dosya sistemi konumunu seçin `HumanResources-entities-batch.json` dosya.
 
-5. Veri kümesini `entities` adlandırın ve **bitti**' yi seçin.
+5. Veri kümesi adı `entities` seçip **Bitti**.
 
-6. **Çalıştır** düğmesini seçin. Sınama tamamlanana kadar bekleyin.
+6. **Çalıştır** düğmesini seçin. Test işlemi tamamlanana kadar bekleyin.
 
-7. **Sonuçları göster**' i seçin.
+7. Seçin **bkz sonuçları**.
 
-## <a name="review-entity-batch-results"></a>Varlık toplu iş sonuçlarını gözden geçirme
+## <a name="review-entity-batch-results"></a>Varlık toplu sonuçları gözden geçirin
 
-Grafik, tüm hedefleri doğru şekilde tahmin edilen şekilde açılır. Hata içeren varlık tahminlerini bulmak için sağ taraftaki filtrenin altına gidin. 
+Grafik doğru şekilde tahmin edilen tüm hedefleri ile açılır. Hata içeren varlık tahminlerini bulmak için sağ taraftaki filtrenin altına gidin.
 
-1. Filtredeki **iş** varlığını seçin.
+1. Seçin **iş** filtredeki varlık.
 
     ![Filtredeki hata varlığı tahminleri](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
-    Grafik, varlık tahminlerini görüntüleyecek şekilde değişir. 
+    Varlık Öngörüler görüntülemek için grafik değişir.
 
-2. Grafiğin sol alt çeyreğinden **yanlış negatif** ' ı seçin. Ardından, belirteç görünümüne geçmek için klavye birleşimi denetimi + E ' yi kullanın. 
+2. Seçin **False negatif** quadrant grafiğin alt, sol. Ardından klavye birleşimi control + E belirteci görünümüne geçiş yapmak için kullanın.
 
-    [varlık tahminlerinin belirteç görünümü ![](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
-    
-    Grafik altındaki söyleyleri gözden geçirmek, Iş adı `SQL`içerdiğinde tutarlı bir hata gösterir. Örnek uttaslarını ve Iş tümceciği listesini gözden geçirmek, SQL yalnızca bir kez ve yalnızca daha büyük bir iş adının parçası olarak `sql/oracle database administrator`kullanılır.
+    [![Varlık Öngörüler belirteci görünümü](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
 
-## <a name="fix-the-app-based-on-entity-batch-results"></a>Varlık toplu iş sonuçlarına göre uygulamayı düzeltir
+    Grafiğin altındaki konuşma gözden geçirme ortaya çıkarır tutarlı bir hata iş adı içerdiğinde `SQL`. Örnek konuşma ve iş ifade listesi gözden geçirme, SQL yalnızca bir kez kullanılır ve yalnızca büyük bir iş adı bir parçası olarak olduğu `sql/oracle database administrator`.
 
-Uygulamanın düzeltilme işlemi, SQL işlerinin çeşitlerinin doğru şekilde belirlenmesi için lusıs gerektirir. Bu düzeltmeyle ilgili birkaç seçenek vardır. 
+## <a name="fix-the-app-based-on-entity-batch-results"></a>Varlık toplu sonuçlarına göre uygulama düzeltme
 
-* SQL kullanan ve bu kelimeleri bir Iş varlığı olarak etiketleyip daha fazla örnek, açıkça ekleyin. 
-* Tümcecik listesine açıkça daha fazla SQL işi ekleyin
+Uygulama düzeltme SQL işleri çeşitleri doğru şekilde belirlemek LUIS gerektirir. Bu düzeltme için birkaç seçenek vardır.
 
-Bu görevler sizin için ayrıldınız.
+* Açıkça SQL kullanın ve bir iş varlığı sözcükleri etiket daha fazla örnek konuşma ekleyin.
+* Açıkça daha fazla SQL işleri ifade listesine ekleyin
 
-Varlığın doğru tahmin yapılmadan önce bir [model](luis-concept-patterns.md) eklenmesi sorunu çözmeyecek. Bunun nedeni, düzendeki tüm varlıkların algılanana kadar düzenin eşleşmemesi. 
+Bu görevleri sizin için yapmasını bırakılır.
+
+Ekleme bir [deseni](luis-concept-patterns.md) varlık doğru şekilde tahmin önce sorunu gidermek için gittiği değil. Desen deseninde tüm varlıkları algılanan kadar eşleşmeyecektir olmasıdır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -233,7 +235,7 @@ Varlığın doğru tahmin yapılmadan önce bir [model](luis-concept-patterns.md
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Öğretici, geçerli modelle ilgili sorunları bulmak için bir Batch testi kullandı. Değişiklik doğru olduğundan emin olmak için model düzeltildi ve toplu iş dosyasıyla yeniden test edildi.
+Öğreticinin bir batch test Geçerli modelde sorunları bulmak için kullanılır. Model sabit ve değişiklik doğru olduğunu doğrulamak için toplu iş dosyasını retested.
 
 > [!div class="nextstepaction"]
 > [Desenler hakkında bilgi edinin](luis-tutorial-pattern.md)

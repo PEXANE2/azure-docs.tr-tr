@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451350"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -38,7 +38,6 @@ Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları M
 
 - [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik tekno
 
 - [İş ortağı Web sitesine gidin](https://devicetrust.com/wvd).
 
+## <a name="hp"></a>HP
+
+![HP logosu](./media/partners/hp.png)
+
+HP Ince Istemci, Microsoft 'un Azure ve Windows Sanal Masaüstü Hizmetleri 'nin onaylanan ve onaylanmış bir iş ortağıdır. Windows 10 IoT Enterprise ile HP Ince Istemciler, Azure tabanlı iş yükleri ve Windows sanal masaüstü barındırılan masaüstleri için hazır destek desteği sunar. Donanım ve IŞLETIM sistemi, işletim sistemi parmak izini, donanımı ve bakım maliyetlerini azaltırken, uzak iş yüklerini etkin bir şekilde sunan bir en çok sınıf deneyimi sağlamak üzere iyileştirilmiştir.
+
+HP 'de endüstri eğilimleri, müşteri güçlükleri ve geliştirme sürecinde sunulan çözüm sanallaştırmaya baktığı için, dört-bir değer teklifi kullanarak ideal bulut uç noktasına göre ücretlendirilir. tasarım, yönetilebilirlik, güvenlik ve kaydetmese. Her HP Ince Istemci amacı, BT karar mekanizmalarının göz önünde bulundurularak oluşturulmuştur. HP Ince Istemciler, hem VDı hem de bulut bilgi işlem 'a kolayca geçiş yapabilmeniz için uzun süreli, güvenli, kolayca dağıtılır ve yönetilir ve güçlü bir işlemdir. HP 'nin çok yönlü portföyü size uygun olan modern uç nokta çözümünü seçme özgürlüğü sunar.
+
+- [İş ortağı Web sitesine gidin](https://hp.com/go/thin).
+
 ## <a name="igel"></a>ILEK dili
 
 ![IGEL logosu](./media/partners/igel.png)
@@ -90,7 +99,7 @@ ILEK, Microsoft Azure ve Windows Sanal Masaüstü Hizmetleri 'nin onaylı ve ona
  
 ILEK OS, Citrix, Microsoft ve VMware 'den tüm popüler sanal uygulamaları, masaüstü bilgisayarları ve bulut çalışma alanı istemci protokollerini destekler. Kuruluşların Windows Sanal Masaüstü Hizmetleri 'ni kendi benzersiz kullanıcı ortamlarına hızla benimsemesine yardımcı olmak için 85 çevresel, arabirim ve protokol iş ortaklarının tümleşik teknolojilerini içerir. ILEK OS, bir salt okunurdur, modüler bir uç nokta işletim sistemi ve bu da izinsiz koruma sağlar. Artık, uç nokta donanımında çalışan tüm önemli ana işlemlerin (bazı seçili modellerden) veya UEFı işleminin Azure bulutuna ve Windows sanal masaüstü hizmetlerine kadar her şekilde bütünlüğünü doğrulayan "güven zinciri" de içerir. IGEL işletim sistemi sayesinde kuruluşlar, kullanıcıların uç nokta cihazlarının bütünlüğü, güvenliği ve yönetilebilirliği açısından tam güvenle Azure bulutunda Windows sanal masaüstüne abone olabilir.
 
-- [İş ortağı Web sitesine gidin.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [İş ortağı Web sitesine gidin](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
 

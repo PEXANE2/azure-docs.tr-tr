@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Ruby ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
+title: 'Hızlı başlangıç: Ruby ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
 titleSuffix: Azure Cognitive Services
 description: Bing Haber Arama REST API Ruby kullanarak bir istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -8,29 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/19/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448543"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Hızlı Başlangıç: Ruby ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Ruby ve Bing Haber Arama REST API kullanarak bir haber arama gerçekleştirme
 
 Bing Haber Arama API'si ilk çağrısını yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir arama sorgusu gönderir ve sonuçları işler.
 
 Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlama dili ile uyumlu bir Web hizmeti hizmetidir. Bu örneğin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb)’da mevcuttur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Ruby [2,4 veya üzeri](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
-
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
@@ -42,7 +40,7 @@ Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https:/
     require 'json'
     ```
 
-2. API uç noktası, haber arama URL 'SI, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun.
+2. API uç noktası, haber arama URL 'SI, abonelik anahtarınız ve arama terimiyle ilgili değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```ruby
     accessKey = "enter key here"

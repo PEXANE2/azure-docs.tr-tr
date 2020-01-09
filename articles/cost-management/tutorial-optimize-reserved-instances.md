@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Azure’da Cloudyn ile ayrılmış örnek maliyetlerini iyileştirme | Microsoft Docs'
+title: Öğretici-Cloudyn-Azure ile ayrılmış örnek maliyetini Iyileştirme
 description: Bu öğreticide, Azure ve Amazon Web Services (AWS) için ayrılmış örnek maliyetlerinizi nasıl iyileştireceğinizi öğreneceksiniz.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444562"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -38,7 +38,7 @@ Bu öğreticide, Azure 'un ve AWS Ayrılmış Örneklerin (RI) Cloudyn tarafınd
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure hesabınız olmalıdır.
 - Cloudyn için bir deneme kaydına veya ücretli aboneliğe sahip olmanız gerekir.
@@ -170,7 +170,7 @@ Aşağıdaki resimde, rapordaki satın alma önerileri gösterilir.
 
 Bu örnekte, Cloudyn\_A hesabının 32 ayrılmış örnek satın alma önerisi vardır. Tüm satın alma önerilerine uyarsanız, yıllık 137.770 AMD Doları tasarruf etme potansiyeliniz olur. Cloudyn tarafından sağlanan satın alma önerilerinde, çalışan iş yüklerinizde kullanımın tutarlı kalacağının varsayıldığını unutmayın.
 
-Her satın almanın neden önerildiğini açıklayan ayrıntıları görüntülemek için, **Gerekçeler+'in altındaki artı simgesine (** ) tıklayın. Aşağıda, listedeki ilk öneri için bir örnek verilmiştir.
+Her satın almanın neden önerildiğini açıklayan ayrıntıları görüntülemek için, **Gerekçeler**'in altındaki artı simgesine ( **+** ) tıklayın. Aşağıda, listedeki ilk öneri için bir örnek verilmiştir.
 
 ![Satın alma gerekçe ayrıntıları gösteren örnek](./media/tutorial-optimize-reserved-instances/aws02.png)
 

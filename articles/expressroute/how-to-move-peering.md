@@ -5,15 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f9ed841d347d99a2208971d164bbd7b9044e3b09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436851"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Microsoft eşlemesi için genel eşleme Taşı
 
@@ -47,7 +46,7 @@ Katman 3 ' ü yönetilmiyorsa, devam etmeden önce aşağıdaki bilgiler gerekli
 * İkincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır. Microsoft, yönlendirici için ikinci kalmayacak IP kullandığından bu alt ağından yönlendiriciniz için ilk kullanılabilir IP adresi atar.<br>
 * Bu eşlemenin kurulacak geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve ikincil bağlantı için aynı VLAN kimliğini kullanmanız gerekir<br>
 * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.<br>
-* Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca ortak IP adresi ön ekleri kabul edilir. Ön ek kümesi göndermeyi planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu ön ekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.<br>
+* Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca genel IP adresi önekleri kabul edilir. Ön ek kümesi göndermeyi planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu ön ekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.<br>
 * Yönlendirme Kayıt Defteri Adı: AS numarası ve öneklerinin kaydedildiği RIR / IRR’yi belirtebilirsiniz.
 
 * **Isteğe bağlı** -müşteri ASN: eşleme numarasına kayıtlı olmayan ön ekler varsa, BUNLARıN kaydedildiği as numarasını belirtebilirsiniz.<br>
@@ -83,9 +82,8 @@ Rota filtreleri aşağıdaki makalelerden birini kullanarak yapılandırın:
 
 Microsoft eşlemesi yapılandırılmış ve Microsoft eşlemesi üzerinde kullanmak istediğiniz ön ekleri doğru tanıtıldığından doğruladıktan sonra genel eşleme sonra silebilirsiniz. Ortak eşlemesini silmek için aşağıdaki makalelerden birini kullanın:
 
-* [Azure portalını kullanarak Azure ortak eşlemesini Sil](expressroute-howto-routing-portal-resource-manager.md#deletepublic)<br>
-* [Azure PowerShell kullanarak Azure ortak eşlemesini Sil](expressroute-howto-routing-arm.md#deletepublic)<br>
-* [CLI kullanarak Azure ortak eşlemesini Sil](howto-routing-cli.md#deletepublic)
+* [Azure PowerShell kullanarak Azure ortak eşlemesini Sil](about-public-peering.md#powershell)
+* [CLI kullanarak Azure ortak eşlemesini Sil](about-public-peering.md#cli)
   
 ## <a name="view"></a>5. eşlemeleri görüntüleme
   

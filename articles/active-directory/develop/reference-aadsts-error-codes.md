@@ -1,5 +1,5 @@
 ---
-title: Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları | Mavisi
+title: Azure AD kimlik doğrulaması & yetkilendirme hatası kodları
 description: Azure AD güvenlik belirteci hizmeti 'nden (STS) döndürülen AADSTS hata kodları hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965815"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423961"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
@@ -133,6 +133,8 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers-oturum denetimi, geçiş kullanıcıları için desteklenmez. |
 | AADSTS50180 | WindowsIntegratedAuthMissing-tümleşik Windows kimlik doğrulaması gerekiyor. Sorunsuz SSO için kiracıyı etkinleştirin. |
 | AADSTS50187 | Deviceınformationnotsaðlanan-hizmet, cihaz kimlik doğrulaması yapamadı. |
+| AADSTS50196 | Loopalgılanan-bir istemci döngüsü algılandı. Belirtecin önbelleğe alma işleminin uygulandığından ve hata koşullarının doğru işlendiğinden emin olmak için uygulamanın mantığını denetleyin.  Uygulama, çok kısa bir süre içinde çok fazla sayıda istek yaptı. Bu, hatalı durumda olduğunu veya belirteç isteğinde bulunduğunu gösterir. |
+| AADSTS50199 | Bu kimlik doğrulaması için Cmsiınterrupt Kullanıcı etkileşimi gereklidir.  Bu bir "interaction_required" hatası olduğundan, istemcinin etkileşimli kimlik doğrulaması yapması gerekir.  Bu durum, yerel bir uygulama için belirteç istemek üzere kullanılan bir sistem Web görünümü olduğundan, kullanıcının oturum açmak istediği uygulama olup olmadığını istemesi gerekir.|
 | AADSTS51000 | RequiredFeatureNotEnabled-özellik devre dışı bırakıldı. |
 | AADSTS51001 | Domainhintmustbesun-Domain ipucu, şirket içi güvenlik tanımlayıcısı veya şirket içi UPN ile birlikte bulunmalıdır. |
 | AADSTS51004 | UserAccountNotInDirectory-Kullanıcı hesabı dizinde yok. |

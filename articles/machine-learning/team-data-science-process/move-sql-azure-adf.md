@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59f8b8b253fc914e5723a9c41475ec78bc3f376e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b95fb8d5a0c05d2d66744a91f4200d58a71470d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427375"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory ile SQL Azure için bir şirket içi SQL Server'dan veri taşıma
 
-Bu makalede, Azure Data Factory (ADF) kullanarak verileri şirket içi SQL Server veritabanından Azure Blob Depolama ile bir SQL Azure veritabanına taşıma gösterilmektedir.
+Bu makalede, Azure Blob depolama aracılığıyla Azure Data Factory (ADF) kullanarak verileri şirket içi SQL Server veritabanından SQL Azure veritabanına taşıma işlemi gösterilmektedir: Bu yöntem, çoğaltılan bir hazırlama kopyasının avantajlarına sahip desteklenen bir eski yaklaşımdır, ancak [en son seçenekler için veri geçiş sayfamıza bakmak tavsiye ederiz](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Bir Azure SQL veritabanı'na veri taşımak için çeşitli seçenekler özetlenmektedir bir tablo için bkz: [veri taşıma için bir Azure SQL veritabanı için Azure Machine Learning](move-sql-azure.md).
 
@@ -43,16 +43,16 @@ Zamanlama ve düzenli aralıklarla veri taşıma işlemlerini yönetmek basit JS
 * verileri Azure Blob Depolama hesabından bir Azure SQL veritabanı'na kopyalayın.
 
 > [!NOTE]
-> Burada gösterilen adımları ADF ekibi tarafından sağlanan daha ayrıntılı öğreticiden uyarlanmıştır: [Verileri bir şirket içi SQL Server veritabanından Azure Blob depolama alanına kopyalamak](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) uygun olduğunda o konusunun ilgili bölümlerine başvuruları sağlanır.
+> Burada olduğunu ADF ekibi tarafından sağlanan daha ayrıntılı öğreticiden uyarlanmış gösterilen adımlar: [veri kopyalama bir şirket içi SQL Server veritabanından Azure Blob depolama alanına](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) başvuruları, konusunun ilgili bölümlerine ne zaman sağlanır uygun.
 >
 >
 
 ## <a name="prereqs"></a>Önkoşullar
 Bu öğreticide, sahip olduğunuz varsayılır:
 
-* Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* Bir **Azure depolama hesabı**. Bu öğreticide verilerin depolanması için bir Azure depolama hesabını kullanırsınız. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın. Depolama hesabını oluşturduktan sonra, depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz: [depolama erişim anahtarlarınızı yönetme](../../storage/common/storage-account-manage.md#access-keys).
-* Erişim bir **Azure SQL veritabanı**. Bir Azure SQL veritabanı, konu ayarlamanız gerekir, [Microsoft Azure SQL veritabanı ile çalışmaya başlama](../../sql-database/sql-database-get-started.md) Azure SQL veritabanı yeni bir örneğini sağlama hakkında bilgi sağlar.
+* Bir **Azure aboneliği**. Bir aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
+* Bir **Azure depolama hesabı**. Bu öğreticide verilerin depolanması için bir Azure depolama hesabını kullanırsınız. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın. Depolama hesabını oluşturduktan sonra, depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
+* Erişim bir **Azure SQL veritabanı**. Azure SQL veritabanı ayarlamanız gerekirse [Microsoft Azure SQL veritabanı Ile çalışmaya](../../sql-database/sql-database-get-started.md) başlama konusu, Azure SQL veritabanı 'nın yeni bir örneğini sağlama hakkında bilgi sağlar.
 * Yüklenmiş ve yapılandırılmış **Azure PowerShell** yerel olarak. Yönergeler için [Azure PowerShell'i yükleme ve yapılandırma işlemini](/powershell/azure/overview).
 
 > [!NOTE]
@@ -71,7 +71,7 @@ Yeni bir Azure Data Factory ve bir kaynak grubu oluşturmak için yönergeleri [
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Yükleme ve Azure Data Factory Integration Runtime'ı yapılandırma
 Integration Runtime, Azure Data Factory tarafından farklı ağ ortamları veri tümleştirme özellikleri sağlamak için kullanılan bir müşteri yönetilen veri tümleştirme altyapısıdır. Bu çalışma zamanı, eski adıyla "Veri yönetimi ağ geçidi" olarak adlandırılıyordu.
 
-Ayarlamak için [bir işlem hattı oluşturmak için yönergeleri izleyin](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Ayarlamak için işlem [hattı oluşturma yönergelerini izleyin](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Veri kaynaklarına bağlanmak için bağlı hizmetler oluşturma
 Bağlı hizmet için bir veri kaynağına bağlanmak Azure Data Factory'ye gereken bilgileri tanımlar. Bağlı hizmetler için gerekli olan bu senaryoda üç kaynak sunuyoruz:
@@ -99,7 +99,7 @@ JSON tabanlı tanımları tablolarda aşağıdaki adlar kullanın:
 Bu ADF işlem hattı için üç tablo tanımları gerekir:
 
 1. [SQL şirket içi tablo](#adf-table-onprem-sql)
-2. [BLOB tablosu](#adf-table-blob-store)
+2. [Blob tablosu](#adf-table-blob-store)
 3. [SQL Azure tablosu](#adf-table-azure-sql)
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: Şablon (.NET) kullanarak Azure IOT Hub oluşturma | Microsoft Docs
-description: Bir C# programı ile IOT hub'ı oluşturmak için bir Azure Resource Manager şablonu kullanma
+title: Şablon kullanarak Azure IoT Hub oluşturma (.NET) | Microsoft Docs
+description: Bir C# programla IoT Hub oluşturmak için Azure Resource Manager şablonu kullanma.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,44 +9,44 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457029"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager şablonu (.NET) kullanarak IOT hub oluşturma
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager şablonu kullanarak IoT Hub 'ı oluşturma (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Azure Resource Manager'ı oluşturma ve Azure IOT hub'ları programlı olarak yönetmek için kullanabilirsiniz. Bu öğreticide bir Azure Resource Manager şablonu bir IOT hub'ı bir C# programı oluşturma için nasıl kullanılacağını gösterir.
+Azure IoT Hub 'larını programlı bir şekilde oluşturmak ve yönetmek için Azure Resource Manager kullanabilirsiniz. Bu öğreticide, bir C# programdan IoT Hub 'ı oluşturmak için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
-> Azure'da oluşturmaya ve kaynaklarla çalışmaya yönelik iki farklı dağıtım modeli vardır:  [Azure Resource Manager ve klasik](../azure-resource-manager/resource-manager-deployment-model.md).  Bu makalede Azure Resource Manager dağıtım modelini incelemektedir.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Resource Manager ve klasik](../azure-resource-manager/resource-manager-deployment-model.md).  Bu makalede Azure Resource Manager dağıtım modelinin kullanımı ele alınmaktadır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Visual Studio.
-* Etkin bir Azure hesabı. <br/>Hesabınız yoksa, yalnızca birkaç dakika içinde [ücretsiz bir hesap][lnk-free-trial] oluşturabilirsiniz.
-* Bir [Azure depolama hesabı] [ lnk-storage-account] , Azure Resource Manager şablonu dosyalarını depolayabileceğiniz.
-* [Azure PowerShell 1.0] [ lnk-powershell-install] veya üzeri.
+* Etkin bir Azure hesabı. <br/>Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap][lnk-free-trial] oluşturabilirsiniz.
+* Azure Resource Manager şablon dosyalarınızı depolayabileceğiniz bir [Azure depolama hesabı][lnk-storage-account] .
+* [Azure PowerShell 1,0][lnk-powershell-install] veya üzeri.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>Visual Studio projenizi hazırlama
 
-1. Bir Visual C# Windows Klasik Masaüstü projesi kullanarak Visual Studio'da oluşturma **konsol uygulaması (.NET Framework)** proje şablonu. Projeyi adlandırın **CreateIoTHub**.
+1. Visual Studio 'da C# **konsol uygulaması (.NET Framework)** proje şablonunu kullanarak bir Visual Windows Klasik Masaüstü projesi oluşturun. Projeyi **CreateIoTHub**olarak adlandırın.
 
-2. Çözüm Gezgini'nde projenize sağ tıklayın ve ardından **NuGet paketlerini Yönet**.
+2. Çözüm Gezgini, projenize sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
 
-3. NuGet Paket Yöneticisi'nde kontrol **INCLUDE yayın öncesi**ve **Gözat** sayfa arama **Microsoft.Azure.Management.ResourceManager**. Paketi seçin, **yükleme**, **değişiklikleri gözden geçir** tıklayın **Tamam**, ardından **kabul ediyorum** lisanslar kabul etmek için.
+3. NuGet Paket Yöneticisi ' nde, **ön sürümü dahil**et ' i Işaretleyin ve **Microsoft. Azure. Management. ResourceManager**için **göz at** sayfasında arama yapın. Paketi seçin, ardından, **Gözden geçirme değişiklikleri** **' nde** **Tamam**' ı tıklatın ve lisansları kabul etmek için **kabul ediyorum** ' a tıklayın.
 
-4. NuGet Paket Yöneticisi'nde arayın **Microsoft.IdentityModel.Clients.activedirectory**.  Tıklayın **yükleme**, **değişiklikleri gözden** tıklayın **Tamam**, ardından **kabul ediyorum** lisansı kabul edin.
+4. NuGet Paket Yöneticisi ' nde **Microsoft. IdentityModel. clients. ActiveDirectory**için arama yapın.  **Tamam**' a tıklayın, **değişiklikleri gözden geçir** **' e**tıklayın, ardından **kabul ediyorum** ' a tıklayarak lisansı kabul edin.
 
-5. Program.cs içinde varolan **kullanarak** deyimlerini aşağıdaki kod ile:
+5. Program.cs ' de, var olan **using** deyimlerini aşağıdaki kodla değiştirin:
 
     ```csharp
     using System;
@@ -56,7 +56,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
     using Microsoft.Rest;
     ```
 
-6. Program.cs içinde yer tutucu değerlerini değiştirerek aşağıdaki statik değişkenler ekleyin. Bir Not **ApplicationId**, **Subscriptionıd**, **Tenantıd**, ve **parola** Bu öğreticide daha önce. **Azure depolama hesabınızın adını** , Azure Resource Manager şablonu dosyalarını depoladığınız Azure depolama hesabının adıdır. **Kaynak grubu adı** , IOT hub'ı oluştururken kullandığınız kaynak grubunun adıdır. Önceden mevcut veya yeni bir kaynak grubu adı olabilir. **Dağıtım adı** dağıtımı için bir ad olduğu gibi **Deployment_01**.
+6. Program.cs ' de, yer tutucu değerlerini değiştirerek aşağıdaki statik değişkenleri ekleyin. Bu öğreticide, **ApplicationId**, **SubscriptionID**, **tenantıd**ve **parola** hakkında daha önce bir değişiklik yaptınız. **Azure depolama hesabınızın adı** , Azure Resource Manager şablon dosyalarınızı depoladığınız Azure depolama hesabının adıdır. **Kaynak grubu adı** , IoT Hub 'ını oluştururken kullandığınız kaynak grubunun adıdır. Ad, önceden var olan veya yeni bir kaynak grubu olabilir. **Dağıtım adı** , dağıtım için **Deployment_01**gibi bir addır.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -70,13 +70,13 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="submit-a-template-to-create-an-iot-hub"></a>IOT hub'ı oluşturmak için bir şablon gönderme
+## <a name="submit-a-template-to-create-an-iot-hub"></a>IoT Hub 'ı oluşturmak için Şablon gönderme
 
-Bir JSON şablonu ve parametre dosyası, kaynak grubunuzda bir IOT hub'ı oluşturmak için kullanın. Var olan bir IOT hub'ına değişiklik yapmak için bir Azure Resource Manager şablonunu da kullanabilirsiniz.
+Kaynak grubunuzda bir IoT Hub 'ı oluşturmak için bir JSON şablonu ve parametre dosyası kullanın. Ayrıca, var olan bir IoT Hub 'ında değişiklik yapmak için bir Azure Resource Manager şablonu da kullanabilirsiniz.
 
-1. Çözüm Gezgini'nde projenize sağ tıklayın, **Ekle**ve ardından **yeni öğe**. Adlı bir JSON dosyası ekleme **template.json** projenize.
+1. Çözüm Gezgini, projenize sağ tıklayın, **Ekle**' ye tıklayın ve ardından **Yeni öğe**' ye tıklayın. Projenize **Template. JSON** ADLı bir JSON dosyası ekleyin.
 
-2. Standart IOT hub'ına eklemek için **Doğu ABD** bölge içeriklerini **template.json** aşağıdaki kaynak tanımına sahip. IOT hub'ı destekleyen bölgeleri güncel listesi için bkz. [Azure durumu][lnk-status]:
+2. **Doğu ABD** bölgesine standart bir IoT Hub 'ı eklemek için, **Template. JSON** içeriğini aşağıdaki kaynak tanımıyla değiştirin. IoT Hub destekleyen bölgelerin geçerli listesi için bkz. [Azure durumu][lnk-status]:
 
     ```json
     {
@@ -112,9 +112,9 @@ Bir JSON şablonu ve parametre dosyası, kaynak grubunuzda bir IOT hub'ı oluşt
     }
     ```
 
-3. Çözüm Gezgini'nde projenize sağ tıklayın, **Ekle**ve ardından **yeni öğe**. Adlı bir JSON dosyası ekleme **parameters.json** projenize.
+3. Çözüm Gezgini, projenize sağ tıklayın, **Ekle**' ye tıklayın ve ardından **Yeni öğe**' ye tıklayın. Projenize **Parameters. JSON** ADLı bir JSON dosyası ekleyin.
 
-4. Öğesinin içeriğini değiştirin **parameters.json** yeni IOT hub'ı için bir ad gibi ayarlar aşağıdaki parametre bilgilerle **{adınızın baş harflerini} mynewiothub**. Adı veya baş harfleri içermelidir için IOT hub'ı adı genel olarak benzersiz olması gerekir:
+4. **Parameters. JSON** içeriğini, yeni IoT Hub için bir adı ayarlayan aşağıdaki parametre bilgileriyle değiştirin; Örneğin, **{ınıtıals} mynewiotub**. IoT Hub adı, genel olarak benzersiz olmalıdır, bu nedenle adınızı veya adınızın baş harflerini içermesi gerekir:
 
     ```json
     {
@@ -127,15 +127,15 @@ Bir JSON şablonu ve parametre dosyası, kaynak grubunuzda bir IOT hub'ı oluşt
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. İçinde **Sunucu Gezgini**, Azure aboneliğinize bağlayın ve Azure depolama hesabınızdaki adlı bir kapsayıcı oluşturma **şablonları**. İçinde **özellikleri** ayarlayın **genel okuma erişimini** izinlerini **şablonları** kapsayıcıya **Blob**.
+5. **Sunucu Gezgini**' de Azure aboneliğinize bağlanın ve Azure depolama hesabınızda **Şablonlar**adlı bir kapsayıcı oluşturun. **Özellikler** panelinde, **Şablonlar** kapsayıcısı için **Genel okuma erişimi** izinlerini **BLOB**olarak ayarlayın.
 
-6. İçinde **Sunucu Gezgini**, sağ **şablonları** kapsayıcı ve ardından **görünüm Blob kapsayıcısını**. Tıklayın **Blob karşıya** düğme, iki dosyayı seçmeniz **parameters.json** ve **templates.json**ve ardından **açık** karşıya yüklemek için JSON dosyaları **şablonları** kapsayıcı. JSON verilerini içeren BLOB URL'ler şunlardır:
+6. **Sunucu Gezgini**' de, **Şablonlar** kapsayıcısına sağ tıklayıp **BLOB kapsayıcısını görüntüle**' ye tıklayın. **Blobu karşıya yükle** düğmesine tıklayın, iki dosyayı, **Parameters. JSON** ve **Templates. JSON**' ı seçin ve ardından **Aç** ' a tıklayarak JSON dosyalarını **Şablonlar** kapsayıcısına yükleyin. JSON verilerini içeren Blobların URL 'Leri şunlardır:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. Program.cs'ye aşağıdaki yöntemi ekleyin:
+7. Program.cs 'e aşağıdaki yöntemi ekleyin:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)
@@ -144,7 +144,7 @@ Bir JSON şablonu ve parametre dosyası, kaynak grubunuzda bir IOT hub'ı oluşt
     }
     ```
 
-8. Aşağıdaki kodu ekleyin **CreateIoTHub** yöntemi için Azure Resource Manager şablonunu ve parametre dosyalarını göndermek için:
+8. Şablon ve parametre dosyalarını Azure Resource Manager göndermek için aşağıdaki kodu **CreateIoTHub** yöntemine ekleyin:
 
     ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -167,7 +167,7 @@ Bir JSON şablonu ve parametre dosyası, kaynak grubunuzda bir IOT hub'ı oluşt
         });
     ```
 
-9. Aşağıdaki kodu ekleyin **CreateIoTHub** durumunu ve anahtarları yeni IOT hub'ı görüntüler yöntemi:
+9. Aşağıdaki kodu, yeni IoT Hub için durum ve anahtarları görüntüleyen **CreateIoTHub** yöntemine ekleyin:
 
     ```csharp
     string state = createResponse.Properties.ProvisioningState;
@@ -180,41 +180,41 @@ Bir JSON şablonu ve parametre dosyası, kaynak grubunuzda bir IOT hub'ı oluşt
     Console.WriteLine(createResponse.Properties.Outputs);
     ```
 
-## <a name="complete-and-run-the-application"></a>Tamamlayın ve uygulamayı çalıştırın
+## <a name="complete-and-run-the-application"></a>Uygulamayı tamamlayıp çalıştırın
 
-Çağırarak artık uygulama tamamlayabilirsiniz **CreateIoTHub** yöntemi önce derleyin ve çalıştırın.
+Artık uygulamayı oluşturmadan ve çalıştırmadan önce **CreateIoTHub** yöntemini çağırarak uygulamayı tamamlayabilirsiniz.
 
-1. Sonuna aşağıdaki kodu ekleyin **ana** yöntemi:
+1. **Main** yönteminin sonuna aşağıdaki kodu ekleyin:
 
     ```csharp
     CreateIoTHub(client);
     Console.ReadLine();
     ```
 
-2. Tıklayın **derleme** ardından **yapı çözümü**. Hataları düzeltin.
+2. **Oluştur** ve sonra **çözüm oluştur**' a tıklayın. Hataları düzeltin.
 
-3. Tıklayın **hata ayıklama** ardından **hata ayıklamayı Başlat** uygulamayı çalıştırın. Bu, dağıtımın çalıştırmak birkaç dakika sürebilir.
+3. **Hata Ayıkla** ' ya tıklayın ve uygulamayı çalıştırmak Için **hata ayıklamaya başlayın** . Dağıtımın çalışması birkaç dakika sürebilir.
 
-4. Uygulamanızı yeni IOT hub'ı doğrulamak için ziyaret [Azure portalında] [ lnk-azure-portal] ve kaynakların listesini görüntüleyin. Alternatif olarak, **Get-AzResource** PowerShell cmdlet'i.
+4. Uygulamanızın yeni IoT Hub 'ını eklediğini doğrulamak için [Azure Portal][lnk-azure-portal] ziyaret edin ve kaynak listenizi görüntüleyin. Alternatif olarak, **Get-AzResource** PowerShell cmdlet 'ini kullanın.
 
 > [!NOTE]
-> Bu örnek uygulama, bir S1 standart IOT için faturalandırılırsınız Hub ekler. IOT hub'ı aracılığıyla silebilirsiniz [Azure portalında] [ lnk-azure-portal] kullanarak veya **Remove-AzResource** işiniz bittiğinde PowerShell cmdlet'i.
+> Bu örnek uygulama, faturalandırıldığınız bir S1 standart IoT Hub ekler. IoT Hub 'ı [Azure Portal][lnk-azure-portal] aracılığıyla veya Işiniz bittiğinde **Remove-azresource** PowerShell cmdlet 'ini kullanarak silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir C# programı ile bir Azure Resource Manager şablonu kullanarak bir IOT hub'ı dağıttığınız artık daha iyi keşfedilebilmesi isteyebilirsiniz:
+Artık bir C# programla Azure Resource Manager şablon kullanarak bir IoT Hub 'ı dağıttıysanız, daha fazla incelemek isteyebilirsiniz:
 
-* Özellikleri hakkında okuyun [IOT hub'ı kaynak sağlayıcısı REST API'si][lnk-rest-api].
-* Okuma [Azure Resource Manager'a genel bakış] [ lnk-azure-rm-overview] Azure Resource Manager'ın özellikleri hakkında daha fazla bilgi edinmek için.
-* JSON söz dizimi ve özelliklerini şablonlarında kullanmak üzere bkz [Microsoft.Devices kaynak türleri](/azure/templates/microsoft.devices/iothub-allversions).
+* [IoT Hub kaynak sağlayıcısı REST API][lnk-rest-api]özellikleri hakkında bilgi edinin.
+* Azure Resource Manager özellikleri hakkında daha fazla bilgi edinmek için [Azure Resource Manager genel bakış][lnk-azure-rm-overview] konusunu okuyun.
+* Şablonlarda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. Devices kaynak türleri](/azure/templates/microsoft.devices/iothub-allversions).
 
-İçin IOT Hub ile geliştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+IoT Hub için geliştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [C SDK'ya giriş][lnk-c-sdk]
-* [Azure IOT SDK'ları][lnk-sdks]
+* [C SDK 'ya giriş][lnk-c-sdk]
+* [Azure IoT SDK’ları][lnk-sdks]
 
-Daha fazla IOT Hub'ın özelliklerini keşfetmek için bkz:
+IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [Azure IOT Edge ile sınır cihazlarına Al dağıtma][lnk-iotedge]
+* [Azure IoT Edge ile uç cihazlara AI dağıtma][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -222,7 +222,7 @@ Daha fazla IOT Hub'ın özelliklerini keşfetmek için bkz:
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

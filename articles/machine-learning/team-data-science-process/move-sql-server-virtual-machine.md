@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a1fb3b1260beb6bd85363f4611dae23cd3d321f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427344"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Bir Azure sanal makinesinde SQL Server’a veri taşıma
 
@@ -26,10 +26,10 @@ Machine Learning için Azure SQL veritabanı'na veri taşımak için seçenekler
 
 Aşağıdaki tabloda, verileri bir Azure sanal makinesinde SQL Server'a taşımak için seçenekler özetlenmektedir.
 
-| <b>KAYNAK</b> | <b>HEDEF: Azure vm'lerde SQL Server</b> |
+| <b>KAYNAK</b> | <b>Hedef: Azure vm'lerde SQL Server</b> |
 | --- | --- |
-| <b>Düz dosya</b> |1. <a href="#insert-tables-bcp">Komut satırı toplu kopyalama (BCP) yardımcı programı </a><br> 2. <a href="#insert-tables-bulkquery">Toplu ekleme SQL sorgusu </a><br> 3. <a href="#sql-builtin-utilities">SQL Server'da yerleşik grafik yardımcı programları</a> |
-| <b>Şirket içi SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Bir Microsoft Azure VM Sihirbazı için bir SQL Server veritabanı dağıtma</a><br> 2. <a href="#export-flat-file">Düz dosyaya </a><br> 3. <a href="#sql-migration">SQL veritabanı Geçiş Sihirbazı </a> <br> 4. <a href="#sql-backup">Yedekleme geri veritabanı ve geri yükleme </a><br> |
+| <b>Düz dosya</b> |1. <a href="#insert-tables-bcp">komut satırı toplu kopyalama yardımcı programı (bcp)</a><br> 2. <a href="#insert-tables-bulkquery">SQL sorgusunu toplu ekleme</a><br> 3. <a href="#sql-builtin-utilities">SQL Server Içindeki grafik yerleşik yardımcı programlar</a> |
+| <b>Şirket içi SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">bir SQL Server veritabanını MICROSOFT Azure VM sihirbazına dağıtma</a><br> 2. <a href="#export-flat-file">düz bir dosyaya aktarın</a><br> 3. <a href="#sql-migration">SQL veritabanı geçiş Sihirbazı</a> <br> 4. <a href="#sql-backup">veritabanı yedekleme ve geri yükleme</a><br> |
 
 Bu belge SQL komutlarını SQL Server Management Studio veya Visual Studio veritabanı Gezgini yürütülür varsaydığını unutmayın.
 
@@ -41,8 +41,8 @@ Bu belge SQL komutlarını SQL Server Management Studio veya Visual Studio verit
 ## <a name="prereqs"></a>Önkoşullar
 Bu öğreticide, sahip olduğunuz varsayılır:
 
-* Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* Bir **Azure depolama hesabı**. Bu öğreticide verilerin depolanması için bir Azure depolama hesabı kullanır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın. Depolama hesabı oluşturduktan sonra depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz: [depolama erişim anahtarlarınızı yönetme](../../storage/common/storage-account-manage.md#access-keys).
+* Bir **Azure aboneliği**. Bir aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
+* Bir **Azure depolama hesabı**. Bu öğreticide verilerin depolanması için bir Azure depolama hesabı kullanır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-quickstart-create-account.md) makalesine bakın. Depolama hesabı oluşturduktan sonra depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 * Sağlanan **Azure VM'deki SQL Server'a**. Yönergeler için [Gelişmiş analiz için Ipython Notebook olarak bir Azure SQL Server sanal makinesini ayarlama](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * Yüklenmiş ve yapılandırılmış **Azure PowerShell** yerel olarak. Yönergeler için [Azure PowerShell'i yükleme ve yapılandırma işlemini](/powershell/azure/overview).
 
@@ -90,11 +90,11 @@ CREATE TABLE <tablename>
 Taşınan veriler büyükse, şeyler paralel bir PowerShell Betiği olarak aynı anda birden çok BCP komutları yürüterek düşebileceğimizi.
 
 > [!NOTE]
-> **Büyük veri alımı** büyük ve çok büyük veri kümeleri için veri yükleme iyileştirmek için birden çok dosya grupları kullanarak, mantıksal ve fiziksel veritabanı tabloyu bölümlemek ve tablo bölümleme. Oluşturma ve bölüm tablolara veri yükleme hakkında daha fazla bilgi için bkz. [paralel yük SQL bölüm tablolarından](parallel-load-sql-partitioned-tables.md).
+> **Büyük veri** alımı Büyük ve çok büyük veri kümelerinde veri yüklemeyi iyileştirmek için, mantıksal ve fiziksel veritabanı tablolarınızı birden çok dosya grubu ve bölüm tablosu kullanarak bölümleyin. Oluşturma ve bölüm tablolara veri yükleme hakkında daha fazla bilgi için bkz. [paralel yük SQL bölüm tablolarından](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-Aşağıdaki örnek PowerShell Betiği bcp kullanarak paralel eklemeleri gösterir:
+Aşağıdaki örnek PowerShell betiği bcp kullanarak paralel eklemeleri gösterir:
 
 ```powershell
 $NO_OF_PARALLEL_JOBS=2

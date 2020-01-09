@@ -3,18 +3,18 @@ title: Socket.io-Azure kullanan Node. js uygulaması
 description: Azure 'da barındırılan bir Node. js uygulamasında socket.io kullanmayı öğrenin.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 0b515c630d8a3539cdab1df64b1925e9fcaf206e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360778"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure bulut hizmetinde Socket.IO ile Node. js sohbet uygulaması oluşturma
 
@@ -24,7 +24,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
 
 ![Azure 'da barındırılan hizmeti görüntüleyen bir tarayıcı penceresi][completed-app]  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki örneği başarıyla tamamlayabilmeniz için aşağıdaki ürünlerin ve sürümlerin yüklü olduğundan emin olun:
 
 * [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)'yu yükleme
@@ -37,10 +37,10 @@ Aşağıdaki adımlarda, Socket.IO uygulamasını barındıracak bulut hizmeti p
 1. **Başlat menüsünde** veya **Başlat ekranında**, **Windows PowerShell**' i arayın. Son olarak, **Windows PowerShell** ' e sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
    
     ![Azure PowerShell simgesi][powershell-menu]
-2. **\\C: node**adlı bir dizin oluşturun. 
+2. **C:\\node**adlı bir dizin oluşturun. 
    
         PS C:\> md node
-3. Dizinleri **\\c: node** diziniyle değiştirme
+3. Dizinleri **c:\\node** diziniyle değiştirme
    
         PS C:\> cd node
 4. **Chatapp** adlı yeni bir çözüm ve **WorkerRole1**adlı bir çalışan rolü oluşturmak için aşağıdaki komutları girin:
@@ -57,13 +57,13 @@ Bu proje için, [Socket.IO GitHub deposu]sohbet örneğini kullanacağız. Örne
 
 1. **Kopyala** düğmesini kullanarak deponun yerel bir kopyasını oluşturun. Ayrıca, projeyi indirmek için **ZIP** düğmesini de kullanabilirsiniz.
    
-   ![ZIP indirme simgesi vurgulanmış https://github.com/LearnBoost/socket.io/tree/master/examples/chat şekilde bir tarayıcı penceresi görüntüleme](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
-2. **Örnekler\\sohbet** dizinine ulaşana kadar yerel deponun dizin yapısına gidin. Bu dizinin içeriğini daha önce oluşturulan **C:\\node\\\\chatapp WorkerRole1** dizinine kopyalayın.
+   ![ZIP indirme simgesi vurgulanmış şekilde https://github.com/LearnBoost/socket.io/tree/master/examples/chat görüntüleyen bir tarayıcı penceresi](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
+2. **Örnek\\sohbet** dizinine ulaşana kadar yerel deponun dizin yapısına gidin. Bu dizinin içeriğini daha önce oluşturulan **C:\\node\\chatapp\\WorkerRole1** dizinine kopyalayın.
    
-   ![Gezgin, arşivden ayıklanan örnek\\sohbet dizininin içeriğini görüntüleme][chat-contents]
+   ![Gezgin, örneklerin içeriğini görüntüleyen\\sohbet dizini arşivden ayıklandı][chat-contents]
    
-   Yukarıdaki ekran görüntüsünde vurgulanan öğeler, **örnekler\\sohbet** dizininden kopyalanan dosyalardır
-3. **C\\: node\\chatapp\\WorkerRole1** dizininde, **Server. js** dosyasını silin ve **app. js** dosyasını **Server. js**olarak yeniden adlandırın. Bu, daha önce **Add-AzureNodeWorkerRole** cmdlet 'i tarafından oluşturulan varsayılan **Server. js** dosyasını kaldırır ve sohbet örneğinizden uygulama dosyası ile değiştirir.
+   Yukarıdaki ekran görüntüsünde vurgulanan öğeler, **örneklerden\\sohbet** dizininden kopyalanan dosyalardır
+3. **C:\\düğümünde\\chatapp\\WorkerRole1** dizininde, **Server. js** dosyasını silin ve **app. js** dosyasını **Server. js**olarak yeniden adlandırın. Bu, daha önce **Add-AzureNodeWorkerRole** cmdlet 'i tarafından oluşturulan varsayılan **Server. js** dosyasını kaldırır ve sohbet örneğinizden uygulama dosyası ile değiştirir.
 
 ### <a name="modify-serverjs-and-install-modules"></a>Server. js ve Install modüllerini değiştirme
 Azure öykünücüsünde uygulamayı test etmeden önce bazı küçük değişiklikler yapacağız. Server. js dosyasında aşağıdaki adımları gerçekleştirin:
@@ -87,7 +87,7 @@ Azure öykünücüsünde uygulamayı test etmeden önce bazı küçük değişik
 
 **Sunucu. js**' ye değişiklikleri kaydettikten sonra, gerekli modülleri yüklemek için aşağıdaki adımları kullanın ve ardından uygulamayı Azure öykünücüsünde test edin:
 
-1. **Azure PowerShell**kullanarak dizinleri **C:\\node\\\\chatapp WorkerRole1** diziniyle değiştirin ve bu uygulamanın gerektirdiği modülleri yüklemek için şu komutu kullanın:
+1. **Azure PowerShell**kullanarak dizinleri **C:\\node\\Chatapp\\WorkerRole1** diziniyle değiştirin ve bu uygulamanın gerektirdiği modülleri yüklemek için şu komutu kullanın:
    
        PS C:\node\chatapp\WorkerRole1> npm install
    
@@ -104,11 +104,11 @@ Azure öykünücüsünde uygulamayı test etmeden önce bazı küçük değişik
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Başlatma öykünücüsü ile ilgili sorunlarla karşılaşırsanız, örn.: Start-AzureEmulator: Beklenmeyen bir hata oluştu.  Ayrıntılar: Beklenmeyen bir hatayla karşılaşıldı çünkü System. ServiceModel. Channels. ServiceChannel iletişim nesnesi hatalı durumda olduğundan iletişim için kullanılamaz.
+   > Başlatma öykünücüsü ile ilgili sorunlarla karşılaşırsanız, örn.: Start-AzureEmulator: beklenmeyen bir hata oluştu.  Ayrıntılar: beklenmeyen bir hatayla karşılaşıldı çünkü System. ServiceModel. Channels. ServiceChannel iletişim nesnesi, hatalı durumda olduğundan iletişim için kullanılamaz.
    > 
    > AzureAuthoringTools v 2.7.1 ve AzureComputeEmulator v 2,7 ' i yeniden yükleyin-sürümün eşleştiğinden emin olun.
 
-2. Bir tarayıcı açın ve adresine **http://127.0.0.1** gidin.
+2. Bir tarayıcı açın ve **http://127.0.0.1** gidin.
 3. Tarayıcı penceresi açıldığında, bir takma ad girin ve ENTER tuşuna basın.
    Bu, iletileri belirli bir takma ad olarak göndermenize imkan tanır. Çoklu Kullanıcı işlevselliğini test etmek için aynı URL 'YI kullanarak ek tarayıcı pencerelerini açın ve farklı takma adlar girin.
    
@@ -166,5 +166,8 @@ Daha fazla bilgi için bkz. [Node. js Geliştirici Merkezi](https://docs.microso
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
+
+
+
 
 

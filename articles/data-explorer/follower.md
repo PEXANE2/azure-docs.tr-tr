@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440958"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Azure Veri Gezgini veritabanlarını eklemek için izleyici veritabanını kullanma
 
@@ -26,9 +26,9 @@ ms.locfileid: "74667346"
 * Tek bir küme, birden çok öncü kümeden veritabanlarını izleyebilir. 
 * Bir küme, hem izleyici veritabanlarını hem de öncü veritabanlarını içerebilir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 1. Öncü ve izleme için [küme ve DB oluşturun](/azure/data-explorer/create-cluster-database-portal) .
 1. Alım [bölümünde ele](/azure/data-explorer/ingest-data-overview)alınan çeşitli yöntemlerden birini kullanarak [verileri](/azure/data-explorer/ingest-sample-data) öncü veritabanına alma.
 
@@ -43,7 +43,7 @@ Bir veritabanı eklemek için kullanabileceğiniz çeşitli yöntemler vardır. 
 * [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)uygulamasını yükler.
 * [Kimlik doğrulaması Için Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)'ı yükler.
 
-#### <a name="code-example"></a>Kod örneği
+#### <a name="code-example"></a>Kod Örneği
 
 ```Csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -86,7 +86,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-#### <a name="code-example"></a>Kod örneği
+#### <a name="code-example"></a>Kod Örneği
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak veritabanı iliştirme
 
-Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir veritabanının nasıl iliştirileyeceğinizi öğrenirsiniz. 
+Bu bölümde, bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md)kullanarak bir veritabanının nasıl iliştirileyeceğinizi öğrenirsiniz. 
 
 ```json
 {
@@ -233,7 +233,7 @@ Veritabanının başarıyla eklendiğinden emin olmak için, [Azure Portal](http
 
     ![Salt okuma izleyici veritabanı](media/follower/read-only-follower-database.png)
 
-Kopyalamaktır
+Alternatif olarak:
 
 1. Öncü kümesine gidin ve **veritabanlarını** seçin
 2. İlgili veritabanlarının **başkalarıyla paylaşılan** olarak işaretlendiğinden emin olun > **Evet**
@@ -377,12 +377,12 @@ Bir veritabanı eklenirken **"varsayılan asıl adlar değiştirme türü"** ni 
 |**Denetlenmesi** |**Açıklama**  |
 |---------|---------|
 |**Birleşim**     |   Ekli veritabanı sorumluları her zaman özgün veritabanı sorumlularını ek olarak, yeni asıl sorumluları da izleyici veritabanına ekler.      |
-|**Değiştirin**   |    Asıl veritabanından asıl öğeler devralınmaz. Eklenen veritabanı için yeni sorumlular oluşturulmalıdır.     |
-|**Seçim**   |   Ekli veritabanı sorumluları yalnızca, ek asıl olmayan özgün veritabanının sorumlularını içerir.      |
+|**Değiştir**   |    Asıl veritabanından asıl öğeler devralınmaz. Eklenen veritabanı için yeni sorumlular oluşturulmalıdır.     |
+|**Yok**   |   Ekli veritabanı sorumluları yalnızca, ek asıl olmayan özgün veritabanının sorumlularını içerir.      |
 
 Yetkili sorumlularını yapılandırmak üzere denetim komutlarını kullanma hakkında daha fazla bilgi için bkz. [bir izleyici kümesini yönetmek Için denetim komutları](/azure/kusto/management/cluster-follower).
 
-### <a name="manage-permissions"></a>İzinleri Yönet
+### <a name="manage-permissions"></a>İzinleri yönet
 
 Salt okunurdur veritabanını yönetme izni tüm veritabanı türleriyle aynıdır. Bkz. [Azure Portal izinleri yönetme](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 

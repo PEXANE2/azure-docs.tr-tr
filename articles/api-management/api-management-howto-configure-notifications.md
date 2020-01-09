@@ -1,5 +1,6 @@
 ---
-title: Azure API Management bildirimleri ve e-posta şablonlarını yapılandırma | Microsoft Docs
+title: Bildirimleri ve e-posta şablonlarını yapılandırma
+titleSuffix: Azure API Management
 description: Azure API Management bildirimleri ve e-posta şablonlarını yapılandırmayı öğrenin.
 services: api-management
 documentationcenter: ''
@@ -12,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442688"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management’te bildirimleri ve e-posta şablonlarını yapılandırma
 API Management belirli olaylara yönelik bildirimleri yapılandırma ve bir API Management örneğinin yöneticileri ve geliştiricileri ile iletişim kurmak için kullanılan e-posta şablonlarını yapılandırma olanağı sağlar. Bu makalede, kullanılabilir olaylar için bildirimlerin nasıl yapılandırılacağı gösterilir ve bu olaylar için kullanılan e-posta şablonlarını yapılandırmaya genel bir bakış sağlanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bir API Management hizmet örneğiniz yoksa, aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
+Bir API Management hizmet örneğiniz yoksa, aşağıdaki hızlı başlangıcı izleyin: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -58,7 +59,7 @@ API Management, hizmeti yönetme ve kullanma konusunda gönderilen e-posta ileti
 * Uygulama Galerisi gönderimi onaylandı
 * Geliştirici Farewell harfi
 * Geliştirici kota sınırı bildirimle yaklaşılıyor
-* Kullanıcı davet et
+* Kullanıcıyı davet et
 * Bir soruna yeni açıklama eklendi
 * Yeni sorun alındı
 * Yeni abonelik etkinleştirildi

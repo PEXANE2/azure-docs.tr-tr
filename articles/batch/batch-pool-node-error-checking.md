@@ -1,18 +1,18 @@
 ---
 title: Havuz ve düğüm hatalarını denetleme-Azure Batch
-description: Havuzları ve düğümleri oluştururken denetlenecek hatalar ve bunların nasıl önleneceğini
+description: Bu makalede, ve havuzları ve düğümleri oluştururken bunların nasıl önleneceğini denetlemek için hatalarla birlikte gerçekleşebileceğini gösteren arka plan işlemleri ele alınmaktadır.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350054"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449779"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -104,7 +104,7 @@ Batch, nedeni tespit edebilir, düğüm [hataları](https://docs.microsoft.com/r
 
 - Bir altyapı arızası veya alt düzey yükseltme nedeniyle VM taşınır. Batch, düğümü kurtarır.
 
-- Bir VM görüntüsü onu desteklemeyen bir donanımda dağıtıldı. Örneğin, bir [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) sanal makinesinde CENTOS HPC görüntüsü çalıştırmaya çalışılıyor.
+- Bir VM görüntüsü onu desteklemeyen bir donanımda dağıtıldı. Örneğin, bir [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM 'de CENTOS HPC görüntüsü çalıştırmaya çalışılıyor.
 
 - VM 'Ler bir [Azure sanal ağında](batch-virtual-network.md)ve trafik anahtar bağlantı noktalarına engellenmiştir.
 

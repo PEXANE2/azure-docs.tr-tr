@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900463"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398528"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
 
@@ -28,7 +28,7 @@ Azure Application Insights, uygulamanızdan çalışma zamanı özel durumların
 > * Hatalı kodu düzeltmek için yeni iş öğesi oluşturma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -84,9 +84,9 @@ Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anl
 
     ![Hata ayıklama anlık görüntüsü](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Daha sonra, düzeltilmesi gereken gerçek kodu bulabilmemiz için bu anlık görüntüyü Visual Studio 'ya indirme seçeneğiniz vardır. Bunu yapmak için **anlık görüntüyü indir**' e tıklayın.
+4. Ardından, bu anlık görüntüyü düzeltilmesi gereken kodun kendisini bulabileceğimiz biz burada bulabilirsiniz Visual Studio'ya indirmek için seçeneğiniz de vardır. Bunu yapmak için tıklatın **anlık görüntüyü indir**.
 5. Anlık görüntü Visual Studio'ya yüklenir.
-6. Artık özel duruma neden olan kod satırını hızlıca tanımlayan Visual Studio Enterprise bir hata ayıklama oturumu çalıştırabilirsiniz.
+6. Artık, özel duruma neden olan kod satırına hızlıca tanımlayan Visual Studio Enterprise hata ayıklama oturumu çalıştırabilirsiniz.
 
     ![Kodda özel durum](media/tutorial-runtime-exceptions/exception-code.png)
 

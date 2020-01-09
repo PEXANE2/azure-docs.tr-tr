@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: .NET Framework Azure Event Hubs kullanarak olay gönderme ve alma'
+title: Azure Event Hubs-.NET Framework kullanarak olay gönderme/alma
 description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları Gönderen .NET Framework bir uygulama oluşturmaya yönelik bir yol sağlar.'
 services: event-hubs
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 89419e9a3ef364d4095800a617a84ff2f63c09a0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437276"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Hızlı başlangıç: .NET Framework kullanarak Azure Event Hubs olay gönderme veya olayları alma
-Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
+Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs’a ayrıntılı bir genel bakış için bkz. [Event Hubs'a genel bakış](event-hubs-about.md) ve [Event Hubs özellikleri](event-hubs-features.md).
 
 Bu öğreticide, bir eventhub 'e olay göndermek veya C# bir eventhub olayları almak için ' de .NET Framework konsol uygulamalarının nasıl oluşturulacağı gösterilmektedir. 
 
@@ -31,7 +31,7 @@ Bu öğreticide, bir eventhub 'e olay göndermek veya C# bir eventhub olayları 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com).
-- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Ardından, makaledeki yönergeleri izleyerek **Olay Hub 'ı ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra bağlantı dizesi kullanılır.
+- **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. İlk adımda [Azure portalını](https://portal.azure.com) kullanarak Event Hubs türünde bir ad alanı oluşturun, ardından uygulamanızın olay hub’ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. Bir ad alanı ve olay hub'ı oluşturmak için verilen yordamı izleyin [bu makalede](event-hubs-create.md). Ardından, makaledeki yönergeleri izleyerek **Olay Hub 'ı ad alanı için bağlantı dizesini** alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra'de bağlantı dizesini kullanın.
 
 ## <a name="send-events"></a>Olayları gönderme 
 Bu bölümde, olayları bir olay hub 'ına göndermek için bir .NET Framework konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. 
@@ -47,19 +47,19 @@ Visual Studio'da, **Konsol Uygulaması** proje şablonunu kullanarak yeni bir Vi
 1. Çözüm Gezgini'nde **Gönderen** projesine sağ tıklayın ve ardından **Çözüm için NuGet Paketlerini Yönet**'e tıklayın. 
 2. **Gözat** sekmesine tıklayıp `WindowsAzure.ServiceBus` için arama yapın. **Yükle**'ye tıklayın ve kullanım koşullarını kabul edin. 
    
-    ![Service Bus NuGet paketini yükler](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
+    ![Service Bus NuGet paketini yükle](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
     Visual Studio, [Azure Service Bus kitaplığı NuGet paketini](https://www.nuget.org/packages/WindowsAzure.ServiceBus) indirir, yükler ve ona bir başvuru ekler.
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Olay hub'ına ileti göndermek için kod yazma
 
-1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının üst kısmına ekleyin:
+1. Aşağıdaki `using` deyimlerini **Program.cs** dosyasının en üst kısmına ekleyin:
    
     ```csharp
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Aşağıdaki alanları **Program** sınıfına ekleyin; bu işlemi yaparken yer tutucu değerlerini önceki bölümde oluşturduğunuz olay hub’ı adıyla ve daha önce kaydettiğiniz ad alanı düzeyinde bağlantı dizesiyle değiştirin. Olay Hub 'ınız için bağlantı dizesini, Azure portal olay hub 'ı sayfasında, **RootManageSharedAccessKey** altındaki **bağlantı dizesi-birincil** anahtardan kopyalayabilirsiniz. Ayrıntılı adımlar için bkz. [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
+2. Aşağıdaki alanları **Program** sınıfına ekleyin; bu işlemi yaparken yer tutucu değerlerini önceki bölümde oluşturduğunuz olay hub’ı adıyla ve daha önce kaydettiğiniz ad alanı düzeyinde bağlantı dizesiyle değiştirin. Olay hub'ından için bağlantı dizesini kopyalayabilirsiniz **bağlantı dizesi-birincil** anahtar altında **RootManageSharedAccessKey** olay hub'ı sayfasında Azure Portalı'nda. Ayrıntılı adımlar için bkz. [bağlantı dizesi alma](event-hubs-get-connection-string.md#get-connection-string-from-the-portal).
    
     ```csharp
     static string eventHubName = "Your Event Hub name";
@@ -92,7 +92,7 @@ Visual Studio'da, **Konsol Uygulaması** proje şablonunu kullanarak yeni bir Vi
       ```
    
       Bu yöntem, olayları 200 ms'lik bir gecikmeyle sürekli olarak olay hub'ınıza gönderir.
-4. Son olarak, **Main** yöntemine aşağıdaki satırları ekleyin:
+4. Son olarak, aşağıdaki satırları **Ana** yöntemine ekleyin:
    
       ```csharp
       Console.WriteLine("Press Ctrl-C to stop the sender process");
@@ -118,7 +118,7 @@ Visual Studio'da, **Konsol Uygulaması** proje şablonunu kullanarak yeni Visual
 1. Çözüm Gezgini'nde **Alıcı** projesine sağ tıklayın ve ardından **Çözüm için NuGet Paketlerini Yönet**'e tıklayın.
 2. **Gözat** sekmesine tıklayıp `Microsoft Azure Service Bus Event Hub - EventProcessorHost` için arama yapın. **Yükle**'ye tıklayın ve kullanım koşullarını kabul edin.
    
-    ![Olay Işlemcisi Konağı NuGet paketini ara](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
+    ![Olay işlemcisi konağı NuGet paketini arayın](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     Visual Studio, tüm bağımlılıklarıyla birlikte [Azure Service Bus Olay Hub'ı - EventProcessorHost NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) indirir, yükler ve ona başvuru ekler.
 
@@ -126,7 +126,7 @@ Visual Studio'da, **Konsol Uygulaması** proje şablonunu kullanarak yeni Visual
 
 1. **Alıcı** projesine sağ tıklayın, **Ekle** ve **Sınıf**’a tıklayın. Yeni sınıf **SimpleEventProcessor**’ı adlandırın ve ardından sınıfı oluşturmak için **Ekle**’ye tıklayın.
    
-    ![SimpleEventProcessor sınıfı Ekle](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
+    ![SimpleEventProcessor sınıfını ekleyin](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. Aşağıdaki deyimleri SimpleEventProcessor.cs dosyasının en üstüne ekleyin:
     
       ```csharp
@@ -134,7 +134,7 @@ Visual Studio'da, **Konsol Uygulaması** proje şablonunu kullanarak yeni Visual
       using System.Diagnostics;
       ```
     
-3. Sınıfının gövdesi için aşağıdaki kodu değiştirin:
+3. Aşağıdaki kodu sınıfın gövdesi yerine geçirin:
     
       ```csharp
       class SimpleEventProcessor : IEventProcessor
@@ -188,7 +188,7 @@ Visual Studio'da, **Konsol Uygulaması** proje şablonunu kullanarak yeni Visual
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. `Program` sınıfındaki `Main` yöntemi, daha önce kaydettiğiniz Olay Hub 'ı adını ve ad alanı düzeyinde bağlantı dizesini ve önceki bölümlerde kopyaladığınız depolama hesabı ve anahtarı değiştirerek aşağıdaki kodla değiştirin. 
+2. Değiştirin `Main` yönteminde `Program` olay hub'ı adı ve daha önce kaydettiğiniz ad alanı düzeyinde bağlantı dizesiyle değiştirerek aşağıdaki kod, depolama hesabı ve önceki bölümde kopyaladığınız anahtar ile sınıfı. 
     
       ```csharp
       static void Main(string[] args)

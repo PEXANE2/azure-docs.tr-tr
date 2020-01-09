@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde yaygın senaryolar-Azure Active Directory
+title: Yetkilendirme yönetiminde yaygın senaryolar-Azure AD
 description: Azure Active Directory yetkilendirme yönetiminde yaygın senaryolar için izlemeniz gereken üst düzey adımları öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,18 +16,18 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422499"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yaygın senaryolar
 
 Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli yollar vardır. Ancak, yeni başladıysanız Yöneticiler, Katalog sahipleri, paket yöneticileri, onaylayanlar ve istek sahipleri için yaygın senaryolar anlaşılması yararlı olur.
 
-## <a name="delegate"></a>ğini
+## <a name="delegate"></a>Temsilci
 
 ### <a name="administrator-delegate-management-of-resources"></a>Yönetici: kaynak yönetimine temsilci seçme
 
@@ -61,7 +61,7 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 
 1. [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Erişim paketi bul
-1. [Erişim iste](entitlement-management-request-access.md#request-an-access-package)
+1. [Erişim isteği](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Onaylayan: istekleri kaynaklara onaylama
 
@@ -94,7 +94,7 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 
 1. Kişinizden aldığınız erişim paketi bağlantısını bulun
 1. [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Erişim iste](entitlement-management-request-access.md#request-an-access-package)
+1. [Erişim isteği](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Onaylayan: istekleri kaynaklara onaylama
 

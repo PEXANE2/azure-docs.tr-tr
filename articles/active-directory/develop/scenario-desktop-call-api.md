@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423860"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Web API 'Lerini çağıran masaüstü uygulaması-bir Web API 'SI çağırma
 
@@ -100,7 +100,7 @@ task.resume()
 
 Aynı kullanıcı için birden çok API çağırmanız gerekiyorsa, ilk API için bir belirteç aldıktan sonra yalnızca `AcquireTokenSilent`çağırabilirsiniz ve diğer API 'Ler için çoğu zaman sessizce bir belirteç alırsınız.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -113,7 +113,7 @@ Etkileşimin gerekli olduğu durumlar şunlardır:
 - Kullanıcı ilk API 'yi kabul etmiş, ancak artık daha fazla kapsam için onay gerektirir (artımlı onay)
 - İlk API çok faktörlü kimlik doğrulaması gerektirmez, ancak bir sonraki tane.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

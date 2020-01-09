@@ -1,5 +1,5 @@
 ---
-title: Hızlı Başlangıç - Azure şablonuyla Windows sanal makine ölçek kümesi oluşturma | Microsoft Docs
+title: Hızlı başlangıç-Azure şablonuyla Windows sanal makine ölçek kümesi oluşturma
 description: Örnek uygulama dağıtan ve otomatik ölçeklendirme kurallarını yöneten bir Azure Resource Manager şablonuyla hızlıca bir Windows sanal makine ölçek kümesi oluşturmayı öğrenin
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: bfbe3d6aac6e97f3568c3c0ce3643bb215726a0b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f3dd2fd092e49a0e526856f1e55211ec1837cfa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351087"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Hızlı Başlangıç: Azure şablonuyla Windows sanal makine ölçek kümesi oluşturma
 
@@ -42,8 +42,8 @@ Azure Resource Manager şablonları, ilgili kaynak gruplarını dağıtmanızı 
 | Özellik                     | Özellik açıklaması                                  | Örnek şablon değeri                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | Oluşturulacak Azure kaynağı türü                            | Microsoft.Compute/virtualMachineScaleSets |
-| name                         | Ölçek kümesi adı                                       | myScaleSet                                |
-| location                     | Ölçek kümesinin oluşturulacağı konum                     | East US                                   |
+| ad                         | Ölçek kümesi adı                                       | myScaleSet                                |
+| location                     | Ölçek kümesinin oluşturulacağı konum                     | Doğu ABD                                   |
 | sku.name                     | Her bir ölçek kümesi örneği için VM boyutu                  | Standard_A1                               |
 | sku.capacity                 | Başlangıçta oluşturulacak VM örneği sayısı           | 2                                         |
 | upgradePolicy.mode           | Değişiklik yapıldığında kullanılacak VM örneği yükseltme modu              | Automatic                                 |
@@ -168,7 +168,7 @@ VM örnekleri için ölçek kümesi adı ve yönetici kimlik bilgileri istemleri
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-*Http:\//publicıpaddress/MyApp*biçiminde bir Web tarayıcısına yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
+*Http:\//Publicıpaddress/MyApp*biçiminde bir Web tarayıcısına yük DENGELEYICININ genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
 
 ![Çalışan IIS sitesi](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 

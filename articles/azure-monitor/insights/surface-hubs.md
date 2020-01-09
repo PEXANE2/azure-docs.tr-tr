@@ -4,15 +4,15 @@ description: Surface Hub 'larınızın durumunu izlemek ve bunların nasıl kull
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400891"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Izleyici ile Surface Hub 'larını izleyerek sistem durumlarını izleyin
 
@@ -22,7 +22,7 @@ Bu makalede, Microsoft Surface Hub cihazlarını izlemek için Azure Izleyici 'd
 
 Her Surface Hub Microsoft Monitoring Agent yüklüdür. Aracı aracılığıyla Surface Hub verileri Azure Izleyici 'deki bir Log Analytics çalışma alanına gönderebilirsiniz. Günlük dosyaları, Surface Hub 'larından okundum ve Azure Izleyici 'ye gönderilir. Azure Izleyici 'de Surface Hub panosunda, sunucular çevrimdışıyken, takvim eşitlenmiyor veya cihaz hesabı Skype Kurumsal oturum açamıyor gibi sorunlar görüntülenir. Panodaki verileri kullanarak, çalıştırmayan veya başka sorunlar yaşayan cihazları tanımlayabilir ve algılanan sorunlar için olası düzeltmeleri uygulayabilirsiniz.
 
-## <a name="install-and-configure-the-solution"></a>Çözümü yükleyip yapılandırma
+## <a name="install-and-configure-the-solution"></a>Yükleme ve çözüm yapılandırma
 Çözümü yüklemek ve yapılandırmak için aşağıdaki bilgileri kullanın. Surface Hub 'larınızı Azure Izleyici 'de yönetmek için şunlar gerekir:
 
 * İzlemek istediğiniz cihaz sayısını destekleyecek [Log Analytics abonelik](https://azure.microsoft.com/pricing/details/log-analytics/) düzeyi. Log Analytics fiyatlandırma, kaç cihazın kayıtlı olduğuna ve ne kadar veri işleme olduğuna bağlı olarak değişir. Surface Hub dağıtımı planlarken bunu dikkate almak isteyeceksiniz.
@@ -47,7 +47,7 @@ Intune, cihazlarınızdan bir veya daha fazlasına uygulanan Log Analytics çal�
 5. İlkeyi kaydedin.
 6. İlkeyi uygun cihaz grubuyla ilişkilendirin.
 
-   ![Intune ilkesi](./media/surface-hubs/intune.png)
+   ![Intune İlkesi](./media/surface-hubs/intune.png)
 
 Daha sonra Intune, Log Analytics ayarlarını hedef gruptaki cihazlarla eşitler ve bunları Log Analytics çalışma alanınıza kaydetmektir.
 

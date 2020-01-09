@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 609b1c4500e1602c38f3383df6cbe176a3333bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439562"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -38,7 +38,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
 Bu öğreticide Azure portalı kullanılır. Azure Data Factory ile etkileşim kurmak için başka mekanizmalar kullanabilirsiniz; içindekiler tablosunda "Hızlı Başlangıçlar" bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 * **Azure Depolama hesabı**. Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) makalesine bakın.
@@ -135,7 +135,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       
      ![Yeni veri fabrikası sayfası](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
  
-   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure data factory adı **küresel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
@@ -144,11 +144,11 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
       - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
-        Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/resource-group-overview.md).  
+        Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**’a tıklayın.      
+7. **Oluştur**'a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**. 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -191,11 +191,11 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
 8. **Özellikler** penceresinde **Bağlantı** sekmesine geçin ve **Bağlı hizmet** için Yeni’ye tıklayın. Bu adımda, Azure depolama hesabınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. 
     
    ![Veri kümesi bağlantısı - yeni bağlı hizmet](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
-9. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde aşağıdaki adımları izleyin: 
+9. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin: 
 
     1. **Ad** için **AzureStorageLinkedService** adını girin.
     2. **Depolama hesabı adı** için Azure depolama hesabınızı seçin.
-    3. **Kaydet** düğmesine tıklayın.
+    3. **Save (Kaydet)** düğmesine tıklayın.
 
    ![Yeni Azure Depolama bağlı hizmeti](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Klasör için `@pipeline().parameters.sourceBlobContainer`, klasör adı için `emp.txt` adını girin. Veri kümesinin klasör yolunu ayarlamak için sourceBlobContainer işlem hattı parametresini kullanırsınız. 
@@ -282,7 +282,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>Başarılı olan bir işlem hattı çalıştırması tetikleme
 1. Bir işlem hattı çalışması **tetiklemek** için araç çubuğunda **Tetikle**’ye tıklayıp **Şimdi Tetikle**’ye tıklayın. 
 
-    ![İşlem hattı çalıştırmasını tetikleme](./media/tutorial-control-flow-portal/trigger-now-menu.png)
+    ![İşlem hattı çalıştırması tetikleme](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. **İşlem Hattı Çalıştırması** penceresinde aşağıdaki adımları uygulayın: 
 
     1. **sourceBlobContainer** parametresi için **adftutorial/adfv2branch/input** yolunu girin. 
@@ -309,7 +309,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     1. **sourceBlobContainer** parametresi için **adftutorial/dummy/input** yolunu girin. Sahte klasörün adftutorial kapsayıcısında bulunmadığından emin olun. 
     2. **sinkBlobContainer** parametresi için **adftutorial/dummy/output** yolunu girin. 
     3. **Receiver** parametresine ait bir **e-posta adresi** girin. 
-    4. **Son**'a tıklayın.
+    4. **Finish (Son)** düğmesine tıklayın.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Başarısız olan işlem hattı çalıştırmasını izleme
 
