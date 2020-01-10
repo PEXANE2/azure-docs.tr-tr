@@ -1,20 +1,20 @@
 ---
 title: Azure haritalar ile kimlik doğrulama | Microsoft Docs
-description: Azure haritalar hizmetlerini kullanmaya yönelik kimlik doğrulama.
+description: Microsoft Azure haritalar hizmetlerini kullanmak için Azure Active Directory (Azure AD) veya paylaşılan anahtar kimlik doğrulaması. Azure Maps abonelik anahtarını almayı öğrenin.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575646"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834194"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
@@ -22,12 +22,14 @@ Azure haritalar isteklerin kimliğini doğrulamak için iki yolu destekler: payl
 
 ## <a name="shared-key-authentication"></a>Paylaşılan anahtar kimlik doğrulaması
 
-Paylaşılan anahtar kimlik doğrulaması, her Azure Maps isteğiyle bir Azure Maps hesabı tarafından oluşturulan anahtarları geçirir.  Azure haritalar hesabınız oluşturulduğunda iki anahtar oluşturulur. Azure haritalar hizmetlerine yönelik her istek için, abonelik anahtarının URL 'ye bir parametre olarak eklenmesi gerekir.
+Paylaşılan anahtar kimlik doğrulaması, her Azure Maps isteğiyle bir Azure Maps hesabı tarafından oluşturulan anahtarları geçirir. Azure haritalar hizmetlerine yönelik her istek için, *abonelik ANAHTARıNıN* URL 'ye bir parametre olarak eklenmesi gerekir. Birincil ve ikincil anahtarlar, Azure Maps hesabı oluşturulduktan sonra oluşturulur. Paylaşılan anahtar kimlik doğrulamasını kullanarak Azure haritalar 'ı çağırdığınızda, birincil anahtarı abonelik anahtarı olarak kullanmanızı öneririz. İkincil anahtar, kayan anahtar değişiklikleri gibi senaryolarda kullanılabilir.  
+
+Azure portal anahtarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [kimlik doğrulamasını yönetme](https://aka.ms/amauthdetails).
 
 > [!Tip]
 > Anahtarlarınızın düzenli olarak yeniden oluşturulması önerilir. Diğerini yeniden oluştururken bir anahtarla bağlantıları koruyabilmeniz için iki anahtarla birlikte sağlanmış olursunuz. Anahtarlarınızı yeniden oluşturduğunuzda, yeni anahtarları kullanmak için hesaba erişen tüm uygulamaları güncelleştirmeniz gerekir.
 
-Anahtarlarınızı görüntüleme hakkında daha fazla bilgi için bkz. [kimlik doğrulama ayrıntılarını görüntüleme](https://aka.ms/amauthdetails).
+
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile kimlik doğrulaması
 
@@ -45,8 +47,8 @@ Azure Maps, her Azure Maps hesabı için *benzersiz bir tanımlayıcı (ISTEMCI 
 
 | Azure ortamı   | Azure AD belirteç uç noktası |
 | --------------------|-------------------------|
-| Azure genel        | https://login.microsoftonline.com |
-| Azure Kamu    | https://login.microsoftonline.us |
+| Azure Genel        | https://login.microsoftonline.com |
+| Azure Devlet Kurumları    | https://login.microsoftonline.us |
 
 
 Azure haritalar için Azure AD ve istek belirteçlerini yapılandırma hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).

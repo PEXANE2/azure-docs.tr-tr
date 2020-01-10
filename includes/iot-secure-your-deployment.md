@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e696db3ad452152f6478701876b7760d7fed355b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ea57f8cdf5e1b2460f396445c67cfcab28f07525
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793101"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75840671"
 ---
 Bu makalede, Azure IoT tabanlı Nesnelerin İnterneti (IoT) altyapısının güvenliğini sağlamaya yönelik bir sonraki ayrıntı düzeyi sunulmaktadır. Her bileşeni yapılandırmak ve dağıtmak için uygulama düzeyi ayrıntılarına bağlantı sağlar. Ayrıca, çeşitli rekabet yöntemleri arasında karşılaştırmalar ve seçimler de sağlar.
 
@@ -77,17 +77,17 @@ IoT Hub ile güvenli bir TLS bağlantısı kurarken, IoT cihazı, cihaz SDK 'sı
 
 ## <a name="securing-the-connection"></a>Bağlantının güvenliğini sağlama
 
-IoT cihazı ve IoT Hub arasındaki Internet bağlantısı, Aktarım Katmanı Güvenliği (TLS) standardı kullanılarak güvenli hale getirilir. Azure IoT, [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 ve TLS 1,0 bu sırayla desteklenir. TLS 1,0 desteği yalnızca geriye dönük uyumluluk için sağlanır. Mümkünse, en çok güvenliği sağladığından TLS 1,2 kullanın.
+IoT cihazı ve IoT Hub arasındaki Internet bağlantısı, Aktarım Katmanı Güvenliği (TLS) standardı kullanılarak güvenli hale getirilir. Azure IoT, [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 ve TLS 1,0 bu sırayla desteklenir. TLS 1,0 desteği yalnızca geriye dönük uyumluluk için sağlanır. Mümkünse, en çok güvenlik sağladığından [hub 'ıNıZı](../articles/iot-hub/iot-hub-tls.md) TLS 1,2 kullanacak şekilde yapılandırın.
 
 ## <a name="securing-the-cloud"></a>Bulutun güvenliğini sağlama
 
-Azure IoT Hub her güvenlik anahtarı için [erişim denetimi ilkelerinin](../articles/iot-hub/iot-hub-devguide-security.md) tanımına izin verir. IoT Hub uç noktalarına erişim vermek için aşağıdaki izin kümesini kullanır. İzinler, işlevselliğe göre IoT Hub erişimi sınırlar.
+Azure IoT Hub her güvenlik anahtarı için [erişim denetimi ilkelerinin](../articles/iot-hub/iot-hub-devguide-security.md) tanımına izin verir. IoT Hub uç noktalarına erişim vermek için aşağıdaki izin kümesini kullanır. İzinler, IoT Hub erişimini işleve göre sınırlar.
 
 * **Registryread**. Kimlik kayıt defterine okuma erişimi verir. Daha fazla bilgi için bkz. [kimlik kayıt defteri](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
 * **Registryreadwrite**. Kimlik kayıt defterine okuma ve yazma erişimi verir. Daha fazla bilgi için bkz. [kimlik kayıt defteri](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
-* **Serviceconnect**. Bulut hizmetine yönelik iletişim ve izleme uç noktalarına erişim izni verir. Örneğin, arka uç bulut hizmetlerine cihazdan buluta iletileri alma, buluttan cihaza iletileri gönderme ve ilgili teslim bildirimleri alma izni verir.
+* **ServiceConnect**. Bulut hizmetine yönelik iletişim ve izleme uç noktalarına erişim izni verir. Örneğin, arka uç bulut hizmetlerine cihazdan buluta iletileri alma, buluttan cihaza iletileri gönderme ve ilgili teslim bildirimleri alma izni verir.
 
 * **Deviceconnect**. Cihaza yönelik uç noktalara erişim izni verir. Örneğin, cihazdan buluta iletiler gönderme ve buluttan cihaza iletileri alma izni verir. Bu izin cihazlar tarafından kullanılır.
 

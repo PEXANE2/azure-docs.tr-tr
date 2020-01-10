@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034578"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778422"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Öğretici: Jenkins ve Azure DevOps Services kullanarak uygulamanızı Azure üzerinde Linux sanal makinelerine dağıtma
 
@@ -39,7 +39,7 @@ bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/relea
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Bir Jenkins sunucusuna erişmeniz gerekir. Henüz bir Jenkins sunucusu oluşturmadıysanız bkz. [Azure sanal makinesinde Jenkins yöneticisi oluşturma](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
+* Bir Jenkins sunucusuna erişmeniz gerekir. Henüz bir Jenkins sunucusu oluşturmadıysanız bkz. [Azure sanal makinesinde Jenkins ana makinesi oluşturma](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
 * Azure DevOps Services kuruluşunuzda oturum açın (**https://{yourorganization}.visualstudio.com**). 
   Ücretsiz bir [Azure DevOps Services kuruluşu](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) edinebilirsiniz.
@@ -69,12 +69,12 @@ Bu uygulamanın çatalını oluşturun ve bu öğreticinin daha sonraki adımlar
 
 İlk olarak iki Jenkins eklentisini yapılandırmanız gerekir: **NodeJS** ve **VS Team Services Sürekli Dağıtımı**.
 
-1. Jenkins hesabınızı açın ve **Jenkins’i yönet** seçeneğini belirleyin.
-2. **Jenkins’i yönet** sayfasında **Eklentileri yönet** seçeneğini belirleyin.
+1. Jenkins hesabınızı açın ve **Manage Jenkins** (Jenkins’i yönet) seçeneğini belirleyin.
+2. **Manage Jenkins** (Jenkins’i yönet) sayfasında **Manage Plugins** (Eklentileri yönet) seçeneğini belirleyin.
 3. Listeyi filtreleyerek **NodeJS** eklentisini bulun ve **Yeniden başlatmadan yükle** seçeneğini belirleyin.
     ![Jenkins’e NodeJS eklentisini ekleme](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
 4. Listeyi filtreleyerek **VS Team Services Sürekli Dağıtımı** eklentisini bulun ve **Yeniden başlatmadan yükle** seçeneğini belirleyin.
-5. Jenkins panosuna geri dönüp **Jenkins’i yönet** seçeneğini belirleyin.
+5. Jenkins panosuna geri dönüp **Manage Jenkins** (Jenkins’i yönet) seçeneğini belirleyin.
 6. **Genel Araç Yapılandırması** seçeneğini belirleyin. **NodeJS** öğesini bulun ve **NodeJS yüklemeleri** seçeneğini belirleyin.
 7. **Otomatik olarak yükle** seçeneğini belirleyin ve bir **Ad** değeri girin.
 8. **Kaydet**’i seçin.
@@ -130,7 +130,7 @@ Yayın işlem hattının sanal makinenize dağıtılabilmesi için Azure DevOps 
    > [!NOTE]
    > Aşağıdaki yordamda, önkoşulları yüklediğinizden ve *betiği sudo ayrıcalıklarıyla çalıştırmadığınızdan* emin olun.
 
-1. **Derleme ve Yayın** hub’ının **Yayınlar&amp; sekmesini açın,** Dağıtım grupları **’nı açın ve** + Yeni **’yi seçin.
+1. **Derleme ve Yayın** hub’ının **Yayınlar** sekmesini açın, **Dağıtım grupları**’nı açın ve **+ Yeni**’yi seçin.
 2. Dağıtım grubu için bir ad ve isteğe bağlı bir açıklama girin. Ardından **Oluştur**’u seçin.
 3. Dağıtım hedefi sanal makineniz için işletim sistemini seçin. Örneğin, **Ubuntu 16.04+** seçeneğini belirleyin.
 4. **Kimlik doğrulaması için betikte kişisel bir erişim belirteci kullan** seçeneğini belirleyin.
@@ -146,12 +146,12 @@ Yayın işlem hattı, Azure Pipelines’ın uygulamayı dağıtmak için kulland
 
 Azure Pipelines’da yayın işlem hattı oluşturmak için:
 
-1. **Derleme**  Yayın **hub’ının &amp;Yayınlar** sekmesini açın ve **Yayın işlem hattı oluştur**’u seçin. 
+1. **Derleme &amp; Yayın** hub’ının **Yayınlar** sekmesini açın ve **Yayın işlem hattı oluştur**’u seçin. 
 2. **Boş** şablonunu seçerek **Boş işlem** ile başlamayı seçin.
 3. **Yapıtlar** bölümünde **+ Yapıt Ekle** seçeneğini belirleyin ve **Kaynak türü** için **Jenkins**’i seçin. Jenkins hizmet uç noktası bağlantınızı seçin. Ardından Jenkins kaynak işini seçin ve **Ekle** seçeneğini belirleyin.
 4. **Ortam 1**’in yanındaki üç noktayı seçin. **Dağıtım grubu aşaması ekle**’yi seçin.
 5. Dağıtım grubunuzu seçin.
-5. **Dağıtım grubu aşaması+’na görev eklemek için**  seçeneğini belirleyin.
+5. **Dağıtım grubu aşaması**’na görev eklemek için **+** seçeneğini belirleyin.
 6. **Kabuk Betiği** görevini seçin ve **Ekle** seçeneğini belirleyin. **Kabuk Betiği** görevi, Node.js’yi yükleyip uygulamayı başlatmak için her bir sunucuda çalıştırılacak bir betik için yapılandırmayı sağlar.
 8. **Betik Yolu** için **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** girin.
 9. **Gelişmiş**’i seçin ve **Çalışma Dizinini Belirtin** seçeneğini etkinleştirin.
@@ -182,9 +182,11 @@ Bu öğreticide, derleme için Jenkins’i ve yayın için Azure DevOps Services
 > * Jenkins’te uygulamanızı derleme.
 > * Azure DevOps Services tümleştirmesi için Jenkins’i yapılandırın.
 > * Azure sanal makineleri için dağıtım grubu oluşturma.
-> * VM’leri yapılandıran ve uygulamayı dağıtan bir yayın işlem hattı oluşturun.
+> * VM 'Leri yapılandıran ve uygulamayı dağıtan bir Azure işlem hattı oluşturun.
 
-LAMP (Linux, Apache, MySQL ve PHP) yığınını dağıtma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Hem derleme hem de sürüm adımları için Azure Pipelines kullanma hakkında bilgi [edinmek için, bkz..](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)
+
+VM 'lere dağıtmak için YAML tabanlı bir CI/CD işlem hattının nasıl yazılacağı hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [LAMP yığını dağıtma](tutorial-lamp-stack.md)
+> [Azure Pipelines kullanarak CI/CD](tutorial-build-deploy-azure-pipelines.md)

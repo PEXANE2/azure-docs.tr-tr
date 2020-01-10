@@ -1,32 +1,32 @@
 ---
-title: 'Rota temelli bir Azure VPN gateway oluşturun: CLI | Microsoft Docs'
-description: CLI kullanarak bir VPN ağ geçidi oluşturmak nasıl hızlı bir şekilde öğrenin
+title: 'Rota tabanlı Azure VPN Gateway oluşturma: CLı'
+description: CLı kullanarak VPN Gateway oluşturmayı hızlı bir şekilde öğrenin
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f0cc1d63f8560399d1d71c8d010c37bd2c5e387
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391251"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778762"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI kullanarak rota temelli VPN ağ geçidi oluşturma
+# <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLı kullanarak rota temelli VPN ağ geçidi oluşturma
 
-Bu makalede, Azure CLI kullanarak rota temelli Azure VPN ağ geçidi hızlı bir şekilde oluşturmanıza yardımcı olur. Bir VPN ağ geçidi, şirket içi ağınıza bir VPN bağlantısı oluşturulurken kullanılır. Vnet'leri bağlamak için bir VPN ağ geçidi'ni de kullanabilirsiniz.
+Bu makale, Azure CLı kullanarak hızlı bir şekilde rota tabanlı Azure VPN Gateway oluşturmanıza yardımcı olur. VPN ağ geçidi, şirket içi ağınıza bir VPN bağlantısı oluştururken kullanılır. VNET 'leri bağlamak için bir VPN ağ geçidi de kullanabilirsiniz.
 
-Bu makaledeki adımlarda, sanal ağ, bir alt ağ, ağ geçidi alt ağı ve rota tabanlı VPN ağ geçidi (sanal ağ geçidi) oluşturur. Bir sanal ağ geçidi, 45 dakika veya oluşturmak için daha fazla sürebilir. Ağ geçidi oluşturma tamamlandıktan sonra ardından bağlantıları oluşturabilirsiniz. Bu adımlar, bir Azure aboneliği gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Bu makaledeki adımlarda bir VNet, alt ağ, bir ağ geçidi alt ağı ve rota tabanlı VPN Gateway (sanal ağ geçidi) oluşturulur. Bir sanal ağ geçidi, oluşturmak için 45 dakika veya daha fazla sürebilir. Ağ geçidi oluşturma işlemi tamamlandıktan sonra bağlantılar oluşturabilirsiniz. Bu adımlar, bir Azure aboneliği gerektirir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kullanarak bir kaynak grubu oluşturmanız [az grubu oluşturma](/cli/azure/group) komutu. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
+[Az Group Create](/cli/azure/group) komutunu kullanarak bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>Sanal ağ oluşturma
 
-Kullanarak bir sanal ağ oluşturma [az ağ sanal ağ oluşturma](/cli/azure/network/vnet) komutu. Aşağıdaki örnekte adlı bir sanal ağ oluşturur **VNet1** içinde **EastUS** konumu:
+[Az Network VNET Create](/cli/azure/network/vnet) komutunu kullanarak bir sanal ağ oluşturun. Aşağıdaki örnek **EastUS** konumunda **VNet1** adlı bir sanal ağ oluşturur:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -47,9 +47,9 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-## <a name="gwsubnet"></a>Bir ağ geçidi alt ağı ekleme
+## <a name="gwsubnet"></a>Ağ geçidi alt ağı ekleme
 
-Ağ geçidi alt ağı sanal ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Bir ağ geçidi alt ağı eklemek için aşağıdaki örnekleri kullanın:
+Ağ geçidi alt ağı, sanal ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Bir ağ geçidi alt ağı eklemek için aşağıdaki örnekleri kullanın:
 
 ```azurepowershell-interactive
 az network vnet subnet create \
@@ -59,9 +59,9 @@ az network vnet subnet create \
   --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="PublicIP"></a>Genel bir IP adresi isteme
+## <a name="PublicIP"></a>Genel IP adresi iste
 
-Bir VPN ağ geçidi, dinamik olarak ayrılan bir genel IP adresi olmalıdır. Sanal ağınız için oluşturduğunuz VPN ağ geçidi genel IP adresi ayrılır. Genel bir IP adresi istemek için aşağıdaki örneği kullanın:
+VPN ağ geçidi, dinamik olarak ayrılmış bir genel IP adresine sahip olmalıdır. Genel IP adresi, sanal ağınız için oluşturduğunuz VPN ağ geçidine tahsis edilir. Genel IP adresi istemek için aşağıdaki örneği kullanın:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -70,11 +70,11 @@ az network public-ip create \
   --allocation-method Dynamic 
 ```
 
-## <a name="CreateGateway"></a>VPN ağ geçidi oluşturma
+## <a name="CreateGateway"></a>VPN ağ geçidini oluşturma
 
 [az network vnet-gateway create](/cli/azure/group) komutunu kullanarak VPN ağ geçidini oluşturun.
 
-Bu komutu kullanarak çalıştırırsanız `--no-wait` parametresi, tüm geri bildirim veya çıktı görmezsiniz. `--no-wait` Parametresi, ağ geçidinin arka planda oluşturulmasına olanak sağlar. VPN ağ geçidini hemen oluşturduğunuz anlamına gelmez.
+Bu komutu `--no-wait` parametresini kullanarak çalıştırırsanız, hiçbir geri bildirim veya çıkış görmezsiniz. `--no-wait` parametresi, ağ geçidinin arka planda oluşturulmasına olanak tanır. VPN ağ geçidinin hemen oluşturulduğu anlamına gelmez.
 
 ```azurecli-interactive
 az network vnet-gateway create \
@@ -91,7 +91,7 @@ az network vnet-gateway create \
 
 VPN ağ geçidinin oluşturulması 45 dakika veya daha uzun sürebilir.
 
-## <a name="viewgw"></a>VPN ağ geçidi görüntüleyin
+## <a name="viewgw"></a>VPN ağ geçidini görüntüleme
 
 ```azurecli-interactive
 az network vnet-gateway show \
@@ -145,9 +145,9 @@ Yanıt şuna benzer:
 }
 ```
 
-### <a name="view-the-public-ip-address"></a>Genel IP adresini görüntüleyin
+### <a name="view-the-public-ip-address"></a>Genel IP adresini görüntüle
 
-Ağ geçidine atanan genel IP adresini görüntülemek için aşağıdaki örneği kullanın:
+Ağ geçidinize atanan genel IP adresini görüntülemek için aşağıdaki örneği kullanın:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -155,7 +155,7 @@ az network public-ip show \
   --resource-group TestRG11
 ```
 
-İlişkili değer **IPADDRESS** VPN ağ geçidinizin genel IP adresini bir alandır.
+**IPAddress** alanıyla ilişkili değer, VPN ağ geçidinizin genel IP adresidir.
 
 Örnek yanıt:
 
@@ -172,7 +172,7 @@ az network public-ip show \
 ```
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Oluşturduğunuz kaynaklara artık ihtiyacınız olduğunda kullanın [az grubu Sil](/cli/azure/group) kaynak grubu silinemedi. Böylece, kaynak grubu ve içerdiği tüm kaynaklar silinir.
+Oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, [az Group Delete](/cli/azure/group) ' i kullanarak kaynak grubunu silin. Böylece, kaynak grubu ve içerdiği tüm kaynaklar silinir.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes
@@ -180,9 +180,9 @@ az group delete --name TestRG1 --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ağ geçidi oluşturma tamamlandıktan sonra başka bir sanal ağ ve sanal ağınız arasında bir bağlantı oluşturabilirsiniz. Veya sanal ağınız ile şirket içi konumunuz arasında bir bağlantı oluşturun.
+Ağ geçidinin oluşturma işlemi tamamlandıktan sonra, sanal ağınız ile başka bir VNet arasında bir bağlantı oluşturabilirsiniz. Veya, sanal ağınız ile şirket içi bir konum arasında bir bağlantı oluşturun.
 
 > [!div class="nextstepaction"]
 > [Siteden siteye bağlantı oluşturma](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Noktadan siteye bağlantı oluşturma](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Başka bir sanal ağa bağlantı oluşturma](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Başka bir VNet bağlantısı oluşturma](vpn-gateway-vnet-vnet-rm-ps.md)

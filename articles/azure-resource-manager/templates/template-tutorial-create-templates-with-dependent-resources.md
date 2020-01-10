@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 15c707b5424e84e99e0b1942bb623e6d3845213a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472670"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834374"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Öğretici: Bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma
 
@@ -18,7 +18,7 @@ Birden çok kaynağı dağıtmak ve dağıtım sırasını yapılandırmak için
 
 Bu öğreticide bir depolama hesabı, bir sanal makine, bir sanal ağ ve ek birkaç bağımlı kaynak oluşturacaksınız. Kaynakların bazıları başka bir kaynak var olana kadar dağıtılamaz. Örneğin depolama hesabı ve ağ arabirimi oluşturulmadan sanal makineyi oluşturamazsınız. Bu ilişkiyi, kaynakların birini diğer kaynaklara bağımlı hale getirerek tanımlarsınız. Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki kaynakları dağıtma sırasını belirleme](./define-resource-dependency.md).
 
-![Resource Manager şablonuna bağımlı kaynaklar dağıtım sırası diyagramı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![Kaynak Yöneticisi şablona bağımlı kaynaklar dağıtım sırası diyagramı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -117,7 +117,7 @@ Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir �
     ![Azure portal Cloud shell dosya karşıya yükleme](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 1. Öğreticide daha önce kaydettiğiniz şablonu seçin. Varsayılan ad **azuredeploy.json** olur.  Aynı dosya adına sahip bir dosyanız varsa bildirim gösterilmeden eski dosyanın üzerine yazılır.
 
-    İsteğe bağlı olarak, dosyaların başarıyla karşıya yüklendiğini doğrulamak için **ls $Home** komutunu ve **Cat $Home/azuredeploy.JSON** komutunu kullanabilirsiniz.
+    Dosyaların başarıyla karşıya yüklendiğini doğrulamak için, isteğe bağlı olarak **ls $Home** komutunu ve **Cat $Home/azuredeploy.JSON** komutunu kullanabilirsiniz.
 
 1. Cloud Shell'de aşağıdaki PowerShell komutlarını çalıştırın. Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
@@ -161,7 +161,7 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide sanal makine, sanal ağ ve bağımlı kaynaklar oluşturmak için bir şablon geliştirdiniz ve dağıttınız. Azure kaynaklarını koşullara bağlı olarak dağıtmayı öğrenin:
+Bu öğreticide sanal makine, sanal ağ ve bağımlı kaynaklar oluşturmak için bir şablon geliştirdiniz ve dağıttınız. Dağıtım komut dosyalarını kullanarak dağıtım öncesi ve sonrası işlemleri gerçekleştirme hakkında bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Koşulları kullanma](./template-tutorial-use-conditions.md)
+> [Dağıtım betiğini kullan](./template-tutorial-deployment-script.md)

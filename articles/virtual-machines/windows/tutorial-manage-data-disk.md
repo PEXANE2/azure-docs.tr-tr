@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 7c68299e4df187b1e9006d9ee1f2f70a13df3c52
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 05ad0b95b106b56d92cdbc5a7acd23cc34de7ae4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064779"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780275"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Öğretici - Azure PowerShell ile Azure disklerini yönetme
 
@@ -46,11 +46,11 @@ Azure sanal makinesi oluşturulduğunda, sanal makineye otomatik olarak iki disk
 
 **İşletim sistemi diski** - İşletim sistemi diskleri 4 terabayta kadar boyutlandırılabilir ve VM'nin işletim sistemini barındırır.  İşletim sistemi diskine, varsayılan olarak *C:* sürücü harfi atanır. İşletim sistemi diskinin yapılandırmasını önbelleğe alan disk, işletim sistemi performansı için iyileştirilir. İşletim sistemi diski, uygulama veya veri **barındırmamalıdır**. Uygulamalar ve veriler için, bu makalede daha sonra ayrıntılı olarak açıklanan bir veri diski kullanın.
 
-**Geçici disk** - Geçici diskler, VM ile aynı Azure ana bilgisayarında bulunan bir katı hal sürücüsü kullanır. Geçici diskler yüksek performansa sahiptir ve geçici veri işleme gibi işlemler için kullanılabilir. Ancak VM yeni bir konağa taşındığında, geçici diskte depolanan tüm veriler kaldırılır. Geçici diskin boyutu, [VM boyutu](sizes.md) tarafından belirlenir. Geçici disklere, varsayılan olarak bir *D:* sürücü harfi atanır.
+**Geçici disk** - Geçici diskler, VM ile aynı Azure konağında bulunan bir katı hal sürücüsünü kullanır. Geçici diskler yüksek performansa sahiptir ve geçici veri işleme gibi işlemler için kullanılabilir. Ancak VM yeni bir konağa taşındığında, geçici diskte depolanan tüm veriler kaldırılır. Geçici diskin boyutu, [VM boyutu](sizes.md) tarafından belirlenir. Geçici disklere, varsayılan olarak bir *D:* sürücü harfi atanır.
 
 ## <a name="azure-data-disks"></a>Azure veri diskleri
 
-Uygulama yüklemek ve veri depolamak için ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolama gerektiren her koşulda veri diskleri kullanılmalıdır. Sanal makinenin boyutu, bir VM’ye kaç veri diskinin eklenebileceğini belirler. Her VM vCPU için dört veri diski eklenebilir.
+Uygulama yüklemek ve veri depolamak için ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolama gerektiren her koşulda veri diskleri kullanılmalıdır. Sanal makinenin boyutu, bir VM’ye kaç veri diskinin eklenebileceğini belirler.
 
 ## <a name="vm-disk-types"></a>VM disk türleri
 
@@ -58,12 +58,12 @@ Azure iki disk türü sağlar.
 
 **Standart diskler** - HDD’ler ile desteklenir ve uygun maliyetli bir depolama sağlarken iyi bir performans da sunar. Standart diskler, uygun maliyetli bir geliştirme ve iş yükü testi için idealdir.
 
-**Premium diskler** - SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. Premium Depolama, DS serisi, DSv2 serisi, GS serisi ve FS-serisi VM'lerini destekler. Premium diskler beş türde gelir (P10, P20, P30, P40, P50), diskin boyutu diskin türünü belirler. Disk boyutunu seçerken, boyutun değeri sonraki türe yuvarlanır. Örneğin, boyut 128 GB'ın altındaysa disk türü P10 veya 129 GB ile 512 GB arasındaysa disk P20’dir.
+**Premium diskler** - SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. Premium Depolama, DS serisi, DSv2 serisi, GS serisi ve FS serisi VM'lerini destekler. Premium diskler beş türde gelir (P10, P20, P30, P40, P50), diskin boyutu diskin türünü belirler. Disk boyutu seçilirken boyutun değeri sonraki türe yuvarlanır. Örneğin, boyut 128 GB'ın altındaysa disk türü P10 veya 129 GB ile 512 GB arasındaysa disk P20’dir.
 
 ### <a name="premium-disk-performance"></a>Premium disk performansı
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Yukarıdaki tablo, disk başına maksimum IOPS tanımlamış olsa da, daha yüksek düzeyde performansa birden çok veri diskini bölümleyerek ulaşılabilir. Örneğin, Standard_GS5 VM’ye 64 veri diski eklenebilir. Bu disklerin her biri P30 olarak boyutlandırılırsa, en fazla 80.000 IOPS’ye ulaşılabilir. VM başına maksimum IOPS hakkında ayrıntılı bilgi için bkz. [VM türleri ve boyutları](./sizes.md).
+Yukarıdaki tabloda, disk başına maksimum IOPS tanımlanmış olsa da birden çok veri diski bölümlenerek daha yüksek performansa ulaşılabilir. Örneğin, Standard_GS5 VM’ye 64 veri diski eklenebilir. Bu disklerin her biri P30 olarak boyutlandırılırsa, en fazla 80.000 IOPS’ye ulaşılabilir. VM başına maksimum IOPS hakkında ayrıntılı bilgi için bkz. [VM türleri ve boyutları](./sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Disk oluşturma ve ekleme
 
@@ -144,7 +144,7 @@ Get-Disk | Where partitionstyle -eq 'raw' |
 
 ## <a name="verify-the-data-disk"></a>Veri diskini doğrulama
 
-Veri diskinin eklendiğini doğrulamak amacıyla, eklenen `StorageProfile` için `DataDisks` öğesini görüntüleyin.
+Veri diskinin eklendiğini doğrulamak amacıyla, eklenen `DataDisks` için `StorageProfile` öğesini görüntüleyin.
 
 ```azurepowershell-interactive
 $vm.StorageProfile.DataDisks
@@ -165,7 +165,7 @@ VirtualHardDisk :
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunun gibi VM disk konularını öğrendiniz:
+Bu öğreticide aşağıdaki VM disk konularını öğrendiniz:
 
 > [!div class="checklist"]
 > * İşletim sistemi diskleri ve geçici diskler
@@ -174,7 +174,7 @@ Bu öğreticide, şunun gibi VM disk konularını öğrendiniz:
 > * Disk performansı
 > * Veri disklerini ekleme ve hazırlama
 
-VM yapılandırmasını otomatikleştirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+VM yapılandırmasını otomatikleştirme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [VM yapılandırmasını otomatikleştirme](./tutorial-automate-vm-deployment.md)

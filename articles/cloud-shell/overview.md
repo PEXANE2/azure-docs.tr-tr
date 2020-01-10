@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448998"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832503"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell Genel Bakış
 Azure Cloud Shell, Azure kaynaklarını yönetmeye yönelik etkileşimli, kimliği doğrulanmış, tarayıcıda erişilebilen bir kabuktur.
@@ -40,11 +40,14 @@ Cloud Shell, Azure yönetim görevleriyle birlikte oluşturulan tarayıcı taban
 Cloud Shell, yerel bir makineden yalnızca bulutun sağlayabilebir şekilde Untethered işe faydalanır.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Tercih edilen kabuk deneyimi seçimi
-Kullanıcılar kabuk açılan menüsünden bash veya PowerShell arasında seçim yapabilir.
+Kullanıcılar bash veya PowerShell arasında seçim yapabilir.
+1. **Cloud Shell**seçin.
 
-![Bash Cloud Shell](media/overview/overview-bash-pic.png)
+    ![Cloud Shell simgesi](media/overview/overview-cloudshell-icon.png)
 
-![Cloud Shell’de PowerShell](media/overview/overview-ps-pic.png)
+2. **Bash** veya **PowerShell**' i seçin.
+
+    ![Bash veya PowerShell seçin](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Kimliği doğrulanmış ve yapılandırılmış Azure iş istasyonu
 Cloud Shell, Microsoft tarafından yönetiliyor ve bu nedenle popüler komut satırı araçları ve dil desteğiyle birlikte geldi. Cloud Shell Ayrıca, Azure CLı veya Azure PowerShell cmdlet 'leri aracılığıyla kaynaklarınıza anında erişim için otomatik olarak kimlik doğrulaması gerçekleştirir.

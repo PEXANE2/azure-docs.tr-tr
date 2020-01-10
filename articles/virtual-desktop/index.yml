@@ -5,7 +5,7 @@ metadata:
   title: Windows Sanal Masaüstü Belgeleri | Microsoft Docs
   description: Azure için Windows Sanal Masaüstü bulutta sanallaştırılmış çok kullanıcılı bir Windows 10 Enterprise deneyimidir.
   author: Heidilohr
-  manager: daveba
+  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
