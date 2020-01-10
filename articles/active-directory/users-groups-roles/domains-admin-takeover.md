@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027382"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834180"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -56,7 +56,7 @@ Yukarıdaki adımları tamamladığınızda, artık Office 365 ' de dördüncü 
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Azure AD 'de yönetilen bir kiracıya etki alanı adı ekleme
 
-1. [Microsoft 365 Yönetim merkezini](https://admin.microsoft.com)açın.
+1. [Microsoft 365 yönetim merkezini](https://admin.microsoft.com) açın.
 2. **Kullanıcılar** sekmesini seçin ve özel etki alanı adı kullanmayan *Kullanıcı\@fourthcoffeexyz.onmicrosoft.com* gibi bir ada sahip yeni bir kullanıcı hesabı oluşturun. 
 3. Yeni Kullanıcı hesabının Azure AD kiracısı için genel yönetici ayrıcalıklarına sahip olduğundan emin olun.
 4. Microsoft 365 Yönetim merkezinde **etki alanları** sekmesini açın, etki alanı adını seçin ve **Kaldır**' ı seçin. 
@@ -87,14 +87,14 @@ Etki alanı adının sahipliğini doğruladıktan sonra, Azure AD etki alanı ad
 ### <a name="support-for-external-admin-takeover"></a>Dış yönetici için destek
 Dış yönetici yönetim aşağıdaki çevrimiçi hizmetler tarafından desteklenir:
 
-- Azure Rights Management
+- Azure Hak Yönetimi
 - Exchange Online
 
 Desteklenen hizmet planları şunları içerir:
 
 - Ücretsiz PowerApps
 - PowerFlow ücretsiz
-- Bireyler için RMS
+- Kişiler için RMS
 - Microsoft Stream
 - Dynamics 365 ücretsiz deneme sürümü
 
@@ -130,40 +130,40 @@ cmdlet | Kullanım
 
 1. Self Servis sunumuna yanıt vermek için kullanılan kimlik bilgilerini kullanarak Azure AD 'ye bağlanın:
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. Etki alanlarının bir listesini alın:
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. Bir sınama oluşturmak için Get-Msoldomaindoğrulamaları Icationdns cmdlet 'ini çalıştırın:
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    Örneğin:
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
 4. Bu komuttan döndürülen değeri (zorluk) kopyalayın. Örneğin:
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Genel DNS ad alanında, önceki adımda kopyaladığınız değeri içeren bir DNS TXT kaydı oluşturun. Bu kaydın adı üst etki alanının adıdır, bu nedenle Windows Server 'dan DNS rolünü kullanarak bu kaynak kaydını oluşturursanız, kayıt adını boş bırakın ve yalnızca değeri metin kutusuna yapıştırın.
 6. Sınamayı doğrulamak için Onayla-MsolDomain cmdlet 'ini çalıştırın:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
    Örneğin:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 Başarılı bir sınama sizi hata olmadan isteme geri döndürür.

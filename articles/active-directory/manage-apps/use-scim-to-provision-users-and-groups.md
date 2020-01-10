@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433806"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829876"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -62,15 +62,16 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 | Azure Active Directory kullanıcısı | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |etkin |
+|Bölüm|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|
 | displayName |displayName |
+|Çalışan|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|
 | Faks TelephoneNumber |PhoneNumber [türü eq "faks"] .value |
 | givenName |name.givenName |
 | İş Unvanı |title |
 | posta |e-postaları [türü eq "İş"] .value |
 | mailNickname |externalId |
-| yönetici |yönetici |
+| yönetici |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager |
 | Mobil |PhoneNumber [türü eq "mobile"] .value |
-| objectId |Kimlik |
 | posta kodu |adresler [türü eq "İş"] .postalCode |
 | Ara sunucu adresleri |e-postaları [type eq "diğer"]. Değer |
 | fiziksel teslim OfficeName |adresler [type eq "diğer"]. Biçimlendirilmiş |
@@ -79,15 +80,16 @@ Hem kullanıcıları hem de grupları veya aşağıda gösterilen tüm özniteli
 | telefon numarası |PhoneNumber [türü eq "İş"] .value |
 | Kullanıcı PrincipalName |userName adı |
 
+
 ### <a name="table-2-default-group-attribute-mapping"></a>Tablo 2: Varsayılan grup öznitelik eşlemesi
 
 | Azure Active Directory grubu | urn: IETF: params: Scim: schemas: Core: 2.0: Grup |
 | --- | --- |
-| displayName |externalId |
+| displayName |displayName |
 | posta |e-postaları [türü eq "İş"] .value |
 | mailNickname |displayName |
 | üyeler |üyeler |
-| objectId |Kimlik |
+| objectId |externalId |
 | proxyAddresses |e-postaları [type eq "diğer"]. Değer |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>2\. Adım: Azure AD SCıM uygulamasını anlama

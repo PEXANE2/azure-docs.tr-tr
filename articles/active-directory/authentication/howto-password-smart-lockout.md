@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30006d0dcccdd1b160289c72769340d141198d3c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfd49a4429dc0d7f5db07a577016c21de8fc58d8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847601"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762884"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Akıllı kilitleme Azure Active Directory
 
@@ -68,7 +68,7 @@ Kuruluş gereksinimlerinize bağlı olarak, akıllı kilitleme değerlerinin öz
 Kuruluşunuzun akıllı kilitleme değerlerini denetlemek veya değiştirmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Arama yapın ve *Azure Active Directory*seçin. **Parola koruması** > **kimlik doğrulama yöntemlerini** seçin.
+1. Arama yapın ve *Azure Active Directory*seçin. **Parola koruması** > **güvenlik** > **kimlik doğrulama yöntemlerini** seçin.
 1. İlk kilitlenmeden önce bir hesapta kaç tane başarısız oturum açma izni verileceğini temel alarak **kilitleme eşiğini**ayarlayın. Varsayılan değer 10 ' dur.
 1. **Kilitleme süresini saniye cinsinden**, her kilitin saniye cinsinden uzunluğu olarak ayarlayın. Varsayılan değer 60 saniyedir (bir dakika).
 

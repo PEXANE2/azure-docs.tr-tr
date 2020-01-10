@@ -3,12 +3,12 @@ title: Azure Işlevleri için Java geliştirici başvurusu
 description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230410"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769039"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -156,7 +156,7 @@ JDKs ve Function uygulamalarıyla ilgili sorunlar için [Azure desteği](https:/
 
 `JAVA_OPTS`adlı uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz. Azure portal veya Azure CLı 'de Azure 'a dağıtılan işlev uygulamanıza uygulama ayarları ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
 [Azure Portal](https://portal.azure.com), `JAVA_OPTS` ayarını eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın.
 
@@ -358,7 +358,7 @@ public class Function {
     }
 }
 ```
-Yukarıdaki örnekte `queryValue`, http istek URL 'sindeki `name` sorgu dizesi parametresine bağlanır `http://{example.host}/api/metadata?name=test`. Sıra tetikleyicisi meta verilerinden `Id` nasıl bağlanılacağını gösteren başka bir örnek aşağıda verilmiştir.
+Yukarıdaki örnekte `queryValue`, HTTP istek URL 'sindeki `name` sorgu dizesi parametresine bağlanır `http://{example.host}/api/metadata?name=test`. Sıra tetikleyicisi meta verilerinden `Id` nasıl bağlanılacağını gösteren başka bir örnek aşağıda verilmiştir.
 
 ```java
  @FunctionName("QueueTriggerMetadata")

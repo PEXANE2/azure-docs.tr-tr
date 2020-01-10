@@ -1,55 +1,47 @@
 ---
-title: Bir VPN Gateway bağlantısını doğrulama | Microsoft Docs
-description: Bu makalede bir sanal ağ VPN ağ geçidi bağlantısını doğrulama gösterilmektedir.
+title: 'Azure VPN Gateway: ağ geçidi bağlantısını doğrulama'
+description: Bu makalede, bir sanal ağ VPN Gateway bağlantısının nasıl doğrulanyapılacağı gösterilir.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 7e3d1043-caa9-4472-96d3-832f4e2c91ee
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: bcece64a85a69c705b0f7f915dafe29123a2cd4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40417b078577424b1ba13ce60f4f773a1c8fd4dc
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128373"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780156"
 ---
-# <a name="verify-a-vpn-gateway-connection"></a>Bir VPN Gateway bağlantısını doğrulama
+# <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway bağlantısını doğrulama
 
-Bu makalede, hem Klasik hem de Resource Manager dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulama işlemini göstermektedir.
+Bu makalede, hem klasik hem de Kaynak Yöneticisi dağıtım modelleriyle ilgili bir VPN ağ geçidi bağlantısını nasıl doğrulayabildiğinizi gösterilmektedir.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell kullanarak Resource Manager dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulama için en son sürümünü yükleyin. [Azure Resource Manager PowerShell cmdlet'lerinin](/powershell/azure/overview).
+PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulamak için, [Azure Resource Manager PowerShell cmdlet](/powershell/azure/overview)'lerinin en son sürümünü yükler.
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI kullanarak Resource Manager dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulama için en son sürümünü yükleyin. [CLI komutları](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0 veya üzeri).
+Azure CLı kullanarak Kaynak Yöneticisi dağıtım modeli için bir VPN ağ geçidi bağlantısını doğrulamak için, [CLI komutlarının](https://docs.microsoft.com/cli/azure/install-azure-cli) en son sürümünü (2,0 veya üzeri) yüklemelisiniz.
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 
-## <a name="azure-portal-classic"></a>Azure portalını (Klasik)
+## <a name="azure-portal-classic"></a>Azure portal (klasik)
 
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
 ## <a name="powershell-classic"></a>PowerShell (Klasik)
 
-PowerShell kullanarak Klasik dağıtım modeli için VPN ağ geçidi bağlantınızı doğrulamak için Azure PowerShell cmdlet'lerinin en son sürümlerini yükleyin. İndirme ve yükleme yapılmasını [Hizmet Yönetimi](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modülü. Klasik dağıtım modeli için oturum açma 'Add-AzureAccount' kullanın.
+PowerShell kullanarak klasik dağıtım modeliyle ilgili VPN Gateway bağlantınızı doğrulamak için Azure PowerShell cmdlet 'lerinin en son sürümlerini yükler. [Hizmet yönetimi](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modülünü indirip yüklediğinizden emin olun. Klasik dağıtım modelinde oturum açmak için ' Add-AzureAccount ' kullanın.
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 

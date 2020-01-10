@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 327a7689e0297002f1ce3f48d2bd367104277680
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70197200"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769718"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
@@ -30,13 +30,13 @@ ms.locfileid: "70197200"
 
 3. **Yayımla**’yı seçin. Visual Studio 'dan Azure hesabınızda zaten oturum açmadıysanız **oturum aç**' ı seçin. Ayrıca, ücretsiz bir Azure hesabı da oluşturabilirsiniz.
 
-4. **App Service: Yeni** oluştur iletişim kutusu, görüntünün altındaki tabloda belirtilen **barındırma** ayarlarını kullanın:
+4. **Azure App Service: Yeni oluştur** iletişim kutusunda, görüntünün altındaki tabloda belirtilen **barındırma** ayarlarını kullanın:
 
     ![App Service iletişim kutusu oluşturma](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
     | Ayar      | Önerilen değer  | Açıklama                                |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. Geçerli karakterler: `a-z`, `0-9`, ve `-`. |
+    | **Adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. Geçerli karakterler: `a-z`, `0-9`, ve `-`. |
     | **Abonelik** | Aboneliğinizi seçin | Kullanılacak Azure aboneliği. |
     | **[Kaynak Grubu](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  İşlev uygulamanızın oluşturulacağı kaynak grubunun adı. Yeni kaynak grubu oluşturmak **Yeni**'yi seçin.|
     | **[Barındırma planı](../articles/azure-functions/functions-scale.md)** | Tüketim planı | Sunucusuz bir plan oluşturmak için **Yeni** ' yi seçtikten sonra **Boyut** ' un altında **tüketimi** seçtiğinizden emin olun. Ayrıca, kendinize veya işlevlerinizin erişeceği diğer hizmetlere yakın bir [bölgede](https://azure.microsoft.com/regions/) yer alan bir **Konum** seçin. **Tüketim** dışında bir planda çalıştırdığınızda, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md) yönetmelisiniz.  |

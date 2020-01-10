@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 1811796de96e87343544f63fcee7acdd9907693c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530995"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830148"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -103,7 +103,7 @@ Aşağıdaki tabloda, bir Ağ Geçidi sunucusuyla yaklaşık olarak kaç aracın
 
 ## <a name="download-the-log-analytics-gateway"></a>Log Analytics ağ geçidini indirin
 
-Log Analytics Gateway kurulum dosyasının en son sürümünü [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=54443) 'nden veya Azure Portal alın.
+Log Analytics Gateway kurulum dosyasının en son sürümünü Microsoft Indirme merkezi 'nden ([Indirme bağlantısı](https://go.microsoft.com/fwlink/?linkid=837444)) ya da Azure Portal alın.
 
 Azure portal Log Analytics ağ geçidini almak için şu adımları izleyin:
 

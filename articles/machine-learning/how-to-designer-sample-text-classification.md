@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 3116b88cd50fa9f348b418cfc90fe21986944b74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540002"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771436"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısını kullanarak şirket kategorisini tahmin etmek için bir sınıflandırıcı oluşturun.
 
@@ -110,9 +110,9 @@ Sonucu denetlemek için, **değerlendirme modelinin** çıkış bağlantı nokta
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tasarımcı için kullanılabilen diğer örnekleri keşfet:
-- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [Örnek 2-gerileme: otomobil fiyatlandırma için algoritmaları karşılaştırın](service/how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini](service/how-to-designer-sample-classification-predict-income.md)
-- [Örnek 4-sınıflandırma: kredi riskini tahmin etme (maliyet duyarlı)](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Örnek 5-sınıflandırma: karmaşıklığı tahmin etme](service/how-to-designer-sample-classification-churn.md)
-- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](service/how-to-designer-sample-classification-flight-delay.md)
+- [Örnek 1-gerileme: bir otomobil fiyatını tahmin edin](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Örnek 2-gerileme: otomobil fiyatlandırma için algoritmaları karşılaştırın](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Örnek 3-Özellik seçimi ile sınıflandırma: gelir tahmini](how-to-designer-sample-classification-predict-income.md)
+- [Örnek 4-sınıflandırma: kredi riskini tahmin etme (maliyet duyarlı)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Örnek 5-sınıflandırma: karmaşıklığı tahmin etme](how-to-designer-sample-classification-churn.md)
+- [Örnek 6-sınıflandırma: uçuş gecikmelerini tahmin etme](how-to-designer-sample-classification-flight-delay.md)

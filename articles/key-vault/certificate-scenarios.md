@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879313"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832848"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarla çalışmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -38,10 +38,10 @@ Sertifikalar, bir Key Vault sertifikası olarak birbirine bağlı üç ilişkili
 **Adım 1** -sertifika YETKILISI (CA) sağlayıcıları  
 -   BT Yöneticisi, PKI Yöneticisi veya CA 'larla hesapları yöneten herkes, belirli bir şirket için (örn. Contoso) Key Vault sertifikaları kullanmanın bir önkoşuludur.  
     Aşağıdaki CA 'Lar Key Vault ile geçerli iş ortağı sağlayıcılarıdır:  
-    -   DigiCert-Key Vault, DigiCert ile OV SSL sertifikaları sunmaktadır.  
-    -   GlobalSign-Key Vault GlobalSign ile OV SSL sertifikaları sunmaktadır.  
+    -   DigiCert-Key Vault, DigiCert ile OV TLS/SSL sertifikaları sunmaktadır.  
+    -   GlobalSign-Key Vault, GlobalSign ile OV TLS/SSL sertifikaları sunmaktadır.  
 
-**2. adım** -CA sağlayıcısı için bir hesap yöneticisi, Key Vault aracılığıyla SSL sertifikalarını kaydetmek, yenilemek ve kullanmak için Key Vault tarafından kullanılacak kimlik bilgilerini oluşturur.
+**2. adım** -CA sağlayıcısı için bir hesap yöneticisi, Key Vault aracılığıyla TLS/SSL sertifikalarını kaydetmek, yenilemek ve kullanmak için Key Vault tarafından kullanılacak kimlik bilgilerini oluşturur.
 
 **3. adım** -CA 'ya bağlı olarak, sertifikalara sahip olan bir contoso çalışanı (Key Vault kullanıcısı) ile birlikte bir contoso Yöneticisi, yöneticiden bir sertifika alabılır veya CA ile doğrudan hesaptan bir sertifika alabilir.  
 
@@ -62,9 +62,9 @@ Bu süreç, 3,1. adım ile bir kerelik işlemidir.
 
 **4. adım** -aşağıdaki açıklamalar, önceki diyagramdaki yeşil numaralı adımlara karşılık gelir.  
   (1)-Yukarıdaki diyagramda uygulamanız, Anahtar Kasanızda bir anahtar oluşturarak başlayan bir sertifika oluşturur.  
-  (2)-Key Vault CA 'ya bir SSL sertifikası Isteği gönderir.  
-  (3)-uygulamanız, sertifika tamamlaması için Key Vault bir döngüde ve bekleme sürecinde yoklar. Key Vault, CA 'nın x509 sertifikasıyla yanıtını aldığında sertifika oluşturma işlemi tamamlanır.  
-  (4)-CA, bir x509 SSL sertifikasıyla Key Vault SSL sertifikası Isteğine yanıt verir.  
+  (2)-Key Vault CA 'ya bir TLS/SSL sertifika Isteği gönderir.  
+  (3)-uygulamanız, sertifika tamamlaması için Key Vault bir döngüde ve bekleme sürecinde yoklar. Anahtar Kasası x509 sertifikasıyla CA yanıtını aldığında sertifika oluşturma işlemi tamamlanır.  
+  (4)-CA, bir x509 TLS/SSL sertifikası ile Key Vault TLS/SSL sertifika Isteğine yanıt verir.  
   (5)-yeni sertifika oluşturma, CA için x509 sertifikasının birleşmesi ile tamamlanır.  
 
   Key Vault User: bir ilke belirterek bir sertifika oluşturur
@@ -100,11 +100,11 @@ Bu süreç, 3,1. adım ile bir kerelik işlemidir.
 ### <a name="formats-of-import-we-support"></a>Destekduğumuz Içeri aktarma biçimleri
 PEK dosya biçimi için aşağıdaki Içeri aktarma türünü destekliyoruz. PKCS # 8 kodlamalı, şifrelenmemiş bir anahtarla birlikte, aşağıdaki gibi tek bir pek kodlu sertifika
 
------SERTIFIKAYI----------SON SERTIFIKA-----BAŞLAT
+-----SERTIFIKAYı----------SON SERTIFIKA-----BAŞLAT
 
 ÖZEL ANAHTAR----------SON ÖZEL ANAHTARA-----BAŞLA-----
 
-Sertifika birleştirmede 2 pek tabanlı biçimleri destekliyoruz. Tek bir PKCS # 8 kodlu sertifikayı veya Base64 kodlamalı bir P7B dosyasını birleştirebilirsiniz. -----SERTIFIKAYI----------SON SERTIFIKA-----BAŞLAT
+Sertifika birleştirmede 2 pek tabanlı biçimleri destekliyoruz. Tek bir PKCS # 8 kodlu sertifikayı veya Base64 kodlamalı bir P7B dosyasını birleştirebilirsiniz. -----SERTIFIKAYı----------SON SERTIFIKA-----BAŞLAT
 
 Şu anda pek biçimindeki EC anahtarlarını desteklemiyoruz.
 

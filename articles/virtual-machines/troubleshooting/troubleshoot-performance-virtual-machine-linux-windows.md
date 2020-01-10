@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965481"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772627"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux veya Windows üzerinde Azure sanal makine performansı sorunlarını giderme
 
@@ -30,7 +30,7 @@ Bu makale, performans sorunlarını tanılamak için izlemeyi kullanma konusunda
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure ıAAS sanal makine izleme
 
-Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
+Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
 
 ![İzleme etkin değil](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -61,7 +61,7 @@ Azure 'da bir sanal makine için GÇ performansını çözümlemeyi düşüntiğ
    1. Yukarıdaki adımda bulduğunuz depolama hesabı için genel bakış ' a tıklayın.
    2. Varsayılan ölçümler gösterilir. 
 
-    ![Varsayılan ölçümler](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+    ![Varsayılan ölçümleri](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
 
 3. Ölçüm yapılandırma ve ekleme hakkında daha fazla seçeneğe sahip başka bir dikey pencere gösteren ölçülerden birine tıklayın.
 
@@ -137,9 +137,9 @@ Bellek kullanımı, VM ile ne kadar bellek harcanmakta olduğunu gösterir. Eği
 
 Ani ve sabit/sabit sürekli tüketim-ilişkisel veritabanı motorları gibi bazı uygulamalar büyük miktarda bellek ayırmakta ve bu kullanım önemli olmayabilir. Ancak, çok fazla bellek kullanan uygulamalar varsa, diske yönelik kırpma ve sayfalama/değiştirme sorunlarına neden olan bellek çekişmesinin yetersiz performansını görebilirsiniz. Bu düşük performans genellikle uygulama performansı etkilerine ilişkin belirgin bir nedendir.
 
-Artmasıyla artan tüketim: olası bir uygulama olan ' ısınmış ', bu tüketim, veritabanı motorları arasında ortaktır. Bununla birlikte, bir uygulamadaki Bellek sızıntısının bir işareti de olabilir. Uygulamayı tanımlayıp davranışın beklenip beklenmediğini anlayın.
+Artmasıyla artan tüketim: olası bir uygulama olan ' ısınmış ', bu tüketim, veritabanı motorları arasında ortaktır. Bununla birlikte, bir uygulamadaki bellek sızıntısının bir işareti de olabilir. Uygulamayı tanımlayıp davranışın beklenip beklenmediğini anlayın.
 
-Sayfa veya takas dosyası kullanımı – Windows disk belleği dosyasını kullanıp kullanmayacağınızı denetleyin (D: \) veya Linux takas dosyasında (`/dev/sdb` ' de bulunur), yoğun olarak kullanılır. Bu birimler üzerinde bu dosyalar haricinde hiçbir şey yoksa, bu disklerde yüksek okuma/yazma Işlemleri olup olmadığını kontrol edin. Bu sorun, düşük bellek koşullarına göre belirlenir.
+Sayfa veya takas dosyası kullanımı – Windows disk belleği dosyasını kullanıp kullanmayacağınızı denetleyin (D:\) veya Linux takas dosyasında (`/dev/sdb`bulunan) çok fazla kullanılıyor. Bu birimler üzerinde bu dosyalar haricinde hiçbir şey yoksa, bu disklerde yüksek okuma/yazma Işlemleri olup olmadığını kontrol edin. Bu sorun, düşük bellek koşullarına göre belirlenir.
 
 ### <a name="high-memory-utilization-remediation"></a>Yüksek bellek kullanımı düzeltmesi
 
@@ -187,8 +187,8 @@ Kullanılabilirliği olan bir bırakma görürseniz, platformda bir sorun olabil
 * ClientTimeOutError
 * ServerTimeOutError
 * AverageE2ELatency
-* Averageserverlatency gösteriyor
-* Toplam Istek sayısı
+* AverageServerLatency
+* TotalRequests
 
 \* TimeOutError ölçümlerinde bulunan değerler bir GÇ işleminin çok uzun sürdüğünü ve zaman aşımına uğradığını gösterir. Sonraki adımlarla çalışmak olası nedenleri belirlemenize yardımcı olur.
 
@@ -212,11 +212,11 @@ Standart depolama alanındaki yeni disk teklifleriyle, ıOPS ve aktarım hızı 
 
 #### <a name="references"></a>Başvurular
 
-* [Sanal makine diskleri için ölçeklenebilirlik hedefleri](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Premium sayfa BLOB depolama hesapları için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 Depolama hesabının bant genişliği depolama hesabı ölçümleri ile ölçülür: TotalIngress ve TotalEgress. Yedeklilik ve bölge türlerine bağlı olarak bant genişliği için farklı eşiklere sahipsiniz.
 
-* [Bloblar, kuyruklar, tablolar ve dosyalar için ölçeklenebilirlik hedefleri](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [Standart depolama hesapları için ölçeklenebilirlik ve performans hedefleri](../../storage/common/scalability-targets-standard-account.md)
 
 Depolama hesabı yedeklilik türü ve bölgesi için giriş ve çıkış sınırlarına karşı TotalIngress ve TotalEgress ' i kontrol edin.
 

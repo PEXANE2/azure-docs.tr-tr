@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973977"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763173"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -54,15 +54,15 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>Hata: belge içeriği ayıklanamadı
-Blob veri kaynağı olan Dizin Oluşturucu, içeriği belgeden (örneğin, bir PDF dosyası) ayıklayamadı. Bunun nedeni aşağıdakiler olabilir:
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Hata: belgenizdeki içerik veya meta veriler ayıklanamadı
+Blob veri kaynağı olan Dizin Oluşturucu, belgeden (örneğin, bir PDF dosyası) içerik veya meta verileri ayıklayamadı. Bunun nedeni aşağıdakiler olabilir:
 
 | Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
 | blob boyut sınırının üzerinde | Belge, geçerli hizmet katmanınız için belge ayıklama için en büyük boyut `'134217728'` baytı aşan `'150441598'` bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob desteklenmeyen içerik türüne sahip | Belge desteklenmeyen içerik türüne sahip `'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob şifreli | Belge işlenemedi; şifrelenmiş veya parola korumalı olabilir. | Blobu [BLOB ayarlarına](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)atlayabilirsiniz. |
-| geçici sorunlar | Blob işleme hatası: istek durduruldu: istek iptal edildi. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
+| geçici sorunlar | "Blob işleme hatası: istek durduruldu: istek iptal edildi." "İşlem sırasında belge zaman aşımına uğradı." | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 
 <a name="could-not-parse-document"/>
 
@@ -144,7 +144,7 @@ Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi.
 | --- | --- | --- |
 | Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
 | Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
-| Belge koleksiyonda çok fazla nesne içeriyor | Belgenizdeki bir koleksiyon [tüm karmaşık koleksiyonlar limitindeki en fazla öğeyi](search-limits-quotas-capacity.md#index-limits) aşıyor | Belgedeki karmaşık toplamanın boyutunu sınırın altına düşürmenizi ve yüksek depolama kullanımından kaçınmanızı öneririz.
+| Belge koleksiyonda çok fazla nesne içeriyor | Belgenizdeki bir koleksiyon [tüm karmaşık koleksiyonlar sınırında en fazla öğeyi](search-limits-quotas-capacity.md#index-limits) aşıyor "anahtar `'1000052'` belge koleksiyonlardaki `'4303'` nesnelere sahıp (JSON dizileri). En çok `'3000'` nesnenin tüm belge genelinde koleksiyonlar halinde olmasına izin verilir. Lütfen nesneleri koleksiyonlardan kaldırın ve belgeyi yeniden dizinlemeyi deneyin. " | Belgedeki karmaşık toplamanın boyutunu sınırın altına düşürmenizi ve yüksek depolama kullanımından kaçınmanızı öneririz.
 | Hizmet, sorgulama veya dizin oluşturma gibi başka bir yük altında olduğundan, hedef dizine bağlanma sorunu (yeniden denemeden sonra devam eden). | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti ağır yük altında. | [Arama hizmetinizin ölçeğini artırma](search-capacity-planning.md)
 | Arama hizmeti 'nin hizmet güncelleştirmesi için düzeltme eki uygulanıyor veya bir topoloji yeniden yapılandırması ortasında. | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti şu anda açık/arama hizmeti bir geçiş işlemi yaşıyor. | [SLA belgeleri](https://azure.microsoft.com/support/legal/sla/search/v1_0/) başına% 99,9 kullanılabilirlik için en az 3 çoğaltmalarla hizmeti yapılandırın
 | Temeldeki işlem/ağ kaynağında hata (nadir) | Güncelleştirme diziniyle bağlantı kurulamadı. Bilinmeyen bir hata oluştu. | Başarısız bir durumdan almak için [bir zamanlamaya göre çalıştırılacak](search-howto-schedule-indexers.md) Dizin oluşturucularını yapılandırın.
@@ -158,7 +158,7 @@ Belge okundu ve işlendi, ancak dizin alanlarının yapılandırmasındaki bir u
 
 | Neden | Ayrıntılar/örnek
 | --- | ---
-| Dizin Oluşturucu tarafından ayıklanan alanların veri türü, karşılık gelen hedef dizin alanının veri modeliyle uyumsuz. | '_Data_' anahtarına sahip belgedeki '_Data_' veri alanı ' Edm. String ' ' türünde geçersiz bir değere sahip. Beklenen tür ' Collection (EDM. String) ' idi. |
+| Dizin Oluşturucu tarafından ayıklanan alanların veri türü, karşılık gelen hedef dizin alanının veri modeliyle uyumsuz. | ' 888 ' anahtarına sahip belgedeki '_Data_' veri alanı ' Edm. String ' ' türünde geçersiz bir değere sahip. Beklenen tür ' Collection (EDM. String) ' idi. |
 | Dize değerinden herhangi bir JSON varlığı ayıklanamadı. | '_Data_' alanının ' Edm. String ' ' DEĞERI bir JSON nesnesi olarak ayrıştırılamadı. Hata: ' bir değer ayrıştırdıktan sonra beklenmeyen bir karakterle karşılaşıldı: ' '. Yol '_yol_', satır 1, konum 3162. ' |
 | JSON varlıklarının bir koleksiyonu bir dize değerinden ayıklanamadı.  | '_Data_' alanının ' Edm. String ' ' DEĞERI bir JSON dizisi olarak ayrıştırılamadı. Hata: ' bir değer ayrıştırdıktan sonra beklenmeyen bir karakterle karşılaşıldı: ' '. Yol ' [0] ', satır 1, konum 27. ' |
 | Kaynak belgede bilinmeyen bir tür bulundu. | Bilinmeyen '_bilinmiyor_' türünün dizini oluşturulamaz |
@@ -174,10 +174,18 @@ Dizin Oluşturucu, izin verilen yürütme süresi içinde veri kaynağından tek
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>Uyarı: bir yetenek girişi geçersiz olduğundan yetenek yürütülemedi
-Niteliğin bir girişi eksik, yanlış türde veya geçersiz olduğundan Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
+## <a name="warning-skill-input-was-invalid"></a>Uyarı: yetenek girişi geçersizdi
+Yeteneğe bir giriş eksikti, yanlış tür ya da başka bir şekilde geçersiz. Uyarı iletisi şu etkiyi gösterir:
+1) Yetenek yürütülemedi
+2) Yetenek yürütüldü ancak beklenmeyen sonuçlara neden olabilir
 
-Bilişsel yetenekler için gerekli girişler ve isteğe bağlı girişler vardır. Örneğin, [anahtar tümceciği ayıklama becerinin](cognitive-search-skill-keyphrases.md) iki gerekli girişi vardır `text`, `languageCode`ve isteğe bağlı giriş yoktur. Gerekli girişler varsa, Beceri atlanır ve bir uyarı oluşturur. Atlanan yetenekler hiçbir çıkış oluşturmaz, bu nedenle diğer yetenekler atlanan yeteneğin çıkışlarını kullanıyorsa, ek uyarılar oluşturabilir.
+Bilişsel yetenekler için gerekli girişler ve isteğe bağlı girişler vardır. Örneğin, [anahtar tümceciği ayıklama becerinin](cognitive-search-skill-keyphrases.md) iki gerekli girişi vardır `text`, `languageCode`ve isteğe bağlı giriş yoktur. Özel beceri girişlerinin tümü isteğe bağlı girişler olarak kabul edilir.
+
+Gerekli girişler eksikse veya herhangi bir giriş doğru türde değilse, yetenek atlanır ve bir uyarı oluşturur. Atlanan yetenekler hiçbir çıkış oluşturmaz, bu nedenle diğer yetenekler atlanan yeteneğin çıkışlarını kullanıyorsa, ek uyarılar oluşturabilir.
+
+İsteğe bağlı bir giriş eksikse, yetenek hala çalışmaya devam eder, ancak eksik giriş nedeniyle beklenmedik bir çıkış oluşturabilir.
+
+Her iki durumda da, verilerinizin şekli nedeniyle bu uyarı beklenmeyebilir. Örneğin, `firstName`, `middleName`ve `lastName`alanlara sahip kişiler hakkında bilgi içeren bir belgeniz varsa, `middleName`için bir girişi olmayan bazı belgeleriniz olabilir. İşlem hattındaki bir yeteneğe girdi olarak `middleName` geçirirseniz, bu beceri girişinde bazı bazı durumlarda eksik olabilir. Bu uyarının sonucu olarak herhangi bir eylemin gerekli olup olmadığını anlamak için verilerinizi ve senaryonuzu değerlendirmeniz gerekir.
 
 Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu yeteneği](cognitive-search-skill-conditional.md) kullanarak varsayılan bir değer oluşturabilir ve sonra [koşullu yeteneğin](cognitive-search-skill-conditional.md) çıkışını yetenek girişi olarak kullanabilirsiniz.
 
@@ -197,8 +205,8 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 
 | Neden | Ayrıntılar/örnek | Çözünürlük |
 | --- | --- | --- |
-| Beceri girişi yanlış türde | Gerekli yetenek girişi `X` `String`beklenen türde değil. Gerekli yetenek girişi `X` beklenen biçimde değil. | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
-| Yetenek girişi eksik | Gerekli yetenek girişi `X` eksik. | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve özellik adının büyük küçük harf, ek veya eksik `*` ve veri kaynağından alınan belgeler gerekli girdileri tanımlar. |
+| Beceri girişi yanlış türde | "Gerekli yetenek girişi beklenen tür `String`değildi. Ad: `text`, kaynak: `/document/merged_content`. "  "Gerekli beceri girişi beklenen biçimde değil. Ad: `text`, kaynak: `/document/merged_content`. "  "Dizi olmayan `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`üzerinde yinelenemez."  "Dizi olmayan `/document/normalized_images/0/imageCelebrities/0/detail/celebrities``0` kullanılamıyor" | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
+| Yetenek girişi eksik | "Gerekli yetenek girişi eksik. Ad: `text`, kaynak: `/document/merged_content`"" eksik değer `/document/normalized_images/0/imageTags`. "  "`0`length `/document/pages` dizi içinde `0` seçemezsiniz." | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve yoldaki Özellik adı büyük/küçük harf, ek veya eksik `*` ve veri kaynağındaki belgelerin gerekli girişleri sağlayıp sağlamadığına emin olun. |
 | Yetenek dil kodu girişi geçersiz | Beceri girişi `languageCode`, en az biri geçersiz olan `X,Y,Z`dil kodlarını içerir. | Daha fazla ayrıntı için [aşağıya](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) bakın |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996672"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770093"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -122,7 +122,7 @@ Farklı veri merkezlerinde birden çok uygulama ağ geçidi arasında trafik da�
 
 Evet, Application Gateway v2 SKU 'SU otomatik ölçeklendirmeyi destekler. Daha fazla bilgi için bkz. [Otomatik ölçeklendirme ve bölge yedekli Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>El ile ölçeği büyütme veya ölçeği azaltma kapalı kalma süresine neden olur?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>El ile veya otomatik ölçek artırma ya da ölçeği azaltma kapalı kalma süresine neden oluyor?
 
 Hayır. Örnekler, yükseltme etki alanları ve hata etki alanları arasında dağıtılır.
 
@@ -158,7 +158,7 @@ Hayır. Ancak diğer uygulama ağ geçitlerini alt ağda dağıtabilirsiniz.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway sınırları nelerdir? Bu limitleri artırabilir miyim?
 
-[Application Gateway sınırlara](../azure-subscription-service-limits.md#application-gateway-limits)bakın.
+[Application Gateway sınırlara](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)bakın.
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Hem dış hem de iç trafik için Application Gateway eşzamanlı olarak kullanabilir miyim?
 
@@ -200,6 +200,9 @@ Hayır.
 
 Evet. Ayrıntılar için bkz: [Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme](migrate-v1-v2.md).
 
+### <a name="does-application-gateway-support-ipv6"></a>Application Gateway IPv6 'Yı destekliyor mu?
+
+Application Gateway v2 Şu anda IPv6 'Yı desteklemiyor. Yalnızca IPv4 kullanan bir çift yığın VNet 'te çalışabilir, ancak ağ geçidi alt ağının yalnızca IPv4 olması gerekir. Application Gateway v1 çift yığın VNET 'leri desteklemez. 
 
 ## <a name="configuration---ssl"></a>Yapılandırma-SSL
 
@@ -380,6 +383,30 @@ Evet. Yapılandırmanız aşağıdaki senaryoda eşleşiyorsa NSG akış günlü
 - Application Gateway v2 'yi dağıttıysanız
 - Application Gateway alt ağında bir NSG var
 - NSG akış günlüklerini bu NSG 'de etkinleştirdiniz
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Application Gateway v2 'yi yalnızca özel ön uç IP adresi ile kullanmak Nasıl yaparım??
+
+Application Gateway v2 Şu anda yalnızca özel IP modunu desteklemiyor. Aşağıdaki birleşimleri destekler
+* Özel IP ve genel IP
+* Yalnızca genel IP
+
+Ancak Application Gateway v2 'yi yalnızca özel IP ile kullanmak istiyorsanız, aşağıdaki işlemi izleyebilirsiniz:
+1. Hem genel hem de özel ön uç IP adresiyle Application Gateway oluşturun
+2. Genel ön uç IP adresi için herhangi bir dinleyici oluşturmayın. Application Gateway, kendisi için bir dinleyici oluşturulmadıysa genel IP adresindeki herhangi bir trafiği dinlemez.
+3. Öncelik sırasına göre aşağıdaki yapılandırmaya sahip Application Gateway alt ağı için bir [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/security-overview) oluşturun ve ekleyin:
+    
+    a. Kaynak olarak **Gatewaymanager** hizmet etiketi ve hedef bağlantı **noktası olarak** **65200-65535**olarak gelen trafiğe izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları sertifika kimlik doğrulaması tarafından korunur (kilitlidir). Ağ Geçidi Kullanıcı yöneticileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz
+    
+    b. Kaynak **AzureLoadBalancer** hizmet etiketi ve hedef ve hedef bağlantı **noktası gibi kaynaklardan** gelen trafiğe izin ver
+    
+    c. Kaynaktan **Internet** hizmet etiketi ve hedef ve hedef bağlantı **noktası olarak gelen**tüm trafiği reddetme. Bu kurala gelen kurallarda *En düşük önceliği* verin
+    
+    d. Özel IP adresine erişimin engellenmemesi için VirtualNetwork Inbound 'e izin verme gibi varsayılan kuralları koruyun
+    
+    e. Giden internet bağlantısı engellenmiyor. Aksi takdirde, oturum açma, ölçümler vb. ile ilgili sorunlar olur.
+
+Yalnızca özel IP erişimi için örnek NSG yapılandırması: yalnızca özel IP erişimi için ![Application Gateway v2 NSG yapılandırmasını](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

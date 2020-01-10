@@ -4,12 +4,12 @@ description: Azure işlevleri çekirdek araçları ve Azure CLI kullanarak Azure
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227183"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769345"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Hızlı başlangıç: Azure 'da HTTP tarafından tetiklenen bir Python işlevi oluşturma
 
@@ -35,7 +35,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
 ## <a name="create-and-activate-a-virtual-environment"></a>Oluşturma ve bir sanal ortam etkinleştirin
 
-Python işlevlerini yerel olarak geliştirmek için bir Python 3,7 ortamı kullanmanız gerekir. `.venv`adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın.
+Python işlevlerini yerel olarak geliştirmek için bir Python 3,7 ortamı kullanmanız gerekir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`.
 
 > [!NOTE]
 > Python, Linux dağıtımına venv yüklemediyse, aşağıdaki komutu kullanarak yükleyebilirsiniz:
@@ -122,7 +122,7 @@ Uygulamanızı dağıtabilmeniz için önce bazı Azure kaynakları oluşturman�
 
 ## <a name="create-a-function-app-in-azure"></a>Azure 'da bir işlev uygulaması oluşturma
 
-İşlev uygulaması, işlev kodunuzun yürütülmesi için bir ortam sağlar. Bu sayede daha kolay yönetilmesi, dağıtım ve kaynakların paylaşımı için bir mantıksal birim olarak gruplandırmanıza işlevleri. 
+İşlev uygulaması, işlev kodunuzun yürütülmesi için bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanızı sağlar.
 
 Aşağıdaki komutu çalıştırın. `<APP_NAME>` benzersiz bir işlev uygulama adıyla değiştirin. `<STORAGE_NAME>` bir depolama hesabı adıyla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. Bu ad Azure'daki tüm uygulamalar arasında benzersiz olmalıdır.
 
@@ -144,10 +144,10 @@ Artık yerel işlevler projenizi Azure 'daki işlev uygulamasına yayımlamaya h
 Azure 'da işlev uygulaması oluşturduktan sonra, proje kodunuzu Azure 'a dağıtmak için [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core araçları komutunu kullanabilirsiniz. Bu örnekte `<APP_NAME>` değerini uygulamanızın adıyla değiştirin.
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-`--build remote` seçeneği, Python projenizi Azure 'da dağıtım paketindeki dosyalardan uzaktan oluşturur ve bu önerilir. 
+Python projeniz Azure 'da dağıtım paketindeki dosyalardan uzaktan oluşturulur. 
 
 Aşağıdaki iletiye benzer bir çıktı görürsünüz. Buradan daha iyi okuyabilmeniz için bu atılır:
 

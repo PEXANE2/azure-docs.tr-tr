@@ -1,6 +1,6 @@
 ---
-title: Azure Güncelleştirme Yönetimi Windows karma Runbook Worker sistem durumunu anlayın
-description: Windows 'da Güncelleştirme Yönetimi destekleyen karma Runbook Worker ile ilgili sorunları nasıl giderebileceğinizi öğrenin.
+title: Windows karma Runbook Worker 'ı tanılama-Azure Güncelleştirme Yönetimi
+description: Güncelleştirme Yönetimi destekleyen Windows üzerinde Azure Otomasyonu karma Runbook Worker ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850134"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769821"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Windows karma Runbook Worker sistem durumunu Güncelleştirme Yönetimi anlayın
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Güncelleştirme Yönetimi Windows karma Runbook Worker sistem durumunu anlama ve çözme
 
 Güncelleştirme Yönetimi ' de makinenizin **Ready** olarak görünmemesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
 

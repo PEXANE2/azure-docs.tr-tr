@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073620"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768121"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -79,7 +79,7 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
 
 ### <a name="configure-ad-fs-settings"></a>AD FS ayarlarını yapılandırma
 
-AD FS kullanıyorsanız, önce yukarıda bahsedilen yönergeleri kullanarak istemci tarafı SCP 'yi yapılandırmanız gerekir, ancak GPO 'YU AD FS sunucularınız ile bağlantılandırın. SCP nesnesi, cihaz nesneleri için yetki kaynağını tanımlar. Şirket içi veya Azure AD olabilir. AD FS için yapılandırıldığında, cihaz nesneleri kaynağı Azure AD olarak oluşturulur.
+AD FS kullanıyorsanız, önce GPO 'YU AD FS sunucularınıza bağlayarak, yukarıda bahsedilen yönergeleri kullanarak istemci tarafı SCP 'yi yapılandırmanız gerekir. SCP nesnesi, cihaz nesneleri için yetki kaynağını tanımlar. Şirket içi veya Azure AD olabilir. İstemci tarafı SCP AD FS için yapılandırıldığında, cihaz nesneleri kaynağı Azure AD olarak oluşturulur.
 
 > [!NOTE]
 > AD FS sunucularınızda istemci tarafı SCP 'YI yapılandıradıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir. ADFS daha sonra, ADFS cihaz kaydının "Maximumınactivedays" özniteliğinde tanımlanan bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır. ADFS cihaz kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet 'i](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)kullanılarak bulunabilir.

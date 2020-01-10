@@ -8,95 +8,95 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188308"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772950"
 ---
-Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürümleri ile ilgili işlem yaparken sorunlarla karşılaşıyorsanız başarısız olan komutları hata ayıklama modunda yeniden çalıştırın. Hata ayıklama modu etkin olduğu geçirerek **-hata ayıklama** CLI ile anahtar ve **-hata ayıklama** geçiş PowerShell ile. Hataları gidermek için bu belgede, hata bulunan sonra izleyin.
+Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürümleri ile ilgili işlem yaparken sorunlarla karşılaşıyorsanız başarısız olan komutları hata ayıklama modunda yeniden çalıştırın. Hata ayıklama **modu, CLI** ve **-Debug** anahtarı PowerShell ile geçirerek etkinleştirilir. Hatayı bulduktan sonra, hataları gidermek için bu belgeyi izleyin.
 
 
-## <a name="unable-to-create-a-shared-image-gallery"></a>Paylaşılan görüntü Galerisi oluşturulamadı
+## <a name="unable-to-create-a-shared-image-gallery"></a>Paylaşılan görüntü Galerisi oluşturulamıyor
 
 Olası nedenler:
 
 *Galeri adı geçersiz.*
 
-Galeri adı için izin verilen karakterler büyük veya küçük harf, rakam, nokta ve dönemleri olur. Galeri adı kısa çizgi içeremez. Galeri adı değiştirin ve yeniden deneyin. 
+Galeri adı için izin verilen karakterler büyük veya küçük harflerden, rakamlardan, noktalardan ve noktalardan oluşur. Galeri adı tire içeremez. Galeri adını değiştirip yeniden deneyin. 
 
-*Galeri adı, abonelik içinde benzersiz değil.*
+*Galeri adı aboneliğiniz içinde benzersiz değil.*
 
-Başka bir galeri adı belirleyin ve yeniden deneyin.
+Başka bir galeri adı seçip yeniden deneyin.
 
 
-## <a name="unable-to-create-an-image-definition"></a>Bir görüntü tanımı oluşturulamadı 
+## <a name="unable-to-create-an-image-definition"></a>Görüntü tanımı oluşturulamıyor 
 
 Olası nedenler:
 
 *görüntü tanımı adı geçersiz.*
 
-Görüntü tanımı için izin verilen karakterler büyük veya küçük harf, rakam, nokta, tire ve nokta olur. Görüntü tanımı adını değiştirin ve yeniden deneyin.
+Görüntü tanımı için izin verilen karakterler büyük veya küçük harfler, rakamlar, noktalar, tireler ve dönemler olabilir. Görüntü tanımı adını değiştirip yeniden deneyin.
 
-*Bir görüntü tanımı oluşturmak için zorunlu özelliklerini doldurulmaz.*
+*Görüntü tanımı oluşturmak için zorunlu özellikler doldurulmuyor.*
 
-Ad, yayımcı, teklif, sku ve işletim sistemi türü gibi özellikleri zorunludur. Tüm özellikleri gönderildiğini doğrulayın.
+Ad, Yayımcı, teklif, SKU ve işletim sistemi türü gibi özellikler zorunludur. Tüm özelliklerin geçtiğini doğrulayın.
 
-Emin olun **OSType**, Linux veya Windows, görüntüyü tanımının aynıdır, görüntü sürümü oluşturmak için kullandığınız görüntü kaynağı yönetilen olarak. 
+Görüntü tanımının Linux veya Windows **'un, görüntü**sürümünü oluşturmak için kullandığınız kaynak tarafından yönetilen görüntüyle aynı olduğundan emin olun. 
 
 
-## <a name="unable-to-create-an-image-version"></a>Görüntü sürümü oluşturulamadı 
+## <a name="unable-to-create-an-image-version"></a>Görüntü sürümü oluşturulamıyor 
 
 Olası nedenler:
 
 *Görüntü sürümü adı geçersiz.*
 
-Görüntü sürümü için izin verilen karakter, sayı ve dönemleri ' dir. Sayı 32-bit tamsayı aralığında olmalıdır. Biçim: *MajorVersion.MinorVersion.Patch*. Görüntü sürümü adı değiştirin ve yeniden deneyin.
+Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion. MinorVersion. Patch*. Görüntü sürümü adını değiştirip yeniden deneyin.
 
-*Görüntü sürümü oluşturulduğu kaynak yönetilen görüntüsü bulunamadı.* 
+*Görüntü sürümünün oluşturulduğu kaynak tarafından yönetilen görüntü bulunamadı.* 
 
-Kaynak görüntü var ve görüntü sürümü ile aynı bölgede olup olmadığını denetleyin.
+Kaynak görüntünün mevcut olup olmadığını ve görüntü sürümüyle aynı bölgede olduğunu denetleyin.
 
-*Yönetilen bir görüntü bitti değil hala uygulanmakta.*
+*Yönetilen görüntü sağlanmak üzere yapılmadı.*
 
-Kaynak yönetilen bir görüntü sağlama durumu olduğundan emin olun **başarılı**.
+Kaynak yönetilen görüntünün sağlama durumunun **başarılı**olduğundan emin olun.
 
-*Hedef bölge listesi kaynak bölge dahil değildir.*
+*Hedef bölge listesi, kaynak bölgeyi içermez.*
 
-Hedef bölge listesi, görüntü sürümü Kaynak bölgesi içermesi gerekir. Kaynak bölgesi görüntü sürümünüzü çoğaltmak için Azure istediğiniz hedef bölgeler listesinden dahil emin olun.
+Hedef bölge listesi, görüntü sürümünün kaynak bölgesini içermelidir. Kaynak bölgenin, Azure 'un görüntü sürümünüzü çoğaltmasını istediğiniz hedef bölgeler listesine dahil ettiğinizden emin olun.
 
-*Tamamlanmamış tüm hedef bölgelere çoğaltma.*
+*Tüm hedef bölgelere çoğaltma tamamlanmadı.*
 
-Kullanım **--ReplicationStatus genişletin** tüm belirtilen hedef bölgelere çoğaltma tamamlandıysa, kontrol etmek için bayrak. Aksi durumda, işin tamamlanması 6 saat kadar bekleyin. Başarısız olursa yeniden oluşturun ve görüntü sürümü çoğaltmak için komutu çalıştırın. Çok sayıda görüntü sürümü çoğaltılmakta olan hedef bölgeler varsa, çoğaltma aşamalardaki yapmayı düşünün.
+Belirtilen tüm hedef bölgelere yönelik çoğaltmanın tamamlanıp tamamlanmadığını denetlemek için, ' **ı genişlet ReplicationStatus** bayrağını kullanın. Aksi takdirde, işin tamamlanabilmesi için 6 saate kadar bekleyin. Başarısız olursa, görüntü sürümünü oluşturmak ve çoğaltmak için komutunu yeniden çalıştırın. Görüntü sürümünün çoğaltılacağı çok sayıda hedef bölge varsa, çoğaltmayı aşamalar halinde yapmayı göz önünde bulundurun.
 
-## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Bir VM veya ölçeği oluşturulamıyor ayarlayın 
+## <a name="unable-to-create-a-vm-or-a-scale-set"></a>VM veya ölçek kümesi oluşturulamıyor 
 
 Olası nedenler:
 
-*Çalışan bir sanal makine veya sanal makine ölçek kümesi oluşturma, görüntü sürümü için okuma erişimi yok.*
+*VM veya sanal makine ölçek kümesi oluşturmaya çalışan kullanıcının görüntü sürümüne okuma erişimi yok.*
 
-Abonelik sahibiyle iletişime geçin ve görüntü sürümü veya üstü için kaynaklar (örneğin, paylaşılan görüntü Galerisi ya da görüntü tanımı) okuma erişimi vermek aracılığıyla isteyin [rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Abonelik sahibine başvurarak, [rol tabanlı Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) aracılığıyla görüntü sürümüne veya üst kaynaklara (paylaşılan görüntü Galerisi veya görüntü tanımı gibi) okuma erişimi vermesini isteyin. 
 
 *Görüntü sürümü bulunamadı.*
 
-Görüntü sürümü hedef bölgeler listesinden bir sanal makine veya sanal makine ölçek kümesinde oluşturmaya çalıştığınız bölgenin eklendiğini doğrulayın. Bölge zaten hedef bölgeler listesinden ise, çoğaltma işi tamamladığını doğrulayın. Kullanabileceğiniz **- ReplicationStatus** tüm belirtilen hedef bölgelere çoğaltma tamamlandıysa, kontrol etmek için bayrak. 
+İçinde bir VM veya sanal makine ölçeğini oluşturmaya çalıştığınız bölgenin, görüntü sürümünün hedef bölgeleri listesine dahil edildiğini doğrulayın. Bölge zaten hedef bölgeler listesinde yer alıyorsa, çoğaltma işinin tamamlanıp tamamlanmadığını doğrulayın. Belirtilen tüm hedef bölgelere yönelik çoğaltmanın tamamlanıp tamamlanmadığını denetlemek için **-ReplicationStatus** bayrağını kullanabilirsiniz. 
 
-*Sanal makine veya sanal makine ölçek oluşturulması uzun sürüyorsa ayarlayın.*
+*VM veya sanal makine ölçek kümesi oluşturma uzun bir süre sürer.*
 
-Doğrulayın **OSType** görüntüsü VM oluşturmaya çalıştığınız veya sanal makine ölçek kümesi aynı sürümde **OSType** görüntü sürümünü oluşturmak için kullanılan görüntü kaynağını yönetilen. 
+VM veya sanal makine ölçek kümesi oluşturmaya çalıştığınız görüntü sürümünün **OSType** öğesinin, görüntü sürümünü oluşturmak için kullandığınız kaynak tarafından yönetilen görüntünün aynı **OSType** öğesine sahip olduğunu doğrulayın. 
 
-## <a name="unable-to-share-resources"></a>Kaynakları paylaşılamıyor
+## <a name="unable-to-share-resources"></a>Kaynaklar paylaşılamıyor
 
-Paylaşılan görüntü Galerisi, görüntü tanımı ve resmi sürüm kaynakları abonelikler arasında Paylaşımı kullanılarak etkinleştirilir [rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Paylaşılan görüntü galerisinin, görüntü tanımının ve abonelikler genelinde görüntü sürümü kaynaklarının paylaşılması [rol tabanlı Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) kullanılarak etkinleştirilir. 
 
 ## <a name="replication-is-slow"></a>Çoğaltma yavaş
 
-Kullanım **--ReplicationStatus genişletin** tüm belirtilen hedef bölgelere çoğaltma tamamlandıysa, kontrol etmek için bayrak. Aksi durumda, işin tamamlanması 6 saat kadar bekleyin. Başarısız olursa yeniden oluşturun ve görüntü sürümü çoğaltmak için komutu tetikleyin. Çok sayıda görüntü sürümü çoğaltılmakta olan hedef bölgeler varsa, çoğaltma aşamalardaki yapmayı düşünün.
+Belirtilen tüm hedef bölgelere yönelik çoğaltmanın tamamlanıp tamamlanmadığını denetlemek için, ' **ı genişlet ReplicationStatus** bayrağını kullanın. Aksi takdirde, işin tamamlanabilmesi için 6 saate kadar bekleyin. Başarısız olursa, görüntü sürümünü oluşturmak ve çoğaltmak için komutu yeniden tetikleyin. Görüntü sürümünün çoğaltılacağı çok sayıda hedef bölge varsa, çoğaltmayı aşamalar halinde yapmayı göz önünde bulundurun.
 
 ## <a name="azure-limits-and-quotas"></a>Azure limitleri ve kotaları 
 
-[Azure limitleri ve kotaları](https://docs.microsoft.com/azure/azure-subscription-service-limits) tüm paylaşılan görüntü Galerisi, görüntü tanımı ve resmi sürüm kaynakları için geçerlidir. Abonelikleriniz için sınırlar içinde olduğundan emin olun. 
+[Azure Limitleri ve kotaları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) tüm paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü kaynakları için geçerlidir. Aboneliklerinizin sınırları dahilinde olduğunuzdan emin olun. 
 
 
 

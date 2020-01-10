@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048186"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768631"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ölçeklendirme seçenekleri
 
@@ -28,6 +28,8 @@ Bu makalede, AKS 'teki uygulamaları ölçeklendirmenize yardımcı olan temel k
 ## <a name="manually-scale-pods-or-nodes"></a>Pod veya düğümleri el ile ölçeklendirme
 
 Uygulamanızın kullanılabilir kaynaklardaki ve durumdaki bir değişikliğe nasıl yanıt vereceğini test etmek için çoğaltmaları (pods) ve düğümleri el ile ölçekleyebilirsiniz. Kaynakları el ile ölçeklendirirken, düğüm sayısı gibi sabit bir maliyeti korumak için kullanılacak bir miktar kaynak kümesi tanımlamanızı da sağlar. El ile ölçeklendirmek için çoğaltma veya düğüm sayısını tanımlarsınız. Kubernetes API 'SI daha sonra bu çoğaltma veya düğüm sayısına bağlı olarak ek düğüm veya boşaltma düğümleri oluşturmayı zamanlar.
+
+Düğüm ölçeğini ölçeklendirirken, Kubernetes API 'SI, kümeniz tarafından kullanılan işlem türüne bağlı olan ilgili Azure Işlem API 'sini çağırır. Örneğin, VM Ölçek kümelerinde oluşturulan kümeler için, hangi düğümlerin kaldırılacağını seçme mantığı VM Ölçek Kümeleri API 'SI tarafından belirlenir. Düğümlerin ölçek azaltma sırasında kaldırılması için nasıl seçildiği hakkında daha fazla bilgi edinmek için bkz. [VMSS SSS](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 Pod 'leri ve düğümleri el ile ölçeklendirmeye başlamak için bkz. [aks 'teki Uygulamaları ölçeklendirme][aks-scale].
 

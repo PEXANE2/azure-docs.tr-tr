@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12e79df4af2dab097a41cf8482d5a344080890cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231522"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769719"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# ilk dayanıklı işlevinizi oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve tes
 
 Bu öğreticiyi tamamlamak için:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)' i yükler. **Azure geliştirme** iş yükünün de yüklü olduğundan emin olun. Visual Studio 2017 Ayrıca Dayanıklı İşlevler geliştirmeyi destekler, ancak UI ve adımlar farklılık gösterir.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)’u yükleyin. **Azure geliştirme** iş yükünün de yüklü olduğundan emin olun. Visual Studio 2017 Ayrıca Dayanıklı İşlevler geliştirmeyi destekler, ancak UI ve adımlar farklılık gösterir.
 
 * [Azure Storage öykünücüsü](../../storage/common/storage-use-emulator.md) 'nin yüklendiğini ve çalıştığını doğrulayın.
 
@@ -34,9 +34,9 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="create-a-function-app-project"></a>İşlev uygulaması projesi oluşturma
 
-Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta olabilecek bir proje oluşturur. İşlev uygulaması, kaynakların yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
+Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta olabilecek bir proje oluşturur. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
-1. Visual Studio'da **Dosya** menüsünden  > Yeni**Proje**’yi seçin.
+1. Visual Studio'da **Dosya** menüsünden **Yeni** > **Proje**’yi seçin.
 
 1. **Yeni Proje Ekle** iletişim kutusunda `functions`arayın, **Azure işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
 
@@ -51,7 +51,7 @@ Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta ola
     | Ayar      | Önerilen değer  | Açıklama                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Sürüm** | Azure Işlevleri 2,0 <br />(.NET Core) | .NET Core 'u destekleyen Azure Işlevlerinin sürüm 2,0 çalışma zamanını kullanan bir işlev projesi oluşturur. Azure Işlevleri 1,0 .NET Framework destekler. Daha fazla bilgi için bkz. [Azure İşlevleri çalışma zamanı sürümünün hedefini belirleme](../functions-versions.md).   |
-    | **Şablon** | Olmamalıdır | Boş bir işlev uygulaması oluşturur. |
+    | **Şablon** | Boş | Boş bir işlev uygulaması oluşturur. |
     | **Depolama hesabı**  | Depolama Öykünücüsü | Dayanıklı işlev durumu yönetimi için bir depolama hesabı gereklidir. |
 
 4. Boş bir işlev projesi oluşturmak için **Oluştur** ' u seçin. Bu proje, işlevlerinizi çalıştırmak için gereken temel yapılandırma dosyalarını içerir.

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c1f3384b88de7b58457251cf72b2815267cb29
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541705"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772593"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -35,9 +35,9 @@ Azure Machine Learning aşağıdaki MLOps yeteneklerini sağlar:
 
 Model eğitim sürecinizdeki tüm adımları birlikte birleştirmek için Azure Machine Learning adresinden ML işlem hatlarını kullanın.
 
-Bir ML işlem hattı, veri hazırlığından, model değerlendirmesi için hiper parametre ayarlamayı ayıklama adımları içerebilir. Daha fazla bilgi için bkz. [ml işlem hatları](service/concept-ml-pipelines.md).
+Bir ML işlem hattı, veri hazırlığından, model değerlendirmesi için hiper parametre ayarlamayı ayıklama adımları içerebilir. Daha fazla bilgi için bkz. [ml işlem hatları](concept-ml-pipelines.md).
 
-ML işlem hatlarınızı oluşturmak için [tasarımcıyı](service/concept-designer.md) kullanırsanız, tasarımcı sayfasının sağ üst köşesindeki **"..."** düğmesine tıklayın ve ardından **Kopyala**' yı seçin. İşlem hattınızı kopyalamak, eski sürümlerinizi kaybetmeden işlem hattı tasarımınızı yinelemenize olanak tanır.  
+ML işlem hatlarınızı oluşturmak için [tasarımcıyı](concept-designer.md) kullanırsanız, tasarımcı sayfasının sağ üst köşesindeki **"..."** düğmesine tıklayın ve ardından **Kopyala**' yı seçin. İşlem hattınızı kopyalamak, eski sürümlerinizi kaybetmeden işlem hattı tasarımınızı yinelemenize olanak tanır.  
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>Her yerden model kaydetme, paketleme ve dağıtma
 

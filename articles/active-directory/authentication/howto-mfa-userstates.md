@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964064"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763241"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
@@ -29,9 +29,9 @@ ms.locfileid: "74964064"
 
 **Kullanıcı durumu değiştirilerek etkinleştirildi** -bu, iki adımlı doğrulama gerektirmek için geleneksel bir yöntemdir ve bu makalede ele alınmıştır. Hem bulutta hem de Azure MFA sunucusunda Azure MFA ile birlikte kullanılabilir. Bu yöntemin kullanılması, kullanıcıların **her** oturum açtıklarında iki aşamalı doğrulama gerçekleştirmesini gerektirir ve koşullu erişim ilkelerini geçersiz kılar.
 
-Koşullu erişim ilkesi tarafından etkinleştirildi-kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmek üzere en esnek yollardan biridir. Koşullu erişim ilkesini kullanmanın etkinleştirilmesi yalnızca Bulutta Azure MFA için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntem hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication dağıtma](howto-mfa-getstarted.md)bölümünde bulunabilir.
+**Koşullu erişim ilkesi tarafından etkinleştirildi** -kullanıcılarınız için iki aşamalı doğrulamayı etkinleştirmek üzere en esnek yollardan biridir. Koşullu erişim ilkesini kullanmanın etkinleştirilmesi yalnızca Bulutta Azure MFA için geçerlidir ve Azure AD 'nin Premium bir özelliğidir. Bu yöntem hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication dağıtma](howto-mfa-getstarted.md)bölümünde bulunabilir.
 
-Azure AD Kimlik Koruması tarafından etkinleştirildi-bu yöntem, yalnızca tüm bulut uygulamaları için oturum açma riskini temel alan iki adımlı doğrulama istemek için Azure AD Kimlik Koruması risk ilkesini kullanır. Bu yöntem Azure Active Directory P2 lisanslama gerektirir. Bu yöntem hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması](../identity-protection/howto-sign-in-risk-policy.md) bulunabilir
+**Azure AD kimlik koruması tarafından etkinleştirildi** -bu yöntem, yalnızca tüm bulut uygulamaları için oturum açma riskini temel alan iki adımlı doğrulama istemek için Azure AD kimlik koruması risk ilkesini kullanır. Bu yöntem Azure Active Directory P2 lisanslama gerektirir. Bu yöntem hakkında daha fazla bilgi için [Azure Active Directory kimlik koruması](../identity-protection/howto-sign-in-risk-policy.md) bulunabilir
 
 > [!Note]
 > Lisanslar ve fiyatlandırma hakkında daha fazla bilgi için [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
@@ -136,7 +136,7 @@ Kullanıcıları toplu olarak etkinleştirmeniz gerektiğinde PowerShell kullanm
 MFA 'yı devre dışı bırakmak için şu betiği kullanın:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
    ```
 
 Ayrıca, şu şekilde kısaltılarak:

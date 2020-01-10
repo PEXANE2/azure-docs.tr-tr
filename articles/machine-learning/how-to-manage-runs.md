@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537194"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834721"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Python ve [MACHINE LEARNING CLI](reference-azure-machine-learning-cli.md) [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
+[Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning Studio](https://ml.azure.com) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
 
 Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 
@@ -105,6 +105,16 @@ Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
 
     Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
+
+Tasarımcı 'da (Önizleme) bir işlem hattı çalıştırması başlatmak için aşağıdaki adımları kullanın:
+
+1. İşlem hatlarınız için varsayılan bir işlem hedefi ayarlayın.
+
+1. İşlem hattı tuvalinin en üstünde **Çalıştır** ' ı seçin.
+
+1. İşlem hattı çalıştırmalarını gruplamak için bir deneme seçin.
+
 ## <a name="monitor-the-status-of-a-run"></a>Bir çalıştırmanın durumunu izleme
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     Daha fazla bilgi için bkz. [az ml Run Show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
+
+Studio 'da denemenizin etkin çalıştırmaların sayısını görüntülemek için.
+
+1. **Denemeleri** bölümüne gidin. 
+
+1. Bir deneme seçin.
+
+    Deneme sayfasında, etkin işlem hedeflerinin sayısını ve her çalıştırma için süreyi görebilirsiniz. 
+
+1. Belirli bir çalıştırma numarası seçin.
+
+1. **Günlükler** sekmesinde, işlem hattı çalıştırınızla ilgili tanılama ve hata günlüklerini bulabilirsiniz.
+
+
 ## <a name="cancel-or-fail-runs"></a>İptal veya başarısız çalıştırmalar
 
 Bir hata fark ederseniz veya çalıştırmanın tamamlanmasının çok uzun sürmesi durumunda, çalıştırmayı iptal edebilirsiniz.
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Daha fazla bilgi için bkz. [az ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
+
+Aşağıdaki adımları kullanarak Studio 'daki bir çalıştırmayı iptal etmek için:
+
+1. **Denemeleri** veya **ardışık** düzen bölümünde çalışan işlem hattına gidin. 
+
+1. İptal etmek istediğiniz işlem hattı çalıştırma numarasını seçin.
+
+1. Araç çubuğunda **iptal** ' i seçin.
+
 
 ## <a name="create-child-runs"></a>Alt çalıştırmalar oluştur
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Azure CLı sonuçlarını sorgulama hakkında daha fazla bilgi için bkz. [Azure CLI komut çıkışını sorgulama](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
+
+1. İşlem **hatları** bölümüne gidin.
+
+1. Etiketleri, açıklamaları, deneme adlarını ve gönderenin adını kullanarak işlem hatlarını filtrelemek için arama çubuğunu kullanın.
 
 ## <a name="example-notebooks"></a>Örnek Not Defterleri
 

@@ -1,25 +1,26 @@
 ---
-title: 'Şirket içi ağınızı bir Azure sanal ağına bağlama: Siteden siteye VPN: PowerShell | Microsoft Docs'
+title: 'Şirket içi ağınızı bir Azure sanal ağına bağlama: siteden siteye VPN: PowerShell'
 description: Şirket içi ağınız ile bir Azure sanal ağı arasında genel İnternet üzerinden bir IPSec bağlantısı oluşturma adımları. Bu adımlar PowerShell kullanarak Siteden Siteye şirket içi ve dışı karışık VPN Gateway bağlantısı oluşturmanıza yardımcı olur.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699895"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778813"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>PowerShell kullanarak Siteden Siteye VPN bağlantısı ile sanal ağ oluşturma
 
 Bu makalede, PowerShell kullanarak şirket içi ağınızdan VNet’e Siteden Siteye VPN ağ geçidi bağlantısı oluşturma işlemi gösterilir. Bu makaledeki adımlar Resource Manager dağıtım modeli için geçerlidir. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -76,7 +77,7 @@ ConnectionName          = VNet1toSite1
 
 ```
 
-## <a name="VNet"></a>1. Sanal ağ ve ağ geçidi alt ağı oluşturma
+## <a name="VNet"></a>1. bir sanal ağ ve ağ geçidi alt ağı oluşturma
 
 Sanal ağınız yoksa bir sanal ağ oluşturun. Sanal ağ oluştururken, belirlediğiniz adres alanlarının şirket içi ağınızdaki adres alanlarından herhangi biriyle çakışmadığından emin olun. 
 
@@ -136,7 +137,7 @@ Zaten bir sanal ağınız varsa, ancak bir ağ geçidi alt ağı eklemeniz gerek
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## 2. <a name="localnet"></a>Yerel ağ geçidi oluşturma
+## 2. <a name="localnet"> </a>yerel ağ geçidini oluşturma
 
 Yerel ağ geçidi (LNG) genellikle şirket içi konumunuzu ifade eder. Bu, bir sanal ağ geçidi ile aynı değildir. Siteye Azure’un başvuruda bulunmak için kullanabileceği bir ad verir, ardından bağlantı oluşturacağınız şirket içi VPN cihazının IP adresini belirtirsiniz. Ayrıca, VPN ağ geçidi üzerinden VPN cihazına yönlendirilecek IP adresi ön eklerini de belirtirsiniz. Belirttiğiniz adres ön ekleri, şirket içi adresinizde yer alan ön eklerdir. Şirket içi ağınız değişirse, ön ekleri kolayca güncelleştirebilirsiniz.
 
@@ -163,7 +164,7 @@ Yerel ağ geçidinizin IP adresi ön eklerini değiştirmek için:
 
 Bazen yerel ağ geçidi ön ekleriniz değişir. IP adresi ön eklerinizi değiştirmek için uygulayacağınız adımlar bir VPN ağ geçidi bağlantısı oluşturup oluşturmadığınıza göre değişir. Bu makalenin [Yerel bir ağ geçidinin IP adresi ön eklerini değiştirme](#modify) bölümüne bakın.
 
-## <a name="PublicIP"></a>3. Genel IP adresi isteme
+## <a name="PublicIP"></a>3. genel IP adresi isteyin
 
 Bir VPN ağ geçidinin genel bir IP adresi olmalıdır. İlk olarak IP adresi kaynağını istemeniz, sonra sanal ağ geçidinizi oluştururken bu kaynağa başvurmanız gerekir. VPN ağ geçidi oluşturulurken, IP adresi kaynağa dinamik olarak atanır. 
 
@@ -175,7 +176,7 @@ Sanal ağ VPN ağ geçidinize bir Genel IP adresinin atanmasını isteyin.
 $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>4. Ağ geçidi IP adresleme yapılandırmasını oluşturma
+## <a name="GatewayIPConfig"></a>4. ağ geçidi IP adresleme yapılandırması oluşturma
 
 Ağ geçidi yapılandırması, alt ağı (' GatewaySubnet ') ve kullanılacak genel IP adresini tanımlar. Ağ geçidi yapılandırmanızı oluşturmak için aşağıdaki örneği kullanın:
 
@@ -185,7 +186,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
-## <a name="CreateGateway"></a>5. VPN ağ geçidini oluşturma
+## <a name="CreateGateway"></a>5. VPN Gateway oluşturma
 
 Sanal ağ VPN ağ geçidini oluşturun.
 
@@ -203,7 +204,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 Bu komutu çalıştırdıktan sonra ağ geçidi yapılandırmasının tamamlanması 45 dakikaya kadar sürebilir.
 
-## <a name="ConfigureVPNDevice"></a>6. VPN cihazınızı yapılandırma
+## <a name="ConfigureVPNDevice"></a>6. VPN cihazınızı yapılandırın
 
 Bir şirket içi ağı ile Siteden Siteye bağlantılar için VPN cihazı gerekir. Bu adımda VPN cihazınızı yapılandıracaksınız. VPN Cihazınızı yapılandırırken aşağıdaki öğeler gerekir:
 
@@ -217,7 +218,7 @@ Bir şirket içi ağı ile Siteden Siteye bağlantılar için VPN cihazı gereki
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>7. VPN bağlantısını oluşturma
+## <a name="CreateConnection"></a>7. VPN bağlantısını oluşturun
 
 Bir sonraki adımda, sanal ağ geçidiniz ile VPN cihazınız arasındaki Siteden Siteye VPN bağlantısını oluşturacaksınız. Değerlerin kendinizinkilerle değiştirildiğinden emin olun. Paylaşılan anahtar, VPN cihazınızın yapılandırması için kullandığınız değerin aynısı olmalıdır. Siteden Siteye bağlantı için ‘-ConnectionType’ değerinin **IPsec** olduğunu unutmayın.
 
@@ -236,7 +237,7 @@ Bir sonraki adımda, sanal ağ geçidiniz ile VPN cihazınız arasındaki Sitede
 
 Kısa bir süre içerisinde bağlantı kurulur.
 
-## <a name="toverify"></a>8. VPN bağlantısını doğrulama
+## <a name="toverify"></a>8. VPN bağlantısını doğrulayın
 
 VPN bağlantınızı doğrulamanın birkaç farklı yolu vardır.
 

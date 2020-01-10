@@ -3,16 +3,16 @@ title: Bulut iş yüklerini korumaya yardımcı olan güvenlik özellikleri
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Backup güvenlik özelliklerini kullanmayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496932"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829638"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
-Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin bu ek 14 gün boyunca saklanması müşteriye hiçbir ücret vermez. Azure, verilerinizin güvenliğini sağlamak için [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) kullanarak bekleyen yedeklenen verileri de şifreler.
+Kötü amaçlı yazılım, fidye yazılımı ve yetkisiz erişim gibi güvenlik sorunlarına karşı duyulan endişe gittikçe artıyor. Bu güvenlik sorunları, hem parasal anlamda hem de veriler açısından maliyetli olabilir. Bu tür saldırılara karşı koruma için Azure Backup artık, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olacak güvenlik özellikleri sağlamaktadır. Bu tür bir özellik, geçici bir DELETE. Geçici bir aktör bir VM 'nin yedeklemesini silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin bu ek 14 gün boyunca saklanması müşteriye hiçbir ücret vermez. Azure, verilerinizin güvenliğini sağlamak için [depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) kullanarak bekleyen tüm yedeklenen verileri de şifreler.
 
 > [!NOTE]
 > Geçici silme yalnızca silinen yedekleme verilerini korur. Bir VM, yedekleme olmadan silinirse, geçici silme özelliği verileri korumaz. Tam esnekliği sağlamak için tüm kaynakların Azure Backup korumalı olması gerekir.
@@ -89,7 +89,7 @@ Yedekleme öğesinin ' DeleteState ' öğesi ' NotDeleted ' iken ' ToBeDeleted '
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Azure PowerShell 'i kullanarak silme işlemini geri alma
 
-İlk olarak, geçici silme durumunda olan ilgili yedekleme öğesini (örneğin, silinmek üzere) getirin
+İlk olarak, geçici silme durumundaki (yani, silinecek) ilgili yedekleme öğesini getirin.
 
 ```powershell
 
@@ -164,7 +164,7 @@ Bu özelliğin devre dışı bırakılmasından önce geçici olarak silinen dur
 Şu adımları uygulayın:
 
 1. [Geçici silme özelliğini devre dışı bırakmak](#disabling-soft-delete)için adımları izleyin.
-2. Azure portal, kasanıza gidin, **yedekleme öğeleri** ' ne gidin ve geçici olarak silinen VM 'yi seçin
+2. Azure portal kasanıza gidin, **yedekleme öğeleri**' ne gidin ve geçici olarak silinen VM 'yi seçin.
 
 ![Geçici olarak silinen VM 'yi seçin](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -232,25 +232,38 @@ Geçici silme devre dışı bırakıldıktan sonra öğeler silinmişse, bunlar 
 2. Ardından, [burada](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)bahsedilen adımları kullanarak REST API kullanarak geçici silme işlevini devre dışı bırakın.
 3. Ardından, [burada](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)belirtildiği gibi REST API kullanarak yedeklemeleri silin.
 
-## <a name="other-security-features"></a>Diğer güvenlik özellikleri
+## <a name="encryption"></a>Şifreleme
 
-### <a name="storage-side-encryption"></a>Depolama tarafında şifreleme
+### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Microsoft tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
-Azure depolama, verilerinizi buluta kalıcı hale geldiğinde otomatik olarak şifreler. Şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Azure depolama 'daki veriler, 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülür, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Azure depolama şifrelemesi, Windows 'da BitLocker şifrelemeye benzer. Azure Backup verileri depolamadan önce otomatik olarak şifreler. Azure Storage, verileri almadan önce şifresini çözer.  
+Yedekleme verileri, Azure depolama şifrelemesi kullanılarak otomatik olarak şifrelenir. Şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Veriler, 256 bit AES şifrelemesi kullanılarak saydam ve şifresi çözülür, en güçlü blok şifrelemeleri kullanılabilir ve FIPS 140-2 uyumludur. Azure depolama şifrelemesi, Windows 'da BitLocker şifrelemeye benzer.
 
 Azure 'da, Azure depolama ile kasa arasındaki yoldaki veriler HTTPS tarafından korunur. Bu veriler, Azure omurga ağında kalır.
 
-Daha fazla bilgi için lütfen [bekleyen veriler Için Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)bölümüne bakın.  Şifreleme hakkında sahip olduğunuz tüm soruları yanıtlamak için lütfen [Azure Backup SSS bölümüne](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) bakın.
+Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Şifreleme hakkında karşılaşabileceğiniz soruları yanıtlamak için [Azure Backup SSS](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) bölümüne bakın.
 
-### <a name="vm-encryption"></a>VM şifrelemesi
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
-Azure Backup hizmetini kullanarak Windows veya Linux Azure sanal makinelerini (VM) şifrelenmiş disklerle yedekleyebilir ve geri yükleyebilirsiniz. Yönergeler için lütfen [Azure Backup ile şifrelenmiş sanal makineleri yedekleme ve geri yükleme](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)bölümüne bakın.
+Azure sanal makinelerini yedeklerken, kurtarma hizmetleri kasasındaki yedekleme verilerinizi, Azure Key Vault depolanan şifreleme anahtarlarınızı kullanarak şifreleme seçeneğiniz de vardır.
+
+>[!NOTE]
+>Bu özellik şu anda erken kullanımda. Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinizi şifrelemek isterseniz [Bu anketi](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) doldurun. Bu özelliği kullanma yeteneğinin Azure Backup hizmetten onaya tabi olduğunu unutmayın.
+
+### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Yönetilen disk VM 'sinin, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmiş yedeklemesi
+
+Azure Backup, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmiş diskler içeren Azure sanal makinelerini yedeklemenizi sağlar. Ayrıntılar için, [yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview)bölümüne bakın.
+
+### <a name="backup-of-encrypted-vms"></a>Şifrelenmiş VM 'Ler yedeklemesi
+
+Azure Backup hizmetini kullanarak Windows veya Linux Azure sanal makinelerini (VM) şifrelenmiş disklerle yedekleyebilir ve geri yükleyebilirsiniz. Yönergeler için bkz. [Azure Backup ile şifrelenmiş sanal makineleri yedekleme ve geri yükleme](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="other-security-features"></a>Diğer güvenlik özellikleri
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Azure Backup kurtarma noktalarının korunması
 
 Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Bu yönetim işlemleri rol tabanlı Access Control (RBAC) aracılığıyla denetlenir.
 
-Daha fazla bilgi için lütfen bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+Daha fazla bilgi için bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -282,11 +295,11 @@ Geri alma işleminden sonra devam ederseniz kaynak yeniden korunur. Özgeçmişi
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kasada geçici olarak silinen öğeler varsa kasamı silebilir miyim?
 
-Kasadaki geçici olarak silinen durumda yedekleme öğeleri varsa kurtarma hizmetleri Kasası silinemez. Geçici olarak silinen öğeler, silme işleminden sonra 14 gün sonra kalıcı olarak silinir. 14 gün bekleyemez, [geçici silme işlemini devre dışı bırakın](#disabling-soft-delete), geçici olarak silinen öğeleri geri alın ve kalıcı olarak silmek için yeniden silin. Korunan öğe olmadığından ve geçici olarak silinen öğeler olmadığından, kasanın silinebilmesini sağlar.  
+Kasadaki geçici olarak silinen durumda yedekleme öğeleri varsa kurtarma hizmetleri Kasası silinemez. Geçici olarak silinen öğeler, silme işleminden sonra 14 gün sonra kalıcı olarak silinir. 14 gün bekleyemez, [geçici silme işlemini devre dışı bırakın](#disabling-soft-delete), geçici olarak silinen öğeleri geri alın ve kalıcı olarak silmek için yeniden silin. Korunan öğe olmadığından ve geçici olarak silinen öğeler olmadığından, kasa silinebilir.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Silme işleminden sonra 14 gün geçici silme süresinden önceki verileri silebilir miyim?
 
-Hayır. Geçici olarak silinen öğeleri silmeye zorlenemez, bunlar 14 gün sonra otomatik olarak silinir. Bu güvenlik özelliği, yedeklenen verilerin yanlışlıkla veya kötü amaçlı silmelerden korunmasını sağlamak için etkinleştirilir.  VM üzerinde başka bir işlem gerçekleştirmeden önce 14 gün beklemeniz gerekir.  Geçici olarak silinen öğeler ücretlendirilmeyecektir.  14 gün içinde geçici silme için işaretlenen VM 'Leri yeni bir kasaya yeniden korumaya ihtiyacınız varsa, Microsoft destek 'e başvurun.
+Hayır. Geçici olarak silinen öğeleri silmeye zorlenemez, bunlar 14 gün sonra otomatik olarak silinir. Bu güvenlik özelliği, yedeklenen verilerin yanlışlıkla veya kötü amaçlı silmelerden korunmasını sağlamak için etkinleştirilir.  VM üzerinde başka bir işlem gerçekleştirmeden önce 14 gün beklemeniz gerekir.  Geçici olarak silinen öğeler ücretlendirilmeyecektir.  Yeni bir kasaya 14 gün içinde geçici silme için işaretlenen VM 'Lerin yeniden korunmasını istiyorsanız Microsoft desteği 'ne başvurun.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell veya CLı 'de geçici silme işlemleri yapılabilir mi?
 

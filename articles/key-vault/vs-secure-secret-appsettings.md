@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8a85dd3d3d80a8c3988c7653eb74f403fdc54cd4
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639474"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772508"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Gizli uygulama ayarlarını bir Web uygulaması için güvenli bir şekilde Kaydet
 
@@ -42,6 +42,7 @@ Bir proje geliştirmekte ve kaynak kodunu güvenli bir şekilde paylaşmanız ge
     ![Azure Key Vault oluştur](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
 2. Size ve takım üyelerinize Key Vault erişimi verin. Büyük bir ekibiniz varsa, bir [Azure Active Directory grubu](../active-directory/active-directory-groups-create-azure-portal.md) oluşturabilir ve bu güvenlik grubuna Key Vault erişimi ekleyebilirsiniz. *Gizli izinler* açılan menüsünde, *gizli yönetim işlemleri*altında *Al* ve *Listele* ' yi işaretleyin.
+Web uygulamanız zaten oluşturulmuşsa, uygulama ayarlarında veya dosyalarında gizli yapılandırmayı depolamadan, anahtar kasasına erişebilmeleri için Web uygulamasına Key Vault erişim izni verin. Web uygulamanızı adına göre arayın ve kullanıcılara erişim verdiğiniz şekilde ekleyin.
 
     ![Key Vault erişim ilkesi Ekle](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -49,39 +50,43 @@ Bir proje geliştirmekte ve kaynak kodunu güvenli bir şekilde paylaşmanız ge
 
     ![Key Vault gizli dizi ekleyin](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > Visual Studio 2017 V 15.6 öncesinde, Visual Studio için Azure Hizmetleri kimlik doğrulama uzantısı 'nı yüklemenizi öneririz. Ancak işlevsellik Visual Studio içinde tümleştirildiği için artık kullanım dışıdır. Visual Studio 2017 ' nin eski bir sürümü kullanıyorsanız, bu işlevselliği yerel olarak kullanabilmeniz ve Visual Studio oturum açma kimliğini kullanarak anahtar kasasına erişmek için en az VS 2017 15,6 veya daha güncel güncelleştirmeleri güncelleştirmeniz önerilir.
     >
- 
+
 4. Aşağıdaki NuGet paketlerini projenize ekleyin:
 
     ```
+    Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
+    Microsoft.Extensions.Configuration.AzureKeyVault
     ```
 5. Aşağıdaki kodu Program.cs dosyasına ekleyin:
 
     ```csharp
-    public static IWebHost BuildWebHost(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((ctx, builder) =>
-            {
-                var keyVaultEndpoint = GetKeyVaultEndpoint();
-                if (!string.IsNullOrEmpty(keyVaultEndpoint))
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((ctx, builder) =>
                 {
-                    var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                    var keyVaultClient = new KeyVaultClient(
-                        new KeyVaultClient.AuthenticationCallback(
-                            azureServiceTokenProvider.KeyVaultTokenCallback));
-                            builder.AddAzureKeyVault(
-                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
-                        }
-                    })
-                    .UseStartup<Startup>()
-                    .Build();
+                    var keyVaultEndpoint = GetKeyVaultEndpoint();
+                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                    {
+                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        var keyVaultClient = new KeyVaultClient(
+                            new KeyVaultClient.AuthenticationCallback(
+                                azureServiceTokenProvider.KeyVaultTokenCallback));
+                        builder.AddAzureKeyVault(
+                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                    }
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Key Vault URL 'nizi launchsettings. JSON dosyasına ekleyin. Ortam değişkeni adı *KEYVAULT_ENDPOINT* , adım 6 ' da eklediğiniz kodda tanımlanmıştır.
+6. Key Vault URL 'nizi launchsettings. JSON dosyasına ekleyin. *KEYVAULT_ENDPOINT* ortam değişkeni adı, adım 6 ' da eklediğiniz kodda tanımlanmıştır.
 
     ![Key Vault URL 'sini bir proje ortamı değişkeni olarak ekleyin](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 

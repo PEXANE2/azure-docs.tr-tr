@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 01/06/2020
+ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213355"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777912"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -22,21 +22,21 @@ Hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak için, ilk olarak 
 ![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
 
 >[!Note]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
 
-\+ **Yeni teklifi seçin...** düğmesine tıklayın ve ardından **hizmet olarak yazılım** menü öğesini seçin. 
+\+ **Yeni teklifi seçin...** düğmesine tıklayın ve ardından **hizmet olarak yazılım** menü öğesini seçin.
 
 Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https://cloudpartner.azure.com/)yönlendirilebilirsiniz. Yalnızca SaaS ve Dynamics 365 teklifleri Iş Ortağı Merkezi 'nde ticari Market portalında Şu anda kullanılabilir.
 
 ![Iş Ortağı Merkezi 'nde teklif penceresi oluştur](./media/new-offer-click.png)
 
-**Yeni teklif** iletişim kutusu görüntülenir. 
+**Yeni teklif** iletişim kutusu görüntülenir.
 
 ![Yeni teklif iletişim kutusu](./media/new-offer-popup.png)
 
 ## <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf, alfasayısal (kısa çizgiler ve alt çizgiler dahil ancak boşluk olmadan) olmalıdır. Bu 50 karakterle sınırlıdır ve *Oluştur*' u seçtikten sonra değiştirilemez.  
+- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf, alfasayısal (kısa çizgiler ve alt çizgiler dahil ancak boşluk olmadan) olmalıdır. **TEKLIF kimliği** 50 karakterle sınırlıdır ve *Oluştur*' u seçtikten sonra değiştirilemez.  
 Örnek: test-teklif-1
 <br>URL 'ye neden olur: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
@@ -44,7 +44,7 @@ Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https:/
 
 <br>Örnek: test teklifi 1&#8482;
 
-**Oluştur**'u seçin.  Bu teklif için bir **teklif genel bakış** sayfası oluşturulur.  
+**Oluştur**’u seçin.  Bu teklif için bir **teklif genel bakış** sayfası oluşturulur.  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -52,14 +52,14 @@ Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https:/
 
 ## <a name="offer-overview"></a>Teklifin genel bakış
 
-**Teklif genel bakış** sayfası şunları içerir: 
+**Teklif genel bakış** sayfası şunları içerir:
 
-- **Yayımlama durumu** , bu teklifi yayımlamak için gereken adımların görsel bir gösterimini ve her adımın tamamlanması için ne kadar sürdüğünü gösterir. Tamamlanmamış yayımlama adımı simgeleri gri olacak. 
+- **Yayımlama durumu** , bu teklifi yayımlamak için gereken adımların görsel bir gösterimini ve her adımın tamamlanması için ne kadar sürdüğünü gösterir. Tamamlanmamış yayımlama adımı simgeleri gri olacak.
 
 - **Teklif genel bakış** menüsü, bu teklif üzerinde işlem gerçekleştirmek için bağlantıların bir listesini içerir. Bu işlem listesi, teklifiniz için yaptığınız seçime göre değişecektir.  
-    - Teklif bir taslak silise taslak silme 
-    - Teklif canlı değilse, satış teklifini durdur 
-    - Teklif önizleme sürümündedir-canlı 
+    - Teklif bir taslak silise taslak silme
+    - Teklif canlı değilse, satış teklifini durdur
+    - Teklif önizleme sürümündedir-canlı
     - Yayımcı oturumunu kapatma Işlemini tamamlamadıysanız, yayımlamayı Iptal edin
 
 ## <a name="offer-setup"></a>Teklif kurulumu
@@ -68,7 +68,7 @@ Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https:/
 
 - **Microsoft üzerinden satımek istiyor musunuz?** (Evet/Hayır)
     - **Evet**, Microsoft 'un sizin adınıza Market işlemlerini barındırmakla Microsoft aracılığıyla teklifinizi satmak istiyorsunuz; veya 
-    - **Hayır**, sizin teklifinizi, Microsoft 'tan bağımsız olarak tüm parasal işlemleri işleyerek yalnızca marketler aracılığıyla listelemek tercih edersiniz.    
+    - **Hayır**, sizin teklifinizi, Microsoft 'tan bağımsız olarak tüm parasal işlemleri işleyerek yalnızca marketler aracılığıyla listelemek tercih edersiniz.
 
 ### <a name="sell-through-microsoft"></a>Microsoft ile satış
 
@@ -87,7 +87,7 @@ Yayımcının Azure aboneliğinde çalışan SaaS çözümleri sayesinde, müşt
 
 SaaS, aylık veya yıllık faturalandırmaya, Kullanıcı başına veya ölçülen faturalandırma hizmeti kullanılarak sunulan tüketim ücretlerine göre destek sunuyor. Microsoft 'un ticari Market 'i, yayımcıların fiyatları, Microsoft ürün müşterileri ve Microsoft 'un bir kurum ücretini stopajına göre gelir ödediği bir kurum modeli üzerinde çalışır.
 
-Aşağıdaki tabloda, kurum modelini göstermek için maliyetleri ve ödemlardan oluşan örnek bir bölme gösterilmektedir.
+Aşağıdaki tabloda, kurum modelini göstermek için maliyetlerin ve ödemlerden oluşan örnek bir döküm gösterilmektedir.
 
 |**Lisans maliyetiniz**|**$100/ay**|
 |:---|:---|
@@ -102,11 +102,11 @@ Aşağıdaki tabloda, kurum modelini göstermek için maliyetleri ve ödemlardan
 - **Azaltılmış Market hizmet ücreti** için uygun olan iş ortakları, 2019 2020 Haziran 'a kadar Mayıs 'a kadar olan SaaS teklifleriyle daha düşük bir işlem ücreti görür. Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır ve Yayımcı için $90,00 ' i ödeder.
 
 > [!NOTE]
-> **Daha az Market hizmeti ücreti**: ticari Market 'te yayımladığınızdan belirli SaaS teklifleri için Microsoft, Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Teklifinizin uygun olmasını sağlamak için, tekliflerinizin en az birinin, Microsoft tarafından IP ortak satışı veya IP ortak satışı önceliği atanmış olarak belirlenmiş olması gerekir.  Bu ay için daha düşük olan bu Market servis ücretini almak amacıyla her bir takvim ayının sonundan önce uygunluk en az beş (5) iş gününe ulaşılmalıdır.  Düşük Market hizmet ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market 'ten sunulan diğer ürünlerle ilgili değildir.  Daha az Market hizmet ücreti yalnızca Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri için uygun tekliflerdir.  Bu süreden sonra Market hizmeti ücreti normal miktarına geri döner. 
+> **Daha az Market hizmeti ücreti**: ticari Market 'te yayımladığınızdan belirli SaaS teklifleri için Microsoft, Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak. Teklifinizin uygun olmasını sağlamak için, tekliflerinizin en az birinin, Microsoft tarafından IP ortak satışı veya IP ortak satışı önceliği atanmış olarak belirlenmiş olması gerekir.  Bu ay için daha düşük olan bu Market servis ücretini almak amacıyla her bir takvim ayının sonundan önce uygunluk en az beş (5) iş gününe ulaşılmalıdır.  Düşük Market hizmet ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market 'ten sunulan diğer ürünlerle ilgili değildir.  Daha az Market hizmet ücreti yalnızca Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri için uygun tekliflerdir.  Bu süreden sonra Market hizmeti ücreti normal miktarına geri döner.
 
 ### <a name="list-through-microsoft"></a>Microsoft ile Listele
 
-Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un doğrudan yazılım lisans işlemlerine katılmayacağı, teklifinizi yalnızca bir şekilde listelemek için seçin. İlişkili bir işlem ücreti yoktur ve Yayımcı, müşteriden toplanan tüm yazılım lisanslama ücretlerine %100 oranında devam eder. Ancak yayımcı, yazılım lisans işleminin, bunlarla sınırlı olmamak üzere tüm yönlerini desteklemekten sorumludur: sipariş karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon. 
+Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un doğrudan yazılım lisans işlemlerine katılmayacağı, teklifinizi yalnızca bir şekilde listelemek için seçin. İlişkili bir işlem ücreti yoktur ve Yayımcı, müşteriden toplanan tüm yazılım lisanslama ücretlerine %100 oranında devam eder. Ancak yayımcı, yazılım lisans işleminin, bunlarla sınırlı olmamak üzere tüm yönlerini desteklemekten sorumludur: sipariş karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon.
 
 - **Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?**
 
@@ -120,7 +120,7 @@ Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başla
 > Deneme bağlantınız aracılığıyla uygulamanızın alacağı belirteçler yalnızca, uygulamanızda hesap oluşturmayı otomatikleştirmek için Azure AD aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları (MSA) desteklenmez.
 
 ##### <a name="contact-me"></a>Benimle iletişim kurun
-Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management). 
+Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Örnek Market teklif listesi
 
@@ -157,14 +157,16 @@ Sınama sürücüsünü etkinleştirerek, müşterilerin teklifinizi sabit bir s
 - [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
 - [Müşteri adayı yönetimine genel bakış bir sayfalayıcı](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+Bir sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın.
 
 ## <a name="properties"></a>Özellikler
-**Özellikler** sekmesi, teklifinizi markette gruplandırmak için kullanılan kategorileri ve endüstrileri, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü tanımlamanızı ister. 
 
-Bu alanları tamamladıktan sonra **Kaydet** ' i seçin. 
+**Özellikler** sekmesi, teklifinizi markette gruplandırmak için kullanılan kategorileri ve endüstrileri, teklifinizi destekleyen yasal sözleşmeleri ve uygulama sürümünüzü tanımlamanızı ister.
+
+Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 
 ### <a name="category"></a>Kategori
+
 Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) ve en fazla üç (3) kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini lütfen unutmayın. 
 
 ### <a name="industry"></a>Sektör
@@ -172,25 +174,51 @@ Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) v
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Uygulama sürümü
-Bu, teklifinizin sürüm numarasını belirlemek için AppSource marketi 'nde kullanılan isteğe bağlı bir alandır. 
 
-### <a name="standard-contract"></a>Standart Sözleşme
+Bu, teklifinizin sürüm numarasını belirlemek için AppSource marketi 'nde kullanılan isteğe bağlı bir alandır.
 
-- **Standart Sözleşme mi kullanıyorsunuz?**
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
-Müşteriler için satın alma sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için, Microsoft, Market 'teki bir işlemin kolaylaştırılmasına yardımcı olmak üzere standart bir sözleşme şablonu sunmaktadır. 
+Microsoft, standart bir sözleşme şablonu sağlar.
 
-Azure Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerine yalnızca bir kez ve kabul etmesi gereken standart sözleşme kapsamında yazılım sunmayı tercih edebilir. 
+- **Microsoft ticari Market için standart sözleşme kullanılsın mı?**
 
-Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178.
+Microsoft, müşterilerin tedarik sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için Microsoft ticari Market 'e yönelik standart bir sözleşme sunarak Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Ticari Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerin yalnızca her bir kez ve kabul etmesi gereken standart sözleşme altında yazılımlarını sunmayı tercih edebilir. Standart Sözleşme şurada bulunabilir: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-#### <a name="terms-of-use"></a>Kullanım koşulları
+"Ticari Market için standart sözleşmeyi kullan" onay kutusunu seçerek, kendi özel hüküm ve koşullarınızı sağlamak yerine standart sözleşmeyi kullanmayı seçebilirsiniz.
 
-Lisans koşullarınız standart sözleşmeden farklıysa, size ait yasal kullanım koşullarınızı buraya girmeye karar verebilirsiniz. Bunlar, düz metin olarak veya lisans koşullarınıza bağlanan tek bir URL olarak girilebilir.
+![Standart Sözleşme onay kutusunu kullanma](./media/use-standard-contract.png)
 
-Müşterilerinizin uygulamanızı deneyebilmeleri için önce bu koşulları kabul etmesi gerekir. 
+> [!NOTE]
+> Microsoft ticari Market için standart sözleşmeyi kullanarak bir teklif yayımladığınızda, kendi özel hüküm ve koşullarınızı kullanamazsınız. Bu bir "veya" senaryosudur. Çözümünüzü standart sözleşme kapsamında **ya** da kendi hüküm ve koşullarınız için sunun. Standart sözleşmenin şartlarını değiştirmek isterseniz, bunu standart sözleşme değişiklikleri aracılığıyla yapabilirsiniz.
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+#### <a name="standard-contract-amendments"></a>Standart Sözleşme düzeltme açıklamaları
+
+Standart anlaşma değişikliği, yayımcıların basitlik için standart sözleşme koşullarını seçmesini ve ürün ya da işletmelerinin koşullarını özelleştirmesini sağlar. Müşterilerin, Microsoft standart sözleşmesini gözden geçirmiş ve kabul etmiş olmaları durumunda yalnızca sözleşmenin değişiklik yapması gerekir.
+
+Ticari Market yayımcıları için iki çeşit değişiklik bulunur:
+
+- Evrensel değişiklik: Bu değişiklik, tüm müşteriler için standart sözleşmeye evrensel olarak uygulanır. Evrensel değişiklik, satın alma akışındaki teklifin her müşterisi için gösterilir. Müşteriler teklifinizi kullanabilmeniz için standart sözleşmenin ve değişikliğin koşullarını kabul etmelidir.
+- Özel değişiklik: Bu değişiklik, yalnızca Azure kiracı kimlikleri aracılığıyla belirli müşterileri hedefleyen standart sözleşmeye yönelik özel değişiklik amaçlıdır. Yayımcılar hedeflemek istedikleri kiracıyı seçebilirler. Yalnızca kiracının müşterilerine, teklifin satın alma akışındaki özel değişiklik koşulları sunulur.  Müşterilerin teklifinizi kullanabilmesi için önce standart sözleşme ve değişiklik koşullarını kabul etmesi gerekir.
+
+>[!NOTE]
+> Bu iki tür değişiklik yığını birbirlerinin üzerine. Özel değişiklik ile hedeflenen müşteriler, satın alma sırasında standart sözleşmeye evrensel değişiklik de alır.
+
+**Evrensel değişiklik Microsoft 'un ticari Market 'e yönelik standart sözleşme**: bu kutuya evrensel düzeltme koşullarını girin. Teklif başına tek bir evrensel düzeltme sağlayabilirsiniz. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Bunlar, bulma ve satın alma akışı sırasında AppSource, Azure Marketi 'nde müşterilere ve/veya Azure portal görüntülenir.
+
+**Microsoft 'un ticari marketi Için standart sözleşmeye yönelik özel değişiklik koşulları**: **özel değişiklik koşulları Ekle**seçeneğini belirleyerek başlayın. Teklif başına en fazla 10 özel düzeltme terimi sağlayabilirsiniz.
+
+- **Özel değişiklik koşulları**: özel değişiklik koşulları kutusunda özel değişiklik koşullarınızı girin. Bu kutuya sınırsız sayıda karakter girebilirsiniz. Yalnızca bu özel şartlar için belirttiğiniz kiracı kimliklerinin müşterileri, Azure portal teklifin satın alma akışındaki özel değişiklik hükümleriyle birlikte sunulacaktır.  
+- **Kiracı kimlikleri** (gerekli): her özel değişiklik, en fazla 20 Kiracı kimliğini hedefleyebilir. Özel bir düzeltme eklerseniz, en az bir kiracı KIMLIĞI sağlamanız gerekir. Kiracı kimliği, Azure 'da müşterinizin kimliğini tanımlar. Müşterinizden bu KIMLIĞI sorabilir ve portal.azure.com > Azure Active Directory > özelliklerine giderek bulabilecekleri. Dizin KIMLIĞI değeri kiracı KIMLIĞIDIR (ör. 50c464d3-4930-494c-963c-1e951d15360e). Ayrıca, [Microsoft Azure ve Office 365 KIRACı kimliği olan](https://www.whatismytenantid.com)etki alanı adı URL 'sini kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+- **Açıklama** (isteğe bağlı): Isteğe bağlı olarak, Kiracı kimliği için, değişiklik yaparken hedeflediğiniz müşteriyi belirlemenize yardımcı olan kolay bir açıklama sağlayın.
+
+#### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+
+Kendi özel hüküm ve koşullarınızı sağlamak istiyorsanız, bunları hüküm ve koşullar alanına girmeye karar verebilirsiniz. Bu alana en fazla 10.000 karakter girebilirsiniz. Hüküm ve koşullarınız daha uzun bir açıklama gerektiriyorsa, hüküm ve koşullarınızın bulunabileceği bu alana tek bir URL bağlantısı girin. Bu, müşterilere etkin bir bağlantı olarak görüntülenecektir.
+
+Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+
+Bir sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın.
 
 ## <a name="offer-listing"></a>Teklif listesi
 
@@ -208,28 +236,28 @@ Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Marke
 - **Açıklama** (gerekli): market dökümüne genel bakış bölümünde gösterilecek teklifin açıklamasını sağlayın. Bir değer teklifi, önemli avantajlar, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, gerekli ön kapanışlar ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun.
 Bu alana en fazla 3.000 karakter metin girilebilir. Ek ipuçları için [harika uygulama açıklaması yazma](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)makalesine bakın.
 - **Anahtar sözcükleri ara**: müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
-- Başlarken **yönergeleri** (gerekli): uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya nasıl başlayacağınız açıklanmaktadır.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir. 
+- Başlarken **yönergeleri** (gerekli): uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya nasıl başlayacağınız açıklanmaktadır.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir.
 
 #### <a name="description"></a>**Açıklama**
 
-Bu gerekli bir alandır. Açıklamaya eklenecek öğeler: 
+Bu doldurulması zorunlu bir alandır. Açıklamaya eklenecek öğeler:
 
 * Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır.  
 * İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
 * Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
-* Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
+* Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.
 
-Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir: 
+Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir:
 
-* Ürünün açıklaması. 
-* Üründen faydalanan Kullanıcı türü. 
-* Müşterinin ürün adresi olması veya bir sorun olması. 
+* Ürünün açıklaması.
+* Üründen faydalanan Kullanıcı türü.
+* Müşterinin ürün adresi olması veya bir sorun olması.
 
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı biçimlendirmek için HTML etiketlerini kullanabilirsiniz. 
+Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı biçimlendirmek için HTML etiketlerini kullanabilirsiniz.
 
 1. Paragraf oluşturmak istiyorsanız, metnin başına `<p>` ekleyin ve sonuna `</p>` ekleyin.
 
-    **Örnek**: 
+    **Örnek**:
 
     ilk paragrafım `<p>`. `</p>` <br>
     `<p>` ikinci paragrafım. `</p>` <br>
@@ -239,44 +267,44 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
     <p> İlk paragrafım. </p>
     <p> Bu, ikinci paragrafım. </p>
 
-1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi aşağıdaki `<li>` etiketlere yerleştirin. `<ul>` ve `</ul>` etiketleri içinde daha fazla madde işaretli öğe (`<li>` ve `</li>` etiketleri arasında öğeler) kopyalayabilir ve yapıştırabilirsiniz. `<ul></ul>`eklediğinizden emin olun. 
+1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi aşağıdaki `<li>` etiketlere yerleştirin. `<ul>` ve `</ul>` etiketleri içinde daha fazla madde işaretli öğe (`<li>` ve `</li>` etiketleri arasında öğeler) kopyalayabilir ve yapıştırabilirsiniz. `<ul></ul>`eklediğinizden emin olun.
 
     **Örnek**:
 
     ```
     <ul> 
-        <li>add text here</li> 
-        <li> add text here </li> 
-        <li> add text here </li> 
-    </ul> 
+        <li>add text here</li>
+        <li> add text here </li>
+        <li> add text here </li>
+    </ul>
     ```
 
     Yukarıdaki şöyle görünür:
     <ul> 
-        <li>Buraya metin ekleyin</li> 
-        <li> Buraya metin ekleyin </li> 
-        <li> Buraya metin ekleyin </li> 
+        <li>Buraya metin ekleyin</li>
+        <li> Buraya metin ekleyin </li>
+        <li> Buraya metin ekleyin </li>
     </ul> 
 
-1. **Kalın** içerik için, kalın yapmak istediğiniz metnin başına `<b>` ekleyin ve kalın olmasını istediğiniz metnin sonuna `</b>` ekleyin. 
+1. **Kalın** içerik için, kalın yapmak istediğiniz metnin başına `<b>` ekleyin ve kalın olmasını istediğiniz metnin sonuna `</b>` ekleyin.
 
     **Örnek**: `<b>` ücretsiz deneme `</b>`
     
-    Yukarıdaki, ÜCRETSIZ deneme kelimesinin storefront içinde teklifin açıklamasına göre kalın olmasına neden olur. 
+    Yukarıdaki, ÜCRETSIZ deneme kelimesinin storefront içinde teklifin açıklamasına göre kalın olmasına neden olur.
 
     **ÜCRETSIZ DENEME**
 
-1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir satırda başlamasını istediğiniz içerikten önce `<br>` ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce `<br><br>` ekleyin. 
+1. İçeriğiniz arasına **satır sonları** eklemek için, yeni bir satırda başlamasını istediğiniz içerikten önce `<br>` ekleyin. Bir boşluk bırakmak ve içeriğin yeni bir satırda başlamasını sağlamak istiyorsanız, içerikten önce `<br><br>` ekleyin.
 
     **Örnek**:
 
-    Bu bir metin çizgisi. `<br>` yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>` aşağıda iki satırı başlatacak bir satırdır. 
+    Bu bir metin çizgisi. `<br>` yeni bir satırda başlatılacak bir metin çizgisi. `<br><br>` aşağıda iki satırı başlatacak bir satırdır.
 
     Yukarıdaki şöyle görünür:
 
-    Bu bir metin çizgisi. <br> Bu, yeni bir satırda başlatılacak bir metin çizgisi. <br><br> Bu, aşağıdaki iki satırı başlatacak bir satırdır. 
+    Bu bir metin çizgisi. <br> Bu, yeni bir satırda başlatılacak bir metin çizgisi. <br><br> Bu, aşağıdaki iki satırı başlatacak bir satırdır.
 
-1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, metnin başına ve sonuna karşılık gelen `<H*></H*>` etiketlerini ekleyin. 
+1. **Metnin boyutunu artırmak**istiyorsanız, önce metnin ne kadar büyük olmasını istediğinizi seçin. Aşağıdaki örnekleri kullanın. Metnin boyutunu seçtikten sonra, metnin başına ve sonuna karşılık gelen `<H*></H*>` etiketlerini ekleyin.
 
     **Örnek**:
 
@@ -299,7 +327,7 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 
 #### <a name="contact-information"></a>İletişim bilgileri
 
-- **Kişiler**: her müşteri kişisi için, bir çalışan **adı** , **telefon numarası**ve **e-posta** adresi sağlayın.  (Bunlar *herkese açık olarak gösterilmez* ). **Destek kişi** grubu Için bir **Destek URL 'si** de gereklidir.  (Bu bilgiler genel *olarak* görüntülenecektir).
+- **Kişiler**: her müşteri kişisi için, bir çalışan **adı**, **telefon numarası**ve **e-posta** adresi sağlayın.  (Bunlar *herkese açık olarak gösterilmez* ). **Destek kişi** grubu Için bir **Destek URL 'si** de gereklidir.  (Bu bilgiler genel *olarak* görüntülenecektir).
 
 **Destek kişisi** (gerekli): genel destek soruları için.
 
@@ -310,11 +338,11 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 #### <a name="files-and-images"></a>Dosyalar ve görüntüler
 
 - **Belgeler** (gerekli): teklif başına en az bir (1) ve en fazla üç (3) belge sağlayan, teklifiniz için ilgili pazarlama belgelerini ekleyin.
-- **Görüntüler** (isteğe bağlı): teklifinizin logo görüntülerinin Market genelinde görünebileceği birden çok yer vardır; şu boyutlarda olması gerekir--küçük: 48 x 48 piksel _(gerekli),_ orta: 90 x 90 piksel, büyük: 216 x 216 piksel _( gerekli),_ geniş: 255 x 115 piksel ve Hero: 815 x 290 piksel. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
+- **Görüntüler** (isteğe bağlı): teklifinizin logo görüntülerinin Market genelinde görünebileceği, şu boyutları gerektiren birden çok yer vardır:-küçük: 48 x 48 piksel _(gerekli),_ orta: 90 x 90 piksel, büyük: 216 x 216 piksel _(gerekli),_ geniş: 255 x 115 piksel ve Hero: 815 x 290 piksel. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Ekran görüntüleri** (gerekli): teklifinizi gösteren ekran görüntüleri ekleyin. En fazla beş (5) ekran görüntüsü eklenebilir ve 1280 x 720 piksel boyutunda olmalıdır. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı): teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.
 
-Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
+Bir sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
@@ -425,7 +453,7 @@ Müşterilerin listelenen fiyatı ödemesi gereken sıklığı seçin. En az bir
 - **Fiyat**: aylık ABD Doları veya yıl başına ABD Doları
 
 Yerel para birimi cinsinden ayarlanan fiyatlar (USD = Birleşik Devletler dolar), kurulum sırasında kullanılabilir olan geçerli döviz kurlarını kullanarak tüm seçili piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışarı aktarıp her bir pazardaki fiyatı inceleyerek yayımlamadan önce bu fiyatları doğrulayın. Tek bir pazarda özel fiyatlar ayarlamak isterseniz, fiyatlandırma elektronik tablosunu değiştirin ve içeri aktarın. Bu fiyatlandırmayı doğrulamak ve bu ayarların sahibi olmak sizin sorumluluğunuzdadır.
-*\*fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.*
+*\*Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.*
 
 Bir plan yayımlandıktan sonra nelerin değiştirebilecekleri hakkında bazı kısıtlamalar olduğundan, yayımlamadan önce fiyatlarınızı dikkatlice gözden geçirin:
 
@@ -476,7 +504,7 @@ Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
     - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Lütfen bölüm (ler) e geri dönün ve güncelleştirin.
+    - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölümüne dönüp güncelleştirmeniz gerekir.
     - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - Uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Teklifinizi ortak (veya özel bir teklif, özel hedef kitleye) yayımlamak için Iş Ortağı Merkezi 'ne dönmeniz ve teklif için **Go-Live** ' ı seçmeniz gerekir.

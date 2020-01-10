@@ -1,5 +1,5 @@
 ---
-title: Hesabınızı, Widevine korunan içeriğin çevrimdışı akışı için Yapılandırma-Azure
+title: Android için Azure Media Services v3 ile çevrimdışı Widevine akışı
 description: Bu konu başlığı altında, Widevine korumalı içeriğin çevrimdışı akışı için Azure Media Services hesabınızın nasıl yapılandırılacağı gösterilmektedir.
 services: media-services
 keywords: DASH, DRM, Widevine çevrimdışı modu, Exooynatıcı, Android
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 17416fce887f5f5b952232e284873e539fd68337
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974164"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779918"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı
 
@@ -42,7 +42,7 @@ Makalede ayrıca Wıdevine korumalı içeriğin çevrimdışı akışı ile ilgi
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Android cihazlarda Widevine için çevrimdışı DRM uygulamadan önce, önce şunları yapmalısınız:
 

@@ -5,47 +5,46 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 218031830a7516dfd539e1c0b9b665807822f38d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 9f3a13a097d7cce87aead4ec2d76ce7cbbb1a206
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533159"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778235"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcılarıyla ilgili sorunları giderme
 
 Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun giderme yöntemleri incelenmektedir.
+  
 
-## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
+## <a name="azure-blob-storage"></a>Azure Blob Depolama
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Hata iletisi: uzak sunucu bir hata döndürdü: (403) yasak
+### <a name="error-code--azurebloboperationfailed"></a>Hata kodu: AzureBlobOperationFailed
 
-- **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız oldu: 
+- **İleti**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
-    ```
-    Message: The remote server returned an error: (403) Forbidden.. 
-    Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
-    ```
+- **Neden**: BLOB depolama işlemi isabet sorunu.
 
-- **Neden**: olası bir neden, kullandığınız hizmet sorumlusu veya yönetilen kimliğin belirli klasöre/dosyaya erişim izni olmaması olabilir.
+- **Öneri**: ayrıntıdaki hatayı denetleyin. Blob yardım belgesi: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes bakın. Yardım gerekirse depolama ekibine başvurun.
 
-- **Çözüm**: kopyalamanız gereken tüm klasörler ve alt klasörlerde ilgili izinleri verin. [Bu belgeye](connector-azure-data-lake-store.md#linked-service-properties)başvurun.
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Hata iletisi: hizmet sorumlusu kullanılarak erişim belirteci alınamadı. ADAL hatası: service_unavailable
+### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Hata kodu: AzureBlobServiceNotReturnExpectedDataLength
 
-- **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız oldu:
+- **İleti**: `Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
 
-    ```
-    Failed to get access token by using service principal. 
-    ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
-    ```
 
-- **Neden**: Azure Active Directory sahip olduğu hizmet belirteci sunucusu (STS) kullanılamıyor, yani istekleri işlemek için çok meşgul OLMADıĞıNDA, HTTP hatası 503 döndürür. 
+### <a name="error-code--azureblobnotsupportmultiplefilesintosingleblob"></a>Hata kodu: AzureBlobNotSupportMultipleFilesIntoSingleBlob
 
-- **Çözüm**: birkaç dakika sonra kopyalama etkinliğini yeniden çalıştırın.
+- **İleti**: `Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
+
+
+### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Hata kodu: AzureStorageOperationFailedConcurrentWrite
+
+- **İleti**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -119,58 +118,85 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: bSon-UuidStardard ve UUIDLEGACY 'de UUID 'yi göstermenin iki yolu vardır. Varsayılan olarak, UuidLegacy veri okumak için kullanılır. MongoDB 'deki UUID verileriniz UuidStandard ise hatayla karşılaşacaktır.
 
 - **Çözüm**: MongoDB bağlantı dizesinde "**uuidRepresentation = Standard**" seçeneğini ekleyin. Daha fazla bilgi için bkz. [MongoDB bağlantı dizesi](connector-mongodb.md#linked-service-properties).
+            
 
-## <a name="sftp"></a>SFTP
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Hata iletisi: ' SshPublicKey ' kimlik doğrulama türü için geçersiz SFTP kimlik bilgisi belirtildi
+### <a name="error-code--adlsgen2operationfailed"></a>Hata kodu: AdlsGen2OperationFailed
 
-- **Belirtiler**: `SshPublicKey` kimlik doğrulaması kullanıyorsunuz ve şu hatayı alırsınız:
+- **İleti**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **Neden**: ADLS 2. işlem başarısız olduğunu gösteren hatayı oluşturur.
+
+- **Öneri**: ADLS 2. tarafından oluşturulan ayrıntılı hata iletisini denetleyin. Geçici bir hata nedeniyle, lütfen yeniden deneyin. Daha fazla yardıma ihtiyacınız varsa lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
+
+- **Neden**: hata Iletisi ' yasak ' içerdiğinde, kullandığınız hizmet sorumlusu veya yönetilen kimlik ADLS 2. erişmek için yeterli izne sahip olmayabilir.
+
+- **Öneri**: yardım belgesine bakın: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+
+- **Neden**: hata Iletisi ' ınternalservererror ' içerdiğinde hata ADLS 2. tarafından döndürülür.
+
+- **Öneri**: geçici bir hatadan kaynaklanıyor olabilir, lütfen yeniden deneyin. Sorun devam ederse lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
+
+
+### <a name="error-code--adlsgen2invalidurl"></a>Hata kodu: AdlsGen2InvalidUrl
+
+- **İleti**: `Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
+
+
+### <a name="error-code--adlsgen2invalidfolderpath"></a>Hata kodu: AdlsGen2InvalidFolderPath
+
+- **İleti**: `The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
+
+
+### <a name="error-code--adlsgen2operationfailedconcurrentwrite"></a>Hata kodu: AdlsGen2OperationFailedConcurrentWrite
+
+- **İleti**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+
+### <a name="error-code--adlsgen2timeouterror"></a>Hata kodu: AdlsGen2TimeoutError
+
+- **İleti**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+
+
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Hata iletisi: uzak sunucu bir hata döndürdü: (403) yasak
+
+- **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız oldu: 
 
     ```
-    Invalid Sftp credential provided for 'SshPublicKey' authentication type
+    Message: The remote server returned an error: (403) Forbidden.. 
+    Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Neden**: 3 olası neden vardır:
+- **Neden**: olası bir neden, kullandığınız hizmet sorumlusu veya yönetilen kimliğin belirli klasöre/dosyaya erişim izni olmaması olabilir.
 
-    1. SFTP bağlantılı hizmetini yazmak için ADF yazma Kullanıcı arabirimini kullanıyorsanız, bu hata, kullanmak üzere seçtiğiniz özel anahtarın yanlış biçimde olduğunu gösterir. Bir PKCS # 8 SSH özel anahtarı biçimi kullanabilirsiniz, ancak ADF 'nin yalnızca geleneksel SSH anahtar biçimini desteklediğini unutmayın. Daha belirgin olarak, PKCS # 8 biçimi ve geleneksel anahtar biçimi arasındaki fark PKCS # 8 anahtar içerikleri, " *-----ŞIFRELENMIŞ özel anahtarla-----* " ile başlar, ancak geleneksel anahtar biçimi " *-----BEGIN RSA özel anahtar-----* " ile başlar.
-    2. Özel anahtar içeriğini depolamak için Azure Key Vault kullanırsanız veya SFTP bağlantılı hizmetini yazmak için programmatical yöntemini kullanırsanız, bu hata özel anahtar içeriğinin yanlış olduğu anlamına gelir, büyük olasılıkla Base64 kodlamalı değildir.
-    3. Geçersiz kimlik bilgisi veya özel anahtar içeriği.
+- **Çözüm**: kopyalamanız gereken tüm klasörler ve alt klasörlerde ilgili izinleri verin. [Bu belgeye](connector-azure-data-lake-store.md#linked-service-properties)başvurun.
 
-- **Çözüm**: 
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Hata iletisi: hizmet sorumlusu kullanılarak erişim belirteci alınamadı. ADAL hatası: service_unavailable
 
-    - Nedeni #1 için, anahtarı geleneksel anahtar biçimine dönüştürmek için aşağıdaki komutları çalıştırın, sonra bunu ADF yazma Kullanıcı arabiriminde kullanın.
+- **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız oldu:
 
-        ```
-        # Decrypt the pkcs8 key and convert the format to traditional key format
-        openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+    ```
+    Failed to get access token by using service principal. 
+    ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
+    ```
 
-        chmod 600 traditional_format_key_file
+- **Neden**: Azure Active Directory sahip olduğu hizmet belirteci sunucusu (STS) kullanılamıyor, yani istekleri işlemek için çok meşgul OLMADıĞıNDA, HTTP hatası 503 döndürür. 
 
-        # Re-encrypte the key file using passphrase
-        ssh-keygen -f traditional_format_key_file -p
-        ```
+- **Çözüm**: birkaç dakika sonra kopyalama etkinliğini yeniden çalıştırın.
+                  
 
-    - Nedeni #2, bu tür bir dize oluşturmak Için, müşteri aşağıdaki 2 farklı şekilde kullanılabilir:
-    - Üçüncü taraf Base64 dönüştürme aracını kullanma: tüm özel anahtar içeriğini [Base64 kodlama ve kod çözme](https://www.base64encode.org/)gibi araçlara yapıştırın, Base64 biçimli bir dizeye kodlayın, ardından bu dizeyi anahtar kasasına yapıştırın veya SFTP bağlantılı hizmetini programlı bir şekilde yazmak için bu değeri kullanın.
-    - Kod C# kullanma:
-
-        ```c#
-        byte[] keyContentBytes = File.ReadAllBytes(privateKeyPath);
-        string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
-        ```
-
-    - Nedeni #3 için, anahtar dosyasının veya parolanın, SFTP sunucusuna düzgün şekilde erişmek üzere kullanıp kullanamayacağınızı doğrulamak üzere diğer araçları kullanarak doğru olup olmadığını iki kez denetleyin.
-  
-
-## <a name="azure-sql-data-warehouse--azure-sql-database--sql-server"></a>Azure SQL veri ambarı \ Azure SQL veritabanı \ SQL Server
+## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL veri ambarı/Azure SQL veritabanı/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Hata kodu: SqlFailedToConnect
 
-- **İleti**: `Cannot connect to SQL database: '%server;', Database: '%database;', User: '%user;'. Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access.`
+- **İleti**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
 - **Neden**: hata Iletisinde "SqlException" varsa, SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur.
 
-- **Öneri**: lütfen daha fazla ayrıntı için bu başvuru BELGESI içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Daha fazla yardıma ihtiyacınız varsa lütfen Azure SQL desteği 'ne başvurun.
+- **Öneri**: lütfen daha fazla ayrıntı için bu başvuru BELGESI içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
 - **Neden**: hata ILETISI "IP adresi olan istemci '... ' içeriyorsa) sunucusuna erişim izni verilmez "ve Azure SQL veritabanı 'na bağlanmaya çalışıyorsunuz, genellikle Azure SQL veritabanı güvenlik duvarı sorunu nedeniyle oluşur.
 
@@ -183,11 +209,12 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: hata Iletisinde "SqlException" varsa, SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur.
 
-- **Öneri**: lütfen daha fazla ayrıntı için bu başvuru BELGESI içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Daha fazla yardıma ihtiyacınız varsa lütfen Azure SQL desteği 'ne başvurun.
+- **Öneri**: SQL hatası net değilse, lütfen veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. En son sürüm SQL hatalarını oluşturabilir. Lütfen belge: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat Ayrıntılar bölümüne bakın.
+        SQL sorunlarını gidermek için lütfen daha fazla ayrıntı için bu başvuru belgesi içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
 - **Neden**: hata Iletisi "PdwManagedToNativeInteropException" içeriyorsa, genellikle kaynak ve havuz sütun boyutları arasında uyuşmazlık olur.
 
-- **Öneri**: lütfen hem kaynak hem de havuz sütunlarının boyutunu denetleyin. Daha fazla yardıma ihtiyacınız varsa lütfen Azure SQL desteği 'ne başvurun.
+- **Öneri**: hem kaynak hem de havuz sütunlarının boyutunu denetleyin. Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
 - **Neden**: hata Iletisi "InvalidOperationException" içeriyorsa, genellikle geçersiz giriş verileri oluşur.
 
@@ -200,7 +227,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: kimlik bilgisi yanlış veya oturum açma hesabı SQL veritabanına erişemiyor.
 
-- **Öneri**: lütfen oturum açma hesabının SQL veritabanına erişmek için yeterli izni olduğundan emin olun.
+- **Öneri**: oturum açma hesabının SQL veritabanına erişmek için yeterli izni olup olmadığını denetleyin.
 
 
 ### <a name="error-code--sqlopenconnectiontimeout"></a>Hata kodu: SqlOpenConnectionTimeout
@@ -214,24 +241,24 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Hata kodu: SqlAutoCreateTableTypeMapFailed
 
-- **İleti**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(colunm name:'%colunmName;') in auto-create table.`
+- **İleti**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
 - **Neden**: otomatik oluşturma tablosu kaynak gereksinimini karşılamaz.
 
-- **Öneri**: lütfen ' eşlemeler ' içindeki sütun türünü güncelleştirin veya hedef sunucuda havuz tablosunu el ile oluşturun.
+- **Öneri**: ' eşlemeler ' içindeki sütun türünü güncelleştirin veya hedef sunucuda havuz tablosunu el ile oluşturun.
 
 
 ### <a name="error-code--sqldatatypenotsupported"></a>Hata kodu: SqlDataTypeNotSupported
 
-- **İleti**: `A database operation failed. Please check the SQL errors.`
+- **İleti**: `A database operation failed. Check the SQL errors.`
 
 - **Neden**: sorun SQL kaynağında olursa ve hata SqlDateTime overflow ile ilgiliyse, veri değeri Logic Type aralığı üzerinden (1/1/1753 12:00:00 ÖÖ-12/31/9999 11:59:59 PM) oluşur.
 
-- **Öneri**: lütfen türü kaynak SQL sorgusunda dizeye atayın veya kopyalama etkinliği sütun eşlemesinde sütun türünü ' String ' olarak değiştirin.
+- **Öneri**: türü kaynak SQL sorgusunda dizeye atayın veya kopyalama etkinliği sütun eşlemesinde sütun türünü ' String ' olarak değiştirin.
 
 - **Neden**: sorun SQL havuzunda gerçekleşirse ve hata SqlDateTime overflow ile ilgiliyse, veri değeri havuz tablosu 'nda izin verilen aralığın üzerinde olur.
 
-- **Öneri**: lütfen havuz tablosunda karşılık gelen sütun türünü ' datetime2 ' türüne güncelleştirin.
+- **Öneri**: havuz tablosunda karşılık gelen sütun türü ' datetime2 ' türüne güncelleştirin.
 
 
 ### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Hata kodu: SqlInvalidDbStoredProcedure
@@ -240,7 +267,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: belirtilen saklı yordam geçerli değil. Bu, saklı yordamın herhangi bir veri döndürmemesinin nedeni olabilir.
 
-- **Öneri**: lütfen SQL araçları 'nın saklı yordamını doğrulayın. Saklı yordamın verileri döndüre, emin olun.
+- **Öneri**: SAKLı yordamı SQL araçları ile doğrulayın. Saklı yordamın verileri döndüre, emin olun.
 
 
 ### <a name="error-code--sqlinvaliddbquerystring"></a>Hata kodu: SqlInvalidDbQueryString
@@ -249,7 +276,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: belirtilen SQL sorgusu geçerli değil. Sorgunun herhangi bir veri döndürmediğinden kaynaklanabilir
 
-- **Öneri**: lütfen SQL araçları Ile SQL sorgusunu doğrulayın. Sorgunun verileri döndüre, emin olun.
+- **Öneri**: SQL sorgusunu SQL araçları ile doğrulayın. Sorgunun verileri döndüre, emin olun.
 
 
 ### <a name="error-code--sqlinvalidcolumnname"></a>Hata kodu: SqlInvalidColumnName
@@ -258,30 +285,39 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: sütun bulunamıyor. Olası yapılandırma yanlış.
 
-- **Öneri**: lütfen sorgudaki sütunu, veri kümesindeki ' Structure ' öğesini ve etkinlik içindeki ' eşlemeler ' öğesini doğrulayın.
+- **Öneri**: sorgudaki sütunu, veri kümesindeki ' Structure ' öğesini ve etkinlik içindeki ' eşlemeler ' doğrulamasını doğrulayın.
+
+
+### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Hata kodu: SqlColumnNameMismatchByCaseSensitive
+
+- **İleti**: `Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
 
 
 ### <a name="error-code--sqlbatchwritetimeout"></a>Hata kodu: SqlBatchWriteTimeout
 
-- **İleti**: `Timeout in SQL write opertaion.`
+- **İleti**: `Timeouts in SQL write operation.`
 
 - **Neden**: SQL veritabanı geçici hatası olabilir.
 
-- **Öneri**: sorun yeniden üretme varsa lütfen Azure SQL desteği 'ne başvurun.
+- **Öneri**: Lütfen yeniden deneyin. Sorun yeniden üretme varsa Azure SQL desteği 'ne başvurun.
 
 
-### <a name="error-code--sqlbatchwriterollbackfailed"></a>Hata kodu: SqlBatchWriteRollbackFailed
+### <a name="error-code--sqlbatchwritetransactionfailed"></a>Hata kodu: SqlBatchWriteTransactionFailed
 
-- **İleti**: `Timeout in SQL write operation and rollback also fail.`
+- **İleti**: `SQL transaction commits failed`
 
-- **Neden**: SQL veritabanı geçici hatası olabilir.
+- **Neden**: özel durum ayrıntıları işlem zaman aşımını sürekli söyledi, tümleştirme çalışma zamanı ve veritabanı arasındaki ağ gecikmesi varsayılan eşikten 30 saniye daha yüksektir.
 
-- **Öneri**: lütfen bağlı hizmet bağlantı dizesini daha büyük bağlantı zaman aşımı değeri ile güncelleştirmeyi yeniden deneyin.
+- **Öneri**: SQL bağlantılı hizmet bağlantı dizesini ' bağlantı zaman aşımı ' değeri 120 veya üzeri olarak güncelleştirin ve etkinliği yeniden çalıştırın.
+
+- **Neden**: özel durum ayrıntıları SqlConnection 'ı kopuk olarak söylüyor, yalnızca geçici ağ ARıZASı veya SQL veritabanı tarafı sorunu olabilir
+
+- **Öneri**: lütfen etkinliği yeniden deneyın ve SQL veritabanı tarafı ölçümlerini inceleyin.
 
 
 ### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Hata kodu: Sqlbulkcopyınvalidcolumnlength
 
-- **İleti**: `SQL Bulk Copy failed due to received an invalid column length from the bcp client.`
+- **İleti**: `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
 - **Neden**: bcp istemcisinden geçersiz bir sütun uzunluğu aldığından SQL toplu kopyalama başarısız oldu.
 
@@ -290,11 +326,17 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Hata kodu: Sqlconnectionısclosed
 
-- **İleti**: `The connection is closed by SQL database.`
+- **İleti**: `The connection is closed by SQL Database.`
 
 - **Neden**: yüksek eşzamanlı çalıştırma ve sunucu bağlantısı sona erdiğinde SQL bağlantısı SQL veritabanı tarafından kapalıdır.
 
-- **Öneri**: uzak sunucu SQL bağlantısını kapatır. Lütfen yeniden deneyin. Sorun yeniden üretme varsa lütfen Azure SQL desteği 'ne başvurun.
+- **Öneri**: uzak sunucu SQL bağlantısını kapattı. Lütfen yeniden deneyin. Sorun yeniden üretme varsa Azure SQL desteği 'ne başvurun.
+
+
+### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Hata kodu: SqlCreateTableFailedUnsupportedType
+
+- **İleti**: `Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
+
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hata iletisi: bir karakter dizesinden uniqueidentifier öğesine dönüştürülürken dönüştürme başarısız oldu
 
@@ -373,35 +415,257 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Çözüm**: aynı sorguyu SSMS 'de çalıştırın ve aynı sonucu görüp gör, kontrol edin. Alıyorsanız sorun gidermek için Azure SQL Veri Ambarı için bir destek bileti açın ve SQL DW sunucunuzla veritabanınızın adını belirtin.
             
 
-## <a name="azure-blob-storage"></a>Azure Blob Depolama
+## <a name="delimited-text-format"></a>Sınırlandırılmış Metin Biçimi
 
-### <a name="error-code--azurebloboperationfailed"></a>Hata kodu: AzureBlobOperationFailed
+### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>Hata kodu: Delimitedtextcolumnsüs Otallownull
 
-- **İleti**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+- **İleti**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **Neden**: BLOB depolama işlemi isabet sorunu.
+- **Neden**: etkinlikte ' firstRowAsHeader ' ayarlandığında, ilk satır sütun adı olarak kullanılır. Bu hata, ilk satırın boş değer içerdiği anlamına gelir. Örneğin: ' ColumnA,, ColumnB '.
 
-- **Öneri**: Lütfen ayrıntılar bölümündeki hatayı kontrol edin. Lütfen blob yardım belgesi: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes bakın. Yardım gerekirse depolama ekibine başvurun.
+- **Öneri**: ilk satırı denetleyin ve boş değer varsa değeri düzeltir.
+
+
+### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Hata kodu: Delimitedtextmorecolumnsıısdefined tanımlandı
+
+- **İleti**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
+
+- **Neden**: sorunlu satırın sütun sayısı, ilk satırın sütun sayısından büyük. Bu durum, veri sorunu ya da yanlış sütun sınırlayıcısı/quote char ayarlarından kaynaklanıyor olabilir.
+
+- **Öneri**: lütfen satır sayısını hata iletisinde alın, satırın sütununu kontrol edin ve verileri onarın.
+
+- **Neden**: beklenen sütun sayısı "1" ise hata ILETISINDE, ADF 'nin dosya (lar) yanlışlıkla ayrıştırmasına neden olan yanlış sıkıştırma veya biçim ayarlarını belirtmeiyorduk.
+
+- **Öneri**: kaynak dosya (lar) ile eşleştiğinden emin olmak için biçim ayarlarını kontrol edin.
+
+- **Neden**: kaynağınız bir klasörysa, belirtilen klasörde bulunan dosyaların farklı bir şeması olması mümkündür.
+
+- **Öneri**: belirtilen klasörde bulunan dosyaların aynı şemaya sahip olduğundan emin olun.
+
+
+### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Hata kodu: DelimitedTextIncorrectRowDelimiter
+
+- **İleti**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+
+
+### <a name="error-code--delimitedtexttoolargecolumncount"></a>Hata kodu: DelimitedTextTooLargeColumnCount
+
+- **İleti**: `Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
+
+
+### <a name="error-code--delimitedtextinvalidsettings"></a>Hata kodu: DelimitedTextInvalidSettings
+
+- **İleti**: `%settingIssues;`
 
 
 
-## <a name="azure-data-lake-gen2"></a>Azure Data Lake Gen2
+## <a name="dynamics-365common-data-servicedynamics-crm"></a>Dynamics 365/Common Data Service/Dynamics CRM
 
-### <a name="error-code--adlsgen2operationfailed"></a>Hata kodu: AdlsGen2OperationFailed
+### <a name="error-code--dynamicscreateserviceclienterror"></a>Hata kodu: DynamicsCreateServiceClientError
 
-- **İleti**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+- **İleti**: `This is a transient issue on dynamics server side. Try to rerun the pipeline.`
 
-- **Neden**: ADLS 2. işlem başarısız olduğunu gösteren hatayı oluşturur.
+- **Neden**: Bu, Dynamics Server tarafında geçici bir sorundur.
 
-- **Öneri**: lütfen ADLS 2. tarafından oluşturulan ayrıntılı hata iletisini denetleyin. Geçici bir hata nedeniyle, lütfen yeniden deneyin. Daha fazla yardıma ihtiyacınız varsa lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
+- **Öneri**: işlem hattını yeniden çalıştırın. Başarısız olursa paralelliği azaltmayı deneyin. Hala başarısız olduysa, lütfen Dynamics destek birimine başvurun.
 
-- **Neden**: hata Iletisi ' yasak ' içerdiğinde, kullandığınız hizmet sorumlusu veya yönetilen kimlik ADLS 2. erişmek için yeterli izne sahip olmayabilir.
 
-- **Öneri**: lütfen yardım belgesine başvurun: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
 
-- **Neden**: hata Iletisi ' ınternalservererror ' içerdiğinde hata ADLS 2. tarafından döndürülür.
+## <a name="json-format"></a>JSON biçimi
 
-- **Öneri**: geçici bir hatadan kaynaklanıyor olabilir, lütfen yeniden deneyin. Sorun devam ederse lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
+### <a name="error-code--jsoninvalidarraypathdefinition"></a>Hata kodu: Jsonınvalidarraypathdefinition
+
+- **İleti**: `Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
+
+
+### <a name="error-code--jsonemptyjobjectdata"></a>Hata kodu: JsonEmptyJObjectData
+
+- **İleti**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
+
+
+### <a name="error-code--jsonnullvalueinpathdefinition"></a>Hata kodu: Jsonnullvalueınpathdefinition
+
+- **İleti**: `Null JSONPath detected in JsonPathDefinition.`
+
+
+### <a name="error-code--jsonunsupportedhierarchicalcomplexvalue"></a>Hata kodu: JsonUnsupportedHierarchicalComplexValue
+
+- **İleti**: `The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
+
+
+### <a name="error-code--jsonconflictpartitiondiscoveryschema"></a>Hata kodu: JsonConflictPartitionDiscoverySchema
+
+- **İleti**: `Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
+
+
+### <a name="error-code--jsoninvaliddataformat"></a>Hata kodu: Jsonınvaliddataformat
+
+- **İleti**: `Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
+
+
+### <a name="error-code--jsoninvaliddatamixedarrayandobject"></a>Hata kodu: Jsonınvaliddatamixedarrayandobject
+
+- **İleti**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
+
+
+
+## <a name="parquet-format"></a>Parquet biçimi
+
+### <a name="error-code--parquetjavainvocationexception"></a>Hata kodu: Parquetjavaınvocationexception
+
+- **İleti**: `An error occurred when invoking java, message: %javaException;.`
+
+- **Neden**: hata iletisi ' Java. lang. OutOfMemory ', ' Java yığın alanı ' ve ' doublecapacity ' içerdiğinde, genellikle tümleştirme çalışma zamanının eski sürümünde bir bellek yönetimi sorunudur.
+
+- **Öneri**: şirket içinde barındırılan Integration Runtime kullanıyorsanız ve sürüm 3.20.7159.1 'den daha eski ise en son sürüme yükseltmeyi önerin.
+
+- **Neden**: hata iletisi ' Java. lang. OutOfMemory ' içerdiğinde, tümleştirme çalışma zamanı dosyaları işlemek için yeterli kaynağa sahip değil.
+
+- **Öneri**: Tümleştirme çalışma zamanında eşzamanlı çalıştırmaları sınırlayın. Şirket içinde barındırılan Integration Runtime için, 8 GB 'a eşit veya daha büyük belleği olan güçlü bir makineye kadar ölçeklendirin.
+
+- **Neden**: hata Iletisi ' NullPointerReference ' içerdiğinde, geçici bir hata olabilir.
+
+- **Öneri**: Lütfen yeniden deneyin. Sorun devam ederse lütfen desteğe başvurun.
+
+
+### <a name="error-code--parquetinvalidfile"></a>Hata kodu: Parquetınvalidfile
+
+- **İleti**: `File is not a valid parquet file.`
+
+- **Neden**: Parquet dosyası sorunu.
+
+- **Öneri**: girişin geçerli bir Parquet dosyası olduğunu denetleyin.
+
+
+### <a name="error-code--parquetnotsupportedtype"></a>Hata kodu: ParquetNotSupportedType
+
+- **İleti**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
+
+- **Neden**: Parquet biçimi Azure Data Factory desteklenmiyor.
+
+- **Öneri**: kaynak verileri iki kez kontrol edin. Belge: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs bakın.
+
+
+### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Hata kodu: ParquetMissedDecimalPrecisionScale
+
+- **İleti**: `Decimal Precision or Scale information is not found in schema for column: %column;.`
+
+- **Neden**: duyarlık ve ölçek sayısını ayrıştırmayı deneyin, ancak böyle bir bilgi sağlanmaz.
+
+- **Öneri**: ' kaynak ' doğru duyarlık ve ölçek döndürmüyor. Sorun sütununun duyarlığını ve ölçeğini denetleyin.
+
+
+### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Hata kodu: ParquetInvalidDecimalPrecisionScale
+
+- **İleti**: `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
+
+- **Neden**: şema geçersiz.
+
+- **Öneri**: sorun sütununun duyarlılığını ve ölçeğini denetleyin.
+
+
+### <a name="error-code--parquetcolumnnotfound"></a>Hata kodu: ParquetColumnNotFound
+
+- **İleti**: `Column %column; does not exist in Parquet file.`
+
+- **Neden**: kaynak şemasının havuz şeması ile eşleşmemesi.
+
+- **Öneri**: ' Activity ' içindeki ' eşlemeleri ' öğesini işaretleyin. Kaynak sütunun doğru havuz sütunuyla eşlenip eşlendiğinden emin olun.
+
+
+### <a name="error-code--parquetinvaliddataformat"></a>Hata kodu: Parquetınvaliddataformat
+
+- **İleti**: `Incorrect format of %srcValue; for converting to %dstType;.`
+
+- **Neden**: veriler eşlemeler. Source içinde belirtilen türe dönüştürülemiyor
+
+- **Öneri**: kaynak verileri iki kez kontrol edin veya kopyalama etkinliği sütun eşlemesinde bu sütun için doğru veri türünü belirtin. Belge: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs bakın.
+
+
+### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Hata kodu: ParquetDataCountNotMatchColumnCount
+
+- **İleti**: `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
+
+- **Neden**: kaynak sütun sayısı ve havuz sütun sayısı uyuşmazlığı
+
+- **Öneri**: çift Check kaynak sütunu sayısı ' Mapping ' içindeki havuz sütun sayısıyla aynı.
+
+
+### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>Hata kodu: ParquetDataTypeNotMatchColumnType
+
+- **İleti**:% srctype; veri türü Belirtilen% dstType; sütun türü ile eşleşmiyor '% columnIndex; ' sütununda.
+
+- **Neden**: kaynaktaki veri, havuzda tanımlı olarak dönüştürülemez
+
+- **Öneri**: lütfen Mapping. Sink içinde doğru bir tür belirtin.
+
+
+### <a name="error-code--parquetbridgeinvaliddata"></a>Hata kodu: Parquetköprüınvaliddata
+
+- **İleti**: `%message;`
+
+- **Neden**: sınırlama üzerinde veri değeri
+
+- **Öneri**: Lütfen yeniden deneyin. Sorun devam ederse lütfen bizimle iletişime geçin.
+
+
+### <a name="error-code--parquetunsupportedinterpretation"></a>Hata kodu: Parquetunsupportedyorumlama
+
+- **İleti**: `The given interpretation '%interpretation;' of parquet format is not supported.`
+
+- **Neden**: desteklenmeyen senaryo
+
+- **Öneri**: ' Parquetınterpotfor ' ' mini SQL ' olmamalıdır.
+
+
+### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Hata kodu: ParquetUnsupportFileLevelCompressionOption
+
+- **İleti**: `File level compression is not supported for Parquet.`
+
+- **Neden**: desteklenmeyen senaryo
+
+- **Öneri**: yükte ' CompressionType ' öğesini kaldırın.
+
+
+
+## <a name="general-copy-activity-error"></a>Genel kopyalama etkinliği hatası
+
+### <a name="error-code--jrenotfound"></a>Hata kodu: JreNotFound
+
+- **İleti**: `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
+
+- **Neden**: şirket içinde barındırılan tümleştirme çalışma zamanı Java çalışma zamanı bulamıyor. Java çalışma zamanı, belirli bir kaynağı okumak için gereklidir.
+
+- **Öneri**: Tümleştirme çalışma zamanı ortamınızı, belge: başvuru https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime denetleyin
+
+
+### <a name="error-code--wildcardpathsinknotsupported"></a>Hata kodu: Yavaya Cardpathsinyatsupported
+
+- **İleti**: `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
+
+- **Neden**: havuz veri kümesi joker karakteri desteklemiyor.
+
+- **Öneri**: havuz veri kümesini denetleyin ve Joker değer olmadan yolu düzeltir.
+
+
+### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Hata kodu: MappingInvalidPropertyWithEmptyValue
+
+- **İleti**: `One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
+
+
+### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Hata kodu: Mappingınvalidpropertywithnamepathandordinal
+
+- **İleti**: `Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
+
+
+### <a name="error-code--mappingduplicatedordinal"></a>Hata kodu: MappingDuplicatedOrdinal
+
+- **İleti**: `Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
+
+
+### <a name="error-code--mappinginvalidordinalforsinkcolumn"></a>Hata kodu: MappingInvalidOrdinalForSinkColumn
+
+- **İleti**: `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

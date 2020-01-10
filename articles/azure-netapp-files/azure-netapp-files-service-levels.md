@@ -1,6 +1,6 @@
 ---
-title: Azure için NetApp dosyaları hizmet düzeyleri | Microsoft Docs
-description: Azure NetApp dosyaları hizmet düzeyleri için aktarım hızı performansı açıklar.
+title: Azure NetApp Files için hizmet düzeyleri | Microsoft Docs
+description: Azure NetApp Files hizmet düzeyleri için üretilen iş performansını açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,50 +12,51 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f9c427045c9d42f6a11cc4bcc798cfc47a4428c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523116"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832577"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files için hizmet düzeyleri
-Hizmet düzeyleri kapasitesi havuzu özniteliği var. Hizmet düzeyleri tanımlanmış ve bir birimde birime atanan kota göre kapasitesi havuzu için izin verilen en yüksek aktarım tarafından ayrıştırılan.
+Hizmet düzeyleri, bir kapasite havuzunun özniteliğidir. Hizmet düzeyleri, birime atanan kota temelinde kapasite havuzundaki bir birim için izin verilen en yüksek aktarım hızına göre tanımlanır ve farklılaştırılır.
 
 ## <a name="supported-service-levels"></a>Desteklenen hizmet düzeyleri
 
-Azure NetApp dosyaları, üç hizmet düzeylerini destekler: *Ultra yüksek*, *Premium*, ve *standart*. 
+Azure NetApp Files üç hizmet düzeyini destekler: *Ultra*, *Premium*ve *Standart*. 
 
-* <a name="Ultra"></a>Ultra yüksek depolama
+* <a name="Ultra"></a>Ultra depolama
 
-    128 MiB/sn üretilen iş birimi kotasının atanmış 1 TiB başına en fazla Ultra yüksek depolama katmanı sağlar. 
+    Ultra Storage katmanı, 1 TiB başına birim kotasının atandığı 128 MIB/sn 'ye kadar işleme sağlar. 
 
-* <a name="Premium"></a>Premium depolama
+* <a name="Premium"></a>Premium Depolama
 
-    Premium depolama katmanını 64 MiB/sn üretilen iş birimi kotasının atanmış 1 TiB başına en fazla sağlar. 
+    Premium depolama katmanı, atanan birim kotasının 1 TiB 'ye kadar en fazla 64 MIB/sn kapasitesi sağlar. 
 
 * <a name="Standard"></a>Standart depolama
 
-    16 MiB/sn üretilen iş birimi kotasının atanmış 1 TiB başına en fazla standart depolama katmanı sağlar.
+    Standart depolama katmanı, 1 TiB başına birim kotası atanan 16 adede kadar MIB/sn aktarım hızı sağlar.
 
 ## <a name="throughput-limits"></a>İşleme sınırları
 
-Bir birim için aktarım hızı sınırı aşağıdaki faktörleri birleşimi tarafından belirlenir:
-* Hizmet düzeyi ait olduğu birimin kapasitesi havuzu
+Bir birim için üretilen iş sınırı, aşağıdaki faktörlerin birleşimiyle belirlenir:
+* Birimin ait olduğu kapasite havuzunun hizmet düzeyi
 * Birime atanan kota  
 
-Bu kavram Aşağıdaki diyagramda gösterilmiştir:
+Bu kavram aşağıdaki diyagramda gösterilmiştir:
 
-![Hizmet düzeyi çizim](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
+![Hizmet düzeyi çizimi](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-Yukarıdaki örnek 1'de bir kapasitesi havuzu atanan kota 2 TiB Premium depolama katmanı ile bir birimden 128 MiB/sn aktarım hızı sınırı atanacak (2 TiB * 64 MiB/sn). Bu senaryo, kapasitesi havuzu boyutu veya gerçek hacmi tüketim bağımsız olarak geçerlidir.
+Yukarıdaki örnek 1 ' de, 2 GB kota atanmış olan Premium Depolama katmanına sahip bir kapasite havuzundan bir birime 128 MIB/s (2 TiB * 64 MiB/sn) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
 
-Yukarıdaki örnek 2'de bir kapasitesi havuzu atanan kota 100 GiB Premium depolama katmanı ile bir birimden 6.25 MiB/sn aktarım hızı sınırı atanacak (0.09765625 TiB * 64 MiB/sn). Bu senaryo, kapasitesi havuzu boyutu veya gerçek hacmi tüketim bağımsız olarak geçerlidir.
+Yukarıdaki 2. örnekte, 100 GiB kotasının atandığı Premium Depolama katmanına sahip bir kapasite havuzundan bir birime, 6,25 MiB/sn (0,09765625 TiB * 64 MiB/s) aktarım hızı sınırı atanır. Bu senaryo, kapasite havuzu boyutu veya gerçek birim tüketimi ne olursa olsun geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz: [Azure NetApp fiyatlandırma sayfasına dosyaları](https://azure.microsoft.com/pricing/details/storage/netapp/) fiyatı, farklı hizmet düzeyleri için
-- Bkz: [Azure NetApp dosyaları için maliyet modeli](azure-netapp-files-cost-model.md) kapasitesi havuzu kapasite tüketimini hesaplama 
+- Farklı hizmet düzeylerinin fiyatı için [Azure NetApp Files fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/netapp/) bakın
+- Kapasite havuzundaki kapasite tüketiminin hesaplanması için bkz. [maliyet modeli Azure NetApp Files](azure-netapp-files-cost-model.md) 
 - [Kapasitesi havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
+- [Azure NetApp Files için bkz. hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)

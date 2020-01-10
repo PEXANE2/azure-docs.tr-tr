@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: b36e5d88c67a4aabf530aa8d945c17870e9c126b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892660"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778133"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (Python)
 
@@ -29,15 +29,11 @@ Hızlı başlangıçta, önceden yazılmış iki Python uygulaması kullanılır
 
 * Simülasyon cihazında doğrudan yöntemler çağıran bir arka uç uygulaması. Bir cihazda doğrudan yöntem çağırmak için bu uygulama, IoT hub’ınızda sunucu tarafı uç noktasına bağlanır.
 
-> [!IMPORTANT]
-> Bu makalede, arka uç uygulaması Python v1 hizmeti istemcisini kullanır ve cihaz uygulaması Python v2 cihaz istemcisini kullanır. V1 hizmeti istemcisi, Azure IoT Python SDK GitHub deposunun [v1 tarafından kullanım dışı dalında](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated) bulunur. V1 hizmeti istemcisi, *Azure-ıothub-Service-Client*Için PIP paketi, geliştirme makinenizde yüklü Python sürümü dahil olmak üzere katı ve platforma özgü gereksinimlere sahiptir. Bu gereksinimler **Önkoşullar** bölümünde belirtilmiştir.
->
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
 
@@ -47,13 +43,7 @@ az extension add --name azure-cli-iot-ext
 
 Örnek Python projesini önceden indirmediyseniz https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip adresinden indirip ZIP arşivini ayıklayın.
 
-**Windows Için**v1 IoT Hub hizmeti Istemci PIP paketini yüklemek için aşağıdaki Önkoşullar gereklidir:
-
-* [Python sürümü **3.6. x** ](https://www.python.org/downloads/) ' in yüklü olduğundan emin olun.
-
-* [Visual Studio Için Microsoft C++ Visual Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) yüklü olduğundan emin olun.
-
-**Windows dışı platformlar Için**v1 SDK belgelerindeki [Python PIP paketi dağıtım tablosuna](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md#python-pip-package-distribution-table) bakın. Platformunuz için belirtilen Python 3. x sürümünün ve tüm ilişkili gereksinimlerin geliştirme makinenizde yüklü olduğundan emin olun. 2,7 yerine Python 3. x yüklenmesi, bu hızlı başlangıçta da kullanılan v2 cihaz istemcisinde zaman uyumsuz işlemlere izin verebilir.
+Geliştirme makinenizde [Python sürüm 3,7 veya sonraki bir sürümü](https://www.python.org/downloads/) yüklü. Desteklenen Python 'un diğer sürümleri için SDK belgelerindeki [Azure IoT cihaz özellikleri](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) ' ne bakın.
 
 ## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
@@ -147,7 +137,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulamasını çalıştırın:
@@ -163,10 +153,6 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
     Arka uç uygulamasını çalıştırdıktan sonra, simülasyon cihazını çalıştıran konsol penceresinde bir ileti ve ileti değişikliklerini gönderdiği hızı görürsünüz:
 
     ![Sanal istemcide değişiklik](./media/quickstart-control-device-python/SimulatedDevice-2.png)
-
-    > [!NOTE]
-    > *İothub_service_client*içeri aktarırken bir hata alırsanız, Python 'un tam sürümünü ve platformunuz için belirtilen diğer ilişkili yapıtları [önkoşullara](#prerequisites)yüklediğinizden emin olun. Önkoşulları doğruladıktan sonra yine de bir hata alırsanız, platformunuz için hizmet istemcisi oluşturmanız gerekebilir. Platformunuz için SDK 'Yı oluşturmayı öğrenmek için v1 SDK belgelerindeki [devbox kurulum yönergelerine](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) bakın.
-    >
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

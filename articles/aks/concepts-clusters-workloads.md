@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 349d7d8206cc4139de020234ee063e85f9a8f9ef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120629"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768648"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -95,24 +95,24 @@ Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bi
 |---|---|---|---|---|---|---|---|
 |Kule ayrılmış (miliçekirdekler)|60|100|140|180|260|420|740|
 
-- **Bellek** için ayrılan bellek, iki değerin toplamını içerir
+- **Bellek** -aks tarafından kullanılan bellek, iki değerin toplamını içerir.
 
-1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: bellek. kullanılabilir < 750Mı, bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır.
+1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: *bellek. kullanılabilir < 750Mı*, bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır. Kullanılabilir bellek, 750Mı eşiğinin ötesinde azaldıkça bu bir reaktif eylemdir.
 
-2. İkinci değer, kubelet arka plan programının düzgün şekilde çalışması için (kuuya-ayrılmış) bir aşamalı bellek hızı değeridir.
+2. İkinci değer, kubelet arka plan programının düzgün çalışması için (kuuya-ayrılmış) bellek ayırmalarının aşamalı oranıdır.
     - ilk 4 GB belleğin %25 ' i
     - sonraki 4 GB belleğin %20 ' si (8 GB 'a kadar)
     - Sonraki 8 GB belleğin %10 ' ından (16 GB 'a kadar)
     - sonraki 112 GB belleğin %6 ' ından (128 GB 'a kadar)
     - 128 GB üzerinde herhangi bir belleğin %2 ' i
 
-Kubernetes ve aracı düğümlerini sağlıklı tutmak için uygulanan bu iki tanımlı kuralın sonucu olarak, ayrılanmasa CPU 'SU ve bellek miktarı düğümün kendisinden daha az görünür. Yukarıda tanımlanan kaynak ayırmaları değiştirilemez.
+Yukarıdaki bellek ve CPU ayırması kuralları, aracı düğümlerinin sağlıklı tutulması için kullanılır, bazı barındırma sistemi sistemleri küme durumu için kritik öneme sahiptir. Bu ayırma kuralları, düğümün bir Kubernetes kümesinin parçası olmasaydı daha az ayrılanmasa belleği ve CPU 'YU rapormasına neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
 
-Örneğin, bir düğüm 7 GB sunuyorsa, bellek ayırıcıdan %34 ' ı rapor eder:
+Örneğin, bir düğüm 7 GB sunuyorsa, en fazla %34 bellek ayırıcıdan çıkarılan eşiğin üzerinde% ' ü rapor eder.
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-Kubernetes için ayırmaların yanı sıra, temeldeki düğüm işletim sistemi, işletim sistemi işlevlerini sürdürmek için CPU ve bellek kaynaklarının bir miktarını da ayırır.
+Kubernetes 'in kendine yönelik ayırmaların yanı sıra, temeldeki düğüm IŞLETIM sistemi, işletim sistemi işlevlerini sürdürmek için bir miktar CPU ve bellek kaynağı da ayırır.
 
 İlişkili en iyi uygulamalar için bkz. [AKS 'deki temel Zamanlayıcı özellikleri Için en iyi uygulamalar][operator-best-practices-scheduler].
 
@@ -152,7 +152,7 @@ Yığınların nerede zamanlandığını denetleme hakkında daha fazla bilgi i�
 
 Kubernetes, uygulamanızın bir örneğini çalıştırmak için *Pod* 'yi kullanır. Pod, uygulamanızın tek bir örneğini temsil eder. Bir pod 'un birden çok kapsayıcı içerebileceği gelişmiş senaryolar olsa da, pods 'nin genellikle kapsayıcı ile 1:1 eşlemesi vardır. Bu çok Kapsayıcılı FID 'ler aynı düğümde birlikte zamanlanır ve kapsayıcıların ilgili kaynakları paylaşmasına izin verir.
 
-Pod oluşturduğunuzda, belirli miktarda CPU veya bellek kaynağı istemek için *kaynak sınırlarını* tanımlayabilirsiniz. Kubernetes Zamanlayıcı, isteği karşılamak için kaynakları kullanılabilir kaynaklarla bir düğümde çalışacak şekilde zamanlamaya çalışır. Ayrıca, belirli bir pod 'un temeldeki düğümden çok fazla bilgi işlem kaynağı tüketmesini önleyen en fazla kaynak sınırı belirtebilirsiniz. Kubernetes Scheduler 'ın hangi kaynakların gerekli ve izin verileceğini anlamasına yardımcı olmak için tüm yığınların kaynak sınırlarını içermesi en iyi uygulamadır.
+Pod oluşturduğunuzda, belirli miktarda CPU veya bellek kaynağı istemek için *kaynak istekleri* tanımlayabilirsiniz. Kubernetes Zamanlayıcı, isteği karşılamak için kaynakları kullanılabilir kaynaklarla bir düğümde çalışacak şekilde zamanlamaya çalışır. Ayrıca, belirli bir pod 'un temeldeki düğümden çok fazla bilgi işlem kaynağı tüketmesini önleyen en fazla kaynak sınırı belirtebilirsiniz. Kubernetes Scheduler 'ın hangi kaynakların gerekli ve izin verileceğini anlamasına yardımcı olmak için tüm yığınların kaynak sınırlarını içermesi en iyi uygulamadır.
 
 Daha fazla bilgi için bkz. [Kubernetes Pod][kubernetes-pods] ve [Kubernetes Pod yaşam döngüsü][kubernetes-pod-lifecycle].
 

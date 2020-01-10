@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933640"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770025"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
 
@@ -46,7 +46,7 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 | Açık kaynak | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
 | Geliştirme dili    | C | C# |
 | Desteklenen Windows platformları? | Hayır | Evet |
-| Windows önkoşulları | --- | ['YA](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| Windows önkoşulları | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Desteklenen Linux platformları? | Evet, x64 ve x86 | Evet, yalnızca x64 |
 | Linux önkoşulları | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |
 | Disk ayak izi | 10,5 MB | 90 MB |
@@ -59,7 +59,7 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 
 ## <a name="security-agent-installation-guidelines"></a>Güvenlik Aracısı yükleme yönergeleri
 
-**Windows**için: Install SecurityAgent. ps1 komut dosyasının bir yönetici PowerShell penceresinden yürütülmesi gerekir. 
+**Windows**Için: Install securityagent. ps1 komut dosyasının bir yönetici PowerShell penceresinden yürütülmesi gerekir. 
 
 **Linux**için: InstallSecurityAgent.sh, süper kullanıcı olarak çalıştırılmalıdır. "Sudo" ile yükleme komutunun önek olarak önerilmenizi öneririz.
 
@@ -88,15 +88,15 @@ Daha fazla bilgi için bkz. [Güvenlik Aracısı karşılaştırması](how-to-de
 
 Aşağıdaki liste, şu anda desteklenen tüm platformları içerir.
 
-|IoT Aracısı için Azure Güvenlik Merkezi |İşletim sistemi |Mimari |
+|IoT Aracısı için Azure Güvenlik Merkezi |İşletim Sistemi |Mimari |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
+|C|Ubuntu 18.04 |   x64, ARMv7|
 |C|Debian 9 |   x64, x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
-|C#|Windows Server 2016|    X64|
+|C#|Windows Server 2016|    x64|
 |C#|Windows 10 IoT Core, derleme 17763    |x64|
 |
 

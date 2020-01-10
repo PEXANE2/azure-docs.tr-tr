@@ -1,0 +1,125 @@
+---
+title: PowerShell kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
+titleSuffix: Azure
+description: PowerShell kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
+services: internet-peering
+author: prmitiki
+ms.service: internet-peering
+ms.topic: article
+ms.date: 11/27/2019
+ms.author: prmitiki
+ms.openlocfilehash: ba41f4ad8014ba3e85174b7c32e11394f0068643
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75775023"
+---
+# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>PowerShell kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme
+
+Bu makalede, PowerShell cmdlet 'lerini kullanarak mevcut bir eski doğrudan eşlemeyi Azure kaynağına nasıl dönüştürebileceğiniz açıklanır.
+
+İsterseniz, [portalı](howto-legacy-direct-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
+
+## <a name="before-you-begin"></a>Başlamadan önce
+* Yapılandırmaya başlamadan önce [önkoşulları](prerequisites.md) ve [doğrudan eşleme](walkthrough-direct-all.md) kılavuzunu gözden geçirin.
+
+### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+[!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
+
+## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Eski doğrudan eşlemeyi Azure kaynağına Dönüştür
+
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
+[!INCLUDE [Account](./includes/account-powershell.md)]
+
+### <a name= get></a>Dönüştürme için eski doğrudan eşlemeyi al
+Seattle eşleme konumunda eski doğrudan eşlemeyi almak için aşağıda bir örnek verilmiştir
+
+```powershell
+$legacyPeering = Get-AzLegacyPeering `
+    -Kind Direct -PeeringLocation "Seattle"
+$legacyPeering
+```
+
+Aşağıda örnek bir yanıt verilmiştir:
+```powershell
+Name                       :
+Sku                        : Basic_Direct_Free
+Kind                       : Direct
+PeeringLocation            : Seattle
+UseForPeeringService       : False
+PeerAsn.Id                 :
+Connection                 : ------------------------
+PeeringDBFacilityId        : 71
+SessionPrefixIPv4          : 4.71.156.72/30
+PeerSessionIPv4Address     : 4.71.156.73
+MicrosoftIPv4Address       : 4.71.156.74
+SessionStateV4             : Established
+MaxPrefixesAdvertisedV4    : 20000
+SessionPrefixIPv6          : 2001:1900:2100::1e10/126
+MaxPrefixesAdvertisedV6    : 2000
+ConnectionState            : Active
+BandwidthInMbps            : 0
+ProvisionedBandwidthInMbps : 20000
+Connection                 : ------------------------
+PeeringDBFacilityId        : 71
+SessionPrefixIPv4          : 4.68.70.140/30
+PeerSessionIPv4Address     : 4.68.70.141
+MicrosoftIPv4Address       : 4.68.70.142
+SessionStateV4             : Established
+MaxPrefixesAdvertisedV4    : 20000
+SessionPrefixIPv6          : 2001:1900:4:3::cc/126
+PeerSessionIPv6Address     : 2001:1900:4:3::cd
+MicrosoftIPv6Address       : 2001:1900:4:3::ce
+SessionStateV6             : Established
+MaxPrefixesAdvertisedV6    : 2000
+ConnectionState            : Active
+BandwidthInMbps            : 0
+ProvisionedBandwidthInMbps : 20000
+ProvisioningState          : Succeeded
+```
+
+### <a name="convert-legacy-direct-peering"></a>Eski doğrudan eşlemeyi Dönüştür
+
+&nbsp;
+> [!IMPORTANT]
+> Eski eşlemeyi Azure kaynağına dönüştürürken değişikliklerin desteklenmediğini unutmayın. &nbsp;
+
+Eski doğrudan eşlemeyi Azure kaynağına dönüştürmek için aşağıdaki komutu kullanın:
+
+```powershell
+$legacyPeering[0] | New-AzPeering `
+    -Name "SeattleDirectPeering" `
+    -ResourceGroupName "PeeringResourceGroup" `
+
+```
+
+Aşağıda örnek bir yanıt verilmiştir:
+
+```powershell
+Name                 : SeattleDirectPeering
+Sku.Name             : Basic_Direct_Free
+Kind                 : Direct
+Connections          : {11, 11}
+PeerAsn.Id           : /subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{asnNumber}
+UseForPeeringService : False
+PeeringLocation      : Seattle
+ProvisioningState    : Succeeded
+Location             : centralus
+Id                   : /subscriptions/{subscriptionId}/resourceGroups/PeeringResourceGroup/providers/Microsoft.Peering/peerings/SeattleDirectPeering
+Type                 : Microsoft.Peering/peerings
+Tags                 : {}
+```
+
+## <a name="additional-resources"></a>Ek kaynaklar
+Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamaları alabilirsiniz:
+
+```powershell
+Get-Help Get-AzPeering -detailed
+```
+
+Daha fazla bilgi için [Internet eşlemesi SSS](faqs.md) ' yi ziyaret edin
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [PowerShell kullanarak doğrudan eşleme oluşturun veya değiştirin](howto-direct-powershell.md).

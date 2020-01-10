@@ -2,38 +2,32 @@
 title: CLı kullanarak Azure adanmış Konakları dağıtma
 description: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtın.
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036412"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834933"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Önizleme: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
 Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve `az login`kullanarak bir Azure hesabında oturum açtığınızdan emin olun. 
 
-> [!IMPORTANT]
-> Azure ayrılmış Konakları Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bilinen önizleme sınırlamaları**
-> - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-> - Önizleme ilk sürümü şu VM serisini destekler: DSv3 ve ESv3. 
+
+## <a name="limitations"></a>Sınırlamalar
+
+- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
+- İlk sürüm şu VM serisini destekler: DSv3 ve ESv3. 
  
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
@@ -63,7 +57,7 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
-### <a name="other-examples"></a>Diğer örnekleri
+### <a name="other-examples"></a>Diğer örnekler
 
 Kullanılabilirlik bölge 1 ' de (hata etki alanları olmadan) bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u de kullanabilirsiniz.
 
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Konak Oluşturma 
 
-Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Önizleme sırasında, aşağıdaki konak SKU değerlerini destekliyoruz: DSv3_Type1 ve ESv3_Type1.
-
+Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  Aşağıdaki SKU değerleri desteklenir: DSv3_Type1 ve ESv3_Type1.
 
 Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
 
@@ -104,7 +97,7 @@ az vm host create \
 
 
  
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma 
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun 
 [Az VM Create](/cli/azure/vm#az-vm-create)kullanarak adanmış bir ana bilgisayar içinde bir sanal makine oluşturun. Konak grubunuzu oluştururken bir kullanılabilirlik alanı belirttiyseniz, sanal makineyi oluştururken aynı bölgeyi kullanmanız gerekir.
 
 ```bash

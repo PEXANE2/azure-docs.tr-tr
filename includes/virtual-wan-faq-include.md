@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828941"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772892"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure sanal ağ geçidi (VPN Gateway) ve Azure sanal WAN VPN Gateway arasındaki fark nedir?
 
@@ -22,6 +22,9 @@ Sanal WAN geniş ölçekli Siteden Siteye bağlantı sağlar; aktarım hızı, �
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Sanal WAN, Azure sanal ağ geçidinden nasıl farklıdır?
 
 Sanal ağ geçidi VPN, 30 tünelle sınırlıdır. Bağlantılar için, büyük ölçekli VPN’lere yönelik Sanal WAN kullanmanız gerekir. Her bölge için en fazla 1.000 şube bağlantısına (sanal hub), hub başına 20 Gbps toplam ile bağlanabilirsiniz. Bağlantı şirket içi VPN cihazından sanal hub’a giden bir etkin-etkin tüneldir. Her bölge için bir hub 'ınız olabilir, bu, hub 'larda 1.000 ' den fazla dalı bağlayabilmeniz anlamına gelir.
+
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Sanal WAN ağ geçidi ölçek birimi nedir?
+Ölçek birimi, sanal hub 'da bir ağ geçidinin toplam verimini seçmek için tanımlanan bir birimdir. 1 ölçek VPN = 500 Mbps birim. 1 ExpressRoute = 2 Gbps ölçek birimi. Örnek: 10 ölçekli VPN birimi 500 Mbps * 10 = 5 Gbps sayısını kapsıyor
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Hangi cihaz sağlayıcıları (sanal WAN iş ortakları) destekleniyor?
 
@@ -111,9 +114,11 @@ Tek bir hub ve bir vpnsite içeren bir sanal WAN 'ın basit bir yapılandırmas�
 
 Sanal WAN 'inizdeki farklı bir bölgedeki VNet 'i bağlayabilirsiniz.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Sanal hub'a bağlı uç sanal ağları birbiriyle iletişim kurabiliyor mu?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Bir sanal hub 'a bağlı olan VNET 'ler birbirleriyle (V2V transit) iletişim kurabilir mi?
 
-Evet. Standart sanal WAN, VNET 'lerin bağlı olduğu sanal WAN hub 'ı aracılığıyla sanal ağı geçişli bağlantı ile destekler. Sanal WAN terimlerinde, bu yollara tek bir bölgedeki bir sanal WAN hub 'ına bağlı sanal ağlar için "yerel sanal WAN VNet aktarım" ve iki veya daha fazla sanal WAN hub 'Ları aracılığıyla bağlı sanal ağlar için "küresel sanal WAN VNet geçişi" olarak başvurduk Düzenleye. VNet aktarma, genel önizleme sırasında en fazla 3 Gbps işleme destekler. Küresel geçiş GA olduğunda aktarım hızı genişletilir.   
+Evet. Standart sanal WAN, VNET 'lerin bağlı olduğu sanal WAN hub 'ı aracılığıyla sanal ağı geçişli bağlantı ile destekler. Sanal WAN terimlerinde, bu yollara tek bir bölgedeki bir sanal WAN hub 'ına bağlı sanal ağlar için "yerel sanal WAN VNet aktarım" ve iki veya daha fazla sanal WAN hub 'Ları aracılığıyla bağlı sanal ağlar için "küresel sanal WAN VNet geçişi" olarak başvurduk Düzenleye. VNet aktarma, genel önizleme sırasında en fazla 3 Gbps işleme destekler. Küresel geçiş GA olduğunda aktarım hızı genişletilir.
+
+NOTE: Şu anda V2V aktarma önizlemesi, yönlendirme öğelerinin başlatılmasını tetiklemek için bir VPN GW 'nin bir sanal hub 'da dağıtılmasını gerektirir. Bu VPN GW, V2V aktarma yolu için kullanılmaz. Bu bilinen bir sınırlamadır ve V2V GA sırasında kaldırılacaktır. Hub 'ınızdaki VPN Gateway, V2V aktarma işlevselliği için gerekli olmadığından tamamen başlatıldıktan sonra silebilirsiniz. 
 
 Bazı senaryolarda, bağlı olan VNET 'ler yerel veya genel sanal WAN VNet 'e ek olarak [sanal ağ eşlemesi](../articles/virtual-network/virtual-network-peering-overview.md) kullanılarak birbirleriyle doğrudan eşlenebilir. Bu durumda, VNET eşlemesi sanal WAN hub 'ı aracılığıyla geçişli bağlantıdan önceliklidir. 
 

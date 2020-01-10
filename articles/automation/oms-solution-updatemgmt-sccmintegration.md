@@ -1,32 +1,28 @@
 ---
-title: Azure Otomasyonu - güncelleştirme yönetimi SCCM koleksiyonlarını kullanarak güncelleştirmeleri
-description: Bu makale, SCCM ile yönetilen bilgisayarların güncelleştirmelerini yönetmek üzere System Center Configuration Manager’ı bu çözümle yapılandırmanıza yardımcı olmaya yöneliktir.
+title: Azure Güncelleştirme Yönetimi Configuration Manager istemcilerle kullanma
+description: Bu makale, ConfigMgr istemcilerine yazılım güncelleştirmeleri dağıtmak için Microsoft uç nokta Configuration Manager 'yi bu çözümle yapılandırmanıza yardımcı olmaya yöneliktir.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850219"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769957"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager güncelleştirme yönetimi ile tümleştirme
+# <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Güncelleştirmeleri Güncelleştirme Yönetimi Microsoft uç noktası Configuration Manager istemcilere dağıtma
 
-PC, sunucu ve mobil cihazları yönetmek için System Center Configuration Manager’a yatırım yapmış müşteriler aynı zamanda yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçası olarak yazılım güncelleştirmelerini yönetme gücünden ve olgunluğundan yararlanmaktadır.
+Bilgisayarları, sunucuları ve mobil cihazları yönetmek için Microsoft uç nokta Configuration Manager yatırılmış müşteriler, yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçası olarak yazılım güncelleştirmelerini yönetme gücünden ve vadede yararlanır.
 
-Rapor ve oluşturma ve önceden yazılım güncelleştirme dağıtımlarını Configuration Manager'ı hazırlama tarafından yönetilen Windows sunucularını güncelleştirme ve kullanarak tamamlanmış güncelleştirme dağıtımlarının ayrıntılı durumunu alın [güncelleştirme yönetimi çözümü](automation-update-management.md). Güncelleştirme uyumluluğu raporlamasının ancak Windows sunucularınızla güncelleştirme dağıtımlarını yönetmek için Configuration Manager kullanıyorsanız, güvenlik güncelleştirmeleri ile güncelleştirme yönetimi çözümü yönetilse de, Configuration Manager için raporlama devam edebilirsiniz.
+Rapor ve oluşturma ve önceden yazılım güncelleştirme dağıtımlarını Configuration Manager'ı hazırlama tarafından yönetilen Windows sunucularını güncelleştirme ve kullanarak tamamlanmış güncelleştirme dağıtımlarının ayrıntılı durumunu alın [güncelleştirme yönetimi çözümü](automation-update-management.md). Güncelleştirme uyumluluğu raporlaması için Configuration Manager, ancak Windows sunucularınızla güncelleştirme dağıtımlarını yönetmek için kullanıyorsanız, güvenlik güncelleştirmeleri Güncelleştirme Yönetimi çözümüyle yönetilirken Configuration Manager raporlamaya devam edebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Olmalıdır [güncelleştirme yönetimi çözümünü](automation-update-management.md) Otomasyon hesabınıza eklendi.
-* Şu anda System Center Configuration Manager ortamınız tarafından yönetilen Windows sunucularının da Güncelleştirme Yönetimi çözümü etkin olan Log Analytics çalışma alanına rapor göndermesi gerekir.
-* Bu özellik System Center Configuration Manager geçerli dal sürümü 1606 ve üstünü etkinleştirilir. Configuration Manager merkezi yönetim sitenizi veya bağımsız bir birincil siteyi Azure Izleyici günlükleri ve içeri aktarma koleksiyonlarıyla bütünleştirmek için, [Azure izleyici günlüklerine bağlan Configuration Manager](../azure-monitor/platform/collect-sccm.md)inceleyin.  
+* Configuration Manager ortamınız tarafından şu anda yönetilen Windows sunucularının Ayrıca Güncelleştirme Yönetimi çözümü etkinleştirilmiş olan Log Analytics çalışma alanına raporlama yapması gerekir.
+* Bu özellik geçerli Configuration Manager dalı sürümü 1606 ve üzeri sürümlerde etkinleştirilmiştir. Configuration Manager merkezi yönetim sitenizi veya bağımsız bir birincil siteyi Azure Izleyici günlükleri ve içeri aktarma koleksiyonlarıyla bütünleştirmek için, [Azure izleyici günlüklerine bağlan Configuration Manager](../azure-monitor/platform/collect-sccm.md)inceleyin.  
 * Windows aracıları Configuration Manager’dan güvenlik güncelleştirmeleri almazsa Windows Server Update Services (WSUS) sunucusuyla iletişim kuracak veya Microsoft Update’e erişecek şekilde yapılandırılmış olmalıdır.   
 
 Azure IaaS içinde barındırılan istemcileri mevcut Configuration Manager ortamınızla nasıl yönettiğiniz birincil olarak Azure veri merkezleri ile altyapınız arasında mevcut olan bağlantıya bağlıdır. Bu bağlantı, Configuration Manager altyapısında yapmanız gereken her türlü tasarım değişikliğini ve bu değişiklikleri desteklemeyle ilgili maliyetleri etkiler. Devam etmeden önce değerlendirmeniz gereken planlama konularını anlamak için, [Azure’da Configuration Manager - Sık Sorulan Sorular](/sccm/core/understand/configuration-manager-on-azure#networking)’ı gözden geçirin.

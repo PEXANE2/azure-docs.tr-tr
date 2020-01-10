@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: d6370509b49ae464b53525e7320676b04912bd12
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113713"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780257"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
@@ -47,6 +47,68 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 
 > [!NOTE]
 > Blok Blobları ve veri yeniden doldurma fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/). Giden veri aktarımı ücretleri hakkında daha fazla bilgi için bkz. [veri aktarımları fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/data-transfers/).
+
+## <a name="quickstart-scenarios"></a>Hızlı Başlangıç senaryoları
+
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv blobunu çevrimiçi katmana yeniden doldurma
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+
+1. Azure portal, **tüm kaynakları**arayıp seçin.
+
+1. Depolama hesabınızı seçin.
+
+1. Kapsayıcınızı seçin ve ardından blobu seçin.
+
+1. **BLOB özellikleri**' nde **Katmanı Değiştir**' i seçin.
+
+1. **Sık** veya **seyrek erişimli erişim** katmanını seçin. 
+
+1. **Standart** veya **yüksek**bir yeniden doldurma önceliği seçin.
+
+1. Alt kısımdaki **Kaydet** ' i seçin.
+
+![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Bir arşiv Blobun blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. `$containerName` değişkeni, kapsayıcı adınızla başlatılmalıdır. `$blobName` değişkeni, blob adınızla başlatılmalıdır. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to Hot using Standard priority rehydrate
+$blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
+```
+---
+
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Bir arşiv blobunu çevrimiçi bir katman ile yeni bir bloba kopyalama
+Aşağıdaki PowerShell betiği, aynı depolama hesabı içindeki yeni bir bloba arşiv blobu kopyalamak için kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. `$srcContainerName` ve `$destContainerName` değişkenleri kapsayıcı adlarınızla başlatılmalıdır. `$srcBlobName` ve `$destBlobName` değişkenleri blob adlarınızla başlatılmalıdır. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$srcContainerName = ""
+$destContainerName = ""
+$srcBlobName == ""
+$destBlobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Copy source blob to a new destination blob with access tier hot using standard rehydrate priority
+Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -DestContainer $destContainerName -DestBlob $destBlobName -StandardBlobTier Hot -RehydratePriority Standard -Context $ctx
+```
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

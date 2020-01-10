@@ -7,19 +7,27 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 8ca5dec833f3e726aed0d469525ca3d9735fc33c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/06/2020
+ms.openlocfilehash: e17d38f6bcb1d843b49e89a473551f8ef4aa16aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114974"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770331"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Time Series Insights Power BI bağlama  
- 
+
 Zaman serisi verilerinizi ilişkilendirmenize, canlı görselleştirmeler oluşturmanıza ve kuruluşunuz genelinde Öngörüler paylaşmanıza yardımcı olacak bir çözüm mi arıyorsunuz?
 
-Time Series Insights artık, akış verileriniz üzerinde daha güçlü görselleştirme ve taslak özellikleri sağlayarak [Power BI](https://powerbi.microsoft.com/)ile sorunsuz bir şekilde tümleşir ve kuruluşunuz genelinde Öngörüler ve sonuçlar paylaşmanıza olanak sağlar.
+Azure Time Series Insights artık, akış verileriniz üzerinde daha güçlü görselleştirme ve taslak özellikleri sağlayarak [Power BI](https://powerbi.microsoft.com/)ile sorunsuz bir şekilde tümleşir ve kuruluşunuz genelinde Öngörüler ve sonuçlar paylaşmanıza olanak sağlar.
+
+## <a name="video"></a>Video
+
+Azure Time Series Insights Power BI ile tümleştirme hakkında daha fazla bilgi edinin.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
+
+## <a name="summary"></a>Özet
 
    [Time Series Insights ![dışarı aktarma seçeneği](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 

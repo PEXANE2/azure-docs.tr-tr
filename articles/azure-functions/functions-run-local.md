@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941840"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768988"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -26,8 +26,8 @@ Yerel bilgisayarınızda işlevleri geliştirme ve temel araçları kullanarak b
 > * [Tetikleyici ve bağlama uzantılarını kaydedin.](#register-extensions)
 > * [Depolama ve diğer bağlantıları tanımlayın.](#local-settings-file)
 > * [Bir tetikleyiciden ve dile özgü şablondan bir işlev oluşturun.](#create-func)
-> * [İşlevi yerel olarak çalıştırın](#start)
-> * [Projeyi Azure 'da yayımlayın](#publish)
+> * [İşlevi yerel olarak çalıştırın.](#start)
+> * [Projeyi Azure 'da yayımlayın.](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools sürümleri
 
@@ -56,7 +56,7 @@ Aşağıdaki adımlarda, Windows 'a temel araçları yüklemek için NPM kullan�
 
 1. NPM içeren [Node.js]' yi yükler.
     - Araçların sürüm 2. x için yalnızca Node. js 8,5 ve üzeri sürümleri desteklenir.
-    - Araçların sürüm 3. x için, yalnızca düğüm 10 ve üzeri sürümleri desteklenir.
+    - Araçların sürüm 3. x için, yalnızca Node. js 10 ve üzeri sürümleri desteklenir.
 
 1. Temel Araçlar paketini yükler:
 
@@ -129,7 +129,6 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
     | Linux dağıtım | Sürüm |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
@@ -155,7 +154,7 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
 Bir işlevler proje dizini, [Host. JSON](functions-host-json.md) ve [Local. Settings. JSON](#local-settings-file)dosyalarını, tek tek işlevlerin kodunu içeren alt klasörlerle birlikte içerir. Bu dizin, Azure 'daki bir işlev uygulamasının eşdeğeridir. Işlevler klasör yapısı hakkında daha fazla bilgi edinmek için bkz. [Azure işlevleri Geliştirici Kılavuzu](functions-reference.md#folder-structure).
 
-Sürüm 2. x, başlatıldığında projeniz için varsayılan bir dil seçmenizi ve tüm işlevlerin varsayılan dil şablonlarını kullanmasını gerektirir. 1\. x sürümünde, her bir işlev oluşturduğunuzda dili belirtirsiniz.
+Sürüm 2. x, başlatıldığında projeniz için varsayılan bir dil seçmenizi gerektirir. 2\. x sürümünde, eklenen tüm işlevler varsayılan dil şablonlarını kullan ' ı kullanır. 1\. x sürümünde, her bir işlev oluşturduğunuzda dili belirtirsiniz.
 
 Terminal penceresinde veya bir komut isteminden, projeyi ve yerel Git deposunu oluşturmak için aşağıdaki komutu çalıştırın:
 
@@ -227,15 +226,15 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 
 ### <a name="get-your-storage-connection-strings"></a>Depolama bağlantı dizelerinizi alın
 
-Geliştirme için depolama öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
+Geliştirme için Microsoft Azure Depolama Öykünücüsü kullanılırken bile gerçek bir depolama bağlantısıyla test etmek isteyebilirsiniz. Zaten [bir depolama hesabı oluşturmuş](../storage/common/storage-create-storage-account.md)olduğunuz varsayılarak, aşağıdaki yollarla geçerli bir depolama bağlantı dizesi alabilirsiniz:
 
-- [Azure portalda], **depolama hesaplarını**arayıp seçin. 
+- [Azure Portal], **depolama hesaplarını**arayıp seçin. 
   Azure portal](./media/functions-run-local/select-storage-accounts.png) depolama hesapları ![seçin
   
   Depolama hesabınızı seçin, **Ayarlar**' da **erişim tuşları** ' nı seçin, sonra **bağlantı dizesi** değerlerinden birini kopyalayın.
   Azure portal](./media/functions-run-local/copy-storage-connection-portal.png) bağlantı dizesini ![Kopyala
 
-- Azure hesabınıza bağlanmak için [Azure Depolama Gezgini](https://storageexplorer.com/) kullanın. **Gezgin**'de aboneliğinizi genişletin, depolama hesabınızı seçin ve birincil veya ikincil bağlantı dizesini kopyalayın.
+- Azure hesabınıza bağlanmak için [Azure Depolama Gezgini](https://storageexplorer.com/) kullanın. **Gezgin**'de aboneliğinizi genişletin, **depolama hesapları**' nı genişletin, depolama hesabınızı seçin ve birincil veya ikincil bağlantı dizesini kopyalayın.
 
   ![Bağlantı dizesini Depolama Gezgini Kopyala](./media/functions-run-local/storage-explorer.png)
 
@@ -252,7 +251,7 @@ Geliştirme için depolama öykünücüsü kullanılırken bile gerçek bir depo
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure 'da henüz oturum açmadıysanız, bunu yapmanız istenir.
+    Azure 'da henüz oturum açmadıysanız bunu yapmanız istenir.
 
 ## <a name="create-func"></a>İşlev oluşturma
 
@@ -352,8 +351,8 @@ func host start
 | **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca `--useHttps`ile kullanılır. Yalnızca sürüm 2. x. |
 | **`--cors-credentials`** | Yalnızca çıkış noktaları arası kimlik doğrulamalı isteklere (yani, tanımlama bilgileri ve kimlik doğrulama üstbilgisi) sürüm 2. x 'e izin verin. |
 | **`--cors`** | CORS kaynakları için boşluk olmadan virgülle ayrılmış bir liste. |
-| **`--language-worker`** | Dil çalışanını yapılandırmak için bağımsız değişkenler. Yalnızca sürüm 2. x. |
-| **`--nodeDebugPort -n`** | Kullanılacak düğüm hata ayıklayıcı bağlantı noktası. Varsayılan: Launch. JSON veya 5858 değeri. Yalnızca sürüm 1. x. |
+| **`--language-worker`** | Dil çalışanını yapılandırmak için bağımsız değişken. Örneğin, [hata ayıklama bağlantı noktası ve diğer gerekli bağımsız değişkenleri](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)sağlayarak dil çalışanı için hata ayıklamayı etkinleştirebilirsiniz. Yalnızca sürüm 2. x. |
+| **`--nodeDebugPort -n`** | Kullanılacak Node. js hata ayıklayıcısı için bağlantı noktası. Varsayılan: Launch. JSON veya 5858 değeri. Yalnızca sürüm 1. x. |
 | **`--password`** | Bir. pfx dosyasının parolasını içeren parola veya dosya. Yalnızca `--cert`ile kullanılır. Yalnızca sürüm 2. x. |
 | **`--port -p`** | Dinlenecek yerel bağlantı noktası. Varsayılan değer: 7071. |
 | **`--pause-on-error`** | İşlemden çıkmadan önce ek giriş için duraklatın. Yalnızca tümleşik geliştirme ortamından (IDE) temel araçlar başlatılırken kullanılır.|
@@ -372,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Yerel olarak çalışırken, HTTP uç noktaları için kimlik doğrulama zorlanmaz. Bu, tüm yerel HTTP isteklerinin `authLevel = "anonymous"`olarak işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook.md#authorization-keys).
+>Yerel olarak çalışırken, HTTP uç noktaları için yetkilendirme zorlanmaz. Bu, tüm yerel HTTP isteklerinin `authLevel = "anonymous"`olarak işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Test verilerini bir işleve geçirme
 
@@ -474,7 +473,7 @@ Aşağıdaki yayımlama seçenekleri, 1. x ve 2. x sürümleri için geçerlidir
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Ayarları yerel. Settings. json ' da Azure 'a yayımlayın, bu ayar zaten varsa üzerine yazma isteminde bulunur. Depolama öykünücüsünü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
+| **`--publish-local-settings -i`** |  Ayarları yerel. Settings. json ' da Azure 'a yayımlayın, bu ayar zaten varsa üzerine yazma isteminde bulunur. Microsoft Azure Depolama Öykünücüsü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
 | **`--overwrite-settings -y`** | `--publish-local-settings -i` kullanıldığında uygulama ayarlarının üzerine yazma istemi 'ni gizleyin.|
 
 Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
@@ -516,9 +515,9 @@ Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 
 İşlevlerinizin yürütülmesini izlemek için önerilen yol, Azure Application Insights ile tümleştirilmesine göre yapılır. Ayrıca, yürütme günlüklerini yerel bilgisayarınıza da akışla aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerini izleme](functions-monitoring.md).
 
-### <a name="enable-application-insights-integration"></a>Application Insights tümleştirmeyi etkinleştir
+### <a name="application-insights-integration"></a>Application Insights tümleştirmesi
 
-Azure portal bir işlev uygulaması oluşturduğunuzda, Application Insights tümleştirmesi varsayılan olarak sizin için yapılır. Ancak, Azure CLı kullanarak işlev uygulamanızı oluşturduğunuzda, Azure 'daki işlev uygulamanızda tümleştirme yapılmaz.
+Azure 'da işlev uygulamanızı oluştururken Application Insights tümleştirme etkinleştirilmelidir. Bazı nedenlerle işlev uygulamanız bir Application Insights örneğine bağlı değilse, bu tümleştirmeyi Azure portal yapmak kolaydır. 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,7 +529,7 @@ Azure portal bir işlev uygulaması oluşturduğunuzda, Application Insights tü
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Bu tür akış günlükleri, işlev uygulamanız için [Application Insights tümleştirmeyi etkinleştirmenizi](#enable-application-insights-integration) gerektirir.   
+Bu tür akış günlükleri, işlev uygulamanız için Application Insights tümleştirmenin etkinleştirilmesini gerektirir.   
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -541,7 +540,7 @@ Bir hata veya özellik isteğini dosyabir [GitHub sorunu açın](https://github.
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure portalda]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2b6c6f2882701515d868e96ae10af85890004587
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954677"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772236"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure disk şifrelemesi etkinleştirilmiş sanal makineleri başka bir Azure bölgesine çoğaltma
 
 Bu makalede, Azure disk şifrelemesi (ADE) ile Azure VM 'lerinin bir Azure bölgesinden diğerine nasıl çoğaltılacağı açıklanır.
 
 >[!NOTE]
-> Site Recovery Şu anda Windows çalıştıran VM 'Ler için Azure Active Directory (AAD) ile ve olmadan ADE 'yi desteklemektedir.  ADE 1,1 çalıştıran makineler (AAD olmadan) için Windows VM 'lerinin yönetilen diskleri kullanıyor olması gerekir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez. ADE 0,1 ' den (AAD ile) 1,1 ' e geçiş yaparsanız, bir sanal makine için çoğaltmayı devre dışı bırakmanız ve ' i etkinleştirdikten 1,1 sonra çoğaltmayı etkinleştirmeniz gerekir.
+> Site Recovery Şu anda Windows ve Linux işletim sistemlerini çalıştıran VM 'Ler için Azure Active Directory (AAD) ile ve olmadan ADE 'yi desteklemektedir.  ADE 1,1 çalıştıran makinelerde (AAD olmadan), sanal makinelerin yönetilen diskleri kullanıyor olması gerekir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez. ADE 0,1 ' den (AAD ile) 1,1 ' e geçiş yaparsanız, bir sanal makine için çoğaltmayı devre dışı bırakmanız ve ' i etkinleştirdikten 1,1 sonra çoğaltmayı etkinleştirmeniz gerekir.
 
 
 ## <a id="required-user-permissions"></a>Gerekli Kullanıcı izinleri
@@ -35,9 +35,9 @@ Azure portal disk şifrelemesi etkin VM 'lerinin çoğaltılmasını etkinleşti
         - Al, Listele ve ayarla
     
 - Anahtar Kasası anahtar izinleri (yalnızca VM 'Ler, disk şifreleme anahtarlarını şifrelemek için anahtar şifreleme anahtarı kullanıyorsa gereklidir)
-    - Anahtar Yönetim Işlemleri
+    - Anahtar Yönetim İşlemleri
         - Al, Listele ve oluştur
-    - Şifreleme Işlemleri
+    - Şifreleme İşlemleri
         - Şifre çözme ve şifreleme
 
 İzinleri yönetmek için, portalda Anahtar Kasası kaynağına gidin. Kullanıcı için gerekli izinleri ekleyin. Aşağıdaki örnek, kaynak bölgedeki Anahtar Kasası *ContosoWeb2Keyvault*için izinlerin nasıl etkinleştirileceğini gösterir.

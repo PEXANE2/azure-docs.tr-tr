@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084371"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746209"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve tanılama günlüklerini ayarlama ve kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Uyarılar çalışmaya başlamadan önce uygulamayı çalıştırın. 
 > * Ölçüm sonuçlarını görüntüleyin ve tanılama günlüklerini denetleyin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -50,7 +50,7 @@ Bu öğreticide, bir IoT Hub, bir depolama hesabı ve sanal bir IoT cihazı gere
 
 Bunlar gerekli adımlardır.
 
-1. Bir [kaynak grubu](../azure-resource-manager/resource-group-overview.md) oluşturun. 
+1. Bir [kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. 
 
 2. IoT Hub 'ı oluşturun.
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>Tanılama günlüklerini etkinleştirme 
 
-Yeni bir IoT Hub oluşturduğunuzda [tanılama günlükleri](../azure-monitor/platform/resource-logs-overview.md) varsayılan olarak devre dışıdır. Bu bölümde, hub 'ınız için tanılama günlüklerini etkinleştirin.
+Yeni bir IoT Hub oluşturduğunuzda [tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) varsayılan olarak devre dışıdır. Bu bölümde, hub 'ınız için tanılama günlüklerini etkinleştirin.
 
 1. İlk olarak, portalda hub 'ınız yoksa, **kaynak grupları** ' na tıklayın ve contoso-Resources kaynak grubu ' na tıklayın. Görünen kaynak listesinden hub 'ı seçin. 
 
@@ -259,7 +259,7 @@ IoT Hub henüz [Azure izleyici ölçümlerine](/azure/azure-monitor/platform/dat
 
    **Bildirim e-posta alıcıları**: e-posta adresinizi buraya koyun. 
 
-   Kuralı kaydetmek için **Tamam** ' ı tıklatın. 
+   Kuralı kaydetmek için **Tamam**’a tıklayın. 
 
 5. Şimdi klasik uyarılar bölmesinde iki uyarı görmeniz gerekir: 
 

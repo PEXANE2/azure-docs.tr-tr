@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 2cba4e8223e98f95fc8d0f0472c10b2f9b67a658
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670729"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768478"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu makalede, App Service ' ye özel bir sertifika oluşturma, yükleme veya alma işleminin nasıl yapılacağı gösterilir. 
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu makalede, App Service bir özel sertifika veya ortak sertifika oluşturma, karşıya yükleme veya içeri aktarma işlemlerinin nasıl yapılacağı gösterilir. 
 
 Sertifika, App Service uygulamanıza veya [işlev uygulamanıza](https://docs.microsoft.com/azure/azure-functions/)eklendikten sonra [özel bir DNS adının güvenliğini](configure-ssl-bindings.md) sağlayabilir veya [uygulama kodunuzda kullanabilirsiniz](configure-ssl-certificate-in-code.md).
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -111,12 +111,12 @@ Sertifikayı yapılandırmanıza yardımcı olması için aşağıdaki tabloyu k
 
 | Ayar | Açıklama |
 |-|-|
-| Adı | App Service sertifikanız için kolay bir ad. |
+| Ad | App Service sertifikanız için kolay bir ad. |
 | Naked etki alanı konak adı | Kök etki alanını burada belirtin. Verilen sertifika hem kök etki alanının hem *de* `www` alt etki alanının güvenliğini sağlar. Verilen sertifikada, ortak ad alanı kök etki alanını içerir ve konu alternatif adı alanı `www` etki alanını içerir. Yalnızca herhangi bir alt etki alanının güvenliğini sağlamak için burada alt etki alanının tam etki alanı adını belirtin (örneğin, `mysubdomain.contoso.com`).|
-| Abonelik | Web uygulamasının barındırıldığı veri merkezi. |
-| Kaynak grubu | Sertifikayı içeren kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
+| Abonelik | Sertifikayı içerecek abonelik. |
+| Kaynak grubu | Sertifikayı içerecek kaynak grubu. Örneğin, yeni bir kaynak grubu kullanabilir veya App Service uygulamanız ile aynı kaynak grubunu seçebilirsiniz. |
 | Sertifika SKU 'SU | Oluşturulacak sertifikanın türünü, standart bir sertifika veya [Joker bir sertifika](https://wikipedia.org/wiki/Wildcard_certificate)olduğunu belirler. |
-| Yasal koşullar | Yasal koşulları kabul ettiğinizi onaylamak için tıklayın. Sertifikalar GoDaddy adresinden elde edilir. |
+| Yasal Koşullar | Yasal koşulları kabul ettiğinizi onaylamak için tıklayın. Sertifikalar GoDaddy adresinden elde edilir. |
 
 ### <a name="store-in-azure-key-vault"></a>Azure Key Vault içinde depola
 
@@ -128,18 +128,18 @@ Sertifika satın alma işlemi tamamlandıktan sonra, bu sertifikayı kullanmaya 
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) , bulut uygulamaları ve Hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olan bir Azure hizmetidir. Bu, App Service sertifikaları için tercih edilen depolardır.
 
-**Key Vault durum** sayfasında, yeni bir kasa oluşturmak veya mevcut bir kasayı seçmek Için **Key Vault deposu** ' na tıklayın. Yeni bir kasa oluşturmayı seçerseniz, kasayı yapılandırmanıza ve Oluştur ' a tıklaetmenize yardımcı olması için aşağıdaki tabloyu kullanın. aynı abonelik ve kaynak grubu içinde yeni Key Vault oluşturmak için bkz.
+**Key Vault durum** sayfasında, yeni bir kasa oluşturmak veya mevcut bir kasayı seçmek Için **Key Vault deposu** ' na tıklayın. Yeni bir kasa oluşturmayı seçerseniz, kasayı yapılandırmanıza ve Oluştur ' a tıklaetmenize yardımcı olması için aşağıdaki tabloyu kullanın. App Service uygulamanızla aynı abonelik ve kaynak grubu içinde yeni Key Vault oluşturun.
 
 | Ayar | Açıklama |
 |-|-|
-| Adı | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
+| Ad | Alfasayısal karakterler ve tireler için oluşan benzersiz bir ad. |
 | Kaynak grubu | Öneri olarak, App Service sertifikanız ile aynı kaynak grubunu seçin. |
 | Konum | App Service uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Bilgi için bkz. [Azure Key Vault fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Erişim ilkeleri| , Kasa kaynaklarına yönelik olan uygulamaları ve izin verilen erişimi tanımlar. Daha sonra, [birkaç uygulamaya bir anahtar kasasına erişim verme](../key-vault/key-vault-group-permissions-for-apps.md)adımlarını izleyerek daha sonra yapılandırabilirsiniz. |
-| Sanal ağ erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](../key-vault/key-vault-network-security.md) içindeki adımları izleyerek yapılandırabilirsiniz |
+| Sanal Ağ Erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. Daha sonra yapılandırma [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](../key-vault/key-vault-network-security.md) içindeki adımları izleyerek yapılandırabilirsiniz |
 
-Kasayı seçtikten sonra **Key Vault deposu** sayfasını kapatın. **Mağaza** seçeneğinde, başarılı için yeşil bir onay işareti gösterilmelidir. Sonraki adımda sayfayı açık tutun.
+Kasayı seçtikten sonra **Key Vault deposu** sayfasını kapatın. **1. Adım: Store** seçeneğinde başarılı olması için yeşil bir onay işareti gösterilmelidir. Sonraki adımda sayfayı açık tutun.
 
 ### <a name="verify-domain-ownership"></a>Etki alanı sahipliğini doğrulama
 
@@ -183,7 +183,7 @@ Sertifikalarınızı yönetmek için Azure Key Vault kullanıyorsanız, [gereksi
 
 Uygulamanızın sol gezinti bölmesinde, **Key Vault sertifikasını Içeri aktarma** > **özel anahtar sertifikaları (. pfx)**  > **TLS/SSL ayarları** ' nı seçin.
 
-![App Service Key Vault sertifikayı içeri aktar](./media/configure-ssl-certificate/import-key-vault-cert.png))
+![App Service Key Vault sertifikayı içeri aktar](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
 Sertifikayı seçmenize yardımcı olması için aşağıdaki tabloyu kullanın.
 
@@ -343,7 +343,7 @@ az keyvault secret download \
 
 İndirilen *appservicecertificate. pfx* dosyası, hem ortak hem de özel sertifikaları içeren BIR ham PKCS12 dosyasıdır. Her sorulduğunda, Import Password ve pek Pass ifadesi için boş bir dize kullanın.
 
-### <a name="delete-certificate"></a>Sertifikayı Sil 
+### <a name="delete-certificate"></a>Sertifikayı sil 
 
 App Service sertifikasını silme işlemi son ve geri alınamaz. Bu sertifikayla App Service olan herhangi bir bağlama geçersiz hale gelir. Yanlışlıkla silinmeye engel olmak için, Azure, sertifikaya bir kilit koyar. Bir App Service sertifikasını silmek için, önce sertifikadaki silme kilidini kaldırmanız gerekir.
 

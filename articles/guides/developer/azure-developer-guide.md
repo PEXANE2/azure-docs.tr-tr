@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c8ab954471e597cfea5c6f56cd45b2191aa73242
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0df55f4ce790d6ea38f44ce0ca6dab43085c3455
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424070"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770926"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için kullanmaya başlama kılavuzu
 
@@ -93,10 +93,10 @@ Kodunuzu çalıştırmak için tüm uygulamayı veya altyapıyı oluşturma ve y
 Azure Service Fabric, dağıtılmış bir sistem platformudur. Bu platform ölçeklenebilir ve güvenilir mikro hizmetler oluşturmayı, dağıtmayı, dağıtmayı ve yönetmeyi kolaylaştırır. Ayrıca, gibi kapsamlı uygulama yönetimi özellikleri de sağlar: 
 
 * Sağlama
-* Dağıtılmasını 
+* Dağıtılıyor 
 * İzleme
 * Yükseltme/düzeltme eki uygulama
-* Silinmesinden 
+* Siliniyor 
 
 Paylaşılan bir makine havuzunda çalışan uygulamalar, gerektiğinde yüzlerce veya binlerce makineye kadar küçük ve ölçeklenebilir olabilir.
 
@@ -133,7 +133,7 @@ Azure, uygulama barındırmakla birlikte, işlevselliği geliştirebilecek hizme
   > **Kullanmaya başlayın**: [Azure Portal kullanarak dakıkalar içinde bir SQL veritabanı oluşturun](../../sql-database/sql-database-get-started.md).
 
 
-Mevcut şirket içi verileri Azure 'a taşımak için [Azure Data Factory](../../data-factory/introduction.md) kullanabilirsiniz. Verileri buluta taşımaya hazırsanız, BizTalk Services [Karma Bağlantılar](../../biztalk-services/integration-hybrid-connection-overview.md) App Service barındırılan uygulamanızı şirket içi kaynaklara bağlamanıza olanak tanır. Ayrıca, şirket içi uygulamalarınızdan Azure veri ve depolama hizmetleri 'ne de bağlanabilirsiniz.
+Mevcut şirket içi verileri Azure 'a taşımak için [Azure Data Factory](../../data-factory/introduction.md) kullanabilirsiniz. Verileri buluta taşımaya hazırsanız, Azure App Service [Karma Bağlantılar](../../app-service/app-service-hybrid-connections.md) App Service barındırılan uygulamanızı şirket içi kaynaklara bağlamanıza olanak tanır. Ayrıca, şirket içi uygulamalarınızdan Azure veri ve depolama hizmetleri 'ne de bağlanabilirsiniz.
 
 #### <a name="docker-support"></a>Docker desteği
 
@@ -147,11 +147,11 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   > 
   > **Kullanmaya başlayın**: [Docker VM uzantısını kullanarak Azure 'Da bir Docker ortamı oluşturun](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
-- **Azure Container Service**: Kapsayıcılı uygulamaları çalıştırmak için önceden yapılandırılmış bir sanal makine kümesi oluşturmanıza, yapılandırmanıza ve yönetmenize olanak sağlar. Kapsayıcı hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Container Service giriş](../../container-service/container-service-intro.md).
+- **Azure Kubernetes hizmeti**: Kapsayıcılı uygulamalar çalıştırmak için önceden yapılandırılmış bir sanal makine kümesi oluşturmanıza, yapılandırmanıza ve yönetmenize olanak sağlar. Azure Kubernetes hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Kubernetes hizmet tanıtımı](../../aks/intro-kubernetes.md).
 
   > **Ne zaman kullanılır**: ek zamanlama ve yönetim araçları sağlayan ve bir Docker sısınma kümesi dağıttığınızda üretime hazırlamış, ölçeklenebilir ortamlar oluşturmanız gerektiğinde.
   > 
-  > **Kullanmaya**başlayın: [bir kapsayıcı hizmeti kümesi dağıtın](../../container-service/dcos-swarm/container-service-deployment.md).
+  > **Kullanmaya**başlayın: [Kubernetes hizmet kümesi dağıtın](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 - **Docker makinesi**: Docker-Machine komutlarını kullanarak sanal konaklara bir Docker altyapısı yüklemenize ve yönetmenize olanak sağlar.
 
@@ -185,7 +185,7 @@ Azure 'da en iyi güvenlik uygulamaları hakkında daha fazla bilgi edinmek içi
 
 Uygulamanızı Azure 'da çalışır duruma getirmeniz, performansı izlemeniz, sorun izlemek ve müşterilerin uygulamanızı nasıl kullandığını görmeniz gerekir. Azure çeşitli izleme seçenekleri sağlar.
 
--   **Visual studio Application Insights**: Canlı Web uygulamalarınızı Izlemek üzere Visual Studio ile tümleşen Azure ile barındırılan bir Genişletilebilir analiz hizmeti. Uygulamalarınızın performansını ve kullanılabilirliğini sürekli olarak geliştirmek için ihtiyacınız olan verileri sağlar. Bu geliştirme, uygulamalarınızı Azure 'da barındırmanıza veya Not etmeksizin meydana gelir.
+-   **Application Insights**: Canlı Web uygulamalarınızı Izlemek üzere Visual Studio ile tümleştirilen, Azure 'da barındırılan Genişletilebilir analiz hizmeti. Uygulamalarınızın performansını ve kullanılabilirliğini sürekli olarak geliştirmek için ihtiyacınız olan verileri sağlar. Bu geliştirme, uygulamalarınızı Azure 'da barındırmanıza veya Not etmeksizin meydana gelir.
 
     >**Kullanmaya başlayın**: [Application Insights öğreticisini](../../azure-monitor/app/app-insights-overview.md)izleyin.
 
@@ -238,9 +238,9 @@ Azure, uygulamalarınızı ve hizmetlerinizi komut satırından yönetmenin iki 
 
 -   [Azure PowerShell](../../powershell-install-configure.md): Windows PowerShell kullanarak Azure kaynaklarını yönetmenizi sağlayan cmdlet 'ler içeren bir modül kümesi sağlar.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure Portal
 
-[Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Şunları içerir:
+[Azure Portal](https://portal.azure.com) Web tabanlı bir uygulamadır. Azure kaynakları ve hizmetleri oluşturmak, yönetmek ve kaldırmak için Azure portal kullanabilirsiniz. Aşağıdakileri içerir:
 
 * Yapılandırılabilir bir pano
 * Azure Kaynak yönetimi araçları
@@ -266,7 +266,7 @@ REST API 'lerle birlikte, birçok Azure hizmeti, aşağıdaki geliştirme platfo
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Uygulamanızı Azure 'da çalıştırmak, büyük olasılıkla birden çok Azure hizmeti ile çalışmayı içerir. Bu hizmetler aynı yaşam döngüsünü izler ve mantıksal birim olarak düşünülebilir. Örneğin, bir Web uygulaması Web Apps, SQL veritabanı, depolama, Redsıs için Azure önbelleği ve Azure Content Delivery Network hizmetleri kullanabilir. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) , uygulamanızdaki kaynaklarla bir grup olarak çalışmanıza olanak sağlar. Tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtabilir, güncelleştirebilir veya silebilirsiniz.
+Uygulamanızı Azure 'da çalıştırmak, büyük olasılıkla birden çok Azure hizmeti ile çalışmayı içerir. Bu hizmetler aynı yaşam döngüsünü izler ve mantıksal birim olarak düşünülebilir. Örneğin, bir Web uygulaması Web Apps, SQL veritabanı, depolama, Redsıs için Azure önbelleği ve Azure Content Delivery Network hizmetleri kullanabilir. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) , uygulamanızdaki kaynaklarla bir grup olarak çalışmanıza olanak sağlar. Tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtabilir, güncelleştirebilir veya silebilirsiniz.
 
 Azure Resource Manager, ilgili kaynakları mantıksal olarak gruplandırmanıza ve yönetmeye yönelik olarak, ilgili kaynakların dağıtımını ve yapılandırmasını özelleştirmenize olanak sağlayan dağıtım özelliklerini içerir. Örneğin, bir uygulamayı dağıtmak ve yapılandırmak Kaynak Yöneticisi kullanabilirsiniz. Bu uygulama, birden çok sanal makineden, yük dengeleyiciden ve Azure SQL veritabanından tek bir birim olarak oluşabilir.
 

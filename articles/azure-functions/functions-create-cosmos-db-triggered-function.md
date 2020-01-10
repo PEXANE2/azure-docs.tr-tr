@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 922babb4b9b80c91ea99062170cf224346df192a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230936"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769430"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
 
@@ -18,7 +18,7 @@ Azure Cosmos DB’de veri eklendiğinde veya değiştirildiğinde tetiklenen bir
 
 ![Günlüklerde iletiyi görüntüleyin.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -43,7 +43,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Azure Cosmos DB tetikleyicisi oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -64,7 +64,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     | Ayar      | Önerilen değer  | Açıklama                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Adı** | Varsayılan | Şablonun önerdiği varsayılan işlev adını kullanın.|
-    | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Bunu yaptığınızda hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
+    | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Bunu yaptığınızda hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar, veritabanına bağlanmak için bağlama tarafından kullanılır. |
     | **Koleksiyon adı** | Öğeler | İzlenecek koleksiyonun adı. |
     | **Yoksa kira koleksiyonu oluşturun** | Onay işaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
     | **Veritabanı adı** | Görevler | İzlenecek koleksiyonu içeren veritabanının adı. |
@@ -75,7 +75,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     Bu işlev şablonu, günlüklere belge sayısını ve ilk belgenin kimliğini yazar.
 
-Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Items` veritabanında `Tasks` koleksiyonunu oluşturursunuz.
+Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Tasks` veritabanında `Items` koleksiyonunu oluşturursunuz.
 
 ## <a name="create-the-items-collection"></a>Öğeler koleksiyonunu oluşturma
 
@@ -89,7 +89,7 @@ Daha sonra, Azure Cosmos DB hesabınız bağlar ve `Items` veritabanında `Tasks
 
 1. **Koleksiyonlar** bölümünde **taskDatabase**’i seçip **Yeni Koleksiyon**’u seçin.
 
-    ![Koleksiyon oluşturma](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Koleksiyon oluşturun](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
 
 1. **Koleksiyon Ekle** bölümünde, resmin altındaki tabloda gösterilen ayarları kullanın. 
 

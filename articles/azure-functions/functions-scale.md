@@ -5,24 +5,24 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2eba0c7ae546b5f5ab7525cc8c84e6b6de431085
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929725"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768954"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
-Azure 'da bir işlev uygulaması oluşturduğunuzda, uygulamanız için bir barındırma planı seçmeniz gerekir. Azure Işlevleri için kullanılabilen üç barındırma planı vardır: [Tüketim planı](#consumption-plan), [Premium plan](#premium-plan)ve [App Service planı](#app-service-plan).
+Azure 'da bir işlev uygulaması oluşturduğunuzda, uygulamanız için bir barındırma planı seçmeniz gerekir. Azure Işlevleri için kullanılabilen üç barındırma planı vardır: [Tüketim planı](#consumption-plan), [Premium plan](#premium-plan)ve [adanmış (App Service) plan](#app-service-plan).
 
 Seçtiğiniz barındırma planı aşağıdaki davranışları belirler:
 
 * İşlev uygulamanız nasıl ölçeklendirilir.
 * Her işlev uygulaması örneği için kullanılabilir kaynaklar.
-* VNET bağlantısı gibi gelişmiş özellikler için destek.
+* Azure sanal ağ bağlantısı gibi gelişmiş özellikler için destek.
 
-Hem tüketim hem de Premium planlar, kodunuz çalışırken otomatik olarak işlem gücü ekler. Uygulamanız, yükü işlemek için gerektiğinde ölçeklendirilir ve kod çalışmayı durdurduktan sonra ölçeklenir. Tüketim planı için, boş VM 'Ler için ödeme yapmak veya kapasiteyi önceden ayırmak zorunda kalmazsınız.  
+Hem tüketim hem de Premium planlar, kodunuz çalışırken otomatik olarak işlem gücü ekler. Uygulamanız, yükü işlemek için gerektiğinde ölçeklendirilir ve kod çalışmayı durdurduktan sonra ölçeklendirilir. Tüketim planı için, boş VM 'Ler için ödeme yapmak veya kapasiteyi önceden ayırmak zorunda kalmazsınız.  
 
 Premium plan, Premium işlem örnekleri gibi ek özellikler sağlar, örneklerin sonsuza kadar sıcak kalmasına ve VNet bağlantısına sahip olmasını sağlar.
 
@@ -33,7 +33,7 @@ App Service planı, yönettiğiniz özel altyapıdan yararlanmanızı sağlar. �
 Özellik desteği aşağıdaki iki kategoriye denk gelir:
 
 * _Genel olarak kullanılabilir (GA)_ : üretim kullanımı için tam olarak desteklenir ve onaylanır.
-* _Önizleme_: üretim kullanımı için henüz tam olarak desteklenmemiştir ve onaylanmamıştır.
+* _Önizleme_: üretim kullanımı için henüz tam olarak desteklenmez veya onaylanmamıştır.
 
 Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırma planına yönelik desteğin geçerli olan düzeyini gösterir:
 
@@ -78,7 +78,7 @@ Aşağıdaki durumlarda Azure Işlevleri Premium planını göz önünde bulundu
 * Çok sayıda küçük yürütmeler ve yüksek bir yürütme faturanız, ancak tüketim planında düşük GB ikinci faturanız vardır.
 * Tüketim planı tarafından sağlandıkından daha fazla CPU veya bellek seçeneği gerekir.
 * Kodunuzun, tüketim planında [izin verilen maksimum yürütme süresinden](#timeout) daha uzun çalışması gerekir.
-* Yalnızca Premium bir planda kullanılabilen, VNET/VPN bağlantısı gibi özellikleri gereklidir.
+* Yalnızca bir Premium planda kullanılabilir olan Özellikler (örneğin, sanal ağ bağlantısı) gereklidir.
 
 Premium bir planda JavaScript işlevlerini çalıştırırken, daha az vCPU içeren bir örnek seçmeniz gerekir. Daha fazla bilgi için bkz. [tek çekirdekli Premium planları seçme](functions-reference-node.md#considerations-for-javascript-functions).  
 
@@ -126,7 +126,9 @@ Bu komutun çıktısı `dynamic`olduğunda, işlev uygulamanız tüketim planın
 
 Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerini yönetme gibi işlemler için Azure Storage 'ı temel aldığından, ancak bazı depolama hesapları kuyrukları ve tabloları desteklemezler. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama çoğaltması olan genel amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması oluşturduğunuzda mevcut **depolama hesabı** Seçimlerinizden filtrelenmiştir.
 
-İşlev uygulamanız tarafından kullanılan depolama hesabı, Tetikleyiciniz ve bağlamalarınız tarafından, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, depolama yoğun işlemler için ayrı bir depolama hesabı kullanmanız gerekir.   
+İşlev uygulamanız tarafından kullanılan depolama hesabı, Tetikleyiciniz ve bağlamalarınız tarafından, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, depolama yoğun işlemler için ayrı bir depolama hesabı kullanmanız gerekir.  
+
+Birden çok işlevli uygulamanın herhangi bir sorun olmadan aynı depolama hesabını paylaşması kesinlikle mümkündür. (Bunun iyi bir örneği, bir depolama hesabı gibi davranan Azure Storage öykünücüsü kullanarak yerel ortamınızda birden çok uygulama geliştirmektir.) 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -161,6 +163,8 @@ Farklı tetikleyiciler Ayrıca aşağıda belgelenen farklı ölçekleme sınır
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ölçeklenebilir uygulamalar için en iyi uygulamalar ve desenler
 
 Konak yapılandırması, çalışma zamanı kaplama ve kaynak verimliliği dahil, ne kadar iyi ölçeklendirilemeyeceğini etkileyecek bir işlev uygulamasının birçok yönü vardır.  Daha fazla bilgi için [performans konuları makalesinin ölçeklenebilirlik bölümüne](functions-best-practices.md#scalability-best-practices)bakın. Ayrıca, işlev uygulamanız ölçeklenirken bağlantıların nasıl davranacağını de bilmelisiniz. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](manage-connections.md).
+
+Python ve Node. js ' de ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure Işlevleri Python Geliştirici Kılavuzu-ölçeklendirme ve eşzamanlılık](functions-reference-python.md#scaling-and-concurrency) ve [Azure işlevleri Node. js Geliştirici Kılavuzu-ölçekleme ve eşzamanlılık](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Faturalandırma modeli
 

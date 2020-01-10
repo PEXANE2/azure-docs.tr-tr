@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 9aac6662304395b1bce5dfc21770d296f6a4f2ab
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226844"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769107"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Izleme günlükleri ile Azure Işlevlerini izleme
 
@@ -25,11 +25,11 @@ Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sor
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-Izleme bölümünde **Tanılama ayarları** ' nı seçin ve ardından **Ekle**' ye tıklayın.
+**İzleme** bölümünde **Tanılama ayarları** ' nı seçin ve ardından **Tanılama ayarı Ekle**' ye tıklayın.
 
 ![Tanılama ayarı ekleme](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Ayar sayfasında **Log Analytics gönder**' i seçin ve **log** **' ın altında, bu**tablo istenen günlükleri içerir.
+**Tanılama ayarları** sayfasında **Log Analytics gönder**' i seçin ve sonra Log Analytics çalışma alanınızı seçin. **Günlük** **' i**seçin, bu tablo istenen günlükleri içerir.
 
 ![Tanılama ayarı ekleme](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -37,39 +37,42 @@ Ayar sayfasında **Log Analytics gönder**' i seçin ve **log** **' ın altında
 
 Özel Günlükler oluşturmak için, dilinize bağlı olarak belirli günlük ifadesini kullanabilirsiniz, örnek kod parçacıkları aşağıda verilmiştir:
 
-**JavaScript**
 
-```javascript
-    context.log('My app logs here.');
-```
-
-**Python**
-
-```python
-    logging.info('My app logs here.')
-```
-
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-    log.LogInformation("My app logs here.");
+log.LogInformation("My app logs here.");
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
-    context.getLogger().info("My app logs here.");
+context.getLogger().info("My app logs here.");
 ```
 
-**PowerShell**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+context.log('My app logs here.');
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-    Write-Host "My app logs here."
+Write-Host "My app logs here."
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+logging.info('My app logs here.')
+```
+
+---
 
 ## <a name="querying-the-logs"></a>Günlükleri sorgulama
 
-Oluşturulan günlükleri sorgulamak için Log Analytics çalışma alanına gidin ve **Günlükler**' e tıklayın.
+Oluşturulan günlükleri sorgulamak için, işlev günlüklerini göndermek üzere yapılandırdığınız Log Analytics çalışma alanına gidin ve **Günlükler**' e tıklayın.
 
 ![LA çalışma alanındaki sorgu penceresi](media/functions-monitor-log-analytics/querying.png)
 

@@ -14,17 +14,17 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916511"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777845"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL. js kullanarak istemci uygulamalarını başlatma
 Bu makalede, Kullanıcı Aracısı uygulamasının bir örneğiyle JavaScript (MSAL. js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır. Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir ortak istemci uygulaması biçimidir. Tarayıcı bağlamı başarıyla erişilebilir olduğundan bu istemciler gizli dizileri depolamaz. İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bir uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için öncelikle [bu Azure Portal kaydetmeniz](scenario-spa-app-registration.md) gerekir. Kayıttan sonra, aşağıdaki bilgiler (Azure portal bulunabilir) gerekebilir:
 
 - İstemci KIMLIĞI (uygulamanız için GUID 'ı temsil eden bir dize)
@@ -116,7 +116,7 @@ export type Configuration = {
         * `https://login.microsoftonline.com/common`-kullanıcılara iş ve okul hesaplarıyla veya bir Microsoft kişisel hesabıyla oturum açmak için kullanılır.
         * `https://login.microsoftonline.com/organizations/`-kullanıcılara iş ve okul hesaplarıyla oturum açmak için kullanılır.
         * `https://login.microsoftonline.com/consumers/`-kullanıcılara yalnızca kişisel Microsoft hesabı (canlı) oturum açmak için kullanılır.
-    * Azure AD B2C, örneğin `https://<instance>/tfp/<tenant>/<policyName>/`Azure AD B2C etki alanı olduğu, kiracı Azure AD B2C kiracının adı, policyName ise uygulanacak B2C ilkesinin adıdır.
+    * `https://<instance>/tfp/<tenant>/<policyName>/`Azure AD B2C, örneğin, örnek Azure AD B2C etki alanı olduğu, yani {kiracı-adı}. b2clogin. com, kiracı, Azure AD B2C kiracının adıdır, yani {kiracınızın adı}. onmicrosoft. com, policyName, uygulanacak B2C ilkesinin adıdır.
 
 
 - **Validateauthority**: isteğe bağlı.  Belirteçlerin vereni doğrulayın. `true` varsayılan değerdir. B2C uygulamaları için, yetkili değeri bilindiğinden ve ilke başına farklı olduğundan, yetkili doğrulaması çalışmaz ve `false`olarak ayarlanması gerekir.
@@ -127,7 +127,7 @@ export type Configuration = {
 
 - **Navigatetologinrequesturl**: isteğe bağlı. Oturum açtıktan sonra başlangıç sayfasına varsayılan gezintiyi kapatma özelliği. Varsayılan değer doğru değeridir. Bu yalnızca yeniden yönlendirme akışları için kullanılır.
 
-- **Önbellekelocation**: isteğe bağlı.  Tarayıcı depolamayı `localStorage` ya da `sessionStorage`olarak ayarlar. Varsayılan değer: `sessionStorage`.
+- **Önbellekelocation**: isteğe bağlı.  Tarayıcı depolamayı `localStorage` ya da `sessionStorage`olarak ayarlar. Varsayılan: `sessionStorage`.
 
 - **Storeauthstateıncookie**: isteğe bağlı.  Bu bayrak, Microsoft Internet Explorer ve Microsoft Edge 'de [kimlik doğrulama döngüsü sorunları](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) için bir çözüm olarak msal. js v 0.2.2 ' de kullanıma sunulmuştur. Bu düzeltmeden yararlanmak için bayrağını doğru olarak etkinleştirin `storeAuthStateInCookie`. Bu etkinleştirildiğinde, MSAL. js, tarayıcı tanımlama bilgilerinde kimlik doğrulama akışlarının doğrulanması için gereken kimlik doğrulama isteği durumunu depolar. Varsayılan olarak, bu bayrak `false`olarak ayarlanır.
 

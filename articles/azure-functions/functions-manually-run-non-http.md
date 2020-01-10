@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230469"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769141"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma
 
@@ -22,7 +22,7 @@ Bazı bağlamlarda, dolaylı olarak tetiklenen "isteğe bağlı" bir Azure Işle
 
 ## <a name="define-the-request-location"></a>İstek konumunu tanımlayın
 
-HTTP ile tetiklenen bir işlev çalıştırmak için, işlevi çalıştırmak üzere Azure 'a bir istek göndermeniz gerekir. Bu isteği yapmak için kullanılan URL belirli bir formu alır.
+HTTP ile tetiklenen bir işlev çalıştırmak için, işlevi çalıştırmak üzere Azure 'a bir istek göndermek için bir yol gerekir. Bu isteği yapmak için kullanılan URL belirli bir formu alır.
 
 ![İstek konumunu tanımlayın: Ana bilgisayar adı + klasör yolu + işlev adı](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
@@ -63,7 +63,7 @@ Postman 'ı açın ve şu adımları izleyin:
 
     ![Postman gövde ayarları](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. **Gönder**' e tıklayın.
+8. Tıklayın **Gönder**.
 
     ![Postman ile istek gönderme](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
@@ -75,5 +75,5 @@ Sonra, Azure portal işlevinizi geri döndürün. *Günlükler* penceresini bulu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Işlevlerinde kodunuzu test etme stratejileri](./functions-test-a-function.md)
-- [Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle](./functions-debug-event-grid-trigger-local.md)
+- [Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler](./functions-test-a-function.md)
+- [Azure işlevi olay Kılavuzu tetikleyicisi yerel hata ayıklama](./functions-debug-event-grid-trigger-local.md)

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972397"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772559"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -40,7 +40,7 @@ Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler
      >[!NOTE]
      >Windows Insider portalına erişmek için Windows Insider programının üyesi olmanız gerekir. Windows Insider programı hakkında daha fazla bilgi edinmek için [Windows Insider belgelerimize](https://docs.microsoft.com/windows-insider/at-home/)göz atın.
 
-2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (hızlı) – derleme xxxxx**' i seçin.
+2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (Fast) – Build 19035** veya üzeri ' i seçin.
 
 3. **Onayla**' yı seçin, ardından kullanmak istediğiniz dili seçin ve sonra yeniden **Onayla** ' yı seçin.
     
@@ -172,8 +172,8 @@ Windows sanal masaüstü ortamınızda bir ağ paylaşma oluşturun ve paketi bu
 Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kullanıyorsa, bunu nasıl yükleyeceksiniz:
 
 1. Pakete sağ tıklayın ve **Özellikler**' i seçin.
-2. Görüntülenen pencerede **dijital imzalar** sekmesini seçin. Aşağıdaki görüntüde gösterildiği gibi sekmedeki listede yalnızca bir öğe olmalıdır. Öğeyi vurgulamak için bu öğeyi seçin ve ardından * * de öğesini seçin.
-3. Dijital sinyal ayrıntıları penceresi göründüğünde **genel** sekmesini seçin ve ardından **sertifikayı yükler**' i seçin.
+2. Görüntülenen pencerede **dijital imzalar** sekmesini seçin. Aşağıdaki görüntüde gösterildiği gibi sekmedeki listede yalnızca bir öğe olmalıdır. Öğeyi vurgulamak için bu öğeyi seçin, sonra **Ayrıntılar**' ı seçin.
+3. Dijital imza ayrıntıları penceresi göründüğünde **genel** sekmesini seçin ve ardından **sertifikayı yükler**' i seçin.
 4. Yükleyici açıldığında, depolama konumunuz olarak **yerel makine** ' yi seçin ve ardından **İleri**' yi seçin.
 5. Yükleyici, uygulamanın cihazınızda değişiklik yapmasına izin vermek isteyip istemediğinizi isterse, **Evet**' i seçin.
 6. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından da **Araştır**' ı seçin.
@@ -199,12 +199,12 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
 
 2.  VHD 'ye sağ tıklayın ve **bağla**' yı seçin. Bu, VHD 'yi bir sürücü harfine bağlayacaktır.
 
-3.  VHD 'yi takduktan sonra **Dosya Gezgini** penceresi açılır. Üst klasörü yakala ve **\$parentFolder** değişkenini Güncelleştir
+3.  VHD 'yi takduktan sonra **Dosya Gezgini** penceresi açılır. Üst klasörü yakala ve **$parentFolder** değişkenini Güncelleştir
 
     >[!NOTE]
     >Üst klasör görmüyorsanız, MSIX 'nin doğru genişletilmediği anlamına gelir. Önceki bölümü yineleyin ve yeniden deneyin.
 
-4.  Üst klasörü açın. Doğru şekilde genişletilmişse, paketiyle aynı ada sahip bir klasör görürsünüz. **\$PackageName** değişkenini bu klasörün adıyla eşleşecek şekilde güncelleştirin.
+4.  Üst klasörü açın. Doğru şekilde genişletilmişse, paketiyle aynı ada sahip bir klasör görürsünüz. **$PackageName** değişkenini bu klasörün adıyla eşleşecek şekilde güncelleştirin.
 
     Örneğin, `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
@@ -227,7 +227,7 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     ```
 
 
-6.  **\$VolumeGuid** değişkenini yeni kopyaladığınız birim GUID 'si ile güncelleştirin.
+6.  **$VolumeGuid** değişkenini yeni kopyaladığınız birim GUID 'si ile güncelleştirin.
 
 7. Bir yönetici PowerShell istemi açın ve aşağıdaki PowerShell betiğini ortamınıza uygulanan değişkenlerle güncelleştirin.
 
@@ -256,9 +256,9 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>PowerShell betiğini kaydını kaldırma
 
-Bu komut dosyası için, **\$PackageName** yer tutucusunu, Sınadığınızı paketin adıyla değiştirin.
+Bu komut dosyası için **$PackageName** yer tutucusunu, Sınadığınızı paketin adıyla değiştirin.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>PowerShell betiği önbellekten taşıma
 
-Bu komut dosyası için, **\$PackageName** yer tutucusunu, Sınadığınızı paketin adıyla değiştirin.
+Bu komut dosyası için **$PackageName** yer tutucusunu, Sınadığınızı paketin adıyla değiştirin.
 
 ```powershell
 #MSIX app attach de staging sample

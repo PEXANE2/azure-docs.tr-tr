@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931252"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830199"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory sınırlandırılmış metin biçimi
 
@@ -28,8 +28,8 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 | Özellik         | Açıklama                                                  | Gereklidir |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Veri kümesinin Type özelliği, **Delimitedtext**olarak ayarlanmalıdır. | Yes      |
-| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır.  | Yes      |
+| type             | Veri kümesinin Type özelliği, **Delimitedtext**olarak ayarlanmalıdır. | Evet      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`altında desteklenen özellikleri vardır.  | Evet      |
 | columnDelimiter  | Bir dosyadaki sütunları ayırmak için kullanılan karakter (ler). Şu anda, çok char sınırlayıcısı yalnızca veri akışı eşlemesi için desteklenir ancak kopyalama etkinliği değildir. <br>Varsayılan değer **virgüldür `,`** , sütun sınırlayıcısı boş bir dize olarak tanımlandığında, tüm satır tek bir sütun olarak alınır. | Hayır       |
 | rowDelimiter     | Tek karakter veya "\r\n" bir dosyadaki satırları ayırmak için kullanılır.<br>Varsayılan değer **: ["\r\n", "\r", "\n"]** ve **"\n" ya da "\r\n"** veri akışını eşleyerek ve kopyalama etkinliğini sırasıyla yazma sırasında aşağıdaki değerlerden herhangi biri. <br>`rowDelimiter` sınırlayıcı (boş dize) olarak ayarlandığında, `columnDelimiter` sınırlayıcı (boş dize) olarak ayarlanmalıdır ve bu da tüm içeriği tek bir değer olarak değerlendirmek anlamına gelir. | Hayır       |
 | quoteChar        | Sütun sınırlayıcısı içeriyorsa, tırnak işareti için tek karakter değeri. <br>Varsayılan değer `"`**çift tırnak** olur. <br>Veri akışını eşlemek için `quoteChar` boş bir dize olamaz. <br>Kopyalama etkinliği için `quoteChar` boş bir dize olarak tanımlandığında, tırnak işareti yok ve sütun değeri tırnak içine alınmaz ve sütun sınırlayıcısı ve kendisini atlamak için `escapeChar` kullanılır. | Hayır       |
@@ -77,7 +77,7 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*kaynak\**** bölümünde des
 
 | Özellik       | Açıklama                                                  | Gereklidir |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsource**olarak ayarlanmalıdır. | Yes      |
+| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsource**olarak ayarlanmalıdır. | Evet      |
 | formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin okuma ayarları** tablosuna bakın. | Hayır       |
 | storeSettings  | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, `storeSettings`altında kendi desteklenen okuma ayarları vardır. | Hayır       |
 
@@ -85,7 +85,7 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*kaynak\**** bölümünde des
 
 | Özellik      | Açıklama                                                  | Gereklidir |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | FormatSettings türü, **Delimitedtextreadsetting**olarak ayarlanmalıdır. | Yes      |
+| type          | FormatSettings türü, **Delimitedtextreadsettings**olarak ayarlanmalıdır. | Evet      |
 | skipLineCount | Sayısını gösteren **boş** veri giriş dosyalarından okuma sırasında atlanacak satır. <br>Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. | Hayır       |
 
 ### <a name="delimited-text-as-sink"></a>Havuz olarak ayrılmış metin
@@ -94,7 +94,7 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde des
 
 | Özellik       | Açıklama                                                  | Gereklidir |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsink**olarak ayarlanmalıdır. | Yes      |
+| type           | Kopyalama etkinliği kaynağının Type özelliği, **Delimitedtextsink**olarak ayarlanmalıdır. | Evet      |
 | formatSettings | Bir özellik grubu. Aşağıdaki **ayrılmış metin yazma ayarları** tablosuna bakın. |          |
 | storeSettings  | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının `storeSettings`altında kendi desteklenen yazma ayarları vardır.  | Hayır       |
 
@@ -102,8 +102,8 @@ Aşağıdaki özellikler, kopyalama etkinliği ***\*havuzu\**** bölümünde des
 
 | Özellik      | Açıklama                                                  | Gereklidir                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | FormatSettings türü **DelimitedTextWriteSetting**olarak ayarlanmalıdır. | Yes                                                   |
-| fileExtension | Çıkış dosyalarını adlandırmak için kullanılan dosya uzantısı, örneğin `.csv`, `.txt`. `fileName` output ıstreamtext veri kümesinde belirtilmediğinde belirtilmelidir. | Çıkış veri kümesinde dosya adı belirtilmediğinde Evet |
+| type          | FormatSettings türü **DelimitedTextWriteSettings**olarak ayarlanmalıdır. | Evet                                                   |
+| fileExtension | Çıkış dosyalarını adlandırmak için kullanılan dosya uzantısı, örneğin `.csv`, `.txt`. `fileName` output ıstreamtext veri kümesinde belirtilmediğinde belirtilmelidir. Çıktı veri kümesinde dosya adı yapılandırıldığında, havuz dosya adı olarak kullanılır ve dosya uzantısı ayarı yok sayılır.  | Çıkış veri kümesinde dosya adı belirtilmediğinde Evet |
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 

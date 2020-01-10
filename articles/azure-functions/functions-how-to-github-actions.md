@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226924"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769158"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -25,7 +25,7 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | Section | Görevler |
 | ------- | ----- |
 | **Kimlik doğrulaması** | <ol><li>Hizmet sorumlusu tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>GitHub gizli dizisi oluşturun.</li></ol>|
-| **Derlemeyi** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
+| **Derleme** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
 | **Dağıtma** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Bu örnekte, kaynak içindeki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu
 
 ## <a name="download-the-publishing-profile"></a>Yayımlama profilini indir
 
-Uygulamanızın **genel bakış** sayfasına gidip **Yayımlama profili al**' a tıklayarak functionapp sitenizin yayımlama profilini indirebilirsiniz.
+Uygulamanızın **genel bakış** sayfasına giderek ve **Yayımlama profili al**' a tıklayarak işlev uygulamanızın yayımlama profilini indirebilirsiniz.
 
    ![Yayımlama profilini indir](media/functions-how-to-github-actions/get-publish-profile.png)
 
@@ -54,28 +54,24 @@ Dosyanın içeriğini kopyalayın.
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
-1. [GitHub](https://github.com)'da deponuza gözatıp **Ayarlar** > **gizlilikler** ' ı seçin > **Yeni bir gizli dizi ekleyin**.
+1. [GitHub](https://github.com)'da deponuza gidin, **Ayarlar** > **gizlilikler** ' ı seçin > **Yeni bir gizli dizi ekleyin**.
 
    ![Gizli dizi Ekle](media/functions-how-to-github-actions/add-secret.png)
 
-1. **Ad** ve kopyalanmış komut **çıktısı için `AZURE_CREDENTIALS`** kullanın, daha sonra gizli dizi **Ekle**' yi seçin. Yayımlama profili kullanıyorsanız, **değerin** **adı** ve dosya içeriği için `SCM_CREDENTIALS` kullanın.
+1. Yeni bir parola ekleyin.
+
+   * Azure CLı kullanarak oluşturduğunuz hizmet sorumlusunu kullanıyorsanız, **ad**için `AZURE_CREDENTIALS` kullanın. Ardından, kopyalanmış JSON nesnesi çıkışını **değer**için yapıştırın ve gizli dizi **Ekle**' yi seçin.
+   * Bir yayımlama profili kullanıyorsanız, **ad**için `SCM_CREDENTIALS` kullanın. Ardından, yayımlama profilinin **değer**için dosya içeriğini kullanın ve **gizli dizi Ekle**' yi seçin.
 
 GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama 
 
-Ortamı ayarlamak, yayınlama kurulum eylemlerinden biri kullanılarak yapılabilir.
+Ortamı ayarlamak, dile özgü bir yayımlama kurulum eylemi kullanılarak yapılır.
 
-|Dil | Kurulum eylemi |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
-|**Python**   | `actions/setup-python` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan iş akışının bölümü gösterilmektedir:
-
-**JavaScript**
+Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-node` eylemini kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -88,7 +84,9 @@ Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan i
         node-version: '10.x'
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-python` eylemini kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +99,9 @@ Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan i
         python-version: 3.6
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-dotnet` eylemini kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -114,7 +114,9 @@ Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan i
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-java` eylemini kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -128,14 +130,15 @@ Aşağıdaki örneklerde, desteklenen çeşitli diller için ortamı ayarlayan i
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>İşlev uygulaması oluşturma
 
 Bu, dile ve Azure Işlevleri tarafından desteklenen dillere bağlı olarak, bu bölümün her dilin standart derleme adımları olması gerekir.
 
-Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını oluşturan iş akışının bölümü gösterilmektedir.:
+Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akışının parçasını gösterir:
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -150,7 +153,7 @@ Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını o
         popd
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -164,7 +167,7 @@ Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını o
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -177,7 +180,7 @@ Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını o
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -190,6 +193,7 @@ Aşağıdaki örneklerde, desteklenen çeşitli dillerde işlev uygulamasını o
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>İşlev uygulamasını dağıtma
 

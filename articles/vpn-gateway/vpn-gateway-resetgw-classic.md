@@ -1,5 +1,5 @@
 ---
-title: IPSec tünellerini yeniden kurmak için bir Azure VPN ağ geçidini sıfırlayın | Microsoft Docs
+title: IPSec tüneli yeniden kurmak için bir Azure VPN ağ geçidini sıfırlama
 description: Bu makalede, IPSec tünellerini yeniden kurmak üzere Azure VPN Gateway sıfırlamayı adım adım açıklanmaktadır. Makale hem klasik hem de Kaynak Yöneticisi dağıtım modelleriyle VPN ağ geçitleri için geçerlidir.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: 92978815af22e3ce1a549b9ca3e335befca8c918
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 6fd4bdf15ea5693a50403f3c31f72b920871f04f
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563039"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779816"
 ---
-# <a name="reset-a-vpn-gateway"></a>VPN Gateway sıfırlama
+# <a name="reset-a-vpn-gateway"></a>VPN Gateway’i sıfırlama
 
 Bir veya daha fazla Siteden Siteye VPN tünelinde şirketler arası VPN bağlantısını kaybederseniz bir Azure VPN ağ geçidinin sıfırlanması yararlıdır. Bu durumda şirket içi VPN cihazlarınızın tümü düzgün çalışır, ancak Azure VPN ağ geçitleriyle IPsec tünelleri kuramaz. Bu makale, VPN ağ geçidinizi sıfırlamanıza yardımcı olur.
 
@@ -63,7 +63,7 @@ $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
-Kaynaklanan
+Sonuç:
 
 Bir dönüş sonucu aldığınızda, ağ geçidi sıfırlamasının başarılı olduğunu varsayabilirsiniz. Ancak, dönüş sonucunda, sıfırlama işleminin başarılı olduğunu açıkça belirten hiçbir şey yoktur. Tam olarak ağ geçidi sıfırlamasının gerçekleştiği sırada bakmak isterseniz, bu bilgileri [Azure Portal](https://portal.azure.com)görüntüleyebilirsiniz. Portalda **' GatewayName '-> kaynak durumu '** a gidin.
 
@@ -77,7 +77,7 @@ Aşağıdaki örnek, "Group TestRG1 TestVNet1" adlı bir sanal ağ için ağ ge�
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'
 ```
 
-Kaynaklanan
+Sonuç:
 
 ```powershell
 Error          :
@@ -96,6 +96,6 @@ Ağ geçidini sıfırlamak için [az Network VNET-Gateway Reset](https://docs.mi
 az network vnet-gateway reset -n VNet5GW -g TestRG5
 ```
 
-Kaynaklanan
+Sonuç:
 
 Bir dönüş sonucu aldığınızda, ağ geçidi sıfırlamasının başarılı olduğunu varsayabilirsiniz. Ancak, dönüş sonucunda, sıfırlama işleminin başarılı olduğunu açıkça belirten hiçbir şey yoktur. Tam olarak ağ geçidi sıfırlamasının gerçekleştiği sırada bakmak isterseniz, bu bilgileri [Azure Portal](https://portal.azure.com)görüntüleyebilirsiniz. Portalda **' GatewayName '-> kaynak durumu '** a gidin.

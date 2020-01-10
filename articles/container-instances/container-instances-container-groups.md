@@ -4,12 +4,12 @@ description: Azure Container Instances içinde kapsayıcı grupları hakkında b
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896590"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770280"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
@@ -44,21 +44,19 @@ Bir kapsayıcı grubunun yapılandırmasını korumak için, [az kapsayıcı dı
 
 ## <a name="resource-allocation"></a>Kaynak ayırma
 
-Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek CPU, bellek ve Isteğe bağlı [GPU 'lar][gpus] (Önizleme) gibi kaynakları bir kapsayıcı grubuna ayırır. CPU kaynaklarını örnek olarak alma Örneğin, her biri 1 CPU isteyen iki örneğe sahip bir kapsayıcı grubu oluşturursanız, kapsayıcı grubuna 2 CPU tahsis edilir.
+Azure Container Instances, gruptaki örneklerin [kaynak isteklerini][resource-requests] ekleyerek CPU, bellek ve Isteğe bağlı [GPU 'lar][gpus] (Önizleme) gibi kaynakları çok kapsayıcılı bir gruba ayırır. CPU kaynaklarını örnek olarak alma Örneğin, her biri 1 CPU isteyen iki örneğe sahip bir kapsayıcı grubu oluşturursanız, kapsayıcı grubuna 2 CPU tahsis edilir.
 
 ### <a name="resource-usage-by-instances"></a>Örneklere göre kaynak kullanımı
 
-Her kapsayıcı örneğine, kaynak isteğinde belirtilen kaynaklar ayrılır. Ancak, bir gruptaki bir kapsayıcı örneği tarafından kaynak kullanımı, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini nasıl yapılandırdığınıza bağlıdır. Kaynak sınırı, zorunlu [kaynak isteği][resource-requests] özelliğinden küçük olmalıdır.
+Bir gruptaki her kapsayıcı örneği, kaynak isteğinde belirtilen kaynakları tahsis edilir. Ancak, bir gruptaki bir örnek tarafından kullanılan en fazla kaynak, isteğe bağlı [kaynak sınırı][resource-limits] özelliğini yapılandırırsanız farklı olabilir. Bir örneğin kaynak sınırı zorunlu [kaynak isteği][resource-requests] özelliğinden büyük veya buna eşit olmalıdır.
 
 * Kaynak sınırı belirtmezseniz, örneğin en büyük kaynak kullanımı kaynak isteğiyle aynı olur.
 
-* Bir örnek için bir kaynak sınırı belirtirseniz, kaynak isteğine göre kullanımı azaltarak veya artırarak, örneğin kaynak kullanımını iş yükü için ayarlayabilirsiniz. Ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
+* Bir örnek için bir sınır belirtirseniz, örneğin en büyük kullanım süresi istekten daha büyük olabilir ve bu, ayarladığınız sınıra kadar fazladır. Karşılık gelen, gruptaki diğer örneklere göre kaynak kullanımı azalabilir. Bir örnek için ayarlayabileceğiniz maksimum kaynak sınırı, gruba ayrılan toplam kaynaktır.
     
-Örneğin, iki örneği 1 CPU isteyen bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
+Örneğin, her biri 1 CPU isteyen iki örneğe sahip bir grupta, kapsayıcılarınızın biri diğer CPU 'ların çalışmasını gerektiren bir iş yükü çalıştırabilir.
 
-Bu senaryoda, bir örnek için 0,5 CPU kaynak sınırı ve ikincisi için 2 CPU sınırı ayarlayabilirsiniz. Bu yapılandırma, ilk kapsayıcının kaynak kullanımını 0,5 CPU olarak sınırlandırır ve ikinci kapsayıcının varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
-
-Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][resource-requirements] özelliği REST API.
+Bu senaryoda, örnek için 2 CPU kaynak sınırı ayarlayabilirsiniz. Bu yapılandırma, kapsayıcının, varsa tam 2 CPU 'ya kadar kullanmasına izin verir.
 
 ### <a name="minimum-and-maximum-allocation"></a>En düşük ve en yüksek ayırma
 
@@ -68,7 +66,7 @@ Daha fazla bilgi için bkz. kapsayıcı gruplarındaki [Resourcerequirements][re
 
 ## <a name="networking"></a>Networking (Ağ İletişimi)
 
-Kapsayıcı grupları, bu IP adresindeki bir dış IP adresini ve bağlantı noktası ad alanını paylaşabilir. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. 
+Kapsayıcı grupları, bir dış IP adresini, bu IP adresinde bir veya daha fazla bağlantı noktasını ve tam etki alanı adı (FQDN) olan bir DNS etiketini paylaşabilir. Dış istemcilerin Grup içindeki bir kapsayıcıya ulaşmasını sağlamak için, bağlantı noktasını IP adresinde ve kapsayıcıdan kullanıma sunmalısınız. Grup içindeki kapsayıcılar bir bağlantı noktası ad alanını paylaştığından, bağlantı noktası eşleştirmesi desteklenmez. Kapsayıcı grubu silindiğinde kapsayıcı grubunun IP adresi ve FQDN serbest bırakılır. 
 
 Bir kapsayıcı grubu içinde, kapsayıcılar örnekleri, bu bağlantı noktaları grubun IP adresinde veya kapsayıcıdan dışarıdan sunulmasa bile, herhangi bir bağlantı noktasında localhost aracılığıyla birbirlerine ulaşabilir.
 
@@ -76,7 +74,13 @@ Kapsayıcıların sanal ağdaki diğer kaynaklarla güvenli bir şekilde iletiş
 
 ## <a name="storage"></a>Depolama
 
-Bir kapsayıcı grubuna bağlamak için dış birimler belirtebilirsiniz. Bu birimleri bir gruptaki tek kapsayıcılar içindeki belirli yollarla eşleyebilirsiniz.
+Bir kapsayıcı grubuna bağlamak için dış birimler belirtebilirsiniz. Desteklenen birimler şunlardır:
+* [Azure dosya paylaşımı][azure-files]
+* [Gizli dizi][secret]
+* [Boş Dizin][empty-directory]
+* [Kopyalanmış git deposu][volume-gitrepo]
+
+Bu birimleri bir gruptaki tek kapsayıcılar içindeki belirli yollarla eşleyebilirsiniz. 
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
@@ -112,5 +116,8 @@ Azure Resource Manager şablonuyla çok kapsayıcılı bir kapsayıcı grubunu d
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

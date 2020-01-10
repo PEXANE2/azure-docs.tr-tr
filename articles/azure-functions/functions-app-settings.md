@@ -3,12 +3,12 @@ title: Azure işlevleri için uygulama ayarları başvurusu
 description: Azure işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4de6f093e43bbb8b3e258c3dd2a71f728beb7287
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977276"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769549"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure işlevleri için uygulama ayarları başvurusu
 
@@ -109,6 +109,19 @@ Bu işlev uygulamasında kullanmak için İşlevler çalışma zamanı sürümü
 |---|------------|
 |İŞLEVLERİ\_UZANTISI\_SÜRÜMÜ|~ 2|
 
+## <a name="functions_v2_compatibility_mode"></a>\_v2\_uyumluluk\_modu IŞLEVLERI
+
+Bu ayar, işlev uygulamanızın sürüm 3. x çalışma zamanı üzerinde sürüm 2. x uyumlu modda çalışmasını sağlar. Bu ayarı yalnızca [, işlev uygulamanızı çalışma zamanının 2. x sürümünden 3. x sürümüne yükseltirken](functions-versions.md#migrating-from-2x-to-3x)sorunlarla karşılaşırsanız kullanın. 
+
+>[!IMPORTANT]
+> Bu ayar yalnızca, uygulamanızı 3. x sürümünde doğru şekilde çalışacak şekilde güncelleştirdiğinizde kısa süreli geçici bir çözüm olarak tasarlanmıştır. [2. x çalışma zamanının desteklendiği](functions-versions.md)sürece bu ayar desteklenir. Uygulamanızın bu ayarı kullanmadan sürüm 3. x üzerinde çalışmasını engelleyen sorunlarla karşılaşırsanız, lütfen [sorununuzu bildirin](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
+
+[\_uzantı\_sürümünün](functions-app-settings.md#functions_extension_version) `~3`olarak ayarlanmasını gerektirir.
+
+|Anahtar|Örnek değer|
+|---|------------|
+|\_v2\_uyumluluk\_modu IŞLEVLERI|doğru|
+
 ## <a name="functions_worker_process_count"></a>Işlemler\_çalışan\_Işlem\_sayısı
 
 Varsayılan değeri `1`olan en fazla dil çalışan işlemi sayısını belirtir. İzin verilen en büyük değer `10`. İşlev etkinleştirmeleri, dil çalışan süreçler arasında eşit olarak dağıtılır. Dil çalışan işlemleri, IŞLEVLER tarafından ayarlanan sayı\_çalışan\_Işlem\_SAYıSıNA ulaşıldığında her 10 saniyede bir oluşturulur. Birden çok dil çalışan işleminin kullanılması, [ölçeklendirmeyle](functions-scale.md)aynı değildir. İş yükünüz, CPU ile bağlantılı ve g/ç bağlantılı çağırma karışımına sahip olduğunda bu ayarı kullanmayı göz önünde bulundurun. Bu ayar tüm non-.NET dilleri için geçerlidir.
@@ -178,8 +191,8 @@ Varsayılan olarak, yeni bir HTTP isteği oluşturmak yerine, işlev uygulaması
 
 |Anahtar|Değer|Açıklama|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|doğru|Yerel İşlev Uygulaması bir işleve işaret eden arka uç URL 'si olan çağrılar artık doğrudan işleve gönderilmez ve bunun yerine İşlev Uygulaması için HTTP ön ucuna geri yönlendirilir|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|yanlış|Varsayılan değer budur. Yerel bir işleve işaret eden bir arka uç URL'si ile çağrıları işlev uygulaması bu işleve iletilir.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|doğru|Yerel İşlev Uygulaması bir işleve işaret eden arka uç URL 'SI olan çağrılar artık doğrudan işleve gönderilmez ve bunun yerine İşlev Uygulaması için HTTP ön ucuna geri yönlendirilir|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|yanlış|Varsayılan değer budur. Yerel İşlev Uygulaması bir işleve işaret eden arka uç URL 'SI olan çağrılar, doğrudan bu Işleve iletilir|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES

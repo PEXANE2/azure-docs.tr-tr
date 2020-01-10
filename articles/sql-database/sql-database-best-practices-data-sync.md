@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821866"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771692"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL Data Sync için en iyi deneyimler 
 
@@ -116,7 +116,7 @@ Gecikme süresini en aza indirmek için, hub veritabanını eşitleme grubunun v
 
 Önceki yönergeleri, Kurumsal-bulut ve buluttan buluta senaryolar gibi karmaşık eşitleme grubu yapılandırmalarına uygulayın.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Eşitleme
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Yavaş ve maliyetli ilk eşitlemeden kaçının
 
@@ -218,6 +218,14 @@ Bunun yerine, önce bir veritabanını bir eşitleme grubundan kaldırın. Ardı
 
 Bir veritabanını kaldırmaya ve sonra değişikliklerden birini dağıtmaya gerek kalmadan bir eşitleme grubunu düzenlemenize çalışırsanız, bir veya başka bir işlem başarısız olur. Portal arabirimi tutarsız hale gelebilir. Bu durumda, doğru durumu geri yüklemek için sayfayı yenileyin.
 
+### <a name="avoid-schema-refresh-timeout"></a>Şema yenileme zaman aşımından kaçının
+
+Eşitleme için karmaşık bir şemanız varsa, eşitleme meta verileri veritabanında daha düşük bir SKU varsa (örnek: temel) bir şema yenilemesi sırasında "işlem zaman aşımı" ile karşılaşabilirsiniz. 
+
+#### <a name="solution"></a>Çözüm
+
+Bu sorunu azaltmak için, lütfen eşitleme meta verileri veritabanınızı S3 gibi daha yüksek bir SKU 'ya sahip olacak şekilde ölçeklendirin. 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
@@ -227,7 +235,7 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
     - PowerShell ile
         -  [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
+-   Veri Eşitleme Aracısı - [veri Aracısı Azure SQL Data Sync için eşitleme](sql-database-data-sync-agent.md)
 -   İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](sql-database-sync-monitor-oms.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](sql-database-troubleshoot-data-sync.md)
 -   Eşitleme şemasını güncelleştirme

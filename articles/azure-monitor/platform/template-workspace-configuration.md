@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363396"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834218"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
@@ -20,7 +20,7 @@ ms.locfileid: "75363396"
 
 Azure Izleyici 'de Log Analytics çalışma alanları oluşturmak ve yapılandırmak için [Azure Resource Manager şablonlarını](../../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Şablonlarla gerçekleştirebileceğiniz görevlere örnekler şunlar olabilir:
 
-* Fiyatlandırma katmanını ayarlama dahil bir çalışma alanı oluşturma 
+* Fiyatlandırma katmanını ve kapasite ayırmayı ayarlama dahil bir çalışma alanı oluşturma
 * Çözüm ekleme
 * Kayıtlı aramalar oluştur
 * Bir bilgisayar grubu oluşturun
@@ -47,7 +47,19 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
-Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma alanı oluşturur. JSON şablonu yalnızca yeni çalışma alanının adını ve konumunu gerektirecek şekilde yapılandırılmıştır (fiyatlandırma katmanı ve bekletme gibi diğer çalışma alanı parametreleri için varsayılan değerleri kullanarak).  
+Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma alanı oluşturur. JSON şablonu yalnızca yeni çalışma alanının adını ve konumunu gerektirecek şekilde yapılandırılmıştır. [Erişim denetimi modu](design-logs-deployment.md#access-control-mode), fiyatlandırma katmanı, bekletme ve kapasite rezervasyon düzeyi gibi diğer çalışma alanı parametreleri için belirtilen değerleri kullanır.
+
+Kapasite ayırma için, SKU `CapacityReservation` ve GB cinsinden Özellik `capacityReservationLevel`için bir değer belirterek, verileri almak için seçilen bir kapasite rezervasyonu tanımlarsınız. Aşağıdaki listede, yapılandırma sırasında desteklenen değerlerin ve davranışın ayrıntıları verilmiştir.
+
+- Ayırma sınırını ayarladıktan sonra, 31 gün içinde farklı bir SKU 'ya geçiş yapılamaz.
+
+- Rezervasyon değerini ayarladıktan sonra yalnızca 31 gün içinde artırabilirsiniz.
+
+- `capacityReservationLevel` değerini, en yüksek değeri 50000 olan 100 katları olarak ayarlayabilirsiniz.
+
+- Ayırma düzeyini artırırsanız, süreölçer sıfırlanır ve bu güncelleştirmeden başka bir 31 gün için değiştiremezsiniz.  
+
+- Çalışma alanı için başka bir özelliği değiştirir ancak ayırma sınırını aynı düzeye tutarız, Zamanlayıcı sıfırlanmaz. 
 
 ### <a name="create-and-deploy-template"></a>Şablon oluşturma ve dağıtma
 
@@ -64,6 +76,21 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -101,11 +128,18 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -168,9 +202,9 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -257,7 +291,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -267,7 +301,9 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('pricingTier')]",
+          "name": "CapacityReservation",
+          "capacityReservationLevel": 100
         }
       },
       "resources": [

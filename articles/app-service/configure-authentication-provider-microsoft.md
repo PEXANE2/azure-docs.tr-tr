@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671932"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768444"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>App Service uygulamanızı Microsoft hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -22,7 +22,7 @@ Bu konuda, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Micros
 
 1. Azure portal [**uygulama kayıtları**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) gidin. Gerekirse Microsoft hesabı oturum açın.
 1. **Yeni kayıt**' ı seçin ve ardından bir uygulama adı girin.
-1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`girin. *\<App-domain-name >* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
+1. **Yeniden yönlendirme URI 'lerinde**, **Web**' i seçin ve ardından `https://<app-domain-name>/.auth/login/microsoftaccount/callback`girin. *\<App-domain-name >* değerini uygulamanızın etki alanı adıyla değiştirin.  Örneğin, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. URL 'de HTTPS şemasını kullandığınızdan emin olun.
 
 1. **Kaydol**’u seçin.
 1. **Uygulama (istemci) kimliğini**kopyalayın. Buna daha sonra ihtiyacınız olacak.
@@ -30,11 +30,11 @@ Bu konuda, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Micros
 1. **Sertifikalar & gizlilikler** sayfasında görüntülenen değeri kopyalayın. Sayfadan ayrıldıktan sonra yeniden görüntülenmezler.
 
     > [!IMPORTANT]
-    > Parola, önemli bir güvenlik kimlik bilgileridir. Parolayı kimseyle paylaşmayın veya bir istemci uygulaması içinde dağıtmayın.
+    > İstemci gizli değeri (parola) önemli bir güvenlik kimlik bilgileridir. Parolayı kimseyle paylaşmayın veya bir istemci uygulaması içinde dağıtmayın.
 
 ## <a name="secrets"> </a>App Service uygulamanıza Microsoft hesabı bilgilerini ekleme
 
-1. [Azure portalda]uygulamanıza gidin.
+1. [Azure Portal]uygulamanıza gidin.
 1. **Kimlik doğrulama ve yetkilendirme** > **ayarları** seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
 1. **Kimlik doğrulama sağlayıcıları**altında **Microsoft hesabı**' nı seçin. Daha önce edindiğiniz uygulama (istemci) KIMLIĞINI ve istemci gizli anahtarını yapıştırın. Uygulamanız için gereken tüm kapsamları etkinleştirin.
 1. **Tamam**’ı seçin.
@@ -57,4 +57,4 @@ Artık uygulamanızda kimlik doğrulaması için Microsoft hesabı 'nı kullanma
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure portalda]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

@@ -1,6 +1,6 @@
 ---
-title: Azure işlevleri'ni kullanarak bir Batch işi tetikleme
-description: Öğretici - bir depolama blobu için eklenen OCR taranan belgelere uygulayabilir.
+title: Azure Işlevleri 'ni kullanarak bir Batch işi tetikleyin
+description: Öğretici-bir depolama blobuna eklendikçe taranmış belgelere OCR uygulama
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -11,109 +11,109 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: d5a5197227ff62ca0c610e2c4e269480690d3faf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 99b9a8cac1342f30fcd70f8e938ba6d3dcb90aef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342037"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770161"
 ---
-# <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Öğretici: Azure işlevleri'ni kullanarak bir Batch işi tetikleme
+# <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Öğretici: Azure Işlevleri 'ni kullanarak bir Batch işi tetikleyin
 
-Bu öğreticide, Azure işlevleri'ni kullanarak bir Batch işini tetiklemek öğreneceksiniz. Bir Azure depolama blob kapsayıcısına eklenen belgeler optik karakter tanıma (OCR) Azure Batch uygulanmış olan örnek gösterilecektir. OCR işleme kolaylaştırmak için bir Batch OCR iş blob kapsayıcısına bir dosya eklendiğinde her çalıştığında bir Azure işlevi yapılandıracaksınız.
+Bu öğreticide, Azure Işlevleri 'ni kullanarak bir toplu işi nasıl tetikleyeceğinizi öğreneceksiniz. Azure Storage blob kapsayıcısına eklenen belgelere, Azure Batch aracılığıyla bunlara uygulanan optik karakter tanıma (OCR) ile bir örnek adım adım inceleyeceğiz. OCR işlemesini kolaylaştırmak için, blob kapsayıcısına her dosya eklendiğinde bir Batch OCR işi çalıştıran bir Azure işlevi yapılandıracağız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* Bir Azure Batch hesabı ve bağlı bir Azure Depolama hesabı. Bkz: [Batch hesabı oluşturma](quick-create-portal.md#create-a-batch-account) hesaplarını bağlayın ve oluşturma hakkında daha fazla bilgi için.
+* Bir Azure Batch hesabı ve bağlı bir Azure Depolama hesabı. Hesap oluşturma ve bağlama hakkında daha fazla bilgi için bkz. [Batch hesabı oluşturma](quick-create-portal.md#create-a-batch-account) .
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
 * [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Bir Batch havuzu ve Batch Gezgini kullanarak Batch işi oluşturma
+## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Batch Explorer kullanarak bir Batch havuzu ve toplu iş oluşturma
 
-Bu bölümde, Batch Gezgini, Batch havuzu ve OCR görevleri çalıştırılacak bir Batch işi oluşturmak için kullanacaksınız. 
+Bu bölümde, OCR görevlerini çalıştıracak toplu iş havuzunu ve toplu işi oluşturmak için Batch Explorer kullanacaksınız. 
 
 ### <a name="create-a-pool"></a>Havuz oluşturma
 
-1. Batch Gezgini'ne Azure kimlik bilgilerinizi kullanarak oturum açın.
-1. Seçerek bir havuz oluşturma **havuzları** sol kenar çubuğundaki sonra **Ekle** arama formu düğmesini. 
-    1. Bir kimlik seçin ve görünen adı. Kullanacağız `ocr-pool` bu örneğin.
-    1. Ölçeklendirme türü ayarlayın **boyutu sabit**, adanmış düğüm sayısı 3'e ayarlayın.
-    1. Seçin **Ubuntu 18.04 LTS** işletim sistemi olarak.
-    1. Seçin `Standard_f2s_v2` olarak sanal makine boyutu.
-    1. Başlangıç görevi etkinleştirmek ve Ekle komutu `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`. Kullanıcı kimliği olarak ayarladığınızdan emin olun **görev varsayılan kullanıcı (Yönetici)** , komutları ile eklemek başlangıç görevleri sağlayan `sudo`.
+1. Batch Explorer için Azure kimlik bilgilerinizi kullanarak oturum açın.
+1. Sol taraftaki çubukta **havuzlar** ' ı seçerek bir havuz oluşturun, sonra arama formunun üzerindeki **Ekle** düğmesine basın. 
+    1. Bir KIMLIK ve görünen ad seçin. Bu örnek için `ocr-pool` kullanacağız.
+    1. Ölçek türünü **sabit boyut**olarak ayarlayın ve adanmış düğüm sayısını 3 olarak ayarlayın.
+    1. İşletim sistemi olarak **Ubuntu 18,04-LTS** ' yi seçin.
+    1. Sanal makine boyutu olarak `Standard_f2s_v2` seçin.
+    1. Başlangıç görevini etkinleştirin ve komutu `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`ekleyin. Kullanıcı kimliğini **görev varsayılan kullanıcısı (yönetici)** olarak ayarladığınızdan emin olun. Bu, başlangıç görevlerinin `sudo`komutları içermesini sağlar.
     1. **Tamam**’ı seçin.
 ### <a name="create-a-job"></a>Bir iş oluşturma
 
-1. Seçerek havuzda bir iş oluşturma **işleri** sol kenar çubuğundaki sonra **Ekle** arama formu düğmesini. 
-    1. Bir kimlik seçin ve görünen adı. Kullanacağız `ocr-job` bu örneğin.
-    1. Havuz kümesine `ocr-pool`, veya örneğin adı havuzunuz için seçtiğiniz.
+1. Sol taraftaki çubukta **işler** ' i seçerek havuzda iş oluşturun, sonra arama formunun üzerindeki **Ekle** düğmesine basın. 
+    1. Bir KIMLIK ve görünen ad seçin. Bu örnek için `ocr-job` kullanacağız.
+    1. Havuzu `ocr-pool`veya havuzunuz için seçtiğiniz herhangi bir adı ayarlayın.
     1. **Tamam**’ı seçin.
 
 
-## <a name="create-blob-containers"></a>BLOB kapsayıcıları oluşturma
+## <a name="create-blob-containers"></a>Blob kapsayıcıları oluşturma
 
-Burada depolama giriş ve Çıkış dosyalarını OCR toplu işlemi için blob kapsayıcıları oluşturacaksınız.
+Burada, OCR toplu işi için giriş ve çıkış dosyalarınızı depolayacak blob kapsayıcıları oluşturacaksınız.
 
-1. Depolama Gezgini'ni Azure kimlik bilgilerinizi kullanarak oturum açın.
-1. Batch hesabınıza bağlı depolama hesabı kullanarak oluşturduğunuz iki blob kapsayıcıları (bir giriş dosyaları için bir çıkış dosyaları için) bölümündeki adımları izleyerek [bir blob kapsayıcısı oluşturursunuz](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container).
+1. Depolama Gezgini için Azure kimlik bilgilerinizi kullanarak oturum açın.
+1. Batch hesabınıza bağlı depolama hesabını kullanarak, [BLOB kapsayıcısı oluşturma](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)konumundaki adımları izleyerek iki blob kapsayıcı (bir diğeri çıkış dosyaları için bir tane) oluşturun.
 
-Bu örnekte, giriş kapsayıcısına adlı `input` ve burada tüm belgeler OCR olmadan işleme için Başlangıçta yüklenir. Çıkış kapsayıcısı adlı `output` ve burada toplu OCR ile işlenen belge yazar.  
-    * Bu örnekte biz bizim giriş kapsayıcısına ararız `input`ve bizim çıkış kapsayıcısı `output`.  
-    * Burada başlangıçta OCR olmayan tüm belgeler karşıya giriş kapsayıcıdır.  
-    * Batch işi OCR belgelerle nereye yazdığını çıkış kapsayıcıdır.  
+Bu örnekte, giriş kapsayıcısına `input` adı verilir ve OCR olmayan tüm belgelerin işlenmek üzere başlangıçta karşıya yüklendiği yerdir. Çıkış kapsayıcısına `output` adı verilir ve toplu iş, işlenen belgeleri OCR ile yazar.  
+    * Bu örnekte, giriş kapsayımuzu `input`ve çıkış kapsayımızın `output`arayacağız.  
+    * Giriş kapsayıcısı, OCR olmayan tüm belgelerin başlangıçta karşıya yüklendiği yerdir.  
+    * Çıktı kapsayıcısı, toplu işin belge OCR ile yazdığı yerdir.  
 
-Depolama Gezgini'nde, çıkış kapsayıcısı için bir paylaşılan erişim imzası oluşturma. Çıkış kapsayıcısı üzerinde sağ tıklatıp seçerek bunu **paylaşılan erişim imzası Al...** . Altında **izinleri**, kontrol **yazma**. Diğer bir izinler gereklidir.  
+Depolama Gezgini ' de çıkış Kapsayıcınız için bir paylaşılan erişim imzası oluşturun. Bunu, çıkış kapsayıcısına sağ tıklayıp, **paylaşılan erişim Imzası al..** . seçeneğini belirleyerek yapın. **İzinler**altında, **yazma**' yı işaretleyin. Başka izin gerekmez.  
 
 ## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma
 
-Bu bölümde OCR toplu işlem giriş kapsayıcınıza bir dosyayı SFTP tetikleyen Azure işlevi oluşturacaksınız.
+Bu bölümde, giriş kapsayıcınıza her dosya yüklendiğinde OCR toplu işini tetikleyen Azure Işlevini oluşturacaksınız.
 
-1. Bağlantısındaki [Azure Blob Depolama ile tetiklenen bir işlev oluşturma](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) bir işlev oluşturmak için.
-    1. Bir depolama hesabı için bir istem göründüğünde, Batch hesabınıza bağlı depolama hesabını kullanın.
-    1. İçin **çalışma zamanı yığını**, .NET seçin. Size sunduğumuz işlevi yazacaksınız C# Batch .NET SDK'sını yararlanmak için.
-1. Blob ile tetiklenen bir işlev oluşturulduktan sonra kullanmak [ `run.csx` ](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) ve [ `function.proj` ](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) işlevindeki github'dan.
-    * `run.csx` Giriş blob kapsayıcınızın yeni bir blob eklendiğinde çalışır.
-    * `function.proj` Örneğin, Batch .NET SDK, işlev kodunuzun dış kitaplıkları listeler.
-1. Değişkenlerde yer tutucu değerlerini değiştirmek `Run()` işlevi `run.csx` Batch ve storage kimlik bilgileri yansıtmak için dosya. Batch ve storage hesabı kimlik bilgilerinizle Azure portalında bulabilirsiniz **anahtarları** Batch hesabınızın bölümü.
-    * Batch ve storage hesabı kimlik bilgilerinizi Azure portalında almak **anahtarları** Batch hesabınızın bölümü. 
+1. Bir işlev oluşturmak için [Azure Blob depolama tarafından tetiklenen bir Işlev oluşturma](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) bölümündeki adımları izleyin.
+    1. Bir depolama hesabı istendiğinde, Batch hesabınıza bağladığınız depolama hesabını kullanın.
+    1. **Çalışma zamanı yığını**için .net ' i seçin. Batch .NET SDK özelliğinden yararlanmak için C# ' de işlevimizi yazacağız.
+1. Blob ile tetiklenen işlev oluşturulduktan sonra, Işlevindeki GitHub 'dan [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) ve [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) kullanın.
+    * Giriş blobu kapsayıcınıza yeni bir blob eklendiğinde `run.csx` çalıştırılır.
+    * `function.proj`, Işlev kodunuzda dış kitaplıkları listeler, örneğin Batch .NET SDK.
+1. `run.csx` dosyasının `Run()` işlevindeki değişkenlerin yer tutucu değerlerini, Batch ve depolama kimlik bilgilerinizi yansıtacak şekilde değiştirin. Batch ve Storage hesabı kimlik bilgilerinizi Batch hesabınızın **anahtarlar** bölümündeki Azure Portal bulabilirsiniz.
+    * Batch hesabınızın **anahtarlar** bölümündeki Azure Portal Batch ve Storage hesabı kimlik bilgilerinizi alın. 
 
-## <a name="trigger-the-function-and-retrieve-results"></a>İşlevi tetikleyin ve sonuçları Al
+## <a name="trigger-the-function-and-retrieve-results"></a>İşlevi tetikleme ve sonuçları alma
 
-Tüm taranan dosyalar karşıya [ `input_files` ](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) giriş kapsayıcınız için GitHub üzerindeki dizin. İzlemek için bir görev eklendikten onaylamak için Batch Gezgini `ocr-pool` her dosya için. Birkaç saniye sonra çıkış kapsayıcısı için uygulanan OCR dosyasıyla eklenir. Dosyanın sonra görünür ve Depolama Gezgini'ni üzerinde alınabilir.
+Taranmış dosyaların herhangi birini veya tümünü GitHub 'daki [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) dizininden giriş kapsayıcınıza yükleyin. Her dosya için `ocr-pool` bir görevin eklendiğini onaylamak için Batch Explorer izleyin. Birkaç saniye sonra, OCR uygulanmış dosya çıkış kapsayıcısına eklenir. Dosya daha sonra görünür ve Depolama Gezgini alınabilir.
 
-Ayrıca, günlükleri dosya giriş kapsayıcınıza karşıya yüklediğiniz her dosya için bu gibi iletiler bulabileceğiniz Azure işlevleri web Düzenleyicisi penceresinin alt kısmındaki izleyebilirsiniz:
+Ayrıca, Azure Işlevleri Web Düzenleyicisi penceresinin alt kısmında bulunan günlük dosyasını izleyebilirsiniz. burada, giriş kapsayıcınıza yüklediğiniz her dosya için bunun gibi iletiler görürsünüz:
 
 ```
 2019-05-29T19:45:25.846 [Information] Creating job...
 2019-05-29T19:45:25.847 [Information] Accessing input container <inputContainer>...
 2019-05-29T19:45:25.847 [Information] Adding <fileName> as a resource file...
-2019-06-21T20:02:35.129 [Information] Name of output text file: <outputTxtFile>
-2019-06-21T20:02:35.130 [Information] Name of output PDF file: <outputPdfFile>
+2019-05-29T19:45:25.848 [Information] Name of output text file: <outputTxtFile>
+2019-05-29T19:45:25.848 [Information] Name of output PDF file: <outputPdfFile>
 2019-05-29T19:45:26.200 [Information] Adding OCR task <taskID> for <fileName> <size of fileName>...
 ```
 
-Çıkış dosyaları depolama Gezgini'nden yerel makinenize indirmek için önce sonra seçin ve istediğiniz dosyaları seçin **indirme** üstteki Şeritte. 
+Çıkış dosyalarını Depolama Gezgini yerel makinenize indirmek için önce istediğiniz dosyaları seçin ve ardından üst şeritte **İndir** ' i seçin. 
 
 > [!TIP]
-> İndirilen dosyaları içinde bir PDF okuyucu açtıysanız aranabilir.
+> İndirilen dosyalar bir PDF okuyucusunda açılırsa aranabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz: 
 
 > [!div class="checklist"]
-> * Havuzlar ve işler oluşturmak için Batch Gezgini'ni kullanın
-> * Blob kapsayıcıları ve paylaşılan erişim imzası (SAS) oluşturmak için Depolama Gezgini'ni kullanma
-> * Azure blob ile tetiklenen işlev oluşturma
+> * Havuzlar ve işler oluşturmak için Batch Explorer kullanma
+> * Blob kapsayıcıları ve paylaşılan erişim imzası (SAS) oluşturmak için Depolama Gezgini kullanın
+> * Blob ile tetiklenen bir Azure Işlevi oluşturma
 > * Depolama hizmetine giriş dosyaları yükleme
 > * Görev yürütmeyi izleme
 > * Çıkış dosyalarını alma
 
-* Zamanlamak ve Batch iş yüklerini işlemek üzere .NET API kullanarak daha fazla örnek için bkz: [github'da örnekleri](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
+* Batch iş yüklerini zamanlamak ve işlemek üzere .NET API kullanma hakkında daha fazla örnek için [GitHub 'daki örneklere](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)bakın. 
 
-* Batch iş yüklerini çalıştırmak için kullanabileceğiniz daha fazla Azure işlevleri Tetikleyicileri görmek için bkz: [Azure işlevleri belgelerinde](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).
+* Batch iş yüklerini çalıştırmak için kullanabileceğiniz daha fazla Azure Işlevleri tetikleyicisi görmek için bkz. [Azure işlevleri belgeleri](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).

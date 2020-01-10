@@ -5,12 +5,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Güç Azure Dev Spaces ve bunların azds. YAML yapılandırma dosyasında nasıl yapılandırıldığına ilişkin süreçler açıklanmaktadır
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: 9efae0e9d6bc53e08dce604fa79aa29e158ecabd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e96541b0008dca9cbaeda92152f835c188036971
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280143"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771147"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces nasıl çalışıyor ve yapılandırılır
 
@@ -205,7 +205,7 @@ azds up
 1. Uygulamanız için kapsayıcıyı oluşturur.
 1. Uygulamanızı geliştirme alanına dağıtır.
 1. Yapılandırıldıysa, uygulama uç noktanız için genel olarak erişilebilen bir DNS adı oluşturur.
-1. http://localhostkullanarak uygulama uç noktanıza erişim sağlamak için *bağlantı noktası İleri* kullanır.
+1. http://localhost kullanarak uygulama uç noktanıza erişim sağlamak için *bağlantı noktası İleri* kullanır.
 1. Stdout ve stderr 'i istemci tarafı araçlarına iletir.
 
 
@@ -220,7 +220,7 @@ Daha ayrıntılı bir düzeyde, `azds up`çalıştırdığınızda ne olur:
 1. Denetleyici, Held grafiğindeki *$ (Tag)* yer tutucusunu BENZERSIZ oturum kimliğiyle değiştirir ve hizmetiniz Için Held grafiğini yüklüyor. Hele grafiğine benzersiz oturum KIMLIĞI başvurusu eklemek, bu belirli oturumun AKS kümesine dağıtılan kapsayıcının oturum isteğine ve ilgili bilgilere geri bağlanması için izin verir.
 1. Helk grafiğinin yüklenmesi sırasında Kubernetes Web kancası giriş sunucusu, uygulamanızın Pod öğesine yönetim için ek kapsayıcılar ekler ve projenin kaynak koduna erişin. Devspaces-proxy ve devspaces-proxy-init kapsayıcıları, HTTP izleme ve alan yönlendirmesi sağlamak için eklenir. Devspaces-Build kapsayıcısı, uygulama kapsayıcısını oluşturmak için Docker örneğine ve proje kaynak koduna erişimi olan Pod 'yu sağlamak için eklenmiştir.
 1. Uygulamanın Pod 'ı başlatıldığında, uygulama kapsayıcısını oluşturmak için devspaces oluşturma kapsayıcısı ve devspaces-proxy-init kapsayıcısı kullanılır. Uygulama kapsayıcısı ve devspaces-proxy kapsayıcıları başlatılır.
-1. Uygulama kapsayıcısı başladıktan sonra, istemci tarafı işlevselliği http://localhostüzerinden uygulamanıza HTTP erişimi sağlamak için Kubernetes *bağlantı noktası iletme* işlevini kullanır. Bu bağlantı noktası iletme, geliştirme makinenizi geliştirme alanınızdaki hizmete bağlar.
+1. Uygulama kapsayıcısı başladıktan sonra, istemci tarafı işlevselliği http://localhost üzerinden uygulamanıza HTTP erişimi sağlamak için Kubernetes *bağlantı noktası iletme* işlevini kullanır. Bu bağlantı noktası iletme, geliştirme makinenizi geliştirme alanınızdaki hizmete bağlar.
 1. Pod 'daki tüm kapsayıcılar başlatıldığında hizmet çalışır. Bu noktada, istemci tarafı işlevleri HTTP izlemelerinin, stdout 'ın ve stderr 'in akışa başlamaktadır. Bu bilgiler, geliştiricinin istemci tarafı işlevselliği tarafından görüntülenir.
 
 ### <a name="updating-a-running-service"></a>Çalışan bir hizmet güncelleştiriliyor
@@ -267,7 +267,7 @@ Eşitleme zaman damgaları, istemci tarafı ve denetleyici tarafı dosyaları ar
 
 ### <a name="how-routing-works"></a>Yönlendirmenin nasıl çalıştığı
 
-Geliştirici alanı AKS 'in üzerine kurulmuştur ve aynı [ağ kavramlarını](../aks/concepts-network.md)kullanır. Ayrıca Azure Dev Spaces merkezi bir *ingressmanager* hizmetine sahiptir ve kendi giriş denetleyiciyi aks kümesine dağıtır. *Inressmanager* hizmeti, aks kümelerini dev Spaces ile izler ve uygulama yığınlarında yönlendirme için giriş nesneleriyle kümedeki Azure dev Spaces giriş denetleyicisini iyileştirir. Her pod 'daki devspaces-proxy kapsayıcısı, URL 'yi temel alan bir geliştirme alanına HTTP trafiği için `azds-route-as` HTTP üstbilgisi ekler. Örneğin, URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* bir istek `azds-route-as: azureuser`bir http üst bilgisi alır. Devspaces-proxy kapsayıcısı zaten varsa, bir `azds-route-as` üst bilgisi eklemez.
+Geliştirici alanı AKS 'in üzerine kurulmuştur ve aynı [ağ kavramlarını](../aks/concepts-network.md)kullanır. Ayrıca Azure Dev Spaces merkezi bir *ingressmanager* hizmetine sahiptir ve kendi giriş denetleyiciyi aks kümesine dağıtır. *Inressmanager* hizmeti, aks kümelerini dev Spaces ile izler ve uygulama yığınlarında yönlendirme için giriş nesneleriyle kümedeki Azure dev Spaces giriş denetleyicisini iyileştirir. Her pod 'daki devspaces-proxy kapsayıcısı, URL 'yi temel alan bir geliştirme alanına HTTP trafiği için `azds-route-as` HTTP üstbilgisi ekler. Örneğin, URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* bir istek `azds-route-as: azureuser` bir http üst bilgisi alır. Devspaces-proxy kapsayıcısı zaten varsa, bir `azds-route-as` üst bilgisi eklemez.
 
 Küme dışından bir hizmete HTTP isteği yapıldığında, istek giriş denetleyicisine gider. Giriş denetleyicisi, isteği, giriş nesnelerine ve kurallarına göre doğrudan uygun Pod 'a yönlendirir. Pod 'daki devspaces-proxy kapsayıcısı isteği alır, URL 'ye göre `azds-route-as` üst bilgisini ekler ve sonra isteği uygulama kapsayıcısına yönlendirir.
 
@@ -440,4 +440,4 @@ Ekip geliştirmeyi kullanmaya başlamak için aşağıdaki nasıl yapılır maka
 
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

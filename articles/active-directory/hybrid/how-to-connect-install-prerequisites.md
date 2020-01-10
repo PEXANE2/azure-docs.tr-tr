@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d54ef06fd63a1064962aea6099a2289d04ff658
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462003"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767951"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect önkoşulları
 Bu konu, Azure AD Connect için önkoşulları ve donanım gereksinimlerini açıklamaktadır.
@@ -31,7 +31,7 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 
 ### <a name="azure-ad"></a>Azure AD
 * Azure AD kiracısı. [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)ile bir tane alırsınız. Azure AD Connect yönetmek için aşağıdaki portallardan birini kullanabilirsiniz:
-  * [Azure Portal](https://portal.azure.com).
+  * [Azure portalında](https://portal.azure.com).
   * [Office portalı](https://portal.office.com).  
 * Azure AD 'de kullanmayı planladığınız [etki alanını ekleyin ve doğrulayın](../active-directory-domains-add-azure-portal.md) . Örneğin, kullanıcılarınız için contoso.com kullanmayı planlıyorsanız, bu etki alanının doğrulandığından ve yalnızca contoso.onmicrosoft.com varsayılan etki alanını kullandığınızdan emin olun.
 * Bir Azure AD kiracısı varsayılan 50.000 nesnelerine izin verir. Etki alanınızı doğruladıktan sonra sınır, 300k nesnelerine yükseltilir. Azure AD 'de daha fazla nesne gerekiyorsa, sınırın daha da artması için bir destek talebi açmanız gerekir. 500 ' den fazla nesne gerekiyorsa, Office 365, Azure AD Temel, Azure AD Premium veya Enterprise Mobility ve Security gibi bir lisansa sahip olmanız gerekir.
@@ -57,11 +57,7 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 >[!IMPORTANT]
 >Small Business Server, Server Essentials veya Server Core üzerinde Azure AD Connect yükleme desteklenmez.
 
-* Azure AD Connect Windows Server 2008 R2 veya sonraki bir sürümde yüklü olmalıdır. Bu sunucu etki alanına katılmış olmalıdır ve bir etki alanı denetleyicisi veya üye sunucu olabilir.
-* Azure AD Connect Windows Server 2008 R2 üzerine yüklerseniz, Windows Update en son düzeltmeleri uyguladığınızdan emin olun. Yükleme, düzeltme eki yüklenmemiş bir sunucuyla başlayamaz.
-* Özellik **parola eşitlemesini**kullanmayı planlıyorsanız, Azure AD Connect sunucusu Windows Server 2008 R2 SP1 veya sonraki bir sürümde olmalıdır.
-* **Grup tarafından yönetilen bir hizmet hesabı**kullanmayı planlıyorsanız, Azure AD Connect sunucusu Windows Server 2012 veya sonraki bir sürümde olmalıdır.
-* Azure AD Connect sunucuda [.NET Framework 4.5.1](#component-prerequisites) veya üzeri ve [Microsoft PowerShell 3,0](#component-prerequisites) veya üzeri yüklü olmalıdır.
+* Azure AD Connect, Windows Server 2012 veya sonraki bir sürüme yüklenmiş olmalıdır. Bu sunucu etki alanına katılmış olmalıdır ve bir etki alanı denetleyicisi veya üye sunucu olabilir.
 * ADFS yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız, Azure AD Connect sunucusu PowerShell döküm grup ilkesi etkin olmamalıdır. Eşitleme yapılandırmasını yönetmek için Azure AD Connect Sihirbazı kullanıyorsanız PowerShell dökümünü etkinleştirebilirsiniz.
 * Active Directory Federasyon Hizmetleri (AD FS) dağıtılırsa, AD FS veya Web uygulaması proxy 'Sinin yüklü olduğu sunucular Windows Server 2012 R2 veya üzeri olmalıdır. Uzaktan Yükleme için bu sunucularda [Windows Uzaktan Yönetimi](#windows-remote-management) etkinleştirilmelidir.
 * Active Directory Federasyon Hizmetleri (AD FS) dağıtılmışsa, [SSL sertifikalarına](#ssl-certificate-requirements)ihtiyacınız vardır.
@@ -84,7 +80,7 @@ Daha fazla bilgi için bkz:
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect tarafından kullanılan SQL Server
 * Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Varsayılan olarak bir SQL Server 2012 Express LocalDB (SQL Server Express bir açık sürümü) yüklenir. SQL Server Express, yaklaşık 100.000 nesneyi yönetmenizi sağlayan 10 GB boyut sınırına sahiptir. Dizin nesnelerinin daha yüksek bir birimini yönetmeniz gerekiyorsa, Yükleme Sihirbazı 'nı farklı bir SQL Server yüklemesine işaret etmeniz gerekir. SQL Server yüklemesinin türü [Azure AD Connect performansını](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)etkileyebilir.
 * Farklı bir SQL Server yüklemesi kullanıyorsanız, bu gereksinimler geçerlidir:
-  * Azure AD Connect, 2008 R2 'den (en son hizmet paketiyle) Microsoft SQL Server tüm sürümlerini SQL Server 2019 ' e destekler. Microsoft Azure SQL Veritabanı veritabanı olarak **desteklenmez** .
+  * Azure AD Connect, 2012 (en son hizmet paketiyle) Microsoft SQL Server tüm sürümlerini SQL Server 2019 ' e destekler. Microsoft Azure SQL Veritabanı veritabanı olarak **desteklenmez** .
   * Büyük/küçük harfe duyarsız bir SQL harmanlaması kullanmanız gerekir. Bu harmanlamalar, adında bir \_CI_ tanımlanır. \_CS_ tarafından tanımlanan, büyük/küçük harfe duyarlı harmanlama kullanılması **desteklenmez** .
   * SQL örneği başına yalnızca bir eşitleme motoruna sahip olabilirsiniz. Bir SQL örneğinin FIM/MıM Sync, DirSync veya Azure AD Eşitleme paylaşılması **desteklenmez** .
 
@@ -143,7 +139,7 @@ Azure AD Connect, Microsoft PowerShell ve .NET Framework 4.5.1 bağımlıdır. S
 * Windows Server 2012R2
   * Microsoft PowerShell varsayılan olarak yüklüdür. İşlem yapmanız gerekmez.
   * .NET Framework 4.5.1 ve üzeri sürümler Windows Update aracılığıyla sunulur. Denetim Masası 'nda Windows Server için en son güncelleştirmeleri yüklediğinizden emin olun.
-* Windows Server 2008 R2 ve Windows Server 2012
+* Windows Server 2012
   * Microsoft PowerShell 'in en son sürümü, [Microsoft Indirme merkezi](https://www.microsoft.com/downloads)'Nde bulunan **Windows Management Framework 4,0**' de kullanılabilir.
   * .NET Framework 4.5.1 ve üzeri sürümler [Microsoft Indirme merkezi](https://www.microsoft.com/downloads)' nde bulunabilir.
 
@@ -151,81 +147,75 @@ Azure AD Connect, Microsoft PowerShell ve .NET Framework 4.5.1 bağımlıdır. S
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Azure AD Connect için TLS 1,2 'yi etkinleştirin
 Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı sunucusu ile Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak Azure AD Connect TLS 1,0 kullanır. Bunu, .NET uygulamalarını sunucuda varsayılan olarak TLS 1,2 kullanacak şekilde yapılandırarak değiştirebilirsiniz. TLS 1,2 hakkında daha fazla bilgi için [Microsoft Güvenlik Danışmanlığı 2960358](https://technet.microsoft.com/security/advisory/2960358)' de bulabilirsiniz.
 
-1. TLS 1,2, Windows Server 2008 R2 veya önceki sürümlerden önce etkinleştirilemez. İşletim sisteminiz için .NET 4.5.1 düzeltmesinin yüklü olduğundan emin olun, bkz. [Microsoft Güvenlik Danışmanlığı 2960358](https://technet.microsoft.com/security/advisory/2960358). Bu düzeltme veya daha sonraki bir sürümü sunucunuzda zaten yüklü olabilir.
-2. Windows Server 2008 R2 kullanıyorsanız, TLS 1,2 ' nin etkinleştirildiğinden emin olun. Windows Server 2012 Server ve sonraki sürümlerinde TLS 1,2 zaten etkinleştirilmelidir.
+1.  İşletim sisteminiz için .NET 4.5.1 düzeltmesinin yüklü olduğundan emin olun, bkz. [Microsoft Güvenlik Danışmanlığı 2960358](https://technet.microsoft.com/security/advisory/2960358). Bu düzeltme veya daha sonraki bir sürümü sunucunuzda zaten yüklü olabilir.
     ```
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+2. For all operating systems, set this registry key and restart the server.
     ```
-3. Tüm işletim sistemleri için, bu kayıt defteri anahtarını ayarlayın ve sunucuyu yeniden başlatın.
+    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\.NETFramework\v4.0.30319 "Schusestrongşifre" = DWORD: 00000001
     ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
-    "SchUseStrongCrypto"=dword:00000001
-    ```
-4. Ayrıca, eşitleme altyapısı sunucusu ile uzak SQL Server arasında TLS 1,2 ' i etkinleştirmek istiyorsanız, [Microsoft SQL Server Için tls 1,2 desteği](https://support.microsoft.com/kb/3135244)için gerekli sürümlerin yüklü olduğundan emin olun.
+4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
-## <a name="prerequisites-for-federation-installation-and-configuration"></a>Federasyon yükleme ve yapılandırma önkoşulları
-### <a name="windows-remote-management"></a>Windows Uzaktan Yönetimi
-Active Directory Federasyon Hizmetleri (AD FS) veya Web uygulaması ara sunucusu dağıtmak için Azure AD Connect kullanırken, şu gereksinimleri kontrol edin:
+## Prerequisites for federation installation and configuration
+### Windows Remote Management
+When using Azure AD Connect to deploy Active Directory Federation Services or the Web Application Proxy, check these requirements:
 
-* Hedef sunucu etki alanına katılmış ise, Windows Uzaktan Yönetimi 'nin etkinleştirildiğinden emin olun
-  * Yükseltilmiş bir PSH komut penceresinde, komut `Enable-PSRemoting –force` kullanın
-* Hedef sunucu, etki alanına katılmış bir WAP makinesi ise, birkaç ek gereksinim daha vardır
-  * Hedef makinede (WAP makinesi):
-    * WinRM (Windows Uzaktan Yönetimi/WS-Management) hizmetinin Hizmetler ek bileşeni aracılığıyla çalıştığından emin olun
-    * Yükseltilmiş bir PSH komut penceresinde, komut `Enable-PSRemoting –force` kullanın
-  * Sihirbazın üzerinde çalıştığı makinede (hedef makine etki alanına katılmış veya güvenilmeyen etki alanı ise):
-    * Yükseltilmiş bir PSH komut penceresinde, komutunu kullanın `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
-    * Sunucu Yöneticisi:
-      * DMZ WAP ana makine havuzuna ekleyin (Sunucu Yöneticisi -> Yönet -> sunucuları Ekle...DNS sekmesini kullanın)
-      * Sunucu Yöneticisi'ni tüm sunucuları sekmesi: WAP sunucuya sağ tıklayın ve Yönet as..., seçin, WAP makine için yerel (etki alanı değil) kimlik bilgilerini girin
-      * Uzak PSH bağlantısını doğrulamak için, Sunucu Yöneticisi tüm sunucular sekmesinde: WAP sunucusu ' na sağ tıklayıp Windows PowerShell ' i seçin. Uzak PowerShell oturumlarının kurulabilmek için uzak bir PSH oturumunun açılması gerekir.
+* If the target server is domain joined, then ensure that Windows Remote Managed is enabled
+  * In an elevated PSH command window, use command `Enable-PSRemoting –force`
+* If the target server is a non-domain joined WAP machine, then there are a couple of additional requirements
+  * On the target machine (WAP machine):
+    * Ensure the winrm (Windows Remote Management / WS-Management) service is running via the Services snap-in
+    * In an elevated PSH command window, use command `Enable-PSRemoting –force`
+  * On the machine on which the wizard is running (if the target machine is non-domain joined or untrusted domain):
+    * In an elevated PSH command window, use the command `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+    * In Server Manager:
+      * add DMZ WAP host to machine pool (server manager -> Manage -> Add Servers...use DNS tab)
+      * Server Manager All Servers tab: right click WAP server and choose Manage As..., enter local (not domain) creds for the WAP machine
+      * To validate remote PSH connectivity, in the Server Manager All Servers tab: right click WAP server and choose Windows PowerShell. A remote PSH session should open to ensure remote PowerShell sessions can be established.
 
-### <a name="ssl-certificate-requirements"></a>SSL sertifikası gereksinimleri
-* AD FS grubunuzun ve tüm Web uygulaması ara sunucularının tüm düğümlerinde aynı SSL sertifikasını kullanmanız önemle önerilir.
-* Sertifika bir x509 sertifikası olmalıdır.
-* Bir test laboratuvarı ortamında, Federasyon sunucuları üzerinde otomatik olarak imzalanan bir sertifika kullanabilirsiniz. Ancak, bir üretim ortamı için sertifikayı genel bir CA 'dan edinmeniz önerilir.
-  * Genel olarak güvenilen bir sertifika kullanıyorsanız, her Web uygulaması ara sunucusu üzerinde yüklü sertifikanın hem yerel sunucuda hem de tüm Federasyon sunucularında güvenilir olduğundan emin olun
-* Sertifikanın kimliği, Federasyon Hizmeti adı ile eşleşmelidir (örneğin, sts.contoso.com).
-  * Kimlik, dNSName türünde bir konu alternatif adı (SAN) uzantısı ya da SAN girişi yoksa ortak ad olarak belirtilen konu adı.  
-  * Sertifikada birden çok SAN girişi bulunabilir, bu, bunlardan biri Federasyon Hizmeti adıyla eşleşir.
-  * Workplace Join kullanmayı planlıyorsanız, enterpriseregistration değeri ile ek bir SAN gerekir **.** ardından, kuruluşunuzun Kullanıcı asıl adı (UPN) sonekini (örneğin, **enterpriseregistration.contoso.com**) takip edin.
-* CryptoAPI yeni nesil (CNG) anahtarları ve anahtar depolama sağlayıcılarına dayalı sertifikalar desteklenmez. Bu, KSP (anahtar depolama sağlayıcısı) değil, CSP 'yi (şifreleme hizmeti sağlayıcısı) temel alan bir sertifika kullanmanız gerektiği anlamına gelir.
-* Joker kart sertifikaları desteklenir.
+### SSL Certificate Requirements
+* It’s strongly recommended to use the same SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
+* The certificate must be an X509 certificate.
+* You can use a self-signed certificate on federation servers in a test lab environment. However, for a production environment, we recommend that you obtain the certificate from a public CA.
+  * If using a certificate that is not publicly trusted, ensure that the certificate installed on each Web Application Proxy server is trusted on both the local server and on all federation servers
+* The identity of the certificate must match the federation service name (for example, sts.contoso.com).
+  * The identity is either a subject alternative name (SAN) extension of type dNSName or, if there are no SAN entries, the subject name specified as a common name.  
+  * Multiple SAN entries can be present in the certificate, provided one of them matches the federation service name.
+  * If you are planning to use Workplace Join, an additional SAN is required with the value **enterpriseregistration.** followed by the User Principal Name (UPN) suffix of your organization, for example, **enterpriseregistration.contoso.com**.
+* Certificates based on CryptoAPI next generation (CNG) keys and key storage providers are not supported. This means you must use a certificate based on a CSP (cryptographic service provider) and not a KSP (key storage provider).
+* Wild-card certificates are supported.
 
-### <a name="name-resolution-for-federation-servers"></a>Federasyon sunucuları için ad çözümlemesi
-* İntranet (iç DNS sunucunuz) ve extranet (etki alanı kaydediciniz aracılığıyla genel DNS) için AD FS Federasyon Hizmeti adı (örneğin, sts.contoso.com) için DNS kayıtları ayarlayın. İntranet DNS kaydı için CNAME kayıtları olmayan bir kayıt kullandığınızdan emin olun. Bu, Windows kimlik doğrulamasının etki alanına katılmış makineden doğru şekilde çalışması için gereklidir.
-* Birden fazla AD FS sunucusu veya Web uygulaması ara sunucusu dağıtıyorsanız, yük dengeleyiciyi yapılandırdığınızdan ve AD FS Federasyon Hizmeti adı (örneğin sts.contoso.com) için DNS kayıtlarının yük dengeleyiciye işaret aldığından emin olun.
-* Windows tümleşik kimlik doğrulamasının intranetinizdeki Internet Explorer 'ı kullanarak tarayıcı uygulamaları için çalışması için, AD FS Federasyon Hizmeti adının (örneğin sts.contoso.com) IE 'deki intranet bölgesine eklendiğinden emin olun. Bu, Grup İlkesi aracılığıyla denetlenebilir ve etki alanına katılmış tüm bilgisayarlarınıza dağıtılabilir.
+### Name resolution for federation servers
+* Set up DNS records for the AD FS federation service name (for example sts.contoso.com) for both the intranet (your internal DNS server) and the extranet (public DNS through your domain registrar). For the intranet DNS record, ensure that you use A records and not CNAME records. This is required for windows authentication to work correctly from your domain joined machine.
+* If you are deploying more than one AD FS server or Web Application Proxy server, then ensure that you have configured your load balancer and that the DNS records for the AD FS federation service name (for example sts.contoso.com) point to the load balancer.
+* For windows integrated authentication to work for browser applications using Internet Explorer in your intranet, ensure that the AD FS federation service name (for example sts.contoso.com) is added to the intranet zone in IE. This can be controlled via group policy and deployed to all your domain joined computers.
 
-## <a name="azure-ad-connect-supporting-components"></a>Azure AD Connect destekleyici bileşenleri
-Aşağıda, Azure AD Connect yüklendiği sunucuya Azure AD Connect yüklediği bileşenlerin bir listesi verilmiştir. Bu liste temel bir hızlı yüklemeye yöneliktir. Eşitleme Hizmetleri yükleme sayfasında farklı bir SQL Server kullanmayı seçerseniz, SQL Express LocalDB yerel olarak yüklenmez.
+## Azure AD Connect supporting components
+The following is a list of components that Azure AD Connect installs on the server where Azure AD Connect is installed. This list is for a basic Express installation. If you choose to use a different SQL Server on the Install synchronization services page, then SQL Express LocalDB is not installed locally.
 
 * Azure AD Connect Health
-* Microsoft SQL Server 2012 komut satırı yardımcı programları
+* Microsoft SQL Server 2012 Command Line Utilities
 * Microsoft SQL Server 2012 Express LocalDB
 * Microsoft SQL Server 2012 Native Client
-* Microsoft Visual C++ 2013 yeniden dağıtım paketi
+* Microsoft Visual C++ 2013 Redistribution Package
 
-## <a name="hardware-requirements-for-azure-ad-connect"></a>Azure AD Connect için donanım gereksinimleri
-Aşağıdaki tabloda Azure AD Connect eşitleme bilgisayarı için en düşük gereksinimler gösterilmektedir.
+## Hardware requirements for Azure AD Connect
+The table below shows the minimum requirements for the Azure AD Connect sync computer.
 
-| Active Directory nesne sayısı | CPU | Bellek | Sabit sürücü boyutu |
+| Number of objects in Active Directory | CPU | Memory | Hard drive size |
 | --- | --- | --- | --- |
-| 10.000 'den az |1,6 GHz |4 GB |70 GB |
-| 10,000–50,000 |1,6 GHz |4 GB |70 GB |
-| 50,000–100,000 |1,6 GHz |16 GB |100 GB |
-| 100.000 veya daha fazla nesne için SQL Server tam sürümü gereklidir | | | |
-| 100,000–300,000 |1,6 GHz |32 GB |300 GB |
-| 300,000–600,000 |1,6 GHz |32 GB |450 GB |
-| 600.000 'den fazla |1,6 GHz |32 GB |500 GB |
+| Fewer than 10,000 |1.6 GHz |4 GB |70 GB |
+| 10,000–50,000 |1.6 GHz |4 GB |70 GB |
+| 50,000–100,000 |1.6 GHz |16 GB |100 GB |
+| For 100,000 or more objects the full version of SQL Server is required | | | |
+| 100,000–300,000 |1.6 GHz |32 GB |300 GB |
+| 300,000–600,000 |1.6 GHz |32 GB |450 GB |
+| More than 600,000 |1.6 GHz |32 GB |500 GB |
 
-AD FS veya Web uygulaması proxy sunucuları çalıştıran bilgisayarlar için en düşük gereksinimler şunlardır:
+The minimum requirements for computers running AD FS or Web Application Proxy Servers is the following:
 
-* CPU: çift çekirdekli 1,6 GHz veya üzeri
-* BELLEK: 2 GB veya üzeri
-* Azure VM: a2 yapılandırması veya üzeri
+* CPU: Dual core 1.6 GHz or higher
+* MEMORY: 2 GB or higher
+* Azure VM: A2 configuration or higher
 
-## <a name="next-steps"></a>Sonraki adımlar
-[Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.
+## Next steps
+Learn more about [Integrating your on-premises identities with Azure Active Directory](whatis-hybrid-identity.md).

@@ -1,45 +1,44 @@
 ---
-title: 'Noktadan siteye bir istemci sertifikası yükleyin: Azure | Microsoft Docs'
-description: P2S sertifika kimlik doğrulaması - Windows, Mac, Linux için istemci sertifikası yükleyin.
+title: 'Azure VPN Gateway: Noktadan siteye istemci sertifikası yüklemeyi'
+description: P2S sertifikası kimlik doğrulaması için istemci sertifikası 'nı (Windows, Mac, Linux) yükler.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: c278c1c85961fbeb0779cad98f8ac16d4961ba75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6399f52229916c9ab3e55ec55ace092d0b73dba
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60679988"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778286"
 ---
-# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>P2S sertifika kimlik doğrulaması bağlantıları için istemci sertifikalarını yükleme
+# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>P2S sertifikası kimlik doğrulaması bağlantıları için istemci sertifikaları 'nı yükler
 
-Noktadan siteye Azure sertifika doğrulaması kullanarak bir sanal ağa bağlanan tüm istemciler, bir istemci sertifikası gerektirir. Bu makale P2S kullanarak bir sanal ağa bağlanırken kimlik doğrulaması için kullanılan bir istemci sertifikasını yükleme yardımcı olur.
+Noktadan siteye Azure sertifikası kimlik doğrulaması kullanarak bir sanal ağa bağlanan tüm istemciler istemci sertifikası gerektirir. Bu makale, P2S kullanarak bir VNet 'e bağlanılırken kimlik doğrulama için kullanılan bir istemci sertifikası yüklemenize yardımcı olur.
 
-## <a name="generate"></a>Bir istemci sertifikası alın
+## <a name="generate"></a>İstemci sertifikası alma
 
-Hangi istemci bağlanmak istediğiniz işletim sistemi ne olursa olsun, her zaman bir istemci sertifikası yüklü olmalıdır. Bir kuruluş CA çözümü kullanılarak oluşturulan bir kök sertifika veya otomatik olarak imzalanan kök sertifika bir istemci sertifikası oluşturabilirsiniz. Bkz: [PowerShell](vpn-gateway-certificates-point-to-site.md), [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md), veya [Linux](vpn-gateway-certificates-point-to-site-linux.md) istemci sertifikası oluşturma adımları için yönergeleri. 
+Hangi istemci işletim sistemini bağlamak istediğinize bakılmaksızın, her zaman bir istemci sertifikanız olmalıdır. Bir kuruluş CA 'sı çözümü veya otomatik olarak imzalanan kök sertifika kullanılarak oluşturulan bir kök sertifikadan bir istemci sertifikası oluşturabilirsiniz. İstemci sertifikası oluşturma adımları için [PowerShell](vpn-gateway-certificates-point-to-site.md), [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)veya [Linux](vpn-gateway-certificates-point-to-site-linux.md) yönergelerine bakın. 
 
-## <a name="installwin"></a>Windows
+## <a name="installwin"></a>Pencerelerin
 
 [!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
-## <a name="installmac"></a>Mac
+## <a name="installmac"></a>'İnizde
 
 >[!NOTE]
->Mac VPN istemcileri, Resource Manager dağıtım modeli için yalnızca desteklenir. Klasik dağıtım modeli için desteklenmez.
+>Mac VPN istemcileri yalnızca Kaynak Yöneticisi dağıtım modeli için desteklenir. Klasik dağıtım modeli için desteklenmez.
 >
 >
 
 [!INCLUDE [Install on Mac](../../includes/vpn-gateway-certificates-install-mac-client-cert-include.md)]
 
-## <a name="installlinux"></a>Linux
+## <a name="installlinux"></a>'Un
 
-Linux istemci sertifikasını istemcinin istemci yapılandırmasının bir parçası olarak yüklenir. Bkz: [istemci yapılandırması - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) yönergeler için.
+Linux istemci sertifikası istemciye istemci yapılandırmasının bir parçası olarak yüklenir. Yönergeler için bkz. [istemci yapılandırması-Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Noktadan siteye yapılandırma adımları için devam [VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme](point-to-site-vpn-client-configuration-azure-cert.md).
+[VPN istemci yapılandırma dosyalarını oluşturmak ve yüklemek](point-to-site-vpn-client-configuration-azure-cert.md)Için Noktadan siteye yapılandırma adımlarıyla devam edin.

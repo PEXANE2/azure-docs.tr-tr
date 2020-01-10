@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390554"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833883"
 ---
+## <a name="limitations"></a>Sınırlamalar
+
+- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
+- Aşağıdaki VM Serisi destekleniyor: DSv3 ve ESv3. 
+
 ## <a name="benefits"></a>Avantajlar 
 
 Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:
@@ -22,7 +27,6 @@ Tüm konağın rezerve etmek aşağıdaki avantajları sağlar:
 -   Fiziksel sunucu düzeyinde donanım yalıtımı. Konaklarınıza başka VM 'Ler yerleştirilmeyecektir. Ayrılmış konaklar aynı veri merkezlerinde dağıtılır ve aynı ağı ve temel alınan depolama altyapısını diğer, yalıtılmış olmayan konaklarla paylaşır.
 -   Azure platformu tarafından başlatılan bakım olayları üzerinde denetim. Bakım olaylarının çoğunluğu sanal makinelerinizde hiç etkilenmeyeceğinden, duraklamanın her saniyesi bir etkiye sahip olabileceği bazı hassas iş yükleri vardır. Adanmış konaklar sayesinde hizmetinize etkisini azaltmak için bir bakım penceresine geçebilirsiniz.
 -   Azure hibrit avantajı ile, Windows ve SQL için kendi lisanslarınızı Azure 'a getirebilirsiniz. Hibrit avantajlarının kullanılması size ek avantajlar sağlar. Daha fazla bilgi için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
 
 
 ## <a name="groups-hosts-and-vms"></a>Gruplar, konaklar ve VM 'Ler  
@@ -71,7 +75,7 @@ Sanal makinelerinizi destekleyen altyapı, güvenilirliği, performansı ve güv
 > [!NOTE]
 >  Bakım denetimi şu anda sınırlı bir önizleme aşamasındadır ve bir ekleme işlemi gerektirir. Bir [aday anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)göndererek bu önizleme için geçerlidir.
 
-## <a name="capacity-considerations"></a>Kapasite Konuları
+## <a name="capacity-considerations"></a>Kapasite konuları
 
 Adanmış bir ana bilgisayar sağlandıktan sonra Azure bu uygulamayı fiziksel sunucuya atar. Bu, sanal makinenizin sağlanması gerektiğinde kapasitenin kullanılabilirliğini garanti eder. Azure, ana bilgisayarınız için fiziksel bir sunucu seçmek üzere bölgedeki (veya bölgedeki) tüm kapasiteyi kullanır. Ayrıca, müşterilerin küme içindeki boş alan tükenmeden ayrılmış ana bilgisayar parmak izini büyümesi bekleneceği anlamına gelir.
 
@@ -99,11 +103,11 @@ Daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması]
 
 Bir konak için bir SKU tanımlanmıştır ve VM boyut serisini ve türünü temsil eder. Aynı boyut serisinde olduğu sürece, tek bir konak içinde farklı boyutlardaki birden fazla VM 'yi karıştırabilirsiniz. Bu tür, bölgede şu anda kullanılabilir donanım oluşturma türüdür.
 
-Aynı VM Serisi için farklı `types` farklı CPU satıcılarından olacaktır ve farklı CPU nesilleri ve çekirdek sayısına sahip olur.
+Aynı VM serisine ait farklı `types` farklı CPU satıcılarından ve farklı CPU nesilleri ve çekirdek sayısına sahip olacaktır.
 
 Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
-Önizleme sırasında şu ana bilgisayar SKU\types destekliyoruz: DSv3_Type1 ve ESv3_Type1
+Adanmış konaklar şu ana bilgisayar SKU\types 'ı destekler: DSv3_Type1 ve ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Ana bilgisayar yaşam döngüsü
@@ -111,10 +115,10 @@ Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| Sistem durumu   | Açıklama       |
+| Sistem Durumu   | Açıklama       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |
-| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. @No__t-0 etkinse sanal makineleriniz, sağlıklı donanıma karşı *hizmet* olarak çalışır. Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
+| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. `autoReplaceOnFailure` etkinleştirilirse sanal makineleriniz, sağlıklı donanıma karşı *hizmet* olarak çalışır. Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
 | Konak serbest bırakıldı  | Tüm sanal makineler konaktan kaldırıldı. Bu ana bilgisayar için artık bu konak için ücret alınmaz çünkü donanım, döndürme dışında bırakıldı.   |
 

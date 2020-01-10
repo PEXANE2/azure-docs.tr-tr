@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: e6f074dd6748f58a86a6ac8166ca0ee858926975
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 544ca198b846ca5032bdf400b300ac076d729d88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379802"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834139"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure bilişsel hizmetler nedir?
 
@@ -114,7 +114,7 @@ Bilişsel hizmetler, CSA STAR sertifikası, Fedrata orta ve HIPAA BAA gibi serti
 
 Kendi denetim ve güvenlik incelemelerinizin sertifikalarını [indirebilirsiniz](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) .
 
-Gizlilik ve veri yönetimini anlamak için [Güven Merkezi](https://servicetrust.microsoft.com/)' ne gidin. MD
+Gizlilik ve veri yönetimini anlamak için [güven merkezine](https://servicetrust.microsoft.com/)gidin.
 
 ## <a name="support"></a>Destek
 

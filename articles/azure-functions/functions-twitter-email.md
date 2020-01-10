@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226619"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768971"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Mantıksal uygulamayı işleve bağlayın.
 > * İşlevden alınan yanıta göre bir e-posta gönderin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Etkin bir [Twitter](https://twitter.com/) hesabı. 
 + Bir [Outlook.com](https://outlook.com/) hesabı (bildirim göndermek için).
@@ -43,7 +43,7 @@ Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -76,7 +76,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
 
 ## <a name="create-an-http-triggered-function"></a>HTTP ile tetiklenen işlev oluşturma  
 
-1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı seçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı seçin.
 
     ![Azure portalındaki İşlevler hızlı başlangıç sayfası](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -129,7 +129,7 @@ Artık duyarlılık puanlarını kategorilere ayıran bir işleviniz vardır. bu
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma   
 
-1. Azure portalının sol üst köşesinde bulunan **Yeni** düğmesine tıklayın.
+1. Azure portal, Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesine tıklayın.
 
 2. **Web** > **Mantıksal Uygulama**’ya tıklayın.
  

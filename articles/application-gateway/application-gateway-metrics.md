@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551395"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777827"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -36,7 +36,7 @@ Application Gateway, Application Gateway ve arka uç örneklerinizin performans�
 
   Bir isteğin işlenmesi için geçen ortalama süre ve gönderilecek yanıt. Bu, yanıt gönderme işlemi tamamlandığında Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığının ortalaması olarak hesaplanır. Bu, genellikle Application Gateway işleme süresini, istek ve Yanıt paketlerinin ağ üzerinden hareket etmekte olduğu süreyi ve arka uç sunucusunun yanıt vermesi gerektiğini unutmayın.
   
-*ISTEMCI RTT* , *uygulama ağ geçidinin toplam süresinden*çok daha fazla ise, istemci tarafından gözlenen gecikme süresi istemci ile Application Gateway arasındaki ağ bağlantısı nedeniyle anlaşılabilirler. Her iki gecikme süresi de karşılaştırılamadığında, aşağıdakilerden herhangi biri olabilir: Application Gateway, Application Gateway ve arka uç uygulaması arasındaki ağ veya arka uç uygulama performansı.
+Dinleyiciye göre filtreledikten sonra, *ISTEMCI RTT* *uygulama ağ geçidinin toplam süresinden*fazla ise, istemci tarafından gözlenen gecikme süresi istemci ile Application Gateway arasındaki ağ bağlantısı nedeniyle anlaşılabilirler. Her iki gecikme süresi de karşılaştırılamadığında, aşağıdakilerden herhangi biri olabilir: Application Gateway, Application Gateway ve arka uç uygulaması arasındaki ağ veya arka uç uygulama performansı.
 
 - **Arka uç ilk bayt yanıt süresi**
 

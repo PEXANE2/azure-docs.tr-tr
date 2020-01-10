@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373256"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780088"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure sanal ağ için IPv6 nedir? (Önizleme)
 
@@ -75,7 +75,7 @@ Azure sanal ağ için IPv6, müşterilerin Azure 'da ikili yığın (IPv4 + IPv6
 ## <a name="limitations"></a>Sınırlamalar
 Azure sanal ağ sürümü için geçerli IPv6 aşağıdaki sınırlamalara sahiptir:
 - Azure sanal ağ için IPv6 (Önizleme) tüm genel Azure bölgelerinde mevcuttur, ancak yalnızca küresel Azure 'da henüz kamu bulutlarında değildir.
-- Express Route ve VPN Gateway 'ler, IPv6 etkin olan VNET 'te doğrudan veya "UseRemoteGateway" ile birlikte kullanılamaz. 
+- ExpressRoute ve VPN ağ geçitleri IPv6 etkin olan VNET 'te doğrudan veya "UseRemoteGateway" ile birlikte kullanılamaz. 
 - Azure platformu (AKS, vb.) kapsayıcılar için IPv6 iletişimini desteklemez.  
 
 ## <a name="pricing"></a>Fiyatlandırma

@@ -4,12 +4,12 @@ description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230653"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769787"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure Işlevleri geliştirme  
 
@@ -27,7 +27,7 @@ Bu makalede, Visual Studio kullanarak sınıf kitaplığı işlevleri geliştirm
 
 Aksi belirtilmediği takdirde, yordamlar ve örnekler Visual Studio 2019 içindir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Işlevleri araçları, Visual Studio 'nun Azure geliştirme iş yüküne Visual Studio 2017 ile başlayarak dahildir. **Azure geliştirme** Iş yükünü Visual Studio yüklemenize eklediğinizden emin olun.
 
@@ -42,7 +42,7 @@ Azure depolama hesabı gibi ihtiyacınız olan diğer kaynaklar, yayımlama işl
 
 ### <a name="check-your-tools-version"></a>Visual Studio 2017 ' de Araçlar sürümünüzü denetleyin
 
-1. **Araçlar** menüsünde **Uzantılar ve güncelleştirmeler**' i seçin. **Yüklü** > **araçları** ' nı genişletin ve **Azure işlevleri ve Web işleri Araçları '** nı seçin.
+1. Gelen **Araçları** menüsünde seçin **Uzantılar ve güncelleştirmeler**. **Yüklü** > **araçları** ' nı genişletin ve **Azure işlevleri ve Web işleri Araçları '** nı seçin.
 
     ![Işlevler araçları sürümünü doğrulama](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -63,7 +63,7 @@ Azure depolama hesabı gibi ihtiyacınız olan diğer kaynaklar, yayımlama işl
 1. Güncelleştirme tamamlandıktan sonra, **Kapat** ' ı seçin ve Visual Studio 'yu yeniden başlatın.
 
 > [!NOTE]  
-Visual Studio 2019 ve üzeri sürümlerde Azure Işlevleri araçları uzantısı, Visual Studio 'nun bir parçası olarak güncelleştirilir.  
+> Visual Studio 2019 ve üzeri sürümlerde Azure Işlevleri araçları uzantısı, Visual Studio 'nun bir parçası olarak güncelleştirilir.  
 
 ## <a name="create-an-azure-functions-project"></a>Azure İşlevleri projesi oluşturma
 
@@ -184,7 +184,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 Azure Functions Core Tools kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure işlevlerini yerel olarak test](functions-run-local.md)etme.
 
-## <a name="publish-to-azure"></a>Azure'a Yayımlama
+## <a name="publish-to-azure"></a>Azure’da Yayımlama
 
 Visual Studio 'dan yayımlarken, iki dağıtım yönteminden biri kullanılır:
 

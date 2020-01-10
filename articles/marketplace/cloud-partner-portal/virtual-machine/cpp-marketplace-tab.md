@@ -8,19 +8,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824461"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762901"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Sanal makine marketi sekmesi
 
 **Yeni teklif** sayfasının **Market** sekmesi, olası müşterilerinize pazarlama, satış ve yasal bilgiler ve anlaşmalar sağlamanıza ve Market 'ten oluşturulan müşteri adaylarını yönetmenize olanak sağlar. Bu uzun biçim dört bölüme ayrılmıştır: **genel bakış**, **Pazarlama yapıtları**, **müşteri adayı yönetimi**ve **yasal**.
 
 
-## <a name="overview-section"></a>Genel bakış bölümü
+## <a name="overview-section"></a>Genel Bakış bölümü
 Bu bölümde, Azure Market teklifiniz hakkında genel bilgileri girersiniz.  Alan adı üzerinde eklenen bir yıldız işareti (*) gerekli olduğunu gösterir.
 
 ![Sanal makineler için Market sekmesinin genel bakış bölümü](./media/publishvm_008.png)
@@ -37,7 +37,7 @@ Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerek
 | **Pazarlama tanımlayıcısı\***  | Bu teklifle ilişkilendirilecek benzersiz bir URL, genellikle kuruluşunuzun ve çözüm adı, maksimum uzunluk 50 karakter içerir.  Örneğin: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Abonelik kimliklerini önizleme\*** | Ön görüntüleyicilerin 100 abonelik tanımlayıcılarına bir tane ekleyin. Bu beyaz listeye alınan abonelikler, yayımlandıktan sonra, yayımlanmaya başladıktan sonra teklif erişimine sahip olur. |
 | **Faydalı bağlantılar**          | Belgeleri, sürüm notlarını, SSS vb. belgelerine URL 'Ler ekleyin. |
-| **Önerilen Kategoriler (en fazla 5)\*** | Teklifi olan çok seçimli iş ve teknik Kategoriler, ile en iyi şekilde ilişkilendirilebilir.  İzin verilen en fazla beş.  |
+| **Önerilen Kategoriler\*** | Birincil ve ikincil kategori dahil olmak üzere en fazla iki (2) kategori seçin (isteğe bağlı). Her birincil ve/veya ikincil kategori için en fazla iki (2) alt kategori seçin. Alt kategori seçilmezse, teklif yalnızca seçili kategori üzerinde bulunabilir olmaya devam eder. |
 |  |  |
 
 
@@ -58,10 +58,10 @@ Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerek
 | **Geniş\***                  | 255x115 pixel. ico bit eşlem                                                    |
 | **Hero**                  | 815x290 bit eşlem.  İsteğe bağlı, ancak karşıya yüklendikten sonra Hero simgesi silinemez. |
 | *Görüntülerini*  | İsteğe bağlı, ancak SKU başına en fazla beş ekran görüntüsü. |
-| **Ad**                  | Ad veya başlık <!-- TODO - max char length? none specified in UI -->                               |
+| **Adı**                  | Ad veya başlık <!-- TODO - max char length? none specified in UI -->                               |
 | **Görüntü**                 | Ekran yakalama görüntüsü, 533x324 piksel                                         |
 | *Videolar*  |  |
-| **Ad**                  | Ad veya başlık  <!-- TODO - max char length? -->                              |
+| **Adı**                  | Ad veya başlık  <!-- TODO - max char length? -->                              |
 | **Bağlantı**                  | YouTube veya Vimeo 'da barındırılan video URL 'SI                                        |
 | **Resimler**             | 533x324 bit eşlem                                                               |
 |   |   |

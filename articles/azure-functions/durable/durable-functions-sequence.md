@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e8c314b6288bc26ad48fd210e866b2b67e433e17
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: de2fd1a46d931c5d1b625094940a981509bf1488
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231333"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769566"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Dayanıklı İşlevler-Merhaba dizisi örneğinde işlev zinciri oluşturma
 
@@ -55,7 +55,7 @@ Tüm C# düzenleme işlevleri, `Microsoft.Azure.WebJobs.Extensions.DurableTask` 
 
 Kod, farklı parametre değerleri ile sırayla üç kez `E1_SayHello` çağırır. Her çağrının dönüş değeri, işlevin sonunda döndürülen `outputs` listesine eklenir.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 Kaynak kodu aşağıda verilmiştir:
 

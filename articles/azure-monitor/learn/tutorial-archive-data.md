@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893357"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748556"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Depolama’yı kullanarak Azure ölçümlerini ve günlük verilerini arşivleme
 
@@ -31,7 +31,7 @@ Bu öğreticide, verileri bir depolama hesabında arşivlemek üzere Azure ortam
 > * Abonelik günlüklerini depolama hesabına yönlendirme
 > * Kaynak verilerini depolama hesabına yönlendirme
 > * Sanal makine (konuk işletim sistemi) verilerini depolama hesabına yönlendirme
-> * Depolama hesabındaki izleme verilerini görüntüleme
+> * İçindeki izleme verilerini görüntüleme
 > * Kaynaklarınızı temizleme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
@@ -46,7 +46,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Abonelik günlüklerini depolama hesabına yönlendirme
 
-Artık, verileri bir depolama hesabına yönlendirmek üzere Azure ortamınızı ayarlamaya başlamak için hazırsınız. İlk olarak, depolama hesabına yönlendirilecek abonelik düzeyinde verileri (Azure Etkinlik Günlüğünde yer alır) yapılandıracağız. [**Azure Etkinlik Günlüğü**](../../azure-monitor/platform/activity-logs-overview.md), Azure'da abonelik düzeyindeki olayların geçmişini sağlar. *Hangi* kaynakları *kimin*, *ne zaman* oluşturduğunu, güncelleştirdiğini veya sildiğini belirlemek için Azure portalda bu geçmişe göz atabilirsiniz.
+Artık, verileri bir depolama hesabına yönlendirmek üzere Azure ortamınızı ayarlamaya başlamak için hazırsınız. İlk olarak, depolama hesabına yönlendirilecek abonelik düzeyinde verileri (Azure Etkinlik Günlüğünde yer alır) yapılandıracağız. [**Azure Etkinlik Günlüğü**](../../azure-monitor/platform/platform-logs-overview.md), Azure'da abonelik düzeyindeki olayların geçmişini sağlar. *Hangi* kaynakları *kimin*, *ne zaman* oluşturduğunu, güncelleştirdiğini veya sildiğini belirlemek için Azure portalda bu geçmişe göz atabilirsiniz.
 
 1. Sol gezinti listesinde bulunan **İzleyici** düğmesine ve sonra **Etkinlik Günlüğü**’ne tıklayın.
 
@@ -96,7 +96,7 @@ Aboneliğinizdeki izleme verileri artık depolama hesabına akar.
 
 6. **Bekletme (gün)** kaydırıcısını 30’a ayarlayın. Bu kaydırıcı, depolama hesabında izleme verilerinin tutulacağı gün sayısını ayarlar. Azure İzleyici, belirtilen gün sayısından daha eski verileri otomatik olarak siler. Bekletme günü sayısının sıfır olması verileri süresiz olarak depolar.
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Save (Kaydet)** düğmesine tıklayın.
 
 Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
@@ -137,7 +137,7 @@ Kaynağınızdaki izleme verileri artık depolama hesabına akar.
 
 9. Görüntülenen bölümde, önceki **Depolama hesabı oluşturma** adımında oluşturduğunuz depolama hesabını seçin.
 
-10. **Kaydet** düğmesine tıklayın.
+10. **Save (Kaydet)** düğmesine tıklayın.
 
 Sanal makinelerinizdeki izleme verileri artık depolama hesabına akar.
 
@@ -192,7 +192,7 @@ Bu öğreticide, Azure ortamınızdan bir depolama hesabında arşivlenecek izle
 > * Abonelik günlüklerini depolama hesabına yönlendirme
 > * Kaynak verilerini depolama hesabına yönlendirme
 > * Sanal makine (konuk işletim sistemi) verilerini depolama hesabına yönlendirme
-> * Depolama hesabındaki izleme verilerini görüntüleme
+> * İçindeki izleme verilerini görüntüleme
 > * Kaynaklarınızı temizleme
 
 Verilerinizden daha iyi şekilde yararlanmak ve ek bilgiler edinmek için verilerinizi Log Analytics’e de gönderin.

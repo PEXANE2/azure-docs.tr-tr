@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851307"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777793"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
@@ -24,10 +24,10 @@ Algılayıcı veri akışını başlatmak için aşağıdakilerden emin olun:
 
 -  Azure Market 'te Farmtts yüklediniz.
 -  Grubunuza yüklemek istediğiniz sensörlerden ve cihazlara karar verdiniz.
--  Soil nemi sensörlerinden birini kullanmayı planlıyorsanız, algılayıcı sayısına ve tam olarak yerleştirmeniz gereken yere yönelik bir öneri almak için farmtts SOIL nemi algılayıcı yerleştirme haritasını kullanın. Daha fazla bilgi için bkz. [haritalar oluşturma](generate-maps.md).
+-  Soil nemi sensörlerinden birini kullanmayı planlıyorsanız, algılayıcı sayısına ve tam olarak yerleştirmeniz gereken yere yönelik bir öneri almak için farmtts SOIL nemi algılayıcı yerleştirme haritasını kullanın. Daha fazla bilgi için bkz. [haritalar oluşturma](generate-maps-in-azure-farmbeats.md).
 - Cihaz veya Sensörlerinizi grubunuzdaki iş ortağınızdan satın alıp dağıtırsınız. Algılayıcı verilerine cihaz iş ortaklarınızın çözümü aracılığıyla erişebildiğinizden emin olun.
 
-## <a name="enable-device-integration-with-farmbeats"></a>Cihaz tümleştirmesini Farmtempts ile etkinleştirme 
+## <a name="enable-device-integration-with-farmbeats"></a>Cihaz tümleştirmesini Farmtempts ile etkinleştirme
 
 Algılayıcı verilerinin akışını başlattıktan sonra, verileri Farmtts sisteminize alma sürecini başlatabilirsiniz. Farmto 'Lar ile tümleştirmeyi sağlamak için cihaz sağlayıcınıza aşağıdaki bilgileri sağlayın:
 
@@ -41,28 +41,36 @@ Algılayıcı verilerinin akışını başlattıktan sonra, verileri Farmtts sis
 
 Alternatif olarak, Azure Cloud Shell ' den bu betiği çalıştırarak kimlik bilgilerini oluşturabilirsiniz. Şu adımları izleyin.
 
-1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscript)indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde iki dosya bulunur.
-2. https://portal.azure.com/ oturum açın ve Cloud Shell açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
+1. [ZIP dosyasını](https://aka.ms/farmbeatspartnerscriptv2)indirin ve yerel sürücünüze ayıklayın. ZIP dosyasının içinde bir dosya olacaktır.
+2. https://portal.azure.com/ oturum açın ve Azure Active Directory > uygulama kayıtlarına gidin
+
+3. Farmtts dağıtımınızın bir parçası olarak oluşturulan uygulama kaydına tıklayın. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
+
+4. "Bir API 'yi kullanıma sunma" seçeneğine tıklayın-> "istemci uygulaması Ekle" ye tıklayın ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve "yetkilendirmeyi Yetkilendir" seçeneğini işaretleyin. Bu işlem, aşağıdaki adımları gerçekleştirmek için Azure CLI 'ya (Cloud Shell) erişim sağlar.
+
+5. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 
     ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
+6. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
 
     ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Cloud Shell örneğindeki 1. adımdan iki dosyayı karşıya yükleyin.
+7. Cloud Shell örneğindeki 1. adımdan dosyayı karşıya yükleyin.
 
     ![Araç çubuğu düğmesini karşıya yükle](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Dosyaların karşıya yüklendiği dizine gidin. Varsayılan olarak, Kullanıcı adı altında ana dizine yüklenir.
-6. Şu betiği çalıştırın:
+8. Dosyanın karşıya yüklendiği dizine gidin. Varsayılan olarak, dosyalar Kullanıcı adı altında ana dizine yüklenir.
+
+9. Aşağıdaki betiği çalıştırın. Betik, Azure Active Directory > Genel Bakış sayfasından edinilen kiracı KIMLIĞINI ister.
 
     ```azurepowershell-interactive 
 
-    ./generateCredentials.ps1   
+    ./generatePartnerCredentials.ps1   
 
     ```
-7. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin. EventHub bağlantı dizesi, Swagger içindeki API yanıtının bir parçası olarak kullanılabilir.
+
+10. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme
 
@@ -155,4 +163,4 @@ Bir onay iletisi, sensör başarıyla silindiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure Farmtts örneğiniz için sensör verileri akar. Şimdi, gruplar için [haritalar oluşturmayı](generate-maps.md#generate-maps) öğrenin.
+Artık Azure Farmtts örneğiniz için sensör verileri akar. Şimdi, gruplar için [haritalar oluşturmayı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.

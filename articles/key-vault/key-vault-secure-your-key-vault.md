@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 04f4a71e6b54100e5a133958845cf732c2286b32
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5152859bec944c761d4608d1e039d56423d57bcd
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301067"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832752"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına güvenli erişim
 
@@ -51,7 +51,7 @@ Uygulamalar, uç noktalar aracılığıyla düzlemleri erişir. İki düzlemi i�
 
 Aşağıdaki tabloda yönetim ve veri düzlemleri için uç noktalar gösterilmektedir.
 
-| &nbsp;düzlemi erişimi | Erişim uç noktaları | İşlemler | &nbsp;denetim mekanizmasına erişim |
+| &nbsp;düzlemi erişimi | Erişim uç noktaları | Operations | &nbsp;denetim mekanizmasına erişim |
 | --- | --- | --- | --- |
 | Yönetim düzlemi | **Genel:**<br> management.azure.com:443<br><br> **Azure Çin 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 | Anahtar kasaları oluşturun, okuyun, güncelleştirin ve silin<br><br>Key Vault erişim ilkelerini ayarlama<br><br>Key Vault etiketlerini ayarla | RBAC Azure Resource Manager |
 | Veri düzlemi | **Genel:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Anahtarlar: şifre çözme, şifreleme,<br> sarmalama geri al, sarmala, doğrula, imzala,<br> Al, Listele, Güncelleştir, oluştur,<br> İçeri aktarma, silme, yedekleme, geri yükleme<br><br> Gizlilikler: get, List, set, Delete | Key Vault erişim ilkesi |
@@ -89,17 +89,17 @@ Bir anahtar kasasındaki anahtarlar veya gizlilikler için belirli işlemleri y�
 
 ## <a name="example"></a>Örnek
 
-Bu örnekte, SSL için bir sertifika, verileri depolamak için Azure depolama ve imzalama işlemleri için RSA 2.048 bitlik bir anahtar kullanan bir uygulama geliştiriyoruz. Uygulamamız bir Azure sanal makinesinde (VM) (veya bir sanal makine ölçek kümesi) çalışır. Uygulama gizli dizileri depolamak için bir Anahtar Kasası kullanabiliriz. Azure AD ile kimlik doğrulaması yapmak için uygulama tarafından kullanılan önyükleme sertifikasını depolayabiliriz.
+Bu örnekte, TLS/SSL için bir sertifika, verileri depolamak için Azure depolama ve imzalama işlemleri için RSA 2.048 bitlik bir anahtar kullanan bir uygulama geliştiriyoruz. Uygulamamız bir Azure sanal makinesinde (VM) (veya bir sanal makine ölçek kümesi) çalışır. Uygulama gizli dizileri depolamak için bir Anahtar Kasası kullanabiliriz. Azure AD ile kimlik doğrulaması yapmak için uygulama tarafından kullanılan önyükleme sertifikasını depolayabiliriz.
 
 Aşağıdaki depolanmış anahtarlar ve gizli anahtarlara erişmeniz gerekir:
-- **SSL sertifikası**: SSL için kullanılır.
+- **TLS/SSL sertifikası**: TLS/SSL için kullanılır.
 - **Depolama anahtarı**: depolama hesabına erişmek için kullanılır.
 - **RSA 2.048 bit anahtarı**: imzalama işlemleri için kullanılır.
 - **Önyükleme sertifikası**: Azure AD kimlik doğrulaması için kullanılır. Erişim verildikten sonra, depolama anahtarını getirip imzalama için RSA anahtarını kullanabilirsiniz.
 
 Uygulamamızı kimin yönetebileceğini, dağıtabileceğinizi ve denetleyeceğinizi belirlemek için aşağıdaki rolleri tanımlamanız gerekir:
-- **Güvenlik ekibi**: CSO (Güvenlik Müdürü) veya benzer katkıda bulunanlar ofisindeki BT personeli. Güvenlik ekibi, gizli dizileri doğru bir şekilde ping işlemi yapmaktan sorumludur. Gizli dizileri SSL sertifikaları, imzalama için RSA anahtarları, bağlantı dizeleri ve depolama hesabı anahtarları içerebilir.
-- **Geliştiriciler ve işleçler**: uygulamayı geliştiren ve Azure 'da dağıtan personel. Bu ekibin üyeleri güvenlik personelinin bir parçası değildir. SSL sertifikaları ve RSA anahtarları gibi hassas verilere erişimi olmamalıdır. Yalnızca dağıttıkları uygulamanın gizli verilere erişimi olmalıdır.
+- **Güvenlik ekibi**: CSO (Güvenlik Müdürü) veya benzer katkıda bulunanlar ofisindeki BT personeli. Güvenlik ekibi, gizli dizileri doğru bir şekilde ping işlemi yapmaktan sorumludur. Gizlilikler, TLS/SSL sertifikaları, imzalama için RSA anahtarları, bağlantı dizeleri ve depolama hesabı anahtarları içerebilir.
+- **Geliştiriciler ve işleçler**: uygulamayı geliştiren ve Azure 'da dağıtan personel. Bu ekibin üyeleri güvenlik personelinin bir parçası değildir. Bunlar TLS/SSL sertifikaları ve RSA anahtarları gibi hassas verilere erişemez. Yalnızca dağıttıkları uygulamanın gizli verilere erişimi olmalıdır.
 - **Denetçiler**: Bu rol, geliştirme veya genel BT personelinin üyesi olmayan katkıda bulunanlar içindir. Güvenlik standartlarıyla uyumluluğu sağlamak için sertifikaların, anahtarların ve parolaların kullanımını ve bakımını gözden geçirir. 
 
 Uygulamamızın kapsamı dışında başka bir rol var: abonelik (veya kaynak grubu) Yöneticisi. Abonelik Yöneticisi güvenlik ekibi için ilk erişim izinlerini ayarlar. Uygulama için gerekli kaynaklara sahip bir kaynak grubunu kullanarak güvenlik ekibine erişim izni verir.
@@ -115,7 +115,7 @@ Rollerimiz için aşağıdaki işlemleri yetkilendirmemiz gerekir:
 - Anahtarları ve gizli dizileri düzenli olarak alın.
 
 **Geliştiriciler ve işleçler**
-- İmzalama için önyükleme ve SSL sertifikaları (parmak izleri), depolama anahtarı (gizli URI) ve RSA anahtarı (anahtar URI) için Güvenlik ekibinden başvurular alın.
+- İmzalama için, önyükleme ve TLS/SSL sertifikaları (parmak izleri), depolama anahtarı (gizli URI) ve RSA anahtarı (anahtar URI) için Güvenlik ekibinden başvuru alın.
 - Anahtarları ve gizli dizileri programlama yoluyla erişmek için uygulamayı geliştirin ve dağıtın.
 
 **Denetçiler**
@@ -126,9 +126,9 @@ Aşağıdaki tabloda rollerimiz ve uygulamamız için erişim izinleri özetlenm
 | Rol | Yönetim düzlemi izinleri | Veri düzlemi izinleri |
 | --- | --- | --- |
 | Güvenlik ekibi | Katkıda bulunan Key Vault | Anahtarlar: yedekleme, oluşturma, silme, alma, içeri aktarma, listeleme, geri yükleme<br>Gizlilikler: tüm işlemler |
-| Geliştiriciler ve&nbsp;işleçleri | Key Vault dağıtma izni<br><br> **Note**: Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | None |
-| Denetçiler | None | Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. |
-| Uygulama | None | Anahtarlar: imzalama<br>Parolalar: imzalama |
+| Geliştiriciler ve&nbsp;işleçleri | Key Vault dağıtma izni<br><br> **Note**: Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | Hiçbiri |
+| Denetçiler | Hiçbiri | Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. |
+| Uygulama | Hiçbiri | Anahtarlar: imzalama<br>Parolalar: imzalama |
 
 Üç takım rolünün, Key Vault izinlerle birlikte diğer kaynaklara erişmesi gerekir. VM 'Leri (veya Azure App Service Web Apps özelliğini) dağıtmak için, geliştiricilerin ve işleçlerin bu kaynak türlerine `Contributor` erişmesi gerekir. Denetçilerin Key Vault günlüklerinin depolandığı depolama hesabına okuma erişimi olması gerekir.
 
@@ -183,7 +183,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 Tanımlı özel rollerimiz yalnızca **Contosoapprg** kaynak grubunun oluşturulduğu aboneliğe atanabilir. Diğer aboneliklerdeki diğer projelere özel bir rol kullanmak için, rol için kapsama diğer abonelikler ekleyin.
 
-DevOps personeliniz için, Anahtar Kasası `deploy/action` izni için özel rol ataması, kaynak grubunun kapsamına alınır. Yalnızca **Contosoapprg** kaynak grubunda oluşturulan VM 'lerin gizli DIZILERI (SSL ve önyükleme sertifikaları) erişimine izin verilir. DevOps üyesine göre diğer kaynak gruplarında oluşturulan VM 'Ler, VM 'nin gizli URI 'lerine sahip olsa bile bu gizli anahtarlara erişemez.
+DevOps personeliniz için, Anahtar Kasası `deploy/action` izni için özel rol ataması, kaynak grubunun kapsamına alınır. Yalnızca **Contosoapprg** kaynak grubunda oluşturulan VM 'lerin gizli DIZILERI (TLS/SSL ve önyükleme sertifikaları) erişimine izin verilir. DevOps üyesine göre diğer kaynak gruplarında oluşturulan VM 'Ler, VM 'nin gizli URI 'lerine sahip olsa bile bu gizli anahtarlara erişemez.
 
 Örneğimizde basit bir senaryo açıklanmaktadır. Gerçek yaşam senaryoları daha karmaşık olabilir. Gereksinimlerinize göre anahtar kasanıza yönelik izinleri ayarlayabilirsiniz. Güvenlik ekibinin, uygulamalarında DevOps personeli tarafından kullanılan anahtar ve gizli başvuruları (URI 'Ler ve parmak izleri) sağladığını kabul ediyoruz. Geliştiricilere ve işleçlere herhangi bir veri düzlemi erişimi gerekmez. Anahtar kasanızın güvenliğini sağlama konusunda odaklandık. [VM 'lerinizi](https://azure.microsoft.com/services/virtual-machines/security/), [depolama hesaplarınızı](../storage/common/storage-security-guide.md)ve diğer Azure kaynaklarınızı güvenli hale getirmeye benzer bir göz kazandırın.
 

@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: f70c826d839be1de82f3f21cf615f261a2193358
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536440"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834789"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Ayrıca, [Azure Machine Learning Studio (klasik)](https://ml.azure.com/)kullanarak denemeleri 'tan `input_datasets` bulabilirsiniz. 
+[Azure Machine Learning Studio 'yu](https://ml.azure.com/)kullanarak denemeleri 'tan `input_datasets` de bulabilirsiniz. 
 
-Aşağıdaki görüntüde Azure Machine Learning Studio (klasik) üzerinde bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmiştir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **özellikler** sekmesini açın `keras-mnist`.
+Aşağıdaki görüntüde Azure Machine Learning Studio 'da bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **özellikler** sekmesini açın `keras-mnist`.
 
 ![Giriş veri kümeleri](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Kayıttan sonra, Python veya [Azure Machine Learning Studio (klasik)](https://ml.azure.com/)kullanarak veri kümesiyle kaydedilen modellerin listesini görebilirsiniz. Aşağıdaki görünüm, **varlıklar**altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **modeller** sekmesini seçin. 
+Kayıt işleminden sonra Python veya [Azure Machine Learning Studio](https://ml.azure.com/)kullanarak veri kümesiyle kayıtlı modellerin listesini görebilirsiniz. Aşağıdaki görünüm, **varlıklar**altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **modeller** sekmesini seçin. 
 
 ![Giriş veri kümesi modelleri](./media/how-to-version-track-datasets/dataset-models.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu runbook 'Ları sorunlarını giderme
-description: Azure Otomasyonu runbook 'larla ilgili sorunları nasıl giderebileceğinizi öğrenin
+description: Azure Otomasyonu runbook 'ları ile karşılaşabileceğiniz sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 10152087b45a4048f30f382b237017efbbb63787
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850151"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769889"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 'larda hatalarda sorun giderme
 
@@ -270,9 +270,9 @@ The job was tried three times but it failed
 
 Bu hata, aşağıdaki sorunlardan biri nedeniyle oluşur:
 
-* Bellek sınırı. Bir korumalı alana ne kadar bellek ayrılacağını gösteren belgelenen sınırlar, [Otomasyon Hizmeti sınırları](../../azure-subscription-service-limits.md#automation-limits)' nde bulunur. Bir iş, 400 MB 'tan fazla bellek kullanıyorsa bu işlem başarısız olabilir.
+* Bellek sınırı. Bir korumalı alana ne kadar bellek ayrılacağını gösteren belgelenen sınırlar, [Otomasyon Hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)' nde bulunur. Bir iş, 400 MB 'tan fazla bellek kullanıyorsa bu işlem başarısız olabilir.
 
-* Ağ yuvaları. Azure korumalı alanlar, [Otomasyon Hizmeti sınırları](../../azure-subscription-service-limits.md#automation-limits)bölümünde açıklandığı şekilde 1000 eşzamanlı ağ yuvası ile sınırlıdır.
+* Ağ yuvaları. Azure korumalı alanlar, [Otomasyon Hizmeti sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)bölümünde açıklandığı şekilde 1000 eşzamanlı ağ yuvası ile sınırlıdır.
 
 * Modül uyumsuz. Bu hata, modül bağımlılıkları doğru değilse ve yoksa, runbook 'unuz genellikle bir "komut bulunamadı" veya "parametre bağlanamaz" iletisi döndürür.
 

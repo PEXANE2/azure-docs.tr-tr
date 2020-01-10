@@ -12,39 +12,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033364"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833848"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Önizleme: Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
-Azure PowerShell sürüm 2.4.2 sections veya sonraki bir sürümü yüklediğinizden emin olun ve içinde `Connect-AzAccount`bir Azure hesabında oturum açtığınızdan emin olun. Sürüm 2.4.2 sections yüklemek için bir PowerShell komut istemi açın ve şunu yazın:
+Azure PowerShell sürüm 2.8.0 veya sonraki bir sürümü yüklediğinizden emin olun ve içinde `Connect-AzAccount`bir Azure hesabında oturum açtığınızdan emin olun. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Sınırlamalar
 
-PowerShell 'de önizleme modülü işlevselliğini etkinleştirmek için PowerShellGet modülünün en az sürüm 1.6.0 gerekir. PowerShell Core 'un en son sürümleri bu otomatik olarak yerleşiktir, ancak PowerShell 'in eski sürümleri için, en son sürüme güncelleştirmek üzere aşağıdaki komutu çalıştırabilirsiniz:
-
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Azure ayrılmış Konakları Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bilinen önizleme sınırlamaları**
-> - Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-> - Önizleme ilk sürümü şu VM serisini destekler: DSv3 ve ESv3. 
-
-
+- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
+- Aşağıdaki VM Serisi destekleniyor: DSv3 ve ESv3. 
 
 ## <a name="create-a-host-group"></a>Konak grubu oluştur
 

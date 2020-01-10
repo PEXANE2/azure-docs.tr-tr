@@ -11,18 +11,18 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32e7251c7c47e7ccc03e313b939c917557a31417
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685619"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772219"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL veri ambarı iş zekası ortakları
 Uçtan uca veri ambarı çözümünüzü oluşturmak için çok çeşitli sektör lideri araçlardan birini seçin.  Bu makalede, Azure SQL veri ambarı 'nı destekleyen resmi iş zekası (BI) çözümlerine sahip Microsoft iş ortağı şirketleri vurgulanmaktadır.
 
 ## <a name="our-business-intelligence-partners"></a>İş zekası iş ortaklarımız
-| Partner | Açıklama | Web sitesi/ürün bağlantısı |
+| İş ortağı | Açıklama | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Birde][1] |**Birde**<br>Bira, paylaşılan bir ortak analitik dokusunun en üstünde bulunan bir Interwoven sanallaştırılmış bı örnekleri ağı aracılığıyla kuruluşun tamamını bağlar|[Ürün sayfası][birst_website]<br>[Azure Market][birst_marketplace]<br> |
 | ![Clearöykü verileri][2] |**Clearöykü verileri (sürekli Iş öngörüleri)**<br>Clearöykü verileri, SQL veri ambarı 'nda depolanan farklı veriler arasında hızlı bir şekilde analizine izin verebilir. Clearöykü 'in tümleşik Spark tabanlı platform ve analiz uygulaması, farklı veri kümelerinin veri erişimini ve uyumunu hızlandırmayı hızlandırır. Bunlar, iş kullanıcılarını öngörülere ulaşmak için kendi kendine bağlı olmasını sağlayan hızlı ve işbirliğine dayalı araştırmayı etkinleştirir. |[Ürün sayfası][clearstory_website]<br> |
@@ -87,7 +87,7 @@ Diğer iş ortaklarımız hakkında daha fazla bilgi edinmek için bkz. [veri t�
 
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
-[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+[looker_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20
 [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
 [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
 [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 

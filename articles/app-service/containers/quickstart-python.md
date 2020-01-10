@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 266f6e37584807e139e80a581d16f404c6636f6e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687478"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768410"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -19,7 +19,7 @@ Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendin
 
 Uygulamaları bir IDE aracılığıyla dağıtmayı tercih ediyorsanız, bkz. [Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/python/tutorial-deploy-app-service-on-linux-01).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (Python 3,6 de desteklenir)
@@ -52,7 +52,7 @@ Terminal penceresinde, gerekli bağımlılıkları yüklemek ve yerleşik geliş
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-FLASK_APP=application.py
+export FLASK_APP=application.py
 flask run
 ```
 
@@ -98,7 +98,7 @@ az login
 
 [`az webapp up`](/cli/azure/webapp#az-webapp-up) komutu, web uygulamasını App Service oluşturur ve kodunuzu dağıtır.
 
-Örnek kodu içeren *Python-docs-Hello-World* klasöründe aşağıdaki `az webapp up` komutunu çalıştırın. `<app-name>`, genel olarak benzersiz bir uygulama adıyla değiştirin (*geçerli karakterler `a-z`, `0-9`ve `-`* ). Ayrıca **`<location-name>`,** **brazilsouth**, **westeurope**, **koreagüney**,, **merkezileştirme**vb **. gibi bir**Azure bölgesi ile değiştirin. ( [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz.)
+Örnek kodu içeren *Python-docs-Hello-World* klasöründe aşağıdaki `az webapp up` komutunu çalıştırın. `<app-name>`, genel olarak benzersiz bir uygulama adıyla değiştirin (*geçerli karakterler `a-z`, `0-9`ve `-`* ). Ayrıca **`<location-name>`,** **brazilsouth**, **westeurope**, **koreagüney**,, **merkezileştirme**vb **. gibi bir**Azure bölgesi ile değiştirin. ( [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz.)
 
 
 ```terminal

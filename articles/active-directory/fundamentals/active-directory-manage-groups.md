@@ -1,5 +1,5 @@
 ---
-title: Grupları - Azure Active Directory kullanarak uygulama ve kaynak erişimini yönetme | Microsoft Docs
+title: Grupları kullanarak uygulama & kaynak erişimini yönetme-Azure AD
 description: Kuruluşunuzun bulut tabanlı uygulamalar, şirket içi uygulamalar ve Azure Active Directory grupları kullanarak kaynaklara erişimi yönetme hakkında bilgi edinin.
 services: active-directory
 author: msaburnley
@@ -8,35 +8,42 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 01/08/2020
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbc19c2148a2b62ff1aa28d705591430b4fad20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561824"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768019"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory grupları'nı kullanarak uygulama ve kaynak erişimini yönetme
-Azure Active Directory (Azure AD) bulut tabanlı uygulamalarınızı şirket içi uygulamalar ve kuruluşunuzun grupları kullanarak kaynaklarınızı yönetmenize yardımcı olur. Kaynaklarınızı directory ya da dış dizin rolleri aracılığıyla nesneleri gibi yazılım olarak hizmet (SaaS) uygulamaları için Azure, SharePoint siteleri, hizmetleri ve şirket içi kaynakları yönetmek için izinleri gibi bir dizinin parçası olabilir.
+Azure Active Directory (Azure AD), bulut tabanlı uygulamalarınıza, şirket içi uygulamalarınıza ve kaynaklarınıza erişimi yönetmek için grupları kullanmanıza olanak sağlar. Kaynaklarınız, Azure AD 'deki roller aracılığıyla nesneleri yönetme izinleri ya da hizmet olarak yazılım (SaaS) uygulamaları, Azure Hizmetleri, SharePoint siteleri ve şirket içi kaynaklar gibi kuruluş dışında, Azure AD kuruluşunun bir parçası olabilir.
 
 >[!NOTE]
 >Azure Active Directory'yi kullanmak için bir Azure hesabına ihtiyacınız vardır. Hesabınız yoksa [ücretsiz Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
+>
+> Azure portal, üyelik ve Grup ayrıntılarını portalda yönetemeyeceğinizdeki bazı grupları görebilirsiniz:
+>
+> - Şirket içi Active Directory eşitlenen gruplar, yalnızca şirket içi Active Directory yönetilebilir.
+> - Dağıtım listeleri ve posta etkin güvenlik grupları gibi diğer Grup türleri yalnızca Exchange Yönetim Merkezi veya Microsoft 365 Yönetim Merkezi 'nde yönetilir. Bu grupları yönetmek için Exchange Yönetim Merkezi veya Microsoft 365 Yönetim Merkezi ' nde oturum açmanız gerekir.
 
-## <a name="how-does-access-management-in-azure-ad-work"></a>Nasıl erişim yönetimini Azure AD iş?
+## <a name="how-access-management-in-azure-ad-works"></a>Azure AD 'de erişim yönetimi nasıl işe yarar?
+
 Tek bir kullanıcı için erişim haklarını sağlayarak kuruluşunuzun kaynaklarına erişmesini veya grup için tüm Azure AD'yi azure AD yardımcı olur. Grupları kullanarak, kaynak sahibi (veya Azure AD directory sahibi), tek tek hakları sağlamak zorunda kalmak yerine bu grubun tüm üyeleri için erişim izinleri kümesi atama olanak tanır. Kaynak veya dizin sahibi de yönetim hakları üye listesi için bir bölüm Yöneticisi'ni veya bir Yardım Masası Yöneticisi, bu kişinin, ekleme ve gerektiğinde üyeleri kaldırma gibi başka bir kişiye verebilirsiniz. Grup sahiplerini yönetme hakkında daha fazla bilgi için bkz. [Grup sahiplerini yönetme](active-directory-accessmanagement-managing-group-owners.md)
 
 ![Azure Active Directory erişim yönetimi diyagramı](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
 ## <a name="ways-to-assign-access-rights"></a>Erişim hakları atama yolları
+
 Kullanıcıların erişim haklarını kaynak atamak için izleyebileceğiniz dört yol vardır:
 
 - **Doğrudan atamayı.** Kaynak sahibi kullanıcı kaynağa doğrudan atar.
 
-- **Grup ataması.** Kaynak sahibi Azure AD grubu için kaynak sağlayan otomatik olarak, tüm Grup üyeleri erişimi kaynağa atar. Grup üyeliği, Grup sahibi ve üye ekleme veya gruptan kaldırma ya da sahibi izin vererek kaynak sahibi tarafından yönetilir. Grup üyeliğini ekleme veya kaldırma hakkında daha fazla bilgi için bkz [. nasıl yapılır: Azure Active Directory portalını](active-directory-groups-membership-azure-portal.md)kullanarak başka bir gruptan Grup ekleyin veya kaldırın. 
+- **Grup ataması.** Kaynak sahibi Azure AD grubu için kaynak sağlayan otomatik olarak, tüm Grup üyeleri erişimi kaynağa atar. Grup üyeliği, Grup sahibi ve üye ekleme veya gruptan kaldırma ya da sahibi izin vererek kaynak sahibi tarafından yönetilir. Ekleme veya grup üyeliği kaldırma hakkında daha fazla bilgi için bkz. [nasıl yapılır: ekleme veya bir grup Azure Active Directory portalı kullanarak başka bir gruptan kaldırma](active-directory-groups-membership-azure-portal.md). 
 
 - **Kural tabanlı atama.** Kaynak sahibi bir grup oluşturur ve hangi kullanıcıların belirli bir kaynağa atanmış tanımlamak için bir kural kullanır. Kural bireysel kullanıcılara atanan ve öznitelikleri temel alır. Kaynak sahibi, hangi öznitelikleri ve değerleri kaynak erişime izin vermek için gerekli olan belirleme kural yönetir. Daha fazla bilgi için [dinamik bir grup oluşturun ve durumunu denetlemek](../users-groups-roles/groups-create-rule.md).
 

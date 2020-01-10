@@ -10,16 +10,16 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: adfcd79d209f98b664f18b89ceea65bdc84f36dc
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
-ms.translationtype: HT
+ms.openlocfilehash: 8d2dccc1543512ead4b0ff6475ace20045bb1b8c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541497"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762782"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning izleme verileri başvurusu
 
-Azure Machine Learning çalışma alanınızdan Azure Izleyici tarafından toplanan veriler ve kaynaklar hakkında bilgi edinin. İzleme verilerini toplama ve çözümleme hakkında ayrıntılar için bkz. [izleme Azure Machine Learning](service/monitor-azure-machine-learning.md) .
+Azure Machine Learning çalışma alanınızdan Azure Izleyici tarafından toplanan veriler ve kaynaklar hakkında bilgi edinin. İzleme verilerini toplama ve çözümleme hakkında ayrıntılar için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md) .
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 

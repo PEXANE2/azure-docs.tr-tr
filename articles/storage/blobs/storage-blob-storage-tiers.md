@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: a7f9969c7c9a341b48581536dd856b25b50bf96f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: c402d47f40a351d70f688aa93c5e1501c93b39dd
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371964"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779899"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -61,7 +61,7 @@ Seyrek Erişimli erişim katmanının depolama maliyetleri ve daha yüksek eriş
 
 Arşiv erişim katmanının en düşük depolama maliyeti vardır. Ancak sık ve seyrek katmanlara kıyasla veri alma maliyetlerini daha yüksektir. Arşiv katmanındaki verilerin alınması birkaç saat sürebilir. Verilerin arşiv katmanında en az 180 gün kalması veya erken bir silme ücretine tabi olması gerekir.
 
-Blob arşiv depolarken blob verileri çevrimdışı olur ve okunamaz, kopyalanabilir, üzerine yazılamaz veya değiştirilemez. Arşiv depolamadaki bir Blobun anlık görüntülerini alamazsınız. Ancak, blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blobu ve özelliklerini listelemenize olanak tanır. Arşivdeki Bloblar için, tek geçerli işlemler GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier ve DeleteBlob.
+Blob arşiv depolamadaki sırada blob verileri çevrimdışı olduğundan okunamaz, üzerine yazılamaz veya değiştirilemez. Arşivdeki bir blobu okumak veya indirmek için önce çevrimiçi bir katmana yeniden yazmanız gerekir. Arşiv depolamadaki bir Blobun anlık görüntülerini alamazsınız. Ancak, blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blobu ve özelliklerini listelemenize olanak tanır. Arşivdeki Bloblar için, tek geçerli işlemler şunlardır. GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier, CopyBlob ve DeleteBlob. Daha fazla bilgi edinmek için [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md) bölümüne bakın.
 
 Arşiv erişim katmanı için örnek kullanım senaryoları şunları içerir:
 
@@ -77,9 +77,9 @@ Hesap erişim katmanını değiştirmek, bir açık katman kümesi olmayan hesap
 
 ## <a name="blob-level-tiering"></a>Blob düzeyinde katman ayarlama
 
-Blob düzeyinde katman ayarlama, [Blob Katmanını Ayarlama](/rest/api/storageservices/set-blob-tier) adlı tek bir işlem kullanarak nesne düzeyinde verilerinizin katmanını değiştirmenize olanak verir. Bir blob’un erişim katmanını, kullanım şekli değiştikçe verileri hesapları arasında taşımaya gerek kalmadan sık erişimli, seyrek erişimli veya arşiv katmanları arasında kolayca değiştirebilirsiniz. Tüm katman değişiklikleri anında gerçekleşir. Ancak, arşivden bir blobu yeniden doldurma birkaç saat sürebilir.
+Blob düzeyinde katman ayarlama, [Blob Katmanını Ayarlama](/rest/api/storageservices/set-blob-tier) adlı tek bir işlem kullanarak nesne düzeyinde verilerinizin katmanını değiştirmenize olanak verir. Bir blob’un erişim katmanını, kullanım şekli değiştikçe verileri hesapları arasında taşımaya gerek kalmadan sık erişimli, seyrek erişimli veya arşiv katmanları arasında kolayca değiştirebilirsiniz. Tüm katman değişikliği istekleri hemen gerçekleşir ve sık erişimli ve Seyrek Erişimli Katman değişiklikleri anında gerçekleşir. Ancak, arşivden bir blobu yeniden doldurma birkaç saat sürebilir.
 
-Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez. Sık erişimli veya seyrek erişimli katmanda bir Blobun üzerine yazarken, yeni oluşturulan blob, yeni blob erişim katmanı oluşturma sırasında açıkça ayarlanmadığı takdirde, üzerine yazılan Blobun katmanını devralır.
+Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. Sık erişimli veya seyrek erişimli katmanda bir Blobun üzerine yazarken, yeni oluşturulan blob, yeni blob erişim katmanı oluşturma sırasında açıkça ayarlanmadığı takdirde, üzerine yazılan Blobun katmanını devralır. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez. 
 
 > [!NOTE]
 > Arşiv depolama ve blob düzeyinde katman ayarlama, yalnızca blok bloblarını destekler. Ayrıca, anlık görüntülerine sahip bir blok blobunun katmanını değiştiremezsiniz.
@@ -127,17 +127,18 @@ GPv2 hesaplarındaki seyrek katmandaki <sup>1</sup> nesne en az 30 günlük sakl
 <sup>2</sup> arşiv depolama Şu anda, farklı alma gecikmeleri sunan 2 yeniden doldurma önceliklerini, yüksek ve standart destekler. Daha fazla bilgi için bkz. [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md).
 
 > [!NOTE]
-> BLOB depolama hesapları, genel amaçlı v2 depolama hesaplarıyla aynı performans ve ölçeklenebilirlik hedeflerini destekler. Daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> BLOB depolama hesapları, genel amaçlı v2 depolama hesaplarıyla aynı performans ve ölçeklenebilirlik hedeflerini destekler. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md).
 
 ## <a name="quickstart-scenarios"></a>Hızlı Başlangıç senaryoları
 
-Bu bölümde Azure portalı kullanarak aşağıdaki senaryolar gösterilmektedir:
+Bu bölümde, aşağıdaki senaryolar Azure portal ve PowerShell kullanılarak gösterilmiştir:
 
 - GPv2 veya Blob depolama hesabının varsayılan hesap erişim katmanını değiştirme.
 - GPv2 veya Blob depolama hesabında blobun katmanını değiştirme.
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 veya Blob depolama hesabının varsayılan hesap erişim katmanını değiştirme
 
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
@@ -150,11 +151,27 @@ Bu bölümde Azure portalı kullanarak aşağıdaki senaryolar gösterilmektedir
 
 1. En üstteki **Kaydet** ' e tıklayın.
 
-### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 veya blob depolama hesabındaki bir Blobun katmanını değiştirme
+![Depolama hesabı katmanını değiştirme](media/storage-tiers/account-tier.png)
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Hesap katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. 
+```powershell
+#Initialize the following with your resource group and storage account names
+$rgName = ""
+$accountName = ""
+
+#Change the storage account tier to hot
+Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier Hot
+```
+---
+
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 veya blob depolama hesabındaki bir Blobun katmanını değiştirme
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Azure portal, **tüm kaynakları**arayıp seçin.
+
+1. Depolama hesabınızı seçin.
 
 1. Kapsayıcınızı seçin ve ardından blobu seçin.
 
@@ -163,6 +180,29 @@ Bu bölümde Azure portalı kullanarak aşağıdaki senaryolar gösterilmektedir
 1. **Sık** **erişimli, seyrek**erişimli veya **Arşiv** erişim katmanını seçin. Blobun Şu anda arşivde varsa ve çevrimiçi bir katmana yeniden dönmek istiyorsanız, **Standart** veya **yüksek**bir yeniden doldurma önceliği de seçebilirsiniz.
 
 1. Alt kısımdaki **Kaydet** ' i seçin.
+
+![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. `$containerName` değişkeni, kapsayıcı adınızla başlatılmalıdır. `$blobName` değişkeni, blob adınızla başlatılmalıdır. 
+```powershell
+#Initialize the following with your resource group, storage account, container, and blob names
+$rgName = ""
+$accountName = ""
+$containerName = ""
+$blobName == ""
+
+#Select the storage account and get the context
+$storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+#Select the blob from a container
+$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+
+#Change the blob’s access tier to archive
+$blob.ICloudBlob.SetStandardBlobTier("Archive")
+```
+---
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
@@ -214,11 +254,11 @@ Sık erişimli ve seyrek erişimli arasında tüm işlemleri %100 tutarlıdır. 
 
 **Blobu arşiv katmanından sık erişimli veya seyrek erişimli katmana yeniden doldururken işlemin ne zaman tamamlandığını nasıl bilebilirim?**
 
-Yeniden doldurma sırasında, **Arşiv durumu** özniteliğini yoklamak ve katman değişikliğinin ne zaman tamamlandığını onaylamak için blob özelliklerini Al işlemini kullanabilirsiniz. Durum, hedef katmana göre "rehydrate-pending-to-hot" veya "rehydrate-pending-to-cool" olabilir. Tamamlandıktan sonra arşiv durumu özelliği kaldırılır ve **Erişim Katmanı** blob özelliği sık veya seyrek erişimli bu yeni katmanı gösterir.  
+Yeniden doldurma sırasında, **Arşiv durumu** özniteliğini yoklamak ve katman değişikliğinin ne zaman tamamlandığını onaylamak için blob özelliklerini Al işlemini kullanabilirsiniz. Durum, hedef katmana göre "rehydrate-pending-to-hot" veya "rehydrate-pending-to-cool" olabilir. Tamamlandıktan sonra arşiv durumu özelliği kaldırılır ve **Erişim Katmanı** blob özelliği sık veya seyrek erişimli bu yeni katmanı gösterir. Daha fazla bilgi edinmek için [Arşiv katmanından blob verilerini yeniden doldurma](storage-blob-rehydration.md) bölümüne bakın.
 
 **Blobun katmanını ayarladıktan sonra buna uygun fiyattan fatura almaya ne zaman başlarım?**
 
-Her blob her zaman blob 'un **erişim katmanı** özelliği tarafından belirtilen katmana göre faturalandırılır. Blob için yeni bir katman ayarladığınızda, **Access Tier** özelliği tüm geçişler için yeni katmanı hemen yansıtır. Ancak arşiv katmanındaki bir blobun sık veya seyrek erişim katmanına alınması birkaç saat sürebilir. Bu durumda, yeniden doldurma tamamlanana kadar arşiv fiyatları üzerinden faturalandırılırsınız, bu noktada **erişim katmanı** özelliği yeni katmanı yansıtır. Bu noktada, bu blob için sık veya seyrek hızda faturalandırılırsınız.
+Her blob her zaman blob 'un **erişim katmanı** özelliği tarafından belirtilen katmana göre faturalandırılır. Blob için yeni bir çevrimiçi katman ayarladığınızda, **Access Tier** özelliği tüm geçişlerin yeni katmanını hemen yansıtır. Ancak, çevrimdışı arşiv katmanından sık veya seyrek erişimli bir katmana bir blob yeniden doldurma birkaç saat sürebilir. Bu durumda, yeniden doldurma tamamlanana kadar arşiv fiyatları üzerinden faturalandırılırsınız, bu noktada **erişim katmanı** özelliği yeni katmanı yansıtır. Çevrimiçi katmana yeniden giriş yaptığınızda bu blob için sık erişimli veya seyrek erişimli ücret üzerinden faturalandırılırsınız.
 
 **Nasıl yaparım? seyrek erişimli veya arşiv katmanının dışına çıkan bir blobu silerken veya taşırken erken silme ücreti ödemeniz gerekip gerekmediğini mi belirlemektir?**
 
@@ -230,7 +270,7 @@ Azure portalı, PowerShell ve CLI araçları ile .NET, Java, Python ve Node.js i
 
 **Sık, seyrek ve arşiv katmanlarına ne kadar veri depolayabilirim?**
 
-Diğer limitlerle birlikte veri depolama alanı, erişim katmanına göre değil, hesap düzeyinde ayarlanır. Tüm sınırınızı tek bir katmanda veya üç katmanın tamamında kullanmayı seçebilirsiniz. Daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Diğer limitlerle birlikte veri depolama alanı, erişim katmanına göre değil, hesap düzeyinde ayarlanır. Tüm sınırınızı tek bir katmanda veya üç katmanın tamamında kullanmayı seçebilirsiniz. Daha fazla bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

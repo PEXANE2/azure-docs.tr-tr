@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551633"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780207"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL veritabanı denetimini kullanmaya başlayın
 
@@ -241,6 +241,8 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
     [Azure PowerShell kullanarak SQL veritabanı denetimini yönetme](#subheading-7) bölümünde açıklandığı gibi, PowerShell kullanarak farklı türlerde eylemler ve eylem grupları için denetimi yapılandırabilirsiniz.
 
 - AAD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
+
+- Azure SQL veritabanı denetimi, kullanılabilirlik & performansı için iyileştirilmiştir. Çok yüksek etkinlik sırasında Azure SQL veritabanı işlemlerin devam etmesine izin verir ve bazı denetlenen olayları kaydedemeyebilir.
 
 
 ## <a id="subheading-7"></a>Azure PowerShell kullanarak Azure SQL Server ve veritabanı denetimini yönetme

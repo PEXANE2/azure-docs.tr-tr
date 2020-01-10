@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429169"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768835"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure haritalar 'ı kullanmak için en iyi uygulamalar Arama Hizmeti
 
@@ -25,15 +25,15 @@ Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search)
 * Adres arama yanıtı yapısını okuyun
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Haritalar hizmeti API 'Lerine herhangi bir çağrı yapmak için bir haritalar hesabı ve anahtarı gereklidir. Hesap oluşturma hakkında daha fazla bilgi için hesabı [Yönet](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) bölümündeki yönergeleri izleyin ve hesabınız için birincil bir abonelik anahtarı almak üzere [birincil anahtar al](./tutorial-search-location.md#getkey) bölümündeki adımları izleyin.
+Haritalar hizmeti API 'Lerine herhangi bir çağrı yapmak için bir haritalar hesabı ve anahtarı gereklidir. Hesap oluşturma hakkında bilgi edinmek için hesap [oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınız için birincil anahtar (abonelik) almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulama hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 > [!Tip]
 > Arama hizmetini sorgulamak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanarak Rest çağrıları oluşturabilir veya tercih ettiğiniz HERHANGI bir API geliştirme ortamını kullanabilirsiniz.
 
 
-## <a name="best-practices-for-geocoding"></a>Coğrafi kodlama için en iyi uygulamalar
+## <a name="best-practices-for-geocoding-address-search"></a>Coğrafi kodlama için en iyi uygulamalar (adres arama)
 
 Azure haritalar Arama Hizmeti kullanarak tam veya kısmi bir adres aradığınızda, arama teriminizi alır ve adresin boylam ve enlem koordinatlarını döndürür. Bu işleme geokodlamaya denir. Bir ülkede coğrafi kod yeteneği, coğrafi veri kapsamına ve coğrafi kodlama hizmetinin coğrafi kodlama duyarlığına bağımlıdır.
 
@@ -58,10 +58,12 @@ Azure haritalar coğrafi kodlama özelliklerini ülkeye/bölgeye göre daha fazl
 
 
    **Benzer arama parametreleri**
+   
+   Azure Maps [,](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) Kullanıcı girişlerinizin bir arama sorgusu için ne olduğunu bilmiyorsanız kullanılması önerilen hizmettir. API, Ilgi noktası (POı) arama ve coğrafi kodlama 'yı kurallı *tek satırlı bir aramada*birleştirir. 
 
    1. `minFuzzyLevel` ve `maxFuzzyLevel`, sorgu parametreleri tam olarak istenen bilgilere karşılık gelmese bile ilgili eşleşmeleri döndürür. Çoğu arama, performansı elde etmek ve olağandışı sonuçları azaltmak için `minFuzzyLevel=1` ve `maxFuzzyLevel=2` varsayılan olarak sorgular. "Restrant" arama terimine bir örnek alın, `maxFuzzyLevel` 2 olarak ayarlandığında "Restoran" ile eşleştirilir. Varsayılan benzer düzeyler, istek gereksinimlerine göre geçersiz kılınabilir. 
 
-   2. Ayrıca, `idxSet` parametresi kullanılarak döndürülecek sonuç türlerinin tam kümesini de belirtebilirsiniz. Bu amaçla, virgülle ayrılmış dizinlerin listesini gönderebilirsiniz, öğe sırası önemi yoktur. Desteklenen dizinler aşağıda verilmiştir:
+   2. Ayrıca, `idxSet` parametresi kullanılarak döndürülecek sonuç türlerinin tam kümesini önceliklendirde atayabilirsiniz. Bu amaçla, virgülle ayrılmış dizinlerin bir listesini gönderebilirsiniz; öğe sırası önemi yoktur. Aşağıdaki dizinler desteklenir:
 
        * `Addr` - **adres aralıkları**: bazı Streets için, cadde başı ve sonundan alınmış adres noktaları vardır; Bu noktaların adres aralıkları olarak temsil edilir.
        * `Geo` - **coğrafi**bölgeler: bir haritanın yönetim bölümünü temsil eden, yani ülke, eyalet, şehir.
@@ -317,7 +319,10 @@ Ilgi noktaları (POı) arama, bir ada göre POı sonuçları talep etmenize olan
 
 Sonuçların ve yanıttaki bilgilerin uygunluğunu artırmak için, Ilgi noktası (POı) arama yanıtı, yanıtı ayrıştırmak için kullanılabilecek marka bilgilerini içerir.
 
+Ayrıca, istekteki marka adlarının virgülle ayrılmış bir listesini de gönderebilirsiniz. `brandSet` parametresini kullanarak sonuçları belirli markalara kısıtlamak için listeyi kullanabilirsiniz. Öğe sırası önemi yoktur. Birden çok marka sağlandığında, yalnızca belirtilen listelerden birine (en az) ait sonuçlar döndürülür.
+
 Microsoft kampüs (Redmond, WA) yakınında gaz istasyonlara yönelik bir [POI kategorisi arama](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) isteği oluşturalım. Yanıtı gözlemlerseniz, dönen her bir POM için marka bilgilerini görebilirsiniz.
+
 
 **Örnek sorgu:**
 
@@ -496,7 +501,7 @@ Belirli bir konumun etrafında yalnızca POı sonuçlarını almak için, [yakı
 
 ## <a name="understanding-the-responses"></a>Yanıtları anlama
 
-Seattle 'daki bir adres için Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) 'Ne bir adres arama isteği oluşturalım. Aşağıdaki istek URL 'sini dikkatle görüyorsanız, `countrySet` parametresini, Amerika Birleşik Devletleri, adresi aramak için **bizimle** ayarlayacağız.
+Seattle 'daki bir adres için Azure haritalar [Arama hizmeti](https://docs.microsoft.com/rest/api/maps/search) 'Ne bir adres arama isteği oluşturalım. Aşağıdaki istek URL 'sini dikkatle görüyorsanız, `countrySet` parametresini, Amerika Birleşik Devletler, adresi aramak için **bizimle** ayarlayacağız.
 
 **Örnek sorgu:**
 

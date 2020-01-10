@@ -1,6 +1,6 @@
 ---
-title: Dinamik grup oluşturma ve durumu denetleme-Azure AD | Microsoft Docs
-description: Azure portal bir grup üyeliği kuralı oluşturma, durumu denetleme.
+title: Dinamik grup oluşturma veya düzenleme ve durum edinme-Azure AD | Microsoft Docs
+description: Azure portal bir grup üyeliği kuralı oluşturma veya güncelleştirme ve işlem durumunu denetleme.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900958"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768783"
 ---
-# <a name="create-a-dynamic-group-and-check-status"></a>Dinamik grup oluşturma ve durumu denetleme
+# <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
 Azure Active Directory (Azure AD) ' de, Kullanıcı veya cihaz özelliklerine göre grup üyeliğini Belirleme kurallarını kullanabilirsiniz. Bu makalede, Azure portal bir dinamik grup için nasıl bir kural ayarlanacağı açıklanır.
 Dinamik üyelik güvenlik grupları veya Office 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Office 365 grupları yalnızca Kullanıcı grupları olabilir.
@@ -40,7 +40,7 @@ Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş 
 > [!NOTE]
 > Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
 
-![Dinamik bir grup için üyelik kuralı ekle](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Dinamik bir grup için üyelik kuralı ekle](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve değerler örnekleri için bkz. [Azure Active Directory gruplar Için dinamik üyelik kuralları](groups-dynamic-membership.md).
 
@@ -63,6 +63,20 @@ Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve de�
 1. Grubu oluşturmak için **Yeni Grup** sayfasında **Oluştur** ' u seçin.
 
 Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir açıklama portalda bir Azure bildiriminde görüntülenir. Kuralı nasıl düzelteceğinizi anlamak için dikkatle okuyun.
+
+## <a name="to-update-an-existing-rule"></a>Mevcut bir kuralı güncelleştirmek için
+
+1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , Kiracıdaki genel yönetici, Grup Yöneticisi, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla oturum açın.
+1. **Grupları** > **tüm gruplar**' ı seçin.
+1. Profilini açmak için bir grup seçin.
+1. Grubun profil sayfasında **dinamik üyelik kuralları**' nı seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Beşten fazla ifade eklemek için metin kutusunu kullanmanız gerekir.
+
+   ![Dinamik bir grup için üyelik kuralı ekle](./media/groups-create-rule/update-dynamic-group-rule.png)
+
+1. Üyelik kuralınız için kullanılabilen özel uzantı özelliklerini görmek için:
+   1. **Özel uzantı özelliklerini al** seçeneğini belirleyin
+   1. Uygulama KIMLIĞI ' ni girin ve ardından **özellikleri Yenile**' yi seçin.
+1. Kuralı güncelleştirdikten sonra **Kaydet**' i seçin.
 
 ## <a name="turn-on-or-off-welcome-email"></a>Hoş geldiniz e-postasını aç veya kapat
 

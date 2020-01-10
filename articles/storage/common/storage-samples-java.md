@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349959"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748037"
 ---
 # <a name="azure-storage-samples-using-java"></a>Java kullanan Azure depolama örnekleri
 
 Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara bir genel bakış sunulmaktadır. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
-## <a name="blob-samples"></a>Blob örnekleri
+> [!NOTE]
+> Bu örnekler Azure Storage Java v11 kitaplığını kullanır. V12 kodu için GitHub deposundaki [örneklere](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob) bakın.
 
-| **Senaryo** | **Örnek kod** |
+## <a name="blob-samples-v11"></a>Blob örnekleri (v11)
+
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Ekleme Blobu | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| Blob Ekle | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Blok Blobu | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | İstemci Tarafında Şifreleme | [Java 'da Azure Istemci tarafı şifrelemesini kullanmaya başlama](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
 | Kopya blob'u | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
@@ -35,13 +38,13 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 | Kira blobu/kapsayıcı | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Blob/kapsayıcı Listele | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Sayfa Blobu | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| 'LARININ | [SAS testleri örneği](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
+| SAS | [SAS testleri örneği](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
 | Hizmet Özellikleri | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | Anlık görüntü blobu | [Java 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>Dosya örnekleri
+## <a name="file-samples-v11"></a>Dosya örnekleri (v11)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
 | Paylaşımlar/dizinler/dosyalar oluşturma | [Java 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Paylaşımları/dizinleri/dosyaları sil | [Java 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
@@ -53,11 +56,11 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 | Paylaşımları Listele | [Java 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Özellikleri/meta verileri/Istatistikleri paylaşma | [Java 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>Kuyruk örnekleri
+## <a name="queue-samples-v11"></a>Sıra örnekleri (v11)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Ileti Ekle | [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
+| İleti Ekle | [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
 | İstemci Tarafında Şifreleme | [Java 'da Azure Istemci tarafı şifrelemesini kullanmaya başlama](https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java) |
 | Kuyruklar Oluşturma | [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
 | Iletiyi/kuyruğu Sil | [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
@@ -66,11 +69,11 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 | Kuyruk hizmeti özellikleri | [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | Güncelleştirme Iletisi | [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>Tablo örnekleri
+## <a name="table-samples-v11"></a>Tablo örnekleri (v11)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Tablo Oluştur | [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| Tablo Oluşturma | [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Varlığı/tabloyu Sil | [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Varlığı Ekle/Birleştir/Değiştir | [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Sorgu varlıkları | [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
@@ -96,7 +99,7 @@ Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için 
 
 Diğer dillere yönelik örnekler hakkında bilgi için:
 
-* .NET: [.NET kullanan Azure Depolama örnekleri](storage-samples-dotnet.md)
+* .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
 * JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
-* Python: [Python kullanarak Azure Storage örnekleri](storage-samples-python.md)
-* Diğer tüm diller: [Azure depolama örnekleri](storage-samples.md)
+* Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
+* Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

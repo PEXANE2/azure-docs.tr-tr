@@ -4,12 +4,12 @@ description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri g
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974232"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769022"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Işlevleri Geliştirici Kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -102,4 +102,4 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Azure İşlevleri’ni yerel olarak kodlama ve test etme](./functions-develop-local.md)
 * [Azure İşlevleri için En İyi Uygulamalar](functions-best-practices.md)
 * [Azure Işlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md)
-* [Azure Işlevleri NodeJS geliştirici başvurusu](functions-reference-node.md)
+* [Azure Işlevleri Node. js Geliştirici Başvurusu](functions-reference-node.md)

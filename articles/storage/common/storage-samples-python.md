@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7f694ee51989023a3e7a72f40700edcbb6a97bae
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351168"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747993"
 ---
 # <a name="azure-storage-samples-using-python"></a>Python kullanarak Azure Storage örnekleri
 
 Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara genel bir bakış sağlar. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
-## <a name="blob-samples"></a>Blob örnekleri
+> [!NOTE]
+> Bu örneklerde Azure Storage Python v 2.1 kitaplığı kullanılır. V12 kodu için GitHub deposundaki [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples) bakın.
 
-| **Senaryo** | **Örnek kod** |
+## <a name="blob-samples-v21"></a>Blob örnekleri (v 2.1)
+
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Ekleme Blobu | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
+| Blob Ekle | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
 | Blok Blobu | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
 | İstemci Tarafında Şifreleme | [Python ile Azure anahtar değerindeki depolama hesabı anahtarlarını yönetme](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Kopya blob'u | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L102) |
@@ -35,13 +38,13 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 | Kira blobu/kapsayıcı | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L377) |
 | Blob/kapsayıcı Listele | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L103) |
 | Sayfa Blobu | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L124) |
-| 'LARININ | [Python 'da paylaşılan erişim Imzası](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L145) |
+| SAS | [Python 'da paylaşılan erişim Imzası](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L145) |
 | Hizmet Özellikleri | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | Anlık görüntü blobu | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
 
-## <a name="file-samples"></a>Dosya örnekleri
+## <a name="file-samples-v21"></a>Dosya örnekleri (v 2.1)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
 | Paylaşımlar/dizinler/dosyalar oluşturma | [Python 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L71) |
 | Paylaşımları/dizinleri/dosyaları sil | [Python 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L170) |
@@ -53,11 +56,11 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 | Paylaşımları Listele | [Python 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L82) |
 | Özellikleri/meta verileri/Istatistikleri paylaşma | [Python 'da Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L144) |
 
-## <a name="queue-samples"></a>Kuyruk örnekleri
+## <a name="queue-samples-v21"></a>Sıra örnekleri (v 2.1)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Ileti Ekle | [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L94) |
+| İleti Ekle | [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L94) |
 | İstemci Tarafında Şifreleme | [Python ile Azure Key Vault depolama hesabı anahtarlarını yönetme](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Kuyruklar Oluşturma | [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L75) |
 | Iletiyi/kuyruğu Sil | [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L144) |
@@ -66,11 +69,11 @@ Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara
 | Kuyruk hizmeti özellikleri | [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_advanced_samples.py#L128) |
 | Güncelleştirme Iletisi | [Python 'da Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L120) |
 
-## <a name="table-samples"></a>Tablo örnekleri
+## <a name="table-samples-v21"></a>Tablo örnekleri (v 2.1)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Tablo Oluştur | [Python 'da Azure Tablo hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
+| Tablo Oluşturma | [Python 'da Azure Tablo hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
 | Varlığı/tabloyu Sil | [Python 'da Azure Tablo hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79) |
 | Varlığı Ekle/Birleştir/Değiştir | [Python 'da Azure Tablo hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57) |
 | Sorgu varlıkları | [Python 'da Azure Tablo hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62) |
@@ -97,7 +100,7 @@ Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için 
 
 Diğer dillere yönelik örnekler hakkında bilgi için:
 
-* .NET: [.NET kullanan Azure Depolama örnekleri](storage-samples-dotnet.md)
-* Java: [Java kullanan Azure Depolama örnekleri](storage-samples-java.md)
+* .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
+* Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
 * JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
-* Diğer tüm diller: [Azure depolama örnekleri](storage-samples.md)
+* Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

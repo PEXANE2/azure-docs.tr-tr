@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 3a57fbb010f8a04352d09d4b6d57cf465e3e6988
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279151"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768580"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -65,6 +65,10 @@ En son düzeltme eki düzeltmelerini ve güncelleştirmelerini almak için AKS '
 > [!NOTE]
 > Güncelleştirilmiş Windows Server görüntüsü, düğüm havuzu yükseltmeden önce bir küme yükseltmesi (denetim düzlemi yükseltmesi) gerçekleştirildiğinde kullanılacaktır
 >
+
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Windows düğüm havuzum için hizmet sorumlusunu Nasıl yaparım? döndürün?
+
+Önizleme süresince Windows düğüm havuzları, önizleme sınırlaması olarak hizmet sorumlusu döndürmesini desteklemez. Hizmet sorumlusunu güncelleştirmek için yeni bir Windows düğüm havuzu oluşturun ve eski havuzdan yığınlarınızı yeni bir havuza geçirin. Bu işlem tamamlandıktan sonra eski düğüm havuzunu silin.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Kaç düğüm havuzu oluşturabilirim?
 

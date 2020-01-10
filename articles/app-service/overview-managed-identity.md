@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422032"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834157"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
 > [!Important] 
 > App Service ve Azure Işlevleri için Yönetilen kimlikler, uygulamanız abonelikler/kiracılar arasında geçirilirse beklendiği gibi davranmaz. Uygulamanın, özelliği devre dışı bırakıp yeniden etkinleştirerek yapılabilecek yeni bir kimlik alması gerekir. Aşağıdaki [kimliği kaldırma](#remove) bölümüne bakın. Aşağı akış kaynakları, yeni kimliği kullanmak için erişim ilkelerinin güncelleştirilmesini de gerekecektir.
 
-Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. Azure Active Directory’de yönetilen bir kimlik, uygulamanızın Azure Key Vault gibi AAD korumalı kaynaklara kolayca ulaşmasını sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. AAD 'deki Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
+Bu konu, App Service ve Azure Işlevleri uygulamaları için yönetilen bir kimlik oluşturmayı ve diğer kaynaklara erişmek için nasıl kullanılacağını gösterir. Azure Active Directory (AAD) tarafından yönetilen bir kimlik, uygulamanızın Azure Key Vault gibi diğer AAD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetilir ve herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. AAD 'deki Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
 Uygulamanıza iki tür kimlik verilebilir: 
 - **Sistem tarafından atanan bir kimlik** uygulamanıza bağlanır ve uygulamanız silinirse silinir. Uygulamanın yalnızca bir sistem tarafından atanmış kimliği olabilir.
@@ -77,7 +77,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kim
 
 Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullanarak bir kimlik atama işleminde size yol gösterecektir:
 
-1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview) bulunan yönergeleri kullanarak Azure PowerShell’i yükleyin ve ardından Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
+1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeleri kullanarak Azure PowerShell yükleyip Azure ile bağlantı oluşturmak için `Login-AzAccount` çalıştırın.
 
 2. Azure PowerShell kullanarak bir Web uygulaması oluşturun. App Service Azure PowerShell kullanma hakkında daha fazla örnek için bkz. [App Service PowerShell örnekleri](../app-service/samples-powershell.md):
 
@@ -235,12 +235,12 @@ Site oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Azure kaynakları için belirteçleri alma
 
-Bir uygulama, Azure Key Vault gibi AAD tarafından korunan diğer kaynaklara belirteç almak için kimliğini kullanabilir. Bu belirteçler, uygulamanın belirli bir kullanıcısı değil, kaynağa erişen uygulamayı temsil eder. 
+Bir uygulama, Azure Key Vault gibi AAD tarafından korunan diğer kaynaklara erişmek için belirteçleri almak üzere yönetilen kimliğini kullanabilir. Bu belirteçler, uygulamanın belirli bir kullanıcısı değil, kaynağa erişen uygulamayı temsil eder. 
 
 > [!IMPORTANT]
-> Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız gerekebilir. Örneğin, Key Vault için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olmanız gerekir. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız gerekebilir. Örneğin, Key Vault erişmek için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olmanız gerekir. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokolü vardır. Bu, tüm uygulamalar ve diller için kullanılabilir. Bazı .NET ve Java için Azure SDK, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini kolaylaştırır.
+App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokolü vardır. Bu, tüm uygulamalar ve diller için kullanılabilir. .NET ve Java için Azure SDK, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini kolaylaştırır.
 
 ### <a name="using-the-rest-protocol"></a>REST protokolünü kullanma
 

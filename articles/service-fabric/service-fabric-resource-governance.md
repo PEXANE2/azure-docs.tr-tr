@@ -1,25 +1,14 @@
 ---
-title: Kapsayıcılar ve hizmetler için Azure Service Fabric kaynak İdaresi | Microsoft Docs
+title: Kapsayıcılar ve hizmetler için kaynak idaresi
 description: Azure Service Fabric, kapsayıcılar içinde veya dışında çalışan hizmetler için kaynak sınırları belirtmenize olanak tanır.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242901"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772389"
 ---
 # <a name="resource-governance"></a>Kaynak idaresi
 
@@ -76,7 +65,7 @@ Aşağıda, kullanılabilir CPU 'nun %50 ' i ve kullanılabilir belleğin %70 ' 
 </Section>
 ```
 
-Düğüm kapasitelerinin tam el ile kurulumunu yapmanız gerekiyorsa, kümedeki düğümleri tanımlamak için düzenli mekanizmayı kullanabilirsiniz. Düğümün dört çekirdekli ve 2 GB bellek ile nasıl ayarlanacağı hakkında bir örnek aşağıda verilmiştir:
+Çoğu müşteri ve senaryo için, CPU ve bellek için düğüm kapasitelerinin otomatik algılanması önerilen yapılandırmadır (otomatik algılama varsayılan olarak açıktır). Ancak, düğüm kapasitelerinin tam el ile kurulumunu yapmanız gerekiyorsa, kümedeki düğümleri tanımlamak için mekanizmayı kullanarak düğüm başına bu türü yapılandırabilirsiniz. Düğüm türünü dört çekirdekli ve 2 GB bellek ile ayarlamaya yönelik bir örnek aşağıda verilmiştir:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -206,7 +195,7 @@ Kaynak İdaresi Service Fabric hizmetlerinize uygulanırken kaynak tarafından y
 * Uygun olmayan bir durumda biten düğümler
 * Service Fabric küme yönetimi API 'Leri yanıt vermiyor
 
-Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde çalışan tüm Service Fabric Kullanıcı Hizmetleri* (hem yönetilen hem de yönetilmeyen) için kaynak sınırlarını zorunlu kılabilir ve bu sayede Kullanıcı hizmetlerinin Belirtilen kaynak miktarı. Bu, ClusterManifest 'in Placementandloaddengeleme bölümündeki Enforceuserservicemetrickapasiteler yapılandırmasının değeri true olarak ayarlanarak elde edilir. Bu ayar varsayılan olarak kapalıdır.
+Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde çalışan tüm Service Fabric Kullanıcı Hizmetleri (yönetilen ve yönetilmeyen) için kaynak sınırlarını zorunlu kılabilir* . bu sayede, Kullanıcı hizmetlerinin belirtilen kaynak miktarından daha fazla kullanmayacağı garanti altına alınır. Bu, ClusterManifest 'in Placementandloaddengeleme bölümündeki Enforceuserservicemetrickapasiteler yapılandırmasının değeri true olarak ayarlanarak elde edilir. Bu ayar varsayılan olarak kapalıdır.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -217,7 +206,7 @@ Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde
 Ek açıklamalar:
 
 * Kaynak sınırı zorlaması yalnızca `servicefabric:/_CpuCores` ve `servicefabric:/_MemoryInMB` kaynak ölçümleri için geçerlidir
-* Kaynak sınırı zorlaması yalnızca, kaynak ölçümlerine ait düğüm kapasiteleri otomatik algılama mekanizmasıyla veya Kullanıcı aracılığıyla düğüm kapasitelerinin el ile belirtilerek ( [etkinleştirme Için küme kurulumunda açıklandığı gibi) Service Fabric kullanılabilir olduğunda geçerlidir. Kaynak idare](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) bölümü). Düğüm kapasiteleri yapılandırılmamışsa, Kullanıcı Hizmetleri için ne kadar kaynak ayrılacağını bilemediğinden Service Fabric kaynak sınırı zorlama özelliği kullanılamaz. Service Fabric, "Enforceuserservicemetrickapasiteler" true ise ancak düğüm kapasiteleri yapılandırılmamışsa bir sistem durumu uyarısı verir.
+* Kaynak sınırı zorlaması yalnızca, kaynak ölçümlerinin düğüm kapasiteleri Service Fabric, otomatik algılama mekanizmasıyla veya Kullanıcı aracılığıyla düğüm kapasitelerinin el ile ( [kaynak yönetimini etkinleştirme](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) bölümünde açıklandığı gibi) tarafından kullanılabilir olduğunda geçerlidir. Düğüm kapasiteleri yapılandırılmamışsa, Kullanıcı Hizmetleri için ne kadar kaynak ayrılacağını bilemediğinden Service Fabric kaynak sınırı zorlama özelliği kullanılamaz. Service Fabric, "Enforceuserservicemetrickapasiteler" true ise ancak düğüm kapasiteleri yapılandırılmamışsa bir sistem durumu uyarısı verir.
 
 ## <a name="other-resources-for-containers"></a>Kapsayıcılar için diğer kaynaklar
 

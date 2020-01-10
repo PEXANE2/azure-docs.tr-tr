@@ -10,18 +10,18 @@ keywords: Azure Otomasyonu, DSC, PowerShell, istenen durum yapılandırması, g�
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951454"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834073"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Hızlı başlangıç: sunucular için Azure Arc kullanarak makineleri Azure 'a bağlama-PowerShell
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Desteklenen istemcileri ve [sunucu Için Azure Arc genel bakış](overview.md)' da gereken ağ yapılandırmasını gözden geçirin.
 
@@ -35,6 +35,9 @@ Hizmet sorumlusu, yalnızca makineleri Azure 'a bağlamak için gereken en düş
 ### <a name="steps-to-create-the-service-principal"></a>Hizmet sorumlusu oluşturma adımları
 
 Bu örnekte, bir hizmet asıl adı (SPN) oluşturmak için [Azure PowerShell](/powershell/azure/install-az-ps) kullanacağız. Alternatif olarak, bu görev için [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) altında listelenen adımları izleyebilirsiniz.
+
+> [!NOTE]
+> Hizmet sorumlusu oluşturduğunuzda, ekleme için kullanmak istediğiniz abonelikte bir sahip veya Kullanıcı erişimi yöneticisi olmanız gerekir. Rol atamaları oluşturmak için yeterli izniniz yoksa, hizmet sorumlusu oluşturulmuş olabilir, ancak makine ekleyemez.
 
 `Azure Connected Machine Onboarding` rolü yalnızca ekleme için gereken izinleri içerir. Kapsamının bir kaynak grubunu veya aboneliği kapsamasını sağlamak için bir SPN iznini tanımlayabilirsiniz.
 
@@ -142,7 +145,7 @@ Windows 'ta, PowerShell 'i bir hedef düğümde yönetici olarak açın ve şunu
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ Parametreler:
 * `tenant-id`: kiracı GUID 'SI. Azure portal, **Azure Active directory** -> **PROPERTIES** -> **dizin kimliği**' ni seçerek bulabilirsiniz.
 * `subscription-id`: Azure 'da, makinenizi bağlamak istediğiniz aboneliğin GUID 'SI.
 * `resource-group`: makinenizin bağlanmasını istediğiniz kaynak grubu.
-* `location`: bkz. [Azure bölgeleri ve konumları](https://azure.microsoft.com/global-infrastructure/regions/). Bu konum, kaynak grubunun konumu olarak aynı veya farklı olabilir. Genel önizleme için, hizmet **WestUS2** ve **Batı Avrupa**desteklenir.
+* `location`: bkz. [Azure bölgeleri ve konumları](https://azure.microsoft.com/global-infrastructure/regions/). Bu konum, kaynak grubunun konumu olarak aynı veya farklı olabilir. Genel önizleme için, hizmet **WestUS2**, **güneydoğu Asya**ve **Batı Avrupa**desteklenir.
 * `resource-name`: (*Isteğe bağlı*) Şirket Içi makinenizin Azure Kaynak temsili için kullanılır. Bu değeri belirtmezseniz makine ana bilgisayar adı kullanılır.
 
 [Azcmagent başvurusunda](azcmagent-reference.md)' azcmagent ' aracında daha fazla bilgi edinebilirsiniz.

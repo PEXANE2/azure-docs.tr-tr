@@ -1,28 +1,28 @@
 ---
-title: Kapsayıcı grupları için kaynak günlükleri
+title: Kaynak günlüklerini toplama & analiz etme
 description: Azure Izleyici günlüklerine Azure Container Instances içindeki kapsayıcı gruplarından kaynak günlükleri ve olay verileri gönderme hakkında bilgi edinin
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 01/08/2020
 ms.author: danlep
-ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533731"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770552"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcı grubu ve örnek günlüğü
 
-Log Analytics çalışma alanları, günlük verilerinin yalnızca Azure kaynaklarından değil, aynı zamanda diğer bulutlardaki kaynakları ve kaynakları depolama ve sorgulama için merkezi bir konum sağlar. Azure Container Instances, Azure Izleyici günlüklerine Günlükler ve olay verileri göndermek için yerleşik destek içerir.
+Log Analytics çalışma alanları, günlük verilerinin yalnızca Azure kaynaklarından değil, aynı zamanda diğer bulutlardaki kaynak ve kaynakların depolanması ve sorgulanması için merkezi bir konum sağlar. Azure Container Instances, Azure Izleyici günlüklerine Günlükler ve olay verileri göndermek için yerleşik destek içerir.
 
-Azure Izleyici günlüklerine kapsayıcı grubu günlüğü ve olay verileri göndermek için bir kapsayıcı grubu oluştururken bir Log Analytics çalışma alanı KIMLIĞI ve çalışma alanı anahtarı belirtmeniz gerekir. Aşağıdaki bölümlerde, günlüğe yazma etkin bir kapsayıcı grubu ve sorgulama günlükleri oluşturma açıklanmaktadır.
+Azure Izleyici günlüklerine kapsayıcı grubu günlüğü ve olay verileri göndermek için, bir kapsayıcı grubu oluştururken Mevcut bir Log Analytics çalışma alanı KIMLIĞI ve çalışma alanı anahtarı belirtin. Aşağıdaki bölümlerde, günlük özellikli bir kapsayıcı grubu oluşturma ve günlüklerin nasıl sorgulanacağını anlatmaktadır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
 > Şu anda, Linux kapsayıcı örneklerinden yalnızca Log Analytics olay verileri gönderebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kapsayıcı örneklerinizde oturum açmayı etkinleştirmek için aşağıdakiler gerekir:
 
@@ -46,7 +46,7 @@ Log Analytics çalışma alanı KIMLIĞINI ve birincil anahtarı almak için:
 
 Log Analytics çalışma alanı KIMLIĞINE ve birincil anahtara sahip olduğunuza göre, günlüğe kaydetme etkinleştirilmiş bir kapsayıcı grubu oluşturmaya hazırsınız demektir.
 
-Aşağıdaki örneklerde, tek bir [floentd][fluentd] kapsayıcısına sahip bir kapsayıcı grubu oluşturmanın iki yolu gösterilmektedir: Azure CLI ve bır YAML ŞABLONUYLA Azure CLI. Fluentd kapsayıcısı varsayılan yapılandırmasında birkaç çıkış satırı üretir. Bu çıkış Log Analytics çalışma alanınıza gönderileceğinden, günlükleri görüntüleme ve sorgulamayı göstermek için kullanışlıdır.
+Aşağıdaki örneklerde, bir YAML şablonuyla Azure CLI ve Azure CLı ile tek bir [FLOD][fluentd] kapsayıcısından oluşan bir kapsayıcı grubu oluşturmanın iki yolu gösterilmektedir. Floentıd kapsayıcısı, varsayılan yapılandırmasında birkaç çıkış satırı üretir. Bu çıkış Log Analytics çalışma alanınıza gönderileceğinden, günlükleri görüntüleme ve sorgulamayı göstermek için kullanışlıdır.
 
 ### <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
 

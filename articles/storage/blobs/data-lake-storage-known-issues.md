@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage 2. ile ilgili bilinen sorunlar | Microsoft Docs
-description: Azure Data Lake Storage 2. sınırlamalar ve bilinen sorunlar hakkında bilgi edinin
+title: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar | Microsoft Docs
+description: Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar ve sınırlamalar hakkında bilgi edinin
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793353"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834939"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake depolama Gen2 ile'ilgili bilinen sorunlar
 
 Bu makalede henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan depolama hesaplarıyla kısmen desteklenen özellikler ve araçlar listelenmektedir.
 
@@ -50,12 +50,13 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 ## <a name="filesystem-support-in-sdks"></a>SDK 'larda dosya sistemi desteği
 
-- .NET, Java ve Python genel önizlemede. Diğer SDK 'lar Şu anda desteklenmiyor.
-- Get ve set ACL 'Leri işlemleri şu anda özyinelemeli değil.
+- [.Net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) ve [Python](data-lake-storage-directory-file-acl-python.md) desteği genel önizlemeye sunuldu. Diğer SDK 'lar Şu anda desteklenmiyor.
+- Get ve set ACL işlemleri şu anda özyinelemeli değil.
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell ve Azure CLı 'de dosya sistemi desteği
 
-Get ve set ACL 'Leri işlemleri şu anda özyinelemeli değil.
+- [PowerShell](data-lake-storage-directory-file-acl-powershell.md) ve [Azure CLI](data-lake-storage-directory-file-acl-cli.md) desteği genel önizlemeye sunuldu.
+- Get ve set ACL işlemleri şu anda özyinelemeli değil.
 
 ## <a name="support-for-other-blob-storage-features"></a>Diğer BLOB depolama özellikleri için destek
 
@@ -63,8 +64,9 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 
 | Özellik/Araç    | Daha fazla bilgi    |
 |--------|-----------|
+| **Hesap yük devretmesi** |Henüz desteklenmiyor|
 | **AzCopy** | Sürüme özgü destek <br><br>AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.|
-| **Azure Blob depolama yaşam döngüsü yönetim ilkeleri** | Yaşam döngüsü yönetimi ilkeleri desteklenir (Önizleme).  Tüm erişim katmanları desteklenir. Arşiv erişim katmanı Şu anda önizleme aşamasındadır. Blob anlık görüntülerini silme henüz desteklenmiyor. <br><br> Şu anda yaşam döngüsü yönetim ilkelerini ve arşiv erişim katmanını etkileyen hatalar var.  Yaşam döngüsü yönetim ilkelerinin önizlemesine ve arşiv erişim katmanını [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)Arşivle için kaydolun.   |
+| **Azure Blob depolama yaşam döngüsü yönetim ilkeleri** | Yaşam döngüsü yönetimi ilkeleri desteklenir (Önizleme).  Yaşam döngüsü yönetim ilkelerinin önizlemesine ve arşiv erişim katmanını [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)Arşivle için kaydolun.   <br><br>Tüm erişim katmanları desteklenir. Arşiv erişim katmanı Şu anda önizleme aşamasındadır. Blob anlık görüntülerini silme henüz desteklenmiyor.  Şu anda yaşam döngüsü yönetim ilkelerini ve arşiv erişim katmanını etkileyen hatalar var.  |
 | **Azure Content Delivery Network (CDN)** | Henüz desteklenmiyor|
 | **Azure Arama** |Desteklenir (Önizleme)|
 | **Azure Depolama Gezgini** | Sürüme özgü destek. <br><br>Yalnızca `1.6.0` veya üzeri sürümleri kullanın. <br> Şu anda, belirli senaryolarda kimlik doğrulama hatalarıyla sonuçlanabileceğinden sürümü `1.11.0` etkileyen bir depolama hatası vardır. Depolama hatasına yönelik bir onarım kullanıma alınıyor, ancak geçici bir çözüm olarak, [ücretsiz indirme](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)olarak kullanılabilen sürüm `1.10.x` kullanmanızı öneririz. `1.10.x`, depolama hatası tarafından etkilenmez.|
@@ -72,7 +74,7 @@ Aşağıdaki tabloda henüz desteklenmeyen veya hiyerarşik ad alanı (Azure Dat
 | **Blobsigortası** |Henüz desteklenmiyor|
 | **Özel etki alanları** |Henüz desteklenmiyor|
 | **Azure portal Depolama Gezgini** | Sınırlı destek. ACL 'Ler henüz desteklenmiyor. |
-| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri desteklenir (Önizleme).<br><br>Azure portal günlüklerin etkinleştirilmesi Şu anda desteklenmiyor. Günlükleri PowerShell kullanarak nasıl etkinleştireceğinizi gösteren bir örnek aşağıda verilmiştir. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Bu örnekte gösterildiği gibi, `-ServiceType` parametresinin değeri olarak `Blob` belirttiğinizden emin olun. <br><br>Şu anda Azure Depolama Gezgini tanılama günlüklerini görüntülemek için kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
+| **Tanılama günlüğüne kaydetme** |Tanılama günlükleri desteklenir (Önizleme). <br><br>Tanılama günlüklerini görüntülemek için Azure Depolama Gezgini 1,10. x kullanılamaz. Günlükleri görüntülemek için lütfen AzCopy veya SDK 'Ları kullanın.
 | **Sabit depolama** |Henüz desteklenmiyor <br><br>Sabit depolama, verileri bir solucan içinde depolamanıza olanak tanır [(bir kez yaz, çok oku)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) durumu sağlar.|
 | **Nesne düzeyi katmanları** |Seyrek erişimli ve arşiv katmanları desteklenir. Arşiv katmanı önizlemededir. Diğer tüm erişim katmanları henüz desteklenmiyor. <br><br> Şu anda arşiv erişim katmanını etkileyen hatalar var.  Arşiv erişim katmanının önizlemesine [buradan](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)kaydolun.|
 | **Statik Web siteleri** |Henüz desteklenmiyor <br><br>Özellikle, dosyaları [statik Web sitelerine](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)sunma özelliği.|

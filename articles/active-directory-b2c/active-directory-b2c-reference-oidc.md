@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367629"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829570"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma
 
@@ -24,7 +24,7 @@ OpenID Connect, OAuth 2,0 üzerinde oluşturulan ve kullanıcıları Web uygulam
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) , OAuth 2,0 *Yetkilendirme* protokolünü bir *kimlik doğrulama* protokolü olarak kullanılmak üzere genişletir. Bu kimlik doğrulama protokolü, çoklu oturum açma gerçekleştirmenize olanak tanır. İstemcinin kullanıcı kimliğini doğrulamasını ve Kullanıcı hakkında temel profil bilgilerini almasını sağlayan bir *kimlik belirteci*kavramını tanıtır.
 
-OAuth 2,0 ' i genişlettiğinden, uygulamaların *erişim belirteçlerini*güvenli bir şekilde almasına de olanak sağlar. Bir [yetkilendirme sunucusu](active-directory-b2c-reference-protocols.md)tarafından güvenliği sağlanmış kaynaklara erişmek için erişim belirteçlerini kullanabilirsiniz. Sunucuda barındırılan ve bir tarayıcıdan erişilen bir Web uygulaması oluşturuyorsanız OpenID Connect önerilir. Azure AD B2C kullanarak mobil veya masaüstü uygulamalarınıza kimlik yönetimi eklemek istiyorsanız, OpenID Connect yerine [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) kullanmanız gerekir. Belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](active-directory-b2c-reference-tokens.md)
+OAuth 2,0 ' i genişlettiğinden, uygulamaların *erişim belirteçlerini*güvenli bir şekilde almasına de olanak sağlar. Bir [yetkilendirme sunucusu](active-directory-b2c-reference-protocols.md)tarafından güvenliği sağlanmış kaynaklara erişmek için erişim belirteçlerini kullanabilirsiniz. Sunucuda barındırılan ve bir tarayıcıdan erişilen bir Web uygulaması oluşturuyorsanız OpenID Connect önerilir. Belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](active-directory-b2c-reference-tokens.md)
 
 Azure AD B2C, standart OpenID Connect protokolünü basit kimlik doğrulaması ve yetkilendirmeden daha fazlasını yapmak için genişletir. Uygulamanıza kaydolma, oturum açma ve profil yönetimi gibi kullanıcı deneyimleri eklemek için OpenID Connect 'i kullanmanızı sağlayan [Kullanıcı akışı parametresini](active-directory-b2c-reference-policies.md)tanıtır.
 

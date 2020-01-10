@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777609"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770892"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight 'ta küme performansını izleme
 
@@ -72,7 +72,7 @@ Kaynak Yöneticisi Kullanıcı arabiriminde, sol taraftaki menüden **Zamanlayı
 
 ## <a name="storage-throttling"></a>Depolama alanı azaltma
 
-Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelmiş olan giriş/çıkış (g/ç) işlemlerini *engelleme* nedeniyle en sık kullanılan sorun sayısıdır. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel sınır olmayan *depolama alanı azaltmasından*kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure depolama için saniyedeki IOs (ıOPS) sayısını sınırlar; Ayrıntılar için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/storage/storage-scalability-targets).
+Kümenin performans sorunu depolama düzeyinde meydana gelebilir. Bu tür bir performans, çalışan görevleriniz depolama hizmetinden daha fazla GÇ gönderiyorsa meydana gelmiş olan giriş/çıkış (g/ç) işlemlerini *engelleme* nedeniyle en sık kullanılan sorun sayısıdır. Bu engelleme, geçerli IOs işlenene kadar işlenmek üzere bekleyen bir GÇ istekleri kuyruğu oluşturur. Bloklar, fiziksel sınır olmayan *depolama alanı azaltmasından*kaynaklanır, ancak bir hizmet düzeyi SÖZLEŞMESI (SLA) tarafından depolama hizmeti tarafından uygulanan bir sınır değildir. Bu sınır, tek bir istemcinin veya kiracının hizmeti tekeline almasını sağlar. SLA, Azure Storage için saniyedeki IOs (ıOPS) sayısını sınırlar. Ayrıntılar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../storage/common/scalability-targets-standard-account.md).
 
 Azure Storage kullanıyorsanız, azaltma dahil olmak üzere depolama ile ilgili sorunları izleme hakkında bilgi için bkz. [izleyici, tanılama ve sorun giderme Microsoft Azure depolama](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 

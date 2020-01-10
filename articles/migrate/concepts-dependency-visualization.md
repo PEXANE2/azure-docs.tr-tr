@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489202"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772321"
 ---
 # <a name="dependency-visualization"></a>Bağımlılık görselleştirme
 
@@ -32,7 +32,7 @@ Bağımlılık görselleştirme, değerlendirmek ve geçirmek istediğiniz makin
 
 Bağımlılık görselleştirmesini dağıtmaya yönelik iki seçenek vardır:
 
-- **Aracısız bağımlılık görselleştirmesi**: Bu seçenek şu anda önizleme aşamasındadır. Makinelere herhangi bir aracı yüklemenizi gerektirmez. 
+- **Aracısız bağımlılık görselleştirmesi**: Bu seçenek şu anda önizleme aşamasındadır ve yalnızca VMware VM 'leri için kullanılabilir. Makinelere herhangi bir aracı yüklemenizi gerektirmez. 
     - Etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayıp işe yarar. [Daha fazla bilgi edinin](how-to-create-group-machine-dependencies-agentless.md).
 Bağımlılık keşfi başlatıldıktan sonra, Gereç, beş dakikalık yoklama aralığındaki makinelerden veri toplar.
     - Aşağıdaki veriler toplanır:
@@ -93,6 +93,6 @@ Azure Geçişi fiyatlandırması hakkında daha fazla bilgiyi [burada](https://a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Makine bağımlılıklarını kullanan makineleri gruplandırın](how-to-create-group-machine-dependencies.md)
-- Bağımlılık görselleştirmesinde SSS hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) .
+- Bağımlılık görselleştirmesinde SSS hakkında [daha fazla bilgi edinin](common-questions-discovery-assessment.md#what-is-dependency-visualization) .
 
 

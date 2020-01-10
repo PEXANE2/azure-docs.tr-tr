@@ -3,12 +3,12 @@ title: Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 description: Azure İşlevleri, birden fazla çalışma zamanı sürümünü destekler. Aralarındaki farkları ve sizin için doğru olanı seçme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 977d0cb445369cbc51ce3b90712d58ce8b6ebdc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433074"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769124"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Işlevleri çalışma zamanı sürümlerine genel bakış
 
@@ -119,7 +119,7 @@ Hedeflenen sürümleri yerel olarak değiştirmek için uygulama işlevleri işl
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio çalışma zamanı sürümleri
 
-Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçersiniz. Visual Studio için Azure Işlevleri araçları, hem önemli çalışma zamanı sürümlerini destekler. Hata ayıklama sırasında ve proje ayarlarına bağlı olarak yayımlandığında doğru sürüm kullanılır. Sürüm ayarları, aşağıdaki özelliklerde `.csproj` dosyasında tanımlanır:
+Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçersiniz. Visual Studio için Azure Işlevleri araçları, üç ana çalışma zamanı sürümünü destekler. Hata ayıklama sırasında ve proje ayarlarına bağlı olarak yayımlandığında doğru sürüm kullanılır. Sürüm ayarları, aşağıdaki özelliklerde `.csproj` dosyasında tanımlanır:
 
 ##### <a name="version-1x"></a>Sürüm 1. x
 
@@ -147,10 +147,10 @@ Visual Studio 'da, bir proje oluştururken çalışma zamanı sürümünü seçe
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Visual Studio 'da 2. x uygulamalarını 3. x olarak güncelleştirme
 
-2\. x hedefleme var olan bir işlevi açabilir ve `.csproj` dosyasını düzenleyerek ve yukarıdaki değerleri güncelleştirerek 3. x ' e geçebilirsiniz.  Visual Studio, çalışma zamanı sürümlerini proje meta verilerine göre otomatik olarak yönetir.  Ancak, Visual Studio henüz makinenizde 3. x için şablonlar ve çalışma zamanına sahip olmayan bir 3. x uygulaması oluşturmadıysanız mümkündür.  Bu, "projede belirtilen sürümle eşleşen Işlevler çalışma zamanı yok" gibi bir hatayla kendi kendine sunabilir.  En son şablonları ve çalışma zamanını getirmek için yeni bir işlev projesi oluşturma deneyiminden yararlanın.  Sürüm ve şablon seç ekran ' e geldiğinizde, Visual Studio 'nun en son şablonları getirme işleminin tamamlanmasını bekleyin.  En son .NET Core 3 şablonları kullanılabilir ve görüntülendikten sonra, sürüm 3. x için yapılandırılmış herhangi bir projeyi çalıştırabilmeniz ve hata ayıklaması yapmanız gerekir.
+2\. x hedefleme var olan bir işlevi açabilir ve `.csproj` dosyasını düzenleyerek ve yukarıdaki değerleri güncelleştirerek 3. x ' e geçebilirsiniz.  Visual Studio, çalışma zamanı sürümlerini proje meta verilerine göre otomatik olarak yönetir.  Ancak, Visual Studio 'Nun makinenizde 3. x için şablonlar ve çalışma zamanına sahip olmaması durumunda henüz bir 3. x uygulaması oluşturmadıysanız, bu mümkündür.  Bu, "projede belirtilen sürümle eşleşen Işlevler çalışma zamanı yok" gibi bir hatayla kendi kendine sunabilir.  En son şablonları ve çalışma zamanını getirmek için yeni bir işlev projesi oluşturma deneyiminden yararlanın.  Sürüm ve şablon seç ekran ' e geldiğinizde, Visual Studio 'nun en son şablonları getirme işleminin tamamlanmasını bekleyin.  En son .NET Core 3 şablonları kullanılabilir ve görüntülendikten sonra, sürüm 3. x için yapılandırılmış herhangi bir projeyi çalıştırabilmeniz ve hata ayıklaması yapmanız gerekir.
 
 > [!IMPORTANT]
-> Sürüm 3. x işlevleri yalnızca, sürüm 16,4 veya daha yeni bir sürümü kullanılıyorsa Visual Studio 'da geliştirilebilir.
+> Sürüm 3. x işlevleri yalnızca Visual Studio sürüm 16,4 veya daha yeni bir sürümde kullanılıyorsa Visual Studio 'da geliştirilebilir.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code ve Azure Functions Core Tools
 

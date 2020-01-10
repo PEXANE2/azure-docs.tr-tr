@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855039"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770212"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics hakkında sık sorulan sorular
 
@@ -28,7 +28,7 @@ Project Acoustics eklenti Suite, çalışma zamanı öncesinde ses dalgası davr
 
 [Project Acoustics Unity eklentisini](https://www.microsoft.com/download/details.aspx?id=57346) veya [Project Acoustics Unreal eklentisini](https://www.microsoft.com/download/details.aspx?id=58090)indirebilirsiniz.
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Project Acoustics x&gt; platformunu &lt;destekliyor mu?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Project Acoustics &lt;x&gt; platformunu destekliyor mu?
 
 Project Acoustics platform desteği, müşteri gereksinimlerine göre gelişir. Ek platformlar için destek hakkında bilgi için lütfen [Project Acoustics sorun forumundan](https://github.com/microsoft/ProjectAcoustics/issues) bizimle iletişime geçin.
 
@@ -75,6 +75,10 @@ Project Acoustics, her mimari yönü hesaba ayırarak, Ultra karmaşık sanal or
 ## <a name="what-exactly-happens-during-baking"></a>"Fırlama" sırasında tam olarak ne olur?
 
 Bir hazırlama, her dinleyici araştırmasına ortalanmış cuboıd simülasyon bölgelerinin akustik dalga benzetimlerinden oluşur.
+
+## <a name="is-my-source-content-secure"></a>Kaynak İçeriğim güvenli mi?
+
+Project Acoustics, kaynak sahneyi geometrisini buluta yüklemez. Bunun yerine benzetim, sahsitenizin, araştırma konumu verileriyle birleştirilmiş ve özel bir biçimde saklanan bir voxelileştirme üzerinde çalışır.     
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Projeyi Acoustics Unity örnek içeriğini](unity-quickstart.md) veya [gerçek olmayan örnek içeriği](unreal-quickstart.md) deneyin

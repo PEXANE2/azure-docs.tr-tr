@@ -6,25 +6,113 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: aff6be1a6abf2550013b752ba4f796ffe255499f
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 01/08/2019
+ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539055"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770348"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
 ![Office 365 logosu](media/solution-office-365/icon.png)
 
 
-> [!NOTE]
-> Office 365 çözümünü yüklemek ve yapılandırmak için önerilen yöntem, bu makaledeki adımları kullanmak yerine [Azure Sentinel](../../sentinel/overview.md) 'de [Office 365 bağlayıcısını](../../sentinel/connect-office-365.md) etkinleştirir. Bu, geliştirilmiş bir yapılandırma deneyimiyle birlikte Office 365 çözümünün güncelleştirilmiş bir sürümüdür. Azure AD günlüklerini bağlamak için, [Azure Sentinel Azure AD bağlayıcısını](../../sentinel/connect-azure-active-directory.md) kullanabilir veya [Azure AD tanılama ayarlarını yapılandırarak](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)Office 365 Yönetim günlüklerinden daha zengin günlük verileri sağlayabilirsiniz. 
+> [!IMPORTANT]
+> ## <a name="solution-update"></a>Çözüm güncelleştirmesi
+> Bu çözüm, [Azure Sentinel](../../sentinel/overview.md) 'de [Office 365](../../sentinel/connect-office-365.md) genel KULLANıLABILIRLIK çözümüyle ve [Azure AD raporlama ve izleme çözümünde](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle birlikte önceki Azure Izleyici Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlar. Mevcut çözümü 30 Mart 2020 ' e kadar kullanmaya devam edebilirsiniz.
+> 
+> Azure Sentinel, günlük kaydı yapan ve algılamalar, araştırmalar, araştırma ve makine öğrenimi odaklı Öngörüler dahil ek SıEM işlevselliği sağlayan bir bulut Yerel güvenlik bilgileri ve olay yönetimi çözümüdür. Azure Sentinel 'in kullanılması artık Office 365 SharePoint etkinliğinin ve Exchange Yönetim günlüklerinin kullanımını sağlar.
+> 
+> Azure AD raporlama, ortamınızda oturum açma olayları, denetim olayları ve dizininizde değişiklik de dahil olmak üzere Azure AD etkinliğinin günlüklerine yönelik daha kapsamlı bir görünümünü sağlar. Azure AD günlüklerini bağlamak için Azure [Sentinel Azure AD bağlayıcısını](../../sentinel/connect-azure-active-directory.md) kullanabilir veya Azure [IZLEYICI ile Azure AD günlükleri tümleştirmesini](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)yapılandırabilirsiniz. 
 >
-> [Azure Sentinel](../../sentinel/quickstart-onboard.md)'i eklediğinizde, Office 365 çözümünün yüklenmesini istediğiniz Log Analytics çalışma alanını belirtin. Bağlayıcıyı etkinleştirdikten sonra çözüm, çalışma alanında kullanılabilir olur ve yüklediğiniz diğer izleme çözümleriyle tamamen aynı şekilde kullanılır.
+> Azure AD günlüğü koleksiyonu, Azure Izleyici fiyatlandırması tabi.  Daha fazla bilgi için bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/) .
 >
-> Azure Sentinel 'in kamu bulutunda henüz kullanılamadığından, Azure Kamu Bulutu kullanıcıları bu makaledeki adımları kullanarak Office 365 ' i yüklemelidir.
+> Azure Sentinel Office 365 çözümünü kullanmak için:
+> 1. Bu bağlayıcının kullanılması, çalışma alanınızın fiyatlandırmasını etkiler. Daha fazla bilgi için bkz. [Azure Sentinel fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> 2. Azure Izleyici Office 365 çözümünü zaten kullanıyorsanız, önce [aşağıdaki kaldırma bölümünde](#uninstall)yer alarak betiği kullanarak kaldırmanız gerekir.
+> 3. Çalışma alanınızda [Azure Sentinel çözümünü etkinleştirin](../../sentinel/quickstart-onboard.md) .
+> 4. Azure Sentinel 'de **veri bağlayıcıları** sayfasına gidin ve **Office 365** bağlayıcısını etkinleştirin.
+>
+> ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+> 
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>S: Office 365 Azure Izleyici çözümü Şu anda ve 30 Mart arasında panoda olabilir mi?
+> Hayır, Azure Izleyici Office 365 çözüm ekleme betikleri artık kullanılamıyor. Çözüm, 30 Mart tarihinde kaldırılacak.
+> 
+> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>S: tablolar ve şemalar değiştirilsin mi?
+> **Officeactivity** tablo adı ve şeması, geçerli çözümle aynı kalacaktır. Azure AD verilerine başvuran sorguları hariç tutarak yeni çözümde aynı sorguları kullanmaya devam edebilirsiniz.
+> 
+> Yeni [Azure AD raporlama ve izleme çözümü](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) günlükleri, **Officeactivity**yerine [signınlogs](../../active-directory/reports-monitoring/concept-sign-ins.md) ve [auditlogs](../../active-directory/reports-monitoring/concept-audit-logs.md) tablolarına alınacaktır. Daha fazla bilgi için bkz. Azure Sentinel ve Azure Izleyici kullanıcıları için de uygun olan [Azure AD günlüklerini çözümleme](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
+> 
+> Aşağıda, **Officeetkinlikten** **signınlogs**'a sorguları dönüştürme örnekleri verilmiştir:
+> 
+> **Sorgu, oturum açma işlemlerini Kullanıcı tarafından başarısız oldu:**
+> 
+> ```Kusto
+> OfficeActivity
+> | where TimeGenerated >= ago(1d) 
+> | where OfficeWorkload == "AzureActiveDirectory"                      
+> | where Operation == 'UserLoginFailed'
+> | summarize count() by UserId 
+> ```
+> 
+> ```Kusto
+> SigninLogs
+> | where ConditionalAccessStatus == "failure" or ConditionalAccessStatus == "notApplied"
+> | summarize count() by UserDisplayName
+> ```
+> 
+> **Azure AD işlemlerini görüntüleme:**
+> 
+> ```Kusto
+> OfficeActivity
+> | where OfficeWorkload =~ "AzureActiveDirectory"
+> | sort by TimeGenerated desc
+> | summarize AggregatedValue = count() by Operation
+> ```
+> 
+> ```Kusto
+> AuditLogs
+> | summarize count() by OperationName
+> ```
+> 
+> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>S: Azure Sentinel 'i nasıl kullanabilirim?
+> Azure Sentinel, yeni veya mevcut Log Analytics çalışma alanında etkinleştirebilmeniz için bir çözümdür. Daha fazla bilgi için bkz. [Azure Sentinel on-taslak belgeleri](../../sentinel/quickstart-onboard.md).
+>
+> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>S: Azure AD günlüklerini bağlamak için Azure Sentinel 'e ihtiyacım var mı?
+> Azure [ad günlüklerini Azure izleyici ile tümleştirerek](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)Azure Sentinel çözümüyle ilgili olmayan bir şekilde yapılandırabilirsiniz. Azure Sentinel, Azure AD günlükleri için yerel bir bağlayıcı ve kullanıma hazır içerik sağlar. Daha fazla bilgi için, kullanıma hazır güvenlik odaklı içerik hakkında aşağıdaki soruya bakın.
+>
+> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>S: Azure AD günlüklerini Azure Sentinel ve Azure Izleyici 'den bağlarken ne fark vardır?
+> Azure Sentinel ve Azure Izleyici aynı [Azure AD raporlama ve izleme çözümüne](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)bağlı olarak Azure AD günlüklerine bağlanır. Azure Sentinel, aynı verileri bağlayan ve izleme bilgilerini sağlayan tek tıklamayla bir yerel bağlayıcı sağlar.
+>
+> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>S: yeni Azure AD raporlama ve izleme tablolarına geçiş yaparken ne yapmam gerekir?
+> Uyarıları, panoları ve Office 365 Azure AD verilerini kullanarak oluşturduğunuz tüm içerikleri içeren Azure AD verilerini kullanan tüm sorgular, yeni tablolar kullanılarak yeniden oluşturulmalıdır.
+>
+> Azure Sentinel ve Azure AD, Azure AD raporlama ve izleme çözümüne taşırken kullanabileceğiniz yerleşik içerik sağlar. Daha fazla bilgi için, kullanıma hazır güvenlik odaklı içerik ve [Azure izleyici çalışma kitaplarını Azure Active Directory raporları Için nasıl kullanacağınızı](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)gösteren bir sonraki soruya bakın. 
+>
+> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>S: Azure Sentinel kullanıma hazır güvenlik yönelimli içeriği nasıl kullanabilirim?
+> Azure Sentinel, yerleşik güvenliğe dayalı panolar, özel uyarı sorguları, arama sorguları, araştırma ve Office 365 ve Azure AD günlükleri temelinde otomatik yanıt özellikleri sağlar. Daha fazla bilgi edinmek için Azure Sentinel GitHub ve öğreticileri bulun:
+>
+> - [Kullanıma hazır tehditleri algılama](../../sentinel/tutorial-detect-threats-built-in.md)
+> - [Şüpheli tehditleri algılamak için özel analitik kurallar oluşturma](../../sentinel/tutorial-detect-threats-custom.md)
+> - [Verilerinizi izleme](../../sentinel/tutorial-monitor-your-data.md)
+> - [Azure Sentinel ile olayları araştırın](../../sentinel/tutorial-investigate-cases.md)
+> - [Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Azure Sentinel GitHub topluluğu](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
+> 
+> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>S: Azure Sentinel, çözümün bir parçası olarak ek bağlayıcılar sağlıyor mu?
+> Evet, bkz. [Azure Sentinel Connect veri kaynakları](../../sentinel/connect-data-sources.md).
+> 
+> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>S: 30 Mart 'ta ne olur? Önceden Pano yapmam gerekir mi?
+> 
+> - **Office365** çözümünden veri alamazsınız ve bu, yüklendiği her çalışma alanından kaldırılır. Bu çözüm Market 'te artık kullanılamayacak
+> - Azure Sentinel müşterileri için, Azure Sentinel **Securityınsights** çözümüne Log Analytics çalışma alanı çözümü **Office365** eklenecektir.
+> - Çözümünüzü el ile boşaltmıyorsanız, verilerinizin 30 Mart 'ta otomatik olarak bağlantısı kesilir.
+> 
+> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: veri, yeni çözüme aktarılsın mı?
+> Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığı için verileri geçici olarak kullanılamıyor olacaktır. Yeni **Office 365** bağlayıcısını Sentinel 'de etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve önceden toplanan tüm veriler kullanılabilir hale gelir. 
+ 
 
 Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izlemenize olanak sağlar.
 
@@ -34,375 +122,6 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Denetim ve uyumluluğu gösterir. Örneğin, gizli dosyalardaki dosya erişim işlemlerini, denetim ve uyumluluk sürecinde size yardımcı olabilecek şekilde izleyebilirsiniz.
 - Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-## <a name="prerequisites"></a>Önkoşullar
-
-Bu çözüm yüklenmeden ve yapılandırıldıktan önce aşağıdakiler gereklidir.
-
-- Kurumsal Ofis 365 aboneliği.
-- Genel yönetici olan bir kullanıcı hesabının kimlik bilgileri.
-- Denetim verileri almak için Office 365 aboneliğinizdeki [denetimi yapılandırmanız](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) gerekir.  [Posta kutusu denetiminin](https://technet.microsoft.com/library/dn879651.aspx) ayrı olarak yapılandırıldığını unutmayın.  Hala çözümü yükleyebilir ve denetim yapılandırılmamışsa diğer verileri toplayabilirsiniz.
- 
-
-## <a name="management-packs"></a>Yönetim paketleri
-
-Bu çözüm [bağlı yönetim gruplarına](../platform/om-agents.md)herhangi bir yönetim paketi yüklemez.
-  
-
-## <a name="install-and-configure"></a>Yükleme ve yapılandırma
-
-[Aboneliğinize Office 365 çözümünü](solutions.md#install-a-monitoring-solution)ekleyerek başlayın. Eklendikten sonra, Office 365 aboneliğinize erişim sağlamak için bu bölümdeki yapılandırma adımlarını gerçekleştirmeniz gerekir.
-
-### <a name="required-information"></a>Gerekli bilgiler
-
-Bu yordama başlamadan önce, aşağıdaki bilgileri toplayın.
-
-Log Analytics çalışma alanınızdan:
-
-- Çalışma alanı adı: Office 365 verilerinin toplanacağı çalışma alanı.
-- Kaynak grubu adı: çalışma alanını içeren kaynak grubu.
-- Azure abonelik KIMLIĞI: çalışma alanını içeren abonelik.
-
-Office 365 aboneliğinizden:
-
-- Kullanıcı adı: yönetici hesabının e-posta adresi.
-- Kiracı KIMLIĞI: Office 365 aboneliğinin benzersiz KIMLIĞI.
-
-Azure Active Directory 'de Office 365 uygulamasının oluşturulması ve yapılandırılması sırasında aşağıdaki bilgiler toplanmalıdır:
-
-- Uygulama (Istemci) KIMLIĞI: Office 365 istemcisini temsil eden 16 karakterlik dize.
-- İstemci parolası: kimlik doğrulaması için şifreli dize gereklidir.
-
-### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory bir Office 365 uygulaması oluşturma
-
-İlk adım, yönetim çözümünün Office 365 çözümünüze erişmek için kullanacağı Azure Active Directory bir uygulama oluşturmaktır.
-
-1. [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
-1. **Azure Active Directory** seçip **uygulama kayıtları**.
-1. **Yeni kayıt**' ye tıklayın.
-
-    ![Uygulama kaydı ekle](media/solution-office-365/add-app-registration.png)
-1. Bir uygulama **adı**girin. **Desteklenen hesap türleri**için **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) hesaplar '** ı seçin.
-    
-    ![Uygulama oluştur](media/solution-office-365/create-application.png)
-1. **Kaydet** ' e tıklayın ve uygulama bilgilerini doğrulayın.
-
-    ![Kayıtlı uygulama](media/solution-office-365/registered-app.png)
-
-1. Uygulama (istemci) KIMLIĞINI, daha önce toplanan bilgilerin geri kalanı ile birlikte kaydedin.
-
-
-### <a name="configure-application-for-office-365"></a>Office 365 için uygulama yapılandırma
-
-1. **Kimlik doğrulaması** ' nı seçin ve **Desteklenen hesap türleri**altında **herhangi bir kuruluş DIZININDEKI (herhangi bir Azure ad dizini-Multitenant) hesapların** seçildiğini doğrulayın.
-
-    ![Ayarlar çok kiracılı](media/solution-office-365/settings-multitenant.png)
-
-1. **API izinleri** ' ni seçin ve ardından **bir izin ekleyin**.
-1. **Office 365 Yönetim API 'leri**' ne tıklayın. 
-
-    ![API seçin](media/solution-office-365/select-api.png)
-
-1. **Uygulamanız gereken izin türü altında?** uygulama **izinleri** ve **temsilci izinleri**için aşağıdaki seçenekleri belirtin:
-   - Kuruluşunuzun hizmet durumu bilgilerini okuyun
-   - Kuruluşunuzun etkinlik verilerini okuyun
-   - Kuruluşunuz için etkinlik raporlarını okuyun
-
-     ![API seçin](media/solution-office-365/select-permissions-01.png)![API seçin](media/solution-office-365/select-permissions-02.png)
-
-1. **Izin Ekle**' ye tıklayın.
-1. **Yönetici onayı ver** ' e tıklayın ve doğrulama istendiğinde **Evet** ' e tıklayın.
-
-
-### <a name="add-a-secret-for-the-application"></a>Uygulama için gizli dizi ekleme
-
-1. **Sertifikalar &** ve ardından **yeni istemci parolası**' nı seçin.
-
-    ![Anahtarlar](media/solution-office-365/secret.png)
- 
-1. Yeni anahtar için bir **Açıklama** ve **süre** yazın.
-1. **Ekle** ' ye tıklayın ve daha önce toplanan bilgilerin geri kalanı ile birlikte, istemci gizli dizisi olarak oluşturulan **değeri** kaydedin.
-
-    ![Anahtarlar](media/solution-office-365/keys.png)
-
-### <a name="add-admin-consent"></a>Yönetici onayı Ekle
-
-Yönetim hesabını ilk kez etkinleştirmek için, uygulama için yönetici onayı sağlamanız gerekir. Bunu bir PowerShell betiği ile yapabilirsiniz. 
-
-1. Aşağıdaki betiği *office365_consent. ps1*olarak kaydedin.
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,     
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId
-    )
-    
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocation
-    
-    Function AdminConsent{
-    
-    $domain='login.microsoftonline.com'
-    switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
-           "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
-           "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
-           "southeastasia"   {$OfficeAppClientId="09c5b521-648d-4e29-81ff-7f3a71b27270"; break}
-           "australiasoutheast"  {$OfficeAppClientId="f553e464-612b-480f-adb9-14fd8b6cbff8"; break}   
-           "westcentralus"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break}
-           "japaneast"   {$OfficeAppClientId="b07d97d3-731b-4247-93d1-755b5dae91cb"; break}
-           "uksouth"   {$OfficeAppClientId="f232cf9b-e7a9-4ebb-a143-be00850cd22a"; break}
-           "centralindia"   {$OfficeAppClientId="ffbd6cf4-cba8-4bea-8b08-4fb5ee2a60bd"; break}
-           "canadacentral"  {$OfficeAppClientId="c2d686db-f759-43c9-ade5-9d7aeec19455"; break}
-           "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
-           "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
-           "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.microsoftonline.us'; break}
-           default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
-                    $domain='login.windows-ppe.net'; break} #Int
-        }
-    
-        $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
-    }
-    
-    AdminConsent -ErrorAction Stop
-    ```
-
-2. Betiği aşağıdaki komutla çalıştırın. Kimlik bilgileri için iki kez istemde bulunulacaktır. Önce Log Analytics çalışma alanınızın kimlik bilgilerini ve ardından Office 365 kiracınızın genel yönetici kimlik bilgilerini sağlayın.
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
-    ```
-
-    Örnek:
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
-    ```
-
-1. Aşağıda gösterilene benzer bir pencere sunulacaktır. **Kabul et**' e tıklayın.
-    
-    ![Yönetici onayı](media/solution-office-365/admin-consent.png)
-
-> [!NOTE]
-> Mevcut olmayan bir sayfaya yönlendiriliyorsunuz. Bunu başarılı olarak değerlendirin.
-
-### <a name="subscribe-to-log-analytics-workspace"></a>Log Analytics çalışma alanına abone ol
-
-Son adım, uygulamayı Log Analytics çalışma alanınıza Abone olunacak. Bunu bir PowerShell betiği ile de yapabilirsiniz.
-
-1. Aşağıdaki betiği *office365_subscription. ps1*olarak kaydedin.
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId,
-        [Parameter(Mandatory=$True)][string]$OfficeUsername,
-        [Parameter(Mandatory=$True)][string]$OfficeTennantId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientSecret
-    )
-    $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
-    $line
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $Workspace
-    $WorkspaceLocation= $Workspace.Location
-    $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
-    
-    # Client ID for Azure PowerShell
-    $clientId = "1950a258-227b-4e31-a9cf-717495945fc2"
-    # Set redirect URI for Azure PowerShell
-    $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
-    $domain='login.microsoftonline.com'
-    $adTenant = $Subscription[0].Tenant.Id
-    $authority = "https://login.windows.net/$adTenant";
-    $ARMResource ="https://management.azure.com/";
-    $xms_client_tenant_Id ='55b65fb5-b825-43b5-8972-c8b6875867c1'
-    
-    switch ($WorkspaceLocation) {
-           "USGov Virginia" { 
-                             $domain='login.microsoftonline.us';
-                              $authority = "https://login.microsoftonline.us/$adTenant";
-                              $ARMResource ="https://management.usgovcloudapi.net/"; break} # US Gov Virginia
-           default {
-                    $domain='login.microsoftonline.com'; 
-                    $authority = "https://login.windows.net/$adTenant";
-                    $ARMResource ="https://management.azure.com/";break} 
-                    }
-
-    Function RESTAPI-Auth { 
-    $global:SubscriptionID = $Subscription.Subscription.Id
-    # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource
-    # Authenticate and Acquire Token 
-    # Create Authentication Context tied to Azure AD Tenant
-    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
-    # Acquire token
-    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
-    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
-    $global:authResultARM.Wait()
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-
-    $authHeader
-    }
-    
-    Function Failure {
-    $line
-    $formatstring = "{0} : {1}`n{2}`n" +
-                    "    + CategoryInfo          : {3}`n" +
-                    "    + FullyQualifiedErrorId : {4}`n"
-    $fields = $_.InvocationInfo.MyCommand.Name,
-              $_.ErrorDetails.Message,
-              $_.InvocationInfo.PositionMessage,
-              $_.CategoryInfo.ToString(),
-              $_.FullyQualifiedErrorId
-    
-    $formatstring -f $fields
-    $_.Exception.Response
-    
-    $line
-    break
-    }
-    
-    Function Connection-API
-    {
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-    $ResourceName = "https://manage.office.com"
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    
-    $line
-    $connectionAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/connections/office365connection_' + $SubscriptionId + $OfficeTennantId + '?api-version=2017-04-26-preview'
-    $connectionAPIUrl
-    $line
-    
-    $xms_client_tenant_Id ='1da8f770-27f4-4351-8cb3-43ee54f14759'
-    
-    $BodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'clientId': '" + $OfficeClientId + "',
-                                    'clientSecret': '" + $OfficeClientSecret + "',
-                                    'Username': '" + $OfficeUsername   + "',
-                                    'Url': 'https://$($domain)/" + $OfficeTennantId + "/oauth2/token',
-                                  },
-                    'etag': '*',
-                    'kind': 'Connection',
-                    'solution': 'Connection',
-                   }"
-    
-    $params = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id #Prod-'1da8f770-27f4-4351-8cb3-43ee54f14759'
-        'Content-Type' = 'application/json'
-        }
-        Body = $BodyString
-        Method = 'Put'
-        URI = $connectionAPIUrl
-    }
-    $response = Invoke-WebRequest @params 
-    $response
-    $line
-    
-    }
-    
-    Function Office-Subscribe-Call{
-    try{
-    #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
-    
-    $OfficeBodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'office365TenantID': '" + $OfficeTennantId + "',
-                                    'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
-                                    'office365AdminUsername': '" + $OfficeUsername + "',
-                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.SharePoint'
-                                  },
-                    'etag': '*',
-                    'kind': 'Office365',
-                    'solution': 'Office365',
-                   }"
-    
-    $Officeparams = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id
-        'Content-Type' = 'application/json'
-        }
-        Body = $OfficeBodyString
-        Method = 'Put'
-        URI = $OfficeAPIUrl
-      }
-    
-    $officeresponse = Invoke-WebRequest @Officeparams 
-    $officeresponse
-    }
-    catch{ Failure }
-    }
-    
-    #GetDetails 
-    RESTAPI-Auth -ErrorAction Stop
-    Connection-API -ErrorAction Stop
-    Office-Subscribe-Call -ErrorAction Stop
-    ```
-
-2. Betiği aşağıdaki komutla çalıştırın:
-
-    ```
-    .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
-    ```
-
-    Örnek:
-
-    ```powershell
-    .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
-    ```
-
-### <a name="troubleshooting"></a>Sorun giderme
-
-Uygulamanız zaten bu çalışma alanına abone varsa veya bu kiracı başka bir çalışma alanına abone olduysa, aşağıdaki hatayı görebilirsiniz.
-
-```Output
-Invoke-WebRequest : {"Message":"An error has occurred."}
-At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
-+ $officeresponse = Invoke-WebRequest @Officeparams
-+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
-    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand 
-```
-
-Geçersiz parametre değerleri sağlanmışsa, aşağıdaki hatayı görebilirsiniz.
-
-```Output
-Select-AzSubscription : Please provide a valid tenant or a valid subscription.
-At line:12 char:18
-+ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
-
-```
 
 ## <a name="uninstall"></a>Kaldırma
 
@@ -511,12 +230,6 @@ Sizden kimlik bilgileri istenir. Log Analytics çalışma alanınızın kimlik b
 
 ## <a name="data-collection"></a>Veri toplama
 
-### <a name="supported-agents"></a>Desteklenen aracılar
-
-Office 365 çözümü [Log Analytics aracılarından](../platform/agent-data-sources.md)herhangi birinden veri almaz.  Verileri doğrudan Office 365 'ten alır.
-
-### <a name="collection-frequency"></a>Toplama sıklığı
-
 Verilerin başlangıçta toplanması birkaç saat sürebilir. Toplamaya başladıktan sonra, Office 365 bir kayıt oluşturulduğunda ayrıntılı verilerle Azure Izleyici 'ye bir [Web kancası bildirimi](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) gönderir. Bu kayıt, Azure Izleyici 'de alındıktan sonra birkaç dakika içinde kullanılabilir.
 
 ## <a name="using-the-solution"></a>Çözümü kullanma
@@ -553,15 +266,15 @@ Aşağıdaki özellikler tüm Office 365 kayıtları için ortaktır.
 | Özellik | Açıklama |
 |:--- |:--- |
 | Tür | *Officeetkinliği* |
-| ClientIP | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
+| Clientıp | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi IPv4 veya IPv6 adresi biçiminde görüntülenir. |
 | Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Değiştirin<br>SharePoint|
 | İşlem | Kullanıcı veya yönetici etkinliğinin adı.  |
-| Kuruluş kimliği | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
+| OrganizationId | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
 | RecordType | Gerçekleştirilen işlem türü. |
-| ResultStatus | Eylemin (Işlem özelliğinde belirtilen) başarılı olup olmadığını gösterir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
-| UserID | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
+| ResultStatus | Eylemin (Operation özelliğinde belirtilen) başarılı olup olmadığını belirtir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
+| UserId | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
 | UserKey | UserID özelliğinde tanımlanan Kullanıcı için alternatif bir KIMLIK.  Örneğin, bu özellik SharePoint, OneDrive Iş ve Exchange kullanıcıları tarafından gerçekleştirilen olaylar için Passport benzersiz KIMLIĞI (PUıD) ile doldurulur. Bu özellik aynı zamanda diğer hizmetlerde gerçekleşen olaylar ve sistem hesapları tarafından gerçekleştirilen olaylar için UserID özelliği ile aynı değeri belirtebilir|
-| userType | İşlemi gerçekleştiren kullanıcı türü.<br><br>yöneticileri<br>Uygulama<br>DcAdmin<br>Aralıklarla<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
+| UserType | İşlemi gerçekleştiren kullanıcının türü.<br><br>Yönetici<br>Uygulama<br>DcAdmin<br>Düzenli<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory taban
@@ -573,7 +286,7 @@ Aşağıdaki özellikler tüm Azure Active Directory kayıtları için ortaktır
 | Officeiş yükü | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Azure AD olayının türü. |
-| extendedProperties | Azure AD olayının genişletilmiş özellikleri. |
+| ExtendedProperties | Azure AD olayının genişletilmiş özellikleri. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Hesap oturum Azure Active Directory
@@ -634,12 +347,12 @@ Bu kayıtlar, Exchange yapılandırmasında değişiklik yapıldığında oluşt
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Cmdlet 'inin kuruluşunuzdaki bir kullanıcı tarafından, Microsoft veri merkezi personeli veya bir veri merkezi hizmet hesabı tarafından mı yoksa yetkilendirilmiş bir yönetici tarafından mı çalıştırılacağını belirtir. False değeri, cmdlet 'inin kuruluşunuzdaki bir kişi tarafından çalıştırıldığını gösterir. True değeri, cmdlet 'in veri merkezi personeli, bir veri merkezi hizmet hesabı veya yönetici temsilcisi tarafından çalıştırıldığını belirtir. |
 | ModifiedObjectResolvedName |  Bu, cmdlet tarafından değiştirilen nesnenin Kullanıcı dostu adıdır. Bu, yalnızca cmdlet nesneyi değiştirdiğinde günlüğe kaydedilir. |
-| © | Kiracının adı. |
+| OrganizationName | Kiracının adı. |
 | OriginatingServer | Cmdlet 'in yürütüldüğü sunucunun adı. |
 | Parametreler | Operations özelliğinde tanımlanan cmdlet ile kullanılan tüm parametrelerin adı ve değeri. |
 
 
-### <a name="exchange-mailbox"></a>Exchange posta kutusu
+### <a name="exchange-mailbox"></a>Exchange Posta Kutusu
 
 Exchange posta kutularına değişiklik veya eklemeler yapıldığında bu kayıtlar oluşturulur.
 
@@ -648,11 +361,11 @@ Exchange posta kutularına değişiklik veya eklemeler yapıldığında bu kayı
 | Officeiş yükü | Değiştirin |
 | RecordType     | Exchangeıtem |
 | Clientınfostring | Bir tarayıcı sürümü, Outlook sürümü ve mobil cihaz bilgileri gibi, işlemi gerçekleştirmek için kullanılan e-posta istemcisiyle ilgili bilgiler. |
-| Client_IPAddress | İşlem günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
+| Client_IPAddress | İşlem günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi IPv4 veya IPv6 adresi biçiminde görüntülenir. |
 | ClientMachineName | Outlook istemcisini barındıran makine adı. |
 | ClientProcessName | Posta kutusuna erişmek için kullanılan e-posta istemcisi. |
 | ClientVersion | E-posta istemcisinin sürümü. |
-| Internallogontype | Dahili kullanım için ayrılmıştır. |
+| Internallogontype | İç kullanım için ayrılmış. |
 | Logon_Type | Posta kutusuna erişen ve günlüğe kaydedilen işlemi gerçekleştiren kullanıcı türünü gösterir. |
 | LogonUserDisplayName |    İşlemi gerçekleştiren kullanıcının kolay adı. |
 | LogonUserSid | İşlemi gerçekleştiren kullanıcının SID 'SI. |
@@ -747,16 +460,15 @@ Bu kayıtlar, SharePoint 'teki dosya işlemlerine yanıt olarak oluşturulur.
 
 
 
-## <a name="sample-log-searches"></a>Örnek günlük aramaları
+## <a name="sample-log-queries"></a>Örnek günlük sorguları
 
-Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtlarına ilişkin örnek günlük aramaları sunulmaktadır.
+Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtlarına yönelik örnek günlük sorguları verilmiştir.
 
 | Sorgu | Açıklama |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; , işleme göre Count () özetleme |
 |SharePoint sitelerinin kullanımı|Officeiş &#124; yükü = ~ "SharePoint \|" &#124; olan officeactivity|
-|Kullanıcı türüne göre dosya erişim işlemleri|içinde ara (OfficeActivity) Officeiş yükü = ~ "azureactivedirectory" ve "MyTest"|
-|Belirli bir anahtar sözcükle arama|Tür = OfficeActivity Officeiş yükü = azureactivedirectory "MyTest"|
+|Kullanıcı türüne göre dosya erişim işlemleri | OfficeActivity &#124; , UserType tarafından Count () özetleme |
 |Exchange 'de dış eylemleri izleme|Officeiş &#124; yükü = ~ "Exchange" ve ExternalAccess = = true olduğunda officeetkinliği|
 
 

@@ -3,14 +3,14 @@ title: Dayanıklı İşlevler-Azure Işlevlerinde HTTP API 'Leri
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısında HTTP API 'Leri uygulamayı öğrenin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0390211e6fc42bd7183a770cac409b880310d317
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231396"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769634"
 ---
 # <a name="http-api-reference"></a>HTTP API başvurusu
 
@@ -32,7 +32,7 @@ Sonraki birkaç bölümde uzantı tarafından desteklenen belirli HTTP API 'Leri
 
 Belirtilen Orchestrator işlevinin yeni bir örneğini yürütmeye başlar.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -58,7 +58,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | Başlatılacak Orchestrator işlevinin adı. |
 | **`instanceId`**   | URL             | İsteğe bağlı parametre. Orchestration örneğinin KIMLIĞI. Belirtilmemişse, Orchestrator işlevi rastgele bir örnek KIMLIĞIYLE başlayacaktır. |
-| **`{content}`**    | İstek içeriği | İsteğe bağlı. JSON biçimli Orchestrator işlev girişi. |
+| **`{content}`**    | İçerik isteme | İsteğe bağlı. JSON biçimli Orchestrator işlev girişi. |
 
 ### <a name="response"></a>Yanıt
 
@@ -108,7 +108,7 @@ Aşağıda, KIMLIK olarak `abc123` bir Orchestration örneğine yönelik örnek 
 HTTP yanıtının *yoklama tüketici düzeniyle*uyumlu olması amaçlanmıştır. Ayrıca, aşağıdaki önemli yanıt üstbilgilerini de içerir:
 
 * **Konum**: durum uç noktasının URL 'si. Bu URL, `statusQueryGetUri` alanıyla aynı değeri içerir.
-* **Yeniden deneme-sonra**: yoklama işlemleri arasında beklenecek saniye sayısı. Varsayılan değer `10`.
+* **Yeniden deneme-sonra**: yoklama işlemleri arasında beklenecek saniye sayısı. Varsayılan değer: `10`.
 
 Zaman uyumsuz HTTP yoklama düzeniyle ilgili daha fazla bilgi için bkz. [http zaman uyumsuz işlem izleme](durable-functions-http-features.md#async-operation-tracking) belgeleri.
 
@@ -116,7 +116,7 @@ Zaman uyumsuz HTTP yoklama düzeniyle ilgili daha fazla bilgi için bkz. [http z
 
 Belirtilen bir düzenleme örneğinin durumunu alır.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -240,7 +240,7 @@ Ayrıca, ' örnek durumunu Al ' isteğinden `instanceId` kaldırarak tüm örnek
 Anımsanması gereken tek şey `connection` ve `code` isteğe bağlıdır. İşlev üzerinde anonim kimlik doğrulaması varsa `code` gerekli değildir.
 AzureWebJobsStorage uygulama ayarında tanımlı dışında farklı bir depolama bağlantı dizesi kullanmak istemiyorsanız, bağlantı sorgusu dize parametresini güvenle yoksayabilirsiniz.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -348,7 +348,7 @@ Sonraki istek üstbilgisinde devamlılık belirteci değerini ayarlarsanız, son
 
 Belirtilen bir düzenleme örneği için geçmişi ve ilgili yapıtları siler.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -399,7 +399,7 @@ Aşağıdaki HTTP durum kodu değerleri döndürülebilir.
 
 Ayrıca, ' tek örnekli geçmiş ' isteğinden `{instanceId}` kaldırarak bir görev hub 'ında bulunan birden çok örnek için geçmişi ve ilgili yapıtları silebilirsiniz. Örnek geçmişini seçmeli olarak temizlemek için ' tüm örnekleri al ' isteğinde açıklanan filtreleri kullanın.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -461,7 +461,7 @@ Aşağıdaki HTTP durum kodu değerleri döndürülebilir.
 
 Çalışan bir düzenleme örneğine bir olay bildirim iletisi gönderir.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -487,7 +487,7 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | Orchestration örneğinin KIMLIĞI. |
 | **`eventName`**   | URL             | Hedef düzenleme örneğinin beklediği olayın adı. |
-| **`{content}`**   | İstek içeriği | JSON biçimli olay yükü. |
+| **`{content}`**   | İçerik isteme | JSON biçimli olay yükü. |
 
 ### <a name="response"></a>Yanıt
 
@@ -514,7 +514,7 @@ Bu API 'nin yanıtları herhangi bir içerik içermiyor.
 
 Çalışan bir düzenleme örneğini sonlandırır.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -563,7 +563,7 @@ Bu API 'nin yanıtları herhangi bir içerik içermiyor.
 
 Hatalı düzenleme örneğini, en son başarısız işlemleri yeniden gerçekleştirerek çalışır duruma geri yükler.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 Işlevler çalışma zamanının 1. x sürümü için, istek aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
@@ -615,12 +615,12 @@ Bu API 'nin yanıtları herhangi bir içerik içermiyor.
 > [!NOTE]
 > Dayanıklı varlıklar Dayanıklı İşlevler 2,0 ' den başlayarak kullanılabilir.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 HTTP isteği aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
 ```http
-POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -631,10 +631,10 @@ Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve a
 
 | Alan             | Parametre türü  | Açıklama |
 |-------------------|-----------------|-------------|
-| **`entityType`**  | URL             | Varlığın türü. |
-| **`entityKey`**   | URL             | Varlığın benzersiz adı. |
+| **`entityName`**  | URL             | Varlığın adı (türü). |
+| **`entityKey`**   | URL             | Varlığın anahtarı (benzersiz KIMLIĞI). |
 | **`op`**          | Sorgu dizesi    | İsteğe bağlı. Çağrılacak Kullanıcı tanımlı işlemin adı. |
-| **`{content}`**   | İstek içeriği | JSON biçimli olay yükü. |
+| **`{content}`**   | İçerik isteme | JSON biçimli olay yükü. |
 
 Aşağıda, `steps`adlı bir `Counter` varlığına Kullanıcı tanımlı "Ekle" iletisi gönderen bir örnek isteği verilmiştir. İletinin içeriği `5`değerdir. Varlık zaten mevcut değilse, bu istek tarafından oluşturulacaktır:
 
@@ -645,26 +645,29 @@ Content-Type: application/json
 5
 ```
 
+> [!NOTE]
+> Varsayılan olarak, [.NET içindeki sınıf tabanlı varlıklar](durable-functions-dotnet-entities.md#defining-entity-classes)ile, `delete` `op` değerini belirtmek bir varlığın durumunu siler. Varlık `delete`adlı bir işlem tanımlıyorsa, ancak bunun yerine Kullanıcı tanımlı işlem çağrılır.
+
 ### <a name="response"></a>Yanıt
 
 Bu işlemin birkaç olası yanıtı vardır:
 
 * **HTTP 202 (kabul edildi)** : sinyal işlemi zaman uyumsuz işleme için kabul edildi.
 * **HTTP 400 (hatalı istek)** : istek içeriği `application/json`türünde değil, GEÇERLI bir JSON değildi veya geçersiz bir `entityKey` değeri vardı.
-* **HTTP 404 (bulunamadı)** : belirtilen `entityType` bulunamadı.
+* **HTTP 404 (bulunamadı)** : belirtilen `entityName` bulunamadı.
 
 Başarılı bir HTTP isteği yanıtta içerik içermiyor. Başarısız bir HTTP isteği, yanıt içeriğinde JSON biçimli hata bilgileri içerebilir.
 
-## <a name="query-entity"></a>Sorgu varlığı
+## <a name="get-entity"></a>Varlığı al
 
 Belirtilen varlığın durumunu alır.
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
 HTTP isteği aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
 
 ```http
-GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -692,6 +695,100 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 {
     "currentValue": 5
 }
+```
+
+## <a name="list-entities"></a>Liste varlıkları
+
+Varlık adına veya son işlem tarihine göre birden çok varlık için sorgulama yapabilirsiniz.
+
+### <a name="request"></a>İste
+
+HTTP isteği aşağıdaki gibi biçimlendirilir (açıklık için birden fazla satır gösterilir):
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &lastOperationTimeFrom={timestamp}
+    &lastOperationTimeTo={timestamp}
+    &fetchState=[true|false]
+    &top={integer}
+```
+
+Bu API için istek parametreleri, daha önce belirtilen varsayılan kümeyi ve aşağıdaki benzersiz parametreleri içerir:
+
+| Alan                       | Parametre türü  | Açıklama |
+|-----------------------------|-----------------|-------------|
+| **`entityName`**            | URL             | İsteğe bağlı. Belirtildiğinde, döndürülen varlıkların listesini varlık adlarıyla (büyük/küçük harfe duyarsız) filtreler. |
+| **`fetchState`**            | Sorgu dizesi    | İsteğe bağlı parametre. `true`olarak ayarlanırsa, varlık durumu yanıt yüküne dahil edilir. |
+| **`lastOperationTimeFrom`** | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasından sonra işlemleri işleyen döndürülen varlıkların listesine filtre uygular. |
+| **`lastOperationTimeTo`**   | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, belirtilen ıSO8601 zaman damgasından önce işlemleri işleyen döndürülen varlıkların listesine filtre uygular. |
+| **`top`**                   | Sorgu dizesi    | İsteğe bağlı parametre. Belirtildiğinde, sorgu tarafından döndürülen varlıkların sayısını kısıtlar. |
+
+
+### <a name="response"></a>Yanıt
+
+Başarılı bir HTTP 200 yanıtı, JSON seri hale getirilmiş bir varlık dizisi ve isteğe bağlı olarak her bir varlığın durumunu içerir.
+
+Varsayılan olarak işlem, sorgu ölçütleriyle eşleşen ilk 100 varlığı döndürür. Çağıran, `top` için bir sorgu dizesi parametre değeri belirtebilir ve farklı sayıda sonuç döndürebilir. Döndürülmeden daha fazla sonuç varsa, yanıt üst bilgisinde bir devamlılık belirteci de döndürülür. Üstbilginin adı `x-ms-continuation-token`.
+
+Sonraki istek üstbilgisinde devamlılık belirteci değerini ayarlarsanız, sonraki sonuç sayfasına ulaşabilirsiniz. İstek üstbilgisinin bu adı da `x-ms-continuation-token`.
+
+### <a name="example---list-all-entities"></a>Örnek-tüm varlıkları Listele
+
+Aşağıdaki örnek HTTP isteği, görev hub 'ındaki tüm varlıkları listeler:
+
+```http
+GET /runtime/webhooks/durabletask/entities
+```
+
+JSON yanıtı aşağıdakine benzeyebilir (okunabilirlik için biçimlendirilir):
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z"
+    },
+    {
+        "entityId": { "key": "mice", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:15.4626159Z"
+    },
+    {
+        "entityId": { "key": "radio", "name": "device" },
+        "lastOperationTime": "2019-12-18T21:46:18.2616154Z"
+    },
+]
+```
+
+### <a name="example---filtering-the-list-of-entities"></a>Örnek-varlık listesini filtreleme
+
+Aşağıdaki örnek HTTP isteği, `counter` türünde yalnızca ilk iki varlığı listeler ve ayrıca durumlarını getirir:
+
+```http
+GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
+```
+
+JSON yanıtı aşağıdakine benzeyebilir (okunabilirlik için biçimlendirilir):
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+        "state": { "value": 9 }
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z",
+        "state": { "value": 10 }
+    }
+]
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

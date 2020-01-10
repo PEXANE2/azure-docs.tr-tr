@@ -10,26 +10,26 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824170"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834307"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
 
 API Management ilkeleri, sistemin yapılandırma aracılığıyla API 'nin davranışını değiştirmesine Azure portal olanak tanıyan güçlü bir yetenektir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. İlke deyimleri, sabit metin değerleri, ilke ifadeleri ve adlandırılmış değerler kullanılarak oluşturulabilir.
 
-Her bir API Management hizmet örneği, hizmet örneği için genel olan adlandırılmış değerler olarak adlandırılan anahtar/değer çiftlerinin bir özellikler koleksiyonuna sahiptir. Koleksiyondaki öğe sayısı üzerinde hiçbir uygulanan sınır yoktur. Adlandırılmış değerler, tüm API yapılandırması ve ilkeleri genelinde sabit dize değerlerini yönetmek için kullanılabilir. Her bir adlandırılmış değer aşağıdaki özniteliklere sahip olabilir:
+Her bir API Management hizmet örneği, hizmet örneği için genel olan adlandırılmış değerler olarak adlandırılan anahtar/değer çiftleri koleksiyonuna sahiptir. Koleksiyondaki öğe sayısı üzerinde hiçbir uygulanan sınır yoktur. Adlandırılmış değerler, tüm API yapılandırması ve ilkeleri genelinde sabit dize değerlerini yönetmek için kullanılabilir. Her bir adlandırılmış değer aşağıdaki özniteliklere sahip olabilir:
 
-| Öznitelik      | Tür            | Açıklama                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Öznitelik      | Tür            | Açıklama                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | İlkelerdeki adlandırılmış değere başvurmak için kullanılır. Bir ile 256 karakter arasında bir dize. Yalnızca harfler, rakamlar, nokta ve tireye izin verilir. |
-| `Value`        | string          | Gerçek değer. Boş olmamalı veya yalnızca boşluklardan oluşmalıdır. En fazla 4096 karakter uzunluğunda.                                     |
-| `Secret`       | boole         | Değerin gizli olup olmadığını ve şifrelenmesinin gerekip gerekmediğini belirler.                                                            |
+| `Value`        | string          | Gerçek değer. Boş olmamalı veya yalnızca boşluklardan oluşmalıdır. En fazla 4096 karakter uzunluğunda.                                        |
+| `Secret`       | boole         | Değerin gizli olup olmadığını ve şifrelenmesinin gerekip gerekmediğini belirler.                                                               |
 | `Tags`         | dize dizisi | Adlandırılmış değer listesini filtrelemek için kullanılır. En fazla 32 etiket.                                                                                    |
 
 ![Adlandırılmış değerler](./media/api-management-howto-properties/named-values.png)
@@ -38,9 +38,12 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-manage
 
 | Ad       | Değer                      | Gizli dizi | Etiketler          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Değer      | 42                         | False  | önemli sayılar |
-| Kimlik Bilgisi | ••••••••••••••••••••••     | True   | güvenlik      |
-| İfadeler | @ (DateTime. Now. ToString ()) | False  |               |
+| Değer      | 42                         | Yanlış  | önemli sayılar |
+| Kimlik Bilgisi | ••••••••••••••••••••••     | Doğru   | güvenlik      |
+| Expression | @ (DateTime. Now. ToString ()) | Yanlış  |               |
+
+> [!NOTE]
+> Bir API Management hizmeti içinde depolanan adlandırılmış değerler yerine, bu [örnekte](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)gösterildiği gibi [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) hizmetinde depolanan değerleri kullanabilirsiniz.
 
 ## <a name="to-add-and-edit-a-named-value"></a>Adlandırılmış bir değer eklemek ve düzenlemek için
 
@@ -50,7 +53,7 @@ Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](/azure/api-manage
 2. **Adlandırılmış değerleri**seçin.
 3. **+ Ekle**tuşuna basın.
 
-    Ad ve değer gerekli değerlerdir. Değer bir gizli dizi ise, *Bu gizli bir* onay kutusu olup olmadığını kontrol edin. Adlandırılmış değerlerinizi organize etmenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket girin ve Kaydet ' e tıklayın.
+    Ad ve değer gerekli değerlerdir. Değer bir gizli dizi ise, _Bu gizli bir_ onay kutusu olup olmadığını kontrol edin. Adlandırılmış değerlerinizi organize etmenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket girin ve Kaydet ' e tıklayın.
 
 4. **Oluştur**'a tıklayın.
 
@@ -101,7 +104,7 @@ Kapsam içinde adlandırılmış değerlere sahip bir ilkeye sahip bir işlem ç
 
 ![Geliştirici portalı][api-management-send-results]
 
-Adlandırılmış değerlere sahip iki önceki örnek ilkeyi içeren bir çağrı için [API denetçisi izlemeye](api-management-howto-api-inspector.md) bakarsanız, adlandırılmış değerlerin eklendiği iki `set-header` ilkesini ve adlandırılmış değer için ilke ifadesi değerlendirmesini görebilirsiniz ilke ifadesini içeriyordu.
+Adlandırılmış değerlere sahip iki önceki örnek ilkeyi içeren bir çağrı için [API denetçisi izlemeye](api-management-howto-api-inspector.md) bakarsanız, adlandırılmış değerlerin eklendiği iki `set-header` ilkesini ve ilke ifadesini içeren adlandırılmış değer için ilke ifadesi değerlendirmesini görebilirsiniz.
 
 ![API denetçisi izleme][api-management-api-inspector-trace]
 

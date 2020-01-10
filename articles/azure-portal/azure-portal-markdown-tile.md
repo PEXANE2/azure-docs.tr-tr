@@ -1,49 +1,66 @@
 ---
-title: Özel markdown kutucuğu üzerinde Azure panolarını kullanın
-description: Markdown kutucuğu statik içeriği görüntülemek için bir Azure panosunu eklemeyi öğrenin
+title: Azure panoları üzerinde özel markaşağı kutucuğu kullanma
+description: Statik içeriği göstermek için bir Azure panosuna markın kutucuğu ekleme hakkında bilgi edinin
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 01/25/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 17d86b7c89ea5fb24c2adea22c5047c3e1ac3b6f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551605"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832661"
 ---
-# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown kutucuğu, özel içerik göstermek için Azure panolarında kullanın.
+# <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Özel içerik göstermek için Azure panolarında markaşağı kutucuğu kullanın
 
-Markdown kutucuğu özel, statik içeriği görüntülemek için Azure panolarınıza ekleyebilirsiniz. Örneğin, temel yönergeler, bir resim veya köprüler markdown kutucuğu içeren bir dizi gösterebilirsiniz.
+Özel, statik içerik göstermek için Azure panolarınıza bir markı kutucuğu ekleyebilirsiniz. Örneğin, bir markı kutucuğunda temel yönergeleri, bir görüntüyü veya bir köprü kümesini gösterebilirsiniz.
 
-## <a name="add-a-markdown-tile-to-your-dashboard"></a>Markdown kutucuğunu panonuza ekleme
+## <a name="add-a-markdown-tile-to-your-dashboard"></a>Panonuza markın kutucuğu ekleme
 
-1. Seçin **Pano** Azure portal kenar. Tüm özel panoları Pano görünümünde oluşturduysanız, aşağı açılan Pano seçmek için özel markdown kutucuğu burada görünmesi gereken kullanın. Düzenle simgesini seçerek açın **kutucuk Galerisi**.
+1. Azure portal kenar çubuğundan **Pano** ' yı seçin.
 
-   ![Ekran gösterme Pano düzenleme görünümü](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Portal kenar çubuğunu gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-2. İçinde **kutucuk Galerisi**, adlı kutucuğu bulun **Markdown** tıklatıp **Ekle**. Panoya bir kutucuk eklenir ve **Düzenle Markdown** bölmesi açılır.
+1. Herhangi bir özel Pano oluşturduysanız, pano görünümünde, özel markı kutucuğunun görünmesi gereken panoyu seçmek için açılan eklentiyi kullanın. **Kutucuk galerisini**açmak için Düzenle simgesini seçin.
 
-1. Düzen **başlık**, **alt konu başlığını**, ve **içerik** kutucuğu özelleştirmek için alanları. Burada gösterilen örnekte, özel bir Yardım Masası bilgileri görüntülemek için markdown kutucuğu düzenlendi.
+   ![Pano düzenleme görünümünü gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-   ![Markdown kutucuğunu düzenleme Görünümü'nü gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+1. **Kutucuk galerisinde** **Marku** adlı kutucuğu bulun ve **Ekle**' yi seçin. Kutucuk panoya eklenir ve **Markaşağı Düzenle** bölmesi açılır.
 
-4. Seçin **Bitti** kapatmak için **Düzenle Markdown** bölmesi. İçeriğinizi ardından sağ alt köşede tutamacı sürükleyerek boyutlandırılabilir Markdown kutucuğu görüntülenir.
+1. Başka bir alana taşıdıktan sonra kutucukta görüntülenecek olan **başlık** ve alt **başlık**değerlerini girin.
 
-   ![Ekran gösteren özel markdown kutucuğu](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Başlık ve alt başlık girme sonuçlarını gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-## <a name="markdown-content-capabilities-and-limitations"></a>Markdown içerik özellikleri ve sınırlamaları
+1. Markaşağı içeriği dahil etme seçeneklerinden birini seçin: **satır içi Düzenle** veya **URL kullanarak içerik ekleme**.
 
-Markdown kutucuğa düz metin, Markdown söz dizimi ve HTML içeriğini herhangi bir birleşimini kullanabilirsiniz. Azure portalında adlı bir açık kaynak kitaplığı kullanan _işaretlenmiş_ kutucukta gösterilen HTML içeriğinizi dönüştürmek için. HTML tarafından üretilen _işaretlenmiş_ oluşturulmadan önce önceden portal tarafından işlenir. Bu adım güvenlik veya portalının düzenini özelleştirme etkilenmeyeceğinden emin emin olmaya yardımcı olur. Bu ön işleme sırasında herhangi bir bölümünü olası tehdidi HTML kaldırılır. Aşağıdaki içerik türlerini portal tarafından izin verilmeyen:
+   - Doğrudan markın girmek istiyorsanız **satır içi Düzenle** ' yi seçin.
 
-* JavaScript – `<script>` etiketleri ve satır içi JavaScript değerlendirmeleri kaldırılacak.
-* iframe örnekleri - `<iframe>` etiketleri kaldırılır.
-* Style - `<style>` etiketleri kaldırılır. Satır içi stil öznitelikleri HTML öğelerinde resmi olarak desteklenmez. Bazı satır içi stil öğelerini çalıştığınız, ancak bunlar portalının Düzen müdahale, bunlar herhangi bir zamanda çalışmayı durdurabilir bulabilirsiniz. Markdown kutucuğunu portal'ın varsayılan stillerini kullanan temel, statik içerik için tasarlanmıştır.
+      ![Satır içi içerik girmeyi gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+
+   - Çevrimiçi barındırılan mevcut markaşağı içeriğini kullanmak istiyorsanız **URL 'yi kullanarak Içerik Ekle** ' yi seçin.
+
+      ![URL girmeyi gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+
+      > [!NOTE]
+      > Ek güvenlik için bir markaşağı dosyası oluşturabilir ve bu dosyayı [şifrelemenin etkin olduğu bir Azure Storage hesabı blobuna](../storage/common/storage-service-encryption.md)depolayıp URL seçeneğini kullanarak dosyayı işaret edebilirsiniz. Markaşağı içeriği, depolama hesabının şifreleme seçenekleri aracılığıyla şifrelenir. Yalnızca dosya izinlerine sahip kullanıcılar Pano üzerinde markaşağı içeriğini görebilir.
+
+1. **Markı düzenleme** bölmesini kapatmak için **bitti** ' yi seçin. İçeriğiniz Markaşağı kutucuğunda görünür, bu da sağ alt köşedeki tutamacı sürükleyerek yeniden boyutlandırabilirsiniz.
+
+   ![Özel markaşağı kutucuğunu gösteren ekran görüntüsü](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+
+## <a name="markdown-content-capabilities-and-limitations"></a>Markaşağı içerik özellikleri ve sınırlamaları
+
+Markaşağı kutucuğunda herhangi bir düz metin, markı sözdizimi ve HTML içeriği birleşimini kullanabilirsiniz. Azure portal, içeriğinizi kutucukta gösterilen HTML 'ye dönüştürmek için _işaretlenen_ adlı açık kaynaklı bir kitaplık kullanır. _İşaretlenen_ tarafından üretilen HTML, portal tarafından işlenmeden önce önceden işlenir. Bu adım, özelleştirmenin güvenlik veya portalın yerleşimini etkilememesini sağlamaya yardımcı olur. Bu ön işleme sırasında, olası bir tehdit oluşturan HTML 'nin herhangi bir bölümü kaldırılır. Portalın şu içerik türlerine izin verilmiyor:
+
+* JavaScript – `<script>` Etiketler ve satır içi JavaScript değerlendirmeleri kaldırılır.
+* iframe 'ler `<iframe>` Etiketler kaldırılacak.
+* Stil `<style>` Etiketler kaldırılacak. HTML öğelerinde satır içi stil öznitelikleri resmi olarak desteklenmez. Bazı satır içi stil öğelerinin sizin için çalıştığını fark edebilirsiniz, ancak portalın düzenine müdahale ediyorsanız, çalışmayı durdurabilir. Markaşağı kutucuğu, portalın varsayılan stillerini kullanan temel ve statik içeriğe yöneliktir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Özel bir Pano oluşturmak için bkz [Azure portalında panolarını oluşturma ve paylaşma](../azure-portal/azure-portal-dashboards.md)
+* Özel bir pano oluşturmak için, bkz [. Azure Portal panoları oluşturma ve paylaşma](../azure-portal/azure-portal-dashboards.md)

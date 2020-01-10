@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366388"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834119"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme
 
@@ -31,8 +31,7 @@ Azure Otomasyonu durum yapılandırması, çeşitli makineleri yönetmek için k
 
 - Azure sanal makineleri
 - Azure sanal makineleri (klasik)
-- Amazon Web Services (AWS) EC2 örnekleri
-- Şirket içinde veya Azure/AWS dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri
+- Şirket içinde veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri (AWS EC2 örnekleri dahil)
 - Şirket içinde, Azure 'da veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Linux makineleri
 
 Ayrıca, makine yapılandırmasını buluttan yönetmeye hazırsanız, Azure Otomasyonu durum yapılandırması da yalnızca rapor uç noktası olarak kullanılabilir.
@@ -82,11 +81,7 @@ Diğer Azure aboneliklerinden sanal makineleri kaydetmek için en iyi yol, Azure
 Örnek olarak, [Istenen durum yapılandırma uzantısında Azure Resource Manager şablonlarıyla birlikte](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)verilmiştir.
 Şablonda parametreler olarak kullanılacak kayıt anahtarını ve kayıt URL 'sini bulmak için, aşağıdaki [**güvenli kayıt**](#secure-registration) bölümüne bakın.
 
-## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) sanal makineler
-
-AWS DSC araç setini kullanarak Azure Otomasyonu durum yapılandırması ile yapılandırma yönetimi için Amazon Web Services sanal makineleri kolayca ekleyebilirsiniz. Araç seti hakkında [buradan](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)daha fazla bilgi edinebilirsiniz.
-
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>Şirket içinde veya Azure/AWS dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri
+## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Şirket içinde veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri (AWS EC2 örnekleri dahil)
 
 Şirket içinde veya diğer bulut ortamlarında çalışan Windows Server 'lar, [Azure 'a giden erişimi](automation-dsc-overview.md#network-planning)olduğu sürece Azure Automation durum yapılandırması eklendi de olabilir:
 

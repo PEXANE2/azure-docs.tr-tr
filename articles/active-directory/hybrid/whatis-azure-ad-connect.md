@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect ve Connect Health nedir? | Microsoft Docs
+title: Azure AD Connect ve Connect Health nedir? | Microsoft Belgeleri
 description: Eşitleme ve Azure AD ile şirket içi ortamınızı izlemek için kullanılan araçları açıklar.
 services: active-directory
 author: billmath
@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c984faf22b8e4cd499a5588f45d7072610f33544
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784469"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767934"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect nedir?
 
@@ -46,30 +46,30 @@ Bilgiler, [Azure AD Connect Health Portalı](https://aka.ms/aadconnecthealth)'nd
 
 * Kullanıcılar, Office 365 gibi bulut hizmetlerine ve şirket içi uygulamalara erişmek için tek bir kimlik kullanabilir.
 * Eşitleme ve oturum açmaya yönelik kolay bir dağıtım deneyimi sağlamak için tek araç.
-* Senaryolarınız için en yeni işlevleri sağlar. Azure AD Connect; DirSync ve Azure AD Eşitleme gibi kimlik tümleştirme araçlarının eski sürümlerinin yerine kullanılmaktadır. Daha fazla bilgi için bkz. [Karma Kimlik dizini tümleştirme araçları karşılaştırması](plan-hybrid-identity-design-considerations-tools-comparison.md).
+* Senaryolarınız için en yeni işlevleri sağlar. Azure AD Connect DirSync ve Azure AD Eşitleme gibi kimlik tümleştirme araçlarının eski sürümlerini değiştirir. Daha fazla bilgi için bkz. [karma kimlik dizini tümleştirme araçları karşılaştırması](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
 ## <a name="why-use-azure-ad-connect-health"></a>Azure AD Connect Health neden kullanılır?
 Hem bulut hem de şirket içi kaynaklara erişmek için ortak bir kimlik olduğundan, Azure AD ile kullanıcılarınızın daha üretken olmaları sağlanır. Kullanıcıları bu kaynaklara erişebilmesi için güvenilir, ortamıdır sağlamak zor hale gelir.  Azure AD Connect Health, izleme ve bu nedenle bu ortam güvenilirliğini sağlayarak şirket içi kimlik altyapınızı içgörüler edinin yardımcı olur. Her bir şirket içi kimlik sunucunuza bir aracı yüklemek kadar basittir.
 
 AD FS'ye ilişkin Azure AD Connect Health Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 ve Windows Server 2016 üzerinde AD FS 2.0'ı destekler. Ayrıca, extranet erişimi için kimlik doğrulaması desteği sağlayan AD FS ve web uygulaması ara sunucularının izlenmesini de destekler. AD FS için Azure AD Connect Health, çabucak ve kolayca kurulan Sistem Durumu Aracısı ile bir dizi başlıca özellik sunar.
 
-Başlıca yararları ve en iyi uygulamalar:
+Önemli avantajlar ve en iyi uygulamalar:
 
 |Önemli Avantajlar|En İyi Uygulamalar|
 |-----|-----|
 |Gelişmiş güvenlik|[Extranet kilitlemede trendler](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Başarısız oturum açma raporu](how-to-connect-health-adfs-risky-ip.md)</br>[Gizlilik uyumlu](reference-connect-health-user-privacy.md)|
-|Hakkında uyarı alın [tüm önemli ADFS sistem sorunları](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Sunucu yapılandırması ve kullanılabilirlik</br>[Performans ve bağlantı](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Düzenli bakım|
-|Kurulumu ve yönetimi kolay|[Hızlı bir aracı yüklemesi](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Aracıyı en sün sürüme otomatik yükseltme</br>Dakikalar içinde portalda veri|
+|[Tüm KRITIK ADFS sistem sorunları](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services) hakkında uyarı alın|Sunucu yapılandırması ve kullanılabilirlik</br>[Performans ve bağlantı](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Düzenli bakım|
+|Kurulumu ve yönetimi kolay|[Hızlı aracı yüklemesi](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Aracıyı en sün sürüme otomatik yükseltme</br>Dakikalar içinde portalda veri|
 Zengin [kullanım ölçümleri](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|En çok kullanılan uygulamalar</br>Ağ konumları ve TCP bağlantısı</br>Sunucu başına belirteç istekleri|
-|Harika kullanıcı deneyimini|Azure portaldan bir pano tarzında</br>[E-postayla uyarılar](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+|Harika Kullanıcı deneyimi|Azure portaldan bir pano tarzında</br>[E-postayla uyarılar](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Azure AD Connect kullanarak için lisans gereksinimleri
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Azure AD Connect kullanımı için lisans gereksinimleri
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
-
-
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>Azure AD Connect Health kullanımı için lisans gereksinimleri
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

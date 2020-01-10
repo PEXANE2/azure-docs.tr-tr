@@ -1,10 +1,10 @@
 ---
 title: Güvenli bir Azure AD Web uygulaması geliştirme | Microsoft Docs
 description: Bu basit örnek uygulama, Azure 'da geliştirme yaparken uygulamanızı ve kuruluşunuzun güvenlik duruşunu geliştiren en iyi güvenlik uygulamalarını uygular.
-keywords: yana
+keywords: yok
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159842"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771283"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD uygulaması için güvenli uygulama geliştirme
 ## <a name="overview"></a>Genel Bakış
@@ -71,7 +71,7 @@ Tehdit modelleme aracının ürettiği bazı örnek tehditler ve olası güvenli
 
 ![Tehdit modeli çıkışı](./media/secure-aad-app/threat-model-output.png)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Uygulamayı çalışır duruma getirmek için şu araçları yüklemeniz gerekir:
 
 - Uygulama kodunu değiştirmek ve görüntülemek için bir kod Düzenleyicisi. [Visual Studio Code](https://code.visualstudio.com/) açık kaynaklı bir seçenektir.
@@ -334,7 +334,7 @@ Sanal ağ tümleştirmesini etkinleştirmiş olduğunuza göre, uygulamamıza a�
 
 5. NSG alt ağları dikey penceresinde **ilişkilendir**' i seçin, dağıtımda oluşturulan sanal ağı seçin ve **GW-subnet**adlı ağ geçidi alt ağını seçin. NSG alt ağa uygulanır.
 
-6. App Service örneği için bu kez, önceki adımda olduğu gibi başka bir NSG oluşturun. Bir ad verin. Application Gateway NSG için yaptığınız gibi 443 numaralı bağlantı noktası için gelen kuralını ekleyin.
+6. App Service örneği için bu kez, önceki adımda olduğu gibi başka bir NSG oluşturun. Buna bir ad verin. Application Gateway NSG için yaptığınız gibi 443 numaralı bağlantı noktası için gelen kuralını ekleyin.
 
    Bu uygulama için durum bilgisi olmayan bir App Service Ortamı örneği üzerinde dağıtılan bir App Service örneğiniz varsa, App Service NSG 'nizin gelen güvenlik gruplarında 454-455 bağlantı noktalarını açarak Azure hizmet durumu araştırmalarını sağlamak için gelen kuralları ekleyebilirsiniz. Yapılandırma şu şekildedir:
 
@@ -373,7 +373,7 @@ Aşağıdaki teknolojiler, Azure ortamındaki cardş verilerine erişimi yönetm
    - Key Vault için tanılama günlükleri, en az 365 günlük bir bekletme dönemi ile etkinleştirilir.
    - Anahtarlar için izin verilen şifreleme işlemleri, gerekli olanlarla kısıtlıdır.
 ### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
-Azure Güvenlik Merkezi ile, müşteriler iş yükleri genelinde güvenlik ilkelerini merkezi olarak uygulayabilir ve yönetebilir, tehditlere maruz kalma olasılığını sınırlayabilir, saldırıları algılayıp yanıtlayabilir. Ayrıca 
+Azure Güvenlik Merkezi ile, müşteriler iş yükleri genelinde güvenlik ilkelerini merkezi olarak uygulayabilir ve yönetebilir, tehditlere maruz kalma olasılığını sınırlayabilir, saldırıları algılayıp yanıtlayabilir. Ayrıca, 
    - Azure Güvenlik Merkezi, güvenlik duruşunu artırmaya ve verileri korumaya yardımcı olmak üzere yapılandırma ve hizmet önerileri sağlamak için mevcut Azure hizmetleri yapılandırmalarına erişir.
    - Azure Güvenlik Merkezi, ortamlarını hedefleyen olası saldırılardan müşterileri uyarmak için çeşitli algılama özellikleri kullanır. Bu uyarılar uyarıyı neyin tetiklediği, hedeflenen kaynaklar ve saldırının kaynağı hakkındaki değerli bilgileri içerir. Azure Güvenlik Merkezi, bir tehdit ya da şüpheli etkinlik gerçekleştiğinde tetiklenen bir dizi önceden tanımlanmış güvenlik uyarısı içerir. Azure Güvenlik Merkezi 'ndeki özel uyarı kuralları, müşterilerin ortamlarından zaten toplanmış olan verileri temel alarak yeni güvenlik uyarıları tanımlamasına olanak tanır.
    - Azure Güvenlik Merkezi, öncelik veren güvenlik uyarıları ve olayları sunarak müşterilerin olası güvenlik sorunlarını bulmasını ve adreslerini daha kolay hale getirmesini sağlar. Algılanan her tehdit için tehdit zekası raporu, tehditleri İnceleme ve düzeltme konusunda olay yanıtı ekiplerine yardımcı olacak şekilde oluşturulmuştur.
@@ -412,7 +412,7 @@ Azure Hizmetleri, sistem durumunun yanı sıra sistem durumu ve Kullanıcı etki
    - Veri depolama erişim anahtarı
    - Bağlantı dizesi
    - Veri tablosu adı
-   - Kullanıcı kimlik bilgileri
+   - Kullanıcı Kimlik Bilgileri
    - Gelişmiş erişim ilkeleri bir gereksinim temelinde yapılandırılır
    - Key Vault erişim ilkeleri anahtarlar ve gizlilikler için gereken en düşük izinlerle tanımlanır
    - Key Vault tüm anahtarlar ve gizli dizileri sona erme tarihlerine sahiptir
@@ -465,7 +465,7 @@ Yönetici oturum açma işlemleri için MFA 'yı etkinleştirmek için
    1. Azure portal **Azure Active Directory** sekmesine gidin
    2. Güvenlik kategorisi altında koşullu erişim ' i seçin. Bu ekranı görürsünüz
 
-       ![Koşullu erişim-Ilkeler](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Koşullu Erişim - İlkeler](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Yeni bir ilke oluşturamıyoruz
 
@@ -512,13 +512,13 @@ Bu çalışma alanını oluşturmak için
    *Log Analytics çalışma alanlarını ara*
 
    2. Sonraki sayfada **Ekle** ' yi seçin ve ardından çalışma alanı için bir ad, kaynak grubu ve konum sağlayın.
-   ![bir Log Analytics çalışma alanı oluşturun](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![Log Analytics çalışma alanı oluşturma](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
    *Log Analytics çalışma alanı oluşturma*
 
    3. **Azure Sentinel**aramak için arama kutusunu kullanın.
 
-   ![Azure Sentinel 'i arayın](./media/secure-aad-app/sentinel-add.png)
+   ![Azure Sentinel'i arama](./media/secure-aad-app/sentinel-add.png)
 
    *Azure Sentinel 'i arayın*
 
@@ -537,7 +537,7 @@ Bu çalışma alanını oluşturmak için
    Örneğin, uygulama ağ geçidini bağlamak için şu adımları uygulayın:
 
    1. Azure Application Gateway örneği dikey penceresini açın.
-   2. **İzleme**altında **Tanılama ayarları**' nı seçin.
+   2. Altında **izleme**seçin **tanılama ayarları**.
    3. **Tanılama ayarı Ekle**' yi seçin.
 
    ![Application Gateway tanılamayı Ekle](./media/secure-aad-app/sentinel-gateway-connector.png)
@@ -558,6 +558,6 @@ Bu çalışma alanını oluşturmak için
 ## <a name="next-steps"></a>Sonraki adımlar
    Aşağıdaki makaleler güvenli uygulamalar tasarlamanıza, geliştirmenize ve dağıtmanıza yardımcı olabilir.
 
-- [Tasarıma](secure-design.md)
+- [Tasarım](secure-design.md)
 - [Geliştirme](secure-develop.md)
 - [Dağıtma](secure-deploy.md)

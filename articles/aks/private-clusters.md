@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 8af0f998df2a92e51078a2e23806cca07ff08ca3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480092"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830063"
 ---
 # <a name="public-preview---private-azure-kubernetes-service-cluster"></a>Genel önizleme-özel Azure Kubernetes hizmet kümesi
 
@@ -81,16 +81,16 @@ Burada--Enable-Private-Cluster, özel bir küme için zorunlu bir bayrak
 #### <a name="advanced-networking"></a>Gelişmiş ağ  
 
 ```azurecli-interactive
-az aks create \ 
-    --resource-group <private-cluster-resource-group>\ 
-    --name <private-cluster-name> \ 
-    --load-balancer-sku standard
-    --enable-private-cluster 
-    --network-plugin azure \ 
-    --vnet-subnet-id <subnet-id> \ 
-    --docker-bridge-address 172.17.0.1/16 \ 
-    --dns-service-ip 10.2.0.10 \ 
-    --service-cidr 10.2.0.0/24 \ 
+az aks create \
+    --resource-group <private-cluster-resource-group> \
+    --name <private-cluster-name> \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 
 ```
 Burada--Enable-Private-Cluster, özel bir küme için zorunlu bir bayrak 
 
@@ -108,6 +108,11 @@ API sunucusu bitiş noktasının genel IP adresi yok. Sonuç olarak, kullanıcı
     * Özel DNS bölgesine tıklayın 
     * Sol bölmedeki sanal ağ bağlantısını seçin
     * VM 'nin VNET 'i Özel DNS bölgesine eklemek için yeni bir bağlantı oluşturun *(DNS bölgesi bağlantısının kullanılabilir olması birkaç dakika sürer)*
+    * Portalda MC_ * kaynak grubuna geri dön
+    * sağ bölmedeki sanal ağı seçin. Sanal ağ adı aks-VNET-* biçiminde olacaktır.
+    * Sol bölmedeki Peerler ' i seçin
+    * Ekle ' ye tıklayın ve VM 'nin sanal ağını ekleyin ve eşlemeyi oluşturun.
+    * VM 'ye sahip olduğunuz VNET 'e gidin ve ardından EŞLEMELER ' e tıklayın ve ardından sanal ağı seçin ve eşlemeyi oluşturun. AKS sanal ağı ve VM 'nin sanal ağ çakışıyor adres aralıkları varsa, eşleme başarısız olur. Sanal ağ eşlemesi hakkında daha fazla bilgi için bu [belgeye][virtual-network-peering] başvurun.
 * VM 'ye SSH
 * Kubectl aracını yükleyip Kubectl komutlarını çalıştırın
 
@@ -132,3 +137,5 @@ API sunucusu bitiş noktasının genel IP adresi yok. Sonuç olarak, kullanıcı
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+

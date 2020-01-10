@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538785"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768732"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -48,9 +48,9 @@ Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş 
 > [!NOTE]
 > Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
 
-Daha fazla adım adım yönergeler için bkz. [dinamik grubu güncelleştirme](groups-update-rule.md).
+Daha fazla adım adım yönergeler için bkz. [dinamik grup oluşturma veya güncelleştirme](groups-create-rule.md).
 
-![Dinamik bir grup için üyelik kuralı ekle](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Dinamik bir grup için üyelik kuralı ekle](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Tek bir ifade için kural sözdizimi
 
@@ -98,20 +98,20 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
 | ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
-| bölüme |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
+| Bölüm |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
 | displayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
 | Çalışan |Herhangi bir dize değeri |(User. EmployeeID-EQ "Value")<br>(User. EmployeeID-ne *null*) |
-| facsimileTelephoneNumber 'dir |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
+| facsimileTelephoneNumber |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
 | givenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
-| jobTitle |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
-| - |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
+| İş Unvanı |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
+| posta |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
 | mailNickName |Herhangi bir dize değeri (kullanıcının posta diğer adı) |(User. Mailtakma ad-EQ "değer") |
-| Mo |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
-| Uzantının |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
+| Mobil |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
+| objectId |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Şirket içinden buluta eşitlenen kullanıcılar için şirket içi güvenlik tanımlayıcısı (SID). |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword Disablepasswordexpiasyon Disablepasswordexpima, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Herhangi bir dize değeri veya *null* |(User. Physicaldeliveryofficeename-EQ "Value") |
-| postalCode |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
+| posta kodu |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
 | preferredLanguage |ISO 639-1 kodu |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Herhangi bir dize değeri veya *null* |(User. sipProxyAddress-EQ "değer") |
 | durum |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
@@ -140,12 +140,12 @@ Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunlar�
 | Eşit değildir |-ne |
 | Eşittir |-EQ |
 | Ile birlikte başlar |-notStartsWith |
-| Ile başlar |-startsWith |
+| Şununla başlar |-startsWith |
 | İçermez |-notContains |
 | Contains |-içerir |
 | Eşleşmiyor |-notMatch |
-| Eşleşebilir |-Match |
-| 'Ndaki | -ın |
+| Eşle |-Match |
+| İçinde | -ın |
 | Not ın | -Notın |
 
 ### <a name="using-the--in-and--notin-operators"></a>-İn ve-Notın işleçlerini kullanma
@@ -178,7 +178,7 @@ Bir ifadede kullanılan değerler, aşağıdakiler de dahil olmak üzere çeşit
 
 * Dizeler
 * Boolean – true, false
-* Sayılarının
+* Sayılar
 * Diziler – sayı dizisi, dize dizisi
 
 Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdiziminin kullanılması önemlidir. Bazı sözdizimi ipuçları şunlardır:
@@ -353,7 +353,7 @@ Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kuralları
 user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Özel özellik adı, Graph Explorer kullanılarak bir kullanıcının özelliği sorgulanarak ve özellik adı aranırken dizinde bulunabilir. Ayrıca, benzersiz bir uygulama KIMLIĞI girmek ve dinamik üyelik kuralı oluştururken kullanmak üzere özel uzantı özelliklerinin tam listesini almak için dinamik Kullanıcı grubu kural tasarımcısında **özel uzantı özellikleri al** bağlantısını seçebilirsiniz. Bu liste ayrıca, bu uygulama için yeni özel uzantı özellikleri almak üzere yenilenebilir.
+Özel özellik adı, Graph Explorer kullanılarak bir kullanıcının özelliği sorgulanarak ve özellik adı aranırken dizinde bulunabilir. Ayrıca, benzersiz bir uygulama KIMLIĞI girmek ve dinamik üyelik kuralı oluştururken kullanmak üzere özel uzantı özelliklerinin tam listesini almak için dinamik Kullanıcı grubu kural tasarımcısında **özel uzantı özellikleri al** bağlantısını seçebilirsiniz. Bu liste, bu uygulama için tüm yeni özel uzantı özellikleri almak için aynı zamanda yenilenebilir.
 
 ## <a name="rules-for-devices"></a>Cihazlar için kurallar
 
@@ -372,18 +372,18 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  Cihaz özniteliği  | Değerler | Örnek
  ----- | ----- | ----------------
  accountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
- displayName | Herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
- Cihazostürü | Herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | Herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
+ displayName | herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
+ deviceOSType | herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | geçerli bir cihaz kategorisi adı | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | Herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
- DeviceModel | Herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
+ deviceManufacturer | herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
  Devicesahiplik | Kişisel, Şirket, bilinmeyen | (Device. Devicesahiplik-EQ "Şirket")
- KayıtAdı | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
+ enrollmentProfileName | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
  deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ objectId | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  Devicephysicilar | Tüm Autopilot cihazları, OrderID veya PurchaseOrderID gibi Autopilot tarafından kullanılan herhangi bir dize değeri  | (Device. Devicephysicids-any _-Contains "[Ztdıd]") (Device. Devicephysicids-any _-EQ "[OrderID]: 179887111881") (Device. Devicephysicids-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (Device. systemLabels-"M365Managed" içerir)
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/17/2019
-ms.openlocfilehash: 4b2f9e7f12b468f12fcfbe1b0af5c2918aa6c6ad
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4a8a548e6a073c38dbc1f5600d721a7cdb97f120
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541172"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762833"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -134,7 +134,7 @@ Azure 'da bekleyen şifrelemenin nasıl çalıştığı hakkında daha fazla bil
 
 Azure Machine Learning mikro hizmetler arasındaki iç iletişimin güvenliğini sağlamak ve Puanlama uç noktasına yönelik dış çağrıların güvenliğini sağlamak için SSL kullanabilirsiniz. Tüm Azure depolama erişimi, güvenli bir kanal üzerinden de gerçekleşir.
 
-Daha fazla bilgi için bkz. [bir Web hizmetini Azure Machine Learning aracılığıyla güvenli hale getirmek IÇIN SSL kullanma](https://docs.microsoft.com/azure/machine-learning/service/how-to-secure-web-service).
+Daha fazla bilgi için bkz. [bir Web hizmetini Azure Machine Learning aracılığıyla güvenli hale getirmek IÇIN SSL kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault kullanma
 

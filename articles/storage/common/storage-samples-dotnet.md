@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 50c5067c3db2f07da225b72d9ba0a8f0bdc44368
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350911"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748147"
 ---
 # <a name="azure-storage-samples-using-net"></a>.NET kullanan Azure depolama örnekleri
 
 Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara bir genel bakış sunulmaktadır. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
-## <a name="blob-samples"></a>Blob örnekleri
+> [!NOTE]
+> Bu örnekler Azure Storage .NET v11 kitaplığını kullanır. V12 kodu için GitHub deposundaki [örneklere](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) bakın.
 
-| **Senaryo** | **Örnek kod** |
+## <a name="blob-samples-v11"></a>Blob örnekleri (v11)
+
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Ekleme Blobu | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
+| Blob Ekle | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
 | Blok Blobu | [Azure Blob depolama Fotoğraf Galerisi Web uygulaması](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
 | İstemci Tarafında Şifreleme | [Blob şifreleme örnekleri](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
 | Kopya blob'u | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
@@ -35,13 +38,13 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 | Kira blobu/kapsayıcı | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Blob/kapsayıcı Listele | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
 | Sayfa Blobu | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
-| 'LARININ | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| SAS | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Hizmet Özellikleri | [Bloblarla çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Anlık görüntü blobu | [Artımlı anlık görüntülerle Azure sanal makine disklerini yedekleme](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
 
-## <a name="file-samples"></a>Dosya örnekleri
+## <a name="file-samples-v11"></a>Dosya örnekleri (v11)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
 | Paylaşımlar/dizinler/dosyalar oluşturma | [Azure Storage .NET dosya depolama örneği](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
 | Paylaşımları/dizinleri/dosyaları sil | [.NET ' te Azure dosya hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs) |
@@ -53,11 +56,11 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 | Paylaşımları Listele | [Azure Storage .NET dosya depolama örneği](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 | Özellikleri/meta verileri/Istatistikleri paylaşma | [Azure Storage .NET dosya depolama örneği](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 
-## <a name="queue-samples"></a>Kuyruk örnekleri
+## <a name="queue-samples-v11"></a>Sıra örnekleri (v11)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Ileti Ekle | [.NET ' te Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| İleti Ekle | [.NET ' te Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 | İstemci Tarafında Şifreleme | [Azure Storage .NET kuyruğu Istemci tarafı şifrelemesi](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs) |
 | Kuyruklar Oluşturma | [.NET ' te Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 | Iletiyi/kuyruğu Sil | [.NET ' te Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
@@ -66,11 +69,11 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 | Kuyruk hizmeti özellikleri | [.NET ' te Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
 | Güncelleştirme Iletisi | [.NET ' te Azure kuyruk hizmeti ile çalışmaya başlama](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 
-## <a name="table-samples"></a>Tablo örnekleri
+## <a name="table-samples-v11"></a>Tablo örnekleri (v11)
 
-| **Senaryo** | **Örnek kod** |
+| **Senaryo** | **Örnek Kod** |
 |--------------|-----------------|
-| Tablo Oluştur | [Azure depolama kullanarak eşzamanlılık yönetme-örnek uygulama](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| Tablo Oluşturma | [Azure depolama kullanarak eşzamanlılık yönetme-örnek uygulama](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Varlığı/tabloyu Sil | [.NET’te Azure Tablo Depolama Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
 | Varlığı Ekle/Birleştir/Değiştir | [Azure depolama kullanarak eşzamanlılık yönetme-örnek uygulama](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Sorgu varlıkları | [.NET’te Azure Tablo Depolama Kullanmaya Başlama](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
@@ -97,7 +100,7 @@ Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için 
 
 Diğer dillere yönelik örnekler hakkında bilgi için:
 
-* Java: [Java kullanan Azure Depolama örnekleri](storage-samples-java.md)
+* Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
 * JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
-* Python: [Python kullanarak Azure Storage örnekleri](storage-samples-python.md)
-* Diğer tüm diller: [Azure depolama örnekleri](../storage-samples.md)
+* Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
+* Diğer tüm diller: [Azure Storage örnekleri](../storage-samples.md)

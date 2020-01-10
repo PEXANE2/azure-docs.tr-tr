@@ -3,15 +3,15 @@ title: Kubernetes üzerinde takım geliştirme
 services: azure-dev-spaces
 ms.date: 04/25/2019
 ms.topic: quickstart
-description: Azure 'da kapsayıcılar ve mikro hizmetlerle ekip Kubernetes geliştirme
+description: Bu hızlı başlangıçta, Azure Dev Spaces ile takım Kubernetes geliştirme işlemlerini ve mikro hizmetleri nasıl yapabileceğiniz gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2f3ed0f2a9635488aea509e7816fbe84e1589d14
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484033"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770841"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'de takım geliştirme-Azure Dev Spaces
 
@@ -23,7 +23,7 @@ Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Azure Dev Spaces takım geliştirme](media/azure-dev-spaces/collaborate-graphic.gif)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -236,4 +236,4 @@ Azure Dev Spaces uygulamasının birden fazla kapsayıcı arasında daha karmaş
 > [Birden çok kapsayıcı ve takım geliştirme ile çalışma](multi-service-nodejs.md)
 
 [helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

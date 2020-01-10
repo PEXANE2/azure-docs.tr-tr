@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 01/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9582881626f58ebbbae5648fe5d4b46e14fd5850
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710431"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763342"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak rol atamalarını listeleyin
 
@@ -40,6 +40,22 @@ Bir abonelikte bir kullanıcıya veya gruba atanan rolleri görmenin en kolay yo
     ![Bir kullanıcıya rol atama](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. Aboneliği değiştirmek için **abonelikler** listesine tıklayın.
+
+## <a name="list-owners-of-a-subscription"></a>Abonelik sahiplerini listeleme
+
+Bir abonelik için [sahip](built-in-roles.md#owner) rolüne atanan kullanıcılar, abonelikteki her şeyi yönetebilir. Bir aboneliğin sahiplerini listelemek için bu adımları izleyin.
+
+1. Azure portal, **tüm hizmetler** ve ardından **abonelikler**' e tıklayın.
+
+1. Sahiplerini listelemek istediğiniz aboneliğe tıklayın.
+
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
+
+1. Bu aboneliğin tüm rol atamalarını görüntülemek için **Rol atamaları** sekmesine tıklayın.
+
+1. Bu abonelik için sahip rolüne atanmış tüm kullanıcıları görmek için **sahipler** bölümüne ilerleyin.
+
+   ![Abonelik erişim denetimi-rol atamaları sekmesi](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Rol atamalarını bir kapsamda listeleme
 
@@ -80,6 +96,32 @@ Bir kullanıcının, grubun, hizmet sorumlusunun veya yönetilen kimliğin eriş
     ![Atamalar bölmesi](./media/role-assignments-list-portal/check-access-assignments.png)
 
     Bu bölmede, seçilen güvenlik sorumlusuna ve kapsamına atanan rolleri görebilirsiniz. Bu kapsamda herhangi bir reddetme ataması varsa veya bu kapsama devralınmışsa, bunlar listelenecektir.
+
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik için rol atamalarını listeleyin
+
+1. Azure portal, sistem tarafından atanan bir yönetilen kimlik açın.
+
+1. Sol taraftaki menüden **kimlik**' e tıklayın.
+
+    ![Sistem tarafından atanan yönetilen kimlik](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. **Rol atamaları**altında **Bu yönetilen KIMLIĞE atanan Azure RBAC rollerini göster ' e**tıklayın.
+
+    Yönetim grubu, abonelik, kaynak grubu veya kaynak gibi çeşitli kapsamlardaki seçili sistem tarafından atanan yönetilen kimliğe atanan rollerin listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
+
+    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik için rol atamalarını listeleyin
+
+1. Azure portal, sistem tarafından atanan bir yönetilen kimlik açın.
+
+1. **Azure kaynakları**' na tıklayın.
+
+    Yönetim grubu, abonelik, kaynak grubu veya kaynak gibi çeşitli kapsamlardaki seçili kullanıcı tarafından atanan yönetilen kimliğe atanan rollerin listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
+
+    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. Aboneliği değiştirmek için **abonelikler** listesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443866"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835009"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -105,7 +105,7 @@ Aynı bölgede her iki donanım neslini de desteklenmiyorsa, donanım oluşturma
 
 ## <a name="tune-performance"></a>Performansı ayarlama
 
-\* * Yönetilen örneğimin performansını Nasıl yaparım? mı? **
+**Yönetilen örneðimin performansı Nasıl yaparım? mi?**
 
 Genel Amaçlı yönetilen örnek, performans için önemli veri ve günlük dosyası boyutu nedeniyle uzak depolama kullanır. Daha fazla bilgi için bkz. [genel amaçlı yönetilen örnek performansı üzerinde günlük dosyası boyutunun etkisi](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
@@ -180,8 +180,8 @@ Azure SQL veritabanı yönetilen örneği dağıtmayla ilgili avantajları, mali
 
 ## <a name="dns-refresh"></a>DNS yenileme 
 
-\* * DNS yenilemesi yapabilir miyim? **
-  
+**DNS yenileme yapabilir miyim?**
+
 Şu anda yönetilen örnek için DNS sunucusu yapılandırmasını yenileme özelliği sağlamayız.
 
 DNS yapılandırması sonunda yenilenir:

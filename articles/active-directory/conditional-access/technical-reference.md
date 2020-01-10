@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893469"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768157"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory Koşullu erişim ayarları başvurusu
 
@@ -29,8 +29,6 @@ Bu makale, bir koşullu erişim ilkesinde aşağıdaki yapılandırma seçenekle
 - İstemci uygulamaları koşulu
 - Onaylanan istemci uygulaması gereksinimi
 
-Aradığınız bilgiler bu değilse, lütfen bu makalenin sonunda bir yorum bırakın.
-
 ## <a name="cloud-apps-assignments"></a>Bulut uygulamaları atamaları
 
 Koşullu erişim ilkeleriyle, kullanıcılarınızın [bulut uygulamalarınıza](conditions.md#cloud-apps-and-actions)nasıl erişebileceğini kontrol edersiniz. Bir koşullu erişim ilkesi yapılandırdığınızda, en az bir bulut uygulaması seçmeniz gerekir. 
@@ -41,6 +39,7 @@ Koşullu erişim ilkeleriyle, kullanıcılarınızın [bulut uygulamalarınıza]
 
 Microsoft 'tan aşağıdaki bulut uygulamalarına bir koşullu erişim ilkesi atayabilirsiniz:
 
+- Office 365 (Önizleme)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL veritabanı ve veri ambarı- [daha fazla bilgi](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -55,7 +54,7 @@ Microsoft 'tan aşağıdaki bulut uygulamalarına bir koşullu erişim ilkesi at
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Kayıt Microsoft Intune
+- Microsoft Intune kaydı
 - Microsoft Planner
 - Microsoft PowerApps
 - Bing 'de Microsoft Search
@@ -68,11 +67,27 @@ Microsoft 'tan aşağıdaki bulut uygulamalarına bir koşullu erişim ilkesi at
 - Office Delve
 - Office Sway
 - Outlook Groups
-- Power BI hizmeti
+- Power BI Hizmeti
 - Project Online
 - Skype Kurumsal Çevrimiçi Sürüm
 - Sanal özel ağ (VPN)
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365 (Önizleme)
+
+Office 365, Exchange, SharePoint ve Microsoft ekipleri gibi bulut tabanlı üretkenlik ve işbirliği hizmetleri sağlar. Office 365 Bulut Hizmetleri, sorunsuz ve işbirliğine dayalı deneyimler sağlamak için derin bir tümleştirilmiştir. Office 365 (Önizleme) uygulaması bu hizmetleri tek seferde hedeflemesini mümkün kılar. Tutarsız ilke ve hizmet bağımlılıklarından kaynaklanan sorunları önlemek için Office 365 Exchange Online ve Office 365 SharePoint Online gibi ayrı bulut uygulamalarını hedeflemek yerine yeni Office 365 (Önizleme) uygulamasını kullanmanızı öneririz.
+
+Office 365 (Önizleme) istemci uygulamasında bulunan önemli uygulamalar:
+
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Office portalı
+- Microsoft Forms
+- Microsoft Power Otomatikleştir
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>Diğer uygulamalar
 
@@ -81,7 +96,7 @@ Microsoft bulut uygulamalarına ek olarak, aşağıdaki bulut uygulamaları tür
 - Azure AD ile bağlantılı uygulamalar
 - Önceden tümleştirilmiş Federasyon yazılım hizmeti (SaaS) uygulaması
 - Parola çoklu oturum açma (SSO) kullanan uygulamalar
-- İş kolu uygulamaları
+- Satır iş kolu uygulamaları
 - Azure AD Uygulama Ara Sunucusu kullanan uygulamalar
 
 ## <a name="device-platform-condition"></a>Cihaz platformu koşulu
@@ -115,7 +130,7 @@ Koşullu erişim ilkenizde **tarayıcıları** istemci uygulaması olarak seçeb
 
 Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu bir cihaz gereksinimi gibi bir cihaz ilkesini karşılamak için, aşağıdaki işletim sistemleri ve tarayıcılar desteklenir:
 
-| İşletim Sistemi                     | Tarayıcısında                                        |
+| İşletim Sistemi                     | Tarayıcılar                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
@@ -142,8 +157,8 @@ Bu uzantıyı Chrome tarayıcılarına otomatik olarak dağıtmak için aşağı
 
 |    |    |
 | --- | --- |
-| Yol | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Adı | 1 |
+| Yol | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Ad | 1 |
 | Tür | REG_SZ (dize) |
 | Veriler | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
@@ -151,8 +166,8 @@ Bu uzantıyı Chrome tarayıcılarına otomatik olarak dağıtmak için aşağı
 
 |    |    |
 | --- | --- |
-| Yol | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Adı | 1 |
+| Yol | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Ad | 1 |
 | Tür | REG_SZ (dize) |
 | Veriler | {"model": "https://device.login.microsoftonline.com", "Filter": {"ıSSUER": {"CN": "MS-Organization-Access"}}} |
 
@@ -235,6 +250,7 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 - Onaylanan istemci uygulamaları, Intune mobil uygulama yönetimi özelliğini destekler.
 - **Onaylanan istemci uygulaması gereksinimini gerektir** :
    - Yalnızca iOS ve Android for [Device platform koşulunu](#device-platform-condition)destekler.
+- Koşullu erişim, onaylanan bir istemci uygulamasında Microsoft Edge 'i InPrivate modunda kabul edemez.
 
 ## <a name="app-protection-policy-requirement"></a>Uygulama koruma ilkesi gereksinimi 
 

@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 13392644ebe5e163e946deceeec5fcab8f5085cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159725"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763088"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
@@ -28,7 +28,7 @@ Bu, temel şablon biçimidir:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+             },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -275,7 +275,8 @@ Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatm
 
 ```json 
      "customize": [ 
-            "type{ ": "WindowsRestart", 
+         {
+            "type": "WindowsRestart", 
             "restartCommand": "shutdown /r /f /t 0 /c", 
             "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
             "restartTimeout": "5m"
@@ -286,7 +287,7 @@ Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatm
  
 Özellikleri Özelleştir:
 - **Yazın**: windowsrestart
-- yeniden başlatma işlemini yürütmek için **restartCommand** komutu (isteğe bağlı). Varsayılan değer: `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- yeniden başlatma işlemini yürütmek için **restartCommand** komutu (isteğe bağlı). Varsayılan: `'shutdown /r /f /t 0 /c \"packer restart\"'`.
 - **restartCheckCommand** – yeniden başlatmanın başarılı olup olmadığını denetlemek için komut (isteğe bağlı). 
 - **restartTimeout** -yeniden başlatma zaman aşımı, bir büyüklük ve birim dizesi olarak belirtildi. Örneğin, `5m` (5 dakika) veya `2h` (2 saat). Varsayılan değer: ' 5dk '
 
@@ -317,7 +318,7 @@ Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırm
 - **tür** – PowerShell.
 - **Scripturi** -URI, PowerShell betik dosyasının konumuna. 
 - **satır içi** – çalıştırılacak olan satır içi komutlar, virgülle ayrılır.
-- **valid_exit_codes** : isteğe bağlı, betiğe/satır içi komuttan döndürülebilecek geçerli kodlar, bu komut dosyası/satır içi komutun bildirilen başarısızlığından kaçınacaktır.
+- **valid_exit_codes** : isteğe bağlı, betiğe/satır içi komuttan döndürülebilecek geçerli kodlar, bu komut dosyası/satır içi komutunun bildirilen başarısızlığından kaçınacaktır.
 
 ### <a name="file-customizer"></a>Dosya Özelleştirici
 

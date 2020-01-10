@@ -3,13 +3,13 @@ title: Azure Işlevleri için JavaScript geliştirici başvurusu
 description: JavaScript kullanarak işlevleri geliştirmeyi anlayın.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 30d69476c96017319842a424c26de29350ec1ef6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226715"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769056"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -267,10 +267,10 @@ Akış işlev günlüklerine varsayılan izleme düzeyinde yazmanızı sağlar. 
 
 | Yöntem                 | Açıklama                                |
 | ---------------------- | ------------------------------------------ |
-| **hata (_ileti_)**   | Hata düzeyi günlüğe kaydetme veya alçaltmak için yazar.   |
-| **uyar (_ileti_)**    | Uyarı düzeyinde günlüğe kaydetmeye veya daha düşük bir şekilde yazar. |
-| **bilgi (_ileti_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
-| **ayrıntılı (_ileti_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
+| **error(_message_)**   | Hata düzeyi günlüğe kaydetme veya alçaltmak için yazar.   |
+| **warn(_message_)**    | Uyarı düzeyinde günlüğe kaydetmeye veya daha düşük bir şekilde yazar. |
+| **info(_message_)**    | Bilgi düzeyinde günlüğe kaydetme veya daha düşük bir yazma.    |
+| **verbose(_message_)** | Ayrıntılı düzey günlüğe kaydetmeye yazar.           |
 
 Aşağıdaki örnek, uyarı izleme düzeyinde bir günlük Yazar:
 
@@ -344,12 +344,12 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 | Özellik      | Açıklama                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _bölümü_        | İsteğin gövdesini içeren bir nesne.               |
-| _bilgisinde_     | İstek üst bilgilerini içeren bir nesne.                   |
-| _yöntemidir_      | İsteğin HTTP yöntemi.                                |
+| _body_        | İsteğin gövdesini içeren bir nesne.               |
+| _headers_     | İstek üst bilgilerini içeren bir nesne.                   |
+| _method_      | İsteğin HTTP yöntemi.                                |
 | _originalUrl 'Si_ | İsteğin URL'si.                                        |
-| _parametrelerin_      | İsteğin yönlendirme parametrelerini içeren nesne. |
-| _sorgulayamadı_       | Sorgu parametrelerini içeren bir nesne.                  |
+| _params_      | İsteğin yönlendirme parametrelerini içeren nesne. |
+| _query_       | Sorgu parametrelerini içeren bir nesne.                  |
 | _rawBody_     | İleti gövdesi dize olarak.                           |
 
 
@@ -359,10 +359,10 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 | Özellik  | Açıklama                                               |
 | --------- | --------------------------------------------------------- |
-| _bölümü_    | Yanıtın gövdesini içeren bir nesne.         |
-| _bilgisinde_ | Yanıt üst bilgilerini içeren bir nesne.             |
+| _body_    | Yanıtın gövdesini içeren bir nesne.         |
+| _headers_ | Yanıt üst bilgilerini içeren bir nesne.             |
 | _isRaw_   | Yanıt için biçimlendirmenin atlandığını gösterir.    |
-| _durumlarına_  | Yanıtın HTTP durum kodu.                     |
+| _status_  | Yanıtın HTTP durum kodu.                     |
 
 ### <a name="accessing-the-request-and-response"></a>İstek ve yanıta erişme 
 
@@ -371,9 +371,9 @@ HTTP tetikleyicilerle çalışırken, HTTP isteğine ve yanıt nesnelerine çeş
 + **`context` nesnesindeki `req` ve `res` özelliklerden.** Bu şekilde, tam `context.bindings.name` modelini kullanmak yerine bağlam nesnesinden HTTP verilerine erişmek için geleneksel bir stili kullanabilirsiniz. Aşağıdaki örnekte `context``req` ve `res` nesnelerine nasıl erişebileceğiniz gösterilmektedir:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -405,6 +405,16 @@ HTTP tetikleyicilerle çalışırken, HTTP isteğine ve yanıt nesnelerine çeş
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
+
+## <a name="scaling-and-concurrency"></a>Ölçeklendirme ve eşzamanlılık
+
+Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Node. js için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik (Kullanıcı tarafından yapılandırılamaz) eşikleri kullanır. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
+
+Bu ölçeklendirme davranışı birçok Node. js uygulaması için yeterlidir. CPU 'ya yönelik uygulamalar için, birden çok dil çalışan işlemini kullanarak performansı daha da artırabilirsiniz.
+
+Varsayılan olarak, her Işlev ana bilgisayar örneği tek bir dil çalışan işlemine sahiptir. [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) uygulama ayarını kullanarak konak başına çalışan işlem sayısını (10 ' a kadar) artırabilirsiniz. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir. 
 
 ## <a name="node-version"></a>Düğüm sürümü
 
@@ -602,7 +612,7 @@ npm start
 - `tsc`
 - `func start`
 
-#### <a name="publish-to-azure"></a>Azure'a Yayımlama
+#### <a name="publish-to-azure"></a>Azure’da Yayımlama
 
 Azure 'a dağıtmak üzere [`func azure functionapp publish`] komutunu kullanmadan önce, TypeScript kaynak dosyalarından bir dizi JavaScript dosyası oluşturun. 
 

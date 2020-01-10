@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931111"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771624"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "74931111"
 
 ![Dosya Yapısı](./media/storage-files-introduction/files-concepts.png)
 
-* **Depolama Hesabı**: Tüm Azure Depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için, [Ölçeklenebilirlik ve Performans Hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) konusuna bakın.
+* **Depolama Hesabı**: Tüm Azure Depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için bkz. [Standart depolama hesapları Için ölçeklenebilirlik ve performans hedefleri](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 * **Paylaşım**: Dosya Depolama paylaşımı Azure’daki bir SMB dosyası paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Premium ve standart dosya paylaşımlarının toplam kapasitesi 100 TiB 'dir.
 
@@ -172,7 +172,7 @@ Aşağıdaki bölümlerde, farklı artıklık seçenekleri arasındaki farklar a
 ### <a name="geo-redundant-storage"></a>Coğrafi Olarak Yedekli Depolama
 
 > [!Warning]  
-> Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
+> Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
 
 Coğrafi olarak yedekli depolama (GRS), verilerinizi birincil bölgeden yüzlerce mil uzakta olan ikincil bir bölgeye çoğaltarak belirli bir yıl boyunca en az% 99.99999999999999 (16 9) nesne dayanıklılığı sağlamak üzere tasarlanmıştır. Depolama hesabınızda GRS etkinse, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda bile verileriniz dayanıklı olur.
 
@@ -205,24 +205,40 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 
 |Bölge |Desteklenen artıklık |
 |-------|---------|
+|Avustralya Orta    |LRS     |
+|Avustralya Orta 2    |LRS     |
 |Doğu Avustralya |LRS     |
 |Güneydoğu Avustralya|LRS |
+|Brezilya Güney    |LRS     |
 |Kanada Orta  |LRS     |
 |Kanada Doğu     |LRS     |
 |Orta Hindistan  |LRS     |
-|Orta ABD *   |LRS     |
+|Orta ABD *   |LRS, ZRS    |
 |Doğu Asya      |LRS     |
-|Doğu ABD *        |LRS     |
-|Doğu ABD 2 *      |LRS     |
+|Doğu ABD *        |LRS, ZRS|
+|Doğu ABD 2 *      |LRS, ZRS     |
 |Fransa Orta |LRS, ZRS|
 |Fransa Güney   |LRS     |
-|Orta Kuzey ABD |LRS     |
+|Doğu Japonya     |LRS     |
+|Batı Japonya     |LRS     |
+|Kore Orta  |LRS     |
+|Kore Güney    |LRS     |
+|Orta Kuzey ABD |LRS   |
 |Kuzey Avrupa   |LRS     |
 |Güney Hindistan    |LRS     |
+|Güney Orta ABD |LRS     |
 |Güneydoğu Asya |LRS, ZRS|
+|İsviçre Kuzey    |LRS     |
+|İsviçre Batı    |LRS     |
+|BAE Orta    |LRS     |
+|BAE Kuzey    |LRS     |
+|UK Kuzey   |LRS, ZRS    |
+|Birleşik Krallık, Güney    |LRS     |
+|Birleşik Krallık, Batı    |LRS     |
 |Orta Batı ABD|LRS     |
 |Batı Avrupa *    |LRS, ZRS|
-|Batı ABD *        |LRS     |
+|Batı Hindistan   |LRS     |
+|Batı ABD        |LRS     |
 |Batı ABD 2      |LRS, ZRS|
 
 Yeni hesaplar için desteklenen \*, tüm mevcut hesaplar yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
@@ -243,7 +259,7 @@ Birden çok Azure dosya paylaşımını Azure Dosya Eşitleme ile tek bir Window
 
 Şirket içi dosya paylaşımından mevcut bir dosya paylaşımından verileri Azure dosyalarına toplu olarak aktarmaya yönelik birçok kolay seçenek vardır. Popüler olanlar şunlardır: (ayrıntılı olmayan liste):
 
-* **Azure dosya eşitleme**: bir Azure dosya paylaşımıyla ("bulut uç noktası") ve bir Windows Dizin ad alanı ("sunucu uç noktası") arasındaki ilk eşitlemenin bir parçası olarak, Azure dosya eşitleme var olan dosya paylaşımındaki tüm verileri Azure dosyaları 'na çoğaltacaktır.
+* **[Azure dosya eşitleme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : bir Azure dosya paylaşımıyla ("bulut uç noktası") ve bir Windows Dizin ad alanı ("sunucu uç noktası") arasındaki ilk eşitlemenin bir parçası olarak, Azure dosya eşitleme var olan dosya paylaşımındaki tüm verileri Azure dosyaları 'na çoğaltacaktır.
 * **[Azure içeri/dışarı aktarma](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinin bir Azure veri merkezine göndererek büyük miktarlardaki verileri bir Azure dosya paylaşımında güvenli bir şekilde aktarmanıza olanak tanır. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama aracıdır. Robocopy, dosya paylaşımının yerel olarak bağlanması ve ardından Robocopy komutunda hedef olarak bağlı konumu kullanarak Azure dosyalarına veri aktarmak için kullanılabilir.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy, Azure dosyalarını ve Azure Blob Storage 'a veri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır ve en iyi performansla basit komutlar kullanmaktır.

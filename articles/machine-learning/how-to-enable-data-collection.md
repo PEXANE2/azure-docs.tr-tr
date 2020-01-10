@@ -11,19 +11,19 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9058fbbe9b238877b842e79d98041fa0b681bc8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75539768"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771402"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modelleri için veri toplama
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> Azure Machine Learning Izleme SDK 'Sı yakında kullanımdan kaldırılacak. SDK halen, SDK 'leri modellerdeki veri kayması izlemek için kullanan geliştiriciler için uygun olmaya devam etmektedir. Ancak yeni müşteriler için [Application Insights ile basitleştirilmiş veri izlemeyi](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)kullanmanızı öneririz.
+> Azure Machine Learning Izleme SDK 'Sı yakında kullanımdan kaldırılacak. SDK halen, SDK 'leri modellerdeki veri kayması izlemek için kullanan geliştiriciler için uygun olmaya devam etmektedir. Ancak yeni müşteriler için [Application Insights ile basitleştirilmiş veri izlemeyi](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)kullanmanızı öneririz.
 
 Bu makalede, Azure Machine Learning giriş modeli verilerinin nasıl toplanacağı gösterilmektedir. Ayrıca, giriş verilerinin bir Azure Kubernetes hizmeti (AKS) kümesine nasıl dağıtılacağı ve çıkış verilerinin Azure Blob depolama alanında nasıl depolandığı gösterilmektedir.
 

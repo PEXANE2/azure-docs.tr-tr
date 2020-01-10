@@ -4,15 +4,15 @@ description: Yaygın senaryolar için rehberlik dahil Event Hubs uçtan uca Azur
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555538"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770178"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Tanılama Event Hubs kullanarak etkin yoldaki verileri akışa alma
 Azure Tanılama, bulut Hizmetleri sanal makinelerinden (VM 'Ler) ölçümleri ve günlükleri toplamanın yanı sıra sonuçları Azure Storage 'a aktarmaya yönelik esnek yollar sunar. Mart 2016 (SDK 2,9) zaman çerçevesinde, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)kullanarak özel veri kaynaklarına tanılama gönderebilir ve dinamik yol verilerini Saniyeler içinde aktarabilirsiniz.
@@ -21,8 +21,7 @@ Desteklenen veri türleri şunlardır:
 
 * Windows için Olay İzleme (ETW) olayları
 * Performans sayaçları
-* Windows olay günlükleri
-* Uygulama günlükleri
+* Windows olay günlüğü 'nde uygulama günlükleri de dahil olmak üzere Windows olay günlükleri
 * Azure Tanılama altyapısı günlükleri
 
 Bu makalede, Event Hubs uçtan uca Azure Tanılama nasıl yapılandırılacağı gösterilir. Aşağıdaki yaygın senaryolar için de rehberlik sunulmaktadır:
@@ -32,7 +31,7 @@ Bu makalede, Event Hubs uçtan uca Azure Tanılama nasıl yapılandırılacağı
 * Event Hubs Stream verilerini görüntüleme
 * Bağlantı sorunlarını giderme  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Azure Tanılama Event Hubs veri alma Cloud Services, VM 'Ler, sanal makine ölçek kümeleri ve Azure SDK 2,9 ve Visual Studio için karşılık gelen Azure Araçları 'nda başlayan Service Fabric desteklenir.
 
 * Azure Tanılama uzantısı 1,6 ([.net 2,9 Için Azure SDK veya sonraki sürümler](https://azure.microsoft.com/downloads/) bu varsayılan olarak bunu hedefliyor)
@@ -43,7 +42,7 @@ Azure Tanılama Event Hubs veri alma Cloud Services, VM 'Ler, sanal makine ölç
 * Makale başına sağlanan Event Hubs ad alanı [Event Hubs kullanmaya başlayın](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Tanılama Event Hubs havuzuna bağlama
-Azure Tanılama, varsayılan olarak her zaman günlükleri ve ölçümleri bir Azure depolama hesabına gönderir. Bir uygulama, *. wadcfgx* dosyasının **Publicconfig**  / **wadcfg** öğesi altına yeni bir **Havuz** bölümü ekleyerek Event Hubs verileri de gönderebilir. Visual Studio 'da *. wadcfgx* dosyası şu yolda saklanır: **bulut hizmeti projesi**  > **Roller**  >  **(roleName)**  > **Diagnostics. wadcfgx** dosyası.
+Azure Tanılama, varsayılan olarak her zaman günlükleri ve ölçümleri bir Azure depolama hesabına gönderir. Bir uygulama, *. wadcfgx* dosyasının **Publicconfig** / **wadcfg** öğesi altına yeni bir **Havuz** bölümü ekleyerek Event Hubs verileri de gönderebilir. Visual Studio 'da *. wadcfgx* dosyası şu yolda saklanır: **bulut hizmeti projesi** > **Roller** >  **(roleName)**  > **Diagnostics. wadcfgx** dosyası.
 
 ```xml
 <SinksConfig>
@@ -98,7 +97,7 @@ Event Hubs havuz Ayrıca *. wadcfgx* yapılandırma dosyasının **privateconfig
 }
 ```
 
-@No__t_0 değeri, **Event Hubs** ad alanında tanımlanan bir paylaşılan erişim IMZASı (SAS) anahtarı ve ilkesiyle eşleşmelidir. [Azure portal](https://portal.azure.com)Event Hubs panosuna gidin, **Yapılandır** sekmesine tıklayın ve *gönderme* izinleri olan adlandırılmış bir Ilke (örneğin, "sendrule") ayarlayın. **Storageaccount** , **privateconfig**içinde de bildirilmiştir. Bu değerler çalışıyorsa burada değişiklik yapmanız gerekmez. Bu örnekte, bir aşağı akış varlığının değerlerini ayarlayacağı bir işaret olan bir işaret olan değerler boş bırakıyoruz. Örneğin, *ServiceConfiguration. Cloud. cscfg* ortam yapılandırma dosyası, ortama uygun adları ve anahtarları ayarlar.  
+`SharedAccessKeyName` değeri, **Event Hubs** ad alanında tanımlanan bir paylaşılan erişim IMZASı (SAS) anahtarı ve ilkesiyle eşleşmelidir. [Azure portal](https://portal.azure.com)Event Hubs panosuna gidin, **Yapılandır** sekmesine tıklayın ve *gönderme* izinleri olan adlandırılmış bir Ilke (örneğin, "sendrule") ayarlayın. **Storageaccount** , **privateconfig**içinde de bildirilmiştir. Bu değerler çalışıyorsa burada değişiklik yapmanız gerekmez. Bu örnekte, bir aşağı akış varlığının değerlerini ayarlayacağı bir işaret olan bir işaret olan değerler boş bırakıyoruz. Örneğin, *ServiceConfiguration. Cloud. cscfg* ortam yapılandırma dosyası, ortama uygun adları ve anahtarları ayarlar.  
 
 > [!WARNING]
 > Event Hubs SAS anahtarı, *. wadcfgx* dosyasında düz metin olarak depolanır. Bu anahtar genellikle kaynak kodu denetimine iade edilir veya yapı sunucunuzdaki bir varlık olarak kullanılabilir, bu nedenle uygun şekilde korumanız gerekir. Kötü amaçlı bir kullanıcının Olay Hub 'ına yazabilmesi, ancak dinleyememesi veya yönetebilmesi için *yalnızca Send* izinleri Ile bir SAS anahtarı kullanmanızı öneririz.
@@ -200,7 +199,7 @@ Aşağıdaki örnek, bir geliştiricinin gönderilen veri miktarını bu hizmeti
 Bu örnekte, havuz günlüklere uygulanır ve yalnızca hata düzeyi izleme ile filtrelenmiştir.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services uygulama ve tanılama yapılandırmasını dağıtma ve güncelleştirme
-Visual Studio, uygulama ve Event Hubs havuz yapılandırmasını dağıtmak için en kolay yolu sağlar. Dosyayı görüntülemek ve düzenlemek için, Visual Studio 'da *. wadcfgx* dosyasını açın, düzenleyin ve kaydedin. Yol, **bulut hizmeti projesi** ** >   > ** **(roleName)**  > **Diagnostic. wadcfgx**' dir.  
+Visual Studio, uygulama ve Event Hubs havuz yapılandırmasını dağıtmak için en kolay yolu sağlar. Dosyayı görüntülemek ve düzenlemek için, Visual Studio 'da *. wadcfgx* dosyasını açın, düzenleyin ve kaydedin. Yol, **bulut hizmeti projesi** ** >  > ** **(roleName)**  > **Diagnostic. wadcfgx**' dir.  
 
 Bu noktada, Visual Studio, Visual Studio Team System ve MSBuild 'i temel alan tüm dağıtım ve dağıtım güncelleştirme eylemleri ve **/t: Publish** hedefini kullanan tüm komutlar veya betikler Paketleme sürecinde *. wadcfgx* içerir. Ayrıca, dağıtımlar ve güncelleştirmeler, sanal makinelerinizdeki uygun Azure Tanılama Aracısı uzantısını kullanarak dosyayı Azure 'a dağıtır.
 

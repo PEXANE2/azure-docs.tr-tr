@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747696"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768512"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management şirket içinde barındırılan bir ağ geçidini Docker 'a dağıtma
 
@@ -33,7 +33,7 @@ Bu makalede, şirket içinde barındırılan Azure API Management ağ geçidini 
 - [API Management örneğiniz için bir ağ geçidi kaynağı sağlama](api-management-howto-provision-self-hosted-gateway.md)
 
 > [!NOTE]
-> Şirket içinde barındırılan ağ geçidi, Linux tabanlı bir Docker kapsayıcısı olarak paketlenmiştir.
+> Şirket içinde barındırılan ağ geçidi, x86-64 Linux tabanlı bir Docker kapsayıcısı olarak paketlenmiştir.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Şirket içinde barındırılan ağ geçidini Docker 'a dağıtma
 

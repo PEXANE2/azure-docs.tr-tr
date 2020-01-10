@@ -10,25 +10,74 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968724"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832303"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
-En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
+>Bu URL 'YI kopyalayıp yapıştırarak güncelleştirmeler için ne zaman geri alınacağı hakkında bildirim alın: RSS akışı okuyucunuzun `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us`.
 
-* En son yayınlar
+İle en son gelişmeleri güncel kalmak için bu makalede, ile hakkında bilgi sağlar:
+
+* En son sürümleri
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlev
 
-## <a name="october-2019"></a>2019 Ekim
+## <a name="december-2019"></a>Aralık 2019
+
+### <a name="update-transcript-with-the-new-api"></a>Yeni API ile dökümü Güncelleştir
+
+[Update-video-Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) API 'sini kullanarak döküm dosyasında belirli bir bölümü güncelleştirin.
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Video Indexer portalından hesap yapılandırmasını onarma
+
+Artık, şu gibi sorunlarla ilgili kendi kendine yardım almak için Media Services bağlantı yapılandırmasını güncelleştirebilirsiniz: 
+
+* Azure Media Services kaynak yanlış
+* parola değişiklikleri
+* Media Services kaynaklar abonelikler arasında taşındı  
+
+Hesap yapılandırmasını onarmak için Video Indexer portalında Ayarlar > Hesap sekmesi ' ne gidin (sahip olarak).
+
+### <a name="configure-the-custom-vision-account"></a>Özel Vision hesabını yapılandırma
+
+Video Indexer portalını kullanarak ücretli hesaplarda özel Vision hesabını yapılandırın (daha önce bu yalnızca API tarafından desteklenmektedir). Bunu yapmak için Video Indexer portalında oturum açın, model özelleştirmesi > Modelleme > ' ı seçin. 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Sahneler, görünümler ve ana kareler – şimdi bir Öngörüler bölmesinde
+
+Sahneler, görünümler ve ana kareler artık daha kolay tüketim ve gezinme için tek bir Öngörüler halinde birleştirilmiştir. İstediğiniz sahneyi seçtiğinizde, hangi görüntüleri ve bu ana kareleri içerdiğini görebilirsiniz. 
+
+### <a name="notification-about-a-long-video-name"></a>Uzun bir video adı hakkında bildirim
+
+Video adı 80 karakterden uzunsa, Video Indexer karşıya yükleme sırasında açıklayıcı bir hata gösterir.
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>Akış uç noktası devre dışı bildirimi
+
+Akış uç noktası devre dışı bırakıldığında, Video Indexer oynatıcı sayfasında açıklayıcı bir hata gösterir.
+
+### <a name="error-handling-improvement"></a>Hata işleme geliştirmesi
+
+Durum kodu 409 şimdi, video etkin bir şekilde dizinlenerek, geçerli yeniden dizin değişikliklerinin yanlışlıkla yanlışlıkla geçersiz kılınmasını engellemek amacıyla video Dizin API 'lerini [yeniden dizinleyerek](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) video [dizini](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API 'lerinden geri döndürülecek.
+
+## <a name="november-2019"></a>Kasım 2019
+ 
+* Korece özel dil modelleri desteği
+
+    Video Indexer artık hem API hem de portalda Korece (`ko-KR`) dilinde özel dil modellerini desteklemektedir. 
+* Konuşmayı metne dönüştürme (STT) için desteklenen yeni diller
+
+    Video Indexer API 'Leri artık, Arapça Levantine (ar-SY), Ingiliz Birleşik Krallık (en-GB) ve Ingilizce Avustralya diyalekti (en-AU) içinde STT 'i desteklemektedir.
+    
+    Video yüklemesi için, zh-, her ikisi de desteklenir, ancak zh-CN önerilir ve daha doğru bir şekilde değişir.
+    
+## <a name="october-2019"></a>Ekim 2019
  
 * Galerideki animasyonlu karakterleri arama
 
@@ -52,7 +101,7 @@ IBC 2019 ' de birden çok terfi duyurusu:
     Yakın, orta görüntü, iki görüntü, ınkapılı, dış mek, vb. gibi düzenleme türleri ile anlık görüntü etiketleme. Daha fazla bilgi için bkz. [düzenleme görüntüsü türü algılama](scenes-shots-keyframes.md#editorial-shot-type-detection).
 * Konu düğümü Netleştirme geliştirme-artık düzey 2 ' ye sahip
     
-    Bu konu başlığı altında, ıPTC sınıflandırmanın daha derin ayrıntı düzeyi artık desteklenir. [Yeni Azure MEDIA SERVICES AI destekli yeniliklerin](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)tüm ayrıntılarını okuyun.
+    Inse sınırlaması modeli, artık ıPTC sınıflandırmanın daha derin ayrıntı düzeyini destekliyor. [Yeni Azure MEDIA SERVICES AI destekli yeniliklerin](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)tüm ayrıntılarını okuyun.
 
 ## <a name="august-2019"></a>Ağustos 2019
  
@@ -137,4 +186,4 @@ Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](video-indexer-overview.md)
+[Genel bakış](video-indexer-overview.md)

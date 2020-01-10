@@ -1,31 +1,28 @@
 ---
-title: Veri akışını eşleme yeni dal dönüştürmesi
-description: Azure Data Factory eşleme veri akışı yeni dal dönüştürmesi
+title: Eşleme veri akışında birden çok dal
+description: Birden çok Dalla eşleme veri akışında veri akışlarını çoğaltma
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: b4617689fe1ab14856bde9a4e8134b12aa6d815b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/08/2020
+ms.openlocfilehash: 71fb9f1ba9952be0e6b3910dd1079aa6d3c0482d
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930310"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834478"
 ---
-# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory eşleme veri akışı yeni dal dönüştürmesi
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Eşleme veri akışı 'nda yeni bir dal oluşturma
 
-![Dal seçenekleri](media/data-flow/menu.png "menü")
+Aynı veri akışına karşı birden çok işlem ve dönüşüm kümesi yapmak için yeni bir dal ekleyin. Yeni bir dal eklemek, birden çok havuz için aynı kaynağı kullanmak veya bir arada verilerin birlikte katılmasını sağlamak istediğinizde faydalıdır.
 
-Dallandırma, veri akışınızda geçerli veri akışını alacak ve bunu başka bir akışa çoğaltacaktır. Aynı veri akışına karşı birden çok işlem ve dönüşüm kümesi gerçekleştirmek için yeni dalı kullanın.
+Dönüştürme listesinden diğer dönüştürmelere benzer yeni bir dal eklenebilir. **Yeni dal** yalnızca, dala çalıştığınız dönüşümden sonra var olan bir dönüşüm olduğunda bir eylem olarak kullanılabilir olacaktır.
 
-Örnek: veri akışınız, seçili sütun kümesi ve veri türü dönüştürmeleri içeren bir kaynak dönüşümüyle bulunur. Ardından, bu kaynağı hemen takip eden bir türetilmiş sütun yerleştirebilirsiniz. Türetilmiş sütununda, yeni bir "tam ad" alanı oluşturmak için adı ve soyadı birleştiren yeni bir alan oluşturdunuz.
+![Yeni dal ekleme](media/data-flow/new-branch2.png "Yeni dal ekleme")
 
-Bu yeni akışı bir dizi dönüşümle ve havuz kümesiyle ve bu akışın farklı bir dönüştürme kümesiyle aynı verileri dönüştürebileceğiniz bir kopyasını oluşturmak için kullanabilirsiniz. Kopyalanmış verileri ayrı bir dalda dönüştürerek, daha sonra bu verileri ayrı bir konuma havuza alabilirsiniz.
+Aşağıdaki örnekte veri akışı, TAXI seyahat verilerini okuyor. Hem gün hem de satıcı tarafından toplanan çıkış gereklidir. Aynı kaynaktan okunan iki ayrı veri akışı oluşturmak yerine yeni bir dal eklenebilir. Bu şekilde, her iki toplamaları de aynı veri akışının bir parçası olarak yürütülebilir. 
 
-> [!NOTE]
-> "Yeni dal", yalnızca dallandırma yapmaya çalıştığınız geçerli konumdan sonraki bir dönüşüm varsa + dönüştürme menüsünde bir eylem olarak gösterilir. Yani, select öğesinden sonra başka bir dönüşüm ekleyene kadar burada bir "yeni dal" seçeneği görmezsiniz
-
-![Dal](media/data-flow/branch2.png "Şube 2")
+![Yeni dal ekleme](media/data-flow/new-branch.png "Yeni dal ekleme")

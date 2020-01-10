@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8b29bbce1511b022def522d46c74b99967a76ea3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: edb2d3fa670475d9b08fe05494035949181a9240
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204529"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834343"
 ---
 # <a name="sql-server-vm-on-an-azure-dedicated-host"></a>Azure ayrılmış ana bilgisayar üzerinde SQL Server VM 
 
@@ -28,16 +28,17 @@ Bu makalede, [Azure adanmış ana bilgisayar](/azure/virtual-machines/windows/de
 ## <a name="overview"></a>Genel Bakış
 [Azure adanmış ana bilgisayar](/azure/virtual-machines/windows/dedicated-hosts) , bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, Microsoft 'un bir kaynak olarak sağlanmış olan veri merkezlerinde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
 
+## <a name="limitations"></a>Sınırlamalar
 
-[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-common-dedicated-hosts-preview.md)]
-
+- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
+- Aşağıdaki VM Serisi destekleniyor: DSv3 ve ESv3. 
 
 ## <a name="licensing"></a>Lisanslama
 
 SQL Server VM Azure ayrılmış bir konağa eklerken iki farklı lisans seçeneği arasından seçim yapabilirsiniz. 
 
-  - **SQL VM lisanslama**: Bu, her bir SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
-  - **Adanmış ana bilgisayar lisanslama**: SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde ödendiği Azure adanmış ana bilgisayar için kullanılabilen yeni lisanslama modeli. 
+  - **SQL VM lisanslama**: Bu, her SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
+  - **Adanmış konak lisanslama**: Azure adanmış ana bilgisayar için sunulan yeni lisanslama modeli, SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde için ödendiği yerdir. 
 
 
 Mevcut SQL Server lisanslarını kullanmaya yönelik konak düzeyi seçenekleri: 
@@ -68,7 +69,7 @@ Ana bilgisayarınız olduğundan bu yana bir 1:2 oranıyla sanallaştırmayı ay
 
 **S: Azure Hibrit Avantajı Azure ayrılmış ana bilgisayarında Windows Server/SQL Server lisansları için nasıl çalışır?**
 
-Y: Müşteriler, Azure Hibrit Avantajı kullanarak Azure adanmış ana bilgisayar üzerinde daha düşük bir ücret ödemek için mevcut Windows Server ve Yazılım Güvencesi kapsamındaki SQL Server lisanslarını veya uygun abonelik lisanslarını kullanabilir. Windows Server Datacenter ve SQL Server Enterprise Edition müşterileri, tüm Konağı lisanslarsa sınırsız sanallaştırma (ana bilgisayarın fiziksel kapasitesine bağlı olarak çok sayıda Windows Server sanal makinesi olarak dağıtın) alır ve Azure Hibrit Avantajı kullanın.  Azure ayrılmış ana bilgisayarındaki tüm Windows Server ve SQL Server iş yükleri, ek ücret ödemeden Windows Server ve SQL Server 2008/R2 için genişletilmiş güvenlik güncelleştirmelerine de uygundur. 
+Y: müşteriler, Azure Hibrit Avantajı kullanarak Azure adanmış ana bilgisayar üzerinde daha düşük bir ücret ödemek için mevcut Windows Server ve Yazılım Güvencesi kapsamındaki SQL Server lisanslarını veya uygun abonelik lisanslarını kullanabilir. Windows Server Datacenter ve SQL Server Enterprise Edition müşterileri, tüm Konağı lisanslarsa sınırsız sanallaştırma (ana bilgisayarın fiziksel kapasitesine bağlı olarak çok sayıda Windows Server sanal makinesi olarak dağıtın) alır ve Azure Hibrit Avantajı kullanın.  Azure ayrılmış ana bilgisayarındaki tüm Windows Server ve SQL Server iş yükleri, ek ücret ödemeden Windows Server ve SQL Server 2008/R2 için genişletilmiş güvenlik güncelleştirmelerine de uygundur. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

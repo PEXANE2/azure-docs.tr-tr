@@ -1,6 +1,6 @@
 ---
-title: Azure Güncelleştirme Yönetimi Linux karma Runbook Worker sistem durumunu anlayın
-description: Linux üzerinde Güncelleştirme Yönetimi destekleyen karma runbook çalışanıyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
+title: Linux karma Runbook Worker 'ı tanılama-Azure Güncelleştirme Yönetimi
+description: Linux üzerinde Güncelleştirme Yönetimi destekleyen Azure Otomasyonu karma Runbook Worker ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849268"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769838"
 ---
-# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Güncelleştirme Yönetimi Linux karma Runbook Worker sistem durumunu anlayın
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Güncelleştirme Yönetimi için Linux karma Runbook Worker sistem durumunu anlama ve çözme
 
 Güncelleştirme Yönetimi ' de makinenizin **Ready** olarak görünmemesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
 

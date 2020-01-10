@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562060"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834044"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Işlevleri tanılamaları genel bakış
 
@@ -42,9 +42,9 @@ Bir kutucuk seçtikten sonra kutucukta açıklanan sorunla ilgili konuların bir
 
 Bir konu seçtikten sonra, işlev uygulamanıza özgü bir tanılama raporu görüntüleyebilirsiniz. Tanılama raporları, uygulamanız ile ilgili herhangi bir sorun olup olmadığını göstermek için durum simgeleri kullanır. Sorunun ayrıntılı açıklaması, Önerilen Eylemler, ilgili ölçümler ve yararlı belgeler görürsünüz. Özelleştirilmiş tanılama raporları, işlev uygulamanızda çalıştırılan bir denetim serisinden oluşturulur. Tanılama raporları, işlev uygulamanızda sorun giderme için yararlı bir araç olabilir ve sorunu çözmeye yönelik size rehberlik eder.
 
-## <a name="find-the-problem-code"></a>Sorun kodunu bulun 
+## <a name="find-the-problem-code"></a>Sorun kodunu bulun
 
-Betik tabanlı işlevler için, özel durumlara veya hatalara neden olan kod satırında daraltmak üzere **işlev uygulaması azaltma veya raporlama hataları** altında **Işlev yürütme** ve **hataları** kullanabilirsiniz. Bu özellik, temel nedeni almak ve belirli bir kod satırından sorunları düzeltmek için yararlı bir araç olabilir. Bu seçenek, önceden derlenmiş C# ve Java işlevleri için kullanılamaz.
+Betik tabanlı işlevler için, özel durumlara veya hatalara neden olan kod satırında daraltmak üzere **işlev uygulaması azaltma veya raporlama hataları** altında **Işlev yürütme ve hataları** kullanabilirsiniz. Bu özellik, temel nedeni almak ve belirli bir kod satırından sorunları düzeltmek için yararlı bir araç olabilir. Bu seçenek, önceden derlenmiş C# ve Java işlevleri için kullanılamaz.
 
 ![İşlev yürütme hatalarında tanılama raporu](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

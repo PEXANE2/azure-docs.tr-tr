@@ -8,24 +8,28 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818657"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779111"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
 Bu bölümdeki tablolarda Market teklifleri oluşturma ve ilgi çekici öneriler sağlanır. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [bulut Iş ortağı portalına](https://cloudpartner.azure.com/#insights)gidin. 
 
 ## <a name="storefront-offer-details"></a>Storefront teklif ayrıntıları
+
 | Storefront ayarı | En iyi yöntem |
 |:--- |:--- |  
 | Teklif Adı | Güçlü bir başlık sağlayın:<br> <ul> <li> Uygulamanızın adı müşterilerinizin çekirdek değerini iletmelidir. </li> <li> Arama motoru sonuçlarında daha yüksek derecelendirme almak için uygulama başlığınızı arama anahtar sözcüklerini ekleyin. </li> </ul> Danışmanlık hizmeti listelerinin ayarlanan başlık biçimini izleyin:<br>[Teklif adı: [Duration] [teklif türü] (örneğin, *contoso: 2 haftalık uygulama*) <br><br> Marka yönergelerine uyar:<br>Microsoft ticari markaları ve Microsoft yazılımlarının, ürünlerinin ve hizmetlerinin adlarına başvurduğunuzda, [Microsoft ticari marka ve marka kılavuzlarını](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) ve ilgili, ürüne özgü diğer yönergeleri izleyin. |
 | Teklif açıklaması | Net bir teklif açıklaması sağlayın:<br> <ul> <li> Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. </li> <li> İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun. </li> <li> Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın. </li> <li> Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.</li> <li> Ayrıca, danışmanlık hizmeti listeleri sağladığınız profesyonel hizmeti açıkça sağlamalıdır. </li></ul> Değer önerinizdeki çekirdek bileşenleri aşağıdaki bilgileri içermelidir:<ul><li>Ürünün açıklaması.</li><li>Üründen faydalanan Kullanıcı türü.</li><li>Müşterinin ürün adresi olması veya sorun olması.</li></ul> |
 
+Bu bölümdeki tablolarda Market teklifleri oluşturma ve ilgi çekici öneriler sağlanır. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [bulut Iş ortağı portalına](https://cloudpartner.azure.com/#insights)gidin. 
+
 ## <a name="storefront-listing-details"></a>Storefront listeleme ayrıntıları
+
 | Storefront ayarı | En iyi yöntem |
 |:--- |:--- |  
 | Sektörler: yalnızca AppSource uygulamaları ve danışmanlık hizmetleri | Teklifinizin sektöre özgü ihtiyaçları varsa sektörlerin seçimini yapın: <ul><li> Teklif tanımlarınızın sektöre özgü yeteneklerini çağırın.</li> </ul> **Note**: en fazla seçenek sayısı teklif türüne göre değişir ve [bulut iş ortağı portalında](https://cloudpartner.azure.com/#insights)belirtilir. |
@@ -46,7 +50,7 @@ Bir teklif için en fazla iki kategori ve iki alt kategori seçebilirsiniz. Aşa
 | Dağıtım    | \* Toptan <br> \* Paket & paket dağıtımı |
 | Eğitim     | \* Daha yüksek eğitim <br> \* Birincil & Ikincil Eğitim/K-12 <br> \* Kitaplıklar & Museums |
 | Finansal Hizmetler     | \* Bankacılık & sermaye piyasaları <br> \* Sigorta |
-| Devlet    | \* Savunma & Zeka (Ulusal ve genel güvenlik olarak adlandırılabilmesi için kullanılır) <br> \* Genel güvenlik & Let <br> \* Cıvilian kamu |
+| Resmi Kurumlar    | \* Savunma & Zeka (Ulusal ve genel güvenlik olarak adlandırılabilmesi için kullanılır) <br> \* Genel güvenlik & Let <br> \* Cıvilian kamu |
 | Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır)   | \* Sağlık payor <br> \* Sistem durumu sağlayıcısı <br> \* İlaç |
 | Üretim & kaynakları (üretim olarak adlandırılabilmesi için kullanılır)   | \* Kimyasal & Agrokimyasal <br> \* Ayrık üretim <br> \* Enerji |
 | Perakende & tüketici malları (perakende olarak adlandırılabilmesi için kullanılır)  | \* Tüketici malları <br> \* Perakendeciler |
@@ -56,6 +60,18 @@ Bir teklif için en fazla iki kategori ve iki alt kategori seçebilirsiniz. Aşa
 | \* & Yolculuklama  | \* Oteller & boş <br> \* Seyahat & ulaşım <br> \* Restoran hizmetleri & Restoranlar |
 | \* Diğer kamu sektörü endüstrileri  | \* Orman & balığa cılık <br> \* Kar amacı |
 | \* Emlak  | \* Diğer-kesimli |
+
+### <a name="industries"></a>Sektörler
+
+Sektör seçimi yalnızca Azure Marketi 'nde yayınlanan AppSource ve danışmanlık hizmetleri 'ne yayımlanan teklifler için geçerlidir. Teklifiniz sektörün sektöre özel ihtiyaçlarını ele alıyorsa sektörlerin ve/veya verticiler ' i seçin. Her sektör için en fazla iki (2) sektör ve iki (2) ifade seçebilirsiniz.
+
+### <a name="applicable-products"></a>Geçerli Ürünler
+
+AppSource 'ta seçili Ürünler altında gösterilmesi için uygulamanızın birlikte çalıştığı ilgili ürünleri seçin.
+
+### <a name="search-keywords"></a>Anahtar sözcüklerde ara
+
+Anahtar sözcükler, müşterilerin arama yaparken teklifinizi bulmasına yardımcı olabilir. Teklifiniz için en üst arama anahtar sözcüklerini ve açıklama teklif listesi ayrıntıları bölümünün anahtar sözcük bölümünde yer alarak teklif Özeti ve açıklamasına dahil edin.
 
 ## <a name="storefront-marketing-details"></a>Storefront pazarlama ayrıntıları
 | Storefront ayarı | En iyi yöntem |
@@ -80,6 +96,6 @@ AppSource URL 'nize parametreler ekleyerek, [bulut Iş ortağı portalındaki](h
 
 [Ticari Market avantajlarınız](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)hakkında daha fazla bilgi edinin.
 
-Teklifinizi oluşturmak ve yapılandırmak için [bulut iş ortağı portalı](https://cloudpartner.azure.com) oturum açın.
+Oturum [bulut iş ortağı portalı](https://cloudpartner.azure.com) oluşturmak ve teklifinizi yapılandırmak için.
 
 ---

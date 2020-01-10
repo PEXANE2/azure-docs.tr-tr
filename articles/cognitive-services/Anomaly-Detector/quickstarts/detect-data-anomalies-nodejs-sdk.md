@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: Python için anomali algılayıcı istemci kitaplığını kullanarak veri anormalilerini algılama'
 titleSuffix: Azure Cognitive Services
-description: Veri serinizdeki tüm verileri toplu olarak veya akış verilerinde saptamak için anomali algılayıcı API 'sini kullanın.
+description: Veri serinizdeki tüm verileri toplu olarak veya bu hızlı başlangıç ile akış verilerinde tespit etmek için anomali algılayıcı API 'sini kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 084ef1b81f7db5bd4a2d371e0c322211c0f0e142
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483503"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770450"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için anomali algılayıcı istemci kitaplığı
 
@@ -28,7 +28,7 @@ Node. js için anomali algılayıcı istemci kitaplığını kullanarak şunlar�
 
 [Başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) [GitHub 'da kodu bulun](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector) | 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Node. js](https://nodejs.org/) ' nin geçerli sürümü
@@ -67,7 +67,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişken oluşturun. Uy
 `ms-rest-azure` ve `azure-cognitiveservices-anomalydetector` NPM paketlerini yükler. Bu hızlı başlangıçta CSV ayrıştırma kitaplığı da kullanılır:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
+npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
 Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirilecektir.

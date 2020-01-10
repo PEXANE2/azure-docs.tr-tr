@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701841"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772372"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 
@@ -22,7 +22,7 @@ ms.locfileid: "74701841"
 
 Bu makalede, yaprak cihazlardan ileti alan üç IoT Edge modülü oluşturacağız, verileri Machine Learning modelinize aracılığıyla çalıştırır ve ardından öngörüleri IoT Hub iletebilirsiniz.
 
-IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bir ileti Aracısı olarak kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca iletileri kabul ettikleri girişleri ve ileti yazdıkları çıkışları belirtmeleri gerekir.
+IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bir ileti Aracısı olarak kullanmak, modülleri birbirinden bağımsız olarak tutar. Modüller yalnızca üzerinde iletileri ve bunlar iletileri yazma çıkışları kabul girişleri belirtmeniz gerekir.
 
 IoT Edge cihazının bizimle ilgili dört şeyi yerine getirebilmemiz istiyoruz:
 
@@ -39,13 +39,13 @@ Bu görevleri gerçekleştirmek için üç özel modül kullanıyoruz:
 
 * **Yönlendirici modülü:** Yönlendirici modülü, aşağı akış yaprak cihazlarından iletileri alır, ardından iletileri sınıflandırıcılara biçimlendirir ve gönderir. Modül daha sonra sınıflandırıcıdan iletileri alır ve iletiyi avro Writer modülüne iletir. Son olarak, modül yalnızca IoT Hub RUL tahminini gönderir.
 
-  * Girişi
+  * Inputs:
     * **Deviceınput**: yaprak cihazlardan iletileri alır
     * **Rulınput:** "amlOutput" öğesinden iletileri alır
 
-  * Çıkışı
+  * Çıkışlar:
     * **sınıflandır:** Iletileri "amlInput" öğesine gönderir
-    * **writeAvro:** "Avromoduleınput" iletilerini gönderir
+    * **writeAvro:** Iletileri "Avromoduleınput" öğesine gönderir
     * **toIotHub:** iletileri bağlı IoT Hub ileten $upstream iletileri gönderir
 
 Aşağıdaki diyagramda, tam çözüm için modüller, girişler, çıktılar ve IoT Edge hub yolları gösterilmektedir:
@@ -639,7 +639,7 @@ Yönlendirici ve sınıflandırıcıda, yalnızca cihaz KIMLIĞI ve cihaz için 
 
 13. **Test rotası**seçin. Sınama başarılı olursa "ileti sorguyla eşleşti." iletisini görürsünüz.
 
-14. **Kaydet** düğmesine tıklayın.
+14. **Save (Kaydet)** düğmesine tıklayın.
 
 #### <a name="update-turbofandevicetostorage-route"></a>TurbofanDeviceToStorage yolunu Güncelleştir
 
@@ -828,7 +828,7 @@ Bu makalede, üç modülle, sınıflandırıcı, yönlendirici ve dosya yazarı/
 Aşağıdaki sayfalarda daha fazla bilgi bulabilirsiniz:
 
 * [IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin](module-composition.md)
-* [IoT Hub ileti yönlendirme sorgusu sözdizimi](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
+* [IoT Hub ileti yönlendirme sorgusu söz dizimi](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub ileti yönlendirme: Şu anda ileti gövdesinde yönlendirme ile](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [IoT Hub ile dosyaları karşıya yükleme](../iot-hub/iot-hub-devguide-file-upload.md)
 * [IoT Hub ile cihazınızdan buluta dosya yükleme](../iot-hub/iot-hub-python-python-file-upload.md)

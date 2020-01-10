@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996740"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768597"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -35,11 +35,11 @@ Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken
 * HTTP uygulama yönlendirme eklentisi kullanılamıyor.
 * AKS kümesi birden çok düğüm havuzu kullanmak için standart SKU yük dengeleyiciyi kullanmalıdır, özellik temel SKU yük dengeleyicilerle desteklenmez.
 * AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
-* Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez veya silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
 * Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
 * AKS kümesinde en fazla sekiz düğüm havuzu olabilir.
 * AKS kümesi, bu sekiz düğüm havuzunda en fazla 800 düğüme sahip olabilir.
-* Tüm düğüm havuzları aynı alt ağda bulunmalıdır.
+* Tüm düğüm havuzlarının aynı VNET ve alt ağda yer alması gerekir.
+* Küme oluşturma zamanında birden çok düğüm havuzu oluştururken, düğüm havuzları tarafından kullanılan tüm Kubernetes sürümlerinin denetim düzlemi için ayarlanan sürüm kümesiyle eşleşmesi gerekir. Bu, küme, düğüm başına havuz işlemleri kullanılarak sağlandıktan sonra güncelleştirilebilen olabilir.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 

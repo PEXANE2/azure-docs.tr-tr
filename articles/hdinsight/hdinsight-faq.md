@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706254"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830386"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: sık sorulan sorular
 
@@ -84,23 +84,9 @@ Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek i
 
 - Oluşturma sırasında veya sonrasında betikler. Betikler, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK ' dan kullanabileceğiniz bir yapılandırma seçeneği olan [betik eylemi](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)aracılığıyla çağrılır. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir.
 
-- kümeyi sağlamadıktan sonra `sudo` veya diğer yöntemler.
-  
 - Ekosistem uygulamalarını yüklemek için [HDInsight uygulama platformu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) .
 
-Ancak, Microsoft Desteği ekipler yalnızca aşağıdaki durumlar için destek sunabilir:
-
-- Betiği yüklerken oluşan sorunlar veya hatalar. Özel betiklerin yürütülmesi sırasında oluşan tüm hatalar destek biletinin kapsamı dışındadır.
-
-- Küme oluşturma işleminin parçası olan ek uygulamalar. 
-
 Desteklenen bileşenlerin listesi için bkz. [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
-
-Tek tek bileşenlere yönelik destek küme türüne göre de değişiklik gösterebilir. Örneğin, Spark bir Kafka kümesinde desteklenmez ve tam tersi de geçerlidir.
-
-Küme oluşturma işlemi dışındaki uygulamalar ve hizmetler için, destek için satıcı veya hizmet sağlayıcısına başvurun. Birçok topluluk desteği sitesini de kullanabilirsiniz. HDInsight ve Stack Overflow [Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) örnekleri aşağıda [](https://stackoverflow.com/)verilmiştir. Apache projelerinde Ayrıca, [Apache Web sitesinde](https://apache.org/)proje siteleri de vardır. [Hadoop](https://hadoop.apache.org/)bir örnektir. 
-
-Azure desteği hakkında daha fazla bilgi için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kümede önceden yüklenmiş olan bileşenleri yükseltebilir miyim?
 
@@ -114,7 +100,7 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Nasıl yaparım?, ambarı 'nda saat dilimini değiştirmek mi istiyorsunuz?
 
-1. https://CLUSTERNAME.azurehdinsight.net konumundaki ambarı Web Kullanıcı arabirimini açın, burada CLUSTERNAME kümenizin adıdır.
+1. `https://CLUSTERNAME.azurehdinsight.net`konumundaki ambarı Web Kullanıcı arabirimini açın, burada CLUSTERNAME kümenizin adıdır.
 2. Sağ üst köşede Yönetici ' yi seçin | Ayarlar. 
 
    ![Ambarı ayarları](media/hdinsight-faq/ambari-settings.png)
@@ -165,7 +151,7 @@ Evet, aynı HDInsight sürümünü kullandıkları sürece, birden çok kümede 
 
 Bağlantı noktalarını 22 ve bağlantı noktası 23 ' ü engellerseniz, kümeye SSH erişimi olmayacaktır. Bu bağlantı noktaları HDInsight hizmeti tarafından kullanılmaz.
 
-Daha fazla bilgi için aşağıdaki belgelere bakın:
+Daha fazla bilgi için, aşağıdaki belgelere bakın:
 
 - [Ağ trafiğini denetleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
 

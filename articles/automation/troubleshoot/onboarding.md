@@ -1,5 +1,5 @@
 ---
-title: Güncelleştirme Yönetimi, Değişiklik İzleme ve envanteri ekleme hatalarını giderme
+title: Azure Otomasyonu yönetim çözümlerini ekleme sorunlarını giderme
 description: Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümleriyle ekleme hatalarını giderme hakkında bilgi edinin
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849318"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769906"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>Çözüm ekleme sırasında hata giderme
+# <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Güncelleştirme Yönetimi, Değişiklik İzleme ve stok ekleme sırasında hata giderme
 
 Güncelleştirme Yönetimi veya Değişiklik İzleme ve envanter gibi çözümleri eklerken hatalarla karşılaşabilirsiniz. Bu makalede oluşabilecek çeşitli hatalar ve bunların nasıl giderileceği açıklanmaktadır.
 
@@ -140,7 +140,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Nedeni
 
-Bu hata, Otomasyon hesabınıza bağlı olan Log Analytics çalışma alanınızda hala etkin olan çözümlere sahip olduğunuzda ve bağlantılı bir Analtus çalışma alanını günlüğe kaydettiğinizde oluşur.
+Bu hata, Otomasyon hesabınıza ve bağlantılı Log Analytics çalışma alanına bağlı Log Analytics çalışma alanınızda hala etkin olan çözümlere sahip olduğunuzda oluşur.
 
 ### <a name="resolution"></a>Çözünürlük
 

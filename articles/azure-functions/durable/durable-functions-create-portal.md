@@ -4,12 +4,12 @@ description: Portal geliştirme için Azure Işlevleri Dayanıklı İşlevler uz
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231474"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769651"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -22,7 +22,7 @@ Azure Işlevleri için [dayanıklı işlevler](durable-functions-overview.md) uz
 
 ## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-Herhangi bir işlevin yürütülmesini barındırmak için bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevlerinizi bir mantıksal birim olarak gruplandırmanıza olanak tanır. .NET veya JavaScript uygulaması oluşturabilirsiniz.
+Herhangi bir işlevin yürütülmesini barındırmak için bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevlerinizi bir mantıksal birim olarak gruplandırmanıza olanak tanır. .NET veya JavaScript uygulaması oluşturabilirsiniz.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -58,7 +58,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız, [`durable-functions` NPM p
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator işlevi oluşturma
 
-1. İşlev uygulamanızı genişletin ve **İşlevler+'in yanındaki**  düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızı genişletin ve **İşlevler**'in yanındaki **+** düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -68,7 +68,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız, [`durable-functions` NPM p
 
 1. Arama alanına `durable` yazın ve ardından **DAYANıKLı işlevler http başlangıç** şablonunu seçin.
 
-1. İstendiğinde, Azure DurableTask uzantısını işlev uygulamasına herhangi bir bağımlılığı **yüklemek için,** ' ı seçin. Bir verme işlevi uygulaması için uzantıyı yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. İstendiğinde, Azure DurableTask uzantısını ve işlev uygulamasındaki tüm bağımlılıkları yüklemek için **Install** ' u seçin. Uzantıyı işlev uygulamasına yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
 
     ![Bağlama uzantılarını yükleme](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
@@ -88,7 +88,7 @@ JavaScript Dayanıklı İşlevler oluşturuyorsanız, [`durable-functions` NPM p
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    Bu örnekte, `{your-function-app-name}` işlev uygulamanızın adı olan etki alanıdır. Yanıt iletisi, yürütmeyi izlemek ve yönetmek için kullanabileceğiniz bir dizi URI uç noktası içerir ve aşağıdaki örnekte olduğu gibi görünür:
+    Bu örnekte, `{your-function-app-name}` işlev uygulamanızın adı olan etki alanıdır. Yanıt iletisi, aşağıdaki örneğe benzeyen ve yürütmeyi izleyip yönetmenizi sağlamak için kullanabileceğiniz bir dizi URI uç noktasını içerir:
 
     ```json
     {  

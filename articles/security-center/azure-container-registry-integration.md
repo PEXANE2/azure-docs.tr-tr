@@ -12,21 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 4cc88e7c04d10907a9a6386b1266eb8031d60926
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552687"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780054"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Güvenlik Merkezi ile tümleştirme Azure Container Registry (Önizleme)
 
 Azure Container Registry (ACR), Azure dağıtımları için kapsayıcı görüntülerinizi merkezi bir kayıt defterinde depolayan ve yöneten, yönetilen ve özel bir Docker kayıt defteri hizmetidir. Bu, açık kaynaklı Docker kayıt defteri 2,0 ' i temel alır.
 
-Kayıt defteriniz ve görüntülerinizin güvenlik açıklarına daha derin görünürlük sağlamak için Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları isteğe bağlı kapsayıcı kayıt defterleri paketini etkinleştirebilir. Bu özelliği kullanma maliyeti, tarama başına değil, görüntü başına ücretlendirilir. Daha fazla bilgi için bkz. [Fiyatlandırma](security-center-pricing.md). Paket etkin olduğunda, kayıt defterine bir görüntü gönderildiğinde Güvenlik Merkezi, kayıt defterinizde bulunan görüntüleri otomatik olarak tarar.
+Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı kayıt defterleri paketini ekleyebilirsiniz. Bu isteğe bağlı özellik, kayıt defterlerinden görüntülerin güvenlik açıklarına daha derin görünürlük getirir. Abonelik düzeyindeki paketi bir abonelikteki tüm kayıt defterlerini kapsayacak şekilde etkinleştirin veya devre dışı bırakın. Bu özellik, [fiyatlandırma sayfasında](security-center-pricing.md)gösterildiği gibi tarama başına değil, görüntü başına ücretlendirilir. 
 
-> [!NOTE]
-> Güvenlik Merkezi 'nin bir kayıt defterinin ilk taraması, yalnızca kapsayıcı kayıt defterleri paketi etkinleştirildikten ve bir görüntü kayıt defterine gönderildikten sonra gerçekleşir.
+Kapsayıcı kayıt defterleri paketini etkinleştirme, güvenlik merkezi 'nin kayıt defterine gönderilen görüntüleri taramaya hazırlanmasını sağlar. Taramalar görüntü düzeyindedir: Güvenlik Merkezi kayıt defterinizi taramıyor, kayıt defterinde depolanan görüntüleri tarıyor. 
+
+Kayıt defterinize her görüntü gönderildiğinde, güvenlik merkezi bu görüntüyü otomatik olarak tarar. Bir görüntünün taramasını tetiklemek için onu deponuza gönderin.
+
 
 Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra), bulgular aşağıdaki gibi güvenlik merkezi önerilerinde mevcuttur:
 

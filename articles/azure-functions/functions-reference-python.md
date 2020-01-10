@@ -2,13 +2,13 @@
 title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226639"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769015"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -100,8 +100,8 @@ Ana proje klasörü (\_\_App\_\_) aşağıdaki dosyaları içerebilir:
 * *Local. Settings. JSON*: yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
 * *requirements. txt*: sistemin Azure 'a yayımlarken yüklediği paketlerin listesini içerir.
 * *Host. JSON*: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [Host. JSON](functions-host-json.md).
-* *funcignore*: (isteğe bağlı) Azure 'a yayımlanmaması gereken dosyaları bildirir.
-* *gitignore*: (isteğe bağlı) yerel. Settings. JSON gibi bir git deposundan dışlanan dosyaları bildirir.
+* *. funcignore*: (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
+* *. gitignore*: (isteğe bağlı) yerel. Settings. JSON gibi bir git deposundan dışlanan dosyaları bildirir.
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (Function. JSON) vardır. 
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-İşlev çağrıldığında, HTTP isteği işleve `req`olarak geçirilir. Yol URL 'sindeki _kimliğe_ göre Azure Blob depolama alanından bir giriş alınır ve işlev gövdesinde `obj` olarak kullanılabilir hale getirilir.  Burada belirtilen depolama hesabı, işlev uygulaması tarafından kullanılan depolama hesabı olan ' de bulunan bağlantı dizesidir.
+İşlev çağrıldığında, HTTP isteği işleve `req`olarak geçirilir. Yol URL 'sindeki _kimliğe_ göre Azure Blob depolama alanından bir giriş alınır ve işlev gövdesinde `obj` olarak kullanılabilir hale getirilir.  Burada, belirtilen depolama hesabı, işlev uygulaması tarafından kullanılan depolama hesabı olan AzureWebJobsStorage App ayarında bulunan bağlantı dizesidir.
 
 
 ## <a name="outputs"></a>Çıkışlar
@@ -280,28 +280,30 @@ Bu işlevde, `name` sorgu parametresinin değeri, [HttpRequest] nesnesinin `para
 
 Benzer şekilde, döndürülen [HttpResponse] nesnesindeki yanıt iletisi için `status_code` ve `headers` belirleyebilirsiniz.
 
-## <a name="concurrency"></a>Eşzamanlılık
+## <a name="scaling-and-concurrency"></a>Ölçeklendirme ve eşzamanlılık
 
-Varsayılan olarak, Python Runtime Işlevleri tek seferde yalnızca bir işlev çağrısını işleyebilir. Bu eşzamanlılık düzeyi aşağıdaki koşullardan biri veya birkaçı altında yeterli olmayabilir:
+Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Python için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik (Kullanıcı tarafından yapılandırılamaz) eşikleri kullanır. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-+ Aynı anda gerçekleştirilen bir dizi çağırmaları işlemeye çalışıyorsunuz.
-+ Çok sayıda g/ç olayını işliyoruz.
-+ Uygulamanız g/ç bağlıydı.
+Bu ölçeklendirme davranışı birçok uygulama için yeterlidir. Ancak, aşağıdaki özelliklere sahip uygulamalar etkin şekilde ölçeklenmeyebilir:
 
-Bu durumlarda, zaman uyumsuz olarak çalıştırarak ve birden çok dil çalışan işlemini kullanarak performansı geliştirebilirsiniz.  
+- Uygulamanın birçok eşzamanlı çağırma işlemesi gerekir.
+- Uygulama çok sayıda g/ç olayını işler.
+- Uygulama g/ç bağlıydı.
 
-### <a name="async"></a>Eş
+Bu gibi durumlarda, zaman uyumsuz desenler ve birden çok dil çalışan işlemi kullanarak performansı daha da artırabilirsiniz.
 
-İşlevinizin zaman uyumsuz bir eş yordam olarak çalıştırılmasını sağlamak için `async def` ifadesini kullanmanızı öneririz.
+### <a name="async"></a>Zaman Uyumsuz
+
+Python tek iş parçacıklı bir çalışma zamanı olduğundan, Python için bir konak örneği bir seferde yalnızca bir işlev çağrısını işleyebilir. Çok sayıda g/ç olayını işleyen ve/veya g/ç bağlantılı uygulamalar için, işlevleri zaman uyumsuz olarak çalıştırarak performansı artırabilirsiniz.
+
+Bir işlevi zaman uyumsuz olarak çalıştırmak için, bu işlevi doğrudan [asyncıo](https://docs.python.org/3/library/asyncio.html) ile çalıştıran `async def` ifadesini kullanın:
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-`main()` işlevi zaman uyumlu olduğunda (`async` niteleyicisi olmadan), işlev bir `asyncio` iş parçacığı havuzunda otomatik olarak çalıştırılır.
+`async` anahtar sözcüğü olmayan bir işlev, zaman uyumsuz CIO iş parçacığı havuzunda otomatik olarak çalıştırılır:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,7 +314,9 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>Birden çok dil çalışan işlemi kullanma
 
-Varsayılan olarak, her Işlev ana bilgisayar örneği tek bir dil çalışan işlemine sahiptir. Ancak, konak örneği başına birden çok dil çalışan işlemine sahip olmak için destek vardır. İşlev etkinleştirmeleri daha sonra bu dil çalışan süreçler arasında eşit olarak dağıtılabilir. Bu değeri değiştirmek için [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) uygulama ayarını kullanın. 
+Varsayılan olarak, her Işlev ana bilgisayar örneği tek bir dil çalışan işlemine sahiptir. [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) uygulama ayarını kullanarak konak başına çalışan işlem sayısını (10 ' a kadar) artırabilirsiniz. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır. 
+
+FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir. 
 
 ## <a name="context"></a>Bağlam
 
@@ -394,7 +398,7 @@ requests==2.19.1
 pip install -r requirements.txt
 ```
 
-## <a name="publishing-to-azure"></a>Azure 'da yayımlama
+## <a name="publishing-to-azure"></a>Azure’da yayımlama
 
 Yayımlamaya hazır olduğunuzda, tüm genel kullanıma açık bağımlılıklarınızın, proje dizininizin kökünde bulunan requirements. txt dosyasında listelendiğinden emin olun. 
 
@@ -637,7 +641,7 @@ OPTIONS HTTP yöntemini desteklemek için function. JSON dosyanızı da güncell
     ...
 ```
 
-Bu yöntem, Chrome tarayıcısı tarafından izin verilen çıkış noktaları listesine anlaşmak için kullanılır. 
+Bu HTTP yöntemi, Web tarayıcıları tarafından izin verilen çıkış noktaları listesine anlaşmak için kullanılır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için bandı yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
+description: Kullanıcı hesaplarını otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,156 +15,164 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 34d05d6392e00757bf1e5562ffd8341ad04cc9dc
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807764"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767849"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bandı yapılandırma
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu makalede, kullanıcıları veya grupları otomatik olarak sağlamak ve sağlamak üzere Azure Active Directory (Azure AD) yapılandırma hakkında bilgi edineceksiniz.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+> Bu makalede, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmet ve sık sorulan soruların yanıtları hakkında önemli bilgiler için, bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı, şu anda Önizleme aşamasındadır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu makalede özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Bir Azure AD kiracısı
 * [Bir bir bir bandı kiracı](https://harness.io/pricing/)
-* Yönetici izinlerine sahip bir kullanıcı hesabı.
+* *Yönetici* izinlerine sahip bir kullanıcı hesabı
 
-## <a name="assigning-users-to-harness"></a>Kullanıcıları bir bandı atama
+## <a name="assign-users-to-harness"></a>Kullanıcıları bir bandı ata
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların, her bir bandı erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları şu şekilde bir gruba atayabilirsiniz:
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların, her bir oturum için erişmesi gerektiğine karar verin. Daha sonra bu kullanıcıları veya grupları [bir kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)bölümündeki yönergeleri izleyerek, bu kullanıcılara veya gruplara atayabilirsiniz.
 
 ## <a name="important-tips-for-assigning-users-to-harness"></a>Kullanıcıları bir bandı atamaya yönelik önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının bu kullanıcıya atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısı atamanız önerilir. Ek kullanıcılar veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı bir kullanıcıya atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı bir kullanıcıya atadığınızda, **atama** iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. *Varsayılan erişim* rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
 ## <a name="set-up-harness-for-provisioning"></a>Sağlama için bir bandı ayarlama
 
-1. , Bir [yönetici konsolunda](https://app.harness.io/#/login)oturum açın. **Sürekli güvenlik > erişim yönetimi**' ne gidin.
+1. Bir [Yönetici Konsolu](https://app.harness.io/#/login)'nda oturum açın ve ardından **sürekli güvenlik** > **erişim yönetimi**' ne gidin.
 
     ![Yönetici Konsolu](media/harness-provisioning-tutorial/admin.png)
 
-2.  **API anahtarları**' na tıklayın.
+1. **API anahtarlarını**seçin.
 
-    ![, SCıM ekleme](media/harness-provisioning-tutorial/apikeys.png)
+    ![Anahtar API 'Sı bağlantısı](media/harness-provisioning-tutorial/apikeys.png)
 
-3. **Yeni anahtar Ekle**' ye tıklayın. **API anahtarı Ekle** iletişim kutusunda, bir **ad** girin ve açılır menüden **devralınan izinlerle** bir seçenek belirleyin. **Gönder** düğmesine tıklayın.
+1. **API anahtarı Ekle ' yi**seçin. 
 
-    ![Yeni anahtar Ekle](media/harness-provisioning-tutorial/addkey.png)
+    ![Ana API anahtar bağlantısı ekle](media/harness-provisioning-tutorial/addkey.png)
 
-    ![Yeni anahtar ekleme iletişim kutusu](media/harness-provisioning-tutorial/title.png)
+1. **API anahtarı Ekle** bölmesinde şunları yapın:
 
-3.  **Anahtarı**kopyalayın. Bu değer, Azure portal giriş uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+    ![Ana API anahtar bölmesi Ekle](media/harness-provisioning-tutorial/title.png)
+   
+   a. **Ad** kutusunda, anahtar için bir ad girin.  
+   b. Açılan **öğeden devralınan izinler** listesinden bir seçenek belirleyin. 
+   
+1. Seçin **gönderme**.
+
+1. **Anahtarı** Bu öğreticide daha sonra kullanmak üzere kopyalayın.
 
     ![Bandı oluşturma belirteci](media/harness-provisioning-tutorial/token.png)
 
 ## <a name="add-harness-from-the-gallery"></a>Galeriden bir bandı ekleyin
 
-Azure AD ile otomatik Kullanıcı sağlama için bandı yapılandırmadan önce, Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize bir bandı eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için bandı yapılandırmadan önce, Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize bir bandı eklemeniz gerekir.
 
-**Azure AD Uygulama Galerisi 'nden bir bandı eklemek için aşağıdaki adımları uygulayın:**
+1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+    !["Azure Active Directory" düğmesi](common/select-azuread.png)
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+1. **Tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+    !["Tüm uygulamalar" bağlantısı](common/enterprise-applications.png)
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
+    !["Yeni uygulama" düğmesi](common/add-new-app.png)
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
-
-4. Ara kutusuna, **Ekle ' ye**tıklayın, sonuçlar panelinde, ' **i seçin ve** ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+1. Arama kutusuna, **Ekle ' ye tıklayın, sonuçlar**listesinde, ' i seçin ve ardından uygulamayı eklemek için **Ekle** **düğmesini seçin.**
 
     ![Sonuçlar listesinde,](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-harness"></a>Otomatik Kullanıcı sağlamasını otomatik olarak oluşturma 
+## <a name="configure-automatic-user-provisioning-to-harness"></a>Otomatik Kullanıcı sağlamasını otomatik olarak 
 
-Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya Grup atamaları temelinde bulunan kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için adım adım kılavuzluk eder.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı veya grup atamalarını temel alan Kullanıcı veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için adım adım kılavuzluk eder.
 
 > [!TIP]
-> Ayrıca, ara [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)sunulan yönergeleri izleyerek, her bir BANDı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de
+> Ayrıca, ara [Çoklu oturum açma öğreticisindeki](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)yönergeleri izleyerek, her bir BANDı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Otomatik Kullanıcı sağlamaktan bağımsız olarak çoklu oturum açmayı yapılandırabilirsiniz, ancak bu iki özellik birbirini tamamlamada.
 
 > [!NOTE]
-> ' SCıM uç noktası hakkında daha fazla bilgi edinmek için [şunu inceleyin](https://docs.harness.io/article/smloyragsm-api-keys)
+> Bu uç nokta uç noktası hakkında daha fazla bilgi edinmek için, bkz. ana [API anahtarları](https://docs.harness.io/article/smloyragsm-api-keys) makalesi.
 
-### <a name="to-configure-automatic-user-provisioning-for-harness-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için:
+Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com), **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **bandı**' ni seçin.
+1. Uygulamalar listesinde, **bandı**' ni seçin.
 
     ![Uygulamalar listesindeki bir bağlantı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+1. **Sağlamayı**seçin.
 
-    ![Sağlama sekmesi](common/provisioning.png)
+    ![Sağlama düğmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+1. **Sağlama modu** aşağı açılan listesinde **Otomatik**' i seçin.
 
-    ![Sağlama sekmesi](common/provisioning-automatic.png)
+    !["Sağlama modu" açılan listesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw` girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin, bir bandı bağlamak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, bu ortamınızda yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+1. **Yönetici kimlik bilgileri**altında şunları yapın:
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+ 
+   a. **Kiracı URL 'si** kutusuna **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** girin.  
+   b. **Gizli belirteç** kutusunda, "sağlama Için bandı ayarlama" bölümünün 6. adımında kaydettiğiniz SCIM kimlik doğrulama belirteci değerini girin.  
+   c. Azure AD 'nin, bir bandı bağlamak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, bu ortamınızda *yönetici* izinlerine sahip olduğundan emin olun ve sonra yeniden deneyin.
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+1. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve ardından **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    !["Bildirim e-postası" kutusu](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+1. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları**
+1. **Eşlemeler**altında **Azure Active Directory Kullanıcıları**
 
-    ![Kullanıcı eşlemelerini](media/harness-provisioning-tutorial/usermappings.png)
+    !["Kullanıcı Azure Active Directory Kullanıcıları" bağlantısı yap](media/harness-provisioning-tutorial/usermappings.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'den bir oturum ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için, ara içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+1. **Öznitelik eşlemeleri**altında, Azure AD 'den bandı ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. *Eşleştirme* olarak seçilen öznitelikler, güncelleştirme işlemleri için, ara içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Kullanıcı öznitelikleri](media/harness-provisioning-tutorial/userattributes.png)
+    ![Kullanıcı "öznitelik eşlemeleri" bölmesi](media/harness-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını bir bandı olarak eşitler**' ı seçin.
+1. **Eşlemeler**' in altında, **Azure Active Directory gruplarını bir şekilde**seçin.
 
-    ![Grup eşlemeleri](media/harness-provisioning-tutorial/groupmappings.png)
+    !["Azure Active Directory gruplarını bir bandı ile eşitler" bağlantısı](media/harness-provisioning-tutorial/groupmappings.png)
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'den bandı olan grup özniteliklerini inceleyin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için, ara içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+1. **Öznitelik eşlemeleri**altında, Azure AD 'den bandı ile eşitlenen grup özniteliklerini inceleyin. *Eşleşen* özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için, ara içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
 
-    ![Bir grup özniteliği](media/harness-provisioning-tutorial/groupattributes.png)
+    !["Öznitelik eşlemeleri" bölmesi](media/harness-provisioning-tutorial/groupattributes.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+1. Kapsam filtrelerini yapılandırmak için, bkz. [kapsam filtreleri Ile öznitelik tabanlı uygulama sağlama](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Ara için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+1. **Ayarlar**' ın altında, ara IÇIN Azure AD sağlama hizmetini etkinleştirmek Için, **sağlama durumu** ' nu **Açık**' a değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Sağlama durumu anahtarı "on" olarak değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, bir gruba sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+1. **Ayarlar**' ın altında, **kapsam** açılan listesinde, sağlama yaptığınız kullanıcıları veya grupları nasıl eşitlemek istediğinizi seçin.
 
     ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Sağlama Kaydet düğmesi](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İşlem ilerlemesini izlemek ve kaynak üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan etkinlik raporuna yönelik bağlantıları izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, hazırlama yaptığınız kullanıcıların veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra gerçekleştirmesi daha uzun sürer. Eşitlemeler, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık olarak her 40 dakikada bir gerçekleşir. İlerlemeyi izlemek için **eşitleme ayrıntıları** bölümüne gidin. Ayrıca, Azure AD sağlama hizmeti tarafından her türlü gerçekleştirilen tüm eylemleri içeren bir sağlama etkinliği raporunun bağlantılarını da izleyebilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında rapor](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

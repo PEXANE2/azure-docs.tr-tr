@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f2eabf0167865333131e0f8e5b0c4ccb409e40e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420045"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771249"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
+
+>Bu URL 'YI kopyalayıp yapıştırarak güncelleştirmeler için ne zaman geri alınacağı hakkında bildirim alın: RSS akışı okuyucunuzun `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`.
 
 İle en son gelişmeleri güncel kalmak için bu makalede, ile hakkında bilgi sağlar:
 
@@ -33,6 +35,40 @@ ms.locfileid: "74420045"
 > Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-sdk), CLI veya desteklenen SDK 'lardan birini kullanın.
 
 Daha fazla bilgi için bkz. [Media Services V2 'den v3 'e geçiş Için geçiş kılavuzu](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="november-2019"></a>Kasım 2019
+
+### <a name="live-transcription-preview"></a>Canlı döküm önizlemesi
+
+Canlı döküm artık genel önizlemeye sunuldu ve Batı ABD 2 bölgesinde kullanıma sunulmuştur.
+
+Canlı döküm, canlı olaylarla birlikte eklenti özelliği olarak çalışmak üzere tasarlanmıştır.  Doğrudan geçiş ve standart ya da Premium kodlama canlı olaylarında desteklenir.  Bu özellik etkinleştirildiğinde, hizmet bilişsel hizmetler 'in [konuşmadan metne](../../cognitive-services/speech-service/speech-to-text.md) özelliğini kullanarak gelen seslerdeki konuşulan kelimeleri metne dönüştürür. Bu metin daha sonra MPEG-DASH ve HLS protokollerinde video ve ses ile birlikte teslim için kullanılabilir hale getirilir. Faturalandırma, "çalışıyor" durumundayken canlı etkinliğin ek maliyeti olan yeni bir eklenti ölçmesini temel alır.  Canlı döküm ve faturalandırma hakkında daha fazla bilgi için bkz. [canlı](live-transcription.md) döküm
+
+> [!NOTE]
+> Şu anda, canlı döküm yalnızca Batı ABD 2 bölgesinde önizleme özelliği olarak kullanılabilir. Konuşulan sözcüklerin yalnızca şu anda Ingilizce (en-US) olarak dökümünü destekler.
+
+### <a name="content-protection"></a>Content Protection
+
+Eylül ayının sınırlı bölgelerinde yayınlanan *belirteç yeniden yürütme engellemesi* özelliği artık tüm bölgelerde kullanılabilir.
+Media Services müşteriler artık, bir anahtar veya lisans istemek için aynı belirtecin kaç kez kullanılabileceği konusunda bir sınır ayarlayabilirler. Daha fazla bilgi için bkz. [belirteç yeniden yürütme engellemesi](content-protection-overview.md#token-replay-prevention).
+
+### <a name="new-recommended-live-encoder-partners"></a>Yeni önerilen canlı kodlayıcı iş ortakları
+
+RTMP canlı akışı için aşağıdaki yeni önerilen iş ortağı kodlayıcıları desteği eklendi:
+
+- [Cambrıa canlı 4,3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 ve maks. eylem kameralar](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>Dosya kodlama geliştirmeleri
+- Yeni bir Içerik algılayan kodlama önceden ayarı artık kullanılabilir. İçeriğe duyarlı kodlama kullanarak bir GOP hizalı MP4 'leri kümesi üretir. Herhangi bir giriş içeriği verildiğinde, hizmet giriş içeriğinin ilk hafif analizini yapar. Bu sonuçları, en uygun katman sayısını, uygun bit hızını ve uyarlamalı akış tarafından teslim edilmek üzere çözüm ayarlarını belirlemede kullanır. Bu ön ayar özellikle, çıkış dosyalarının daha düşük bit hızlarındaki ancak izleyicilere uygun bir deneyim sunan bir kalitede olduğu düşük karmaşıklık ve orta ölçekli videolar için geçerlidir. Çıktı, video ve ses Aralanmış MP4 dosyaları içerir. Daha fazla bilgi için bkz. [Açık API özellikleri](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
+- Media Encoder Standard içinde Re-sizer için iyileştirilmiş performans ve çoklu iş parçacığı. Belirli koşullar altında, müşteri% 5-40 VOD kodlaması arasında bir performans artışı görmelidir. Birden çok bit hızında kodlanan düşük karmaşıklık içeriği, en yüksek performans artışına neden olur. 
+- Standart kodlama, zaman tabanlı GOP ayarı kullanılırken VOD kodlaması sırasında değişken çerçeve oranı (VFR) için normal bir GOP temposunda sağlar.  Bu, müşterilerin 15-30 fps arasında değişen karma kare hızı içeriğini gönderen bir müşterinin, yalnızca Uyarlamalı bit hızında akış MP4 dosyalarına göre hesaplanan normal GOP uzaklıkları görebilmesini sağlar. Bu, HLS veya DASH üzerinden gönderim yaparken parçalar arasında sorunsuzca geçiş yapma yeteneğini geliştirir. 
+-  Değişken çerçeve oranı (VFR) kaynak içeriği için iyileştirilmiş AV Sync
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer, video analizi
+
+- VideoAnalyzer önayarı kullanılarak ayıklanan ana kareler artık videonun yeniden boyutlandırılması yerine özgün çözümlenmektedir. Yüksek çözünürlüklü ana kare ayıklama, orijinal kalite görüntüleri sağlar ve Microsoft Görüntü İşleme ve Özel Görüntü İşleme Hizmetleri tarafından sunulan görüntü tabanlı yapay zeka modellerini kullanarak videonuzdan daha da ayrıntılı bilgiler elde etmenizi sağlar.
 
 ## <a name="september-2019"></a>Eylül 2019
 
@@ -70,11 +106,11 @@ Ayrıntılar için bkz. [WAME 'i Media Encoder Standard geçirin](https://go.mic
  
 ## <a name="july-2019"></a>Temmuz 2019
 
-### <a name="content-protection"></a>İçerik koruma
+### <a name="content-protection"></a>Content Protection
 
 Belirteç kısıtlamasıyla korunan içerik akışı yaparken, son kullanıcılar anahtar teslim isteğinin bir parçası olarak gönderilen bir belirteç elde etmeniz gerekir. *Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Daha fazla bilgi için bkz. [belirteç yeniden yürütme engellemesi](content-protection-overview.md#token-replay-prevention).
 
-Bu özellik şu anda ABD Orta ve ABD Orta Batı kullanılabilir.
+Haziran itibariyle önizleme özelliği yalnızca ABD Orta ve ABD Orta Batı kullanılabilir.
 
 ## <a name="june-2019"></a>Haziran 2019
 
@@ -297,5 +333,5 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Genel Bakış](media-services-overview.md)
+- [Genel bakış](media-services-overview.md)
 - [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

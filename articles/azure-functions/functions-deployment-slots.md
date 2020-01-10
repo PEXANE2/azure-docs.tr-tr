@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230682"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769226"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Işlevleri dağıtım Yuvaları
 
-Azure Işlevleri dağıtım yuvaları, işlev uygulamanızın "yuvalar" adlı farklı örnekleri çalıştırmasına izin verir. Yuvalar, genel kullanıma açık bir uç nokta aracılığıyla kullanıma sunulan farklı ortamlardır. Bir uygulama örneği her zaman üretim yuvasına eşlenir ve isteğe bağlı bir yuvaya atanmış örnekleri takas edebilirsiniz. Uygulamalar hizmet planı altında çalışan işlev uygulamalarının birden çok yuvası olabilir, ancak tüketim kapsamında yalnızca bir yuva kullanılabilir.
+Azure Işlevleri dağıtım yuvaları, işlev uygulamanızın "yuvalar" adlı farklı örnekleri çalıştırmasına izin verir. Yuvalar, genel kullanıma açık bir uç nokta aracılığıyla kullanıma sunulan farklı ortamlardır. Bir uygulama örneği her zaman üretim yuvasına eşlenir ve isteğe bağlı bir yuvaya atanmış örnekleri takas edebilirsiniz. Uygulamalar hizmet planı altında çalışan işlev uygulamalarının birden çok yuvası olabilir, ancak tüketim planı kapsamında yalnızca bir yuva kullanılabilir.
 
 Aşağıdaki, işlevlerin takas yuvaları tarafından nasıl etkilendiğini yansıtır:
 
@@ -65,7 +65,7 @@ Ayarları, "yapışkan" yapan bir dağıtım ayarı olarak işaretleyebilirsiniz
 
 Bir yuvada bir dağıtım ayarı oluşturursanız, bir değiştirme işleminde yer alan diğer tüm yuvalara aynı ayarı oluşturmayı unutmayın. Bu şekilde, bir ayarın değeri değişmezse, ayar adları yuvalar arasında tutarlı kalır. Bu ad tutarlılığı, kodunuzun tek bir yuvada tanımlanmış ancak başka bir yuvada tanımlanmış bir ayara erişmeyi denememesini sağlar.
 
-Dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
+Bir dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
 
 - İşlev uygulamasındaki *yuvalara* gitme
 - Yuva adına tıklayın
@@ -77,7 +77,7 @@ Dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
 
 ![Dağıtım yuvası ayarı](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 Yuva oluşturduğunuzda yuvalar boştur. Uygulamanızı bir yuvaya dağıtmak için [Desteklenen Dağıtım teknolojilerinden](./functions-deployment-technologies.md) herhangi birini kullanabilirsiniz.
 
@@ -88,7 +88,7 @@ Tüm yuvalar, üretim yuvasında aynı çalışan sayısına göre ölçeklenir.
 - Tüketim planları için yuva, işlev uygulaması ölçeklendirilen şekilde ölçeklendirilir.
 - App Service planlar için, uygulama sabit bir çalışan sayısına göre ölçeklendirilir. Yuvalar, uygulama planıyla aynı sayıda çalışan üzerinde çalışır.
 
-## <a name="add-a-slot"></a>Yuva Ekle
+## <a name="add-a-slot"></a>Yuva ekleme
 
 [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) aracılığıyla veya Portal aracılığıyla bir yuva ekleyebilirsiniz. Aşağıdaki adımlarda portalda nasıl yeni bir yuva oluşturacağınız gösterilmektedir:
 
@@ -179,7 +179,7 @@ Dağıtım yuvaları için iki düzey destek vardır:
 | Windows tüketimi       | Genel kullanılabilirlik |
 | Windows Premium           | Genel kullanılabilirlik  |
 | Windows ayrılmış         | Genel kullanılabilirlik |
-| Linux tüketimi         | Desteklenmiyor          |
+| Linux tüketimi         | Desteklenmeyen          |
 | Linux Premium             | Genel kullanılabilirlik  |
 | Linux adanmış           | Genel kullanılabilirlik |
 

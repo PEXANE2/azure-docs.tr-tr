@@ -1,38 +1,36 @@
 ---
-title: Artımlı dizin oluşturma (Önizleme)
+title: Artımlı zenginleştirme (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Beceriler, becerileri, Dizin oluşturucular veya veri kaynaklarına yönelik tüm güncelleştirmeleri işlemek üzere verilerinizi nihai tutarlılık altına almak için AI zenginleştirme işlem hattınızı yapılandırın. Bu özellik şu anda genel önizlemede
+description: Mevcut işlenen belgelerdeki yatırımları korumak için Azure depolama 'daki AI zenginleştirme ardışık düzeninde bulunan ara içeriği ve artımlı değişiklikleri önbelleğe alma. Bu özellik şu anda genel önizleme aşamasındadır.
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/09/2020
+ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790938"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832187"
 ---
-# <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı dizin oluşturma nedir?
+# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma konusuna giriş
 
 > [!IMPORTANT] 
-> Artımlı dizin oluşturma şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
+> Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
-Artımlı dizin oluşturma, bir Bilişsel Beceri içindeki içeriğe yönelik önbelleğe alma ve durum ekleyen yeni bir Azure Bilişsel Arama özelliğidir. Bu, bir zenginleştirme ardışık düzeninde bireysel adımların işleme ve yeniden işlenmesine ilişkin denetim sağlar. Bunu yalnızca, işlem sırasında parasal yatırımınızı korumaması, ancak Ayrıca daha verimli bir sistem için de sağlar. Yapılar ve içerik önbelleğe alındığında, bir Dizin Oluşturucu hangi yeteneklerin değiştirildiğini ve yalnızca değiştirilmiş olanları ve herhangi bir aşağı akış bağımlı becerileri tespit edebilir. 
-
-Artımlı dizin oluşturma ile, enzenginleştirme işlem hattının geçerli sürümü, dizininizdeki tüm belgeler için tutarlılığı güvence altına almak üzere en az iş miktarını işler. Tam denetim istediğiniz senaryolar için, beklenen davranışları geçersiz kılmak üzere hassas denetimleri kullanabilirsiniz. Yapılandırma hakkında daha fazla bilgi için bkz. [artımlı Dizin oluşturmayı ayarlama](search-howto-incremental-index.md).
+Artımlı zenginleştirme, bir zenginleştirme işlem hattına önbelleğe alma ve statefullik ekler ve yalnızca belirli bir değişiklikten etkilenen belgeleri değiştirirken, mevcut çıkışdaki yatırımınızı korur. Bu, yalnızca parasal yatırımınızın işleme (özellikle OCR ve görüntü işleme) yapılmamasını sağlar, ancak aynı zamanda daha verimli bir sistem için de geçerlidir. Yapılar ve içerik önbelleğe alındığında, bir Dizin Oluşturucu hangi yeteneklerin değiştirildiğini ve yalnızca değiştirilmiş olanları ve herhangi bir aşağı akış bağımlı becerileri tespit edebilir. 
 
 ## <a name="indexer-cache"></a>Dizin Oluşturucu önbelleği
 
-Artımlı dizin oluşturma, enzenginleştirme ardışık düzenine bir Dizin Oluşturucu önbelleği ekler. Dizin Oluşturucu sonuçları belge çözme işleminden ve her belge için her bir yeteneğin çıktılarından önbelleğe alır. Bir beceri güncelleştirilirken, yalnızca değiştirilen veya aşağı akış becerileri yeniden çalıştırılır. Güncelleştirilmiş sonuçlar önbelleğe yazılır ve belge dizinde ve bilgi deposunda güncelleştirilir.
+Artımlı zenginleştirme, enzenginleştirme ardışık düzenine bir önbellek ekler. Dizin Oluşturucu sonuçları belge çözme işleminden ve her belge için her bir yeteneğin çıktılarından önbelleğe alır. Bir beceri güncelleştirilirken, yalnızca değiştirilen veya aşağı akış becerileri yeniden çalıştırılır. Güncelleştirilmiş sonuçlar önbelleğe yazılır ve belge arama dizininde veya bilgi deposunda güncelleştirilir.
 
-Fiziksel olarak, önbellek bir depolama hesabıdır. Bir arama hizmeti içindeki tüm dizinler, Dizin Oluşturucu önbelleğinin aynı depolama hesabını paylaşabilir. Her dizin oluşturucuya benzersiz ve sabit bir önbellek tanımlayıcısı atanır.
+Fiziksel olarak, önbellek, Azure Depolama hesabınızdaki bir blob kapsayıcısında depolanır. Bir arama hizmeti içindeki tüm dizinler, Dizin Oluşturucu önbelleğinin aynı depolama hesabını paylaşabilir. Her dizin oluşturucuya, kullandığı kapsayıcıya benzersiz ve sabit bir önbellek tanımlayıcısı atanır.
 
-### <a name="cache-configuration"></a>Önbellek yapılandırması
+## <a name="cache-configuration"></a>Önbellek yapılandırması
 
-Dizin oluşturucudaki `cache` özelliğini, artımlı dizin oluşturma işleminden faydalanmasını başlatmak için ayarlamanız gerekir. Aşağıdaki örnek, önbelleğe alma etkin olan bir dizin oluşturucuyu gösterir. Bu yapılandırmanın belirli kısımları aşağıdaki bölümlerde açıklanmıştır.
+Faydalanmasını, Dizin Oluşturucu üzerinde `cache` özelliğini artımlı zenginleştirme 'den başlatmak için ayarlamanız gerekir. Aşağıdaki örnek, önbelleğe alma etkin olan bir dizin oluşturucuyu gösterir. Bu yapılandırmanın belirli kısımları aşağıdaki bölümlerde açıklanmıştır. Daha fazla bilgi için bkz. [artımlı zenginleştirme ayarlama](search-howto-incremental-index.md).
 
 ```json
 {
@@ -42,50 +40,70 @@ Dizin oluşturucudaki `cache` özelliğini, artımlı dizin oluşturma işlemind
     "skillsetName": "mySkillset",
     "cache" : {
         "storageConnectionString" : "Your storage account connection string",
-        "enableReprocessing": true,
-        "id" : "Auto generated Id you do not need to set"
+        "enableReprocessing": true
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters": {}
+    "parameters": []
 }
 ```
 
-Bu özelliği mevcut bir dizin oluşturucuda ilk kez ayarlamak, aynı zamanda veri kaynağınızdaki tüm belgelerin yeniden işlenmesine neden olacak şekilde onu sıfırlamanız gerekir. Artımlı dizin oluşturma işleminin hedefi, dizininizdeki belgeleri veri kaynağınıza ve beceri 'nizin güncel sürümüne tutarlı hale getirir. Dizinin sıfırlanması, önceki beceri sürümleri tarafından zenginleştirilmiş tüm belgeleri ortadan kaldırdığı için bu tutarlılığa doğru ilk adımdır. Dizin oluşturucunun tutarlı bir temel ile başlayacak şekilde sıfırlanması gerekir.
+Mevcut bir dizin oluşturucuda bu özelliğin ayarlanması, Dizin oluşturucuyu sıfırlamanıza ve yeniden çalıştırmanız gerekir, bu da veri kaynağınızdaki tüm belgelerin yeniden işlenmesini sağlar. Bu adım, önceki beceri sürümleri tarafından zenginleştirilmiş belgelerin ortadan kaldırılması için gereklidir. 
 
-### <a name="cache-lifecycle"></a>Önbellek yaşam döngüsü
+## <a name="cache-management"></a>Önbellek yönetimi
 
-Önbelleğin yaşam döngüsü Dizin Oluşturucu tarafından yönetilir. Dizin oluşturucudaki `cache` özelliği null olarak ayarlandıysa veya bağlantı dizesi değiştiyse, varolan önbellek silinir. Önbellek yaşam döngüsü Ayrıca Dizin Oluşturucu yaşam döngüsüne de bağlıdır. Bir Dizin Oluşturucu silinirse, ilişkili önbellek de silinir.
+Önbelleğin yaşam döngüsü Dizin Oluşturucu tarafından yönetilir. Dizin oluşturucudaki `cache` özelliği null olarak ayarlandıysa veya bağlantı dizesi değiştirilirse, varolan önbellek bir sonraki Dizin Oluşturucu çalıştırmasında silinir. Önbellek yaşam döngüsü Ayrıca Dizin Oluşturucu yaşam döngüsüne de bağlıdır. Bir Dizin Oluşturucu silinirse, ilişkili önbellek de silinir.
 
-### <a name="indexer-cache-mode"></a>Dizin Oluşturucu önbellek modu
+Artımlı zenginleştirme, sizin bölümleriniz üzerinde müdahale olmadan değişiklikleri tespit etmek ve bunlara yanıt vermek üzere tasarlanırken, varsayılan davranışları geçersiz kılmak için kullanabileceğiniz parametreler vardır:
 
-Dizin Oluşturucu önbelleği, verilerin yalnızca önbelleğe yazıldığı ve verilerin önbelleğe yazıldığı ve belgeleri yeniden zenginleştirmenin kullanıldığı modlarda çalışabilir.  Önbellekteki `enableReprocessing` özelliğini `false`olarak ayarlayarak artımlı zenginleştirme işlemini geçici olarak askıya alabilir ve daha sonra artımlı zenginleştirme ve daha sonra `true`olarak ayarlayarak nihai tutarlılığı sağlayabilirsiniz. Bu denetim özellikle, belgelerin yapı 'larınız genelinde tutarlılık sağlamak için yeni belgelerin dizinlemesini belirlemek istediğinizde yararlıdır.
++ Önbelleğe almayı askıya al
++ Beceri denetimlerini atla
++ Veri kaynağı denetimlerini atla
++ Beceri değerlendirmesini zorla
 
-## <a name="change-detection-override"></a>Değişiklik algılama geçersiz kılma
+### <a name="suspend-caching"></a>Önbelleğe almayı askıya al
 
-Artımlı dizin oluşturma, zenginleştirme işlem hattının tüm yönleri üzerinde ayrıntılı denetim sağlar. Bu denetim, bir değişikliğin istenmeyen sonuçlara neden olabileceği durumlarla ilgilenmenize olanak tanır. Örneğin, bir beceri düzenlenmek ve özel bir beceri için URL 'YI güncellemek, dizin oluşturucunun bu beceri için önbelleğe alınmış sonuçları geçersiz kılmasına neden olur. Yalnızca uç noktayı farklı bir VM 'ye taşıyor veya becerinizi yeni bir erişim anahtarıyla yeniden dağıtıyorsanız, gerçekten var olan belgelerin yeniden işlenmesini istemezsiniz.
+Önbellekteki `enableReprocessing` özelliğini `false`olarak ayarlayarak artımlı zenginleştirme işlemini geçici olarak askıya alabilir ve daha sonra artımlı zenginleştirme ve daha sonra `true`olarak ayarlayarak nihai tutarlılığı sağlayabilirsiniz. Bu denetim özellikle, belgelerin yapı 'larınız genelinde tutarlılık sağlamak için yeni belgelerin dizinlemesini belirlemek istediğinizde yararlıdır.
 
-Dizin oluşturucunun yalnızca açıkça gereken zenginleştirme kullandığından emin olmak için beceri güncelleştirmeleri isteğe bağlı olarak `disableCacheReprocessingChangeDetection` QueryString parametresini `true`olarak ayarlayabilir. Ayarlandığında, bu parametre yalnızca beceri güncelleştirmelerinin yapıldığından ve değişikliğin mevcut Corpus üzerindeki etkilere karşı değerlendirilmediğinden emin olur.
+### <a name="bypass-skillset-evaluation"></a>Beceri değerlendirmesini atla
 
-Aşağıdaki örnek QueryString kullanımını gösterir. & Ayrılmış anahtar değer çiftleri ile isteğin bir parçasıdır. 
+Bu beceri 'in bir beceri ve yeniden işlemesini değiştirmek genellikle el ile yapılır. Ancak, bir beceri üzerinde yapılan bazı değişiklikler yeniden işlemeye neden olmaz (örneğin, bir özel yeteneği yeni bir konuma veya yeni bir erişim anahtarıyla dağıtma). Büyük olasılıkla, Beceri 'in bir üyesi üzerinde orijinal etkisi olmayan çevresel değişiklikler vardır. 
+
+Beceri bir değişikliğin gerçekten yararlanmayan olduğunu biliyorsanız, `disableCacheReprocessingChangeDetection` parametresini `true`olarak ayarlayarak beceri değerlendirmesini geçersiz kılmanız gerekir:
+
+1. Update beceri 'i çağırın ve beceri tanımını değiştirin.
+1. İsteğe `disableCacheReprocessingChangeDetection=true` parametresini ekleyin.
+1. Değişikliği gönder.
+
+Bu parametre ayarlandığında, yalnızca beceri tanımı güncelleştirmelerinin yürütülmesi ve değişikliğin mevcut Corpus üzerindeki etkiler için değerlendirilmemesi sağlanır.
+
+Aşağıdaki örnek, parametresiyle bir Update beceri isteği gösterir:
 
 ```http
 PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
-## <a name="cache-invalidation"></a>Önbellek geçersiz kılma
+### <a name="bypass-data-source-validation-checks"></a>Veri kaynağı doğrulama denetimlerini atla
 
-Bu senaryonun dönüştürüleceği, özel bir yeteneğin yeni bir sürümünü dağıtabileceğiniz, zenginleştirme ardışık düzeninde hiçbir şey olmayan bir şeydir, ancak belirli bir yetenek geçersiz kılınmak ve güncelleştirilmiş bir modelin avantajlarını yansıtacak şekilde, etkilenen tüm belgelerin yeniden işlenmesi gerekir. Bu örneklerde, Beceri üzerindeki becerileri geçersiz kıl işlemini çağırabilirsiniz. Sıfırlama becerileri API 'SI, önbellekte geçersiz kılınmaları gereken yetenek çıkışları listesini içeren bir POST isteğini kabul eder. Yetenek sıfırlama API 'SI hakkında daha fazla bilgi için bkz. [Dizin oluşturucuyu sıfırlama (arama REST API)](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
+Bir veri kaynağı tanımında yapılan çoğu değişiklik önbelleği geçersiz kılar. Bununla birlikte, bir değişikliğin bir bağlantı dizesini değiştirme veya depolama hesabındaki anahtarı döndürme gibi bir değişikliğin önbelleği geçersiz kılamadı olduğunu bildiğiniz senaryolar için veri kaynağı güncelleştirmesinde`ignoreResetRequirement` parametresini ekleyin. Bu parametrenin `true` olarak ayarlanması, bir sıfırlama koşulunu tetiklemeden, tüm nesnelerin yeniden oluşturulmasına ve sıfırdan doldurulmasına neden olacak şekilde, yürütmeye izin verir.
 
-## <a name="bi-directional-change-detection"></a>İki yönlü değişiklik algılama
+```http
+PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
+```
 
-Dizin oluşturucular yalnızca ileri doğru hareket etmez ve yeni belgeler işlemez, ancak artık geriye doğru ve sürücü daha önce işlenmiş belgeleri tutarlı bir şekilde taşıyabilir. Bu yeni özellik sayesinde, kendi zenginleştirme işlem hattı bileşenlerinde yapılan değişikliklerin dizin oluşturucunun nasıl çalıştığını anlamak önemlidir. Dizin Oluşturucu, önbelleğe alınmış içeriğe göre geçersiz kılınabilecek veya tutarsız bir değişikliği tanımladığı zaman yapılacak işleri sıraya alacak.
+### <a name="force-skillset-evaluation"></a>Beceri değerlendirmesini zorla
 
-### <a name="invalidating-changes"></a>Değişiklikler geçersiz kılın
+Önbelleğin amacı gereksiz işlemden kaçınmaktır, ancak dizin oluşturucunun algılamadığı bir yeteneğe veya beceri (örneğin, özel bir beceri gibi dış bileşenlerde değişiklikler) bir değişiklik yapmış olduğunuzu varsayalım. 
 
-Geçersiz kılınmaz, ancak zenginleştirme işlem hattının durumu üzerinde önemli bir etkisi vardır. Geçersiz kılma değişikliği, önbelleğin tamamının artık geçerli olmadığı bir yerdir. Geçersiz kılma değişikliği örneği, veri kaynağınızın güncelleştirildiği bir örnektir. Değişikliğin önbelleği geçersiz kılanmadığından, örneğin depolama hesabındaki anahtarı döndürürken, `ignoreResetRequirement` QueryString parametresinin, işlemin reddedilmediğinden emin olmak için belirli bir kaynağın güncelleştirme işleminde `true` olarak ayarlanması gerekir.
+Bu durumda, bu yeteneğin çıktısına bağımlılığı olan tüm aşağı akış becerileri dahil olmak üzere belirli bir yeteneğin yeniden işlenmesini zorlamak için [becerileri sıfırlama](preview-api-resetskills.md) API 'sini kullanabilirsiniz. Bu API, geçersiz kılınmaları ve yeniden çalıştırılması gereken yeteneklerin listesini içeren bir POST isteğini kabul eder. Yeteneklerini sıfırladıktan sonra, işlemi yürütmek için Dizin oluşturucuyu çalıştırın.
 
-Önbelleğinizi geçersiz kılacak değişikliklerin tamamı aşağıda verilmiştir:
+## <a name="change-detection"></a>Değişiklik algılama
+
+Bir önbelleği etkinleştirdikten sonra, Dizin Oluşturucu, hangi içeriğin yeniden kullanılabilir olduğunu ve ne tekrar işlenmesi gerektiğini belirleyen işlem hattı kompozisyoninizdeki değişiklikleri değerlendirir. Bu bölümde, önbellek ve ardından artımlı işleme tetikleyen değişiklikler tarafından geçersiz kılan değişiklikler numaralandırılır. 
+
+### <a name="changes-that-invalidate-the-cache"></a>Önbelleği geçersiz kılan değişiklikler
+
+Geçersiz kılma değişikliği, önbelleğin tamamının artık geçerli olmadığı bir yerdir. Geçersiz kılma değişikliği örneği, veri kaynağınızın güncelleştirildiği bir örnektir. Önbelleğinizi geçersiz kılacak değişikliklerin tamamı aşağıda verilmiştir:
 
 * Veri kaynağı türüne değiştirme
 * Veri kaynağı kapsayıcısına geçiş
@@ -103,11 +121,9 @@ Geçersiz kılınmaz, ancak zenginleştirme işlem hattının durumu üzerinde �
     * Belge kökü
     * Görüntü eylemi (görüntülerin ayıklandığı değişiklikler)
 
-### <a name="inconsistent-changes"></a>Tutarsız değişiklikler
+### <a name="changes-that-trigger-incremental-processing"></a>Artımlı işlemeyi tetikleyen değişiklikler
 
-Tutarsız değişikliğe örnek olarak, beceri için bir yetenek değiştiren bir güncelleştirmedir. Değişiklik, önbelleğin bir bölümünü tutarsız hale getirir. Dizin Oluşturucu, işleri yeniden tutarlı hale getirmek için işi belirler.  
-
-Önbellek tutarsızlığına neden olan değişikliklerin tamamı listesi:
+Artımlı işleme, Beceri tanımınızı değerlendirir ve hangi yeteneklerin yeniden çalıştırılacağını ve belge ağacının etkilenen bölümlerinin seçmeli olarak güncelleştirilmesini belirler. Artımlı zenginleştirme ile sonuçlanan tüm değişikliklerin listesi aşağıda verilmiştir:
 
 * Beceri ' deki beceri farklı türde. Yeteneğin OData türü güncelleştirildi
 * Beceriye özgü parametreler, örneğin URL, varsayılanlar veya diğer parametreler ile güncelleştirildi
@@ -118,43 +134,39 @@ Tutarsız değişikliğe örnek olarak, beceri için bir yetenek değiştiren bi
 * Bilgi deposu projeksiyonları üzerinde yapılan değişiklikler, belgelerin yeniden yansıtımasına neden olur
 * Dizin Oluşturucu üzerinde değiştirilen çıkış alanı eşlemeleri, belgelerin dizine yeniden yansıtımasına neden olur
 
-## <a name="rest-api-reference-for-incremental-indexing"></a>Artımlı dizin oluşturma için REST API başvurusu
+## <a name="api-reference-content-for-incremental-enrichment"></a>Artımlı zenginleştirme için API başvuru içeriği
 
-REST `api-version=2019-05-06-Preview`, Dizin oluşturucular, becerileri ve veri kaynaklarına eklemeler ile artımlı dizin oluşturma için API 'Ler sağlar. Başvuru belgeleri şu anda bu eklemeleri içermez. Aşağıdaki bölümde API değişiklikleri açıklanmaktadır.
+REST `api-version=2019-05-06-Preview`, Dizin oluşturucular, becerileri ve veri kaynaklarına eklemeleri sayesinde artımlı zenginleştirme için API 'Ler sağlar. [Resmi başvuru belgeleri](https://docs.microsoft.com/rest/api/searchservice/) genel kullanıma açık API 'ler içindir ve Önizleme özelliklerini kapsamaz. Aşağıdaki bölümde, etkilenen API 'Ler için başvuru içeriği sağlanmaktadır.
+
+Kullanım bilgileri ve örnekleri, artımlı bir zenginleştirme [için önbelleğe alma yapılandırma](search-howto-incremental-index.md)bölümünde bulunabilir.
 
 ### <a name="indexers"></a>Dizinleyiciler
 
 [Create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) ve [Update Indexer](https://docs.microsoft.com/rest/api/searchservice/update-indexer) artık önbelleğiyle ilgili yeni özellikleri kullanıma sunacaktır:
 
-* `StorageAccountConnectionString`: ara sonuçları önbelleğe almak için kullanılacak depolama hesabına bağlantı dizesi.
++ `StorageAccountConnectionString`: ara sonuçları önbelleğe almak için kullanılacak depolama hesabına bağlantı dizesi.
 
-* `CacheId`: `cacheId`, bu Dizin Oluşturucu için önbellek olarak kullanılacak `annotationCache` depolama hesabı içindeki kapsayıcının tanımlayıcısıdır. Bu önbellek, bu Dizin Oluşturucu için benzersiz olacak ve Dizin Oluşturucu silinip aynı adla yeniden oluşturulursa, `cacheId` yeniden oluşturulacaktır. `cacheId` ayarlanamaz, hizmet tarafından her zaman oluşturulur.
++ `EnableReprocessing`: `true` olarak ayarla, `false`olarak ayarlandığında belgeler önbelleğe yazılmaya devam eder, ancak mevcut belgeler önbellek verilerine göre yeniden işlenir.
 
-* `EnableReprocessing`: `true` olarak ayarla, `false`olarak ayarlandığında belgeler önbelleğe yazılmaya devam eder, ancak mevcut belgeler önbellek verilerine göre yeniden işlenir.
-
-Bazı Dizin oluşturucular ( [veri kaynakları](https://docs.microsoft.com/rest/api/searchservice/create-data-source)aracılığıyla) sorgular aracılığıyla veri alır. Veri alan sorgular için, Dizin oluşturucular yeni bir sorgu dizesi parametresini de destekleyecektir: güncelleştirme eyleminiz önbelleği geçersiz kılamadığında `ignoreResetRequirement` `true` olarak ayarlanmalıdır.
++ `ID` (salt okunurdur): `ID`, bu Dizin Oluşturucu için önbellek olarak kullanılacak `annotationCache` depolama hesabı içindeki kapsayıcının tanımlayıcısıdır. Bu önbellek, bu Dizin Oluşturucu için benzersiz olacak ve Dizin Oluşturucu silinip aynı adla yeniden oluşturulursa, `ID` yeniden oluşturulacaktır. `ID` ayarlanamaz, hizmet tarafından her zaman oluşturulur.
 
 ### <a name="skillsets"></a>Beceri kümeleri
 
-Becerileri, yeni işlemleri desteklemez, ancak yeni bir QueryString parametresini destekleyecektir: geçerli eyleme göre mevcut belgelerde güncelleştirme yapmak istediğinizde `disableCacheReprocessingChangeDetection` `true` olarak ayarlanmalıdır.
++ [Güncelleştirme beceri](https://docs.microsoft.com/rest/api/searchservice/update-skillset) , istek üzerinde yeni bir parametreyi destekler: `disableCacheReprocessingChangeDetection`, geçerli eyleme göre mevcut belgelerde güncelleştirme yapmak istediğinizde `true` olarak ayarlanmalıdır.
 
-### <a name="datasources"></a>Kaynağı
++ [Yetenekleri sıfırlama](preview-api-resetskills.md) , bir beceri geçersiz kılmak için kullanılan yeni bir işlemdir.
 
-Veri kaynakları yeni işlemleri desteklemez, ancak yeni bir QueryString parametresini destekleyecektir: güncelleştirme eyleminiz önbelleği geçersiz kılmaz, `ignoreResetRequirement` `true` olarak ayarlanmalıdır.
+### <a name="datasources"></a>Veri kaynakları
 
-## <a name="best-practices"></a>En iyi uygulamalar
-
-Artımlı dizin oluşturma özelliğinin kullanılması önerilen yaklaşım, yeni bir dizin oluşturucudaki Cache özelliğini ayarlayarak veya var olan bir dizin oluşturucuyu sıfırlayarak önbellek özelliğini ayarlayıp artımlı Dizin oluşturmayı yapılandırmaktır.
++ Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/update-datasource) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında `true` olarak ayarlanması gereken `ignoreResetRequirement`bir istek üzerinde yeni bir parametreyi destekler.
 
 Verilerinize kolayca algılanmayacak, istenmeyen tutarsızlığa yol açacağından, `ignoreResetRequirement` gelişigüzel bir şekilde kullanın.
 
-## <a name="takeaways"></a>Paketler
-
-Artımlı dizin oluşturma, veri kaynağındaki değişiklik izlemeyi veri kaynağı, Beceri 'nizin geçerli sürümü ve Dizin Oluşturucu dahil olmak üzere zenginleştirme işlem hattının tüm yönlerine genişleten güçlü bir özelliktir. Becerilerinizi, becerileri veya zenginleştirmelerinizi geliştirirken, enzenginleştirme işlem hattı, belgelerinizi yine de nihai tutarlılığa yönlendirirken, en az olası çalışmanın yapılmasını sağlar.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mevcut bir dizin oluşturucuya önbellek ekleyerek artımlı dizin oluşturma ile çalışmaya başlayın veya yeni bir Dizin Oluşturucu tanımlarken önbelleği ekleyin.
+Artımlı zenginleştirme, değişiklik izlemeyi becerileri ve AI zenginleştirme olarak genişleten güçlü bir özelliktir. Becerileri geliştikçe, artımlı zenginleştirme, belgelerinizi yine de nihai tutarlılığa yönlendirirken olası en az iş yapılmasını sağlar.
+
+Var olan bir dizin oluşturucuya önbellek ekleyerek veya yeni bir Dizin Oluşturucu tanımlarken önbelleği ekleyerek başlayın.
 
 > [!div class="nextstepaction"]
-> [Artımlı dizin oluşturma ayarlama](search-howto-incremental-index.md)
+> [Artımlı zenginleştirme için önbelleğe almayı yapılandırın](search-howto-incremental-index.md)

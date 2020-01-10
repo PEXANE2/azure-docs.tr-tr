@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454283"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830522"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlüğüne giriş
 
@@ -90,10 +90,8 @@ Aşağıdaki metin akış günlüğüne bir örnektir. Gördüğünüz gibi, ön
 
 **Depolama hesabı konuları**: 
 
-1. Konum: kullanılan depolama hesabı NSG ile aynı bölgede olmalıdır.
-2. Güvenlik duvarı yok: NSG akış günlükleri, [Azure depolama için güvenilir bir Microsoft hizmeti](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)olarak eklendi değildir. Güvenlik duvarını devre dışı bırakmak Nasıl yaparım? bkz. [depolama hesabmda güvenlik duvarını devre dışı bırakma](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) . 
-3. Hizmet uç noktası yok: geçerli bir sınırlama nedeniyle Günlükler, hizmet uç noktaları aracılığıyla değil, yalnızca depolama hesaplarına doğrudan dağıtılabilir. Mevcut hizmet uç noktalarını kaldırmayla ilgili yardım için bkz. [hizmet uç noktaları Ile NSG akış günlüklerini kullanma nasıl yaparım?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) .
-4. Kendi kendine Yönetim anahtar döndürme: erişim anahtarlarını depolama hesabınıza değiştirirseniz/döndürdüğünüzde NSG akış günlükleri çalışmayı durdurur. Bu sorunu onarmak için NSG akış günlüklerini devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
+- Konum: kullanılan depolama hesabı NSG ile aynı bölgede olmalıdır.
+- Kendi kendine Yönetim anahtar döndürme: erişim anahtarlarını depolama hesabınıza değiştirirseniz/döndürdüğünüzde NSG akış günlükleri çalışmayı durdurur. Bu sorunu onarmak için NSG akış günlüklerini devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
 **Bir kaynağa bağlı olan tüm NSG 'ler için NSG akış günlüğünü etkinleştirme**: NSG kaynağında Azure 'da akış günlüğü yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm trafiğin kaydedildiğinden emin olmak için bir kaynağın alt ağını veya ağ arabirimini uygulayan NSG akış günlüğü 'nün etkinleştirilmiş olması önerilir. Daha fazla bilgi için trafiğin ağ güvenlik gruplarında [nasıl değerlendirildiğini](../virtual-network/security-overview.md#how-traffic-is-evaluated) öğrenin.
 

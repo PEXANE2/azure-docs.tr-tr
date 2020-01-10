@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762726"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771300"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel ile çalışmaya yönelik faydalı kaynaklar
 
@@ -32,7 +32,7 @@ Azure Logic Apps bağlayıcılar: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Denetim ve raporlama
-Azure Sentinel 'in denetim günlükleri [Azure etkinlik günlüklerinde](../azure-monitor/platform/activity-logs-overview.md)tutulur.
+Azure Sentinel 'in denetim günlükleri [Azure etkinlik günlüklerinde](../azure-monitor/platform/platform-logs-overview.md)tutulur.
 
 Aşağıdaki desteklenen işlemler denetlenebilir.
 
@@ -40,12 +40,10 @@ Aşağıdaki desteklenen işlemler denetlenebilir.
 |----|----|
 |Çalışma kitabı oluştur veya güncelleştir  |Microsoft. Insights/çalışma kitapları|
 |Çalışma kitabını Sil    |Microsoft. Insights/çalışma kitapları|
-|Iş akışını ayarla   |Microsoft. Logic/iş akışları|
-|Iş akışını Sil    |Microsoft. Logic/iş akışları|
+|Iş akışını ayarla   |Microsoft.Logic/workflows|
+|Iş akışını Sil    |Microsoft.Logic/workflows|
 |Kayıtlı arama oluştur    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
 |Kayıtlı aramayı Sil    |Microsoft. Operationalınsights/çalışma alanları/Savedaramalar|
-|Panoyu ayarla  |Microsoft. Portal/panolar|
-|Panoyu Sil   |Microsoft. Portal/panolar|
 |Uyarı kurallarını Güncelleştir |Microsoft. Securityınsights/alertRules|
 |Uyarı kurallarını Sil |Microsoft. Securityınsights/alertRules|
 |Uyarı kuralı yanıt eylemlerini Güncelleştir |Microsoft. Securityınsights/alertRules|
@@ -57,7 +55,7 @@ Aşağıdaki desteklenen işlemler denetlenebilir.
 |Case açıklamaları oluşturma   |Microsoft. Securityınsights/durumlar|
 |Veri bağlayıcılarını güncelleştirme |Microsoft. Securityınsights/veri bağlayıcıları|
 |Veri bağlayıcıları silme |Microsoft. Securityınsights/veri bağlayıcıları|
-|Güncelleştirme ayarları    |Microsoft. Securityınsights/ayarlar|
+|Ayarları Güncelleştir    |Microsoft. Securityınsights/ayarlar|
 
 ### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Azure Sentinel 'de denetim ve raporlama verilerini görüntüleme
 

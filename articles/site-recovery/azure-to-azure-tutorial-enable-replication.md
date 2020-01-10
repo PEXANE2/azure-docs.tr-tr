@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561497"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754601"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure sanal makineleri için bir Azure bölgesinden diğerine �
 > [!NOTE]
 > Bu makale, en basit ayarlarla olağanüstü durum kurtarma dağıtımı için yönergeler sağlar. Özelleştirilmiş ayarlar hakkında bilgi edinmek istiyorsanız, [nasıl yapılır bölümü](azure-to-azure-how-to-enable-replication.md)altındaki makaleleri gözden geçirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -39,10 +39,10 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
+Kasayı, kaynak bölgesi dışında herhangi bir bölgede oluşturun.
 
 1. [Azure Portal](https://portal.azure.com) > **Kurtarma Hizmetleri**’nde oturum açın.
-2. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. Ardından **yedekleme ve Site Recovery** > **Yönetim Araçları** ' nı seçin.
+2. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. Ardından **yedekleme ve Site Recovery** > **Yönetim Araçları** ' nı seçin.
 3. **Ad** alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 4. Kaynak grubu oluşturun veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 5. Panodan kasaya hızlıca erişmek için önce **Panoya sabitle** seçeneğine ve sonra **Oluştur**’a tıklayın.
@@ -77,15 +77,18 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP adresi aralıkları için giden bağlantı
 
-URL 'Ler yerine IP adreslerini kullanarak giden bağlantıyı denetlemek istiyorsanız IP tabanlı güvenlik duvarları, proxy veya NSG kuralları için bu adreslere izin verin.
+NSG kullanıyorsanız, Azure depolama, Azure Active Directory, Site Recovery hizmeti ve Site Recovery izlemeye erişim için hizmet etiketi tabanlı NSG kuralları oluşturun. [Daha fazla bilgi edinin](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+
+NSG kuralları yerine IP adreslerini kullanarak giden bağlantıyı denetlemek isterseniz, IP tabanlı güvenlik duvarları, proxy veya NSG kuralları için bu adreslere izin verin.
+
+>[!NOTE]
+>Giden erişim için NSG kurallarının her zaman hizmet etiketleriyle yapılandırılması önerilir.
 
   - [Microsoft Azure Veri Merkezi IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=41653)
   - [Almanya’daki Windows Azure Veri Merkezi IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=54770)
   - [Çin’deki Windows Azure Veri Merkezi IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=42064)
   - [Office 365 URL’leri ve IP adresi aralıkları](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery hizmeti uç nokta IP adresleri](https://aka.ms/site-recovery-public-ips)
-
-NSG kullanıyorsanız, kaynak bölge için bir depolama hizmeti etiketi NSG kuralları oluşturabilirsiniz. [Daha fazla bilgi edinin](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM sertifikalarını doğrulama
 

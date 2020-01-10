@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 813d3115d8df7227bde89a73a73bcae270f09bbb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582383"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771351"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Öğretici: Azure Red Hat OpenShift kümesi oluşturma
 
@@ -71,7 +71,7 @@ Kümenizi oluşturmak için bir konum seçin. Azure üzerinde OpenShift 'i deste
 LOCATION=<location>
 ```
 
-[Azure AD uygulama kaydı oluşturma](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)' nın 5. adımında kaydettiğiniz değere `APPID` ayarlayın.  
+[Azure AD uygulama kaydı oluşturma](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)' nın 5. adımında kaydettiğiniz değere `APPID` ayarlayın.
 
 ```bash
 APPID=<app ID value>
@@ -83,13 +83,13 @@ APPID=<app ID value>
 GROUPID=<group ID value>
 ```
 
-`SECRET`, [bir istemci gizli anahtarı oluşturun](howto-aad-app-configuration.md#create-a-client-secret). Adım 8 ' de kaydettiğiniz değere ayarlayın.  
+`SECRET`, [bir istemci gizli anahtarı oluşturun](howto-aad-app-configuration.md#create-a-client-secret). Adım 8 ' de kaydettiğiniz değere ayarlayın.
 
 ```bash
 SECRET=<secret value>
 ```
 
-[Yeni bir kiracı oluşturmak](howto-create-tenant.md#create-a-new-azure-ad-tenant) için 7. adımda KAYDETTIĞINIZ Kiracı kimliği değerine `TENANT` ayarlayın  
+[Yeni bir kiracı oluşturmak](howto-create-tenant.md#create-a-new-azure-ad-tenant) için 7. adımda KAYDETTIĞINIZ Kiracı kimliği değerine `TENANT` ayarlayın
 
 ```bash
 TENANT=<tenant ID>
@@ -105,7 +105,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 Oluşturduğunuz kümenin sanal ağını (VNET) eşleme yoluyla mevcut bir VNET 'e bağlamanız gerekmiyorsa bu adımı atlayın.
 
-Bu abonelikte, varsayılan aboneliğin dışındaki bir ağla eşleme yaptıysanız, Microsoft. ContainerService sağlayıcısını da kaydetmeniz gerekir. Bunu yapmak için bu abonelikte aşağıdaki komutu çalıştırın. Aksi takdirde, eşleymekte olduğunuz VNET aynı abonelikte bulunuyorsa, kayıt adımını atlayabilirsiniz. 
+Bu abonelikte, varsayılan aboneliğin dışındaki bir ağla eşleme yaptıysanız, Microsoft. ContainerService sağlayıcısını da kaydetmeniz gerekir. Bunu yapmak için bu abonelikte aşağıdaki komutu çalıştırın. Aksi takdirde, eşleymekte olduğunuz VNET aynı abonelikte bulunuyorsa, kayıt adımını atlayabilirsiniz.
 
 `az provider register -n Microsoft.ContainerService --wait`
 
@@ -121,6 +121,22 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 
 Örneğin, `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
 
+### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>İsteğe bağlı: kümeyi Azure Izlemeye bağlama
+
+İlk olarak, **var olan** Log Analytics çalışma alanının tanımlayıcısını alın. Tanımlayıcı şu biçimdedir:
+
+`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
+
+Log Analytics çalışma alanının adını veya var olan Log Analytics çalışma alanının ait olduğu kaynak grubunu bilmiyorsanız, [Log Analytics çalışma alanına](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) gidin ve Log Analytics çalışma alanınıza tıklayın. Log Analytics çalışma alanı sayfası görünür ve çalışma alanının ve ait olduğu kaynak grubunun adını listeler.
+
+_Log Analytics çalışma alanı oluşturmak için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace-cli.md)_
+
+BASH kabuğu 'nda aşağıdaki CLı komutunu kullanarak bir WORKSPACE_ID değişkeni tanımlayın:
+
+```bash
+WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
+```
+
 ### <a name="create-the-cluster"></a>Kümeyi oluşturma
 
 Artık bir küme oluşturmaya hazırsınız. Aşağıdaki küme, belirtilen Azure AD kiracısında kümesi oluşturacak, bir güvenlik sorumlusu olarak kullanılacak Azure AD uygulama nesnesini ve parolayı ve kümeye yönetici erişimi olan üyeleri içeren güvenlik grubunu belirtir.
@@ -128,20 +144,29 @@ Artık bir küme oluşturmaya hazırsınız. Aşağıdaki küme, belirtilen Azur
 > [!IMPORTANT]
 > Kümeyi oluşturmadan önce [burada ayrıntılı](howto-aad-app-configuration.md#add-api-permissions) olarak açıklandığı gıbı Azure AD uygulaması için uygun izinleri doğru şekilde eklediğinizden emin olun
 
-Kümenizi bir sanal ağ **ile eşlemeden, aşağıdaki** komutu kullanın:
+Kümenizi bir sanal **ağla Eşlemekten** **veya Azure izlemesini istemiyorsanız,** aşağıdaki komutu kullanın:
 
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 Kümenizi bir sanal ağ **ile eşediyorsanız** , `--vnet-peer` bayrağını ekleyen aşağıdaki komutu kullanın:
- 
+
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
+Kümenizin Azure Izlemesini **istiyorsanız** `--workspace-id` bayrağını ekleyen aşağıdaki komutu kullanın:
+
+```bash
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+```
+
 > [!NOTE]
 > Ana bilgisayar adının kullanılamadığı bir hata alırsanız, bunun nedeni Küme adınızın benzersiz olmaması olabilir. Yeni bir Kullanıcı ve güvenlik grubu oluşturma adımını atlayarak [Yeni bir uygulama kaydı oluştur](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)' da, özgün uygulama kaydınızı silmeyi ve farklı bir küme adıyla adımları yeniden yapmayı deneyin.
+
+
+
 
 Birkaç dakika sonra `az openshift create` tamamlanır.
 

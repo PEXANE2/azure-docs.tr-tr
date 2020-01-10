@@ -1,35 +1,28 @@
 ---
-title: 'Sanal ağlar arası bağlantı oluşturma: Klasik: Azure portalı | Microsoft Docs'
-description: PowerShell ve Azure portalını kullanarak Azure sanal ağları bağlayabilir.
+title: 'Sanal ağlar arasında bağlantı oluşturma: klasik: Azure portal'
+description: PowerShell ve Azure portal kullanarak Azure sanal ağlarını birbirine bağlayın.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 48377f981e4d2c9ab480a1a734e6207a0246712a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ebfe1bc2e578fa85f209f4dd67a00535e619c7e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407993"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834622"
 ---
-# <a name="configure-a-vnet-to-vnet-connection-classic"></a>Bir VNet-VNet bağlantısı (Klasik) yapılandırma
+# <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 'ten VNet 'e bağlantı yapılandırma (klasik)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
-Bu makalede, sanal ağlar arasında bir VPN gateway bağlantısı oluşturmanıza yardımcı olur. Sanal ağlar aynı ya da farklı bölgelerde ve aynı ya da farklı aboneliklerde bulunuyor olabilirler. Bu makaledeki adımlar Klasik dağıtım modelini ve Azure portalı için geçerlidir. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
+Bu makale, sanal ağlar arasında bir VPN Gateway bağlantısı oluşturmanıza yardımcı olur. Sanal ağlar aynı ya da farklı bölgelerde ve aynı ya da farklı aboneliklerde bulunuyor olabilirler. Bu makaledeki adımlar, klasik dağıtım modeli ve Azure portal için geçerlidir. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -38,17 +31,17 @@ Bu makalede, sanal ağlar arasında bir VPN gateway bağlantısı oluşturmanız
 >
 >
 
-![Vnet'ten Vnet'e bağlantı diyagramı](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
+![VNet 'ten VNet 'e bağlantı diyagramı](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-vnet-to-vnet-connections"></a>Sanal Ağdan Sanal Ağa bağlantıları hakkında
 
-Başka bir sanal ağa (VNet-VNet) bir VPN ağ geçidi kullanarak Klasik dağıtım modelinde bir sanal ağa bağlanan bir sanal ağ bir şirket içi site konumuna bağlamakla aynıdır. Her iki bağlantı türü de IPsec/IKE kullanarak güvenli bir tünel sunmak üzere bir VPN ağ geçidi kullanır.
+VPN ağ geçidi kullanarak, bir sanal ağı klasik dağıtım modelinde başka bir sanal ağa (VNet-VNet) bağlamak, sanal bir ağı şirket içi site konumuna bağlamaya benzer. Her iki bağlantı türü de IPsec/IKE kullanarak güvenli bir tünel sunmak üzere bir VPN ağ geçidi kullanır.
 
-Vnet'ler farklı Aboneliklerde ve farklı bölgelerde olabilir. Sanal ağ, sanal ağa iletişim çok siteli yapılandırmalarla birleştirebilirsiniz. Bu özellik şirket içi ve şirket dışı bağlantıyla ağ içi bağlantıyı birleştiren ağ topolojileri kurabilmenize olanak sağlar.
+Bağlandığınız sanal ağlar farklı aboneliklerde ve farklı bölgelerde olabilir. VNet 'ten VNet 'e iletişimi çok siteli yapılandırmalara sahip bir şekilde birleştirebilirsiniz. Bu özellik şirket içi ve şirket dışı bağlantıyla ağ içi bağlantıyı birleştiren ağ topolojileri kurabilmenize olanak sağlar.
 
-![Vnet'ten Vnet'e bağlantılar](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
+![VNet 'ten VNet 'e bağlantılar](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
 
 ### <a name="why"></a>Sanal ağları neden bağlamalıyız?
 
@@ -57,46 +50,46 @@ Sanal ağları aşağıdaki sebeplerden dolayı bağlamak isteyebilirsiniz:
 * **Çapraz bölge coğrafi artıklığı ve coğrafi-durum**
 
   * Kendi coğrafi çoğaltma veya eşitlemenizi, güvenli bağlantıyla İnternet’te uç noktalara gitmeden ayarlayabilirsiniz.
-  * Azure Load Balancer ve Microsoft veya üçüncü taraf Kümeleme Teknolojisi coğrafi yedeklilik ile yüksek oranda kullanılabilir iş yükü birden çok Azure bölgeleri arasında ayarlayabilirsiniz. Buna önemli bir örnek olarak SQL Always On ile birden fazla Azure bölgesine yayılan Kullanılabilirlik Grupları’nı birlikte kurmak verilebilir.
-* **Güçlü yalıtım sınırı ile bölgesel çok katmanlı uygulamalar**
+  * Azure Load Balancer ve Microsoft ya da üçüncü taraf kümeleme teknolojisi sayesinde, birden fazla Azure bölgesinde coğrafi yedeklilik ile yüksek oranda kullanılabilir iş yükü ayarlayabilirsiniz. Buna önemli bir örnek olarak SQL Always On ile birden fazla Azure bölgesine yayılan Kullanılabilirlik Grupları’nı birlikte kurmak verilebilir.
+* **Güçlü yalıtım sınırı olan bölgesel çok katmanlı uygulamalar**
 
-  * Aynı bölge içinde güçlü yalıtım ve güvenli arası katmanı bağlantı birlikte bağlı birden fazla sanal ağ ile çok katmanlı uygulamalar da ayarlayabilirsiniz.
-* **Çapraz abonelik, azure'da kuruluş arası iletişim**
+  * Aynı bölge içinde çok katmanlı uygulamaları, güçlü yalıtımlı ve güvenli katmanlı iletişimlerle birbirine bağlı birden fazla VNET ile birlikte ayarlayabilirsiniz.
+* **Azure 'da çapraz abonelik, şirket içi iletişim**
 
-  * Birden çok Azure aboneliğiniz varsa, iş yüklerini farklı aboneliklere ait birlikte güvenli bir sanal ağ arasında bağlanabilirsiniz.
-  * Kuruluşlar veya hizmet sağlayıcılarının, Azure güvenli VPN teknolojisi ile kuruluşlar arası iletişimi etkinleştirebilirsiniz.
+  * Birden çok Azure aboneliğiniz varsa, sanal ağlar arasında güvenli bir şekilde farklı aboneliklerden iş yüklerini birbirine bağlayabilirsiniz.
+  * Kuruluşlar veya hizmet sağlayıcıları için Azure 'da güvenli VPN teknolojisiyle platformlar arası iletişimi etkinleştirebilirsiniz.
 
 Sanal ağlar arası bağlantılar hakkında daha fazla bilgi için bu makalenin sonunda yer alan [Sanal ağdan sanal ağa dikkat edilecek noktalar](#faq) bölümünü inceleyin.
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
-Bu alıştırmaya başlamadan önce indirin ve Azure Hizmet Yönetimi (SM) PowerShell cmdlet'lerinin en son sürümünü yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). Portal adımların çoğu için kullanıyoruz, ancak sanal ağlar arasında bağlantı oluşturmak için PowerShell kullanmanız gerekir. Azure portalını kullanarak bağlantı oluşturulamıyor.
+Bu alıştırmaya başlamadan önce, Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). Çoğu adım için portalı kullanıyoruz, ancak sanal ağlar arasındaki bağlantıları oluşturmak için PowerShell kullanmanız gerekir. Azure portal kullanarak bağlantı oluşturamazsınız.
 
 ## <a name="plan"></a>1. adım -, IP adres aralıklarını planlama
 
-Sanal ağlarınız yapılandırmak için kullanacağınız aralıklara karar vermeniz önemlidir. Bu yapılandırma için sanal ağ aralıklarınız hiçbiri birbiriyle veya bağlandıkları yerel ağlar biriyle çakışıyor emin olmanız gerekir.
+Sanal ağlarınızı yapılandırmak için kullanacağınız aralıklara karar vermeniz önemlidir. Bu yapılandırma için, VNet aralıklarından hiçbirinin birbirleriyle veya bağlandıkları yerel ağlarla çakışdıklarından emin olmanız gerekir.
 
-Aşağıdaki tabloda, sanal ağlarınız tanımlamak nasıl bir örnek gösterilmektedir. Aralıkları, yalnızca bir kılavuz olarak kullanın. Sanal ağlarınız için aralığı yazın. Sonraki adımlar için bu bilgileri ihtiyacınız var.
+Aşağıdaki tabloda, sanal ağlarınızı nasıl tanımlayacağınızı gösteren bir örnek gösterilmektedir. Aralıkları yalnızca bir kılavuz olarak kullanın. Sanal ağlarınız için aralıkları yazın. Sonraki adımlar için bu bilgilere ihtiyacınız vardır.
 
 **Örnek**
 
-| Sanal Ağ | Adres alanı | Bölge | Yerel ağ alanına bağlanır. |
+| Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Doğu ABD |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Batı ABD |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
-## <a name="vnetvalues"></a>2. adım - sanal ağlar oluşturma
+## <a name="vnetvalues"></a>2. adım-sanal ağları oluşturma
 
-İki sanal ağ oluşturma [Azure portalında](https://portal.azure.com). Klasik sanal ağlar oluşturma adımları için bkz: [Klasik sanal ağ oluşturma](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
+[Azure Portal](https://portal.azure.com)iki sanal ağ oluşturun. Klasik sanal ağlar oluşturma adımları için bkz. [Klasik sanal ağ oluşturma](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
 
-Klasik bir sanal ağ oluşturmak için portal'ı kullanarak, aşağıdaki adımları kullanarak sanal ağ sayfasına gitmeniz gerekir, aksi takdirde bir Klasik sanal ağ oluşturma seçeneğini görünmez:
+Klasik bir sanal ağ oluşturmak için portalını kullanırken, aşağıdaki adımları kullanarak sanal ağ sayfasına gitmeniz gerekir, aksi takdirde klasik bir sanal ağ oluşturma seçeneği görünmez:
 
-1. Tıklayın '+' için 'New' sayfasını açın.
-2. 'Markette Ara' alanına 'Sanal ağ' yazın. Bunun yerine, ağı seçerseniz -> sanal ağ, klasik bir VNet oluşturmak için bu seçeneği almazsınız.
-3. Döndürülen listeden 'Sanal ağ' bulun ve sanal ağ sayfasını açmak için tıklayın. 
-4. Sanal ağınızın sayfasında Klasik VNet oluşturmak için ' Klasik' seçin. 
+1. ' + ' Düğmesine tıklayarak ' yeni ' sayfasını açın.
+2. ' Market 'te ara ' alanına ' sanal ağ ' yazın. Bunun yerine ağ-> sanal ağı ' nı seçerseniz, klasik VNet oluşturma seçeneğini kullanamazsınız.
+3. Döndürülen listeden ' sanal ağ ' öğesini bulun ve sanal ağ sayfasını açmak için tıklayın. 
+4. Sanal ağ sayfasında, klasik VNet oluşturmak için ' klasik ' seçeneğini belirleyin. 
 
-Bu makalede bir alıştırma olarak kullanırken, şu örnek değerleri kullanabilirsiniz:
+Bu makaleyi bir alıştırma olarak kullanıyorsanız, aşağıdaki örnek değerleri kullanabilirsiniz:
 
 **TestVNet1 için değerler**
 
@@ -105,7 +98,7 @@ Adres alanı: 10.11.0.0/16, 10.12.0.0/16 (isteğe bağlı)<br>
 Alt ağ adı: varsayılan<br>
 Alt ağ adres aralığı: 10.11.0.1/24<br>
 Kaynak grubu: ClassicRG<br>
-Konum: Doğu ABD<br>
+Location: East US<br>
 GatewaySubnet: 10.11.1.0/27
 
 **TestVNet4 için değerler**
@@ -115,108 +108,108 @@ Adres alanı: 10.41.0.0/16, 10.42.0.0/16 (isteğe bağlı)<br>
 Alt ağ adı: varsayılan<br>
 Alt ağ adres aralığı: 10.41.0.1/24<br>
 Kaynak grubu: ClassicRG<br>
-Konum: Batı ABD<br>
+Location: West US<br>
 GatewaySubnet: 10.41.1.0/27
 
-**Sanal ağlarınız oluştururken aşağıdaki ayarlara dikkat edin:**
+**Sanal ağlarınızı oluştururken aşağıdaki ayarları aklınızda bulundurun:**
 
-* **Sanal ağ adres alanları** – sanal ağ adres alanları sayfasında, sanal ağınız için kullanmak istediğiniz adres aralığını belirtin. Bu sanal makineleri ve bu sanal ağa dağıttığınız diğer rol örneklerine atanacak olan dinamik IP adresleridir.<br>Seçtiğiniz adres alanlarının adres alanları için bu sanal ağ bağlanacağı diğer sanal ağlara veya şirket içi konumlardan birini ile çakışamaz.
+* **Sanal ağ adres alanları** – sanal ağ adres alanları sayfasında, sanal ağınız için kullanmak istediğiniz adres aralığını belirtin. Bunlar, bu sanal ağa dağıttığınız VM 'lere ve diğer rol örneklerine atanacak dinamik IP adresleridir.<br>Seçtiğiniz adres alanları, bu VNet 'in bağlanacağı diğer sanal ağlar veya şirket içi konumların herhangi biri için adres alanları ile çakışamaz.
 
-* **Konum** – bir sanal ağ oluşturduğunuzda, Azure konum (bölge) ile ilişkilendirin. Örneğin, Batı ABD bölgesinde fiziksel olarak bulunması için sanal ağınızda dağıtılan sanal makinelerinizin istiyorsanız, o konumu seçin. Oluşturduktan sonra sanal ağınızla ilişkili konumu değiştirilemiyor.
+* **Konum** – bir sanal ağ oluşturduğunuzda, bunu bir Azure konumuyla (bölge) ilişkilendirirsiniz. Örneğin, sanal ağınıza dağıtılan VM 'lerinin fiziksel olarak Batı ABD ' de bulunmasını istiyorsanız, bu konumu seçin. Oluşturduktan sonra sanal ağınızla ilişkili konumu değiştiremezsiniz.
 
-**Sanal ağlarınız oluşturduktan sonra aşağıdaki ayarları ekleyebilirsiniz:**
+**Sanal ağlarınızı oluşturduktan sonra aşağıdaki ayarları ekleyebilirsiniz:**
 
-* **Adres alanı** – ek adres alanı, bu yapılandırma için gerekli değildir, ancak sanal ağı oluşturduktan sonra ek adres alanı ekleyebilirsiniz.
+* **Adres alanı** – bu yapılandırma için ek adres alanı gerekli değildir, ancak sanal ağı oluşturduktan sonra ek adres alanı ekleyebilirsiniz.
 
-* **Alt ağlar** – ek alt ağlar, bu yapılandırma için gerekli değildir, ancak Vm'lerinizi diğer rol örneklerinizden ayrı bir alt ağda tutmak isteyebilirsiniz.
+* **Alt ağlar** – bu yapılandırma için ek alt ağlar gerekli değildir, ancak VM 'lerinizi diğer rol örneklerinizden ayrı bir alt ağda kullanmak isteyebilirsiniz.
 
-* **DNS sunucuları** – IP adresi ve DNS sunucusu adı girin. Bu ayarla bir DNS sunucusu oluşturulmaz. Söz konusu ayar, bu sanal ağa ilişkin ad çözümlemesi için kullanmak istediğiniz DNS sunucularını belirtmenize olanak sağlar.
+* **DNS sunucuları** : DNS sunucusu adını ve IP adresini girin. Bu ayarla bir DNS sunucusu oluşturulmaz. Söz konusu ayar, bu sanal ağa ilişkin ad çözümlemesi için kullanmak istediğiniz DNS sunucularını belirtmenize olanak sağlar.
 
-Bu bölümde, bağlantı türü, yerel site yapılandırma ve ağ geçidi oluşturun.
+Bu bölümde, bağlantı türünü, yerel siteyi yapılandırır ve ağ geçidini oluşturursunuz.
 
-## <a name="localsite"></a>3. adım - yerel siteyi yapılandırma
+## <a name="localsite"></a>3. adım-yerel siteyi yapılandırma
 
-Azure, sanal ağlar arasındaki trafiği nasıl yönlendireceğini belirlemek için her yerel ağ alanında belirtilen ayarları kullanır. Her sanal ağ trafiğini yönlendirmek istediğinizi ilgili yerel ağ işaret etmelidir. Her yerel ağ alanına başvurmak için kullanmak istediğiniz adı belirleyin. Açıklayıcı bir şey kullanmak en iyisidir.
+Azure, sanal ağlar arasında trafiğin nasıl yönlendirileceğini anlamak için her yerel ağ sitesinde belirtilen ayarları kullanır. Her VNet, trafiği yönlendirmek istediğiniz ilgili yerel ağı işaret etmelidir. Her yerel ağ sitesine başvurmak için kullanmak istediğiniz adı belirlersiniz. Açıklayıcı bir açıklama kullanmak en iyisidir.
 
-Örneğin, TestVNet1 'VNet4Local' adlı bir yerel ağ sitesi için bağlanır. VNet4Local ayarlarını adres ön ekleri için testvnet4'ü içerir.
+Örneğin, TestVNet1 ' VNet4Local ' adında oluşturduğunuz bir yerel ağ sitesine bağlanır. VNet4Local ayarları, TestVNet4 için adres ön eklerini içerir.
 
-Her sanal ağ için yerel site başka bir sanal ağ ' dir. Aşağıdaki örnek değerler için sunduğumuz yapılandırması kullanılır:
+Her VNet için yerel site diğer VNet 'dir. Yapılandırma için aşağıdaki örnek değerler kullanılır:
 
-| Sanal Ağ | Adres alanı | Bölge | Yerel ağ alanına bağlanır. |
+| Sanal Ağ | Adres Alanı | Bölge | Yerel ağ sitesine bağlanır |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Doğu ABD |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Batı ABD |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
-1. Testvnet1'i Azure portalında bulun. İçinde **VPN bağlantıları** Bölümü sayfasına tıklayın **ağ geçidi**.
+1. Azure portal TestVNet1 bulun. Sayfanın **VPN bağlantıları** bölümünde **ağ geçidi**' ne tıklayın.
 
     ![Ağ geçidi yok](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
-2. Üzerinde **yeni VPN bağlantısı** sayfasında **siteden siteye**.
-3. Tıklayın **yerel site** yerel site sayfasını açmak için ayarları yapılandırın.
-4. Üzerinde **yerel site** sayfasında, yerel sitenizin adı. Bizim örneğimizde, biz yerel site 'VNet4Local' olarak adlandırın.
-5. İçin **VPN ağ geçidi IP adresini**, geçerli bir biçimde olduğu sürece, istediğiniz herhangi bir IP adresi kullanabilirsiniz. Genellikle, VPN cihazı için gerçek dış IP adresi kullanırsınız. Ancak, klasik bir VNet-VNet yapılandırmasını ağınız için ağ geçidine atanan genel IP adresini kullanın. Sanal ağ geçidi henüz oluşturduğunuz düşünüldüğünde, bir yer tutucu olarak herhangi bir geçerli genel IP adresi belirtin.<br>Bu boş bırakmayın - bu yapılandırma için isteğe bağlı değil. Bir sonraki adımda bu ayarlarına geri dönün ve Azure, oluşturduktan sonra bunları karşılık gelen sanal ağ geçidi IP adresleriyle yapılandırın.
-6. İçin **istemci adres alanı**, diğer sanal ağın adres alanı kullanın. Planlama, örneğe bakın. Tıklayın **Tamam** ayarlarınızı kaydetmek ve geri dönmek için **yeni VPN bağlantısı** sayfası.
+2. **Yenı VPN bağlantısı** sayfasında **siteden siteye**' yı seçin.
+3. Yerel **site ' ye** tıklayarak yerel site sayfasını açın ve ayarları yapılandırın.
+4. **Yerel site** sayfasında, Yerel sitenizi adlandırın. Örneğimizde, ' VNet4Local ' yerel sitesini adlandırın.
+5. **VPN ağ GEÇIDI IP adresi**için, istediğiniz HERHANGI bir IP adresini, geçerli bir biçimde olduğu sürece kullanabilirsiniz. Genellikle, bir VPN cihazının gerçek dış IP adresini kullanırsınız. Ancak, klasik VNet 'ten VNet 'e yönelik yapılandırma için sanal ağınız için ağ geçidine atanan genel IP adresini kullanırsınız. Sanal ağ geçidini henüz oluşturmadıysanız, geçerli bir genel IP adresini yer tutucu olarak belirtirsiniz.<br>Bu alanı boş bırakmayın; bu yapılandırma için isteğe bağlı değildir. Daha sonraki bir adımda, bu ayarlara geri dönerek Azure tarafından oluşturulduktan sonra karşılık gelen sanal ağ geçidi IP adresleriyle yapılandırırsınız.
+6. **Istemci adres alanı**için, diğer sanal ağın adres alanını kullanın. Planlama örneğinizi inceleyin. Ayarlarınızı kaydetmek ve **yenı VPN bağlantısı** sayfasına geri dönmek için **Tamam** ' ı tıklatın.
 
     ![yerel site](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
 
-## <a name="gw"></a>4. adım - sanal ağ geçidi oluşturma
+## <a name="gw"></a>4. adım-sanal ağ geçidini oluşturma
 
-Her bir sanal ağ, sanal ağ geçidi olması gerekir. Sanal ağ geçidi yönlendirir ve trafiği şifreler.
+Her sanal ağın bir sanal ağ geçidine sahip olması gerekir. Sanal ağ geçidi, trafiği yönlendirir ve şifreler.
 
 1. **Yeni VPN Bağlantısı** sayfasında, **Ağ geçidini hemen oluştur** onay kutusunu işaretleyin.
-2. Tıklayın **alt ağ, boyut ve yönlendirme türü**. Üzerinde **ağ geçidi Yapılandırması** sayfasında **alt**.
-3. Ağ geçidi alt ağ adı 'GatewaySubnet' gerekli ad ile otomatik olarak doldurulur. **Adres aralığı** VPN ağ geçidi hizmetlerine ayrılır IP adreslerini içerir. Bazı yapılandırmalar bir ağ geçidi alt ağı / 29 izin ver, ancak daha fazla IP adresi için Ağ Geçidi Hizmetleri gerektirebilir gelecek yapılandırmaları barındırmak için/28 veya/27 kullanmak en iyisidir. Bizim örnek ayarlarda 10.11.1.0/27 kullanırız. Adres alanı tıklayabilir, ardından tıklayın **Tamam**.
-4. Yapılandırma **ağ geçidi boyutu**. Bu ayar başvurduğu [ağ geçidi SKU'su](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
-5. Yapılandırma **yönlendirme türü**. Yönlendirme türü bu yapılandırma için **dinamik**. Ağ geçidini kaldırmak ve yeni bir tane oluşturun, yönlendirme türü daha sonra değiştiremezsiniz.
-6. **Tamam**'ı tıklatın.
-7. Üzerinde **yeni VPN bağlantısı** sayfasında **Tamam** sanal ağ geçidi oluşturmaya başlamak için. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
+2. **Alt ağ, boyut ve yönlendirme türü**' ne tıklayın. **Ağ geçidi yapılandırması** sayfasında **alt ağ**' a tıklayın.
+3. Ağ geçidi alt ağ adı, gereken ' GatewaySubnet ' adıyla otomatik olarak doldurulur. **Adres aralığı** , VPN Gateway hIzmetlerIne ayrılan IP adreslerini içerir. Bazı yapılandırmalara/29 ağ geçidi alt ağına izin verir, ancak ağ geçidi Hizmetleri için daha fazla IP adresi gerektirebilecek gelecek yapılandırmalara uyum sağlamak için bir/28 veya/27 kullanmak en iyisidir. Örnek ayarlarımızda 10.11.1.0/27 kullanıyoruz. Adres alanını ayarlayın ve ardından **Tamam**' a tıklayın.
+4. **Ağ geçidi boyutunu**yapılandırın. Bu ayar [ağ geçidi SKU 'su](vpn-gateway-about-vpn-gateway-settings.md#gwsku)anlamına gelir.
+5. **Yönlendirme türünü**yapılandırın. Bu yapılandırma için yönlendirme türü **dinamik**olmalıdır. Ağ geçidini koparmadığınız ve yeni bir tane oluşturmadığınız müddetçe yönlendirme türünü daha sonra değiştiremezsiniz.
+6. **Tamam**’a tıklayın.
+7. **Yenı VPN bağlantısı** sayfasında, sanal ağ geçidini oluşturmaya başlamak için **Tamam** ' ı tıklatın. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
-## <a name="vnet4settings"></a>5. adım - testvnet4'ü ayarlarını yapılandırma
+## <a name="vnet4settings"></a>5. adım-TestVNet4 ayarlarını yapılandırma
 
-Adımları tekrar [bir yerel site oluşturma](#localsite) ve [sanal ağ geçidi oluşturma](#gw) testvnet4'ü, gerektiğinde değerleri değiştirerek yapılandırmak için. Bu bir alıştırma olarak yapıyor kullanırsanız [örnek değerleri](#vnetvalues).
+[Bir yerel site oluşturmak](#localsite) için adımları yineleyin ve TestVNet4 yapılandırmak için [sanal ağ geçidini oluşturun](#gw) , gerekirse değerleri değiştirin. Bunu bir alıştırma olarak yapıyorsanız [örnek değerleri](#vnetvalues)kullanın.
 
-## <a name="updatelocal"></a>6. adım - yerel siteleri güncelleştir
+## <a name="updatelocal"></a>6. adım-yerel siteleri güncelleştirme
 
-Sanal ağ geçitleri için her iki Vnet'in oluşturulduktan sonra yerel siteler kılınmasından **VPN ağ geçidi IP adresi** değerleri.
+Sanal ağ geçitleriniz her iki VNET için de oluşturulduktan sonra, yerel siteler **VPN ağ GEÇIDI IP adresi** değerlerini ayarlamanız gerekir.
 
-|VNet adı|Bağlantılı site|Ağ geçidi IP adresi|
+|VNet adı|Bağlı site|Ağ geçidi IP adresi|
 |:--- |:--- |:--- |
-|TestVNet1|VNet4Local|TestVNet4 için VPN ağ geçidi IP adresi|
-|TestVNet4|VNet1Local|TestVNet1 için VPN ağ geçidi IP adresi|
+|TestVNet1|VNet4Local|TestVNet4 için VPN Gateway IP adresi|
+|TestVNet4|VNet1Local|TestVNet1 için VPN Gateway IP adresi|
 
-### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>1\. Kısım - sanal ağ geçidi genel IP adresini alma
+### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>1\. Bölüm-sanal ağ geçidi genel IP adresini al
 
-1. Sanal ağınızı Azure portalında bulun.
-2. Sanal Ağ'ı açmak için tıklayın **genel bakış** sayfası. Sayfasında, **VPN bağlantıları**, sanal ağ geçidiniz için IP adresini görüntüleyebilirsiniz.
+1. Azure portal Sanal ağınızı bulun.
+2. VNet **genel bakış** sayfasını açmak için tıklayın. Sayfada, **VPN bağlantıları**' nda, sanal ağ GEÇIDINIZIN IP adresini görüntüleyebilirsiniz.
 
    ![Genel IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/publicIP.png)
-3. IP adresini kopyalayın. Sonraki bölümde kullanır.
+3. IP adresini kopyalayın. Bunu bir sonraki bölümde kullanacaksınız.
 4. TestVNet4 için bu adımları yineleyin
 
-### <a name="part-2---modify-the-local-sites"></a>2\. Kısım - yerel sitelerini değiştirmek
+### <a name="part-2---modify-the-local-sites"></a>Bölüm 2-yerel siteleri değiştirme
 
-1. Sanal ağınızı Azure portalında bulun.
-2. VNet üzerinde **genel bakış** sayfasında, yerel site'a tıklayın.
+1. Azure portal Sanal ağınızı bulun.
+2. VNet **genel bakış** sayfasında, yerel siteye tıklayın.
 
    ![Yerel site oluşturuldu](./media/vpn-gateway-howto-vnet-vnet-portal-classic/local.png)
-3. Üzerinde **siteden siteye VPN bağlantıları** sayfasında, değiştirmek istediğiniz sitenin yerel adına tıklayın.
+3. **Siteden sıteye VPN bağlantıları** sayfasında, değiştirmek istediğiniz yerel sitenin adına tıklayın.
 
-   ![Yerel site Aç](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
-4. Tıklayın **yerel site** değiştirmek istediğiniz.
+   ![Yerel siteyi aç](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
+4. Değiştirmek istediğiniz **yerel siteye** tıklayın.
 
-   ![Site değiştirme](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
-5. Güncelleştirme **VPN ağ geçidi IP adresi** tıklatıp **Tamam** ayarları kaydetmek için.
+   ![Siteyi değiştir](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
+5. **VPN ağ GEÇIDI IP adresini** güncelleştirin ve **Tamam** ' a tıklayarak ayarları kaydedin.
 
-   ![Ağ geçidi IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
-6. Diğer sayfalara kapatın.
-7. TestVNet4 için bu adımları yineleyin.
+   ![Ağ geçidi IP 'si](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
+6. Diğer sayfaları kapatın.
+7. TestVNet4 için bu adımları tekrarlayın.
 
-## <a name="getvalues"></a>7. adım - ağ yapılandırma dosyasından değerleri alma
+## <a name="getvalues"></a>7. adım-ağ yapılandırma dosyasından değerleri alma
 
-Azure portalında Klasik sanal ağları oluşturduğunuzda, görüntülediğiniz adı için PowerShell kullanan tam adı değil. Örneğin, adlandırılacak şekilde görünen bir VNet **TestVNet1** portalda, ağ yapılandırma dosyasında bir çok uzun bir ad olabilir. Ad şunun gibi görünür: **ClassicRG TestVNet1 grup**. Bağlantılarınızı oluşturduğunuzda, ağ yapılandırma dosyasında gördüğünüz değerleri kullanmak önemlidir.
+Azure portal klasik VNET oluştururken, görüntülediğiniz ad PowerShell için kullandığınız tam ad değildir. Örneğin, portalda **TestVNet1** adında görünen bir VNet, ağ yapılandırma dosyasında çok daha uzun bir ada sahip olabilir. Ad şöyle görünebilir: **Grup ClassicRG TestVNet1**. Bağlantılarınızı oluştururken, ağ yapılandırma dosyasında gördüğünüz değerlerin kullanılması önemlidir.
 
-Aşağıdaki adımlarda, Azure hesabınıza bağlanın ve indirip bağlantılarınız için gerekli olan değerleri almak için ağ yapılandırma dosyasını görüntüleyebilirsiniz.
+Aşağıdaki adımlarda, Azure hesabınıza bağlanır ve bağlantılarınız için gerekli olan değerleri almak için ağ yapılandırma dosyasını indirmeniz ve görüntülemeniz gerekir.
 
-1. Azure Hizmet Yönetimi (SM) PowerShell cmdlet'lerinin en son sürümünü indirip yeniden açın. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
+1. Azure hizmet yönetimi (SM) PowerShell cmdlet 'lerinin en son sürümünü indirip yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
 
 2. PowerShell konsolunuzu yükseltilmiş haklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
@@ -241,18 +234,18 @@ Aşağıdaki adımlarda, Azure hesabınıza bağlanın ve indirip bağlantılar�
    ```powershell
    Add-AzureAccount
    ```
-3. Dışarı aktarma ve ağ yapılandırma dosyasını görüntüleyin. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, için ağ yapılandırma dosyasını dışa **C:\AzureNet**.
+3. Ağ yapılandırma dosyasını dışa aktarın ve görüntüleyin. Bilgisayarınızda bir dizin oluşturun ve sonra ağ yapılandırma dosyasını dizine aktarın. Bu örnekte, ağ yapılandırma dosyası **C:\azurenet dizinine**aktarılmalıdır.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Dosyayı bir metin düzenleyiciyle açın ve sanal ağlar ve siteler adlarını görüntüleyin. Bunlar, bağlantılarınızı oluştururken kullandığınız ad olacaktır.<br>Sanal ağ adları olarak listelenen **VirtualNetworkSite name =**<br>Site adları olarak listelenen **LocalNetworkSiteRef adı =**
+4. Dosyayı bir metin düzenleyici ile açın ve sanal ağlarınız ve sitelerinizin adlarını görüntüleyin. Bunlar, bağlantılarınızı oluştururken kullandığınız ad olacaktır.<br>VNet adları **Virtualnetworksite Name =** olarak listelenir.<br>Site adları **LocalNetworkSiteRef Name =** olarak listelenir
 
-## <a name="createconnections"></a>8. adım - VPN gateway bağlantıları oluşturma
+## <a name="createconnections"></a>8. adım-VPN Gateway bağlantılarını oluşturma
 
-Önceki tüm adımları tamamladıktan sonra IPSec/IKE önceden paylaşılan anahtarları ayarlayabilir ve bağlantıyı oluşturun. Bu adım kümesini PowerShell kullanır. Azure portalında Klasik dağıtım modeli için VNet-VNet bağlantılarında yapılandırılamaz.
+Tüm önceki adımlar tamamlandığında, IPSec/ıKE önceden paylaşılan anahtarlarını ayarlayabilir ve bağlantıyı oluşturabilirsiniz. Bu adım kümesi PowerShell kullanır. Klasik dağıtım modeli için VNet-VNet bağlantıları Azure portal yapılandırılamaz.
 
-Örneklerde paylaşılan anahtarı tam olarak aynı olduğuna dikkat edin. Paylaşılan anahtarı her zaman eşleşmelidir. Sanal ağlar ve yerel ağ siteleri için tam adları ile bu örneklerde değerleri değiştirdiğinizden emin olun.
+Örneklerde, paylaşılan anahtarın tam olarak aynı olduğuna dikkat edin. Paylaşılan anahtarın her zaman eşleşmesi gerekir. Bu örneklerdeki değerleri sanal ağlar ve yerel ağ siteleriniz için tam adlarla değiştirdiğinizden emin olun.
 
 1. TestVNet1 - TestVNet4 bağlantısını oluşturun.
 
@@ -266,7 +259,7 @@ Aşağıdaki adımlarda, Azure hesabınıza bağlanın ve indirip bağlantılar�
    Set-AzureVNetGatewayKey -VNetName 'Group ClassicRG TestVNet4' `
    -LocalNetworkSiteName 'F7F7BFC7_VNet1Local' -SharedKey A1b2C3D4
    ```
-3. Bağlantılar başlatmak bekleyin. Ağ geçidi başlatıldı sonra durumu 'Başarılı' şeklindedir.
+3. Bağlantıların başlatılmasını bekleyin. Ağ Geçidi başlatıldıktan sonra durum ' başarılı ' olur.
 
    ```
    Error          :
@@ -277,18 +270,18 @@ Aşağıdaki adımlarda, Azure hesabınıza bağlanın ve indirip bağlantılar�
    StatusCode     : OK
    ```
 
-## <a name="faq"></a>Klasik sanal ağlar için VNet-VNet konuları
-* Sanal ağlar aynı veya farklı Aboneliklerde olabilir.
+## <a name="faq"></a>Klasik sanal ağlar için sanal ağdan sanal ağa dikkat edilecek noktalar
+* Sanal ağlar aynı veya farklı aboneliklerde olabilir.
 * Sanal ağlar aynı ya da farklı Azure bölgelerinde (konumlarında) bulunabilir.
 * Bir bulut hizmeti ya da yük dengeleme uç noktası, birbirlerine bağlı olsa da sanal ağlara yayılamaz.
-* Birden çok sanal ağları birbirine bağlama, tüm VPN cihazları gerektirmez.
-* VNet-VNet Azure sanal ağları bağlamayı destekler. Bağlanan sanal makineleri desteklemez veya Bulut Hizmetleri, bir sanal ağa dağıtılmaz.
-* VNet-VNet dinamik yönlendirme ağ geçitleri gerekir. Azure statik yönlendirme ağ geçitleri desteklenmez.
-* Sanal ağ bağlantısı, çoklu site VPN’leri ile eşzamanlı olarak kullanılabilir. En fazla 10 VPN tünelleri ya da diğer sanal ağlar, veya şirket içi sitelere bağlanan sanal ağ VPN ağ geçidi için yoktur.
-* Sanal ağlar ve şirket içi yerel ağ sitelerinin adres alanları çakışmamalıdır. Adres alanlarının çakışması oluşturulmasını sanal ağlara veya karşıya yükleme netcfg yapılandırma dosyalarını, başarısız olmasına neden olur.
+* Birden çok sanal ağı birbirine bağlamak için herhangi bir VPN cihazı gerekmez.
+* VNet 'ten VNet 'e Azure sanal ağlarını bağlamayı destekler. Bir sanal ağa dağıtılan sanal makinelerin veya bulut hizmetlerinin bağlanmasını desteklemez.
+* VNet 'ten VNet 'e dinamik yönlendirme ağ geçitleri gerekir. Azure statik yönlendirme ağ geçitleri desteklenmez.
+* Sanal ağ bağlantısı, çoklu site VPN’leri ile eşzamanlı olarak kullanılabilir. Diğer sanal ağlara veya şirket içi sitelere bağlanan bir sanal ağ VPN ağ geçidi için en fazla 10 VPN tüneli vardır.
+* Sanal ağlar ve şirket içi yerel ağ sitelerinin adres alanları çakışmamalıdır. Çakışan adres alanları, sanal ağların oluşturulmasına veya netcfg yapılandırma dosyalarının başarısız olmasına neden olur.
 * Bir çift sanal ağ arasındaki yedekli tüneller desteklenmez.
-* P2S VPN'leri içeren bir VNet için tüm VPN tünelleri, VPN ağ geçidi ve aynı VPN ağ geçidi çalışma süresi SLA'sı üzerinde kullanılabilir bant genişliğini paylaşır.
+* VNet için P2S VPN 'Ler de dahil olmak üzere tüm VPN tünelleri, VPN Gateway için kullanılabilir bant genişliğini ve Azure 'da aynı VPN ağ geçidi çalışma süresi SLA 'sını paylaşır.
 * VNet-VNet trafiği Azure omurgası üzerinden dolaşır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bağlantılarınızı doğrulayın. Bkz: [bir VPN Gateway bağlantısını doğrulama](vpn-gateway-verify-connection-resource-manager.md).
+Bağlantılarınızı doğrulayın. Bkz. [VPN Gateway bağlantısını doğrulama](vpn-gateway-verify-connection-resource-manager.md).
